@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import HunterRigPreview from "./HunterRigPreview";
 import HuntCanvas from "./HuntCanvas";
 import {
   ARMORS,
@@ -21,9 +22,15 @@ import {
 import { GameAudio } from "./sound";
 import type {
   ArmorId,
+  ArmorTintId,
+  BiomaskId,
   DifficultyId,
+  DreadStyleId,
+  DreadTintId,
   GameSettings,
   GearId,
+  HunterAppearance,
+  HunterSkinId,
   MissionDefinition,
   MissionResult,
   SaveGame,
@@ -35,6 +42,7 @@ type Screen =
   | "ship"
   | "map"
   | "armory"
+  | "customization"
   | "trophies"
   | "codex"
   | "briefing"
@@ -54,7 +62,109 @@ const DIFFICULTY_LABELS = Object.fromEntries(
   DIFFICULTIES.map((difficulty) => [difficulty.id, difficulty.name]),
 ) as Record<DifficultyId, string>;
 
+const SKIN_OPTIONS: ReadonlyArray<{
+  id: HunterSkinId;
+  label: string;
+  detail: string;
+  swatch: string;
+}> = [
+  {
+    id: "ochre-mottle",
+    label: "Ocre moucheté",
+    detail: "Peau chaude du chasseur de jungle",
+    swatch: "#9b7247",
+  },
+  {
+    id: "ashen-mottle",
+    label: "Cendre froide",
+    detail: "Pigmentation pâle des mondes gelés",
+    swatch: "#7d8580",
+  },
+  {
+    id: "dark-mottle",
+    label: "Ombre profonde",
+    detail: "Motifs sombres de traque nocturne",
+    swatch: "#403a31",
+  },
+];
+
+const MASK_OPTIONS: ReadonlyArray<{
+  id: BiomaskId | null;
+  label: string;
+  detail: string;
+  image?: string;
+}> = [
+  { id: null, label: "Visage découvert", detail: "Biomask retiré" },
+  {
+    id: "jungle",
+    label: "Chasseur de jungle",
+    detail: "Profil angulaire de traque",
+    image: "/game/assets/v2/actors/yautja/hunter/masks/jungle.webp",
+  },
+  {
+    id: "scarred",
+    label: "Balafré",
+    detail: "Marque rouge d’un rite survécu",
+    image: "/game/assets/v2/actors/yautja/hunter/masks/scarred.webp",
+  },
+  {
+    id: "elder",
+    label: "Ancien",
+    detail: "Ornement de haut rang du clan",
+    image: "/game/assets/v2/actors/yautja/hunter/masks/elder.webp",
+  },
+];
+
+const DREAD_OPTIONS: ReadonlyArray<{
+  id: DreadStyleId;
+  label: string;
+  detail: string;
+  image: string;
+}> = [
+  {
+    id: "classic",
+    label: "Classiques",
+    detail: "Longues mèches libres",
+    image: "/game/assets/v2/actors/yautja/hunter/dreads/classic.webp",
+  },
+  {
+    id: "braided",
+    label: "Tressées",
+    detail: "Anneaux et maintien de combat",
+    image: "/game/assets/v2/actors/yautja/hunter/dreads/braided.webp",
+  },
+  {
+    id: "elder",
+    label: "Ancien",
+    detail: "Masse lourde et cérémonielle",
+    image: "/game/assets/v2/actors/yautja/hunter/dreads/elder.webp",
+  },
+];
+
+const DREAD_TINT_OPTIONS: ReadonlyArray<{
+  id: DreadTintId;
+  label: string;
+  swatch: string;
+}> = [
+  { id: "obsidian", label: "Obsidienne", swatch: "#17181b" },
+  { id: "umber", label: "Terre d’ombre", swatch: "#4b3428" },
+  { id: "ashen", label: "Cendre", swatch: "#8a8881" },
+];
+
+const ARMOR_TINT_OPTIONS: ReadonlyArray<{
+  id: ArmorTintId;
+  label: string;
+  swatch: string;
+}> = [
+  { id: "gunmetal", label: "Métal canon", swatch: "#75818a" },
+  { id: "bronze", label: "Bronze du clan", swatch: "#98704b" },
+  { id: "obsidian", label: "Obsidienne", swatch: "#272b31" },
+];
+
 function missionBackground(mission: MissionDefinition): string {
+  if (mission.biome === "jungle") {
+    return "/game/assets/v2/environments/jungle/layers/far-lake.webp";
+  }
   if (mission.biome === "volcano") return "/game/backgrounds/volcanic.webp";
   return `/game/backgrounds/${mission.biome}.webp`;
 }
@@ -100,6 +210,10 @@ export default function GameClient() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
+  const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
+  const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
+  const [previewAiming, setPreviewAiming] = useState(false);
   const audioRef = useRef<GameAudio | null>(null);
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
@@ -244,6 +358,23 @@ export default function GameClient() {
     [persist, playSound, save],
   );
 
+  const updateAppearance = useCallback(
+    <Key extends keyof HunterAppearance>(
+      key: Key,
+      value: HunterAppearance[Key],
+    ) => {
+      persist({
+        ...save,
+        appearance: {
+          ...save.appearance,
+          [key]: value,
+        },
+      });
+      void playSound("select");
+    },
+    [persist, playSound, save],
+  );
+
   const resetProgress = useCallback(() => {
     if (!resetArmed) {
       setResetArmed(true);
@@ -285,6 +416,13 @@ export default function GameClient() {
   const selectedGear = save.loadout.gearIds
     .map((gearId) => GEAR.find((gear) => gear.id === gearId))
     .filter(Boolean);
+  const trophyRecords = useMemo(
+    () =>
+      [...save.trophies].sort(
+        (a, b) => Date.parse(b.claimedAt) - Date.parse(a.claimedAt),
+      ),
+    [save.trophies],
+  );
 
   const topBar =
     screen !== "title" && screen !== "mission" ? (
@@ -356,16 +494,15 @@ export default function GameClient() {
               </p>
             </div>
             <div className="hero-stage" aria-hidden="true">
-              <img
-                className="hero-hunter"
-                src="/game/sprites/hunter.webp"
-                alt=""
+              <HunterRigPreview
+                className="hero-hunter-rig"
+                appearance={save.appearance}
+                armorId={save.loadout.armorId}
+                weaponIds={save.loadout.weaponIds}
+                size="clamp(430px, 73vw, 700px)"
+                aiming
+                bladesExtended
               />
-              <span className="laser-sight">
-                <i />
-                <i />
-                <i />
-              </span>
             </div>
           </div>
         </section>
@@ -385,11 +522,12 @@ export default function GameClient() {
                   ? "Votre mur porte la trace de la chasse. Une proie plus dangereuse vous attend."
                   : "Le Paria a été jugé. La Longue Chasse reste ouverte aux meilleurs scores."}
             </p>
-            <img
-              className="hub-hunter"
-              src="/game/sprites/hunter.webp"
-              alt=""
-              aria-hidden="true"
+            <HunterRigPreview
+              className="hub-hunter-rig"
+              appearance={save.appearance}
+              armorId={save.loadout.armorId}
+              weaponIds={save.loadout.weaponIds}
+              size="clamp(330px, 36vw, 470px)"
             />
             <div className="campaign-progress">
               <p>Rite de la Longue Chasse</p>
@@ -417,6 +555,12 @@ export default function GameClient() {
                 title="Armurerie"
                 detail="Armes, armure et équipement"
                 onClick={() => go("armory")}
+              />
+              <HubAction
+                icon="Y"
+                title="Quartier du chasseur"
+                detail="Biomask, peau, dreadlocks et parures"
+                onClick={() => go("customization")}
               />
               <HubAction
                 icon="◇"
@@ -608,7 +752,36 @@ export default function GameClient() {
             />
             <div className="armory-layout">
               <aside className="loadout-preview" aria-label="Équipement actuel">
-                <img src="/game/sprites/hunter.webp" alt="Chasseur Yautja" />
+                <div className="loadout-rig-stage">
+                  <HunterRigPreview
+                    className="loadout-rig"
+                    appearance={save.appearance}
+                    armorId={save.loadout.armorId}
+                    weaponIds={save.loadout.weaponIds}
+                    size="min(78%, 390px)"
+                    maskWorn={
+                      previewMaskWorn && save.appearance.biomaskId !== null
+                    }
+                    gauntletOpen={previewGauntletOpen}
+                    bladesExtended={previewBladesExtended}
+                    aiming={previewAiming}
+                  />
+                </div>
+                <RigStateControls
+                  maskWorn={previewMaskWorn}
+                  maskAvailable={save.appearance.biomaskId !== null}
+                  gauntletOpen={previewGauntletOpen}
+                  bladesExtended={previewBladesExtended}
+                  aiming={previewAiming}
+                  onMask={() => setPreviewMaskWorn((value) => !value)}
+                  onGauntlet={() =>
+                    setPreviewGauntletOpen((value) => !value)
+                  }
+                  onBlades={() =>
+                    setPreviewBladesExtended((value) => !value)
+                  }
+                  onAim={() => setPreviewAiming((value) => !value)}
+                />
                 <div className="loadout-summary">
                   <h3>Configuration active</h3>
                   <div className="loadout-tags">
@@ -697,6 +870,185 @@ export default function GameClient() {
         </section>
       )}
 
+      {screen === "customization" && (
+        <section
+          className="screen panel-screen"
+          aria-labelledby="customization-title"
+        >
+          <div className="screen-safe">
+            <PanelHeader
+              eyebrow="Vaisseau // Quartier du chasseur"
+              title="Personnalisation du Yautja"
+              subtitle="Chaque élément est une texture indépendante : peau, dreadlocks, biomask, armure, canon plasma, gantelet, lames et trophées restent animables séparément."
+              id="customization-title"
+              onBack={() => go("ship")}
+            />
+            <div className="customization-layout">
+              <aside className="customization-preview">
+                <div className="customization-rig-stage">
+                  <HunterRigPreview
+                    className="customization-rig"
+                    appearance={save.appearance}
+                    armorId={save.loadout.armorId}
+                    weaponIds={save.loadout.weaponIds}
+                    size="min(88%, 440px)"
+                    maskWorn={
+                      previewMaskWorn && save.appearance.biomaskId !== null
+                    }
+                    gauntletOpen={previewGauntletOpen}
+                    bladesExtended={previewBladesExtended}
+                    aiming={previewAiming}
+                    trophyCarried={
+                      save.appearance.trophyAdornmentId === "skull-spine"
+                    }
+                  />
+                </div>
+                <RigStateControls
+                  maskWorn={previewMaskWorn}
+                  maskAvailable={save.appearance.biomaskId !== null}
+                  gauntletOpen={previewGauntletOpen}
+                  bladesExtended={previewBladesExtended}
+                  aiming={previewAiming}
+                  onMask={() => setPreviewMaskWorn((value) => !value)}
+                  onGauntlet={() =>
+                    setPreviewGauntletOpen((value) => !value)
+                  }
+                  onBlades={() =>
+                    setPreviewBladesExtended((value) => !value)
+                  }
+                  onAim={() => setPreviewAiming((value) => !value)}
+                />
+                <p className="customization-note">
+                  Les dreadlocks sont découpées en quatre groupes souples. En
+                  mission, leur inertie réagit à la course, au saut et à
+                  l’escalade.
+                </p>
+              </aside>
+
+              <div className="customization-sections">
+                <CustomizationSection
+                  title="Pigmentation"
+                  detail="Teinte organique de la peau mouchetée"
+                >
+                  {SKIN_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      detail={option.detail}
+                      swatch={option.swatch}
+                      selected={save.appearance.skinId === option.id}
+                      onSelect={() => updateAppearance("skinId", option.id)}
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Biomask"
+                  detail="Le masque peut être porté ou retiré à tout moment"
+                >
+                  {MASK_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id ?? "unmasked"}
+                      label={option.label}
+                      detail={option.detail}
+                      image={option.image}
+                      glyph={option.id === null ? "◌" : undefined}
+                      selected={save.appearance.biomaskId === option.id}
+                      onSelect={() => {
+                        updateAppearance("biomaskId", option.id);
+                        setPreviewMaskWorn(option.id !== null);
+                      }}
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Dreadlocks"
+                  detail="Silhouette et mouvement naturel distincts"
+                >
+                  {DREAD_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      detail={option.detail}
+                      image={option.image}
+                      selected={save.appearance.dreadStyleId === option.id}
+                      onSelect={() =>
+                        updateAppearance("dreadStyleId", option.id)
+                      }
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Teinte des dreadlocks"
+                  detail="Couleur des mèches et anneaux"
+                >
+                  {DREAD_TINT_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      swatch={option.swatch}
+                      selected={save.appearance.dreadTintId === option.id}
+                      onSelect={() =>
+                        updateAppearance("dreadTintId", option.id)
+                      }
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Métal de l’armure"
+                  detail={`${selectedArmor.name} · la silhouette se change dans l’armurerie`}
+                >
+                  {ARMOR_TINT_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      swatch={option.swatch}
+                      selected={save.appearance.armorTintId === option.id}
+                      onSelect={() =>
+                        updateAppearance("armorTintId", option.id)
+                      }
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Parure de trophée"
+                  detail="Les prises physiques peuvent être portées sur l’armure"
+                >
+                  <AppearanceOption
+                    label="Aucune parure"
+                    glyph="◇"
+                    selected={save.appearance.trophyAdornmentId === "none"}
+                    onSelect={() =>
+                      updateAppearance("trophyAdornmentId", "none")
+                    }
+                  />
+                  <AppearanceOption
+                    label="Crâne et colonne"
+                    detail={
+                      save.trophies.length > 0
+                        ? "Prise nettoyée et montée"
+                        : "Rapportez d’abord un trophée digne"
+                    }
+                    image="/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp"
+                    selected={
+                      save.appearance.trophyAdornmentId === "skull-spine"
+                    }
+                    locked={save.trophies.length === 0}
+                    onSelect={() =>
+                      updateAppearance("trophyAdornmentId", "skull-spine")
+                    }
+                  />
+                </CustomizationSection>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {screen === "trophies" && (
         <section
           className="screen panel-screen"
@@ -711,36 +1063,70 @@ export default function GameClient() {
               onBack={() => go("ship")}
             />
             <div className="trophy-grid">
-              {MISSIONS.map((mission) => {
-                const records = save.trophies
-                  .filter((trophy) => trophy.missionId === mission.id)
-                  .sort((a, b) => b.score - a.score);
-                const best = records[0];
-                return best ? (
-                  <article className="trophy-card" key={mission.id}>
-                    <div className="trophy-skull" aria-hidden="true">
-                      {mission.targetKind === "human"
-                        ? "☠"
-                        : mission.targetKind === "beast"
-                          ? "♜"
-                          : "◈"}
-                    </div>
-                    <p className="mission-planet">{mission.planetName}</p>
-                    <h3>{mission.trophy.name}</h3>
-                    <p>{mission.trophy.description}</p>
-                    <span className="trophy-score">
-                      {best.quality.toUpperCase()} · {best.score} PTS
-                    </span>
-                  </article>
-                ) : (
-                  <article className="trophy-card empty" key={mission.id}>
-                    <div>
-                      <strong>EMPLACEMENT {mission.order}</strong>
-                      <p>La proie attend encore son chasseur.</p>
-                    </div>
-                  </article>
-                );
-              })}
+              {trophyRecords.length > 0 ? (
+                trophyRecords.map((trophy) => {
+                  const mission = MISSIONS.find(
+                    (entry) => entry.id === trophy.missionId,
+                  );
+                  const quality = {
+                    worthy: "Digne",
+                    blooded: "Blooded",
+                    elite: "Élite",
+                    flawless: "Sans défaut",
+                  }[trophy.quality];
+                  const condition = {
+                    damaged: "Endommagé",
+                    intact: "Intact",
+                    pristine: "Parfait",
+                  }[trophy.condition];
+                  return (
+                    <article className="trophy-card" key={trophy.id}>
+                      <div className="trophy-art" aria-hidden="true">
+                        <img
+                          src={
+                            trophy.partId === "mask"
+                              ? "/game/assets/v2/actors/yautja/hunter/masks/scarred.webp"
+                              : "/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp"
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <p className="mission-planet">
+                        {mission?.planetName ?? "Monde inconnu"}
+                      </p>
+                      <h3>{trophy.targetName}</h3>
+                      <p>
+                        {trophy.partId === "mask"
+                          ? "Biomask arraché à un adversaire du clan."
+                          : trophy.partId === "skull-and-spine"
+                            ? "Crâne et colonne extraits après une chasse honorable."
+                            : "Crâne prélevé, nettoyé et consigné dans les archives."}
+                      </p>
+                      <div className="trophy-tags">
+                        <span>{quality}</span>
+                        <span>{condition}</span>
+                        <span>{trophy.targetKind}</span>
+                      </div>
+                      <span className="trophy-score">
+                        {trophy.score} PTS · {trophy.difficultyId.toUpperCase()}
+                      </span>
+                      <time dateTime={trophy.claimedAt}>
+                        {new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}
+                      </time>
+                    </article>
+                  );
+                })
+              ) : (
+                <article className="trophy-card empty trophy-empty-state">
+                  <div>
+                    <strong>MUR EN ATTENTE</strong>
+                    <p>
+                      Affaiblissez une proie digne, approchez son corps et
+                      maintenez l’extraction pour arracher votre première prise.
+                    </p>
+                  </div>
+                </article>
+              )}
             </div>
           </div>
         </section>
@@ -786,7 +1172,10 @@ export default function GameClient() {
         <HuntCanvas
           mission={selectedMission}
           loadout={save.loadout}
+          appearance={save.appearance}
           difficulty={save.settings.difficultyId}
+          reducedGore={save.settings.reducedGore}
+          screenShake={save.settings.screenShake}
           onFinish={completeMission}
           onAbort={() => {
             setSelectedMission(null);
@@ -821,7 +1210,11 @@ export default function GameClient() {
               <DebriefStat label="Scans" value={lastResult.scans.toString()} />
               <DebriefStat
                 label="Trophée"
-                value={qualityLabel(lastResult)}
+                value={
+                  lastResult.trophyClaims.length > 0
+                    ? `${lastResult.trophyClaims.length} · ${qualityLabel(lastResult)}`
+                    : qualityLabel(lastResult)
+                }
               />
             </div>
             <div className="debrief-actions">
@@ -1133,6 +1526,140 @@ function EquipmentCard({
         {!unlocked ? lockedText : selected ? "Équipé" : "Équiper"}
       </button>
     </article>
+  );
+}
+
+function CustomizationSection({
+  title,
+  detail,
+  children,
+}: {
+  title: string;
+  detail: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="customization-section">
+      <header>
+        <h2>{title}</h2>
+        <p>{detail}</p>
+      </header>
+      <div className="appearance-options">{children}</div>
+    </section>
+  );
+}
+
+function AppearanceOption({
+  label,
+  detail,
+  image,
+  glyph,
+  swatch,
+  selected,
+  locked = false,
+  onSelect,
+}: {
+  label: string;
+  detail?: string;
+  image?: string;
+  glyph?: string;
+  swatch?: string;
+  selected: boolean;
+  locked?: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={`appearance-option${selected ? " selected" : ""}`}
+      aria-pressed={selected}
+      disabled={locked}
+      onClick={onSelect}
+    >
+      <span className="appearance-option-art" aria-hidden="true">
+        {image ? <img src={image} alt="" /> : null}
+        {swatch ? (
+          <i
+            className="appearance-swatch"
+            style={{ backgroundColor: swatch }}
+          />
+        ) : null}
+        {!image && !swatch ? <b>{glyph ?? "Y"}</b> : null}
+      </span>
+      <span className="appearance-option-copy">
+        <strong>{label}</strong>
+        {detail ? <small>{detail}</small> : null}
+      </span>
+      <span className="appearance-option-state" aria-hidden="true">
+        {locked ? "VERROUILLÉ" : selected ? "ACTIF" : "+"}
+      </span>
+    </button>
+  );
+}
+
+function RigStateControls({
+  maskWorn,
+  maskAvailable,
+  gauntletOpen,
+  bladesExtended,
+  aiming,
+  onMask,
+  onGauntlet,
+  onBlades,
+  onAim,
+}: {
+  maskWorn: boolean;
+  maskAvailable: boolean;
+  gauntletOpen: boolean;
+  bladesExtended: boolean;
+  aiming: boolean;
+  onMask: () => void;
+  onGauntlet: () => void;
+  onBlades: () => void;
+  onAim: () => void;
+}) {
+  const actions = [
+    {
+      label: maskWorn ? "Retirer mask" : "Porter mask",
+      active: maskWorn,
+      disabled: !maskAvailable,
+      onClick: onMask,
+    },
+    {
+      label: gauntletOpen ? "Fermer gant" : "Ouvrir gant",
+      active: gauntletOpen,
+      disabled: false,
+      onClick: onGauntlet,
+    },
+    {
+      label: bladesExtended ? "Rentrer griffes" : "Sortir griffes",
+      active: bladesExtended,
+      disabled: false,
+      onClick: onBlades,
+    },
+    {
+      label: aiming ? "Relâcher visée" : "Cadrer plasma",
+      active: aiming,
+      disabled: false,
+      onClick: onAim,
+    },
+  ];
+
+  return (
+    <div className="rig-state-controls" aria-label="Essai des éléments mobiles">
+      {actions.map((action) => (
+        <button
+          key={action.label}
+          type="button"
+          className={action.active ? "active" : ""}
+          aria-pressed={action.active}
+          disabled={action.disabled}
+          onClick={action.onClick}
+        >
+          {action.label}
+        </button>
+      ))}
+    </div>
   );
 }
 

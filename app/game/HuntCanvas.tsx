@@ -15,11 +15,14 @@ import {
 } from "./data";
 import type {
   DifficultyId,
+  HunterAppearance,
   HonorEvent,
   Loadout,
   MissionDefinition,
   MissionResult,
+  TrophyClaim,
   TrophyQuality,
+  WeaponId,
 } from "./types";
 
 // ---------------------------------------------------------------------------
@@ -30,6 +33,9 @@ interface HuntCanvasProps {
   mission: MissionDefinition;
   loadout: Loadout;
   difficulty: DifficultyId;
+  appearance: HunterAppearance;
+  reducedGore: boolean;
+  screenShake: boolean;
   onFinish(result: MissionResult): void;
   onAbort(): void;
 }
@@ -41,9 +47,13 @@ interface HuntCanvasProps {
 type Action =
   | "left"
   | "right"
+  | "up"
+  | "down"
   | "jump"
   | "melee"
   | "weapon"
+  | "aim"
+  | "mask"
   | "scan"
   | "cloak"
   | "heal"
@@ -72,6 +82,15 @@ interface Platform {
   height: number;
 }
 
+interface ClimbZone {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  kind: "tree" | "vine";
+}
+
 interface PlayerState extends Vec2 {
   previousY: number;
   width: number;
@@ -89,6 +108,16 @@ interface PlayerState extends Vec2 {
   medicomps: number;
   ammo: number;
   cloaked: boolean;
+  maskOn: boolean;
+  aiming: boolean;
+  aimAngle: number;
+  aimPoint: Vec2;
+  climbing: boolean;
+  climbZoneId: string | null;
+  gauntletOpen: number;
+  bladeExtension: number;
+  dreadAngles: number[];
+  dreadVelocities: number[];
   attackFlash: number;
   invulnerability: number;
   meleeCooldown: number;
@@ -130,6 +159,16 @@ interface ProjectileState extends Vec2 {
   color: string;
   life: number;
   source: "melee" | "weapon" | "enemy" | "boss";
+  weaponId: WeaponId | null;
+}
+
+interface GoreParticle extends Vec2 {
+  velocityX: number;
+  velocityY: number;
+  life: number;
+  maxLife: number;
+  radius: number;
+  color: string;
 }
 
 interface ScanNode extends Vec2 {
@@ -144,7 +183,26 @@ interface RecoveryNode extends Vec2 {
 
 interface AssetBank {
   background: HTMLImageElement | null;
-  hunter: HTMLImageElement | null;
+  farLake: HTMLImageElement | null;
+  hunterBody: HTMLImageElement | null;
+  hunterDreads: HTMLImageElement | null;
+  hunterMask: HTMLImageElement | null;
+  hunterArmor: HTMLImageElement | null;
+  plasmaCaster: HTMLImageElement | null;
+  gauntletClosed: HTMLImageElement | null;
+  gauntletOpen: HTMLImageElement | null;
+  wristbladesRetracted: HTMLImageElement | null;
+  wristbladesExtended: HTMLImageElement | null;
+  trophy: HTMLImageElement | null;
+  treeTrunk: HTMLImageElement | null;
+  vineLadder: HTMLImageElement | null;
+  platformRoot: HTMLImageElement | null;
+  platformStone: HTMLImageElement | null;
+  platformCrown: HTMLImageElement | null;
+  platformExpedition: HTMLImageElement | null;
+  foregroundFerns: HTMLImageElement | null;
+  foregroundVines: HTMLImageElement | null;
+  foregroundReeds: HTMLImageElement | null;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -156,6 +214,7 @@ interface InputHub {
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
+  pointerScreen: Vec2 | null;
 }
 
 interface GameState {
@@ -166,6 +225,7 @@ interface GameState {
   player: PlayerState;
   enemies: EnemyState[];
   projectiles: ProjectileState[];
+  goreParticles: GoreParticle[];
   scanNodes: ScanNode[];
   recoveryNodes: RecoveryNode[];
   spawnedWaves: Set<string>;
@@ -181,6 +241,10 @@ interface GameState {
   bossDefeatedAt: number | null;
   trophyClaimedAt: number | null;
   trophyQuality: TrophyQuality | null;
+  trophyClaim: TrophyClaim | null;
+  trophyExtracting: boolean;
+  trophyExtraction: number;
+  trophyCarried: boolean;
   scanPulse: number;
   message: string;
   messageTimer: number;
@@ -188,6 +252,8 @@ interface GameState {
   rangedBossViolation: boolean;
   failureReported: boolean;
   nextProjectileId: number;
+  reducedGore: boolean;
+  screenShakeEnabled: boolean;
 }
 
 interface UiSnapshot {
@@ -202,6 +268,10 @@ interface UiSnapshot {
   medicomps: number;
   ammo: number;
   cloaked: boolean;
+  maskOn: boolean;
+  aiming: boolean;
+  climbing: boolean;
+  trophyExtraction: number;
   objective: string;
   objectiveDetail: string;
   honor: number;
@@ -239,15 +309,31 @@ const PLATFORMS: readonly Platform[] = [
   { x: 5_100, y: 420, width: 230, height: 24 },
 ] as const;
 
+const JUNGLE_CLIMB_ZONES: readonly ClimbZone[] = [
+  { id: "tree-west", x: 770, y: 250, width: 128, height: 374, kind: "tree" },
+  { id: "vine-west", x: 1_775, y: 170, width: 72, height: 244, kind: "vine" },
+  { id: "tree-center", x: 2_430, y: 205, width: 134, height: 419, kind: "tree" },
+  { id: "vine-east", x: 3_470, y: 150, width: 74, height: 260, kind: "vine" },
+  { id: "tree-east", x: 4_080, y: 215, width: 132, height: 409, kind: "tree" },
+] as const;
+
 const KEY_ACTIONS: Readonly<Record<string, Action>> = {
   ArrowLeft: "left",
   KeyA: "left",
   KeyQ: "left",
   ArrowRight: "right",
   KeyD: "right",
+  ArrowUp: "up",
+  KeyW: "up",
+  KeyZ: "up",
+  ArrowDown: "down",
+  KeyS: "down",
   Space: "jump",
   KeyJ: "melee",
   KeyK: "weapon",
+  ShiftLeft: "aim",
+  ShiftRight: "aim",
+  KeyM: "mask",
   KeyV: "scan",
   KeyC: "cloak",
   KeyH: "heal",
@@ -267,6 +353,10 @@ const EMPTY_UI: UiSnapshot = {
   medicomps: 0,
   ammo: -1,
   cloaked: false,
+  maskOn: true,
+  aiming: false,
+  climbing: false,
+  trophyExtraction: 0,
   objective: "Initialisation de la chasse",
   objectiveDetail: "Synchronisation du biomask…",
   honor: 0,
@@ -345,6 +435,32 @@ function loadImage(path: string): Promise<HTMLImageElement | null> {
   });
 }
 
+function equippedWeapon(loadout: Loadout) {
+  return WEAPON_BY_ID[loadout.weaponIds[1] ?? loadout.weaponIds[0]];
+}
+
+function dreadFilter(tint: HunterAppearance["dreadTintId"]): string {
+  if (tint === "umber") return "sepia(0.72) saturate(0.9) brightness(0.85)";
+  if (tint === "ashen") return "grayscale(0.78) brightness(1.12)";
+  return "saturate(0.72) brightness(0.72)";
+}
+
+function bodyFilter(appearance: HunterAppearance): string {
+  return appearance.skinId === "ashen-mottle"
+    ? "grayscale(0.44) brightness(1.08)"
+    : appearance.skinId === "dark-mottle"
+      ? "brightness(0.72) saturate(0.9)"
+      : "saturate(1.04)";
+}
+
+function armorFilter(appearance: HunterAppearance): string {
+  return appearance.armorTintId === "bronze"
+    ? "sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)"
+    : appearance.armorTintId === "obsidian"
+      ? "saturate(0.68) brightness(0.58) contrast(1.2)"
+      : "brightness(1)";
+}
+
 function bossSprite(
   mission: MissionDefinition,
   assets: AssetBank,
@@ -404,14 +520,13 @@ function makeGameState(
   mission: MissionDefinition,
   loadout: Loadout,
   difficulty: DifficultyId,
+  appearance: HunterAppearance,
+  reducedGore: boolean,
+  screenShakeEnabled: boolean,
 ): GameState {
   const armor = ARMOR_BY_ID[loadout.armorId];
   const difficultyDef = DIFFICULTY_BY_ID[difficulty];
-  const weapon =
-    WEAPON_BY_ID[
-      loadout.weaponIds.find((weaponId) => weaponId !== "wristblades") ??
-        loadout.weaponIds[0]
-    ];
+  const weapon = equippedWeapon(loadout);
   const scanCount = Math.max(
     1,
     objectiveByKind(mission, "scan")?.targetCount ?? 3,
@@ -465,6 +580,16 @@ function makeGameState(
       ),
       ammo: weapon.ammo ?? -1,
       cloaked: false,
+      maskOn: appearance.biomaskId !== null,
+      aiming: false,
+      aimAngle: 0,
+      aimPoint: { x: 650, y: FLOOR_Y - 90 },
+      climbing: false,
+      climbZoneId: null,
+      gauntletOpen: 0,
+      bladeExtension: 0,
+      dreadAngles: [0, 0, 0, 0, 0],
+      dreadVelocities: [0, 0, 0, 0, 0],
       attackFlash: 0,
       invulnerability: 0,
       meleeCooldown: 0,
@@ -474,6 +599,7 @@ function makeGameState(
     },
     enemies: [],
     projectiles: [],
+    goreParticles: [],
     scanNodes,
     recoveryNodes,
     spawnedWaves: new Set(),
@@ -514,6 +640,10 @@ function makeGameState(
     bossDefeatedAt: null,
     trophyClaimedAt: null,
     trophyQuality: null,
+    trophyClaim: null,
+    trophyExtracting: false,
+    trophyExtraction: 0,
+    trophyCarried: false,
     scanPulse: 0,
     message: "La chasse commence. Localise les signatures.",
     messageTimer: 4,
@@ -521,6 +651,8 @@ function makeGameState(
     rangedBossViolation: false,
     failureReported: false,
     nextProjectileId: 1,
+    reducedGore,
+    screenShakeEnabled,
   };
 
   spawnEligibleWaves(state, mission, difficulty, "start", null);
@@ -683,7 +815,9 @@ function currentObjective(
   if (state.phase === "trophy") {
     return {
       title: `Réclamer : ${mission.trophy.name}`,
-      detail: "Approche la dépouille et utilise l’interaction [E].",
+      detail: state.trophyExtracting
+        ? `Extraction en cours : ${Math.round(state.trophyExtraction * 100)} % — reste immobile.`
+        : "Approche la dépouille, utilise [E], puis reste immobile 1,4 s.",
     };
   }
   return {
@@ -715,6 +849,10 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     medicomps: state.player.medicomps,
     ammo: state.player.ammo,
     cloaked: state.player.cloaked,
+    maskOn: state.player.maskOn,
+    aiming: state.player.aiming,
+    climbing: state.player.climbing,
+    trophyExtraction: state.trophyExtraction,
     objective: objective.title,
     objectiveDetail: objective.detail,
     honor: state.honor,
@@ -769,6 +907,8 @@ function resultFor(
     completedObjectiveIds: [...state.completedObjectives],
     honorEvents: [...state.honorEvents],
     trophyQuality: outcome === "success" ? state.trophyQuality : null,
+    trophyClaims:
+      outcome === "success" && state.trophyClaim ? [state.trophyClaim] : [],
     kills: state.kills,
     scans: state.scans,
     secondWindUsed: state.secondWindUsed,
@@ -850,10 +990,238 @@ function drawFallbackCharacter(
   context.restore();
 }
 
+function drawDreadSlices(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  player: PlayerState,
+  tint: HunterAppearance["dreadTintId"],
+): void {
+  const slices = player.dreadAngles.length;
+  const sourceWidth = image.naturalWidth / slices;
+  const destinationWidth = 67;
+  const destinationHeight = 94;
+  const sliceWidth = destinationWidth / slices;
+  context.save();
+  context.filter = dreadFilter(tint);
+  for (let index = 0; index < slices; index += 1) {
+    const sourceX = sourceWidth * index;
+    const localX = -31 + sliceWidth * index;
+    const pivotY = 8 + index * 1.2;
+    context.save();
+    context.translate(localX + sliceWidth / 2, pivotY);
+    context.rotate(player.dreadAngles[index] ?? 0);
+    context.drawImage(
+      image,
+      sourceX,
+      0,
+      sourceWidth + 1,
+      image.naturalHeight,
+      -sliceWidth / 2,
+      -pivotY,
+      sliceWidth + 1,
+      destinationHeight,
+    );
+    context.restore();
+  }
+  context.restore();
+}
+
+function drawHunterLayered(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  loadout: Loadout,
+  appearance: HunterAppearance,
+  assets: AssetBank,
+  alpha: number,
+): void {
+  const player = state.player;
+  const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
+  const hasWristblades = loadout.weaponIds.includes("wristblades");
+  const bodyWidth = 84;
+  const bodyHeight = 122;
+
+  context.save();
+  context.globalAlpha = alpha;
+  context.translate(
+    player.x + player.width / 2,
+    player.y + player.height / 2,
+  );
+  context.scale(player.facing, 1);
+  context.translate(0, -player.height / 2);
+
+  // Les dreadlocks et les trophées sont derrière le corps, puis chaque pièce
+  // d'équipement est dessinée indépendamment pour pouvoir l'animer.
+  if (assets.hunterDreads) {
+    drawDreadSlices(
+      context,
+      assets.hunterDreads,
+      player,
+      appearance.dreadTintId,
+    );
+  }
+  if (
+    assets.trophy &&
+    (state.trophyCarried || appearance.trophyAdornmentId === "skull-spine")
+  ) {
+    context.save();
+    context.rotate(-0.08);
+    context.drawImage(
+      assets.trophy,
+      -43,
+      state.trophyCarried ? 46 : 67,
+      state.trophyCarried ? 34 : 22,
+      state.trophyCarried ? 60 : 39,
+    );
+    context.restore();
+  }
+
+  if (assets.hunterBody) {
+    context.save();
+    context.filter = bodyFilter(appearance);
+    context.drawImage(
+      assets.hunterBody,
+      -bodyWidth / 2,
+      -4,
+      bodyWidth,
+      bodyHeight,
+    );
+    context.restore();
+  } else {
+    drawFallbackCharacter(
+      context,
+      -player.width / 2,
+      0,
+      player.width,
+      player.height,
+      "#8fd3ac",
+      1,
+    );
+  }
+
+  if (assets.hunterArmor) {
+    context.save();
+    context.filter = armorFilter(appearance);
+    context.drawImage(
+      assets.hunterArmor,
+      -bodyWidth / 2,
+      -4,
+      bodyWidth,
+      bodyHeight,
+    );
+    context.restore();
+  }
+
+  if (hasPlasmaCaster && assets.plasmaCaster) {
+    const localAim =
+      player.facing > 0 ? player.aimAngle : Math.PI - player.aimAngle;
+    context.save();
+    context.translate(24, 23);
+    context.rotate(clamp(localAim, -0.72, 0.58) * (player.aiming ? 0.48 : 0.08));
+    context.drawImage(assets.plasmaCaster, -8, -17, 32, 48);
+    context.restore();
+  }
+
+  if (player.maskOn && appearance.biomaskId && assets.hunterMask) {
+    context.drawImage(assets.hunterMask, 15, 1, 30, 54);
+  }
+
+  const gauntletOpen = clamp(player.gauntletOpen, 0, 1);
+  if (assets.gauntletClosed && gauntletOpen < 1) {
+    context.save();
+    context.globalAlpha *= 1 - gauntletOpen;
+    context.drawImage(assets.gauntletClosed, 19, 57, 39, 30);
+    context.restore();
+  }
+  if (assets.gauntletOpen && gauntletOpen > 0) {
+    context.save();
+    context.globalAlpha *= gauntletOpen;
+    context.drawImage(assets.gauntletOpen, 18, 53, 41, 34);
+    context.restore();
+  }
+
+  if (hasWristblades) {
+    const extension = clamp(player.bladeExtension, 0, 1);
+    if (assets.wristbladesRetracted && extension < 1) {
+      context.save();
+      context.globalAlpha *= 1 - extension;
+      context.drawImage(assets.wristbladesRetracted, 21, 57, 40, 31);
+      context.restore();
+    }
+    if (assets.wristbladesExtended && extension > 0) {
+      context.save();
+      context.globalAlpha *= extension;
+      context.drawImage(assets.wristbladesExtended, 21, 51, 58, 47);
+      context.restore();
+    }
+  }
+  context.restore();
+}
+
+function drawAimAssist(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  mission: MissionDefinition,
+  appearance: HunterAppearance,
+): void {
+  const player = state.player;
+  if (!player.aiming) return;
+  const target = player.aimPoint;
+  const origin = {
+    x: player.x + player.width / 2 + player.facing * 23,
+    y: player.y + 31,
+  };
+  const color = mission.palette.accent;
+  context.save();
+  if (player.maskOn && appearance.biomaskId) {
+    context.strokeStyle = `${color}c8`;
+    context.lineWidth = 1.25;
+    context.globalAlpha = 0.76;
+    for (const offset of [-7, 0, 7]) {
+      context.beginPath();
+      context.moveTo(origin.x, origin.y + offset * 0.32);
+      context.lineTo(target.x + offset, target.y + offset * 0.3);
+      context.stroke();
+    }
+  }
+  context.globalAlpha = 0.95;
+  context.strokeStyle = color;
+  context.lineWidth = 2;
+  context.beginPath();
+  context.arc(target.x, target.y, 18, 0, Math.PI * 2);
+  context.moveTo(target.x - 29, target.y);
+  context.lineTo(target.x - 9, target.y);
+  context.moveTo(target.x + 9, target.y);
+  context.lineTo(target.x + 29, target.y);
+  context.moveTo(target.x, target.y - 29);
+  context.lineTo(target.x, target.y - 9);
+  context.moveTo(target.x, target.y + 9);
+  context.lineTo(target.x, target.y + 29);
+  context.stroke();
+  context.restore();
+}
+
+function drawJunglePlatform(
+  context: CanvasRenderingContext2D,
+  platform: Platform,
+  image: HTMLImageElement | null,
+): void {
+  if (!image) return;
+  const visualHeight = clamp(platform.width * 0.48, 82, 148);
+  context.drawImage(
+    image,
+    platform.x - 12,
+    platform.y - visualHeight * 0.43,
+    platform.width + 24,
+    visualHeight,
+  );
+}
+
 function renderGame(
   context: CanvasRenderingContext2D,
   state: GameState,
   mission: MissionDefinition,
+  loadout: Loadout,
+  appearance: HunterAppearance,
   assets: AssetBank,
   deviceScale: number,
 ): void {
@@ -888,6 +1256,22 @@ function renderGame(
     context.fillStyle = `${palette.sky}55`;
     context.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
   }
+  if (mission.biome === "jungle" && assets.farLake) {
+    const lake = assets.farLake;
+    const lakeHeight = 560;
+    const lakeWidth = lakeHeight * (lake.naturalWidth / lake.naturalHeight);
+    const lakeOffset = -((cameraX * 0.07) % lakeWidth);
+    context.save();
+    context.globalAlpha = 0.86;
+    for (
+      let x = lakeOffset - lakeWidth;
+      x < VIEW_WIDTH + lakeWidth;
+      x += lakeWidth
+    ) {
+      context.drawImage(lake, x, 128, lakeWidth, lakeHeight);
+    }
+    context.restore();
+  }
 
   context.save();
   context.translate(-cameraX, 0);
@@ -899,24 +1283,57 @@ function renderGame(
   for (let x = 0; x < WORLD_WIDTH; x += 160) {
     context.fillRect(x, FLOOR_Y + 6, 84, 3);
   }
-  for (const platform of PLATFORMS) {
-    roundedPanel(
-      context,
-      platform.x,
-      platform.y,
-      platform.width,
-      platform.height,
-      6,
-      palette.platform,
-      `${palette.accent}55`,
-    );
-    context.fillStyle = `${palette.haze}aa`;
-    context.fillRect(
-      platform.x + 18,
-      platform.y + platform.height,
-      platform.width - 36,
-      8,
-    );
+  if (mission.biome === "jungle") {
+    for (const zone of JUNGLE_CLIMB_ZONES) {
+      const image =
+        zone.kind === "tree" ? assets.treeTrunk : assets.vineLadder;
+      if (!image) continue;
+      const drawWidth = zone.kind === "tree" ? zone.width + 74 : zone.width;
+      context.save();
+      context.globalAlpha = zone.kind === "tree" ? 0.97 : 0.9;
+      context.drawImage(
+        image,
+        zone.x - (drawWidth - zone.width) / 2,
+        zone.y,
+        drawWidth,
+        zone.height,
+      );
+      context.restore();
+    }
+  }
+  const junglePlatformImages = [
+    assets.platformRoot,
+    assets.platformStone,
+    assets.platformCrown,
+    assets.platformExpedition,
+  ] as const;
+  for (let index = 0; index < PLATFORMS.length; index += 1) {
+    const platform = PLATFORMS[index];
+    if (mission.biome === "jungle") {
+      drawJunglePlatform(
+        context,
+        platform,
+        junglePlatformImages[index % junglePlatformImages.length],
+      );
+    } else {
+      roundedPanel(
+        context,
+        platform.x,
+        platform.y,
+        platform.width,
+        platform.height,
+        6,
+        palette.platform,
+        `${palette.accent}55`,
+      );
+      context.fillStyle = `${palette.haze}aa`;
+      context.fillRect(
+        platform.x + 18,
+        platform.y + platform.height,
+        platform.width - 36,
+        8,
+      );
+    }
   }
 
   if (state.phase === "tracking" || state.phase === "target") {
@@ -979,6 +1396,30 @@ function renderGame(
     context.stroke();
   }
 
+  if (
+    state.bossDefeatedAt !== null &&
+    (state.phase === "trophy" || state.phase === "extraction")
+  ) {
+    const corpseImage = bossSprite(mission, assets);
+    if (corpseImage) {
+      context.save();
+      context.globalAlpha = state.phase === "trophy" ? 0.82 : 0.48;
+      context.translate(
+        state.boss.x + state.boss.width * 0.5,
+        FLOOR_Y - state.boss.width * 0.22,
+      );
+      context.rotate(Math.PI * 0.47);
+      context.drawImage(
+        corpseImage,
+        -state.boss.width * 0.5,
+        -state.boss.height * 0.5,
+        state.boss.width,
+        state.boss.height,
+      );
+      context.restore();
+    }
+  }
+
   if (state.phase === "trophy" && state.bossDefeatedAt !== null) {
     const pulse = 0.7 + Math.sin(state.elapsed * 5) * 0.25;
     context.save();
@@ -998,11 +1439,33 @@ function renderGame(
     context.font = "700 14px system-ui, sans-serif";
     context.textAlign = "center";
     context.fillText(
-      "TROPHÉE [E]",
+      state.trophyExtracting
+        ? `EXTRACTION ${Math.round(state.trophyExtraction * 100)} %`
+        : "TROPHÉE [E]",
       state.boss.x + state.boss.width / 2,
       FLOOR_Y - 104,
     );
     context.restore();
+
+    if (assets.trophy && state.trophyExtracting) {
+      const eased =
+        state.trophyExtraction *
+        state.trophyExtraction *
+        (3 - 2 * state.trophyExtraction);
+      const startX = state.boss.x + state.boss.width * 0.52;
+      const startY = FLOOR_Y - 66;
+      const endX =
+        state.player.x + state.player.width / 2 - state.player.facing * 18;
+      const endY = state.player.y + 66;
+      const trophyX = startX + (endX - startX) * eased;
+      const trophyY =
+        startY + (endY - startY) * eased - Math.sin(eased * Math.PI) * 54;
+      context.save();
+      context.translate(trophyX, trophyY);
+      context.rotate((1 - eased) * 0.65 * state.player.facing);
+      context.drawImage(assets.trophy, -14, -25, 28, 50);
+      context.restore();
+    }
   }
 
   // Enemies, boss and projectiles.
@@ -1081,36 +1544,32 @@ function renderGame(
     context.fill();
     context.restore();
   }
+  for (const particle of state.goreParticles) {
+    const alpha = clamp(particle.life / particle.maxLife, 0, 1);
+    context.save();
+    context.globalAlpha = alpha;
+    context.fillStyle = particle.color;
+    context.shadowColor = particle.color;
+    context.shadowBlur = state.reducedGore ? 3 : 7;
+    context.beginPath();
+    context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+    context.fill();
+    context.restore();
+  }
 
-  // Hunter sprite and active vision effects.
+  // Chasseur assemblé en couches indépendantes.
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
-  if (assets.hunter) {
-    drawSprite(
-      context,
-      assets.hunter,
-      state.player.x,
-      state.player.y,
-      state.player.width,
-      state.player.height,
-      state.player.facing,
-      hunterAlpha,
-    );
-  } else {
-    context.save();
-    context.globalAlpha = hunterAlpha;
-    drawFallbackCharacter(
-      context,
-      state.player.x,
-      state.player.y,
-      state.player.width,
-      state.player.height,
-      palette.accent,
-      state.player.facing,
-    );
-    context.restore();
-  }
+  drawHunterLayered(
+    context,
+    state,
+    loadout,
+    appearance,
+    assets,
+    hunterAlpha,
+  );
+  drawAimAssist(context, state, mission, appearance);
   if (state.player.attackFlash > 0) {
     const centerX =
       state.player.x +
@@ -1142,6 +1601,28 @@ function renderGame(
       Math.PI * 2,
     );
     context.stroke();
+  }
+  if (mission.biome === "jungle") {
+    context.save();
+    context.globalAlpha = 0.9;
+    const fernPositions = [120, 980, 2_040, 3_180, 4_720, 5_260];
+    for (const x of fernPositions) {
+      if (assets.foregroundFerns) {
+        context.drawImage(assets.foregroundFerns, x, FLOOR_Y - 110, 150, 123);
+      }
+    }
+    const reedPositions = [450, 1_420, 2_820, 3_920, 5_050];
+    for (const x of reedPositions) {
+      if (assets.foregroundReeds) {
+        context.drawImage(assets.foregroundReeds, x, FLOOR_Y - 90, 112, 114);
+      }
+    }
+    if (assets.foregroundVines) {
+      for (const x of [620, 2_230, 3_760, 5_090]) {
+        context.drawImage(assets.foregroundVines, x, -8, 178, 145);
+      }
+    }
+    context.restore();
   }
   context.restore();
 
@@ -1183,7 +1664,13 @@ function hurtPlayer(
   player.invulnerability = 0.55;
   player.cloaked = false;
   state.damageTaken += amount;
-  state.screenShake = Math.min(18, 6 + amount * 0.24);
+  if (state.trophyExtracting) {
+    state.trophyExtracting = false;
+    state.trophyExtraction = 0;
+  }
+  if (state.screenShakeEnabled) {
+    state.screenShake = Math.min(18, 6 + amount * 0.24);
+  }
   announce(state, `Impact subi : -${Math.round(amount)} intégrité`, 1.4);
 
   if (player.health > 0) return;
@@ -1211,6 +1698,40 @@ function hurtPlayer(
   addHonor(state, "hunt-failed", `Défaite sur ${mission.planetName}`, -15, "violation");
 }
 
+function spawnGore(
+  state: GameState,
+  enemy: EnemyState,
+  intensity: "hit" | "kill" | "trophy",
+): void {
+  const base =
+    intensity === "trophy" ? 18 : intensity === "kill" ? 12 : 5;
+  const count = state.reducedGore ? Math.max(2, Math.round(base * 0.25)) : base;
+  const color =
+    enemy.kind === "yautja"
+      ? "#9cff47"
+      : enemy.kind === "beast"
+        ? "#72d9ef"
+        : "#a61f24";
+  const centerX = enemy.x + enemy.width * 0.5;
+  const centerY = enemy.y + enemy.height * 0.48;
+  for (let index = 0; index < count; index += 1) {
+    const angle = -Math.PI * (0.12 + Math.random() * 0.76);
+    const speed =
+      (intensity === "trophy" ? 120 : 80) + Math.random() * 190;
+    const life = 0.35 + Math.random() * (state.reducedGore ? 0.25 : 0.65);
+    state.goreParticles.push({
+      x: centerX + (Math.random() - 0.5) * enemy.width * 0.35,
+      y: centerY + (Math.random() - 0.5) * enemy.height * 0.22,
+      velocityX: Math.cos(angle) * speed * (Math.random() > 0.5 ? 1 : -1),
+      velocityY: Math.sin(angle) * speed,
+      life,
+      maxLife: life,
+      radius: state.reducedGore ? 1.5 : 2 + Math.random() * 3.2,
+      color: state.reducedGore ? `${color}aa` : color,
+    });
+  }
+}
+
 function damageEnemy(
   state: GameState,
   mission: MissionDefinition,
@@ -1221,6 +1742,7 @@ function damageEnemy(
   if (!enemy.alive || !enemy.active) return;
   enemy.health -= amount;
   enemy.hitFlash = 0.12;
+  spawnGore(state, enemy, "hit");
 
   if (enemy.boss && !enemy.scanned && !state.rangedBossViolation) {
     state.rangedBossViolation = true;
@@ -1251,6 +1773,7 @@ function damageEnemy(
 
   enemy.health = 0;
   enemy.alive = false;
+  spawnGore(state, enemy, "kill");
   state.kills += 1;
   if (enemy.boss) {
     state.bossDefeatedAt = state.elapsed;
@@ -1328,7 +1851,7 @@ function playerMelee(
       );
     }
   }
-  if (connected) state.screenShake = 5;
+  if (connected && state.screenShakeEnabled) state.screenShake = 5;
 }
 
 function playerWeapon(
@@ -1337,11 +1860,7 @@ function playerWeapon(
   loadout: Loadout,
 ): void {
   const player = state.player;
-  const weapon =
-    WEAPON_BY_ID[
-      loadout.weaponIds.find((weaponId) => weaponId !== "wristblades") ??
-        loadout.weaponIds[0]
-    ];
+  const weapon = equippedWeapon(loadout);
   if (
     player.weaponCooldown > 0 ||
     state.phase === "dead" ||
@@ -1366,6 +1885,8 @@ function playerWeapon(
   player.weaponCooldown = weapon.cooldownMs / 1_000;
   player.energy = Math.max(0, player.energy - weapon.energyCost);
   if (weapon.ammo !== null) player.ammo -= 1;
+  const speed = Math.max(620, weapon.projectileSpeedPx);
+  const angle = player.aimAngle;
   state.projectiles.push({
     id: state.nextProjectileId++,
     x:
@@ -1373,8 +1894,8 @@ function playerWeapon(
       player.width / 2 +
       player.facing * (player.width * 0.55),
     y: player.y + player.height * 0.38,
-    velocityX: player.facing * Math.max(620, weapon.projectileSpeedPx),
-    velocityY: weapon.id === "yautja-bow" ? -15 : 0,
+    velocityX: Math.cos(angle) * speed,
+    velocityY: Math.sin(angle) * speed + (weapon.id === "yautja-bow" ? -15 : 0),
     radius:
       weapon.id === "smart-disc" ? 12 : weapon.id === "plasma-caster" ? 9 : 6,
     damage: weapon.damage,
@@ -1382,25 +1903,8 @@ function playerWeapon(
     color: weapon.color,
     life: Math.max(0.8, weapon.rangePx / Math.max(1, weapon.projectileSpeedPx)),
     source: "weapon",
+    weaponId: weapon.id,
   });
-
-  if (
-    weapon.id === "plasma-caster" &&
-    state.enemies.some(
-      (enemy) =>
-        enemy.alive &&
-        !enemy.boss &&
-        Math.abs(enemy.x - player.x) < 700,
-    )
-  ) {
-    addHonor(
-      state,
-      "plasma-restraint",
-      "Plasmacaster employé contre une proie ordinaire",
-      -10,
-      "violation",
-    );
-  }
 }
 
 function playerScan(state: GameState, mission: MissionDefinition): void {
@@ -1489,6 +1993,59 @@ function playerHeal(state: GameState): void {
   announce(state, "Medicomp appliqué. Position révélée.", 2.5);
 }
 
+function finishTrophyExtraction(
+  state: GameState,
+  mission: MissionDefinition,
+): void {
+  const elapsedSinceBoss =
+    state.bossDefeatedAt === null
+      ? Number.POSITIVE_INFINITY
+      : state.elapsed - state.bossDefeatedAt;
+  const healthRatio = state.player.health / state.player.maxHealth;
+  const quality: TrophyQuality =
+    elapsedSinceBoss <= mission.boss.trophyWindowSeconds * 0.45 &&
+    healthRatio >= 0.75 &&
+    !state.secondWindUsed
+      ? "flawless"
+      : elapsedSinceBoss <= mission.boss.trophyWindowSeconds &&
+          healthRatio >= 0.5
+        ? "elite"
+        : healthRatio >= 0.25
+          ? "blooded"
+          : "worthy";
+  const condition: TrophyClaim["condition"] =
+    quality === "flawless"
+      ? "pristine"
+      : quality === "elite"
+        ? "intact"
+        : "damaged";
+
+  state.trophyQuality = quality;
+  state.trophyClaimedAt = state.elapsed;
+  state.trophyExtracting = false;
+  state.trophyExtraction = 1;
+  state.trophyCarried = true;
+  state.trophyClaim = {
+    id: `${mission.id}-${Math.round(state.elapsed * 1_000)}`,
+    definitionId: mission.trophy.id,
+    targetName: mission.targetName,
+    targetKind: mission.targetKind,
+    partId: mission.targetKind === "yautja" ? "mask" : "skull-and-spine",
+    quality,
+    condition,
+  };
+  state.phase = "extraction";
+  spawnGore(state, state.boss, "trophy");
+  addHonor(
+    state,
+    "trophy-claimed",
+    mission.trophy.name,
+    12,
+    "objective",
+  );
+  announce(state, `${mission.trophy.name} arraché. Rejoins l’extraction.`, 5);
+}
+
 function interact(
   state: GameState,
   mission: MissionDefinition,
@@ -1523,32 +2080,16 @@ function interact(
       y: FLOOR_Y - 52,
     }) <= 125
   ) {
-    const elapsedSinceBoss =
-      state.bossDefeatedAt === null
-        ? Number.POSITIVE_INFINITY
-        : state.elapsed - state.bossDefeatedAt;
-    const healthRatio = state.player.health / state.player.maxHealth;
-    state.trophyQuality =
-      elapsedSinceBoss <= mission.boss.trophyWindowSeconds * 0.45 &&
-      healthRatio >= 0.75 &&
-      !state.secondWindUsed
-        ? "flawless"
-        : elapsedSinceBoss <= mission.boss.trophyWindowSeconds &&
-            healthRatio >= 0.5
-          ? "elite"
-          : healthRatio >= 0.25
-            ? "blooded"
-            : "worthy";
-    state.trophyClaimedAt = state.elapsed;
-    state.phase = "extraction";
-    addHonor(
-      state,
-      "trophy-claimed",
-      mission.trophy.name,
-      12,
-      "objective",
-    );
-    announce(state, `${mission.trophy.name} réclamé. Rejoins l’extraction.`, 5);
+    if (!state.trophyExtracting) {
+      state.trophyExtracting = true;
+      state.trophyExtraction = 0;
+      state.player.cloaked = false;
+      announce(
+        state,
+        "Extraction du trophée : maintiens ta position pendant 1,4 s.",
+        2,
+      );
+    }
     return;
   }
   if (
@@ -1635,10 +2176,82 @@ function updateObjectiveFlow(
   }
 }
 
+function updateAimState(state: GameState, input: InputHub): void {
+  const player = state.player;
+  player.aiming = isHeld(input, "aim");
+  const origin = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height * 0.38,
+  };
+  const targets = [
+    ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
+    ...(state.boss.active && state.boss.alive ? [state.boss] : []),
+  ];
+  const nearest = targets
+    .map((enemy) => ({
+      enemy,
+      range: distance(origin, {
+        x: enemy.x + enemy.width / 2,
+        y: enemy.y + enemy.height / 2,
+      }),
+    }))
+    .filter((entry) => entry.range <= 920)
+    .sort((a, b) => a.range - b.range)[0]?.enemy;
+
+  if (player.aiming && input.pointerScreen) {
+    player.aimPoint.x = clamp(
+      input.pointerScreen.x + state.cameraX,
+      0,
+      WORLD_WIDTH,
+    );
+    player.aimPoint.y = clamp(input.pointerScreen.y, 18, VIEW_HEIGHT - 18);
+  } else if (nearest) {
+    player.aimPoint.x = nearest.x + nearest.width / 2;
+    player.aimPoint.y = nearest.y + nearest.height * 0.42;
+  } else {
+    player.aimPoint.x = origin.x + player.facing * 780;
+    player.aimPoint.y = origin.y;
+  }
+
+  const dx = player.aimPoint.x - origin.x;
+  const dy = player.aimPoint.y - origin.y;
+  if (player.aiming && Math.abs(dx) > 18) {
+    player.facing = dx >= 0 ? 1 : -1;
+  }
+  player.aimAngle = Math.atan2(dy, dx);
+}
+
+function updateHunterRig(player: PlayerState, delta: number, extracting: boolean): void {
+  const gauntletTarget = extracting ? 1 : 0;
+  const bladesTarget = extracting || player.attackFlash > 0 ? 1 : 0;
+  player.gauntletOpen +=
+    (gauntletTarget - player.gauntletOpen) * Math.min(1, delta * 11);
+  player.bladeExtension +=
+    (bladesTarget - player.bladeExtension) * Math.min(1, delta * 18);
+
+  const localSpeed = player.velocityX * player.facing;
+  const jumpForce = clamp(player.velocityY / 1_300, -0.42, 0.42);
+  for (let index = 0; index < player.dreadAngles.length; index += 1) {
+    const weight = 0.7 + index * 0.13;
+    const target =
+      clamp(-localSpeed / 860, -0.42, 0.42) * weight +
+      jumpForce * (0.45 + index * 0.1) +
+      Math.sin(index * 1.7 + player.x * 0.008) * 0.025;
+    const velocity =
+      (player.dreadVelocities[index] ?? 0) +
+      (target - (player.dreadAngles[index] ?? 0)) * (19 - index * 1.2) * delta;
+    player.dreadVelocities[index] = velocity * Math.exp(-7.2 * delta);
+    player.dreadAngles[index] =
+      (player.dreadAngles[index] ?? 0) +
+      player.dreadVelocities[index] * delta;
+  }
+}
+
 function updatePlayer(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  appearance: HunterAppearance,
   difficulty: DifficultyId,
   input: InputHub,
   delta: number,
@@ -1648,20 +2261,105 @@ function updatePlayer(
   const armor = ARMOR_BY_ID[loadout.armorId];
   const moveAxis =
     (isHeld(input, "right") ? 1 : 0) - (isHeld(input, "left") ? 1 : 0);
-  const targetVelocity = moveAxis * 300 * armor.moveSpeedMultiplier;
+  const climbAxis =
+    (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
+  updateAimState(state, input);
+
+  if (consume(input, "mask")) {
+    if (!appearance.biomaskId) {
+      announce(state, "Aucun biomask dans cette apparence.", 1.8);
+    } else {
+      player.maskOn = !player.maskOn;
+      announce(
+        state,
+        player.maskOn ? "Biomask verrouillé." : "Biomask retiré.",
+        1.4,
+      );
+    }
+  }
+
+  if (state.trophyExtracting) {
+    const interrupted =
+      moveAxis !== 0 ||
+      climbAxis !== 0 ||
+      input.pressed.has("jump") ||
+      input.pressed.has("melee") ||
+      input.pressed.has("weapon");
+    if (interrupted) {
+      state.trophyExtracting = false;
+      state.trophyExtraction = 0;
+      announce(state, "Extraction interrompue : la dépouille est conservée.", 2);
+    } else {
+      state.trophyExtraction = clamp(
+        state.trophyExtraction + delta / 1.4,
+        0,
+        1,
+      );
+      player.velocityX *= Math.pow(0.0001, delta);
+      player.cloaked = false;
+      if (state.trophyExtraction >= 1) {
+        finishTrophyExtraction(state, mission);
+      }
+    }
+  }
+
+  const targetVelocity =
+    (state.trophyExtracting ? 0 : moveAxis) *
+    300 *
+    armor.moveSpeedMultiplier;
   player.velocityX +=
     (targetVelocity - player.velocityX) * Math.min(1, delta * 13);
-  if (moveAxis !== 0) player.facing = moveAxis > 0 ? 1 : -1;
+  if (moveAxis !== 0 && !player.aiming) player.facing = moveAxis > 0 ? 1 : -1;
   if (Math.abs(moveAxis) < 0.1) {
     player.velocityX *= Math.pow(0.0008, delta);
   }
 
-  if (consume(input, "jump") && player.grounded) {
+  const playerCenter = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height / 2,
+  };
+  const currentClimbZone =
+    mission.biome === "jungle"
+      ? JUNGLE_CLIMB_ZONES.find(
+          (zone) =>
+            zone.id === player.climbZoneId ||
+            (playerCenter.x >= zone.x - 24 &&
+              playerCenter.x <= zone.x + zone.width + 24 &&
+              playerCenter.y >= zone.y - 28 &&
+              playerCenter.y <= zone.y + zone.height + 28),
+        )
+      : undefined;
+  if (
+    !state.trophyExtracting &&
+    climbAxis !== 0 &&
+    currentClimbZone &&
+    Math.abs(moveAxis) < 0.5
+  ) {
+    player.climbing = true;
+    player.climbZoneId = currentClimbZone.id;
+    player.grounded = false;
+  }
+  if (player.climbing && (mission.biome !== "jungle" || Math.abs(moveAxis) > 0.5)) {
+    player.climbing = false;
+    player.climbZoneId = null;
+  }
+
+  const jumpPressed = consume(input, "jump");
+  if (jumpPressed && player.climbing) {
+    player.climbing = false;
+    player.climbZoneId = null;
+    player.velocityY = -560;
+    player.velocityX = player.facing * 270;
+  } else if (jumpPressed && player.grounded && !state.trophyExtracting) {
     player.velocityY = -720;
     player.grounded = false;
   }
-  if (consume(input, "melee")) playerMelee(state, mission, loadout);
-  if (consume(input, "weapon")) playerWeapon(state, mission, loadout);
+  if (consume(input, "melee") && !state.trophyExtracting) {
+    playerMelee(state, mission, loadout);
+  }
+  if (consume(input, "weapon") && !state.trophyExtracting) {
+    playerWeapon(state, mission, loadout);
+  }
   if (consume(input, "scan")) playerScan(state, mission);
   if (consume(input, "heal")) playerHeal(state);
   if (consume(input, "cloak")) {
@@ -1680,14 +2378,31 @@ function updatePlayer(
   }
 
   player.previousY = player.y;
-  player.velocityY += GRAVITY * delta;
-  player.x += player.velocityX * delta;
-  player.y += player.velocityY * delta;
-  player.grounded = false;
+  if (player.climbing && currentClimbZone) {
+    const climbCenterX =
+      currentClimbZone.x + currentClimbZone.width / 2 - player.width / 2;
+    player.x +=
+      (climbCenterX - player.x) *
+      Math.min(1, delta * (currentClimbZone.kind === "vine" ? 6 : 9));
+    player.velocityX *= Math.pow(0.001, delta);
+    player.velocityY +=
+      (climbAxis * 235 - player.velocityY) * Math.min(1, delta * 14);
+    player.y = clamp(
+      player.y + player.velocityY * delta,
+      currentClimbZone.y - player.height * 0.38,
+      currentClimbZone.y + currentClimbZone.height - player.height * 0.58,
+    );
+    player.grounded = false;
+  } else {
+    player.velocityY += GRAVITY * delta;
+    player.x += player.velocityX * delta;
+    player.y += player.velocityY * delta;
+    player.grounded = false;
+  }
 
   const previousBottom = player.previousY + player.height;
   const currentBottom = player.y + player.height;
-  if (player.velocityY >= 0) {
+  if (!player.climbing && player.velocityY >= 0) {
     for (const platform of PLATFORMS) {
       if (
         previousBottom <= platform.y + 7 &&
@@ -1711,6 +2426,7 @@ function updatePlayer(
   let maximumX = WORLD_WIDTH - player.width;
   if (!state.boss.active && state.phase !== "extraction") maximumX = 3_950;
   player.x = clamp(player.x, 0, maximumX);
+  updateHunterRig(player, delta, state.trophyExtracting);
 
   player.invulnerability = Math.max(0, player.invulnerability - delta);
   player.meleeCooldown = Math.max(0, player.meleeCooldown - delta);
@@ -1763,6 +2479,7 @@ function fireHostileProjectile(
     color,
     life: 2.2,
     source,
+    weaponId: null,
   });
 }
 
@@ -1896,7 +2613,7 @@ function updateBoss(
             hurtPlayer(state, damage, mission);
             player.cloaked = false;
           }
-          state.screenShake = 14;
+          if (state.screenShakeEnabled) state.screenShake = 14;
         } else if (attack.behavior === "burst") {
           for (let burst = 0; burst < 3; burst += 1) {
             fireHostileProjectile(
@@ -1991,6 +2708,15 @@ function updateProjectiles(
           height: projectile.radius * 2,
         };
         if (overlaps(hitBox, enemy)) {
+          if (projectile.weaponId === "plasma-caster" && !enemy.boss) {
+            addHonor(
+              state,
+              "plasma-restraint",
+              "Plasmacaster employé contre une proie ordinaire",
+              -10,
+              "violation",
+            );
+          }
           damageEnemy(state, mission, enemy, projectile.damage, "weapon");
           consumed = true;
           break;
@@ -2011,6 +2737,24 @@ function updateProjectiles(
   state.projectiles = next;
 }
 
+function updateGoreParticles(state: GameState, delta: number): void {
+  const next: GoreParticle[] = [];
+  for (const particle of state.goreParticles) {
+    particle.life -= delta;
+    if (particle.life <= 0) continue;
+    particle.velocityY += 720 * delta;
+    particle.x += particle.velocityX * delta;
+    particle.y += particle.velocityY * delta;
+    if (particle.y >= FLOOR_Y - particle.radius) {
+      particle.y = FLOOR_Y - particle.radius;
+      particle.velocityY *= -0.18;
+      particle.velocityX *= 0.72;
+    }
+    next.push(particle);
+  }
+  state.goreParticles = next;
+}
+
 function pollGamepad(input: InputHub): void {
   if (typeof navigator === "undefined" || !navigator.getGamepads) return;
   const gamepad = navigator.getGamepads()[0];
@@ -2024,8 +2768,17 @@ function pollGamepad(input: InputHub): void {
     gamepad.axes[0] < -0.25 || Boolean(gamepad.buttons[14]?.pressed);
   const right =
     gamepad.axes[0] > 0.25 || Boolean(gamepad.buttons[15]?.pressed);
+  const up =
+    gamepad.axes[1] < -0.3 || Boolean(gamepad.buttons[12]?.pressed);
+  const down =
+    gamepad.axes[1] > 0.3 || Boolean(gamepad.buttons[13]?.pressed);
   if (left) input.gamepadHeld.add("left");
   if (right) input.gamepadHeld.add("right");
+  if (up) input.gamepadHeld.add("up");
+  if (down) input.gamepadHeld.add("down");
+  if ((gamepad.buttons[6]?.value ?? 0) > 0.25) {
+    input.gamepadHeld.add("aim");
+  }
 
   const actionButtons: ReadonlyArray<readonly [number, Action]> = [
     [0, "jump"],
@@ -2050,6 +2803,7 @@ function stepGame(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  appearance: HunterAppearance,
   difficulty: DifficultyId,
   input: InputHub,
   delta: number,
@@ -2073,6 +2827,7 @@ function stepGame(
     state,
     mission,
     loadout,
+    appearance,
     difficulty,
     input,
     delta,
@@ -2083,6 +2838,7 @@ function stepGame(
   }
   updateBoss(state, mission, difficulty, delta);
   updateProjectiles(state, mission, delta);
+  updateGoreParticles(state, delta);
   updateObjectiveFlow(state, mission, difficulty);
 
   const desiredCamera = clamp(
@@ -2102,6 +2858,9 @@ export default function HuntCanvas({
   mission,
   loadout,
   difficulty,
+  appearance,
+  reducedGore,
+  screenShake,
   onFinish,
   onAbort,
 }: HuntCanvasProps) {
@@ -2117,6 +2876,7 @@ export default function HuntCanvas({
     gamepadHeld: new Set(),
     pressed: new Set(),
     previousGamepadButtons: [],
+    pointerScreen: null,
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
@@ -2141,10 +2901,36 @@ export default function HuntCanvas({
     let accumulator = 0;
     let lastUiPush = 0;
     let deviceScale = clamp(window.devicePixelRatio || 1, 1, 2);
-    let game = makeGameState(mission, loadout, difficulty);
+    let game = makeGameState(
+      mission,
+      loadout,
+      difficulty,
+      appearance,
+      reducedGore,
+      screenShake,
+    );
     const assets: AssetBank = {
       background: null,
-      hunter: null,
+      farLake: null,
+      hunterBody: null,
+      hunterDreads: null,
+      hunterMask: null,
+      hunterArmor: null,
+      plasmaCaster: null,
+      gauntletClosed: null,
+      gauntletOpen: null,
+      wristbladesRetracted: null,
+      wristbladesExtended: null,
+      trophy: null,
+      treeTrunk: null,
+      vineLadder: null,
+      platformRoot: null,
+      platformStone: null,
+      platformCrown: null,
+      platformExpedition: null,
+      foregroundFerns: null,
+      foregroundVines: null,
+      foregroundReeds: null,
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -2155,6 +2941,7 @@ export default function HuntCanvas({
     input.gamepadHeld.clear();
     input.pressed.clear();
     input.previousGamepadButtons = [];
+    input.pointerScreen = null;
     setAssetsReady(false);
     setUi(snapshot(game, mission));
 
@@ -2169,26 +2956,66 @@ export default function HuntCanvas({
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
 
-    Promise.all([
-      loadImage(backgroundPath(mission)),
-      loadImage("/game/sprites/hunter.webp"),
-      loadImage("/game/sprites/mercenary.webp"),
-      loadImage("/game/sprites/cryostalker.webp"),
-      loadImage("/game/sprites/bad-blood.webp"),
-    ]).then(
-      ([background, hunter, mercenary, cryostalker, badBlood]) => {
-        if (!alive) return;
-        assets.background = background;
-        assets.hunter = hunter;
-        assets.mercenary = mercenary;
-        assets.cryostalker = cryostalker;
-        assets.badBlood = badBlood;
-        setAssetsReady(true);
-      },
-    );
+    const assetPaths: Record<keyof AssetBank, string> = {
+      background: backgroundPath(mission),
+      farLake: "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      hunterBody: "/game/assets/v2/actors/yautja/hunter/body/base.webp",
+      hunterDreads: `/game/assets/v2/actors/yautja/hunter/dreads/${appearance.dreadStyleId}.webp`,
+      hunterMask: `/game/assets/v2/actors/yautja/hunter/masks/${appearance.biomaskId ?? "hunter"}.webp`,
+      hunterArmor: `/game/assets/v2/actors/yautja/hunter/armor/${loadout.armorId}.webp`,
+      plasmaCaster:
+        "/game/assets/v2/actors/yautja/hunter/equipment/plasma-caster.webp",
+      gauntletClosed:
+        "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-closed.webp",
+      gauntletOpen:
+        "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-open.webp",
+      wristbladesRetracted:
+        "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-retracted.webp",
+      wristbladesExtended:
+        "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-extended.webp",
+      trophy:
+        "/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp",
+      treeTrunk:
+        "/game/assets/v2/environments/jungle/climbables/tree-trunk.webp",
+      vineLadder:
+        "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+      platformRoot:
+        "/game/assets/v2/environments/jungle/platforms/root-branch.webp",
+      platformStone:
+        "/game/assets/v2/environments/jungle/platforms/stone-slab.webp",
+      platformCrown:
+        "/game/assets/v2/environments/jungle/platforms/tree-crown.webp",
+      platformExpedition:
+        "/game/assets/v2/environments/jungle/platforms/expedition-platform.webp",
+      foregroundFerns:
+        "/game/assets/v2/environments/jungle/foreground/ferns.webp",
+      foregroundVines:
+        "/game/assets/v2/environments/jungle/foreground/hanging-vines.webp",
+      foregroundReeds:
+        "/game/assets/v2/environments/jungle/foreground/lake-reeds.webp",
+      mercenary: "/game/sprites/mercenary.webp",
+      cryostalker: "/game/sprites/cryostalker.webp",
+      badBlood: "/game/sprites/bad-blood.webp",
+    };
+    Promise.all(
+      (Object.entries(assetPaths) as Array<[keyof AssetBank, string]>).map(
+        async ([key, path]) => [key, await loadImage(path)] as const,
+      ),
+    ).then((loadedAssets) => {
+      if (!alive) return;
+      for (const [key, image] of loadedAssets) assets[key] = image;
+      setAssetsReady(true);
+    });
 
     const restart = () => {
-      game = makeGameState(mission, loadout, difficulty);
+      game = makeGameState(
+        mission,
+        loadout,
+        difficulty,
+        appearance,
+        reducedGore,
+        screenShake,
+      );
       lastTime = performance.now();
       accumulator = 0;
       input.pressed.clear();
@@ -2214,7 +3041,13 @@ export default function HuntCanvas({
       const action = KEY_ACTIONS[event.code];
       if (!action) return;
       event.preventDefault();
-      if (action === "left" || action === "right") {
+      if (
+        action === "left" ||
+        action === "right" ||
+        action === "up" ||
+        action === "down" ||
+        action === "aim"
+      ) {
         input.keyboardHeld.add(action);
       } else if (!event.repeat) {
         input.pressed.add(action);
@@ -2222,13 +3055,20 @@ export default function HuntCanvas({
     };
     const onKeyUp = (event: KeyboardEvent) => {
       const action = KEY_ACTIONS[event.code];
-      if (action === "left" || action === "right") {
+      if (
+        action === "left" ||
+        action === "right" ||
+        action === "up" ||
+        action === "down" ||
+        action === "aim"
+      ) {
         input.keyboardHeld.delete(action);
       }
     };
     const onBlur = () => {
       input.keyboardHeld.clear();
       input.gamepadHeld.clear();
+      input.touchHeld.clear();
       if (
         game.phase !== "dead" &&
         game.phase !== "finished" &&
@@ -2257,6 +3097,7 @@ export default function HuntCanvas({
           game,
           mission,
           loadout,
+          appearance,
           difficulty,
           input,
           fixedStep,
@@ -2264,7 +3105,15 @@ export default function HuntCanvas({
         );
         accumulator -= fixedStep;
       }
-      renderGame(context, game, mission, assets, deviceScale);
+      renderGame(
+        context,
+        game,
+        mission,
+        loadout,
+        appearance,
+        assets,
+        deviceScale,
+      );
       if (time - lastUiPush >= 100) {
         lastUiPush = time;
         setUi(snapshot(game, mission));
@@ -2286,23 +3135,24 @@ export default function HuntCanvas({
       input.gamepadHeld.clear();
       input.pressed.clear();
       input.previousGamepadButtons = [];
+      input.pointerScreen = null;
       restartRef.current = () => undefined;
       togglePauseRef.current = () => undefined;
       reportFailureRef.current = () => undefined;
     };
-  }, [difficulty, loadout, mission]);
+  }, [appearance, difficulty, loadout, mission, reducedGore, screenShake]);
 
   const pressAction = useCallback((action: Action) => {
     inputRef.current.pressed.add(action);
   }, []);
 
-  const setTouchHeld = useCallback((action: "left" | "right", held: boolean) => {
+  const setTouchHeld = useCallback((action: Action, held: boolean) => {
     if (held) inputRef.current.touchHeld.add(action);
     else inputRef.current.touchHeld.delete(action);
   }, []);
 
   const makeHoldHandlers = useCallback(
-    (action: "left" | "right") => ({
+    (action: Action) => ({
       onPointerDown: (event: ReactPointerEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.currentTarget.setPointerCapture(event.pointerId);
@@ -2318,11 +3168,26 @@ export default function HuntCanvas({
     [setTouchHeld],
   );
 
-  const weapon =
-    WEAPON_BY_ID[
-      loadout.weaponIds.find((weaponId) => weaponId !== "wristblades") ??
-        loadout.weaponIds[0]
-    ];
+  const updatePointerScreen = useCallback(
+    (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      const rect = event.currentTarget.getBoundingClientRect();
+      inputRef.current.pointerScreen = {
+        x: clamp(
+          ((event.clientX - rect.left) / Math.max(1, rect.width)) * VIEW_WIDTH,
+          0,
+          VIEW_WIDTH,
+        ),
+        y: clamp(
+          ((event.clientY - rect.top) / Math.max(1, rect.height)) * VIEW_HEIGHT,
+          0,
+          VIEW_HEIGHT,
+        ),
+      };
+    },
+    [],
+  );
+
+  const weapon = equippedWeapon(loadout);
   const phaseLabel =
     ui.phase === "tracking"
       ? "TRAQUE"
@@ -2398,6 +3263,12 @@ export default function HuntCanvas({
           <span>Honneur {ui.honor >= 0 ? "+" : ""}{ui.honor}</span>
           <span>Éliminations {ui.kills}</span>
           <span>Scans {ui.scans}</span>
+          <span>
+            Masque{" "}
+            {!appearance.biomaskId ? "AUCUN" : ui.maskOn ? "ACTIF" : "RETIRÉ"}
+          </span>
+          <span>{ui.aiming ? "VISÉE CADRÉE" : "VISÉE LIBRE"}</span>
+          <span>{ui.climbing ? "GRIMPE" : "AU SOL"}</span>
           <span>{formatTime(ui.elapsed)}</span>
         </div>
       </div>
@@ -2425,15 +3296,32 @@ export default function HuntCanvas({
           role="img"
           aria-label={`Vue latérale de la chasse sur ${mission.planetName}. ${ui.objective}`}
           tabIndex={0}
+          onPointerMove={updatePointerScreen}
           onPointerDown={(event) => {
             event.currentTarget.focus();
+            updatePointerScreen(event);
             if (event.button === 0) pressAction("melee");
+            if (event.button === 2) {
+              event.preventDefault();
+              event.currentTarget.setPointerCapture(event.pointerId);
+              setTouchHeld("aim", true);
+            }
+          }}
+          onPointerUp={(event) => {
+            updatePointerScreen(event);
+            if (event.button === 2) setTouchHeld("aim", false);
+          }}
+          onPointerCancel={() => setTouchHeld("aim", false)}
+          onLostPointerCapture={() => setTouchHeld("aim", false)}
+          onAuxClick={(event) => {
+            if (event.button === 2) event.preventDefault();
           }}
           onContextMenu={(event) => event.preventDefault()}
           style={styles.canvas}
         >
           Jeu de chasse en vue latérale. Utilise A et D pour te déplacer,
-          Espace pour sauter, J pour attaquer et V pour scanner.
+          Espace pour sauter, J pour attaquer, Maj ou clic droit pour viser et
+          V pour scanner.
         </canvas>
 
         {!assetsReady ? (
@@ -2450,7 +3338,9 @@ export default function HuntCanvas({
 
         {ui.trophySeconds !== null ? (
           <div style={styles.trophyTimer} aria-live="polite">
-            FENÊTRE DE TROPHÉE · {Math.ceil(ui.trophySeconds)} s
+            {ui.trophyExtraction > 0
+              ? `EXTRACTION DU TROPHÉE · ${Math.round(ui.trophyExtraction * 100)} %`
+              : `FENÊTRE DE TROPHÉE · ${Math.ceil(ui.trophySeconds)} s`}
           </div>
         ) : null}
 
@@ -2537,14 +3427,11 @@ export default function HuntCanvas({
           </button>
           <button
             type="button"
-            onPointerDown={(event) => {
-              event.preventDefault();
-              pressAction("jump");
-            }}
+            {...makeHoldHandlers("up")}
             style={styles.controlButton}
-            aria-label="Sauter"
+            aria-label="Grimper"
           >
-            ↑
+            ⇧
           </button>
           <button
             type="button"
@@ -2554,11 +3441,49 @@ export default function HuntCanvas({
           >
             ▶
           </button>
+          <button
+            type="button"
+            {...makeHoldHandlers("down")}
+            style={styles.controlButton}
+            aria-label="Descendre d’un arbre ou d’une liane"
+          >
+            ⇩
+          </button>
+          <button
+            type="button"
+            onPointerDown={(event) => {
+              event.preventDefault();
+              pressAction("jump");
+            }}
+            style={styles.controlButton}
+            aria-label="Sauter"
+          >
+            ⤒
+          </button>
         </div>
 
         <div style={styles.actionControls} aria-label="Actions tactiles">
           <ActionButton label="Lames" shortcut="J" onPress={() => pressAction("melee")} />
           <ActionButton label={weapon.shortName} shortcut="K" onPress={() => pressAction("weapon")} />
+          <button
+            type="button"
+            {...makeHoldHandlers("aim")}
+            style={{
+              ...styles.actionButton,
+              ...(ui.aiming ? styles.actionButtonActive : null),
+            }}
+            aria-pressed={ui.aiming}
+            aria-label="Maintenir la visée cadrée"
+          >
+            <span>Viser</span>
+            <kbd style={styles.kbd}>MAJ/LT</kbd>
+          </button>
+          <ActionButton
+            label={ui.maskOn ? "Retirer masque" : "Mettre masque"}
+            shortcut="M"
+            active={ui.maskOn}
+            onPress={() => pressAction("mask")}
+          />
           <ActionButton label="Scan" shortcut="V" onPress={() => pressAction("scan")} />
           <ActionButton
             label={ui.cloaked ? "Visible" : "Camouflage"}
@@ -2573,9 +3498,12 @@ export default function HuntCanvas({
 
       <footer style={styles.help}>
         <span>A/D ou flèches · déplacement</span>
+        <span>W/S ou ↑/↓ · grimpe</span>
         <span>Espace · saut</span>
         <span>J/clic · lames</span>
-        <span>K · {weapon.name}</span>
+        <span>Maj/clic droit/LT · viser</span>
+        <span>K/RT · {weapon.name}</span>
+        <span>M · biomask</span>
         <span>V · scan</span>
         <span>C · camouflage</span>
         <span>H · soin ({ui.medicomps})</span>

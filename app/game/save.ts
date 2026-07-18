@@ -12,6 +12,7 @@ import type {
   CodexEntryId,
   DifficultyId,
   GearId,
+  HunterAppearance,
   Loadout,
   MissionId,
   MissionProgress,
@@ -19,6 +20,9 @@ import type {
   MissionResult,
   RankId,
   SaveGame,
+  TrophyClaim,
+  TrophyCondition,
+  TrophyPartId,
   TrophyQuality,
   TrophyRecord,
   UpgradeLevel,
@@ -29,7 +33,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 2;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 
 export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
@@ -45,11 +49,33 @@ const DEFAULT_LOADOUT: Loadout = {
   gearIds: ["motion-sensor", "audio-decoy"],
 };
 
+export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
+  skinId: "ochre-mottle",
+  biomaskId: "jungle",
+  dreadStyleId: "classic",
+  dreadTintId: "obsidian",
+  armorTintId: "gunmetal",
+  trophyAdornmentId: "none",
+};
+
 const WEAPON_IDS = WEAPONS.map((weapon) => weapon.id);
 const GEAR_IDS = GEAR.map((gear) => gear.id);
 const ARMOR_IDS = ARMORS.map((armor) => armor.id);
 const DIFFICULTY_IDS = DIFFICULTIES.map((difficulty) => difficulty.id);
 const MISSION_IDS = MISSIONS.map((mission) => mission.id);
+const HUNTER_SKIN_IDS = [
+  "ochre-mottle",
+  "ashen-mottle",
+  "dark-mottle",
+] as const;
+const BIOMASK_IDS = ["jungle", "scarred", "elder"] as const;
+const DREAD_STYLE_IDS = ["classic", "braided", "elder"] as const;
+const DREAD_TINT_IDS = ["obsidian", "umber", "ashen"] as const;
+const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian"] as const;
+const TROPHY_ADORNMENT_IDS = ["none", "skull-spine"] as const;
+const TROPHY_PART_IDS = ["skull", "skull-and-spine", "mask"] as const;
+const TROPHY_CONDITIONS = ["damaged", "intact", "pristine"] as const;
+const MAX_TROPHY_RECORDS = 200;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
   worthy: 1,
@@ -140,6 +166,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       weaponIds: [...DEFAULT_LOADOUT.weaponIds],
       gearIds: [...DEFAULT_LOADOUT.gearIds],
     },
+    appearance: { ...DEFAULT_HUNTER_APPEARANCE },
     missionProgress: {
       "jungle-vey": emptyMissionProgress("available"),
       "ice-cryostalker": emptyMissionProgress("locked"),
@@ -214,6 +241,14 @@ function stringValue(value: unknown, fallback: string): string {
   return typeof value === "string" && value.length > 0 ? value : fallback;
 }
 
+function identifierValue(value: unknown, fallback: string): string {
+  if (typeof value !== "string") {
+    return fallback;
+  }
+  const trimmed = value.trim();
+  return (trimmed.length > 0 ? trimmed : fallback).slice(0, 128);
+}
+
 function booleanValue(value: unknown, fallback: boolean): boolean {
   return typeof value === "boolean" ? value : fallback;
 }
@@ -258,6 +293,13 @@ const SAVE_MIGRATIONS: Readonly<
   Record<number, (input: UnknownRecord) => UnknownRecord>
 > = {
   0: (input) => ({ ...input, version: 1 }),
+  1: (input) => ({
+    ...input,
+    version: 2,
+    appearance: isRecord(input.appearance)
+      ? input.appearance
+      : { ...DEFAULT_HUNTER_APPEARANCE },
+  }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -305,6 +347,39 @@ function normalizeUpgradeRecord<T extends string>(
       level === 1 || level === 2 ? level : level === 0 ? 0 : fallback[id];
   }
   return normalized;
+}
+
+function normalizeAppearance(source: unknown): HunterAppearance {
+  if (!isRecord(source)) {
+    return { ...DEFAULT_HUNTER_APPEARANCE };
+  }
+
+  return {
+    skinId: isOneOf(source.skinId, HUNTER_SKIN_IDS)
+      ? source.skinId
+      : DEFAULT_HUNTER_APPEARANCE.skinId,
+    biomaskId:
+      source.biomaskId === null
+        ? null
+        : isOneOf(source.biomaskId, BIOMASK_IDS)
+          ? source.biomaskId
+          : DEFAULT_HUNTER_APPEARANCE.biomaskId,
+    dreadStyleId: isOneOf(source.dreadStyleId, DREAD_STYLE_IDS)
+      ? source.dreadStyleId
+      : DEFAULT_HUNTER_APPEARANCE.dreadStyleId,
+    dreadTintId: isOneOf(source.dreadTintId, DREAD_TINT_IDS)
+      ? source.dreadTintId
+      : DEFAULT_HUNTER_APPEARANCE.dreadTintId,
+    armorTintId: isOneOf(source.armorTintId, ARMOR_TINT_IDS)
+      ? source.armorTintId
+      : DEFAULT_HUNTER_APPEARANCE.armorTintId,
+    trophyAdornmentId: isOneOf(
+      source.trophyAdornmentId,
+      TROPHY_ADORNMENT_IDS,
+    )
+      ? source.trophyAdornmentId
+      : DEFAULT_HUNTER_APPEARANCE.trophyAdornmentId,
+  };
 }
 
 function normalizeMissionProgress(
@@ -388,12 +463,55 @@ function repairMissionOrder(
   return repaired;
 }
 
+function conditionForQuality(quality: TrophyQuality): TrophyCondition {
+  if (quality === "worthy") {
+    return "damaged";
+  }
+  if (quality === "blooded") {
+    return "intact";
+  }
+  return "pristine";
+}
+
+function qualityForCondition(condition: TrophyCondition): TrophyQuality {
+  if (condition === "damaged") {
+    return "worthy";
+  }
+  if (condition === "intact") {
+    return "blooded";
+  }
+  return "flawless";
+}
+
+function defaultTrophyPart(missionId: MissionId): TrophyPartId {
+  return MISSION_BY_ID[missionId].trophy.icon.includes("mask")
+    ? "mask"
+    : "skull";
+}
+
+function preferredTrophy(
+  current: TrophyRecord,
+  candidate: TrophyRecord,
+): TrophyRecord {
+  const currentQuality = TROPHY_QUALITY_ORDER[current.quality];
+  const candidateQuality = TROPHY_QUALITY_ORDER[candidate.quality];
+  if (candidateQuality !== currentQuality) {
+    return candidateQuality > currentQuality ? candidate : current;
+  }
+  if (candidate.score !== current.score) {
+    return candidate.score > current.score ? candidate : current;
+  }
+  return Date.parse(candidate.claimedAt) >= Date.parse(current.claimedAt)
+    ? candidate
+    : current;
+}
+
 function normalizeTrophies(source: unknown): TrophyRecord[] {
   if (!Array.isArray(source)) {
     return [];
   }
 
-  const bestByMission = new Map<MissionId, TrophyRecord>();
+  const bestById = new Map<string, TrophyRecord>();
   for (const value of source) {
     if (!isRecord(value)) {
       continue;
@@ -401,21 +519,46 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
 
     if (
       !isOneOf(value.missionId, MISSION_IDS) ||
-      !isOneOf(value.difficultyId, DIFFICULTY_IDS) ||
-      (value.quality !== "worthy" &&
-        value.quality !== "blooded" &&
-        value.quality !== "elite" &&
-        value.quality !== "flawless")
+      !isOneOf(value.difficultyId, DIFFICULTY_IDS)
     ) {
       continue;
     }
 
     const mission = MISSION_BY_ID[value.missionId];
+    const id = identifierValue(value.id, mission.trophy.id);
+    const storedQuality: TrophyQuality | null =
+      value.quality === "worthy" ||
+      value.quality === "blooded" ||
+      value.quality === "elite" ||
+      value.quality === "flawless"
+        ? value.quality
+        : null;
+    const condition = isOneOf(value.condition, TROPHY_CONDITIONS)
+      ? value.condition
+      : conditionForQuality(storedQuality ?? "worthy");
+    const quality = storedQuality ?? qualityForCondition(condition);
     const trophy: TrophyRecord = {
-      id: stringValue(value.id, mission.trophy.id),
+      id,
+      definitionId: identifierValue(
+        value.definitionId,
+        mission.trophy.id,
+      ),
+      targetName: stringValue(value.targetName, mission.targetName).slice(
+        0,
+        96,
+      ),
+      targetKind:
+        value.targetKind === "human" ||
+        value.targetKind === "beast" ||
+        value.targetKind === "yautja"
+          ? value.targetKind
+          : mission.targetKind,
+      partId: isOneOf(value.partId, TROPHY_PART_IDS)
+        ? value.partId
+        : defaultTrophyPart(value.missionId),
+      condition,
       missionId: value.missionId,
-      targetName: stringValue(value.targetName, mission.targetName),
-      quality: value.quality,
+      quality,
       difficultyId: value.difficultyId,
       score: boundedNumber(value.score, 0, 0, 100),
       claimedAt: validIsoDate(
@@ -423,23 +566,19 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
         new Date(0).toISOString(),
       ),
     };
-    const existing = bestByMission.get(trophy.missionId);
-    const isBetter =
-      !existing ||
-      TROPHY_QUALITY_ORDER[trophy.quality] >
-        TROPHY_QUALITY_ORDER[existing.quality] ||
-      (trophy.quality === existing.quality &&
-        trophy.score > existing.score);
-
-    if (isBetter) {
-      bestByMission.set(trophy.missionId, trophy);
-    }
+    const existing = bestById.get(id);
+    bestById.set(
+      id,
+      existing ? preferredTrophy(existing, trophy) : trophy,
+    );
   }
 
-  return MISSIONS.flatMap((mission) => {
-    const trophy = bestByMission.get(mission.id);
-    return trophy ? [trophy] : [];
-  });
+  return [...bestById.values()]
+    .sort(
+      (left, right) =>
+        Date.parse(left.claimedAt) - Date.parse(right.claimedAt),
+    )
+    .slice(-MAX_TROPHY_RECORDS);
 }
 
 function rankForHonor(honor: number): RankId {
@@ -676,6 +815,7 @@ export function normalizeSave(value: unknown): SaveGame {
       unlockedGearIds,
       unlockedArmorIds,
     ),
+    appearance: normalizeAppearance(source.appearance),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
     codex: { unlockedEntryIds, scanCounts },
@@ -828,48 +968,104 @@ function betterDifficulty(
   return current;
 }
 
+function normalizeTrophyClaims(
+  source: unknown,
+  missionId: MissionId,
+  fallbackQuality: TrophyQuality | null,
+): TrophyClaim[] {
+  if (!Array.isArray(source)) {
+    return [];
+  }
+
+  const mission = MISSION_BY_ID[missionId];
+  const claimsById = new Map<string, TrophyClaim>();
+  for (const value of source) {
+    if (!isRecord(value) || typeof value.id !== "string") {
+      continue;
+    }
+    const id = value.id.trim().slice(0, 128);
+    if (!id) {
+      continue;
+    }
+    const condition = isOneOf(value.condition, TROPHY_CONDITIONS)
+      ? value.condition
+      : conditionForQuality(fallbackQuality ?? "worthy");
+    const quality: TrophyQuality =
+      value.quality === "worthy" ||
+      value.quality === "blooded" ||
+      value.quality === "elite" ||
+      value.quality === "flawless"
+        ? value.quality
+        : fallbackQuality ?? qualityForCondition(condition);
+    claimsById.set(id, {
+      id,
+      definitionId: identifierValue(
+        value.definitionId,
+        mission.trophy.id,
+      ),
+      targetName: stringValue(value.targetName, mission.targetName).slice(
+        0,
+        96,
+      ),
+      targetKind:
+        value.targetKind === "human" ||
+        value.targetKind === "beast" ||
+        value.targetKind === "yautja"
+          ? value.targetKind
+          : mission.targetKind,
+      partId: isOneOf(value.partId, TROPHY_PART_IDS)
+        ? value.partId
+        : defaultTrophyPart(missionId),
+      condition,
+      quality,
+    });
+  }
+
+  return [...claimsById.values()].slice(-MAX_TROPHY_RECORDS);
+}
+
 function updatedTrophies(
   current: readonly TrophyRecord[],
   result: MissionResult,
 ): TrophyRecord[] {
-  if (!result.trophyQuality) {
-    return [...current];
-  }
-
   const mission = MISSION_BY_ID[result.missionId];
-  const trophy: TrophyRecord = {
-    id: mission.trophy.id,
-    missionId: mission.id,
-    targetName: mission.targetName,
-    quality: result.trophyQuality,
-    difficultyId: result.difficultyId,
-    score: clamp(Math.round(result.score), 0, 100),
-    claimedAt: validIsoDate(
-      result.completedAt,
-      new Date().toISOString(),
-    ),
-  };
-  const existing = current.find(
-    (entry) => entry.missionId === result.missionId,
+  const claims = normalizeTrophyClaims(
+    result.trophyClaims,
+    result.missionId,
+    result.trophyQuality,
   );
-  const isBetter =
-    !existing ||
-    TROPHY_QUALITY_ORDER[trophy.quality] >
-      TROPHY_QUALITY_ORDER[existing.quality] ||
-    (trophy.quality === existing.quality && trophy.score > existing.score);
 
-  if (!isBetter) {
+  // A v1 runtime supplies only trophyQuality. Keep that aggregate trophy under
+  // its historical stable id while v2 runtimes may submit many physical claims.
+  if (claims.length === 0 && result.trophyQuality) {
+    claims.push({
+      id: mission.trophy.id,
+      definitionId: mission.trophy.id,
+      targetName: mission.targetName,
+      targetKind: mission.targetKind,
+      partId: defaultTrophyPart(mission.id),
+      condition: conditionForQuality(result.trophyQuality),
+      quality: result.trophyQuality,
+    });
+  }
+  if (claims.length === 0) {
     return [...current];
   }
 
-  return [
-    ...current.filter((entry) => entry.missionId !== result.missionId),
-    trophy,
-  ].sort(
-    (left, right) =>
-      MISSION_BY_ID[left.missionId].order -
-      MISSION_BY_ID[right.missionId].order,
+  const claimedAt = validIsoDate(
+    result.completedAt,
+    new Date().toISOString(),
   );
+  const score = clamp(Math.round(result.score), 0, 100);
+  const additions: TrophyRecord[] = claims.map((claim) => ({
+    ...claim,
+    missionId: mission.id,
+    difficultyId: result.difficultyId,
+    score,
+    claimedAt,
+  }));
+
+  return normalizeTrophies([...current, ...additions]);
 }
 
 function unlockContent(
@@ -914,9 +1110,13 @@ function unlockContent(
  * Pure progression reducer. It does not touch localStorage; React can show the
  * debrief first, then explicitly pass the returned value to writeSave().
  */
+type MissionResultInput = Omit<MissionResult, "trophyClaims"> & {
+  trophyClaims?: TrophyClaim[];
+};
+
 export function applyMissionResult(
   currentSave: SaveGame,
-  rawResult: MissionResult,
+  rawResult: MissionResultInput,
 ): SaveGame {
   const save = normalizeSave(currentSave);
   const mission = MISSION_BY_ID[rawResult.missionId];
@@ -936,6 +1136,18 @@ export function applyMissionResult(
     validObjectiveIds,
     [],
   );
+  const trophyQuality: TrophyQuality | null =
+    rawResult.trophyQuality === "worthy" ||
+    rawResult.trophyQuality === "blooded" ||
+    rawResult.trophyQuality === "elite" ||
+    rawResult.trophyQuality === "flawless"
+      ? rawResult.trophyQuality
+      : null;
+  const trophyClaims = normalizeTrophyClaims(
+    rawResult.trophyClaims,
+    mission.id,
+    trophyQuality,
+  );
   const result: MissionResult = {
     ...rawResult,
     score,
@@ -943,6 +1155,8 @@ export function applyMissionResult(
     kills,
     scans,
     completedObjectiveIds,
+    trophyQuality,
+    trophyClaims,
     completedAt,
   };
 

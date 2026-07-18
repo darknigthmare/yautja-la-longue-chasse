@@ -55,6 +55,25 @@ export type MissionProgressStatus = "locked" | "available" | "completed";
 
 export type UpgradeLevel = 0 | 1 | 2;
 
+export type HunterSkinId =
+  | "ochre-mottle"
+  | "ashen-mottle"
+  | "dark-mottle";
+
+export type BiomaskId = "jungle" | "scarred" | "elder";
+
+export type DreadStyleId = "classic" | "braided" | "elder";
+
+export type DreadTintId = "obsidian" | "umber" | "ashen";
+
+export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
+
+export type TrophyAdornmentId = "none" | "skull-spine";
+
+export type TrophyPartId = "skull" | "skull-and-spine" | "mask";
+
+export type TrophyCondition = "damaged" | "intact" | "pristine";
+
 // ---------------------------------------------------------------------------
 // Player loadout and equipment definitions
 // ---------------------------------------------------------------------------
@@ -63,6 +82,15 @@ export interface Loadout {
   armorId: ArmorId;
   weaponIds: [WeaponId, WeaponId];
   gearIds: [GearId, GearId];
+}
+
+export interface HunterAppearance {
+  skinId: HunterSkinId;
+  biomaskId: BiomaskId | null;
+  dreadStyleId: DreadStyleId;
+  dreadTintId: DreadTintId;
+  armorTintId: ArmorTintId;
+  trophyAdornmentId: TrophyAdornmentId;
 }
 
 export interface ContentUnlock {
@@ -295,6 +323,18 @@ export interface HonorEvent {
   kind: "honorable-kill" | "scan" | "objective" | "violation" | "duel";
 }
 
+export interface TrophyClaim {
+  /** Unique physical-claim identifier supplied by the mission runtime. */
+  id: string;
+  /** Stable content definition used to select the trophy artwork/model. */
+  definitionId: string;
+  targetName: string;
+  targetKind: "human" | "beast" | "yautja";
+  partId: TrophyPartId;
+  condition: TrophyCondition;
+  quality: TrophyQuality;
+}
+
 export interface MissionResult {
   missionId: MissionId;
   difficultyId: DifficultyId;
@@ -303,7 +343,10 @@ export interface MissionResult {
   elapsedSeconds: number;
   completedObjectiveIds: string[];
   honorEvents: HonorEvent[];
+  /** Legacy aggregate quality remains authoritative for scoring. */
   trophyQuality: TrophyQuality | null;
+  /** Empty when no removable trophy part was claimed. */
+  trophyClaims: TrophyClaim[];
   kills: number;
   scans: number;
   secondWindUsed: boolean;
@@ -314,11 +357,8 @@ export interface MissionResult {
 // Versioned persistence model
 // ---------------------------------------------------------------------------
 
-export interface TrophyRecord {
-  id: string;
+export interface TrophyRecord extends TrophyClaim {
   missionId: MissionId;
-  targetName: string;
-  quality: TrophyQuality;
   difficultyId: DifficultyId;
   score: number;
   claimedAt: string;
@@ -385,6 +425,7 @@ export interface SaveGame {
   profile: PlayerProfile;
   inventory: PlayerInventory;
   loadout: Loadout;
+  appearance: HunterAppearance;
   missionProgress: Record<MissionId, MissionProgress>;
   trophies: TrophyRecord[];
   codex: CodexProgress;

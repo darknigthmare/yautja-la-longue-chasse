@@ -44,4 +44,17 @@ test("removes the disposable starter preview", async () => {
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
   await access(new URL("public/game/sprites/hunter.webp", templateRoot));
   await access(new URL("public/game/backgrounds/ship.webp", templateRoot));
+  await access(new URL("public/game/assets/v2/manifest.json", templateRoot));
+  await access(
+    new URL(
+      "public/game/assets/v2/actors/yautja/hunter/body/base.webp",
+      templateRoot,
+    ),
+  );
+  await access(
+    new URL(
+      "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      templateRoot,
+    ),
+  );
 });

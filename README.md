@@ -17,23 +17,31 @@ Ouvrir ensuite `http://localhost:3000/`.
 ## Commandes
 
 - `A/D` ou flèches : se déplacer
-- `Espace` : bondir
+- `Z/S`, flèches haut/bas : grimper aux arbres, lianes et plateformes
+- `Espace` : bondir / quitter une paroi
 - `J` / clic : lames de poignet
-- `K` : arme équipée
+- `Maj`, clic droit ou gâchette gauche : cadrer la visée plasma
+- `K` ou gâchette droite : tirer dans l’angle visé
+- `M` : porter ou retirer le biomask
 - `V` : scanner au biomask
 - `C` : camouflage
 - `H` : medicomp
-- `E` : trophée / extraction
+- maintenir `E` près d’une proie abattue : extraction physique du trophée
 - `Échap` : pause
 
 La manette et des commandes tactiles sont également prises en charge.
 
 ## Contenu
 
-- vaisseau-hub, carte galactique, armurerie, trophées et codex ;
+- vaisseau-hub, carte galactique, armurerie, quartier de personnalisation,
+  mur de trophées et codex ;
+- chasseur entièrement modulaire : peau, biomask amovible, dreadlocks souples,
+  canon plasma orientable, gantelet ouvrable, lames rétractables et parures ;
 - trois chasses scénarisées avec biomes, cibles et boss distincts ;
+- jungle lacustre multi-plan avec arbres, lianes et plateformes grimpables ;
 - cinq armes, quatre équipements, trois armures et quatre difficultés ;
-- système d’honneur, rangs, trophées, progression et sauvegarde locale ;
+- système d’honneur, rangs, prises multiples, progression et sauvegarde locale
+  versionnée ;
 - mode de rejeu avec meilleurs scores.
 
 Les personnages, proies, planètes et visuels sont des créations originales.
