@@ -6,6 +6,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HuntCanvas from "./HuntCanvas";
 import {
+  HUNTER_PRESET_BY_ID,
+  HUNTER_PRESETS,
+  appearanceForPreset,
+  type HunterLorePresetId,
+  type HunterMedia,
+} from "./hunterLore";
+import {
+  HUNTER_ASSET_ROOT_V3,
+  hunterBodyFullPath,
+} from "./hunterVisuals";
+import {
   ARMORS,
   CODEX_ENTRIES,
   DIFFICULTIES,
@@ -30,6 +41,8 @@ import type {
   GameSettings,
   GearId,
   HunterAppearance,
+  HunterArmorStyleId,
+  HunterBodyMorphId,
   HunterSkinId,
   MissionDefinition,
   MissionResult,
@@ -98,20 +111,74 @@ const MASK_OPTIONS: ReadonlyArray<{
   {
     id: "jungle",
     label: "Chasseur de jungle",
-    detail: "Profil angulaire de traque",
-    image: "/game/assets/v2/actors/yautja/hunter/masks/jungle.webp",
+    detail: "Jungle Hunter, 1987",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/jungle.webp`,
   },
   {
-    id: "scarred",
-    label: "Balafré",
-    detail: "Marque rouge d’un rite survécu",
-    image: "/game/assets/v2/actors/yautja/hunter/masks/scarred.webp",
+    id: "scar",
+    label: "Scar",
+    detail: "Young Blood, AVP",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/scar.webp`,
   },
   {
     id: "elder",
     label: "Ancien",
     detail: "Ornement de haut rang du clan",
-    image: "/game/assets/v2/actors/yautja/hunter/masks/elder.webp",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/elder.webp`,
+  },
+  {
+    id: "city",
+    label: "City Hunter",
+    detail: "Bronze urbain, 1990",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/city.webp`,
+  },
+  {
+    id: "celtic",
+    label: "Celtic",
+    detail: "Coque cérémonielle lourde",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/celtic.webp`,
+  },
+  {
+    id: "chopper",
+    label: "Chopper",
+    detail: "Profil Young Blood agressif",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/chopper.webp`,
+  },
+  {
+    id: "wolf",
+    label: "Wolf",
+    detail: "Masque de Cleaner endommagé",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/wolf.webp`,
+  },
+  {
+    id: "feral",
+    label: "Feral",
+    detail: "Crâne primitif de Prey",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/feral.webp`,
+  },
+  {
+    id: "berserker",
+    label: "Berserker",
+    detail: "Couronne sombre Super Predator",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/berserker.webp`,
+  },
+  {
+    id: "fugitive",
+    label: "Fugitive",
+    detail: "Segmentation tactique 2018",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/fugitive.webp`,
+  },
+  {
+    id: "dek",
+    label: "Dek",
+    detail: "Plaque minimale de Badlands",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/dek.webp`,
+  },
+  {
+    id: "enforcer",
+    label: "Enforcer",
+    detail: "Motif judiciaire des comics",
+    image: `${HUNTER_ASSET_ROOT_V3}/masks/enforcer.webp`,
   },
 ];
 
@@ -124,22 +191,142 @@ const DREAD_OPTIONS: ReadonlyArray<{
   {
     id: "classic",
     label: "Classiques",
-    detail: "Longues mèches libres",
-    image: "/game/assets/v2/actors/yautja/hunter/dreads/classic.webp",
+    detail: "Mèches libres",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/classic.webp`,
+  },
+  {
+    id: "ringed",
+    label: "Annelées",
+    detail: "Anneaux de métal réguliers",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/ringed.webp`,
   },
   {
     id: "braided",
     label: "Tressées",
-    detail: "Anneaux et maintien de combat",
-    image: "/game/assets/v2/actors/yautja/hunter/dreads/braided.webp",
+    detail: "Tresses de combat",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/braided.webp`,
+  },
+  {
+    id: "veteran",
+    label: "Vétéran",
+    detail: "Mèche épaisse et bagues usées",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/veteran.webp`,
   },
   {
     id: "elder",
     label: "Ancien",
-    detail: "Masse lourde et cérémonielle",
-    image: "/game/assets/v2/actors/yautja/hunter/dreads/elder.webp",
+    detail: "Longue mèche cendrée",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/elder.webp`,
+  },
+  {
+    id: "temple",
+    label: "Tempe",
+    detail: "Mèche courte articulée",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/temple.webp`,
+  },
+  {
+    id: "feral",
+    label: "Primitive",
+    detail: "Liens de peau brute",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/feral.webp`,
+  },
+  {
+    id: "huntress",
+    label: "Cérémonielle",
+    detail: "Tresse à bandes rouges",
+    image: `${HUNTER_ASSET_ROOT_V3}/dreads/huntress.webp`,
   },
 ];
+
+const BODY_OPTIONS: ReadonlyArray<{
+  id: HunterBodyMorphId;
+  label: string;
+  detail: string;
+  image: string;
+}> = [
+  {
+    id: "classic",
+    label: "Classique",
+    detail: "Athlétique, films 1987–2018",
+    image: hunterBodyFullPath("classic"),
+  },
+  {
+    id: "elder",
+    label: "Elder",
+    detail: "Large, âgé et cicatrisé",
+    image: hunterBodyFullPath("elder"),
+  },
+  {
+    id: "super",
+    label: "Super",
+    detail: "Masse Berserker et cyborg",
+    image: hunterBodyFullPath("super"),
+  },
+  {
+    id: "feral",
+    label: "Feral",
+    detail: "Longiligne et primitif",
+    image: hunterBodyFullPath("feral"),
+  },
+  {
+    id: "huntress",
+    label: "Huntress",
+    detail: "Morphologie étendue licenciée",
+    image: hunterBodyFullPath("huntress"),
+  },
+  {
+    id: "young",
+    label: "Young Blood",
+    detail: "Jeune chasseur plus petit",
+    image: hunterBodyFullPath("young"),
+  },
+];
+
+const ARMOR_STYLE_OPTIONS: ReadonlyArray<{
+  id: HunterArmorStyleId;
+  label: string;
+  detail: string;
+  image: string;
+}> = [
+  {
+    id: "classic",
+    label: "Jungle",
+    detail: "Harnais bronze épars",
+    image: `${HUNTER_ASSET_ROOT_V3}/armor/chest-classic.webp`,
+  },
+  {
+    id: "city",
+    label: "City",
+    detail: "Cuivre asymétrique et trophées",
+    image: `${HUNTER_ASSET_ROOT_V3}/armor/chest-city.webp`,
+  },
+  {
+    id: "avp",
+    label: "Young Blood",
+    detail: "Cuirasse cérémonielle argent",
+    image: `${HUNTER_ASSET_ROOT_V3}/armor/chest-avp.webp`,
+  },
+  {
+    id: "super",
+    label: "Super",
+    detail: "Plaques rouges et noires",
+    image: `${HUNTER_ASSET_ROOT_V3}/armor/chest-super.webp`,
+  },
+  {
+    id: "feral",
+    label: "Primitive",
+    detail: "Os, fourrure et attaches brutes",
+    image: `${HUNTER_ASSET_ROOT_V3}/armor/shoulder-feral.webp`,
+  },
+];
+
+const PRESET_MEDIA_LABEL: Record<HunterMedia, string> = {
+  film: "Film",
+  "animated-film": "Animation",
+  "video-game": "Jeu",
+  comic: "Comic",
+  novel: "Roman",
+};
 
 const DREAD_TINT_OPTIONS: ReadonlyArray<{
   id: DreadTintId;
@@ -215,6 +402,7 @@ export default function GameClient() {
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
   const audioRef = useRef<GameAudio | null>(null);
+  const settingsDialogRef = useRef<HTMLElement | null>(null);
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
@@ -233,10 +421,60 @@ export default function GameClient() {
   }, [save.settings.masterVolume]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [screen]);
+
+  useEffect(() => {
     if (!toast) return;
     const timeout = window.setTimeout(() => setToast(null), 2600);
     return () => window.clearTimeout(timeout);
   }, [toast]);
+
+  useEffect(() => {
+    if (!settingsOpen) return;
+    const previouslyFocused =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const dialog = settingsDialogRef.current;
+    const focusableSelector =
+      'button:not(:disabled), select:not(:disabled), input:not(:disabled), [tabindex]:not([tabindex="-1"])';
+    const focusables = () =>
+      dialog
+        ? Array.from(
+            dialog.querySelectorAll<HTMLElement>(focusableSelector),
+          )
+        : [];
+    const frame = window.requestAnimationFrame(() => {
+      focusables()[0]?.focus();
+    });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setSettingsOpen(false);
+        setResetArmed(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const controls = focusables();
+      if (controls.length === 0) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
+    };
+  }, [settingsOpen]);
 
   const playSound = useCallback(
     async (
@@ -363,13 +601,65 @@ export default function GameClient() {
       key: Key,
       value: HunterAppearance[Key],
     ) => {
+      const appearance: HunterAppearance = {
+        ...save.appearance,
+        [key]: value,
+      };
+      if (key !== "presetId") appearance.presetId = "custom";
       persist({
         ...save,
-        appearance: {
-          ...save.appearance,
-          [key]: value,
+        appearance,
+      });
+      void playSound("select");
+    },
+    [persist, playSound, save],
+  );
+
+  const selectHunterPreset = useCallback(
+    (presetId: HunterLorePresetId) => {
+      const preset = HUNTER_PRESETS.find((entry) => entry.id === presetId);
+      if (!preset) return;
+      const appearance = appearanceForPreset(presetId);
+      if (
+        appearance.trophyAdornmentId === "skull-spine" &&
+        save.trophies.length === 0
+      ) {
+        appearance.trophyAdornmentId = "none";
+      }
+      const armorId = save.inventory.unlockedArmorIds.includes(
+        preset.recommendedArmorId,
+      )
+        ? preset.recommendedArmorId
+        : save.loadout.armorId;
+      const signatureSecondary = preset.signatureWeaponIds.find(
+        (weaponId) =>
+          weaponId !== "wristblades" &&
+          save.inventory.unlockedWeaponIds.includes(weaponId),
+      );
+      const signatureGearIds = preset.signatureGearIds.filter((gearId) =>
+        save.inventory.unlockedGearIds.includes(gearId),
+      );
+      const resolvedGearIds = [
+        ...new Set([...signatureGearIds, ...save.loadout.gearIds]),
+      ].slice(0, 2) as [GearId, GearId];
+
+      persist({
+        ...save,
+        appearance,
+        loadout: {
+          ...save.loadout,
+          armorId,
+          weaponIds: signatureSecondary
+            ? ["wristblades", signatureSecondary]
+            : save.loadout.weaponIds,
+          gearIds:
+            resolvedGearIds.length === 2
+              ? resolvedGearIds
+              : save.loadout.gearIds,
         },
       });
+      setPreviewMaskWorn(appearance.biomaskId !== null);
+      setToast(`${preset.name} · configuration ${preset.year} chargée.`);
       void playSound("select");
     },
     [persist, playSound, save],
@@ -416,6 +706,10 @@ export default function GameClient() {
   const selectedGear = save.loadout.gearIds
     .map((gearId) => GEAR.find((gear) => gear.id === gearId))
     .filter(Boolean);
+  const activeHunterPreset =
+    save.appearance.presetId === "custom"
+      ? null
+      : HUNTER_PRESET_BY_ID[save.appearance.presetId];
   const trophyRecords = useMemo(
     () =>
       [...save.trophies].sort(
@@ -499,7 +793,8 @@ export default function GameClient() {
                 appearance={save.appearance}
                 armorId={save.loadout.armorId}
                 weaponIds={save.loadout.weaponIds}
-                size="clamp(430px, 73vw, 700px)"
+                gearIds={save.loadout.gearIds}
+                size="clamp(320px, 44svh, 500px)"
                 aiming
                 bladesExtended
               />
@@ -527,6 +822,7 @@ export default function GameClient() {
               appearance={save.appearance}
               armorId={save.loadout.armorId}
               weaponIds={save.loadout.weaponIds}
+              gearIds={save.loadout.gearIds}
               size="clamp(330px, 36vw, 470px)"
             />
             <div className="campaign-progress">
@@ -758,6 +1054,7 @@ export default function GameClient() {
                     appearance={save.appearance}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
+                    gearIds={save.loadout.gearIds}
                     size="min(78%, 390px)"
                     maskWorn={
                       previewMaskWorn && save.appearance.biomaskId !== null
@@ -879,7 +1176,7 @@ export default function GameClient() {
             <PanelHeader
               eyebrow="Vaisseau // Quartier du chasseur"
               title="Personnalisation du Yautja"
-              subtitle="Chaque élément est une texture indépendante : peau, dreadlocks, biomask, armure, canon plasma, gantelet, lames et trophées restent animables séparément."
+              subtitle="Rig V3 atomique : anatomie, filet, dreadlocks, plaques, biomask, bras du plasmacaster, canon, tube, gantelet, lames et trophées restent séparés."
               id="customization-title"
               onBack={() => go("ship")}
             />
@@ -890,7 +1187,8 @@ export default function GameClient() {
                     className="customization-rig"
                     appearance={save.appearance}
                     armorId={save.loadout.armorId}
-                    weaponIds={save.loadout.weaponIds}
+                    weaponIds={["plasma-caster", "wristblades"]}
+                    gearIds={save.loadout.gearIds}
                     size="min(88%, 440px)"
                     maskWorn={
                       previewMaskWorn && save.appearance.biomaskId !== null
@@ -898,9 +1196,6 @@ export default function GameClient() {
                     gauntletOpen={previewGauntletOpen}
                     bladesExtended={previewBladesExtended}
                     aiming={previewAiming}
-                    trophyCarried={
-                      save.appearance.trophyAdornmentId === "skull-spine"
-                    }
                   />
                 </div>
                 <RigStateControls
@@ -919,13 +1214,106 @@ export default function GameClient() {
                   onAim={() => setPreviewAiming((value) => !value)}
                 />
                 <p className="customization-note">
-                  Les dreadlocks sont découpées en quatre groupes souples. En
-                  mission, leur inertie réagit à la course, au saut et à
-                  l’escalade.
+                  Quinze textures anatomiques et huit mèches autonomes partagent
+                  le même squelette 256×384. Les pivots restent identiques dans
+                  l’aperçu et en mission.
                 </p>
               </aside>
 
               <div className="customization-sections">
+                <CustomizationSection
+                  title="Archives transmédia"
+                  detail={`${HUNTER_PRESETS.length} chasseurs · films, crossovers, jeux, comics et roman`}
+                >
+                  {HUNTER_PRESETS.map((preset) => {
+                    const selected = save.appearance.presetId === preset.id;
+                    const previewImage = preset.biomaskId
+                      ? `${HUNTER_ASSET_ROOT_V3}/masks/${preset.biomaskId}.webp`
+                      : hunterBodyFullPath(preset.bodyMorphId);
+                    const continuity =
+                      preset.continuity === "canon"
+                        ? "CANON FILM"
+                        : preset.continuity === "crossover"
+                          ? "CROSSOVER"
+                          : "UNIVERS ÉTENDU";
+                    return (
+                      <button
+                        type="button"
+                        className={`hunter-preset-card${selected ? " selected" : ""}`}
+                        aria-pressed={selected}
+                        key={preset.id}
+                        onClick={() => selectHunterPreset(preset.id)}
+                        title={preset.fidelityNote}
+                      >
+                        <span className="hunter-preset-art" aria-hidden="true">
+                          <img src={previewImage} alt="" />
+                        </span>
+                        <span className="hunter-preset-copy">
+                          <small>
+                            {PRESET_MEDIA_LABEL[preset.media]} · {preset.year}
+                          </small>
+                          <strong>{preset.name}</strong>
+                          <em>{preset.work}</em>
+                        </span>
+                        <span className="hunter-preset-continuity">
+                          {"textInterpretation" in preset &&
+                          preset.textInterpretation
+                            ? "INTERPRÉTATION TEXTE"
+                            : continuity}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  {activeHunterPreset && (
+                    <article
+                      className="hunter-preset-dossier"
+                      aria-live="polite"
+                    >
+                      <div>
+                        <small>Dossier sélectionné</small>
+                        <h3>{activeHunterPreset.name}</h3>
+                        <p>{activeHunterPreset.description}</p>
+                      </div>
+                      <div>
+                        <small>Fidélité visuelle</small>
+                        <p>{activeHunterPreset.fidelityNote}</p>
+                        <nav aria-label={`Sources de ${activeHunterPreset.name}`}>
+                          {activeHunterPreset.sourceUrls.map(
+                            (sourceUrl, sourceIndex) => (
+                              <a
+                                href={sourceUrl}
+                                key={sourceUrl}
+                                rel="noreferrer"
+                                target="_blank"
+                              >
+                                Référence {sourceIndex + 1}
+                              </a>
+                            ),
+                          )}
+                        </nav>
+                      </div>
+                    </article>
+                  )}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Morphologie"
+                  detail="Six corps nus enregistrés sur le même sol et les mêmes articulations"
+                >
+                  {BODY_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      detail={option.detail}
+                      image={option.image}
+                      selected={save.appearance.bodyMorphId === option.id}
+                      onSelect={() =>
+                        updateAppearance("bodyMorphId", option.id)
+                      }
+                    />
+                  ))}
+                </CustomizationSection>
+
                 <CustomizationSection
                   title="Pigmentation"
                   detail="Teinte organique de la peau mouchetée"
@@ -992,6 +1380,24 @@ export default function GameClient() {
                       selected={save.appearance.dreadTintId === option.id}
                       onSelect={() =>
                         updateAppearance("dreadTintId", option.id)
+                      }
+                    />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Famille d’armure"
+                  detail="Les plaques restent attachées au membre qu’elles protègent"
+                >
+                  {ARMOR_STYLE_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      detail={option.detail}
+                      image={option.image}
+                      selected={save.appearance.armorStyleId === option.id}
+                      onSelect={() =>
+                        updateAppearance("armorStyleId", option.id)
                       }
                     />
                   ))}
@@ -1256,6 +1662,7 @@ export default function GameClient() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="settings-title"
+            ref={settingsDialogRef}
           >
             <h2 id="settings-title">Réglages du biomask</h2>
             <p>
@@ -1620,24 +2027,28 @@ function RigStateControls({
 }) {
   const actions = [
     {
+      id: "mask",
       label: maskWorn ? "Retirer mask" : "Porter mask",
       active: maskWorn,
       disabled: !maskAvailable,
       onClick: onMask,
     },
     {
+      id: "gauntlet",
       label: gauntletOpen ? "Fermer gant" : "Ouvrir gant",
       active: gauntletOpen,
       disabled: false,
       onClick: onGauntlet,
     },
     {
+      id: "blades",
       label: bladesExtended ? "Rentrer griffes" : "Sortir griffes",
       active: bladesExtended,
       disabled: false,
       onClick: onBlades,
     },
     {
+      id: "aim",
       label: aiming ? "Relâcher visée" : "Cadrer plasma",
       active: aiming,
       disabled: false,
@@ -1649,7 +2060,7 @@ function RigStateControls({
     <div className="rig-state-controls" aria-label="Essai des éléments mobiles">
       {actions.map((action) => (
         <button
-          key={action.label}
+          key={action.id}
           type="button"
           className={action.active ? "active" : ""}
           aria-pressed={action.active}

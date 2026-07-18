@@ -29,7 +29,7 @@ after(async () => {
   await rm(outputDirectory, { force: true, recursive: true });
 });
 
-test("v1 saves migrate to v2 without losing legacy trophy data", () => {
+test("v1 saves migrate to v3 without losing legacy trophy data", () => {
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
   legacy.version = 1;
   delete legacy.appearance;
@@ -51,10 +51,13 @@ test("v1 saves migrate to v2 without losing legacy trophy data", () => {
   assert.equal(migrated.version, SAVE_VERSION);
   assert.equal(migrated.profile.hunterName, "Kra'vak");
   assert.deepEqual(migrated.appearance, {
+    presetId: "jungle-hunter",
+    bodyMorphId: "classic",
     skinId: "ochre-mottle",
     biomaskId: "jungle",
     dreadStyleId: "classic",
     dreadTintId: "obsidian",
+    armorStyleId: "classic",
     armorTintId: "gunmetal",
     trophyAdornmentId: "none",
   });
@@ -78,20 +81,26 @@ test("appearance normalization accepts an unmasked hunter and repairs invalid id
   const normalized = normalizeSave({
     ...defaultSave("2026-01-01T00:00:00.000Z"),
     appearance: {
+      presetId: "custom",
+      bodyMorphId: "classic",
       skinId: "invalid",
       biomaskId: null,
       dreadStyleId: "braided",
       dreadTintId: "umber",
+      armorStyleId: "avp",
       armorTintId: "bronze",
       trophyAdornmentId: "skull-spine",
     },
   });
 
   assert.deepEqual(normalized.appearance, {
+    presetId: "custom",
+    bodyMorphId: "classic",
     skinId: "ochre-mottle",
     biomaskId: null,
     dreadStyleId: "braided",
     dreadTintId: "umber",
+    armorStyleId: "avp",
     armorTintId: "bronze",
     trophyAdornmentId: "skull-spine",
   });

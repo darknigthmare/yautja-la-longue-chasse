@@ -13,8 +13,33 @@ import {
   DIFFICULTY_BY_ID,
   WEAPON_BY_ID,
 } from "./data";
+import {
+  HUNTER_RIG_CANVAS,
+  relativeBoneMatrix,
+  solveHunterRig,
+  type AffineMatrix,
+  type HunterRigBoneId,
+  type HunterRigFrame,
+  type HunterRigPose,
+  type RigPoint,
+} from "./hunterRig";
+import {
+  HUNTER_ARMOR_MODULES,
+  HUNTER_BODY_PART_BONES,
+  HUNTER_BODY_PART_IDS,
+  HUNTER_EQUIPMENT_V3,
+  hunterArmorPath,
+  hunterBodyPartHasNet,
+  hunterBodyFullPath,
+  hunterBodyPartPath,
+  hunterDreadPath,
+  hunterMaskPath,
+  hunterNetPartPath,
+  type HunterBodyPartId,
+} from "./hunterVisuals";
 import type {
   DifficultyId,
+  GearId,
   HunterAppearance,
   HonorEvent,
   Loadout,
@@ -181,19 +206,74 @@ interface RecoveryNode extends Vec2 {
   recovered: boolean;
 }
 
+type HunterArmorAssetId =
+  | "chest"
+  | "shoulder"
+  | "belt"
+  | "bracer"
+  | "thigh"
+  | "shin";
+
+type HunterPlasmaAssetId = keyof typeof HUNTER_EQUIPMENT_V3.plasma;
+type HunterGauntletAssetId = keyof typeof HUNTER_EQUIPMENT_V3.gauntlet;
+type HunterWristbladeAssetId =
+  keyof typeof HUNTER_EQUIPMENT_V3.wristblades;
+
+const HUNTER_LOADOUT_ASSET_ROOT =
+  "/game/assets/v3/actors/yautja/hunter" as const;
+
+const HUNTER_WEAPON_VISUAL_IDS = [
+  "combistick",
+  "combistick-folded",
+  "smart-disc",
+  "yautja-bow",
+  "arrow",
+] as const;
+
+const HUNTER_TROPHY_VISUAL_IDS = [
+  "trophy-spine",
+  "trophy-skull",
+  "trophy-bindings",
+] as const;
+
+type HunterWeaponVisualId = (typeof HUNTER_WEAPON_VISUAL_IDS)[number];
+type HunterTrophyVisualId = (typeof HUNTER_TROPHY_VISUAL_IDS)[number];
+type HunterHandWeaponId = Extract<
+  WeaponId,
+  "combistick" | "smart-disc" | "yautja-bow"
+>;
+
+function hunterRegisteredAssetPath(
+  category: "weapons" | "gear" | "trophies",
+  assetId: string,
+): string {
+  return `${HUNTER_LOADOUT_ASSET_ROOT}/${category}/registered/${assetId}.webp`;
+}
+
+function selectedHandWeapon(loadout: Loadout): HunterHandWeaponId | null {
+  const secondary = loadout.weaponIds[1];
+  return secondary === "combistick" ||
+    secondary === "smart-disc" ||
+    secondary === "yautja-bow"
+    ? secondary
+    : null;
+}
+
 interface AssetBank {
   background: HTMLImageElement | null;
   farLake: HTMLImageElement | null;
-  hunterBody: HTMLImageElement | null;
+  hunterBodyFull: HTMLImageElement | null;
+  hunterBodyParts: Record<HunterBodyPartId, HTMLImageElement | null>;
+  hunterNetParts: Record<HunterBodyPartId, HTMLImageElement | null>;
   hunterDreads: HTMLImageElement | null;
   hunterMask: HTMLImageElement | null;
-  hunterArmor: HTMLImageElement | null;
-  plasmaCaster: HTMLImageElement | null;
-  gauntletClosed: HTMLImageElement | null;
-  gauntletOpen: HTMLImageElement | null;
-  wristbladesRetracted: HTMLImageElement | null;
-  wristbladesExtended: HTMLImageElement | null;
-  trophy: HTMLImageElement | null;
+  hunterArmor: Record<HunterArmorAssetId, HTMLImageElement | null>;
+  hunterPlasma: Record<HunterPlasmaAssetId, HTMLImageElement | null>;
+  hunterGauntlet: Record<HunterGauntletAssetId, HTMLImageElement | null>;
+  hunterWristblades: Record<HunterWristbladeAssetId, HTMLImageElement | null>;
+  hunterWeapons: Record<HunterWeaponVisualId, HTMLImageElement | null>;
+  hunterGear: Record<GearId, HTMLImageElement | null>;
+  hunterTrophies: Record<HunterTrophyVisualId, HTMLImageElement | null>;
   treeTrunk: HTMLImageElement | null;
   vineLadder: HTMLImageElement | null;
   platformRoot: HTMLImageElement | null;
@@ -371,8 +451,74 @@ const EMPTY_UI: UiSnapshot = {
   elapsed: 0,
 };
 
+const HUNTER_BIND_FRAME = solveHunterRig({
+  pose: "idle",
+  facing: 1,
+  phase: 0,
+  aimAngle: 0,
+  scale: 1,
+  worldX: 0,
+  worldY: 0,
+});
+
 function clamp(value: number, minimum: number, maximum: number): number {
   return Math.max(minimum, Math.min(maximum, value));
+}
+
+/**
+ * Maps simulation state to the canonical V3 rig without mutating gameplay.
+ * Collision dimensions remain owned by PlayerState; the rig only resolves
+ * visual bones and shared equipment anchors in world coordinates.
+ */
+function solvePlayerRigFrame(
+  state: GameState,
+  player: PlayerState = state.player,
+): HunterRigFrame {
+  let pose: HunterRigPose;
+  let phase: number;
+
+  if (state.trophyExtracting) {
+    pose = "extract";
+    phase = state.trophyExtraction;
+  } else if (player.climbing) {
+    pose = "climb";
+    phase = state.elapsed * (0.55 + Math.abs(player.velocityY) / 280);
+  } else if (!player.grounded) {
+    if (player.velocityY < 0) {
+      pose = "jump";
+      phase = clamp((player.velocityY + 720) / 1_440, 0, 0.5);
+    } else {
+      pose = "fall";
+      phase = state.elapsed * 0.18;
+    }
+  } else if (Math.abs(player.velocityX) > 24) {
+    pose = "run";
+    phase = state.elapsed * Math.max(0.7, Math.abs(player.velocityX) / 155);
+  } else {
+    pose = "idle";
+    phase = state.elapsed * 0.24;
+  }
+
+  const scale = player.height / HUNTER_RIG_CANVAS.height;
+  return solveHunterRig({
+    pose,
+    phase,
+    facing: player.facing,
+    speed: player.velocityX,
+    verticalVelocity: player.velocityY,
+    aimAngle: player.aimAngle,
+    recoil: clamp(player.weaponCooldown * 8, 0, 1),
+    extractionProgress: state.trophyExtraction,
+    scale,
+    worldX:
+      player.x +
+      player.width / 2 -
+      HUNTER_RIG_CANVAS.width / 2,
+    worldY:
+      player.y +
+      player.height -
+      HUNTER_RIG_CANVAS.groundY,
+  });
 }
 
 function distance(a: Vec2, b: Vec2): number {
@@ -990,38 +1136,200 @@ function drawFallbackCharacter(
   context.restore();
 }
 
-function drawDreadSlices(
+interface RegisteredLayerOptions {
+  alpha?: number;
+  filter?: string;
+  pivot?: RigPoint;
+  rotation?: number;
+  translateX?: number;
+  translateY?: number;
+}
+
+const HUNTER_BACK_PARTS: readonly HunterBodyPartId[] = [
+  "foot-back",
+  "shin-back",
+  "thigh-back",
+  "upper-arm-back",
+  "lower-arm-back",
+  "hand-back",
+] as const;
+
+const HUNTER_CORE_PARTS: readonly HunterBodyPartId[] = [
+  "pelvis",
+  "torso",
+] as const;
+
+const HUNTER_FRONT_PARTS: readonly HunterBodyPartId[] = [
+  "thigh-front",
+  "shin-front",
+  "foot-front",
+  "upper-arm-front",
+  "lower-arm-front",
+] as const;
+
+function applyAffine(
   context: CanvasRenderingContext2D,
-  image: HTMLImageElement,
-  player: PlayerState,
-  tint: HunterAppearance["dreadTintId"],
+  matrix: AffineMatrix,
 ): void {
-  const slices = player.dreadAngles.length;
-  const sourceWidth = image.naturalWidth / slices;
-  const destinationWidth = 67;
-  const destinationHeight = 94;
-  const sliceWidth = destinationWidth / slices;
+  context.transform(
+    matrix.a,
+    matrix.b,
+    matrix.c,
+    matrix.d,
+    matrix.e,
+    matrix.f,
+  );
+}
+
+function drawRegisteredLayer(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement | null,
+  frame: HunterRigFrame,
+  boneId: HunterRigBoneId,
+  options: RegisteredLayerOptions = {},
+): boolean {
+  if (!image) return false;
+  const matrix = relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId);
   context.save();
-  context.filter = dreadFilter(tint);
-  for (let index = 0; index < slices; index += 1) {
-    const sourceX = sourceWidth * index;
-    const localX = -31 + sliceWidth * index;
-    const pivotY = 8 + index * 1.2;
-    context.save();
-    context.translate(localX + sliceWidth / 2, pivotY);
-    context.rotate(player.dreadAngles[index] ?? 0);
-    context.drawImage(
-      image,
-      sourceX,
-      0,
-      sourceWidth + 1,
-      image.naturalHeight,
-      -sliceWidth / 2,
-      -pivotY,
-      sliceWidth + 1,
-      destinationHeight,
+  context.globalAlpha *= options.alpha ?? 1;
+  if (options.filter) context.filter = options.filter;
+  applyAffine(context, matrix);
+  context.translate(options.translateX ?? 0, options.translateY ?? 0);
+  if (options.pivot && options.rotation) {
+    context.translate(options.pivot.x, options.pivot.y);
+    context.rotate(options.rotation);
+    context.translate(-options.pivot.x, -options.pivot.y);
+  }
+  context.drawImage(
+    image,
+    0,
+    0,
+    HUNTER_RIG_CANVAS.width,
+    HUNTER_RIG_CANVAS.height,
+  );
+  context.restore();
+  return true;
+}
+
+function drawAtomicBodyPart(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  frame: HunterRigFrame,
+  appearance: HunterAppearance,
+  partId: HunterBodyPartId,
+): void {
+  const boneId = HUNTER_BODY_PART_BONES[partId];
+  drawRegisteredLayer(
+    context,
+    assets.hunterBodyParts[partId],
+    frame,
+    boneId,
+    { filter: bodyFilter(appearance) },
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterNetParts[partId],
+    frame,
+    boneId,
+  );
+}
+
+function drawHunterBeltLoadout(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  frame: HunterRigFrame,
+  loadout: Loadout,
+): void {
+  loadout.gearIds.forEach((gearId, slotIndex) => {
+    drawRegisteredLayer(
+      context,
+      assets.hunterGear[gearId],
+      frame,
+      "pelvis",
+      {
+        translateX: slotIndex === 0 ? -18 : 18,
+      },
     );
-    context.restore();
+  });
+}
+
+function drawHunterHandWeapon(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  loadout: Loadout,
+  assets: AssetBank,
+  frame: HunterRigFrame,
+): void {
+  const weaponId = selectedHandWeapon(loadout);
+  if (!weaponId) return;
+
+  const visualId: HunterWeaponVisualId =
+    weaponId === "combistick" &&
+    (state.player.climbing || state.trophyExtracting)
+      ? "combistick-folded"
+      : weaponId;
+  drawRegisteredLayer(
+    context,
+    assets.hunterWeapons[visualId],
+    frame,
+    "handFront",
+  );
+
+  if (
+    weaponId === "yautja-bow" &&
+    (state.player.aiming || state.player.weaponCooldown > 0.08)
+  ) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterWeapons.arrow,
+      frame,
+      "handFront",
+    );
+  }
+}
+
+function drawHunterTrophyLayers(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  frame: HunterRigFrame,
+  alpha = 1,
+): void {
+  for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterTrophies[trophyId],
+      frame,
+      "pelvis",
+      { alpha },
+    );
+  }
+}
+
+function drawExtractingTrophyLayers(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  position: RigPoint,
+  facing: -1 | 1,
+  scale: number,
+  rotation: number,
+): void {
+  const bindAnchor = HUNTER_BIND_FRAME.anchors.trophyCarry;
+  context.save();
+  context.translate(position.x, position.y);
+  context.rotate(rotation);
+  context.scale(facing * scale, scale);
+  context.translate(-bindAnchor.x, -bindAnchor.y);
+  for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
+    const image = assets.hunterTrophies[trophyId];
+    if (image) {
+      context.drawImage(
+        image,
+        0,
+        0,
+        HUNTER_RIG_CANVAS.width,
+        HUNTER_RIG_CANVAS.height,
+      );
+    }
   }
   context.restore();
 }
@@ -1037,122 +1345,235 @@ function drawHunterLayered(
   const player = state.player;
   const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
   const hasWristblades = loadout.weaponIds.includes("wristblades");
-  const bodyWidth = 84;
-  const bodyHeight = 122;
+  const frame = solvePlayerRigFrame(state, player);
+  const atomicBodyReady = HUNTER_BODY_PART_IDS.every(
+    (partId) => assets.hunterBodyParts[partId],
+  );
+  const armorTint = armorFilter(appearance);
 
   context.save();
   context.globalAlpha = alpha;
-  context.translate(
-    player.x + player.width / 2,
-    player.y + player.height / 2,
-  );
-  context.scale(player.facing, 1);
-  context.translate(0, -player.height / 2);
 
-  // Les dreadlocks et les trophées sont derrière le corps, puis chaque pièce
-  // d'équipement est dessinée indépendamment pour pouvoir l'animer.
+  // Calques arrière : dreadlocks et bras articulé du plasmacaster.
   if (assets.hunterDreads) {
-    drawDreadSlices(
+    const dreadSwing =
+      player.dreadAngles.reduce((total, angle) => total + angle, 0) /
+      Math.max(1, player.dreadAngles.length);
+    drawRegisteredLayer(
       context,
       assets.hunterDreads,
-      player,
-      appearance.dreadTintId,
+      frame,
+      "head",
+      {
+        filter: dreadFilter(appearance.dreadTintId),
+        pivot: { x: 137, y: 73 },
+        rotation: dreadSwing * 0.38,
+      },
     );
   }
-  if (
-    assets.trophy &&
-    (state.trophyCarried || appearance.trophyAdornmentId === "skull-spine")
-  ) {
-    context.save();
-    context.rotate(-0.08);
-    context.drawImage(
-      assets.trophy,
-      -43,
-      state.trophyCarried ? 46 : 67,
-      state.trophyCarried ? 34 : 22,
-      state.trophyCarried ? 60 : 39,
+  if (hasPlasmaCaster) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.mount,
+      frame,
+      "casterShoulderMount",
     );
-    context.restore();
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.upperArm,
+      frame,
+      "casterUpperArm",
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.lowerArm,
+      frame,
+      "casterLowerArm",
+    );
   }
 
-  if (assets.hunterBody) {
-    context.save();
-    context.filter = bodyFilter(appearance);
-    context.drawImage(
-      assets.hunterBody,
-      -bodyWidth / 2,
-      -4,
-      bodyWidth,
-      bodyHeight,
-    );
-    context.restore();
-  } else {
+  if (atomicBodyReady) {
+    for (const partId of HUNTER_BACK_PARTS) {
+      drawAtomicBodyPart(context, assets, frame, appearance, partId);
+    }
+    for (const partId of HUNTER_CORE_PARTS) {
+      drawAtomicBodyPart(context, assets, frame, appearance, partId);
+    }
+  } else if (
+    !drawRegisteredLayer(
+      context,
+      assets.hunterBodyFull,
+      frame,
+      "root",
+      { filter: bodyFilter(appearance) },
+    )
+  ) {
     drawFallbackCharacter(
       context,
-      -player.width / 2,
-      0,
+      player.x,
+      player.y,
       player.width,
       player.height,
       "#8fd3ac",
-      1,
+      player.facing,
     );
   }
 
-  if (assets.hunterArmor) {
-    context.save();
-    context.filter = armorFilter(appearance);
-    context.drawImage(
-      assets.hunterArmor,
-      -bodyWidth / 2,
-      -4,
-      bodyWidth,
-      bodyHeight,
+  // Armure centrale attachée au bassin et au torse.
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.belt,
+    frame,
+    "pelvis",
+    { filter: armorTint },
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.chest,
+    frame,
+    "torso",
+    { filter: armorTint },
+  );
+  drawHunterBeltLoadout(context, assets, frame, loadout);
+
+  if (atomicBodyReady) {
+    drawAtomicBodyPart(context, assets, frame, appearance, "head");
+    for (const partId of HUNTER_FRONT_PARTS) {
+      drawAtomicBodyPart(context, assets, frame, appearance, partId);
+    }
+  }
+
+  // L'arme secondaire suit la main avant. La main est redessinée ensuite
+  // pour que la poignée reste réellement prise dans les doigts.
+  drawHunterHandWeapon(context, state, loadout, assets, frame);
+  if (atomicBodyReady) {
+    drawAtomicBodyPart(context, assets, frame, appearance, "hand-front");
+  }
+
+  // Modules d'armure qui suivent réellement leur membre.
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.shoulder,
+    frame,
+    "armFrontUpper",
+    { filter: armorTint },
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.bracer,
+    frame,
+    "armFrontLower",
+    { filter: armorTint },
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.thigh,
+    frame,
+    "legFrontUpper",
+    { filter: armorTint },
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterArmor.shin,
+    frame,
+    "legFrontLower",
+    { filter: armorTint },
+  );
+
+  if (player.maskOn && appearance.biomaskId) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterMask,
+      frame,
+      "head",
     );
-    context.restore();
   }
 
-  if (hasPlasmaCaster && assets.plasmaCaster) {
-    const localAim =
-      player.facing > 0 ? player.aimAngle : Math.PI - player.aimAngle;
-    context.save();
-    context.translate(24, 23);
-    context.rotate(clamp(localAim, -0.72, 0.58) * (player.aiming ? 0.48 : 0.08));
-    context.drawImage(assets.plasmaCaster, -8, -17, 32, 48);
-    context.restore();
-  }
-
-  if (player.maskOn && appearance.biomaskId && assets.hunterMask) {
-    context.drawImage(assets.hunterMask, 15, 1, 30, 54);
-  }
-
-  const gauntletOpen = clamp(player.gauntletOpen, 0, 1);
-  if (assets.gauntletClosed && gauntletOpen < 1) {
-    context.save();
-    context.globalAlpha *= 1 - gauntletOpen;
-    context.drawImage(assets.gauntletClosed, 19, 57, 39, 30);
-    context.restore();
-  }
-  if (assets.gauntletOpen && gauntletOpen > 0) {
-    context.save();
-    context.globalAlpha *= gauntletOpen;
-    context.drawImage(assets.gauntletOpen, 18, 53, 41, 34);
-    context.restore();
-  }
+  // Gantelet : la base suit l'avant-bras arrière et le lid pivote sur sa
+  // charnière canonique au lieu de fondre vers une seconde image complète.
+  drawRegisteredLayer(
+    context,
+    assets.hunterGauntlet.base,
+    frame,
+    "armBackLower",
+  );
+  drawRegisteredLayer(
+    context,
+    assets.hunterGauntlet.lid,
+    frame,
+    "armBackLower",
+    {
+      pivot: { x: 74, y: 202 },
+      rotation: -1.22 * clamp(player.gauntletOpen, 0, 1),
+    },
+  );
 
   if (hasWristblades) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterWristblades.housing,
+      frame,
+      "armFrontLower",
+    );
     const extension = clamp(player.bladeExtension, 0, 1);
-    if (assets.wristbladesRetracted && extension < 1) {
-      context.save();
-      context.globalAlpha *= 1 - extension;
-      context.drawImage(assets.wristbladesRetracted, 21, 57, 40, 31);
-      context.restore();
+    drawRegisteredLayer(
+      context,
+      assets.hunterWristblades.blades,
+      frame,
+      "armFrontLower",
+      {
+        alpha: extension,
+        translateX: -44 * (1 - extension),
+      },
+    );
+  }
+
+  // Toute la tête du caster suit la chaîne yoke > cannon > barrel > muzzle.
+  if (hasPlasmaCaster) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.yoke,
+      frame,
+      "casterYoke",
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.cannon,
+      frame,
+      "casterCannon",
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.barrel,
+      frame,
+      "casterBarrel",
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterPlasma.muzzle,
+      frame,
+      "casterMuzzle",
+    );
+    if (player.aiming && player.maskOn && appearance.biomaskId) {
+      drawRegisteredLayer(
+        context,
+        assets.hunterPlasma.laser,
+        frame,
+        "casterMuzzle",
+        { alpha: 0.88 },
+      );
     }
-    if (assets.wristbladesExtended && extension > 0) {
-      context.save();
-      context.globalAlpha *= extension;
-      context.drawImage(assets.wristbladesExtended, 21, 51, 58, 47);
-      context.restore();
-    }
+  }
+
+  if (
+    (state.trophyCarried || appearance.trophyAdornmentId === "skull-spine")
+  ) {
+    drawHunterTrophyLayers(
+      context,
+      assets,
+      frame,
+      state.trophyCarried ? 1 : 0.82,
+    );
   }
   context.restore();
 }
@@ -1166,10 +1587,7 @@ function drawAimAssist(
   const player = state.player;
   if (!player.aiming) return;
   const target = player.aimPoint;
-  const origin = {
-    x: player.x + player.width / 2 + player.facing * 23,
-    y: player.y + 31,
-  };
+  const origin = solvePlayerRigFrame(state, player).anchors.muzzle;
   const color = mission.palette.accent;
   context.save();
   if (player.maskOn && appearance.biomaskId) {
@@ -1204,14 +1622,17 @@ function drawJunglePlatform(
   context: CanvasRenderingContext2D,
   platform: Platform,
   image: HTMLImageElement | null,
+  surfaceRatio: number,
 ): void {
   if (!image) return;
-  const visualHeight = clamp(platform.width * 0.48, 82, 148);
+  const drawWidth = platform.width + 24;
+  const visualHeight =
+    drawWidth * (image.naturalHeight / image.naturalWidth);
   context.drawImage(
     image,
     platform.x - 12,
-    platform.y - visualHeight * 0.43,
-    platform.width + 24,
+    platform.y - visualHeight * surfaceRatio,
+    drawWidth,
     visualHeight,
   );
 }
@@ -1288,7 +1709,8 @@ function renderGame(
       const image =
         zone.kind === "tree" ? assets.treeTrunk : assets.vineLadder;
       if (!image) continue;
-      const drawWidth = zone.kind === "tree" ? zone.width + 74 : zone.width;
+      const drawWidth =
+        zone.height * (image.naturalWidth / image.naturalHeight);
       context.save();
       context.globalAlpha = zone.kind === "tree" ? 0.97 : 0.9;
       context.drawImage(
@@ -1307,13 +1729,16 @@ function renderGame(
     assets.platformCrown,
     assets.platformExpedition,
   ] as const;
+  const junglePlatformSurfaceRatios = [0.2, 0.22, 0.38, 0.42] as const;
   for (let index = 0; index < PLATFORMS.length; index += 1) {
     const platform = PLATFORMS[index];
     if (mission.biome === "jungle") {
+      const junglePlatformIndex = index % junglePlatformImages.length;
       drawJunglePlatform(
         context,
         platform,
-        junglePlatformImages[index % junglePlatformImages.length],
+        junglePlatformImages[junglePlatformIndex],
+        junglePlatformSurfaceRatios[junglePlatformIndex],
       );
     } else {
       roundedPanel(
@@ -1447,24 +1872,28 @@ function renderGame(
     );
     context.restore();
 
-    if (assets.trophy && state.trophyExtracting) {
+    if (state.trophyExtracting) {
       const eased =
         state.trophyExtraction *
         state.trophyExtraction *
         (3 - 2 * state.trophyExtraction);
       const startX = state.boss.x + state.boss.width * 0.52;
       const startY = FLOOR_Y - 66;
-      const endX =
-        state.player.x + state.player.width / 2 - state.player.facing * 18;
-      const endY = state.player.y + 66;
+      const trophyCarry =
+        solvePlayerRigFrame(state, state.player).anchors.trophyCarry;
+      const endX = trophyCarry.x;
+      const endY = trophyCarry.y;
       const trophyX = startX + (endX - startX) * eased;
       const trophyY =
         startY + (endY - startY) * eased - Math.sin(eased * Math.PI) * 54;
-      context.save();
-      context.translate(trophyX, trophyY);
-      context.rotate((1 - eased) * 0.65 * state.player.facing);
-      context.drawImage(assets.trophy, -14, -25, 28, 50);
-      context.restore();
+      drawExtractingTrophyLayers(
+        context,
+        assets,
+        { x: trophyX, y: trophyY },
+        state.player.facing,
+        state.player.height / HUNTER_RIG_CANVAS.height,
+        (1 - eased) * 0.65 * state.player.facing,
+      );
     }
   }
 
@@ -1887,13 +2316,11 @@ function playerWeapon(
   if (weapon.ammo !== null) player.ammo -= 1;
   const speed = Math.max(620, weapon.projectileSpeedPx);
   const angle = player.aimAngle;
+  const muzzle = solvePlayerRigFrame(state, player).anchors.muzzle;
   state.projectiles.push({
     id: state.nextProjectileId++,
-    x:
-      player.x +
-      player.width / 2 +
-      player.facing * (player.width * 0.55),
-    y: player.y + player.height * 0.38,
+    x: muzzle.x,
+    y: muzzle.y,
     velocityX: Math.cos(angle) * speed,
     velocityY: Math.sin(angle) * speed + (weapon.id === "yautja-bow" ? -15 : 0),
     radius:
@@ -2179,10 +2606,7 @@ function updateObjectiveFlow(
 function updateAimState(state: GameState, input: InputHub): void {
   const player = state.player;
   player.aiming = isHeld(input, "aim");
-  const origin = {
-    x: player.x + player.width / 2,
-    y: player.y + player.height * 0.38,
-  };
+  const origin = solvePlayerRigFrame(state, player).anchors.muzzle;
   const targets = [
     ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
@@ -2912,16 +3336,53 @@ export default function HuntCanvas({
     const assets: AssetBank = {
       background: null,
       farLake: null,
-      hunterBody: null,
+      hunterBodyFull: null,
+      hunterBodyParts: Object.fromEntries(
+        HUNTER_BODY_PART_IDS.map((partId) => [partId, null]),
+      ) as Record<HunterBodyPartId, HTMLImageElement | null>,
+      hunterNetParts: Object.fromEntries(
+        HUNTER_BODY_PART_IDS.map((partId) => [partId, null]),
+      ) as Record<HunterBodyPartId, HTMLImageElement | null>,
       hunterDreads: null,
       hunterMask: null,
-      hunterArmor: null,
-      plasmaCaster: null,
-      gauntletClosed: null,
-      gauntletOpen: null,
-      wristbladesRetracted: null,
-      wristbladesExtended: null,
-      trophy: null,
+      hunterArmor: {
+        chest: null,
+        shoulder: null,
+        belt: null,
+        bracer: null,
+        thigh: null,
+        shin: null,
+      },
+      hunterPlasma: {
+        mount: null,
+        upperArm: null,
+        lowerArm: null,
+        yoke: null,
+        cannon: null,
+        barrel: null,
+        muzzle: null,
+        laser: null,
+      },
+      hunterGauntlet: {
+        base: null,
+        lid: null,
+      },
+      hunterWristblades: {
+        housing: null,
+        blades: null,
+      },
+      hunterWeapons: Object.fromEntries(
+        HUNTER_WEAPON_VISUAL_IDS.map((weaponId) => [weaponId, null]),
+      ) as Record<HunterWeaponVisualId, HTMLImageElement | null>,
+      hunterGear: {
+        netgun: null,
+        "motion-sensor": null,
+        "audio-decoy": null,
+        snare: null,
+      },
+      hunterTrophies: Object.fromEntries(
+        HUNTER_TROPHY_VISUAL_IDS.map((trophyId) => [trophyId, null]),
+      ) as Record<HunterTrophyVisualId, HTMLImageElement | null>,
       treeTrunk: null,
       vineLadder: null,
       platformRoot: null,
@@ -2956,55 +3417,217 @@ export default function HuntCanvas({
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
 
-    const assetPaths: Record<keyof AssetBank, string> = {
-      background: backgroundPath(mission),
-      farLake: "/game/assets/v2/environments/jungle/layers/far-lake.webp",
-      hunterBody: "/game/assets/v2/actors/yautja/hunter/body/base.webp",
-      hunterDreads: `/game/assets/v2/actors/yautja/hunter/dreads/${appearance.dreadStyleId}.webp`,
-      hunterMask: `/game/assets/v2/actors/yautja/hunter/masks/${appearance.biomaskId ?? "hunter"}.webp`,
-      hunterArmor: `/game/assets/v2/actors/yautja/hunter/armor/${loadout.armorId}.webp`,
-      plasmaCaster:
-        "/game/assets/v2/actors/yautja/hunter/equipment/plasma-caster.webp",
-      gauntletClosed:
-        "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-closed.webp",
-      gauntletOpen:
-        "/game/assets/v2/actors/yautja/hunter/equipment/gauntlet-open.webp",
-      wristbladesRetracted:
-        "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-retracted.webp",
-      wristbladesExtended:
-        "/game/assets/v2/actors/yautja/hunter/equipment/wristblades-extended.webp",
-      trophy:
-        "/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp",
-      treeTrunk:
-        "/game/assets/v2/environments/jungle/climbables/tree-trunk.webp",
-      vineLadder:
-        "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
-      platformRoot:
-        "/game/assets/v2/environments/jungle/platforms/root-branch.webp",
-      platformStone:
-        "/game/assets/v2/environments/jungle/platforms/stone-slab.webp",
-      platformCrown:
-        "/game/assets/v2/environments/jungle/platforms/tree-crown.webp",
-      platformExpedition:
-        "/game/assets/v2/environments/jungle/platforms/expedition-platform.webp",
-      foregroundFerns:
-        "/game/assets/v2/environments/jungle/foreground/ferns.webp",
-      foregroundVines:
-        "/game/assets/v2/environments/jungle/foreground/hanging-vines.webp",
-      foregroundReeds:
-        "/game/assets/v2/environments/jungle/foreground/lake-reeds.webp",
-      mercenary: "/game/sprites/mercenary.webp",
-      cryostalker: "/game/sprites/cryostalker.webp",
-      badBlood: "/game/sprites/bad-blood.webp",
+    const loadTasks: Promise<void>[] = [];
+    const queueImage = (
+      path: string,
+      assign: (image: HTMLImageElement | null) => void,
+    ) => {
+      loadTasks.push(
+        loadImage(path).then((image) => {
+          if (alive) assign(image);
+        }),
+      );
     };
-    Promise.all(
-      (Object.entries(assetPaths) as Array<[keyof AssetBank, string]>).map(
-        async ([key, path]) => [key, await loadImage(path)] as const,
-      ),
-    ).then((loadedAssets) => {
-      if (!alive) return;
-      for (const [key, image] of loadedAssets) assets[key] = image;
-      setAssetsReady(true);
+
+    queueImage(backgroundPath(mission), (image) => {
+      assets.background = image;
+    });
+    queueImage(
+      "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      (image) => {
+        assets.farLake = image;
+      },
+    );
+
+    queueImage(hunterBodyFullPath(appearance.bodyMorphId), (image) => {
+      assets.hunterBodyFull = image;
+    });
+    for (const partId of HUNTER_BODY_PART_IDS) {
+      queueImage(
+        hunterBodyPartPath(appearance.bodyMorphId, partId),
+        (image) => {
+          assets.hunterBodyParts[partId] = image;
+        },
+      );
+      if (hunterBodyPartHasNet(appearance.bodyMorphId, partId)) {
+        queueImage(
+          hunterNetPartPath(appearance.bodyMorphId, partId),
+          (image) => {
+            assets.hunterNetParts[partId] = image;
+          },
+        );
+      }
+    }
+    queueImage(hunterDreadPath(appearance.dreadStyleId), (image) => {
+      assets.hunterDreads = image;
+    });
+    if (appearance.biomaskId) {
+      queueImage(hunterMaskPath(appearance.biomaskId), (image) => {
+        assets.hunterMask = image;
+      });
+    }
+
+    const armorModules = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
+    const armorPaths: Record<HunterArmorAssetId, string> = {
+      chest: hunterArmorPath(armorModules.chest),
+      shoulder: hunterArmorPath(armorModules.shoulder),
+      belt: hunterArmorPath("belt"),
+      bracer: hunterArmorPath("bracer"),
+      thigh: hunterArmorPath("thigh"),
+      shin: hunterArmorPath("shin"),
+    };
+    for (const [moduleId, path] of Object.entries(armorPaths) as Array<
+      [HunterArmorAssetId, string]
+    >) {
+      queueImage(path, (image) => {
+        assets.hunterArmor[moduleId] = image;
+      });
+    }
+
+    for (const [moduleId, path] of Object.entries(
+      HUNTER_EQUIPMENT_V3.plasma,
+    ) as Array<[HunterPlasmaAssetId, string]>) {
+      queueImage(path, (image) => {
+        assets.hunterPlasma[moduleId] = image;
+      });
+    }
+    for (const [moduleId, path] of Object.entries(
+      HUNTER_EQUIPMENT_V3.gauntlet,
+    ) as Array<[HunterGauntletAssetId, string]>) {
+      queueImage(path, (image) => {
+        assets.hunterGauntlet[moduleId] = image;
+      });
+    }
+    for (const [moduleId, path] of Object.entries(
+      HUNTER_EQUIPMENT_V3.wristblades,
+    ) as Array<[HunterWristbladeAssetId, string]>) {
+      queueImage(path, (image) => {
+        assets.hunterWristblades[moduleId] = image;
+      });
+    }
+
+    const handWeaponId = selectedHandWeapon(loadout);
+    if (handWeaponId) {
+      queueImage(
+        hunterRegisteredAssetPath("weapons", handWeaponId),
+        (image) => {
+          assets.hunterWeapons[handWeaponId] = image;
+        },
+      );
+      if (handWeaponId === "combistick") {
+        queueImage(
+          hunterRegisteredAssetPath("weapons", "combistick-folded"),
+          (image) => {
+            assets.hunterWeapons["combistick-folded"] = image;
+          },
+        );
+      }
+      if (handWeaponId === "yautja-bow") {
+        queueImage(
+          hunterRegisteredAssetPath("weapons", "arrow"),
+          (image) => {
+            assets.hunterWeapons.arrow = image;
+          },
+        );
+      }
+    }
+    for (const gearId of loadout.gearIds) {
+      queueImage(
+        hunterRegisteredAssetPath("gear", gearId),
+        (image) => {
+          assets.hunterGear[gearId] = image;
+        },
+      );
+    }
+    for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
+      queueImage(
+        hunterRegisteredAssetPath("trophies", trophyId),
+        (image) => {
+          assets.hunterTrophies[trophyId] = image;
+        },
+      );
+    }
+    const environmentAssets: Array<
+      [string, (image: HTMLImageElement | null) => void]
+    > = [
+      [
+        "/game/assets/v2/environments/jungle/climbables/tree-trunk.webp",
+        (image) => {
+          assets.treeTrunk = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+        (image) => {
+          assets.vineLadder = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/platforms/root-branch.webp",
+        (image) => {
+          assets.platformRoot = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/platforms/stone-slab.webp",
+        (image) => {
+          assets.platformStone = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/platforms/tree-crown.webp",
+        (image) => {
+          assets.platformCrown = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/platforms/expedition-platform.webp",
+        (image) => {
+          assets.platformExpedition = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/foreground/ferns.webp",
+        (image) => {
+          assets.foregroundFerns = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/foreground/hanging-vines.webp",
+        (image) => {
+          assets.foregroundVines = image;
+        },
+      ],
+      [
+        "/game/assets/v2/environments/jungle/foreground/lake-reeds.webp",
+        (image) => {
+          assets.foregroundReeds = image;
+        },
+      ],
+      [
+        "/game/sprites/mercenary.webp",
+        (image) => {
+          assets.mercenary = image;
+        },
+      ],
+      [
+        "/game/sprites/cryostalker.webp",
+        (image) => {
+          assets.cryostalker = image;
+        },
+      ],
+      [
+        "/game/sprites/bad-blood.webp",
+        (image) => {
+          assets.badBlood = image;
+        },
+      ],
+    ];
+    for (const [path, assign] of environmentAssets) {
+      queueImage(path, assign);
+    }
+    Promise.all(loadTasks).then(() => {
+      if (alive) setAssetsReady(true);
     });
 
     const restart = () => {
@@ -3212,7 +3835,7 @@ export default function HuntCanvas({
       } as CSSProperties}
     >
       {/* Bloc : statut de mission et ressources du biomask. */}
-      <header style={styles.topBar}>
+      <header className="hunt-top-bar" style={styles.topBar}>
         <div style={styles.identity}>
           <span style={{ ...styles.phaseTag, color: mission.palette.accent }}>
             {phaseLabel}
@@ -3221,7 +3844,11 @@ export default function HuntCanvas({
           <span style={styles.planet}>{mission.planetName}</span>
         </div>
 
-        <div style={styles.resourceGrid} aria-label="État du chasseur">
+        <div
+          className="hunt-resource-grid"
+          style={styles.resourceGrid}
+          aria-label="État du chasseur"
+        >
           <ResourceMeter
             label="Intégrité"
             value={ui.health}
@@ -3244,6 +3871,7 @@ export default function HuntCanvas({
 
         <button
           type="button"
+          className="hunt-pause-button"
           onClick={() => togglePauseRef.current()}
           style={styles.iconButton}
           aria-label={ui.paused ? "Reprendre la chasse" : "Mettre en pause"}
@@ -3597,10 +4225,10 @@ const styles: Record<string, CSSProperties> = {
   },
   topBar: {
     display: "grid",
-    gridTemplateColumns: "minmax(180px, 1fr) minmax(320px, 1.5fr) auto",
+    gridTemplateColumns: "minmax(120px, 1fr) minmax(0, 1.5fr) auto",
     alignItems: "center",
-    gap: 18,
-    padding: "12px 14px",
+    gap: "clamp(6px, 1.4vw, 18px)",
+    padding: "clamp(8px, 1.2vw, 12px) clamp(8px, 1.2vw, 14px)",
     background: "linear-gradient(180deg, #07100fcc, #030706f2)",
     border: "1px solid #7ab79e44",
     borderBottom: 0,
@@ -3727,8 +4355,9 @@ const styles: Record<string, CSSProperties> = {
   },
   canvas: {
     display: "block",
-    width: "100%",
+    width: "min(100%, calc(177.7778svh - 298.6667px))",
     height: "auto",
+    margin: "0 auto",
     aspectRatio: "16 / 9",
     outline: "none",
     touchAction: "none",

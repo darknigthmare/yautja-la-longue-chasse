@@ -60,9 +60,83 @@ export type HunterSkinId =
   | "ashen-mottle"
   | "dark-mottle";
 
-export type BiomaskId = "jungle" | "scarred" | "elder";
+export type HunterBodyMorphId =
+  | "classic"
+  | "elder"
+  | "super"
+  | "feral"
+  | "huntress"
+  | "young";
 
-export type DreadStyleId = "classic" | "braided" | "elder";
+export type HunterArmorStyleId =
+  | "classic"
+  | "city"
+  | "avp"
+  | "super"
+  | "feral";
+
+export type HunterPresetId =
+  | "custom"
+  | "jungle-hunter"
+  | "city-hunter"
+  | "greyback"
+  | "shaman"
+  | "lost-borg"
+  | "snake"
+  | "warrior"
+  | "scar"
+  | "celtic"
+  | "chopper"
+  | "avp-elder"
+  | "wolf"
+  | "berserker"
+  | "falconer"
+  | "tracker"
+  | "fugitive"
+  | "assassin"
+  | "feral-hunter"
+  | "kok-jotun"
+  | "kok-oni"
+  | "kok-warlord"
+  | "dek"
+  | "scarface"
+  | "stone-heart"
+  | "alpha"
+  | "samurai"
+  | "valkyrie"
+  | "cleopatra"
+  | "bionic"
+  | "witch"
+  | "broken-tusk"
+  | "ahab"
+  | "big-mama"
+  | "enforcer"
+  | "bad-blood-comic"
+  | "hashori";
+
+export type BiomaskId =
+  | "jungle"
+  | "city"
+  | "elder"
+  | "scar"
+  | "celtic"
+  | "chopper"
+  | "wolf"
+  | "feral"
+  | "berserker"
+  | "fugitive"
+  | "dek"
+  | "enforcer";
+
+export type DreadStyleId =
+  | "classic"
+  | "ringed"
+  | "braided"
+  | "veteran"
+  | "elder"
+  | "temple"
+  | "feral"
+  | "huntress";
 
 export type DreadTintId = "obsidian" | "umber" | "ashen";
 
@@ -85,10 +159,13 @@ export interface Loadout {
 }
 
 export interface HunterAppearance {
+  presetId: HunterPresetId;
+  bodyMorphId: HunterBodyMorphId;
   skinId: HunterSkinId;
   biomaskId: BiomaskId | null;
   dreadStyleId: DreadStyleId;
   dreadTintId: DreadTintId;
+  armorStyleId: HunterArmorStyleId;
   armorTintId: ArmorTintId;
   trophyAdornmentId: TrophyAdornmentId;
 }

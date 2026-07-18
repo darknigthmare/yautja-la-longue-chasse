@@ -33,7 +33,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 2;
+export const SAVE_VERSION = 3;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 
 export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
@@ -50,10 +50,13 @@ const DEFAULT_LOADOUT: Loadout = {
 };
 
 export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
+  presetId: "jungle-hunter",
+  bodyMorphId: "classic",
   skinId: "ochre-mottle",
   biomaskId: "jungle",
   dreadStyleId: "classic",
   dreadTintId: "obsidian",
+  armorStyleId: "classic",
   armorTintId: "gunmetal",
   trophyAdornmentId: "none",
 };
@@ -68,8 +71,84 @@ const HUNTER_SKIN_IDS = [
   "ashen-mottle",
   "dark-mottle",
 ] as const;
-const BIOMASK_IDS = ["jungle", "scarred", "elder"] as const;
-const DREAD_STYLE_IDS = ["classic", "braided", "elder"] as const;
+const HUNTER_PRESET_IDS = [
+  "custom",
+  "jungle-hunter",
+  "city-hunter",
+  "greyback",
+  "shaman",
+  "lost-borg",
+  "snake",
+  "warrior",
+  "scar",
+  "celtic",
+  "chopper",
+  "avp-elder",
+  "wolf",
+  "berserker",
+  "falconer",
+  "tracker",
+  "fugitive",
+  "assassin",
+  "feral-hunter",
+  "kok-jotun",
+  "kok-oni",
+  "kok-warlord",
+  "dek",
+  "scarface",
+  "stone-heart",
+  "alpha",
+  "samurai",
+  "valkyrie",
+  "cleopatra",
+  "bionic",
+  "witch",
+  "broken-tusk",
+  "ahab",
+  "big-mama",
+  "enforcer",
+  "bad-blood-comic",
+  "hashori",
+] as const;
+const HUNTER_BODY_MORPH_IDS = [
+  "classic",
+  "elder",
+  "super",
+  "feral",
+  "huntress",
+  "young",
+] as const;
+const HUNTER_ARMOR_STYLE_IDS = [
+  "classic",
+  "city",
+  "avp",
+  "super",
+  "feral",
+] as const;
+const BIOMASK_IDS = [
+  "jungle",
+  "city",
+  "elder",
+  "scar",
+  "celtic",
+  "chopper",
+  "wolf",
+  "feral",
+  "berserker",
+  "fugitive",
+  "dek",
+  "enforcer",
+] as const;
+const DREAD_STYLE_IDS = [
+  "classic",
+  "ringed",
+  "braided",
+  "veteran",
+  "elder",
+  "temple",
+  "feral",
+  "huntress",
+] as const;
 const DREAD_TINT_IDS = ["obsidian", "umber", "ashen"] as const;
 const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian"] as const;
 const TROPHY_ADORNMENT_IDS = ["none", "skull-spine"] as const;
@@ -300,6 +379,22 @@ const SAVE_MIGRATIONS: Readonly<
       ? input.appearance
       : { ...DEFAULT_HUNTER_APPEARANCE },
   }),
+  2: (input) => ({
+    ...input,
+    version: 3,
+    appearance: isRecord(input.appearance)
+      ? {
+          ...input.appearance,
+          presetId: "jungle-hunter",
+          bodyMorphId: "classic",
+          armorStyleId: "classic",
+          biomaskId:
+            input.appearance.biomaskId === "scarred"
+              ? "scar"
+              : input.appearance.biomaskId,
+        }
+      : { ...DEFAULT_HUNTER_APPEARANCE },
+  }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -355,6 +450,12 @@ function normalizeAppearance(source: unknown): HunterAppearance {
   }
 
   return {
+    presetId: isOneOf(source.presetId, HUNTER_PRESET_IDS)
+      ? source.presetId
+      : DEFAULT_HUNTER_APPEARANCE.presetId,
+    bodyMorphId: isOneOf(source.bodyMorphId, HUNTER_BODY_MORPH_IDS)
+      ? source.bodyMorphId
+      : DEFAULT_HUNTER_APPEARANCE.bodyMorphId,
     skinId: isOneOf(source.skinId, HUNTER_SKIN_IDS)
       ? source.skinId
       : DEFAULT_HUNTER_APPEARANCE.skinId,
@@ -370,6 +471,12 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     dreadTintId: isOneOf(source.dreadTintId, DREAD_TINT_IDS)
       ? source.dreadTintId
       : DEFAULT_HUNTER_APPEARANCE.dreadTintId,
+    armorStyleId: isOneOf(
+      source.armorStyleId,
+      HUNTER_ARMOR_STYLE_IDS,
+    )
+      ? source.armorStyleId
+      : DEFAULT_HUNTER_APPEARANCE.armorStyleId,
     armorTintId: isOneOf(source.armorTintId, ARMOR_TINT_IDS)
       ? source.armorTintId
       : DEFAULT_HUNTER_APPEARANCE.armorTintId,

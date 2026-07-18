@@ -1,16 +1,46 @@
+"use client";
+
+/* eslint-disable @next/next/no-img-element */
+
 import type { CSSProperties } from "react";
 
 import type {
   ArmorId,
+  GearId,
   HunterAppearance,
   WeaponId,
 } from "./types";
-import { HUNTER_VISUALS_V2 } from "./hunterVisuals";
+import {
+  hunterBodyPartHasNet,
+  HUNTER_ARMOR_MODULES,
+  HUNTER_BODY_PART_BONES,
+  HUNTER_EQUIPMENT_V3,
+  HUNTER_GEAR_V3,
+  HUNTER_TROPHIES_V3,
+  HUNTER_WEAPONS_V3,
+  hunterArmorPath,
+  hunterBodyPartPath,
+  hunterDreadPath,
+  hunterMaskPath,
+  hunterNetPartPath,
+  type HunterBodyPartId,
+} from "./hunterVisuals";
+import {
+  HUNTER_RIG_CANVAS,
+  multiplyAffine,
+  relativeBoneMatrix,
+  solveHunterRig,
+  type AffineMatrix,
+  type HunterRigBoneId,
+  type HunterRigFacing,
+  type HunterRigPose,
+} from "./hunterRig";
 
 export interface HunterRigPreviewProps {
   appearance: HunterAppearance;
   armorId: ArmorId;
   weaponIds: readonly WeaponId[];
+  gearIds?: readonly GearId[];
   size?: number | string;
   className?: string;
   style?: CSSProperties;
@@ -20,24 +50,34 @@ export interface HunterRigPreviewProps {
   bladesExtended?: boolean;
   aiming?: boolean;
   trophyCarried?: boolean;
+  pose?: HunterRigPose;
+  phase?: number;
+  facing?: HunterRigFacing;
+  speed?: number;
+  verticalVelocity?: number;
+  extractionProgress?: number;
+  aimAngle?: number;
+  recoil?: number;
+  debugBones?: boolean;
 }
 
 const SKIN_FILTER: Record<HunterAppearance["skinId"], string> = {
   "ochre-mottle": "none",
-  "ashen-mottle": "grayscale(0.66) sepia(0.16) hue-rotate(155deg) brightness(0.94)",
-  "dark-mottle": "saturate(0.76) brightness(0.68) contrast(1.16)",
+  "ashen-mottle":
+    "grayscale(.42) sepia(.12) hue-rotate(155deg) brightness(.96)",
+  "dark-mottle": "saturate(.78) brightness(.72) contrast(1.12)",
 };
 
 const DREAD_FILTER: Record<HunterAppearance["dreadTintId"], string> = {
-  obsidian: "saturate(0.72) brightness(0.68) contrast(1.22)",
-  umber: "sepia(0.54) saturate(0.9) brightness(0.76)",
-  ashen: "grayscale(0.82) brightness(1.05) contrast(0.94)",
+  obsidian: "saturate(.72) brightness(.68) contrast(1.22)",
+  umber: "sepia(.54) saturate(.9) brightness(.76)",
+  ashen: "grayscale(.82) brightness(1.05) contrast(.94)",
 };
 
 const ARMOR_FILTER: Record<HunterAppearance["armorTintId"], string> = {
   gunmetal: "brightness(1)",
-  bronze: "sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)",
-  obsidian: "saturate(0.68) brightness(0.58) contrast(1.2)",
+  bronze: "sepia(.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)",
+  obsidian: "saturate(.68) brightness(.58) contrast(1.2)",
 };
 
 const ARMOR_LABEL: Record<ArmorId, string> = {
@@ -46,39 +86,113 @@ const ARMOR_LABEL: Record<ArmorId, string> = {
   berserker: "berserker",
 };
 
-const DREAD_SLICES = [
-  { left: 0, right: 74, duration: 3.6, delay: -0.7, angle: 2.5 },
-  { left: 24, right: 49, duration: 4.1, delay: -2.2, angle: -2.1 },
-  { left: 49, right: 24, duration: 3.8, delay: -1.3, angle: 3.2 },
-  { left: 74, right: 0, duration: 4.4, delay: -3.1, angle: -2.7 },
-] as const;
+const BODY_LAYER_ORDER: readonly HunterBodyPartId[] = [
+  "thigh-back",
+  "shin-back",
+  "foot-back",
+  "upper-arm-back",
+  "lower-arm-back",
+  "hand-back",
+  "pelvis",
+  "torso",
+  "head",
+  "thigh-front",
+  "shin-front",
+  "foot-front",
+  "upper-arm-front",
+  "lower-arm-front",
+  "hand-front",
+];
+
+const DREAD_GROUPS: Readonly<
+  Record<HunterAppearance["dreadStyleId"], readonly HunterAppearance["dreadStyleId"][]>
+> = {
+  classic: ["classic", "ringed", "temple", "veteran"],
+  ringed: ["ringed", "classic", "veteran", "temple"],
+  braided: ["braided", "huntress", "ringed", "temple"],
+  veteran: ["veteran", "elder", "ringed", "classic"],
+  elder: ["elder", "veteran", "temple", "classic"],
+  temple: ["temple", "classic", "ringed"],
+  feral: ["feral", "temple", "classic"],
+  huntress: ["huntress", "braided", "ringed", "elder"],
+};
+
+const BIND_FRAME = solveHunterRig({
+  pose: "idle",
+  facing: 1,
+  phase: 0,
+  aimAngle: 0,
+});
+
+const fullCanvasImage: CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "fill",
+  transformOrigin: "0 0",
+  pointerEvents: "none",
+  userSelect: "none",
+};
 
 const rootBaseStyle: CSSProperties = {
   position: "relative",
   display: "inline-block",
   flex: "0 0 auto",
-  aspectRatio: "295 / 405",
+  aspectRatio: "2 / 3",
   overflow: "visible",
   isolation: "isolate",
   pointerEvents: "none",
   userSelect: "none",
 };
 
-const fullLayerStyle: CSSProperties = {
-  position: "absolute",
-  inset: 0,
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "contain",
-  pointerEvents: "none",
-};
+function cssMatrix(matrix: AffineMatrix): string {
+  // The browser normalizes CSS matrix numbers to six decimals before React
+  // hydrates the server markup. Emitting that stable representation ourselves
+  // keeps the SSR and client attributes byte-for-byte identical.
+  const linearValues = [
+    matrix.a,
+    matrix.b,
+    matrix.c,
+    matrix.d,
+    0,
+    0,
+  ].map((value) => Number(value.toFixed(6)));
+  const translateX = Number(
+    ((matrix.e / HUNTER_RIG_CANVAS.width) * 100).toFixed(6),
+  );
+  const translateY = Number(
+    ((matrix.f / HUNTER_RIG_CANVAS.height) * 100).toFixed(6),
+  );
+  return (
+    `translate(${translateX}%, ${translateY}%) ` +
+    `matrix(${linearValues.join(", ")})`
+  );
+}
 
-function assetLayer(path: string, style?: CSSProperties): CSSProperties {
-  return {
-    ...fullLayerStyle,
-    backgroundImage: `url("${path}")`,
-    ...style,
+function translation(x: number, y: number): AffineMatrix {
+  return { a: 1, b: 0, c: 0, d: 1, e: x, f: y };
+}
+
+function rotationAround(
+  x: number,
+  y: number,
+  angle: number,
+): AffineMatrix {
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
+  const rotation: AffineMatrix = {
+    a: cosine,
+    b: sine,
+    c: -sine,
+    d: cosine,
+    e: 0,
+    f: 0,
   };
+  return multiplyAffine(
+    multiplyAffine(translation(x, y), rotation),
+    translation(-x, -y),
+  );
 }
 
 function buildAccessibleLabel({
@@ -104,7 +218,8 @@ function buildAccessibleLabel({
   >
 >): string {
   const details = [
-    `armure ${ARMOR_LABEL[armorId]}`,
+    `morphologie ${appearance.bodyMorphId}`,
+    `armure ${ARMOR_LABEL[armorId]} ${appearance.armorStyleId}`,
     maskWorn && appearance.biomaskId
       ? `biomasque ${appearance.biomaskId} porté`
       : "visage découvert",
@@ -117,17 +232,42 @@ function buildAccessibleLabel({
   if (weaponIds.includes("plasma-caster")) {
     details.push(aiming ? "canon plasma en visée" : "canon plasma au repos");
   }
-  if (trophyCarried) {
-    details.push("trophée porté");
-  }
+  if (trophyCarried) details.push("trophée porté");
 
-  return `Aperçu du chasseur Yautja, ${details.join(", ")}.`;
+  return `Aperçu modulaire du chasseur Yautja, ${details.join(", ")}.`;
+}
+
+function registeredLayer(
+  path: string,
+  matrix: AffineMatrix,
+  zIndex: number,
+  slot: string,
+  filter?: string,
+  opacity?: number,
+): React.ReactNode {
+  return (
+    <img
+      aria-hidden="true"
+      alt=""
+      data-rig-slot={slot}
+      draggable={false}
+      src={path}
+      style={{
+        ...fullCanvasImage,
+        zIndex,
+        opacity,
+        filter,
+        transform: cssMatrix(matrix),
+      }}
+    />
+  );
 }
 
 export function HunterRigPreview({
   appearance,
   armorId,
   weaponIds,
+  gearIds = [],
   size = 240,
   className,
   style,
@@ -137,12 +277,54 @@ export function HunterRigPreview({
   bladesExtended = false,
   aiming = false,
   trophyCarried = false,
+  pose = "idle",
+  phase = 0,
+  facing = 1,
+  speed = 0,
+  verticalVelocity = 0,
+  extractionProgress = 0,
+  aimAngle,
+  recoil = 0,
+  debugBones = false,
 }: HunterRigPreviewProps) {
+  const resolvedAimAngle =
+    aimAngle ??
+    (facing > 0
+      ? aiming
+        ? -0.24
+        : 0
+      : aiming
+        ? Math.PI + 0.24
+        : Math.PI);
+  const frame = solveHunterRig({
+    pose,
+    phase,
+    facing,
+    speed,
+    verticalVelocity,
+    extractionProgress,
+    aimAngle: resolvedAimAngle,
+    recoil,
+  });
+  const boneMatrix = (boneId: HunterRigBoneId) =>
+    relativeBoneMatrix(frame, BIND_FRAME, boneId);
+
   const showsCaster = weaponIds.includes("plasma-caster");
   const showsWristblades = weaponIds.includes("wristblades");
   const showsTrophy =
     trophyCarried || appearance.trophyAdornmentId === "skull-spine";
-  const maskId = appearance.biomaskId;
+  const carriedWeaponId = weaponIds.find(
+    (weaponId) =>
+      weaponId !== "plasma-caster" && weaponId !== "wristblades",
+  );
+  const armorFamily = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
+  const armorFilter = `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
+  const netOpacity =
+    appearance.armorStyleId === "feral"
+      ? 0.28
+      : appearance.bodyMorphId === "super"
+        ? 0.58
+        : 0.9;
   const resolvedLabel =
     label ??
     buildAccessibleLabel({
@@ -156,18 +338,55 @@ export function HunterRigPreview({
       trophyCarried,
     });
 
+  const armorSlots: Array<{
+    id: string;
+    bone: HunterRigBoneId;
+    z: number;
+  }> = [
+    { id: armorFamily.chest, bone: "torso", z: 44 },
+    { id: armorFamily.shoulder, bone: "armFrontUpper", z: 52 },
+    { id: "belt", bone: "pelvis", z: 49 },
+  ];
+  if (armorId !== "scout") {
+    armorSlots.push(
+      { id: "bracer", bone: "armFrontLower", z: 55 },
+      { id: "thigh", bone: "legFrontUpper", z: 47 },
+      { id: "shin", bone: "legFrontLower", z: 48 },
+    );
+  }
+
+  const lidBase = boneMatrix("armBackLower");
+  const lidMatrix = multiplyAffine(
+    lidBase,
+    rotationAround(77, 202, gauntletOpen ? -1.12 : 0),
+  );
+  const bladeMatrix = multiplyAffine(
+    boneMatrix("armFrontLower"),
+    translation(bladesExtended ? 42 : 5, bladesExtended ? -3 : 0),
+  );
+  const muzzle = frame.anchors.muzzle;
+  const reticleDistance = aiming ? 126 : 92;
+  const reticle = {
+    x: muzzle.x + Math.cos(resolvedAimAngle) * reticleDistance,
+    y: muzzle.y + Math.sin(resolvedAimAngle) * reticleDistance,
+  };
+
   return (
     <div
       className={className}
       role="img"
       aria-label={resolvedLabel}
       data-hunter-rig=""
+      data-rig-version="3"
+      data-preset={appearance.presetId}
+      data-body-morph={appearance.bodyMorphId}
       data-armor={armorId}
-      data-mask={maskWorn && maskId ? maskId : "off"}
-      data-aiming={aiming ? "true" : "false"}
-      data-trophy={
-        trophyCarried ? "carried" : showsTrophy ? "adornment" : "none"
+      data-armor-style={appearance.armorStyleId}
+      data-mask={
+        maskWorn && appearance.biomaskId ? appearance.biomaskId : "off"
       }
+      data-aiming={aiming ? "true" : "false"}
+      data-pose={pose}
       style={{
         ...rootBaseStyle,
         width: size,
@@ -176,197 +395,356 @@ export function HunterRigPreview({
     >
       <style>
         {`
-          @keyframes hunter-rig-dread-sway {
-            0%, 100% { transform: rotate(var(--dread-angle-rest)); }
-            48% { transform: rotate(var(--dread-angle)); }
-            72% { transform: rotate(var(--dread-angle-drift)); }
+          @keyframes hunter-rig-v3-dread-sway {
+            0%, 100% { transform: rotate(var(--dread-rest)); }
+            48% { transform: rotate(var(--dread-sway)); }
+            74% { transform: rotate(var(--dread-drift)); }
           }
-          @keyframes hunter-rig-reticle-pulse {
-            0%, 100% { opacity: .45; transform: scale(.86); }
-            50% { opacity: 1; transform: scale(1.12); }
+          @keyframes hunter-rig-v3-reticle {
+            0%, 100% { opacity: .48; scale: .88; }
+            50% { opacity: 1; scale: 1.1; }
           }
           @media (prefers-reduced-motion: reduce) {
-            [data-hunter-rig-dread],
-            [data-hunter-rig-reticle] {
-              animation: none !important;
-            }
+            [data-rig-dread-inner],
+            [data-hunter-rig-reticle] { animation: none !important; }
           }
         `}
       </style>
 
-      {DREAD_SLICES.map((slice, index) => (
-        <span
-          aria-hidden="true"
-          data-hunter-rig-dread=""
-          key={`${appearance.dreadStyleId}-${index}`}
-          style={
-            {
-              ...assetLayer(
-                HUNTER_VISUALS_V2.dreads[appearance.dreadStyleId],
+      {DREAD_GROUPS[appearance.dreadStyleId].map((dreadId, index) => {
+        const matrix = boneMatrix("head");
+        const sway = 2.2 + index * 0.75;
+        return (
+          <span
+            aria-hidden="true"
+            data-rig-slot={`dread-${index}`}
+            key={`${dreadId}-${index}`}
+            style={{
+              ...fullCanvasImage,
+              zIndex: 4 + index,
+              transform: cssMatrix(matrix),
+            }}
+          >
+            <img
+              alt=""
+              data-rig-dread-inner=""
+              draggable={false}
+              src={hunterDreadPath(dreadId)}
+              style={
                 {
-                  inset: "1% 31% 45% 2%",
-                  zIndex: 1,
-                  backgroundPosition: "center",
-                  clipPath: `inset(0 ${slice.right}% 0 ${slice.left}%)`,
+                  ...fullCanvasImage,
                   filter: DREAD_FILTER[appearance.dreadTintId],
-                  transformOrigin: "72% 22%",
-                  animationName: "hunter-rig-dread-sway",
-                  animationDuration: `${slice.duration}s`,
-                  animationDelay: `${slice.delay}s`,
-                  animationTimingFunction: "ease-in-out",
-                  animationIterationCount: "infinite",
-                },
-              ),
-              "--dread-angle": `${slice.angle}deg`,
-              "--dread-angle-rest": `${slice.angle * -0.45}deg`,
-              "--dread-angle-drift": `${slice.angle * -0.16}deg`,
-            } as CSSProperties
-          }
-        />
+                  transformOrigin: `${38 + index * 3}% ${12 + index * 1.4}%`,
+                  animation:
+                    `hunter-rig-v3-dread-sway ${3.5 + index * 0.28}s ` +
+                    `${-index * 0.61}s ease-in-out infinite`,
+                  "--dread-rest": `${-sway * 0.24}deg`,
+                  "--dread-sway": `${sway}deg`,
+                  "--dread-drift": `${-sway * 0.45}deg`,
+                } as CSSProperties
+              }
+            />
+          </span>
+        );
+      })}
+
+      {showsTrophy && (
+        <>
+          {registeredLayer(
+            HUNTER_TROPHIES_V3.spine,
+            trophyCarried
+              ? multiplyAffine(
+                  boneMatrix("handFront"),
+                  translation(122, -9),
+                )
+              : boneMatrix("pelvis"),
+            trophyCarried ? 73 : 12,
+            "trophy-spine",
+            "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+          )}
+          {registeredLayer(
+            HUNTER_TROPHIES_V3.skull,
+            trophyCarried
+              ? multiplyAffine(
+                  boneMatrix("handFront"),
+                  translation(122, -9),
+                )
+              : boneMatrix("pelvis"),
+            trophyCarried ? 74 : 13,
+            "trophy-skull",
+            "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+          )}
+          {registeredLayer(
+            HUNTER_TROPHIES_V3.bindings,
+            trophyCarried
+              ? multiplyAffine(
+                  boneMatrix("handFront"),
+                  translation(122, -9),
+                )
+              : boneMatrix("pelvis"),
+            trophyCarried ? 75 : 14,
+            "trophy-bindings",
+            "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+          )}
+        </>
+      )}
+
+      {BODY_LAYER_ORDER.flatMap((partId, index) => {
+        const boneId = HUNTER_BODY_PART_BONES[partId] as HunterRigBoneId;
+        const matrix = boneMatrix(boneId);
+        const z = 20 + index * 2;
+        return [
+          <img
+            aria-hidden="true"
+            alt=""
+            data-rig-slot={`body-${partId}`}
+            draggable={false}
+            key={`body-${partId}`}
+            src={hunterBodyPartPath(appearance.bodyMorphId, partId)}
+            style={{
+              ...fullCanvasImage,
+              zIndex: z,
+              filter: SKIN_FILTER[appearance.skinId],
+              transform: cssMatrix(matrix),
+            }}
+          />,
+          ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
+            ? [
+                <img
+                  aria-hidden="true"
+                  alt=""
+                  data-rig-slot={`net-${partId}`}
+                  draggable={false}
+                  key={`net-${partId}`}
+                  src={hunterNetPartPath(appearance.bodyMorphId, partId)}
+                  style={{
+                    ...fullCanvasImage,
+                    zIndex: z + 1,
+                    opacity: netOpacity,
+                    transform: cssMatrix(matrix),
+                  }}
+                />,
+              ]
+            : []),
+        ];
+      })}
+
+      {armorSlots.map((slot) => (
+        <span key={`${slot.id}-${slot.bone}`}>
+          {registeredLayer(
+            hunterArmorPath(slot.id),
+            boneMatrix(slot.bone),
+            slot.z,
+            `armor-${slot.id}`,
+            armorFilter,
+          )}
+        </span>
       ))}
 
-      <span
-        aria-hidden="true"
-        style={assetLayer(HUNTER_VISUALS_V2.body.base, {
-          zIndex: 2,
-          filter: SKIN_FILTER[appearance.skinId],
-        })}
-      />
+      {gearIds.slice(0, 2).map((gearId, gearIndex) => (
+        <span key={gearId}>
+          {registeredLayer(
+            HUNTER_GEAR_V3[gearId],
+            multiplyAffine(
+              boneMatrix("pelvis"),
+              translation(gearIndex === 0 ? -22 : 24, gearIndex * 5),
+            ),
+            53 + gearIndex,
+            `gear-${gearId}`,
+            "drop-shadow(0 2px 2px rgb(0 0 0 / .85))",
+          )}
+        </span>
+      ))}
 
-      <span
-        aria-hidden="true"
-        style={assetLayer(HUNTER_VISUALS_V2.armor[armorId], {
-          inset: "1% 3% 0",
-          zIndex: 4,
-          filter: `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / 0.82))`,
-        })}
-      />
-
-      {maskWorn && maskId && (
-        <span
-          aria-hidden="true"
-          style={assetLayer(HUNTER_VISUALS_V2.masks[maskId], {
-            inset: "1% 1% 66% 65%",
-            zIndex: 7,
-            backgroundPosition: "center",
-            filter: "drop-shadow(0 2px 2px rgb(0 0 0 / 0.86))",
-          })}
-        />
-      )}
+      {maskWorn &&
+        appearance.biomaskId &&
+        registeredLayer(
+          hunterMaskPath(appearance.biomaskId),
+          boneMatrix("head"),
+          70,
+          `mask-${appearance.biomaskId}`,
+          "drop-shadow(0 2px 2px rgb(0 0 0 / .9))",
+        )}
 
       {showsCaster && (
         <>
-          {aiming && (
-            <>
-              <span
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  zIndex: 5,
-                  top: "10.6%",
-                  left: "72%",
-                  width: "54%",
-                  height: 2,
-                  transform: "rotate(-4deg)",
-                  transformOrigin: "left center",
-                  background:
-                    "linear-gradient(90deg, rgb(255 48 42 / 0.88), rgb(255 48 42 / 0.08))",
-                  boxShadow: "0 0 6px rgb(255 49 41 / 0.82)",
-                }}
-              />
-              <span
-                aria-hidden="true"
-                data-hunter-rig-reticle=""
-                style={{
-                  position: "absolute",
-                  zIndex: 10,
-                  top: "5.5%",
-                  right: "-30%",
-                  width: "10%",
-                  aspectRatio: "1",
-                  border: "2px solid #ff3b34",
-                  borderRadius: "50%",
-                  boxShadow:
-                    "0 0 0 1px rgb(15 0 0 / 0.75), 0 0 9px rgb(255 48 42 / 0.76)",
-                  animation:
-                    "hunter-rig-reticle-pulse 1.25s ease-in-out infinite",
-                }}
-              />
-            </>
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.mount,
+            boneMatrix("casterShoulderMount"),
+            56,
+            "caster-mount",
           )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.upperArm,
+            boneMatrix("casterUpperArm"),
+            57,
+            "caster-upper-arm",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.lowerArm,
+            boneMatrix("casterLowerArm"),
+            58,
+            "caster-lower-arm",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.yoke,
+            boneMatrix("casterYoke"),
+            59,
+            "caster-yoke",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.cannon,
+            boneMatrix("casterCannon"),
+            60,
+            "caster-cannon",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.barrel,
+            boneMatrix("casterBarrel"),
+            61,
+            "caster-barrel",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.muzzle,
+            boneMatrix("casterMuzzle"),
+            62,
+            "caster-muzzle",
+          )}
+          {registeredLayer(
+            HUNTER_EQUIPMENT_V3.plasma.laser,
+            boneMatrix("casterMuzzle"),
+            63,
+            "caster-laser-emitter",
+          )}
+        </>
+      )}
+
+      {registeredLayer(
+        HUNTER_EQUIPMENT_V3.gauntlet.base,
+        boneMatrix("armBackLower"),
+        64,
+        "gauntlet-base",
+      )}
+      {registeredLayer(
+        HUNTER_EQUIPMENT_V3.gauntlet.lid,
+        lidMatrix,
+        65,
+        "gauntlet-lid",
+      )}
+
+      {showsWristblades &&
+        registeredLayer(
+          HUNTER_EQUIPMENT_V3.wristblades.housing,
+          boneMatrix("armFrontLower"),
+          66,
+          "blade-housing",
+        )}
+      {showsWristblades &&
+        registeredLayer(
+          HUNTER_EQUIPMENT_V3.wristblades.blades,
+          bladeMatrix,
+          67,
+          "wristblades",
+          undefined,
+          bladesExtended ? 1 : 0.68,
+        )}
+
+      {carriedWeaponId === "combistick" &&
+        registeredLayer(
+          HUNTER_WEAPONS_V3.combistick,
+          boneMatrix("handFront"),
+          76,
+          "weapon-combistick",
+          "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+        )}
+      {carriedWeaponId === "smart-disc" &&
+        registeredLayer(
+          HUNTER_WEAPONS_V3.smartDisc,
+          boneMatrix("handFront"),
+          76,
+          "weapon-smart-disc",
+          "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+        )}
+      {carriedWeaponId === "yautja-bow" && (
+        <>
+          {registeredLayer(
+            HUNTER_WEAPONS_V3.yautjaBow,
+            boneMatrix("handFront"),
+            76,
+            "weapon-yautja-bow",
+            "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
+          )}
+          {aiming &&
+            registeredLayer(
+              HUNTER_WEAPONS_V3.arrow,
+              boneMatrix("handFront"),
+              77,
+              "weapon-arrow",
+            )}
+        </>
+      )}
+
+      {aiming && showsCaster && (
+        <>
           <span
             aria-hidden="true"
-            style={assetLayer(HUNTER_VISUALS_V2.equipment.plasmaCaster, {
-              inset: aiming ? "-5% 20% 62% 48%" : "0 25% 60% 43%",
-              zIndex: 8,
-              backgroundPosition: "center",
-              filter: "drop-shadow(0 2px 2px rgb(0 0 0 / 0.9))",
-              transform: aiming
-                ? "rotate(-8deg) translateX(4%)"
-                : "rotate(-1deg)",
-              transformOrigin: "44% 72%",
-              transition: "transform 180ms ease, inset 180ms ease",
-            })}
+            data-rig-slot="laser-beam"
+            style={{
+              position: "absolute",
+              zIndex: 80,
+              left: `${(muzzle.x / 256) * 100}%`,
+              top: `${(muzzle.y / 384) * 100}%`,
+              width: "50%",
+              height: 2,
+              background:
+                "linear-gradient(90deg, rgb(255 48 42 / .92), rgb(255 48 42 / .06))",
+              boxShadow: "0 0 6px rgb(255 49 41 / .82)",
+              transform: `rotate(${resolvedAimAngle}rad)`,
+              transformOrigin: "left center",
+            }}
+          />
+          <span
+            aria-hidden="true"
+            data-hunter-rig-reticle=""
+            style={{
+              position: "absolute",
+              zIndex: 81,
+              left: `${(reticle.x / 256) * 100}%`,
+              top: `${(reticle.y / 384) * 100}%`,
+              width: "8%",
+              aspectRatio: "1",
+              border: "2px solid #ff3b34",
+              borderRadius: "50%",
+              boxShadow:
+                "0 0 0 1px rgb(15 0 0 / .75), 0 0 9px rgb(255 48 42 / .76)",
+              translate: "-50% -50%",
+              animation: "hunter-rig-v3-reticle 1.25s ease-in-out infinite",
+            }}
           />
         </>
       )}
 
-      <span
-        aria-hidden="true"
-        style={assetLayer(
-          HUNTER_VISUALS_V2.equipment.gauntlet[
-            gauntletOpen ? "open" : "closed"
-          ],
-          {
-            inset: "47% -4% 35% 65%",
-            zIndex: 8,
-            backgroundPosition: "center",
-            filter: "drop-shadow(0 2px 2px rgb(0 0 0 / 0.9))",
-            transform: "rotate(67deg)",
-          },
-        )}
-      />
-
-      {showsWristblades && (
-        <span
-          aria-hidden="true"
-          style={assetLayer(
-            HUNTER_VISUALS_V2.equipment.wristblades[
-              bladesExtended ? "extended" : "retracted"
-            ],
-            {
-              inset: bladesExtended
-                ? "42% -18% 30% 60%"
-                : "48% -5% 34% 67%",
-              zIndex: 9,
-              backgroundPosition: "center",
-              filter: "drop-shadow(0 2px 2px rgb(0 0 0 / 0.9))",
-              transform: bladesExtended ? "rotate(62deg)" : "rotate(67deg)",
-              transformOrigin: "25% 50%",
-              transition: "transform 180ms ease, inset 180ms ease",
-            },
-          )}
-        />
-      )}
-
-      {showsTrophy && (
-        <span
-          aria-hidden="true"
-          style={assetLayer(HUNTER_VISUALS_V2.trophies.skullSpine, {
-            inset: trophyCarried
-              ? "47% -8% 3% 55%"
-              : "45% 42% 31% 31%",
-            zIndex: trophyCarried ? 10 : 6,
-            backgroundPosition: "center",
-            filter: "drop-shadow(0 3px 3px rgb(0 0 0 / 0.9))",
-            transform: trophyCarried
-              ? "rotate(9deg)"
-              : "rotate(-11deg) scale(0.58)",
-            transformOrigin: trophyCarried ? "55% 12%" : "center",
-            transition: "transform 180ms ease, inset 180ms ease",
-          })}
-        />
-      )}
+      {debugBones &&
+        Object.entries(frame.bones).map(([boneId, matrix]) => (
+          <span
+            aria-hidden="true"
+            data-rig-debug-bone={boneId}
+            key={boneId}
+            style={{
+              position: "absolute",
+              zIndex: 100,
+              left: `${(matrix.e / 256) * 100}%`,
+              top: `${(matrix.f / 384) * 100}%`,
+              width: 5,
+              height: 5,
+              border: "1px solid #fff",
+              borderRadius: "50%",
+              background: "#ff3b34",
+              translate: "-50% -50%",
+              boxShadow: "0 0 4px #000",
+            }}
+          />
+        ))}
     </div>
   );
 }

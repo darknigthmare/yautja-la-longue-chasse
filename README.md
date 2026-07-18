@@ -2,8 +2,7 @@
 
 Jeu d’action 2D side-scroller original et non commercial inspiré de l’univers
 de *Predator*. Le joueur prépare son chasseur dans un vaisseau-hub, choisit ses
-contrats, adapte son arsenal, traque des proies dignes sur trois planètes,
-réclame ses trophées et progresse jusqu’au duel final contre un Paria.
+contrats et son arsenal, puis traque des proies dignes sur plusieurs planètes.
 
 ## Jouer
 
@@ -31,19 +30,59 @@ Ouvrir ensuite `http://localhost:3000/`.
 
 La manette et des commandes tactiles sont également prises en charge.
 
-## Contenu
+## Rig modulaire V3
 
-- vaisseau-hub, carte galactique, armurerie, quartier de personnalisation,
-  mur de trophées et codex ;
-- chasseur entièrement modulaire : peau, biomask amovible, dreadlocks souples,
-  canon plasma orientable, gantelet ouvrable, lames rétractables et parures ;
+Tous les éléments du chasseur partagent maintenant un canevas runtime
+`256×384`, une ligne de sol commune et le même squelette affine :
+
+- six morphologies de corps découpées en quinze parties anatomiques ;
+- filet segmenté avec les mêmes articulations ;
+- douze biomasks, huit familles de dreadlocks et cinq familles d’armure ;
+- plasmacaster en huit pièces : support, bras supérieur, bras inférieur,
+  rotule, canon, tube, bouche et laser ;
+- gantelet avec boîtier et couvercle séparés ;
+- boîtier de wristblades et lames coulissantes séparés ;
+- combistick déployé/replié, smart-disc, arc et flèche attachés aux mains ;
+- netgun, capteur de mouvement, leurre audio et piège attachés à la ceinture ;
+- crâne, colonne et liens de trophée séparés, transportables à la main ou à la
+  ceinture ;
+- une origine `muzzle` unique pour le canon, le laser, le réticule et le
+  projectile.
+
+Le catalogue propose 36 configurations documentées issues des films,
+crossovers, jeux, comics et romans. Une fiche indique sa continuité, ses
+sources et les approximations éventuelles. Les chasseurs sans design visuel
+officiel, comme une apparition uniquement décrite en prose, restent
+explicitement marqués comme interprétations.
+
+L’[audit complet de modularité](docs/AUDIT-MODULARITE-V3.md) décrit les défauts
+de la V2, le contrat géométrique V3 et les références utilisées.
+
+## Contenu jouable
+
+- vaisseau-hub, carte galactique, armurerie, personnalisation, mur de trophées
+  et codex ;
 - trois chasses scénarisées avec biomes, cibles et boss distincts ;
 - jungle lacustre multi-plan avec arbres, lianes et plateformes grimpables ;
 - cinq armes, quatre équipements, trois armures et quatre difficultés ;
-- système d’honneur, rangs, prises multiples, progression et sauvegarde locale
-  versionnée ;
-- mode de rejeu avec meilleurs scores.
+- biomask, scanner, camouflage, medicomp, visée plasma et extraction de
+  trophées ;
+- système d’honneur, rangs, prises multiples, progression, sauvegarde locale
+  versionnée et mode de rejeu.
 
-Les personnages, proies, planètes et visuels sont des créations originales.
-*Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet n’est ni
-officiel, ni affilié à 20th Century Studios ou Disney.
+## Développement et validation
+
+```powershell
+npm.cmd run lint
+npm.cmd run build
+npm.cmd run qa
+```
+
+Les textures V3 sont des créations pixel-art originales générées avec OpenAI,
+puis détourées et normalisées par `scripts/prepare-v3-assets.py`. Les atlas
+source sont conservés dans `art-source/v3`; le jeu ne contient pas de fichiers
+officiels extraits des films ou des jeux.
+
+*Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet privé de
+fan, non commercial, n’est ni officiel, ni affilié à 20th Century Studios ou
+Disney.
