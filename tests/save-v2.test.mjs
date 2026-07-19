@@ -106,6 +106,32 @@ test("appearance normalization accepts an unmasked hunter and repairs invalid id
   });
 });
 
+test("Scout loadouts use upgraded capacity and never fall back to Hunter", () => {
+  const source = defaultSave("2026-01-01T00:00:00.000Z");
+  source.inventory.unlockedArmorIds.push("scout");
+  source.inventory.armorUpgrades.scout = 1;
+  source.loadout = {
+    armorId: "scout",
+    weaponIds: ["combistick", "plasma-caster"],
+    gearIds: ["motion-sensor", "audio-decoy"],
+  };
+
+  const upgraded = normalizeSave(source);
+  assert.equal(upgraded.loadout.armorId, "scout");
+  assert.deepEqual(upgraded.loadout.weaponIds, [
+    "combistick",
+    "plasma-caster",
+  ]);
+
+  source.inventory.armorUpgrades.scout = 0;
+  const repaired = normalizeSave(source);
+  assert.equal(repaired.loadout.armorId, "scout");
+  assert.deepEqual(repaired.loadout.weaponIds, [
+    "wristblades",
+    "combistick",
+  ]);
+});
+
 test("mission claims persist separately and deduplicate only by claim id", () => {
   const result = {
     missionId: "jungle-vey",

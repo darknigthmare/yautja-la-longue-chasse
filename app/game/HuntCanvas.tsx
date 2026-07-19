@@ -9,8 +9,8 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import {
-  ARMOR_BY_ID,
   DIFFICULTY_BY_ID,
+  GEAR_BY_ID,
   WEAPON_BY_ID,
 } from "./data";
 import {
@@ -40,6 +40,49 @@ import {
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
+import {
+  ageTracks,
+  advanceScentField,
+  createAiBrain,
+  createBossMechanicState,
+  createHuntTrap,
+  createScentNode,
+  createTrackMark,
+  perceivedNoise,
+  sampleScentAt,
+  sampleTracksAt,
+  sampleWind,
+  stepAiBrain,
+  stepBossMechanics,
+  stepHuntTrap,
+  stepMudState,
+  type AiBrain,
+  type BossMechanicState,
+  type HuntTrap,
+  type MudState,
+  type NoiseEvent,
+  type ScentNode,
+  type TrackMark,
+} from "./systems/huntSystems";
+import {
+  createArsenalRuntime,
+  effectiveArmorStats,
+  effectiveWeaponStats,
+  removeGearEffect,
+  tickArsenalRuntime,
+  useGearSlot as activateArsenalGearSlot,
+  type ArsenalRuntimeState,
+  type GearEffectEvent,
+} from "./systems/arsenal";
+import {
+  isHazardActive,
+  worldBlueprintFor,
+  type TrackSurface,
+  type WorldBlueprint,
+  type WorldClimbable,
+  type WorldPlatform,
+} from "./systems/worldBlueprints";
+import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
   GearId,
@@ -48,6 +91,7 @@ import type {
   Loadout,
   MissionDefinition,
   MissionResult,
+  PlayerInventory,
   TrophyClaim,
   TrophyQuality,
   WeaponId,
@@ -60,12 +104,15 @@ import type {
 interface HuntCanvasProps {
   mission: MissionDefinition;
   loadout: Loadout;
+  inventory: PlayerInventory;
   difficulty: DifficultyId;
   appearance: HunterAppearance;
   reducedGore: boolean;
   screenShake: boolean;
+  highContrastVision: boolean;
+  onSound?(sound: GameSfxId): void;
   onFinish(result: MissionResult): void;
-  onAbort(): void;
+  onAbort(result: MissionResult): void;
 }
 
 // ---------------------------------------------------------------------------
@@ -80,11 +127,16 @@ type Action =
   | "jump"
   | "melee"
   | "weapon"
+  | "weaponOne"
+  | "weaponTwo"
+  | "weaponNext"
   | "aim"
   | "mask"
   | "scan"
   | "cloak"
   | "heal"
+  | "gearOne"
+  | "gearTwo"
   | "interact"
   | "pause";
 
@@ -103,21 +155,8 @@ interface Vec2 {
   y: number;
 }
 
-interface Platform {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
-
-interface ClimbZone {
-  id: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  kind: "tree" | "vine";
-}
+type Platform = WorldPlatform;
+type ClimbZone = WorldClimbable;
 
 interface PlayerState extends Vec2 {
   previousY: number;
@@ -134,7 +173,8 @@ interface PlayerState extends Vec2 {
   energy: number;
   maxEnergy: number;
   medicomps: number;
-  ammo: number;
+  activeWeaponSlot: 0 | 1;
+  weaponAmmo: [number, number];
   cloaked: boolean;
   maskOn: boolean;
   aiming: boolean;
@@ -170,6 +210,8 @@ interface EnemyState extends Vec2 {
   patrolRight: number;
   attackCooldown: number;
   telegraph: number;
+  pendingAttackId: string | null;
+  restrainedUntil: number;
   hitFlash: number;
   scanned: boolean;
   alive: boolean;
@@ -209,6 +251,57 @@ interface RecoveryNode extends Vec2 {
   recovered: boolean;
 }
 
+interface GearSlotSnapshot {
+  gearId: GearId;
+  name: string;
+  charges: number;
+  maxCharges: number;
+  cooldownRemainingSeconds: number;
+}
+
+interface MissionCheckpointPayload {
+  phase: HuntPhase;
+  elapsed: number;
+  player: PlayerState;
+  enemies: EnemyState[];
+  aiBrains: Record<string, AiBrain>;
+  scanNodes: ScanNode[];
+  recoveryNodes: RecoveryNode[];
+  purgeConsoleNodes: RecoveryNode[];
+  spawnedWaves: Set<string>;
+  completedObjectives: Set<string>;
+  honorEvents: HonorEvent[];
+  honor: number;
+  kills: number;
+  scans: number;
+  supportKills: number;
+  damageTaken: number;
+  secondWindUsed: boolean;
+  boss: EnemyState;
+  bossMechanics: BossMechanicState;
+  bossVulnerabilityMultiplier: number;
+  bossThermalVisibility: number;
+  energyWeaponsLocked: boolean;
+  brokenPillarIds: Set<string>;
+  mud: MudState;
+  bossHitPillar: boolean;
+  disabledConsoleId: string | null;
+  playerUsedRangedWeapon: boolean;
+  playerUsedEnergyWeapon: boolean;
+  bossDefeatedAt: number | null;
+  trophyClaimedAt: number | null;
+  trophyQuality: TrophyQuality | null;
+  trophyClaim: TrophyClaim | null;
+  trophyExtracting: boolean;
+  trophyExtraction: number;
+  trophyCarried: boolean;
+  rangedBossViolation: boolean;
+  nextProjectileId: number;
+  nextSignalId: number;
+  arsenal: ArsenalRuntimeState;
+  traps: HuntTrap[];
+}
+
 type HunterArmorAssetId =
   | "chest"
   | "shoulder"
@@ -243,6 +336,16 @@ const HUNTER_TROPHY_VISUAL_IDS = [
 
 type HunterWeaponVisualId = (typeof HUNTER_WEAPON_VISUAL_IDS)[number];
 type HunterTrophyVisualId = (typeof HUNTER_TROPHY_VISUAL_IDS)[number];
+const ENEMY_V4_SPRITE_IDS = [
+  "scout",
+  "rifle-soldier",
+  "heavy",
+  "cryostalker-runner",
+  "cryostalker-brute",
+  "bad-blood-initiate",
+  "commandante-vey",
+] as const;
+type EnemyV4SpriteId = (typeof ENEMY_V4_SPRITE_IDS)[number];
 type HunterHandWeaponId = Extract<
   WeaponId,
   "combistick" | "smart-disc" | "yautja-bow"
@@ -255,15 +358,16 @@ function hunterRegisteredAssetPath(
   return `${HUNTER_LOADOUT_ASSET_ROOT}/${category}/registered/${assetId}.webp`;
 }
 
-function selectedHandWeapon(loadout: Loadout): HunterHandWeaponId | null {
-  return (
-    loadout.weaponIds.find(
-      (weaponId): weaponId is HunterHandWeaponId =>
-        weaponId === "combistick" ||
-        weaponId === "smart-disc" ||
-        weaponId === "yautja-bow",
-    ) ?? null
-  );
+function selectedHandWeapon(
+  loadout: Loadout,
+  slotIndex: 0 | 1,
+): HunterHandWeaponId | null {
+  const weaponId = loadout.weaponIds[slotIndex];
+  return weaponId === "combistick" ||
+    weaponId === "smart-disc" ||
+    weaponId === "yautja-bow"
+    ? weaponId
+    : null;
 }
 
 interface AssetBank {
@@ -290,6 +394,7 @@ interface AssetBank {
   foregroundFerns: HTMLImageElement | null;
   foregroundVines: HTMLImageElement | null;
   foregroundReeds: HTMLImageElement | null;
+  enemyV4: Record<EnemyV4SpriteId, HTMLImageElement | null>;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -310,11 +415,20 @@ interface GameState {
   elapsed: number;
   cameraX: number;
   player: PlayerState;
+  world: WorldBlueprint;
+  arsenal: ArsenalRuntimeState;
+  traps: HuntTrap[];
   enemies: EnemyState[];
+  aiBrains: Record<string, AiBrain>;
   projectiles: ProjectileState[];
   goreParticles: GoreParticle[];
+  scentNodes: ScentNode[];
+  noiseEvents: NoiseEvent[];
+  tracks: TrackMark[];
+  mud: MudState;
   scanNodes: ScanNode[];
   recoveryNodes: RecoveryNode[];
+  purgeConsoleNodes: RecoveryNode[];
   spawnedWaves: Set<string>;
   completedObjectives: Set<string>;
   honorEvents: HonorEvent[];
@@ -325,6 +439,15 @@ interface GameState {
   damageTaken: number;
   secondWindUsed: boolean;
   boss: EnemyState;
+  bossMechanics: BossMechanicState;
+  bossVulnerabilityMultiplier: number;
+  bossThermalVisibility: number;
+  energyWeaponsLocked: boolean;
+  bossHitPillar: boolean;
+  brokenPillarIds: Set<string>;
+  disabledConsoleId: string | null;
+  playerUsedRangedWeapon: boolean;
+  playerUsedEnergyWeapon: boolean;
   bossDefeatedAt: number | null;
   trophyClaimedAt: number | null;
   trophyQuality: TrophyQuality | null;
@@ -339,6 +462,15 @@ interface GameState {
   rangedBossViolation: boolean;
   failureReported: boolean;
   nextProjectileId: number;
+  nextSignalId: number;
+  lastTrackX: number;
+  lastTrackAt: number;
+  nextScentAt: number;
+  environmentDamage: number;
+  soundEvents: GameSfxId[];
+  checkpointPositions: number[];
+  nextCheckpointIndex: number;
+  lastCheckpoint: MissionCheckpointPayload | null;
   reducedGore: boolean;
   screenShakeEnabled: boolean;
 }
@@ -354,10 +486,13 @@ interface UiSnapshot {
   maxEnergy: number;
   medicomps: number;
   ammo: number;
+  activeWeaponSlot: 0 | 1;
   cloaked: boolean;
   maskOn: boolean;
   aiming: boolean;
   climbing: boolean;
+  gearSlots: [GearSlotSnapshot, GearSlotSnapshot];
+  checkpointLabel: string;
   trophyExtraction: number;
   objective: string;
   objectiveDetail: string;
@@ -378,31 +513,7 @@ const VIEW_HEIGHT = 720;
 const WORLD_WIDTH = 5_600;
 const FLOOR_Y = 624;
 const GRAVITY = 1_850;
-const EXTRACTION_X = WORLD_WIDTH - 250;
 const BOSS_X = 4_500;
-
-const PLATFORMS: readonly Platform[] = [
-  { x: 420, y: 515, width: 270, height: 24 },
-  { x: 810, y: 430, width: 235, height: 24 },
-  { x: 1_210, y: 505, width: 330, height: 24 },
-  { x: 1_690, y: 390, width: 250, height: 24 },
-  { x: 2_080, y: 500, width: 290, height: 24 },
-  { x: 2_520, y: 418, width: 260, height: 24 },
-  { x: 2_930, y: 520, width: 310, height: 24 },
-  { x: 3_390, y: 405, width: 245, height: 24 },
-  { x: 3_770, y: 510, width: 250, height: 24 },
-  { x: 4_170, y: 425, width: 260, height: 24 },
-  { x: 4_720, y: 510, width: 285, height: 24 },
-  { x: 5_100, y: 420, width: 230, height: 24 },
-] as const;
-
-const JUNGLE_CLIMB_ZONES: readonly ClimbZone[] = [
-  { id: "tree-west", x: 770, y: 250, width: 128, height: 374, kind: "tree" },
-  { id: "vine-west", x: 1_775, y: 170, width: 72, height: 244, kind: "vine" },
-  { id: "tree-center", x: 2_430, y: 205, width: 134, height: 419, kind: "tree" },
-  { id: "vine-east", x: 3_470, y: 150, width: 74, height: 260, kind: "vine" },
-  { id: "tree-east", x: 4_080, y: 215, width: 132, height: 409, kind: "tree" },
-] as const;
 
 const KEY_ACTIONS: Readonly<Record<string, Action>> = {
   ArrowLeft: "left",
@@ -424,6 +535,15 @@ const KEY_ACTIONS: Readonly<Record<string, Action>> = {
   KeyV: "scan",
   KeyC: "cloak",
   KeyH: "heal",
+  Digit1: "weaponOne",
+  Numpad1: "weaponOne",
+  Digit2: "weaponTwo",
+  Numpad2: "weaponTwo",
+  KeyR: "weaponNext",
+  Digit3: "gearOne",
+  Numpad3: "gearOne",
+  Digit4: "gearTwo",
+  Numpad4: "gearTwo",
   KeyE: "interact",
   Escape: "pause",
 };
@@ -439,10 +559,28 @@ const EMPTY_UI: UiSnapshot = {
   maxEnergy: 1,
   medicomps: 0,
   ammo: -1,
+  activeWeaponSlot: 1,
   cloaked: false,
   maskOn: true,
   aiming: false,
   climbing: false,
+  gearSlots: [
+    {
+      gearId: "motion-sensor",
+      name: "Capteur",
+      charges: 0,
+      maxCharges: 0,
+      cooldownRemainingSeconds: 0,
+    },
+    {
+      gearId: "audio-decoy",
+      name: "Leurre",
+      charges: 0,
+      maxCharges: 0,
+      cooldownRemainingSeconds: 0,
+    },
+  ],
+  checkpointLabel: "Insertion",
   trophyExtraction: 0,
   objective: "Initialisation de la chasse",
   objectiveDetail: "Synchronisation du biomask…",
@@ -577,7 +715,7 @@ function enemyKind(archetype: string): EnemyKind {
 function backgroundPath(mission: MissionDefinition): string {
   return `/game/backgrounds/${
     mission.biome === "volcano" ? "volcanic" : mission.biome
-  }.webp`;
+  }-depth-v4.webp`;
 }
 
 function loadImage(path: string): Promise<HTMLImageElement | null> {
@@ -590,8 +728,8 @@ function loadImage(path: string): Promise<HTMLImageElement | null> {
   });
 }
 
-function equippedWeapon(loadout: Loadout) {
-  return WEAPON_BY_ID[loadout.weaponIds[1] ?? loadout.weaponIds[0]];
+function equippedWeapon(loadout: Loadout, slotIndex: 0 | 1) {
+  return WEAPON_BY_ID[loadout.weaponIds[slotIndex]];
 }
 
 function dreadFilter(tint: HunterAppearance["dreadTintId"]): string {
@@ -622,7 +760,25 @@ function bossSprite(
 ): HTMLImageElement | null {
   if (mission.biome === "ice") return assets.cryostalker;
   if (mission.biome === "volcano") return assets.badBlood;
-  return assets.mercenary;
+  return assets.enemyV4["commandante-vey"] ?? assets.mercenary;
+}
+
+function enemySprite(
+  enemy: EnemyState,
+  mission: MissionDefinition,
+  assets: AssetBank,
+): HTMLImageElement | null {
+  if (enemy.boss) return bossSprite(mission, assets);
+  if (ENEMY_V4_SPRITE_IDS.includes(enemy.archetype as EnemyV4SpriteId)) {
+    return assets.enemyV4[enemy.archetype as EnemyV4SpriteId];
+  }
+  if (enemy.kind === "beast") {
+    return assets.enemyV4["cryostalker-runner"] ?? assets.cryostalker;
+  }
+  if (enemy.kind === "yautja") {
+    return assets.enemyV4["bad-blood-initiate"] ?? assets.badBlood;
+  }
+  return assets.enemyV4["rifle-soldier"] ?? assets.mercenary;
 }
 
 function objectiveByKind(
@@ -661,8 +817,10 @@ function makeEnemy(
     moveSpeed,
     patrolLeft: Math.max(120, x - 190),
     patrolRight: Math.min(WORLD_WIDTH - 120, x + 190),
-    attackCooldown: 0.5 + Math.random(),
+    attackCooldown: 0.55 + ((id.length * 0.17 + x * 0.013) % 0.85),
     telegraph: 0,
+    pendingAttackId: null,
+    restrainedUntil: 0,
     hitFlash: 0,
     scanned: false,
     alive: true,
@@ -671,17 +829,41 @@ function makeEnemy(
   };
 }
 
+function checkpointPositions(
+  world: WorldBlueprint,
+  checkpointCount: number,
+): number[] {
+  if (checkpointCount <= 0) return [];
+  const start = Math.max(world.spawn.x + 720, world.width * 0.22);
+  const end = Math.max(start, world.bossArena.x - 320);
+  return Array.from({ length: checkpointCount }, (_, index) => {
+    const ratio = (index + 1) / (checkpointCount + 1);
+    return Math.round(start + (end - start) * ratio);
+  });
+}
+
 function makeGameState(
   mission: MissionDefinition,
   loadout: Loadout,
+  inventory: PlayerInventory,
   difficulty: DifficultyId,
   appearance: HunterAppearance,
   reducedGore: boolean,
   screenShakeEnabled: boolean,
 ): GameState {
-  const armor = ARMOR_BY_ID[loadout.armorId];
+  const world = worldBlueprintFor(mission.id);
+  const armor = effectiveArmorStats(
+    loadout.armorId,
+    inventory.armorUpgrades[loadout.armorId] ?? 0,
+  );
   const difficultyDef = DIFFICULTY_BY_ID[difficulty];
-  const weapon = equippedWeapon(loadout);
+  const weaponAmmo = loadout.weaponIds.map((weaponId) => {
+    const weapon = effectiveWeaponStats(
+      weaponId,
+      inventory.weaponUpgrades[weaponId] ?? 0,
+    );
+    return weapon.ammo ?? -1;
+  }) as [number, number];
   const scanCount = Math.max(
     1,
     objectiveByKind(mission, "scan")?.targetCount ?? 3,
@@ -713,10 +895,17 @@ function makeGameState(
     paused: false,
     elapsed: 0,
     cameraX: 0,
+    world,
+    arsenal: createArsenalRuntime({
+      loadout,
+      inventory,
+      difficultyId: difficulty,
+    }),
+    traps: [],
     player: {
-      x: 150,
-      y: FLOOR_Y - 116,
-      previousY: FLOOR_Y - 116,
+      x: world.spawn.x,
+      y: world.floorY - 116,
+      previousY: world.floorY - 116,
       width: 72,
       height: 116,
       velocityX: 0,
@@ -733,7 +922,8 @@ function makeGameState(
         0,
         armor.medicompCharges + difficultyDef.medicompModifier,
       ),
-      ammo: weapon.ammo ?? -1,
+      activeWeaponSlot: 1,
+      weaponAmmo,
       cloaked: false,
       maskOn: appearance.biomaskId !== null,
       aiming: false,
@@ -753,10 +943,27 @@ function makeGameState(
       healCooldown: 0,
     },
     enemies: [],
+    aiBrains: {},
     projectiles: [],
     goreParticles: [],
+    scentNodes: [],
+    noiseEvents: [],
+    tracks: [],
+    mud: {
+      coating: 0,
+      wetness: 0,
+      thermalVisibility: 1,
+      cloakShimmer: 0.08,
+      footprintMultiplier: 0.15,
+      scentMultiplier: 1,
+    },
     scanNodes,
     recoveryNodes,
+    purgeConsoleNodes: [
+      { id: "purge-a", x: 4_285, y: FLOOR_Y - 46, recovered: false },
+      { id: "purge-b", x: 4_665, y: 365, recovered: false },
+      { id: "purge-c", x: 5_025, y: FLOOR_Y - 46, recovered: false },
+    ],
     spawnedWaves: new Set(),
     completedObjectives: new Set(),
     honorEvents: [],
@@ -786,12 +993,23 @@ function makeGameState(
       patrolRight: 5_050,
       attackCooldown: 1.5,
       telegraph: 0,
+      pendingAttackId: null,
+      restrainedUntil: 0,
       hitFlash: 0,
       scanned: false,
       alive: true,
       boss: true,
       active: false,
     },
+    bossMechanics: createBossMechanicState(mission.id),
+    bossVulnerabilityMultiplier: 1,
+    bossThermalVisibility: 1,
+    energyWeaponsLocked: false,
+    bossHitPillar: false,
+    brokenPillarIds: new Set(),
+    disabledConsoleId: null,
+    playerUsedRangedWeapon: false,
+    playerUsedEnergyWeapon: false,
     bossDefeatedAt: null,
     trophyClaimedAt: null,
     trophyQuality: null,
@@ -806,12 +1024,239 @@ function makeGameState(
     rangedBossViolation: false,
     failureReported: false,
     nextProjectileId: 1,
+    nextSignalId: 1,
+    lastTrackX: world.spawn.x,
+    lastTrackAt: 0,
+    nextScentAt: 0,
+    environmentDamage: 0,
+    soundEvents: [],
+    checkpointPositions: checkpointPositions(
+      world,
+      difficultyDef.checkpointCount,
+    ),
+    nextCheckpointIndex: 0,
+    lastCheckpoint: null,
     reducedGore,
     screenShakeEnabled,
   };
 
   spawnEligibleWaves(state, mission, difficulty, "start", null);
   return state;
+}
+
+function clonePlayerState(player: PlayerState): PlayerState {
+  return {
+    ...player,
+    aimPoint: { ...player.aimPoint },
+    weaponAmmo: [...player.weaponAmmo] as [number, number],
+    dreadAngles: [...player.dreadAngles],
+    dreadVelocities: [...player.dreadVelocities],
+  };
+}
+
+function cloneEnemyState(enemy: EnemyState): EnemyState {
+  return { ...enemy };
+}
+
+function cloneAiBrains(
+  brains: Record<string, AiBrain>,
+): Record<string, AiBrain> {
+  return Object.fromEntries(
+    Object.entries(brains).map(([id, brain]) => [
+      id,
+      {
+        ...brain,
+        lastKnownTarget: brain.lastKnownTarget
+          ? { ...brain.lastKnownTarget }
+          : null,
+        alertedAllyIds: [...brain.alertedAllyIds],
+      },
+    ]),
+  );
+}
+
+function cloneBossMechanics(
+  mechanics: BossMechanicState,
+): BossMechanicState {
+  return mechanics.missionId === "volcano-bad-blood"
+    ? {
+        ...mechanics,
+        disabledConsoleIds: [...mechanics.disabledConsoleIds],
+      }
+    : { ...mechanics };
+}
+
+function cloneArsenalRuntime(
+  arsenal: ArsenalRuntimeState,
+): ArsenalRuntimeState {
+  return {
+    ...arsenal,
+    slots: arsenal.slots.map((slot) => ({ ...slot })) as [
+      ArsenalRuntimeState["slots"][0],
+      ArsenalRuntimeState["slots"][1],
+    ],
+    activeEffects: arsenal.activeEffects.map((effect) => ({
+      ...effect,
+      origin: { ...effect.origin },
+      target: { ...effect.target },
+    })),
+  };
+}
+
+function captureCheckpoint(state: GameState): MissionCheckpointPayload {
+  return {
+    phase: state.phase,
+    elapsed: state.elapsed,
+    player: clonePlayerState(state.player),
+    enemies: state.enemies.map(cloneEnemyState),
+    aiBrains: cloneAiBrains(state.aiBrains),
+    scanNodes: state.scanNodes.map((node) => ({ ...node })),
+    recoveryNodes: state.recoveryNodes.map((node) => ({ ...node })),
+    purgeConsoleNodes: state.purgeConsoleNodes.map((node) => ({ ...node })),
+    spawnedWaves: new Set(state.spawnedWaves),
+    completedObjectives: new Set(state.completedObjectives),
+    honorEvents: state.honorEvents.map((event) => ({ ...event })),
+    honor: state.honor,
+    kills: state.kills,
+    scans: state.scans,
+    supportKills: state.supportKills,
+    damageTaken: state.damageTaken,
+    secondWindUsed: state.secondWindUsed,
+    boss: cloneEnemyState(state.boss),
+    bossMechanics: cloneBossMechanics(state.bossMechanics),
+    bossVulnerabilityMultiplier: state.bossVulnerabilityMultiplier,
+    bossThermalVisibility: state.bossThermalVisibility,
+    energyWeaponsLocked: state.energyWeaponsLocked,
+    brokenPillarIds: new Set(state.brokenPillarIds),
+    mud: { ...state.mud },
+    bossHitPillar: state.bossHitPillar,
+    disabledConsoleId: state.disabledConsoleId,
+    playerUsedRangedWeapon: state.playerUsedRangedWeapon,
+    playerUsedEnergyWeapon: state.playerUsedEnergyWeapon,
+    bossDefeatedAt: state.bossDefeatedAt,
+    trophyClaimedAt: state.trophyClaimedAt,
+    trophyQuality: state.trophyQuality,
+    trophyClaim: state.trophyClaim ? { ...state.trophyClaim } : null,
+    trophyExtracting: state.trophyExtracting,
+    trophyExtraction: state.trophyExtraction,
+    trophyCarried: state.trophyCarried,
+    rangedBossViolation: state.rangedBossViolation,
+    nextProjectileId: state.nextProjectileId,
+    nextSignalId: state.nextSignalId,
+    arsenal: cloneArsenalRuntime(state.arsenal),
+    traps: state.traps.map((trap) => ({ ...trap })),
+  };
+}
+
+function restoreCheckpoint(
+  state: GameState,
+  checkpoint: MissionCheckpointPayload,
+): GameState {
+  const player = clonePlayerState(checkpoint.player);
+  const cloakWasActive = player.cloaked || state.player.cloaked;
+  player.health = Math.max(player.health, player.maxHealth * 0.45);
+  player.stamina = Math.max(player.stamina, player.maxStamina * 0.6);
+  player.energy = Math.max(player.energy, player.maxEnergy * 0.4);
+  player.velocityX = 0;
+  player.velocityY = 0;
+  player.invulnerability = 2;
+  player.cloaked = false;
+  player.aiming = false;
+  player.climbing = false;
+  player.climbZoneId = null;
+
+  return {
+    ...state,
+    phase: checkpoint.phase,
+    paused: false,
+    elapsed: checkpoint.elapsed,
+    cameraX: clamp(
+      player.x - VIEW_WIDTH * 0.38,
+      0,
+      state.world.width - VIEW_WIDTH,
+    ),
+    player,
+    enemies: checkpoint.enemies.map(cloneEnemyState),
+    aiBrains: cloneAiBrains(checkpoint.aiBrains),
+    projectiles: [],
+    goreParticles: [],
+    scentNodes: [],
+    noiseEvents: [],
+    tracks: [],
+    scanNodes: checkpoint.scanNodes.map((node) => ({ ...node })),
+    recoveryNodes: checkpoint.recoveryNodes.map((node) => ({ ...node })),
+    purgeConsoleNodes: checkpoint.purgeConsoleNodes.map((node) => ({
+      ...node,
+    })),
+    spawnedWaves: new Set(checkpoint.spawnedWaves),
+    completedObjectives: new Set(checkpoint.completedObjectives),
+    honorEvents: checkpoint.honorEvents.map((event) => ({ ...event })),
+    honor: checkpoint.honor,
+    kills: checkpoint.kills,
+    scans: checkpoint.scans,
+    supportKills: checkpoint.supportKills,
+    damageTaken: checkpoint.damageTaken,
+    secondWindUsed: checkpoint.secondWindUsed,
+    boss: cloneEnemyState(checkpoint.boss),
+    bossMechanics: cloneBossMechanics(checkpoint.bossMechanics),
+    bossVulnerabilityMultiplier: checkpoint.bossVulnerabilityMultiplier,
+    bossThermalVisibility: checkpoint.bossThermalVisibility,
+    energyWeaponsLocked: checkpoint.energyWeaponsLocked,
+    bossHitPillar: checkpoint.bossHitPillar,
+    brokenPillarIds: new Set(checkpoint.brokenPillarIds),
+    mud: { ...checkpoint.mud },
+    arsenal: cloneArsenalRuntime(checkpoint.arsenal),
+    traps: checkpoint.traps.map((trap) => ({ ...trap })),
+    disabledConsoleId: checkpoint.disabledConsoleId,
+    playerUsedRangedWeapon: checkpoint.playerUsedRangedWeapon,
+    playerUsedEnergyWeapon: checkpoint.playerUsedEnergyWeapon,
+    bossDefeatedAt: checkpoint.bossDefeatedAt,
+    trophyClaimedAt: checkpoint.trophyClaimedAt,
+    trophyQuality: checkpoint.trophyQuality,
+    trophyClaim: checkpoint.trophyClaim
+      ? { ...checkpoint.trophyClaim }
+      : null,
+    trophyExtracting: checkpoint.trophyExtracting,
+    trophyExtraction: checkpoint.trophyExtraction,
+    trophyCarried: checkpoint.trophyCarried,
+    scanPulse: 0,
+    message: `Relais ${state.nextCheckpointIndex} restauré. La chasse continue.`,
+    messageTimer: 4,
+    screenShake: 0,
+    rangedBossViolation: checkpoint.rangedBossViolation,
+    failureReported: false,
+    nextProjectileId: checkpoint.nextProjectileId,
+    nextSignalId: checkpoint.nextSignalId,
+    lastTrackX: player.x,
+    lastTrackAt: checkpoint.elapsed,
+    nextScentAt: checkpoint.elapsed + 0.4,
+    environmentDamage: 0,
+    soundEvents: cloakWasActive
+      ? ["cloak-off", "objective"]
+      : ["objective"],
+  };
+}
+
+function updateMissionCheckpoint(state: GameState): void {
+  const checkpointX =
+    state.checkpointPositions[state.nextCheckpointIndex];
+  if (
+    checkpointX === undefined ||
+    state.phase === "dead" ||
+    state.phase === "finished" ||
+    state.player.x + state.player.width / 2 < checkpointX
+  ) {
+    return;
+  }
+
+  state.nextCheckpointIndex += 1;
+  state.lastCheckpoint = captureCheckpoint(state);
+  announce(
+    state,
+    `Relais de chasse ${state.nextCheckpointIndex}/${state.checkpointPositions.length} synchronisé.`,
+    3.2,
+  );
+  queueSound(state, "objective");
 }
 
 function spawnEligibleWaves(
@@ -845,18 +1290,18 @@ function spawnEligibleWaves(
           Math.max(1, wave.count)) *
           (spread / Math.max(1, wave.count)) +
         Math.random() * 120;
-      state.enemies.push(
-        makeEnemy(
-          `${wave.id}-${index}`,
-          wave.archetype,
-          x,
-          wave.health,
-          wave.damage,
-          wave.moveSpeed,
-          difficultyDef.enemyHealthMultiplier,
-          difficultyDef.enemyDamageMultiplier,
-        ),
+      const enemy = makeEnemy(
+        `${wave.id}-${index}`,
+        wave.archetype,
+        x,
+        wave.health,
+        wave.damage,
+        wave.moveSpeed,
+        difficultyDef.enemyHealthMultiplier,
+        difficultyDef.enemyDamageMultiplier,
       );
+      state.enemies.push(enemy);
+      state.aiBrains[enemy.id] = createAiBrain(enemy.id, enemy.kind);
     }
   }
 }
@@ -878,6 +1323,19 @@ function announce(state: GameState, message: string, seconds = 3): void {
   state.messageTimer = seconds;
 }
 
+function queueSound(state: GameState, sound: GameSfxId): void {
+  if (state.soundEvents.length < 24) {
+    state.soundEvents.push(sound);
+  }
+}
+
+function forceDecloak(state: GameState): boolean {
+  if (!state.player.cloaked) return false;
+  state.player.cloaked = false;
+  queueSound(state, "cloak-off");
+  return true;
+}
+
 function completeObjective(
   state: GameState,
   mission: MissionDefinition,
@@ -895,6 +1353,7 @@ function completeObjective(
       "objective",
     );
     announce(state, `Objectif accompli : ${objective.label}`, 4);
+    queueSound(state, "objective");
   }
 }
 
@@ -928,6 +1387,19 @@ function currentObjective(
     return {
       title: "Chasse terminée",
       detail: "Le vaisseau récupère le chasseur et son trophée.",
+    };
+  }
+  if (
+    state.bossMechanics.missionId === "volcano-bad-blood" &&
+    state.bossMechanics.purgeSeconds !== null &&
+    !state.bossMechanics.purgeResolved
+  ) {
+    const disabled = state.purgeConsoleNodes.filter(
+      (node) => node.recovered,
+    ).length;
+    return {
+      title: "Interrompre la purge du sanctuaire",
+      detail: `${Math.ceil(state.bossMechanics.purgeSeconds)} s — ${disabled}/3 consoles neutralisées avec [E].`,
     };
   }
   if (state.phase === "tracking") {
@@ -1002,11 +1474,25 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     energy: state.player.energy,
     maxEnergy: state.player.maxEnergy,
     medicomps: state.player.medicomps,
-    ammo: state.player.ammo,
+    ammo: state.player.weaponAmmo[state.player.activeWeaponSlot],
+    activeWeaponSlot: state.player.activeWeaponSlot,
     cloaked: state.player.cloaked,
     maskOn: state.player.maskOn,
     aiming: state.player.aiming,
     climbing: state.player.climbing,
+    gearSlots: state.arsenal.slots.map((slot) => ({
+      gearId: slot.gearId,
+      name: GEAR_BY_ID[slot.gearId].name,
+      charges: slot.charges,
+      maxCharges: slot.maxCharges,
+      cooldownRemainingSeconds: slot.cooldownRemainingSeconds,
+    })) as [GearSlotSnapshot, GearSlotSnapshot],
+    checkpointLabel:
+      state.nextCheckpointIndex > 0
+        ? `Relais ${state.nextCheckpointIndex}/${state.checkpointPositions.length}`
+        : state.checkpointPositions.length > 0
+          ? `Insertion · ${state.checkpointPositions.length} relais`
+          : "Rite sans checkpoint",
     trophyExtraction: state.trophyExtraction,
     objective: objective.title,
     objectiveDetail: objective.detail,
@@ -1334,7 +1820,10 @@ function drawHunterHandWeapon(
   assets: AssetBank,
   frame: HunterRigFrame,
 ): void {
-  const weaponId = selectedHandWeapon(loadout);
+  const weaponId = selectedHandWeapon(
+    loadout,
+    state.player.activeWeaponSlot,
+  );
   if (!weaponId) return;
   const weaponProjectileInFlight = state.projectiles.some(
     (projectile) =>
@@ -1488,7 +1977,10 @@ function drawHunterLayered(
   const player = state.player;
   const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
   const hasWristblades = loadout.weaponIds.includes("wristblades");
-  const handWeaponId = selectedHandWeapon(loadout);
+  const handWeaponId = selectedHandWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  );
   const frame = solvePlayerRigFrame(
     state,
     player,
@@ -1784,7 +2276,10 @@ function drawAimAssist(
   const player = state.player;
   if (!player.aiming) return;
   const target = player.aimPoint;
-  const handWeaponId = selectedHandWeapon(loadout);
+  const handWeaponId = selectedHandWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  );
   const frame = solvePlayerRigFrame(
     state,
     player,
@@ -1842,6 +2337,108 @@ function drawJunglePlatform(
   );
 }
 
+function surfaceColor(material: TrackSurface["material"]): string {
+  switch (material) {
+    case "mud":
+      return "#513b24";
+    case "water":
+      return "#388aa0";
+    case "snow":
+      return "#d6eff4";
+    case "ice":
+      return "#8dd9ed";
+    case "ash":
+      return "#716b68";
+    case "metal":
+      return "#72838a";
+    case "basalt":
+      return "#302d32";
+    case "ruin":
+      return "#665b4f";
+    case "root":
+      return "#604326";
+    case "stone":
+      return "#6d756e";
+    default:
+      return "#52633f";
+  }
+}
+
+function hazardColor(kind: WorldBlueprint["hazards"][number]["kind"]): string {
+  if (kind === "lava" || kind === "steam-vent") return "#ff6338";
+  if (
+    kind === "thin-ice" ||
+    kind === "falling-ice" ||
+    kind === "whiteout"
+  ) {
+    return "#b9efff";
+  }
+  if (kind === "flash-flood") return "#48b2d0";
+  if (kind === "ash-squall") return "#c0a995";
+  return "#d8ff5f";
+}
+
+function drawWorldClimbable(
+  context: CanvasRenderingContext2D,
+  zone: ClimbZone,
+  assets: AssetBank,
+  palette: MissionDefinition["palette"],
+): void {
+  const image =
+    zone.kind === "tree"
+      ? assets.treeTrunk
+      : zone.kind === "vine"
+        ? assets.vineLadder
+        : null;
+  if (image) {
+    const drawWidth = zone.height * (image.naturalWidth / image.naturalHeight);
+    context.save();
+    context.globalAlpha = zone.kind === "tree" ? 0.97 : 0.9;
+    context.drawImage(
+      image,
+      zone.x - (drawWidth - zone.width) / 2,
+      zone.y,
+      drawWidth,
+      zone.height,
+    );
+    context.restore();
+    return;
+  }
+
+  const flexible =
+    zone.kind === "rope" || zone.kind === "chain" || zone.kind === "ladder";
+  context.save();
+  context.globalAlpha = 0.84;
+  context.strokeStyle = flexible ? palette.accent : palette.platform;
+  context.lineWidth = flexible ? 4 : Math.max(8, zone.width * 0.18);
+  if (flexible) {
+    const left = zone.x + zone.width * 0.28;
+    const right = zone.x + zone.width * 0.72;
+    context.beginPath();
+    context.moveTo(left, zone.y);
+    context.lineTo(left, zone.y + zone.height);
+    context.moveTo(right, zone.y);
+    context.lineTo(right, zone.y + zone.height);
+    for (let y = zone.y + 16; y < zone.y + zone.height; y += 24) {
+      context.moveTo(left, y);
+      context.lineTo(right, y);
+    }
+    context.stroke();
+  } else {
+    context.fillStyle = `${palette.platform}cc`;
+    context.fillRect(zone.x, zone.y, zone.width, zone.height);
+    context.strokeStyle = `${palette.accent}99`;
+    context.lineWidth = 3;
+    for (let y = zone.y + 18; y < zone.y + zone.height; y += 34) {
+      context.beginPath();
+      context.moveTo(zone.x + 4, y);
+      context.lineTo(zone.x + zone.width - 4, y - 12);
+      context.stroke();
+    }
+  }
+  context.restore();
+}
+
 function renderGame(
   context: CanvasRenderingContext2D,
   state: GameState,
@@ -1882,7 +2479,9 @@ function renderGame(
     context.fillStyle = `${palette.sky}55`;
     context.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
   }
-  if (mission.biome === "jungle" && assets.farLake) {
+  // Le panorama V4 contient déjà son lac en plans lointain, médian et proche.
+  // L'ancien calque V2 reste un fallback, mais ne doit pas couper l'image V4.
+  if (mission.biome === "jungle" && assets.farLake && !assets.background) {
     const lake = assets.farLake;
     const lakeHeight = 560;
     const lakeWidth = lakeHeight * (lake.naturalWidth / lake.naturalHeight);
@@ -1904,30 +2503,29 @@ function renderGame(
 
   // World geometry and mission markers.
   context.fillStyle = palette.ground;
-  context.fillRect(0, FLOOR_Y, WORLD_WIDTH, VIEW_HEIGHT - FLOOR_Y);
+  context.fillRect(
+    0,
+    state.world.floorY,
+    state.world.width,
+    VIEW_HEIGHT - state.world.floorY,
+  );
   context.fillStyle = `${palette.accent}22`;
-  for (let x = 0; x < WORLD_WIDTH; x += 160) {
-    context.fillRect(x, FLOOR_Y + 6, 84, 3);
+  for (let x = 0; x < state.world.width; x += 160) {
+    context.fillRect(x, state.world.floorY + 6, 84, 3);
   }
-  if (mission.biome === "jungle") {
-    for (const zone of JUNGLE_CLIMB_ZONES) {
-      const image =
-        zone.kind === "tree" ? assets.treeTrunk : assets.vineLadder;
-      if (!image) continue;
-      const drawWidth =
-        zone.height * (image.naturalWidth / image.naturalHeight);
-      context.save();
-      context.globalAlpha = zone.kind === "tree" ? 0.97 : 0.9;
-      context.drawImage(
-        image,
-        zone.x - (drawWidth - zone.width) / 2,
-        zone.y,
-        drawWidth,
-        zone.height,
-      );
-      context.restore();
-    }
+
+  for (const surface of state.world.surfaces) {
+    context.save();
+    context.globalAlpha =
+      surface.material === "water" ? 0.7 : 0.5;
+    context.fillStyle = surfaceColor(surface.material);
+    context.fillRect(surface.x, surface.y, surface.width, surface.height);
+    context.restore();
   }
+  for (const zone of state.world.climbables) {
+    drawWorldClimbable(context, zone, assets, palette);
+  }
+
   const junglePlatformImages = [
     assets.platformRoot,
     assets.platformStone,
@@ -1935,10 +2533,15 @@ function renderGame(
     assets.platformExpedition,
   ] as const;
   const junglePlatformSurfaceRatios = [0.2, 0.22, 0.38, 0.42] as const;
-  for (let index = 0; index < PLATFORMS.length; index += 1) {
-    const platform = PLATFORMS[index];
+  for (let index = 0; index < state.world.platforms.length; index += 1) {
+    const platform = state.world.platforms[index];
     if (mission.biome === "jungle") {
-      const junglePlatformIndex = index % junglePlatformImages.length;
+      const junglePlatformIndex =
+        platform.material === "stone"
+          ? 1
+          : platform.material === "metal"
+            ? 3
+            : index % junglePlatformImages.length;
       drawJunglePlatform(
         context,
         platform,
@@ -1963,6 +2566,127 @@ function renderGame(
         platform.width - 36,
         8,
       );
+    }
+  }
+
+  for (const cover of state.world.covers) {
+    const broken = state.brokenPillarIds.has(cover.id);
+    context.save();
+    context.globalAlpha = broken ? 0.28 : 0.78;
+    roundedPanel(
+      context,
+      cover.x,
+      broken ? cover.y + cover.height * 0.62 : cover.y,
+      cover.width,
+      broken ? cover.height * 0.38 : cover.height,
+      5,
+      `${palette.platform}dd`,
+      `${palette.accent}77`,
+    );
+    context.restore();
+  }
+
+  for (const hazard of state.world.hazards) {
+    if (!isHazardActive(hazard, state.elapsed)) continue;
+    const pulse = 0.1 + Math.sin(state.elapsed * 7 + hazard.x * 0.01) * 0.035;
+    context.save();
+    context.globalAlpha = pulse;
+    context.fillStyle = hazardColor(hazard.kind);
+    context.fillRect(hazard.x, hazard.y, hazard.width, hazard.height);
+    context.strokeStyle = hazardColor(hazard.kind);
+    context.lineWidth = 2;
+    context.setLineDash([10, 8]);
+    context.strokeRect(hazard.x, hazard.y, hazard.width, hazard.height);
+    context.setLineDash([]);
+    context.restore();
+  }
+
+  for (const effect of state.arsenal.activeEffects) {
+    if (effect.kind !== "reveal") continue;
+    const progress =
+      1 - effect.remainingSeconds / Math.max(0.01, effect.durationSeconds);
+    context.save();
+    context.globalAlpha = 0.18 + (1 - progress) * 0.35;
+    context.strokeStyle = palette.accent;
+    context.lineWidth = 3;
+    context.setLineDash([10, 12]);
+    context.beginPath();
+    context.arc(
+      effect.origin.x,
+      effect.origin.y,
+      Math.max(20, effect.radiusPx * progress),
+      0,
+      Math.PI * 2,
+    );
+    context.stroke();
+    context.setLineDash([]);
+    context.restore();
+  }
+  for (const trap of state.traps) {
+    context.save();
+    context.translate(trap.x, trap.y);
+    const pulse = 0.72 + Math.sin(state.elapsed * 7 + trap.x) * 0.2;
+    context.globalAlpha = trap.armed ? pulse : 0.25;
+    context.strokeStyle =
+      trap.kind === "audio-decoy"
+        ? palette.accent
+        : trap.kind === "netgun"
+          ? "#a4f7d2"
+          : "#d6bc78";
+    context.fillStyle = "#07100ed9";
+    context.lineWidth = 2;
+    context.beginPath();
+    context.ellipse(0, 0, trap.kind === "netgun" ? 15 : 12, 6, 0, 0, Math.PI * 2);
+    context.fill();
+    context.stroke();
+    if (trap.kind === "audio-decoy") {
+      context.beginPath();
+      context.arc(0, -8, 13 + Math.sin(state.elapsed * 5) * 4, Math.PI * 1.1, Math.PI * 1.9);
+      context.stroke();
+    } else if (trap.kind === "netgun") {
+      context.setLineDash([3, 3]);
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.lineTo(
+        Math.cos(state.player.aimAngle) * 58,
+        Math.sin(state.player.aimAngle) * 58,
+      );
+      context.stroke();
+      context.setLineDash([]);
+    }
+    context.restore();
+  }
+
+  if (state.player.maskOn || state.scanPulse > 0) {
+    for (const track of state.tracks) {
+      const age =
+        1 -
+        clamp(
+          (state.elapsed - track.createdAtSeconds) / track.lifetimeSeconds,
+          0,
+          1,
+        );
+      context.save();
+      context.globalAlpha = 0.2 + age * 0.65;
+      context.translate(track.x, track.y - 3);
+      context.rotate(track.directionX * 0.22);
+      context.fillStyle = palette.accent;
+      context.beginPath();
+      context.ellipse(0, 0, 7, 3.5, 0, 0, Math.PI * 2);
+      context.fill();
+      context.restore();
+    }
+  }
+  if (state.scanPulse > 0) {
+    for (const scent of state.scentNodes) {
+      context.save();
+      context.globalAlpha = scent.strength * 0.18;
+      context.strokeStyle = palette.accent;
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(scent.x, scent.y, scent.radius, 0, Math.PI * 2);
+      context.stroke();
+      context.restore();
     }
   }
 
@@ -1995,34 +2719,88 @@ function renderGame(
     context.restore();
   }
 
+  const purgeActive =
+    state.bossMechanics.missionId === "volcano-bad-blood" &&
+    state.bossMechanics.purgeSeconds !== null &&
+    !state.bossMechanics.purgeResolved;
+  if (purgeActive) {
+    for (const consoleNode of state.purgeConsoleNodes) {
+      context.save();
+      context.translate(consoleNode.x, consoleNode.y);
+      context.globalAlpha = consoleNode.recovered ? 0.3 : 1;
+      roundedPanel(
+        context,
+        -20,
+        -30,
+        40,
+        48,
+        5,
+        consoleNode.recovered ? "#314239" : "#4d1614",
+        consoleNode.recovered ? "#79c99b" : "#ff594a",
+      );
+      context.fillStyle = consoleNode.recovered ? "#79c99b" : "#ff594a";
+      context.fillRect(-12, -22, 24, 6);
+      context.font = "700 11px system-ui, sans-serif";
+      context.textAlign = "center";
+      context.fillText(
+        consoleNode.recovered ? "COUPÉE" : "[E] PURGE",
+        0,
+        -38,
+      );
+      context.restore();
+    }
+  }
+
   if (!state.boss.active && state.phase !== "extraction") {
     context.save();
     context.globalAlpha = 0.75;
     context.fillStyle = `${palette.danger}66`;
-    context.fillRect(4_035, 250, 18, FLOOR_Y - 250);
+    context.fillRect(
+      state.world.bossArena.x - 35,
+      250,
+      18,
+      state.world.floorY - 250,
+    );
     context.strokeStyle = palette.danger;
     context.setLineDash([10, 10]);
-    context.strokeRect(4_025, 240, 38, FLOOR_Y - 230);
+    context.strokeRect(
+      state.world.bossArena.x - 45,
+      240,
+      38,
+      state.world.floorY - 230,
+    );
     context.setLineDash([]);
     context.restore();
   }
 
   if (state.phase === "extraction") {
+    const extractionX = state.world.extraction.x;
     const beam = context.createLinearGradient(
-      EXTRACTION_X - 90,
+      extractionX - 90,
       0,
-      EXTRACTION_X + 90,
+      extractionX + 90,
       0,
     );
     beam.addColorStop(0, `${palette.accent}00`);
     beam.addColorStop(0.5, `${palette.accent}77`);
     beam.addColorStop(1, `${palette.accent}00`);
     context.fillStyle = beam;
-    context.fillRect(EXTRACTION_X - 90, 110, 180, FLOOR_Y - 110);
+    context.fillRect(
+      extractionX - 90,
+      110,
+      180,
+      state.world.floorY - 110,
+    );
     context.strokeStyle = palette.accent;
     context.lineWidth = 3;
     context.beginPath();
-    context.arc(EXTRACTION_X, FLOOR_Y - 18, 54, Math.PI, Math.PI * 2);
+    context.arc(
+      extractionX,
+      state.world.floorY - 18,
+      54,
+      Math.PI,
+      Math.PI * 2,
+    );
     context.stroke();
   }
 
@@ -2108,14 +2886,12 @@ function renderGame(
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
   ];
   for (const enemy of visibleEnemies) {
-    const image = enemy.boss
-      ? bossSprite(mission, assets)
-      : enemy.kind === "beast"
-        ? assets.cryostalker
-        : enemy.kind === "yautja"
-          ? assets.badBlood
-          : assets.mercenary;
-    const alpha = enemy.telegraph > 0 ? 0.72 + Math.sin(state.elapsed * 22) * 0.2 : 1;
+    const image = enemySprite(enemy, mission, assets);
+    const telegraphAlpha =
+      enemy.telegraph > 0 ? 0.72 + Math.sin(state.elapsed * 22) * 0.2 : 1;
+    const alpha =
+      telegraphAlpha *
+      (enemy.boss ? Math.max(0.18, state.bossThermalVisibility) : 1);
     if (image) {
       drawSprite(
         context,
@@ -2290,6 +3066,412 @@ function renderGame(
 // Simulation and combat
 // ---------------------------------------------------------------------------
 
+function activeSurface(state: GameState, worldX: number): TrackSurface {
+  return (
+    state.world.surfaces.find(
+      (surface) =>
+        worldX >= surface.x && worldX <= surface.x + surface.width,
+    ) ?? state.world.surfaces[0]
+  );
+}
+
+function emitNoise(
+  state: GameState,
+  kind: NoiseEvent["kind"],
+  loudness: number,
+  radius: number,
+  position: Vec2,
+  sourceId = "hunter",
+): void {
+  state.noiseEvents.push({
+    id: `noise-${state.nextSignalId++}`,
+    sourceId,
+    kind,
+    x: position.x,
+    y: position.y,
+    loudness: clamp(loudness, 0, 1),
+    radius,
+    createdAtSeconds: state.elapsed,
+    durationSeconds: kind === "weapon" ? 1.4 : 0.8,
+    highFrequency:
+      kind === "weapon" ? 0.85 : kind === "landing" ? 0.3 : 0.5,
+  });
+}
+
+function nearestActiveEnemy(
+  state: GameState,
+  point: Vec2,
+  maximumRange: number,
+): EnemyState | null {
+  return (
+    [
+      ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
+      ...(state.boss.active && state.boss.alive ? [state.boss] : []),
+    ]
+      .map((enemy) => ({
+        enemy,
+        range: distance(point, {
+          x: enemy.x + enemy.width / 2,
+          y: enemy.y + enemy.height / 2,
+        }),
+      }))
+      .filter(({ range }) => range <= maximumRange)
+      .sort((left, right) => left.range - right.range)[0]?.enemy ?? null
+  );
+}
+
+function trapPositionForEffect(
+  state: GameState,
+  event: GearEffectEvent,
+): Vec2 {
+  const trapKind =
+    event.gearId === "audio-decoy"
+      ? "audio-decoy"
+      : event.gearId === "netgun"
+        ? "netgun"
+        : "snare";
+  const socket = state.world.trapSockets
+    .filter((candidate) => candidate.allowed.includes(trapKind))
+    .map((candidate) => ({
+      candidate,
+      range: distance(candidate, event.target),
+    }))
+    .filter(({ range }) => range <= 190)
+    .sort((left, right) => left.range - right.range)[0]?.candidate;
+  if (socket) return { x: socket.x, y: socket.y };
+  return {
+    x: clamp(event.target.x, 24, state.world.width - 24),
+    y:
+      event.gearId === "netgun"
+        ? clamp(event.target.y, 80, state.world.floorY - 40)
+        : state.world.floorY - 8,
+  };
+}
+
+function revealWithinEffect(
+  state: GameState,
+  event: GearEffectEvent,
+): number {
+  let revealed = 0;
+  for (const enemy of [
+    ...state.enemies,
+    ...(state.boss.active ? [state.boss] : []),
+  ]) {
+    const enemyCenter = {
+      x: enemy.x + enemy.width / 2,
+      y: enemy.y + enemy.height / 2,
+    };
+    if (
+      enemy.alive &&
+      distance(event.origin, enemyCenter) <= event.radiusPx &&
+      !enemy.scanned
+    ) {
+      enemy.scanned = true;
+      state.scans += 1;
+      revealed += 1;
+    }
+  }
+  for (const node of state.scanNodes) {
+    if (
+      !node.scanned &&
+      distance(event.origin, node) <= event.radiusPx
+    ) {
+      node.scanned = true;
+      state.scans += 1;
+      revealed += 1;
+    }
+  }
+  return revealed;
+}
+
+function updateRevealEffects(state: GameState): void {
+  let revealed = 0;
+  for (const effect of state.arsenal.activeEffects) {
+    if (effect.kind === "reveal") {
+      revealed += revealWithinEffect(state, effect);
+    }
+  }
+  if (revealed <= 0) return;
+  queueSound(state, "scan");
+  announce(
+    state,
+    `Capteur actif : ${revealed} nouvelle${
+      revealed === 1 ? "" : "s"
+    } signature${revealed === 1 ? "" : "s"}.`,
+    1.6,
+  );
+}
+
+function activateGearSlot(
+  state: GameState,
+  slotIndex: 0 | 1,
+): void {
+  const player = state.player;
+  const origin = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height * 0.48,
+  };
+  const requestedTarget = player.aiming
+    ? player.aimPoint
+    : {
+        x: origin.x + player.facing * 360,
+        y: state.world.floorY - 18,
+      };
+  const slot = state.arsenal.slots[slotIndex];
+  const targetEnemy = nearestActiveEnemy(
+    state,
+    requestedTarget,
+    Math.max(180, GEAR_BY_ID[slot.gearId].rangePx),
+  );
+  const result = activateArsenalGearSlot(state.arsenal, slotIndex, {
+    origin,
+    aim: targetEnemy
+      ? {
+          x: targetEnemy.x + targetEnemy.width / 2,
+          y: targetEnemy.y + targetEnemy.height / 2,
+        }
+      : requestedTarget,
+    targetId: targetEnemy?.id ?? null,
+  });
+  state.arsenal = result.state;
+  if (!result.ok) {
+    announce(
+      state,
+      result.failure === "depleted"
+        ? `${GEAR_BY_ID[slot.gearId].name} : charges épuisées.`
+        : `${GEAR_BY_ID[slot.gearId].name} : recharge en cours.`,
+      1.6,
+    );
+    return;
+  }
+
+  const event = result.event;
+  if (event.kind === "reveal") {
+    const revealed = revealWithinEffect(state, event);
+    queueSound(state, "scan");
+    announce(
+      state,
+      `${GEAR_BY_ID[event.gearId].name} : ${revealed} signature${
+        revealed === 1 ? "" : "s"
+      } révélée${revealed === 1 ? "" : "s"}.`,
+      2.2,
+    );
+    return;
+  }
+
+  const trapKind =
+    event.gearId === "audio-decoy"
+      ? "audio-decoy"
+      : event.gearId === "netgun"
+        ? "netgun"
+        : "snare";
+  const position = trapPositionForEffect(state, event);
+  state.traps.push(
+    createHuntTrap({
+      id: event.id,
+      ownerId: "hunter",
+      kind: trapKind,
+      position,
+      facing: player.facing,
+      concealment: trapKind === "snare" ? 0.82 : 0.4,
+      durationSeconds: event.durationSeconds,
+    }),
+  );
+  queueSound(
+    state,
+    trapKind === "netgun"
+      ? "netgun"
+      : trapKind === "snare"
+        ? "snare"
+        : "enemy-alert",
+  );
+  announce(
+    state,
+    `${GEAR_BY_ID[event.gearId].name} déployé · ${slot.charges - 1 < 0 ? 0 : result.state.slots[slotIndex].charges} charge(s).`,
+    2,
+  );
+}
+
+function updateHuntTraps(state: GameState, delta: number): void {
+  if (state.traps.length === 0) return;
+  const targets = [
+    ...state.enemies.filter((enemy) => enemy.active),
+    ...(state.boss.active ? [state.boss] : []),
+  ];
+  const next: HuntTrap[] = [];
+  for (const trap of state.traps) {
+    const stepped = stepHuntTrap(
+      trap,
+      targets.map((enemy) => ({
+        id: enemy.id,
+        kind: enemy.kind,
+        x: enemy.x + enemy.width / 2,
+        y: enemy.y + enemy.height / 2,
+        alive: enemy.alive,
+        speed: Math.abs(enemy.velocityX),
+        trapResistance: enemy.boss
+          ? 0.82
+          : enemy.kind === "beast"
+            ? 0.48
+            : enemy.kind === "yautja"
+              ? 0.62
+              : 0.22,
+      })),
+      delta,
+      state.elapsed,
+    );
+    if (stepped.noise) state.noiseEvents.push(stepped.noise);
+    if (stepped.restrainedTargetId) {
+      const enemy = targets.find(
+        (candidate) => candidate.id === stepped.restrainedTargetId,
+      );
+      if (enemy) {
+        enemy.restrainedUntil = Math.max(
+          enemy.restrainedUntil,
+          state.elapsed + stepped.restraintSeconds,
+        );
+        enemy.velocityX = 0;
+        announce(
+          state,
+          `${enemy.boss ? "Cible Apex" : "Proie"} entravée pendant ${stepped.restraintSeconds.toFixed(1)} s.`,
+          2,
+        );
+      }
+      state.arsenal = removeGearEffect(state.arsenal, trap.id);
+    }
+    if (stepped.trap.armed && stepped.trap.remainingSeconds > 0) {
+      next.push(stepped.trap);
+    } else {
+      state.arsenal = removeGearEffect(state.arsenal, trap.id);
+    }
+  }
+  state.traps = next;
+}
+
+function updateHuntSignals(
+  state: GameState,
+  mission: MissionDefinition,
+  delta: number,
+): void {
+  const player = state.player;
+  const centerX = player.x + player.width / 2;
+  const footY = player.y + player.height;
+  const surface = activeSurface(state, centerX);
+  const heatIntensity = mission.biome === "volcano" ? 0.9 : 0;
+  state.mud = stepMudState(state.mud, {
+    deltaSeconds: delta,
+    mudDepth: surface.mudDepth,
+    inWater: surface.material === "water",
+    heatIntensity,
+    speedRatio: clamp(Math.abs(player.velocityX) / 300, 0, 1),
+  });
+
+  state.scentNodes = [
+    ...advanceScentField(
+      state.scentNodes,
+      delta,
+      (x) => sampleWind(state.world.wind, state.elapsed, x),
+      surface.scentRetention,
+    ),
+  ].slice(-80);
+  state.tracks = [...ageTracks(state.tracks, state.elapsed)].slice(-96);
+  state.noiseEvents = state.noiseEvents
+    .filter(
+      (noise) =>
+        state.elapsed - noise.createdAtSeconds <= noise.durationSeconds,
+    )
+    .slice(-48);
+
+  if (
+    player.grounded &&
+    Math.abs(player.velocityX) > 28 &&
+    (Math.abs(centerX - state.lastTrackX) >= 30 ||
+      state.elapsed - state.lastTrackAt >= 0.38)
+  ) {
+    if (surface.footprintPersistenceSeconds > 0) {
+      state.tracks.push(
+        createTrackMark({
+          id: `track-${state.nextSignalId++}`,
+          sourceId: "hunter",
+          position: { x: centerX, y: footY },
+          facing: player.facing,
+          velocityX: player.velocityX,
+          elapsedSeconds: state.elapsed,
+          surface,
+          mud: state.mud,
+        }),
+      );
+    }
+    emitNoise(
+      state,
+      "footstep",
+      clamp(
+        surface.baseNoise + Math.abs(player.velocityX) / 780,
+        0.08,
+        1,
+      ),
+      170 + surface.baseNoise * 360,
+      { x: centerX, y: footY },
+    );
+    queueSound(state, "footstep");
+    state.lastTrackX = centerX;
+    state.lastTrackAt = state.elapsed;
+  }
+
+  if (state.elapsed >= state.nextScentAt) {
+    state.scentNodes.push(
+      createScentNode({
+        id: `scent-${state.nextSignalId++}`,
+        sourceId: "hunter",
+        position: {
+          x: centerX,
+          y: player.y + player.height * 0.55,
+        },
+        strength:
+          (player.cloaked ? 0.38 : 0.62) * state.mud.scentMultiplier,
+        radius: 85,
+        lifetimeSeconds: 9 + surface.scentRetention * 9,
+      }),
+    );
+    state.nextScentAt = state.elapsed + 0.42;
+  }
+
+  let activeHazardDamage = 0;
+  for (const hazard of state.world.hazards) {
+    if (
+      !isHazardActive(hazard, state.elapsed) ||
+      !overlaps(player, hazard)
+    ) {
+      continue;
+    }
+    activeHazardDamage += hazard.damagePerSecond;
+    if (hazard.revealsCloak && player.cloaked) {
+      forceDecloak(state);
+      announce(state, "Le danger environnemental révèle le camouflage.", 1.8);
+    }
+    if (
+      hazard.noisePerSecond > 0 &&
+      Math.floor(state.elapsed) !== Math.floor(state.elapsed - delta)
+    ) {
+      emitNoise(
+        state,
+        "hazard",
+        hazard.noisePerSecond,
+        260 + hazard.noisePerSecond * 320,
+        { x: centerX, y: footY },
+      );
+    }
+  }
+  state.environmentDamage += activeHazardDamage * delta;
+  if (state.environmentDamage >= 1 && player.invulnerability <= 0) {
+    const damage = state.environmentDamage;
+    state.environmentDamage = 0;
+    hurtPlayer(state, damage, mission);
+  } else if (activeHazardDamage <= 0) {
+    state.environmentDamage = Math.max(0, state.environmentDamage - delta * 3);
+  }
+}
+
 function hurtPlayer(
   state: GameState,
   amount: number,
@@ -2299,7 +3481,7 @@ function hurtPlayer(
   if (player.invulnerability > 0 || state.phase === "dead") return;
   player.health -= amount;
   player.invulnerability = 0.55;
-  player.cloaked = false;
+  forceDecloak(state);
   state.damageTaken += amount;
   if (state.trophyExtracting) {
     state.trophyExtracting = false;
@@ -2309,6 +3491,7 @@ function hurtPlayer(
     state.screenShake = Math.min(18, 6 + amount * 0.24);
   }
   announce(state, `Impact subi : -${Math.round(amount)} intégrité`, 1.4);
+  queueSound(state, "hit");
 
   if (player.health > 0) return;
   if (!state.secondWindUsed && player.medicomps > 0) {
@@ -2331,7 +3514,7 @@ function hurtPlayer(
   player.health = 0;
   state.phase = "dead";
   state.paused = true;
-  player.cloaked = false;
+  forceDecloak(state);
   addHonor(state, "hunt-failed", `Défaite sur ${mission.planetName}`, -15, "violation");
 }
 
@@ -2377,7 +3560,9 @@ function damageEnemy(
   source: "melee" | "weapon",
 ): void {
   if (!enemy.alive || !enemy.active) return;
-  enemy.health -= amount;
+  const appliedAmount =
+    amount * (enemy.boss ? state.bossVulnerabilityMultiplier : 1);
+  enemy.health -= appliedAmount;
   enemy.hitFlash = 0.12;
   spawnGore(state, enemy, "hit");
 
@@ -2391,21 +3576,6 @@ function damageEnemy(
       "violation",
     );
   }
-  const bossRatio = enemy.boss ? enemy.health / enemy.maxHealth : 1;
-  if (
-    enemy.boss &&
-    mission.id === "volcano-bad-blood" &&
-    bossRatio <= 0.58 &&
-    source === "weapon"
-  ) {
-    addHonor(
-      state,
-      "bad-blood-duel-broken",
-      "Duel final rompu par une arme à distance",
-      -30,
-      "violation",
-    );
-  }
   if (enemy.health > 0) return;
 
   enemy.health = 0;
@@ -2413,6 +3583,7 @@ function damageEnemy(
   spawnGore(state, enemy, "kill");
   state.kills += 1;
   if (enemy.boss) {
+    state.energyWeaponsLocked = false;
     state.bossDefeatedAt = state.elapsed;
     state.phase = "trophy";
     completeObjective(
@@ -2448,25 +3619,35 @@ function playerMelee(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  inventory: PlayerInventory,
 ): void {
   const player = state.player;
+  const bladeStats = effectiveWeaponStats(
+    "wristblades",
+    inventory.weaponUpgrades.wristblades,
+  );
   if (
     player.meleeCooldown > 0 ||
-    player.stamina < 8 ||
+    player.stamina < bladeStats.staminaCost ||
     state.phase === "dead" ||
     state.phase === "finished"
   ) {
     return;
   }
-  const armor = ARMOR_BY_ID[loadout.armorId];
-  player.cloaked = false;
-  player.stamina -= 8;
-  player.meleeCooldown = 0.26;
+  const armor = effectiveArmorStats(
+    loadout.armorId,
+    inventory.armorUpgrades[loadout.armorId],
+  );
+  forceDecloak(state);
+  player.stamina -= bladeStats.staminaCost;
+  player.meleeCooldown = bladeStats.cooldownSeconds;
   player.attackFlash = 0.16;
+  queueSound(state, "slash");
   const center = {
     x: player.x + player.width / 2 + player.facing * 56,
     y: player.y + player.height * 0.48,
   };
+  emitNoise(state, "melee", 0.68, 390, center);
   const targets = [
     ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
@@ -2483,7 +3664,7 @@ function playerMelee(
         state,
         mission,
         enemy,
-        25 * armor.meleeDamageMultiplier,
+        bladeStats.damage * armor.meleeDamageMultiplier,
         "melee",
       );
     }
@@ -2495,9 +3676,15 @@ function playerWeapon(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  inventory: PlayerInventory,
 ): void {
   const player = state.player;
-  const weapon = equippedWeapon(loadout);
+  const slotIndex = player.activeWeaponSlot;
+  const weaponDefinition = equippedWeapon(loadout, slotIndex);
+  const weapon = effectiveWeaponStats(
+    weaponDefinition.id,
+    inventory.weaponUpgrades[weaponDefinition.id],
+  );
   if (
     player.weaponCooldown > 0 ||
     state.phase === "dead" ||
@@ -2505,23 +3692,31 @@ function playerWeapon(
   ) {
     return;
   }
-  if (weapon.attackType === "melee") {
-    playerMelee(state, mission, loadout);
+  if (weaponDefinition.attackType === "melee") {
+    playerMelee(state, mission, loadout, inventory);
+    return;
+  }
+  if (state.energyWeaponsLocked && weapon.energyCost > 0) {
+    announce(
+      state,
+      "Impulsion du sanctuaire : arme énergétique verrouillée.",
+      1.8,
+    );
     return;
   }
   if (weapon.energyCost > 0 && player.energy < weapon.energyCost) {
     announce(state, "Énergie insuffisante.", 1.5);
     return;
   }
-  if (weapon.ammo !== null && player.ammo <= 0) {
+  if (weapon.ammo !== null && player.weaponAmmo[slotIndex] <= 0) {
     announce(state, "Munitions épuisées.", 1.5);
     return;
   }
 
-  player.cloaked = false;
-  player.weaponCooldown = weapon.cooldownMs / 1_000;
+  forceDecloak(state);
+  player.weaponCooldown = weapon.cooldownSeconds;
   player.energy = Math.max(0, player.energy - weapon.energyCost);
-  if (weapon.ammo !== null) player.ammo -= 1;
+  if (weapon.ammo !== null) player.weaponAmmo[slotIndex] -= 1;
   const speed = Math.max(620, weapon.projectileSpeedPx);
   const angle = player.aimAngle;
   const rigFrame = solvePlayerRigFrame(
@@ -2543,11 +3738,24 @@ function playerWeapon(
       weapon.id === "smart-disc" ? 12 : weapon.id === "plasma-caster" ? 9 : 6,
     damage: weapon.damage,
     hostile: false,
-    color: weapon.color,
+    color: weaponDefinition.color,
     life: Math.max(0.8, weapon.rangePx / Math.max(1, weapon.projectileSpeedPx)),
     source: "weapon",
     weaponId: weapon.id,
   });
+  queueSound(
+    state,
+    weapon.id === "plasma-caster" ? "plasma" : "weapon-switch",
+  );
+  state.playerUsedRangedWeapon = true;
+  state.playerUsedEnergyWeapon = weapon.energyCost > 0;
+  emitNoise(
+    state,
+    "weapon",
+    weapon.id === "yautja-bow" ? 0.34 : 0.92,
+    weapon.id === "yautja-bow" ? 340 : 760,
+    projectileOrigin,
+  );
 }
 
 function playerScan(state: GameState, mission: MissionDefinition): void {
@@ -2556,6 +3764,7 @@ function playerScan(state: GameState, mission: MissionDefinition): void {
   player.scanCooldown = 0.7;
   player.energy -= 8;
   state.scanPulse = 0.55;
+  queueSound(state, "scan");
   let discovered = 0;
   const center = {
     x: player.x + player.width / 2,
@@ -2632,8 +3841,21 @@ function playerHeal(state: GameState): void {
   player.medicomps -= 1;
   player.health = Math.min(player.maxHealth, player.health + player.maxHealth * 0.46);
   player.healCooldown = 2;
-  player.cloaked = false;
+  forceDecloak(state);
+  queueSound(state, "medicomp");
   announce(state, "Medicomp appliqué. Position révélée.", 2.5);
+}
+
+function uniqueTrophyClaimId(
+  state: GameState,
+  mission: MissionDefinition,
+): string {
+  const uuid = globalThis.crypto?.randomUUID?.();
+  if (uuid) return `${mission.id}-${uuid}`;
+  const sequence = state.nextSignalId++;
+  return `${mission.id}-${Date.now().toString(36)}-${sequence.toString(36)}-${Math.random()
+    .toString(36)
+    .slice(2, 10)}`;
 }
 
 function finishTrophyExtraction(
@@ -2669,7 +3891,7 @@ function finishTrophyExtraction(
   state.trophyExtraction = 1;
   state.trophyCarried = true;
   state.trophyClaim = {
-    id: `${mission.id}-${Math.round(state.elapsed * 1_000)}`,
+    id: uniqueTrophyClaimId(state, mission),
     definitionId: mission.trophy.id,
     targetName: mission.targetName,
     targetKind: mission.targetKind,
@@ -2679,6 +3901,7 @@ function finishTrophyExtraction(
   };
   state.phase = "extraction";
   spawnGore(state, state.boss, "trophy");
+  queueSound(state, "trophy");
   addHonor(
     state,
     "trophy-claimed",
@@ -2699,6 +3922,26 @@ function interact(
     x: state.player.x + state.player.width / 2,
     y: state.player.y + state.player.height / 2,
   };
+  if (
+    state.bossMechanics.missionId === "volcano-bad-blood" &&
+    state.bossMechanics.purgeSeconds !== null &&
+    !state.bossMechanics.purgeResolved
+  ) {
+    const purgeConsole = state.purgeConsoleNodes.find(
+      (node) => !node.recovered && distance(playerCenter, node) <= 110,
+    );
+    if (purgeConsole) {
+      purgeConsole.recovered = true;
+      state.disabledConsoleId = purgeConsole.id;
+      emitNoise(state, "melee", 0.42, 270, purgeConsole);
+      announce(
+        state,
+        `Console ${purgeConsole.id.slice(-1).toUpperCase()} neutralisée.`,
+        2,
+      );
+      return;
+    }
+  }
   if (state.phase === "target") {
     const nearby = state.recoveryNodes.find(
       (node) => !node.recovered && distance(playerCenter, node) <= 105,
@@ -2720,13 +3963,26 @@ function interact(
     state.phase === "trophy" &&
     distance(playerCenter, {
       x: state.boss.x + state.boss.width / 2,
-      y: FLOOR_Y - 52,
+      y: state.world.floorY - 52,
     }) <= 125
   ) {
+    if (
+      state.bossMechanics.missionId === "volcano-bad-blood" &&
+      !state.bossMechanics.purgeResolved &&
+      (state.bossMechanics.purgeSeconds !== null ||
+        state.boss.health / state.boss.maxHealth <= 0.18)
+    ) {
+      announce(
+        state,
+        "Le trophée sera détruit : neutralise d’abord les trois consoles.",
+        2.5,
+      );
+      return;
+    }
     if (!state.trophyExtracting) {
       state.trophyExtracting = true;
       state.trophyExtraction = 0;
-      state.player.cloaked = false;
+      forceDecloak(state);
       announce(
         state,
         "Extraction du trophée : maintiens ta position pendant 1,4 s.",
@@ -2737,13 +3993,14 @@ function interact(
   }
   if (
     state.phase === "extraction" &&
-    Math.abs(playerCenter.x - EXTRACTION_X) <= 115
+    Math.abs(playerCenter.x - state.world.extraction.x) <= 115
   ) {
     completeObjective(
       state,
       mission,
       objectiveByKind(mission, "extract")?.id,
     );
+    forceDecloak(state);
     state.phase = "finished";
     state.paused = true;
     finish(resultFor(state, mission, difficulty, "success"));
@@ -2819,6 +4076,18 @@ function updateObjectiveFlow(
   }
 }
 
+function selectWeaponSlot(
+  state: GameState,
+  loadout: Loadout,
+  slotIndex: 0 | 1,
+): void {
+  if (state.player.activeWeaponSlot === slotIndex) return;
+  state.player.activeWeaponSlot = slotIndex;
+  const weapon = equippedWeapon(loadout, slotIndex);
+  queueSound(state, "weapon-switch");
+  announce(state, `${weapon.name} sélectionné.`, 1.2);
+}
+
 function updateAimState(
   state: GameState,
   input: InputHub,
@@ -2826,7 +4095,10 @@ function updateAimState(
 ): void {
   const player = state.player;
   player.aiming = isHeld(input, "aim");
-  const handWeaponId = selectedHandWeapon(loadout);
+  const handWeaponId = selectedHandWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  );
   const frame = solvePlayerRigFrame(
     state,
     player,
@@ -2905,6 +4177,7 @@ function updatePlayer(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  inventory: PlayerInventory,
   appearance: HunterAppearance,
   difficulty: DifficultyId,
   input: InputHub,
@@ -2912,11 +4185,39 @@ function updatePlayer(
   finish: (result: MissionResult) => void,
 ): void {
   const player = state.player;
-  const armor = ARMOR_BY_ID[loadout.armorId];
+  const armor = effectiveArmorStats(
+    loadout.armorId,
+    inventory.armorUpgrades[loadout.armorId],
+  );
+  const wasGrounded = player.grounded;
+  const movementSurface = activeSurface(
+    state,
+    player.x + player.width / 2,
+  );
+  const hazardMovementMultiplier = state.world.hazards.reduce(
+    (multiplier, hazard) =>
+      isHazardActive(hazard, state.elapsed) && overlaps(player, hazard)
+        ? Math.min(multiplier, hazard.movementMultiplier)
+        : multiplier,
+    1,
+  );
   const moveAxis =
     (isHeld(input, "right") ? 1 : 0) - (isHeld(input, "left") ? 1 : 0);
   const climbAxis =
     (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
+  if (consume(input, "weaponOne")) {
+    selectWeaponSlot(state, loadout, 0);
+  }
+  if (consume(input, "weaponTwo")) {
+    selectWeaponSlot(state, loadout, 1);
+  }
+  if (consume(input, "weaponNext")) {
+    selectWeaponSlot(
+      state,
+      loadout,
+      player.activeWeaponSlot === 0 ? 1 : 0,
+    );
+  }
   updateAimState(state, input, loadout);
 
   if (consume(input, "mask")) {
@@ -2929,6 +4230,7 @@ function updatePlayer(
         player.maskOn ? "Biomask verrouillé." : "Biomask retiré.",
         1.4,
       );
+      queueSound(state, player.maskOn ? "mask-on" : "mask-off");
     }
   }
 
@@ -2950,7 +4252,7 @@ function updatePlayer(
         1,
       );
       player.velocityX *= Math.pow(0.0001, delta);
-      player.cloaked = false;
+      forceDecloak(state);
       if (state.trophyExtraction >= 1) {
         finishTrophyExtraction(state, mission);
       }
@@ -2960,7 +4262,9 @@ function updatePlayer(
   const targetVelocity =
     (state.trophyExtracting ? 0 : moveAxis) *
     300 *
-    armor.moveSpeedMultiplier;
+    armor.moveSpeedMultiplier *
+    movementSurface.movementMultiplier *
+    hazardMovementMultiplier;
   player.velocityX +=
     (targetVelocity - player.velocityX) * Math.min(1, delta * 13);
   if (moveAxis !== 0 && !player.aiming) player.facing = moveAxis > 0 ? 1 : -1;
@@ -2972,17 +4276,14 @@ function updatePlayer(
     x: player.x + player.width / 2,
     y: player.y + player.height / 2,
   };
-  const currentClimbZone =
-    mission.biome === "jungle"
-      ? JUNGLE_CLIMB_ZONES.find(
-          (zone) =>
-            zone.id === player.climbZoneId ||
-            (playerCenter.x >= zone.x - 24 &&
-              playerCenter.x <= zone.x + zone.width + 24 &&
-              playerCenter.y >= zone.y - 28 &&
-              playerCenter.y <= zone.y + zone.height + 28),
-        )
-      : undefined;
+  const currentClimbZone = state.world.climbables.find(
+    (zone) =>
+      zone.id === player.climbZoneId ||
+      (playerCenter.x >= zone.x - 24 &&
+        playerCenter.x <= zone.x + zone.width + 24 &&
+        playerCenter.y >= zone.y - 28 &&
+        playerCenter.y <= zone.y + zone.height + 28),
+  );
   if (
     !state.trophyExtracting &&
     climbAxis !== 0 &&
@@ -2993,7 +4294,10 @@ function updatePlayer(
     player.climbZoneId = currentClimbZone.id;
     player.grounded = false;
   }
-  if (player.climbing && (mission.biome !== "jungle" || Math.abs(moveAxis) > 0.5)) {
+  if (
+    player.climbing &&
+    (Math.abs(moveAxis) > 0.5 || player.stamina <= 0)
+  ) {
     player.climbing = false;
     player.climbZoneId = null;
   }
@@ -3004,25 +4308,36 @@ function updatePlayer(
     player.climbZoneId = null;
     player.velocityY = -560;
     player.velocityX = player.facing * 270;
+    emitNoise(state, "landing", 0.24, 210, playerCenter);
+    queueSound(state, "jump");
   } else if (jumpPressed && player.grounded && !state.trophyExtracting) {
     player.velocityY = -720;
     player.grounded = false;
+    emitNoise(state, "footstep", 0.3, 230, playerCenter);
+    queueSound(state, "jump");
   }
   if (consume(input, "melee") && !state.trophyExtracting) {
-    playerMelee(state, mission, loadout);
+    playerMelee(state, mission, loadout, inventory);
   }
   if (consume(input, "weapon") && !state.trophyExtracting) {
-    playerWeapon(state, mission, loadout);
+    playerWeapon(state, mission, loadout, inventory);
   }
   if (consume(input, "scan")) playerScan(state, mission);
   if (consume(input, "heal")) playerHeal(state);
+  if (consume(input, "gearOne") && !state.trophyExtracting) {
+    activateGearSlot(state, 0);
+  }
+  if (consume(input, "gearTwo") && !state.trophyExtracting) {
+    activateGearSlot(state, 1);
+  }
   if (consume(input, "cloak")) {
     if (player.cloaked) {
-      player.cloaked = false;
+      forceDecloak(state);
       announce(state, "Camouflage désactivé.", 1.2);
     } else if (player.energy >= 20) {
       player.cloaked = true;
       announce(state, "Camouflage actif.", 1.2);
+      queueSound(state, "cloak-on");
     } else {
       announce(state, "Énergie insuffisante pour le camouflage.", 1.8);
     }
@@ -3033,14 +4348,24 @@ function updatePlayer(
 
   player.previousY = player.y;
   if (player.climbing && currentClimbZone) {
+    const flexibleClimb =
+      currentClimbZone.kind === "vine" ||
+      currentClimbZone.kind === "rope" ||
+      currentClimbZone.kind === "chain";
     const climbCenterX =
       currentClimbZone.x + currentClimbZone.width / 2 - player.width / 2;
     player.x +=
       (climbCenterX - player.x) *
-      Math.min(1, delta * (currentClimbZone.kind === "vine" ? 6 : 9));
+      Math.min(1, delta * (flexibleClimb ? 6 : 9));
     player.velocityX *= Math.pow(0.001, delta);
     player.velocityY +=
-      (climbAxis * 235 - player.velocityY) * Math.min(1, delta * 14);
+      (climbAxis * 235 * currentClimbZone.climbSpeedMultiplier -
+        player.velocityY) *
+      Math.min(1, delta * 14);
+    player.stamina = Math.max(
+      0,
+      player.stamina - currentClimbZone.staminaPerSecond * delta,
+    );
     player.y = clamp(
       player.y + player.velocityY * delta,
       currentClimbZone.y - player.height * 0.38,
@@ -3054,10 +4379,11 @@ function updatePlayer(
     player.grounded = false;
   }
 
+  const impactVelocity = player.velocityY;
   const previousBottom = player.previousY + player.height;
   const currentBottom = player.y + player.height;
   if (!player.climbing && player.velocityY >= 0) {
-    for (const platform of PLATFORMS) {
+    for (const platform of state.world.platforms) {
       if (
         previousBottom <= platform.y + 7 &&
         currentBottom >= platform.y &&
@@ -3071,14 +4397,28 @@ function updatePlayer(
       }
     }
   }
-  if (player.y + player.height >= FLOOR_Y) {
-    player.y = FLOOR_Y - player.height;
+  if (player.y + player.height >= state.world.floorY) {
+    player.y = state.world.floorY - player.height;
     player.velocityY = 0;
     player.grounded = true;
   }
+  if (!wasGrounded && player.grounded && impactVelocity > 180) {
+    emitNoise(
+      state,
+      "landing",
+      clamp(impactVelocity / 900, 0.25, 1),
+      260 + impactVelocity * 0.3,
+      {
+        x: player.x + player.width / 2,
+        y: player.y + player.height,
+      },
+    );
+  }
 
-  let maximumX = WORLD_WIDTH - player.width;
-  if (!state.boss.active && state.phase !== "extraction") maximumX = 3_950;
+  let maximumX = state.world.width - player.width;
+  if (!state.boss.active && state.phase !== "extraction") {
+    maximumX = state.world.bossArena.x - 90;
+  }
   player.x = clamp(player.x, 0, maximumX);
   updateHunterRig(player, delta, state.trophyExtracting);
 
@@ -3090,13 +4430,14 @@ function updatePlayer(
   player.attackFlash = Math.max(0, player.attackFlash - delta);
   player.stamina = Math.min(
     player.maxStamina,
-    player.stamina + (player.grounded ? 24 : 14) * delta,
+    player.stamina +
+      (player.climbing ? 0 : player.grounded ? 24 : 14) * delta,
   );
   if (player.cloaked) {
     player.energy -= 16 * delta;
     if (player.energy <= 0) {
       player.energy = 0;
-      player.cloaked = false;
+      forceDecloak(state);
       announce(state, "Camouflage rompu : réserve épuisée.", 2);
     }
   } else {
@@ -3135,6 +4476,14 @@ function fireHostileProjectile(
     source,
     weaponId: null,
   });
+  emitNoise(
+    state,
+    "weapon",
+    source === "boss" ? 1 : 0.78,
+    source === "boss" ? 860 : 640,
+    { x: originX, y: originY },
+    enemy.id,
+  );
 }
 
 function updateRegularEnemy(
@@ -3147,53 +4496,316 @@ function updateRegularEnemy(
   enemy.attackCooldown = Math.max(0, enemy.attackCooldown - delta);
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
   enemy.telegraph = Math.max(0, enemy.telegraph - delta);
+  if (enemy.restrainedUntil > state.elapsed) {
+    enemy.velocityX = 0;
+    enemy.telegraph = 0;
+    return;
+  }
 
   const player = state.player;
-  const enemyCenter = enemy.x + enemy.width / 2;
-  const playerCenter = player.x + player.width / 2;
-  const dx = playerCenter - enemyCenter;
-  const detected =
-    Math.abs(dx) <
-    (player.cloaked ? 105 : enemy.kind === "human" ? 560 : 410);
+  const selfPosition = {
+    x: enemy.x + enemy.width / 2,
+    y: enemy.y + enemy.height / 2,
+  };
+  const targetPosition = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height / 2,
+  };
+  const targetDistance = distance(selfPosition, targetPosition);
+  const detectionMultiplier =
+    DIFFICULTY_BY_ID[state.arsenal.difficultyId].detectionMultiplier;
+  const visionRange =
+    (enemy.kind === "human" ? 590 : enemy.kind === "yautja" ? 680 : 440) *
+    detectionMultiplier;
+  const cloakVisibility = player.cloaked
+    ? clamp(
+        0.04 +
+          state.mud.cloakShimmer +
+          Math.abs(player.velocityX) / 1_350,
+        0.04,
+        0.68,
+      )
+    : 1;
+  const visualContact =
+    clamp(1 - targetDistance / visionRange, 0, 1) * cloakVisibility;
+  const thermalContact =
+    enemy.kind === "human"
+      ? 0
+      : clamp(1 - targetDistance / (visionRange * 1.15), 0, 1) *
+        state.mud.thermalVisibility;
 
-  if (detected) {
-    enemy.facing = dx >= 0 ? 1 : -1;
-    const desiredRange = enemy.kind === "human" ? 250 : 58;
-    if (Math.abs(dx) > desiredRange) {
-      enemy.velocityX =
-        Math.sign(dx) * enemy.moveSpeed * (player.cloaked ? 0.35 : 1);
-    } else {
-      enemy.velocityX *= 0.75;
+  const wind = sampleWind(state.world.wind, state.elapsed, selfPosition.x);
+  let heardNoise: ReturnType<typeof perceivedNoise> = null;
+  for (const noise of state.noiseEvents) {
+    if (noise.sourceId !== "hunter") continue;
+    const perception = perceivedNoise(noise, {
+      position: selfPosition,
+      elapsedSeconds: state.elapsed,
+      hearingMultiplier:
+        (enemy.kind === "beast"
+          ? 1.28
+          : enemy.kind === "yautja"
+            ? 1.15
+            : 1) * detectionMultiplier,
+      occlusion: 0,
+      wind,
+    });
+    if (
+      perception &&
+      (!heardNoise || perception.strength > heardNoise.strength)
+    ) {
+      heardNoise = perception;
     }
-    if (enemy.attackCooldown <= 0) {
-      if (enemy.kind === "human" && Math.abs(dx) < 620) {
-        fireHostileProjectile(
-          state,
-          enemy,
-          enemy.damage,
-          560,
-          "#ff8d64",
-          "enemy",
-        );
-        enemy.attackCooldown = 1.4 + Math.random() * 0.8;
-      } else if (
-        enemy.kind !== "human" &&
-        Math.abs(dx) < enemy.width * 0.8 + player.width * 0.55
-      ) {
-        hurtPlayer(state, enemy.damage, mission);
-        enemy.attackCooldown = 1.15;
-      }
-    }
-  } else {
-    if (enemy.x <= enemy.patrolLeft) enemy.facing = 1;
-    if (enemy.x >= enemy.patrolRight) enemy.facing = -1;
-    enemy.velocityX = enemy.facing * enemy.moveSpeed * 0.42;
   }
+  const scent = sampleScentAt(selfPosition, state.scentNodes);
+  const track = sampleTracksAt(
+    selfPosition,
+    state.tracks,
+    enemy.kind === "beast" ? 280 : 190,
+    state.elapsed,
+  );
+  const alliesInRange = state.enemies
+    .filter(
+      (ally) =>
+        ally.id !== enemy.id &&
+        ally.alive &&
+        distance(selfPosition, {
+          x: ally.x + ally.width / 2,
+          y: ally.y + ally.height / 2,
+        }) <= 540,
+    )
+    .map((ally) => ally.id);
+  const nearbyCovers = state.world.covers
+    .filter(
+      (cover) =>
+        !state.brokenPillarIds.has(cover.id) &&
+        Math.abs(cover.x + cover.width / 2 - selfPosition.x) <= 620,
+    )
+    .map((cover) => {
+      const position = {
+        x: cover.x + cover.width / 2,
+        y: cover.y + cover.height / 2,
+      };
+      return {
+        id: cover.id,
+        position,
+        protection: cover.protection,
+        distance: distance(selfPosition, position),
+        occupied: state.enemies.some(
+          (ally) =>
+            ally.id !== enemy.id &&
+            ally.alive &&
+            Math.abs(ally.x + ally.width / 2 - position.x) < 42,
+        ),
+      };
+    });
+  const previousBrain =
+    state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
+  const aiStep = stepAiBrain(previousBrain, {
+    deltaSeconds: delta,
+    elapsedSeconds: state.elapsed,
+    self: selfPosition,
+    target: targetPosition,
+    healthRatio: enemy.health / enemy.maxHealth,
+    visualContact,
+    thermalContact,
+    heardNoise,
+    scentStrength: scent.strength,
+    trackStrength: track.strength,
+    underRangedThreat: state.projectiles.some(
+      (projectile) =>
+        !projectile.hostile &&
+        Math.abs(projectile.x - selfPosition.x) < 260,
+    ),
+    alliesInRange,
+    alliesEngaged: alliesInRange.filter(
+      (allyId) => state.aiBrains[allyId]?.mode === "engage",
+    ).length,
+    nearbyCovers,
+  });
+  state.aiBrains[enemy.id] = aiStep.brain;
+
+  if (aiStep.raisedAlert) {
+    queueSound(state, "enemy-alert");
+    emitNoise(
+      state,
+      "vocalization",
+      0.62,
+      520,
+      selfPosition,
+      enemy.id,
+    );
+    for (const allyId of aiStep.brain.alertedAllyIds) {
+      const allyBrain = state.aiBrains[allyId];
+      if (!allyBrain) continue;
+      state.aiBrains[allyId] = {
+        ...allyBrain,
+        suspicion: Math.max(allyBrain.suspicion, 0.56),
+        lastKnownTarget: targetPosition,
+      };
+    }
+  }
+
+  if (aiStep.intent.moveX !== 0) {
+    enemy.facing = aiStep.intent.moveX;
+  }
+  enemy.velocityX =
+    aiStep.intent.moveX * enemy.moveSpeed * aiStep.intent.speedMultiplier;
+  const dx = targetPosition.x - selfPosition.x;
+  if (
+    enemy.attackCooldown <= 0 &&
+    (aiStep.intent.action === "attack" ||
+      aiStep.intent.action === "suppress")
+  ) {
+    if (enemy.kind === "human" && Math.abs(dx) < 650) {
+      fireHostileProjectile(
+        state,
+        enemy,
+        enemy.damage,
+        560,
+        "#ff8d64",
+        "enemy",
+      );
+      enemy.attackCooldown =
+        1.35 + ((enemy.id.length * 0.19 + state.elapsed * 0.07) % 0.7);
+    } else if (
+      enemy.kind !== "human" &&
+      Math.abs(dx) < enemy.width * 0.8 + player.width * 0.55
+    ) {
+      hurtPlayer(state, enemy.damage, mission);
+      enemy.attackCooldown = enemy.kind === "beast" ? 1.05 : 1.2;
+      emitNoise(state, "melee", 0.6, 360, selfPosition, enemy.id);
+    }
+  }
+
   enemy.x = clamp(
     enemy.x + enemy.velocityX * delta,
     enemy.patrolLeft,
     enemy.patrolRight,
   );
+  if (
+    (enemy.x <= enemy.patrolLeft + 1 && aiStep.intent.moveX < 0) ||
+    (enemy.x >= enemy.patrolRight - 1 && aiStep.intent.moveX > 0)
+  ) {
+    state.aiBrains[enemy.id] = {
+      ...state.aiBrains[enemy.id],
+      searchDirection: aiStep.intent.moveX < 0 ? 1 : -1,
+    };
+  }
+}
+
+function spawnBossSupport(
+  state: GameState,
+  mission: MissionDefinition,
+  difficulty: DifficultyId,
+  count: number,
+  groupId: string,
+): void {
+  const difficultyDef = DIFFICULTY_BY_ID[difficulty];
+  const support =
+    mission.id === "jungle-vey"
+      ? {
+          archetype: "heavy",
+          health: 150,
+          damage: 14,
+          moveSpeed: 90,
+        }
+      : mission.id === "ice-cryostalker"
+        ? {
+            archetype: "cryostalker-runner",
+            health: 70,
+            damage: 14,
+            moveSpeed: 190,
+          }
+        : {
+            archetype: "bad-blood-initiate",
+            health: 130,
+            damage: 18,
+            moveSpeed: 150,
+          };
+  for (let index = 0; index < count; index += 1) {
+    const enemy = makeEnemy(
+      `${groupId}-${state.nextSignalId++}-${index}`,
+      support.archetype,
+      clamp(
+        state.boss.x + (index % 2 === 0 ? -260 : 270),
+        state.world.bossArena.x + 30,
+        state.world.bossArena.x + state.world.bossArena.width - 130,
+      ),
+      support.health,
+      support.damage,
+      support.moveSpeed,
+      difficultyDef.enemyHealthMultiplier,
+      difficultyDef.enemyDamageMultiplier,
+    );
+    enemy.patrolLeft = state.world.bossArena.x;
+    enemy.patrolRight =
+      state.world.bossArena.x + state.world.bossArena.width - enemy.width;
+    state.enemies.push(enemy);
+    state.aiBrains[enemy.id] = createAiBrain(enemy.id, enemy.kind);
+  }
+}
+
+function executeBossAttack(
+  state: GameState,
+  mission: MissionDefinition,
+  difficulty: DifficultyId,
+  attackId: string,
+  damageMultiplier: number,
+): void {
+  const boss = state.boss;
+  const player = state.player;
+  const attack = mission.boss.attacks.find((entry) => entry.id === attackId);
+  if (!attack) return;
+  const difficultyDef = DIFFICULTY_BY_ID[difficulty];
+  const dx =
+    player.x + player.width / 2 - (boss.x + boss.width / 2);
+  const damage =
+    attack.damage *
+    difficultyDef.enemyDamageMultiplier *
+    damageMultiplier;
+  emitNoise(
+    state,
+    attack.behavior === "area" ? "hazard" : "weapon",
+    1,
+    920,
+    { x: boss.x + boss.width / 2, y: boss.y + boss.height / 2 },
+    boss.id,
+  );
+
+  if (attack.behavior === "melee" && Math.abs(dx) < 165) {
+    hurtPlayer(state, damage, mission);
+  } else if (attack.behavior === "charge") {
+    boss.velocityX = boss.facing * 760;
+    if (Math.abs(dx) < 230) hurtPlayer(state, damage, mission);
+  } else if (attack.behavior === "area") {
+    if (Math.abs(dx) < attack.rangePx) {
+      hurtPlayer(state, damage, mission);
+      forceDecloak(state);
+    }
+    if (state.screenShakeEnabled) state.screenShake = 14;
+  } else if (attack.behavior === "burst") {
+    for (let burst = 0; burst < 3; burst += 1) {
+      fireHostileProjectile(
+        state,
+        boss,
+        damage * 0.6,
+        620,
+        mission.palette.danger,
+        "boss",
+        (burst - 1) * 38,
+      );
+    }
+  } else {
+    fireHostileProjectile(
+      state,
+      boss,
+      damage,
+      attack.behavior === "disc" ? 720 : 650,
+      attack.behavior === "plasma" ? "#ff4838" : mission.boss.color,
+      "boss",
+    );
+  }
 }
 
 function updateBoss(
@@ -3203,109 +4815,248 @@ function updateBoss(
   delta: number,
 ): void {
   const boss = state.boss;
-  if (!boss.active || !boss.alive) return;
+  if (!boss.active) return;
+  const pendingBadBloodPurge =
+    mission.id === "volcano-bad-blood" &&
+    state.bossMechanics.missionId === "volcano-bad-blood" &&
+    !state.bossMechanics.purgeResolved &&
+    (state.bossMechanics.purgeSeconds !== null ||
+      boss.health / boss.maxHealth <= 0.18);
+  if (!boss.alive && !pendingBadBloodPurge) return;
   const difficultyDef = DIFFICULTY_BY_ID[difficulty];
-  boss.attackCooldown = Math.max(0, boss.attackCooldown - delta);
-  boss.hitFlash = Math.max(0, boss.hitFlash - delta);
-  boss.telegraph = Math.max(0, boss.telegraph - delta);
-  const phase = activeBossPhase(mission, boss);
-  const phaseSpeed = phase?.speedMultiplier ?? 1;
-  const phaseDamage = phase?.damageMultiplier ?? 1;
+  const bossRestrained = boss.restrainedUntil > state.elapsed;
+  if (bossRestrained) {
+    boss.velocityX = 0;
+  }
   const player = state.player;
-  const dx =
-    player.x + player.width / 2 - (boss.x + boss.width / 2);
-  boss.facing = dx >= 0 ? 1 : -1;
+  const bossCenter = {
+    x: boss.x + boss.width / 2,
+    y: boss.y + boss.height / 2,
+  };
+  const playerCenter = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height / 2,
+  };
+  const dx = playerCenter.x - bossCenter.x;
+  const hasBlockingCover = state.world.covers.some((cover) => {
+    if (state.brokenPillarIds.has(cover.id)) return false;
+    const between =
+      cover.x + cover.width > Math.min(bossCenter.x, playerCenter.x) &&
+      cover.x < Math.max(bossCenter.x, playerCenter.x);
+    return between && player.y + player.height > cover.y;
+  });
+  const mechanicStep = stepBossMechanics(state.bossMechanics, {
+    deltaSeconds: delta,
+    elapsedSeconds: state.elapsed,
+    healthRatio: boss.health / boss.maxHealth,
+    distanceToPlayer: distance(bossCenter, playerCenter),
+    lineOfSight:
+      Math.abs(dx) < 900 && !hasBlockingCover && !player.cloaked,
+    playerCloaked: player.cloaked,
+    playerOnHighGround:
+      player.y + player.height < state.world.floorY - 70,
+    playerUsedRangedWeapon: state.playerUsedRangedWeapon,
+    playerUsedEnergyWeapon: state.playerUsedEnergyWeapon,
+    bossHitPillar: state.bossHitPillar,
+    disabledConsoleId: state.disabledConsoleId,
+    activeSupportCount: state.enemies.filter(
+      (enemy) => enemy.alive && enemy.active,
+    ).length,
+  });
+  state.bossMechanics = mechanicStep.state;
+  state.bossVulnerabilityMultiplier =
+    mechanicStep.decision.vulnerabilityMultiplier;
+  state.bossThermalVisibility = mechanicStep.decision.thermalVisibility;
+  state.energyWeaponsLocked = mechanicStep.decision.energyWeaponsLocked;
+  state.bossHitPillar = false;
+  state.disabledConsoleId = null;
 
-  if (boss.attackCooldown <= 0 && boss.telegraph <= 0) {
-    const attacks = mission.boss.attacks;
-    const closeAttack = attacks.find((attack) => attack.behavior === "melee");
-    const rangedAttacks = attacks.filter(
-      (attack) => attack.behavior !== "melee",
-    );
-    const attack =
-      Math.abs(dx) < 145 && closeAttack
-        ? closeAttack
-        : rangedAttacks[
-            Math.floor(state.elapsed / 2.7) % Math.max(1, rangedAttacks.length)
-          ] ?? attacks[0];
-    if (attack) {
-      boss.telegraph = Math.max(0.12, attack.telegraphMs / 1_000);
-      boss.attackCooldown =
-        attack.cooldownSeconds + boss.telegraph;
+  for (const effect of mechanicStep.effects) {
+    switch (effect.kind) {
+      case "spawn-support":
+        spawnBossSupport(
+          state,
+          mission,
+          difficulty,
+          Math.max(1, Math.round(effect.value)),
+          effect.id ?? "boss-support",
+        );
+        announce(state, "La cible appelle des renforts dans l’arène.", 3);
+        break;
+      case "reveal-cloak":
+        forceDecloak(state);
+        announce(state, "La fusée de Vey révèle ta signature.", 2.5);
+        break;
+      case "armor-plate-broken":
+        addHonor(
+          state,
+          effect.id ?? `cryo-plate-${state.brokenPillarIds.size}`,
+          "Carapace brisée contre un pilier",
+          5,
+          "objective",
+        );
+        announce(state, "Impact réussi : une plaque de l’Alpha cède.", 2.4);
+        break;
+      case "burrow-warning":
+        announce(state, "La glace se fissure sous tes pieds.", 1.4);
+        break;
+      case "falling-ice":
+        if (
+          player.x >= state.world.bossArena.x &&
+          player.x <=
+            state.world.bossArena.x + state.world.bossArena.width &&
+          player.grounded
+        ) {
+          hurtPlayer(state, 8 * difficultyDef.enemyDamageMultiplier, mission);
+        }
+        break;
+      case "energy-lock":
+        announce(
+          state,
+          "Impulsion du sanctuaire : armes énergétiques verrouillées.",
+          3,
+        );
+        break;
+      case "duel-violation":
+        addHonor(
+          state,
+          effect.id ?? "bad-blood-duel-broken",
+          "Duel final rompu par une arme à distance",
+          -Math.abs(effect.value),
+          "violation",
+        );
+        break;
+      case "purge-started":
+        announce(
+          state,
+          "AUTODESTRUCTION : neutralise les trois consoles avec [E].",
+          5,
+        );
+        break;
+      case "purge-console-disabled":
+        announce(
+          state,
+          `Purge interrompue : ${Math.round(effect.value)}/3 consoles.`,
+          2,
+        );
+        break;
+      case "purge-cancelled":
+        addHonor(
+          state,
+          "bad-blood-purge-stopped",
+          "Purge du sanctuaire interrompue",
+          20,
+          "objective",
+        );
+        announce(state, "Purge annulée. Le trophée est préservé.", 4);
+        break;
+      case "purge-detonated":
+        addHonor(
+          state,
+          "bad-blood-purge-failed",
+          "Purge du sanctuaire non interrompue",
+          -25,
+          "violation",
+        );
+        hurtPlayer(state, player.maxHealth * 2, mission);
+        break;
+      case "suppression-zone":
+        if (state.screenShakeEnabled) {
+          state.screenShake = Math.max(state.screenShake, 3);
+        }
+        break;
+      case "mud-camouflage":
+        break;
     }
   }
 
+  if (!boss.alive) return;
+  if (bossRestrained) {
+    boss.velocityX = 0;
+    return;
+  }
+  boss.hitFlash = Math.max(0, boss.hitFlash - delta);
   const wasTelegraphing = boss.telegraph > 0;
-  if (wasTelegraphing) {
-    boss.velocityX *= 0.82;
-    const remaining = Math.max(0, boss.telegraph - delta);
-    if (remaining <= 0) {
-      const attacks = mission.boss.attacks;
-      const closeAttack = attacks.find((attack) => attack.behavior === "melee");
-      const rangedAttacks = attacks.filter(
-        (attack) => attack.behavior !== "melee",
-      );
-      const attack =
-        Math.abs(dx) < 145 && closeAttack
-          ? closeAttack
-          : rangedAttacks[
-              Math.floor(state.elapsed / 2.7) %
-                Math.max(1, rangedAttacks.length)
-            ] ?? attacks[0];
-      if (attack) {
-        const damage =
-          attack.damage *
-          difficultyDef.enemyDamageMultiplier *
-          phaseDamage;
-        if (attack.behavior === "melee" && Math.abs(dx) < 165) {
-          hurtPlayer(state, damage, mission);
-        } else if (attack.behavior === "charge") {
-          boss.velocityX = boss.facing * 720;
-          if (Math.abs(dx) < 240) hurtPlayer(state, damage, mission);
-        } else if (attack.behavior === "area") {
-          if (Math.abs(dx) < attack.rangePx) {
-            hurtPlayer(state, damage, mission);
-            player.cloaked = false;
-          }
-          if (state.screenShakeEnabled) state.screenShake = 14;
-        } else if (attack.behavior === "burst") {
-          for (let burst = 0; burst < 3; burst += 1) {
-            fireHostileProjectile(
-              state,
-              boss,
-              damage * 0.6,
-              620,
-              mission.palette.danger,
-              "boss",
-              (burst - 1) * 38,
-            );
-          }
-        } else {
-          fireHostileProjectile(
-            state,
-            boss,
-            damage,
-            attack.behavior === "disc" ? 720 : 650,
-            attack.behavior === "plasma"
-              ? "#ff4838"
-              : mission.boss.color,
-            "boss",
-          );
-        }
-      }
+  let executedAttackId: string | null = null;
+  boss.telegraph = Math.max(0, boss.telegraph - delta);
+  if (
+    wasTelegraphing &&
+    boss.telegraph <= 0 &&
+    boss.pendingAttackId
+  ) {
+    executedAttackId = boss.pendingAttackId;
+    executeBossAttack(
+      state,
+      mission,
+      difficulty,
+      boss.pendingAttackId,
+      mechanicStep.decision.damageMultiplier,
+    );
+    boss.pendingAttackId = null;
+  }
+  if (
+    mechanicStep.decision.attackId &&
+    boss.telegraph <= 0 &&
+    !boss.pendingAttackId
+  ) {
+    const attack = mission.boss.attacks.find(
+      (entry) => entry.id === mechanicStep.decision.attackId,
+    );
+    if (attack) {
+      boss.pendingAttackId = attack.id;
+      boss.telegraph = Math.max(0.12, attack.telegraphMs / 1_000);
     }
-    boss.telegraph = remaining;
+  }
+
+  boss.facing = dx >= 0 ? 1 : -1;
+  if (boss.telegraph > 0) {
+    boss.velocityX *= 0.78;
+  } else if (
+    executedAttackId &&
+    mission.boss.attacks.find((attack) => attack.id === executedAttackId)
+      ?.behavior === "charge"
+  ) {
+    // The charge velocity is set by executeBossAttack and must survive this tick.
   } else {
-    const desiredRange =
-      mission.biome === "ice" ? 90 : mission.biome === "volcano" ? 220 : 260;
-    if (Math.abs(dx) > desiredRange) {
-      boss.velocityX =
-        Math.sign(dx) * boss.moveSpeed * phaseSpeed;
-    } else if (Math.abs(dx) < desiredRange * 0.65) {
-      boss.velocityX =
-        -Math.sign(dx) * boss.moveSpeed * phaseSpeed * 0.75;
-    } else {
-      boss.velocityX *= 0.75;
+    const direction = dx >= 0 ? 1 : -1;
+    switch (mechanicStep.decision.movement) {
+      case "approach":
+        boss.velocityX =
+          direction *
+          boss.moveSpeed *
+          mechanicStep.decision.speedMultiplier;
+        break;
+      case "retreat":
+        boss.velocityX =
+          -direction *
+          boss.moveSpeed *
+          mechanicStep.decision.speedMultiplier *
+          0.82;
+        break;
+      case "flank":
+        boss.velocityX =
+          (state.bossMechanics.sequence % 2 === 0 ? direction : -direction) *
+          boss.moveSpeed *
+          mechanicStep.decision.speedMultiplier;
+        break;
+      case "charge":
+        if (Math.abs(boss.velocityX) < 500) {
+          boss.velocityX =
+            direction *
+            boss.moveSpeed *
+            mechanicStep.decision.speedMultiplier;
+        }
+        break;
+      case "burrow":
+        boss.velocityX =
+          direction *
+          boss.moveSpeed *
+          mechanicStep.decision.speedMultiplier *
+          1.25;
+        break;
+      case "hold":
+        boss.velocityX *= 0.72;
+        break;
     }
   }
 
@@ -3314,6 +5065,23 @@ function updateBoss(
     boss.patrolLeft,
     boss.patrolRight,
   );
+  if (
+    mission.id === "ice-cryostalker" &&
+    Math.abs(boss.velocityX) > 500
+  ) {
+    const pillar = state.world.covers.find(
+      (cover) =>
+        cover.id.startsWith("i-pillar-") &&
+        !state.brokenPillarIds.has(cover.id) &&
+        overlaps(boss, cover),
+    );
+    if (pillar) {
+      state.brokenPillarIds.add(pillar.id);
+      state.bossHitPillar = true;
+      boss.velocityX *= -0.18;
+      if (state.screenShakeEnabled) state.screenShake = 16;
+    }
+  }
   if (
     Math.abs(dx) < (boss.width + player.width) * 0.45 &&
     Math.abs(boss.velocityX) > 500
@@ -3442,6 +5210,9 @@ function pollGamepad(input: InputHub): void {
     [3, "cloak"],
     [5, "heal"],
     [1, "interact"],
+    [8, "weaponNext"],
+    [10, "gearOne"],
+    [11, "gearTwo"],
     [9, "pause"],
   ];
   const current = gamepad.buttons.map((button) => button.pressed);
@@ -3457,48 +5228,61 @@ function stepGame(
   state: GameState,
   mission: MissionDefinition,
   loadout: Loadout,
+  inventory: PlayerInventory,
   appearance: HunterAppearance,
   difficulty: DifficultyId,
   input: InputHub,
   delta: number,
   finish: (result: MissionResult) => void,
 ): void {
+  const wasPaused = state.paused;
   pollGamepad(input);
   if (consume(input, "pause")) {
     state.paused = !state.paused;
     announce(state, state.paused ? "Chasse en pause." : "Chasse reprise.", 1.3);
   }
   if (state.paused || state.phase === "dead" || state.phase === "finished") {
+    input.pressed.clear();
     return;
   }
+  if (wasPaused) input.pressed.clear();
 
   state.elapsed += delta;
   state.messageTimer = Math.max(0, state.messageTimer - delta);
   state.scanPulse = Math.max(0, state.scanPulse - delta);
   state.screenShake = Math.max(0, state.screenShake - delta * 30);
+  state.arsenal = tickArsenalRuntime(state.arsenal, delta);
+  updateRevealEffects(state);
 
   updatePlayer(
     state,
     mission,
     loadout,
+    inventory,
     appearance,
     difficulty,
     input,
     delta,
     finish,
   );
+  updateHuntTraps(state, delta);
+  updateHuntSignals(state, mission, delta);
+  if (state.player.health <= 0) return;
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
   updateBoss(state, mission, difficulty, delta);
+  state.playerUsedRangedWeapon = false;
+  state.playerUsedEnergyWeapon = false;
   updateProjectiles(state, mission, delta);
   updateGoreParticles(state, delta);
   updateObjectiveFlow(state, mission, difficulty);
+  updateMissionCheckpoint(state);
 
   const desiredCamera = clamp(
     state.player.x - VIEW_WIDTH * 0.38,
     0,
-    WORLD_WIDTH - VIEW_WIDTH,
+    state.world.width - VIEW_WIDTH,
   );
   state.cameraX +=
     (desiredCamera - state.cameraX) * Math.min(1, delta * 6);
@@ -3511,19 +5295,24 @@ function stepGame(
 export default function HuntCanvas({
   mission,
   loadout,
+  inventory,
   difficulty,
   appearance,
   reducedGore,
   screenShake,
+  highContrastVision,
+  onSound,
   onFinish,
   onAbort,
 }: HuntCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const finishRef = useRef(onFinish);
   const abortRef = useRef(onAbort);
+  const soundRef = useRef(onSound);
   const restartRef = useRef<() => void>(() => undefined);
   const togglePauseRef = useRef<() => void>(() => undefined);
   const reportFailureRef = useRef<() => void>(() => undefined);
+  const requestAbortRef = useRef<() => void>(() => undefined);
   const inputRef = useRef<InputHub>({
     keyboardHeld: new Set(),
     touchHeld: new Set(),
@@ -3544,6 +5333,10 @@ export default function HuntCanvas({
   }, [onAbort]);
 
   useEffect(() => {
+    soundRef.current = onSound;
+  }, [onSound]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext("2d", { alpha: false });
@@ -3558,6 +5351,7 @@ export default function HuntCanvas({
     let game = makeGameState(
       mission,
       loadout,
+      inventory,
       difficulty,
       appearance,
       reducedGore,
@@ -3624,6 +5418,9 @@ export default function HuntCanvas({
       foregroundFerns: null,
       foregroundVines: null,
       foregroundReeds: null,
+      enemyV4: Object.fromEntries(
+        ENEMY_V4_SPRITE_IDS.map((spriteId) => [spriteId, null]),
+      ) as Record<EnemyV4SpriteId, HTMLImageElement | null>,
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -3740,8 +5537,9 @@ export default function HuntCanvas({
       });
     }
 
-    const handWeaponId = selectedHandWeapon(loadout);
-    if (handWeaponId) {
+    for (const slotIndex of [0, 1] as const) {
+      const handWeaponId = selectedHandWeapon(loadout, slotIndex);
+      if (!handWeaponId) continue;
       queueImage(
         hunterRegisteredAssetPath("weapons", handWeaponId),
         (image) => {
@@ -3785,7 +5583,7 @@ export default function HuntCanvas({
       [string, (image: HTMLImageElement | null) => void]
     > = [
       [
-        "/game/assets/v2/environments/jungle/climbables/tree-trunk.webp",
+        "/game/props/v4/tree-trunk.png",
         (image) => {
           assets.treeTrunk = image;
         },
@@ -3797,45 +5595,33 @@ export default function HuntCanvas({
         },
       ],
       [
-        "/game/assets/v2/environments/jungle/platforms/root-branch.webp",
+        "/game/props/v4/root-platform.png",
         (image) => {
           assets.platformRoot = image;
         },
       ],
       [
-        "/game/assets/v2/environments/jungle/platforms/stone-slab.webp",
+        "/game/props/v4/ruin-platform.png",
         (image) => {
           assets.platformStone = image;
         },
       ],
       [
-        "/game/assets/v2/environments/jungle/platforms/tree-crown.webp",
+        "/game/props/v4/crown-platform.png",
         (image) => {
           assets.platformCrown = image;
         },
       ],
       [
-        "/game/assets/v2/environments/jungle/platforms/expedition-platform.webp",
+        "/game/props/v4/expedition-platform.png",
         (image) => {
           assets.platformExpedition = image;
         },
       ],
       [
-        "/game/assets/v2/environments/jungle/foreground/ferns.webp",
+        "/game/props/v4/foreground-ferns.png",
         (image) => {
           assets.foregroundFerns = image;
-        },
-      ],
-      [
-        "/game/assets/v2/environments/jungle/foreground/hanging-vines.webp",
-        (image) => {
-          assets.foregroundVines = image;
-        },
-      ],
-      [
-        "/game/assets/v2/environments/jungle/foreground/lake-reeds.webp",
-        (image) => {
-          assets.foregroundReeds = image;
         },
       ],
       [
@@ -3860,19 +5646,27 @@ export default function HuntCanvas({
     for (const [path, assign] of environmentAssets) {
       queueImage(path, assign);
     }
+    for (const spriteId of ENEMY_V4_SPRITE_IDS) {
+      queueImage(`/game/sprites/v4/${spriteId}.png`, (image) => {
+        assets.enemyV4[spriteId] = image;
+      });
+    }
     Promise.all(loadTasks).then(() => {
       if (alive) setAssetsReady(true);
     });
 
     const restart = () => {
-      game = makeGameState(
-        mission,
-        loadout,
-        difficulty,
-        appearance,
-        reducedGore,
-        screenShake,
-      );
+      game = game.lastCheckpoint
+        ? restoreCheckpoint(game, game.lastCheckpoint)
+        : makeGameState(
+            mission,
+            loadout,
+            inventory,
+            difficulty,
+            appearance,
+            reducedGore,
+            screenShake,
+          );
       lastTime = performance.now();
       accumulator = 0;
       input.pressed.clear();
@@ -3884,6 +5678,7 @@ export default function HuntCanvas({
     restartRef.current = restart;
     togglePauseRef.current = () => {
       if (game.phase === "dead" || game.phase === "finished") return;
+      input.pressed.clear();
       game.paused = !game.paused;
       setUi(snapshot(game, mission));
     };
@@ -3891,6 +5686,16 @@ export default function HuntCanvas({
       if (game.failureReported) return;
       game.failureReported = true;
       finishRef.current(resultFor(game, mission, difficulty, "failed"));
+    };
+    requestAbortRef.current = () => {
+      input.pressed.clear();
+      if (game.player.cloaked) {
+        game.player.cloaked = false;
+        soundRef.current?.("cloak-off");
+      }
+      abortRef.current(
+        resultFor(game, mission, difficulty, "abandoned"),
+      );
     };
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -3926,6 +5731,7 @@ export default function HuntCanvas({
       input.keyboardHeld.clear();
       input.gamepadHeld.clear();
       input.touchHeld.clear();
+      input.pressed.clear();
       if (
         game.phase !== "dead" &&
         game.phase !== "finished" &&
@@ -3954,12 +5760,16 @@ export default function HuntCanvas({
           game,
           mission,
           loadout,
+          inventory,
           appearance,
           difficulty,
           input,
           fixedStep,
           (result) => finishRef.current(result),
         );
+        for (const sound of game.soundEvents.splice(0)) {
+          soundRef.current?.(sound);
+        }
         accumulator -= fixedStep;
       }
       renderGame(
@@ -3996,8 +5806,17 @@ export default function HuntCanvas({
       restartRef.current = () => undefined;
       togglePauseRef.current = () => undefined;
       reportFailureRef.current = () => undefined;
+      requestAbortRef.current = () => undefined;
     };
-  }, [appearance, difficulty, loadout, mission, reducedGore, screenShake]);
+  }, [
+    appearance,
+    difficulty,
+    inventory,
+    loadout,
+    mission,
+    reducedGore,
+    screenShake,
+  ]);
 
   const pressAction = useCallback((action: Action) => {
     inputRef.current.pressed.add(action);
@@ -4044,7 +5863,7 @@ export default function HuntCanvas({
     [],
   );
 
-  const weapon = equippedWeapon(loadout);
+  const weapon = equippedWeapon(loadout, ui.activeWeaponSlot);
   const phaseLabel =
     ui.phase === "tracking"
       ? "TRAQUE"
@@ -4125,6 +5944,7 @@ export default function HuntCanvas({
           <span>Honneur {ui.honor >= 0 ? "+" : ""}{ui.honor}</span>
           <span>Éliminations {ui.kills}</span>
           <span>Scans {ui.scans}</span>
+          <span>{ui.checkpointLabel}</span>
           <span>
             Masque{" "}
             {!appearance.biomaskId ? "AUCUN" : ui.maskOn ? "ACTIF" : "RETIRÉ"}
@@ -4179,11 +5999,17 @@ export default function HuntCanvas({
             if (event.button === 2) event.preventDefault();
           }}
           onContextMenu={(event) => event.preventDefault()}
-          style={styles.canvas}
+          style={{
+            ...styles.canvas,
+            filter: highContrastVision
+              ? "contrast(1.38) saturate(1.26) brightness(1.06)"
+              : undefined,
+          }}
         >
           Jeu de chasse en vue latérale. Utilise A et D pour te déplacer,
           Espace pour sauter, J pour attaquer, Maj ou clic droit pour viser et
-          V pour scanner.
+          V pour scanner. Les touches 1 et 2 sélectionnent les armes ; 3 et 4
+          déploient les équipements.
         </canvas>
 
         {!assetsReady ? (
@@ -4226,7 +6052,7 @@ export default function HuntCanvas({
                 </button>
                 <button
                   type="button"
-                  onClick={() => abortRef.current()}
+                  onClick={() => requestAbortRef.current()}
                   style={styles.secondaryButton}
                 >
                   Retour au vaisseau
@@ -4244,8 +6070,9 @@ export default function HuntCanvas({
               </span>
               <h2 style={styles.modalTitle}>Le rite n’est pas terminé</h2>
               <p style={styles.modalCopy}>
-                Reprends la chasse depuis l’insertion, ou accepte ce résultat
-                dans les archives du clan.
+                {ui.checkpointLabel.startsWith("Relais")
+                  ? "Le dernier relais du biomask est intact. Reprends la chasse avec les objectifs, adversaires et charges enregistrés."
+                  : "Reprends la chasse depuis l’insertion, ou accepte ce résultat dans les archives du clan."}
               </p>
               <div style={styles.modalActions}>
                 <button
@@ -4254,7 +6081,9 @@ export default function HuntCanvas({
                   onClick={() => restartRef.current()}
                   style={styles.primaryButton}
                 >
-                  Réessayer
+                  {ui.checkpointLabel.startsWith("Relais")
+                    ? "Reprendre au relais"
+                    : "Réessayer"}
                 </button>
                 <button
                   type="button"
@@ -4265,7 +6094,7 @@ export default function HuntCanvas({
                 </button>
                 <button
                   type="button"
-                  onClick={() => abortRef.current()}
+                  onClick={() => requestAbortRef.current()}
                   style={styles.ghostButton}
                 >
                   Abandonner
@@ -4326,7 +6155,22 @@ export default function HuntCanvas({
 
         <div style={styles.actionControls} aria-label="Actions tactiles">
           <ActionButton label="Lames" shortcut="J" onPress={() => pressAction("melee")} />
-          <ActionButton label={weapon.shortName} shortcut="K" onPress={() => pressAction("weapon")} />
+          {loadout.weaponIds.map((weaponId, index) => (
+            <ActionButton
+              key={`${weaponId}-${index}`}
+              label={`Arme ${index + 1} · ${WEAPON_BY_ID[weaponId].shortName}`}
+              shortcut={String(index + 1)}
+              active={ui.activeWeaponSlot === index}
+              onPress={() =>
+                pressAction(index === 0 ? "weaponOne" : "weaponTwo")
+              }
+            />
+          ))}
+          <ActionButton
+            label={`${weapon.shortName}${ui.ammo >= 0 ? ` · ${ui.ammo}` : ""}`}
+            shortcut="K"
+            onPress={() => pressAction("weapon")}
+          />
           <button
             type="button"
             {...makeHoldHandlers("aim")}
@@ -4353,6 +6197,24 @@ export default function HuntCanvas({
             active={ui.cloaked}
             onPress={() => pressAction("cloak")}
           />
+          {ui.gearSlots.map((slot, index) => {
+            const cooling = slot.cooldownRemainingSeconds > 0;
+            return (
+              <ActionButton
+                key={`${slot.gearId}-${index}`}
+                label={`${slot.name} ${slot.charges}/${slot.maxCharges}${
+                  cooling
+                    ? ` · ${slot.cooldownRemainingSeconds.toFixed(1)} s`
+                    : ""
+                }`}
+                shortcut={String(index + 3)}
+                disabled={slot.charges <= 0 || cooling}
+                onPress={() =>
+                  pressAction(index === 0 ? "gearOne" : "gearTwo")
+                }
+              />
+            );
+          })}
           <ActionButton label="Medicomp" shortcut="H" onPress={() => pressAction("heal")} />
           <ActionButton label="Interagir" shortcut="E" onPress={() => pressAction("interact")} />
         </div>
@@ -4364,10 +6226,12 @@ export default function HuntCanvas({
         <span>Espace · saut</span>
         <span>J/clic · lames</span>
         <span>Maj/clic droit/LT · viser</span>
-        <span>K/RT · {weapon.name}</span>
+        <span>1/2 ou View · sélectionner l’arme</span>
+        <span>K/RT · utiliser {weapon.name}</span>
         <span>M · biomask</span>
         <span>V · scan</span>
         <span>C · camouflage</span>
+        <span>3/4 ou L3/R3 · équipements</span>
         <span>H · soin ({ui.medicomps})</span>
         <span>E · interaction</span>
         <span>Échap · pause</span>
@@ -4409,11 +6273,13 @@ function ActionButton({
   label,
   shortcut,
   active = false,
+  disabled = false,
   onPress,
 }: {
   label: string;
   shortcut: string;
   active?: boolean;
+  disabled?: boolean;
   onPress(): void;
 }) {
   return (
@@ -4421,11 +6287,13 @@ function ActionButton({
       type="button"
       onPointerDown={(event) => {
         event.preventDefault();
-        onPress();
+        if (!disabled) onPress();
       }}
+      disabled={disabled}
       style={{
         ...styles.actionButton,
         ...(active ? styles.actionButtonActive : null),
+        ...(disabled ? styles.actionButtonDisabled : null),
       }}
       aria-pressed={active || undefined}
       aria-label={`${label}, raccourci ${shortcut}`}
@@ -4764,6 +6632,11 @@ const styles: Record<string, CSSProperties> = {
     background: "#15342b",
     color: "var(--hunt-accent)",
     boxShadow: "inset 0 0 18px #5ee8b822",
+  },
+  actionButtonDisabled: {
+    opacity: 0.48,
+    cursor: "not-allowed",
+    filter: "grayscale(0.45)",
   },
   kbd: {
     minWidth: 22,

@@ -5,10 +5,46 @@
  * être importée pendant le rendu serveur sans accéder aux API du navigateur.
  */
 
-const MASTER_VOLUME = 0.18;
+const OUTPUT_HEADROOM = 0.18;
 const SILENCE = 0.0001;
 
 type AudioContextFactory = new () => AudioContext;
+
+export type GameAudioBiome = "ship" | "jungle" | "ice" | "volcano";
+
+export type GameSfxId =
+  | "ui"
+  | "select"
+  | "jump"
+  | "footstep"
+  | "slash"
+  | "plasma"
+  | "scan"
+  | "cloak-on"
+  | "cloak-off"
+  | "mask-on"
+  | "mask-off"
+  | "weapon-switch"
+  | "medicomp"
+  | "netgun"
+  | "snare"
+  | "enemy-alert"
+  | "objective"
+  | "hit"
+  | "trophy"
+  | "victory"
+  | "defeat";
+
+export interface GameAudioMix {
+  master: number;
+  music: number;
+  effects: number;
+  muted: boolean;
+}
+
+export interface AmbienceOptions {
+  fadeSeconds?: number;
+}
 
 type ToneOptions = {
   at?: number;
@@ -33,6 +69,13 @@ type CloakVoice = {
   sources: AudioScheduledSourceNode[];
 };
 
+type AmbienceVoice = {
+  biome: GameAudioBiome;
+  gain: GainNode;
+  sources: AudioScheduledSourceNode[];
+  nodes: AudioNode[];
+};
+
 interface SafariAudioWindow extends Window {
   webkitAudioContext?: AudioContextFactory;
 }
@@ -40,9 +83,15 @@ interface SafariAudioWindow extends Window {
 export class GameAudio {
   private context: AudioContext | null = null;
   private master: GainNode | null = null;
+  private music: GainNode | null = null;
+  private effects: GainNode | null = null;
   private muted = false;
+  private masterVolume = 1;
+  private musicVolume = 0.65;
+  private effectsVolume = 1;
   private disposed = false;
   private cloakVoice: CloakVoice | null = null;
+  private ambienceVoice: AmbienceVoice | null = null;
 
   /**
    * À appeler depuis une interaction utilisateur pour satisfaire les règles
@@ -65,20 +114,28 @@ export class GameAudio {
       try {
         const context = new BrowserAudioContext();
         const master = context.createGain();
+        const music = context.createGain();
+        const effects = context.createGain();
         const limiter = context.createDynamicsCompressor();
 
         // Le limiteur garde les superpositions discrètes et sans saturation.
-        master.gain.value = this.muted ? 0 : MASTER_VOLUME;
+        master.gain.value = this.targetMasterGain();
+        music.gain.value = this.musicVolume;
+        effects.gain.value = this.effectsVolume;
         limiter.threshold.value = -16;
         limiter.knee.value = 12;
         limiter.ratio.value = 8;
         limiter.attack.value = 0.004;
         limiter.release.value = 0.14;
+        music.connect(master);
+        effects.connect(master);
         master.connect(limiter);
         limiter.connect(context.destination);
 
         this.context = context;
         this.master = master;
+        this.music = music;
+        this.effects = effects;
       } catch {
         return;
       }
@@ -102,19 +159,99 @@ export class GameAudio {
   /** Active ou coupe le bus principal sans recréer le contexte audio. */
   setMuted(muted: boolean): void {
     this.muted = muted;
+    this.applyMix();
+  }
 
-    const context = this.context;
-    const master = this.master;
-    if (!context || !master) {
-      return;
+  /** Niveau général normalisé entre 0 et 1. */
+  setMasterGain(gain: number): void {
+    this.masterVolume = this.normalizedGain(gain);
+    this.applyMix();
+  }
+
+  setMasterVolume(volume: number): void {
+    this.setMasterGain(volume);
+  }
+
+  /** Niveau du bus d'ambiance normalisé entre 0 et 1. */
+  setMusicGain(gain: number): void {
+    this.musicVolume = this.normalizedGain(gain);
+    this.applyMix();
+  }
+
+  setMusicVolume(volume: number): void {
+    this.setMusicGain(volume);
+  }
+
+  /** Niveau des sons courts et des boucles de gameplay. */
+  setEffectsGain(gain: number): void {
+    this.effectsVolume = this.normalizedGain(gain);
+    this.applyMix();
+  }
+
+  setEffectsVolume(volume: number): void {
+    this.setEffectsGain(volume);
+  }
+
+  setMix(mix: Partial<GameAudioMix>): void {
+    if (mix.master !== undefined) {
+      this.masterVolume = this.normalizedGain(mix.master);
     }
+    if (mix.music !== undefined) {
+      this.musicVolume = this.normalizedGain(mix.music);
+    }
+    if (mix.effects !== undefined) {
+      this.effectsVolume = this.normalizedGain(mix.effects);
+    }
+    if (mix.muted !== undefined) {
+      this.muted = mix.muted;
+    }
+    this.applyMix();
+  }
 
-    const now = context.currentTime;
-    master.gain.cancelScheduledValues(now);
-    master.gain.setValueAtTime(master.gain.value, now);
-    master.gain.linearRampToValueAtTime(
-      muted ? 0 : MASTER_VOLUME,
-      now + 0.025,
+  getMix(): GameAudioMix {
+    return {
+      master: this.masterVolume,
+      music: this.musicVolume,
+      effects: this.effectsVolume,
+      muted: this.muted,
+    };
+  }
+
+  get activeAmbience(): GameAudioBiome | null {
+    return this.ambienceVoice?.biome ?? null;
+  }
+
+  /**
+   * Démarre ou remplace l'ambiance procédurale d'un lieu. Rappeler le biome
+   * actif est idempotent et ne crée aucune voix supplémentaire.
+   */
+  async startAmbience(
+    biome: GameAudioBiome,
+    options: AmbienceOptions = {},
+  ): Promise<void> {
+    if (this.disposed || this.ambienceVoice?.biome === biome) return;
+    await this.unlock();
+    const now = this.readyTime();
+    if (now === null) return;
+    const fadeSeconds = Math.max(0, options.fadeSeconds ?? 0.7);
+    const previous = this.ambienceVoice;
+    const next = this.createAmbienceVoice(biome, now, fadeSeconds);
+    if (!next) return;
+    this.ambienceVoice = next;
+    if (previous) {
+      this.stopAmbienceVoice(previous, now, fadeSeconds);
+    }
+  }
+
+  stopAmbience(fadeSeconds = 0.45): void {
+    const voice = this.ambienceVoice;
+    const context = this.context;
+    if (!voice || !context) return;
+    this.ambienceVoice = null;
+    this.stopAmbienceVoice(
+      voice,
+      context.currentTime,
+      Math.max(0, fadeSeconds),
     );
   }
 
@@ -174,6 +311,237 @@ export class GameAudio {
       gain: 0.14,
       type: "triangle",
       filterFrequency: 1_200,
+    });
+  }
+
+  /**
+   * Point d'entrée réutilisable pour les événements de gameplay pilotés par
+   * des données. Les méthodes historiques restent disponibles individuellement.
+   */
+  playSfx(id: GameSfxId): void {
+    switch (id) {
+      case "ui":
+        this.ui();
+        break;
+      case "select":
+        this.select();
+        break;
+      case "jump":
+        this.jump();
+        break;
+      case "footstep":
+        this.footstep();
+        break;
+      case "slash":
+        this.slash();
+        break;
+      case "plasma":
+        this.plasma();
+        break;
+      case "scan":
+        this.scan();
+        break;
+      case "cloak-on":
+        this.cloak(true);
+        break;
+      case "cloak-off":
+        this.cloak(false);
+        break;
+      case "mask-on":
+        this.mask(true);
+        break;
+      case "mask-off":
+        this.mask(false);
+        break;
+      case "weapon-switch":
+        this.weaponSwitch();
+        break;
+      case "medicomp":
+        this.medicomp();
+        break;
+      case "netgun":
+        this.netgun();
+        break;
+      case "snare":
+        this.snare();
+        break;
+      case "enemy-alert":
+        this.enemyAlert();
+        break;
+      case "objective":
+        this.objective();
+        break;
+      case "hit":
+        this.hit();
+        break;
+      case "trophy":
+        this.trophy();
+        break;
+      case "victory":
+        this.victory();
+        break;
+      case "defeat":
+        this.defeat();
+        break;
+    }
+  }
+
+  footstep(intensity = 1): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    const weight = Math.max(0.25, Math.min(1.5, intensity));
+
+    this.noise({
+      at: now,
+      duration: 0.065,
+      gain: 0.075 * weight,
+      filterType: "lowpass",
+      filterFrequency: 310,
+      endFilterFrequency: 90,
+    });
+    this.tone(72, {
+      at: now,
+      duration: 0.075,
+      endFrequency: 44,
+      gain: 0.055 * weight,
+      type: "sine",
+      filterFrequency: 280,
+    });
+  }
+
+  weaponSwitch(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    this.noise({
+      at: now,
+      duration: 0.055,
+      gain: 0.09,
+      filterType: "bandpass",
+      filterFrequency: 1_900,
+      endFilterFrequency: 650,
+    });
+    this.tone(210, {
+      at: now + 0.025,
+      duration: 0.065,
+      endFrequency: 340,
+      gain: 0.075,
+      type: "square",
+      filterFrequency: 1_100,
+    });
+  }
+
+  mask(on: boolean): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    this.noise({
+      at: now,
+      duration: on ? 0.19 : 0.12,
+      gain: 0.075,
+      filterType: "bandpass",
+      filterFrequency: on ? 760 : 1_400,
+      endFilterFrequency: on ? 2_100 : 430,
+    });
+    this.tone(on ? 235 : 510, {
+      at: now + 0.02,
+      duration: 0.16,
+      endFrequency: on ? 720 : 150,
+      gain: 0.065,
+      type: "triangle",
+      filterFrequency: 1_700,
+    });
+  }
+
+  medicomp(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    [0, 0.13, 0.26].forEach((offset, index) => {
+      this.tone(410 + index * 145, {
+        at: now + offset,
+        duration: 0.1,
+        endFrequency: 520 + index * 160,
+        gain: 0.065,
+        type: "sine",
+        filterFrequency: 2_200,
+      });
+    });
+  }
+
+  netgun(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    this.noise({
+      at: now,
+      duration: 0.22,
+      gain: 0.16,
+      filterType: "highpass",
+      filterFrequency: 780,
+      endFilterFrequency: 3_700,
+    });
+    this.tone(185, {
+      at: now,
+      duration: 0.16,
+      endFrequency: 520,
+      gain: 0.11,
+      type: "sawtooth",
+      filterFrequency: 1_900,
+    });
+  }
+
+  snare(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    this.noise({
+      at: now,
+      duration: 0.18,
+      gain: 0.13,
+      filterType: "bandpass",
+      filterFrequency: 2_800,
+      endFilterFrequency: 540,
+    });
+    this.tone(104, {
+      at: now + 0.025,
+      duration: 0.22,
+      endFrequency: 62,
+      gain: 0.1,
+      type: "triangle",
+      filterFrequency: 520,
+    });
+  }
+
+  enemyAlert(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    [0, 0.16].forEach((offset) => {
+      this.tone(690, {
+        at: now + offset,
+        duration: 0.105,
+        endFrequency: 460,
+        gain: 0.075,
+        type: "square",
+        filterFrequency: 1_650,
+      });
+    });
+  }
+
+  objective(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+
+    [392, 523.25, 659.25].forEach((frequency, index) => {
+      this.tone(frequency, {
+        at: now + index * 0.085,
+        duration: 0.16,
+        endFrequency: frequency * 1.04,
+        gain: 0.065,
+        type: "sine",
+        filterFrequency: 2_300,
+      });
     });
   }
 
@@ -296,7 +664,7 @@ export class GameAudio {
     highOscillator.connect(shimmer);
     noise.connect(shimmer);
     shimmer.connect(bus);
-    bus.connect(this.master!);
+    bus.connect(this.effects!);
 
     lowOscillator.start(now);
     highOscillator.start(now);
@@ -421,10 +789,19 @@ export class GameAudio {
 
     if (this.context) {
       this.stopCloak(this.context.currentTime, true);
+      if (this.ambienceVoice) {
+        const voice = this.ambienceVoice;
+        this.ambienceVoice = null;
+        this.stopAmbienceVoice(voice, this.context.currentTime, 0);
+      }
     }
 
     const context = this.context;
+    this.music?.disconnect();
+    this.effects?.disconnect();
     this.master?.disconnect();
+    this.music = null;
+    this.effects = null;
     this.master = null;
     this.context = null;
 
@@ -438,11 +815,46 @@ export class GameAudio {
   // -------------------------------------------------------------------------
 
   /** Renvoie l'instant audio courant uniquement lorsque le moteur est prêt. */
+  private normalizedGain(value: number): number {
+    if (!Number.isFinite(value)) return 0;
+    return Math.max(0, Math.min(1, value));
+  }
+
+  private targetMasterGain(): number {
+    return this.muted ? 0 : OUTPUT_HEADROOM * this.masterVolume;
+  }
+
+  private applyMix(fadeSeconds = 0.025): void {
+    const context = this.context;
+    if (!context) return;
+    const now = context.currentTime;
+    this.rampGain(this.master, this.targetMasterGain(), now, fadeSeconds);
+    this.rampGain(this.music, this.musicVolume, now, fadeSeconds);
+    this.rampGain(this.effects, this.effectsVolume, now, fadeSeconds);
+  }
+
+  private rampGain(
+    node: GainNode | null,
+    target: number,
+    at: number,
+    duration: number,
+  ): void {
+    if (!node) return;
+    const parameter = node.gain;
+    parameter.cancelScheduledValues(at);
+    parameter.setValueAtTime(parameter.value, at);
+    parameter.linearRampToValueAtTime(
+      Math.max(0, target),
+      at + Math.max(0.005, duration),
+    );
+  }
+
   private readyTime(): number | null {
     if (
       this.disposed ||
       !this.context ||
       !this.master ||
+      !this.effects ||
       this.context.state !== "running"
     ) {
       return null;
@@ -454,8 +866,8 @@ export class GameAudio {
   /** Synthétise une note avec une attaque brève et une extinction douce. */
   private tone(frequency: number, options: ToneOptions = {}): void {
     const context = this.context;
-    const master = this.master;
-    if (!context || !master) return;
+    const effects = this.effects;
+    if (!context || !effects) return;
 
     const start = options.at ?? context.currentTime;
     const duration = Math.max(0.025, options.duration ?? 0.12);
@@ -484,7 +896,7 @@ export class GameAudio {
 
     oscillator.connect(filter);
     filter.connect(envelope);
-    envelope.connect(master);
+    envelope.connect(effects);
     oscillator.start(start);
     oscillator.stop(end + 0.02);
 
@@ -502,8 +914,8 @@ export class GameAudio {
   /** Produit un souffle filtré, utilisé pour impacts, lames et énergie. */
   private noise(options: NoiseOptions = {}): void {
     const context = this.context;
-    const master = this.master;
-    if (!context || !master) return;
+    const effects = this.effects;
+    if (!context || !effects) return;
 
     const start = options.at ?? context.currentTime;
     const duration = Math.max(0.035, options.duration ?? 0.15);
@@ -536,7 +948,7 @@ export class GameAudio {
 
     source.connect(filter);
     filter.connect(envelope);
-    envelope.connect(master);
+    envelope.connect(effects);
     source.start(start);
     source.stop(end + 0.015);
 
@@ -569,6 +981,144 @@ export class GameAudio {
       filterFrequency: 680,
       endFilterFrequency: 160,
     });
+  }
+
+  /** Assemble une ambiance continue et l'envoie exclusivement vers la musique. */
+  private createAmbienceVoice(
+    biome: GameAudioBiome,
+    at: number,
+    fadeSeconds: number,
+  ): AmbienceVoice | null {
+    const context = this.context;
+    const music = this.music;
+    if (!context || !music) return null;
+
+    const gain = context.createGain();
+    const sources: AudioScheduledSourceNode[] = [];
+    const nodes: AudioNode[] = [];
+    const targetGain = 0.34;
+
+    gain.gain.setValueAtTime(0, at);
+    if (fadeSeconds > 0) {
+      gain.gain.linearRampToValueAtTime(targetGain, at + fadeSeconds);
+    } else {
+      gain.gain.setValueAtTime(targetGain, at);
+    }
+    gain.connect(music);
+
+    const addOscillator = (
+      frequency: number,
+      type: OscillatorType,
+      level: number,
+    ) => {
+      const oscillator = context.createOscillator();
+      const levelGain = context.createGain();
+      oscillator.type = type;
+      oscillator.frequency.value = frequency;
+      levelGain.gain.value = level;
+      oscillator.connect(levelGain);
+      levelGain.connect(gain);
+      oscillator.start(at);
+      sources.push(oscillator);
+      nodes.push(levelGain);
+    };
+
+    const addNoise = (
+      filterType: BiquadFilterType,
+      filterFrequency: number,
+      level: number,
+      q = 0.7,
+    ) => {
+      const source = context.createBufferSource();
+      const filter = context.createBiquadFilter();
+      const levelGain = context.createGain();
+      source.buffer = this.makeNoiseBuffer(2.4);
+      source.loop = true;
+      filter.type = filterType;
+      filter.frequency.value = filterFrequency;
+      filter.Q.value = q;
+      levelGain.gain.value = level;
+      source.connect(filter);
+      filter.connect(levelGain);
+      levelGain.connect(gain);
+      source.start(at);
+      sources.push(source);
+      nodes.push(filter, levelGain);
+    };
+
+    switch (biome) {
+      case "ship":
+        addOscillator(42, "triangle", 0.11);
+        addOscillator(61, "sine", 0.035);
+        addNoise("lowpass", 300, 0.035);
+        break;
+      case "jungle":
+        addOscillator(58, "triangle", 0.035);
+        addNoise("bandpass", 850, 0.07, 0.45);
+        addNoise("lowpass", 2_200, 0.025);
+        break;
+      case "ice":
+        addOscillator(118, "sine", 0.025);
+        addOscillator(920, "sine", 0.008);
+        addNoise("bandpass", 1_100, 0.075, 0.35);
+        break;
+      case "volcano":
+        addOscillator(34, "sine", 0.12);
+        addOscillator(47, "triangle", 0.06);
+        addNoise("lowpass", 180, 0.09);
+        break;
+    }
+
+    const movement = context.createOscillator();
+    const movementDepth = context.createGain();
+    movement.type = "sine";
+    movement.frequency.value = biome === "jungle" ? 0.12 : 0.075;
+    movementDepth.gain.value = biome === "volcano" ? 0.025 : 0.016;
+    movement.connect(movementDepth);
+    movementDepth.connect(gain.gain);
+    movement.start(at);
+    sources.push(movement);
+    nodes.push(movementDepth);
+
+    return { biome, gain, sources, nodes };
+  }
+
+  private stopAmbienceVoice(
+    voice: AmbienceVoice,
+    at: number,
+    fadeSeconds: number,
+  ): void {
+    const fade = Math.max(0, fadeSeconds);
+    const stopAt = at + fade;
+    const parameter = voice.gain.gain;
+    parameter.cancelScheduledValues(at);
+    parameter.setValueAtTime(parameter.value, at);
+    if (fade > 0) {
+      parameter.linearRampToValueAtTime(0, stopAt);
+    } else {
+      parameter.setValueAtTime(0, at);
+    }
+
+    voice.sources.forEach((source) => {
+      try {
+        source.stop(stopAt + 0.015);
+      } catch {
+        // Les appels répétés de nettoyage restent sans effet sur la partie.
+      }
+    });
+
+    const cleanup = () => {
+      voice.sources.forEach((source) => source.disconnect());
+      voice.nodes.forEach((node) => node.disconnect());
+      voice.gain.disconnect();
+    };
+
+    if (fade === 0) {
+      cleanup();
+      return;
+    }
+
+    globalThis.setTimeout(cleanup, (fade + 0.04) * 1_000);
   }
 
   /** Crée un buffer de bruit blanc à la demande, sans fichier sonore. */
@@ -612,7 +1162,7 @@ export class GameAudio {
     });
 
     const cleanupDelay = Math.max(0, (stopAt - at + 0.03) * 1_000);
-    window.setTimeout(() => {
+    globalThis.setTimeout(() => {
       voice.sources.forEach((source) => source.disconnect());
       voice.gain.disconnect();
     }, cleanupDelay);

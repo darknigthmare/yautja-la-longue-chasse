@@ -310,8 +310,8 @@ export default function RigLabClient() {
           maxWidth: 1180,
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-          gap: 12,
+          gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
+          gap: 28,
         }}
       >
         {CASES.map((rigCase) => (
@@ -319,13 +319,14 @@ export default function RigLabClient() {
             data-rig-case={rigCase.id}
             key={rigCase.id}
             style={{
-              minHeight: 344,
-              padding: "12px 12px 10px",
+              position: "relative",
+              minHeight: 410,
+              padding: "14px 16px 12px",
               border: "1px solid #263c35",
               borderRadius: 12,
               background:
                 "linear-gradient(180deg, rgb(26 40 35 / .92), rgb(8 13 12 / .96))",
-              overflow: "hidden",
+              overflow: "visible",
             }}
           >
             <h2
@@ -341,8 +342,11 @@ export default function RigLabClient() {
             <div
               style={{
                 display: "grid",
-                minHeight: 306,
+                minHeight: 366,
+                padding: "44px 38px 24px",
+                boxSizing: "border-box",
                 placeItems: "center",
+                overflow: "visible",
                 backgroundImage:
                   "linear-gradient(rgb(100 160 130 / .08) 1px, transparent 1px), linear-gradient(90deg, rgb(100 160 130 / .08) 1px, transparent 1px)",
                 backgroundSize: "24px 24px",
@@ -355,7 +359,7 @@ export default function RigLabClient() {
                     : appearance
                 }
                 debugBones={rigCase.id === "bind"}
-                size={204}
+                size={184}
                 {...rigCase.props}
               />
             </div>

@@ -29,7 +29,10 @@ test("aim, targeting and projectiles use the active weapon anchor", async () => 
     ["aim assist", aimAssist],
     ["targeting", targeting],
   ]) {
-    assert.match(block, /selectedHandWeapon\(loadout\)/);
+    assert.match(
+      block,
+      /selectedHandWeapon\(\s*loadout,\s*player\.activeWeaponSlot,\s*\)/,
+    );
     assert.match(
       block,
       /frame\.anchors\.handGrip/,
@@ -121,7 +124,10 @@ test("selected loadout and extracted trophy use registered atomic layers", async
 
   assert.match(beltLoadout, /assets\.hunterGear\[gearId\]/);
   assert.match(beltLoadout, /frame,\s*"pelvis"/);
-  assert.match(handWeapon, /selectedHandWeapon\(loadout\)/);
+  assert.match(
+    handWeapon,
+    /selectedHandWeapon\(\s*loadout,\s*state\.player\.activeWeaponSlot,\s*\)/,
+  );
   assert.match(handWeapon, /"combistick-folded"/);
   assert.match(handWeapon, /assets\.hunterWeapons\[visualId\]/);
   assert.match(handWeapon, /frame,\s*"handFront"/);

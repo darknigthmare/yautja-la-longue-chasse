@@ -706,6 +706,7 @@ function normalizeLoadout(
   unlockedWeaponIds: readonly WeaponId[],
   unlockedGearIds: readonly GearId[],
   unlockedArmorIds: readonly ArmorId[],
+  armorUpgrades: Readonly<Record<ArmorId, UpgradeLevel>>,
 ): Loadout {
   if (!isRecord(source)) {
     return {
@@ -739,7 +740,8 @@ function normalizeLoadout(
       ? [rawGear[0], rawGear[1]]
       : [...DEFAULT_LOADOUT.gearIds];
   const capacity =
-    ARMORS.find((armor) => armor.id === armorId)?.carryingCapacity ?? 8;
+    (ARMORS.find((armor) => armor.id === armorId)?.carryingCapacity ??
+      8) + armorUpgrades[armorId];
   const weight =
     weaponIds.reduce(
       (sum, id) =>
@@ -752,10 +754,23 @@ function normalizeLoadout(
     );
 
   if (weight > capacity) {
+    // Keep the requested armor instead of silently switching back to Hunter.
+    // Wristblades have no carried weight, so replacing the heaviest selected
+    // weapon with them always yields a coherent two-weapon Scout loadout.
+    const secondaryWeapon =
+      weaponIds
+        .filter((id) => id !== "wristblades")
+        .sort(
+          (left, right) =>
+            (WEAPONS.find((weapon) => weapon.id === left)?.weight ?? 0) -
+            (WEAPONS.find((weapon) => weapon.id === right)?.weight ?? 0),
+        )[0] ??
+      unlockedWeaponIds.find((id) => id !== "wristblades") ??
+      "combistick";
     return {
-      armorId: DEFAULT_LOADOUT.armorId,
-      weaponIds: [...DEFAULT_LOADOUT.weaponIds],
-      gearIds: [...DEFAULT_LOADOUT.gearIds],
+      armorId,
+      weaponIds: ["wristblades", secondaryWeapon],
+      gearIds,
     };
   }
 
@@ -868,6 +883,21 @@ export function normalizeSave(value: unknown): SaveGame {
   const rawScanCounts = isRecord(rawCodex.scanCounts)
     ? rawCodex.scanCounts
     : {};
+  const weaponUpgrades = normalizeUpgradeRecord(
+    rawInventory.weaponUpgrades,
+    WEAPON_IDS,
+    fallback.inventory.weaponUpgrades,
+  );
+  const gearUpgrades = normalizeUpgradeRecord(
+    rawInventory.gearUpgrades,
+    GEAR_IDS,
+    fallback.inventory.gearUpgrades,
+  );
+  const armorUpgrades = normalizeUpgradeRecord(
+    rawInventory.armorUpgrades,
+    ARMOR_IDS,
+    fallback.inventory.armorUpgrades,
+  );
   const scanCounts: Partial<Record<CodexEntryId, number>> = {};
   for (const id of unlockedEntryIds) {
     const count = nonNegativeInteger(rawScanCounts[id], 0);
@@ -900,27 +930,16 @@ export function normalizeSave(value: unknown): SaveGame {
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,
-      weaponUpgrades: normalizeUpgradeRecord(
-        rawInventory.weaponUpgrades,
-        WEAPON_IDS,
-        fallback.inventory.weaponUpgrades,
-      ),
-      gearUpgrades: normalizeUpgradeRecord(
-        rawInventory.gearUpgrades,
-        GEAR_IDS,
-        fallback.inventory.gearUpgrades,
-      ),
-      armorUpgrades: normalizeUpgradeRecord(
-        rawInventory.armorUpgrades,
-        ARMOR_IDS,
-        fallback.inventory.armorUpgrades,
-      ),
+      weaponUpgrades,
+      gearUpgrades,
+      armorUpgrades,
     },
     loadout: normalizeLoadout(
       source.loadout,
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,
+      armorUpgrades,
     ),
     appearance: normalizeAppearance(source.appearance),
     missionProgress,

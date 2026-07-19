@@ -5,6 +5,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HuntCanvas from "./HuntCanvas";
+import ShipHub from "./ShipHub";
 import {
   HUNTER_PRESET_BY_ID,
   HUNTER_PRESETS,
@@ -30,7 +31,21 @@ import {
   loadSave,
   writeSave,
 } from "./save";
-import { GameAudio } from "./sound";
+import {
+  GameAudio,
+  type GameAudioBiome,
+  type GameSfxId,
+} from "./sound";
+import {
+  effectiveArmorStats,
+  effectiveGearStats,
+  effectiveWeaponStats,
+  purchaseUpgrade,
+  quoteUpgrade,
+  type UpgradePurchaseRequest,
+  type UpgradeQuote,
+} from "./systems/arsenal";
+import { SHIP_PROGRESSION_STORAGE_KEY } from "./systems/progression";
 import type {
   ArmorId,
   ArmorTintId,
@@ -44,6 +59,7 @@ import type {
   HunterArmorStyleId,
   HunterBodyMorphId,
   HunterSkinId,
+  Loadout,
   MissionDefinition,
   MissionResult,
   SaveGame,
@@ -349,17 +365,15 @@ const ARMOR_TINT_OPTIONS: ReadonlyArray<{
 ];
 
 function missionBackground(mission: MissionDefinition): string {
-  if (mission.biome === "jungle") {
-    return "/game/assets/v2/environments/jungle/layers/far-lake.webp";
-  }
-  if (mission.biome === "volcano") return "/game/backgrounds/volcanic.webp";
-  return `/game/backgrounds/${mission.biome}.webp`;
+  const biome =
+    mission.biome === "volcano" ? "volcanic" : mission.biome;
+  return `/game/backgrounds/${biome}-depth-v4.webp`;
 }
 
 function targetSprite(mission: MissionDefinition): string {
   if (mission.targetKind === "beast") return "/game/sprites/cryostalker.webp";
   if (mission.targetKind === "yautja") return "/game/sprites/bad-blood.webp";
-  return "/game/sprites/mercenary.webp";
+  return "/game/sprites/v4/commandante-vey.png";
 }
 
 function formatTime(totalSeconds: number): string {
@@ -417,8 +431,33 @@ export default function GameClient() {
   }, []);
 
   useEffect(() => {
-    audioRef.current?.setMuted(save.settings.masterVolume === 0);
-  }, [save.settings.masterVolume]);
+    audioRef.current?.setMix({
+      master: save.settings.masterVolume,
+      music: save.settings.musicVolume,
+      effects: save.settings.effectsVolume,
+      muted: save.settings.masterVolume === 0,
+    });
+  }, [
+    save.settings.effectsVolume,
+    save.settings.masterVolume,
+    save.settings.musicVolume,
+  ]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const ambience: GameAudioBiome | null =
+      screen === "mission" && selectedMission
+        ? selectedMission.biome
+        : screen === "title"
+          ? null
+          : "ship";
+    if (ambience) {
+      void audio.startAmbience(ambience, { fadeSeconds: 0.8 });
+    } else {
+      audio.stopAmbience(0.55);
+    }
+  }, [screen, selectedMission]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -492,6 +531,13 @@ export default function GameClient() {
     },
     [],
   );
+
+  const playGameplaySound = useCallback(async (sound: GameSfxId) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    await audio.unlock();
+    audio.playSfx(sound);
+  }, []);
 
   const persist = useCallback((next: SaveGame) => {
     const persisted = writeSave(next);
@@ -596,6 +642,43 @@ export default function GameClient() {
     [persist, playSound, save],
   );
 
+  const purchaseEquipmentUpgrade = useCallback(
+    (request: UpgradePurchaseRequest) => {
+      const quote = quoteUpgrade(save, request);
+      const itemName =
+        request.domain === "weapon"
+          ? WEAPONS.find(({ id }) => id === request.id)?.name
+          : request.domain === "gear"
+            ? GEAR.find(({ id }) => id === request.id)?.name
+            : ARMORS.find(({ id }) => id === request.id)?.name;
+      const label = itemName ?? "Équipement";
+
+      if (!quote.canPurchase) {
+        const message =
+          quote.failure === "max-level"
+            ? `${label} est déjà au niveau maximum.`
+            : quote.failure === "insufficient-clan-marks"
+              ? `${label} requiert ${quote.cost ?? 0} marques du clan.`
+              : `${label} doit être déverrouillé avant son amélioration.`;
+        setToast(message);
+        return;
+      }
+
+      const result = purchaseUpgrade(save, request);
+      if (!result.ok || result.newLevel === null) {
+        setToast(`La forge n’a pas pu améliorer ${label}.`);
+        return;
+      }
+
+      persist(result.save);
+      setToast(
+        `${label} · niveau ${result.newLevel}/2 acquis pour ${result.spentClanMarks} marques.`,
+      );
+      void playSound("select");
+    },
+    [persist, playSound, save],
+  );
+
   const updateAppearance = useCallback(
     <Key extends keyof HunterAppearance>(
       key: Key,
@@ -610,6 +693,16 @@ export default function GameClient() {
         ...save,
         appearance,
       });
+      void playSound("select");
+    },
+    [persist, playSound, save],
+  );
+
+  const applyShipLoadout = useCallback(
+    (loadout: Loadout, appearance: HunterAppearance) => {
+      persist({ ...save, loadout, appearance });
+      setPreviewMaskWorn(appearance.biomaskId !== null);
+      setToast("Configuration de chasse chargée.");
       void playSound("select");
     },
     [persist, playSound, save],
@@ -671,6 +764,11 @@ export default function GameClient() {
       return;
     }
     const fresh = defaultSave();
+    try {
+      window.localStorage.removeItem(SHIP_PROGRESSION_STORAGE_KEY);
+    } catch {
+      // La sauvegarde principale reste réinitialisable si le stockage est bloqué.
+    }
     persist(fresh);
     setResetArmed(false);
     setSettingsOpen(false);
@@ -688,15 +786,6 @@ export default function GameClient() {
       void document.documentElement.requestFullscreen?.();
     }
   }, []);
-
-  const completedCount = useMemo(
-    () =>
-      MISSIONS.filter(
-        (mission) =>
-          save.missionProgress[mission.id].status === "completed",
-      ).length,
-    [save.missionProgress],
-  );
 
   const primaryWeapon =
     WEAPONS.find((weapon) => weapon.id === save.loadout.weaponIds[1]) ??
@@ -804,75 +893,16 @@ export default function GameClient() {
       )}
 
       {screen === "ship" && (
-        <section className="screen hub-screen" aria-labelledby="hub-title">
-          <div className="hub-stage">
-            <h1 className="sr-only" id="hub-title">
-              Vaisseau de chasse
-            </h1>
-            <p className="hub-message">
-              <strong>CONSOLE DU CLAN :</strong>{" "}
-              {completedCount === 0
-                ? "Trois signatures dignes ont été détectées. Choisissez votre première chasse."
-                : completedCount < MISSIONS.length
-                  ? "Votre mur porte la trace de la chasse. Une proie plus dangereuse vous attend."
-                  : "Le Paria a été jugé. La Longue Chasse reste ouverte aux meilleurs scores."}
-            </p>
-            <HunterRigPreview
-              className="hub-hunter-rig"
-              appearance={save.appearance}
-              armorId={save.loadout.armorId}
-              weaponIds={save.loadout.weaponIds}
-              gearIds={save.loadout.gearIds}
-              size="clamp(330px, 36vw, 470px)"
-            />
-            <div className="campaign-progress">
-              <p>Rite de la Longue Chasse</p>
-              <div className="progress-track" aria-hidden="true">
-                <span
-                  style={{
-                    width: `${(completedCount / MISSIONS.length) * 100}%`,
-                  }}
-                />
-              </div>
-              <div className="progress-caption">
-                <span>{completedCount} trophée(s)</span>
-                <span>{MISSIONS.length}</span>
-              </div>
-            </div>
-            <nav className="hub-nav" aria-label="Zones du vaisseau">
-              <HubAction
-                icon="◉"
-                title="Carte galactique"
-                detail="Choisir une proie et un monde"
-                onClick={() => go("map")}
-              />
-              <HubAction
-                icon="⌁"
-                title="Armurerie"
-                detail="Armes, armure et équipement"
-                onClick={() => go("armory")}
-              />
-              <HubAction
-                icon="Y"
-                title="Quartier du chasseur"
-                detail="Biomask, peau, dreadlocks et parures"
-                onClick={() => go("customization")}
-              />
-              <HubAction
-                icon="◇"
-                title="Mur des trophées"
-                detail={`${save.trophies.length} prise(s) enregistrée(s)`}
-                onClick={() => go("trophies")}
-              />
-              <HubAction
-                icon="⌬"
-                title="Archives du biomask"
-                detail={`${save.codex.unlockedEntryIds.length} entrées décodées`}
-                onClick={() => go("codex")}
-              />
-            </nav>
-          </div>
-        </section>
+        <ShipHub
+          save={save}
+          onOpenMap={() => go("map")}
+          onOpenArmory={() => go("armory")}
+          onOpenTrophies={() => go("trophies")}
+          onOpenArchives={() => go("codex")}
+          onOpenCustomization={() => go("customization")}
+          onApplyLoadout={applyShipLoadout}
+          onNotify={setToast}
+        />
       )}
 
       {screen === "map" && (
@@ -979,7 +1009,7 @@ export default function GameClient() {
                 <img
                   className="target-cutout"
                   src={targetSprite(selectedMission)}
-                  alt=""
+                  alt={`Silhouette complète de ${selectedMission.targetName}`}
                 />
                 <div className="briefing-visual-copy">
                   <small>Cible Apex // niveau {selectedMission.threatLevel}</small>
@@ -1096,6 +1126,14 @@ export default function GameClient() {
                     const unlocked =
                       save.inventory.unlockedWeaponIds.includes(weapon.id);
                     const selected = save.loadout.weaponIds.includes(weapon.id);
+                    const effectiveWeapon = effectiveWeaponStats(
+                      weapon.id,
+                      save.inventory.weaponUpgrades[weapon.id] ?? 0,
+                    );
+                    const upgradeQuote = quoteUpgrade(save, {
+                      domain: "weapon",
+                      id: weapon.id,
+                    });
                     return (
                       <EquipmentCard
                         key={weapon.id}
@@ -1103,14 +1141,21 @@ export default function GameClient() {
                         name={weapon.name}
                         description={weapon.description}
                         stats={[
-                          `DMG ${weapon.damage}`,
+                          `DMG ${Math.round(effectiveWeapon.damage)}`,
+                          `PORTÉE ${Math.round(effectiveWeapon.rangePx)}`,
                           `POIDS ${weapon.weight}`,
-                          `HONNEUR ${weapon.honorPower}`,
                         ]}
                         selected={selected}
                         unlocked={unlocked}
                         lockedText={`${weapon.unlock.minimumHonor} honneur requis`}
                         onSelect={() => selectWeapon(weapon.id)}
+                        upgradeQuote={upgradeQuote}
+                        onUpgrade={() =>
+                          purchaseEquipmentUpgrade({
+                            domain: "weapon",
+                            id: weapon.id,
+                          })
+                        }
                       />
                     );
                   })}
@@ -1119,6 +1164,14 @@ export default function GameClient() {
                   {ARMORS.map((armor) => {
                     const unlocked =
                       save.inventory.unlockedArmorIds.includes(armor.id);
+                    const effectiveArmor = effectiveArmorStats(
+                      armor.id,
+                      save.inventory.armorUpgrades[armor.id] ?? 0,
+                    );
+                    const upgradeQuote = quoteUpgrade(save, {
+                      domain: "armor",
+                      id: armor.id,
+                    });
                     return (
                       <EquipmentCard
                         key={armor.id}
@@ -1126,14 +1179,21 @@ export default function GameClient() {
                         name={armor.name}
                         description={armor.description}
                         stats={[
-                          `PV ${armor.maxHealth}`,
-                          `ÉNERGIE ${armor.maxEnergy}`,
-                          `CAP. ${armor.carryingCapacity}`,
+                          `PV ${Math.round(effectiveArmor.maxHealth)}`,
+                          `ÉNERGIE ${Math.round(effectiveArmor.maxEnergy)}`,
+                          `CAP. ${effectiveArmor.carryingCapacity}`,
                         ]}
                         selected={save.loadout.armorId === armor.id}
                         unlocked={unlocked}
                         lockedText={`${armor.unlock.minimumHonor} honneur requis`}
                         onSelect={() => selectArmor(armor.id)}
+                        upgradeQuote={upgradeQuote}
+                        onUpgrade={() =>
+                          purchaseEquipmentUpgrade({
+                            domain: "armor",
+                            id: armor.id,
+                          })
+                        }
                       />
                     );
                   })}
@@ -1142,6 +1202,15 @@ export default function GameClient() {
                   {GEAR.map((gear) => {
                     const unlocked =
                       save.inventory.unlockedGearIds.includes(gear.id);
+                    const effectiveGear = effectiveGearStats(
+                      gear.id,
+                      save.inventory.gearUpgrades[gear.id] ?? 0,
+                      save.settings.difficultyId,
+                    );
+                    const upgradeQuote = quoteUpgrade(save, {
+                      domain: "gear",
+                      id: gear.id,
+                    });
                     return (
                       <EquipmentCard
                         key={gear.id}
@@ -1149,14 +1218,21 @@ export default function GameClient() {
                         name={gear.name}
                         description={gear.description}
                         stats={[
-                          `${gear.charges} CHARGES`,
+                          `${effectiveGear.maxCharges} CHARGES`,
                           `POIDS ${gear.weight}`,
-                          `PORTÉE ${gear.rangePx}`,
+                          `PORTÉE ${Math.round(effectiveGear.rangePx)}`,
                         ]}
                         selected={save.loadout.gearIds.includes(gear.id)}
                         unlocked={unlocked}
                         lockedText={`${gear.unlock.minimumHonor} honneur requis`}
                         onSelect={() => selectGear(gear.id)}
+                        upgradeQuote={upgradeQuote}
+                        onUpgrade={() =>
+                          purchaseEquipmentUpgrade({
+                            domain: "gear",
+                            id: gear.id,
+                          })
+                        }
                       />
                     );
                   })}
@@ -1578,14 +1654,19 @@ export default function GameClient() {
         <HuntCanvas
           mission={selectedMission}
           loadout={save.loadout}
+          inventory={save.inventory}
           appearance={save.appearance}
           difficulty={save.settings.difficultyId}
           reducedGore={save.settings.reducedGore}
           screenShake={save.settings.screenShake}
+          highContrastVision={save.settings.highContrastVision}
+          onSound={playGameplaySound}
           onFinish={completeMission}
-          onAbort={() => {
+          onAbort={(result) => {
+            persist(applyMissionResult(save, result));
+            setLastResult(null);
             setSelectedMission(null);
-            go("map");
+            go("ship");
           }}
         />
       )}
@@ -1701,6 +1782,20 @@ export default function GameClient() {
                   updateSettings({ masterVolume: checked ? 0.8 : 0 })
                 }
               />
+              <SettingSlider
+                label="Volume musique"
+                value={save.settings.musicVolume}
+                onChange={(musicVolume) =>
+                  updateSettings({ musicVolume })
+                }
+              />
+              <SettingSlider
+                label="Volume effets"
+                value={save.settings.effectsVolume}
+                onChange={(effectsVolume) =>
+                  updateSettings({ effectsVolume })
+                }
+              />
               <SettingToggle
                 label="Secousse d’écran"
                 checked={save.settings.screenShake}
@@ -1813,33 +1908,6 @@ function TopBar({
   );
 }
 
-function HubAction({
-  icon,
-  title,
-  detail,
-  onClick,
-}: {
-  icon: string;
-  title: string;
-  detail: string;
-  onClick: () => void;
-}) {
-  return (
-    <button type="button" className="hub-action" onClick={onClick}>
-      <span className="hub-action-icon" aria-hidden="true">
-        {icon}
-      </span>
-      <span>
-        <strong>{title}</strong>
-        <small>{detail}</small>
-      </span>
-      <span className="hub-action-arrow" aria-hidden="true">
-        ›
-      </span>
-    </button>
-  );
-}
-
 function PanelHeader({
   eyebrow,
   title,
@@ -1902,6 +1970,8 @@ function EquipmentCard({
   unlocked,
   lockedText,
   onSelect,
+  upgradeQuote,
+  onUpgrade,
 }: {
   type: string;
   name: string;
@@ -1911,10 +1981,26 @@ function EquipmentCard({
   unlocked: boolean;
   lockedText: string;
   onSelect: () => void;
+  upgradeQuote: UpgradeQuote;
+  onUpgrade: () => void;
 }) {
+  const upgradeState =
+    upgradeQuote.nextLevel === null
+      ? "NIVEAU MAXIMUM"
+      : `NIVEAU ${upgradeQuote.currentLevel}/2 · ${upgradeQuote.cost ?? 0} MARQUES`;
+  const upgradeAction =
+    upgradeQuote.nextLevel === null
+      ? "Amélioration maximale"
+      : !upgradeQuote.unlocked
+        ? "Amélioration verrouillée"
+        : upgradeQuote.canPurchase
+          ? `Améliorer au niveau ${upgradeQuote.nextLevel}`
+          : `Solde insuffisant · ${upgradeQuote.cost ?? 0} marques`;
+
   return (
     <article
       className={`equipment-card${selected ? " selected" : ""}${!unlocked ? " locked" : ""}`}
+      style={{ display: "flex", flexDirection: "column" }}
     >
       <p className="equipment-type">{type}</p>
       <h3>{name}</h3>
@@ -1924,14 +2010,39 @@ function EquipmentCard({
           <span key={stat}>{stat}</span>
         ))}
       </div>
-      <button
-        type="button"
-        className="equipment-select"
-        disabled={!unlocked}
-        onClick={onSelect}
+      <p
+        className="equipment-type"
+        aria-label={`Amélioration de ${name}`}
       >
-        {!unlocked ? lockedText : selected ? "Équipé" : "Équiper"}
-      </button>
+        Forge · {upgradeState}
+      </p>
+      <div
+        style={{
+          display: "grid",
+          gap: 6,
+          marginTop: "auto",
+          paddingTop: 12,
+        }}
+      >
+        <button
+          type="button"
+          className="equipment-select"
+          disabled={!unlocked}
+          onClick={onSelect}
+          style={{ position: "static", width: "100%" }}
+        >
+          {!unlocked ? lockedText : selected ? "Équipé" : "Équiper"}
+        </button>
+        <button
+          type="button"
+          className="equipment-select"
+          disabled={!upgradeQuote.canPurchase}
+          onClick={onUpgrade}
+          style={{ position: "static", width: "100%" }}
+        >
+          {upgradeAction}
+        </button>
+      </div>
     </article>
   );
 }
@@ -2100,6 +2211,45 @@ function SettingToggle({
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
       />
+    </label>
+  );
+}
+
+function SettingSlider({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+}) {
+  const percentage = Math.round(value * 100);
+  return (
+    <label className="setting-row">
+      <span>{label}</span>
+      <span
+        style={{
+          display: "flex",
+          minWidth: 180,
+          alignItems: "center",
+          gap: 10,
+        }}
+      >
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={value}
+          aria-valuetext={`${percentage} %`}
+          onChange={(event) => onChange(Number(event.target.value))}
+          style={{ width: "100%", accentColor: "var(--blood)" }}
+        />
+        <output style={{ minWidth: 42, textAlign: "right" }}>
+          {percentage} %
+        </output>
+      </span>
     </label>
   );
 }

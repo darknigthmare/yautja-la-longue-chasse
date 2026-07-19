@@ -20,15 +20,59 @@ Ouvrir ensuite `http://localhost:3000/`.
 - `Espace` : bondir / quitter une paroi
 - `J` / clic : lames de poignet
 - `Maj`, clic droit ou gâchette gauche : cadrer la visée plasma
-- `K` ou gâchette droite : tirer dans l’angle visé
+- `1` / `2` : sélectionner l’une des deux armes du loadout
+- `R` ou bouton View : passer à l’autre arme
+- `K` ou gâchette droite : utiliser l’arme sélectionnée dans l’angle visé
 - `M` : porter ou retirer le biomask
 - `V` : scanner au biomask
 - `C` : camouflage
 - `H` : medicomp
-- maintenir `E` près d’une proie abattue : extraction physique du trophée
+- `3` / `4` ou pavé numérique `3` / `4` : utiliser les deux équipements
+  tactiques du loadout
+- `L3` / `R3` à la manette : utiliser respectivement l’équipement 1 ou 2
+- appuyer sur `E` près d’une proie abattue puis rester immobile : extraction
+  physique du trophée
 - `Échap` : pause
 
-La manette et des commandes tactiles sont également prises en charge.
+La manette et des commandes tactiles sont également prises en charge. Les
+boutons tactiles indiquent les charges et le cooldown restant de chaque
+équipement.
+
+Dans le vaisseau, `A/D` ou gauche/droite change de salle, haut/bas sélectionne
+une action et `Entrée` la confirme. La croix directionnelle, `A` et `B` assurent
+la même navigation à la manette.
+
+## Mise à jour V4 — sept lots livrés
+
+1. **Vaisseau-hub en six salles** : pont et carte, armurerie, salle des
+   trophées, medbay, entraînement et archives. Le hub gère les rites et rangs
+   du clan, quatre configurations équipement/apparence, ainsi que le nettoyage,
+   le montage et l’exposition des trophées.
+2. **Arsenal complet** : deux équipements actifs avec charges, cooldowns et
+   effets en mission. Les armes, armures et équipements ont deux niveaux
+   d’amélioration achetables avec les marques du clan ; leurs statistiques
+   améliorées sont réellement appliquées au runtime.
+3. **Chasse systémique** : vent variable, odeur transportée, bruit, traces
+   dépendantes du sol, boue et eau, pièges, camouflage thermique et dangers
+   environnementaux participent à la détection.
+4. **IA coordonnée** : les humains, bêtes et Yautja hostiles enquêtent,
+   recherchent, partagent l’alerte, utilisent les couvertures et peuvent
+   battre en retraite selon leur état.
+5. **Trois mondes à routes multiples** : chaque planète possède trois
+   itinéraires, au moins six éléments grimpables, des emplacements de pièges et
+   ses propres dangers. Les checkpoints dépendent de la difficulté.
+6. **Trois boss spécifiques** : Vey utilise fusées, renforts et duel rapproché ;
+   le Cryostalker Alpha perd ses plaques contre les piliers et appelle sa
+   meute ; le Bad Blood impose un duel, verrouille l’énergie et déclenche une
+   purge à interrompre sur trois consoles.
+7. **Audio, accessibilité, visuels et tests V4** : ambiances procédurales par
+   lieu, mix séparé musique/effets, secousses désactivables, violence atténuée,
+   contraste renforcé, quatre fonds, sept personnages ennemis V4 et six
+   éléments de décor jungle modulaires. La commande
+  `npm.cmd run qa` valide le build et l’ensemble des tests automatisés.
+
+Le détail du parcours, des routes, des boss et des validations se trouve dans
+[docs/MISE-A-JOUR-V4.md](docs/MISE-A-JOUR-V4.md).
 
 ## Rig modulaire V3
 
@@ -60,15 +104,16 @@ de la V2, le contrat géométrique V3 et les références utilisées.
 
 ## Contenu jouable
 
-- vaisseau-hub, carte galactique, armurerie, personnalisation, mur de trophées
-  et codex ;
+- vaisseau-hub en six salles, carte galactique, armurerie, personnalisation,
+  atelier et salle des trophées, medbay, entraînement et codex ;
 - trois chasses scénarisées avec biomes, cibles et boss distincts ;
-- jungle lacustre multi-plan avec arbres, lianes et plateformes grimpables ;
+- neuf routes réparties entre jungle lacustre, cryomonde et sanctuaire
+  volcanique, avec arbres, lianes, parois, cordes, chaînes et plateformes ;
 - cinq armes, quatre équipements, trois armures et quatre difficultés ;
 - biomask, scanner, camouflage, medicomp, visée plasma et extraction de
   trophées ;
-- système d’honneur, rangs, prises multiples, progression, sauvegarde locale
-  versionnée et mode de rejeu.
+- systèmes de perception, IA coordonnée, pièges, améliorations, checkpoints,
+  honneur, rangs, prises multiples, sauvegarde locale versionnée et rejeu.
 
 ## Développement et validation
 
@@ -78,10 +123,20 @@ npm.cmd run build
 npm.cmd run qa
 ```
 
+La vérification V4 exécute le lint, le build de production et l’ensemble des
+tests automatisés via `npm.cmd run qa`.
+
 Les textures V3 sont des créations pixel-art originales générées avec OpenAI,
 puis détourées et normalisées par `scripts/prepare-v3-assets.py`. Les atlas
-source sont conservés dans `art-source/v3`; le jeu ne contient pas de fichiers
-officiels extraits des films ou des jeux.
+source sont conservés dans `art-source/v3`.
+
+Les quatre environnements, les sept personnages ennemis V4 et les six
+textures de décor jungle modulaires sont également des
+créations originales générées avec OpenAI pour ce projet. Les sources, exports
+runtime et prompts finaux sont conservés prompt par prompt dans
+[`art-source/v4`](art-source/v4/README.md), avec un journal séparé pour les
+[`ennemis V4`](art-source/v4/enemies/README.md). Le jeu ne contient pas de
+textures, captures ou sprites officiels extraits des films ou des jeux.
 
 *Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet privé de
 fan, non commercial, n’est ni officiel, ni affilié à 20th Century Studios ou
