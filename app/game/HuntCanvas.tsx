@@ -251,12 +251,14 @@ function hunterRegisteredAssetPath(
 }
 
 function selectedHandWeapon(loadout: Loadout): HunterHandWeaponId | null {
-  const secondary = loadout.weaponIds[1];
-  return secondary === "combistick" ||
-    secondary === "smart-disc" ||
-    secondary === "yautja-bow"
-    ? secondary
-    : null;
+  return (
+    loadout.weaponIds.find(
+      (weaponId): weaponId is HunterHandWeaponId =>
+        weaponId === "combistick" ||
+        weaponId === "smart-disc" ||
+        weaponId === "yautja-bow",
+    ) ?? null
+  );
 }
 
 interface AssetBank {
@@ -473,6 +475,7 @@ function clamp(value: number, minimum: number, maximum: number): number {
 function solvePlayerRigFrame(
   state: GameState,
   player: PlayerState = state.player,
+  handAimAngle?: number,
 ): HunterRigFrame {
   let pose: HunterRigPose;
   let phase: number;
@@ -506,7 +509,8 @@ function solvePlayerRigFrame(
     facing: player.facing,
     speed: player.velocityX,
     verticalVelocity: player.velocityY,
-    aimAngle: player.aimAngle,
+    aimAngle: player.aiming ? player.aimAngle : undefined,
+    handAimAngle,
     recoil: clamp(player.weaponCooldown * 8, 0, 1),
     extractionProgress: state.trophyExtraction,
     scale,
@@ -734,8 +738,8 @@ function makeGameState(
       climbZoneId: null,
       gauntletOpen: 0,
       bladeExtension: 0,
-      dreadAngles: [0, 0, 0, 0, 0],
-      dreadVelocities: [0, 0, 0, 0, 0],
+      dreadAngles: [0, 0, 0, 0, 0, 0, 0],
+      dreadVelocities: [0, 0, 0, 0, 0, 0, 0],
       attackFlash: 0,
       invulnerability: 0,
       meleeCooldown: 0,
@@ -1141,9 +1145,55 @@ interface RegisteredLayerOptions {
   filter?: string;
   pivot?: RigPoint;
   rotation?: number;
+  scale?: number;
+  scaleX?: number;
+  scaleY?: number;
   translateX?: number;
   translateY?: number;
 }
+
+const HUNTER_DREAD_ROOT = { x: 143, y: 43 } as const;
+const HUNTER_HAND_WEAPON_PIVOT = { x: 218, y: 229 } as const;
+
+const HUNTER_DREAD_STRANDS = [
+  { x: -12, y: 3, rest: -0.209, scale: 0.88, mirror: false },
+  { x: -8, y: -1, rest: -0.14, scale: 0.96, mirror: false },
+  { x: -4, y: -4, rest: -0.07, scale: 1.04, mirror: false },
+  { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
+  { x: 4, y: -3, rest: 0.07, scale: 1.02, mirror: false },
+  { x: 8, y: 2, rest: -0.175, scale: 0.72, mirror: true },
+  { x: 12, y: 7, rest: -0.279, scale: 0.62, mirror: true },
+] as const;
+
+const HUNTER_GEAR_SLOT_OFFSETS = [
+  { x: -24, y: 5 },
+  { x: 24, y: 7 },
+] as const;
+
+const HUNTER_TROPHY_LAYOUT = {
+  "trophy-spine": {
+    pivot: { x: 82, y: 224 },
+    carry: { x: 130, y: 5, scale: 0.72 },
+    belt: { x: -10, y: -4, scale: 0.62 },
+  },
+  "trophy-skull": {
+    pivot: { x: 96, y: 218 },
+    carry: { x: 119, y: 14, scale: 0.62 },
+    belt: { x: 28, y: 2, scale: 0.58 },
+  },
+  "trophy-bindings": {
+    pivot: { x: 82, y: 218 },
+    carry: { x: 143, y: 18, scale: 0.45 },
+    belt: { x: 68, y: 2, scale: 0.5 },
+  },
+} as const satisfies Record<
+  HunterTrophyVisualId,
+  {
+    pivot: RigPoint;
+    carry: RigPoint & { scale: number };
+    belt: RigPoint & { scale: number };
+  }
+>;
 
 const HUNTER_BACK_PARTS: readonly HunterBodyPartId[] = [
   "foot-back",
@@ -1195,9 +1245,15 @@ function drawRegisteredLayer(
   if (options.filter) context.filter = options.filter;
   applyAffine(context, matrix);
   context.translate(options.translateX ?? 0, options.translateY ?? 0);
-  if (options.pivot && options.rotation) {
+  const scaleX = options.scaleX ?? options.scale ?? 1;
+  const scaleY = options.scaleY ?? options.scale ?? 1;
+  if (
+    options.pivot &&
+    (options.rotation || scaleX !== 1 || scaleY !== 1)
+  ) {
     context.translate(options.pivot.x, options.pivot.y);
-    context.rotate(options.rotation);
+    if (options.rotation) context.rotate(options.rotation);
+    context.scale(scaleX, scaleY);
     context.translate(-options.pivot.x, -options.pivot.y);
   }
   context.drawImage(
@@ -1231,6 +1287,14 @@ function drawAtomicBodyPart(
     assets.hunterNetParts[partId],
     frame,
     boneId,
+    {
+      alpha:
+        appearance.armorStyleId === "feral"
+          ? 0.28
+          : appearance.bodyMorphId === "super"
+            ? 0.58
+            : 0.9,
+    },
   );
 }
 
@@ -1241,13 +1305,18 @@ function drawHunterBeltLoadout(
   loadout: Loadout,
 ): void {
   loadout.gearIds.forEach((gearId, slotIndex) => {
+    const slot =
+      HUNTER_GEAR_SLOT_OFFSETS[
+        Math.min(slotIndex, HUNTER_GEAR_SLOT_OFFSETS.length - 1)
+      ];
     drawRegisteredLayer(
       context,
       assets.hunterGear[gearId],
       frame,
       "pelvis",
       {
-        translateX: slotIndex === 0 ? -18 : 18,
+        translateX: slot.x,
+        translateY: slot.y,
       },
     );
   });
@@ -1262,21 +1331,41 @@ function drawHunterHandWeapon(
 ): void {
   const weaponId = selectedHandWeapon(loadout);
   if (!weaponId) return;
+  const weaponProjectileInFlight = state.projectiles.some(
+    (projectile) =>
+      !projectile.hostile &&
+      projectile.life > 0 &&
+      projectile.weaponId === weaponId,
+  );
 
   const visualId: HunterWeaponVisualId =
     weaponId === "combistick" &&
     (state.player.climbing || state.trophyExtracting)
       ? "combistick-folded"
       : weaponId;
-  drawRegisteredLayer(
-    context,
-    assets.hunterWeapons[visualId],
-    frame,
-    "handFront",
-  );
+  const bowTransform =
+    weaponId === "yautja-bow" && state.player.aiming
+      ? {
+          pivot: HUNTER_HAND_WEAPON_PIVOT,
+          rotation:
+            frame.facing > 0
+              ? state.player.aimAngle
+              : Math.PI - state.player.aimAngle,
+        }
+      : undefined;
+  if (!(weaponId === "smart-disc" && weaponProjectileInFlight)) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterWeapons[visualId],
+      frame,
+      "handFront",
+      bowTransform,
+    );
+  }
 
   if (
     weaponId === "yautja-bow" &&
+    !weaponProjectileInFlight &&
     (state.player.aiming || state.player.weaponCooldown > 0.08)
   ) {
     drawRegisteredLayer(
@@ -1284,6 +1373,7 @@ function drawHunterHandWeapon(
       assets.hunterWeapons.arrow,
       frame,
       "handFront",
+      bowTransform,
     );
   }
 }
@@ -1293,15 +1383,56 @@ function drawHunterTrophyLayers(
   assets: AssetBank,
   frame: HunterRigFrame,
   alpha = 1,
+  carried = false,
 ): void {
   for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
-    drawRegisteredLayer(
-      context,
-      assets.hunterTrophies[trophyId],
-      frame,
-      "pelvis",
-      { alpha },
+    const image = assets.hunterTrophies[trophyId];
+    const layout = HUNTER_TROPHY_LAYOUT[trophyId];
+    if (!carried) {
+      drawRegisteredLayer(
+        context,
+        image,
+        frame,
+        "pelvis",
+        {
+          alpha,
+          translateX: layout.belt.x,
+          translateY: layout.belt.y,
+          pivot: layout.pivot,
+          scale: layout.belt.scale,
+        },
+      );
+      continue;
+    }
+    if (!image) continue;
+
+    const rootScale = Math.hypot(
+      frame.bones.root.a,
+      frame.bones.root.b,
     );
+    context.save();
+    context.globalAlpha *= alpha;
+    context.translate(
+      frame.anchors.trophyCarry.x,
+      frame.anchors.trophyCarry.y,
+    );
+    context.scale(frame.facing * rootScale, rootScale);
+    context.translate(
+      -HUNTER_BIND_FRAME.anchors.trophyCarry.x,
+      -HUNTER_BIND_FRAME.anchors.trophyCarry.y,
+    );
+    context.translate(layout.carry.x, layout.carry.y);
+    context.translate(layout.pivot.x, layout.pivot.y);
+    context.scale(layout.carry.scale, layout.carry.scale);
+    context.translate(-layout.pivot.x, -layout.pivot.y);
+    context.drawImage(
+      image,
+      0,
+      0,
+      HUNTER_RIG_CANVAS.width,
+      HUNTER_RIG_CANVAS.height,
+    );
+    context.restore();
   }
 }
 
@@ -1322,6 +1453,12 @@ function drawExtractingTrophyLayers(
   for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
     const image = assets.hunterTrophies[trophyId];
     if (image) {
+      const layout = HUNTER_TROPHY_LAYOUT[trophyId];
+      context.save();
+      context.translate(layout.carry.x, layout.carry.y);
+      context.translate(layout.pivot.x, layout.pivot.y);
+      context.scale(layout.carry.scale, layout.carry.scale);
+      context.translate(-layout.pivot.x, -layout.pivot.y);
       context.drawImage(
         image,
         0,
@@ -1329,6 +1466,7 @@ function drawExtractingTrophyLayers(
         HUNTER_RIG_CANVAS.width,
         HUNTER_RIG_CANVAS.height,
       );
+      context.restore();
     }
   }
   context.restore();
@@ -1345,7 +1483,14 @@ function drawHunterLayered(
   const player = state.player;
   const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
   const hasWristblades = loadout.weaponIds.includes("wristblades");
-  const frame = solvePlayerRigFrame(state, player);
+  const handWeaponId = selectedHandWeapon(loadout);
+  const frame = solvePlayerRigFrame(
+    state,
+    player,
+    handWeaponId === "yautja-bow" && player.aiming
+      ? player.aimAngle
+      : undefined,
+  );
   const atomicBodyReady = HUNTER_BODY_PART_IDS.every(
     (partId) => assets.hunterBodyParts[partId],
   );
@@ -1356,20 +1501,25 @@ function drawHunterLayered(
 
   // Calques arrière : dreadlocks et bras articulé du plasmacaster.
   if (assets.hunterDreads) {
-    const dreadSwing =
-      player.dreadAngles.reduce((total, angle) => total + angle, 0) /
-      Math.max(1, player.dreadAngles.length);
-    drawRegisteredLayer(
-      context,
-      assets.hunterDreads,
-      frame,
-      "head",
-      {
-        filter: dreadFilter(appearance.dreadTintId),
-        pivot: { x: 137, y: 73 },
-        rotation: dreadSwing * 0.38,
-      },
-    );
+    HUNTER_DREAD_STRANDS.forEach((strand, index) => {
+      const dreadSwing =
+        player.dreadAngles[index % Math.max(1, player.dreadAngles.length)] ?? 0;
+      drawRegisteredLayer(
+        context,
+        assets.hunterDreads,
+        frame,
+        "head",
+        {
+          filter: dreadFilter(appearance.dreadTintId),
+          pivot: HUNTER_DREAD_ROOT,
+          rotation: strand.rest + dreadSwing * 0.55,
+          scaleX: strand.mirror ? -strand.scale : strand.scale,
+          scaleY: strand.scale,
+          translateX: strand.x,
+          translateY: strand.y,
+        },
+      );
+    });
   }
   if (hasPlasmaCaster) {
     drawRegisteredLayer(
@@ -1390,6 +1540,15 @@ function drawHunterLayered(
       frame,
       "casterLowerArm",
     );
+  }
+
+  // Le trophée porté à la ceinture reste derrière l'anatomie. Un trophée
+  // réellement arraché sera redessiné au premier plan dans la main.
+  if (
+    !state.trophyCarried &&
+    appearance.trophyAdornmentId === "skull-spine"
+  ) {
+    drawHunterTrophyLayers(context, assets, frame, 0.82, false);
   }
 
   if (atomicBodyReady) {
@@ -1458,34 +1617,27 @@ function drawHunterLayered(
     "armFrontUpper",
     { filter: armorTint },
   );
-  drawRegisteredLayer(
-    context,
-    assets.hunterArmor.bracer,
-    frame,
-    "armFrontLower",
-    { filter: armorTint },
-  );
-  drawRegisteredLayer(
-    context,
-    assets.hunterArmor.thigh,
-    frame,
-    "legFrontUpper",
-    { filter: armorTint },
-  );
-  drawRegisteredLayer(
-    context,
-    assets.hunterArmor.shin,
-    frame,
-    "legFrontLower",
-    { filter: armorTint },
-  );
-
-  if (player.maskOn && appearance.biomaskId) {
+  if (loadout.armorId !== "scout") {
     drawRegisteredLayer(
       context,
-      assets.hunterMask,
+      assets.hunterArmor.bracer,
       frame,
-      "head",
+      "armFrontLower",
+      { filter: armorTint },
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterArmor.thigh,
+      frame,
+      "legFrontUpper",
+      { filter: armorTint },
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterArmor.shin,
+      frame,
+      "legFrontLower",
+      { filter: armorTint },
     );
   }
 
@@ -1503,18 +1655,12 @@ function drawHunterLayered(
     frame,
     "armBackLower",
     {
-      pivot: { x: 74, y: 202 },
-      rotation: -1.22 * clamp(player.gauntletOpen, 0, 1),
+      pivot: { x: 45, y: 207 },
+      rotation: -1.12 * clamp(player.gauntletOpen, 0, 1),
     },
   );
 
   if (hasWristblades) {
-    drawRegisteredLayer(
-      context,
-      assets.hunterWristblades.housing,
-      frame,
-      "armFrontLower",
-    );
     const extension = clamp(player.bladeExtension, 0, 1);
     drawRegisteredLayer(
       context,
@@ -1523,8 +1669,14 @@ function drawHunterLayered(
       "armFrontLower",
       {
         alpha: extension,
-        translateX: -44 * (1 - extension),
+        translateX: -46 * (1 - extension),
       },
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterWristblades.housing,
+      frame,
+      "armFrontLower",
     );
   }
 
@@ -1565,14 +1717,24 @@ function drawHunterLayered(
     }
   }
 
-  if (
-    (state.trophyCarried || appearance.trophyAdornmentId === "skull-spine")
-  ) {
+  // Le biomask recouvre la tête du caster comme dans l'aperçu DOM
+  // (mask z=70, caster z<=63).
+  if (player.maskOn && appearance.biomaskId) {
+    drawRegisteredLayer(
+      context,
+      assets.hunterMask,
+      frame,
+      "head",
+    );
+  }
+
+  if (state.trophyCarried) {
     drawHunterTrophyLayers(
       context,
       assets,
       frame,
-      state.trophyCarried ? 1 : 0.82,
+      1,
+      true,
     );
   }
   context.restore();
@@ -1582,12 +1744,21 @@ function drawAimAssist(
   context: CanvasRenderingContext2D,
   state: GameState,
   mission: MissionDefinition,
+  loadout: Loadout,
   appearance: HunterAppearance,
 ): void {
   const player = state.player;
   if (!player.aiming) return;
   const target = player.aimPoint;
-  const origin = solvePlayerRigFrame(state, player).anchors.muzzle;
+  const handWeaponId = selectedHandWeapon(loadout);
+  const frame = solvePlayerRigFrame(
+    state,
+    player,
+    handWeaponId === "yautja-bow" ? player.aimAngle : undefined,
+  );
+  const origin = handWeaponId
+    ? frame.anchors.handGrip
+    : frame.anchors.muzzle;
   const color = mission.palette.accent;
   context.save();
   if (player.maskOn && appearance.biomaskId) {
@@ -1881,7 +2052,7 @@ function renderGame(
       const startY = FLOOR_Y - 66;
       const trophyCarry =
         solvePlayerRigFrame(state, state.player).anchors.trophyCarry;
-      const endX = trophyCarry.x;
+      const endX = trophyCarry.x + state.player.facing * 18;
       const endY = trophyCarry.y;
       const trophyX = startX + (endX - startX) * eased;
       const trophyY =
@@ -1998,7 +2169,7 @@ function renderGame(
     assets,
     hunterAlpha,
   );
-  drawAimAssist(context, state, mission, appearance);
+  drawAimAssist(context, state, mission, loadout, appearance);
   if (state.player.attackFlash > 0) {
     const centerX =
       state.player.x +
@@ -2034,7 +2205,10 @@ function renderGame(
   if (mission.biome === "jungle") {
     context.save();
     context.globalAlpha = 0.9;
-    const fernPositions = [120, 980, 2_040, 3_180, 4_720, 5_260];
+    // Keep the initial spawn lane readable: the hunter starts at x=150 and
+    // occupies x=150..222, while a foreground fern is 150 px wide. A fern at
+    // x=120 therefore covered the complete modular rig before the first input.
+    const fernPositions = [340, 980, 2_040, 3_180, 4_720, 5_260];
     for (const x of fernPositions) {
       if (assets.foregroundFerns) {
         context.drawImage(assets.foregroundFerns, x, FLOOR_Y - 110, 150, 123);
@@ -2316,11 +2490,19 @@ function playerWeapon(
   if (weapon.ammo !== null) player.ammo -= 1;
   const speed = Math.max(620, weapon.projectileSpeedPx);
   const angle = player.aimAngle;
-  const muzzle = solvePlayerRigFrame(state, player).anchors.muzzle;
+  const rigFrame = solvePlayerRigFrame(
+    state,
+    player,
+    weapon.id === "yautja-bow" ? player.aimAngle : undefined,
+  );
+  const projectileOrigin =
+    weapon.id === "plasma-caster"
+      ? rigFrame.anchors.muzzle
+      : rigFrame.anchors.handGrip;
   state.projectiles.push({
     id: state.nextProjectileId++,
-    x: muzzle.x,
-    y: muzzle.y,
+    x: projectileOrigin.x,
+    y: projectileOrigin.y,
     velocityX: Math.cos(angle) * speed,
     velocityY: Math.sin(angle) * speed + (weapon.id === "yautja-bow" ? -15 : 0),
     radius:
@@ -2603,10 +2785,24 @@ function updateObjectiveFlow(
   }
 }
 
-function updateAimState(state: GameState, input: InputHub): void {
+function updateAimState(
+  state: GameState,
+  input: InputHub,
+  loadout: Loadout,
+): void {
   const player = state.player;
   player.aiming = isHeld(input, "aim");
-  const origin = solvePlayerRigFrame(state, player).anchors.muzzle;
+  const handWeaponId = selectedHandWeapon(loadout);
+  const frame = solvePlayerRigFrame(
+    state,
+    player,
+    handWeaponId === "yautja-bow" && player.aiming
+      ? player.aimAngle
+      : undefined,
+  );
+  const origin = handWeaponId
+    ? frame.anchors.handGrip
+    : frame.anchors.muzzle;
   const targets = [
     ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
@@ -2687,7 +2883,7 @@ function updatePlayer(
     (isHeld(input, "right") ? 1 : 0) - (isHeld(input, "left") ? 1 : 0);
   const climbAxis =
     (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
-  updateAimState(state, input);
+  updateAimState(state, input, loadout);
 
   if (consume(input, "mask")) {
     if (!appearance.biomaskId) {

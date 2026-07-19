@@ -62,7 +62,7 @@ export const HUNTER_NET_PARTS_BY_MORPH: Readonly<
 > = {
   classic: NET_PARTS_WITHOUT_FEET,
   elder: NET_PARTS_WITHOUT_FEET,
-  super: [...NET_PARTS_WITHOUT_FEET, "foot-front"],
+  super: NET_PARTS_WITHOUT_FEET,
   feral: NET_PARTS_WITHOUT_FEET,
   huntress: NET_PARTS_WITHOUT_FEET,
   young: NET_PARTS_WITHOUT_FEET,

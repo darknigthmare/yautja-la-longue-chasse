@@ -260,44 +260,61 @@ PART_FALLBACK_CENTERS: dict[str, tuple[float, float]] = {
 
 ANCHORS: dict[str, tuple[int, int]] = {
     "root": (128, BASELINE),
-    "neck": (146, 85),
-    "headCenter": (163, 58),
-    "maskCenter": (172, 63),
+    "neck": (133, 95),
+    "headCenter": (160, 58),
+    "maskCenter": (164, 62),
     "dreadRoot": (143, 43),
     "chest": (130, 137),
-    "pelvis": (128, 220),
-    "shoulderBack": (105, 121),
-    "elbowBack": (82, 176),
-    "wristBack": (71, 230),
-    "handBack": (64, 250),
-    "shoulderFront": (156, 122),
-    "elbowFront": (182, 176),
-    "wristFront": (195, 228),
-    "handFront": (206, 248),
-    "handGrip": (204, 243),
-    "hipBack": (111, 224),
-    "kneeBack": (89, 290),
-    "ankleBack": (75, 348),
+    "pelvis": (127, 199),
+    "shoulderBack": (88, 114),
+    "elbowBack": (55, 149),
+    "wristBack": (45, 219),
+    "handBack": (39, 232),
+    "shoulderFront": (161, 126),
+    "elbowFront": (185, 161),
+    "wristFront": (212, 216),
+    "handFront": (220, 230),
+    "handGrip": (218, 229),
+    "hipBack": (108, 222),
+    "kneeBack": (90, 280),
+    "ankleBack": (70, 346),
     "footBack": (62, BASELINE),
-    "hipFront": (144, 224),
-    "kneeFront": (169, 290),
-    "ankleFront": (184, 348),
+    "hipFront": (153, 221),
+    "kneeFront": (169, 283),
+    "ankleFront": (175, 344),
     "footFront": (199, BASELINE),
     "casterMount": (103, 105),
     "casterUpperPivot": (116, 91),
-    "casterLowerPivot": (121, 92),
+    "casterLowerPivot": (133, 100),
     "casterYoke": (124, 92),
     "cannonPivot": (132, 82),
-    "barrelHinge": (150, 82),
-    "muzzle": (220, 82),
-    "gauntletBase": (73, 219),
-    "gauntletLidHinge": (73, 207),
-    "bladeHousing": (190, 216),
-    "bladeRoot": (197, 220),
+    "barrelHinge": (196, 82),
+    "muzzle": (240, 82),
+    "gauntletBase": (45, 207),
+    "gauntletLidHinge": (45, 207),
+    "bladeHousing": (202, 216),
+    "bladeRoot": (200, 220),
     "belt": (128, 218),
     "thighFront": (158, 264),
     "shinFront": (178, 326),
 }
+
+PART_JOINTS: tuple[tuple[str, str, str], ...] = (
+    ("torso", "head", "neck"),
+    ("torso", "pelvis", "pelvis"),
+    ("torso", "upper-arm-back", "shoulderBack"),
+    ("upper-arm-back", "lower-arm-back", "elbowBack"),
+    ("lower-arm-back", "hand-back", "wristBack"),
+    ("torso", "upper-arm-front", "shoulderFront"),
+    ("upper-arm-front", "lower-arm-front", "elbowFront"),
+    ("lower-arm-front", "hand-front", "wristFront"),
+    ("pelvis", "thigh-back", "hipBack"),
+    ("thigh-back", "shin-back", "kneeBack"),
+    ("shin-back", "foot-back", "ankleBack"),
+    ("pelvis", "thigh-front", "hipFront"),
+    ("thigh-front", "shin-front", "kneeFront"),
+    ("shin-front", "foot-front", "ankleFront"),
+)
 
 PART_BINDING = {
     "head": ("neck", "torso", 40),
@@ -328,7 +345,10 @@ class Placement:
 
 
 MASK_PLACEMENT = Placement(
-    max_size=(72, 84),
+    # Biomasks must frame the face without swallowing the cranium or the
+    # dread roots. The former 72x84 registration read as a helmet on the
+    # slimmer morphs and collided with the shoulder caster.
+    max_size=(64, 75),
     pivot_master=ANCHORS["maskCenter"],
     asset_pivot=(0.50, 0.50),
     attach_to="headCenter",
@@ -360,7 +380,7 @@ ARMOR_PLACEMENTS: dict[str, Placement] = {
         for asset_id in ARMOR_IDS[4:8]
     },
     "bracer": Placement(
-        (42, 70), (190, 204), (0.50, 0.50), "wristFront", 56
+        (42, 70), (204, 201), (0.50, 0.50), "wristFront", 56
     ),
     "thigh": Placement(
         (58, 92), ANCHORS["thighFront"], (0.50, 0.45), "hipFront", 45
@@ -375,70 +395,70 @@ ARMOR_PLACEMENTS: dict[str, Placement] = {
 
 EQUIPMENT_PLACEMENTS: dict[str, Placement] = {
     "mount": Placement(
-        (58, 72), ANCHORS["casterMount"], (0.50, 0.50), "chest", 42
+        (38, 48), ANCHORS["casterMount"], (0.50, 0.50), "chest", 42
     ),
     "caster-upper": Placement(
-        (50, 88),
+        (31, 55),
         ANCHORS["casterUpperPivot"],
         (0.50, 0.85),
         "casterMount",
         43,
     ),
     "caster-lower": Placement(
-        (46, 82),
+        (29, 52),
         ANCHORS["casterLowerPivot"],
         (0.50, 0.85),
         "casterUpperPivot",
         44,
     ),
     "yoke": Placement(
-        (48, 48), ANCHORS["casterYoke"], (0.50, 0.50), "casterMount", 45
+        (31, 31), ANCHORS["casterYoke"], (0.50, 0.50), "casterMount", 45
     ),
     "cannon": Placement(
-        (116, 60),
+        (74, 38),
         ANCHORS["cannonPivot"],
         (0.08, 0.50),
         "casterUpperPivot",
         70,
     ),
     "barrel": Placement(
-        (104, 34),
+        (40, 16),
         ANCHORS["barrelHinge"],
         (0.05, 0.50),
         "cannonPivot",
         71,
     ),
     "muzzle": Placement(
-        (34, 38), ANCHORS["muzzle"], (0.50, 0.50), "barrelHinge", 72
+        (20, 23), ANCHORS["muzzle"], (0.50, 0.50), "barrelHinge", 72
     ),
     "laser": Placement(
-        (34, 24), ANCHORS["muzzle"], (0.50, 0.50), "muzzle", 73
+        (10, 7), ANCHORS["muzzle"], (0.50, 0.50), "muzzle", 73
     ),
     "gauntlet-base": Placement(
-        (54, 42),
+        (40, 31),
         ANCHORS["gauntletBase"],
         (0.50, 0.50),
         "wristBack",
         65,
     ),
     "gauntlet-lid": Placement(
-        (34, 62),
+        (24, 44),
         ANCHORS["gauntletLidHinge"],
         (0.50, 0.90),
         "gauntletBase",
         66,
     ),
     "blade-housing": Placement(
-        (58, 38),
+        (44, 29),
         ANCHORS["bladeHousing"],
         (0.50, 0.50),
         "wristFront",
         67,
     ),
     "blades": Placement(
-        (92, 30),
+        (55, 23),
         ANCHORS["bladeRoot"],
-        (0.17, 0.50),
+        (0.0, 0.50),
         "bladeHousing",
         68,
     ),
@@ -446,19 +466,19 @@ EQUIPMENT_PLACEMENTS: dict[str, Placement] = {
 
 LOADOUT_PLACEMENTS: dict[str, Placement] = {
     "combistick": Placement(
-        (236, 38), ANCHORS["handGrip"], (0.84, 0.50), "handGrip", 76
+        (205, 38), ANCHORS["handGrip"], (0.84, 0.50), "handGrip", 76
     ),
     "combistick-folded": Placement(
-        (92, 38), ANCHORS["handGrip"], (0.56, 0.50), "handGrip", 76
+        (74, 38), ANCHORS["handGrip"], (0.56, 0.50), "handGrip", 76
     ),
     "smart-disc": Placement(
         (76, 76), ANCHORS["handFront"], (0.56, 0.50), "handFront", 77
     ),
     "yautja-bow": Placement(
-        (72, 220), ANCHORS["handGrip"], (0.60, 0.50), "handGrip", 76
+        (58, 170), ANCHORS["handGrip"], (0.60, 0.50), "handGrip", 76
     ),
     "arrow": Placement(
-        (230, 32), ANCHORS["handGrip"], (0.84, 0.50), "handGrip", 78
+        (125, 20), ANCHORS["handGrip"], (0.78, 0.50), "handGrip", 78
     ),
     "netgun": Placement(
         (78, 58), ANCHORS["belt"], (0.50, 0.58), "belt", 62
@@ -470,10 +490,10 @@ LOADOUT_PLACEMENTS: dict[str, Placement] = {
         (46, 54), ANCHORS["belt"], (0.50, 0.50), "belt", 62
     ),
     "snare": Placement(
-        (82, 66), ANCHORS["pelvis"], (0.50, 0.50), "pelvis", 61
+        (82, 66), (128, 220), (0.50, 0.50), "pelvis", 61
     ),
     "trophy-skull": Placement(
-        (76, 72), (82, 252), (0.50, 0.12), "pelvis", 63
+        (76, 72), (96, 218), (0.69, -0.46), "belt", 63
     ),
     "trophy-spine": Placement(
         (42, 124), (82, 224), (0.50, 0.05), "pelvis", 62
@@ -781,7 +801,7 @@ def part_label_masks(reference: Image.Image) -> dict[str, Image.Image]:
     left, top, right, bottom = alpha_bbox(reference)
     width = max(1, right - left)
     height = max(1, bottom - top)
-    masks: dict[str, Image.Image] = {}
+    authored_masks: dict[str, Image.Image] = {}
     for part_id in PART_IDS:
         mask = Image.new("L", (CANVAS_WIDTH, CANVAS_HEIGHT))
         draw = ImageDraw.Draw(mask)
@@ -793,18 +813,22 @@ def part_label_masks(reference: Image.Image) -> dict[str, Image.Image]:
             for normalized_x, normalized_y in PART_POLYGONS[part_id]
         ]
         draw.polygon(polygon, fill=255)
-        # A two-pixel overlap around anatomical cuts keeps articulated joints
-        # covered after rotation and also absorbs antialiased net/loin pixels.
-        masks[part_id] = mask.filter(ImageFilter.MaxFilter(5))
+        authored_masks[part_id] = mask
 
-    # Generated overlays occasionally contain isolated antialiased pixels just
-    # outside the body silhouette. Assign only otherwise-uncovered pixels to
-    # the nearest anatomical center so every body/net pixel remains drawable.
-    union = Image.new("L", (CANVAS_WIDTH, CANVAS_HEIGHT))
-    for mask in masks.values():
-        union = ImageChops.lighter(union, mask)
-    union_pixels = union.load()
-    mask_pixels = {part_id: mask.load() for part_id, mask in masks.items()}
+    # The authored polygons may overlap substantially at wrists and ankles.
+    # Resolve every pixel to exactly one anatomical owner first; otherwise a
+    # hand can contain most of its forearm and both pieces become impossible
+    # to articulate independently.
+    owned_masks = {
+        part_id: Image.new("L", (CANVAS_WIDTH, CANVAS_HEIGHT))
+        for part_id in PART_IDS
+    }
+    authored_pixels = {
+        part_id: mask.load() for part_id, mask in authored_masks.items()
+    }
+    owned_pixels = {
+        part_id: mask.load() for part_id, mask in owned_masks.items()
+    }
     centers = {
         part_id: (
             left + normalized_x * width,
@@ -814,16 +838,37 @@ def part_label_masks(reference: Image.Image) -> dict[str, Image.Image]:
     }
     for y in range(CANVAS_HEIGHT):
         for x in range(CANVAS_WIDTH):
-            if union_pixels[x, y]:
-                continue
+            candidates = [
+                part_id
+                for part_id in PART_IDS
+                if authored_pixels[part_id][x, y]
+            ]
+            if not candidates:
+                candidates = list(PART_IDS)
             nearest = min(
-                PART_IDS,
+                candidates,
                 key=lambda part_id: (
                     (x - centers[part_id][0]) ** 2
                     + (y - centers[part_id][1]) ** 2
                 ),
             )
-            mask_pixels[nearest][x, y] = 255
+            owned_pixels[nearest][x, y] = 255
+
+    # A one-pixel collar prevents antialias cracks. Joint circles are the only
+    # deliberate duplicated areas and keep both sides of a rotating seam
+    # opaque without duplicating an entire hand or foot.
+    masks = {
+        part_id: mask.filter(ImageFilter.MaxFilter(3))
+        for part_id, mask in owned_masks.items()
+    }
+    for parent_id, child_id, anchor_id in PART_JOINTS:
+        pivot_x, pivot_y = ANCHORS[anchor_id]
+        for part_id in (parent_id, child_id):
+            draw = ImageDraw.Draw(masks[part_id])
+            draw.ellipse(
+                (pivot_x - 3, pivot_y - 3, pivot_x + 3, pivot_y + 3),
+                fill=255,
+            )
     return masks
 
 
@@ -948,6 +993,42 @@ def normalize_module(
     return sanitize_alpha(registered)
 
 
+def enforce_atomic_module(
+    category: str, asset_id: str, registered: Image.Image
+) -> Image.Image:
+    """Remove geometry authored into a neighbouring modular slot.
+
+    The generation atlases intentionally contain generous complete concepts.
+    The runtime, however, needs receiver, barrel, muzzle, shoulder and blades
+    to remain independently movable. These masks retain the authored pixels
+    while limiting each export to its actual mechanical ownership.
+    """
+
+    alpha = registered.getchannel("A")
+    ownership = Image.new("L", registered.size, 255)
+    draw = ImageDraw.Draw(ownership)
+
+    if category == "armor" and asset_id.startswith("chest-"):
+        # Reserved front-shoulder socket. The matching pauldron fills this
+        # opening, so the chest harness no longer contains a hidden duplicate.
+        draw.ellipse((132, 90, 192, 160), fill=0)
+    elif category == "equipment":
+        retained_rectangles = {
+            "cannon": (0, 0, 199, CANVAS_HEIGHT),
+            "barrel": (196, 0, 239, CANVAS_HEIGHT),
+            "muzzle": (236, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
+            "blades": (200, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
+        }
+        retained = retained_rectangles.get(asset_id)
+        if retained is not None:
+            ownership = Image.new("L", registered.size)
+            ImageDraw.Draw(ownership).rectangle(retained, fill=255)
+
+    separated = registered.copy()
+    separated.putalpha(ImageChops.multiply(alpha, ownership))
+    return sanitize_alpha(separated)
+
+
 def export_module(
     category: str,
     asset_id: str,
@@ -957,7 +1038,11 @@ def export_module(
     placement: Placement,
 ) -> dict[str, Any]:
     category_root = HUNTER_OUTPUT / category
-    registered = normalize_module(source_item, placement)
+    registered = enforce_atomic_module(
+        category,
+        asset_id,
+        normalize_module(source_item, placement),
+    )
     trimmed, source_rect = trim_registered(registered, placement.pivot_master)
     trimmed_path = category_root / f"{asset_id}.webp"
     registered_path = category_root / "registered" / f"{asset_id}.webp"

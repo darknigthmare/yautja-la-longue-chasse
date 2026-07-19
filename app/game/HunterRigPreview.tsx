@@ -104,18 +104,46 @@ const BODY_LAYER_ORDER: readonly HunterBodyPartId[] = [
   "hand-front",
 ];
 
-const DREAD_GROUPS: Readonly<
-  Record<HunterAppearance["dreadStyleId"], readonly HunterAppearance["dreadStyleId"][]>
-> = {
-  classic: ["classic", "ringed", "temple", "veteran"],
-  ringed: ["ringed", "classic", "veteran", "temple"],
-  braided: ["braided", "huntress", "ringed", "temple"],
-  veteran: ["veteran", "elder", "ringed", "classic"],
-  elder: ["elder", "veteran", "temple", "classic"],
-  temple: ["temple", "classic", "ringed"],
-  feral: ["feral", "temple", "classic"],
-  huntress: ["huntress", "braided", "ringed", "elder"],
-};
+/**
+ * One dread texture represents one independently animated strand. These
+ * offsets distribute seven instances around the canonical skull root instead
+ * of stacking several unrelated styles at exactly the same coordinates.
+ */
+const DREAD_STRANDS = [
+  { x: -12, y: 3, rest: -12, scale: 0.88, mirror: false },
+  { x: -8, y: -1, rest: -8, scale: 0.96, mirror: false },
+  { x: -4, y: -4, rest: -4, scale: 1.04, mirror: false },
+  { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
+  { x: 4, y: -3, rest: 4, scale: 1.02, mirror: false },
+  { x: 8, y: 2, rest: -10, scale: 0.72, mirror: true },
+  { x: 12, y: 7, rest: -16, scale: 0.62, mirror: true },
+] as const;
+
+const DREAD_ROOT = { x: 143, y: 43 } as const;
+const HAND_WEAPON_PIVOT = { x: 218, y: 229 } as const;
+
+const GEAR_SLOT_OFFSETS = [
+  { x: -24, y: 5 },
+  { x: 24, y: 7 },
+] as const;
+
+const TROPHY_LAYOUT = {
+  spine: {
+    pivot: { x: 82, y: 224 },
+    carry: { x: 130, y: 5, scale: 0.72 },
+    belt: { x: -10, y: -4, scale: 0.62 },
+  },
+  skull: {
+    pivot: { x: 96, y: 218 },
+    carry: { x: 119, y: 14, scale: 0.62 },
+    belt: { x: 28, y: 2, scale: 0.58 },
+  },
+  bindings: {
+    pivot: { x: 82, y: 218 },
+    carry: { x: 143, y: 18, scale: 0.45 },
+    belt: { x: 68, y: 2, scale: 0.5 },
+  },
+} as const;
 
 const BIND_FRAME = solveHunterRig({
   pose: "idle",
@@ -170,6 +198,10 @@ function cssMatrix(matrix: AffineMatrix): string {
   );
 }
 
+function cssPercentage(value: number, total: number): string {
+  return `${Number(((value / total) * 100).toFixed(6))}%`;
+}
+
 function translation(x: number, y: number): AffineMatrix {
   return { a: 1, b: 0, c: 0, d: 1, e: x, f: y };
 }
@@ -191,6 +223,30 @@ function rotationAround(
   };
   return multiplyAffine(
     multiplyAffine(translation(x, y), rotation),
+    translation(-x, -y),
+  );
+}
+
+function scaleAround(x: number, y: number, scale: number): AffineMatrix {
+  return scaleAroundAxes(x, y, scale, scale);
+}
+
+function scaleAroundAxes(
+  x: number,
+  y: number,
+  scaleX: number,
+  scaleY: number,
+): AffineMatrix {
+  const scaling: AffineMatrix = {
+    a: scaleX,
+    b: 0,
+    c: 0,
+    d: scaleY,
+    e: 0,
+    f: 0,
+  };
+  return multiplyAffine(
+    multiplyAffine(translation(x, y), scaling),
     translation(-x, -y),
   );
 }
@@ -296,6 +352,10 @@ export function HunterRigPreview({
       : aiming
         ? Math.PI + 0.24
         : Math.PI);
+  const carriedWeaponId = weaponIds.find(
+    (weaponId) =>
+      weaponId !== "plasma-caster" && weaponId !== "wristblades",
+  );
   const frame = solveHunterRig({
     pose,
     phase,
@@ -303,7 +363,11 @@ export function HunterRigPreview({
     speed,
     verticalVelocity,
     extractionProgress,
-    aimAngle: resolvedAimAngle,
+    aimAngle: aiming ? resolvedAimAngle : undefined,
+    handAimAngle:
+      aiming && carriedWeaponId === "yautja-bow"
+        ? resolvedAimAngle
+        : undefined,
     recoil,
   });
   const boneMatrix = (boneId: HunterRigBoneId) =>
@@ -313,10 +377,43 @@ export function HunterRigPreview({
   const showsWristblades = weaponIds.includes("wristblades");
   const showsTrophy =
     trophyCarried || appearance.trophyAdornmentId === "skull-spine";
-  const carriedWeaponId = weaponIds.find(
-    (weaponId) =>
-      weaponId !== "plasma-caster" && weaponId !== "wristblades",
-  );
+  const handWeaponMatrix =
+    carriedWeaponId === "yautja-bow" && aiming
+      ? multiplyAffine(
+          boneMatrix("handFront"),
+          rotationAround(
+            HAND_WEAPON_PIVOT.x,
+            HAND_WEAPON_PIVOT.y,
+            facing > 0
+              ? resolvedAimAngle
+              : Math.PI - resolvedAimAngle,
+          ),
+        )
+      : boneMatrix("handFront");
+  const uprightCarryMatrix: AffineMatrix = {
+    a: facing,
+    b: 0,
+    c: 0,
+    d: 1,
+    e:
+      frame.anchors.trophyCarry.x -
+      facing * BIND_FRAME.anchors.trophyCarry.x +
+      (pose === "extract" ? 18 * facing : 0),
+    f:
+      frame.anchors.trophyCarry.y -
+      BIND_FRAME.anchors.trophyCarry.y,
+  };
+  const trophyMatrix = (partId: keyof typeof TROPHY_LAYOUT) => {
+    const layout = TROPHY_LAYOUT[partId];
+    const slot = trophyCarried ? layout.carry : layout.belt;
+    return multiplyAffine(
+      trophyCarried ? uprightCarryMatrix : boneMatrix("pelvis"),
+      multiplyAffine(
+        translation(slot.x, slot.y),
+        scaleAround(layout.pivot.x, layout.pivot.y, slot.scale),
+      ),
+    );
+  };
   const armorFamily = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
   const armorFilter = `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
   const netOpacity =
@@ -358,11 +455,11 @@ export function HunterRigPreview({
   const lidBase = boneMatrix("armBackLower");
   const lidMatrix = multiplyAffine(
     lidBase,
-    rotationAround(77, 202, gauntletOpen ? -1.12 : 0),
+    rotationAround(45, 207, gauntletOpen ? -1.12 : 0),
   );
   const bladeMatrix = multiplyAffine(
     boneMatrix("armFrontLower"),
-    translation(bladesExtended ? 42 : 5, bladesExtended ? -3 : 0),
+    translation(bladesExtended ? 0 : -46, 0),
   );
   const muzzle = frame.anchors.muzzle;
   const reticleDistance = aiming ? 126 : 92;
@@ -411,14 +508,30 @@ export function HunterRigPreview({
         `}
       </style>
 
-      {DREAD_GROUPS[appearance.dreadStyleId].map((dreadId, index) => {
-        const matrix = boneMatrix("head");
-        const sway = 2.2 + index * 0.75;
+      {DREAD_STRANDS.map((strand, index) => {
+        const offsetMatrix = multiplyAffine(
+          translation(strand.x, strand.y),
+          multiplyAffine(
+            rotationAround(
+              DREAD_ROOT.x,
+              DREAD_ROOT.y,
+              (strand.rest * Math.PI) / 180,
+            ),
+            scaleAroundAxes(
+              DREAD_ROOT.x,
+              DREAD_ROOT.y,
+              strand.mirror ? -strand.scale : strand.scale,
+              strand.scale,
+            ),
+          ),
+        );
+        const matrix = multiplyAffine(boneMatrix("head"), offsetMatrix);
+        const sway = 2.4 + index * 0.58;
         return (
           <span
             aria-hidden="true"
             data-rig-slot={`dread-${index}`}
-            key={`${dreadId}-${index}`}
+            key={`${appearance.dreadStyleId}-${index}`}
             style={{
               ...fullCanvasImage,
               zIndex: 4 + index,
@@ -429,18 +542,20 @@ export function HunterRigPreview({
               alt=""
               data-rig-dread-inner=""
               draggable={false}
-              src={hunterDreadPath(dreadId)}
+              src={hunterDreadPath(appearance.dreadStyleId)}
               style={
                 {
                   ...fullCanvasImage,
                   filter: DREAD_FILTER[appearance.dreadTintId],
-                  transformOrigin: `${38 + index * 3}% ${12 + index * 1.4}%`,
+                  transformOrigin:
+                    `${(DREAD_ROOT.x / HUNTER_RIG_CANVAS.width) * 100}% ` +
+                    `${(DREAD_ROOT.y / HUNTER_RIG_CANVAS.height) * 100}%`,
                   animation:
                     `hunter-rig-v3-dread-sway ${3.5 + index * 0.28}s ` +
                     `${-index * 0.61}s ease-in-out infinite`,
-                  "--dread-rest": `${-sway * 0.24}deg`,
+                  "--dread-rest": "0deg",
                   "--dread-sway": `${sway}deg`,
-                  "--dread-drift": `${-sway * 0.45}deg`,
+                  "--dread-drift": `${-sway * 0.72}deg`,
                 } as CSSProperties
               }
             />
@@ -452,36 +567,21 @@ export function HunterRigPreview({
         <>
           {registeredLayer(
             HUNTER_TROPHIES_V3.spine,
-            trophyCarried
-              ? multiplyAffine(
-                  boneMatrix("handFront"),
-                  translation(122, -9),
-                )
-              : boneMatrix("pelvis"),
+            trophyMatrix("spine"),
             trophyCarried ? 73 : 12,
             "trophy-spine",
             "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
           )}
           {registeredLayer(
             HUNTER_TROPHIES_V3.skull,
-            trophyCarried
-              ? multiplyAffine(
-                  boneMatrix("handFront"),
-                  translation(122, -9),
-                )
-              : boneMatrix("pelvis"),
+            trophyMatrix("skull"),
             trophyCarried ? 74 : 13,
             "trophy-skull",
             "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
           )}
           {registeredLayer(
             HUNTER_TROPHIES_V3.bindings,
-            trophyCarried
-              ? multiplyAffine(
-                  boneMatrix("handFront"),
-                  translation(122, -9),
-                )
-              : boneMatrix("pelvis"),
+            trophyMatrix("bindings"),
             trophyCarried ? 75 : 14,
             "trophy-bindings",
             "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
@@ -547,7 +647,10 @@ export function HunterRigPreview({
             HUNTER_GEAR_V3[gearId],
             multiplyAffine(
               boneMatrix("pelvis"),
-              translation(gearIndex === 0 ? -22 : 24, gearIndex * 5),
+              translation(
+                GEAR_SLOT_OFFSETS[gearIndex].x,
+                GEAR_SLOT_OFFSETS[gearIndex].y,
+              ),
             ),
             53 + gearIndex,
             `gear-${gearId}`,
@@ -636,7 +739,7 @@ export function HunterRigPreview({
         registeredLayer(
           HUNTER_EQUIPMENT_V3.wristblades.housing,
           boneMatrix("armFrontLower"),
-          66,
+          68,
           "blade-housing",
         )}
       {showsWristblades &&
@@ -646,22 +749,22 @@ export function HunterRigPreview({
           67,
           "wristblades",
           undefined,
-          bladesExtended ? 1 : 0.68,
+          bladesExtended ? 1 : 0,
         )}
 
       {carriedWeaponId === "combistick" &&
         registeredLayer(
           HUNTER_WEAPONS_V3.combistick,
-          boneMatrix("handFront"),
-          76,
+          handWeaponMatrix,
+          49,
           "weapon-combistick",
           "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
         )}
       {carriedWeaponId === "smart-disc" &&
         registeredLayer(
           HUNTER_WEAPONS_V3.smartDisc,
-          boneMatrix("handFront"),
-          76,
+          handWeaponMatrix,
+          49,
           "weapon-smart-disc",
           "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
         )}
@@ -669,16 +772,16 @@ export function HunterRigPreview({
         <>
           {registeredLayer(
             HUNTER_WEAPONS_V3.yautjaBow,
-            boneMatrix("handFront"),
-            76,
+            handWeaponMatrix,
+            49,
             "weapon-yautja-bow",
             "drop-shadow(0 3px 3px rgb(0 0 0 / .9))",
           )}
           {aiming &&
             registeredLayer(
               HUNTER_WEAPONS_V3.arrow,
-              boneMatrix("handFront"),
-              77,
+              handWeaponMatrix,
+              49,
               "weapon-arrow",
             )}
         </>
@@ -692,8 +795,8 @@ export function HunterRigPreview({
             style={{
               position: "absolute",
               zIndex: 80,
-              left: `${(muzzle.x / 256) * 100}%`,
-              top: `${(muzzle.y / 384) * 100}%`,
+              left: cssPercentage(muzzle.x, HUNTER_RIG_CANVAS.width),
+              top: cssPercentage(muzzle.y, HUNTER_RIG_CANVAS.height),
               width: "50%",
               height: 2,
               background:
@@ -709,8 +812,8 @@ export function HunterRigPreview({
             style={{
               position: "absolute",
               zIndex: 81,
-              left: `${(reticle.x / 256) * 100}%`,
-              top: `${(reticle.y / 384) * 100}%`,
+              left: cssPercentage(reticle.x, HUNTER_RIG_CANVAS.width),
+              top: cssPercentage(reticle.y, HUNTER_RIG_CANVAS.height),
               width: "8%",
               aspectRatio: "1",
               border: "2px solid #ff3b34",
@@ -733,8 +836,8 @@ export function HunterRigPreview({
             style={{
               position: "absolute",
               zIndex: 100,
-              left: `${(matrix.e / 256) * 100}%`,
-              top: `${(matrix.f / 384) * 100}%`,
+              left: cssPercentage(matrix.e, HUNTER_RIG_CANVAS.width),
+              top: cssPercentage(matrix.f, HUNTER_RIG_CANVAS.height),
               width: 5,
               height: 5,
               border: "1px solid #fff",
