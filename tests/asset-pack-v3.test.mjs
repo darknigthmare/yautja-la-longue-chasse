@@ -139,7 +139,7 @@ test("V3 pack exposes complete registered modular hunter assets", async () => {
   assert.deepEqual(Object.keys(manifest.hunter.bodies).sort(), expectedBodyIds);
   assert.equal(Object.keys(manifest.hunter.masks).length, 12);
   assert.equal(Object.keys(manifest.hunter.equipment).length, 12);
-  assert.equal(Object.keys(manifest.hunter.armor).length, 12);
+  assert.equal(Object.keys(manifest.hunter.armor).length, 14);
   assert.equal(Object.keys(manifest.hunter.dreads).length, 8);
   assert.deepEqual(
     Object.keys(manifest.hunter.weapons).sort(),
@@ -153,6 +153,11 @@ test("V3 pack exposes complete registered modular hunter assets", async () => {
   assert.equal(manifest.counts.weapons, 5);
   assert.equal(manifest.counts.gear, 4);
   assert.equal(manifest.counts.trophies, 3);
+  assert.ok(manifest.hunter.armor.knee);
+  assert.ok(manifest.hunter.armor["thigh-lower"]);
+  assert.equal(manifest.hunter.armor.thigh.attachTo, "hipFront");
+  assert.equal(manifest.hunter.armor.knee.attachTo, "kneeFront");
+  assert.equal(manifest.hunter.armor["thigh-lower"].attachTo, "kneeFront");
   assert.equal(
     manifest.sources.loadoutTrophy.path,
     "art-source/v3/alpha/openai-loadout-trophy-atlas.png",

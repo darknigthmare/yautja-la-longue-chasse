@@ -12,7 +12,7 @@ contract exposed by ``public/game/assets/v3/manifest.json``:
 
 The default invocation writes a JSON report, a compact Markdown summary and
 visual contact sheets under ``outputs/qa``.  Use ``--strict`` in a release gate:
-it exits with status 1 while any error-level placement defect remains.
+it exits with status 1 while any unreviewed error or warning remains.
 """
 
 from __future__ import annotations
@@ -101,7 +101,7 @@ MODULE_TARGETS = {
         else "thigh-front"
         if asset_id == "thigh"
         else "shin-front"
-        if asset_id == "shin"
+        if asset_id in {"knee", "thigh-lower", "shin"}
         else "pelvis"
     ),
     "equipment": lambda asset_id: (
@@ -175,7 +175,8 @@ MODULE_THRESHOLDS = {
 
 EQUIPMENT_CHAIN = (
     ("mount", "caster-upper"),
-    ("caster-upper", "caster-lower"),
+    ("mount", "caster-lower"),
+    ("caster-upper", "yoke"),
     ("caster-lower", "yoke"),
     ("yoke", "cannon"),
     ("cannon", "barrel"),
@@ -184,6 +185,13 @@ EQUIPMENT_CHAIN = (
     ("gauntlet-base", "gauntlet-lid"),
     ("blade-housing", "blades"),
 )
+
+EQUIPMENT_JOINT_OVERRIDES = {
+    # The parallel struts connect to two distinct points on the circular yoke;
+    # neither connection is the yoke's central rotation pivot.
+    ("caster-upper", "yoke"): (136, 52),
+    ("caster-lower", "yoke"): (136, 61),
+}
 
 
 @dataclass
@@ -371,7 +379,18 @@ class Audit:
                         "errorAbovePx": error_distance,
                     },
                 )
-            if len(major_components) > 5 or largest_component_ratio < 0.58:
+            expected_components = descriptor.get("expectedMajorComponents")
+            expected_component_layout = (
+                expected_components is not None
+                and len(major_components) == expected_components
+            )
+            if (
+                not expected_component_layout
+                and (
+                    len(major_components) > 5
+                    or largest_component_ratio < 0.58
+                )
+            ):
                 severity = (
                     "error"
                     if len(major_components) > 9
@@ -602,29 +621,49 @@ class Audit:
                 fit_key = f"{category}/{asset_id}"
                 fit_rows: dict[str, Any] = {}
                 self.metrics["moduleFit"][fit_key] = fit_rows
-                thresholds = MODULE_THRESHOLDS[category]
+                thresholds = dict(MODULE_THRESHOLDS[category])
+                # A knee cup intentionally straddles the thigh/shin seam. Its
+                # target-only intersection is therefore small even when its
+                # mechanical pivot sits exactly on the knee and most of the
+                # plate contacts the complete body silhouette.
+                if category == "armor" and asset_id == "knee":
+                    thresholds["min_overlap"] = 0.015
                 for body_id in bodies:
                     target = self.body_part(body_id, target_id)
                     body = self.body_asset(body_id)
-                    pivot = point_tuple(descriptor["pivotMaster"])
+                    fit = descriptor.get("fitByMorph", {}).get(body_id, {})
+                    translate_x = int(fit.get("translateX", 0))
+                    translate_y = int(fit.get("translateY", 0))
+                    module_mask = translated_mask(
+                        module.mask,
+                        translate_x,
+                        translate_y,
+                    )
+                    module_bounds = module_mask.getbbox() or module.bounds
+                    base_pivot = point_tuple(descriptor["pivotMaster"])
+                    pivot = (
+                        base_pivot[0] + translate_x,
+                        base_pivot[1] + translate_y,
+                    )
                     pivot_target_distance = point_to_mask_distance(
                         target.mask,
                         pivot,
                         64,
                     )
-                    overlap_target = intersection_area(module.mask, target.mask)
-                    overlap_body = intersection_area(module.mask, body.mask)
+                    overlap_target = intersection_area(module_mask, target.mask)
+                    overlap_body = intersection_area(module_mask, body.mask)
                     module_overlap_ratio = overlap_target / module.area
                     body_overlap_ratio = overlap_body / module.area
                     size_ratio = module.area / target.area
-                    bbox_width_ratio = bounds_width(module.bounds) / bounds_width(
+                    bbox_width_ratio = bounds_width(module_bounds) / bounds_width(
                         target.bounds
                     )
-                    bbox_height_ratio = bounds_height(module.bounds) / bounds_height(
+                    bbox_height_ratio = bounds_height(module_bounds) / bounds_height(
                         target.bounds
                     )
                     fit_rows[body_id] = {
                         "targetPart": target_id,
+                        "fitTranslation": [translate_x, translate_y],
                         "pivotToTargetPx": pivot_target_distance,
                         "targetIntersectionPx": overlap_target,
                         "moduleOverlapWithTargetRatio": round(
@@ -721,7 +760,15 @@ class Audit:
                 pivot_values = [row["pivotToTargetPx"] for row in fit_rows.values()]
                 overlap_spread = max(overlap_values) - min(overlap_values)
                 pivot_spread = max(pivot_values) - min(pivot_values)
-                if overlap_spread > 0.16:
+                # Held weapons and belt-hung gear are registered by a grip or
+                # hook pivot. Their alpha overlap naturally varies with hand or
+                # pelvis silhouette and is not a wearable-fit measurement.
+                contact_fitted_category = category in {
+                    "masks",
+                    "armor",
+                    "equipment",
+                }
+                if contact_fitted_category and overlap_spread > 0.16:
                     severity = "error" if overlap_spread > 0.28 else "warning"
                     worst_body = min(
                         fit_rows,
@@ -851,7 +898,10 @@ class Audit:
         for parent_id, child_id in EQUIPMENT_CHAIN:
             parent = loaded[parent_id]
             child = loaded[child_id]
-            pivot = point_tuple(child.descriptor["pivotMaster"])
+            pivot = EQUIPMENT_JOINT_OVERRIDES.get(
+                (parent_id, child_id),
+                point_tuple(child.descriptor["pivotMaster"]),
+            )
             pivot_to_parent = point_to_mask_distance(parent.mask, pivot, 64)
             pivot_to_child = point_to_mask_distance(child.mask, pivot, 64)
             gap = mask_distance(parent.mask, child.mask, maximum=32)
@@ -896,7 +946,10 @@ class Audit:
                 )
             # The laser diode is a nested, independently toggled insert inside
             # the muzzle cap; full contact is its correct assembled state.
-            nested_insert = chain_id == "muzzle->laser"
+            nested_insert = chain_id in {
+                "muzzle->laser",
+                "blade-housing->blades",
+            }
             if overlap_ratio > 0.42 and not nested_insert:
                 severity = "error" if overlap_ratio > 0.62 else "warning"
                 self.finding(
@@ -1073,7 +1126,7 @@ class Audit:
             "generatedAt": datetime.now(timezone.utc).isoformat(),
             "manifest": MANIFEST_PATH.relative_to(ROOT).as_posix(),
             "manifestVersion": self.manifest["version"],
-            "status": "failed" if errors else "passed",
+            "status": "failed" if errors else "review" if warnings else "passed",
             "summary": {
                 "errors": errors,
                 "warnings": warnings,
@@ -1135,6 +1188,12 @@ def binary_alpha(image: Image.Image) -> Image.Image:
 def translated_mask(mask: Image.Image, x: int, y: int) -> Image.Image:
     translated = Image.new("L", mask.size)
     translated.paste(mask, (x, y))
+    return translated
+
+
+def translated_image(image: Image.Image, x: int, y: int) -> Image.Image:
+    translated = Image.new("RGBA", image.size)
+    translated.alpha_composite(image, dest=(x, y))
     return translated
 
 
@@ -1378,12 +1437,20 @@ def render_module_sheet(audit: Audit, output_path: Path) -> None:
             composite = audit.body_asset(body_id).image.copy()
             darkness = Image.new("RGBA", composite.size, (0, 0, 0, 115))
             composite.alpha_composite(darkness)
-            highlighted = module.image.copy()
+            fit = descriptor.get("fitByMorph", {}).get(body_id, {})
+            translate_x = int(fit.get("translateX", 0))
+            translate_y = int(fit.get("translateY", 0))
+            highlighted = translated_image(
+                module.image,
+                translate_x,
+                translate_y,
+            )
             composite.alpha_composite(highlighted)
             pivot_draw = ImageDraw.Draw(composite)
+            pivot = point_tuple(descriptor["pivotMaster"])
             draw_cross(
                 pivot_draw,
-                point_tuple(descriptor["pivotMaster"]),
+                (pivot[0] + translate_x, pivot[1] + translate_y),
                 (255, 55, 55, 255),
                 radius=5,
             )
@@ -1444,10 +1511,16 @@ def render_module_category_sheet(
                 composite.alpha_composite(
                     tint_from_mask(target.mask, (45, 150, 245, 95))
                 )
-            composite.alpha_composite(module.image)
+            fit = descriptor.get("fitByMorph", {}).get(body_id, {})
+            translate_x = int(fit.get("translateX", 0))
+            translate_y = int(fit.get("translateY", 0))
+            composite.alpha_composite(
+                translated_image(module.image, translate_x, translate_y)
+            )
+            pivot = point_tuple(descriptor["pivotMaster"])
             draw_cross(
                 ImageDraw.Draw(composite),
-                point_tuple(descriptor["pivotMaster"]),
+                (pivot[0] + translate_x, pivot[1] + translate_y),
                 (255, 45, 45, 255),
                 radius=5,
             )
@@ -1522,7 +1595,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--strict",
         action="store_true",
-        help="Sortir avec le code 1 tant qu’une erreur géométrique subsiste.",
+        help="Sortir avec le code 1 tant qu’un défaut non revu subsiste.",
     )
     parser.add_argument(
         "--stdout-json",
@@ -1569,7 +1642,7 @@ def main() -> int:
             f"{report['summary']['warnings']} warnings. "
             f"Report: {report_path.relative_to(ROOT)}"
         )
-    if arguments.strict and report["status"] == "failed":
+    if arguments.strict and report["status"] != "passed":
         return 1
     return 0
 

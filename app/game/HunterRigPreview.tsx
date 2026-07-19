@@ -12,9 +12,12 @@ import type {
 } from "./types";
 import {
   hunterBodyPartHasNet,
+  HUNTER_ARMOR_FIT_BY_MORPH,
   HUNTER_ARMOR_MODULES,
   HUNTER_BODY_PART_BONES,
   HUNTER_EQUIPMENT_V3,
+  HUNTER_GAUNTLET_FIT_BY_MORPH,
+  HUNTER_GAUNTLET_HINGE,
   HUNTER_GEAR_V3,
   HUNTER_TROPHIES_V3,
   HUNTER_WEAPONS_V3,
@@ -115,8 +118,8 @@ const DREAD_STRANDS = [
   { x: -4, y: -4, rest: -4, scale: 1.04, mirror: false },
   { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
   { x: 4, y: -3, rest: 4, scale: 1.02, mirror: false },
-  { x: 8, y: 2, rest: -10, scale: 0.72, mirror: true },
-  { x: 12, y: 7, rest: -16, scale: 0.62, mirror: true },
+  { x: 8, y: 2, rest: -10, scale: 0.72, mirror: false },
+  { x: 12, y: 7, rest: -16, scale: 0.62, mirror: false },
 ] as const;
 
 const DREAD_ROOT = { x: 143, y: 43 } as const;
@@ -129,17 +132,17 @@ const GEAR_SLOT_OFFSETS = [
 
 const TROPHY_LAYOUT = {
   spine: {
-    pivot: { x: 82, y: 224 },
+    pivot: { x: 85, y: 216 },
     carry: { x: 130, y: 5, scale: 0.72 },
     belt: { x: -10, y: -4, scale: 0.62 },
   },
   skull: {
-    pivot: { x: 96, y: 218 },
+    pivot: { x: 99, y: 210 },
     carry: { x: 119, y: 14, scale: 0.62 },
     belt: { x: 28, y: 2, scale: 0.58 },
   },
   bindings: {
-    pivot: { x: 82, y: 218 },
+    pivot: { x: 85, y: 210 },
     carry: { x: 143, y: 18, scale: 0.45 },
     belt: { x: 68, y: 2, scale: 0.5 },
   },
@@ -445,17 +448,31 @@ export function HunterRigPreview({
     { id: "belt", bone: "pelvis", z: 49 },
   ];
   if (armorId !== "scout") {
+    if (!showsWristblades) {
+      armorSlots.push({ id: "bracer", bone: "armFrontLower", z: 55 });
+    }
     armorSlots.push(
-      { id: "bracer", bone: "armFrontLower", z: 55 },
       { id: "thigh", bone: "legFrontUpper", z: 47 },
+      { id: "knee", bone: "legFrontLower", z: 49 },
+      { id: "thigh-lower", bone: "legFrontLower", z: 47 },
       { id: "shin", bone: "legFrontLower", z: 48 },
     );
   }
 
-  const lidBase = boneMatrix("armBackLower");
+  const gauntletFit =
+    HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
+  const gauntletMatrix = multiplyAffine(
+    boneMatrix("armBackLower"),
+    translation(gauntletFit.translateX, gauntletFit.translateY),
+  );
+  const lidBase = gauntletMatrix;
   const lidMatrix = multiplyAffine(
     lidBase,
-    rotationAround(45, 207, gauntletOpen ? -1.12 : 0),
+    rotationAround(
+      HUNTER_GAUNTLET_HINGE.x,
+      HUNTER_GAUNTLET_HINGE.y,
+      gauntletOpen ? -1.12 : 0,
+    ),
   );
   const bladeMatrix = multiplyAffine(
     boneMatrix("armFrontLower"),
@@ -633,7 +650,17 @@ export function HunterRigPreview({
         <span key={`${slot.id}-${slot.bone}`}>
           {registeredLayer(
             hunterArmorPath(slot.id),
-            boneMatrix(slot.bone),
+            slot.id === armorFamily.shoulder
+              ? multiplyAffine(
+                  boneMatrix(slot.bone),
+                  scaleAround(
+                    153,
+                    110,
+                    HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId]
+                      .shoulderScale,
+                  ),
+                )
+              : boneMatrix(slot.bone),
             slot.z,
             `armor-${slot.id}`,
             armorFilter,
@@ -724,7 +751,7 @@ export function HunterRigPreview({
 
       {registeredLayer(
         HUNTER_EQUIPMENT_V3.gauntlet.base,
-        boneMatrix("armBackLower"),
+        gauntletMatrix,
         64,
         "gauntlet-base",
       )}

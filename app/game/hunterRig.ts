@@ -35,13 +35,13 @@ export const HUNTER_RIG_BIND_POINTS = {
   legFrontUpper: { x: 153, y: 221 },
   legFrontLower: { x: 169, y: 283 },
   footFront: { x: 175, y: 344 },
-  casterShoulderMount: { x: 103, y: 105 },
-  casterUpperArm: { x: 116, y: 91 },
-  casterLowerArm: { x: 133, y: 100 },
-  casterYoke: { x: 124, y: 92 },
-  casterCannon: { x: 132, y: 82 },
-  casterBarrel: { x: 196, y: 82 },
-  casterMuzzle: { x: 240, y: 82 },
+  casterShoulderMount: { x: 100, y: 110 },
+  casterUpperArm: { x: 116, y: 96 },
+  casterLowerArm: { x: 116, y: 106 },
+  casterYoke: { x: 139, y: 50 },
+  casterCannon: { x: 151, y: 32 },
+  casterBarrel: { x: 203, y: 32 },
+  casterMuzzle: { x: 238, y: 32 },
 } as const satisfies Record<HunterRigBoneId, RigPoint>;
 
 export type HunterRigPose =
@@ -210,16 +210,16 @@ const BONE_DEFINITIONS: Record<HunterRigBoneId, BoneDefinition> = {
   legBackLower: { parentId: "legBackUpper", x: -18, y: 58 },
   footBack: { parentId: "legBackLower", x: -20, y: 66 },
 
-  casterShoulderMount: { parentId: "torso", x: -24, y: -94 },
-  // Every support-arm bone rotates on the ring used to register its own
-  // artwork. Keeping these origins identical to the alpha atlas pivots avoids
-  // the links orbiting around a neighbouring module when the caster aims.
-  casterUpperArm: { parentId: "casterShoulderMount", x: 13, y: -14 },
-  casterLowerArm: { parentId: "casterUpperArm", x: 17, y: 9 },
-  casterYoke: { parentId: "casterLowerArm", x: -9, y: -8 },
-  casterCannon: { parentId: "casterYoke", x: 8, y: -10 },
-  casterBarrel: { parentId: "casterCannon", x: 64, y: 0 },
-  casterMuzzle: { parentId: "casterBarrel", x: 44, y: 0 },
+  casterShoulderMount: { parentId: "torso", x: -27, y: -89 },
+  // The two visible support links form a parallel articulated bracket. They
+  // are siblings: chaining them accumulated rotations and pushed the receiver
+  // through the biomask. The yoke owns the independently movable cannon head.
+  casterUpperArm: { parentId: "casterShoulderMount", x: 16, y: -14 },
+  casterLowerArm: { parentId: "casterShoulderMount", x: 16, y: -4 },
+  casterYoke: { parentId: "casterShoulderMount", x: 39, y: -60 },
+  casterCannon: { parentId: "casterYoke", x: 12, y: -18 },
+  casterBarrel: { parentId: "casterCannon", x: 52, y: 0 },
+  casterMuzzle: { parentId: "casterBarrel", x: 35, y: 0 },
 };
 
 const TAU = Math.PI * 2;
@@ -530,19 +530,16 @@ export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
       : Math.PI - desiredWorldAim
     : 0;
 
-  const clampedAim = clamp(localAim, -1.5, 1.5);
   const casterMountRotation = 0;
-  // The two support arms articulate independently while the yoke absorbs the
-  // remaining angle. At zero aim every module returns exactly to its atlas
-  // registration point.
-  const casterUpperRotation = clampedAim * 0.16;
-  const casterLowerRotation = clampedAim * -0.08;
+  // The two rigid support links stay locked to the backpack. The independently
+  // movable yoke owns the entire cannon head, so aiming cannot pull either arm
+  // away from its shoulder socket.
+  const casterUpperRotation = 0;
+  const casterLowerRotation = 0;
   const casterAncestorRotation =
     pose.pelvis +
     pose.torso +
-    casterMountRotation +
-    casterUpperRotation +
-    casterLowerRotation;
+    casterMountRotation;
   const casterYokeRotation = hasExplicitAim
     ? localAim - casterAncestorRotation
     : 0;
@@ -612,7 +609,7 @@ export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
       muzzle: transformPoint(bones.casterMuzzle, { x: 0, y: 0 }),
       handGrip: transformPoint(bones.handFront, { x: 6, y: 13 }),
       trophyCarry: transformPoint(bones.handFront, { x: 6, y: 13 }),
-      maskCenter: transformPoint(bones.head, { x: 31, y: -33 }),
+      maskCenter: transformPoint(bones.head, { x: 17, y: -34 }),
     },
   };
 }

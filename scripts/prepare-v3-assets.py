@@ -67,7 +67,7 @@ EQUIPMENT_IDS = (
     "blade-housing",
     "blades",
 )
-ARMOR_IDS = (
+ARMOR_ATLAS_IDS = (
     "chest-classic",
     "chest-city",
     "chest-avp",
@@ -80,6 +80,10 @@ ARMOR_IDS = (
     "thigh",
     "shin",
     "belt",
+)
+ARMOR_IDS = ARMOR_ATLAS_IDS + (
+    "knee",
+    "thigh-lower",
 )
 DREAD_IDS = (
     "classic",
@@ -262,7 +266,7 @@ ANCHORS: dict[str, tuple[int, int]] = {
     "root": (128, BASELINE),
     "neck": (133, 95),
     "headCenter": (160, 58),
-    "maskCenter": (164, 62),
+    "maskCenter": (150, 61),
     "dreadRoot": (143, 43),
     "chest": (130, 137),
     "pelvis": (127, 199),
@@ -275,6 +279,7 @@ ANCHORS: dict[str, tuple[int, int]] = {
     "wristFront": (212, 216),
     "handFront": (220, 230),
     "handGrip": (218, 229),
+    "shoulderArmorFront": (153, 110),
     "hipBack": (108, 222),
     "kneeBack": (90, 280),
     "ankleBack": (70, 346),
@@ -283,20 +288,23 @@ ANCHORS: dict[str, tuple[int, int]] = {
     "kneeFront": (169, 283),
     "ankleFront": (175, 344),
     "footFront": (199, BASELINE),
-    "casterMount": (103, 105),
-    "casterUpperPivot": (116, 91),
-    "casterLowerPivot": (133, 100),
-    "casterYoke": (124, 92),
-    "cannonPivot": (132, 82),
-    "barrelHinge": (196, 82),
-    "muzzle": (240, 82),
-    "gauntletBase": (45, 207),
-    "gauntletLidHinge": (45, 207),
-    "bladeHousing": (202, 216),
-    "bladeRoot": (200, 220),
-    "belt": (128, 218),
-    "thighFront": (158, 264),
-    "shinFront": (178, 326),
+    "casterMount": (100, 110),
+    # The two struts leave the shoulder pack from distinct pivots and meet a
+    # raised yoke. The previous receiver line crossed the face and only looked
+    # acceptable because the biomask was painted over it.
+    "casterUpperPivot": (116, 96),
+    "casterLowerPivot": (116, 106),
+    "casterYoke": (139, 50),
+    "cannonPivot": (151, 32),
+    "barrelHinge": (203, 32),
+    "muzzle": (238, 32),
+    "gauntletBase": (51, 202),
+    "gauntletLidHinge": (51, 202),
+    "bladeHousing": (198, 211),
+    "bladeRoot": (196, 215),
+    "belt": (131, 210),
+    "thighFront": (164, 260),
+    "shinFront": (189, 315),
 }
 
 PART_JOINTS: tuple[tuple[str, str, str], ...] = (
@@ -342,6 +350,11 @@ class Placement:
     asset_pivot: tuple[float, float]
     attach_to: str
     z_index: int
+    # Where the artwork is authored on the bind canvas. This can differ from
+    # the mechanical pivot: a shin plate is drawn around the calf but rotates
+    # around the knee. Separating the two prevents neighbouring rigid pieces
+    # from being dragged together during animation.
+    registration_master: tuple[int, int] | None = None
 
 
 MASK_PLACEMENT = Placement(
@@ -371,8 +384,8 @@ ARMOR_PLACEMENTS: dict[str, Placement] = {
     },
     **{
         asset_id: Placement(
-            (68, 64),
-            ANCHORS["shoulderFront"],
+            (63, 59),
+            ANCHORS["shoulderArmorFront"],
             (0.50, 0.45),
             "shoulderFront",
             55,
@@ -380,13 +393,34 @@ ARMOR_PLACEMENTS: dict[str, Placement] = {
         for asset_id in ARMOR_IDS[4:8]
     },
     "bracer": Placement(
-        (42, 70), (204, 201), (0.50, 0.50), "wristFront", 56
+        (42, 70), (194, 193), (0.50, 0.50), "wristFront", 56
     ),
     "thigh": Placement(
         (58, 92), ANCHORS["thighFront"], (0.50, 0.45), "hipFront", 45
     ),
+    "knee": Placement(
+        (58, 92),
+        ANCHORS["kneeFront"],
+        (0.50, 0.45),
+        "kneeFront",
+        46,
+        ANCHORS["thighFront"],
+    ),
+    "thigh-lower": Placement(
+        (58, 92),
+        ANCHORS["kneeFront"],
+        (0.50, 0.45),
+        "kneeFront",
+        45,
+        ANCHORS["thighFront"],
+    ),
     "shin": Placement(
-        (52, 92), ANCHORS["shinFront"], (0.50, 0.55), "kneeFront", 45
+        (52, 92),
+        ANCHORS["kneeFront"],
+        (0.50, 0.55),
+        "kneeFront",
+        45,
+        ANCHORS["shinFront"],
     ),
     "belt": Placement(
         (128, 58), ANCHORS["belt"], (0.50, 0.50), "pelvis", 60
@@ -403,33 +437,35 @@ EQUIPMENT_PLACEMENTS: dict[str, Placement] = {
         (0.50, 0.85),
         "casterMount",
         43,
+        (123, 97),
     ),
     "caster-lower": Placement(
         (29, 52),
         ANCHORS["casterLowerPivot"],
         (0.50, 0.85),
-        "casterUpperPivot",
+        "casterMount",
         44,
+        (124, 104),
     ),
     "yoke": Placement(
         (31, 31), ANCHORS["casterYoke"], (0.50, 0.50), "casterMount", 45
     ),
     "cannon": Placement(
-        (74, 38),
+        (55, 28),
         ANCHORS["cannonPivot"],
         (0.08, 0.50),
-        "casterUpperPivot",
+        "casterYoke",
         70,
     ),
     "barrel": Placement(
-        (40, 16),
+        (38, 15),
         ANCHORS["barrelHinge"],
         (0.05, 0.50),
         "cannonPivot",
         71,
     ),
     "muzzle": Placement(
-        (20, 23), ANCHORS["muzzle"], (0.50, 0.50), "barrelHinge", 72
+        (18, 21), ANCHORS["muzzle"], (0.50, 0.50), "barrelHinge", 72
     ),
     "laser": Placement(
         (10, 7), ANCHORS["muzzle"], (0.50, 0.50), "muzzle", 73
@@ -464,6 +500,15 @@ EQUIPMENT_PLACEMENTS: dict[str, Placement] = {
     ),
 }
 
+GAUNTLET_FIT_BY_MORPH = {
+    "classic": {"translateX": 1, "translateY": 3},
+    "elder": {"translateX": 0, "translateY": 3},
+    "super": {"translateX": -10, "translateY": 3},
+    "feral": {"translateX": -2, "translateY": 3},
+    "huntress": {"translateX": 2, "translateY": 3},
+    "young": {"translateX": 1, "translateY": 3},
+}
+
 LOADOUT_PLACEMENTS: dict[str, Placement] = {
     "combistick": Placement(
         (205, 38), ANCHORS["handGrip"], (0.84, 0.50), "handGrip", 76
@@ -490,16 +535,16 @@ LOADOUT_PLACEMENTS: dict[str, Placement] = {
         (46, 54), ANCHORS["belt"], (0.50, 0.50), "belt", 62
     ),
     "snare": Placement(
-        (82, 66), (128, 220), (0.50, 0.50), "pelvis", 61
+        (82, 66), (131, 212), (0.50, 0.50), "pelvis", 61
     ),
     "trophy-skull": Placement(
-        (76, 72), (96, 218), (0.69, -0.46), "belt", 63
+        (76, 72), (99, 210), (0.69, -0.46), "belt", 63
     ),
     "trophy-spine": Placement(
-        (42, 124), (82, 224), (0.50, 0.05), "pelvis", 62
+        (42, 124), (85, 216), (0.50, 0.05), "pelvis", 62
     ),
     "trophy-bindings": Placement(
-        (68, 104), (82, 218), (0.50, 0.06), "belt", 64
+        (68, 104), (85, 210), (0.50, 0.06), "belt", 64
     ),
 }
 
@@ -976,8 +1021,11 @@ def normalize_module(
     )
     pivot_offset_x = round(placement.asset_pivot[0] * (output_width - 1))
     pivot_offset_y = round(placement.asset_pivot[1] * (output_height - 1))
-    destination_x = placement.pivot_master[0] - pivot_offset_x
-    destination_y = placement.pivot_master[1] - pivot_offset_y
+    registration_master = (
+        placement.registration_master or placement.pivot_master
+    )
+    destination_x = registration_master[0] - pivot_offset_x
+    destination_y = registration_master[1] - pivot_offset_y
     if (
         destination_x < 0
         or destination_y < 0
@@ -1012,12 +1060,30 @@ def enforce_atomic_module(
         # Reserved front-shoulder socket. The matching pauldron fills this
         # opening, so the chest harness no longer contains a hidden duplicate.
         draw.ellipse((132, 90, 192, 160), fill=0)
+    elif category == "armor" and asset_id in {
+        "thigh",
+        "knee",
+        "thigh-lower",
+    }:
+        # The source cell contains three rigid plates authored as one vertical
+        # strip. They cross the knee joint if exported together, so ownership
+        # is split with a small overlap at each seam to hide motion gaps.
+        retained_rectangles = {
+            "thigh": (0, 0, CANVAS_WIDTH, 253),
+            "knee": (0, 247, CANVAS_WIDTH, 283),
+            "thigh-lower": (0, 277, CANVAS_WIDTH, CANVAS_HEIGHT),
+        }
+        ownership = Image.new("L", registered.size)
+        ImageDraw.Draw(ownership).rectangle(
+            retained_rectangles[asset_id],
+            fill=255,
+        )
     elif category == "equipment":
         retained_rectangles = {
-            "cannon": (0, 0, 199, CANVAS_HEIGHT),
-            "barrel": (196, 0, 239, CANVAS_HEIGHT),
-            "muzzle": (236, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
-            "blades": (200, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
+            "cannon": (0, 0, 214, CANVAS_HEIGHT),
+            "barrel": (199, 0, 253, CANVAS_HEIGHT),
+            "muzzle": (238, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
+            "blades": (196, 0, CANVAS_WIDTH, CANVAS_HEIGHT),
         }
         retained = retained_rectangles.get(asset_id)
         if retained is not None:
@@ -1059,6 +1125,9 @@ def export_module(
             "y": placement.pivot_master[1] - top,
         },
         "pivotMaster": point_dict(placement.pivot_master),
+        "registrationMaster": point_dict(
+            placement.registration_master or placement.pivot_master
+        ),
         "attachTo": placement.attach_to,
         "zIndex": placement.z_index,
         "alphaBounds": rect_dict(alpha_bbox(registered)),
@@ -1067,6 +1136,11 @@ def export_module(
             "region": rect_dict(source_region),
         },
     }
+    if asset_id in {"gauntlet-base", "gauntlet-lid"}:
+        descriptor["fitByMorph"] = GAUNTLET_FIT_BY_MORPH
+    if asset_id == "blades":
+        # One weapon module, two intentionally disconnected parallel blades.
+        descriptor["expectedMajorComponents"] = 2
     if descriptor["sourceRect"]["width"] != trimmed.width:
         raise ValueError(f"{asset_id}: trimmed width metadata mismatch")
     if descriptor["sourceRect"]["height"] != trimmed.height:
@@ -1238,6 +1312,34 @@ def build_equipment_modules(atlas: Image.Image) -> dict[str, Any]:
             region,
             EQUIPMENT_PLACEMENTS[asset_id],
         )
+    return result
+
+
+def build_armor_modules(atlas: Image.Image) -> dict[str, Any]:
+    """Export the authored 4x3 atlas plus knee-safe derived atoms."""
+
+    result: dict[str, Any] = {}
+    regions = grid_regions(atlas.size, 4, 3)
+    for asset_id, region in zip(ARMOR_ATLAS_IDS, regions, strict=True):
+        source_item = crop_region(atlas, region)
+        result[asset_id] = export_module(
+            "armor",
+            asset_id,
+            source_item,
+            "openai-armor-atlas.png",
+            region,
+            ARMOR_PLACEMENTS[asset_id],
+        )
+        if asset_id == "thigh":
+            for derived_id in ("knee", "thigh-lower"):
+                result[derived_id] = export_module(
+                    "armor",
+                    derived_id,
+                    source_item,
+                    "openai-armor-atlas.png",
+                    region,
+                    ARMOR_PLACEMENTS[derived_id],
+                )
     return result
 
 
@@ -1516,15 +1618,7 @@ def build_manifest() -> dict[str, Any]:
         MASK_PLACEMENT,
     )
     equipment = build_equipment_modules(equipment_atlas)
-    armor = build_grid_modules(
-        armor_atlas,
-        atlas_names["armor"],
-        4,
-        3,
-        ARMOR_IDS,
-        "armor",
-        ARMOR_PLACEMENTS,
-    )
+    armor = build_armor_modules(armor_atlas)
     dreads = build_grid_modules(
         dread_atlas,
         atlas_names["dreads"],

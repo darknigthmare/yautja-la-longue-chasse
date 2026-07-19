@@ -24,10 +24,13 @@ import {
   type RigPoint,
 } from "./hunterRig";
 import {
+  HUNTER_ARMOR_FIT_BY_MORPH,
   HUNTER_ARMOR_MODULES,
   HUNTER_BODY_PART_BONES,
   HUNTER_BODY_PART_IDS,
   HUNTER_EQUIPMENT_V3,
+  HUNTER_GAUNTLET_FIT_BY_MORPH,
+  HUNTER_GAUNTLET_HINGE,
   hunterArmorPath,
   hunterBodyPartHasNet,
   hunterBodyFullPath,
@@ -212,6 +215,8 @@ type HunterArmorAssetId =
   | "belt"
   | "bracer"
   | "thigh"
+  | "knee"
+  | "thighLower"
   | "shin";
 
 type HunterPlasmaAssetId = keyof typeof HUNTER_EQUIPMENT_V3.plasma;
@@ -1161,8 +1166,8 @@ const HUNTER_DREAD_STRANDS = [
   { x: -4, y: -4, rest: -0.07, scale: 1.04, mirror: false },
   { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
   { x: 4, y: -3, rest: 0.07, scale: 1.02, mirror: false },
-  { x: 8, y: 2, rest: -0.175, scale: 0.72, mirror: true },
-  { x: 12, y: 7, rest: -0.279, scale: 0.62, mirror: true },
+  { x: 8, y: 2, rest: -0.175, scale: 0.72, mirror: false },
+  { x: 12, y: 7, rest: -0.279, scale: 0.62, mirror: false },
 ] as const;
 
 const HUNTER_GEAR_SLOT_OFFSETS = [
@@ -1172,17 +1177,17 @@ const HUNTER_GEAR_SLOT_OFFSETS = [
 
 const HUNTER_TROPHY_LAYOUT = {
   "trophy-spine": {
-    pivot: { x: 82, y: 224 },
+    pivot: { x: 85, y: 216 },
     carry: { x: 130, y: 5, scale: 0.72 },
     belt: { x: -10, y: -4, scale: 0.62 },
   },
   "trophy-skull": {
-    pivot: { x: 96, y: 218 },
+    pivot: { x: 99, y: 210 },
     carry: { x: 119, y: 14, scale: 0.62 },
     belt: { x: 28, y: 2, scale: 0.58 },
   },
   "trophy-bindings": {
-    pivot: { x: 82, y: 218 },
+    pivot: { x: 85, y: 210 },
     carry: { x: 143, y: 18, scale: 0.45 },
     belt: { x: 68, y: 2, scale: 0.5 },
   },
@@ -1615,21 +1620,42 @@ function drawHunterLayered(
     assets.hunterArmor.shoulder,
     frame,
     "armFrontUpper",
-    { filter: armorTint },
+    {
+      filter: armorTint,
+      pivot: { x: 153, y: 110 },
+      scale:
+        HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale,
+    },
   );
   if (loadout.armorId !== "scout") {
-    drawRegisteredLayer(
-      context,
-      assets.hunterArmor.bracer,
-      frame,
-      "armFrontLower",
-      { filter: armorTint },
-    );
+    if (!hasWristblades) {
+      drawRegisteredLayer(
+        context,
+        assets.hunterArmor.bracer,
+        frame,
+        "armFrontLower",
+        { filter: armorTint },
+      );
+    }
     drawRegisteredLayer(
       context,
       assets.hunterArmor.thigh,
       frame,
       "legFrontUpper",
+      { filter: armorTint },
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterArmor.thighLower,
+      frame,
+      "legFrontLower",
+      { filter: armorTint },
+    );
+    drawRegisteredLayer(
+      context,
+      assets.hunterArmor.knee,
+      frame,
+      "legFrontLower",
       { filter: armorTint },
     );
     drawRegisteredLayer(
@@ -1643,11 +1669,17 @@ function drawHunterLayered(
 
   // Gantelet : la base suit l'avant-bras arrière et le lid pivote sur sa
   // charnière canonique au lieu de fondre vers une seconde image complète.
+  const gauntletFit =
+    HUNTER_GAUNTLET_FIT_BY_MORPH[appearance.bodyMorphId];
   drawRegisteredLayer(
     context,
     assets.hunterGauntlet.base,
     frame,
     "armBackLower",
+    {
+      translateX: gauntletFit.translateX,
+      translateY: gauntletFit.translateY,
+    },
   );
   drawRegisteredLayer(
     context,
@@ -1655,8 +1687,10 @@ function drawHunterLayered(
     frame,
     "armBackLower",
     {
-      pivot: { x: 45, y: 207 },
+      pivot: HUNTER_GAUNTLET_HINGE,
       rotation: -1.12 * clamp(player.gauntletOpen, 0, 1),
+      translateX: gauntletFit.translateX,
+      translateY: gauntletFit.translateY,
     },
   );
 
@@ -3547,6 +3581,8 @@ export default function HuntCanvas({
         belt: null,
         bracer: null,
         thigh: null,
+        knee: null,
+        thighLower: null,
         shin: null,
       },
       hunterPlasma: {
@@ -3670,6 +3706,8 @@ export default function HuntCanvas({
       belt: hunterArmorPath("belt"),
       bracer: hunterArmorPath("bracer"),
       thigh: hunterArmorPath("thigh"),
+      knee: hunterArmorPath("knee"),
+      thighLower: hunterArmorPath("thigh-lower"),
       shin: hunterArmorPath("shin"),
     };
     for (const [moduleId, path] of Object.entries(armorPaths) as Array<

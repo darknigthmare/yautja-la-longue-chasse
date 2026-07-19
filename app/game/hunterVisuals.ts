@@ -155,6 +155,30 @@ export const HUNTER_ARMOR_MODULES: Readonly<
   feral: { chest: "chest-classic", shoulder: "shoulder-feral" },
 };
 
+export const HUNTER_GAUNTLET_HINGE = { x: 51, y: 202 } as const;
+
+export const HUNTER_GAUNTLET_FIT_BY_MORPH: Readonly<
+  Record<HunterBodyMorphId, { translateX: number; translateY: number }>
+> = {
+  classic: { translateX: 1, translateY: 3 },
+  elder: { translateX: 0, translateY: 3 },
+  super: { translateX: -10, translateY: 3 },
+  feral: { translateX: -2, translateY: 3 },
+  huntress: { translateX: 2, translateY: 3 },
+  young: { translateX: 1, translateY: 3 },
+};
+
+export const HUNTER_ARMOR_FIT_BY_MORPH: Readonly<
+  Record<HunterBodyMorphId, { shoulderScale: number }>
+> = {
+  classic: { shoulderScale: 1 },
+  elder: { shoulderScale: 0.96 },
+  super: { shoulderScale: 1 },
+  feral: { shoulderScale: 0.96 },
+  huntress: { shoulderScale: 0.88 },
+  young: { shoulderScale: 0.86 },
+};
+
 export const HUNTER_EQUIPMENT_V3 = {
   plasma: {
     mount: hunterEquipmentPath("mount"),
