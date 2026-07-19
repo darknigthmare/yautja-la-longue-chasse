@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  HUNTER_RIG_BIND_POINTS,
   HUNTER_RIG_CANVAS,
   solveHunterRig,
   transformPoint,
@@ -11,6 +12,115 @@ const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
 const angleDelta = (a, b) =>
   Math.atan2(Math.sin(a - b), Math.cos(a - b));
+
+test("every bind bone rotates on the exact exported sprite pivot", () => {
+  const bind = solveHunterRig({
+    pose: "idle",
+    facing: 1,
+    phase: 0,
+  });
+
+  for (const [boneId, expected] of Object.entries(HUNTER_RIG_BIND_POINTS)) {
+    const actual = transformPoint(bind.bones[boneId], { x: 0, y: 0 });
+    assert.ok(
+      distance(actual, expected) < 1e-10,
+      `${boneId}: ${JSON.stringify(actual)} must equal ${JSON.stringify(expected)}`,
+    );
+  }
+});
+
+test("neutral equipment inherits the body while extraction starts at bind", () => {
+  const idle = solveHunterRig({
+    pose: "idle",
+    facing: 1,
+    phase: 0,
+  });
+  const extractionStart = solveHunterRig({
+    pose: "extract",
+    facing: 1,
+    phase: 0,
+    extractionProgress: 0,
+  });
+  assert.ok(
+    distance(idle.anchors.handGrip, extractionStart.anchors.handGrip) < 1e-10,
+    "extraction frame zero must not teleport the hand",
+  );
+  assert.ok(
+    distance(idle.anchors.muzzle, extractionStart.anchors.muzzle) < 1e-10,
+    "extraction frame zero must not teleport the caster",
+  );
+
+  const runningNeutral = solveHunterRig({
+    pose: "run",
+    facing: 1,
+    phase: 0.24,
+    speed: 280,
+  });
+  const torsoOrigin = transformPoint(
+    runningNeutral.bones.torso,
+    { x: 0, y: 0 },
+  );
+  const torsoAxis = transformPoint(
+    runningNeutral.bones.torso,
+    { x: 20, y: 0 },
+  );
+  const muzzleOrigin = runningNeutral.anchors.muzzle;
+  const muzzleAxis = transformPoint(
+    runningNeutral.bones.casterMuzzle,
+    { x: 20, y: 0 },
+  );
+  const torsoAngle = Math.atan2(
+    torsoAxis.y - torsoOrigin.y,
+    torsoAxis.x - torsoOrigin.x,
+  );
+  const muzzleAngle = Math.atan2(
+    muzzleAxis.y - muzzleOrigin.y,
+    muzzleAxis.x - muzzleOrigin.x,
+  );
+  assert.ok(
+    Math.abs(angleDelta(muzzleAngle, torsoAngle)) < 1e-10,
+    "an unaimed caster must stay docked to the torso instead of world-locking",
+  );
+
+  for (let step = 0; step <= 20; step += 1) {
+    const progress = step / 20;
+    const frame = solveHunterRig({
+      pose: "extract",
+      facing: 1,
+      phase: progress,
+      extractionProgress: progress,
+    });
+    assert.ok(
+      frame.anchors.trophyCarry.x <= 252,
+      `extraction ${progress}: the trophy hand must stay inside the sheet`,
+    );
+  }
+});
+
+test("the bow aim channel raises both arms to a drawable firing grip", () => {
+  const neutral = solveHunterRig({
+    pose: "idle",
+    facing: 1,
+    phase: 0,
+  });
+  const aimed = solveHunterRig({
+    pose: "idle",
+    facing: 1,
+    phase: 0,
+    handAimAngle: -0.32,
+  });
+  assert.ok(
+    distance(neutral.anchors.handGrip, aimed.anchors.handGrip) > 60,
+    "drawing the bow must visibly move the grip out of the idle pose",
+  );
+  assert.ok(
+    aimed.anchors.handGrip.x >= 210 &&
+      aimed.anchors.handGrip.x <= 230 &&
+      aimed.anchors.handGrip.y >= 100 &&
+      aimed.anchors.handGrip.y <= 150,
+    `bow grip must remain drawable inside the sheet: ${JSON.stringify(aimed.anchors.handGrip)}`,
+  );
+});
 
 test("the canonical rig remains continuous through cyclic locomotion", () => {
   const poses = ["idle", "run", "jump", "fall", "climb", "extract"];

@@ -12,7 +12,7 @@ function functionSource(source, name, nextName) {
   return source.slice(start, end);
 }
 
-test("aim, projectile and targeting share the V3 muzzle anchor", async () => {
+test("aim, targeting and projectiles use the active weapon anchor", async () => {
   const source = await readFile(huntCanvasUrl, "utf8");
   assert.match(source, /from ["']\.\/hunterRig["']/);
   assert.match(source, /function solvePlayerRigFrame\(/);
@@ -27,15 +27,27 @@ test("aim, projectile and targeting share the V3 muzzle anchor", async () => {
 
   for (const [label, block] of [
     ["aim assist", aimAssist],
-    ["projectile", weapon],
     ["targeting", targeting],
   ]) {
+    assert.match(block, /selectedHandWeapon\(loadout\)/);
     assert.match(
       block,
-      /solvePlayerRigFrame\(state, player\)\.anchors\.muzzle/,
-      `${label} must read the shared muzzle`,
+      /frame\.anchors\.handGrip/,
+      `${label} must use the hand for a held weapon`,
+    );
+    assert.match(
+      block,
+      /frame\.anchors\.muzzle/,
+      `${label} must retain the caster muzzle`,
     );
   }
+  assert.match(
+    weapon,
+    /const rigFrame = solvePlayerRigFrame\([\s\S]*?state,[\s\S]*?player,/,
+  );
+  assert.match(weapon, /weapon\.id === "plasma-caster"/);
+  assert.match(weapon, /rigFrame\.anchors\.muzzle/);
+  assert.match(weapon, /rigFrame\.anchors\.handGrip/);
 
   assert.doesNotMatch(
     weapon,
@@ -120,7 +132,10 @@ test("selected loadout and extracted trophy use registered atomic layers", async
     /"trophy-spine",\s*"trophy-skull",\s*"trophy-bindings"/,
   );
   assert.match(trophyLayers, /assets\.hunterTrophies\[trophyId\]/);
-  assert.match(trophyLayers, /frame,\s*"pelvis"/);
+  assert.match(trophyLayers, /HUNTER_TROPHY_LAYOUT\[trophyId\]/);
+  assert.match(trophyLayers, /frame\.anchors\.trophyCarry\.x/);
+  assert.match(trophyLayers, /layout\.carry\.scale/);
+  assert.doesNotMatch(trophyLayers, /carried \? "handFront"/);
   assert.match(
     extractingTrophy,
     /HUNTER_BIND_FRAME\.anchors\.trophyCarry/,
@@ -131,4 +146,31 @@ test("selected loadout and extracted trophy use registered atomic layers", async
   );
   assert.doesNotMatch(source, /assets\.trophy\b/);
   assert.doesNotMatch(source, /HUNTER_VISUALS_V2\.trophies/);
+});
+
+test("runtime keeps seven dreads and hides launched hand ammunition", async () => {
+  const source = await readFile(huntCanvasUrl, "utf8");
+  const handWeapon = functionSource(
+    source,
+    "drawHunterHandWeapon",
+    "drawHunterTrophyLayers",
+  );
+  const layeredHunter = functionSource(
+    source,
+    "drawHunterLayered",
+    "drawAimAssist",
+  );
+
+  assert.match(source, /dreadAngles: \[0, 0, 0, 0, 0, 0, 0\]/);
+  assert.match(source, /dreadVelocities: \[0, 0, 0, 0, 0, 0, 0\]/);
+  assert.match(layeredHunter, /HUNTER_DREAD_STRANDS\.forEach/);
+  assert.match(handWeapon, /weaponProjectileInFlight/);
+  assert.match(
+    handWeapon,
+    /weaponId === "smart-disc" && weaponProjectileInFlight/,
+  );
+  assert.match(
+    handWeapon,
+    /weaponId === "yautja-bow" &&\s*!weaponProjectileInFlight/,
+  );
 });

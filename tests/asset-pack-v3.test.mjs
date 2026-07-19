@@ -4,6 +4,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { HUNTER_NET_PARTS_BY_MORPH } from "../app/game/hunterVisuals.ts";
+
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -166,11 +168,17 @@ test("V3 pack exposes complete registered modular hunter assets", async () => {
     assert.ok(["belt", "pelvis"].includes(trophy.attachTo));
   }
 
-  for (const body of Object.values(manifest.hunter.bodies)) {
+  for (const [morphId, body] of Object.entries(manifest.hunter.bodies)) {
     assert.deepEqual(Object.keys(body.parts).sort(), expectedParts);
     assert.ok(body.net.full.path.endsWith("/net/full.webp"));
     assert.ok(Object.keys(body.net.parts).length >= 12);
     assert.equal(body.normalization.baseline, 366);
+    for (const runtimePartId of HUNTER_NET_PARTS_BY_MORPH[morphId]) {
+      assert.ok(
+        body.net.parts[runtimePartId],
+        `${morphId}/${runtimePartId}: runtime net part must exist in the manifest`,
+      );
+    }
   }
 
   const assets = descriptors(manifest.hunter);

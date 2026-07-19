@@ -12,6 +12,9 @@
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "qa": "npm run lint && npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "dlc:build-manifest": "node scripts/build-private-dlc-manifest.mjs",
+    "dlc:split-wave-01": "py -3 scripts/split-private-dlc-atlas.py",
+    "dlc:validate": "node scripts/validate-private-dlc.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
