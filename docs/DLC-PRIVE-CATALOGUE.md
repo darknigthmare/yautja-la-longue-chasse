@@ -101,26 +101,26 @@ public.
 | `F-017` | Temple Guard | *Alien vs. Predator* | Armure, masque et modules propres ; attribution précise à extraire de la galerie licenciée | `ÉCRAN-A`, `LIC-B` [S05] | B — partiel |
 | `F-018` | Youngblood | *Alien vs. Predator* | Double wrist blades et staff portant une tête de Xénomorphe ; ne pas le confondre avec Scar | `ÉCRAN-A`, `LIC-B` [S04] | A — capturable |
 | `F-019` | Wolf | *Aliens vs. Predator: Requiem* | Biomask abîmé, deux casters, whip, mines, dissolvant, shuriken, combistick et multiples trophées visibles à l'écran ; modèle PHG disponible en complément | `ÉCRAN-A`, `ART-A` [S06], [S34] | A — capturable |
-| `F-020` | Chasseurs du vaisseau/crash, non nommés | *AVP: Requiem* | Plusieurs silhouettes très brèves ; noms de fans interdits sans générique ou production book | `ÉCRAN-A` [S06] | B — partiel |
-| `F-021` | Classic / Captive Predator | *Predators* (2010) | Biomask classique, armure, caster, wrist blades ; « Crucified » et « battle damaged » sont des états du même individu | `ÉCRAN-A`, `LIC-B` [S20], [S21] | A — capturable |
-| `F-022` | Berserker / Mr. Black | *Predators* | Super Predator, biomask, armure, caster et états masqué/démasqué | `ÉCRAN-A`, `LIC-B` [S20], [S21] | A — capturable |
-| `F-023` | Falconer | *Predators* | Biomask, lames longues et drone-faucon ; le drone est un module indépendant | `ÉCRAN-A`, `LIC-B` [S20], [S22] | A — capturable |
-| `F-024` | Tracker | *Predators* | Biomask à défenses, armure, caster et contrôle des hounds ; les hounds ne sont pas des Yautja | `ÉCRAN-A`, `LIC-B` [S21] | A — capturable |
-| `F-025` | Fugitive Predator | *The Predator* (2018) | Biomask, armure, wrist blades, shuriken et rifle dans l'état « lab escape » licencié | `ÉCRAN-A`, `LIC-B` [S23] | A — capturable |
-| `F-026` | Assassin / Upgrade Predator | *The Predator* | Corps augmenté, absence/présence des technologies à relever scène par scène ; ne partage pas le corps standard | `ÉCRAN-A` [S07] | B — partiel |
-| `F-027` | Emissary 1 | scènes supprimées de *The Predator* | Design de production licencié, armure/rifle ; **pas** un personnage de la version cinéma | `ART-A`, `LIC-B` [S23] | B — production supprimée |
-| `F-028` | Emissary 2 | scènes supprimées de *The Predator* | Tête masquée/démasquée et rifle visibles sur le produit licencié ; **pas** un personnage de la version cinéma | `ART-A`, `LIC-B` [S23] | B — production supprimée |
-| `F-029` | Feral Predator | *Prey* (2022) | Biomask osseux, crossbolt gun, shield déployable, spear et wrist blades ; la fiche PHG confirme les trois armes principales | `ÉCRAN-A`, `ART-A`, `LIC-B` [S08], [S35] | A — capturable |
-| `F-030` | Chasseur du segment viking | *Predator: Killer of Killers* | Corps, masque et arsenal visibles dans l'animation ; ne prendre « Jotun » comme même identité que si le crédit/licencié l'établit | `ÉCRAN-A` [S09] | A — capture film requise |
-| `F-031` | Chasseur du segment Japon féodal | *Killer of Killers* | Corps, masque et arsenal visibles ; ne pas fusionner automatiquement avec le `Oni` original de PHG | `ÉCRAN-A` [S09] | A — capture film requise |
-| `F-032` | Chasseur aérien du segment Seconde Guerre mondiale | *Killer of Killers* | Chasseur et appareil visibles ; aucun nom propre officiel trouvé sur la page studio | `ÉCRAN-A` [S09] | A — capture film requise |
-| `F-033` | Warlord / maître de l'arène | *Killer of Killers* | Design visible à l'écran ; nom et inventaire doivent être verrouillés depuis le générique et les captures | `ÉCRAN-A` [S09] | B — partiel |
-| `F-034` | Chasseurs d'arène non nommés | *Killer of Killers* | Silhouettes de fond ; chaque design doit être isolé par timecode avant d'être compté | `ÉCRAN-A` [S09] | B — recensement image par image |
-| `F-035` | Dek — armure d'entraînement | *Predator: Badlands* (2025) | Faceplates, mains, combistick déployé, gauntlet blades, épées Yautja rangées/déployées et compound bow | `ÉCRAN-A`, `LIC-B` [S36], [S37] | A — capturable |
-| `F-036` | Dek — états postérieurs | *Predator: Badlands* | Corps identique, mais équipement et compagnons portés changent ; stocker comme loadouts/états, pas comme nouveaux Yautja | `ÉCRAN-A` [S36] | D — états de F-035 |
-| `F-037` | Kwei | *Predator: Badlands* | Nom et interprète confirmés par la galerie 20th Century ; vues officielles face/trois-quarts, mais dos et inventaire complets à capturer du Blu-ray | `ÉCRAN-A` [S36] | B — partiel |
-| `F-038` | Père de Dek | *Predator: Badlands* | Visible dans le film, mais le nom « Njohrr » n'est pas verrouillé par la page studio consultée ; utiliser le générique/Blu-ray comme autorité | `ÉCRAN-A` [S36] | B — identité à verrouiller |
-| `F-039` | Membres du clan de Dek, non nommés | *Predator: Badlands* | Designs de fond ; aucune promesse de nombre ou de nom avant relevé image par image | `ÉCRAN-A` [S36] | B — recensement image par image |
+| `F-020` | Bull Predator | *AVP: Requiem* | Biomask Bull argenté propre, tri-laser, plaques AVPR industrielles, caster, gantelet, wrist blades et shuriken ; ne pas réemployer le masque de Wolf | `ÉCRAN-A`, `LIC-B` [S06], [S24] | A — capturable |
+| `F-021` | Bonegrill Predator | *AVP: Requiem* | Biomask à partie supérieure sombre et grille mandibulaire de formes osseuses imbriquées, caster et armure AVPR ; ne pas transformer la grille en crâne blanc | `ÉCRAN-A`, `LIC-B` [S06], [S25] | A — capturable |
+| `F-022` | Classic / Captive Predator | *Predators* (2010) | Biomask classique, armure, caster, wrist blades ; « Crucified » et « battle damaged » sont des états du même individu | `ÉCRAN-A`, `LIC-B` [S20], [S21] | A — capturable |
+| `F-023` | Berserker / Mr. Black | *Predators* | Super Predator, biomask, armure, caster et états masqué/démasqué | `ÉCRAN-A`, `LIC-B` [S20], [S21] | A — capturable |
+| `F-024` | Falconer | *Predators* | Biomask, lames longues et drone-faucon ; le drone est un module indépendant | `ÉCRAN-A`, `LIC-B` [S20], [S22] | A — capturable |
+| `F-025` | Tracker | *Predators* | Biomask à défenses, armure, caster et contrôle des hounds ; les hounds ne sont pas des Yautja | `ÉCRAN-A`, `LIC-B` [S21] | A — capturable |
+| `F-026` | Fugitive Predator | *The Predator* (2018) | Biomask, armure, wrist blades, shuriken et rifle dans l'état « lab escape » licencié | `ÉCRAN-A`, `LIC-B` [S23] | A — capturable |
+| `F-027` | Assassin / Upgrade Predator | *The Predator* | Corps augmenté, absence/présence des technologies à relever scène par scène ; ne partage pas le corps standard | `ÉCRAN-A` [S07] | B — partiel |
+| `F-028` | Emissary 1 | scènes supprimées de *The Predator* | Design de production licencié, armure/rifle ; **pas** un personnage de la version cinéma | `ART-A`, `LIC-B` [S23] | B — production supprimée |
+| `F-029` | Emissary 2 | scènes supprimées de *The Predator* | Tête masquée/démasquée et rifle visibles sur le produit licencié ; **pas** un personnage de la version cinéma | `ART-A`, `LIC-B` [S23] | B — production supprimée |
+| `F-030` | Feral Predator | *Prey* (2022) | Biomask osseux, crossbolt gun, shield déployable, spear et wrist blades ; la fiche PHG confirme les trois armes principales | `ÉCRAN-A`, `ART-A`, `LIC-B` [S08], [S35] | A — capturable |
+| `F-031` | Chasseur du segment viking | *Predator: Killer of Killers* | Corps, masque et arsenal visibles dans l'animation ; ne prendre « Jotun » comme même identité que si le crédit/licencié l'établit | `ÉCRAN-A` [S09] | A — capturable |
+| `F-032` | Chasseur du segment Japon féodal | *Killer of Killers* | Corps, masque et arsenal visibles ; ne pas fusionner automatiquement avec le `Oni` original de PHG | `ÉCRAN-A` [S09] | A — capturable |
+| `F-033` | Predator Pilot | *Killer of Killers* | Chasseur et appareil du segment Seconde Guerre mondiale ; le nom « Predator Pilot » vient du concept artist de production | `ÉCRAN-A`, `ART-A` [S09], [S26] | A — capturable |
+| `F-034` | Warlord / maître de l'arène | *Killer of Killers* | Design visible à l'écran ; nom et inventaire doivent être verrouillés depuis le générique et les captures | `ÉCRAN-A` [S09] | B — partiel |
+| `F-035` | Captive Yautja | *Killer of Killers* | Prisonnier démasqué, peau pâle, œil droit opacifié, mandibule supérieure droite brisée, armure minimale et collier explosif ; aucun caster | `ÉCRAN-A`, `SEC-D` [S09], [S28] | A — capturable |
+| `F-036` | Arena Guard — archétype collectif | *Killer of Killers* | Un seul modèle représentatif : masque osseux symétrique à deux cornes, harnais segmenté, lourdes protections et éléments vertébraux ; le sculpt gris ne fixe pas la couleur finale | `ÉCRAN-A`, `ART-A` [S09], [S27] | A — capturable comme archétype |
+| `F-037` | Dek — armure d'entraînement | *Predator: Badlands* (2025) | Faceplates, mains, combistick déployé, gauntlet blades, épées Yautja rangées/déployées et compound bow | `ÉCRAN-A`, `LIC-B` [S36], [S37] | A — capturable |
+| `F-038` | Kwei | *Predator: Badlands* | Vues officielles face/trois-quarts et sources de personnage ; ses plaques et sa stature doivent rester distinctes de Dek | `ÉCRAN-A`, `SEC-D` [S36], [S30] | B — partiel |
+| `F-039` | Njohrr — père de Dek | *Predator: Badlands* | Ancien massif : masque à appendices, dreads blanches, armure noire et or, trophées et cape ; concept de production disponible | `ÉCRAN-A`, `ART-A`, `SEC-D` [S36], [S29], [S31] | A — capturable |
 
 ## 2. Jeux vidéo licenciés
 
@@ -328,6 +328,14 @@ image officielle.
 [S21]: https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/
 [S22]: https://store.necaonline.com/blogs/news/closer-look-predators-series-7-camo-cloaked-falconer-predator-action-figure
 [S23]: https://store.necaonline.com/blogs/toy-fair/toy-fair-2019-day-2-reveals-action-figures-from-the-predator-godzilla-more
+[S24]: https://funko.com/pop-bull-predator/90243.html
+[S25]: https://www.1999.co.jp/eng/image/10178863
+[S26]: https://jsmarantz.artstation.com/projects/L4VNgK
+[S27]: https://jsmarantz.artstation.com/projects/0lgDQG
+[S28]: https://depredador-avp.fandom.com/es/wiki/Captive_Predator_%28Killer_of_Killers%29
+[S29]: https://yautjaclan.com/lore/njohrr--yautja-clan-leader--deks-father-predator-badlands
+[S30]: https://yautjaclan.com/lore/kwei--yautja--predator-badlands-character
+[S31]: https://wetaworkshopdesignstudio.artstation.com/projects/98GeOL
 [S34]: https://forum.predator.illfonic.com/t/patch-notes-2-36/26716
 [S35]: https://forum.predator.illfonic.com/t/patch-notes-3-0-0/33939
 [S36]: https://www.20thcenturystudios.com/movies/predator-badlands

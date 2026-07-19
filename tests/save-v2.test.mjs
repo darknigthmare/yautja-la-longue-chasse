@@ -6,12 +6,22 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { build } from "vite";
 
+import {
+  HUNTER_PRESETS,
+  appearanceForPreset,
+} from "../app/game/hunterLore.ts";
+
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(join(tmpdir(), "yautja-save-v2-"));
+
+after(async () => {
+  await rm(outputDirectory, { force: true, recursive: true });
+});
 
 await build({
   configFile: false,
   logLevel: "silent",
+  publicDir: false,
   build: {
     emptyOutDir: true,
     outDir: outputDirectory,
@@ -24,10 +34,6 @@ await build({
 
 const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
   await import(pathToFileURL(join(outputDirectory, "save.mjs")).href);
-
-after(async () => {
-  await rm(outputDirectory, { force: true, recursive: true });
-});
 
 test("v1 saves migrate to v3 without losing legacy trophy data", () => {
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
@@ -104,6 +110,19 @@ test("appearance normalization accepts an unmasked hunter and repairs invalid id
     armorTintId: "bronze",
     trophyAdornmentId: "skull-spine",
   });
+});
+
+test("every production hunter preset survives save normalization", () => {
+  for (const preset of HUNTER_PRESETS) {
+    const source = defaultSave("2026-01-01T00:00:00.000Z");
+    source.appearance = appearanceForPreset(preset.id);
+
+    assert.deepEqual(
+      normalizeSave(source).appearance,
+      appearanceForPreset(preset.id),
+      `${preset.id}: save normalization must preserve the selected plate`,
+    );
+  }
 });
 
 test("Scout loadouts use upgraded capacity and never fall back to Hunter", () => {

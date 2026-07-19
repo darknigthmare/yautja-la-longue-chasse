@@ -93,14 +93,16 @@ Tous les éléments du chasseur partagent maintenant un canevas runtime
 - une origine `muzzle` unique pour le canon, le laser, le réticule et le
   projectile.
 
-Le catalogue propose 36 configurations documentées issues des films,
-crossovers, jeux, comics et romans. Une fiche indique sa continuité, ses
-sources et les approximations éventuelles. Les chasseurs sans design visuel
-officiel, comme une apparition uniquement décrite en prose, restent
-explicitement marqués comme interprétations.
+Le catalogue propose 53 configurations documentées : 39 plaques cinéma ou
+animation regroupées film par film, puis 14 entrées séparées pour les jeux,
+comics et romans. Chaque chasseur cinéma possède une plaque OpenAI corps entier,
+un prompt individuel et au moins deux références quand elles sont disponibles.
+Une fiche indique sa continuité, ses sources et les approximations éventuelles.
 
 L’[audit complet de modularité](docs/AUDIT-MODULARITE-V3.md) décrit les défauts
 de la V2, le contrat géométrique V3 et les références utilisées.
+La [mise à jour des plaques cinéma V5](docs/MISE-A-JOUR-V5-PLAQUES-CINEMA.md)
+documente le nouveau pipeline et l’archive chronologique.
 
 ## Contenu jouable
 
@@ -121,6 +123,11 @@ de la V2, le contrat géométrique V3 et les références utilisées.
 npm.cmd run lint
 npm.cmd run build
 npm.cmd run qa
+npm.cmd run film-plates:references
+npm.cmd run film-plates:normalize
+npm.cmd run film-plates:build
+npm.cmd run film-plates:audit
+npm.cmd run film-plates:contact-sheets
 ```
 
 La vérification V4 exécute le lint, le build de production et l’ensemble des
@@ -137,6 +144,10 @@ runtime et prompts finaux sont conservés prompt par prompt dans
 [`art-source/v4`](art-source/v4/README.md), avec un journal séparé pour les
 [`ennemis V4`](art-source/v4/enemies/README.md). Le jeu ne contient pas de
 textures, captures ou sprites officiels extraits des films ou des jeux.
+
+Les 39 plaques cinéma V5, leurs références, leurs prompts individuels et leur
+manifeste sont documentés dans
+[`art-source/v5/film-plates`](art-source/v5/film-plates/README.md).
 
 *Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet privé de
 fan, non commercial, n’est ni officiel, ni affilié à 20th Century Studios ou

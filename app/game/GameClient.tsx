@@ -7,11 +7,15 @@ import HunterRigPreview from "./HunterRigPreview";
 import HuntCanvas from "./HuntCanvas";
 import ShipHub from "./ShipHub";
 import {
+  HUNTER_EXPANDED_PRESETS,
+  HUNTER_FILM_GROUPS,
   HUNTER_PRESET_BY_ID,
   HUNTER_PRESETS,
   appearanceForPreset,
+  hunterFilmPlatePath,
   type HunterLorePresetId,
   type HunterMedia,
+  type HunterPresetDefinition,
 } from "./hunterLore";
 import {
   HUNTER_ASSET_ROOT_V3,
@@ -1298,53 +1302,73 @@ export default function GameClient() {
 
               <div className="customization-sections">
                 <CustomizationSection
-                  title="Archives transmédia"
-                  detail={`${HUNTER_PRESETS.length} chasseurs · films, crossovers, jeux, comics et roman`}
+                  title="Archives cinéma"
+                  detail={`${HUNTER_FILM_GROUPS.reduce((count, group) => count + group.presets.length, 0)} plaques · ${HUNTER_FILM_GROUPS.length} dossiers film par film`}
                 >
-                  {HUNTER_PRESETS.map((preset) => {
-                    const selected = save.appearance.presetId === preset.id;
-                    const previewImage = preset.biomaskId
-                      ? `${HUNTER_ASSET_ROOT_V3}/masks/${preset.biomaskId}.webp`
-                      : hunterBodyFullPath(preset.bodyMorphId);
-                    const continuity =
-                      preset.continuity === "canon"
-                        ? "CANON FILM"
-                        : preset.continuity === "crossover"
-                          ? "CROSSOVER"
-                          : "UNIVERS ÉTENDU";
-                    return (
-                      <button
-                        type="button"
-                        className={`hunter-preset-card${selected ? " selected" : ""}`}
-                        aria-pressed={selected}
-                        key={preset.id}
-                        onClick={() => selectHunterPreset(preset.id)}
-                        title={preset.fidelityNote}
-                      >
-                        <span className="hunter-preset-art" aria-hidden="true">
-                          <img src={previewImage} alt="" />
-                        </span>
-                        <span className="hunter-preset-copy">
-                          <small>
-                            {PRESET_MEDIA_LABEL[preset.media]} · {preset.year}
-                          </small>
-                          <strong>{preset.name}</strong>
-                          <em>{preset.work}</em>
-                        </span>
-                        <span className="hunter-preset-continuity">
-                          {"textInterpretation" in preset &&
-                          preset.textInterpretation
-                            ? "INTERPRÉTATION TEXTE"
-                            : continuity}
-                        </span>
-                      </button>
-                    );
-                  })}
+                  {HUNTER_FILM_GROUPS.map((group) => (
+                    <section className="hunter-film-group" key={group.work}>
+                      <header>
+                        <div>
+                          <small>Archive {group.year}</small>
+                          <h3>{group.work}</h3>
+                        </div>
+                        <span>{group.presets.length} plaques</span>
+                      </header>
+                      <div className="hunter-film-grid">
+                        {group.presets.map((preset) => (
+                          <HunterPresetCard
+                            key={preset.id}
+                            preset={preset}
+                            selected={save.appearance.presetId === preset.id}
+                            onSelect={selectHunterPreset}
+                          />
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                  <section className="hunter-film-group hunter-expanded-group">
+                    <header>
+                      <div>
+                        <small>Continuités séparées</small>
+                        <h3>Jeux, comics et romans</h3>
+                      </div>
+                      <span>{HUNTER_EXPANDED_PRESETS.length} chasseurs</span>
+                    </header>
+                    <div className="hunter-film-grid">
+                      {HUNTER_EXPANDED_PRESETS.map((preset) => (
+                        <HunterPresetCard
+                          key={preset.id}
+                          preset={preset}
+                          selected={save.appearance.presetId === preset.id}
+                          onSelect={selectHunterPreset}
+                        />
+                      ))}
+                    </div>
+                  </section>
                   {activeHunterPreset && (
                     <article
-                      className="hunter-preset-dossier"
+                      className={`hunter-preset-dossier${hunterFilmPlatePath(activeHunterPreset) ? " has-plate" : ""}`}
                       aria-live="polite"
                     >
+                      {hunterFilmPlatePath(activeHunterPreset) && (
+                        <figure className="hunter-preset-dossier-art">
+                          <img
+                            alt={`Plaque complète de ${activeHunterPreset.name}`}
+                            src={hunterFilmPlatePath(activeHunterPreset) ?? ""}
+                            loading="lazy"
+                            onError={(event) => {
+                              event.currentTarget.onerror = null;
+                              event.currentTarget.src =
+                                activeHunterPreset.biomaskId !== null
+                                  ? `${HUNTER_ASSET_ROOT_V3}/masks/${activeHunterPreset.biomaskId}.webp`
+                                  : hunterBodyFullPath(
+                                      activeHunterPreset.bodyMorphId,
+                                    );
+                            }}
+                          />
+                          <figcaption>Plaque OpenAI · corps entier</figcaption>
+                        </figure>
+                      )}
                       <div>
                         <small>Dossier sélectionné</small>
                         <h3>{activeHunterPreset.name}</h3>
@@ -2044,6 +2068,67 @@ function EquipmentCard({
         </button>
       </div>
     </article>
+  );
+}
+
+function HunterPresetCard({
+  preset,
+  selected,
+  onSelect,
+}: {
+  preset: HunterPresetDefinition;
+  selected: boolean;
+  onSelect: (presetId: HunterLorePresetId) => void;
+}) {
+  const fallbackImage = preset.biomaskId
+    ? `${HUNTER_ASSET_ROOT_V3}/masks/${preset.biomaskId}.webp`
+    : hunterBodyFullPath(preset.bodyMorphId);
+  const plateImage = hunterFilmPlatePath(preset);
+  const continuity =
+    preset.isArchetype
+      ? "ARCHÉTYPE FILM"
+      : preset.work.includes("scènes supprimées")
+      ? "SCÈNE SUPPRIMÉE"
+      : preset.continuity === "canon"
+        ? "CANON FILM"
+        : preset.continuity === "crossover"
+          ? "CROSSOVER"
+          : "UNIVERS ÉTENDU";
+
+  return (
+    <button
+      type="button"
+      className={`hunter-preset-card${selected ? " selected" : ""}${plateImage ? " has-film-plate" : ""}`}
+      aria-pressed={selected}
+      onClick={() => onSelect(preset.id)}
+      title={preset.fidelityNote}
+    >
+      <span className="hunter-preset-art">
+        <img
+          src={plateImage ?? fallbackImage}
+          alt={
+            plateImage
+              ? `${preset.name}, silhouette complète fidèle à ${preset.work}`
+              : `Aperçu modulaire de ${preset.name}`
+          }
+          loading="lazy"
+          onError={(event) => {
+            if (event.currentTarget.src.endsWith(fallbackImage)) return;
+            event.currentTarget.src = fallbackImage;
+          }}
+        />
+      </span>
+      <span className="hunter-preset-copy">
+        <small>
+          {PRESET_MEDIA_LABEL[preset.media]} · {preset.year}
+        </small>
+        <strong>{preset.name}</strong>
+        <em>{preset.work}</em>
+      </span>
+      <span className="hunter-preset-continuity">
+        {preset.textInterpretation ? "INTERPRÉTATION TEXTE" : continuity}
+      </span>
+    </button>
   );
 }
 

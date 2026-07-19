@@ -55,6 +55,12 @@ export interface HunterPresetDefinition {
   readonly fidelityNote: string;
   readonly sourceUrls: readonly string[];
   /**
+   * True when a plate documents a recurring screen design rather than one
+   * uniquely named individual. The archive keeps one representative plate
+   * instead of inflating the roster with visually identical guards.
+   */
+  readonly isArchetype?: true;
+  /**
    * True when prose supplies the character but no fixed screen or comic
    * design exists. The resulting appearance is an explicitly labelled visual
    * interpretation, not a claim of canonical colours or mask geometry.
@@ -149,6 +155,38 @@ export const HUNTER_PRESETS = [
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+    ],
+  },
+  {
+    id: "boar",
+    name: "Boar Predator",
+    work: "Predator 2",
+    year: 1990,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "dark-mottle",
+    biomaskId: "city",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "city",
+    armorTintId: "bronze",
+    trophyAdornmentId: "skull-spine",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: [
+      "wristblades",
+      "combistick",
+      "smart-disc",
+      "plasma-caster",
+    ],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le Lost Hunter au biomask frontal massif, au collier de trophées et à l’armure de poursuite vue dans le vaisseau de 1990.",
+    fidelityNote:
+      "Sa plaque de sélection V5 suit les vues film et la galerie licenciée ; le rig jouable conserve encore le masque city le plus proche.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-2",
+      "https://necaonline.com/2022/05/predator-2-7-scale-action-figure-ultimate-boar-predator/",
     ],
   },
   {
@@ -260,6 +298,87 @@ export const HUNTER_PRESETS = [
     ],
   },
   {
+    id: "guardian",
+    name: "Guardian Predator",
+    work: "Predator 2",
+    year: 1990,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "ashen-mottle",
+    biomaskId: "enforcer",
+    dreadStyleId: "veteran",
+    dreadTintId: "obsidian",
+    armorStyleId: "city",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
+    signatureGearIds: ["motion-sensor"],
+    description:
+      "Le gardien du Lost Tribe, reconnaissable à son grand biomask strié, sa cuirasse sombre et sa silhouette de sentinelle.",
+    fidelityNote:
+      "La plaque V5 est propre au personnage ; le biomask enforcer reste une approximation fonctionnelle dans le rig modulaire.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-2",
+      "https://necaonline.com/2012/11/14-scale-predators-series-2-action-figures-guardian-unmasked-city-hunter/",
+    ],
+  },
+  {
+    id: "lost-scout",
+    name: "Scout Predator",
+    work: "Predator 2",
+    year: 1990,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "ashen-mottle",
+    biomaskId: "city",
+    dreadStyleId: "classic",
+    dreadTintId: "obsidian",
+    armorStyleId: "city",
+    armorTintId: "bronze",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "scout",
+    signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
+    signatureGearIds: ["motion-sensor", "netgun"],
+    description:
+      "L’éclaireur du Lost Tribe, plus léger, aux plaques réduites et au casque compact adapté à la reconnaissance.",
+    fidelityNote:
+      "Sa plaque V5 verrouille sa silhouette film ; le catalogue d’armes ne lui attribue aucun accessoire non attesté.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-2",
+      "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+    ],
+  },
+  {
+    id: "lost-stalker",
+    name: "Stalker Predator",
+    work: "Predator 2",
+    year: 1990,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "dark-mottle",
+    biomaskId: "city",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "city",
+    armorTintId: "obsidian",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "scout",
+    signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le Stalker de la Lost Tribe cinématographique, distinct du design Kenner homonyme, avec armure sombre et profil furtif.",
+    fidelityNote:
+      "Le nom est limité au membre du clan de 1990 ; la plaque V5 ne reprend aucun élément du Stalker Kenner.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-2",
+      "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+    ],
+  },
+  {
     id: "scar",
     name: "Scar",
     work: "Alien vs. Predator",
@@ -368,6 +487,87 @@ export const HUNTER_PRESETS = [
     ],
   },
   {
+    id: "ancient-warrior",
+    name: "Ancient Warrior",
+    work: "Alien vs. Predator",
+    year: 2004,
+    media: "film",
+    continuity: "crossover",
+    bodyMorphId: "young",
+    skinId: "ashen-mottle",
+    biomaskId: "scar",
+    dreadStyleId: "braided",
+    dreadTintId: "obsidian",
+    armorStyleId: "avp",
+    armorTintId: "bronze",
+    trophyAdornmentId: "skull-spine",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "combistick", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "netgun"],
+    description:
+      "Un ancien combattant de la pyramide, couvert d’une armure cérémonielle AVP, de trophées et de gantelets propres à sa caste.",
+    fidelityNote:
+      "La plaque V5 se fonde sur les plans du film et la galerie licenciée ; elle ne réutilise pas la silhouette de Scar.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+      "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/",
+    ],
+  },
+  {
+    id: "temple-guard",
+    name: "Temple Guard",
+    work: "Alien vs. Predator",
+    year: 2004,
+    media: "film",
+    continuity: "crossover",
+    bodyMorphId: "young",
+    skinId: "dark-mottle",
+    biomaskId: "celtic",
+    dreadStyleId: "temple",
+    dreadTintId: "obsidian",
+    armorStyleId: "avp",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "berserker",
+    signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le garde lourd associé au temple, doté d’un masque, d’un plastron et de plaques cérémonielles distincts des trois Young Bloods.",
+    fidelityNote:
+      "Le biomask celtic n’est utilisé que par le rig générique ; sa plaque V5 conserve sa géométrie de garde propre.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+      "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/",
+    ],
+  },
+  {
+    id: "youngblood",
+    name: "Youngblood Predator",
+    work: "Alien vs. Predator",
+    year: 2004,
+    media: "film",
+    continuity: "crossover",
+    bodyMorphId: "young",
+    skinId: "ochre-mottle",
+    biomaskId: "scar",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "avp",
+    armorTintId: "bronze",
+    trophyAdornmentId: "skull-spine",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
+    signatureGearIds: ["netgun", "motion-sensor"],
+    description:
+      "Le Youngblood cérémoniel à doubles lames et staff-trophée, conservé comme individu distinct de Scar, Celtic et Chopper.",
+    fidelityNote:
+      "La tête de Xénomorphe portée par son staff reste un trophée de plaque et non un nouveau type d’arme jouable.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+      "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+    ],
+  },
+  {
     id: "wolf",
     name: "Wolf",
     work: "Aliens vs. Predator: Requiem",
@@ -392,6 +592,89 @@ export const HUNTER_PRESETS = [
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
       "https://www.avpgalaxy.net/predator/wolf/",
+    ],
+  },
+  {
+    id: "bull",
+    name: "Bull Predator",
+    work: "Aliens vs. Predator: Requiem",
+    year: 2007,
+    media: "film",
+    continuity: "crossover",
+    bodyMorphId: "classic",
+    skinId: "dark-mottle",
+    biomaskId: "wolf",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "avp",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "plasma-caster", "smart-disc"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le Blooded robuste du Scout Ship, identifiable à son biomask argenté Bull et à ses plaques industrielles intactes avant le crash.",
+    fidelityNote:
+      "Le masque wolf n’est qu’une approximation articulée du rig ; la plaque V5 conserve le biomask Bull propre, ses fentes noires, son caster et son shuriken attestés.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+      "https://funko.com/pop-bull-predator/90243.html",
+      "https://www.avpcentral.com/bull-predator",
+    ],
+  },
+  {
+    id: "bonegrill",
+    name: "Bonegrill Predator",
+    work: "Aliens vs. Predator: Requiem",
+    year: 2007,
+    media: "film",
+    continuity: "crossover",
+    bodyMorphId: "classic",
+    skinId: "dark-mottle",
+    biomaskId: "wolf",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "avp",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le Yautja de la salle des trophées du Scout Ship, reconnaissable à la grille mandibulaire osseuse imbriquée de son biomask.",
+    fidelityNote:
+      "Le rig emploie provisoirement le volume wolf ; seule la plaque V5 reproduit la grille Bone Grill sans la transformer en crâne blanc générique.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+      "https://www.1999.co.jp/eng/image/10178863",
+      "https://www.avpcentral.com/bonegrill-predator",
+    ],
+  },
+  {
+    id: "classic-captive",
+    name: "Classic / Captive Predator",
+    work: "Predators",
+    year: 2010,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "ochre-mottle",
+    biomaskId: "jungle",
+    dreadStyleId: "classic",
+    dreadTintId: "obsidian",
+    armorStyleId: "classic",
+    armorTintId: "bronze",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le Yautja classique retenu et crucifié sur la réserve de chasse, avec biomask ancien, armure endommagée et silhouette distincte des Super Predators.",
+    fidelityNote:
+      "Captive, Crucified et battle-damaged sont des états du même individu ; la plaque V5 les regroupe sans créer trois chasseurs.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predators",
+      "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/",
     ],
   },
   {
@@ -530,6 +813,60 @@ export const HUNTER_PRESETS = [
     ],
   },
   {
+    id: "emissary-one",
+    name: "Emissary Predator 1",
+    work: "The Predator — scènes supprimées",
+    year: 2018,
+    media: "film",
+    continuity: "expanded",
+    bodyMorphId: "classic",
+    skinId: "ashen-mottle",
+    biomaskId: "fugitive",
+    dreadStyleId: "veteran",
+    dreadTintId: "obsidian",
+    armorStyleId: "classic",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "audio-decoy"],
+    description:
+      "Premier Emissary du matériel de production supprimé de 2018, équipé d’une armure militaire et d’un fusil conçu pour les séquences abandonnées.",
+    fidelityNote:
+      "Cette plaque est étiquetée scène supprimée et ne prétend pas que l’Emissary apparaît dans le montage cinéma.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/the-predator",
+      "https://store.necaonline.com/blogs/toy-fair/toy-fair-2019-day-2-reveals-action-figures-from-the-predator-godzilla-more",
+    ],
+  },
+  {
+    id: "emissary-two",
+    name: "Emissary Predator 2",
+    work: "The Predator — scènes supprimées",
+    year: 2018,
+    media: "film",
+    continuity: "expanded",
+    bodyMorphId: "classic",
+    skinId: "ochre-mottle",
+    biomaskId: "fugitive",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "classic",
+    armorTintId: "bronze",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "netgun"],
+    description:
+      "Second Emissary du tournage de 2018, variante individuelle masquée et démasquée du duo allié retiré du montage final.",
+    fidelityNote:
+      "La plaque conserve son équipement de production licencié sans le mélanger au Fugitive ni au montage distribué.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/the-predator",
+      "https://store.necaonline.com/blogs/toy-fair/toy-fair-2019-day-2-reveals-action-figures-from-the-predator-godzilla-more",
+    ],
+  },
+  {
     id: "feral-hunter",
     name: "Feral Predator",
     work: "Prey",
@@ -558,7 +895,7 @@ export const HUNTER_PRESETS = [
   },
   {
     id: "kok-jotun",
-    name: "Jötunn Predator",
+    name: "Viking Segment Hunter",
     work: "Predator: Killer of Killers",
     year: 2025,
     media: "animated-film",
@@ -577,15 +914,15 @@ export const HUNTER_PRESETS = [
     description:
       "Le colosse envoyé dans la Scandinavie viking, bâti comme un bélier et armé pour briser un groupe au contact.",
     fidelityNote:
-      "Son masque et son gantelet de choc sont uniques au film ; les pièces feral et le combistick en conservent la masse générale.",
+      "La plaque suit le chasseur visible dans le segment viking ; le nom Jötunn d’un design licencié distinct n’est pas gravé comme identité film.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
-      "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+      "https://www.hulu.com/movie/predator-killer-of-killers-5d9e2aa0-286f-4029-89de-114baa89036d",
     ],
   },
   {
     id: "kok-oni",
-    name: "Oni Predator",
+    name: "Feudal Japan Hunter",
     work: "Predator: Killer of Killers",
     year: 2025,
     media: "animated-film",
@@ -604,10 +941,37 @@ export const HUNTER_PRESETS = [
     description:
       "Le chasseur du Japon féodal, silhouette agile inspirée de l'oni et spécialisée dans le duel rapproché.",
     fidelityNote:
-      "Le masque chopper évoque sa mâchoire exposée ; sa chaîne-lame devra devenir une arme propre lors d'une extension d'arsenal.",
+      "La plaque suit uniquement l’adversaire du segment japonais et ne le fusionne pas automatiquement avec le cosmétique Oni de Hunting Grounds.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
-      "https://forum.predator.illfonic.com/t/oni-predator-is-here/36985",
+      "https://www.hulu.com/movie/predator-killer-of-killers-5d9e2aa0-286f-4029-89de-114baa89036d",
+    ],
+  },
+  {
+    id: "kok-pilot",
+    name: "Predator Pilot",
+    work: "Predator: Killer of Killers",
+    year: 2025,
+    media: "animated-film",
+    continuity: "canon",
+    bodyMorphId: "feral",
+    skinId: "ashen-mottle",
+    biomaskId: "feral",
+    dreadStyleId: "temple",
+    dreadTintId: "obsidian",
+    armorStyleId: "feral",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "scout",
+    signatureWeaponIds: ["wristblades", "plasma-caster", "smart-disc"],
+    signatureGearIds: ["motion-sensor", "audio-decoy"],
+    description:
+      "Le chasseur aérien du segment Seconde Guerre mondiale, conçu autour de la poursuite en vol et d’une silhouette aérodynamique propre.",
+    fidelityNote:
+      "La plaque V5 reprend uniquement l’équipement visible dans le segment aérien ; aucun module du Jötunn ou de l’Oni n’est ajouté.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "https://jsmarantz.artstation.com/projects/L4VNgK",
     ],
   },
   {
@@ -634,8 +998,64 @@ export const HUNTER_PRESETS = [
       "Le masque elder est la silhouette la plus proche du casque royal animé, sans prétendre en reproduire chaque gravure.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
-      "https://www.avpcentral.com/warlord-predator-grendel-king-profile",
+      "https://www.hulu.com/movie/predator-killer-of-killers-5d9e2aa0-286f-4029-89de-114baa89036d",
     ],
+  },
+  {
+    id: "kok-captive",
+    name: "Captive Yautja — individu sans nom officiel",
+    work: "Predator: Killer of Killers",
+    year: 2025,
+    media: "animated-film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "ashen-mottle",
+    biomaskId: null,
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "classic",
+    armorTintId: "gunmetal",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "scout",
+    signatureWeaponIds: ["wristblades"],
+    signatureGearIds: ["motion-sensor"],
+    description:
+      "Le prisonnier pâle et démasqué de l’arène, blessé à l’œil droit et à la mandibule, dépouillé de son arsenal et maintenu par un collier explosif.",
+    fidelityNote:
+      "La recommandation jouable permet de rééquiper le prisonnier après sélection ; sa plaque d’archive reste strictement sans masque, caster ni panoplie héroïque.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "https://depredador-avp.fandom.com/es/wiki/Captive_Predator_%28Killer_of_Killers%29",
+    ],
+  },
+  {
+    id: "kok-arena-guard",
+    name: "Arena Guard — archétype collectif",
+    work: "Predator: Killer of Killers",
+    year: 2025,
+    media: "animated-film",
+    continuity: "canon",
+    bodyMorphId: "super",
+    skinId: "dark-mottle",
+    biomaskId: "feral",
+    dreadStyleId: "ringed",
+    dreadTintId: "obsidian",
+    armorStyleId: "feral",
+    armorTintId: "bronze",
+    trophyAdornmentId: "skull-spine",
+    recommendedArmorId: "berserker",
+    signatureWeaponIds: ["wristblades", "combistick"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le modèle collectif des gardes massifs du clan du désert : masque osseux symétrique à deux cornes latérales, harnais segmenté et lourdes protections.",
+    fidelityNote:
+      "Une seule plaque représente ce design récurrent d’écran ; elle suit le turnaround de production et ne lui attribue ni l’équipement du Warlord ni celui du Pilot.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "https://jsmarantz.artstation.com/projects/0lgDQG",
+      "https://predator-movies.com/gallery/view/img/8782",
+    ],
+    isArchetype: true,
   },
   {
     id: "dek",
@@ -667,6 +1087,60 @@ export const HUNTER_PRESETS = [
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-badlands",
       "https://www.avpgalaxy.net/predator/dek/",
+    ],
+  },
+  {
+    id: "kwei",
+    name: "Kwei",
+    work: "Predator: Badlands",
+    year: 2025,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "classic",
+    skinId: "dark-mottle",
+    biomaskId: "dek",
+    dreadStyleId: "temple",
+    dreadTintId: "obsidian",
+    armorStyleId: "feral",
+    armorTintId: "bronze",
+    trophyAdornmentId: "none",
+    recommendedArmorId: "hunter",
+    signatureWeaponIds: ["wristblades", "combistick", "yautja-bow"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le frère de Dek, chasseur plus accompli du clan, reconnaissable à sa stature, ses plaques et son équipement d’entraînement distincts.",
+    fidelityNote:
+      "La plaque V5 suit ses scènes et ne transforme pas Kwei en simple recoloration de Dek.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "https://yautjaclan.com/lore/kwei--yautja--predator-badlands-character",
+    ],
+  },
+  {
+    id: "dek-father",
+    name: "Njohrr — père de Dek",
+    work: "Predator: Badlands",
+    year: 2025,
+    media: "film",
+    continuity: "canon",
+    bodyMorphId: "elder",
+    skinId: "dark-mottle",
+    biomaskId: "elder",
+    dreadStyleId: "elder",
+    dreadTintId: "ashen",
+    armorStyleId: "super",
+    armorTintId: "obsidian",
+    trophyAdornmentId: "skull-spine",
+    recommendedArmorId: "berserker",
+    signatureWeaponIds: ["wristblades", "combistick", "plasma-caster"],
+    signatureGearIds: ["motion-sensor", "snare"],
+    description:
+      "Le patriarche du clan de Dek, ancien massif aux plaques cérémonielles sombres et à l’autorité martiale immédiatement lisible.",
+    fidelityNote:
+      "La plaque suit son masque à appendices, ses dreads blanches et son armure noire et or visibles dans Badlands ; le rig elder n’en est que la base articulée.",
+    sourceUrls: [
+      "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "https://yautjaclan.com/lore/njohrr--yautja-clan-leader--deks-father-predator-badlands",
     ],
   },
   {
@@ -1050,6 +1524,39 @@ export const HUNTER_PRESETS = [
     textInterpretation: true,
   },
 ] as const satisfies readonly HunterPresetDefinition[];
+
+export const HUNTER_FILM_PLATE_ROOT = "/game/sprites/v5/film-plates";
+
+export const HUNTER_FILM_PRESETS = HUNTER_PRESETS.filter(
+  (preset) => preset.media === "film" || preset.media === "animated-film",
+);
+
+export const HUNTER_EXPANDED_PRESETS = HUNTER_PRESETS.filter(
+  (preset) => preset.media !== "film" && preset.media !== "animated-film",
+);
+
+export const HUNTER_FILM_GROUPS = Object.freeze(
+  Array.from(
+    HUNTER_FILM_PRESETS.reduce((groups, preset) => {
+      const group = groups.get(preset.work) ?? [];
+      group.push(preset);
+      groups.set(preset.work, group);
+      return groups;
+    }, new Map<string, (typeof HUNTER_FILM_PRESETS)[number][]>()),
+    ([work, presets]) => ({
+      work,
+      year: Math.min(...presets.map((preset) => preset.year)),
+      presets: Object.freeze(presets),
+    }),
+  ),
+);
+
+export function hunterFilmPlatePath(
+  preset: Pick<HunterPresetDefinition, "id" | "media">,
+): string | null {
+  if (preset.media !== "film" && preset.media !== "animated-film") return null;
+  return `${HUNTER_FILM_PLATE_ROOT}/${preset.id}.png`;
+}
 
 export const HUNTER_PRESET_BY_ID = Object.freeze(
   Object.fromEntries(HUNTER_PRESETS.map((preset) => [preset.id, preset])),

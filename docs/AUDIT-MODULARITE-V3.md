@@ -113,15 +113,20 @@ projectile.
 
 ## Bibliothèque de chasseurs
 
-La V3 couvre 36 configurations visuellement distinctes. Les variations qui
-partagent une morphologie deviennent des overlays de masque, plaques, trophées
+La V3 a livré une base de 36 configurations visuellement distinctes. La V5
+étend désormais le catalogue à 53 configurations, dont 39 plaques cinéma
+regroupées film par film et dotées de plaques corps entier dédiées. Les variations
+qui partagent une morphologie restent des overlays de masque, plaques, trophées
 ou armes ; elles ne dupliquent pas le squelette.
 
 ### Films et crossovers
 
-Jungle Hunter, City Hunter, Greyback, Shaman, Lost/Borg, Snake, Warrior, Scar,
-Celtic, Chopper, Antarctica Elder, Wolf, Berserker, Falconer, Tracker,
-Fugitive, Assassin/Upgrade, Feral, Jotun, Oni, Warlord et Dek.
+Jungle Hunter, City Hunter, Greyback, les huit autres membres identifiables de
+la Lost Tribe, Scar, Celtic, Chopper, Antarctica Elder, Ancient Warrior, Temple
+Guard, Youngblood, Wolf, Bull, Bonegrill, Classic/Captive, Berserker, Falconer,
+Tracker, Fugitive, Assassin/Upgrade, les deux Emissaries, Feral, les trois
+adversaires historiques, Predator Pilot, Warlord, Captive Yautja, l’archétype
+Arena Guard, Dek, Kwei et Njohrr.
 
 ### Jeux vidéo
 
@@ -204,8 +209,9 @@ de film sont signalées comme extensions, jamais comme observations à l’écra
   praticable ;
 - la sauvegarde V2 migre automatiquement vers le schéma V3.
 
-Les 36 chasseurs sont des configurations documentées obtenues par combinaison
-des modules V3. Il ne s’agit pas de 36 scans ou costumes officiels copiés :
-les textures sont des créations originales pour ce projet de fan, et les
-apparences dépourvues de référence visuelle canonique restent identifiées
-comme interprétations.
+Les 53 entrées actuelles sont des configurations documentées obtenues par
+combinaison des modules V3 et, pour le cinéma, complétées par 39 plaques V5
+individuelles. Il ne s’agit pas de scans ou costumes officiels copiés : les
+textures sont des créations originales pour ce projet de fan, et les apparences
+dépourvues de référence visuelle canonique restent identifiées comme
+interprétations.
