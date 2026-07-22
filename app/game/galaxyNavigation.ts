@@ -1,4 +1,11 @@
 import { MISSIONS } from "./data";
+import {
+  GALAXY_SYSTEM_REGISTRY,
+  type GalaxyBodyRegistryEntry,
+  type GalaxyBodyStatus,
+  type GalaxyBodyType,
+  type GalaxySystemRegistryEntry,
+} from "./galaxyRegistry";
 import type {
   BiomeId,
   MissionDefinition,
@@ -17,6 +24,21 @@ export const GALAXY_BIOME_LABELS = Object.freeze({
   ruins: "Mégalopole en ruines",
 } satisfies Readonly<Record<BiomeId, string>>);
 
+export const GALAXY_BODY_KIND_LABELS = Object.freeze({
+  planet: "Planète",
+  moon: "Lune",
+  "gas-giant": "Géante gazeuse",
+  station: "Station",
+  "asteroid-belt": "Ceinture",
+  anomaly: "Anomalie",
+} satisfies Readonly<Record<GalaxyBodyType, string>>);
+
+export const GALAXY_BODY_STATUS_LABELS = Object.freeze({
+  active: "Chasse active",
+  surveyed: "Monde prospecté",
+  charted: "Corps cartographié",
+} satisfies Readonly<Record<GalaxyBodyStatus, string>>);
+
 /**
  * Read-only navigation data used by the bridge map.  The tree is deliberately
  * derived from MISSIONS so adding another hunt to data.ts automatically adds
@@ -33,21 +55,38 @@ export interface GalaxyMissionNode {
   palette: MissionPalette;
 }
 
-export interface GalaxyPlanetNode {
+export interface GalaxyBodyNode {
   id: string;
   name: string;
+  bodyKind: GalaxyBodyType;
+  status: GalaxyBodyStatus;
   biome: BiomeId;
+  environment: string;
+  summary: string;
+  population: string;
+  signal: string;
+  hazard: string;
   /** Position inside the selected system, expressed as a percentage. */
   position: Readonly<{ x: number; y: number }>;
+  accent: string;
   missions: readonly GalaxyMissionNode[];
 }
+
+/** Legacy name kept so callers do not need a flag-day migration. */
+export type GalaxyPlanetNode = GalaxyBodyNode;
 
 export interface GalaxySystemNode {
   id: string;
   name: string;
+  starName: string;
+  starClass: string;
+  description: string;
   /** Position on the galactic chart, expressed as a percentage. */
   position: Readonly<{ x: number; y: number }>;
   accent: string;
+  /** Every mapped object, including moons, stations and anomalies. */
+  bodies: readonly GalaxyBodyNode[];
+  /** Planet-only compatibility view used by campaign summaries. */
   planets: readonly GalaxyPlanetNode[];
 }
 
@@ -55,6 +94,10 @@ export interface GalaxyNavigationTree {
   id: "long-hunt-galaxy";
   name: string;
   description: string;
+  systemCount: number;
+  bodyCount: number;
+  planetCount: number;
+  huntWorldCount: number;
   missionCount: number;
   systems: readonly GalaxySystemNode[];
 }
@@ -96,154 +139,111 @@ export interface GalaxyNavigationSelection {
   mission: GalaxyMissionNode | null;
 }
 
-function slug(value: string): string {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function deriveSystemRoot(planetName: string): string {
-  const segments = planetName.split("-");
-  const suffix = segments.at(-1) ?? "";
-  // Common catalogue forms such as Oseris-IV, Nivalis-K and Cinder-12.
-  if (
-    segments.length > 1 &&
-    /^(?:[ivxlcdm]+|\d+|[a-z])$/i.test(suffix)
-  ) {
-    return segments.slice(0, -1).join("-");
-  }
-  return planetName;
-}
-
-function stableUnit(seed: string, salt: number): number {
-  let hash = 2_166_136_261 ^ salt;
-  for (const character of seed) {
-    hash ^= character.charCodeAt(0);
-    hash = Math.imul(hash, 16_777_619);
-  }
-  return (hash >>> 0) / 4_294_967_295;
-}
-
-function chartPosition(
-  seed: string,
-  inset = 12,
-): Readonly<{ x: number; y: number }> {
-  const span = 100 - inset * 2;
+function toMissionNode(mission: MissionDefinition): GalaxyMissionNode {
   return {
-    x: Number((inset + stableUnit(seed, 17) * span).toFixed(2)),
-    y: Number((inset + stableUnit(seed, 43) * span).toFixed(2)),
+    id: mission.id,
+    order: mission.order,
+    title: mission.title,
+    subtitle: mission.subtitle,
+    targetName: mission.targetName,
+    threatLevel: mission.threatLevel,
+    prerequisiteMissionId: mission.prerequisiteMissionId,
+    palette: mission.palette,
   };
 }
 
-function distributedSystemPosition(
-  index: number,
-  total: number,
-): Readonly<{ x: number; y: number }> {
-  const columns = total <= 8 ? 2 : Math.ceil(Math.sqrt(total));
-  const rows = Math.max(1, Math.ceil(total / columns));
-  const column = index % columns;
-  const row = Math.floor(index / columns);
-  const x = columns === 1 ? 50 : 27 + column * (46 / (columns - 1));
-  const y = rows === 1 ? 50 : 14 + row * (72 / (rows - 1));
-  return { x: Number(x.toFixed(2)), y: Number(y.toFixed(2)) };
-}
-
-/** Build a deterministic systems/planets/missions tree from mission content. */
+/** Build the navigation tree by joining missions onto the explicit registry. */
 export function buildGalaxyNavigation(
   missions: readonly MissionDefinition[] = MISSIONS,
+  registry: readonly GalaxySystemRegistryEntry[] = GALAXY_SYSTEM_REGISTRY,
 ): GalaxyNavigationTree {
-  const systems = new Map<
-    string,
-    {
-      id: string;
-      name: string;
-      firstOrder: number;
-      accent: string;
-      planets: Map<
-        string,
-        {
-          id: string;
-          name: string;
-          biome: BiomeId;
-          firstOrder: number;
-          missions: GalaxyMissionNode[];
+  const registrySystemIds = new Set<string>();
+  const registryBodyIds = new Set<string>();
+  const missionBindings = new Map<string, GalaxyBodyRegistryEntry>();
+
+  for (const system of registry) {
+    if (registrySystemIds.has(system.id)) {
+      throw new Error(`Duplicate galaxy system id: ${system.id}`);
+    }
+    registrySystemIds.add(system.id);
+    for (const mappedBody of system.bodies) {
+      if (registryBodyIds.has(mappedBody.id)) {
+        throw new Error(`Duplicate galaxy body id: ${mappedBody.id}`);
+      }
+      registryBodyIds.add(mappedBody.id);
+      if (mappedBody.missionPlanetName) {
+        if (missionBindings.has(mappedBody.missionPlanetName)) {
+          throw new Error(
+            `Duplicate mission planet binding: ${mappedBody.missionPlanetName}`,
+          );
         }
-      >;
+        missionBindings.set(mappedBody.missionPlanetName, mappedBody);
+      }
     }
-  >();
-
-  for (const mission of missions) {
-    const systemRoot = deriveSystemRoot(mission.planetName);
-    const systemId = `system-${slug(systemRoot)}`;
-    const planetId = `planet-${slug(mission.planetName)}`;
-    let system = systems.get(systemId);
-    if (!system) {
-      system = {
-        id: systemId,
-        name: `Système ${systemRoot}`,
-        firstOrder: mission.order,
-        accent: mission.palette.accent,
-        planets: new Map(),
-      };
-      systems.set(systemId, system);
-    }
-    system.firstOrder = Math.min(system.firstOrder, mission.order);
-
-    let planet = system.planets.get(planetId);
-    if (!planet) {
-      planet = {
-        id: planetId,
-        name: mission.planetName,
-        biome: mission.biome,
-        firstOrder: mission.order,
-        missions: [],
-      };
-      system.planets.set(planetId, planet);
-    }
-    planet.firstOrder = Math.min(planet.firstOrder, mission.order);
-    planet.missions.push({
-      id: mission.id,
-      order: mission.order,
-      title: mission.title,
-      subtitle: mission.subtitle,
-      targetName: mission.targetName,
-      threatLevel: mission.threatLevel,
-      prerequisiteMissionId: mission.prerequisiteMissionId,
-      palette: mission.palette,
-    });
   }
 
-  const systemNodes = [...systems.values()]
-    .sort((a, b) => a.firstOrder - b.firstOrder || a.name.localeCompare(b.name))
-    .map<GalaxySystemNode>((system, index, orderedSystems) => ({
+  const missionsByPlanetName = new Map<string, MissionDefinition[]>();
+  for (const mission of missions) {
+    if (!missionBindings.has(mission.planetName)) {
+      throw new Error(
+        `Mission ${mission.id} has no registry binding for ${mission.planetName}`,
+      );
+    }
+    const planetMissions = missionsByPlanetName.get(mission.planetName) ?? [];
+    planetMissions.push(mission);
+    missionsByPlanetName.set(mission.planetName, planetMissions);
+  }
+
+  const systemNodes = registry.map<GalaxySystemNode>((system) => {
+    const bodies = system.bodies.map<GalaxyBodyNode>((mappedBody) => ({
+      id: mappedBody.id,
+      name: mappedBody.name,
+      bodyKind: mappedBody.type,
+      status: mappedBody.status,
+      biome: mappedBody.biome,
+      environment: mappedBody.environment,
+      summary: mappedBody.summary,
+      population: mappedBody.population,
+      signal: mappedBody.signal,
+      hazard: mappedBody.hazard,
+      position: mappedBody.position,
+      accent: mappedBody.accent,
+      missions: (mappedBody.missionPlanetName
+        ? (missionsByPlanetName.get(mappedBody.missionPlanetName) ?? [])
+        : []
+      )
+        .toSorted((a, b) => a.order - b.order)
+        .map(toMissionNode),
+    }));
+
+    return {
       id: system.id,
       name: system.name,
-      position: distributedSystemPosition(index, orderedSystems.length),
+      starName: system.starName,
+      starClass: system.starClass,
+      description: system.summary,
+      position: system.position,
       accent: system.accent,
-      planets: [...system.planets.values()]
-        .sort(
-          (a, b) =>
-            a.firstOrder - b.firstOrder || a.name.localeCompare(b.name),
-        )
-        .map<GalaxyPlanetNode>((planet) => ({
-          id: planet.id,
-          name: planet.name,
-          biome: planet.biome,
-          position: chartPosition(planet.id, 18),
-          missions: planet.missions
-            .toSorted((a, b) => a.order - b.order)
-            .map((mission) => ({ ...mission })),
-        })),
-    }));
+      bodies,
+      planets: bodies.filter(({ bodyKind }) => bodyKind === "planet"),
+    };
+  });
+
+  const allBodies = systemNodes.flatMap(({ bodies }) => bodies);
 
   return {
     id: "long-hunt-galaxy",
     name: "Étendue de la Longue Chasse",
     description:
-      "Carte hiérarchique des systèmes, mondes et contrats connus du clan.",
+      "Registre des systèmes, mondes, stations et signaux connus du clan.",
+    systemCount: systemNodes.length,
+    bodyCount: allBodies.length,
+    planetCount: allBodies.filter(({ bodyKind }) => bodyKind === "planet")
+      .length,
+    huntWorldCount: allBodies.filter(
+      ({ bodyKind, status }) =>
+        bodyKind === "planet" && status === "active",
+    ).length,
     missionCount: missions.length,
     systems: systemNodes,
   };
@@ -267,7 +267,7 @@ function findPlanet(
 ): { system: GalaxySystemNode; planet: GalaxyPlanetNode } | null {
   if (!planetId) return null;
   for (const system of tree.systems) {
-    const planet = system.planets.find(({ id }) => id === planetId);
+    const planet = system.bodies.find(({ id }) => id === planetId);
     if (planet) return { system, planet };
   }
   return null;
@@ -283,7 +283,7 @@ export function findGalaxyMission(
 } | null {
   if (!missionId) return null;
   for (const system of tree.systems) {
-    for (const planet of system.planets) {
+    for (const planet of system.bodies) {
       const mission = planet.missions.find(({ id }) => id === missionId);
       if (mission) return { system, planet, mission };
     }
@@ -325,25 +325,26 @@ export function getGalaxyNavigationItems(
 ): readonly GalaxyNavigationItem[] {
   const selection = getGalaxyNavigationSelection(tree, state);
   if (state.level === "galaxy") {
-    return tree.systems.map((system) => ({
-      kind: "system",
-      id: system.id,
-      label: system.name,
-      detail: `${system.planets.length} planète(s) · ${system.planets.reduce(
+    return tree.systems.map((system) => {
+      const huntCount = system.bodies.reduce(
         (total, planet) => total + planet.missions.length,
         0,
-      )} chasse(s)`,
-    }));
+      );
+      return {
+        kind: "system",
+        id: system.id,
+        label: system.name,
+        detail: `${system.bodies.length} corps · ${system.planets.length} mondes · ${huntCount} ${huntCount > 1 ? "chasses" : "chasse"}`,
+      };
+    });
   }
   if (state.level === "system" && selection.system) {
-    return selection.system.planets.map((planet) => ({
-      kind: "planet",
-      id: planet.id,
-      label: planet.name,
-      detail: `${GALAXY_BIOME_LABELS[planet.biome]} · ${planet.missions.length} mission(s)`,
-    }));
+    return selection.system.bodies.map(bodyNavigationItem);
   }
   if (state.level === "planet" && selection.planet) {
+    if (selection.planet.missions.length === 0 && selection.system) {
+      return selection.system.bodies.map(bodyNavigationItem);
+    }
     return selection.planet.missions.map((mission) => ({
       kind: "mission",
       id: mission.id,
@@ -362,6 +363,18 @@ export function getGalaxyNavigationItems(
     ];
   }
   return [];
+}
+
+function bodyNavigationItem(body: GalaxyBodyNode): GalaxyNavigationItem {
+  const missionDetail = body.missions.length
+    ? `${body.missions.length} ${body.missions.length > 1 ? "missions" : "mission"}`
+    : GALAXY_BODY_STATUS_LABELS[body.status];
+  return {
+    kind: "planet",
+    id: body.id,
+    label: body.name,
+    detail: `${GALAXY_BODY_KIND_LABELS[body.bodyKind]} · ${body.environment} · ${missionDetail}`,
+  };
 }
 
 function wrappedIndex(index: number, length: number): number {
@@ -411,7 +424,15 @@ export function reduceGalaxyNavigation(
           systemId: path.system.id,
           planetId: path.planet.id,
           missionId: null,
-          cursorIndex: 0,
+          cursorIndex:
+            path.planet.missions.length === 0
+              ? Math.max(
+                  0,
+                  path.system.bodies.findIndex(
+                    ({ id }) => id === path.planet.id,
+                  ),
+                )
+              : 0,
         }
       : state;
   }
@@ -475,7 +496,7 @@ export function reduceGalaxyNavigation(
         missionId: null,
         cursorIndex: Math.max(
           0,
-          selection.system.planets.findIndex(
+          selection.system.bodies.findIndex(
             ({ id }) => id === selection.planet?.id,
           ),
         ),

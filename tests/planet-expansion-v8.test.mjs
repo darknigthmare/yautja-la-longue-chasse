@@ -92,7 +92,7 @@ test("the long hunt exposes eight ordered planets with a valid unlock chain", ()
   });
 });
 
-test("galaxy, system, planet and mission hierarchy contains each hunt once", () => {
+test("expanded galaxy keeps each of the eight playable hunts exactly once", () => {
   const planets = game.GALAXY_NAVIGATION.systems.flatMap(
     (system) => system.planets,
   );
@@ -100,7 +100,7 @@ test("galaxy, system, planet and mission hierarchy contains each hunt once", () 
     planet.missions.map(({ id }) => id),
   );
   assert.equal(game.GALAXY_NAVIGATION.missionCount, 8);
-  assert.equal(planets.length, 8);
+  assert.equal(planets.length, 24);
   assert.deepEqual(missionIds, expectedIds);
 });
 

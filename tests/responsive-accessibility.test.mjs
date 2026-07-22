@@ -76,7 +76,7 @@ test("physical deck exposes semantic shortcuts and a mobile tracking viewport", 
   );
 });
 
-test("mobile catalogue and armory avoid the previous excessive page and crop", async () => {
+test("mobile catalogue, armory and galaxy avoid the previous excessive page and crop", async () => {
   const [catalogue, client, hub, css] = await Promise.all([
     read("app/game/CatalogueHunterBrowser.tsx"),
     read("app/game/GameClient.tsx"),
@@ -90,5 +90,12 @@ test("mobile catalogue and armory avoid the previous excessive page and crop", a
   assert.doesNotMatch(client, /className="physical-deck-launch"/);
   assert.match(hub, /id: "explore-physical-deck"/);
   assert.match(css, /\.armory-war-room-background[\s\S]*object-fit: contain/);
-  assert.match(css, /left: clamp\(23%, var\(--node-x\), 77%\)/);
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[\s\S]*\.galaxy-chart\.level-galaxy[\s\S]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/,
+  );
+  assert.match(
+    css,
+    /\.galaxy-chart \.galaxy-node,[\s\S]*position: relative;[\s\S]*left: auto;/,
+  );
 });

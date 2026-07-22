@@ -27,11 +27,15 @@ await build({
 
 const {
   GALAXY_BIOME_LABELS,
+  GALAXY_BODY_KIND_LABELS,
+  GALAXY_BODY_STATUS_LABELS,
   GALAXY_NAVIGATION,
+  buildGalaxyNavigation,
   createGalaxyNavigationState,
   findGalaxyMission,
   getGalaxyNavigationBreadcrumbs,
   getGalaxyNavigationItems,
+  getGalaxyNavigationSelection,
   reduceGalaxyNavigation,
 } = await import(
   pathToFileURL(join(outputDirectory, "galaxy-navigation.mjs")).href
@@ -41,14 +45,33 @@ after(async () => {
   await rm(outputDirectory, { force: true, recursive: true });
 });
 
-test("galaxy tree derives every mission once through system and planet levels", () => {
+test("explicit registry exposes 12 systems, 44 bodies, 24 worlds and 8 hunts", () => {
+  const bodies = GALAXY_NAVIGATION.systems.flatMap((system) => system.bodies);
+  const planets = bodies.filter(({ bodyKind }) => bodyKind === "planet");
   const missionIds = GALAXY_NAVIGATION.systems.flatMap((system) =>
-    system.planets.flatMap((planet) =>
+    system.bodies.flatMap((planet) =>
       planet.missions.map((mission) => mission.id),
     ),
   );
 
+  assert.equal(GALAXY_NAVIGATION.systemCount, 12);
+  assert.equal(GALAXY_NAVIGATION.bodyCount, 44);
+  assert.equal(GALAXY_NAVIGATION.planetCount, 24);
+  assert.equal(GALAXY_NAVIGATION.huntWorldCount, 8);
+  assert.equal(GALAXY_NAVIGATION.systems.length, 12);
+  assert.equal(bodies.length, 44);
+  assert.equal(planets.length, 24);
+  assert.equal(bodies.filter(({ missions }) => missions.length === 0).length, 36);
+  assert.equal(
+    planets.filter(({ status }) => status === "surveyed").length,
+    16,
+  );
+  assert.equal(
+    bodies.filter(({ bodyKind }) => bodyKind !== "planet").length,
+    20,
+  );
   assert.equal(missionIds.length, GALAXY_NAVIGATION.missionCount);
+  assert.equal(GALAXY_NAVIGATION.missionCount, 8);
   assert.equal(new Set(missionIds).size, missionIds.length);
   assert.deepEqual(missionIds, [
     "jungle-vey",
@@ -62,15 +85,29 @@ test("galaxy tree derives every mission once through system and planet levels", 
   ]);
   assert.equal(GALAXY_NAVIGATION.systems[0].name, "Système Oseris");
   assert.equal(GALAXY_NAVIGATION.systems[0].planets[0].name, "Oseris-IV");
+  assert.equal(GALAXY_NAVIGATION.systems[0].bodies.length, 4);
+  assert.equal(GALAXY_NAVIGATION.systems[0].planets.length, 2);
+  assert.equal(GALAXY_NAVIGATION.systems.at(-1).name, "Système Tempest");
+  assert.equal(GALAXY_NAVIGATION.systems.at(-1).bodies.length, 3);
   assert.equal(GALAXY_BIOME_LABELS.swamp, "Marais acide");
   assert.equal(GALAXY_BIOME_LABELS.ruins, "Mégalopole en ruines");
+  assert.equal(GALAXY_BODY_KIND_LABELS.station, "Station");
+  assert.equal(GALAXY_BODY_STATUS_LABELS.surveyed, "Monde prospecté");
 
   for (const system of GALAXY_NAVIGATION.systems) {
     assert.ok(system.position.x >= 0 && system.position.x <= 100);
     assert.ok(system.position.y >= 0 && system.position.y <= 100);
-    assert.ok(system.planets.length > 0);
-    for (const planet of system.planets) {
-      assert.ok(planet.missions.length > 0);
+    assert.ok(system.bodies.length >= 3);
+    assert.equal(system.planets.length, 2);
+    assert.ok(system.description.length > 20);
+    assert.ok(system.starClass.length > 3);
+    for (const body of system.bodies) {
+      assert.ok(body.position.x >= 0 && body.position.x <= 100);
+      assert.ok(body.position.y >= 0 && body.position.y <= 100);
+      assert.ok(body.summary.length > 20);
+      assert.ok(body.population.length > 2);
+      assert.ok(body.signal.length > 2);
+      assert.ok(body.hazard.length > 2);
     }
   }
 
@@ -86,13 +123,14 @@ test("galaxy tree derives every mission once through system and planet levels", 
 test("pure navigation reducer drills galaxy to mission and restores breadcrumbs", () => {
   let state = createGalaxyNavigationState();
   assert.equal(state.level, "galaxy");
-  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 8);
+  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 12);
 
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
     type: "activate",
   });
   assert.equal(state.level, "system");
   assert.equal(state.systemId, "system-oseris");
+  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 4);
 
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
     type: "activate",
@@ -118,6 +156,67 @@ test("pure navigation reducer drills galaxy to mission and restores breadcrumbs"
   assert.equal(state.level, "system");
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, { type: "back" });
   assert.equal(state.level, "galaxy");
+});
+
+test("surveyed worlds and auxiliary bodies remain inspectable without hiding siblings", () => {
+  const initial = createGalaxyNavigationState();
+  let state = reduceGalaxyNavigation(GALAXY_NAVIGATION, initial, {
+    type: "open-planet",
+    planetId: "planet-oseris-ii",
+  });
+
+  assert.equal(state.level, "planet");
+  assert.equal(state.systemId, "system-oseris");
+  assert.equal(state.planetId, "planet-oseris-ii");
+  assert.equal(state.missionId, null);
+  assert.equal(state.cursorIndex, 1);
+  assert.equal(
+    getGalaxyNavigationSelection(GALAXY_NAVIGATION, state).planet?.status,
+    "surveyed",
+  );
+  assert.deepEqual(
+    getGalaxyNavigationItems(GALAXY_NAVIGATION, state).map(({ id }) => id),
+    ["planet-oseris-iv", "planet-oseris-ii", "moon-khepri", "belt-saal"],
+  );
+
+  state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
+    type: "open-planet",
+    planetId: "moon-khepri",
+  });
+  assert.equal(state.level, "planet");
+  assert.equal(state.cursorIndex, 2);
+  assert.equal(
+    getGalaxyNavigationSelection(GALAXY_NAVIGATION, state).planet?.bodyKind,
+    "moon",
+  );
+  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 4);
+
+  state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, { type: "back" });
+  assert.equal(state.level, "system");
+  assert.equal(state.cursorIndex, 2);
+});
+
+test("registry navigation supports a temporarily empty mission catalogue", () => {
+  const emptyTree = buildGalaxyNavigation([]);
+  assert.equal(emptyTree.systemCount, 12);
+  assert.equal(emptyTree.bodyCount, 44);
+  assert.equal(emptyTree.planetCount, 24);
+  assert.equal(emptyTree.huntWorldCount, 8);
+  assert.equal(emptyTree.missionCount, 0);
+  assert.equal(
+    emptyTree.systems.flatMap(({ bodies }) => bodies).every(
+      ({ missions }) => missions.length === 0,
+    ),
+    true,
+  );
+
+  const inspected = reduceGalaxyNavigation(
+    emptyTree,
+    createGalaxyNavigationState(),
+    { type: "open-planet", planetId: "planet-oseris-iv" },
+  );
+  assert.equal(inspected.level, "planet");
+  assert.equal(getGalaxyNavigationItems(emptyTree, inspected).length, 4);
 });
 
 test("cursor wraps and invalid routes cannot corrupt the selected hierarchy", () => {
