@@ -4,7 +4,7 @@ import test from "node:test";
 
 const read = (path) => readFile(path, "utf8");
 
-test("galaxy navigation keeps keyboard handling inside the composite widget", async () => {
+test("galaxy navigation keeps flight controls inside its spatial region", async () => {
   const source = await read("app/game/GalaxyMapPanel.tsx");
   const sectionTag = source.slice(
     source.indexOf("<section"),
@@ -12,10 +12,14 @@ test("galaxy navigation keeps keyboard handling inside the composite widget", as
   );
 
   assert.doesNotMatch(sectionTag, /onKeyDown/);
-  assert.match(source, /aria-activedescendant=/);
-  assert.match(source, /data-screen-focus/);
-  assert.match(source, /tabIndex=\{-1\}/);
-  assert.match(source, /ref=\{chartRef\}[\s\S]*onKeyDown=\{onKeyDown\}/);
+  assert.match(source, /role="region"/);
+  assert.match(source, /<nav className="galaxy-v10-spatial-map"/);
+  assert.match(source, /aria-current=\{selected \? "true"/);
+  assert.match(source, /ref=\{stageRef\}[\s\S]*onKeyDown=\{onKeyDown\}/);
+  assert.match(source, /if \(event\.target !== event\.currentTarget\) return/);
+  assert.match(source, /event\.code === "KeyE"/);
+  assert.doesNotMatch(source, /event\.key === "Tab"/);
+  assert.match(source, /data-flight-x="-1"/);
 });
 
 test("galaxy route and bridge origins survive briefing and station detours", async () => {
@@ -76,7 +80,7 @@ test("physical deck exposes semantic shortcuts and a mobile tracking viewport", 
   );
 });
 
-test("mobile catalogue, armory and galaxy avoid the previous excessive page and crop", async () => {
+test("mobile catalogue, armory and galaxy keep the map spatial without the previous crop", async () => {
   const [catalogue, client, hub, css] = await Promise.all([
     read("app/game/CatalogueHunterBrowser.tsx"),
     read("app/game/GameClient.tsx"),
@@ -92,10 +96,19 @@ test("mobile catalogue, armory and galaxy avoid the previous excessive page and 
   assert.match(css, /\.armory-war-room-background[\s\S]*object-fit: contain/);
   assert.match(
     css,
-    /@media \(max-width: 760px\)[\s\S]*\.galaxy-chart\.level-galaxy[\s\S]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/,
+    /@media \(max-width: 760px\)[\s\S]*\.galaxy-v10-stage \{ min-height: max\(650px, calc\(100svh - 178px\)\); \}/,
   );
   assert.match(
     css,
-    /\.galaxy-chart \.galaxy-node,[\s\S]*position: relative;[\s\S]*left: auto;/,
+    /@media \(max-width: 760px\)[\s\S]*\.galaxy-v10-node \{ top: clamp\(24%, var\(--node-y\), 78%\); left: clamp\(18%, var\(--node-x\), 82%\)/,
   );
+  assert.match(
+    css,
+    /\.galaxy-v10-node \{[\s\S]*position: absolute;[\s\S]*top: var\(--node-y\);[\s\S]*left: var\(--node-x\)/,
+  );
+  const mobileV10Start = css.lastIndexOf("@media (max-width: 760px)");
+  const mobileV10End = css.indexOf("@media (max-width: 430px)", mobileV10Start);
+  const mobileV10 = css.slice(mobileV10Start, mobileV10End);
+  assert.doesNotMatch(mobileV10, /galaxy-v10-spatial-map[\s\S]*grid-template-columns/);
+  assert.match(css, /rotate\(calc\(var\(--ship-heading\) \+ 180deg\)\)/);
 });

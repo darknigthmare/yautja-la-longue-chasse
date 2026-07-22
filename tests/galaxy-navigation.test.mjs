@@ -45,7 +45,7 @@ after(async () => {
   await rm(outputDirectory, { force: true, recursive: true });
 });
 
-test("explicit registry exposes 12 systems, 44 bodies, 24 worlds and 8 hunts", () => {
+test("explicit registry exposes 5 sectors, 12 systems, 44 bodies, 24 worlds and 8 hunts", () => {
   const bodies = GALAXY_NAVIGATION.systems.flatMap((system) => system.bodies);
   const planets = bodies.filter(({ bodyKind }) => bodyKind === "planet");
   const missionIds = GALAXY_NAVIGATION.systems.flatMap((system) =>
@@ -54,10 +54,12 @@ test("explicit registry exposes 12 systems, 44 bodies, 24 worlds and 8 hunts", (
     ),
   );
 
+  assert.equal(GALAXY_NAVIGATION.sectorCount, 5);
   assert.equal(GALAXY_NAVIGATION.systemCount, 12);
   assert.equal(GALAXY_NAVIGATION.bodyCount, 44);
   assert.equal(GALAXY_NAVIGATION.planetCount, 24);
   assert.equal(GALAXY_NAVIGATION.huntWorldCount, 8);
+  assert.equal(GALAXY_NAVIGATION.sectors.length, 5);
   assert.equal(GALAXY_NAVIGATION.systems.length, 12);
   assert.equal(bodies.length, 44);
   assert.equal(planets.length, 24);
@@ -89,41 +91,96 @@ test("explicit registry exposes 12 systems, 44 bodies, 24 worlds and 8 hunts", (
   assert.equal(GALAXY_NAVIGATION.systems[0].planets.length, 2);
   assert.equal(GALAXY_NAVIGATION.systems.at(-1).name, "Système Tempest");
   assert.equal(GALAXY_NAVIGATION.systems.at(-1).bodies.length, 3);
+  assert.deepEqual(
+    GALAXY_NAVIGATION.sectors.map(({ name, systems }) => ({
+      name,
+      systems: systems.map(({ id }) => id),
+    })),
+    [
+      {
+        name: "Couronne d’Oseris",
+        systems: ["system-oseris", "system-nivalis", "system-cinder"],
+      },
+      {
+        name: "Faille de Naraka",
+        systems: ["system-naraka", "system-serekh"],
+      },
+      {
+        name: "Amas de Pelagos",
+        systems: ["system-pelagos", "system-mycora"],
+      },
+      {
+        name: "Marches d’Acheron",
+        systems: ["system-acheron", "system-kaail", "system-vardos"],
+      },
+      {
+        name: "Voile de Tempest",
+        systems: ["system-umbra", "system-tempest"],
+      },
+    ],
+  );
   assert.equal(GALAXY_BIOME_LABELS.swamp, "Marais acide");
   assert.equal(GALAXY_BIOME_LABELS.ruins, "Mégalopole en ruines");
   assert.equal(GALAXY_BODY_KIND_LABELS.station, "Station");
   assert.equal(GALAXY_BODY_STATUS_LABELS.surveyed, "Monde prospecté");
 
-  for (const system of GALAXY_NAVIGATION.systems) {
-    assert.ok(system.position.x >= 0 && system.position.x <= 100);
-    assert.ok(system.position.y >= 0 && system.position.y <= 100);
-    assert.ok(system.bodies.length >= 3);
-    assert.equal(system.planets.length, 2);
-    assert.ok(system.description.length > 20);
-    assert.ok(system.starClass.length > 3);
-    for (const body of system.bodies) {
-      assert.ok(body.position.x >= 0 && body.position.x <= 100);
-      assert.ok(body.position.y >= 0 && body.position.y <= 100);
-      assert.ok(body.summary.length > 20);
-      assert.ok(body.population.length > 2);
-      assert.ok(body.signal.length > 2);
-      assert.ok(body.hazard.length > 2);
+  const sectorSystemIds = [];
+  for (const sector of GALAXY_NAVIGATION.sectors) {
+    assert.ok(sector.position.x >= 0 && sector.position.x <= 100);
+    assert.ok(sector.position.y >= 0 && sector.position.y <= 100);
+    assert.ok(sector.description.length > 20);
+    assert.ok(sector.accent.startsWith("#"));
+    for (const system of sector.systems) {
+      sectorSystemIds.push(system.id);
+      assert.equal(system.sectorId, sector.id);
+      assert.ok(system.position.x >= 0 && system.position.x <= 100);
+      assert.ok(system.position.y >= 0 && system.position.y <= 100);
+      assert.ok(system.bodies.length >= 3);
+      assert.equal(system.planets.length, 2);
+      assert.ok(system.description.length > 20);
+      assert.ok(system.starClass.length > 3);
+      for (const body of system.bodies) {
+        assert.ok(body.position.x >= 0 && body.position.x <= 100);
+        assert.ok(body.position.y >= 0 && body.position.y <= 100);
+        assert.ok(body.summary.length > 20);
+        assert.ok(body.population.length > 2);
+        assert.ok(body.signal.length > 2);
+        assert.ok(body.hazard.length > 2);
+      }
     }
   }
-
-  for (let left = 0; left < GALAXY_NAVIGATION.systems.length; left += 1) {
-    for (let right = left + 1; right < GALAXY_NAVIGATION.systems.length; right += 1) {
-      const a = GALAXY_NAVIGATION.systems[left].position;
-      const b = GALAXY_NAVIGATION.systems[right].position;
-      assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= 20, `${left}/${right}`);
-    }
-  }
+  assert.equal(sectorSystemIds.length, 12);
+  assert.equal(new Set(sectorSystemIds).size, 12);
+  assert.deepEqual(
+    sectorSystemIds,
+    GALAXY_NAVIGATION.systems.map(({ id }) => id),
+  );
 });
 
 test("pure navigation reducer drills galaxy to mission and restores breadcrumbs", () => {
   let state = createGalaxyNavigationState();
   assert.equal(state.level, "galaxy");
-  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 12);
+  assert.equal(state.sectorId, null);
+  assert.deepEqual(
+    getGalaxyNavigationItems(GALAXY_NAVIGATION, state).map(({ kind }) => kind),
+    ["sector", "sector", "sector", "sector", "sector"],
+  );
+
+  state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
+    type: "activate",
+  });
+  assert.equal(state.level, "sector");
+  assert.equal(state.sectorId, "sector-oseris-crown");
+  assert.deepEqual(
+    getGalaxyNavigationItems(GALAXY_NAVIGATION, state).map(
+      ({ kind, id }) => `${kind}:${id}`,
+    ),
+    [
+      "system:system-oseris",
+      "system:system-nivalis",
+      "system:system-cinder",
+    ],
+  );
 
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
     type: "activate",
@@ -145,6 +202,7 @@ test("pure navigation reducer drills galaxy to mission and restores breadcrumbs"
   assert.equal(state.missionId, "jungle-vey");
   assert.deepEqual(getGalaxyNavigationBreadcrumbs(GALAXY_NAVIGATION, state), [
     "Étendue de la Longue Chasse",
+    "Couronne d’Oseris",
     "Système Oseris",
     "Oseris-IV",
     "Sang dans la canopée",
@@ -154,6 +212,8 @@ test("pure navigation reducer drills galaxy to mission and restores breadcrumbs"
   assert.equal(state.level, "planet");
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, { type: "back" });
   assert.equal(state.level, "system");
+  state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, { type: "back" });
+  assert.equal(state.level, "sector");
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, { type: "back" });
   assert.equal(state.level, "galaxy");
 });
@@ -166,6 +226,7 @@ test("surveyed worlds and auxiliary bodies remain inspectable without hiding sib
   });
 
   assert.equal(state.level, "planet");
+  assert.equal(state.sectorId, "sector-oseris-crown");
   assert.equal(state.systemId, "system-oseris");
   assert.equal(state.planetId, "planet-oseris-ii");
   assert.equal(state.missionId, null);
@@ -198,6 +259,7 @@ test("surveyed worlds and auxiliary bodies remain inspectable without hiding sib
 
 test("registry navigation supports a temporarily empty mission catalogue", () => {
   const emptyTree = buildGalaxyNavigation([]);
+  assert.equal(emptyTree.sectorCount, 5);
   assert.equal(emptyTree.systemCount, 12);
   assert.equal(emptyTree.bodyCount, 44);
   assert.equal(emptyTree.planetCount, 24);
@@ -225,13 +287,42 @@ test("cursor wraps and invalid routes cannot corrupt the selected hierarchy", ()
     type: "move",
     delta: -1,
   });
-  assert.equal(wrapped.cursorIndex, GALAXY_NAVIGATION.systems.length - 1);
+  assert.equal(wrapped.cursorIndex, GALAXY_NAVIGATION.sectors.length - 1);
+
+  const invalidSector = reduceGalaxyNavigation(GALAXY_NAVIGATION, wrapped, {
+    type: "open-sector",
+    sectorId: "sector-inconnu",
+  });
+  assert.equal(invalidSector, wrapped);
 
   const invalid = reduceGalaxyNavigation(GALAXY_NAVIGATION, wrapped, {
     type: "open-system",
     systemId: "system-inconnu",
   });
   assert.equal(invalid, wrapped);
+
+  const invalidPlanet = reduceGalaxyNavigation(GALAXY_NAVIGATION, wrapped, {
+    type: "open-planet",
+    planetId: "planet-inconnue",
+  });
+  assert.equal(invalidPlanet, wrapped);
+
+  const invalidMission = reduceGalaxyNavigation(GALAXY_NAVIGATION, wrapped, {
+    type: "open-mission",
+    missionId: "mission-inconnue",
+  });
+  assert.equal(invalidMission, wrapped);
+
+  const directSystem = reduceGalaxyNavigation(GALAXY_NAVIGATION, initial, {
+    type: "open-system",
+    systemId: "system-vardos",
+  });
+  assert.equal(directSystem.level, "system");
+  assert.equal(directSystem.sectorId, "sector-acheron-marches");
+  assert.equal(
+    getGalaxyNavigationSelection(GALAXY_NAVIGATION, directSystem).sector?.name,
+    "Marches d’Acheron",
+  );
 
   const missionState = reduceGalaxyNavigation(GALAXY_NAVIGATION, initial, {
     type: "open-mission",
@@ -242,6 +333,8 @@ test("cursor wraps and invalid routes cannot corrupt the selected hierarchy", ()
     missionState.missionId,
   );
   assert.equal(missionState.level, "mission");
+  assert.equal(missionState.sectorId, "sector-oseris-crown");
+  assert.equal(path?.sector.name, "Couronne d’Oseris");
   assert.equal(path?.system.name, "Système Cinder");
   assert.equal(path?.planet.name, "Cinder-12");
 });

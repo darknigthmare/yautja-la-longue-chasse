@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image generation + deterministic Sharp crops",
+  "source": "art-source/v10/galaxy-navigation/openai-planets-24-atlas-master.png",
+  "sourceSha256": "844fb76c1dc74ef90bb0889cd6efc733b00563a9e8f05a5a4da28a9496c1be71",
+  "atlas": {
+    "columns": 6,
+    "rows": 4,
+    "cellWidth": 256,
+    "cellHeight": 256
+  },
+  "count": 24,
+  "portraits": [
+    {
+      "planetId": "planet-oseris-iv",
+      "atlasIndex": 0,
+      "sourceCell": {
+        "column": 0,
+        "row": 0,
+        "x": 0,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-oseris-iv.webp",
+      "bytes": 21058,
+      "sha256": "02a43c0f4454017f938b9fbbb1cfcb9b37c48ee4d1a04ffee51f585c8eaecb34"
+    },
+    {
+      "planetId": "planet-oseris-ii",
+      "atlasIndex": 21,
+      "sourceCell": {
+        "column": 3,
+        "row": 3,
+        "x": 768,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-oseris-ii.webp",
+      "bytes": 20020,
+      "sha256": "518cb19bf99e50ecc88b9de1fbf31fa7da3c69166b7a0935c12b8741d9d4f0f6"
+    },
+    {
+      "planetId": "planet-nivalis-k",
+      "atlasIndex": 1,
+      "sourceCell": {
+        "column": 1,
+        "row": 0,
+        "x": 256,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-nivalis-k.webp",
+      "bytes": 22582,
+      "sha256": "be6a183732ef354613ae925fa9270e2b4f0316116bc27b817d17f766bfb7a9fe"
+    },
+    {
+      "planetId": "planet-nivalis-c",
+      "atlasIndex": 14,
+      "sourceCell": {
+        "column": 2,
+        "row": 2,
+        "x": 512,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-nivalis-c.webp",
+      "bytes": 20998,
+      "sha256": "365430d456cf6e73305161bbf6f9ded55b72efbff9fad79890e458984ab0142f"
+    },
+    {
+      "planetId": "planet-cinder-12",
+      "atlasIndex": 2,
+      "sourceCell": {
+        "column": 2,
+        "row": 0,
+        "x": 512,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-cinder-12.webp",
+      "bytes": 21006,
+      "sha256": "26135f5c422df242751d323c1d6c30f0a119de31780d577063fd3086e107cd61"
+    },
+    {
+      "planetId": "planet-ferrum-6",
+      "atlasIndex": 13,
+      "sourceCell": {
+        "column": 1,
+        "row": 2,
+        "x": 256,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-ferrum-6.webp",
+      "bytes": 20326,
+      "sha256": "0d7026418559af031a40115557ffa73190af9234029b9222ad2e6f4b9f709ee5"
+    },
+    {
+      "planetId": "planet-naraka-delta",
+      "atlasIndex": 4,
+      "sourceCell": {
+        "column": 4,
+        "row": 0,
+        "x": 1024,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-naraka-delta.webp",
+      "bytes": 19822,
+      "sha256": "617970fc2b5caf955febc8a4ed1b2974eca2e72c0c3ac36c6c05433ce291c7c6"
+    },
+    {
+      "planetId": "planet-naraka-theta",
+      "atlasIndex": 12,
+      "sourceCell": {
+        "column": 0,
+        "row": 2,
+        "x": 0,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-naraka-theta.webp",
+      "bytes": 22772,
+      "sha256": "1d564eb10448f29e40147d5a0073a951803f71551c660e6203aac279534e40a5"
+    },
+    {
+      "planetId": "planet-serekh-9",
+      "atlasIndex": 3,
+      "sourceCell": {
+        "column": 3,
+        "row": 0,
+        "x": 768,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-serekh-9.webp",
+      "bytes": 22034,
+      "sha256": "4ae7cb12427dc2bf67112784dc6a40ec0f8cf2075e3facccc2a3fb159357c2df"
+    },
+    {
+      "planetId": "planet-serekh-prime",
+      "atlasIndex": 16,
+      "sourceCell": {
+        "column": 4,
+        "row": 2,
+        "x": 1024,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-serekh-prime.webp",
+      "bytes": 20088,
+      "sha256": "2a3879772d6fa7b314be505fcc445f6179897ffef11515844858be3ccea347b7"
+    },
+    {
+      "planetId": "planet-pelagos-m",
+      "atlasIndex": 5,
+      "sourceCell": {
+        "column": 5,
+        "row": 0,
+        "x": 1280,
+        "y": 0
+      },
+      "runtime": "public/game/planets/v10/planet-pelagos-m.webp",
+      "bytes": 19680,
+      "sha256": "884e1bbd6c8d81f7b570189a92d4cda606602959a012a54234058405fc4ca80f"
+    },
+    {
+      "planetId": "planet-thalassa-8",
+      "atlasIndex": 19,
+      "sourceCell": {
+        "column": 1,
+        "row": 3,
+        "x": 256,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-thalassa-8.webp",
+      "bytes": 22484,
+      "sha256": "644e2c10fd33540cf6f9f0cb50d0cd3c929a7dcb06ad2e99c220e4ba90890a02"
+    },
+    {
+      "planetId": "planet-mycora-v",
+      "atlasIndex": 6,
+      "sourceCell": {
+        "column": 0,
+        "row": 1,
+        "x": 0,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-mycora-v.webp",
+      "bytes": 21424,
+      "sha256": "6c29f777143cb86f5ef2c8b692db15264f96b006488d0d5c94284809cb444f26"
+    },
+    {
+      "planetId": "planet-mycora-nox",
+      "atlasIndex": 10,
+      "sourceCell": {
+        "column": 4,
+        "row": 1,
+        "x": 1024,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-mycora-nox.webp",
+      "bytes": 22404,
+      "sha256": "71bdf3d3b6384b7811cc26b5faeeacecaa2b617569aafcf8ac67dded45124ffa"
+    },
+    {
+      "planetId": "planet-acheron-sigma",
+      "atlasIndex": 7,
+      "sourceCell": {
+        "column": 1,
+        "row": 1,
+        "x": 256,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-acheron-sigma.webp",
+      "bytes": 20420,
+      "sha256": "4d1d71e0a6ac701767c6194e9ff4762e6e1a90264b6b75b20fcc37c58aef8385"
+    },
+    {
+      "planetId": "planet-acheron-tau",
+      "atlasIndex": 20,
+      "sourceCell": {
+        "column": 2,
+        "row": 3,
+        "x": 512,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-acheron-tau.webp",
+      "bytes": 20916,
+      "sha256": "b8b083ae31dce09ec6694dfb2852ace40185b48b14e034d747ce407c3c586a4f"
+    },
+    {
+      "planetId": "planet-kaail-prime",
+      "atlasIndex": 8,
+      "sourceCell": {
+        "column": 2,
+        "row": 1,
+        "x": 512,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-kaail-prime.webp",
+      "bytes": 22142,
+      "sha256": "4dccdd209e24feaf59820e3ec8ffbcddbee78716f10339f6278e284a423ab9b7"
+    },
+    {
+      "planetId": "planet-kaail-rook",
+      "atlasIndex": 9,
+      "sourceCell": {
+        "column": 3,
+        "row": 1,
+        "x": 768,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-kaail-rook.webp",
+      "bytes": 24398,
+      "sha256": "eaf19aab5da3d195eea0b2a2a6cb41c21a9e5d100420007f2a48fcbc1f1919ba"
+    },
+    {
+      "planetId": "planet-vardos-iii",
+      "atlasIndex": 15,
+      "sourceCell": {
+        "column": 3,
+        "row": 2,
+        "x": 768,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-vardos-iii.webp",
+      "bytes": 23488,
+      "sha256": "ed89c3db7a2380bc86aaa8bc9fa1d43b63b1d804188ebdb38da38b02b9dd5899"
+    },
+    {
+      "planetId": "planet-carcer-7",
+      "atlasIndex": 18,
+      "sourceCell": {
+        "column": 0,
+        "row": 3,
+        "x": 0,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-carcer-7.webp",
+      "bytes": 22146,
+      "sha256": "f760e3ace29e6002d5e9e0c6d5730f27b49945d204741c3fde31143bc68d5767"
+    },
+    {
+      "planetId": "planet-umbra-terminus",
+      "atlasIndex": 22,
+      "sourceCell": {
+        "column": 4,
+        "row": 3,
+        "x": 1024,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-umbra-terminus.webp",
+      "bytes": 20332,
+      "sha256": "d67dc0f88f1f2962a3ae276ba3675f281339478956b5fd8277d6cb8dc6712fd0"
+    },
+    {
+      "planetId": "planet-noctis-4",
+      "atlasIndex": 17,
+      "sourceCell": {
+        "column": 5,
+        "row": 2,
+        "x": 1280,
+        "y": 512
+      },
+      "runtime": "public/game/planets/v10/planet-noctis-4.webp",
+      "bytes": 17878,
+      "sha256": "9b9dab5a558029035219ba0efbb50163c6a12824716219e907cab2ed0dcf939b"
+    },
+    {
+      "planetId": "planet-aeris",
+      "atlasIndex": 23,
+      "sourceCell": {
+        "column": 5,
+        "row": 3,
+        "x": 1280,
+        "y": 768
+      },
+      "runtime": "public/game/planets/v10/planet-aeris.webp",
+      "bytes": 19192,
+      "sha256": "5525abf89d064b1ced8b9b80cd976cc6520150d03b6378b278fc6b2cf331980b"
+    },
+    {
+      "planetId": "planet-fulmen",
+      "atlasIndex": 11,
+      "sourceCell": {
+        "column": 5,
+        "row": 1,
+        "x": 1280,
+        "y": 256
+      },
+      "runtime": "public/game/planets/v10/planet-fulmen.webp",
+      "bytes": 20106,
+      "sha256": "663f7360c5e3658c4c4b9d88d5bb6ea67777146160fa29d65008459c00bc0b13"
+    }
+  ]
+}

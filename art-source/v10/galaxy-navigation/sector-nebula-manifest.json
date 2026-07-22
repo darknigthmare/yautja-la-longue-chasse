@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "generator": "OpenAI built-in image generation",
+  "generatedAt": "2026-07-22",
+  "asset": {
+    "id": "sector-nebula-v10",
+    "useCase": "stylized-concept",
+    "master": "art-source/v10/galaxy-navigation/openai-sector-nebula-master.png",
+    "runtime": "public/game/backgrounds/v10/sector-nebula-v10.webp",
+    "dimensions": {
+      "width": 1672,
+      "height": 941
+    },
+    "masterBytes": 2749557,
+    "runtimeBytes": 294130,
+    "masterSha256": "8137170f0af230fca54cbf75220a4f59e043680621db9646541c8a67a83fc20d",
+    "runtimeSha256": "ce70936a424dfa7d0a915eb97433da6d8c90131921f886f3c6ea3192f3a318fc",
+    "runtimeEncoding": {
+      "format": "WebP",
+      "quality": 88,
+      "method": 6
+    }
+  },
+  "reference": {
+    "role": "Loose structural reference only",
+    "source": "User-supplied sector-map screenshot (image 3)",
+    "preserved": "Diagonal stellar-nebula concept and broad navigable-sector readability only",
+    "excluded": "All UI, labels, crosshairs, typography, icons, colors, exact composition and branded elements"
+  },
+  "prompt": [
+    "Use case: stylized-concept. Original full-screen 2D game background for a playable galactic-sector or stellar-cluster navigation view, high-definition wide landscape approximately 16:9.",
+    "Use the supplied screenshot only as a loose structural reference for a diagonal stellar nebula crossing a deep-space sector. Do not reproduce or imitate its UI, labels, crosshair, typography, icons, colors, or exact composition.",
+    "Create an entirely original vast galactic-sector backdrop with a long diagonal ash-purple nebula sweeping from upper left toward lower right, branching naturally into several separated stellar concentrations and faint remote clusters.",
+    "Convey exceptional cosmic depth through layered dust lanes, dense micro-stars, sparse bright stars, distant cloudy galaxies, subtle parallax-ready foreground motes, and dark interstellar voids.",
+    "Multiple naturally differentiated stellar regions should read as future system zones while remaining organic astronomical formations rather than UI markers.",
+    "Richly detailed cinematic game concept art rendered as a clean raster background, with restrained realism and a dark alien Yautja atmosphere in an original fan-made visual language.",
+    "Panoramic 16:9 composition with a generous low-contrast open area around the exact center for a player ship and interactive nodes; denser concentrations toward the upper-left third, upper-right edge and lower-right third.",
+    "Ancient, predatory, austere and ominous mood; deep blacks with controlled luminous fog and no large blown-out white core.",
+    "Palette: ash violet and smoky indigo, sparing cold-cyan starlight and rust-amber mineral dust; no saturated neon-magenta or videogame-blue overload.",
+    "Fine volumetric interstellar dust, filamentary nebula wisps, granular star fields, faint turbulent gas clouds and crisp pinprick stars.",
+    "Background only, with a calm uncluttered center and enough contrast restraint to remain coherent below a dark UI layer.",
+    "No text, letters, numerals, labels, logo, watermark, spaceship, vessel silhouette, planet, large celestial globe, asteroid foreground, target, crosshair, reticle, selection ring, navigation line, orbit line, grid, chart, button, HUD, UI panel, icon, cursor, map border, frame or interface element."
+  ]
+}

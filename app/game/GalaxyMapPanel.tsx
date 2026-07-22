@@ -1,6 +1,6 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-img-element -- runtime art is generated and stored locally */
 
 import {
   useCallback,
@@ -8,11 +8,22 @@ import {
   useMemo,
   useReducer,
   useRef,
+  useState,
   type CSSProperties,
   type KeyboardEvent,
+  type PointerEvent,
 } from "react";
 import { MISSIONS } from "./data";
-import { backgroundPathForBiome } from "./worldScreens";
+import {
+  cancelGalaxyAutopilot,
+  createGalaxyFlightState,
+  engageGalaxyAutopilot,
+  isGalaxyFlightNear,
+  normalizeGalaxyFlightInput,
+  stepGalaxyFlight,
+  type GalaxyFlightPoint,
+  type GalaxyFlightState,
+} from "./galaxyFlight";
 import {
   GALAXY_NAVIGATION,
   GALAXY_BIOME_LABELS,
@@ -26,8 +37,16 @@ import {
   type GalaxyBodyNode,
   type GalaxyNavigationItem,
   type GalaxyNavigationState,
+  type GalaxySectorNode,
   type GalaxySystemNode,
 } from "./galaxyNavigation";
+import {
+  GALAXY_V10_BACKGROUNDS,
+  galaxyBodyVisualPath,
+} from "./galaxyVisuals";
+import { V6_SHIP_VISUAL_BY_ROLE } from "./v6Visuals";
+import V6AtlasSprite from "./V6AtlasSprite";
+import { backgroundPathForBiome } from "./worldScreens";
 import type {
   MissionDefinition,
   MissionId,
@@ -46,20 +65,16 @@ const MISSION_BY_ID = Object.freeze(
   Object.fromEntries(MISSIONS.map((mission) => [mission.id, mission])),
 ) as Readonly<Record<MissionId, MissionDefinition>>;
 
-const BODY_GLYPHS = Object.freeze({
-  planet: "●",
-  moon: "◔",
-  "gas-giant": "≋",
-  station: "◇",
-  "asteroid-belt": "∴",
-  anomaly: "⌁",
-});
-
-function missionBackground(mission: MissionDefinition): string {
-  return backgroundPathForBiome(mission.biome);
-}
+const FLIGHT_LEVELS = new Set<GalaxyNavigationState["level"]>([
+  "galaxy",
+  "sector",
+  "system",
+]);
 
 function actionForItem(item: GalaxyNavigationItem) {
+  if (item.kind === "sector") {
+    return { type: "open-sector", sectorId: item.id } as const;
+  }
   if (item.kind === "system") {
     return { type: "open-system", systemId: item.id } as const;
   }
@@ -69,15 +84,76 @@ function actionForItem(item: GalaxyNavigationItem) {
   return { type: "open-mission", missionId: item.id as MissionId } as const;
 }
 
-function missionPosition(
-  index: number,
-  total: number,
-): Readonly<{ x: number; y: number }> {
+function missionPosition(index: number, total: number): GalaxyFlightPoint {
   const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(1, total);
   return {
-    x: 50 + Math.cos(angle) * (total === 1 ? 28 : 31),
-    y: 50 + Math.sin(angle) * (total === 1 ? 0 : 29),
+    x: 50 + Math.cos(angle) * 30,
+    y: 50 + Math.sin(angle) * 27,
   };
+}
+
+function spatialPosition(
+  level: GalaxyNavigationState["level"],
+  source: GalaxyFlightPoint,
+  index: number,
+  total: number,
+): GalaxyFlightPoint {
+  let position = source;
+  if (level === "galaxy") {
+    const sectorRing = [
+      { x: 18, y: 29 },
+      { x: 50, y: 18 },
+      { x: 82, y: 55 },
+      { x: 63, y: 79 },
+      { x: 27, y: 72 },
+    ];
+    position = sectorRing[index] ?? source;
+  } else if (level === "sector") {
+    const systemLayouts: Readonly<Record<number, readonly GalaxyFlightPoint[]>> = {
+      1: [{ x: 50, y: 50 }],
+      2: [{ x: 27, y: 38 }, { x: 72, y: 64 }],
+      3: [{ x: 25, y: 35 }, { x: 50, y: 72 }, { x: 78, y: 55 }],
+    };
+    position = systemLayouts[total]?.[index] ?? source;
+  } else if (level === "system") {
+    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(1, total);
+    position = {
+      x: 40 + Math.cos(angle) * 28,
+      y: 50 + Math.sin(angle) * 26,
+    };
+  }
+  return {
+    x: Math.min(91, Math.max(9, position.x)),
+    y: Math.min(82, Math.max(14, position.y)),
+  };
+}
+
+function initialFlightForLevel(
+  level: GalaxyNavigationState["level"],
+  aspect = 16 / 9,
+): GalaxyFlightState {
+  return createGalaxyFlightState({
+    position: { x: 12 * aspect, y: level === "system" ? 78 : 80 },
+    heading: -90,
+    bounds: { minX: 0, maxX: 100 * aspect, minY: 0, maxY: 100 },
+  });
+}
+
+function scannerValues(id: string): readonly number[] {
+  let hash = 0;
+  for (const character of id) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return [0, 1, 2, 3].map((index) => 24 + ((hash >>> (index * 5)) % 72));
+}
+
+function movementVector(keys: ReadonlySet<string>): GalaxyFlightPoint {
+  const left = keys.has("ArrowLeft") || keys.has("KeyA") || keys.has("KeyQ");
+  const right = keys.has("ArrowRight") || keys.has("KeyD");
+  const up = keys.has("ArrowUp") || keys.has("KeyW") || keys.has("KeyZ");
+  const down = keys.has("ArrowDown") || keys.has("KeyS");
+  return normalizeGalaxyFlightInput({
+    x: Number(right) - Number(left),
+    y: Number(down) - Number(up),
+  });
 }
 
 export default function GalaxyMapPanel({
@@ -87,14 +163,26 @@ export default function GalaxyMapPanel({
   onBack,
   onChooseMission,
 }: GalaxyMapPanelProps) {
-  const chartRef = useRef<HTMLDivElement | null>(null);
-  const latestStateRef = useRef(initialState ?? createGalaxyNavigationState());
-  const onBackRef = useRef(onBack);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const heldKeysRef = useRef(new Set<string>());
+  const touchInputRef = useRef<GalaxyFlightPoint>({ x: 0, y: 0 });
+  const previousPadButtonsRef = useRef(new Set<string>());
+  const flightTargetRef = useRef<{
+    item: GalaxyNavigationItem;
+    position: GalaxyFlightPoint;
+  } | null>(null);
+  const launchActiveRef = useRef<() => void>(() => undefined);
+  const navigateBackRef = useRef<() => void>(() => undefined);
   const [state, dispatch] = useReducer(
     (current: GalaxyNavigationState, action: Parameters<typeof reduceGalaxyNavigation>[2]) =>
       reduceGalaxyNavigation(GALAXY_NAVIGATION, current, action),
     initialState ?? createGalaxyNavigationState(),
   );
+  const [stageAspect, setStageAspect] = useState(16 / 9);
+  const stageAspectRef = useRef(stageAspect);
+  const [flight, setFlight] = useState(() => initialFlightForLevel(state.level, stageAspect));
+  const flightRef = useRef(flight);
+  const [flightMessage, setFlightMessage] = useState("Pilotage manuel");
 
   const items = useMemo(
     () => getGalaxyNavigationItems(GALAXY_NAVIGATION, state),
@@ -109,6 +197,39 @@ export default function GalaxyMapPanel({
     [state],
   );
 
+  const itemPositions = useMemo(() => {
+    const positions = new Map<string, GalaxyFlightPoint>();
+    items.forEach((item, index) => {
+      const sector = GALAXY_NAVIGATION.sectors.find(({ id }) => id === item.id);
+      const system = selection.sector?.systems.find(({ id }) => id === item.id);
+      const body = selection.system?.bodies.find(({ id }) => id === item.id);
+      positions.set(item.id, spatialPosition(
+        state.level,
+        sector?.position ?? system?.position ?? body?.position ?? missionPosition(index, items.length),
+        index,
+        items.length,
+      ));
+    });
+    return positions;
+  }, [items, selection.sector, selection.system, state.level]);
+
+  const activeItem = state.level === "mission"
+    ? items.find(({ id }) => id === state.missionId) ?? items[0] ?? null
+    : items[state.cursorIndex] ?? items[0] ?? null;
+  const activeMission = selection.mission
+    ? MISSION_BY_ID[selection.mission.id]
+    : null;
+  const previewSector = state.level === "galaxy"
+    ? GALAXY_NAVIGATION.sectors.find(({ id }) => id === activeItem?.id) ?? null
+    : selection.sector;
+  const previewSystem = state.level === "sector"
+    ? selection.sector?.systems.find(({ id }) => id === activeItem?.id) ?? null
+    : selection.system;
+  const previewBody = state.level === "system"
+    ? selection.system?.bodies.find(({ id }) => id === activeItem?.id) ?? null
+    : selection.planet;
+  const supportsFlight = FLIGHT_LEVELS.has(state.level);
+
   const navigateBack = useCallback(() => {
     if (state.level === "galaxy") onBack();
     else dispatch({ type: "back" });
@@ -116,70 +237,238 @@ export default function GalaxyMapPanel({
 
   const returnToGalaxy = useCallback(() => {
     dispatch({ type: "reset" });
-    window.requestAnimationFrame(() => {
-      chartRef.current?.focus({ preventScroll: true });
-    });
+    window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
   }, []);
+
+  const focusItem = useCallback((index: number) => {
+    if (items.length <= 1 || index === state.cursorIndex) return;
+    const forward = (index - state.cursorIndex + items.length) % items.length;
+    const backward = (state.cursorIndex - index + items.length) % items.length;
+    const direction = forward <= backward ? 1 : -1;
+    const count = Math.min(forward, backward);
+    for (let step = 0; step < count; step += 1) {
+      dispatch({ type: "move", delta: direction as -1 | 1 });
+    }
+  }, [items.length, state.cursorIndex]);
+
+  const openItem = useCallback((item: GalaxyNavigationItem) => {
+    dispatch(actionForItem(item));
+    window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
+  }, []);
+
+  const cancelActiveRoute = useCallback(() => {
+    if (flightRef.current.mode !== "autopilot") return;
+    const next = cancelGalaxyAutopilot(flightRef.current);
+    flightTargetRef.current = null;
+    flightRef.current = next;
+    setFlight(next);
+    setFlightMessage("Trajectoire annulée · nouvelle cible sélectionnée");
+  }, []);
+
+  const flyToItem = useCallback((item: GalaxyNavigationItem, index: number) => {
+    focusItem(index);
+    const mapPosition = itemPositions.get(item.id);
+    if (!supportsFlight || !mapPosition) {
+      openItem(item);
+      return;
+    }
+    const position = {
+      x: mapPosition.x * stageAspectRef.current,
+      y: mapPosition.y,
+    };
+    if (isGalaxyFlightNear(flightRef.current.position, position, 4.5)) {
+      openItem(item);
+      return;
+    }
+    const next = engageGalaxyAutopilot(flightRef.current, item.id);
+    flightTargetRef.current = { item, position };
+    flightRef.current = next;
+    setFlight(next);
+    setFlightMessage(`Trajectoire verrouillée : ${item.label}`);
+  }, [focusItem, itemPositions, openItem, supportsFlight]);
+
+  const launchActive = useCallback(() => {
+    if (!activeItem) return;
+    flyToItem(activeItem, Math.max(0, items.indexOf(activeItem)));
+  }, [activeItem, flyToItem, items]);
 
   useEffect(() => {
     onStateChange?.(state);
   }, [onStateChange, state]);
 
   useEffect(() => {
-    latestStateRef.current = state;
-    onBackRef.current = onBack;
-  }, [onBack, state]);
+    const reset = initialFlightForLevel(state.level, stageAspectRef.current);
+    flightTargetRef.current = null;
+    flightRef.current = reset;
+    heldKeysRef.current.clear();
+    touchInputRef.current = { x: 0, y: 0 };
+    const frame = window.requestAnimationFrame(() => {
+      setFlight(reset);
+      setFlightMessage(state.level === "planet" || state.level === "mission"
+        ? "Scanner orbital en ligne"
+        : "Pilotage manuel");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [state.level, state.sectorId, state.systemId]);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      chartRef.current?.focus({ preventScroll: true });
-    });
+    const frame = window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    let animationFrame = 0;
-    let previous = new Set<string>();
-    const readGamepad = () => {
-      const pad = navigator.getGamepads?.().find(Boolean);
-      const pressed = new Set<string>();
-      if (pad) {
-        const horizontal = pad.axes[0] ?? 0;
-        const vertical = pad.axes[1] ?? 0;
-        if (pad.buttons[14]?.pressed || horizontal < -0.6) pressed.add("previous");
-        if (pad.buttons[15]?.pressed || horizontal > 0.6) pressed.add("next");
-        if (pad.buttons[12]?.pressed || vertical < -0.6) pressed.add("previous");
-        if (pad.buttons[13]?.pressed || vertical > 0.6) pressed.add("next");
-        if (pad.buttons[0]?.pressed) pressed.add("activate");
-        if (pad.buttons[1]?.pressed) pressed.add("back");
+    const stage = stageRef.current;
+    if (!stage || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (!entry || entry.contentRect.height <= 0) return;
+      const nextAspect = Math.min(4, Math.max(0.75, entry.contentRect.width / entry.contentRect.height));
+      const previousAspect = stageAspectRef.current;
+      if (Math.abs(nextAspect - previousAspect) < 0.005) return;
+      const scale = nextAspect / previousAspect;
+      stageAspectRef.current = nextAspect;
+      setStageAspect(nextAspect);
+      if (flightTargetRef.current) {
+        flightTargetRef.current = {
+          ...flightTargetRef.current,
+          position: {
+            x: flightTargetRef.current.position.x * scale,
+            y: flightTargetRef.current.position.y,
+          },
+        };
       }
-      for (const command of pressed) {
-        if (previous.has(command)) continue;
-        if (command === "previous") dispatch({ type: "move", delta: -1 });
-        if (command === "next") dispatch({ type: "move", delta: 1 });
-        if (command === "activate") dispatch({ type: "activate" });
-        if (command === "back") {
-          if (latestStateRef.current.level === "galaxy") onBackRef.current();
-          else dispatch({ type: "back" });
-        }
-      }
-      previous = pressed;
-      animationFrame = window.requestAnimationFrame(readGamepad);
-    };
-    animationFrame = window.requestAnimationFrame(readGamepad);
-    return () => window.cancelAnimationFrame(animationFrame);
+      const current = flightRef.current;
+      const resized = {
+        ...current,
+        position: { x: current.position.x * scale, y: current.position.y },
+      };
+      flightRef.current = resized;
+      setFlight(resized);
+    });
+    observer.observe(stage);
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    launchActiveRef.current = launchActive;
+    navigateBackRef.current = navigateBack;
+  }, [launchActive, navigateBack]);
+
+  useEffect(() => {
+    let frame = 0;
+    let previousTime = performance.now();
+
+    const tick = (time: number) => {
+      const dt = Math.min(80, time - previousTime);
+      previousTime = time;
+      const pad = navigator.getGamepads?.().find(Boolean);
+      const padInput = pad
+        ? normalizeGalaxyFlightInput({ x: pad.axes[0] ?? 0, y: pad.axes[1] ?? 0 })
+        : { x: 0, y: 0 };
+      const keyboardInput = movementVector(heldKeysRef.current);
+      const input = normalizeGalaxyFlightInput({
+        x: keyboardInput.x + touchInputRef.current.x + (Math.abs(padInput.x) > 0.16 ? padInput.x : 0),
+        y: keyboardInput.y + touchInputRef.current.y + (Math.abs(padInput.y) > 0.16 ? padInput.y : 0),
+      });
+
+      if (Math.hypot(input.x, input.y) > 0.08 && flightTargetRef.current) {
+        flightTargetRef.current = null;
+        setFlightMessage("Pilotage manuel");
+      }
+
+      if (supportsFlight) {
+        const current = flightRef.current;
+        const target = flightTargetRef.current;
+        const next = stepGalaxyFlight(
+          current,
+          input,
+          dt,
+          target ? { id: target.item.id, position: target.position } : null,
+          {
+            bounds: {
+              minX: 4 * stageAspectRef.current,
+              maxX: 96 * stageAspectRef.current,
+              minY: 8,
+              maxY: 82,
+            },
+          },
+        );
+        flightRef.current = next;
+        if (
+          next.position.x !== current.position.x ||
+          next.position.y !== current.position.y ||
+          next.velocity.x !== current.velocity.x ||
+          next.velocity.y !== current.velocity.y ||
+          next.heading !== current.heading ||
+          next.mode !== current.mode ||
+          next.targetId !== current.targetId
+        ) {
+          setFlight(next);
+        }
+
+        if (target && current.mode === "autopilot" && next.mode === "manual" && next.targetId === null) {
+          flightTargetRef.current = null;
+          setFlightMessage(`Destination atteinte : ${target.item.label}`);
+          openItem(target.item);
+        }
+      }
+
+      if (pad) {
+        const pressed = new Set<string>();
+        let changedTarget = false;
+        if (pad.buttons[4]?.pressed || pad.buttons[14]?.pressed) pressed.add("previous");
+        if (pad.buttons[5]?.pressed || pad.buttons[15]?.pressed) pressed.add("next");
+        if (pad.buttons[0]?.pressed) pressed.add("activate");
+        if (pad.buttons[1]?.pressed) pressed.add("back");
+        for (const command of pressed) {
+          if (previousPadButtonsRef.current.has(command)) continue;
+          if (command === "previous") {
+            cancelActiveRoute();
+            dispatch({ type: "move", delta: -1 });
+            changedTarget = true;
+          }
+          if (command === "next") {
+            cancelActiveRoute();
+            dispatch({ type: "move", delta: 1 });
+            changedTarget = true;
+          }
+          if (command === "activate" && !changedTarget) launchActiveRef.current();
+          if (command === "back") navigateBackRef.current();
+        }
+        previousPadButtonsRef.current = pressed;
+      } else {
+        previousPadButtonsRef.current = new Set<string>();
+      }
+      frame = window.requestAnimationFrame(tick);
+    };
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [cancelActiveRoute, openItem, supportsFlight]);
+
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+    if (event.target !== event.currentTarget) return;
+    const movementCodes = new Set([
+      "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown",
+      "KeyW", "KeyA", "KeyS", "KeyD", "KeyZ", "KeyQ",
+    ]);
+    if (supportsFlight && movementCodes.has(event.code)) {
       event.preventDefault();
-      dispatch({ type: "move", delta: -1 });
-    } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      heldKeysRef.current.add(event.code);
+      if (flightRef.current.mode === "autopilot") {
+        const next = cancelGalaxyAutopilot(flightRef.current);
+        flightTargetRef.current = null;
+        flightRef.current = next;
+        setFlight(next);
+        setFlightMessage("Pilotage manuel");
+      }
+      return;
+    }
+    if (event.code === "PageDown" || event.code === "PageUp" || event.code === "KeyE" || event.code === "KeyR") {
       event.preventDefault();
-      dispatch({ type: "move", delta: 1 });
+      cancelActiveRoute();
+      dispatch({ type: "move", delta: event.code === "PageUp" || event.code === "KeyR" ? -1 : 1 });
     } else if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      dispatch({ type: "activate" });
+      launchActive();
     } else if (event.key === "Escape" || event.key === "Backspace") {
       event.preventDefault();
       navigateBack();
@@ -189,81 +478,83 @@ export default function GalaxyMapPanel({
     }
   };
 
-  const activeMission = selection.mission
-    ? MISSION_BY_ID[selection.mission.id]
-    : null;
-  const activeItem = items[state.cursorIndex] ?? items[0] ?? null;
-  const previewSystem = state.level === "galaxy"
-    ? GALAXY_NAVIGATION.systems.find(({ id }) => id === activeItem?.id) ?? null
-    : selection.system;
-  const previewBody = state.level === "system"
-    ? selection.system?.bodies.find(({ id }) => id === activeItem?.id) ?? null
-    : selection.planet;
+  const onKeyUp = (event: KeyboardEvent<HTMLElement>) => {
+    heldKeysRef.current.delete(event.code);
+  };
 
-  const activateItem = useCallback((item: GalaxyNavigationItem) => {
-    dispatch(actionForItem(item));
-    window.requestAnimationFrame(() => {
-      chartRef.current?.focus({ preventScroll: true });
-    });
+  const setTouchDirection = useCallback((event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    touchInputRef.current = {
+      x: Number(event.currentTarget.dataset.flightX ?? 0),
+      y: Number(event.currentTarget.dataset.flightY ?? 0),
+    };
+  }, []);
+  const clearTouchDirection = useCallback(() => {
+    touchInputRef.current = { x: 0, y: 0 };
+  }, []);
+  const setKeyDirection = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    touchInputRef.current = {
+      x: Number(event.currentTarget.dataset.flightX ?? 0),
+      y: Number(event.currentTarget.dataset.flightY ?? 0),
+    };
   }, []);
 
+  const mapBackground = state.level === "galaxy"
+    ? GALAXY_V10_BACKGROUNDS.galaxy
+    : state.level === "sector"
+      ? GALAXY_V10_BACKGROUNDS.sector
+      : GALAXY_V10_BACKGROUNDS.system;
+  const levelTitle = state.level === "galaxy"
+    ? "Voie des grandes chasses"
+    : state.level === "sector"
+      ? selection.sector?.name ?? "Secteur inconnu"
+      : state.level === "system"
+        ? selection.system?.name ?? "Système inconnu"
+        : previewBody?.name ?? "Analyse orbitale";
+
   return (
-    <section
-      className="screen panel-screen galaxy-navigation-screen"
-      aria-labelledby="galaxy-map-title"
-    >
-      <div className="screen-safe galaxy-screen-safe">
-        <header className="galaxy-map-header">
-          <button
-            type="button"
-            className="back-button"
-            onClick={navigateBack}
-            aria-label="Revenir au niveau précédent"
-          >
-            ←
-          </button>
-          <div className="galaxy-map-heading">
-            <p className="eyebrow">Navigation // Registre stellaire V9</p>
-            <h1 id="galaxy-map-title">{GALAXY_NAVIGATION.name}</h1>
-            <p>{GALAXY_NAVIGATION.description}</p>
+    <section className="screen panel-screen galaxy-v10-screen" aria-labelledby="galaxy-map-title">
+      <div className="galaxy-v10-shell">
+        <header className="galaxy-v10-header">
+          <div className="galaxy-v10-title-row">
+            <button type="button" className="galaxy-v10-text-button" onClick={navigateBack}>
+              Retour
+            </button>
+            <div>
+              <p className="eyebrow">Navigation du vaisseau // Carte galactique V10</p>
+              <h1 id="galaxy-map-title">{levelTitle}</h1>
+            </div>
           </div>
-          <div className="galaxy-header-actions">
+          <div className="galaxy-v10-header-tools">
+            <span>{GALAXY_NAVIGATION.sectorCount} secteurs</span>
+            <span>{GALAXY_NAVIGATION.systemCount} systèmes</span>
+            <span>{GALAXY_NAVIGATION.bodyCount} corps</span>
             <button
               type="button"
-              className="galaxy-home-button"
+              className="galaxy-v10-text-button"
               onClick={returnToGalaxy}
               disabled={state.level === "galaxy"}
             >
-              <span aria-hidden="true">✦</span>
-              Vue galaxie
-              <kbd>G</kbd>
+              Vue galaxie <kbd>G</kbd>
             </button>
-            <figure className="galaxy-ship-marker" aria-label="Vaisseau du clan">
-              <img src="/game/sprites/v6/ships-atlas.png" alt="Vaisseaux du clan" />
-            </figure>
           </div>
         </header>
 
-        <dl className="galaxy-registry-counters" aria-label="Contenu du registre galactique">
-          <div><dt>Systèmes</dt><dd>{GALAXY_NAVIGATION.systemCount}</dd></div>
-          <div><dt>Planètes</dt><dd>{GALAXY_NAVIGATION.planetCount}</dd></div>
-          <div><dt>Corps recensés</dt><dd>{GALAXY_NAVIGATION.bodyCount}</dd></div>
-          <div><dt>Mondes de chasse</dt><dd>{GALAXY_NAVIGATION.huntWorldCount}</dd></div>
-        </dl>
-
-        <nav className="galaxy-breadcrumbs" aria-label="Position galactique">
+        <nav className="galaxy-v10-breadcrumbs" aria-label="Position galactique">
           {breadcrumbs.map((label, index) => (
             <button
               type="button"
               key={`${label}-${index}`}
               aria-current={index === breadcrumbs.length - 1 ? "page" : undefined}
+              disabled={index === breadcrumbs.length - 1}
               onClick={() => {
                 if (index === 0) dispatch({ type: "reset" });
-                else if (index === 1 && selection.system) {
-                  dispatch({ type: "open-system", systemId: selection.system.id });
-                } else if (index === 2 && selection.planet) {
-                  dispatch({ type: "open-planet", planetId: selection.planet.id });
-                }
+                else if (index === 1 && selection.sector) dispatch({ type: "open-sector", sectorId: selection.sector.id });
+                else if (index === 2 && selection.system) dispatch({ type: "open-system", systemId: selection.system.id });
+                else if (index === 3 && selection.planet) dispatch({ type: "open-planet", planetId: selection.planet.id });
               }}
             >
               {label}
@@ -271,281 +562,267 @@ export default function GalaxyMapPanel({
           ))}
         </nav>
 
-        <div className="galaxy-map-layout">
-          <div
-            ref={chartRef}
-            className={`galaxy-chart level-${state.level}`}
-            role="listbox"
-            aria-label={`Carte galactique, niveau ${state.level}. Flèches pour naviguer, Entrée pour ouvrir, Échap pour revenir.`}
-            aria-activedescendant={
-              activeItem ? `galaxy-node-${activeItem.id}` : undefined
-            }
-            data-screen-focus
-            tabIndex={0}
-            onKeyDown={onKeyDown}
-          >
-            <div className="galaxy-chart-scan" aria-hidden="true" />
+        <div
+          ref={stageRef}
+          className={`galaxy-v10-stage level-${state.level}`}
+          data-galaxy-v10-level={state.level}
+          role="region"
+          aria-label={supportsFlight
+            ? `Carte ${state.level}. Pilotez avec les flèches ou ZQSD, changez de cible avec E ou R et voyagez avec Entrée.`
+            : `Dossier orbital ${state.level}. Parcourez les signaux et contrats avec les commandes affichées.`}
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          onBlur={() => heldKeysRef.current.clear()}
+        >
+          <img className="galaxy-v10-stage-art" src={mapBackground} alt="" aria-hidden="true" />
+          <div className="galaxy-v10-stage-vignette" aria-hidden="true" />
 
-            {state.level === "system" && selection.system ? (
-              <>
-                <div className="galaxy-mini-context" aria-label="Autres systèmes cartographiés">
-                  {GALAXY_NAVIGATION.systems.map((system) => (
-                    <button
-                      type="button"
-                      className={system.id === selection.system?.id ? "current" : ""}
-                      style={{ "--context-accent": system.accent } as CSSProperties}
-                      key={system.id}
-                      onClick={() => dispatch({ type: "open-system", systemId: system.id })}
-                      aria-label={`Ouvrir ${system.name}`}
-                      aria-current={system.id === selection.system?.id ? "true" : undefined}
-                    >
-                      <span aria-hidden="true" />
-                      <small>{system.name.replace("Système ", "")}</small>
-                    </button>
-                  ))}
-                </div>
-                {[36, 53, 70, 87].map((size, orbitIndex) => (
-                  <div
-                    className="galaxy-orbit"
-                    key={size}
-                    style={{
-                      "--orbit-size": `${size}%`,
-                      "--orbit-delay": `${orbitIndex * -2.7}s`,
-                    } as CSSProperties}
-                    aria-hidden="true"
-                  />
-                ))}
-                <div
-                  className="galaxy-system-star"
-                  style={{ "--star-accent": selection.system.accent } as CSSProperties}
-                  aria-label={`${selection.system.starName}, ${selection.system.starClass}`}
-                >
-                  <span aria-hidden="true" />
-                  <strong>{selection.system.starName}</strong>
-                  <small>{selection.system.starClass}</small>
-                </div>
-              </>
-            ) : null}
+          {supportsFlight ? (
+            <SpatialMap
+              level={state.level}
+              items={items}
+              activeItem={activeItem}
+              positions={itemPositions}
+              selection={selection}
+              onSelect={flyToItem}
+            />
+          ) : previewBody ? (
+            <PlanetDossier
+              body={previewBody}
+              activeMission={activeMission}
+              missionProgress={missionProgress}
+              siblingItems={items}
+              activeItem={activeItem}
+              onOpenItem={openItem}
+              onChooseMission={onChooseMission}
+            />
+          ) : null}
 
-            {(state.level === "planet" || state.level === "mission") && selection.planet ? (
+          {supportsFlight ? (
+            <>
               <div
-                className="galaxy-focus-body"
-                data-body-kind={selection.planet.bodyKind}
-                style={{ "--body-accent": selection.planet.accent } as CSSProperties}
-                aria-hidden="true"
+                className={`galaxy-v10-ship${flight.mode === "autopilot" ? " autopilot" : ""}`}
+                style={{
+                  "--ship-x": `${flight.position.x / stageAspect}%`,
+                  "--ship-y": `${flight.position.y}%`,
+                  "--ship-heading": `${flight.heading}deg`,
+                } as CSSProperties}
+                aria-label={`Vaisseau du clan, ${flightMessage}`}
               >
-                <span>{BODY_GLYPHS[selection.planet.bodyKind]}</span>
-                <strong>{selection.planet.name}</strong>
-                <small>{selection.planet.environment}</small>
+                <V6AtlasSprite
+                  id={V6_SHIP_VISUAL_BY_ROLE.huntTravel}
+                  label="Vaisseau de chasse du clan"
+                  loading="eager"
+                />
+                <span aria-hidden="true" />
               </div>
-            ) : null}
 
-            {items.map((item, index) => {
-              const system = GALAXY_NAVIGATION.systems.find(({ id }) => id === item.id);
-              const body = selection.system?.bodies.find(({ id }) => id === item.id);
-              const position = system?.position ?? body?.position ?? missionPosition(index, items.length);
-              const selected = index === state.cursorIndex ||
-                (state.level === "mission" && item.id === state.missionId);
-              const progress = item.kind === "mission"
-                ? missionProgress[item.id as MissionId]
-                : null;
-              const bodyKind = body?.bodyKind;
-              const nodeKind = bodyKind ?? item.kind;
-              const accent = system?.accent ?? body?.accent ?? selection.system?.accent ?? "#70f4cf";
-              return (
-                <button
-                  id={`galaxy-node-${item.id}`}
-                  type="button"
-                  role="option"
-                  aria-selected={selected}
-                  aria-label={`${item.label} — ${item.detail}`}
-                  tabIndex={-1}
-                  data-node-kind={nodeKind}
-                  className={`galaxy-node ${item.kind} node-${nodeKind}${selected ? " selected" : ""}${progress?.status === "locked" ? " locked" : ""}${body?.status === "active" ? " hunt-world" : ""}`}
-                  style={{
-                    "--node-x": `${position.x}%`,
-                    "--node-y": `${position.y}%`,
-                    "--node-accent": accent,
-                  } as CSSProperties}
-                  key={item.id}
-                  onClick={() => activateItem(item)}
-                >
-                  <span className="galaxy-node-core" aria-hidden="true">
-                    {bodyKind ? BODY_GLYPHS[bodyKind] : item.kind === "system" ? "✦" : "△"}
-                  </span>
-                  <span className="galaxy-node-copy">
-                    <strong>{item.label}</strong>
-                    <small>{item.detail}</small>
-                  </span>
-                  {body?.status === "active" ? <em>Chasse</em> : null}
-                </button>
-              );
-            })}
-
-            {state.level === "planet" && selection.planet && items.length === 0 ? (
-              <p className="galaxy-no-contract" role="status">
-                Aucun contrat validé dans ce secteur. Le corps reste accessible à l’inspection.
-              </p>
-            ) : null}
-
-            <p className="galaxy-control-hint">
-              <span>Clavier</span> Flèches · Entrée · Échap
-              <span>Manette</span> Croix · A · B
-              <span>Tactile</span> Touchez un signal
-            </p>
-          </div>
-
-          <aside className="galaxy-selection-panel" aria-live="polite">
-            {activeMission ? (
-              <MissionSelection
-                mission={activeMission}
-                progress={missionProgress[activeMission.id]}
-                onChoose={() => onChooseMission(activeMission)}
+              <MapSelectionCard
+                sector={previewSector}
+                system={previewSystem}
+                body={previewBody}
+                item={activeItem}
+                onTravel={launchActive}
               />
-            ) : previewBody ? (
-              <BodySelection body={previewBody} />
-            ) : previewSystem ? (
-              <SystemSelection system={previewSystem} />
-            ) : (
-              <GalaxySelection />
-            )}
-          </aside>
+
+              <div className="galaxy-v10-flight-controls" aria-label="Commandes du vaisseau">
+                <p aria-live="polite">{flightMessage}</p>
+                <div className="galaxy-v10-dpad">
+                  <button type="button" className="up" data-flight-x="0" data-flight-y="-1" aria-label="Piloter vers le haut" onPointerDown={setTouchDirection} onPointerUp={clearTouchDirection} onPointerCancel={clearTouchDirection} onKeyDown={setKeyDirection} onKeyUp={clearTouchDirection} onBlur={clearTouchDirection}>Haut</button>
+                  <button type="button" className="left" data-flight-x="-1" data-flight-y="0" aria-label="Piloter vers la gauche" onPointerDown={setTouchDirection} onPointerUp={clearTouchDirection} onPointerCancel={clearTouchDirection} onKeyDown={setKeyDirection} onKeyUp={clearTouchDirection} onBlur={clearTouchDirection}>Gauche</button>
+                  <button type="button" className="right" data-flight-x="1" data-flight-y="0" aria-label="Piloter vers la droite" onPointerDown={setTouchDirection} onPointerUp={clearTouchDirection} onPointerCancel={clearTouchDirection} onKeyDown={setKeyDirection} onKeyUp={clearTouchDirection} onBlur={clearTouchDirection}>Droite</button>
+                  <button type="button" className="down" data-flight-x="0" data-flight-y="1" aria-label="Piloter vers le bas" onPointerDown={setTouchDirection} onPointerUp={clearTouchDirection} onPointerCancel={clearTouchDirection} onKeyDown={setKeyDirection} onKeyUp={clearTouchDirection} onBlur={clearTouchDirection}>Bas</button>
+                </div>
+                <button type="button" className="galaxy-v10-travel-button" disabled={!activeItem} onClick={launchActive}>
+                  Voyager / entrer
+                </button>
+              </div>
+            </>
+          ) : null}
+
+          {supportsFlight ? (
+            <p className="galaxy-v10-control-hint">
+              Pilotage : flèches ou ZQSD/WASD · Cible : E/R · Voyage : Entrée · Retour : Échap · Manette : stick, A, B
+            </p>
+          ) : null}
         </div>
       </div>
     </section>
   );
 }
 
-function GalaxySelection() {
-  return (
-    <>
-      <p className="mission-planet">Registre du secteur</p>
-      <h2>Une galaxie habitée</h2>
-      <p className="galaxy-selection-lead">
-        Douze systèmes reliés par les routes du clan. Les huit mondes portant
-        la balise « Chasse » possèdent un contrat et une écologie validés.
-      </p>
-      <dl className="galaxy-inspection-grid">
-        <div><dt>Systèmes</dt><dd>{GALAXY_NAVIGATION.systemCount}</dd></div>
-        <div><dt>Planètes</dt><dd>{GALAXY_NAVIGATION.planetCount}</dd></div>
-        <div><dt>Corps</dt><dd>{GALAXY_NAVIGATION.bodyCount}</dd></div>
-        <div><dt>Chasses</dt><dd>{GALAXY_NAVIGATION.huntWorldCount}</dd></div>
-      </dl>
-      <img
-        className="galaxy-rank-atlas"
-        src="/game/sprites/v6/ranks-lasers-atlas.png"
-        alt="Insignes des rangs et couleurs de ciblage du clan"
-      />
-    </>
-  );
-}
-
-function SystemSelection({ system }: { system: GalaxySystemNode }) {
-  const typeCount = new Set(system.bodies.map(({ bodyKind }) => bodyKind)).size;
-  return (
-    <>
-      <p className="mission-planet">Système stellaire</p>
-      <h2>{system.name}</h2>
-      <p className="galaxy-selection-lead">{system.description}</p>
-      <div className="galaxy-star-card" style={{ "--star-accent": system.accent } as CSSProperties}>
-        <span aria-hidden="true">✦</span>
-        <div><small>Étoile centrale</small><strong>{system.starName}</strong><em>{system.starClass}</em></div>
-      </div>
-      <dl className="galaxy-inspection-grid">
-        <div><dt>Corps</dt><dd>{system.bodies.length}</dd></div>
-        <div><dt>Planètes</dt><dd>{system.planets.length}</dd></div>
-        <div><dt>Types</dt><dd>{typeCount}</dd></div>
-        <div><dt>Signaux</dt><dd>{system.bodies.filter(({ status }) => status === "active").length}</dd></div>
-      </dl>
-      <p className="galaxy-panel-prompt">Ouvrez le système pour analyser chaque orbite.</p>
-    </>
-  );
-}
-
-function BodySelection({ body }: { body: GalaxyBodyNode }) {
-  const mission = body.missions[0] ? MISSION_BY_ID[body.missions[0].id] : null;
-  const isHuntWorld = body.status === "active" && body.missions.length > 0;
-  return (
-    <>
-      <p className="mission-planet">Corps sélectionné · {GALAXY_BODY_KIND_LABELS[body.bodyKind]}</p>
-      <h2>{body.name}</h2>
-      {mission ? (
-        <div className="galaxy-body-visual">
-          <img src={missionBackground(mission)} alt={`Surface de ${body.name}`} />
-          <span>{GALAXY_BIOME_LABELS[body.biome]}</span>
-        </div>
-      ) : (
-        <div
-          className="galaxy-body-portrait"
-          data-body-kind={body.bodyKind}
-          style={{ "--body-accent": body.accent } as CSSProperties}
-          role="img"
-          aria-label={`${GALAXY_BODY_KIND_LABELS[body.bodyKind]} ${body.name}`}
-        >
-          <span aria-hidden="true">{BODY_GLYPHS[body.bodyKind]}</span>
-          <small>{body.environment}</small>
-        </div>
-      )}
-      <p className="galaxy-selection-lead">{body.summary}</p>
-      <p className={`galaxy-contract-status${isHuntWorld ? " active" : " pending"}`}>
-        <strong>{GALAXY_BODY_STATUS_LABELS[body.status]}</strong>
-        {isHuntWorld
-          ? "30 menaces cataloguées (24 endémiques + 6 communes)"
-          : body.status === "surveyed"
-            ? "Aucun contrat de chasse n’est encore validé sur ce monde."
-            : "Aucun contrat de chasse validé sur ce corps cartographié."}
-      </p>
-      <dl className="galaxy-body-details">
-        <div><dt>Milieu</dt><dd>{body.environment}</dd></div>
-        <div><dt>Population</dt><dd>{body.population}</dd></div>
-        <div><dt>Signal</dt><dd>{body.signal}</dd></div>
-        <div><dt>Danger</dt><dd>{body.hazard}</dd></div>
-      </dl>
-      <p className="galaxy-panel-prompt">
-        {body.missions.length > 0
-          ? `${body.missions.length} contrat${body.missions.length > 1 ? "s" : ""} transmis par le clan.`
-          : "Inspection libre : les données écologiques restent à confirmer."}
-      </p>
-    </>
-  );
-}
-
-function MissionSelection({
-  mission,
-  progress,
-  onChoose,
+function SpatialMap({
+  level,
+  items,
+  activeItem,
+  positions,
+  selection,
+  onSelect,
 }: {
-  mission: MissionDefinition;
-  progress: MissionProgress;
-  onChoose: () => void;
+  level: GalaxyNavigationState["level"];
+  items: readonly GalaxyNavigationItem[];
+  activeItem: GalaxyNavigationItem | null;
+  positions: ReadonlyMap<string, GalaxyFlightPoint>;
+  selection: ReturnType<typeof getGalaxyNavigationSelection>;
+  onSelect: (item: GalaxyNavigationItem, index: number) => void;
 }) {
-  const locked = progress.status === "locked";
   return (
-    <>
-      <p className="mission-planet">{mission.planetName}</p>
-      <h2>{mission.title}</h2>
-      <div className="galaxy-mission-visual">
-        <img src={missionBackground(mission)} alt={`Surface de ${mission.planetName}`} />
-        <span>MENACE {mission.threatLevel}/4</span>
-      </div>
-      <p>{mission.subtitle}</p>
-      <p className="galaxy-contract-status active">
-        <strong>Écologie de chasse</strong>
-        30 menaces cataloguées (24 endémiques + 6 communes)
-      </p>
-      <dl className="galaxy-mission-stats">
-        <div><dt>Proie</dt><dd>{mission.targetName}</dd></div>
-        <div><dt>État</dt><dd>{locked ? "Verrouillée" : progress.status === "completed" ? `Record ${progress.bestScore}` : "Disponible"}</dd></div>
-        <div><dt>Honneur</dt><dd>+{mission.baseRewards.honor}</dd></div>
+    <nav className="galaxy-v10-spatial-map" aria-label={`Destinations du niveau ${level}`}>
+      {level === "system" && selection.system ? (
+        <>
+          {[29, 43, 58, 73, 87].map((size) => (
+            <span key={size} className="galaxy-v10-orbit" style={{ "--orbit-size": `${size}%` } as CSSProperties} aria-hidden="true" />
+          ))}
+          <figure className="galaxy-v10-star" style={{ "--star-accent": selection.system.accent } as CSSProperties}>
+            <img src={GALAXY_V10_BACKGROUNDS.sector} alt="" aria-hidden="true" />
+            <figcaption><strong>{selection.system.starName}</strong><small>{selection.system.starClass}</small></figcaption>
+          </figure>
+        </>
+      ) : null}
+
+      {items.map((item, index) => {
+        const position = positions.get(item.id) ?? { x: 50, y: 50 };
+        const sector = GALAXY_NAVIGATION.sectors.find(({ id }) => id === item.id);
+        const system = selection.sector?.systems.find(({ id }) => id === item.id);
+        const body = selection.system?.bodies.find(({ id }) => id === item.id);
+        const selected = activeItem?.id === item.id;
+        const image = body
+          ? galaxyBodyVisualPath(body)
+          : item.kind === "sector"
+            ? GALAXY_V10_BACKGROUNDS.galaxy
+            : GALAXY_V10_BACKGROUNDS.sector;
+        const accent = body?.accent ?? system?.accent ?? sector?.accent ?? "#70f4cf";
+        return (
+          <button
+            type="button"
+            aria-current={selected ? "true" : undefined}
+            className={`galaxy-v10-node kind-${body?.bodyKind ?? item.kind}${selected ? " selected" : ""}${body?.status === "active" ? " hunt" : ""}`}
+            style={{
+              "--node-x": `${position.x}%`,
+              "--node-y": `${position.y}%`,
+              "--node-accent": accent,
+            } as CSSProperties}
+            key={item.id}
+            onClick={() => onSelect(item, index)}
+          >
+            <span className="galaxy-v10-node-visual">
+              <img src={image} alt="" aria-hidden="true" style={{ objectPosition: `${position.x}% ${position.y}%` }} />
+            </span>
+            <span className="galaxy-v10-node-label">
+              <strong>{item.label}</strong>
+              <small>{item.detail}</small>
+            </span>
+            {body?.status === "active" ? <em>Chasse</em> : null}
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+function MapSelectionCard({
+  sector,
+  system,
+  body,
+  item,
+  onTravel,
+}: {
+  sector: GalaxySectorNode | null;
+  system: GalaxySystemNode | null;
+  body: GalaxyBodyNode | null;
+  item: GalaxyNavigationItem | null;
+  onTravel: () => void;
+}) {
+  if (!item) return null;
+  const title = body?.name ?? system?.name ?? sector?.name ?? item.label;
+  const description = body?.summary ?? system?.description ?? sector?.description ?? item.detail;
+  return (
+    <aside className="galaxy-v10-selection-card" aria-live="polite">
+      <p>{body ? GALAXY_BODY_KIND_LABELS[body.bodyKind] : system ? "Système" : "Secteur"}</p>
+      <h2>{title}</h2>
+      <span>{description}</span>
+      <dl>
+        {sector && !system ? <><div><dt>Systèmes</dt><dd>{sector.systems.length}</dd></div><div><dt>Mondes</dt><dd>{sector.systems.reduce((total, value) => total + value.planets.length, 0)}</dd></div></> : null}
+        {system && !body ? <><div><dt>Corps</dt><dd>{system.bodies.length}</dd></div><div><dt>Étoile</dt><dd>{system.starClass}</dd></div></> : null}
+        {body ? <><div><dt>Statut</dt><dd>{GALAXY_BODY_STATUS_LABELS[body.status]}</dd></div><div><dt>Danger</dt><dd>{body.hazard}</dd></div></> : null}
       </dl>
-      <button
-        type="button"
-        className="alien-button"
-        disabled={locked}
-        onClick={onChoose}
-      >
-        {locked ? "Trophée précédent requis" : "Étudier la chasse"}
-      </button>
-    </>
+      <button type="button" onClick={onTravel}>Tracer la route</button>
+    </aside>
+  );
+}
+
+function PlanetDossier({
+  body,
+  activeMission,
+  missionProgress,
+  siblingItems,
+  activeItem,
+  onOpenItem,
+  onChooseMission,
+}: {
+  body: GalaxyBodyNode;
+  activeMission: MissionDefinition | null;
+  missionProgress: Readonly<Record<MissionId, MissionProgress>>;
+  siblingItems: readonly GalaxyNavigationItem[];
+  activeItem: GalaxyNavigationItem | null;
+  onOpenItem: (item: GalaxyNavigationItem) => void;
+  onChooseMission: (mission: MissionDefinition) => void;
+}) {
+  const values = scannerValues(body.id);
+  const bodyMission = activeMission ?? (body.missions[0] ? MISSION_BY_ID[body.missions[0].id] : null);
+  const progress = activeMission ? missionProgress[activeMission.id] : null;
+  return (
+    <div className="galaxy-v10-dossier">
+      <div className="galaxy-v10-planet-view">
+        <div className="galaxy-v10-scan-grid" aria-hidden="true" />
+        <img src={galaxyBodyVisualPath(body)} alt={`${GALAXY_BODY_KIND_LABELS[body.bodyKind]} ${body.name}`} />
+        <span className="galaxy-v10-scan-line" aria-hidden="true" />
+        <p>{GALAXY_BODY_KIND_LABELS[body.bodyKind]} · {GALAXY_BIOME_LABELS[body.biome]}</p>
+      </div>
+      <section className="galaxy-v10-scan-panel" aria-labelledby="galaxy-v10-dossier-title">
+        <p className="eyebrow">Résultats du scanner</p>
+        <h2 id="galaxy-v10-dossier-title">{body.name}</h2>
+        <strong className={`galaxy-v10-status status-${body.status}`}>{GALAXY_BODY_STATUS_LABELS[body.status]}</strong>
+        <p>{body.summary}</p>
+        <dl className="galaxy-v10-body-data">
+          <div><dt>Milieu</dt><dd>{body.environment}</dd></div>
+          <div><dt>Population</dt><dd>{body.population}</dd></div>
+          <div><dt>Signal</dt><dd>{body.signal}</dd></div>
+          <div><dt>Danger</dt><dd>{body.hazard}</dd></div>
+        </dl>
+        <div className="galaxy-v10-spectrum" aria-label="Spectre du scanner">
+          {values.map((value, index) => (
+            <div key={index}><span>{["Biosphère", "Métaux", "Énergie", "Technologie"][index]}</span><i><b style={{ width: `${value}%` }} /></i><strong>{value}%</strong></div>
+          ))}
+        </div>
+        {activeMission ? (
+          <div className="galaxy-v10-mission-brief">
+            <img src={backgroundPathForBiome(activeMission.biome)} alt={`Zone de chasse de ${activeMission.planetName}`} />
+            <div><small>Contrat sélectionné · menace {activeMission.threatLevel}/4</small><strong>{activeMission.title}</strong><p>{activeMission.subtitle}</p></div>
+            <button type="button" className="alien-button" disabled={progress?.status === "locked"} onClick={() => onChooseMission(activeMission)}>
+              {progress?.status === "locked" ? "Trophée précédent requis" : "Préparer la chasse"}
+            </button>
+          </div>
+        ) : bodyMission ? (
+          <p className="galaxy-v10-contract-note">{body.missions.length} contrat de chasse détecté. Sélectionnez-le pour ouvrir le briefing.</p>
+        ) : (
+          <p className="galaxy-v10-contract-note">Aucun contrat validé. Ce corps reste accessible à l’inspection orbitale.</p>
+        )}
+      </section>
+      <nav className="galaxy-v10-dossier-nav" aria-label="Signaux orbitaux">
+        {siblingItems.map((item) => {
+          const siblingBody = item.kind === "planet"
+            ? GALAXY_NAVIGATION.systems.flatMap(({ bodies }) => bodies).find(({ id }) => id === item.id)
+            : null;
+          return (
+            <button type="button" key={item.id} className={activeItem?.id === item.id ? "selected" : ""} aria-current={activeItem?.id === item.id ? "true" : undefined} onClick={() => onOpenItem(item)}>
+              {siblingBody ? <img src={galaxyBodyVisualPath(siblingBody)} alt="" aria-hidden="true" /> : null}
+              <span><strong>{item.label}</strong><small>{item.detail}</small></span>
+            </button>
+          );
+        })}
+      </nav>
+    </div>
   );
 }

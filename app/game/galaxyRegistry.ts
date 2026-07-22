@@ -47,6 +47,23 @@ export interface GalaxySystemRegistryEntry {
   bodies: readonly GalaxyBodyRegistryEntry[];
 }
 
+export interface GalaxySectorSystemPlacement {
+  systemId: string;
+  /** Position inside the sector chart, expressed as a percentage. */
+  position: Readonly<GalaxyRegistryPosition>;
+}
+
+export interface GalaxySectorRegistryEntry {
+  id: string;
+  name: string;
+  description: string;
+  accent: string;
+  /** Position on the full galactic chart, expressed as a percentage. */
+  position: Readonly<GalaxyRegistryPosition>;
+  /** Explicit, authoritative membership and local placement of each system. */
+  systems: readonly GalaxySectorSystemPlacement[];
+}
+
 const position = (x: number, y: number): Readonly<GalaxyRegistryPosition> =>
   Object.freeze({ x, y });
 
@@ -853,7 +870,78 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
   },
 ] satisfies readonly GalaxySystemRegistryEntry[]);
 
+/**
+ * The Long Hunt is split into authored sectors instead of deriving clusters
+ * from system names or distances. System positions here are local to their
+ * sector and are therefore independent from the legacy registry coordinates.
+ */
+export const GALAXY_SECTOR_REGISTRY = Object.freeze([
+  {
+    id: "sector-oseris-crown",
+    name: "Couronne d’Oseris",
+    description:
+      "Une couronne de routes anciennes relie jungles primordiales, glaces aveuglantes et forges rouges.",
+    accent: "#78dca1",
+    position: position(22, 22),
+    systems: Object.freeze([
+      { systemId: "system-oseris", position: position(24, 36) },
+      { systemId: "system-nivalis", position: position(68, 24) },
+      { systemId: "system-cinder", position: position(56, 73) },
+    ]),
+  },
+  {
+    id: "sector-naraka-rift",
+    name: "Faille de Naraka",
+    description:
+      "Une fracture nébulaire où marais toxiques et déserts de verre dérivent parmi les épaves.",
+    accent: "#8fc66d",
+    position: position(76, 23),
+    systems: Object.freeze([
+      { systemId: "system-naraka", position: position(29, 39) },
+      { systemId: "system-serekh", position: position(72, 61) },
+    ]),
+  },
+  {
+    id: "sector-pelagos-cluster",
+    name: "Amas de Pelagos",
+    description:
+      "Des soleils noyés dans les poussières organiques abritent océans abyssaux et réseaux fongiques.",
+    accent: "#69c9dc",
+    position: position(52, 49),
+    systems: Object.freeze([
+      { systemId: "system-pelagos", position: position(30, 62) },
+      { systemId: "system-mycora", position: position(70, 35) },
+    ]),
+  },
+  {
+    id: "sector-acheron-marches",
+    name: "Marches d’Acheron",
+    description:
+      "Une frontière disputée de cités mortes, sanctuaires de clan et colonies militarisées.",
+    accent: "#db886d",
+    position: position(24, 78),
+    systems: Object.freeze([
+      { systemId: "system-acheron", position: position(21, 42) },
+      { systemId: "system-kaail", position: position(52, 72) },
+      { systemId: "system-vardos", position: position(79, 29) },
+    ]),
+  },
+  {
+    id: "sector-tempest-veil",
+    name: "Voile de Tempest",
+    description:
+      "Un voile d’ombre et d’orages perpétuels masque des mondes errants aux signaux impossibles.",
+    accent: "#7898e8",
+    position: position(78, 77),
+    systems: Object.freeze([
+      { systemId: "system-umbra", position: position(30, 34) },
+      { systemId: "system-tempest", position: position(70, 66) },
+    ]),
+  },
+] satisfies readonly GalaxySectorRegistryEntry[]);
+
 export const GALAXY_REGISTRY_COUNTS = Object.freeze({
+  sectorCount: GALAXY_SECTOR_REGISTRY.length,
   systemCount: GALAXY_SYSTEM_REGISTRY.length,
   bodyCount: GALAXY_SYSTEM_REGISTRY.reduce(
     (total, system) => total + system.bodies.length,

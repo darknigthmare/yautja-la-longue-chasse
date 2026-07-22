@@ -40,20 +40,19 @@ test("V9 galaxy background keeps its OpenAI master and optimized runtime export"
   assert.ok(runtimeBuffer.byteLength <= 500_000, "runtime texture stays web-friendly");
 });
 
-test("V9 map exposes the populated registry and keeps every input family", async () => {
+test("V9 star field remains the V10 system backdrop without reviving the old table map", async () => {
   const [component, styles] = await Promise.all([
     readFile("app/game/GalaxyMapPanel.tsx", "utf8"),
     readFile("app/globals.css", "utf8"),
   ]);
 
+  assert.match(component, /GALAXY_NAVIGATION\.sectorCount/);
   assert.match(component, /GALAXY_NAVIGATION\.systemCount/);
-  assert.match(component, /GALAXY_NAVIGATION\.planetCount/);
   assert.match(component, /GALAXY_NAVIGATION\.bodyCount/);
-  assert.match(component, /GALAXY_NAVIGATION\.huntWorldCount/);
-  assert.match(component, /galaxy-mini-context/);
-  assert.match(component, /galaxy-system-star/);
-  assert.match(component, /Aucun contrat de chasse n’est encore validé/);
-  assert.match(component, /30 menaces cataloguées \(24 endémiques \+ 6 communes\)/);
+  assert.match(component, /galaxy-v10-spatial-map/);
+  assert.match(component, /galaxy-v10-star/);
+  assert.match(component, /Aucun contrat validé/);
+  assert.match(component, /Résultats du scanner/);
   assert.match(component, /navigator\.getGamepads/);
   assert.match(component, /onKeyDown/);
   assert.match(component, /onClick/);
@@ -64,7 +63,8 @@ test("V9 map exposes the populated registry and keeps every input family", async
   );
 
   assert.match(styles, /\/game\/backgrounds\/v9\/galaxy-sector-v9\.webp/);
-  assert.match(styles, /data-node-kind="gas-giant"/);
-  assert.match(styles, /data-node-kind="asteroid-belt"/);
-  assert.match(styles, /@media \(max-width: 760px\)[\s\S]*galaxy-chart\.level-galaxy/);
+  assert.match(styles, /\.galaxy-v10-stage/);
+  assert.match(styles, /\.galaxy-v10-node\.kind-gas-giant/);
+  assert.match(styles, /\.galaxy-v10-node\.kind-asteroid-belt/);
+  assert.match(styles, /@media \(max-width: 760px\)[\s\S]*galaxy-v10-stage/);
 });
