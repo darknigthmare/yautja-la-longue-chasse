@@ -2,10 +2,13 @@ import { MISSIONS } from "./data";
 import {
   GALAXY_SECTOR_REGISTRY,
   GALAXY_SYSTEM_REGISTRY,
+  projectGalaxyOrbit,
+  type GalaxyBodyOrbit,
   type GalaxyBodyRegistryEntry,
   type GalaxyBodyStatus,
   type GalaxyBodyType,
   type GalaxySectorRegistryEntry,
+  type GalaxySystemVisualProfile,
   type GalaxySystemRegistryEntry,
 } from "./galaxyRegistry";
 import type {
@@ -14,6 +17,8 @@ import type {
   MissionId,
   MissionPalette,
 } from "./types";
+
+export { galaxyOrbitRingGeometry } from "./galaxyRegistry";
 
 export const GALAXY_BIOME_LABELS = Object.freeze({
   jungle: "Jungle équatoriale",
@@ -70,6 +75,8 @@ export interface GalaxyBodyNode {
   hazard: string;
   /** Position inside the selected system, expressed as a percentage. */
   position: Readonly<{ x: number; y: number }>;
+  /** Authored orbital ring and current angle used by the spatial renderer. */
+  orbit: Readonly<GalaxyBodyOrbit>;
   accent: string;
   missions: readonly GalaxyMissionNode[];
 }
@@ -87,6 +94,8 @@ export interface GalaxySystemNode {
   /** Position inside its sector chart, expressed as a percentage. */
   position: Readonly<{ x: number; y: number }>;
   accent: string;
+  /** Unique renderer-facing identity for this system chart. */
+  visualProfile: Readonly<GalaxySystemVisualProfile>;
   /** Every mapped object, including moons, stations and anomalies. */
   bodies: readonly GalaxyBodyNode[];
   /** Planet-only compatibility view used by campaign summaries. */
@@ -183,6 +192,24 @@ function isPercentagePosition(position: Readonly<{ x: number; y: number }>) {
   );
 }
 
+function isFiniteInRange(value: number, minimum: number, maximum: number) {
+  return Number.isFinite(value) && value >= minimum && value <= maximum;
+}
+
+function isHexColor(value: string) {
+  return /^#[\da-f]{6}$/i.test(value);
+}
+
+function positionsMatch(
+  actual: Readonly<{ x: number; y: number }>,
+  expected: Readonly<{ x: number; y: number }>,
+) {
+  return (
+    Math.abs(actual.x - expected.x) <= 0.01 &&
+    Math.abs(actual.y - expected.y) <= 0.01
+  );
+}
+
 /** Build the navigation tree by joining missions onto the explicit registry. */
 export function buildGalaxyNavigation(
   missions: readonly MissionDefinition[] = MISSIONS,
@@ -193,6 +220,7 @@ export function buildGalaxyNavigation(
   const registryBodyIds = new Set<string>();
   const missionBindings = new Map<string, GalaxyBodyRegistryEntry>();
   const registrySystemsById = new Map<string, GalaxySystemRegistryEntry>();
+  const systemBackgroundKeys = new Set<string>();
 
   for (const system of registry) {
     if (registrySystemIds.has(system.id)) {
@@ -200,6 +228,29 @@ export function buildGalaxyNavigation(
     }
     registrySystemIds.add(system.id);
     registrySystemsById.set(system.id, system);
+    const profile = system.visualProfile;
+    if (!profile || profile.backgroundKey.trim().length < 3) {
+      throw new Error(`Invalid galaxy system background key: ${system.id}`);
+    }
+    if (systemBackgroundKeys.has(profile.backgroundKey)) {
+      throw new Error(
+        `Duplicate galaxy system background key: ${profile.backgroundKey}`,
+      );
+    }
+    systemBackgroundKeys.add(profile.backgroundKey);
+    if (!isFiniteInRange(profile.orbitScale, 0.65, 1.35)) {
+      throw new Error(`Invalid galaxy system orbit scale: ${system.id}`);
+    }
+    if (!isFiniteInRange(profile.orbitEccentricity, 0, 0.45)) {
+      throw new Error(`Invalid galaxy system eccentricity: ${system.id}`);
+    }
+    if (!isFiniteInRange(profile.orbitTiltDegrees, -35, 35)) {
+      throw new Error(`Invalid galaxy system orbit tilt: ${system.id}`);
+    }
+    if (!isHexColor(profile.starGlow)) {
+      throw new Error(`Invalid galaxy system star glow: ${system.id}`);
+    }
+    const orbitRadii = new Set<number>();
     for (const mappedBody of system.bodies) {
       if (registryBodyIds.has(mappedBody.id)) {
         throw new Error(`Duplicate galaxy body id: ${mappedBody.id}`);
@@ -207,6 +258,22 @@ export function buildGalaxyNavigation(
       registryBodyIds.add(mappedBody.id);
       if (!isPercentagePosition(mappedBody.position)) {
         throw new Error(`Invalid galaxy body position: ${mappedBody.id}`);
+      }
+      const mappedOrbit = mappedBody.orbit;
+      if (
+        !mappedOrbit ||
+        !isFiniteInRange(mappedOrbit.radius, 0.15, 1) ||
+        !isFiniteInRange(mappedOrbit.angleDegrees, 0, 359.999) ||
+        !isFiniteInRange(mappedOrbit.inclinationDegrees, -30, 30)
+      ) {
+        throw new Error(`Invalid galaxy body orbit: ${mappedBody.id}`);
+      }
+      if (orbitRadii.has(mappedOrbit.radius)) {
+        throw new Error(`Duplicate galaxy orbit radius: ${system.id}`);
+      }
+      orbitRadii.add(mappedOrbit.radius);
+      if (!positionsMatch(mappedBody.position, projectGalaxyOrbit(mappedOrbit))) {
+        throw new Error(`Incoherent galaxy body orbit position: ${mappedBody.id}`);
       }
       if (mappedBody.missionPlanetName) {
         if (missionBindings.has(mappedBody.missionPlanetName)) {
@@ -284,6 +351,7 @@ export function buildGalaxyNavigation(
       signal: mappedBody.signal,
       hazard: mappedBody.hazard,
       position: mappedBody.position,
+      orbit: mappedBody.orbit,
       accent: mappedBody.accent,
       missions: (mappedBody.missionPlanetName
         ? (missionsByPlanetName.get(mappedBody.missionPlanetName) ?? [])
@@ -302,6 +370,7 @@ export function buildGalaxyNavigation(
       description: system.summary,
       position: localPosition,
       accent: system.accent,
+      visualProfile: system.visualProfile,
       bodies,
       planets: bodies.filter(({ bodyKind }) => bodyKind === "planet"),
     };

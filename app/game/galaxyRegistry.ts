@@ -16,6 +16,32 @@ export interface GalaxyRegistryPosition {
 }
 
 /**
+ * Authored orbital coordinates. `radius` is normalized from the star (0) to
+ * the outer edge of the system chart (1); angles are expressed in degrees.
+ * Inclination lets the renderer project a visibly different orbital plane
+ * without inventing astronomy from a body's array index.
+ */
+export interface GalaxyBodyOrbit {
+  radius: number;
+  angleDegrees: number;
+  inclinationDegrees: number;
+}
+
+export interface GalaxyOrbitRingGeometry {
+  widthPercent: number;
+  heightPercent: number;
+}
+
+/** Renderer-facing traits that make every stellar chart visually distinct. */
+export interface GalaxySystemVisualProfile {
+  backgroundKey: string;
+  orbitScale: number;
+  orbitEccentricity: number;
+  orbitTiltDegrees: number;
+  starGlow: string;
+}
+
+/**
  * A mapped body exists independently from a hunt. `missionPlanetName` is the
  * only bridge to mission content; a null value means that the body is safe to
  * inspect but does not yet pretend to host a complete contract.
@@ -32,6 +58,7 @@ export interface GalaxyBodyRegistryEntry {
   signal: string;
   hazard: string;
   position: Readonly<GalaxyRegistryPosition>;
+  orbit: Readonly<GalaxyBodyOrbit>;
   accent: string;
   missionPlanetName: string | null;
 }
@@ -44,6 +71,7 @@ export interface GalaxySystemRegistryEntry {
   summary: string;
   position: Readonly<GalaxyRegistryPosition>;
   accent: string;
+  visualProfile: Readonly<GalaxySystemVisualProfile>;
   bodies: readonly GalaxyBodyRegistryEntry[];
 }
 
@@ -67,9 +95,70 @@ export interface GalaxySectorRegistryEntry {
 const position = (x: number, y: number): Readonly<GalaxyRegistryPosition> =>
   Object.freeze({ x, y });
 
+const orbit = (
+  radius: number,
+  angleDegrees: number,
+  inclinationDegrees: number,
+): Readonly<GalaxyBodyOrbit> =>
+  Object.freeze({ radius, angleDegrees, inclinationDegrees });
+
+const visualProfile = (
+  backgroundKey: string,
+  orbitScale: number,
+  orbitEccentricity: number,
+  orbitTiltDegrees: number,
+  starGlow: string,
+): Readonly<GalaxySystemVisualProfile> =>
+  Object.freeze({
+    backgroundKey,
+    orbitScale,
+    orbitEccentricity,
+    orbitTiltDegrees,
+    starGlow,
+  });
+
+const roundChartCoordinate = (value: number) => Math.round(value * 100) / 100;
+
+/**
+ * Keep the compatibility `position` in lockstep with the authored orbit. The
+ * star sits at 40/50 in the current system chart and the projection remains
+ * inside its safe navigation bounds even for the outermost belts.
+ */
+export function projectGalaxyOrbit(
+  mappedOrbit: Readonly<GalaxyBodyOrbit>,
+): Readonly<GalaxyRegistryPosition> {
+  const angle = (mappedOrbit.angleDegrees * Math.PI) / 180;
+  const geometry = galaxyOrbitRingGeometry(mappedOrbit);
+  return position(
+    roundChartCoordinate(40 + Math.cos(angle) * (geometry.widthPercent / 2)),
+    roundChartCoordinate(50 + Math.sin(angle) * (geometry.heightPercent / 2)),
+  );
+}
+
+/** Exact ellipse used by both the authored position and the system renderer. */
+export function galaxyOrbitRingGeometry(
+  mappedOrbit: Readonly<GalaxyBodyOrbit>,
+): Readonly<GalaxyOrbitRingGeometry> {
+  const inclination = (mappedOrbit.inclinationDegrees * Math.PI) / 180;
+  return Object.freeze({
+    widthPercent: 72 * mappedOrbit.radius,
+    heightPercent: 62 * mappedOrbit.radius * Math.cos(inclination),
+  });
+}
+
+type GalaxyBodyRegistryInput = Omit<
+  GalaxyBodyRegistryEntry,
+  "position"
+>;
+
 const body = (
-  entry: GalaxyBodyRegistryEntry,
-): Readonly<GalaxyBodyRegistryEntry> => Object.freeze(entry);
+  entry: GalaxyBodyRegistryInput,
+): Readonly<GalaxyBodyRegistryEntry> =>
+  Object.freeze({
+    ...entry,
+    orbit: Object.freeze(entry.orbit),
+    position: projectGalaxyOrbit(entry.orbit),
+  });
 
 /**
  * Explicit V9 stellar registry. The ordering is intentional and controls the
@@ -84,6 +173,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Une étoile ambrée éclaire une biosphère ancienne et les routes minières de Saal.",
     position: position(14, 14),
     accent: "#7be08d",
+    visualProfile: visualProfile("oseris-amber-canopy", 0.94, 0.08, -6, "#f5a95c"),
     bodies: Object.freeze([
       body({
         id: "planet-oseris-iv",
@@ -96,7 +186,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Colonies humaines dispersées · mégafaune dense",
         signal: "Contrat de chasse confirmé",
         hazard: "Orages tropicaux et lianes constrictrices",
-        position: position(29, 39),
+        orbit: orbit(0.48, 205, 3),
         accent: "#78e26e",
         missionPlanetName: "Oseris-IV",
       }),
@@ -111,7 +201,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Troupeaux xénofauniques · balises de prospecteurs",
         signal: "Hurlements cycliques sous les falaises",
         hazard: "Feux de spores saisonniers",
-        position: position(68, 54),
+        orbit: orbit(0.28, 28, -2),
         accent: "#b8d45e",
         missionPlanetName: null,
       }),
@@ -126,7 +216,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Aucune présence permanente",
         signal: "Balise yautja fragmentaire",
         hazard: "Micrométéorites rasantes",
-        position: position(44, 23),
+        orbit: orbit(0.66, 302, 9),
         accent: "#d5b67b",
         missionPlanetName: null,
       }),
@@ -141,7 +231,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Drones miniers autonomes",
         signal: "Échos radar intermittents",
         hazard: "Collisions orbitales imprévisibles",
-        position: position(80, 76),
+        orbit: orbit(0.94, 63, -7),
         accent: "#d69a53",
         missionPlanetName: null,
       }),
@@ -155,6 +245,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Un soleil blanc baigne des mondes gelés et la géante Boréal d’une lumière dure.",
     position: position(38, 14),
     accent: "#83d7ff",
+    visualProfile: visualProfile("nivalis-crystal-halo", 1.08, 0.14, 8, "#dff8ff"),
     bodies: Object.freeze([
       body({
         id: "planet-nivalis-k",
@@ -167,7 +258,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Avant-postes scientifiques isolés",
         signal: "Contrat de chasse confirmé",
         hazard: "Ruptures de banquise et blizzards blancs",
-        position: position(32, 62),
+        orbit: orbit(0.46, 142, 8),
         accent: "#9be9ff",
         missionPlanetName: "Nivalis-K",
       }),
@@ -182,7 +273,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Colonies microbiennes · grands fouisseurs",
         signal: "Trajectoires souterraines régulières",
         hazard: "Brumes cryocorrosives",
-        position: position(70, 37),
+        orbit: orbit(0.24, 325, -4),
         accent: "#77bfe8",
         missionPlanetName: null,
       }),
@@ -197,7 +288,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Formes flottantes non confirmées",
         signal: "Impulsions électromagnétiques profondes",
         hazard: "Magnétosphère extrême",
-        position: position(49, 47),
+        orbit: orbit(0.78, 18, 12),
         accent: "#61c8dc",
         missionPlanetName: null,
       }),
@@ -212,7 +303,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Nulle",
         signal: "Balise de détresse ancienne",
         hazard: "Jets cryovolcaniques",
-        position: position(82, 72),
+        orbit: orbit(0.92, 226, -11),
         accent: "#c9edff",
         missionPlanetName: null,
       }),
@@ -226,6 +317,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Une naine rouge alimente des forges naturelles et des carcasses industrielles.",
     position: position(62, 14),
     accent: "#ff704d",
+    visualProfile: visualProfile("cinder-forge-dust", 0.88, 0.22, -12, "#ff5a36"),
     bodies: Object.freeze([
       body({
         id: "planet-cinder-12",
@@ -238,7 +330,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Récupérateurs armés · faune ignivore",
         signal: "Contrat de chasse confirmé",
         hazard: "Bombes volcaniques et coulées rapides",
-        position: position(30, 56),
+        orbit: orbit(0.35, 171, -6),
         accent: "#ff623f",
         missionPlanetName: "Cinder-12",
       }),
@@ -253,7 +345,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Prédateurs lithophages",
         signal: "Traces thermiques mobiles sous la rouille",
         hazard: "Tempêtes de limaille conductrice",
-        position: position(70, 34),
+        orbit: orbit(0.58, 340, 7),
         accent: "#d97745",
         missionPlanetName: null,
       }),
@@ -268,7 +360,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Extrêmophiles silicatés",
         signal: "Battements sismiques synchronisés",
         hazard: "Marées de lave",
-        position: position(47, 22),
+        orbit: orbit(0.74, 274, -13),
         accent: "#ff9b55",
         missionPlanetName: null,
       }),
@@ -283,7 +375,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Automates de maintenance hostiles",
         signal: "Cycles de production sans destinataire",
         hazard: "Jets de scories orbitales",
-        position: position(81, 75),
+        orbit: orbit(0.95, 54, 15),
         accent: "#e2a067",
         missionPlanetName: null,
       }),
@@ -297,6 +389,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Un système humide noyé dans les émissions verdâtres de sa nébuleuse locale.",
     position: position(86, 14),
     accent: "#75d39a",
+    visualProfile: visualProfile("naraka-toxic-veil", 1, 0.18, 13, "#e4d761"),
     bodies: Object.freeze([
       body({
         id: "planet-naraka-delta",
@@ -309,7 +402,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Mercenaires · faune amphibie abondante",
         signal: "Contrat de chasse confirmé",
         hazard: "Crues acides et vase aspirante",
-        position: position(29, 39),
+        orbit: orbit(0.32, 214, 10),
         accent: "#66d58d",
         missionPlanetName: "Naraka-Delta",
       }),
@@ -324,7 +417,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Signatures grégaires dans la mangrove",
         signal: "Chants subsoniques après chaque marée",
         hazard: "Brouillard neurotoxique",
-        position: position(68, 54),
+        orbit: orbit(0.56, 41, -8),
         accent: "#4eb49a",
         missionPlanetName: null,
       }),
@@ -339,7 +432,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Bancs bioluminescents",
         signal: "Masse profonde non classée",
         hazard: "Vagues de méthane liquide",
-        position: position(44, 23),
+        orbit: orbit(0.72, 288, 17),
         accent: "#4aa7a0",
         missionPlanetName: null,
       }),
@@ -354,7 +447,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Pillards opportunistes",
         signal: "Transpondeurs imitant des appels civils",
         hazard: "Mines dormantes",
-        position: position(80, 76),
+        orbit: orbit(0.93, 111, -15),
         accent: "#9ea879",
         missionPlanetName: null,
       }),
@@ -368,6 +461,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Des mondes minéraux et une route de pèlerinage entourent son soleil couleur cuivre.",
     position: position(14, 50),
     accent: "#e7b35d",
+    visualProfile: visualProfile("serekh-copper-pilgrimage", 1.12, 0.1, -4, "#ffbf68"),
     bodies: Object.freeze([
       body({
         id: "planet-serekh-9",
@@ -380,7 +474,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Caravanes minières · faune fouisseuse",
         signal: "Contrat de chasse confirmé",
         hazard: "Tempêtes de verre et effondrements",
-        position: position(32, 62),
+        orbit: orbit(0.52, 156, -3),
         accent: "#eab65a",
         missionPlanetName: "Serekh-9",
       }),
@@ -395,7 +489,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Mégafaune migratrice · campements nomades",
         signal: "Combats rituels observés à distance",
         hazard: "Foudre sèche et incendies rapides",
-        position: position(70, 37),
+        orbit: orbit(0.27, 337, 2),
         accent: "#cfa54e",
         missionPlanetName: null,
       }),
@@ -410,7 +504,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Aucune vie détectée",
         signal: "Résonances provenant des tombeaux",
         hazard: "Poussière électrostatique abrasive",
-        position: position(49, 47),
+        orbit: orbit(0.71, 247, 11),
         accent: "#d8c89b",
         missionPlanetName: null,
       }),
@@ -425,7 +519,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Marchands itinérants",
         signal: "Canal diplomatique automatique",
         hazard: "Systèmes de défense sensibles aux armes",
-        position: position(82, 72),
+        orbit: orbit(0.91, 72, -10),
         accent: "#8bd6c8",
         missionPlanetName: null,
       }),
@@ -439,6 +533,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Un système bleu d’océans globaux, de tempêtes géantes et de constructions abyssales.",
     position: position(38, 50),
     accent: "#58cbe8",
+    visualProfile: visualProfile("pelagos-abyssal-blue", 1.05, 0.06, 5, "#8bdcff"),
     bodies: Object.freeze([
       body({
         id: "planet-pelagos-m",
@@ -451,7 +546,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Faune récifale bioluminescente",
         signal: "Contrat de chasse confirmé",
         hazard: "Vagues scélérates et évents abyssaux",
-        position: position(30, 56),
+        orbit: orbit(0.31, 194, 4),
         accent: "#4dd4e9",
         missionPlanetName: "Pelagos-M",
       }),
@@ -466,7 +561,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Prédateurs aériens · colonies pélagiques",
         signal: "Vols coordonnés au-dessus de l’équateur",
         hazard: "Cyclones hypercane",
-        position: position(70, 34),
+        orbit: orbit(0.54, 9, -6),
         accent: "#66b9da",
         missionPlanetName: null,
       }),
@@ -481,7 +576,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Biosignatures atmosphériques possibles",
         signal: "Chœurs radio dans la grande tache",
         hazard: "Décharges ioniques massives",
-        position: position(47, 22),
+        orbit: orbit(0.79, 282, 13),
         accent: "#636fe5",
         missionPlanetName: null,
       }),
@@ -496,7 +591,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Équipage absent · drones actifs",
         signal: "Journal scientifique en boucle",
         hazard: "Sections dépressurisées",
-        position: position(81, 75),
+        orbit: orbit(0.93, 103, -12),
         accent: "#70f4cf",
         missionPlanetName: null,
       }),
@@ -510,6 +605,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Poussières organiques et spores réfléchissantes enveloppent ses deux mondes vivants.",
     position: position(62, 50),
     accent: "#c27be8",
+    visualProfile: visualProfile("mycora-spore-cloud", 0.82, 0.27, -16, "#d991ff"),
     bodies: Object.freeze([
       body({
         id: "planet-mycora-v",
@@ -522,7 +618,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Biosphère fongique unifiée",
         signal: "Contrat de chasse confirmé",
         hazard: "Nuages de spores et sols digestifs",
-        position: position(29, 39),
+        orbit: orbit(0.29, 225, -9),
         accent: "#d082ef",
         missionPlanetName: "Mycora-V",
       }),
@@ -537,7 +633,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Prédateurs symbiotiques non catalogués",
         signal: "Réseau lumineux répondant aux sondes",
         hazard: "Hallucinations sporales",
-        position: position(68, 54),
+        orbit: orbit(0.53, 34, 15),
         accent: "#8e62c9",
         missionPlanetName: null,
       }),
@@ -552,7 +648,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Aucune signature autorisée",
         signal: "Avertissement biologique multilingue",
         hazard: "Spores dormantes dans les modules",
-        position: position(44, 23),
+        orbit: orbit(0.69, 309, -18),
         accent: "#8ed17a",
         missionPlanetName: null,
       }),
@@ -567,7 +663,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Colonies microscopiques en dormance",
         signal: "Motif neural à très basse fréquence",
         hazard: "Contamination des filtres du vaisseau",
-        position: position(80, 76),
+        orbit: orbit(0.92, 128, 21),
         accent: "#df83ff",
         missionPlanetName: null,
       }),
@@ -581,6 +677,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Deux mondes-cités morts et des infrastructures automatiques tournent autour d’un soleil pâle.",
     position: position(86, 50),
     accent: "#d5a66e",
+    visualProfile: visualProfile("acheron-pale-ruins", 0.98, 0.2, 11, "#fff1c7"),
     bodies: Object.freeze([
       body({
         id: "planet-acheron-sigma",
@@ -593,7 +690,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Constructs autonomes",
         signal: "Contrat de chasse confirmé",
         hazard: "Gravité instable et grilles laser",
-        position: position(32, 62),
+        orbit: orbit(0.34, 163, 6),
         accent: "#d8a067",
         missionPlanetName: "Acheron-Sigma",
       }),
@@ -608,7 +705,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Mouvements humanoïdes dans les niveaux bas",
         signal: "Réseau ferroviaire réactivé",
         hazard: "Effondrements structurels en cascade",
-        position: position(70, 37),
+        orbit: orbit(0.57, 351, -7),
         accent: "#a98874",
         missionPlanetName: null,
       }),
@@ -623,7 +720,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Robots civils désorientés",
         signal: "Annonces publiques sans habitants",
         hazard: "Rotation artificielle irrégulière",
-        position: position(49, 47),
+        orbit: orbit(0.74, 258, 4),
         accent: "#d8bf98",
         missionPlanetName: null,
       }),
@@ -638,7 +735,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Nulle",
         signal: "Réflexions thermiques trompeuses",
         hazard: "Lames d’obsidienne en apesanteur",
-        position: position(82, 72),
+        orbit: orbit(0.9, 83, -14),
         accent: "#796e7d",
         missionPlanetName: null,
       }),
@@ -652,6 +749,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Une réserve de chasse ancienne où savanes, citadelles et rites de harde coexistent.",
     position: position(14, 86),
     accent: "#b8d55c",
+    visualProfile: visualProfile("kaail-hunting-preserve", 1.15, 0.12, -9, "#f6e36d"),
     bodies: Object.freeze([
       body({
         id: "planet-kaail-prime",
@@ -664,7 +762,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Mégafaune abondante · aucune colonie",
         signal: "Déplacements de meutes tactiques",
         hazard: "Ruées massives et sécheresses brutales",
-        position: position(31, 58),
+        orbit: orbit(0.36, 203, -5),
         accent: "#b9d35b",
         missionPlanetName: null,
       }),
@@ -679,7 +777,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Clans humanoïdes militarisés",
         signal: "Duels diffusés sur bande étroite",
         hazard: "Artillerie itinérante",
-        position: position(70, 39),
+        orbit: orbit(0.64, 22, 9),
         accent: "#ae8c61",
         missionPlanetName: null,
       }),
@@ -694,7 +792,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Gardiens automatisés · spécimens en stase",
         signal: "Code de réserve du clan",
         hazard: "Verrouillage létal des enclos",
-        position: position(51, 74),
+        orbit: orbit(0.89, 116, -16),
         accent: "#73d79b",
         missionPlanetName: null,
       }),
@@ -708,6 +806,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Un corridor industriel fortifié relie un monde-usine à une colonie carcérale.",
     position: position(38, 86),
     accent: "#e0805d",
+    visualProfile: visualProfile("vardos-binary-foundries", 0.9, 0.32, 17, "#ff9a5b"),
     bodies: Object.freeze([
       body({
         id: "planet-vardos-iii",
@@ -720,7 +819,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Population humanoïde dense · sécurité corporatiste",
         signal: "Tournois clandestins lourdement armés",
         hazard: "Pollution thermique et drones de surveillance",
-        position: position(31, 58),
+        orbit: orbit(0.33, 188, 12),
         accent: "#dc7858",
         missionPlanetName: null,
       }),
@@ -735,7 +834,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Détenus armés · unités pénitentiaires",
         signal: "Zones entières hors contrôle central",
         hazard: "Tourelles orbitales et mines de périmètre",
-        position: position(70, 39),
+        orbit: orbit(0.62, 16, -11),
         accent: "#bb6c52",
         missionPlanetName: null,
       }),
@@ -750,7 +849,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Équipes de récupération rivales",
         signal: "Réacteur expérimental sous alimentation",
         hazard: "Soudure automatisée et zones sans pression",
-        position: position(51, 74),
+        orbit: orbit(0.91, 123, 19),
         accent: "#88a5ad",
         missionPlanetName: null,
       }),
@@ -764,6 +863,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Un pulsar éclaire par flashes deux mondes prisonniers d’une nuit presque permanente.",
     position: position(62, 86),
     accent: "#9b79e8",
+    visualProfile: visualProfile("umbra-pulsar-lattice", 1.07, 0.25, -18, "#b8a2ff"),
     bodies: Object.freeze([
       body({
         id: "planet-umbra-terminus",
@@ -776,7 +876,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Prédateurs thermiques sur la ligne du jour",
         signal: "Chasses coordonnées à chaque pulsation",
         hazard: "Contrastes thermiques extrêmes",
-        position: position(31, 58),
+        orbit: orbit(0.39, 219, -17),
         accent: "#9467d7",
         missionPlanetName: null,
       }),
@@ -791,7 +891,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Faune aveugle · habitats scientifiques enfouis",
         signal: "Coupures d’énergie suivant un prédateur inconnu",
         hazard: "Pulsations radiatives du pulsar",
-        position: position(70, 39),
+        orbit: orbit(0.67, 43, 18),
         accent: "#667fd4",
         missionPlanetName: null,
       }),
@@ -806,7 +906,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Aucun équipage",
         signal: "Coordonnées vers une région non cartographiée",
         hazard: "Fenêtres d’approche de quelques secondes",
-        position: position(51, 74),
+        orbit: orbit(0.93, 137, -23),
         accent: "#d0bbff",
         missionPlanetName: null,
       }),
@@ -820,6 +920,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
     summary: "Des mondes aériens orbitent au bord d’une géante dont les tempêtes emplissent le ciel.",
     position: position(86, 86),
     accent: "#58d4d8",
+    visualProfile: visualProfile("tempest-ion-vortex", 0.86, 0.16, 14, "#d8ffff"),
     bodies: Object.freeze([
       body({
         id: "planet-aeris",
@@ -832,7 +933,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Faune volante géante · nids migrateurs",
         signal: "Prédateurs suivant les aéronefs en silence",
         hazard: "Cisaillements atmosphériques",
-        position: position(31, 58),
+        orbit: orbit(0.3, 197, 14),
         accent: "#6fdde0",
         missionPlanetName: null,
       }),
@@ -847,7 +948,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Formes conductrices ailées",
         signal: "Décharges dessinant des motifs territoriaux",
         hazard: "Superfoudre continue",
-        position: position(70, 39),
+        orbit: orbit(0.55, 11, -13),
         accent: "#e5cd59",
         missionPlanetName: null,
       }),
@@ -862,7 +963,7 @@ export const GALAXY_SYSTEM_REGISTRY = Object.freeze([
         population: "Biosignatures flottantes non résolues",
         signal: "Impulsion artificielle au centre du vortex",
         hazard: "Gravité et pression létales",
-        position: position(51, 74),
+        orbit: orbit(0.88, 101, 20),
         accent: "#75aee8",
         missionPlanetName: null,
       }),

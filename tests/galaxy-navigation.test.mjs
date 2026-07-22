@@ -125,6 +125,7 @@ test("explicit registry exposes 5 sectors, 12 systems, 44 bodies, 24 worlds and 
   assert.equal(GALAXY_BODY_STATUS_LABELS.surveyed, "Monde prospecté");
 
   const sectorSystemIds = [];
+  const backgroundKeys = new Set();
   for (const sector of GALAXY_NAVIGATION.sectors) {
     assert.ok(sector.position.x >= 0 && sector.position.x <= 100);
     assert.ok(sector.position.y >= 0 && sector.position.y <= 100);
@@ -139,9 +140,50 @@ test("explicit registry exposes 5 sectors, 12 systems, 44 bodies, 24 worlds and 
       assert.equal(system.planets.length, 2);
       assert.ok(system.description.length > 20);
       assert.ok(system.starClass.length > 3);
+      assert.ok(system.visualProfile.backgroundKey.length > 3);
+      assert.equal(
+        backgroundKeys.has(system.visualProfile.backgroundKey),
+        false,
+        `${system.id}: background key must be unique`,
+      );
+      backgroundKeys.add(system.visualProfile.backgroundKey);
+      assert.ok(system.visualProfile.orbitScale >= 0.65);
+      assert.ok(system.visualProfile.orbitScale <= 1.35);
+      assert.ok(system.visualProfile.orbitEccentricity >= 0);
+      assert.ok(system.visualProfile.orbitEccentricity <= 0.45);
+      assert.ok(Math.abs(system.visualProfile.orbitTiltDegrees) <= 35);
+      assert.match(system.visualProfile.starGlow, /^#[\da-f]{6}$/i);
+      const radii = new Set();
       for (const body of system.bodies) {
         assert.ok(body.position.x >= 0 && body.position.x <= 100);
         assert.ok(body.position.y >= 0 && body.position.y <= 100);
+        assert.ok(body.orbit.radius >= 0.15 && body.orbit.radius <= 1);
+        assert.ok(body.orbit.angleDegrees >= 0);
+        assert.ok(body.orbit.angleDegrees < 360);
+        assert.ok(Math.abs(body.orbit.inclinationDegrees) <= 30);
+        assert.equal(
+          radii.has(body.orbit.radius),
+          false,
+          `${system.id}: every mapped body needs its own orbital radius`,
+        );
+        radii.add(body.orbit.radius);
+        const angle = (body.orbit.angleDegrees * Math.PI) / 180;
+        const inclination =
+          (body.orbit.inclinationDegrees * Math.PI) / 180;
+        const expectedX =
+          Math.round((40 + Math.cos(angle) * 36 * body.orbit.radius) * 100) /
+          100;
+        const expectedY =
+          Math.round(
+            (50 +
+              Math.sin(angle) *
+                31 *
+                body.orbit.radius *
+                Math.cos(inclination)) *
+              100,
+          ) / 100;
+        assert.equal(body.position.x, expectedX);
+        assert.equal(body.position.y, expectedY);
         assert.ok(body.summary.length > 20);
         assert.ok(body.population.length > 2);
         assert.ok(body.signal.length > 2);
@@ -150,10 +192,120 @@ test("explicit registry exposes 5 sectors, 12 systems, 44 bodies, 24 worlds and 
     }
   }
   assert.equal(sectorSystemIds.length, 12);
+  assert.equal(backgroundKeys.size, 12);
   assert.equal(new Set(sectorSystemIds).size, 12);
   assert.deepEqual(
     sectorSystemIds,
     GALAXY_NAVIGATION.systems.map(({ id }) => id),
+  );
+});
+
+test("authored orbital radii preserve meaningful inner-to-outer system order", () => {
+  const system = (id) =>
+    GALAXY_NAVIGATION.systems.find((candidate) => candidate.id === id);
+  const radius = (systemId, bodyId) =>
+    system(systemId).bodies.find((body) => body.id === bodyId).orbit.radius;
+
+  assert.ok(
+    radius("system-oseris", "planet-oseris-ii") <
+      radius("system-oseris", "planet-oseris-iv"),
+  );
+  assert.ok(
+    radius("system-oseris", "planet-oseris-iv") <
+      radius("system-oseris", "belt-saal"),
+  );
+  assert.ok(
+    radius("system-nivalis", "planet-nivalis-c") <
+      radius("system-nivalis", "planet-nivalis-k"),
+  );
+  assert.ok(
+    radius("system-nivalis", "planet-nivalis-k") <
+      radius("system-nivalis", "giant-boreal"),
+  );
+  assert.ok(
+    radius("system-tempest", "planet-aeris") <
+      radius("system-tempest", "planet-fulmen"),
+  );
+  assert.ok(
+    radius("system-tempest", "planet-fulmen") <
+      radius("system-tempest", "giant-core"),
+  );
+});
+
+function registryFromNavigation() {
+  return GALAXY_NAVIGATION.systems.map((system) => ({
+    id: system.id,
+    name: system.name,
+    starName: system.starName,
+    starClass: system.starClass,
+    summary: system.description,
+    position: { x: 50, y: 50 },
+    accent: system.accent,
+    visualProfile: { ...system.visualProfile },
+    bodies: system.bodies.map((body) => ({
+      id: body.id,
+      name: body.name,
+      type: body.bodyKind,
+      status: body.status,
+      biome: body.biome,
+      environment: body.environment,
+      summary: body.summary,
+      population: body.population,
+      signal: body.signal,
+      hazard: body.hazard,
+      position: { ...body.position },
+      orbit: { ...body.orbit },
+      accent: body.accent,
+      missionPlanetName: null,
+    })),
+  }));
+}
+
+function sectorsFromNavigation() {
+  return GALAXY_NAVIGATION.sectors.map((sector) => ({
+    id: sector.id,
+    name: sector.name,
+    description: sector.description,
+    accent: sector.accent,
+    position: { ...sector.position },
+    systems: sector.systems.map((system) => ({
+      systemId: system.id,
+      position: { ...system.position },
+    })),
+  }));
+}
+
+test("registry rejects duplicate system identities and incoherent orbital data", () => {
+  const sectors = sectorsFromNavigation();
+
+  const duplicateBackground = registryFromNavigation();
+  duplicateBackground[1].visualProfile.backgroundKey =
+    duplicateBackground[0].visualProfile.backgroundKey;
+  assert.throws(
+    () => buildGalaxyNavigation([], duplicateBackground, sectors),
+    /Duplicate galaxy system background key/,
+  );
+
+  const duplicateRadius = registryFromNavigation();
+  duplicateRadius[0].bodies[1].orbit.radius =
+    duplicateRadius[0].bodies[0].orbit.radius;
+  assert.throws(
+    () => buildGalaxyNavigation([], duplicateRadius, sectors),
+    /Duplicate galaxy orbit radius/,
+  );
+
+  const invalidOrbit = registryFromNavigation();
+  invalidOrbit[0].bodies[0].orbit.radius = 1.5;
+  assert.throws(
+    () => buildGalaxyNavigation([], invalidOrbit, sectors),
+    /Invalid galaxy body orbit/,
+  );
+
+  const incoherentPosition = registryFromNavigation();
+  incoherentPosition[0].bodies[0].position.x += 3;
+  assert.throws(
+    () => buildGalaxyNavigation([], incoherentPosition, sectors),
+    /Incoherent galaxy body orbit position/,
   );
 });
 

@@ -40,7 +40,7 @@ test("V9 galaxy background keeps its OpenAI master and optimized runtime export"
   assert.ok(runtimeBuffer.byteLength <= 500_000, "runtime texture stays web-friendly");
 });
 
-test("V9 star field remains the V10 system backdrop without reviving the old table map", async () => {
+test("V9 star field remains available as a fallback without reviving the old table map", async () => {
   const [component, styles] = await Promise.all([
     readFile("app/game/GalaxyMapPanel.tsx", "utf8"),
     readFile("app/globals.css", "utf8"),

@@ -4733,16 +4733,15 @@ select:focus-visible,
   z-index: 0;
   top: 50%;
   left: 50%;
-  width: var(--orbit-size);
-  aspect-ratio: 1.82 / 1;
-  border: 1px solid rgba(112, 215, 210, 0.2);
+  width: var(--orbit-width);
+  height: var(--orbit-height);
+  border: 1px solid color-mix(in srgb, var(--orbit-accent) var(--orbit-opacity), transparent);
   border-radius: 50%;
   translate: -50% -50%;
   box-shadow: 0 0 20px rgba(80, 195, 187, 0.025), inset 0 0 20px rgba(80, 195, 187, 0.025);
   animation: galaxy-v10-orbit-pulse 6s ease-in-out infinite alternate;
+  animation-delay: var(--orbit-delay);
 }
-
-.galaxy-v10-orbit:nth-child(even) { animation-delay: -2.8s; }
 
 .galaxy-v10-stage.level-system .galaxy-v10-orbit,
 .galaxy-v10-stage.level-system .galaxy-v10-star { left: 40%; }
@@ -4775,6 +4774,7 @@ select:focus-visible,
   background: radial-gradient(circle, #fff 0 3%, var(--star-accent) 23%, transparent 70%);
   box-shadow: 0 0 28px var(--star-accent), 0 0 80px color-mix(in srgb, var(--star-accent), transparent 36%);
   content: "";
+  scale: var(--star-scale, 1);
 }
 
 .galaxy-v10-star img {

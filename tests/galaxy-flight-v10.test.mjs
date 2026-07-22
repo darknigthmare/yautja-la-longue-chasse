@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { after, test } from "node:test";
@@ -30,6 +30,8 @@ const {
   createGalaxyFlightState,
   engageGalaxyAutopilot,
   galaxyFlightDistance,
+  galaxyFlightPointFromMapPosition,
+  galaxyFlightReturnAnchorId,
   hasGalaxyFlightArrived,
   isGalaxyFlightNear,
   normalizeGalaxyFlightInput,
@@ -169,6 +171,60 @@ test("interaction proximity defaults to five map units", () => {
   assert.equal(isGalaxyFlightNear({ x: 5, y: 5 }, { x: 8, y: 9 }), true);
   assert.equal(isGalaxyFlightNear({ x: 5, y: 5 }, { x: 8.1, y: 9.1 }), false);
   assert.equal(galaxyFlightDistance({ x: 0, y: 0 }, { x: 3, y: 4 }), 5);
+});
+
+test("maps visual node coordinates into aspect-correct flight coordinates", () => {
+  assert.deepEqual(
+    galaxyFlightPointFromMapPosition({ x: 27, y: 38 }, 2.5),
+    { x: 67.5, y: 38 },
+  );
+  assert.deepEqual(
+    galaxyFlightPointFromMapPosition({ x: Number.NaN, y: Infinity }, 0),
+    { x: 50, y: 50 },
+  );
+});
+
+test("return anchors preserve the exact node exited at every flight level", () => {
+  const planetPath = {
+    level: "planet",
+    sectorId: "sector-osiris",
+    systemId: "system-osiris",
+    planetId: "planet-osiris-iv",
+  };
+  assert.equal(galaxyFlightReturnAnchorId(planetPath, "system"), "planet-osiris-iv");
+  assert.equal(galaxyFlightReturnAnchorId(planetPath, "sector"), "system-osiris");
+  assert.equal(galaxyFlightReturnAnchorId(planetPath, "galaxy"), "sector-osiris");
+
+  const systemPath = { ...planetPath, level: "system", planetId: null };
+  assert.equal(galaxyFlightReturnAnchorId(systemPath, "sector"), "system-osiris");
+  assert.equal(galaxyFlightReturnAnchorId(systemPath, "galaxy"), "sector-osiris");
+  assert.equal(galaxyFlightReturnAnchorId(systemPath, "system"), null);
+
+  const sectorPath = { ...systemPath, level: "sector", systemId: null };
+  assert.equal(galaxyFlightReturnAnchorId(sectorPath, "galaxy"), "sector-osiris");
+  assert.equal(galaxyFlightReturnAnchorId(sectorPath, "sector"), null);
+});
+
+test("autopilot arrival waits for an explicit activation before entering", async () => {
+  const source = await readFile(
+    resolve(projectRoot, "app/game/GalaxyMapPanel.tsx"),
+    "utf8",
+  );
+  const arrivalStart = source.indexOf(
+    'if (target && current.mode === "autopilot"',
+  );
+  const arrivalEnd = source.indexOf("\n        }", arrivalStart) + 10;
+  const arrivalBlock = source.slice(arrivalStart, arrivalEnd);
+
+  assert.ok(arrivalStart >= 0);
+  assert.match(arrivalBlock, /setFlightMessage/);
+  assert.doesNotMatch(arrivalBlock, /openItem/);
+
+  const activationStart = source.indexOf("const launchActive = useCallback");
+  const activationEnd = source.indexOf("\n\n  useEffect", activationStart);
+  const activationBlock = source.slice(activationStart, activationEnd);
+  assert.match(activationBlock, /isGalaxyFlightNear/);
+  assert.match(activationBlock, /openItem\(activeItem\)/);
 });
 
 test("corrupt state, input, timing and tuning never produce NaN", () => {

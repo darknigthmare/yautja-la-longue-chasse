@@ -18,6 +18,7 @@
     "film-plates:normalize": "node scripts/normalize-film-plates.mjs",
     "film-plates:contact-sheets": "node scripts/build-film-plate-contact-sheets.mjs",
     "film-plates:references": "node scripts/fetch-film-plate-references.mjs",
+    "galaxy-v11:build-backgrounds": "node scripts/build-galaxy-v11-system-backgrounds.mjs",
     "dlc:build-manifest": "node scripts/build-private-dlc-manifest.mjs",
     "dlc:split-wave-01": "py -3 scripts/split-private-dlc-atlas.py",
     "dlc:validate": "node scripts/validate-private-dlc.mjs",

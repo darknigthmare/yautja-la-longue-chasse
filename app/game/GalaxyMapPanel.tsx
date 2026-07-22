@@ -18,9 +18,12 @@ import {
   cancelGalaxyAutopilot,
   createGalaxyFlightState,
   engageGalaxyAutopilot,
+  galaxyFlightPointFromMapPosition,
+  galaxyFlightReturnAnchorId,
   isGalaxyFlightNear,
   normalizeGalaxyFlightInput,
   stepGalaxyFlight,
+  type GalaxyFlightNavigationPath,
   type GalaxyFlightPoint,
   type GalaxyFlightState,
 } from "./galaxyFlight";
@@ -40,9 +43,11 @@ import {
   type GalaxySectorNode,
   type GalaxySystemNode,
 } from "./galaxyNavigation";
+import { galaxyOrbitRingGeometry } from "./galaxyRegistry";
 import {
   GALAXY_V10_BACKGROUNDS,
   galaxyBodyVisualPath,
+  galaxySystemBackgroundPath,
 } from "./galaxyVisuals";
 import { V6_SHIP_VISUAL_BY_ROLE } from "./v6Visuals";
 import V6AtlasSprite from "./V6AtlasSprite";
@@ -115,16 +120,16 @@ function spatialPosition(
       3: [{ x: 25, y: 35 }, { x: 50, y: 72 }, { x: 78, y: 55 }],
     };
     position = systemLayouts[total]?.[index] ?? source;
-  } else if (level === "system") {
-    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(1, total);
-    position = {
-      x: 40 + Math.cos(angle) * 28,
-      y: 50 + Math.sin(angle) * 26,
-    };
   }
+  const horizontalBounds = level === "system"
+    ? { minimum: 4, maximum: 78 }
+    : { minimum: 9, maximum: 91 };
+  const verticalBounds = level === "system"
+    ? { minimum: 18, maximum: 82 }
+    : { minimum: 14, maximum: 82 };
   return {
-    x: Math.min(91, Math.max(9, position.x)),
-    y: Math.min(82, Math.max(14, position.y)),
+    x: Math.min(horizontalBounds.maximum, Math.max(horizontalBounds.minimum, position.x)),
+    y: Math.min(verticalBounds.maximum, Math.max(verticalBounds.minimum, position.y)),
   };
 }
 
@@ -178,6 +183,12 @@ export default function GalaxyMapPanel({
       reduceGalaxyNavigation(GALAXY_NAVIGATION, current, action),
     initialState ?? createGalaxyNavigationState(),
   );
+  const previousNavigationRef = useRef<GalaxyFlightNavigationPath>({
+    level: state.level,
+    sectorId: state.sectorId,
+    systemId: state.systemId,
+    planetId: state.planetId,
+  });
   const [stageAspect, setStageAspect] = useState(16 / 9);
   const stageAspectRef = useRef(stageAspect);
   const [flight, setFlight] = useState(() => initialFlightForLevel(state.level, stageAspect));
@@ -212,6 +223,13 @@ export default function GalaxyMapPanel({
     });
     return positions;
   }, [items, selection.sector, selection.system, state.level]);
+  const itemPositionsRef = useRef(itemPositions);
+  const itemsRef = useRef(items);
+
+  useEffect(() => {
+    itemPositionsRef.current = itemPositions;
+    itemsRef.current = items;
+  }, [itemPositions, items]);
 
   const activeItem = state.level === "mission"
     ? items.find(({ id }) => id === state.missionId) ?? items[0] ?? null
@@ -229,6 +247,13 @@ export default function GalaxyMapPanel({
     ? selection.system?.bodies.find(({ id }) => id === activeItem?.id) ?? null
     : selection.planet;
   const supportsFlight = FLIGHT_LEVELS.has(state.level);
+  const activeMapPosition = activeItem ? itemPositions.get(activeItem.id) : null;
+  const activeFlightPosition = activeMapPosition
+    ? galaxyFlightPointFromMapPosition(activeMapPosition, stageAspect)
+    : null;
+  const canEnterActive = supportsFlight && activeFlightPosition
+    ? isGalaxyFlightNear(flight.position, activeFlightPosition, 4.5)
+    : false;
 
   const navigateBack = useCallback(() => {
     if (state.level === "galaxy") onBack();
@@ -265,19 +290,20 @@ export default function GalaxyMapPanel({
     setFlightMessage("Trajectoire annulée · nouvelle cible sélectionnée");
   }, []);
 
-  const flyToItem = useCallback((item: GalaxyNavigationItem, index: number) => {
+  const traceRouteToItem = useCallback((item: GalaxyNavigationItem, index: number) => {
     focusItem(index);
     const mapPosition = itemPositions.get(item.id);
     if (!supportsFlight || !mapPosition) {
       openItem(item);
       return;
     }
-    const position = {
-      x: mapPosition.x * stageAspectRef.current,
-      y: mapPosition.y,
-    };
+    const position = galaxyFlightPointFromMapPosition(mapPosition, stageAspectRef.current);
     if (isGalaxyFlightNear(flightRef.current.position, position, 4.5)) {
-      openItem(item);
+      const next = cancelGalaxyAutopilot(flightRef.current);
+      flightTargetRef.current = null;
+      flightRef.current = next;
+      setFlight(next);
+      setFlightMessage(`${item.label} à portée · Entrée / A pour entrer`);
       return;
     }
     const next = engageGalaxyAutopilot(flightRef.current, item.id);
@@ -289,27 +315,62 @@ export default function GalaxyMapPanel({
 
   const launchActive = useCallback(() => {
     if (!activeItem) return;
-    flyToItem(activeItem, Math.max(0, items.indexOf(activeItem)));
-  }, [activeItem, flyToItem, items]);
+    const mapPosition = itemPositions.get(activeItem.id);
+    if (!supportsFlight || !mapPosition) {
+      openItem(activeItem);
+      return;
+    }
+    const position = galaxyFlightPointFromMapPosition(mapPosition, stageAspectRef.current);
+    if (isGalaxyFlightNear(flightRef.current.position, position, 4.5)) {
+      flightTargetRef.current = null;
+      openItem(activeItem);
+      return;
+    }
+    traceRouteToItem(activeItem, Math.max(0, items.indexOf(activeItem)));
+  }, [activeItem, itemPositions, items, openItem, supportsFlight, traceRouteToItem]);
 
   useEffect(() => {
     onStateChange?.(state);
   }, [onStateChange, state]);
 
   useEffect(() => {
-    const reset = initialFlightForLevel(state.level, stageAspectRef.current);
+    const previousNavigation = previousNavigationRef.current;
+    const returnAnchorId = galaxyFlightReturnAnchorId(previousNavigation, state.level);
+    const returnAnchor = returnAnchorId
+      ? itemPositionsRef.current.get(returnAnchorId)
+      : null;
+    const reset = returnAnchor
+      ? createGalaxyFlightState({
+          position: galaxyFlightPointFromMapPosition(returnAnchor, stageAspectRef.current),
+          heading: -90,
+          bounds: {
+            minX: 0,
+            maxX: 100 * stageAspectRef.current,
+            minY: 0,
+            maxY: 100,
+          },
+        })
+      : initialFlightForLevel(state.level, stageAspectRef.current);
+    previousNavigationRef.current = {
+      level: state.level,
+      sectorId: state.sectorId,
+      systemId: state.systemId,
+      planetId: state.planetId,
+    };
     flightTargetRef.current = null;
     flightRef.current = reset;
     heldKeysRef.current.clear();
     touchInputRef.current = { x: 0, y: 0 };
     const frame = window.requestAnimationFrame(() => {
       setFlight(reset);
-      setFlightMessage(state.level === "planet" || state.level === "mission"
-        ? "Scanner orbital en ligne"
-        : "Pilotage manuel");
+      setFlightMessage(returnAnchorId && returnAnchor
+        ? `Retour à proximité de ${itemsRef.current.find(({ id }) => id === returnAnchorId)?.label ?? "la dernière position"}`
+        : state.level === "planet" || state.level === "mission"
+          ? "Scanner orbital en ligne"
+          : "Pilotage manuel");
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [state.level, state.sectorId, state.systemId]);
+  }, [state.level, state.missionId, state.planetId, state.sectorId, state.systemId]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
@@ -407,8 +468,7 @@ export default function GalaxyMapPanel({
 
         if (target && current.mode === "autopilot" && next.mode === "manual" && next.targetId === null) {
           flightTargetRef.current = null;
-          setFlightMessage(`Destination atteinte : ${target.item.label}`);
-          openItem(target.item);
+          setFlightMessage(`${target.item.label} à portée · Entrée / A pour entrer`);
         }
       }
 
@@ -442,7 +502,7 @@ export default function GalaxyMapPanel({
     };
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
-  }, [cancelActiveRoute, openItem, supportsFlight]);
+  }, [cancelActiveRoute, supportsFlight]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.target !== event.currentTarget) return;
@@ -506,7 +566,9 @@ export default function GalaxyMapPanel({
     ? GALAXY_V10_BACKGROUNDS.galaxy
     : state.level === "sector"
       ? GALAXY_V10_BACKGROUNDS.sector
-      : GALAXY_V10_BACKGROUNDS.system;
+      : state.level === "system" && selection.system
+        ? galaxySystemBackgroundPath(selection.system)
+        : GALAXY_V10_BACKGROUNDS.system;
   const levelTitle = state.level === "galaxy"
     ? "Voie des grandes chasses"
     : state.level === "sector"
@@ -524,7 +586,7 @@ export default function GalaxyMapPanel({
               Retour
             </button>
             <div>
-              <p className="eyebrow">Navigation du vaisseau // Carte galactique V10</p>
+              <p className="eyebrow">Navigation du vaisseau // Carte galactique V11</p>
               <h1 id="galaxy-map-title">{levelTitle}</h1>
             </div>
           </div>
@@ -585,7 +647,7 @@ export default function GalaxyMapPanel({
               activeItem={activeItem}
               positions={itemPositions}
               selection={selection}
-              onSelect={flyToItem}
+              onSelect={traceRouteToItem}
             />
           ) : previewBody ? (
             <PlanetDossier
@@ -603,6 +665,9 @@ export default function GalaxyMapPanel({
             <>
               <div
                 className={`galaxy-v10-ship${flight.mode === "autopilot" ? " autopilot" : ""}`}
+                data-flight-x={flight.position.x}
+                data-flight-y={flight.position.y}
+                data-flight-mode={flight.mode}
                 style={{
                   "--ship-x": `${flight.position.x / stageAspect}%`,
                   "--ship-y": `${flight.position.y}%`,
@@ -624,6 +689,7 @@ export default function GalaxyMapPanel({
                 body={previewBody}
                 item={activeItem}
                 onTravel={launchActive}
+                canEnter={canEnterActive}
               />
 
               <div className="galaxy-v10-flight-controls" aria-label="Commandes du vaisseau">
@@ -635,7 +701,7 @@ export default function GalaxyMapPanel({
                   <button type="button" className="down" data-flight-x="0" data-flight-y="1" aria-label="Piloter vers le bas" onPointerDown={setTouchDirection} onPointerUp={clearTouchDirection} onPointerCancel={clearTouchDirection} onKeyDown={setKeyDirection} onKeyUp={clearTouchDirection} onBlur={clearTouchDirection}>Bas</button>
                 </div>
                 <button type="button" className="galaxy-v10-travel-button" disabled={!activeItem} onClick={launchActive}>
-                  Voyager / entrer
+                  {canEnterActive ? "Entrer dans la destination" : "Tracer la route"}
                 </button>
               </div>
             </>
@@ -671,11 +737,37 @@ function SpatialMap({
     <nav className="galaxy-v10-spatial-map" aria-label={`Destinations du niveau ${level}`}>
       {level === "system" && selection.system ? (
         <>
-          {[29, 43, 58, 73, 87].map((size) => (
-            <span key={size} className="galaxy-v10-orbit" style={{ "--orbit-size": `${size}%` } as CSSProperties} aria-hidden="true" />
-          ))}
-          <figure className="galaxy-v10-star" style={{ "--star-accent": selection.system.accent } as CSSProperties}>
-            <img src={GALAXY_V10_BACKGROUNDS.sector} alt="" aria-hidden="true" />
+          {selection.system.bodies.map((body, index) => {
+            const geometry = galaxyOrbitRingGeometry(body.orbit);
+            return (
+              <span
+                key={body.id}
+                className="galaxy-v10-orbit"
+                data-orbit-body={body.id}
+                data-orbit-radius={body.orbit.radius}
+                data-orbit-angle={body.orbit.angleDegrees}
+                style={{
+                  "--orbit-width": `${geometry.widthPercent}%`,
+                  "--orbit-height": `${geometry.heightPercent}%`,
+                  "--orbit-accent": body.accent,
+                  "--orbit-delay": `${index * -1.35}s`,
+                  "--orbit-opacity": `${(0.18 + selection.system!.visualProfile.orbitEccentricity * 0.28) * 100}%`,
+                } as CSSProperties}
+                aria-hidden="true"
+              />
+            );
+          })}
+          <figure
+            className="galaxy-v10-star"
+            data-system-background={selection.system.visualProfile.backgroundKey}
+            data-system-orbit-scale={selection.system.visualProfile.orbitScale}
+            data-system-orbit-tilt={selection.system.visualProfile.orbitTiltDegrees}
+            style={{
+              "--star-accent": selection.system.visualProfile.starGlow,
+              "--star-scale": Math.min(1.14, Math.max(0.88, selection.system.visualProfile.orbitScale)),
+            } as CSSProperties}
+          >
+            <img src={galaxySystemBackgroundPath(selection.system)} alt="" aria-hidden="true" />
             <figcaption><strong>{selection.system.starName}</strong><small>{selection.system.starClass}</small></figcaption>
           </figure>
         </>
@@ -698,6 +790,9 @@ function SpatialMap({
             type="button"
             aria-current={selected ? "true" : undefined}
             className={`galaxy-v10-node kind-${body?.bodyKind ?? item.kind}${selected ? " selected" : ""}${body?.status === "active" ? " hunt" : ""}`}
+            data-map-x={position.x}
+            data-map-y={position.y}
+            data-body-orbit-radius={body?.orbit.radius}
             style={{
               "--node-x": `${position.x}%`,
               "--node-y": `${position.y}%`,
@@ -727,12 +822,14 @@ function MapSelectionCard({
   body,
   item,
   onTravel,
+  canEnter,
 }: {
   sector: GalaxySectorNode | null;
   system: GalaxySystemNode | null;
   body: GalaxyBodyNode | null;
   item: GalaxyNavigationItem | null;
   onTravel: () => void;
+  canEnter: boolean;
 }) {
   if (!item) return null;
   const title = body?.name ?? system?.name ?? sector?.name ?? item.label;
@@ -747,7 +844,7 @@ function MapSelectionCard({
         {system && !body ? <><div><dt>Corps</dt><dd>{system.bodies.length}</dd></div><div><dt>Étoile</dt><dd>{system.starClass}</dd></div></> : null}
         {body ? <><div><dt>Statut</dt><dd>{GALAXY_BODY_STATUS_LABELS[body.status]}</dd></div><div><dt>Danger</dt><dd>{body.hazard}</dd></div></> : null}
       </dl>
-      <button type="button" onClick={onTravel}>Tracer la route</button>
+      <button type="button" onClick={onTravel}>{canEnter ? "Entrer" : "Tracer la route"}</button>
     </aside>
   );
 }

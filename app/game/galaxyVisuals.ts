@@ -1,10 +1,36 @@
-import type { GalaxyBodyType } from "./galaxyRegistry";
+import type {
+  GalaxyBodyType,
+  GalaxySystemVisualProfile,
+} from "./galaxyRegistry";
 
 export const GALAXY_V10_BACKGROUNDS = Object.freeze({
   galaxy: "/game/backgrounds/v10/galaxy-overview-v10.webp",
   sector: "/game/backgrounds/v10/sector-nebula-v10.webp",
   system: "/game/backgrounds/v9/galaxy-sector-v9.webp",
 } as const);
+
+export const GALAXY_V11_SYSTEM_BACKGROUNDS = Object.freeze({
+  "oseris-amber-canopy": "/game/backgrounds/v11/systems/system-oseris.webp",
+  "nivalis-crystal-halo": "/game/backgrounds/v11/systems/system-nivalis.webp",
+  "cinder-forge-dust": "/game/backgrounds/v11/systems/system-cinder.webp",
+  "naraka-toxic-veil": "/game/backgrounds/v11/systems/system-naraka.webp",
+  "serekh-copper-pilgrimage": "/game/backgrounds/v11/systems/system-serekh.webp",
+  "pelagos-abyssal-blue": "/game/backgrounds/v11/systems/system-pelagos.webp",
+  "mycora-spore-cloud": "/game/backgrounds/v11/systems/system-mycora.webp",
+  "acheron-pale-ruins": "/game/backgrounds/v11/systems/system-acheron.webp",
+  "kaail-hunting-preserve": "/game/backgrounds/v11/systems/system-kaail.webp",
+  "vardos-binary-foundries": "/game/backgrounds/v11/systems/system-vardos.webp",
+  "umbra-pulsar-lattice": "/game/backgrounds/v11/systems/system-umbra.webp",
+  "tempest-ion-vortex": "/game/backgrounds/v11/systems/system-tempest.webp",
+} as const satisfies Readonly<Record<string, string>>);
+
+export function galaxySystemBackgroundPath(system: {
+  readonly visualProfile: Readonly<GalaxySystemVisualProfile>;
+}): string {
+  return GALAXY_V11_SYSTEM_BACKGROUNDS[
+    system.visualProfile.backgroundKey as keyof typeof GALAXY_V11_SYSTEM_BACKGROUNDS
+  ] ?? GALAXY_V10_BACKGROUNDS.system;
+}
 
 export const GALAXY_V10_PLANET_IDS = Object.freeze([
   "planet-oseris-iv",

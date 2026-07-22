@@ -32,6 +32,20 @@ export interface GalaxyFlightTarget {
   position: GalaxyFlightPoint;
 }
 
+export type GalaxyFlightMapLevel =
+  | "galaxy"
+  | "sector"
+  | "system"
+  | "planet"
+  | "mission";
+
+export interface GalaxyFlightNavigationPath {
+  level: GalaxyFlightMapLevel;
+  sectorId: string | null;
+  systemId: string | null;
+  planetId: string | null;
+}
+
 export interface GalaxyFlightConfig {
   bounds: GalaxyFlightBounds;
   /** Map units per second squared. */
@@ -249,6 +263,40 @@ export function createGalaxyFlightState(
     mode,
     targetId: mode === "autopilot" ? targetId : null,
   };
+}
+
+/** Convert a visual map node into the aspect-corrected flight coordinate space. */
+export function galaxyFlightPointFromMapPosition(
+  mapPosition: Partial<GalaxyFlightPoint>,
+  aspect: number,
+): GalaxyFlightPoint {
+  const resolvedAspect = positive(aspect, 1);
+  return {
+    x: finiteOr(mapPosition.x, 50) * resolvedAspect,
+    y: finiteOr(mapPosition.y, 50),
+  };
+}
+
+/**
+ * Return the node representing the place just exited when moving back through
+ * the hierarchy: planet in system, system in sector, then sector in galaxy.
+ */
+export function galaxyFlightReturnAnchorId(
+  previous: GalaxyFlightNavigationPath,
+  destinationLevel: GalaxyFlightMapLevel,
+): string | null {
+  const rank: Readonly<Record<GalaxyFlightMapLevel, number>> = {
+    galaxy: 0,
+    sector: 1,
+    system: 2,
+    planet: 3,
+    mission: 4,
+  };
+  if (rank[destinationLevel] >= rank[previous.level]) return null;
+  if (destinationLevel === "galaxy") return previous.sectorId;
+  if (destinationLevel === "sector") return previous.systemId;
+  if (destinationLevel === "system") return previous.planetId;
+  return null;
 }
 
 export function engageGalaxyAutopilot(
