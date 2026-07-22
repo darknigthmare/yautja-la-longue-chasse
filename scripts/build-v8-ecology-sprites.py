@@ -124,6 +124,39 @@ SEMANTIC_SUPPLEMENTAL_REUSE = {
     "v8/naraka-delta/lantern-toad": "v8/oseris-iv/needle-frog",
 }
 
+# Independent frame-by-frame visual audit: these exact poses contained a
+# detached remnant from a neighbouring generated cell.  Cleanup happens after
+# the deterministic morphology pass and keeps the primary component at its
+# original coordinates (no recrop, resize or pose shift).  Intentional attack
+# projectiles on acid-pitcher and dart-pod frame 3 are deliberately excluded.
+PRIMARY_COMPONENT_ONLY_FRAMES: dict[str, frozenset[int]] = {
+    "v8/nivalis-k/frost-manta": frozenset((5,)),
+    "v8/pelagos-m/wavefin": frozenset((2, 3)),
+    "v8/pelagos-m/hunter-manta": frozenset((2, 3)),
+    "v8/pelagos-m/razor-shark": frozenset((1,)),
+    "v8/oseris-iv/carnivore-vine": frozenset((4,)),
+    "v8/oseris-iv/strangler-fig": frozenset((4,)),
+    "v8/nivalis-k/antifreeze-kelp": frozenset((4,)),
+    "v8/naraka-delta/reed-cat": frozenset((3,)),
+    "v8/cinder-12/glass-thorn": frozenset((2, 4)),
+    "v8/nivalis-k/crystal-reed": frozenset((2, 4)),
+    "v8/cinder-12/razor-reed": frozenset((2, 4)),
+    "v8/cinder-12/acid-pitcher": frozenset((4,)),
+    "v8/oseris-iv/dart-pod": frozenset((4,)),
+    "v8/cinder-12/grapple-root": frozenset((0, 1, 2, 4)),
+    "v8/oseris-iv/resin-trap": frozenset((0, 1, 2, 4)),
+    "v8/oseris-iv/coil-serpent": frozenset((2,)),
+}
+
+# These three variants share the same V7 vine source whose attack extends
+# across the nominal frame-3/right boundary. Recover the connected head before
+# per-species morphology; frame 4 is then cleaned independently above.
+RECOVER_CONNECTED_OVERFLOW_FRAMES: dict[str, frozenset[int]] = {
+    "v8/oseris-iv/carnivore-vine": frozenset((3,)),
+    "v8/oseris-iv/strangler-fig": frozenset((3,)),
+    "v8/nivalis-k/antifreeze-kelp": frozenset((3,)),
+}
+
 
 @dataclass(frozen=True)
 class EnemyAsset:
@@ -342,11 +375,43 @@ def alpha_bbox(image: Image.Image) -> tuple[int, int, int, int] | None:
     return alpha.getbbox()
 
 
+def alpha_component_sizes(image: Image.Image, threshold: int = 16) -> list[int]:
+    """Return 8-connected alpha-component populations, largest first."""
+    alpha = image.getchannel("A")
+    width, height = image.size
+    pixels = alpha.load()
+    seen = bytearray(width * height)
+    sizes: list[int] = []
+    for y in range(height):
+        for x in range(width):
+            start = y * width + x
+            if seen[start] or pixels[x, y] < threshold:
+                continue
+            seen[start] = 1
+            queue: deque[int] = deque((start,))
+            size = 0
+            while queue:
+                position = queue.popleft()
+                px = position % width
+                py = position // width
+                size += 1
+                for ny in range(max(0, py - 1), min(height, py + 2)):
+                    for nx in range(max(0, px - 1), min(width, px + 2)):
+                        neighbour = ny * width + nx
+                        if not seen[neighbour] and pixels[nx, ny] >= threshold:
+                            seen[neighbour] = 1
+                            queue.append(neighbour)
+            sizes.append(size)
+    return sorted(sizes, reverse=True)
+
+
 def isolate_primary_subject(
     cell: Image.Image,
     *,
     selection_box: tuple[int, int, int, int] | None = None,
     component_merge_gap: int = 8,
+    keep_secondary_components: bool = True,
+    secondary_ownership_min_fraction: float = 0.0,
 ) -> Image.Image:
     """Remove pose fragments leaking in from neighbouring generated cells."""
     alpha = cell.getchannel("A")
@@ -405,17 +470,27 @@ def isolate_primary_subject(
     primary_points, primary_bbox = components[0]
     pl, pt, pr, pb = primary_bbox
     selected = [primary_points]
-    for points, (left, top, right, bottom) in components[1:]:
-        if len(points) < 4:
-            continue
-        gap_x = max(pl - right, left - pr, 0)
-        gap_y = max(pt - bottom, top - pb, 0)
-        center_x = (left + right) / 2
-        center_y = (top + bottom) / 2
-        enclosed = pl - 8 <= center_x <= pr + 8 and pt - 8 <= center_y <= pb + 8
-        adjacent = gap_x <= component_merge_gap and gap_y <= component_merge_gap
-        if enclosed or adjacent:
-            selected.append(points)
+    if keep_secondary_components:
+        for points, (left, top, right, bottom) in components[1:]:
+            if len(points) < 4:
+                continue
+            if selection_box is not None and secondary_ownership_min_fraction > 0:
+                sl, st, sr, sb = selection_box
+                owned = sum(
+                    1
+                    for position in points
+                    if sl <= position % width < sr and st <= position // width < sb
+                )
+                if owned / len(points) < secondary_ownership_min_fraction:
+                    continue
+            gap_x = max(pl - right, left - pr, 0)
+            gap_y = max(pt - bottom, top - pb, 0)
+            center_x = (left + right) / 2
+            center_y = (top + bottom) / 2
+            enclosed = pl - 8 <= center_x <= pr + 8 and pt - 8 <= center_y <= pb + 8
+            adjacent = gap_x <= component_merge_gap and gap_y <= component_merge_gap
+            if enclosed or adjacent:
+                selected.append(points)
 
     clean_alpha = Image.new("L", cell.size, 0)
     clean_pixels = clean_alpha.load()
@@ -438,6 +513,8 @@ def extract_master_row(
     bottom_overscan: int = 0,
     horizontal_overscan: int = 0,
     component_merge_gap: int = 8,
+    keep_secondary_components: bool = True,
+    secondary_ownership_min_fraction: float = 0.0,
 ) -> Image.Image:
     """Extract one six-pose row, optionally recovering a pose below its grid line."""
     width, height = image.size
@@ -469,15 +546,23 @@ def extract_master_row(
                 nominal_x1 - x0,
                 nominal_y1 - y0,
             )
-        # Generated death poses often sit wholly below the nominal row. In the
-        # final column there is no right-hand pose to confuse selection, so the
-        # largest component is the reliable anchor for the recovered corpse.
+        # Generated death poses often sit wholly below the nominal row. Keep
+        # horizontal ownership in the final column while extending vertical
+        # ownership through the overscan, so a corpse is recovered without
+        # accepting a fragment leaking from the hit pose on its left.
         if column == FRAME_COUNT - 1 and bottom_overscan:
-            selection_box = None
+            selection_box = (
+                nominal_x0 - x0,
+                0,
+                nominal_x1 - x0,
+                y1 - y0,
+            )
         cell = isolate_primary_subject(
             image.crop((x0, y0, x1, y1)),
             selection_box=selection_box,
             component_merge_gap=component_merge_gap,
+            keep_secondary_components=keep_secondary_components,
+            secondary_ownership_min_fraction=secondary_ownership_min_fraction,
         )
         bbox = alpha_bbox(cell)
         if bbox is None:
@@ -506,6 +591,56 @@ def extract_master_rows(master: Path) -> tuple[Image.Image, ...]:
     return tuple(extract_master_row(image, master, row) for row in range(5))
 
 
+def recover_connected_overflow_frames(
+    source: Image.Image,
+    frame_indices: frozenset[int],
+    *,
+    horizontal_overscan: int = 64,
+) -> Image.Image:
+    """Recover a connected pose crossing a one-row strip's cell boundary."""
+    if source.size != SHEET_SIZE:
+        raise ValueError(f"Overflow recovery expects {SHEET_SIZE}, got {source.size}")
+    recovered = source.copy()
+    for column in sorted(frame_indices):
+        if not 0 <= column < FRAME_COUNT:
+            raise ValueError(f"Invalid overflow-recovery frame: {column}")
+        nominal_x0 = column * FRAME_WIDTH
+        nominal_x1 = (column + 1) * FRAME_WIDTH
+        x0 = max(0, nominal_x0 - horizontal_overscan)
+        x1 = min(source.width, nominal_x1 + horizontal_overscan)
+        cell = isolate_primary_subject(
+            source.crop((x0, 0, x1, FRAME_HEIGHT)),
+            selection_box=(
+                nominal_x0 - x0,
+                0,
+                nominal_x1 - x0,
+                FRAME_HEIGHT,
+            ),
+            keep_secondary_components=False,
+        )
+        bbox = alpha_bbox(cell)
+        if bbox is None:
+            raise ValueError(f"Empty recovered overflow frame {column}")
+        crop = cell.crop(bbox)
+        scale = min(232 / crop.width, 176 / crop.height, 1.0)
+        size = (
+            max(1, round(crop.width * scale)),
+            max(1, round(crop.height * scale)),
+        )
+        crop = crop.resize(size, Image.Resampling.LANCZOS)
+        canvas = Image.new("RGBA", (FRAME_WIDTH, FRAME_HEIGHT), (0, 0, 0, 0))
+        canvas.alpha_composite(
+            crop,
+            ((FRAME_WIDTH - crop.width) // 2, FRAME_HEIGHT - 8 - crop.height),
+        )
+        recovered.paste(
+            Image.new("RGBA", (FRAME_WIDTH, FRAME_HEIGHT), (0, 0, 0, 0)),
+            (nominal_x0, 0),
+        )
+        recovered.alpha_composite(canvas, (nominal_x0, 0))
+    return recovered
+
+
 def native_sources() -> dict[str, tuple[Image.Image, ...]]:
     sources: dict[str, tuple[Image.Image, ...]] = {}
     for planet in NEW_BIOMES:
@@ -520,7 +655,9 @@ def supplemental_sources() -> dict[str, dict[str, object]]:
     """Load exact spriteId -> OpenAI row overrides from both production lots."""
     sources: dict[str, dict[str, object]] = {}
     master_cache: dict[Path, tuple[Image.Image, ...]] = {}
-    recovered_row_cache: dict[tuple[Path, int, int, int, int], Image.Image] = {}
+    recovered_row_cache: dict[
+        tuple[Path, int, int, int, int, bool, float], Image.Image
+    ] = {}
     for manifest_path in sorted(SOURCE_ROOT.glob("supplemental/*/manifest.json")):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         for entry in manifest.get("entries", []):
@@ -536,13 +673,38 @@ def supplemental_sources() -> dict[str, dict[str, object]]:
             bottom_overscan = int(entry.get("bottomOverscan", 0))
             horizontal_overscan = int(entry.get("horizontalOverscan", 0))
             component_merge_gap = int(entry.get("componentMergeGap", 8))
-            if bottom_overscan or horizontal_overscan or component_merge_gap != 8:
+            keep_secondary_components = bool(entry.get("keepSecondaryComponents", True))
+            secondary_ownership_min_fraction = float(
+                entry.get("secondaryOwnershipMinFraction", 0.0)
+            )
+            if not 0 <= secondary_ownership_min_fraction <= 1:
+                raise ValueError(
+                    f"Invalid secondary ownership fraction for {sprite_id}: "
+                    f"{secondary_ownership_min_fraction}"
+                )
+            max_secondary_component_ratio = entry.get("maxSecondaryComponentRatio")
+            if max_secondary_component_ratio is not None:
+                max_secondary_component_ratio = float(max_secondary_component_ratio)
+                if not 0 <= max_secondary_component_ratio <= 1:
+                    raise ValueError(
+                        f"Invalid max secondary component ratio for {sprite_id}: "
+                        f"{max_secondary_component_ratio}"
+                    )
+            if (
+                bottom_overscan
+                or horizontal_overscan
+                or component_merge_gap != 8
+                or not keep_secondary_components
+                or secondary_ownership_min_fraction > 0
+            ):
                 cache_key = (
                     master_path,
                     row,
                     bottom_overscan,
                     horizontal_overscan,
                     component_merge_gap,
+                    keep_secondary_components,
+                    secondary_ownership_min_fraction,
                 )
                 if cache_key not in recovered_row_cache:
                     master_image = Image.open(master_path).convert("RGBA")
@@ -553,6 +715,8 @@ def supplemental_sources() -> dict[str, dict[str, object]]:
                         bottom_overscan=bottom_overscan,
                         horizontal_overscan=horizontal_overscan,
                         component_merge_gap=component_merge_gap,
+                        keep_secondary_components=keep_secondary_components,
+                        secondary_ownership_min_fraction=secondary_ownership_min_fraction,
                     )
                 row_image = recovered_row_cache[cache_key]
             else:
@@ -563,6 +727,7 @@ def supplemental_sources() -> dict[str, dict[str, object]]:
                 "image": row_image,
                 "source": f"{master_path.relative_to(ROOT).as_posix()}#row-{row + 1}",
                 "anatomy": str(entry.get("anatomy", "Dedicated semantic override")),
+                "maxSecondaryComponentRatio": max_secondary_component_ratio,
             }
     return sources
 
@@ -847,9 +1012,17 @@ def render_asset(
     source, source_label, family, source_match, anatomy = select_source(
         asset, natives, supplements
     )
+    recovered_overflow_frames = RECOVER_CONNECTED_OVERFLOW_FRAMES.get(
+        asset.sprite_id, frozenset()
+    )
+    if recovered_overflow_frames:
+        source = recover_connected_overflow_frames(source, recovered_overflow_frames)
     if source.size != SHEET_SIZE:
         raise ValueError(f"Unexpected seed dimensions for {asset.sprite_id}: {source.size}")
     digest = stable_bytes(asset.sprite_id)
+    primary_component_only_frames = PRIMARY_COMPONENT_ONLY_FRAMES.get(
+        asset.sprite_id, frozenset()
+    )
     strip = Image.new("RGBA", SHEET_SIZE, (0, 0, 0, 0))
     for index in range(FRAME_COUNT):
         frame = source.crop(
@@ -857,6 +1030,11 @@ def render_asset(
         )
         frame = fit_variant_geometry(frame, digest)
         frame = tint_frame(frame, asset.planet, digest, index)
+        if index in primary_component_only_frames:
+            frame = isolate_primary_subject(
+                frame,
+                keep_secondary_components=False,
+            )
         strip.alpha_composite(frame, (index * FRAME_WIDTH, 0))
 
     palette_index = digest[4] % len(PALETTES[asset.planet])
@@ -875,7 +1053,12 @@ def render_asset(
     }
 
 
-def validate_sheet(path: Path) -> dict[str, object]:
+def validate_sheet(
+    path: Path,
+    *,
+    max_secondary_component_ratio: float | None = None,
+    primary_component_only_frames: frozenset[int] = frozenset(),
+) -> dict[str, object]:
     image = Image.open(path).convert("RGBA")
     if image.size != SHEET_SIZE or image.mode != "RGBA":
         raise ValueError(f"Invalid format for {path}: {image.size} {image.mode}")
@@ -883,6 +1066,7 @@ def validate_sheet(path: Path) -> dict[str, object]:
     if any(corners):
         raise ValueError(f"Opaque corner in {path}")
     populated: list[int] = []
+    secondary_component_ratios: list[float] = []
     for index in range(FRAME_COUNT):
         frame = image.crop(
             (index * FRAME_WIDTH, 0, (index + 1) * FRAME_WIDTH, FRAME_HEIGHT)
@@ -895,6 +1079,26 @@ def validate_sheet(path: Path) -> dict[str, object]:
         if count < 250:
             raise ValueError(f"Under-populated frame {index} in {path}: {count}")
         populated.append(count)
+        component_sizes = alpha_component_sizes(frame)
+        secondary_ratio = (
+            component_sizes[1] / component_sizes[0]
+            if len(component_sizes) > 1
+            else 0.0
+        )
+        secondary_component_ratios.append(secondary_ratio)
+        if (
+            max_secondary_component_ratio is not None
+            and secondary_ratio > max_secondary_component_ratio
+        ):
+            raise ValueError(
+                f"Detached component above {max_secondary_component_ratio:.3f} "
+                f"of primary in frame {index} of {path}: {secondary_ratio:.3f}"
+            )
+        if index in primary_component_only_frames and secondary_ratio > 0.01:
+            raise ValueError(
+                f"Audited primary-only frame {index} retains a detached component "
+                f"in {path}: {secondary_ratio:.3f}"
+            )
     reference_population = sorted(populated[: FRAME_COUNT - 1])[2]
     death_ratio = populated[-1] / reference_population
     if death_ratio < 0.20:
@@ -913,6 +1117,10 @@ def validate_sheet(path: Path) -> dict[str, object]:
         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "populatedPixels": populated,
         "deathPopulationRatio": round(death_ratio, 4),
+        "secondaryComponentRatios": [
+            round(ratio, 4) for ratio in secondary_component_ratios
+        ],
+        "maxSecondaryComponentRatio": round(max(secondary_component_ratios), 4),
         "bytes": path.stat().st_size,
     }
 
@@ -922,6 +1130,16 @@ def main() -> None:
     natives = native_sources()
     supplements = supplemental_sources()
     catalogue_ids = {asset.sprite_id for asset in assets}
+    unknown_primary_only_ids = set(PRIMARY_COMPONENT_ONLY_FRAMES) - catalogue_ids
+    if unknown_primary_only_ids:
+        raise ValueError(
+            f"Unknown primary-component cleanup IDs: {sorted(unknown_primary_only_ids)}"
+        )
+    unknown_recovery_ids = set(RECOVER_CONNECTED_OVERFLOW_FRAMES) - catalogue_ids
+    if unknown_recovery_ids:
+        raise ValueError(
+            f"Unknown overflow-recovery IDs: {sorted(unknown_recovery_ids)}"
+        )
     unknown_supplements = set(supplements) - catalogue_ids
     if unknown_supplements:
         raise ValueError(f"Unknown supplemental sprite IDs: {sorted(unknown_supplements)}")
@@ -949,12 +1167,22 @@ def main() -> None:
             print(f"Rendered {index}/{len(assets)} ecology strips")
 
     runtime_prefix = "/game/sprites/v8/ecology/"
-    reports = {
-        entry["spriteId"]: validate_sheet(
-            OUTPUT_ROOT / str(entry["sheet"]).removeprefix(runtime_prefix)
+    reports: dict[str, dict[str, object]] = {}
+    for entry in manifest_entries:
+        sprite_id = str(entry["spriteId"])
+        supplemental = supplements.get(sprite_id)
+        max_secondary_component_ratio = (
+            supplemental.get("maxSecondaryComponentRatio")
+            if supplemental is not None
+            else None
         )
-        for entry in manifest_entries
-    }
+        reports[sprite_id] = validate_sheet(
+            OUTPUT_ROOT / str(entry["sheet"]).removeprefix(runtime_prefix),
+            max_secondary_component_ratio=max_secondary_component_ratio,
+            primary_component_only_frames=PRIMARY_COMPONENT_ONLY_FRAMES.get(
+                sprite_id, frozenset()
+            ),
+        )
     hashes = [report["sha256"] for report in reports.values()]
     if len(set(hashes)) != len(hashes):
         raise ValueError("Every physical ecology sheet must have a unique SHA-256")
