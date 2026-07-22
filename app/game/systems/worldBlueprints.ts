@@ -29,6 +29,10 @@ export type SurfaceMaterial =
   | "root"
   | "mud"
   | "water"
+  | "sand"
+  | "coral"
+  | "mycelium"
+  | "obsidian"
   | "stone"
   | "snow"
   | "ice"
@@ -85,7 +89,20 @@ export type HazardKind =
   | "whiteout"
   | "lava"
   | "steam-vent"
-  | "ash-squall";
+  | "ash-squall"
+  | "tidal-surge"
+  | "sand-collapse"
+  | "glass-storm"
+  | "heat-burst"
+  | "rogue-wave"
+  | "electrical-surge"
+  | "abyssal-vent"
+  | "spore-cloud"
+  | "mycelial-snare"
+  | "acid-bloom"
+  | "gravity-pulse"
+  | "nanite-field"
+  | "laser-grid";
 
 export interface HazardCycle {
   periodSeconds: number;
@@ -392,6 +409,132 @@ const VOLCANO_WORLD_BASE: WorldBlueprint = {
 
 const BASE_WORLD_WIDTH = 5_600;
 
+type BlueprintBiomeFamily = "jungle" | "ice" | "volcano";
+
+/**
+ * New worlds inherit a battle-tested collision vocabulary while their room
+ * plan adds endemic traversal features. This keeps every planet playable in
+ * the current Canvas runtime without collapsing its public biome identity.
+ */
+function biomeFamily(biome: BiomeId): BlueprintBiomeFamily {
+  if (biome === "swamp" || biome === "fungal") return "jungle";
+  if (biome === "ocean") return "ice";
+  if (biome === "desert" || biome === "ruins") return "volcano";
+  return biome;
+}
+
+type ExpansionBiomeId = Exclude<BiomeId, "jungle" | "ice" | "volcano">;
+
+const EXPANSION_HAZARD_KINDS: Readonly<
+  Record<ExpansionBiomeId, readonly [HazardKind, HazardKind, HazardKind]>
+> = {
+  swamp: ["deep-mud", "predatory-flora", "tidal-surge"],
+  desert: ["sand-collapse", "heat-burst", "glass-storm"],
+  ocean: ["rogue-wave", "electrical-surge", "abyssal-vent"],
+  fungal: ["spore-cloud", "mycelial-snare", "acid-bloom"],
+  ruins: ["gravity-pulse", "nanite-field", "laser-grid"],
+};
+
+type HazardBehavior = Pick<
+  WorldHazard,
+  | "damagePerSecond"
+  | "movementMultiplier"
+  | "noisePerSecond"
+  | "trackMultiplier"
+  | "revealsCloak"
+  | "telegraphSeconds"
+  | "cycle"
+>;
+
+function hazardCycle(
+  periodSeconds: number,
+  activeSeconds: number,
+  phaseSeconds: number,
+): HazardCycle {
+  return { periodSeconds, activeSeconds, phaseSeconds };
+}
+
+function hazardBehavior(kind: HazardKind, variant: number): HazardBehavior {
+  switch (kind) {
+    case "deep-mud":
+      return { damagePerSecond: 0, movementMultiplier: 0.52, noisePerSecond: 0.12, trackMultiplier: 2.6, revealsCloak: false, telegraphSeconds: 0, cycle: null };
+    case "predatory-flora":
+      return { damagePerSecond: 10, movementMultiplier: 0.7, noisePerSecond: 0.42, trackMultiplier: 1.2, revealsCloak: true, telegraphSeconds: 0.45, cycle: hazardCycle(4.5, 1.4, variant * 0.8) };
+    case "tidal-surge":
+      return { damagePerSecond: 8, movementMultiplier: 0.44, noisePerSecond: 0.82, trackMultiplier: 0.15, revealsCloak: true, telegraphSeconds: 1.5, cycle: hazardCycle(11, 3, variant * 1.2) };
+    case "sand-collapse":
+      return { damagePerSecond: 7, movementMultiplier: 0.43, noisePerSecond: 0.36, trackMultiplier: 2.2, revealsCloak: false, telegraphSeconds: 1.25, cycle: hazardCycle(10, 2.4, variant) };
+    case "glass-storm":
+      return { damagePerSecond: 4, movementMultiplier: 0.76, noisePerSecond: 0.38, trackMultiplier: 1.8, revealsCloak: true, telegraphSeconds: 1.8, cycle: hazardCycle(14, 5, variant * 1.5) };
+    case "heat-burst":
+      return { damagePerSecond: 16, movementMultiplier: 0.82, noisePerSecond: 0.7, trackMultiplier: 0.12, revealsCloak: true, telegraphSeconds: 1, cycle: hazardCycle(7, 1.6, variant * 0.7) };
+    case "rogue-wave":
+      return { damagePerSecond: 12, movementMultiplier: 0.48, noisePerSecond: 0.92, trackMultiplier: 0.1, revealsCloak: true, telegraphSeconds: 1.4, cycle: hazardCycle(11, 2.6, variant * 1.1) };
+    case "electrical-surge":
+      return { damagePerSecond: 18, movementMultiplier: 0.84, noisePerSecond: 0.78, trackMultiplier: 0.2, revealsCloak: true, telegraphSeconds: 0.8, cycle: hazardCycle(8, 1.2, variant * 0.65) };
+    case "abyssal-vent":
+      return { damagePerSecond: 14, movementMultiplier: 0.72, noisePerSecond: 0.68, trackMultiplier: 0.25, revealsCloak: true, telegraphSeconds: 1.1, cycle: hazardCycle(7, 1.8, variant * 0.9) };
+    case "spore-cloud":
+      return { damagePerSecond: 4, movementMultiplier: 0.72, noisePerSecond: 0.18, trackMultiplier: 1.6, revealsCloak: true, telegraphSeconds: 1.6, cycle: hazardCycle(12, 4, variant * 1.3) };
+    case "mycelial-snare":
+      return { damagePerSecond: 6, movementMultiplier: 0.4, noisePerSecond: 0.1, trackMultiplier: 2.3, revealsCloak: false, telegraphSeconds: 0.7, cycle: hazardCycle(8, 3, variant) };
+    case "acid-bloom":
+      return { damagePerSecond: 15, movementMultiplier: 0.65, noisePerSecond: 0.4, trackMultiplier: 0.6, revealsCloak: true, telegraphSeconds: 1, cycle: hazardCycle(6.5, 1.5, variant * 0.6) };
+    case "gravity-pulse":
+      return { damagePerSecond: 10, movementMultiplier: 0.55, noisePerSecond: 0.7, trackMultiplier: 0.1, revealsCloak: true, telegraphSeconds: 1.2, cycle: hazardCycle(9, 2, variant) };
+    case "nanite-field":
+      return { damagePerSecond: 7, movementMultiplier: 0.8, noisePerSecond: 0.22, trackMultiplier: 0.5, revealsCloak: true, telegraphSeconds: 1.5, cycle: hazardCycle(12, 4, variant * 1.4) };
+    case "laser-grid":
+      return { damagePerSecond: 22, movementMultiplier: 0.9, noisePerSecond: 0.85, trackMultiplier: 0, revealsCloak: true, telegraphSeconds: 0.9, cycle: hazardCycle(7, 1, variant * 0.75) };
+    case "lava":
+      return { damagePerSecond: 34, movementMultiplier: 0.35, noisePerSecond: 0.5, trackMultiplier: 0, revealsCloak: true, telegraphSeconds: 0, cycle: null };
+    case "steam-vent":
+      return { damagePerSecond: 15, movementMultiplier: 0.74, noisePerSecond: 0.72, trackMultiplier: 0.25, revealsCloak: true, telegraphSeconds: 1, cycle: hazardCycle(6.5, 1.8, variant) };
+    case "thin-ice":
+      return { damagePerSecond: 14, movementMultiplier: 0.7, noisePerSecond: 0.62, trackMultiplier: 1.6, revealsCloak: false, telegraphSeconds: 1.1, cycle: hazardCycle(9, 2.2, variant) };
+    default:
+      return { damagePerSecond: 8, movementMultiplier: 0.78, noisePerSecond: 0.4, trackMultiplier: 1, revealsCloak: false, telegraphSeconds: 1, cycle: null };
+  }
+}
+
+function surfaceBehavior(
+  material: SurfaceMaterial,
+): Omit<TrackSurface, keyof WorldRect | "id" | "material"> {
+  switch (material) {
+    case "mud":
+      return { footprintPersistenceSeconds: 92, scentRetention: 1.45, movementMultiplier: 0.58, baseNoise: 0.42, mudDepth: 0.82 };
+    case "water":
+      return { footprintPersistenceSeconds: 0, scentRetention: 0.15, movementMultiplier: 0.62, baseNoise: 0.56, mudDepth: 0.28 };
+    case "sand":
+      return { footprintPersistenceSeconds: 66, scentRetention: 0.18, movementMultiplier: 0.86, baseNoise: 0.34, mudDepth: 0 };
+    case "coral":
+      return { footprintPersistenceSeconds: 18, scentRetention: 0.12, movementMultiplier: 0.92, baseNoise: 0.52, mudDepth: 0 };
+    case "mycelium":
+      return { footprintPersistenceSeconds: 88, scentRetention: 1.2, movementMultiplier: 0.8, baseNoise: 0.24, mudDepth: 0.12 };
+    case "obsidian":
+      return { footprintPersistenceSeconds: 6, scentRetention: 0.02, movementMultiplier: 1, baseNoise: 0.7, mudDepth: 0 };
+    case "soil":
+      return { footprintPersistenceSeconds: 28, scentRetention: 0.88, movementMultiplier: 1, baseNoise: 0.24, mudDepth: 0.04 };
+    case "ruin":
+      return { footprintPersistenceSeconds: 8, scentRetention: 0.08, movementMultiplier: 0.98, baseNoise: 0.58, mudDepth: 0 };
+    case "stone":
+      return { footprintPersistenceSeconds: 12, scentRetention: 0.1, movementMultiplier: 1, baseNoise: 0.55, mudDepth: 0 };
+    default:
+      return { footprintPersistenceSeconds: 20, scentRetention: 0.2, movementMultiplier: 0.96, baseNoise: 0.38, mudDepth: 0 };
+  }
+}
+
+function platformBehavior(
+  material: SurfaceMaterial,
+): Pick<WorldPlatform, "noiseMultiplier" | "trackPersistence"> {
+  if (material === "metal") return { noiseMultiplier: 1.6, trackPersistence: 0.02 };
+  if (material === "root" || material === "mycelium") return { noiseMultiplier: 0.7, trackPersistence: 0.3 };
+  if (material === "sand") return { noiseMultiplier: 0.82, trackPersistence: 0.9 };
+  if (material === "coral") return { noiseMultiplier: 1.12, trackPersistence: 0.1 };
+  if (material === "obsidian") return { noiseMultiplier: 1.3, trackPersistence: 0.03 };
+  return { noiseMultiplier: 1.05, trackPersistence: 0.08 };
+}
+
 interface FeatureGeometry {
   platforms: WorldPlatform[];
   climbables: WorldClimbable[];
@@ -462,12 +605,13 @@ function routeForFeature(
   biome: BiomeId,
   item: WorldScreenFeature,
 ): RouteId {
-  if (biome === "jungle") {
+  const family = biomeFamily(biome);
+  if (family === "jungle") {
     if (item.role === "climb") return "canopy";
     if (item.role === "water") return "flooded-cut";
     return "ground";
   }
-  if (biome === "ice") {
+  if (family === "ice") {
     if (
       item.kind === "metal-gantry" ||
       item.kind === "ladder" ||
@@ -496,13 +640,23 @@ function materialForFeature(
   if (item.kind === "metal-gantry" || item.kind === "ladder") return "metal";
   if (item.kind === "ruin") return "ruin";
   if (item.kind === "basalt-column" || item.kind === "lava") return "basalt";
-  if (item.kind === "mud") return biome === "volcano" ? "ash" : "mud";
+  if (item.kind === "rock-face") return "stone";
+  if (item.kind === "mud") return "mud";
   if (item.kind === "water") return "water";
+  if (item.kind === "sand") return "sand";
+  if (item.kind === "coral") return "coral";
+  if (item.kind === "mycelium") return "mycelium";
+  if (item.kind === "obsidian") return "obsidian";
   if (item.kind === "snowdrift") return "snow";
   if (item.kind === "thin-ice" || item.kind === "ice-wall") return "ice";
   if (biome === "jungle") return item.kind === "platform" ? "root" : "soil";
   if (biome === "ice") return "ice";
-  return "basalt";
+  if (biome === "volcano") return "basalt";
+  if (biome === "swamp") return item.kind === "platform" ? "root" : "soil";
+  if (biome === "desert") return "sand";
+  if (biome === "ocean") return "coral";
+  if (biome === "fungal") return "mycelium";
+  return "obsidian";
 }
 
 function boundedFeatureX(
@@ -521,6 +675,7 @@ function climbableKind(item: WorldScreenFeature): ClimbableKind {
   switch (item.kind) {
     case "tree":
     case "vine":
+    case "rock-face":
     case "ice-wall":
     case "ladder":
     case "rope":
@@ -556,6 +711,7 @@ function geometryForScreenFeatures(
     if (item.role === "platform") {
       const width = item.kind === "metal-gantry" ? 340 : item.kind === "ruin" ? 300 : 270;
       const y = [512, 430, 366][variant];
+      const behavior = platformBehavior(material);
       result.platforms.push({
         id,
         x: boundedFeatureX(item.x, width, worldWidth),
@@ -565,8 +721,7 @@ function geometryForScreenFeatures(
         material,
         routeId,
         collision: "one-way",
-        noiseMultiplier: material === "metal" ? 1.6 : material === "root" ? 0.7 : 1.05,
-        trackPersistence: material === "root" ? 0.28 : material === "ice" ? 1.25 : 0.08,
+        ...behavior,
       });
       continue;
     }
@@ -597,36 +752,31 @@ function geometryForScreenFeatures(
     }
 
     if (item.role === "hazard") {
-      const kind: HazardKind =
-        item.kind === "lava"
-          ? "lava"
-          : item.kind === "steam-vent"
-            ? "steam-vent"
-            : "thin-ice";
-      const vertical = kind === "steam-vent";
-      const width = vertical ? 250 : kind === "lava" ? 360 : 330;
-      const y = vertical ? 310 : 590;
-      const height = vertical ? floorY - y : floorY - y;
+      const kind = item.kind as HazardKind;
+      const vertical = new Set<HazardKind>([
+        "steam-vent",
+        "glass-storm",
+        "heat-burst",
+        "electrical-surge",
+        "abyssal-vent",
+        "spore-cloud",
+        "acid-bloom",
+        "gravity-pulse",
+        "nanite-field",
+        "laser-grid",
+      ]).has(kind);
+      const width = vertical ? 290 : kind === "lava" ? 360 : 390;
+      const y = vertical ? 290 : kind === "tidal-surge" || kind === "rogue-wave" ? 560 : 590;
+      const behavior = hazardBehavior(kind, variant);
       result.hazards.push({
         id,
         x: boundedFeatureX(item.x, width, worldWidth),
         y,
         width,
-        height,
+        height: floorY - y,
         kind,
         routeId,
-        damagePerSecond: kind === "lava" ? 34 : kind === "steam-vent" ? 15 : 14,
-        movementMultiplier: kind === "lava" ? 0.35 : kind === "steam-vent" ? 0.74 : 0.7,
-        noisePerSecond: kind === "steam-vent" ? 0.72 : 0.62,
-        trackMultiplier: kind === "thin-ice" ? 1.6 : 0.1,
-        revealsCloak: kind !== "thin-ice",
-        telegraphSeconds: kind === "lava" ? 0 : kind === "steam-vent" ? 1 : 1.1,
-        cycle:
-          kind === "steam-vent"
-            ? { periodSeconds: 6.5, activeSeconds: 1.8, phaseSeconds: variant }
-            : kind === "thin-ice"
-              ? { periodSeconds: 9, activeSeconds: 2.2, phaseSeconds: variant }
-              : null,
+        ...behavior,
       });
       continue;
     }
@@ -651,6 +801,7 @@ function geometryForScreenFeatures(
     const isWater = item.role === "water";
     const width = isWater ? 420 : 340;
     const y = isWater ? 570 : 584;
+    const behavior = surfaceBehavior(material);
     result.surfaces.push({
       id,
       x: boundedFeatureX(item.x, width, worldWidth),
@@ -658,11 +809,7 @@ function geometryForScreenFeatures(
       width,
       height: floorY - y,
       material,
-      footprintPersistenceSeconds: isWater ? 0 : material === "mud" ? 92 : 76,
-      scentRetention: isWater ? 0.15 : material === "mud" ? 1.45 : 0.3,
-      movementMultiplier: isWater ? 0.62 : material === "mud" ? 0.58 : 0.9,
-      baseNoise: isWater ? 0.56 : material === "mud" ? 0.42 : 0.3,
-      mudDepth: material === "mud" ? 0.82 : isWater ? 0.28 : 0,
+      ...behavior,
     });
   }
 
@@ -720,12 +867,150 @@ const JUNGLE_WORLD = buildPlayableWorld(JUNGLE_WORLD_BASE);
 const ICE_WORLD = buildPlayableWorld(ICE_WORLD_BASE);
 const VOLCANO_WORLD = buildPlayableWorld(VOLCANO_WORLD_BASE);
 
+function expansionPlatformMaterial(
+  biome: ExpansionBiomeId,
+  material: SurfaceMaterial,
+): SurfaceMaterial {
+  if (biome === "swamp") {
+    if (material === "metal" || material === "stone") return material;
+    return "root";
+  }
+  if (biome === "desert") return material === "ruin" ? "ruin" : "stone";
+  if (biome === "ocean") {
+    if (material === "metal" || material === "stone") return material;
+    return "coral";
+  }
+  if (biome === "fungal") {
+    if (material === "metal" || material === "stone") return material;
+    return "mycelium";
+  }
+  return material === "ruin" ? "ruin" : "obsidian";
+}
+
+function expansionSurfaceMaterial(
+  biome: ExpansionBiomeId,
+  material: SurfaceMaterial,
+): SurfaceMaterial {
+  if (biome === "swamp") {
+    if (material === "mud" || material === "water") return material;
+    return "soil";
+  }
+  if (biome === "desert") return material === "basalt" ? "stone" : "sand";
+  if (biome === "ocean") return material === "ice" ? "water" : "coral";
+  if (biome === "fungal") {
+    if (material === "mud" || material === "water") return material;
+    return "mycelium";
+  }
+  return material === "basalt" ? "ruin" : "obsidian";
+}
+
+function expansionClimbableKind(
+  biome: ExpansionBiomeId,
+  kind: ClimbableKind,
+): ClimbableKind {
+  if (biome === "ocean" && kind === "ice-wall") return "rock-face";
+  if (
+    (biome === "desert" || biome === "ruins") &&
+    kind === "basalt-column"
+  ) {
+    return "rock-face";
+  }
+  return kind;
+}
+
+function expansionWorldBase(
+  template: WorldBlueprint,
+  missionId: MissionId,
+  biome: ExpansionBiomeId,
+  windSeed: number,
+  routeLabels: readonly [string, string, string],
+): WorldBlueprint {
+  const hazardKinds = EXPANSION_HAZARD_KINDS[biome];
+  return {
+    ...template,
+    missionId,
+    biome,
+    wind: { ...template.wind, seed: windSeed },
+    platforms: template.platforms.map((platform) => {
+      const material = expansionPlatformMaterial(biome, platform.material);
+      return { ...platform, material, ...platformBehavior(material) };
+    }),
+    climbables: template.climbables.map((climbable) => ({
+      ...climbable,
+      kind: expansionClimbableKind(biome, climbable.kind),
+    })),
+    hazards: template.hazards.map((hazard, index) => {
+      const kind = hazardKinds[index % hazardKinds.length];
+      return { ...hazard, kind, ...hazardBehavior(kind, index) };
+    }),
+    surfaces: template.surfaces.map((surface) => {
+      const material = expansionSurfaceMaterial(biome, surface.material);
+      return { ...surface, material, ...surfaceBehavior(material) };
+    }),
+    routes: template.routes.map((route, index) => ({
+      ...route,
+      label: routeLabels[index] ?? route.label,
+    })),
+  };
+}
+
+const SWAMP_WORLD = buildPlayableWorld(
+  expansionWorldBase(
+    JUNGLE_WORLD_BASE,
+    "swamp-hydra",
+    "swamp",
+    0x5a4d09,
+    ["Mangrove basse", "Couronnes de racines", "Chenaux de marée"],
+  ),
+);
+const DESERT_WORLD = buildPlayableWorld(
+  expansionWorldBase(
+    VOLCANO_WORLD_BASE,
+    "desert-sandmaw",
+    "desert",
+    0xde5e47,
+    ["Mer de silice", "Couloirs du vent", "Crêtes du canyon"],
+  ),
+);
+const OCEAN_WORLD = buildPlayableWorld(
+  expansionWorldBase(
+    ICE_WORLD_BASE,
+    "ocean-leviathan",
+    "ocean",
+    0x0cea71,
+    ["Récif battu", "Arches submergées", "Passerelles de la station"],
+  ),
+);
+const FUNGAL_WORLD = buildPlayableWorld(
+  expansionWorldBase(
+    JUNGLE_WORLD_BASE,
+    "fungal-hivemind",
+    "fungal",
+    0xf09a17,
+    ["Tapis mycélien", "Tours de fructification", "Racines-mémoires"],
+  ),
+);
+const RUINS_WORLD = buildPlayableWorld(
+  expansionWorldBase(
+    VOLCANO_WORLD_BASE,
+    "ruins-ancient-guardian",
+    "ruins",
+    0xac4e09,
+    ["Galeries de la cité", "Failles gravitationnelles", "Ponts d'obsidienne"],
+  ),
+);
+
 export const WORLD_BLUEPRINTS_BY_MISSION: Readonly<
   Record<MissionId, WorldBlueprint>
 > = {
   "jungle-vey": JUNGLE_WORLD,
   "ice-cryostalker": ICE_WORLD,
   "volcano-bad-blood": VOLCANO_WORLD,
+  "swamp-hydra": SWAMP_WORLD,
+  "desert-sandmaw": DESERT_WORLD,
+  "ocean-leviathan": OCEAN_WORLD,
+  "fungal-hivemind": FUNGAL_WORLD,
+  "ruins-ancient-guardian": RUINS_WORLD,
 };
 
 export const WORLD_BLUEPRINTS_BY_BIOME: Readonly<
@@ -734,6 +1019,11 @@ export const WORLD_BLUEPRINTS_BY_BIOME: Readonly<
   jungle: JUNGLE_WORLD,
   ice: ICE_WORLD,
   volcano: VOLCANO_WORLD,
+  swamp: SWAMP_WORLD,
+  desert: DESERT_WORLD,
+  ocean: OCEAN_WORLD,
+  fungal: FUNGAL_WORLD,
+  ruins: RUINS_WORLD,
 };
 
 export function worldBlueprintFor(

@@ -245,7 +245,12 @@ export type BossEffectKind =
   | "purge-started"
   | "purge-console-disabled"
   | "purge-cancelled"
-  | "purge-detonated";
+  | "purge-detonated"
+  | "hydra-tidal-surge"
+  | "sandmaw-burrow"
+  | "leviathan-rogue-wave"
+  | "hivemind-spore-pulse"
+  | "guardian-adaptive-field";
 
 export interface BossEffect {
   kind: BossEffectKind;
@@ -301,10 +306,76 @@ export interface BadBloodBossState extends BossCommonState {
   purgeResolved: boolean;
 }
 
+export interface ExpansionBossState extends BossCommonState {
+  missionId: Exclude<
+    MissionId,
+    "jungle-vey" | "ice-cryostalker" | "volcano-bad-blood"
+  >;
+}
+
+type ExpansionMissionId = ExpansionBossState["missionId"];
+
+const EXPANSION_BOSS_ATTACKS: Readonly<
+  Record<
+    ExpansionMissionId,
+    Readonly<{
+      melee: { id: string; rangePx: number; cooldownSeconds: number };
+      ranged: readonly { id: string; cooldownSeconds: number }[];
+    }>
+  >
+> = {
+  "swamp-hydra": {
+    melee: { id: "hydra-tail", rangePx: 145, cooldownSeconds: 1.8 },
+    ranged: [
+      { id: "hydra-lunge", cooldownSeconds: 4.2 },
+      { id: "hydra-spit", cooldownSeconds: 5.4 },
+    ],
+  },
+  "desert-sandmaw": {
+    melee: { id: "sandmaw-mandibles", rangePx: 125, cooldownSeconds: 1.65 },
+    ranged: [
+      { id: "sandmaw-breach", cooldownSeconds: 4.6 },
+      { id: "sandmaw-quake", cooldownSeconds: 6 },
+    ],
+  },
+  "ocean-leviathan": {
+    melee: { id: "leviathan-fin", rangePx: 155, cooldownSeconds: 1.9 },
+    ranged: [
+      { id: "leviathan-breach", cooldownSeconds: 5 },
+      { id: "leviathan-sonar", cooldownSeconds: 6.4 },
+    ],
+  },
+  "fungal-hivemind": {
+    melee: { id: "hivemind-tendril", rangePx: 180, cooldownSeconds: 1.75 },
+    ranged: [
+      { id: "hivemind-spores", cooldownSeconds: 5.6 },
+      { id: "hivemind-dart", cooldownSeconds: 3.8 },
+    ],
+  },
+  "ruins-ancient-guardian": {
+    melee: { id: "guardian-blade", rangePx: 138, cooldownSeconds: 1.5 },
+    ranged: [
+      { id: "guardian-lance", cooldownSeconds: 3.4 },
+      { id: "guardian-field", cooldownSeconds: 6.6 },
+    ],
+  },
+};
+
+const EXPANSION_BOSS_EFFECTS: Readonly<
+  Record<ExpansionMissionId, Readonly<{ kind: BossEffectKind; value: number }>>
+> = {
+  "swamp-hydra": { kind: "hydra-tidal-surge", value: 26 },
+  "desert-sandmaw": { kind: "sandmaw-burrow", value: 260 },
+  "ocean-leviathan": { kind: "leviathan-rogue-wave", value: 16 },
+  "fungal-hivemind": { kind: "hivemind-spore-pulse", value: 36 },
+  "ruins-ancient-guardian": { kind: "guardian-adaptive-field", value: 1.8 },
+};
+
 export type BossMechanicState =
   | VeyBossState
   | CryostalkerBossState
-  | BadBloodBossState;
+  | BadBloodBossState
+  | ExpansionBossState;
 
 export interface BossMechanicStep {
   state: BossMechanicState;
@@ -1036,6 +1107,16 @@ export function createBossMechanicState(
       pillarHitLatch: false,
     };
   }
+  if (missionId !== "volcano-bad-blood") {
+    return {
+      missionId,
+      elapsedSeconds: 0,
+      phaseId: `${missionId}-phase-1`,
+      phaseElapsedSeconds: 0,
+      attackCooldownSeconds: 1.35,
+      sequence: 0,
+    };
+  }
   return {
     missionId: "volcano-bad-blood",
     elapsedSeconds: 0,
@@ -1415,6 +1496,76 @@ function stepBadBlood(
   };
 }
 
+function stepExpansionBoss(
+  previous: ExpansionBossState,
+  input: BossMechanicInput,
+): BossMechanicStep {
+  const attacks = EXPANSION_BOSS_ATTACKS[previous.missionId];
+  const delta = Math.max(0, input.deltaSeconds);
+  const phaseIndex = input.healthRatio <= 0.25 ? 3 : input.healthRatio <= 0.6 ? 2 : 1;
+  const phaseId = `${previous.missionId}-phase-${phaseIndex}`;
+  const enteredPhase = previous.phaseId !== phaseId;
+  const phaseState = phaseChanged(previous, phaseId);
+  const effects: BossEffect[] = [];
+  let attackCooldownSeconds = Math.max(
+    0,
+    previous.attackCooldownSeconds - delta,
+  );
+  let sequence = previous.sequence;
+  let attackId: string | null = null;
+
+  if (attackCooldownSeconds <= 0) {
+    const selected =
+      input.distanceToPlayer <= attacks.melee.rangePx * 1.2
+        ? attacks.melee
+        : attacks.ranged[sequence % attacks.ranged.length];
+    attackId = selected.id;
+    attackCooldownSeconds = selected.cooldownSeconds;
+    sequence += 1;
+  }
+
+  if (enteredPhase && phaseIndex > 1) {
+    const signature = EXPANSION_BOSS_EFFECTS[previous.missionId];
+    effects.push({
+      kind: signature.kind,
+      value: signature.value * (phaseIndex === 3 ? 1.25 : 1),
+      id: `${phaseId}-signature`,
+    });
+  }
+
+  const state: ExpansionBossState = {
+    ...previous,
+    ...phaseState,
+    phaseElapsedSeconds: phaseState.phaseElapsedSeconds + delta,
+    elapsedSeconds: previous.elapsedSeconds + delta,
+    attackCooldownSeconds,
+    sequence,
+  };
+  const latePhase = input.healthRatio <= 0.25;
+  return {
+    state,
+    effects,
+    decision: {
+      phaseId,
+      attackId,
+      movement:
+        input.distanceToPlayer < 105
+          ? "retreat"
+          : input.lineOfSight
+            ? latePhase
+              ? "charge"
+              : "flank"
+            : "approach",
+      speedMultiplier: phaseIndex === 3 ? 1.24 : phaseIndex === 2 ? 1.12 : 1,
+      damageMultiplier: phaseIndex === 3 ? 1.22 : phaseIndex === 2 ? 1.1 : 1,
+      vulnerabilityMultiplier: latePhase ? 1.18 : 1,
+      thermalVisibility: previous.missionId === "ruins-ancient-guardian" ? 0.62 : 1,
+      energyWeaponsLocked: false,
+      trophyAtRisk: false,
+    },
+  };
+}
+
 export function stepBossMechanics(
   previous: BossMechanicState,
   input: BossMechanicInput,
@@ -1425,5 +1576,8 @@ export function stepBossMechanics(
   if (previous.missionId === "ice-cryostalker") {
     return stepCryostalker(previous, input);
   }
-  return stepBadBlood(previous, input);
+  if (previous.missionId === "volcano-bad-blood") {
+    return stepBadBlood(previous, input);
+  }
+  return stepExpansionBoss(previous, input);
 }

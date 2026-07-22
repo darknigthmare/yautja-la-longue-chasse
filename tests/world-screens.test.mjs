@@ -34,6 +34,11 @@ test("each mission has six connected screens covering the expanded 8,400 px worl
     "jungle-vey",
     "ice-cryostalker",
     "volcano-bad-blood",
+    "swamp-hydra",
+    "desert-sandmaw",
+    "ocean-leviathan",
+    "fungal-hivemind",
+    "ruins-ancient-guardian",
   ]);
 
   for (const layout of Object.values(world.WORLD_SCREENS_BY_MISSION)) {

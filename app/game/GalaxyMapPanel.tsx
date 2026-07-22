@@ -12,8 +12,10 @@ import {
   type KeyboardEvent,
 } from "react";
 import { MISSIONS } from "./data";
+import { backgroundPathForBiome } from "./worldScreens";
 import {
   GALAXY_NAVIGATION,
+  GALAXY_BIOME_LABELS,
   createGalaxyNavigationState,
   getGalaxyNavigationBreadcrumbs,
   getGalaxyNavigationItems,
@@ -41,8 +43,7 @@ const MISSION_BY_ID = Object.freeze(
 ) as Readonly<Record<MissionId, MissionDefinition>>;
 
 function missionBackground(mission: MissionDefinition): string {
-  const biome = mission.biome === "volcano" ? "volcanic" : mission.biome;
-  return `/game/backgrounds/${biome}-depth-v4.webp`;
+  return backgroundPathForBiome(mission.biome);
 }
 
 function actionForItem(item: GalaxyNavigationItem) {
@@ -240,7 +241,7 @@ export default function GalaxyMapPanel({
                   alt={`Surface de ${selection.planet.name}`}
                 />
                 <p>
-                  Biome {selection.planet.biome} · {selection.planet.missions.length}
+                  {GALAXY_BIOME_LABELS[selection.planet.biome]} · {selection.planet.missions.length}
                   {" "}signal de chasse détecté.
                 </p>
               </>

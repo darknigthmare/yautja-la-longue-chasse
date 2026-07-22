@@ -1,0 +1,10 @@
+{
+  "tool": "OpenAI built-in image_gen",
+  "sourceGenerationId": "exec-b00cf9d2-1ad1-4eb7-88b0-3fa03287b802",
+  "useCase": "stylized-concept",
+  "prompt": "Create an exact 5-row by 6-column supplemental production sprite atlas for a dark 2D side-scrolling alien hunting game. Each row keeps one original identity across idle, locomotion A, locomotion B, attack or tool use, hit recoil and collapsed death, all facing right. Rows: Mycora industrial sterilization mech with tanks, hoses and sterilizer nozzle; Nivalis human ice salvager with thermal suit and powered pick; Serekh human silica miner with rotary drill; Pelagos pressure-suited human abyss harpooner; Acheron human combat engineer with repair tool and demolition satchel. Highly detailed cinematic hand-painted pixel-art-like sprites, exact uniform #ff00ff chroma background, all subjects isolated inside equal cells, no crossing, shadows, detached effects, text, logos or watermark.",
+  "postProcess": {
+    "helper": "C:/Users/chuck/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "arguments": "--auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill"
+  }
+}

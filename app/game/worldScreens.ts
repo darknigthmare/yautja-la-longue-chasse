@@ -24,8 +24,13 @@ export type WorldScreenFeatureKind =
   | "platform"
   | "tree"
   | "vine"
+  | "rock-face"
   | "water"
   | "mud"
+  | "sand"
+  | "coral"
+  | "mycelium"
+  | "obsidian"
   | "ruin"
   | "ladder"
   | "ice-wall"
@@ -36,7 +41,20 @@ export type WorldScreenFeatureKind =
   | "basalt-column"
   | "chain"
   | "lava"
-  | "steam-vent";
+  | "steam-vent"
+  | "tidal-surge"
+  | "sand-collapse"
+  | "glass-storm"
+  | "heat-burst"
+  | "rogue-wave"
+  | "electrical-surge"
+  | "abyssal-vent"
+  | "spore-cloud"
+  | "mycelial-snare"
+  | "acid-bloom"
+  | "gravity-pulse"
+  | "nanite-field"
+  | "laser-grid";
 
 export type WorldScreenGameplayRole =
   | "platform"
@@ -98,17 +116,31 @@ export interface MissionWorldScreens {
   connections: readonly WorldScreenConnection[];
 }
 
-const BACKGROUNDS: Readonly<Record<BiomeId, string>> = {
+export const BIOME_BACKGROUND_PATHS: Readonly<Record<BiomeId, string>> = {
   jungle: "/game/backgrounds/jungle-multiscreen-v6.png",
   ice: "/game/backgrounds/ice-depth-v4.webp",
   volcano: "/game/backgrounds/volcanic-depth-v4.webp",
+  swamp: "/game/backgrounds/swamp-depth-v8.png",
+  desert: "/game/backgrounds/desert-depth-v8.png",
+  ocean: "/game/backgrounds/ocean-depth-v8.png",
+  fungal: "/game/backgrounds/fungal-depth-v8.png",
+  ruins: "/game/backgrounds/ruins-depth-v8.png",
 };
 
 const FOREGROUNDS: Readonly<Record<BiomeId, string | null>> = {
   jungle: "/game/props/v4/foreground-ferns.png",
   ice: null,
   volcano: null,
+  swamp: "/game/props/v4/foreground-ferns.png",
+  desert: null,
+  ocean: null,
+  fungal: "/game/props/v4/foreground-ferns.png",
+  ruins: null,
 };
+
+export function backgroundPathForBiome(biome: BiomeId): string {
+  return BIOME_BACKGROUND_PATHS[biome];
+}
 
 function layers(
   biome: BiomeId,
@@ -118,7 +150,7 @@ function layers(
 ): WorldScreenSector["layers"] {
   return {
     background: {
-      assetPath: BACKGROUNDS[biome],
+      assetPath: BIOME_BACKGROUND_PATHS[biome],
       band,
       parallax: band === "surface" ? 0.18 : band === "mid-depth" ? 0.3 : 0.42,
       motifs: backgroundMotifs,
@@ -501,6 +533,239 @@ const VOLCANO_SCREENS: readonly WorldScreenSector[] = [
   },
 ];
 
+type ExpansionScreenProfile = {
+  prefix: string;
+  labels: readonly [string, string, string, string, string, string];
+  horizon: string;
+  landmark: string;
+  foreground: string;
+  climbKind: WorldScreenFeatureKind;
+  coverKind: WorldScreenFeatureKind;
+  trackingKind: WorldScreenFeatureKind;
+  hazardKind: WorldScreenFeatureKind;
+  terminalKind: WorldScreenFeatureKind;
+  transitionModes: readonly [
+    WorldScreenTransitionMode,
+    WorldScreenTransitionMode,
+    WorldScreenTransitionMode,
+    WorldScreenTransitionMode,
+    WorldScreenTransitionMode,
+  ];
+};
+
+const EXPANSION_SCREEN_BOUNDS = [0, 900, 1_800, 2_750, 3_700, 4_650, SOURCE_WORLD_WIDTH] as const;
+
+/**
+ * Produce six real streaming sectors for expansion planets. Coordinates and
+ * objective anchors remain authored in the 5,600 source grid, then are scaled
+ * by missionScreens exactly like the three original hunts.
+ */
+function expansionScreenPlan(
+  missionId: MissionId,
+  biome: BiomeId,
+  profile: ExpansionScreenProfile,
+): readonly WorldScreenSector[] {
+  const bands: readonly WorldScreenBand[] = [
+    "surface",
+    "mid-depth",
+    "understory",
+    "mid-depth",
+    "understory",
+    "surface",
+  ];
+  const objectiveIds = [
+    `${missionId}-scan`,
+    `${missionId}-scan`,
+    `${missionId}-hunt`,
+    `${missionId}-recover`,
+    `${missionId}-boss`,
+    `${missionId}-extract`,
+  ] as const;
+  const objectiveCues = [
+    "Observer les premières traces endémiques avant de pénétrer dans le territoire.",
+    "Comparer les signatures depuis la route haute sans alerter la chaîne alimentaire.",
+    "Isoler les chasseurs territoriaux et ouvrir une route vers le cœur du biome.",
+    "Sécuriser les prélèvements sans abandonner de technologie du clan.",
+    "Préparer l'arène, ses hauteurs et ses pièges avant d'appeler la proie dominante.",
+    "Réclamer le trophée puis rejoindre la balise sous le vaisseau d'extraction.",
+  ] as const;
+
+  return profile.labels.map((label, index) => {
+    const startX = EXPANSION_SCREEN_BOUNDS[index];
+    const endX = EXPANSION_SCREEN_BOUNDS[index + 1];
+    const span = endX - startX;
+    const platformX = startX + span * 0.38;
+    const traversalX = startX + span * 0.68;
+    const thirdRole: WorldScreenGameplayRole =
+      index === 0
+        ? "tracking"
+        : index === 1 || index === 4
+          ? "cover"
+          : index === 2
+            ? "hazard"
+            : index === 3
+              ? "tracking"
+              : profile.terminalKind === "water"
+                ? "water"
+                : "tracking";
+    const thirdKind =
+      thirdRole === "cover"
+        ? profile.coverKind
+        : thirdRole === "hazard"
+          ? profile.hazardKind
+          : index === 5
+            ? profile.terminalKind
+            : thirdRole === "water"
+              ? "water"
+            : profile.trackingKind;
+    return {
+      id: `${profile.prefix}-${index + 1}`,
+      order: index,
+      startX,
+      endX,
+      label,
+      mood: `${profile.horizon}, ${profile.landmark} et signes d'une écologie qui réagit au passage du chasseur.`,
+      ambientCue: `${profile.prefix}-${index + 1}-endemic-ambience`,
+      objectiveId: objectiveIds[index],
+      objectiveCue: objectiveCues[index],
+      layers: layers(
+        biome,
+        bands[index],
+        [profile.horizon, profile.landmark, `${label} dans la profondeur`],
+        [profile.foreground, "particules proches", "traces de faune endémique"],
+      ),
+      features: [
+        feature(
+          `${profile.prefix}-${index + 1}-platform`,
+          "platform",
+          "platform",
+          platformX,
+          `Appui principal traversant ${label}.`,
+        ),
+        feature(
+          `${profile.prefix}-${index + 1}-climb`,
+          profile.climbKind,
+          "climb",
+          traversalX,
+          `Route verticale propre au biome de ${label}.`,
+        ),
+        feature(
+          `${profile.prefix}-${index + 1}-ecology`,
+          thirdKind,
+          thirdRole,
+          startX + span * 0.18,
+          `Interaction écologique locale de ${label}.`,
+        ),
+      ],
+    } satisfies WorldScreenSector;
+  });
+}
+
+const SWAMP_SCREENS = expansionScreenPlan("swamp-hydra", "swamp", {
+  prefix: "swamp",
+  labels: [
+    "Vasière des œufs",
+    "Mangrove suspendue",
+    "Chenaux des chasseurs",
+    "Nourricerie noyée",
+    "Fosse aux trois remous",
+    "Balise de la marée noire",
+  ],
+  horizon: "pluie lourde sur des eaux opaques",
+  landmark: "racines-cathédrales et mangroves géantes",
+  foreground: "roseaux luisants et nappes de vase",
+  climbKind: "tree",
+  coverKind: "tree",
+  trackingKind: "mud",
+  hazardKind: "tidal-surge",
+  terminalKind: "water",
+  transitionModes: ["wade", "climb", "wade", "hazard-gate", "walk"],
+});
+
+const DESERT_SCREENS = expansionScreenPlan("desert-sandmaw", "desert", {
+  prefix: "desert",
+  labels: [
+    "Balises sous le sable",
+    "Arches du vent rouge",
+    "Mer de silice chantante",
+    "Mine vitrifiée",
+    "Canyon des mandibules",
+    "Plateau de l'extraction",
+  ],
+  horizon: "dunes de silice sous deux soleils voilés",
+  landmark: "canyons noirs et arches érodées",
+  foreground: "cristaux brisés et traînées de sable",
+  climbKind: "rock-face",
+  coverKind: "ruin",
+  trackingKind: "sand",
+  hazardKind: "sand-collapse",
+  terminalKind: "sand",
+  transitionModes: ["climb", "hazard-gate", "jump", "climb", "walk"],
+});
+
+const OCEAN_SCREENS = expansionScreenPlan("ocean-leviathan", "ocean", {
+  prefix: "ocean",
+  labels: [
+    "Récif des harpons",
+    "Arches au-dessus du vide",
+    "Station battue par les vagues",
+    "Cheminées abyssales",
+    "Fosse bioluminescente",
+    "Aire d'amerrissage",
+  ],
+  horizon: "tempête océanique et éclairs bleu-vert",
+  landmark: "arches coralliennes dressées au-dessus de l'abîme",
+  foreground: "embruns, algues suspendues et corail proche",
+  climbKind: "rope",
+  coverKind: "coral",
+  trackingKind: "water",
+  hazardKind: "rogue-wave",
+  terminalKind: "water",
+  transitionModes: ["wade", "climb", "hazard-gate", "jump", "wade"],
+});
+
+const FUNGAL_SCREENS = expansionScreenPlan("fungal-hivemind", "fungal", {
+  prefix: "fungal",
+  labels: [
+    "Lisière des spores-mémoires",
+    "Tours mycéliennes",
+    "Territoire des relais",
+    "Archives sous les racines",
+    "Cavité du Cœur-Mère",
+    "Clairière de stérilisation",
+  ],
+  horizon: "forêt violette parcourue d'impulsions bioluminescentes",
+  landmark: "champignons-tours reliés par un réseau vivant",
+  foreground: "filaments, capsules de spores et membranes humides",
+  climbKind: "vine",
+  coverKind: "tree",
+  trackingKind: "mycelium",
+  hazardKind: "spore-cloud",
+  terminalKind: "mycelium",
+  transitionModes: ["climb", "hazard-gate", "walk", "climb", "hazard-gate"],
+});
+
+const RUINS_SCREENS = expansionScreenPlan("ruins-ancient-guardian", "ruins", {
+  prefix: "ruins",
+  labels: [
+    "Seuil de la cité noire",
+    "Pont des sentinelles",
+    "Galerie mimétique",
+    "Chambre des prismes",
+    "Noyau gravitationnel",
+    "Terrasse du vaisseau",
+  ],
+  horizon: "ciel sans atmosphère et géante gazeuse à l'horizon",
+  landmark: "cité d'obsidienne aux mécanismes encore actifs",
+  foreground: "stèles fracturées et poussière en suspension",
+  climbKind: "ladder",
+  coverKind: "ruin",
+  trackingKind: "obsidian",
+  hazardKind: "gravity-pulse",
+  terminalKind: "obsidian",
+  transitionModes: ["climb", "hazard-gate", "jump", "climb", "hazard-gate"],
+});
+
 function missionScreens(
   missionId: MissionId,
   biome: BiomeId,
@@ -547,6 +812,36 @@ export const WORLD_SCREENS_BY_MISSION: Readonly<
     "volcano",
     VOLCANO_SCREENS,
     ["hazard-gate", "climb", "climb", "hazard-gate", "walk"],
+  ),
+  "swamp-hydra": missionScreens(
+    "swamp-hydra",
+    "swamp",
+    SWAMP_SCREENS,
+    ["wade", "climb", "wade", "hazard-gate", "walk"],
+  ),
+  "desert-sandmaw": missionScreens(
+    "desert-sandmaw",
+    "desert",
+    DESERT_SCREENS,
+    ["climb", "hazard-gate", "jump", "climb", "walk"],
+  ),
+  "ocean-leviathan": missionScreens(
+    "ocean-leviathan",
+    "ocean",
+    OCEAN_SCREENS,
+    ["wade", "climb", "hazard-gate", "jump", "wade"],
+  ),
+  "fungal-hivemind": missionScreens(
+    "fungal-hivemind",
+    "fungal",
+    FUNGAL_SCREENS,
+    ["climb", "hazard-gate", "walk", "climb", "hazard-gate"],
+  ),
+  "ruins-ancient-guardian": missionScreens(
+    "ruins-ancient-guardian",
+    "ruins",
+    RUINS_SCREENS,
+    ["climb", "hazard-gate", "jump", "climb", "hazard-gate"],
   ),
 };
 

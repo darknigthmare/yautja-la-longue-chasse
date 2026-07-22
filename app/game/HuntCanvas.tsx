@@ -101,6 +101,7 @@ import {
   type WorldPlatform,
 } from "./systems/worldBlueprints";
 import {
+  backgroundPathForBiome,
   getWorldScreenAtX,
   worldScreensFor,
   type WorldScreenSector,
@@ -118,6 +119,16 @@ import {
   enemyV7IdsForMission,
   type EnemyV7Id,
 } from "./enemyRosterV7";
+import {
+  ECOLOGY_V8_BOSS_ENEMY_IDS,
+  ecologyV8EnemyForId,
+  type EcologyV8EnemyDefinition,
+} from "./ecologyV8";
+import {
+  createEcologyEncounterDeck,
+  ecologyEncounterEnemyAt,
+  ecologyV8RuntimeProfile,
+} from "./ecologyEncounterV8";
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
@@ -141,6 +152,7 @@ import type {
 
 interface HuntCanvasProps {
   mission: MissionDefinition;
+  encounterRun: number;
   loadout: Loadout;
   inventory: PlayerInventory;
   difficulty: DifficultyId;
@@ -320,6 +332,7 @@ interface MissionCheckpointPayload {
   recoveryNodes: RecoveryNode[];
   purgeConsoleNodes: RecoveryNode[];
   spawnedWaves: Set<string>;
+  ecologySpawnIndex: number;
   completedObjectives: Set<string>;
   honorEvents: HonorEvent[];
   honor: number;
@@ -450,6 +463,7 @@ interface AssetBank {
   foregroundReeds: HTMLImageElement | null;
   enemyV4: Record<EnemyV4SpriteId, HTMLImageElement | null>;
   enemyV7: Partial<Record<EnemyV7Id, HTMLImageElement | null>>;
+  enemyV8: Partial<Record<string, HTMLImageElement | null>>;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -490,6 +504,8 @@ interface GameState {
   recoveryNodes: RecoveryNode[];
   purgeConsoleNodes: RecoveryNode[];
   spawnedWaves: Set<string>;
+  ecologyDeck: readonly EcologyV8EnemyDefinition[];
+  ecologySpawnIndex: number;
   completedObjectives: Set<string>;
   honorEvents: HonorEvent[];
   honor: number;
@@ -785,6 +801,8 @@ function consume(input: InputHub, action: Action): boolean {
 }
 
 function enemyKind(archetype: string): EnemyKind {
+  const v8Enemy = ecologyV8EnemyForId(archetype);
+  if (v8Enemy) return ecologyV8RuntimeProfile(v8Enemy).kind;
   const v7Enemy = enemyV7ForId(archetype);
   if (v7Enemy) return v7Enemy.runtimeKind;
   if (
@@ -800,13 +818,12 @@ function enemyKind(archetype: string): EnemyKind {
   return "human";
 }
 
+function bossArchetype(mission: MissionDefinition): string {
+  return ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id] ?? `boss-${mission.id}`;
+}
+
 function backgroundPath(mission: MissionDefinition): string {
-  if (mission.biome === "jungle") {
-    return "/game/backgrounds/jungle-multiscreen-v6.png";
-  }
-  return `/game/backgrounds/${
-    mission.biome === "volcano" ? "volcanic" : mission.biome
-  }-depth-v4.webp`;
+  return backgroundPathForBiome(mission.biome);
 }
 
 function loadImage(path: string): Promise<HTMLImageElement | null> {
@@ -849,6 +866,10 @@ function bossSprite(
   mission: MissionDefinition,
   assets: AssetBank,
 ): HTMLImageElement | null {
+  const v8BossId = ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id];
+  if (v8BossId && assets.enemyV8[v8BossId]) {
+    return assets.enemyV8[v8BossId] ?? null;
+  }
   if (mission.biome === "ice") return assets.cryostalker;
   if (mission.biome === "volcano") return assets.badBlood;
   return assets.enemyV4["commandante-vey"] ?? assets.mercenary;
@@ -891,25 +912,36 @@ function makeEnemy(
   damageMultiplier: number,
 ): EnemyState {
   const kind = enemyKind(archetype);
+  const v8Enemy = ecologyV8EnemyForId(archetype);
+  const v8Profile = v8Enemy ? ecologyV8RuntimeProfile(v8Enemy) : null;
   const v7Enemy = enemyV7ForId(archetype);
   const beast = kind === "beast";
   const yautja = kind === "yautja";
-  const width = v7Enemy?.width ?? (beast ? 104 : yautja ? 74 : 66);
-  const height = v7Enemy?.height ?? (beast ? 84 : yautja ? 112 : 94);
+  const width =
+    v8Profile?.width ?? v7Enemy?.width ?? (beast ? 104 : yautja ? 74 : 66);
+  const height =
+    v8Profile?.height ?? v7Enemy?.height ?? (beast ? 84 : yautja ? 112 : 94);
+  const baseY = FLOOR_Y - height;
+  const spawnY =
+    v8Profile?.mobility === "flying"
+      ? baseY - 92 - (id.length % 4) * 14
+      : baseY;
+  const scaledHealth =
+    health * healthMultiplier * (v8Profile?.healthScale ?? 1);
   return {
     id,
     archetype,
     kind,
     x,
-    y: FLOOR_Y - height,
+    y: spawnY,
     width,
     height,
     velocityX: 0,
     facing: -1,
-    health: health * healthMultiplier,
-    maxHealth: health * healthMultiplier,
-    damage: damage * damageMultiplier,
-    moveSpeed,
+    health: scaledHealth,
+    maxHealth: scaledHealth,
+    damage: damage * damageMultiplier * (v8Profile?.damageScale ?? 1),
+    moveSpeed: moveSpeed * (v8Profile?.speedScale ?? 1),
     patrolLeft: Math.max(120, x - 190),
     patrolRight: Math.min(worldWidth - 120, x + 190),
     attackCooldown: 0.55 + ((id.length * 0.17 + x * 0.013) % 0.85),
@@ -948,6 +980,7 @@ function makeGameState(
   appearance: HunterAppearance,
   reducedGore: boolean,
   screenShakeEnabled: boolean,
+  ecologyRunSeed: string | number = `${Date.now()}-${Math.random()}`,
 ): GameState {
   const world = worldBlueprintFor(mission.id);
   const armor = effectiveArmorStats(
@@ -993,14 +1026,32 @@ function makeGameState(
     y: index % 2 === 0 ? FLOOR_Y - 34 : 380,
     recovered: false,
   }));
+  const ecologyDeck = createEcologyEncounterDeck(
+    mission.id,
+    ecologyRunSeed,
+    mission.enemyWaves.reduce((total, wave) => total + wave.count, 0),
+  );
+  const bossIdentityId = bossArchetype(mission);
+  const bossEcology = ecologyV8EnemyForId(bossIdentityId);
+  const bossEcologyProfile = bossEcology
+    ? ecologyV8RuntimeProfile(bossEcology)
+    : null;
   const bossKind: EnemyKind =
     mission.boss.silhouette === "beast"
       ? "beast"
       : mission.boss.silhouette === "yautja"
         ? "yautja"
         : "human";
-  const bossHeight = bossKind === "beast" ? 142 : 154;
-  const bossWidth = bossKind === "beast" ? 168 : 106;
+  const bossHeight = bossEcologyProfile
+    ? Math.max(142, Math.round(bossEcologyProfile.height * 1.32))
+    : bossKind === "beast"
+      ? 142
+      : 154;
+  const bossWidth = bossEcologyProfile
+    ? Math.max(156, Math.round(bossEcologyProfile.width * 1.38))
+    : bossKind === "beast"
+      ? 168
+      : 106;
   const bossX = Math.min(
     world.bossArena.x + world.bossArena.width * 0.48,
     world.bossArena.x + world.bossArena.width - bossWidth - 60,
@@ -1100,6 +1151,8 @@ function makeGameState(
       },
     ],
     spawnedWaves: new Set(),
+    ecologyDeck,
+    ecologySpawnIndex: 0,
     completedObjectives: new Set(),
     honorEvents: [],
     honor: 0,
@@ -1110,7 +1163,7 @@ function makeGameState(
     secondWindUsed: false,
     boss: {
       id: "mission-boss",
-      archetype: `boss-${mission.id}`,
+      archetype: bossIdentityId,
       kind: bossKind,
       x: bossX,
       y: FLOOR_Y - bossHeight,
@@ -1263,6 +1316,7 @@ function captureCheckpoint(state: GameState): MissionCheckpointPayload {
     recoveryNodes: state.recoveryNodes.map((node) => ({ ...node })),
     purgeConsoleNodes: state.purgeConsoleNodes.map((node) => ({ ...node })),
     spawnedWaves: new Set(state.spawnedWaves),
+    ecologySpawnIndex: state.ecologySpawnIndex,
     completedObjectives: new Set(state.completedObjectives),
     honorEvents: state.honorEvents.map((event) => ({ ...event })),
     honor: state.honor,
@@ -1341,6 +1395,7 @@ function restoreCheckpoint(
       ...node,
     })),
     spawnedWaves: new Set(checkpoint.spawnedWaves),
+    ecologySpawnIndex: checkpoint.ecologySpawnIndex,
     completedObjectives: new Set(checkpoint.completedObjectives),
     honorEvents: checkpoint.honorEvents.map((event) => ({ ...event })),
     honor: checkpoint.honor,
@@ -1434,7 +1489,12 @@ function spawnEligibleWaves(
     }
     state.spawnedWaves.add(wave.id);
     for (let index = 0; index < wave.count; index += 1) {
-      const v7Enemy = enemyV7ForWave(wave.id, index);
+      const v8Enemy = ecologyEncounterEnemyAt(
+        state.ecologyDeck,
+        state.ecologySpawnIndex,
+      );
+      state.ecologySpawnIndex += 1;
+      const v7Enemy = v8Enemy ? null : enemyV7ForWave(wave.id, index);
       const base =
         trigger === "start"
           ? state.world.width * 0.17
@@ -1456,7 +1516,7 @@ function spawnEligibleWaves(
       );
       const enemy = makeEnemy(
         `${wave.id}-${index}`,
-        v7Enemy?.id ?? wave.archetype,
+        v8Enemy?.id ?? v7Enemy?.id ?? wave.archetype,
         x,
         state.world.width,
         wave.health,
@@ -1870,9 +1930,12 @@ function enemyAnimationFrame(enemy: EnemyState, elapsed: number): number {
   if (!enemy.alive) return 5;
   if (enemy.hitFlash > 0) return 4;
   if (enemy.telegraph > 0 || enemy.pendingAttackId) return 3;
-  const definition = enemyV7ForId(enemy.archetype);
+  const v8Definition = ecologyV8EnemyForId(enemy.archetype);
+  const v7Definition = enemyV7ForId(enemy.archetype);
   if (Math.abs(enemy.velocityX) > 18) {
-    const fps = definition?.animationFps ?? 8;
+    const fps = v8Definition
+      ? ecologyV8RuntimeProfile(v8Definition).animationFps
+      : (v7Definition?.animationFps ?? 8);
     return 1 + (Math.floor(elapsed * fps) % 2);
   }
   return 0;
@@ -2712,6 +2775,14 @@ function surfaceColor(material: TrackSurface["material"]): string {
       return "#513b24";
     case "water":
       return "#388aa0";
+    case "sand":
+      return "#a98249";
+    case "coral":
+      return "#3f827c";
+    case "mycelium":
+      return "#674f76";
+    case "obsidian":
+      return "#252331";
     case "snow":
       return "#d6eff4";
     case "ice":
@@ -2999,6 +3070,25 @@ function hazardColor(kind: WorldBlueprint["hazards"][number]["kind"]): string {
   }
   if (kind === "flash-flood") return "#48b2d0";
   if (kind === "ash-squall") return "#c0a995";
+  if (kind === "tidal-surge" || kind === "rogue-wave") return "#38b9d2";
+  if (kind === "sand-collapse" || kind === "glass-storm") return "#d9a85f";
+  if (kind === "heat-burst") return "#ff8c42";
+  if (kind === "electrical-surge") return "#75f4ff";
+  if (kind === "abyssal-vent") return "#49d9b8";
+  if (
+    kind === "spore-cloud" ||
+    kind === "mycelial-snare" ||
+    kind === "acid-bloom"
+  ) {
+    return "#bf70e8";
+  }
+  if (
+    kind === "gravity-pulse" ||
+    kind === "nanite-field" ||
+    kind === "laser-grid"
+  ) {
+    return "#ff4fd8";
+  }
   return "#d8ff5f";
 }
 
@@ -3474,21 +3564,36 @@ function renderGame(
   ) {
     const corpseImage = bossSprite(mission, assets);
     if (corpseImage) {
-      context.save();
-      context.globalAlpha = state.phase === "trophy" ? 0.82 : 0.48;
-      context.translate(
-        state.boss.x + state.boss.width * 0.5,
-        FLOOR_Y - state.boss.width * 0.22,
-      );
-      context.rotate(Math.PI * 0.47);
-      context.drawImage(
-        corpseImage,
-        -state.boss.width * 0.5,
-        -state.boss.height * 0.5,
-        state.boss.width,
-        state.boss.height,
-      );
-      context.restore();
+      const corpseAlpha = state.phase === "trophy" ? 0.82 : 0.48;
+      if (ecologyV8EnemyForId(state.boss.archetype)) {
+        drawEnemySheetFrame(
+          context,
+          corpseImage,
+          5,
+          state.boss.x,
+          FLOOR_Y - state.boss.height,
+          state.boss.width,
+          state.boss.height,
+          state.boss.facing,
+          corpseAlpha,
+        );
+      } else {
+        context.save();
+        context.globalAlpha = corpseAlpha;
+        context.translate(
+          state.boss.x + state.boss.width * 0.5,
+          FLOOR_Y - state.boss.width * 0.22,
+        );
+        context.rotate(Math.PI * 0.47);
+        context.drawImage(
+          corpseImage,
+          -state.boss.width * 0.5,
+          -state.boss.height * 0.5,
+          state.boss.width,
+          state.boss.height,
+        );
+        context.restore();
+      }
     }
   }
 
@@ -3600,16 +3705,20 @@ function renderGame(
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
   ];
   for (const enemy of visibleEnemies) {
+    const v8Enemy = ecologyV8EnemyForId(enemy.archetype);
     const v7Enemy = enemyV7ForId(enemy.archetype);
-    const image = v7Enemy
-      ? (assets.enemyV7[v7Enemy.id] ?? null)
-      : enemySprite(enemy, mission, assets);
+    const sheetImage = v8Enemy
+      ? (assets.enemyV8[v8Enemy.id] ?? null)
+      : v7Enemy
+        ? (assets.enemyV7[v7Enemy.id] ?? null)
+        : null;
+    const image = sheetImage ?? enemySprite(enemy, mission, assets);
     const telegraphAlpha =
       enemy.telegraph > 0 ? 0.72 + Math.sin(state.elapsed * 22) * 0.2 : 1;
     const alpha =
       telegraphAlpha *
       (enemy.boss ? Math.max(0.18, state.bossThermalVisibility) : 1);
-    if (image && v7Enemy) {
+    if (image && sheetImage) {
       drawEnemySheetFrame(
         context,
         image,
@@ -4324,7 +4433,10 @@ function emitEnemyFootprint(state: GameState, enemy: EnemyState): void {
       1,
     ),
     ownerId: enemy.id,
-    ownerLabel: enemyV7ForId(enemy.archetype)?.name ?? enemy.archetype,
+    ownerLabel:
+      ecologyV8EnemyForId(enemy.archetype)?.name ??
+      enemyV7ForId(enemy.archetype)?.name ??
+      enemy.archetype,
     ownerSpecies: enemy.kind,
     strideIndex,
   });
@@ -4405,8 +4517,15 @@ function spawnGore(
   const base =
     intensity === "trophy" ? 18 : intensity === "kill" ? 12 : 5;
   const count = state.reducedGore ? Math.max(2, Math.round(base * 0.25)) : base;
+  const ecologyDefinition = ecologyV8EnemyForId(enemy.archetype);
   const color =
-    enemy.kind === "yautja"
+    ecologyDefinition?.id.includes("xeno")
+      ? "#d7ff4a"
+      : ecologyDefinition?.id.includes("synth")
+        ? "#edf2de"
+        : ecologyDefinition?.category === "flora"
+          ? "#7bc94e"
+          : enemy.kind === "yautja"
       ? "#9cff47"
       : enemy.kind === "beast"
         ? "#72d9ef"
@@ -4459,7 +4578,10 @@ function damageEnemy(
 
   enemy.health = 0;
   enemy.alive = false;
-  enemy.deathAnimation = enemyV7ForId(enemy.archetype) ? 0.85 : 0;
+  enemy.deathAnimation =
+    ecologyV8EnemyForId(enemy.archetype) || enemyV7ForId(enemy.archetype)
+      ? 0.85
+      : 0;
   spawnGore(state, enemy, "kill");
   state.kills += 1;
   if (enemy.boss) {
@@ -5487,6 +5609,10 @@ function updateRegularEnemy(
   }
 
   const player = state.player;
+  const ecologyDefinition = ecologyV8EnemyForId(enemy.archetype);
+  const ecologyProfile = ecologyDefinition
+    ? ecologyV8RuntimeProfile(ecologyDefinition)
+    : null;
   const selfPosition = {
     x: enemy.x + enemy.width / 2,
     y: enemy.y + enemy.height / 2,
@@ -5630,31 +5756,45 @@ function updateRegularEnemy(
     }
   }
 
-  if (aiStep.intent.moveX !== 0) {
-    enemy.facing = aiStep.intent.moveX;
+  const moveIntent =
+    ecologyProfile?.mobility === "stationary" ? 0 : aiStep.intent.moveX;
+  if (moveIntent !== 0) {
+    enemy.facing = moveIntent;
   }
   enemy.velocityX =
-    aiStep.intent.moveX * enemy.moveSpeed * aiStep.intent.speedMultiplier;
+    moveIntent * enemy.moveSpeed * aiStep.intent.speedMultiplier;
   const dx = targetPosition.x - selfPosition.x;
   if (
     enemy.attackCooldown <= 0 &&
     (aiStep.intent.action === "attack" ||
       aiStep.intent.action === "suppress")
   ) {
-    if (enemy.kind === "human" && Math.abs(dx) < 650) {
+    const rangedAttack =
+      enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
+    if (rangedAttack && Math.abs(dx) < 650) {
+      const projectileColor =
+        ecologyDefinition?.category === "flora"
+          ? "#b8ff6a"
+          : ecologyDefinition?.id.includes("xeno")
+            ? "#d5ff8c"
+            : ecologyDefinition?.category === "bad-blood"
+              ? "#ff5f55"
+              : ecologyDefinition?.category === "fauna"
+                ? "#ffd36b"
+                : "#78e5ff";
       fireHostileProjectile(
         state,
         enemy,
         enemy.damage,
         560,
-        "#ff8d64",
+        projectileColor,
         "enemy",
       );
       enemy.attackCooldown =
         1.35 + ((enemy.id.length * 0.19 + state.elapsed * 0.07) % 0.7);
     } else if (
-      enemy.kind !== "human" &&
-      Math.abs(dx) < enemy.width * 0.8 + player.width * 0.55
+      !rangedAttack &&
+      targetDistance < enemy.width * 0.8 + player.width * 0.55 + 52
     ) {
       hurtPlayer(state, enemy.damage, mission);
       enemy.attackCooldown = enemy.kind === "beast" ? 1.05 : 1.2;
@@ -5667,7 +5807,19 @@ function updateRegularEnemy(
     enemy.patrolLeft,
     enemy.patrolRight,
   );
-  emitEnemyFootprint(state, enemy);
+  if (ecologyProfile?.mobility === "flying") {
+    const flightPhase = state.elapsed * 2.1 + enemy.id.length * 0.47;
+    enemy.y =
+      FLOOR_Y - enemy.height - 92 - (enemy.id.length % 4) * 14 +
+      Math.sin(flightPhase) * 24;
+  } else if (ecologyProfile?.mobility === "burrowing") {
+    const burrowPhase = (state.elapsed * 0.7 + enemy.id.length * 0.13) % 4;
+    const depth = burrowPhase < 1 ? Math.sin(burrowPhase * Math.PI) * 0.42 : 0;
+    enemy.y = FLOOR_Y - enemy.height + enemy.height * depth;
+  }
+  if (!ecologyProfile || ecologyProfile.mobility === "ground") {
+    emitEnemyFootprint(state, enemy);
+  }
   if (
     (enemy.x <= enemy.patrolLeft + 1 && aiStep.intent.moveX < 0) ||
     (enemy.x >= enemy.patrolRight - 1 && aiStep.intent.moveX > 0)
@@ -5945,6 +6097,79 @@ function updateBoss(
           "violation",
         );
         hurtPlayer(state, player.maxHealth * 2, mission);
+        break;
+      case "hydra-tidal-surge": {
+        const surgeDirection = dx >= 0 ? 1 : -1;
+        player.stamina = Math.max(0, player.stamina - effect.value);
+        player.velocityX = surgeDirection * 430;
+        player.velocityY = Math.min(player.velocityY, -120);
+        forceDecloak(state);
+        if (state.screenShakeEnabled) state.screenShake = 11;
+        announce(
+          state,
+          "La marée de l'Hydre arrache l'appui et épuise ton endurance.",
+          3,
+        );
+        break;
+      }
+      case "sandmaw-burrow": {
+        const emergeDirection = dx >= 0 ? -1 : 1;
+        boss.x = clamp(
+          player.x + emergeDirection * effect.value,
+          boss.patrolLeft,
+          boss.patrolRight,
+        );
+        boss.velocityX = 0;
+        boss.telegraph = Math.max(boss.telegraph, 0.7);
+        if (state.screenShakeEnabled) state.screenShake = 13;
+        announce(
+          state,
+          "Le Sandmaw plonge puis émerge sur ton flanc.",
+          2.6,
+        );
+        break;
+      }
+      case "leviathan-rogue-wave": {
+        const waveDirection = dx >= 0 ? 1 : -1;
+        hurtPlayer(
+          state,
+          effect.value * difficultyDef.enemyDamageMultiplier,
+          mission,
+        );
+        player.velocityX = waveDirection * 560;
+        player.velocityY = -310;
+        player.grounded = false;
+        forceDecloak(state);
+        announce(
+          state,
+          "La vague du Léviathan balaie la plateforme.",
+          2.8,
+        );
+        break;
+      }
+      case "hivemind-spore-pulse":
+        player.energy = Math.max(0, player.energy - effect.value);
+        player.scanCooldown = Math.max(player.scanCooldown, 2.5);
+        state.mud.cloakShimmer = Math.max(state.mud.cloakShimmer, 0.92);
+        forceDecloak(state);
+        announce(
+          state,
+          "Les spores-mémoires brouillent le masque et drainent l'énergie.",
+          3.2,
+        );
+        break;
+      case "guardian-adaptive-field":
+        state.projectiles = state.projectiles.filter(
+          (projectile) => projectile.hostile,
+        );
+        player.weaponCooldown = Math.max(player.weaponCooldown, effect.value);
+        player.energy = Math.max(0, player.energy - 24);
+        state.energyWeaponsLocked = true;
+        announce(
+          state,
+          "Le Gardien adapte son champ : projectiles neutralisés.",
+          3,
+        );
         break;
       case "suppression-zone":
         if (state.screenShakeEnabled) {
@@ -6307,6 +6532,7 @@ function stepGame(
 
 export default function HuntCanvas({
   mission,
+  encounterRun,
   loadout,
   inventory,
   difficulty,
@@ -6356,11 +6582,13 @@ export default function HuntCanvas({
     if (!context) return;
 
     let alive = true;
+    let assetsLoaded = false;
     let frameId = 0;
     let lastTime = performance.now();
     let accumulator = 0;
     let lastUiPush = 0;
     let deviceScale = clamp(window.devicePixelRatio || 1, 1, 2);
+    const ecologyRunSeed = encounterRun;
     let game = makeGameState(
       mission,
       loadout,
@@ -6369,6 +6597,7 @@ export default function HuntCanvas({
       appearance,
       reducedGore,
       screenShake,
+      ecologyRunSeed,
     );
     const assets: AssetBank = {
       background: null,
@@ -6435,6 +6664,7 @@ export default function HuntCanvas({
         ENEMY_V4_SPRITE_IDS.map((spriteId) => [spriteId, null]),
       ) as Record<EnemyV4SpriteId, HTMLImageElement | null>,
       enemyV7: {},
+      enemyV8: {},
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -6693,13 +6923,38 @@ export default function HuntCanvas({
         assets.enemyV4[spriteId] = image;
       });
     }
-    for (const enemyId of enemyV7IdsForMission(mission.id)) {
-      queueImage(ENEMY_V7_BY_ID[enemyId].sheetPath, (image) => {
-        assets.enemyV7[enemyId] = image;
+    if (game.ecologyDeck.length === 0) {
+      for (const enemyId of enemyV7IdsForMission(mission.id)) {
+        queueImage(ENEMY_V7_BY_ID[enemyId].sheetPath, (image) => {
+          assets.enemyV7[enemyId] = image;
+        });
+      }
+    }
+    const plannedRegularSpawns = mission.enemyWaves.reduce(
+      (total, wave) => total + wave.count,
+      0,
+    );
+    const ecologyAssetIds = new Set(
+      game.ecologyDeck
+        .slice(0, plannedRegularSpawns)
+        .map((enemy) => enemy.id),
+    );
+    const v8BossAssetId = ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id];
+    if (v8BossAssetId) ecologyAssetIds.add(v8BossAssetId);
+    for (const enemyId of ecologyAssetIds) {
+      const enemy = ecologyV8EnemyForId(enemyId);
+      if (!enemy) continue;
+      queueImage(enemy.sheetPath, (image) => {
+        assets.enemyV8[enemy.id] = image;
       });
     }
     Promise.all(loadTasks).then(() => {
-      if (alive) setAssetsReady(true);
+      if (alive) {
+        assetsLoaded = true;
+        lastTime = performance.now();
+        accumulator = 0;
+        setAssetsReady(true);
+      }
     });
 
     const restart = () => {
@@ -6713,6 +6968,7 @@ export default function HuntCanvas({
             appearance,
             reducedGore,
             screenShake,
+            ecologyRunSeed,
           );
       lastTime = performance.now();
       accumulator = 0;
@@ -6805,6 +7061,11 @@ export default function HuntCanvas({
     const fixedStep = 1 / 60;
     const frame = (time: number) => {
       if (!alive) return;
+      if (!assetsLoaded) {
+        lastTime = time;
+        frameId = requestAnimationFrame(frame);
+        return;
+      }
       const frameDelta = clamp((time - lastTime) / 1_000, 0, 0.05);
       lastTime = time;
       accumulator = Math.min(0.12, accumulator + frameDelta);
@@ -6864,6 +7125,7 @@ export default function HuntCanvas({
   }, [
     appearance,
     difficulty,
+    encounterRun,
     inventory,
     loadout,
     mission,

@@ -298,8 +298,225 @@ export const DIFFICULTIES: readonly DifficultyDefinition[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Three complete campaign hunts
+// Campaign hunts
 // ---------------------------------------------------------------------------
+
+type ExpansionMissionSpec = {
+  id: MissionId;
+  order: number;
+  title: string;
+  subtitle: string;
+  planetName: string;
+  biome: MissionDefinition["biome"];
+  targetName: string;
+  briefing: string;
+  threatLevel: MissionDefinition["threatLevel"];
+  prerequisiteMissionId: MissionId;
+  recommendedArmorId: ArmorId;
+  recommendedWeaponIds: WeaponId[];
+  parTimeSeconds: number;
+  rewards: MissionDefinition["baseRewards"];
+  palette: MissionDefinition["palette"];
+  traceLabel: string;
+  traceDescription: string;
+  huntLabel: string;
+  huntDescription: string;
+  recoverLabel: string;
+  recoverDescription: string;
+  bossTitle: string;
+  bossHealth: number;
+  bossSpeed: number;
+  bossColor: string;
+  bossAttacks: MissionDefinition["boss"]["attacks"];
+  phaseLabels: readonly [string, string, string];
+  phaseBehaviors: readonly [string, string, string];
+  phaseHazards: readonly [string, string, string];
+  trophyName: string;
+  trophyDescription: string;
+  trophyPartId: MissionDefinition["trophy"]["partId"];
+  trophyIcon: string;
+  codexUnlockIds: CodexEntryId[];
+  waveArchetypes: readonly [
+    MissionDefinition["enemyWaves"][number]["archetype"],
+    MissionDefinition["enemyWaves"][number]["archetype"],
+    MissionDefinition["enemyWaves"][number]["archetype"],
+  ];
+};
+
+/**
+ * Expansion planets share the proven objective/runtime contract while keeping
+ * their ecology, encounter copy, boss data and rewards authored per world.
+ * The archetypes are AI behaviour classes; the V8 ecology registry supplies
+ * the endemic visual identity selected for each spawn slot.
+ */
+function expansionMission(spec: ExpansionMissionSpec): MissionDefinition {
+  const scanId = `${spec.id}-scan`;
+  const huntId = `${spec.id}-hunt`;
+  const recoverId = `${spec.id}-recover`;
+  const bossId = `${spec.id}-boss`;
+  const extractId = `${spec.id}-extract`;
+  return {
+    id: spec.id,
+    order: spec.order,
+    title: spec.title,
+    subtitle: spec.subtitle,
+    planetName: spec.planetName,
+    biome: spec.biome,
+    targetName: spec.targetName,
+    targetKind: "beast",
+    briefing: spec.briefing,
+    threatLevel: spec.threatLevel,
+    prerequisiteMissionId: spec.prerequisiteMissionId,
+    recommendedArmorId: spec.recommendedArmorId,
+    recommendedWeaponIds: spec.recommendedWeaponIds,
+    parTimeSeconds: spec.parTimeSeconds,
+    baseRewards: spec.rewards,
+    palette: spec.palette,
+    objectives: [
+      {
+        id: scanId,
+        label: spec.traceLabel,
+        description: spec.traceDescription,
+        kind: "scan",
+        required: true,
+        targetCount: 3,
+        honorBonus: 20,
+      },
+      {
+        id: huntId,
+        label: spec.huntLabel,
+        description: spec.huntDescription,
+        kind: "hunt",
+        required: true,
+        targetCount: 6,
+        honorBonus: 25,
+      },
+      {
+        id: recoverId,
+        label: spec.recoverLabel,
+        description: spec.recoverDescription,
+        kind: "recover",
+        required: true,
+        targetCount: 2,
+        honorBonus: 25,
+      },
+      {
+        id: bossId,
+        label: `Affronter ${spec.targetName}`,
+        description: `Isole la proie dominante et conclus la chasse contre ${spec.targetName}.`,
+        kind: "boss",
+        required: true,
+        targetCount: 1,
+        honorBonus: 55,
+      },
+      {
+        id: extractId,
+        label: "Rejoindre le faisceau d'extraction",
+        description:
+          "Préserve le trophée, sécurise les prélèvements et rappelle le vaisseau au-dessus de la balise.",
+        kind: "extract",
+        required: true,
+        targetCount: 1,
+        honorBonus: 15,
+      },
+    ],
+    honorRules: [
+      {
+        id: `${spec.id}-study`,
+        label: "Cartographier avant de frapper",
+        description:
+          "Termine les relevés du biome avant d'engager sa proie dominante.",
+        kind: "scan-target",
+        bonus: 20,
+        violationPenalty: 0,
+      },
+      {
+        id: `${spec.id}-restraint`,
+        label: "Force mesurée",
+        description:
+          "N'emploie pas de tir plasma chargé contre la petite faune endémique.",
+        kind: "weapon-restraint",
+        bonus: 20,
+        violationPenalty: 15,
+      },
+      {
+        id: `${spec.id}-survive`,
+        label: "Chasseur inébranlable",
+        description: "Termine la chasse sans déclencher le Second Wind.",
+        kind: "no-second-wind",
+        bonus: 20,
+        violationPenalty: 0,
+      },
+    ],
+    enemyWaves: [
+      {
+        id: `${spec.id}-foragers`,
+        trigger: "start",
+        triggerId: null,
+        archetype: spec.waveArchetypes[0],
+        count: 5,
+        health: 78 + spec.order * 4,
+        damage: 10 + spec.order,
+        moveSpeed: 168,
+        threatLevel: 1,
+        spawnDelaySeconds: 0.7,
+      },
+      {
+        id: `${spec.id}-territorials`,
+        trigger: "objective",
+        triggerId: scanId,
+        archetype: spec.waveArchetypes[1],
+        count: 4,
+        health: 112 + spec.order * 6,
+        damage: 14 + spec.order,
+        moveSpeed: 145,
+        threatLevel: 2,
+        spawnDelaySeconds: 1,
+      },
+      {
+        id: `${spec.id}-guardians`,
+        trigger: "objective",
+        triggerId: recoverId,
+        archetype: spec.waveArchetypes[2],
+        count: 3,
+        health: 165 + spec.order * 8,
+        damage: 19 + spec.order,
+        moveSpeed: 122,
+        threatLevel: 3,
+        spawnDelaySeconds: 1.25,
+      },
+    ],
+    boss: {
+      name: spec.targetName,
+      title: spec.bossTitle,
+      maxHealth: spec.bossHealth,
+      moveSpeed: spec.bossSpeed,
+      threatLevel: 4,
+      color: spec.bossColor,
+      silhouette: "beast",
+      trophyWindowSeconds: 16,
+      attacks: spec.bossAttacks,
+      phases: [0, 1, 2].map((index) => ({
+        id: `${spec.id}-phase-${index + 1}`,
+        label: spec.phaseLabels[index],
+        startsAtHealthRatio: [1, 0.6, 0.25][index],
+        behavior: spec.phaseBehaviors[index],
+        hazard: spec.phaseHazards[index],
+        speedMultiplier: [1, 1.12, 1.24][index],
+        damageMultiplier: [1, 1.1, 1.22][index],
+      })),
+    },
+    trophy: {
+      id: `trophy-${spec.id}`,
+      name: spec.trophyName,
+      description: spec.trophyDescription,
+      targetName: spec.targetName,
+      partId: spec.trophyPartId,
+      icon: spec.trophyIcon,
+    },
+    codexUnlockIds: spec.codexUnlockIds,
+  };
+}
 
 export const MISSIONS: readonly MissionDefinition[] = [
   {
@@ -961,6 +1178,311 @@ export const MISSIONS: readonly MissionDefinition[] = [
     },
     codexUnlockIds: ["cinder-volcano", "bad-blood"],
   },
+  expansionMission({
+    id: "swamp-hydra",
+    order: 4,
+    title: "Les gueules du delta",
+    subtitle: "Dans la mangrove, chaque remous peut mordre",
+    planetName: "Naraka-Delta",
+    biome: "swamp",
+    targetName: "Hydre de vase",
+    briefing:
+      "Un delta planétaire à marée noire abrite une chaîne alimentaire bâtie autour d'une hydre amphibie. Relève les pistes communes aux berges, identifie ses nourriceries et force la matriarche à quitter les chenaux profonds.",
+    threatLevel: 4,
+    prerequisiteMissionId: "volcano-bad-blood",
+    recommendedArmorId: "hunter",
+    recommendedWeaponIds: ["combistick", "yautja-bow"],
+    parTimeSeconds: 900,
+    rewards: { honor: 220, clanMarks: 350 },
+    palette: {
+      sky: "#071815",
+      haze: "#315a49",
+      ground: "#13231d",
+      platform: "#4a5741",
+      accent: "#9cff69",
+      danger: "#dc6b3d",
+    },
+    traceLabel: "Lire les remous de chasse",
+    traceDescription:
+      "Scanne les traînées de mucus laissées entre trois bras du delta.",
+    huntLabel: "Briser la meute amphibie",
+    huntDescription:
+      "Élimine les chasseurs de rive qui rabattent les proies vers la fosse.",
+    recoverLabel: "Prélever les œufs sentinelles",
+    recoverDescription:
+      "Récupère deux capsules viables sans contaminer l'écosystème du clan.",
+    bossTitle: "La matriarche des eaux noires",
+    bossHealth: 940,
+    bossSpeed: 158,
+    bossColor: "#738f45",
+    bossAttacks: [
+      { id: "hydra-lunge", label: "Jaillissement du chenal", damage: 32, cooldownSeconds: 4.2, rangePx: 520, telegraphMs: 780, behavior: "charge" },
+      { id: "hydra-tail", label: "Balayage caudal", damage: 26, cooldownSeconds: 1.8, rangePx: 145, telegraphMs: 360, behavior: "melee" },
+      { id: "hydra-spit", label: "Jet de vase acide", damage: 24, cooldownSeconds: 5.4, rangePx: 650, telegraphMs: 900, behavior: "projectile" },
+    ],
+    phaseLabels: ["Sous la surface", "Trois gueules", "Furie des marées"],
+    phaseBehaviors: [
+      "La matriarche alterne embuscades aquatiques et charges courtes.",
+      "Ses têtes latérales verrouillent les routes hautes pendant que le corps avance.",
+      "Blessée, elle poursuit sans regagner les chenaux profonds.",
+    ],
+    phaseHazards: [
+      "Les remous révèlent tardivement sa trajectoire.",
+      "La marée monte et réduit les appuis au sol.",
+      "Chaque charge projette une vague qui perturbe le camouflage.",
+    ],
+    trophyName: "Crâne trifide de l'Hydre",
+    trophyDescription:
+      "La couronne osseuse d'une matriarche ayant dominé tout un delta.",
+    trophyPartId: "skull-and-spine",
+    trophyIcon: "hydra-skull",
+    codexUnlockIds: ["naraka-swamp", "mire-hydra"],
+    waveArchetypes: ["cryostalker-runner", "razor-hound", "cryostalker-brute"],
+  }),
+  expansionMission({
+    id: "desert-sandmaw",
+    order: 5,
+    title: "Le chant sous les dunes",
+    subtitle: "Le désert écoute chaque pas",
+    planetName: "Serekh-9",
+    biome: "desert",
+    targetName: "Matriarche Sandmaw",
+    briefing:
+      "Les caravanes minières de Serekh-9 disparaissent au bord d'un canyon vitrifié. Une prédatrice fouisseuse chasse par vibrations et commande plusieurs castes endémiques sous la mer de silice.",
+    threatLevel: 4,
+    prerequisiteMissionId: "swamp-hydra",
+    recommendedArmorId: "scout",
+    recommendedWeaponIds: ["yautja-bow", "smart-disc"],
+    parTimeSeconds: 930,
+    rewards: { honor: 240, clanMarks: 380 },
+    palette: {
+      sky: "#29160d",
+      haze: "#a35831",
+      ground: "#36251b",
+      platform: "#7c573b",
+      accent: "#ffd16a",
+      danger: "#ff6542",
+    },
+    traceLabel: "Calibrer le masque sismique",
+    traceDescription:
+      "Analyse trois cratères d'écoute avant de traverser la mer de dunes.",
+    huntLabel: "Écarter les rôdeurs de silice",
+    huntDescription:
+      "Traque les castes rapides sans attirer prématurément la Matriarche.",
+    recoverLabel: "Récupérer les balises englouties",
+    recoverDescription:
+      "Dégage deux balises minières contenant les cycles vibratoires de la meute.",
+    bossTitle: "La mâchoire sous le verre",
+    bossHealth: 1_000,
+    bossSpeed: 172,
+    bossColor: "#c6864c",
+    bossAttacks: [
+      { id: "sandmaw-breach", label: "Percée de silice", damage: 34, cooldownSeconds: 4.6, rangePx: 580, telegraphMs: 980, behavior: "charge" },
+      { id: "sandmaw-mandibles", label: "Cisaille mandibulaire", damage: 29, cooldownSeconds: 1.65, rangePx: 125, telegraphMs: 320, behavior: "melee" },
+      { id: "sandmaw-quake", label: "Onde de dune", damage: 22, cooldownSeconds: 6, rangePx: 360, telegraphMs: 1_100, behavior: "area" },
+    ],
+    phaseLabels: ["Écoute profonde", "Canyon vitrifié", "Tempête de silice"],
+    phaseBehaviors: [
+      "La Matriarche suit les vibrations et frappe depuis le sous-sol.",
+      "Elle utilise les parois pour ricocher et couper les hauteurs.",
+      "Ses attaques deviennent continues lorsque la tempête efface les traces.",
+    ],
+    phaseHazards: [
+      "Courir sur le sable révèle immédiatement la position du chasseur.",
+      "Les plaques de verre se brisent sous les impacts lourds.",
+      "La silice suspendue réduit toutes les visions du biomask.",
+    ],
+    trophyName: "Mandibules de Sandmaw",
+    trophyDescription:
+      "Deux lames minérales polies par des décennies de chasse souterraine.",
+    trophyPartId: "skull",
+    trophyIcon: "sandmaw-skull",
+    codexUnlockIds: ["serekh-desert", "sandmaw"],
+    waveArchetypes: ["razor-hound", "cryostalker-runner", "cryostalker-brute"],
+  }),
+  expansionMission({
+    id: "ocean-leviathan",
+    order: 6,
+    title: "Sous l'œil de la tempête",
+    subtitle: "Un récif vertical au-dessus d'un abîme vivant",
+    planetName: "Pelagos-M",
+    biome: "ocean",
+    targetName: "Léviathan abyssal",
+    briefing:
+      "Sur Pelagos-M, seules des arches récifales émergent d'un océan global. Le clan a marqué un Léviathan capable de bondir d'une fosse à l'autre et de commander la faune bioluminescente du récif.",
+    threatLevel: 4,
+    prerequisiteMissionId: "desert-sandmaw",
+    recommendedArmorId: "scout",
+    recommendedWeaponIds: ["combistick", "plasma-caster"],
+    parTimeSeconds: 960,
+    rewards: { honor: 260, clanMarks: 410 },
+    palette: {
+      sky: "#031d2b",
+      haze: "#17627a",
+      ground: "#103b43",
+      platform: "#41777b",
+      accent: "#4dffe1",
+      danger: "#ff6f7f",
+    },
+    traceLabel: "Échantillonner les chants abyssaux",
+    traceDescription:
+      "Enregistre trois signatures sonar depuis les arches du récif.",
+    huntLabel: "Disperser les gardiens du récif",
+    huntDescription:
+      "Neutralise les prédateurs bioluminescents qui protègent la fosse.",
+    recoverLabel: "Reprendre les harpons de clan",
+    recoverDescription:
+      "Récupère deux harpons rituels abandonnés par une chasse précédente.",
+    bossTitle: "Le roi de la fosse sans fond",
+    bossHealth: 1_080,
+    bossSpeed: 164,
+    bossColor: "#3da6a4",
+    bossAttacks: [
+      { id: "leviathan-breach", label: "Bond de l'abîme", damage: 38, cooldownSeconds: 5, rangePx: 640, telegraphMs: 1_050, behavior: "charge" },
+      { id: "leviathan-fin", label: "Faux dorsale", damage: 30, cooldownSeconds: 1.9, rangePx: 155, telegraphMs: 380, behavior: "melee" },
+      { id: "leviathan-sonar", label: "Détonation sonar", damage: 25, cooldownSeconds: 6.4, rangePx: 420, telegraphMs: 1_150, behavior: "area" },
+    ],
+    phaseLabels: ["Prédateur submergé", "Récif brisé", "Appel de l'abîme"],
+    phaseBehaviors: [
+      "Le Léviathan disparaît entre les arches avant chaque bond.",
+      "Il fracasse les plateformes basses et force la chasse verticale.",
+      "Ses impulsions sonar accélèrent tandis que la tempête ferme l'arène.",
+    ],
+    phaseHazards: [
+      "Les vagues rendent le camouflage instable sur les plateformes basses.",
+      "Les fragments de corail coupent les passages submergés.",
+      "La foudre frappe les structures métalliques après chaque impulsion.",
+    ],
+    trophyName: "Crête du Léviathan",
+    trophyDescription:
+      "Une vertèbre-couronne bioluminescente arrachée au maître d'un océan.",
+    trophyPartId: "skull-and-spine",
+    trophyIcon: "leviathan-spine",
+    codexUnlockIds: ["pelagos-ocean", "abyss-leviathan"],
+    waveArchetypes: ["cryostalker-runner", "razor-hound", "cryostalker-brute"],
+  }),
+  expansionMission({
+    id: "fungal-hivemind",
+    order: 7,
+    title: "La forêt qui se souvient",
+    subtitle: "Chaque spore transmet la peur au monde entier",
+    planetName: "Mycora-V",
+    biome: "fungal",
+    targetName: "Cœur-Mère mycélien",
+    briefing:
+      "Mycora-V est un organisme à l'échelle planétaire. Ses prédateurs partagent leurs perceptions par un réseau mycélien, et le Cœur-Mère réécrit leurs réponses à mesure que la chasse progresse.",
+    threatLevel: 4,
+    prerequisiteMissionId: "ocean-leviathan",
+    recommendedArmorId: "hunter",
+    recommendedWeaponIds: ["smart-disc", "plasma-caster"],
+    parTimeSeconds: 990,
+    rewards: { honor: 280, clanMarks: 450 },
+    palette: {
+      sky: "#130b22",
+      haze: "#593b72",
+      ground: "#24172e",
+      platform: "#594463",
+      accent: "#d98cff",
+      danger: "#ff557f",
+    },
+    traceLabel: "Cartographier le réseau mycélien",
+    traceDescription:
+      "Scanne trois nœuds avant que la conscience planétaire ne masque leurs signaux.",
+    huntLabel: "Rompre la mémoire de meute",
+    huntDescription:
+      "Élimine les relais mobiles qui partagent la position du chasseur.",
+    recoverLabel: "Isoler les graines-mémoires",
+    recoverDescription:
+      "Scelle deux capsules de spores anciennes pour les archives du clan.",
+    bossTitle: "La conscience sous les racines",
+    bossHealth: 1_120,
+    bossSpeed: 146,
+    bossColor: "#a962c3",
+    bossAttacks: [
+      { id: "hivemind-tendril", label: "Fouet de mycélium", damage: 31, cooldownSeconds: 1.75, rangePx: 180, telegraphMs: 420, behavior: "melee" },
+      { id: "hivemind-spores", label: "Nuage neurospore", damage: 24, cooldownSeconds: 5.6, rangePx: 390, telegraphMs: 1_000, behavior: "area" },
+      { id: "hivemind-dart", label: "Épine symbiotique", damage: 27, cooldownSeconds: 3.8, rangePx: 670, telegraphMs: 720, behavior: "projectile" },
+    ],
+    phaseLabels: ["Éveil du réseau", "Mémoire adaptative", "Floraison terminale"],
+    phaseBehaviors: [
+      "Le Cœur-Mère teste les distances avec ses vrilles et ses épines.",
+      "Le réseau anticipe les routes déjà utilisées par le chasseur.",
+      "Toutes les capsules s'ouvrent et le Cœur abandonne sa protection.",
+    ],
+    phaseHazards: [
+      "Les spores persistantes marquent les déplacements rapides.",
+      "Répéter une route déclenche une floraison défensive.",
+      "Le nuage terminal rend la vision thermique presque opaque.",
+    ],
+    trophyName: "Noyau du Cœur-Mère",
+    trophyDescription:
+      "Un nœud pétrifié contenant les souvenirs sensoriels d'une biosphère.",
+    trophyPartId: "skull",
+    trophyIcon: "mycelial-core",
+    codexUnlockIds: ["mycora-fungal", "hivemind"],
+    waveArchetypes: ["cryostalker-runner", "razor-hound", "cryostalker-brute"],
+  }),
+  expansionMission({
+    id: "ruins-ancient-guardian",
+    order: 8,
+    title: "Les chasseurs de pierre",
+    subtitle: "Une cité morte vient de reconnaître le clan",
+    planetName: "Acheron-Sigma",
+    biome: "ruins",
+    targetName: "Gardien d'obsidienne",
+    briefing:
+      "Une lune sans atmosphère abrite une cité prédatrice antérieure aux archives du clan. Ses sentinelles se réveillent au passage d'une biomask et adaptent leurs armes à chaque technologie observée.",
+    threatLevel: 4,
+    prerequisiteMissionId: "fungal-hivemind",
+    recommendedArmorId: "berserker",
+    recommendedWeaponIds: ["combistick", "wristblades"],
+    parTimeSeconds: 1_020,
+    rewards: { honor: 320, clanMarks: 520 },
+    palette: {
+      sky: "#05070d",
+      haze: "#253148",
+      ground: "#131722",
+      platform: "#3b4351",
+      accent: "#63d8ff",
+      danger: "#ff496c",
+    },
+    traceLabel: "Déchiffrer les marques de chasse",
+    traceDescription:
+      "Scanne trois stèles qui réagissent aux fréquences du biomask.",
+    huntLabel: "Désassembler les sentinelles",
+    huntDescription:
+      "Neutralise les unités qui reproduisent les tactiques Yautja observées.",
+    recoverLabel: "Extraire les prismes mémoriels",
+    recoverDescription:
+      "Retire deux prismes sans activer le protocole d'effacement de la cité.",
+    bossTitle: "Le dernier protocole de la cité",
+    bossHealth: 1_250,
+    bossSpeed: 182,
+    bossColor: "#557b9b",
+    bossAttacks: [
+      { id: "guardian-lance", label: "Lance photonique", damage: 36, cooldownSeconds: 3.4, rangePx: 720, telegraphMs: 760, behavior: "projectile" },
+      { id: "guardian-blade", label: "Lame mimétique", damage: 34, cooldownSeconds: 1.5, rangePx: 138, telegraphMs: 300, behavior: "melee" },
+      { id: "guardian-field", label: "Prison gravitationnelle", damage: 28, cooldownSeconds: 6.6, rangePx: 410, telegraphMs: 1_200, behavior: "area" },
+    ],
+    phaseLabels: ["Protocole d'étude", "Contre-chasse mimétique", "Effacement de la cité"],
+    phaseBehaviors: [
+      "Le Gardien mesure chaque arme avant de choisir sa contre-mesure.",
+      "Il reproduit les changements d'altitude et les feintes du chasseur.",
+      "Le noyau s'ouvre et le Gardien abandonne toute défense passive.",
+    ],
+    phaseHazards: [
+      "Les champs de stase déplacent périodiquement les zones sûres.",
+      "Une arme répétée trois fois perd temporairement son avantage.",
+      "Les plateformes s'effacent du fond vers le centre de l'arène.",
+    ],
+    trophyName: "Masque du Gardien",
+    trophyDescription:
+      "Une face minérale dont les capteurs ont étudié puis reconnu un chasseur digne.",
+    trophyPartId: "mask",
+    trophyIcon: "guardian-mask",
+    codexUnlockIds: ["acheron-ruins", "ancient-guardian"],
+    waveArchetypes: ["scout", "rifle-soldier", "heavy"],
+  }),
 ];
 
 // ---------------------------------------------------------------------------
@@ -1028,6 +1550,66 @@ export const CODEX_ENTRIES: readonly CodexEntryDefinition[] = [
     category: "prey",
     title: "Bad Blood",
     text: "Un Paria qui vole trophées et technologie. Le combattre est un jugement du clan, pas une chasse ordinaire.",
+  },
+  {
+    id: "naraka-swamp",
+    category: "planet",
+    title: "Naraka-Delta",
+    text: "Un réseau de mangroves à marées rapides où les pistes changent avec l'eau et où chaque racine abrite une niche endémique.",
+  },
+  {
+    id: "mire-hydra",
+    category: "prey",
+    title: "Hydre de vase",
+    text: "Matriarche amphibie à trois crêtes, capable de coordonner les chasseurs de rive par vibrations aquatiques.",
+  },
+  {
+    id: "serekh-desert",
+    category: "planet",
+    title: "Serekh-9",
+    text: "Une mer de silice bordée de canyons vitrifiés. Les organismes locaux détectent les vibrations bien avant la chaleur.",
+  },
+  {
+    id: "sandmaw",
+    category: "prey",
+    title: "Matriarche Sandmaw",
+    text: "Apex fouisseur dont les mandibules minérales fracturent la roche et dont la meute chasse sous le sable.",
+  },
+  {
+    id: "pelagos-ocean",
+    category: "planet",
+    title: "Pelagos-M",
+    text: "Monde-océan où les routes de chasse relient arches coralliennes, stations noyées et cheminées hydrothermales.",
+  },
+  {
+    id: "abyss-leviathan",
+    category: "prey",
+    title: "Léviathan abyssal",
+    text: "Prédateur pélagique bioluminescent qui transforme ses impulsions sonar en arme de territoire.",
+  },
+  {
+    id: "mycora-fungal",
+    category: "planet",
+    title: "Mycora-V",
+    text: "Biosphère mycélienne continue dont les forêts, sols et animaux partagent une mémoire sensorielle.",
+  },
+  {
+    id: "hivemind",
+    category: "prey",
+    title: "Cœur-Mère mycélien",
+    text: "Nœud conscient qui adapte les défenses de la planète à chaque tactique observée pendant la chasse.",
+  },
+  {
+    id: "acheron-ruins",
+    category: "planet",
+    title: "Acheron-Sigma",
+    text: "Lune de pierre noire couverte d'une cité automatique antérieure aux archives connues du clan.",
+  },
+  {
+    id: "ancient-guardian",
+    category: "prey",
+    title: "Gardien d'obsidienne",
+    text: "Sentinelle minérale capable d'étudier, mémoriser puis reproduire les tactiques de ses intrus.",
   },
 ];
 

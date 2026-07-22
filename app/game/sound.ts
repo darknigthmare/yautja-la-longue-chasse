@@ -10,7 +10,16 @@ const SILENCE = 0.0001;
 
 type AudioContextFactory = new () => AudioContext;
 
-export type GameAudioBiome = "ship" | "jungle" | "ice" | "volcano";
+export type GameAudioBiome =
+  | "ship"
+  | "jungle"
+  | "ice"
+  | "volcano"
+  | "swamp"
+  | "desert"
+  | "ocean"
+  | "fungal"
+  | "ruins";
 
 export type GameSfxId =
   | "ui"
@@ -1066,6 +1075,30 @@ export class GameAudio {
         addOscillator(34, "sine", 0.12);
         addOscillator(47, "triangle", 0.06);
         addNoise("lowpass", 180, 0.09);
+        break;
+      case "swamp":
+        addOscillator(48, "triangle", 0.045);
+        addNoise("bandpass", 520, 0.08, 0.55);
+        addNoise("lowpass", 1_500, 0.035);
+        break;
+      case "desert":
+        addOscillator(72, "sine", 0.025);
+        addNoise("bandpass", 1_650, 0.085, 0.28);
+        break;
+      case "ocean":
+        addOscillator(39, "sine", 0.08);
+        addOscillator(126, "sine", 0.018);
+        addNoise("lowpass", 460, 0.07);
+        break;
+      case "fungal":
+        addOscillator(54, "triangle", 0.045);
+        addOscillator(216, "sine", 0.012);
+        addNoise("bandpass", 730, 0.055, 0.7);
+        break;
+      case "ruins":
+        addOscillator(31, "sine", 0.055);
+        addOscillator(388, "sine", 0.012);
+        addNoise("bandpass", 960, 0.035, 1.2);
         break;
     }
 

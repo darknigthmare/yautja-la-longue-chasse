@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "generator": "OpenAI built-in image_gen",
+  "style": "dark sci-fi pixel-painted side-scroller",
+  "grid": {
+    "rows": 5,
+    "columns": 6,
+    "rowBasis": "zero-based",
+    "columnOrder": [
+      "idle",
+      "move-a",
+      "move-b",
+      "attack",
+      "hit",
+      "death"
+    ],
+    "orientation": "left-facing side profile",
+    "chromaKey": "#ff00ff"
+  },
+  "masters": [
+    {
+      "id": "supplemental-a1-oseris",
+      "chroma": "masters/supplemental-a1-oseris-chroma.png",
+      "alpha": "masters/supplemental-a1-oseris-alpha.png"
+    },
+    {
+      "id": "supplemental-a2-oseris-nivalis",
+      "chroma": "masters/supplemental-a2-oseris-nivalis-chroma.png",
+      "alpha": "masters/supplemental-a2-oseris-nivalis-alpha.png"
+    },
+    {
+      "id": "supplemental-a3-nivalis",
+      "chroma": "masters/supplemental-a3-nivalis-chroma.png",
+      "alpha": "masters/supplemental-a3-nivalis-alpha.png"
+    },
+    {
+      "id": "supplemental-a4-cinder",
+      "chroma": "masters/supplemental-a4-cinder-chroma.png",
+      "alpha": "masters/supplemental-a4-cinder-alpha.png"
+    },
+    {
+      "id": "supplemental-a5-naraka",
+      "chroma": "masters/supplemental-a5-naraka-chroma.png",
+      "alpha": "masters/supplemental-a5-naraka-alpha.png"
+    }
+  ],
+  "entries": [
+    {
+      "spriteId": "v8/oseris-iv/vineback-grazer",
+      "master": "masters/supplemental-a1-oseris-alpha.png",
+      "row": 0,
+      "anatomy": "Herbivore alien quadrupède lourd, museau brouteur large, quatre pattes porteuses et dos cuirassé couvert de lianes vivantes."
+    },
+    {
+      "spriteId": "v8/oseris-iv/mirror-chameleon",
+      "master": "masters/supplemental-a1-oseris-alpha.png",
+      "row": 1,
+      "anatomy": "Petit reptile alien bas sur pattes, quatre membres préhensiles, queue enroulée, œil tourelle et écailles prismatiques réfléchissantes."
+    },
+    {
+      "spriteId": "v8/oseris-iv/thunder-macaque",
+      "master": "masters/supplemental-a1-oseris-alpha.png",
+      "row": 2,
+      "anatomy": "Primate alien robuste, thorax massif, longs avant-bras, jambes plus courtes, poings lourds et nodules bioélectriques."
+    },
+    {
+      "spriteId": "v8/oseris-iv/needle-frog",
+      "master": "masters/supplemental-a1-oseris-alpha.png",
+      "row": 3,
+      "anatomy": "Grenouille alien toxique trapue, quatre membres amphibies écartés, gorge gonflable et aiguilles rigides sur le dos et les cuisses."
+    },
+    {
+      "spriteId": "v8/oseris-iv/coil-serpent",
+      "master": "masters/supplemental-a1-oseris-alpha.png",
+      "row": 4,
+      "anatomy": "Grand serpent arboricole sans membres, longues boucles musculaires, tête anguleuse, queue préhensile et crête d’écailles."
+    },
+    {
+      "spriteId": "v8/oseris-iv/walking-mangrove",
+      "master": "masters/supplemental-a2-oseris-nivalis-alpha.png",
+      "row": 0,
+      "bottomOverscan": 64,
+      "anatomy": "Palétuvier alien conscient, tronc noueux unique, couronne de branches, feuillage pendant et six racines-échasses locomotrices distinctes."
+    },
+    {
+      "spriteId": "v8/oseris-iv/jungle-smuggler-drone",
+      "master": "masters/supplemental-a2-oseris-nivalis-alpha.png",
+      "row": 1,
+      "anatomy": "Drone éclaireur volant compact, coque mécanique facettée, deux propulseurs latéraux, œil capteur et manipulateur-outil sous le châssis."
+    },
+    {
+      "spriteId": "v8/nivalis-k/ice-bore",
+      "master": "masters/supplemental-a2-oseris-nivalis-alpha.png",
+      "row": 2,
+      "anatomy": "Fouisseur polaire trapu, corps cuirassé allongé, quatre membres excavateurs, griffes-pelles et rostre conique de forage."
+    },
+    {
+      "spriteId": "v8/nivalis-k/frost-manta",
+      "master": "masters/supplemental-a2-oseris-nivalis-alpha.png",
+      "row": 3,
+      "anatomy": "Manta alien planeuse des neiges, corps plat en losange, deux nageoires latérales flexibles, longue queue stabilisatrice et crêtes gelées."
+    },
+    {
+      "spriteId": "v8/nivalis-k/glacier-ram",
+      "master": "masters/supplemental-a2-oseris-nivalis-alpha.png",
+      "row": 4,
+      "anatomy": "Bélier glaciaire quadrupède lourd, quatre sabots, cou épais, crâne en coin et deux énormes cornes translucides recourbées vers l’avant."
+    },
+    {
+      "spriteId": "v8/nivalis-k/aurora-leech",
+      "master": "masters/supplemental-a3-nivalis-alpha.png",
+      "row": 0,
+      "anatomy": "Grande sangsue polaire sans membres, corps segmenté translucide, ventouse buccale circulaire dentée et organes internes bioluminescents cyan-violet."
+    },
+    {
+      "spriteId": "v8/nivalis-k/snow-prowler",
+      "master": "masters/supplemental-a3-nivalis-alpha.png",
+      "row": 1,
+      "anatomy": "Félin polaire alien élancé, quatre longues pattes, épaules basses, longue queue d’équilibre, plaques jugales et fourrure thermique blanche-grise."
+    },
+    {
+      "spriteId": "v8/nivalis-k/thermal-pod",
+      "master": "masters/supplemental-a3-nivalis-alpha.png",
+      "row": 2,
+      "anatomy": "Cosse végétale mobile, corps-graine épais à évents thermiques ambrés, trois racines-tentacules locomotrices, deux vrilles et enveloppe antigel."
+    },
+    {
+      "spriteId": "v8/nivalis-k/xenobiologist-field",
+      "master": "masters/supplemental-a3-nivalis-alpha.png",
+      "row": 3,
+      "anatomy": "Scientifique humain adulte en combinaison arctique blanche et orange, capuche à visière, sac capteur compact et scanner xénobiologique portatif."
+    },
+    {
+      "spriteId": "v8/nivalis-k/rime-automaton",
+      "master": "masters/supplemental-a3-nivalis-alpha.png",
+      "row": 4,
+      "anatomy": "Automate antique bipède de givre, torse bronze-pierre compact, deux bras articulés, deux jambes inversées, noyau optique bleu et plaques glacées."
+    },
+    {
+      "spriteId": "v8/cinder-12/lava-skimmer",
+      "master": "masters/supplemental-a4-cinder-alpha.png",
+      "row": 0,
+      "anatomy": "Reptile-poisson alien bas adapté à la lave, corps caréné cuirassé, tête en coin, quatre nageoires-pattes thermorésistantes et queue aplatie."
+    },
+    {
+      "spriteId": "v8/cinder-12/basalt-ram",
+      "master": "masters/supplemental-a4-cinder-alpha.png",
+      "row": 1,
+      "anatomy": "Bélier volcanique quadrupède musclé, peau de basalte fissurée à lueur orange et deux énormes cornes minérales recourbées vers l’avant."
+    },
+    {
+      "spriteId": "v8/cinder-12/smoke-wyvern",
+      "master": "masters/supplemental-a4-cinder-alpha.png",
+      "row": 2,
+      "anatomy": "Vouivre volcanique à deux pattes arrière, deux grandes ailes antérieures membraneuses, longue queue, crâne reptilien étroit et écailles de suie."
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-initiate",
+      "master": "masters/supplemental-a4-cinder-alpha.png",
+      "row": 3,
+      "anatomy": "Jeune Yautja renégat grand et musclé, visage à mandibules partiellement visible, longues mèches, armure bronze légère, filet, lames de poignet et plasma compact."
+    },
+    {
+      "spriteId": "v8/cinder-12/bad-blood-trapper",
+      "master": "masters/supplemental-a4-cinder-alpha.png",
+      "row": 4,
+      "anatomy": "Yautja renégat vétéran masqué, longues mèches liées, armure sombre asymétrique, lames de poignet, lance-filet, câbles et pièges de ceinture."
+    },
+    {
+      "spriteId": "v8/naraka-delta/reed-cat",
+      "master": "masters/supplemental-a5-naraka-alpha.png",
+      "row": 0,
+      "anatomy": "Félin alien amphibie élancé, quatre pattes palmées, épaules basses, tête prédatrice étroite, longue queue rayée et branchies latérales."
+    },
+    {
+      "spriteId": "v8/naraka-delta/delta-surveyor",
+      "master": "masters/supplemental-a5-naraka-alpha.png",
+      "row": 1,
+      "anatomy": "Arpenteuse humaine adulte, cuissardes étanches olive, gilet léger, capuche, sac compact, scanner de terrain et canne de mesure repliée."
+    },
+    {
+      "spriteId": "v8/naraka-delta/field-medic-naraka",
+      "master": "masters/supplemental-a5-naraka-alpha.png",
+      "row": 2,
+      "anatomy": "Médecin humain adulte en combinaison étanche teal et beige, sac médical, outil de diagnostic et cartouches de bandages."
+    },
+    {
+      "spriteId": "v8/naraka-delta/swamp-xeno-spitter",
+      "master": "masters/supplemental-a5-naraka-alpha.png",
+      "row": 3,
+      "anatomy": "Xénomorphe amphibie élancé, dôme crânien lisse allongé, corps biomécanique, deux bras, deux jambes digitigrades, queue-lame, griffes palmées et sacs buccaux acides."
+    },
+    {
+      "spriteId": "v8/naraka-delta/drowned-synth",
+      "master": "masters/supplemental-a5-naraka-alpha.png",
+      "row": 4,
+      "anatomy": "Androïde synthétique humanoïde noyé et corrodé, combinaison utilitaire déchirée, peau artificielle ouverte, muscles polymères blancs, articulations et câbles visibles."
+    }
+  ]
+}

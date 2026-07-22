@@ -157,7 +157,7 @@ test("loadout, masks, ranks, lasers, trophies and missions have exhaustive mappi
   assert.equal(Object.keys(V6_MASK_VISUAL_BY_ID).length, 12);
   assert.equal(Object.keys(V6_RANK_VISUAL_BY_ID).length, 4);
   assert.equal(Object.keys(V6_LASER_VISUAL_BY_COLOR_ID).length, 5);
-  assert.equal(Object.keys(V6_MISSION_VISUALS).length, 3);
+  assert.equal(Object.keys(V6_MISSION_VISUALS).length, 8);
   assert.equal(V6_ARMORY_RACK_ORDER.length, 12);
   assert.equal(V6_PREY_GALLERY_ORDER.length, 4);
   assert.equal(V6_TROPHY_GALLERY_ORDER.length, 4);
@@ -255,6 +255,11 @@ test("mission data declares the exact object physically claimed", () => {
       "jungle-vey": "insignia",
       "ice-cryostalker": "skull-and-spine",
       "volcano-bad-blood": "mask",
+      "swamp-hydra": "skull-and-spine",
+      "desert-sandmaw": "skull",
+      "ocean-leviathan": "skull-and-spine",
+      "fungal-hivemind": "skull",
+      "ruins-ancient-guardian": "mask",
     },
   );
 });

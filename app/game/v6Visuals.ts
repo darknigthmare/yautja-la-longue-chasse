@@ -519,6 +519,36 @@ export const V6_MISSION_VISUALS = {
     arrivalShipId: "ship-hunting-interceptor",
     extractionShipId: "ship-extraction-dropship",
   },
+  "swamp-hydra": {
+    faunaId: "prey-thornback-ravager",
+    trophyId: "trophy-horned-skull",
+    arrivalShipId: "ship-hunting-interceptor",
+    extractionShipId: "ship-extraction-dropship",
+  },
+  "desert-sandmaw": {
+    faunaId: "prey-cindermaw-drake",
+    trophyId: "trophy-fanged-skull",
+    arrivalShipId: "ship-hunting-interceptor",
+    extractionShipId: "ship-extraction-dropship",
+  },
+  "ocean-leviathan": {
+    faunaId: "prey-glacier-shellback",
+    trophyId: "trophy-horned-skull",
+    arrivalShipId: "ship-hunting-interceptor",
+    extractionShipId: "ship-extraction-dropship",
+  },
+  "fungal-hivemind": {
+    faunaId: "prey-thornback-ravager",
+    trophyId: "trophy-skull-spine-plaque",
+    arrivalShipId: "ship-hunting-interceptor",
+    extractionShipId: "ship-extraction-dropship",
+  },
+  "ruins-ancient-guardian": {
+    faunaId: "prey-cindermaw-drake",
+    trophyId: "mask-elder-runes",
+    arrivalShipId: "ship-hunting-interceptor",
+    extractionShipId: "ship-extraction-dropship",
+  },
 } as const satisfies Readonly<Record<MissionId, V6MissionVisualSet>>;
 
 export const V6_VISUAL_COUNTS = Object.freeze(

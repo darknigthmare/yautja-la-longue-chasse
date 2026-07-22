@@ -36,7 +36,7 @@ await build({
 const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
   await import(pathToFileURL(join(outputDirectory, "save.mjs")).href);
 
-test("v1 saves migrate to v3 without losing legacy trophy data", () => {
+test("v1 saves migrate to the current schema without losing legacy trophy data", () => {
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
   legacy.version = 1;
   delete legacy.appearance;
@@ -83,6 +83,40 @@ test("v1 saves migrate to v3 without losing legacy trophy data", () => {
     score: 91,
     claimedAt: "2026-01-02T00:00:00.000Z",
   });
+});
+
+test("v3 completion at Cinder reopens the five-mission V4 campaign extension", () => {
+  const legacy = defaultSave("2026-01-01T00:00:00.000Z");
+  legacy.version = 3;
+  legacy.storyCompleted = true;
+  legacy.missionProgress["jungle-vey"].status = "completed";
+  legacy.missionProgress["jungle-vey"].completions = 1;
+  legacy.missionProgress["ice-cryostalker"].status = "completed";
+  legacy.missionProgress["ice-cryostalker"].completions = 1;
+  legacy.missionProgress["volcano-bad-blood"].status = "completed";
+  legacy.missionProgress["volcano-bad-blood"].completions = 1;
+
+  const migrated = normalizeSave(legacy);
+
+  assert.equal(migrated.version, SAVE_VERSION);
+  assert.equal(migrated.storyCompleted, false);
+  assert.equal(migrated.missionProgress["swamp-hydra"].status, "available");
+  assert.equal(migrated.missionProgress["ruins-ancient-guardian"].status, "locked");
+});
+
+test("a corrupted completed status without a completion cannot unlock the campaign", () => {
+  const corrupted = defaultSave("2026-01-01T00:00:00.000Z");
+  for (const progress of Object.values(corrupted.missionProgress)) {
+    progress.status = "completed";
+    progress.completions = 0;
+  }
+
+  const repaired = normalizeSave(corrupted);
+
+  assert.equal(repaired.missionProgress["jungle-vey"].status, "available");
+  assert.equal(repaired.missionProgress["ice-cryostalker"].status, "locked");
+  assert.equal(repaired.missionProgress["swamp-hydra"].status, "locked");
+  assert.equal(repaired.missionProgress["ruins-ancient-guardian"].status, "locked");
 });
 
 test("appearance normalization accepts an unmasked hunter and repairs invalid ids", () => {

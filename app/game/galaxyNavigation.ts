@@ -6,6 +6,17 @@ import type {
   MissionPalette,
 } from "./types";
 
+export const GALAXY_BIOME_LABELS = Object.freeze({
+  jungle: "Jungle équatoriale",
+  ice: "Banquise cryogénique",
+  volcano: "Sanctuaire volcanique",
+  swamp: "Marais acide",
+  desert: "Désert de verre",
+  ocean: "Archipel abyssal",
+  fungal: "Réseau fongique",
+  ruins: "Mégalopole en ruines",
+} satisfies Readonly<Record<BiomeId, string>>);
+
 /**
  * Read-only navigation data used by the bridge map.  The tree is deliberately
  * derived from MISSIONS so adding another hunt to data.ts automatically adds
@@ -127,6 +138,19 @@ function chartPosition(
   };
 }
 
+function distributedSystemPosition(
+  index: number,
+  total: number,
+): Readonly<{ x: number; y: number }> {
+  const columns = total <= 8 ? 2 : Math.ceil(Math.sqrt(total));
+  const rows = Math.max(1, Math.ceil(total / columns));
+  const column = index % columns;
+  const row = Math.floor(index / columns);
+  const x = columns === 1 ? 50 : 27 + column * (46 / (columns - 1));
+  const y = rows === 1 ? 50 : 14 + row * (72 / (rows - 1));
+  return { x: Number(x.toFixed(2)), y: Number(y.toFixed(2)) };
+}
+
 /** Build a deterministic systems/planets/missions tree from mission content. */
 export function buildGalaxyNavigation(
   missions: readonly MissionDefinition[] = MISSIONS,
@@ -194,10 +218,10 @@ export function buildGalaxyNavigation(
 
   const systemNodes = [...systems.values()]
     .sort((a, b) => a.firstOrder - b.firstOrder || a.name.localeCompare(b.name))
-    .map<GalaxySystemNode>((system) => ({
+    .map<GalaxySystemNode>((system, index, orderedSystems) => ({
       id: system.id,
       name: system.name,
-      position: chartPosition(system.id),
+      position: distributedSystemPosition(index, orderedSystems.length),
       accent: system.accent,
       planets: [...system.planets.values()]
         .sort(
@@ -316,7 +340,7 @@ export function getGalaxyNavigationItems(
       kind: "planet",
       id: planet.id,
       label: planet.name,
-      detail: `${planet.biome} · ${planet.missions.length} mission(s)`,
+      detail: `${GALAXY_BIOME_LABELS[planet.biome]} · ${planet.missions.length} mission(s)`,
     }));
   }
   if (state.level === "planet" && selection.planet) {

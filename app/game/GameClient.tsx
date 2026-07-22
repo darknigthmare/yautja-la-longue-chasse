@@ -11,7 +11,12 @@ import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
 import GalaxyMapPanel from "./GalaxyMapPanel";
 import PhysicalShipDeck from "./PhysicalShipDeck";
 import TrophyWorkshop from "./TrophyWorkshop";
-import EnemyBestiaryV7 from "./EnemyBestiaryV7";
+import EnemyBestiaryV8 from "./EnemyBestiaryV8";
+import {
+  ECOLOGY_V8_BOSS_ENEMY_IDS,
+  ecologyV8EnemyForId,
+} from "./ecologyV8";
+import { backgroundPathForBiome } from "./worldScreens";
 import {
   createGalaxyNavigationState,
   type GalaxyNavigationState,
@@ -446,15 +451,22 @@ const TROPHY_WORKSHOP_LABELS: Readonly<Record<TrophyWorkshopAction, string>> = {
 };
 
 function missionBackground(mission: MissionDefinition): string {
-  const biome =
-    mission.biome === "volcano" ? "volcanic" : mission.biome;
-  return `/game/backgrounds/${biome}-depth-v4.webp`;
+  return backgroundPathForBiome(mission.biome);
 }
 
-function targetSprite(mission: MissionDefinition): string {
-  if (mission.targetKind === "beast") return "/game/sprites/cryostalker.webp";
-  if (mission.targetKind === "yautja") return "/game/sprites/bad-blood.webp";
-  return "/game/sprites/v4/commandante-vey.png";
+function targetSprite(
+  mission: MissionDefinition,
+): { src: string; sheet: boolean } {
+  const ecologyId = ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id];
+  const ecologyTarget = ecologyId ? ecologyV8EnemyForId(ecologyId) : null;
+  if (ecologyTarget) return { src: ecologyTarget.sheetPath, sheet: true };
+  if (mission.targetKind === "beast") {
+    return { src: "/game/sprites/cryostalker.webp", sheet: false };
+  }
+  if (mission.targetKind === "yautja") {
+    return { src: "/game/sprites/bad-blood.webp", sheet: false };
+  }
+  return { src: "/game/sprites/v4/commandante-vey.png", sheet: false };
 }
 
 function formatTime(totalSeconds: number): string {
@@ -1217,11 +1229,16 @@ export default function GameClient() {
             <div className="briefing-layout">
               <div className="briefing-visual">
                 <img src={missionBackground(selectedMission)} alt="" />
-                <img
-                  className="target-cutout"
-                  src={targetSprite(selectedMission)}
-                  alt={`Silhouette complète de ${selectedMission.targetName}`}
-                />
+                <div
+                  className={`target-cutout ${
+                    targetSprite(selectedMission).sheet ? "target-cutout-sheet" : ""
+                  }`}
+                >
+                  <img
+                    src={targetSprite(selectedMission).src}
+                    alt={`Silhouette complète de ${selectedMission.targetName}`}
+                  />
+                </div>
                 <div className="briefing-visual-copy">
                   <small>Cible Apex // niveau {selectedMission.threatLevel}</small>
                   <strong>{selectedMission.targetName}</strong>
@@ -2027,7 +2044,7 @@ export default function GameClient() {
               id="codex-title"
               onBack={() => go(stationReturnScreen)}
             />
-            <EnemyBestiaryV7 />
+            <EnemyBestiaryV8 />
             <section className="visual-codex-gallery" aria-label="Archives visuelles OpenAI V6">
               <article>
                 <h2>Bestiaire</h2>
@@ -2092,6 +2109,7 @@ export default function GameClient() {
       {screen === "mission" && selectedMission && (
         <HuntCanvas
           mission={selectedMission}
+          encounterRun={save.missionProgress[selectedMission.id].attempts}
           loadout={save.loadout}
           inventory={save.inventory}
           appearance={save.appearance}

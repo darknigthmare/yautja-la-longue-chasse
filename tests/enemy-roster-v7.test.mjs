@@ -50,7 +50,7 @@ test("V7 exposes exactly 30 unique enemies across all requested families", () =>
   }
 });
 
-test("the nine gameplay waves assign all 30 enemies once and only once", () => {
+test("the original nine gameplay waves preserve their 30-enemy V7 archive", () => {
   const assignedIds = Object.values(ENEMY_V7_IDS_BY_WAVE).flat();
   assert.equal(assignedIds.length, 30);
   assert.equal(new Set(assignedIds).size, 30);
@@ -59,7 +59,11 @@ test("the nine gameplay waves assign all 30 enemies once and only once", () => {
     ENEMY_V7_DEFINITIONS.map(({ id }) => id).sort(),
   );
 
-  for (const mission of MISSIONS) {
+  const archivedMissions = MISSIONS.filter(
+    (mission) => enemyV7IdsForMission(mission.id).length > 0,
+  );
+  assert.equal(archivedMissions.length, 3);
+  for (const mission of archivedMissions) {
     const missionIds = enemyV7IdsForMission(mission.id);
     const expectedCount = mission.enemyWaves.reduce((sum, wave) => sum + wave.count, 0);
     assert.equal(missionIds.length, expectedCount, mission.id);
@@ -119,20 +123,29 @@ test("every enemy owns a production RGBA strip with six populated frames", async
   assert.equal(hashes.size, 30);
 });
 
-test("V7 bestiary and six-state renderer are wired into the runtime", async () => {
-  const [client, bestiary, canvas, css] = await Promise.all([
+test("the V7 archive remains intact while V8 drives the bestiary and renderer", async () => {
+  const [client, archivedBestiary, planetaryBestiary, canvas, css] = await Promise.all([
     readFile(join(projectRoot, "app/game/GameClient.tsx"), "utf8"),
     readFile(join(projectRoot, "app/game/EnemyBestiaryV7.tsx"), "utf8"),
+    readFile(join(projectRoot, "app/game/EnemyBestiaryV8.tsx"), "utf8"),
     readFile(join(projectRoot, "app/game/HuntCanvas.tsx"), "utf8"),
     readFile(join(projectRoot, "app/globals.css"), "utf8"),
   ]);
-  assert.match(client, /<EnemyBestiaryV7 \/>/);
-  assert.match(bestiary, /ENEMY_V7_FRAME_LABELS/);
-  assert.match(bestiary, /enemy-sprite-preview-track/);
+  assert.match(client, /<EnemyBestiaryV8 \/>/);
+  assert.match(archivedBestiary, /ENEMY_V7_FRAME_LABELS/);
+  assert.match(planetaryBestiary, /ECOLOGY_V8_PLANETS/);
+  assert.match(planetaryBestiary, /enemy-sprite-preview-track/);
   assert.match(canvas, /enemyV7ForWave\(wave\.id, index\)/);
+  assert.match(canvas, /ecologyEncounterEnemyAt/);
+  assert.match(canvas, /assets\.enemyV8/);
   assert.match(canvas, /drawEnemySheetFrame/);
   assert.match(canvas, /enemyAnimationFrame/);
   assert.match(canvas, /enemy\.deathAnimation/);
+  assert.match(canvas, /ecologyProfile\?\.mobility/);
+  assert.match(canvas, /ecologyProfile\?\.attackStyle/);
+  assert.match(canvas, /plannedRegularSpawns/);
+  assert.match(canvas, /if \(!assetsLoaded\)/);
+  assert.match(canvas, /const ecologyRunSeed = encounterRun/);
   assert.match(css, /@keyframes enemy-sprite-sheet-cycle/);
   assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
 });

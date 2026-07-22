@@ -1,0 +1,290 @@
+{
+  "version": 1,
+  "generator": "OpenAI built-in image_gen",
+  "style": "dark sci-fi pixel-painted side-scroller",
+  "grid": {
+    "rows": 5,
+    "columns": 6,
+    "rowBasis": "zero-based",
+    "columnOrder": [
+      "idle",
+      "move-a",
+      "move-b",
+      "attack",
+      "hit",
+      "death"
+    ],
+    "orientation": "right-facing side profile",
+    "chromaKey": "#ff00ff"
+  },
+  "postProcess": {
+    "helper": "C:/Users/chuck/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "arguments": "--auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill",
+    "edgeContractRetries": [
+      "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "masters/supplemental-b5-mycora-acheron-alpha.png"
+    ],
+    "edgeContractArguments": "--edge-contract 1"
+  },
+  "masters": [
+    {
+      "id": "supplemental-b1-serekh",
+      "sourceGenerationId": "exec-fd725e4c-2522-468f-9a45-b0f921b67c9d",
+      "chroma": "masters/supplemental-b1-serekh-chroma.png",
+      "alpha": "masters/supplemental-b1-serekh-alpha.png"
+    },
+    {
+      "id": "supplemental-b2-serekh-pelagos",
+      "sourceGenerationId": "exec-87ed2e7c-16fd-43da-b7f8-2e464080333e",
+      "chroma": "masters/supplemental-b2-serekh-pelagos-chroma.png",
+      "alpha": "masters/supplemental-b2-serekh-pelagos-alpha.png"
+    },
+    {
+      "id": "supplemental-b3-pelagos",
+      "sourceGenerationId": "exec-9627fbf7-a929-459a-a95f-d9da8551cc84",
+      "chroma": "masters/supplemental-b3-pelagos-chroma.png",
+      "alpha": "masters/supplemental-b3-pelagos-alpha.png"
+    },
+    {
+      "id": "supplemental-b4-mycora",
+      "sourceGenerationId": "exec-40608cce-8872-4577-9d38-5723e75cf330",
+      "chroma": "masters/supplemental-b4-mycora-chroma.png",
+      "alpha": "masters/supplemental-b4-mycora-alpha.png"
+    },
+    {
+      "id": "supplemental-b5-mycora-acheron",
+      "sourceGenerationId": "exec-ea7aafb4-fd30-46bb-bc99-2b1f62f4f4d1",
+      "chroma": "masters/supplemental-b5-mycora-acheron-chroma.png",
+      "alpha": "masters/supplemental-b5-mycora-acheron-alpha.png"
+    },
+    {
+      "id": "supplemental-b6-acheron-relics",
+      "sourceGenerationId": "exec-c8756ec7-11d2-452d-8dff-22cc88333763",
+      "derivedFromGenerationId": "exec-b8077d34-d6f3-4357-800b-d98db2f3c954",
+      "edit": "Removed only detached hit debris from row 0, column 4.",
+      "chroma": "masters/supplemental-b6-acheron-relics-chroma.png",
+      "alpha": "masters/supplemental-b6-acheron-relics-alpha.png"
+    },
+    {
+      "id": "supplemental-b7-acheron-war",
+      "sourceGenerationId": "exec-fcff8d96-5e56-4129-ab4c-1e59d5260dfe",
+      "chroma": "masters/supplemental-b7-acheron-war-chroma.png",
+      "alpha": "masters/supplemental-b7-acheron-war-alpha.png"
+    }
+  ],
+  "entries": [
+    {
+      "spriteId": "v8/serekh-9/dust-jackal",
+      "master": "masters/supplemental-b1-serekh-alpha.png",
+      "row": 0,
+      "anatomy": "Lean six-limbed desert pack predator with charcoal hide, dusty tan dorsal mane, long ears, narrow canine skull and hooked feet."
+    },
+    {
+      "spriteId": "v8/serekh-9/burrow-snake",
+      "master": "masters/supplemental-b1-serekh-alpha.png",
+      "row": 1,
+      "anatomy": "Long low sand serpent with armored sandstone shovel head, segmented umber scales and two short digging forelimbs."
+    },
+    {
+      "spriteId": "v8/serekh-9/dune-strider",
+      "master": "masters/supplemental-b1-serekh-alpha.png",
+      "row": 2,
+      "anatomy": "Tall swift four-legged desert runner with stilt legs, ochre hide, black joints, wedge head and swept sensory fins."
+    },
+    {
+      "spriteId": "v8/serekh-9/mirage-cat",
+      "master": "masters/supplemental-b1-serekh-alpha.png",
+      "row": 3,
+      "anatomy": "Sleek alien feline ambusher with pale sand hide, dark heat-ripple stripes, long tail, crystalline blue eyes and blade shoulder ridges."
+    },
+    {
+      "spriteId": "v8/serekh-9/armored-scarab",
+      "master": "masters/supplemental-b1-serekh-alpha.png",
+      "row": 4,
+      "anatomy": "Squat six-legged desert beetle with heavy bronze-sand carapace, obsidian joints, paired mandibles and compact horned head."
+    },
+    {
+      "spriteId": "v8/serekh-9/quill-lizard",
+      "master": "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "row": 0,
+      "anatomy": "Low muscular six-legged desert reptile with slate-brown scales, ochre dorsal quills, wedge head and hooked jaws."
+    },
+    {
+      "spriteId": "v8/serekh-9/desert-temple-guardian",
+      "master": "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "row": 1,
+      "bottomOverscan": 64,
+      "horizontalOverscan": 64,
+      "componentMergeGap": 2,
+      "anatomy": "Tall non-human stone-and-bronze automaton with amber sun core, slab forearm shield, attached heavy limbs and eroded carvings."
+    },
+    {
+      "spriteId": "v8/serekh-9/excavation-drone",
+      "master": "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "row": 2,
+      "anatomy": "Compact industrial quadruped robot with sand-worn yellow ceramic shell, black pistons, front digging claws and cyan visor."
+    },
+    {
+      "spriteId": "v8/pelagos-m/tide-octopus",
+      "master": "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "row": 3,
+      "anatomy": "Opaque amphibious cephalopod walking on six stout tentacle legs, with navy skin, turquoise rings, beaked mantle and two attack arms."
+    },
+    {
+      "spriteId": "v8/pelagos-m/skygull",
+      "master": "masters/supplemental-b2-serekh-pelagos-alpha.png",
+      "row": 4,
+      "anatomy": "Ground-capable alien coastal raptor with folded blade wings, pearl-gray feather scales, navy beak, cyan throat sac and talons."
+    },
+    {
+      "spriteId": "v8/pelagos-m/foam-crawler",
+      "master": "masters/supplemental-b3-pelagos-alpha.png",
+      "row": 0,
+      "anatomy": "Squat six-legged shoreline crustacean with pearl foam-like carapace nodules, dark blue joints, shovel claws and cyan eye clusters."
+    },
+    {
+      "spriteId": "v8/pelagos-m/storm-eel",
+      "master": "masters/supplemental-b3-pelagos-alpha.png",
+      "row": 1,
+      "anatomy": "Long muscular amphibious eel with four walking fins, indigo armored skull, cyan lateral bands and hooked jaws."
+    },
+    {
+      "spriteId": "v8/pelagos-m/deep-lantern",
+      "master": "masters/supplemental-b3-pelagos-alpha.png",
+      "row": 2,
+      "anatomy": "Low abyssal quadruped with black-blue armor, attached cyan lure, oversized jaw, webbed claws and luminous cheek dots."
+    },
+    {
+      "spriteId": "v8/pelagos-m/swimmer-xeno",
+      "master": "masters/supplemental-b3-pelagos-alpha.png",
+      "row": 3,
+      "anatomy": "Original eyeless biomechanical ocean predator with smooth navy cranial crest, ribbed wet-black body, webbed limbs and finned tail."
+    },
+    {
+      "spriteId": "v8/pelagos-m/salvage-synth",
+      "master": "masters/supplemental-b3-pelagos-alpha.png",
+      "row": 4,
+      "anatomy": "Humanoid marine salvage robot with corroded teal armor, brass joints, sealed blank diving mask, attached harpoon tool and ballast boots."
+    },
+    {
+      "spriteId": "v8/mycora-v/cap-mimic",
+      "master": "masters/supplemental-b4-mycora-alpha.png",
+      "row": 0,
+      "anatomy": "Squat quadrupedal fungal predator disguised as a layered ivory-violet mushroom cap, with bark-black legs, toothed underside and amber eyes."
+    },
+    {
+      "spriteId": "v8/mycora-v/thread-leech",
+      "master": "masters/supplemental-b4-mycora-alpha.png",
+      "row": 1,
+      "anatomy": "Long low segmented parasite wrapped in ivory mycelial fibers, with charcoal flesh, circular mouth, six hooked legs and violet bulbs."
+    },
+    {
+      "spriteId": "v8/mycora-v/neural-liana",
+      "master": "masters/supplemental-b4-mycora-alpha.png",
+      "row": 2,
+      "anatomy": "Mobile hostile vine organism with central violet neural bulb and attached ivory braided lianas forming four root legs and two whip arms."
+    },
+    {
+      "spriteId": "v8/mycora-v/acid-puffball",
+      "master": "masters/supplemental-b4-mycora-alpha.png",
+      "row": 3,
+      "anatomy": "Round armored fungal walker on six root legs with mottled yellow-green puffball plates, toothed aperture and dark seams."
+    },
+    {
+      "spriteId": "v8/mycora-v/web-mold",
+      "master": "masters/supplemental-b4-mycora-alpha.png",
+      "row": 4,
+      "anatomy": "Low crawling colony with black root chassis, ivory fungal web membranes stretched between six jointed legs, violet nodes and central maw."
+    },
+    {
+      "spriteId": "v8/mycora-v/infected-colonist",
+      "master": "masters/supplemental-b5-mycora-acheron-alpha.png",
+      "row": 0,
+      "anatomy": "Human-shaped frontier worker overtaken by fungus, with neutral utility suit, face-obscuring split mushroom crown and attached mycelium cords."
+    },
+    {
+      "spriteId": "v8/mycora-v/fungal-xeno",
+      "master": "masters/supplemental-b5-mycora-acheron-alpha.png",
+      "row": 1,
+      "anatomy": "Original eyeless fungal alien with ivory mushroom-plated cranial crest, bark-black ribbed body, long claws and attached violet hyphae."
+    },
+    {
+      "spriteId": "v8/mycora-v/assimilated-synth",
+      "master": "masters/supplemental-b5-mycora-acheron-alpha.png",
+      "row": 2,
+      "anatomy": "Humanoid service robot colonized by fungus, with pale ceramic shell, dark joints, blank cracked faceplate, mushroom plates and mycelium cords."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/ruin-bat",
+      "master": "masters/supplemental-b5-mycora-acheron-alpha.png",
+      "row": 3,
+      "anatomy": "Ground-capable alien ruin bat with folded stone-gray membrane wings, bronze struts, angular masked head, amber eyes and clawed hind legs."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/glyph-serpent",
+      "master": "masters/supplemental-b5-mycora-acheron-alpha.png",
+      "row": 4,
+      "anatomy": "Long ruined-temple serpent with black stone scales, worn bronze glyph plates, angular carved head, cyan eye stone and two short forelimbs."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/bronze-beetle",
+      "master": "masters/supplemental-b6-acheron-relics-alpha.png",
+      "row": 0,
+      "anatomy": "Squat six-legged ruin beetle with overlapping oxidized bronze carapace, black stone joints, heavy mandibles and amber eye lenses."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/relic-mimic",
+      "master": "masters/supplemental-b6-acheron-relics-alpha.png",
+      "row": 1,
+      "anatomy": "Quadrupedal temple beast unfolding from a cracked basalt reliquary shell, with carved horned mask, bronze hinge bones and granite claws."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/cable-ivy",
+      "master": "masters/supplemental-b6-acheron-relics-alpha.png",
+      "row": 2,
+      "anatomy": "Mobile techno-organic vine with corroded bronze junction core and attached black cables braided into four root legs and two hooked arms."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/archive-mold",
+      "master": "masters/supplemental-b6-acheron-relics-alpha.png",
+      "row": 3,
+      "anatomy": "Low crawling data-fungus colony with black stone base, six root legs, patterned parchment shelf growths, amber nodes and central maw."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/crystal-creeper",
+      "master": "masters/supplemental-b6-acheron-relics-alpha.png",
+      "row": 4,
+      "anatomy": "Low six-legged mineral predator with charcoal rock body, opaque smoky-quartz dorsal crystals, bronze seams, wedge head and hooked feet."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/stone-orchid",
+      "master": "masters/supplemental-b7-acheron-war-alpha.png",
+      "row": 0,
+      "anatomy": "Mobile hostile temple flora with carved basalt flower head, layered stone petals, amber core, four root legs, two thorn arms and bronze veins."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/temple-xeno",
+      "master": "masters/supplemental-b7-acheron-war-alpha.png",
+      "row": 1,
+      "anatomy": "Original eyeless biomechanical ruin predator with basalt cranial crest, bronze glyph bands, ribbed black body, long claws and armored tail."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/nanite-swarm",
+      "master": "masters/supplemental-b7-acheron-war-alpha.png",
+      "row": 2,
+      "anatomy": "One cohesive low crawling swarm silhouette of tightly interlocked black-metal micro-shards connected around amber core points."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/war-construct",
+      "master": "masters/supplemental-b7-acheron-war-alpha.png",
+      "row": 3,
+      "anatomy": "Massive quadrupedal ancient combat automaton with basalt-bronze armor, amber chest furnace, slab shoulders and attached hammer forelimb."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/sentinel-drone",
+      "master": "masters/supplemental-b7-acheron-war-alpha.png",
+      "row": 4,
+      "anatomy": "Compact tripod guardian drone with circular carved bronze-stone body, cyan central eye, three articulated claw legs and attached shield fins."
+    }
+  ]
+}

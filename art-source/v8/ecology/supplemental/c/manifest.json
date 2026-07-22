@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "generator": "OpenAI built-in image_gen",
+  "grid": {
+    "rows": 5,
+    "columns": 6,
+    "rowBasis": "zero-based",
+    "columnOrder": ["idle", "move-a", "move-b", "attack", "hit", "death"],
+    "orientation": "right-facing side profile",
+    "chromaKey": "#ff00ff"
+  },
+  "masters": [
+    {
+      "id": "supplemental-c1-specialists",
+      "chroma": "masters/supplemental-c1-specialists-chroma.png",
+      "alpha": "masters/supplemental-c1-specialists-alpha.png"
+    }
+  ],
+  "entries": [
+    {
+      "spriteId": "v8/mycora-v/sterilization-mech",
+      "master": "masters/supplemental-c1-specialists-alpha.png",
+      "row": 0,
+      "anatomy": "Mécha industriel bipède non humain, blindage céramique sur pistons, deux réservoirs chimiques, flexibles, buse de stérilisation lourde et pince utilitaire."
+    },
+    {
+      "spriteId": "v8/nivalis-k/ice-salvager",
+      "master": "masters/supplemental-c1-specialists-alpha.png",
+      "row": 1,
+      "anatomy": "Récupérateur humain en combinaison polaire multicouche, capuche thermique, sac compact, piolet motorisé, carabine utilitaire et balise de récupération."
+    },
+    {
+      "spriteId": "v8/serekh-9/silica-miner",
+      "master": "masters/supplemental-c1-specialists-alpha.png",
+      "row": 2,
+      "anatomy": "Mineur humain en combinaison désertique filtrante, visière, lourde foreuse rotative tenue à deux mains, sac de charges et bottes renforcées."
+    },
+    {
+      "spriteId": "v8/pelagos-m/abyss-harpooner",
+      "master": "masters/supplemental-c1-specialists-alpha.png",
+      "row": 3,
+      "anatomy": "Harponneur humain en armure de plongée pressurisée teal, casque rond, bouteilles compactes, bottes lestées et lance-harpon lourd à câble."
+    },
+    {
+      "spriteId": "v8/acheron-sigma/combat-engineer",
+      "master": "masters/supplemental-c1-specialists-alpha.png",
+      "row": 4,
+      "anatomy": "Ingénieure humaine en équipement de combat archéologique, harnais technique, outil de réparation, sac de charges et carabine compacte."
+    }
+  ]
+}

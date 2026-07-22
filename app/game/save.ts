@@ -1,5 +1,6 @@
 import {
   ARMORS,
+  CODEX_ENTRIES,
   DIFFICULTIES,
   DIFFICULTY_BY_ID,
   GEAR,
@@ -38,8 +39,9 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 3;
+export const SAVE_VERSION = 4;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
+const FINAL_STORY_MISSION_ID: MissionId = "ruins-ancient-guardian";
 
 export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
   "young-blood": 0,
@@ -201,6 +203,17 @@ function emptyMissionProgress(
   };
 }
 
+function initialMissionProgress(): Record<MissionId, MissionProgress> {
+  return Object.fromEntries(
+    MISSIONS.map((mission) => [
+      mission.id,
+      emptyMissionProgress(
+        mission.prerequisiteMissionId === null ? "available" : "locked",
+      ),
+    ]),
+  ) as Record<MissionId, MissionProgress>;
+}
+
 /**
  * Create a fresh save. The optional timestamp makes deterministic tests easy
  * without forcing production callers to provide a clock.
@@ -235,11 +248,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       gearIds: [...DEFAULT_LOADOUT.gearIds],
     },
     appearance: { ...DEFAULT_HUNTER_APPEARANCE },
-    missionProgress: {
-      "jungle-vey": emptyMissionProgress("available"),
-      "ice-cryostalker": emptyMissionProgress("locked"),
-      "volcano-bad-blood": emptyMissionProgress("locked"),
-    },
+    missionProgress: initialMissionProgress(),
     trophies: [],
     codex: {
       unlockedEntryIds: [
@@ -384,6 +393,21 @@ const SAVE_MIGRATIONS: Readonly<
         }
       : { ...DEFAULT_HUNTER_APPEARANCE },
   }),
+  3: (input) => {
+    const missionProgress = isRecord(input.missionProgress)
+      ? input.missionProgress
+      : {};
+    const finalProgress = isRecord(missionProgress[FINAL_STORY_MISSION_ID])
+      ? missionProgress[FINAL_STORY_MISSION_ID]
+      : {};
+    return {
+      ...input,
+      version: 4,
+      // V3 ended at Cinder. V4 extends the campaign by five hunts, so the old
+      // finale flag must not skip the new progression chain.
+      storyCompleted: Number(finalProgress.completions) > 0,
+    };
+  },
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -561,29 +585,27 @@ function normalizeMissionProgress(
 function repairMissionOrder(
   progress: Record<MissionId, MissionProgress>,
 ): Record<MissionId, MissionProgress> {
-  const repaired = {
-    "jungle-vey": { ...progress["jungle-vey"] },
-    "ice-cryostalker": { ...progress["ice-cryostalker"] },
-    "volcano-bad-blood": { ...progress["volcano-bad-blood"] },
-  };
+  const repaired = Object.fromEntries(
+    MISSIONS.map((mission) => [mission.id, { ...progress[mission.id] }]),
+  ) as Record<MissionId, MissionProgress>;
 
-  if (repaired["jungle-vey"].status === "locked") {
-    repaired["jungle-vey"].status = "available";
-  }
-  if (repaired["jungle-vey"].completions > 0) {
-    repaired["jungle-vey"].status = "completed";
-    if (repaired["ice-cryostalker"].status === "locked") {
-      repaired["ice-cryostalker"].status = "available";
+  // Run in campaign order so an imported legacy save unlocks the whole chain
+  // deterministically, including planets added after that save was written.
+  for (const mission of MISSIONS.toSorted((left, right) => left.order - right.order)) {
+    const current = repaired[mission.id];
+    if (current.completions > 0) {
+      current.status = "completed";
+      continue;
     }
-  }
-  if (repaired["ice-cryostalker"].completions > 0) {
-    repaired["ice-cryostalker"].status = "completed";
-    if (repaired["volcano-bad-blood"].status === "locked") {
-      repaired["volcano-bad-blood"].status = "available";
+    const prerequisiteId = mission.prerequisiteMissionId;
+    if (
+      prerequisiteId === null ||
+      repaired[prerequisiteId].status === "completed"
+    ) {
+      current.status = "available";
+    } else {
+      current.status = "locked";
     }
-  }
-  if (repaired["volcano-bad-blood"].completions > 0) {
-    repaired["volcano-bad-blood"].status = "completed";
   }
 
   return repaired;
@@ -902,23 +924,18 @@ export function normalizeSave(value: unknown): SaveGame {
     ]),
   ];
 
-  const missionProgress = repairMissionOrder({
-    "jungle-vey": normalizeMissionProgress(
-      rawMissionProgress["jungle-vey"],
-      fallback.missionProgress["jungle-vey"],
-      "jungle-vey",
-    ),
-    "ice-cryostalker": normalizeMissionProgress(
-      rawMissionProgress["ice-cryostalker"],
-      fallback.missionProgress["ice-cryostalker"],
-      "ice-cryostalker",
-    ),
-    "volcano-bad-blood": normalizeMissionProgress(
-      rawMissionProgress["volcano-bad-blood"],
-      fallback.missionProgress["volcano-bad-blood"],
-      "volcano-bad-blood",
-    ),
-  });
+  const missionProgress = repairMissionOrder(
+    Object.fromEntries(
+      MISSIONS.map((mission) => [
+        mission.id,
+        normalizeMissionProgress(
+          rawMissionProgress[mission.id],
+          fallback.missionProgress[mission.id],
+          mission.id,
+        ),
+      ]),
+    ) as Record<MissionId, MissionProgress>,
+  );
   const honor = nonNegativeInteger(
     rawProfile.honor,
     fallback.profile.honor,
@@ -931,17 +948,7 @@ export function normalizeSave(value: unknown): SaveGame {
     : fallback.settings.difficultyId;
   const unlockedEntryIds = uniqueAllowedIds(
     rawCodex.unlockedEntryIds,
-    [
-      "yautja-honor",
-      "biomask",
-      "cloaking-device",
-      "osiris-jungle",
-      "commandante-vey",
-      "nivalis-ice",
-      "cryostalker",
-      "cinder-volcano",
-      "bad-blood",
-    ] satisfies readonly CodexEntryId[],
+    CODEX_ENTRIES.map(({ id }) => id) satisfies readonly CodexEntryId[],
     fallback.codex.unlockedEntryIds,
   );
   const rawScanCounts = isRecord(rawCodex.scanCounts)
@@ -1078,7 +1085,7 @@ export function normalizeSave(value: unknown): SaveGame {
     },
     storyCompleted:
       booleanValue(source.storyCompleted, false) ||
-      missionProgress["volcano-bad-blood"].completions > 0,
+      missionProgress[FINAL_STORY_MISSION_ID].completions > 0,
   };
 }
 
@@ -1498,7 +1505,7 @@ export function applyMissionResult(
       ),
     },
     storyCompleted:
-      save.storyCompleted || mission.id === "volcano-bad-blood",
+      save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
   return {

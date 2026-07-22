@@ -26,6 +26,7 @@ await build({
 });
 
 const {
+  GALAXY_BIOME_LABELS,
   GALAXY_NAVIGATION,
   createGalaxyNavigationState,
   findGalaxyMission,
@@ -53,9 +54,16 @@ test("galaxy tree derives every mission once through system and planet levels", 
     "jungle-vey",
     "ice-cryostalker",
     "volcano-bad-blood",
+    "swamp-hydra",
+    "desert-sandmaw",
+    "ocean-leviathan",
+    "fungal-hivemind",
+    "ruins-ancient-guardian",
   ]);
   assert.equal(GALAXY_NAVIGATION.systems[0].name, "Système Oseris");
   assert.equal(GALAXY_NAVIGATION.systems[0].planets[0].name, "Oseris-IV");
+  assert.equal(GALAXY_BIOME_LABELS.swamp, "Marais acide");
+  assert.equal(GALAXY_BIOME_LABELS.ruins, "Mégalopole en ruines");
 
   for (const system of GALAXY_NAVIGATION.systems) {
     assert.ok(system.position.x >= 0 && system.position.x <= 100);
@@ -65,12 +73,20 @@ test("galaxy tree derives every mission once through system and planet levels", 
       assert.ok(planet.missions.length > 0);
     }
   }
+
+  for (let left = 0; left < GALAXY_NAVIGATION.systems.length; left += 1) {
+    for (let right = left + 1; right < GALAXY_NAVIGATION.systems.length; right += 1) {
+      const a = GALAXY_NAVIGATION.systems[left].position;
+      const b = GALAXY_NAVIGATION.systems[right].position;
+      assert.ok(Math.hypot(a.x - b.x, a.y - b.y) >= 20, `${left}/${right}`);
+    }
+  }
 });
 
 test("pure navigation reducer drills galaxy to mission and restores breadcrumbs", () => {
   let state = createGalaxyNavigationState();
   assert.equal(state.level, "galaxy");
-  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 3);
+  assert.equal(getGalaxyNavigationItems(GALAXY_NAVIGATION, state).length, 8);
 
   state = reduceGalaxyNavigation(GALAXY_NAVIGATION, state, {
     type: "activate",

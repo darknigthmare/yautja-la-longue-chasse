@@ -74,10 +74,18 @@ function bossInput(overrides = {}) {
   };
 }
 
-test("the three world blueprints are internally valid and offer three routes", async () => {
+const expansionBossEffects = {
+  "swamp-hydra": "hydra-tidal-surge",
+  "desert-sandmaw": "sandmaw-burrow",
+  "ocean-leviathan": "leviathan-rogue-wave",
+  "fungal-hivemind": "hivemind-spore-pulse",
+  "ruins-ancient-guardian": "guardian-adaptive-field",
+};
+
+test("the eight world blueprints are internally valid and offer three routes", async () => {
   const world = await worldPromise;
   const blueprints = Object.values(world.WORLD_BLUEPRINTS_BY_MISSION);
-  assert.equal(blueprints.length, 3);
+  assert.equal(blueprints.length, 8);
   for (const blueprint of blueprints) {
     assert.deepEqual(world.validateWorldBlueprint(blueprint), []);
     assert.equal(blueprint.width, 8_400);
@@ -343,6 +351,46 @@ test("boss mechanics expose their mission-specific deterministic loops", async (
   assert.ok(
     badStep.effects.some((effect) => effect.kind === "purge-cancelled"),
   );
+
+  for (const [missionId, effectKind] of Object.entries(expansionBossEffects)) {
+    const expansion = {
+      ...hunt.createBossMechanicState(missionId),
+      attackCooldownSeconds: 0,
+    };
+    const phaseTwoStep = hunt.stepBossMechanics(
+      expansion,
+      bossInput({ healthRatio: 0.55 }),
+    );
+    assert.equal(phaseTwoStep.decision.phaseId, `${missionId}-phase-2`);
+    assert.ok(phaseTwoStep.decision.attackId);
+    assert.equal(phaseTwoStep.state.missionId, missionId);
+    assert.deepEqual(
+      phaseTwoStep.effects.map(({ kind }) => kind),
+      [effectKind],
+      `${missionId}: phase two signature`,
+    );
+
+    const steadyPhaseStep = hunt.stepBossMechanics(
+      phaseTwoStep.state,
+      bossInput({ healthRatio: 0.55 }),
+    );
+    assert.deepEqual(
+      steadyPhaseStep.effects,
+      [],
+      `${missionId}: signature must be edge-triggered`,
+    );
+
+    const phaseThreeStep = hunt.stepBossMechanics(
+      steadyPhaseStep.state,
+      bossInput({ healthRatio: 0.2 }),
+    );
+    assert.equal(phaseThreeStep.decision.phaseId, `${missionId}-phase-3`);
+    assert.deepEqual(
+      phaseThreeStep.effects.map(({ kind }) => kind),
+      [effectKind],
+      `${missionId}: phase three signature`,
+    );
+  }
 });
 
 test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey sprite", async () => {
@@ -367,6 +415,12 @@ test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey
     "/game/sprites/v4/${spriteId}.png",
   ]) {
     assert.ok(source.includes(marker), `missing runtime integration: ${marker}`);
+  }
+  for (const effectKind of Object.values(expansionBossEffects)) {
+    assert.ok(
+      source.includes(`case "${effectKind}"`),
+      `missing expansion boss effect consumer: ${effectKind}`,
+    );
   }
   for (const spriteId of [
     "scout",

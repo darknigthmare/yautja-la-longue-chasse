@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "tool": "OpenAI built-in image_gen",
+  "sharedSpecification": {
+    "useCase": "stylized-concept",
+    "assetType": "production animation sprite-sheet master for a dark sci-fi 2D side-scroller",
+    "grid": "exactly 5 horizontal rows by exactly 6 equal columns, one identity per row",
+    "columns": [
+      "neutral idle",
+      "locomotion pose A",
+      "locomotion pose B",
+      "attack action",
+      "hit reaction",
+      "death/collapse"
+    ],
+    "orientation": "full-body left-facing orthographic side profile",
+    "style": "original dark sci-fi pixel-painted game art with crisp readable silhouettes and detailed hand-painted pixel clusters",
+    "backdrop": "perfectly flat uniform solid #ff00ff chroma-key background",
+    "invariants": "same anatomy, scale, colors and equipment across all six cells of a row; only pose changes; full bodies visible; generous padding; no overlap",
+    "avoid": "text, labels, UI, borders, grid lines, icons, duplicate subjects, merged frames, cropped anatomy, cast shadows, contact shadows, scenery, watermark, logo"
+  },
+  "prompts": [
+    {
+      "master": "masters/supplemental-a1-oseris-chroma.png",
+      "rows": [
+        {
+          "spriteId": "v8/oseris-iv/vineback-grazer",
+          "anatomyPrompt": "A heavy alien herbivore quadruped with low shoulders, broad grazer muzzle, four weight-bearing legs, and living vines and leaves densely rooted across its armored back."
+        },
+        {
+          "spriteId": "v8/oseris-iv/mirror-chameleon",
+          "anatomyPrompt": "A small low-slung alien reptile with four short gripping limbs, curled tail, prominent turret eye, and faceted prismatic mirror scales."
+        },
+        {
+          "spriteId": "v8/oseris-iv/thunder-macaque",
+          "anatomyPrompt": "A robust alien primate with barrel chest, long powerful forearms, shorter bent legs, heavy knuckles and faint bioelectric nodes; never human-shaped."
+        },
+        {
+          "spriteId": "v8/oseris-iv/needle-frog",
+          "anatomyPrompt": "A squat toxic alien frog with four splayed amphibian limbs, broad head, inflated throat sac and visible rigid needle spines along back and thighs."
+        },
+        {
+          "spriteId": "v8/oseris-iv/coil-serpent",
+          "anatomyPrompt": "A very long limbless arboreal serpent with muscular coils, angular head, gripping tail and crest scales; no legs."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-a2-oseris-nivalis-chroma.png",
+      "rows": [
+        {
+          "spriteId": "v8/oseris-iv/walking-mangrove",
+          "anatomyPrompt": "A sentient alien mangrove tree with a single gnarled trunk torso, branch crown, hanging foliage, and six distinct stilt-like walking roots acting as legs; no humanoid face or human arms."
+        },
+        {
+          "spriteId": "v8/oseris-iv/jungle-smuggler-drone",
+          "anatomyPrompt": "A compact hovering mechanical scout drone with faceted armored central hull, two side thruster pods, a sensor eye and one underslung manipulator or weapon; clearly airborne machine."
+        },
+        {
+          "spriteId": "v8/nivalis-k/ice-bore",
+          "anatomyPrompt": "A squat polar burrower beast with elongated armored body, four digging limbs, shovel claws, and a massive conical drilling rostrum on its snout."
+        },
+        {
+          "spriteId": "v8/nivalis-k/frost-manta",
+          "anatomyPrompt": "A broad winged snow-gliding alien manta with flat diamond body, two flexible lateral fins, long stabilizing tail and frosted dorsal ridges; no legs."
+        },
+        {
+          "spriteId": "v8/nivalis-k/glacier-ram",
+          "anatomyPrompt": "A heavy quadruped ice ram with four hoofed legs, thick neck, wedge skull, and two enormous translucent forward-curling glacier horns."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-a3-nivalis-chroma.png",
+      "rows": [
+        {
+          "spriteId": "v8/nivalis-k/aurora-leech",
+          "anatomyPrompt": "A large limbless polar annelid with segmented translucent body, circular toothed sucker mouth, tapered tail and internal cyan-violet bioluminescent organs; crawling on belly, never a snake with eyes."
+        },
+        {
+          "spriteId": "v8/nivalis-k/snow-prowler",
+          "anatomyPrompt": "A lean alien polar feline quadruped with four long paws, low hunting shoulders, long counterbalance tail, armored cheek plates and white-gray thermal fur."
+        },
+        {
+          "spriteId": "v8/nivalis-k/thermal-pod",
+          "anatomyPrompt": "A mobile alien plant organism with thick seed-pod body, glowing amber heat vents, three root-tentacle legs, two shorter tendrils and layered frost-resistant husk; no humanoid face."
+        },
+        {
+          "spriteId": "v8/nivalis-k/xenobiologist-field",
+          "anatomyPrompt": "One adult human scientist in sealed white-and-orange arctic field suit, hood and clear visor, compact sensor backpack and handheld xenobiology scanner; anatomically human."
+        },
+        {
+          "spriteId": "v8/nivalis-k/rime-automaton",
+          "anatomyPrompt": "An ancient bipedal alien frost machine with compact bronze-stone torso, two articulated arms, two sturdy reverse-jointed legs, single blue optical core and ice-encrusted rune-free plates."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-a4-cinder-chroma.png",
+      "rows": [
+        {
+          "spriteId": "v8/cinder-12/lava-skimmer",
+          "anatomyPrompt": "A low amphibious alien reptile-fish built to skim molten lava, with streamlined plated body, wedge head, four broad heatproof paddle limbs, dorsal vents and a long flattened tail."
+        },
+        {
+          "spriteId": "v8/cinder-12/basalt-ram",
+          "anatomyPrompt": "A muscular quadruped volcanic ram with four cloven legs, stocky shoulders, black cracked-basalt hide glowing dull orange in fissures, and two massive forward-curling stone horns."
+        },
+        {
+          "spriteId": "v8/cinder-12/smoke-wyvern",
+          "anatomyPrompt": "A winged alien volcanic predator with two hind legs, two large membranous wings used as forelimbs, long tail, narrow reptilian skull and soot-black scales."
+        },
+        {
+          "spriteId": "v8/cinder-12/bad-blood-initiate",
+          "anatomyPrompt": "A young renegade Yautja hunter with tall muscular humanoid alien anatomy, mandible face partially visible, long dark dreadlock-like tendrils, sparse battered bronze armor, light netting, wrist blades and compact shoulder plasma caster."
+        },
+        {
+          "spriteId": "v8/cinder-12/bad-blood-trapper",
+          "anatomyPrompt": "A distinct veteran renegade Yautja hunter with tall muscular humanoid alien anatomy, mandible mask, long tied dreadlock-like tendrils, asymmetrical dark armor, wrist blades, visible folded capture net launcher, cable snares and trap canisters."
+        }
+      ]
+    },
+    {
+      "master": "masters/supplemental-a5-naraka-chroma.png",
+      "rows": [
+        {
+          "spriteId": "v8/naraka-delta/reed-cat",
+          "anatomyPrompt": "A lean amphibious alien feline quadruped adapted to delta reeds, with four webbed paws, low catlike shoulders, narrow predatory head, long reed-patterned counterbalance tail, gill frills and slick moss-green hide."
+        },
+        {
+          "spriteId": "v8/naraka-delta/delta-surveyor",
+          "anatomyPrompt": "One adult human woman field surveyor in practical olive waterproof waders and light armored vest, tied hair under hood, compact backpack, handheld terrain scanner and one folded ranging staff."
+        },
+        {
+          "spriteId": "v8/naraka-delta/field-medic-naraka",
+          "anatomyPrompt": "One adult human man in mud-stained teal-and-tan sealed field suit, medical backpack with simple red-free white medical panels, compact diagnostic tool and bandage canisters."
+        },
+        {
+          "spriteId": "v8/naraka-delta/swamp-xeno-spitter",
+          "anatomyPrompt": "A sleek amphibious xenomorph-like alien with elongated smooth domed skull, eyeless face, biomechanical ribbed torso, two arms, two digitigrade legs, long bladed tail, webbed claws and enlarged acid-spitting jaw sacs."
+        },
+        {
+          "spriteId": "v8/naraka-delta/drowned-synth",
+          "anatomyPrompt": "One corroded humanoid synthetic android in torn soaked utility coveralls, pale artificial skin split to expose white polymer musculature and metal joints, waterlogged cables and one glowing artificial eye."
+        }
+      ]
+    }
+  ]
+}

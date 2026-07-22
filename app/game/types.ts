@@ -13,9 +13,22 @@
 export type MissionId =
   | "jungle-vey"
   | "ice-cryostalker"
-  | "volcano-bad-blood";
+  | "volcano-bad-blood"
+  | "swamp-hydra"
+  | "desert-sandmaw"
+  | "ocean-leviathan"
+  | "fungal-hivemind"
+  | "ruins-ancient-guardian";
 
-export type BiomeId = "jungle" | "ice" | "volcano";
+export type BiomeId =
+  | "jungle"
+  | "ice"
+  | "volcano"
+  | "swamp"
+  | "desert"
+  | "ocean"
+  | "fungal"
+  | "ruins";
 
 export type WeaponId =
   | "wristblades"
@@ -45,7 +58,17 @@ export type CodexEntryId =
   | "nivalis-ice"
   | "cryostalker"
   | "cinder-volcano"
-  | "bad-blood";
+  | "bad-blood"
+  | "naraka-swamp"
+  | "mire-hydra"
+  | "serekh-desert"
+  | "sandmaw"
+  | "pelagos-ocean"
+  | "abyss-leviathan"
+  | "mycora-fungal"
+  | "hivemind"
+  | "acheron-ruins"
+  | "ancient-guardian";
 
 export type TrophyQuality = "worthy" | "blooded" | "elite" | "flawless";
 
