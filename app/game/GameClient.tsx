@@ -11,6 +11,7 @@ import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
 import GalaxyMapPanel from "./GalaxyMapPanel";
 import PhysicalShipDeck from "./PhysicalShipDeck";
 import TrophyWorkshop from "./TrophyWorkshop";
+import EnemyBestiaryV7 from "./EnemyBestiaryV7";
 import {
   createGalaxyNavigationState,
   type GalaxyNavigationState,
@@ -2026,6 +2027,7 @@ export default function GameClient() {
               id="codex-title"
               onBack={() => go(stationReturnScreen)}
             />
+            <EnemyBestiaryV7 />
             <section className="visual-codex-gallery" aria-label="Archives visuelles OpenAI V6">
               <article>
                 <h2>Bestiaire</h2>

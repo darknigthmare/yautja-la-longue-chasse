@@ -42,6 +42,26 @@ Dans le vaisseau, `A/D` ou gauche/droite change de salle, haut/bas sélectionne
 une action et `Entrée` la confirme. La croix directionnelle, `A` et `B` assurent
 la même navigation à la manette.
 
+## Mise à jour V7 — trente ennemis animés
+
+- 30 ennemis distincts sont répartis entre 10 faunes, 6 flores hostiles,
+  5 humanoïdes, 5 Bad Blood et 4 autres menaces biologiques ou technologiques.
+- Chacun possède une planche OpenAI originale indépendante de `1536×192`,
+  découpée en six cellules de `256×192` : repos, deux poses de déplacement,
+  attaque, impact et mort.
+- Les neuf vagues de mission totalisent exactement 30 emplacements : chaque
+  planche est donc utilisée par un adversaire réel au cours de la campagne, et
+  pas seulement exposée dans une galerie.
+- Le codex ajoute un bestiaire filtrable avec aperçu animé, niveau de menace,
+  comportement, trophée et deux références visuelles/lore par entrée.
+- Le moteur charge seulement les 9 ou 12 planches utiles à la planète active,
+  choisit la cellule correspondant à l’état de l’IA et conserve une animation
+  de mort avant de retirer le corps.
+
+Les masters, prompts et sources sont conservés dans
+[`art-source/v7/enemies`](art-source/v7/enemies), tandis que les strips RGBA
+audités sont servis depuis `public/game/sprites/v7/enemies`.
+
 ## Mise à jour V6 — catalogue, mondes et menus jouables
 
 - Le catalogue fourni est intégré sans perdre de ligne : 255 entrées tous

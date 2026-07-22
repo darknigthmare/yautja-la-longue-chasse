@@ -111,6 +111,13 @@ import {
   V6_MISSION_VISUALS,
   type V6VisualId,
 } from "./v6Visuals";
+import {
+  ENEMY_V7_BY_ID,
+  enemyV7ForId,
+  enemyV7ForWave,
+  enemyV7IdsForMission,
+  type EnemyV7Id,
+} from "./enemyRosterV7";
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
@@ -246,6 +253,7 @@ interface EnemyState extends Vec2 {
   hitFlash: number;
   scanned: boolean;
   alive: boolean;
+  deathAnimation: number;
   boss: boolean;
   active: boolean;
   lastTrackX: number;
@@ -441,6 +449,7 @@ interface AssetBank {
   foregroundVines: HTMLImageElement | null;
   foregroundReeds: HTMLImageElement | null;
   enemyV4: Record<EnemyV4SpriteId, HTMLImageElement | null>;
+  enemyV7: Partial<Record<EnemyV7Id, HTMLImageElement | null>>;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -776,6 +785,8 @@ function consume(input: InputHub, action: Action): boolean {
 }
 
 function enemyKind(archetype: string): EnemyKind {
+  const v7Enemy = enemyV7ForId(archetype);
+  if (v7Enemy) return v7Enemy.runtimeKind;
   if (
     archetype.includes("cryo") ||
     archetype.includes("hound") ||
@@ -880,16 +891,19 @@ function makeEnemy(
   damageMultiplier: number,
 ): EnemyState {
   const kind = enemyKind(archetype);
+  const v7Enemy = enemyV7ForId(archetype);
   const beast = kind === "beast";
   const yautja = kind === "yautja";
+  const width = v7Enemy?.width ?? (beast ? 104 : yautja ? 74 : 66);
+  const height = v7Enemy?.height ?? (beast ? 84 : yautja ? 112 : 94);
   return {
     id,
     archetype,
     kind,
     x,
-    y: FLOOR_Y - (beast ? 84 : yautja ? 112 : 94),
-    width: beast ? 104 : yautja ? 74 : 66,
-    height: beast ? 84 : yautja ? 112 : 94,
+    y: FLOOR_Y - height,
+    width,
+    height,
     velocityX: 0,
     facing: -1,
     health: health * healthMultiplier,
@@ -905,6 +919,7 @@ function makeEnemy(
     hitFlash: 0,
     scanned: false,
     alive: true,
+    deathAnimation: 0,
     boss: false,
     active: true,
     lastTrackX: x,
@@ -1118,6 +1133,7 @@ function makeGameState(
       hitFlash: 0,
       scanned: false,
       alive: true,
+      deathAnimation: 0,
       boss: true,
       active: false,
       lastTrackX: bossX,
@@ -1418,6 +1434,7 @@ function spawnEligibleWaves(
     }
     state.spawnedWaves.add(wave.id);
     for (let index = 0; index < wave.count; index += 1) {
+      const v7Enemy = enemyV7ForWave(wave.id, index);
       const base =
         trigger === "start"
           ? state.world.width * 0.17
@@ -1439,7 +1456,7 @@ function spawnEligibleWaves(
       );
       const enemy = makeEnemy(
         `${wave.id}-${index}`,
-        wave.archetype,
+        v7Enemy?.id ?? wave.archetype,
         x,
         state.world.width,
         wave.health,
@@ -1802,6 +1819,63 @@ function drawSprite(
     context.drawImage(image, x, y, width, height);
   }
   context.restore();
+}
+
+function drawEnemySheetFrame(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  frameIndex: number,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  facing: -1 | 1,
+  alpha = 1,
+): void {
+  const frameWidth = image.naturalWidth / 6;
+  const sourceX = clamp(frameIndex, 0, 5) * frameWidth;
+  context.save();
+  context.globalAlpha = alpha;
+  if (facing < 0) {
+    context.translate(x + width, y);
+    context.scale(-1, 1);
+    context.drawImage(
+      image,
+      sourceX,
+      0,
+      frameWidth,
+      image.naturalHeight,
+      0,
+      0,
+      width,
+      height,
+    );
+  } else {
+    context.drawImage(
+      image,
+      sourceX,
+      0,
+      frameWidth,
+      image.naturalHeight,
+      x,
+      y,
+      width,
+      height,
+    );
+  }
+  context.restore();
+}
+
+function enemyAnimationFrame(enemy: EnemyState, elapsed: number): number {
+  if (!enemy.alive) return 5;
+  if (enemy.hitFlash > 0) return 4;
+  if (enemy.telegraph > 0 || enemy.pendingAttackId) return 3;
+  const definition = enemyV7ForId(enemy.archetype);
+  if (Math.abs(enemy.velocityX) > 18) {
+    const fps = definition?.animationFps ?? 8;
+    return 1 + (Math.floor(elapsed * fps) % 2);
+  }
+  return 0;
 }
 
 function drawFallbackCharacter(
@@ -3520,17 +3594,34 @@ function renderGame(
 
   // Enemies, boss and projectiles.
   const visibleEnemies = [
-    ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
+    ...state.enemies.filter(
+      (enemy) => enemy.active && (enemy.alive || enemy.deathAnimation > 0),
+    ),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
   ];
   for (const enemy of visibleEnemies) {
-    const image = enemySprite(enemy, mission, assets);
+    const v7Enemy = enemyV7ForId(enemy.archetype);
+    const image = v7Enemy
+      ? (assets.enemyV7[v7Enemy.id] ?? null)
+      : enemySprite(enemy, mission, assets);
     const telegraphAlpha =
       enemy.telegraph > 0 ? 0.72 + Math.sin(state.elapsed * 22) * 0.2 : 1;
     const alpha =
       telegraphAlpha *
       (enemy.boss ? Math.max(0.18, state.bossThermalVisibility) : 1);
-    if (image) {
+    if (image && v7Enemy) {
+      drawEnemySheetFrame(
+        context,
+        image,
+        enemyAnimationFrame(enemy, state.elapsed),
+        enemy.x,
+        enemy.y,
+        enemy.width,
+        enemy.height,
+        enemy.facing,
+        alpha * (enemy.alive ? 1 : clamp(enemy.deathAnimation / 0.85, 0, 1)),
+      );
+    } else if (image) {
       drawSprite(
         context,
         image,
@@ -3552,7 +3643,7 @@ function renderGame(
         enemy.facing,
       );
     }
-    if (enemy.hitFlash > 0 || enemy.scanned) {
+    if (enemy.alive && (enemy.hitFlash > 0 || enemy.scanned)) {
       context.strokeStyle =
         enemy.hitFlash > 0 ? "#ffffff" : `${palette.accent}cc`;
       context.lineWidth = enemy.boss ? 4 : 2;
@@ -3563,7 +3654,11 @@ function renderGame(
         enemy.height + 8,
       );
     }
-    if (!enemy.boss && (enemy.scanned || enemy.health < enemy.maxHealth)) {
+    if (
+      enemy.alive &&
+      !enemy.boss &&
+      (enemy.scanned || enemy.health < enemy.maxHealth)
+    ) {
       context.fillStyle = "#090d0ccc";
       context.fillRect(enemy.x, enemy.y - 12, enemy.width, 5);
       context.fillStyle = palette.danger;
@@ -4229,7 +4324,7 @@ function emitEnemyFootprint(state: GameState, enemy: EnemyState): void {
       1,
     ),
     ownerId: enemy.id,
-    ownerLabel: enemy.archetype,
+    ownerLabel: enemyV7ForId(enemy.archetype)?.name ?? enemy.archetype,
     ownerSpecies: enemy.kind,
     strideIndex,
   });
@@ -4364,6 +4459,7 @@ function damageEnemy(
 
   enemy.health = 0;
   enemy.alive = false;
+  enemy.deathAnimation = enemyV7ForId(enemy.archetype) ? 0.85 : 0;
   spawnGore(state, enemy, "kill");
   state.kills += 1;
   if (enemy.boss) {
@@ -5376,7 +5472,11 @@ function updateRegularEnemy(
   mission: MissionDefinition,
   delta: number,
 ): void {
-  if (!enemy.alive || !enemy.active) return;
+  if (!enemy.active) return;
+  if (!enemy.alive) {
+    enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
+    return;
+  }
   enemy.attackCooldown = Math.max(0, enemy.attackCooldown - delta);
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
   enemy.telegraph = Math.max(0, enemy.telegraph - delta);
@@ -6334,6 +6434,7 @@ export default function HuntCanvas({
       enemyV4: Object.fromEntries(
         ENEMY_V4_SPRITE_IDS.map((spriteId) => [spriteId, null]),
       ) as Record<EnemyV4SpriteId, HTMLImageElement | null>,
+      enemyV7: {},
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -6590,6 +6691,11 @@ export default function HuntCanvas({
     for (const spriteId of ENEMY_V4_SPRITE_IDS) {
       queueImage(`/game/sprites/v4/${spriteId}.png`, (image) => {
         assets.enemyV4[spriteId] = image;
+      });
+    }
+    for (const enemyId of enemyV7IdsForMission(mission.id)) {
+      queueImage(ENEMY_V7_BY_ID[enemyId].sheetPath, (image) => {
+        assets.enemyV7[enemyId] = image;
       });
     }
     Promise.all(loadTasks).then(() => {

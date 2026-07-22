@@ -1,0 +1,180 @@
+{
+  "version": 7,
+  "category": "fauna",
+  "assetOrigin": "Original fan-made artwork generated with the built-in OpenAI image_gen tool; no official bitmap is redistributed.",
+  "generation": {
+    "tool": "OpenAI built-in image_gen",
+    "useCase": "stylized-concept",
+    "masterLayout": {
+      "rows": 5,
+      "columns": 6,
+      "chromaKey": "#ff00ff"
+    },
+    "runtimeSheet": {
+      "width": 1536,
+      "height": 192,
+      "frameWidth": 256,
+      "frameHeight": 192,
+      "frameCount": 6,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "walk-b",
+        "attack",
+        "hit",
+        "death"
+      ],
+      "facing": "right",
+      "format": "PNG RGBA"
+    },
+    "postProcess": "remove_chroma_key.py --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill; detect exactly 30 connected alpha components per master; isolate every component with its antialias fringe; apply one shared fit scale per creature row; center six independent frames in 256x192 cells; compose a 1536x192 strip"
+  },
+  "masters": [
+    {
+      "id": "fauna-master-a",
+      "chromaSource": "art-source/v7/enemies/fauna/masters/fauna-master-a-chroma.png",
+      "alphaSource": "art-source/v7/enemies/fauna/masters/fauna-master-a-alpha.png",
+      "rows": [
+        "hell-hound-stalker",
+        "river-ghost-brute",
+        "kalisk-juvenile",
+        "cryostalker-alpha",
+        "lv1201-winged-vermin"
+      ]
+    },
+    {
+      "id": "fauna-master-b",
+      "chromaSource": "art-source/v7/enemies/fauna/masters/fauna-master-b-chroma.png",
+      "alphaSource": "art-source/v7/enemies/fauna/masters/fauna-master-b-alpha.png",
+      "rows": [
+        "razorback-grazer",
+        "amber-mire-lurker",
+        "bonecrest-ravager",
+        "canopy-razorwing",
+        "volcanic-ashmaw"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "hell-hound-stalker",
+      "displayName": "Traqueur hell-hound",
+      "master": "fauna-master-a",
+      "row": 0,
+      "sheet": "/game/sprites/v7/enemies/fauna/hell-hound-stalker-sheet.png",
+      "prompt": "Lean original quadrupedal alien tracking hound for an off-world game preserve: charcoal segmented reptilian hide, long low hunting posture, jagged dorsal quills, split tusked maw, powerful forelimbs, narrow tail and amber eyes; six consistent right-facing gameplay poses: idle, walk A, walk B, lunge attack, hit recoil and collapsed death.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://www.avpcentral.com/predator-game-preserve-planet"
+      ]
+    },
+    {
+      "id": "river-ghost-brute",
+      "displayName": "Brute River Ghost",
+      "master": "fauna-master-a",
+      "row": 1,
+      "sheet": "/game/sprites/v7/enemies/fauna/river-ghost-brute-sheet.png",
+      "prompt": "Large original eyeless insectoid biped inspired by River Ghost production language: ivory bone-like segmented external carapace over rust-red tissue, hunched shoulders and folded rib-like forearms opening into switchblade claws, clearly distinct from a Yautja; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://www.avpgalaxy.net/predator-movies/predators/river-ghost/"
+      ]
+    },
+    {
+      "id": "kalisk-juvenile",
+      "displayName": "Kalisk juvénile",
+      "master": "fauna-master-a",
+      "row": 2,
+      "sheet": "/game/sprites/v7/enemies/fauna/kalisk-juvenile-sheet.png",
+      "prompt": "Original juvenile apex monster with squat powerful six-limbed silhouette, black mineral plates, irregular dorsal spikes, broad tooth-lined maw, short sensory tendrils and restrained crimson bioluminescent fissures; juvenile rather than colossal proportions; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.avpcentral.com/kalisk-giant-badlands-creature"
+      ]
+    },
+    {
+      "id": "cryostalker-alpha",
+      "displayName": "Cryostalker alpha",
+      "master": "fauna-master-a",
+      "row": 3,
+      "sheet": "/game/sprites/v7/enemies/fauna/cryostalker-alpha-sheet.png",
+      "prompt": "Original pale blue-white quadrupedal snow predator with compact feline-reptilian anatomy, crystalline ice-like dorsal plates, cobalt thermal sacs, long hooked claws, frosted hide and heavy alpha shoulders; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.sdfxstudios.com/press/predator-badlands"
+      ]
+    },
+    {
+      "id": "lv1201-winged-vermin",
+      "displayName": "Vermine ailée LV-1201",
+      "master": "fauna-master-a",
+      "row": 4,
+      "sheet": "/game/sprites/v7/enemies/fauna/lv1201-winged-vermin-sheet.png",
+      "prompt": "Aggressive dog-sized alien hornet fauna from an LV-1201 design language: four leathery insect wings, angular chitin plates, sharply curved abdomen, hooked legs, biting mandibles and sickly amber with dark teal coloration; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://avpunknown.com/games/2000/avp2primalhunt",
+        "https://strategywiki.org/wiki/Aliens_versus_Predator_2/Gameplay"
+      ]
+    },
+    {
+      "id": "razorback-grazer",
+      "displayName": "Brouteur razorback",
+      "master": "fauna-master-b",
+      "row": 0,
+      "sheet": "/game/sprites/v7/enemies/fauna/razorback-grazer-sheet.png",
+      "prompt": "Original large prey-animal quadruped with elk-and-boar proportions, long forward bone brow crest, slate stone shoulder plates, rust-brown hide, hoof-claws and a line of short razor spines; defensive headbutt attack; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://www.avpcentral.com/predator-game-preserve-planet"
+      ]
+    },
+    {
+      "id": "amber-mire-lurker",
+      "displayName": "Rôdeur du marais ambré",
+      "master": "fauna-master-b",
+      "row": 1,
+      "sheet": "/game/sprites/v7/enemies/fauna/amber-mire-lurker-sheet.png",
+      "prompt": "Original low semi-aquatic amphibious predator with wide salamander body, six short legs, opaque amber shell lobes, dark mud-gray skin, broad circular lamprey maw and paddle tail; ambush lunge attack; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.sdfxstudios.com/press/predator-badlands"
+      ]
+    },
+    {
+      "id": "bonecrest-ravager",
+      "displayName": "Ravageur à crête d'os",
+      "master": "fauna-master-b",
+      "row": 2,
+      "sheet": "/game/sprites/v7/enemies/fauna/bonecrest-ravager-sheet.png",
+      "prompt": "Original fast bipedal theropod-like alien with tall ivory skull crest, ash-gray scales, teal throat markings, two small grasping arms, powerful digitigrade legs and hooked tail; snapping attack; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.sdfxstudios.com/press/predator-badlands"
+      ]
+    },
+    {
+      "id": "canopy-razorwing",
+      "displayName": "Razorwing de canopée",
+      "master": "fauna-master-b",
+      "row": 3,
+      "sheet": "/game/sprites/v7/enemies/fauna/canopy-razorwing-sheet.png",
+      "prompt": "Original large predatory aerial animal with manta-bat silhouette, four articulated opaque leathery wings, narrow armored torso, long bladed tail, hooked jaw and dark forest-green with bone palette; diving slash attack; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.sdfxstudios.com/press/predator-badlands"
+      ]
+    },
+    {
+      "id": "volcanic-ashmaw",
+      "displayName": "Ashmaw volcanique",
+      "master": "fauna-master-b",
+      "row": 4,
+      "sheet": "/game/sprites/v7/enemies/fauna/volcanic-ashmaw-sheet.png",
+      "prompt": "Original massive low six-legged volcanic reptile with obsidian crag armor, ember-orange cracks, shovel-shaped horned skull, furnace-like toothy mouth, muscular digging forelegs and thick armored tail; explosive bite without particles; six consistent right-facing gameplay poses.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://www.avpcentral.com/predator-game-preserve-planet"
+      ]
+    }
+  ]
+}
