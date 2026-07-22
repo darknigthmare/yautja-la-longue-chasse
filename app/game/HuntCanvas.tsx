@@ -75,6 +75,24 @@ import {
   type GearEffectEvent,
 } from "./systems/arsenal";
 import {
+  createDropShipArrival,
+  createTrophyRitual,
+  createTrophyVictory,
+  dropShipVisual,
+  isTrophyExtractionProtected,
+  stepDropShip,
+  stepTrophyRitual,
+  stepTrophyVictory,
+  trophyRitualProgress,
+  trophyRitualReadyRemaining,
+  trophyVictoryPose,
+  TROPHY_RITUAL_TIMING,
+  type DropShipState,
+  type TrophyRitualAction,
+  type TrophyRitualState,
+  type TrophyVictoryState,
+} from "./systems/trophyRitual";
+import {
   isHazardActive,
   worldBlueprintFor,
   type TrackSurface,
@@ -82,17 +100,30 @@ import {
   type WorldClimbable,
   type WorldPlatform,
 } from "./systems/worldBlueprints";
+import {
+  getWorldScreenAtX,
+  worldScreensFor,
+  type WorldScreenSector,
+} from "./worldScreens";
+import {
+  getV6Visual,
+  resolveV6TrophyVisualId,
+  V6_MISSION_VISUALS,
+  type V6VisualId,
+} from "./v6Visuals";
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
   GearId,
   HunterAppearance,
   HonorEvent,
+  LaserColorId,
   Loadout,
   MissionDefinition,
   MissionResult,
   PlayerInventory,
   TrophyClaim,
+  TrophyPartId,
   TrophyQuality,
   WeaponId,
 } from "./types";
@@ -217,6 +248,18 @@ interface EnemyState extends Vec2 {
   alive: boolean;
   boss: boolean;
   active: boolean;
+  lastTrackX: number;
+  lastTrackAt: number;
+}
+
+type TrackOwnerSpecies = "hunter" | EnemyKind;
+
+/** TrackMark enriched for biomask identification and species-specific art. */
+interface ObservedTrackMark extends TrackMark {
+  ownerId: string;
+  ownerLabel: string;
+  ownerSpecies: TrackOwnerSpecies;
+  strideIndex: number;
 }
 
 interface ProjectileState extends Vec2 {
@@ -295,6 +338,9 @@ interface MissionCheckpointPayload {
   trophyExtracting: boolean;
   trophyExtraction: number;
   trophyCarried: boolean;
+  trophyRitual: TrophyRitualState | null;
+  trophyVictory: TrophyVictoryState | null;
+  dropShip: DropShipState | null;
   rangedBossViolation: boolean;
   nextProjectileId: number;
   nextSignalId: number;
@@ -398,6 +444,10 @@ interface AssetBank {
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
+  shipsAtlas: HTMLImageElement | null;
+  preyAtlas: HTMLImageElement | null;
+  masksTrophiesAtlas: HTMLImageElement | null;
+  ranksLasersAtlas: HTMLImageElement | null;
 }
 
 interface InputHub {
@@ -414,6 +464,7 @@ interface GameState {
   paused: boolean;
   elapsed: number;
   cameraX: number;
+  worldScreenId: string;
   player: PlayerState;
   world: WorldBlueprint;
   arsenal: ArsenalRuntimeState;
@@ -424,7 +475,7 @@ interface GameState {
   goreParticles: GoreParticle[];
   scentNodes: ScentNode[];
   noiseEvents: NoiseEvent[];
-  tracks: TrackMark[];
+  tracks: ObservedTrackMark[];
   mud: MudState;
   scanNodes: ScanNode[];
   recoveryNodes: RecoveryNode[];
@@ -455,6 +506,9 @@ interface GameState {
   trophyExtracting: boolean;
   trophyExtraction: number;
   trophyCarried: boolean;
+  trophyRitual: TrophyRitualState | null;
+  trophyVictory: TrophyVictoryState | null;
+  dropShip: DropShipState | null;
   scanPulse: number;
   message: string;
   messageTimer: number;
@@ -494,6 +548,12 @@ interface UiSnapshot {
   gearSlots: [GearSlotSnapshot, GearSlotSnapshot];
   checkpointLabel: string;
   trophyExtraction: number;
+  trophyCue: TrophyRitualAction | null;
+  trophyCueIndex: number;
+  trophyCueCount: number;
+  trophyCueTiming: number;
+  trophyMistakes: number;
+  dropShipPhase: DropShipState["phase"] | null;
   objective: string;
   objectiveDetail: string;
   honor: number;
@@ -510,10 +570,16 @@ interface UiSnapshot {
 
 const VIEW_WIDTH = 1280;
 const VIEW_HEIGHT = 720;
-const WORLD_WIDTH = 5_600;
+
+const LASER_COLOR_HEX: Readonly<Record<LaserColorId, string>> = {
+  crimson: "#ff302a",
+  electric: "#2989ff",
+  amber: "#ffb12b",
+  violet: "#b847ff",
+  cyan: "#40efff",
+};
 const FLOOR_Y = 624;
 const GRAVITY = 1_850;
-const BOSS_X = 4_500;
 
 const KEY_ACTIONS: Readonly<Record<string, Action>> = {
   ArrowLeft: "left",
@@ -582,6 +648,12 @@ const EMPTY_UI: UiSnapshot = {
   ],
   checkpointLabel: "Insertion",
   trophyExtraction: 0,
+  trophyCue: null,
+  trophyCueIndex: 0,
+  trophyCueCount: 0,
+  trophyCueTiming: 0,
+  trophyMistakes: 0,
+  dropShipPhase: null,
   objective: "Initialisation de la chasse",
   objectiveDetail: "Synchronisation du biomask…",
   honor: 0,
@@ -622,10 +694,15 @@ function solvePlayerRigFrame(
 ): HunterRigFrame {
   let pose: HunterRigPose;
   let phase: number;
+  let extractionProgress = state.trophyExtraction;
 
   if (state.trophyExtracting) {
     pose = "extract";
     phase = state.trophyExtraction;
+  } else if (state.trophyVictory && !state.trophyVictory.complete) {
+    pose = "extract";
+    extractionProgress = trophyVictoryPose(state.trophyVictory);
+    phase = extractionProgress;
   } else if (player.climbing) {
     pose = "climb";
     phase = state.elapsed * (0.55 + Math.abs(player.velocityY) / 280);
@@ -655,7 +732,7 @@ function solvePlayerRigFrame(
     aimAngle: player.aiming ? player.aimAngle : undefined,
     handAimAngle,
     recoil: clamp(player.weaponCooldown * 8, 0, 1),
-    extractionProgress: state.trophyExtraction,
+    extractionProgress,
     scale,
     worldX:
       player.x +
@@ -713,6 +790,9 @@ function enemyKind(archetype: string): EnemyKind {
 }
 
 function backgroundPath(mission: MissionDefinition): string {
+  if (mission.biome === "jungle") {
+    return "/game/backgrounds/jungle-multiscreen-v6.png";
+  }
   return `/game/backgrounds/${
     mission.biome === "volcano" ? "volcanic" : mission.biome
   }-depth-v4.webp`;
@@ -792,6 +872,7 @@ function makeEnemy(
   id: string,
   archetype: string,
   x: number,
+  worldWidth: number,
   health: number,
   damage: number,
   moveSpeed: number,
@@ -816,7 +897,7 @@ function makeEnemy(
     damage: damage * damageMultiplier,
     moveSpeed,
     patrolLeft: Math.max(120, x - 190),
-    patrolRight: Math.min(WORLD_WIDTH - 120, x + 190),
+    patrolRight: Math.min(worldWidth - 120, x + 190),
     attackCooldown: 0.55 + ((id.length * 0.17 + x * 0.013) % 0.85),
     telegraph: 0,
     pendingAttackId: null,
@@ -826,6 +907,8 @@ function makeEnemy(
     alive: true,
     boss: false,
     active: true,
+    lastTrackX: x,
+    lastTrackAt: 0,
   };
 }
 
@@ -869,15 +952,29 @@ function makeGameState(
     objectiveByKind(mission, "scan")?.targetCount ?? 3,
   );
   const recoverCount = objectiveByKind(mission, "recover")?.targetCount ?? 0;
+  const scanStartX = world.width * 0.11;
+  const scanEndX = world.width * 0.37;
   const scanNodes = Array.from({ length: scanCount }, (_, index) => ({
     id: `trace-${index + 1}`,
-    x: 720 + index * 590,
+    x:
+      scanCount === 1
+        ? (scanStartX + scanEndX) / 2
+        : scanStartX + (scanEndX - scanStartX) * (index / (scanCount - 1)),
     y: index % 2 === 0 ? FLOOR_Y - 36 : 395,
     scanned: false,
   }));
+  const recoveryStartX = world.width * 0.44;
+  const recoveryEndX = Math.max(
+    recoveryStartX,
+    world.bossArena.x - 420,
+  );
   const recoveryNodes = Array.from({ length: recoverCount }, (_, index) => ({
     id: `technology-${index + 1}`,
-    x: 2_250 + index * 520,
+    x:
+      recoverCount === 1
+        ? (recoveryStartX + recoveryEndX) / 2
+        : recoveryStartX +
+          (recoveryEndX - recoveryStartX) * (index / (recoverCount - 1)),
     y: index % 2 === 0 ? FLOOR_Y - 34 : 380,
     recovered: false,
   }));
@@ -889,12 +986,20 @@ function makeGameState(
         : "human";
   const bossHeight = bossKind === "beast" ? 142 : 154;
   const bossWidth = bossKind === "beast" ? 168 : 106;
+  const bossX = Math.min(
+    world.bossArena.x + world.bossArena.width * 0.48,
+    world.bossArena.x + world.bossArena.width - bossWidth - 60,
+  );
+  const bossPatrolLeft = world.bossArena.x + 30;
+  const bossPatrolRight =
+    world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
   const state: GameState = {
     phase: "tracking",
     paused: false,
     elapsed: 0,
     cameraX: 0,
+    worldScreenId: getWorldScreenAtX(mission.id, world.spawn.x).id,
     world,
     arsenal: createArsenalRuntime({
       loadout,
@@ -960,9 +1065,24 @@ function makeGameState(
     scanNodes,
     recoveryNodes,
     purgeConsoleNodes: [
-      { id: "purge-a", x: 4_285, y: FLOOR_Y - 46, recovered: false },
-      { id: "purge-b", x: 4_665, y: 365, recovered: false },
-      { id: "purge-c", x: 5_025, y: FLOOR_Y - 46, recovered: false },
+      {
+        id: "purge-a",
+        x: world.bossArena.x + world.bossArena.width * 0.2,
+        y: FLOOR_Y - 46,
+        recovered: false,
+      },
+      {
+        id: "purge-b",
+        x: world.bossArena.x + world.bossArena.width * 0.5,
+        y: 365,
+        recovered: false,
+      },
+      {
+        id: "purge-c",
+        x: world.bossArena.x + world.bossArena.width * 0.8,
+        y: FLOOR_Y - 46,
+        recovered: false,
+      },
     ],
     spawnedWaves: new Set(),
     completedObjectives: new Set(),
@@ -977,7 +1097,7 @@ function makeGameState(
       id: "mission-boss",
       archetype: `boss-${mission.id}`,
       kind: bossKind,
-      x: BOSS_X,
+      x: bossX,
       y: FLOOR_Y - bossHeight,
       width: bossWidth,
       height: bossHeight,
@@ -989,8 +1109,8 @@ function makeGameState(
         mission.boss.maxHealth * difficultyDef.enemyHealthMultiplier,
       damage: 0,
       moveSpeed: mission.boss.moveSpeed,
-      patrolLeft: 4_150,
-      patrolRight: 5_050,
+      patrolLeft: bossPatrolLeft,
+      patrolRight: bossPatrolRight,
       attackCooldown: 1.5,
       telegraph: 0,
       pendingAttackId: null,
@@ -1000,6 +1120,8 @@ function makeGameState(
       alive: true,
       boss: true,
       active: false,
+      lastTrackX: bossX,
+      lastTrackAt: 0,
     },
     bossMechanics: createBossMechanicState(mission.id),
     bossVulnerabilityMultiplier: 1,
@@ -1017,6 +1139,9 @@ function makeGameState(
     trophyExtracting: false,
     trophyExtraction: 0,
     trophyCarried: false,
+    trophyRitual: null,
+    trophyVictory: null,
+    dropShip: null,
     scanPulse: 0,
     message: "La chasse commence. Localise les signatures.",
     messageTimer: 4,
@@ -1056,6 +1181,14 @@ function clonePlayerState(player: PlayerState): PlayerState {
 
 function cloneEnemyState(enemy: EnemyState): EnemyState {
   return { ...enemy };
+}
+
+function cloneTrophyRitual(
+  ritual: TrophyRitualState | null,
+): TrophyRitualState | null {
+  return ritual
+    ? { ...ritual, sequence: [...ritual.sequence] }
+    : null;
 }
 
 function cloneAiBrains(
@@ -1140,6 +1273,9 @@ function captureCheckpoint(state: GameState): MissionCheckpointPayload {
     trophyExtracting: state.trophyExtracting,
     trophyExtraction: state.trophyExtraction,
     trophyCarried: state.trophyCarried,
+    trophyRitual: cloneTrophyRitual(state.trophyRitual),
+    trophyVictory: state.trophyVictory ? { ...state.trophyVictory } : null,
+    dropShip: state.dropShip ? { ...state.dropShip } : null,
     rangedBossViolation: state.rangedBossViolation,
     nextProjectileId: state.nextProjectileId,
     nextSignalId: state.nextSignalId,
@@ -1219,6 +1355,11 @@ function restoreCheckpoint(
     trophyExtracting: checkpoint.trophyExtracting,
     trophyExtraction: checkpoint.trophyExtraction,
     trophyCarried: checkpoint.trophyCarried,
+    trophyRitual: cloneTrophyRitual(checkpoint.trophyRitual),
+    trophyVictory: checkpoint.trophyVictory
+      ? { ...checkpoint.trophyVictory }
+      : null,
+    dropShip: checkpoint.dropShip ? { ...checkpoint.dropShip } : null,
     scanPulse: 0,
     message: `Relais ${state.nextCheckpointIndex} restauré. La chasse continue.`,
     messageTimer: 4,
@@ -1279,21 +1420,28 @@ function spawnEligibleWaves(
     for (let index = 0; index < wave.count; index += 1) {
       const base =
         trigger === "start"
-          ? 950
+          ? state.world.width * 0.17
           : trigger === "boss-phase"
-            ? 4_250
-            : 2_100;
-      const spread = trigger === "boss-phase" ? 620 : 1_550;
-      const x =
+            ? state.world.bossArena.x + state.world.bossArena.width * 0.12
+            : state.world.width * 0.4;
+      const spread =
+        trigger === "boss-phase"
+          ? state.world.bossArena.width * 0.55
+          : state.world.width * 0.28;
+      const x = clamp(
         base +
-        ((index + state.enemies.length * 0.61) %
-          Math.max(1, wave.count)) *
-          (spread / Math.max(1, wave.count)) +
-        Math.random() * 120;
+          ((index + state.enemies.length * 0.61) %
+            Math.max(1, wave.count)) *
+            (spread / Math.max(1, wave.count)) +
+          Math.random() * 120,
+        120,
+        state.world.width - 220,
+      );
       const enemy = makeEnemy(
         `${wave.id}-${index}`,
         wave.archetype,
         x,
+        state.world.width,
         wave.health,
         wave.damage,
         wave.moveSpeed,
@@ -1365,6 +1513,13 @@ function activeBossPhase(
   return [...mission.boss.phases]
     .sort((a, b) => a.startsAtHealthRatio - b.startsAtHealthRatio)
     .find((phase) => ratio <= phase.startsAtHealthRatio);
+}
+
+function trophyCueLabel(action: TrophyRitualAction): string {
+  if (action === "left") return "GAUCHE";
+  if (action === "right") return "DROITE";
+  if (action === "melee") return "LAMES";
+  return "VALIDER";
 }
 
 function currentObjective(
@@ -1440,16 +1595,45 @@ function currentObjective(
     };
   }
   if (state.phase === "trophy") {
+    const cue = state.trophyRitual?.sequence[state.trophyRitual.cueIndex];
+    const ritualReady = state.trophyRitual?.phase === "ready";
     return {
       title: `Réclamer : ${mission.trophy.name}`,
-      detail: state.trophyExtracting
-        ? `Extraction en cours : ${Math.round(state.trophyExtraction * 100)} % — reste immobile.`
-        : "Approche la dépouille, utilise [E], puis reste immobile 1,4 s.",
+      detail:
+        state.trophyExtracting && ritualReady && state.trophyRitual
+          ? `Observe le premier glyphe · départ dans ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} s.`
+          : state.trophyExtracting && cue
+          ? `Rite ${state.trophyRitual!.cueIndex + 1}/${state.trophyRitual!.sequence.length} : ${trophyCueLabel(cue)} dans la fenêtre lumineuse.`
+          : "Approche la dépouille et utilise [E] pour commencer le rite rythmé.",
+    };
+  }
+  if (state.trophyVictory && !state.trophyVictory.complete) {
+    return {
+      title: "Trophée revendiqué",
+      detail: "Le chasseur lève sa prise pendant que le vaisseau se place au-dessus de la balise.",
+    };
+  }
+  if (state.dropShip?.phase === "approach") {
+    return {
+      title: "Vaisseau en approche",
+      detail: "Rejoins la balise et attends que le transport se stabilise au-dessus du faisceau.",
+    };
+  }
+  if (state.dropShip?.phase === "boarding") {
+    return {
+      title: "Hissage en cours",
+      detail: "Le faisceau tracteur remonte le chasseur et son trophée vers la soute.",
+    };
+  }
+  if (state.dropShip?.phase === "departure") {
+    return {
+      title: "Extraction confirmée",
+      detail: "La soute est verrouillée. Le vaisseau quitte la zone de chasse.",
     };
   }
   return {
     title: extractObjective?.label ?? "Rejoindre l’extraction",
-    detail: "Atteins la balise à l’est et confirme avec [E].",
+    detail: "Atteins la balise à l’est puis embarque avec [E] lorsque le vaisseau est en stationnaire.",
   };
 }
 
@@ -1494,6 +1678,22 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
           ? `Insertion · ${state.checkpointPositions.length} relais`
           : "Rite sans checkpoint",
     trophyExtraction: state.trophyExtraction,
+    trophyCue:
+      state.trophyRitual?.sequence[state.trophyRitual.cueIndex] ?? null,
+    trophyCueIndex: state.trophyRitual?.cueIndex ?? 0,
+    trophyCueCount: state.trophyRitual?.sequence.length ?? 0,
+    trophyCueTiming: state.trophyRitual
+      ? state.trophyRitual.phase === "ready"
+        ? 0
+        : clamp(
+          state.trophyRitual.cueElapsedSeconds /
+            TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
+          0,
+          1,
+        )
+      : 0,
+    trophyMistakes: state.trophyRitual?.mistakes ?? 0,
+    dropShipPhase: state.dropShip?.phase ?? null,
     objective: objective.title,
     objectiveDetail: objective.detail,
     honor: state.honor,
@@ -1685,6 +1885,70 @@ const HUNTER_TROPHY_LAYOUT = {
     belt: RigPoint & { scale: number };
   }
 >;
+
+type TrophyVisualIdentity = Pick<TrophyClaim, "definitionId" | "partId">;
+
+function trophyAtomicLayerIds(
+  partId?: TrophyPartId,
+): readonly HunterTrophyVisualId[] {
+  if (partId === "skull") {
+    return ["trophy-skull", "trophy-bindings"];
+  }
+  if (partId === "mask" || partId === "insignia") return [];
+  return HUNTER_TROPHY_VISUAL_IDS;
+}
+
+function v6TrophyAtlasImage(
+  assets: AssetBank,
+  visualId: V6VisualId,
+): HTMLImageElement | null {
+  const { atlasId } = getV6Visual(visualId);
+  if (atlasId === "masks-trophies") return assets.masksTrophiesAtlas;
+  if (atlasId === "ranks-lasers") return assets.ranksLasersAtlas;
+  return null;
+}
+
+/** Draws non-anatomical claims from their exact V6 cell, never a skull fallback. */
+function drawNamedTrophyAtAnchor(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  trophy: TrophyVisualIdentity,
+  position: RigPoint,
+  facing: -1 | 1,
+  scale: number,
+  rotation = 0,
+): boolean {
+  if (trophy.partId !== "mask" && trophy.partId !== "insignia") {
+    return false;
+  }
+  const visualId = resolveV6TrophyVisualId(trophy);
+  const visual = getV6Visual(visualId);
+  const atlas = v6TrophyAtlasImage(assets, visualId);
+  if (!atlas) return true;
+
+  const baseHeight = trophy.partId === "mask" ? 156 : 128;
+  const height = baseHeight * scale;
+  const width = height * (visual.crop.width / visual.crop.height);
+  context.save();
+  context.translate(position.x, position.y);
+  context.rotate(rotation);
+  context.scale(facing, 1);
+  context.shadowColor = "#000000aa";
+  context.shadowBlur = 8 * scale;
+  context.drawImage(
+    atlas,
+    visual.crop.x,
+    visual.crop.y,
+    visual.crop.width,
+    visual.crop.height,
+    -width * 0.5,
+    -height * 0.58,
+    width,
+    height,
+  );
+  context.restore();
+  return true;
+}
 
 const HUNTER_BACK_PARTS: readonly HunterBodyPartId[] = [
   "foot-back",
@@ -1878,8 +2142,9 @@ function drawHunterTrophyLayers(
   frame: HunterRigFrame,
   alpha = 1,
   carried = false,
+  partId?: TrophyPartId,
 ): void {
-  for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
+  for (const trophyId of trophyAtomicLayerIds(partId)) {
     const image = assets.hunterTrophies[trophyId];
     const layout = HUNTER_TROPHY_LAYOUT[trophyId];
     if (!carried) {
@@ -1930,21 +2195,57 @@ function drawHunterTrophyLayers(
   }
 }
 
+function drawClaimedTrophyLayers(
+  context: CanvasRenderingContext2D,
+  assets: AssetBank,
+  frame: HunterRigFrame,
+  trophy: TrophyVisualIdentity,
+): void {
+  const rootScale = Math.hypot(frame.bones.root.a, frame.bones.root.b);
+  if (
+    drawNamedTrophyAtAnchor(
+      context,
+      assets,
+      trophy,
+      frame.anchors.trophyCarry,
+      frame.facing,
+      rootScale,
+    )
+  ) {
+    return;
+  }
+  drawHunterTrophyLayers(context, assets, frame, 1, true, trophy.partId);
+}
+
 function drawExtractingTrophyLayers(
   context: CanvasRenderingContext2D,
   assets: AssetBank,
+  trophy: TrophyVisualIdentity,
   position: RigPoint,
   facing: -1 | 1,
   scale: number,
   rotation: number,
 ): void {
+  if (
+    drawNamedTrophyAtAnchor(
+      context,
+      assets,
+      trophy,
+      position,
+      facing,
+      scale,
+      rotation,
+    )
+  ) {
+    return;
+  }
   const bindAnchor = HUNTER_BIND_FRAME.anchors.trophyCarry;
   context.save();
   context.translate(position.x, position.y);
   context.rotate(rotation);
   context.scale(facing * scale, scale);
   context.translate(-bindAnchor.x, -bindAnchor.y);
-  for (const trophyId of HUNTER_TROPHY_VISUAL_IDS) {
+  for (const trophyId of trophyAtomicLayerIds(trophy.partId)) {
     const image = assets.hunterTrophies[trophyId];
     if (image) {
       const layout = HUNTER_TROPHY_LAYOUT[trophyId];
@@ -2254,14 +2555,8 @@ function drawHunterLayered(
     );
   }
 
-  if (state.trophyCarried) {
-    drawHunterTrophyLayers(
-      context,
-      assets,
-      frame,
-      1,
-      true,
-    );
+  if (state.trophyCarried && state.trophyClaim) {
+    drawClaimedTrophyLayers(context, assets, frame, state.trophyClaim);
   }
   context.restore();
 }
@@ -2288,7 +2583,7 @@ function drawAimAssist(
   const origin = handWeaponId
     ? frame.anchors.handGrip
     : frame.anchors.muzzle;
-  const color = mission.palette.accent;
+  const color = LASER_COLOR_HEX[appearance.laserColorId ?? "crimson"] ?? mission.palette.accent;
   context.save();
   if (player.maskOn && appearance.biomaskId) {
     context.strokeStyle = `${color}c8`;
@@ -2361,6 +2656,261 @@ function surfaceColor(material: TrackSurface["material"]): string {
       return "#6d756e";
     default:
       return "#52633f";
+  }
+}
+
+function trackSpeciesLabel(track: ObservedTrackMark): string {
+  if (track.ownerSpecies === "human") return "HUMAIN";
+  if (track.ownerSpecies === "beast") return "FAUNE";
+  return "YAUTJA";
+}
+
+function drawObservedTrack(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  track: ObservedTrackMark,
+  accent: string,
+): void {
+  const freshness =
+    1 -
+    clamp(
+      (state.elapsed - track.createdAtSeconds) / track.lifetimeSeconds,
+      0,
+      1,
+    );
+  const scale =
+    track.ownerSpecies === "beast"
+      ? 1.35
+      : track.ownerSpecies === "yautja" || track.ownerSpecies === "hunter"
+        ? 1.14
+        : 0.92;
+  const color =
+    track.ownerId === "hunter"
+      ? accent
+      : track.ownerSpecies === "beast"
+        ? "#ff735f"
+        : track.ownerSpecies === "yautja"
+          ? "#b99aff"
+          : "#ffc15a";
+  const lateralOffset = track.strideIndex % 2 === 0 ? -4 : 4;
+
+  context.save();
+  context.globalAlpha = (0.16 + freshness * 0.74) * track.intensity;
+  context.translate(track.x, track.y - 3 + lateralOffset * 0.22);
+  context.rotate(track.directionX * 0.22);
+  context.scale(scale, scale);
+  context.fillStyle = color;
+  context.strokeStyle = color;
+  context.lineWidth = 1.4;
+
+  if (track.ownerSpecies === "beast") {
+    context.beginPath();
+    context.ellipse(0, 1, 6.5, 4.8, 0, 0, Math.PI * 2);
+    context.fill();
+    for (const toeX of [-6, -2, 2, 6]) {
+      context.beginPath();
+      context.ellipse(toeX, -5, 2.1, 3, toeX * 0.035, 0, Math.PI * 2);
+      context.fill();
+    }
+  } else if (
+    track.ownerSpecies === "yautja" ||
+    track.ownerSpecies === "hunter"
+  ) {
+    context.beginPath();
+    context.ellipse(-2.8, 0, 3.8, 7.6, -0.12, 0, Math.PI * 2);
+    context.ellipse(3.2, -0.8, 3.2, 7, 0.14, 0, Math.PI * 2);
+    context.fill();
+    context.beginPath();
+    context.moveTo(-6.5, -6);
+    context.lineTo(-8.5, -10);
+    context.moveTo(0, -7);
+    context.lineTo(0, -11);
+    context.moveTo(6.2, -6);
+    context.lineTo(8.2, -10);
+    context.stroke();
+  } else {
+    context.beginPath();
+    context.ellipse(0, -2.5, 4.2, 7, 0, 0, Math.PI * 2);
+    context.ellipse(0, 4.5, 5.4, 3.1, 0, 0, Math.PI * 2);
+    context.fill();
+  }
+  context.restore();
+
+  // A full scan annotates ownership, species and remaining lifetime rather
+  // than showing anonymous marks that could be mistaken for player tracks.
+  if (state.scanPulse > 0 && track.strideIndex % 4 === 0) {
+    const remaining = Math.max(
+      0,
+      track.lifetimeSeconds - (state.elapsed - track.createdAtSeconds),
+    );
+    context.save();
+    context.globalAlpha = 0.5 + freshness * 0.45;
+    context.fillStyle = color;
+    context.font = "700 9px system-ui, sans-serif";
+    context.textAlign = "center";
+    context.fillText(
+      `${track.ownerLabel.toUpperCase()} · ${trackSpeciesLabel(track)} · ${remaining.toFixed(1)} s`,
+      track.x,
+      track.y - 18,
+    );
+    context.restore();
+  }
+}
+
+function drawDropShipExtraction(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  mission: MissionDefinition,
+  palette: MissionDefinition["palette"],
+  assets: AssetBank,
+): void {
+  if (!state.dropShip) return;
+  const extractionX = state.world.extraction.x;
+  const visual = dropShipVisual(state.dropShip, extractionX);
+  if (!visual.visible) return;
+
+  if (visual.beamStrength > 0) {
+    const beam = context.createLinearGradient(
+      extractionX - 96,
+      0,
+      extractionX + 96,
+      0,
+    );
+    beam.addColorStop(0, `${palette.accent}00`);
+    beam.addColorStop(0.5, `${palette.accent}bb`);
+    beam.addColorStop(1, `${palette.accent}00`);
+    context.save();
+    context.globalAlpha = visual.beamStrength;
+    context.fillStyle = beam;
+    context.fillRect(
+      extractionX - 96,
+      visual.y + 28,
+      192,
+      state.world.floorY - visual.y - 28,
+    );
+    context.strokeStyle = palette.accent;
+    context.lineWidth = 3;
+    context.beginPath();
+    context.ellipse(
+      extractionX,
+      state.world.floorY - 14,
+      58,
+      14,
+      0,
+      0,
+      Math.PI * 2,
+    );
+    context.stroke();
+    context.restore();
+  }
+
+  // Procedural silhouette keeps the transport readable even before a bespoke
+  // sprite is available: hull, stabilisers, cockpit and open ventral hatch.
+  context.save();
+  context.translate(visual.x, visual.y);
+  context.shadowColor = "#000000cc";
+  context.shadowBlur = 24;
+  if (assets.shipsAtlas) {
+    const shipVisual = getV6Visual(
+      V6_MISSION_VISUALS[mission.id].extractionShipId,
+    );
+    const shipWidth = 308;
+    const shipHeight =
+      shipWidth * (shipVisual.crop.height / shipVisual.crop.width);
+    context.drawImage(
+      assets.shipsAtlas,
+      shipVisual.crop.x,
+      shipVisual.crop.y,
+      shipVisual.crop.width,
+      shipVisual.crop.height,
+      -shipWidth / 2,
+      -shipHeight / 2,
+      shipWidth,
+      shipHeight,
+    );
+    context.globalAlpha = 0.24;
+  }
+  context.fillStyle = "#172521";
+  context.strokeStyle = `${palette.accent}aa`;
+  context.lineWidth = 2.4;
+  context.beginPath();
+  context.moveTo(-116, 4);
+  context.lineTo(-72, -30);
+  context.quadraticCurveTo(-18, -55, 58, -34);
+  context.lineTo(116, -4);
+  context.lineTo(70, 25);
+  context.lineTo(-78, 28);
+  context.closePath();
+  context.fill();
+  context.stroke();
+  context.fillStyle = "#263b34";
+  context.beginPath();
+  context.moveTo(-72, -24);
+  context.lineTo(-132, -50);
+  context.lineTo(-94, 4);
+  context.closePath();
+  context.fill();
+  context.beginPath();
+  context.moveTo(64, -24);
+  context.lineTo(124, -43);
+  context.lineTo(92, 4);
+  context.closePath();
+  context.fill();
+  context.fillStyle = `${palette.sky}dd`;
+  context.beginPath();
+  context.ellipse(34, -27, 28, 10, 0.13, Math.PI, Math.PI * 2);
+  context.fill();
+  context.globalAlpha = 1;
+  context.fillStyle = "#030706";
+  context.fillRect(-24, 19, 54, 8 + visual.doorOpen * 13);
+  context.strokeStyle = palette.accent;
+  context.strokeRect(-24, 19, 54, 8 + visual.doorOpen * 13);
+  context.fillStyle = palette.accent;
+  for (const engineX of [-82, 82]) {
+    context.globalAlpha = 0.72 + Math.sin(state.elapsed * 13 + engineX) * 0.2;
+    context.fillRect(engineX - 13, 24, 26, 5);
+  }
+  context.restore();
+}
+
+function drawAmbientFauna(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  mission: MissionDefinition,
+  screens: readonly WorldScreenSector[],
+  assets: AssetBank,
+): void {
+  if (!assets.preyAtlas) return;
+
+  const fauna = getV6Visual(V6_MISSION_VISUALS[mission.id].faunaId);
+  const baseHeight = mission.biome === "ice" ? 112 : 126;
+  const baseWidth = baseHeight * (fauna.crop.width / fauna.crop.height);
+
+  for (const [index, screen] of screens.entries()) {
+    // Ambient wildlife acts as a tracking clue. Keep the first tutorial room
+    // and the extraction pad clear so objectives remain readable.
+    if (index === 0 || index === screens.length - 1 || index % 2 === 0) {
+      continue;
+    }
+    const x = screen.startX + (screen.endX - screen.startX) * 0.72;
+    const bob = Math.sin(state.elapsed * 1.25 + index * 1.7) * 2;
+
+    context.save();
+    context.globalAlpha = 0.5;
+    context.translate(x, state.world.floorY + bob);
+    if (index % 4 === 3) context.scale(-1, 1);
+    context.drawImage(
+      assets.preyAtlas,
+      fauna.crop.x,
+      fauna.crop.y,
+      fauna.crop.width,
+      fauna.crop.height,
+      -baseWidth / 2,
+      -baseHeight,
+      baseWidth,
+      baseHeight,
+    );
+    context.restore();
   }
 }
 
@@ -2439,6 +2989,34 @@ function drawWorldClimbable(
   context.restore();
 }
 
+function drawWorldSectorOverlay(
+  context: CanvasRenderingContext2D,
+  sector: WorldScreenSector,
+  index: number,
+  total: number,
+  accent: string,
+): void {
+  context.save();
+  context.fillStyle = "#020706dc";
+  context.fillRect(20, 88, 420, 66);
+  context.fillStyle = accent;
+  context.font = "800 11px system-ui, sans-serif";
+  context.letterSpacing = "1.5px";
+  context.fillText(
+    `SECTEUR ${String(index + 1).padStart(2, "0")}/${String(total).padStart(2, "0")}`,
+    34,
+    108,
+  );
+  context.fillStyle = "#f1e7cf";
+  context.font = "900 18px system-ui, sans-serif";
+  context.letterSpacing = "0px";
+  context.fillText(sector.label.toUpperCase(), 34, 132, 382);
+  context.fillStyle = "#8fa198";
+  context.font = "500 11px system-ui, sans-serif";
+  context.fillText(sector.objectiveCue, 34, 148, 382);
+  context.restore();
+}
+
 function renderGame(
   context: CanvasRenderingContext2D,
   state: GameState,
@@ -2455,6 +3033,7 @@ function renderGame(
     state.screenShake > 0 ? (Math.random() - 0.5) * state.screenShake : 0;
   const cameraX = state.cameraX + shakeX;
   const palette = mission.palette;
+  const worldScreenLayout = worldScreensFor(mission.id);
 
   // Background and parallax atmosphere.
   const sky = context.createLinearGradient(0, 0, 0, VIEW_HEIGHT);
@@ -2466,14 +3045,41 @@ function renderGame(
 
   if (assets.background) {
     const image = assets.background;
-    const sourceRatio = image.naturalWidth / image.naturalHeight;
+    const activeSector = getWorldScreenAtX(
+      mission.id,
+      cameraX + VIEW_WIDTH / 2,
+    );
+    const usesStackedPanorama = mission.biome === "jungle";
+    // The OpenAI panorama is deliberately composed as three unequal rooms:
+    // 430 px surface, 206 px ruins and 305 px flooded understory. Equal thirds
+    // sliced through the lake and duplicated the first room in later sectors.
+    const jungleBand = {
+      surface: { y: 0, height: 430 },
+      "mid-depth": { y: 430, height: 206 },
+      understory: { y: 636, height: 305 },
+    }[activeSector.layers.background.band];
+    const sourceHeight = usesStackedPanorama
+      ? jungleBand.height
+      : image.naturalHeight;
+    const sourceY = usesStackedPanorama ? jungleBand.y : 0;
+    const sourceRatio = image.naturalWidth / sourceHeight;
     const drawHeight = VIEW_HEIGHT;
     const drawWidth = Math.max(VIEW_WIDTH, drawHeight * sourceRatio);
-    const offset = -((cameraX * 0.16) % drawWidth);
+    const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);
     context.save();
     context.globalAlpha = 0.78;
     for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {
-      context.drawImage(image, x, 0, drawWidth, drawHeight);
+      context.drawImage(
+        image,
+        0,
+        sourceY,
+        image.naturalWidth,
+        sourceHeight,
+        x,
+        0,
+        drawWidth,
+        drawHeight,
+      );
     }
     context.restore();
     context.fillStyle = `${palette.sky}55`;
@@ -2513,6 +3119,25 @@ function renderGame(
   for (let x = 0; x < state.world.width; x += 160) {
     context.fillRect(x, state.world.floorY + 6, 84, 3);
   }
+  context.save();
+  context.globalAlpha = 0.34;
+  context.strokeStyle = palette.accent;
+  context.fillStyle = palette.accent;
+  context.setLineDash([9, 13]);
+  context.lineWidth = 2;
+  context.font = "800 11px system-ui, sans-serif";
+  for (const [index, connection] of worldScreenLayout.connections.entries()) {
+    context.beginPath();
+    context.moveTo(connection.transitionX, 76);
+    context.lineTo(connection.transitionX, state.world.floorY);
+    context.stroke();
+    context.fillText(
+      `PASSAGE ${String(index + 2).padStart(2, "0")}`,
+      connection.transitionX + 10,
+      98,
+    );
+  }
+  context.restore();
 
   for (const surface of state.world.surfaces) {
     context.save();
@@ -2522,6 +3147,13 @@ function renderGame(
     context.fillRect(surface.x, surface.y, surface.width, surface.height);
     context.restore();
   }
+  drawAmbientFauna(
+    context,
+    state,
+    mission,
+    worldScreenLayout.screens,
+    assets,
+  );
   for (const zone of state.world.climbables) {
     drawWorldClimbable(context, zone, assets, palette);
   }
@@ -2659,22 +3291,7 @@ function renderGame(
 
   if (state.player.maskOn || state.scanPulse > 0) {
     for (const track of state.tracks) {
-      const age =
-        1 -
-        clamp(
-          (state.elapsed - track.createdAtSeconds) / track.lifetimeSeconds,
-          0,
-          1,
-        );
-      context.save();
-      context.globalAlpha = 0.2 + age * 0.65;
-      context.translate(track.x, track.y - 3);
-      context.rotate(track.directionX * 0.22);
-      context.fillStyle = palette.accent;
-      context.beginPath();
-      context.ellipse(0, 0, 7, 3.5, 0, 0, Math.PI * 2);
-      context.fill();
-      context.restore();
+      drawObservedTrack(context, state, track, palette.accent);
     }
   }
   if (state.scanPulse > 0) {
@@ -2774,34 +3391,7 @@ function renderGame(
   }
 
   if (state.phase === "extraction") {
-    const extractionX = state.world.extraction.x;
-    const beam = context.createLinearGradient(
-      extractionX - 90,
-      0,
-      extractionX + 90,
-      0,
-    );
-    beam.addColorStop(0, `${palette.accent}00`);
-    beam.addColorStop(0.5, `${palette.accent}77`);
-    beam.addColorStop(1, `${palette.accent}00`);
-    context.fillStyle = beam;
-    context.fillRect(
-      extractionX - 90,
-      110,
-      180,
-      state.world.floorY - 110,
-    );
-    context.strokeStyle = palette.accent;
-    context.lineWidth = 3;
-    context.beginPath();
-    context.arc(
-      extractionX,
-      state.world.floorY - 18,
-      54,
-      Math.PI,
-      Math.PI * 2,
-    );
-    context.stroke();
+    drawDropShipExtraction(context, state, mission, palette, assets);
   }
 
   if (
@@ -2830,6 +3420,8 @@ function renderGame(
 
   if (state.phase === "trophy" && state.bossDefeatedAt !== null) {
     const pulse = 0.7 + Math.sin(state.elapsed * 5) * 0.25;
+    const ritualCue =
+      state.trophyRitual?.sequence[state.trophyRitual.cueIndex];
     context.save();
     context.globalAlpha = pulse;
     context.strokeStyle = palette.accent;
@@ -2847,12 +3439,54 @@ function renderGame(
     context.font = "700 14px system-ui, sans-serif";
     context.textAlign = "center";
     context.fillText(
-      state.trophyExtracting
-        ? `EXTRACTION ${Math.round(state.trophyExtraction * 100)} %`
+      state.trophyExtracting && ritualCue
+        ? `${trophyCueLabel(ritualCue)} · ${state.trophyRitual!.cueIndex + 1}/${state.trophyRitual!.sequence.length}`
         : "TROPHÉE [E]",
       state.boss.x + state.boss.width / 2,
       FLOOR_Y - 104,
     );
+    if (state.trophyExtracting && state.trophyRitual) {
+      const ritualReady = state.trophyRitual.phase === "ready";
+      const timing = ritualReady
+        ? 0
+        : clamp(
+            state.trophyRitual.cueElapsedSeconds /
+              TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
+            0,
+            1,
+          );
+      context.globalAlpha = 0.9;
+      context.lineWidth = 6;
+      context.strokeStyle = `${palette.sky}77`;
+      context.beginPath();
+      context.arc(
+        state.boss.x + state.boss.width / 2,
+        FLOOR_Y - 52,
+        49,
+        -Math.PI / 2,
+        Math.PI * 1.5,
+      );
+      context.stroke();
+      context.strokeStyle =
+        state.trophyRitual.mistakes > 1 ? palette.danger : palette.accent;
+      context.beginPath();
+      context.arc(
+        state.boss.x + state.boss.width / 2,
+        FLOOR_Y - 52,
+        49,
+        -Math.PI / 2,
+        -Math.PI / 2 + timing * Math.PI * 2,
+      );
+      context.stroke();
+      context.font = "800 10px system-ui, sans-serif";
+      context.fillText(
+        ritualReady
+          ? `OBSERVE · ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} S`
+          : `ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
+        state.boss.x + state.boss.width / 2,
+        FLOOR_Y - 122,
+      );
+    }
     context.restore();
 
     if (state.trophyExtracting) {
@@ -2872,6 +3506,10 @@ function renderGame(
       drawExtractingTrophyLayers(
         context,
         assets,
+        {
+          definitionId: mission.trophy.id,
+          partId: mission.trophy.partId,
+        },
         { x: trophyX, y: trophyY },
         state.player.facing,
         state.player.height / HUNTER_RIG_CANVAS.height,
@@ -2967,20 +3605,55 @@ function renderGame(
     context.restore();
   }
 
+  if (state.trophyVictory && !state.trophyVictory.complete) {
+    const progress = clamp(
+      state.trophyVictory.elapsedSeconds /
+        state.trophyVictory.durationSeconds,
+      0,
+      1,
+    );
+    const centerX = state.player.x + state.player.width / 2;
+    const centerY = state.player.y + state.player.height * 0.45;
+    context.save();
+    context.globalAlpha = 1 - progress * 0.45;
+    context.strokeStyle = palette.accent;
+    context.lineWidth = 3;
+    context.setLineDash([8, 7]);
+    context.beginPath();
+    context.arc(centerX, centerY, 48 + progress * 95, 0, Math.PI * 2);
+    context.stroke();
+    context.setLineDash([]);
+    context.fillStyle = palette.accent;
+    context.font = "900 15px system-ui, sans-serif";
+    context.textAlign = "center";
+    context.fillText("TROPHÉE REVENDIQUÉ", centerX, state.player.y - 18);
+    context.restore();
+  }
+
   // Chasseur assemblé en couches indépendantes.
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
-  drawHunterLayered(
-    context,
-    state,
-    loadout,
-    appearance,
-    assets,
-    hunterAlpha,
-  );
-  drawAimAssist(context, state, mission, loadout, appearance);
-  if (state.player.attackFlash > 0) {
+  const boardingVisual = state.dropShip
+    ? dropShipVisual(state.dropShip, state.world.extraction.x)
+    : null;
+  const hunterInsideShip =
+    state.dropShip?.phase === "departure" ||
+    state.dropShip?.phase === "complete" ||
+    (state.dropShip?.phase === "boarding" &&
+      (boardingVisual?.boardingProgress ?? 0) > 0.93);
+  if (!hunterInsideShip) {
+    drawHunterLayered(
+      context,
+      state,
+      loadout,
+      appearance,
+      assets,
+      hunterAlpha,
+    );
+    drawAimAssist(context, state, mission, loadout, appearance);
+  }
+  if (!hunterInsideShip && state.player.attackFlash > 0) {
     const centerX =
       state.player.x +
       state.player.width / 2 +
@@ -3018,20 +3691,25 @@ function renderGame(
     // Keep the initial spawn lane readable: the hunter starts at x=150 and
     // occupies x=150..222, while a foreground fern is 150 px wide. A fern at
     // x=120 therefore covered the complete modular rig before the first input.
-    const fernPositions = [340, 980, 2_040, 3_180, 4_720, 5_260];
+    const fernPositions = worldScreenLayout.screens.map(
+      (screen) => screen.startX + (screen.endX - screen.startX) * 0.28,
+    );
     for (const x of fernPositions) {
       if (assets.foregroundFerns) {
         context.drawImage(assets.foregroundFerns, x, FLOOR_Y - 110, 150, 123);
       }
     }
-    const reedPositions = [450, 1_420, 2_820, 3_920, 5_050];
+    const reedPositions = worldScreenLayout.screens.map(
+      (screen) => screen.startX + (screen.endX - screen.startX) * 0.68,
+    );
     for (const x of reedPositions) {
       if (assets.foregroundReeds) {
         context.drawImage(assets.foregroundReeds, x, FLOOR_Y - 90, 112, 114);
       }
     }
     if (assets.foregroundVines) {
-      for (const x of [620, 2_230, 3_760, 5_090]) {
+      for (const screen of worldScreenLayout.screens) {
+        const x = screen.startX + (screen.endX - screen.startX) * 0.82;
         context.drawImage(assets.foregroundVines, x, -8, 178, 145);
       }
     }
@@ -3060,6 +3738,17 @@ function renderGame(
   vignette.addColorStop(1, "#00000099");
   context.fillStyle = vignette;
   context.fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
+  const activeSector = getWorldScreenAtX(
+    worldScreenLayout,
+    state.player.x + state.player.width / 2,
+  );
+  drawWorldSectorOverlay(
+    context,
+    activeSector,
+    worldScreenLayout.screens.findIndex(({ id }) => id === activeSector.id),
+    worldScreenLayout.screens.length,
+    palette.accent,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -3067,12 +3756,13 @@ function renderGame(
 // ---------------------------------------------------------------------------
 
 function activeSurface(state: GameState, worldX: number): TrackSurface {
-  return (
-    state.world.surfaces.find(
-      (surface) =>
-        worldX >= surface.x && worldX <= surface.x + surface.width,
-    ) ?? state.world.surfaces[0]
-  );
+  for (let index = state.world.surfaces.length - 1; index >= 0; index -= 1) {
+    const surface = state.world.surfaces[index];
+    if (worldX >= surface.x && worldX <= surface.x + surface.width) {
+      return surface;
+    }
+  }
+  return state.world.surfaces[0];
 }
 
 function emitNoise(
@@ -3374,7 +4064,12 @@ function updateHuntSignals(
       surface.scentRetention,
     ),
   ].slice(-80);
-  state.tracks = [...ageTracks(state.tracks, state.elapsed)].slice(-96);
+  state.tracks = [
+    ...(ageTracks(
+      state.tracks,
+      state.elapsed,
+    ) as readonly ObservedTrackMark[]),
+  ].slice(-240);
   state.noiseEvents = state.noiseEvents
     .filter(
       (noise) =>
@@ -3389,18 +4084,24 @@ function updateHuntSignals(
       state.elapsed - state.lastTrackAt >= 0.38)
   ) {
     if (surface.footprintPersistenceSeconds > 0) {
-      state.tracks.push(
-        createTrackMark({
-          id: `track-${state.nextSignalId++}`,
-          sourceId: "hunter",
-          position: { x: centerX, y: footY },
-          facing: player.facing,
-          velocityX: player.velocityX,
-          elapsedSeconds: state.elapsed,
-          surface,
-          mud: state.mud,
-        }),
-      );
+      const strideIndex = state.nextSignalId;
+      const mark = createTrackMark({
+        id: `track-${state.nextSignalId++}`,
+        sourceId: "hunter",
+        position: { x: centerX, y: footY },
+        facing: player.facing,
+        velocityX: player.velocityX,
+        elapsedSeconds: state.elapsed,
+        surface,
+        mud: state.mud,
+      });
+      state.tracks.push({
+        ...mark,
+        ownerId: "hunter",
+        ownerLabel: "Chasseur",
+        ownerSpecies: "hunter",
+        strideIndex,
+      });
     }
     emitNoise(
       state,
@@ -3462,8 +4163,15 @@ function updateHuntSignals(
       );
     }
   }
-  state.environmentDamage += activeHazardDamage * delta;
-  if (state.environmentDamage >= 1 && player.invulnerability <= 0) {
+  const extractionProtected = trophyExtractionProtected(state);
+  state.environmentDamage = extractionProtected
+    ? 0
+    : state.environmentDamage + activeHazardDamage * delta;
+  if (
+    !extractionProtected &&
+    state.environmentDamage >= 1 &&
+    player.invulnerability <= 0
+  ) {
     const damage = state.environmentDamage;
     state.environmentDamage = 0;
     hurtPlayer(state, damage, mission);
@@ -3472,13 +4180,88 @@ function updateHuntSignals(
   }
 }
 
+/** Emit a persistent, identified footprint for every moving prey. */
+function emitEnemyFootprint(state: GameState, enemy: EnemyState): void {
+  if (!enemy.alive || !enemy.active || Math.abs(enemy.velocityX) < 20) return;
+  const centerX = enemy.x + enemy.width / 2;
+  const spacing = enemy.kind === "beast" ? 42 : 34;
+  const interval = enemy.kind === "beast" ? 0.32 : 0.42;
+  if (
+    Math.abs(centerX - enemy.lastTrackX) < spacing &&
+    state.elapsed - enemy.lastTrackAt < interval
+  ) {
+    return;
+  }
+  const surface = activeSurface(state, centerX);
+  if (surface.footprintPersistenceSeconds <= 0) return;
+  const strideIndex = state.nextSignalId;
+  const mark = createTrackMark({
+    id: `track-${enemy.id}-${state.nextSignalId++}`,
+    sourceId: enemy.id,
+    position: { x: centerX, y: enemy.y + enemy.height },
+    facing: enemy.facing,
+    velocityX: enemy.velocityX,
+    elapsedSeconds: state.elapsed,
+    surface,
+    mud: {
+      coating: clamp(
+        surface.mudDepth * (enemy.kind === "beast" ? 0.72 : 0.5),
+        0,
+        1,
+      ),
+      wetness: surface.material === "water" ? 0.8 : surface.mudDepth,
+      thermalVisibility: 1,
+      cloakShimmer: 0,
+      footprintMultiplier:
+        enemy.kind === "beast" ? 0.92 : enemy.kind === "yautja" ? 0.72 : 0.58,
+      scentMultiplier: 1,
+    },
+  });
+  state.tracks.push({
+    ...mark,
+    lifetimeSeconds:
+      mark.lifetimeSeconds *
+      (enemy.kind === "beast" ? 1.24 : enemy.kind === "yautja" ? 1.12 : 1),
+    intensity: clamp(
+      mark.intensity *
+        (enemy.kind === "beast" ? 1.25 : enemy.kind === "yautja" ? 1.1 : 0.95),
+      0,
+      1,
+    ),
+    ownerId: enemy.id,
+    ownerLabel: enemy.archetype,
+    ownerSpecies: enemy.kind,
+    strideIndex,
+  });
+  if (state.tracks.length > 240) state.tracks.splice(0, state.tracks.length - 240);
+  enemy.lastTrackX = centerX;
+  enemy.lastTrackAt = state.elapsed;
+}
+
+function trophyExtractionProtected(state: GameState): boolean {
+  return isTrophyExtractionProtected({
+    phase: state.phase,
+    trophySecured: state.trophyClaim !== null,
+    victoryPoseActive: Boolean(
+      state.trophyVictory && !state.trophyVictory.complete,
+    ),
+    dropShipPhase: state.dropShip?.phase ?? null,
+  });
+}
+
 function hurtPlayer(
   state: GameState,
   amount: number,
   mission: MissionDefinition,
 ): void {
   const player = state.player;
-  if (player.invulnerability > 0 || state.phase === "dead") return;
+  if (
+    player.invulnerability > 0 ||
+    state.phase === "dead" ||
+    trophyExtractionProtected(state)
+  ) {
+    return;
+  }
   player.health -= amount;
   player.invulnerability = 0.55;
   forceDecloak(state);
@@ -3486,6 +4269,7 @@ function hurtPlayer(
   if (state.trophyExtracting) {
     state.trophyExtracting = false;
     state.trophyExtraction = 0;
+    state.trophyRitual = null;
   }
   if (state.screenShakeEnabled) {
     state.screenShake = Math.min(18, 6 + amount * 0.24);
@@ -3890,12 +4674,15 @@ function finishTrophyExtraction(
   state.trophyExtracting = false;
   state.trophyExtraction = 1;
   state.trophyCarried = true;
+  state.trophyRitual = null;
+  state.trophyVictory = createTrophyVictory();
+  state.dropShip = createDropShipArrival();
   state.trophyClaim = {
     id: uniqueTrophyClaimId(state, mission),
     definitionId: mission.trophy.id,
     targetName: mission.targetName,
     targetKind: mission.targetKind,
-    partId: mission.targetKind === "yautja" ? "mask" : "skull-and-spine",
+    partId: mission.trophy.partId,
     quality,
     condition,
   };
@@ -3909,14 +4696,16 @@ function finishTrophyExtraction(
     12,
     "objective",
   );
-  announce(state, `${mission.trophy.name} arraché. Rejoins l’extraction.`, 5);
+  announce(
+    state,
+    `${mission.trophy.name} arraché. Le chasseur célèbre sa prise ; vaisseau en approche.`,
+    5,
+  );
 }
 
 function interact(
   state: GameState,
   mission: MissionDefinition,
-  difficulty: DifficultyId,
-  finish: (result: MissionResult) => void,
 ): void {
   const playerCenter = {
     x: state.player.x + state.player.width / 2,
@@ -3982,11 +4771,14 @@ function interact(
     if (!state.trophyExtracting) {
       state.trophyExtracting = true;
       state.trophyExtraction = 0;
+      state.trophyRitual = createTrophyRitual(
+        `${mission.id}:${mission.trophy.id}`,
+      );
       forceDecloak(state);
       announce(
         state,
-        "Extraction du trophée : maintiens ta position pendant 1,4 s.",
-        2,
+        "Rite du trophée : suis la séquence GAUCHE, DROITE, LAMES et VALIDER au rythme du cercle.",
+        3.2,
       );
     }
     return;
@@ -3995,15 +4787,27 @@ function interact(
     state.phase === "extraction" &&
     Math.abs(playerCenter.x - state.world.extraction.x) <= 115
   ) {
-    completeObjective(
-      state,
-      mission,
-      objectiveByKind(mission, "extract")?.id,
-    );
-    forceDecloak(state);
-    state.phase = "finished";
-    state.paused = true;
-    finish(resultFor(state, mission, difficulty, "success"));
+    if (state.trophyVictory && !state.trophyVictory.complete) {
+      announce(state, "Achève le rite de victoire avant l’embarquement.", 1.8);
+      return;
+    }
+    state.dropShip ??= createDropShipArrival();
+    const shipStep = stepDropShip(state.dropShip, {
+      deltaSeconds: 0,
+      playerAtBeacon: true,
+      requestBoarding: true,
+    });
+    state.dropShip = shipStep.state;
+    if (shipStep.boardingAccepted) {
+      forceDecloak(state);
+      state.player.invulnerability = Math.max(
+        state.player.invulnerability,
+        5,
+      );
+      announce(state, "Faisceau verrouillé. Hissage vers la soute.", 2.4);
+    } else if (state.dropShip.phase === "approach") {
+      announce(state, "Vaisseau en approche : maintiens la zone sûre.", 1.8);
+    }
     return;
   }
   announce(state, "Rien à activer à portée.", 1.4);
@@ -4128,7 +4932,7 @@ function updateAimState(
     player.aimPoint.x = clamp(
       input.pointerScreen.x + state.cameraX,
       0,
-      WORLD_WIDTH,
+      state.world.width,
     );
     player.aimPoint.y = clamp(input.pointerScreen.y, 18, VIEW_HEIGHT - 18);
   } else if (nearest) {
@@ -4234,40 +5038,120 @@ function updatePlayer(
     }
   }
 
-  if (state.trophyExtracting) {
-    const interrupted =
-      moveAxis !== 0 ||
-      climbAxis !== 0 ||
-      input.pressed.has("jump") ||
-      input.pressed.has("melee") ||
-      input.pressed.has("weapon");
-    if (interrupted) {
+  if (state.trophyExtracting && state.trophyRitual) {
+    const ritualActions: readonly TrophyRitualAction[] = [
+      "left",
+      "right",
+      "melee",
+      "interact",
+    ];
+    const ritualAction =
+      ritualActions.find((action) => input.pressed.has(action)) ?? null;
+    // Consume every ritual key so a valid lunge cannot also move or attack.
+    for (const action of ritualActions) input.pressed.delete(action);
+    const ritualStep = stepTrophyRitual(
+      state.trophyRitual,
+      delta,
+      ritualAction,
+    );
+    state.trophyRitual = ritualStep.state;
+    state.trophyExtraction = trophyRitualProgress(ritualStep.state);
+    player.velocityX *= Math.pow(0.0001, delta);
+    forceDecloak(state);
+    if (ritualStep.state.status === "complete") {
+      finishTrophyExtraction(state, mission);
+    } else if (ritualStep.state.status === "failed") {
       state.trophyExtracting = false;
       state.trophyExtraction = 0;
-      announce(state, "Extraction interrompue : la dépouille est conservée.", 2);
-    } else {
-      state.trophyExtraction = clamp(
-        state.trophyExtraction + delta / 1.4,
-        0,
-        1,
+      state.trophyRitual = null;
+      announce(
+        state,
+        "Rite rompu après trois erreurs. Reprends ton souffle puis relance [E].",
+        3,
       );
-      player.velocityX *= Math.pow(0.0001, delta);
-      forceDecloak(state);
-      if (state.trophyExtraction >= 1) {
-        finishTrophyExtraction(state, mission);
-      }
+    } else if (ritualStep.mistakeAdded) {
+      announce(
+        state,
+        `Rythme manqué · ${ritualStep.state.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes} erreurs.`,
+        1.25,
+      );
+    }
+  }
+  if (!state.trophyExtracting) {
+    input.pressed.delete("left");
+    input.pressed.delete("right");
+  }
+
+  if (state.trophyVictory && !state.trophyVictory.complete) {
+    state.trophyVictory = stepTrophyVictory(state.trophyVictory, delta);
+    player.velocityX *= Math.pow(0.0001, delta);
+    forceDecloak(state);
+  }
+
+  if (state.phase === "extraction" && state.dropShip) {
+    const playerAtBeacon =
+      Math.abs(
+        player.x + player.width / 2 - state.world.extraction.x,
+      ) <= 115;
+    const shipStep = stepDropShip(state.dropShip, {
+      deltaSeconds: delta,
+      playerAtBeacon,
+      requestBoarding: false,
+    });
+    state.dropShip = shipStep.state;
+    if (shipStep.completed) {
+      completeObjective(
+        state,
+        mission,
+        objectiveByKind(mission, "extract")?.id,
+      );
+      state.phase = "finished";
+      state.paused = true;
+      finish(resultFor(state, mission, difficulty, "success"));
+      return;
     }
   }
 
+  const victoryLocked = Boolean(
+    state.trophyVictory && !state.trophyVictory.complete,
+  );
+  const boardingLocked =
+    state.dropShip?.phase === "boarding" ||
+    state.dropShip?.phase === "departure";
+  if (boardingLocked && state.dropShip) {
+    const visual = dropShipVisual(
+      state.dropShip,
+      state.world.extraction.x,
+    );
+    player.x +=
+      (state.world.extraction.x - player.width / 2 - player.x) *
+      Math.min(1, delta * 7);
+    player.y =
+      state.world.floorY -
+      player.height -
+      visual.boardingProgress * 335;
+    player.velocityX = 0;
+    player.velocityY = 0;
+    player.grounded = false;
+    player.climbing = false;
+    player.climbZoneId = null;
+    updateHunterRig(player, delta, false);
+    input.pressed.clear();
+    return;
+  }
+  const actionLocked = state.trophyExtracting || victoryLocked;
+
   const targetVelocity =
-    (state.trophyExtracting ? 0 : moveAxis) *
+    (actionLocked ? 0 : moveAxis) *
     300 *
     armor.moveSpeedMultiplier *
     movementSurface.movementMultiplier *
     hazardMovementMultiplier;
   player.velocityX +=
     (targetVelocity - player.velocityX) * Math.min(1, delta * 13);
-  if (moveAxis !== 0 && !player.aiming) player.facing = moveAxis > 0 ? 1 : -1;
+  if (!actionLocked && moveAxis !== 0 && !player.aiming) {
+    player.facing = moveAxis > 0 ? 1 : -1;
+  }
   if (Math.abs(moveAxis) < 0.1) {
     player.velocityX *= Math.pow(0.0008, delta);
   }
@@ -4285,7 +5169,7 @@ function updatePlayer(
         playerCenter.y <= zone.y + zone.height + 28),
   );
   if (
-    !state.trophyExtracting &&
+    !actionLocked &&
     climbAxis !== 0 &&
     currentClimbZone &&
     Math.abs(moveAxis) < 0.5
@@ -4310,27 +5194,27 @@ function updatePlayer(
     player.velocityX = player.facing * 270;
     emitNoise(state, "landing", 0.24, 210, playerCenter);
     queueSound(state, "jump");
-  } else if (jumpPressed && player.grounded && !state.trophyExtracting) {
+  } else if (jumpPressed && player.grounded && !actionLocked) {
     player.velocityY = -720;
     player.grounded = false;
     emitNoise(state, "footstep", 0.3, 230, playerCenter);
     queueSound(state, "jump");
   }
-  if (consume(input, "melee") && !state.trophyExtracting) {
+  if (consume(input, "melee") && !actionLocked) {
     playerMelee(state, mission, loadout, inventory);
   }
-  if (consume(input, "weapon") && !state.trophyExtracting) {
+  if (consume(input, "weapon") && !actionLocked) {
     playerWeapon(state, mission, loadout, inventory);
   }
-  if (consume(input, "scan")) playerScan(state, mission);
-  if (consume(input, "heal")) playerHeal(state);
-  if (consume(input, "gearOne") && !state.trophyExtracting) {
+  if (consume(input, "scan") && !actionLocked) playerScan(state, mission);
+  if (consume(input, "heal") && !actionLocked) playerHeal(state);
+  if (consume(input, "gearOne") && !actionLocked) {
     activateGearSlot(state, 0);
   }
-  if (consume(input, "gearTwo") && !state.trophyExtracting) {
+  if (consume(input, "gearTwo") && !actionLocked) {
     activateGearSlot(state, 1);
   }
-  if (consume(input, "cloak")) {
+  if (consume(input, "cloak") && !actionLocked) {
     if (player.cloaked) {
       forceDecloak(state);
       announce(state, "Camouflage désactivé.", 1.2);
@@ -4343,7 +5227,7 @@ function updatePlayer(
     }
   }
   if (consume(input, "interact")) {
-    interact(state, mission, difficulty, finish);
+    interact(state, mission);
   }
 
   player.previousY = player.y;
@@ -4560,7 +5444,7 @@ function updateRegularEnemy(
   const scent = sampleScentAt(selfPosition, state.scentNodes);
   const track = sampleTracksAt(
     selfPosition,
-    state.tracks,
+    state.tracks.filter((candidate) => candidate.ownerId === "hunter"),
     enemy.kind === "beast" ? 280 : 190,
     state.elapsed,
   );
@@ -4683,6 +5567,7 @@ function updateRegularEnemy(
     enemy.patrolLeft,
     enemy.patrolRight,
   );
+  emitEnemyFootprint(state, enemy);
   if (
     (enemy.x <= enemy.patrolLeft + 1 && aiStep.intent.moveX < 0) ||
     (enemy.x >= enemy.patrolRight - 1 && aiStep.intent.moveX > 0)
@@ -4732,6 +5617,7 @@ function spawnBossSupport(
         state.world.bossArena.x + 30,
         state.world.bossArena.x + state.world.bossArena.width - 130,
       ),
+      state.world.width,
       support.health,
       support.damage,
       support.moveSpeed,
@@ -5065,13 +5951,15 @@ function updateBoss(
     boss.patrolLeft,
     boss.patrolRight,
   );
+  emitEnemyFootprint(state, boss);
   if (
     mission.id === "ice-cryostalker" &&
     Math.abs(boss.velocityX) > 500
   ) {
     const pillar = state.world.covers.find(
       (cover) =>
-        cover.id.startsWith("i-pillar-") &&
+        (cover.id.startsWith("i-pillar-") ||
+          cover.id === "feature-i-nest-pillar") &&
         !state.brokenPillarIds.has(cover.id) &&
         overlaps(boss, cover),
     );
@@ -5149,7 +6037,7 @@ function updateProjectiles(
       !consumed &&
       projectile.life > 0 &&
       projectile.x > -50 &&
-      projectile.x < WORLD_WIDTH + 50 &&
+      projectile.x < state.world.width + 50 &&
       projectile.y > -100 &&
       projectile.y < VIEW_HEIGHT + 100
     ) {
@@ -5180,6 +6068,7 @@ function updateGoreParticles(state: GameState, delta: number): void {
 function pollGamepad(input: InputHub): void {
   if (typeof navigator === "undefined" || !navigator.getGamepads) return;
   const gamepad = navigator.getGamepads()[0];
+  const previousDirections = new Set(input.gamepadHeld);
   input.gamepadHeld.clear();
   if (!gamepad) {
     input.previousGamepadButtons = [];
@@ -5194,10 +6083,20 @@ function pollGamepad(input: InputHub): void {
     gamepad.axes[1] < -0.3 || Boolean(gamepad.buttons[12]?.pressed);
   const down =
     gamepad.axes[1] > 0.3 || Boolean(gamepad.buttons[13]?.pressed);
-  if (left) input.gamepadHeld.add("left");
-  if (right) input.gamepadHeld.add("right");
-  if (up) input.gamepadHeld.add("up");
-  if (down) input.gamepadHeld.add("down");
+  const setDirection = (action: Action, held: boolean) => {
+    if (!held) return;
+    input.gamepadHeld.add(action);
+    if (
+      (action === "left" || action === "right") &&
+      !previousDirections.has(action)
+    ) {
+      input.pressed.add(action);
+    }
+  };
+  setDirection("left", left);
+  setDirection("right", right);
+  setDirection("up", up);
+  setDirection("down", down);
   if ((gamepad.buttons[6]?.value ?? 0) > 0.25) {
     input.gamepadHeld.add("aim");
   }
@@ -5265,6 +6164,7 @@ function stepGame(
     delta,
     finish,
   );
+  if (state.paused) return;
   updateHuntTraps(state, delta);
   updateHuntSignals(state, mission, delta);
   if (state.player.health <= 0) return;
@@ -5278,6 +6178,19 @@ function stepGame(
   updateGoreParticles(state, delta);
   updateObjectiveFlow(state, mission, difficulty);
   updateMissionCheckpoint(state);
+
+  const currentWorldScreen = getWorldScreenAtX(
+    mission.id,
+    state.player.x + state.player.width / 2,
+  );
+  if (currentWorldScreen.id !== state.worldScreenId) {
+    state.worldScreenId = currentWorldScreen.id;
+    announce(
+      state,
+      `${currentWorldScreen.label} — ${currentWorldScreen.objectiveCue}`,
+      4.2,
+    );
+  }
 
   const desiredCamera = clamp(
     state.player.x - VIEW_WIDTH * 0.38,
@@ -5424,6 +6337,10 @@ export default function HuntCanvas({
       mercenary: null,
       cryostalker: null,
       badBlood: null,
+      shipsAtlas: null,
+      preyAtlas: null,
+      masksTrophiesAtlas: null,
+      ranksLasersAtlas: null,
     };
     const input = inputRef.current;
     input.keyboardHeld.clear();
@@ -5642,6 +6559,30 @@ export default function HuntCanvas({
           assets.badBlood = image;
         },
       ],
+      [
+        "/game/sprites/v6/ships-atlas.png",
+        (image) => {
+          assets.shipsAtlas = image;
+        },
+      ],
+      [
+        "/game/sprites/v6/prey-atlas.png",
+        (image) => {
+          assets.preyAtlas = image;
+        },
+      ],
+      [
+        "/game/sprites/v6/masks-trophies-atlas.png",
+        (image) => {
+          assets.masksTrophiesAtlas = image;
+        },
+      ],
+      [
+        "/game/sprites/v6/ranks-lasers-atlas.png",
+        (image) => {
+          assets.ranksLasersAtlas = image;
+        },
+      ],
     ];
     for (const [path, assign] of environmentAssets) {
       queueImage(path, assign);
@@ -5711,6 +6652,12 @@ export default function HuntCanvas({
         action === "aim"
       ) {
         input.keyboardHeld.add(action);
+        if (
+          !event.repeat &&
+          (action === "left" || action === "right")
+        ) {
+          input.pressed.add(action);
+        }
       } else if (!event.repeat) {
         input.pressed.add(action);
       }
@@ -5832,6 +6779,9 @@ export default function HuntCanvas({
       onPointerDown: (event: ReactPointerEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.currentTarget.setPointerCapture(event.pointerId);
+        if (action === "left" || action === "right") {
+          pressAction(action);
+        }
         setTouchHeld(action, true);
       },
       onPointerUp: (event: ReactPointerEvent<HTMLButtonElement>) => {
@@ -5841,7 +6791,7 @@ export default function HuntCanvas({
       onPointerCancel: () => setTouchHeld(action, false),
       onLostPointerCapture: () => setTouchHeld(action, false),
     }),
-    [setTouchHeld],
+    [pressAction, setTouchHeld],
   );
 
   const updatePointerScreen = useCallback(
@@ -6026,9 +6976,26 @@ export default function HuntCanvas({
 
         {ui.trophySeconds !== null ? (
           <div style={styles.trophyTimer} aria-live="polite">
-            {ui.trophyExtraction > 0
-              ? `EXTRACTION DU TROPHÉE · ${Math.round(ui.trophyExtraction * 100)} %`
-              : `FENÊTRE DE TROPHÉE · ${Math.ceil(ui.trophySeconds)} s`}
+            {ui.trophyCue ? (
+              <>
+                <span>
+                  RITE {ui.trophyCueIndex + 1}/{ui.trophyCueCount} · ERREURS {ui.trophyMistakes}/{TROPHY_RITUAL_TIMING.maximumMistakes}
+                </span>
+                <strong style={styles.trophyCueLabel}>
+                  {trophyCueLabel(ui.trophyCue)}
+                </strong>
+                <span style={styles.trophyRhythmTrack} aria-hidden="true">
+                  <span
+                    style={{
+                      ...styles.trophyRhythmFill,
+                      width: `${Math.round(ui.trophyCueTiming * 100)}%`,
+                    }}
+                  />
+                </span>
+              </>
+            ) : (
+              `FENÊTRE DE TROPHÉE · ${Math.ceil(ui.trophySeconds)} s`
+            )}
           </div>
         ) : null}
 
@@ -6499,6 +7466,9 @@ const styles: Record<string, CSSProperties> = {
     top: 16,
     left: "50%",
     transform: "translateX(-50%)",
+    minWidth: "min(82%, 320px)",
+    display: "grid",
+    gap: 4,
     padding: "8px 14px",
     border: "1px solid var(--hunt-accent)",
     borderRadius: 8,
@@ -6507,6 +7477,26 @@ const styles: Record<string, CSSProperties> = {
     fontSize: 12,
     fontWeight: 900,
     letterSpacing: "0.12em",
+    textAlign: "center",
+    pointerEvents: "none",
+  },
+  trophyCueLabel: {
+    color: "#f4fff9",
+    fontSize: 18,
+    letterSpacing: "0.18em",
+  },
+  trophyRhythmTrack: {
+    height: 6,
+    overflow: "hidden",
+    border: "1px solid #bcefdc66",
+    borderRadius: 999,
+    background: "#020504",
+  },
+  trophyRhythmFill: {
+    display: "block",
+    height: "100%",
+    background:
+      "linear-gradient(90deg, #d9664f 0 16%, #73d8a6 18% 78%, #d9664f 84%)",
   },
   modalBackdrop: {
     position: "absolute",

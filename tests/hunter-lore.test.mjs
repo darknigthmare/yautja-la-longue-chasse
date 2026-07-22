@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import test from "node:test";
 
 import {
@@ -9,6 +11,8 @@ import {
   HUNTER_PRESETS,
   appearanceForPreset,
   hunterFilmPlatePath,
+  loadoutForPreset,
+  playableKitForPreset,
 } from "../app/game/hunterLore.ts";
 import { ARMOR_BY_ID, GEAR_BY_ID, WEAPON_BY_ID } from "../app/game/data.ts";
 
@@ -190,6 +194,7 @@ test("appearanceForPreset returns a complete independent save appearance", () =>
       armorStyleId: preset.armorStyleId,
       armorTintId: preset.armorTintId,
       trophyAdornmentId: preset.trophyAdornmentId,
+      laserColorId: "crimson",
     });
     assert.notEqual(
       appearance,
@@ -197,6 +202,97 @@ test("appearanceForPreset returns a complete independent save appearance", () =>
       `${preset.id}: callers must receive fresh save objects`,
     );
   }
+});
+
+test("legendary presets expose a faithful two-slot kit with explicit supplements", () => {
+  for (const preset of HUNTER_PRESETS) {
+    const kit = playableKitForPreset(preset.id);
+    const { loadout } = kit;
+
+    assert.deepEqual(loadoutForPreset(preset.id), loadout);
+    assert.equal(loadout.armorId, preset.recommendedArmorId);
+    assert.equal(loadout.weaponIds.length, 2);
+    assert.equal(loadout.gearIds.length, 2);
+    assert.equal(new Set(loadout.weaponIds).size, 2);
+    assert.equal(new Set(loadout.gearIds).size, 2);
+
+    for (const id of kit.representedSignatureWeaponIds) {
+      assert.ok(preset.signatureWeaponIds.includes(id));
+      assert.ok(loadout.weaponIds.includes(id));
+    }
+    for (const id of kit.representedSignatureGearIds) {
+      assert.ok(preset.signatureGearIds.includes(id));
+      assert.ok(loadout.gearIds.includes(id));
+    }
+    for (const id of kit.supplementalWeaponIds) {
+      assert.ok(loadout.weaponIds.includes(id));
+      assert.ok(!preset.signatureWeaponIds.includes(id));
+    }
+    for (const id of kit.supplementalGearIds) {
+      assert.ok(loadout.gearIds.includes(id));
+      assert.ok(!preset.signatureGearIds.includes(id));
+    }
+
+    assert.equal(
+      kit.isFullyDocumented,
+      kit.supplementalWeaponIds.length === 0 &&
+        kit.supplementalGearIds.length === 0,
+    );
+    assert.deepEqual(
+      [...new Set(preset.signatureGearIds)].every((id) =>
+        loadout.gearIds.includes(id),
+      ),
+      true,
+      `${preset.id}: every documented gear item must survive the projection`,
+    );
+
+    const distinctiveWeapons = [...new Set(preset.signatureWeaponIds)].filter(
+      (id) => id !== "wristblades" && id !== "combistick",
+    );
+    const primarySignature = distinctiveWeapons.at(-1);
+    if (primarySignature) {
+      assert.ok(
+        loadout.weaponIds.includes(primarySignature),
+        `${preset.id}: primary signature ${primarySignature} must survive`,
+      );
+    }
+  }
+});
+
+test("iconic weapons are never truncated by the two-slot runtime", () => {
+  assert.deepEqual(loadoutForPreset("city-hunter").weaponIds, [
+    "wristblades",
+    "smart-disc",
+  ]);
+  assert.deepEqual(loadoutForPreset("wolf").weaponIds, [
+    "wristblades",
+    "plasma-caster",
+  ]);
+  assert.deepEqual(loadoutForPreset("feral-hunter").weaponIds, [
+    "wristblades",
+    "yautja-bow",
+  ]);
+});
+
+test("runtime gear fillers are never rewritten as documented signature gear", () => {
+  const greyback = playableKitForPreset("greyback");
+
+  assert.deepEqual(HUNTER_PRESET_BY_ID.greyback.signatureGearIds, [
+    "motion-sensor",
+  ]);
+  assert.deepEqual(greyback.representedSignatureGearIds, ["motion-sensor"]);
+  assert.deepEqual(greyback.supplementalGearIds, ["audio-decoy"]);
+  assert.equal(greyback.isFullyDocumented, false);
+});
+
+test("the customization dossier discloses runtime-only slot fillers", () => {
+  const gameClientSource = readFileSync(
+    join(process.cwd(), "app/game/GameClient.tsx"),
+    "utf8",
+  );
+
+  assert.match(gameClientSource, /playableKitForPreset/);
+  assert.match(gameClientSource, /Compromis runtime, non attesté/);
 });
 
 test("Hashori is explicitly marked as a prose-only visual interpretation", () => {

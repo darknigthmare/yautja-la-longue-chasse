@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import test from "node:test";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { dirname, join, resolve } from "node:path";
+import test, { after } from "node:test";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import ts from "typescript";
+import { build } from "vite";
 
 async function importTypeScriptModule(relativePath) {
   const source = await readFile(new URL(relativePath, import.meta.url), "utf8");
@@ -22,8 +26,23 @@ async function importTypeScriptModule(relativePath) {
   );
 }
 
-const worldPromise = importTypeScriptModule(
-  "../app/game/systems/worldBlueprints.ts",
+const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const worldOutputDirectory = await mkdtemp(join(tmpdir(), "yautja-world-blueprints-"));
+
+await build({
+  configFile: false,
+  publicDir: false,
+  logLevel: "silent",
+  build: {
+    emptyOutDir: true,
+    outDir: worldOutputDirectory,
+    ssr: resolve(projectRoot, "tests/fixtures/world-runtime-entry.ts"),
+    rollupOptions: { output: { entryFileNames: "world-blueprints.mjs" } },
+  },
+});
+
+const worldPromise = import(
+  pathToFileURL(join(worldOutputDirectory, "world-blueprints.mjs")).href
 );
 const huntPromise = importTypeScriptModule(
   "../app/game/systems/huntSystems.ts",
@@ -32,6 +51,10 @@ const huntCanvasPromise = readFile(
   new URL("../app/game/HuntCanvas.tsx", import.meta.url),
   "utf8",
 );
+
+after(async () => {
+  await rm(worldOutputDirectory, { force: true, recursive: true });
+});
 
 function bossInput(overrides = {}) {
   return {
@@ -57,10 +80,64 @@ test("the three world blueprints are internally valid and offer three routes", a
   assert.equal(blueprints.length, 3);
   for (const blueprint of blueprints) {
     assert.deepEqual(world.validateWorldBlueprint(blueprint), []);
+    assert.equal(blueprint.width, 8_400);
+    assert.ok(blueprint.extraction.x > 7_000);
     assert.equal(blueprint.routes.length, 3);
     assert.ok(blueprint.climbables.length >= 6);
     assert.ok(blueprint.hazards.length >= 3);
     assert.ok(blueprint.trapSockets.length >= 4);
+
+    const playableGeometry = [
+      ...blueprint.platforms,
+      ...blueprint.climbables,
+      ...blueprint.hazards,
+      ...blueprint.covers,
+      ...blueprint.surfaces,
+    ];
+    const materializedFeatures = playableGeometry.filter((entry) =>
+      entry.id.startsWith("feature-"),
+    );
+    const expectedFeatureIds = world.WORLD_SCREENS_BY_MISSION[
+      blueprint.missionId
+    ].screens.flatMap((screen) =>
+      screen.features.map((entry) => `feature-${entry.id}`),
+    );
+    assert.deepEqual(
+      [...materializedFeatures.map((entry) => entry.id)].sort(),
+      [...expectedFeatureIds].sort(),
+    );
+    assert.ok(
+      blueprint.platforms.some((entry) => entry.id.startsWith("feature-")),
+    );
+    assert.ok(
+      blueprint.climbables.some((entry) => entry.id.startsWith("feature-")),
+    );
+    for (let index = 0; index < blueprint.hazards.length; index += 1) {
+      const left = blueprint.hazards[index];
+      assert.ok(
+        left.x + left.width <= blueprint.extraction.x - 80 ||
+          left.x >= blueprint.extraction.x + 80,
+        `${blueprint.missionId}: ${left.id} must leave a safe extraction lane`,
+      );
+      for (let otherIndex = index + 1; otherIndex < blueprint.hazards.length; otherIndex += 1) {
+        const right = blueprint.hazards[otherIndex];
+        if (left.kind !== right.kind) continue;
+        const overlaps =
+          left.x < right.x + right.width &&
+          left.x + left.width > right.x &&
+          left.y < right.y + right.height &&
+          left.y + left.height > right.y;
+        assert.equal(
+          overlaps,
+          false,
+          `${blueprint.missionId}: ${left.id} and ${right.id} must not stack damage`,
+        );
+      }
+    }
+    assert.equal(
+      Math.max(...blueprint.surfaces.map((surface) => surface.x + surface.width)),
+      8_400,
+    );
   }
   assert.ok(
     world.WORLD_BLUEPRINTS_BY_MISSION["ice-cryostalker"].climbables.some(
@@ -285,6 +362,7 @@ test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey
     "filter: highContrastVision",
     "stepAiBrain(previousBrain",
     "stepBossMechanics(state.bossMechanics",
+    "feature-i-nest-pillar",
     "assets.enemyV4[spriteId]",
     "/game/sprites/v4/${spriteId}.png",
   ]) {

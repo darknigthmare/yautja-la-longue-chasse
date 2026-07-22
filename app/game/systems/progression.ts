@@ -339,12 +339,17 @@ function defaultTraining(): Record<
   ) as Record<TrainingDisciplineId, TrainingRecord>;
 }
 
-function defaultDisplaySlots(): TrophyDisplaySlot[] {
-  return Array.from({ length: DISPLAY_SLOT_COUNT }, (_, index) => ({
-    id: `display-${index + 1}`,
-    label: `Alcôve ${(index + 1).toString().padStart(2, "0")}`,
-    claimId: null,
-  }));
+function defaultDisplaySlots(
+  count = DISPLAY_SLOT_COUNT,
+): TrophyDisplaySlot[] {
+  return Array.from(
+    { length: Math.max(DISPLAY_SLOT_COUNT, count) },
+    (_, index) => ({
+      id: `display-${index + 1}`,
+      label: `Alcôve ${(index + 1).toString().padStart(2, "0")}`,
+      claimId: null,
+    }),
+  );
 }
 
 function defaultLoadoutPresets(
@@ -381,11 +386,13 @@ function preparationDurations(
     skull: 90,
     "skull-and-spine": 150,
     mask: 45,
+    insignia: 35,
   };
   const partMounting: Record<TrophyPartId, number> = {
     skull: 80,
     "skull-and-spine": 140,
     mask: 60,
+    insignia: 50,
   };
   const conditionMultiplier: Record<TrophyCondition, number> = {
     damaged: 1.2,
@@ -404,6 +411,7 @@ function workshopRecordForTrophy(
   now: string,
 ): TrophyWorkshopRecord {
   const durations = preparationDurations(trophy);
+  const stage = projectedPreparationStage(trophy);
   return {
     claimId: trophy.id,
     targetName: trophy.targetName,
@@ -412,13 +420,108 @@ function workshopRecordForTrophy(
     partId: trophy.partId,
     condition: trophy.condition,
     quality: trophy.quality,
-    stage: "raw",
-    cleaningSeconds: 0,
+    stage,
+    cleaningSeconds:
+      stage === "raw" || stage === "cleaning" ? 0 : durations.cleaning,
     requiredCleaningSeconds: durations.cleaning,
-    mountingSeconds: 0,
+    mountingSeconds:
+      stage === "mounted" || stage === "displayed"
+        ? durations.mounting
+        : 0,
     requiredMountingSeconds: durations.mounting,
     displaySlotId: null,
     updatedAt: now,
+  };
+}
+
+function projectedPreparationStage(
+  trophy: TrophyRecord,
+): TrophyPreparationStage {
+  const actions = trophy.workshop?.completedActions ?? [];
+  if (actions.includes("display") || actions.includes("rite")) {
+    return "displayed";
+  }
+  if (actions.includes("prepare")) return "mounted";
+  if (actions.includes("clean")) return "cleaned";
+  return "raw";
+}
+
+function hasCoreWorkshopProgress(trophy: TrophyRecord): boolean {
+  return (trophy.workshop?.completedActions.length ?? 0) > 0;
+}
+
+function reconcileTrophyDisplays(
+  trophies: readonly TrophyWorkshopRecord[],
+  rawSlots: readonly unknown[] = [],
+): {
+  trophies: TrophyWorkshopRecord[];
+  displaySlots: TrophyDisplaySlot[];
+} {
+  const displayableClaimIds = new Set(
+    trophies
+      .filter(({ stage }) => stage === "displayed")
+      .map(({ claimId }) => claimId),
+  );
+  const slotCount = Math.max(
+    DISPLAY_SLOT_COUNT,
+    displayableClaimIds.size,
+    Math.min(rawSlots.length, 64),
+  );
+  const usedClaimIds = new Set<string>();
+  const displaySlots = defaultDisplaySlots(slotCount).map(
+    (fallback, index) => {
+      const raw = isRecord(rawSlots[index]) ? rawSlots[index] : {};
+      const claimId =
+        typeof raw.claimId === "string" &&
+        displayableClaimIds.has(raw.claimId) &&
+        !usedClaimIds.has(raw.claimId)
+          ? raw.claimId
+          : null;
+      if (claimId) usedClaimIds.add(claimId);
+      return {
+        ...fallback,
+        label: safeName(raw.label, fallback.label, 32),
+        claimId,
+      };
+    },
+  );
+
+  for (const trophy of trophies) {
+    if (
+      trophy.stage !== "displayed" ||
+      usedClaimIds.has(trophy.claimId)
+    ) {
+      continue;
+    }
+    const freeSlot = displaySlots.find(({ claimId }) => claimId === null);
+    if (!freeSlot) continue;
+    freeSlot.claimId = trophy.claimId;
+    usedClaimIds.add(trophy.claimId);
+  }
+
+  const slotByClaimId = new Map(
+    displaySlots
+      .filter(
+        (slot): slot is TrophyDisplaySlot & { claimId: string } =>
+          slot.claimId !== null,
+      )
+      .map((slot) => [slot.claimId, slot.id]),
+  );
+  return {
+    displaySlots,
+    trophies: trophies.map((record) => {
+      const displaySlotId = slotByClaimId.get(record.claimId) ?? null;
+      return {
+        ...record,
+        displaySlotId,
+        ...(record.stage === "displayed"
+          ? {
+              cleaningSeconds: record.requiredCleaningSeconds,
+              mountingSeconds: record.requiredMountingSeconds,
+            }
+          : {}),
+      };
+    }),
   };
 }
 
@@ -575,14 +678,15 @@ export function createDefaultShipProgression(
   save: SaveGame,
   now = new Date().toISOString(),
 ): ShipProgressionState {
+  const projectedTrophies = reconcileTrophyDisplays(
+    save.trophies.map((trophy) => workshopRecordForTrophy(trophy, now)),
+  );
   const state: ShipProgressionState = {
     version: SHIP_PROGRESSION_VERSION,
     updatedAt: now,
     completedRiteIds: [],
-    trophies: save.trophies.map((trophy) =>
-      workshopRecordForTrophy(trophy, now),
-    ),
-    displaySlots: defaultDisplaySlots(),
+    trophies: projectedTrophies.trophies,
+    displaySlots: projectedTrophies.displaySlots,
     loadoutPresets: defaultLoadoutPresets(save, now),
     training: defaultTraining(),
     medbay: {
@@ -607,9 +711,14 @@ function normalizeWorkshopRecord(
   const fallback = workshopRecordForTrophy(trophy, now);
   if (!isRecord(source)) return fallback;
 
-  const stage = isOneOf(source.stage, PREPARATION_STAGES)
-    ? source.stage
-    : fallback.stage;
+  // Successful mini-games live in the core save and are authoritative. The
+  // sidecar stage is only retained for saves created before workshop actions
+  // were persisted in TrophyRecord.
+  const stage = hasCoreWorkshopProgress(trophy)
+    ? projectedPreparationStage(trophy)
+    : isOneOf(source.stage, PREPARATION_STAGES)
+      ? source.stage
+      : fallback.stage;
   const cleaningSeconds = clamp(
     finiteNumber(source.cleaningSeconds, 0),
     0,
@@ -801,51 +910,7 @@ export function normalizeShipProgression(
   const rawSlots = Array.isArray(value.displaySlots)
     ? value.displaySlots
     : [];
-  const validClaimIds = new Set(trophies.map(({ claimId }) => claimId));
-  const usedClaimIds = new Set<string>();
-  const displaySlots = defaultDisplaySlots().map((fallback, index) => {
-    const raw = isRecord(rawSlots[index]) ? rawSlots[index] : {};
-    const claimId =
-      typeof raw.claimId === "string" &&
-      validClaimIds.has(raw.claimId) &&
-      !usedClaimIds.has(raw.claimId)
-        ? raw.claimId
-        : null;
-    if (claimId) usedClaimIds.add(claimId);
-    return {
-      ...fallback,
-      label: safeName(raw.label, fallback.label, 32),
-      claimId,
-    };
-  });
-
-  const slotByClaimId = new Map(
-    displaySlots
-      .filter(
-        (slot): slot is TrophyDisplaySlot & { claimId: string } =>
-          slot.claimId !== null,
-      )
-      .map((slot) => [slot.claimId, slot.id]),
-  );
-  const reconciledTrophies = trophies.map((record) => {
-    const slotId = slotByClaimId.get(record.claimId) ?? null;
-    if (slotId) {
-      return {
-        ...record,
-        stage: "displayed" as const,
-        cleaningSeconds: record.requiredCleaningSeconds,
-        mountingSeconds: record.requiredMountingSeconds,
-        displaySlotId: slotId,
-      };
-    }
-    return record.stage === "displayed"
-      ? {
-          ...record,
-          stage: "mounted" as const,
-          displaySlotId: null,
-        }
-      : { ...record, displaySlotId: null };
-  });
+  const projectedTrophies = reconcileTrophyDisplays(trophies, rawSlots);
 
   const rawPresets = Array.isArray(value.loadoutPresets)
     ? value.loadoutPresets
@@ -870,8 +935,8 @@ export function normalizeShipProgression(
           ),
         ]
       : [],
-    trophies: reconciledTrophies,
-    displaySlots,
+    trophies: projectedTrophies.trophies,
+    displaySlots: projectedTrophies.displaySlots,
     loadoutPresets: LOADOUT_SLOT_IDS.map((id, index) =>
       normalizeLoadoutPreset(
         presetById.get(id),

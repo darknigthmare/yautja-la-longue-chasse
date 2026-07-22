@@ -7,7 +7,11 @@ import {
   MISSION_BY_ID,
   WEAPONS,
 } from "./data";
-import { HUNTER_PRESETS } from "./hunterLore";
+import {
+  HUNTER_PRESETS,
+  appearanceForPreset,
+  type HunterLorePresetId,
+} from "./hunterLore";
 import type {
   ArmorId,
   CodexEntryId,
@@ -58,8 +62,9 @@ export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
   dreadStyleId: "classic",
   dreadTintId: "obsidian",
   armorStyleId: "classic",
-  armorTintId: "gunmetal",
-  trophyAdornmentId: "none",
+  armorTintId: "bronze",
+  trophyAdornmentId: "skull-spine",
+  laserColorId: "crimson",
 };
 
 const WEAPON_IDS = WEAPONS.map((weapon) => weapon.id);
@@ -71,6 +76,13 @@ const HUNTER_SKIN_IDS = [
   "ochre-mottle",
   "ashen-mottle",
   "dark-mottle",
+] as const;
+const LASER_COLOR_IDS = [
+  "crimson",
+  "electric",
+  "amber",
+  "violet",
+  "cyan",
 ] as const;
 const HUNTER_PRESET_IDS = [
   "custom",
@@ -118,8 +130,19 @@ const DREAD_STYLE_IDS = [
 const DREAD_TINT_IDS = ["obsidian", "umber", "ashen"] as const;
 const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian"] as const;
 const TROPHY_ADORNMENT_IDS = ["none", "skull-spine"] as const;
-const TROPHY_PART_IDS = ["skull", "skull-and-spine", "mask"] as const;
+const TROPHY_PART_IDS = [
+  "skull",
+  "skull-and-spine",
+  "mask",
+  "insignia",
+] as const;
 const TROPHY_CONDITIONS = ["damaged", "intact", "pristine"] as const;
+const TROPHY_WORKSHOP_ACTION_IDS = [
+  "clean",
+  "prepare",
+  "display",
+  "rite",
+] as const;
 const MAX_TROPHY_RECORDS = 200;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
@@ -415,7 +438,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     return { ...DEFAULT_HUNTER_APPEARANCE };
   }
 
-  return {
+  const appearance: HunterAppearance = {
     presetId: isOneOf(source.presetId, HUNTER_PRESET_IDS)
       ? source.presetId
       : DEFAULT_HUNTER_APPEARANCE.presetId,
@@ -452,7 +475,37 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     )
       ? source.trophyAdornmentId
       : DEFAULT_HUNTER_APPEARANCE.trophyAdornmentId,
+    laserColorId: isOneOf(source.laserColorId, LASER_COLOR_IDS)
+      ? source.laserColorId
+      : DEFAULT_HUNTER_APPEARANCE.laserColorId,
   };
+
+  if (appearance.presetId !== "custom") {
+    const expected = appearanceForPreset(
+      appearance.presetId as HunterLorePresetId,
+    );
+    const matchesAuthoredModules =
+      source.presetId === expected.presetId &&
+      source.bodyMorphId === expected.bodyMorphId &&
+      source.skinId === expected.skinId &&
+      source.biomaskId === expected.biomaskId &&
+      source.dreadStyleId === expected.dreadStyleId &&
+      source.dreadTintId === expected.dreadTintId &&
+      source.armorStyleId === expected.armorStyleId &&
+      source.armorTintId === expected.armorTintId &&
+      source.trophyAdornmentId === expected.trophyAdornmentId &&
+      // laserColorId was optional in already-written v3 saves. Its only
+      // legacy meaning is the authored crimson default.
+      (source.laserColorId === undefined
+        ? expected.laserColorId === "crimson"
+        : source.laserColorId === expected.laserColorId);
+
+    // A legendary id describes the complete authored plate, never a label
+    // that can remain attached to a manually altered combination of modules.
+    if (!matchesAuthoredModules) appearance.presetId = "custom";
+  }
+
+  return appearance;
 }
 
 function normalizeMissionProgress(
@@ -557,9 +610,7 @@ function qualityForCondition(condition: TrophyCondition): TrophyQuality {
 }
 
 function defaultTrophyPart(missionId: MissionId): TrophyPartId {
-  return MISSION_BY_ID[missionId].trophy.icon.includes("mask")
-    ? "mask"
-    : "skull";
+  return MISSION_BY_ID[missionId].trophy.partId;
 }
 
 function preferredTrophy(
@@ -568,15 +619,41 @@ function preferredTrophy(
 ): TrophyRecord {
   const currentQuality = TROPHY_QUALITY_ORDER[current.quality];
   const candidateQuality = TROPHY_QUALITY_ORDER[candidate.quality];
-  if (candidateQuality !== currentQuality) {
-    return candidateQuality > currentQuality ? candidate : current;
-  }
-  if (candidate.score !== current.score) {
-    return candidate.score > current.score ? candidate : current;
-  }
-  return Date.parse(candidate.claimedAt) >= Date.parse(current.claimedAt)
-    ? candidate
-    : current;
+  const preferred = candidateQuality !== currentQuality
+    ? candidateQuality > currentQuality ? candidate : current
+    : candidate.score !== current.score
+      ? candidate.score > current.score ? candidate : current
+      : Date.parse(candidate.claimedAt) >= Date.parse(current.claimedAt)
+        ? candidate
+        : current;
+  const other = preferred === current ? candidate : current;
+  if (!preferred.workshop && !other.workshop) return preferred;
+  const completedActions = [
+    ...new Set([
+      ...(preferred.workshop?.completedActions ?? []),
+      ...(other.workshop?.completedActions ?? []),
+    ]),
+  ];
+  const preferredWorkshopTime = Date.parse(
+    preferred.workshop?.lastCompletedAt ?? new Date(0).toISOString(),
+  );
+  const otherWorkshopTime = Date.parse(
+    other.workshop?.lastCompletedAt ?? new Date(0).toISOString(),
+  );
+  return {
+    ...preferred,
+    workshop: {
+      completedActions,
+      bestScore: Math.max(
+        preferred.workshop?.bestScore ?? 0,
+        other.workshop?.bestScore ?? 0,
+      ),
+      lastCompletedAt:
+        otherWorkshopTime > preferredWorkshopTime
+          ? other.workshop?.lastCompletedAt ?? preferred.claimedAt
+          : preferred.workshop?.lastCompletedAt ?? preferred.claimedAt,
+    },
+  };
 }
 
 function normalizeTrophies(source: unknown): TrophyRecord[] {
@@ -610,6 +687,18 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
       ? value.condition
       : conditionForQuality(storedQuality ?? "worthy");
     const quality = storedQuality ?? qualityForCondition(condition);
+    const claimedAt = validIsoDate(
+      value.claimedAt,
+      new Date(0).toISOString(),
+    );
+    const rawWorkshop = isRecord(value.workshop) ? value.workshop : null;
+    const completedWorkshopActions = rawWorkshop
+      ? uniqueAllowedIds(
+          rawWorkshop.completedActions,
+          TROPHY_WORKSHOP_ACTION_IDS,
+          [],
+        )
+      : [];
     const trophy: TrophyRecord = {
       id,
       definitionId: identifierValue(
@@ -634,10 +723,19 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
       quality,
       difficultyId: value.difficultyId,
       score: boundedNumber(value.score, 0, 0, 100),
-      claimedAt: validIsoDate(
-        value.claimedAt,
-        new Date(0).toISOString(),
-      ),
+      claimedAt,
+      ...(completedWorkshopActions.length > 0
+        ? {
+            workshop: {
+              completedActions: completedWorkshopActions,
+              bestScore: boundedNumber(rawWorkshop?.bestScore, 0, 0, 10_000),
+              lastCompletedAt: validIsoDate(
+                rawWorkshop?.lastCompletedAt,
+                claimedAt,
+              ),
+            },
+          }
+        : {}),
     };
     const existing = bestById.get(id);
     bestById.set(

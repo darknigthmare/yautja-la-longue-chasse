@@ -12,17 +12,14 @@ import {
   TRAINING_LABELS,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
-  advanceShipProgression,
   createDefaultShipProgression,
   evaluateClanProgression,
   loadLoadoutPreset,
   loadShipProgression,
-  placeTrophyOnDisplay,
   recordTrainingResult,
+  resolveMedbayTreatment,
   saveLoadoutPreset,
   startMedbayTreatment,
-  startTrophyCleaning,
-  startTrophyMounting,
   synchronizeShipProgression,
   writeShipProgression,
   type ShipLoadoutSlotId,
@@ -112,6 +109,7 @@ export interface ShipHubProps {
   gamepadEnabled?: boolean;
   onProgressionChange?: (state: ShipProgressionState) => void;
   onRoomChange?: (roomId: ShipRoomId) => void;
+  onOpenDeck?: () => void;
   onOpenMap: () => void;
   onOpenArmory: () => void;
   onOpenTrophies: () => void;
@@ -177,6 +175,7 @@ export default function ShipHub({
   gamepadEnabled = true,
   onProgressionChange,
   onRoomChange,
+  onOpenDeck,
   onOpenMap,
   onOpenArmory,
   onOpenTrophies,
@@ -240,22 +239,14 @@ export default function ShipHub({
   }, [autoFocus]);
 
   useEffect(() => {
-    const hasTimedWork =
-      progression.trophies.some(
-        ({ stage }) => stage === "cleaning" || stage === "mounting",
-      ) || progression.medbay.status === "treating";
-    if (!hasTimedWork) return;
-    let previousTick = Date.now();
+    // Trophy preparation is exclusively resolved by TrophyWorkshop. The hub
+    // clock remains useful for the medbay sidecar, but can no longer advance
+    // legacy cleaning or mounting timers behind the mini-game.
+    if (progression.medbay.status !== "treating") return;
     const timer = window.setInterval(() => {
       const tick = Date.now();
-      const elapsedSeconds = Math.max(
-        0,
-        (tick - previousTick) / 1_000,
-      );
-      previousTick = tick;
-      const next = advanceShipProgression(
+      const next = resolveMedbayTreatment(
         progression,
-        elapsedSeconds,
         new Date(tick).toISOString(),
       );
       if (next !== progression) {
@@ -330,24 +321,22 @@ export default function ShipHub({
   );
 
   const actions = useMemo<HubActionDefinition[]>(() => {
-    const firstRaw = progression.trophies.find(
-      ({ stage }) => stage === "raw",
-    );
-    const firstCleaned = progression.trophies.find(
-      ({ stage }) => stage === "cleaned",
-    );
-    const firstMounted = progression.trophies.find(
-      ({ stage }) => stage === "mounted",
-    );
-    const firstFreeSlot = progression.displaySlots.find(
-      ({ claimId }) => claimId === null,
-    );
     const firstEmptyPreset =
       progression.loadoutPresets.find(({ loadout }) => loadout === null) ??
       progression.loadoutPresets[0];
 
     if (activeRoomId === "bridge-map") {
       return [
+        ...(onOpenDeck
+          ? [
+              {
+                id: "explore-physical-deck",
+                label: "Explorer physiquement le vaisseau",
+                detail: "Marcher jusqu’aux consoles, grimper et interagir sur le pont.",
+                run: onOpenDeck,
+              },
+            ]
+          : []),
         {
           id: "open-map",
           label: "Ouvrir la carte galactique",
@@ -426,67 +415,9 @@ export default function ShipHub({
       return [
         {
           id: "open-trophy-ledger",
-          label: "Ouvrir le registre des prises",
-          detail: `${save.trophies.length} trophée(s) rapporté(s).`,
+          label: "Ouvrir l’atelier des trophées",
+          detail: `${save.trophies.length} trophée(s) · nettoyage, montage, exposition et rite se jouent en mini-jeu.`,
           run: onOpenTrophies,
-        },
-        {
-          id: "clean-trophy",
-          label: "Lancer un nettoyage",
-          detail: firstRaw
-            ? `${firstRaw.targetName} · ${formatDuration(firstRaw.requiredCleaningSeconds)}`
-            : "Aucune prise brute en attente.",
-          disabled: !firstRaw,
-          run: () => {
-            if (!firstRaw) return;
-            commitProgression(
-              startTrophyCleaning(
-                progression,
-                firstRaw.claimId,
-              ),
-            );
-            notify(`Nettoyage de ${firstRaw.targetName} lancé.`);
-          },
-        },
-        {
-          id: "mount-trophy",
-          label: "Préparer un montage",
-          detail: firstCleaned
-            ? `${firstCleaned.targetName} · ${formatDuration(firstCleaned.requiredMountingSeconds)}`
-            : "Aucune prise nettoyée en attente.",
-          disabled: !firstCleaned,
-          run: () => {
-            if (!firstCleaned) return;
-            commitProgression(
-              startTrophyMounting(
-                progression,
-                firstCleaned.claimId,
-              ),
-            );
-            notify(`Montage de ${firstCleaned.targetName} lancé.`);
-          },
-        },
-        {
-          id: "display-trophy",
-          label: "Placer dans une alcôve",
-          detail:
-            firstMounted && firstFreeSlot
-              ? `${firstMounted.targetName} · ${firstFreeSlot.label}`
-              : "Aucun trophée monté ou aucune alcôve libre.",
-          disabled: !firstMounted || !firstFreeSlot,
-          run: () => {
-            if (!firstMounted || !firstFreeSlot) return;
-            commitProgression(
-              placeTrophyOnDisplay(
-                progression,
-                firstMounted.claimId,
-                firstFreeSlot.id,
-              ),
-            );
-            notify(
-              `${firstMounted.targetName} exposé dans ${firstFreeSlot.label}.`,
-            );
-          },
         },
       ];
     }
@@ -583,6 +514,7 @@ export default function ShipHub({
     commitProgression,
     notify,
     onApplyLoadout,
+    onOpenDeck,
     onOpenArchives,
     onOpenArmory,
     onOpenCustomization,
@@ -741,6 +673,7 @@ export default function ShipHub({
       aria-labelledby="ship-hub-title"
       aria-describedby="ship-hub-help"
       data-ship-room={activeRoomId}
+      data-screen-focus
       tabIndex={0}
       style={{
         backgroundImage:
@@ -934,7 +867,7 @@ function RoomSummary({
       <>
         <SummaryHeading
           title="Atelier et alcôves"
-          detail="Une prise brute doit être nettoyée puis montée avant exposition."
+          detail="Chaque étape se valide dans l’atelier jouable ; ce registre latéral conserve les anciennes prises et leurs alcôves."
         />
         <div style={styles.cardList}>
           {progression.trophies.length > 0 ? (

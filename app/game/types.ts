@@ -159,9 +159,15 @@ export type DreadTintId = "obsidian" | "umber" | "ashen";
 
 export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
 
+export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
+
 export type TrophyAdornmentId = "none" | "skull-spine";
 
-export type TrophyPartId = "skull" | "skull-and-spine" | "mask";
+export type TrophyPartId =
+  | "skull"
+  | "skull-and-spine"
+  | "mask"
+  | "insignia";
 
 export type TrophyCondition = "damaged" | "intact" | "pristine";
 
@@ -185,6 +191,8 @@ export interface HunterAppearance {
   armorStyleId: HunterArmorStyleId;
   armorTintId: ArmorTintId;
   trophyAdornmentId: TrophyAdornmentId;
+  /** Optional on legacy/preset objects; persistence always supplies a value. */
+  laserColorId?: LaserColorId;
 }
 
 export interface ContentUnlock {
@@ -378,6 +386,8 @@ export interface TrophyDefinition {
   name: string;
   description: string;
   targetName: string;
+  /** Physical object removed during the mission and carried to extraction. */
+  partId: TrophyPartId;
   icon: string;
 }
 
@@ -456,6 +466,12 @@ export interface TrophyRecord extends TrophyClaim {
   difficultyId: DifficultyId;
   score: number;
   claimedAt: string;
+  /** Ritual work is persisted only after at least one workshop mini-game. */
+  workshop?: {
+    completedActions: Array<"clean" | "prepare" | "display" | "rite">;
+    bestScore: number;
+    lastCompletedAt: string;
+  };
 }
 
 export interface MissionProgress {

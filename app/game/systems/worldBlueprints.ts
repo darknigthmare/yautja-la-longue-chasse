@@ -1,9 +1,14 @@
 import type { BiomeId, MissionId } from "../types";
+import {
+  WORLD_SCREEN_WORLD_WIDTH,
+  worldScreensFor,
+  type WorldScreenFeature,
+} from "../worldScreens";
 
 /**
  * Serializable world geometry for the side-scrolling hunt runtime.
  *
- * Coordinates deliberately use the same 5_600 x 720 space and 624 px floor
+ * Coordinates use the same 8_400 x 720 space and 624 px floor
  * as HuntCanvas. Nothing in this module depends on Canvas, React or browser
  * globals, so the same blueprints can drive simulation, debug overlays and
  * tests.
@@ -157,7 +162,7 @@ export interface WindProfile {
 export interface WorldBlueprint {
   missionId: MissionId;
   biome: BiomeId;
-  width: 5_600;
+  width: number;
   height: 720;
   floorY: 624;
   spawn: WorldPoint;
@@ -173,7 +178,7 @@ export interface WorldBlueprint {
   trapSockets: readonly TrapSocket[];
 }
 
-const JUNGLE_WORLD: WorldBlueprint = {
+const JUNGLE_WORLD_BASE: WorldBlueprint = {
   missionId: "jungle-vey",
   biome: "jungle",
   width: 5_600,
@@ -243,7 +248,7 @@ const JUNGLE_WORLD: WorldBlueprint = {
   ],
 };
 
-const ICE_WORLD: WorldBlueprint = {
+const ICE_WORLD_BASE: WorldBlueprint = {
   missionId: "ice-cryostalker",
   biome: "ice",
   width: 5_600,
@@ -314,7 +319,7 @@ const ICE_WORLD: WorldBlueprint = {
   ],
 };
 
-const VOLCANO_WORLD: WorldBlueprint = {
+const VOLCANO_WORLD_BASE: WorldBlueprint = {
   missionId: "volcano-bad-blood",
   biome: "volcano",
   width: 5_600,
@@ -384,6 +389,336 @@ const VOLCANO_WORLD: WorldBlueprint = {
     { id: "v-trap-arena", x: 4_675, y: 610, routeId: "sanctum-floor", allowed: ["snare", "audio-decoy", "netgun"], facing: -1, concealment: 0.35 },
   ],
 };
+
+const BASE_WORLD_WIDTH = 5_600;
+
+interface FeatureGeometry {
+  platforms: WorldPlatform[];
+  climbables: WorldClimbable[];
+  hazards: WorldHazard[];
+  covers: CoverNode[];
+  surfaces: TrackSurface[];
+}
+
+function scalePoint<T extends WorldPoint>(
+  point: T,
+  horizontalScale: number,
+): T {
+  return { ...point, x: point.x * horizontalScale };
+}
+
+function scaleRect<T extends WorldRect>(
+  rect: T,
+  horizontalScale: number,
+): T {
+  return {
+    ...rect,
+    x: rect.x * horizontalScale,
+    width: rect.width * horizontalScale,
+  };
+}
+
+/**
+ * Preserve the authored 720 px vertical composition while expanding every
+ * horizontal gameplay coordinate. This moves extraction, arenas, routes and
+ * collision spans together instead of appending an empty decorative tail.
+ */
+function expandBaseBlueprint(base: WorldBlueprint): WorldBlueprint {
+  const horizontalScale = WORLD_SCREEN_WORLD_WIDTH / BASE_WORLD_WIDTH;
+  return {
+    ...base,
+    width: WORLD_SCREEN_WORLD_WIDTH,
+    spawn: scalePoint(base.spawn, horizontalScale),
+    extraction: scalePoint(base.extraction, horizontalScale),
+    bossArena: scaleRect(base.bossArena, horizontalScale),
+    platforms: base.platforms.map((platform) =>
+      scaleRect(platform, horizontalScale),
+    ),
+    climbables: base.climbables.map((climbable) => ({
+      ...scaleRect(climbable, horizontalScale),
+      dismounts: climbable.dismounts.map((point) =>
+        scalePoint(point, horizontalScale),
+      ),
+    })),
+    hazards: base.hazards.map((hazard) =>
+      scaleRect(hazard, horizontalScale),
+    ),
+    covers: base.covers.map((cover) => scaleRect(cover, horizontalScale)),
+    surfaces: base.surfaces.map((surface) =>
+      scaleRect(surface, horizontalScale),
+    ),
+    routes: base.routes.map((route) => ({
+      ...route,
+      startX: route.startX * horizontalScale,
+      endX: route.endX * horizontalScale,
+    })),
+    trapSockets: base.trapSockets.map((socket) =>
+      scalePoint(socket, horizontalScale),
+    ),
+  };
+}
+
+function routeForFeature(
+  biome: BiomeId,
+  item: WorldScreenFeature,
+): RouteId {
+  if (biome === "jungle") {
+    if (item.role === "climb") return "canopy";
+    if (item.role === "water") return "flooded-cut";
+    return "ground";
+  }
+  if (biome === "ice") {
+    if (
+      item.kind === "metal-gantry" ||
+      item.kind === "ladder" ||
+      item.kind === "rope"
+    ) {
+      return "mining-gantry";
+    }
+    if (item.role === "climb") return "glacial-caves";
+    return "ice-surface";
+  }
+  if (item.kind === "steam-vent") return "vent-flank";
+  if (
+    item.role === "climb" ||
+    item.kind === "ruin" ||
+    item.kind === "chain"
+  ) {
+    return "ruin-highline";
+  }
+  return "sanctum-floor";
+}
+
+function materialForFeature(
+  biome: BiomeId,
+  item: WorldScreenFeature,
+): SurfaceMaterial {
+  if (item.kind === "metal-gantry" || item.kind === "ladder") return "metal";
+  if (item.kind === "ruin") return "ruin";
+  if (item.kind === "basalt-column" || item.kind === "lava") return "basalt";
+  if (item.kind === "mud") return biome === "volcano" ? "ash" : "mud";
+  if (item.kind === "water") return "water";
+  if (item.kind === "snowdrift") return "snow";
+  if (item.kind === "thin-ice" || item.kind === "ice-wall") return "ice";
+  if (biome === "jungle") return item.kind === "platform" ? "root" : "soil";
+  if (biome === "ice") return "ice";
+  return "basalt";
+}
+
+function boundedFeatureX(
+  anchorX: number,
+  width: number,
+  worldWidth: number,
+): number {
+  return Math.max(0, Math.min(worldWidth - width, anchorX - width / 2));
+}
+
+function featureVariant(id: string): number {
+  return [...id].reduce((sum, character) => sum + character.charCodeAt(0), 0) % 3;
+}
+
+function climbableKind(item: WorldScreenFeature): ClimbableKind {
+  switch (item.kind) {
+    case "tree":
+    case "vine":
+    case "ice-wall":
+    case "ladder":
+    case "rope":
+    case "chain":
+    case "basalt-column":
+      return item.kind;
+    default:
+      return "rock-face";
+  }
+}
+
+/** Convert every room-plan feature into geometry consumed by HuntCanvas. */
+function geometryForScreenFeatures(
+  missionId: MissionId,
+  worldWidth: number,
+  floorY: number,
+): FeatureGeometry {
+  const layout = worldScreensFor(missionId);
+  const result: FeatureGeometry = {
+    platforms: [],
+    climbables: [],
+    hazards: [],
+    covers: [],
+    surfaces: [],
+  };
+
+  for (const item of layout.screens.flatMap((screen) => screen.features)) {
+    const id = `feature-${item.id}`;
+    const routeId = routeForFeature(layout.biome, item);
+    const material = materialForFeature(layout.biome, item);
+    const variant = featureVariant(item.id);
+
+    if (item.role === "platform") {
+      const width = item.kind === "metal-gantry" ? 340 : item.kind === "ruin" ? 300 : 270;
+      const y = [512, 430, 366][variant];
+      result.platforms.push({
+        id,
+        x: boundedFeatureX(item.x, width, worldWidth),
+        y,
+        width,
+        height: item.kind === "ruin" ? 28 : 24,
+        material,
+        routeId,
+        collision: "one-way",
+        noiseMultiplier: material === "metal" ? 1.6 : material === "root" ? 0.7 : 1.05,
+        trackPersistence: material === "root" ? 0.28 : material === "ice" ? 1.25 : 0.08,
+      });
+      continue;
+    }
+
+    if (item.role === "climb") {
+      const kind = climbableKind(item);
+      const flexible = kind === "vine" || kind === "rope" || kind === "chain";
+      const width = flexible ? 64 : kind === "ladder" ? 68 : 112;
+      const y = flexible ? 166 + variant * 20 : 220 - variant * 24;
+      const height = floorY - y;
+      const x = boundedFeatureX(item.x, width, worldWidth);
+      result.climbables.push({
+        id,
+        x,
+        y,
+        width,
+        height,
+        kind,
+        routeId,
+        climbSpeedMultiplier: kind === "ladder" ? 1.08 : flexible ? 0.84 : 0.78,
+        staminaPerSecond: kind === "ladder" ? 2 : flexible ? 4 : 6,
+        dismounts: [
+          { x: Math.max(0, x - 36), y: floorY },
+          { x: Math.min(worldWidth, x + width + 36), y },
+        ],
+      });
+      continue;
+    }
+
+    if (item.role === "hazard") {
+      const kind: HazardKind =
+        item.kind === "lava"
+          ? "lava"
+          : item.kind === "steam-vent"
+            ? "steam-vent"
+            : "thin-ice";
+      const vertical = kind === "steam-vent";
+      const width = vertical ? 250 : kind === "lava" ? 360 : 330;
+      const y = vertical ? 310 : 590;
+      const height = vertical ? floorY - y : floorY - y;
+      result.hazards.push({
+        id,
+        x: boundedFeatureX(item.x, width, worldWidth),
+        y,
+        width,
+        height,
+        kind,
+        routeId,
+        damagePerSecond: kind === "lava" ? 34 : kind === "steam-vent" ? 15 : 14,
+        movementMultiplier: kind === "lava" ? 0.35 : kind === "steam-vent" ? 0.74 : 0.7,
+        noisePerSecond: kind === "steam-vent" ? 0.72 : 0.62,
+        trackMultiplier: kind === "thin-ice" ? 1.6 : 0.1,
+        revealsCloak: kind !== "thin-ice",
+        telegraphSeconds: kind === "lava" ? 0 : kind === "steam-vent" ? 1 : 1.1,
+        cycle:
+          kind === "steam-vent"
+            ? { periodSeconds: 6.5, activeSeconds: 1.8, phaseSeconds: variant }
+            : kind === "thin-ice"
+              ? { periodSeconds: 9, activeSeconds: 2.2, phaseSeconds: variant }
+              : null,
+      });
+      continue;
+    }
+
+    if (item.role === "cover") {
+      const width = item.kind === "tree" || item.kind === "basalt-column" ? 118 : 132;
+      const height = item.kind === "snowdrift" ? 76 : 154 + variant * 24;
+      result.covers.push({
+        id,
+        x: boundedFeatureX(item.x, width, worldWidth),
+        y: floorY - height,
+        width,
+        height,
+        routeId,
+        protection: item.kind === "snowdrift" ? 0.68 : 0.88,
+        approach: "either",
+        destructible: item.kind !== "basalt-column",
+      });
+      continue;
+    }
+
+    const isWater = item.role === "water";
+    const width = isWater ? 420 : 340;
+    const y = isWater ? 570 : 584;
+    result.surfaces.push({
+      id,
+      x: boundedFeatureX(item.x, width, worldWidth),
+      y,
+      width,
+      height: floorY - y,
+      material,
+      footprintPersistenceSeconds: isWater ? 0 : material === "mud" ? 92 : 76,
+      scentRetention: isWater ? 0.15 : material === "mud" ? 1.45 : 0.3,
+      movementMultiplier: isWater ? 0.62 : material === "mud" ? 0.58 : 0.9,
+      baseNoise: isWater ? 0.56 : material === "mud" ? 0.42 : 0.3,
+      mudDepth: material === "mud" ? 0.82 : isWater ? 0.28 : 0,
+    });
+  }
+
+  return result;
+}
+
+function rectsOverlap(left: WorldRect, right: WorldRect): boolean {
+  return (
+    left.x < right.x + right.width &&
+    left.x + left.width > right.x &&
+    left.y < right.y + right.height &&
+    left.y + left.height > right.y
+  );
+}
+
+function buildPlayableWorld(base: WorldBlueprint): WorldBlueprint {
+  const expanded = expandBaseBlueprint(base);
+  const features = geometryForScreenFeatures(
+    expanded.missionId,
+    expanded.width,
+    expanded.floorY,
+  );
+  // A room feature replaces an overlapping legacy hazard of the same kind.
+  // Keeping both made lava/ice/steam inflict their DPS twice in one footprint.
+  const hazardReplacements = new Map<string, string>();
+  const legacyHazards = expanded.hazards.filter((hazard) => {
+    const replacement = features.hazards.find(
+      (featureHazard) =>
+        featureHazard.kind === hazard.kind &&
+        rectsOverlap(featureHazard, hazard),
+    );
+    if (!replacement) return true;
+    hazardReplacements.set(hazard.id, replacement.id);
+    return false;
+  });
+  return {
+    ...expanded,
+    platforms: [...expanded.platforms, ...features.platforms],
+    climbables: [...expanded.climbables, ...features.climbables],
+    hazards: [...legacyHazards, ...features.hazards],
+    covers: [...expanded.covers, ...features.covers],
+    // Feature surfaces come last; HuntCanvas resolves the most-specific match
+    // from the end so lakes, mud and snowdrifts override the broad base strip.
+    surfaces: [...expanded.surfaces, ...features.surfaces],
+    routes: expanded.routes.map((route) => ({
+      ...route,
+      waypointIds: route.waypointIds.map(
+        (waypointId) => hazardReplacements.get(waypointId) ?? waypointId,
+      ),
+    })),
+  };
+}
+
+const JUNGLE_WORLD = buildPlayableWorld(JUNGLE_WORLD_BASE);
+const ICE_WORLD = buildPlayableWorld(ICE_WORLD_BASE);
+const VOLCANO_WORLD = buildPlayableWorld(VOLCANO_WORLD_BASE);
 
 export const WORLD_BLUEPRINTS_BY_MISSION: Readonly<
   Record<MissionId, WorldBlueprint>

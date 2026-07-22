@@ -10,7 +10,7 @@
     "build": "vinext build",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
-    "qa": "npm run lint && npm run film-plates:build && npm run build && npm run film-plates:audit && node --test tests/*.test.mjs",
+    "qa": "npm run lint && npm run film-plates:build && npm run build && npm run film-plates:audit && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "film-plates:build": "node scripts/build-film-plate-prompt-pack.mjs",
     "film-plates:audit": "node scripts/audit-film-plates.mjs",

@@ -8,6 +8,7 @@ import type {
   ArmorId,
   GearId,
   HunterAppearance,
+  LaserColorId,
   WeaponId,
 } from "./types";
 import {
@@ -81,6 +82,14 @@ const ARMOR_FILTER: Record<HunterAppearance["armorTintId"], string> = {
   gunmetal: "brightness(1)",
   bronze: "sepia(.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)",
   obsidian: "saturate(.68) brightness(.58) contrast(1.2)",
+};
+
+const LASER_COLORS: Readonly<Record<LaserColorId, { solid: string; fade: string; shadow: string }>> = {
+  crimson: { solid: "rgb(255 48 42)", fade: "rgb(255 48 42 / .06)", shadow: "rgb(255 48 42 / .82)" },
+  electric: { solid: "rgb(41 137 255)", fade: "rgb(41 137 255 / .06)", shadow: "rgb(41 137 255 / .82)" },
+  amber: { solid: "rgb(255 177 43)", fade: "rgb(255 177 43 / .06)", shadow: "rgb(255 177 43 / .82)" },
+  violet: { solid: "rgb(184 71 255)", fade: "rgb(184 71 255 / .06)", shadow: "rgb(184 71 255 / .82)" },
+  cyan: { solid: "rgb(64 239 255)", fade: "rgb(64 239 255 / .06)", shadow: "rgb(64 239 255 / .82)" },
 };
 
 const ARMOR_LABEL: Record<ArmorId, string> = {
@@ -484,6 +493,7 @@ export function HunterRigPreview({
     x: muzzle.x + Math.cos(resolvedAimAngle) * reticleDistance,
     y: muzzle.y + Math.sin(resolvedAimAngle) * reticleDistance,
   };
+  const laserColor = LASER_COLORS[appearance.laserColorId ?? "crimson"];
 
   return (
     <div
@@ -826,9 +836,8 @@ export function HunterRigPreview({
               top: cssPercentage(muzzle.y, HUNTER_RIG_CANVAS.height),
               width: "50%",
               height: 2,
-              background:
-                "linear-gradient(90deg, rgb(255 48 42 / .92), rgb(255 48 42 / .06))",
-              boxShadow: "0 0 6px rgb(255 49 41 / .82)",
+              background: `linear-gradient(90deg, ${laserColor.solid}, ${laserColor.fade})`,
+              boxShadow: `0 0 6px ${laserColor.shadow}`,
               transform: `rotate(${resolvedAimAngle}rad)`,
               transformOrigin: "left center",
             }}
@@ -843,10 +852,9 @@ export function HunterRigPreview({
               top: cssPercentage(reticle.y, HUNTER_RIG_CANVAS.height),
               width: "8%",
               aspectRatio: "1",
-              border: "2px solid #ff3b34",
+              border: `2px solid ${laserColor.solid}`,
               borderRadius: "50%",
-              boxShadow:
-                "0 0 0 1px rgb(15 0 0 / .75), 0 0 9px rgb(255 48 42 / .76)",
+              boxShadow: `0 0 0 1px rgb(0 0 0 / .75), 0 0 9px ${laserColor.shadow}`,
               translate: "-50% -50%",
               animation: "hunter-rig-v3-reticle 1.25s ease-in-out infinite",
             }}

@@ -1842,6 +1842,20 @@ select:focus-visible,
   color: var(--bone);
 }
 
+.hunter-preset-kit {
+  grid-column: 2 / -1;
+  padding-top: 12px;
+  border-top: 1px solid rgba(214, 166, 91, 0.14);
+}
+
+.hunter-preset-dossier:not(.has-plate) .hunter-preset-kit {
+  grid-column: 1 / -1;
+}
+
+.hunter-preset-dossier .hunter-preset-runtime-warning {
+  color: #d8a35c;
+}
+
 .appearance-option {
   position: relative;
   display: grid;
@@ -2707,6 +2721,10 @@ select:focus-visible,
     grid-template-columns: 1fr;
   }
 
+  .hunter-preset-kit {
+    grid-column: 1 / -1;
+  }
+
   .appearance-options {
     grid-template-columns: 1fr;
   }
@@ -2814,6 +2832,840 @@ select:focus-visible,
 
   .hub-action {
     padding: 10px 14px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Extension V6 · galaxie, pont jouable, catalogue et atelier de trophées
+   ------------------------------------------------------------------------- */
+
+.briefing-visual > .target-cutout {
+  top: 5%;
+  right: 2%;
+  bottom: 14%;
+  left: 38%;
+  width: 60%;
+  max-width: 60%;
+  height: 81%;
+  max-height: 81%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.trophy-art {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.trophy-art img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.physical-deck-screen {
+  background:
+    linear-gradient(rgba(2, 7, 6, 0.78), rgba(2, 7, 6, 0.9)),
+    url("/game/backgrounds/armory-war-room-v6.png") center / cover fixed;
+}
+
+.physical-deck-back {
+  margin-bottom: 14px;
+}
+
+.physical-medbay-entry {
+  min-height: 100svh;
+  background: #020706;
+}
+
+.physical-medbay-entry__back {
+  position: absolute;
+  z-index: 13;
+  top: 88px;
+  left: clamp(12px, 3.2vw, 52px);
+}
+
+.physical-medbay-entry > .hub-screen .hub-stage {
+  padding-top: clamp(8.7rem, 12vw, 10rem);
+}
+
+.physical-ship-deck__viewport {
+  scrollbar-color: rgba(112, 244, 207, 0.56) rgba(2, 8, 7, 0.92);
+  scrollbar-width: thin;
+}
+
+.physical-ship-deck__station-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.physical-ship-deck__station-shortcuts button {
+  display: grid;
+  min-width: 0;
+  min-height: 48px;
+  gap: 3px;
+  padding: 8px;
+  border: 1px solid rgba(112, 244, 207, 0.24);
+  background: rgba(6, 23, 20, 0.9);
+  color: #a6c7bc;
+  text-align: left;
+}
+
+.physical-ship-deck__station-shortcuts button[aria-current="location"] {
+  border-color: #ffb85c;
+  color: #ffe1a4;
+  box-shadow: inset 3px 0 0 #ffb85c;
+}
+
+.physical-ship-deck__station-shortcuts strong {
+  overflow-wrap: anywhere;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+}
+
+.physical-ship-deck__station-shortcuts span {
+  color: #6f8179;
+  font-size: 0.58rem;
+}
+
+.armory-war-room {
+  position: relative;
+  display: grid;
+  min-height: clamp(430px, 54vw, 680px);
+  margin-bottom: clamp(22px, 4vw, 48px);
+  overflow: hidden;
+  border: 1px solid rgba(214, 166, 91, 0.28);
+  background: #040706;
+  box-shadow: inset 0 -100px 120px rgba(0, 0, 0, 0.8);
+  isolation: isolate;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+  align-items: end;
+}
+
+.armory-war-room::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.75), transparent 54%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.96), transparent 60%);
+}
+
+.armory-war-room-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.armory-war-room-copy {
+  align-self: end;
+  max-width: 580px;
+  padding: clamp(20px, 4vw, 48px);
+}
+
+.armory-war-room-copy h2 {
+  margin: 8px 0 10px;
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.8rem);
+  text-transform: uppercase;
+}
+
+.armory-war-room-copy > p:last-child {
+  color: #aab4aa;
+  line-height: 1.6;
+}
+
+.armory-atlas-shelves {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: auto;
+  max-height: 610px;
+  margin: clamp(12px, 2vw, 28px);
+  padding: 12px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(180px, 0.75fr);
+  gap: 14px;
+  overflow: auto;
+  border: 1px solid rgba(112, 244, 207, 0.18);
+  background: rgba(2, 9, 8, 0.78);
+  backdrop-filter: blur(7px);
+}
+
+.armory-atlas-shelves h3,
+.visual-codex-gallery h2 {
+  margin: 0 0 9px;
+  color: #d7c9ad;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.armory-module-rack {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.armory-mask-rack {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.armory-atlas-shelves figure,
+.laser-rank-atlas {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(112, 244, 207, 0.25);
+  background: rgba(2, 9, 8, 0.86);
+}
+
+.armory-atlas-shelves > figure > img,
+.laser-rank-atlas > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+}
+
+.armory-atlas-shelves figcaption,
+.laser-rank-atlas figcaption {
+  padding: 7px 9px;
+  color: #93bcae;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.laser-rank-atlas {
+  flex: 1 1 100%;
+}
+
+.visual-codex-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.visual-codex-gallery > article {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(112, 244, 207, 0.18);
+  background: rgba(4, 10, 8, 0.72);
+}
+
+.visual-codex-sprite-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.visual-codex-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(112, 244, 207, 0.18);
+  background: linear-gradient(145deg, #101713, #030605);
+}
+
+.visual-codex-gallery > figure > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+}
+
+.equipment-card-visuals {
+  display: grid;
+  min-height: 86px;
+  margin: 4px 0 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  align-items: center;
+}
+
+.equipment-card-visuals > span:only-child {
+  grid-column: 1 / -1;
+  width: min(72%, 130px) !important;
+  justify-self: center;
+}
+
+.appearance-option-art > span,
+.trophy-art > span {
+  width: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.visual-codex-gallery figcaption {
+  padding: 9px;
+  border-top: 1px solid rgba(112, 244, 207, 0.12);
+  color: #8fa99e;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.galaxy-navigation-screen {
+  overflow: hidden auto;
+  background:
+    radial-gradient(circle at 27% 22%, rgba(53, 119, 113, 0.2), transparent 28%),
+    radial-gradient(circle at 76% 68%, rgba(146, 55, 35, 0.18), transparent 25%),
+    #020605;
+}
+
+.galaxy-map-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(160px, 28%);
+  gap: clamp(14px, 3vw, 34px);
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.galaxy-map-header h1 {
+  margin: 4px 0 8px;
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 4.6rem);
+  text-transform: uppercase;
+}
+
+.galaxy-map-header > div > p:last-child {
+  max-width: 760px;
+  color: #89958d;
+  line-height: 1.55;
+}
+
+.galaxy-ship-marker {
+  height: 130px;
+  margin: 0;
+  overflow: hidden;
+  border-left: 1px solid rgba(112, 244, 207, 0.2);
+}
+
+.galaxy-ship-marker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 8%;
+}
+
+.galaxy-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.galaxy-breadcrumbs button {
+  padding: 8px 10px;
+  border: 1px solid rgba(112, 244, 207, 0.2);
+  background: rgba(9, 27, 24, 0.65);
+  color: #72877e;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.galaxy-breadcrumbs button[aria-current="page"] {
+  border-color: rgba(255, 184, 92, 0.7);
+  color: #ffcf8b;
+}
+
+.galaxy-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(310px, 0.68fr);
+  min-height: 650px;
+  border: 1px solid rgba(112, 244, 207, 0.18);
+  background: rgba(1, 6, 5, 0.76);
+}
+
+.galaxy-chart {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  outline: none;
+  background:
+    radial-gradient(circle at center, rgba(112, 244, 207, 0.09), transparent 33%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.5px) 0 0 / 54px 54px,
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 0 1px, transparent 1.5px) 17px 28px / 77px 77px;
+}
+
+.galaxy-chart:focus-visible {
+  outline: 2px solid rgba(255, 213, 138, 0.88);
+  outline-offset: -3px;
+}
+
+.galaxy-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(112, 244, 207, 0.12);
+  border-radius: 50%;
+  translate: -50% -50%;
+}
+
+.galaxy-orbit.orbit-a { width: 42%; aspect-ratio: 1; }
+.galaxy-orbit.orbit-b { width: 78%; aspect-ratio: 1; }
+
+.galaxy-node {
+  position: absolute;
+  top: var(--node-y);
+  left: var(--node-x);
+  display: grid;
+  width: clamp(120px, 18vw, 220px);
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--node-accent), transparent 50%);
+  background: rgba(3, 13, 11, 0.92);
+  color: #b5c4ba;
+  text-align: left;
+  translate: -50% -50%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.56);
+}
+
+.galaxy-node-core {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 8px;
+  border: 3px solid var(--node-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 16px var(--node-accent);
+}
+
+.galaxy-node strong {
+  color: #e3ebdf;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.galaxy-node small {
+  margin-top: 5px;
+  color: #718078;
+  font-size: 0.58rem;
+  line-height: 1.4;
+}
+
+.galaxy-node.selected,
+.galaxy-node:focus-visible {
+  z-index: 3;
+  border-color: var(--node-accent);
+  outline: 2px solid color-mix(in srgb, var(--node-accent), white 28%);
+  outline-offset: 3px;
+  scale: 1.05;
+}
+
+.galaxy-node.locked {
+  opacity: 0.55;
+  filter: grayscale(0.65);
+}
+
+.galaxy-selection-panel {
+  padding: clamp(18px, 3vw, 32px);
+  border-left: 1px solid rgba(112, 244, 207, 0.18);
+  background: linear-gradient(145deg, rgba(14, 24, 20, 0.94), rgba(4, 8, 7, 0.98));
+}
+
+.galaxy-selection-panel h2 {
+  margin: 6px 0 14px;
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 2.3rem);
+  text-transform: uppercase;
+}
+
+.galaxy-selection-panel > img,
+.galaxy-mission-visual {
+  width: 100%;
+  margin: 12px 0 16px;
+  border: 1px solid rgba(214, 166, 91, 0.2);
+}
+
+.galaxy-selection-panel > img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.galaxy-rank-atlas {
+  object-fit: contain !important;
+  background: #030706;
+}
+
+.galaxy-mission-visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.galaxy-mission-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.galaxy-mission-visual span {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 5px 7px;
+  background: rgba(0, 0, 0, 0.78);
+  color: #ff9a77;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.galaxy-mission-stats {
+  display: grid;
+  gap: 7px;
+  margin: 18px 0;
+}
+
+.galaxy-mission-stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.galaxy-mission-stats dt { color: #69746e; }
+.galaxy-mission-stats dd { margin: 0; color: #d8ddcf; text-align: right; }
+
+.catalogueHunterBrowser {
+  grid-column: 1 / -1;
+  flex: 1 1 100%;
+  width: 100%;
+  min-width: 0;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(214, 166, 91, 0.18);
+}
+
+.catalogueHunterBrowser__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+}
+
+.catalogueHunterBrowser__header h2 {
+  margin: 5px 0 0;
+  color: var(--bone);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__eyebrow,
+.catalogueHunterBrowser__summary,
+.catalogueHunterBrowser__resultCount {
+  color: #86a99d;
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__provenance {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(215, 168, 91, 0.2);
+  background: rgba(90, 58, 25, 0.13);
+  color: #b9aa91;
+  font-size: 0.58rem;
+  line-height: 1.55;
+}
+
+.catalogueHunterBrowser__filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.7fr) repeat(3, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 18px 0 10px;
+}
+
+.catalogueHunterBrowser__filter {
+  display: grid;
+  gap: 5px;
+}
+
+.catalogueHunterBrowser__filter label {
+  color: #7c887f;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__filter input,
+.catalogueHunterBrowser__filter select {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid rgba(112, 244, 207, 0.2);
+  border-radius: 0;
+  background: #08100d;
+  color: #d5ddd2;
+}
+
+.catalogueHunterBrowser__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.catalogueHunterBrowser__card {
+  display: flex;
+  min-width: 0;
+  min-height: 310px;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid rgba(214, 166, 91, 0.13);
+  background: linear-gradient(145deg, rgba(18, 25, 21, 0.96), rgba(6, 9, 8, 0.98));
+}
+
+.catalogueHunterBrowser__card[data-selected="true"] {
+  border-color: #70f4cf;
+  box-shadow: inset 0 0 30px rgba(112, 244, 207, 0.08);
+}
+
+.catalogueHunterBrowser__cardHeader,
+.catalogueHunterBrowser__actions,
+.catalogueHunterBrowser__pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catalogueHunterBrowser__id,
+.catalogueHunterBrowser__status {
+  color: #a6834b;
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__card h3 {
+  margin: 10px 0 4px;
+  overflow-wrap: anywhere;
+  color: #e9e1ce;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__work,
+.catalogueHunterBrowser__notes,
+.catalogueHunterBrowser__warning {
+  color: #7c877f;
+  font-size: 0.62rem;
+  line-height: 1.5;
+}
+
+.catalogueHunterBrowser__details {
+  display: grid;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.catalogueHunterBrowser__details div {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 6px;
+}
+
+.catalogueHunterBrowser__details dt { color: #5c6861; font-size: 0.58rem; }
+.catalogueHunterBrowser__details dd { margin: 0; color: #a5ada6; font-size: 0.58rem; overflow-wrap: anywhere; }
+.catalogueHunterBrowser__warning { color: #d7a85b; }
+
+.catalogueHunterBrowser__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 4px 0 10px;
+  font-size: 0.56rem;
+}
+
+.catalogueHunterBrowser__sourcesLabel {
+  color: #69746e;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__sources a {
+  padding: 4px 6px;
+  border: 1px solid rgba(112, 244, 207, 0.2);
+  color: #9bd6c3;
+  text-decoration: none;
+}
+
+.catalogueHunterBrowser__sources a:hover,
+.catalogueHunterBrowser__sources a:focus-visible {
+  border-color: #70f4cf;
+  color: #e4fff6;
+}
+
+.catalogueHunterBrowser__sourceMissing {
+  color: #c39265;
+  overflow-wrap: anywhere;
+}
+
+.catalogueHunterBrowser__actions { margin-top: auto; padding-top: 12px; }
+
+.catalogueHunterBrowser__actions button,
+.catalogueHunterBrowser__pagination button,
+.trophy-workshop-actions button {
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid rgba(112, 244, 207, 0.26);
+  background: rgba(20, 60, 48, 0.2);
+  color: #b9d7cc;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__readOnly { color: #626b65; font-size: 0.6rem; }
+
+.catalogueHunterBrowser__pagination {
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.catalogueHunterBrowser__pagination span { color: #879188; font-size: 0.65rem; }
+
+.trophy-workshop-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.trophy-workshop-actions button.completed {
+  border-color: rgba(214, 166, 91, 0.6);
+  color: #f0cd87;
+}
+
+.trophy-workshop-actions button:disabled {
+  opacity: 0.35;
+}
+
+@media (max-width: 1050px) {
+  .galaxy-map-layout { grid-template-columns: 1fr; }
+  .galaxy-selection-panel { border-top: 1px solid rgba(112, 244, 207, 0.18); border-left: 0; }
+  .catalogueHunterBrowser__filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .catalogueHunterBrowser__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .armory-atlas-shelves { position: relative; right: auto; bottom: auto; width: auto; margin: 0 20px 20px; }
+}
+
+@media (max-width: 760px) {
+  .briefing-visual > .target-cutout {
+    top: 6%;
+    right: 1%;
+    bottom: 19%;
+    left: 30%;
+    width: 69%;
+    max-width: 69%;
+    height: 75%;
+    max-height: 75%;
+    opacity: 0.88;
+  }
+  .galaxy-map-header { grid-template-columns: auto minmax(0, 1fr); }
+  .galaxy-ship-marker { display: none; }
+  .galaxy-chart { min-height: 520px; }
+  .galaxy-map-layout { min-height: 0; }
+  .galaxy-node {
+    left: clamp(23%, var(--node-x), 77%);
+    width: min(40vw, 160px);
+    padding: 9px;
+  }
+  .physical-ship-deck__map {
+    min-width: 52rem !important;
+    min-height: 27rem !important;
+  }
+  .physical-ship-deck__station-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .catalogueHunterBrowser__header { align-items: flex-start; flex-direction: column; }
+  .catalogueHunterBrowser__filters,
+  .catalogueHunterBrowser__grid { grid-template-columns: 1fr; }
+  .catalogueHunterBrowser__actions button,
+  .catalogueHunterBrowser__pagination button,
+  .trophy-workshop-actions button { min-height: 44px; }
+  .armory-war-room {
+    display: block;
+    min-height: 0;
+    padding-top: 56.28%;
+  }
+  .armory-war-room-background {
+    height: auto;
+    aspect-ratio: 1672 / 941;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .armory-war-room-copy {
+    position: relative;
+    max-width: none;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(4, 7, 6, 0.94), rgba(4, 7, 6, 0.76));
+  }
+  .armory-atlas-shelves { grid-template-columns: 1fr; }
+  .visual-codex-gallery { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 440px) {
+  .physical-medbay-entry__back {
+    right: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .physical-medbay-entry > .hub-screen .hub-stage {
+    padding-top: 9.5rem;
+  }
+
+  .physical-ship-deck__touch-controls {
+    justify-content: center !important;
+  }
+
+  .trophy-workshop-backdrop {
+    padding: 8px !important;
+  }
+
+  .trophy-workshop-panel {
+    max-height: calc(100dvh - 16px) !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .trophy-workshop-header {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .trophy-workshop-cancel {
+    width: 100%;
+    min-height: 44px !important;
+  }
+
+  .trophy-workshop-work-area {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 12px !important;
+  }
+
+  .trophy-workshop-timing-legend {
+    gap: 4px !important;
+    font-size: 0.5rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .trophy-workshop-touch-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 

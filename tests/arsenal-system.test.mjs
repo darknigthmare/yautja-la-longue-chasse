@@ -11,6 +11,7 @@ const outputDirectory = await mkdtemp(join(tmpdir(), "yautja-arsenal-"));
 
 await build({
   configFile: false,
+  publicDir: false,
   logLevel: "silent",
   build: {
     emptyOutDir: true,

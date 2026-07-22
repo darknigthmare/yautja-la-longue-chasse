@@ -6,6 +6,43 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HuntCanvas from "./HuntCanvas";
 import ShipHub from "./ShipHub";
+import V6AtlasSprite from "./V6AtlasSprite";
+import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
+import GalaxyMapPanel from "./GalaxyMapPanel";
+import PhysicalShipDeck from "./PhysicalShipDeck";
+import TrophyWorkshop from "./TrophyWorkshop";
+import {
+  createGalaxyNavigationState,
+  type GalaxyNavigationState,
+} from "./galaxyNavigation";
+import {
+  referencePresetForCatalogueEntry,
+  type CataloguePlayableSelection,
+} from "./catalogueAppearance";
+import type {
+  CatalogueStableId,
+  CatalogueYautjaEntry,
+} from "./catalogueRoster";
+import type {
+  TrophyWorkshopAction,
+  TrophyWorkshopResult,
+} from "./systems/trophyWorkshop";
+import {
+  V6_ALL_VISUAL_IDS,
+  V6_ARMORY_RACK_ORDER,
+  V6_GEAR_VISUAL_BY_ID,
+  V6_LASER_VISUAL_BY_COLOR_ID,
+  V6_MASK_VISUAL_BY_ID,
+  V6_PLASMA_CASTER_ASSEMBLY,
+  V6_PREY_GALLERY_ORDER,
+  V6_RANK_AND_CASTE_ORDER,
+  V6_RANK_VISUAL_BY_ID,
+  V6_SHIP_VISUAL_BY_ROLE,
+  V6_VISUAL_CELLS,
+  V6_WEAPON_VISUAL_BY_ID,
+  resolveV6TrophyVisualId,
+  type V6VisualId,
+} from "./v6Visuals";
 import {
   HUNTER_EXPANDED_PRESETS,
   HUNTER_FILM_GROUPS,
@@ -13,6 +50,8 @@ import {
   HUNTER_PRESETS,
   appearanceForPreset,
   hunterFilmPlatePath,
+  loadoutForPreset,
+  playableKitForPreset,
   type HunterLorePresetId,
   type HunterMedia,
   type HunterPresetDefinition,
@@ -63,6 +102,7 @@ import type {
   HunterArmorStyleId,
   HunterBodyMorphId,
   HunterSkinId,
+  LaserColorId,
   Loadout,
   MissionDefinition,
   MissionResult,
@@ -73,6 +113,8 @@ import type {
 type Screen =
   | "title"
   | "ship"
+  | "deck"
+  | "medbay"
   | "map"
   | "armory"
   | "customization"
@@ -81,6 +123,13 @@ type Screen =
   | "briefing"
   | "mission"
   | "debrief";
+
+type MapReturnScreen = Extract<Screen, "ship" | "deck">;
+type StationScreen = Extract<
+  Screen,
+  "armory" | "customization" | "trophies" | "codex" | "medbay"
+>;
+type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing">;
 
 const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
 
@@ -368,6 +417,33 @@ const ARMOR_TINT_OPTIONS: ReadonlyArray<{
   { id: "obsidian", label: "Obsidienne", swatch: "#272b31" },
 ];
 
+const LASER_COLOR_OPTIONS: ReadonlyArray<{
+  id: LaserColorId;
+  label: string;
+  detail: string;
+  swatch: string;
+}> = [
+  { id: "crimson", label: "Crimson", detail: "Triple pointeur classique", swatch: "#ff302a" },
+  { id: "electric", label: "Électrique", detail: "Optique de poursuite bleue", swatch: "#2989ff" },
+  { id: "amber", label: "Ambre", detail: "Spectre des anciens", swatch: "#ffb12b" },
+  { id: "violet", label: "Violet", detail: "Spectre nocturne", swatch: "#b847ff" },
+  { id: "cyan", label: "Cryo-cyan", detail: "Contraste des mondes glacés", swatch: "#40efff" },
+];
+
+const TROPHY_WORKSHOP_ORDER = [
+  "clean",
+  "prepare",
+  "display",
+  "rite",
+] as const satisfies readonly TrophyWorkshopAction[];
+
+const TROPHY_WORKSHOP_LABELS: Readonly<Record<TrophyWorkshopAction, string>> = {
+  clean: "Nettoyer",
+  prepare: "Préparer",
+  display: "Exposer",
+  rite: "Rite du clan",
+};
+
 function missionBackground(mission: MissionDefinition): string {
   const biome =
     mission.biome === "volcano" ? "volcanic" : mission.biome;
@@ -411,6 +487,12 @@ export default function GameClient() {
   );
   const [selectedMission, setSelectedMission] =
     useState<MissionDefinition | null>(null);
+  const [galaxyNavigationState, setGalaxyNavigationState] =
+    useState<GalaxyNavigationState>(createGalaxyNavigationState);
+  const [mapReturnScreen, setMapReturnScreen] =
+    useState<MapReturnScreen>("ship");
+  const [stationReturnScreen, setStationReturnScreen] =
+    useState<StationReturnScreen>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
@@ -419,6 +501,15 @@ export default function GameClient() {
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
+  const [selectedCatalogueEntryId, setSelectedCatalogueEntryId] =
+    useState<CatalogueStableId | null>(null);
+  const [trophyWorkshop, setTrophyWorkshop] = useState<{
+    trophyId: string;
+    trophyName: string;
+    action: TrophyWorkshopAction;
+  } | null>(null);
+  const gameShellRef = useRef<HTMLElement | null>(null);
+  const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
   const settingsDialogRef = useRef<HTMLElement | null>(null);
 
@@ -465,6 +556,25 @@ export default function GameClient() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [screen]);
+
+  useEffect(() => {
+    if (previousScreenRef.current === screen) return;
+    previousScreenRef.current = screen;
+    const frame = window.requestAnimationFrame(() => {
+      const activeScreen = gameShellRef.current?.querySelector<HTMLElement>(
+        ":scope > .screen",
+      );
+      const focusTarget =
+        activeScreen?.querySelector<HTMLElement>("[data-screen-focus]") ??
+        activeScreen?.querySelector<HTMLElement>("h1, h2");
+      if (!focusTarget) return;
+      if (!focusTarget.hasAttribute("tabindex")) {
+        focusTarget.setAttribute("tabindex", "-1");
+      }
+      focusTarget.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [screen]);
 
   useEffect(() => {
@@ -557,6 +667,22 @@ export default function GameClient() {
     [playSound],
   );
 
+  const openMap = useCallback(
+    (returnScreen: MapReturnScreen) => {
+      setMapReturnScreen(returnScreen);
+      go("map");
+    },
+    [go],
+  );
+
+  const openStationScreen = useCallback(
+    (next: StationScreen, returnScreen: StationReturnScreen) => {
+      setStationReturnScreen(returnScreen);
+      go(next);
+    },
+    [go],
+  );
+
   const chooseMission = useCallback(
     (mission: MissionDefinition) => {
       if (save.missionProgress[mission.id].status === "locked") return;
@@ -600,9 +726,11 @@ export default function GameClient() {
   const selectArmor = useCallback(
     (armorId: ArmorId) => {
       if (!save.inventory.unlockedArmorIds.includes(armorId)) return;
+      setSelectedCatalogueEntryId(null);
       persist({
         ...save,
         loadout: { ...save.loadout, armorId },
+        appearance: { ...save.appearance, presetId: "custom" },
       });
       void playSound("select");
     },
@@ -612,6 +740,7 @@ export default function GameClient() {
   const selectWeapon = useCallback(
     (weaponId: WeaponId) => {
       if (!save.inventory.unlockedWeaponIds.includes(weaponId)) return;
+      setSelectedCatalogueEntryId(null);
       const secondary =
         weaponId === "wristblades"
           ? save.loadout.weaponIds.find((id) => id !== "wristblades") ??
@@ -623,6 +752,7 @@ export default function GameClient() {
           ...save.loadout,
           weaponIds: ["wristblades", secondary],
         },
+        appearance: { ...save.appearance, presetId: "custom" },
       });
       void playSound("select");
     },
@@ -632,6 +762,7 @@ export default function GameClient() {
   const selectGear = useCallback(
     (gearId: GearId) => {
       if (!save.inventory.unlockedGearIds.includes(gearId)) return;
+      setSelectedCatalogueEntryId(null);
       const other =
         save.loadout.gearIds.find((id) => id !== gearId) ?? "motion-sensor";
       persist({
@@ -640,6 +771,7 @@ export default function GameClient() {
           ...save.loadout,
           gearIds: [gearId, other],
         },
+        appearance: { ...save.appearance, presetId: "custom" },
       });
       void playSound("select");
     },
@@ -693,6 +825,7 @@ export default function GameClient() {
         [key]: value,
       };
       if (key !== "presetId") appearance.presetId = "custom";
+      setSelectedCatalogueEntryId(null);
       persist({
         ...save,
         appearance,
@@ -704,9 +837,14 @@ export default function GameClient() {
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
-      persist({ ...save, loadout, appearance });
-      setPreviewMaskWorn(appearance.biomaskId !== null);
-      setToast("Configuration de chasse chargée.");
+      setSelectedCatalogueEntryId(null);
+      const persisted = persist({ ...save, loadout, appearance });
+      setPreviewMaskWorn(persisted.appearance.biomaskId !== null);
+      setToast(
+        persisted.appearance.presetId === appearance.presetId
+          ? "Configuration de chasse chargée."
+          : "Configuration chargée comme chasseur personnalisé.",
+      );
       void playSound("select");
     },
     [persist, playSound, save],
@@ -717,42 +855,35 @@ export default function GameClient() {
       const preset = HUNTER_PRESETS.find((entry) => entry.id === presetId);
       if (!preset) return;
       const appearance = appearanceForPreset(presetId);
-      if (
-        appearance.trophyAdornmentId === "skull-spine" &&
-        save.trophies.length === 0
-      ) {
-        appearance.trophyAdornmentId = "none";
-      }
-      const armorId = save.inventory.unlockedArmorIds.includes(
-        preset.recommendedArmorId,
-      )
-        ? preset.recommendedArmorId
-        : save.loadout.armorId;
-      const signatureSecondary = preset.signatureWeaponIds.find(
-        (weaponId) =>
-          weaponId !== "wristblades" &&
-          save.inventory.unlockedWeaponIds.includes(weaponId),
-      );
-      const signatureGearIds = preset.signatureGearIds.filter((gearId) =>
-        save.inventory.unlockedGearIds.includes(gearId),
-      );
-      const resolvedGearIds = [
-        ...new Set([...signatureGearIds, ...save.loadout.gearIds]),
-      ].slice(0, 2) as [GearId, GearId];
+      const loadout = loadoutForPreset(presetId);
 
+      setSelectedCatalogueEntryId(null);
       persist({
         ...save,
         appearance,
-        loadout: {
-          ...save.loadout,
-          armorId,
-          weaponIds: signatureSecondary
-            ? ["wristblades", signatureSecondary]
-            : save.loadout.weaponIds,
-          gearIds:
-            resolvedGearIds.length === 2
-              ? resolvedGearIds
-              : save.loadout.gearIds,
+        loadout,
+        inventory: {
+          ...save.inventory,
+          unlockedArmorIds: [
+            ...new Set([
+              ...save.inventory.unlockedArmorIds,
+              preset.recommendedArmorId,
+            ]),
+          ],
+          unlockedWeaponIds: [
+            ...new Set([
+              ...save.inventory.unlockedWeaponIds,
+              ...preset.signatureWeaponIds,
+              ...loadout.weaponIds,
+            ]),
+          ],
+          unlockedGearIds: [
+            ...new Set([
+              ...save.inventory.unlockedGearIds,
+              ...preset.signatureGearIds,
+              ...loadout.gearIds,
+            ]),
+          ],
         },
       });
       setPreviewMaskWorn(appearance.biomaskId !== null);
@@ -760,6 +891,97 @@ export default function GameClient() {
       void playSound("select");
     },
     [persist, playSound, save],
+  );
+
+  const selectCatalogueHunter = useCallback(
+    (
+      entry: CatalogueYautjaEntry,
+      selection: CataloguePlayableSelection,
+    ) => {
+      if (typeof selection === "string") {
+        selectHunterPreset(selection);
+        setSelectedCatalogueEntryId(entry.id);
+        return;
+      }
+      setSelectedCatalogueEntryId(entry.id);
+      const appearance: HunterAppearance = {
+        ...selection,
+        laserColorId: save.appearance.laserColorId ?? "crimson",
+        trophyAdornmentId:
+          selection.trophyAdornmentId === "skull-spine" &&
+          save.trophies.length === 0
+            ? "none"
+            : selection.trophyAdornmentId,
+      };
+      const referencePresetId = referencePresetForCatalogueEntry(entry);
+      const referencePreset = HUNTER_PRESET_BY_ID[referencePresetId];
+      const referenceLoadout = loadoutForPreset(referencePresetId);
+      persist({
+        ...save,
+        appearance,
+        loadout: referenceLoadout,
+        inventory: {
+          ...save.inventory,
+          unlockedArmorIds: [
+            ...new Set([
+              ...save.inventory.unlockedArmorIds,
+              referencePreset.recommendedArmorId,
+            ]),
+          ],
+          unlockedWeaponIds: [
+            ...new Set([
+              ...save.inventory.unlockedWeaponIds,
+              ...referencePreset.signatureWeaponIds,
+              ...referenceLoadout.weaponIds,
+            ]),
+          ],
+          unlockedGearIds: [
+            ...new Set([
+              ...save.inventory.unlockedGearIds,
+              ...referencePreset.signatureGearIds,
+              ...referenceLoadout.gearIds,
+            ]),
+          ],
+        },
+      });
+      setPreviewMaskWorn(appearance.biomaskId !== null);
+      setToast(
+        `${entry.name} · reconstruction guidée par ${referencePreset.name} (archive ${entry.id}).`,
+      );
+      void playSound("select");
+    },
+    [persist, playSound, save, selectHunterPreset],
+  );
+
+  const completeTrophyWorkshop = useCallback(
+    (result: TrophyWorkshopResult) => {
+      if (!trophyWorkshop) return;
+      const completedAt = new Date().toISOString();
+      const trophies = save.trophies.map((trophy) => {
+        if (trophy.id !== trophyWorkshop.trophyId) return trophy;
+        const completedActions = [
+          ...new Set([
+            ...(trophy.workshop?.completedActions ?? []),
+            trophyWorkshop.action,
+          ]),
+        ];
+        return {
+          ...trophy,
+          workshop: {
+            completedActions,
+            bestScore: Math.max(trophy.workshop?.bestScore ?? 0, result.score),
+            lastCompletedAt: completedAt,
+          },
+        };
+      });
+      persist({ ...save, trophies });
+      setToast(
+        `${trophyWorkshop.trophyName} · ${trophyWorkshop.action} réussi, grade ${result.grade}.`,
+      );
+      setTrophyWorkshop(null);
+      void playSound("trophy");
+    },
+    [persist, playSound, save, trophyWorkshop],
   );
 
   const resetProgress = useCallback(() => {
@@ -803,6 +1025,9 @@ export default function GameClient() {
     save.appearance.presetId === "custom"
       ? null
       : HUNTER_PRESET_BY_ID[save.appearance.presetId];
+  const activeHunterKit = activeHunterPreset
+    ? playableKitForPreset(activeHunterPreset.id)
+    : null;
   const trophyRecords = useMemo(
     () =>
       [...save.trophies].sort(
@@ -826,6 +1051,7 @@ export default function GameClient() {
 
   return (
     <main
+      ref={gameShellRef}
       className="game-shell"
       data-game-shell="yautja-long-hunt"
       aria-label="Yautja : La Longue Chasse"
@@ -861,7 +1087,7 @@ export default function GameClient() {
                   <button
                     type="button"
                     className="ghost-button"
-                    onClick={() => go("map")}
+                    onClick={() => openMap("ship")}
                   >
                     Contrats
                   </button>
@@ -899,99 +1125,79 @@ export default function GameClient() {
       {screen === "ship" && (
         <ShipHub
           save={save}
-          onOpenMap={() => go("map")}
-          onOpenArmory={() => go("armory")}
-          onOpenTrophies={() => go("trophies")}
-          onOpenArchives={() => go("codex")}
-          onOpenCustomization={() => go("customization")}
+          onOpenDeck={() => go("deck")}
+          onOpenMap={() => openMap("ship")}
+          onOpenArmory={() => openStationScreen("armory", "ship")}
+          onOpenTrophies={() => openStationScreen("trophies", "ship")}
+          onOpenArchives={() => openStationScreen("codex", "ship")}
+          onOpenCustomization={() =>
+            openStationScreen("customization", "ship")
+          }
           onApplyLoadout={applyShipLoadout}
           onNotify={setToast}
         />
       )}
 
-      {screen === "map" && (
-        <section className="screen panel-screen" aria-labelledby="map-title">
+      {screen === "deck" && (
+        <section className="screen panel-screen physical-deck-screen">
           <div className="screen-safe">
-            <PanelHeader
-              eyebrow="Navigation // Cibles détectées"
-              title="Carte galactique"
-              subtitle="Chaque monde neutralise une force de votre technologie. Étudiez la cible avant de choisir votre arsenal."
-              id="map-title"
-              onBack={() => go("ship")}
+            <button
+              type="button"
+              className="physical-deck-back ghost-button"
+              onClick={() => go("ship")}
+            >
+              ← Console du vaisseau
+            </button>
+            <PhysicalShipDeck
+              highContrast={save.settings.highContrastVision}
+              onOpenMap={() => openMap("deck")}
+              onOpenArmory={() => openStationScreen("armory", "deck")}
+              onOpenTrophies={() => openStationScreen("trophies", "deck")}
+              onOpenArchives={() => openStationScreen("codex", "deck")}
+              onOpenAppearanceForge={() =>
+                openStationScreen("customization", "deck")
+              }
+              onOpenMedbay={() => openStationScreen("medbay", "deck")}
+              onNotify={setToast}
             />
-            <div className="mission-grid">
-              {MISSIONS.map((mission) => {
-                const progress = save.missionProgress[mission.id];
-                const locked = progress.status === "locked";
-                return (
-                  <article
-                    className={`mission-card${locked ? " locked" : ""}`}
-                    key={mission.id}
-                  >
-                    <div className="mission-art">
-                      <img
-                        src={missionBackground(mission)}
-                        alt={`Paysage de ${mission.planetName}`}
-                      />
-                      <span className="mission-index">
-                        {mission.order.toString().padStart(2, "0")}
-                      </span>
-                      <span className="mission-status">
-                        {locked
-                          ? "Signal verrouillé"
-                          : progress.status === "completed"
-                            ? `Record ${progress.bestScore}`
-                            : "Contrat disponible"}
-                      </span>
-                    </div>
-                    <div className="mission-body">
-                      <p className="mission-planet">{mission.planetName}</p>
-                      <h2>{mission.title}</h2>
-                      <p>{mission.subtitle}</p>
-                      <div
-                        className="threat-line"
-                        aria-label={`Menace ${mission.threatLevel} sur 4`}
-                      >
-                        {[1, 2, 3, 4].map((level) => (
-                          <span
-                            className={
-                              level <= mission.threatLevel ? "active" : ""
-                            }
-                            key={level}
-                          />
-                        ))}
-                        <small>menace</small>
-                      </div>
-                      <div className="mission-meta">
-                        <MetaCell label="Proie" value={mission.targetName} />
-                        <MetaCell
-                          label="Temps rituel"
-                          value={formatTime(mission.parTimeSeconds)}
-                        />
-                        <MetaCell
-                          label="Honneur"
-                          value={`+${mission.baseRewards.honor}`}
-                        />
-                        <MetaCell
-                          label="Marques"
-                          value={`+${mission.baseRewards.clanMarks}`}
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        className="card-button"
-                        disabled={locked}
-                        onClick={() => chooseMission(mission)}
-                      >
-                        {locked ? "Trophée précédent requis" : "Étudier la chasse"}
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
           </div>
         </section>
+      )}
+
+      {screen === "medbay" && (
+        <section className="screen physical-medbay-entry">
+          <button
+            type="button"
+            className="physical-medbay-entry__back ghost-button"
+            onClick={() => go("deck")}
+          >
+            ← Retour au pont physique
+          </button>
+          <ShipHub
+            save={save}
+            initialRoomId="medbay"
+            onOpenDeck={() => go("deck")}
+            onOpenMap={() => openMap("deck")}
+            onOpenArmory={() => openStationScreen("armory", "deck")}
+            onOpenTrophies={() => openStationScreen("trophies", "deck")}
+            onOpenArchives={() => openStationScreen("codex", "deck")}
+            onOpenCustomization={() =>
+              openStationScreen("customization", "deck")
+            }
+            onApplyLoadout={applyShipLoadout}
+            onNotify={setToast}
+          />
+        </section>
+      )}
+
+      {screen === "map" && (
+        <GalaxyMapPanel
+          missionProgress={save.missionProgress}
+          initialState={galaxyNavigationState}
+          onStateChange={setGalaxyNavigationState}
+          onBack={() => go(mapReturnScreen)}
+          onChooseMission={chooseMission}
+        />
       )}
 
       {screen === "briefing" && selectedMission && (
@@ -1059,7 +1265,9 @@ export default function GameClient() {
                   <button
                     type="button"
                     className="ghost-button"
-                    onClick={() => go("armory")}
+                    onClick={() =>
+                      openStationScreen("armory", "briefing")
+                    }
                   >
                     Modifier l’arsenal
                   </button>
@@ -1078,8 +1286,49 @@ export default function GameClient() {
               title="Armurerie"
               subtitle="Les lames de poignet restent toujours disponibles. Choisissez une arme secondaire, une armure et deux outils de chasse."
               id="armory-title"
-              onBack={() => go(selectedMission ? "briefing" : "ship")}
+              onBack={() => go(stationReturnScreen)}
             />
+            <section className="armory-war-room" aria-labelledby="armory-wall-title">
+              <img
+                className="armory-war-room-background"
+                src="/game/backgrounds/armory-war-room-v6.png"
+                alt="Armurerie murale du vaisseau, avec biomasks et armes suspendus"
+              />
+              <div className="armory-war-room-copy">
+                <p className="eyebrow">Pont inférieur // Râtelier mural</p>
+                <h2 id="armory-wall-title">Équipement accroché, modules séparés</h2>
+                <p>
+                  Biomasks, armes, gauntlet, bras articulé et canon du
+                  plasmacaster disposent chacun de leur propre emplacement.
+                </p>
+              </div>
+              <div className="armory-atlas-shelves">
+                <section aria-labelledby="armory-modules-title">
+                  <h3 id="armory-modules-title">Râtelier des modules</h3>
+                  <div className="armory-module-rack" role="list">
+                    {V6_ARMORY_RACK_ORDER.map((visualId) => (
+                      <figure key={visualId} role="listitem">
+                        <V6AtlasSprite id={visualId} decorative />
+                        <figcaption>{V6_VISUAL_CELLS[visualId].label}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
+                <section aria-labelledby="armory-masks-title">
+                  <h3 id="armory-masks-title">Mur des biomasks</h3>
+                  <div className="armory-module-rack armory-mask-rack" role="list">
+                    {V6_ALL_VISUAL_IDS.filter(
+                      (visualId) => V6_VISUAL_CELLS[visualId].kind === "mask",
+                    ).map((visualId) => (
+                      <figure key={visualId} role="listitem">
+                        <V6AtlasSprite id={visualId} decorative />
+                        <figcaption>{V6_VISUAL_CELLS[visualId].label}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            </section>
             <div className="armory-layout">
               <aside className="loadout-preview" aria-label="Équipement actuel">
                 <div className="loadout-rig-stage">
@@ -1160,6 +1409,14 @@ export default function GameClient() {
                             id: weapon.id,
                           })
                         }
+                        visualIds={
+                          weapon.id === "plasma-caster"
+                            ? [
+                                V6_PLASMA_CASTER_ASSEMBLY.articulatedArmId,
+                                V6_PLASMA_CASTER_ASSEMBLY.cannonId,
+                              ]
+                            : [V6_WEAPON_VISUAL_BY_ID[weapon.id]]
+                        }
                       />
                     );
                   })}
@@ -1237,6 +1494,7 @@ export default function GameClient() {
                             id: gear.id,
                           })
                         }
+                        visualIds={[V6_GEAR_VISUAL_BY_ID[gear.id]]}
                       />
                     );
                   })}
@@ -1258,7 +1516,7 @@ export default function GameClient() {
               title="Personnalisation du Yautja"
               subtitle="Rig V3 atomique : anatomie, filet, dreadlocks, plaques, biomask, bras du plasmacaster, canon, tube, gantelet, lames et trophées restent séparés."
               id="customization-title"
-              onBack={() => go("ship")}
+              onBack={() => go(stationReturnScreen)}
             />
             <div className="customization-layout">
               <aside className="customization-preview">
@@ -1392,8 +1650,67 @@ export default function GameClient() {
                           )}
                         </nav>
                       </div>
+                      {activeHunterKit && (
+                        <div className="hunter-preset-kit">
+                          <small>Arsenal documenté complet</small>
+                          <p>
+                            Armes :{" "}
+                            {activeHunterPreset.signatureWeaponIds
+                              .map(
+                                (weaponId) =>
+                                  WEAPONS.find(({ id }) => id === weaponId)?.name ??
+                                  weaponId,
+                              )
+                              .join(" · ") || "Aucune attestée"}
+                            {" · "}Outils :{" "}
+                            {activeHunterPreset.signatureGearIds
+                              .map(
+                                (gearId) =>
+                                  GEAR.find(({ id }) => id === gearId)?.name ?? gearId,
+                              )
+                              .join(" · ") || "Aucun attesté"}
+                          </p>
+                          <small>Projection jouable · deux armes / deux outils</small>
+                          <p>
+                            {activeHunterKit.loadout.weaponIds
+                              .map(
+                                (weaponId) =>
+                                  WEAPONS.find(({ id }) => id === weaponId)?.name ??
+                                  weaponId,
+                              )
+                              .join(" · ")}
+                            {" · "}
+                            {activeHunterKit.loadout.gearIds
+                              .map(
+                                (gearId) =>
+                                  GEAR.find(({ id }) => id === gearId)?.name ?? gearId,
+                              )
+                              .join(" · ")}
+                          </p>
+                          {!activeHunterKit.isFullyDocumented && (
+                            <p className="hunter-preset-runtime-warning">
+                              Compromis runtime, non attesté :{" "}
+                              {[
+                                ...activeHunterKit.supplementalWeaponIds.map(
+                                  (weaponId) =>
+                                    WEAPONS.find(({ id }) => id === weaponId)?.name ??
+                                    weaponId,
+                                ),
+                                ...activeHunterKit.supplementalGearIds.map(
+                                  (gearId) =>
+                                    GEAR.find(({ id }) => id === gearId)?.name ?? gearId,
+                                ),
+                              ].join(" · ")} complète les slots obligatoires du moteur.
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </article>
                   )}
+                  <CatalogueHunterBrowser
+                    selectedEntryId={selectedCatalogueEntryId}
+                    onSelect={selectCatalogueHunter}
+                  />
                 </CustomizationSection>
 
                 <CustomizationSection
@@ -1440,6 +1757,11 @@ export default function GameClient() {
                       label={option.label}
                       detail={option.detail}
                       image={option.image}
+                      visualId={
+                        option.id === null
+                          ? undefined
+                          : V6_MASK_VISUAL_BY_ID[option.id]
+                      }
                       glyph={option.id === null ? "◌" : undefined}
                       selected={save.appearance.biomaskId === option.id}
                       onSelect={() => {
@@ -1448,6 +1770,32 @@ export default function GameClient() {
                       }}
                     />
                   ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Spectre du laser"
+                  detail="Le faisceau du plasmacaster et le réticule utilisent la même optique en aperçu et en mission"
+                >
+                  {LASER_COLOR_OPTIONS.map((option) => (
+                    <AppearanceOption
+                      key={option.id}
+                      label={option.label}
+                      detail={option.detail}
+                      swatch={option.swatch}
+                      visualId={V6_LASER_VISUAL_BY_COLOR_ID[option.id]}
+                      selected={(save.appearance.laserColorId ?? "crimson") === option.id}
+                      onSelect={() => updateAppearance("laserColorId", option.id)}
+                    />
+                  ))}
+                  <figure className="laser-rank-atlas">
+                    <V6AtlasSprite
+                      id={V6_RANK_VISUAL_BY_ID[save.profile.rankId]}
+                      label={`Insigne du rang ${RANK_LABELS[save.profile.rankId]}`}
+                    />
+                    <figcaption>
+                      Insigne actif · {RANK_LABELS[save.profile.rankId]}
+                    </figcaption>
+                  </figure>
                 </CustomizationSection>
 
                 <CustomizationSection
@@ -1566,7 +1914,7 @@ export default function GameClient() {
               title="Mur des trophées"
               subtitle="Chaque prise conserve sa difficulté, sa qualité et le score de la chasse. Un trophée ne vaut que par la proie qui l’a défendu."
               id="trophies-title"
-              onBack={() => go("ship")}
+              onBack={() => go(stationReturnScreen)}
             />
             <div className="trophy-grid">
               {trophyRecords.length > 0 ? (
@@ -1585,16 +1933,14 @@ export default function GameClient() {
                     intact: "Intact",
                     pristine: "Parfait",
                   }[trophy.condition];
+                  const completedWorkshopActions =
+                    trophy.workshop?.completedActions ?? [];
                   return (
                     <article className="trophy-card" key={trophy.id}>
                       <div className="trophy-art" aria-hidden="true">
-                        <img
-                          src={
-                            trophy.partId === "mask"
-                              ? "/game/assets/v2/actors/yautja/hunter/masks/scarred.webp"
-                              : "/game/assets/v2/actors/yautja/hunter/trophies/skull-spine.webp"
-                          }
-                          alt=""
+                        <V6AtlasSprite
+                          id={resolveV6TrophyVisualId(trophy)}
+                          decorative
                         />
                       </div>
                       <p className="mission-planet">
@@ -1604,6 +1950,8 @@ export default function GameClient() {
                       <p>
                         {trophy.partId === "mask"
                           ? "Biomask arraché à un adversaire du clan."
+                          : trophy.partId === "insignia"
+                            ? "Insigne tactique prélevé sur une proie digne."
                           : trophy.partId === "skull-and-spine"
                             ? "Crâne et colonne extraits après une chasse honorable."
                             : "Crâne prélevé, nettoyé et consigné dans les archives."}
@@ -1619,6 +1967,36 @@ export default function GameClient() {
                       <time dateTime={trophy.claimedAt}>
                         {new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}
                       </time>
+                      <div
+                        className="trophy-workshop-actions"
+                        aria-label={`Préparation de ${trophy.targetName}`}
+                      >
+                        {TROPHY_WORKSHOP_ORDER.map((action, actionIndex) => {
+                          const completed = completedWorkshopActions.includes(action);
+                          const prerequisite = TROPHY_WORKSHOP_ORDER[actionIndex - 1];
+                          const available =
+                            actionIndex === 0 ||
+                            completedWorkshopActions.includes(prerequisite);
+                          return (
+                            <button
+                              type="button"
+                              key={action}
+                              className={completed ? "completed" : ""}
+                              disabled={!available}
+                              onClick={() =>
+                                setTrophyWorkshop({
+                                  trophyId: trophy.id,
+                                  trophyName: trophy.targetName,
+                                  action,
+                                })
+                              }
+                            >
+                              {completed ? "✓ " : ""}
+                              {TROPHY_WORKSHOP_LABELS[action]}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </article>
                   );
                 })
@@ -1646,8 +2024,43 @@ export default function GameClient() {
               title="Codex de chasse"
               subtitle="Les entrées distinguent le noyau de l’univers des éléments originaux créés pour cette campagne. Le code juge une chasse, pas une morale humaine."
               id="codex-title"
-              onBack={() => go("ship")}
+              onBack={() => go(stationReturnScreen)}
             />
+            <section className="visual-codex-gallery" aria-label="Archives visuelles OpenAI V6">
+              <article>
+                <h2>Bestiaire</h2>
+                <div className="visual-codex-sprite-grid">
+                  {V6_PREY_GALLERY_ORDER.map((visualId) => (
+                    <figure key={visualId}>
+                      <V6AtlasSprite id={visualId} />
+                      <figcaption>{V6_VISUAL_CELLS[visualId].label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </article>
+              <article>
+                <h2>Flotte du clan</h2>
+                <div className="visual-codex-sprite-grid">
+                  {Object.values(V6_SHIP_VISUAL_BY_ROLE).map((visualId) => (
+                    <figure key={visualId}>
+                      <V6AtlasSprite id={visualId} />
+                      <figcaption>{V6_VISUAL_CELLS[visualId].label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </article>
+              <article>
+                <h2>Rangs et castes</h2>
+                <div className="visual-codex-sprite-grid">
+                  {V6_RANK_AND_CASTE_ORDER.map((visualId) => (
+                    <figure key={visualId}>
+                      <V6AtlasSprite id={visualId} />
+                      <figcaption>{V6_VISUAL_CELLS[visualId].label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </article>
+            </section>
             <div className="codex-grid">
               {CODEX_ENTRIES.map((entry) => {
                 const unlocked =
@@ -1749,6 +2162,16 @@ export default function GameClient() {
             </div>
           </div>
         </section>
+      )}
+
+      {trophyWorkshop && (
+        <TrophyWorkshop
+          action={trophyWorkshop.action}
+          trophyId={trophyWorkshop.trophyId}
+          trophyName={trophyWorkshop.trophyName}
+          onComplete={completeTrophyWorkshop}
+          onCancel={() => setTrophyWorkshop(null)}
+        />
       )}
 
       {settingsOpen && (
@@ -1961,15 +2384,6 @@ function PanelHeader({
   );
 }
 
-function MetaCell({ label, value }: { label: string; value: string }) {
-  return (
-    <span className="meta-cell">
-      <small>{label}</small>
-      <strong>{value}</strong>
-    </span>
-  );
-}
-
 function ArmorySection({
   title,
   children,
@@ -1996,6 +2410,7 @@ function EquipmentCard({
   onSelect,
   upgradeQuote,
   onUpgrade,
+  visualIds = [],
 }: {
   type: string;
   name: string;
@@ -2007,6 +2422,7 @@ function EquipmentCard({
   onSelect: () => void;
   upgradeQuote: UpgradeQuote;
   onUpgrade: () => void;
+  visualIds?: readonly V6VisualId[];
 }) {
   const upgradeState =
     upgradeQuote.nextLevel === null
@@ -2027,6 +2443,13 @@ function EquipmentCard({
       style={{ display: "flex", flexDirection: "column" }}
     >
       <p className="equipment-type">{type}</p>
+      {visualIds.length > 0 ? (
+        <div className="equipment-card-visuals" aria-hidden="true">
+          {visualIds.map((visualId) => (
+            <V6AtlasSprite key={visualId} id={visualId} decorative />
+          ))}
+        </div>
+      ) : null}
       <h3>{name}</h3>
       <p>{description}</p>
       <div className="equipment-stats">
@@ -2156,6 +2579,7 @@ function AppearanceOption({
   label,
   detail,
   image,
+  visualId,
   glyph,
   swatch,
   selected,
@@ -2165,6 +2589,7 @@ function AppearanceOption({
   label: string;
   detail?: string;
   image?: string;
+  visualId?: V6VisualId;
   glyph?: string;
   swatch?: string;
   selected: boolean;
@@ -2180,14 +2605,18 @@ function AppearanceOption({
       onClick={onSelect}
     >
       <span className="appearance-option-art" aria-hidden="true">
-        {image ? <img src={image} alt="" /> : null}
+        {visualId ? (
+          <V6AtlasSprite id={visualId} decorative />
+        ) : image ? (
+          <img src={image} alt="" />
+        ) : null}
         {swatch ? (
           <i
             className="appearance-swatch"
             style={{ backgroundColor: swatch }}
           />
         ) : null}
-        {!image && !swatch ? <b>{glyph ?? "Y"}</b> : null}
+        {!visualId && !image && !swatch ? <b>{glyph ?? "Y"}</b> : null}
       </span>
       <span className="appearance-option-copy">
         <strong>{label}</strong>

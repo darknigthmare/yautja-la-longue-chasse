@@ -42,6 +42,32 @@ Dans le vaisseau, `A/D` ou gauche/droite change de salle, haut/bas sélectionne
 une action et `Entrée` la confirme. La croix directionnelle, `A` et `B` assurent
 la même navigation à la manette.
 
+## Mise à jour V6 — catalogue, mondes et menus jouables
+
+- Le catalogue fourni est intégré sans perdre de ligne : 255 entrées tous
+  médias, dont 210 individus jouables : 49 profils directs chargent leur plaque
+  et leur kit documentés ; 161 restent explicitement signalés comme
+  reconstructions modulaires guidées par leurs sources, jamais comme des
+  reproductions individuelles exactes.
+- La carte se parcourt en trois niveaux — galaxie, système, planète — avant
+  d'afficher les missions du monde choisi. Le pont est aussi un menu physique
+  latéral jouable au clavier, à la manette et au tactile.
+- Chaque chasse couvre six secteurs continus et 8 400 pixels de monde, avec
+  plateformes, grimpables, couvertures, sols traçables et dangers propres au
+  biome. Le panorama jungle OpenAI fournit trois compositions distinctes.
+- Les traces identifient joueur et ennemis. La prise d'un trophée est un rite
+  de rythme, suivi d'une pose de victoire puis de l'arrivée, du stationnement et
+  du départ réels de la navette au-dessus de la balise.
+- L'armurerie inspirée d'un râtelier de vaisseau expose 43 cellules OpenAI
+  transparentes : vaisseaux, faune, armes, équipements, biomasks, trophées,
+  rangs et lasers. Le canon plasma et son bras articulé restent deux objets
+  autonomes.
+- Nettoyage, préparation, exposition et rite de trophée utilisent des mini-jeux
+  à séquences, sans raccourci par un simple bouton de progression.
+
+`npm.cmd run qa` reconstruit et audite aussi les 39 plaques cinéma avant de
+valider le build et les tests fonctionnels.
+
 ## Mise à jour V4 — sept lots livrés
 
 1. **Vaisseau-hub en six salles** : pont et carte, armurerie, salle des

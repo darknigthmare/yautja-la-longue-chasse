@@ -17,6 +17,7 @@ const outputDirectory = await mkdtemp(
 await Promise.all([
   build({
     configFile: false,
+    publicDir: false,
     logLevel: "silent",
     build: {
       emptyOutDir: true,
@@ -29,6 +30,7 @@ await Promise.all([
   }),
   build({
     configFile: false,
+    publicDir: false,
     logLevel: "silent",
     build: {
       emptyOutDir: true,
@@ -133,6 +135,65 @@ test("ship progression is a sidecar and leaves the current v3 save untouched", (
   assert.equal(sidecar.trophies[0].stage, "raw");
   assert.equal(sidecar.displaySlots.length, 12);
   assert.equal(sidecar.loadoutPresets.length, 4);
+});
+
+test("successful workshop actions project to the hall stage and a stable alcove", async () => {
+  const baseSave = defaultSave(FIXED_TIME);
+  baseSave.trophies = [trophy()];
+  let state = createDefaultShipProgression(baseSave, FIXED_TIME);
+  assert.equal(state.trophies[0].stage, "raw");
+
+  const saveAfter = (completedActions) => ({
+    ...baseSave,
+    trophies: [
+      trophy({
+        workshop: {
+          completedActions,
+          bestScore: 600,
+          lastCompletedAt: FIXED_TIME,
+        },
+      }),
+    ],
+  });
+
+  state = synchronizeShipProgression(
+    state,
+    saveAfter(["clean"]),
+    FIXED_TIME,
+  );
+  assert.equal(state.trophies[0].stage, "cleaned");
+  assert.equal(state.trophies[0].displaySlotId, null);
+
+  state = synchronizeShipProgression(
+    state,
+    saveAfter(["clean", "prepare"]),
+    FIXED_TIME,
+  );
+  assert.equal(state.trophies[0].stage, "mounted");
+
+  state = synchronizeShipProgression(
+    state,
+    saveAfter(["clean", "prepare", "display"]),
+    FIXED_TIME,
+  );
+  assert.equal(state.trophies[0].stage, "displayed");
+  assert.equal(state.trophies[0].displaySlotId, "display-1");
+  assert.equal(state.displaySlots[0].claimId, "claim-cryo-1");
+
+  const stableSlot = state.trophies[0].displaySlotId;
+  state = synchronizeShipProgression(
+    state,
+    saveAfter(["clean", "prepare", "display", "rite"]),
+    "2026-07-19T12:10:00.000Z",
+  );
+  assert.equal(state.trophies[0].stage, "displayed");
+  assert.equal(state.trophies[0].displaySlotId, stableSlot);
+
+  const hubSource = await readFile(
+    resolve(projectRoot, "app/game/ShipHub.tsx"),
+    "utf8",
+  );
+  assert.match(hubSource, /STAGE_LABELS\[trophy\.stage\]/);
 });
 
 test("trophy preparation enforces clean, mount, then display order", () => {

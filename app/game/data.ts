@@ -511,6 +511,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
       description:
         "La marque d'une humaine ayant transformé une embuscade en véritable chasse.",
       targetName: "Commandante Vey",
+      partId: "insignia",
       icon: "insignia",
     },
     codexUnlockIds: [
@@ -730,6 +731,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
       description:
         "Carapace polaire d'un prédateur qui effaçait jusqu'à sa propre chaleur.",
       targetName: "Cryostalker Alpha",
+      partId: "skull-and-spine",
       icon: "beast-skull",
     },
     codexUnlockIds: ["nivalis-ice", "cryostalker"],
@@ -954,6 +956,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
       description:
         "Un biomask récupéré après le jugement d'un chasseur ayant trahi le code.",
       targetName: "Le Bad Blood",
+      partId: "mask",
       icon: "broken-mask",
     },
     codexUnlockIds: ["cinder-volcano", "bad-blood"],

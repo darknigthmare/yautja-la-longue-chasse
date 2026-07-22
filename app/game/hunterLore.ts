@@ -10,6 +10,7 @@ import type {
   HunterBodyMorphId,
   HunterPresetId,
   HunterSkinId,
+  Loadout,
   TrophyAdornmentId,
   WeaponId,
 } from "./types";
@@ -66,6 +67,23 @@ export interface HunterPresetDefinition {
    * interpretation, not a claim of canonical colours or mask geometry.
    */
   readonly textInterpretation?: true;
+}
+
+/**
+ * Two-slot projection of a hunter's documented equipment.
+ *
+ * `signature*Ids` on the preset remain the source of truth. A playable kit can
+ * only expose two weapons and two gear slots, so any item added solely to fill
+ * that runtime contract is reported separately and must never be presented as
+ * documented equipment.
+ */
+export interface HunterPlayableKit {
+  readonly loadout: Loadout;
+  readonly representedSignatureWeaponIds: readonly WeaponId[];
+  readonly representedSignatureGearIds: readonly GearId[];
+  readonly supplementalWeaponIds: readonly WeaponId[];
+  readonly supplementalGearIds: readonly GearId[];
+  readonly isFullyDocumented: boolean;
 }
 
 /**
@@ -1583,5 +1601,98 @@ export function appearanceForPreset(
     armorStyleId: preset.armorStyleId,
     armorTintId: preset.armorTintId,
     trophyAdornmentId: preset.trophyAdornmentId,
+    laserColorId: "crimson",
   };
+}
+
+const RUNTIME_WEAPON_SUPPLEMENTS = [
+  "wristblades",
+  "combistick",
+] as const satisfies readonly WeaponId[];
+
+const RUNTIME_GEAR_SUPPLEMENTS = [
+  "motion-sensor",
+  "audio-decoy",
+  "netgun",
+  "snare",
+] as const satisfies readonly GearId[];
+
+function uniqueIds<Id extends string>(ids: readonly Id[]): Id[] {
+  return [...new Set(ids)];
+}
+
+/**
+ * Projects documented equipment into the runtime's strict two-by-two slots.
+ *
+ * Weapon lists are authored from common melee tools to the most distinctive
+ * weapon. Keeping a documented melee tool in slot one and the last distinctive
+ * weapon in slot two preserves the identity that used to be truncated (for
+ * example City Hunter's smart-disc, Wolf's plasma-caster and Feral's bow).
+ * Runtime-only fillers are explicit metadata, never additions to the preset's
+ * signature arrays.
+ */
+export function playableKitForPreset(
+  presetId: HunterLorePresetId,
+): HunterPlayableKit {
+  const preset = HUNTER_PRESET_BY_ID[presetId];
+  const documentedWeapons = uniqueIds(preset.signatureWeaponIds);
+  const documentedGear = uniqueIds(preset.signatureGearIds);
+  const documentedMelee = documentedWeapons.find(
+    (id) => id === "wristblades" || id === "combistick",
+  );
+  const documentedDistinctive = documentedWeapons.filter(
+    (id) => id !== "wristblades" && id !== "combistick",
+  );
+  const primarySignatureWeapon =
+    documentedDistinctive.at(-1) ?? documentedWeapons.at(-1);
+  const selectedWeapons = uniqueIds(
+    [documentedMelee, primarySignatureWeapon].filter(
+      (id): id is WeaponId => id !== undefined,
+    ),
+  );
+  const selectedGear = [...documentedGear];
+  const supplementalWeaponIds: WeaponId[] = [];
+  const supplementalGearIds: GearId[] = [];
+
+  for (const id of [...documentedWeapons, ...RUNTIME_WEAPON_SUPPLEMENTS]) {
+    if (selectedWeapons.length >= 2) break;
+    if (selectedWeapons.includes(id)) continue;
+    selectedWeapons.push(id);
+    if (!documentedWeapons.includes(id)) supplementalWeaponIds.push(id);
+  }
+  for (const id of RUNTIME_GEAR_SUPPLEMENTS) {
+    if (selectedGear.length >= 2) break;
+    if (selectedGear.includes(id)) continue;
+    selectedGear.push(id);
+    supplementalGearIds.push(id);
+  }
+
+  const weaponIds: [WeaponId, WeaponId] = [
+    selectedWeapons[0],
+    selectedWeapons[1],
+  ];
+  const gearIds: [GearId, GearId] = [selectedGear[0], selectedGear[1]];
+
+  return {
+    loadout: {
+      armorId: preset.recommendedArmorId,
+      weaponIds,
+      gearIds,
+    },
+    representedSignatureWeaponIds: weaponIds.filter((id) =>
+      documentedWeapons.includes(id),
+    ),
+    representedSignatureGearIds: gearIds.filter((id) =>
+      documentedGear.includes(id),
+    ),
+    supplementalWeaponIds,
+    supplementalGearIds,
+    isFullyDocumented:
+      supplementalWeaponIds.length === 0 && supplementalGearIds.length === 0,
+  };
+}
+
+/** Returns the playable two-slot projection for runtime/save consumers. */
+export function loadoutForPreset(presetId: HunterLorePresetId): Loadout {
+  return playableKitForPreset(presetId).loadout;
 }
