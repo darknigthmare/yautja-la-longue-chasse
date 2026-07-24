@@ -790,6 +790,40 @@ select:focus-visible,
     );
 }
 
+.ship-visual-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+}
+
+.ship-visual-comparison figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(var(--hub-accent-rgb), 0.2);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(var(--hub-accent-rgb), 0.12), transparent 58%),
+    rgba(2, 7, 6, 0.82);
+}
+
+.ship-visual-comparison img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  padding: 0.4rem;
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.8));
+}
+
+.ship-visual-comparison figcaption {
+  padding: 0.45rem 0.55rem;
+  border-top: 1px solid rgba(var(--hub-accent-rgb), 0.16);
+  color: #9eaaa1;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .hub-screen[data-ship-room] .campaign-progress {
   border-left-color: var(--hub-accent);
 }
@@ -4807,6 +4841,10 @@ select:focus-visible,
 }
 
 .galaxy-v10-node {
+  /* Map coordinates target the celestial disc center; the dossier extends rightward. */
+  --node-visual-size: 58px;
+  --node-anchor-x: 33px;
+  --node-panel-left: 55px;
   position: absolute;
   z-index: 4;
   top: var(--node-y);
@@ -4821,7 +4859,8 @@ select:focus-visible,
   background: transparent;
   color: #dcebe4;
   text-align: left;
-  translate: -50% -50%;
+  translate: calc(0px - var(--node-anchor-x)) -50%;
+  transform-origin: var(--node-anchor-x) 50%;
   transition: filter 180ms ease, scale 180ms ease;
 }
 
@@ -4835,8 +4874,8 @@ select:focus-visible,
 
 .galaxy-v10-node::before {
   top: 50%;
-  left: 30px;
-  width: 61px;
+  left: var(--node-anchor-x);
+  width: calc(var(--node-visual-size) + 3px);
   aspect-ratio: 1;
   border: 1px solid color-mix(in srgb, var(--node-accent), transparent 25%);
   border-radius: 50%;
@@ -4848,7 +4887,7 @@ select:focus-visible,
   top: 7px;
   right: 0;
   bottom: 7px;
-  left: 55px;
+  left: var(--node-panel-left);
   border-top: 1px solid color-mix(in srgb, var(--node-accent), transparent 62%);
   border-right: 1px solid color-mix(in srgb, var(--node-accent), transparent 62%);
   border-bottom: 1px solid color-mix(in srgb, var(--node-accent), transparent 62%);
@@ -4861,8 +4900,8 @@ select:focus-visible,
   position: relative;
   z-index: 2;
   display: block;
-  width: 58px;
-  min-width: 58px;
+  width: var(--node-visual-size);
+  min-width: var(--node-visual-size);
   aspect-ratio: 1;
   overflow: hidden;
   border: 2px solid var(--node-accent);
@@ -4879,16 +4918,11 @@ select:focus-visible,
 }
 
 .galaxy-v10-node.kind-sector {
+  --node-visual-size: 68px;
+  --node-anchor-x: 38px;
+  --node-panel-left: 64px;
   width: clamp(158px, 15.5vw, 228px);
   min-height: 68px;
-}
-
-.galaxy-v10-node.kind-sector::before { left: 35px; width: 71px; }
-.galaxy-v10-node.kind-sector::after { left: 64px; }
-
-.galaxy-v10-node.kind-sector .galaxy-v10-node-visual {
-  width: 68px;
-  min-width: 68px;
 }
 
 .galaxy-v10-node.kind-asteroid-belt .galaxy-v10-node-visual { border-style: dotted; }
@@ -4969,31 +5003,39 @@ select:focus-visible,
   z-index: 18;
   top: var(--ship-y);
   left: var(--ship-x);
+  display: grid;
   width: clamp(70px, 7.5vw, 116px);
+  aspect-ratio: 16 / 10;
+  place-items: center;
   pointer-events: none;
-  transform: translate(-50%, -50%) rotate(calc(var(--ship-heading) + 180deg));
+  transform: translate(-50%, -50%) rotate(var(--ship-rotation)) scaleX(var(--ship-flip));
   transform-origin: center;
   filter: drop-shadow(0 7px 7px #000) drop-shadow(0 0 7px rgba(110, 234, 214, 0.66));
   transition: filter 120ms ease;
   will-change: top, left, transform;
 }
 
-.galaxy-v10-ship > span:first-child { display: block !important; }
+.galaxy-v10-ship > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 .galaxy-v10-ship > span:last-child {
   position: absolute;
   z-index: -1;
   top: 50%;
-  right: auto;
-  left: 88%;
+  right: 88%;
+  left: auto;
   width: 48%;
   height: 3px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #fff, #79f0d6 28%, transparent);
+  background: linear-gradient(90deg, transparent, #79f0d6 72%, #fff);
   box-shadow: 0 0 8px #6be8d0;
   content: "";
   translate: 0 -50%;
-  transform-origin: left center;
+  transform-origin: right center;
   animation: galaxy-v10-engine 620ms ease-in-out infinite alternate;
 }
 
@@ -5003,7 +5045,7 @@ select:focus-visible,
 
 .galaxy-v10-ship.autopilot > span:last-child {
   width: 72%;
-  background: linear-gradient(90deg, #fff4d5, #f0a853 28%, transparent);
+  background: linear-gradient(90deg, transparent, #f0a853 72%, #fff4d5);
   box-shadow: 0 0 11px #ffac4d;
 }
 
@@ -5445,14 +5487,8 @@ select:focus-visible,
   .galaxy-v10-breadcrumbs button { min-height: 44px; padding-inline: 11px 20px; font-size: 0.52rem; }
   .galaxy-v10-stage { min-height: max(650px, calc(100svh - 178px)); }
   .galaxy-v10-stage-art { object-position: center; }
-  .galaxy-v10-node { top: clamp(24%, var(--node-y), 78%); left: clamp(18%, var(--node-x), 82%); width: 118px; min-height: 50px; gap: 5px; }
-  .galaxy-v10-node::before { left: 24px; width: 50px; }
-  .galaxy-v10-node::after { left: 46px; }
-  .galaxy-v10-node-visual { width: 48px; min-width: 48px; }
-  .galaxy-v10-node.kind-sector { width: 132px; min-height: 56px; }
-  .galaxy-v10-node.kind-sector::before { left: 28px; width: 57px; }
-  .galaxy-v10-node.kind-sector::after { left: 51px; }
-  .galaxy-v10-node.kind-sector .galaxy-v10-node-visual { width: 55px; min-width: 55px; }
+  .galaxy-v10-node { --node-visual-size: 48px; --node-anchor-x: 28px; --node-panel-left: 46px; top: clamp(24%, var(--node-y), 78%); left: clamp(18%, var(--node-x), 82%); width: 118px; min-height: 50px; gap: 5px; }
+  .galaxy-v10-node.kind-sector { --node-visual-size: 55px; --node-anchor-x: 31.5px; --node-panel-left: 51px; width: 132px; min-height: 56px; }
   .galaxy-v10-node-label strong { font-size: 0.54rem; }
   .galaxy-v10-node-label small { font-size: 0.42rem; -webkit-line-clamp: 1; }
   .galaxy-v10-node > em { top: -6px; right: 0; }

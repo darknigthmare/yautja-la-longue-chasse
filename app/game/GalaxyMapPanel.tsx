@@ -20,6 +20,7 @@ import {
   engageGalaxyAutopilot,
   galaxyFlightPointFromMapPosition,
   galaxyFlightReturnAnchorId,
+  galaxyShipTopDownPose,
   isGalaxyFlightNear,
   normalizeGalaxyFlightInput,
   stepGalaxyFlight,
@@ -49,9 +50,8 @@ import {
   galaxyBodyVisualPath,
   galaxySystemBackgroundPath,
 } from "./galaxyVisuals";
-import { V6_SHIP_VISUAL_BY_ROLE } from "./v6Visuals";
-import V6AtlasSprite from "./V6AtlasSprite";
 import { backgroundPathForBiome } from "./worldScreens";
+import { shipForId, type ShipId } from "./shipCatalogue";
 import type {
   MissionDefinition,
   MissionId,
@@ -60,6 +60,7 @@ import type {
 
 export interface GalaxyMapPanelProps {
   missionProgress: Readonly<Record<MissionId, MissionProgress>>;
+  selectedShipId: ShipId;
   initialState?: GalaxyNavigationState;
   onStateChange?: (state: GalaxyNavigationState) => void;
   onBack: () => void;
@@ -163,6 +164,7 @@ function movementVector(keys: ReadonlySet<string>): GalaxyFlightPoint {
 
 export default function GalaxyMapPanel({
   missionProgress,
+  selectedShipId,
   initialState,
   onStateChange,
   onBack,
@@ -194,6 +196,7 @@ export default function GalaxyMapPanel({
   const [flight, setFlight] = useState(() => initialFlightForLevel(state.level, stageAspect));
   const flightRef = useRef(flight);
   const [flightMessage, setFlightMessage] = useState("Pilotage manuel");
+  const selectedShip = shipForId(selectedShipId);
 
   const items = useMemo(
     () => getGalaxyNavigationItems(GALAXY_NAVIGATION, state),
@@ -254,6 +257,7 @@ export default function GalaxyMapPanel({
   const canEnterActive = supportsFlight && activeFlightPosition
     ? isGalaxyFlightNear(flight.position, activeFlightPosition, 4.5)
     : false;
+  const shipVisualPose = galaxyShipTopDownPose(flight.heading);
 
   const navigateBack = useCallback(() => {
     if (state.level === "galaxy") onBack();
@@ -591,6 +595,9 @@ export default function GalaxyMapPanel({
             </div>
           </div>
           <div className="galaxy-v10-header-tools">
+            <span title={selectedShip.name}>
+              Vaisseau · {selectedShip.shortName}
+            </span>
             <span>{GALAXY_NAVIGATION.sectorCount} secteurs</span>
             <span>{GALAXY_NAVIGATION.systemCount} systèmes</span>
             <span>{GALAXY_NAVIGATION.bodyCount} corps</span>
@@ -628,6 +635,7 @@ export default function GalaxyMapPanel({
           ref={stageRef}
           className={`galaxy-v10-stage level-${state.level}`}
           data-galaxy-v10-level={state.level}
+          data-selected-ship={selectedShipId}
           role="region"
           aria-label={supportsFlight
             ? `Carte ${state.level}. Pilotez avec les flèches ou ZQSD, changez de cible avec E ou R et voyagez avec Entrée.`
@@ -668,17 +676,21 @@ export default function GalaxyMapPanel({
                 data-flight-x={flight.position.x}
                 data-flight-y={flight.position.y}
                 data-flight-mode={flight.mode}
+                data-ship-flip={shipVisualPose.scaleX}
+                data-ship-rotation={shipVisualPose.rotationDegrees}
                 style={{
                   "--ship-x": `${flight.position.x / stageAspect}%`,
                   "--ship-y": `${flight.position.y}%`,
-                  "--ship-heading": `${flight.heading}deg`,
+                  "--ship-rotation": `${shipVisualPose.rotationDegrees}deg`,
+                  "--ship-flip": shipVisualPose.scaleX,
                 } as CSSProperties}
-                aria-label={`Vaisseau du clan, ${flightMessage}`}
+                aria-label={`${selectedShip.name}, ${flightMessage}`}
               >
-                <V6AtlasSprite
-                  id={V6_SHIP_VISUAL_BY_ROLE.huntTravel}
-                  label="Vaisseau de chasse du clan"
-                  loading="eager"
+                <img
+                  src={selectedShip.provenance.topRuntimeAssetPath}
+                  alt=""
+                  aria-hidden="true"
+                  draggable={false}
                 />
                 <span aria-hidden="true" />
               </div>

@@ -100,7 +100,7 @@ test("mobile catalogue, armory and galaxy keep the map spatial without the previ
   );
   assert.match(
     css,
-    /@media \(max-width: 760px\)[\s\S]*\.galaxy-v10-node \{ top: clamp\(24%, var\(--node-y\), 78%\); left: clamp\(18%, var\(--node-x\), 82%\)/,
+    /@media \(max-width: 760px\)[\s\S]*\.galaxy-v10-node \{[^}]*top: clamp\(24%, var\(--node-y\), 78%\); left: clamp\(18%, var\(--node-x\), 82%\)/,
   );
   assert.match(
     css,
@@ -110,5 +110,8 @@ test("mobile catalogue, armory and galaxy keep the map spatial without the previ
   const mobileV10End = css.indexOf("@media (max-width: 430px)", mobileV10Start);
   const mobileV10 = css.slice(mobileV10Start, mobileV10End);
   assert.doesNotMatch(mobileV10, /galaxy-v10-spatial-map[\s\S]*grid-template-columns/);
-  assert.match(css, /rotate\(calc\(var\(--ship-heading\) \+ 180deg\)\)/);
+  assert.match(
+    css,
+    /rotate\(var\(--ship-rotation\)\) scaleX\(var\(--ship-flip\)\)/,
+  );
 });

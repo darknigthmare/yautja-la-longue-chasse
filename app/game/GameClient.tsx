@@ -10,6 +10,10 @@ import V6AtlasSprite from "./V6AtlasSprite";
 import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
 import GalaxyMapPanel from "./GalaxyMapPanel";
 import PhysicalShipDeck from "./PhysicalShipDeck";
+import {
+  DEFAULT_SHIP_ID,
+  type ShipId,
+} from "./shipCatalogue";
 import TrophyWorkshop from "./TrophyWorkshop";
 import EnemyBestiaryV8 from "./EnemyBestiaryV8";
 import {
@@ -502,6 +506,8 @@ export default function GameClient() {
     useState<MissionDefinition | null>(null);
   const [galaxyNavigationState, setGalaxyNavigationState] =
     useState<GalaxyNavigationState>(createGalaxyNavigationState);
+  const [selectedShipId, setSelectedShipId] =
+    useState<ShipId>(DEFAULT_SHIP_ID);
   const [mapReturnScreen, setMapReturnScreen] =
     useState<MapReturnScreen>("ship");
   const [stationReturnScreen, setStationReturnScreen] =
@@ -1147,6 +1153,7 @@ export default function GameClient() {
             openStationScreen("customization", "ship")
           }
           onApplyLoadout={applyShipLoadout}
+          onSelectedShipChange={setSelectedShipId}
           onNotify={setToast}
         />
       )}
@@ -1198,6 +1205,7 @@ export default function GameClient() {
               openStationScreen("customization", "deck")
             }
             onApplyLoadout={applyShipLoadout}
+            onSelectedShipChange={setSelectedShipId}
             onNotify={setToast}
           />
         </section>
@@ -1206,6 +1214,7 @@ export default function GameClient() {
       {screen === "map" && (
         <GalaxyMapPanel
           missionProgress={save.missionProgress}
+          selectedShipId={selectedShipId}
           initialState={galaxyNavigationState}
           onStateChange={setGalaxyNavigationState}
           onBack={() => go(mapReturnScreen)}

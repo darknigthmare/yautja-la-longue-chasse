@@ -128,7 +128,9 @@ test("ship progression is a sidecar and leaves the current v3 save untouched", (
   const sidecar = createDefaultShipProgression(save, FIXED_TIME);
 
   assert.equal(JSON.stringify(save), before);
-  assert.equal(sidecar.version, 1);
+  assert.equal(sidecar.version, 2);
+  assert.equal(sidecar.selectedShipId, "classic-predator-spaceship");
+  assert.deepEqual(sidecar.unlockedShipIds, ["classic-predator-spaceship"]);
   assert.equal(sidecar.trophies.length, 1);
   assert.equal(sidecar.trophies[0].speciesId, "cryostalker");
   assert.equal(sidecar.trophies[0].huntMethodId, "combistick");
@@ -438,7 +440,7 @@ test("workshop and medbay catch up wall time across hub unmounts and reloads", (
   assert.equal(stableReload.medbay.treatmentsCompleted, 1);
 });
 
-test("ShipHub declares six rooms and keyboard, gamepad, and touch controls", async () => {
+test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", async () => {
   const source = await readFile(
     resolve(projectRoot, "app/game/ShipHub.tsx"),
     "utf8",
@@ -449,6 +451,7 @@ test("ShipHub declares six rooms and keyboard, gamepad, and touch controls", asy
   );
   const roomIds = [
     "bridge-map",
+    "hangar",
     "armory",
     "trophy-hall",
     "medbay",

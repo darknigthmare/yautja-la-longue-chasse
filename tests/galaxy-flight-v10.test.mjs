@@ -32,6 +32,8 @@ const {
   galaxyFlightDistance,
   galaxyFlightPointFromMapPosition,
   galaxyFlightReturnAnchorId,
+  galaxyShipTopDownPose,
+  galaxyShipUprightPose,
   hasGalaxyFlightArrived,
   isGalaxyFlightNear,
   normalizeGalaxyFlightInput,
@@ -182,6 +184,47 @@ test("maps visual node coordinates into aspect-correct flight coordinates", () =
     galaxyFlightPointFromMapPosition({ x: Number.NaN, y: Infinity }, 0),
     { x: 50, y: 50 },
   );
+});
+
+test("side-profile ship art mirrors without ever rolling upside down", () => {
+  assert.deepEqual(galaxyShipUprightPose(0), { scaleX: -1, rotationDegrees: 0 });
+  assert.deepEqual(galaxyShipUprightPose(180), { scaleX: 1, rotationDegrees: 0 });
+  assert.deepEqual(galaxyShipUprightPose(90), { scaleX: -1, rotationDegrees: 80 });
+  assert.deepEqual(galaxyShipUprightPose(270), { scaleX: -1, rotationDegrees: -80 });
+  assert.deepEqual(galaxyShipUprightPose(Number.NaN), { scaleX: -1, rotationDegrees: 0 });
+
+  for (let heading = -720; heading <= 720; heading += 1) {
+    const pose = galaxyShipUprightPose(heading);
+    assert.ok(Math.abs(pose.rotationDegrees) <= 80, `${heading}° stays upright`);
+    assert.ok(pose.scaleX === -1 || pose.scaleX === 1);
+  }
+});
+
+test("top-down ship art follows the full flight heading without mirroring", () => {
+  assert.deepEqual(galaxyShipTopDownPose(0), {
+    scaleX: 1,
+    rotationDegrees: 0,
+  });
+  assert.deepEqual(galaxyShipTopDownPose(90), {
+    scaleX: 1,
+    rotationDegrees: 90,
+  });
+  assert.deepEqual(galaxyShipTopDownPose(180), {
+    scaleX: 1,
+    rotationDegrees: 180,
+  });
+  assert.deepEqual(galaxyShipTopDownPose(270), {
+    scaleX: 1,
+    rotationDegrees: 270,
+  });
+  assert.deepEqual(galaxyShipTopDownPose(-90), {
+    scaleX: 1,
+    rotationDegrees: 270,
+  });
+  assert.deepEqual(galaxyShipTopDownPose(Number.NaN), {
+    scaleX: 1,
+    rotationDegrees: 0,
+  });
 });
 
 test("return anchors preserve the exact node exited at every flight level", () => {

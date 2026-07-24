@@ -1,4 +1,12 @@
 import { normalizeSave, RANK_THRESHOLDS } from "../save";
+import {
+  DEFAULT_SHIP_ID,
+  availableShipIds,
+  getShipAvailability,
+  isShipId,
+  type ShipAvailability,
+  type ShipId,
+} from "../shipCatalogue";
 import type {
   HunterAppearance,
   Loadout,
@@ -15,12 +23,13 @@ import type {
  * inside it. normalizeSave() discards unknown fields by design, so a sidecar
  * keeps the current save backward-compatible while the ship systems evolve.
  */
-export const SHIP_PROGRESSION_VERSION = 1;
+export const SHIP_PROGRESSION_VERSION = 2;
 export const SHIP_PROGRESSION_STORAGE_KEY =
   "yautja-long-hunt.ship-progression";
 
 export type ShipRoomId =
   | "bridge-map"
+  | "hangar"
   | "armory"
   | "trophy-hall"
   | "medbay"
@@ -129,6 +138,8 @@ export interface MedbayProgress {
 export interface ShipProgressionState {
   version: number;
   updatedAt: string;
+  selectedShipId: ShipId;
+  unlockedShipIds: ShipId[];
   completedRiteIds: ClanRiteId[];
   trophies: TrophyWorkshopRecord[];
   displaySlots: TrophyDisplaySlot[];
@@ -684,6 +695,8 @@ export function createDefaultShipProgression(
   const state: ShipProgressionState = {
     version: SHIP_PROGRESSION_VERSION,
     updatedAt: now,
+    selectedShipId: DEFAULT_SHIP_ID,
+    unlockedShipIds: availableShipIds(save),
     completedRiteIds: [],
     trophies: projectedTrophies.trophies,
     displaySlots: projectedTrophies.displaySlots,
@@ -890,9 +903,28 @@ export function normalizeShipProgression(
   save: SaveGame,
   now = new Date().toISOString(),
 ): ShipProgressionState {
-  if (!isRecord(value) || value.version !== SHIP_PROGRESSION_VERSION) {
+  if (
+    !isRecord(value) ||
+    (value.version !== 1 && value.version !== SHIP_PROGRESSION_VERSION)
+  ) {
     return createDefaultShipProgression(save, now);
   }
+
+  // V1 sidecars predate the fleet fields. Invalid/deleted IDs are discarded,
+  // while any ship earned under a previous save remains permanently unlocked.
+  const persistedUnlockedShipIds = Array.isArray(value.unlockedShipIds)
+    ? value.unlockedShipIds.filter(isShipId)
+    : [];
+  const unlockedShipIds = availableShipIds(
+    save,
+    persistedUnlockedShipIds,
+  );
+  const requestedShipId = isShipId(value.selectedShipId)
+    ? value.selectedShipId
+    : DEFAULT_SHIP_ID;
+  const selectedShipId = unlockedShipIds.includes(requestedShipId)
+    ? requestedShipId
+    : DEFAULT_SHIP_ID;
 
   const rawTrophies = Array.isArray(value.trophies)
     ? value.trophies
@@ -926,6 +958,8 @@ export function normalizeShipProgression(
     version: SHIP_PROGRESSION_VERSION,
     // updatedAt doubles as the UI clock snapshot for countdown rendering.
     updatedAt: now,
+    selectedShipId,
+    unlockedShipIds,
     completedRiteIds: Array.isArray(value.completedRiteIds)
       ? [
           ...new Set(
@@ -969,6 +1003,77 @@ export function synchronizeShipProgression(
     save,
     now,
   );
+}
+
+export function isShipUnlocked(
+  state: Pick<ShipProgressionState, "unlockedShipIds">,
+  shipId: ShipId,
+): boolean {
+  return isShipId(shipId) && state.unlockedShipIds.includes(shipId);
+}
+
+export function evaluateShipAvailability(
+  state: Pick<ShipProgressionState, "unlockedShipIds">,
+  save: SaveGame,
+  shipId: ShipId,
+): ShipAvailability {
+  return getShipAvailability(shipId, save, state.unlockedShipIds);
+}
+
+/** Unlock one earned hull; requirements cannot be bypassed by malformed UI. */
+export function unlockShip(
+  state: ShipProgressionState,
+  save: SaveGame,
+  shipId: ShipId,
+  now = new Date().toISOString(),
+): ShipProgressionState {
+  if (!isShipId(shipId) || state.unlockedShipIds.includes(shipId)) {
+    return state;
+  }
+  const availability = evaluateShipAvailability(state, save, shipId);
+  if (!availability.requirementsMet) return state;
+  return {
+    ...state,
+    unlockedShipIds: availableShipIds(save, [
+      ...state.unlockedShipIds,
+      shipId,
+    ]),
+    updatedAt: now,
+  };
+}
+
+/** Reconcile every newly satisfied requirement after a hunt or save import. */
+export function unlockAvailableShips(
+  state: ShipProgressionState,
+  save: SaveGame,
+  now = new Date().toISOString(),
+): ShipProgressionState {
+  const unlockedShipIds = availableShipIds(save, state.unlockedShipIds);
+  if (
+    unlockedShipIds.length === state.unlockedShipIds.length &&
+    unlockedShipIds.every(
+      (shipId, index) => state.unlockedShipIds[index] === shipId,
+    )
+  ) {
+    return state;
+  }
+  return { ...state, unlockedShipIds, updatedAt: now };
+}
+
+/** Select only a permanently unlocked hull; locked IDs leave state untouched. */
+export function selectShip(
+  state: ShipProgressionState,
+  shipId: ShipId,
+  now = new Date().toISOString(),
+): ShipProgressionState {
+  if (
+    !isShipId(shipId) ||
+    !state.unlockedShipIds.includes(shipId) ||
+    state.selectedShipId === shipId
+  ) {
+    return state;
+  }
+  return { ...state, selectedShipId: shipId, updatedAt: now };
 }
 
 function updateTrophy(

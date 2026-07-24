@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- generated ship art has per-master dimensions */
+
 import {
   useCallback,
   useEffect,
@@ -9,18 +11,30 @@ import {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import {
+  DEFAULT_SHIP_ID,
+  SHIP_CATALOGUE,
+  SHIP_CATALOGUE_PAGE_SIZE,
+  shipForId,
+  type ShipId,
+  type ShipMedia,
+} from "./shipCatalogue";
+import {
   TRAINING_LABELS,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
   createDefaultShipProgression,
+  evaluateShipAvailability,
   evaluateClanProgression,
+  isShipUnlocked,
   loadLoadoutPreset,
   loadShipProgression,
   recordTrainingResult,
   resolveMedbayTreatment,
   saveLoadoutPreset,
+  selectShip,
   startMedbayTreatment,
   synchronizeShipProgression,
+  unlockAvailableShips,
   writeShipProgression,
   type ShipLoadoutSlotId,
   type ShipProgressionState,
@@ -57,6 +71,14 @@ export const SHIP_ROOMS: readonly ShipRoomDefinition[] = [
     shortLabel: "Armurerie",
     description:
       "Assembler armes, armures, outils et apparence dans quatre loadouts.",
+  },
+  {
+    id: "hangar",
+    glyph: "▱",
+    label: "Hangar et console de flotte",
+    shortLabel: "Hangar",
+    description:
+      "Inspecter les coques, consulter les annexes et choisir le vaisseau actif.",
   },
   {
     id: "trophy-hall",
@@ -108,6 +130,7 @@ export interface ShipHubProps {
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
   onProgressionChange?: (state: ShipProgressionState) => void;
+  onSelectedShipChange?: (shipId: ShipId) => void;
   onRoomChange?: (roomId: ShipRoomId) => void;
   onOpenDeck?: () => void;
   onOpenMap: () => void;
@@ -174,6 +197,7 @@ export default function ShipHub({
   autoFocus = true,
   gamepadEnabled = true,
   onProgressionChange,
+  onSelectedShipChange,
   onRoomChange,
   onOpenDeck,
   onOpenMap,
@@ -188,6 +212,10 @@ export default function ShipHub({
   const [activeRoomId, setActiveRoomId] =
     useState<ShipRoomId>(initialRoomId);
   const [actionIndex, setActionIndex] = useState(0);
+  const [hangarMedia, setHangarMedia] = useState<ShipMedia | "all">("all");
+  const [hangarPage, setHangarPage] = useState(0);
+  const [inspectedShipId, setInspectedShipId] =
+    useState<ShipId>(controlledProgression?.selectedShipId ?? DEFAULT_SHIP_ID);
   const [localProgression, setLocalProgression] =
     useState<ShipProgressionState>(() =>
       createDefaultShipProgression(save, save.updatedAt),
@@ -200,6 +228,7 @@ export default function ShipHub({
 
   const progression =
     controlledProgression ?? localProgression;
+  const selectedShipSyncRef = useRef(progression.selectedShipId);
 
   const notify = useCallback(
     (message: string) => {
@@ -220,23 +249,50 @@ export default function ShipHub({
         setLocalProgression(snapshot);
       }
       onProgressionChange?.(snapshot);
+      onSelectedShipChange?.(snapshot.selectedShipId);
       return snapshot;
     },
-    [controlledProgression, onProgressionChange, save],
+    [
+      controlledProgression,
+      onProgressionChange,
+      onSelectedShipChange,
+      save,
+    ],
   );
 
   useEffect(() => {
     if (controlledProgression !== undefined) return;
     const hydrationTask = window.setTimeout(() => {
-      setLocalProgression(loadShipProgression(save));
+      const loaded = loadShipProgression(save);
+      setLocalProgression(loaded);
+      onProgressionChange?.(loaded);
+      onSelectedShipChange?.(loaded.selectedShipId);
     }, 0);
     return () => window.clearTimeout(hydrationTask);
-  }, [controlledProgression, save]);
+  }, [
+    controlledProgression,
+    onProgressionChange,
+    onSelectedShipChange,
+    save,
+  ]);
 
   useEffect(() => {
     if (!autoFocus) return;
     rootRef.current?.focus({ preventScroll: true });
   }, [autoFocus]);
+
+  useEffect(() => {
+    if (selectedShipSyncRef.current === progression.selectedShipId) return;
+    selectedShipSyncRef.current = progression.selectedShipId;
+    setInspectedShipId(progression.selectedShipId);
+    setHangarMedia("all");
+    const selectedIndex = SHIP_CATALOGUE.findIndex(
+      ({ id }) => id === progression.selectedShipId,
+    );
+    setHangarPage(
+      Math.max(0, Math.floor(selectedIndex / SHIP_CATALOGUE_PAGE_SIZE)),
+    );
+  }, [progression.selectedShipId]);
 
   useEffect(() => {
     // Trophy preparation is exclusively resolved by TrophyWorkshop. The hub
@@ -266,6 +322,26 @@ export default function ShipHub({
     [progression, save],
   );
   const activeRoom = SHIP_ROOMS[roomIndex(activeRoomId)];
+  const hangarFilteredShips = useMemo(
+    () =>
+      hangarMedia === "all"
+        ? SHIP_CATALOGUE
+        : SHIP_CATALOGUE.filter(({ media }) => media === hangarMedia),
+    [hangarMedia],
+  );
+  const hangarPageCount = Math.max(
+    1,
+    Math.ceil(hangarFilteredShips.length / SHIP_CATALOGUE_PAGE_SIZE),
+  );
+  const safeHangarPage = Math.min(hangarPage, hangarPageCount - 1);
+  const visibleHangarShips = useMemo(
+    () =>
+      hangarFilteredShips.slice(
+        safeHangarPage * SHIP_CATALOGUE_PAGE_SIZE,
+        (safeHangarPage + 1) * SHIP_CATALOGUE_PAGE_SIZE,
+      ),
+    [hangarFilteredShips, safeHangarPage],
+  );
 
   const selectRoom = useCallback(
     (roomId: ShipRoomId) => {
@@ -411,6 +487,117 @@ export default function ShipHub({
       ];
     }
 
+    if (activeRoomId === "hangar") {
+      const mediaLabels: Readonly<Record<ShipMedia | "all", string>> = {
+        all: "Tous",
+        film: "Films",
+        game: "Jeux",
+        comic: "Comics",
+        novel: "Romans",
+        collectible: "Produits dérivés",
+      };
+      const filterActions = (
+        ["all", "film", "game", "comic", "novel", "collectible"] as const
+      ).map<HubActionDefinition>((media) => ({
+        id: `hangar-filter-${media}`,
+        label: `${media === hangarMedia ? "● " : ""}${mediaLabels[media]}`,
+        detail: `Filtrer le registre de flotte : ${mediaLabels[media].toLowerCase()}.`,
+        run: () => {
+          setHangarMedia(media);
+          setHangarPage(0);
+          const firstMatch =
+            media === "all"
+              ? SHIP_CATALOGUE[0]
+              : SHIP_CATALOGUE.find((ship) => ship.media === media);
+          if (firstMatch) setInspectedShipId(firstMatch.id);
+        },
+      }));
+      const pageActions: HubActionDefinition[] =
+        hangarPageCount > 1
+          ? [
+              {
+                id: "hangar-page-previous",
+                label: "Page précédente",
+                detail: `Page ${safeHangarPage + 1}/${hangarPageCount}`,
+                disabled: safeHangarPage === 0,
+                run: () => {
+                  const nextPage = Math.max(0, safeHangarPage - 1);
+                  setHangarPage(nextPage);
+                  const firstShip =
+                    hangarFilteredShips[
+                      nextPage * SHIP_CATALOGUE_PAGE_SIZE
+                    ];
+                  if (firstShip) setInspectedShipId(firstShip.id);
+                },
+              },
+              {
+                id: "hangar-page-next",
+                label: "Page suivante",
+                detail: `Page ${safeHangarPage + 1}/${hangarPageCount}`,
+                disabled: safeHangarPage >= hangarPageCount - 1,
+                run: () => {
+                  const nextPage = Math.min(
+                    hangarPageCount - 1,
+                    safeHangarPage + 1,
+                  );
+                  setHangarPage(nextPage);
+                  const firstShip =
+                    hangarFilteredShips[
+                      nextPage * SHIP_CATALOGUE_PAGE_SIZE
+                    ];
+                  if (firstShip) setInspectedShipId(firstShip.id);
+                },
+              },
+            ]
+          : [];
+      const shipActions = visibleHangarShips.map<HubActionDefinition>(
+        (ship) => {
+          const availability = evaluateShipAvailability(
+            progression,
+            save,
+            ship.id,
+          );
+          const unlocked = isShipUnlocked(progression, ship.id);
+          const selected = progression.selectedShipId === ship.id;
+          const canSelect =
+            ship.selectable && (unlocked || availability.requirementsMet);
+          return {
+            id: `hangar-select-${ship.id}`,
+            label: selected
+              ? `Vaisseau actif · ${ship.shortName}`
+              : canSelect
+                ? `Sélectionner · ${ship.shortName}`
+                : `Inspecter · ${ship.shortName}`,
+            detail: !ship.selectable
+              ? `${ship.originLabel} · ${ship.deckNote}`
+              : canSelect
+                ? `${ship.originLabel} · ${ship.kind} · ${ship.aliases.join(" / ")}`
+                : `Verrouillé · ${availability.unmetLabels.join(" · ")}`,
+            run: () => {
+              setInspectedShipId(ship.id);
+              if (!ship.selectable) {
+                notify(`${ship.name} affiché comme entrée annexe.`);
+                return;
+              }
+              if (selected) {
+                notify(`${ship.name} est déjà le vaisseau actif.`);
+                return;
+              }
+              const reconciled = unlockAvailableShips(progression, save);
+              const next = selectShip(reconciled, ship.id);
+              if (next === progression || next.selectedShipId !== ship.id) {
+                notify(`${ship.name} reste verrouillé ; sa fiche est consultable.`);
+                return;
+              }
+              commitProgression(next);
+              notify(`${ship.name} devient le vaisseau actif.`);
+            },
+          };
+        },
+      );
+      return [...filterActions, ...pageActions, ...shipActions];
+    }
+
     if (activeRoomId === "trophy-hall") {
       return [
         {
@@ -512,6 +699,9 @@ export default function ShipHub({
     clan.completedRites.length,
     clan.prestige,
     commitProgression,
+    hangarFilteredShips,
+    hangarMedia,
+    hangarPageCount,
     notify,
     onApplyLoadout,
     onOpenDeck,
@@ -522,8 +712,10 @@ export default function ShipHub({
     onOpenTrophies,
     progression,
     requestTraining,
+    safeHangarPage,
     save,
     selectRoom,
+    visibleHangarShips,
   ]);
   const safeActionIndex = Math.min(
     actionIndex,
@@ -734,6 +926,7 @@ export default function ShipHub({
               save={save}
               progression={progression}
               clan={clan}
+              inspectedShipId={inspectedShipId}
             />
           </div>
 
@@ -800,11 +993,13 @@ function RoomSummary({
   save,
   progression,
   clan,
+  inspectedShipId,
 }: {
   roomId: ShipRoomId;
   save: SaveGame;
   progression: ShipProgressionState;
   clan: ReturnType<typeof evaluateClanProgression>;
+  inspectedShipId: ShipId;
 }) {
   if (roomId === "bridge-map") {
     return (
@@ -858,6 +1053,70 @@ function RoomSummary({
             );
           })}
         </div>
+      </>
+    );
+  }
+
+  if (roomId === "hangar") {
+    const inspectedShip = shipForId(inspectedShipId);
+    const isActive = progression.selectedShipId === inspectedShip.id;
+    const fidelityLabel =
+      inspectedShip.visualConfidence === "reference-locked"
+        ? "Références visuelles verrouillées"
+        : inspectedShip.visualConfidence === "silhouette-inferred"
+          ? "Silhouette fidèle · dessus reconstruit"
+          : "Création textuelle du projet";
+    const selectableCount = SHIP_CATALOGUE.filter(
+      ({ selectable }) => selectable,
+    ).length;
+    const auxiliaryCount = SHIP_CATALOGUE.length - selectableCount;
+    return (
+      <>
+        <SummaryHeading
+          title={inspectedShip.name}
+          detail={`${inspectedShip.originLabel} · ${inspectedShip.description}`}
+        />
+        <article className="equipment-card">
+          <p className="equipment-type">
+            {isActive ? "VAISSEAU ACTIF" : "FICHE DE FLOTTE"}
+          </p>
+          <h3>{inspectedShip.shortName}</h3>
+          <p>{inspectedShip.deckNote}</p>
+          <p>
+            Alias : {inspectedShip.aliases.join(" · ")}
+            <br />
+            Fidélité : {fidelityLabel}
+          </p>
+        </article>
+        <div
+          className="ship-visual-comparison"
+          aria-label={`Comparaison des vues de ${inspectedShip.name}`}
+        >
+          <figure>
+            <img
+              src={inspectedShip.provenance.runtimeAssetPath}
+              alt={`Profil de ${inspectedShip.name}`}
+              draggable={false}
+            />
+            <figcaption>Profil / trois-quarts · V12</figcaption>
+          </figure>
+          <figure>
+            <img
+              src={inspectedShip.provenance.topRuntimeAssetPath}
+              alt={`Vue de dessus de ${inspectedShip.name}`}
+              draggable={false}
+            />
+            <figcaption>Vue zénithale orthographique · V13</figcaption>
+          </figure>
+        </div>
+        <StatGrid
+          values={[
+            ["Débloqués", progression.unlockedShipIds.length.toString()],
+            ["Sélectionnables", selectableCount.toString()],
+            ["Annexes", auxiliaryCount.toString()],
+            ["Catalogue", SHIP_CATALOGUE.length.toString()],
+          ]}
+        />
       </>
     );
   }

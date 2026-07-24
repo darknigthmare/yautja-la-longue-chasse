@@ -46,6 +46,13 @@ export interface GalaxyFlightNavigationPath {
   planetId: string | null;
 }
 
+export interface GalaxyShipVisualPose {
+  /** A side-view ship is mirrored instead of ever being rendered upside down. */
+  scaleX: -1 | 1;
+  /** Screen-space bank kept inside an upright, readable range. */
+  rotationDegrees: number;
+}
+
 export interface GalaxyFlightConfig {
   bounds: GalaxyFlightBounds;
   /** Map units per second squared. */
@@ -128,6 +135,38 @@ function clamp(value: number, minimum: number, maximum: number): number {
 function normalizedHeading(value: unknown, fallback = 0): number {
   const finite = finiteOr(value, fallback);
   return ((finite % 360) + 360) % 360;
+}
+
+/**
+ * Convert a 360° flight heading to an upright pose for side-profile ship art.
+ * The source sprite faces left: eastbound headings mirror it, while north and
+ * south movement use a maximum 80° bank so the hull can never roll inverted.
+ */
+export function galaxyShipUprightPose(
+  rawHeading: unknown,
+): Readonly<GalaxyShipVisualPose> {
+  const heading = normalizedHeading(rawHeading);
+  const facesRight = heading <= 90 || heading >= 270;
+  const signedRotation = facesRight
+    ? (heading > 180 ? heading - 360 : heading)
+    : heading - 180;
+  return Object.freeze({
+    scaleX: facesRight ? -1 : 1,
+    rotationDegrees: clamp(signedRotation, -80, 80),
+  });
+}
+
+/**
+ * A dorsal orthographic ship can follow the complete heading without mirroring
+ * or rolling upside down. V13 masters point east (nose to the right) at 0°.
+ */
+export function galaxyShipTopDownPose(
+  rawHeading: unknown,
+): Readonly<GalaxyShipVisualPose> {
+  return Object.freeze({
+    scaleX: 1,
+    rotationDegrees: normalizedHeading(rawHeading),
+  });
 }
 
 function resolveBounds(

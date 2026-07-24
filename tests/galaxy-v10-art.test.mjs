@@ -66,7 +66,7 @@ test("V10 exposes 24 separate planet portraits and 20 separate auxiliary portrai
   }
 });
 
-test("V10 map uses real visual registries and a cropped clan ship sprite", async () => {
+test("V10 map uses real visual registries and the selected V13 dorsal ship", async () => {
   const [component, visuals] = await Promise.all([
     readFile("app/game/GalaxyMapPanel.tsx", "utf8"),
     readFile("app/game/galaxyVisuals.ts", "utf8"),
@@ -75,7 +75,9 @@ test("V10 map uses real visual registries and a cropped clan ship sprite", async
   assert.match(component, /data-galaxy-v10-level=\{state\.level\}/);
   assert.match(component, /galaxy-v10-spatial-map/);
   assert.match(component, /galaxy-v10-dossier/);
-  assert.match(component, /V6_SHIP_VISUAL_BY_ROLE\.huntTravel/);
+  assert.match(component, /selectedShip\.provenance\.topRuntimeAssetPath/);
+  assert.match(component, /galaxyShipTopDownPose\(flight\.heading\)/);
+  assert.doesNotMatch(component, /V6_SHIP_VISUAL_BY_ROLE\.huntTravel/);
   assert.match(component, /galaxyBodyVisualPath\(body\)/);
   assert.match(component, /engageGalaxyAutopilot/);
   assert.match(component, /stepGalaxyFlight/);
