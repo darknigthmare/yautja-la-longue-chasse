@@ -25,7 +25,7 @@ import {
   hunterArmorPath,
   hunterBodyPartPath,
   hunterDreadPath,
-  hunterMaskPath,
+  hunterMaskRigPath,
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
@@ -699,7 +699,7 @@ export function HunterRigPreview({
       {maskWorn &&
         appearance.biomaskId &&
         registeredLayer(
-          hunterMaskPath(appearance.biomaskId),
+          hunterMaskRigPath(appearance.biomaskId),
           boneMatrix("head"),
           70,
           `mask-${appearance.biomaskId}`,

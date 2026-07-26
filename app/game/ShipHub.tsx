@@ -14,7 +14,9 @@ import {
   DEFAULT_SHIP_ID,
   SHIP_CATALOGUE,
   SHIP_CATALOGUE_PAGE_SIZE,
+  shipProfileAssetPath,
   shipForId,
+  shipTopAssetPath,
   type ShipId,
   type ShipMedia,
 } from "./shipCatalogue";
@@ -495,9 +497,18 @@ export default function ShipHub({
         comic: "Comics",
         novel: "Romans",
         collectible: "Produits dérivés",
+        project: "Créations du projet",
       };
       const filterActions = (
-        ["all", "film", "game", "comic", "novel", "collectible"] as const
+        [
+          "all",
+          "film",
+          "game",
+          "comic",
+          "novel",
+          "collectible",
+          "project",
+        ] as const
       ).map<HubActionDefinition>((media) => ({
         id: `hangar-filter-${media}`,
         label: `${media === hangarMedia ? "● " : ""}${mediaLabels[media]}`,
@@ -1063,6 +1074,10 @@ function RoomSummary({
     const fidelityLabel =
       inspectedShip.visualConfidence === "reference-locked"
         ? "Références visuelles verrouillées"
+        : inspectedShip.visualConfidence === "source-guided-approximation"
+          ? "Étude guidée par sources · approximation non canonique"
+        : inspectedShip.visualConfidence === "project-original"
+          ? "Création originale du projet · non canonique"
         : inspectedShip.visualConfidence === "silhouette-inferred"
           ? "Silhouette fidèle · dessus reconstruit"
           : "Création textuelle du projet";
@@ -1094,21 +1109,57 @@ function RoomSummary({
         >
           <figure>
             <img
-              src={inspectedShip.provenance.runtimeAssetPath}
+              src={shipProfileAssetPath(inspectedShip.id)}
               alt={`Profil de ${inspectedShip.name}`}
               draggable={false}
             />
-            <figcaption>Profil / trois-quarts · V12</figcaption>
+            <figcaption>
+              Profil / trois-quarts ·{" "}
+              {inspectedShip.provenance.primaryAssetVersion}
+            </figcaption>
           </figure>
           <figure>
             <img
-              src={inspectedShip.provenance.topRuntimeAssetPath}
+              src={shipTopAssetPath(inspectedShip.id)}
               alt={`Vue de dessus de ${inspectedShip.name}`}
               draggable={false}
             />
-            <figcaption>Vue zénithale orthographique · V13</figcaption>
+            <figcaption>
+              Vue zénithale orthographique ·{" "}
+              {inspectedShip.provenance.primaryAssetVersion}
+            </figcaption>
           </figure>
         </div>
+        {inspectedShip.provenance.supplementalAssets.map((supplemental) => (
+          <div key={supplemental.id}>
+            <article className="equipment-card">
+              <p className="equipment-type">ÉTUDE NON CANONIQUE</p>
+              <h3>{supplemental.label}</h3>
+              <p>{supplemental.note}</p>
+            </article>
+            <div
+              className="ship-visual-comparison"
+              aria-label={`Archives visuelles originales de ${inspectedShip.name}`}
+            >
+              <figure>
+                <img
+                  src={supplemental.profileRuntimeAssetPath}
+                  alt={`Ancien profil original de ${inspectedShip.name}`}
+                  draggable={false}
+                />
+                <figcaption>Étude indépendante · V14</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src={supplemental.topRuntimeAssetPath}
+                  alt={`Ancienne vue de dessus originale de ${inspectedShip.name}`}
+                  draggable={false}
+                />
+                <figcaption>Étude zénithale indépendante · V14</figcaption>
+              </figure>
+            </div>
+          </div>
+        ))}
         <StatGrid
           values={[
             ["Débloqués", progression.unlockedShipIds.length.toString()],

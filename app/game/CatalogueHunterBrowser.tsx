@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+
 import {
   useEffect,
   useId,
@@ -16,6 +18,7 @@ import {
   filterCatalogueEntries,
   isCatalogueEntryPlayable,
   paginateCatalogueEntries,
+  resolveCatalogueVisual,
   type CataloguePlayableSelection,
 } from "./catalogueAppearance";
 import {
@@ -23,6 +26,7 @@ import {
   type CatalogueContinuity,
   type CatalogueEntryKind,
   type CatalogueStableId,
+  type CatalogueVisualAssetStatus,
   type CatalogueYautjaEntry,
 } from "./catalogueRoster";
 import { HUNTER_PRESET_BY_ID, type HunterLorePresetId } from "./hunterLore";
@@ -46,9 +50,20 @@ const KIND_LABELS: Readonly<Record<CatalogueEntryKind, string>> = {
 };
 
 const CONTINUITY_LABELS: Readonly<Record<CatalogueContinuity, string>> = {
-  canon: "Écran / canon",
+  canon: "Canon écran principal",
+  crossover: "Crossover écran",
   expanded: "Univers étendu",
   fan: "Fan-made",
+};
+
+const VISUAL_STATUS_LABELS: Readonly<
+  Record<CatalogueVisualAssetStatus, string>
+> = {
+  "existing-custom-plate": "Plaque projet propre",
+  "associated-preset-plate": "Plaque de preset associée · approximation",
+  "mapped-modular-preset": "Preset modulaire associé",
+  "modular-approximation": "Approximation modulaire",
+  "planned-custom": "Asset propre planifié",
 };
 
 function resetPageAfter<T>(
@@ -280,6 +295,7 @@ export function CatalogueHunterBrowser({
           const selected = selectedEntryId === entry.id;
           const titleId = `${idPrefix}-${entry.id}-title`;
           const referenceUrls = referenceUrlsForCatalogueEntry(entry);
+          const visualResolution = resolveCatalogueVisual(entry);
 
           return (
             <article
@@ -296,6 +312,40 @@ export function CatalogueHunterBrowser({
                   {CONTINUITY_LABELS[entry.continuity]}
                 </span>
               </header>
+              <figure
+                className="catalogueHunterBrowser__visual"
+                data-catalogue-visual={visualResolution.kind}
+              >
+                {visualResolution.kind === "runtime-plate" ? (
+                  <img
+                    src={visualResolution.runtimePath}
+                    alt={`${entry.name}, plaque individuelle originale du projet`}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                  />
+                ) : (
+                  <div
+                    className="catalogueHunterBrowser__visualFallback"
+                    role="img"
+                    aria-label={`Base modulaire ${visualResolution.appearanceResolution.provenance.referencePresetId} pour ${entry.name}`}
+                  >
+                    <span>Reconstruction modulaire</span>
+                    <small>
+                      Base :{" "}
+                      {
+                        visualResolution.appearanceResolution.provenance
+                          .referencePresetId
+                      }
+                    </small>
+                  </div>
+                )}
+                <figcaption>
+                  {visualResolution.kind === "runtime-plate"
+                    ? "Plaque individuelle"
+                    : "Fallback modulaire"}
+                </figcaption>
+              </figure>
               <h3 id={titleId}>{entry.name}</h3>
               <p className="catalogueHunterBrowser__work">
                 {entry.work} · {entry.year ?? "année non renseignée"}
@@ -308,6 +358,10 @@ export function CatalogueHunterBrowser({
                 <div>
                   <dt>Média</dt>
                   <dd>{entry.media.join(", ")}</dd>
+                </div>
+                <div>
+                  <dt>Visuel</dt>
+                  <dd>{VISUAL_STATUS_LABELS[entry.visualAssetStatus]}</dd>
                 </div>
                 {entry.aliases.length > 0 ? (
                   <div>

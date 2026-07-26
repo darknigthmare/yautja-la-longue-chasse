@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "packId": "hunter-kit-v14",
+  "packVersion": 14,
+  "generator": "OpenAI ImageGen",
+  "assetRoot": "/game/assets/v14/hunter-kit",
+  "selectionPriority": [
+    "exact-override",
+    "family",
+    "approximation",
+    "generic"
+  ],
+  "coverage": {
+    "planned": 6,
+    "available": 6,
+    "complete": true
+  },
+  "entries": [
+    {
+      "id": "mask-feral-screen",
+      "kind": "mask",
+      "name": "Feral Predator screen biomask",
+      "work": "Prey",
+      "year": 2022,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-feral-screen",
+      "promptRecordId": "mask-feral-screen",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "feral-hunter"
+        ],
+        "familyIds": [
+          "feral"
+        ],
+        "approximationIds": [
+          "mask-skull"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 1709546,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "7407d2551b355c8339a2ab3d0644fb3549aceee916ff121162f103b82e0a784d"
+      },
+      "metadata": {
+        "bytes": 130652,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "20fada2367f5ed884d002db8488b2bd96423d756da81ee5c6e65350f823d22ec"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          312,
+          55,
+          955,
+          1120
+        ],
+        "padding": {
+          "left": 312,
+          "top": 55,
+          "right": 298,
+          "bottom": 133
+        },
+        "visibleRatio": 0.292494,
+        "transparentRatio": 0.707215,
+        "partialAlphaPixels": 4039,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Exact skull-mask identity and complete alpha contour inspected."
+      },
+      "shard": "masks.json"
+    },
+    {
+      "id": "mask-boar",
+      "kind": "mask",
+      "name": "Boar Predator biomask",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-boar",
+      "promptRecordId": "mask-boar",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "boar"
+        ],
+        "familyIds": [
+          "lost-tribe"
+        ],
+        "approximationIds": [
+          "mask-metal"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 2283390,
+        "width": 1122,
+        "height": 1402,
+        "sha256": "36db814b15fcb5394a48886d896d6616dcb4e6eed6021f16c1c42e1c4226c55d"
+      },
+      "metadata": {
+        "bytes": 244934,
+        "width": 1122,
+        "height": 1402,
+        "channels": 4,
+        "sha256": "5da7003c6a67ff84482e2b158d81b014d2e6fa9f40250d2ebb26d1ec291413ee"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          157,
+          122,
+          961,
+          1269
+        ],
+        "padding": {
+          "left": 157,
+          "top": 122,
+          "right": 160,
+          "bottom": 132
+        },
+        "visibleRatio": 0.422958,
+        "transparentRatio": 0.576826,
+        "partialAlphaPixels": 5613,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Boar forehead ridges and squared chin inspected against licensed references."
+      },
+      "shard": "masks.json"
+    },
+    {
+      "id": "mask-snake",
+      "kind": "mask",
+      "name": "Snake Predator biomask",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-snake",
+      "promptRecordId": "mask-snake",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "snake"
+        ],
+        "familyIds": [
+          "lost-tribe"
+        ],
+        "approximationIds": [
+          "mask-metal"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 1734874,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d5e018b193edf8cbb4f3f13fef41fa8f9babb4db4223f587a0108b98ad88a232"
+      },
+      "metadata": {
+        "bytes": 121522,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "a85d1eaafd0ca5a10b3b890c984ff030d3205c5e0429c1fcba82a2ed76198614"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          249,
+          40,
+          1018,
+          1183
+        ],
+        "padding": {
+          "left": 249,
+          "top": 40,
+          "right": 235,
+          "bottom": 70
+        },
+        "visibleRatio": 0.412046,
+        "transparentRatio": 0.587755,
+        "partialAlphaPixels": 3928,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Snake medallion, engraved channels and complete lower face inspected."
+      },
+      "shard": "masks.json"
+    },
+    {
+      "id": "mask-falconer",
+      "kind": "mask",
+      "name": "Falconer Predator biomask",
+      "work": "Predators",
+      "year": 2010,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-falconer",
+      "promptRecordId": "mask-falconer",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "falconer"
+        ],
+        "familyIds": [
+          "super-predator"
+        ],
+        "approximationIds": [
+          "mask-angular"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 2899408,
+        "width": 1024,
+        "height": 1536,
+        "sha256": "54ecc56124cdf6ee372a50c5a860d4615f13cc5f5f86b7541d4cf7475d4027c8"
+      },
+      "metadata": {
+        "bytes": 251846,
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "sha256": "83006303b5dc52e111517c30cca53a0c36865a232223ceb62e2f0e6536c27cd3"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          102,
+          98,
+          885,
+          1451
+        ],
+        "padding": {
+          "left": 102,
+          "top": 98,
+          "right": 138,
+          "bottom": 84
+        },
+        "visibleRatio": 0.495677,
+        "transparentRatio": 0.504166,
+        "partialAlphaPixels": 4104,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Corrected no-fin silhouette, long angular face and coupling inspected against the replica."
+      },
+      "shard": "masks.json"
+    },
+    {
+      "id": "feral-speargun",
+      "kind": "weapon",
+      "name": "Feral Predator spear gun",
+      "work": "Prey",
+      "year": 2022,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "feral-speargun",
+      "promptRecordId": "feral-speargun",
+      "runtimePath": "public/game/assets/v14/hunter-kit/weapons/feral-speargun.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/weapons/feral-speargun.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "feral-hunter"
+        ],
+        "familyIds": [
+          "feral"
+        ],
+        "approximationIds": [
+          "speargun"
+        ],
+        "genericIds": [
+          "weapon-generic"
+        ]
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 1366503,
+        "width": 864,
+        "height": 1821,
+        "sha256": "6dfb15cf53554430f3847b71143ecb6bd31560024cb52b3a12e4edb47863b44f"
+      },
+      "metadata": {
+        "bytes": 72588,
+        "width": 864,
+        "height": 1821,
+        "channels": 4,
+        "sha256": "c87de7e7bd60a7cf38edc3c05aaf639c7519d1a72834488e05b61c4333a56688"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          266,
+          58,
+          587,
+          1767
+        ],
+        "padding": {
+          "left": 266,
+          "top": 58,
+          "right": 276,
+          "bottom": 53
+        },
+        "visibleRatio": 0.183566,
+        "transparentRatio": 0.816268,
+        "partialAlphaPixels": 6079,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Single deployed spear gun and complete mechanical silhouette inspected."
+      },
+      "shard": "equipment.json"
+    },
+    {
+      "id": "trophy-xenomorph-skull-p2",
+      "kind": "trophy",
+      "name": "Predator 2 Alien Warrior trophy skull",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-xenomorph-skull-p2",
+      "promptRecordId": "trophy-xenomorph-skull-p2",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [
+          "xenomorph"
+        ],
+        "approximationIds": [
+          "alien-skull"
+        ],
+        "genericIds": [
+          "trophy-skull"
+        ]
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "sourceMetadata": {
+        "bytes": 1524249,
+        "width": 1413,
+        "height": 1113,
+        "sha256": "ef5dd19a708b7fa8824b5147a1c2f014a922214dee6d76714e9af8e3082405fd"
+      },
+      "metadata": {
+        "bytes": 102386,
+        "width": 1413,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "b5f9c52f0389810fff1cef4cf5d9cd8cf7dfce7045839d670c638d7cfecfeefa"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          45,
+          260,
+          1366,
+          852
+        ],
+        "padding": {
+          "left": 45,
+          "top": 260,
+          "right": 46,
+          "bottom": 260
+        },
+        "visibleRatio": 0.25061,
+        "transparentRatio": 0.748755,
+        "partialAlphaPixels": 8615,
+        "visibleGreenRatio": 0
+      },
+      "inspection": {
+        "status": "passed",
+        "notes": "Long lateral skull, repeating fenestrae and separate jaw inspected against workshop photos."
+      },
+      "shard": "trophies.json"
+    }
+  ]
+}

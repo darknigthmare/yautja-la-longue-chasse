@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 14,
+  "group": "equipment",
+  "entries": [
+    {
+      "id": "feral-speargun",
+      "kind": "weapon",
+      "name": "Feral Predator spear gun",
+      "work": "Prey",
+      "year": 2022,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "feral-speargun",
+      "promptRecordId": "feral-speargun",
+      "masterPath": "art-source/v14/hunter-kit/masters/feral-speargun-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/weapons/feral-speargun.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/weapons/feral-speargun.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "feral-hunter"
+        ],
+        "familyIds": [
+          "feral"
+        ],
+        "approximationIds": [
+          "speargun"
+        ],
+        "genericIds": [
+          "weapon-generic"
+        ]
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Single deployed launcher with complete top prongs, side guides, breech and bottom coupling; clean transparent silhouette."
+      }
+    }
+  ]
+}

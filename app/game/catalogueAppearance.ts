@@ -15,7 +15,7 @@ export const CATALOGUE_RECONSTRUCTION_WARNING =
   "Reconstruction modulaire guidée par l’œuvre, le média et le statut de la source : elle reste signalée comme approximation tant qu’une plaque individuelle validée n’existe pas.";
 
 export interface CatalogueAppearanceProvenance {
-  readonly kind: "exact-preset" | "modular-reconstruction";
+  readonly kind: "mapped-preset" | "modular-reconstruction";
   readonly catalogueId: CatalogueStableId;
   readonly source: "hunterLore preset" | "catalogue source + closest hunterLore preset";
   readonly referencePresetId: HunterLorePresetId;
@@ -29,6 +29,20 @@ export interface CatalogueAppearanceResolution {
   readonly provenance: CatalogueAppearanceProvenance;
   readonly warning: string | null;
 }
+
+export type CatalogueVisualResolution =
+  | {
+      readonly kind: "runtime-plate";
+      readonly entry: CatalogueYautjaEntry;
+      readonly runtimePath: string;
+      readonly appearanceResolution: null;
+    }
+  | {
+      readonly kind: "appearance-fallback";
+      readonly entry: CatalogueYautjaEntry;
+      readonly runtimePath: null;
+      readonly appearanceResolution: CatalogueAppearanceResolution;
+    };
 
 export type CataloguePlayableSelection = HunterLorePresetId | HunterAppearance;
 
@@ -165,7 +179,7 @@ export function catalogueReferenceUrlsForEntry(
   return Array.from(
     new Set(
       [
-        entry.sourceUrl,
+        ...entry.referenceUrls,
         ...referencePresetIds.flatMap(
           (presetId) =>
             HUNTER_PRESETS.find((preset) => preset.id === presetId)
@@ -186,14 +200,19 @@ function reconstructCatalogueAppearance(
   };
 }
 
+function catalogueEntry(
+  entryOrId: CatalogueYautjaEntry | CatalogueStableId,
+): CatalogueYautjaEntry {
+  return typeof entryOrId === "string"
+    ? CATALOGUE_ENTRY_BY_ID[entryOrId]
+    : entryOrId;
+}
+
 export function resolveCatalogueAppearance(
   entryOrId: CatalogueYautjaEntry | CatalogueStableId,
   preferredPresetId?: HunterLorePresetId,
 ): CatalogueAppearanceResolution {
-  const entry =
-    typeof entryOrId === "string"
-      ? CATALOGUE_ENTRY_BY_ID[entryOrId]
-      : entryOrId;
+  const entry = catalogueEntry(entryOrId);
   const presetId =
     preferredPresetId && entry.presetIds.includes(preferredPresetId)
       ? preferredPresetId
@@ -205,11 +224,11 @@ export function resolveCatalogueAppearance(
       presetId,
       appearance: appearanceForPreset(presetId),
       provenance: {
-        kind: "exact-preset",
+        kind: "mapped-preset",
         catalogueId: entry.id,
         source: "hunterLore preset",
         referencePresetId: presetId,
-        note: `Preset de production ${presetId}, sans reconstruction.`,
+        note: `Preset de production associé ${presetId}. Statut visuel : ${entry.visualAssetStatus}.`,
       },
       warning: null,
     };
@@ -229,6 +248,43 @@ export function resolveCatalogueAppearance(
       note: `${CATALOGUE_RECONSTRUCTION_WARNING} Base visuelle : ${referencePresetId}.`,
     },
     warning: CATALOGUE_RECONSTRUCTION_WARNING,
+  };
+}
+
+/**
+ * An explicitly validated individual project plate always wins over the
+ * modular appearance resolver. A film plate inherited from an associated
+ * preset remains an approximation and must never enter this runtime path.
+ * Official reference URLs never enter this path: only local `/game/...`
+ * runtime assets recorded by the catalogue can be returned.
+ */
+export function resolveCatalogueVisual(
+  entryOrId: CatalogueYautjaEntry | CatalogueStableId,
+  preferredPresetId?: HunterLorePresetId,
+): CatalogueVisualResolution {
+  const entry = catalogueEntry(entryOrId);
+  const runtimePath =
+    entry.visualAssetStatus === "existing-custom-plate"
+      ? (entry.runtimeAssetPaths[0] ?? null)
+      : null;
+
+  if (runtimePath) {
+    return {
+      kind: "runtime-plate",
+      entry,
+      runtimePath,
+      appearanceResolution: null,
+    };
+  }
+
+  return {
+    kind: "appearance-fallback",
+    entry,
+    runtimePath: null,
+    appearanceResolution: resolveCatalogueAppearance(
+      entry,
+      preferredPresetId,
+    ),
   };
 }
 

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "packId": "hunter-kit-v14",
+  "packVersion": 14,
+  "scope": [
+    "masks",
+    "equipment",
+    "trophies"
+  ],
+  "sourcePolicy": {
+    "referenceRequired": true,
+    "exactIncarnationRequired": true,
+    "crossIncarnationMixingAllowed": false,
+    "visualInspectionRequired": true,
+    "generatedOriginalOnly": true
+  },
+  "resolverPolicy": {
+    "priority": [
+      "exact-override",
+      "family",
+      "approximation",
+      "generic"
+    ],
+    "statusFields": [
+      "planned",
+      "available"
+    ],
+    "futureConsumers": [
+      "thumbnail",
+      "rig"
+    ]
+  },
+  "artifactPolicy": {
+    "generator": "OpenAI ImageGen",
+    "masterBackground": "#00ff00",
+    "runtimeFormat": "webp",
+    "runtimeAlphaRequired": true,
+    "downloadedReferencesRoot": "tmp/hunter-kit-v14-references",
+    "downloadedReferencesAreCommitted": false,
+    "referenceUrlsStayInArtSource": true,
+    "publicContainsGeneratedRuntimeAssetsOnly": true
+  }
+}

@@ -48,21 +48,37 @@ export type ShipId =
   | "lunar-mothership"
   | "cursed-earth-ship"
   | "advanced-predator-ship"
-  | "predator-fleet";
+  | "predator-fleet"
+  | "project-original-avp-predator-mothership"
+  | "project-original-avp-predator-drop-pod"
+  | "project-original-avpr-scout-ship"
+  | "project-original-wolf-ship"
+  | "project-original-fugitive-spaceship"
+  | "project-original-upgrade-spaceship"
+  | "project-original-feral-spaceship";
 
-export type ShipMedia = "film" | "game" | "comic" | "novel" | "collectible";
+export type ShipMedia =
+  | "film"
+  | "game"
+  | "comic"
+  | "novel"
+  | "collectible"
+  | "project";
 
 export type ShipCanonTier =
   | "screen"
   | "licensed-game"
   | "expanded-universe"
   | "crossover"
-  | "literary";
+  | "literary"
+  | "project-original";
 
 export type ShipVisualConfidence =
   | "reference-locked"
+  | "source-guided-approximation"
   | "silhouette-inferred"
-  | "text-inspired";
+  | "text-inspired"
+  | "project-original";
 
 export type ShipRole =
   | "scout"
@@ -99,15 +115,133 @@ export interface ShipReferenceSlot {
   note: string;
 }
 
+export type ShipProfileRuntimeAssetPath =
+  | `/game/ships/v12/${ShipId}.webp`
+  | `/game/ships/v14/${ShipId}.webp`;
+
+export type ShipTopRuntimeAssetPath =
+  | `/game/ships/v13/${ShipId}-top.webp`
+  | `/game/ships/v14/${ShipId}-top.webp`;
+
+export interface ShipSupplementalVisual {
+  id: "v14-non-canonical-approximation";
+  label: string;
+  status: "approximation";
+  profileRuntimeAssetPath: ShipProfileRuntimeAssetPath;
+  topRuntimeAssetPath: ShipTopRuntimeAssetPath;
+  generationPromptIds: readonly string[];
+  generationNotesPath:
+    | "art-source/v13/ships-top/README.md"
+    | "art-source/v14/ships/README.md";
+  note: string;
+}
+
 export interface ShipVisualProvenance {
   status: "placeholder" | "references-locked" | "project-original";
-  /** Project-original profile or three-quarter master used by the hangar. */
-  runtimeAssetPath: `/game/ships/v12/${ShipId}.webp`;
-  /** Project-original 90-degree dorsal render used by navigation. */
-  topRuntimeAssetPath: `/game/ships/v13/${ShipId}-top.webp`;
-  generationPromptId: string | null;
-  generationNotesPath: "art-source/v13/ships-top/README.md";
+  primaryAssetVersion: "V12/V13" | "V14";
+  /** Highest-priority profile or three-quarter render used by the hangar. */
+  runtimeAssetPath: ShipProfileRuntimeAssetPath;
+  /** Highest-priority 90-degree dorsal render used by navigation. */
+  topRuntimeAssetPath: ShipTopRuntimeAssetPath;
+  generationPromptIds: readonly string[];
+  generationNotesPath:
+    | "art-source/v13/ships-top/README.md"
+    | "art-source/v14/ships/README.md";
+  assetManifestPath: "art-source/v14/ships/ship-asset-manifest.json" | null;
+  supplementalAssets: readonly ShipSupplementalVisual[];
   referenceSlots: readonly ShipReferenceSlot[];
+}
+
+/**
+ * Curated screen identities whose V14 pair takes priority over the historical
+ * project-original V12/V13 interpretation.
+ */
+export const V14_CANONICAL_SHIP_IDS = [
+  "avp-predator-mothership",
+  "avpr-scout-ship",
+  "wolf-ship",
+  "fugitive-spaceship",
+  "upgrade-spaceship",
+  "feral-spaceship",
+  "avp-predator-drop-pod",
+] as const satisfies readonly ShipId[];
+
+/** All generated pairs, including studies rejected as canonical replacements. */
+export const V14_GENERATED_SHIP_IDS = [
+  ...V14_CANONICAL_SHIP_IDS,
+  "game-preserve-ship",
+] as const satisfies readonly ShipId[];
+
+export const V14_APPROXIMATION_SHIP_IDS = [
+  "game-preserve-ship",
+] as const satisfies readonly ShipId[];
+
+/**
+ * Historical V12/V13 interpretations promoted to autonomous, explicitly
+ * non-canonical project creations. Their runtime files are reused in place.
+ */
+export const PROJECT_ORIGINAL_SHIP_IDS = [
+  "project-original-avp-predator-mothership",
+  "project-original-avpr-scout-ship",
+  "project-original-wolf-ship",
+  "project-original-fugitive-spaceship",
+  "project-original-upgrade-spaceship",
+  "project-original-feral-spaceship",
+  "project-original-avp-predator-drop-pod",
+] as const satisfies readonly ShipId[];
+
+export type ProjectOriginalShipId =
+  (typeof PROJECT_ORIGINAL_SHIP_IDS)[number];
+
+type V14CanonicalShipId = (typeof V14_CANONICAL_SHIP_IDS)[number];
+
+export const PROJECT_ORIGINAL_ASSET_SOURCE_BY_ID = Object.freeze({
+  "project-original-avp-predator-mothership": "avp-predator-mothership",
+  "project-original-avpr-scout-ship": "avpr-scout-ship",
+  "project-original-wolf-ship": "wolf-ship",
+  "project-original-fugitive-spaceship": "fugitive-spaceship",
+  "project-original-upgrade-spaceship": "upgrade-spaceship",
+  "project-original-feral-spaceship": "feral-spaceship",
+  "project-original-avp-predator-drop-pod": "avp-predator-drop-pod",
+}) satisfies Readonly<Record<ProjectOriginalShipId, V14CanonicalShipId>>;
+
+const V14_APPROXIMATION_SHIP_ID_SET = new Set<ShipId>(
+  V14_APPROXIMATION_SHIP_IDS,
+);
+
+const V14_CANONICAL_SHIP_ID_SET = new Set<ShipId>(
+  V14_CANONICAL_SHIP_IDS,
+);
+
+const PROJECT_ORIGINAL_SHIP_ID_SET = new Set<ShipId>(
+  PROJECT_ORIGINAL_SHIP_IDS,
+);
+
+export function hasV14CanonicalShipAssets(shipId: ShipId): boolean {
+  return V14_CANONICAL_SHIP_ID_SET.has(shipId);
+}
+
+/** Resolve the existing master/runtime stem without duplicating V12/V13 files. */
+export function shipAssetSourceId(shipId: ShipId): ShipId {
+  return PROJECT_ORIGINAL_SHIP_ID_SET.has(shipId)
+    ? PROJECT_ORIGINAL_ASSET_SOURCE_BY_ID[shipId as ProjectOriginalShipId]
+    : shipId;
+}
+
+export function shipProfileAssetPath(
+  shipId: ShipId,
+): ShipProfileRuntimeAssetPath {
+  const assetSourceId = shipAssetSourceId(shipId);
+  return hasV14CanonicalShipAssets(shipId)
+    ? `/game/ships/v14/${shipId}.webp`
+    : `/game/ships/v12/${assetSourceId}.webp`;
+}
+
+export function shipTopAssetPath(shipId: ShipId): ShipTopRuntimeAssetPath {
+  const assetSourceId = shipAssetSourceId(shipId);
+  return hasV14CanonicalShipAssets(shipId)
+    ? `/game/ships/v14/${shipId}-top.webp`
+    : `/game/ships/v13/${assetSourceId}-top.webp`;
 }
 
 export interface ShipCatalogueEntry {
@@ -118,6 +252,8 @@ export interface ShipCatalogueEntry {
   visualConfidence: ShipVisualConfidence;
   kind: ShipCatalogueKind;
   selectable: boolean;
+  projectOriginal: boolean;
+  inspirationShipId: ShipId | null;
   aliases: readonly string[];
   name: string;
   shortName: string;
@@ -150,7 +286,7 @@ export interface ShipAvailability {
 
 interface ShipRosterSeed {
   id: ShipId;
-  media: ShipMedia;
+  media: Exclude<ShipMedia, "project">;
   name: string;
   shortName: string;
   role: ShipRole;
@@ -252,18 +388,9 @@ const VARIANT_SHIP_IDS = new Set<ShipId>([
   "advanced-predator-ship",
 ]);
 
-const REFERENCE_LOCKED_SHIP_IDS = new Set<ShipId>([
-  "avp-predator-mothership",
-  "avp-predator-drop-pod",
-  "game-preserve-ship",
-  "fugitive-spaceship",
-  "upgrade-spaceship",
-  "feral-spaceship",
-  "wwii-cyborg-pilot-ship",
-  "kwei-ship",
-  "emergency-escape-pod",
-  "blade-fighter",
-]);
+const REFERENCE_LOCKED_SHIP_IDS = new Set<ShipId>(
+  V14_CANONICAL_SHIP_IDS,
+);
 
 const TEXT_INSPIRED_SHIP_IDS = new Set<ShipId>([
   "huntmaster-ship",
@@ -303,6 +430,53 @@ const EDITORIAL_ALIASES: Partial<Record<ShipId, readonly string[]>> = {
   "predator-fleet": ["Bunda Fleet", "Yautja Fleet"],
 };
 
+const PROJECT_ORIGINAL_PRESENTATION_BY_ID = {
+  "project-original-avp-predator-mothership": {
+    name: "Prototype porte-clan Obsidienne",
+    shortName: "Obsidienne",
+    aliases: ["Mothership Obsidienne", "Interprétation AVP V12"],
+  },
+  "project-original-avpr-scout-ship": {
+    name: "Prototype éclaireur Aiguille",
+    shortName: "Aiguille",
+    aliases: ["Scout Aiguille", "Interprétation AVP:R V12"],
+  },
+  "project-original-wolf-ship": {
+    name: "Prototype intercepteur Sombre-lance",
+    shortName: "Sombre-lance",
+    aliases: ["Sombre-lance", "Interprétation Wolf V12"],
+  },
+  "project-original-fugitive-spaceship": {
+    name: "Prototype courrier de la Faille",
+    shortName: "Faille",
+    aliases: ["Courrier Faille", "Interprétation Fugitive V12"],
+  },
+  "project-original-upgrade-spaceship": {
+    name: "Prototype chasseur Apex",
+    shortName: "Apex",
+    aliases: ["Poursuivant Apex", "Interprétation Upgrade V12"],
+  },
+  "project-original-feral-spaceship": {
+    name: "Prototype largueur des Premiers",
+    shortName: "Premiers",
+    aliases: ["Ancient Lander", "Interprétation Feral V12"],
+  },
+  "project-original-avp-predator-drop-pod": {
+    name: "Prototype capsule Trident",
+    shortName: "Trident",
+    aliases: ["Pod Trident", "Interprétation Drop Pod V12"],
+  },
+} as const satisfies Readonly<
+  Record<
+    ProjectOriginalShipId,
+    {
+      name: string;
+      shortName: string;
+      aliases: readonly string[];
+    }
+  >
+>;
+
 function catalogueKind(shipId: ShipId): ShipCatalogueKind {
   if (AUXILIARY_SHIP_IDS.has(shipId)) return "auxiliary";
   if (CLASS_SHIP_IDS.has(shipId)) return "class";
@@ -320,6 +494,9 @@ function canonTierFor(seed: ShipRosterSeed): ShipCanonTier {
 
 function visualConfidenceFor(shipId: ShipId): ShipVisualConfidence {
   if (REFERENCE_LOCKED_SHIP_IDS.has(shipId)) return "reference-locked";
+  if (V14_APPROXIMATION_SHIP_ID_SET.has(shipId)) {
+    return "source-guided-approximation";
+  }
   if (TEXT_INSPIRED_SHIP_IDS.has(shipId)) return "text-inspired";
   return "silhouette-inferred";
 }
@@ -355,12 +532,42 @@ function unlockForOrder(order: number): ShipUnlockRequirements {
 }
 
 function provenanceFor(seed: ShipRosterSeed): ShipVisualProvenance {
+  const hasV14Assets = hasV14CanonicalShipAssets(seed.id);
+  const isRejectedV14Approximation =
+    V14_APPROXIMATION_SHIP_ID_SET.has(seed.id);
+  const approximationNote =
+    "Étude non promue : le dessus corrigé montre quatre pods périphériques, deux par côté, mais le profil reste insuffisant avec deux pods externes et une unité centrale au lieu d’établir clairement la géométrie à quatre pods.";
   return {
-    status: "project-original",
-    runtimeAssetPath: `/game/ships/v12/${seed.id}.webp`,
-    topRuntimeAssetPath: `/game/ships/v13/${seed.id}-top.webp`,
-    generationPromptId: `v13-top-${seed.id}`,
-    generationNotesPath: "art-source/v13/ships-top/README.md",
+    status: hasV14Assets ? "references-locked" : "project-original",
+    primaryAssetVersion: hasV14Assets ? "V14" : "V12/V13",
+    runtimeAssetPath: shipProfileAssetPath(seed.id),
+    topRuntimeAssetPath: shipTopAssetPath(seed.id),
+    generationPromptIds: hasV14Assets
+      ? [`v14-profile-${seed.id}`, `v14-top-${seed.id}`]
+      : [`v13-top-${seed.id}`],
+    generationNotesPath: hasV14Assets
+      ? "art-source/v14/ships/README.md"
+      : "art-source/v13/ships-top/README.md",
+    assetManifestPath: hasV14Assets
+      ? "art-source/v14/ships/ship-asset-manifest.json"
+      : null,
+    supplementalAssets: isRejectedV14Approximation
+      ? [
+          {
+            id: "v14-non-canonical-approximation",
+            label: "Étude V14 non canonique",
+            status: "approximation",
+            profileRuntimeAssetPath: `/game/ships/v14/${seed.id}.webp`,
+            topRuntimeAssetPath: `/game/ships/v14/${seed.id}-top.webp`,
+            generationPromptIds: [
+              `v14-profile-${seed.id}`,
+              `v14-top-${seed.id}`,
+            ],
+            generationNotesPath: "art-source/v14/ships/README.md",
+            note: approximationNote,
+          },
+        ]
+      : [],
     referenceSlots: [
       {
         id: `${seed.id}-primary-reference`,
@@ -378,7 +585,7 @@ function provenanceFor(seed: ShipRosterSeed): ShipVisualProvenance {
   };
 }
 
-export const SHIP_CATALOGUE: readonly ShipCatalogueEntry[] = SHIP_ROSTER.map(
+const BASE_SHIP_CATALOGUE: readonly ShipCatalogueEntry[] = SHIP_ROSTER.map(
   (seed, index) => {
     const kind = catalogueKind(seed.id);
     const visualConfidence = visualConfidenceFor(seed.id);
@@ -389,12 +596,16 @@ export const SHIP_CATALOGUE: readonly ShipCatalogueEntry[] = SHIP_ROSTER.map(
       visualConfidence,
       kind,
       selectable: kind !== "auxiliary",
+      projectOriginal: false,
+      inspirationShipId: null,
       aliases: [...new Set([seed.shortName, ...(EDITORIAL_ALIASES[seed.id] ?? [])])],
       deckNote:
         kind === "auxiliary"
           ? "Entrée annexe consultable : ce pod, glider, véhicule ou groupe n’est pas un vaisseau sélectionnable."
           : visualConfidence === "reference-locked"
             ? "Silhouette et matériaux calés sur des références visuelles exploitables ; les surfaces absentes restent reconstruites."
+            : visualConfidence === "source-guided-approximation"
+              ? "Étude guidée par les références, conservée sans promotion canonique tant que les deux vues ne restituent pas toute la géométrie attestée."
             : visualConfidence === "silhouette-inferred"
               ? "Coque fidèle à la silhouette publiée ; la vue zénithale complète les angles absents."
               : "Interprétation originale du projet fondée sur les descriptions et fragments disponibles.",
@@ -403,6 +614,75 @@ export const SHIP_CATALOGUE: readonly ShipCatalogueEntry[] = SHIP_ROSTER.map(
     };
   },
 );
+
+function projectOriginalEntryFor(
+  id: ProjectOriginalShipId,
+  index: number,
+): ShipCatalogueEntry {
+  const inspirationShipId = PROJECT_ORIGINAL_ASSET_SOURCE_BY_ID[id];
+  const inspiration = BASE_SHIP_CATALOGUE.find(
+    (ship) => ship.id === inspirationShipId,
+  );
+  if (!inspiration) {
+    throw new Error(`Vaisseau source introuvable pour ${id}`);
+  }
+
+  const presentation = PROJECT_ORIGINAL_PRESENTATION_BY_ID[id];
+  const catalogueOrder = SHIP_ROSTER.length + index + 1;
+  const kind: ShipCatalogueKind = inspiration.selectable
+    ? "variant"
+    : "auxiliary";
+  return {
+    id,
+    catalogueOrder,
+    media: "project",
+    canonTier: "project-original",
+    visualConfidence: "project-original",
+    kind,
+    selectable: inspiration.selectable,
+    projectOriginal: true,
+    inspirationShipId,
+    aliases: [...new Set([presentation.shortName, ...presentation.aliases])],
+    name: presentation.name,
+    shortName: presentation.shortName,
+    role: inspiration.role,
+    originLabel: "Prototype original du clan · projet · non canonique",
+    description:
+      `Variante de concept autonome issue de l’ancienne interprétation V12/V13 de ${inspiration.name}. ` +
+      "Le profil et le dessus historiques ont été créés indépendamment et peuvent différer ; aucune des deux vues ne prétend reproduire le modèle de la franchise vu à l’écran.",
+    deckNote:
+      kind === "auxiliary"
+        ? "Création originale non canonique conservée comme annexe inspectable ; cette capsule n’est pas sélectionnable."
+        : "Création originale non canonique conservée comme vaisseau supplémentaire sélectionnable du projet.",
+    unlock: unlockForOrder(catalogueOrder),
+    provenance: {
+      status: "project-original",
+      primaryAssetVersion: "V12/V13",
+      runtimeAssetPath: shipProfileAssetPath(id),
+      topRuntimeAssetPath: shipTopAssetPath(id),
+      generationPromptIds: [`v13-top-${inspirationShipId}`],
+      generationNotesPath: "art-source/v13/ships-top/README.md",
+      assetManifestPath: null,
+      supplementalAssets: [],
+      referenceSlots: [
+        {
+          id: `${id}-project-archive`,
+          status: "verified",
+          medium: "concept-art",
+          title: `${presentation.name} · création originale V12/V13`,
+          url: null,
+          note:
+            `Provenance interne vérifiée : réutilise les masters historiques de ${inspirationShipId}, sans copie et sans revendication canonique.`,
+        },
+      ],
+    },
+  };
+}
+
+export const SHIP_CATALOGUE: readonly ShipCatalogueEntry[] = [
+  ...BASE_SHIP_CATALOGUE,
+  ...PROJECT_ORIGINAL_SHIP_IDS.map(projectOriginalEntryFor),
+];
 
 export const SHIP_IDS: readonly ShipId[] = SHIP_CATALOGUE.map(({ id }) => id);
 

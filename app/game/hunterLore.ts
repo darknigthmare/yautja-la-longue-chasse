@@ -184,7 +184,7 @@ export const HUNTER_PRESETS = [
     continuity: "canon",
     bodyMorphId: "classic",
     skinId: "dark-mottle",
-    biomaskId: "city",
+    biomaskId: "boar",
     dreadStyleId: "ringed",
     dreadTintId: "obsidian",
     armorStyleId: "city",
@@ -201,7 +201,7 @@ export const HUNTER_PRESETS = [
     description:
       "Le Lost Hunter au biomask frontal massif, au collier de trophées et à l’armure de poursuite vue dans le vaisseau de 1990.",
     fidelityNote:
-      "Sa plaque de sélection V5 suit les vues film et la galerie licenciée ; le rig jouable conserve encore le masque city le plus proche.",
+      "Sa vignette emploie le biomask V14 dédié guidé par les vues film ; le rig conserve la coque city V3 alignée pour éviter d’étirer ce cutout autonome.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/05/predator-2-7-scale-action-figure-ultimate-boar-predator/",
@@ -270,7 +270,7 @@ export const HUNTER_PRESETS = [
     continuity: "canon",
     bodyMorphId: "classic",
     skinId: "ochre-mottle",
-    biomaskId: "city",
+    biomaskId: "snake",
     dreadStyleId: "classic",
     dreadTintId: "obsidian",
     armorStyleId: "city",
@@ -280,9 +280,9 @@ export const HUNTER_PRESETS = [
     signatureWeaponIds: ["wristblades", "combistick", "smart-disc"],
     signatureGearIds: ["netgun"],
     description:
-      "Un Lost Hunter compact, à la peau chaude et au masque urbain, associé à un équipement léger de poursuite.",
+      "Un Lost Hunter compact, à la peau chaude et au biomask gravé à médaillon, associé à un équipement léger de poursuite.",
     fidelityNote:
-      "Ses dreads particulièrement courtes sont rendues par le style classic, le plus proche du rig disponible.",
+      "Sa vignette emploie le biomask V14 dédié ; le rig conserve la coque city V3 alignée, et ses dreads courtes le style classic le plus proche.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-snake/",
@@ -731,7 +731,7 @@ export const HUNTER_PRESETS = [
     continuity: "canon",
     bodyMorphId: "super",
     skinId: "dark-mottle",
-    biomaskId: "berserker",
+    biomaskId: "falconer",
     dreadStyleId: "feral",
     dreadTintId: "obsidian",
     armorStyleId: "super",
@@ -743,7 +743,7 @@ export const HUNTER_PRESETS = [
     description:
       "Le Super Predator à l'armure légère et au drone-faucon, combattant au corps à corps contre Hanzo.",
     fidelityNote:
-      "Le biomask berserker est une base provisoire ; son masque à fines stries et son drone exigent des modules dédiés.",
+      "Sa vignette emploie le biomask V14 dédié ; le rig conserve la base berserker V3 alignée, et le drone-faucon reste à isoler comme module autonome.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predators",
       "https://www.avpgalaxy.net/predator/falconer/",

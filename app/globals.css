@@ -3065,6 +3065,25 @@ select:focus-visible,
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.armory-exact-kit {
+  grid-column: 1 / -1;
+}
+
+.hunter-kit-rack {
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+}
+
+.hunter-kit-rack figure > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 6px;
+  object-fit: contain;
+  background:
+    radial-gradient(circle, rgba(214, 166, 91, 0.16), transparent 68%),
+    rgba(2, 9, 8, 0.86);
+}
+
 .armory-atlas-shelves figure,
 .laser-rank-atlas {
   margin: 0;
@@ -3802,6 +3821,68 @@ select:focus-visible,
 .catalogueHunterBrowser__status {
   color: #a6834b;
   font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__visual {
+  position: relative;
+  display: grid;
+  min-height: 210px;
+  margin: 10px 0 2px;
+  overflow: hidden;
+  place-items: end center;
+  border: 1px solid rgba(112, 244, 207, 0.12);
+  background:
+    linear-gradient(rgba(112, 244, 207, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112, 244, 207, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 78%, rgba(42, 100, 80, 0.24), transparent 54%),
+    #050a08;
+  background-size: 24px 24px, 24px 24px, auto, auto;
+}
+
+.catalogueHunterBrowser__visual img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  object-position: 50% 100%;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.78));
+}
+
+.catalogueHunterBrowser__visualFallback {
+  display: grid;
+  width: 100%;
+  min-height: 210px;
+  place-content: center;
+  gap: 6px;
+  padding: 20px;
+  color: #9eb2aa;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.catalogueHunterBrowser__visualFallback span {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+}
+
+.catalogueHunterBrowser__visualFallback small {
+  color: #66766f;
+  font-size: 0.54rem;
+  letter-spacing: 0.05em;
+}
+
+.catalogueHunterBrowser__visual figcaption {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 3px 5px;
+  border: 1px solid rgba(112, 244, 207, 0.16);
+  background: rgba(4, 10, 8, 0.82);
+  color: #79a697;
+  font-size: 0.49rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }

@@ -14,6 +14,7 @@ import {
   loadoutForPreset,
   playableKitForPreset,
 } from "../app/game/hunterLore.ts";
+import { hunterMaskThumbnailPath } from "../app/game/hunterVisuals.ts";
 import { ARMOR_BY_ID, GEAR_BY_ID, WEAPON_BY_ID } from "../app/game/data.ts";
 
 const EXPECTED_PRESET_IDS = [
@@ -201,6 +202,41 @@ test("appearanceForPreset returns a complete independent save appearance", () =>
       secondAppearance,
       `${preset.id}: callers must receive fresh save objects`,
     );
+  }
+});
+
+test("dedicated franchise biomasks resolve their exact V14 runtime URLs", () => {
+  const dedicatedPresetMasks = {
+    boar: "boar",
+    snake: "snake",
+    falconer: "falconer",
+  };
+  const expectedRigFallbacks = {
+    boar: "city V3 alignée",
+    snake: "city V3 alignée",
+    falconer: "berserker V3 alignée",
+  };
+  const expectedV14Paths = {
+    boar: "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+    snake: "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+    falconer: "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+    feral: "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+  };
+
+  for (const [presetId, biomaskId] of Object.entries(dedicatedPresetMasks)) {
+    assert.equal(HUNTER_PRESET_BY_ID[presetId].biomaskId, biomaskId);
+    assert.match(
+      HUNTER_PRESET_BY_ID[presetId].fidelityNote,
+      new RegExp(expectedRigFallbacks[presetId], "i"),
+    );
+  }
+  assert.doesNotMatch(
+    HUNTER_PRESET_BY_ID.snake.description,
+    /masque urbain/i,
+  );
+  assert.match(HUNTER_PRESET_BY_ID.snake.description, /biomask gravé/i);
+  for (const [biomaskId, runtimeUrl] of Object.entries(expectedV14Paths)) {
+    assert.equal(hunterMaskThumbnailPath(biomaskId), runtimeUrl);
   }
 });
 

@@ -21,6 +21,27 @@ export const HUNTER_ASSET_ROOT =
 export const HUNTER_ASSET_ROOT_V3 =
   "/game/assets/v3/actors/yautja/hunter" as const;
 
+/**
+ * Standalone V14 cutouts are only valid for thumbnails and galleries. This
+ * stays a pure path table so direct Node consumers do not depend on JSON
+ * import attributes; the V14 audit cross-checks every entry against the
+ * available runtime manifest and prevents these paths from entering the rig.
+ */
+const EXACT_V14_MASK_THUMBNAIL_PATH_BY_ID: Partial<
+  Record<BiomaskId, string>
+> = {
+  feral: "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+  boar: "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+  snake: "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+  falconer: "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+};
+
+const RIG_ALIGNED_V3_MASK_ID_BY_ID: Partial<Record<BiomaskId, BiomaskId>> = {
+  boar: "city",
+  snake: "city",
+  falconer: "berserker",
+};
+
 export const HUNTER_BODY_PART_IDS = [
   "head",
   "torso",
@@ -111,8 +132,17 @@ export function hunterNetPartPath(
   return `${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/parts/${partId}.webp`;
 }
 
-export function hunterMaskPath(maskId: BiomaskId): string {
-  return `${HUNTER_ASSET_ROOT_V3}/masks/registered/${maskId}.webp`;
+export function hunterMaskThumbnailPath(maskId: BiomaskId): string {
+  const exactPath = EXACT_V14_MASK_THUMBNAIL_PATH_BY_ID[maskId];
+  if (exactPath) {
+    return exactPath;
+  }
+  return `${HUNTER_ASSET_ROOT_V3}/masks/${maskId}.webp`;
+}
+
+export function hunterMaskRigPath(maskId: BiomaskId): string {
+  const rigMaskId = RIG_ALIGNED_V3_MASK_ID_BY_ID[maskId] ?? maskId;
+  return `${HUNTER_ASSET_ROOT_V3}/masks/registered/${rigMaskId}.webp`;
 }
 
 export function hunterDreadPath(dreadId: DreadStyleId): string {

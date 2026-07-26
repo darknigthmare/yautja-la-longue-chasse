@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 14,
+  "group": "trophies",
+  "entries": [
+    {
+      "id": "trophy-xenomorph-skull-p2",
+      "kind": "trophy",
+      "name": "Predator 2 Alien Warrior trophy skull",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-xenomorph-skull-p2",
+      "promptRecordId": "trophy-xenomorph-skull-p2",
+      "masterPath": "art-source/v14/hunter-kit/masters/trophy-xenomorph-skull-p2-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [
+          "xenomorph"
+        ],
+        "approximationIds": [
+          "alien-skull"
+        ],
+        "genericIds": [
+          "trophy-skull"
+        ]
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Single complete lateral skull with long cranium, repeating fenestrae, internal rail and lower jaw; alpha extraction inspected."
+      }
+    }
+  ]
+}

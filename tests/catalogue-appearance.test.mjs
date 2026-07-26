@@ -12,6 +12,7 @@ import {
   paginateCatalogueEntries,
   referencePresetForCatalogueEntry,
   resolveCatalogueAppearance,
+  resolveCatalogueVisual,
 } from "../app/game/catalogueAppearance.ts";
 import {
   CATALOGUE_ENTRY_BY_ID,
@@ -22,7 +23,7 @@ import {
   appearanceForPreset,
 } from "../app/game/hunterLore.ts";
 
-test("catalogue preset entries resolve to their exact production appearance", () => {
+test("catalogue preset entries resolve to their mapped production appearance", () => {
   const presetIds = new Set(HUNTER_PRESETS.map(({ id }) => id));
 
   for (const entry of CATALOGUE_ROSTER) {
@@ -32,7 +33,7 @@ test("catalogue preset entries resolve to their exact production appearance", ()
 
       assert.equal(resolution.presetId, presetId);
       assert.deepEqual(resolution.appearance, appearanceForPreset(presetId));
-      assert.equal(resolution.provenance.kind, "exact-preset");
+      assert.equal(resolution.provenance.kind, "mapped-preset");
       assert.equal(resolution.warning, null);
       assert.equal(catalogueSelectionForEntry(entry, presetId), presetId);
     }
@@ -42,6 +43,26 @@ test("catalogue preset entries resolve to their exact production appearance", ()
   assert.equal(
     resolveCatalogueAppearance("Y-076", "emissary-two").presetId,
     "emissary-two",
+  );
+});
+
+test("associated preset plates never masquerade as individual runtime plates", () => {
+  for (const id of ["Y-039", "Y-097", "Y-103", "Y-206"]) {
+    const entry = CATALOGUE_ENTRY_BY_ID[id];
+    const visual = resolveCatalogueVisual(entry);
+
+    assert.equal(entry.visualAssetStatus, "associated-preset-plate");
+    assert.ok(entry.runtimeAssetPaths.length > 0);
+    assert.equal(visual.kind, "appearance-fallback");
+    assert.equal(visual.runtimePath, null);
+    assert.equal(visual.appearanceResolution.provenance.kind, "mapped-preset");
+  }
+
+  assert.deepEqual(
+    CATALOGUE_ROSTER.filter(
+      (entry) => resolveCatalogueVisual(entry).kind === "runtime-plate",
+    ).map(({ id }) => id),
+    ["Y-258", "Y-259", "Y-260"],
   );
 });
 
@@ -100,8 +121,8 @@ test("unmapped appearances use one coherent source-guided production family", ()
   );
 });
 
-test("all 210 individual entries expose a playable selection", () => {
-  assert.equal(CATALOGUE_PLAYABLE_INDIVIDUALS.length, 210);
+test("all 214 individual entries expose a playable selection", () => {
+  assert.equal(CATALOGUE_PLAYABLE_INDIVIDUALS.length, 214);
 
   for (const entry of CATALOGUE_PLAYABLE_INDIVIDUALS) {
     assert.equal(isCatalogueEntryPlayable(entry), true);
@@ -122,13 +143,13 @@ test("all 210 individual entries expose a playable selection", () => {
 test("search, filters and pagination keep the full catalogue reachable", () => {
   assert.equal(
     filterCatalogueEntries(CATALOGUE_ROSTER, { kind: "individual" }).length,
-    210,
+    214,
   );
   assert.deepEqual(
     filterCatalogueEntries(CATALOGUE_ROSTER, { query: "greyback" }).map(
       ({ id }) => id,
     ),
-    ["Y-097", "Y-103"],
+    ["Y-097", "Y-103", "Y-258"],
   );
   assert.ok(
     filterCatalogueEntries(CATALOGUE_ROSTER, {
@@ -147,7 +168,7 @@ test("search, filters and pagination keep the full catalogue reachable", () => {
     visited.push(...paginateCatalogueEntries(CATALOGUE_ROSTER, page, 24).items);
   }
   assert.deepEqual(visited, CATALOGUE_ROSTER);
-  assert.equal(new Set(visited.map(({ id }) => id)).size, 255);
+  assert.equal(new Set(visited.map(({ id }) => id)).size, 260);
   assert.equal(paginateCatalogueEntries(CATALOGUE_ROSTER, 999, 24).page, 11);
 });
 

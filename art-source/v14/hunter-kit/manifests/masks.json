@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 14,
+  "group": "masks",
+  "entries": [
+    {
+      "id": "mask-feral-screen",
+      "kind": "mask",
+      "name": "Feral Predator screen biomask",
+      "work": "Prey",
+      "year": 2022,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-feral-screen",
+      "promptRecordId": "mask-feral-screen",
+      "masterPath": "art-source/v14/hunter-kit/masters/mask-feral-screen-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "feral-hunter"
+        ],
+        "familyIds": [
+          "feral"
+        ],
+        "approximationIds": [
+          "mask-skull"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Detached asymmetrical skull mask, complete contour and optic visible; chroma extraction inspected."
+      }
+    },
+    {
+      "id": "mask-boar",
+      "kind": "mask",
+      "name": "Boar Predator biomask",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-boar",
+      "promptRecordId": "mask-boar",
+      "masterPath": "art-source/v14/hunter-kit/masters/mask-boar-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "boar"
+        ],
+        "familyIds": [
+          "lost-tribe"
+        ],
+        "approximationIds": [
+          "mask-metal"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Three nested forehead ridges and squared ribbed chin remain readable; complete clean alpha contour."
+      }
+    },
+    {
+      "id": "mask-snake",
+      "kind": "mask",
+      "name": "Snake Predator biomask",
+      "work": "Predator 2",
+      "year": 1990,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-snake",
+      "promptRecordId": "mask-snake",
+      "masterPath": "art-source/v14/hunter-kit/masters/mask-snake-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "snake"
+        ],
+        "familyIds": [
+          "lost-tribe"
+        ],
+        "approximationIds": [
+          "mask-metal"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Tall engraved medallion, oval nodes and long ribbed lower face are distinct; alpha contour inspected."
+      }
+    },
+    {
+      "id": "mask-falconer",
+      "kind": "mask",
+      "name": "Falconer Predator biomask",
+      "work": "Predators",
+      "year": 2010,
+      "sourceTier": "exact-override",
+      "sourceRecordId": "mask-falconer",
+      "promptRecordId": "mask-falconer",
+      "masterPath": "art-source/v14/hunter-kit/masters/mask-falconer-chroma.png",
+      "runtimePath": "public/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [
+          "falconer"
+        ],
+        "familyIds": [
+          "super-predator"
+        ],
+        "approximationIds": [
+          "mask-angular"
+        ],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail",
+        "rig"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Corrected generation removes invented dorsal fins; smooth crown, angular beak and coupling remain complete."
+      }
+    }
+  ]
+}

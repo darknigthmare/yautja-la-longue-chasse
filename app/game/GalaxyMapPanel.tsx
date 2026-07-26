@@ -51,7 +51,11 @@ import {
   galaxySystemBackgroundPath,
 } from "./galaxyVisuals";
 import { backgroundPathForBiome } from "./worldScreens";
-import { shipForId, type ShipId } from "./shipCatalogue";
+import {
+  shipForId,
+  shipTopAssetPath,
+  type ShipId,
+} from "./shipCatalogue";
 import type {
   MissionDefinition,
   MissionId,
@@ -687,7 +691,7 @@ export default function GalaxyMapPanel({
                 aria-label={`${selectedShip.name}, ${flightMessage}`}
               >
                 <img
-                  src={selectedShip.provenance.topRuntimeAssetPath}
+                  src={shipTopAssetPath(selectedShip.id)}
                   alt=""
                   aria-hidden="true"
                   draggable={false}

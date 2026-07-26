@@ -162,6 +162,31 @@ test("every production hunter preset survives save normalization", () => {
   }
 });
 
+test("dedicated V14 biomasks survive an exact normalized save round-trip", () => {
+  const dedicatedMasks = {
+    boar: "boar",
+    snake: "snake",
+    falconer: "falconer",
+  };
+
+  for (const [presetId, biomaskId] of Object.entries(dedicatedMasks)) {
+    const source = defaultSave("2026-01-01T00:00:00.000Z");
+    source.appearance = appearanceForPreset(presetId);
+
+    const normalized = normalizeSave(source);
+    assert.equal(
+      normalized.appearance.biomaskId,
+      biomaskId,
+      `${presetId}: dedicated biomask must survive normalization`,
+    );
+    assert.deepEqual(
+      normalizeSave(structuredClone(normalized)).appearance,
+      normalized.appearance,
+      `${presetId}: dedicated biomask must remain stable after a second pass`,
+    );
+  }
+});
+
 test("a legendary id is downgraded to custom after any module changes", () => {
   for (const preset of HUNTER_PRESETS) {
     const exact = appearanceForPreset(preset.id);

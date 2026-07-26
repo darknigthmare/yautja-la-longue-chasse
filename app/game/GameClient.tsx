@@ -69,7 +69,14 @@ import {
 import {
   HUNTER_ASSET_ROOT_V3,
   hunterBodyFullPath,
+  hunterMaskThumbnailPath,
 } from "./hunterVisuals";
+import {
+  getHunterKitAsset,
+  listHunterKitAssets,
+  resolveHunterKitAsset,
+  type HunterKitResolveRequest,
+} from "./hunterKitRegistry";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -180,11 +187,50 @@ const SKIN_OPTIONS: ReadonlyArray<{
   },
 ];
 
+function resolveAvailableMaskRuntimeUrl(
+  request: HunterKitResolveRequest,
+): string | undefined {
+  const resolution = resolveHunterKitAsset(request);
+  return resolution?.asset.available
+    ? resolution.asset.runtimeUrl
+    : undefined;
+}
+
+const V14_FERAL_MASK_URL = resolveAvailableMaskRuntimeUrl({
+  kind: "mask",
+  assetId: "mask-feral-screen",
+  presetId: "feral-hunter",
+  familyId: "feral",
+  approximationId: "mask-skull",
+});
+const V14_BOAR_MASK_URL = resolveAvailableMaskRuntimeUrl({
+  kind: "mask",
+  assetId: "mask-boar",
+  presetId: "boar",
+  familyId: "lost-tribe",
+  approximationId: "mask-metal",
+});
+const V14_SNAKE_MASK_URL = resolveAvailableMaskRuntimeUrl({
+  kind: "mask",
+  assetId: "mask-snake",
+  presetId: "snake",
+  familyId: "lost-tribe",
+  approximationId: "mask-metal",
+});
+const V14_FALCONER_MASK_URL = resolveAvailableMaskRuntimeUrl({
+  kind: "mask",
+  assetId: "mask-falconer",
+  presetId: "falconer",
+  familyId: "super-predator",
+  approximationId: "mask-angular",
+});
+
 const MASK_OPTIONS: ReadonlyArray<{
   id: BiomaskId | null;
   label: string;
   detail: string;
   image?: string;
+  preferImage?: boolean;
 }> = [
   { id: null, label: "Visage découvert", detail: "Biomask retiré" },
   {
@@ -233,7 +279,31 @@ const MASK_OPTIONS: ReadonlyArray<{
     id: "feral",
     label: "Feral",
     detail: "Crâne primitif de Prey",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/feral.webp`,
+    image:
+      V14_FERAL_MASK_URL ??
+      `${HUNTER_ASSET_ROOT_V3}/masks/feral.webp`,
+    preferImage: true,
+  },
+  {
+    id: "boar",
+    label: "Boar",
+    detail: "Lost Tribe, Predator 2",
+    image: V14_BOAR_MASK_URL,
+    preferImage: Boolean(V14_BOAR_MASK_URL),
+  },
+  {
+    id: "snake",
+    label: "Snake",
+    detail: "Lost Tribe, Predator 2",
+    image: V14_SNAKE_MASK_URL,
+    preferImage: Boolean(V14_SNAKE_MASK_URL),
+  },
+  {
+    id: "falconer",
+    label: "Falconer",
+    detail: "Super Predator, Predators",
+    image: V14_FALCONER_MASK_URL,
+    preferImage: Boolean(V14_FALCONER_MASK_URL),
   },
   {
     id: "berserker",
@@ -260,6 +330,15 @@ const MASK_OPTIONS: ReadonlyArray<{
     image: `${HUNTER_ASSET_ROOT_V3}/masks/enforcer.webp`,
   },
 ];
+
+const V14_EXACT_MASK_ASSETS = listHunterKitAssets({
+  kind: "mask",
+  status: "available",
+});
+const V14_FERAL_SPEARGUN = getHunterKitAsset("feral-speargun");
+const V14_XENOMORPH_SKULL = getHunterKitAsset(
+  "trophy-xenomorph-skull-p2",
+);
 
 const DREAD_OPTIONS: ReadonlyArray<{
   id: DreadStyleId;
@@ -1330,8 +1409,40 @@ export default function GameClient() {
                 </p>
               </div>
               <div className="armory-atlas-shelves">
+                <section
+                  className="armory-exact-kit"
+                  aria-labelledby="armory-exact-kit-title"
+                >
+                  <h3 id="armory-exact-kit-title">
+                    Références de franchise V14
+                  </h3>
+                  <div
+                    className="armory-module-rack hunter-kit-rack"
+                    role="list"
+                  >
+                    {[
+                      ...V14_EXACT_MASK_ASSETS,
+                      ...(V14_FERAL_SPEARGUN?.available
+                        ? [V14_FERAL_SPEARGUN]
+                        : []),
+                    ].map((asset) => (
+                      <figure key={asset.id} role="listitem">
+                        <img
+                          src={asset.runtimeUrl}
+                          alt=""
+                          loading="lazy"
+                        />
+                        <figcaption>
+                          {asset.name} · {asset.work}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
                 <section aria-labelledby="armory-modules-title">
-                  <h3 id="armory-modules-title">Râtelier des modules</h3>
+                  <h3 id="armory-modules-title">
+                    Modules de jeu supplémentaires
+                  </h3>
                   <div className="armory-module-rack" role="list">
                     {V6_ARMORY_RACK_ORDER.map((visualId) => (
                       <figure key={visualId} role="listitem">
@@ -1342,7 +1453,9 @@ export default function GameClient() {
                   </div>
                 </section>
                 <section aria-labelledby="armory-masks-title">
-                  <h3 id="armory-masks-title">Mur des biomasks</h3>
+                  <h3 id="armory-masks-title">
+                    Variantes originales du clan
+                  </h3>
                   <div className="armory-module-rack armory-mask-rack" role="list">
                     {V6_ALL_VISUAL_IDS.filter(
                       (visualId) => V6_VISUAL_CELLS[visualId].kind === "mask",
@@ -1645,7 +1758,9 @@ export default function GameClient() {
                               event.currentTarget.onerror = null;
                               event.currentTarget.src =
                                 activeHunterPreset.biomaskId !== null
-                                  ? `${HUNTER_ASSET_ROOT_V3}/masks/${activeHunterPreset.biomaskId}.webp`
+                                  ? hunterMaskThumbnailPath(
+                                      activeHunterPreset.biomaskId,
+                                    )
                                   : hunterBodyFullPath(
                                       activeHunterPreset.bodyMorphId,
                                     );
@@ -1785,7 +1900,7 @@ export default function GameClient() {
                       detail={option.detail}
                       image={option.image}
                       visualId={
-                        option.id === null
+                        option.id === null || option.preferImage
                           ? undefined
                           : V6_MASK_VISUAL_BY_ID[option.id]
                       }
@@ -1944,6 +2059,31 @@ export default function GameClient() {
               onBack={() => go(stationReturnScreen)}
             />
             <div className="trophy-grid">
+              {V14_XENOMORPH_SKULL?.available ? (
+                <article className="trophy-card trophy-reference-card">
+                  <div className="trophy-art" aria-hidden="true">
+                    <img
+                      src={V14_XENOMORPH_SKULL.runtimeUrl}
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="mission-planet">Predator 2 · 1990</p>
+                  <h3>Crâne de Xénomorphe</h3>
+                  <p>
+                    Reconstitution OpenAI guidée par le trophée visible dans
+                    le vaisseau du Lost Tribe, conservée hors progression.
+                  </p>
+                  <div className="trophy-tags">
+                    <span>Référence écran</span>
+                    <span>Franchise</span>
+                    <span>Archive canonique</span>
+                  </div>
+                  <span className="trophy-score">
+                    ARCHIVE V14 · NON JOUABLE
+                  </span>
+                </article>
+              ) : null}
               {trophyRecords.length > 0 ? (
                 trophyRecords.map((trophy) => {
                   const mission = MISSIONS.find(
@@ -2533,7 +2673,7 @@ function HunterPresetCard({
   onSelect: (presetId: HunterLorePresetId) => void;
 }) {
   const fallbackImage = preset.biomaskId
-    ? `${HUNTER_ASSET_ROOT_V3}/masks/${preset.biomaskId}.webp`
+    ? hunterMaskThumbnailPath(preset.biomaskId)
     : hunterBodyFullPath(preset.bodyMorphId);
   const plateImage = hunterFilmPlatePath(preset);
   const continuity =

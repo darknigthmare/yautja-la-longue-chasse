@@ -36,7 +36,7 @@ import {
   hunterBodyFullPath,
   hunterBodyPartPath,
   hunterDreadPath,
-  hunterMaskPath,
+  hunterMaskRigPath,
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
@@ -6739,7 +6739,7 @@ export default function HuntCanvas({
       assets.hunterDreads = image;
     });
     if (appearance.biomaskId) {
-      queueImage(hunterMaskPath(appearance.biomaskId), (image) => {
+      queueImage(hunterMaskRigPath(appearance.biomaskId), (image) => {
         assets.hunterMask = image;
       });
     }

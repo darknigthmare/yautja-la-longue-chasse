@@ -1,4 +1,5 @@
-import type { HunterLorePresetId } from "./hunterLore";
+// @ts-expect-error Node's strip-types test runner needs an explicit extension.
+import { HUNTER_PRESET_BY_ID, hunterFilmPlatePath, type HunterLorePresetId } from "./hunterLore.ts";
 
 export const CATALOGUE_SOURCE_WORKBOOK = Object.freeze({
   fileName: "catalogue_yautja_tous_medias.xlsx",
@@ -7,6 +8,11 @@ export const CATALOGUE_SOURCE_WORKBOOK = Object.freeze({
   sha256: "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
   archivedPath:
     "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+});
+
+export const CATALOGUE_V14_REFERENCE_MANIFEST = Object.freeze({
+  version: "v14-roster-2026-07-26",
+  archivedPath: "art-source/v14/roster/manifest.json",
 });
 
 const EXISTING_HUNTER_PRESET_IDS = [
@@ -344,9 +350,173 @@ const RAW_CATALOGUE_ROWS = [
   [256, "Y-255", "Youngblood Predator", "", "Désignation de production / figurine", "Film / animation • Figurine / jouet", "Alien vs. Predator (2004) / NECA", "Écran officiel / licencié", "", "", "Oui", "https://avp.fandom.com/wiki/Youngblood_Predator", "Film / animation"],
 ] as const satisfies readonly RawCatalogueRow[];
 
-export type CatalogueStableId = (typeof RAW_CATALOGUE_ROWS)[number][1];
-export type CatalogueContinuity = "canon" | "expanded" | "fan";
+/**
+ * Supplément append-only documenté par le registre V14. Le premier nombre est
+ * la ligne logique dans le manifeste V14, pas une ligne ajoutée au classeur V6.
+ */
+const V14_SUPPLEMENTAL_ROWS = [
+  [1, "Y-256", "Predator Warrior (Arcade)", "Predator Warrior", "Individu jouable nommé", "Jeu vidéo", "Alien vs. Predator (arcade Capcom, 1994)", "Univers étendu licencié / catalogué", "", "Personnage jouable vétéran du jeu d'arcade Capcom, distinct du Predator Hunter et du boss Mad Predator.", "Oui", "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/", "Jeu vidéo"],
+  [2, "Y-257", "Predator Hunter (Arcade)", "Predator Hunter", "Individu jouable nommé", "Jeu vidéo", "Alien vs. Predator (arcade Capcom, 1994)", "Univers étendu licencié / catalogué", "", "Personnage jouable plus jeune et agile du jeu d'arcade Capcom, distinct du Predator Warrior et du boss Mad Predator.", "Oui", "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/", "Jeu vidéo"],
+  [3, "Y-258", "Elder Predator (Bouvetøya)", "AVP Elder", "Individu d'écran désigné", "Film / animation • Figurine / jouet", "Alien vs. Predator (2004) / NECA", "Écran crossover officiel / licencié", "", "Elder du clan de Bouvetøya, distinct de Greyback, l'Elder de Predator 2.", "Oui", "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/", "Film / animation"],
+  [4, "Y-259", "Captive Predator (Killer of Killers)", "Captive Yautja", "Individu anonyme désigné", "Film / animation", "Predator: Killer of Killers (2025)", "Écran officiel / licencié", "", "Prisonnier Yautja blessé de l'arène, distinct du Captive Predator des comics et du Crucified Predator de Predators.", "Oui", "https://www.20thcenturystudios.com/movies/predator-killer-of-killers", "Film / animation"],
+  [5, "Y-260", "Arena Predator Guards", "Arena Guards; Predator Guards", "Groupe / archétype d'écran", "Film / animation", "Predator: Killer of Killers (2025)", "Groupe / catégorie", "", "Archétype collectif des gardes de l'arène du Warlord ; ne représente pas plusieurs individus officiellement nommés.", "Non (groupe)", "https://jsmarantz.artstation.com/projects/0lgDQG", "Film / animation"],
+] as const satisfies readonly RawCatalogueRow[];
+
+const ALL_CATALOGUE_ROWS = [
+  ...RAW_CATALOGUE_ROWS,
+  ...V14_SUPPLEMENTAL_ROWS,
+] as const satisfies readonly RawCatalogueRow[];
+
+export type CatalogueStableId = (typeof ALL_CATALOGUE_ROWS)[number][1];
+export type CatalogueContinuity = "canon" | "crossover" | "expanded" | "fan";
 export type CatalogueEntryKind = "individual" | "alias" | "group" | "rank";
+export type CatalogueVisualAssetStatus =
+  | "existing-custom-plate"
+  | "associated-preset-plate"
+  | "mapped-modular-preset"
+  | "modular-approximation"
+  | "planned-custom";
+export type CatalogueRosterRevision =
+  | "workbook-v6"
+  | "v14-correction"
+  | "v14-supplement";
+
+interface CatalogueV14ReferenceRecord {
+  readonly referenceUrls: readonly string[];
+  readonly visualAnchor: string;
+  readonly forbiddenVisualMixes: readonly string[];
+  readonly visualAssetStatus: CatalogueVisualAssetStatus;
+  readonly runtimeAssetPaths: readonly string[];
+  readonly aliases?: string;
+  readonly typeLabel?: string;
+  readonly mediaLabel?: string;
+  readonly work?: string;
+  readonly sourceStatus?: string;
+  readonly canonicalName?: string;
+  readonly notes?: string;
+  readonly distinctIdentityLabel?: string;
+  readonly family?: string;
+  readonly continuity?: CatalogueContinuity;
+}
+
+export const CATALOGUE_V14_REFERENCE_BY_ID = Object.freeze({
+  "Y-162": Object.freeze({
+    aliases: "Predator-Archie; Emoji Killer; Riverdale Hunter",
+    typeLabel: "Individu de crossover nommé ou surnommé",
+    mediaLabel: "Comics",
+    work: "Archie vs. Predator (2015) / Archie vs. Predator II (2019-2020)",
+    sourceStatus: "Crossover licencié hors continuité principale",
+    canonicalName: "",
+    notes:
+      "Individu d'Archie vs. Predator, sans rapport avec les trois Yautja du jeu d'arcade Capcom de 1994.",
+    distinctIdentityLabel: "Oui",
+    family: "Comics",
+    continuity: "expanded",
+    referenceUrls: Object.freeze([
+      "https://digital.darkhorse.com/series/644/archie-vs-predator?p=2",
+      "https://archiecomics.com/archie-vs-predator-ii-tp/",
+      "https://avp.fandom.com/wiki/Predator_A6718",
+    ]),
+    visualAnchor:
+      "Verrouiller l'individu dessiné dans Archie vs. Predator et traiter séparément son état transformé Predator-Archie ; ne reprendre aucun équipement ni palette de l'arcade Capcom.",
+    forbiddenVisualMixes: Object.freeze([
+      "Predator Warrior (Arcade)",
+      "Predator Hunter (Arcade)",
+      "Mad Predator",
+    ]),
+    visualAssetStatus: "planned-custom",
+    runtimeAssetPaths: Object.freeze([]),
+  }),
+  "Y-256": Object.freeze({
+    referenceUrls: Object.freeze([
+      "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/",
+      "https://www.arcade-museum.com/Videogame/alien-vs-predator",
+    ]),
+    visualAnchor:
+      "Predator Warrior jouable vétéran du CPS-2 : silhouette, tête, armure et palette verrouillées sur les turnarounds NECA Warrior et le sprite Capcom ; lance télescopique et armes humaines attestées.",
+    forbiddenVisualMixes: Object.freeze([
+      "Predator Hunter (Arcade)",
+      "Mad Predator",
+      "Warrior de Predator 2",
+    ]),
+    visualAssetStatus: "planned-custom",
+    runtimeAssetPaths: Object.freeze([]),
+    continuity: "expanded",
+  }),
+  "Y-257": Object.freeze({
+    referenceUrls: Object.freeze([
+      "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/",
+      "https://www.arcade-museum.com/Videogame/alien-vs-predator",
+    ]),
+    visualAnchor:
+      "Predator Hunter jouable plus jeune du CPS-2 : modèle, armure et palette verrouillés sur les turnarounds NECA Hunter et le sprite Capcom ; staff à lame et arsenal humain attesté.",
+    forbiddenVisualMixes: Object.freeze([
+      "Predator Warrior (Arcade)",
+      "Mad Predator",
+      "Hunter générique",
+    ]),
+    visualAssetStatus: "planned-custom",
+    runtimeAssetPaths: Object.freeze([]),
+    continuity: "expanded",
+  }),
+  "Y-258": Object.freeze({
+    referenceUrls: Object.freeze([
+      "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+      "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+    ]),
+    visualAnchor:
+      "Elder de Bouvetøya : anatomie AVP 2004, cape royale reliée par une chaîne, biomask orné et staff cérémoniel propres à cette scène.",
+    forbiddenVisualMixes: Object.freeze([
+      "Greyback de Predator 2",
+      "AVP Youngblood",
+      "Temple Guard",
+    ]),
+    visualAssetStatus: "existing-custom-plate",
+    runtimeAssetPaths: Object.freeze([
+      "/game/sprites/v14/yautja-roster/y-258-elder-bouvetoya.webp",
+    ]),
+    continuity: "crossover",
+  }),
+  "Y-259": Object.freeze({
+    referenceUrls: Object.freeze([
+      "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+      "https://www.hulu.com/movie/predator-killer-of-killers-5d9e2aa0-286f-4029-89de-114baa89036d",
+      "https://depredador-avp.fandom.com/es/wiki/Captive_Predator_%28Killer_of_Killers%29",
+    ]),
+    visualAnchor:
+      "Prisonnier pâle et maltraité de l'arène : œil droit aveugle, mandibule supérieure droite brisée, aucune armure ni biomask, collier noir à deux témoins rouges et poignets bandés ou entravés.",
+    forbiddenVisualMixes: Object.freeze([
+      "Captive Predator des comics",
+      "Crucified Predator de Predators",
+      "Arena Predator Guard",
+    ]),
+    visualAssetStatus: "existing-custom-plate",
+    runtimeAssetPaths: Object.freeze([
+      "/game/sprites/v14/yautja-roster/y-259-kok-captive.webp",
+    ]),
+    continuity: "canon",
+  }),
+  "Y-260": Object.freeze({
+    referenceUrls: Object.freeze([
+      "https://jsmarantz.artstation.com/projects/0lgDQG",
+      "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+    ]),
+    visualAnchor:
+      "Archétype pluriel des Arena Predator Guards : géométrie d'armure du concept de production Marantz, équipement osseux uniforme du clan de l'arène et combistick.",
+    forbiddenVisualMixes: Object.freeze([
+      "Temple Guard d'AVP",
+      "Guardian de Predator 2",
+      "individu nommé inventé",
+    ]),
+    visualAssetStatus: "existing-custom-plate",
+    runtimeAssetPaths: Object.freeze([
+      "/game/sprites/v14/yautja-roster/y-260-kok-arena-guard.webp",
+    ]),
+    continuity: "canon",
+  }),
+} as const satisfies Partial<
+  Record<CatalogueStableId, CatalogueV14ReferenceRecord>
+>);
 
 export interface CatalogueYautjaEntry {
   readonly id: CatalogueStableId;
@@ -369,9 +539,15 @@ export interface CatalogueYautjaEntry {
   readonly distinctIdentity: boolean | null;
   readonly distinctIdentityLabel: string;
   readonly sourceUrl: string | null;
+  readonly referenceUrls: readonly string[];
   readonly family: string;
+  readonly visualAnchor: string | null;
+  readonly forbiddenVisualMixes: readonly string[];
+  readonly visualAssetStatus: CatalogueVisualAssetStatus;
+  readonly runtimeAssetPaths: readonly string[];
+  readonly rosterRevision: CatalogueRosterRevision;
   readonly source: {
-    readonly sheet: "Index maître";
+    readonly sheet: "Index maître" | "V14 roster manifest";
     readonly row: number;
   };
   readonly presetIds: readonly HunterLorePresetId[];
@@ -446,6 +622,9 @@ const PRESET_IDS_BY_ENTRY_ID = {
   "Y-249": ["witch"],
   "Y-250": ["wolf"],
   "Y-255": ["youngblood"],
+  "Y-258": ["avp-elder"],
+  "Y-259": ["kok-captive"],
+  "Y-260": ["kok-arena-guard"],
 } as const satisfies Partial<
   Record<CatalogueStableId, readonly HunterLorePresetId[]>
 >;
@@ -508,6 +687,15 @@ function catalogueContinuity(
   if (/Fan-film/i.test(mediaLabel) && !/licencié/i.test(sourceStatus)) {
     return "fan";
   }
+  if (
+    /Film \/ animation/i.test(mediaLabel) &&
+    /^(?:Alien vs\. Predator(?:\s|\(|$)|Aliens vs\. Predator: Requiem)/i.test(
+      work,
+    )
+  ) {
+    return "crossover";
+  }
+  if (/scènes supprimées/i.test(work)) return "expanded";
   if (/Écran officiel/i.test(sourceStatus)) return "canon";
   if (
     /Film \/ animation/i.test(mediaLabel) &&
@@ -531,8 +719,25 @@ function distinctIdentity(value: string): boolean | null {
   return null;
 }
 
+const V14_REFERENCE_REGISTRY = CATALOGUE_V14_REFERENCE_BY_ID as Partial<
+  Record<CatalogueStableId, CatalogueV14ReferenceRecord>
+>;
+const V14_SUPPLEMENTAL_ID_SET = new Set<CatalogueStableId>(
+  V14_SUPPLEMENTAL_ROWS.map((row) => row[1]),
+);
+
+function mappedRuntimeAssetPaths(
+  presetIds: readonly HunterLorePresetId[],
+): readonly string[] {
+  return Object.freeze(
+    presetIds
+      .map((presetId) => hunterFilmPlatePath(HUNTER_PRESET_BY_ID[presetId]))
+      .filter((path): path is string => path !== null),
+  );
+}
+
 export const CATALOGUE_ROSTER = Object.freeze(
-  RAW_CATALOGUE_ROWS.map(
+  ALL_CATALOGUE_ROWS.map(
     ([
       sourceRow,
       id,
@@ -547,33 +752,91 @@ export const CATALOGUE_ROSTER = Object.freeze(
       distinctIdentityLabel,
       sourceUrl,
       family,
-    ]): CatalogueYautjaEntry =>
-      Object.freeze({
+    ]): CatalogueYautjaEntry => {
+      const revision = V14_REFERENCE_REGISTRY[id];
+      const resolvedAliases = revision?.aliases ?? aliases;
+      const resolvedTypeLabel = revision?.typeLabel ?? typeLabel;
+      const resolvedMediaLabel = revision?.mediaLabel ?? mediaLabel;
+      const resolvedWork = revision?.work ?? work;
+      const resolvedSourceStatus = revision?.sourceStatus ?? sourceStatus;
+      const resolvedCanonicalName =
+        revision?.canonicalName ?? canonicalName;
+      const resolvedNotes = revision?.notes ?? notes;
+      const resolvedDistinctIdentityLabel =
+        revision?.distinctIdentityLabel ?? distinctIdentityLabel;
+      const resolvedFamily = revision?.family ?? family;
+      const presetIds = Object.freeze([
+        ...(PRESET_MAPPING[id] ?? EMPTY_PRESET_IDS),
+      ]);
+      const derivedRuntimeAssetPaths = mappedRuntimeAssetPaths(presetIds);
+      const runtimeAssetPaths = Object.freeze([
+        ...(revision?.runtimeAssetPaths ?? derivedRuntimeAssetPaths),
+      ]);
+      const resolvedSourceUrl =
+        revision?.referenceUrls[0] ?? (sourceUrl || null);
+      const referenceUrls = Object.freeze([
+        ...(revision?.referenceUrls ??
+          (resolvedSourceUrl ? [resolvedSourceUrl] : [])),
+      ]);
+      const supplemental = V14_SUPPLEMENTAL_ID_SET.has(id);
+      const visualAssetStatus =
+        revision?.visualAssetStatus ??
+        (derivedRuntimeAssetPaths.length > 0
+          ? "associated-preset-plate"
+          : presetIds.length > 0
+            ? "mapped-modular-preset"
+            : "modular-approximation");
+
+      return Object.freeze({
         id,
         name,
-        aliases: splitList(aliases, /\s*;\s*/),
-        kind: catalogueKind(typeLabel, sourceStatus, distinctIdentityLabel),
-        typeLabel,
-        media: splitList(mediaLabel, /\s*•\s*/),
-        mediaLabel,
-        work,
-        year: catalogueYear(work),
-        continuity: catalogueContinuity(mediaLabel, work, sourceStatus),
-        sourceStatus,
-        canonicalName: canonicalName || null,
-        notes: notes || null,
-        distinctIdentity: distinctIdentity(distinctIdentityLabel),
-        distinctIdentityLabel,
-        sourceUrl: sourceUrl || null,
-        family,
+        aliases: splitList(resolvedAliases, /\s*;\s*/),
+        kind: catalogueKind(
+          resolvedTypeLabel,
+          resolvedSourceStatus,
+          resolvedDistinctIdentityLabel,
+        ),
+        typeLabel: resolvedTypeLabel,
+        media: splitList(resolvedMediaLabel, /\s*•\s*/),
+        mediaLabel: resolvedMediaLabel,
+        work: resolvedWork,
+        year: catalogueYear(resolvedWork),
+        continuity:
+          revision?.continuity ??
+          catalogueContinuity(
+            resolvedMediaLabel,
+            resolvedWork,
+            resolvedSourceStatus,
+          ),
+        sourceStatus: resolvedSourceStatus,
+        canonicalName: resolvedCanonicalName || null,
+        notes: resolvedNotes || null,
+        distinctIdentity: distinctIdentity(resolvedDistinctIdentityLabel),
+        distinctIdentityLabel: resolvedDistinctIdentityLabel,
+        sourceUrl: resolvedSourceUrl,
+        referenceUrls,
+        family: resolvedFamily,
+        visualAnchor: revision?.visualAnchor ?? null,
+        forbiddenVisualMixes: Object.freeze([
+          ...(revision?.forbiddenVisualMixes ?? []),
+        ]),
+        visualAssetStatus,
+        runtimeAssetPaths,
+        rosterRevision:
+          id === "Y-162"
+            ? "v14-correction"
+            : supplemental
+              ? "v14-supplement"
+              : "workbook-v6",
         source: Object.freeze({
-          sheet: "Index maître" as const,
+          sheet: supplemental
+            ? ("V14 roster manifest" as const)
+            : ("Index maître" as const),
           row: sourceRow,
         }),
-        presetIds: Object.freeze([
-          ...(PRESET_MAPPING[id] ?? EMPTY_PRESET_IDS),
-        ]),
-      }),
+        presetIds,
+      });
+    },
   ),
 );
 
@@ -600,11 +863,18 @@ export const CATALOGUE_ENTRY_IDS_BY_PRESET_ID = Object.freeze(
   ),
 ) as Readonly<Record<HunterLorePresetId, readonly CatalogueStableId[]>>;
 
-export const CATALOGUE_PRESETS_WITHOUT_WORKBOOK_ENTRY = Object.freeze(
+export const CATALOGUE_PRESETS_WITHOUT_CATALOGUE_ENTRY = Object.freeze(
   EXISTING_HUNTER_PRESET_IDS.filter(
     (presetId) => CATALOGUE_ENTRY_IDS_BY_PRESET_ID[presetId].length === 0,
   ),
 );
+
+/**
+ * Compatibilité avec le nom V6 historique. Depuis V14, ce contrôle porte sur
+ * le catalogue combiné (classeur immuable + supplément), pas sur Excel seul.
+ */
+export const CATALOGUE_PRESETS_WITHOUT_WORKBOOK_ENTRY =
+  CATALOGUE_PRESETS_WITHOUT_CATALOGUE_ENTRY;
 
 export const CATALOGUE_ENTRIES_WITHOUT_PRESET = Object.freeze(
   CATALOGUE_ROSTER.filter((entry) => entry.presetIds.length === 0),
@@ -645,5 +915,5 @@ export const CATALOGUE_ROSTER_COUNTS = Object.freeze({
   mappedEntries: CATALOGUE_ROSTER.length - CATALOGUE_ENTRIES_WITHOUT_PRESET.length,
   unmappedEntries: CATALOGUE_ENTRIES_WITHOUT_PRESET.length,
   mappedPresets: MAPPED_PRESET_COUNT,
-  unmappedPresets: CATALOGUE_PRESETS_WITHOUT_WORKBOOK_ENTRY.length,
+  unmappedPresets: CATALOGUE_PRESETS_WITHOUT_CATALOGUE_ENTRY.length,
 });

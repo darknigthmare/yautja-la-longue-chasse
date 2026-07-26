@@ -154,7 +154,7 @@ test("loadout, masks, ranks, lasers, trophies and missions have exhaustive mappi
     "netgun",
     "snare",
   ]);
-  assert.equal(Object.keys(V6_MASK_VISUAL_BY_ID).length, 12);
+  assert.equal(Object.keys(V6_MASK_VISUAL_BY_ID).length, 15);
   assert.equal(Object.keys(V6_RANK_VISUAL_BY_ID).length, 4);
   assert.equal(Object.keys(V6_LASER_VISUAL_BY_COLOR_ID).length, 5);
   assert.equal(Object.keys(V6_MISSION_VISUALS).length, 8);

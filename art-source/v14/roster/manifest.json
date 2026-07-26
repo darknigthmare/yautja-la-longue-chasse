@@ -1,0 +1,237 @@
+{
+  "version": "v14-roster-2026-07-26",
+  "sourceWorkbook": {
+    "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+    "policy": "immutable"
+  },
+  "runtimeRegistry": "app/game/catalogueRoster.ts",
+  "referencePolicy": {
+    "officialReferencesAreRuntimeAssets": false,
+    "primarySourcesFirst": true,
+    "individualPromptRequiredBeforeGeneration": true,
+    "runtimeIdentityAuditRequired": true
+  },
+  "entries": [
+    {
+      "operation": "correction",
+      "id": "Y-162",
+      "canonicalName": "Predator A6718",
+      "aliases": [
+        "Predator-Archie",
+        "Emoji Killer",
+        "Riverdale Hunter"
+      ],
+      "kind": "individual",
+      "continuity": "expanded",
+      "work": "Archie vs. Predator (2015) / Archie vs. Predator II (2019-2020)",
+      "referenceUrls": [
+        "https://digital.darkhorse.com/series/644/archie-vs-predator?p=2",
+        "https://archiecomics.com/archie-vs-predator-ii-tp/",
+        "https://avp.fandom.com/wiki/Predator_A6718"
+      ],
+      "visualAnchor": "Verrouiller l'individu dessiné dans Archie vs. Predator et traiter séparément son état transformé Predator-Archie ; ne reprendre aucun équipement ni palette de l'arcade Capcom.",
+      "forbiddenVisualMixes": [
+        "Predator Warrior (Arcade)",
+        "Predator Hunter (Arcade)",
+        "Mad Predator"
+      ],
+      "visualAsset": {
+        "available": false,
+        "status": "planned-custom",
+        "presetIds": [],
+        "masterPath": null,
+        "masterSha256": null,
+        "runtimePath": null,
+        "hash": null,
+        "sha256": null,
+        "runtimePaths": []
+      }
+    },
+    {
+      "operation": "append",
+      "id": "Y-256",
+      "canonicalName": "Predator Warrior (Arcade)",
+      "aliases": [
+        "Predator Warrior"
+      ],
+      "kind": "individual",
+      "continuity": "expanded",
+      "work": "Alien vs. Predator (arcade Capcom, 1994)",
+      "referenceUrls": [
+        "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/",
+        "https://www.arcade-museum.com/Videogame/alien-vs-predator"
+      ],
+      "visualAnchor": "Predator Warrior jouable vétéran du CPS-2 : silhouette, tête, armure et palette verrouillées sur les turnarounds NECA Warrior et le sprite Capcom ; lance télescopique et armes humaines attestées.",
+      "forbiddenVisualMixes": [
+        "Predator Hunter (Arcade)",
+        "Mad Predator",
+        "Warrior de Predator 2"
+      ],
+      "visualAsset": {
+        "available": false,
+        "status": "planned-custom",
+        "presetIds": [],
+        "masterPath": null,
+        "masterSha256": null,
+        "runtimePath": null,
+        "hash": null,
+        "sha256": null,
+        "runtimePaths": []
+      }
+    },
+    {
+      "operation": "append",
+      "id": "Y-257",
+      "canonicalName": "Predator Hunter (Arcade)",
+      "aliases": [
+        "Predator Hunter"
+      ],
+      "kind": "individual",
+      "continuity": "expanded",
+      "work": "Alien vs. Predator (arcade Capcom, 1994)",
+      "referenceUrls": [
+        "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/",
+        "https://www.arcade-museum.com/Videogame/alien-vs-predator"
+      ],
+      "visualAnchor": "Predator Hunter jouable plus jeune du CPS-2 : modèle, armure et palette verrouillés sur les turnarounds NECA Hunter et le sprite Capcom ; staff à lame et arsenal humain attesté.",
+      "forbiddenVisualMixes": [
+        "Predator Warrior (Arcade)",
+        "Mad Predator",
+        "Hunter générique"
+      ],
+      "visualAsset": {
+        "available": false,
+        "status": "planned-custom",
+        "presetIds": [],
+        "masterPath": null,
+        "masterSha256": null,
+        "runtimePath": null,
+        "hash": null,
+        "sha256": null,
+        "runtimePaths": []
+      }
+    },
+    {
+      "operation": "append",
+      "id": "Y-258",
+      "canonicalName": "Elder Predator (Bouvetøya)",
+      "aliases": [
+        "AVP Elder"
+      ],
+      "kind": "individual",
+      "continuity": "crossover",
+      "work": "Alien vs. Predator (2004) / NECA",
+      "referenceUrls": [
+        "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator"
+      ],
+      "visualAnchor": "Elder de Bouvetøya : anatomie AVP 2004, cape royale reliée par une chaîne, biomask orné et staff cérémoniel propres à cette scène.",
+      "forbiddenVisualMixes": [
+        "Greyback de Predator 2",
+        "AVP Youngblood",
+        "Temple Guard"
+      ],
+      "visualAsset": {
+        "available": true,
+        "status": "existing-custom-plate",
+        "presetIds": [
+          "avp-elder"
+        ],
+        "masterPath": "art-source/v14/roster/masters/y-258-elder-bouvetoya-chroma-master.png",
+        "masterSha256": "a9cca98638f84069442033e1338af7dc8d4c57ef0efc3494e8316eb1b22fbf2c",
+        "runtimePath": "/game/sprites/v14/yautja-roster/y-258-elder-bouvetoya.webp",
+        "hash": "sha256:e7bb7b5296c88cbd4c71d6c9c4f55c99143c5b3241eacb33c093efa974446b0c",
+        "sha256": "e7bb7b5296c88cbd4c71d6c9c4f55c99143c5b3241eacb33c093efa974446b0c",
+        "dimensions": {
+          "width": 1024,
+          "height": 1536
+        },
+        "runtimePaths": [
+          "/game/sprites/v14/yautja-roster/y-258-elder-bouvetoya.webp"
+        ]
+      }
+    },
+    {
+      "operation": "append",
+      "id": "Y-259",
+      "canonicalName": "Captive Predator (Killer of Killers)",
+      "aliases": [
+        "Captive Yautja"
+      ],
+      "kind": "individual",
+      "continuity": "canon",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.hulu.com/movie/predator-killer-of-killers-5d9e2aa0-286f-4029-89de-114baa89036d",
+        "https://depredador-avp.fandom.com/es/wiki/Captive_Predator_%28Killer_of_Killers%29"
+      ],
+      "visualAnchor": "Prisonnier pâle et maltraité de l'arène : œil droit aveugle, mandibule supérieure droite brisée, aucune armure ni biomask, collier noir à deux témoins rouges et poignets bandés ou entravés.",
+      "forbiddenVisualMixes": [
+        "Captive Predator des comics",
+        "Crucified Predator de Predators",
+        "Arena Predator Guard"
+      ],
+      "visualAsset": {
+        "available": true,
+        "status": "existing-custom-plate",
+        "presetIds": [
+          "kok-captive"
+        ],
+        "masterPath": "art-source/v14/roster/masters/y-259-kok-captive-chroma-master.png",
+        "masterSha256": "a11d9efb2a31e84ba5b115d913d9f22afa4bcc26367fac1c0966b3c58229ce44",
+        "runtimePath": "/game/sprites/v14/yautja-roster/y-259-kok-captive.webp",
+        "hash": "sha256:168ca78877c8dbccbc09a960fb5e241c061336a42c7eeac2ef95efae62a76ff3",
+        "sha256": "168ca78877c8dbccbc09a960fb5e241c061336a42c7eeac2ef95efae62a76ff3",
+        "dimensions": {
+          "width": 934,
+          "height": 1683
+        },
+        "runtimePaths": [
+          "/game/sprites/v14/yautja-roster/y-259-kok-captive.webp"
+        ]
+      }
+    },
+    {
+      "operation": "append",
+      "id": "Y-260",
+      "canonicalName": "Arena Predator Guards",
+      "aliases": [
+        "Arena Guards",
+        "Predator Guards"
+      ],
+      "kind": "group",
+      "continuity": "canon",
+      "work": "Predator: Killer of Killers (2025)",
+      "referenceUrls": [
+        "https://jsmarantz.artstation.com/projects/0lgDQG",
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers"
+      ],
+      "visualAnchor": "Archétype pluriel des Arena Predator Guards : géométrie d'armure du concept de production Marantz, équipement osseux uniforme du clan de l'arène et combistick.",
+      "forbiddenVisualMixes": [
+        "Temple Guard d'AVP",
+        "Guardian de Predator 2",
+        "individu nommé inventé"
+      ],
+      "visualAsset": {
+        "available": true,
+        "status": "existing-custom-plate",
+        "presetIds": [
+          "kok-arena-guard"
+        ],
+        "masterPath": "art-source/v14/roster/masters/y-260-kok-arena-guard-chroma-master.png",
+        "masterSha256": "edd000ef49f24f42ba5c6967a490634017e68f8321cae4660c47c57df5b7e512",
+        "runtimePath": "/game/sprites/v14/yautja-roster/y-260-kok-arena-guard.webp",
+        "hash": "sha256:3da757cd364ef06b57edeea7cacce720ad2e50d733621de82790cbac48e7d411",
+        "sha256": "3da757cd364ef06b57edeea7cacce720ad2e50d733621de82790cbac48e7d411",
+        "dimensions": {
+          "width": 928,
+          "height": 1694
+        },
+        "runtimePaths": [
+          "/game/sprites/v14/yautja-roster/y-260-kok-arena-guard.webp"
+        ]
+      }
+    }
+  ]
+}
