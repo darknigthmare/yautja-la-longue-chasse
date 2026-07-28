@@ -2160,6 +2160,91 @@ select:focus-visible,
   line-height: 1.6;
 }
 
+.trophy-card p.trophy-archive-guardrail {
+  margin-top: 9px;
+  color: #746c5d;
+  font-size: 0.58rem;
+}
+
+.franchise-trophy-archive {
+  grid-column: 1 / -1;
+}
+
+.franchise-trophy-archive > summary {
+  position: relative;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 52px 14px 18px;
+  cursor: pointer;
+  border: 1px solid rgba(214, 166, 91, 0.22);
+  background:
+    linear-gradient(90deg, rgba(214, 166, 91, 0.1), transparent 58%),
+    rgba(8, 8, 6, 0.92);
+  color: #d6a65b;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.franchise-trophy-archive > summary::-webkit-details-marker {
+  display: none;
+}
+
+.franchise-trophy-archive > summary:focus-visible {
+  outline: 2px solid rgba(112, 244, 207, 0.72);
+  outline-offset: 3px;
+}
+
+.franchise-trophy-archive > summary::after {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  content: "+";
+  color: #70f4cf;
+  font-size: 1.1rem;
+  transform: translateY(-50%);
+}
+
+.franchise-trophy-archive[open] > summary::after {
+  content: "−";
+}
+
+.franchise-trophy-archive > summary strong {
+  color: #827562;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+  text-align: right;
+}
+
+.franchise-trophy-archive[open] > summary {
+  border-color: rgba(112, 244, 207, 0.3);
+}
+
+.franchise-trophy-archive-grid {
+  margin-top: 14px;
+}
+
+.trophy-archive-source {
+  display: block;
+  width: fit-content;
+  margin: 11px auto 0;
+  border-bottom: 1px solid rgba(112, 244, 207, 0.25);
+  color: #8fcdba;
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.trophy-archive-source:hover,
+.trophy-archive-source:focus-visible {
+  border-color: #70f4cf;
+  color: #dffff5;
+}
+
 .trophy-score {
   display: inline-block;
   margin-top: 15px;
@@ -2815,6 +2900,16 @@ select:focus-visible,
 }
 
 @media (max-width: 640px) {
+  .franchise-trophy-archive > summary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .franchise-trophy-archive > summary strong {
+    text-align: left;
+  }
+
   .hub-screen[data-ship-room] .hub-stage {
     padding: 0.7rem;
   }
@@ -2905,10 +3000,12 @@ select:focus-visible,
 }
 
 .trophy-art img {
-  width: auto;
+  display: block;
+  width: 100%;
   max-width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 142px;
+  max-height: 142px;
+  object-fit: contain;
 }
 
 .physical-deck-screen {
@@ -4348,6 +4445,55 @@ select:focus-visible,
   color: #8cd5bd;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.enemy-bestiary-card-copy .enemy-trophy-preview {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 92px;
+  margin: 10px 0 6px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 166, 91, 0.2);
+  background:
+    radial-gradient(circle at 22% 50%, rgba(214, 166, 91, 0.1), transparent 48%),
+    rgba(8, 8, 6, 0.86);
+  background-size: auto;
+}
+
+.enemy-bestiary-card-copy .enemy-trophy-preview-art {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  place-items: center;
+  overflow: hidden;
+  border-right: 1px solid rgba(214, 166, 91, 0.14);
+}
+
+.enemy-bestiary-card-copy .enemy-trophy-preview-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.enemy-bestiary-card-copy .enemy-trophy-preview figcaption {
+  display: grid;
+  gap: 4px;
+  align-content: center;
+  justify-content: stretch;
+  padding: 8px 10px 8px 0;
+  border: 0;
+  color: #827562;
+  line-height: 1.35;
+}
+
+.enemy-bestiary-card-copy .enemy-trophy-preview figcaption strong {
+  overflow-wrap: anywhere;
+  color: #d6c6a9;
+  font-size: 0.57rem;
+  letter-spacing: 0.025em;
 }
 
 .enemy-bestiary-card-copy dl {

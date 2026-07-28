@@ -28,7 +28,13 @@
     "futureConsumers": [
       "thumbnail",
       "rig"
-    ]
+    ],
+    "consumerRestrictions": {
+      "trophy": [
+        "thumbnail"
+      ],
+      "standaloneCutoutInRigAllowed": false
+    }
   },
   "artifactPolicy": {
     "generator": "OpenAI ImageGen",

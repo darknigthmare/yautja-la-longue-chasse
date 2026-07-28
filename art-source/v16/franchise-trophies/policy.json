@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "packId": "franchise-trophies-v16",
+  "packVersion": 16,
+  "scope": "Distinct physical trophy designs in officially released or licensed Predator/AVP media through 2026.",
+  "inclusionRule": "Screen objects, persistent physical game collectibles/galleries, named licensed cosmetics and clearly labelled licensed accessories.",
+  "exclusionRule": "Kills, claims, counters, honor mechanics, platform achievements, living captives and unretained field remains are census-only.",
+  "namingRule": "Unnamed species remain descriptive and anonymous; medium and continuity status are always visible.",
+  "sourcePolicy": {
+    "sourcePageRequired": true,
+    "visualAnchorRequired": true,
+    "downloadedReferenceTemporary": true,
+    "originalFanArtOnly": true
+  },
+  "consumerPolicy": {
+    "allowed": [
+      "franchise-archive"
+    ],
+    "forbidden": [
+      "enemy-bestiary-v7",
+      "enemy-bestiary-v8",
+      "trophy-wall",
+      "hunter-rig",
+      "hunt-canvas"
+    ]
+  },
+  "artifactPolicy": {
+    "generator": "OpenAI ImageGen",
+    "masterBackground": "#00ff00",
+    "runtimeAlphaRequired": true,
+    "promptStorage": "art-source-only"
+  }
+}

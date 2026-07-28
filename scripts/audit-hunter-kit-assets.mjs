@@ -24,7 +24,13 @@ const expectedIds = [
   "mask-falconer",
   "feral-speargun",
   "trophy-xenomorph-skull-p2",
+  "trophy-p2-four-eye-giant-skull",
+  "trophy-p2-horn-chin-skull",
+  "trophy-p2-tusked-skull",
+  "trophy-avp-impaled-xeno-head",
+  "trophy-human-skull-spine-badlands",
 ];
+const expectedTrophyIds = expectedIds.filter((id) => id.startsWith("trophy-"));
 const expectedPriority = [
   "exact-override",
   "family",
@@ -95,7 +101,7 @@ async function inspectMaster(entry, shardEntry) {
     const green = data[offset + 1];
     const blue = data[offset + 2];
     assert.ok(
-      red < 40 && green > 220 && blue < 40,
+      green >= 220 && green >= red + 170 && green >= blue + 170,
       `${entry.id}: master corner is not #00ff00-compatible`,
     );
   }
@@ -251,6 +257,13 @@ async function main() {
   assert.equal(policy.artifactPolicy.runtimeAlphaRequired, true);
   assert.equal(policy.artifactPolicy.downloadedReferencesAreCommitted, false);
   assert.deepEqual(policy.resolverPolicy.priority, expectedPriority);
+  assert.deepEqual(policy.resolverPolicy.consumerRestrictions.trophy, [
+    "thumbnail",
+  ]);
+  assert.equal(
+    policy.resolverPolicy.consumerRestrictions.standaloneCutoutInRigAllowed,
+    false,
+  );
 
   assertSameIds("reference sources", sources.entries);
   assertSameIds("prompts", promptLines);
@@ -291,7 +304,11 @@ async function main() {
     assert.ok(prompt.prompt.length >= 700, `${prompt.id}: detailed prompt`);
     assert.match(prompt.prompt, /#00ff00/i, `${prompt.id}: chroma instruction`);
     assert.match(prompt.prompt, /flat uniform|flat pure|perfectly flat/i, `${prompt.id}: flat background`);
-    assert.match(prompt.prompt, /no (?:floor|shadow)|no floor/i, `${prompt.id}: no shadow contract`);
+    assert.match(
+      prompt.prompt,
+      /no (?:floor|shadow)|no floor|absolutely no background/i,
+      `${prompt.id}: no shadow contract`,
+    );
     assert.ok(prompt.localReferenceFiles.length >= 2, `${prompt.id}: prompt references`);
   }
 
@@ -306,7 +323,10 @@ async function main() {
       assert.equal(entry.planned, true, `${entry.id}: planned`);
       assert.equal(entry.available, true, `${entry.id}: available`);
       assert.equal(entry.inspection.status, "passed", `${entry.id}: visual inspection`);
-      assert.deepEqual(entry.futureConsumers, ["thumbnail", "rig"]);
+      assert.deepEqual(
+        entry.futureConsumers,
+        entry.kind === "trophy" ? ["thumbnail"] : ["thumbnail", "rig"],
+      );
       shardById.set(entry.id, { entry, shardFile });
       shardEntries.push(entry);
     }
@@ -327,13 +347,37 @@ async function main() {
     assert.equal(entry.available, true, `${entry.id}: runtime available`);
     assert.equal(entry.validation.alpha, true, `${entry.id}: alpha metadata`);
     assert.equal(entry.inspection.status, "passed", `${entry.id}: inspection metadata`);
-    assert.deepEqual(entry.futureConsumers, ["thumbnail", "rig"]);
+    assert.deepEqual(
+      entry.futureConsumers,
+      entry.kind === "trophy" ? ["thumbnail"] : ["thumbnail", "rig"],
+    );
     sourceHashes.push(await inspectMaster(entry, shardEntry));
     runtimeHashes.push(await inspectRuntime(entry));
   }
 
   assert.equal(new Set(sourceHashes).size, expectedIds.length, "masters must be distinct");
   assert.equal(new Set(runtimeHashes).size, expectedIds.length, "runtime cutouts must be distinct");
+  assert.equal(
+    runtimeManifest.entries.filter((entry) => entry.kind === "trophy").length,
+    expectedTrophyIds.length,
+    "canonical trophy archive count",
+  );
+  for (const assetId of expectedTrophyIds) {
+    const entry = runtimeManifest.entries.find((asset) => asset.id === assetId);
+    assert.ok(entry, `${assetId}: missing trophy archive entry`);
+    assert.deepEqual(
+      entry.selectionAliases.genericIds,
+      [],
+      `${assetId}: archive trophy cannot become a generic gameplay fallback`,
+    );
+    for (const [fileName, source] of rigConsumerSources) {
+      assert.equal(
+        source.includes(entry.runtimeUrl),
+        false,
+        `${fileName}: standalone trophy ${assetId} entered the rig or canvas`,
+      );
+    }
+  }
   for (const [biomaskId, assetId] of Object.entries(
     expectedMaskAssetByBiomaskId,
   )) {
@@ -415,7 +459,7 @@ async function main() {
   );
 
   console.log(
-    "Audit hunter kit V14 reussi : cutouts exacts reserves aux vignettes, masques de rig V3 alignes en 256x384 et aucun fallback generique canonique.",
+    "Audit hunter kit V14 reussi : archives de trophees reservees aux vignettes, masques de rig V3 alignes en 256x384 et aucun fallback generique canonique.",
   );
 }
 

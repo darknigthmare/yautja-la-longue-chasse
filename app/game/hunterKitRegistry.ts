@@ -28,6 +28,10 @@ export interface HunterKitRuntimeAsset {
   name: string;
   work: string;
   year: number;
+  archiveCopy?: {
+    title: string;
+    description: string;
+  };
   sourceTier: HunterKitResolutionTier;
   sourceRecordId: string;
   promptRecordId: string;
@@ -132,6 +136,9 @@ export const HUNTER_KIT_ASSETS = Object.freeze(
         genericIds: Object.freeze([...entry.selectionAliases.genericIds]),
       }),
       futureConsumers: Object.freeze([...entry.futureConsumers]),
+      archiveCopy: entry.archiveCopy
+        ? Object.freeze({ ...entry.archiveCopy })
+        : undefined,
     }),
   ),
 ) as readonly HunterKitRuntimeAsset[];

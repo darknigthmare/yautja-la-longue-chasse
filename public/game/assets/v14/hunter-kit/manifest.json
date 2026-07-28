@@ -11,8 +11,8 @@
     "generic"
   ],
   "coverage": {
-    "planned": 6,
-    "available": 6,
+    "planned": 11,
+    "available": 11,
     "complete": true
   },
   "entries": [
@@ -45,6 +45,10 @@
         "thumbnail",
         "rig"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Detached asymmetrical skull mask, complete contour and optic visible; chroma extraction inspected."
+      },
       "sourceMetadata": {
         "bytes": 1709546,
         "width": 1254,
@@ -83,10 +87,6 @@
         "partialAlphaPixels": 4039,
         "visibleGreenRatio": 0
       },
-      "inspection": {
-        "status": "passed",
-        "notes": "Exact skull-mask identity and complete alpha contour inspected."
-      },
       "shard": "masks.json"
     },
     {
@@ -118,6 +118,10 @@
         "thumbnail",
         "rig"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Three nested forehead ridges and squared ribbed chin remain readable; complete clean alpha contour."
+      },
       "sourceMetadata": {
         "bytes": 2283390,
         "width": 1122,
@@ -156,10 +160,6 @@
         "partialAlphaPixels": 5613,
         "visibleGreenRatio": 0
       },
-      "inspection": {
-        "status": "passed",
-        "notes": "Boar forehead ridges and squared chin inspected against licensed references."
-      },
       "shard": "masks.json"
     },
     {
@@ -191,6 +191,10 @@
         "thumbnail",
         "rig"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Tall engraved medallion, oval nodes and long ribbed lower face are distinct; alpha contour inspected."
+      },
       "sourceMetadata": {
         "bytes": 1734874,
         "width": 1254,
@@ -229,10 +233,6 @@
         "partialAlphaPixels": 3928,
         "visibleGreenRatio": 0
       },
-      "inspection": {
-        "status": "passed",
-        "notes": "Snake medallion, engraved channels and complete lower face inspected."
-      },
       "shard": "masks.json"
     },
     {
@@ -264,6 +264,10 @@
         "thumbnail",
         "rig"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Corrected generation removes invented dorsal fins; smooth crown, angular beak and coupling remain complete."
+      },
       "sourceMetadata": {
         "bytes": 2899408,
         "width": 1024,
@@ -302,10 +306,6 @@
         "partialAlphaPixels": 4104,
         "visibleGreenRatio": 0
       },
-      "inspection": {
-        "status": "passed",
-        "notes": "Corrected no-fin silhouette, long angular face and coupling inspected against the replica."
-      },
       "shard": "masks.json"
     },
     {
@@ -339,6 +339,10 @@
         "thumbnail",
         "rig"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Single deployed launcher with complete top prongs, side guides, breech and bottom coupling; clean transparent silhouette."
+      },
       "sourceMetadata": {
         "bytes": 1366503,
         "width": 864,
@@ -377,10 +381,6 @@
         "partialAlphaPixels": 6079,
         "visibleGreenRatio": 0
       },
-      "inspection": {
-        "status": "passed",
-        "notes": "Single deployed spear gun and complete mechanical silhouette inspected."
-      },
       "shard": "equipment.json"
     },
     {
@@ -389,6 +389,10 @@
       "name": "Predator 2 Alien Warrior trophy skull",
       "work": "Predator 2",
       "year": 1990,
+      "archiveCopy": {
+        "title": "Crâne de Xénomorphe",
+        "description": "Crâne-trophée de l'Alien Warrior visible sur le mur du vaisseau du Lost Tribe."
+      },
       "sourceTier": "exact-override",
       "sourceRecordId": "trophy-xenomorph-skull-p2",
       "promptRecordId": "trophy-xenomorph-skull-p2",
@@ -404,14 +408,15 @@
         "approximationIds": [
           "alien-skull"
         ],
-        "genericIds": [
-          "trophy-skull"
-        ]
+        "genericIds": []
       },
       "futureConsumers": [
-        "thumbnail",
-        "rig"
+        "thumbnail"
       ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Single complete lateral skull with long cranium, repeating fenestrae, internal rail and lower jaw; alpha extraction inspected."
+      },
       "sourceMetadata": {
         "bytes": 1524249,
         "width": 1413,
@@ -450,9 +455,355 @@
         "partialAlphaPixels": 8615,
         "visibleGreenRatio": 0
       },
+      "shard": "trophies.json"
+    },
+    {
+      "id": "trophy-p2-four-eye-giant-skull",
+      "kind": "trophy",
+      "name": "Predator 2 four-eye giant trophy skull",
+      "work": "Predator 2",
+      "year": 1990,
+      "archiveCopy": {
+        "title": "Crâne massif à quatre orbites",
+        "description": "Interprétation fidèle d'un crâne du mur de 1990 dont l'espèce n'a jamais été nommée."
+      },
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-p2-four-eye-giant-skull",
+      "promptRecordId": "trophy-p2-four-eye-giant-skull",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-four-eye-giant-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-four-eye-giant-skull.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [],
+        "approximationIds": [],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail"
+      ],
       "inspection": {
         "status": "passed",
-        "notes": "Long lateral skull, repeating fenestrae and separate jaw inspected against workshop photos."
+        "notes": "Exactly four readable sockets, massive cranium, complete mouth and paired pincer-like mandibles; unnamed species."
+      },
+      "sourceMetadata": {
+        "bytes": 2069967,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "0ae1dd3adbb429b03c0954f5f360c5e510d71efb38eee5ae33a3d2714e320c29"
+      },
+      "metadata": {
+        "bytes": 174804,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "57abc4f222f0a311d239498582f40cca9e6547ee754c6db7ba5d816aeed73735"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          72,
+          135,
+          1179,
+          1107
+        ],
+        "padding": {
+          "left": 72,
+          "top": 135,
+          "right": 74,
+          "bottom": 146
+        },
+        "visibleRatio": 0.477771,
+        "transparentRatio": 0.521777,
+        "partialAlphaPixels": 6746,
+        "visibleGreenRatio": 0
+      },
+      "shard": "trophies.json"
+    },
+    {
+      "id": "trophy-p2-horn-chin-skull",
+      "kind": "trophy",
+      "name": "Predator 2 horn-chin trophy skull",
+      "work": "Predator 2",
+      "year": 1990,
+      "archiveCopy": {
+        "title": "Crâne aux cornes sous-mentonnières",
+        "description": "Interprétation fidèle d'un crâne du mur de 1990 dont l'espèce n'a jamais été nommée."
+      },
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-p2-horn-chin-skull",
+      "promptRecordId": "trophy-p2-horn-chin-skull",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-horn-chin-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-horn-chin-skull.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [],
+        "approximationIds": [],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One compact complete skull with exactly one symmetrical pair of long horns originating beneath the chin; unnamed species."
+      },
+      "sourceMetadata": {
+        "bytes": 1614868,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "9187fdf10c35fb86e0f7bfb6f7cd10f3c724a4a4dac26b135b47a9436f9be758"
+      },
+      "metadata": {
+        "bytes": 94932,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "d18ce719863b24e7129ed597f62390d2ca1468e38068923aac5d67ec742a3a78"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          254,
+          122,
+          1005,
+          1131
+        ],
+        "padding": {
+          "left": 254,
+          "top": 122,
+          "right": 248,
+          "bottom": 122
+        },
+        "visibleRatio": 0.305232,
+        "transparentRatio": 0.69449,
+        "partialAlphaPixels": 4289,
+        "visibleGreenRatio": 0
+      },
+      "shard": "trophies.json"
+    },
+    {
+      "id": "trophy-p2-tusked-skull",
+      "kind": "trophy",
+      "name": "Predator 2 tusked trophy skull",
+      "work": "Predator 2",
+      "year": 1990,
+      "archiveCopy": {
+        "title": "Crâne aux défenses latérales",
+        "description": "Interprétation fidèle d'un crâne du mur de 1990 dont l'espèce n'a jamais été nommée."
+      },
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-p2-tusked-skull",
+      "promptRecordId": "trophy-p2-tusked-skull",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-tusked-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-tusked-skull.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [],
+        "approximationIds": [],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One complete compact skull with exactly two long silhouette-defining tusks originating from the lateral cheek and jaw area; unnamed species."
+      },
+      "sourceMetadata": {
+        "bytes": 1458798,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "2a62df92fae32b3872d41eaa6aed927b6d57348c63512ed7c25d09bd927c8470"
+      },
+      "metadata": {
+        "bytes": 83196,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "10b1f9f376792ee0e12f41340e157f6e5b6cbcd4f6c1a8fc2d944d2ab636bf48"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          180,
+          161,
+          993,
+          1083
+        ],
+        "padding": {
+          "left": 180,
+          "top": 161,
+          "right": 260,
+          "bottom": 170
+        },
+        "visibleRatio": 0.258703,
+        "transparentRatio": 0.740897,
+        "partialAlphaPixels": 4805,
+        "visibleGreenRatio": 0
+      },
+      "shard": "trophies.json"
+    },
+    {
+      "id": "trophy-avp-impaled-xeno-head",
+      "kind": "trophy",
+      "name": "Alien vs. Predator impaled Xenomorph head",
+      "work": "Alien vs. Predator",
+      "year": 2004,
+      "archiveCopy": {
+        "title": "Tête de Xénomorphe empalée",
+        "description": "Tête entière à carapace noire traversée par un unique bâton rituel Yautja."
+      },
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-avp-impaled-xeno-head",
+      "promptRecordId": "trophy-avp-impaled-xeno-head",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-avp-impaled-xeno-head.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-avp-impaled-xeno-head.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [],
+        "approximationIds": [],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One intact glossy-black adult Xenomorph head, jaws and inner jaw readable, traversed vertically by exactly one Yautja ritual staff."
+      },
+      "sourceMetadata": {
+        "bytes": 1449558,
+        "width": 1159,
+        "height": 1357,
+        "sha256": "98a5bb1e9354d9a602bc1199fc55edff48b6adddc6355f331c859906ebcee49c"
+      },
+      "metadata": {
+        "bytes": 73974,
+        "width": 1159,
+        "height": 1357,
+        "channels": 4,
+        "sha256": "e9a3405dbf9dd06e62be8ab25a770ef2af7d5a3acc12f541d19c2cdc107bcc59"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          260,
+          34,
+          932,
+          1320
+        ],
+        "padding": {
+          "left": 260,
+          "top": 34,
+          "right": 226,
+          "bottom": 36
+        },
+        "visibleRatio": 0.217728,
+        "transparentRatio": 0.782028,
+        "partialAlphaPixels": 5358,
+        "visibleGreenRatio": 0
+      },
+      "shard": "trophies.json"
+    },
+    {
+      "id": "trophy-human-skull-spine-badlands",
+      "kind": "trophy",
+      "name": "Predator: Badlands human skull and spine trophy",
+      "work": "Predator: Badlands",
+      "year": 2025,
+      "archiveCopy": {
+        "title": "Crâne humain et colonne",
+        "description": "Crâne humain avec sa longue colonne, visible parmi les prises du mur de Kwei."
+      },
+      "sourceTier": "exact-override",
+      "sourceRecordId": "trophy-human-skull-spine-badlands",
+      "promptRecordId": "trophy-human-skull-spine-badlands",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-human-skull-spine-badlands.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-human-skull-spine-badlands.webp",
+      "planned": true,
+      "available": true,
+      "selectionAliases": {
+        "exactPresetIds": [],
+        "familyIds": [],
+        "approximationIds": [],
+        "genericIds": []
+      },
+      "futureConsumers": [
+        "thumbnail"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One complete weathered adult human skull with mandible and a long anatomically readable vertebral column, bone only and no gore."
+      },
+      "sourceMetadata": {
+        "bytes": 1414789,
+        "width": 1055,
+        "height": 1491,
+        "sha256": "706ba4f84574c3a06c1c1f52e9a07628c84bb554085eb5c82399a038064e0682"
+      },
+      "metadata": {
+        "bytes": 82464,
+        "width": 1055,
+        "height": 1491,
+        "channels": 4,
+        "sha256": "1154a7f15ed87b329cf769b64451aee5135559f0eda5f999cef0c5c7ef3c73fc"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          315,
+          59,
+          749,
+          1435
+        ],
+        "padding": {
+          "left": 315,
+          "top": 59,
+          "right": 305,
+          "bottom": 55
+        },
+        "visibleRatio": 0.195114,
+        "transparentRatio": 0.804543,
+        "partialAlphaPixels": 5784,
+        "visibleGreenRatio": 0
       },
       "shard": "trophies.json"
     }

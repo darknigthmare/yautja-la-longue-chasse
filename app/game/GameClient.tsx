@@ -78,6 +78,14 @@ import {
   type HunterKitResolveRequest,
 } from "./hunterKitRegistry";
 import {
+  FRANCHISE_TROPHY_ARCHIVE_ASSETS,
+  FRANCHISE_TROPHY_MANIFEST_SUMMARY,
+  franchiseTrophyContinuityLabel,
+  franchiseTrophyEvidenceLabel,
+  franchiseTrophyMediumLabel,
+} from "./franchiseTrophyRegistry";
+import { trophyWallVisualForDefinitionId } from "./trophyVisualRegistry";
+import {
   ARMORS,
   CODEX_ENTRIES,
   DIFFICULTIES,
@@ -336,9 +344,6 @@ const V14_EXACT_MASK_ASSETS = listHunterKitAssets({
   status: "available",
 });
 const V14_FERAL_SPEARGUN = getHunterKitAsset("feral-speargun");
-const V14_XENOMORPH_SKULL = getHunterKitAsset(
-  "trophy-xenomorph-skull-p2",
-);
 
 const DREAD_OPTIONS: ReadonlyArray<{
   id: DreadStyleId;
@@ -2059,36 +2064,102 @@ export default function GameClient() {
               onBack={() => go(stationReturnScreen)}
             />
             <div className="trophy-grid">
-              {V14_XENOMORPH_SKULL?.available ? (
-                <article className="trophy-card trophy-reference-card">
-                  <div className="trophy-art" aria-hidden="true">
-                    <img
-                      src={V14_XENOMORPH_SKULL.runtimeUrl}
-                      alt=""
-                      loading="lazy"
-                    />
-                  </div>
-                  <p className="mission-planet">Predator 2 · 1990</p>
-                  <h3>Crâne de Xénomorphe</h3>
-                  <p>
-                    Reconstitution OpenAI guidée par le trophée visible dans
-                    le vaisseau du Lost Tribe, conservée hors progression.
-                  </p>
-                  <div className="trophy-tags">
-                    <span>Référence écran</span>
-                    <span>Franchise</span>
-                    <span>Archive canonique</span>
-                  </div>
-                  <span className="trophy-score">
-                    ARCHIVE V14 · NON JOUABLE
-                  </span>
-                </article>
-              ) : null}
+              <details className="franchise-trophy-archive">
+                <summary>
+                  <span>Archive franchise V16</span>
+                  <strong>
+                    {FRANCHISE_TROPHY_MANIFEST_SUMMARY.planned} designs
+                    physiques sourcés · non jouables
+                  </strong>
+                </summary>
+                <div className="trophy-grid franchise-trophy-archive-grid">
+                  {FRANCHISE_TROPHY_ARCHIVE_ASSETS.map((asset) => {
+                    const primaryAppearance = asset.appearances[0];
+                    return (
+                      <article
+                        className="trophy-card trophy-reference-card"
+                        key={asset.id}
+                      >
+                        <div className="trophy-art">
+                          <img
+                            src={asset.runtimeUrl}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <p className="mission-planet">
+                          {primaryAppearance.work} · {primaryAppearance.year}
+                          {asset.appearances.length > 1
+                            ? ` · ${asset.appearances.length} apparitions`
+                            : ""}
+                        </p>
+                        <h3>{asset.name}</h3>
+                        <p>{asset.visualAnchor}</p>
+                        {asset.guardrail && (
+                          <p className="trophy-archive-guardrail">
+                            Nomenclature : {asset.guardrail}
+                          </p>
+                        )}
+                        <div className="trophy-tags">
+                          <span>
+                            {franchiseTrophyMediumLabel(
+                              primaryAppearance.medium,
+                            )}
+                          </span>
+                          <span>
+                            {franchiseTrophyEvidenceLabel(
+                              primaryAppearance.status,
+                            )}
+                          </span>
+                          <span>
+                            {franchiseTrophyContinuityLabel(primaryAppearance)}
+                          </span>
+                        </div>
+                        <a
+                          className="trophy-archive-source"
+                          href={primaryAppearance.sourcePage}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Source de l’œuvre
+                        </a>
+                        <span className="trophy-score">
+                          ARCHIVE V16 · NON JOUABLE
+                        </span>
+                      </article>
+                    );
+                  })}
+                </div>
+              </details>
               {trophyRecords.length > 0 ? (
                 trophyRecords.map((trophy) => {
                   const mission = MISSIONS.find(
                     (entry) => entry.id === trophy.missionId,
                   );
+                  const exactVisual = trophyWallVisualForDefinitionId(
+                    trophy.definitionId,
+                  );
+                  const missionTrophy =
+                    mission?.trophy.id === trophy.definitionId
+                      ? mission.trophy
+                      : null;
+                  const fallbackTrophyName =
+                    trophy.partId === "mask"
+                      ? `Biomask de ${trophy.targetName}`
+                      : trophy.partId === "insignia"
+                        ? `Insigne de ${trophy.targetName}`
+                        : trophy.partId === "skull-and-spine"
+                          ? `Crâne et colonne de ${trophy.targetName}`
+                          : `Crâne de ${trophy.targetName}`;
+                  const fallbackTrophyDescription =
+                    trophy.partId === "mask"
+                      ? "Biomask arraché à un adversaire du clan."
+                      : trophy.partId === "insignia"
+                        ? "Insigne tactique prélevé sur une proie digne."
+                        : trophy.partId === "skull-and-spine"
+                          ? "Crâne et colonne extraits après une chasse honorable."
+                          : "Crâne prélevé, nettoyé et consigné dans les archives.";
                   const quality = {
                     worthy: "Digne",
                     blooded: "Blooded",
@@ -2105,23 +2176,32 @@ export default function GameClient() {
                   return (
                     <article className="trophy-card" key={trophy.id}>
                       <div className="trophy-art" aria-hidden="true">
-                        <V6AtlasSprite
-                          id={resolveV6TrophyVisualId(trophy)}
-                          decorative
-                        />
+                        {exactVisual ? (
+                          <img
+                            src={exactVisual.runtimeUrl}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <V6AtlasSprite
+                            id={resolveV6TrophyVisualId(trophy)}
+                            decorative
+                          />
+                        )}
                       </div>
                       <p className="mission-planet">
                         {mission?.planetName ?? "Monde inconnu"}
                       </p>
-                      <h3>{trophy.targetName}</h3>
+                      <h3>
+                        {missionTrophy?.name ??
+                          exactVisual?.name ??
+                          fallbackTrophyName}
+                      </h3>
                       <p>
-                        {trophy.partId === "mask"
-                          ? "Biomask arraché à un adversaire du clan."
-                          : trophy.partId === "insignia"
-                            ? "Insigne tactique prélevé sur une proie digne."
-                          : trophy.partId === "skull-and-spine"
-                            ? "Crâne et colonne extraits après une chasse honorable."
-                            : "Crâne prélevé, nettoyé et consigné dans les archives."}
+                        {missionTrophy?.description ??
+                          exactVisual?.description ??
+                          fallbackTrophyDescription}
                       </p>
                       <div className="trophy-tags">
                         <span>{quality}</span>

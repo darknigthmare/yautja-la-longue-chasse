@@ -75,7 +75,7 @@ after(async () => {
   await rm(outputDirectory, { force: true, recursive: true });
 });
 
-test("hunter kit V14 exposes six available, planned and distinct exact assets", () => {
+test("hunter kit V14 exposes eleven available, planned and distinct exact assets", () => {
   assert.deepEqual(HUNTER_KIT_PRIORITY, [
     "exact-override",
     "family",
@@ -83,18 +83,19 @@ test("hunter kit V14 exposes six available, planned and distinct exact assets", 
     "generic",
   ]);
   assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.packVersion, 14);
-  assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.planned, 6);
-  assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.available, 6);
+  assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.planned, 11);
+  assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.available, 11);
   assert.equal(HUNTER_KIT_MANIFEST_SUMMARY.complete, true);
-  assert.equal(HUNTER_KIT_ASSETS.length, 6);
-  assert.equal(new Set(HUNTER_KIT_ASSETS.map((asset) => asset.id)).size, 6);
+  assert.equal(HUNTER_KIT_ASSETS.length, 11);
+  assert.equal(new Set(HUNTER_KIT_ASSETS.map((asset) => asset.id)).size, 11);
   assert.equal(
     new Set(HUNTER_KIT_ASSETS.map((asset) => asset.metadata.sha256)).size,
-    6,
+    11,
   );
-  assert.equal(listHunterKitAssets({ status: "available" }).length, 6);
+  assert.equal(listHunterKitAssets({ status: "available" }).length, 11);
   assert.equal(listHunterKitAssets({ status: "planned" }).length, 0);
   assert.equal(listHunterKitAssets({ kind: "mask" }).length, 4);
+  assert.equal(listHunterKitAssets({ kind: "trophy" }).length, 6);
   assert.equal(getHunterKitAsset("mask-boar")?.available, true);
   assert.equal(getHunterKitAsset("missing"), null);
 });
@@ -175,7 +176,7 @@ test("thumbnail and rig can later share the same registry asset", () => {
   assert.equal(rig?.asset.runtimeUrl, thumbnail?.asset.runtimeUrl);
 });
 
-test("GameClient consumes the exact wall, Feral spear gun and Predator 2 trophy", () => {
+test("GameClient consumes the exact wall, Feral spear gun and separated V16 archive", () => {
   assert.match(
     gameClientSource,
     /const V14_EXACT_MASK_ASSETS = listHunterKitAssets\(\{[\s\S]*?kind: "mask",[\s\S]*?status: "available",[\s\S]*?\}\);/,
@@ -183,10 +184,6 @@ test("GameClient consumes the exact wall, Feral spear gun and Predator 2 trophy"
   assert.match(
     gameClientSource,
     /const V14_FERAL_SPEARGUN = getHunterKitAsset\("feral-speargun"\);/,
-  );
-  assert.match(
-    gameClientSource,
-    /const V14_XENOMORPH_SKULL = getHunterKitAsset\([\s\S]*?"trophy-xenomorph-skull-p2",[\s\S]*?\);/,
   );
   assert.match(gameClientSource, /className="armory-exact-kit"/);
   assert.match(
@@ -196,7 +193,15 @@ test("GameClient consumes the exact wall, Feral spear gun and Predator 2 trophy"
   assert.match(gameClientSource, /src=\{asset\.runtimeUrl\}/);
   assert.match(
     gameClientSource,
-    /V14_XENOMORPH_SKULL\?\.available[\s\S]*?className="trophy-card trophy-reference-card"[\s\S]*?src=\{V14_XENOMORPH_SKULL\.runtimeUrl\}/,
+    /FRANCHISE_TROPHY_ARCHIVE_ASSETS\.map\(\(asset\)[\s\S]*?className="trophy-card trophy-reference-card"[\s\S]*?src=\{asset\.runtimeUrl\}/,
+  );
+  assert.match(
+    gameClientSource,
+    /<details className="franchise-trophy-archive">[\s\S]*?FRANCHISE_TROPHY_ARCHIVE_ASSETS\.map/,
+  );
+  assert.match(
+    gameClientSource,
+    /trophyWallVisualForDefinitionId\(\s*trophy\.definitionId,\s*\)/,
   );
 });
 
@@ -291,6 +296,18 @@ test("standalone V14 cutouts stay thumbnail-only while rig paths stay aligned V3
     hunterMaskRigPath("jungle"),
     `${HUNTER_ASSET_ROOT_V3}/masks/registered/jungle.webp`,
   );
+
+  for (const trophy of listHunterKitAssets({ kind: "trophy" })) {
+    assert.deepEqual(trophy.futureConsumers, ["thumbnail"]);
+    assert.deepEqual(trophy.selectionAliases.genericIds, []);
+    assert.equal(
+      resolveHunterKitAssetForConsumer(
+        { kind: "trophy", assetId: trophy.id },
+        "rig",
+      ),
+      null,
+    );
+  }
 });
 
 test("HunterRigPreview and HuntCanvas only consume registered rig mask paths", () => {

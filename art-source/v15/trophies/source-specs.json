@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "packId": "playable-trophies-v15",
+  "packVersion": 15,
+  "authority": "app/game/data.ts",
+  "entries": [
+    {
+      "id": "trophy-vey",
+      "definitionId": "trophy-vey",
+      "name": "Insigne de Vey",
+      "description": "La marque d'une humaine ayant transformé une embuscade en véritable chasse.",
+      "targetName": "Commandante Vey",
+      "partId": "insignia",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-vey-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-vey.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-vey.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One complete worn tactical insignia with a red three-claw emblem and two mounting slots; no character or readable text."
+      }
+    },
+    {
+      "id": "trophy-cryostalker",
+      "definitionId": "trophy-cryostalker",
+      "name": "Crâne de Cryostalker",
+      "description": "Carapace polaire d'un prédateur qui effaçait jusqu'à sa propre chaleur.",
+      "targetName": "Cryostalker Alpha",
+      "partId": "skull-and-spine",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-cryostalker-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-cryostalker.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-cryostalker.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One complete low polar skull and articulated spine with mineralized armor plates and contained cyan thermal channels."
+      }
+    },
+    {
+      "id": "trophy-bad-blood",
+      "definitionId": "trophy-bad-blood",
+      "name": "Masque du Paria",
+      "description": "Un biomask récupéré après le jugement d'un chasseur ayant trahi le code.",
+      "targetName": "Le Bad Blood",
+      "partId": "mask",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-bad-blood-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-bad-blood.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-bad-blood.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One complete asymmetrical desecrated biomask with a deep structural crack, jagged crown and worn crimson markings."
+      }
+    },
+    {
+      "id": "trophy-swamp-hydra",
+      "definitionId": "trophy-swamp-hydra",
+      "name": "Crâne trifide de l'Hydre",
+      "description": "La couronne osseuse d'une matriarche ayant dominé tout un delta.",
+      "targetName": "Hydre de vase",
+      "partId": "skull-and-spine",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-swamp-hydra-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-swamp-hydra.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-swamp-hydra.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One anatomically fused trophy with exactly three skull fronts and three open jaws, amphibious armor and turquoise sensory nodules."
+      }
+    },
+    {
+      "id": "trophy-desert-sandmaw",
+      "definitionId": "trophy-desert-sandmaw",
+      "name": "Mandibules de Sandmaw",
+      "description": "Deux lames minérales polies par des décennies de chasse souterraine.",
+      "targetName": "Matriarche Sandmaw",
+      "partId": "skull",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-desert-sandmaw-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-desert-sandmaw.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-desert-sandmaw.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One detached paired mandibular trophy with mineral enamel, inward cutting ridges, sensor pits and sand-polished amber edges."
+      }
+    },
+    {
+      "id": "trophy-ocean-leviathan",
+      "definitionId": "trophy-ocean-leviathan",
+      "name": "Crête du Léviathan",
+      "description": "Une vertèbre-couronne bioluminescente arrachée au maître d'un océan.",
+      "targetName": "Léviathan abyssal",
+      "partId": "skull-and-spine",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-ocean-leviathan-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-ocean-leviathan.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-ocean-leviathan.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One porous crown-shaped vertebral crest with five bony fins, a central sensory pit and contained cyan sea-green channels."
+      }
+    },
+    {
+      "id": "trophy-fungal-hivemind",
+      "definitionId": "trophy-fungal-hivemind",
+      "name": "Noyau du Cœur-Mère",
+      "description": "Un nœud pétrifié contenant les souvenirs sensoriels d'une biosphère.",
+      "targetName": "Cœur-Mère mycélien",
+      "partId": "skull",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-fungal-hivemind-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-fungal-hivemind.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-fungal-hivemind.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One petrified mycelial node with folded neural lamellae, sensory rings, root stubs and amber memory nodules."
+      }
+    },
+    {
+      "id": "trophy-ruins-ancient-guardian",
+      "definitionId": "trophy-ruins-ancient-guardian",
+      "name": "Masque du Gardien",
+      "description": "Une face minérale dont les capteurs ont étudié puis reconnu un chasseur digne.",
+      "targetName": "Gardien d'obsidienne",
+      "partId": "mask",
+      "franchiseStatus": "project-original",
+      "masterPath": "art-source/v15/trophies/masters/trophy-ruins-ancient-guardian-chroma.png",
+      "runtimePath": "public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp",
+      "runtimeUrl": "/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "trophy-wall"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "One tall obsidian adaptive-sentinel face with vertical sensor prisms, a memory socket and broken lower coupling."
+      }
+    }
+  ]
+}

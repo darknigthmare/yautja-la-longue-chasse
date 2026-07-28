@@ -11,6 +11,7 @@ import {
   type EcologyV8Distribution,
   type EcologyV8PlanetId,
 } from "./ecologyV8";
+import EnemyTrophyPreview from "./EnemyTrophyPreview";
 
 const CATEGORY_LABELS: Record<EcologyV8Category, string> = {
   fauna: "Faune",
@@ -178,6 +179,10 @@ export default function EnemyBestiaryV8() {
               </div>
               <h3>{enemy.name}</h3>
               <p>{enemy.behavior}</p>
+              <EnemyTrophyPreview
+                enemyId={enemy.id}
+                consumer="enemy-bestiary-v8"
+              />
               <dl>
                 <div>
                   <dt>Trophée</dt>

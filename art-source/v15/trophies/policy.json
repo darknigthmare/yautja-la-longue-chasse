@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "packId": "playable-trophies-v15",
+  "packVersion": 15,
+  "scope": [
+    "existing-playable-trophy-definitions"
+  ],
+  "sourcePolicy": {
+    "authority": "app/game/data.ts",
+    "projectCanonRequired": true,
+    "webReferenceRequired": false,
+    "franchiseStatus": "project-original",
+    "exactDefinitionIdRequired": true,
+    "genericAliasingAllowed": false,
+    "visualInspectionRequired": true,
+    "generatedOriginalOnly": true
+  },
+  "consumerPolicy": {
+    "allowed": [
+      "trophy-wall"
+    ],
+    "forbidden": [
+      "hunter-rig",
+      "hunt-canvas",
+      "registered-layer"
+    ],
+    "fallback": "v6-aligned-atlas"
+  },
+  "artifactPolicy": {
+    "generator": "OpenAI ImageGen",
+    "masterBackground": "#00ff00",
+    "runtimeFormat": "webp",
+    "runtimeAlphaRequired": true,
+    "publicContainsGeneratedRuntimeAssetsOnly": true
+  }
+}

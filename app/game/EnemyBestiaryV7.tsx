@@ -9,6 +9,7 @@ import {
   ENEMY_V7_FRAME_LABELS,
   type EnemyV7Category,
 } from "./enemyRosterV7";
+import EnemyTrophyPreview from "./EnemyTrophyPreview";
 
 const CATEGORY_LABELS: Record<EnemyV7Category, string> = {
   fauna: "Faune",
@@ -102,6 +103,10 @@ export default function EnemyBestiaryV7() {
               <h3>{enemy.name}</h3>
               <p className="enemy-role">{enemy.role}</p>
               <p>{enemy.behavior}</p>
+              <EnemyTrophyPreview
+                enemyId={enemy.id}
+                consumer="enemy-bestiary-v7"
+              />
               <dl>
                 <div>
                   <dt>Trophée</dt>

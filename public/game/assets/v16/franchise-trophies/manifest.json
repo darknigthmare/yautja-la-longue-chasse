@@ -1,0 +1,6250 @@
+{
+  "schemaVersion": 1,
+  "packId": "franchise-trophies-v16",
+  "packVersion": 16,
+  "generator": "OpenAI ImageGen",
+  "assetRoot": "/game/assets/v16/franchise-trophies",
+  "coverage": {
+    "planned": 92,
+    "available": 92,
+    "complete": true
+  },
+  "entries": [
+    {
+      "id": "franchise-human-skull-spine",
+      "name": "Crâne humain avec colonne vertébrale",
+      "visualAnchor": "Crâne humain complet avec mandibule et longue colonne articulée, nettoyé pour l'archive sans chair ni sang.",
+      "appearances": [
+        {
+          "work": "Predator",
+          "year": 1987,
+          "medium": "film",
+          "status": "screen-acquisition",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator",
+          "note": "Victime non nommée dans le plan; Billy est seulement probable."
+        },
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-acquisition",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": "Danny Archuleta et King Willie sont deux prises distinctes du même type."
+        },
+        {
+          "work": "Predators",
+          "year": 2010,
+          "medium": "film",
+          "status": "screen-acquisition",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predators",
+          "note": "Prise de Stans."
+        },
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": "Victime humaine anonyme sur le mur de Kwei."
+        },
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "claim-object",
+          "sourcePage": "https://predator.illfonic.com/about/",
+          "note": "Full claim officiel."
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Ne pas attribuer une identité unique à ce design partagé; les victimes sont conservées dans les apparitions.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-human-skull-spine-badlands.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-human-skull-spine-badlands.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1414789,
+        "width": 1055,
+        "height": 1491,
+        "sha256": "706ba4f84574c3a06c1c1f52e9a07628c84bb554085eb5c82399a038064e0682"
+      },
+      "metadata": {
+        "bytes": 82464,
+        "width": 1055,
+        "height": 1491,
+        "channels": 4,
+        "sha256": "1154a7f15ed87b329cf769b64451aee5135559f0eda5f999cef0c5c7ef3c73fc"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          315,
+          59,
+          749,
+          1435
+        ],
+        "padding": {
+          "left": 315,
+          "top": 59,
+          "right": 305,
+          "bottom": 55
+        },
+        "visibleRatio": 0.195114,
+        "transparentRatio": 0.804543,
+        "partialAlphaPixels": 5784,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-loose-human-skull",
+      "name": "Crâne humain nettoyé",
+      "visualAnchor": "Crâne humain isolé avec mandibule, sans colonne, usé mais anatomique; aucune identité individuelle.",
+      "appearances": [
+        {
+          "work": "Predator",
+          "year": 1987,
+          "medium": "film",
+          "status": "licensed-accessory",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator",
+          "note": ""
+        },
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        },
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        },
+        {
+          "work": "Predators",
+          "year": 2010,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predators",
+          "note": ""
+        },
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "claim-object",
+          "sourcePage": "https://predator.illfonic.com/about/",
+          "note": "Quick claim officiel."
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Objet générique licencié; aucune identité de victime.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-loose-human-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-loose-human-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1547663,
+        "width": 1411,
+        "height": 1115,
+        "sha256": "fc8d6889b61899d88e5cd97443c6cfb2cf5831c558f0adfd42a4b276c8b9f3ad"
+      },
+      "metadata": {
+        "bytes": 92350,
+        "width": 1411,
+        "height": 1115,
+        "channels": 4,
+        "sha256": "a92a2be2a9e7ab5ce01d4cfaeb458be02c0599304558b2c9bf6d8c39ff65e68b"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          379,
+          143,
+          1003,
+          947
+        ],
+        "padding": {
+          "left": 379,
+          "top": 143,
+          "right": 407,
+          "bottom": 167
+        },
+        "visibleRatio": 0.225416,
+        "transparentRatio": 0.774297,
+        "partialAlphaPixels": 3733,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-xenomorph-skull",
+      "name": "Crâne d'Alien Warrior du mur de 1990",
+      "visualAnchor": "Long crâne biomécanique à dôme étiré, fenestrae répétées, rail interne et mâchoire complète.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Alien Warrior est l'identification de production; ne pas lui attribuer un individu.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-xenomorph-skull-p2.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1524249,
+        "width": 1413,
+        "height": 1113,
+        "sha256": "ef5dd19a708b7fa8824b5147a1c2f014a922214dee6d76714e9af8e3082405fd"
+      },
+      "metadata": {
+        "bytes": 102386,
+        "width": 1413,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "b5f9c52f0389810fff1cef4cf5d9cd8cf7dfce7045839d670c638d7cfecfeefa"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          45,
+          260,
+          1366,
+          852
+        ],
+        "padding": {
+          "left": 45,
+          "top": 260,
+          "right": 46,
+          "bottom": 260
+        },
+        "visibleRatio": 0.25061,
+        "transparentRatio": 0.748755,
+        "partialAlphaPixels": 8615,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-dinosauriform-skull",
+      "name": "Grand crâne extraterrestre dinosauriforme",
+      "visualAnchor": "Le plus grand crâne du mur de Predator 2, allongé et théropode, avec longue gueule dentée.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "NECA dit seulement dinosaur-like; ne jamais écrire Tyrannosaurus rex.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-p2-dinosauriform-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-p2-dinosauriform-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1632374,
+        "width": 1413,
+        "height": 1113,
+        "sha256": "3ab691068e0284143cfffec637ef64a8fd0b4338dc9fb364d7efc8aff1c1cab3"
+      },
+      "metadata": {
+        "bytes": 123258,
+        "width": 1413,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "a4679986644ae46d6e43acd7fd4cf18d300c3e74b924718bb3962f97b0f98cec"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          78,
+          197,
+          1334,
+          926
+        ],
+        "padding": {
+          "left": 78,
+          "top": 197,
+          "right": 78,
+          "bottom": 186
+        },
+        "visibleRatio": 0.288866,
+        "transparentRatio": 0.710505,
+        "partialAlphaPixels": 11683,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-four-orbit-skull",
+      "name": "Crâne massif aux quatre orbites",
+      "visualAnchor": "Boîte crânienne géante, exactement quatre cavités visuelles et mandibules en pinces.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom descriptif de projet; espèce officiellement anonyme.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-four-eye-giant-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-four-eye-giant-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2069967,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "0ae1dd3adbb429b03c0954f5f360c5e510d71efb38eee5ae33a3d2714e320c29"
+      },
+      "metadata": {
+        "bytes": 174804,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "57abc4f222f0a311d239498582f40cca9e6547ee754c6db7ba5d816aeed73735"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          72,
+          135,
+          1179,
+          1107
+        ],
+        "padding": {
+          "left": 72,
+          "top": 135,
+          "right": 74,
+          "bottom": 146
+        },
+        "visibleRatio": 0.477771,
+        "transparentRatio": 0.521777,
+        "partialAlphaPixels": 6746,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-horn-chin-skull",
+      "name": "Crâne aux cornes sous-mentonnières",
+      "visualAnchor": "Crâne robuste portant une unique paire de longues cornes symétriques sous la mâchoire.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Morphologie uniquement; espèce officiellement anonyme.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-horn-chin-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-horn-chin-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1614868,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "9187fdf10c35fb86e0f7bfb6f7cd10f3c724a4a4dac26b135b47a9436f9be758"
+      },
+      "metadata": {
+        "bytes": 94932,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "d18ce719863b24e7129ed597f62390d2ca1468e38068923aac5d67ec742a3a78"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          254,
+          122,
+          1005,
+          1131
+        ],
+        "padding": {
+          "left": 254,
+          "top": 122,
+          "right": 248,
+          "bottom": 122
+        },
+        "visibleRatio": 0.305232,
+        "transparentRatio": 0.69449,
+        "partialAlphaPixels": 4289,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-tusked-skull",
+      "name": "Crâne extraterrestre à défenses",
+      "visualAnchor": "Crâne compact muni d'une unique paire de longues défenses courbes issues des joues.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Morphologie uniquement; espèce officiellement anonyme.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-p2-tusked-skull.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-p2-tusked-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1458798,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "2a62df92fae32b3872d41eaa6aed927b6d57348c63512ed7c25d09bd927c8470"
+      },
+      "metadata": {
+        "bytes": 83196,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "10b1f9f376792ee0e12f41340e157f6e5b6cbcd4f6c1a8fc2d944d2ab636bf48"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          180,
+          161,
+          993,
+          1083
+        ],
+        "padding": {
+          "left": 180,
+          "top": 161,
+          "right": 260,
+          "bottom": 170
+        },
+        "visibleRatio": 0.258703,
+        "transparentRatio": 0.740897,
+        "partialAlphaPixels": 4805,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-small-finned-skull",
+      "name": "Petit crâne extraterrestre à crête",
+      "visualAnchor": "Petit crâne étroit du mur de Predator 2, avec une nageoire ou crête osseuse dominante.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Finned skull est une description d'accessoire, pas une taxonomie.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-p2-small-finned-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-p2-small-finned-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1452092,
+        "width": 1370,
+        "height": 1148,
+        "sha256": "95389806e60214822cd4eea0c4f484435a8c13848f9c1118a3a9f1bccf35b1ca"
+      },
+      "metadata": {
+        "bytes": 78134,
+        "width": 1370,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "adbaac762ba32a2bb4a71ab187002e66dabbbe8cd1a0c65bcf324e6a541bda48"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          442,
+          76,
+          951,
+          1049
+        ],
+        "padding": {
+          "left": 442,
+          "top": 76,
+          "right": 418,
+          "bottom": 98
+        },
+        "visibleRatio": 0.194893,
+        "transparentRatio": 0.8049,
+        "partialAlphaPixels": 3061,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-p2-anonymous-wall-pair",
+      "name": "Paire restante de crânes anonymes du mur de 1990",
+      "visualAnchor": "Les deux morphologies du présentoir à huit montures qui ne correspondent ni au Xénomorphe, ni au dinosauriforme, ni aux quatre prises déjà individualisées.",
+      "appearances": [
+        {
+          "work": "Predator 2",
+          "year": 1990,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-2",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Conserver les deux silhouettes dans un ensemble descriptif; ne pas inventer d'espèce ni de nom canonique.",
+      "composition": "paired-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-p2-anonymous-wall-pair.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-p2-anonymous-wall-pair.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1489425,
+        "width": 1537,
+        "height": 1023,
+        "sha256": "35284481ee401b6bd59c3f481716efcf22e0aebd4f01c73f915523f76d04a2fb"
+      },
+      "metadata": {
+        "bytes": 101848,
+        "width": 1537,
+        "height": 1023,
+        "channels": 4,
+        "sha256": "e60cf8692c9fe70a6ee7e18885dc2b3286fc1f645b7c525c02049356e1561a63"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          295,
+          107,
+          1211,
+          924
+        ],
+        "padding": {
+          "left": 295,
+          "top": 107,
+          "right": 325,
+          "bottom": 98
+        },
+        "visibleRatio": 0.230714,
+        "transparentRatio": 0.768651,
+        "partialAlphaPixels": 10529,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp-chopper-impaled-skull-pair",
+      "name": "Paire de petits crânes empalés de Chopper",
+      "visualAnchor": "Deux petits crânes anonymes montés chacun sur une courte pointe derrière les épaules de Chopper.",
+      "appearances": [
+        {
+          "work": "Alien vs. Predator",
+          "year": 2004,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "La production ne confirme ni humain ni espèce extraterrestre.",
+      "composition": "paired-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp-chopper-impaled-skull-pair.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp-chopper-impaled-skull-pair.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1318875,
+        "width": 1394,
+        "height": 1128,
+        "sha256": "e48583c5905dc1a0c111a155b6bf32f0e3e112c1f19f96652bf6c8ad18a769e3"
+      },
+      "metadata": {
+        "bytes": 67558,
+        "width": 1394,
+        "height": 1128,
+        "channels": 4,
+        "sha256": "5d6fda135a85e7e475f652068a564faaaae6d39e6983a45ade4e3cb8571031bc"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          335,
+          234,
+          1038,
+          930
+        ],
+        "padding": {
+          "left": 335,
+          "top": 234,
+          "right": 355,
+          "bottom": 197
+        },
+        "visibleRatio": 0.132568,
+        "transparentRatio": 0.86715,
+        "partialAlphaPixels": 4991,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp-impaled-xenomorph-head",
+      "name": "Tête de Xénomorphe empalée",
+      "visualAnchor": "Tête entière de Xénomorphe adulte traversée verticalement par un unique bâton rituel.",
+      "appearances": [
+        {
+          "work": "Alien vs. Predator",
+          "year": 2004,
+          "medium": "film",
+          "status": "licensed-accessory",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Accessoire NECA rattaché au film; pas une prise clairement établie par le montage.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v14/hunter-kit/trophies/trophy-avp-impaled-xeno-head.webp",
+      "runtimeUrl": "/game/assets/v14/hunter-kit/trophies/trophy-avp-impaled-xeno-head.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1449558,
+        "width": 1159,
+        "height": 1357,
+        "sha256": "98a5bb1e9354d9a602bc1199fc55edff48b6adddc6355f331c859906ebcee49c"
+      },
+      "metadata": {
+        "bytes": 73974,
+        "width": 1159,
+        "height": 1357,
+        "channels": 4,
+        "sha256": "e9a3405dbf9dd06e62be8ab25a770ef2af7d5a3acc12f541d19c2cdc107bcc59"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          260,
+          34,
+          932,
+          1320
+        ],
+        "padding": {
+          "left": 260,
+          "top": 34,
+          "right": 226,
+          "bottom": 36
+        },
+        "visibleRatio": 0.217728,
+        "transparentRatio": 0.782028,
+        "partialAlphaPixels": 5358,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-space-jockey-helmet",
+      "name": "Trophée de type Space Jockey",
+      "visualAnchor": "Grande tête ou casque biomécanique à trompe, monté au mur du Scout Ship.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Dire Space Jockey-like head/helmet, jamais Engineer.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-space-jockey-helmet.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-space-jockey-helmet.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1886225,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "50a480b7fd6b17e3c3cf192930f43751161ae6f39d137e691719fcd70e52aec1"
+      },
+      "metadata": {
+        "bytes": 141116,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "f69b384f2a28c50b30831fb21c52433bb1cefbd6d4b69463c6d14bcda892c755"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          274,
+          53,
+          1105,
+          1047
+        ],
+        "padding": {
+          "left": 274,
+          "top": 53,
+          "right": 305,
+          "bottom": 66
+        },
+        "visibleRatio": 0.348748,
+        "transparentRatio": 0.650912,
+        "partialAlphaPixels": 5372,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-queen-like-head",
+      "name": "Grande tête de Xénomorphe de type Reine",
+      "visualAnchor": "Large carapace céphalique de Reine Xénomorphe placée au centre du mur du Scout Ship.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Ne pas prétendre qu'il s'agit de la Reine du film AVP de 2004.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-queen-like-head.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-queen-like-head.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1816383,
+        "width": 1413,
+        "height": 1113,
+        "sha256": "ceb2fbff878b7ddb8796972db7bc1f285fb327ffb23c08bd06cf98add20e8533"
+      },
+      "metadata": {
+        "bytes": 134746,
+        "width": 1413,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "5abbf4cec3f5de69d5a964ad5c56c1f6d97b34bb85918d6b4e341c08f10d28a9"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          252,
+          32,
+          1164,
+          1065
+        ],
+        "padding": {
+          "left": 252,
+          "top": 32,
+          "right": 248,
+          "bottom": 47
+        },
+        "visibleRatio": 0.34559,
+        "transparentRatio": 0.654024,
+        "partialAlphaPixels": 5700,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-xenomorph-skull-set",
+      "name": "Crânes de Xénomorphes du Scout Ship",
+      "visualAnchor": "Petit ensemble de crânes biomécaniques allongés montés dans la salle de Wolf.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "ADI confirme Alien skulls au pluriel sans nombre ni caste individuelle.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-xenomorph-skull-set.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-xenomorph-skull-set.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1577471,
+        "width": 1470,
+        "height": 1070,
+        "sha256": "69ebcac87c241f46b79a2b9081aa624931c1546e3501bb5998c584a4ab37c52a"
+      },
+      "metadata": {
+        "bytes": 107664,
+        "width": 1470,
+        "height": 1070,
+        "channels": 4,
+        "sha256": "fa733d06f88a801a164898e19420a3dbe74620be415a324887d9279bceb4ad80"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          94,
+          251,
+          1379,
+          808
+        ],
+        "padding": {
+          "left": 94,
+          "top": 251,
+          "right": 90,
+          "bottom": 261
+        },
+        "visibleRatio": 0.250807,
+        "transparentRatio": 0.748664,
+        "partialAlphaPixels": 8708,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-three-horn-skull",
+      "name": "Grand crâne anonyme à trois cornes",
+      "visualAnchor": "Large crâne animal avec collerette et trois cornes, visible dans la salle du Scout Ship.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Dire triceratops-like, pas Triceratops canonique.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-three-horn-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-three-horn-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1980340,
+        "width": 1407,
+        "height": 1118,
+        "sha256": "b15467a2c382bcfb4d55ee7bb9266e41e00433e08eacb3d01ee358f772836264"
+      },
+      "metadata": {
+        "bytes": 172258,
+        "width": 1407,
+        "height": 1118,
+        "channels": 4,
+        "sha256": "6b14afa9d357d49758a5145c9d7f2ddf68a2dc15214e886e32b473423bba1ebe"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          238,
+          82,
+          1228,
+          1036
+        ],
+        "padding": {
+          "left": 238,
+          "top": 82,
+          "right": 178,
+          "bottom": 81
+        },
+        "visibleRatio": 0.343611,
+        "transparentRatio": 0.65599,
+        "partialAlphaPixels": 6866,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-anonymous-skull-set",
+      "name": "Crânes extraterrestres anonymes du Scout Ship",
+      "visualAnchor": "Ensemble des autres crânes, mandibules et fragments osseux de morphologies distinctes visibles sur les concepts de trophées.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Ensemble anonyme; aucune taxonomie déduite de la silhouette.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-anonymous-skull-set.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-anonymous-skull-set.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1504662,
+        "width": 1453,
+        "height": 1082,
+        "sha256": "0b15134d93d0914fcfef448e0b59c8af7a7e9e35bb62acb774e6ffcd27962229"
+      },
+      "metadata": {
+        "bytes": 116904,
+        "width": 1453,
+        "height": 1082,
+        "channels": 4,
+        "sha256": "9ce9cc367feabf5eb33f599e4eff336cc7fefbcf4682b27410a68e4b2298e19c"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          86,
+          257,
+          1386,
+          881
+        ],
+        "padding": {
+          "left": 86,
+          "top": 257,
+          "right": 66,
+          "bottom": 200
+        },
+        "visibleRatio": 0.157758,
+        "transparentRatio": 0.84153,
+        "partialAlphaPixels": 11029,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-xenomorph-head-processing",
+      "name": "Tête de Xénomorphe en préparation",
+      "visualAnchor": "Tête fraîche de Xénomorphe anonyme immobilisée sur l'établi de préparation des trophées.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-processing",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Objet en préparation, pas crâne déjà exposé; rendu d'archive sans gore.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-xenomorph-head-processing.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-xenomorph-head-processing.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1641059,
+        "width": 1392,
+        "height": 1130,
+        "sha256": "29c425326368abd584bf6f3d84b28be8acb5cf7eca94522ec9b7f39ecc0b4c6a"
+      },
+      "metadata": {
+        "bytes": 110034,
+        "width": 1392,
+        "height": 1130,
+        "channels": 4,
+        "sha256": "b586cc720c89aa6e25ba67b1ea0c99cb4898a848c6449fdaa5874247345f666e"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          139,
+          238,
+          1315,
+          930
+        ],
+        "padding": {
+          "left": 139,
+          "top": 238,
+          "right": 76,
+          "bottom": 199
+        },
+        "visibleRatio": 0.343094,
+        "transparentRatio": 0.656562,
+        "partialAlphaPixels": 6603,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avpr-wolf-mask-prey-teeth",
+      "name": "Dents de proies enchâssées dans le masque de Wolf",
+      "visualAnchor": "Biomask gravé de Wolf entouré de plusieurs dents jaunies provenant de proies anonymes.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator: Requiem",
+          "year": 2007,
+          "medium": "film",
+          "status": "screen-equipment-hybrid",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Hybride trophée-équipement; aucune espèce source pour les dents.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avpr-wolf-mask-prey-teeth.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avpr-wolf-mask-prey-teeth.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1974143,
+        "width": 1409,
+        "height": 1117,
+        "sha256": "36efbbc07a2597186e83798a7962bedbd98d1caa622c61c7a7fb7d6ebfcb273d"
+      },
+      "metadata": {
+        "bytes": 165768,
+        "width": 1409,
+        "height": 1117,
+        "channels": 4,
+        "sha256": "f416cfe411697d3614b14a3270745956335b5b12c8f33f1f7fd9d3827c35a209"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          310,
+          77,
+          1106,
+          1044
+        ],
+        "padding": {
+          "left": 310,
+          "top": 77,
+          "right": 302,
+          "bottom": 72
+        },
+        "visibleRatio": 0.371835,
+        "transparentRatio": 0.627871,
+        "partialAlphaPixels": 7206,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-predators-archaic-hominin-skull",
+      "name": "Crâne d'homininé archaïque",
+      "visualAnchor": "Crâne humanoïde robuste au front bas et aux arcades épaisses, trouvé dans le camp du Game Preserve.",
+      "appearances": [
+        {
+          "work": "Predators",
+          "year": 2010,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predators",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Neanderthal-like est visuel uniquement; ne pas confirmer une espèce.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-predators-archaic-hominin-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-predators-archaic-hominin-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1670953,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "fa3af33408686799015157c8cfa202ad3e7109e966b73a762aa62c899a2bdca4"
+      },
+      "metadata": {
+        "bytes": 107728,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "082c0be1faad383dff1149c6ecb2b7261f73cec9d8c2cdf27d09c18ac0255732"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          340,
+          153,
+          1104,
+          964
+        ],
+        "padding": {
+          "left": 340,
+          "top": 153,
+          "right": 306,
+          "bottom": 149
+        },
+        "visibleRatio": 0.283658,
+        "transparentRatio": 0.716092,
+        "partialAlphaPixels": 3378,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-predators-camp-xenomorph-skull",
+      "name": "Crâne de Xénomorphe du camp",
+      "visualAnchor": "Crâne biomécanique allongé brièvement visible parmi les ossements du camp des Super Predators.",
+      "appearances": [
+        {
+          "work": "Predators",
+          "year": 2010,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predators",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Le distinguer de la mâchoire osseuse portée sur le masque de Berserker.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-predators-camp-xenomorph-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-predators-camp-xenomorph-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1551144,
+        "width": 1412,
+        "height": 1114,
+        "sha256": "22bc166e46f7cdda9b4b24fd65efda37408529785141f6a1a3a02eb4e3366407"
+      },
+      "metadata": {
+        "bytes": 105156,
+        "width": 1412,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "ed57313110b2f2aa34ff10f741a0bbf23e4a6bb862e47762a84910fbee2eb37a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          100,
+          225,
+          1335,
+          890
+        ],
+        "padding": {
+          "left": 100,
+          "top": 225,
+          "right": 76,
+          "bottom": 223
+        },
+        "visibleRatio": 0.243151,
+        "transparentRatio": 0.756284,
+        "partialAlphaPixels": 7814,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-predators-camp-anonymous-collection",
+      "name": "Collection anonyme du camp des Super Predators",
+      "visualAnchor": "Petit ensemble de crânes animaux et extraterrestres polis, certains avec vertèbres, présentés sur souches et pieux.",
+      "appearances": [
+        {
+          "work": "Predators",
+          "year": 2010,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predators",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Human, animal, perhaps dinosaur ne doit produire aucune taxonomie inventée.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-predators-camp-anonymous-collection.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-predators-camp-anonymous-collection.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2000669,
+        "width": 1536,
+        "height": 1024,
+        "sha256": "ee5cdc230160d33342c752201ee597e5e292cd9141d6b5ec991dd7114daf5e3c"
+      },
+      "metadata": {
+        "bytes": 158068,
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "sha256": "e1798ad632da7726775cd81f965a7ffe783f9bf324e5fdcf3537983cd001f951"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          107,
+          183,
+          1394,
+          887
+        ],
+        "padding": {
+          "left": 107,
+          "top": 183,
+          "right": 141,
+          "bottom": 136
+        },
+        "visibleRatio": 0.307987,
+        "transparentRatio": 0.691127,
+        "partialAlphaPixels": 15257,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-prey-wolf-trophy",
+      "name": "Trophée du loup du Feral Predator",
+      "visualAnchor": "Crâne de loup nettoyé avec sa colonne, même prise que la tête fraîche montrée plus tôt dans Prey.",
+      "appearances": [
+        {
+          "work": "Prey",
+          "year": 2022,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/prey",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Une seule prise avec deux états; l'archive sans gore représente l'état nettoyé.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-prey-wolf-trophy.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-prey-wolf-trophy.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1354650,
+        "width": 1315,
+        "height": 1197,
+        "sha256": "8c080e79236782222e4ec93ea47c9ce6e9f2c6f7cb1656ad0492792f1285e2af"
+      },
+      "metadata": {
+        "bytes": 77822,
+        "width": 1315,
+        "height": 1197,
+        "channels": 4,
+        "sha256": "6ffcc2023e2acf9874863cd06deaa65c987741c6a2b00f0109a55efea4d8a354"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          118,
+          308,
+          1248,
+          791
+        ],
+        "padding": {
+          "left": 118,
+          "top": 308,
+          "right": 66,
+          "bottom": 405
+        },
+        "visibleRatio": 0.135213,
+        "transparentRatio": 0.864368,
+        "partialAlphaPixels": 5869,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-holiday-easter-basket",
+      "name": "Panier-trophée du Lapin de Pâques",
+      "visualAnchor": "Panier tressé rempli d'œufs colorés, dont un œuf s'ouvre comme un œuf de Xénomorphe.",
+      "appearances": [
+        {
+          "work": "The Predator Holiday Special",
+          "year": 2018,
+          "medium": "animation",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.youtube.com/watch?v=rVrRjt69lhU",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Court promotionnel comique; ne pas l'intégrer à la continuité principale.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-holiday-easter-basket.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-holiday-easter-basket.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1716434,
+        "width": 1370,
+        "height": 1148,
+        "sha256": "f321faf08043e6d6183dc8a211c2f0f043bf14897c76b109b7c216a227241c6c"
+      },
+      "metadata": {
+        "bytes": 141592,
+        "width": 1370,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "053567550c7c49fe24def3c44f48816f134779072967a58f1647f25418cf4c02"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          257,
+          71,
+          1112,
+          1038
+        ],
+        "padding": {
+          "left": 257,
+          "top": 71,
+          "right": 257,
+          "bottom": 109
+        },
+        "visibleRatio": 0.337997,
+        "transparentRatio": 0.661578,
+        "partialAlphaPixels": 19654,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-kok-warlord-yautja-skull-mask",
+      "name": "Masque en crâne de Yautja du Warlord",
+      "visualAnchor": "Crâne complet d'un Predator anonyme porté frontalement comme masque par le Grendel King.",
+      "appearances": [
+        {
+          "work": "Predator: Killer of Killers",
+          "year": 2025,
+          "medium": "animation",
+          "status": "screen-equipment-hybrid",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Another Predator skull est confirmé; ne pas identifier la victime.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-kok-warlord-yautja-skull-mask.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-kok-warlord-yautja-skull-mask.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1624349,
+        "width": 1411,
+        "height": 1115,
+        "sha256": "e73a6ab5c6014af1d0a2b5c167545827a277fcd11554e48a70812af39ee4b292"
+      },
+      "metadata": {
+        "bytes": 102852,
+        "width": 1411,
+        "height": 1115,
+        "channels": 4,
+        "sha256": "e5647abf9473e098f6ac70bb8ab0cd91f2afc3e32b475d914442e45b0861f622"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          383,
+          81,
+          1023,
+          1023
+        ],
+        "padding": {
+          "left": 383,
+          "top": 81,
+          "right": 387,
+          "bottom": 91
+        },
+        "visibleRatio": 0.260349,
+        "transparentRatio": 0.739315,
+        "partialAlphaPixels": 5551,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-kok-warlord-bone-cape",
+      "name": "Cape-trophée en ossements du Warlord",
+      "visualAnchor": "Long manteau composé de côtes, vertèbres et appendices osseux de créatures conquises.",
+      "appearances": [
+        {
+          "work": "Predator: Killer of Killers",
+          "year": 2025,
+          "medium": "animation",
+          "status": "screen-equipment-hybrid",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Origines volontairement ouvertes; jamais queues de Xénomorphe ou Reine.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-kok-warlord-bone-cape.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-kok-warlord-bone-cape.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2078173,
+        "width": 1239,
+        "height": 1270,
+        "sha256": "1d85504910d7bf65a0ac82138fce2be9410a16071dd7b91307422c04b0fd554f"
+      },
+      "metadata": {
+        "bytes": 204822,
+        "width": 1239,
+        "height": 1270,
+        "channels": 4,
+        "sha256": "c22264e51aa696ddd9def7bd7127e1f572efe1b28c151d938eb7d968025c7998"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          109,
+          73,
+          1128,
+          1195
+        ],
+        "padding": {
+          "left": 109,
+          "top": 73,
+          "right": 110,
+          "bottom": 74
+        },
+        "visibleRatio": 0.433793,
+        "transparentRatio": 0.565495,
+        "partialAlphaPixels": 11437,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-01-flat-tusked",
+      "name": "Crâne anonyme plat à défenses",
+      "visualAnchor": "Tête large et basse, orbites latérales et deux défenses montant au-dessus de la bouche.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Morphologie uniquement.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-01-flat-tusked.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-01-flat-tusked.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1599554,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "a3960d22a9a51ac9064e8e59d6733bc33913de76abbfdabbd19fc393dbf983c8"
+      },
+      "metadata": {
+        "bytes": 109462,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "d6ed625c50b69978bce6542bcb97cfc9760fa7bec8691df4aabdad553f16635e"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          65,
+          273,
+          1351,
+          875
+        ],
+        "padding": {
+          "left": 65,
+          "top": 273,
+          "right": 59,
+          "bottom": 238
+        },
+        "visibleRatio": 0.349918,
+        "transparentRatio": 0.649859,
+        "partialAlphaPixels": 11817,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-02-long-dome-humanoid",
+      "name": "Grand crâne humanoïde à dôme allongé",
+      "visualAnchor": "Très grande boîte crânienne verticale et visage humanoïde réduit.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Ne pas l'appeler Engineer.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-02-long-dome-humanoid.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-02-long-dome-humanoid.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1526775,
+        "width": 1411,
+        "height": 1115,
+        "sha256": "549950c77a670e7633e935182ddec4192ba1a5c86d926ebc80a91a106e40ee67"
+      },
+      "metadata": {
+        "bytes": 78216,
+        "width": 1411,
+        "height": 1115,
+        "channels": 4,
+        "sha256": "644042e91aae4556aae81457ab03fb7498ceaf5bc8db02fe0f201b37f6f20fc9"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          379,
+          46,
+          1088,
+          1069
+        ],
+        "padding": {
+          "left": 379,
+          "top": 46,
+          "right": 322,
+          "bottom": 45
+        },
+        "visibleRatio": 0.283258,
+        "transparentRatio": 0.716494,
+        "partialAlphaPixels": 3674,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-04-tubular-snout",
+      "name": "Crâne anonyme à museau tubulaire",
+      "visualAnchor": "Cranium arrondi prolongé d'un museau vertical ou d'une trompe osseuse.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Ne pas identifier comme Martien de War of the Worlds.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-04-tubular-snout.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-04-tubular-snout.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1635172,
+        "width": 1372,
+        "height": 1146,
+        "sha256": "e3eb4559b1e89fb6a28ab61be314d2b318edd3c771f28a0858050b8013bcd467"
+      },
+      "metadata": {
+        "bytes": 97444,
+        "width": 1372,
+        "height": 1146,
+        "channels": 4,
+        "sha256": "7fc4f6a080e380e08094f99cf66b85c62188e91074db2bfb35f719aa889c3b12"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          247,
+          124,
+          1109,
+          1021
+        ],
+        "padding": {
+          "left": 247,
+          "top": 124,
+          "right": 262,
+          "bottom": 124
+        },
+        "visibleRatio": 0.301303,
+        "transparentRatio": 0.698497,
+        "partialAlphaPixels": 3690,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-05-primate-like",
+      "name": "Crâne anonyme primatiforme massif",
+      "visualAnchor": "Mâchoire très robuste, canines et boîte crânienne évoquant un grand primate.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Gorilla-like seulement.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-05-primate-like.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-05-primate-like.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1773902,
+        "width": 1386,
+        "height": 1135,
+        "sha256": "d4c95ca6be11ba2e6be6aeb96b491bdbc58fe695aea3705329bfef369c5e6bec"
+      },
+      "metadata": {
+        "bytes": 121806,
+        "width": 1386,
+        "height": 1135,
+        "channels": 4,
+        "sha256": "c53e871805504e1b77f580fa7923a5d459a1a19c950e2a3a0d181da274b2e733"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          256,
+          80,
+          1189,
+          1020
+        ],
+        "padding": {
+          "left": 256,
+          "top": 80,
+          "right": 196,
+          "bottom": 114
+        },
+        "visibleRatio": 0.345787,
+        "transparentRatio": 0.653821,
+        "partialAlphaPixels": 5788,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-06-wedge-toothed",
+      "name": "Crâne anonyme cunéiforme à dents triangulaires",
+      "visualAnchor": "Crâne en forme de coin avec gueule large bordée de dents triangulaires.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Ni White Spike, ni River Ghost, ni Xénomorphe.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-06-wedge-toothed.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-06-wedge-toothed.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1616766,
+        "width": 1409,
+        "height": 1117,
+        "sha256": "1e82400f63d05d381284d40d9fd153bae1d9d5f18759aa5f1f9f719e04b68de9"
+      },
+      "metadata": {
+        "bytes": 99176,
+        "width": 1409,
+        "height": 1117,
+        "channels": 4,
+        "sha256": "90a649d181a92198044447125d55383352c567d678cf62c6de3ff2e6579efa04"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          127,
+          133,
+          1264,
+          931
+        ],
+        "padding": {
+          "left": 127,
+          "top": 133,
+          "right": 144,
+          "bottom": 185
+        },
+        "visibleRatio": 0.374341,
+        "transparentRatio": 0.62539,
+        "partialAlphaPixels": 4597,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-07-small-insectoid",
+      "name": "Petit crâne anonyme insectoïde",
+      "visualAnchor": "Petite tête étroite avec grandes cavités latérales et mandibules fines.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Mantid-like est descriptif uniquement.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-07-small-insectoid.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-07-small-insectoid.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1435289,
+        "width": 1407,
+        "height": 1118,
+        "sha256": "711d38f21fe0bd4d463bbbd4f100dec22234d67f871bd4ccfbcbf2acf3caef20"
+      },
+      "metadata": {
+        "bytes": 89390,
+        "width": 1407,
+        "height": 1118,
+        "channels": 4,
+        "sha256": "f6b431dde6f5280ae2f4b9f0cbb2dc7c8fbd7ab119a0defb28ed63bf870867e3"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          212,
+          117,
+          1202,
+          957
+        ],
+        "padding": {
+          "left": 212,
+          "top": 117,
+          "right": 204,
+          "bottom": 160
+        },
+        "visibleRatio": 0.226479,
+        "transparentRatio": 0.773065,
+        "partialAlphaPixels": 6616,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-08-harvester",
+      "name": "Crâne de Harvester d'Independence Day",
+      "visualAnchor": "Cranium central fin et évasé correspondant au Harvester d'Independence Day.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Seule identification cross-franchise du mur confirmée par Dan Trachtenberg.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-08-harvester.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-08-harvester.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1583829,
+        "width": 1413,
+        "height": 1113,
+        "sha256": "7b8b3db1304117432a48e802552b475d9890dad07722132fe2f172d8262b6948"
+      },
+      "metadata": {
+        "bytes": 102372,
+        "width": 1413,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "39b9aafdb91f0cfb98186fe3ec8ea0d4f2c516b781295e9eb2a9f842abcd422a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          25,
+          167,
+          1387,
+          937
+        ],
+        "padding": {
+          "left": 25,
+          "top": 167,
+          "right": 25,
+          "bottom": 175
+        },
+        "visibleRatio": 0.270043,
+        "transparentRatio": 0.729626,
+        "partialAlphaPixels": 5418,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-09-punctured-humanoid",
+      "name": "Grand crâne humanoïde perforé",
+      "visualAnchor": "Crâne humanoïde allongé avec importante perforation de la boîte crânienne.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Ni Engineer, ni origine de la perforation inventée.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-09-punctured-humanoid.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-09-punctured-humanoid.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1451381,
+        "width": 1409,
+        "height": 1116,
+        "sha256": "9f87ca3a899116e389d446f34700eb740c9cf474ea33b59c9d986740dcb5ae53"
+      },
+      "metadata": {
+        "bytes": 77566,
+        "width": 1409,
+        "height": 1116,
+        "channels": 4,
+        "sha256": "e2bddf42e1f027ed082d9b6bc656373b11b70c0098515eff33b213cd84ee4cfb"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          309,
+          177,
+          1143,
+          897
+        ],
+        "padding": {
+          "left": 309,
+          "top": 177,
+          "right": 265,
+          "bottom": 218
+        },
+        "visibleRatio": 0.228561,
+        "transparentRatio": 0.771248,
+        "partialAlphaPixels": 4444,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-10-reptile-like",
+      "name": "Crâne anonyme reptiliforme à museau court",
+      "visualAnchor": "Cranium bas, museau large et dentition crocodilienne.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Crocodilian-like uniquement.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-10-reptile-like.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-10-reptile-like.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1908474,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "d50c8fa9409f3bd775266f7acad14005e9ad08aeee9a3486e1e4b2321f88e653"
+      },
+      "metadata": {
+        "bytes": 163720,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "be29db8e91438110e02e3271bad38443bf8959f89eb308d3461d071c21781f06"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          79,
+          165,
+          1346,
+          926
+        ],
+        "padding": {
+          "left": 79,
+          "top": 165,
+          "right": 64,
+          "bottom": 187
+        },
+        "visibleRatio": 0.380447,
+        "transparentRatio": 0.618983,
+        "partialAlphaPixels": 10082,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-wall-11-theropod-like",
+      "name": "Grand crâne dinosauriforme de type théropode",
+      "visualAnchor": "Immense crâne à longue mâchoire dentée rappelant un grand théropode.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-trophy",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Theropod-like; aucune taxonomie publiée.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-wall-11-theropod-like.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-wall-11-theropod-like.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1806268,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "f01dbca12e8336a8203b095610e978e50784adf086942a4b88a17e52c470a906"
+      },
+      "metadata": {
+        "bytes": 148748,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "40da750f71dba7edd5aa356b693add60afd7633badcb7d9e8c549eb8d486b04c"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          98,
+          117,
+          1291,
+          978
+        ],
+        "padding": {
+          "left": 98,
+          "top": 117,
+          "right": 119,
+          "bottom": 135
+        },
+        "visibleRatio": 0.364076,
+        "transparentRatio": 0.635221,
+        "partialAlphaPixels": 11550,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-badlands-tessa-synthetic-head",
+      "name": "Tête synthétique de Tessa",
+      "visualAnchor": "Tête décapitée de synthétique avec éléments cervicaux mécaniques, présentée au chef de clan.",
+      "appearances": [
+        {
+          "work": "Predator: Badlands",
+          "year": 2025,
+          "medium": "film",
+          "status": "screen-acquisition",
+          "sourcePage": "https://www.20thcenturystudios.com/movies/predator-badlands",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Ni crâne humain, ni trophée Kalisk promis.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-badlands-tessa-synthetic-head.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-badlands-tessa-synthetic-head.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1557475,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "50d459a65637d0ede3020027e76c25aadf2af373d7ee750b6e79aecddd5c044e"
+      },
+      "metadata": {
+        "bytes": 111146,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "8112040d15159072f058a37318546c8761b016d443d5f79aba656fa2fe325599"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          296,
+          90,
+          1097,
+          1021
+        ],
+        "padding": {
+          "left": 296,
+          "top": 90,
+          "right": 313,
+          "bottom": 92
+        },
+        "visibleRatio": 0.312404,
+        "transparentRatio": 0.686821,
+        "partialAlphaPixels": 11650,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp-jaguar-queen-skull",
+      "name": "Crâne crêté de la Reine Alien",
+      "visualAnchor": "Grande boîte crânienne à crête de Reine Alien revendiquée comme trophée final par le Predator.",
+      "appearances": [
+        {
+          "work": "Alien vs Predator",
+          "year": 1994,
+          "medium": "video-game",
+          "status": "campaign-trophy",
+          "sourcePage": "https://static.atariage.com/manual_html_page.php?SoftwareID=2538",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Jeu Jaguar licencié; ne pas fusionner avec une Reine de film.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp-jaguar-queen-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp-jaguar-queen-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1566802,
+        "width": 1371,
+        "height": 1148,
+        "sha256": "7c76be102397f5b539892c0ce8f84592b86d593e9378d98bd832da6fc82d2239"
+      },
+      "metadata": {
+        "bytes": 100074,
+        "width": 1371,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "48ed1b4bb9509cb83c0cf4446662b89767fc54ec1ae8329ec864c7033c929dec"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          48,
+          225,
+          1328,
+          968
+        ],
+        "padding": {
+          "left": 48,
+          "top": 225,
+          "right": 42,
+          "bottom": 179
+        },
+        "visibleRatio": 0.240076,
+        "transparentRatio": 0.759561,
+        "partialAlphaPixels": 5532,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp2-trophy-counter-head-set",
+      "name": "Têtes du Trophy Counter d'AvP2",
+      "visualAnchor": "Petit ensemble représentatif d'une tête humaine, d'une tête Yautja et d'une tête de Xénomorphe décapitées pour le compteur.",
+      "appearances": [
+        {
+          "work": "Aliens versus Predator 2",
+          "year": 2001,
+          "medium": "video-game",
+          "status": "counter-object",
+          "sourcePage": "https://manuals.plus/m/80b7f8b338cc0a93dfd1de5b751b4d6e271e91eed31f934119d52710179952f2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Le compteur accepte des têtes; ne pas transformer chaque décapitation en collectible distinct.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp2-trophy-counter-head-set.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp2-trophy-counter-head-set.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1535418,
+        "width": 1536,
+        "height": 1024,
+        "sha256": "e48d2e30045c08f954828814c12011ba1ccac0b7645d96d3411a9142a9a20790"
+      },
+      "metadata": {
+        "bytes": 79916,
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "sha256": "a22818191571426f5f5fd6aaf565e757c85dc1d745cef5a7f40a26fb57056ef1"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          149,
+          273,
+          1451,
+          709
+        ],
+        "padding": {
+          "left": 149,
+          "top": 273,
+          "right": 84,
+          "bottom": 314
+        },
+        "visibleRatio": 0.225059,
+        "transparentRatio": 0.7747,
+        "partialAlphaPixels": 6795,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp2-primal-hunt-zeta-skull-set",
+      "name": "Ensemble de crânes du site Zeta",
+      "visualAnchor": "Trois crânes humains, deux crânes de Xénomorphes et une tête de Reine Alien présentés dans la salle du site Zeta.",
+      "appearances": [
+        {
+          "work": "AvP2: Primal Hunt",
+          "year": 2002,
+          "medium": "video-game",
+          "status": "environmental-trophy",
+          "sourcePage": "https://www.avpcentral.com/predator-trophy-rooms",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Source secondaire illustrée; conserver le compte sans inventer d'identités.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp2-primal-hunt-zeta-skull-set.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp2-primal-hunt-zeta-skull-set.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1793368,
+        "width": 1392,
+        "height": 1130,
+        "sha256": "7cc4a0b8ff63d9a1cff999ac7e2460aad355ebd2e95b1d6bf5c971bdf1335c97"
+      },
+      "metadata": {
+        "bytes": 139840,
+        "width": 1392,
+        "height": 1130,
+        "channels": 4,
+        "sha256": "56f8ed34d195c59d70fb171b541c8608b6588ddecfdcd15ea5374c8f80cb1897"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          138,
+          167,
+          1230,
+          940
+        ],
+        "padding": {
+          "left": 138,
+          "top": 167,
+          "right": 161,
+          "bottom": 189
+        },
+        "visibleRatio": 0.329673,
+        "transparentRatio": 0.669945,
+        "partialAlphaPixels": 7956,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp-extinction-honor-skull-set",
+      "name": "Crânes d'honneur d'AvP: Extinction",
+      "visualAnchor": "Petit ensemble de crânes humains, Xénomorphes, Reine Alien, Reine Predalien et L.C.'s Skull convertis en Honor Points.",
+      "appearances": [
+        {
+          "work": "Aliens versus Predator: Extinction",
+          "year": 2003,
+          "medium": "video-game",
+          "status": "resource-object",
+          "sourcePage": "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Les quantités communautaires sont exclues; seules les catégories de cibles restent.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp-extinction-honor-skull-set.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp-extinction-honor-skull-set.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1504973,
+        "width": 1601,
+        "height": 982,
+        "sha256": "1c8cb1db06811c1496c0c87d6a2911a7ece0178d1c3968d59cbbd6fc7b40f2d0"
+      },
+      "metadata": {
+        "bytes": 107070,
+        "width": 1601,
+        "height": 982,
+        "channels": 4,
+        "sha256": "5778871715c8c11ec64f889d28afe2988aceb4ef903c5e3e51a9b9d6d6dd18a0"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          41,
+          338,
+          1566,
+          729
+        ],
+        "padding": {
+          "left": 41,
+          "top": 338,
+          "right": 34,
+          "bottom": 252
+        },
+        "visibleRatio": 0.191076,
+        "transparentRatio": 0.808458,
+        "partialAlphaPixels": 8701,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-concrete-jungle-human-boss-rack",
+      "name": "Rack des douze crânes de boss humains",
+      "visualAnchor": "Rack persistant des douze prises humaines nommées: Serviteur, trois Dead Men Enforcers, Mafia Enforcer, Viktor, quatre Monster Squad, Bruno Borgia et Hunter Borgia.",
+      "appearances": [
+        {
+          "work": "Predator: Concrete Jungle",
+          "year": 2005,
+          "medium": "video-game",
+          "status": "persistent-gallery",
+          "sourcePage": "https://www.avpgalaxy.net/games/predator-concrete-jungle/walkthrough/",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Douze instances officielles, mais un rack composite évite douze faux designs de crâne humain.",
+      "composition": "rack",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-concrete-jungle-human-boss-rack.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-concrete-jungle-human-boss-rack.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2134927,
+        "width": 1355,
+        "height": 1161,
+        "sha256": "894cac0edbf42eab2c2124970ad607d2ff8369e99f767026c8a3ab5c803377cd"
+      },
+      "metadata": {
+        "bytes": 236270,
+        "width": 1355,
+        "height": 1161,
+        "channels": 4,
+        "sha256": "1670e6b388358c78d64c62c149ec08e525ee8dc7c7473a005cb9e01d8ab0dd6e"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          90,
+          62,
+          1260,
+          1075
+        ],
+        "padding": {
+          "left": 90,
+          "top": 62,
+          "right": 94,
+          "bottom": 85
+        },
+        "visibleRatio": 0.394686,
+        "transparentRatio": 0.604054,
+        "partialAlphaPixels": 26445,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-concrete-jungle-yautja-skull-rack",
+      "name": "Rack des trois crânes Yautja altérés",
+      "visualAnchor": "Trois crânes Yautja correspondant à Swift Knife, Long Spear et Stone Heart, acquis par Skull Rip.",
+      "appearances": [
+        {
+          "work": "Predator: Concrete Jungle",
+          "year": 2005,
+          "medium": "video-game",
+          "status": "persistent-gallery",
+          "sourcePage": "https://www.avpgalaxy.net/games/predator-concrete-jungle/walkthrough/",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Conserver les trois identités; ne pas ajouter d'autres victimes Yautja.",
+      "composition": "rack",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-concrete-jungle-yautja-skull-rack.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-concrete-jungle-yautja-skull-rack.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1908220,
+        "width": 1353,
+        "height": 1163,
+        "sha256": "bf3401c4c2b189fa666ca47c510b240a8fe9ab292a162508f46f8100e82e5824"
+      },
+      "metadata": {
+        "bytes": 180590,
+        "width": 1353,
+        "height": 1163,
+        "channels": 4,
+        "sha256": "8cbe4d6615df82962c6d4ad15cca93d80c438f6e8d4962ccf3205ccfaedcbf0b"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          62,
+          80,
+          1280,
+          1045
+        ],
+        "padding": {
+          "left": 62,
+          "top": 80,
+          "right": 72,
+          "bottom": 117
+        },
+        "visibleRatio": 0.393999,
+        "transparentRatio": 0.605001,
+        "partialAlphaPixels": 23839,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-avp2010-trophy-belt",
+      "name": "Ceinture-trophée ancestrale",
+      "visualAnchor": "Collectible Predator Trophy Belt enroulé et ornementé, modèle répété quarante-cinq fois dans la campagne.",
+      "appearances": [
+        {
+          "work": "Aliens vs. Predator",
+          "year": 2010,
+          "medium": "video-game",
+          "status": "collectible",
+          "sourcePage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/10680/manuals/AVP_G4W_MG_UK_DD.pdf?t=1763676764",
+          "note": "45 exemplaires d'un même design de collectible."
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Une seule image de design, pas quarante-cinq variantes inventées.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-avp2010-trophy-belt.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-avp2010-trophy-belt.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1730394,
+        "width": 1586,
+        "height": 992,
+        "sha256": "48f3bfe4d143c16304b04a00e93cdbbfbafdcb6fcc44af14070c3f15b12538d7"
+      },
+      "metadata": {
+        "bytes": 139530,
+        "width": 1586,
+        "height": 992,
+        "channels": 4,
+        "sha256": "77cc1db21d1a0ad08414eee18f79452e139a2c3163255691f58f72f869f854d1"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          92,
+          171,
+          1493,
+          813
+        ],
+        "padding": {
+          "left": 92,
+          "top": 171,
+          "right": 92,
+          "bottom": 178
+        },
+        "visibleRatio": 0.340924,
+        "transparentRatio": 0.658635,
+        "partialAlphaPixels": 10190,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-massacre-machete",
+      "name": "Massacre Machete",
+      "visualAnchor": "Cosmétique de trophée “Massacre Machete” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-massacre-machete.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-massacre-machete.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1159801,
+        "width": 1375,
+        "height": 1144,
+        "sha256": "e6dd2da84d48af3bf9b170280f082b063b573e8bc67cd312746f27347f3107f0"
+      },
+      "metadata": {
+        "bytes": 37832,
+        "width": 1375,
+        "height": 1144,
+        "channels": 4,
+        "sha256": "26eab9797084eed0d69f65d554726aab957f962234b653bffa9413bf8be9bafb"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          71,
+          252,
+          1303,
+          837
+        ],
+        "padding": {
+          "left": 71,
+          "top": 252,
+          "right": 71,
+          "bottom": 306
+        },
+        "visibleRatio": 0.102494,
+        "transparentRatio": 0.897278,
+        "partialAlphaPixels": 4469,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-russian-pernach",
+      "name": "Russian Pernach",
+      "visualAnchor": "Cosmétique de trophée “Russian Pernach” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-russian-pernach.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-russian-pernach.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1262783,
+        "width": 1351,
+        "height": 1164,
+        "sha256": "837d15525dad6f3a1ddfc139445e0790fd7e826b34e85fe203e4cb8d1127d79f"
+      },
+      "metadata": {
+        "bytes": 47230,
+        "width": 1351,
+        "height": 1164,
+        "channels": 4,
+        "sha256": "5f591aa85321b8f4edefc652522fb5ad4a83a1742d3865ad35f7efcdd58fb437"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          221,
+          246,
+          1129,
+          891
+        ],
+        "padding": {
+          "left": 221,
+          "top": 246,
+          "right": 221,
+          "bottom": 272
+        },
+        "visibleRatio": 0.229121,
+        "transparentRatio": 0.770601,
+        "partialAlphaPixels": 4820,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-lorenas-amorcito",
+      "name": "Lorena’s Amorcito",
+      "visualAnchor": "Cosmétique de trophée “Lorena’s Amorcito” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-lorenas-amorcito.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-lorenas-amorcito.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1273099,
+        "width": 1348,
+        "height": 1167,
+        "sha256": "ae397d98f89e9ebf9a79837790bdef3d35a3b820b93e0a2d888ca6610c688644"
+      },
+      "metadata": {
+        "bytes": 50204,
+        "width": 1348,
+        "height": 1167,
+        "channels": 4,
+        "sha256": "13e6ff41bce135c1deca840340d95fd03b66dc2aa4017df55e4ea993fb5770d6"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          103,
+          289,
+          1241,
+          852
+        ],
+        "padding": {
+          "left": 103,
+          "top": 289,
+          "right": 106,
+          "bottom": 314
+        },
+        "visibleRatio": 0.152095,
+        "transparentRatio": 0.847728,
+        "partialAlphaPixels": 3960,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-broken-ancient-sword",
+      "name": "Broken Ancient Sword",
+      "visualAnchor": "Cosmétique de trophée “Broken Ancient Sword” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-23/22899",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-broken-ancient-sword.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-broken-ancient-sword.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1122756,
+        "width": 1296,
+        "height": 1214,
+        "sha256": "1f19ad30e0e4fec71ef7117db50f98f9c0d161aa426e141a28ae92069d0ca179"
+      },
+      "metadata": {
+        "bytes": 36972,
+        "width": 1296,
+        "height": 1214,
+        "channels": 4,
+        "sha256": "233d19be819c864b4285737d6b1f6d9e4e808ed47359ff132e30738f250158be"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          47,
+          438,
+          1243,
+          745
+        ],
+        "padding": {
+          "left": 47,
+          "top": 438,
+          "right": 52,
+          "bottom": 468
+        },
+        "visibleRatio": 0.097633,
+        "transparentRatio": 0.9022,
+        "partialAlphaPixels": 3813,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-indonesian-kris-dagger",
+      "name": "Indonesian Kris Dagger",
+      "visualAnchor": "Cosmétique de trophée “Indonesian Kris Dagger” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-23/22899",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-indonesian-kris-dagger.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-indonesian-kris-dagger.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1313880,
+        "width": 1313,
+        "height": 1198,
+        "sha256": "1179618d2ecb482229bd0e961e150edb33cd660c95a390ff6471dddb3077696c"
+      },
+      "metadata": {
+        "bytes": 62086,
+        "width": 1313,
+        "height": 1198,
+        "channels": 4,
+        "sha256": "4e55606464898060bc3779287b25c8af6c45beb1f2ddc69d14fd2db361395b3e"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          164,
+          85,
+          1120,
+          1080
+        ],
+        "padding": {
+          "left": 164,
+          "top": 85,
+          "right": 192,
+          "bottom": 117
+        },
+        "visibleRatio": 0.123729,
+        "transparentRatio": 0.87584,
+        "partialAlphaPixels": 7943,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-gold-medal",
+      "name": "Gold Medal",
+      "visualAnchor": "Cosmétique de trophée “Gold Medal” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-23/22899",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-gold-medal.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-gold-medal.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1475325,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "c61f9ea21246cab255a17d551e86072df7315c7cdfbe1ab051b8b668ffb49b66"
+      },
+      "metadata": {
+        "bytes": 82852,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "258185e8638a2a2b2ed2ead729b480d721e59f9e2ba89d3f3554af454188a784"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          289,
+          47,
+          962,
+          1097
+        ],
+        "padding": {
+          "left": 289,
+          "top": 47,
+          "right": 291,
+          "bottom": 156
+        },
+        "visibleRatio": 0.300377,
+        "transparentRatio": 0.6994,
+        "partialAlphaPixels": 4931,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-unidentified-alien-skull",
+      "name": "Unidentified Alien Skull",
+      "visualAnchor": "Cosmétique de trophée “Unidentified Alien Skull” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/patch-notes-2-23/22899",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-unidentified-alien-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-unidentified-alien-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1259039,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "458fd99dcaca360e38acab04f53daec8066648dcbfa2f92249bddd10db22143c"
+      },
+      "metadata": {
+        "bytes": 61552,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "09a104c5189c893f403cc62c8af380d4cfe1f8162f129b1403e58f1c5102109a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          282,
+          315,
+          974,
+          904
+        ],
+        "padding": {
+          "left": 282,
+          "top": 315,
+          "right": 279,
+          "bottom": 349
+        },
+        "visibleRatio": 0.156388,
+        "transparentRatio": 0.843237,
+        "partialAlphaPixels": 5034,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-prehistoric-mace",
+      "name": "Prehistoric Mace",
+      "visualAnchor": "Cosmétique de trophée “Prehistoric Mace” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/three-new-trophies-and-saber-mask-now-available/23906",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-prehistoric-mace.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-prehistoric-mace.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1135618,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "10b773c6e82d398275d94c346d78e502ce79995ac1bbabe2422346095b99bca5"
+      },
+      "metadata": {
+        "bytes": 33948,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "9c3ded7a6e056bb391a966e223b6d830557d6e4c1f972cf0ae0fda72841c4b03"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          503,
+          101,
+          741,
+          1117
+        ],
+        "padding": {
+          "left": 503,
+          "top": 101,
+          "right": 512,
+          "bottom": 136
+        },
+        "visibleRatio": 0.066675,
+        "transparentRatio": 0.933091,
+        "partialAlphaPixels": 3114,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-prehistoric-knife",
+      "name": "Prehistoric Knife",
+      "visualAnchor": "Cosmétique de trophée “Prehistoric Knife” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/three-new-trophies-and-saber-mask-now-available/23906",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-prehistoric-knife.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-prehistoric-knife.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1131592,
+        "width": 1472,
+        "height": 1069,
+        "sha256": "80a9eb77f237a095ef2656c7e8533451ca19f932a21dd1d0c86fd7adad27b017"
+      },
+      "metadata": {
+        "bytes": 37480,
+        "width": 1472,
+        "height": 1069,
+        "channels": 4,
+        "sha256": "7990a139ce22f23e4385f3248faa345ebd7f820dec2995e31e89590f22d6914a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          262,
+          426,
+          1214,
+          636
+        ],
+        "padding": {
+          "left": 262,
+          "top": 426,
+          "right": 257,
+          "bottom": 432
+        },
+        "visibleRatio": 0.088112,
+        "transparentRatio": 0.911727,
+        "partialAlphaPixels": 2844,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-alien-hunters-trophy",
+      "name": "Alien Hunter’s Trophy",
+      "visualAnchor": "Cosmétique de trophée “Alien Hunter’s Trophy” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "official-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/three-new-trophies-and-saber-mask-now-available/23906",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Nom confirmé par patch ou annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-alien-hunters-trophy.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-alien-hunters-trophy.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1428645,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "cd5daa0edb821fb9e115585108ba8b793a997def4471230377bf56f8898aa3f5"
+      },
+      "metadata": {
+        "bytes": 73238,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "99e47293cc69fbe34be59c50514501f65e020a8a5dafad73b56ef1d2feb9d477"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          209,
+          282,
+          1036,
+          943
+        ],
+        "padding": {
+          "left": 209,
+          "top": 282,
+          "right": 217,
+          "bottom": 310
+        },
+        "visibleRatio": 0.240342,
+        "transparentRatio": 0.759444,
+        "partialAlphaPixels": 3351,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-african-dagger",
+      "name": "African Dagger",
+      "visualAnchor": "Cosmétique de trophée “African Dagger” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-african-dagger.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-african-dagger.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1085257,
+        "width": 1425,
+        "height": 1104,
+        "sha256": "efd941e670415680c6f029468748b192fdc74d85316c6b694c8bd11232dc403f"
+      },
+      "metadata": {
+        "bytes": 25686,
+        "width": 1425,
+        "height": 1104,
+        "channels": 4,
+        "sha256": "01c364d7e2ce23fc36ccd15bb52a8afa6a728f5803a7dacb7864ceced2dce66a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          620,
+          133,
+          802,
+          930
+        ],
+        "padding": {
+          "left": 620,
+          "top": 133,
+          "right": 622,
+          "bottom": 173
+        },
+        "visibleRatio": 0.054349,
+        "transparentRatio": 0.945547,
+        "partialAlphaPixels": 2620,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-bobcat-skull",
+      "name": "Bobcat Skull",
+      "visualAnchor": "Cosmétique de trophée “Bobcat Skull” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-bobcat-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-bobcat-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1314394,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "7d3f096835b7e80420cd43d9b423ee2db5d01b3d5b1327e60252a05b8912cca3"
+      },
+      "metadata": {
+        "bytes": 58728,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "1f567cc76765e9a2bb828882794a8597c76e78603a4a918fade6de769ed5d2cf"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          339,
+          271,
+          911,
+          938
+        ],
+        "padding": {
+          "left": 339,
+          "top": 271,
+          "right": 342,
+          "bottom": 315
+        },
+        "visibleRatio": 0.156795,
+        "transparentRatio": 0.843047,
+        "partialAlphaPixels": 2469,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-coyote-skull",
+      "name": "Coyote Skull",
+      "visualAnchor": "Cosmétique de trophée “Coyote Skull” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-coyote-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-coyote-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1416421,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "c8403964e9a8c3313ac67cfc5a5c9c1a7eb6ce08f49763fa9f179c57db4dcf7a"
+      },
+      "metadata": {
+        "bytes": 78220,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "05d5f42141133e67cbcba96bbfc6ae44ea093aca59b4f7a8e11ea186de63d148"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          102,
+          337,
+          1171,
+          914
+        ],
+        "padding": {
+          "left": 102,
+          "top": 337,
+          "right": 82,
+          "bottom": 339
+        },
+        "visibleRatio": 0.233671,
+        "transparentRatio": 0.76592,
+        "partialAlphaPixels": 6223,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-flintlock-pistol",
+      "name": "Flintlock Pistol",
+      "visualAnchor": "Cosmétique de trophée “Flintlock Pistol” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-flintlock-pistol.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-flintlock-pistol.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1264496,
+        "width": 1387,
+        "height": 1134,
+        "sha256": "9a561bd85d8101d33aeea9c77fa755c7862a921d5159c90788a82af2721e2343"
+      },
+      "metadata": {
+        "bytes": 61038,
+        "width": 1387,
+        "height": 1134,
+        "channels": 4,
+        "sha256": "5b1e83679430e7a2a1a4840ddd52a96ad2d3a6333eb3806ebe8f8d1f5d7b81b9"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          86,
+          253,
+          1325,
+          858
+        ],
+        "padding": {
+          "left": 86,
+          "top": 253,
+          "right": 61,
+          "bottom": 275
+        },
+        "visibleRatio": 0.174922,
+        "transparentRatio": 0.824721,
+        "partialAlphaPixels": 6553,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-kopesh",
+      "name": "Kopesh",
+      "visualAnchor": "Cosmétique de trophée “Kopesh” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-kopesh.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-kopesh.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1114096,
+        "width": 1352,
+        "height": 1163,
+        "sha256": "974a0bb3d6f98659bddc64e3c1d970cf1be6e643014ab8c67f4c0c2615c6160f"
+      },
+      "metadata": {
+        "bytes": 33482,
+        "width": 1352,
+        "height": 1163,
+        "channels": 4,
+        "sha256": "df5791231885d5c9fecd8ce5a6fbe6233048c7ad2c077a1b00558a2f1fbfd460"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          170,
+          163,
+          1173,
+          894
+        ],
+        "padding": {
+          "left": 170,
+          "top": 163,
+          "right": 178,
+          "bottom": 268
+        },
+        "visibleRatio": 0.067032,
+        "transparentRatio": 0.932765,
+        "partialAlphaPixels": 3853,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-nunchuks",
+      "name": "Nunchuks",
+      "visualAnchor": "Cosmétique de trophée “Nunchuks” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-nunchuks.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-nunchuks.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1186046,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "6264c0fd6de1bea056618915d2484b9cde389aa7802e7bbb0e9439fd261dc006"
+      },
+      "metadata": {
+        "bytes": 43816,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "d36f8442fdee489194081ffb264f54dfe6bf8166e63b804eeeaa83a7dbab1b5f"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          183,
+          199,
+          1070,
+          1027
+        ],
+        "padding": {
+          "left": 183,
+          "top": 199,
+          "right": 183,
+          "bottom": 226
+        },
+        "visibleRatio": 0.109326,
+        "transparentRatio": 0.890411,
+        "partialAlphaPixels": 5853,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-ottoman-dagger",
+      "name": "Ottoman Dagger",
+      "visualAnchor": "Cosmétique de trophée “Ottoman Dagger” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-ottoman-dagger.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-ottoman-dagger.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1140149,
+        "width": 1315,
+        "height": 1196,
+        "sha256": "78e16a08a4f3729ef5d435b9dc49d46486cfeb5b181f21181db73daaaab57382"
+      },
+      "metadata": {
+        "bytes": 44404,
+        "width": 1315,
+        "height": 1196,
+        "channels": 4,
+        "sha256": "5171c4e66533f1d2c055ad7d4572423ba4405ea5b5483f04b31f3edbdcbf7423"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          62,
+          440,
+          1263,
+          722
+        ],
+        "padding": {
+          "left": 62,
+          "top": 440,
+          "right": 51,
+          "bottom": 473
+        },
+        "visibleRatio": 0.090325,
+        "transparentRatio": 0.909396,
+        "partialAlphaPixels": 6200,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-samurai-sword",
+      "name": "Samurai Sword",
+      "visualAnchor": "Cosmétique de trophée “Samurai Sword” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-samurai-sword.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-samurai-sword.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1052709,
+        "width": 1403,
+        "height": 1121,
+        "sha256": "49511478c7abc7c3ed11dc0a04a1c904b3b144cd441f0a5b8469c16e1510fd35"
+      },
+      "metadata": {
+        "bytes": 32008,
+        "width": 1403,
+        "height": 1121,
+        "channels": 4,
+        "sha256": "7b9837349404e609b2719f3cea269f0dad28405811c6735167aef5449cac21de"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          49,
+          466,
+          1354,
+          700
+        ],
+        "padding": {
+          "left": 49,
+          "top": 466,
+          "right": 48,
+          "bottom": 420
+        },
+        "visibleRatio": 0.070303,
+        "transparentRatio": 0.929478,
+        "partialAlphaPixels": 5957,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-spartan-spear",
+      "name": "Spartan Spear",
+      "visualAnchor": "Cosmétique de trophée “Spartan Spear” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-spartan-spear.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-spartan-spear.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1117473,
+        "width": 1313,
+        "height": 1198,
+        "sha256": "badf37cedad59923df81bd814d445f861a75f3b4ddd963738050629717913ea0"
+      },
+      "metadata": {
+        "bytes": 40652,
+        "width": 1313,
+        "height": 1198,
+        "channels": 4,
+        "sha256": "06c19f601572ecb21313f4fe430a7f5e994d6407343b37eabb93ceb3b85e76d9"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          48,
+          429,
+          1262,
+          794
+        ],
+        "padding": {
+          "left": 48,
+          "top": 429,
+          "right": 50,
+          "bottom": 403
+        },
+        "visibleRatio": 0.060841,
+        "transparentRatio": 0.938789,
+        "partialAlphaPixels": 6870,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-tomahawk",
+      "name": "Tomahawk",
+      "visualAnchor": "Cosmétique de trophée “Tomahawk” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-tomahawk.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-tomahawk.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1087656,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "09f021bbb134db2a706752aa98a8642b541f89ee5c0d1ef2e9c2ff0296da5fca"
+      },
+      "metadata": {
+        "bytes": 28022,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "22ceb79d79874c54b89d073f169e8d644818fc5bf2e47c4f5d800d6af1ac407b"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          470,
+          197,
+          782,
+          1015
+        ],
+        "padding": {
+          "left": 470,
+          "top": 197,
+          "right": 471,
+          "bottom": 238
+        },
+        "visibleRatio": 0.045338,
+        "transparentRatio": 0.954575,
+        "partialAlphaPixels": 2301,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-viking-axe",
+      "name": "Viking Axe",
+      "visualAnchor": "Cosmétique de trophée “Viking Axe” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-viking-axe.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-viking-axe.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1386239,
+        "width": 1396,
+        "height": 1127,
+        "sha256": "298c93f91ae98b365fcad64ea85ba5d5cc17da8227883d3278b4d88a470d60e5"
+      },
+      "metadata": {
+        "bytes": 68880,
+        "width": 1396,
+        "height": 1127,
+        "channels": 4,
+        "sha256": "b22a99517d67ffb91cb8ef84ba3d3acfbf43afee7af385a4da3d9bbbb4b893c5"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          77,
+          191,
+          1316,
+          879
+        ],
+        "padding": {
+          "left": 77,
+          "top": 191,
+          "right": 79,
+          "bottom": 247
+        },
+        "visibleRatio": 0.198631,
+        "transparentRatio": 0.801048,
+        "partialAlphaPixels": 5866,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-warhammer",
+      "name": "Warhammer",
+      "visualAnchor": "Cosmétique de trophée “Warhammer” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-warhammer.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-warhammer.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1131866,
+        "width": 1241,
+        "height": 1267,
+        "sha256": "30555db9776284ea15acdf18d17b1884b7dabe7e7372845a822b50cea975423b"
+      },
+      "metadata": {
+        "bytes": 32056,
+        "width": 1241,
+        "height": 1267,
+        "channels": 4,
+        "sha256": "ab40417591d1aff3fe275c8865d2ca74e0cc06d20196321e65027cfbd3f24d48"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          404,
+          111,
+          860,
+          1163
+        ],
+        "padding": {
+          "left": 404,
+          "top": 111,
+          "right": 380,
+          "bottom": 103
+        },
+        "visibleRatio": 0.06553,
+        "transparentRatio": 0.934299,
+        "partialAlphaPixels": 4028,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-western-revolver",
+      "name": "Western Revolver",
+      "visualAnchor": "Cosmétique de trophée “Western Revolver” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-western-revolver.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-western-revolver.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1235097,
+        "width": 1319,
+        "height": 1193,
+        "sha256": "da850fd46319da0c8e5c3a995c01ed9b6d1edd81fe6dda2c34e7c3d62b1be81a"
+      },
+      "metadata": {
+        "bytes": 59290,
+        "width": 1319,
+        "height": 1193,
+        "channels": 4,
+        "sha256": "7f0b89827c7f053720a3b2d78363457431b59b5b486f9aa797873bd7dab88657"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          78,
+          290,
+          1243,
+          909
+        ],
+        "padding": {
+          "left": 78,
+          "top": 290,
+          "right": 75,
+          "bottom": 283
+        },
+        "visibleRatio": 0.170111,
+        "transparentRatio": 0.829583,
+        "partialAlphaPixels": 5523,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-phg-wolf-skull",
+      "name": "Wolf Skull",
+      "visualAnchor": "Cosmétique de trophée “Wolf Skull” porté à la ceinture du Predator dans Hunting Grounds.",
+      "appearances": [
+        {
+          "work": "Predator: Hunting Grounds",
+          "year": 2020,
+          "medium": "video-game",
+          "status": "community-documented-cosmetic",
+          "sourcePage": "https://forum.predator.illfonic.com/t/list-of-all-legendary-trophies-with-images/24214",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Présence documentée visuellement par la communauté sur le forum officiel; ne pas surclasser en annonce IllFonic.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-phg-wolf-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-phg-wolf-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1468387,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "937e8a4747ac50f618a1374f2d24728a1cc15ca2a88feb243697093614a89c45"
+      },
+      "metadata": {
+        "bytes": 90334,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "1bf792c7b42332a2c3dfb6d5b602e02293723396686eeabaaa3c2706f1019d2b"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          164,
+          252,
+          1093,
+          972
+        ],
+        "padding": {
+          "left": 164,
+          "top": 252,
+          "right": 160,
+          "bottom": 281
+        },
+        "visibleRatio": 0.252546,
+        "transparentRatio": 0.747091,
+        "partialAlphaPixels": 6250,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-big-game-cowboy-skull",
+      "name": "Crâne humain au chapeau de cow-boy et lunettes",
+      "visualAnchor": "Crâne humain coiffé d'un Stetson et de lunettes noires, présenté parmi des restes, cages thoraciques et fusils.",
+      "appearances": [
+        {
+          "work": "Predator: Big Game",
+          "year": 1991,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/issue/92869/predator_the_original_years_omnibus_vol_1_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Victime non identifiée; ne pas inventer de cow-boy nommé.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-big-game-cowboy-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-big-game-cowboy-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1602413,
+        "width": 1393,
+        "height": 1129,
+        "sha256": "ccb8ff59081fe38d0a80850fca8aed93e81fbe9532d458dd58d3c6a6fd1b5408"
+      },
+      "metadata": {
+        "bytes": 103254,
+        "width": 1393,
+        "height": 1129,
+        "channels": 4,
+        "sha256": "729405c945613fcd88b43acb2482bd2500c971277f0822443f6b5363c7d4594a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          213,
+          146,
+          1156,
+          1003
+        ],
+        "padding": {
+          "left": 213,
+          "top": 146,
+          "right": 236,
+          "bottom": 125
+        },
+        "visibleRatio": 0.283947,
+        "transparentRatio": 0.715821,
+        "partialAlphaPixels": 4387,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-primal-antler-display",
+      "name": "Présentoir de grandes ramures",
+      "visualAnchor": "Ramures ou bois de grande taille dressés comme une prise rituelle, silhouette unique du corpus Primal.",
+      "appearances": [
+        {
+          "work": "Predator: Primal",
+          "year": 1997,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/collection/92871/predator_the_original_years_omnibus_vol_2_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Espèce du cervidé inconnue; ramures descriptives uniquement.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-primal-antler-display.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-primal-antler-display.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1505055,
+        "width": 1254,
+        "height": 1254,
+        "sha256": "9c5151a93a2aa700edf127e6a1dfce290afd2b0f7e6b3c90605c9785da4b7bc4"
+      },
+      "metadata": {
+        "bytes": 107008,
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "sha256": "4ea70ab3a0b4530e5cf8d969d9a077ac0cb2d7d04ba683dcf375ec37f344cdfd"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          134,
+          65,
+          1113,
+          1171
+        ],
+        "padding": {
+          "left": 134,
+          "top": 65,
+          "right": 140,
+          "bottom": 82
+        },
+        "visibleRatio": 0.185332,
+        "transparentRatio": 0.813922,
+        "partialAlphaPixels": 12840,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-primal-human-skull-throne",
+      "name": "Siège rituel garni de crânes humains",
+      "visualAnchor": "Fauteuil ou trône construit et décoré de plusieurs crânes humains dans Predator: Primal.",
+      "appearances": [
+        {
+          "work": "Predator: Primal",
+          "year": 1997,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/collection/92871/predator_the_original_years_omnibus_vol_2_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Décor rituel, pas trophée portable.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-primal-human-skull-throne.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-primal-human-skull-throne.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1892119,
+        "width": 1241,
+        "height": 1267,
+        "sha256": "7341d75844210649f4262fd70e70e43a4ffa680353ec476f706084a4e515728a"
+      },
+      "metadata": {
+        "bytes": 166194,
+        "width": 1241,
+        "height": 1267,
+        "channels": 4,
+        "sha256": "436bd433c6a97a90fd53b5d779b5a8e5ed7313717e87f650bd87b08f05988a74"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          251,
+          61,
+          1043,
+          1169
+        ],
+        "padding": {
+          "left": 251,
+          "top": 61,
+          "right": 197,
+          "bottom": 97
+        },
+        "visibleRatio": 0.340213,
+        "transparentRatio": 0.659165,
+        "partialAlphaPixels": 12141,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-big-mama-xeno-queen-skull",
+      "name": "Crâne de Reine Xénomorphe de Big Mama",
+      "visualAnchor": "Grand crâne allongé de Reine Xénomorphe au centre du display de Big Mama.",
+      "appearances": [
+        {
+          "work": "Aliens vs Predator: Deadliest of the Species",
+          "year": 1993,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Les easter eggs de super-héros voisins ne deviennent jamais des kills canons.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-big-mama-xeno-queen-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-big-mama-xeno-queen-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1829328,
+        "width": 1391,
+        "height": 1131,
+        "sha256": "6cef5340b2100f9c3d33e8025a738a0e1e6103e13982e8ad790708dca7af2a05"
+      },
+      "metadata": {
+        "bytes": 141252,
+        "width": 1391,
+        "height": 1131,
+        "channels": 4,
+        "sha256": "276eb685e686667dbe243bde715771c9bce2090d289ecf3231d3e8dd610f45a5"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          96,
+          115,
+          1215,
+          1037
+        ],
+        "padding": {
+          "left": 96,
+          "top": 115,
+          "right": 175,
+          "bottom": 93
+        },
+        "visibleRatio": 0.374177,
+        "transparentRatio": 0.625427,
+        "partialAlphaPixels": 6916,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-big-mama-xeno-warrior-skull-pair",
+      "name": "Paire de crânes de guerriers Xénomorphes de Big Mama",
+      "visualAnchor": "Deux crânes de guerriers Xénomorphes plus petits encadrant le grand crâne de Reine.",
+      "appearances": [
+        {
+          "work": "Aliens vs Predator: Deadliest of the Species",
+          "year": 1993,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Paire liée au même display; ne pas ajouter d'autres castes.",
+      "composition": "paired-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-big-mama-xeno-warrior-skull-pair.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-big-mama-xeno-warrior-skull-pair.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1360956,
+        "width": 1414,
+        "height": 1113,
+        "sha256": "9cf430e8a4332cda505b96febe39ea5d021bc4b330c4dcdfa1268c9ed82b39e5"
+      },
+      "metadata": {
+        "bytes": 74110,
+        "width": 1414,
+        "height": 1113,
+        "channels": 4,
+        "sha256": "3100c8d8d018f13746d3e30fea1cc52ae5f6b596a6ce45fdfde4dd127e7e03ee"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          70,
+          336,
+          1344,
+          786
+        ],
+        "padding": {
+          "left": 70,
+          "top": 336,
+          "right": 69,
+          "bottom": 326
+        },
+        "visibleRatio": 0.161311,
+        "transparentRatio": 0.838338,
+        "partialAlphaPixels": 4944,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-ahab-engineer-skull",
+      "name": "Trophée crânien d'Engineer d'Ahab",
+      "visualAnchor": "Crâne humanoïde pâle et massif d'Engineer transporté comme trophée par Ahab.",
+      "appearances": [
+        {
+          "work": "Predator: Fire and Stone",
+          "year": 2014,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://digital.darkhorse.com/books/29071bbe51d54a0e915d88c04668669c/aliens-predator-prometheus-avp-the-complete-life-and-death-hc",
+          "note": ""
+        },
+        {
+          "work": "NECA Ultimate Ahab",
+          "year": 2017,
+          "medium": "merchandise",
+          "status": "licensed-accessory",
+          "sourcePage": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "NECA confirme Engineer skull trophy; ne pas ajouter de colonne si la référence ne la montre pas.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-ahab-engineer-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-ahab-engineer-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1474670,
+        "width": 1412,
+        "height": 1114,
+        "sha256": "6df1dd8925b0e8503e063da1731e25816ec60be3e3122a49bc450328e9785d88"
+      },
+      "metadata": {
+        "bytes": 69388,
+        "width": 1412,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "7e22b96ccc9a8ac6a704a8ceb81788667e8e92c0650d05c50854166e3631bcad"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          389,
+          81,
+          1068,
+          988
+        ],
+        "padding": {
+          "left": 389,
+          "top": 81,
+          "right": 343,
+          "bottom": 125
+        },
+        "visibleRatio": 0.275329,
+        "transparentRatio": 0.724461,
+        "partialAlphaPixels": 3057,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-marvel-2022-exotic-skull-wall",
+      "name": "Mur de huit crânes extraterrestres inconnus",
+      "visualAnchor": "Au moins huit crânes aux silhouettes distinctes sur le mur de Predator (Marvel) #1, dont un cornu et un évoquant un crabe.",
+      "appearances": [
+        {
+          "work": "Predator (Marvel) #1",
+          "year": 2022,
+          "medium": "comic",
+          "status": "current-licensed-comic-continuity",
+          "sourcePage": "https://www.marvel.com/comics/issue/89617/predator",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Toutes les espèces restent unknown; aucune ressemblance ne devient taxonomie.",
+      "composition": "wall-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-marvel-2022-exotic-skull-wall.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-marvel-2022-exotic-skull-wall.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1963594,
+        "width": 1541,
+        "height": 1021,
+        "sha256": "c50a40af40f08e073248b352a0fb6e0e7b13e5486dcecbc7c157ae25e6277152"
+      },
+      "metadata": {
+        "bytes": 194210,
+        "width": 1541,
+        "height": 1021,
+        "channels": 4,
+        "sha256": "5e031d98c7d1d6279e2f81fe795ea527dcd479d2ebf7d290dac123599a41c08d"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          150,
+          52,
+          1314,
+          914
+        ],
+        "padding": {
+          "left": 150,
+          "top": 52,
+          "right": 226,
+          "bottom": 106
+        },
+        "visibleRatio": 0.326965,
+        "transparentRatio": 0.672106,
+        "partialAlphaPixels": 17257,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-nemesis-skulls-scimitar",
+      "name": "Mur de crânes humains et cimeterre capturé",
+      "visualAnchor": "Environ douze crânes humains avec armes ennemies; le cimeterre capturé est la silhouette la plus distinctive.",
+      "appearances": [
+        {
+          "work": "Predator: Nemesis",
+          "year": 1997,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/collection/92871/predator_the_original_years_omnibus_vol_2_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Cimeterre d'un vaincu; aucune culture ni identité de victime inventée.",
+      "composition": "wall-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-nemesis-skulls-scimitar.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-nemesis-skulls-scimitar.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1621578,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "cda07c043ee4feb282aa4a6e2ca052cdd53a857d422870c358a781d424952cd8"
+      },
+      "metadata": {
+        "bytes": 134136,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "b994b781ba94a9fec6c1eca2e0bd8616faf9ff2108d1ee05143df57422e21d5e"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          227,
+          215,
+          1178,
+          849
+        ],
+        "padding": {
+          "left": 227,
+          "top": 215,
+          "right": 232,
+          "bottom": 264
+        },
+        "visibleRatio": 0.227275,
+        "transparentRatio": 0.772031,
+        "partialAlphaPixels": 17041,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-hunters-ii-afghan-cave",
+      "name": "Caverne de trophées et armes d'Afghanistan",
+      "visualAnchor": "Décor de Hunters II combinant crânes et armes capturées, dont AK, bazookas et motos.",
+      "appearances": [
+        {
+          "work": "Predator: Hunters II",
+          "year": 2018,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/collection/92871/predator_the_original_years_omnibus_vol_2_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Armes et véhicules sont le contexte des victimes, pas des espèces de trophées.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-hunters-ii-afghan-cave.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-hunters-ii-afghan-cave.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2165105,
+        "width": 1389,
+        "height": 1132,
+        "sha256": "c40fb182741757e8b2cee12e9479edae1b37d10e163d88f5ba1ac88be9c48591"
+      },
+      "metadata": {
+        "bytes": 259366,
+        "width": 1389,
+        "height": 1132,
+        "channels": 4,
+        "sha256": "f5c7621aa37d0a4529a037d480ebdabdee72a78f2b1ec16375c0a42b576a4fda"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          131,
+          58,
+          1254,
+          1008
+        ],
+        "padding": {
+          "left": 131,
+          "top": 58,
+          "right": 134,
+          "bottom": 123
+        },
+        "visibleRatio": 0.411693,
+        "transparentRatio": 0.587125,
+        "partialAlphaPixels": 32343,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-hunters-iii-belize-cave",
+      "name": "Caverne trophée sous-marine du Belize",
+      "visualAnchor": "Grotte immergée avec crânes humains, fusils AK et paquets du cartel dans Hunters III.",
+      "appearances": [
+        {
+          "work": "Predator: Hunters III",
+          "year": 2020,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity",
+          "sourcePage": "https://www.marvel.com/comics/collection/92871/predator_the_original_years_omnibus_vol_2_hardcover",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Drogue et armes sont du contexte, pas des identités de trophées.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-hunters-iii-belize-cave.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-hunters-iii-belize-cave.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2245981,
+        "width": 1392,
+        "height": 1130,
+        "sha256": "0f3ce5fe38f8d73554280ab43dcfafb9a199471f534ee134921024a3e884c54c"
+      },
+      "metadata": {
+        "bytes": 275412,
+        "width": 1392,
+        "height": 1130,
+        "channels": 4,
+        "sha256": "837a8d92d0f2bdda3a97913d58a59ccbead7bcf799315c6f05dbc45be0afd6f9"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          124,
+          81,
+          1265,
+          1032
+        ],
+        "padding": {
+          "left": 124,
+          "top": 81,
+          "right": 126,
+          "bottom": 97
+        },
+        "visibleRatio": 0.521374,
+        "transparentRatio": 0.478136,
+        "partialAlphaPixels": 45189,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-comic-eternal-human-yautja-head-display",
+      "name": "Présentoir humain de têtes Yautja sectionnées",
+      "visualAnchor": "Plusieurs têtes Yautja et équipements Predator exposés dans la collection de Gideon Suhn Lee.",
+      "appearances": [
+        {
+          "work": "Aliens vs Predator: Eternal",
+          "year": 1998,
+          "medium": "comic",
+          "status": "licensed-expanded-continuity-human-owned",
+          "sourcePage": "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Collectionneur humain; ne jamais les présenter comme prises portées par un Yautja.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-comic-eternal-human-yautja-head-display.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-comic-eternal-human-yautja-head-display.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2134559,
+        "width": 1536,
+        "height": 1024,
+        "sha256": "cfb2edd3e6946ee4e48a7cded8c41d6f4f2c0b022ebdb3205cfdacce98ad288a"
+      },
+      "metadata": {
+        "bytes": 191326,
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "sha256": "de63fee0553e84abbab5db1f26520aa7a25d2dec99e958d2e44228ddc0ca5cbd"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          217,
+          32,
+          1296,
+          948
+        ],
+        "padding": {
+          "left": 217,
+          "top": 32,
+          "right": 239,
+          "bottom": 75
+        },
+        "visibleRatio": 0.412369,
+        "transparentRatio": 0.586901,
+        "partialAlphaPixels": 18673,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-tarzan-tyrannosaur-skull",
+      "name": "Crâne de tyrannosaure fraîchement extrait",
+      "visualAnchor": "Immense crâne de tyrannosaure retiré de la carcasse après une chasse dans At the Earth's Core.",
+      "appearances": [
+        {
+          "work": "Tarzan vs Predator: At the Earth's Core",
+          "year": 1996,
+          "medium": "licensed-crossover",
+          "status": "screen-acquisition-noncanon",
+          "sourcePage": "https://www.comics.org/issue/654766/?issue_detail=2",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Extraction vue; conservation ultérieure non prouvée et crossover hors continuité principale.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-tarzan-tyrannosaur-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-tarzan-tyrannosaur-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1923756,
+        "width": 1391,
+        "height": 1131,
+        "sha256": "35e253eec3590387974ef1de745897470b8560c20957ec0a94841ea33a87d0e1"
+      },
+      "metadata": {
+        "bytes": 165244,
+        "width": 1391,
+        "height": 1131,
+        "channels": 4,
+        "sha256": "55c57fb609c44baabc3ac68fade42519c9112313c686c0bc0d43fcfde58cdc04"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          76,
+          211,
+          1315,
+          920
+        ],
+        "padding": {
+          "left": 76,
+          "top": 211,
+          "right": 75,
+          "bottom": 210
+        },
+        "visibleRatio": 0.393959,
+        "transparentRatio": 0.605526,
+        "partialAlphaPixels": 9010,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-dredd-helmeted-head-spine",
+      "name": "Tête de Judge casquée avec colonne",
+      "visualAnchor": "Tête humaine encore coiffée d'un casque de Judge, rachis complet attaché.",
+      "appearances": [
+        {
+          "work": "Predator vs Judge Dredd",
+          "year": 1997,
+          "medium": "licensed-crossover",
+          "status": "screen-trophy-noncanon",
+          "sourcePage": "https://www.comics.org/issue/712918/",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Ne pas ajouter insigne, nom ou identité sans la planche source.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-dredd-helmeted-head-spine.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-dredd-helmeted-head-spine.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1415050,
+        "width": 1203,
+        "height": 1307,
+        "sha256": "2efbcc975fe21c06f968fc775ebcac0536ec1f5a156cca4a5bb3b14d6b05e0e5"
+      },
+      "metadata": {
+        "bytes": 78468,
+        "width": 1203,
+        "height": 1307,
+        "channels": 4,
+        "sha256": "d2d21f7d43b56c479b478460f711b011c22b0f98e862ad81e17f883e68993475"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          359,
+          41,
+          783,
+          1266
+        ],
+        "padding": {
+          "left": 359,
+          "top": 41,
+          "right": 419,
+          "bottom": 40
+        },
+        "visibleRatio": 0.174541,
+        "transparentRatio": 0.825164,
+        "partialAlphaPixels": 6213,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-avp-terminator-xeno-pillars",
+      "name": "Piliers de têtes et cages thoraciques Xénomorphes",
+      "visualAnchor": "Têtes de Xénomorphes avec cages thoraciques attachées, fixées verticalement comme architecture.",
+      "appearances": [
+        {
+          "work": "Aliens vs Predator vs The Terminator",
+          "year": 2000,
+          "medium": "licensed-crossover",
+          "status": "environmental-trophy-noncanon",
+          "sourcePage": "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Display architectural; ne pas réduire à un crâne isolé.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-avp-terminator-xeno-pillars.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-avp-terminator-xeno-pillars.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1708611,
+        "width": 1391,
+        "height": 1131,
+        "sha256": "c736fa0bfb30630de89de63beb2bc5e474f7308763530fdef4e2326bf4e4165a"
+      },
+      "metadata": {
+        "bytes": 131834,
+        "width": 1391,
+        "height": 1131,
+        "channels": 4,
+        "sha256": "6150288627eb5d9b50523d60fefd2152f074522e8af9e20e1a68d5aec90e0d07"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          462,
+          56,
+          929,
+          1080
+        ],
+        "padding": {
+          "left": 462,
+          "top": 56,
+          "right": 461,
+          "bottom": 50
+        },
+        "visibleRatio": 0.256889,
+        "transparentRatio": 0.742824,
+        "partialAlphaPixels": 5866,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-splice-dice-pale-xeno-skull",
+      "name": "Crâne Xénomorphe pâle de laboratoire",
+      "visualAnchor": "Crâne très clair prélevé dans la collection du vaisseau et utilisé comme source ADN.",
+      "appearances": [
+        {
+          "work": "Predator vs Judge Dredd vs Aliens: Splice and Dice",
+          "year": 2016,
+          "medium": "licensed-crossover",
+          "status": "screen-trophy-noncanon",
+          "sourcePage": "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Pâleur visuelle confirmée; aucune caste inventée.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-splice-dice-pale-xeno-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-splice-dice-pale-xeno-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1554216,
+        "width": 1370,
+        "height": 1148,
+        "sha256": "d4bbb348e4dbec576b5e355781b83333ba44b3ccbafb317271842be811485b3f"
+      },
+      "metadata": {
+        "bytes": 100198,
+        "width": 1370,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "bb8de68f245308ffa6c3bbc905e2f0fac4782a681f968e33289c2d0292301c3a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          87,
+          216,
+          1308,
+          911
+        ],
+        "padding": {
+          "left": 87,
+          "top": 216,
+          "right": 61,
+          "bottom": 236
+        },
+        "visibleRatio": 0.271388,
+        "transparentRatio": 0.728133,
+        "partialAlphaPixels": 7933,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-magnus-xo-helmet",
+      "name": "Casque X-O Manowar de la collection",
+      "visualAnchor": "Casque technologique X-O décrit comme le trophée le plus prisé puis volé au Predator.",
+      "appearances": [
+        {
+          "work": "Predator versus Magnus, Robot Fighter",
+          "year": 1992,
+          "medium": "licensed-crossover",
+          "status": "screen-trophy-noncanon",
+          "sourcePage": "https://avp.fandom.com/wiki/Predator_versus_Magnus%2C_Robot_Fighter",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Objet Valiant; ne pas prétendre que X-O Manowar a été tué.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-magnus-xo-helmet.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-magnus-xo-helmet.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1539261,
+        "width": 1370,
+        "height": 1148,
+        "sha256": "f5303dad64fff7d1ed7555c1b4b0fb720b865fd3e9f3ed208346d1bbcee23a0d"
+      },
+      "metadata": {
+        "bytes": 103832,
+        "width": 1370,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "e16a0b3b3832d4344f02d05cfdbc6616405f867795b88ccc1fdb781bd518a463"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          317,
+          104,
+          1085,
+          1002
+        ],
+        "padding": {
+          "left": 317,
+          "top": 104,
+          "right": 284,
+          "bottom": 145
+        },
+        "visibleRatio": 0.337931,
+        "transparentRatio": 0.661927,
+        "partialAlphaPixels": 3576,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-wolverine-bear-skull-mask",
+      "name": "Masque improvisé en crâne d'ours",
+      "visualAnchor": "Crâne de l'ours tué en Alaska, porté ensuite comme masque par le Predator.",
+      "appearances": [
+        {
+          "work": "Predator vs Wolverine",
+          "year": 2023,
+          "medium": "licensed-crossover",
+          "status": "screen-equipment-hybrid-noncanon",
+          "sourcePage": "https://www.marvel.com/articles/comics/predator-vs-wolverine",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Espèce d'ours non fixée; vérifier la planche et ne pas le confondre avec un biomask manufacturé.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-wolverine-bear-skull-mask.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-wolverine-bear-skull-mask.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1669795,
+        "width": 1411,
+        "height": 1114,
+        "sha256": "2e19cbfbfb47eb8f3fda77232cae53d182c9d00c275de4fafe944cdbaa5e8e5c"
+      },
+      "metadata": {
+        "bytes": 113516,
+        "width": 1411,
+        "height": 1114,
+        "channels": 4,
+        "sha256": "ca3b41815fba46179f19c2abe379b19ac211b84bfde276ceeb0a98bc4ce080da"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          278,
+          117,
+          1249,
+          975
+        ],
+        "padding": {
+          "left": 278,
+          "top": 117,
+          "right": 161,
+          "bottom": 138
+        },
+        "visibleRatio": 0.312929,
+        "transparentRatio": 0.686724,
+        "partialAlphaPixels": 6926,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-spiderman-skinner-throne",
+      "name": "Trône de Skinner en os, crânes et peaux",
+      "visualAnchor": "Siège fait d'os et de crânes, couvert de peaux humaines tendues, avec ornements osseux suspendus.",
+      "appearances": [
+        {
+          "work": "Predator vs Spider-Man",
+          "year": 2025,
+          "medium": "licensed-crossover",
+          "status": "environmental-trophy-noncanon",
+          "sourcePage": "https://www.marvel.com/articles/comics/predator-vs-spider-man-1-variant-covers",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Skinner est un rogue; décor horrifique non représentatif du code Yautja.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-spiderman-skinner-throne.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-spiderman-skinner-throne.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2203987,
+        "width": 1371,
+        "height": 1147,
+        "sha256": "b79312c47ce26bccdc6db03f696985294292109d2cf030ea3aa3ddcef70876aa"
+      },
+      "metadata": {
+        "bytes": 258902,
+        "width": 1371,
+        "height": 1147,
+        "channels": 4,
+        "sha256": "3ca2543237afd31887b9e8020d53178c02f8ac1f9a2fdaacf62ea3cdb449d4b5"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          193,
+          45,
+          1215,
+          1043
+        ],
+        "padding": {
+          "left": 193,
+          "top": 45,
+          "right": 155,
+          "bottom": 103
+        },
+        "visibleRatio": 0.393511,
+        "transparentRatio": 0.605345,
+        "partialAlphaPixels": 23572,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-black-panther-vibranium-spear",
+      "name": "Lance-trophée à pointe de vibranium",
+      "visualAnchor": "Lance terrestre capturée avec pointe en vibranium, présentée comme prise prisée au roi.",
+      "appearances": [
+        {
+          "work": "Predator vs Black Panther",
+          "year": 2024,
+          "medium": "licensed-crossover",
+          "status": "captured-weapon-noncanon",
+          "sourcePage": "https://www.marvel.com/articles/comics/predator-vs-black-panther-first-look-preview-covers",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Arme capturée, pas technologie Yautja native ni lance personnelle de Black Panther sans preuve.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-black-panther-vibranium-spear.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-black-panther-vibranium-spear.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1120838,
+        "width": 1396,
+        "height": 1127,
+        "sha256": "4fd987b8c8b69026d9933f1fe4d24d5b31f894616487889956b9c20fc38523a7"
+      },
+      "metadata": {
+        "bytes": 35614,
+        "width": 1396,
+        "height": 1127,
+        "channels": 4,
+        "sha256": "478c6a3acfe3ece07b5fa1a3a603b5cab3fdb412dfaf0f0926d8c0f5a9155c8d"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          95,
+          181,
+          1306,
+          956
+        ],
+        "padding": {
+          "left": 95,
+          "top": 181,
+          "right": 89,
+          "bottom": 170
+        },
+        "visibleRatio": 0.050745,
+        "transparentRatio": 0.949035,
+        "partialAlphaPixels": 4533,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-pkmu-kraven-head-spear",
+      "name": "Tête de Kraven empalée sur une lance",
+      "visualAnchor": "Tête humaine de Kraven brandie au bout d'une lance par Predator X dans la conclusion.",
+      "appearances": [
+        {
+          "work": "Predator Kills the Marvel Universe",
+          "year": 2025,
+          "medium": "licensed-crossover",
+          "status": "screen-acquisition-noncanon",
+          "sourcePage": "https://www.marvel.com/articles/comics/predator-kills-the-marvel-universe-launches-an-all-out-invasion-deadliest-hunters",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Cicatrices et coiffure uniquement d'après la planche; aucun portrait d'acteur.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-pkmu-kraven-head-spear.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-pkmu-kraven-head-spear.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1239107,
+        "width": 1205,
+        "height": 1306,
+        "sha256": "fc5f1f4034156d2ce9dbad07d793d03735643afcbc0b037c057d30dc84f76004"
+      },
+      "metadata": {
+        "bytes": 50066,
+        "width": 1205,
+        "height": 1306,
+        "channels": 4,
+        "sha256": "bd21a9034e95e33478eeceae22615c62e0438dc5c6ca2f903ca62da0e6733c62"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          442,
+          41,
+          780,
+          1264
+        ],
+        "padding": {
+          "left": 442,
+          "top": 41,
+          "right": 424,
+          "bottom": 41
+        },
+        "visibleRatio": 0.105881,
+        "transparentRatio": 0.893844,
+        "partialAlphaPixels": 5924,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-pkmu-kraven-relic-room",
+      "name": "Salle de reliques de héros de Kraven",
+      "visualAnchor": "Display de Kraven avec crâne vert massif, arc, gauntlets, uniforme, bouclier endommagé, bras extensible, blasters et tête végétale.",
+      "appearances": [
+        {
+          "work": "Predator Kills the Marvel Universe",
+          "year": 2025,
+          "medium": "licensed-crossover",
+          "status": "environmental-trophy-human-owned-noncanon",
+          "sourcePage": "https://www.marvel.com/articles/comics/predator-kills-the-marvel-universe-launches-an-all-out-invasion-deadliest-hunters",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Collection de Kraven, pas prises Yautja; aucun logo ni objet absent ajouté.",
+      "composition": "environmental-display",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-pkmu-kraven-relic-room.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-pkmu-kraven-relic-room.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 2455846,
+        "width": 1536,
+        "height": 1024,
+        "sha256": "81a29a2cafbc2aa138e0615272f40e663dbff3dff243fb9be56f25f35c306887"
+      },
+      "metadata": {
+        "bytes": 331818,
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "sha256": "b865f121bda3fdd080f03332399790f93780711f3cd3596790eefd4ef3b9859c"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          112,
+          40,
+          1414,
+          924
+        ],
+        "padding": {
+          "left": 112,
+          "top": 40,
+          "right": 121,
+          "bottom": 99
+        },
+        "visibleRatio": 0.450387,
+        "transparentRatio": 0.548693,
+        "partialAlphaPixels": 86884,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-crossover-batman-ritual-suicide-blade",
+      "name": "Lame rituelle remise à Batman",
+      "visualAnchor": "Arme de suicide du Predator vaincu, remise à Batman par les Yautja comme marque d'honneur.",
+      "appearances": [
+        {
+          "work": "Batman versus Predator",
+          "year": 1991,
+          "medium": "licensed-crossover",
+          "status": "honorific-gift-human-owned-noncanon",
+          "sourcePage": "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Cadeau honorifique; ni reste anatomique ni preuve d'une mise en vitrine.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-crossover-batman-ritual-suicide-blade.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-crossover-batman-ritual-suicide-blade.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1258457,
+        "width": 1410,
+        "height": 1115,
+        "sha256": "f76a7ba7c876ba736f1333f7dfc261053df57647424f976e82c214ae40f845a8"
+      },
+      "metadata": {
+        "bytes": 58660,
+        "width": 1410,
+        "height": 1115,
+        "channels": 4,
+        "sha256": "dfe37716e78b094f76671907768cc69c5cf6d02e8be770446a35175eb8eaf5bd"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          117,
+          152,
+          1294,
+          968
+        ],
+        "padding": {
+          "left": 117,
+          "top": 152,
+          "right": 115,
+          "bottom": 146
+        },
+        "visibleRatio": 0.114233,
+        "transparentRatio": 0.88544,
+        "partialAlphaPixels": 6497,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-merch-shaman-hatcheted-skull",
+      "name": "Crâne humain fendu par une hache",
+      "visualAnchor": "Crâne humain présentant un impact de hache et le fer distinctif fourni avec Ultimate Shaman.",
+      "appearances": [
+        {
+          "work": "NECA Ultimate Shaman",
+          "year": 2022,
+          "medium": "merchandise",
+          "status": "licensed-merchandise-only",
+          "sourcePage": "https://necaonline.com/2022/02/predator-7-scale-action-figure-ultimate-shaman/",
+          "note": ""
+        }
+      ],
+      "confidence": "high",
+      "guardrail": "Accessoire NECA; ne pas dire qu'il est visible dans Predator 2.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-merch-shaman-hatcheted-skull.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-merch-shaman-hatcheted-skull.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1538767,
+        "width": 1394,
+        "height": 1128,
+        "sha256": "a1e9b7abc7708f0d6fca416c68ff2311462112ef0b6c7ef97280e7d88663eded"
+      },
+      "metadata": {
+        "bytes": 93876,
+        "width": 1394,
+        "height": 1128,
+        "channels": 4,
+        "sha256": "61665c17d6f1f5baf4fbbcb0c5e2a596a35e85156c84d7a2fd2698dd6d4d669c"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          337,
+          159,
+          1072,
+          957
+        ],
+        "padding": {
+          "left": 337,
+          "top": 159,
+          "right": 321,
+          "bottom": 170
+        },
+        "visibleRatio": 0.232473,
+        "transparentRatio": 0.767274,
+        "partialAlphaPixels": 4216,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-merch-golden-angel-trophy-necklace",
+      "name": "Collier-trophée du Golden Angel",
+      "visualAnchor": "Collier de trophées osseux ou dentaires fourni à la figurine Ultimate Elder 1718.",
+      "appearances": [
+        {
+          "work": "NECA Ultimate Elder: The Golden Angel",
+          "year": 2018,
+          "medium": "merchandise",
+          "status": "licensed-merchandise-only",
+          "sourcePage": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "NECA ne nomme pas les os ou dents; aucune espèce inventée.",
+      "composition": "single-object",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-merch-golden-angel-trophy-necklace.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-merch-golden-angel-trophy-necklace.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1702653,
+        "width": 1370,
+        "height": 1148,
+        "sha256": "8da2caf52b18813b9d754f07af54a166204511fc3eef6187b94ae560c0b279bb"
+      },
+      "metadata": {
+        "bytes": 144362,
+        "width": 1370,
+        "height": 1148,
+        "channels": 4,
+        "sha256": "3387d260dd71e757e3a4e512c4f4e9c3ca8bf90e880cdec589c347976ed4a90a"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          111,
+          209,
+          1257,
+          954
+        ],
+        "padding": {
+          "left": 111,
+          "top": 209,
+          "right": 112,
+          "bottom": 193
+        },
+        "visibleRatio": 0.232584,
+        "transparentRatio": 0.766488,
+        "partialAlphaPixels": 14457,
+        "visibleGreenRatio": 0
+      }
+    },
+    {
+      "id": "franchise-merch-bad-blood-trophy-heads",
+      "name": "Têtes-trophées du Bad Blood NECA",
+      "visualAnchor": "Petit ensemble des trophy heads fournies avec la figurine Bad Blood basée sur le comic Dark Horse.",
+      "appearances": [
+        {
+          "work": "NECA Bad Blood",
+          "year": 2014,
+          "medium": "merchandise",
+          "status": "licensed-merchandise-only-comic-derived",
+          "sourcePage": "https://necaonline.com/2014/08/closer-look-predator-bad-blood-deluxe-7-scale-action-figure/",
+          "note": ""
+        }
+      ],
+      "confidence": "medium",
+      "guardrail": "Les identités et espèces ne sont pas nommées; aucune taxonomie.",
+      "composition": "small-set",
+      "runtimePath": "public/game/assets/v16/franchise-trophies/franchise-merch-bad-blood-trophy-heads.webp",
+      "runtimeUrl": "/game/assets/v16/franchise-trophies/franchise-merch-bad-blood-trophy-heads.webp",
+      "planned": true,
+      "available": true,
+      "consumers": [
+        "franchise-archive"
+      ],
+      "inspection": {
+        "status": "passed",
+        "notes": "Official-media identity lock and transparent runtime cutout available."
+      },
+      "sourceMetadata": {
+        "bytes": 1303984,
+        "width": 1587,
+        "height": 991,
+        "sha256": "2c910c774116e80865ee431584bfab882ac98aab2a6d565fec3ae2e229ee5a4d"
+      },
+      "metadata": {
+        "bytes": 55312,
+        "width": 1587,
+        "height": 991,
+        "channels": 4,
+        "sha256": "abfa8862f8ebfa6c982d06513a22e5d0c025afdd6947c57075d898d23549dbc2"
+      },
+      "validation": {
+        "alpha": true,
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          330,
+          245,
+          1242,
+          724
+        ],
+        "padding": {
+          "left": 330,
+          "top": 245,
+          "right": 344,
+          "bottom": 266
+        },
+        "visibleRatio": 0.169456,
+        "transparentRatio": 0.83032,
+        "partialAlphaPixels": 3884,
+        "visibleGreenRatio": 0
+      }
+    }
+  ]
+}
