@@ -377,8 +377,20 @@ function defaultLoadoutPresets(
 }
 
 export function speciesForTrophy(
-  trophy: Pick<TrophyRecord, "missionId" | "targetKind" | "targetName">,
+  trophy: Pick<
+    TrophyRecord,
+    "missionId" | "sourceEnemyId" | "targetKind" | "targetName"
+  >,
 ): TrophySpeciesId {
+  if (trophy.sourceEnemyId) {
+    if (trophy.targetKind === "human") return "human";
+    if (trophy.targetKind === "yautja") return "yautja";
+    return /cryostalker/i.test(
+      `${trophy.sourceEnemyId} ${trophy.targetName}`,
+    )
+      ? "cryostalker"
+      : "apex-beast";
+  }
   if (
     trophy.missionId === "ice-cryostalker" ||
     /cryostalker/i.test(trophy.targetName)
@@ -544,8 +556,16 @@ function reconcileTrophyDisplays(
  * explicit override for future runtime telemetry.
  */
 export function huntMethodForTrophy(
-  trophy: Pick<TrophyRecord, "missionId" | "targetKind">,
+  trophy: Pick<
+    TrophyRecord,
+    "missionId" | "sourceEnemyId" | "targetKind"
+  >,
 ): TrophyHuntMethodId {
+  if (trophy.sourceEnemyId) {
+    if (trophy.targetKind === "yautja") return "wristblades";
+    if (trophy.targetKind === "beast") return "combistick";
+    return "plasma-caster";
+  }
   if (
     trophy.missionId === "volcano-bad-blood" ||
     trophy.targetKind === "yautja"

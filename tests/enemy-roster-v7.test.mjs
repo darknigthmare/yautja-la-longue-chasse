@@ -15,6 +15,7 @@ import {
   enemyV7ForId,
   enemyV7ForWave,
   enemyV7IdsForMission,
+  isEnemyV7RosterEncounter,
 } from "../app/game/enemyRosterV7.ts";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -76,6 +77,24 @@ test("the original nine gameplay waves preserve their 30-enemy V7 archive", () =
       });
     }
   }
+});
+
+test("every third replay exposes all V7-only species without replacing V8 by default", () => {
+  const archivedMissions = MISSIONS.filter(
+    (mission) => enemyV7IdsForMission(mission.id).length > 0,
+  );
+  for (const mission of archivedMissions) {
+    assert.equal(isEnemyV7RosterEncounter(mission.id, 0), false);
+    assert.equal(isEnemyV7RosterEncounter(mission.id, 1), false);
+    assert.equal(isEnemyV7RosterEncounter(mission.id, 2), true);
+    assert.equal(isEnemyV7RosterEncounter(mission.id, 3), false);
+    assert.equal(isEnemyV7RosterEncounter(mission.id, 5), true);
+  }
+  const expansionMission = MISSIONS.find(
+    (mission) => enemyV7IdsForMission(mission.id).length === 0,
+  );
+  assert.ok(expansionMission);
+  assert.equal(isEnemyV7RosterEncounter(expansionMission.id, 2), false);
 });
 
 test("every enemy owns a production RGBA strip with six populated frames", async () => {

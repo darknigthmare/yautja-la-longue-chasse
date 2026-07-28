@@ -458,6 +458,8 @@ export interface TrophyClaim {
   id: string;
   /** Stable content definition used to select the trophy artwork/model. */
   definitionId: string;
+  /** Enemy-roster identity for secondary V18 claims; absent on Apex trophies. */
+  sourceEnemyId?: string;
   targetName: string;
   targetKind: "human" | "beast" | "yautja";
   partId: TrophyPartId;

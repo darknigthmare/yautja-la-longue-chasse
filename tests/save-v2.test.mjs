@@ -334,6 +334,7 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
       {
         id: "vey-spine",
         definitionId: "human-skull-spine",
+        sourceEnemyId: "colonial-heavy",
         targetName: "Commandante Vey",
         targetKind: "human",
         partId: "skull-and-spine",
@@ -366,6 +367,10 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
   assert.equal(
     progressed.trophies.find(({ id }) => id === "vey-skull").definitionId,
     "duplicate-is-replaced",
+  );
+  assert.equal(
+    progressed.trophies.find(({ id }) => id === "vey-spine").sourceEnemyId,
+    "colonial-heavy",
   );
 });
 
@@ -400,9 +405,9 @@ test("legacy mission results infer a complete claim from trophyQuality", () => {
   });
 });
 
-test("trophy normalization retains the newest 200 unique claim ids", () => {
+test("trophy normalization retains the newest 500 unique claim ids", () => {
   const source = defaultSave("2026-01-01T00:00:00.000Z");
-  source.trophies = Array.from({ length: 205 }, (_, index) => ({
+  source.trophies = Array.from({ length: 505 }, (_, index) => ({
     id: `claim-${index}`,
     definitionId: "human-skull",
     targetName: "Commandante Vey",
@@ -419,9 +424,9 @@ test("trophy normalization retains the newest 200 unique claim ids", () => {
 
   const normalized = normalizeSave(source);
 
-  assert.equal(normalized.trophies.length, 200);
+  assert.equal(normalized.trophies.length, 500);
   assert.equal(normalized.trophies[0].id, "claim-5");
-  assert.equal(normalized.trophies.at(-1).id, "claim-204");
+  assert.equal(normalized.trophies.at(-1).id, "claim-504");
 });
 
 test("trophy workshop progress survives normalization", () => {

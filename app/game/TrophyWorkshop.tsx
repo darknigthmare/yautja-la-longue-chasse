@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+
 import {
   useCallback,
   useEffect,
@@ -29,6 +31,7 @@ export interface TrophyWorkshopProps {
   action: TrophyWorkshopAction;
   trophyId: string;
   trophyName?: string;
+  trophyImageUrl?: string;
   gamepadEnabled?: boolean;
   autoFocus?: boolean;
   onComplete: (result: TrophyWorkshopResult) => void;
@@ -119,6 +122,7 @@ function TrophyWorkshopSession({
   action,
   trophyId,
   trophyName = "Trophée sans nom",
+  trophyImageUrl,
   gamepadEnabled = true,
   autoFocus = true,
   onComplete,
@@ -341,6 +345,22 @@ function TrophyWorkshopSession({
           commandes tactiles restent disponibles sous la jauge.
         </p>
 
+        {trophyImageUrl && (
+          <figure style={styles.trophyPreview} aria-label={trophyName}>
+            <img
+              src={trophyImageUrl}
+              alt=""
+              width={256}
+              height={256}
+              decoding="async"
+              style={styles.trophyPreviewImage}
+            />
+            <figcaption style={styles.trophyPreviewCaption}>
+              Prise physique en cours de préparation
+            </figcaption>
+          </figure>
+        )}
+
         {game.phase === "ready" && (
           <button
             type="button"
@@ -540,6 +560,30 @@ const styles: Record<string, CSSProperties> = {
     maxWidth: 720,
     color: "#b9c7bd",
     lineHeight: 1.55,
+  },
+  trophyPreview: {
+    display: "grid",
+    gridTemplateColumns: "96px minmax(0, 1fr)",
+    alignItems: "center",
+    gap: 14,
+    margin: "0 0 18px",
+    border: "1px solid rgba(91,139,106,.3)",
+    borderRadius: 12,
+    padding: 10,
+    background: "rgba(0,0,0,.2)",
+  },
+  trophyPreviewImage: {
+    width: 96,
+    height: 96,
+    objectFit: "contain",
+    filter: "drop-shadow(0 10px 14px rgba(0,0,0,.55))",
+  },
+  trophyPreviewCaption: {
+    color: "#91cba2",
+    fontSize: 12,
+    fontWeight: 800,
+    letterSpacing: ".08em",
+    textTransform: "uppercase",
   },
   sequence: {
     display: "flex",

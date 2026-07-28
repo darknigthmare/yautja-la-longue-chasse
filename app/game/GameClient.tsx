@@ -20,6 +20,10 @@ import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ecologyV8EnemyForId,
 } from "./ecologyV8";
+import {
+  enemyV7IdsForMission,
+  isEnemyV7RosterEncounter,
+} from "./enemyRosterV7";
 import { backgroundPathForBiome } from "./worldScreens";
 import {
   createGalaxyNavigationState,
@@ -84,6 +88,10 @@ import {
   franchiseTrophyEvidenceLabel,
   franchiseTrophyMediumLabel,
 } from "./franchiseTrophyRegistry";
+import {
+  enemyTrophyGameplayForDefinitionId,
+  enemyTrophyGameplayForEnemyId,
+} from "./enemyTrophyGameplayV18";
 import { trophyWallVisualForDefinitionId } from "./trophyVisualRegistry";
 import {
   ARMORS,
@@ -609,6 +617,7 @@ export default function GameClient() {
   const [trophyWorkshop, setTrophyWorkshop] = useState<{
     trophyId: string;
     trophyName: string;
+    trophyImageUrl?: string;
     action: TrophyWorkshopAction;
   } | null>(null);
   const gameShellRef = useRef<HTMLElement | null>(null);
@@ -1341,6 +1350,16 @@ export default function GameClient() {
                 <p className="mission-planet">{selectedMission.planetName}</p>
                 <h1 id="briefing-title">{selectedMission.title}</h1>
                 <p>{selectedMission.briefing}</p>
+                {isEnemyV7RosterEncounter(
+                  selectedMission.id,
+                  save.missionProgress[selectedMission.id].attempts,
+                ) && (
+                  <p className="source-badge">
+                    Écologie rare ·{" "}
+                    {enemyV7IdsForMission(selectedMission.id).length} espèces
+                    secondaires accessibles pendant cette chasse
+                  </p>
+                )}
                 <ul className="objective-list">
                   {selectedMission.objectives.map((objective, index) => (
                     <li key={objective.id}>
@@ -2140,6 +2159,9 @@ export default function GameClient() {
                   const exactVisual = trophyWallVisualForDefinitionId(
                     trophy.definitionId,
                   );
+                  const enemyGameplayVisual =
+                    enemyTrophyGameplayForDefinitionId(trophy.definitionId) ??
+                    enemyTrophyGameplayForEnemyId(trophy.sourceEnemyId);
                   const missionTrophy =
                     mission?.trophy.id === trophy.definitionId
                       ? mission.trophy
@@ -2173,12 +2195,26 @@ export default function GameClient() {
                   }[trophy.condition];
                   const completedWorkshopActions =
                     trophy.workshop?.completedActions ?? [];
+                  const displayTrophyName =
+                    missionTrophy?.name ??
+                    exactVisual?.name ??
+                    enemyGameplayVisual?.name ??
+                    fallbackTrophyName;
+                  const displayTrophyDescription =
+                    missionTrophy?.description ??
+                    exactVisual?.description ??
+                    (enemyGameplayVisual
+                      ? `Prise secondaire scellée après la chasse de ${trophy.targetName}.`
+                      : fallbackTrophyDescription);
+                  const trophyImageUrl =
+                    exactVisual?.runtimeUrl ??
+                    enemyGameplayVisual?.runtimeUrl;
                   return (
                     <article className="trophy-card" key={trophy.id}>
                       <div className="trophy-art" aria-hidden="true">
-                        {exactVisual ? (
+                        {trophyImageUrl ? (
                           <img
-                            src={exactVisual.runtimeUrl}
+                            src={trophyImageUrl}
                             alt=""
                             loading="lazy"
                             decoding="async"
@@ -2193,16 +2229,8 @@ export default function GameClient() {
                       <p className="mission-planet">
                         {mission?.planetName ?? "Monde inconnu"}
                       </p>
-                      <h3>
-                        {missionTrophy?.name ??
-                          exactVisual?.name ??
-                          fallbackTrophyName}
-                      </h3>
-                      <p>
-                        {missionTrophy?.description ??
-                          exactVisual?.description ??
-                          fallbackTrophyDescription}
-                      </p>
+                      <h3>{displayTrophyName}</h3>
+                      <p>{displayTrophyDescription}</p>
                       <div className="trophy-tags">
                         <span>{quality}</span>
                         <span>{condition}</span>
@@ -2233,7 +2261,8 @@ export default function GameClient() {
                               onClick={() =>
                                 setTrophyWorkshop({
                                   trophyId: trophy.id,
-                                  trophyName: trophy.targetName,
+                                  trophyName: displayTrophyName,
+                                  trophyImageUrl,
                                   action,
                                 })
                               }
@@ -2418,6 +2447,7 @@ export default function GameClient() {
           action={trophyWorkshop.action}
           trophyId={trophyWorkshop.trophyId}
           trophyName={trophyWorkshop.trophyName}
+          trophyImageUrl={trophyWorkshop.trophyImageUrl}
           onComplete={completeTrophyWorkshop}
           onCancel={() => setTrophyWorkshop(null)}
         />

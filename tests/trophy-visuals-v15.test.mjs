@@ -115,7 +115,11 @@ test("GameClient resolves exact images by definitionId and retains the aligned V
   );
   assert.match(
     gameClientSource,
-    /exactVisual \? \([\s\S]*?src=\{exactVisual\.runtimeUrl\}[\s\S]*?: \([\s\S]*?resolveV6TrophyVisualId\(trophy\)/,
+    /const trophyImageUrl =[\s\S]*?exactVisual\?\.runtimeUrl \?\?[\s\S]*?enemyGameplayVisual\?\.runtimeUrl/,
+  );
+  assert.match(
+    gameClientSource,
+    /trophyImageUrl \? \([\s\S]*?src=\{trophyImageUrl\}[\s\S]*?: \([\s\S]*?resolveV6TrophyVisualId\(trophy\)/,
   );
   assert.match(
     gameClientSource,

@@ -117,6 +117,7 @@ import {
   enemyV7ForId,
   enemyV7ForWave,
   enemyV7IdsForMission,
+  isEnemyV7RosterEncounter,
   type EnemyV7Id,
 } from "./enemyRosterV7";
 import {
@@ -129,6 +130,7 @@ import {
   ecologyEncounterEnemyAt,
   ecologyV8RuntimeProfile,
 } from "./ecologyEncounterV8";
+import { enemyTrophyGameplayForEnemyId } from "./enemyTrophyGameplayV18";
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
@@ -314,6 +316,19 @@ interface RecoveryNode extends Vec2 {
   recovered: boolean;
 }
 
+/**
+ * A secondary physical claim left by a regular enemy. Apex trophy state stays
+ * separate because only the mission target can trigger victory and extraction.
+ */
+interface RegularTrophyDrop extends Vec2 {
+  id: string;
+  enemyRuntimeId: string;
+  sourceEnemyId: string;
+  name: string;
+  claim: TrophyClaim;
+  collected: boolean;
+}
+
 interface GearSlotSnapshot {
   gearId: GearId;
   name: string;
@@ -331,6 +346,8 @@ interface MissionCheckpointPayload {
   scanNodes: ScanNode[];
   recoveryNodes: RecoveryNode[];
   purgeConsoleNodes: RecoveryNode[];
+  regularTrophyDrops: RegularTrophyDrop[];
+  regularTrophyDropId: string | null;
   spawnedWaves: Set<string>;
   ecologySpawnIndex: number;
   completedObjectives: Set<string>;
@@ -464,6 +481,7 @@ interface AssetBank {
   enemyV4: Record<EnemyV4SpriteId, HTMLImageElement | null>;
   enemyV7: Partial<Record<EnemyV7Id, HTMLImageElement | null>>;
   enemyV8: Partial<Record<string, HTMLImageElement | null>>;
+  enemyTrophies: Partial<Record<string, HTMLImageElement | null>>;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -503,6 +521,8 @@ interface GameState {
   scanNodes: ScanNode[];
   recoveryNodes: RecoveryNode[];
   purgeConsoleNodes: RecoveryNode[];
+  regularTrophyDrops: RegularTrophyDrop[];
+  regularTrophyDropId: string | null;
   spawnedWaves: Set<string>;
   ecologyDeck: readonly EcologyV8EnemyDefinition[];
   ecologySpawnIndex: number;
@@ -1026,11 +1046,17 @@ function makeGameState(
     y: index % 2 === 0 ? FLOOR_Y - 34 : 380,
     recovered: false,
   }));
-  const ecologyDeck = createEcologyEncounterDeck(
+  const usesV7Roster = isEnemyV7RosterEncounter(
     mission.id,
     ecologyRunSeed,
-    mission.enemyWaves.reduce((total, wave) => total + wave.count, 0),
   );
+  const ecologyDeck = usesV7Roster
+    ? []
+    : createEcologyEncounterDeck(
+        mission.id,
+        ecologyRunSeed,
+        mission.enemyWaves.reduce((total, wave) => total + wave.count, 0),
+      );
   const bossIdentityId = bossArchetype(mission);
   const bossEcology = ecologyV8EnemyForId(bossIdentityId);
   const bossEcologyProfile = bossEcology
@@ -1150,6 +1176,8 @@ function makeGameState(
         recovered: false,
       },
     ],
+    regularTrophyDrops: [],
+    regularTrophyDropId: null,
     spawnedWaves: new Set(),
     ecologyDeck,
     ecologySpawnIndex: 0,
@@ -1212,7 +1240,9 @@ function makeGameState(
     trophyVictory: null,
     dropShip: null,
     scanPulse: 0,
-    message: "La chasse commence. Localise les signatures.",
+    message: usesV7Roster
+      ? "Écologie rare détectée : roster secondaire complet sur ce terrain."
+      : "La chasse commence. Localise les signatures.",
     messageTimer: 4,
     screenShake: 0,
     rangedBossViolation: false,
@@ -1315,6 +1345,11 @@ function captureCheckpoint(state: GameState): MissionCheckpointPayload {
     scanNodes: state.scanNodes.map((node) => ({ ...node })),
     recoveryNodes: state.recoveryNodes.map((node) => ({ ...node })),
     purgeConsoleNodes: state.purgeConsoleNodes.map((node) => ({ ...node })),
+    regularTrophyDrops: state.regularTrophyDrops.map((drop) => ({
+      ...drop,
+      claim: { ...drop.claim },
+    })),
+    regularTrophyDropId: state.regularTrophyDropId,
     spawnedWaves: new Set(state.spawnedWaves),
     ecologySpawnIndex: state.ecologySpawnIndex,
     completedObjectives: new Set(state.completedObjectives),
@@ -1394,6 +1429,11 @@ function restoreCheckpoint(
     purgeConsoleNodes: checkpoint.purgeConsoleNodes.map((node) => ({
       ...node,
     })),
+    regularTrophyDrops: checkpoint.regularTrophyDrops.map((drop) => ({
+      ...drop,
+      claim: { ...drop.claim },
+    })),
+    regularTrophyDropId: checkpoint.regularTrophyDropId,
     spawnedWaves: new Set(checkpoint.spawnedWaves),
     ecologySpawnIndex: checkpoint.ecologySpawnIndex,
     completedObjectives: new Set(checkpoint.completedObjectives),
@@ -1621,6 +1661,24 @@ function currentObjective(
       detail: "Le vaisseau récupère le chasseur et son trophée.",
     };
   }
+  const regularDrop = state.regularTrophyDropId
+    ? state.regularTrophyDrops.find(
+        (drop) => drop.id === state.regularTrophyDropId,
+      )
+    : null;
+  if (regularDrop && state.trophyExtracting && state.trophyRitual) {
+    const cue =
+      state.trophyRitual.sequence[state.trophyRitual.cueIndex];
+    return {
+      title: `Prélever : ${regularDrop.name}`,
+      detail:
+        state.trophyRitual.phase === "ready"
+          ? `Observe le premier glyphe · départ dans ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} s.`
+          : cue
+            ? `Rite secondaire ${state.trophyRitual.cueIndex + 1}/${state.trophyRitual.sequence.length} : ${trophyCueLabel(cue)}.`
+            : "Scellement de la prise.",
+    };
+  }
   if (
     state.bossMechanics.missionId === "volcano-bad-blood" &&
     state.bossMechanics.purgeSeconds !== null &&
@@ -1826,7 +1884,14 @@ function resultFor(
     honorEvents: [...state.honorEvents],
     trophyQuality: outcome === "success" ? state.trophyQuality : null,
     trophyClaims:
-      outcome === "success" && state.trophyClaim ? [state.trophyClaim] : [],
+      outcome === "success"
+        ? [
+            ...(state.trophyClaim ? [state.trophyClaim] : []),
+            ...state.regularTrophyDrops
+              .filter((drop) => drop.collected)
+              .map((drop) => ({ ...drop.claim })),
+          ]
+        : [],
     kills: state.kills,
     scans: state.scans,
     secondWindUsed: state.secondWindUsed,
@@ -3780,6 +3845,123 @@ function renderGame(
     }
   }
 
+  // Secondary claims remain physical objects in the world until their short
+  // field rite succeeds. V18 uses compact transparent exports so this does not
+  // pull the bestiary-only V17 cutouts into the Canvas runtime.
+  const activeRegularDrop = state.regularTrophyDropId
+    ? state.regularTrophyDrops.find(
+        (drop) => drop.id === state.regularTrophyDropId,
+      )
+    : null;
+  const playerCenter = {
+    x: state.player.x + state.player.width / 2,
+    y: state.player.y + state.player.height / 2,
+  };
+  const regularDropTrophyCarry =
+    solvePlayerRigFrame(state, state.player).anchors.trophyCarry;
+  for (const drop of state.regularTrophyDrops) {
+    if (drop.collected) continue;
+    const isActive =
+      state.trophyExtracting && activeRegularDrop?.id === drop.id;
+    const eased = isActive
+      ? state.trophyExtraction *
+        state.trophyExtraction *
+        (3 - 2 * state.trophyExtraction)
+      : 0;
+    const startX = drop.x;
+    const startY = drop.y - 18;
+    const trophyX = isActive
+      ? startX + (regularDropTrophyCarry.x - startX) * eased
+      : startX;
+    const trophyY = isActive
+      ? startY +
+        (regularDropTrophyCarry.y - startY) * eased -
+        Math.sin(eased * Math.PI) * 38
+      : startY;
+    const image = assets.enemyTrophies[drop.claim.definitionId] ?? null;
+    const pulse = 0.72 + Math.sin(state.elapsed * 5 + drop.x * 0.01) * 0.18;
+
+    context.save();
+    context.globalAlpha = isActive ? 1 : pulse;
+    context.strokeStyle = palette.accent;
+    context.lineWidth = isActive ? 3 : 2;
+    context.setLineDash(isActive ? [] : [5, 6]);
+    context.beginPath();
+    context.arc(trophyX, trophyY, isActive ? 38 : 34, 0, Math.PI * 2);
+    context.stroke();
+    context.setLineDash([]);
+    if (image) {
+      const trophySize = isActive ? 58 : 52;
+      context.drawImage(
+        image,
+        trophyX - trophySize / 2,
+        trophyY - trophySize / 2,
+        trophySize,
+        trophySize,
+      );
+    } else {
+      context.translate(trophyX, trophyY);
+      context.rotate(Math.PI / 4);
+      context.fillStyle = palette.accent;
+      context.fillRect(-10, -10, 20, 20);
+    }
+    context.restore();
+
+    const nearby =
+      !isActive && distance(playerCenter, drop) <= 110;
+    const ritualCue = isActive
+      ? state.trophyRitual?.sequence[state.trophyRitual.cueIndex]
+      : null;
+    if (nearby || ritualCue) {
+      context.save();
+      context.fillStyle = palette.accent;
+      context.font = "800 11px system-ui, sans-serif";
+      context.textAlign = "center";
+      context.fillText(
+        ritualCue && state.trophyRitual
+          ? `${trophyCueLabel(ritualCue)} · ${state.trophyRitual.cueIndex + 1}/${state.trophyRitual.sequence.length}`
+          : `${drop.name.toUpperCase()} [E]`,
+        isActive ? startX : trophyX,
+        startY - 48,
+        240,
+      );
+      if (isActive && state.trophyRitual) {
+        const timing =
+          state.trophyRitual.phase === "ready"
+            ? 0
+            : clamp(
+                state.trophyRitual.cueElapsedSeconds /
+                  TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
+                0,
+                1,
+              );
+        context.lineWidth = 5;
+        context.strokeStyle =
+          state.trophyRitual.mistakes > 1
+            ? palette.danger
+            : palette.accent;
+        context.beginPath();
+        context.arc(
+          startX,
+          startY,
+          43,
+          -Math.PI / 2,
+          -Math.PI / 2 + timing * Math.PI * 2,
+        );
+        context.stroke();
+        context.font = "800 9px system-ui, sans-serif";
+        context.fillText(
+          state.trophyRitual.phase === "ready"
+            ? `OBSERVE · ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} S`
+            : `ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
+          startX,
+          startY - 61,
+        );
+      }
+      context.restore();
+    }
+  }
+
   for (const projectile of state.projectiles) {
     context.save();
     context.shadowColor = projectile.color;
@@ -4477,6 +4659,7 @@ function hurtPlayer(
     state.trophyExtracting = false;
     state.trophyExtraction = 0;
     state.trophyRitual = null;
+    state.regularTrophyDropId = null;
   }
   if (state.screenShakeEnabled) {
     state.screenShake = Math.min(18, 6 + amount * 0.24);
@@ -4606,6 +4789,54 @@ function damageEnemy(
       6,
     );
   } else {
+    const trophy = enemyTrophyGameplayForEnemyId(enemy.archetype);
+    const enemyDefinition =
+      ecologyV8EnemyForId(enemy.archetype) ??
+      enemyV7ForId(enemy.archetype);
+    if (trophy && enemyDefinition) {
+      const condition: TrophyClaim["condition"] = !enemy.scanned
+        ? "damaged"
+        : source === "melee"
+          ? "pristine"
+          : "intact";
+      const threat = enemyDefinition.threat;
+      const quality: TrophyQuality =
+        condition === "damaged"
+          ? "worthy"
+          : condition === "pristine"
+            ? threat >= 4
+              ? "flawless"
+              : threat >= 3
+                ? "elite"
+                : threat >= 2
+                  ? "blooded"
+                  : "worthy"
+            : threat >= 4
+              ? "elite"
+              : threat >= 3
+                ? "blooded"
+                : "worthy";
+      state.regularTrophyDrops.push({
+        id: `regular-trophy-${enemy.id}`,
+        enemyRuntimeId: enemy.id,
+        sourceEnemyId: enemy.archetype,
+        name: trophy.name,
+        x: enemy.x + enemy.width / 2,
+        // Flying and burrowing enemies must leave a reachable physical claim.
+        y: state.world.floorY - 24,
+        claim: {
+          id: uniqueTrophyClaimId(state, mission, enemy.id),
+          definitionId: trophy.id,
+          sourceEnemyId: enemy.archetype,
+          targetName: enemyDefinition.name,
+          targetKind: enemy.kind,
+          partId: trophy.partId,
+          quality,
+          condition,
+        },
+        collected: false,
+      });
+    }
     state.supportKills += 1;
     addHonor(
       state,
@@ -4851,19 +5082,53 @@ function playerHeal(state: GameState): void {
 function uniqueTrophyClaimId(
   state: GameState,
   mission: MissionDefinition,
+  sourceId = "apex",
 ): string {
   const uuid = globalThis.crypto?.randomUUID?.();
-  if (uuid) return `${mission.id}-${uuid}`;
+  if (uuid) return `${mission.id}-${sourceId}-${uuid}`;
   const sequence = state.nextSignalId++;
-  return `${mission.id}-${Date.now().toString(36)}-${sequence.toString(36)}-${Math.random()
+  return `${mission.id}-${sourceId}-${Date.now().toString(36)}-${sequence.toString(36)}-${Math.random()
     .toString(36)
-    .slice(2, 10)}`;
+    .slice(2, 10)}`.slice(0, 128);
 }
 
 function finishTrophyExtraction(
   state: GameState,
   mission: MissionDefinition,
 ): void {
+  if (state.regularTrophyDropId) {
+    const drop = state.regularTrophyDrops.find(
+      (entry) => entry.id === state.regularTrophyDropId,
+    );
+    state.trophyExtracting = false;
+    state.trophyExtraction = 0;
+    state.trophyRitual = null;
+    state.regularTrophyDropId = null;
+    if (!drop || drop.collected) {
+      announce(state, "Cette prise n’est plus disponible.", 1.6);
+      return;
+    }
+    drop.collected = true;
+    const sourceEnemy = state.enemies.find(
+      (enemy) => enemy.id === drop.enemyRuntimeId,
+    );
+    if (sourceEnemy) spawnGore(state, sourceEnemy, "trophy");
+    queueSound(state, "trophy");
+    addHonor(
+      state,
+      `secondary-trophy-${drop.id}`,
+      `Prise secondaire : ${drop.name}`,
+      2,
+      "objective",
+    );
+    announce(
+      state,
+      `${drop.name} prélevé et scellé. La chasse continue.`,
+      3.2,
+    );
+    return;
+  }
+
   const elapsedSinceBoss =
     state.bossDefeatedAt === null
       ? Number.POSITIVE_INFINITY
@@ -4967,6 +5232,42 @@ function interact(
     }
   }
   if (
+    (state.phase === "tracking" || state.phase === "target") &&
+    !state.trophyExtracting
+  ) {
+    const nearbyDrop = state.regularTrophyDrops
+      .filter(
+        (drop) =>
+          !drop.collected && distance(playerCenter, drop) <= 110,
+      )
+      .reduce<RegularTrophyDrop | null>(
+        (nearest, drop) =>
+          !nearest ||
+          distance(playerCenter, drop) < distance(playerCenter, nearest)
+            ? drop
+            : nearest,
+        null,
+      );
+    if (nearbyDrop) {
+      state.regularTrophyDropId = nearbyDrop.id;
+      state.trophyExtracting = true;
+      state.trophyExtraction = 0;
+      // Secondary claims use a shorter three-gesture field rite and never
+      // trigger the Apex victory pose, shuttle or mission phase transition.
+      state.trophyRitual = createTrophyRitual(
+        `${mission.id}:${nearbyDrop.sourceEnemyId}:${nearbyDrop.id}`,
+        3,
+      );
+      forceDecloak(state);
+      announce(
+        state,
+        `Prise secondaire : ${nearbyDrop.name}. Observe puis suis les trois glyphes.`,
+        3,
+      );
+      return;
+    }
+  }
+  if (
     state.phase === "trophy" &&
     distance(playerCenter, {
       x: state.boss.x + state.boss.width / 2,
@@ -4987,6 +5288,7 @@ function interact(
       return;
     }
     if (!state.trophyExtracting) {
+      state.regularTrophyDropId = null;
       state.trophyExtracting = true;
       state.trophyExtraction = 0;
       state.trophyRitual = createTrophyRitual(
@@ -5282,6 +5584,7 @@ function updatePlayer(
       state.trophyExtracting = false;
       state.trophyExtraction = 0;
       state.trophyRitual = null;
+      state.regularTrophyDropId = null;
       announce(
         state,
         "Rite rompu après trois erreurs. Reprends ton souffle puis relance [E].",
@@ -6665,6 +6968,7 @@ export default function HuntCanvas({
       ) as Record<EnemyV4SpriteId, HTMLImageElement | null>,
       enemyV7: {},
       enemyV8: {},
+      enemyTrophies: {},
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -6923,11 +7227,21 @@ export default function HuntCanvas({
         assets.enemyV4[spriteId] = image;
       });
     }
+    const queuedEnemyTrophyIds = new Set<string>();
+    const queueEnemyTrophy = (enemyId: string) => {
+      const trophy = enemyTrophyGameplayForEnemyId(enemyId);
+      if (!trophy || queuedEnemyTrophyIds.has(trophy.id)) return;
+      queuedEnemyTrophyIds.add(trophy.id);
+      queueImage(trophy.runtimeUrl, (image) => {
+        assets.enemyTrophies[trophy.id] = image;
+      });
+    };
     if (game.ecologyDeck.length === 0) {
       for (const enemyId of enemyV7IdsForMission(mission.id)) {
         queueImage(ENEMY_V7_BY_ID[enemyId].sheetPath, (image) => {
           assets.enemyV7[enemyId] = image;
         });
+        queueEnemyTrophy(enemyId);
       }
     }
     const plannedRegularSpawns = mission.enemyWaves.reduce(
@@ -6947,6 +7261,7 @@ export default function HuntCanvas({
       queueImage(enemy.sheetPath, (image) => {
         assets.enemyV8[enemy.id] = image;
       });
+      queueEnemyTrophy(enemy.id);
     }
     Promise.all(loadTasks).then(() => {
       if (alive) {

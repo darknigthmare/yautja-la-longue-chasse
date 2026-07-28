@@ -666,3 +666,22 @@ export function enemyV7IdsForMission(
     (enemy) => enemy.id,
   );
 }
+
+/**
+ * Every third replay of the three legacy hunting grounds exposes their full
+ * secondary roster instead of silently leaving five V7-only species
+ * unreachable behind the always-populated V8 ecology deck.
+ */
+export function isEnemyV7RosterEncounter(
+  missionId: MissionDefinition["id"],
+  encounterRun: string | number,
+): boolean {
+  if (typeof encounterRun !== "number" || !Number.isFinite(encounterRun)) {
+    return false;
+  }
+  const runIndex = Math.max(0, Math.floor(encounterRun));
+  return (
+    runIndex % 3 === 2 &&
+    ENEMY_V7_DEFINITIONS.some((enemy) => enemy.missionId === missionId)
+  );
+}

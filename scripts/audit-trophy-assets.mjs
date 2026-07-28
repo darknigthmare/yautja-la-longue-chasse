@@ -341,7 +341,11 @@ async function main() {
   );
   assert.match(
     gameClientSource,
-    /exactVisual \?[\s\S]*?src=\{exactVisual\.runtimeUrl\}[\s\S]*?: \([\s\S]*?<V6AtlasSprite/,
+    /const trophyImageUrl =[\s\S]*?exactVisual\?\.runtimeUrl \?\?[\s\S]*?enemyGameplayVisual\?\.runtimeUrl/,
+  );
+  assert.match(
+    gameClientSource,
+    /trophyImageUrl \?[\s\S]*?src=\{trophyImageUrl\}[\s\S]*?: \([\s\S]*?<V6AtlasSprite/,
   );
   assert.match(
     gameClientSource,

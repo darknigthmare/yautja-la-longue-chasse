@@ -81,7 +81,7 @@ function nextSeed(seed: number): number {
 
 export function createTrophyRitual(
   stableId: string,
-  cueCount = TROPHY_RITUAL_TIMING.cueCount,
+  cueCount: number = TROPHY_RITUAL_TIMING.cueCount,
 ): TrophyRitualState {
   const sequence: TrophyRitualAction[] = [];
   let seed = trophyRitualSeed(stableId);

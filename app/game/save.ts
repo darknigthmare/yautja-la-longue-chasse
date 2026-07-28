@@ -148,7 +148,10 @@ const TROPHY_WORKSHOP_ACTION_IDS = [
   "display",
   "rite",
 ] as const;
-const MAX_TROPHY_RECORDS = 200;
+// The V18 field guide exposes 228 enemy identities in addition to the eight
+// Apex claims. Keep enough physical slots to complete that collection while
+// still bounding malformed or endlessly replayed saves.
+const MAX_TROPHY_RECORDS = 500;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
   worthy: 1,
@@ -730,6 +733,12 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
         value.definitionId,
         mission.trophy.id,
       ),
+      ...(typeof value.sourceEnemyId === "string" &&
+      value.sourceEnemyId.trim().length > 0
+        ? {
+            sourceEnemyId: value.sourceEnemyId.trim().slice(0, 128),
+          }
+        : {}),
       targetName: stringValue(value.targetName, mission.targetName).slice(
         0,
         96,
@@ -1203,6 +1212,12 @@ function normalizeTrophyClaims(
         value.definitionId,
         mission.trophy.id,
       ),
+      ...(typeof value.sourceEnemyId === "string" &&
+      value.sourceEnemyId.trim().length > 0
+        ? {
+            sourceEnemyId: value.sourceEnemyId.trim().slice(0, 128),
+          }
+        : {}),
       targetName: stringValue(value.targetName, mission.targetName).slice(
         0,
         96,

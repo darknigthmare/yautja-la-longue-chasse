@@ -62,6 +62,7 @@ const {
   placeTrophyOnDisplay,
   saveLoadoutPreset,
   setTrophyHuntMethod,
+  speciesForTrophy,
   startMedbayTreatment,
   startTrophyCleaning,
   startTrophyMounting,
@@ -276,6 +277,36 @@ test("campaign context assigns deterministic hunt methods and unlocks many paths
     huntMethodForTrophy(save.trophies[0]),
     "combistick",
   );
+});
+
+test("secondary enemy identity prevents ice-world trophies from becoming Cryostalkers", () => {
+  const iceMarine = trophy({
+    id: "claim-ice-marine",
+    missionId: "ice-cryostalker",
+    sourceEnemyId: "colonial-sniper",
+    targetName: "Tireur colonial",
+    targetKind: "human",
+  });
+  const iceBeast = trophy({
+    id: "claim-ice-beast",
+    missionId: "ice-cryostalker",
+    sourceEnemyId: "bonecrest-ravager",
+    targetName: "Ravageur à crête osseuse",
+    targetKind: "beast",
+  });
+  const cryostalker = trophy({
+    id: "claim-regular-cryo",
+    missionId: "ice-cryostalker",
+    sourceEnemyId: "cryostalker-alpha",
+    targetName: "Cryostalker Alpha",
+    targetKind: "beast",
+  });
+
+  assert.equal(speciesForTrophy(iceMarine), "human");
+  assert.equal(huntMethodForTrophy(iceMarine), "plasma-caster");
+  assert.equal(speciesForTrophy(iceBeast), "apex-beast");
+  assert.equal(huntMethodForTrophy(iceBeast), "combistick");
+  assert.equal(speciesForTrophy(cryostalker), "cryostalker");
 });
 
 test("legacy unknown methods migrate while explicit telemetry remains authoritative", () => {
