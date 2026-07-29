@@ -11,6 +11,7 @@ import {
   appearanceForPreset,
   loadoutForPreset,
 } from "../app/game/hunterLore.ts";
+import { MISSION_BY_ID } from "../app/game/data.ts";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(join(tmpdir(), "yautja-save-v2-"));
@@ -35,6 +36,60 @@ await build({
 
 const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
   await import(pathToFileURL(join(outputDirectory, "save.mjs")).href);
+
+let apexClaimSequence = 0;
+
+function requiredObjectiveIds(missionId) {
+  return MISSION_BY_ID[missionId].objectives
+    .filter(({ required, kind }) => required || kind === "extract")
+    .map(({ id }) => id);
+}
+
+function successfulResult(overrides = {}) {
+  const missionId = overrides.missionId ?? "jungle-vey";
+  const mission = MISSION_BY_ID[missionId];
+  const trophyQuality = overrides.trophyQuality ?? "flawless";
+  const condition =
+    trophyQuality === "worthy"
+      ? "damaged"
+      : trophyQuality === "blooded"
+        ? "intact"
+        : "pristine";
+  const defaults = {
+    missionId,
+    difficultyId: "hunter",
+    outcome: "success",
+    score: 100,
+    elapsedSeconds: 240,
+    completedObjectiveIds: requiredObjectiveIds(missionId),
+    honorEvents: [],
+    trophyQuality,
+    trophyClaims: [
+      {
+        id: `${missionId}-apex-${++apexClaimSequence}`,
+        definitionId: mission.trophy.id,
+        targetName: mission.targetName,
+        targetKind: mission.targetKind,
+        partId: mission.trophy.partId,
+        condition,
+        quality: trophyQuality,
+      },
+    ],
+    kills: 4,
+    scans: 3,
+    secondWindUsed: false,
+    completedAt: "2026-01-03T00:00:00.000Z",
+  };
+  return { ...defaults, ...overrides };
+}
+
+function assertSuccessRejected(save, result) {
+  const before = structuredClone(save);
+  const returned = applyMissionResult(save, result);
+
+  assert.deepEqual(returned, before);
+  assert.deepEqual(save, before);
+}
 
 test("v1 saves migrate to the current schema without losing legacy trophy data", () => {
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
@@ -311,6 +366,62 @@ test("Scout loadouts use upgraded capacity and never fall back to Hunter", () =>
   ]);
 });
 
+test("a locked mission cannot accept an otherwise complete success", () => {
+  const save = defaultSave("2026-01-01T00:00:00.000Z");
+  assert.equal(save.missionProgress["ice-cryostalker"].status, "locked");
+
+  assertSuccessRejected(
+    save,
+    successfulResult({ missionId: "ice-cryostalker" }),
+  );
+});
+
+test("Elder success is rejected before the story is complete", () => {
+  const save = defaultSave("2026-01-01T00:00:00.000Z");
+
+  assertSuccessRejected(
+    save,
+    successfulResult({ difficultyId: "elder" }),
+  );
+});
+
+test("success requires every required objective including extraction", () => {
+  const save = defaultSave("2026-01-01T00:00:00.000Z");
+  const mission = MISSION_BY_ID["jungle-vey"];
+  const requiredIds = requiredObjectiveIds(mission.id);
+  const extractionId = mission.objectives.find(
+    ({ kind }) => kind === "extract",
+  ).id;
+
+  assertSuccessRejected(
+    save,
+    successfulResult({
+      completedObjectiveIds: requiredIds.filter(
+        (id) => id !== requiredIds[0],
+      ),
+    }),
+  );
+  assertSuccessRejected(
+    save,
+    successfulResult({
+      completedObjectiveIds: requiredIds.filter(
+        (id) => id !== extractionId,
+      ),
+    }),
+  );
+});
+
+test("modern success requires an explicit Apex claim", () => {
+  const save = defaultSave("2026-01-01T00:00:00.000Z");
+  const result = successfulResult();
+  result.trophyClaims = result.trophyClaims.map((claim) => ({
+    ...claim,
+    definitionId: "human-skull",
+  }));
+
+  assertSuccessRejected(save, result);
+});
+
 test("mission claims persist separately and deduplicate only by claim id", () => {
   const result = {
     missionId: "jungle-vey",
@@ -318,7 +429,7 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
     outcome: "success",
     score: 83,
     elapsedSeconds: 240,
-    completedObjectiveIds: [],
+    completedObjectiveIds: requiredObjectiveIds("jungle-vey"),
     honorEvents: [],
     trophyQuality: "blooded",
     trophyClaims: [
@@ -342,6 +453,15 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
         quality: "flawless",
       },
       {
+        id: "vey-apex",
+        definitionId: "trophy-vey",
+        targetName: "Commandante Vey",
+        targetKind: "human",
+        partId: "insignia",
+        condition: "intact",
+        quality: "blooded",
+      },
+      {
         id: "vey-skull",
         definitionId: "duplicate-is-replaced",
         targetName: "Commandante Vey",
@@ -359,10 +479,10 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
 
   const progressed = applyMissionResult(defaultSave(), result);
 
-  assert.equal(progressed.trophies.length, 2);
+  assert.equal(progressed.trophies.length, 3);
   assert.deepEqual(
     progressed.trophies.map(({ id }) => id).sort(),
-    ["vey-skull", "vey-spine"],
+    ["vey-apex", "vey-skull", "vey-spine"],
   );
   assert.equal(
     progressed.trophies.find(({ id }) => id === "vey-skull").definitionId,
@@ -375,34 +495,108 @@ test("mission claims persist separately and deduplicate only by claim id", () =>
 });
 
 test("legacy mission results infer a complete claim from trophyQuality", () => {
-  const progressed = applyMissionResult(defaultSave(), {
-    missionId: "volcano-bad-blood",
+  const legacyResult = successfulResult({
     difficultyId: "elite",
-    outcome: "success",
     score: 94,
-    elapsedSeconds: 300,
-    completedObjectiveIds: [],
-    honorEvents: [],
     trophyQuality: "elite",
-    kills: 1,
-    scans: 2,
-    secondWindUsed: false,
     completedAt: "2026-01-04T00:00:00.000Z",
   });
+  delete legacyResult.trophyClaims;
+  const progressed = applyMissionResult(defaultSave(), legacyResult);
 
   assert.deepEqual(progressed.trophies[0], {
-    id: "trophy-bad-blood",
-    definitionId: "trophy-bad-blood",
-    targetName: "Le Bad Blood",
-    targetKind: "yautja",
-    partId: "mask",
+    id: "trophy-vey",
+    definitionId: "trophy-vey",
+    targetName: "Commandante Vey",
+    targetKind: "human",
+    partId: "insignia",
     condition: "pristine",
     quality: "elite",
-    missionId: "volcano-bad-blood",
+    missionId: "jungle-vey",
     difficultyId: "elite",
     score: 94,
     claimedAt: "2026-01-04T00:00:00.000Z",
   });
+});
+
+test("perfect replays award renewable but bounded mastery honor", () => {
+  const firstCompletion = applyMissionResult(
+    defaultSave("2026-01-01T00:00:00.000Z"),
+    successfulResult(),
+  );
+  const withoutEvents = applyMissionResult(
+    firstCompletion,
+    successfulResult(),
+  );
+  const withoutEventsReward =
+    withoutEvents.profile.honor - firstCompletion.profile.honor;
+  assert.equal(withoutEventsReward, 17);
+
+  const withSecondaryTrophy = applyMissionResult(
+    withoutEvents,
+    successfulResult({
+      honorEvents: [
+        {
+          id: "secondary-trophy",
+          label: "Prise secondaire",
+          value: 2,
+          kind: "objective",
+        },
+      ],
+    }),
+  );
+  const secondaryTrophyReward =
+    withSecondaryTrophy.profile.honor - withoutEvents.profile.honor;
+  assert.equal(secondaryTrophyReward, 18);
+  assert.ok(secondaryTrophyReward > withoutEventsReward);
+
+  const dishonorableReplay = applyMissionResult(
+    withSecondaryTrophy,
+    successfulResult({
+      honorEvents: [
+        {
+          id: "major-violation",
+          label: "Code rompu",
+          value: -100,
+          kind: "violation",
+        },
+      ],
+    }),
+  );
+  assert.equal(
+    dishonorableReplay.profile.honor - withSecondaryTrophy.profile.honor,
+    0,
+  );
+
+  const elderReady = {
+    ...dishonorableReplay,
+    storyCompleted: true,
+  };
+  const cappedReplay = applyMissionResult(
+    elderReady,
+    successfulResult({
+      difficultyId: "elder",
+      honorEvents: [
+        {
+          id: "mastery-a",
+          label: "Maîtrise",
+          value: 50,
+          kind: "objective",
+        },
+        {
+          id: "mastery-b",
+          label: "Rite",
+          value: 50,
+          kind: "objective",
+        },
+      ],
+    }),
+  );
+  assert.equal(cappedReplay.profile.honor - elderReady.profile.honor, 64);
+  assert.ok(
+    cappedReplay.profile.honor - elderReady.profile.honor <
+      firstCompletion.profile.honor,
+  );
 });
 
 test("trophy normalization retains the newest 500 unique claim ids", () => {

@@ -43,12 +43,14 @@ import {
 import {
   ageTracks,
   advanceScentField,
+  calculateLineOfSightOcclusion,
   createAiBrain,
   createBossMechanicState,
   createHuntTrap,
   createScentNode,
   createTrackMark,
   perceivedNoise,
+  resolveAiMovementLeash,
   sampleScentAt,
   sampleTracksAt,
   sampleWind,
@@ -94,6 +96,8 @@ import {
 } from "./systems/trophyRitual";
 import {
   isHazardActive,
+  resolveNearestSafeGroundX,
+  safeCheckpointPositions,
   worldBlueprintFor,
   type TrackSurface,
   type WorldBlueprint,
@@ -131,6 +135,18 @@ import {
   ecologyV8RuntimeProfile,
 } from "./ecologyEncounterV8";
 import { enemyTrophyGameplayForEnemyId } from "./enemyTrophyGameplayV18";
+import {
+  cullEnvironmentDecorPlacements,
+  environmentDecorPlacementsForMission,
+  environmentGameplayPropForGeometryId,
+  environmentPropRuntimeUrlsForSector,
+  type EnvironmentDecorPropPlacement,
+  type EnvironmentPropRuntimeAsset,
+} from "./environmentPropRegistry";
+import {
+  evaluateMissionHonorRules,
+  honorRuleEventId,
+} from "./honorRules";
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
@@ -270,6 +286,8 @@ interface EnemyState extends Vec2 {
   deathAnimation: number;
   boss: boolean;
   active: boolean;
+  /** Scheduled wave activation; null for already materialised agents/bosses. */
+  waveActivationAt: number | null;
   lastTrackX: number;
   lastTrackAt: number;
 }
@@ -295,6 +313,7 @@ interface ProjectileState extends Vec2 {
   life: number;
   source: "melee" | "weapon" | "enemy" | "boss";
   weaponId: WeaponId | null;
+  coverGraceSeconds: number;
 }
 
 interface GoreParticle extends Vec2 {
@@ -489,6 +508,7 @@ interface AssetBank {
   preyAtlas: HTMLImageElement | null;
   masksTrophiesAtlas: HTMLImageElement | null;
   ranksLasersAtlas: HTMLImageElement | null;
+  environmentProps: Partial<Record<string, HTMLImageElement | null>>;
 }
 
 interface InputHub {
@@ -974,22 +994,10 @@ function makeEnemy(
     deathAnimation: 0,
     boss: false,
     active: true,
+    waveActivationAt: null,
     lastTrackX: x,
     lastTrackAt: 0,
   };
-}
-
-function checkpointPositions(
-  world: WorldBlueprint,
-  checkpointCount: number,
-): number[] {
-  if (checkpointCount <= 0) return [];
-  const start = Math.max(world.spawn.x + 720, world.width * 0.22);
-  const end = Math.max(start, world.bossArena.x - 320);
-  return Array.from({ length: checkpointCount }, (_, index) => {
-    const ratio = (index + 1) / (checkpointCount + 1);
-    return Math.round(start + (end - start) * ratio);
-  });
 }
 
 function makeGameState(
@@ -1217,6 +1225,7 @@ function makeGameState(
       deathAnimation: 0,
       boss: true,
       active: false,
+      waveActivationAt: null,
       lastTrackX: bossX,
       lastTrackAt: 0,
     },
@@ -1254,9 +1263,10 @@ function makeGameState(
     nextScentAt: 0,
     environmentDamage: 0,
     soundEvents: [],
-    checkpointPositions: checkpointPositions(
+    checkpointPositions: safeCheckpointPositions(
       world,
       difficultyDef.checkpointCount,
+      { hazardMargin: 72 },
     ),
     nextCheckpointIndex: 0,
     lastCheckpoint: null,
@@ -1545,7 +1555,7 @@ function spawnEligibleWaves(
         trigger === "boss-phase"
           ? state.world.bossArena.width * 0.55
           : state.world.width * 0.28;
-      const x = clamp(
+      const desiredX = clamp(
         base +
           ((index + state.enemies.length * 0.61) %
             Math.max(1, wave.count)) *
@@ -1557,7 +1567,7 @@ function spawnEligibleWaves(
       const enemy = makeEnemy(
         `${wave.id}-${index}`,
         v8Enemy?.id ?? v7Enemy?.id ?? wave.archetype,
-        x,
+        desiredX,
         state.world.width,
         wave.health,
         wave.damage,
@@ -1565,10 +1575,96 @@ function spawnEligibleWaves(
         difficultyDef.enemyHealthMultiplier,
         difficultyDef.enemyDamageMultiplier,
       );
+      const safeCenterX = resolveNearestSafeGroundX(
+        state.world,
+        desiredX + enemy.width / 2,
+        {
+          minX: state.world.spawn.x + enemy.width / 2,
+          maxX: state.world.bossArena.x - enemy.width / 2 - 40,
+        },
+        enemy.width / 2 + 28,
+      );
+      if (safeCenterX !== null) {
+        enemy.x = safeCenterX - enemy.width / 2;
+        enemy.patrolLeft = Math.max(40, enemy.x - 190);
+        enemy.patrolRight = Math.min(
+          state.world.width - enemy.width - 40,
+          enemy.x + 190,
+        );
+      }
+      const activationDelay = index * wave.spawnDelaySeconds;
+      if (activationDelay > 0) {
+        enemy.active = false;
+        enemy.waveActivationAt = state.elapsed + activationDelay;
+      }
       state.enemies.push(enemy);
       state.aiBrains[enemy.id] = createAiBrain(enemy.id, enemy.kind);
     }
   }
+}
+
+function spawnExtractionThreat(
+  state: GameState,
+  mission: MissionDefinition,
+): void {
+  const template = mission.enemyWaves.at(-1);
+  if (!template) return;
+  const difficultyDef = DIFFICULTY_BY_ID[state.arsenal.difficultyId];
+  const count = Math.max(2, Math.min(4, mission.threatLevel - 1));
+  const corridorStart =
+    state.world.bossArena.x + state.world.bossArena.width * 0.7;
+  const corridorEnd = state.world.extraction.x - 140;
+
+  for (let index = 0; index < count; index += 1) {
+    const ecologyEnemy = ecologyEncounterEnemyAt(
+      state.ecologyDeck,
+      state.ecologySpawnIndex,
+    );
+    state.ecologySpawnIndex += 1;
+    const desiredX =
+      corridorStart +
+      (corridorEnd - corridorStart) * ((index + 1) / (count + 1));
+    const enemy = makeEnemy(
+      `extraction-${mission.id}-${state.nextSignalId++}-${index}`,
+      ecologyEnemy?.id ?? template.archetype,
+      desiredX,
+      state.world.width,
+      template.health,
+      template.damage,
+      template.moveSpeed,
+      difficultyDef.enemyHealthMultiplier,
+      difficultyDef.enemyDamageMultiplier,
+    );
+    const safeCenterX = resolveNearestSafeGroundX(
+      state.world,
+      desiredX + enemy.width / 2,
+      {
+        minX: corridorStart,
+        maxX: corridorEnd,
+      },
+      enemy.width / 2 + 28,
+    );
+    if (safeCenterX !== null) {
+      enemy.x = safeCenterX - enemy.width / 2;
+    }
+    enemy.patrolLeft = Math.max(corridorStart, enemy.x - 260);
+    enemy.patrolRight = Math.min(
+      corridorEnd,
+      enemy.x + 260,
+    );
+    const activationDelay = index * Math.max(0.45, template.spawnDelaySeconds);
+    if (activationDelay > 0) {
+      enemy.active = false;
+      enemy.waveActivationAt = state.elapsed + activationDelay;
+    }
+    state.enemies.push(enemy);
+    state.aiBrains[enemy.id] = createAiBrain(enemy.id, enemy.kind);
+  }
+  announce(
+    state,
+    "Le sang de l’Apex attire une dernière menace sur la route d’extraction.",
+    4,
+  );
 }
 
 function addHonor(
@@ -1844,12 +1940,72 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   };
 }
 
+function resolveMissionHonorRules(
+  state: GameState,
+  mission: MissionDefinition,
+): void {
+  const ruleEventWasViolation = (
+    condition: MissionDefinition["honorRules"][number]["condition"],
+  ): boolean =>
+    mission.honorRules
+      .filter((rule) => rule.condition === condition)
+      .some((rule) =>
+        state.honorEvents.some(
+          (event) =>
+            event.id === honorRuleEventId(rule) &&
+            event.kind === "violation",
+        ),
+      );
+  const purgeStopped =
+    state.bossMechanics.missionId === "volcano-bad-blood" &&
+    state.bossMechanics.purgeResolved &&
+    state.bossMechanics.disabledConsoleIds.length >= 3;
+  const resolutions = evaluateMissionHonorRules(mission, {
+    completedObjectiveIds: state.completedObjectives,
+    targetScannedBeforeStrike:
+      state.boss.scanned && !state.rangedBossViolation,
+    plasmaUsedOnRegularPrey: ruleEventWasViolation(
+      "no-plasma-on-regular-prey",
+    ),
+    environmentalArmorBreaks:
+      state.bossMechanics.missionId === "ice-cryostalker"
+        ? Math.max(0, 3 - state.bossMechanics.armorPlates)
+        : 0,
+    duelViolated: ruleEventWasViolation("duel-kept"),
+    purgeStopped,
+    secondWindUsed: state.secondWindUsed,
+  });
+
+  for (const resolution of resolutions) {
+    const rule = mission.honorRules.find(
+      (entry) => entry.id === resolution.ruleId,
+    );
+    if (!rule || state.honorEvents.some(
+      (event) => event.id === honorRuleEventId(rule),
+    )) {
+      continue;
+    }
+    addHonor(
+      state,
+      honorRuleEventId(rule),
+      `${resolution.honored ? "Code respecté" : "Code rompu"} : ${
+        resolution.label
+      }`,
+      resolution.value,
+      resolution.honored ? "objective" : "violation",
+    );
+  }
+}
+
 function resultFor(
   state: GameState,
   mission: MissionDefinition,
   difficulty: DifficultyId,
   outcome: MissionResult["outcome"],
 ): MissionResult {
+  if (outcome === "success") {
+    resolveMissionHonorRules(state, mission);
+  }
   const timeRatio = clamp(mission.parTimeSeconds / Math.max(1, state.elapsed), 0, 1);
   const healthRatio = clamp(state.player.health / state.player.maxHealth, 0, 1);
   const objectiveRatio =
@@ -3157,12 +3313,128 @@ function hazardColor(kind: WorldBlueprint["hazards"][number]["kind"]): string {
   return "#d8ff5f";
 }
 
+function environmentPropImage(
+  assets: AssetBank,
+  asset: Pick<EnvironmentPropRuntimeAsset, "runtimeUrl">,
+): HTMLImageElement | null {
+  return assets.environmentProps[asset.runtimeUrl] ?? null;
+}
+
+function drawEnvironmentGameplayProp(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  role: EnvironmentPropRuntimeAsset["role"],
+  bounds: { x: number; y: number; width: number; height: number },
+  opacity = 1,
+): void {
+  const ratio =
+    image.naturalWidth > 0 && image.naturalHeight > 0
+      ? image.naturalWidth / image.naturalHeight
+      : 1;
+  let drawWidth = bounds.width;
+  let drawHeight = drawWidth / ratio;
+  let drawX = bounds.x;
+  let drawY = bounds.y;
+
+  if (role === "climbable") {
+    drawHeight = bounds.height;
+    drawWidth = drawHeight * ratio;
+    drawX = bounds.x + (bounds.width - drawWidth) / 2;
+  } else if (role === "cover") {
+    drawHeight = Math.max(bounds.height, Math.min(bounds.height * 1.18, drawHeight));
+    drawWidth = Math.min(bounds.width * 1.5, drawHeight * ratio);
+    drawX = bounds.x + (bounds.width - drawWidth) / 2;
+    drawY = bounds.y + bounds.height - drawHeight;
+  } else if (role === "hazard" || role === "surface") {
+    drawHeight = Math.min(Math.max(bounds.height, drawHeight), 132);
+    drawY = bounds.y + bounds.height - drawHeight;
+  } else if (role === "platform") {
+    drawWidth = bounds.width * 1.06;
+    drawHeight = drawWidth / ratio;
+    drawX = bounds.x - bounds.width * 0.03;
+    drawY = bounds.y - 4;
+  }
+
+  context.save();
+  context.globalAlpha = opacity;
+  context.imageSmoothingEnabled = false;
+  context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+  context.restore();
+}
+
+function drawEnvironmentDecorPass(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  mission: MissionDefinition,
+  assets: AssetBank,
+  renderPass: EnvironmentDecorPropPlacement["renderPass"],
+  cameraX: number,
+): void {
+  const placements = cullEnvironmentDecorPlacements(
+    environmentDecorPlacementsForMission(mission.id, renderPass),
+    {
+      left: cameraX,
+      right: cameraX + VIEW_WIDTH,
+      overscan: 220,
+    },
+  );
+
+  for (const placement of placements) {
+    const image = environmentPropImage(assets, placement.asset);
+    if (!image) continue;
+    const ratio =
+      image.naturalWidth > 0 && image.naturalHeight > 0
+        ? image.naturalWidth / image.naturalHeight
+        : 1;
+    const width = placement.estimatedWidth;
+    const height = width / ratio;
+    const anchorY =
+      placement.anchor === "floor"
+        ? state.world.floorY
+        : placement.anchorY;
+
+    context.save();
+    context.translate(placement.x, anchorY);
+    if (placement.mirrored) context.scale(-1, 1);
+    context.globalAlpha =
+      placement.opacity *
+      (placement.asset.role === "decoration" ? 1 : 0.3);
+    context.imageSmoothingEnabled = false;
+    context.drawImage(
+      image,
+      -width / 2,
+      placement.anchor === "floor" ? -height : 0,
+      width,
+      height,
+    );
+    context.restore();
+  }
+}
+
 function drawWorldClimbable(
   context: CanvasRenderingContext2D,
   zone: ClimbZone,
   assets: AssetBank,
+  mission: MissionDefinition,
   palette: MissionDefinition["palette"],
 ): void {
+  const assignment = environmentGameplayPropForGeometryId(
+    mission.id,
+    zone.id,
+  );
+  const environmentImage = assignment
+    ? environmentPropImage(assets, assignment.asset)
+    : null;
+  if (environmentImage && assignment) {
+    drawEnvironmentGameplayProp(
+      context,
+      environmentImage,
+      assignment.asset.role,
+      zone,
+      zone.kind === "vine" ? 0.92 : 0.98,
+    );
+    return;
+  }
   const image =
     zone.kind === "tree"
       ? assets.treeTrunk
@@ -3348,6 +3620,14 @@ function renderGame(
   for (let x = 0; x < state.world.width; x += 160) {
     context.fillRect(x, state.world.floorY + 6, 84, 3);
   }
+  drawEnvironmentDecorPass(
+    context,
+    state,
+    mission,
+    assets,
+    "world-back",
+    cameraX,
+  );
   context.save();
   context.globalAlpha = 0.34;
   context.strokeStyle = palette.accent;
@@ -3369,12 +3649,29 @@ function renderGame(
   context.restore();
 
   for (const surface of state.world.surfaces) {
-    context.save();
-    context.globalAlpha =
-      surface.material === "water" ? 0.7 : 0.5;
-    context.fillStyle = surfaceColor(surface.material);
-    context.fillRect(surface.x, surface.y, surface.width, surface.height);
-    context.restore();
+    const assignment = environmentGameplayPropForGeometryId(
+      mission.id,
+      surface.id,
+    );
+    const image = assignment
+      ? environmentPropImage(assets, assignment.asset)
+      : null;
+    if (image && assignment) {
+      drawEnvironmentGameplayProp(
+        context,
+        image,
+        assignment.asset.role,
+        surface,
+        surface.material === "water" ? 0.84 : 0.76,
+      );
+    } else {
+      context.save();
+      context.globalAlpha =
+        surface.material === "water" ? 0.7 : 0.5;
+      context.fillStyle = surfaceColor(surface.material);
+      context.fillRect(surface.x, surface.y, surface.width, surface.height);
+      context.restore();
+    }
   }
   drawAmbientFauna(
     context,
@@ -3384,7 +3681,7 @@ function renderGame(
     assets,
   );
   for (const zone of state.world.climbables) {
-    drawWorldClimbable(context, zone, assets, palette);
+    drawWorldClimbable(context, zone, assets, mission, palette);
   }
 
   const junglePlatformImages = [
@@ -3396,7 +3693,21 @@ function renderGame(
   const junglePlatformSurfaceRatios = [0.2, 0.22, 0.38, 0.42] as const;
   for (let index = 0; index < state.world.platforms.length; index += 1) {
     const platform = state.world.platforms[index];
-    if (mission.biome === "jungle") {
+    const assignment = environmentGameplayPropForGeometryId(
+      mission.id,
+      platform.id,
+    );
+    const image = assignment
+      ? environmentPropImage(assets, assignment.asset)
+      : null;
+    if (image && assignment) {
+      drawEnvironmentGameplayProp(
+        context,
+        image,
+        assignment.asset.role,
+        platform,
+      );
+    } else if (mission.biome === "jungle") {
       const junglePlatformIndex =
         platform.material === "stone"
           ? 1
@@ -3432,22 +3743,61 @@ function renderGame(
 
   for (const cover of state.world.covers) {
     const broken = state.brokenPillarIds.has(cover.id);
-    context.save();
-    context.globalAlpha = broken ? 0.28 : 0.78;
-    roundedPanel(
-      context,
-      cover.x,
-      broken ? cover.y + cover.height * 0.62 : cover.y,
-      cover.width,
-      broken ? cover.height * 0.38 : cover.height,
-      5,
-      `${palette.platform}dd`,
-      `${palette.accent}77`,
+    const assignment = environmentGameplayPropForGeometryId(
+      mission.id,
+      cover.id,
     );
-    context.restore();
+    const image = assignment
+      ? environmentPropImage(assets, assignment.asset)
+      : null;
+    if (image && assignment) {
+      drawEnvironmentGameplayProp(
+        context,
+        image,
+        assignment.asset.role,
+        broken
+          ? {
+              ...cover,
+              y: cover.y + cover.height * 0.62,
+              height: cover.height * 0.38,
+            }
+          : cover,
+        broken ? 0.28 : 0.9,
+      );
+    } else {
+      context.save();
+      context.globalAlpha = broken ? 0.28 : 0.78;
+      roundedPanel(
+        context,
+        cover.x,
+        broken ? cover.y + cover.height * 0.62 : cover.y,
+        cover.width,
+        broken ? cover.height * 0.38 : cover.height,
+        5,
+        `${palette.platform}dd`,
+        `${palette.accent}77`,
+      );
+      context.restore();
+    }
   }
 
   for (const hazard of state.world.hazards) {
+    const assignment = environmentGameplayPropForGeometryId(
+      mission.id,
+      hazard.id,
+    );
+    const image = assignment
+      ? environmentPropImage(assets, assignment.asset)
+      : null;
+    if (image && assignment) {
+      drawEnvironmentGameplayProp(
+        context,
+        image,
+        assignment.asset.role,
+        hazard,
+        0.88,
+      );
+    }
     if (!isHazardActive(hazard, state.elapsed)) continue;
     const pulse = 0.1 + Math.sin(state.elapsed * 7 + hazard.x * 0.01) * 0.035;
     context.save();
@@ -4071,6 +4421,14 @@ function renderGame(
     );
     context.stroke();
   }
+  drawEnvironmentDecorPass(
+    context,
+    state,
+    mission,
+    assets,
+    "actor-occluder",
+    cameraX,
+  );
   if (mission.biome === "jungle") {
     context.save();
     context.globalAlpha = 0.9;
@@ -4749,13 +5107,18 @@ function damageEnemy(
 
   if (enemy.boss && !enemy.scanned && !state.rangedBossViolation) {
     state.rangedBossViolation = true;
-    addHonor(
-      state,
-      "unscanned-target",
-      "Cible attaquée avant analyse",
-      -12,
-      "violation",
+    const studyRule = mission.honorRules.find(
+      (rule) => rule.condition === "target-scanned-before-strike",
     );
+    if (studyRule) {
+      addHonor(
+        state,
+        honorRuleEventId(studyRule),
+        `Code rompu : ${studyRule.label}`,
+        -studyRule.violationPenalty,
+        "violation",
+      );
+    }
   }
   if (enemy.health > 0) return;
 
@@ -4793,7 +5156,7 @@ function damageEnemy(
     const enemyDefinition =
       ecologyV8EnemyForId(enemy.archetype) ??
       enemyV7ForId(enemy.archetype);
-    if (trophy && enemyDefinition) {
+    if (state.phase !== "extraction" && trophy && enemyDefinition) {
       const condition: TrophyClaim["condition"] = !enemy.scanned
         ? "damaged"
         : source === "melee"
@@ -4975,6 +5338,7 @@ function playerWeapon(
     life: Math.max(0.8, weapon.rangePx / Math.max(1, weapon.projectileSpeedPx)),
     source: "weapon",
     weaponId: weapon.id,
+    coverGraceSeconds: 0.14,
   });
   queueSound(
     state,
@@ -5034,11 +5398,14 @@ function playerScan(state: GameState, mission: MissionDefinition): void {
       state.scans += 1;
       discovered += 1;
       if (enemy.boss) {
+        const studyRule = mission.honorRules.find(
+          (rule) => rule.condition === "target-scanned-before-strike",
+        );
         addHonor(
           state,
-          "scan-primary-target",
-          `Analyse de ${mission.targetName}`,
-          15,
+          studyRule ? honorRuleEventId(studyRule) : "scan-primary-target",
+          studyRule?.label ?? `Analyse de ${mission.targetName}`,
+          studyRule?.bonus ?? 5,
           "scan",
         );
       }
@@ -5170,6 +5537,7 @@ function finishTrophyExtraction(
     condition,
   };
   state.phase = "extraction";
+  spawnExtractionThreat(state, mission);
   spawnGore(state, state.boss, "trophy");
   queueSound(state, "trophy");
   addHonor(
@@ -5390,7 +5758,10 @@ function updateObjectiveFlow(
   const supportReady =
     (!recoverObjective || state.completedObjectives.has(recoverObjective.id)) &&
     (!huntObjective || state.completedObjectives.has(huntObjective.id));
-  if (supportReady && !state.boss.active) {
+  const waveSpawnsPending = state.enemies.some(
+    (enemy) => !enemy.active && enemy.waveActivationAt !== null,
+  );
+  if (supportReady && !waveSpawnsPending && !state.boss.active) {
     state.boss.active = true;
     announce(
       state,
@@ -5880,6 +6251,7 @@ function fireHostileProjectile(
     life: 2.2,
     source,
     weaponId: null,
+    coverGraceSeconds: 0.14,
   });
   emitNoise(
     state,
@@ -5897,7 +6269,16 @@ function updateRegularEnemy(
   mission: MissionDefinition,
   delta: number,
 ): void {
-  if (!enemy.active) return;
+  if (!enemy.active) {
+    if (
+      enemy.waveActivationAt === null ||
+      state.elapsed < enemy.waveActivationAt
+    ) {
+      return;
+    }
+    enemy.active = true;
+    enemy.waveActivationAt = null;
+  }
   if (!enemy.alive) {
     enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
     return;
@@ -5939,13 +6320,33 @@ function updateRegularEnemy(
         0.68,
       )
     : 1;
+  const coverOcclusion = calculateLineOfSightOcclusion(
+    selfPosition,
+    targetPosition,
+    state.world.covers.filter(
+      (cover) => !state.brokenPillarIds.has(cover.id),
+    ),
+  );
+  const targetDirection =
+    targetPosition.x >= selfPosition.x ? 1 : -1;
+  const targetInFront = targetDirection === enemy.facing;
+  const facingVisibility = targetInFront
+    ? 1
+    : targetDistance <= 145
+      ? 0.52
+      : 0.18;
   const visualContact =
-    clamp(1 - targetDistance / visionRange, 0, 1) * cloakVisibility;
+    clamp(1 - targetDistance / visionRange, 0, 1) *
+    cloakVisibility *
+    facingVisibility *
+    (1 - coverOcclusion * 0.9);
   const thermalContact =
     enemy.kind === "human"
       ? 0
       : clamp(1 - targetDistance / (visionRange * 1.15), 0, 1) *
-        state.mud.thermalVisibility;
+        state.mud.thermalVisibility *
+        (targetInFront ? 1 : 0.42) *
+        (1 - coverOcclusion * 0.66);
 
   const wind = sampleWind(state.world.wind, state.elapsed, selfPosition.x);
   let heardNoise: ReturnType<typeof perceivedNoise> = null;
@@ -5960,7 +6361,7 @@ function updateRegularEnemy(
           : enemy.kind === "yautja"
             ? 1.15
             : 1) * detectionMultiplier,
-      occlusion: 0,
+      occlusion: coverOcclusion,
       wind,
     });
     if (
@@ -6024,7 +6425,11 @@ function updateRegularEnemy(
     thermalContact,
     heardNoise,
     scentStrength: scent.strength,
+    scentDirection: scent.direction,
     trackStrength: track.strength,
+    trackPosition: track.newest
+      ? { x: track.newest.x, y: track.newest.y }
+      : null,
     underRangedThreat: state.projectiles.some(
       (projectile) =>
         !projectile.hostile &&
@@ -6105,10 +6510,17 @@ function updateRegularEnemy(
     }
   }
 
-  enemy.x = clamp(
-    enemy.x + enemy.velocityX * delta,
+  const movementLeash = resolveAiMovementLeash(
+    aiStep.brain.mode,
     enemy.patrolLeft,
     enemy.patrolRight,
+    state.world.width,
+    enemy.width,
+  );
+  enemy.x = clamp(
+    enemy.x + enemy.velocityX * delta,
+    movementLeash.left,
+    movementLeash.right,
   );
   if (ecologyProfile?.mobility === "flying") {
     const flightPhase = state.elapsed * 2.1 + enemy.id.length * 0.47;
@@ -6124,8 +6536,8 @@ function updateRegularEnemy(
     emitEnemyFootprint(state, enemy);
   }
   if (
-    (enemy.x <= enemy.patrolLeft + 1 && aiStep.intent.moveX < 0) ||
-    (enemy.x >= enemy.patrolRight - 1 && aiStep.intent.moveX > 0)
+    (enemy.x <= movementLeash.left + 1 && aiStep.intent.moveX < 0) ||
+    (enemy.x >= movementLeash.right - 1 && aiStep.intent.moveX > 0)
   ) {
     state.aiBrains[enemy.id] = {
       ...state.aiBrains[enemy.id],
@@ -6199,8 +6611,23 @@ function executeBossAttack(
   const attack = mission.boss.attacks.find((entry) => entry.id === attackId);
   if (!attack) return;
   const difficultyDef = DIFFICULTY_BY_ID[difficulty];
-  const dx =
-    player.x + player.width / 2 - (boss.x + boss.width / 2);
+  const bossCenter = {
+    x: boss.x + boss.width / 2,
+    y: boss.y + boss.height / 2,
+  };
+  const playerCenter = {
+    x: player.x + player.width / 2,
+    y: player.y + player.height / 2,
+  };
+  const dx = playerCenter.x - bossCenter.x;
+  const dy = playerCenter.y - bossCenter.y;
+  const coverOcclusion = calculateLineOfSightOcclusion(
+    bossCenter,
+    playerCenter,
+    state.world.covers.filter(
+      (cover) => !state.brokenPillarIds.has(cover.id),
+    ),
+  );
   const damage =
     attack.damage *
     difficultyDef.enemyDamageMultiplier *
@@ -6214,14 +6641,32 @@ function executeBossAttack(
     boss.id,
   );
 
-  if (attack.behavior === "melee" && Math.abs(dx) < 165) {
+  if (
+    attack.behavior === "melee" &&
+    Math.abs(dx) < 165 &&
+    Math.abs(dy) < 135
+  ) {
     hurtPlayer(state, damage, mission);
   } else if (attack.behavior === "charge") {
     boss.velocityX = boss.facing * 760;
-    if (Math.abs(dx) < 230) hurtPlayer(state, damage, mission);
-  } else if (attack.behavior === "area") {
-    if (Math.abs(dx) < attack.rangePx) {
+    if (Math.abs(dx) < 230 && Math.abs(dy) < 150) {
       hurtPlayer(state, damage, mission);
+    }
+  } else if (attack.behavior === "area") {
+    const verticalReach = Math.max(
+      155,
+      Math.min(270, attack.rangePx * 0.45),
+    );
+    if (
+      Math.abs(dx) < attack.rangePx &&
+      Math.abs(dy) < verticalReach &&
+      coverOcclusion < 0.8
+    ) {
+      hurtPlayer(
+        state,
+        damage * (1 - coverOcclusion * 0.7),
+        mission,
+      );
       forceDecloak(state);
     }
     if (state.screenShakeEnabled) state.screenShake = 14;
@@ -6279,20 +6724,22 @@ function updateBoss(
     y: player.y + player.height / 2,
   };
   const dx = playerCenter.x - bossCenter.x;
-  const hasBlockingCover = state.world.covers.some((cover) => {
-    if (state.brokenPillarIds.has(cover.id)) return false;
-    const between =
-      cover.x + cover.width > Math.min(bossCenter.x, playerCenter.x) &&
-      cover.x < Math.max(bossCenter.x, playerCenter.x);
-    return between && player.y + player.height > cover.y;
-  });
+  const bossCoverOcclusion = calculateLineOfSightOcclusion(
+    bossCenter,
+    playerCenter,
+    state.world.covers.filter(
+      (cover) => !state.brokenPillarIds.has(cover.id),
+    ),
+  );
   const mechanicStep = stepBossMechanics(state.bossMechanics, {
     deltaSeconds: delta,
     elapsedSeconds: state.elapsed,
     healthRatio: boss.health / boss.maxHealth,
     distanceToPlayer: distance(bossCenter, playerCenter),
     lineOfSight:
-      Math.abs(dx) < 900 && !hasBlockingCover && !player.cloaked,
+      Math.abs(dx) < 900 &&
+      bossCoverOcclusion < 0.72 &&
+      !player.cloaked,
     playerCloaked: player.cloaked,
     playerOnHighGround:
       player.y + player.height < state.world.floorY - 70,
@@ -6329,13 +6776,20 @@ function updateBoss(
         announce(state, "La fusée de Vey révèle ta signature.", 2.5);
         break;
       case "armor-plate-broken":
-        addHonor(
-          state,
-          effect.id ?? `cryo-plate-${state.brokenPillarIds.size}`,
-          "Carapace brisée contre un pilier",
-          5,
-          "objective",
-        );
+        {
+          const armorRule = mission.honorRules.find(
+            (rule) => rule.condition === "environmental-armor-break",
+          );
+          if (armorRule) {
+            addHonor(
+              state,
+              honorRuleEventId(armorRule),
+              armorRule.label,
+              armorRule.bonus,
+              "objective",
+            );
+          }
+        }
         announce(state, "Impact réussi : une plaque de l’Alpha cède.", 2.4);
         break;
       case "burrow-warning":
@@ -6359,13 +6813,22 @@ function updateBoss(
         );
         break;
       case "duel-violation":
-        addHonor(
-          state,
-          effect.id ?? "bad-blood-duel-broken",
-          "Duel final rompu par une arme à distance",
-          -Math.abs(effect.value),
-          "violation",
-        );
+        {
+          const duelRule = mission.honorRules.find(
+            (rule) => rule.condition === "duel-kept",
+          );
+          addHonor(
+            state,
+            duelRule
+              ? honorRuleEventId(duelRule)
+              : effect.id ?? "bad-blood-duel-broken",
+            duelRule
+              ? `Code rompu : ${duelRule.label}`
+              : "Duel final rompu par une arme à distance",
+            -(duelRule?.violationPenalty ?? Math.abs(effect.value)),
+            "violation",
+          );
+        }
         break;
       case "purge-started":
         announce(
@@ -6382,13 +6845,20 @@ function updateBoss(
         );
         break;
       case "purge-cancelled":
-        addHonor(
-          state,
-          "bad-blood-purge-stopped",
-          "Purge du sanctuaire interrompue",
-          20,
-          "objective",
-        );
+        {
+          const purgeRule = mission.honorRules.find(
+            (rule) => rule.condition === "purge-stopped",
+          );
+          addHonor(
+            state,
+            purgeRule
+              ? honorRuleEventId(purgeRule)
+              : "bad-blood-purge-stopped",
+            purgeRule?.label ?? "Purge du sanctuaire interrompue",
+            purgeRule?.bonus ?? 20,
+            "objective",
+          );
+        }
         announce(state, "Purge annulée. Le trophée est préservé.", 4);
         break;
       case "purge-detonated":
@@ -6402,6 +6872,17 @@ function updateBoss(
         hurtPlayer(state, player.maxHealth * 2, mission);
         break;
       case "hydra-tidal-surge": {
+        if (
+          Math.abs(playerCenter.y - bossCenter.y) >= 205 ||
+          bossCoverOcclusion >= 0.8
+        ) {
+          announce(
+            state,
+            "La marée de l’Hydre passe sous ton appui protégé.",
+            2.2,
+          );
+          break;
+        }
         const surgeDirection = dx >= 0 ? 1 : -1;
         player.stamina = Math.max(0, player.stamina - effect.value);
         player.velocityX = surgeDirection * 430;
@@ -6433,6 +6914,17 @@ function updateBoss(
         break;
       }
       case "leviathan-rogue-wave": {
+        if (
+          Math.abs(playerCenter.y - bossCenter.y) >= 225 ||
+          bossCoverOcclusion >= 0.8
+        ) {
+          announce(
+            state,
+            "La vague du Léviathan se brise sous ta position.",
+            2.2,
+          );
+          break;
+        }
         const waveDirection = dx >= 0 ? 1 : -1;
         hurtPlayer(
           state,
@@ -6620,40 +7112,63 @@ function updateProjectiles(
     projectile.x += projectile.velocityX * delta;
     projectile.y += projectile.velocityY * delta;
     projectile.life -= delta;
+    projectile.coverGraceSeconds = Math.max(
+      0,
+      projectile.coverGraceSeconds - delta,
+    );
     let consumed = false;
+    const hitBox = {
+      x: projectile.x - projectile.radius,
+      y: projectile.y - projectile.radius,
+      width: projectile.radius * 2,
+      height: projectile.radius * 2,
+    };
+    const blockingCover =
+      projectile.coverGraceSeconds <= 0
+        ? state.world.covers.find(
+            (cover) =>
+              !state.brokenPillarIds.has(cover.id) &&
+              overlaps(hitBox, cover),
+          )
+        : null;
+    if (blockingCover) {
+      consumed = true;
+      const breakThreshold = 18 + blockingCover.protection * 34;
+      if (
+        blockingCover.destructible &&
+        projectile.damage >= breakThreshold
+      ) {
+        state.brokenPillarIds.add(blockingCover.id);
+        if (state.screenShakeEnabled) state.screenShake = 7;
+      }
+    }
 
-    if (projectile.hostile) {
-      const hitBox = {
-        x: projectile.x - projectile.radius,
-        y: projectile.y - projectile.radius,
-        width: projectile.radius * 2,
-        height: projectile.radius * 2,
-      };
+    if (!consumed && projectile.hostile) {
       if (overlaps(hitBox, state.player)) {
         hurtPlayer(state, projectile.damage, mission);
         consumed = true;
       }
-    } else {
+    } else if (!consumed) {
       const targets = [
         ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
         ...(state.boss.active && state.boss.alive ? [state.boss] : []),
       ];
       for (const enemy of targets) {
-        const hitBox = {
-          x: projectile.x - projectile.radius,
-          y: projectile.y - projectile.radius,
-          width: projectile.radius * 2,
-          height: projectile.radius * 2,
-        };
         if (overlaps(hitBox, enemy)) {
           if (projectile.weaponId === "plasma-caster" && !enemy.boss) {
-            addHonor(
-              state,
-              "plasma-restraint",
-              "Plasmacaster employé contre une proie ordinaire",
-              -10,
-              "violation",
+            const restraintRule = mission.honorRules.find(
+              (rule) =>
+                rule.condition === "no-plasma-on-regular-prey",
             );
+            if (restraintRule) {
+              addHonor(
+                state,
+                honorRuleEventId(restraintRule),
+                `Code rompu : ${restraintRule.label}`,
+                -restraintRule.violationPenalty,
+                "violation",
+              );
+            }
           }
           damageEnemy(state, mission, enemy, projectile.damage, "weapon");
           consumed = true;
@@ -6976,6 +7491,7 @@ export default function HuntCanvas({
       preyAtlas: null,
       masksTrophiesAtlas: null,
       ranksLasersAtlas: null,
+      environmentProps: {},
     };
     const input = inputRef.current;
     input.keyboardHeld.clear();
@@ -7009,6 +7525,39 @@ export default function HuntCanvas({
         }),
       );
     };
+    const environmentPropLoads = new Map<string, Promise<void>>();
+    const worldScreenLayout = worldScreensFor(mission.id);
+    let lastEnvironmentPreloadScreenId = "";
+    const preloadEnvironmentAroundScreen = (screenId: string) => {
+      if (lastEnvironmentPreloadScreenId === screenId) return;
+      lastEnvironmentPreloadScreenId = screenId;
+      const activeIndex = worldScreenLayout.screens.findIndex(
+        (screen) => screen.id === screenId,
+      );
+      if (activeIndex < 0) return;
+      const sectors = worldScreenLayout.screens.slice(
+        Math.max(0, activeIndex - 1),
+        Math.min(worldScreenLayout.screens.length, activeIndex + 2),
+      );
+      for (const sector of sectors) {
+        for (const url of environmentPropRuntimeUrlsForSector(
+          mission.id,
+          sector.id,
+        )) {
+          if (
+            Object.hasOwn(assets.environmentProps, url) ||
+            environmentPropLoads.has(url)
+          ) {
+            continue;
+          }
+          const pending = loadImage(url).then((image) => {
+            if (alive) assets.environmentProps[url] = image;
+          });
+          environmentPropLoads.set(url, pending);
+        }
+      }
+    };
+    preloadEnvironmentAroundScreen(game.worldScreenId);
 
     queueImage(backgroundPath(mission), (image) => {
       assets.background = image;
@@ -7401,6 +7950,7 @@ export default function HuntCanvas({
         }
         accumulator -= fixedStep;
       }
+      preloadEnvironmentAroundScreen(game.worldScreenId);
       renderGame(
         context,
         game,

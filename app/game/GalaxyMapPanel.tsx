@@ -45,6 +45,7 @@ import {
   type GalaxySystemNode,
 } from "./galaxyNavigation";
 import { galaxyOrbitRingGeometry } from "./galaxyRegistry";
+import { calculateMissionMastery } from "./missionMastery";
 import {
   GALAXY_V10_BACKGROUNDS,
   galaxyBodyVisualPath,
@@ -885,6 +886,10 @@ function PlanetDossier({
   const values = scannerValues(body.id);
   const bodyMission = activeMission ?? (body.missions[0] ? MISSION_BY_ID[body.missions[0].id] : null);
   const progress = activeMission ? missionProgress[activeMission.id] : null;
+  const mastery =
+    activeMission && progress
+      ? calculateMissionMastery(activeMission, progress)
+      : null;
   return (
     <div className="galaxy-v10-dossier">
       <div className="galaxy-v10-planet-view">
@@ -912,7 +917,29 @@ function PlanetDossier({
         {activeMission ? (
           <div className="galaxy-v10-mission-brief">
             <img src={backgroundPathForBiome(activeMission.biome)} alt={`Zone de chasse de ${activeMission.planetName}`} />
-            <div><small>Contrat sélectionné · menace {activeMission.threatLevel}/4</small><strong>{activeMission.title}</strong><p>{activeMission.subtitle}</p></div>
+            <div>
+              <small>Contrat sélectionné · menace {activeMission.threatLevel}/4</small>
+              <strong>{activeMission.title}</strong>
+              <p>{activeMission.subtitle}</p>
+            </div>
+            {mastery ? (
+              <div
+                className="galaxy-v10-mastery"
+                aria-label={`Maîtrise du contrat : ${mastery.count} sceaux sur ${mastery.total}`}
+              >
+                <span>
+                  Maîtrise <b>{mastery.count}/{mastery.total}</b>
+                </span>
+                <ul>
+                  {mastery.seals.map((seal) => (
+                    <li className={seal.earned ? "earned" : ""} key={seal.id}>
+                      <i aria-hidden="true" />
+                      {seal.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <button type="button" className="alien-button" disabled={progress?.status === "locked"} onClick={() => onChooseMission(activeMission)}>
               {progress?.status === "locked" ? "Trophée précédent requis" : "Préparer la chasse"}
             </button>

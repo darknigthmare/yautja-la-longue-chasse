@@ -1427,6 +1427,26 @@ select:focus-visible,
   font-weight: 900;
 }
 
+.objective-list li > div {
+  display: grid;
+  gap: 3px;
+}
+
+.objective-list li strong {
+  color: #d0c9ba;
+  font-size: 0.73rem;
+}
+
+.objective-list li small {
+  color: #747d75;
+  font-size: 0.58rem;
+  line-height: 1.45;
+}
+
+.honor-rule-list {
+  margin-top: 12px;
+}
+
 .briefing-loadout {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2362,17 +2382,15 @@ select:focus-visible,
 .debrief-stats {
   display: grid;
   margin: 28px 0;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 1px;
   border: 1px solid rgba(214, 166, 91, 0.13);
+  background: rgba(214, 166, 91, 0.13);
 }
 
 .debrief-stat {
   padding: 16px 8px;
-  border-right: 1px solid rgba(214, 166, 91, 0.13);
-}
-
-.debrief-stat:last-child {
-  border-right: 0;
+  background: rgba(7, 10, 8, 0.97);
 }
 
 .debrief-stat small {
@@ -2395,6 +2413,39 @@ select:focus-visible,
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.debrief-panel details {
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+.debrief-panel summary {
+  min-height: 44px;
+  padding: 12px;
+  border: 1px solid rgba(214, 166, 91, 0.16);
+  color: #c5a46d;
+  cursor: pointer;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.honor-event-list {
+  max-height: 260px;
+  margin: 8px 0 0;
+  overflow: auto;
+}
+
+.honor-event-list li {
+  grid-template-columns: 42px 1fr;
+}
+
+.ending-screen .debrief-panel {
+  border-color: rgba(214, 166, 91, 0.34);
+  background:
+    linear-gradient(135deg, rgba(126, 52, 30, 0.12), transparent 54%),
+    rgba(7, 10, 8, 0.96);
 }
 
 .modal-backdrop {
@@ -2874,14 +2925,6 @@ select:focus-visible,
 
   .debrief-stats {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .debrief-stat:nth-child(2) {
-    border-right: 0;
-  }
-
-  .debrief-stat:nth-child(-n + 2) {
-    border-bottom: 1px solid rgba(214, 166, 91, 0.13);
   }
 
   .debrief-actions,
@@ -5638,6 +5681,61 @@ select:focus-visible,
 .galaxy-v10-mission-brief strong { color: #f0dfc1; font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; }
 .galaxy-v10-mission-brief p { margin: 0; color: #8e9e97; font-size: 0.53rem; line-height: 1.35; }
 .galaxy-v10-mission-brief > button { grid-column: 1 / -1; width: 100%; min-height: 44px; }
+
+.galaxy-v10-mission-brief > .galaxy-v10-mastery {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 7px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(226, 162, 81, 0.16);
+}
+
+.galaxy-v10-mastery > span {
+  display: flex;
+  justify-content: space-between;
+  color: #9d8b71;
+  font-size: 0.49rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.galaxy-v10-mastery > span b {
+  color: #edbd70;
+}
+
+.galaxy-v10-mastery ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.galaxy-v10-mastery li {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #59655f;
+  font-size: 0.44rem;
+}
+
+.galaxy-v10-mastery li i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #4f5e57;
+  border-radius: 50%;
+}
+
+.galaxy-v10-mastery li.earned {
+  color: #bfac86;
+}
+
+.galaxy-v10-mastery li.earned i {
+  border-color: #d8a358;
+  background: #d8a358;
+  box-shadow: 0 0 6px rgba(216, 163, 88, 0.5);
+}
 
 .galaxy-v10-contract-note {
   padding: 11px;

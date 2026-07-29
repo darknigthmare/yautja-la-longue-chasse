@@ -102,7 +102,7 @@ export const WEAPONS: readonly WeaponDefinition[] = [
     energyCost: 0,
     ammo: 8,
     color: "#d4b76e",
-    unlock: { minimumHonor: 300, requiredMissionId: "jungle-vey" },
+    unlock: { minimumHonor: 225, requiredMissionId: "jungle-vey" },
     upgradeCosts: [200, 450],
   },
   {
@@ -124,7 +124,7 @@ export const WEAPONS: readonly WeaponDefinition[] = [
     energyCost: 20,
     ammo: 1,
     color: "#bde9ff",
-    unlock: { minimumHonor: 800, requiredMissionId: "ice-cryostalker" },
+    unlock: { minimumHonor: 500, requiredMissionId: "ice-cryostalker" },
     upgradeCosts: [200, 450],
   },
 ];
@@ -169,7 +169,7 @@ export const GEAR: readonly GearDefinition[] = [
     durationSeconds: 4,
     rangePx: 430,
     color: "#d7e8df",
-    unlock: { minimumHonor: 300, requiredMissionId: "jungle-vey" },
+    unlock: { minimumHonor: 225, requiredMissionId: "jungle-vey" },
     upgradeCosts: [150, 350],
   },
   {
@@ -183,7 +183,7 @@ export const GEAR: readonly GearDefinition[] = [
     durationSeconds: 5,
     rangePx: 86,
     color: "#f09d4f",
-    unlock: { minimumHonor: 800, requiredMissionId: "ice-cryostalker" },
+    unlock: { minimumHonor: 500, requiredMissionId: "ice-cryostalker" },
     upgradeCosts: [150, 350],
   },
 ];
@@ -220,7 +220,7 @@ export const ARMORS: readonly ArmorDefinition[] = [
     carryingCapacity: 6,
     medicompCharges: 2,
     color: "#617c63",
-    unlock: { minimumHonor: 300, requiredMissionId: "jungle-vey" },
+    unlock: { minimumHonor: 225, requiredMissionId: "jungle-vey" },
     upgradeCosts: [250, 550],
   },
   {
@@ -237,7 +237,7 @@ export const ARMORS: readonly ArmorDefinition[] = [
     carryingCapacity: 10,
     medicompCharges: 2,
     color: "#7e4640",
-    unlock: { minimumHonor: 800, requiredMissionId: "ice-cryostalker" },
+    unlock: { minimumHonor: 500, requiredMissionId: "ice-cryostalker" },
     upgradeCosts: [250, 550],
   },
 ];
@@ -310,6 +310,9 @@ type ExpansionMissionSpec = {
   biome: MissionDefinition["biome"];
   targetName: string;
   briefing: string;
+  debriefSuccess: string;
+  debriefFailureHint: string;
+  debriefNextLead: string | null;
   threatLevel: MissionDefinition["threatLevel"];
   prerequisiteMissionId: MissionId;
   recommendedArmorId: ArmorId;
@@ -365,6 +368,11 @@ function expansionMission(spec: ExpansionMissionSpec): MissionDefinition {
     targetName: spec.targetName,
     targetKind: "beast",
     briefing: spec.briefing,
+    debrief: {
+      success: spec.debriefSuccess,
+      failureHint: spec.debriefFailureHint,
+      nextLead: spec.debriefNextLead,
+    },
     threatLevel: spec.threatLevel,
     prerequisiteMissionId: spec.prerequisiteMissionId,
     recommendedArmorId: spec.recommendedArmorId,
@@ -427,6 +435,7 @@ function expansionMission(spec: ExpansionMissionSpec): MissionDefinition {
         description:
           "Termine les relevés du biome avant d'engager sa proie dominante.",
         kind: "scan-target",
+        condition: "scan-objective-complete",
         bonus: 20,
         violationPenalty: 0,
       },
@@ -434,8 +443,9 @@ function expansionMission(spec: ExpansionMissionSpec): MissionDefinition {
         id: `${spec.id}-restraint`,
         label: "Force mesurée",
         description:
-          "N'emploie pas de tir plasma chargé contre la petite faune endémique.",
+          "N'emploie pas de tir plasma contre la petite faune endémique.",
         kind: "weapon-restraint",
+        condition: "no-plasma-on-regular-prey",
         bonus: 20,
         violationPenalty: 15,
       },
@@ -444,6 +454,7 @@ function expansionMission(spec: ExpansionMissionSpec): MissionDefinition {
         label: "Chasseur inébranlable",
         description: "Termine la chasse sans déclencher le Second Wind.",
         kind: "no-second-wind",
+        condition: "no-second-wind",
         bonus: 20,
         violationPenalty: 0,
       },
@@ -530,6 +541,14 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetKind: "human",
     briefing:
       "Une unité armée a récupéré un transpondeur Yautja et l'utilise pour tendre des embuscades. Étudie ses éclaireurs, reprends la technologie du clan et affronte leur commandante, une guerrière qui a survécu à deux chasses.",
+    debrief: {
+      success:
+        "Vey est tombée en combattante et le transpondeur revient au clan. Ses dernières données isolent un appel de détresse provenant d'une colonie sous la glace.",
+      failureHint:
+        "Lis d'abord les signatures tactiques de l'avant-garde, puis reprends le transpondeur avant d'isoler Vey.",
+      nextLead:
+        "L'appel mène à Nivalis-K, où une présence sans chaleur a interrompu les équipes d'extraction.",
+    },
     threatLevel: 3,
     prerequisiteMissionId: null,
     recommendedArmorId: "hunter",
@@ -549,7 +568,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         id: "scan-vanguard",
         label: "Étudier l'avant-garde",
         description:
-          "Scanne trois soldats pour identifier les contre-mesures thermiques de Vey.",
+          "Scanne trois signatures tactiques laissées par l'avant-garde pour identifier les contre-mesures thermiques de Vey.",
         kind: "scan",
         required: true,
         targetCount: 3,
@@ -592,6 +611,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         label: "Connaître sa proie",
         description: "Scanne Vey avant de lui porter le premier coup.",
         kind: "scan-target",
+        condition: "target-scanned-before-strike",
         bonus: 15,
         violationPenalty: 0,
       },
@@ -600,6 +620,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         label: "Ne laisser aucune technologie",
         description: "Le transpondeur doit revenir au clan.",
         kind: "recover-technology",
+        condition: "recover-objective-complete",
         bonus: 20,
         violationPenalty: 25,
       },
@@ -607,8 +628,9 @@ export const MISSIONS: readonly MissionDefinition[] = [
         id: "restrained-caster",
         label: "Puissance mesurée",
         description:
-          "N'utilise pas de tir plasma chargé contre les soldats ordinaires.",
+          "N'utilise pas de tir plasma contre les soldats ordinaires.",
         kind: "weapon-restraint",
+        condition: "no-plasma-on-regular-prey",
         bonus: 15,
         violationPenalty: 10,
       },
@@ -750,6 +772,14 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetKind: "beast",
     briefing:
       "Une colonie d'extraction a réveillé une forme de vie Apex sous la banquise. Sa température imite la glace. Analyse ses traces bioélectriques, élimine sa meute et attire l'Alpha hors de ses tunnels.",
+    debrief: {
+      success:
+        "L'Alpha ne menace plus la banquise. Dans une galerie libérée par la chasse, le biomask détecte une balise de clan copiée sur le réseau du transpondeur de Vey.",
+      failureHint:
+        "Calibre le biomask sur les traces froides, disperse la meute et retourne les charges de l'Alpha contre les piliers.",
+      nextLead:
+        "La balise porte les marques de trois chasseurs disparus et émet depuis le sanctuaire volcanique de Cinder-12.",
+    },
     threatLevel: 4,
     prerequisiteMissionId: "jungle-vey",
     recommendedArmorId: "scout",
@@ -812,6 +842,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         label: "Comprendre l'Apex",
         description: "Complète les trois scans avant d'attaquer l'Alpha.",
         kind: "scan-target",
+        condition: "scan-objective-complete",
         bonus: 20,
         violationPenalty: 0,
       },
@@ -821,6 +852,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         description:
           "Brise au moins une plaque en attirant une charge contre un pilier.",
         kind: "weapon-restraint",
+        condition: "environmental-armor-break",
         bonus: 20,
         violationPenalty: 10,
       },
@@ -829,6 +861,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         label: "Chasseur inébranlable",
         description: "Termine sans déclencher le Second Wind.",
         kind: "no-second-wind",
+        condition: "no-second-wind",
         bonus: 15,
         violationPenalty: 0,
       },
@@ -946,7 +979,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
       id: "trophy-cryostalker",
       name: "Crâne de Cryostalker",
       description:
-        "Carapace polaire d'un prédateur qui effaçait jusqu'à sa propre chaleur.",
+        "Le crâne et la colonne d'un prédateur polaire qui effaçait jusqu'à sa propre chaleur.",
       targetName: "Cryostalker Alpha",
       partId: "skull-and-spine",
       icon: "beast-skull",
@@ -964,6 +997,14 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetKind: "yautja",
     briefing:
       "Trois chasseurs ont disparu autour d'un ancien sanctuaire. Un Paria utilise leurs trophées et leur technologie pour attirer de nouvelles victimes. Retrouve les marques des morts, détruis ses balises et impose le jugement du clan.",
+    debrief: {
+      success:
+        "Le Paria a reçu le jugement du clan et sa purge est interrompue. Ses archives volées révèlent une suite de terrains de chasse menant à une cité absente des récits du clan.",
+      failureHint:
+        "Honore les marques, sécurise les balises et interrompt les trois consoles avant la fin des 45 secondes : l'explosion est fatale.",
+      nextLead:
+        "La première coordonnée des archives du Paria désigne Naraka-Delta et une matriarche cachée sous ses eaux noires.",
+    },
     threatLevel: 4,
     prerequisiteMissionId: "ice-cryostalker",
     recommendedArmorId: "berserker",
@@ -1013,7 +1054,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         id: "escape-self-destruct",
         label: "Empêcher l'effacement",
         description:
-          "Interromps l'autodestruction en 45 secondes ou quitte la zone sans le trophée parfait.",
+          "Interromps l'autodestruction en 45 secondes : si le compte à rebours expire, l'explosion anéantit la zone et tue le chasseur.",
         kind: "extract",
         required: true,
         targetCount: 1,
@@ -1026,6 +1067,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         label: "Mémoire du clan",
         description: "Trouve les trois marques des chasseurs assassinés.",
         kind: "recover-technology",
+        condition: "scan-objective-complete",
         bonus: 25,
         violationPenalty: 20,
       },
@@ -1035,6 +1077,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         description:
           "Durant la phase de duel, utilise uniquement les Wristblades ou le Combistick.",
         kind: "accept-duel",
+        condition: "duel-kept",
         bonus: 35,
         violationPenalty: 30,
       },
@@ -1044,6 +1087,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
         description:
           "Interromps l'autodestruction et récupère la technologie profanée.",
         kind: "recover-technology",
+        condition: "purge-stopped",
         bonus: 30,
         violationPenalty: 25,
       },
@@ -1161,7 +1205,7 @@ export const MISSIONS: readonly MissionDefinition[] = [
           behavior:
             "Le Paria lance une purge de 45 secondes. Trois consoles doivent être interrompues entre ses charges.",
           hazard:
-            "L'explosion détruit le trophée et la technologie si le compte à rebours expire.",
+            "L'explosion est fatale et anéantit le trophée comme la technologie si le compte à rebours expire.",
           speedMultiplier: 1.25,
           damageMultiplier: 1.25,
         },
@@ -1188,6 +1232,12 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetName: "Hydre de vase",
     briefing:
       "Un delta planétaire à marée noire abrite une chaîne alimentaire bâtie autour d'une hydre amphibie. Relève les pistes communes aux berges, identifie ses nourriceries et force la matriarche à quitter les chenaux profonds.",
+    debriefSuccess:
+      "La matriarche est vaincue et ses capsules sont préservées. Les relevés du delta complètent le premier fragment de route extrait des archives du Paria.",
+    debriefFailureHint:
+      "Suis les trois traînées de mucus, brise la meute de rive et sécurise les deux capsules avant d'affronter la matriarche.",
+    debriefNextLead:
+      "Le fragment déverrouillé pointe vers Serekh-9, où des caravanes disparaissent au bord d'un canyon vitrifié.",
     threatLevel: 4,
     prerequisiteMissionId: "volcano-bad-blood",
     recommendedArmorId: "hunter",
@@ -1249,6 +1299,12 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetName: "Matriarche Sandmaw",
     briefing:
       "Les caravanes minières de Serekh-9 disparaissent au bord d'un canyon vitrifié. Une prédatrice fouisseuse chasse par vibrations et commande plusieurs castes endémiques sous la mer de silice.",
+    debriefSuccess:
+      "La Sandmaw ne répond plus aux vibrations du canyon. Les cycles enregistrés par les balises minières correspondent au deuxième fragment des archives du Paria.",
+    debriefFailureHint:
+      "Analyse les cratères d'écoute, avance sans attirer la Matriarche et récupère les deux balises avant le duel.",
+    debriefNextLead:
+      "Le signal recomposé suit une ancienne route de chasse jusqu'aux arches océaniques de Pelagos-M.",
     threatLevel: 4,
     prerequisiteMissionId: "swamp-hydra",
     recommendedArmorId: "scout",
@@ -1310,6 +1366,12 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetName: "Léviathan abyssal",
     briefing:
       "Sur Pelagos-M, seules des arches récifales émergent d'un océan global. Le clan a marqué un Léviathan capable de bondir d'une fosse à l'autre et de commander la faune bioluminescente du récif.",
+    debriefSuccess:
+      "Le Léviathan repose dans la fosse et les harpons du clan sont repris. L'un d'eux porte le glyphe suivant des archives ainsi qu'une empreinte sporale étrangère à Pelagos.",
+    debriefFailureHint:
+      "Enregistre les signatures sonar, disperse les gardiens du récif et reprends les deux harpons avant d'appeler le Léviathan.",
+    debriefNextLead:
+      "L'empreinte et le glyphe convergent vers Mycora-V, un monde dont le réseau vivant conserve chaque perception.",
     threatLevel: 4,
     prerequisiteMissionId: "desert-sandmaw",
     recommendedArmorId: "scout",
@@ -1371,6 +1433,12 @@ export const MISSIONS: readonly MissionDefinition[] = [
     targetName: "Cœur-Mère mycélien",
     briefing:
       "Mycora-V est un organisme à l'échelle planétaire. Ses prédateurs partagent leurs perceptions par un réseau mycélien, et le Cœur-Mère réécrit leurs réponses à mesure que la chasse progresse.",
+    debriefSuccess:
+      "Le Cœur-Mère est réduit au silence et les graines-mémoires sont scellées. Leur dernière impulsion reproduit les glyphes d'une cité qui observait la chaîne entière.",
+    debriefFailureHint:
+      "Cartographie les trois nœuds, romps les relais mobiles et isole les deux graines avant que le réseau ne referme ses routes.",
+    debriefNextLead:
+      "Les graines-mémoires livrent la coordonnée finale : Acheron-Sigma, où une cité antérieure aux archives du clan attend une biomask.",
     threatLevel: 4,
     prerequisiteMissionId: "ocean-leviathan",
     recommendedArmorId: "hunter",
@@ -1431,7 +1499,12 @@ export const MISSIONS: readonly MissionDefinition[] = [
     biome: "ruins",
     targetName: "Gardien d'obsidienne",
     briefing:
-      "Une lune sans atmosphère abrite une cité prédatrice antérieure aux archives du clan. Ses sentinelles se réveillent au passage d'une biomask et adaptent leurs armes à chaque technologie observée.",
+      "Une planète sans atmosphère abrite une cité prédatrice antérieure aux archives du clan. Ses sentinelles se réveillent au passage d'une biomask et adaptent leurs armes à chaque technologie observée.",
+    debriefSuccess:
+      "Le Gardien est tombé et la cité a cessé son protocole d'effacement. Les prismes reconnaissent l'achèvement de la Longue Chasse ; le clan ouvre désormais au vainqueur la voie du rite Elder.",
+    debriefFailureHint:
+      "Déchiffre les trois stèles, neutralise les sentinelles et retire les deux prismes avant de défier le Gardien avec une force mesurée.",
+    debriefNextLead: null,
     threatLevel: 4,
     prerequisiteMissionId: "fungal-hivemind",
     recommendedArmorId: "berserker",

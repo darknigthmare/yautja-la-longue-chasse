@@ -336,11 +336,23 @@ export type HonorRuleKind =
   | "accept-duel"
   | "no-second-wind";
 
+export type HonorRuleCondition =
+  | "target-scanned-before-strike"
+  | "scan-objective-complete"
+  | "recover-objective-complete"
+  | "no-plasma-on-regular-prey"
+  | "environmental-armor-break"
+  | "duel-kept"
+  | "purge-stopped"
+  | "no-second-wind";
+
 export interface HonorRuleDefinition {
   id: string;
   label: string;
   description: string;
   kind: HonorRuleKind;
+  /** Runtime fact that resolves this authored rule. */
+  condition: HonorRuleCondition;
   bonus: number;
   violationPenalty: number;
 }
@@ -417,6 +429,12 @@ export interface TrophyDefinition {
   icon: string;
 }
 
+export interface MissionDebriefDefinition {
+  success: string;
+  failureHint: string;
+  nextLead: string | null;
+}
+
 export interface MissionDefinition {
   id: MissionId;
   order: number;
@@ -427,6 +445,7 @@ export interface MissionDefinition {
   targetName: string;
   targetKind: "human" | "beast" | "yautja";
   briefing: string;
+  debrief: MissionDebriefDefinition;
   threatLevel: 1 | 2 | 3 | 4;
   prerequisiteMissionId: MissionId | null;
   recommendedArmorId: ArmorId;

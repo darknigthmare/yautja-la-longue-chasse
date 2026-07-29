@@ -199,31 +199,47 @@ test("fresh and legacy saves receive all planet progress slots safely", () => {
 });
 
 test("the expanded campaign completes on Acheron while the Bad Blood rite remains an intermediate hunt", () => {
-  const resultFor = (missionId) => ({
-    missionId,
-    difficultyId: "hunter",
-    outcome: "success",
-    score: 80,
-    elapsedSeconds: 600,
-    completedObjectiveIds: [],
-    honorEvents: [],
-    trophyQuality: null,
-    trophyClaims: [],
-    kills: 1,
-    scans: 1,
-    secondWindUsed: false,
-    completedAt: "2026-07-22T00:00:00.000Z",
-  });
-  const coreArc = game.applyMissionResult(
-    game.defaultSave("2026-07-22T00:00:00.000Z"),
-    resultFor("volcano-bad-blood"),
-  );
+  const resultFor = (missionId) => {
+    const mission = game.MISSIONS.find(({ id }) => id === missionId);
+    assert.ok(mission);
+    return {
+      missionId,
+      difficultyId: "hunter",
+      outcome: "success",
+      score: 80,
+      elapsedSeconds: 600,
+      completedObjectiveIds: mission.objectives
+        .filter(({ required, kind }) => required || kind === "extract")
+        .map(({ id }) => id),
+      honorEvents: [],
+      trophyQuality: "elite",
+      trophyClaims: [
+        {
+          id: `${missionId}-apex-test`,
+          definitionId: mission.trophy.id,
+          targetName: mission.targetName,
+          targetKind: mission.targetKind,
+          partId: mission.trophy.partId,
+          condition: "intact",
+          quality: "elite",
+        },
+      ],
+      kills: 1,
+      scans: 1,
+      secondWindUsed: false,
+      completedAt: "2026-07-22T00:00:00.000Z",
+    };
+  };
+  let coreArc = game.defaultSave("2026-07-22T00:00:00.000Z");
+  for (const missionId of expectedIds.slice(0, 3)) {
+    coreArc = game.applyMissionResult(coreArc, resultFor(missionId));
+  }
   assert.equal(coreArc.storyCompleted, false);
   assert.equal(coreArc.missionProgress["swamp-hydra"].status, "available");
 
-  const finale = game.applyMissionResult(
-    coreArc,
-    resultFor("ruins-ancient-guardian"),
-  );
+  let finale = coreArc;
+  for (const missionId of expectedIds.slice(3)) {
+    finale = game.applyMissionResult(finale, resultFor(missionId));
+  }
   assert.equal(finale.storyCompleted, true);
 });

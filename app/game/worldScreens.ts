@@ -757,7 +757,7 @@ const RUINS_SCREENS = expansionScreenPlan("ruins-ancient-guardian", "ruins", {
   ],
   horizon: "ciel sans atmosphère et géante gazeuse à l'horizon",
   landmark: "cité d'obsidienne aux mécanismes encore actifs",
-  foreground: "stèles fracturées et poussière en suspension",
+  foreground: "stèles fracturées, débris électrostatiques et éclats balistiques",
   climbKind: "ladder",
   coverKind: "ruin",
   trackingKind: "obsidian",

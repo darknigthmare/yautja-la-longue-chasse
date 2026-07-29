@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
@@ -183,4 +184,27 @@ test("catalogue references separate the entry source from its visual basis", () 
   assert.ok(reconstruction.length >= 2);
   assert.equal(reconstruction[0], CATALOGUE_ENTRY_BY_ID["Y-001"].sourceUrl);
   assert.equal(new Set(reconstruction).size, reconstruction.length);
+});
+
+test("reference appearance selection never bypasses progression unlocks", async () => {
+  const source = await readFile(
+    new URL("../app/game/GameClient.tsx", import.meta.url),
+    "utf8",
+  );
+  const presetStart = source.indexOf("const selectHunterPreset");
+  const catalogueStart = source.indexOf("const selectCatalogueHunter");
+  const workshopStart = source.indexOf("const completeTrophyWorkshop");
+  assert.ok(presetStart >= 0 && catalogueStart > presetStart);
+  assert.ok(workshopStart > catalogueStart);
+
+  for (const selectionBlock of [
+    source.slice(presetStart, catalogueStart),
+    source.slice(catalogueStart, workshopStart),
+  ]) {
+    assert.doesNotMatch(
+      selectionBlock,
+      /unlocked(?:Armor|Weapon|Gear)Ids/,
+    );
+    assert.match(selectionBlock, /equipment|équipement|arsenal/);
+  }
 });

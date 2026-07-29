@@ -121,7 +121,10 @@ import {
   type UpgradePurchaseRequest,
   type UpgradeQuote,
 } from "./systems/arsenal";
-import { SHIP_PROGRESSION_STORAGE_KEY } from "./systems/progression";
+import {
+  loadShipProgression,
+  SHIP_PROGRESSION_STORAGE_KEY,
+} from "./systems/progression";
 import type {
   ArmorId,
   ArmorTintId,
@@ -155,7 +158,8 @@ type Screen =
   | "codex"
   | "briefing"
   | "mission"
-  | "debrief";
+  | "debrief"
+  | "ending";
 
 type MapReturnScreen = Extract<Screen, "ship" | "deck">;
 type StationScreen = Extract<
@@ -165,6 +169,11 @@ type StationScreen = Extract<
 type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing">;
 
 const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
+
+interface RewardSummary {
+  honor: number;
+  clanMarks: number;
+}
 
 const RANK_LABELS = {
   "young-blood": "Jeune Sang",
@@ -605,6 +614,8 @@ export default function GameClient() {
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
+  const [lastRewardSummary, setLastRewardSummary] =
+    useState<RewardSummary | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -627,7 +638,11 @@ export default function GameClient() {
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
-    const hydrationTask = window.setTimeout(() => setSave(loadSave()), 0);
+    const hydrationTask = window.setTimeout(() => {
+      const loadedSave = loadSave();
+      setSave(loadedSave);
+      setSelectedShipId(loadShipProgression(loadedSave).selectedShipId);
+    }, 0);
     const audio = new GameAudio();
     audioRef.current = audio;
     return () => {
@@ -816,7 +831,17 @@ export default function GameClient() {
       const next = applyMissionResult(save, result);
       persist(next);
       setLastResult(result);
-      setScreen("debrief");
+      setLastRewardSummary({
+        honor: next.profile.honor - save.profile.honor,
+        clanMarks: next.profile.clanMarks - save.profile.clanMarks,
+      });
+      setScreen(
+        result.outcome === "success" &&
+          !save.storyCompleted &&
+          next.storyCompleted
+          ? "ending"
+          : "debrief",
+      );
       void playSound(result.outcome === "success" ? "victory" : "defeat");
     },
     [persist, playSound, save],
@@ -970,36 +995,23 @@ export default function GameClient() {
       const loadout = loadoutForPreset(presetId);
 
       setSelectedCatalogueEntryId(null);
-      persist({
+      const persisted = persist({
         ...save,
         appearance,
         loadout,
-        inventory: {
-          ...save.inventory,
-          unlockedArmorIds: [
-            ...new Set([
-              ...save.inventory.unlockedArmorIds,
-              preset.recommendedArmorId,
-            ]),
-          ],
-          unlockedWeaponIds: [
-            ...new Set([
-              ...save.inventory.unlockedWeaponIds,
-              ...preset.signatureWeaponIds,
-              ...loadout.weaponIds,
-            ]),
-          ],
-          unlockedGearIds: [
-            ...new Set([
-              ...save.inventory.unlockedGearIds,
-              ...preset.signatureGearIds,
-              ...loadout.gearIds,
-            ]),
-          ],
-        },
       });
       setPreviewMaskWorn(appearance.biomaskId !== null);
-      setToast(`${preset.name} · configuration ${preset.year} chargée.`);
+      const exactKit =
+        persisted.loadout.armorId === loadout.armorId &&
+        loadout.weaponIds.every((id) =>
+          persisted.loadout.weaponIds.includes(id),
+        ) &&
+        loadout.gearIds.every((id) => persisted.loadout.gearIds.includes(id));
+      setToast(
+        exactKit
+          ? `${preset.name} · configuration ${preset.year} chargée.`
+          : `${preset.name} · apparence chargée, équipement verrouillé remplacé.`,
+      );
       void playSound("select");
     },
     [persist, playSound, save],
@@ -1028,37 +1040,24 @@ export default function GameClient() {
       const referencePresetId = referencePresetForCatalogueEntry(entry);
       const referencePreset = HUNTER_PRESET_BY_ID[referencePresetId];
       const referenceLoadout = loadoutForPreset(referencePresetId);
-      persist({
+      const persisted = persist({
         ...save,
         appearance,
         loadout: referenceLoadout,
-        inventory: {
-          ...save.inventory,
-          unlockedArmorIds: [
-            ...new Set([
-              ...save.inventory.unlockedArmorIds,
-              referencePreset.recommendedArmorId,
-            ]),
-          ],
-          unlockedWeaponIds: [
-            ...new Set([
-              ...save.inventory.unlockedWeaponIds,
-              ...referencePreset.signatureWeaponIds,
-              ...referenceLoadout.weaponIds,
-            ]),
-          ],
-          unlockedGearIds: [
-            ...new Set([
-              ...save.inventory.unlockedGearIds,
-              ...referencePreset.signatureGearIds,
-              ...referenceLoadout.gearIds,
-            ]),
-          ],
-        },
       });
       setPreviewMaskWorn(appearance.biomaskId !== null);
+      const exactKit =
+        persisted.loadout.armorId === referenceLoadout.armorId &&
+        referenceLoadout.weaponIds.every((id) =>
+          persisted.loadout.weaponIds.includes(id),
+        ) &&
+        referenceLoadout.gearIds.every((id) =>
+          persisted.loadout.gearIds.includes(id),
+        );
       setToast(
-        `${entry.name} · reconstruction guidée par ${referencePreset.name} (archive ${entry.id}).`,
+        exactKit
+          ? `${entry.name} · reconstruction guidée par ${referencePreset.name} (archive ${entry.id}).`
+          : `${entry.name} · apparence reconstruite; arsenal verrouillé remplacé sans déblocage.`,
       );
       void playSound("select");
     },
@@ -1112,6 +1111,7 @@ export default function GameClient() {
     setSettingsOpen(false);
     setSelectedMission(null);
     setLastResult(null);
+    setLastRewardSummary(null);
     setScreen("title");
     setToast("Archives de chasse réinitialisées.");
   }, [persist, resetArmed]);
@@ -1364,17 +1364,57 @@ export default function GameClient() {
                   {selectedMission.objectives.map((objective, index) => (
                     <li key={objective.id}>
                       <span>{(index + 1).toString().padStart(2, "0")}</span>
-                      {objective.label}
+                      <div>
+                        <strong>{objective.label}</strong>
+                        <small>
+                          {objective.description}
+                          {objective.required ? " · requis" : " · optionnel"}
+                        </small>
+                      </div>
                     </li>
                   ))}
                 </ul>
+                <section aria-labelledby="hunt-code-title">
+                  <h2 id="hunt-code-title">Code de cette chasse</h2>
+                  <ul className="objective-list honor-rule-list">
+                    {selectedMission.honorRules.map((rule) => (
+                      <li key={rule.id}>
+                        <span>+{rule.bonus}</span>
+                        <div>
+                          <strong>{rule.label}</strong>
+                          <small>
+                            {rule.description}
+                            {rule.violationPenalty > 0
+                              ? ` · violation −${rule.violationPenalty}`
+                              : ""}
+                          </small>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+                <p className="source-badge">
+                  Arsenal recommandé ·{" "}
+                  {
+                    ARMORS.find(
+                      ({ id }) => id === selectedMission.recommendedArmorId,
+                    )?.name
+                  }{" "}
+                  ·{" "}
+                  {selectedMission.recommendedWeaponIds
+                    .map(
+                      (id) =>
+                        WEAPONS.find((weapon) => weapon.id === id)?.name ?? id,
+                    )
+                    .join(" / ")}
+                </p>
                 <div className="briefing-loadout">
                   <div>
-                    <small>Armure</small>
+                    <small>Armure équipée</small>
                     <strong>{selectedArmor.name}</strong>
                   </div>
                   <div>
-                    <small>Arme</small>
+                    <small>Arme équipée</small>
                     <strong>{primaryWeapon.name}</strong>
                   </div>
                   <div>
@@ -2349,7 +2389,7 @@ export default function GameClient() {
                     <p>
                       {unlocked
                         ? entry.text
-                        : "Scannez la cible ou terminez le contrat associé pour décoder cette archive."}
+                        : "Scannez les indices puis terminez le contrat associé pour décoder cette archive."}
                     </p>
                     <span className="source-badge">
                       {entry.category === "planet" || entry.category === "prey"
@@ -2380,6 +2420,7 @@ export default function GameClient() {
           onAbort={(result) => {
             persist(applyMissionResult(save, result));
             setLastResult(null);
+            setLastRewardSummary(null);
             setSelectedMission(null);
             go("ship");
           }}
@@ -2400,9 +2441,15 @@ export default function GameClient() {
             <h1 id="debrief-title">{selectedMission.targetName}</h1>
             <p>
               {lastResult.outcome === "success"
-                ? "Le trophée rejoint le vaisseau. Le clan mesure désormais la valeur de cette chasse."
-                : "Une proie digne ne disparaît pas. Ajustez votre arsenal et revenez."}
+                ? selectedMission.debrief.success
+                : selectedMission.debrief.failureHint}
             </p>
+            {lastResult.outcome === "success" &&
+              selectedMission.debrief.nextLead && (
+                <p className="source-badge">
+                  Trace suivante · {selectedMission.debrief.nextLead}
+                </p>
+              )}
             <div className="debrief-stats">
               <DebriefStat label="Score" value={lastResult.score.toString()} />
               <DebriefStat
@@ -2411,14 +2458,37 @@ export default function GameClient() {
               />
               <DebriefStat label="Scans" value={lastResult.scans.toString()} />
               <DebriefStat
-                label="Trophée"
-                value={
-                  lastResult.trophyClaims.length > 0
-                    ? `${lastResult.trophyClaims.length} · ${qualityLabel(lastResult)}`
-                    : qualityLabel(lastResult)
-                }
+                label="Prises"
+                value={lastResult.trophyClaims.length.toString()}
+              />
+              <DebriefStat
+                label="Trophée Apex"
+                value={qualityLabel(lastResult)}
+              />
+              <DebriefStat
+                label="Honneur gagné"
+                value={`${(lastRewardSummary?.honor ?? 0) >= 0 ? "+" : ""}${
+                  lastRewardSummary?.honor ?? 0
+                }`}
+              />
+              <DebriefStat
+                label="Marques gagnées"
+                value={`+${lastRewardSummary?.clanMarks ?? 0}`}
               />
             </div>
+            {lastResult.honorEvents.length > 0 && (
+              <details>
+                <summary>Journal d’honneur</summary>
+                <ul className="objective-list honor-event-list">
+                  {lastResult.honorEvents.map((event) => (
+                    <li key={event.id}>
+                      <span>{event.value >= 0 ? `+${event.value}` : event.value}</span>
+                      <strong>{event.label}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
             <div className="debrief-actions">
               <button
                 type="button"
@@ -2436,6 +2506,66 @@ export default function GameClient() {
                 onClick={() => setScreen("mission")}
               >
                 Rejouer la chasse
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {screen === "ending" && lastResult && selectedMission && (
+        <section
+          className="screen debrief-screen ending-screen"
+          aria-labelledby="ending-title"
+        >
+          <div className="debrief-panel">
+            <p className="eyebrow">Chronique accomplie // Acheron-Sigma</p>
+            <h1 id="ending-title">La Longue Chasse devient mémoire</h1>
+            <p>{selectedMission.debrief.success}</p>
+            {selectedMission.debrief.nextLead && (
+              <p className="source-badge">
+                Épilogue · {selectedMission.debrief.nextLead}
+              </p>
+            )}
+            <div className="debrief-stats">
+              <DebriefStat label="Grade final" value={gradeFor(lastResult.score)} />
+              <DebriefStat
+                label="Trophée Apex"
+                value={qualityLabel(lastResult)}
+              />
+              <DebriefStat
+                label="Honneur gagné"
+                value={`${(lastRewardSummary?.honor ?? 0) >= 0 ? "+" : ""}${
+                  lastRewardSummary?.honor ?? 0
+                }`}
+              />
+              <DebriefStat label="Nouveau rite" value="Difficulté Elder" />
+            </div>
+            <p>
+              Le rite Elder est désormais accessible. Les huit chasses restent
+              rejouables avec une perception accrue, aucun relais et une seule
+              charge de Medicomp.
+            </p>
+            <div className="debrief-actions">
+              <button
+                type="button"
+                className="alien-button"
+                onClick={() => {
+                  updateSettings({ difficultyId: "elder" });
+                  setSelectedMission(null);
+                  openMap("ship");
+                }}
+              >
+                Ouvrir les contrats Elder
+              </button>
+              <button
+                type="button"
+                className="ghost-button"
+                onClick={() => {
+                  setSelectedMission(null);
+                  go("ship");
+                }}
+              >
+                Retour au vaisseau
               </button>
             </div>
           </div>

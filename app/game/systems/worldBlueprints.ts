@@ -195,6 +195,158 @@ export interface WorldBlueprint {
   trapSockets: readonly TrapSocket[];
 }
 
+export interface SafeGroundXBounds {
+  minX: number;
+  maxX: number;
+}
+
+export interface SafeCheckpointPlacementOptions {
+  hazardMargin?: number;
+}
+
+const SAFE_GROUND_EDGE_CLEARANCE = 0.001;
+const DEFAULT_CHECKPOINT_HAZARD_MARGIN = 48;
+
+function assertFinitePlacementValue(value: number, label: string): void {
+  if (!Number.isFinite(value)) {
+    throw new RangeError(`${label} must be finite`);
+  }
+}
+
+function isSafeGroundX(
+  blueprint: WorldBlueprint,
+  x: number,
+  hazardMargin: number,
+): boolean {
+  return blueprint.hazards.every(
+    (hazard) =>
+      x < hazard.x - hazardMargin ||
+      x > hazard.x + hazard.width + hazardMargin,
+  );
+}
+
+/**
+ * Resolve one desired ground coordinate to the closest position that remains
+ * horizontally clear of every hazard, including hazards that are inactive at
+ * the current point in their cycle. Equal-distance ties always prefer west.
+ */
+export function resolveNearestSafeGroundX(
+  blueprint: WorldBlueprint,
+  desiredX: number,
+  bounds: SafeGroundXBounds,
+  hazardMargin = 0,
+): number | null {
+  assertFinitePlacementValue(desiredX, "desiredX");
+  assertFinitePlacementValue(bounds.minX, "bounds.minX");
+  assertFinitePlacementValue(bounds.maxX, "bounds.maxX");
+  assertFinitePlacementValue(hazardMargin, "hazardMargin");
+  if (hazardMargin < 0) {
+    throw new RangeError("hazardMargin cannot be negative");
+  }
+
+  const minX = Math.max(0, bounds.minX);
+  const maxX = Math.min(blueprint.width, bounds.maxX);
+  if (minX > maxX) return null;
+
+  const targetX = Math.max(minX, Math.min(maxX, desiredX));
+  const candidates = new Set<number>([targetX, minX, maxX]);
+  for (const hazard of blueprint.hazards) {
+    candidates.add(
+      hazard.x - hazardMargin - SAFE_GROUND_EDGE_CLEARANCE,
+    );
+    candidates.add(
+      hazard.x +
+        hazard.width +
+        hazardMargin +
+        SAFE_GROUND_EDGE_CLEARANCE,
+    );
+  }
+
+  return (
+    [...candidates]
+      .filter(
+        (candidate) =>
+          candidate >= minX &&
+          candidate <= maxX &&
+          isSafeGroundX(blueprint, candidate, hazardMargin),
+      )
+      .sort(
+        (left, right) =>
+          Math.abs(left - targetX) - Math.abs(right - targetX) ||
+          left - right,
+      )[0] ?? null
+  );
+}
+
+/**
+ * Preserve the established checkpoint distribution while resolving every
+ * relay into a disjoint safe slot between insertion and the boss arena.
+ */
+export function safeCheckpointPositions(
+  blueprint: WorldBlueprint,
+  checkpointCount: number,
+  options: SafeCheckpointPlacementOptions = {},
+): number[] {
+  assertFinitePlacementValue(checkpointCount, "checkpointCount");
+  const count = Math.max(0, Math.floor(checkpointCount));
+  if (count === 0) return [];
+
+  const hazardMargin =
+    options.hazardMargin ?? DEFAULT_CHECKPOINT_HAZARD_MARGIN;
+  assertFinitePlacementValue(hazardMargin, "options.hazardMargin");
+  if (hazardMargin < 0) {
+    throw new RangeError("options.hazardMargin cannot be negative");
+  }
+
+  const minX = Math.max(
+    blueprint.spawn.x,
+    blueprint.spawn.x + 720,
+    blueprint.width * 0.22,
+  );
+  const maxX = Math.min(
+    blueprint.bossArena.x - 320,
+    blueprint.bossArena.x - SAFE_GROUND_EDGE_CLEARANCE,
+  );
+  if (minX > maxX) {
+    throw new RangeError(
+      `${blueprint.missionId} has no checkpoint corridor before its boss arena`,
+    );
+  }
+
+  const desiredPositions = Array.from({ length: count }, (_, index) =>
+    Math.round(
+      minX + (maxX - minX) * ((index + 1) / (count + 1)),
+    ),
+  );
+
+  return desiredPositions.map((desiredX, index) => {
+    const previousDesired = desiredPositions[index - 1];
+    const nextDesired = desiredPositions[index + 1];
+    const slotMin =
+      previousDesired === undefined
+        ? minX
+        : (previousDesired + desiredX) / 2 +
+          SAFE_GROUND_EDGE_CLEARANCE;
+    const slotMax =
+      nextDesired === undefined
+        ? maxX
+        : (desiredX + nextDesired) / 2 -
+          SAFE_GROUND_EDGE_CLEARANCE;
+    const resolved = resolveNearestSafeGroundX(
+      blueprint,
+      desiredX,
+      { minX: slotMin, maxX: slotMax },
+      hazardMargin,
+    );
+    if (resolved === null) {
+      throw new RangeError(
+        `${blueprint.missionId} checkpoint ${index + 1} has no safe ground slot`,
+      );
+    }
+    return resolved;
+  });
+}
+
 const JUNGLE_WORLD_BASE: WorldBlueprint = {
   missionId: "jungle-vey",
   biome: "jungle",
@@ -930,7 +1082,17 @@ function expansionWorldBase(
     ...template,
     missionId,
     biome,
-    wind: { ...template.wind, seed: windSeed },
+    wind:
+      biome === "ruins"
+        ? {
+            seed: windSeed,
+            baseX: 0,
+            baseY: 0,
+            gustStrength: 0,
+            gustPeriodSeconds: template.wind.gustPeriodSeconds,
+            verticalTurbulence: 0,
+          }
+        : { ...template.wind, seed: windSeed },
     platforms: template.platforms.map((platform) => {
       const material = expansionPlatformMaterial(biome, platform.material);
       return { ...platform, material, ...platformBehavior(material) };

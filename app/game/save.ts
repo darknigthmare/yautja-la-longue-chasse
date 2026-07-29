@@ -152,6 +152,11 @@ const TROPHY_WORKSHOP_ACTION_IDS = [
 // Apex claims. Keep enough physical slots to complete that collection while
 // still bounding malformed or endlessly replayed saves.
 const MAX_TROPHY_RECORDS = 500;
+const REPLAY_HONOR_BASE_RATE = 0.05;
+const REPLAY_HONOR_SCORE_RATE = 0.1;
+const REPLAY_HONOR_EVENT_RATE = 0.5;
+const REPLAY_HONOR_PROGRESS_CAP = 20;
+const REPLAY_HONOR_RAW_CAP = 40;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
   worthy: 1,
@@ -1375,6 +1380,37 @@ export function applyMissionResult(
     completedAt,
   };
 
+  if (result.outcome === "success") {
+    const completedObjectiveIdSet = new Set(completedObjectiveIds);
+    const missesRequiredObjective = mission.objectives.some(
+      (objective) =>
+        (objective.required || objective.kind === "extract") &&
+        !completedObjectiveIdSet.has(objective.id),
+    );
+    const hasExplicitApexClaim =
+      Array.isArray(rawResult.trophyClaims) &&
+      rawResult.trophyClaims.some(
+        (claim) =>
+          isRecord(claim) && claim.definitionId === mission.trophy.id,
+      ) &&
+      trophyClaims.some(
+        (claim) => claim.definitionId === mission.trophy.id,
+      );
+    // Legacy runtimes submitted only the aggregate quality. A modern result
+    // with an explicit claim list must always identify the Apex trophy itself.
+    const hasLegacyApexClaim =
+      rawResult.trophyClaims === undefined && trophyQuality !== null;
+
+    if (
+      previous.status === "locked" ||
+      (result.difficultyId === "elder" && !save.storyCompleted) ||
+      missesRequiredObjective ||
+      (!hasExplicitApexClaim && !hasLegacyApexClaim)
+    ) {
+      return save;
+    }
+  }
+
   const baseProgress: MissionProgress = {
     ...previous,
     attempts: previous.attempts + 1,
@@ -1426,18 +1462,33 @@ export function applyMissionResult(
   const qualityBonus = result.trophyQuality
     ? TROPHY_QUALITY_ORDER[result.trophyQuality] * 10
     : 0;
+  const replayQualityBonus =
+    result.trophyQuality &&
+    !save.trophies.some(
+      (trophy) =>
+        trophy.missionId === mission.id &&
+        TROPHY_QUALITY_ORDER[trophy.quality] >=
+          TROPHY_QUALITY_ORDER[result.trophyQuality as TrophyQuality],
+    )
+      ? Math.round(qualityBonus / 2)
+      : 0;
+  const replayMasteryHonor =
+    Math.max(
+      5,
+      Math.round(mission.baseRewards.honor * REPLAY_HONOR_BASE_RATE),
+    ) +
+    Math.round(score * REPLAY_HONOR_SCORE_RATE) +
+    Math.round(eventHonor * REPLAY_HONOR_EVENT_RATE);
+  const replayProgressHonor = Math.min(
+    REPLAY_HONOR_PROGRESS_CAP,
+    scoreImprovement * 2 + replayQualityBonus,
+  );
   const rawHonorReward = firstCompletion
     ? mission.baseRewards.honor + eventHonor + qualityBonus
-    : scoreImprovement * 2 +
-      (result.trophyQuality &&
-      !save.trophies.some(
-        (trophy) =>
-          trophy.missionId === mission.id &&
-          TROPHY_QUALITY_ORDER[trophy.quality] >=
-            TROPHY_QUALITY_ORDER[result.trophyQuality as TrophyQuality],
-      )
-        ? Math.round(qualityBonus / 2)
-        : 0);
+    : Math.min(
+        REPLAY_HONOR_RAW_CAP,
+        replayMasteryHonor + replayProgressHonor,
+      );
   const honorReward = Math.round(
     Math.max(firstCompletion ? -50 : 0, rawHonorReward) *
       difficulty.rewardMultiplier,

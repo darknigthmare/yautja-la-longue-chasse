@@ -175,6 +175,60 @@ export interface AiCoverChoice {
   occupied: boolean;
 }
 
+export interface AiOccluder {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  protection: number;
+}
+
+function segmentIntersectsRect(
+  source: WorldPoint,
+  target: WorldPoint,
+  rect: AiOccluder,
+): boolean {
+  const deltaX = target.x - source.x;
+  const deltaY = target.y - source.y;
+  let minimumTime = 0;
+  let maximumTime = 1;
+
+  for (const [origin, delta, minimum, maximum] of [
+    [source.x, deltaX, rect.x, rect.x + rect.width],
+    [source.y, deltaY, rect.y, rect.y + rect.height],
+  ] as const) {
+    if (Math.abs(delta) < EPSILON) {
+      if (origin < minimum || origin > maximum) return false;
+      continue;
+    }
+    const first = (minimum - origin) / delta;
+    const second = (maximum - origin) / delta;
+    const entry = Math.min(first, second);
+    const exit = Math.max(first, second);
+    minimumTime = Math.max(minimumTime, entry);
+    maximumTime = Math.min(maximumTime, exit);
+    if (minimumTime > maximumTime) return false;
+  }
+
+  return maximumTime >= 0 && minimumTime <= 1;
+}
+
+export function calculateLineOfSightOcclusion(
+  source: WorldPoint,
+  target: WorldPoint,
+  occluders: readonly AiOccluder[],
+): number {
+  return clamp(
+    occluders.reduce(
+      (strongest, occluder) =>
+        segmentIntersectsRect(source, target, occluder)
+          ? Math.max(strongest, occluder.protection)
+          : strongest,
+      0,
+    ),
+  );
+}
+
 export interface AiObservation {
   deltaSeconds: number;
   elapsedSeconds: number;
@@ -185,7 +239,9 @@ export interface AiObservation {
   thermalContact: number;
   heardNoise: NoisePerception | null;
   scentStrength: number;
+  scentDirection?: -1 | 0 | 1;
   trackStrength: number;
+  trackPosition?: WorldPoint | null;
   underRangedThreat: boolean;
   alliesInRange: readonly string[];
   alliesEngaged: number;
@@ -416,6 +472,14 @@ export function sampleWind(
   elapsedSeconds: number,
   worldX: number,
 ): WindSample {
+  if (
+    profile.baseX === 0 &&
+    profile.baseY === 0 &&
+    profile.gustStrength === 0 &&
+    profile.verticalTurbulence === 0
+  ) {
+    return { x: 0, y: 0, magnitude: 0, gust: 0 };
+  }
   const period = Math.max(0.1, profile.gustPeriodSeconds);
   const phase =
     (elapsedSeconds / period) * Math.PI * 2 +
@@ -837,6 +901,35 @@ export function createAiBrain(agentId: string, role: AiRole): AiBrain {
   };
 }
 
+const AI_LEASH_EXPANSION: Readonly<Record<AiMode, number>> = {
+  patrol: 0,
+  suspicion: 260,
+  search: 440,
+  cover: 620,
+  coordinate: 620,
+  engage: 720,
+  flee: 900,
+};
+
+/**
+ * Patrols keep their authored territory, while an alerted agent may pursue,
+ * flank or flee far enough for those decisions to have a visible effect.
+ */
+export function resolveAiMovementLeash(
+  mode: AiMode,
+  patrolLeft: number,
+  patrolRight: number,
+  worldWidth: number,
+  entityWidth: number,
+): { left: number; right: number } {
+  const expansion = AI_LEASH_EXPANSION[mode];
+  const worldLeft = 40;
+  const worldRight = Math.max(worldLeft, worldWidth - entityWidth - 40);
+  const left = clamp(patrolLeft - expansion, worldLeft, worldRight);
+  const right = clamp(patrolRight + expansion, left, worldRight);
+  return { left, right };
+}
+
 function chooseCover(
   covers: readonly AiCoverChoice[],
 ): AiCoverChoice | null {
@@ -883,10 +976,22 @@ export function stepAiBrain(
     trackSignal,
   );
   const hasContact = visualSignal >= 0.34;
+  const scentPosition =
+    observation.scentDirection
+      ? {
+          x:
+            observation.self.x +
+            observation.scentDirection * Math.max(120, config.preferredRange),
+          y: observation.self.y,
+        }
+      : null;
   const signalPosition = hasContact
     ? observation.target
-    : observation.heardNoise?.estimatedPosition ??
-      (scentSignal >= trackSignal ? observation.target : previous.lastKnownTarget);
+    : hearingSignal >= trackSignal && hearingSignal >= scentSignal
+      ? observation.heardNoise?.estimatedPosition ?? previous.lastKnownTarget
+      : trackSignal >= scentSignal
+        ? observation.trackPosition ?? previous.lastKnownTarget
+        : scentPosition ?? previous.lastKnownTarget;
   const suspicion = clamp(
     previous.suspicion +
       strongestSignal * delta * 0.9 -
