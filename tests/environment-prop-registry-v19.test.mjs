@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { access, mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { after, test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { build } from "vite";
+
+import { ENVIRONMENT_PROP_SPECS } from "../app/game/environmentPropCatalogue.ts";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(
@@ -42,6 +44,15 @@ after(async () => {
   await rm(outputDirectory, { force: true, recursive: true });
 });
 
+async function pathExists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 test("V19 runtime projection strips source-only generation fields", () => {
   assert.equal(registry.ENVIRONMENT_PROP_RUNTIME_ASSETS.length, 800);
   for (const asset of registry.ENVIRONMENT_PROP_RUNTIME_ASSETS) {
@@ -65,27 +76,62 @@ test("the runtime bundle excludes the source production catalogue", () => {
   );
 });
 
-test("exactly 18 distinct compatible gameplay props resolve for every biome", () => {
-  assert.equal(registry.ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.length, 144);
+test("runtime availability exactly matches complete source/runtime pairs", async () => {
+  const availableIds = new Set(
+    registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.map(({ id }) => id),
+  );
+  assert.equal(
+    availableIds.size,
+    registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.length,
+  );
 
+  for (const spec of ENVIRONMENT_PROP_SPECS) {
+    const [masterExists, runtimeExists] = await Promise.all([
+      pathExists(resolve(projectRoot, spec.masterPath)),
+      pathExists(resolve(projectRoot, spec.runtimePath)),
+    ]);
+    assert.equal(
+      availableIds.has(spec.id),
+      masterExists && runtimeExists,
+      `${spec.id}: availability projection`,
+    );
+  }
+});
+
+test("gameplay assignments use available compatible props or stay procedural", () => {
   for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
     const assignments =
       registry.ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.filter(
         ({ missionId }) => missionId === layout.missionId,
       );
-    assert.equal(assignments.length, 18, `${layout.missionId}: assignment count`);
     assert.equal(
       new Set(assignments.map(({ asset }) => asset.id)).size,
-      18,
-      `${layout.missionId}: gameplay art must be distinct`,
+      assignments.length,
+      `${layout.missionId}: available gameplay art must be distinct`,
     );
 
     for (const screen of layout.screens) {
       for (const feature of screen.features) {
+        const compatibleAvailable =
+          registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter((asset) =>
+            registry.isEnvironmentPropCompatibleWithFeature(
+              layout.biome,
+              feature,
+              asset,
+            ),
+          );
         const assignment = registry.environmentGameplayPropForFeatureId(
           layout.missionId,
           feature.id,
         );
+        if (compatibleAvailable.length === 0) {
+          assert.equal(
+            assignment,
+            null,
+            `${layout.missionId}/${feature.id}: procedural fallback expected`,
+          );
+          continue;
+        }
         assert.ok(assignment, `${layout.missionId}/${feature.id}: assignment`);
         assert.equal(assignment.screenId, screen.id);
         assert.equal(assignment.geometryId, `feature-${feature.id}`);
@@ -106,12 +152,16 @@ test("exactly 18 distinct compatible gameplay props resolve for every biome", ()
           true,
           `${layout.missionId}/${feature.id}: incompatible role or kind`,
         );
+        assert.equal(
+          registry.isEnvironmentPropRuntimeAvailable(assignment.asset),
+          true,
+        );
       }
     }
   }
 });
 
-test("every same-plane physical geometry resolves to a biome-compatible V19 prop", () => {
+test("same-plane geometry uses available V19 props and otherwise stays procedural", () => {
   let expectedLegacyCount = 0;
 
   for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
@@ -123,18 +173,42 @@ test("every same-plane physical geometry resolves to a biome-compatible V19 prop
       ["hazard", world.hazards],
       ["surface", world.surfaces],
     ];
-    const featureGeometryIds = new Set(
-      registry.ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.filter(
-        ({ missionId }) => missionId === layout.missionId,
-      ).map(({ geometryId }) => geometryId),
+    const featuresByGeometryId = new Map(
+      layout.screens.flatMap((screen) =>
+        screen.features.map((feature) => [
+          `feature-${feature.id}`,
+          feature,
+        ]),
+      ),
     );
 
     for (const [role, geometries] of groups) {
       for (const geometry of geometries) {
+        const feature = featuresByGeometryId.get(geometry.id);
+        const candidates =
+          registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
+            (asset) =>
+              asset.biomeId === layout.biome &&
+              (feature
+                ? registry.isEnvironmentPropCompatibleWithFeature(
+                    layout.biome,
+                    feature,
+                    asset,
+                  )
+                : asset.role === role),
+          );
         const assignment = registry.environmentGameplayPropForGeometryId(
           layout.missionId,
           geometry.id,
         );
+        if (candidates.length === 0) {
+          assert.equal(
+            assignment,
+            null,
+            `${layout.missionId}/${geometry.id}: procedural fallback expected`,
+          );
+          continue;
+        }
         assert.ok(
           assignment,
           `${layout.missionId}/${geometry.id}: missing physical visual`,
@@ -143,12 +217,16 @@ test("every same-plane physical geometry resolves to a biome-compatible V19 prop
         assert.equal(assignment.biomeId, layout.biome);
         assert.equal(assignment.asset.biomeId, layout.biome);
         assert.equal(assignment.asset.role, role);
+        assert.equal(
+          registry.isEnvironmentPropRuntimeAvailable(assignment.asset),
+          true,
+        );
         assert.equal(assignment.renderPass, "world-gameplay");
         assert.ok(
           layout.screens.some(({ id }) => id === assignment.screenId),
           `${layout.missionId}/${geometry.id}: unknown screen`,
         );
-        if (!featureGeometryIds.has(geometry.id)) {
+        if (!feature) {
           expectedLegacyCount += 1;
           assert.equal(assignment.source, "legacy-world-geometry");
           assert.equal(assignment.geometryRole, role);
@@ -163,10 +241,19 @@ test("every same-plane physical geometry resolves to a biome-compatible V19 prop
   );
 });
 
-test("20 distinct decoration-role assets are deterministic non-colliding sector decor", () => {
-  assert.equal(registry.ENVIRONMENT_DECOR_PROP_PLACEMENTS.length, 160);
+test("available decoration assets become deterministic non-colliding sector decor", () => {
+  const availableDecor = registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
+    ({ role }) => role === "decoration",
+  );
+  assert.equal(
+    registry.ENVIRONMENT_DECOR_PROP_PLACEMENTS.length,
+    availableDecor.length,
+  );
 
   for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
+    const expectedDecorCount = availableDecor.filter(
+      ({ biomeId }) => biomeId === layout.biome,
+    ).length;
     const decor = registry.ENVIRONMENT_DECOR_PROP_PLACEMENTS.filter(
       ({ missionId }) => missionId === layout.missionId,
     );
@@ -178,8 +265,12 @@ test("20 distinct decoration-role assets are deterministic non-colliding sector 
       layout.missionId,
       "actor-occluder",
     );
-    assert.equal(decor.length, 20, `${layout.missionId}: decor count`);
-    assert.equal(back.length + occluders.length, 20);
+    assert.equal(
+      decor.length,
+      expectedDecorCount,
+      `${layout.missionId}: decor count`,
+    );
+    assert.equal(back.length + occluders.length, expectedDecorCount);
     assert.ok(
       [...back, ...occluders].every(
         (placement) => placement.missionId === layout.missionId,
@@ -187,7 +278,7 @@ test("20 distinct decoration-role assets are deterministic non-colliding sector 
     );
     assert.equal(
       new Set(decor.map(({ asset }) => asset.id)).size,
-      20,
+      expectedDecorCount,
       `${layout.missionId}: decor art must be distinct`,
     );
     assert.ok(
@@ -221,13 +312,53 @@ test("20 distinct decoration-role assets are deterministic non-colliding sector 
     });
     assert.deepEqual(
       [...sectorCounts].sort((left, right) => left - right),
-      [3, 3, 3, 3, 4, 4],
+      Array.from({ length: 6 }, (_, screenIndex) =>
+        Math.floor(expectedDecorCount / 6) +
+        (screenIndex < expectedDecorCount % 6 ? 1 : 0),
+      ).sort((left, right) => left - right),
       `${layout.missionId}: uneven six-sector distribution`,
     );
   }
 });
 
-test("sector URL lists are unique, local and limited to that sector", () => {
+test("available physical variants rotate across persistent hunt attempts", () => {
+  for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
+    const expectedIds = new Set(
+      registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
+        ({ biomeId, role }) =>
+          biomeId === layout.biome && role !== "decoration",
+      ).map(({ id }) => id),
+    );
+    const seenIds = new Set();
+    const world = registry.WORLD_BLUEPRINTS_BY_MISSION[layout.missionId];
+    const geometries = [
+      ...world.platforms,
+      ...world.climbables,
+      ...world.covers,
+      ...world.hazards,
+      ...world.surfaces,
+    ];
+
+    for (let encounterRun = 0; encounterRun < 100; encounterRun += 1) {
+      for (const geometry of geometries) {
+        const assignment = registry.environmentGameplayPropForGeometryId(
+          layout.missionId,
+          geometry.id,
+          encounterRun,
+        );
+        if (assignment) seenIds.add(assignment.asset.id);
+      }
+    }
+
+    assert.deepEqual(
+      [...seenIds].filter((id) => expectedIds.has(id)).sort(),
+      [...expectedIds].sort(),
+      `${layout.missionId}: every available physical variant must be reachable`,
+    );
+  }
+});
+
+test("sector URL lists are unique, available, local and limited to that sector", async () => {
   for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
     for (const screen of layout.screens) {
       const urls = registry.environmentPropRuntimeUrlsForSector(
@@ -257,6 +388,13 @@ test("sector URL lists are unique, local and limited to that sector", () => {
           ),
         ),
       );
+      for (const url of urls) {
+        assert.equal(
+          await pathExists(resolve(projectRoot, "public", url.slice(1))),
+          true,
+          `${layout.missionId}/${screen.id}: missing ${url}`,
+        );
+      }
     }
   }
 });

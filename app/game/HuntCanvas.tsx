@@ -3417,10 +3417,12 @@ function drawWorldClimbable(
   assets: AssetBank,
   mission: MissionDefinition,
   palette: MissionDefinition["palette"],
+  encounterRun: number,
 ): void {
   const assignment = environmentGameplayPropForGeometryId(
     mission.id,
     zone.id,
+    encounterRun,
   );
   const environmentImage = assignment
     ? environmentPropImage(assets, assignment.asset)
@@ -3525,6 +3527,7 @@ function renderGame(
   loadout: Loadout,
   appearance: HunterAppearance,
   assets: AssetBank,
+  encounterRun: number,
   deviceScale: number,
 ): void {
   context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
@@ -3652,6 +3655,7 @@ function renderGame(
     const assignment = environmentGameplayPropForGeometryId(
       mission.id,
       surface.id,
+      encounterRun,
     );
     const image = assignment
       ? environmentPropImage(assets, assignment.asset)
@@ -3681,7 +3685,14 @@ function renderGame(
     assets,
   );
   for (const zone of state.world.climbables) {
-    drawWorldClimbable(context, zone, assets, mission, palette);
+    drawWorldClimbable(
+      context,
+      zone,
+      assets,
+      mission,
+      palette,
+      encounterRun,
+    );
   }
 
   const junglePlatformImages = [
@@ -3696,6 +3707,7 @@ function renderGame(
     const assignment = environmentGameplayPropForGeometryId(
       mission.id,
       platform.id,
+      encounterRun,
     );
     const image = assignment
       ? environmentPropImage(assets, assignment.asset)
@@ -3746,6 +3758,7 @@ function renderGame(
     const assignment = environmentGameplayPropForGeometryId(
       mission.id,
       cover.id,
+      encounterRun,
     );
     const image = assignment
       ? environmentPropImage(assets, assignment.asset)
@@ -3785,6 +3798,7 @@ function renderGame(
     const assignment = environmentGameplayPropForGeometryId(
       mission.id,
       hazard.id,
+      encounterRun,
     );
     const image = assignment
       ? environmentPropImage(assets, assignment.asset)
@@ -7543,6 +7557,7 @@ export default function HuntCanvas({
         for (const url of environmentPropRuntimeUrlsForSector(
           mission.id,
           sector.id,
+          encounterRun,
         )) {
           if (
             Object.hasOwn(assets.environmentProps, url) ||
@@ -7958,6 +7973,7 @@ export default function HuntCanvas({
         loadout,
         appearance,
         assets,
+        encounterRun,
         deviceScale,
       );
       if (time - lastUiPush >= 100) {

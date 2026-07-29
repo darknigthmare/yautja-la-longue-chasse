@@ -8,10 +8,14 @@ const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const [canvasSource, runtimeDataSource, packageJson] = await Promise.all([
+const [canvasSource, runtimeDataSource, availabilityDataSource, packageJson] = await Promise.all([
   readFile(path.join(projectRoot, "app/game/HuntCanvas.tsx"), "utf8"),
   readFile(
     path.join(projectRoot, "app/game/environmentPropRuntimeData.ts"),
+    "utf8",
+  ),
+  readFile(
+    path.join(projectRoot, "app/game/environmentPropAvailabilityData.ts"),
     "utf8",
   ),
   readFile(path.join(projectRoot, "package.json"), "utf8").then(JSON.parse),
@@ -27,16 +31,22 @@ test("HuntCanvas renders and lazily streams V19 gameplay and decor props", () =>
     '"actor-occluder"',
     "preloadEnvironmentAroundScreen(game.worldScreenId)",
     "assets.environmentProps[url] = image",
+    "encounterRun",
   ]) {
     assert.ok(canvasSource.includes(marker), `missing Canvas marker: ${marker}`);
   }
 });
 
 test("generated runtime data contains no source-production fields", () => {
-  assert.doesNotMatch(
+  for (const generatedSource of [
     runtimeDataSource,
-    /Primary request:|Originality:|art-source\/|masterPath|promptSha256|chromaKey/,
-  );
+    availabilityDataSource,
+  ]) {
+    assert.doesNotMatch(
+      generatedSource,
+      /Primary request:|Originality:|art-source\/|masterPath|promptSha256|chromaKey/,
+    );
+  }
 });
 
 test("the complete QA command builds, audits and tests biome decor V19", () => {

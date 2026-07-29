@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -31,6 +31,12 @@ const runtimeDataPath = path.join(
   "app",
   "game",
   "environmentPropRuntimeData.ts",
+);
+const availabilityDataPath = path.join(
+  projectRoot,
+  "app",
+  "game",
+  "environmentPropAvailabilityData.ts",
 );
 
 function sha256(buffer) {
@@ -110,6 +116,21 @@ export const ENVIRONMENT_PROP_RUNTIME_ASSETS = Object.freeze(
 `;
 }
 
+function availabilityDataModule(availableRuntimeIds) {
+  return `/**
+ * Generated V19 runtime availability projection.
+ *
+ * This file contains stable catalogue ids only. Source paths, prompts and
+ * production metadata remain outside the runtime boundary.
+ * Regenerate with: node scripts/build-biome-decor-v19-manifests.mjs --runtime-data-only
+ */
+
+export const ENVIRONMENT_PROP_AVAILABLE_RUNTIME_IDS = Object.freeze(
+  ${JSON.stringify(availableRuntimeIds, null, 2)},
+) as readonly string[];
+`;
+}
+
 function assertInsideProject(filePath) {
   const resolved = path.resolve(projectRoot, filePath);
   assert.ok(
@@ -117,6 +138,30 @@ function assertInsideProject(filePath) {
     `Path escapes project root: ${filePath}`,
   );
   return resolved;
+}
+
+async function pathExists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function availableRuntimeIds() {
+  const availability = await mapWithConcurrency(
+    ENVIRONMENT_PROP_SPECS,
+    16,
+    async (spec) => {
+      const [masterAvailable, runtimeAvailable] = await Promise.all([
+        pathExists(assertInsideProject(spec.masterPath)),
+        pathExists(assertInsideProject(spec.runtimePath)),
+      ]);
+      return masterAvailable && runtimeAvailable ? spec.id : null;
+    },
+  );
+  return availability.filter(Boolean);
 }
 
 async function inspectAsset(filePath) {
@@ -256,10 +301,18 @@ async function main() {
   assert.equal(new Set(ENVIRONMENT_PROP_SPECS.map(({ id }) => id)).size, 800);
 
   const runtimeAssets = ENVIRONMENT_PROP_SPECS.map(runtimeAssetFromSpec);
-  await writeFile(runtimeDataPath, runtimeDataModule(runtimeAssets), "utf8");
+  const availableIds = await availableRuntimeIds();
+  await Promise.all([
+    writeFile(runtimeDataPath, runtimeDataModule(runtimeAssets), "utf8"),
+    writeFile(
+      availabilityDataPath,
+      availabilityDataModule(availableIds),
+      "utf8",
+    ),
+  ]);
   if (process.argv.includes("--runtime-data-only")) {
     console.log(
-      `Biome decor V19 runtime data: ${runtimeAssets.length} sanitized entries written.`,
+      `Biome decor V19 runtime data: ${runtimeAssets.length} sanitized entries, ${availableIds.length} available pairs written.`,
     );
     return;
   }

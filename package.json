@@ -6,6 +6,7 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "prebuild": "npm run biome-decor:v19:runtime-data",
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",

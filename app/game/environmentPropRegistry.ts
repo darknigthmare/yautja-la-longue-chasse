@@ -5,6 +5,7 @@ import {
   type EnvironmentPropRole,
   type EnvironmentPropRuntimeAsset,
 } from "./environmentPropRuntimeData";
+import { ENVIRONMENT_PROP_AVAILABLE_RUNTIME_IDS } from "./environmentPropAvailabilityData";
 import type { MissionId } from "./types";
 import { worldBlueprintFor } from "./systems/worldBlueprints";
 import {
@@ -293,14 +294,36 @@ function round(value: number, precision = 3): number {
   return Math.round(value * factor) / factor;
 }
 
-const runtimeAssetsByBiome = new Map<
+function normalizedEncounterRun(encounterRun: number): number {
+  return Number.isFinite(encounterRun)
+    ? Math.max(0, Math.floor(encounterRun))
+    : 0;
+}
+
+const availableRuntimeAssetIds = new Set(
+  ENVIRONMENT_PROP_AVAILABLE_RUNTIME_IDS,
+);
+
+export const ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS = Object.freeze(
+  ENVIRONMENT_PROP_RUNTIME_ASSETS.filter((asset) =>
+    availableRuntimeAssetIds.has(asset.id),
+  ),
+);
+
+export function isEnvironmentPropRuntimeAvailable(
+  asset: Pick<EnvironmentPropRuntimeAsset, "id">,
+): boolean {
+  return availableRuntimeAssetIds.has(asset.id);
+}
+
+const availableRuntimeAssetsByBiome = new Map<
   EnvironmentPropBiomeId,
   readonly EnvironmentPropRuntimeAsset[]
 >(
   ENVIRONMENT_PROP_BIOME_IDS.map((biomeId) => [
     biomeId,
     Object.freeze(
-      ENVIRONMENT_PROP_RUNTIME_ASSETS.filter(
+      ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
         (asset) => asset.biomeId === biomeId,
       ),
     ),
@@ -341,7 +364,8 @@ function selectGameplayAsset(
   biomeId: EnvironmentPropBiomeId,
   feature: WorldScreenFeature,
   usedAssetIds: ReadonlySet<string>,
-): EnvironmentPropRuntimeAsset {
+  encounterRun: number,
+): EnvironmentPropRuntimeAsset | null {
   const hints = archetypeHintsForFeature(biomeId, feature);
   if (hints.length === 0) {
     throw new RangeError(
@@ -349,10 +373,9 @@ function selectGameplayAsset(
     );
   }
 
-  const candidates = (runtimeAssetsByBiome.get(biomeId) ?? [])
+  const candidates = (availableRuntimeAssetsByBiome.get(biomeId) ?? [])
     .filter(
       (asset) =>
-        !usedAssetIds.has(asset.id) &&
         isEnvironmentPropCompatibleWithFeature(biomeId, feature, asset),
     )
     .sort((left, right) => {
@@ -361,19 +384,28 @@ function selectGameplayAsset(
       return leftHint - rightHint || left.id.localeCompare(right.id);
     });
 
-  if (candidates.length === 0) {
-    throw new RangeError(
-      `${missionId}/${feature.id}: no unused compatible V19 prop remains`,
-    );
+  const unusedCandidates = candidates.filter(
+    (asset) => !usedAssetIds.has(asset.id),
+  );
+  const pool =
+    unusedCandidates.length > 0 ? unusedCandidates : candidates;
+
+  if (pool.length === 0) {
+    return null;
   }
 
-  return candidates[
-    stableHash(`${missionId}:${feature.id}:${feature.role}:${feature.kind}`) %
-      candidates.length
+  return pool[
+    (stableHash(
+      `${missionId}:${feature.id}:${feature.role}:${feature.kind}`,
+    ) +
+      normalizedEncounterRun(encounterRun)) %
+      pool.length
   ];
 }
 
-function createGameplayAssignments(): readonly EnvironmentGameplayPropAssignment[] {
+function createGameplayAssignments(
+  encounterRun: number,
+): readonly EnvironmentGameplayPropAssignment[] {
   const assignments: EnvironmentGameplayPropAssignment[] = [];
 
   for (const layout of Object.values(WORLD_SCREENS_BY_MISSION)) {
@@ -394,7 +426,9 @@ function createGameplayAssignments(): readonly EnvironmentGameplayPropAssignment
         biomeId,
         feature,
         usedAssetIds,
+        encounterRun,
       );
+      if (!asset) continue;
       usedAssetIds.add(asset.id);
       assignments.push(
         Object.freeze({
@@ -415,9 +449,6 @@ function createGameplayAssignments(): readonly EnvironmentGameplayPropAssignment
   return Object.freeze(assignments);
 }
 
-export const ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS =
-  createGameplayAssignments();
-
 type PhysicalEnvironmentPropRole = Exclude<
   EnvironmentPropRole,
   "decoration"
@@ -435,8 +466,11 @@ function selectLegacyGeometryAsset(
   geometryId: string,
   geometryRole: PhysicalEnvironmentPropRole,
   usedAssetIds: ReadonlySet<string>,
-): EnvironmentPropRuntimeAsset {
-  const candidates = [...(runtimeAssetsByBiome.get(biomeId) ?? [])]
+  encounterRun: number,
+): EnvironmentPropRuntimeAsset | null {
+  const candidates = [
+    ...(availableRuntimeAssetsByBiome.get(biomeId) ?? []),
+  ]
     .filter((asset) => asset.role === geometryRole)
     .sort((left, right) => left.id.localeCompare(right.id));
   const unusedCandidates = candidates.filter(
@@ -446,29 +480,32 @@ function selectLegacyGeometryAsset(
     unusedCandidates.length > 0 ? unusedCandidates : candidates;
 
   if (pool.length === 0) {
-    throw new RangeError(
-      `${missionId}/${geometryId}: no V19 ${geometryRole} prop exists`,
-    );
+    return null;
   }
 
   return pool[
-    stableHash(`${missionId}:${geometryId}:${geometryRole}`) % pool.length
+    (stableHash(`${missionId}:${geometryId}:${geometryRole}`) +
+      normalizedEncounterRun(encounterRun)) %
+      pool.length
   ];
 }
 
-function createLegacyGeometryAssignments(): readonly EnvironmentLegacyGeometryPropAssignment[] {
+function createLegacyGeometryAssignments(
+  gameplayAssignments: readonly EnvironmentGameplayPropAssignment[],
+  encounterRun: number,
+): readonly EnvironmentLegacyGeometryPropAssignment[] {
   const assignments: EnvironmentLegacyGeometryPropAssignment[] = [];
 
   for (const layout of Object.values(WORLD_SCREENS_BY_MISSION)) {
     const biomeId = layout.biome as EnvironmentPropBiomeId;
     const world = worldBlueprintFor(layout.missionId);
     const featureGeometryIds = new Set(
-      ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.filter(
-        (assignment) => assignment.missionId === layout.missionId,
-      ).map((assignment) => assignment.geometryId),
+      layout.screens.flatMap((screen) =>
+        screen.features.map((feature) => `feature-${feature.id}`),
+      ),
     );
     const usedAssetIds = new Set(
-      ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.filter(
+      gameplayAssignments.filter(
         (assignment) => assignment.missionId === layout.missionId,
       ).map((assignment) => assignment.asset.id),
     );
@@ -508,7 +545,9 @@ function createLegacyGeometryAssignments(): readonly EnvironmentLegacyGeometryPr
           geometry.id,
           role,
           usedAssetIds,
+          encounterRun,
         );
+        if (!asset) continue;
         usedAssetIds.add(asset.id);
         assignments.push(
           Object.freeze({
@@ -529,25 +568,66 @@ function createLegacyGeometryAssignments(): readonly EnvironmentLegacyGeometryPr
   return Object.freeze(assignments);
 }
 
+interface EnvironmentAssignmentSet {
+  gameplay: readonly EnvironmentGameplayPropAssignment[];
+  legacy: readonly EnvironmentLegacyGeometryPropAssignment[];
+  gameplayByFeatureKey: ReadonlyMap<
+    string,
+    EnvironmentGameplayPropAssignment
+  >;
+  geometryByGeometryKey: ReadonlyMap<
+    string,
+    EnvironmentGeometryPropAssignment
+  >;
+}
+
+function createEnvironmentAssignmentSet(
+  encounterRun: number,
+): EnvironmentAssignmentSet {
+  const gameplay = createGameplayAssignments(encounterRun);
+  const legacy = createLegacyGeometryAssignments(
+    gameplay,
+    encounterRun,
+  );
+  return Object.freeze({
+    gameplay,
+    legacy,
+    gameplayByFeatureKey: new Map(
+      gameplay.map((assignment) => [
+        `${assignment.missionId}:${assignment.featureId}`,
+        assignment,
+      ]),
+    ),
+    geometryByGeometryKey: new Map(
+      [...gameplay, ...legacy].map((assignment) => [
+        `${assignment.missionId}:${assignment.geometryId}`,
+        assignment,
+      ]),
+    ),
+  });
+}
+
+const defaultAssignmentSet = createEnvironmentAssignmentSet(0);
+const assignmentSetByEncounterRun = new Map<number, EnvironmentAssignmentSet>([
+  [0, defaultAssignmentSet],
+]);
+
+function environmentAssignmentSetForRun(
+  encounterRun: number,
+): EnvironmentAssignmentSet {
+  const normalizedRun = normalizedEncounterRun(encounterRun);
+  const cached = assignmentSetByEncounterRun.get(normalizedRun);
+  if (cached) return cached;
+  const created = createEnvironmentAssignmentSet(normalizedRun);
+  assignmentSetByEncounterRun.set(normalizedRun, created);
+  return created;
+}
+
+export const ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS =
+  defaultAssignmentSet.gameplay;
+
 export const ENVIRONMENT_LEGACY_GEOMETRY_PROP_ASSIGNMENTS =
-  createLegacyGeometryAssignments();
-
-const gameplayAssignmentByFeatureKey = new Map(
-  ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.map((assignment) => [
-    `${assignment.missionId}:${assignment.featureId}`,
-    assignment,
-  ]),
-);
-
-const geometryAssignmentByGeometryKey = new Map(
-  [
-    ...ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS,
-    ...ENVIRONMENT_LEGACY_GEOMETRY_PROP_ASSIGNMENTS,
-  ].map((assignment) => [
-    `${assignment.missionId}:${assignment.geometryId}`,
-    assignment,
-  ]),
-);
+  defaultAssignmentSet.legacy;
 
 function estimatedBaseWidth(role: EnvironmentPropRole): number {
   switch (role) {
@@ -588,7 +668,9 @@ function createDecorPlacements(): readonly EnvironmentDecorPropPlacement[] {
 
   for (const layout of Object.values(WORLD_SCREENS_BY_MISSION)) {
     const biomeId = layout.biome as EnvironmentPropBiomeId;
-    const leftovers = [...(runtimeAssetsByBiome.get(biomeId) ?? [])]
+    const leftovers = [
+      ...(availableRuntimeAssetsByBiome.get(biomeId) ?? []),
+    ]
       .filter((asset) => asset.role === "decoration")
       .sort(
         (left, right) =>
@@ -597,9 +679,9 @@ function createDecorPlacements(): readonly EnvironmentDecorPropPlacement[] {
           left.id.localeCompare(right.id),
       );
 
-    if (leftovers.length !== ENVIRONMENT_DECOR_PROPS_PER_BIOME) {
+    if (leftovers.length > ENVIRONMENT_DECOR_PROPS_PER_BIOME) {
       throw new RangeError(
-        `${layout.missionId}: expected ${ENVIRONMENT_DECOR_PROPS_PER_BIOME} decor props, received ${leftovers.length}`,
+        `${layout.missionId}: expected at most ${ENVIRONMENT_DECOR_PROPS_PER_BIOME} decor props, received ${leftovers.length}`,
       );
     }
 
@@ -693,16 +775,24 @@ for (const placement of ENVIRONMENT_DECOR_PROP_PLACEMENTS) {
 export function environmentGameplayPropForFeatureId(
   missionId: MissionId,
   featureId: string,
+  encounterRun = 0,
 ): EnvironmentGameplayPropAssignment | null {
-  return gameplayAssignmentByFeatureKey.get(`${missionId}:${featureId}`) ?? null;
+  return (
+    environmentAssignmentSetForRun(
+      encounterRun,
+    ).gameplayByFeatureKey.get(`${missionId}:${featureId}`) ?? null
+  );
 }
 
 export function environmentGameplayPropForGeometryId(
   missionId: MissionId,
   geometryId: string,
+  encounterRun = 0,
 ): EnvironmentGeometryPropAssignment | null {
   return (
-    geometryAssignmentByGeometryKey.get(`${missionId}:${geometryId}`) ?? null
+    environmentAssignmentSetForRun(
+      encounterRun,
+    ).geometryByGeometryKey.get(`${missionId}:${geometryId}`) ?? null
   );
 }
 
@@ -754,15 +844,20 @@ export function cullEnvironmentDecorPlacements(
 export function environmentPropRuntimeUrlsForSector(
   missionId: MissionId,
   screenId: string,
+  encounterRun = 0,
 ): readonly string[] {
+  const assignmentSet = environmentAssignmentSetForRun(encounterRun);
   const gameplayUrls = [
-    ...ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS,
-    ...ENVIRONMENT_LEGACY_GEOMETRY_PROP_ASSIGNMENTS,
+    ...assignmentSet.gameplay,
+    ...assignmentSet.legacy,
   ]
     .filter(
       (assignment) =>
         assignment.missionId === missionId &&
         assignment.screenId === screenId,
+    )
+    .filter((assignment) =>
+      isEnvironmentPropRuntimeAvailable(assignment.asset),
     )
     .map((assignment) => assignment.asset.runtimeUrl);
   const decorUrls = environmentDecorPlacementsForSector(
