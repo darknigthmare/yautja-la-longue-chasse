@@ -150,10 +150,17 @@ test("the V7 archive remains intact while V8 drives the bestiary and renderer", 
     readFile(join(projectRoot, "app/game/HuntCanvas.tsx"), "utf8"),
     readFile(join(projectRoot, "app/globals.css"), "utf8"),
   ]);
-  assert.match(client, /<EnemyBestiaryV8 \/>/);
+  assert.match(
+    client,
+    /<EnemyBestiaryV8[\s\S]*discoveredEnemyIds=\{save\.codex\.discoveredEnemyIds\}/,
+  );
   assert.match(archivedBestiary, /ENEMY_V7_FRAME_LABELS/);
   assert.match(planetaryBestiary, /ECOLOGY_V8_PLANETS/);
   assert.match(planetaryBestiary, /enemy-sprite-preview-track/);
+  assert.match(planetaryBestiary, /discoveredEnemyIdSet\.has\(enemy\.id\)/);
+  assert.match(planetaryBestiary, /isDiscovered \? "" : " is-locked"/);
+  assert.match(planetaryBestiary, /Signature non identifiée/);
+  assert.match(planetaryBestiary, /déclenche le scan du biomask/);
   assert.match(canvas, /enemyV7ForWave\(wave\.id, index\)/);
   assert.match(canvas, /ecologyEncounterEnemyAt/);
   assert.match(canvas, /assets\.enemyV8/);
@@ -166,5 +173,6 @@ test("the V7 archive remains intact while V8 drives the bestiary and renderer", 
   assert.match(canvas, /if \(!assetsLoaded\)/);
   assert.match(canvas, /const ecologyRunSeed = encounterRun/);
   assert.match(css, /@keyframes enemy-sprite-sheet-cycle/);
+  assert.match(css, /\.enemy-bestiary-card\.is-locked \.enemy-sprite-preview-track/);
   assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
 });

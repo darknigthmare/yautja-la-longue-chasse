@@ -133,7 +133,7 @@ test("unnamed species and continuity are never inflated into screen canon", () =
 });
 
 test("formal franchise archive entries remain non-playable and separate from V15", () => {
-  assert.match(gameClientSource, /ARCHIVE V16 · NON JOUABLE/);
+  assert.match(gameClientSource, /DOSSIER DU CLAN · NON JOUABLE/);
   assert.match(gameClientSource, /FRANCHISE_TROPHY_ARCHIVE_ASSETS\.map/);
   assert.match(
     gameClientSource,

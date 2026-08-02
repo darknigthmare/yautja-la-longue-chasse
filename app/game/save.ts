@@ -13,6 +13,11 @@ import {
   appearanceForPreset,
   type HunterLorePresetId,
 } from "./hunterLore";
+import { ENEMY_V7_DEFINITIONS } from "./enemyRosterV7";
+import {
+  ECOLOGY_V8_BOSS_ENEMY_IDS,
+  ECOLOGY_V8_ENEMIES,
+} from "./ecologyV8";
 import type {
   ArmorId,
   CodexEntryId,
@@ -148,6 +153,21 @@ const TROPHY_WORKSHOP_ACTION_IDS = [
   "display",
   "rite",
 ] as const;
+const DISCOVERABLE_ENEMY_IDS = [
+  ...new Set([
+    ...ENEMY_V7_DEFINITIONS.map(({ id }) => id),
+    ...ECOLOGY_V8_ENEMIES.map(({ id }) => id),
+  ]),
+] as readonly string[];
+const DISCOVERABLE_ENEMY_ID_SET = new Set(DISCOVERABLE_ENEMY_IDS);
+// There cannot be more persisted discoveries than authored roster entries.
+// The wider input cap also bounds work on hostile/corrupt payloads while
+// tolerating duplicates from long mission sessions.
+const MAX_DISCOVERED_ENEMY_IDS = DISCOVERABLE_ENEMY_IDS.length;
+const MAX_DISCOVERED_ENEMY_INPUT_ITEMS = Math.max(
+  512,
+  MAX_DISCOVERED_ENEMY_IDS * 4,
+);
 // The V18 field guide exposes 228 enemy identities in addition to the eight
 // Apex claims. Keep enough physical slots to complete that collection while
 // still bounding malformed or endlessly replayed saves.
@@ -268,6 +288,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
         "cloaking-device",
       ],
       scanCounts: {},
+      discoveredEnemyIds: [],
     },
     statistics: {
       missionsStarted: 0,
@@ -362,6 +383,37 @@ function uniqueAllowedIds<T extends string>(
       value.filter((item): item is T => isOneOf(item, allowed)),
     ),
   ];
+}
+
+function normalizeDiscoveredEnemyIds(
+  value: unknown,
+  fallback: readonly string[] = [],
+): string[] {
+  const source = Array.isArray(value) ? value : fallback;
+  const discoveredEnemyIds: string[] = [];
+  const seen = new Set<string>();
+  const inputLength = Math.min(
+    source.length,
+    MAX_DISCOVERED_ENEMY_INPUT_ITEMS,
+  );
+
+  for (let index = 0; index < inputLength; index += 1) {
+    const id = source[index];
+    if (
+      typeof id !== "string" ||
+      seen.has(id) ||
+      !DISCOVERABLE_ENEMY_ID_SET.has(id)
+    ) {
+      continue;
+    }
+    seen.add(id);
+    discoveredEnemyIds.push(id);
+    if (discoveredEnemyIds.length >= MAX_DISCOVERED_ENEMY_IDS) {
+      break;
+    }
+  }
+
+  return discoveredEnemyIds;
 }
 
 function validIsoDate(value: unknown, fallback: string): string {
@@ -953,16 +1005,26 @@ export function normalizeSave(value: unknown): SaveGame {
       ]),
     ) as Record<MissionId, MissionProgress>,
   );
+  const storyCompleted =
+    booleanValue(source.storyCompleted, false) ||
+    missionProgress[FINAL_STORY_MISSION_ID].completions > 0;
   const honor = nonNegativeInteger(
     rawProfile.honor,
     fallback.profile.honor,
   );
-  const difficultyId = isOneOf(
+  const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
   )
     ? rawSettings.difficultyId
     : fallback.settings.difficultyId;
+  // Elder is a post-campaign rite. Legacy V3 saves can retain that setting
+  // while V4 reopens the extended story, and malformed current payloads can
+  // create the same impossible state. Keep the strongest unlocked difficulty.
+  const difficultyId =
+    requestedDifficultyId === "elder" && !storyCompleted
+      ? "elite"
+      : requestedDifficultyId;
   const unlockedEntryIds = uniqueAllowedIds(
     rawCodex.unlockedEntryIds,
     CODEX_ENTRIES.map(({ id }) => id) satisfies readonly CodexEntryId[],
@@ -971,6 +1033,15 @@ export function normalizeSave(value: unknown): SaveGame {
   const rawScanCounts = isRecord(rawCodex.scanCounts)
     ? rawCodex.scanCounts
     : {};
+  const completedLegacyBossEnemyIds = MISSIONS.flatMap((mission) => {
+    if (missionProgress[mission.id].completions <= 0) return [];
+    const enemyId = ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id];
+    return enemyId ? [enemyId] : [];
+  });
+  const discoveredEnemyIds = normalizeDiscoveredEnemyIds(
+    rawCodex.discoveredEnemyIds,
+    completedLegacyBossEnemyIds,
+  );
   const weaponUpgrades = normalizeUpgradeRecord(
     rawInventory.weaponUpgrades,
     WEAPON_IDS,
@@ -1032,7 +1103,7 @@ export function normalizeSave(value: unknown): SaveGame {
     appearance: normalizeAppearance(source.appearance),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
-    codex: { unlockedEntryIds, scanCounts },
+    codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     statistics: {
       missionsStarted: nonNegativeInteger(
         rawStatistics.missionsStarted,
@@ -1100,9 +1171,7 @@ export function normalizeSave(value: unknown): SaveGame {
         fallback.settings.highContrastVision,
       ),
     },
-    storyCompleted:
-      booleanValue(source.storyCompleted, false) ||
-      missionProgress[FINAL_STORY_MISSION_ID].completions > 0,
+    storyCompleted,
   };
 }
 
@@ -1142,26 +1211,50 @@ export function loadSave(
  * Normalize before writing so callers cannot persist transient Canvas values.
  * The returned object is exactly the snapshot placed in localStorage.
  */
-export function writeSave(
+export interface SaveWriteResult {
+  save: SaveGame;
+  persisted: boolean;
+  failure: "storage-unavailable" | "write-failed" | null;
+}
+
+/**
+ * Persist a normalized snapshot while exposing storage failures to the UI.
+ * Gameplay remains usable in memory when privacy mode or a full quota blocks
+ * localStorage, but callers can no longer mistake that state for autosave.
+ */
+export function writeSaveWithStatus(
   save: SaveGame,
   storage: Storage | null = browserStorage(),
   key = SAVE_STORAGE_KEY,
-): SaveGame {
+): SaveWriteResult {
   const normalized = normalizeSave(save);
   const snapshot: SaveGame = {
     ...normalized,
     updatedAt: new Date().toISOString(),
   };
 
-  if (storage) {
-    try {
-      storage.setItem(key, JSON.stringify(snapshot));
-    } catch {
-      // The in-memory snapshot remains usable when storage is unavailable/full.
-    }
+  if (!storage) {
+    return {
+      save: snapshot,
+      persisted: false,
+      failure: "storage-unavailable",
+    };
   }
 
-  return snapshot;
+  try {
+    storage.setItem(key, JSON.stringify(snapshot));
+    return { save: snapshot, persisted: true, failure: null };
+  } catch {
+    return { save: snapshot, persisted: false, failure: "write-failed" };
+  }
+}
+
+export function writeSave(
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveGame {
+  return writeSaveWithStatus(save, storage, key).save;
 }
 
 // ---------------------------------------------------------------------------
@@ -1347,6 +1440,13 @@ export function applyMissionResult(
   const elapsedSeconds = nonNegativeInteger(rawResult.elapsedSeconds, 0);
   const kills = nonNegativeInteger(rawResult.kills, 0);
   const scans = nonNegativeInteger(rawResult.scans, 0);
+  const reportedDiscoveredEnemyIds = normalizeDiscoveredEnemyIds(
+    rawResult.discoveredEnemyIds,
+  );
+  const discoveredEnemyIds = normalizeDiscoveredEnemyIds([
+    ...save.codex.discoveredEnemyIds,
+    ...reportedDiscoveredEnemyIds,
+  ]);
   const previous = save.missionProgress[mission.id];
   const validObjectiveIds = mission.objectives.map(
     (objective) => objective.id,
@@ -1374,6 +1474,7 @@ export function applyMissionResult(
     elapsedSeconds,
     kills,
     scans,
+    discoveredEnemyIds: reportedDiscoveredEnemyIds,
     completedObjectiveIds,
     trophyQuality,
     trophyClaims,
@@ -1437,6 +1538,10 @@ export function applyMissionResult(
       missionProgress: {
         ...save.missionProgress,
         [mission.id]: baseProgress,
+      },
+      codex: {
+        ...save.codex,
+        discoveredEnemyIds,
       },
       statistics: {
         ...baseStatistics,
@@ -1554,6 +1659,7 @@ export function applyMissionResult(
         save.codex.unlockedEntryIds,
         mission.codexUnlockIds,
       ),
+      discoveredEnemyIds,
       scanCounts: {
         ...save.codex.scanCounts,
         ...Object.fromEntries(

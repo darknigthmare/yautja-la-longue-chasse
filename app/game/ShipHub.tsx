@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import TrainingDrill from "./TrainingDrill";
 import {
   DEFAULT_SHIP_ID,
   SHIP_CATALOGUE,
@@ -146,7 +147,7 @@ export interface ShipHubProps {
   ) => void;
   /**
    * Return a score when an external drill completes. Without this callback,
-   * the hub runs a deterministic calibration drill based on current records.
+   * the hub opens its autonomous, playable training drill.
    */
   onTrainingRequested?: (
     disciplineId: TrainingDisciplineId,
@@ -171,6 +172,11 @@ const SLOT_ORDER: readonly ShipLoadoutSlotId[] = [
   "hunt-3",
   "hunt-4",
 ];
+
+interface TrainingSession {
+  disciplineId: TrainingDisciplineId;
+  seed: number;
+}
 
 function roomIndex(roomId: ShipRoomId): number {
   return Math.max(
@@ -225,6 +231,8 @@ export default function ShipHub({
   const [statusMessage, setStatusMessage] = useState(
     "Console du vaisseau prête.",
   );
+  const [trainingSession, setTrainingSession] =
+    useState<TrainingSession | null>(null);
   const rootRef = useRef<HTMLElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -365,38 +373,78 @@ export default function ShipHub({
     [activeRoomId, selectRoom],
   );
 
-  const requestTraining = useCallback(
-    async (disciplineId: TrainingDisciplineId) => {
-      const externalScore = await onTrainingRequested?.(disciplineId);
-      const score =
-        typeof externalScore === "number"
-          ? externalScore
-          : 45 +
-            Math.min(
-              45,
-              save.statistics.totalScans * 2 +
-                save.statistics.currentHuntStreak * 4,
-            );
-      commitProgression(
-        recordTrainingResult(
-          progression,
-          disciplineId,
-          score,
-        ),
+  const recordCompletedTraining = useCallback(
+    (disciplineId: TrainingDisciplineId, score: number) => {
+      const next = recordTrainingResult(
+        progression,
+        disciplineId,
+        score,
       );
+      const recordedScore = next.training[disciplineId].lastScore;
+      commitProgression(next);
       notify(
-        `${TRAINING_LABELS[disciplineId]} : calibration ${Math.round(score)}/100.`,
+        `${TRAINING_LABELS[disciplineId]} : résultat ${recordedScore}/100 consigné.`,
       );
     },
+    [commitProgression, notify, progression],
+  );
+
+  const requestTraining = useCallback(
+    async (disciplineId: TrainingDisciplineId) => {
+      if (!onTrainingRequested) {
+        const record = progression.training[disciplineId];
+        setTrainingSession({
+          disciplineId,
+          seed: record.attempts,
+        });
+        notify(
+          `${TRAINING_LABELS[disciplineId]} : épreuve autonome prête.`,
+        );
+        return;
+      }
+
+      try {
+        const externalScore = await onTrainingRequested(disciplineId);
+        if (
+          typeof externalScore === "number" &&
+          Number.isFinite(externalScore)
+        ) {
+          recordCompletedTraining(disciplineId, externalScore);
+        } else {
+          notify(
+            `${TRAINING_LABELS[disciplineId]} : aucun résultat externe consigné.`,
+          );
+        }
+      } catch {
+        notify(
+          `${TRAINING_LABELS[disciplineId]} : épreuve externe indisponible.`,
+        );
+      }
+    },
     [
-      commitProgression,
       notify,
       onTrainingRequested,
-      progression,
-      save.statistics.currentHuntStreak,
-      save.statistics.totalScans,
+      progression.training,
+      recordCompletedTraining,
     ],
   );
+
+  const completeAutonomousTraining = useCallback(
+    (score: number) => {
+      if (!trainingSession) return;
+      recordCompletedTraining(trainingSession.disciplineId, score);
+      setTrainingSession(null);
+    },
+    [recordCompletedTraining, trainingSession],
+  );
+
+  const cancelAutonomousTraining = useCallback(() => {
+    if (!trainingSession) return;
+    notify(
+      `${TRAINING_LABELS[trainingSession.disciplineId]} : épreuve abandonnée, aucun score consigné.`,
+    );
+    setTrainingSession(null);
+  }, [notify, trainingSession]);
 
   const actions = useMemo<HubActionDefinition[]>(() => {
     const firstEmptyPreset =
@@ -614,7 +662,7 @@ export default function ShipHub({
         {
           id: "open-trophy-ledger",
           label: "Ouvrir l’atelier des trophées",
-          detail: `${save.trophies.length} trophée(s) · nettoyage, montage, exposition et rite se jouent en mini-jeu.`,
+          detail: `${save.trophies.length} trophée(s) · nettoyage, montage, exposition et rite disposent chacun d’une épreuve rituelle.`,
           run: onOpenTrophies,
         },
       ];
@@ -756,7 +804,13 @@ export default function ShipHub({
   );
 
   useEffect(() => {
-    if (!gamepadEnabled || typeof navigator === "undefined") return;
+    if (
+      !gamepadEnabled ||
+      trainingSession !== null ||
+      typeof navigator === "undefined"
+    ) {
+      return;
+    }
     let animationFrame = 0;
     let previous = Array.from({ length: 6 }, () => false);
 
@@ -813,10 +867,12 @@ export default function ShipHub({
     moveRoom,
     safeActionIndex,
     selectRoom,
+    trainingSession,
   ]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
+      if (trainingSession !== null) return;
       const target = event.target;
       if (
         target instanceof HTMLInputElement ||
@@ -866,6 +922,7 @@ export default function ShipHub({
       moveRoom,
       safeActionIndex,
       selectRoom,
+      trainingSession,
     ],
   );
 
@@ -995,6 +1052,14 @@ export default function ShipHub({
           </p>
         </footer>
       </div>
+      {trainingSession ? (
+        <TrainingDrill
+          disciplineId={trainingSession.disciplineId}
+          seed={trainingSession.seed}
+          onComplete={completeAutonomousTraining}
+          onCancel={cancelAutonomousTraining}
+        />
+      ) : null}
     </section>
   );
 }
@@ -1114,8 +1179,7 @@ function RoomSummary({
               draggable={false}
             />
             <figcaption>
-              Profil / trois-quarts ·{" "}
-              {inspectedShip.provenance.primaryAssetVersion}
+              Profil / trois-quarts · étude de référence
             </figcaption>
           </figure>
           <figure>
@@ -1125,8 +1189,7 @@ function RoomSummary({
               draggable={false}
             />
             <figcaption>
-              Vue zénithale orthographique ·{" "}
-              {inspectedShip.provenance.primaryAssetVersion}
+              Vue zénithale orthographique · étude de référence
             </figcaption>
           </figure>
         </div>
@@ -1147,7 +1210,7 @@ function RoomSummary({
                   alt={`Ancien profil original de ${inspectedShip.name}`}
                   draggable={false}
                 />
-                <figcaption>Étude indépendante · V14</figcaption>
+                <figcaption>Étude indépendante · profil</figcaption>
               </figure>
               <figure>
                 <img
@@ -1155,7 +1218,7 @@ function RoomSummary({
                   alt={`Ancienne vue de dessus originale de ${inspectedShip.name}`}
                   draggable={false}
                 />
-                <figcaption>Étude zénithale indépendante · V14</figcaption>
+                <figcaption>Étude indépendante · vue zénithale</figcaption>
               </figure>
             </div>
           </div>

@@ -24,7 +24,13 @@ const CATEGORY_LABELS: Record<EcologyV8Category, string> = {
 type CategoryFilter = "all" | EcologyV8Category;
 type DistributionFilter = "all" | EcologyV8Distribution;
 
-export default function EnemyBestiaryV8() {
+export interface EnemyBestiaryV8Props {
+  discoveredEnemyIds: readonly string[];
+}
+
+export default function EnemyBestiaryV8({
+  discoveredEnemyIds,
+}: EnemyBestiaryV8Props) {
   const [planetId, setPlanetId] = useState<EcologyV8PlanetId>(
     ECOLOGY_V8_PLANETS[0].id,
   );
@@ -39,6 +45,16 @@ export default function EnemyBestiaryV8() {
     [planetId],
   );
   const planetEnemies = useMemo(() => ecologyV8ForPlanet(planet.id), [planet]);
+  const discoveredEnemyIdSet = useMemo(
+    () => new Set(discoveredEnemyIds),
+    [discoveredEnemyIds],
+  );
+  const discoveredOnPlanet = useMemo(
+    () =>
+      planetEnemies.filter((enemy) => discoveredEnemyIdSet.has(enemy.id))
+        .length,
+    [discoveredEnemyIdSet, planetEnemies],
+  );
   const visibleEnemies = useMemo(
     () =>
       planetEnemies.filter(
@@ -53,16 +69,15 @@ export default function EnemyBestiaryV8() {
     <section className="enemy-bestiary-v8" aria-labelledby="enemy-bestiary-v8-title">
       <header className="enemy-bestiary-v8-heading">
         <div>
-          <p className="eyebrow">Archive écologique // V8</p>
+          <p className="eyebrow">Archive écologique // biomask</p>
           <h2 id="enemy-bestiary-v8-title">Écosystèmes planétaires</h2>
           <p>
-            Chaque monde possède 30 rencontres : 24 espèces endémiques et 6
-            menaces voyageuses. Chaque créature utilise une planche d&apos;animation
-            indépendante en six poses.
+            Analyse les signatures pendant les chasses pour révéler leur
+            identité, leur comportement et le trophée digne d&apos;être prélevé.
           </p>
         </div>
         <span className="enemy-bestiary-count" aria-live="polite">
-          {visibleEnemies.length} / 30
+          {discoveredOnPlanet} / {planetEnemies.length} identifiées
         </span>
       </header>
 
@@ -145,16 +160,24 @@ export default function EnemyBestiaryV8() {
       </div>
 
       <div className="enemy-bestiary-grid">
-        {visibleEnemies.map((enemy) => (
-          <article
-            className={`enemy-bestiary-card category-${enemy.category}`}
-            key={enemy.id}
-          >
+        {visibleEnemies.map((enemy) => {
+          const isDiscovered = discoveredEnemyIdSet.has(enemy.id);
+          return (
+            <article
+              className={`enemy-bestiary-card category-${enemy.category}${
+                isDiscovered ? "" : " is-locked"
+              }`}
+              key={enemy.id}
+            >
             <figure>
               <div
                 className="enemy-sprite-preview"
                 role="img"
-                aria-label={`${enemy.name}, planche d'animation en six poses`}
+                aria-label={
+                  isDiscovered
+                    ? `${enemy.name}, relevé biomask animé`
+                    : "Signature biologique non identifiée"
+                }
               >
                 <img
                   className="enemy-sprite-preview-track"
@@ -166,40 +189,62 @@ export default function EnemyBestiaryV8() {
                 />
               </div>
               <figcaption>
-                <span>{CATEGORY_LABELS[enemy.category]}</span>
-                <strong>Menace {enemy.threat}/4</strong>
+                <span>
+                  {isDiscovered
+                    ? CATEGORY_LABELS[enemy.category]
+                    : "Signature brouillée"}
+                </span>
+                <strong>
+                  {isDiscovered ? `Menace ${enemy.threat}/4` : "Scan requis"}
+                </strong>
               </figcaption>
             </figure>
             <div className="enemy-bestiary-card-copy">
-              <div className="ecology-card-kicker">
-                <span className={`distribution-${enemy.distribution}`}>
-                  {enemy.distribution === "endemic" ? "Endémique" : "Commune"}
-                </span>
-                <span>{enemy.role}</span>
-              </div>
-              <h3>{enemy.name}</h3>
-              <p>{enemy.behavior}</p>
-              <EnemyTrophyPreview
-                enemyId={enemy.id}
-                consumer="enemy-bestiary-v8"
-              />
-              <dl>
-                <div>
-                  <dt>Trophée</dt>
-                  <dd>{enemy.trophy}</dd>
+              {isDiscovered ? (
+                <>
+                  <div className="ecology-card-kicker">
+                    <span className={`distribution-${enemy.distribution}`}>
+                      {enemy.distribution === "endemic"
+                        ? "Endémique"
+                        : "Commune"}
+                    </span>
+                    <span>{enemy.role}</span>
+                  </div>
+                  <h3>{enemy.name}</h3>
+                  <p>{enemy.behavior}</p>
+                  <EnemyTrophyPreview
+                    enemyId={enemy.id}
+                    consumer="enemy-bestiary-v8"
+                  />
+                  <dl>
+                    <div>
+                      <dt>Trophée</dt>
+                      <dd>{enemy.trophy}</dd>
+                    </div>
+                    <div>
+                      <dt>Présence</dt>
+                      <dd>
+                        {enemy.distribution === "endemic"
+                          ? planet.name
+                          : `${enemy.planetIds.length} mondes`}
+                      </dd>
+                    </div>
+                  </dl>
+                </>
+              ) : (
+                <div className="enemy-bestiary-locked-copy">
+                  <span className="codex-label">Donnée verrouillée</span>
+                  <h3>Signature non identifiée</h3>
+                  <p>
+                    Approche cette forme de vie et déclenche le scan du biomask
+                    pour consigner son dossier.
+                  </p>
                 </div>
-                <div>
-                  <dt>Présence</dt>
-                  <dd>
-                    {enemy.distribution === "endemic"
-                      ? planet.name
-                      : `${enemy.planetIds.length} mondes`}
-                  </dd>
-                </div>
-              </dl>
+              )}
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

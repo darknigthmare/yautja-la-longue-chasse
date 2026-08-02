@@ -140,10 +140,95 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
   });
 });
 
+test("bestiary discoveries normalize to unique authored V7 and V8 roster ids", () => {
+  const source = defaultSave("2026-01-01T00:00:00.000Z");
+  assert.deepEqual(source.codex.discoveredEnemyIds, []);
+  source.codex.discoveredEnemyIds = [
+    "hell-hound-stalker",
+    "missing-enemy",
+    "common--colonial-patrol",
+    "hell-hound-stalker",
+    42,
+    null,
+    "oseris-iv--vey-jungle-marine",
+  ];
+
+  const normalized = normalizeSave(source);
+
+  assert.deepEqual(normalized.codex.discoveredEnemyIds, [
+    "hell-hound-stalker",
+    "common--colonial-patrol",
+    "oseris-iv--vey-jungle-marine",
+  ]);
+
+  delete source.codex.discoveredEnemyIds;
+  assert.deepEqual(normalizeSave(source).codex.discoveredEnemyIds, []);
+});
+
+test("legacy saves derive defeated V8 bosses without replacing an explicit discovery list", () => {
+  const legacy = defaultSave("2026-01-01T00:00:00.000Z");
+  legacy.missionProgress["swamp-hydra"].status = "completed";
+  legacy.missionProgress["swamp-hydra"].completions = 1;
+  delete legacy.codex.discoveredEnemyIds;
+
+  const migrated = normalizeSave(legacy);
+  assert.deepEqual(migrated.codex.discoveredEnemyIds, [
+    "naraka-delta--delta-hydra-juvenile",
+  ]);
+
+  legacy.codex.discoveredEnemyIds = ["hell-hound-stalker"];
+  const explicit = normalizeSave(legacy);
+  assert.deepEqual(explicit.codex.discoveredEnemyIds, [
+    "hell-hound-stalker",
+  ]);
+});
+
+test("mission results persistently merge only valid bestiary discoveries", () => {
+  const source = defaultSave("2026-01-01T00:00:00.000Z");
+  source.codex.discoveredEnemyIds = ["hell-hound-stalker"];
+  const completed = applyMissionResult(
+    source,
+    successfulResult({
+      discoveredEnemyIds: [
+        "hell-hound-stalker",
+        "common--colonial-patrol",
+        "not-in-either-roster",
+        "common--colonial-patrol",
+      ],
+    }),
+  );
+
+  assert.deepEqual(completed.codex.discoveredEnemyIds, [
+    "hell-hound-stalker",
+    "common--colonial-patrol",
+  ]);
+  assert.deepEqual(source.codex.discoveredEnemyIds, ["hell-hound-stalker"]);
+
+  const failed = applyMissionResult(
+    completed,
+    successfulResult({
+      outcome: "failed",
+      completedObjectiveIds: [],
+      trophyQuality: null,
+      trophyClaims: [],
+      discoveredEnemyIds: [
+        "oseris-iv--vey-jungle-marine",
+        "unknown-failure-contact",
+      ],
+    }),
+  );
+  assert.deepEqual(failed.codex.discoveredEnemyIds, [
+    "hell-hound-stalker",
+    "common--colonial-patrol",
+    "oseris-iv--vey-jungle-marine",
+  ]);
+});
+
 test("v3 completion at Cinder reopens the five-mission V4 campaign extension", () => {
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
   legacy.version = 3;
   legacy.storyCompleted = true;
+  legacy.settings.difficultyId = "elder";
   legacy.missionProgress["jungle-vey"].status = "completed";
   legacy.missionProgress["jungle-vey"].completions = 1;
   legacy.missionProgress["ice-cryostalker"].status = "completed";
@@ -155,8 +240,32 @@ test("v3 completion at Cinder reopens the five-mission V4 campaign extension", (
 
   assert.equal(migrated.version, SAVE_VERSION);
   assert.equal(migrated.storyCompleted, false);
+  assert.equal(migrated.settings.difficultyId, "elite");
   assert.equal(migrated.missionProgress["swamp-hydra"].status, "available");
   assert.equal(migrated.missionProgress["ruins-ancient-guardian"].status, "locked");
+});
+
+test("a current save cannot retain Elder before the extended story is complete", () => {
+  const corrupted = defaultSave("2026-01-01T00:00:00.000Z");
+  corrupted.settings.difficultyId = "elder";
+  corrupted.storyCompleted = false;
+
+  const normalized = normalizeSave(corrupted);
+
+  assert.equal(normalized.storyCompleted, false);
+  assert.equal(normalized.settings.difficultyId, "elite");
+});
+
+test("Elder remains selected when final mission progress proves the unlock", () => {
+  const completed = defaultSave("2026-01-01T00:00:00.000Z");
+  completed.settings.difficultyId = "elder";
+  completed.storyCompleted = false;
+  completed.missionProgress["ruins-ancient-guardian"].completions = 1;
+
+  const normalized = normalizeSave(completed);
+
+  assert.equal(normalized.storyCompleted, true);
+  assert.equal(normalized.settings.difficultyId, "elder");
 });
 
 test("a corrupted completed status without a completion cannot unlock the campaign", () => {

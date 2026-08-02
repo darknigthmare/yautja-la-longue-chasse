@@ -476,6 +476,10 @@ test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", a
     resolve(projectRoot, "app/game/ShipHub.tsx"),
     "utf8",
   );
+  const trainingSource = await readFile(
+    resolve(projectRoot, "app/game/TrainingDrill.tsx"),
+    "utf8",
+  );
   const clientSource = await readFile(
     resolve(projectRoot, "app/game/GameClient.tsx"),
     "utf8",
@@ -497,6 +501,12 @@ test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", a
   assert.match(source, /event\.key === "ArrowLeft"/);
   assert.match(source, /onPointerDown=/);
   assert.match(source, /onOpenCustomization/);
+  assert.match(source, /<TrainingDrill/);
+  assert.match(source, /if \(!onTrainingRequested\)/);
+  assert.doesNotMatch(source, /save\.statistics\.totalScans \* 2/);
+  assert.match(trainingSource, /role="dialog"/);
+  assert.match(trainingSource, /aria-label="Commandes tactiles"/);
+  assert.match(trainingSource, /event\.key === "Escape"/);
   assert.match(clientSource, /<ShipHub/);
   assert.match(clientSource, /inventory=\{save\.inventory\}/);
   assert.match(

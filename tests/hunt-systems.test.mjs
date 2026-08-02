@@ -477,6 +477,167 @@ test("AI progresses through suspicion, search, coordination, cover and flight", 
   assert.equal(step.intent.action, "retreat");
 });
 
+test("a relayed AI alert immediately turns an isolated patrol into a real search", async () => {
+  const hunt = await huntPromise;
+  const patrol = hunt.createAiBrain("soldier-02", "human");
+  const relayedTarget = { x: 640, y: 600 };
+  const alerted = hunt.receiveAiAlert(patrol, relayedTarget, [
+    "soldier-03",
+    "soldier-02",
+    "soldier-01",
+    "soldier-03",
+  ]);
+
+  assert.equal(patrol.mode, "patrol");
+  assert.equal(alerted.mode, "search");
+  assert.equal(alerted.timeInMode, 0);
+  assert.equal(alerted.lostContactSeconds, 0);
+  assert.ok(alerted.suspicion >= 0.56);
+  assert.deepEqual(alerted.lastKnownTarget, relayedTarget);
+  assert.notEqual(alerted.lastKnownTarget, relayedTarget);
+  assert.deepEqual(alerted.alertedAllyIds, ["soldier-01", "soldier-03"]);
+
+  const nextStep = hunt.stepAiBrain(alerted, {
+    deltaSeconds: 1 / 60,
+    elapsedSeconds: 3,
+    self: { x: 100, y: 600 },
+    target: { x: 0, y: 600 },
+    healthRatio: 1,
+    visualContact: 0,
+    thermalContact: 0,
+    heardNoise: null,
+    scentStrength: 0,
+    scentDirection: 0,
+    trackStrength: 0,
+    trackPosition: null,
+    underRangedThreat: false,
+    alliesInRange: [],
+    alliesEngaged: 0,
+    nearbyCovers: [],
+  });
+  assert.equal(nextStep.brain.mode, "search");
+  assert.equal(nextStep.intent.moveX, 1);
+});
+
+test("AI coordination factions group only plausible allies", async () => {
+  const hunt = await huntPromise;
+  const faction = (group, archetype, missionId = "jungle-vey") =>
+    hunt.resolveAiCoordinationFaction({ group, archetype, missionId });
+
+  assert.equal(
+    faction("human", "rifle-soldier"),
+    faction("human", "heavy"),
+  );
+  assert.equal(
+    faction("bad-blood", "bad-blood-initiate"),
+    faction("bad-blood", "bad-blood-enforcer"),
+  );
+  assert.equal(
+    faction("xeno", "xeno-drone"),
+    faction("xeno", "xeno-warrior"),
+  );
+  assert.notEqual(
+    faction("automaton", "security-synth", "jungle-vey"),
+    faction("automaton", "security-synth", "ice-cryostalker"),
+  );
+  assert.equal(
+    faction("fauna", "cryostalker-runner"),
+    faction("fauna", "cryostalker-runner"),
+  );
+  assert.notEqual(
+    faction("fauna", "cryostalker-runner"),
+    faction("fauna", "river-stalker"),
+  );
+  assert.notEqual(
+    faction("flora", "sentinel-orchid"),
+    faction("flora", "acid-bloom"),
+  );
+});
+
+test("regular attacks start a deterministic immobilizing telegraph instead of executing immediately", async () => {
+  const hunt = await huntPromise;
+  const step = hunt.stepRegularAttackTelegraph(
+    {
+      cooldownSeconds: 0,
+      telegraphSeconds: 0,
+      pendingAttackId: null,
+    },
+    {
+      deltaSeconds: 1 / 60,
+      request: {
+        attackId: "regular-ranged",
+        telegraphSeconds: 0.55,
+        cooldownSeconds: 1.4,
+      },
+    },
+  );
+
+  assert.equal(step.startedAttackId, "regular-ranged");
+  assert.equal(step.executedAttackId, null);
+  assert.equal(step.state.pendingAttackId, "regular-ranged");
+  assert.equal(step.state.telegraphSeconds, 0.55);
+  assert.equal(step.state.cooldownSeconds, 1.4);
+  assert.equal(step.immobilized, true);
+});
+
+test("regular attacks execute only after expiry and retain cooldown after a dodge", async () => {
+  const hunt = await huntPromise;
+  const pending = {
+    cooldownSeconds: 1.4,
+    telegraphSeconds: 0.55,
+    pendingAttackId: "regular-melee",
+  };
+  const warning = hunt.stepRegularAttackTelegraph(pending, {
+    deltaSeconds: 0.5,
+    request: null,
+  });
+  assert.equal(warning.executedAttackId, null);
+  assert.ok(warning.state.telegraphSeconds > 0);
+  assert.equal(warning.immobilized, true);
+
+  const expired = hunt.stepRegularAttackTelegraph(warning.state, {
+    deltaSeconds: 0.06,
+    request: null,
+  });
+  assert.equal(expired.executedAttackId, "regular-melee");
+  assert.equal(expired.state.pendingAttackId, null);
+  assert.equal(expired.state.telegraphSeconds, 0);
+  assert.ok(expired.state.cooldownSeconds > 0.8);
+
+  const dodgedCooldown = hunt.stepRegularAttackTelegraph(expired.state, {
+    deltaSeconds: 0.2,
+    request: {
+      attackId: "regular-melee",
+      telegraphSeconds: 0.42,
+      cooldownSeconds: 1.05,
+    },
+  });
+  assert.equal(dodgedCooldown.startedAttackId, null);
+  assert.equal(dodgedCooldown.state.pendingAttackId, null);
+  assert.ok(dodgedCooldown.state.cooldownSeconds > 0);
+});
+
+test("restraint cancels a pending regular attack without erasing its cooldown", async () => {
+  const hunt = await huntPromise;
+  const cancelled = hunt.stepRegularAttackTelegraph(
+    {
+      cooldownSeconds: 1.2,
+      telegraphSeconds: 0.3,
+      pendingAttackId: "regular-melee",
+    },
+    {
+      deltaSeconds: 0.1,
+      request: null,
+      cancelled: true,
+    },
+  );
+
+  assert.equal(cancelled.executedAttackId, null);
+  assert.equal(cancelled.state.pendingAttackId, null);
+  assert.equal(cancelled.state.telegraphSeconds, 0);
+  assert.ok(Math.abs(cancelled.state.cooldownSeconds - 1.1) < 0.000_001);
+});
+
 test("AI investigates track and scent evidence instead of knowing the live target", async () => {
   const hunt = await huntPromise;
   const observation = {
@@ -638,6 +799,14 @@ test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey
     "restoreCheckpoint(game, game.lastCheckpoint)",
     "filter: highContrastVision",
     "stepAiBrain(previousBrain",
+    "stepRegularAttackTelegraph(",
+    "attackStep.immobilized",
+    "attackStep.executedAttackId === REGULAR_MELEE_ATTACK_ID",
+    "receiveAiAlert(",
+    "ally.active &&",
+    "ally.factionId === enemy.factionId",
+    "discoveredEnemyIds:",
+    "state.boss.scanned ? [state.boss.archetype] : []",
     "calculateLineOfSightOcclusion(",
     "resolveAiMovementLeash(",
     "spawnExtractionThreat(state, mission)",

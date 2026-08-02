@@ -310,7 +310,7 @@ async function main() {
   assert.match(gameClientSource, /FRANCHISE_TROPHY_ARCHIVE_ASSETS/);
   assert.match(gameClientSource, /<details className="franchise-trophy-archive">/);
   assert.match(gameClientSource, /FRANCHISE_TROPHY_MANIFEST_SUMMARY\.planned/);
-  assert.match(gameClientSource, /ARCHIVE V16/);
+  assert.match(gameClientSource, /DOSSIER DU CLAN · NON JOUABLE/);
   assert.match(registrySource, /Hors continuité principale/);
   assert.match(registrySource, /Continuité comics licenciée/);
   assert.match(registrySource, /Produit licencié/);

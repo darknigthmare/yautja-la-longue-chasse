@@ -80,6 +80,46 @@ test("physical deck exposes semantic shortcuts and a mobile tracking viewport", 
   );
 });
 
+test("hunt mission keeps keyboard controls, live updates and modal focus accessible", async () => {
+  const [hunt, client, css] = await Promise.all([
+    read("app/game/HuntCanvas.tsx"),
+    read("app/game/GameClient.tsx"),
+    read("app/globals.css"),
+  ]);
+  const actionButton = hunt.slice(
+    hunt.indexOf("function ActionButton("),
+    hunt.indexOf("function formatTime("),
+  );
+
+  assert.match(hunt, /className="screen hunt-screen"[\s\S]*data-screen-focus[\s\S]*tabIndex=\{-1\}/);
+  assert.match(hunt, /button, a, input, select, textarea, \[contenteditable\]/);
+  assert.match(hunt, /event\.code !== "Escape" && isInteractiveControl\(event\.target\)/);
+  assert.match(hunt, /onKeyDown: \(event: ReactKeyboardEvent<HTMLButtonElement>\)/);
+  assert.match(hunt, /onKeyUp: \(event: ReactKeyboardEvent<HTMLButtonElement>\)/);
+  assert.match(hunt, /event\.key !== " " && event\.key !== "Enter"/);
+  assert.match(hunt, /onBlur: \(\) => setTouchHeld\(action, false\)/);
+  assert.match(hunt, /onClick=\{\(\) => pressAction\("jump"\)\}/);
+  assert.match(actionButton, /onClick=\{onPress\}/);
+  assert.doesNotMatch(actionButton, /onPointerDown/);
+  assert.match(
+    hunt,
+    /<div style=\{styles\.objectiveBar\}>\s*<div aria-live="polite" aria-atomic="true">/,
+  );
+  assert.doesNotMatch(hunt, /<div style=\{styles\.objectiveBar\}[^>]*aria-live/);
+  assert.doesNotMatch(hunt, /<div style=\{styles\.trophyTimer\}[^>]*aria-live/);
+  assert.match(hunt, /const huntDialogRef/);
+  assert.match(hunt, /setAttribute\("inert", ""\)/);
+  assert.match(hunt, /if \(event\.key !== "Tab"\) return/);
+  assert.match(hunt, /previouslyFocusedRef\.current/);
+  assert.match(hunt, /role="group" aria-label="Déplacement tactile"/);
+  assert.match(hunt, /role="group" aria-label="Actions tactiles"/);
+  assert.match(client, /data-high-contrast=\{save\.settings\.highContrastVision\}/);
+  assert.match(client, /<h2 id="briefing-title">/);
+  assert.doesNotMatch(client, /<h1 id="briefing-title">/);
+  assert.match(css, /\.hunt-screen:focus-visible,\s*\.hunt-canvas:focus-visible/);
+  assert.match(css, /\.hub-screen\[data-ship-room\]:focus-visible/);
+});
+
 test("mobile catalogue, armory and galaxy keep the map spatial without the previous crop", async () => {
   const [catalogue, client, hub, css] = await Promise.all([
     read("app/game/CatalogueHunterBrowser.tsx"),

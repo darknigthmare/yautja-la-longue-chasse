@@ -500,6 +500,8 @@ export interface MissionResult {
   trophyClaims: TrophyClaim[];
   kills: number;
   scans: number;
+  /** Stable V7/V8 roster identities encountered during this hunt. */
+  discoveredEnemyIds?: string[];
   secondWindUsed: boolean;
   completedAt: string;
 }
@@ -552,6 +554,8 @@ export interface PlayerInventory {
 export interface CodexProgress {
   unlockedEntryIds: CodexEntryId[];
   scanCounts: Partial<Record<CodexEntryId, number>>;
+  /** Validated V7/V8 roster identities permanently revealed in the bestiary. */
+  discoveredEnemyIds: string[];
 }
 
 export interface GameStatistics {

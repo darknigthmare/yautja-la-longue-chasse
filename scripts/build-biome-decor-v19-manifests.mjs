@@ -317,6 +317,27 @@ async function main() {
     return;
   }
 
+  if (availableIds.length !== ENVIRONMENT_PROP_SPECS.length) {
+    const availableIdSet = new Set(availableIds);
+    const missingSpecs = ENVIRONMENT_PROP_SPECS.filter(
+      ({ id }) => !availableIdSet.has(id),
+    );
+    const missingByBiome = Object.fromEntries(
+      ENVIRONMENT_PROP_BIOME_IDS.map((biomeId) => [
+        biomeId,
+        missingSpecs.filter((spec) => spec.biomeId === biomeId).length,
+      ]),
+    );
+    throw new Error(
+      `Biome decor V19 incomplet: ${availableIds.length}/${ENVIRONMENT_PROP_SPECS.length} paires source/runtime disponibles. ` +
+        `Manquants par biome: ${JSON.stringify(missingByBiome)}. ` +
+        `Premiers IDs manquants: ${missingSpecs
+          .slice(0, 12)
+          .map(({ id }) => id)
+          .join(", ")}`,
+    );
+  }
+
   const built = await mapWithConcurrency(
     ENVIRONMENT_PROP_SPECS,
     8,

@@ -328,7 +328,7 @@ test("the customization dossier discloses runtime-only slot fillers", () => {
   );
 
   assert.match(gameClientSource, /playableKitForPreset/);
-  assert.match(gameClientSource, /Compromis runtime, non attesté/);
+  assert.match(gameClientSource, /Complément de chasse non attesté/);
 });
 
 test("Hashori is explicitly marked as a prose-only visual interpretation", () => {

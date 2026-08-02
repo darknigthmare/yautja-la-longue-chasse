@@ -35,10 +35,10 @@ export default function EnemyBestiaryV7() {
     <section className="enemy-bestiary-v7" aria-labelledby="enemy-bestiary-v7-title">
       <header className="enemy-bestiary-v7-heading">
         <div>
-          <p className="eyebrow">Archive biologique // V7</p>
-          <h2 id="enemy-bestiary-v7-title">30 menaces animées</h2>
+          <p className="eyebrow">Archives du clan // Étude biologique</p>
+          <h2 id="enemy-bestiary-v7-title">30 menaces répertoriées</h2>
           <p>
-            Chaque adversaire possède sa planche indépendante en six états :{" "}
+            Chaque adversaire est étudié selon six attitudes :{" "}
             {ENEMY_V7_FRAME_LABELS.join(" · ")}.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function EnemyBestiaryV7() {
               <div
                 className="enemy-sprite-preview"
                 role="img"
-                aria-label={`${enemy.name}, animation en six poses : ${ENEMY_V7_FRAME_LABELS.join(", ")}`}
+                aria-label={`${enemy.name}, étude en six attitudes : ${ENEMY_V7_FRAME_LABELS.join(", ")}`}
               >
                 <img
                   className="enemy-sprite-preview-track"
@@ -116,7 +116,7 @@ export default function EnemyBestiaryV7() {
                   <dt>Origine visuelle</dt>
                   <dd>
                     {enemy.provenance === "canon-remix"
-                      ? "Référence canon, sprite original"
+                      ? "Référence canon, représentation originale"
                       : "Extension originale du lore"}
                   </dd>
                 </div>

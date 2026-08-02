@@ -204,8 +204,13 @@ export interface SafeCheckpointPlacementOptions {
   hazardMargin?: number;
 }
 
+export interface SafeObjectivePlacementOptions {
+  hazardMargin?: number;
+}
+
 const SAFE_GROUND_EDGE_CLEARANCE = 0.001;
 const DEFAULT_CHECKPOINT_HAZARD_MARGIN = 48;
+const DEFAULT_OBJECTIVE_HAZARD_MARGIN = 36;
 
 function assertFinitePlacementValue(value: number, label: string): void {
   if (!Number.isFinite(value)) {
@@ -276,6 +281,84 @@ export function resolveNearestSafeGroundX(
           left - right,
       )[0] ?? null
   );
+}
+
+/**
+ * Distribute interactable mission objects over disjoint ground slots and move
+ * each one clear of every hazard. Keeping the slots disjoint prevents two
+ * objectives from collapsing onto the same edge when a wide hazard cuts
+ * through their authored corridor.
+ */
+export function safeObjectiveGroundPositions(
+  blueprint: WorldBlueprint,
+  objectiveCount: number,
+  bounds: SafeGroundXBounds,
+  options: SafeObjectivePlacementOptions = {},
+): number[] {
+  assertFinitePlacementValue(objectiveCount, "objectiveCount");
+  assertFinitePlacementValue(bounds.minX, "bounds.minX");
+  assertFinitePlacementValue(bounds.maxX, "bounds.maxX");
+  const count = Math.max(0, Math.floor(objectiveCount));
+  if (count === 0) return [];
+
+  const minX = Math.max(0, bounds.minX);
+  const maxX = Math.min(blueprint.width, bounds.maxX);
+  if (minX > maxX) {
+    throw new RangeError(
+      `${blueprint.missionId} has no objective corridor within the world`,
+    );
+  }
+
+  const hazardMargin =
+    options.hazardMargin ?? DEFAULT_OBJECTIVE_HAZARD_MARGIN;
+  assertFinitePlacementValue(hazardMargin, "options.hazardMargin");
+  if (hazardMargin < 0) {
+    throw new RangeError("options.hazardMargin cannot be negative");
+  }
+
+  const blockedIntervals = blueprint.hazards
+    .map((hazard) => ({
+      start: Math.max(minX, hazard.x - hazardMargin),
+      end: Math.min(maxX, hazard.x + hazard.width + hazardMargin),
+    }))
+    .filter(({ start, end }) => start <= end)
+    .sort((left, right) => left.start - right.start || left.end - right.end);
+  const safeIntervals: { start: number; end: number }[] = [];
+  let cursor = minX;
+  for (const blocked of blockedIntervals) {
+    if (blocked.start > cursor) {
+      safeIntervals.push({
+        start: cursor,
+        end: blocked.start - SAFE_GROUND_EDGE_CLEARANCE,
+      });
+    }
+    cursor = Math.max(cursor, blocked.end + SAFE_GROUND_EDGE_CLEARANCE);
+  }
+  if (cursor <= maxX) {
+    safeIntervals.push({ start: cursor, end: maxX });
+  }
+
+  const availableLength = safeIntervals.reduce(
+    (total, interval) => total + Math.max(0, interval.end - interval.start),
+    0,
+  );
+  if (availableLength <= 0) {
+    throw new RangeError(
+      `${blueprint.missionId} objective corridor is fully blocked by hazards`,
+    );
+  }
+
+  return Array.from({ length: count }, (_, index) => {
+    let remaining = availableLength * ((index + 1) / (count + 1));
+    for (const interval of safeIntervals) {
+      const intervalLength = Math.max(0, interval.end - interval.start);
+      if (remaining <= intervalLength) {
+        return interval.start + remaining;
+      }
+      remaining -= intervalLength;
+    }
+    return safeIntervals[safeIntervals.length - 1].end;
+  });
 }
 
 /**
@@ -1201,12 +1284,29 @@ export function isHazardActive(
   hazard: WorldHazard,
   elapsedSeconds: number,
 ): boolean {
-  if (!hazard.cycle) return true;
+  return hazardPhaseAt(hazard, elapsedSeconds) === "active";
+}
+
+export type HazardPhase = "inactive" | "telegraph" | "active";
+
+/** Return the visible phase of a cyclic hazard, including its warning window. */
+export function hazardPhaseAt(
+  hazard: WorldHazard,
+  elapsedSeconds: number,
+): HazardPhase {
+  if (!hazard.cycle) return "active";
   const { periodSeconds, activeSeconds, phaseSeconds } = hazard.cycle;
   const cycleTime =
     ((elapsedSeconds + phaseSeconds) % periodSeconds + periodSeconds) %
     periodSeconds;
-  return cycleTime < activeSeconds;
+  if (cycleTime < activeSeconds) return "active";
+  const telegraphSeconds = Math.max(
+    0,
+    Math.min(hazard.telegraphSeconds, periodSeconds - activeSeconds),
+  );
+  return telegraphSeconds > 0 && cycleTime >= periodSeconds - telegraphSeconds
+    ? "telegraph"
+    : "inactive";
 }
 
 export function validateWorldBlueprint(

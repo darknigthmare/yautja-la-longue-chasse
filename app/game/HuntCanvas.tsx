@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import {
@@ -50,6 +51,8 @@ import {
   createScentNode,
   createTrackMark,
   perceivedNoise,
+  receiveAiAlert,
+  resolveAiCoordinationFaction,
   resolveAiMovementLeash,
   sampleScentAt,
   sampleTracksAt,
@@ -58,7 +61,9 @@ import {
   stepBossMechanics,
   stepHuntTrap,
   stepMudState,
+  stepRegularAttackTelegraph,
   type AiBrain,
+  type AiCoordinationGroup,
   type BossMechanicState,
   type HuntTrap,
   type MudState,
@@ -95,8 +100,10 @@ import {
   type TrophyVictoryState,
 } from "./systems/trophyRitual";
 import {
+  hazardPhaseAt,
   isHazardActive,
   resolveNearestSafeGroundX,
+  safeObjectiveGroundPositions,
   safeCheckpointPositions,
   worldBlueprintFor,
   type TrackSurface,
@@ -266,6 +273,7 @@ interface EnemyState extends Vec2 {
   id: string;
   kind: EnemyKind;
   archetype: string;
+  factionId: string;
   width: number;
   height: number;
   velocityX: number;
@@ -858,6 +866,50 @@ function enemyKind(archetype: string): EnemyKind {
   return "human";
 }
 
+const AUTOMATON_COORDINATION_MARKER =
+  /(?:^|-)(?:automaton|construct|drone|exosuit|guardian|mech|security-synth|sentinel|synth)(?:-|$)/;
+
+/** Keep shared alerts inside factions that can plausibly coordinate. */
+function enemyCoordinationGroup(
+  archetype: string,
+  kind: EnemyKind,
+): AiCoordinationGroup {
+  const definition =
+    ecologyV8EnemyForId(archetype) ?? enemyV7ForId(archetype);
+  const category = definition?.category;
+  const normalizedArchetype = archetype.toLocaleLowerCase("en");
+  if (
+    category === "bad-blood" ||
+    kind === "yautja" ||
+    normalizedArchetype.includes("bad-blood")
+  ) {
+    return "bad-blood";
+  }
+  if (normalizedArchetype.includes("xeno")) return "xeno";
+  if (
+    (category === "other" || category === "humanoid" || !category) &&
+    AUTOMATON_COORDINATION_MARKER.test(normalizedArchetype)
+  ) {
+    return "automaton";
+  }
+  if (category === "humanoid" || kind === "human") return "human";
+  if (category === "flora") return "flora";
+  if (category === "fauna" || kind === "beast") return "fauna";
+  return "other";
+}
+
+function enemyCoordinationFactionId(
+  archetype: string,
+  kind: EnemyKind,
+  missionId: MissionDefinition["id"],
+): string {
+  return resolveAiCoordinationFaction({
+    group: enemyCoordinationGroup(archetype, kind),
+    archetype,
+    missionId,
+  });
+}
+
 function bossArchetype(mission: MissionDefinition): string {
   return ECOLOGY_V8_BOSS_ENEMY_IDS[mission.id] ?? `boss-${mission.id}`;
 }
@@ -943,6 +995,7 @@ function objectiveByKind(
 function makeEnemy(
   id: string,
   archetype: string,
+  missionId: MissionDefinition["id"],
   x: number,
   worldWidth: number,
   health: number,
@@ -972,6 +1025,7 @@ function makeEnemy(
     id,
     archetype,
     kind,
+    factionId: enemyCoordinationFactionId(archetype, kind, missionId),
     x,
     y: spawnY,
     width,
@@ -1044,14 +1098,15 @@ function makeGameState(
     recoveryStartX,
     world.bossArena.x - 420,
   );
+  const recoveryNodeXs = safeObjectiveGroundPositions(
+    world,
+    recoverCount,
+    { minX: recoveryStartX, maxX: recoveryEndX },
+  );
   const recoveryNodes = Array.from({ length: recoverCount }, (_, index) => ({
     id: `technology-${index + 1}`,
-    x:
-      recoverCount === 1
-        ? (recoveryStartX + recoveryEndX) / 2
-        : recoveryStartX +
-          (recoveryEndX - recoveryStartX) * (index / (recoverCount - 1)),
-    y: index % 2 === 0 ? FLOOR_Y - 34 : 380,
+    x: recoveryNodeXs[index],
+    y: FLOOR_Y - 34,
     recovered: false,
   }));
   const usesV7Roster = isEnemyV7RosterEncounter(
@@ -1174,7 +1229,7 @@ function makeGameState(
       {
         id: "purge-b",
         x: world.bossArena.x + world.bossArena.width * 0.5,
-        y: 365,
+        y: FLOOR_Y - 46,
         recovered: false,
       },
       {
@@ -1201,6 +1256,11 @@ function makeGameState(
       id: "mission-boss",
       archetype: bossIdentityId,
       kind: bossKind,
+      factionId: enemyCoordinationFactionId(
+        bossIdentityId,
+        bossKind,
+        mission.id,
+      ),
       x: bossX,
       y: FLOOR_Y - bossHeight,
       width: bossWidth,
@@ -1567,6 +1627,7 @@ function spawnEligibleWaves(
       const enemy = makeEnemy(
         `${wave.id}-${index}`,
         v8Enemy?.id ?? v7Enemy?.id ?? wave.archetype,
+        mission.id,
         desiredX,
         state.world.width,
         wave.health,
@@ -1627,6 +1688,7 @@ function spawnExtractionThreat(
     const enemy = makeEnemy(
       `extraction-${mission.id}-${state.nextSignalId++}-${index}`,
       ecologyEnemy?.id ?? template.archetype,
+      mission.id,
       desiredX,
       state.world.width,
       template.health,
@@ -2050,6 +2112,14 @@ function resultFor(
         : [],
     kills: state.kills,
     scans: state.scans,
+    discoveredEnemyIds: [
+      ...new Set([
+        ...state.enemies
+          .filter((enemy) => enemy.scanned)
+          .map((enemy) => enemy.archetype),
+        ...(state.boss.scanned ? [state.boss.archetype] : []),
+      ]),
+    ],
     secondWindUsed: state.secondWindUsed,
     completedAt: new Date().toISOString(),
   };
@@ -3812,15 +3882,19 @@ function renderGame(
         0.88,
       );
     }
-    if (!isHazardActive(hazard, state.elapsed)) continue;
-    const pulse = 0.1 + Math.sin(state.elapsed * 7 + hazard.x * 0.01) * 0.035;
+    const hazardPhase = hazardPhaseAt(hazard, state.elapsed);
+    if (hazardPhase === "inactive") continue;
+    const telegraphing = hazardPhase === "telegraph";
+    const pulse = telegraphing
+      ? 0.17 + Math.sin(state.elapsed * 11 + hazard.x * 0.01) * 0.07
+      : 0.1 + Math.sin(state.elapsed * 7 + hazard.x * 0.01) * 0.035;
     context.save();
     context.globalAlpha = pulse;
     context.fillStyle = hazardColor(hazard.kind);
     context.fillRect(hazard.x, hazard.y, hazard.width, hazard.height);
     context.strokeStyle = hazardColor(hazard.kind);
-    context.lineWidth = 2;
-    context.setLineDash([10, 8]);
+    context.lineWidth = telegraphing ? 3 : 2;
+    context.setLineDash(telegraphing ? [4, 5] : [10, 8]);
     context.strokeRect(hazard.x, hazard.y, hazard.width, hazard.height);
     context.setLineDash([]);
     context.restore();
@@ -6277,6 +6351,32 @@ function fireHostileProjectile(
   );
 }
 
+const REGULAR_RANGED_ATTACK_ID = "regular-ranged";
+const REGULAR_MELEE_ATTACK_ID = "regular-melee";
+
+function regularEnemyAttackRequest(
+  enemy: EnemyState,
+  attackId: typeof REGULAR_RANGED_ATTACK_ID | typeof REGULAR_MELEE_ATTACK_ID,
+) {
+  let signature = 0;
+  for (const character of `${enemy.id}:${enemy.archetype}`) {
+    signature = (signature * 31 + character.charCodeAt(0)) >>> 0;
+  }
+  const timingVariation = (signature % 5) * 0.035;
+  const ranged = attackId === REGULAR_RANGED_ATTACK_ID;
+  return {
+    attackId,
+    telegraphSeconds:
+      (ranged ? 0.55 : enemy.kind === "beast" ? 0.42 : 0.48) +
+      timingVariation,
+    cooldownSeconds: ranged
+      ? 1.35 + (signature % 8) * 0.09
+      : enemy.kind === "beast"
+        ? 1.05
+        : 1.2,
+  };
+}
+
 function updateRegularEnemy(
   state: GameState,
   enemy: EnemyState,
@@ -6294,15 +6394,29 @@ function updateRegularEnemy(
     enemy.waveActivationAt = null;
   }
   if (!enemy.alive) {
+    enemy.telegraph = 0;
+    enemy.pendingAttackId = null;
     enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
     return;
   }
-  enemy.attackCooldown = Math.max(0, enemy.attackCooldown - delta);
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
-  enemy.telegraph = Math.max(0, enemy.telegraph - delta);
   if (enemy.restrainedUntil > state.elapsed) {
+    const cancelledAttack = stepRegularAttackTelegraph(
+      {
+        cooldownSeconds: enemy.attackCooldown,
+        telegraphSeconds: enemy.telegraph,
+        pendingAttackId: enemy.pendingAttackId,
+      },
+      {
+        deltaSeconds: delta,
+        request: null,
+        cancelled: true,
+      },
+    );
+    enemy.attackCooldown = cancelledAttack.state.cooldownSeconds;
+    enemy.telegraph = cancelledAttack.state.telegraphSeconds;
+    enemy.pendingAttackId = cancelledAttack.state.pendingAttackId;
     enemy.velocityX = 0;
-    enemy.telegraph = 0;
     return;
   }
 
@@ -6396,7 +6510,9 @@ function updateRegularEnemy(
     .filter(
       (ally) =>
         ally.id !== enemy.id &&
+        ally.active &&
         ally.alive &&
+        ally.factionId === enemy.factionId &&
         distance(selfPosition, {
           x: ally.x + ally.width / 2,
           y: ally.y + ally.height / 2,
@@ -6422,7 +6538,9 @@ function updateRegularEnemy(
         occupied: state.enemies.some(
           (ally) =>
             ally.id !== enemy.id &&
+            ally.active &&
             ally.alive &&
+            ally.factionId === enemy.factionId &&
             Math.abs(ally.x + ally.width / 2 - position.x) < 42,
         ),
       };
@@ -6470,11 +6588,11 @@ function updateRegularEnemy(
     for (const allyId of aiStep.brain.alertedAllyIds) {
       const allyBrain = state.aiBrains[allyId];
       if (!allyBrain) continue;
-      state.aiBrains[allyId] = {
-        ...allyBrain,
-        suspicion: Math.max(allyBrain.suspicion, 0.56),
-        lastKnownTarget: targetPosition,
-      };
+      state.aiBrains[allyId] = receiveAiAlert(
+        allyBrain,
+        targetPosition,
+        aiStep.brain.alertedAllyIds,
+      );
     }
   }
 
@@ -6485,15 +6603,42 @@ function updateRegularEnemy(
   }
   enemy.velocityX =
     moveIntent * enemy.moveSpeed * aiStep.intent.speedMultiplier;
-  const dx = targetPosition.x - selfPosition.x;
-  if (
-    enemy.attackCooldown <= 0 &&
-    (aiStep.intent.action === "attack" ||
-      aiStep.intent.action === "suppress")
-  ) {
-    const rangedAttack =
-      enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
-    if (rangedAttack && Math.abs(dx) < 650) {
+  const rangedAttack =
+    enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
+  const meleeRange = enemy.width * 0.8 + player.width * 0.55 + 52;
+  const wantsAttack =
+    aiStep.intent.action === "attack" ||
+    aiStep.intent.action === "suppress";
+  const requestedAttackId =
+    wantsAttack && rangedAttack && targetDistance < 650
+      ? REGULAR_RANGED_ATTACK_ID
+      : wantsAttack && !rangedAttack && targetDistance < meleeRange
+        ? REGULAR_MELEE_ATTACK_ID
+        : null;
+  const attackStep = stepRegularAttackTelegraph(
+    {
+      cooldownSeconds: enemy.attackCooldown,
+      telegraphSeconds: enemy.telegraph,
+      pendingAttackId: enemy.pendingAttackId,
+    },
+    {
+      deltaSeconds: delta,
+      request: requestedAttackId
+        ? regularEnemyAttackRequest(enemy, requestedAttackId)
+        : null,
+    },
+  );
+  enemy.attackCooldown = attackStep.state.cooldownSeconds;
+  enemy.telegraph = attackStep.state.telegraphSeconds;
+  enemy.pendingAttackId = attackStep.state.pendingAttackId;
+  if (attackStep.immobilized) {
+    enemy.velocityX = 0;
+  }
+
+  if (attackStep.executedAttackId === REGULAR_RANGED_ATTACK_ID) {
+    // Leaving the acquisition envelope during the warning produces a clean
+    // whiff. The cooldown already started with the telegraph.
+    if (targetDistance < 650) {
       const projectileColor =
         ecologyDefinition?.category === "flora"
           ? "#b8ff6a"
@@ -6512,14 +6657,12 @@ function updateRegularEnemy(
         projectileColor,
         "enemy",
       );
-      enemy.attackCooldown =
-        1.35 + ((enemy.id.length * 0.19 + state.elapsed * 0.07) % 0.7);
-    } else if (
-      !rangedAttack &&
-      targetDistance < enemy.width * 0.8 + player.width * 0.55 + 52
-    ) {
+    }
+  } else if (
+    attackStep.executedAttackId === REGULAR_MELEE_ATTACK_ID
+  ) {
+    if (targetDistance < meleeRange) {
       hurtPlayer(state, enemy.damage, mission);
-      enemy.attackCooldown = enemy.kind === "beast" ? 1.05 : 1.2;
       emitNoise(state, "melee", 0.6, 360, selfPosition, enemy.id);
     }
   }
@@ -6593,6 +6736,7 @@ function spawnBossSupport(
     const enemy = makeEnemy(
       `${groupId}-${state.nextSignalId++}-${index}`,
       support.archetype,
+      mission.id,
       clamp(
         state.boss.x + (index % 2 === 0 ? -260 : 270),
         state.world.bossArena.x + 30,
@@ -7376,7 +7520,10 @@ export default function HuntCanvas({
   onFinish,
   onAbort,
 }: HuntCanvasProps) {
+  const huntRootRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const huntDialogRef = useRef<HTMLDivElement | null>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const finishRef = useRef(onFinish);
   const abortRef = useRef(onAbort);
   const soundRef = useRef(onSound);
@@ -7406,6 +7553,80 @@ export default function HuntCanvas({
   useEffect(() => {
     soundRef.current = onSound;
   }, [onSound]);
+
+  const huntDialogOpen =
+    (ui.paused && ui.phase !== "dead" && ui.phase !== "finished") ||
+    ui.phase === "dead";
+
+  useEffect(() => {
+    if (!huntDialogOpen) return;
+    const dialog = huntDialogRef.current;
+    const root = huntRootRef.current;
+    if (!dialog || !root) return;
+    const fallbackFocusTarget = canvasRef.current;
+
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const focusableSelector =
+      'button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])';
+    const focusables = () =>
+      Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
+    const backdrop = dialog.closest<HTMLElement>("[data-hunt-dialog-backdrop]");
+    const inertTargets = [
+      ...Array.from(root.children).filter(
+        (child): child is HTMLElement =>
+          child instanceof HTMLElement && !child.contains(backdrop),
+      ),
+      ...(backdrop?.parentElement
+        ? Array.from(backdrop.parentElement.children).filter(
+            (child): child is HTMLElement =>
+              child instanceof HTMLElement && child !== backdrop,
+          )
+        : []),
+    ];
+    const newlyInert = inertTargets.filter(
+      (target) => !target.hasAttribute("inert"),
+    );
+    newlyInert.forEach((target) => target.setAttribute("inert", ""));
+
+    const frame = window.requestAnimationFrame(() => {
+      focusables()[0]?.focus({ preventScroll: true });
+    });
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const controls = focusables();
+      if (controls.length === 0) {
+        event.preventDefault();
+        dialog.focus({ preventScroll: true });
+        return;
+      }
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", trapFocus);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("keydown", trapFocus);
+      newlyInert.forEach((target) => target.removeAttribute("inert"));
+      const previous = previouslyFocusedRef.current;
+      previouslyFocusedRef.current = null;
+      if (previous?.isConnected) {
+        previous.focus({ preventScroll: true });
+      } else {
+        fallbackFocusTarget?.focus({ preventScroll: true });
+      }
+    };
+  }, [huntDialogOpen]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -7880,8 +8101,17 @@ export default function HuntCanvas({
       );
     };
 
+    const isInteractiveControl = (target: EventTarget | null) =>
+      target instanceof Element &&
+      Boolean(
+        target.closest(
+          'button, a, input, select, textarea, [contenteditable]:not([contenteditable="false"])',
+        ),
+      );
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
       if (event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.code !== "Escape" && isInteractiveControl(event.target)) return;
       const action = KEY_ACTIONS[event.code];
       if (!action) return;
       event.preventDefault();
@@ -7904,6 +8134,7 @@ export default function HuntCanvas({
       }
     };
     const onKeyUp = (event: KeyboardEvent) => {
+      if (event.code !== "Escape" && isInteractiveControl(event.target)) return;
       const action = KEY_ACTIONS[event.code];
       if (
         action === "left" ||
@@ -8039,6 +8270,21 @@ export default function HuntCanvas({
       },
       onPointerCancel: () => setTouchHeld(action, false),
       onLostPointerCapture: () => setTouchHeld(action, false),
+      onKeyDown: (event: ReactKeyboardEvent<HTMLButtonElement>) => {
+        if (event.key !== " " && event.key !== "Enter") return;
+        event.preventDefault();
+        if (event.repeat) return;
+        if (action === "left" || action === "right") {
+          pressAction(action);
+        }
+        setTouchHeld(action, true);
+      },
+      onKeyUp: (event: ReactKeyboardEvent<HTMLButtonElement>) => {
+        if (event.key !== " " && event.key !== "Enter") return;
+        event.preventDefault();
+        setTouchHeld(action, false);
+      },
+      onBlur: () => setTouchHeld(action, false),
     }),
     [pressAction, setTouchHeld],
   );
@@ -8078,6 +8324,10 @@ export default function HuntCanvas({
 
   return (
     <section
+      ref={huntRootRef}
+      className="screen hunt-screen"
+      data-screen-focus
+      tabIndex={-1}
       aria-label={`Mission ${mission.title} sur ${mission.planetName}`}
       style={{
         ...styles.shell,
@@ -8099,6 +8349,7 @@ export default function HuntCanvas({
         <div
           className="hunt-resource-grid"
           style={styles.resourceGrid}
+          role="group"
           aria-label="État du chasseur"
         >
           <ResourceMeter
@@ -8133,8 +8384,8 @@ export default function HuntCanvas({
       </header>
 
       {/* Bloc : objectif courant annoncé aux lecteurs d’écran. */}
-      <div style={styles.objectiveBar} aria-live="polite" aria-atomic="true">
-        <div>
+      <div style={styles.objectiveBar}>
+        <div aria-live="polite" aria-atomic="true">
           <span style={styles.objectiveKicker}>OBJECTIF ACTIF</span>
           <strong style={styles.objectiveTitle}>{ui.objective}</strong>
           <span style={styles.objectiveDetail}>{ui.objectiveDetail}</span>
@@ -8174,6 +8425,7 @@ export default function HuntCanvas({
       <div style={styles.canvasFrame}>
         <canvas
           ref={canvasRef}
+          className="hunt-canvas"
           role="img"
           aria-label={`Vue latérale de la chasse sur ${mission.planetName}. ${ui.objective}`}
           tabIndex={0}
@@ -8224,7 +8476,7 @@ export default function HuntCanvas({
         ) : null}
 
         {ui.trophySeconds !== null ? (
-          <div style={styles.trophyTimer} aria-live="polite">
+          <div style={styles.trophyTimer}>
             {ui.trophyCue ? (
               <>
                 <span>
@@ -8249,10 +8501,17 @@ export default function HuntCanvas({
         ) : null}
 
         {ui.paused && ui.phase !== "dead" && ui.phase !== "finished" ? (
-          <div style={styles.modalBackdrop} role="dialog" aria-modal="true" aria-label="Chasse en pause">
-            <div style={styles.modal}>
+          <div style={styles.modalBackdrop} data-hunt-dialog-backdrop>
+            <div
+              ref={huntDialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="hunt-pause-title"
+              tabIndex={-1}
+              style={styles.modal}
+            >
               <span style={styles.modalKicker}>BIOMASK EN VEILLE</span>
-              <h2 style={styles.modalTitle}>Chasse en pause</h2>
+              <h2 id="hunt-pause-title" style={styles.modalTitle}>Chasse en pause</h2>
               <p style={styles.modalCopy}>
                 Les systèmes sont figés. Reprends quand tu es prêt à honorer le
                 rite.
@@ -8260,7 +8519,6 @@ export default function HuntCanvas({
               <div style={styles.modalActions}>
                 <button
                   type="button"
-                  autoFocus
                   onClick={() => togglePauseRef.current()}
                   style={styles.primaryButton}
                 >
@@ -8279,12 +8537,19 @@ export default function HuntCanvas({
         ) : null}
 
         {ui.phase === "dead" ? (
-          <div style={styles.modalBackdrop} role="dialog" aria-modal="true" aria-label="Chasseur à terre">
-            <div style={styles.modal}>
+          <div style={styles.modalBackdrop} data-hunt-dialog-backdrop>
+            <div
+              ref={huntDialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="hunt-dead-title"
+              tabIndex={-1}
+              style={styles.modal}
+            >
               <span style={{ ...styles.modalKicker, color: mission.palette.danger }}>
                 SIGNAL VITAL PERDU
               </span>
-              <h2 style={styles.modalTitle}>Le rite n’est pas terminé</h2>
+              <h2 id="hunt-dead-title" style={styles.modalTitle}>Le rite n’est pas terminé</h2>
               <p style={styles.modalCopy}>
                 {ui.checkpointLabel.startsWith("Relais")
                   ? "Le dernier relais du biomask est intact. Reprends la chasse avec les objectifs, adversaires et charges enregistrés."
@@ -8293,7 +8558,6 @@ export default function HuntCanvas({
               <div style={styles.modalActions}>
                 <button
                   type="button"
-                  autoFocus
                   onClick={() => restartRef.current()}
                   style={styles.primaryButton}
                 >
@@ -8323,7 +8587,7 @@ export default function HuntCanvas({
 
       {/* Bloc : contrôles tactiles et aide clavier/manette. */}
       <div style={styles.controls}>
-        <div style={styles.moveControls} aria-label="Déplacement tactile">
+        <div style={styles.moveControls} role="group" aria-label="Déplacement tactile">
           <button
             type="button"
             {...makeHoldHandlers("left")}
@@ -8358,10 +8622,7 @@ export default function HuntCanvas({
           </button>
           <button
             type="button"
-            onPointerDown={(event) => {
-              event.preventDefault();
-              pressAction("jump");
-            }}
+            onClick={() => pressAction("jump")}
             style={styles.controlButton}
             aria-label="Sauter"
           >
@@ -8369,7 +8630,7 @@ export default function HuntCanvas({
           </button>
         </div>
 
-        <div style={styles.actionControls} aria-label="Actions tactiles">
+        <div style={styles.actionControls} role="group" aria-label="Actions tactiles">
           <ActionButton label="Lames" shortcut="J" onPress={() => pressAction("melee")} />
           {loadout.weaponIds.map((weaponId, index) => (
             <ActionButton
@@ -8501,10 +8762,7 @@ function ActionButton({
   return (
     <button
       type="button"
-      onPointerDown={(event) => {
-        event.preventDefault();
-        if (!disabled) onPress();
-      }}
+      onClick={onPress}
       disabled={disabled}
       style={{
         ...styles.actionButton,
@@ -8677,7 +8935,6 @@ const styles: Record<string, CSSProperties> = {
     height: "auto",
     margin: "0 auto",
     aspectRatio: "16 / 9",
-    outline: "none",
     touchAction: "none",
     cursor: "crosshair",
   },

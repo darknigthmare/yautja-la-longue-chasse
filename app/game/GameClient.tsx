@@ -2,10 +2,15 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import HunterRigPreview from "./HunterRigPreview";
-import HuntCanvas from "./HuntCanvas";
-import ShipHub from "./ShipHub";
 import V6AtlasSprite from "./V6AtlasSprite";
 import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
 import GalaxyMapPanel from "./GalaxyMapPanel";
@@ -105,7 +110,7 @@ import {
   applyMissionResult,
   defaultSave,
   loadSave,
-  writeSave,
+  writeSaveWithStatus,
 } from "./save";
 import {
   GameAudio,
@@ -146,6 +151,9 @@ import type {
   WeaponId,
 } from "./types";
 
+const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
+const ShipHub = React.lazy(() => import("./ShipHub"));
+
 type Screen =
   | "title"
   | "ship"
@@ -173,6 +181,16 @@ const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
 interface RewardSummary {
   honor: number;
   clanMarks: number;
+}
+
+function DeferredGameScreen() {
+  return (
+    <section className="screen loading-screen" aria-label="Chargement du jeu">
+      <p className="loading-mark" role="status" aria-live="polite">
+        Chargement de l’espace de jeu…
+      </p>
+    </section>
+  );
 }
 
 const RANK_LABELS = {
@@ -619,6 +637,9 @@ export default function GameClient() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [saveFailure, setSaveFailure] = useState<
+    "storage-unavailable" | "write-failed" | null
+  >(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
@@ -635,6 +656,9 @@ export default function GameClient() {
   const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
   const settingsDialogRef = useRef<HTMLElement | null>(null);
+  const previousMasterVolumeRef = useRef(
+    save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
+  );
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
@@ -781,9 +805,10 @@ export default function GameClient() {
   }, []);
 
   const persist = useCallback((next: SaveGame) => {
-    const persisted = writeSave(next);
-    setSave(persisted);
-    return persisted;
+    const result = writeSaveWithStatus(next);
+    setSave(result.save);
+    setSaveFailure(result.failure);
+    return result.save;
   }, []);
 
   const go = useCallback(
@@ -1166,6 +1191,7 @@ export default function GameClient() {
       ref={gameShellRef}
       className="game-shell"
       data-game-shell="yautja-long-hunt"
+      data-high-contrast={save.settings.highContrastVision}
       aria-label="Yautja : La Longue Chasse"
     >
       {topBar}
@@ -1215,7 +1241,9 @@ export default function GameClient() {
               <p className="title-foot">
                 Fan game original non commercial · clavier · manette · tactile
                 <br />
-                Sauvegarde automatique sur cet appareil
+                {saveFailure
+                  ? "Progression temporaire : sauvegarde locale indisponible"
+                  : "Sauvegarde automatique sur cet appareil"}
               </p>
             </div>
             <div className="hero-stage" aria-hidden="true">
@@ -1235,20 +1263,22 @@ export default function GameClient() {
       )}
 
       {screen === "ship" && (
-        <ShipHub
-          save={save}
-          onOpenDeck={() => go("deck")}
-          onOpenMap={() => openMap("ship")}
-          onOpenArmory={() => openStationScreen("armory", "ship")}
-          onOpenTrophies={() => openStationScreen("trophies", "ship")}
-          onOpenArchives={() => openStationScreen("codex", "ship")}
-          onOpenCustomization={() =>
-            openStationScreen("customization", "ship")
-          }
-          onApplyLoadout={applyShipLoadout}
-          onSelectedShipChange={setSelectedShipId}
-          onNotify={setToast}
-        />
+        <Suspense fallback={<DeferredGameScreen />}>
+          <ShipHub
+            save={save}
+            onOpenDeck={() => go("deck")}
+            onOpenMap={() => openMap("ship")}
+            onOpenArmory={() => openStationScreen("armory", "ship")}
+            onOpenTrophies={() => openStationScreen("trophies", "ship")}
+            onOpenArchives={() => openStationScreen("codex", "ship")}
+            onOpenCustomization={() =>
+              openStationScreen("customization", "ship")
+            }
+            onApplyLoadout={applyShipLoadout}
+            onSelectedShipChange={setSelectedShipId}
+            onNotify={setToast}
+          />
+        </Suspense>
       )}
 
       {screen === "deck" && (
@@ -1278,30 +1308,32 @@ export default function GameClient() {
       )}
 
       {screen === "medbay" && (
-        <section className="screen physical-medbay-entry">
-          <button
-            type="button"
-            className="physical-medbay-entry__back ghost-button"
-            onClick={() => go("deck")}
-          >
-            ← Retour au pont physique
-          </button>
-          <ShipHub
-            save={save}
-            initialRoomId="medbay"
-            onOpenDeck={() => go("deck")}
-            onOpenMap={() => openMap("deck")}
-            onOpenArmory={() => openStationScreen("armory", "deck")}
-            onOpenTrophies={() => openStationScreen("trophies", "deck")}
-            onOpenArchives={() => openStationScreen("codex", "deck")}
-            onOpenCustomization={() =>
-              openStationScreen("customization", "deck")
-            }
-            onApplyLoadout={applyShipLoadout}
-            onSelectedShipChange={setSelectedShipId}
-            onNotify={setToast}
-          />
-        </section>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen physical-medbay-entry">
+            <button
+              type="button"
+              className="physical-medbay-entry__back ghost-button"
+              onClick={() => go("deck")}
+            >
+              ← Retour au pont physique
+            </button>
+            <ShipHub
+              save={save}
+              initialRoomId="medbay"
+              onOpenDeck={() => go("deck")}
+              onOpenMap={() => openMap("deck")}
+              onOpenArmory={() => openStationScreen("armory", "deck")}
+              onOpenTrophies={() => openStationScreen("trophies", "deck")}
+              onOpenArchives={() => openStationScreen("codex", "deck")}
+              onOpenCustomization={() =>
+                openStationScreen("customization", "deck")
+              }
+              onApplyLoadout={applyShipLoadout}
+              onSelectedShipChange={setSelectedShipId}
+              onNotify={setToast}
+            />
+          </section>
+        </Suspense>
       )}
 
       {screen === "map" && (
@@ -1348,7 +1380,7 @@ export default function GameClient() {
               </div>
               <div className="briefing-panel">
                 <p className="mission-planet">{selectedMission.planetName}</p>
-                <h1 id="briefing-title">{selectedMission.title}</h1>
+                <h2 id="briefing-title">{selectedMission.title}</h2>
                 <p>{selectedMission.briefing}</p>
                 {isEnemyV7RosterEncounter(
                   selectedMission.id,
@@ -1478,7 +1510,7 @@ export default function GameClient() {
                   aria-labelledby="armory-exact-kit-title"
                 >
                   <h3 id="armory-exact-kit-title">
-                    Références de franchise V14
+                    Références fidèles à la franchise
                   </h3>
                   <div
                     className="armory-module-rack hunter-kit-rack"
@@ -1505,7 +1537,7 @@ export default function GameClient() {
                 </section>
                 <section aria-labelledby="armory-modules-title">
                   <h3 id="armory-modules-title">
-                    Modules de jeu supplémentaires
+                    Équipements complémentaires
                   </h3>
                   <div className="armory-module-rack" role="list">
                     {V6_ARMORY_RACK_ORDER.map((visualId) => (
@@ -1718,7 +1750,7 @@ export default function GameClient() {
             <PanelHeader
               eyebrow="Vaisseau // Quartier du chasseur"
               title="Personnalisation du Yautja"
-              subtitle="Rig V3 atomique : anatomie, filet, dreadlocks, plaques, biomask, bras du plasmacaster, canon, tube, gantelet, lames et trophées restent séparés."
+              subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
               id="customization-title"
               onBack={() => go(stationReturnScreen)}
             />
@@ -1756,9 +1788,8 @@ export default function GameClient() {
                   onAim={() => setPreviewAiming((value) => !value)}
                 />
                 <p className="customization-note">
-                  Quinze textures anatomiques et huit mèches autonomes partagent
-                  le même squelette 256×384. Les pivots restent identiques dans
-                  l’aperçu et en mission.
+                  Examine chaque élément séparément, puis vérifie l’apparence et
+                  l’équipement du chasseur avant le départ.
                 </p>
               </aside>
 
@@ -1830,7 +1861,7 @@ export default function GameClient() {
                                     );
                             }}
                           />
-                          <figcaption>Plaque OpenAI · corps entier</figcaption>
+                          <figcaption>Étude du clan · corps entier</figcaption>
                         </figure>
                       )}
                       <div>
@@ -1876,7 +1907,7 @@ export default function GameClient() {
                               )
                               .join(" · ") || "Aucun attesté"}
                           </p>
-                          <small>Projection jouable · deux armes / deux outils</small>
+                          <small>Configuration de chasse · deux armes / deux outils</small>
                           <p>
                             {activeHunterKit.loadout.weaponIds
                               .map(
@@ -1895,7 +1926,7 @@ export default function GameClient() {
                           </p>
                           {!activeHunterKit.isFullyDocumented && (
                             <p className="hunter-preset-runtime-warning">
-                              Compromis runtime, non attesté :{" "}
+                              Complément de chasse non attesté :{" "}
                               {[
                                 ...activeHunterKit.supplementalWeaponIds.map(
                                   (weaponId) =>
@@ -1906,7 +1937,7 @@ export default function GameClient() {
                                   (gearId) =>
                                     GEAR.find(({ id }) => id === gearId)?.name ?? gearId,
                                 ),
-                              ].join(" · ")} complète les slots obligatoires du moteur.
+                              ].join(" · ")} occupe les emplacements requis pour partir.
                             </p>
                           )}
                         </div>
@@ -1980,7 +2011,7 @@ export default function GameClient() {
 
                 <CustomizationSection
                   title="Spectre du laser"
-                  detail="Le faisceau du plasmacaster et le réticule utilisent la même optique en aperçu et en mission"
+                  detail="Le biomask conserve la même optique pour le plasmacaster et son réticule, dans le quartier comme en chasse"
                 >
                   {LASER_COLOR_OPTIONS.map((option) => (
                     <AppearanceOption
@@ -2125,7 +2156,7 @@ export default function GameClient() {
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
-                  <span>Archive franchise V16</span>
+                  <span>Archives de la franchise</span>
                   <strong>
                     {FRANCHISE_TROPHY_MANIFEST_SUMMARY.planned} designs
                     physiques sourcés · non jouables
@@ -2184,7 +2215,7 @@ export default function GameClient() {
                           Source de l’œuvre
                         </a>
                         <span className="trophy-score">
-                          ARCHIVE V16 · NON JOUABLE
+                          DOSSIER DU CLAN · NON JOUABLE
                         </span>
                       </article>
                     );
@@ -2342,8 +2373,10 @@ export default function GameClient() {
               id="codex-title"
               onBack={() => go(stationReturnScreen)}
             />
-            <EnemyBestiaryV8 />
-            <section className="visual-codex-gallery" aria-label="Archives visuelles OpenAI V6">
+            <EnemyBestiaryV8
+              discoveredEnemyIds={save.codex.discoveredEnemyIds}
+            />
+            <section className="visual-codex-gallery" aria-label="Archives visuelles du clan">
               <article>
                 <h2>Bestiaire</h2>
                 <div className="visual-codex-sprite-grid">
@@ -2405,26 +2438,28 @@ export default function GameClient() {
       )}
 
       {screen === "mission" && selectedMission && (
-        <HuntCanvas
-          mission={selectedMission}
-          encounterRun={save.missionProgress[selectedMission.id].attempts}
-          loadout={save.loadout}
-          inventory={save.inventory}
-          appearance={save.appearance}
-          difficulty={save.settings.difficultyId}
-          reducedGore={save.settings.reducedGore}
-          screenShake={save.settings.screenShake}
-          highContrastVision={save.settings.highContrastVision}
-          onSound={playGameplaySound}
-          onFinish={completeMission}
-          onAbort={(result) => {
-            persist(applyMissionResult(save, result));
-            setLastResult(null);
-            setLastRewardSummary(null);
-            setSelectedMission(null);
-            go("ship");
-          }}
-        />
+        <Suspense fallback={<DeferredGameScreen />}>
+          <HuntCanvas
+            mission={selectedMission}
+            encounterRun={save.missionProgress[selectedMission.id].attempts}
+            loadout={save.loadout}
+            inventory={save.inventory}
+            appearance={save.appearance}
+            difficulty={save.settings.difficultyId}
+            reducedGore={save.settings.reducedGore}
+            screenShake={save.settings.screenShake}
+            highContrastVision={save.settings.highContrastVision}
+            onSound={playGameplaySound}
+            onFinish={completeMission}
+            onAbort={(result) => {
+              persist(applyMissionResult(save, result));
+              setLastResult(null);
+              setLastRewardSummary(null);
+              setSelectedMission(null);
+              go("ship");
+            }}
+          />
+        </Suspense>
       )}
 
       {screen === "debrief" && lastResult && selectedMission && (
@@ -2634,9 +2669,17 @@ export default function GameClient() {
               <SettingToggle
                 label="Audio procédural"
                 checked={save.settings.masterVolume > 0}
-                onChange={(checked) =>
-                  updateSettings({ masterVolume: checked ? 0.8 : 0 })
-                }
+                onChange={(checked) => {
+                  if (!checked && save.settings.masterVolume > 0) {
+                    previousMasterVolumeRef.current =
+                      save.settings.masterVolume;
+                  }
+                  updateSettings({
+                    masterVolume: checked
+                      ? previousMasterVolumeRef.current
+                      : 0,
+                  });
+                }}
               />
               <SettingSlider
                 label="Volume musique"
@@ -2698,6 +2741,13 @@ export default function GameClient() {
       {toast && (
         <div className="toast" role="status">
           {toast}
+        </div>
+      )}
+
+      {saveFailure && (
+        <div className="save-warning" role="alert">
+          Progression conservée en mémoire seulement. Libérez le stockage du
+          navigateur puis effectuez une action pour réessayer la sauvegarde.
         </div>
       )}
     </main>
@@ -2941,7 +2991,7 @@ function HunterPresetCard({
           alt={
             plateImage
               ? `${preset.name}, silhouette complète fidèle à ${preset.work}`
-              : `Aperçu modulaire de ${preset.name}`
+              : `Portrait d’archive de ${preset.name}`
           }
           loading="lazy"
           onError={(event) => {

@@ -154,6 +154,46 @@ export interface AiBrain {
   alertedAllyIds: readonly string[];
 }
 
+export type AiCoordinationGroup =
+  | "human"
+  | "bad-blood"
+  | "xeno"
+  | "automaton"
+  | "fauna"
+  | "flora"
+  | "other";
+
+export interface AiCoordinationFactionInput {
+  group: AiCoordinationGroup;
+  archetype: string;
+  missionId: MissionId;
+}
+
+export interface RegularAttackTelegraphState {
+  cooldownSeconds: number;
+  telegraphSeconds: number;
+  pendingAttackId: string | null;
+}
+
+export interface RegularAttackRequest {
+  attackId: string;
+  telegraphSeconds: number;
+  cooldownSeconds: number;
+}
+
+export interface RegularAttackTelegraphInput {
+  deltaSeconds: number;
+  request: RegularAttackRequest | null;
+  cancelled?: boolean;
+}
+
+export interface RegularAttackTelegraphStep {
+  state: RegularAttackTelegraphState;
+  startedAttackId: string | null;
+  executedAttackId: string | null;
+  immobilized: boolean;
+}
+
 export interface AiConfig {
   visionWeight: number;
   hearingWeight: number;
@@ -898,6 +938,145 @@ export function createAiBrain(agentId: string, role: AiRole): AiBrain {
     coverId: null,
     coordinationEpoch: 0,
     alertedAllyIds: [],
+  };
+}
+
+const SHARED_ALERT_SUSPICION = 0.56;
+
+/**
+ * Apply fresh contact shared by another agent without mutating either input.
+ * Relayed contact is actionable evidence, so an isolated patrol starts a real
+ * search instead of silently retaining suspicion while staying in patrol.
+ */
+export function receiveAiAlert(
+  brain: AiBrain,
+  target: WorldPoint,
+  allyIds?: readonly string[],
+): AiBrain {
+  const alertedAllyIds = allyIds
+    ? [...new Set(allyIds.filter((allyId) => allyId !== brain.agentId))].sort()
+    : [...brain.alertedAllyIds];
+  return {
+    ...brain,
+    mode: "search",
+    suspicion: Math.max(brain.suspicion, SHARED_ALERT_SUSPICION),
+    timeInMode: 0,
+    lostContactSeconds: 0,
+    lastKnownTarget: { ...target },
+    coverId: null,
+    alertedAllyIds,
+  };
+}
+
+/** Resolve a stable coordination faction without mixing unrelated ecology. */
+export function resolveAiCoordinationFaction(
+  input: AiCoordinationFactionInput,
+): string {
+  switch (input.group) {
+    case "human":
+      return "coordination:human";
+    case "bad-blood":
+      return "coordination:bad-blood";
+    case "xeno":
+      return "coordination:xeno";
+    case "automaton":
+      return `coordination:automaton:${input.missionId}`;
+    case "fauna":
+    case "flora":
+    case "other":
+      return `coordination:${input.group}:${input.archetype}`;
+  }
+}
+
+/**
+ * Advance one ordinary-enemy attack without applying damage. Cooldown starts
+ * with the warning, so a whiff or dodge cannot immediately retrigger it.
+ */
+export function stepRegularAttackTelegraph(
+  previous: RegularAttackTelegraphState,
+  input: RegularAttackTelegraphInput,
+): RegularAttackTelegraphStep {
+  const deltaSeconds = Number.isFinite(input.deltaSeconds)
+    ? Math.max(0, input.deltaSeconds)
+    : 0;
+  const cooldownSeconds = Math.max(
+    0,
+    previous.cooldownSeconds - deltaSeconds,
+  );
+
+  if (input.cancelled) {
+    return {
+      state: {
+        cooldownSeconds,
+        telegraphSeconds: 0,
+        pendingAttackId: null,
+      },
+      startedAttackId: null,
+      executedAttackId: null,
+      immobilized: false,
+    };
+  }
+
+  if (previous.pendingAttackId) {
+    const telegraphSeconds = Math.max(
+      0,
+      previous.telegraphSeconds - deltaSeconds,
+    );
+    if (telegraphSeconds <= 0) {
+      return {
+        state: {
+          cooldownSeconds,
+          telegraphSeconds: 0,
+          pendingAttackId: null,
+        },
+        startedAttackId: null,
+        executedAttackId: previous.pendingAttackId,
+        immobilized: true,
+      };
+    }
+    return {
+      state: {
+        cooldownSeconds,
+        telegraphSeconds,
+        pendingAttackId: previous.pendingAttackId,
+      },
+      startedAttackId: null,
+      executedAttackId: null,
+      immobilized: true,
+    };
+  }
+
+  const attackId = input.request?.attackId.trim() ?? "";
+  if (cooldownSeconds <= 0 && input.request && attackId) {
+    const telegraphSeconds = Number.isFinite(
+      input.request.telegraphSeconds,
+    )
+      ? Math.max(0.08, input.request.telegraphSeconds)
+      : 0.08;
+    const nextCooldown = Number.isFinite(input.request.cooldownSeconds)
+      ? Math.max(0, input.request.cooldownSeconds)
+      : 0;
+    return {
+      state: {
+        cooldownSeconds: nextCooldown,
+        telegraphSeconds,
+        pendingAttackId: attackId,
+      },
+      startedAttackId: attackId,
+      executedAttackId: null,
+      immobilized: true,
+    };
+  }
+
+  return {
+    state: {
+      cooldownSeconds,
+      telegraphSeconds: 0,
+      pendingAttackId: null,
+    },
+    startedAttackId: null,
+    executedAttackId: null,
+    immobilized: false,
   };
 }
 

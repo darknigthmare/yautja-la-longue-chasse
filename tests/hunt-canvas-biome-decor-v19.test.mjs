@@ -8,7 +8,7 @@ const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const [canvasSource, runtimeDataSource, availabilityDataSource, packageJson] = await Promise.all([
+const [canvasSource, runtimeDataSource, availabilityDataSource, builderSource, packageJson] = await Promise.all([
   readFile(path.join(projectRoot, "app/game/HuntCanvas.tsx"), "utf8"),
   readFile(
     path.join(projectRoot, "app/game/environmentPropRuntimeData.ts"),
@@ -16,6 +16,10 @@ const [canvasSource, runtimeDataSource, availabilityDataSource, packageJson] = a
   ),
   readFile(
     path.join(projectRoot, "app/game/environmentPropAvailabilityData.ts"),
+    "utf8",
+  ),
+  readFile(
+    path.join(projectRoot, "scripts/build-biome-decor-v19-manifests.mjs"),
     "utf8",
   ),
   readFile(path.join(projectRoot, "package.json"), "utf8").then(JSON.parse),
@@ -62,4 +66,7 @@ test("the complete QA command builds, audits and tests biome decor V19", () => {
     packageJson.scripts.qa.indexOf("npm run biome-decor:v19:manifests") <
       packageJson.scripts.qa.indexOf("npm run build"),
   );
+  assert.match(builderSource, /availableIds\.length !== ENVIRONMENT_PROP_SPECS\.length/);
+  assert.match(builderSource, /Manquants par biome/);
+  assert.match(builderSource, /Premiers IDs manquants/);
 });

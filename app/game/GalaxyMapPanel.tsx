@@ -595,7 +595,7 @@ export default function GalaxyMapPanel({
               Retour
             </button>
             <div>
-              <p className="eyebrow">Navigation du vaisseau // Carte galactique V11</p>
+              <p className="eyebrow">Navigation du vaisseau // Réseau galactique du clan</p>
               <h1 id="galaxy-map-title">{levelTitle}</h1>
             </div>
           </div>
