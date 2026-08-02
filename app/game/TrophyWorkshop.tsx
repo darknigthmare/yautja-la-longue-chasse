@@ -11,6 +11,12 @@ import {
   type CSSProperties,
   type KeyboardEvent,
 } from "react";
+import { controlActionShortcut } from "./controlBindingLabels";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  matchingControlActions,
+  type ControlBindings,
+} from "./systems/controlBindings";
 import {
   TROPHY_WORKSHOP_ACTIONS,
   TROPHY_WORKSHOP_INPUTS,
@@ -30,6 +36,7 @@ import {
 export interface TrophyWorkshopProps {
   action: TrophyWorkshopAction;
   trophyId: string;
+  controlBindings?: ControlBindings;
   trophyName?: string;
   trophyImageUrl?: string;
   gamepadEnabled?: boolean;
@@ -66,31 +73,6 @@ const FEEDBACK_LABELS: Readonly<
   missed: "Fenêtre manquée",
 };
 
-function keyboardInput(key: string): TrophyWorkshopInput | null {
-  switch (key.toLowerCase()) {
-    case "arrowleft":
-    case "a":
-    case "q":
-      return "left";
-    case "arrowup":
-    case "w":
-    case "z":
-      return "up";
-    case "arrowdown":
-    case "s":
-      return "down";
-    case "arrowright":
-    case "d":
-      return "right";
-    case "enter":
-    case " ":
-    case "e":
-      return "confirm";
-    default:
-      return null;
-  }
-}
-
 function gamepadInputs(gamepad: Gamepad): Set<TrophyWorkshopInput> {
   const inputs = new Set<TrophyWorkshopInput>();
   if (gamepad.buttons[14]?.pressed || (gamepad.axes[0] ?? 0) < -0.65) {
@@ -121,6 +103,7 @@ export default function TrophyWorkshop(props: TrophyWorkshopProps) {
 function TrophyWorkshopSession({
   action,
   trophyId,
+  controlBindings = DEFAULT_CONTROL_BINDINGS,
   trophyName = "Trophée sans nom",
   trophyImageUrl,
   gamepadEnabled = true,
@@ -139,6 +122,13 @@ function TrophyWorkshopSession({
   const completionSentRef = useRef(false);
 
   const config = TROPHY_WORKSHOP_ACTIONS[action];
+  const inputShortcuts: Readonly<Record<TrophyWorkshopInput, string>> = {
+    left: controlActionShortcut("workshop.left", controlBindings),
+    up: controlActionShortcut("workshop.up", controlBindings),
+    down: controlActionShortcut("workshop.down", controlBindings),
+    right: controlActionShortcut("workshop.right", controlBindings),
+    confirm: controlActionShortcut("workshop.confirm", controlBindings),
+  };
   const currentCue = game.sequence[game.cueIndex] ?? null;
   const result = useMemo(() => trophyWorkshopResult(game), [game]);
 
@@ -246,6 +236,7 @@ function TrophyWorkshopSession({
   }, [gamepadEnabled, submitInput]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.repeat) return;
     if (event.key === "Tab") {
       const focusable = Array.from(
         rootRef.current?.querySelectorAll<HTMLElement>(
@@ -269,28 +260,43 @@ function TrophyWorkshopSession({
       }
       return;
     }
-    if (event.key === "Escape") {
-      event.preventDefault();
-      onCancel();
-      return;
-    }
-    if (game.status === "failed" && event.key.toLowerCase() === "r") {
-      event.preventDefault();
-      restart();
-      return;
-    }
     if (
       event.target instanceof HTMLButtonElement &&
       (event.key === "Enter" || event.key === " ")
     ) {
       return;
     }
-    if (game.phase === "ready" && event.key === "Enter") {
+    const actions = matchingControlActions(
+      "workshop",
+      event.nativeEvent,
+      controlBindings,
+    );
+    if (actions.includes("workshop.cancel")) {
+      event.preventDefault();
+      onCancel();
+      return;
+    }
+    if (game.status === "failed" && actions.includes("workshop.restart")) {
+      event.preventDefault();
+      restart();
+      return;
+    }
+    if (game.phase === "ready" && actions.includes("workshop.confirm")) {
       event.preventDefault();
       begin();
       return;
     }
-    const input = keyboardInput(event.key);
+    const input: TrophyWorkshopInput | null = actions.includes("workshop.left")
+      ? "left"
+      : actions.includes("workshop.up")
+        ? "up"
+        : actions.includes("workshop.down")
+          ? "down"
+          : actions.includes("workshop.right")
+            ? "right"
+            : actions.includes("workshop.confirm")
+              ? "confirm"
+              : null;
     if (!input || game.status !== "playing") return;
     event.preventDefault();
     submitInput(input);
@@ -334,14 +340,13 @@ function TrophyWorkshopSession({
             style={styles.cancelButton}
             aria-label="Quitter l’atelier"
           >
-            Fermer · Échap
+            Fermer · {controlActionShortcut("workshop.cancel", controlBindings)}
           </button>
         </header>
 
         <p id="trophy-workshop-instructions" style={styles.instructions}>
           {config.instruction} Reproduis uniquement la touche affichée :
-          flèches ou ZQSD pour les directions, Espace ou E seulement lorsque
-          le glyphe A apparaît. Manette : croix directionnelle et A. Les
+          {inputShortcuts.left}, {inputShortcuts.up}, {inputShortcuts.down} ou {inputShortcuts.right} pour les directions, {inputShortcuts.confirm} seulement lorsque le glyphe A apparaît. Manette : croix directionnelle et A. Les
           commandes tactiles restent disponibles sous la jauge.
         </p>
 
@@ -368,7 +373,7 @@ function TrophyWorkshopSession({
             style={styles.retryButton}
             aria-describedby="trophy-workshop-instructions"
           >
-            Commencer la séquence · Entrée
+            Commencer la séquence · {inputShortcuts.confirm}
           </button>
         )}
 
@@ -483,7 +488,7 @@ function TrophyWorkshopSession({
             <strong>Préparation interrompue.</strong>
             <span>Le trophée n’a pas été modifié.</span>
             <button type="button" onClick={restart} style={styles.retryButton}>
-              Recommencer la séquence · R
+              Recommencer la séquence · {controlActionShortcut("workshop.restart", controlBindings)}
             </button>
           </div>
         )}

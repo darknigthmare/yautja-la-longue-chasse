@@ -44,6 +44,34 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    build: {
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              {
+                name: "environment-content",
+                test: /app[\\/]game[\\/]environmentProp(?:RuntimeData|AvailabilityData|Catalogue|Registry)\.ts$/,
+                priority: 30,
+                entriesAware: true,
+              },
+              {
+                name: "hunter-catalogue",
+                test: /app[\\/]game[\\/](?:catalogueRoster|catalogueAppearance|hunterLore)\.ts$/,
+                priority: 20,
+                entriesAware: true,
+              },
+              {
+                name: "game-content",
+                test: /app[\\/]game[\\/](?:data|ecologyV8|enemyRosterV7|save)\.ts$/,
+                priority: 10,
+                entriesAware: true,
+              },
+            ],
+          },
+        },
+      },
+    },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

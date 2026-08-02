@@ -2534,6 +2534,102 @@ select:focus-visible,
   accent-color: var(--blood);
 }
 
+.control-bindings-panel {
+  display: grid;
+  gap: 0.8rem;
+  padding-top: 0.25rem;
+}
+
+.control-context-tabs {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.control-context-tabs button,
+.control-binding-row button {
+  border: 1px solid rgba(214, 166, 91, 0.24);
+  background: #090c0a;
+  color: #aaa99f;
+}
+
+.control-context-tabs button {
+  min-height: 42px;
+  padding: 0.55rem 0.7rem;
+  white-space: nowrap;
+}
+
+.control-context-tabs button.active {
+  border-color: var(--amber);
+  color: var(--amber);
+  box-shadow: inset 0 -2px 0 var(--amber);
+}
+
+.control-binding-feedback {
+  min-height: 2.2em;
+  margin: 0;
+  color: #8f978d;
+  font-size: 0.72rem;
+}
+
+.control-binding-list {
+  display: grid;
+  gap: 0.45rem;
+  max-height: min(42svh, 390px);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.control-binding-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(155px, 0.9fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.65rem;
+  border: 1px solid rgba(214, 166, 91, 0.12);
+}
+
+.control-binding-row > span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.control-binding-row strong {
+  color: #d5d0c2;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.control-binding-row small {
+  color: #6f776e;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.control-binding-row button {
+  min-height: 42px;
+  padding: 0.5rem;
+  overflow-wrap: anywhere;
+  font-size: 0.68rem;
+}
+
+.control-binding-row button.listening {
+  border-color: var(--blood);
+  color: #ff9182;
+  box-shadow: 0 0 18px rgba(171, 34, 26, 0.18);
+}
+
+@media (max-width: 560px) {
+  .control-binding-row {
+    grid-template-columns: 1fr;
+  }
+
+  .control-binding-list {
+    max-height: 38svh;
+  }
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;

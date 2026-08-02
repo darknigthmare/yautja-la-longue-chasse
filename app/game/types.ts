@@ -6,6 +6,8 @@
  * definitions into its own mutable simulation state.
  */
 
+import type { ControlBindings } from "./systems/controlBindings";
+
 // ---------------------------------------------------------------------------
 // Stable content identifiers
 // ---------------------------------------------------------------------------
@@ -577,6 +579,7 @@ export interface GameSettings {
   screenShake: boolean;
   reducedGore: boolean;
   highContrastVision: boolean;
+  controlBindings: ControlBindings;
 }
 
 export interface SaveGame {

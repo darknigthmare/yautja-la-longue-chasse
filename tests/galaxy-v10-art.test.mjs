@@ -83,7 +83,7 @@ test("V10 map uses real visual registries and the selected priority dorsal ship"
   assert.match(component, /stepGalaxyFlight/);
   assert.match(component, /navigator\.getGamepads/);
   assert.match(component, /data-flight-x/);
-  assert.match(component, /event\.code === "KeyE"/);
+  assert.match(component, /matchingControlActions\([\s\S]*"galaxy"/);
   assert.doesNotMatch(component, /BODY_GLYPHS|galaxy-chart|galaxy-map-layout/);
 
   assert.match(visuals, /GALAXY_V10_PLANET_IDS/);

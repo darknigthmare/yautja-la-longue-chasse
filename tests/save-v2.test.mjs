@@ -95,6 +95,7 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
   const legacy = defaultSave("2026-01-01T00:00:00.000Z");
   legacy.version = 1;
   delete legacy.appearance;
+  delete legacy.settings.controlBindings;
   legacy.profile.hunterName = "Kra'vak";
   legacy.trophies = [
     {
@@ -124,6 +125,10 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
     trophyAdornmentId: "skull-spine",
     laserColorId: "crimson",
   });
+  assert.deepEqual(
+    migrated.settings.controlBindings,
+    defaultSave("2026-01-01T00:00:00.000Z").settings.controlBindings,
+  );
   assert.deepEqual(migrated.trophies[0], {
     id: "legacy-vey-claim",
     definitionId: "trophy-vey",
@@ -138,6 +143,42 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
     score: 91,
     claimedAt: "2026-01-02T00:00:00.000Z",
   });
+});
+
+test("keyboard bindings persist custom keys and repair malformed profiles", () => {
+  const source = defaultSave("2026-01-01T00:00:00.000Z");
+  assert.equal(Object.keys(source.settings.controlBindings).length, 48);
+  assert.deepEqual(source.settings.controlBindings["hunt.moveLeft"], [
+    "KeyQ",
+    "ArrowLeft",
+  ]);
+
+  source.settings.controlBindings = {
+    ...source.settings.controlBindings,
+    "hunt.moveLeft": ["F24"],
+  };
+  const customized = normalizeSave(source);
+  assert.deepEqual(customized.settings.controlBindings["hunt.moveLeft"], [
+    "F24",
+  ]);
+
+  const corrupted = structuredClone(source);
+  corrupted.settings.controlBindings = {
+    "hunt.moveLeft": [],
+    "unknown.action": ["KeyA"],
+  };
+  const repaired = normalizeSave(corrupted);
+  assert.deepEqual(
+    repaired.settings.controlBindings,
+    defaultSave("2026-01-01T00:00:00.000Z").settings.controlBindings,
+  );
+
+  const conflicting = structuredClone(source);
+  conflicting.settings.controlBindings["hunt.moveRight"] = ["F24"];
+  assert.deepEqual(
+    normalizeSave(conflicting).settings.controlBindings,
+    defaultSave("2026-01-01T00:00:00.000Z").settings.controlBindings,
+  );
 });
 
 test("bestiary discoveries normalize to unique authored V7 and V8 roster ids", () => {

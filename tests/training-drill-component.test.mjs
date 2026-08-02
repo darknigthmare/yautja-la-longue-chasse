@@ -41,8 +41,9 @@ test("TrainingDrill source provides timing, key isolation, live feedback, touch 
 
   assert.match(source, /window\.requestAnimationFrame\(animate\)/);
   assert.match(source, /event\.stopPropagation\(\)/);
-  assert.match(source, /event\.key === "Escape"/);
-  assert.match(source, /keyboardAction\(event\.key\)/);
+  assert.match(source, /matchingControlActions\([\s\S]*"training"/);
+  assert.match(source, /actions\.includes\("training\.cancel"\)/);
+  assert.match(source, /actions\.includes\("training\.primary"\)/);
   assert.match(source, /onPointerDown=/);
   assert.match(source, /aria-live="polite"/);
   assert.match(source, /aria-live="assertive"/);

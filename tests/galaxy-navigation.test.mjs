@@ -510,7 +510,8 @@ test("physical deck exposes six truthful traversable stations and three input fa
   }
   assert.match(source, /window\.requestAnimationFrame/);
   assert.match(source, /navigator\.getGamepads/);
-  assert.match(source, /event\.key\.toLowerCase/);
+  assert.match(source, /matchesControlAction\("hunt\.moveLeft"/);
+  assert.match(source, /matchesControlAction\("hunt\.interact"/);
   assert.match(source, /onPointerDown/);
   assert.match(source, /INTERACTION_RADIUS/);
   assert.match(source, /LADDERS/);

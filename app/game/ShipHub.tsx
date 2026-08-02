@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { controlActionShortcut } from "./controlBindingLabels";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
 import {
@@ -21,6 +22,11 @@ import {
   type ShipId,
   type ShipMedia,
 } from "./shipCatalogue";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  matchingControlActions,
+  type ControlBindings,
+} from "./systems/controlBindings";
 import {
   TRAINING_LABELS,
   TROPHY_METHOD_LABELS,
@@ -127,6 +133,7 @@ interface HubActionDefinition {
 
 export interface ShipHubProps {
   save: SaveGame;
+  controlBindings?: ControlBindings;
   /** Omit for a self-persisting sidecar; provide for controlled integration. */
   progression?: ShipProgressionState;
   initialRoomId?: ShipRoomId;
@@ -200,6 +207,7 @@ function formatDuration(seconds: number): string {
 
 export default function ShipHub({
   save,
+  controlBindings = DEFAULT_CONTROL_BINDINGS,
   progression: controlledProgression,
   initialRoomId = "bridge-map",
   autoFocus = true,
@@ -873,6 +881,7 @@ export default function ShipHub({
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
       if (trainingSession !== null) return;
+      if (event.repeat) return;
       const target = event.target;
       if (
         target instanceof HTMLInputElement ||
@@ -882,42 +891,50 @@ export default function ShipHub({
         return;
       }
       if (
-        event.key === "ArrowLeft" ||
-        event.key.toLowerCase() === "a"
+        target instanceof HTMLButtonElement &&
+        (event.key === "Enter" || event.key === " ")
       ) {
+        return;
+      }
+      const actions = matchingControlActions(
+        "shipHub",
+        event.nativeEvent,
+        controlBindings,
+      );
+      if (actions.includes("shipHub.previousRoom")) {
         event.preventDefault();
         moveRoom(-1);
-      } else if (
-        event.key === "ArrowRight" ||
-        event.key.toLowerCase() === "d"
-      ) {
+      } else if (actions.includes("shipHub.nextRoom")) {
         event.preventDefault();
         moveRoom(1);
-      } else if (event.key === "ArrowUp") {
+      } else if (actions.includes("shipHub.previousAction")) {
         event.preventDefault();
         focusAction(safeActionIndex - 1);
-      } else if (event.key === "ArrowDown") {
+      } else if (actions.includes("shipHub.nextAction")) {
         event.preventDefault();
         focusAction(safeActionIndex + 1);
-      } else if (
-        (event.key === "Enter" || event.key === " ") &&
-        event.currentTarget === event.target
-      ) {
-        event.preventDefault();
-        invokeAction(safeActionIndex);
-      } else if (event.key === "Escape") {
+      } else if (actions.includes("shipHub.activate")) {
+        if (target instanceof HTMLButtonElement) {
+          event.preventDefault();
+          target.click();
+        } else {
+          event.preventDefault();
+          invokeAction(safeActionIndex);
+        }
+      } else if (actions.includes("shipHub.returnToBridge")) {
         event.preventDefault();
         selectRoom("bridge-map");
-      } else if (event.key === "Home") {
+      } else if (actions.includes("shipHub.firstRoom")) {
         event.preventDefault();
         selectRoom(SHIP_ROOMS[0].id);
-      } else if (event.key === "End") {
+      } else if (actions.includes("shipHub.lastRoom")) {
         event.preventDefault();
         selectRoom(SHIP_ROOMS.at(-1)?.id ?? "archives");
       }
     },
     [
       focusAction,
+      controlBindings,
       invokeAction,
       moveRoom,
       safeActionIndex,
@@ -1043,8 +1060,7 @@ export default function ShipHub({
 
         <footer style={styles.footer}>
           <p id="ship-hub-help">
-            Clavier : A/D ou ←/→ pour les salles, ↑/↓ puis Entrée pour
-            les actions. Manette : croix directionnelle, A pour
+            Clavier : {controlActionShortcut("shipHub.previousRoom", controlBindings)} / {controlActionShortcut("shipHub.nextRoom", controlBindings)} pour les salles, {controlActionShortcut("shipHub.previousAction", controlBindings)} / {controlActionShortcut("shipHub.nextAction", controlBindings)} puis {controlActionShortcut("shipHub.activate", controlBindings)} pour les actions. Manette : croix directionnelle, A pour
             confirmer, B pour le pont. Les boutons restent tactiles.
           </p>
           <p role="status" aria-live="polite">
@@ -1056,6 +1072,7 @@ export default function ShipHub({
         <TrainingDrill
           disciplineId={trainingSession.disciplineId}
           seed={trainingSession.seed}
+          controlBindings={controlBindings}
           onComplete={completeAutonomousTraining}
           onCancel={cancelAutonomousTraining}
         />

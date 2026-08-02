@@ -638,6 +638,165 @@ test("restraint cancels a pending regular attack without erasing its cooldown", 
   assert.ok(Math.abs(cancelled.state.cooldownSeconds - 1.1) < 0.000_001);
 });
 
+test("the five hunter weapons resolve to deterministic and distinct runtime identities", async () => {
+  const hunt = await huntPromise;
+  const base = {
+    damage: 30,
+    heavyDamage: 68,
+    cooldownSeconds: 0.43,
+    rangePx: 550,
+    projectileSpeedPx: 760,
+    staminaCost: 12,
+    energyCost: 0,
+    ammo: 1,
+  };
+  const ids = [
+    "wristblades",
+    "combistick",
+    "plasma-caster",
+    "yautja-bow",
+    "smart-disc",
+  ];
+  const attacks = ids.map((id) =>
+    hunt.resolveHunterWeaponAttack(
+      id,
+      {
+        ...base,
+        ammo:
+          id === "wristblades" || id === "plasma-caster" ? null : 1,
+      },
+      0,
+    ),
+  );
+
+  assert.equal(new Set(attacks.map((attack) => attack.family)).size, 5);
+  assert.deepEqual(
+    attacks.map(({ recovery }) => recovery),
+    ["none", "pickup", "none", "pickup", "return"],
+  );
+  assert.deepEqual(
+    attacks.map(({ maxTargetHits }) => maxTargetHits),
+    [2, 1, 1, 1, 4],
+  );
+  assert.equal(attacks[0].ammoCost, 0);
+  assert.equal(attacks[1].staminaCost, 12);
+  assert.deepEqual(
+    hunt.resolveHunterWeaponAttack("combistick", base, 0),
+    hunt.resolveHunterWeaponAttack("combistick", base, 0),
+  );
+});
+
+test("Plasmacaster and bow charge alter damage and resources coherently", async () => {
+  const hunt = await huntPromise;
+  const plasmaBase = {
+    damage: 34,
+    heavyDamage: 95,
+    cooldownSeconds: 0.65,
+    rangePx: 820,
+    projectileSpeedPx: 900,
+    staminaCost: 0,
+    energyCost: 22,
+    ammo: null,
+  };
+  const plasmaTap = hunt.resolveHunterWeaponAttack(
+    "plasma-caster",
+    plasmaBase,
+    0,
+  );
+  const plasmaCharged = hunt.resolveHunterWeaponAttack(
+    "plasma-caster",
+    plasmaBase,
+    9,
+  );
+  assert.equal(plasmaTap.damage, 34);
+  assert.equal(plasmaCharged.chargeRatio, 1);
+  assert.equal(plasmaCharged.damage, 95);
+  assert.ok(plasmaCharged.energyCost > plasmaTap.energyCost);
+  assert.ok(plasmaCharged.cooldownSeconds > plasmaTap.cooldownSeconds);
+  assert.ok(plasmaCharged.projectileRadius > plasmaTap.projectileRadius);
+  assert.ok(plasmaCharged.splashRadius > plasmaTap.splashRadius);
+  assert.equal(plasmaCharged.ammoCost, 0);
+
+  const bowBase = {
+    damage: 20,
+    heavyDamage: 65,
+    cooldownSeconds: 0.52,
+    rangePx: 920,
+    projectileSpeedPx: 980,
+    staminaCost: 4,
+    energyCost: 0,
+    ammo: 8,
+  };
+  const bowTap = hunt.resolveHunterWeaponAttack("yautja-bow", bowBase, 0);
+  const bowCharged = hunt.resolveHunterWeaponAttack(
+    "yautja-bow",
+    bowBase,
+    0.9,
+  );
+  assert.equal(bowTap.damage, 14.4);
+  assert.equal(bowCharged.damage, 65);
+  assert.ok(bowCharged.rangePx > bowTap.rangePx);
+  assert.ok(bowCharged.projectileSpeedPx > bowTap.projectileSpeedPx);
+  assert.ok(bowCharged.cooldownSeconds > bowTap.cooldownSeconds);
+  assert.equal(bowTap.maxTargetHits, 1);
+  assert.equal(bowCharged.maxTargetHits, 2);
+  assert.equal(bowCharged.recovery, "pickup");
+  assert.equal(bowCharged.ammoCost, 1);
+  assert.equal(hunt.hunterWeaponChargeRatio("yautja-bow", Number.NaN), 0);
+});
+
+test("Smart Disc flight switches to guidance and cannot overshoot its hunter", async () => {
+  const hunt = await huntPromise;
+  const returnStep = hunt.stepSmartDiscFlight(
+    {
+      x: 0,
+      y: 0,
+      velocityX: 100,
+      velocityY: 0,
+      outboundSeconds: 0.1,
+      returning: false,
+    },
+    {
+      deltaSeconds: 0.11,
+      hunterPosition: { x: -200, y: 0 },
+      speedPxPerSecond: 100,
+      catchRadius: 10,
+    },
+  );
+  assert.equal(returnStep.startedReturn, true);
+  assert.equal(returnStep.state.returning, true);
+  assert.ok(returnStep.state.velocityX < 0);
+  assert.equal(returnStep.caught, false);
+
+  const caught = hunt.stepSmartDiscFlight(
+    {
+      ...returnStep.state,
+      x: -185,
+      y: 0,
+    },
+    {
+      deltaSeconds: 0.1,
+      hunterPosition: { x: -200, y: 0 },
+      speedPxPerSecond: 100,
+      catchRadius: 6,
+    },
+  );
+  assert.equal(caught.caught, true);
+  assert.deepEqual(
+    { x: caught.state.x, y: caught.state.y },
+    { x: -200, y: 0 },
+  );
+});
+
+test("hunter splash damage is finite and strongly attenuated by cover", async () => {
+  const hunt = await huntPromise;
+  assert.equal(hunt.resolveHunterSplashDamage(100, 0), 45);
+  assert.equal(hunt.resolveHunterSplashDamage(100, 1), 2.25);
+  assert.equal(hunt.resolveHunterSplashDamage(100, 0.5), 23.625);
+  assert.equal(hunt.resolveHunterSplashDamage(Number.NaN, 0), 0);
+  assert.equal(hunt.resolveHunterSplashDamage(100, Number.NaN), 45);
+});
+
 test("AI investigates track and scent evidence instead of knowing the live target", async () => {
   const hunt = await huntPromise;
   const observation = {
@@ -800,6 +959,13 @@ test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey
     "filter: highContrastVision",
     "stepAiBrain(previousBrain",
     "stepRegularAttackTelegraph(",
+    "resolveHunterWeaponAttack(",
+    "stepSmartDiscFlight(",
+    "settleRecoverableProjectile(",
+    "projectile.splashRadius",
+    "recordPlasmaRestraintViolation(",
+    "resolveHunterSplashDamage(",
+    "weaponChargeSeconds",
     "attackStep.immobilized",
     "attackStep.executedAttackId === REGULAR_MELEE_ATTACK_ID",
     "receiveAiAlert(",

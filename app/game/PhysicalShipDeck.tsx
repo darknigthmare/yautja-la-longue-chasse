@@ -11,6 +11,12 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import { controlActionShortcut } from "./controlBindingLabels";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  matchesControlAction,
+  type ControlBindings,
+} from "./systems/controlBindings";
 
 export type PhysicalShipStationId =
   | "galaxy-map"
@@ -88,6 +94,7 @@ export const PHYSICAL_SHIP_STATIONS: readonly PhysicalShipStationDefinition[] = 
 ] as const;
 
 export interface PhysicalShipDeckProps {
+  controlBindings?: ControlBindings;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
   highContrast?: boolean;
@@ -184,6 +191,7 @@ function isEditableTarget(target: EventTarget | null): boolean {
  * focusable stations remain available as an accessibility shortcut.
  */
 export default function PhysicalShipDeck({
+  controlBindings = DEFAULT_CONTROL_BINDINGS,
   autoFocus = true,
   gamepadEnabled = true,
   highContrast = false,
@@ -219,6 +227,10 @@ export default function PhysicalShipDeck({
   const playerRef = useRef(player);
   const [status, setStatus] = useState(
     "Pont prêt. Approche-toi d’une station puis interagis.",
+  );
+  const interactionShortcut = controlActionShortcut(
+    "hunt.interact",
+    controlBindings,
   );
 
   const nearbyStation = useMemo(() => nearestStationFor(player), [player]);
@@ -291,31 +303,58 @@ export default function PhysicalShipDeck({
     onStationProximityChange?.(stationId);
     if (nearbyStation) {
       onNotify?.(
-        `${nearbyStation.label} à portée. E / Entrée / X pour utiliser.`,
+        `${nearbyStation.label} à portée. ${interactionShortcut} / X pour utiliser.`,
       );
     }
-  }, [nearbyStation, onNotify, onStationProximityChange]);
+  }, [interactionShortcut, nearbyStation, onNotify, onStationProximityChange]);
 
   // Keyboard state is sampled by the same fixed physics loop as touch/gamepad.
   useEffect(() => {
+    const clearControls = () => {
+      controlsRef.current = {
+        left: false,
+        right: false,
+        up: false,
+        down: false,
+        jumpQueued: false,
+      };
+    };
     const changeKey = (event: KeyboardEvent, pressed: boolean) => {
-      if (event.defaultPrevented || isEditableTarget(event.target)) return;
-      const root = rootRef.current;
-      if (!root || (document.activeElement !== root && !root.contains(document.activeElement))) {
-        return;
+      if (pressed) {
+        if (event.defaultPrevented || isEditableTarget(event.target)) return;
+        if (
+          event.target instanceof HTMLButtonElement &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+          return;
+        }
+        const root = rootRef.current;
+        if (
+          !root ||
+          (document.activeElement !== root &&
+            !root.contains(document.activeElement))
+        ) {
+          return;
+        }
       }
-      const key = event.key.toLowerCase();
-      if (key === "arrowleft" || key === "a" || key === "q") {
+      if (matchesControlAction("hunt.moveLeft", event, controlBindings)) {
         controlsRef.current.left = pressed;
-      } else if (key === "arrowright" || key === "d") {
+      } else if (matchesControlAction("hunt.moveRight", event, controlBindings)) {
         controlsRef.current.right = pressed;
-      } else if (key === "arrowup" || key === "w" || key === "z") {
+      } else if (matchesControlAction("hunt.moveUp", event, controlBindings)) {
         controlsRef.current.up = pressed;
-      } else if (key === "arrowdown" || key === "s") {
+      } else if (matchesControlAction("hunt.moveDown", event, controlBindings)) {
         controlsRef.current.down = pressed;
-      } else if ((key === " " || key === "spacebar") && pressed) {
+      } else if (
+        matchesControlAction("hunt.jump", event, controlBindings) &&
+        pressed
+      ) {
         controlsRef.current.jumpQueued = true;
-      } else if ((key === "e" || key === "enter") && pressed && !event.repeat) {
+      } else if (
+        matchesControlAction("hunt.interact", event, controlBindings) &&
+        pressed &&
+        !event.repeat
+      ) {
         interactRef.current();
       } else {
         return;
@@ -324,13 +363,23 @@ export default function PhysicalShipDeck({
     };
     const keyDown = (event: KeyboardEvent) => changeKey(event, true);
     const keyUp = (event: KeyboardEvent) => changeKey(event, false);
+    const visibilityChange = () => {
+      if (document.hidden) clearControls();
+    };
     window.addEventListener("keydown", keyDown);
     window.addEventListener("keyup", keyUp);
+    window.addEventListener("blur", clearControls);
+    window.addEventListener("pagehide", clearControls);
+    document.addEventListener("visibilitychange", visibilityChange);
     return () => {
       window.removeEventListener("keydown", keyDown);
       window.removeEventListener("keyup", keyUp);
+      window.removeEventListener("blur", clearControls);
+      window.removeEventListener("pagehide", clearControls);
+      document.removeEventListener("visibilitychange", visibilityChange);
+      clearControls();
     };
-  }, []);
+  }, [controlBindings]);
 
   useEffect(() => {
     let frameId = 0;
@@ -555,8 +604,7 @@ export default function PhysicalShipDeck({
           <h2 style={styles.title}>Parcours le pont</h2>
         </div>
         <p id="physical-deck-help" style={styles.help}>
-          Marcher : flèches / ZQSD / stick · sauter : Espace / A · interagir : E,
-          Entrée / X. Grimpe aux échelles avec haut et bas.
+          Marcher : {controlActionShortcut("hunt.moveLeft", controlBindings)} / {controlActionShortcut("hunt.moveRight", controlBindings)} / {controlActionShortcut("hunt.moveUp", controlBindings)} / {controlActionShortcut("hunt.moveDown", controlBindings)} / stick · sauter : {controlActionShortcut("hunt.jump", controlBindings)} / A · interagir : {interactionShortcut} / X. Grimpe aux échelles avec haut et bas.
         </p>
       </header>
 

@@ -52,6 +52,8 @@ import {
   createTrackMark,
   perceivedNoise,
   receiveAiAlert,
+  resolveHunterWeaponAttack,
+  resolveHunterSplashDamage,
   resolveAiCoordinationFaction,
   resolveAiMovementLeash,
   sampleScentAt,
@@ -62,9 +64,12 @@ import {
   stepHuntTrap,
   stepMudState,
   stepRegularAttackTelegraph,
+  stepSmartDiscFlight,
+  hunterWeaponChargeRatio,
   type AiBrain,
   type AiCoordinationGroup,
   type BossMechanicState,
+  type HunterProjectileRecovery,
   type HuntTrap,
   type MudState,
   type NoiseEvent,
@@ -142,6 +147,17 @@ import {
   ecologyV8RuntimeProfile,
 } from "./ecologyEncounterV8";
 import { enemyTrophyGameplayForEnemyId } from "./enemyTrophyGameplayV18";
+import { controlActionShortcut } from "./controlBindingLabels";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  matchingControlActions,
+  type ControlActionId,
+  type ControlBindings,
+} from "./systems/controlBindings";
+import {
+  isBoundedJsonValue,
+  type JsonObject,
+} from "./systems/activeHuntSave";
 import {
   cullEnvironmentDecorPlacements,
   environmentDecorPlacementsForMission,
@@ -181,6 +197,7 @@ interface HuntCanvasProps {
   loadout: Loadout;
   inventory: PlayerInventory;
   difficulty: DifficultyId;
+  controlBindings?: ControlBindings;
   appearance: HunterAppearance;
   reducedGore: boolean;
   screenShake: boolean;
@@ -188,6 +205,18 @@ interface HuntCanvasProps {
   onSound?(sound: GameSfxId): void;
   onFinish(result: MissionResult): void;
   onAbort(result: MissionResult): void;
+  resumeSnapshot?: JsonObject | null;
+  resumeRetryCheckpoint?: JsonObject | null;
+  onPersistHunt?(payload: HuntPersistencePayload): void;
+  onSuspendHunt?(payload: HuntPersistencePayload): void;
+  onInvalidateHunt?(): void;
+  onResumeFailure?(): void;
+}
+
+export interface HuntPersistencePayload {
+  snapshot: JsonObject;
+  retryCheckpoint: JsonObject | null;
+  elapsed: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -265,6 +294,7 @@ interface PlayerState extends Vec2 {
   invulnerability: number;
   meleeCooldown: number;
   weaponCooldown: number;
+  weaponChargeSeconds: number;
   scanCooldown: number;
   healCooldown: number;
 }
@@ -322,6 +352,16 @@ interface ProjectileState extends Vec2 {
   source: "melee" | "weapon" | "enemy" | "boss";
   weaponId: WeaponId | null;
   coverGraceSeconds: number;
+  weaponSlotIndex?: 0 | 1;
+  maximumAmmo?: number;
+  recovery?: HunterProjectileRecovery;
+  spentPickup?: boolean;
+  hitEnemyIds?: string[];
+  maxTargetHits?: number;
+  splashRadius?: number;
+  returning?: boolean;
+  outboundSeconds?: number;
+  flightSpeed?: number;
 }
 
 interface GoreParticle extends Vec2 {
@@ -368,6 +408,10 @@ interface MissionCheckpointPayload {
   phase: HuntPhase;
   elapsed: number;
   player: PlayerState;
+  projectiles: ProjectileState[];
+  scentNodes: ScentNode[];
+  noiseEvents: NoiseEvent[];
+  tracks: ObservedTrackMark[];
   enemies: EnemyState[];
   aiBrains: Record<string, AiBrain>;
   scanNodes: ScanNode[];
@@ -654,38 +698,39 @@ const LASER_COLOR_HEX: Readonly<Record<LaserColorId, string>> = {
 const FLOOR_Y = 624;
 const GRAVITY = 1_850;
 
-const KEY_ACTIONS: Readonly<Record<string, Action>> = {
-  ArrowLeft: "left",
-  KeyA: "left",
-  KeyQ: "left",
-  ArrowRight: "right",
-  KeyD: "right",
-  ArrowUp: "up",
-  KeyW: "up",
-  KeyZ: "up",
-  ArrowDown: "down",
-  KeyS: "down",
-  Space: "jump",
-  KeyJ: "melee",
-  KeyK: "weapon",
-  ShiftLeft: "aim",
-  ShiftRight: "aim",
-  KeyM: "mask",
-  KeyV: "scan",
-  KeyC: "cloak",
-  KeyH: "heal",
-  Digit1: "weaponOne",
-  Numpad1: "weaponOne",
-  Digit2: "weaponTwo",
-  Numpad2: "weaponTwo",
-  KeyR: "weaponNext",
-  Digit3: "gearOne",
-  Numpad3: "gearOne",
-  Digit4: "gearTwo",
-  Numpad4: "gearTwo",
-  KeyE: "interact",
-  Escape: "pause",
+const HUNT_CONTROL_ACTIONS: Readonly<
+  Partial<Record<ControlActionId, Action>>
+> = {
+  "hunt.moveLeft": "left",
+  "hunt.moveRight": "right",
+  "hunt.moveUp": "up",
+  "hunt.moveDown": "down",
+  "hunt.jump": "jump",
+  "hunt.melee": "melee",
+  "hunt.weaponPrimary": "weapon",
+  "hunt.selectWeaponOne": "weaponOne",
+  "hunt.selectWeaponTwo": "weaponTwo",
+  "hunt.nextWeapon": "weaponNext",
+  "hunt.aim": "aim",
+  "hunt.toggleMask": "mask",
+  "hunt.scan": "scan",
+  "hunt.toggleCloak": "cloak",
+  "hunt.heal": "heal",
+  "hunt.useGearOne": "gearOne",
+  "hunt.useGearTwo": "gearTwo",
+  "hunt.interact": "interact",
+  "hunt.pause": "pause",
 };
+
+function isHeldKeyboardAction(action: Action): boolean {
+  return (
+    action === "left" ||
+    action === "right" ||
+    action === "up" ||
+    action === "down" ||
+    action === "aim"
+  );
+}
 
 const EMPTY_UI: UiSnapshot = {
   phase: "tracking",
@@ -1199,6 +1244,7 @@ function makeGameState(
       invulnerability: 0,
       meleeCooldown: 0,
       weaponCooldown: 0,
+      weaponChargeSeconds: 0,
       scanCooldown: 0,
       healCooldown: 0,
     },
@@ -1352,6 +1398,15 @@ function cloneEnemyState(enemy: EnemyState): EnemyState {
   return { ...enemy };
 }
 
+function cloneProjectileState(projectile: ProjectileState): ProjectileState {
+  return {
+    ...projectile,
+    hitEnemyIds: projectile.hitEnemyIds
+      ? [...projectile.hitEnemyIds]
+      : undefined,
+  };
+}
+
 function cloneTrophyRitual(
   ritual: TrophyRitualState | null,
 ): TrophyRitualState | null {
@@ -1405,11 +1460,35 @@ function cloneArsenalRuntime(
   };
 }
 
-function captureCheckpoint(state: GameState): MissionCheckpointPayload {
+function captureCheckpoint(
+  state: GameState,
+  mode: "retry" | "resume" = "retry",
+): MissionCheckpointPayload {
+  const checkpointPlayer = clonePlayerState(state.player);
+  for (const projectile of mode === "retry" ? state.projectiles : []) {
+    if (
+      projectile.hostile ||
+      projectile.recovery === "none" ||
+      projectile.recovery === undefined ||
+      projectile.weaponSlotIndex === undefined ||
+      projectile.maximumAmmo === undefined
+    ) {
+      continue;
+    }
+    const slotIndex = projectile.weaponSlotIndex;
+    checkpointPlayer.weaponAmmo[slotIndex] = Math.min(
+      projectile.maximumAmmo,
+      checkpointPlayer.weaponAmmo[slotIndex] + 1,
+    );
+  }
   return {
     phase: state.phase,
     elapsed: state.elapsed,
-    player: clonePlayerState(state.player),
+    player: checkpointPlayer,
+    projectiles: state.projectiles.map(cloneProjectileState),
+    scentNodes: state.scentNodes.map((node) => ({ ...node })),
+    noiseEvents: state.noiseEvents.map((event) => ({ ...event })),
+    tracks: state.tracks.map((track) => ({ ...track })),
     enemies: state.enemies.map(cloneEnemyState),
     aiBrains: cloneAiBrains(state.aiBrains),
     scanNodes: state.scanNodes.map((node) => ({ ...node })),
@@ -1459,41 +1538,338 @@ function captureCheckpoint(state: GameState): MissionCheckpointPayload {
   };
 }
 
+const ACTIVE_HUNT_SNAPSHOT_VERSION = 1 as const;
+const ACTIVE_HUNT_PHASES = new Set<HuntPhase>([
+  "tracking",
+  "target",
+  "trophy",
+  "extraction",
+]);
+
+interface RestoredActiveHuntSnapshot {
+  checkpoint: MissionCheckpointPayload;
+  nextCheckpointIndex: number;
+}
+
+function isJsonObject(value: unknown): value is JsonObject {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isFiniteJsonNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((entry) => typeof entry === "string");
+}
+
+function hasFiniteFields(
+  value: JsonObject,
+  fields: readonly string[],
+): boolean {
+  return fields.every((field) => isFiniteJsonNumber(value[field]));
+}
+
+function activeHuntSnapshotChecksum(serialized: string): string {
+  let hash = 2_166_136_261;
+  for (let index = 0; index < serialized.length; index += 1) {
+    hash = Math.imul(hash ^ serialized.charCodeAt(index), 16_777_619);
+  }
+  return (hash >>> 0).toString(36);
+}
+
+function isValidSerializedAiBrains(value: JsonObject): boolean {
+  return Object.values(value).every((entry) => {
+    if (!isJsonObject(entry) || !isStringArray(entry.alertedAllyIds)) {
+      return false;
+    }
+    return (
+      entry.lastKnownTarget === null ||
+      (isJsonObject(entry.lastKnownTarget) &&
+        hasFiniteFields(entry.lastKnownTarget, ["x", "y"]))
+    );
+  });
+}
+
+function isValidSerializedArsenal(value: JsonObject): boolean {
+  if (
+    !Array.isArray(value.slots) ||
+    value.slots.length !== 2 ||
+    !value.slots.every(isJsonObject) ||
+    !Array.isArray(value.activeEffects)
+  ) {
+    return false;
+  }
+  return value.activeEffects.every(
+    (effect) =>
+      isJsonObject(effect) &&
+      isJsonObject(effect.origin) &&
+      isJsonObject(effect.target) &&
+      hasFiniteFields(effect.origin, ["x", "y"]) &&
+      hasFiniteFields(effect.target, ["x", "y"]),
+  );
+}
+
+function serializeActiveHuntCheckpoint(
+  checkpoint: MissionCheckpointPayload,
+  nextCheckpointIndex: number,
+): JsonObject | null {
+  try {
+    const checkpointSerialized = JSON.stringify({
+      ...checkpoint,
+      spawnedWaves: [...checkpoint.spawnedWaves],
+      completedObjectives: [...checkpoint.completedObjectives],
+      brokenPillarIds: [...checkpoint.brokenPillarIds],
+    });
+    const serializable = {
+      version: ACTIVE_HUNT_SNAPSHOT_VERSION,
+      nextCheckpointIndex,
+      checksum: activeHuntSnapshotChecksum(checkpointSerialized),
+      checkpoint: JSON.parse(checkpointSerialized) as unknown,
+    };
+    const detached: unknown = JSON.parse(JSON.stringify(serializable));
+    return isJsonObject(detached) && isBoundedJsonValue(detached)
+      ? detached
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function deserializeActiveHuntCheckpoint(
+  snapshot: JsonObject | null | undefined,
+): RestoredActiveHuntSnapshot | null {
+  if (
+    !snapshot ||
+    snapshot.version !== ACTIVE_HUNT_SNAPSHOT_VERSION ||
+    !Number.isSafeInteger(snapshot.nextCheckpointIndex) ||
+    (snapshot.nextCheckpointIndex as number) < 0 ||
+    (snapshot.nextCheckpointIndex as number) > 1_000 ||
+    typeof snapshot.checksum !== "string" ||
+    !isJsonObject(snapshot.checkpoint) ||
+    !isBoundedJsonValue(snapshot) ||
+    activeHuntSnapshotChecksum(JSON.stringify(snapshot.checkpoint)) !==
+      snapshot.checksum
+  ) {
+    return null;
+  }
+
+  const checkpoint = snapshot.checkpoint;
+  if (
+    typeof checkpoint.phase !== "string" ||
+    !ACTIVE_HUNT_PHASES.has(checkpoint.phase as HuntPhase) ||
+    !isJsonObject(checkpoint.player) ||
+    !isJsonObject(checkpoint.boss) ||
+    !isJsonObject(checkpoint.aiBrains) ||
+    !isJsonObject(checkpoint.bossMechanics) ||
+    !isJsonObject(checkpoint.mud) ||
+    !isJsonObject(checkpoint.arsenal) ||
+    !isValidSerializedAiBrains(checkpoint.aiBrains) ||
+    !isValidSerializedArsenal(checkpoint.arsenal) ||
+    !hasFiniteFields(checkpoint.player, [
+      "x",
+      "y",
+      "width",
+      "height",
+      "health",
+      "maxHealth",
+      "stamina",
+      "maxStamina",
+      "energy",
+      "maxEnergy",
+      "previousY",
+      "velocityX",
+      "velocityY",
+      "facing",
+      "medicomps",
+      "activeWeaponSlot",
+      "aimAngle",
+      "gauntletOpen",
+      "bladeExtension",
+      "attackFlash",
+      "invulnerability",
+      "meleeCooldown",
+      "weaponCooldown",
+      "weaponChargeSeconds",
+      "scanCooldown",
+      "healCooldown",
+    ]) ||
+    !isJsonObject(checkpoint.player.aimPoint) ||
+    !hasFiniteFields(checkpoint.player.aimPoint, ["x", "y"]) ||
+    !Array.isArray(checkpoint.player.weaponAmmo) ||
+    checkpoint.player.weaponAmmo.length !== 2 ||
+    !checkpoint.player.weaponAmmo.every(isFiniteJsonNumber) ||
+    !Array.isArray(checkpoint.player.dreadAngles) ||
+    !checkpoint.player.dreadAngles.every(isFiniteJsonNumber) ||
+    !Array.isArray(checkpoint.player.dreadVelocities) ||
+    checkpoint.player.dreadVelocities.length !==
+      checkpoint.player.dreadAngles.length ||
+    !checkpoint.player.dreadVelocities.every(isFiniteJsonNumber) ||
+    typeof checkpoint.player.grounded !== "boolean" ||
+    typeof checkpoint.player.cloaked !== "boolean" ||
+    typeof checkpoint.player.maskOn !== "boolean" ||
+    typeof checkpoint.player.aiming !== "boolean" ||
+    typeof checkpoint.player.climbing !== "boolean" ||
+    (checkpoint.player.facing !== -1 && checkpoint.player.facing !== 1) ||
+    (checkpoint.player.activeWeaponSlot !== 0 &&
+      checkpoint.player.activeWeaponSlot !== 1) ||
+    (checkpoint.trophyRitual !== null &&
+      (!isJsonObject(checkpoint.trophyRitual) ||
+        !isStringArray(checkpoint.trophyRitual.sequence))) ||
+    (checkpoint.bossMechanics.missionId === "volcano-bad-blood" &&
+      !isStringArray(checkpoint.bossMechanics.disabledConsoleIds)) ||
+    !hasFiniteFields(checkpoint.boss, [
+      "x",
+      "y",
+      "width",
+      "height",
+      "health",
+      "maxHealth",
+    ]) ||
+    !hasFiniteFields(checkpoint, [
+      "elapsed",
+      "ecologySpawnIndex",
+      "honor",
+      "kills",
+      "scans",
+      "supportKills",
+      "damageTaken",
+      "bossVulnerabilityMultiplier",
+      "bossThermalVisibility",
+      "trophyExtraction",
+      "nextProjectileId",
+      "nextSignalId",
+    ]) ||
+    !isStringArray(checkpoint.spawnedWaves) ||
+    !isStringArray(checkpoint.completedObjectives) ||
+    !isStringArray(checkpoint.brokenPillarIds)
+  ) {
+    return null;
+  }
+
+  const requiredArrays = [
+    "enemies",
+    "projectiles",
+    "scentNodes",
+    "noiseEvents",
+    "tracks",
+    "scanNodes",
+    "recoveryNodes",
+    "purgeConsoleNodes",
+    "regularTrophyDrops",
+    "honorEvents",
+    "traps",
+  ] as const;
+  const requiredBooleans = [
+    "secondWindUsed",
+    "energyWeaponsLocked",
+    "bossHitPillar",
+    "playerUsedRangedWeapon",
+    "playerUsedEnergyWeapon",
+    "trophyExtracting",
+    "trophyCarried",
+    "rangedBossViolation",
+  ] as const;
+  if (
+    !requiredArrays.every((field) => Array.isArray(checkpoint[field])) ||
+    !requiredBooleans.every(
+      (field) => typeof checkpoint[field] === "boolean",
+    )
+  ) {
+    return null;
+  }
+
+  const {
+    spawnedWaves,
+    completedObjectives,
+    brokenPillarIds,
+    ...rest
+  } = checkpoint;
+  return {
+    checkpoint: {
+      ...rest,
+      spawnedWaves: new Set(spawnedWaves),
+      completedObjectives: new Set(completedObjectives),
+      brokenPillarIds: new Set(brokenPillarIds),
+    } as unknown as MissionCheckpointPayload,
+    nextCheckpointIndex: snapshot.nextCheckpointIndex as number,
+  };
+}
+
+function persistencePayloadFor(state: GameState): HuntPersistencePayload | null {
+  if (state.phase === "dead" || state.phase === "finished") return null;
+  const snapshot = serializeActiveHuntCheckpoint(
+    captureCheckpoint(state, "resume"),
+    state.nextCheckpointIndex,
+  );
+  if (!snapshot) return null;
+  return {
+    snapshot,
+    retryCheckpoint: state.lastCheckpoint
+      ? serializeActiveHuntCheckpoint(
+          state.lastCheckpoint,
+          state.nextCheckpointIndex,
+        )
+      : null,
+    elapsed: state.elapsed,
+  };
+}
+
 function restoreCheckpoint(
   state: GameState,
   checkpoint: MissionCheckpointPayload,
+  mode: "retry" | "resume" = "retry",
 ): GameState {
   const player = clonePlayerState(checkpoint.player);
   const cloakWasActive = player.cloaked || state.player.cloaked;
-  player.health = Math.max(player.health, player.maxHealth * 0.45);
-  player.stamina = Math.max(player.stamina, player.maxStamina * 0.6);
-  player.energy = Math.max(player.energy, player.maxEnergy * 0.4);
-  player.velocityX = 0;
-  player.velocityY = 0;
-  player.invulnerability = 2;
-  player.cloaked = false;
+  if (mode === "retry") {
+    player.health = Math.max(player.health, player.maxHealth * 0.45);
+    player.stamina = Math.max(player.stamina, player.maxStamina * 0.6);
+    player.energy = Math.max(player.energy, player.maxEnergy * 0.4);
+    player.velocityX = 0;
+    player.velocityY = 0;
+    player.climbing = false;
+    player.climbZoneId = null;
+  }
+  player.invulnerability = mode === "retry" ? 2 : player.invulnerability;
+  player.cloaked = mode === "resume" ? player.cloaked : false;
   player.aiming = false;
-  player.climbing = false;
-  player.climbZoneId = null;
+  player.weaponChargeSeconds = 0;
 
   return {
     ...state,
     phase: checkpoint.phase,
-    paused: false,
+    paused: mode === "resume",
     elapsed: checkpoint.elapsed,
     cameraX: clamp(
       player.x - VIEW_WIDTH * 0.38,
       0,
       state.world.width - VIEW_WIDTH,
     ),
+    worldScreenId: getWorldScreenAtX(
+      state.world.missionId,
+      player.x + player.width / 2,
+    ).id,
     player,
     enemies: checkpoint.enemies.map(cloneEnemyState),
     aiBrains: cloneAiBrains(checkpoint.aiBrains),
-    projectiles: [],
+    projectiles:
+      mode === "resume"
+        ? checkpoint.projectiles.map(cloneProjectileState)
+        : [],
     goreParticles: [],
-    scentNodes: [],
-    noiseEvents: [],
-    tracks: [],
+    scentNodes:
+      mode === "resume"
+        ? checkpoint.scentNodes.map((node) => ({ ...node }))
+        : [],
+    noiseEvents:
+      mode === "resume"
+        ? checkpoint.noiseEvents.map((event) => ({ ...event }))
+        : [],
+    tracks:
+      mode === "resume"
+        ? checkpoint.tracks.map((track) => ({ ...track }))
+        : [],
     scanNodes: checkpoint.scanNodes.map((node) => ({ ...node })),
     recoveryNodes: checkpoint.recoveryNodes.map((node) => ({ ...node })),
     purgeConsoleNodes: checkpoint.purgeConsoleNodes.map((node) => ({
@@ -1542,7 +1918,10 @@ function restoreCheckpoint(
       : null,
     dropShip: checkpoint.dropShip ? { ...checkpoint.dropShip } : null,
     scanPulse: 0,
-    message: `Relais ${state.nextCheckpointIndex} restauré. La chasse continue.`,
+    message:
+      mode === "resume"
+        ? "Chasse restaurée. Le biomask attend ta reprise."
+        : `Relais ${state.nextCheckpointIndex} restauré. La chasse continue.`,
     messageTimer: 4,
     screenShake: 0,
     rangedBossViolation: checkpoint.rangedBossViolation,
@@ -1553,9 +1932,10 @@ function restoreCheckpoint(
     lastTrackAt: checkpoint.elapsed,
     nextScentAt: checkpoint.elapsed + 0.4,
     environmentDamage: 0,
-    soundEvents: cloakWasActive
-      ? ["cloak-off", "objective"]
-      : ["objective"],
+    soundEvents:
+      mode === "retry" && cloakWasActive
+        ? ["cloak-off", "objective"]
+        : ["objective"],
   };
 }
 
@@ -1739,6 +2119,25 @@ function addHonor(
   if (state.honorEvents.some((event) => event.id === id)) return;
   state.honorEvents.push({ id, label, value, kind });
   state.honor += value;
+}
+
+function recordPlasmaRestraintViolation(
+  state: GameState,
+  mission: MissionDefinition,
+  enemy: EnemyState,
+): void {
+  if (enemy.boss) return;
+  const restraintRule = mission.honorRules.find(
+    (rule) => rule.condition === "no-plasma-on-regular-prey",
+  );
+  if (!restraintRule) return;
+  addHonor(
+    state,
+    honorRuleEventId(restraintRule),
+    `Code rompu : ${restraintRule.label}`,
+    -restraintRule.violationPenalty,
+    "violation",
+  );
 }
 
 function announce(state: GameState, message: string, seconds = 3): void {
@@ -3038,6 +3437,27 @@ function drawAimAssist(
   context.moveTo(target.x, target.y + 9);
   context.lineTo(target.x, target.y + 29);
   context.stroke();
+  const activeWeaponId = equippedWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  ).id;
+  const chargeRatio = hunterWeaponChargeRatio(
+    activeWeaponId,
+    player.weaponChargeSeconds,
+  );
+  if (chargeRatio > 0) {
+    context.globalAlpha = 0.98;
+    context.lineWidth = 4;
+    context.beginPath();
+    context.arc(
+      target.x,
+      target.y,
+      24,
+      -Math.PI / 2,
+      -Math.PI / 2 + Math.PI * 2 * chargeRatio,
+    );
+    context.stroke();
+  }
   context.restore();
 }
 
@@ -5306,13 +5726,26 @@ function playerMelee(
   inventory: PlayerInventory,
 ): void {
   const player = state.player;
-  const bladeStats = effectiveWeaponStats(
-    "wristblades",
-    inventory.weaponUpgrades.wristblades,
+  const activeWeaponId = equippedWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  ).id;
+  const meleeWeaponId: WeaponId =
+    activeWeaponId === "combistick" &&
+    player.weaponAmmo[player.activeWeaponSlot] > 0
+      ? "combistick"
+      : "wristblades";
+  const meleeStats = effectiveWeaponStats(
+    meleeWeaponId,
+    inventory.weaponUpgrades[meleeWeaponId],
+  );
+  const meleeAttack = resolveHunterWeaponAttack(
+    meleeWeaponId,
+    meleeStats,
   );
   if (
     player.meleeCooldown > 0 ||
-    player.stamina < bladeStats.staminaCost ||
+    player.stamina < meleeAttack.staminaCost ||
     state.phase === "dead" ||
     state.phase === "finished"
   ) {
@@ -5323,35 +5756,49 @@ function playerMelee(
     inventory.armorUpgrades[loadout.armorId],
   );
   forceDecloak(state);
-  player.stamina -= bladeStats.staminaCost;
-  player.meleeCooldown = bladeStats.cooldownSeconds;
+  player.stamina -= meleeAttack.staminaCost;
+  player.meleeCooldown = meleeAttack.cooldownSeconds;
   player.attackFlash = 0.16;
   queueSound(state, "slash");
   const center = {
-    x: player.x + player.width / 2 + player.facing * 56,
+    x:
+      player.x +
+      player.width / 2 +
+      player.facing * (meleeWeaponId === "combistick" ? 82 : 56),
     y: player.y + player.height * 0.48,
   };
-  emitNoise(state, "melee", 0.68, 390, center);
+  emitNoise(
+    state,
+    "melee",
+    meleeAttack.noiseLoudness,
+    meleeAttack.noiseRadius,
+    center,
+  );
   const targets = [
     ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
-  ];
+  ]
+    .map((enemy) => ({
+      enemy,
+      separation: distance(center, {
+        x: enemy.x + enemy.width / 2,
+        y: enemy.y + enemy.height / 2,
+      }),
+    }))
+    .filter((entry) => entry.separation <= meleeAttack.meleeReachPx)
+    .sort((left, right) => left.separation - right.separation)
+    .slice(0, meleeAttack.maxTargetHits)
+    .map((entry) => entry.enemy);
   let connected = false;
   for (const enemy of targets) {
-    const enemyCenter = {
-      x: enemy.x + enemy.width / 2,
-      y: enemy.y + enemy.height / 2,
-    };
-    if (distance(center, enemyCenter) <= 94) {
-      connected = true;
-      damageEnemy(
-        state,
-        mission,
-        enemy,
-        bladeStats.damage * armor.meleeDamageMultiplier,
-        "melee",
-      );
-    }
+    connected = true;
+    damageEnemy(
+      state,
+      mission,
+      enemy,
+      meleeAttack.damage * armor.meleeDamageMultiplier,
+      "melee",
+    );
   }
   if (connected && state.screenShakeEnabled) state.screenShake = 5;
 }
@@ -5380,7 +5827,12 @@ function playerWeapon(
     playerMelee(state, mission, loadout, inventory);
     return;
   }
-  if (state.energyWeaponsLocked && weapon.energyCost > 0) {
+  const attack = resolveHunterWeaponAttack(
+    weapon.id,
+    weapon,
+    player.weaponChargeSeconds,
+  );
+  if (state.energyWeaponsLocked && attack.energyCost > 0) {
     announce(
       state,
       "Impulsion du sanctuaire : arme énergétique verrouillée.",
@@ -5388,20 +5840,26 @@ function playerWeapon(
     );
     return;
   }
-  if (weapon.energyCost > 0 && player.energy < weapon.energyCost) {
+  if (attack.energyCost > 0 && player.energy < attack.energyCost) {
     announce(state, "Énergie insuffisante.", 1.5);
     return;
   }
-  if (weapon.ammo !== null && player.weaponAmmo[slotIndex] <= 0) {
+  if (attack.staminaCost > 0 && player.stamina < attack.staminaCost) {
+    announce(state, "Endurance insuffisante.", 1.5);
+    return;
+  }
+  if (attack.ammoCost > 0 && player.weaponAmmo[slotIndex] <= 0) {
     announce(state, "Munitions épuisées.", 1.5);
     return;
   }
 
   forceDecloak(state);
-  player.weaponCooldown = weapon.cooldownSeconds;
-  player.energy = Math.max(0, player.energy - weapon.energyCost);
-  if (weapon.ammo !== null) player.weaponAmmo[slotIndex] -= 1;
-  const speed = Math.max(620, weapon.projectileSpeedPx);
+  player.weaponCooldown = attack.cooldownSeconds;
+  player.weaponChargeSeconds = 0;
+  player.energy = Math.max(0, player.energy - attack.energyCost);
+  player.stamina = Math.max(0, player.stamina - attack.staminaCost);
+  if (attack.ammoCost > 0) player.weaponAmmo[slotIndex] -= 1;
+  const speed = Math.max(420, attack.projectileSpeedPx);
   const angle = player.aimAngle;
   const rigFrame = solvePlayerRigFrame(
     state,
@@ -5418,29 +5876,56 @@ function playerWeapon(
     y: projectileOrigin.y,
     velocityX: Math.cos(angle) * speed,
     velocityY: Math.sin(angle) * speed + (weapon.id === "yautja-bow" ? -15 : 0),
-    radius:
-      weapon.id === "smart-disc" ? 12 : weapon.id === "plasma-caster" ? 9 : 6,
-    damage: weapon.damage,
+    radius: attack.projectileRadius,
+    damage: attack.damage,
     hostile: false,
     color: weaponDefinition.color,
-    life: Math.max(0.8, weapon.rangePx / Math.max(1, weapon.projectileSpeedPx)),
+    life:
+      attack.recovery === "return"
+        ? Math.max(4, (attack.rangePx / Math.max(1, speed)) * 3)
+        : Math.max(0.8, attack.rangePx / Math.max(1, speed)),
     source: "weapon",
     weaponId: weapon.id,
     coverGraceSeconds: 0.14,
+    weaponSlotIndex: slotIndex,
+    maximumAmmo: weapon.ammo ?? undefined,
+    recovery: attack.recovery,
+    spentPickup: false,
+    hitEnemyIds: [],
+    maxTargetHits: attack.maxTargetHits,
+    splashRadius: attack.splashRadius,
+    returning: false,
+    outboundSeconds:
+      attack.recovery === "return"
+        ? Math.max(0.5, (attack.rangePx / Math.max(1, speed)) * 0.72)
+        : undefined,
+    flightSpeed: speed,
   });
   queueSound(
     state,
     weapon.id === "plasma-caster" ? "plasma" : "weapon-switch",
   );
   state.playerUsedRangedWeapon = true;
-  state.playerUsedEnergyWeapon = weapon.energyCost > 0;
+  state.playerUsedEnergyWeapon = attack.energyCost > 0;
   emitNoise(
     state,
     "weapon",
-    weapon.id === "yautja-bow" ? 0.34 : 0.92,
-    weapon.id === "yautja-bow" ? 340 : 760,
+    attack.noiseLoudness,
+    attack.noiseRadius,
     projectileOrigin,
   );
+  if (attack.chargeRatio >= 0.95) {
+    announce(
+      state,
+      weapon.id === "plasma-caster"
+        ? "Plasmacaster : charge maximale."
+        : "Arc Yautja : tension maximale.",
+      1.2,
+    );
+    if (state.screenShakeEnabled && weapon.id === "plasma-caster") {
+      state.screenShake = Math.max(state.screenShake, 6);
+    }
+  }
 }
 
 function playerScan(state: GameState, mission: MissionDefinition): void {
@@ -5866,6 +6351,7 @@ function selectWeaponSlot(
 ): void {
   if (state.player.activeWeaponSlot === slotIndex) return;
   state.player.activeWeaponSlot = slotIndex;
+  state.player.weaponChargeSeconds = 0;
   const weapon = equippedWeapon(loadout, slotIndex);
   queueSound(state, "weapon-switch");
   announce(state, `${weapon.name} sélectionné.`, 1.2);
@@ -5875,9 +6361,26 @@ function updateAimState(
   state: GameState,
   input: InputHub,
   loadout: Loadout,
+  delta: number,
 ): void {
   const player = state.player;
   player.aiming = isHeld(input, "aim");
+  const activeWeaponId = equippedWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  ).id;
+  if (
+    player.aiming &&
+    player.weaponCooldown <= 0 &&
+    (activeWeaponId === "plasma-caster" || activeWeaponId === "yautja-bow")
+  ) {
+    player.weaponChargeSeconds = Math.min(
+      2,
+      player.weaponChargeSeconds + Math.max(0, delta),
+    );
+  } else {
+    player.weaponChargeSeconds = 0;
+  }
   const handWeaponId = selectedHandWeapon(
     loadout,
     player.activeWeaponSlot,
@@ -6001,7 +6504,7 @@ function updatePlayer(
       player.activeWeaponSlot === 0 ? 1 : 0,
     );
   }
-  updateAimState(state, input, loadout);
+  updateAimState(state, input, loadout, delta);
 
   if (consume(input, "mask")) {
     if (!appearance.biomaskId) {
@@ -7260,6 +7763,47 @@ function updateBoss(
   }
 }
 
+function restoreProjectileAmmo(
+  state: GameState,
+  projectile: ProjectileState,
+  message: string,
+): void {
+  if (
+    projectile.weaponSlotIndex === undefined ||
+    projectile.maximumAmmo === undefined
+  ) {
+    return;
+  }
+  const slotIndex = projectile.weaponSlotIndex;
+  const previousAmmo = state.player.weaponAmmo[slotIndex];
+  state.player.weaponAmmo[slotIndex] = Math.min(
+    projectile.maximumAmmo,
+    previousAmmo + 1,
+  );
+  if (state.player.weaponAmmo[slotIndex] > previousAmmo) {
+    queueSound(state, "weapon-switch");
+    announce(state, message, 1.2);
+  }
+}
+
+function settleRecoverableProjectile(
+  state: GameState,
+  projectile: ProjectileState,
+): void {
+  projectile.x = clamp(
+    projectile.x,
+    projectile.radius + 12,
+    state.world.width - projectile.radius - 12,
+  );
+  projectile.y = state.world.floorY - projectile.radius;
+  projectile.velocityX = 0;
+  projectile.velocityY = 0;
+  projectile.damage = 0;
+  projectile.life = 120;
+  projectile.coverGraceSeconds = 0;
+  projectile.spentPickup = true;
+}
+
 function updateProjectiles(
   state: GameState,
   mission: MissionDefinition,
@@ -7267,8 +7811,69 @@ function updateProjectiles(
 ): void {
   const next: ProjectileState[] = [];
   for (const projectile of state.projectiles) {
-    projectile.x += projectile.velocityX * delta;
-    projectile.y += projectile.velocityY * delta;
+    if (projectile.spentPickup) {
+      const pickupBox = {
+        x: projectile.x - projectile.radius - 5,
+        y: projectile.y - projectile.radius - 5,
+        width: projectile.radius * 2 + 10,
+        height: projectile.radius * 2 + 10,
+      };
+      if (overlaps(pickupBox, state.player)) {
+        const recoveryMessage =
+          projectile.weaponId === "yautja-bow"
+            ? "Flèche Yautja récupérée."
+            : "Combistick récupéré.";
+        restoreProjectileAmmo(
+          state,
+          projectile,
+          recoveryMessage,
+        );
+      } else {
+        next.push(projectile);
+      }
+      continue;
+    }
+
+    if (
+      projectile.weaponId === "smart-disc" &&
+      projectile.recovery === "return"
+    ) {
+      const hunterPosition = {
+        x: state.player.x + state.player.width / 2,
+        y: state.player.y + state.player.height * 0.45,
+      };
+      const flight = stepSmartDiscFlight(
+        {
+          x: projectile.x,
+          y: projectile.y,
+          velocityX: projectile.velocityX,
+          velocityY: projectile.velocityY,
+          outboundSeconds: projectile.outboundSeconds ?? 0,
+          returning: projectile.returning ?? false,
+        },
+        {
+          deltaSeconds: delta,
+          hunterPosition,
+          speedPxPerSecond:
+            projectile.flightSpeed ??
+            Math.hypot(projectile.velocityX, projectile.velocityY),
+          catchRadius: state.player.width * 0.42,
+        },
+      );
+      projectile.x = flight.state.x;
+      projectile.y = flight.state.y;
+      projectile.velocityX = flight.state.velocityX;
+      projectile.velocityY = flight.state.velocityY;
+      projectile.outboundSeconds = flight.state.outboundSeconds;
+      projectile.returning = flight.state.returning;
+      if (flight.caught) {
+        restoreProjectileAmmo(state, projectile, "Smart Disc revenu au gant.");
+        continue;
+      }
+    } else {
+      projectile.x += projectile.velocityX * delta;
+      projectile.y += projectile.velocityY * delta;
+    }
     projectile.life -= delta;
     projectile.coverGraceSeconds = Math.max(
       0,
@@ -7290,7 +7895,6 @@ function updateProjectiles(
           )
         : null;
     if (blockingCover) {
-      consumed = true;
       const breakThreshold = 18 + blockingCover.protection * 34;
       if (
         blockingCover.destructible &&
@@ -7298,6 +7902,28 @@ function updateProjectiles(
       ) {
         state.brokenPillarIds.add(blockingCover.id);
         if (state.screenShakeEnabled) state.screenShake = 7;
+      }
+      if (projectile.recovery === "pickup") {
+        settleRecoverableProjectile(state, projectile);
+        next.push(projectile);
+        continue;
+      }
+      if (projectile.recovery === "return") {
+        if (projectile.returning) {
+          restoreProjectileAmmo(
+            state,
+            projectile,
+            "Smart Disc rappelé après trajectoire bloquée.",
+          );
+          continue;
+        }
+        projectile.returning = true;
+        projectile.outboundSeconds = 0;
+        projectile.coverGraceSeconds = 0.18;
+        next.push(projectile);
+        continue;
+      } else {
+        consumed = true;
       }
     }
 
@@ -7312,35 +7938,110 @@ function updateProjectiles(
         ...(state.boss.active && state.boss.alive ? [state.boss] : []),
       ];
       for (const enemy of targets) {
+        if (projectile.hitEnemyIds?.includes(enemy.id)) continue;
         if (overlaps(hitBox, enemy)) {
-          if (projectile.weaponId === "plasma-caster" && !enemy.boss) {
-            const restraintRule = mission.honorRules.find(
-              (rule) =>
-                rule.condition === "no-plasma-on-regular-prey",
-            );
-            if (restraintRule) {
-              addHonor(
-                state,
-                honorRuleEventId(restraintRule),
-                `Code rompu : ${restraintRule.label}`,
-                -restraintRule.violationPenalty,
-                "violation",
-              );
-            }
+          if (projectile.weaponId === "plasma-caster") {
+            recordPlasmaRestraintViolation(state, mission, enemy);
           }
           damageEnemy(state, mission, enemy, projectile.damage, "weapon");
-          consumed = true;
-          break;
+          projectile.hitEnemyIds = [
+            ...(projectile.hitEnemyIds ?? []),
+            enemy.id,
+          ];
+          if (
+            projectile.weaponId === "plasma-caster" &&
+            (projectile.splashRadius ?? 0) > 0
+          ) {
+            const impact = { x: projectile.x, y: projectile.y };
+            const activeCovers = state.world.covers.filter(
+              (cover) => !state.brokenPillarIds.has(cover.id),
+            );
+            for (const nearby of targets) {
+              if (nearby.id === enemy.id || !nearby.alive) continue;
+              const nearbyCenter = {
+                x: nearby.x + nearby.width / 2,
+                y: nearby.y + nearby.height / 2,
+              };
+              if (
+                distance(impact, nearbyCenter) <=
+                (projectile.splashRadius ?? 0)
+              ) {
+                const splashOcclusion = calculateLineOfSightOcclusion(
+                  impact,
+                  nearbyCenter,
+                  activeCovers,
+                );
+                const splashDamage = resolveHunterSplashDamage(
+                  projectile.damage,
+                  splashOcclusion,
+                );
+                if (splashDamage <= projectile.damage * 0.025) continue;
+                recordPlasmaRestraintViolation(state, mission, nearby);
+                damageEnemy(
+                  state,
+                  mission,
+                  nearby,
+                  splashDamage,
+                  "weapon",
+                );
+              }
+            }
+          }
+          const reachedHitLimit =
+            projectile.hitEnemyIds.length >=
+            (projectile.maxTargetHits ?? 1);
+          if (projectile.recovery === "pickup" && reachedHitLimit) {
+            settleRecoverableProjectile(state, projectile);
+            next.push(projectile);
+            consumed = true;
+            break;
+          }
+          if (projectile.recovery === "return") {
+            if (reachedHitLimit) {
+              projectile.returning = true;
+              projectile.outboundSeconds = 0;
+              break;
+            }
+            continue;
+          }
+          if (reachedHitLimit) {
+            consumed = true;
+            break;
+          }
         }
       }
+    }
+    if (consumed) continue;
+
+    const withinWorld =
+      projectile.x > -50 &&
+      projectile.x < state.world.width + 50 &&
+      projectile.y > -100 &&
+      projectile.y < VIEW_HEIGHT + 100;
+    if (projectile.life <= 0 || !withinWorld) {
+      if (projectile.recovery === "pickup") {
+        settleRecoverableProjectile(state, projectile);
+        next.push(projectile);
+      } else if (projectile.recovery === "return") {
+        if (projectile.returning) {
+          restoreProjectileAmmo(
+            state,
+            projectile,
+            "Smart Disc rappelé par sécurité.",
+          );
+        } else {
+          projectile.returning = true;
+          projectile.outboundSeconds = 0;
+          projectile.life = 2.5;
+          next.push(projectile);
+        }
+      }
+      continue;
     }
     if (
       !consumed &&
       projectile.life > 0 &&
-      projectile.x > -50 &&
-      projectile.x < state.world.width + 50 &&
-      projectile.y > -100 &&
-      projectile.y < VIEW_HEIGHT + 100
+      withinWorld
     ) {
       next.push(projectile);
     }
@@ -7512,6 +8213,7 @@ export default function HuntCanvas({
   loadout,
   inventory,
   difficulty,
+  controlBindings,
   appearance,
   reducedGore,
   screenShake,
@@ -7519,18 +8221,30 @@ export default function HuntCanvas({
   onSound,
   onFinish,
   onAbort,
+  resumeSnapshot,
+  resumeRetryCheckpoint,
+  onPersistHunt,
+  onSuspendHunt,
+  onInvalidateHunt,
+  onResumeFailure,
 }: HuntCanvasProps) {
+  const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
   const huntRootRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const huntDialogRef = useRef<HTMLDivElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const finishRef = useRef(onFinish);
   const abortRef = useRef(onAbort);
+  const persistHuntRef = useRef(onPersistHunt);
+  const suspendHuntRef = useRef(onSuspendHunt);
+  const invalidateHuntRef = useRef(onInvalidateHunt);
+  const resumeFailureRef = useRef(onResumeFailure);
   const soundRef = useRef(onSound);
   const restartRef = useRef<() => void>(() => undefined);
   const togglePauseRef = useRef<() => void>(() => undefined);
   const reportFailureRef = useRef<() => void>(() => undefined);
   const requestAbortRef = useRef<() => void>(() => undefined);
+  const requestSuspendRef = useRef<() => void>(() => undefined);
   const inputRef = useRef<InputHub>({
     keyboardHeld: new Set(),
     touchHeld: new Set(),
@@ -7549,6 +8263,22 @@ export default function HuntCanvas({
   useEffect(() => {
     abortRef.current = onAbort;
   }, [onAbort]);
+
+  useEffect(() => {
+    persistHuntRef.current = onPersistHunt;
+  }, [onPersistHunt]);
+
+  useEffect(() => {
+    suspendHuntRef.current = onSuspendHunt;
+  }, [onSuspendHunt]);
+
+  useEffect(() => {
+    invalidateHuntRef.current = onInvalidateHunt;
+  }, [onInvalidateHunt]);
+
+  useEffect(() => {
+    resumeFailureRef.current = onResumeFailure;
+  }, [onResumeFailure]);
 
   useEffect(() => {
     soundRef.current = onSound;
@@ -7652,6 +8382,26 @@ export default function HuntCanvas({
       screenShake,
       ecologyRunSeed,
     );
+    const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
+    const restoredRetry = deserializeActiveHuntCheckpoint(
+      resumeRetryCheckpoint,
+    );
+    const invalidResume =
+      (resumeSnapshot != null && !restoredHunt) ||
+      (resumeRetryCheckpoint != null && !restoredRetry);
+    if (restoredHunt && !invalidResume) {
+      game = restoreCheckpoint(game, restoredHunt.checkpoint, "resume");
+      game.nextCheckpointIndex = Math.min(
+        restoredHunt.nextCheckpointIndex,
+        game.checkpointPositions.length,
+      );
+      game.lastCheckpoint = restoredRetry?.checkpoint ?? null;
+    } else if (invalidResume) {
+      game.paused = true;
+      window.queueMicrotask(() => resumeFailureRef.current?.());
+    }
+    let lastPersistedElapsed = game.elapsed;
+    let lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     const assets: AssetBank = {
       background: null,
       farLake: null,
@@ -8077,13 +8827,33 @@ export default function HuntCanvas({
       input.touchHeld.clear();
       input.gamepadHeld.clear();
       setUi(snapshot(game, mission));
+      lastObservedPhase = game.phase;
+      lastPersistedElapsed = game.elapsed;
+      lastPersistedCheckpointIndex = game.nextCheckpointIndex;
+      emitPersistence(persistHuntRef.current);
     };
     restartRef.current = restart;
+    let lastObservedPaused = game.paused;
+    let lastObservedPhase = game.phase;
+    const emitPersistence = (
+      handler: ((payload: HuntPersistencePayload) => void) | undefined,
+    ) => {
+      const payload = persistencePayloadFor(game);
+      if (!payload) return;
+      handler?.(payload);
+      lastPersistedElapsed = game.elapsed;
+      lastPersistedCheckpointIndex = game.nextCheckpointIndex;
+    };
+    if (resumeSnapshot == null && !restoredHunt) {
+      emitPersistence(persistHuntRef.current);
+    }
     togglePauseRef.current = () => {
       if (game.phase === "dead" || game.phase === "finished") return;
       input.pressed.clear();
       game.paused = !game.paused;
+      lastObservedPaused = game.paused;
       setUi(snapshot(game, mission));
+      emitPersistence(persistHuntRef.current);
     };
     reportFailureRef.current = () => {
       if (game.failureReported) return;
@@ -8100,6 +8870,13 @@ export default function HuntCanvas({
         resultFor(game, mission, difficulty, "abandoned"),
       );
     };
+    requestSuspendRef.current = () => {
+      if (game.phase === "dead" || game.phase === "finished") return;
+      input.pressed.clear();
+      game.paused = true;
+      lastObservedPaused = true;
+      emitPersistence(suspendHuntRef.current);
+    };
 
     const isInteractiveControl = (target: EventTarget | null) =>
       target instanceof Element &&
@@ -8110,40 +8887,58 @@ export default function HuntCanvas({
       );
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented) return;
-      if (event.ctrlKey || event.metaKey || event.altKey) return;
-      if (event.code !== "Escape" && isInteractiveControl(event.target)) return;
-      const action = KEY_ACTIONS[event.code];
-      if (!action) return;
-      event.preventDefault();
+      const modifierKey =
+        event.code.startsWith("Control") ||
+        event.code.startsWith("Alt") ||
+        event.code.startsWith("Meta");
+      if ((event.ctrlKey || event.metaKey || event.altKey) && !modifierKey) return;
+      const actions = matchingControlActions(
+        "hunt",
+        event,
+        activeBindings,
+      )
+        .map((actionId) => HUNT_CONTROL_ACTIONS[actionId])
+        .filter((action): action is Action => action !== undefined);
+      if (actions.length === 0) return;
       if (
-        action === "left" ||
-        action === "right" ||
-        action === "up" ||
-        action === "down" ||
-        action === "aim"
+        isInteractiveControl(event.target) &&
+        (event.key === "Enter" || event.key === " ")
       ) {
-        input.keyboardHeld.add(action);
-        if (
-          !event.repeat &&
-          (action === "left" || action === "right")
-        ) {
+        return;
+      }
+      if (
+        isInteractiveControl(event.target) &&
+        !actions.includes("pause")
+      ) {
+        return;
+      }
+      event.preventDefault();
+      for (const action of actions) {
+        if (isHeldKeyboardAction(action)) {
+          input.keyboardHeld.add(action);
+          if (
+            !event.repeat &&
+            (action === "left" || action === "right")
+          ) {
+            input.pressed.add(action);
+          }
+        } else if (!event.repeat) {
           input.pressed.add(action);
         }
-      } else if (!event.repeat) {
-        input.pressed.add(action);
       }
     };
     const onKeyUp = (event: KeyboardEvent) => {
-      if (event.code !== "Escape" && isInteractiveControl(event.target)) return;
-      const action = KEY_ACTIONS[event.code];
-      if (
-        action === "left" ||
-        action === "right" ||
-        action === "up" ||
-        action === "down" ||
-        action === "aim"
-      ) {
-        input.keyboardHeld.delete(action);
+      const actions = matchingControlActions(
+        "hunt",
+        event,
+        activeBindings,
+      )
+        .map((actionId) => HUNT_CONTROL_ACTIONS[actionId])
+        .filter((action): action is Action => action !== undefined);
+      for (const action of actions) {
+        if (isHeldKeyboardAction(action)) {
+          input.keyboardHeld.delete(action);
+        }
       }
     };
     const onBlur = () => {
@@ -8157,8 +8952,10 @@ export default function HuntCanvas({
         !game.paused
       ) {
         game.paused = true;
+        lastObservedPaused = true;
         setUi(snapshot(game, mission));
       }
+      emitPersistence(persistHuntRef.current);
     };
     const onVisibility = () => {
       if (document.hidden) onBlur();
@@ -8166,6 +8963,7 @@ export default function HuntCanvas({
     window.addEventListener("keydown", onKeyDown, { passive: false });
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onBlur);
+    window.addEventListener("pagehide", onBlur);
     document.addEventListener("visibilitychange", onVisibility);
 
     const fixedStep = 1 / 60;
@@ -8196,6 +8994,21 @@ export default function HuntCanvas({
         }
         accumulator -= fixedStep;
       }
+      if (game.phase !== lastObservedPhase) {
+        lastObservedPhase = game.phase;
+        if (game.phase === "dead") {
+          invalidateHuntRef.current?.();
+        }
+      }
+      if (game.paused !== lastObservedPaused) {
+        lastObservedPaused = game.paused;
+        emitPersistence(persistHuntRef.current);
+      } else if (
+        game.nextCheckpointIndex !== lastPersistedCheckpointIndex ||
+        game.elapsed - lastPersistedElapsed >= 15
+      ) {
+        emitPersistence(persistHuntRef.current);
+      }
       preloadEnvironmentAroundScreen(game.worldScreenId);
       renderGame(
         context,
@@ -8222,6 +9035,7 @@ export default function HuntCanvas({
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
+      window.removeEventListener("pagehide", onBlur);
       document.removeEventListener("visibilitychange", onVisibility);
       input.keyboardHeld.clear();
       input.touchHeld.clear();
@@ -8233,8 +9047,10 @@ export default function HuntCanvas({
       togglePauseRef.current = () => undefined;
       reportFailureRef.current = () => undefined;
       requestAbortRef.current = () => undefined;
+      requestSuspendRef.current = () => undefined;
     };
   }, [
+    activeBindings,
     appearance,
     difficulty,
     encounterRun,
@@ -8242,6 +9058,8 @@ export default function HuntCanvas({
     loadout,
     mission,
     reducedGore,
+    resumeRetryCheckpoint,
+    resumeSnapshot,
     screenShake,
   ]);
 
@@ -8457,10 +9275,10 @@ export default function HuntCanvas({
               : undefined,
           }}
         >
-          Jeu de chasse en vue latérale. Utilise A et D pour te déplacer,
-          Espace pour sauter, J pour attaquer, Maj ou clic droit pour viser et
-          V pour scanner. Les touches 1 et 2 sélectionnent les armes ; 3 et 4
-          déploient les équipements.
+          Jeu de chasse en vue latérale. Utilise {controlActionShortcut("hunt.moveLeft", activeBindings)}
+          {" et "}{controlActionShortcut("hunt.moveRight", activeBindings)} pour te déplacer,
+          {" "}{controlActionShortcut("hunt.jump", activeBindings)} pour sauter et
+          {" "}{controlActionShortcut("hunt.melee", activeBindings)} pour attaquer.
         </canvas>
 
         {!assetsReady ? (
@@ -8526,10 +9344,17 @@ export default function HuntCanvas({
                 </button>
                 <button
                   type="button"
-                  onClick={() => requestAbortRef.current()}
+                  onClick={() => requestSuspendRef.current()}
                   style={styles.secondaryButton}
                 >
-                  Retour au vaisseau
+                  Suspendre et sauvegarder
+                </button>
+                <button
+                  type="button"
+                  onClick={() => requestAbortRef.current()}
+                  style={styles.ghostButton}
+                >
+                  Abandonner la chasse
                 </button>
               </div>
             </div>
@@ -8631,12 +9456,21 @@ export default function HuntCanvas({
         </div>
 
         <div style={styles.actionControls} role="group" aria-label="Actions tactiles">
-          <ActionButton label="Lames" shortcut="J" onPress={() => pressAction("melee")} />
+          <ActionButton
+            label="Lames"
+            shortcut={controlActionShortcut("hunt.melee", activeBindings)}
+            onPress={() => pressAction("melee")}
+          />
           {loadout.weaponIds.map((weaponId, index) => (
             <ActionButton
               key={`${weaponId}-${index}`}
               label={`Arme ${index + 1} · ${WEAPON_BY_ID[weaponId].shortName}`}
-              shortcut={String(index + 1)}
+              shortcut={controlActionShortcut(
+                index === 0
+                  ? "hunt.selectWeaponOne"
+                  : "hunt.selectWeaponTwo",
+                activeBindings,
+              )}
               active={ui.activeWeaponSlot === index}
               onPress={() =>
                 pressAction(index === 0 ? "weaponOne" : "weaponTwo")
@@ -8645,7 +9479,7 @@ export default function HuntCanvas({
           ))}
           <ActionButton
             label={`${weapon.shortName}${ui.ammo >= 0 ? ` · ${ui.ammo}` : ""}`}
-            shortcut="K"
+            shortcut={controlActionShortcut("hunt.weaponPrimary", activeBindings)}
             onPress={() => pressAction("weapon")}
           />
           <button
@@ -8659,18 +9493,24 @@ export default function HuntCanvas({
             aria-label="Maintenir la visée cadrée"
           >
             <span>Viser</span>
-            <kbd style={styles.kbd}>MAJ/LT</kbd>
+              <kbd style={styles.kbd}>
+                {controlActionShortcut("hunt.aim", activeBindings)}/LT
+              </kbd>
           </button>
           <ActionButton
             label={ui.maskOn ? "Retirer masque" : "Mettre masque"}
-            shortcut="M"
+            shortcut={controlActionShortcut("hunt.toggleMask", activeBindings)}
             active={ui.maskOn}
             onPress={() => pressAction("mask")}
           />
-          <ActionButton label="Scan" shortcut="V" onPress={() => pressAction("scan")} />
+          <ActionButton
+            label="Scan"
+            shortcut={controlActionShortcut("hunt.scan", activeBindings)}
+            onPress={() => pressAction("scan")}
+          />
           <ActionButton
             label={ui.cloaked ? "Visible" : "Camouflage"}
-            shortcut="C"
+            shortcut={controlActionShortcut("hunt.toggleCloak", activeBindings)}
             active={ui.cloaked}
             onPress={() => pressAction("cloak")}
           />
@@ -8684,7 +9524,10 @@ export default function HuntCanvas({
                     ? ` · ${slot.cooldownRemainingSeconds.toFixed(1)} s`
                     : ""
                 }`}
-                shortcut={String(index + 3)}
+                shortcut={controlActionShortcut(
+                  index === 0 ? "hunt.useGearOne" : "hunt.useGearTwo",
+                  activeBindings,
+                )}
                 disabled={slot.charges <= 0 || cooling}
                 onPress={() =>
                   pressAction(index === 0 ? "gearOne" : "gearTwo")
@@ -8692,26 +9535,34 @@ export default function HuntCanvas({
               />
             );
           })}
-          <ActionButton label="Medicomp" shortcut="H" onPress={() => pressAction("heal")} />
-          <ActionButton label="Interagir" shortcut="E" onPress={() => pressAction("interact")} />
+          <ActionButton
+            label="Medicomp"
+            shortcut={controlActionShortcut("hunt.heal", activeBindings)}
+            onPress={() => pressAction("heal")}
+          />
+          <ActionButton
+            label="Interagir"
+            shortcut={controlActionShortcut("hunt.interact", activeBindings)}
+            onPress={() => pressAction("interact")}
+          />
         </div>
       </div>
 
       <footer style={styles.help}>
-        <span>A/D ou flèches · déplacement</span>
-        <span>W/S ou ↑/↓ · grimpe</span>
-        <span>Espace · saut</span>
-        <span>J/clic · lames</span>
-        <span>Maj/clic droit/LT · viser</span>
-        <span>1/2 ou View · sélectionner l’arme</span>
-        <span>K/RT · utiliser {weapon.name}</span>
-        <span>M · biomask</span>
-        <span>V · scan</span>
-        <span>C · camouflage</span>
-        <span>3/4 ou L3/R3 · équipements</span>
-        <span>H · soin ({ui.medicomps})</span>
-        <span>E · interaction</span>
-        <span>Échap · pause</span>
+        <span>{controlActionShortcut("hunt.moveLeft", activeBindings)}/{controlActionShortcut("hunt.moveRight", activeBindings)} · déplacement</span>
+        <span>{controlActionShortcut("hunt.moveUp", activeBindings)}/{controlActionShortcut("hunt.moveDown", activeBindings)} · grimpe</span>
+        <span>{controlActionShortcut("hunt.jump", activeBindings)} · saut</span>
+        <span>{controlActionShortcut("hunt.melee", activeBindings)}/clic · lames</span>
+        <span>{controlActionShortcut("hunt.aim", activeBindings)}/clic droit/LT · viser</span>
+        <span>{controlActionShortcut("hunt.selectWeaponOne", activeBindings)}/{controlActionShortcut("hunt.selectWeaponTwo", activeBindings)} · sélectionner l’arme</span>
+        <span>{controlActionShortcut("hunt.weaponPrimary", activeBindings)}/RT · utiliser {weapon.name}</span>
+        <span>{controlActionShortcut("hunt.toggleMask", activeBindings)} · biomask</span>
+        <span>{controlActionShortcut("hunt.scan", activeBindings)} · scan</span>
+        <span>{controlActionShortcut("hunt.toggleCloak", activeBindings)} · camouflage</span>
+        <span>{controlActionShortcut("hunt.useGearOne", activeBindings)}/{controlActionShortcut("hunt.useGearTwo", activeBindings)} · équipements</span>
+        <span>{controlActionShortcut("hunt.heal", activeBindings)} · soin ({ui.medicomps})</span>
+        <span>{controlActionShortcut("hunt.interact", activeBindings)} · interaction</span>
+        <span>{controlActionShortcut("hunt.pause", activeBindings)} · pause</span>
         <span>Manette compatible</span>
       </footer>
     </section>

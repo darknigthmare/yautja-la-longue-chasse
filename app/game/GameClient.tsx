@@ -12,15 +12,10 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import V6AtlasSprite from "./V6AtlasSprite";
-import { CatalogueHunterBrowser } from "./CatalogueHunterBrowser";
-import GalaxyMapPanel from "./GalaxyMapPanel";
-import PhysicalShipDeck from "./PhysicalShipDeck";
 import {
   DEFAULT_SHIP_ID,
   type ShipId,
 } from "./shipCatalogue";
-import TrophyWorkshop from "./TrophyWorkshop";
-import EnemyBestiaryV8 from "./EnemyBestiaryV8";
 import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ecologyV8EnemyForId,
@@ -110,6 +105,7 @@ import {
   applyMissionResult,
   defaultSave,
   loadSave,
+  normalizeSave,
   writeSaveWithStatus,
 } from "./save";
 import {
@@ -130,6 +126,16 @@ import {
   loadShipProgression,
   SHIP_PROGRESSION_STORAGE_KEY,
 } from "./systems/progression";
+import {
+  ACTIVE_HUNT_RUNTIME_REVISION,
+  ACTIVE_HUNT_SAVE_VERSION,
+  checkActiveHuntCompatibility,
+  clearActiveHuntSave,
+  loadActiveHuntSave,
+  writeActiveHuntSave,
+  type ActiveHuntSaveV1,
+  type JsonObject,
+} from "./systems/activeHuntSave";
 import type {
   ArmorId,
   ArmorTintId,
@@ -153,6 +159,18 @@ import type {
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
+const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
+const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
+const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
+const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
+const CatalogueHunterBrowser = React.lazy(() =>
+  import("./CatalogueHunterBrowser").then((module) => ({
+    default: module.CatalogueHunterBrowser,
+  })),
+);
+const ControlBindingsPanel = React.lazy(
+  () => import("./ControlBindingsPanel"),
+);
 
 type Screen =
   | "title"
@@ -181,6 +199,100 @@ const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
 interface RewardSummary {
   honor: number;
   clanMarks: number;
+}
+
+interface HuntPersistencePayload {
+  snapshot: JsonObject;
+  retryCheckpoint: JsonObject | null;
+  elapsed: number;
+}
+
+interface ActiveHuntSession {
+  ownerSaveCreatedAt: string;
+  missionId: string;
+  difficultyId: DifficultyId;
+  encounterRun: number;
+  runId: string;
+  sequence: number;
+  startedAt: string;
+  configuration: JsonObject;
+  lastPersisted: ActiveHuntSaveV1 | null;
+}
+
+interface HuntResumePayload {
+  snapshot: JsonObject;
+  retryCheckpoint: JsonObject | null;
+}
+
+function isJsonObject(value: unknown): value is JsonObject {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function huntConfiguration(save: SaveGame, elapsed = 0): JsonObject {
+  return {
+    inventory: save.inventory as unknown as JsonObject,
+    loadout: save.loadout as unknown as JsonObject,
+    appearance: save.appearance as unknown as JsonObject,
+    visualOptions: {
+      screenShake: save.settings.screenShake,
+      reducedGore: save.settings.reducedGore,
+      highContrastVision: save.settings.highContrastVision,
+    },
+    elapsedSeconds: Math.max(0, Number.isFinite(elapsed) ? elapsed : 0),
+  };
+}
+
+function normalizeHuntConfiguration(
+  baseSave: SaveGame,
+  sidecar: ActiveHuntSaveV1,
+): SaveGame | null {
+  const configuration = sidecar.configuration;
+  const inventory = configuration.inventory;
+  const loadout = configuration.loadout;
+  const appearance = configuration.appearance;
+  const visualOptions = configuration.visualOptions;
+  if (
+    !isJsonObject(inventory) ||
+    !isJsonObject(loadout) ||
+    !isJsonObject(appearance) ||
+    !isJsonObject(visualOptions) ||
+    typeof visualOptions.screenShake !== "boolean" ||
+    typeof visualOptions.reducedGore !== "boolean" ||
+    typeof visualOptions.highContrastVision !== "boolean"
+  ) {
+    return null;
+  }
+
+  const normalized = normalizeSave({
+    ...baseSave,
+    inventory,
+    loadout,
+    appearance,
+    settings: {
+      ...baseSave.settings,
+      difficultyId: sidecar.difficultyId,
+      screenShake: visualOptions.screenShake,
+      reducedGore: visualOptions.reducedGore,
+      highContrastVision: visualOptions.highContrastVision,
+    },
+  });
+  return normalized.settings.difficultyId === sidecar.difficultyId
+    ? normalized
+    : null;
+}
+
+function activeHuntElapsed(sidecar: ActiveHuntSaveV1): number {
+  const elapsed = sidecar.configuration.elapsedSeconds;
+  return typeof elapsed === "number" && Number.isFinite(elapsed)
+    ? Math.max(0, elapsed)
+    : 0;
+}
+
+function createHuntRunId(): string {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+  return `hunt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 }
 
 function DeferredGameScreen() {
@@ -634,6 +746,12 @@ export default function GameClient() {
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
+  const [resumableHunt, setResumableHunt] =
+    useState<ActiveHuntSaveV1 | null>(null);
+  const [huntResumePayload, setHuntResumePayload] =
+    useState<HuntResumePayload | null>(null);
+  const [huntRuntimeSave, setHuntRuntimeSave] =
+    useState<SaveGame | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -655,6 +773,8 @@ export default function GameClient() {
   const gameShellRef = useRef<HTMLElement | null>(null);
   const previousScreenRef = useRef<Screen>(screen);
   const audioRef = useRef<GameAudio | null>(null);
+  const activeHuntSessionRef = useRef<ActiveHuntSession | null>(null);
+  const activeHuntWriteFailureRef = useRef<string | null>(null);
   const settingsDialogRef = useRef<HTMLElement | null>(null);
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -666,6 +786,40 @@ export default function GameClient() {
       const loadedSave = loadSave();
       setSave(loadedSave);
       setSelectedShipId(loadShipProgression(loadedSave).selectedShipId);
+      const activeHuntResult = loadActiveHuntSave();
+      const candidate = activeHuntResult.save;
+      if (candidate) {
+        const mission = MISSIONS.find(({ id }) => id === candidate.missionId);
+        const progress = mission
+          ? loadedSave.missionProgress[mission.id]
+          : null;
+        const allowedDifficultyIds = DIFFICULTIES.filter(
+          ({ id }) => id !== "elder" || loadedSave.storyCompleted,
+        ).map(({ id }) => id);
+        const compatibility =
+          mission && progress
+            ? checkActiveHuntCompatibility(candidate, {
+                ownerSaveCreatedAt: loadedSave.createdAt,
+                encounterRun: progress.attempts,
+                missionAvailable: progress.status !== "locked",
+                allowedMissionIds: MISSIONS.map(({ id }) => id),
+                allowedDifficultyIds,
+              })
+            : { compatible: false as const, reason: "mission" as const };
+        const normalizedConfiguration = compatibility.compatible
+          ? normalizeHuntConfiguration(loadedSave, candidate)
+          : null;
+        if (compatibility.compatible && normalizedConfiguration) {
+          setResumableHunt(candidate);
+        } else {
+          clearActiveHuntSave();
+        }
+      } else if (
+        activeHuntResult.failure === "invalid-save" ||
+        activeHuntResult.failure === "incompatible"
+      ) {
+        clearActiveHuntSave();
+      }
     }, 0);
     const audio = new GameAudio();
     audioRef.current = audio;
@@ -845,14 +999,174 @@ export default function GameClient() {
     [playSound, save.missionProgress],
   );
 
+  const clearHuntSession = useCallback(() => {
+    const result = clearActiveHuntSave();
+    activeHuntSessionRef.current = null;
+    activeHuntWriteFailureRef.current = result.failure;
+    setResumableHunt(null);
+    setHuntResumePayload(null);
+    setHuntRuntimeSave(null);
+    return result.cleared;
+  }, []);
+
+  const invalidateActiveHuntPersistence = useCallback(() => {
+    const result = clearActiveHuntSave();
+    const session = activeHuntSessionRef.current;
+    if (session) session.lastPersisted = null;
+    activeHuntWriteFailureRef.current = result.failure;
+    setResumableHunt(null);
+  }, []);
+
+  const rejectActiveHuntResume = useCallback(() => {
+    clearHuntSession();
+    setSelectedMission(null);
+    setScreen("title");
+    setToast("La reprise de chasse était corrompue et a été écartée.");
+  }, [clearHuntSession]);
+
+  const persistActiveHunt = useCallback(
+    (payload: HuntPersistencePayload): ActiveHuntSaveV1 | null => {
+      const session = activeHuntSessionRef.current;
+      if (!session) return null;
+
+      const sequence = session.sequence + 1;
+      const configuration: JsonObject = {
+        ...session.configuration,
+        elapsedSeconds: Math.max(
+          0,
+          Number.isFinite(payload.elapsed) ? payload.elapsed : 0,
+        ),
+      };
+      session.configuration = configuration;
+      const savedAt = new Date().toISOString();
+      const result = writeActiveHuntSave({
+        version: ACTIVE_HUNT_SAVE_VERSION,
+        runtimeRevision: ACTIVE_HUNT_RUNTIME_REVISION,
+        ownerSaveCreatedAt: session.ownerSaveCreatedAt,
+        missionId: session.missionId,
+        difficultyId: session.difficultyId,
+        encounterRun: session.encounterRun,
+        runId: session.runId,
+        sequence,
+        startedAt: session.startedAt,
+        savedAt,
+        configuration,
+        snapshot: payload.snapshot,
+        retryCheckpoint: payload.retryCheckpoint,
+      });
+      activeHuntWriteFailureRef.current = result.failure;
+      if (result.persisted && result.save) {
+        session.sequence = sequence;
+        session.lastPersisted = result.save;
+      }
+      if (result.failure === "stale-sequence") return null;
+      return result.persisted ? result.save : session.lastPersisted;
+    },
+    [],
+  );
+
   const launchMission = useCallback(() => {
     if (!selectedMission) return;
+    const runtimeSave = normalizeSave(save);
+    const now = new Date().toISOString();
+    const clearResult = clearActiveHuntSave();
+    setResumableHunt(null);
+    setHuntResumePayload(null);
+    setHuntRuntimeSave(runtimeSave);
+    activeHuntWriteFailureRef.current = clearResult.failure;
+    activeHuntSessionRef.current = {
+      ownerSaveCreatedAt: runtimeSave.createdAt,
+      missionId: selectedMission.id,
+      difficultyId: runtimeSave.settings.difficultyId,
+      encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts,
+      runId: createHuntRunId(),
+      sequence: 0,
+      startedAt: now,
+      configuration: huntConfiguration(runtimeSave),
+      lastPersisted: null,
+    };
     void playSound("select");
     setScreen("mission");
-  }, [playSound, selectedMission]);
+  }, [playSound, save, selectedMission]);
+
+  const resumeActiveHunt = useCallback(() => {
+    if (!resumableHunt) return;
+    const mission = MISSIONS.find(({ id }) => id === resumableHunt.missionId);
+    const progress = mission ? save.missionProgress[mission.id] : null;
+    const allowedDifficultyIds = DIFFICULTIES.filter(
+      ({ id }) => id !== "elder" || save.storyCompleted,
+    ).map(({ id }) => id);
+    const compatibility =
+      mission && progress
+        ? checkActiveHuntCompatibility(resumableHunt, {
+            ownerSaveCreatedAt: save.createdAt,
+            encounterRun: progress.attempts,
+            missionAvailable: progress.status !== "locked",
+            allowedMissionIds: MISSIONS.map(({ id }) => id),
+            allowedDifficultyIds,
+          })
+        : { compatible: false as const, reason: "mission" as const };
+    const runtimeSave = compatibility.compatible
+      ? normalizeHuntConfiguration(save, resumableHunt)
+      : null;
+    if (!mission || !compatibility.compatible || !runtimeSave) {
+      clearHuntSession();
+      setToast("Cette reprise de chasse n’est plus compatible.");
+      return;
+    }
+
+    activeHuntWriteFailureRef.current = null;
+    activeHuntSessionRef.current = {
+      ownerSaveCreatedAt: resumableHunt.ownerSaveCreatedAt,
+      missionId: resumableHunt.missionId,
+      difficultyId: resumableHunt.difficultyId as DifficultyId,
+      encounterRun: resumableHunt.encounterRun,
+      runId: resumableHunt.runId,
+      sequence: resumableHunt.sequence,
+      startedAt: resumableHunt.startedAt,
+      configuration: resumableHunt.configuration,
+      lastPersisted: resumableHunt,
+    };
+    setSelectedMission(mission);
+    setHuntRuntimeSave(runtimeSave);
+    setHuntResumePayload({
+      snapshot: resumableHunt.snapshot,
+      retryCheckpoint: resumableHunt.retryCheckpoint,
+    });
+    void playSound("select");
+    setScreen("mission");
+  }, [clearHuntSession, playSound, resumableHunt, save]);
+
+  const suspendActiveHunt = useCallback(
+    (payload: HuntPersistencePayload) => {
+      const sidecar = persistActiveHunt(payload);
+      const failure = activeHuntWriteFailureRef.current;
+      if (!sidecar) {
+        setToast(
+          failure
+            ? "Sauvegarde locale indisponible : la chasse reste ouverte en pause."
+            : "Aucune reprise valide : la chasse reste ouverte en pause.",
+        );
+        return;
+      }
+      activeHuntSessionRef.current = null;
+      setHuntResumePayload(null);
+      setHuntRuntimeSave(null);
+      setSelectedMission(null);
+      setResumableHunt(sidecar);
+      setToast(
+        failure
+          ? "Chasse suspendue. Le dernier autosave valide reste disponible."
+          : "Chasse suspendue. La reprise est conservée sur cet appareil.",
+      );
+      setScreen("title");
+    },
+    [persistActiveHunt],
+  );
 
   const completeMission = useCallback(
     (result: MissionResult) => {
+      clearHuntSession();
       const next = applyMissionResult(save, result);
       persist(next);
       setLastResult(result);
@@ -869,7 +1183,7 @@ export default function GameClient() {
       );
       void playSound(result.outcome === "success" ? "victory" : "defeat");
     },
-    [persist, playSound, save],
+    [clearHuntSession, persist, playSound, save],
   );
 
   const updateSettings = useCallback(
@@ -1131,6 +1445,7 @@ export default function GameClient() {
     } catch {
       // La sauvegarde principale reste réinitialisable si le stockage est bloqué.
     }
+    clearHuntSession();
     persist(fresh);
     setResetArmed(false);
     setSettingsOpen(false);
@@ -1139,7 +1454,7 @@ export default function GameClient() {
     setLastRewardSummary(null);
     setScreen("title");
     setToast("Archives de chasse réinitialisées.");
-  }, [persist, resetArmed]);
+  }, [clearHuntSession, persist, resetArmed]);
 
   const toggleFullscreen = useCallback(() => {
     if (typeof document === "undefined") return;
@@ -1153,6 +1468,7 @@ export default function GameClient() {
   const primaryWeapon =
     WEAPONS.find((weapon) => weapon.id === save.loadout.weaponIds[1]) ??
     WEAPONS[0];
+  const activeMissionSave = huntRuntimeSave ?? save;
   const selectedArmor =
     ARMORS.find((armor) => armor.id === save.loadout.armorId) ?? ARMORS[0];
   const selectedGear = save.loadout.gearIds
@@ -1172,6 +1488,9 @@ export default function GameClient() {
       ),
     [save.trophies],
   );
+  const resumableMission = resumableHunt
+    ? MISSIONS.find(({ id }) => id === resumableHunt.missionId) ?? null
+    : null;
 
   const topBar =
     screen !== "title" && screen !== "mission" ? (
@@ -1191,7 +1510,11 @@ export default function GameClient() {
       ref={gameShellRef}
       className="game-shell"
       data-game-shell="yautja-long-hunt"
-      data-high-contrast={save.settings.highContrastVision}
+      data-high-contrast={
+        screen === "mission"
+          ? activeMissionSave.settings.highContrastVision
+          : save.settings.highContrastVision
+      }
       aria-label="Yautja : La Longue Chasse"
     >
       {topBar}
@@ -1211,6 +1534,20 @@ export default function GameClient() {
                 ne revenez pas.
               </p>
               <div className="title-actions">
+                {resumableHunt && resumableMission && (
+                  <button
+                    type="button"
+                    className="alien-button"
+                    aria-label={`Reprendre la chasse : ${resumableMission.title}, ${formatTime(activeHuntElapsed(resumableHunt))}`}
+                    onClick={resumeActiveHunt}
+                  >
+                    Reprendre la chasse
+                    <span aria-hidden="true">
+                      {" "}· {resumableMission.planetName} ·{" "}
+                      {formatTime(activeHuntElapsed(resumableHunt))}
+                    </span>
+                  </button>
+                )}
                 <button
                   type="button"
                   className="alien-button"
@@ -1266,6 +1603,7 @@ export default function GameClient() {
         <Suspense fallback={<DeferredGameScreen />}>
           <ShipHub
             save={save}
+            controlBindings={save.settings.controlBindings}
             onOpenDeck={() => go("deck")}
             onOpenMap={() => openMap("ship")}
             onOpenArmory={() => openStationScreen("armory", "ship")}
@@ -1282,29 +1620,32 @@ export default function GameClient() {
       )}
 
       {screen === "deck" && (
-        <section className="screen panel-screen physical-deck-screen">
-          <div className="screen-safe">
-            <button
-              type="button"
-              className="physical-deck-back ghost-button"
-              onClick={() => go("ship")}
-            >
-              ← Console du vaisseau
-            </button>
-            <PhysicalShipDeck
-              highContrast={save.settings.highContrastVision}
-              onOpenMap={() => openMap("deck")}
-              onOpenArmory={() => openStationScreen("armory", "deck")}
-              onOpenTrophies={() => openStationScreen("trophies", "deck")}
-              onOpenArchives={() => openStationScreen("codex", "deck")}
-              onOpenAppearanceForge={() =>
-                openStationScreen("customization", "deck")
-              }
-              onOpenMedbay={() => openStationScreen("medbay", "deck")}
-              onNotify={setToast}
-            />
-          </div>
-        </section>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen physical-deck-screen">
+            <div className="screen-safe">
+              <button
+                type="button"
+                className="physical-deck-back ghost-button"
+                onClick={() => go("ship")}
+              >
+                ← Console du vaisseau
+              </button>
+              <PhysicalShipDeck
+                highContrast={save.settings.highContrastVision}
+                controlBindings={save.settings.controlBindings}
+                onOpenMap={() => openMap("deck")}
+                onOpenArmory={() => openStationScreen("armory", "deck")}
+                onOpenTrophies={() => openStationScreen("trophies", "deck")}
+                onOpenArchives={() => openStationScreen("codex", "deck")}
+                onOpenAppearanceForge={() =>
+                  openStationScreen("customization", "deck")
+                }
+                onOpenMedbay={() => openStationScreen("medbay", "deck")}
+                onNotify={setToast}
+              />
+            </div>
+          </section>
+        </Suspense>
       )}
 
       {screen === "medbay" && (
@@ -1319,6 +1660,7 @@ export default function GameClient() {
             </button>
             <ShipHub
               save={save}
+              controlBindings={save.settings.controlBindings}
               initialRoomId="medbay"
               onOpenDeck={() => go("deck")}
               onOpenMap={() => openMap("deck")}
@@ -1337,14 +1679,17 @@ export default function GameClient() {
       )}
 
       {screen === "map" && (
-        <GalaxyMapPanel
-          missionProgress={save.missionProgress}
-          selectedShipId={selectedShipId}
-          initialState={galaxyNavigationState}
-          onStateChange={setGalaxyNavigationState}
-          onBack={() => go(mapReturnScreen)}
-          onChooseMission={chooseMission}
-        />
+        <Suspense fallback={<DeferredGameScreen />}>
+          <GalaxyMapPanel
+            missionProgress={save.missionProgress}
+            selectedShipId={selectedShipId}
+            controlBindings={save.settings.controlBindings}
+            initialState={galaxyNavigationState}
+            onStateChange={setGalaxyNavigationState}
+            onBack={() => go(mapReturnScreen)}
+            onChooseMission={chooseMission}
+          />
+        </Suspense>
       )}
 
       {screen === "briefing" && selectedMission && (
@@ -1944,10 +2289,18 @@ export default function GameClient() {
                       )}
                     </article>
                   )}
-                  <CatalogueHunterBrowser
-                    selectedEntryId={selectedCatalogueEntryId}
-                    onSelect={selectCatalogueHunter}
-                  />
+                  <Suspense
+                    fallback={
+                      <p className="loading-mark" role="status" aria-live="polite">
+                        Chargement du catalogue de chasse…
+                      </p>
+                    }
+                  >
+                    <CatalogueHunterBrowser
+                      selectedEntryId={selectedCatalogueEntryId}
+                      onSelect={selectCatalogueHunter}
+                    />
+                  </Suspense>
                 </CustomizationSection>
 
                 <CustomizationSection
@@ -2364,7 +2717,8 @@ export default function GameClient() {
       )}
 
       {screen === "codex" && (
-        <section className="screen panel-screen" aria-labelledby="codex-title">
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen" aria-labelledby="codex-title">
           <div className="screen-safe">
             <PanelHeader
               eyebrow="Biomask // Archives interprétées"
@@ -2434,7 +2788,8 @@ export default function GameClient() {
               })}
             </div>
           </div>
-        </section>
+          </section>
+        </Suspense>
       )}
 
       {screen === "mission" && selectedMission && (
@@ -2442,16 +2797,28 @@ export default function GameClient() {
           <HuntCanvas
             mission={selectedMission}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
-            loadout={save.loadout}
-            inventory={save.inventory}
-            appearance={save.appearance}
-            difficulty={save.settings.difficultyId}
-            reducedGore={save.settings.reducedGore}
-            screenShake={save.settings.screenShake}
-            highContrastVision={save.settings.highContrastVision}
+            loadout={activeMissionSave.loadout}
+            inventory={activeMissionSave.inventory}
+            appearance={activeMissionSave.appearance}
+            difficulty={activeMissionSave.settings.difficultyId}
+            controlBindings={activeMissionSave.settings.controlBindings}
+            reducedGore={activeMissionSave.settings.reducedGore}
+            screenShake={activeMissionSave.settings.screenShake}
+            highContrastVision={
+              activeMissionSave.settings.highContrastVision
+            }
+            resumeSnapshot={huntResumePayload?.snapshot ?? null}
+            resumeRetryCheckpoint={
+              huntResumePayload?.retryCheckpoint ?? null
+            }
+            onPersistHunt={persistActiveHunt}
+            onSuspendHunt={suspendActiveHunt}
+            onInvalidateHunt={invalidateActiveHuntPersistence}
+            onResumeFailure={rejectActiveHuntResume}
             onSound={playGameplaySound}
             onFinish={completeMission}
             onAbort={(result) => {
+              clearHuntSession();
               persist(applyMissionResult(save, result));
               setLastResult(null);
               setLastRewardSummary(null);
@@ -2608,14 +2975,17 @@ export default function GameClient() {
       )}
 
       {trophyWorkshop && (
-        <TrophyWorkshop
-          action={trophyWorkshop.action}
-          trophyId={trophyWorkshop.trophyId}
-          trophyName={trophyWorkshop.trophyName}
-          trophyImageUrl={trophyWorkshop.trophyImageUrl}
-          onComplete={completeTrophyWorkshop}
-          onCancel={() => setTrophyWorkshop(null)}
-        />
+        <Suspense fallback={<DeferredGameScreen />}>
+          <TrophyWorkshop
+            action={trophyWorkshop.action}
+            trophyId={trophyWorkshop.trophyId}
+            trophyName={trophyWorkshop.trophyName}
+            trophyImageUrl={trophyWorkshop.trophyImageUrl}
+            controlBindings={save.settings.controlBindings}
+            onComplete={completeTrophyWorkshop}
+            onCancel={() => setTrophyWorkshop(null)}
+          />
+        </Suspense>
       )}
 
       {settingsOpen && (
@@ -2712,6 +3082,23 @@ export default function GameClient() {
                   updateSettings({ highContrastVision })
                 }
               />
+              <section aria-labelledby="keyboard-controls-title">
+                <h3 id="keyboard-controls-title">Commandes clavier</h3>
+                <Suspense
+                  fallback={
+                    <p role="status" aria-live="polite">
+                      Chargement des commandes…
+                    </p>
+                  }
+                >
+                  <ControlBindingsPanel
+                    bindings={save.settings.controlBindings}
+                    onChange={(controlBindings) =>
+                      updateSettings({ controlBindings })
+                    }
+                  />
+                </Suspense>
+              </section>
             </div>
             <div className="modal-actions">
               <button

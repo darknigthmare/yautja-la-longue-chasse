@@ -179,9 +179,9 @@ test("component exposes keyboard, gamepad, touch and accessible live feedback", 
   assert.match(source, /game\.status === "failed"/);
   assert.match(source, /game\.phase === "ready"/);
   assert.match(source, /trophyWorkshopReadyRemaining/);
-  assert.match(source, /Commencer la séquence · Entrée/);
+  assert.match(source, /Commencer la séquence · \{inputShortcuts\.confirm\}/);
   assert.match(source, /startTrophyWorkshopGame/);
-  assert.match(source, /Espace ou E seulement lorsque/);
+  assert.match(source, /matchingControlActions\([\s\S]*"workshop"/);
 });
 
 test("ShipHub routes every trophy action through the playable workshop", async () => {

@@ -1,4 +1,4 @@
-import type { MissionId } from "../types";
+import type { MissionId, WeaponId } from "../types";
 import type {
   SurfaceMaterial,
   TrackSurface,
@@ -192,6 +192,132 @@ export interface RegularAttackTelegraphStep {
   startedAttackId: string | null;
   executedAttackId: string | null;
   immobilized: boolean;
+}
+
+export type HunterWeaponFamily =
+  | "melee"
+  | "thrown"
+  | "energy"
+  | "bow"
+  | "guided";
+
+export type HunterProjectileRecovery = "none" | "pickup" | "return";
+
+export interface HunterWeaponBaseStats {
+  damage: number;
+  heavyDamage: number;
+  cooldownSeconds: number;
+  rangePx: number;
+  projectileSpeedPx: number;
+  staminaCost: number;
+  energyCost: number;
+  ammo: number | null;
+}
+
+export interface ResolvedHunterWeaponAttack {
+  weaponId: WeaponId;
+  family: HunterWeaponFamily;
+  chargeRatio: number;
+  damage: number;
+  cooldownSeconds: number;
+  rangePx: number;
+  projectileSpeedPx: number;
+  staminaCost: number;
+  energyCost: number;
+  ammoCost: 0 | 1;
+  meleeReachPx: number;
+  projectileRadius: number;
+  splashRadius: number;
+  maxTargetHits: number;
+  recovery: HunterProjectileRecovery;
+  noiseLoudness: number;
+  noiseRadius: number;
+}
+
+interface HunterWeaponIdentity {
+  family: HunterWeaponFamily;
+  chargeSeconds: number;
+  meleeReachPx: number;
+  projectileRadius: number;
+  maxTargetHits: number;
+  recovery: HunterProjectileRecovery;
+  noiseLoudness: number;
+  noiseRadius: number;
+}
+
+const HUNTER_WEAPON_IDENTITIES: Readonly<
+  Record<WeaponId, HunterWeaponIdentity>
+> = {
+  wristblades: {
+    family: "melee",
+    chargeSeconds: 0,
+    meleeReachPx: 94,
+    projectileRadius: 0,
+    maxTargetHits: 2,
+    recovery: "none",
+    noiseLoudness: 0.68,
+    noiseRadius: 390,
+  },
+  combistick: {
+    family: "thrown",
+    chargeSeconds: 0,
+    meleeReachPx: 145,
+    projectileRadius: 7,
+    maxTargetHits: 1,
+    recovery: "pickup",
+    noiseLoudness: 0.5,
+    noiseRadius: 470,
+  },
+  "plasma-caster": {
+    family: "energy",
+    chargeSeconds: 1.1,
+    meleeReachPx: 0,
+    projectileRadius: 9,
+    maxTargetHits: 1,
+    recovery: "none",
+    noiseLoudness: 0.88,
+    noiseRadius: 760,
+  },
+  "yautja-bow": {
+    family: "bow",
+    chargeSeconds: 0.9,
+    meleeReachPx: 0,
+    projectileRadius: 5,
+    maxTargetHits: 1,
+    recovery: "pickup",
+    noiseLoudness: 0.24,
+    noiseRadius: 300,
+  },
+  "smart-disc": {
+    family: "guided",
+    chargeSeconds: 0,
+    meleeReachPx: 0,
+    projectileRadius: 12,
+    maxTargetHits: 4,
+    recovery: "return",
+    noiseLoudness: 0.62,
+    noiseRadius: 560,
+  },
+};
+
+export interface SmartDiscFlightState extends WorldPoint {
+  velocityX: number;
+  velocityY: number;
+  outboundSeconds: number;
+  returning: boolean;
+}
+
+export interface SmartDiscFlightInput {
+  deltaSeconds: number;
+  hunterPosition: WorldPoint;
+  speedPxPerSecond: number;
+  catchRadius: number;
+}
+
+export interface SmartDiscFlightStep {
+  state: SmartDiscFlightState;
+  caught: boolean;
+  startedReturn: boolean;
 }
 
 export interface AiConfig {
@@ -483,6 +609,175 @@ const EPSILON = 0.000_001;
 
 function clamp(value: number, minimum = 0, maximum = 1): number {
   return Math.max(minimum, Math.min(maximum, value));
+}
+
+function stableWeaponValue(value: number): number {
+  return Math.round(value * 1_000_000) / 1_000_000;
+}
+
+export function hunterWeaponChargeRatio(
+  weaponId: WeaponId,
+  chargeSeconds: number,
+): number {
+  const requiredSeconds = HUNTER_WEAPON_IDENTITIES[weaponId].chargeSeconds;
+  if (requiredSeconds <= 0) return 0;
+  const normalizedSeconds = Number.isFinite(chargeSeconds)
+    ? Math.max(0, chargeSeconds)
+    : 0;
+  return stableWeaponValue(clamp(normalizedSeconds / requiredSeconds));
+}
+
+/**
+ * Resolves the complete resource and projectile identity of a hunter weapon.
+ * No runtime clock or random source is read here, so UI previews, simulation
+ * and replay tests can all consume the exact same result.
+ */
+export function resolveHunterWeaponAttack(
+  weaponId: WeaponId,
+  base: HunterWeaponBaseStats,
+  chargeSeconds = 0,
+): ResolvedHunterWeaponAttack {
+  const identity = HUNTER_WEAPON_IDENTITIES[weaponId];
+  const chargeRatio = hunterWeaponChargeRatio(weaponId, chargeSeconds);
+  const finite = (value: number): number =>
+    Number.isFinite(value) ? Math.max(0, value) : 0;
+  const baseDamage = finite(base.damage);
+  const heavyDamage = finite(base.heavyDamage);
+  let damage = baseDamage;
+  let cooldownMultiplier = 1;
+  let rangeMultiplier = 1;
+  let speedMultiplier = 1;
+  let staminaMultiplier = 1;
+  let energyMultiplier = 1;
+  let radiusMultiplier = 1;
+  let splashRadius = 0;
+  let maxTargetHits = identity.maxTargetHits;
+  let noiseLoudness = identity.noiseLoudness;
+  let noiseRadius = identity.noiseRadius;
+
+  if (weaponId === "plasma-caster") {
+    damage = baseDamage + (heavyDamage - baseDamage) * chargeRatio;
+    cooldownMultiplier = 1 + chargeRatio * 0.55;
+    energyMultiplier = 1 + chargeRatio * 0.65;
+    radiusMultiplier = 1 + chargeRatio * 0.72;
+    splashRadius = 42 + chargeRatio * 66;
+    noiseLoudness += chargeRatio * 0.12;
+    noiseRadius += chargeRatio * 180;
+  } else if (weaponId === "yautja-bow") {
+    damage = baseDamage * 0.72 + (heavyDamage - baseDamage * 0.72) * chargeRatio;
+    cooldownMultiplier = 0.72 + chargeRatio * 0.28;
+    rangeMultiplier = 0.72 + chargeRatio * 0.28;
+    speedMultiplier = 0.72 + chargeRatio * 0.28;
+    staminaMultiplier = 0.75 + chargeRatio * 0.25;
+    radiusMultiplier = 0.8 + chargeRatio * 0.35;
+    maxTargetHits = chargeRatio >= 0.9 ? 2 : 1;
+    noiseLoudness += (1 - chargeRatio) * 0.08;
+    noiseRadius += (1 - chargeRatio) * 50;
+  }
+
+  return {
+    weaponId,
+    family: identity.family,
+    chargeRatio,
+    damage: stableWeaponValue(damage),
+    cooldownSeconds: stableWeaponValue(
+      Math.max(0.08, finite(base.cooldownSeconds) * cooldownMultiplier),
+    ),
+    rangePx: stableWeaponValue(finite(base.rangePx) * rangeMultiplier),
+    projectileSpeedPx: stableWeaponValue(
+      finite(base.projectileSpeedPx) * speedMultiplier,
+    ),
+    staminaCost: stableWeaponValue(
+      finite(base.staminaCost) * staminaMultiplier,
+    ),
+    energyCost: stableWeaponValue(finite(base.energyCost) * energyMultiplier),
+    ammoCost: base.ammo === null ? 0 : 1,
+    meleeReachPx: identity.meleeReachPx,
+    projectileRadius: stableWeaponValue(
+      identity.projectileRadius * radiusMultiplier,
+    ),
+    splashRadius: stableWeaponValue(splashRadius),
+    maxTargetHits,
+    recovery: identity.recovery,
+    noiseLoudness: stableWeaponValue(clamp(noiseLoudness)),
+    noiseRadius: stableWeaponValue(noiseRadius),
+  };
+}
+
+/** Cover-aware deterministic damage for radial hunter-weapon impacts. */
+export function resolveHunterSplashDamage(
+  baseDamage: number,
+  coverOcclusion: number,
+  radialMultiplier = 0.45,
+): number {
+  const damage = Number.isFinite(baseDamage) ? Math.max(0, baseDamage) : 0;
+  const multiplier = Number.isFinite(radialMultiplier)
+    ? Math.max(0, radialMultiplier)
+    : 0;
+  const occlusion = clamp(
+    Number.isFinite(coverOcclusion) ? coverOcclusion : 0,
+  );
+  return stableWeaponValue(damage * multiplier * (1 - occlusion * 0.95));
+}
+
+/** Deterministic outbound/return guidance for the Smart Disc. */
+export function stepSmartDiscFlight(
+  previous: SmartDiscFlightState,
+  input: SmartDiscFlightInput,
+): SmartDiscFlightStep {
+  const deltaSeconds = Math.max(
+    0,
+    Number.isFinite(input.deltaSeconds) ? input.deltaSeconds : 0,
+  );
+  const speed = Math.max(
+    1,
+    Number.isFinite(input.speedPxPerSecond) ? input.speedPxPerSecond : 1,
+  );
+  const catchRadius = Math.max(
+    0,
+    Number.isFinite(input.catchRadius) ? input.catchRadius : 0,
+  );
+  const outboundSeconds = Math.max(0, previous.outboundSeconds - deltaSeconds);
+  const startedReturn = !previous.returning && outboundSeconds <= EPSILON;
+  const returning = previous.returning || startedReturn;
+  let velocityX = previous.velocityX;
+  let velocityY = previous.velocityY;
+  let x = previous.x;
+  let y = previous.y;
+  let caught = false;
+
+  if (returning) {
+    const deltaX = input.hunterPosition.x - x;
+    const deltaY = input.hunterPosition.y - y;
+    const separation = Math.hypot(deltaX, deltaY);
+    const travel = speed * deltaSeconds;
+    if (separation <= catchRadius + travel) {
+      x = input.hunterPosition.x;
+      y = input.hunterPosition.y;
+      caught = true;
+    } else if (separation > EPSILON) {
+      velocityX = (deltaX / separation) * speed;
+      velocityY = (deltaY / separation) * speed;
+      x += velocityX * deltaSeconds;
+      y += velocityY * deltaSeconds;
+    }
+  } else {
+    x += velocityX * deltaSeconds;
+    y += velocityY * deltaSeconds;
+  }
+
+  return {
+    state: {
+      x: stableWeaponValue(x),
+      y: stableWeaponValue(y),
+      velocityX: stableWeaponValue(velocityX),
+      velocityY: stableWeaponValue(velocityY),
+      outboundSeconds: stableWeaponValue(outboundSeconds),
+      returning,
+    },
+    caught,
+    startedReturn,
+  };
 }
 
 function distance(a: WorldPoint, b: WorldPoint): number {

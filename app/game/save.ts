@@ -18,6 +18,10 @@ import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ECOLOGY_V8_ENEMIES,
 } from "./ecologyV8";
+import {
+  DEFAULT_CONTROL_BINDINGS,
+  normalizeControlBindings,
+} from "./systems/controlBindings";
 import type {
   ArmorId,
   CodexEntryId,
@@ -308,6 +312,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       screenShake: true,
       reducedGore: false,
       highContrastVision: false,
+      controlBindings: DEFAULT_CONTROL_BINDINGS,
     },
     storyCompleted: false,
   };
@@ -957,6 +962,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ? source.statistics
     : {};
   const rawSettings = isRecord(source.settings) ? source.settings : {};
+  const normalizedControlBindings = normalizeControlBindings(
+    rawSettings.controlBindings,
+  );
 
   // Core starter tools can never disappear from a damaged or old save.
   const unlockedWeaponIds = [
@@ -1170,6 +1178,9 @@ export function normalizeSave(value: unknown): SaveGame {
         rawSettings.highContrastVision,
         fallback.settings.highContrastVision,
       ),
+      controlBindings: normalizedControlBindings.valid
+        ? normalizedControlBindings.bindings
+        : fallback.settings.controlBindings,
     },
     storyCompleted,
   };

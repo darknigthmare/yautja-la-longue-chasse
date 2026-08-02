@@ -13,6 +13,7 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
+import { controlActionShortcut } from "./controlBindingLabels";
 import { MISSIONS } from "./data";
 import {
   cancelGalaxyAutopilot,
@@ -53,6 +54,12 @@ import {
 } from "./galaxyVisuals";
 import { backgroundPathForBiome } from "./worldScreens";
 import {
+  DEFAULT_CONTROL_BINDINGS,
+  matchesControlAction,
+  matchingControlActions,
+  type ControlBindings,
+} from "./systems/controlBindings";
+import {
   shipForId,
   shipTopAssetPath,
   type ShipId,
@@ -66,6 +73,7 @@ import type {
 export interface GalaxyMapPanelProps {
   missionProgress: Readonly<Record<MissionId, MissionProgress>>;
   selectedShipId: ShipId;
+  controlBindings?: ControlBindings;
   initialState?: GalaxyNavigationState;
   onStateChange?: (state: GalaxyNavigationState) => void;
   onBack: () => void;
@@ -156,11 +164,20 @@ function scannerValues(id: string): readonly number[] {
   return [0, 1, 2, 3].map((index) => 24 + ((hash >>> (index * 5)) % 72));
 }
 
-function movementVector(keys: ReadonlySet<string>): GalaxyFlightPoint {
-  const left = keys.has("ArrowLeft") || keys.has("KeyA") || keys.has("KeyQ");
-  const right = keys.has("ArrowRight") || keys.has("KeyD");
-  const up = keys.has("ArrowUp") || keys.has("KeyW") || keys.has("KeyZ");
-  const down = keys.has("ArrowDown") || keys.has("KeyS");
+function movementVector(
+  keys: ReadonlySet<string>,
+  bindings: ControlBindings,
+): GalaxyFlightPoint {
+  let left = false;
+  let right = false;
+  let up = false;
+  let down = false;
+  for (const code of keys) {
+    left ||= matchesControlAction("galaxy.flyLeft", code, bindings);
+    right ||= matchesControlAction("galaxy.flyRight", code, bindings);
+    up ||= matchesControlAction("galaxy.flyUp", code, bindings);
+    down ||= matchesControlAction("galaxy.flyDown", code, bindings);
+  }
   return normalizeGalaxyFlightInput({
     x: Number(right) - Number(left),
     y: Number(down) - Number(up),
@@ -170,6 +187,7 @@ function movementVector(keys: ReadonlySet<string>): GalaxyFlightPoint {
 export default function GalaxyMapPanel({
   missionProgress,
   selectedShipId,
+  controlBindings = DEFAULT_CONTROL_BINDINGS,
   initialState,
   onStateChange,
   onBack,
@@ -263,6 +281,7 @@ export default function GalaxyMapPanel({
     ? isGalaxyFlightNear(flight.position, activeFlightPosition, 4.5)
     : false;
   const shipVisualPose = galaxyShipTopDownPose(flight.heading);
+  const keyboardFlightHelp = `Carte ${state.level}. Pilotage : ${controlActionShortcut("galaxy.flyLeft", controlBindings)}, ${controlActionShortcut("galaxy.flyRight", controlBindings)}, ${controlActionShortcut("galaxy.flyUp", controlBindings)}, ${controlActionShortcut("galaxy.flyDown", controlBindings)}. Cibles : ${controlActionShortcut("galaxy.previousTarget", controlBindings)} et ${controlActionShortcut("galaxy.nextTarget", controlBindings)}. Voyager : ${controlActionShortcut("galaxy.activate", controlBindings)}.`;
 
   const navigateBack = useCallback(() => {
     if (state.level === "galaxy") onBack();
@@ -312,7 +331,9 @@ export default function GalaxyMapPanel({
       flightTargetRef.current = null;
       flightRef.current = next;
       setFlight(next);
-      setFlightMessage(`${item.label} à portée · Entrée / A pour entrer`);
+      setFlightMessage(
+        `${item.label} à portée · ${controlActionShortcut("galaxy.activate", controlBindings)} / A pour entrer`,
+      );
       return;
     }
     const next = engageGalaxyAutopilot(flightRef.current, item.id);
@@ -320,7 +341,7 @@ export default function GalaxyMapPanel({
     flightRef.current = next;
     setFlight(next);
     setFlightMessage(`Trajectoire verrouillée : ${item.label}`);
-  }, [focusItem, itemPositions, openItem, supportsFlight]);
+  }, [controlBindings, focusItem, itemPositions, openItem, supportsFlight]);
 
   const launchActive = useCallback(() => {
     if (!activeItem) return;
@@ -434,7 +455,10 @@ export default function GalaxyMapPanel({
       const padInput = pad
         ? normalizeGalaxyFlightInput({ x: pad.axes[0] ?? 0, y: pad.axes[1] ?? 0 })
         : { x: 0, y: 0 };
-      const keyboardInput = movementVector(heldKeysRef.current);
+      const keyboardInput = movementVector(
+        heldKeysRef.current,
+        controlBindings,
+      );
       const input = normalizeGalaxyFlightInput({
         x: keyboardInput.x + touchInputRef.current.x + (Math.abs(padInput.x) > 0.16 ? padInput.x : 0),
         y: keyboardInput.y + touchInputRef.current.y + (Math.abs(padInput.y) > 0.16 ? padInput.y : 0),
@@ -477,7 +501,9 @@ export default function GalaxyMapPanel({
 
         if (target && current.mode === "autopilot" && next.mode === "manual" && next.targetId === null) {
           flightTargetRef.current = null;
-          setFlightMessage(`${target.item.label} à portée · Entrée / A pour entrer`);
+          setFlightMessage(
+            `${target.item.label} à portée · ${controlActionShortcut("galaxy.activate", controlBindings)} / A pour entrer`,
+          );
         }
       }
 
@@ -511,15 +537,23 @@ export default function GalaxyMapPanel({
     };
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
-  }, [cancelActiveRoute, supportsFlight]);
+  }, [cancelActiveRoute, controlBindings, supportsFlight]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.target !== event.currentTarget) return;
-    const movementCodes = new Set([
-      "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown",
-      "KeyW", "KeyA", "KeyS", "KeyD", "KeyZ", "KeyQ",
-    ]);
-    if (supportsFlight && movementCodes.has(event.code)) {
+    const actions = matchingControlActions(
+      "galaxy",
+      event.nativeEvent,
+      controlBindings,
+    );
+    const isMovement = actions.some((actionId) =>
+      actionId === "galaxy.flyLeft" ||
+      actionId === "galaxy.flyRight" ||
+      actionId === "galaxy.flyUp" ||
+      actionId === "galaxy.flyDown"
+    );
+    if (event.repeat && !isMovement) return;
+    if (supportsFlight && isMovement) {
       event.preventDefault();
       heldKeysRef.current.add(event.code);
       if (flightRef.current.mode === "autopilot") {
@@ -531,17 +565,23 @@ export default function GalaxyMapPanel({
       }
       return;
     }
-    if (event.code === "PageDown" || event.code === "PageUp" || event.code === "KeyE" || event.code === "KeyR") {
+    if (
+      actions.includes("galaxy.previousTarget") ||
+      actions.includes("galaxy.nextTarget")
+    ) {
       event.preventDefault();
       cancelActiveRoute();
-      dispatch({ type: "move", delta: event.code === "PageUp" || event.code === "KeyR" ? -1 : 1 });
-    } else if (event.key === "Enter" || event.key === " ") {
+      dispatch({
+        type: "move",
+        delta: actions.includes("galaxy.previousTarget") ? -1 : 1,
+      });
+    } else if (actions.includes("galaxy.activate")) {
       event.preventDefault();
       launchActive();
-    } else if (event.key === "Escape" || event.key === "Backspace") {
+    } else if (actions.includes("galaxy.back")) {
       event.preventDefault();
       navigateBack();
-    } else if (event.key.toLowerCase() === "g") {
+    } else if (actions.includes("galaxy.returnToGalaxy")) {
       event.preventDefault();
       returnToGalaxy();
     }
@@ -612,7 +652,7 @@ export default function GalaxyMapPanel({
               onClick={returnToGalaxy}
               disabled={state.level === "galaxy"}
             >
-              Vue galaxie <kbd>G</kbd>
+              Vue galaxie <kbd>{controlActionShortcut("galaxy.returnToGalaxy", controlBindings)}</kbd>
             </button>
           </div>
         </header>
@@ -643,7 +683,7 @@ export default function GalaxyMapPanel({
           data-selected-ship={selectedShipId}
           role="region"
           aria-label={supportsFlight
-            ? `Carte ${state.level}. Pilotez avec les flèches ou ZQSD, changez de cible avec E ou R et voyagez avec Entrée.`
+            ? keyboardFlightHelp
             : `Dossier orbital ${state.level}. Parcourez les signaux et contrats avec les commandes affichées.`}
           tabIndex={0}
           onKeyDown={onKeyDown}
@@ -726,7 +766,7 @@ export default function GalaxyMapPanel({
 
           {supportsFlight ? (
             <p className="galaxy-v10-control-hint">
-              Pilotage : flèches ou ZQSD/WASD · Cible : E/R · Voyage : Entrée · Retour : Échap · Manette : stick, A, B
+              Pilotage : {controlActionShortcut("galaxy.flyLeft", controlBindings)} / {controlActionShortcut("galaxy.flyRight", controlBindings)} / {controlActionShortcut("galaxy.flyUp", controlBindings)} / {controlActionShortcut("galaxy.flyDown", controlBindings)} · Cible : {controlActionShortcut("galaxy.previousTarget", controlBindings)} / {controlActionShortcut("galaxy.nextTarget", controlBindings)} · Voyage : {controlActionShortcut("galaxy.activate", controlBindings)} · Retour : {controlActionShortcut("galaxy.back", controlBindings)} · Manette : stick, A, B
             </p>
           ) : null}
         </div>

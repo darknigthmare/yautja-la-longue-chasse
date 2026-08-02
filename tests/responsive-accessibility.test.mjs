@@ -17,7 +17,7 @@ test("galaxy navigation keeps flight controls inside its spatial region", async 
   assert.match(source, /aria-current=\{selected \? "true"/);
   assert.match(source, /ref=\{stageRef\}[\s\S]*onKeyDown=\{onKeyDown\}/);
   assert.match(source, /if \(event\.target !== event\.currentTarget\) return/);
-  assert.match(source, /event\.code === "KeyE"/);
+  assert.match(source, /matchingControlActions\([\s\S]*"galaxy"/);
   assert.doesNotMatch(source, /event\.key === "Tab"/);
   assert.match(source, /data-flight-x="-1"/);
 });
@@ -93,7 +93,18 @@ test("hunt mission keeps keyboard controls, live updates and modal focus accessi
 
   assert.match(hunt, /className="screen hunt-screen"[\s\S]*data-screen-focus[\s\S]*tabIndex=\{-1\}/);
   assert.match(hunt, /button, a, input, select, textarea, \[contenteditable\]/);
-  assert.match(hunt, /event\.code !== "Escape" && isInteractiveControl\(event\.target\)/);
+  assert.match(
+    hunt,
+    /isInteractiveControl\(event\.target\) &&\s*\(event\.key === "Enter" \|\| event\.key === " "\)/,
+  );
+  assert.match(
+    hunt,
+    /isInteractiveControl\(event\.target\) &&\s*!actions\.includes\("pause"\)/,
+  );
+  assert.match(
+    hunt,
+    /const onKeyUp = \(event: KeyboardEvent\) => \{\s*const actions = matchingControlActions/,
+  );
   assert.match(hunt, /onKeyDown: \(event: ReactKeyboardEvent<HTMLButtonElement>\)/);
   assert.match(hunt, /onKeyUp: \(event: ReactKeyboardEvent<HTMLButtonElement>\)/);
   assert.match(hunt, /event\.key !== " " && event\.key !== "Enter"/);
@@ -113,7 +124,10 @@ test("hunt mission keeps keyboard controls, live updates and modal focus accessi
   assert.match(hunt, /previouslyFocusedRef\.current/);
   assert.match(hunt, /role="group" aria-label="Déplacement tactile"/);
   assert.match(hunt, /role="group" aria-label="Actions tactiles"/);
-  assert.match(client, /data-high-contrast=\{save\.settings\.highContrastVision\}/);
+  assert.match(
+    client,
+    /data-high-contrast=\{\s*screen === "mission"\s*\? activeMissionSave\.settings\.highContrastVision\s*: save\.settings\.highContrastVision\s*\}/,
+  );
   assert.match(client, /<h2 id="briefing-title">/);
   assert.doesNotMatch(client, /<h1 id="briefing-title">/);
   assert.match(css, /\.hunt-screen:focus-visible,\s*\.hunt-canvas:focus-visible/);

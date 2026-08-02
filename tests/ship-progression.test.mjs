@@ -498,7 +498,7 @@ test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", a
     assert.match(source, new RegExp(`id: "${roomId}"`));
   }
   assert.match(source, /navigator\.getGamepads/);
-  assert.match(source, /event\.key === "ArrowLeft"/);
+  assert.match(source, /matchingControlActions\([\s\S]*"shipHub"/);
   assert.match(source, /onPointerDown=/);
   assert.match(source, /onOpenCustomization/);
   assert.match(source, /<TrainingDrill/);
@@ -506,12 +506,12 @@ test("ShipHub declares seven rooms and keyboard, gamepad, and touch controls", a
   assert.doesNotMatch(source, /save\.statistics\.totalScans \* 2/);
   assert.match(trainingSource, /role="dialog"/);
   assert.match(trainingSource, /aria-label="Commandes tactiles"/);
-  assert.match(trainingSource, /event\.key === "Escape"/);
+  assert.match(trainingSource, /actions\.includes\("training\.cancel"\)/);
   assert.match(clientSource, /<ShipHub/);
-  assert.match(clientSource, /inventory=\{save\.inventory\}/);
+  assert.match(clientSource, /inventory=\{activeMissionSave\.inventory\}/);
   assert.match(
     clientSource,
-    /highContrastVision=\{save\.settings\.highContrastVision\}/,
+    /highContrastVision=\{\s*activeMissionSave\.settings\.highContrastVision\s*\}/,
   );
   assert.match(clientSource, /onSound=\{playGameplaySound\}/);
   assert.match(clientSource, /audio\.startAmbience\(ambience/);
