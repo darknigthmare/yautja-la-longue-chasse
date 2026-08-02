@@ -23,7 +23,23 @@ test("GameClient validates and exposes a compatible interrupted hunt", () => {
 });
 
 test("GameClient starts a fresh monotonic sidecar session", () => {
-  assert.match(source, /const launchMission = useCallback[\s\S]*?clearActiveHuntSave\(\)[\s\S]*?runId: createHuntRunId\(\)[\s\S]*?sequence: 0/);
+  const launchBlock = source.match(
+    /const launchMission = useCallback[\s\S]*?\n  }, \[playSound, save, selectedMission\]\);/,
+  )?.[0];
+  assert.ok(launchBlock);
+  assert.match(
+    launchBlock,
+    /const runtimeWrite = writeSaveWithStatus\(normalizeSave\(save\)\)/,
+  );
+  assert.match(launchBlock, /const runtimeSave = runtimeWrite\.save/);
+  assert.match(launchBlock, /setSave\(runtimeSave\)/);
+  assert.match(launchBlock, /setSaveFailure\(runtimeWrite\.failure\)/);
+  assert.match(
+    launchBlock,
+    /activeHuntSessionRef\.current = runtimeWrite\.persisted\s*\?\s*\{/,
+  );
+  assert.match(launchBlock, /clearActiveHuntSave\(\)/);
+  assert.match(launchBlock, /runId: createHuntRunId\(\)[\s\S]*?sequence: 0/);
   assert.match(source, /const sequence = session\.sequence \+ 1/);
   assert.match(source, /writeActiveHuntSave\(\{[\s\S]*?snapshot: payload\.snapshot,[\s\S]*?retryCheckpoint: payload\.retryCheckpoint/);
   assert.match(source, /elapsedSeconds: Math\.max/);

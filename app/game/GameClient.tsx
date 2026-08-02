@@ -1067,24 +1067,33 @@ export default function GameClient() {
 
   const launchMission = useCallback(() => {
     if (!selectedMission) return;
-    const runtimeSave = normalizeSave(save);
+    // A sidecar can only survive a reload when its owning campaign snapshot is
+    // durable too. Fresh profiles have not necessarily written the main save
+    // yet, so establish that owner before the first hunt autosave.
+    const runtimeWrite = writeSaveWithStatus(normalizeSave(save));
+    const runtimeSave = runtimeWrite.save;
     const now = new Date().toISOString();
     const clearResult = clearActiveHuntSave();
+    setSave(runtimeSave);
+    setSaveFailure(runtimeWrite.failure);
     setResumableHunt(null);
     setHuntResumePayload(null);
     setHuntRuntimeSave(runtimeSave);
-    activeHuntWriteFailureRef.current = clearResult.failure;
-    activeHuntSessionRef.current = {
-      ownerSaveCreatedAt: runtimeSave.createdAt,
-      missionId: selectedMission.id,
-      difficultyId: runtimeSave.settings.difficultyId,
-      encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts,
-      runId: createHuntRunId(),
-      sequence: 0,
-      startedAt: now,
-      configuration: huntConfiguration(runtimeSave),
-      lastPersisted: null,
-    };
+    activeHuntWriteFailureRef.current =
+      runtimeWrite.failure ?? clearResult.failure;
+    activeHuntSessionRef.current = runtimeWrite.persisted
+      ? {
+          ownerSaveCreatedAt: runtimeSave.createdAt,
+          missionId: selectedMission.id,
+          difficultyId: runtimeSave.settings.difficultyId,
+          encounterRun: runtimeSave.missionProgress[selectedMission.id].attempts,
+          runId: createHuntRunId(),
+          sequence: 0,
+          startedAt: now,
+          configuration: huntConfiguration(runtimeSave),
+          lastPersisted: null,
+        }
+      : null;
     void playSound("select");
     setScreen("mission");
   }, [playSound, save, selectedMission]);

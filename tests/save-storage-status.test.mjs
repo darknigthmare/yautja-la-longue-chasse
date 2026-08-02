@@ -25,7 +25,7 @@ await build({
   },
 });
 
-const { defaultSave, writeSave, writeSaveWithStatus } = await import(
+const { defaultSave, loadSave, writeSave, writeSaveWithStatus } = await import(
   pathToFileURL(join(outputDirectory, "save.mjs")).href
 );
 
@@ -47,6 +47,28 @@ test("save writes report durable persistence", () => {
   assert.equal(result.persisted, true);
   assert.equal(result.failure, null);
   assert.deepEqual(JSON.parse(values.get("test-save")), result.save);
+});
+
+test("a fresh hunt owner stays stable after its bootstrap write and reload", () => {
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+    removeItem: (key) => values.delete(key),
+  };
+  const fresh = defaultSave();
+
+  assert.equal(storage.getItem("fresh-hunt-owner"), null);
+  const ownerWrite = writeSaveWithStatus(
+    fresh,
+    storage,
+    "fresh-hunt-owner",
+  );
+  const reloaded = loadSave(storage, "fresh-hunt-owner");
+
+  assert.equal(ownerWrite.persisted, true);
+  assert.equal(reloaded.createdAt, ownerWrite.save.createdAt);
+  assert.deepEqual(reloaded.missionProgress, ownerWrite.save.missionProgress);
 });
 
 test("save writes distinguish unavailable storage and quota failures", () => {
