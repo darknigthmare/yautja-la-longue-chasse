@@ -64,10 +64,11 @@ test("V6 environment masters are large and deployed as gameplay backgrounds", as
 });
 
 test("V6 runtime wires catalogue, physical deck, hierarchy, sectors and workshop", async () => {
-  const [client, canvas, deck, catalogue, css] = await Promise.all([
+  const [client, canvas, deck, scene, catalogue, css] = await Promise.all([
     readFile("app/game/GameClient.tsx", "utf8"),
     readFile("app/game/HuntCanvas.tsx", "utf8"),
     readFile("app/game/PhysicalShipDeck.tsx", "utf8"),
+    readFile("app/game/ShipLevelScene.tsx", "utf8"),
     readFile("app/game/CatalogueHunterBrowser.tsx", "utf8"),
     readFile("app/globals.css", "utf8"),
   ]);
@@ -94,7 +95,9 @@ test("V6 runtime wires catalogue, physical deck, hierarchy, sectors and workshop
   assert.match(canvas, /"mid-depth": \{ y: 430, height: 206 \}/);
   assert.match(canvas, /understory: \{ y: 636, height: 305 \}/);
   assert.match(canvas, /worldScreenId/);
-  assert.match(deck, /SHIP_INTERIOR_KIT\.wall/);
+  assert.match(deck, /ShipLevelScene/);
+  assert.match(scene, /SHIP_INTERIOR_KIT\.wall/);
+  assert.match(scene, /SHIP_LEVEL_ART\.wallObservatory/);
   assert.match(catalogue, /referenceUrlsForCatalogueEntry/);
   assert.match(catalogue, /catalogueReferenceUrlsForEntry\(entry\)/);
   assert.match(css, /\.catalogueHunterBrowser__sources/);

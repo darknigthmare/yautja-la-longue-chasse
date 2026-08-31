@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "generator": {
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "modelNote": "The builtin tool did not return an exact model identifier."
+  },
+  "conversion": {
+    "tool": "sharp",
+    "format": "webp",
+    "quality": 86,
+    "alphaQuality": 100,
+    "effort": 6,
+    "resized": false,
+    "cropped": false
+  },
+  "note": "Source PNGs, transparent masters, and runtime encodings are separate records. Technical alpha preparation, when performed, is documented in alpha-preparation.json.",
+  "assets": [
+    {
+      "id": "wall-sanctum",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/wall-sanctum.png",
+        "sha256": "a3d2c13ff201724b33ab38072fa2d9af00c4092604809ca6ba4bdf5113d36f64"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/wall-sanctum.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2921940,
+        "sha256": "a3d2c13ff201724b33ab38072fa2d9af00c4092604809ca6ba4bdf5113d36f64"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/wall-sanctum.webp",
+        "url": "/game/ship-interior/v21/wall-sanctum.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 304676,
+        "sha256": "46e0b0fbcb4f04b4c0db7592d96c232ddbc2f93f4beb81c3d15b3a828bf73e25",
+        "hasAlpha": false
+      },
+      "alpha": null
+    },
+    {
+      "id": "wall-machinery",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/wall-machinery.png",
+        "sha256": "7ff1e0790be81de9036379b92526bc51ffd236b8dad7735b07f5047ad7716a14"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/wall-machinery.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 3097034,
+        "sha256": "7ff1e0790be81de9036379b92526bc51ffd236b8dad7735b07f5047ad7716a14"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/wall-machinery.webp",
+        "url": "/game/ship-interior/v21/wall-machinery.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 326832,
+        "sha256": "3cd834ad4097567f202f8610253531e8162669447691e30c459b61a8a9d4727f",
+        "hasAlpha": false
+      },
+      "alpha": null
+    },
+    {
+      "id": "wall-observatory",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/wall-observatory.png",
+        "sha256": "5fd5c1f519a41ec77f55a6fe6eb0a1f71df5c92368f47791a921c450688d1848"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/wall-observatory.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2308107,
+        "sha256": "5fd5c1f519a41ec77f55a6fe6eb0a1f71df5c92368f47791a921c450688d1848"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/wall-observatory.webp",
+        "url": "/game/ship-interior/v21/wall-observatory.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 156540,
+        "sha256": "77f00d9a01f4a829eb64efb2721bc8b215ba05f09ad178d8e5ad9986ccd6ff87",
+        "hasAlpha": false
+      },
+      "alpha": null
+    },
+    {
+      "id": "door-frame",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/door-frame.generated.png",
+        "sha256": "c405cf43cefabb7d8a5eafcb33dd89284e17f4240ddb6cb43a49dc6bdcdb1ad0"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/door-frame.png",
+        "width": 1023,
+        "height": 1537,
+        "bytes": 1899332,
+        "sha256": "fd2eeb755f106d60e137b378b4042c265d500ad246e18b4cb532794dbb0fdacc"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/door-frame.webp",
+        "url": "/game/ship-interior/v21/door-frame.webp",
+        "width": 1023,
+        "height": 1537,
+        "bytes": 72468,
+        "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1113673,
+        "opaque": 458678,
+        "bounds": {
+          "x": 97,
+          "y": 41,
+          "width": 827,
+          "height": 1450
+        }
+      }
+    },
+    {
+      "id": "door-leaf",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/door-leaf.generated.png",
+        "sha256": "345d0b2768dc8dccf414c42cb467bda7cebf77842f7b532561d033aefee85221"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/door-leaf.png",
+        "width": 941,
+        "height": 1672,
+        "bytes": 2464808,
+        "sha256": "4c0d3de92794e8a7ff7c22aacd461fd5db2c7c48f70bca616b3e0cbe7031c3e9"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/door-leaf.webp",
+        "url": "/game/ship-interior/v21/door-leaf.webp",
+        "width": 941,
+        "height": 1672,
+        "bytes": 122512,
+        "sha256": "a8aadccce21c3109be1b306a02fa19a6fb2216313e51aa9521c662e22c80e0b1",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 710678,
+        "opaque": 862674,
+        "bounds": {
+          "x": 201,
+          "y": 30,
+          "width": 537,
+          "height": 1616
+        }
+      }
+    },
+    {
+      "id": "foreground-rib",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/foreground-rib.generated.png",
+        "sha256": "08560219a91c2c8a2d3775dcacfbc5d74d5ee8b509ba11caf6f2c089909ac8a1"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/foreground-rib.png",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 1589107,
+        "sha256": "88fa2d5782ada4f307c18afd33403aa058ecef25d42ce1bc5831563f7f313888"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/foreground-rib.webp",
+        "url": "/game/ship-interior/v21/foreground-rib.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 63984,
+        "sha256": "c53d7c48ed6bd099d61a3353e195a9c0e5d9f6dfc1f9df023cfbc90dd27fb7d0",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1276769,
+        "opaque": 296095,
+        "bounds": {
+          "x": 326,
+          "y": 38,
+          "width": 509,
+          "height": 1468
+        }
+      }
+    },
+    {
+      "id": "console-navigation",
+      "generatedSource": {
+        "path": "art-source/v21/ship-interior/console-navigation.generated.png",
+        "sha256": "d7afbf582b8e2567f69b4e27ebd80004db58a740d0a47b9d513527b52ae736d7"
+      },
+      "master": {
+        "path": "art-source/v21/ship-interior/console-navigation.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1927954,
+        "sha256": "3fcd788d484daaf9c39e3f40c2cb948110e4a22e2618872c43e4f6f6da314be7"
+      },
+      "runtime": {
+        "path": "public/game/ship-interior/v21/console-navigation.webp",
+        "url": "/game/ship-interior/v21/console-navigation.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 126112,
+        "sha256": "64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a",
+        "hasAlpha": true
+      },
+      "alpha": {
+        "transparent": 1030795,
+        "opaque": 542069,
+        "bounds": {
+          "x": 103,
+          "y": 282,
+          "width": 1316,
+          "height": 629
+        }
+      }
+    }
+  ]
+}

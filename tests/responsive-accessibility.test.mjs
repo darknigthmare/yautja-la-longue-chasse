@@ -56,28 +56,22 @@ test("trophy workshop traps and restores focus with a narrow-screen layout", asy
   assert.match(css, /@media \(max-width: 440px\)[\s\S]*\.trophy-workshop-work-area[\s\S]*grid-template-columns: minmax\(0, 1fr\)/);
 });
 
-test("physical deck exposes semantic shortcuts and a mobile tracking viewport", async () => {
-  const [source, css] = await Promise.all([
-    read("app/game/PhysicalShipDeck.tsx"),
-    read("app/globals.css"),
+test("physical deck exposes local stations, semantic shortcuts and a bounded camera viewport", async () => {
+  const [source, scene, css] = await Promise.all([
+    read("app/game/PhysicalShipDeck.tsx"), read("app/game/ShipLevelScene.tsx"), read("app/game/ship-level.css"),
   ]);
-
   assert.match(source, /role="region"/);
-  assert.match(source, /role="group"/);
   assert.match(source, /physical-ship-deck__station-shortcuts/);
   assert.match(source, /event\.defaultPrevented/);
-  assert.match(source, /event\.stopPropagation\(\)/);
-  assert.match(source, /viewport\.scrollLeft = clamp/);
-  // Idle stability and suspended input are covered by physical-ship-motion.test.mjs.
+  assert.match(scene, /event\.stopPropagation\(\)/);
+  assert.match(source, /getShipCamera\(player, cameraSize\)/);
+  assert.doesNotMatch(source, /viewport\.scrollLeft/);
   assert.match(source, /inert=\{suspended\}/);
   assert.match(source, /touchControls: \{[\s\S]*flexWrap: "wrap"/);
-  assert.match(css, /\.physical-ship-deck__map[\s\S]*min-width: 70rem !important/);
-  assert.match(css, /\.physical-ship-deck__station-shortcuts[\s\S]*repeat\(6, minmax\(0, 1fr\)\)/);
-  assert.match(css, /@media \(max-width: 440px\)[\s\S]*\.physical-ship-deck__touch-controls[\s\S]*justify-content: center !important/);
-  assert.match(
-    css,
-    /\.physical-medbay-entry__back[\s\S]*position: absolute[\s\S]*z-index: 13[\s\S]*top: 88px/,
-  );
+  assert.match(scene, /tabIndex=\{suspended \? -1 : 0\}/);
+  assert.match(css, /ship-level-scene[\s\S]*min-width: 0 !important/);
+  assert.match(css, /@media \(pointer: coarse\)/);
+  assert.match(source, /sans déplacement du chasseur/);
 });
 
 test("hunt mission keeps keyboard controls, live updates and modal focus accessible", async () => {

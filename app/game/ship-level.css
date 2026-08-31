@@ -1,0 +1,48 @@
+/* V21 level viewport: the camera frames world units, never a horizontally
+   scrolling overview. Existing station overlays keep the deck mounted. */
+.ship-level-deck { outline-offset: 3px; height: calc(100dvh - 146px); min-height: 370px; grid-template-rows: auto minmax(220px, 1fr) auto auto; gap: .4rem !important; padding: .5rem !important; }
+.ship-level-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; }
+.ship-level-map-toggle { border: 1px solid #617969; background: #12221b; color: #d0dfc6; min-height: 2.55rem; padding: .55rem .8rem; font-size: .7rem; letter-spacing: .08em; }
+.physical-ship-deck .ship-level-viewport { position: relative; width: 100%; height: 100%; min-width: 0; overflow: hidden; background: #020505; border: 1px solid #40584b; isolation: isolate; }
+.physical-ship-deck .ship-level-viewport .ship-level-scene { display: block; width: 100%; height: 100%; min-width: 0 !important; min-height: 0; touch-action: none; }
+.ship-level-location { position: absolute; top: .8rem; left: .9rem; display: grid; gap: .22rem; max-width: 65%; padding: .5rem .7rem; border-left: 2px solid #92bda0; color: #ecedce; background: #07130ec4; pointer-events: none; text-shadow: 0 1px 3px #000; }
+.ship-level-location span { font-size: .6rem; letter-spacing: .14em; color: #9bb49f; }
+.ship-level-location strong { font-size: .84rem; font-weight: 600; }
+.ship-level-waypoint { position: absolute; bottom: .75rem; left: .85rem; right: .85rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; width: fit-content; max-width: calc(100% - 1.7rem); padding: .35rem .45rem .35rem .7rem; border: 1px solid #756746; color: #f2d09d; background: #191b11e8; font-size: .7rem; }
+.ship-level-waypoint button { width: 1.8rem; height: 1.8rem; border: 1px solid #756746; color: #efd8b0; background: #10150f; font-size: 1.1rem; }
+.ship-level-minimap { position: absolute; top: .65rem; right: .65rem; width: min(22rem, 55%); border: 1px solid #6e8266; background: #06100aef; box-shadow: 0 8px 22px #0008; padding: .45rem; }
+.physical-ship-deck .ship-level-minimap svg { display: block; width: 100%; min-width: 0 !important; height: auto; }
+.ship-level-minimap p { margin: .25rem .1rem 0; color: #acbc9f; font-size: .6rem; line-height: 1.4; }
+.ship-level-readout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .65rem; padding: .65rem .85rem; min-height: 3.3rem; border-left: 3px solid var(--deck-accent); background: #112219; }
+.ship-level-readout > div { display: grid; gap: .18rem; flex: 1 1 16rem; }
+.ship-level-readout strong { color: #e1e7cd; font-size: .84rem; }
+.ship-level-readout span { color: #afbdad; font-size: .73rem; line-height: 1.4; }
+.ship-level-readout .ship-level-door-hint { color: #8ea58e; font-size: .65rem; }
+.ship-level-help summary { width: fit-content; cursor: pointer; padding: .1rem 0; }
+.ship-level-help p { margin: .25rem 0; }
+.ship-level-help { margin: 0; color: #93a793; font-size: .68rem; line-height: 1.55; }
+.ship-level-accessibility { border: 1px solid #304e3d; padding: .55rem .7rem; color: #b7cbb9; font-size: .75rem; }
+.ship-level-accessibility summary { cursor: pointer; }
+.ship-level-accessibility nav { margin-top: .6rem; }
+.ship-level-station, .ship-level-map-room { cursor: pointer; outline: none; }
+.ship-level-station:focus-visible > rect:first-child { stroke: #fff2a0; stroke-width: 3px; stroke-dasharray: 6 4; }
+.ship-level-map-room:focus-visible > rect { stroke: #fff2a0; stroke-width: 24px; }
+.ship-level-station[aria-disabled="true"], .ship-level-map-room[aria-disabled="true"] { cursor: default; }
+@media (max-width: 700px) {
+  .ship-level-deck { height: calc(100dvh - 156px); min-height: 430px; }
+  .ship-level-location { top: .5rem; left: .5rem; max-width: 58%; padding: .35rem .5rem; }
+  .ship-level-location strong { font-size: .7rem; }
+  .ship-level-minimap { width: min(21rem, calc(100% - 1rem)); top: .5rem; right: .5rem; }
+  .ship-level-map-toggle { font-size: .62rem; padding: .45rem .6rem; }
+  .ship-level-readout { padding: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ship-level-deck *, .ship-level-deck *::before, .ship-level-deck *::after { scroll-behavior: auto; }
+}
+
+.physical-ship-deck .physical-ship-deck__touch-controls { display: none !important; position: absolute; bottom: .65rem; left: .65rem; right: .65rem; pointer-events: none; gap: .3rem; }
+.physical-ship-deck .physical-ship-deck__touch-controls button { pointer-events: auto; opacity: .86; }
+@media (pointer: coarse) {
+  .physical-ship-deck .physical-ship-deck__touch-controls { display: flex !important; }
+  .ship-level-waypoint { bottom: 7rem; }
+}

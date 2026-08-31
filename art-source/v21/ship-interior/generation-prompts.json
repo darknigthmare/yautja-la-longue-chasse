@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "generator": {
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "model": null,
+    "modelNote": "The builtin tool did not return an exact model identifier."
+  },
+  "assets": [
+    {
+      "id": "wall-sanctum",
+      "prompt": "Use case: stylized-concept. Production bitmap asset for an original fan-made Yautja hunter spaceship in a high quality side-scrolling 2D game. Strict front orthographic elevation, camera perfectly perpendicular to the back wall, all verticals parallel. Restrained cinematic hand-painted realism, blackened titanium, aged dark bronze, ancient alien industrial ribs and angular ritual engraving, worn edge highlights, controlled teal or amber practical illumination. Keep dark surfaces legible, not crushed black. NO text, letters, numbers, logo, watermark, characters, weapons or trophies. This is ONE independent modular asset, NOT a mockup or an atlas. Create an opaque landscape 1536x1024 BACK WALL panel for the trophy sanctuary and clan archive. It fills the canvas edge to edge. Four shallow EMPTY vertical display recesses integrated into aged bronze and basalt-black wall panels, evenly spaced, warm amber downlights, a narrow decorative frieze at the top, darker empty lower band. The recesses contain absolutely NO trophies, skulls, bones, masks, shelves or props: individual trophy sprites will be added in code. Rich restrained ritual geometry, some uneven patina. Absolutely no floor, ceiling plane, doors, perspective vanishing point, room side walls or wide-angle framing. All decorative components remain in the wall plane. Broad low-contrast fields behind interactable objects. A usable background texture module, not a finished room painting.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-cff518da-12cb-4fa0-856e-bfa35da910ec.png",
+      "source": "art-source/v21/ship-interior/wall-sanctum.png",
+      "alphaRequired": false
+    },
+    {
+      "id": "wall-machinery",
+      "prompt": "Use case: stylized-concept. Production bitmap asset for an original fan-made Yautja hunter spaceship in a high quality side-scrolling 2D game. Strict front orthographic elevation, camera perfectly perpendicular to the back wall, all verticals parallel. Restrained cinematic hand-painted realism, blackened titanium, aged dark bronze, ancient alien industrial ribs and angular ritual engraving, worn edge highlights, controlled teal or amber practical illumination. Keep dark surfaces legible, not crushed black. NO text, letters, numbers, logo, watermark, characters, weapons or trophies. This is ONE independent modular asset, NOT a mockup or an atlas. Create an opaque landscape 1536x1024 BACK WALL panel for the armory, forge and ship engineering rooms. Fill canvas edge to edge with segmented dark gunmetal plates, deep ribbed conduit channels, bronze braces, a few narrow amber maintenance light strips, small recessed mechanical vents. NO holograms and no large central object. Clear front-on wall plane. Include variation between broad quiet wall surfaces and compact detailed service panels so separately placed equipment reads clearly. No weapon racks, no guns, no cabinet props, no floor or ceiling plane, no doors, no perspective vanishing point and no room side walls. This must be an architectural background module ready for modular placement behind independently rendered platforms and props.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-eabe187f-dde8-4c9e-af7c-7f1bc8e45b6d.png",
+      "source": "art-source/v21/ship-interior/wall-machinery.png",
+      "alphaRequired": false
+    },
+    {
+      "id": "wall-observatory",
+      "prompt": "Use case: stylized-concept. Production bitmap asset for an original fan-made Yautja hunter spaceship in a high quality side-scrolling 2D game. Strict front orthographic elevation, camera perfectly perpendicular to the back wall, all verticals parallel. Restrained cinematic hand-painted realism, blackened titanium, aged dark bronze, ancient alien industrial ribs and angular ritual engraving, worn edge highlights, controlled teal or amber practical illumination. Keep dark surfaces legible, not crushed black. NO text, letters, numbers, logo, watermark, characters, weapons or trophies. This is ONE independent modular asset, NOT a mockup or an atlas. Create an opaque landscape 1536x1024 BACK WALL module for the navigation observatory of a hunter spaceship. A broad hexagonal observation window occupies the middle upper two thirds, with thick carved black-bronze structural borders embedded in the same flat wall plane. Through the window: a quiet deep-space starfield and a subtle distant blue-green planet limb, tiny stars, no spacecraft. Lower third is subdued opaque armored panels, empty for a separate console. Sparse cold cyan practical lighting and bronze weathering. Perfectly frontal elevation, no perspective floor, no floor surface, no consoles, no doors, no UI, no floating hologram, no side walls. Make a single reusable room back-wall image, not a whole scene or mockup.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-a1691006-ce63-4704-a514-b2b63ec1bbcb.png",
+      "source": "art-source/v21/ship-interior/wall-observatory.png",
+      "alphaRequired": false
+    },
+    {
+      "id": "door-frame",
+      "prompt": "Use case: stylized-concept. One production sprite for an original fan-made Yautja hunter spaceship side-scrolling 2D game. Strict front orthographic elevation, perpendicular camera, parallel verticals, NO vanishing point or perspective floor. Blackened titanium, dark weathered bronze, restrained amber/teal practical lights, ancient alien angular industrial architecture. Detailed hand-painted realistic bitmap, crisp readable silhouette. GENUINELY TRANSPARENT background with alpha, transparent margins and holes, NOT a checkerboard or colored background painted into the image. Single isolated asset, NOT an atlas, NO text, labels, logo, watermark, characters, trophies, weapons, UI or scene. Asset: independent tall narrow motorized bulkhead DOOR FRAME. Portrait canvas 1024x1536. A U-shaped frame with two vertical armored jambs and a compact beveled lintel, NO door panel, NO floor threshold, no surrounding wall. The central opening and all surrounding space must be fully transparent. Overall frame approximately 680px wide x1320px tall, centered with clear margins. Jambs each about95px thick, slim recessed guide rails and small amber safety lights; top clipped corners, engineered rather than ornamental. This frame stays still while a DIFFERENT door leaf sprite slides up behind it. Keep lower ends clean and aligned to a single baseline.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-bd91e1b7-e61c-4948-90c6-ce5e8dd816f0.png",
+      "source": "art-source/v21/ship-interior/door-frame.generated.png",
+      "alphaRequired": true
+    },
+    {
+      "id": "door-leaf",
+      "prompt": "Use case: stylized-concept. One production sprite for an original fan-made Yautja hunter spaceship side-scrolling 2D game. Strict front orthographic elevation, perpendicular camera, parallel verticals, NO vanishing point or perspective floor. Blackened titanium, dark weathered bronze, restrained amber/teal practical lights, ancient alien angular industrial architecture. Detailed hand-painted realistic bitmap, crisp readable silhouette. GENUINELY TRANSPARENT background with alpha, transparent margins and holes, NOT a checkerboard or colored background painted into the image. Single isolated asset, NOT an atlas, NO text, labels, logo, watermark, characters, trophies, weapons, UI or scene. Asset: independent vertically sliding CLOSED DOOR LEAF, with NO frame or rails. Portrait canvas1024x1536. One tall narrow armored shutter, approximately480px wide x1250px high, centered with transparent margin. Straight parallel sides, slightly clipped top corners, 3 heavy segmented black-metal plates interlocked with a bronze central rib, a narrow cyan status slit near the upper third. No handles protruding outside the silhouette. Flat frontal metal panel, a clean solid silhouette and actual alpha outside. This one panel will be translated vertically in code inside an independent bulkhead frame.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-bbfd676b-b8e5-45d9-be66-1e5b6b99083c.png",
+      "source": "art-source/v21/ship-interior/door-leaf.generated.png",
+      "alphaRequired": true
+    },
+    {
+      "id": "foreground-rib",
+      "prompt": "Use case: stylized-concept. One production sprite for an original fan-made Yautja hunter spaceship side-scrolling 2D game. Strict front orthographic elevation, perpendicular camera, parallel verticals, NO vanishing point or perspective floor. Blackened titanium, dark weathered bronze, restrained amber/teal practical lights, ancient alien angular industrial architecture. Detailed hand-painted realistic bitmap, crisp readable silhouette. GENUINELY TRANSPARENT background with alpha, transparent margins and holes, NOT a checkerboard or colored background painted into the image. Single isolated asset, NOT an atlas, NO text, labels, logo, watermark, characters, trophies, weapons, UI or scene. Asset: one isolated FOREGROUND STRUCTURAL RIB of the spaceship, tall and slender, portrait1024x1536. The rib occupies the central third of the canvas, narrow foot to a thick beveled upper brace which hooks slightly to the right. Heavy curved but angular black-bronze architecture with twin protected conduits following its contour, scratched edge highlights and a tiny amber maintenance light. It is meant to cross the extreme edge of the game camera as a near-plane occluder; keep most of the canvas transparent. No horizontal floor, wall, background shadow, other columns or scene.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-8e510463-566d-4f69-b8c1-9ee451cdd4c4.png",
+      "source": "art-source/v21/ship-interior/foreground-rib.generated.png",
+      "alphaRequired": true
+    },
+    {
+      "id": "console-navigation",
+      "prompt": "Use case: stylized-concept. One production sprite for an original fan-made Yautja hunter spaceship side-scrolling 2D game. Strict front orthographic elevation, perpendicular camera, parallel verticals, NO vanishing point or perspective floor. Blackened titanium, dark weathered bronze, restrained amber/teal practical lights, ancient alien angular industrial architecture. Detailed hand-painted realistic bitmap, crisp readable silhouette. GENUINELY TRANSPARENT background with alpha, transparent margins and holes, NOT a checkerboard or colored background painted into the image. Single isolated asset, NOT an atlas, NO text, labels, logo, watermark, characters, trophies, weapons, UI or scene. Asset: a standalone waist-high NAVIGATION CONSOLE prop on transparent background, landscape1536x1024. One low wide angular black-and-bronze pedestal with a control surface and two slim cyan illuminated strips, clearly designed for an alien hunter. Full object visible, centered in lower-middle canvas with generous transparent margin. Dark angular base with a broad trapezoid console head, a few recessed tactile mechanical controls, no readable screen or hologram. A separate holographic display will be rendered in game above it. Front-facing orthographic silhouette, no floor, no backdrop, no character, no map or icons.",
+      "generatedSource": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-0be7416e-0a8c-4d8d-ac5e-27f276e3fce6.png",
+      "source": "art-source/v21/ship-interior/console-navigation.generated.png",
+      "alphaRequired": true
+    }
+  ]
+}

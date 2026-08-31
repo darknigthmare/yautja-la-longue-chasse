@@ -496,7 +496,7 @@ test("physical deck exposes eight traversable stations and three input families"
     resolve(projectRoot, "app/game/PhysicalShipDeck.tsx"),
     "utf8",
   );
-  const { PHYSICAL_SHIP_STATIONS } = await import("../app/game/systems/physicalShipMotion.ts");
+  const { ship: { PHYSICAL_SHIP_STATIONS } } = await import("./helpers/ship-level-runtime.mjs");
   const stationIds = [
     "galaxy-map",
     "wall-armory",

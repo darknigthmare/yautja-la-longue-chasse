@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "status": "prepared",
+  "authorization": "Explicit user reply Oui to local technical extraction and publication",
+  "tool": "scripts/prepare-ship-interior-alpha-v21.mjs + sharp",
+  "method": "Four-connected border flood fill of bright neutral background (minimum RGB 155, maximum channel spread 36); replace background alpha with zero, retain all other RGB pixels and opaque alpha. No repaint, resizing, crop, erode or silhouette substitution.",
+  "threshold": {
+    "minimumChannel": 155,
+    "maximumChannelSpread": 36
+  },
+  "sourcesPreserved": true,
+  "runtimeExportsCreated": true,
+  "assets": [
+    {
+      "id": "door-frame",
+      "source": "art-source/v21/ship-interior/door-frame.generated.png",
+      "sourceSha256": "c405cf43cefabb7d8a5eafcb33dd89284e17f4240ddb6cb43a49dc6bdcdb1ad0",
+      "master": "art-source/v21/ship-interior/door-frame.png",
+      "width": 1023,
+      "height": 1537,
+      "transparentPixels": 1113673,
+      "opaquePixels": 458678,
+      "alphaBounds": {
+        "x": 97,
+        "y": 41,
+        "width": 827,
+        "height": 1450
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "door-leaf",
+      "source": "art-source/v21/ship-interior/door-leaf.generated.png",
+      "sourceSha256": "345d0b2768dc8dccf414c42cb467bda7cebf77842f7b532561d033aefee85221",
+      "master": "art-source/v21/ship-interior/door-leaf.png",
+      "width": 941,
+      "height": 1672,
+      "transparentPixels": 710678,
+      "opaquePixels": 862674,
+      "alphaBounds": {
+        "x": 201,
+        "y": 30,
+        "width": 537,
+        "height": 1616
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "foreground-rib",
+      "source": "art-source/v21/ship-interior/foreground-rib.generated.png",
+      "sourceSha256": "08560219a91c2c8a2d3775dcacfbc5d74d5ee8b509ba11caf6f2c089909ac8a1",
+      "master": "art-source/v21/ship-interior/foreground-rib.png",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 1276769,
+      "opaquePixels": 296095,
+      "alphaBounds": {
+        "x": 326,
+        "y": 38,
+        "width": 509,
+        "height": 1468
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "console-navigation",
+      "source": "art-source/v21/ship-interior/console-navigation.generated.png",
+      "sourceSha256": "d7afbf582b8e2567f69b4e27ebd80004db58a740d0a47b9d513527b52ae736d7",
+      "master": "art-source/v21/ship-interior/console-navigation.png",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 1030795,
+      "opaquePixels": 542069,
+      "alphaBounds": {
+        "x": 103,
+        "y": 282,
+        "width": 1316,
+        "height": 629
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true
+    }
+  ],
+  "visualInspection": "Four independent cutouts inspected on a dark green background. No checkerboard or visible white matte; frame opening fully empty. Full level inspection follows renderer anchoring."
+}

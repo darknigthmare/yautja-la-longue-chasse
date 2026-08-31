@@ -4836,10 +4836,6 @@ select:focus-visible,
     bottom: 48px;
     left: 10px;
   }
-  .physical-ship-deck__map {
-    min-width: 70rem !important;
-    min-height: 27rem !important;
-  }
   .physical-ship-deck__station-shortcuts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -6024,7 +6020,12 @@ select:focus-visible,
   min-height: 100svh;
   background: radial-gradient(ellipse at 50% 0%, #18231e 0%, #020706 70%);
 }
-.physical-deck-screen > .screen-safe { max-width: 1600px; }
+.physical-deck-screen > .screen-safe {
+  width: 100%;
+  max-width: 1920px;
+  min-height: 100svh;
+  padding: 80px 12px 12px;
+}
 .physical-deck-toolbar,
 .ship-station-toolbar {
   display: flex;
@@ -6032,8 +6033,8 @@ select:focus-visible,
   align-items: center;
   gap: 8px;
 }
-.physical-deck-toolbar { margin-bottom: 16px; }
-.physical-deck-toolbar .ghost-button { min-height: 44px; font-size: .72rem; }
+.physical-deck-toolbar { margin-bottom: 8px; gap: 6px; }
+.physical-deck-toolbar .ghost-button { min-height: 34px; padding: 7px 10px; font-size: .68rem; }
 .ship-station-layer {
   position: fixed;
   z-index: 40;
@@ -6085,6 +6086,8 @@ select:focus-visible,
   animation: none;
   transform: none;
 }
-@media (max-width: 900px) {
-  .physical-ship-deck__viewport svg { min-width: 70rem !important; }
+
+@media (max-width: 560px) {
+  .physical-deck-screen > .screen-safe { padding: 68px 6px 8px; }
+  .physical-deck-toolbar .ghost-button { min-height: 36px; padding: 6px; font-size: .6rem; }
 }

@@ -80,3 +80,16 @@ export type ShipInteriorWallState =
   (typeof SHIP_INTERIOR_KIT.wall.states)[number];
 export type ShipInteriorDoorState =
   (typeof SHIP_INTERIOR_KIT.door.states)[number];
+
+/** Independent V21 bitmaps. The level layout owns collisions and door apertures.
+ * Room panels contain no trophies; objects can be moved without repainting walls.
+ */
+export const SHIP_LEVEL_ART = {
+  wallSanctum: { src: "/game/ship-interior/v21/wall-sanctum.webp", sourceWidth: 1536, sourceHeight: 1024, width: 720, height: 480, pivot: { x: 0, y: 480 }, layer: "background" },
+  wallMachinery: { src: "/game/ship-interior/v21/wall-machinery.webp", sourceWidth: 1536, sourceHeight: 1024, width: 720, height: 480, pivot: { x: 0, y: 480 }, layer: "background" },
+  wallObservatory: { src: "/game/ship-interior/v21/wall-observatory.webp", sourceWidth: 1536, sourceHeight: 1024, width: 720, height: 480, pivot: { x: 0, y: 480 }, layer: "background" },
+  doorFrame: { src: "/game/ship-interior/v21/door-frame.webp", sourceWidth: 1023, sourceHeight: 1537, width: 146, height: 220, pivot: { x: 73, y: 220 }, alphaBounds: { x: 97, y: 41, width: 827, height: 1450 }, aperture: { x: 243, y: 175, width: 536, height: 1316 }, layer: "foreground" },
+  doorLeaf: { src: "/game/ship-interior/v21/door-leaf.webp", sourceWidth: 941, sourceHeight: 1672, width: 101, height: 180, pivot: { x: 50.5, y: 180 }, alphaBounds: { x: 201, y: 30, width: 537, height: 1616 }, layer: "interactive" },
+  foregroundRib: { src: "/game/ship-interior/v21/foreground-rib.webp", sourceWidth: 1024, sourceHeight: 1536, width: 200, height: 300, pivot: { x: 100, y: 300 }, alphaBounds: { x: 326, y: 38, width: 509, height: 1468 }, layer: "foreground" },
+  navigationConsole: { src: "/game/ship-interior/v21/console-navigation.webp", sourceWidth: 1536, sourceHeight: 1024, width: 240, height: 160, pivot: { x: 120, y: 160 }, alphaBounds: { x: 103, y: 282, width: 1316, height: 629 }, layer: "fixtures" },
+} as const;

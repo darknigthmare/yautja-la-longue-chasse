@@ -10,6 +10,8 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
+    // Generated QA exports are not application source.
+    "outputs/**",
     "build/**",
     "next-env.d.ts",
   ]),
