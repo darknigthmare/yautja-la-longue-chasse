@@ -253,3 +253,28 @@ test("a rejected retry cannot discard proof of a previous uncertain autosave", (
   assert.equal(observations.rewards, 1);
   assert.equal(observations.screen, "debrief");
 });
+
+
+test("deferred reward retry cannot invalidate a hunt claimed elsewhere after quota failure", () => {
+  for (const outcome of ["claimed", "unreadable"]) {
+    const { environment, observations, launch, autosave, finish } = fixture();
+    launch();
+    autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
+    environment.writeSaveWithStatus = save => ({ save, persisted: false, failure: "write-failed" });
+    finish({ outcome: "success" });
+    const pendingRun = environment.pendingTerminalRunRef.current;
+    assert.ok(pendingRun);
+    const clears = observations.clears;
+    if (outcome === "claimed") observations.currentHunt = { ...observations.currentHunt, runId: "resumed-elsewhere" };
+    else environment.loadActiveHuntSave = () => ({ save: null, failure: "read-failed" });
+    let retryWrites = 0, failure;
+    environment.writeSaveWithStatus = save => { retryWrites++; return { save, persisted: true, failure: null }; };
+    environment.setSaveFailure = value => { failure = value; };
+    callback("persist", environment)(environment.save);
+    assert.equal(retryWrites, 0);
+    assert.equal(observations.clears, clears);
+    assert.equal(environment.pendingTerminalRunRef.current, pendingRun);
+    assert.equal(environment.save.profile.honor, 5, "result remains exportable in memory");
+    assert.equal(failure, outcome === "claimed" ? "save-conflict" : "read-failed");
+  }
+});

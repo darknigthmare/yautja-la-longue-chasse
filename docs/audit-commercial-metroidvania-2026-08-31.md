@@ -45,7 +45,7 @@ P1 indique un défaut important ou un chantier nécessaire avant de promettre le
 - Reset et import exigent confirmation dans l’interface. Leur message distingue campagne enregistrée et nettoyage annexe non confirmé.
 - Le backup n’est plus supprimé avant confirmation du nouveau primaire : un reset interrompu ne détruit pas la seule copie récupérable.
 - La reprise reçoit une identité de session neuve afin qu’un ancien onglet ne puisse pas la modifier ou la supprimer silencieusement.
-- Une écriture de chasse confirmée tardivement est reconnue par son payload exact. Si la lecture des archives reste refusée, le résultat et le contexte restent en mémoire avec un bouton de vérification ; aucune récompense n’est écrite avant contrôle de propriété. Il faut garder cet écran ouvert.
+- Une écriture de chasse confirmée tardivement est reconnue par son payload exact. Si la lecture des archives reste refusée, le résultat et le contexte restent en mémoire avec un bouton de vérification ; aucune récompense n’est écrite avant contrôle de propriété. Le bouton de réessai après un échec de quota revérifie également cette propriété : une nouvelle reprise ne peut pas être invalidée par un ancien résultat différé. Il faut garder cet écran ouvert.
 - Direction et validation simultanées à la manette activent le bouton nouvellement sélectionné ; A maintenu ne déclenche pas une cascade d’actions.
 - Le refus de plein écran est intercepté avec un message au joueur.
 - `npm test` exécute maintenant toutes les suites après build, au lieu du seul contrôle HTML. `qa:release` vérifie le pack réellement disponible ; l’audit `qa` de complétude des 800 références n’est pas affaibli.
@@ -80,7 +80,7 @@ Résultats exécutés sur le code final avant publication :
 
 | Contrôle | Résultat |
 | --- | --- |
-| `npm run qa:release` | Réussi : lint, TypeScript, audit des assets disponibles, build Vinext et **501/501 tests** ; aucun test ignoré. |
+| `npm run qa:release` | Réussi : lint, TypeScript, audit des assets disponibles, build Vinext et **502/502 tests** ; aucun test ignoré. |
 | `npx next build` | Réussi, y compris son contrôle TypeScript ; routes `/` et `/rig-lab` produites. |
 | V19 disponible | **464/464 paires inspectées**, empreintes uniques, 41 668 712 octets runtime ; 336 références prévues absentes, sans prétendre valider le catalogue complet. |
 | Hub | Audits V21 et V22 réussis : sept modules de chaque version ; audit des 54 entrées de vaisseaux réussi. |

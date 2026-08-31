@@ -1035,6 +1035,19 @@ export default function GameClient() {
   }, []);
 
   const persist = useCallback((next: SaveGame) => {
+    if (pendingTerminalRunRef.current) {
+      const latest = loadActiveHuntSave();
+      const failure: SaveWriteFailure | null = latest.failure
+        ? latest.failure === "storage-unavailable" ? "storage-unavailable" : "read-failed"
+        : latest.save && latest.save.runId !== pendingTerminalRunRef.current ? "save-conflict" : null;
+      if (failure) {
+        // A deferred reward must still own its hunt when storage becomes usable.
+        // Keep the local result exportable instead of invalidating a new run.
+        setSave(next);
+        setSaveFailure(failure);
+        return next;
+      }
+    }
     const result = writeSaveWithStatus(next);
     setSave(result.save);
     setSaveFailure(result.failure);
