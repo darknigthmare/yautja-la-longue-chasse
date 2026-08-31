@@ -80,6 +80,16 @@ export type MissionProgressStatus = "locked" | "available" | "completed";
 
 export type UpgradeLevel = 0 | 1 | 2;
 
+/** Permanent traversal unlocks, independent of mission scores and equipment. */
+export type ExplorationAbilityId = "aerial-boost";
+
+export interface ExplorationProgress {
+  abilityIds: ExplorationAbilityId[];
+  openedGateIds: string[];
+  secretIds: string[];
+  discoveredRoomIds: string[];
+}
+
 export type HunterSkinId =
   | "ochre-mottle"
   | "ashen-mottle"
@@ -504,6 +514,8 @@ export interface MissionResult {
   scans: number;
   /** Stable V7/V8 roster identities encountered during this hunt. */
   discoveredEnemyIds?: string[];
+  /** Permanent discoveries survive success, death and voluntary extraction. */
+  exploration?: ExplorationProgress;
   secondWindUsed: boolean;
   completedAt: string;
 }
@@ -593,6 +605,7 @@ export interface SaveGame {
   missionProgress: Record<MissionId, MissionProgress>;
   trophies: TrophyRecord[];
   codex: CodexProgress;
+  exploration: ExplorationProgress;
   statistics: GameStatistics;
   settings: GameSettings;
   storyCompleted: boolean;

@@ -92,3 +92,8 @@ Résultats exécutés sur le code final avant publication :
 Preuves reproductibles : `outputs/qa-commercial-audit/qa-release-final.log`, `build-next-final.log`, `available-assets.json`, `ship-audits.exit.json`, `local-http.json`, `deployment-files.json` et `npm-audit-after.json`. Le compte rendu de livraison indique le commit et le déploiement effectivement publiés ; les logs et résultats HTTP publics sont conservés dans le même dossier. Les captures et logs temporaires restent hors des sources déployées.
 
 Limite de cette session : le contrôleur de navigateur intégré échoue au démarrage sur les ACL Windows, avant de se connecter au jeu. Les tests de fonctions réelles, rendus HTML statiques, builds et contrôles HTTP sont disponibles ; une partie interactive, les résolutions 1280×720 / 1920×1080, la manette physique, le FPS et une campagne complète ne sont pas déclarés validés.
+
+
+## Suite publiée — région pilote 01
+
+La livraison suivante implémente la première branche physique de capacité / retour / sceau / secret / raccourci et le schéma de progression 5. Voir [le détail du pilote](metroidvania-pilot-01-2026-08-31.md). Les constats et preuves ci-dessus décrivent l’audit initial ; cette amélioration traite une région facultative de la jungle, pas la refonte de toute la campagne ni une certification commerciale.

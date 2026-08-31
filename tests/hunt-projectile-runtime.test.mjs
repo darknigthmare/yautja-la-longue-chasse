@@ -105,3 +105,15 @@ test("destroyed cover and inactive enemies never absorb the trajectory", () => {
   f.state.enemies = [enemy("inactive", 30, { active: false }), enemy("live", 70)]; f.step();
   assert.deepEqual(f.hits, [["live", 25]]);
 });
+
+
+test("solid gallery floor blocks an ascending hostile shot but one-way ledges remain permeable", () => {
+  for (const collision of ["solid", "one-way"]) {
+    const f = fixture({ hostile: true, x: 50, y: 100, velocityX: 0, velocityY: -6000 });
+    f.state.player = { x: 30, y: 0, width: 40, height: 20 };
+    f.state.world.platforms = [{ id: "gallery", x: 0, y: 45, width: 200, height: 4, collision }];
+    f.step();
+    assert.equal(f.playerHits.length, collision === "solid" ? 0 : 1);
+    assert.equal(f.state.brokenPillarIds.size, 0, "structural walls cannot be destroyed by projectiles");
+  }
+});

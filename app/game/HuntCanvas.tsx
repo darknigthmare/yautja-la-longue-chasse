@@ -17,6 +17,11 @@ import {
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
+import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
+import { PilotExplorationMap } from "./PilotExplorationMap";
+import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses } from "./systems/explorationProgress";
+import { applyPilotWorld, discoverPilotRooms, pilotInteract, pilotHint, PILOT_MISSION_ID } from "./systems/metroidvaniaPilot";
+import { resolvePlatformMotion, overlapsSolidPlatform } from "./systems/platformCollision";
 import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
 import {
   HUNTER_RIG_CANVAS,
@@ -179,6 +184,7 @@ import {
 import type { GameSfxId } from "./sound";
 import type {
   DifficultyId,
+  ExplorationProgress,
   GearId,
   HunterAppearance,
   HonorEvent,
@@ -209,6 +215,8 @@ interface HuntCanvasProps {
   screenShake: boolean;
   highContrastVision: boolean;
   onSound?(sound: GameSfxId): void;
+  explorationProgress?: ExplorationProgress;
+  onExplorationProgress?(progress: ExplorationProgress): void;
   onFinish(result: MissionResult): void;
   onAbort(result: MissionResult): void;
   resumeSnapshot?: JsonObject | null;
@@ -276,6 +284,7 @@ interface PlayerState extends Vec2 {
   velocityY: number;
   facing: -1 | 1;
   grounded: boolean;
+  aerialBoostUsed: boolean;
   health: number;
   maxHealth: number;
   stamina: number;
@@ -411,6 +420,7 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  exploration?: ExplorationProgress;
   visitedScreenIds?: string[];
   phase: HuntPhase;
   elapsed: number;
@@ -551,6 +561,7 @@ interface AssetBank {
   vineLadder: HTMLImageElement | null;
   platformRoot: HTMLImageElement | null;
   platformStone: HTMLImageElement | null;
+  pilotModule: HTMLImageElement | null;
   platformCrown: HTMLImageElement | null;
   platformExpedition: HTMLImageElement | null;
   foregroundFerns: HTMLImageElement | null;
@@ -592,6 +603,7 @@ interface GameState {
   cameraX: number;
   worldScreenId: string;
   visitedScreenIds: string[];
+  exploration: ExplorationProgress;
   player: PlayerState;
   world: WorldBlueprint;
   arsenal: ArsenalRuntimeState;
@@ -662,6 +674,11 @@ interface GameState {
 
 interface UiSnapshot {
   playerX: number;
+  playerY: number;
+  exploration: ExplorationProgress;
+  pilotHint: string | null;
+  aerialBoostUsed: boolean;
+  grounded: boolean;
   visitedScreenIds: string[];
   phase: HuntPhase;
   paused: boolean;
@@ -750,6 +767,11 @@ function isHeldKeyboardAction(action: Action): boolean {
 
 const EMPTY_UI: UiSnapshot = {
   playerX: 0,
+  playerY: 0,
+  exploration: defaultExplorationProgress(),
+  pilotHint: null,
+  aerialBoostUsed: false,
+  grounded: true,
   visitedScreenIds: [],
   phase: "tracking",
   paused: false,
@@ -1126,8 +1148,10 @@ function makeGameState(
   reducedGore: boolean,
   screenShakeEnabled: boolean,
   ecologyRunSeed: string | number = `${Date.now()}-${Math.random()}`,
+  explorationProgress?: ExplorationProgress,
 ): GameState {
-  const world = worldBlueprintFor(mission.id);
+  const exploration = normalizeExplorationProgress(explorationProgress);
+  const world = applyPilotWorld(worldBlueprintFor(mission.id), exploration);
   const armor = effectiveArmorStats(
     loadout.armorId,
     inventory.armorUpgrades[loadout.armorId] ?? 0,
@@ -1219,6 +1243,7 @@ function makeGameState(
     cameraX: 0,
     worldScreenId: getWorldScreenAtX(mission.id, world.spawn.x).id,
     visitedScreenIds: discoverWorldScreen(mission.id, [], world.spawn.x),
+    exploration,
     world,
     arsenal: createArsenalRuntime({
       loadout,
@@ -1236,12 +1261,13 @@ function makeGameState(
       velocityY: 0,
       facing: 1,
       grounded: true,
+      aerialBoostUsed: false,
       health: armor.maxHealth,
       maxHealth: armor.maxHealth,
       stamina: armor.maxStamina,
       maxStamina: armor.maxStamina,
-      energy: armor.maxEnergy,
-      maxEnergy: armor.maxEnergy,
+      energy: armor.maxEnergy + explorationBonuses(exploration).maxEnergy,
+      maxEnergy: armor.maxEnergy + explorationBonuses(exploration).maxEnergy,
       medicomps: Math.max(
         0,
         armor.medicompCharges + difficultyDef.medicompModifier,
@@ -1503,6 +1529,7 @@ function captureCheckpoint(
     );
   }
   return {
+    exploration: normalizeExplorationProgress(state.exploration),
     visitedScreenIds: [...(state.visitedScreenIds ?? [])],
     phase: state.phase,
     elapsed: state.elapsed,
@@ -1874,6 +1901,32 @@ function restoreCheckpoint(
   mode: "retry" | "resume" = "retry",
 ): GameState {
   const player = clonePlayerState(checkpoint.player);
+  // Permanent discoveries survive a retry and are merged with the current
+  // campaign on resume. Recompute the bonus from its identity, never stack it.
+  const exploration = mergeExplorationProgress(state.exploration,
+    state.world.missionId === PILOT_MISSION_ID ? checkpoint.exploration : undefined);
+  const world = applyPilotWorld(worldBlueprintFor(state.world.missionId), exploration);
+  player.maxEnergy = state.player.maxEnergy - explorationBonuses(state.exploration).maxEnergy + explorationBonuses(exploration).maxEnergy;
+  player.energy = Math.min(player.energy, player.maxEnergy);
+  player.aerialBoostUsed = typeof player.aerialBoostUsed === "boolean" ? player.aerialBoostUsed : !player.grounded;
+  // A legacy checkpoint may lie inside a newly authored wall. Keep objectives
+  // and inventory intact, but explicitly return the hunter to safe insertion.
+  const relocated = overlapsSolidPlatform(player, world.platforms);
+  if (relocated) {
+    player.x = world.spawn.x;
+    player.y = world.floorY - player.height;
+    player.previousY = player.y;
+    player.velocityX = 0;
+    player.velocityY = 0;
+    player.grounded = true;
+    player.aerialBoostUsed = false;
+    player.climbing = false;
+    player.climbZoneId = null;
+  }
+  if (player.climbing && !world.climbables.some(zone => zone.id === player.climbZoneId)) {
+    player.climbing = false;
+    player.climbZoneId = null;
+  }
   const cloakWasActive = player.cloaked || state.player.cloaked;
   if (mode === "retry") {
     player.health = Math.max(player.health, player.maxHealth * 0.45);
@@ -1891,6 +1944,8 @@ function restoreCheckpoint(
 
   return {
     ...state,
+    exploration,
+    world,
     phase: checkpoint.phase,
     paused: mode === "resume",
     elapsed: checkpoint.elapsed,
@@ -1983,7 +2038,7 @@ function restoreCheckpoint(
     dropShip: checkpoint.dropShip ? { ...checkpoint.dropShip } : null,
     scanPulse: 0,
     message:
-      mode === "resume"
+      relocated ? "Géométrie actualisée : retour à l’insertion, progression conservée." : mode === "resume"
         ? "Chasse restaurée. Le biomask attend ta reprise."
         : `Relais ${state.nextCheckpointIndex} restauré. La chasse continue.`,
     messageTimer: 4,
@@ -2430,6 +2485,11 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
       : null;
   return {
     playerX: state.player.x + state.player.width / 2,
+    playerY: state.player.y + state.player.height / 2,
+    exploration: normalizeExplorationProgress(state.exploration),
+    pilotHint: mission.id === PILOT_MISSION_ID ? pilotHint(state.exploration, state.player) : null,
+    aerialBoostUsed: state.player.aerialBoostUsed,
+    grounded: state.player.grounded,
     visitedScreenIds: [...state.visitedScreenIds],
     phase: state.phase,
     paused: state.paused,
@@ -2583,6 +2643,7 @@ function resultFor(
 
   return {
     missionId: mission.id,
+    exploration: normalizeExplorationProgress(state.exploration),
     difficultyId: difficulty,
     outcome,
     score,
@@ -4189,6 +4250,8 @@ function renderGame(
   context.save();
   context.translate(-cameraX, 0);
 
+  if (mission.id === PILOT_MISSION_ID) drawPilotBackdrop(context, cameraX);
+
   // World geometry and mission markers.
   context.fillStyle = palette.ground;
   context.fillRect(
@@ -4282,6 +4345,10 @@ function renderGame(
   const junglePlatformSurfaceRatios = [0.2, 0.22, 0.38, 0.42] as const;
   for (let index = 0; index < state.world.platforms.length; index += 1) {
     const platform = state.world.platforms[index];
+    if (platform.id.startsWith("jungle-pilot-") || platform.id === "jungle-resonance-seal" || platform.id === "jungle-canopy-hatch") {
+      drawPilotPlatform(context, platform, assets.platformStone);
+      continue;
+    }
     const assignment = environmentGameplayPropForGeometryId(
       mission.id,
       platform.id,
@@ -4331,6 +4398,9 @@ function renderGame(
     }
   }
 
+  if (mission.id === PILOT_MISSION_ID) {
+    drawPilotDevices(context, state.exploration, { stone: assets.platformStone, module: assets.pilotModule });
+  }
   for (const cover of state.world.covers) {
     const broken = state.brokenPillarIds.has(cover.id);
     const assignment = environmentGameplayPropForGeometryId(
@@ -6231,6 +6301,22 @@ function interact(
   state: GameState,
   mission: MissionDefinition,
 ): void {
+  if (mission.id === PILOT_MISSION_ID && !state.trophyExtracting) {
+    const interaction = pilotInteract(state.exploration, state.player);
+    if (interaction) {
+      if (interaction.changed) {
+        const previousBonus = explorationBonuses(state.exploration).maxEnergy;
+        state.exploration = interaction.progress;
+        const bonusGained = explorationBonuses(state.exploration).maxEnergy - previousBonus;
+        state.player.maxEnergy += bonusGained;
+        state.player.energy = Math.min(state.player.maxEnergy, state.player.energy + bonusGained);
+        state.world = applyPilotWorld(state.world, state.exploration);
+        queueSound(state, "objective");
+      }
+      announce(state, interaction.message, 4);
+      return;
+    }
+  }
   const playerCenter = {
     x: state.player.x + state.player.width / 2,
     y: state.player.y + state.player.height / 2,
@@ -6560,6 +6646,30 @@ function updateHunterRig(player: PlayerState, delta: number, extracting: boolean
   }
 }
 
+/** A ground/rope jump and the permanent aerial pulse share the remapped jump action. */
+function tryPlayerJump(state: GameState, actionLocked: boolean): boolean {
+  if (actionLocked) return false;
+  const player = state.player;
+  const origin = { x: player.x + player.width / 2, y: player.y + player.height / 2 };
+  if (player.climbing) {
+    player.climbing = false;
+    player.climbZoneId = null;
+    player.velocityY = -560;
+    player.velocityX = player.facing * 270;
+    emitNoise(state, "landing", 0.24, 210, origin);
+  } else if (player.grounded) {
+    player.velocityY = -720;
+    player.grounded = false;
+    emitNoise(state, "footstep", 0.3, 230, origin);
+  } else if (!player.aerialBoostUsed && state.exploration.abilityIds.includes("aerial-boost")) {
+    player.aerialBoostUsed = true;
+    player.velocityY = -720;
+    emitNoise(state, "landing", 0.42, 340, origin);
+  } else return false;
+  queueSound(state, "jump");
+  return true;
+}
+
 function updatePlayer(
   state: GameState,
   mission: MissionDefinition,
@@ -6770,20 +6880,7 @@ function updatePlayer(
     player.climbZoneId = null;
   }
 
-  const jumpPressed = consume(input, "jump");
-  if (jumpPressed && player.climbing) {
-    player.climbing = false;
-    player.climbZoneId = null;
-    player.velocityY = -560;
-    player.velocityX = player.facing * 270;
-    emitNoise(state, "landing", 0.24, 210, playerCenter);
-    queueSound(state, "jump");
-  } else if (jumpPressed && player.grounded && !actionLocked) {
-    player.velocityY = -720;
-    player.grounded = false;
-    emitNoise(state, "footstep", 0.3, 230, playerCenter);
-    queueSound(state, "jump");
-  }
+  if (consume(input, "jump")) tryPlayerJump(state, actionLocked);
   if (consume(input, "melee") && !actionLocked) {
     playerMelee(state, mission, loadout, inventory);
   }
@@ -6814,6 +6911,7 @@ function updatePlayer(
     interact(state, mission);
   }
 
+  const motionStart = { x: player.x, y: player.y };
   player.previousY = player.y;
   if (player.climbing && currentClimbZone) {
     const flexibleClimb =
@@ -6848,28 +6946,18 @@ function updatePlayer(
   }
 
   const impactVelocity = player.velocityY;
-  const previousBottom = player.previousY + player.height;
-  const currentBottom = player.y + player.height;
-  if (!player.climbing && player.velocityY >= 0) {
-    for (const platform of state.world.platforms) {
-      if (
-        previousBottom <= platform.y + 7 &&
-        currentBottom >= platform.y &&
-        player.x + player.width > platform.x + 6 &&
-        player.x < platform.x + platform.width - 6
-      ) {
-        player.y = platform.y - player.height;
-        player.velocityY = 0;
-        player.grounded = true;
-        break;
-      }
-    }
-  }
-  if (player.y + player.height >= state.world.floorY) {
-    player.y = state.world.floorY - player.height;
-    player.velocityY = 0;
-    player.grounded = true;
-  }
+  const motion = resolvePlatformMotion(
+    { ...player, ...motionStart },
+    { x: player.x, y: player.y },
+    player.climbing ? state.world.platforms.filter(platform => platform.collision === "solid") : state.world.platforms,
+    state.world.floorY,
+  );
+  player.x = motion.x;
+  player.y = motion.y;
+  player.velocityX = motion.velocityX;
+  player.velocityY = motion.velocityY;
+  player.grounded = motion.grounded;
+  if (player.grounded) player.aerialBoostUsed = false;
   if (!wasGrounded && player.grounded && impactVelocity > 180) {
     emitNoise(
       state,
@@ -8047,10 +8135,12 @@ function updateProjectiles(
     // Sweep the complete fixed step and choose the first obstacle in space,
     // not the first entry in an authored array. Thin covers remain solid.
     const coverImpact = projectile.coverGraceSeconds <= 0
-      ? state.world.covers
+      ? [...state.world.covers,
+          ...(state.world.platforms ?? []).filter(platform => platform.collision === "solid")
+            .map(platform => ({ ...platform, protection: 1, destructible: false }))]
           .filter(cover => !state.brokenPillarIds.has(cover.id))
           .map(cover => ({ cover, time: sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, cover) }))
-          .filter((hit): hit is { cover: GameState["world"]["covers"][number]; time: number } => hit.time !== null)
+          .filter((hit): hit is { cover: typeof hit.cover; time: number } => hit.time !== null)
           .sort((a, b) => a.time - b.time)[0]
       : undefined;
     const blockingCover = coverImpact?.cover;
@@ -8420,6 +8510,9 @@ function stepGame(
   }
 
   // Include a sector discovered on this frame in the same checkpoint.
+  if (mission.id === PILOT_MISSION_ID) {
+    state.exploration = discoverPilotRooms(state.exploration, state.player);
+  }
   updateMissionCheckpoint(state);
   const desiredCamera = clamp(
     state.player.x - VIEW_WIDTH * 0.38,
@@ -8446,6 +8539,8 @@ export default function HuntCanvas({
   screenShake,
   highContrastVision,
   onSound,
+  explorationProgress,
+  onExplorationProgress,
   onFinish,
   onAbort,
   resumeSnapshot,
@@ -8462,6 +8557,7 @@ export default function HuntCanvas({
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const finishRef = useRef(onFinish);
   const abortRef = useRef(onAbort);
+  const explorationProgressRef = useRef(onExplorationProgress);
   const persistHuntRef = useRef(onPersistHunt);
   const suspendHuntRef = useRef(onSuspendHunt);
   const invalidateHuntRef = useRef(onInvalidateHunt);
@@ -8493,6 +8589,10 @@ export default function HuntCanvas({
   useEffect(() => {
     abortRef.current = onAbort;
   }, [onAbort]);
+
+  useEffect(() => {
+    explorationProgressRef.current = onExplorationProgress;
+  }, [onExplorationProgress]);
 
   useEffect(() => {
     persistHuntRef.current = onPersistHunt;
@@ -8611,6 +8711,7 @@ export default function HuntCanvas({
       reducedGore,
       screenShake,
       ecologyRunSeed,
+      explorationProgress,
     );
     const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
     const restoredRetry = deserializeActiveHuntCheckpoint(
@@ -8630,6 +8731,14 @@ export default function HuntCanvas({
       game.paused = true;
       window.queueMicrotask(() => resumeFailureRef.current?.());
     }
+    let lastExplorationKey = JSON.stringify(normalizeExplorationProgress(explorationProgress));
+    const emitExploration = () => {
+      if (mission.id !== PILOT_MISSION_ID) return;
+      const key = JSON.stringify(game.exploration);
+      if (key === lastExplorationKey) return;
+      lastExplorationKey = key;
+      explorationProgressRef.current?.(normalizeExplorationProgress(game.exploration));
+    };
     let lastPersistedElapsed = game.elapsed;
     let lastPersistedCheckpointIndex = game.nextCheckpointIndex;
     const assets: AssetBank = {
@@ -8688,6 +8797,7 @@ export default function HuntCanvas({
       vineLadder: null,
       platformRoot: null,
       platformStone: null,
+      pilotModule: null,
       platformCrown: null,
       platformExpedition: null,
       foregroundFerns: null,
@@ -8892,6 +9002,9 @@ export default function HuntCanvas({
         );
       }
     }
+    if (mission.id === PILOT_MISSION_ID) {
+      queueImage("/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp", image => { assets.pilotModule = image; });
+    }
     for (const gearId of loadout.gearIds) {
       queueImage(
         hunterRegisteredAssetPath("gear", gearId),
@@ -9051,6 +9164,7 @@ export default function HuntCanvas({
 
     const restart = () => {
       const visitedBeforeRetry = game.visitedScreenIds;
+      const explorationBeforeRetry = game.exploration;
       game = game.lastCheckpoint
         ? restoreCheckpoint(game, game.lastCheckpoint)
         : makeGameState(
@@ -9062,6 +9176,7 @@ export default function HuntCanvas({
             reducedGore,
             screenShake,
             ecologyRunSeed,
+            explorationBeforeRetry,
           );
       game.visitedScreenIds = discoverWorldScreen(
         mission.id,
@@ -9089,6 +9204,7 @@ export default function HuntCanvas({
     const emitPersistence = (
       handler: ((payload: HuntPersistencePayload) => void) | undefined,
     ) => {
+      emitExploration();
       const payload = persistencePayloadFor(game);
       if (!payload) return;
       handler?.(payload);
@@ -9255,6 +9371,7 @@ export default function HuntCanvas({
         }
         accumulator -= fixedStep;
       }
+      emitExploration();
       const dialogActions = input.gamepadDialogActions.splice(0);
       if (game.paused || game.phase === "dead") {
         navigateHuntDialogWithGamepad(huntDialogRef.current, dialogActions);
@@ -9320,6 +9437,7 @@ export default function HuntCanvas({
     appearance,
     difficulty,
     encounterRun,
+    explorationProgress,
     inventory,
     loadout,
     mission,
@@ -9473,6 +9591,9 @@ export default function HuntCanvas({
           <span style={styles.objectiveKicker}>OBJECTIF ACTIF</span>
           <strong style={styles.objectiveTitle}>{ui.objective}</strong>
           <span style={styles.objectiveDetail}>{ui.objectiveDetail}</span>
+          {ui.pilotHint && <span style={{ ...styles.objectiveDetail, color: "#d9f1ad" }}>
+            {ui.pilotHint} · Interaction {controlActionShortcut("hunt.interact", activeBindings)}
+          </span>}
         </div>
         <div style={styles.stats}>
           <span>Honneur {ui.honor >= 0 ? "+" : ""}{ui.honor}</span>
@@ -9484,7 +9605,10 @@ export default function HuntCanvas({
             {!appearance.biomaskId ? "AUCUN" : ui.maskOn ? "ACTIF" : "RETIRÉ"}
           </span>
           <span>{ui.aiming ? "VISÉE CADRÉE" : "VISÉE LIBRE"}</span>
-          <span>{ui.climbing ? "GRIMPE" : "AU SOL"}</span>
+          <span>{ui.climbing ? "GRIMPE" : ui.grounded ? "AU SOL" : "EN L’AIR"}</span>
+          {ui.exploration.abilityIds.includes("aerial-boost") && <span>
+            Impulsion {ui.aerialBoostUsed ? "À RECHARGER AU SOL" : "PRÊTE"} · {controlActionShortcut("hunt.jump", activeBindings)}
+          </span>}
           <span>{formatTime(ui.elapsed)}</span>
         </div>
       </div>
@@ -9623,6 +9747,9 @@ export default function HuntCanvas({
                   Abandonner la chasse
                 </button>
               </div>
+              {mission.id === PILOT_MISSION_ID && (
+                <PilotExplorationMap progress={ui.exploration} playerX={ui.playerX} playerY={ui.playerY} />
+              )}
               <ExplorationMap
                 missionId={mission.id}
                 playerX={ui.playerX}
@@ -10138,8 +10265,10 @@ const styles: Record<string, CSSProperties> = {
     backdropFilter: "blur(5px)",
   },
   modal: {
-    width: "min(100%, 460px)",
-    padding: "28px",
+    width: "min(100%, 580px)",
+    maxHeight: "calc(100% - 16px)",
+    overflowY: "auto",
+    padding: "24px",
     border: "1px solid #9de8ca55",
     borderRadius: 16,
     background:

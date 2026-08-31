@@ -3,6 +3,10 @@ import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
+import { build } from "esbuild";
+const explorationBundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, platform: "node", format: "cjs" });
+const explorationModule = { exports: {} };
+runInNewContext(explorationBundle.outputFiles[0].text, { module: explorationModule, exports: explorationModule.exports });
 
 const systemsSource = await readFile(new URL("../app/game/systems/huntSystems.ts", import.meta.url), "utf8");
 const systemsCode = ts.transpileModule(systemsSource, {
@@ -137,6 +141,7 @@ test("legacy checkpoints initialize adaptation safely and new checkpoints resume
 test("restoring an old dead-boss checkpoint releases its stale energy lock", () => {
   const clone = (value) => structuredClone(value);
   const restore = canvasFunction("restoreCheckpoint", {
+    ...explorationModule.exports,
     clonePlayerState: clone, cloneEnemyState: clone, cloneAiBrains: clone,
     cloneProjectileState: clone, cloneArsenalRuntime: clone, cloneTrophyRitual: clone,
     cloneBossMechanics: canvasFunction("cloneBossMechanics", {}),
@@ -145,7 +150,7 @@ test("restoring an old dead-boss checkpoint releases its stale energy lock", () 
     discoverWorldScreen: (_missionId, ids) => ids,
   });
   const checkpoint = {
-    player: { x: 1000, width: 72, health: 80, maxHealth: 100, stamina: 90,
+    player: { x: 1000, y: 508, height: 116, width: 72, health: 80, maxHealth: 100, stamina: 90,
       maxStamina: 100, energy: 40, maxEnergy: 100, cloaked: false },
     phase: "trophy", elapsed: 300, boss: { alive: false, health: 0 },
     bossMechanics: { ...fresh(), guardianAdaptation: undefined },

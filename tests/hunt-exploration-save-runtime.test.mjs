@@ -6,7 +6,7 @@ import ts from "typescript";
 import { build } from "esbuild";
 import { isBoundedJsonValue } from "../app/game/systems/activeHuntSave.ts";
 
-const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
 const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
 const world = compiled.exports;
@@ -103,4 +103,59 @@ test("checksum-valid but malformed combat snapshots are rejected before restorat
     assert.ok(envelope, "the bounded JSON envelope alone cannot validate combat semantics");
     assert.equal(api.deserializeActiveHuntCheckpoint(envelope), null);
   }
+});
+
+
+test("pilot acquisitions survive retry and resume without stacking the permanent energy bonus", () => {
+  const state = fixture();
+  state.exploration = world.defaultExplorationProgress();
+  state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  state.exploration = world.mergeExplorationProgress(state.exploration, {
+    abilityIds: ["aerial-boost"], openedGateIds: ["jungle-resonance-seal", "jungle-canopy-hatch"], secretIds: ["jungle-clan-cache"],
+  });
+  state.player.maxEnergy = 115;
+  const retried = api.restoreCheckpoint(state, checkpoint, "retry");
+  assert.equal(retried.player.maxEnergy, 115);
+  assert.equal(retried.exploration.secretIds.length, 1);
+  assert.equal(retried.world.platforms.some(p => p.id === "jungle-resonance-seal" || p.id === "jungle-canopy-hatch"), false);
+  const again = api.restoreCheckpoint(retried, checkpoint, "resume");
+  assert.equal(again.player.maxEnergy, 115);
+  const restoredEnvelope = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(api.captureCheckpoint(again, "resume"), 1));
+  assert.deepEqual(plain(restoredEnvelope.checkpoint.exploration), plain(state.exploration));
+});
+
+test("legacy hunter embedded in a new floor returns safely to insertion with objectives intact", () => {
+  const state = fixture();
+  state.world = world.worldBlueprintFor(missionId);
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  checkpoint.player.x = 1700; checkpoint.player.y = 390;
+  checkpoint.completedObjectives.add("already-completed");
+  delete checkpoint.exploration;
+  const result = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.equal(result.player.x, state.world.spawn.x);
+  assert.equal(result.player.y + result.player.height, state.world.floorY);
+  assert.equal(result.player.climbing, false);
+  assert.equal(result.completedObjectives.has("already-completed"), true);
+  assert.match(result.message, /Géométrie actualisée/);
+});
+
+
+test("real jump handler grants one aerial pulse only and respects action locks", () => {
+  const { tryPlayerJump } = runtime(["tryPlayerJump"], { emitNoise() {}, queueSound() {} });
+  const state = fixture(); state.exploration = world.defaultExplorationProgress();
+  state.player.grounded = false; state.player.aerialBoostUsed = false;
+  assert.equal(tryPlayerJump(state, false), false, "no aerial jump before acquisition");
+  state.exploration.abilityIds.push("aerial-boost");
+  assert.equal(tryPlayerJump(state, true), false, "ritual/action lock prevents movement");
+  assert.equal(tryPlayerJump(state, false), true);
+  assert.equal(state.player.velocityY, -720);
+  assert.equal(state.player.aerialBoostUsed, true);
+  state.player.velocityY = 100;
+  assert.equal(tryPlayerJump(state, false), false, "holding/repressing cannot grant a third jump");
+  assert.equal(state.player.velocityY, 100);
+  state.player.climbing = true;
+  assert.equal(tryPlayerJump(state, false), true);
+  assert.equal(state.player.aerialBoostUsed, true, "grabbing a rope does not refill the pulse");
+  assert.equal(tryPlayerJump(state, false), false);
 });

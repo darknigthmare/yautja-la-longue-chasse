@@ -130,6 +130,7 @@ import {
   type UpgradePurchaseRequest,
   type UpgradeQuote,
 } from "./systems/arsenal";
+import { explorationBonuses, mergeExplorationProgress } from "./systems/explorationProgress";
 import {
   loadShipProgression,
   resetShipProgressionWithStatus,
@@ -152,6 +153,7 @@ import type {
   DifficultyId,
   DreadStyleId,
   DreadTintId,
+  ExplorationProgress,
   GameSettings,
   GearId,
   HunterAppearance,
@@ -233,6 +235,32 @@ interface ActiveHuntSession {
 interface HuntResumePayload {
   snapshot: JsonObject;
   retryCheckpoint: JsonObject | null;
+}
+
+/** Main-save exploration never changes the hunt owner or consumes an attempt. */
+function explorationWriteFailure(
+  session: ActiveHuntSession,
+  campaign: SaveGame,
+  latest: ReturnType<typeof loadActiveHuntSave>,
+): SaveWriteFailure | null {
+  if (session.missionId !== "jungle-vey") return "save-conflict";
+  const progress = campaign.missionProgress[session.missionId];
+  if (campaign.createdAt !== session.ownerSaveCreatedAt || !progress ||
+      progress.attempts !== session.encounterRun || progress.status === "locked") {
+    return "save-conflict";
+  }
+  if (latest.failure) {
+    if (latest.failure === "storage-unavailable") return "storage-unavailable";
+    if (latest.failure === "read-failed") return "read-failed";
+    return "protected-save";
+  }
+  const sidecar = latest.save;
+  if (!sidecar) return session.lastPersisted === null ? null : "save-conflict";
+  return sidecar.runId !== session.runId || sidecar.sequence !== session.sequence ||
+    sidecar.ownerSaveCreatedAt !== session.ownerSaveCreatedAt ||
+    sidecar.missionId !== session.missionId || sidecar.encounterRun !== session.encounterRun ||
+    sidecar.difficultyId !== session.difficultyId || sidecar.startedAt !== session.startedAt
+    ? "save-conflict" : null;
 }
 
 function isJsonObject(value: unknown): value is JsonObject {
@@ -744,6 +772,9 @@ export default function GameClient() {
   const [save, setSave] = useState<SaveGame>(() =>
     defaultSave(STABLE_BOOT_TIME),
   );
+  // Runtime discoveries and terminal callbacks may occur before React commits.
+  // Update this ref alongside every local save so their unions never use stale state.
+  const saveRef = useRef(save);
   const [selectedMission, setSelectedMission] =
     useState<MissionDefinition | null>(null);
   const [galaxyNavigationState, setGalaxyNavigationState] =
@@ -809,6 +840,7 @@ export default function GameClient() {
     const hydrationTask = window.setTimeout(() => {
       const loaded = loadSaveWithStatus();
       const loadedSave = loaded.save;
+      saveRef.current = loadedSave;
       setSave(loadedSave);
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
@@ -1034,7 +1066,31 @@ export default function GameClient() {
     audio.playSfx(sound);
   }, []);
 
+  const reconcileHuntWrite = useCallback(() => {
+    const latest = loadActiveHuntSave();
+    const session = activeHuntSessionRef.current;
+    // setItem can succeed before its confirmation read fails. Recognize only
+    // this exact attempted payload, never an arbitrary newer sequence.
+    if (session?.lastAttempted && latest.save &&
+        JSON.stringify(latest.save) === JSON.stringify(session.lastAttempted)) {
+      session.sequence = latest.save.sequence;
+      session.lastPersisted = latest.save;
+    }
+    return latest;
+  }, []);
+
   const persist = useCallback((next: SaveGame) => {
+    if (next.createdAt === saveRef.current.createdAt) {
+      next = { ...next, exploration: mergeExplorationProgress(saveRef.current.exploration, next.exploration) };
+    }
+    const session = activeHuntSessionRef.current;
+    if (session?.missionId === "jungle-vey") {
+      const failure = explorationWriteFailure(session, next, reconcileHuntWrite());
+      if (failure) {
+        setSaveFailure(failure);
+        return next;
+      }
+    }
     if (pendingTerminalRunRef.current) {
       const latest = loadActiveHuntSave();
       const failure: SaveWriteFailure | null = latest.failure
@@ -1043,12 +1099,14 @@ export default function GameClient() {
       if (failure) {
         // A deferred reward must still own its hunt when storage becomes usable.
         // Keep the local result exportable instead of invalidating a new run.
+        saveRef.current = next;
         setSave(next);
         setSaveFailure(failure);
         return next;
       }
     }
     const result = writeSaveWithStatus(next);
+    saveRef.current = result.save;
     setSave(result.save);
     setSaveFailure(result.failure);
     if (result.persisted && pendingTerminalRunRef.current) {
@@ -1056,7 +1114,7 @@ export default function GameClient() {
       pendingTerminalRunRef.current = null;
     }
     return result.save;
-  }, []);
+  }, [reconcileHuntWrite]);
 
   const go = useCallback(
     (next: Screen) => {
@@ -1092,19 +1150,6 @@ export default function GameClient() {
     },
     [playSound, save.missionProgress],
   );
-
-  const reconcileHuntWrite = useCallback(() => {
-    const latest = loadActiveHuntSave();
-    const session = activeHuntSessionRef.current;
-    // setItem can succeed before its confirmation read fails. Recognize only
-    // this exact attempted payload, never an arbitrary newer sequence.
-    if (session?.lastAttempted && latest.save &&
-        JSON.stringify(latest.save) === JSON.stringify(session.lastAttempted)) {
-      session.sequence = latest.save.sequence;
-      session.lastPersisted = latest.save;
-    }
-    return latest;
-  }, []);
 
   const clearHuntSession = useCallback(() => {
     reconcileHuntWrite();
@@ -1185,6 +1230,7 @@ export default function GameClient() {
     const runtimeWrite = writeSaveWithStatus(normalizeSave(save));
     const runtimeSave = runtimeWrite.save;
     if (!runtimeWrite.persisted) {
+      saveRef.current = runtimeSave;
       setSave(runtimeSave);
       setSaveFailure(runtimeWrite.failure);
       activeHuntWriteFailureRef.current = runtimeWrite.failure;
@@ -1201,6 +1247,7 @@ export default function GameClient() {
     missionSettlementRef.current = false;
     setLastResult(null);
     setLastRewardSummary(null);
+    saveRef.current = runtimeSave;
     setSave(runtimeSave);
     setSaveFailure(runtimeWrite.failure);
     setResumableHunt(null);
@@ -1344,6 +1391,41 @@ export default function GameClient() {
     return false;
   }, [reconcileHuntWrite]);
 
+  const persistExplorationProgress = useCallback((progress: ExplorationProgress) => {
+    const session = activeHuntSessionRef.current;
+    if (!session || session.missionId !== "jungle-vey" || missionSettlementRef.current || pendingTerminalRunRef.current) return;
+    const current = saveRef.current;
+    const missionProgress = current.missionProgress[session.missionId];
+    if (current.createdAt !== session.ownerSaveCreatedAt || !missionProgress ||
+        missionProgress.attempts !== session.encounterRun || missionProgress.status === "locked") {
+      setSaveFailure("save-conflict");
+      return;
+    }
+    const exploration = mergeExplorationProgress(current.exploration, progress);
+    if (JSON.stringify(exploration) === JSON.stringify(current.exploration)) return;
+    const next = { ...current, exploration };
+    const failure = explorationWriteFailure(session, current, reconcileHuntWrite());
+    if (failure) {
+      // Transient storage failures retain discoveries in this tab. A superseded
+      // owner/run must not inject its discoveries into the replacement campaign.
+      if (failure === "read-failed" || failure === "storage-unavailable") {
+        saveRef.current = next;
+        setSave(next);
+      }
+      setSaveFailure(failure);
+      return;
+    }
+    // Do not reload the campaign here: that would bless another tab's newer
+    // bytes and defeat writeSaveWithStatus's optimistic concurrency check.
+    const written = writeSaveWithStatus(next);
+    if (written.persisted || written.failure === "write-failed" ||
+        written.failure === "read-failed" || written.failure === "storage-unavailable") {
+      saveRef.current = written.save;
+      setSave(written.save);
+    }
+    setSaveFailure(written.failure);
+  }, [reconcileHuntWrite]);
+
   const completeMission = useCallback(
     (result: MissionResult, returnToDeck = false) => {
       // Runtime callbacks can race at a terminal frame. Settle this run once.
@@ -1354,8 +1436,10 @@ export default function GameClient() {
       }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
-      const next = applyMissionResult(save, result);
+      const current = saveRef.current;
+      const next = applyMissionResult(current, result);
       const written = writeSaveWithStatus(next);
+      saveRef.current = written.save;
       setSave(written.save);
       setSaveFailure(written.failure);
       // Commit campaign rewards before retiring the recoverable hunt.
@@ -1378,19 +1462,19 @@ export default function GameClient() {
       }
       setLastResult(result);
       setLastRewardSummary({
-        honor: next.profile.honor - save.profile.honor,
-        clanMarks: next.profile.clanMarks - save.profile.clanMarks,
+        honor: next.profile.honor - current.profile.honor,
+        clanMarks: next.profile.clanMarks - current.profile.clanMarks,
       });
       setScreen(
         result.outcome === "success" &&
-          !save.storyCompleted &&
+          !current.storyCompleted &&
           next.storyCompleted
           ? "ending"
           : "debrief",
       );
       void playSound(result.outcome === "success" ? "victory" : "defeat");
     },
-    [checkHuntSessionForSettlement, clearHuntSession, playSound, save],
+    [checkHuntSessionForSettlement, clearHuntSession, playSound],
   );
 
   const updateSettings = useCallback(
@@ -1659,6 +1743,7 @@ export default function GameClient() {
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
+    saveRef.current = written.save;
     setSave(written.save);
     setSaveLoadIssue(null);
     setResetArmed(false);
@@ -1706,6 +1791,7 @@ export default function GameClient() {
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
+    saveRef.current = result.save;
     setSave(result.save);
     setSaveFailure(null);
     setSaveLoadIssue(null);
@@ -1736,6 +1822,11 @@ export default function GameClient() {
   const activeMissionSave = huntRuntimeSave ?? save;
   const selectedArmor =
     ARMORS.find((armor) => armor.id === save.loadout.armorId) ?? ARMORS[0];
+  const permanentExplorationBonus = explorationBonuses(save.exploration);
+  const selectedArmorMaxEnergy = Math.round(
+    effectiveArmorStats(selectedArmor.id, save.inventory.armorUpgrades[selectedArmor.id] ?? 0).maxEnergy +
+      permanentExplorationBonus.maxEnergy,
+  );
   const selectedGear = save.loadout.gearIds
     .map((gearId) => GEAR.find((gear) => gear.id === gearId))
     .filter(Boolean);
@@ -2034,6 +2125,18 @@ export default function GameClient() {
                 <p className="mission-planet">{selectedMission.planetName}</p>
                 <h2 id="briefing-title">{selectedMission.title}</h2>
                 <p>{selectedMission.briefing}</p>
+                {selectedMission.id === "jungle-vey" && (
+                  <p className="source-badge">
+                    Exploration permanente ·{" "}
+                    {save.exploration.abilityIds.includes("aerial-boost")
+                      ? "Impulsion aérienne acquise"
+                      : "Impulsion aérienne à découvrir"}
+                    {" · "}
+                    {permanentExplorationBonus.maxEnergy > 0
+                      ? `Cache du clan récupérée (+${permanentExplorationBonus.maxEnergy} énergie maximale)`
+                      : "Cache du clan à découvrir"}
+                  </p>
+                )}
                 {isEnemyV7RosterEncounter(
                   selectedMission.id,
                   save.missionProgress[selectedMission.id].attempts,
@@ -2096,6 +2199,7 @@ export default function GameClient() {
                   <div>
                     <small>Armure équipée</small>
                     <strong>{selectedArmor.name}</strong>
+                    <small>Énergie maximale : {selectedArmorMaxEnergy}</small>
                   </div>
                   <div>
                     <small>Arme équipée</small>
@@ -2262,6 +2366,7 @@ export default function GameClient() {
                   <h3>Configuration active</h3>
                   <div className="loadout-tags">
                     <span>{selectedArmor.name}</span>
+                    <span>Énergie maximale {selectedArmorMaxEnergy}</span>
                     <span>{primaryWeapon.name}</span>
                     {selectedGear.map((gear) => (
                       <span key={gear!.id}>{gear!.name}</span>
@@ -2337,7 +2442,7 @@ export default function GameClient() {
                         description={armor.description}
                         stats={[
                           `PV ${Math.round(effectiveArmor.maxHealth)}`,
-                          `ÉNERGIE ${Math.round(effectiveArmor.maxEnergy)}`,
+                          `ÉNERGIE ${Math.round(effectiveArmor.maxEnergy + permanentExplorationBonus.maxEnergy)}`,
                           `CAP. ${effectiveArmor.carryingCapacity}`,
                         ]}
                         selected={save.loadout.armorId === armor.id}
@@ -3117,6 +3222,8 @@ export default function GameClient() {
             encounterRun={save.missionProgress[selectedMission.id].attempts}
             loadout={activeMissionSave.loadout}
             inventory={activeMissionSave.inventory}
+            explorationProgress={activeMissionSave.exploration}
+            onExplorationProgress={persistExplorationProgress}
             appearance={activeMissionSave.appearance}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}

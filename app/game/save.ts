@@ -22,6 +22,11 @@ import {
   DEFAULT_CONTROL_BINDINGS,
   normalizeControlBindings,
 } from "./systems/controlBindings";
+import {
+  defaultExplorationProgress,
+  mergeExplorationProgress,
+  normalizeExplorationProgress,
+} from "./systems/explorationProgress";
 import type {
   ArmorId,
   CodexEntryId,
@@ -48,7 +53,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 4;
+export const SAVE_VERSION = 5;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -287,6 +292,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     appearance: { ...DEFAULT_HUNTER_APPEARANCE },
     missionProgress: initialMissionProgress(),
     trophies: [],
+    exploration: defaultExplorationProgress(),
     codex: {
       unlockedEntryIds: [
         "yautja-honor",
@@ -478,6 +484,12 @@ const SAVE_MIGRATIONS: Readonly<
       storyCompleted: Number(finalProgress.completions) > 0,
     };
   },
+  4: (input) => ({
+    ...input,
+    version: 5,
+    // V4 had no permanent exploration. Never infer unlocks from mission wins.
+    exploration: defaultExplorationProgress(),
+  }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -1114,6 +1126,7 @@ export function normalizeSave(value: unknown): SaveGame {
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
+    exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
       missionsStarted: nonNegativeInteger(
         rawStatistics.missionsStarted,
@@ -1717,6 +1730,12 @@ export function applyMissionResult(
     }
   }
 
+  const exploration = mergeExplorationProgress(
+    save.exploration,
+    // Only the authored pilot can report new pilot discoveries. Other hunts
+    // retain existing unlocks but cannot introduce foreign room/secret claims.
+    mission.id === "jungle-vey" ? rawResult.exploration : undefined,
+  );
   const baseProgress: MissionProgress = {
     ...previous,
     attempts: previous.attempts + 1,
@@ -1735,6 +1754,7 @@ export function applyMissionResult(
     return {
       ...save,
       updatedAt: now,
+      exploration,
       profile: {
         ...save.profile,
         playTimeSeconds:
@@ -1850,6 +1870,7 @@ export function applyMissionResult(
   const progressedSave: SaveGame = {
     ...save,
     updatedAt: now,
+    exploration,
     profile: {
       ...save.profile,
       rankId: rankForHonor(nextHonor),
