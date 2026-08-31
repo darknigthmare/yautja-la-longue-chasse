@@ -359,6 +359,34 @@ export function isEnvironmentPropCompatibleWithFeature(
   );
 }
 
+/**
+ * Lava and timed steam vents must keep a readable material identity. Prefer
+ * the first available semantic archetype, then rotate only its silhouettes.
+ * Reusing a matching source is safer than depicting lava as a steam chimney;
+ * fallback archetypes still work while a biome pack is only partly produced.
+ */
+function preferredVolcanoHazardCandidates(
+  candidates: readonly EnvironmentPropRuntimeAsset[],
+  biomeId: EnvironmentPropBiomeId,
+  role: EnvironmentPropRole,
+  kind: string | undefined,
+): readonly EnvironmentPropRuntimeAsset[] {
+  if (
+    biomeId !== "volcano" ||
+    role !== "hazard" ||
+    (kind !== "lava" && kind !== "steam-vent")
+  ) {
+    return candidates;
+  }
+
+  const hints = ENVIRONMENT_PROP_FEATURE_ARCHETYPE_HINTS.volcano[kind] ?? [];
+  for (const archetypeId of hints) {
+    const matching = candidates.filter((asset) => asset.archetypeId === archetypeId);
+    if (matching.length > 0) return matching;
+  }
+  return candidates;
+}
+
 function selectGameplayAsset(
   missionId: MissionId,
   biomeId: EnvironmentPropBiomeId,
@@ -384,11 +412,17 @@ function selectGameplayAsset(
       return leftHint - rightHint || left.id.localeCompare(right.id);
     });
 
-  const unusedCandidates = candidates.filter(
+  const semanticCandidates = preferredVolcanoHazardCandidates(
+    candidates,
+    biomeId,
+    expectedPropRole(feature),
+    feature.kind,
+  );
+  const unusedCandidates = semanticCandidates.filter(
     (asset) => !usedAssetIds.has(asset.id),
   );
   const pool =
-    unusedCandidates.length > 0 ? unusedCandidates : candidates;
+    unusedCandidates.length > 0 ? unusedCandidates : semanticCandidates;
 
   if (pool.length === 0) {
     return null;
@@ -458,12 +492,13 @@ interface PhysicalWorldGeometry {
   readonly id: string;
   readonly x: number;
   readonly width: number;
+  readonly kind?: string;
 }
 
 function selectLegacyGeometryAsset(
   missionId: MissionId,
   biomeId: EnvironmentPropBiomeId,
-  geometryId: string,
+  geometry: PhysicalWorldGeometry,
   geometryRole: PhysicalEnvironmentPropRole,
   usedAssetIds: ReadonlySet<string>,
   encounterRun: number,
@@ -473,18 +508,24 @@ function selectLegacyGeometryAsset(
   ]
     .filter((asset) => asset.role === geometryRole)
     .sort((left, right) => left.id.localeCompare(right.id));
-  const unusedCandidates = candidates.filter(
+  const semanticCandidates = preferredVolcanoHazardCandidates(
+    candidates,
+    biomeId,
+    geometryRole,
+    geometry.kind,
+  );
+  const unusedCandidates = semanticCandidates.filter(
     (asset) => !usedAssetIds.has(asset.id),
   );
   const pool =
-    unusedCandidates.length > 0 ? unusedCandidates : candidates;
+    unusedCandidates.length > 0 ? unusedCandidates : semanticCandidates;
 
   if (pool.length === 0) {
     return null;
   }
 
   return pool[
-    (stableHash(`${missionId}:${geometryId}:${geometryRole}`) +
+    (stableHash(`${missionId}:${geometry.id}:${geometryRole}`) +
       normalizedEncounterRun(encounterRun)) %
       pool.length
   ];
@@ -542,7 +583,7 @@ function createLegacyGeometryAssignments(
         const asset = selectLegacyGeometryAsset(
           layout.missionId,
           biomeId,
-          geometry.id,
+          geometry,
           role,
           usedAssetIds,
           encounterRun,

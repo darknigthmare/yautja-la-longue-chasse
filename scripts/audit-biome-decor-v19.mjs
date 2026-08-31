@@ -204,7 +204,7 @@ async function listWebpRecursive(directory) {
   }
 }
 
-async function inspectMaster(masterPath) {
+export async function inspectMaster(masterPath) {
   const buffer = await readFile(masterPath);
   const metadata = await sharp(buffer).metadata();
   const { data, info } = await sharp(buffer)
@@ -237,7 +237,7 @@ async function inspectMaster(masterPath) {
   };
 }
 
-async function inspectRuntime(runtimePath, master, minimumPadding) {
+export async function inspectRuntime(runtimePath, master, minimumPadding) {
   const buffer = await readFile(runtimePath);
   const metadata = await sharp(buffer).metadata();
   const { data, info } = await sharp(buffer)

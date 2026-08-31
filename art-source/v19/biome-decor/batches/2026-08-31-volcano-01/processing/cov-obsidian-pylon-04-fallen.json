@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-cov-obsidian-pylon-04-fallen",
+  "definitionId": "environment-prop-v19-volcano-cov-obsidian-pylon-04-fallen",
+  "biome": "volcano",
+  "role": "cover",
+  "archetypeId": "obsidian-pylon",
+  "variantId": "04-fallen",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\cov-obsidian-pylon-04-fallen.png",
+    "bytes": 1587226,
+    "sha256": "719b2783e919bc8c22ba079eb87cc1e346ababc5d20db6077ad8cdfb7c40e8d3",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\cov\\masters\\cov-obsidian-pylon-04-fallen-chroma.webp",
+    "bytes": 149234,
+    "sha256": "b62302009d7c3d281ddbf36a5543a9a4c036472e203f3ad507f7bf2fbebf1e21"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\cov\\cov-obsidian-pylon-04-fallen.webp",
+    "bytes": 95214,
+    "sha256": "03568114749182964d2dbf7d60fcc008450ed5b97569f6a85316d8864d1cc1f1"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      3,
+      250,
+      5
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 1
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.294039,
+    "transparentRatio": 0.705663,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 667,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.448971,
+    "transparentRatio": 0.550547,
+    "dirtyTransparentPixels": 14126
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-BygZAK\\cov-obsidian-pylon-04-fallen-alpha.png\r\nKey color: #03fa05\r\nTransparent pixels: 1109912/1572864\r\nPartially transparent pixels: 7697/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

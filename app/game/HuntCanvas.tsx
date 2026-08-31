@@ -15,6 +15,7 @@ import {
   WEAPON_BY_ID,
 } from "./data";
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
+import { drawEnvironmentProp } from "./environmentPropDrawing";
 import {
   HUNTER_RIG_CANVAS,
   relativeBoneMatrix,
@@ -3883,39 +3884,7 @@ function drawEnvironmentGameplayProp(
   bounds: { x: number; y: number; width: number; height: number },
   opacity = 1,
 ): void {
-  const ratio =
-    image.naturalWidth > 0 && image.naturalHeight > 0
-      ? image.naturalWidth / image.naturalHeight
-      : 1;
-  let drawWidth = bounds.width;
-  let drawHeight = drawWidth / ratio;
-  let drawX = bounds.x;
-  let drawY = bounds.y;
-
-  if (role === "climbable") {
-    drawHeight = bounds.height;
-    drawWidth = drawHeight * ratio;
-    drawX = bounds.x + (bounds.width - drawWidth) / 2;
-  } else if (role === "cover") {
-    drawHeight = Math.max(bounds.height, Math.min(bounds.height * 1.18, drawHeight));
-    drawWidth = Math.min(bounds.width * 1.5, drawHeight * ratio);
-    drawX = bounds.x + (bounds.width - drawWidth) / 2;
-    drawY = bounds.y + bounds.height - drawHeight;
-  } else if (role === "hazard" || role === "surface") {
-    drawHeight = Math.min(Math.max(bounds.height, drawHeight), 132);
-    drawY = bounds.y + bounds.height - drawHeight;
-  } else if (role === "platform") {
-    drawWidth = bounds.width * 1.06;
-    drawHeight = drawWidth / ratio;
-    drawX = bounds.x - bounds.width * 0.03;
-    drawY = bounds.y - 4;
-  }
-
-  context.save();
-  context.globalAlpha = opacity;
-  context.imageSmoothingEnabled = false;
-  context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
-  context.restore();
+  drawEnvironmentProp(context, image, role, bounds, opacity);
 }
 
 function drawEnvironmentDecorPass(

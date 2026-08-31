@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-srf-ash-track-02-trail",
+  "definitionId": "environment-prop-v19-volcano-srf-ash-track-02-trail",
+  "biome": "volcano",
+  "role": "surface",
+  "archetypeId": "ash-track",
+  "variantId": "02-trail",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\srf-ash-track-02-trail.png",
+    "bytes": 1674078,
+    "sha256": "205df416125253bc9cae66379b45f731c71476739721734f2c6d6f5170f4913b",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\srf\\masters\\srf-ash-track-02-trail-chroma.webp",
+    "bytes": 166740,
+    "sha256": "191daf9f7c7c1ebd847d7fd3f0f962874b1a4dcbc561d0d9e39449e3773ec859"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\srf\\srf-ash-track-02-trail.webp",
+    "bytes": 48826,
+    "sha256": "1a10d4d41022b26d7867c38d8fd53f6f7ca9aadc426f1557a93574889989b7a2"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      3,
+      249,
+      6
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.99987
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.224588,
+    "transparentRatio": 0.77521,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 288,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.374584,
+    "transparentRatio": 0.625118,
+    "dirtyTransparentPixels": 12741
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-SrPh8P\\srf-ash-track-02-trail-alpha.png\r\nKey color: #03f906\r\nTransparent pixels: 1219300/1572864\r\nPartially transparent pixels: 5072/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

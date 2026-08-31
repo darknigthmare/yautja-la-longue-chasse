@@ -510,7 +510,13 @@ export async function processBiomeDecorV19(options) {
       inputDeleted: false,
     };
   } finally {
-    await rm(helperTemporaryRoot, {
+    const resolvedTemporaryRoot = path.resolve(helperTemporaryRoot);
+    const expectedTemporaryParent = path.resolve(os.tmpdir());
+    if (path.dirname(resolvedTemporaryRoot) !== expectedTemporaryParent ||
+        !path.basename(resolvedTemporaryRoot).startsWith("yautja-biome-decor-v19-")) {
+      throw new Error("Refusing to remove an unexpected helper directory");
+    }
+    await rm(resolvedTemporaryRoot, {
       recursive: true,
       force: true,
       maxRetries: 5,

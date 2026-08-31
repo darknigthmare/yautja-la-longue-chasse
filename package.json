@@ -43,7 +43,8 @@
     "ship-interior:audit": "node scripts/audit-ship-interior-v21.mjs",
     "ship-interior:v22:prepare": "node scripts/prepare-ship-interior-alpha-v22.mjs",
     "ship-interior:v22:export": "node scripts/export-ship-interior-v22.mjs",
-    "ship-interior:v22:audit": "node scripts/audit-ship-interior-v22.mjs"
+    "ship-interior:v22:audit": "node scripts/audit-ship-interior-v22.mjs",
+    "biome-decor:v19:audit-batch": "node scripts/audit-biome-decor-v19-batch.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-srf-cooled-lava-crust-05-transition",
+  "definitionId": "environment-prop-v19-volcano-srf-cooled-lava-crust-05-transition",
+  "biome": "volcano",
+  "role": "surface",
+  "archetypeId": "cooled-lava-crust",
+  "variantId": "05-transition",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\srf-cooled-lava-crust-05-transition.png",
+    "bytes": 1661158,
+    "sha256": "91d48eefc5cf55fd863868204b28ab373d1f7bc97cc232efa07a9609c4062984",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\srf\\masters\\srf-cooled-lava-crust-05-transition-chroma.webp",
+    "bytes": 167628,
+    "sha256": "c7a5a7f58ac6f56b16ec8d1bdd245697b0d07c34cef8779e8056e8fe96b614ab"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\srf\\srf-cooled-lava-crust-05-transition.webp",
+    "bytes": 55902,
+    "sha256": "007ff48c7c6963d6af8803bd1d44388403302ae9faed342b61bfa8f0ec5c7fe8"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      3,
+      249,
+      5
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 1
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.246347,
+    "transparentRatio": 0.753506,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 220,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.565341,
+    "transparentRatio": 0.43428,
+    "dirtyTransparentPixels": 8099
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-ZE2lEn\\srf-cooled-lava-crust-05-transition-alpha.png\r\nKey color: #03f905\r\nTransparent pixels: 1185162/1572864\r\nPartially transparent pixels: 4304/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

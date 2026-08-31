@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-orn-ember-brazier-01-single",
+  "definitionId": "environment-prop-v19-volcano-orn-ember-brazier-01-single",
+  "biome": "volcano",
+  "role": "decoration",
+  "archetypeId": "ember-brazier",
+  "variantId": "01-single",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\orn-ember-brazier-01-single.png",
+    "bytes": 1318051,
+    "sha256": "f38e6928cc3acda04e328ff49dc53ba00fc7f88f86435869f7e40f5f41938a6e",
+    "width": 1254,
+    "height": 1254
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\orn\\masters\\orn-ember-brazier-01-single-chroma.webp",
+    "bytes": 128132,
+    "sha256": "459d5493d88d1fe49609b5d302052b002e1f1aa4974435eff8a782c24330a502"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\orn\\orn-ember-brazier-01-single.webp",
+    "bytes": 77880,
+    "sha256": "f16939e5fd00d1b1699d92fed0e2ce3bde0fedd2e44f3bedb772f1635df91afa"
+  },
+  "chromaInspection": {
+    "width": 1254,
+    "height": 1254,
+    "sampledKey": [
+      4,
+      249,
+      9
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.999867
+  },
+  "helperInspection": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.26684,
+    "transparentRatio": 0.732845,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 466,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.622365,
+    "transparentRatio": 0.37695,
+    "dirtyTransparentPixels": 17997
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-cGFhbf\\orn-ember-brazier-01-single-alpha.png\r\nKey color: #04f909\r\nTransparent pixels: 1152410/1572516\r\nPartially transparent pixels: 8710/1572516",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

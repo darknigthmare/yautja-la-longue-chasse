@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-orn-fallen-hunter-marker-01-single",
+  "definitionId": "environment-prop-v19-volcano-orn-fallen-hunter-marker-01-single",
+  "biome": "volcano",
+  "role": "decoration",
+  "archetypeId": "fallen-hunter-marker",
+  "variantId": "01-single",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\orn-fallen-hunter-marker-01-single.png",
+    "bytes": 1646784,
+    "sha256": "3d775e8c0a6a7d6048ce1320c33af655d53a6b1d5e9e0f23cada2e0d641a555b",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\orn\\masters\\orn-fallen-hunter-marker-01-single-chroma.webp",
+    "bytes": 160980,
+    "sha256": "4caab37f67da148f58e0b4a26cbbd4b71657397ae9d678eaf22e2f59b3594d73"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\orn\\orn-fallen-hunter-marker-01-single.webp",
+    "bytes": 123800,
+    "sha256": "812b645763e909adee6fbf3e4a7aaf71d3dc938e3a8f342d95368ccf3f5c3c7d"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      4,
+      249,
+      5
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.99987
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.294643,
+    "transparentRatio": 0.704483,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 746,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.460122,
+    "transparentRatio": 0.53852,
+    "dirtyTransparentPixels": 30644
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-9m0Bq2\\orn-fallen-hunter-marker-01-single-alpha.png\r\nKey color: #04f905\r\nTransparent pixels: 1108056/1572864\r\nPartially transparent pixels: 19472/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}

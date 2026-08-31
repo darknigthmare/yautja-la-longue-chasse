@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "packVersion": 19,
+  "generator": "OpenAI ImageGen",
+  "modelMode": "builtin-imagegen",
+  "id": "environment-prop-v19-volcano-haz-lava-seam-02-linear",
+  "definitionId": "environment-prop-v19-volcano-haz-lava-seam-02-linear",
+  "biome": "volcano",
+  "role": "hazard",
+  "archetypeId": "lava-seam",
+  "variantId": "02-linear",
+  "chromaKey": "#00FF00",
+  "input": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\batches\\2026-08-31-volcano-01\\sources\\haz-lava-seam-02-linear.png",
+    "bytes": 1652992,
+    "sha256": "aee838ed04428b03b71252f8702a1f82a2cf505abccaea29ad05206760ea0004",
+    "width": 1536,
+    "height": 1024
+  },
+  "master": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\art-source\\v19\\biome-decor\\volcano\\haz\\masters\\haz-lava-seam-02-linear-chroma.webp",
+    "bytes": 173820,
+    "sha256": "8ac3da127bf2851bf9c4d3a20fed3a8e9f53009b7ede7d621961783acde49b22"
+  },
+  "runtime": {
+    "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\public\\game\\assets\\v19\\biome-decor\\volcano\\haz\\haz-lava-seam-02-linear.webp",
+    "bytes": 57828,
+    "sha256": "9e53eaf51c50b5a0d7f62283db3c2c758d84c7abc2ef0927acef0b5e653a9f3a"
+  },
+  "chromaInspection": {
+    "width": 1536,
+    "height": 1024,
+    "sampledKey": [
+      5,
+      250,
+      9
+    ],
+    "keyFamily": "green",
+    "compatibleRatio": 0.99987
+  },
+  "helperInspection": {
+    "width": 1536,
+    "height": 1024,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.284395,
+    "transparentRatio": 0.715321,
+    "dirtyTransparentPixels": 0
+  },
+  "runtimeInspection": {
+    "width": 768,
+    "height": 236,
+    "channels": 4,
+    "alpha": true,
+    "visibleRatio": 0.603863,
+    "transparentRatio": 0.395751,
+    "dirtyTransparentPixels": 8737
+  },
+  "helper": {
+    "pythonCommand": "python",
+    "stdout": "Wrote C:\\Users\\chuck\\AppData\\Local\\Temp\\yautja-biome-decor-v19-vXmyRJ\\haz-lava-seam-02-linear-alpha.png\r\nKey color: #05fa09\r\nTransparent pixels: 1125102/1572864\r\nPartially transparent pixels: 5367/1572864",
+    "stderr": ""
+  },
+  "inputDeleted": false
+}
