@@ -97,3 +97,8 @@ Limite de cette session : le contrôleur de navigateur intégré échoue au dém
 ## Suite publiée — région pilote 01
 
 La livraison suivante implémente la première branche physique de capacité / retour / sceau / secret / raccourci et le schéma de progression 5. Voir [le détail du pilote](metroidvania-pilot-01-2026-08-31.md). Les constats et preuves ci-dessus décrivent l’audit initial ; cette amélioration traite une région facultative de la jungle, pas la refonte de toute la campagne ni une certification commerciale.
+
+
+## Continuation — boucle minière et saut
+
+Le [lot Exploration 02](ice-traversal-02-2026-08-31.md) ajoute une branche facultative dans la glace, une capacité acquise en jungle réutilisée ailleurs, un pont, une cache unique, une trappe et une échelle de retour. Le contrôleur reçoit une tolérance après bord, une mémorisation avant réception et une hauteur variable. La sauvegarde passe au schéma 6 avec filtrage par région. Les limites de validation matérielle, de distribution native et de complétude artistique de cet audit restent ouvertes.

@@ -6,7 +6,7 @@ import { build } from "esbuild";
 
 const bundle = await build({
   stdin: {
-    contents: 'export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints";',
+    contents: 'export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {JUMP_VELOCITY} from "./app/game/systems/jumpAssist";',
     resolveDir: process.cwd(), loader: "ts",
   },
   bundle: true, write: false, platform: "node", format: "cjs",
@@ -15,7 +15,7 @@ const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
 const { applyPilotWorld, pilotPlatforms, pilotClimbables, pilotInteract, defaultExplorationProgress,
   resolvePlatformMotion, overlapsSolidPlatform, worldBlueprintFor, PILOT_UPPER_FLOOR_Y,
-  PILOT_GROUND_Y, PILOT_SEAL_ID, PILOT_HATCH_ID, PILOT_SECRET_ID } = compiled.exports;
+  PILOT_GROUND_Y, PILOT_SEAL_ID, PILOT_HATCH_ID, PILOT_SECRET_ID, JUMP_VELOCITY } = compiled.exports;
 const GRAVITY = 1850;
 const JUMP = -720;
 const SPEED = 300;
@@ -73,8 +73,10 @@ function openHatch(progress = openSeal()) {
 
 test("physics trials stay tied to the live gravity and jump impulse", () => {
   const runtime = readFileSync("app/game/HuntCanvas.tsx", "utf8");
-  assert.match(runtime, /const GRAVITY = 1_850;/);
-  assert.match(runtime, /player\.velocityY = -720;/);
+  assert.equal(/const GRAVITY = 1_850;/.test(runtime), true, "simulation gravity must match runtime");
+  assert.equal(JUMP, JUMP_VELOCITY, "simulation impulse must match the shared jump controller");
+  assert.equal(/stepJumpAssist\(/.test(runtime), true, "runtime must use the shared jump controller");
+  assert.equal(/player\.velocityY = result\.velocityY;/.test(runtime), true, "actor applies the shared impulse");
   assert.equal(JUMP * JUMP / (2 * GRAVITY) < PILOT_GROUND_Y - PILOT_UPPER_FLOOR_Y, true);
 });
 

@@ -3,6 +3,12 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
+import { build } from "esbuild";
+
+const jumpBundle = await build({ stdin: { contents: 'export { freshJumpAssistState } from "./app/game/systems/jumpAssist";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const jumpModule = { exports: {} };
+runInNewContext(jumpBundle.outputFiles[0].text, { module: jumpModule, exports: jumpModule.exports });
+const { freshJumpAssistState } = jumpModule.exports;
 
 const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -21,7 +27,7 @@ function fixture() {
   const input = { keyboardHeld: new Set(), touchHeld: new Set(), gamepadHeld: new Set(), pressed: new Set(), previousGamepadButtons: [], activeGamepadIndex: null, gamepadNeedsNeutral: true, gamepadDialogActions: [] };
   const poll = runtimeFunction("pollGamepad", { document, navigator });
   const messages = [];
-  const step = runtimeFunction("stepGame", { pollGamepad: poll, consume: (hub, action) => hub.pressed.delete(action), announce: (_state, message) => messages.push(message) });
+  const step = runtimeFunction("stepGame", { freshJumpAssistState, pollGamepad: poll, consume: (hub, action) => hub.pressed.delete(action), announce: (_state, message) => messages.push(message) });
   return { pad, primary, pads, document, navigator, input, poll: () => poll(input), messages, step: state => step(state, {}, {}, {}, {}, "hunter", input, 1 / 60, () => {}) };
 }
 

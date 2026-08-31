@@ -6,7 +6,7 @@ import ts from "typescript";
 import { build } from "esbuild";
 import { isBoundedJsonValue } from "../app/game/systems/activeHuntSave.ts";
 
-const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
 const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
 const world = compiled.exports;
@@ -141,21 +141,64 @@ test("legacy hunter embedded in a new floor returns safely to insertion with obj
 });
 
 
-test("real jump handler grants one aerial pulse only and respects action locks", () => {
-  const { tryPlayerJump } = runtime(["tryPlayerJump"], { emitNoise() {}, queueSound() {} });
+test("real jump handler grants one aerial pulse only and requires neutral after action locks", () => {
+  const { updatePlayerJump } = runtime(["applyPlayerJump", "updatePlayerJump"], {
+    ...environment, GRAVITY: 1850, emitNoise() {}, queueSound() {},
+    consume: (hub, action) => hub.pressed.delete(action), isHeld: (hub, action) => hub.held.has(action),
+  });
   const state = fixture(); state.exploration = world.defaultExplorationProgress();
+  state.world = world.applyExplorationWorld(world.worldBlueprintFor(missionId), state.exploration);
   state.player.grounded = false; state.player.aerialBoostUsed = false;
-  assert.equal(tryPlayerJump(state, false), false, "no aerial jump before acquisition");
+  const input = { pressed: new Set(["jump"]), held: new Set(["jump"]) };
+  updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.velocityY, 0, "no aerial jump before acquisition");
   state.exploration.abilityIds.push("aerial-boost");
-  assert.equal(tryPlayerJump(state, true), false, "ritual/action lock prevents movement");
-  assert.equal(tryPlayerJump(state, false), true);
+  input.pressed.add("jump");
+  updatePlayerJump(state, input, 1 / 60, true);
+  assert.equal(state.player.velocityY, 0, "ritual/action lock prevents movement");
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.aerialBoostUsed, false, "held input must return to neutral");
+  input.held.clear(); updatePlayerJump(state, input, 1 / 60, false);
+  input.held.add("jump"); input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
   assert.equal(state.player.velocityY, -720);
   assert.equal(state.player.aerialBoostUsed, true);
   state.player.velocityY = 100;
-  assert.equal(tryPlayerJump(state, false), false, "holding/repressing cannot grant a third jump");
-  assert.equal(state.player.velocityY, 100);
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
+  assert.equal(state.player.velocityY, 100, "a third pulse is impossible");
   state.player.climbing = true;
-  assert.equal(tryPlayerJump(state, false), true);
+  input.pressed.add("jump"); updatePlayerJump(state, input, 1 / 60, false);
   assert.equal(state.player.aerialBoostUsed, true, "grabbing a rope does not refill the pulse");
-  assert.equal(tryPlayerJump(state, false), false);
+  assert.equal(state.player.climbing, false);
+});
+
+test("ice checkpoints keep campaign discoveries but cannot forge jungle acquisitions", () => {
+  const state = fixture(); state.world = world.worldBlueprintFor("ice-cryostalker");
+  state.exploration = world.defaultExplorationProgress();
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  checkpoint.exploration = { abilityIds: ["aerial-boost"], openedGateIds: ["ice-mine-relay", "jungle-resonance-seal"], secretIds: ["jungle-clan-cache", "ice-clan-cache"], discoveredRoomIds: [] };
+  const restored = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.deepEqual(plain(restored.exploration.abilityIds), []);
+  assert.deepEqual(plain(restored.exploration.secretIds), ["ice-clan-cache"]);
+  assert.deepEqual(plain(restored.exploration.openedGateIds), ["ice-mine-relay"]);
+  assert.equal(restored.player.maxEnergy, 115);
+  state.exploration = world.mergeExplorationProgress(state.exploration, { abilityIds: ["aerial-boost"], secretIds: ["jungle-clan-cache"] });
+  state.player.maxEnergy = 115;
+  const inherited = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.deepEqual(plain(inherited.exploration.abilityIds), ["aerial-boost"]);
+  assert.equal(inherited.player.maxEnergy, 130);
+  assert.equal(inherited.jumpAssist.requiresRelease, true);
+  assert.equal(inherited.jumpAssist.bufferSeconds, 0);
+});
+
+test("jump buffers and coyote timers never survive checkpoint roundtrip", () => {
+  const state = fixture();
+  state.jumpAssist = { coyoteSeconds: 0.1, bufferSeconds: 0.12, cutArmed: true, requiresRelease: false };
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  assert.equal("jumpAssist" in checkpoint, false);
+  const decoded = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(checkpoint, 1));
+  assert.ok(decoded);
+  const restored = api.restoreCheckpoint(state, decoded.checkpoint, "resume");
+  assert.equal(restored.jumpAssist.requiresRelease, true);
+  assert.equal(restored.jumpAssist.coyoteSeconds, 0);
+  assert.equal(restored.jumpAssist.bufferSeconds, 0);
 });

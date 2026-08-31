@@ -24,6 +24,7 @@ import {
 } from "./systems/controlBindings";
 import {
   defaultExplorationProgress,
+  explorationForMission,
   mergeExplorationProgress,
   normalizeExplorationProgress,
 } from "./systems/explorationProgress";
@@ -53,7 +54,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 5;
+export const SAVE_VERSION = 6;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -489,6 +490,13 @@ const SAVE_MIGRATIONS: Readonly<
     version: 5,
     // V4 had no permanent exploration. Never infer unlocks from mission wins.
     exploration: defaultExplorationProgress(),
+  }),
+  5: (input) => ({
+    ...input,
+    version: 6,
+    // V5 authored only jungle exploration. Preserve those permanent unlocks;
+    // future/foreign ice fields cannot pre-award a newly introduced branch.
+    exploration: explorationForMission("jungle-vey", input.exploration),
   }),
 };
 
@@ -1732,9 +1740,11 @@ export function applyMissionResult(
 
   const exploration = mergeExplorationProgress(
     save.exploration,
-    // Only the authored pilot can report new pilot discoveries. Other hunts
-    // retain existing unlocks but cannot introduce foreign room/secret claims.
-    mission.id === "jungle-vey" ? rawResult.exploration : undefined,
+    // A terminal snapshot cannot discover another biome or introduce an
+    // ability that this mission does not award. Locked attempts add no unlocks.
+    previous.status !== "locked" && (result.difficultyId !== "elder" || save.storyCompleted)
+      ? explorationForMission(mission.id, rawResult.exploration)
+      : undefined,
   );
   const baseProgress: MissionProgress = {
     ...previous,

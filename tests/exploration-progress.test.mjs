@@ -11,7 +11,7 @@ const bundle = await build({
 });
 const {
   defaultExplorationProgress, normalizeExplorationProgress,
-  mergeExplorationProgress, explorationBonuses, SAVE_VERSION,
+  mergeExplorationProgress, explorationBonuses, explorationForMission, isExplorationMission, SAVE_VERSION,
   defaultSave, normalizeSave, applyMissionResult, writeSaveWithStatus,
   loadSaveWithStatus, exportSave, parseSaveImport, MISSION_BY_ID,
 } = await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString("base64")}`);
@@ -63,7 +63,7 @@ test("new campaign exploration is empty and all default collections have separat
   first.discoveredRoomIds.push("jungle-pilot-module");
   assert.deepEqual(second, { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] });
   assert.deepEqual(defaultSave(createdAt).exploration, second);
-  assert.equal(SAVE_VERSION, 5);
+  assert.equal(SAVE_VERSION, 6);
 });
 
 test("exploration normalization rejects malformed collections and arbitrary ids or fields", () => {
@@ -121,7 +121,7 @@ test("schema four migration preserves the campaign but cannot infer or inject ex
   legacy.exploration = acquired;
   const before = structuredClone(legacy);
   const migrated = normalizeSave(legacy);
-  assert.equal(migrated.version, 5);
+  assert.equal(migrated.version, 6);
   assert.deepEqual(migrated.exploration, defaultExplorationProgress());
   assert.deepEqual(migrated, normalizeSave(current));
   assert.deepEqual(legacy, before);
@@ -129,7 +129,7 @@ test("schema four migration preserves the campaign but cannot infer or inject ex
   assert.deepEqual(normalizeSave(legacy).exploration, defaultExplorationProgress());
 });
 
-test("schema five normalization retains authored exploration and strips unknown data", () => {
+test("schema six normalization retains authored exploration and strips unknown data", () => {
   const save = defaultSave(createdAt);
   save.exploration = { ...acquired, abilityIds: ["aerial-boost", "flight"], secretIds: ["jungle-clan-cache", "money-cache"], runtimePosition: { x: 900 } };
   const normalized = normalizeSave(save);
@@ -198,6 +198,76 @@ test("campaign storage and exported save round-trip permanent unlocks with exist
   assert.deepEqual(loaded.save.exploration, acquired);
   const imported = parseSaveImport(exportSave(loaded.save));
   assert.equal(imported.failure, null);
-  assert.equal(imported.save.version, 5);
+  assert.equal(imported.save.version, 6);
   assert.deepEqual(imported.save.exploration, acquired);
+});
+
+const iceAcquired = {
+  abilityIds: [],
+  openedGateIds: ["ice-mine-relay", "ice-return-hatch"],
+  secretIds: ["ice-clan-cache"],
+  discoveredRoomIds: ["ice-region-approach", "ice-region-shaft", "ice-region-relay", "ice-region-vault", "ice-region-return"],
+};
+
+test("exploration mission provenance separates every jungle and ice collection", () => {
+  for (const id of ["jungle-vey", "ice-cryostalker"]) assert.equal(isExplorationMission(id), true);
+  for (const id of [undefined, null, {}, true, 1, "volcano-bad-blood", "jungle-vey "]) {
+    assert.equal(isExplorationMission(id), false);
+    assert.deepEqual(explorationForMission(id, acquired), defaultExplorationProgress());
+  }
+  const both = mergeExplorationProgress(acquired, iceAcquired);
+  const before = structuredClone(both);
+  assert.deepEqual(explorationForMission("jungle-vey", both), acquired);
+  assert.deepEqual(explorationForMission("ice-cryostalker", both), iceAcquired);
+  assert.deepEqual(both, before);
+  assert.deepEqual(explorationForMission("ice-cryostalker", { abilityIds: ["aerial-boost"] }), defaultExplorationProgress());
+});
+
+test("two authored caches provide thirty energy once while either individual cache provides fifteen", () => {
+  assert.deepEqual(explorationBonuses(iceAcquired), { maxEnergy: 15 });
+  const both = mergeExplorationProgress(acquired, iceAcquired, acquired, iceAcquired);
+  assert.deepEqual(explorationBonuses(both), { maxEnergy: 30 });
+  assert.deepEqual(explorationBonuses({ secretIds: Array(50).fill("ice-clan-cache") }), { maxEnergy: 15 });
+  assert.deepEqual(explorationBonuses({ secretIds: [...Array(50).fill("ice-clan-cache"), ...Array(50).fill("jungle-clan-cache"), "fake-cache"], maxEnergy: 999 }), { maxEnergy: 30 });
+});
+
+test("schema five migrates existing jungle discoveries without granting future ice fields", () => {
+  const legacy = applyMissionResult(defaultSave(createdAt), victory(acquired));
+  legacy.version = 5;
+  legacy.settings.masterVolume = 0.37;
+  legacy.exploration = mergeExplorationProgress(acquired, iceAcquired);
+  const before = structuredClone(legacy);
+  const migrated = normalizeSave(legacy);
+  assert.equal(migrated.version, 6);
+  assert.deepEqual(migrated.exploration, acquired);
+  assert.deepEqual(migrated, normalizeSave({ ...legacy, version: 6, exploration: acquired }));
+  assert.deepEqual(legacy, before);
+  assert.deepEqual(parseSaveImport(JSON.stringify(legacy)).save.exploration, acquired);
+});
+
+test("ice failure or abandonment unions both regions without awarding the jungle ability or repeated currency", () => {
+  for (const outcome of ["failed", "abandoned"]) {
+    const noBoost = applyMissionResult(defaultSave(createdAt), victory());
+    const poisoned = mergeExplorationProgress(acquired, iceAcquired);
+    const iceResult = result({ missionId: "ice-cryostalker", outcome, exploration: poisoned });
+    const settled = applyMissionResult(noBoost, iceResult);
+    assert.deepEqual(settled.exploration, iceAcquired);
+    assert.equal(settled.profile.honor, noBoost.profile.honor);
+    assert.equal(settled.profile.clanMarks, noBoost.profile.clanMarks);
+    assert.deepEqual(applyMissionResult(settled, iceResult).exploration, iceAcquired);
+
+    const inherited = { ...noBoost, exploration: structuredClone(acquired) };
+    const withBoth = applyMissionResult(inherited, iceResult);
+    assert.deepEqual(withBoth.exploration, poisoned);
+    assert.deepEqual(explorationBonuses(withBoth.exploration), { maxEnergy: 30 });
+  }
+});
+
+test("jungle and locked ice results cannot smuggle in discoveries outside their playable mission", () => {
+  const fresh = defaultSave(createdAt);
+  const both = mergeExplorationProgress(acquired, iceAcquired);
+  assert.deepEqual(applyMissionResult(fresh, result({ exploration: both })).exploration, acquired);
+  assert.deepEqual(applyMissionResult(fresh, result({ missionId: "ice-cryostalker", exploration: both })).exploration, defaultExplorationProgress());
+  const unlocked = applyMissionResult(fresh, victory());
+  assert.deepEqual(applyMissionResult(unlocked, result({ missionId: "ice-cryostalker", difficultyId: "elder", exploration: both })).exploration, defaultExplorationProgress());
 });

@@ -130,7 +130,12 @@ import {
   type UpgradePurchaseRequest,
   type UpgradeQuote,
 } from "./systems/arsenal";
-import { explorationBonuses, mergeExplorationProgress } from "./systems/explorationProgress";
+import {
+  explorationBonuses,
+  explorationForMission,
+  isExplorationMission,
+  mergeExplorationProgress,
+} from "./systems/explorationProgress";
 import {
   loadShipProgression,
   resetShipProgressionWithStatus,
@@ -243,7 +248,7 @@ function explorationWriteFailure(
   campaign: SaveGame,
   latest: ReturnType<typeof loadActiveHuntSave>,
 ): SaveWriteFailure | null {
-  if (session.missionId !== "jungle-vey") return "save-conflict";
+  if (!isExplorationMission(session.missionId)) return "save-conflict";
   const progress = campaign.missionProgress[session.missionId];
   if (campaign.createdAt !== session.ownerSaveCreatedAt || !progress ||
       progress.attempts !== session.encounterRun || progress.status === "locked") {
@@ -1084,7 +1089,7 @@ export default function GameClient() {
       next = { ...next, exploration: mergeExplorationProgress(saveRef.current.exploration, next.exploration) };
     }
     const session = activeHuntSessionRef.current;
-    if (session?.missionId === "jungle-vey") {
+    if (session && isExplorationMission(session.missionId)) {
       const failure = explorationWriteFailure(session, next, reconcileHuntWrite());
       if (failure) {
         setSaveFailure(failure);
@@ -1393,7 +1398,7 @@ export default function GameClient() {
 
   const persistExplorationProgress = useCallback((progress: ExplorationProgress) => {
     const session = activeHuntSessionRef.current;
-    if (!session || session.missionId !== "jungle-vey" || missionSettlementRef.current || pendingTerminalRunRef.current) return;
+    if (!session || !isExplorationMission(session.missionId) || missionSettlementRef.current || pendingTerminalRunRef.current) return;
     const current = saveRef.current;
     const missionProgress = current.missionProgress[session.missionId];
     if (current.createdAt !== session.ownerSaveCreatedAt || !missionProgress ||
@@ -1401,7 +1406,7 @@ export default function GameClient() {
       setSaveFailure("save-conflict");
       return;
     }
-    const exploration = mergeExplorationProgress(current.exploration, progress);
+    const exploration = mergeExplorationProgress(current.exploration, explorationForMission(session.missionId, progress));
     if (JSON.stringify(exploration) === JSON.stringify(current.exploration)) return;
     const next = { ...current, exploration };
     const failure = explorationWriteFailure(session, current, reconcileHuntWrite());
@@ -2132,9 +2137,21 @@ export default function GameClient() {
                       ? "Impulsion aérienne acquise"
                       : "Impulsion aérienne à découvrir"}
                     {" · "}
-                    {permanentExplorationBonus.maxEnergy > 0
-                      ? `Cache du clan récupérée (+${permanentExplorationBonus.maxEnergy} énergie maximale)`
+                    {save.exploration.secretIds.includes("jungle-clan-cache")
+                      ? "Cache du clan récupérée (+15 énergie maximale)"
                       : "Cache du clan à découvrir"}
+                  </p>
+                )}
+                {selectedMission.id === "ice-cryostalker" && (
+                  <p className="source-badge">
+                    Branche de la mine facultative ·{" "}
+                    {save.exploration.abilityIds.includes("aerial-boost")
+                      ? "Impulsion aérienne de Vey disponible"
+                      : "Impulsion aérienne de Vey requise pour cette branche seulement ; le contrat principal reste accessible"}
+                    {" · "}
+                    {save.exploration.secretIds.includes("ice-clan-cache")
+                      ? "Cache de glace récupérée (+15 énergie maximale)"
+                      : "Cache de glace à découvrir"}
                   </p>
                 )}
                 {isEnemyV7RosterEncounter(

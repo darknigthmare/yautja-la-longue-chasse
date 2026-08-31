@@ -4,7 +4,7 @@ import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
-const explorationBundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, platform: "node", format: "cjs" });
+const explorationBundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, platform: "node", format: "cjs" });
 const explorationModule = { exports: {} };
 runInNewContext(explorationBundle.outputFiles[0].text, { module: explorationModule, exports: explorationModule.exports });
 

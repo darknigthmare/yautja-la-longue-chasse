@@ -8,11 +8,15 @@ import { build } from "vite";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(join(tmpdir(), "yautja-ship-catalogue-"));
+const cleanup = () => rm(outputDirectory, { force: true, recursive: true });
+after(cleanup);
 
-await Promise.all([
+// These SSR contracts need modules only; asset audits read the original files.
+const buildResults = await Promise.allSettled([
   build({
     configFile: false,
     logLevel: "silent",
+    publicDir: false,
     build: {
       emptyOutDir: true,
       outDir: join(outputDirectory, "catalogue"),
@@ -23,6 +27,7 @@ await Promise.all([
   build({
     configFile: false,
     logLevel: "silent",
+    publicDir: false,
     build: {
       emptyOutDir: true,
       outDir: join(outputDirectory, "progression"),
@@ -33,6 +38,7 @@ await Promise.all([
   build({
     configFile: false,
     logLevel: "silent",
+    publicDir: false,
     build: {
       emptyOutDir: true,
       outDir: join(outputDirectory, "save"),
@@ -41,6 +47,12 @@ await Promise.all([
     },
   }),
 ]);
+const buildFailures = buildResults.filter(({ status }) => status === "rejected");
+if (buildFailures.length > 0) {
+  // Every concurrent writer has settled before cleanup, including setup errors.
+  await cleanup();
+  throw new AggregateError(buildFailures.map(({ reason }) => reason), "Ship catalogue test setup failed");
+}
 
 const catalogue = await import(
   pathToFileURL(join(outputDirectory, "catalogue", "catalogue.mjs")).href
@@ -51,10 +63,6 @@ const progression = await import(
 const { defaultSave } = await import(
   pathToFileURL(join(outputDirectory, "save", "save.mjs")).href
 );
-
-after(async () => {
-  await rm(outputDirectory, { force: true, recursive: true });
-});
 
 const FIXED_TIME = "2026-07-22T10:00:00.000Z";
 

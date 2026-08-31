@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
-import { mergeExplorationProgress } from "../app/game/systems/explorationProgress.ts";
+import { mergeExplorationProgress, isExplorationMission } from "../app/game/systems/explorationProgress.ts";
 
 const source = await readFile(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("GameClient.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -28,7 +28,7 @@ function fixture() {
     save: { createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },
-    mergeExplorationProgress,
+    mergeExplorationProgress, isExplorationMission,
     normalizeSave: (save) => structuredClone(save),
     writeSaveWithStatus(save) { observations.writes++; observations.events.push("write"); return { save, persisted: true, failure: null }; },
     clearActiveHuntSave(options) { observations.clears++; observations.events.push(["clear", options?.expectedRunId]); observations.currentHunt = null; return { cleared: true, failure: null }; },

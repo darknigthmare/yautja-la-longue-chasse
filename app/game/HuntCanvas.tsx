@@ -19,9 +19,14 @@ import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
 import { PilotExplorationMap } from "./PilotExplorationMap";
-import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses } from "./systems/explorationProgress";
-import { applyPilotWorld, discoverPilotRooms, pilotInteract, pilotHint, PILOT_MISSION_ID } from "./systems/metroidvaniaPilot";
+import { IceExplorationMap } from "./IceExplorationMap";
+import { drawIceRegionBackdrop, drawIceRegionPlatform, drawIceRegionDevices, ICE_REGION_TEXTURE_PATHS, type IceRegionTextures } from "./iceExplorationRendering";
+import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";
+import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";
+import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
+import { PILOT_MISSION_ID } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform } from "./systems/platformCollision";
+import { freshJumpAssistState, stepJumpAssist, predictLandingWithinBuffer, type JumpAssistState, type JumpAssistResult } from "./systems/jumpAssist";
 import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
 import {
   HUNTER_RIG_CANVAS,
@@ -562,6 +567,7 @@ interface AssetBank {
   platformRoot: HTMLImageElement | null;
   platformStone: HTMLImageElement | null;
   pilotModule: HTMLImageElement | null;
+  iceRegionTextures: IceRegionTextures;
   platformCrown: HTMLImageElement | null;
   platformExpedition: HTMLImageElement | null;
   foregroundFerns: HTMLImageElement | null;
@@ -604,6 +610,7 @@ interface GameState {
   worldScreenId: string;
   visitedScreenIds: string[];
   exploration: ExplorationProgress;
+  jumpAssist: JumpAssistState;
   player: PlayerState;
   world: WorldBlueprint;
   arsenal: ArsenalRuntimeState;
@@ -761,6 +768,7 @@ function isHeldKeyboardAction(action: Action): boolean {
     action === "right" ||
     action === "up" ||
     action === "down" ||
+    action === "jump" ||
     action === "aim"
   );
 }
@@ -1151,7 +1159,7 @@ function makeGameState(
   explorationProgress?: ExplorationProgress,
 ): GameState {
   const exploration = normalizeExplorationProgress(explorationProgress);
-  const world = applyPilotWorld(worldBlueprintFor(mission.id), exploration);
+  const world = applyExplorationWorld(worldBlueprintFor(mission.id), exploration);
   const armor = effectiveArmorStats(
     loadout.armorId,
     inventory.armorUpgrades[loadout.armorId] ?? 0,
@@ -1244,6 +1252,7 @@ function makeGameState(
     worldScreenId: getWorldScreenAtX(mission.id, world.spawn.x).id,
     visitedScreenIds: discoverWorldScreen(mission.id, [], world.spawn.x),
     exploration,
+    jumpAssist: freshJumpAssistState(),
     world,
     arsenal: createArsenalRuntime({
       loadout,
@@ -1904,8 +1913,8 @@ function restoreCheckpoint(
   // Permanent discoveries survive a retry and are merged with the current
   // campaign on resume. Recompute the bonus from its identity, never stack it.
   const exploration = mergeExplorationProgress(state.exploration,
-    state.world.missionId === PILOT_MISSION_ID ? checkpoint.exploration : undefined);
-  const world = applyPilotWorld(worldBlueprintFor(state.world.missionId), exploration);
+    explorationForMission(state.world.missionId, checkpoint.exploration));
+  const world = applyExplorationWorld(worldBlueprintFor(state.world.missionId), exploration);
   player.maxEnergy = state.player.maxEnergy - explorationBonuses(state.exploration).maxEnergy + explorationBonuses(exploration).maxEnergy;
   player.energy = Math.min(player.energy, player.maxEnergy);
   player.aerialBoostUsed = typeof player.aerialBoostUsed === "boolean" ? player.aerialBoostUsed : !player.grounded;
@@ -1945,6 +1954,7 @@ function restoreCheckpoint(
   return {
     ...state,
     exploration,
+    jumpAssist: freshJumpAssistState({ requireRelease: true }),
     world,
     phase: checkpoint.phase,
     paused: mode === "resume",
@@ -2487,7 +2497,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     playerX: state.player.x + state.player.width / 2,
     playerY: state.player.y + state.player.height / 2,
     exploration: normalizeExplorationProgress(state.exploration),
-    pilotHint: mission.id === PILOT_MISSION_ID ? pilotHint(state.exploration, state.player) : null,
+    pilotHint: explorationRegionHint(mission.id, state.exploration, state.player),
     aerialBoostUsed: state.player.aerialBoostUsed,
     grounded: state.player.grounded,
     visitedScreenIds: [...state.visitedScreenIds],
@@ -4251,6 +4261,7 @@ function renderGame(
   context.translate(-cameraX, 0);
 
   if (mission.id === PILOT_MISSION_ID) drawPilotBackdrop(context, cameraX);
+  if (mission.id === ICE_MISSION_ID) drawIceRegionBackdrop(context, cameraX, assets.iceRegionTextures);
 
   // World geometry and mission markers.
   context.fillStyle = palette.ground;
@@ -4345,6 +4356,10 @@ function renderGame(
   const junglePlatformSurfaceRatios = [0.2, 0.22, 0.38, 0.42] as const;
   for (let index = 0; index < state.world.platforms.length; index += 1) {
     const platform = state.world.platforms[index];
+    if (platform.id.startsWith("ice-region-") || platform.id === "ice-mine-relay" || platform.id === "ice-return-hatch") {
+      drawIceRegionPlatform(context, platform, assets.iceRegionTextures);
+      continue;
+    }
     if (platform.id.startsWith("jungle-pilot-") || platform.id === "jungle-resonance-seal" || platform.id === "jungle-canopy-hatch") {
       drawPilotPlatform(context, platform, assets.platformStone);
       continue;
@@ -4400,6 +4415,9 @@ function renderGame(
 
   if (mission.id === PILOT_MISSION_ID) {
     drawPilotDevices(context, state.exploration, { stone: assets.platformStone, module: assets.pilotModule });
+  }
+  if (mission.id === ICE_MISSION_ID) {
+    drawIceRegionDevices(context, state.exploration, assets.iceRegionTextures);
   }
   for (const cover of state.world.covers) {
     const broken = state.brokenPillarIds.has(cover.id);
@@ -6301,8 +6319,8 @@ function interact(
   state: GameState,
   mission: MissionDefinition,
 ): void {
-  if (mission.id === PILOT_MISSION_ID && !state.trophyExtracting) {
-    const interaction = pilotInteract(state.exploration, state.player);
+  if (isExplorationMission(mission.id) && !state.trophyExtracting) {
+    const interaction = interactWithExplorationRegion(mission.id, state.exploration, state.player);
     if (interaction) {
       if (interaction.changed) {
         const previousBonus = explorationBonuses(state.exploration).maxEnergy;
@@ -6310,7 +6328,7 @@ function interact(
         const bonusGained = explorationBonuses(state.exploration).maxEnergy - previousBonus;
         state.player.maxEnergy += bonusGained;
         state.player.energy = Math.min(state.player.maxEnergy, state.player.energy + bonusGained);
-        state.world = applyPilotWorld(state.world, state.exploration);
+        state.world = applyExplorationWorld(state.world, state.exploration);
         queueSound(state, "objective");
       }
       announce(state, interaction.message, 4);
@@ -6646,28 +6664,36 @@ function updateHunterRig(player: PlayerState, delta: number, extracting: boolean
   }
 }
 
-/** A ground/rope jump and the permanent aerial pulse share the remapped jump action. */
-function tryPlayerJump(state: GameState, actionLocked: boolean): boolean {
-  if (actionLocked) return false;
+/** Apply one decision from the shared jump controller to the live actor. */
+function applyPlayerJump(state: GameState, result: JumpAssistResult): void {
   const player = state.player;
+  state.jumpAssist = result.state;
+  player.velocityY = result.velocityY;
+  if (!result.jump) return;
   const origin = { x: player.x + player.width / 2, y: player.y + player.height / 2 };
-  if (player.climbing) {
+  player.grounded = false;
+  if (result.jump === "climb") {
     player.climbing = false;
     player.climbZoneId = null;
-    player.velocityY = -560;
     player.velocityX = player.facing * 270;
     emitNoise(state, "landing", 0.24, 210, origin);
-  } else if (player.grounded) {
-    player.velocityY = -720;
-    player.grounded = false;
-    emitNoise(state, "footstep", 0.3, 230, origin);
-  } else if (!player.aerialBoostUsed && state.exploration.abilityIds.includes("aerial-boost")) {
+  } else if (result.jump === "boost") {
     player.aerialBoostUsed = true;
-    player.velocityY = -720;
     emitNoise(state, "landing", 0.42, 340, origin);
-  } else return false;
+  } else emitNoise(state, "footstep", 0.3, 230, origin);
   queueSound(state, "jump");
-  return true;
+}
+
+function updatePlayerJump(state: GameState, input: InputHub, delta: number, actionLocked: boolean): void {
+  const pressed = consume(input, "jump");
+  const player = state.player;
+  const canBoost = !player.aerialBoostUsed && state.exploration.abilityIds.includes("aerial-boost");
+  const landingSoon = pressed && canBoost && !player.grounded && !player.climbing && player.velocityY >= 0 &&
+    predictLandingWithinBuffer(player, state.world.platforms, state.world.floorY, GRAVITY);
+  applyPlayerJump(state, stepJumpAssist(state.jumpAssist ?? freshJumpAssistState(), {
+    deltaSeconds: delta, pressed, held: isHeld(input, "jump"), grounded: player.grounded,
+    climbing: player.climbing, canBoost, velocityY: player.velocityY, landingSoon, actionLocked,
+  }));
 }
 
 function updatePlayer(
@@ -6829,6 +6855,7 @@ function updatePlayer(
     player.grounded = false;
     player.climbing = false;
     player.climbZoneId = null;
+    state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     updateHunterRig(player, delta, false);
     input.pressed.clear();
     return;
@@ -6880,7 +6907,7 @@ function updatePlayer(
     player.climbZoneId = null;
   }
 
-  if (consume(input, "jump")) tryPlayerJump(state, actionLocked);
+  updatePlayerJump(state, input, delta, actionLocked);
   if (consume(input, "melee") && !actionLocked) {
     playerMelee(state, mission, loadout, inventory);
   }
@@ -6969,6 +6996,13 @@ function updatePlayer(
         y: player.y + player.height,
       },
     );
+  }
+
+  if (player.grounded && state.jumpAssist.bufferSeconds > 0) {
+    applyPlayerJump(state, stepJumpAssist(state.jumpAssist, {
+      deltaSeconds: 0, pressed: false, held: isHeld(input, "jump"), grounded: true,
+      climbing: false, canBoost: false, velocityY: player.velocityY, actionLocked,
+    }));
   }
 
   let maximumX = state.world.width - player.width;
@@ -8390,6 +8424,7 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("up", up);
   setDirection("down", down);
   if (aiming) input.gamepadHeld.add("aim");
+  if (current[0]) input.gamepadHeld.add("jump");
 
   if (input.gamepadDialogActions.length < 4) {
     if (up && !previousDirections.has("up")) input.gamepadDialogActions.push("previous");
@@ -8445,6 +8480,7 @@ function stepGame(
   }
   if (interruption) {
     state.paused = true;
+    state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     input.pressed.clear();
     if (!wasPaused) announce(state, interruption === "gamepad-disconnected"
       ? "Manette déconnectée — chasse en pause."
@@ -8456,10 +8492,14 @@ function stepGame(
     announce(state, state.paused ? "Chasse en pause." : "Chasse reprise.", 1.3);
   }
   if (state.paused) {
+    state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     input.pressed.clear();
     return;
   }
-  if (wasPaused) input.pressed.clear();
+  if (wasPaused) {
+    state.jumpAssist = freshJumpAssistState({ requireRelease: true });
+    input.pressed.clear();
+  }
 
   state.elapsed += delta;
   state.messageTimer = Math.max(0, state.messageTimer - delta);
@@ -8510,8 +8550,8 @@ function stepGame(
   }
 
   // Include a sector discovered on this frame in the same checkpoint.
-  if (mission.id === PILOT_MISSION_ID) {
-    state.exploration = discoverPilotRooms(state.exploration, state.player);
+  if (isExplorationMission(mission.id)) {
+    state.exploration = discoverExplorationRooms(mission.id, state.exploration, state.player);
   }
   updateMissionCheckpoint(state);
   const desiredCamera = clamp(
@@ -8733,7 +8773,7 @@ export default function HuntCanvas({
     }
     let lastExplorationKey = JSON.stringify(normalizeExplorationProgress(explorationProgress));
     const emitExploration = () => {
-      if (mission.id !== PILOT_MISSION_ID) return;
+      if (!isExplorationMission(mission.id)) return;
       const key = JSON.stringify(game.exploration);
       if (key === lastExplorationKey) return;
       lastExplorationKey = key;
@@ -8798,6 +8838,7 @@ export default function HuntCanvas({
       platformRoot: null,
       platformStone: null,
       pilotModule: null,
+      iceRegionTextures: { ice: null, metal: null, relay: null },
       platformCrown: null,
       platformExpedition: null,
       foregroundFerns: null,
@@ -9002,6 +9043,11 @@ export default function HuntCanvas({
         );
       }
     }
+    if (mission.id === ICE_MISSION_ID) {
+      for (const key of ["ice", "metal", "relay"] as const) {
+        queueImage(ICE_REGION_TEXTURE_PATHS[key], image => { assets.iceRegionTextures[key] = image; });
+      }
+    }
     if (mission.id === PILOT_MISSION_ID) {
       queueImage("/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp", image => { assets.pilotModule = image; });
     }
@@ -9178,6 +9224,7 @@ export default function HuntCanvas({
             ecologyRunSeed,
             explorationBeforeRetry,
           );
+      game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       game.visitedScreenIds = discoverWorldScreen(
         mission.id,
         [...visitedBeforeRetry, ...game.visitedScreenIds],
@@ -9218,6 +9265,7 @@ export default function HuntCanvas({
       if (game.phase === "dead" || game.phase === "finished") return;
       input.pressed.clear();
       game.paused = !game.paused;
+      game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       lastObservedPaused = game.paused;
       setUi(snapshot(game, mission));
       emitPersistence(persistHuntRef.current);
@@ -9241,6 +9289,7 @@ export default function HuntCanvas({
       if (game.phase === "dead" || game.phase === "finished") return;
       input.pressed.clear();
       game.paused = true;
+      game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       lastObservedPaused = true;
       emitPersistence(suspendHuntRef.current);
     };
@@ -9285,7 +9334,7 @@ export default function HuntCanvas({
           input.keyboardHeld.add(action);
           if (
             !event.repeat &&
-            (action === "left" || action === "right")
+            (action === "left" || action === "right" || action === "jump")
           ) {
             input.pressed.add(action);
           }
@@ -9309,6 +9358,7 @@ export default function HuntCanvas({
       }
     };
     const onBlur = () => {
+      game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       input.gamepadDialogActions = [];
       input.previousGamepadButtons = [];
       input.gamepadNeedsNeutral = true;
@@ -9461,7 +9511,7 @@ export default function HuntCanvas({
       onPointerDown: (event: ReactPointerEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.currentTarget.setPointerCapture(event.pointerId);
-        if (action === "left" || action === "right") {
+        if (action === "left" || action === "right" || action === "jump") {
           pressAction(action);
         }
         setTouchHeld(action, true);
@@ -9476,7 +9526,7 @@ export default function HuntCanvas({
         if (event.key !== " " && event.key !== "Enter") return;
         event.preventDefault();
         if (event.repeat) return;
-        if (action === "left" || action === "right") {
+        if (action === "left" || action === "right" || action === "jump") {
           pressAction(action);
         }
         setTouchHeld(action, true);
@@ -9750,6 +9800,9 @@ export default function HuntCanvas({
               {mission.id === PILOT_MISSION_ID && (
                 <PilotExplorationMap progress={ui.exploration} playerX={ui.playerX} playerY={ui.playerY} />
               )}
+              {mission.id === ICE_MISSION_ID && (
+                <IceExplorationMap progress={ui.exploration} playerX={ui.playerX} playerY={ui.playerY} />
+              )}
               <ExplorationMap
                 missionId={mission.id}
                 playerX={ui.playerX}
@@ -9846,9 +9899,9 @@ export default function HuntCanvas({
           </button>
           <button
             type="button"
-            onClick={() => pressAction("jump")}
+            {...makeHoldHandlers("jump")}
             style={styles.controlButton}
-            aria-label="Sauter"
+            aria-label="Sauter — maintenir pour monter plus haut"
           >
             ⤒
           </button>
@@ -9950,7 +10003,7 @@ export default function HuntCanvas({
       <footer style={styles.help}>
         <span>{controlActionShortcut("hunt.moveLeft", activeBindings)}/{controlActionShortcut("hunt.moveRight", activeBindings)} · déplacement</span>
         <span>{controlActionShortcut("hunt.moveUp", activeBindings)}/{controlActionShortcut("hunt.moveDown", activeBindings)} · grimpe</span>
-        <span>{controlActionShortcut("hunt.jump", activeBindings)} · saut</span>
+        <span>{controlActionShortcut("hunt.jump", activeBindings)} · saut (maintenir : plus haut)</span>
         <span>{controlActionShortcut("hunt.melee", activeBindings)}/clic · lames</span>
         <span>{controlActionShortcut("hunt.aim", activeBindings)}/clic droit/LT · viser</span>
         <span>{controlActionShortcut("hunt.selectWeaponOne", activeBindings)}/{controlActionShortcut("hunt.selectWeaponTwo", activeBindings)} · sélectionner l’arme</span>

@@ -33,7 +33,7 @@ const ability = { abilityIds: ["aerial-boost"] };
 const cache = { secretIds: ["jungle-clan-cache"] };
 const plain = value => JSON.parse(JSON.stringify(value));
 
-function fixture() {
+function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
   const values = new Map();
   const observed = { saveUpdates: [], runtimeUpdates: [], campaignWrites: 0, mainReads: 0, failure: null };
   const storage = {
@@ -52,9 +52,16 @@ function fixture() {
     },
     removeItem(key) { values.delete(key); },
   };
-  const first = real.writeSaveWithStatus(real.defaultSave("2026-08-31T09:00:00.000Z"), storage).save;
+  const initial = real.defaultSave("2026-08-31T09:00:00.000Z");
+  if (missionId === "ice-cryostalker") {
+    initial.missionProgress["jungle-vey"].status = "completed";
+    initial.missionProgress["jungle-vey"].completions = 1;
+    initial.missionProgress["ice-cryostalker"].status = "available";
+  }
+  initial.exploration = real.mergeExplorationProgress(inheritedProgress);
+  const first = real.writeSaveWithStatus(initial, storage).save;
   const session = {
-    ownerSaveCreatedAt: first.createdAt, missionId: "jungle-vey", difficultyId: "hunter",
+    ownerSaveCreatedAt: first.createdAt, missionId, difficultyId: "hunter",
     encounterRun: 0, runId: "pilot-run", sequence: 0, startedAt: "2026-08-31T09:01:00.000Z",
     configuration: {}, lastPersisted: null, lastAttempted: null,
   };
@@ -62,6 +69,8 @@ function fixture() {
     save: first, saveRef: { current: first }, activeHuntSessionRef: { current: session },
     activeHuntWriteFailureRef: { current: null }, missionSettlementRef: { current: false }, pendingTerminalRunRef: { current: null },
     mergeExplorationProgress: real.mergeExplorationProgress,
+    explorationForMission: real.explorationForMission,
+    isExplorationMission: real.isExplorationMission,
     writeSaveWithStatus: (save) => real.writeSaveWithStatus(save, storage),
     loadActiveHuntSave: () => real.loadActiveHuntSave({ storage }),
     writeActiveHuntSave: (save) => real.writeActiveHuntSave(plain(save), { storage }),
@@ -226,7 +235,7 @@ test("a stale local owner, settled run, missing session or non-pilot hunt cannot
     if (change === "settled") f.environment.missionSettlementRef.current = true;
     if (change === "pending") f.environment.pendingTerminalRunRef.current = "prior-run";
     if (change === "missing") f.environment.activeHuntSessionRef.current = null;
-    if (change === "mission") f.environment.activeHuntSessionRef.current.missionId = "ice-cryostalker";
+    if (change === "mission") f.environment.activeHuntSessionRef.current.missionId = "volcano-bad-blood";
     const writes = f.observed.campaignWrites;
     f.discover(ability);
     assert.equal(f.observed.campaignWrites, writes);
@@ -266,4 +275,74 @@ test("HuntCanvas receives the frozen exploration state and the persistence callb
   const prop = (name) => canvas.attributes.properties.find(node => node.name?.getText(ast) === name)?.initializer?.expression?.getText(ast);
   assert.equal(prop("explorationProgress"), "activeMissionSave.exploration");
   assert.equal(prop("onExplorationProgress"), "persistExplorationProgress");
+});
+
+const iceRoom = { discoveredRoomIds: ["ice-region-relay"] };
+const iceCache = { secretIds: ["ice-clan-cache"] };
+const iceGates = { openedGateIds: ["ice-mine-relay", "ice-return-hatch"] };
+
+test("ice callbacks in one frame retain inherited traversal but accept only ice discoveries", () => {
+  const inherited = real.mergeExplorationProgress(ability, cache);
+  const f = fixture({ missionId: "ice-cryostalker", inheritedProgress: inherited });
+  const frozen = f.environment.save;
+  f.discover(real.mergeExplorationProgress(iceRoom, { discoveredRoomIds: ["jungle-pilot-archive"] }));
+  f.discover(iceGates);
+  f.discover(iceCache);
+  const expected = real.mergeExplorationProgress(inherited, iceRoom, iceGates, iceCache);
+  assert.deepEqual(f.readCampaign().exploration, expected);
+  assert.equal(f.environment.save, frozen);
+  assert.deepEqual(f.observed.runtimeUpdates, []);
+  assert.deepEqual(real.explorationBonuses(f.readCampaign().exploration), { maxEnergy: 30 });
+  f.environment.completeMission({
+    missionId: "ice-cryostalker", difficultyId: "hunter", outcome: "abandoned",
+    score: 0, elapsedSeconds: 5, completedObjectiveIds: [], honorEvents: [],
+    trophyQuality: null, trophyClaims: [], kills: 0, scans: 0,
+    secondWindUsed: false, completedAt: "2026-08-31T09:05:00.000Z",
+  }, true);
+  assert.deepEqual(f.readCampaign().exploration, expected);
+  assert.equal(f.readCampaign().missionProgress["ice-cryostalker"].attempts, 1);
+});
+
+test("ice cannot invent aerial boost and jungle cannot report ice rewards", () => {
+  const ice = fixture({ missionId: "ice-cryostalker" });
+  ice.discover(real.mergeExplorationProgress(ability, cache, iceRoom, iceCache));
+  assert.deepEqual(ice.readCampaign().exploration, real.mergeExplorationProgress(iceRoom, iceCache));
+  const jungle = fixture();
+  jungle.discover(real.mergeExplorationProgress(ability, iceCache, iceGates));
+  assert.deepEqual(jungle.readCampaign().exploration, real.mergeExplorationProgress(ability));
+});
+
+test("ice quota retries preserve the cache without weakening sidecar ownership", () => {
+  for (const claimElsewhere of [false, true]) {
+    const f = fixture({ missionId: "ice-cryostalker", inheritedProgress: ability });
+    const initial = f.checkpoint();
+    assert.ok(initial);
+    f.storage.denyCampaignWrites = true;
+    f.discover(iceRoom);
+    f.discover(iceCache);
+    assert.equal(f.observed.failure, "write-failed");
+    assert.deepEqual(plain(f.environment.saveRef.current.exploration), real.mergeExplorationProgress(ability, iceRoom, iceCache));
+    f.storage.denyCampaignWrites = false;
+    if (claimElsewhere) f.storage.values.set(real.ACTIVE_HUNT_STORAGE_KEY, JSON.stringify({ ...initial, runId: "ice-claimed-elsewhere", sequence: initial.sequence + 1 }));
+    f.environment.persist(f.environment.saveRef.current);
+    assert.equal(f.observed.failure, claimElsewhere ? "save-conflict" : null);
+    assert.deepEqual(f.readCampaign().exploration, real.mergeExplorationProgress(ability, ...(claimElsewhere ? [] : [iceRoom, iceCache])));
+  }
+});
+
+test("ice checks both newer sidecar sequences and replaced campaign owners before discovery writes", () => {
+  for (const conflict of ["sequence", "campaign-owner"]) {
+    const f = fixture({ missionId: "ice-cryostalker", inheritedProgress: ability });
+    const initial = f.checkpoint();
+    assert.ok(initial);
+    if (conflict === "sequence") {
+      f.storage.values.set(real.ACTIVE_HUNT_STORAGE_KEY, JSON.stringify({ ...initial, sequence: initial.sequence + 1 }));
+    } else {
+      f.storage.values.set(real.SAVE_STORAGE_KEY, JSON.stringify({ ...f.readCampaign(), createdAt: "2026-08-31T18:00:00.000Z" }));
+    }
+    const before = f.storage.values.get(real.SAVE_STORAGE_KEY);
+    f.discover(iceCache);
+    assert.equal(f.observed.failure, "save-conflict");
+    assert.equal(f.storage.values.get(real.SAVE_STORAGE_KEY), before);
+  }
 });

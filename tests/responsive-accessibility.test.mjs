@@ -103,7 +103,29 @@ test("hunt mission keeps keyboard controls, live updates and modal focus accessi
   assert.match(hunt, /onKeyUp: \(event: ReactKeyboardEvent<HTMLButtonElement>\)/);
   assert.match(hunt, /event\.key !== " " && event\.key !== "Enter"/);
   assert.match(hunt, /onBlur: \(\) => setTouchHeld\(action, false\)/);
-  assert.match(hunt, /onClick=\{\(\) => pressAction\("jump"\)\}/);
+  const jumpBinding = hunt.indexOf('{...makeHoldHandlers("jump")}');
+  assert.notEqual(jumpBinding, -1, "jump must expose the same held-input contract as movement");
+  const jumpButton = hunt.slice(hunt.lastIndexOf("<button", jumpBinding), hunt.indexOf("</button>", jumpBinding) + 9);
+  assert.match(jumpButton, /type="button"/);
+  assert.match(jumpButton, /aria-label="Sauter[^"\n]*maintenir[^"\n]*"/);
+  assert.doesNotMatch(jumpButton, /onClick|onPress/, "pointer release must not queue a duplicate jump");
+  const holdHandlers = hunt.slice(hunt.indexOf("const makeHoldHandlers ="), hunt.indexOf("const updatePointerScreen ="));
+  const pointerDown = holdHandlers.slice(holdHandlers.indexOf("onPointerDown:"), holdHandlers.indexOf("onPointerUp:"));
+  const keyDown = holdHandlers.slice(holdHandlers.indexOf("onKeyDown:"), holdHandlers.indexOf("onKeyUp:"));
+  for (const handler of [pointerDown, keyDown]) {
+    assert.match(handler, /event\.preventDefault\(\)/);
+    assert.match(handler, /action === "jump"\) \{\s*pressAction\(action\);/);
+    assert.match(handler, /setTouchHeld\(action, true\)/);
+  }
+  assert.match(pointerDown, /setPointerCapture\(event\.pointerId\)/);
+  assert.match(keyDown, /event\.key !== " " && event\.key !== "Enter"/);
+  assert.match(keyDown, /if \(event\.repeat\) return/);
+  assert.match(holdHandlers, /onPointerUp:[\s\S]*?setTouchHeld\(action, false\)/);
+  assert.match(holdHandlers, /onPointerCancel: \(\) => setTouchHeld\(action, false\)/);
+  assert.match(holdHandlers, /onLostPointerCapture: \(\) => setTouchHeld\(action, false\)/);
+  assert.match(holdHandlers, /onKeyUp:[\s\S]*?event\.preventDefault\(\);\s*setTouchHeld\(action, false\)/);
+  assert.match(holdHandlers, /onBlur: \(\) => setTouchHeld\(action, false\)/);
+  assert.equal((holdHandlers.match(/pressAction\(action\)/g) ?? []).length, 2, "only pointer-down and a fresh activation key press may queue an action");
   assert.match(actionButton, /onClick=\{onPress\}/);
   assert.doesNotMatch(actionButton, /onPointerDown/);
   assert.match(
