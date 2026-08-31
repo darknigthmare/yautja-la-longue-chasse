@@ -1,25 +1,28 @@
-art-source/
-docs/
-scripts/
-tests/
-/private-dlc/
+art-source
+docs
+scripts
+tests
+/private-dlc
 
 # Local build outputs and QA artifacts are not deployment sources.
-/dist/
-/.next/
-/.vinext/
-/.wrangler/
-/outputs/
-/work/
-/tmp/
+/dist
+/.next
+/.vinext
+/.wrangler
+/outputs
+/work
+/tmp
 *.tsbuildinfo
 
 # Local tooling metadata and environment files never belong in an upload.
-/.openai/
-/.agents/
-/.codex/
+/.openai
+/.agents
+/.codex
 .env*
 
 # Vercel uses Next; omit Vite-only configuration and its local Sites plugin.
 /vite.config.ts
-/build/
+/build
+
+# Exclude the entries themselves too, including Windows cache junctions.
+/node_modules

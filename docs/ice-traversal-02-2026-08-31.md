@@ -43,3 +43,5 @@ Le navigateur intégré échoue encore avant connexion avec une erreur d’ACL W
 - La compilation Next de production, l'identifiant du déploiement et les contrôles HTTP publics sont consignés séparément dans les preuves de livraison. Ils ne remplacent pas un essai interactif.
 
 Les caches locaux utilisent `W:\CodexBuildCache\yautja-ice-20260831` : packages de dépendances reliés par jonctions, sorties `dist` et `.next`, temporaires et preuves QA. L'inventaire des dépendances a été vérifié avant relance : 29 931 fichiers, 862 341 728 octets, sans perte. Les sources et illustrations restent dans le projet. C: reste saturé et doit être libéré pour les travaux futurs.
+
+Un premier essai Next distant a refuse une jonction locale `dist` envoyee comme lien symbolique : les exclusions Vercel visent maintenant aussi les entrees elles-memes, pas uniquement leur contenu. La projection finale ne contient aucun lien symbolique ni entree privee, y compris les repertoires vides. La logique du jeu et ses 619 tests sont inchanges par ce correctif de distribution.
