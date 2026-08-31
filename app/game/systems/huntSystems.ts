@@ -472,7 +472,9 @@ export type BossEffectKind =
   | "sandmaw-burrow"
   | "leviathan-rogue-wave"
   | "hivemind-spore-pulse"
-  | "guardian-adaptive-field";
+  | "guardian-adaptive-field"
+  | "guardian-adaptive-warning"
+  | "guardian-adaptive-evaded";
 
 export interface BossEffect {
   kind: BossEffectKind;
@@ -528,11 +530,32 @@ export interface BadBloodBossState extends BossCommonState {
   purgeResolved: boolean;
 }
 
+export const GUARDIAN_ADAPTATION = Object.freeze({
+  energyUsesBeforeWarning: 3,
+  observationMemorySeconds: 8,
+  warningSeconds: 1.6,
+  fieldSeconds: 4.5,
+  rangePx: 720,
+});
+
+export interface GuardianAdaptationState {
+  energyUses: number;
+  observationSeconds: number;
+  warningSeconds: number;
+  fieldSeconds: number;
+}
+
+export function createGuardianAdaptationState(): GuardianAdaptationState {
+  return { energyUses: 0, observationSeconds: 0, warningSeconds: 0, fieldSeconds: 0 };
+}
+
 export interface ExpansionBossState extends BossCommonState {
   missionId: Exclude<
     MissionId,
     "jungle-vey" | "ice-cryostalker" | "volcano-bad-blood"
   >;
+  /** Additive checkpoint field: absent in saves made before the adaptive field. */
+  guardianAdaptation?: GuardianAdaptationState;
 }
 
 type ExpansionMissionId = ExpansionBossState["missionId"];
@@ -590,7 +613,7 @@ const EXPANSION_BOSS_EFFECTS: Readonly<
   "desert-sandmaw": { kind: "sandmaw-burrow", value: 260 },
   "ocean-leviathan": { kind: "leviathan-rogue-wave", value: 16 },
   "fungal-hivemind": { kind: "hivemind-spore-pulse", value: 36 },
-  "ruins-ancient-guardian": { kind: "guardian-adaptive-field", value: 1.8 },
+  "ruins-ancient-guardian": { kind: "guardian-adaptive-warning", value: GUARDIAN_ADAPTATION.warningSeconds },
 };
 
 export type BossMechanicState =
@@ -1694,6 +1717,9 @@ export function createBossMechanicState(
       phaseElapsedSeconds: 0,
       attackCooldownSeconds: 1.35,
       sequence: 0,
+      ...(missionId === "ruins-ancient-guardian"
+        ? { guardianAdaptation: createGuardianAdaptationState() }
+        : {}),
     };
   }
   return {
@@ -2075,6 +2101,61 @@ function stepBadBlood(
   };
 }
 
+/**
+ * The Guardian learns only observed, successfully fired energy shots. A warning
+ * can be broken with cover, cloak or distance; the resulting field has a finite
+ * lifetime and only locks energy weapons while its line of sight reaches prey.
+ */
+export function stepGuardianAdaptation(
+  previous: GuardianAdaptationState | undefined,
+  input: BossMechanicInput,
+  phaseWarning: boolean,
+): { state: GuardianAdaptationState; effects: BossEffect[]; energyWeaponsLocked: boolean } {
+  const finite = (value: number | undefined, maximum: number): number =>
+    Number.isFinite(value) ? clamp(value!, 0, maximum) : 0;
+  const delta = Math.max(0, input.deltaSeconds);
+  const canObserve = input.lineOfSight && !input.playerCloaked &&
+    input.distanceToPlayer <= GUARDIAN_ADAPTATION.rangePx;
+  const previousWarning = finite(previous?.warningSeconds, GUARDIAN_ADAPTATION.warningSeconds);
+  const previousField = finite(previous?.fieldSeconds, GUARDIAN_ADAPTATION.fieldSeconds);
+  const state: GuardianAdaptationState = {
+    energyUses: Math.floor(finite(previous?.energyUses, GUARDIAN_ADAPTATION.energyUsesBeforeWarning)),
+    observationSeconds: Math.max(0, finite(previous?.observationSeconds, GUARDIAN_ADAPTATION.observationMemorySeconds) - delta),
+    warningSeconds: Math.max(0, previousWarning - delta),
+    fieldSeconds: Math.max(0, previousField - delta),
+  };
+  const effects: BossEffect[] = [];
+  if (state.observationSeconds <= 0) state.energyUses = 0;
+
+  if (previousWarning > 0) {
+    if (!canObserve) {
+      state.warningSeconds = 0;
+      effects.push({ kind: "guardian-adaptive-evaded", value: 0, id: null });
+    } else if (state.warningSeconds <= 0) {
+      state.fieldSeconds = Math.max(0, GUARDIAN_ADAPTATION.fieldSeconds - Math.max(0, delta - previousWarning));
+      effects.push({ kind: "guardian-adaptive-field", value: state.fieldSeconds, id: null });
+    }
+  }
+
+  // Do not renew a running field or consume a shot on the warning's terminal tick.
+  if (previousWarning <= 0 && previousField <= 0 && canObserve) {
+    if (input.playerUsedEnergyWeapon) {
+      state.energyUses += 1;
+      state.observationSeconds = GUARDIAN_ADAPTATION.observationMemorySeconds;
+    } else if (input.playerUsedRangedWeapon) {
+      state.energyUses = 0;
+      state.observationSeconds = 0;
+    }
+    if (phaseWarning || state.energyUses >= GUARDIAN_ADAPTATION.energyUsesBeforeWarning) {
+      state.energyUses = 0;
+      state.observationSeconds = 0;
+      state.warningSeconds = GUARDIAN_ADAPTATION.warningSeconds;
+      effects.push({ kind: "guardian-adaptive-warning", value: state.warningSeconds, id: null });
+    }
+  }
+  return { state, effects, energyWeaponsLocked: state.fieldSeconds > 0 && canObserve };
+}
+
 function stepExpansionBoss(
   previous: ExpansionBossState,
   input: BossMechanicInput,
@@ -2103,7 +2184,12 @@ function stepExpansionBoss(
     sequence += 1;
   }
 
-  if (enteredPhase && phaseIndex > 1) {
+  const guardianStep = previous.missionId === "ruins-ancient-guardian"
+    ? stepGuardianAdaptation(previous.guardianAdaptation, input, enteredPhase && phaseIndex > 1)
+    : null;
+  if (guardianStep) effects.push(...guardianStep.effects);
+
+  if (!guardianStep && enteredPhase && phaseIndex > 1) {
     const signature = EXPANSION_BOSS_EFFECTS[previous.missionId];
     effects.push({
       kind: signature.kind,
@@ -2119,16 +2205,18 @@ function stepExpansionBoss(
     elapsedSeconds: previous.elapsedSeconds + delta,
     attackCooldownSeconds,
     sequence,
+    ...(guardianStep ? { guardianAdaptation: guardianStep.state } : {}),
   };
+  const guardianWarning = (guardianStep?.state.warningSeconds ?? 0) > 0;
   const latePhase = input.healthRatio <= 0.25;
   return {
     state,
     effects,
     decision: {
       phaseId,
-      attackId,
+      attackId: guardianWarning ? null : attackId,
       movement:
-        input.distanceToPlayer < 105
+        guardianWarning ? "hold" : input.distanceToPlayer < 105
           ? "retreat"
           : input.lineOfSight
             ? latePhase
@@ -2139,7 +2227,7 @@ function stepExpansionBoss(
       damageMultiplier: phaseIndex === 3 ? 1.22 : phaseIndex === 2 ? 1.1 : 1,
       vulnerabilityMultiplier: latePhase ? 1.18 : 1,
       thermalVisibility: previous.missionId === "ruins-ancient-guardian" ? 0.62 : 1,
-      energyWeaponsLocked: false,
+      energyWeaponsLocked: guardianStep?.energyWeaponsLocked ?? false,
       trophyAtRisk: false,
     },
   };

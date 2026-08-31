@@ -18,7 +18,7 @@ export interface TrophyWallVisualAsset {
   runtimeUrl: string;
   planned: boolean;
   available: boolean;
-  consumers: readonly ["trophy-wall"];
+  consumers: readonly ["trophy-wall", "hunt-trophy"];
   sourceMetadata: {
     bytes: number;
     width: number;
@@ -101,6 +101,17 @@ export function trophyWallVisualForDefinitionId(
   }
   const visual = visualsByDefinitionId.get(definitionId);
   return visual?.available && visual.consumers.includes("trophy-wall")
+    ? visual
+    : null;
+}
+
+/** The same exact object can be claimed in the hunt and displayed on the ship. */
+export function trophyHuntVisualForDefinitionId(
+  definitionId: string | null | undefined,
+): TrophyWallVisualAsset | null {
+  if (!definitionId) return null;
+  const visual = visualsByDefinitionId.get(definitionId);
+  return visual?.available && visual.consumers.includes("hunt-trophy")
     ? visual
     : null;
 }

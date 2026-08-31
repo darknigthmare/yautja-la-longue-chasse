@@ -94,7 +94,7 @@ test("V6 runtime wires catalogue, physical deck, hierarchy, sectors and workshop
   assert.match(canvas, /"mid-depth": \{ y: 430, height: 206 \}/);
   assert.match(canvas, /understory: \{ y: 636, height: 305 \}/);
   assert.match(canvas, /worldScreenId/);
-  assert.match(deck, /armory-war-room-v6\.png/);
+  assert.match(deck, /SHIP_INTERIOR_KIT\.wall/);
   assert.match(catalogue, /referenceUrlsForCatalogueEntry/);
   assert.match(catalogue, /catalogueReferenceUrlsForEntry\(entry\)/);
   assert.match(css, /\.catalogueHunterBrowser__sources/);

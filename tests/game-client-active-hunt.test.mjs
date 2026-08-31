@@ -2,14 +2,14 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const source = await readFile(
+const source = (await readFile(
   new URL("../app/game/GameClient.tsx", import.meta.url),
   "utf8",
-);
-const huntSource = await readFile(
+)).replace(/\r\n/g, "\n");
+const huntSource = (await readFile(
   new URL("../app/game/HuntCanvas.tsx", import.meta.url),
   "utf8",
-);
+)).replace(/\r\n/g, "\n");
 
 test("GameClient validates and exposes a compatible interrupted hunt", () => {
   assert.match(source, /loadActiveHuntSave\(\)/);
@@ -77,7 +77,7 @@ test("GameClient resumes exact normalized configuration without applying a resul
 
 test("all terminal and reset paths clear the interrupted hunt", () => {
   assert.match(source, /const completeMission = useCallback[\s\S]*?clearHuntSession\(\)/);
-  assert.match(source, /onAbort=\{\(result\) => \{\s*clearHuntSession\(\)/);
+  assert.match(source, /onAbort=\{\(result\) => \{[\s\S]*?clearHuntSession\(\)/);
   assert.match(source, /const resetProgress = useCallback[\s\S]*?clearHuntSession\(\)[\s\S]*?persist\(fresh\)/);
 });
 

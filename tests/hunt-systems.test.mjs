@@ -79,7 +79,7 @@ const expansionBossEffects = {
   "desert-sandmaw": "sandmaw-burrow",
   "ocean-leviathan": "leviathan-rogue-wave",
   "fungal-hivemind": "hivemind-spore-pulse",
-  "ruins-ancient-guardian": "guardian-adaptive-field",
+  "ruins-ancient-guardian": "guardian-adaptive-warning",
 };
 
 function isOutsideEveryHazard(blueprint, x, margin) {
@@ -911,7 +911,11 @@ test("boss mechanics expose their mission-specific deterministic loops", async (
       bossInput({ healthRatio: 0.55 }),
     );
     assert.equal(phaseTwoStep.decision.phaseId, `${missionId}-phase-2`);
-    assert.ok(phaseTwoStep.decision.attackId);
+    if (missionId === "ruins-ancient-guardian") {
+      assert.equal(phaseTwoStep.decision.attackId, null, "the warning leaves an escape window");
+    } else {
+      assert.ok(phaseTwoStep.decision.attackId);
+    }
     assert.equal(phaseTwoStep.state.missionId, missionId);
     assert.deepEqual(
       phaseTwoStep.effects.map(({ kind }) => kind),
@@ -936,8 +940,8 @@ test("boss mechanics expose their mission-specific deterministic loops", async (
     assert.equal(phaseThreeStep.decision.phaseId, `${missionId}-phase-3`);
     assert.deepEqual(
       phaseThreeStep.effects.map(({ kind }) => kind),
-      [effectKind],
-      `${missionId}: phase three signature`,
+      missionId === "ruins-ancient-guardian" ? [] : [effectKind],
+      `${missionId}: phase three does not restart an existing Guardian warning`,
     );
   }
 });

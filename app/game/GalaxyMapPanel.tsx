@@ -5,6 +5,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
@@ -74,6 +75,8 @@ export interface GalaxyMapPanelProps {
   missionProgress: Readonly<Record<MissionId, MissionProgress>>;
   selectedShipId: ShipId;
   controlBindings?: ControlBindings;
+  /** Freeze navigation and input while a higher-priority dialog owns the UI. */
+  suspended?: boolean;
   initialState?: GalaxyNavigationState;
   onStateChange?: (state: GalaxyNavigationState) => void;
   onBack: () => void;
@@ -188,11 +191,15 @@ export default function GalaxyMapPanel({
   missionProgress,
   selectedShipId,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
+  suspended = false,
   initialState,
   onStateChange,
   onBack,
   onChooseMission,
 }: GalaxyMapPanelProps) {
+  const rootRef = useRef<HTMLElement | null>(null);
+  const suspendedRef = useRef(suspended);
+  const gamepadReadyRef = useRef(false);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const heldKeysRef = useRef(new Set<string>());
   const touchInputRef = useRef<GalaxyFlightPoint>({ x: 0, y: 0 });
@@ -220,6 +227,34 @@ export default function GalaxyMapPanel({
   const flightRef = useRef(flight);
   const [flightMessage, setFlightMessage] = useState("Pilotage manuel");
   const selectedShip = shipForId(selectedShipId);
+
+  const clearFlightInputs = useCallback(() => {
+    heldKeysRef.current.clear();
+    touchInputRef.current = { x: 0, y: 0 };
+    previousPadButtonsRef.current.clear();
+    gamepadReadyRef.current = false;
+  }, []);
+
+  // Keep the same route/position mounted, but never replay controls held before
+  // a dialog, tab switch or window blur. A pad must return to neutral on resume.
+  useLayoutEffect(() => {
+    suspendedRef.current = suspended;
+    clearFlightInputs();
+  }, [clearFlightInputs, suspended]);
+
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.hidden) clearFlightInputs();
+    };
+    window.addEventListener("blur", clearFlightInputs);
+    window.addEventListener("pagehide", clearFlightInputs);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      window.removeEventListener("blur", clearFlightInputs);
+      window.removeEventListener("pagehide", clearFlightInputs);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [clearFlightInputs]);
 
   const items = useMemo(
     () => getGalaxyNavigationItems(GALAXY_NAVIGATION, state),
@@ -284,16 +319,21 @@ export default function GalaxyMapPanel({
   const keyboardFlightHelp = `Carte ${state.level}. Pilotage : ${controlActionShortcut("galaxy.flyLeft", controlBindings)}, ${controlActionShortcut("galaxy.flyRight", controlBindings)}, ${controlActionShortcut("galaxy.flyUp", controlBindings)}, ${controlActionShortcut("galaxy.flyDown", controlBindings)}. Cibles : ${controlActionShortcut("galaxy.previousTarget", controlBindings)} et ${controlActionShortcut("galaxy.nextTarget", controlBindings)}. Voyager : ${controlActionShortcut("galaxy.activate", controlBindings)}.`;
 
   const navigateBack = useCallback(() => {
+    if (suspendedRef.current) return;
     if (state.level === "galaxy") onBack();
     else dispatch({ type: "back" });
   }, [onBack, state.level]);
 
   const returnToGalaxy = useCallback(() => {
+    if (suspendedRef.current) return;
     dispatch({ type: "reset" });
-    window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
+    window.requestAnimationFrame(() => {
+      if (!suspendedRef.current) stageRef.current?.focus({ preventScroll: true });
+    });
   }, []);
 
   const focusItem = useCallback((index: number) => {
+    if (suspendedRef.current) return;
     if (items.length <= 1 || index === state.cursorIndex) return;
     const forward = (index - state.cursorIndex + items.length) % items.length;
     const backward = (state.cursorIndex - index + items.length) % items.length;
@@ -305,11 +345,15 @@ export default function GalaxyMapPanel({
   }, [items.length, state.cursorIndex]);
 
   const openItem = useCallback((item: GalaxyNavigationItem) => {
+    if (suspendedRef.current) return;
     dispatch(actionForItem(item));
-    window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
+    window.requestAnimationFrame(() => {
+      if (!suspendedRef.current) stageRef.current?.focus({ preventScroll: true });
+    });
   }, []);
 
   const cancelActiveRoute = useCallback(() => {
+    if (suspendedRef.current) return;
     if (flightRef.current.mode !== "autopilot") return;
     const next = cancelGalaxyAutopilot(flightRef.current);
     flightTargetRef.current = null;
@@ -319,6 +363,7 @@ export default function GalaxyMapPanel({
   }, []);
 
   const traceRouteToItem = useCallback((item: GalaxyNavigationItem, index: number) => {
+    if (suspendedRef.current) return;
     focusItem(index);
     const mapPosition = itemPositions.get(item.id);
     if (!supportsFlight || !mapPosition) {
@@ -344,6 +389,7 @@ export default function GalaxyMapPanel({
   }, [controlBindings, focusItem, itemPositions, openItem, supportsFlight]);
 
   const launchActive = useCallback(() => {
+    if (suspendedRef.current) return;
     if (!activeItem) return;
     const mapPosition = itemPositions.get(activeItem.id);
     if (!supportsFlight || !mapPosition) {
@@ -403,9 +449,12 @@ export default function GalaxyMapPanel({
   }, [state.level, state.missionId, state.planetId, state.sectorId, state.systemId]);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => stageRef.current?.focus({ preventScroll: true }));
+    if (suspended) return;
+    const frame = window.requestAnimationFrame(() => {
+      if (!suspendedRef.current) stageRef.current?.focus({ preventScroll: true });
+    });
     return () => window.cancelAnimationFrame(frame);
-  }, []);
+  }, [suspended]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -451,7 +500,23 @@ export default function GalaxyMapPanel({
     const tick = (time: number) => {
       const dt = Math.min(80, time - previousTime);
       previousTime = time;
-      const pad = navigator.getGamepads?.().find(Boolean);
+      const active = !suspendedRef.current && !document.hidden &&
+        document.hasFocus() && Boolean(rootRef.current?.contains(document.activeElement));
+      if (!active) {
+        clearFlightInputs();
+        frame = window.requestAnimationFrame(tick);
+        return;
+      }
+      let pad = Array.from(navigator.getGamepads?.() ?? []).find(Boolean);
+      if (!pad) {
+        gamepadReadyRef.current = false;
+      } else if (!gamepadReadyRef.current) {
+        const neutral = Math.abs(pad.axes[0] ?? 0) <= 0.16 &&
+          Math.abs(pad.axes[1] ?? 0) <= 0.16 &&
+          !pad.buttons.some((button) => button.pressed);
+        if (neutral) gamepadReadyRef.current = true;
+        else pad = undefined;
+      }
       const padInput = pad
         ? normalizeGalaxyFlightInput({ x: pad.axes[0] ?? 0, y: pad.axes[1] ?? 0 })
         : { x: 0, y: 0 };
@@ -537,9 +602,10 @@ export default function GalaxyMapPanel({
     };
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
-  }, [cancelActiveRoute, controlBindings, supportsFlight]);
+  }, [cancelActiveRoute, clearFlightInputs, controlBindings, supportsFlight]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (suspendedRef.current) return;
     if (event.target !== event.currentTarget) return;
     const actions = matchingControlActions(
       "galaxy",
@@ -592,8 +658,10 @@ export default function GalaxyMapPanel({
   };
 
   const setTouchDirection = useCallback((event: PointerEvent<HTMLButtonElement>) => {
+    if (suspendedRef.current) return;
     event.preventDefault();
     event.currentTarget.setPointerCapture?.(event.pointerId);
+    stageRef.current?.focus({ preventScroll: true });
     touchInputRef.current = {
       x: Number(event.currentTarget.dataset.flightX ?? 0),
       y: Number(event.currentTarget.dataset.flightY ?? 0),
@@ -603,6 +671,7 @@ export default function GalaxyMapPanel({
     touchInputRef.current = { x: 0, y: 0 };
   }, []);
   const setKeyDirection = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
+    if (suspendedRef.current) return;
     if (event.key !== "Enter" && event.key !== " ") return;
     event.preventDefault();
     touchInputRef.current = {
@@ -627,7 +696,14 @@ export default function GalaxyMapPanel({
         : previewBody?.name ?? "Analyse orbitale";
 
   return (
-    <section className="screen panel-screen galaxy-v10-screen" aria-labelledby="galaxy-map-title">
+    <section ref={rootRef} className="screen panel-screen galaxy-v10-screen"
+      aria-labelledby="galaxy-map-title" inert={suspended}
+      aria-hidden={suspended || undefined} data-suspended={suspended}
+      onBlur={(event) => {
+        if (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget)) {
+          clearFlightInputs();
+        }
+      }}>
       <div className="galaxy-v10-shell">
         <header className="galaxy-v10-header">
           <div className="galaxy-v10-title-row">
@@ -665,6 +741,7 @@ export default function GalaxyMapPanel({
               aria-current={index === breadcrumbs.length - 1 ? "page" : undefined}
               disabled={index === breadcrumbs.length - 1}
               onClick={() => {
+                if (suspendedRef.current) return;
                 if (index === 0) dispatch({ type: "reset" });
                 else if (index === 1 && selection.sector) dispatch({ type: "open-sector", sectorId: selection.sector.id });
                 else if (index === 2 && selection.system) dispatch({ type: "open-system", systemId: selection.system.id });
@@ -678,6 +755,7 @@ export default function GalaxyMapPanel({
 
         <div
           ref={stageRef}
+          data-screen-focus
           className={`galaxy-v10-stage level-${state.level}`}
           data-galaxy-v10-level={state.level}
           data-selected-ship={selectedShipId}
@@ -685,7 +763,7 @@ export default function GalaxyMapPanel({
           aria-label={supportsFlight
             ? keyboardFlightHelp
             : `Dossier orbital ${state.level}. Parcourez les signaux et contrats avec les commandes affichées.`}
-          tabIndex={0}
+          tabIndex={suspended ? -1 : 0}
           onKeyDown={onKeyDown}
           onKeyUp={onKeyUp}
           onBlur={() => heldKeysRef.current.clear()}
@@ -710,7 +788,9 @@ export default function GalaxyMapPanel({
               siblingItems={items}
               activeItem={activeItem}
               onOpenItem={openItem}
-              onChooseMission={onChooseMission}
+              onChooseMission={(mission) => {
+                if (!suspendedRef.current) onChooseMission(mission);
+              }}
             />
           ) : null}
 

@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import { matchesControlAction } from "./systems/controlBindings";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -177,6 +178,7 @@ type Screen =
   | "ship"
   | "deck"
   | "medbay"
+  | "training"
   | "map"
   | "armory"
   | "customization"
@@ -190,7 +192,7 @@ type Screen =
 type MapReturnScreen = Extract<Screen, "ship" | "deck">;
 type StationScreen = Extract<
   Screen,
-  "armory" | "customization" | "trophies" | "codex" | "medbay"
+  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training"
 >;
 type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing">;
 
@@ -740,9 +742,9 @@ export default function GameClient() {
   const [selectedShipId, setSelectedShipId] =
     useState<ShipId>(DEFAULT_SHIP_ID);
   const [mapReturnScreen, setMapReturnScreen] =
-    useState<MapReturnScreen>("ship");
+    useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
-    useState<StationReturnScreen>("ship");
+    useState<StationReturnScreen>("deck");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
@@ -776,6 +778,16 @@ export default function GameClient() {
   const activeHuntSessionRef = useRef<ActiveHuntSession | null>(null);
   const activeHuntWriteFailureRef = useRef<string | null>(null);
   const settingsDialogRef = useRef<HTMLElement | null>(null);
+  const stationDialogRef = useRef<HTMLDivElement | null>(null);
+  const missionSettlementRef = useRef(false);
+  const [quickAccessOpen, setQuickAccessOpen] = useState(false);
+  const [briefingAtAirlock, setBriefingAtAirlock] = useState(false);
+  const [shipDrillActive, setShipDrillActive] = useState(false);
+  const shipStationOpen = screen === "ship" || screen === "map" ||
+    screen === "briefing" || screen === "armory" || screen === "customization" ||
+    screen === "trophies" || screen === "codex" || screen === "medbay" ||
+    screen === "training";
+  const deckVisible = screen === "deck" || shipStationOpen;
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -870,7 +882,11 @@ export default function GameClient() {
       const activeScreen = gameShellRef.current?.querySelector<HTMLElement>(
         ":scope > .screen",
       );
+      const station = stationDialogRef.current;
       const focusTarget =
+        station?.querySelector<HTMLElement>("[data-screen-focus]") ??
+        station?.querySelector<HTMLElement>("h1, h2") ??
+        station ??
         activeScreen?.querySelector<HTMLElement>("[data-screen-focus]") ??
         activeScreen?.querySelector<HTMLElement>("h1, h2");
       if (!focusTarget) return;
@@ -907,7 +923,9 @@ export default function GameClient() {
       focusables()[0]?.focus();
     });
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
       if (event.key === "Escape") {
+        if (event.repeat) return;
         event.preventDefault();
         setSettingsOpen(false);
         setResetArmed(false);
@@ -933,6 +951,50 @@ export default function GameClient() {
       previouslyFocused?.focus();
     };
   }, [settingsOpen]);
+
+  useEffect(() => {
+    if (screen !== "deck" || settingsOpen) return;
+    const onPause = (event: KeyboardEvent) => {
+      if (event.repeat || event.defaultPrevented ||
+        !matchesControlAction("hunt.pause", event, save.settings.controlBindings)) return;
+      event.preventDefault();
+      setSettingsOpen(true);
+    };
+    document.addEventListener("keydown", onPause);
+    return () => document.removeEventListener("keydown", onPause);
+  }, [screen, settingsOpen, save.settings.controlBindings]);
+
+  // The ship remains mounted behind installations. Only the active dialog owns
+  // keyboard focus; closing it releases the same avatar at the same station.
+  useEffect(() => {
+    if (!shipStationOpen || settingsOpen || trophyWorkshop) return;
+    const dialog = stationDialogRef.current;
+    if (!dialog) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+      const nestedDialog = event.target instanceof Element
+        ? event.target.closest('[role="dialog"]') : null;
+      if (nestedDialog && nestedDialog !== dialog) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setScreen("deck");
+      } else if (event.key === "Tab") {
+        const controls = Array.from(dialog.querySelectorAll<HTMLElement>(
+          'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]',
+        )).filter((element) => element.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (!first || !last) { event.preventDefault(); dialog.focus(); return; }
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [settingsOpen, shipStationOpen, trophyWorkshop]);
 
   const playSound = useCallback(
     async (
@@ -994,6 +1056,7 @@ export default function GameClient() {
       if (save.missionProgress[mission.id].status === "locked") return;
       void playSound("select");
       setSelectedMission(mission);
+      setBriefingAtAirlock(false);
       setScreen("briefing");
     },
     [playSound, save.missionProgress],
@@ -1066,7 +1129,10 @@ export default function GameClient() {
   );
 
   const launchMission = useCallback(() => {
-    if (!selectedMission) return;
+    if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
+    missionSettlementRef.current = false;
+    setLastResult(null);
+    setLastRewardSummary(null);
     // A sidecar can only survive a reload when its owning campaign snapshot is
     // durable too. Fresh profiles have not necessarily written the main save
     // yet, so establish that owner before the first hunt autosave.
@@ -1124,6 +1190,7 @@ export default function GameClient() {
       return;
     }
 
+    missionSettlementRef.current = false;
     activeHuntWriteFailureRef.current = null;
     activeHuntSessionRef.current = {
       ownerSaveCreatedAt: resumableHunt.ownerSaveCreatedAt,
@@ -1175,6 +1242,9 @@ export default function GameClient() {
 
   const completeMission = useCallback(
     (result: MissionResult) => {
+      // Runtime callbacks can race at a terminal frame. Settle this run once.
+      if (missionSettlementRef.current) return;
+      missionSettlementRef.current = true;
       clearHuntSession();
       const next = applyMissionResult(save, result);
       persist(next);
@@ -1497,6 +1567,12 @@ export default function GameClient() {
       ),
     [save.trophies],
   );
+  const deckTrophyDisplays = useMemo(() => trophyRecords.flatMap((trophy) => {
+    const visual = trophyWallVisualForDefinitionId(trophy.definitionId) ??
+      enemyTrophyGameplayForDefinitionId(trophy.definitionId);
+    if (!visual) return [];
+    return [{ id: trophy.id, label: visual.name, image: visual.runtimeUrl }];
+  }), [trophyRecords]);
   const resumableMission = resumableHunt
     ? MISSIONS.find(({ id }) => id === resumableHunt.missionId) ?? null
     : null;
@@ -1505,7 +1581,7 @@ export default function GameClient() {
     screen !== "title" && screen !== "mission" ? (
       <TopBar
         save={save}
-        onShip={() => go("ship")}
+        onShip={() => go("deck")}
         onSettings={() => {
           void playSound("ui");
           setSettingsOpen(true);
@@ -1526,7 +1602,7 @@ export default function GameClient() {
       }
       aria-label="Yautja : La Longue Chasse"
     >
-      {topBar}
+      <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
 
       {screen === "title" && (
         <section className="screen title-screen" aria-labelledby="game-title">
@@ -1562,7 +1638,7 @@ export default function GameClient() {
                   className="alien-button"
                   onClick={() => {
                     void playSound("select");
-                    setScreen("ship");
+                    setScreen("deck");
                   }}
                 >
                   Jouer
@@ -1571,7 +1647,7 @@ export default function GameClient() {
                   <button
                     type="button"
                     className="ghost-button"
-                    onClick={() => openMap("ship")}
+                    onClick={() => openMap("deck")}
                   >
                     Contrats
                   </button>
@@ -1608,9 +1684,69 @@ export default function GameClient() {
         </section>
       )}
 
+      {deckVisible && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen physical-deck-screen" inert={shipStationOpen || settingsOpen}>
+            <div className="screen-safe">
+              <div className="physical-deck-toolbar">
+                <button type="button" className="ghost-button" aria-expanded={quickAccessOpen}
+                  onClick={() => setQuickAccessOpen((open) => !open)}>
+                  Accès rapide aux installations
+                </button>
+                <button type="button" className="ghost-button" onClick={() => go("ship")}>
+                  Console du vaisseau
+                </button>
+                <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
+                  Pause / réglages
+                </button>
+              </div>
+              <PhysicalShipDeck
+                appearance={save.appearance}
+                loadout={save.loadout}
+                trophyDisplays={deckTrophyDisplays}
+                rankLabel={RANK_LABELS[save.profile.rankId]}
+                selectedDestination={selectedMission?.planetName}
+                suspended={shipStationOpen || settingsOpen || trophyWorkshop !== null}
+                showShortcuts={quickAccessOpen}
+                highContrast={save.settings.highContrastVision}
+                controlBindings={save.settings.controlBindings}
+                onOpenMap={() => openMap("deck")}
+                onOpenArmory={() => openStationScreen("armory", "deck")}
+                onOpenTrophies={() => openStationScreen("trophies", "deck")}
+                onOpenArchives={() => openStationScreen("codex", "deck")}
+                onOpenAppearanceForge={() => openStationScreen("customization", "deck")}
+                onOpenMedbay={() => openStationScreen("medbay", "deck")}
+                onOpenTraining={() => openStationScreen("training", "deck")}
+                onOpenAirlock={() => {
+                  if (!selectedMission) { openMap("deck"); return; }
+                  setBriefingAtAirlock(true);
+                  go("briefing");
+                }}
+                onNotify={setToast}
+              />
+            </div>
+          </section>
+        </Suspense>
+      )}
+
+      {shipStationOpen && (
+        <div className="ship-station-layer" role="dialog" aria-modal="true"
+          aria-label="Installation du vaisseau" ref={stationDialogRef} tabIndex={-1}
+          inert={settingsOpen || trophyWorkshop !== null}>
+          <div className="ship-station-toolbar" inert={shipDrillActive}>
+            <button type="button" className="ghost-button" onClick={() => go("deck")}>
+              ← Retour au pont · Échap
+            </button>
+            <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
+              Réglages
+            </button>
+          </div>
       {screen === "ship" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <ShipHub
+            embedded
+            suspended={settingsOpen || trophyWorkshop !== null}
+            onTrainingActiveChange={setShipDrillActive}
             save={save}
             controlBindings={save.settings.controlBindings}
             onOpenDeck={() => go("deck")}
@@ -1628,36 +1764,7 @@ export default function GameClient() {
         </Suspense>
       )}
 
-      {screen === "deck" && (
-        <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen physical-deck-screen">
-            <div className="screen-safe">
-              <button
-                type="button"
-                className="physical-deck-back ghost-button"
-                onClick={() => go("ship")}
-              >
-                ← Console du vaisseau
-              </button>
-              <PhysicalShipDeck
-                highContrast={save.settings.highContrastVision}
-                controlBindings={save.settings.controlBindings}
-                onOpenMap={() => openMap("deck")}
-                onOpenArmory={() => openStationScreen("armory", "deck")}
-                onOpenTrophies={() => openStationScreen("trophies", "deck")}
-                onOpenArchives={() => openStationScreen("codex", "deck")}
-                onOpenAppearanceForge={() =>
-                  openStationScreen("customization", "deck")
-                }
-                onOpenMedbay={() => openStationScreen("medbay", "deck")}
-                onNotify={setToast}
-              />
-            </div>
-          </section>
-        </Suspense>
-      )}
-
-      {screen === "medbay" && (
+      {(screen === "medbay" || screen === "training") && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen physical-medbay-entry">
             <button
@@ -1668,9 +1775,13 @@ export default function GameClient() {
               ← Retour au pont physique
             </button>
             <ShipHub
+              embedded
+              suspended={settingsOpen || trophyWorkshop !== null}
+              onTrainingActiveChange={setShipDrillActive}
               save={save}
               controlBindings={save.settings.controlBindings}
-              initialRoomId="medbay"
+              key={screen}
+              initialRoomId={screen === "training" ? "training" : "medbay"}
               onOpenDeck={() => go("deck")}
               onOpenMap={() => openMap("deck")}
               onOpenArmory={() => openStationScreen("armory", "deck")}
@@ -1690,6 +1801,7 @@ export default function GameClient() {
       {screen === "map" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <GalaxyMapPanel
+            suspended={settingsOpen || trophyWorkshop !== null}
             missionProgress={save.missionProgress}
             selectedShipId={selectedShipId}
             controlBindings={save.settings.controlBindings}
@@ -1814,9 +1926,12 @@ export default function GameClient() {
                   <button
                     type="button"
                     className="alien-button"
-                    onClick={launchMission}
+                    onClick={briefingAtAirlock ? launchMission : () => {
+                      go("deck");
+                      setToast("Destination confirmée. Rejoins le sas pour vérifier ton arsenal et partir.");
+                    }}
                   >
-                    Déployer le chasseur
+                    {briefingAtAirlock ? "Déployer le chasseur" : "Valider la destination"}
                   </button>
                   <button
                     type="button"
@@ -1827,6 +1942,11 @@ export default function GameClient() {
                   >
                     Modifier l’arsenal
                   </button>
+                  {!briefingAtAirlock && (
+                    <button type="button" className="ghost-button" onClick={launchMission}>
+                      Départ rapide
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -2115,7 +2235,7 @@ export default function GameClient() {
                     className="customization-rig"
                     appearance={save.appearance}
                     armorId={save.loadout.armorId}
-                    weaponIds={["plasma-caster", "wristblades"]}
+                    weaponIds={save.loadout.weaponIds}
                     gearIds={save.loadout.gearIds}
                     size="min(88%, 440px)"
                     maskWorn={
@@ -2801,6 +2921,9 @@ export default function GameClient() {
         </Suspense>
       )}
 
+        </div>
+      )}
+
       {screen === "mission" && selectedMission && (
         <Suspense fallback={<DeferredGameScreen />}>
           <HuntCanvas
@@ -2827,12 +2950,14 @@ export default function GameClient() {
             onSound={playGameplaySound}
             onFinish={completeMission}
             onAbort={(result) => {
+              if (missionSettlementRef.current) return;
+              missionSettlementRef.current = true;
               clearHuntSession();
               persist(applyMissionResult(save, result));
               setLastResult(null);
               setLastRewardSummary(null);
               setSelectedMission(null);
-              go("ship");
+              go("deck");
             }}
           />
         </Suspense>
@@ -2906,7 +3031,7 @@ export default function GameClient() {
                 className="alien-button"
                 onClick={() => {
                   setSelectedMission(null);
-                  go("ship");
+                  go("deck");
                 }}
               >
                 Retour au vaisseau
@@ -2914,7 +3039,7 @@ export default function GameClient() {
               <button
                 type="button"
                 className="ghost-button"
-                onClick={() => setScreen("mission")}
+                onClick={launchMission}
               >
                 Rejouer la chasse
               </button>
@@ -2963,7 +3088,7 @@ export default function GameClient() {
                 onClick={() => {
                   updateSettings({ difficultyId: "elder" });
                   setSelectedMission(null);
-                  openMap("ship");
+                  openMap("deck");
                 }}
               >
                 Ouvrir les contrats Elder
@@ -2973,7 +3098,7 @@ export default function GameClient() {
                 className="ghost-button"
                 onClick={() => {
                   setSelectedMission(null);
-                  go("ship");
+                  go("deck");
                 }}
               >
                 Retour au vaisseau

@@ -4837,7 +4837,7 @@ select:focus-visible,
     left: 10px;
   }
   .physical-ship-deck__map {
-    min-width: 52rem !important;
+    min-width: 70rem !important;
     min-height: 27rem !important;
   }
   .physical-ship-deck__station-shortcuts {
@@ -6016,4 +6016,75 @@ select:focus-visible,
   .galaxy-v10-ship {
     transition: none !important;
   }
+}
+
+
+/* The playable deck remains visible beside its local installation panels. */
+.physical-deck-screen {
+  min-height: 100svh;
+  background: radial-gradient(ellipse at 50% 0%, #18231e 0%, #020706 70%);
+}
+.physical-deck-screen > .screen-safe { max-width: 1600px; }
+.physical-deck-toolbar,
+.ship-station-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.physical-deck-toolbar { margin-bottom: 16px; }
+.physical-deck-toolbar .ghost-button { min-height: 44px; font-size: .72rem; }
+.ship-station-layer {
+  position: fixed;
+  z-index: 40;
+  inset: 86px 2vw 18px 19vw;
+  overflow: auto;
+  overscroll-behavior: contain;
+  color: var(--text-primary, #e5e8d5);
+  border: 1px solid #63745c;
+  background: #050d0bf5;
+  box-shadow: 0 20px 80px #000b;
+  scrollbar-color: #63745c #050d0b;
+}
+.ship-station-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #07110ffa;
+  border-bottom: 1px solid #344437;
+}
+.ship-station-toolbar .ghost-button { min-height: 44px; }
+.ship-station-layer > .screen,
+.ship-station-layer .physical-medbay-entry {
+  min-height: 0;
+}
+.ship-station-layer .screen-safe { padding: 26px clamp(16px, 3vw, 44px); }
+.ship-station-layer .hub-stage { min-height: 34rem; padding-top: 26px; }
+.ship-station-layer .physical-medbay-entry__back { display: none; }
+.ship-station-layer .briefing-layout { grid-template-columns: minmax(200px, .7fr) minmax(300px, 1fr); }
+.ship-station-layer .briefing-visual { min-height: 380px; }
+.ship-station-layer .modal-backdrop { z-index: 70; }
+.physical-ship-deck__station-shortcuts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .ship-station-layer { inset: 80px 12px 12px; }
+  .ship-station-layer .briefing-layout { grid-template-columns: 1fr; }
+  .ship-station-layer .briefing-visual { min-height: 210px; max-height: 270px; }
+}
+@media (max-width: 560px) {
+  .physical-ship-deck__station-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ship-station-layer { inset: 68px 6px 6px; }
+  .ship-station-toolbar { padding: 6px; }
+  .ship-station-toolbar .ghost-button { font-size: .68rem; padding: 8px; }
+}
+
+/* Nested stations must not trap a fixed training dialog below their toolbar. */
+.ship-station-layer > .screen,
+.ship-station-layer .hub-screen {
+  animation: none;
+  transform: none;
+}
+@media (max-width: 900px) {
+  .physical-ship-deck__viewport svg { min-width: 70rem !important; }
 }

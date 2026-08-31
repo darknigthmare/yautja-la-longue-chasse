@@ -226,7 +226,7 @@ async function main() {
   );
   const forbiddenConsumerSources = new Map(
     await Promise.all(
-      ["HunterRigPreview.tsx", "HuntCanvas.tsx", "hunterVisuals.ts"].map(
+      ["HunterRigPreview.tsx", "hunterVisuals.ts"].map(
         async (fileName) => [
           fileName,
           await readFile(path.join(root, "app", "game", fileName), "utf8"),
@@ -241,10 +241,9 @@ async function main() {
   assert.equal(policy.sourcePolicy.webReferenceRequired, false);
   assert.equal(policy.sourcePolicy.franchiseStatus, "project-original");
   assert.equal(policy.sourcePolicy.genericAliasingAllowed, false);
-  assert.deepEqual(policy.consumerPolicy.allowed, ["trophy-wall"]);
+  assert.deepEqual(policy.consumerPolicy.allowed, ["trophy-wall", "hunt-trophy"]);
   assert.deepEqual(policy.consumerPolicy.forbidden, [
     "hunter-rig",
-    "hunt-canvas",
     "registered-layer",
   ]);
   assert.equal(policy.consumerPolicy.fallback, "v6-aligned-atlas");
@@ -272,7 +271,7 @@ async function main() {
   for (const sourceEntry of sourceSpecs.entries) {
     assert.equal(sourceEntry.id, sourceEntry.definitionId);
     assert.equal(sourceEntry.franchiseStatus, "project-original");
-    assert.deepEqual(sourceEntry.consumers, ["trophy-wall"]);
+    assert.deepEqual(sourceEntry.consumers, ["trophy-wall", "hunt-trophy"]);
     assert.equal(sourceEntry.planned, true);
     assert.equal(sourceEntry.available, true);
     assert.equal(sourceEntry.inspection.status, "passed");
@@ -310,7 +309,7 @@ async function main() {
     assert.equal(runtimeEntry.targetName, sourceEntry.targetName);
     assert.equal(runtimeEntry.partId, sourceEntry.partId);
     assert.equal(runtimeEntry.franchiseStatus, "project-original");
-    assert.deepEqual(runtimeEntry.consumers, ["trophy-wall"]);
+    assert.deepEqual(runtimeEntry.consumers, ["trophy-wall", "hunt-trophy"]);
     assert.equal(runtimeEntry.validation.alpha, true);
     assert.equal(runtimeEntry.inspection.status, "passed");
     sourceHashes.push(await inspectSource(runtimeEntry, sourceEntry));
@@ -355,7 +354,7 @@ async function main() {
   assert.match(gameClientSource, /missionTrophy\?\.description/);
 
   console.log(
-    "Audit trophees V15 reussi : 8 recompenses originales exactes, alpha valide, fallback V6 aligne et aucun asset haute resolution dans le rig ou le canvas.",
+    "Audit trophees V15 reussi : 8 recompenses originales exactes, alpha valide, fallback V6 aligne et prise exacte reutilisable en chasse sans asset dans les couches du rig.",
   );
 }
 

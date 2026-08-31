@@ -68,10 +68,10 @@ test("physical deck exposes semantic shortcuts and a mobile tracking viewport", 
   assert.match(source, /event\.defaultPrevented/);
   assert.match(source, /event\.stopPropagation\(\)/);
   assert.match(source, /viewport\.scrollLeft = clamp/);
-  assert.match(source, /const idleAtRest =[\s\S]*if \(idleAtRest\) \{[\s\S]*return;/);
-  assert.match(source, /current\.x === x[\s\S]*return current/);
+  // Idle stability and suspended input are covered by physical-ship-motion.test.mjs.
+  assert.match(source, /inert=\{suspended\}/);
   assert.match(source, /touchControls: \{[\s\S]*flexWrap: "wrap"/);
-  assert.match(css, /\.physical-ship-deck__map[\s\S]*min-width: 52rem !important/);
+  assert.match(css, /\.physical-ship-deck__map[\s\S]*min-width: 70rem !important/);
   assert.match(css, /\.physical-ship-deck__station-shortcuts[\s\S]*repeat\(6, minmax\(0, 1fr\)\)/);
   assert.match(css, /@media \(max-width: 440px\)[\s\S]*\.physical-ship-deck__touch-controls[\s\S]*justify-content: center !important/);
   assert.match(

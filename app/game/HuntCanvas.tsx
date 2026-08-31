@@ -14,6 +14,7 @@ import {
   GEAR_BY_ID,
   WEAPON_BY_ID,
 } from "./data";
+import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import {
   HUNTER_RIG_CANVAS,
   relativeBoneMatrix,
@@ -43,6 +44,7 @@ import {
 } from "./hunterVisuals";
 import {
   ageTracks,
+  GUARDIAN_ADAPTATION,
   advanceScentField,
   calculateLineOfSightOcclusion,
   createAiBrain,
@@ -553,6 +555,7 @@ interface AssetBank {
   enemyV7: Partial<Record<EnemyV7Id, HTMLImageElement | null>>;
   enemyV8: Partial<Record<string, HTMLImageElement | null>>;
   enemyTrophies: Partial<Record<string, HTMLImageElement | null>>;
+  campaignTrophies: Partial<Record<string, HTMLImageElement | null>>;
   mercenary: HTMLImageElement | null;
   cryostalker: HTMLImageElement | null;
   badBlood: HTMLImageElement | null;
@@ -1440,7 +1443,9 @@ function cloneBossMechanics(
         ...mechanics,
         disabledConsoleIds: [...mechanics.disabledConsoleIds],
       }
-    : { ...mechanics };
+    : mechanics.missionId === "ruins-ancient-guardian" && mechanics.guardianAdaptation
+      ? { ...mechanics, guardianAdaptation: { ...mechanics.guardianAdaptation } }
+      : { ...mechanics };
 }
 
 function cloneArsenalRuntime(
@@ -1718,6 +1723,12 @@ function deserializeActiveHuntCheckpoint(
         !isStringArray(checkpoint.trophyRitual.sequence))) ||
     (checkpoint.bossMechanics.missionId === "volcano-bad-blood" &&
       !isStringArray(checkpoint.bossMechanics.disabledConsoleIds)) ||
+    (checkpoint.bossMechanics.missionId === "ruins-ancient-guardian" &&
+      checkpoint.bossMechanics.guardianAdaptation !== undefined &&
+      (!isJsonObject(checkpoint.bossMechanics.guardianAdaptation) ||
+        !hasFiniteFields(checkpoint.bossMechanics.guardianAdaptation, [
+          "energyUses", "observationSeconds", "warningSeconds", "fieldSeconds",
+        ]))) ||
     !hasFiniteFields(checkpoint.boss, [
       "x",
       "y",
@@ -1894,7 +1905,8 @@ function restoreCheckpoint(
     bossMechanics: cloneBossMechanics(checkpoint.bossMechanics),
     bossVulnerabilityMultiplier: checkpoint.bossVulnerabilityMultiplier,
     bossThermalVisibility: checkpoint.bossThermalVisibility,
-    energyWeaponsLocked: checkpoint.energyWeaponsLocked,
+    // Older checkpoints may retain a field lock after the Apex has died.
+    energyWeaponsLocked: checkpoint.boss.alive && checkpoint.energyWeaponsLocked,
     bossHitPillar: checkpoint.bossHitPillar,
     brokenPillarIds: new Set(checkpoint.brokenPillarIds),
     mud: { ...checkpoint.mud },
@@ -2248,6 +2260,30 @@ function currentObjective(
       title: "Interrompre la purge du sanctuaire",
       detail: `${Math.ceil(state.bossMechanics.purgeSeconds)} s — ${disabled}/3 consoles neutralisées avec [E].`,
     };
+  }
+  if (
+    state.bossMechanics.missionId === "ruins-ancient-guardian" &&
+    state.boss.active && state.boss.alive
+  ) {
+    const adaptation = state.bossMechanics.guardianAdaptation;
+    if (adaptation && adaptation.warningSeconds > 0) {
+      return {
+        title: "Contre-mesure en préparation",
+        detail: `${adaptation.warningSeconds.toFixed(1)} s : brise la ligne de vue, camoufle-toi ou quitte le cercle pour éviter le champ.`,
+      };
+    }
+    if (adaptation && adaptation.fieldSeconds > 0) {
+      return {
+        title: state.energyWeaponsLocked ? "Champ du Gardien : plasma brouillé" : "À l'abri du champ du Gardien",
+        detail: `${adaptation.fieldSeconds.toFixed(1)} s restantes. Les armes cinétiques et les lames restent disponibles ; couvert et distance protègent du brouillage.`,
+      };
+    }
+    if (adaptation && adaptation.energyUses > 0) {
+      return {
+        title: `Le Gardien étudie le plasma : ${adaptation.energyUses}/${GUARDIAN_ADAPTATION.energyUsesBeforeWarning}`,
+        detail: "Varie tes tirs ou laisse sa mémoire énergétique se dissiper. Trois tirs observés déclenchent une contre-mesure.",
+      };
+    }
   }
   if (state.phase === "tracking") {
     const done = state.scanNodes.filter((node) => node.scanned).length;
@@ -2735,7 +2771,7 @@ function v6TrophyAtlasImage(
   return null;
 }
 
-/** Draws non-anatomical claims from their exact V6 cell, never a skull fallback. */
+/** Draws the claimed campaign object; legacy mask/insignia fallback stays non-anatomical. */
 function drawNamedTrophyAtAnchor(
   context: CanvasRenderingContext2D,
   assets: AssetBank,
@@ -2745,6 +2781,36 @@ function drawNamedTrophyAtAnchor(
   scale: number,
   rotation = 0,
 ): boolean {
+  const exactVisual = trophyHuntVisualForDefinitionId(trophy.definitionId);
+  const exactImage = exactVisual
+    ? assets.campaignTrophies[exactVisual.definitionId]
+    : null;
+  if (exactVisual && exactImage) {
+    const [left, top, right, bottom] = exactVisual.validation.bounds;
+    const sourceWidth = right - left + 1;
+    const sourceHeight = bottom - top + 1;
+    const maximumSize = trophy.partId === "insignia" ? 115 : 185;
+    const imageScale = maximumSize * scale / Math.max(sourceWidth, sourceHeight);
+    const width = sourceWidth * imageScale;
+    const height = sourceHeight * imageScale;
+    context.save();
+    context.translate(position.x, position.y);
+    context.rotate(rotation);
+    context.scale(facing, 1);
+    context.drawImage(
+      exactImage,
+      left,
+      top,
+      sourceWidth,
+      sourceHeight,
+      -width * 0.5,
+      -height * 0.58,
+      width,
+      height,
+    );
+    context.restore();
+    return true;
+  }
   if (trophy.partId !== "mask" && trophy.partId !== "insignia") {
     return false;
   }
@@ -4620,6 +4686,8 @@ function renderGame(
     }
   }
 
+  drawGuardianAdaptiveField(context, state, palette);
+
   // Enemies, boss and projectiles.
   const visibleEnemies = [
     ...state.enemies.filter(
@@ -5105,6 +5173,7 @@ function revealWithinEffect(
     };
     if (
       enemy.alive &&
+      enemy.active &&
       distance(event.origin, enemyCenter) <= event.radiusPx &&
       !enemy.scanned
     ) {
@@ -5835,7 +5904,9 @@ function playerWeapon(
   if (state.energyWeaponsLocked && attack.energyCost > 0) {
     announce(
       state,
-      "Impulsion du sanctuaire : arme énergétique verrouillée.",
+      mission.id === "ruins-ancient-guardian"
+        ? "Champ du Gardien : plasma brouillé. Utilise une arme cinétique, un couvert ou la distance."
+        : "Impulsion du sanctuaire : arme énergétique verrouillée.",
       1.8,
     );
     return;
@@ -5961,6 +6032,7 @@ function playerScan(state: GameState, mission: MissionDefinition): void {
   ]) {
     if (
       enemy.alive &&
+      enemy.active &&
       !enemy.scanned &&
       distance(center, {
         x: enemy.x + enemy.width / 2,
@@ -6052,7 +6124,11 @@ function finishTrophyExtraction(
     const sourceEnemy = state.enemies.find(
       (enemy) => enemy.id === drop.enemyRuntimeId,
     );
-    if (sourceEnemy) spawnGore(state, sourceEnemy, "trophy");
+    if (
+      sourceEnemy &&
+      drop.claim.partId !== "mask" &&
+      drop.claim.partId !== "insignia"
+    ) spawnGore(state, sourceEnemy, "trophy");
     queueSound(state, "trophy");
     addHonor(
       state,
@@ -6111,7 +6187,9 @@ function finishTrophyExtraction(
   };
   state.phase = "extraction";
   spawnExtractionThreat(state, mission);
-  spawnGore(state, state.boss, "trophy");
+  if (mission.trophy.partId !== "mask" && mission.trophy.partId !== "insignia") {
+    spawnGore(state, state.boss, "trophy");
+  }
   queueSound(state, "trophy");
   addHonor(
     state,
@@ -6122,7 +6200,7 @@ function finishTrophyExtraction(
   );
   announce(
     state,
-    `${mission.trophy.name} arraché. Le chasseur célèbre sa prise ; vaisseau en approche.`,
+    `${mission.trophy.name} : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.`,
     5,
   );
 }
@@ -7355,6 +7433,43 @@ function executeBossAttack(
   }
 }
 
+function drawGuardianAdaptiveField(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  palette: MissionDefinition["palette"],
+): void {
+  if (state.bossMechanics.missionId !== "ruins-ancient-guardian" ||
+    !state.boss.active || !state.boss.alive) return;
+  const adaptation = state.bossMechanics.guardianAdaptation;
+  if (!adaptation || (adaptation.warningSeconds <= 0 && adaptation.fieldSeconds <= 0)) return;
+  const warning = adaptation.warningSeconds > 0;
+  const center = { x: state.boss.x + state.boss.width / 2, y: state.boss.y + state.boss.height / 2 };
+  context.save();
+  context.strokeStyle = warning ? palette.danger : palette.accent;
+  context.fillStyle = context.strokeStyle;
+  context.lineWidth = warning ? 3 : 2;
+  context.globalAlpha = warning ? 0.55 + Math.sin(state.elapsed * 10) * 0.2 : 0.28;
+  context.setLineDash(warning ? [12, 8] : [4, 8]);
+  context.beginPath();
+  context.arc(center.x, center.y, GUARDIAN_ADAPTATION.rangePx, 0, Math.PI * 2);
+  context.stroke();
+  if (warning) {
+    context.beginPath();
+    context.moveTo(center.x, center.y);
+    context.lineTo(state.player.x + state.player.width / 2, state.player.y + state.player.height / 2);
+    context.stroke();
+  }
+  context.setLineDash([]);
+  context.globalAlpha = 1;
+  context.font = "700 13px system-ui, sans-serif";
+  context.textAlign = "center";
+  context.fillText(
+    warning ? `CHAMP DANS ${adaptation.warningSeconds.toFixed(1)} S` : `CHAMP ${adaptation.fieldSeconds.toFixed(1)} S`,
+    center.x, state.boss.y - 24,
+  );
+  context.restore();
+}
+
 function updateBoss(
   state: GameState,
   mission: MissionDefinition,
@@ -7614,16 +7729,35 @@ function updateBoss(
           3.2,
         );
         break;
-      case "guardian-adaptive-field":
-        state.projectiles = state.projectiles.filter(
-          (projectile) => projectile.hostile,
-        );
-        player.weaponCooldown = Math.max(player.weaponCooldown, effect.value);
-        player.energy = Math.max(0, player.energy - 24);
-        state.energyWeaponsLocked = true;
+      case "guardian-adaptive-warning":
+        boss.pendingAttackId = null;
+        boss.telegraph = effect.value;
+        boss.velocityX = 0;
         announce(
           state,
-          "Le Gardien adapte son champ : projectiles neutralisés.",
+          `Le Gardien prépare son champ : ${effect.value.toFixed(1)} s pour rompre sa ligne de vue ou quitter le cercle.`,
+          effect.value,
+        );
+        break;
+      case "guardian-adaptive-evaded":
+        boss.telegraph = 0;
+        boss.pendingAttackId = null;
+        announce(state, "Verrouillage déjoué : le Gardien a perdu ta signature.", 2.5);
+        break;
+      case "guardian-adaptive-field":
+        // The persistent lock comes from bossMechanics, not a one-frame flag.
+        // Preserve kinetic ammunition, returning discs and distant plasma shots.
+        state.projectiles = state.projectiles.filter(
+          (projectile) => projectile.hostile || projectile.weaponId !== "plasma-caster" ||
+            distance(projectile, bossCenter) > GUARDIAN_ADAPTATION.rangePx ||
+            calculateLineOfSightOcclusion(bossCenter, projectile, state.world.covers.filter(
+              (cover) => !state.brokenPillarIds.has(cover.id),
+            )) >= 0.72,
+        );
+        player.energy = Math.max(0, player.energy - 24);
+        announce(
+          state,
+          `Champ adaptatif actif : plasma brouillé pendant ${effect.value.toFixed(1)} s. Les armes cinétiques restent utilisables.`,
           3,
         );
         break;
@@ -8469,6 +8603,7 @@ export default function HuntCanvas({
       enemyV7: {},
       enemyV8: {},
       enemyTrophies: {},
+      campaignTrophies: {},
       mercenary: null,
       cryostalker: null,
       badBlood: null,
@@ -8544,6 +8679,14 @@ export default function HuntCanvas({
       }
     };
     preloadEnvironmentAroundScreen(game.worldScreenId);
+
+    // Reuse the exact available V15 cutout for extraction and hand carry.
+    const campaignTrophyVisual = trophyHuntVisualForDefinitionId(mission.trophy.id);
+    if (campaignTrophyVisual) {
+      queueImage(campaignTrophyVisual.runtimeUrl, (image) => {
+        assets.campaignTrophies[campaignTrophyVisual.definitionId] = image;
+      });
+    }
 
     queueImage(backgroundPath(mission), (image) => {
       assets.background = image;

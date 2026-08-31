@@ -42,6 +42,7 @@ const {
   TROPHY_WALL_MANIFEST_SUMMARY,
   TROPHY_WALL_VISUALS,
   trophyWallVisualForDefinitionId,
+  trophyHuntVisualForDefinitionId,
 } = await import(
   pathToFileURL(join(outputDirectory, "trophy-visual-registry.mjs")).href
 );
@@ -58,7 +59,7 @@ const globalStylesSource = await readFile(
   "utf8",
 );
 const forbiddenConsumerSources = await Promise.all(
-  ["HunterRigPreview.tsx", "HuntCanvas.tsx", "hunterVisuals.ts"].map(
+  ["HunterRigPreview.tsx", "hunterVisuals.ts"].map(
     (fileName) =>
       readFile(resolve(projectRoot, "app/game", fileName), "utf8"),
   ),
@@ -100,7 +101,11 @@ test("V15 visual identity and copy match the authoritative mission definitions",
     assert.equal(visual.targetName, mission.trophy.targetName);
     assert.equal(visual.partId, mission.trophy.partId);
     assert.equal(visual.franchiseStatus, "project-original");
-    assert.deepEqual(visual.consumers, ["trophy-wall"]);
+    assert.deepEqual(visual.consumers, ["trophy-wall", "hunt-trophy"]);
+    assert.equal(
+      trophyHuntVisualForDefinitionId(visual.definitionId)?.runtimeUrl,
+      visual.runtimeUrl,
+    );
     assert.equal(
       trophyWallVisualForDefinitionId(visual.definitionId)?.runtimeUrl,
       visual.runtimeUrl,
@@ -131,7 +136,7 @@ test("GameClient resolves exact images by definitionId and retains the aligned V
   assert.match(gameClientSource, /const fallbackTrophyDescription =/);
 });
 
-test("standalone V15 wall cutouts never enter the hunter rig or hunt canvas", () => {
+test("V15 exact claims stay outside the registered hunter equipment layers", () => {
   for (const visual of TROPHY_WALL_VISUALS) {
     for (const source of forbiddenConsumerSources) {
       assert.equal(source.includes(visual.runtimeUrl), false);

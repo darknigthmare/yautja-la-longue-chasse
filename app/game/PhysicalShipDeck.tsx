@@ -4,12 +4,11 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useLayoutEffect,
   useRef,
   useState,
   type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
-  type MouseEvent as ReactMouseEvent,
-  type PointerEvent as ReactPointerEvent,
 } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import {
@@ -18,82 +17,45 @@ import {
   type ControlBindings,
 } from "./systems/controlBindings";
 
-export type PhysicalShipStationId =
-  | "galaxy-map"
-  | "wall-armory"
-  | "trophy-hall"
-  | "clan-archives"
-  | "appearance-forge"
-  | "medical-bay";
+import HunterRigPreview from "./HunterRigPreview";
+import { SHIP_INTERIOR_KIT } from "./shipInteriorKit";
+import type { HunterAppearance, Loadout } from "./types";
+import {
+  PHYSICAL_SHIP_WORLD,
+  PHYSICAL_SHIP_STATIONS,
+  PHYSICAL_SHIP_LADDERS as LADDERS,
+  PHYSICAL_SHIP_SURFACES as SURFACES,
+  clampPhysicalShip as clamp,
+  clearPhysicalShipControls,
+  createPhysicalShipMotion,
+  gatePhysicalShipGamepad,
+  nearestPhysicalShipStation as nearestStationFor,
+  resolvePhysicalShipInput,
+  stepPhysicalShipMotion,
+  type PhysicalShipMotion as PlayerMotion,
+  type PhysicalShipHeldControls as HeldControls,
+  type PhysicalShipStationDefinition,
+  type PhysicalShipStationId,
+} from "./systems/physicalShipMotion";
 
-export interface PhysicalShipStationDefinition {
-  id: PhysicalShipStationId;
+export { PHYSICAL_SHIP_STATIONS } from "./systems/physicalShipMotion";
+export type { PhysicalShipStationDefinition, PhysicalShipStationId } from "./systems/physicalShipMotion";
+
+export interface PhysicalShipTrophyDisplay {
+  id: string;
   label: string;
-  shortLabel: string;
-  description: string;
-  x: number;
-  y: number;
-  level: "floor" | "gantry";
+  image: string;
 }
 
-export const PHYSICAL_SHIP_STATIONS: readonly PhysicalShipStationDefinition[] = [
-  {
-    id: "galaxy-map",
-    label: "Carte galactique",
-    shortLabel: "CARTE",
-    description: "Explorer la galaxie, les systèmes, les planètes et leurs chasses.",
-    x: 100,
-    y: 440,
-    level: "floor",
-  },
-  {
-    id: "wall-armory",
-    label: "Armurerie murale",
-    shortLabel: "ARMURERIE",
-    description: "Choisir biomasks, armes et équipements exposés sur le mur.",
-    x: 275,
-    y: 300,
-    level: "gantry",
-  },
-  {
-    id: "trophy-hall",
-    label: "Mur des trophées",
-    shortLabel: "TROPHÉES",
-    description: "Préparer, honorer et exposer les prises de la Longue Chasse.",
-    x: 500,
-    y: 440,
-    level: "floor",
-  },
-  {
-    id: "clan-archives",
-    label: "Archives du clan",
-    shortLabel: "ARCHIVES",
-    description: "Consulter chasseurs légendaires, castes, rangs et chroniques.",
-    x: 500,
-    y: 300,
-    level: "gantry",
-  },
-  {
-    id: "appearance-forge",
-    label: "Forge des parures",
-    shortLabel: "PARURES",
-    description: "Ajuster corps, biomask, dreads, plaques et ornements du chasseur.",
-    x: 725,
-    y: 300,
-    level: "gantry",
-  },
-  {
-    id: "medical-bay",
-    label: "Baie médicale",
-    shortLabel: "SOINS",
-    description: "Traiter blessures, brûlures acides et interfaces neurales entre deux chasses.",
-    x: 900,
-    y: 440,
-    level: "floor",
-  },
-] as const;
-
 export interface PhysicalShipDeckProps {
+  appearance: HunterAppearance;
+  loadout: Loadout;
+  trophyDisplays?: readonly PhysicalShipTrophyDisplay[];
+  rankLabel?: string;
+  selectedDestination?: string;
+  /** Keep the deck mounted under station overlays to preserve the hunter's position. */
+  suspended?: boolean;
+  showShortcuts?: boolean;
   controlBindings?: ControlBindings;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
@@ -104,76 +66,16 @@ export interface PhysicalShipDeckProps {
   onOpenArchives?: () => void;
   onOpenAppearanceForge?: () => void;
   onOpenMedbay?: () => void;
+  onOpenTraining?: () => void;
+  onOpenAirlock?: () => void;
   /** Generic telemetry hook, called in addition to the station callback. */
   onInteract?: (stationId: PhysicalShipStationId) => void;
-  onStationProximityChange?: (
-    stationId: PhysicalShipStationId | null,
-  ) => void;
+  onStationProximityChange?: (stationId: PhysicalShipStationId | null) => void;
   onNotify?: (message: string) => void;
 }
 
-interface PlayerMotion {
-  x: number;
-  y: number;
-  velocityY: number;
-  facing: -1 | 1;
-  onSurface: boolean;
-  climbing: boolean;
-}
-
-interface HeldControls {
-  left: boolean;
-  right: boolean;
-  up: boolean;
-  down: boolean;
-  jumpQueued: boolean;
-}
-
-interface WalkableSurface {
-  left: number;
-  right: number;
-  y: number;
-}
-
-const WORLD_WIDTH = 1_000;
-const WORLD_HEIGHT = 520;
-const INTERACTION_RADIUS = 92;
-const WALK_SPEED = 190;
-const CLIMB_SPEED = 150;
-const JUMP_SPEED = 375;
-const GRAVITY = 980;
-
-const SURFACES: readonly WalkableSurface[] = [
-  { left: 235, right: 765, y: 300 },
-  { left: 20, right: 980, y: 440 },
-];
-
-const LADDERS = [
-  { x: 275, top: 300, bottom: 440 },
-  { x: 735, top: 300, bottom: 440 },
-] as const;
-
-function clamp(value: number, minimum: number, maximum: number): number {
-  return Math.max(minimum, Math.min(maximum, value));
-}
-
-function nearestStationFor(
-  player: PlayerMotion,
-): PhysicalShipStationDefinition | null {
-  let nearest: PhysicalShipStationDefinition | null = null;
-  let nearestDistance = Number.POSITIVE_INFINITY;
-  for (const station of PHYSICAL_SHIP_STATIONS) {
-    const distance = Math.hypot(
-      player.x - station.x,
-      (player.y - station.y) * 1.35,
-    );
-    if (distance <= INTERACTION_RADIUS && distance < nearestDistance) {
-      nearest = station;
-      nearestDistance = distance;
-    }
-  }
-  return nearest;
-}
+const WORLD_WIDTH = PHYSICAL_SHIP_WORLD.width;
+const WORLD_HEIGHT = PHYSICAL_SHIP_WORLD.height;
 
 function isEditableTarget(target: EventTarget | null): boolean {
   return (
@@ -191,6 +93,13 @@ function isEditableTarget(target: EventTarget | null): boolean {
  * focusable stations remain available as an accessibility shortcut.
  */
 export default function PhysicalShipDeck({
+  appearance,
+  loadout,
+  trophyDisplays = [],
+  rankLabel = "Chasseur",
+  selectedDestination = "Choisis une chasse à la carte galactique",
+  suspended = false,
+  showShortcuts = false,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   autoFocus = true,
   gamepadEnabled = true,
@@ -201,29 +110,20 @@ export default function PhysicalShipDeck({
   onOpenArchives,
   onOpenAppearanceForge,
   onOpenMedbay,
+  onOpenTraining,
+  onOpenAirlock,
   onInteract,
   onStationProximityChange,
   onNotify,
 }: PhysicalShipDeckProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
-  const controlsRef = useRef<HeldControls>({
-    left: false,
-    right: false,
-    up: false,
-    down: false,
-    jumpQueued: false,
-  });
+  const controlsRef = useRef<HeldControls>(clearPhysicalShipControls());
   const previousGamepadRef = useRef({ jump: false, interact: false });
+  const gamepadReadyRef = useRef(false);
+  const suspendedRef = useRef(suspended);
   const previousStationRef = useRef<PhysicalShipStationId | null>(null);
-  const [player, setPlayer] = useState<PlayerMotion>({
-    x: 92,
-    y: 440,
-    velocityY: 0,
-    facing: 1,
-    onSurface: true,
-    climbing: false,
-  });
+  const [player, setPlayer] = useState<PlayerMotion>(createPhysicalShipMotion);
   const playerRef = useRef(player);
   const [status, setStatus] = useState(
     "Pont prêt. Approche-toi d’une station puis interagis.",
@@ -245,6 +145,8 @@ export default function PhysicalShipDeck({
 
   const activateStation = useCallback(
     (station: PhysicalShipStationDefinition) => {
+      if (suspendedRef.current) return;
+      controlsRef.current = clearPhysicalShipControls();
       onInteract?.(station.id);
       if (station.id === "galaxy-map") onOpenMap?.();
       if (station.id === "wall-armory") onOpenArmory?.();
@@ -252,6 +154,8 @@ export default function PhysicalShipDeck({
       if (station.id === "clan-archives") onOpenArchives?.();
       if (station.id === "appearance-forge") onOpenAppearanceForge?.();
       if (station.id === "medical-bay") onOpenMedbay?.();
+      if (station.id === "training-arena") onOpenTraining?.();
+      if (station.id === "launch-airlock") onOpenAirlock?.();
       notify(`${station.label} activée.`);
     },
     [
@@ -263,27 +167,35 @@ export default function PhysicalShipDeck({
       onOpenMap,
       onOpenMedbay,
       onOpenTrophies,
+      onOpenTraining,
+      onOpenAirlock,
     ],
   );
 
   const interactFromAvatar = useCallback(() => {
-    const station = nearestStationFor(player);
+    if (suspendedRef.current) return;
+    const station = nearestStationFor(playerRef.current);
     if (station) {
       activateStation(station);
       return;
     }
     notify("Aucune station à portée. Suis le marqueur lumineux.");
-  }, [activateStation, notify, player]);
+  }, [activateStation, notify]);
 
   const interactRef = useRef(interactFromAvatar);
   useEffect(() => {
     interactRef.current = interactFromAvatar;
   }, [interactFromAvatar]);
 
-  useEffect(() => {
-    if (!autoFocus) return;
-    rootRef.current?.focus({ preventScroll: true });
-  }, [autoFocus]);
+  // Releasing held controls on both edges prevents a stale key or pad from
+  // moving the hunter as a modal closes. The physics state stays mounted.
+  useLayoutEffect(() => {
+    suspendedRef.current = suspended;
+    controlsRef.current = clearPhysicalShipControls();
+    previousGamepadRef.current = { jump: false, interact: false };
+    gamepadReadyRef.current = false;
+    if (!suspended && autoFocus) rootRef.current?.focus({ preventScroll: true });
+  }, [autoFocus, suspended]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -297,6 +209,7 @@ export default function PhysicalShipDeck({
   }, [player.x]);
 
   useEffect(() => {
+    if (suspended) return;
     const stationId = nearbyStation?.id ?? null;
     if (stationId === previousStationRef.current) return;
     previousStationRef.current = stationId;
@@ -306,20 +219,17 @@ export default function PhysicalShipDeck({
         `${nearbyStation.label} à portée. ${interactionShortcut} / X pour utiliser.`,
       );
     }
-  }, [interactionShortcut, nearbyStation, onNotify, onStationProximityChange]);
+  }, [interactionShortcut, nearbyStation, onNotify, onStationProximityChange, suspended]);
 
   // Keyboard state is sampled by the same fixed physics loop as touch/gamepad.
   useEffect(() => {
     const clearControls = () => {
-      controlsRef.current = {
-        left: false,
-        right: false,
-        up: false,
-        down: false,
-        jumpQueued: false,
-      };
+      controlsRef.current = clearPhysicalShipControls();
+      previousGamepadRef.current = { jump: false, interact: false };
+      gamepadReadyRef.current = false;
     };
     const changeKey = (event: KeyboardEvent, pressed: boolean) => {
+      if (suspendedRef.current || document.hidden) return;
       if (pressed) {
         if (event.defaultPrevented || isEditableTarget(event.target)) return;
         if (
@@ -384,162 +294,56 @@ export default function PhysicalShipDeck({
   useEffect(() => {
     let frameId = 0;
     let previousTime = performance.now();
-
     const frame = (time: number) => {
       const deltaSeconds = Math.min(0.034, Math.max(0, (time - previousTime) / 1_000));
       previousTime = time;
-
-      let gamepadHorizontal = 0;
-      let gamepadVertical = 0;
-      if (gamepadEnabled && typeof navigator.getGamepads === "function") {
-        const gamepad = navigator.getGamepads().find(Boolean);
-        if (gamepad) {
-          const axisX = gamepad.axes[0] ?? 0;
-          const axisY = gamepad.axes[1] ?? 0;
-          const dpadLeft = gamepad.buttons[14]?.pressed ?? false;
-          const dpadRight = gamepad.buttons[15]?.pressed ?? false;
-          const dpadUp = gamepad.buttons[12]?.pressed ?? false;
-          const dpadDown = gamepad.buttons[13]?.pressed ?? false;
-          gamepadHorizontal =
-            Math.abs(axisX) > 0.22 ? axisX : Number(dpadRight) - Number(dpadLeft);
-          gamepadVertical =
-            Math.abs(axisY) > 0.22 ? axisY : Number(dpadDown) - Number(dpadUp);
-          const jumpPressed = gamepad.buttons[0]?.pressed ?? false;
-          const interactPressed =
-            (gamepad.buttons[2]?.pressed ?? false) ||
-            (gamepad.buttons[3]?.pressed ?? false);
-          if (jumpPressed && !previousGamepadRef.current.jump) {
-            controlsRef.current.jumpQueued = true;
-          }
-          if (interactPressed && !previousGamepadRef.current.interact) {
-            interactRef.current();
-          }
-          previousGamepadRef.current = {
-            jump: jumpPressed,
-            interact: interactPressed,
-          };
-        }
-      }
-
-      const heldControls = controlsRef.current;
-      const currentPlayer = playerRef.current;
-      const idleAtRest =
-        !heldControls.left &&
-        !heldControls.right &&
-        !heldControls.up &&
-        !heldControls.down &&
-        !heldControls.jumpQueued &&
-        gamepadHorizontal === 0 &&
-        gamepadVertical === 0 &&
-        currentPlayer.velocityY === 0 &&
-        currentPlayer.onSurface &&
-        !currentPlayer.climbing;
-      if (idleAtRest) {
+      const root = rootRef.current;
+      const active = !suspendedRef.current && !document.hidden && document.hasFocus() && Boolean(root?.contains(document.activeElement));
+      if (!active) {
+        controlsRef.current = clearPhysicalShipControls();
+        previousGamepadRef.current = { jump: false, interact: false };
+        gamepadReadyRef.current = false;
         frameId = window.requestAnimationFrame(frame);
         return;
       }
 
-      setPlayer((current) => {
-        const held = controlsRef.current;
-        const keyboardHorizontal = Number(held.right) - Number(held.left);
-        const keyboardVertical = Number(held.down) - Number(held.up);
-        const horizontal = clamp(keyboardHorizontal + gamepadHorizontal, -1, 1);
-        const vertical = clamp(keyboardVertical + gamepadVertical, -1, 1);
-        let x = clamp(current.x + horizontal * WALK_SPEED * deltaSeconds, 28, 972);
-        let y = current.y;
-        let velocityY = current.velocityY;
-        let onSurface = false;
-        let climbing = false;
-        const facing = horizontal === 0 ? current.facing : horizontal < 0 ? -1 : 1;
-        const ladder = LADDERS.find(
-          (candidate) =>
-            Math.abs(x - candidate.x) <= 29 &&
-            y >= candidate.top - 12 &&
-            y <= candidate.bottom + 12,
-        );
-
-        if (ladder && vertical !== 0 && !held.jumpQueued) {
-          climbing = true;
-          x += (ladder.x - x) * Math.min(1, deltaSeconds * 9);
-          y = clamp(
-            y + vertical * CLIMB_SPEED * deltaSeconds,
-            ladder.top,
-            ladder.bottom,
-          );
-          velocityY = 0;
-          onSurface = y === ladder.top || y === ladder.bottom;
-        } else {
-          const currentSurface = SURFACES.find(
-            (surface) =>
-              Math.abs(current.y - surface.y) <= 2 &&
-              x >= surface.left &&
-              x <= surface.right,
-          );
-          const canJump = current.onSurface || current.climbing || Boolean(currentSurface);
-          if (held.jumpQueued && canJump) {
-            velocityY = -JUMP_SPEED;
-          } else if (currentSurface && !held.jumpQueued) {
-            y = currentSurface.y;
-            velocityY = 0;
-            onSurface = true;
-          }
-
-          if (!onSurface) {
-            const previousY = y;
-            velocityY += GRAVITY * deltaSeconds;
-            y += velocityY * deltaSeconds;
-            if (velocityY >= 0) {
-              const landing = SURFACES.find(
-                (surface) =>
-                  x >= surface.left &&
-                  x <= surface.right &&
-                  previousY <= surface.y &&
-                  y >= surface.y,
-              );
-              if (landing) {
-                y = landing.y;
-                velocityY = 0;
-                onSurface = true;
-              }
-            }
-          }
+      let sample = { horizontal: 0, vertical: 0, jump: false, interact: false };
+      if (gamepadEnabled && typeof navigator.getGamepads === "function") {
+        const gamepad = Array.from(navigator.getGamepads()).find(Boolean);
+        if (gamepad) {
+          const axisX = gamepad.axes[0] ?? 0;
+          const axisY = gamepad.axes[1] ?? 0;
+          sample = {
+            horizontal: Math.abs(axisX) > 0.22 ? axisX : Number(gamepad.buttons[15]?.pressed ?? false) - Number(gamepad.buttons[14]?.pressed ?? false),
+            vertical: Math.abs(axisY) > 0.22 ? axisY : Number(gamepad.buttons[13]?.pressed ?? false) - Number(gamepad.buttons[12]?.pressed ?? false),
+            jump: gamepad.buttons[0]?.pressed ?? false,
+            interact: (gamepad.buttons[2]?.pressed ?? false) || (gamepad.buttons[3]?.pressed ?? false),
+          };
         }
-
-        held.jumpQueued = false;
-        const nextY = clamp(y, 40, 440);
-        if (
-          current.x === x &&
-          current.y === nextY &&
-          current.velocityY === velocityY &&
-          current.facing === facing &&
-          current.onSurface === onSurface &&
-          current.climbing === climbing
-        ) {
-          playerRef.current = current;
-          return current;
-        }
-        const nextPlayer: PlayerMotion = {
-          x,
-          y: nextY,
-          velocityY,
-          facing,
-          onSurface,
-          climbing,
-        };
-        playerRef.current = nextPlayer;
-        return nextPlayer;
-      });
+      }
+      const gated = gatePhysicalShipGamepad(sample, gamepadReadyRef.current, false);
+      gamepadReadyRef.current = gated.ready;
+      sample = gated.sample;
+      if (sample.interact && !previousGamepadRef.current.interact) interactRef.current();
+      const input = resolvePhysicalShipInput(controlsRef.current, { ...sample, jump: sample.jump && !previousGamepadRef.current.jump }, suspendedRef.current);
+      previousGamepadRef.current = { jump: sample.jump, interact: sample.interact };
+      controlsRef.current.jumpQueued = false;
+      const next = stepPhysicalShipMotion(playerRef.current, input, deltaSeconds, suspendedRef.current);
+      if (next !== playerRef.current) {
+        playerRef.current = next;
+        setPlayer(next);
+      }
       frameId = window.requestAnimationFrame(frame);
     };
-
     frameId = window.requestAnimationFrame(frame);
     return () => window.cancelAnimationFrame(frameId);
   }, [gamepadEnabled]);
 
   const setHeldControl = useCallback(
     (control: keyof Omit<HeldControls, "jumpQueued">, pressed: boolean) => {
+      if (suspendedRef.current) return;
       controlsRef.current[control] = pressed;
-      rootRef.current?.focus({ preventScroll: true });
+      if (pressed) rootRef.current?.focus({ preventScroll: true });
     },
     [],
   );
@@ -553,29 +357,16 @@ export default function PhysicalShipDeck({
   );
 
   const queueJump = useCallback(() => {
+    if (suspendedRef.current) return;
     controlsRef.current.jumpQueued = true;
     rootRef.current?.focus({ preventScroll: true });
   }, []);
-
-  const holdHandlers = (
-    control: keyof Omit<HeldControls, "jumpQueued">,
-  ) => ({
-    onPointerDown: (event: ReactPointerEvent<HTMLButtonElement>) => {
-      event.currentTarget.setPointerCapture(event.pointerId);
-      setHeldControl(control, true);
-    },
-    onPointerUp: () => setHeldControl(control, false),
-    onPointerCancel: () => setHeldControl(control, false),
-    onPointerLeave: () => setHeldControl(control, false),
-    onClick: (event: ReactMouseEvent<HTMLButtonElement>) => {
-      if (event.detail === 0) pulseControl(control);
-    },
-  });
 
   const stationKeyboard = (
     event: ReactKeyboardEvent<SVGGElement>,
     station: PhysicalShipStationDefinition,
   ) => {
+    if (suspendedRef.current) return;
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       event.stopPropagation();
@@ -592,16 +383,26 @@ export default function PhysicalShipDeck({
       ref={rootRef}
       className="physical-ship-deck"
       data-screen-focus
-      tabIndex={0}
+      tabIndex={suspended ? -1 : 0}
+      inert={suspended}
+      aria-hidden={suspended || undefined}
+      data-suspended={suspended}
+      data-player-x={Math.round(player.x)}
+      data-player-y={Math.round(player.y)}
       role="region"
       aria-label="Pont physique du vaisseau Yautja"
       aria-describedby="physical-deck-help"
+      onPointerDown={(event) => {
+        if (suspended || (event.target instanceof Element &&
+          event.target.closest('button, [role="button"], a, input, select, textarea'))) return;
+        rootRef.current?.focus({ preventScroll: true });
+      }}
       style={{ ...styles.root, "--deck-accent": accent } as CSSProperties}
     >
       <header style={styles.header}>
         <div>
-          <p style={styles.eyebrow}>VAISSEAU · MENU JOUABLE</p>
-          <h2 style={styles.title}>Parcours le pont</h2>
+          <p style={styles.eyebrow}>VAISSEAU DE CHASSE · {rankLabel.toLocaleUpperCase("fr")}</p>
+          <h2 style={styles.title}>Le pont du chasseur</h2>
         </div>
         <p id="physical-deck-help" style={styles.help}>
           Marcher : {controlActionShortcut("hunt.moveLeft", controlBindings)} / {controlActionShortcut("hunt.moveRight", controlBindings)} / {controlActionShortcut("hunt.moveUp", controlBindings)} / {controlActionShortcut("hunt.moveDown", controlBindings)} / stick · sauter : {controlActionShortcut("hunt.jump", controlBindings)} / A · interagir : {interactionShortcut} / X. Grimpe aux échelles avec haut et bas.
@@ -617,11 +418,14 @@ export default function PhysicalShipDeck({
           className="physical-ship-deck__map"
           viewBox={`0 0 ${WORLD_WIDTH} ${WORLD_HEIGHT}`}
           role="group"
-          aria-label="Coupe latérale interactive du pont, avec six stations accessibles"
+          aria-label="Coupe latérale interactive du pont, avec huit stations accessibles"
           style={styles.svg}
         >
           <title>Pont physique interactif du vaisseau Yautja</title>
           <defs>
+            <pattern id="deck-wall-module" patternUnits="userSpaceOnUse" width={SHIP_INTERIOR_KIT.wall.width} height={SHIP_INTERIOR_KIT.wall.height} y={PHYSICAL_SHIP_WORLD.floorY - SHIP_INTERIOR_KIT.wall.height}>
+              <image href={SHIP_INTERIOR_KIT.wall.src} width={SHIP_INTERIOR_KIT.wall.width} height={SHIP_INTERIOR_KIT.wall.height} preserveAspectRatio="xMidYMid meet" />
+            </pattern>
             <linearGradient id="deck-space" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="#020607" />
               <stop offset="1" stopColor="#0b1d1b" />
@@ -641,44 +445,48 @@ export default function PhysicalShipDeck({
           </defs>
 
           <rect width={WORLD_WIDTH} height={WORLD_HEIGHT} fill="url(#deck-space)" />
-          <image
-            href="/game/backgrounds/armory-war-room-v6.png"
-            x="0"
-            y="0"
-            width={WORLD_WIDTH}
-            height={WORLD_HEIGHT}
-            preserveAspectRatio="xMidYMid slice"
-            opacity="0.58"
-          />
+          {/* Repeated wall modules are cosmetic: posts cover the joins, and
+              collision stays on the independent floor and gantry surfaces. */}
+          <rect data-ship-wall-module={SHIP_INTERIOR_KIT.wall.id} x="0" y={PHYSICAL_SHIP_WORLD.floorY - SHIP_INTERIOR_KIT.wall.height} width={WORLD_WIDTH} height={SHIP_INTERIOR_KIT.wall.height} fill="url(#deck-wall-module)" />
+          {Array.from({ length: Math.ceil(WORLD_WIDTH / SHIP_INTERIOR_KIT.wall.width) + 1 }, (_, index) => (
+            <g key={index} aria-hidden="true">
+              <rect x={index * SHIP_INTERIOR_KIT.wall.width - SHIP_INTERIOR_KIT.wall.jointCoverWidth / 2} y={PHYSICAL_SHIP_WORLD.floorY - SHIP_INTERIOR_KIT.wall.height} width={SHIP_INTERIOR_KIT.wall.jointCoverWidth} height={SHIP_INTERIOR_KIT.wall.height} fill="url(#deck-metal)" stroke="#34433a" strokeWidth="2" />
+              <path d={`M${index * SHIP_INTERIOR_KIT.wall.width} 175 V465`} stroke="#658477" opacity="0.22" />
+            </g>
+          ))}
           <rect
             width={WORLD_WIDTH}
             height={WORLD_HEIGHT}
             fill="url(#deck-space)"
-            opacity="0.34"
+            opacity="0.22"
           />
           <path
-            d="M20 440 L20 105 Q130 25 265 72 L500 30 L735 72 Q870 25 980 105 L980 440 Z"
+            d="M20 480 L20 105 Q180 25 360 72 L700 30 L1040 72 Q1220 25 1380 105 L1380 480 Z"
             fill="none"
             stroke="#31423c"
             strokeWidth="8"
           />
           <path
-            d="M35 120 Q150 55 260 96 M740 96 Q850 55 965 120"
+            d="M35 120 Q190 55 360 96 M1040 96 Q1210 55 1365 120"
             fill="none"
             stroke="#122c29"
             strokeWidth="30"
           />
-          <circle cx="500" cy="68" r="3" fill={accent} opacity="0.8" />
-          <path d="M420 68 H580" stroke={accent} strokeWidth="2" opacity="0.32" />
+          <circle cx="700" cy="68" r="3" fill={accent} opacity="0.8" />
+          <path d="M590 68 H810" stroke={accent} strokeWidth="2" opacity="0.32" />
 
           {/* Traversal geometry: a lower floor, an upper gantry and two ladders. */}
-          <rect x="20" y="440" width="960" height="26" rx="3" fill="url(#deck-metal)" />
-          <rect x="235" y="300" width="530" height="18" rx="3" fill="url(#deck-metal)" />
+          {SURFACES.map((surface) => (
+            <g key={surface.y} aria-hidden="true">
+              <rect x={surface.left} y={surface.y} width={surface.right - surface.left} height="22" rx="3" fill="url(#deck-metal)" />
+              <path d={`M${surface.left} ${surface.y + 2} H${surface.right}`} stroke={accent} opacity="0.45" />
+            </g>
+          ))}
           {LADDERS.map((ladder) => (
             <g key={ladder.x} stroke="#65786e" strokeWidth="6">
               <line x1={ladder.x - 17} y1={ladder.top} x2={ladder.x - 17} y2={ladder.bottom} />
               <line x1={ladder.x + 17} y1={ladder.top} x2={ladder.x + 17} y2={ladder.bottom} />
-              {Array.from({ length: 6 }, (_, index) => (
+              {Array.from({ length: 7 }, (_, index) => (
                 <line
                   key={index}
                   x1={ladder.x - 17}
@@ -698,6 +506,8 @@ export default function PhysicalShipDeck({
               active={station.id === activeId}
               accent={accent}
               warning={warning}
+              suspended={suspended}
+              trophyDisplays={trophyDisplays}
               onActivate={() => activateStation(station)}
               onKeyDown={(event) => stationKeyboard(event, station)}
             />
@@ -716,23 +526,28 @@ export default function PhysicalShipDeck({
             </g>
           ) : null}
 
-          <MiniYautja player={player} accent={accent} />
+          <DeckHunter player={player} appearance={appearance} loadout={loadout} suspended={suspended} />
+          <text x="32" y="535" fill="#88aaa0" fontSize="12" letterSpacing="2">PONT INFÉRIEUR · PRÉPARATION ET DÉPART</text>
+          <text x="700" y="140" textAnchor="middle" fill={accent} fontSize="12" letterSpacing="3">PASSERELLE · ARSENAL DU CLAN</text>
         </svg>
       </div>
 
       <div style={styles.stationReadout} aria-live="polite" aria-atomic="true">
         <strong>{nearbyStation?.label ?? "Déplacement libre"}</strong>
-        <span>{nearbyStation?.description ?? status}</span>
+        <span>{nearbyStation?.id === "launch-airlock" ? selectedDestination : nearbyStation?.description ?? status}</span>
+        {nearbyStation && <button type="button" disabled={suspended} onClick={interactFromAvatar} style={styles.interactButton}>UTILISER · {interactionShortcut}</button>}
       </div>
 
-      <nav
+      {showShortcuts && <nav
         className="physical-ship-deck__station-shortcuts"
         aria-label="Accès direct aux stations du pont"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(8rem, 1fr))" }}
       >
         {PHYSICAL_SHIP_STATIONS.map((station) => (
           <button
             key={station.id}
             type="button"
+            disabled={suspended}
             aria-current={station.id === activeId ? "location" : undefined}
             onClick={() => activateStation(station)}
           >
@@ -740,7 +555,7 @@ export default function PhysicalShipDeck({
             <span>{station.level === "gantry" ? "Passerelle" : "Pont bas"}</span>
           </button>
         ))}
-      </nav>
+      </nav>}
 
       <div
         className="physical-ship-deck__touch-controls"
@@ -748,16 +563,17 @@ export default function PhysicalShipDeck({
         aria-label="Commandes tactiles"
       >
         <div style={styles.directionPad}>
-          <button type="button" aria-label="Grimper" style={styles.controlButton} {...holdHandlers("up")}>▲</button>
+          <DeckDirectionButton control="up" label="Grimper" glyph="▲" suspended={suspended} onHeldControl={setHeldControl} onPulseControl={pulseControl} />
           <div style={styles.controlRow}>
-            <button type="button" aria-label="Aller à gauche" style={styles.controlButton} {...holdHandlers("left")}>◀</button>
-            <button type="button" aria-label="Descendre" style={styles.controlButton} {...holdHandlers("down")}>▼</button>
-            <button type="button" aria-label="Aller à droite" style={styles.controlButton} {...holdHandlers("right")}>▶</button>
+            <DeckDirectionButton control="left" label="Aller à gauche" glyph="◀" suspended={suspended} onHeldControl={setHeldControl} onPulseControl={pulseControl} />
+            <DeckDirectionButton control="down" label="Descendre" glyph="▼" suspended={suspended} onHeldControl={setHeldControl} onPulseControl={pulseControl} />
+            <DeckDirectionButton control="right" label="Aller à droite" glyph="▶" suspended={suspended} onHeldControl={setHeldControl} onPulseControl={pulseControl} />
           </div>
         </div>
         <div style={styles.actionPad}>
           <button
             type="button"
+            disabled={suspended}
             aria-label="Sauter"
             style={styles.actionButton}
             onPointerDown={queueJump}
@@ -769,6 +585,7 @@ export default function PhysicalShipDeck({
           </button>
           <button
             type="button"
+            disabled={suspended}
             aria-label="Interagir avec la station proche"
             style={{ ...styles.actionButton, borderColor: warning }}
             onClick={interactFromAvatar}
@@ -781,11 +598,35 @@ export default function PhysicalShipDeck({
   );
 }
 
+function DeckDirectionButton({ control, label, glyph, suspended, onHeldControl, onPulseControl }: {
+  control: keyof Omit<HeldControls, "jumpQueued">;
+  label: string;
+  glyph: string;
+  suspended: boolean;
+  onHeldControl: (control: keyof Omit<HeldControls, "jumpQueued">, pressed: boolean) => void;
+  onPulseControl: (control: keyof Omit<HeldControls, "jumpQueued">) => void;
+}) {
+  return <button type="button" disabled={suspended} aria-label={label} style={styles.controlButton}
+    onPointerDown={(event) => {
+      if (suspended) return;
+      event.currentTarget.setPointerCapture(event.pointerId);
+      onHeldControl(control, true);
+    }}
+    onPointerUp={() => onHeldControl(control, false)}
+    onPointerCancel={() => onHeldControl(control, false)}
+    onPointerLeave={() => onHeldControl(control, false)}
+    onLostPointerCapture={() => onHeldControl(control, false)}
+    onClick={(event) => { if (event.detail === 0) onPulseControl(control); }}
+  >{glyph}</button>;
+}
+
 function StationGlyph({
   station,
   active,
   accent,
   warning,
+  suspended,
+  trophyDisplays,
   onActivate,
   onKeyDown,
 }: {
@@ -793,6 +634,8 @@ function StationGlyph({
   active: boolean;
   accent: string;
   warning: string;
+  suspended: boolean;
+  trophyDisplays: readonly PhysicalShipTrophyDisplay[];
   onActivate: () => void;
   onKeyDown: (event: ReactKeyboardEvent<SVGGElement>) => void;
 }) {
@@ -801,7 +644,8 @@ function StationGlyph({
     <g
       transform={`translate(${station.x} ${station.y})`}
       role="button"
-      tabIndex={0}
+      tabIndex={suspended ? -1 : 0}
+      aria-disabled={suspended}
       aria-label={`${station.label}. ${station.description}`}
       onClick={onActivate}
       onKeyDown={onKeyDown}
@@ -819,10 +663,12 @@ function StationGlyph({
       />
       {station.id === "galaxy-map" ? <MapConsole color={color} /> : null}
       {station.id === "wall-armory" ? <WallArmory color={color} /> : null}
-      {station.id === "trophy-hall" ? <TrophyWall color={color} /> : null}
+      {station.id === "trophy-hall" ? <TrophyWall color={color} trophyDisplays={trophyDisplays} /> : null}
       {station.id === "clan-archives" ? <ArchiveConsole color={color} /> : null}
       {station.id === "appearance-forge" ? <AppearanceForgeConsole color={color} /> : null}
       {station.id === "medical-bay" ? <MedbayConsole color={color} /> : null}
+      {station.id === "training-arena" ? <TrainingConsole color={color} /> : null}
+      {station.id === "launch-airlock" ? <AirlockConsole color={color} /> : null}
       <text y="-113" textAnchor="middle" fill={color} fontSize="12" fontWeight="800" letterSpacing="1.4">
         {station.shortLabel}
       </text>
@@ -855,7 +701,13 @@ function WallArmory({ color }: { color: string }) {
   );
 }
 
-function TrophyWall({ color }: { color: string }) {
+function TrophyWall({ color, trophyDisplays }: { color: string; trophyDisplays: readonly PhysicalShipTrophyDisplay[] }) {
+  if (trophyDisplays.length) {
+    return <g>{trophyDisplays.slice(0, 3).map((trophy, index, entries) => <g key={trophy.id}>
+      <rect x={-entries.length * 21 + index * 42} y="-86" width="40" height="68" fill="#080d0b" stroke={color} opacity="0.7" />
+      <image href={trophy.image} x={-entries.length * 21 + index * 42} y="-82" width="40" height="60" preserveAspectRatio="xMidYMid meet" aria-label={trophy.label}><title>{trophy.label}</title></image>
+    </g>)}</g>;
+  }
   return (
     <g aria-hidden="true" stroke={color} strokeWidth="3">
       <path d="M-27 -77 Q0 -101 27 -77 L20 -47 Q0 -29 -20 -47 Z" fill="none" />
@@ -898,38 +750,38 @@ function MedbayConsole({ color }: { color: string }) {
   );
 }
 
-function MiniYautja({
-  player,
-  accent,
-}: {
+function TrainingConsole({ color }: { color: string }) {
+  return <g aria-hidden="true" fill="none" stroke={color} strokeWidth="2">
+    <circle cy="-60" r="26" /><circle cy="-60" r="13" />
+    <path d="M0 -98 V-82 M0 -38 V-20 M-39 -60 H-23 M23 -60 H39" />
+    <path d="M-48 -16 H48" opacity="0.5" />
+  </g>;
+}
+
+function AirlockConsole({ color }: { color: string }) {
+  return <g aria-hidden="true" fill="none" stroke={color} strokeWidth="3">
+    <path d="M-39 -12 V-89 Q0 -113 39 -89 V-12 M0 -98 V-12" />
+    <path d="M-19 -69 L-7 -57 L-19 -45 M19 -69 L7 -57 L19 -45" />
+    <path d="M-49 -10 H49" strokeWidth="5" />
+  </g>;
+}
+
+function DeckHunter({ player, appearance, loadout, suspended }: {
   player: PlayerMotion;
-  accent: string;
+  appearance: HunterAppearance;
+  loadout: Loadout;
+  suspended: boolean;
 }) {
-  return (
-    <g
-      transform={`translate(${player.x} ${player.y})`}
-      aria-label="Chasseur Yautja contrôlé par le joueur"
-    >
-      <g transform={`scale(${player.facing} 1)`}>
-        <ellipse cx="0" cy="0" rx="23" ry="5" fill="#000" opacity="0.45" />
-        <path d="M-12 -55 Q-33 -49 -32 -22 M-9 -59 Q-39 -58 -43 -31 M-5 -60 Q-29 -70 -42 -52" fill="none" stroke="#251b15" strokeWidth="5" strokeLinecap="round" />
-        <path d="M-10 -48 L-18 -14 M9 -48 L15 -14" stroke="#87622f" strokeWidth="10" strokeLinecap="round" />
-        <path d="M-12 -14 L-17 -1 M13 -14 L18 -1" stroke="#a57a3e" strokeWidth="9" strokeLinecap="round" />
-        <path d="M-17 -1 H-3 M11 -1 H24" stroke="#46514c" strokeWidth="6" strokeLinecap="round" />
-        <path d="M-15 -53 Q0 -66 15 -53 L18 -26 Q0 -15 -18 -26 Z" fill="#5e4025" stroke="#9b7844" strokeWidth="3" />
-        <path d="M-14 -52 Q0 -68 14 -52 V-35 Q0 -25 -14 -35 Z" fill="#8c7351" stroke="#c7b078" strokeWidth="2" />
-        <path d="M-10 -43 H10" stroke="#080c0b" strokeWidth="6" />
-        <circle cx="5" cy="-43" r="2" fill={accent} />
-        <path d="M14 -49 L26 -45 L30 -26" fill="none" stroke="#596965" strokeWidth="4" />
-        <circle cx="30" cy="-25" r="5" fill={accent} />
-        <path d="M-17 -45 L-30 -24 M17 -45 L27 -20" stroke="#9d713a" strokeWidth="7" strokeLinecap="round" />
-        <path d="M27 -23 L37 -27 M28 -20 L39 -20 M27 -17 L37 -13" stroke="#d3e2db" strokeWidth="2" />
-      </g>
-      {player.climbing ? (
-        <circle cx="0" cy="-74" r="4" fill={accent} opacity="0.9" />
-      ) : null}
-    </g>
-  );
+  // The production rig registers its feet at y=366 on a 256×384 canvas.
+  const size = 110;
+  const scale = size / 256;
+  const pose = player.climbing ? "climb" : !player.onSurface ? "jump" : Math.abs(player.velocityX) > 1 && !suspended ? "run" : "idle";
+  return <g data-physical-ship-hunter="" pointerEvents="none">
+    <ellipse cx={player.x} cy={player.y + 1} rx="30" ry="5" fill="#000" opacity="0.6" />
+    <foreignObject x={player.x - size / 2} y={player.y - 366 * scale} width={size} height={384 * scale} overflow="visible">
+      <HunterRigPreview appearance={appearance} armorId={loadout.armorId} weaponIds={loadout.weaponIds} gearIds={loadout.gearIds} size={size} pose={pose} phase={player.phase} facing={player.facing} speed={suspended ? 0 : Math.abs(player.velocityX)} verticalVelocity={player.velocityY} label="Ton chasseur Yautja équipé, contrôlé sur le pont" style={{ display: "block", filter: "drop-shadow(0 1px 3px #000)" }} />
+    </foreignObject>
+  </g>;
 }
 
 const styles: Readonly<Record<string, CSSProperties>> = {
@@ -937,7 +789,7 @@ const styles: Readonly<Record<string, CSSProperties>> = {
     display: "grid",
     gap: "0.75rem",
     width: "100%",
-    maxWidth: "76rem",
+    maxWidth: "100rem",
     margin: "0 auto",
     padding: "clamp(0.65rem, 2vw, 1rem)",
     color: "#d9eee7",
@@ -980,12 +832,14 @@ const styles: Readonly<Record<string, CSSProperties>> = {
     display: "block",
     width: "100%",
     height: "auto",
-    minHeight: "18rem",
+    minHeight: "25rem",
+    minWidth: "62rem",
     touchAction: "none",
   },
   stationReadout: {
-    display: "grid",
-    gridTemplateColumns: "minmax(9rem, 0.35fr) minmax(0, 1fr)",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
     gap: "0.75rem",
     alignItems: "center",
     minHeight: "3rem",
@@ -993,6 +847,15 @@ const styles: Readonly<Record<string, CSSProperties>> = {
     borderLeft: "3px solid var(--deck-accent)",
     background: "rgba(13, 31, 29, 0.74)",
     fontSize: "0.82rem",
+  },
+  interactButton: {
+    minHeight: "2.5rem",
+    padding: "0.55rem 0.9rem",
+    border: "1px solid #d9ad65",
+    background: "#2c2718",
+    color: "#ffe3a6",
+    fontSize: "0.72rem",
+    fontWeight: 800,
   },
   touchControls: {
     display: "flex",

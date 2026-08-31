@@ -137,6 +137,11 @@ export interface ShipHubProps {
   /** Omit for a self-persisting sidecar; provide for controlled integration. */
   progression?: ShipProgressionState;
   initialRoomId?: ShipRoomId;
+  /** Embedded installations return to the physical deck instead of the legacy bridge. */
+  embedded?: boolean;
+  /** Prevent controls from reaching an installation behind settings or another modal. */
+  suspended?: boolean;
+  onTrainingActiveChange?: (active: boolean) => void;
   autoFocus?: boolean;
   gamepadEnabled?: boolean;
   onProgressionChange?: (state: ShipProgressionState) => void;
@@ -210,6 +215,9 @@ export default function ShipHub({
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   progression: controlledProgression,
   initialRoomId = "bridge-map",
+  embedded = false,
+  suspended = false,
+  onTrainingActiveChange,
   autoFocus = true,
   gamepadEnabled = true,
   onProgressionChange,
@@ -243,6 +251,13 @@ export default function ShipHub({
     useState<TrainingSession | null>(null);
   const rootRef = useRef<HTMLElement | null>(null);
   const actionButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const gamepadStateRef = useRef({ previous: Array.from({ length: 6 }, () => false), ready: false });
+
+  // A nested drill owns focus and input; let the host disable its outer toolbar.
+  useEffect(() => {
+    onTrainingActiveChange?.(trainingSession !== null);
+    return () => onTrainingActiveChange?.(false);
+  }, [onTrainingActiveChange, trainingSession]);
 
   const progression =
     controlledProgression ?? localProgression;
@@ -295,9 +310,9 @@ export default function ShipHub({
   ]);
 
   useEffect(() => {
-    if (!autoFocus) return;
+    if (!autoFocus || suspended) return;
     rootRef.current?.focus({ preventScroll: true });
-  }, [autoFocus]);
+  }, [autoFocus, suspended]);
 
   useEffect(() => {
     if (selectedShipSyncRef.current === progression.selectedShipId) return;
@@ -814,18 +829,20 @@ export default function ShipHub({
   useEffect(() => {
     if (
       !gamepadEnabled ||
+      suspended ||
       trainingSession !== null ||
       typeof navigator === "undefined"
     ) {
+      gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
       return;
     }
     let animationFrame = 0;
-    let previous = Array.from({ length: 6 }, () => false);
 
     const poll = () => {
       const root = rootRef.current;
       const focused =
         root !== null &&
+        !document.hidden && document.hasFocus() &&
         document.activeElement !== null &&
         root.contains(document.activeElement);
       const gamepad = focused
@@ -844,24 +861,34 @@ export default function ShipHub({
           Boolean(gamepad.buttons[0]?.pressed),
           Boolean(gamepad.buttons[1]?.pressed),
         ];
-        if (current[0] && !previous[0]) moveRoom(-1);
-        if (current[1] && !previous[1]) moveRoom(1);
-        if (current[2] && !previous[2])
-          focusAction(safeActionIndex - 1);
-        if (current[3] && !previous[3])
-          focusAction(safeActionIndex + 1);
-        if (current[4] && !previous[4])
-          invokeAction(safeActionIndex);
-        if (current[5] && !previous[5]) {
-          if (activeRoomId === "bridge-map") {
-            root?.focus({ preventScroll: true });
-          } else {
-            selectRoom("bridge-map");
+        const state = gamepadStateRef.current;
+        // Render-driven effect restarts must not turn a held button into a new
+        // press. Regaining focus also requires the pad to return to neutral.
+        if (!state.ready) {
+          state.ready = current.every((pressed) => !pressed);
+        } else {
+          const previous = state.previous;
+          if (current[0] && !previous[0]) moveRoom(-1);
+          if (current[1] && !previous[1]) moveRoom(1);
+          if (current[2] && !previous[2])
+            focusAction(safeActionIndex - 1);
+          if (current[3] && !previous[3])
+            focusAction(safeActionIndex + 1);
+          if (current[4] && !previous[4])
+            invokeAction(safeActionIndex);
+          if (current[5] && !previous[5]) {
+            if (embedded && onOpenDeck) {
+              onOpenDeck();
+            } else if (activeRoomId === "bridge-map") {
+              root?.focus({ preventScroll: true });
+            } else {
+              selectRoom("bridge-map");
+            }
           }
         }
-        previous = current;
+        state.previous = current;
       } else {
-        previous = Array.from({ length: 6 }, () => false);
+        gamepadStateRef.current = { previous: Array.from({ length: 6 }, () => false), ready: false };
       }
       animationFrame = window.requestAnimationFrame(poll);
     };
@@ -869,19 +896,22 @@ export default function ShipHub({
     return () => window.cancelAnimationFrame(animationFrame);
   }, [
     activeRoomId,
+    embedded,
+    onOpenDeck,
     focusAction,
     gamepadEnabled,
     invokeAction,
     moveRoom,
     safeActionIndex,
     selectRoom,
+    suspended,
     trainingSession,
   ]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if (trainingSession !== null) return;
-      if (event.repeat) return;
+      if (suspended || trainingSession !== null) return;
+      if (event.repeat || event.defaultPrevented) return;
       const target = event.target;
       if (
         target instanceof HTMLInputElement ||
@@ -923,7 +953,12 @@ export default function ShipHub({
         }
       } else if (actions.includes("shipHub.returnToBridge")) {
         event.preventDefault();
-        selectRoom("bridge-map");
+        if (embedded && onOpenDeck) {
+          event.stopPropagation();
+          onOpenDeck();
+        } else {
+          selectRoom("bridge-map");
+        }
       } else if (actions.includes("shipHub.firstRoom")) {
         event.preventDefault();
         selectRoom(SHIP_ROOMS[0].id);
@@ -935,10 +970,13 @@ export default function ShipHub({
     [
       focusAction,
       controlBindings,
+      embedded,
+      onOpenDeck,
       invokeAction,
       moveRoom,
       safeActionIndex,
       selectRoom,
+      suspended,
       trainingSession,
     ],
   );
@@ -950,6 +988,7 @@ export default function ShipHub({
       aria-labelledby="ship-hub-title"
       aria-describedby="ship-hub-help"
       data-ship-room={activeRoomId}
+      data-ship-embedded={embedded || undefined}
       data-screen-focus
       tabIndex={0}
       style={{

@@ -9,7 +9,7 @@
     "prebuild": "npm run biome-decor:v19:runtime-data",
     "dev": "vinext dev",
     "build": "vinext build",
-    "start": "vinext start",
+    "start": "node scripts/start-production.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "qa": "npm run lint && npm run typecheck && npm run film-plates:build && npm run franchise-trophies:build-specs && npm run enemy-trophies:build-specs && npm run enemy-trophies:gameplay-build && npm run cutouts:build && npm run biome-decor:v19:manifests && npm run build && npm run film-plates:audit && npm run ships:audit && npm run hunter-kit:audit && npm run trophies:audit && npm run franchise-trophies:audit && npm run enemy-trophies:audit && npm run enemy-trophies:gameplay-audit && npm run biome-decor:v19:audit && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

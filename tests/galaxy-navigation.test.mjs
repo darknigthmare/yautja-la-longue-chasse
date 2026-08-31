@@ -491,11 +491,12 @@ test("cursor wraps and invalid routes cannot corrupt the selected hierarchy", ()
   assert.equal(path?.planet.name, "Cinder-12");
 });
 
-test("physical deck exposes six truthful traversable stations and three input families", async () => {
+test("physical deck exposes eight traversable stations and three input families", async () => {
   const source = await readFile(
     resolve(projectRoot, "app/game/PhysicalShipDeck.tsx"),
     "utf8",
   );
+  const { PHYSICAL_SHIP_STATIONS } = await import("../app/game/systems/physicalShipMotion.ts");
   const stationIds = [
     "galaxy-map",
     "wall-armory",
@@ -503,17 +504,19 @@ test("physical deck exposes six truthful traversable stations and three input fa
     "clan-archives",
     "appearance-forge",
     "medical-bay",
+    "training-arena",
+    "launch-airlock",
   ];
 
   for (const stationId of stationIds) {
-    assert.match(source, new RegExp(`id: "${stationId}"`));
+    assert.ok(PHYSICAL_SHIP_STATIONS.some((station) => station.id === stationId));
   }
   assert.match(source, /window\.requestAnimationFrame/);
   assert.match(source, /navigator\.getGamepads/);
   assert.match(source, /matchesControlAction\("hunt\.moveLeft"/);
   assert.match(source, /matchesControlAction\("hunt\.interact"/);
   assert.match(source, /onPointerDown/);
-  assert.match(source, /INTERACTION_RADIUS/);
+  assert.match(source, /nearestStationFor/);
   assert.match(source, /LADDERS/);
   assert.match(source, /role="region"/);
   assert.match(source, /physical-ship-deck__station-shortcuts/);
@@ -524,9 +527,8 @@ test("physical deck exposes six truthful traversable stations and three input fa
   assert.match(source, /onOpenArchives/);
   assert.match(source, /onOpenAppearanceForge/);
   assert.match(source, /onOpenMedbay/);
-  assert.match(source, /Forge des parures/);
-  assert.match(source, /Ajuster corps, biomask, dreads, plaques et ornements/);
-  assert.doesNotMatch(source, /Cercle d’entraînement/);
+  assert.match(source, /onOpenTraining/);
+  assert.match(source, /onOpenAirlock/);
   assert.doesNotMatch(source, /combat rituel/);
 });
 
@@ -538,7 +540,7 @@ test("the physical medbay reuses the functional ShipHub treatment room and retur
 
   assert.match(source, /onOpenMedbay=\{\(\) => openStationScreen\("medbay", "deck"\)\}/);
   assert.match(source, /screen === "medbay"/);
-  assert.match(source, /initialRoomId="medbay"/);
+  assert.match(source, /initialRoomId=\{screen === "training" \? "training" : "medbay"\}/);
   assert.match(source, /← Retour au pont physique/);
   assert.match(
     source,
