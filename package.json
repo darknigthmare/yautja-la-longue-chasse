@@ -11,7 +11,7 @@
     "build": "vinext build",
     "start": "node scripts/start-production.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
-    "qa": "npm run lint && npm run typecheck && npm run film-plates:build && npm run franchise-trophies:build-specs && npm run enemy-trophies:build-specs && npm run enemy-trophies:gameplay-build && npm run cutouts:build && npm run biome-decor:v19:manifests && npm run build && npm run film-plates:audit && npm run ships:audit && npm run ship-interior:audit && npm run hunter-kit:audit && npm run trophies:audit && npm run franchise-trophies:audit && npm run enemy-trophies:audit && npm run enemy-trophies:gameplay-audit && npm run biome-decor:v19:audit && node --test --test-concurrency=1 tests/*.test.mjs",
+    "qa": "npm run lint && npm run typecheck && npm run film-plates:build && npm run franchise-trophies:build-specs && npm run enemy-trophies:build-specs && npm run enemy-trophies:gameplay-build && npm run cutouts:build && npm run biome-decor:v19:manifests && npm run build && npm run film-plates:audit && npm run ships:audit && npm run ship-interior:audit && npm run ship-interior:v22:audit && npm run hunter-kit:audit && npm run trophies:audit && npm run franchise-trophies:audit && npm run enemy-trophies:audit && npm run enemy-trophies:gameplay-audit && npm run biome-decor:v19:audit && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
     "film-plates:build": "node scripts/build-film-plate-prompt-pack.mjs",
@@ -40,7 +40,10 @@
     "dlc:validate": "node scripts/validate-private-dlc.mjs",
     "db:generate": "drizzle-kit generate",
     "ship-interior:export": "node scripts/export-ship-interior-v21.mjs",
-    "ship-interior:audit": "node scripts/audit-ship-interior-v21.mjs"
+    "ship-interior:audit": "node scripts/audit-ship-interior-v21.mjs",
+    "ship-interior:v22:prepare": "node scripts/prepare-ship-interior-alpha-v22.mjs",
+    "ship-interior:v22:export": "node scripts/export-ship-interior-v22.mjs",
+    "ship-interior:v22:audit": "node scripts/audit-ship-interior-v22.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

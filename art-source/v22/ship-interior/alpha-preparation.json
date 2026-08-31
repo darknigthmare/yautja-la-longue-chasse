@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "status": "prepared",
+  "authorization": "User approved local technical alpha preparation for V21, then requested continuation of missing lots with the same workflow",
+  "tool": "scripts/prepare-ship-interior-alpha-v22.mjs + sharp",
+  "method": "Four-connected bright-neutral components: remove those touching an image edge and enclosed large components dominated by near-white pixels. Only alpha is changed; no repaint, crop, resize, erode or silhouette substitution. Inspect the result separately on a dark background.",
+  "threshold": {
+    "minimumChannel": 170,
+    "maximumChannelSpread": 30,
+    "whiteSeedMinimum": 235,
+    "whiteSeedSpread": 12,
+    "internalMinimumPixels": 96,
+    "internalWhiteFraction": 0.8
+  },
+  "sourcesPreserved": true,
+  "runtimeExportsCreated": false,
+  "assets": [
+    {
+      "id": "floor-edge",
+      "source": "art-source/v22/ship-interior/floor-edge.generated.png",
+      "sourceSha256": "53a5cc491ee15e96f5118dc08556e0c786453bba159bb26110c3831927019709",
+      "master": "art-source/v22/ship-interior/floor-edge.png",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 1302396,
+      "opaquePixels": 270468,
+      "alphaBounds": {
+        "x": 40,
+        "y": 408,
+        "width": 1456,
+        "height": 186
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 1302396,
+          "whitePixels": 1300690,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          }
+        }
+      ]
+    },
+    {
+      "id": "gantry",
+      "source": "art-source/v22/ship-interior/gantry.generated.png",
+      "sourceSha256": "a96b5432f8b959b7cf60c9c58f6a4a5a772af5833c27db4c03f2185d3fae739b",
+      "master": "art-source/v22/ship-interior/gantry.png",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 1339915,
+      "opaquePixels": 232949,
+      "alphaBounds": {
+        "x": 62,
+        "y": 386,
+        "width": 1411,
+        "height": 227
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 1253607,
+          "whitePixels": 1251906,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          }
+        },
+        {
+          "pixels": 15705,
+          "whitePixels": 15494,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 136,
+            "y": 459,
+            "width": 232,
+            "height": 102
+          }
+        },
+        {
+          "pixels": 15640,
+          "whitePixels": 15338,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 479,
+            "y": 459,
+            "width": 232,
+            "height": 102
+          }
+        },
+        {
+          "pixels": 15616,
+          "whitePixels": 15380,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 822,
+            "y": 459,
+            "width": 231,
+            "height": 102
+          }
+        },
+        {
+          "pixels": 15814,
+          "whitePixels": 15510,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 1164,
+            "y": 459,
+            "width": 233,
+            "height": 102
+          }
+        },
+        {
+          "pixels": 2909,
+          "whitePixels": 2848,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 111,
+            "y": 489,
+            "width": 80,
+            "height": 72
+          }
+        },
+        {
+          "pixels": 2938,
+          "whitePixels": 2908,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 313,
+            "y": 489,
+            "width": 81,
+            "height": 71
+          }
+        },
+        {
+          "pixels": 2901,
+          "whitePixels": 2830,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 453,
+            "y": 489,
+            "width": 81,
+            "height": 71
+          }
+        },
+        {
+          "pixels": 2957,
+          "whitePixels": 2922,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 655,
+            "y": 489,
+            "width": 81,
+            "height": 71
+          }
+        },
+        {
+          "pixels": 2964,
+          "whitePixels": 2894,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 796,
+            "y": 489,
+            "width": 81,
+            "height": 72
+          }
+        },
+        {
+          "pixels": 2957,
+          "whitePixels": 2892,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 998,
+            "y": 489,
+            "width": 81,
+            "height": 72
+          }
+        },
+        {
+          "pixels": 2960,
+          "whitePixels": 2835,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 1138,
+            "y": 489,
+            "width": 81,
+            "height": 72
+          }
+        },
+        {
+          "pixels": 2947,
+          "whitePixels": 2888,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 1342,
+            "y": 489,
+            "width": 81,
+            "height": 72
+          }
+        }
+      ]
+    },
+    {
+      "id": "service-ladder",
+      "source": "art-source/v22/ship-interior/service-ladder.generated.png",
+      "sourceSha256": "25ee3d342b8686bcb327821d20421b56c16f7da08ed041494dde4355e5092ad9",
+      "master": "art-source/v22/ship-interior/service-ladder.png",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 1342781,
+      "opaquePixels": 230083,
+      "alphaBounds": {
+        "x": 258,
+        "y": 128,
+        "width": 508,
+        "height": 1280
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 1087903,
+          "whitePixels": 1086106,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1536
+          }
+        },
+        {
+          "pixels": 84611,
+          "whitePixels": 84597,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 321,
+            "y": 364,
+            "width": 382,
+            "height": 222
+          }
+        },
+        {
+          "pixels": 84978,
+          "whitePixels": 84230,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 321,
+            "y": 632,
+            "width": 382,
+            "height": 223
+          }
+        },
+        {
+          "pixels": 84947,
+          "whitePixels": 84223,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 321,
+            "y": 900,
+            "width": 382,
+            "height": 223
+          }
+        },
+        {
+          "pixels": 342,
+          "whitePixels": 282,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 346,
+            "y": 1131,
+            "width": 331,
+            "height": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "medbay-bed",
+      "source": "art-source/v22/ship-interior/medbay-bed.generated.png",
+      "sourceSha256": "b9c34e33f7c02949ba175723c9f5c184a9bd91600965d5ac4c7ad31f4d79e8fa",
+      "master": "art-source/v22/ship-interior/medbay-bed.png",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 1221939,
+      "opaquePixels": 350925,
+      "alphaBounds": {
+        "x": 75,
+        "y": 119,
+        "width": 1385,
+        "height": 766
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 1221610,
+          "whitePixels": 1219006,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          }
+        },
+        {
+          "pixels": 329,
+          "whitePixels": 301,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 1103,
+            "y": 238,
+            "width": 26,
+            "height": 34
+          }
+        }
+      ]
+    },
+    {
+      "id": "armory-rack",
+      "source": "art-source/v22/ship-interior/armory-rack.generated.png",
+      "sourceSha256": "91ae982f8634ba94e318da5fac477347d49fb1293f3145476d3334e2a2a17782",
+      "master": "art-source/v22/ship-interior/armory-rack.png",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 518073,
+      "opaquePixels": 1054791,
+      "alphaBounds": {
+        "x": 38,
+        "y": 137,
+        "width": 1459,
+        "height": 734
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 518073,
+          "whitePixels": 517890,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          }
+        }
+      ]
+    },
+    {
+      "id": "archive-terminal",
+      "source": "art-source/v22/ship-interior/archive-terminal.generated.png",
+      "sourceSha256": "013da949b16480aa3ad3a41af5f817b7794a709bad5cf8b3ceca6b5e8404cb13",
+      "master": "art-source/v22/ship-interior/archive-terminal.png",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 802998,
+      "opaquePixels": 769866,
+      "alphaBounds": {
+        "x": 144,
+        "y": 47,
+        "width": 734,
+        "height": 1428
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 802998,
+          "whitePixels": 801495,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1536
+          }
+        }
+      ]
+    },
+    {
+      "id": "forge-station",
+      "source": "art-source/v22/ship-interior/forge-station.generated.png",
+      "sourceSha256": "1734ec6149a0f039588d0956625967d76982ef1df74701899d7141f40c1e78b7",
+      "master": "art-source/v22/ship-interior/forge-station.png",
+      "width": 1024,
+      "height": 1536,
+      "transparentPixels": 922235,
+      "opaquePixels": 650629,
+      "alphaBounds": {
+        "x": 89,
+        "y": 150,
+        "width": 843,
+        "height": 1245
+      },
+      "rgbUnchanged": true,
+      "sourceUnchanged": true,
+      "removedComponents": [
+        {
+          "pixels": 863742,
+          "whitePixels": 862180,
+          "touchesBorder": true,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 1536
+          }
+        },
+        {
+          "pixels": 2766,
+          "whitePixels": 2705,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 459,
+            "y": 176,
+            "width": 104,
+            "height": 32
+          }
+        },
+        {
+          "pixels": 27801,
+          "whitePixels": 27486,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 250,
+            "y": 508,
+            "width": 126,
+            "height": 389
+          }
+        },
+        {
+          "pixels": 27764,
+          "whitePixels": 27460,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 646,
+            "y": 508,
+            "width": 125,
+            "height": 390
+          }
+        },
+        {
+          "pixels": 162,
+          "whitePixels": 153,
+          "touchesBorder": false,
+          "bounds": {
+            "x": 263,
+            "y": 817,
+            "width": 4,
+            "height": 41
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 import { useId } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import { SHIP_INTERIOR_KIT, SHIP_LEVEL_ART } from "./shipInteriorKit";
+import { SHIP_LEVEL_ART_V22 } from "./shipInteriorV22";
 import type { PhysicalShipTrophyDisplay } from "./PhysicalShipDeck";
 import type { HunterAppearance, Loadout, WeaponId } from "./types";
 import { V6_ATLASES, getV6Visual, type V6VisualId } from "./v6Visuals";
@@ -76,6 +77,26 @@ function ShipArtSprite({ asset, centerX, bottomY, width, height, fit = "contain"
   return <image href={asset.src} {...shipArtPlacement(asset, centerX, bottomY, width, height, fit)} preserveAspectRatio="xMidYMid meet" />;
 }
 
+/** Repeat complete native-ratio modules, clipping only the final partial module. */
+export function shipRepeatPlacements(asset: ShipAlphaArt, width: number, height: number, axis: "horizontal" | "vertical"): ShipRectangle[] {
+  if (width <= 0 || height <= 0 || asset.alphaBounds.width <= 0 || asset.alphaBounds.height <= 0) return [];
+  const scale = axis === "horizontal" ? height / asset.alphaBounds.height : width / asset.alphaBounds.width;
+  const tileWidth = asset.alphaBounds.width * scale;
+  const tileHeight = asset.alphaBounds.height * scale;
+  const count = Math.ceil(axis === "horizontal" ? width / tileWidth : height / tileHeight);
+  return Array.from({ length: count }, (_, index) => shipArtPlacement(asset,
+    tileWidth / 2 + (axis === "horizontal" ? index * tileWidth : 0),
+    tileHeight + (axis === "vertical" ? index * tileHeight : 0),
+    tileWidth, tileHeight));
+}
+
+function ShipRepeatedArt({ asset, bounds, axis }: { asset: ShipAlphaArt; bounds: ShipRectangle; axis: "horizontal" | "vertical" }) {
+  const segments = shipRepeatPlacements(asset, bounds.width, bounds.height, axis);
+  return <svg {...bounds} viewBox={`0 0 ${bounds.width} ${bounds.height}`} overflow="hidden" data-ship-repeat={axis} data-repeat-asset={asset.src}>
+    {segments.map((segment, index) => <image key={index} data-repeat-segment={index} href={asset.src} {...segment} preserveAspectRatio="xMidYMid meet" />)}
+  </svg>;
+}
+
 /** The frame's measured interior, rather than its outer silhouette, defines the visual opening. */
 function portalPlacement(door: ShipRectangle): { frame: ShipRectangle; opening: ShipRectangle } {
   const asset = SHIP_LEVEL_ART.doorFrame;
@@ -115,7 +136,6 @@ export default function ShipLevelScene({ player, camera, doors, appearance, load
     <defs>
       {spaces.map((space) => <clipPath key={space.id} id={`${sceneId}-${space.id}`}><rect x={space.x} y={space.y} width={space.width} height={space.height} /></clipPath>)}
       {SHIP_LEVEL_DOORS.map((door) => <clipPath key={door.id} id={`${sceneId}-${door.id}`}><rect {...portalPlacement(door).opening} /></clipPath>)}
-      <pattern id={`${sceneId}-floor`} patternUnits="userSpaceOnUse" width="40" height="20"><rect width="40" height="20" fill="#263330" /><path d="M1 1H39M2 7H24M30 7H38M2 14H38" stroke="#60716a" strokeWidth="1.5" /></pattern>
       <linearGradient id={`${sceneId}-floor-light`} x1="0" y1="0" x2="0" y2="1"><stop stopColor="#a6c4ae" stopOpacity=".2" /><stop offset="1" stopColor="#a6c4ae" stopOpacity="0" /></linearGradient>
     </defs>
     <rect x={camera.x} y={camera.y} width={camera.width} height={camera.height} fill="#020505" />
@@ -138,14 +158,18 @@ export default function ShipLevelScene({ player, camera, doors, appearance, load
 
     <g data-ship-layer="structure" aria-hidden="true">
       {SHIP_LEVEL_SOLIDS.filter((solid) => visible(solid, camera)).map((solid) => <rect key={solid.id} x={solid.x} y={solid.y} width={solid.width} height={solid.height} fill="#070d0c" stroke="#31473f" strokeWidth="2" />)}
-      {SHIP_LEVEL_SURFACES.filter((surface) => visible({ x: surface.left, y: surface.y, width: surface.right - surface.left, height: 22 }, camera)).map((surface) => <g key={surface.id}>
-        <rect x={surface.left} y={surface.y} width={surface.right - surface.left} height={surface.kind === "gantry" ? 16 : 20} fill={`url(#${sceneId}-floor)`} stroke="#869e89" strokeWidth="2" />
-        <path d={`M${surface.left} ${surface.y - 2}H${surface.right}`} stroke={accent} strokeWidth="2" opacity=".55" />
-        {surface.kind === "gantry" ? <path d={`M${surface.left} ${surface.y + 18}H${surface.right}`} stroke="#25372f" strokeWidth="6" /> : null}
-      </g>)}
-      {SHIP_LEVEL_LADDERS.map((ladder) => <g key={ladder.id} data-ship-ladder={ladder.id}>
-        <path d={`M${ladder.x - 28} ${ladder.top - 92}V${ladder.bottom} M${ladder.x + 28} ${ladder.top - 92}V${ladder.bottom}`} stroke="#85958a" strokeWidth="7" />
-        {Array.from({ length: Math.ceil((ladder.bottom - ladder.top + 92) / 28) }, (_, index) => <path key={index} d={`M${ladder.x - 29} ${ladder.top - 84 + index * 28}h58`} stroke={index % 4 === 0 ? "#d5c58c" : "#657b6d"} strokeWidth="5" />)}
+      {SHIP_LEVEL_SURFACES.filter((surface) => visible({ x: surface.left, y: surface.y, width: surface.right - surface.left, height: 22 }, camera)).map((surface) => {
+        const thickness = surface.kind === "gantry" ? 16 : 20;
+        return <g key={surface.id} data-ship-surface={surface.id}>
+          <ShipRepeatedArt asset={surface.kind === "gantry" ? SHIP_LEVEL_ART_V22.gantry : SHIP_LEVEL_ART_V22.floorEdge}
+            bounds={{ x: surface.left, y: surface.y, width: surface.right - surface.left, height: thickness }} axis="horizontal" />
+          <path d={`M${surface.left} ${surface.y}H${surface.right}`} stroke={accent} strokeWidth="1" opacity=".45" />
+          <path d={`M${surface.left + 1} ${surface.y + 1}v${thickness - 2} M${surface.right - 1} ${surface.y + 1}v${thickness - 2}`} stroke="#738674" strokeWidth="2" opacity=".7" />
+        </g>;
+      })}
+      {SHIP_LEVEL_LADDERS.filter((ladder) => visible({ x: ladder.x - 32, y: ladder.top - 92, width: 64, height: ladder.bottom - ladder.top + 92 }, camera)).map((ladder) => <g key={ladder.id} data-ship-ladder={ladder.id}>
+        <ShipRepeatedArt asset={SHIP_LEVEL_ART_V22.serviceLadder} bounds={{ x: ladder.x - 28, y: ladder.top - 92, width: 56, height: ladder.bottom - ladder.top + 92 }} axis="vertical" />
+        <path d={`M${ladder.x - 29} ${ladder.top - 92}h58 M${ladder.x - 29} ${ladder.bottom}h58`} stroke="#849580" strokeWidth="3" />
         <path d={`M${ladder.x - 49} ${ladder.bottom - 40}l-8 8 8 8 M${ladder.x + 49} ${ladder.bottom - 40}l8 8-8 8`} fill="none" stroke={accent} strokeWidth="2" />
       </g>)}
     </g>
@@ -215,12 +239,11 @@ function RoomFixtures({ room, loadout, trophyDisplays, accent }: {
   if (room.kind === "armory") {
     const weapons = [...new Set(loadout.weaponIds)];
     return <g data-room-fixture="owned-armory">
-      <path d={`M${room.x + 80} ${y - 242}H${room.x + room.width - 80} M${room.x + 80} ${y - 80}H${room.x + room.width - 80}`} stroke="#777c64" strokeWidth="9" />
+      <ShipArtSprite asset={SHIP_LEVEL_ART_V22.armoryRack} centerX={x} bottomY={y - 72} width={548} height={216} />
       {weapons.map((weaponId, index) => <g key={weaponId} data-owned-weapon={weaponId}>
-        <rect x={x - weapons.length * 125 + index * 250 + 6} y={y - 252} width="238" height="172" rx="5" fill="#06100d" fillOpacity=".5" stroke="#66715c" />
-        <image href={WEAPON_PROP_URLS[weaponId]} x={x - weapons.length * 125 + index * 250 + 24} y={y - 236} width="202" height="136" preserveAspectRatio="xMidYMid meet"><title>{weaponId}</title></image>
+        <image href={WEAPON_PROP_URLS[weaponId]} x={x - weapons.length * 98 + index * 196 + 8} y={y - 236} width="180" height="136" preserveAspectRatio="xMidYMid meet"><title>{weaponId}</title></image>
       </g>)}
-      <text x={x} y={y - 275} textAnchor="middle" fontSize="13" letterSpacing="2" fill={accent}>ARMES ÉQUIPÉES</text>
+      <text x={x} y={y - 302} textAnchor="middle" fontSize="13" letterSpacing="2" fill={accent}>ARMES ÉQUIPÉES</text>
       <ShipArtSprite asset={SHIP_LEVEL_ART.navigationConsole} centerX={x} bottomY={y} width={136} height={100} />
     </g>;
   }
@@ -231,12 +254,20 @@ function RoomFixtures({ room, loadout, trophyDisplays, accent }: {
     <path d={`M${room.x + room.width - 272} ${y - 69}l28-252m192 252-28-252`} fill="none" stroke={accent} strokeWidth="1" opacity=".4" />
     <text x={x} y={room.y + 83} textAnchor="middle" fill={accent} fontSize="11" letterSpacing="2">SIMULACRE · PARCOURS LIBRE</text>
   </g>;
+  if (room.kind === "medbay") return <g data-room-fixture="medical-bed">
+    <ShipArtSprite asset={SHIP_LEVEL_ART_V22.medbayBed} centerX={x - 150} bottomY={y} width={280} height={145} />
+    <ShipArtSprite asset={SHIP_LEVEL_ART.navigationConsole} centerX={x + 120} bottomY={y} width={256} height={158} />
+  </g>;
+  if (room.kind === "archives") return <g data-room-fixture="archive-terminal">
+    <ShipArtSprite asset={SHIP_LEVEL_ART_V22.archiveTerminal} centerX={x} bottomY={y} width={280} height={176} />
+  </g>;
+  if (room.kind === "forge") return <g data-room-fixture="forge-station">
+    <ShipArtSprite asset={SHIP_LEVEL_ART_V22.forgeStation} centerX={x} bottomY={y} width={340} height={260} />
+    {[...new Set(loadout.gearIds)].map((gearId, index) => <image key={gearId} data-owned-gear={gearId} href={`/game/assets/v3/actors/yautja/hunter/gear/${gearId}.webp`} x={room.x + room.width - 184} y={y - 245 + index * 110} width="108" height="90" preserveAspectRatio="xMidYMid meet" />)}
+  </g>;
   return <g data-room-fixture={room.kind}>
     <ShipArtSprite asset={SHIP_LEVEL_ART.navigationConsole} centerX={x} bottomY={y} width={256} height={158} />
     {room.kind === "navigation" ? <g aria-hidden="true" stroke={accent} fill="none" opacity=".85"><ellipse cx={x} cy={y - 183} rx="124" ry="40" /><ellipse cx={x} cy={y - 183} rx="62" ry="40" /><path d={`M${x - 122} ${y - 183}h244 M${x} ${y - 223}v80`} /><circle cx={x + 62} cy={y - 207} r="6" fill={accent} /><circle cx={x - 92} cy={y - 162} r="4" fill={accent} /></g> : null}
-    {room.kind === "archives" ? <g aria-hidden="true" fill="none" stroke="#a2ad90" opacity=".9"><AtlasProp visualId="equipment-wrist-computer" x={room.x + 60} y={y - 170} width={140} height={110} /><AtlasProp visualId="equipment-wrist-computer" x={room.x + room.width - 200} y={y - 170} width={140} height={110} />{[0, 1, 2].map((index) => <g key={index}><rect x={room.x + 64 + index * 180} y={room.y + 92} width="138" height="122" /><path d={`M${room.x + 84 + index * 180} ${room.y + 116}h94m-94 18h64m-64 18h84m-84 18h50`} /></g>)}</g> : null}
-    {room.kind === "medbay" ? <g aria-hidden="true"><AtlasProp visualId="equipment-wrist-computer" x={x + 145} y={y - 238} width={145} height={150} /><path d={`M${x - 214} ${y - 82}h132l28 18h-160z`} fill="#547168" stroke="#bdd6c2" strokeWidth="3" /><path d={`M${x - 204} ${y - 64}v52m124-52v52`} stroke="#77938a" strokeWidth="10" /><path d={`M${x + 210} ${y - 220}v68m-34-34h68`} stroke="#9aeed0" strokeWidth="10" opacity=".8" /></g> : null}
-    {room.kind === "forge" ? <g aria-hidden="true"><text x={room.x + 136} y={y - 312} textAnchor="middle" fill="#d9b878" fontSize="10" letterSpacing="1">ALCÔVE D’ÉQUIPEMENT</text><ShipArtSprite asset={SHIP_LEVEL_ART.doorFrame} centerX={room.x + 136} bottomY={y} width={160} height={292} /><path d={`M${room.x + 95} ${y - 32}h100`} stroke="#e5ae63" strokeWidth="8" />{[...new Set(loadout.gearIds)].map((gearId, index) => <image key={gearId} data-owned-gear={gearId} href={`/game/assets/v3/actors/yautja/hunter/gear/${gearId}.webp`} x={room.x + room.width - 184} y={y - 245 + index * 110} width="108" height="90" preserveAspectRatio="xMidYMid meet" />)}</g> : null}
 
     {room.kind === "airlock" ? <CapsulePortal centerX={room.x + room.width - 180} floorY={y} accent={accent} /> : null}
   </g>;
