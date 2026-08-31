@@ -70,3 +70,7 @@ Pas de promesse de 60 FPS, de huit parties terminées, de version PC autonome ou
 - **Navigateur interactif toujours indisponible** : la nouvelle tentative échoue au démarrage sur l’erreur Windows `apply deny-read ACLs`. Aucun parcours complet, rendu du combat, test réel de manette ni mesure de FPS n’est certifié.
 
 Les journaux de build et d’envoi sont des fichiers locaux ignorés. L’état effectif de publication doit être confirmé par un déploiement Vercel `READY`, son commit et les contrôles HTTP de l’alias public, pas déduit de cette préparation.
+
+### Correction du paquet lors de la publication
+
+La première construction distante a compilé Next mais échoué au contrôle TypeScript : `vite.config.ts` importait `.openai/hosting.json`, volontairement absent de l’envoi. Le dépôt local disposait de ce fichier, donc le build local ne reproduisait pas cette différence de paquet. Le déploiement Vercel utilise uniquement Next : `.vercelignore` exclut désormais également `vite.config.ts` et son plugin local `build/`. Les fichiers Sites restent intacts dans Git. Aucune désactivation de TypeScript, aucun secret réintroduit, aucun changement du jeu pour ce correctif. La nouvelle construction distante reste le contrôle décisif de ce paquet.

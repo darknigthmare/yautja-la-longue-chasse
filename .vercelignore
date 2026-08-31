@@ -19,3 +19,7 @@ tests/
 /.agents/
 /.codex/
 .env*
+
+# Vercel uses Next; omit Vite-only configuration and its local Sites plugin.
+/vite.config.ts
+/build/
