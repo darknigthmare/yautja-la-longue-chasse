@@ -1309,69 +1309,139 @@ export function hazardPhaseAt(
     : "inactive";
 }
 
+/** Reject malformed authored geometry before it reaches the simulation. */
 export function validateWorldBlueprint(
   blueprint: WorldBlueprint,
 ): readonly string[] {
   const errors: string[] = [];
   const ids = new Set<string>();
-  const register = (kind: string, id: string, rect?: WorldRect) => {
-    if (ids.has(id)) errors.push(`Duplicate world id: ${id}`);
-    ids.add(id);
-    if (!rect) return;
+  const finite = (label: string, ...values: number[]): boolean => {
+    if (values.every(Number.isFinite)) return true;
+    errors.push(`${label} has a non-finite value`);
+    return false;
+  };
+  const nonNegative = (label: string, ...values: number[]) => {
+    if (finite(label, ...values) && values.some((value) => value < 0)) {
+      errors.push(`${label} has a negative value`);
+    }
+  };
+  const point = (label: string, position: WorldPoint) => {
+    if (!finite(label, position.x, position.y)) return;
+    if (
+      position.x < 0 || position.x > blueprint.width ||
+      position.y < 0 || position.y > blueprint.height
+    ) {
+      errors.push(`${label} escapes the world bounds`);
+    }
+  };
+  const rectangle = (label: string, rect: WorldRect) => {
+    if (!finite(label, rect.x, rect.y, rect.width, rect.height)) return;
     if (rect.width <= 0 || rect.height <= 0) {
-      errors.push(`${kind}/${id} has a non-positive size`);
+      errors.push(`${label} has a non-positive size`);
     }
     if (
-      rect.x < 0 ||
-      rect.y < 0 ||
+      rect.x < 0 || rect.y < 0 ||
       rect.x + rect.width > blueprint.width ||
       rect.y + rect.height > blueprint.height
     ) {
-      errors.push(`${kind}/${id} escapes the world bounds`);
+      errors.push(`${label} escapes the world bounds`);
     }
   };
+  const register = (kind: string, id: string, rect?: WorldRect) => {
+    if (!id.trim()) errors.push(`${kind} has an empty world id`);
+    if (ids.has(id)) errors.push(`Duplicate world id: ${id}`);
+    ids.add(id);
+    if (rect) rectangle(`${kind}/${id}`, rect);
+  };
+
+  if (
+    finite("world", blueprint.width, blueprint.height, blueprint.floorY) &&
+    (blueprint.width <= 0 || blueprint.height <= 0 ||
+      blueprint.floorY <= 0 || blueprint.floorY > blueprint.height)
+  ) {
+    errors.push("world has invalid dimensions or floor height");
+  }
+  point("spawn", blueprint.spawn);
+  point("extraction", blueprint.extraction);
+  rectangle("bossArena", blueprint.bossArena);
+  if (
+    finite("wind", ...Object.values(blueprint.wind)) &&
+    (blueprint.wind.gustPeriodSeconds <= 0 ||
+      blueprint.wind.gustStrength < 0 || blueprint.wind.verticalTurbulence < 0)
+  ) {
+    errors.push("wind has an invalid gust profile");
+  }
 
   for (const platform of blueprint.platforms) {
     register("platform", platform.id, platform);
+    nonNegative(`platform/${platform.id} response`,
+      platform.noiseMultiplier, platform.trackPersistence);
   }
   for (const climbable of blueprint.climbables) {
     register("climbable", climbable.id, climbable);
+    nonNegative(`climbable/${climbable.id} response`,
+      climbable.climbSpeedMultiplier, climbable.staminaPerSecond);
+    for (const [index, dismount] of climbable.dismounts.entries()) {
+      point(`climbable/${climbable.id} dismount ${index}`, dismount);
+    }
   }
   for (const hazard of blueprint.hazards) {
     register("hazard", hazard.id, hazard);
-    if (
-      hazard.cycle &&
-      (hazard.cycle.periodSeconds <= 0 ||
-        hazard.cycle.activeSeconds < 0 ||
-        hazard.cycle.activeSeconds > hazard.cycle.periodSeconds)
-    ) {
-      errors.push(`hazard/${hazard.id} has an invalid activation cycle`);
+    nonNegative(`hazard/${hazard.id} response`,
+      hazard.damagePerSecond, hazard.movementMultiplier,
+      hazard.noisePerSecond, hazard.trackMultiplier, hazard.telegraphSeconds);
+    if (hazard.cycle) {
+      const cycle = hazard.cycle;
+      if (
+        !finite(`hazard/${hazard.id} cycle`,
+          cycle.periodSeconds, cycle.activeSeconds, cycle.phaseSeconds) ||
+        cycle.periodSeconds <= 0 || cycle.activeSeconds < 0 ||
+        cycle.activeSeconds > cycle.periodSeconds
+      ) {
+        errors.push(`hazard/${hazard.id} has an invalid activation cycle`);
+      }
     }
   }
-  for (const cover of blueprint.covers) register("cover", cover.id, cover);
+  for (const cover of blueprint.covers) {
+    register("cover", cover.id, cover);
+    if (finite(`cover/${cover.id} protection`, cover.protection) &&
+      (cover.protection < 0 || cover.protection > 1)) {
+      errors.push(`cover/${cover.id} has invalid protection`);
+    }
+  }
   for (const surface of blueprint.surfaces) {
     register("surface", surface.id, surface);
+    nonNegative(`surface/${surface.id} response`,
+      surface.footprintPersistenceSeconds, surface.scentRetention,
+      surface.movementMultiplier, surface.baseNoise, surface.mudDepth);
   }
   for (const socket of blueprint.trapSockets) {
     register("trap", socket.id);
-    if (
-      socket.x < 0 ||
-      socket.x > blueprint.width ||
-      socket.y < 0 ||
-      socket.y > blueprint.height
-    ) {
-      errors.push(`trap/${socket.id} escapes the world bounds`);
+    point(`trap/${socket.id}`, socket);
+    if (finite(`trap/${socket.id} concealment`, socket.concealment) &&
+      (socket.concealment < 0 || socket.concealment > 1)) {
+      errors.push(`trap/${socket.id} has invalid concealment`);
     }
   }
 
+  // A route name is not a physical waypoint. Keep these sets distinct so an
+  // accidentally reused route id cannot make an unreachable route look valid.
+  const geometryIds = new Set(ids);
   const routeIds = new Set(blueprint.routes.map((route) => route.id));
   for (const route of blueprint.routes) {
     register("route", route.id);
-    if (route.startX < 0 || route.endX > blueprint.width || route.startX >= route.endX) {
+    if (
+      !finite(`route/${route.id} span`, route.startX, route.endX) ||
+      route.startX < 0 || route.endX > blueprint.width ||
+      route.startX >= route.endX
+    ) {
       errors.push(`route/${route.id} has an invalid horizontal span`);
     }
+    if (route.waypointIds.length === 0) {
+      errors.push(`route/${route.id} has no physical waypoints`);
+    }
     for (const waypointId of route.waypointIds) {
-      if (!ids.has(waypointId)) {
+      if (!geometryIds.has(waypointId)) {
         errors.push(`route/${route.id} references missing waypoint ${waypointId}`);
       }
     }

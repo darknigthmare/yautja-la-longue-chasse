@@ -101,6 +101,7 @@ export class GameAudio {
   private disposed = false;
   private cloakVoice: CloakVoice | null = null;
   private ambienceVoice: AmbienceVoice | null = null;
+  private ambienceRequest = 0;
 
   /**
    * À appeler depuis une interaction utilisateur pour satisfaire les règles
@@ -238,8 +239,13 @@ export class GameAudio {
     biome: GameAudioBiome,
     options: AmbienceOptions = {},
   ): Promise<void> {
-    if (this.disposed || this.ambienceVoice?.biome === biome) return;
+    if (this.disposed) return;
+    // Navigation or stop may happen while autoplay unlock is still pending.
+    // Only the latest requested location may install a persistent voice.
+    const request = ++this.ambienceRequest;
+    if (this.ambienceVoice?.biome === biome) return;
     await this.unlock();
+    if (this.disposed || request !== this.ambienceRequest) return;
     const now = this.readyTime();
     if (now === null) return;
     const fadeSeconds = Math.max(0, options.fadeSeconds ?? 0.7);
@@ -253,6 +259,7 @@ export class GameAudio {
   }
 
   stopAmbience(fadeSeconds = 0.45): void {
+    this.ambienceRequest += 1;
     const voice = this.ambienceVoice;
     const context = this.context;
     if (!voice || !context) return;

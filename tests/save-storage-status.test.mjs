@@ -77,6 +77,7 @@ test("save writes distinguish unavailable storage and quota failures", () => {
   assert.equal(unavailable.failure, "storage-unavailable");
 
   const blockedStorage = {
+    getItem() { return null; },
     setItem() {
       throw new DOMException("Quota exceeded", "QuotaExceededError");
     },

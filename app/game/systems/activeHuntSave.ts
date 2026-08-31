@@ -91,6 +91,7 @@ export type ActiveHuntLoadFailure =
   | "storage-unavailable"
   | "read-failed"
   | "invalid-save"
+  | "future-version"
   | "incompatible";
 
 export interface ActiveHuntLoadResult<
@@ -113,6 +114,8 @@ export type ActiveHuntWriteFailure =
   | "read-failed"
   | "invalid-save"
   | "stale-sequence"
+  | "stale-run"
+  | "protected-save"
   | "write-failed";
 
 export interface ActiveHuntWriteResult<
@@ -131,7 +134,15 @@ export interface ActiveHuntWriteResult<
 
 export type ActiveHuntClearFailure =
   | "storage-unavailable"
+  | "stale-run"
   | "clear-failed";
+
+export interface ActiveHuntClearOptions extends ActiveHuntStorageOptions {
+  /** A terminal callback from an old tab must not remove a newer hunt. */
+  expectedRunId?: string;
+  /** Preserve a newer autosave even when it still uses the same run id. */
+  expectedSequence?: number;
+}
 
 export interface ActiveHuntClearResult {
   cleared: boolean;
@@ -196,14 +207,16 @@ function validateJsonValue(
       if (
         Object.getPrototypeOf(value) !== Array.prototype ||
         value.length > ACTIVE_HUNT_MAX_COLLECTION_LENGTH ||
-        Object.keys(value).length !== value.length ||
-        Object.getOwnPropertySymbols(value).length > 0
+        Reflect.ownKeys(value).length !== value.length + 1
       ) {
         return false;
       }
-      return value.every((entry) =>
-        validateJsonValue(entry, depth + 1, budget),
-      );
+      for (let index = 0; index < value.length; index += 1) {
+        const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+        if (!descriptor?.enumerable || !("value" in descriptor) ||
+            !validateJsonValue(descriptor.value, depth + 1, budget)) return false;
+      }
+      return true;
     }
 
     if (!isPlainObject(value)) return false;
@@ -223,10 +236,15 @@ function validateJsonValue(
 }
 
 export function isBoundedJsonValue(value: unknown): value is JsonValue {
-  return validateJsonValue(value, 0, {
-    totalNodes: 0,
-    ancestors: new Set(),
-  });
+  try {
+    return validateJsonValue(value, 0, {
+      totalNodes: 0,
+      ancestors: new Set(),
+    });
+  } catch {
+    // Reject hostile getters/proxies without letting validation crash a hunt.
+    return false;
+  }
 }
 
 function serializedByteLength(serialized: string): number {
@@ -281,69 +299,77 @@ export function normalizeActiveHuntSave<
   value: unknown,
   expectedRuntimeRevision?: number,
 ): ActiveHuntSaveV1<TConfiguration, TSnapshot, TRetryCheckpoint> | null {
-  if (!isPlainObject(value)) return null;
-  if (value.version !== ACTIVE_HUNT_SAVE_VERSION) return null;
-  if (
-    !validCounter(value.runtimeRevision) ||
-    value.runtimeRevision === 0 ||
-    (expectedRuntimeRevision !== undefined &&
-      value.runtimeRevision !== expectedRuntimeRevision)
-  ) {
-    return null;
-  }
-  if (
-    !validIsoDate(value.ownerSaveCreatedAt) ||
-    !validIdentifier(value.missionId) ||
-    !validIdentifier(value.difficultyId) ||
-    !validCounter(value.encounterRun) ||
-    !validIdentifier(value.runId) ||
-    !validCounter(value.sequence) ||
-    !validIsoDate(value.startedAt) ||
-    !validIsoDate(value.savedAt) ||
-    !isPlainObject(value.configuration) ||
-    !isPlainObject(value.snapshot) ||
-    (value.retryCheckpoint !== null &&
-      !isPlainObject(value.retryCheckpoint))
-  ) {
-    return null;
-  }
+  try {
+    try {
+      if (!isPlainObject(value) || !hasOnlyJsonObjectProperties(value)) return null;
+    } catch {
+      return null;
+    }
+    if (value.version !== ACTIVE_HUNT_SAVE_VERSION) return null;
+    if (
+      !validCounter(value.runtimeRevision) ||
+      value.runtimeRevision === 0 ||
+      (expectedRuntimeRevision !== undefined &&
+        value.runtimeRevision !== expectedRuntimeRevision)
+    ) {
+      return null;
+    }
+    if (
+      !validIsoDate(value.ownerSaveCreatedAt) ||
+      !validIdentifier(value.missionId) ||
+      !validIdentifier(value.difficultyId) ||
+      !validCounter(value.encounterRun) ||
+      !validIdentifier(value.runId) ||
+      !validCounter(value.sequence) ||
+      !validIsoDate(value.startedAt) ||
+      !validIsoDate(value.savedAt) ||
+      !isPlainObject(value.configuration) ||
+      !isPlainObject(value.snapshot) ||
+      (value.retryCheckpoint !== null &&
+        !isPlainObject(value.retryCheckpoint))
+    ) {
+      return null;
+    }
 
-  const configuration = cloneBoundedJsonValue(value.configuration);
-  const snapshot = cloneBoundedJsonValue(value.snapshot);
-  const retryCheckpoint =
-    value.retryCheckpoint === null
-      ? null
-      : cloneBoundedJsonValue(value.retryCheckpoint);
-  if (
-    configuration === null ||
-    snapshot === null ||
-    (value.retryCheckpoint !== null && retryCheckpoint === null)
-  ) {
+    const configuration = cloneBoundedJsonValue(value.configuration);
+    const snapshot = cloneBoundedJsonValue(value.snapshot);
+    const retryCheckpoint =
+      value.retryCheckpoint === null
+        ? null
+        : cloneBoundedJsonValue(value.retryCheckpoint);
+    if (
+      configuration === null ||
+      snapshot === null ||
+      (value.retryCheckpoint !== null && retryCheckpoint === null)
+    ) {
+      return null;
+    }
+
+    const normalized = {
+      version: ACTIVE_HUNT_SAVE_VERSION,
+      runtimeRevision: value.runtimeRevision,
+      ownerSaveCreatedAt: value.ownerSaveCreatedAt,
+      missionId: value.missionId,
+      difficultyId: value.difficultyId,
+      encounterRun: value.encounterRun,
+      runId: value.runId,
+      sequence: value.sequence,
+      startedAt: value.startedAt,
+      savedAt: value.savedAt,
+      configuration,
+      snapshot,
+      retryCheckpoint,
+    };
+    const boundedEnvelope = cloneBoundedJsonValue(normalized);
+    if (!boundedEnvelope || !isPlainObject(boundedEnvelope)) return null;
+    return boundedEnvelope as unknown as ActiveHuntSaveV1<
+      TConfiguration,
+      TSnapshot,
+      TRetryCheckpoint
+    >;
+  } catch {
     return null;
   }
-
-  const normalized = {
-    version: ACTIVE_HUNT_SAVE_VERSION,
-    runtimeRevision: value.runtimeRevision,
-    ownerSaveCreatedAt: value.ownerSaveCreatedAt,
-    missionId: value.missionId,
-    difficultyId: value.difficultyId,
-    encounterRun: value.encounterRun,
-    runId: value.runId,
-    sequence: value.sequence,
-    startedAt: value.startedAt,
-    savedAt: value.savedAt,
-    configuration,
-    snapshot,
-    retryCheckpoint,
-  };
-  const boundedEnvelope = cloneBoundedJsonValue(normalized);
-  if (!boundedEnvelope || !isPlainObject(boundedEnvelope)) return null;
-  return boundedEnvelope as unknown as ActiveHuntSaveV1<
-    TConfiguration,
-    TSnapshot,
-    TRetryCheckpoint
-  >;
 }
 
 export function checkActiveHuntCompatibility(
@@ -467,6 +493,11 @@ export function loadActiveHuntSave<
       incompatibilityReason: null,
     };
   }
+  if (isPlainObject(parsed) &&
+      (Number(parsed.version) > ACTIVE_HUNT_SAVE_VERSION ||
+       Number(parsed.runtimeRevision) > (options.expectedRuntimeRevision ?? ACTIVE_HUNT_RUNTIME_REVISION))) {
+    return { save: null, loaded: false, failure: "future-version", incompatibilityReason: null };
+  }
   const save = normalizeActiveHuntSave<
     TConfiguration,
     TSnapshot,
@@ -541,7 +572,26 @@ export function writeActiveHuntSave<
       } catch {
         // A corrupt sidecar must not prevent a valid new run from replacing it.
       }
+      if (isPlainObject(currentValue) &&
+          (Number(currentValue.version) > ACTIVE_HUNT_SAVE_VERSION ||
+           Number(currentValue.runtimeRevision) > (options.expectedRuntimeRevision ?? ACTIVE_HUNT_RUNTIME_REVISION))) {
+        return { save, persisted: false, failure: "protected-save" };
+      }
       const current = normalizeActiveHuntSave(currentValue);
+      // A new run is explicitly cleared by the launch flow. A different run
+      // still occupying the key belongs to another session, even if clocks
+      // were adjusted or two launches happened in the same millisecond.
+      if (current && current.runId !== save.runId) {
+        return { save, persisted: false, failure: "stale-run" };
+      }
+      if (current?.runId === save.runId &&
+          (current.ownerSaveCreatedAt !== save.ownerSaveCreatedAt ||
+           current.missionId !== save.missionId ||
+           current.difficultyId !== save.difficultyId ||
+           current.encounterRun !== save.encounterRun ||
+           current.startedAt !== save.startedAt)) {
+        return { save, persisted: false, failure: "stale-run" };
+      }
       if (
         current?.runId === save.runId &&
         current.sequence >= save.sequence
@@ -554,19 +604,105 @@ export function writeActiveHuntSave<
   }
 
   try {
-    storage.setItem(key, JSON.stringify(save));
+    const serialized = JSON.stringify(save);
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) !== serialized) return { save, persisted: false, failure: "write-failed" };
     return { save, persisted: true, failure: null };
   } catch {
     return { save, persisted: false, failure: "write-failed" };
   }
 }
 
-export function clearActiveHuntSave(
+/**
+ * Resume ownership without erasing the recoverable snapshot first. The caller
+ * gets a fresh run identity; writers and terminal callbacks from an older tab
+ * can no longer update or clear it. This is compare-then-write, not a cross-tab
+ * atomic CAS: callers must still recheck ownership before settling a mission.
+ */
+export function claimActiveHuntSave<
+  TConfiguration = JsonObject,
+  TSnapshot = JsonObject,
+  TRetryCheckpoint = JsonObject,
+>(
+  expectedCandidate: ActiveHuntSaveV1<TConfiguration, TSnapshot, TRetryCheckpoint>,
+  newRunId: string,
   options: ActiveHuntStorageOptions = {},
+): ActiveHuntWriteResult<TConfiguration, TSnapshot, TRetryCheckpoint> {
+  const expectedRuntimeRevision = options.expectedRuntimeRevision ?? ACTIVE_HUNT_RUNTIME_REVISION;
+  const expected = normalizeActiveHuntSave<TConfiguration, TSnapshot, TRetryCheckpoint>(expectedCandidate, expectedRuntimeRevision);
+  if (!expected || !validIdentifier(newRunId) || newRunId === expected.runId) {
+    return { save: null, persisted: false, failure: "invalid-save" };
+  }
+  const save = normalizeActiveHuntSave<TConfiguration, TSnapshot, TRetryCheckpoint>({
+    ...expected,
+    runId: newRunId,
+    savedAt: new Date().toISOString(),
+  }, expectedRuntimeRevision);
+  if (!save) return { save: null, persisted: false, failure: "invalid-save" };
+  const storage = storageFromOptions(options);
+  if (!storage) return { save, persisted: false, failure: "storage-unavailable" };
+  const key = keyFromOptions(options);
+  try {
+    const serialized = storage.getItem(key);
+    if (serialized === null) return { save, persisted: false, failure: "stale-run" };
+    if (serializedByteLength(serialized) > ACTIVE_HUNT_MAX_SERIALIZED_BYTES) {
+      return { save, persisted: false, failure: "protected-save" };
+    }
+    let currentValue: unknown;
+    try { currentValue = JSON.parse(serialized); }
+    catch { return { save, persisted: false, failure: "protected-save" }; }
+    const current = normalizeActiveHuntSave(currentValue, expectedRuntimeRevision);
+    if (!current) return { save, persisted: false, failure: "protected-save" };
+    if (current.runId !== expected.runId) return { save, persisted: false, failure: "stale-run" };
+    if (current.sequence !== expected.sequence || JSON.stringify(current) !== JSON.stringify(expected)) {
+      return { save, persisted: false, failure: "stale-sequence" };
+    }
+  } catch {
+    return { save, persisted: false, failure: "read-failed" };
+  }
+  try {
+    const serialized = JSON.stringify(save);
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) !== serialized) return { save, persisted: false, failure: "write-failed" };
+    return { save, persisted: true, failure: null };
+  } catch {
+    // A failed readback is inconclusive; never delete either observed value.
+    return { save, persisted: false, failure: "write-failed" };
+  }
+}
+
+export function clearActiveHuntSave(
+  options: ActiveHuntClearOptions = {},
 ): ActiveHuntClearResult {
   const storage = storageFromOptions(options);
   if (!storage) return { cleared: false, failure: "storage-unavailable" };
   const key = keyFromOptions(options);
+  if (options.expectedRunId !== undefined || options.expectedSequence !== undefined) {
+    try {
+      const serialized = storage.getItem(key);
+      if (serialized !== null) {
+        if (serializedByteLength(serialized) > ACTIVE_HUNT_MAX_SERIALIZED_BYTES) {
+          return { cleared: false, failure: "stale-run" };
+        }
+        let parsed: unknown;
+        try { parsed = JSON.parse(serialized); }
+        catch { return { cleared: false, failure: "stale-run" }; }
+        // Matching ownership fields cannot authorize an old runtime to erase
+        // an envelope it cannot validate, including future formats/revisions.
+        const current = normalizeActiveHuntSave(
+          parsed,
+          options.expectedRuntimeRevision ?? ACTIVE_HUNT_RUNTIME_REVISION,
+        );
+        if (!current ||
+            (options.expectedRunId !== undefined && current.runId !== options.expectedRunId) ||
+            (options.expectedSequence !== undefined && current.sequence !== options.expectedSequence)) {
+          return { cleared: false, failure: "stale-run" };
+        }
+      }
+    } catch {
+      return { cleared: false, failure: "clear-failed" };
+    }
+  }
   try {
     storage.removeItem(key);
     return { cleared: true, failure: null };

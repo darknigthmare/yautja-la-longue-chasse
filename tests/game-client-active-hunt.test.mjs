@@ -47,7 +47,7 @@ test("GameClient starts a fresh monotonic sidecar session", () => {
     source,
     /if \(result\.persisted && result\.save\) \{\s*session\.sequence = sequence/,
   );
-  assert.match(source, /result\.failure === "stale-sequence"\) return null/);
+  assert.match(source, /result\.failure === "stale-sequence"[\s\S]*?"stale-run"[\s\S]*?"protected-save"\) return null/);
 });
 
 test("GameClient resumes exact normalized configuration without applying a result", () => {
@@ -64,7 +64,7 @@ test("GameClient resumes exact normalized configuration without applying a resul
   assert.match(source, /onResumeFailure=\{rejectActiveHuntResume\}/);
 
   const suspendBlock = source.match(
-    /const suspendActiveHunt = useCallback\([\s\S]*?\n  \);\n\n  const completeMission/,
+    /const suspendActiveHunt = useCallback\([\s\S]*?\n  \);\n\n  const checkHuntSessionForSettlement/,
   )?.[0];
   assert.ok(suspendBlock);
   assert.doesNotMatch(suspendBlock, /applyMissionResult/);
@@ -75,10 +75,10 @@ test("GameClient resumes exact normalized configuration without applying a resul
   assert.match(suspendBlock, /setScreen\("title"\)/);
 });
 
-test("all terminal and reset paths clear the interrupted hunt", () => {
+test("terminal paths clear a durably settled hunt and reset uses explicit replacement", () => {
   assert.match(source, /const completeMission = useCallback[\s\S]*?clearHuntSession\(\)/);
-  assert.match(source, /onAbort=\{\(result\) => \{[\s\S]*?clearHuntSession\(\)/);
-  assert.match(source, /const resetProgress = useCallback[\s\S]*?clearHuntSession\(\)[\s\S]*?persist\(fresh\)/);
+  assert.match(source, /onAbort=\{\(result\) => completeMission\(result, true\)\}/);
+  assert.match(source, /const resetProgress = useCallback[\s\S]*?replaceSaveWithStatus\(fresh\)[\s\S]*?if \(!written\.persisted\)[\s\S]*?clearHuntSession\(\)/);
 });
 
 test("HuntCanvas captures bounded snapshots at safe lifecycle boundaries", () => {
@@ -128,7 +128,7 @@ test("retry immediately replaces the pre-death active sidecar", () => {
 test("death invalidates the living sidecar before a sanctioned retry", () => {
   assert.match(
     source,
-    /const invalidateActiveHuntPersistence = useCallback\(\(\) => \{[\s\S]*?clearActiveHuntSave\(\)[\s\S]*?session\.lastPersisted = null/,
+    /const invalidateActiveHuntPersistence = useCallback\(\(\) => \{[\s\S]*?clearActiveHuntSave\(\{ expectedRunId: session\.runId, expectedSequence: session\.sequence \}\)[\s\S]*?session\.lastPersisted = null/,
   );
   assert.match(
     huntSource,

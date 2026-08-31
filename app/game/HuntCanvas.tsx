@@ -16,6 +16,8 @@ import {
 } from "./data";
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
+import { ExplorationMap } from "./ExplorationMap";
+import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
 import {
   HUNTER_RIG_CANVAS,
   relativeBoneMatrix,
@@ -68,6 +70,7 @@ import {
   stepMudState,
   stepRegularAttackTelegraph,
   stepSmartDiscFlight,
+  sweptProjectileImpactTime,
   hunterWeaponChargeRatio,
   type AiBrain,
   type AiCoordinationGroup,
@@ -408,6 +411,7 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  visitedScreenIds?: string[];
   phase: HuntPhase;
   elapsed: number;
   player: PlayerState;
@@ -567,12 +571,17 @@ interface AssetBank {
   environmentProps: Partial<Record<string, HTMLImageElement | null>>;
 }
 
+type HuntDialogGamepadAction = "previous" | "next" | "activate";
+
 interface InputHub {
   keyboardHeld: Set<Action>;
   touchHeld: Set<Action>;
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
+  activeGamepadIndex: number | null;
+  gamepadNeedsNeutral: boolean;
+  gamepadDialogActions: HuntDialogGamepadAction[];
   pointerScreen: Vec2 | null;
 }
 
@@ -582,6 +591,7 @@ interface GameState {
   elapsed: number;
   cameraX: number;
   worldScreenId: string;
+  visitedScreenIds: string[];
   player: PlayerState;
   world: WorldBlueprint;
   arsenal: ArsenalRuntimeState;
@@ -651,6 +661,8 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  playerX: number;
+  visitedScreenIds: string[];
   phase: HuntPhase;
   paused: boolean;
   health: number;
@@ -737,6 +749,8 @@ function isHeldKeyboardAction(action: Action): boolean {
 }
 
 const EMPTY_UI: UiSnapshot = {
+  playerX: 0,
+  visitedScreenIds: [],
   phase: "tracking",
   paused: false,
   health: 1,
@@ -1204,6 +1218,7 @@ function makeGameState(
     elapsed: 0,
     cameraX: 0,
     worldScreenId: getWorldScreenAtX(mission.id, world.spawn.x).id,
+    visitedScreenIds: discoverWorldScreen(mission.id, [], world.spawn.x),
     world,
     arsenal: createArsenalRuntime({
       loadout,
@@ -1488,6 +1503,7 @@ function captureCheckpoint(
     );
   }
   return {
+    visitedScreenIds: [...(state.visitedScreenIds ?? [])],
     phase: state.phase,
     elapsed: state.elapsed,
     player: checkpointPlayer,
@@ -1574,6 +1590,23 @@ function hasFiniteFields(
   fields: readonly string[],
 ): boolean {
   return fields.every((field) => isFiniteJsonNumber(value[field]));
+}
+
+function isValidSerializedHuntActor(value: JsonObject): boolean {
+  return hasFiniteFields(value, ["x", "y", "width", "height", "health", "maxHealth"]) &&
+    Math.abs(value.x as number) <= 1_000_000 && Math.abs(value.y as number) <= 1_000_000 &&
+    (value.width as number) > 0 && (value.width as number) <= 2_048 &&
+    (value.height as number) > 0 && (value.height as number) <= 2_048 &&
+    (value.maxHealth as number) > 0 && (value.maxHealth as number) <= 1_000_000_000 &&
+    (value.health as number) >= 0 && (value.health as number) <= (value.maxHealth as number);
+}
+
+function isValidSerializedHuntProjectile(value: JsonObject): boolean {
+  return hasFiniteFields(value, ["x", "y", "velocityX", "velocityY", "radius", "damage", "life", "coverGraceSeconds"]) &&
+    (value.radius as number) > 0 && (value.radius as number) <= 512 &&
+    (value.damage as number) >= 0 && (value.life as number) >= 0 &&
+    (value.coverGraceSeconds as number) >= 0 && typeof value.hostile === "boolean" &&
+    (value.hitEnemyIds === undefined || isStringArray(value.hitEnemyIds));
 }
 
 function activeHuntSnapshotChecksum(serialized: string): string {
@@ -1700,6 +1733,12 @@ function deserializeActiveHuntCheckpoint(
       "scanCooldown",
       "healCooldown",
     ]) ||
+    !isValidSerializedHuntActor(checkpoint.player) ||
+    (checkpoint.player.health as number) <= 0 ||
+    (checkpoint.player.stamina as number) < 0 ||
+    (checkpoint.player.stamina as number) > (checkpoint.player.maxStamina as number) ||
+    (checkpoint.player.energy as number) < 0 ||
+    (checkpoint.player.energy as number) > (checkpoint.player.maxEnergy as number) ||
     !isJsonObject(checkpoint.player.aimPoint) ||
     !hasFiniteFields(checkpoint.player.aimPoint, ["x", "y"]) ||
     !Array.isArray(checkpoint.player.weaponAmmo) ||
@@ -1730,14 +1769,7 @@ function deserializeActiveHuntCheckpoint(
         !hasFiniteFields(checkpoint.bossMechanics.guardianAdaptation, [
           "energyUses", "observationSeconds", "warningSeconds", "fieldSeconds",
         ]))) ||
-    !hasFiniteFields(checkpoint.boss, [
-      "x",
-      "y",
-      "width",
-      "height",
-      "health",
-      "maxHealth",
-    ]) ||
+    !isValidSerializedHuntActor(checkpoint.boss) ||
     !hasFiniteFields(checkpoint, [
       "elapsed",
       "ecologySpawnIndex",
@@ -1754,7 +1786,8 @@ function deserializeActiveHuntCheckpoint(
     ]) ||
     !isStringArray(checkpoint.spawnedWaves) ||
     !isStringArray(checkpoint.completedObjectives) ||
-    !isStringArray(checkpoint.brokenPillarIds)
+    !isStringArray(checkpoint.brokenPillarIds) ||
+    (checkpoint.visitedScreenIds !== undefined && !isStringArray(checkpoint.visitedScreenIds))
   ) {
     return null;
   }
@@ -1783,13 +1816,21 @@ function deserializeActiveHuntCheckpoint(
     "rangedBossViolation",
   ] as const;
   if (
-    !requiredArrays.every((field) => Array.isArray(checkpoint[field])) ||
+    !requiredArrays.every((field) => Array.isArray(checkpoint[field]) &&
+      (checkpoint[field] as unknown[]).every(isJsonObject)) ||
     !requiredBooleans.every(
       (field) => typeof checkpoint[field] === "boolean",
     )
   ) {
     return null;
   }
+
+  if (
+    !(checkpoint.enemies as JsonObject[]).every(enemy =>
+      typeof enemy.id === "string" && typeof enemy.alive === "boolean" &&
+      typeof enemy.active === "boolean" && isValidSerializedHuntActor(enemy)) ||
+    !(checkpoint.projectiles as JsonObject[]).every(isValidSerializedHuntProjectile)
+  ) return null;
 
   const {
     spawnedWaves,
@@ -1853,6 +1894,16 @@ function restoreCheckpoint(
     phase: checkpoint.phase,
     paused: mode === "resume",
     elapsed: checkpoint.elapsed,
+    // Retry retains knowledge discovered during this hunt; resume trusts only
+    // authored ids from its saved checkpoint. Old saves reveal the current room.
+    visitedScreenIds: discoverWorldScreen(
+      state.world.missionId,
+      normalizeVisitedScreenIds(state.world.missionId, [
+        ...(checkpoint.visitedScreenIds ?? []),
+        ...(mode === "retry" ? state.visitedScreenIds ?? [] : []),
+      ]),
+      player.x + player.width / 2,
+    ),
     cameraX: clamp(
       player.x - VIEW_WIDTH * 0.38,
       0,
@@ -2378,6 +2429,8 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
         )
       : null;
   return {
+    playerX: state.player.x + state.player.width / 2,
+    visitedScreenIds: [...state.visitedScreenIds],
     phase: state.phase,
     paused: state.paused,
     health: Math.max(0, state.player.health),
@@ -6457,7 +6510,8 @@ function updateAimState(
     .filter((entry) => entry.range <= 920)
     .sort((a, b) => a.range - b.range)[0]?.enemy;
 
-  if (player.aiming && input.pointerScreen) {
+  // Controller assistance must not keep targeting the last mouse position.
+  if (player.aiming && input.pointerScreen && !input.gamepadHeld.has("aim")) {
     player.aimPoint.x = clamp(
       input.pointerScreen.x + state.cameraX,
       0,
@@ -7937,6 +7991,7 @@ function updateProjectiles(
       continue;
     }
 
+    const movementStart = { x: projectile.x, y: projectile.y };
     if (
       projectile.weaponId === "smart-disc" &&
       projectile.recovery === "return"
@@ -7983,55 +8038,27 @@ function updateProjectiles(
       projectile.coverGraceSeconds - delta,
     );
     let consumed = false;
-    const hitBox = {
-      x: projectile.x - projectile.radius,
-      y: projectile.y - projectile.radius,
-      width: projectile.radius * 2,
-      height: projectile.radius * 2,
+    let turnedAfterHit = false;
+    const movementEnd = { x: projectile.x, y: projectile.y };
+    const placeAtImpact = (time: number) => {
+      projectile.x = movementStart.x + (movementEnd.x - movementStart.x) * time;
+      projectile.y = movementStart.y + (movementEnd.y - movementStart.y) * time;
     };
-    const blockingCover =
-      projectile.coverGraceSeconds <= 0
-        ? state.world.covers.find(
-            (cover) =>
-              !state.brokenPillarIds.has(cover.id) &&
-              overlaps(hitBox, cover),
-          )
-        : null;
-    if (blockingCover) {
-      const breakThreshold = 18 + blockingCover.protection * 34;
-      if (
-        blockingCover.destructible &&
-        projectile.damage >= breakThreshold
-      ) {
-        state.brokenPillarIds.add(blockingCover.id);
-        if (state.screenShakeEnabled) state.screenShake = 7;
-      }
-      if (projectile.recovery === "pickup") {
-        settleRecoverableProjectile(state, projectile);
-        next.push(projectile);
-        continue;
-      }
-      if (projectile.recovery === "return") {
-        if (projectile.returning) {
-          restoreProjectileAmmo(
-            state,
-            projectile,
-            "Smart Disc rappelé après trajectoire bloquée.",
-          );
-          continue;
-        }
-        projectile.returning = true;
-        projectile.outboundSeconds = 0;
-        projectile.coverGraceSeconds = 0.18;
-        next.push(projectile);
-        continue;
-      } else {
-        consumed = true;
-      }
-    }
-
+    // Sweep the complete fixed step and choose the first obstacle in space,
+    // not the first entry in an authored array. Thin covers remain solid.
+    const coverImpact = projectile.coverGraceSeconds <= 0
+      ? state.world.covers
+          .filter(cover => !state.brokenPillarIds.has(cover.id))
+          .map(cover => ({ cover, time: sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, cover) }))
+          .filter((hit): hit is { cover: GameState["world"]["covers"][number]; time: number } => hit.time !== null)
+          .sort((a, b) => a.time - b.time)[0]
+      : undefined;
+    const blockingCover = coverImpact?.cover;
+    const firstCoverTime = coverImpact?.time ?? Infinity;
     if (!consumed && projectile.hostile) {
-      if (overlaps(hitBox, state.player)) {
+      const playerImpact = sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, state.player);
+      if (playerImpact !== null && playerImpact < firstCoverTime) {
+        placeAtImpact(playerImpact);
         hurtPlayer(state, projectile.damage, mission);
         consumed = true;
       }
@@ -8040,9 +8067,14 @@ function updateProjectiles(
         ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
         ...(state.boss.active && state.boss.alive ? [state.boss] : []),
       ];
-      for (const enemy of targets) {
-        if (projectile.hitEnemyIds?.includes(enemy.id)) continue;
-        if (overlaps(hitBox, enemy)) {
+      const targetImpacts = targets
+        .filter(enemy => !projectile.hitEnemyIds?.includes(enemy.id))
+        .map(enemy => ({ enemy, time: sweptProjectileImpactTime(movementStart, movementEnd, projectile.radius, enemy) }))
+        .filter((hit): hit is { enemy: EnemyState; time: number } => hit.time !== null && hit.time < firstCoverTime)
+        .sort((a, b) => a.time - b.time);
+      for (const { enemy, time } of targetImpacts) {
+        if (enemy.alive) {
+          placeAtImpact(time);
           if (projectile.weaponId === "plasma-caster") {
             recordPlasmaRestraintViolation(state, mission, enemy);
           }
@@ -8103,6 +8135,7 @@ function updateProjectiles(
             if (reachedHitLimit) {
               projectile.returning = true;
               projectile.outboundSeconds = 0;
+              turnedAfterHit = true;
               break;
             }
             continue;
@@ -8114,6 +8147,45 @@ function updateProjectiles(
         }
       }
     }
+    if (consumed) continue;
+    if (!turnedAfterHit) {
+      projectile.x = movementEnd.x;
+      projectile.y = movementEnd.y;
+    }
+    if (blockingCover && !turnedAfterHit) {
+      placeAtImpact(coverImpact!.time);
+      const breakThreshold = 18 + blockingCover.protection * 34;
+      if (
+        blockingCover.destructible &&
+        projectile.damage >= breakThreshold
+      ) {
+        state.brokenPillarIds.add(blockingCover.id);
+        if (state.screenShakeEnabled) state.screenShake = 7;
+      }
+      if (projectile.recovery === "pickup") {
+        settleRecoverableProjectile(state, projectile);
+        next.push(projectile);
+        continue;
+      }
+      if (projectile.recovery === "return") {
+        if (projectile.returning) {
+          restoreProjectileAmmo(
+            state,
+            projectile,
+            "Smart Disc rappelé après trajectoire bloquée.",
+          );
+          continue;
+        }
+        projectile.returning = true;
+        projectile.outboundSeconds = 0;
+        projectile.coverGraceSeconds = 0.18;
+        next.push(projectile);
+        continue;
+      } else {
+        consumed = true;
+      }
+    }
+
     if (consumed) continue;
 
     const withinWorld =
@@ -8170,31 +8242,56 @@ function updateGoreParticles(state: GameState, delta: number): void {
   state.goreParticles = next;
 }
 
-function pollGamepad(input: InputHub): void {
-  if (typeof navigator === "undefined" || !navigator.getGamepads) return;
-  const gamepad = navigator.getGamepads()[0];
+function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | null {
   const previousDirections = new Set(input.gamepadHeld);
   input.gamepadHeld.clear();
-  if (!gamepad) {
+  if (typeof document !== "undefined" && (document.hidden || !document.hasFocus())) {
     input.previousGamepadButtons = [];
-    return;
+    input.gamepadNeedsNeutral = true;
+    return "focus-lost";
+  }
+  let pads: (Gamepad | null)[] = [];
+  try {
+    if (typeof navigator !== "undefined" && navigator.getGamepads) {
+      pads = Array.from(navigator.getGamepads());
+    }
+  } catch {
+    // A browser policy can deny the API; keyboard and touch must remain usable.
+  }
+  const previousIndex = input.activeGamepadIndex;
+  const existing = previousIndex === null ? null : pads.find(pad => pad?.connected && pad.index === previousIndex);
+  const gamepad = existing ?? pads.find(pad => pad?.connected) ?? null;
+  const disconnected = previousIndex !== null && !existing;
+  if (!gamepad) {
+    input.activeGamepadIndex = null;
+    input.previousGamepadButtons = [];
+    input.gamepadNeedsNeutral = true;
+    return disconnected ? "gamepad-disconnected" : null;
+  }
+  if (gamepad.index !== previousIndex) {
+    input.activeGamepadIndex = gamepad.index;
+    input.previousGamepadButtons = [];
+    input.gamepadNeedsNeutral = true;
   }
 
-  const left =
-    gamepad.axes[0] < -0.25 || Boolean(gamepad.buttons[14]?.pressed);
-  const right =
-    gamepad.axes[0] > 0.25 || Boolean(gamepad.buttons[15]?.pressed);
-  const up =
-    gamepad.axes[1] < -0.3 || Boolean(gamepad.buttons[12]?.pressed);
-  const down =
-    gamepad.axes[1] > 0.3 || Boolean(gamepad.buttons[13]?.pressed);
+  const left = gamepad.axes[0] < -0.25 || Boolean(gamepad.buttons[14]?.pressed);
+  const right = gamepad.axes[0] > 0.25 || Boolean(gamepad.buttons[15]?.pressed);
+  const up = gamepad.axes[1] < -0.3 || Boolean(gamepad.buttons[12]?.pressed);
+  const down = gamepad.axes[1] > 0.3 || Boolean(gamepad.buttons[13]?.pressed);
+  const aiming = (gamepad.buttons[6]?.value ?? 0) > 0.25;
+  const current = gamepad.buttons.map(button => button.pressed);
+  // A held button on reconnect/focus/retry must not become a fresh attack.
+  if (input.gamepadNeedsNeutral) {
+    input.previousGamepadButtons = current;
+    if (!left && !right && !up && !down && !aiming && !current.some(Boolean)) {
+      input.gamepadNeedsNeutral = false;
+    }
+    return disconnected ? "gamepad-disconnected" : null;
+  }
   const setDirection = (action: Action, held: boolean) => {
     if (!held) return;
     input.gamepadHeld.add(action);
-    if (
-      (action === "left" || action === "right") &&
-      !previousDirections.has(action)
-    ) {
+    if ((action === "left" || action === "right") && !previousDirections.has(action)) {
       input.pressed.add(action);
     }
   };
@@ -8202,30 +8299,41 @@ function pollGamepad(input: InputHub): void {
   setDirection("right", right);
   setDirection("up", up);
   setDirection("down", down);
-  if ((gamepad.buttons[6]?.value ?? 0) > 0.25) {
-    input.gamepadHeld.add("aim");
-  }
+  if (aiming) input.gamepadHeld.add("aim");
 
+  if (input.gamepadDialogActions.length < 4) {
+    if (up && !previousDirections.has("up")) input.gamepadDialogActions.push("previous");
+    if (down && !previousDirections.has("down")) input.gamepadDialogActions.push("next");
+    if (current[0] && !input.previousGamepadButtons[0]) input.gamepadDialogActions.push("activate");
+  }
   const actionButtons: ReadonlyArray<readonly [number, Action]> = [
-    [0, "jump"],
-    [2, "melee"],
-    [7, "weapon"],
-    [4, "scan"],
-    [3, "cloak"],
-    [5, "heal"],
-    [1, "interact"],
-    [8, "weaponNext"],
-    [10, "gearOne"],
-    [11, "gearTwo"],
-    [9, "pause"],
+    [0, "jump"], [2, "melee"], [7, "weapon"], [4, "scan"],
+    [3, "cloak"], [5, "heal"], [1, "interact"], [8, "weaponNext"],
+    [10, "gearOne"], [11, "gearTwo"], [9, "pause"],
   ];
-  const current = gamepad.buttons.map((button) => button.pressed);
   for (const [index, action] of actionButtons) {
-    if (current[index] && !input.previousGamepadButtons[index]) {
-      input.pressed.add(action);
-    }
+    if (current[index] && !input.previousGamepadButtons[index]) input.pressed.add(action);
   }
   input.previousGamepadButtons = current;
+  return disconnected ? "gamepad-disconnected" : null;
+}
+
+function navigateHuntDialogWithGamepad(
+  dialog: HTMLElement | null,
+  actions: readonly HuntDialogGamepadAction[],
+): void {
+  if (!dialog || actions.length === 0) return;
+  const buttons = Array.from(dialog.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"));
+  if (buttons.length === 0) return;
+  let index = Math.max(0, buttons.indexOf(dialog.ownerDocument.activeElement as HTMLButtonElement));
+  for (const action of actions) {
+    if (action === "activate") {
+      buttons[index].click();
+      return; // The click may replace or close this dialog.
+    }
+    index = (index + (action === "next" ? 1 : -1) + buttons.length) % buttons.length;
+    buttons[index].focus();
+  }
 }
 
 function stepGame(
@@ -8240,12 +8348,24 @@ function stepGame(
   finish: (result: MissionResult) => void,
 ): void {
   const wasPaused = state.paused;
-  pollGamepad(input);
+  const interruption = pollGamepad(input);
+  if (state.phase === "dead" || state.phase === "finished") {
+    input.pressed.clear();
+    return;
+  }
+  if (interruption) {
+    state.paused = true;
+    input.pressed.clear();
+    if (!wasPaused) announce(state, interruption === "gamepad-disconnected"
+      ? "Manette déconnectée — chasse en pause."
+      : "Chasse en pause après perte de focus.", 3);
+    return;
+  }
   if (consume(input, "pause")) {
     state.paused = !state.paused;
     announce(state, state.paused ? "Chasse en pause." : "Chasse reprise.", 1.3);
   }
-  if (state.paused || state.phase === "dead" || state.phase === "finished") {
+  if (state.paused) {
     input.pressed.clear();
     return;
   }
@@ -8282,7 +8402,6 @@ function stepGame(
   updateProjectiles(state, mission, delta);
   updateGoreParticles(state, delta);
   updateObjectiveFlow(state, mission, difficulty);
-  updateMissionCheckpoint(state);
 
   const currentWorldScreen = getWorldScreenAtX(
     mission.id,
@@ -8290,6 +8409,9 @@ function stepGame(
   );
   if (currentWorldScreen.id !== state.worldScreenId) {
     state.worldScreenId = currentWorldScreen.id;
+    state.visitedScreenIds = discoverWorldScreen(
+      mission.id, state.visitedScreenIds, state.player.x + state.player.width / 2,
+    );
     announce(
       state,
       `${currentWorldScreen.label} — ${currentWorldScreen.objectiveCue}`,
@@ -8297,6 +8419,8 @@ function stepGame(
     );
   }
 
+  // Include a sector discovered on this frame in the same checkpoint.
+  updateMissionCheckpoint(state);
   const desiredCamera = clamp(
     state.player.x - VIEW_WIDTH * 0.38,
     0,
@@ -8354,6 +8478,9 @@ export default function HuntCanvas({
     gamepadHeld: new Set(),
     pressed: new Set(),
     previousGamepadButtons: [],
+    activeGamepadIndex: null,
+    gamepadNeedsNeutral: true,
+    gamepadDialogActions: [],
     pointerScreen: null,
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
@@ -8588,6 +8715,9 @@ export default function HuntCanvas({
     input.gamepadHeld.clear();
     input.pressed.clear();
     input.previousGamepadButtons = [];
+    input.activeGamepadIndex = null;
+    input.gamepadNeedsNeutral = true;
+    input.gamepadDialogActions = [];
     input.pointerScreen = null;
     setAssetsReady(false);
     setUi(snapshot(game, mission));
@@ -8920,6 +9050,7 @@ export default function HuntCanvas({
     });
 
     const restart = () => {
+      const visitedBeforeRetry = game.visitedScreenIds;
       game = game.lastCheckpoint
         ? restoreCheckpoint(game, game.lastCheckpoint)
         : makeGameState(
@@ -8932,12 +9063,20 @@ export default function HuntCanvas({
             screenShake,
             ecologyRunSeed,
           );
+      game.visitedScreenIds = discoverWorldScreen(
+        mission.id,
+        [...visitedBeforeRetry, ...game.visitedScreenIds],
+        game.player.x + game.player.width / 2,
+      );
       lastTime = performance.now();
       accumulator = 0;
       input.pressed.clear();
       input.keyboardHeld.clear();
       input.touchHeld.clear();
       input.gamepadHeld.clear();
+      input.previousGamepadButtons = [];
+      input.gamepadNeedsNeutral = true;
+      input.gamepadDialogActions = [];
       setUi(snapshot(game, mission));
       lastObservedPhase = game.phase;
       lastPersistedElapsed = game.elapsed;
@@ -9054,6 +9193,9 @@ export default function HuntCanvas({
       }
     };
     const onBlur = () => {
+      input.gamepadDialogActions = [];
+      input.previousGamepadButtons = [];
+      input.gamepadNeedsNeutral = true;
       input.keyboardHeld.clear();
       input.gamepadHeld.clear();
       input.touchHeld.clear();
@@ -9072,10 +9214,17 @@ export default function HuntCanvas({
     const onVisibility = () => {
       if (document.hidden) onBlur();
     };
+    const onGamepadDisconnected = (event: GamepadEvent) => {
+      if (event.gamepad.index !== input.activeGamepadIndex) return;
+      input.activeGamepadIndex = null;
+      announce(game, "Manette déconnectée — chasse en pause.", 3);
+      onBlur();
+    };
     window.addEventListener("keydown", onKeyDown, { passive: false });
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onBlur);
     window.addEventListener("pagehide", onBlur);
+    window.addEventListener("gamepaddisconnected", onGamepadDisconnected);
     document.addEventListener("visibilitychange", onVisibility);
 
     const fixedStep = 1 / 60;
@@ -9105,6 +9254,10 @@ export default function HuntCanvas({
           soundRef.current?.(sound);
         }
         accumulator -= fixedStep;
+      }
+      const dialogActions = input.gamepadDialogActions.splice(0);
+      if (game.paused || game.phase === "dead") {
+        navigateHuntDialogWithGamepad(huntDialogRef.current, dialogActions);
       }
       if (game.phase !== lastObservedPhase) {
         lastObservedPhase = game.phase;
@@ -9148,6 +9301,7 @@ export default function HuntCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
       window.removeEventListener("pagehide", onBlur);
+      window.removeEventListener("gamepaddisconnected", onGamepadDisconnected);
       document.removeEventListener("visibilitychange", onVisibility);
       input.keyboardHeld.clear();
       input.touchHeld.clear();
@@ -9307,7 +9461,7 @@ export default function HuntCanvas({
           className="hunt-pause-button"
           onClick={() => togglePauseRef.current()}
           style={styles.iconButton}
-          aria-label={ui.paused ? "Reprendre la chasse" : "Mettre en pause"}
+          aria-label={ui.paused ? "Reprendre la chasse" : "Mettre en pause et consulter la carte"}
         >
           {ui.paused ? "▶" : "Ⅱ"}
         </button>
@@ -9438,7 +9592,7 @@ export default function HuntCanvas({
               aria-modal="true"
               aria-labelledby="hunt-pause-title"
               tabIndex={-1}
-              style={styles.modal}
+              style={{ ...styles.modal, width: "min(100%, 760px)", maxHeight: "100%", overflowY: "auto", boxSizing: "border-box" }}
             >
               <span style={styles.modalKicker}>BIOMASK EN VEILLE</span>
               <h2 id="hunt-pause-title" style={styles.modalTitle}>Chasse en pause</h2>
@@ -9469,6 +9623,12 @@ export default function HuntCanvas({
                   Abandonner la chasse
                 </button>
               </div>
+              <ExplorationMap
+                missionId={mission.id}
+                playerX={ui.playerX}
+                visitedScreenIds={ui.visitedScreenIds}
+                objectiveLabel={ui.objective}
+              />
             </div>
           </div>
         ) : null}

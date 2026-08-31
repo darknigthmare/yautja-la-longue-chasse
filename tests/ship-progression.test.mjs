@@ -121,7 +121,7 @@ function memoryStorage() {
   };
 }
 
-test("ship progression is a sidecar and leaves the current v3 save untouched", () => {
+test("ship progression owns a campaign without changing the core save schema", () => {
   const save = defaultSave(FIXED_TIME);
   save.trophies = [trophy()];
   const before = JSON.stringify(save);
@@ -129,7 +129,8 @@ test("ship progression is a sidecar and leaves the current v3 save untouched", (
   const sidecar = createDefaultShipProgression(save, FIXED_TIME);
 
   assert.equal(JSON.stringify(save), before);
-  assert.equal(sidecar.version, 2);
+  assert.equal(sidecar.version, 3);
+  assert.equal(sidecar.ownerSaveCreatedAt, save.createdAt);
   assert.equal(sidecar.selectedShipId, "classic-predator-spaceship");
   assert.deepEqual(sidecar.unlockedShipIds, ["classic-predator-spaceship"]);
   assert.equal(sidecar.trophies.length, 1);

@@ -242,10 +242,12 @@ test("a sidecar cannot overwrite the same run with a stale sequence", () => {
     true,
   );
   assert.equal(
-    writeActiveHuntSave(
-      activeHunt({ runId: "new-run", sequence: 0 }),
-      { storage },
-    ).persisted,
+    writeActiveHuntSave(activeHunt({ runId: "new-run", sequence: 0 }), { storage }).failure,
+    "stale-run",
+  );
+  assert.equal(clearActiveHuntSave({ storage, expectedRunId: "run-jungle-3" }).cleared, true);
+  assert.equal(
+    writeActiveHuntSave(activeHunt({ runId: "new-run", sequence: 0 }), { storage }).persisted,
     true,
   );
 });
@@ -325,4 +327,67 @@ test("storage failures are never mistaken for successful persistence", () => {
     cleared: false,
     failure: "clear-failed",
   });
+});
+
+
+test("an old tab cannot overwrite or clear a different active run", () => {
+  const storage = memoryStorage();
+  const newer = activeHunt({ runId: "new-tab-run", sequence: 2 });
+  assert.equal(writeActiveHuntSave(newer, { storage }).persisted, true);
+  const before = storage.values.get(ACTIVE_HUNT_STORAGE_KEY);
+  for (const startedAt of ["2020-01-01T00:00:00.000Z", "2030-01-01T00:00:00.000Z"]) {
+    assert.equal(writeActiveHuntSave(activeHunt({ sequence: 999, startedAt }), { storage }).failure, "stale-run");
+  }
+  assert.deepEqual(clearActiveHuntSave({ storage, expectedRunId: "run-jungle-3" }), {
+    cleared: false, failure: "stale-run",
+  });
+  assert.equal(storage.values.get(ACTIVE_HUNT_STORAGE_KEY), before);
+  assert.equal(clearActiveHuntSave({ storage, expectedRunId: "new-tab-run" }).cleared, true);
+});
+
+test("a run identity cannot mutate even with a higher sequence", () => {
+  const storage = memoryStorage();
+  writeActiveHuntSave(activeHunt(), { storage });
+  for (const change of [
+    { ownerSaveCreatedAt: "2020-01-01T00:00:00.000Z" },
+    { missionId: "ice-cryostalker" }, { difficultyId: "elite" },
+    { encounterRun: 5 }, { startedAt: "2026-08-02T09:00:00.000Z" },
+  ]) {
+    assert.equal(writeActiveHuntSave(activeHunt({ ...change, sequence: 2 }), { storage }).failure, "stale-run");
+  }
+  assert.equal(loadActiveHuntSave({ storage }).save.sequence, 1);
+});
+
+test("array and envelope accessors never execute during JSON validation", () => {
+  let executions = 0;
+  const array = [1];
+  Object.defineProperty(array, "0", { enumerable: true, get() { executions += 1; throw new Error("getter"); } });
+  assert.equal(isBoundedJsonValue(array), false);
+  const customSerialization = [1];
+  Object.defineProperty(customSerialization, "toJSON", { value() { executions += 1; return []; } });
+  assert.equal(isBoundedJsonValue(customSerialization), false);
+  const envelope = activeHunt();
+  Object.defineProperty(envelope, "version", { enumerable: true, get() { executions += 1; throw new Error("getter"); } });
+  assert.equal(normalizeActiveHuntSave(envelope), null);
+  assert.equal(isBoundedJsonValue(new Proxy({}, { getPrototypeOf() { throw new Error("proxy"); } })), false);
+  assert.equal(executions, 0);
+  assert.equal(normalizeActiveHuntSave(new Proxy(activeHunt(), {
+    get() { throw new Error("proxy read"); },
+  })), null);
+});
+
+
+test("future hunt payloads remain untouched until an explicit discard", () => {
+  for (const change of [{ version: ACTIVE_HUNT_SAVE_VERSION + 1 }, { runtimeRevision: ACTIVE_HUNT_RUNTIME_REVISION + 1 }]) {
+    const serialized = JSON.stringify(activeHunt(change));
+    const storage = memoryStorage([[ACTIVE_HUNT_STORAGE_KEY, serialized]]);
+    assert.equal(loadActiveHuntSave({ storage }).failure, "future-version");
+    assert.equal(writeActiveHuntSave(activeHunt({ sequence: 99 }), { storage }).failure, "protected-save");
+    assert.equal(storage.getItem(ACTIVE_HUNT_STORAGE_KEY), serialized);
+  }
+});
+
+test("a silently dropped hunt write is not reported as persisted", () => {
+  const storage = { getItem() { return null; }, setItem() {}, removeItem() {} };
+  assert.equal(writeActiveHuntSave(activeHunt(), { storage }).failure, "write-failed");
 });

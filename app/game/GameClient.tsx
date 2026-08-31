@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import { useMenuGamepad } from "./useMenuGamepad";
 import { matchesControlAction } from "./systems/controlBindings";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
@@ -105,7 +106,13 @@ import {
 import {
   applyMissionResult,
   defaultSave,
-  loadSave,
+  loadSaveWithStatus,
+  exportSave,
+  parseSaveImport,
+  importSaveWithStatus,
+  replaceSaveWithStatus,
+  type SaveLoadFailure,
+  type SaveWriteFailure,
   normalizeSave,
   writeSaveWithStatus,
 } from "./save";
@@ -125,12 +132,13 @@ import {
 } from "./systems/arsenal";
 import {
   loadShipProgression,
-  SHIP_PROGRESSION_STORAGE_KEY,
+  resetShipProgressionWithStatus,
 } from "./systems/progression";
 import {
   ACTIVE_HUNT_RUNTIME_REVISION,
   ACTIVE_HUNT_SAVE_VERSION,
   checkActiveHuntCompatibility,
+  claimActiveHuntSave,
   clearActiveHuntSave,
   loadActiveHuntSave,
   writeActiveHuntSave,
@@ -219,6 +227,7 @@ interface ActiveHuntSession {
   startedAt: string;
   configuration: JsonObject;
   lastPersisted: ActiveHuntSaveV1 | null;
+  lastAttempted: ActiveHuntSaveV1 | null;
 }
 
 interface HuntResumePayload {
@@ -757,9 +766,12 @@ export default function GameClient() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [resetArmed, setResetArmed] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
-  const [saveFailure, setSaveFailure] = useState<
-    "storage-unavailable" | "write-failed" | null
-  >(null);
+  const [saveFailure, setSaveFailure] = useState<SaveWriteFailure | null>(null);
+  const [saveLoadIssue, setSaveLoadIssue] = useState<SaveLoadFailure | null>(null);
+  const [importCandidate, setImportCandidate] = useState<SaveGame | null>(null);
+  const [saveTransferMessage, setSaveTransferMessage] = useState<string | null>(null);
+  const pendingTerminalRunRef = useRef<string | null>(null);
+  const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
@@ -795,8 +807,15 @@ export default function GameClient() {
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
     const hydrationTask = window.setTimeout(() => {
-      const loadedSave = loadSave();
+      const loaded = loadSaveWithStatus();
+      const loadedSave = loaded.save;
       setSave(loadedSave);
+      setSaveLoadIssue(loaded.failure);
+      // Never discard a real hunt merely because its campaign could not be read.
+      if (!loaded.loaded && loaded.failure) {
+        setSaveFailure(loaded.failure === "storage-unavailable" ? "storage-unavailable" : "protected-save");
+        return;
+      }
       setSelectedShipId(loadShipProgression(loadedSave).selectedShipId);
       const activeHuntResult = loadActiveHuntSave();
       const candidate = activeHuntResult.save;
@@ -823,15 +842,10 @@ export default function GameClient() {
           : null;
         if (compatibility.compatible && normalizedConfiguration) {
           setResumableHunt(candidate);
-        } else {
-          clearActiveHuntSave();
         }
-      } else if (
-        activeHuntResult.failure === "invalid-save" ||
-        activeHuntResult.failure === "incompatible"
-      ) {
-        clearActiveHuntSave();
       }
+      // Hydration is read-only: an incompatible/future sidecar may belong to
+      // another tab. Only an explicit new hunt, import or reset can replace it.
     }, 0);
     const audio = new GameAudio();
     audioRef.current = audio;
@@ -1024,6 +1038,10 @@ export default function GameClient() {
     const result = writeSaveWithStatus(next);
     setSave(result.save);
     setSaveFailure(result.failure);
+    if (result.persisted && pendingTerminalRunRef.current) {
+      clearActiveHuntSave({ expectedRunId: pendingTerminalRunRef.current });
+      pendingTerminalRunRef.current = null;
+    }
     return result.save;
   }, []);
 
@@ -1062,23 +1080,39 @@ export default function GameClient() {
     [playSound, save.missionProgress],
   );
 
+  const reconcileHuntWrite = useCallback(() => {
+    const latest = loadActiveHuntSave();
+    const session = activeHuntSessionRef.current;
+    // setItem can succeed before its confirmation read fails. Recognize only
+    // this exact attempted payload, never an arbitrary newer sequence.
+    if (session?.lastAttempted && latest.save &&
+        JSON.stringify(latest.save) === JSON.stringify(session.lastAttempted)) {
+      session.sequence = latest.save.sequence;
+      session.lastPersisted = latest.save;
+    }
+    return latest;
+  }, []);
+
   const clearHuntSession = useCallback(() => {
-    const result = clearActiveHuntSave();
+    reconcileHuntWrite();
+    const session = activeHuntSessionRef.current;
+    const result = session ? clearActiveHuntSave({ expectedRunId: session.runId, expectedSequence: session.sequence }) : { cleared: true, failure: null };
     activeHuntSessionRef.current = null;
     activeHuntWriteFailureRef.current = result.failure;
     setResumableHunt(null);
     setHuntResumePayload(null);
     setHuntRuntimeSave(null);
     return result.cleared;
-  }, []);
+  }, [reconcileHuntWrite]);
 
   const invalidateActiveHuntPersistence = useCallback(() => {
-    const result = clearActiveHuntSave();
+    reconcileHuntWrite();
     const session = activeHuntSessionRef.current;
+    const result = session ? clearActiveHuntSave({ expectedRunId: session.runId, expectedSequence: session.sequence }) : { cleared: true, failure: null };
     if (session) session.lastPersisted = null;
     activeHuntWriteFailureRef.current = result.failure;
     setResumableHunt(null);
-  }, []);
+  }, [reconcileHuntWrite]);
 
   const rejectActiveHuntResume = useCallback(() => {
     clearHuntSession();
@@ -1092,6 +1126,7 @@ export default function GameClient() {
       const session = activeHuntSessionRef.current;
       if (!session) return null;
 
+      if (session.lastAttempted && session.lastAttempted.sequence > session.sequence) reconcileHuntWrite();
       const sequence = session.sequence + 1;
       const configuration: JsonObject = {
         ...session.configuration,
@@ -1117,29 +1152,42 @@ export default function GameClient() {
         snapshot: payload.snapshot,
         retryCheckpoint: payload.retryCheckpoint,
       });
+      if (result.persisted || result.failure === "write-failed") session.lastAttempted = result.save;
       activeHuntWriteFailureRef.current = result.failure;
       if (result.persisted && result.save) {
         session.sequence = sequence;
         session.lastPersisted = result.save;
       }
-      if (result.failure === "stale-sequence") return null;
+      if (result.failure === "stale-sequence" || result.failure === "stale-run" || result.failure === "protected-save") return null;
       return result.persisted ? result.save : session.lastPersisted;
     },
-    [],
+    [reconcileHuntWrite],
   );
 
   const launchMission = useCallback(() => {
     if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
-    missionSettlementRef.current = false;
-    setLastResult(null);
-    setLastRewardSummary(null);
     // A sidecar can only survive a reload when its owning campaign snapshot is
     // durable too. Fresh profiles have not necessarily written the main save
     // yet, so establish that owner before the first hunt autosave.
     const runtimeWrite = writeSaveWithStatus(normalizeSave(save));
     const runtimeSave = runtimeWrite.save;
+    if (!runtimeWrite.persisted) {
+      setSave(runtimeSave);
+      setSaveFailure(runtimeWrite.failure);
+      activeHuntWriteFailureRef.current = runtimeWrite.failure;
+      setToast("Impossible de sécuriser la progression : exportez-la ou rétablissez la sauvegarde avant de lancer une chasse.");
+      return;
+    }
     const now = new Date().toISOString();
     const clearResult = clearActiveHuntSave();
+    if (!clearResult.cleared) {
+      setToast("La chasse précédente n’a pas pu être libérée. Aucun nouveau départ n’a été lancé.");
+      return;
+    }
+    setPendingHuntResult(null);
+    missionSettlementRef.current = false;
+    setLastResult(null);
+    setLastRewardSummary(null);
     setSave(runtimeSave);
     setSaveFailure(runtimeWrite.failure);
     setResumableHunt(null);
@@ -1158,6 +1206,7 @@ export default function GameClient() {
           startedAt: now,
           configuration: huntConfiguration(runtimeSave),
           lastPersisted: null,
+          lastAttempted: null,
         }
       : null;
     void playSound("select");
@@ -1166,6 +1215,12 @@ export default function GameClient() {
 
   const resumeActiveHunt = useCallback(() => {
     if (!resumableHunt) return;
+    const latest = loadActiveHuntSave();
+    if (!latest.save || latest.save.runId !== resumableHunt.runId || latest.save.sequence !== resumableHunt.sequence) {
+      setResumableHunt(latest.save);
+      setToast("La reprise a changé dans une autre session. Vérifiez la nouvelle proposition avant de reprendre.");
+      return;
+    }
     const mission = MISSIONS.find(({ id }) => id === resumableHunt.missionId);
     const progress = mission ? save.missionProgress[mission.id] : null;
     const allowedDifficultyIds = DIFFICULTIES.filter(
@@ -1190,24 +1245,33 @@ export default function GameClient() {
       return;
     }
 
+    const claimed = claimActiveHuntSave(resumableHunt, createHuntRunId());
+    if (!claimed.persisted || !claimed.save) {
+      setResumableHunt(loadActiveHuntSave().save);
+      setToast("Reprise non confirmée : elle a changé dans une autre session ou le stockage est indisponible.");
+      return;
+    }
+    const resumed = claimed.save;
+    setPendingHuntResult(null);
     missionSettlementRef.current = false;
     activeHuntWriteFailureRef.current = null;
     activeHuntSessionRef.current = {
-      ownerSaveCreatedAt: resumableHunt.ownerSaveCreatedAt,
-      missionId: resumableHunt.missionId,
-      difficultyId: resumableHunt.difficultyId as DifficultyId,
-      encounterRun: resumableHunt.encounterRun,
-      runId: resumableHunt.runId,
-      sequence: resumableHunt.sequence,
-      startedAt: resumableHunt.startedAt,
-      configuration: resumableHunt.configuration,
-      lastPersisted: resumableHunt,
+      ownerSaveCreatedAt: resumed.ownerSaveCreatedAt,
+      missionId: resumed.missionId,
+      difficultyId: resumed.difficultyId as DifficultyId,
+      encounterRun: resumed.encounterRun,
+      runId: resumed.runId,
+      sequence: resumed.sequence,
+      startedAt: resumed.startedAt,
+      configuration: resumed.configuration,
+      lastPersisted: resumed,
+      lastAttempted: resumed,
     };
     setSelectedMission(mission);
     setHuntRuntimeSave(runtimeSave);
     setHuntResumePayload({
-      snapshot: resumableHunt.snapshot,
-      retryCheckpoint: resumableHunt.retryCheckpoint,
+      snapshot: resumed.snapshot,
+      retryCheckpoint: resumed.retryCheckpoint,
     });
     void playSound("select");
     setScreen("mission");
@@ -1240,14 +1304,65 @@ export default function GameClient() {
     [persistActiveHunt],
   );
 
+  const checkHuntSessionForSettlement = useCallback(() => {
+    const session = activeHuntSessionRef.current;
+    if (!session) return false;
+    const latest = reconcileHuntWrite();
+    if (latest.failure === "read-failed" || latest.failure === "storage-unavailable") {
+      activeHuntWriteFailureRef.current = latest.failure;
+      setToast("Lecture des archives indisponible. Le résultat reste en attente de vérification sur cet écran.");
+      return false;
+    }
+    const conflict = latest.save
+      ? latest.save.runId !== session.runId || latest.save.sequence !== session.sequence
+      : latest.failure === "future-version" || latest.failure === "invalid-save" ||
+        (!latest.failure && session.lastPersisted !== null);
+    if (!conflict) return true;
+    // A superseded runtime must never settle rewards or retire its successor.
+    setPendingHuntResult(null);
+    activeHuntSessionRef.current = null;
+    activeHuntWriteFailureRef.current = "stale-run";
+    setHuntResumePayload(null);
+    setHuntRuntimeSave(null);
+    setSelectedMission(null);
+    setResumableHunt(latest.save);
+    setScreen("title");
+    setToast("Cette chasse a été reprise ou modifiée ailleurs. Son ancienne session n’a pas remplacé la progression ; vérifiez la reprise actuelle.");
+    return false;
+  }, [reconcileHuntWrite]);
+
   const completeMission = useCallback(
-    (result: MissionResult) => {
+    (result: MissionResult, returnToDeck = false) => {
       // Runtime callbacks can race at a terminal frame. Settle this run once.
       if (missionSettlementRef.current) return;
+      if (!checkHuntSessionForSettlement()) {
+        if (activeHuntSessionRef.current) setPendingHuntResult({ result, returnToDeck });
+        return;
+      }
+      setPendingHuntResult(null);
       missionSettlementRef.current = true;
-      clearHuntSession();
       const next = applyMissionResult(save, result);
-      persist(next);
+      const written = writeSaveWithStatus(next);
+      setSave(written.save);
+      setSaveFailure(written.failure);
+      // Commit campaign rewards before retiring the recoverable hunt.
+      if (written.persisted) {
+        clearHuntSession();
+      } else {
+        pendingTerminalRunRef.current = activeHuntSessionRef.current?.runId ?? null;
+        activeHuntSessionRef.current = null;
+        setHuntResumePayload(null);
+        setHuntRuntimeSave(null);
+        setResumableHunt(null);
+      }
+      if (returnToDeck) {
+        setLastResult(null);
+        setLastRewardSummary(null);
+        setSelectedMission(null);
+        setScreen("deck");
+        void playSound("ui");
+        return;
+      }
       setLastResult(result);
       setLastRewardSummary({
         honor: next.profile.honor - save.profile.honor,
@@ -1262,7 +1377,7 @@ export default function GameClient() {
       );
       void playSound(result.outcome === "success" ? "victory" : "defeat");
     },
-    [clearHuntSession, persist, playSound, save],
+    [checkHuntSessionForSettlement, clearHuntSession, playSound, save],
   );
 
   const updateSettings = useCallback(
@@ -1519,30 +1634,88 @@ export default function GameClient() {
       return;
     }
     const fresh = defaultSave();
-    try {
-      window.localStorage.removeItem(SHIP_PROGRESSION_STORAGE_KEY);
-    } catch {
-      // La sauvegarde principale reste réinitialisable si le stockage est bloqué.
+    const written = replaceSaveWithStatus(fresh);
+    setSaveFailure(written.failure);
+    if (!written.persisted) {
+      setToast("Réinitialisation non confirmée. Gardez cette session ouverte et exportez la campagne avant de réessayer.");
+      return;
     }
+    const shipReset = resetShipProgressionWithStatus(written.save);
+    setSelectedShipId(shipReset.state.selectedShipId);
+    const huntReset = clearActiveHuntSave();
     clearHuntSession();
-    persist(fresh);
+    pendingTerminalRunRef.current = null;
+    setPendingHuntResult(null);
+    setSave(written.save);
+    setSaveLoadIssue(null);
     setResetArmed(false);
     setSettingsOpen(false);
     setSelectedMission(null);
     setLastResult(null);
     setLastRewardSummary(null);
     setScreen("title");
-    setToast("Archives de chasse réinitialisées.");
-  }, [clearHuntSession, persist, resetArmed]);
+    setToast(shipReset.persisted && huntReset.cleared
+      ? "Archives de chasse réinitialisées."
+      : "Campagne réinitialisée. Le nettoyage des archives annexes n’est pas confirmé ; les données d’un autre profil sont ignorées.");
+  }, [clearHuntSession, resetArmed]);
 
-  const toggleFullscreen = useCallback(() => {
-    if (typeof document === "undefined") return;
-    if (document.fullscreenElement) {
-      void document.exitFullscreen();
-    } else {
-      void document.documentElement.requestFullscreen?.();
-    }
+  const toggleFullscreen = useCallback(async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else if (document.documentElement.requestFullscreen) await document.documentElement.requestFullscreen();
+      else setToast("Le plein écran n’est pas disponible sur cet appareil.");
+    } catch { setToast("Le plein écran a été refusé par cet appareil."); }
   }, []);
+
+  const exportCampaign = useCallback(() => {
+    try {
+      const blob = new Blob([exportSave(save)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `yautja-campagne-${new Date().toISOString().slice(0, 10)}.json`;
+      link.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setSaveTransferMessage("Export de la campagne préparé. La chasse active et les configurations du vaisseau ne sont pas incluses.");
+    } catch { setSaveTransferMessage("Impossible de préparer cet export. Les archives locales restent intactes."); }
+  }, [save]);
+
+  const confirmImport = useCallback(() => {
+    if (!importCandidate) return;
+    let result: ReturnType<typeof importSaveWithStatus>;
+    try { result = importSaveWithStatus(exportSave(importCandidate)); }
+    catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
+    if (!result.persisted || !result.save) {
+      setSaveTransferMessage(`Import non confirmé (${result.failure ?? "erreur"}). Gardez cette session ouverte et exportez la campagne avant de réessayer.`);
+      return;
+    }
+    const huntReset = clearActiveHuntSave();
+    clearHuntSession();
+    pendingTerminalRunRef.current = null;
+    setPendingHuntResult(null);
+    setSave(result.save);
+    setSaveFailure(null);
+    setSaveLoadIssue(null);
+    const shipReset = resetShipProgressionWithStatus(result.save);
+    setSelectedShipId(shipReset.state.selectedShipId);
+    setSelectedMission(null);
+    setLastResult(null);
+    setLastRewardSummary(null);
+    setImportCandidate(null);
+    setScreen("title");
+    setSaveTransferMessage(shipReset.persisted && huntReset.cleared
+      ? "Campagne importée. L’ancienne chasse suspendue a été retirée."
+      : "Campagne importée. Le nettoyage des archives annexes n’est pas confirmé ; vérifiez la reprise proposée avant de jouer.");
+  }, [clearHuntSession, importCandidate]);
+
+  const menuBack = useCallback(() => {
+    if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); }
+    else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
+    else if (screen !== "title") go("deck");
+  }, [go, pendingHuntResult, screen, settingsOpen]);
+  const menuGamepadEnabled = !trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
+    !["mission", "deck", "ship", "map", "training"].includes(screen));
+  useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}`, menuBack);
 
   const primaryWeapon =
     WEAPONS.find((weapon) => weapon.id === save.loadout.weaponIds[1]) ??
@@ -2949,16 +3122,7 @@ export default function GameClient() {
             onResumeFailure={rejectActiveHuntResume}
             onSound={playGameplaySound}
             onFinish={completeMission}
-            onAbort={(result) => {
-              if (missionSettlementRef.current) return;
-              missionSettlementRef.current = true;
-              clearHuntSession();
-              persist(applyMissionResult(save, result));
-              setLastResult(null);
-              setLastRewardSummary(null);
-              setSelectedMission(null);
-              go("deck");
-            }}
+            onAbort={(result) => completeMission(result, true)}
           />
         </Suspense>
       )}
@@ -3234,6 +3398,41 @@ export default function GameClient() {
                 </Suspense>
               </section>
             </div>
+            <section className="save-transfer" aria-labelledby="save-transfer-title">
+              <h3 id="save-transfer-title">Archives et récupération</h3>
+              <p>Exportez votre campagne pour la conserver sur un autre appareil. La chasse en cours et les configurations du vaisseau ne font pas partie de cet export.</p>
+              <div className="modal-actions">
+                <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne</button>
+                <button type="button" className="ghost-button" onClick={() => persist(save)}>Réessayer la sauvegarde</button>
+              </div>
+              <label className="save-import-label">Charger une archive JSON
+                <input type="file" accept="application/json,.json" onChange={async (event) => {
+                  const file = event.currentTarget.files?.[0];
+                  event.currentTarget.value = "";
+                  setImportCandidate(null);
+                  if (!file) return;
+                  if (file.size > 2_000_000) { setSaveTransferMessage("Archive trop volumineuse (2 Mo maximum)."); return; }
+                  try {
+                    const parsed = parseSaveImport(await file.text());
+                    setImportCandidate(parsed.save);
+                    setSaveTransferMessage(parsed.save ? "Archive vérifiée. Confirmez son remplacement ci-dessous." : `Archive refusée (${parsed.failure}). Aucune donnée remplacée.`);
+                  } catch { setSaveTransferMessage("Impossible de lire ce fichier. Aucune donnée remplacée."); }
+                }} />
+              </label>
+              {importCandidate && <div className="save-import-confirm">
+                <p><strong>{importCandidate.profile.hunterName}</strong> · {importCandidate.statistics.missionsCompleted} chasses terminées · {formatTime(importCandidate.profile.playTimeSeconds)}</p>
+                <p>Cette opération remplace la campagne actuelle et retire sa chasse suspendue.</p>
+                <button type="button" className="ghost-button danger" onClick={confirmImport}>Confirmer le remplacement par cette archive</button>
+                <button type="button" className="ghost-button" onClick={() => setImportCandidate(null)}>Annuler l’import</button>
+              </div>}
+              {saveTransferMessage && <p role="status">{saveTransferMessage}</p>}
+              <p className="source-badge">Manette : croix ou stick pour naviguer, A pour valider, B pour revenir ; gauche/droite pour ajuster un réglage.</p>
+            </section>
+            <details className="game-credits">
+              <summary>Crédits et statut du projet</summary>
+              <p>La Longue Chasse : projet original de fan inspiré de Predator. Création et intégration des visuels avec OpenAI ; ambiances et effets sonores procéduraux.</p>
+              <p>Projet non commercial, sans affiliation officielle revendiquée. Les références de franchise restent identifiées dans le codex. Une diffusion commerciale et une certification sur consoles ou Steam Deck ne sont pas acquises.</p>
+            </details>
             <div className="modal-actions">
               <button
                 type="button"
@@ -3265,10 +3464,22 @@ export default function GameClient() {
         </div>
       )}
 
-      {saveFailure && (
+      {pendingHuntResult && <div className="save-warning" role="alert">
+        Résultat conservé en attente : la lecture des archives doit revenir avant de vérifier et enregistrer cette chasse. Gardez cet écran ouvert.
+        <button type="button" onClick={() => completeMission(pendingHuntResult.result, pendingHuntResult.returnToDeck)}>Vérifier et enregistrer le résultat</button>
+      </div>}
+      {saveLoadIssue && !saveFailure && !pendingHuntResult && <div className="save-recovery-note" role="status">
+        {saveLoadIssue === "backup-recovered" ? "Campagne récupérée depuis la copie de secours. Exportez-la par précaution." : "La lecture des archives locales nécessite votre attention dans les réglages."}
+      </div>}
+      {saveFailure && !pendingHuntResult && (
         <div className="save-warning" role="alert">
-          Progression conservée en mémoire seulement. Libérez le stockage du
-          navigateur puis effectuez une action pour réessayer la sauvegarde.
+          {saveFailure === "save-conflict"
+            ? "Une autre session a modifié la campagne. Exportez cette progression avant de recharger. Aucun écrasement automatique."
+            : saveFailure === "protected-save"
+              ? "Les archives existantes sont illisibles ou plus récentes et restent protégées. Importez une archive valide ou confirmez une réinitialisation."
+              : "Progression conservée en mémoire seulement. Libérez le stockage puis réessayez, ou exportez la campagne avant de quitter."}
+          <button type="button" onClick={() => persist(save)}>Réessayer</button>
+          <button type="button" onClick={exportCampaign}>Exporter</button>
         </div>
       )}
     </main>

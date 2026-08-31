@@ -50,6 +50,8 @@ import type {
 
 export const SAVE_VERSION = 4;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
+export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
+const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
 const FINAL_STORY_MISSION_ID: MissionId = "ruins-ancient-guardian";
 
 export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
@@ -339,7 +341,7 @@ function finiteNumber(value: unknown, fallback: number): number {
 }
 
 function nonNegativeInteger(value: unknown, fallback: number): number {
-  return Math.max(0, Math.round(finiteNumber(value, fallback)));
+  return Math.min(Number.MAX_SAFE_INTEGER, Math.max(0, Math.round(finiteNumber(value, fallback))));
 }
 
 function boundedNumber(
@@ -1198,66 +1200,258 @@ function browserStorage(): Storage | null {
   }
 }
 
-/**
- * Load a save without throwing. Server rendering, privacy mode, corrupted JSON
- * and future-version saves all safely return a fresh game.
- */
+export type SaveImportFailure =
+  | "invalid-json"
+  | "invalid-save"
+  | "too-large"
+  | "future-version";
+
+export interface SaveImportParseResult {
+  save: SaveGame | null;
+  failure: SaveImportFailure | null;
+}
+
+export type SaveLoadFailure =
+  | "storage-unavailable"
+  | "read-failed"
+  | "invalid-save"
+  | "future-version"
+  | "backup-recovered";
+
+export interface SaveLoadResult {
+  save: SaveGame;
+  loaded: boolean;
+  source: "primary" | "backup" | "fresh";
+  failure: SaveLoadFailure | null;
+}
+
+export type SaveWriteFailure =
+  | "storage-unavailable"
+  | "read-failed"
+  | "protected-save"
+  | "save-conflict"
+  | "invalid-save"
+  | "write-failed";
+
+export interface SaveWriteResult {
+  save: SaveGame;
+  persisted: boolean;
+  failure: SaveWriteFailure | null;
+}
+
+export interface SaveImportWriteResult {
+  save: SaveGame | null;
+  persisted: boolean;
+  failure: SaveImportFailure | SaveWriteFailure | null;
+}
+
+function saveBackupKey(key: string): string {
+  return `${key}.backup`;
+}
+
+// Each tab remembers the exact primary it loaded/wrote. A subsequent write
+// from another tab is a conflict, never an invitation to replace its progress.
+const observedCampaigns = new WeakMap<Storage, Map<string, string | null>>();
+function observeCampaign(storage: Storage, key: string, serialized: string | null): void {
+  const observed = observedCampaigns.get(storage) ?? new Map<string, string | null>();
+  observed.set(key, serialized);
+  observedCampaigns.set(storage, observed);
+}
+
+function inspectSavePayload(value: unknown): SaveImportParseResult {
+  if (!isRecord(value)) return { save: null, failure: "invalid-save" };
+  if (value.version !== undefined &&
+      (!Number.isInteger(value.version) || Number(value.version) < 0)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (Number(value.version) > SAVE_VERSION) {
+    return { save: null, failure: "future-version" };
+  }
+  // Partial fields inside a campaign are repairable. An arbitrary JSON object
+  // is not a campaign and must never replace the player's existing progress.
+  if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  return { save: normalizeSave(value), failure: null };
+}
+
+/** Parse first, without writing anything; callers can confirm a valid import. */
+export function parseSaveImport(serialized: string): SaveImportParseResult {
+  if (typeof serialized !== "string") return { save: null, failure: "invalid-json" };
+  if (serialized.length > SAVE_MAX_SERIALIZED_BYTES ||
+      new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) {
+    return { save: null, failure: "too-large" };
+  }
+  let value: unknown;
+  try {
+    value = JSON.parse(serialized.replace(/^\uFEFF/, ""));
+  } catch {
+    return { save: null, failure: "invalid-json" };
+  }
+  if (isRecord(value) && value.format === SAVE_EXPORT_FORMAT) {
+    if (value.exportVersion !== 1) return { save: null, failure: "future-version" };
+    value = value.save;
+  }
+  return inspectSavePayload(value);
+}
+
+/** Portable campaign export. Active hunts and ship sidecars are separate. */
+export function exportSave(save: SaveGame): string {
+  const validated = inspectSavePayload(save);
+  if (!validated.save) throw new Error("Cannot export an invalid campaign save");
+  const serialized = JSON.stringify({
+    format: SAVE_EXPORT_FORMAT,
+    exportVersion: 1,
+    exportedAt: new Date().toISOString(),
+    save: validated.save,
+  }, null, 2);
+  if (!parseSaveImport(serialized).save) throw new Error("Campaign export exceeds its size budget");
+  return serialized;
+}
+
+/** Read-only recovery: never erase corrupt or newer data during hydration. */
+export function loadSaveWithStatus(
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveLoadResult {
+  const fresh = (failure: SaveLoadFailure | null): SaveLoadResult => ({
+    save: defaultSave(), loaded: false, source: "fresh", failure,
+  });
+  if (!storage) return fresh("storage-unavailable");
+  let serialized: string | null;
+  try {
+    serialized = storage.getItem(key);
+    observeCampaign(storage, key, serialized);
+  } catch {
+    return fresh("read-failed");
+  }
+  const primary = serialized === null ? null : parseSaveImport(serialized);
+  if (primary?.save) return { save: primary.save, loaded: true, source: "primary", failure: null };
+  // Falling back to an older backup on a downgraded client could silently roll
+  // back a valid future campaign. Keep both files untouched instead.
+  if (primary?.failure === "future-version") return fresh("future-version");
+  try {
+    const backup = storage.getItem(saveBackupKey(key));
+    const recovered = backup === null ? null : parseSaveImport(backup).save;
+    if (recovered) return { save: recovered, loaded: true, source: "backup", failure: "backup-recovered" };
+  } catch {
+    return fresh(serialized === null ? "read-failed" : "invalid-save");
+  }
+  return fresh(serialized === null ? null : "invalid-save");
+}
+
 export function loadSave(
   storage: Storage | null = browserStorage(),
   key = SAVE_STORAGE_KEY,
 ): SaveGame {
-  if (!storage) {
-    return defaultSave();
-  }
+  return loadSaveWithStatus(storage, key).save;
+}
 
+function persistCampaign(
+  save: SaveGame,
+  storage: Storage | null,
+  key: string,
+  replaceExisting: boolean,
+): SaveWriteResult {
+  const validated = inspectSavePayload(save);
+  const snapshot: SaveGame = {
+    ...(validated.save ?? normalizeSave(save)),
+    updatedAt: new Date().toISOString(),
+  };
+  const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
+  if (!validated.save) return failed("invalid-save");
+  if (!storage) return failed("storage-unavailable");
+
+  let previousSerialized: string | null;
+  let previous: SaveGame | null = null;
   try {
-    const serialized = storage.getItem(key);
-    return serialized ? normalizeSave(JSON.parse(serialized)) : defaultSave();
+    previousSerialized = storage.getItem(key);
+    const observed = observedCampaigns.get(storage);
+    if (!replaceExisting && observed?.has(key) && observed.get(key) !== previousSerialized) {
+      return failed("save-conflict");
+    }
+    if (previousSerialized !== null) {
+      const parsed = parseSaveImport(previousSerialized);
+      previous = parsed.save;
+      if (!replaceExisting && !previous) {
+        if (parsed.failure === "future-version") return failed("protected-save");
+        const recovered = loadSaveWithStatus(storage, key);
+        if (recovered.source !== "backup" || recovered.save.createdAt !== snapshot.createdAt) {
+          return failed("protected-save");
+        }
+        previous = recovered.save;
+        previousSerialized = JSON.stringify(previous);
+      }
+    }
+    if (!replaceExisting && previous && previous.createdAt !== snapshot.createdAt) {
+      return failed("save-conflict");
+    }
   } catch {
-    return defaultSave();
+    return failed("read-failed");
   }
+
+  const serialized = JSON.stringify(snapshot);
+  if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
+  try {
+    // A Storage setItem is atomic for this key. Do not consume quota with the
+    // optional backup until the new primary snapshot has succeeded.
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) !== serialized) return failed("write-failed");
+    observeCampaign(storage, key, serialized);
+  } catch {
+    return failed("write-failed");
+  }
+  try {
+    // A reset/import with a different owner must not resurrect the former
+    // campaign through automatic recovery. Its initial backup is the new save.
+    const backup = previous && previous.createdAt === snapshot.createdAt && previousSerialized
+      ? previousSerialized
+      : serialized;
+    storage.setItem(saveBackupKey(key), backup);
+  } catch {
+    // Preserve the recovery copy until the replacement primary is confirmed.
+    // If a reset's new backup cannot be written, retire a foreign recovery copy
+    // only now: the new campaign already has a verified durable primary.
+    if (replaceExisting && previous?.createdAt !== snapshot.createdAt) {
+      try { storage.removeItem(saveBackupKey(key)); } catch {
+        // Both cleanup operations can be blocked. Prefer retained data to loss;
+        // the old recovery copy may remain until storage access is restored.
+      }
+    }
+  }
+  return { save: snapshot, persisted: true, failure: null };
 }
 
-/**
- * Normalize before writing so callers cannot persist transient Canvas values.
- * The returned object is exactly the snapshot placed in localStorage.
- */
-export interface SaveWriteResult {
-  save: SaveGame;
-  persisted: boolean;
-  failure: "storage-unavailable" | "write-failed" | null;
-}
-
-/**
- * Persist a normalized snapshot while exposing storage failures to the UI.
- * Gameplay remains usable in memory when privacy mode or a full quota blocks
- * localStorage, but callers can no longer mistake that state for autosave.
- */
+/** Normal gameplay writes preserve unreadable/future campaigns and owners. */
 export function writeSaveWithStatus(
   save: SaveGame,
   storage: Storage | null = browserStorage(),
   key = SAVE_STORAGE_KEY,
 ): SaveWriteResult {
-  const normalized = normalizeSave(save);
-  const snapshot: SaveGame = {
-    ...normalized,
-    updatedAt: new Date().toISOString(),
-  };
+  return persistCampaign(save, storage, key, false);
+}
 
-  if (!storage) {
-    return {
-      save: snapshot,
-      persisted: false,
-      failure: "storage-unavailable",
-    };
-  }
+/** Only for an explicit, confirmed reset or replacement chosen by the player. */
+export function replaceSaveWithStatus(
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteResult {
+  return persistCampaign(save, storage, key, true);
+}
 
-  try {
-    storage.setItem(key, JSON.stringify(snapshot));
-    return { save: snapshot, persisted: true, failure: null };
-  } catch {
-    return { save: snapshot, persisted: false, failure: "write-failed" };
-  }
+/**
+ * Invalid imports never write. A failed write confirmation is inconclusive:
+ * setItem may have succeeded before a readback error, so retain/export memory.
+ */
+export function importSaveWithStatus(
+  serialized: string,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveImportWriteResult {
+  const parsed = parseSaveImport(serialized);
+  if (!parsed.save) return { save: null, persisted: false, failure: parsed.failure };
+  return replaceSaveWithStatus(parsed.save, storage, key);
 }
 
 export function writeSave(

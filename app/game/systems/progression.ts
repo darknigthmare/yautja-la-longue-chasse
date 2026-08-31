@@ -1,4 +1,4 @@
-import { normalizeSave, RANK_THRESHOLDS } from "../save";
+import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
   DEFAULT_SHIP_ID,
   availableShipIds,
@@ -19,11 +19,12 @@ import type {
 } from "../types";
 
 /**
- * Ship progression deliberately lives beside the core v3 save instead of
+ * Ship progression deliberately lives beside the core campaign save instead of
  * inside it. normalizeSave() discards unknown fields by design, so a sidecar
  * keeps the current save backward-compatible while the ship systems evolve.
  */
-export const SHIP_PROGRESSION_VERSION = 2;
+export const SHIP_PROGRESSION_VERSION = 3;
+const SHIP_PROGRESSION_MAX_SERIALIZED_BYTES = 1024 * 1024;
 export const SHIP_PROGRESSION_STORAGE_KEY =
   "yautja-long-hunt.ship-progression";
 
@@ -137,6 +138,8 @@ export interface MedbayProgress {
 
 export interface ShipProgressionState {
   version: number;
+  /** Stable identity of the campaign that earned this sidecar progression. */
+  ownerSaveCreatedAt: string;
   updatedAt: string;
   selectedShipId: ShipId;
   unlockedShipIds: ShipId[];
@@ -714,6 +717,7 @@ export function createDefaultShipProgression(
   );
   const state: ShipProgressionState = {
     version: SHIP_PROGRESSION_VERSION,
+    ownerSaveCreatedAt: save.createdAt,
     updatedAt: now,
     selectedShipId: DEFAULT_SHIP_ID,
     unlockedShipIds: availableShipIds(save),
@@ -925,13 +929,27 @@ export function normalizeShipProgression(
 ): ShipProgressionState {
   if (
     !isRecord(value) ||
-    (value.version !== 1 && value.version !== SHIP_PROGRESSION_VERSION)
+    (value.version !== 1 && value.version !== 2 && value.version !== SHIP_PROGRESSION_VERSION)
   ) {
     return createDefaultShipProgression(save, now);
   }
 
+  if (value.ownerSaveCreatedAt !== undefined) {
+    if (value.ownerSaveCreatedAt !== save.createdAt) return createDefaultShipProgression(save, now);
+  } else if (value.version === SHIP_PROGRESSION_VERSION) {
+    return createDefaultShipProgression(save, now);
+  } else {
+    // V1/V2 have no provable owner. Adopt an existing campaign's legacy state
+    // only when it does not predate that campaign. A fresh reset must not
+    // inherit old fleet unlocks, training, rites or presets.
+    const legacyUpdatedAt = typeof value.updatedAt === "string" ? Date.parse(value.updatedAt) : NaN;
+    if (!Number.isFinite(legacyUpdatedAt) || legacyUpdatedAt < Date.parse(save.createdAt)) {
+      return createDefaultShipProgression(save, now);
+    }
+  }
+
   // V1 sidecars predate the fleet fields. Invalid/deleted IDs are discarded,
-  // while any ship earned under a previous save remains permanently unlocked.
+  // while ships previously earned by this same campaign remain unlocked.
   const persistedUnlockedShipIds = Array.isArray(value.unlockedShipIds)
     ? value.unlockedShipIds.filter(isShipId)
     : [];
@@ -976,6 +994,7 @@ export function normalizeShipProgression(
 
   const state: ShipProgressionState = {
     version: SHIP_PROGRESSION_VERSION,
+    ownerSaveCreatedAt: save.createdAt,
     // updatedAt doubles as the UI clock snapshot for countdown rendering.
     updatedAt: now,
     selectedShipId,
@@ -1508,6 +1527,38 @@ function browserStorage(): Storage | null {
   }
 }
 
+export type ShipProgressionWriteFailure =
+  | "storage-unavailable"
+  | "read-failed"
+  | "save-owner"
+  | "protected-save"
+  | "write-failed";
+
+export interface ShipProgressionWriteResult {
+  state: ShipProgressionState;
+  persisted: boolean;
+  failure: ShipProgressionWriteFailure | null;
+}
+
+function parseShipSidecar(serialized: string): Record<string, unknown> | null {
+  if (serialized.length > SHIP_PROGRESSION_MAX_SERIALIZED_BYTES ||
+      new TextEncoder().encode(serialized).byteLength > SHIP_PROGRESSION_MAX_SERIALIZED_BYTES) return null;
+  try {
+    const parsed: unknown = JSON.parse(serialized);
+    return isRecord(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function currentCampaignFailure(storage: Storage, save: SaveGame): ShipProgressionWriteFailure | null {
+  const serialized = storage.getItem(SAVE_STORAGE_KEY);
+  if (serialized === null) return null;
+  const primary = parseSaveImport(serialized);
+  if (!primary.save) return "protected-save";
+  return primary.save.createdAt === save.createdAt ? null : "save-owner";
+}
+
 export function loadShipProgression(
   save: SaveGame,
   storage: Storage | null = browserStorage(),
@@ -1516,12 +1567,89 @@ export function loadShipProgression(
   if (!storage) return createDefaultShipProgression(save);
   try {
     const serialized = storage.getItem(key);
-    return serialized
-      ? normalizeShipProgression(JSON.parse(serialized), save)
-      : createDefaultShipProgression(save);
+    const parsed = serialized === null ? null : parseShipSidecar(serialized);
+    if (!parsed) return createDefaultShipProgression(save);
+    const state = normalizeShipProgression(parsed, save);
+    if ((parsed.version === 1 || parsed.version === 2) &&
+        (parsed.ownerSaveCreatedAt === save.createdAt ||
+         (parsed.ownerSaveCreatedAt === undefined && typeof parsed.updatedAt === "string" &&
+          Date.parse(parsed.updatedAt) >= Date.parse(save.createdAt)))) {
+      // Bind an adopted legacy sidecar now, before a later reset can change
+      // campaigns. Failure preserves the original data and usable memory state.
+      writeShipProgressionWithStatus(state, save, storage, key);
+    }
+    return state;
   } catch {
     return createDefaultShipProgression(save);
   }
+}
+
+export function writeShipProgressionWithStatus(
+  state: ShipProgressionState,
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SHIP_PROGRESSION_STORAGE_KEY,
+): ShipProgressionWriteResult {
+  const now = new Date().toISOString();
+  const snapshot = normalizeShipProgression({ ...state, updatedAt: now }, save, now);
+  const failed = (failure: ShipProgressionWriteFailure): ShipProgressionWriteResult => ({
+    state: snapshot, persisted: false, failure,
+  });
+  if (state.ownerSaveCreatedAt !== save.createdAt) return failed("save-owner");
+  if (!storage) return failed("storage-unavailable");
+  try {
+    const campaignFailure = currentCampaignFailure(storage, save);
+    if (campaignFailure) return failed(campaignFailure);
+    const previous = storage.getItem(key);
+    const parsed = previous === null ? null : parseShipSidecar(previous);
+    if (parsed && Number(parsed.version) > SHIP_PROGRESSION_VERSION) return failed("protected-save");
+    // Without a stored campaign to establish a new owner, do not let an old
+    // tab overwrite a foreign sidecar merely by supplying another SaveGame.
+    if (typeof parsed?.ownerSaveCreatedAt === "string" && parsed.ownerSaveCreatedAt !== save.createdAt &&
+        storage.getItem(SAVE_STORAGE_KEY) === null) return failed("save-owner");
+  } catch {
+    return failed("read-failed");
+  }
+  try {
+    const serialized = JSON.stringify(snapshot);
+    if (new TextEncoder().encode(serialized).byteLength > SHIP_PROGRESSION_MAX_SERIALIZED_BYTES) return failed("write-failed");
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) !== serialized) return failed("write-failed");
+    return { state: snapshot, persisted: true, failure: null };
+  } catch {
+    return failed("write-failed");
+  }
+}
+
+/** Explicitly retire the prior sidecar after a durable campaign reset/import. */
+export function resetShipProgressionWithStatus(
+  save: SaveGame,
+  storage: Storage | null = browserStorage(),
+  key = SHIP_PROGRESSION_STORAGE_KEY,
+): ShipProgressionWriteResult {
+  const state = createDefaultShipProgression(save);
+  const failed = (failure: ShipProgressionWriteFailure): ShipProgressionWriteResult => ({ state, persisted: false, failure });
+  if (!storage) return failed("storage-unavailable");
+  try {
+    const campaignFailure = currentCampaignFailure(storage, save);
+    if (campaignFailure) return failed(campaignFailure);
+  } catch {
+    return failed("read-failed");
+  }
+  try {
+    const serialized = JSON.stringify(state);
+    storage.setItem(key, serialized);
+    if (storage.getItem(key) === serialized) return { state, persisted: true, failure: null };
+  } catch {
+    // A quota can reject replacement while removal still succeeds.
+  }
+  try {
+    storage.removeItem(key);
+    if (storage.getItem(key) === null) return { state, persisted: true, failure: null };
+  } catch {
+    // A foreign V3 owner remains ignored even when every mutation is blocked.
+  }
+  return failed("write-failed");
 }
 
 export function writeShipProgression(
@@ -1530,18 +1658,5 @@ export function writeShipProgression(
   storage: Storage | null = browserStorage(),
   key = SHIP_PROGRESSION_STORAGE_KEY,
 ): ShipProgressionState {
-  const now = new Date().toISOString();
-  const snapshot = normalizeShipProgression(
-    { ...state, updatedAt: now },
-    save,
-    now,
-  );
-  if (storage) {
-    try {
-      storage.setItem(key, JSON.stringify(snapshot));
-    } catch {
-      // The caller still receives a usable in-memory sidecar.
-    }
-  }
-  return snapshot;
+  return writeShipProgressionWithStatus(state, save, storage, key).state;
 }

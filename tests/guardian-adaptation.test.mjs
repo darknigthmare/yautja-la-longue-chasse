@@ -141,6 +141,8 @@ test("restoring an old dead-boss checkpoint releases its stale energy lock", () 
     cloneProjectileState: clone, cloneArsenalRuntime: clone, cloneTrophyRitual: clone,
     cloneBossMechanics: canvasFunction("cloneBossMechanics", {}),
     clamp, VIEW_WIDTH: 1280, getWorldScreenAtX: () => ({ id: "arena" }),
+    normalizeVisitedScreenIds: (_missionId, ids) => ids,
+    discoverWorldScreen: (_missionId, ids) => ids,
   });
   const checkpoint = {
     player: { x: 1000, width: 72, health: 80, maxHealth: 100, stamina: 90,

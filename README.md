@@ -1,200 +1,179 @@
 # Yautja : La Longue Chasse
 
-Jeu d’action 2D side-scroller original et non commercial inspiré de l’univers
-de *Predator*. Le joueur prépare son chasseur dans un vaisseau-hub, choisit ses
-contrats et son arsenal, puis traque des proies dignes sur plusieurs planètes.
+Jeu d'action 2D en vue latérale, original et non commercial, inspiré de l'univers
+*Predator*. Le joueur prépare son chasseur dans un vaisseau, choisit son contrat
+et son arsenal, puis traque des proies sur plusieurs planètes.
 
-## Jouer
+## État actuel — 31 août 2026
+
+- **Huit chasses scénarisées** : jungle, glace, volcan, marais, désert, océan,
+  monde fongique et ruines. Chacune possède une cible Apex, des objectifs, une
+  extraction et six secteurs continus couvrant 8 400 pixels de monde.
+- **Vaisseau modulaire V21/V22** : huit salles sur deux ponts, coursives, puits,
+  portes motorisées, échelles et reliefs internes. Les parois, installations,
+  armes équipées, trophées possédés et éléments d'avant-plan restent séparés.
+  Le plan du vaisseau pose une balise ; il ne téléporte pas le joueur.
+- **Décors de biome V19 : 464 paires master/runtime disponibles sur 800**,
+  soit **336 ressources restant à produire**. Le registre ne charge que les
+  paires présentes. L'audit des ressources disponibles contrôle les fichiers,
+  leurs empreintes, le chroma, l'alpha, les marges et la correspondance exacte
+  du registre ; il ne déclare pas le catalogue complet.
+- **Carte de chasse dans la pause** : position du joueur, secteurs visités,
+  passages connus et pourcentage d'exploration. Les noms des secteurs inconnus
+  sont masqués. La découverte est conservée après une mort et dans la reprise
+  de la chasse suspendue.
+- **Progression jouable** : cinq armes, quatre équipements, trois armures,
+  améliorations, quatre difficultés, honneur, rangs, trophées et atelier,
+  configurations d'équipement, entraînements et codex. La fin de campagne
+  ouvre Elder ; les huit chasses restent rejouables avec des sceaux de maîtrise.
+
+Les niveaux de chasse restent des parcours horizontaux successifs. Les
+plateformes, grimpes, couvertures, sols et dangers sont jouables, mais les
+« routes » du catalogue ne constituent pas des verrous de capacités ou un
+réseau de régions interconnectées. Boucles d'exploration, capacités ouvrant de
+nouveaux passages et secrets persistants restent à développer pour un
+metroidvania complet.
+
+L'[audit du jeu selon des critères de production commerciale](docs/audit-commercial-metroidvania-2026-08-31.md)
+distingue les systèmes présents, les corrections apportées, les contrôles
+exécutés et les travaux encore nécessaires. Il ne constitue ni une autorisation
+de commercialisation, ni une certification de plateforme.
+
+## Jouer et développer
+
+Node.js **22.13 ou ultérieur** est requis.
 
 ```powershell
-npm.cmd install
+npm.cmd ci
 npm.cmd run dev
 ```
 
-Ouvrir ensuite `http://localhost:3000/`.
+Ouvrir ensuite `http://localhost:3000/`. Pour lancer le serveur de production
+local après compilation :
+
+```powershell
+npm.cmd run build
+npm.cmd start
+```
+
+Le runtime actuel utilise React et Canvas dans le navigateur. La prise en
+charge de commandes manette ne constitue pas un portage natif PC ou console.
 
 ## Commandes
 
-- `A/D` ou flèches : se déplacer
-- `Z/S`, flèches haut/bas : grimper aux arbres, lianes et plateformes
-- `Espace` : bondir / quitter une paroi
-- `J` / clic : lames de poignet
-- `Maj`, clic droit ou gâchette gauche : cadrer la visée plasma
-- `1` / `2` : sélectionner l’une des deux armes du loadout
-- `R` ou bouton View : passer à l’autre arme
-- `K` ou gâchette droite : utiliser l’arme sélectionnée dans l’angle visé
-- `M` : porter ou retirer le biomask
-- `V` : scanner au biomask
-- `C` : camouflage
-- `H` : medicomp
-- `3` / `4` ou pavé numérique `3` / `4` : utiliser les deux équipements
-  tactiques du loadout
-- `L3` / `R3` à la manette : utiliser respectivement l’équipement 1 ou 2
-- appuyer sur `E` près d’une proie abattue puis rester immobile : extraction
-  physique du trophée
-- `Échap` : pause
+Les commandes sont remappables dans les réglages ; l'aide du jeu affiche les
+raccourcis actifs. Principales commandes de chasse par défaut :
 
-La manette et des commandes tactiles sont également prises en charge. Les
-boutons tactiles indiquent les charges et le cooldown restant de chaque
-équipement.
+| Action | Commande |
+| --- | --- |
+| Se déplacer | `Q/D` ou flèches gauche/droite |
+| Grimper | `Z/S` ou flèches haut/bas |
+| Sauter / quitter une paroi | `Espace` |
+| Lames de poignet | `J` ou clic |
+| Cadrer la visée | `Maj`, clic droit ou gâchette gauche |
+| Sélectionner une arme | `1` / `2` ; `R` pour passer à l'autre |
+| Utiliser l'arme sélectionnée | `K` ou gâchette droite |
+| Porter / retirer le biomask | `M` |
+| Scanner / camouflage / medicomp | `V` / `C` / `H` |
+| Utiliser les équipements | `3` / `4`, ou `L3` / `R3` |
+| Interagir | `E` |
+| Pause et carte de chasse | `Échap` |
 
-Dans le vaisseau, `A/D` ou gauche/droite change de salle, haut/bas sélectionne
-une action et `Entrée` la confirme. La croix directionnelle, `A` et `B` assurent
-la même navigation à la manette.
+La manette et les contrôles tactiles sont pris en charge. Dans les menus
+compatibles, la croix ou le stick déplace le focus, `A` confirme et `B` revient
+en arrière. Le vaisseau se parcourt physiquement ; ses installations ouvrent
+leurs interfaces. Les indications affichées dans chaque contexte font foi.
 
-## Mise à jour V7 — trente ennemis animés
+La prise d'un trophée comprend une interaction auprès de la proie abattue et
+un rite à suivre. Une victoire complète inclut ensuite le retour à la navette.
 
-- 30 ennemis distincts sont répartis entre 10 faunes, 6 flores hostiles,
-  5 humanoïdes, 5 Bad Blood et 4 autres menaces biologiques ou technologiques.
-- Chacun possède une planche OpenAI originale indépendante de `1536×192`,
-  découpée en six cellules de `256×192` : repos, deux poses de déplacement,
-  attaque, impact et mort.
-- Les neuf vagues de mission totalisent exactement 30 emplacements : chaque
-  planche est donc utilisée par un adversaire réel au cours de la campagne, et
-  pas seulement exposée dans une galerie.
-- Le codex ajoute un bestiaire filtrable avec aperçu animé, niveau de menace,
-  comportement, trophée et deux références visuelles/lore par entrée.
-- Le moteur charge seulement les 9 ou 12 planches utiles à la planète active,
-  choisit la cellule correspondant à l’état de l’IA et conserve une animation
-  de mort avant de retirer le corps.
+## Sauvegarde, suspension et transfert
 
-Les masters, prompts et sources sont conservés dans
-[`art-source/v7/enemies`](art-source/v7/enemies), tandis que les strips RGBA
-audités sont servis depuis `public/game/sprites/v7/enemies`.
+La campagne est sauvegardée localement. Les réglages affichent les erreurs de
+stockage et permettent l'export JSON, l'import avec aperçu et confirmation,
+et la réinitialisation. Une sauvegarde d'une version future n'est pas écrasée
+silencieusement.
 
-## Mise à jour V6 — catalogue, mondes et menus jouables
+**L'export porte sur la campagne principale** : il n'inclut ni la chasse active
+suspendue, ni les états annexes et configurations du vaisseau. Ces données sont
+stockées séparément sur l'appareil. Un import n'est confirmé qu'après écriture ;
+si le nettoyage des archives annexes échoue, le jeu l'indique.
 
-- Le catalogue fourni est intégré sans perdre de ligne : 255 entrées tous
-  médias, dont 210 individus jouables : 49 profils directs chargent leur plaque
-  et leur kit documentés ; 161 restent explicitement signalés comme
-  reconstructions modulaires guidées par leurs sources, jamais comme des
-  reproductions individuelles exactes.
-- La carte se parcourt en trois niveaux — galaxie, système, planète — avant
-  d'afficher les missions du monde choisi. Le pont est aussi un menu physique
-  latéral jouable au clavier, à la manette et au tactile.
-- Chaque chasse couvre six secteurs continus et 8 400 pixels de monde, avec
-  plateformes, grimpables, couvertures, sols traçables et dangers propres au
-  biome. Le panorama jungle OpenAI fournit trois compositions distinctes.
-- Les traces identifient joueur et ennemis. La prise d'un trophée est un rite
-  de rythme, suivi d'une pose de victoire puis de l'arrivée, du stationnement et
-  du départ réels de la navette au-dessus de la balise.
-- L'armurerie inspirée d'un râtelier de vaisseau expose 43 cellules OpenAI
-  transparentes : vaisseaux, faune, armes, équipements, biomasks, trophées,
-  rangs et lasers. Le canon plasma et son bras articulé restent deux objets
-  autonomes.
-- Nettoyage, préparation, exposition et rite de trophée utilisent des mini-jeux
-  à séquences, sans raccourci par un simple bouton de progression.
+En chasse, la pause propose **Suspendre et sauvegarder**. La reprise restaure
+les données de cette chasse, dont les secteurs découverts. Les relais de
+réapparition restent distincts de cette suspension et dépendent de la
+difficulté. Exporter la campagne ne transfère pas ce point de reprise sur un
+autre appareil.
 
-`npm.cmd run qa` reconstruit et audite aussi les 39 plaques cinéma avant de
-valider le build et les tests fonctionnels.
+## Validation
 
-## Mise à jour V4 — sept lots livrés
+```powershell
+npm.cmd run qa:release
+```
 
-1. **Vaisseau-hub en six salles** : pont et carte, armurerie, salle des
-   trophées, medbay, entraînement et archives. Le hub gère les rites et rangs
-   du clan, quatre configurations équipement/apparence, ainsi que le nettoyage,
-   le montage et l’exposition des trophées.
-2. **Arsenal complet** : deux équipements actifs avec charges, cooldowns et
-   effets en mission. Les armes, armures et équipements ont deux niveaux
-   d’amélioration achetables avec les marques du clan ; leurs statistiques
-   améliorées sont réellement appliquées au runtime.
-3. **Chasse systémique** : vent variable, odeur transportée, bruit, traces
-   dépendantes du sol, boue et eau, pièges, camouflage thermique et dangers
-   environnementaux participent à la détection.
-4. **IA coordonnée** : les humains, bêtes et Yautja hostiles enquêtent,
-   recherchent, partagent l’alerte, utilisent les couvertures et peuvent
-   battre en retraite selon leur état.
-5. **Trois mondes à routes multiples** : chaque planète possède trois
-   itinéraires, au moins six éléments grimpables, des emplacements de pièges et
-   ses propres dangers. Les checkpoints dépendent de la difficulté.
-6. **Trois boss spécifiques** : Vey utilise fusées, renforts et duel rapproché ;
-   le Cryostalker Alpha perd ses plaques contre les piliers et appelle sa
-   meute ; le Bad Blood impose un duel, verrouille l’énergie et déclenche une
-   purge à interrompre sur trois consoles.
-7. **Audio, accessibilité, visuels et tests V4** : ambiances procédurales par
-   lieu, mix séparé musique/effets, secousses désactivables, violence atténuée,
-   contraste renforcé, quatre fonds, sept personnages ennemis V4 et six
-   éléments de décor jungle modulaires. La commande
-  `npm.cmd run qa` valide le build et l’ensemble des tests automatisés.
+Cette commande exécute le lint, TypeScript, l'audit strict de toutes les paires
+V19 **disponibles**, puis la compilation et l'ensemble des tests automatisés.
+Elle ne remplace pas l'audit de complétude des 800 décors.
 
-Le détail du parcours, des routes, des boss et des validations se trouve dans
-[docs/MISE-A-JOUR-V4.md](docs/MISE-A-JOUR-V4.md).
-
-## Rig modulaire V3
-
-Tous les éléments du chasseur partagent maintenant un canevas runtime
-`256×384`, une ligne de sol commune et le même squelette affine :
-
-- six morphologies de corps découpées en quinze parties anatomiques ;
-- filet segmenté avec les mêmes articulations ;
-- douze biomasks, huit familles de dreadlocks et cinq familles d’armure ;
-- plasmacaster en huit pièces : support, bras supérieur, bras inférieur,
-  rotule, canon, tube, bouche et laser ;
-- gantelet avec boîtier et couvercle séparés ;
-- boîtier de wristblades et lames coulissantes séparés ;
-- combistick déployé/replié, smart-disc, arc et flèche attachés aux mains ;
-- netgun, capteur de mouvement, leurre audio et piège attachés à la ceinture ;
-- crâne, colonne et liens de trophée séparés, transportables à la main ou à la
-  ceinture ;
-- une origine `muzzle` unique pour le canon, le laser, le réticule et le
-  projectile.
-
-Le catalogue propose 53 configurations documentées : 39 plaques cinéma ou
-animation regroupées film par film, puis 14 entrées séparées pour les jeux,
-comics et romans. Chaque chasseur cinéma possède une plaque OpenAI corps entier,
-un prompt individuel et au moins deux références quand elles sont disponibles.
-Une fiche indique sa continuité, ses sources et les approximations éventuelles.
-
-L’[audit complet de modularité](docs/AUDIT-MODULARITE-V3.md) décrit les défauts
-de la V2, le contrat géométrique V3 et les références utilisées.
-La [mise à jour des plaques cinéma V5](docs/MISE-A-JOUR-V5-PLAQUES-CINEMA.md)
-documente le nouveau pipeline et l’archive chronologique.
-
-## Contenu jouable
-
-- vaisseau-hub en six salles, carte galactique, armurerie, personnalisation,
-  atelier et salle des trophées, medbay, entraînement et codex ;
-- trois chasses scénarisées avec biomes, cibles et boss distincts ;
-- neuf routes réparties entre jungle lacustre, cryomonde et sanctuaire
-  volcanique, avec arbres, lianes, parois, cordes, chaînes et plateformes ;
-- cinq armes, quatre équipements, trois armures et quatre difficultés ;
-- biomask, scanner, camouflage, medicomp, visée plasma et extraction de
-  trophées ;
-- systèmes de perception, IA coordonnée, pièges, améliorations, checkpoints,
-  honneur, rangs, prises multiples, sauvegarde locale versionnée et rejeu.
-
-## Développement et validation
+Commandes individuelles :
 
 ```powershell
 npm.cmd run lint
-npm.cmd run build
-npm.cmd run qa
-npm.cmd run film-plates:references
-npm.cmd run film-plates:normalize
-npm.cmd run film-plates:build
-npm.cmd run film-plates:audit
-npm.cmd run film-plates:contact-sheets
+npm.cmd run typecheck
+npm.cmd test
+npm.cmd run biome-decor:v19:audit-available
 ```
 
-La vérification V4 exécute le lint, le build de production et l’ensemble des
-tests automatisés via `npm.cmd run qa`.
+`npm.cmd test` compile le jeu puis exécute **tous les fichiers
+`tests/*.test.mjs`**. Après ajout de nouveaux décors, régénérer d'abord la
+projection de disponibilité avec `npm.cmd run biome-decor:v19:runtime-data`.
 
-Les textures V3 sont des créations pixel-art originales générées avec OpenAI,
-puis détourées et normalisées par `scripts/prepare-v3-assets.py`. Les atlas
-source sont conservés dans `art-source/v3`.
+`npm.cmd run qa` conserve le contrôle global de production artistique, dont
+`biome-decor:v19:manifests` et `biome-decor:v19:audit`. Ce contrôle exige les
+**800 ressources prévues** et reste incomplet tant que les 336 manquantes ne
+sont pas produites ; ses seuils n'ont pas été abaissés pour obtenir un succès.
 
-Les quatre environnements, les sept personnages ennemis V4 et les six
-textures de décor jungle modulaires sont également des
-créations originales générées avec OpenAI pour ce projet. Les sources, exports
-runtime et prompts finaux sont conservés prompt par prompt dans
-[`art-source/v4`](art-source/v4/README.md), avec un journal séparé pour les
-[`ennemis V4`](art-source/v4/enemies/README.md). Le jeu ne contient pas de
-textures, captures ou sprites officiels extraits des films ou des jeux.
+Les tests de fonctions runtime et les rendus React statiques ne sont pas des
+essais interactifs du jeu. Aucun test navigateur/manette en conditions réelles,
+portage natif ou statut de sortie commerciale n'est revendiqué par ces
+commandes. Les limites de vérification figurent dans l'audit.
 
-Les 39 plaques cinéma V5, leurs références, leurs prompts individuels et leur
-manifeste sont documentés dans
-[`art-source/v5/film-plates`](art-source/v5/film-plates/README.md).
+## Assets et documentation actuelle
 
-*Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet privé de
-fan, non commercial, n’est ni officiel, ni affilié à 20th Century Studios ou
-Disney.
+Les sources de génération, prompts et masters sont conservés dans
+`art-source/`. Les exports utilisés par le jeu sont servis depuis `public/game/`.
+Les documents de production et les sources privées ne font pas partie du
+paquet public. Les images du projet sont des créations originales, avec leurs
+références et approximations documentées ; elles ne sont pas présentées comme
+des fichiers officiels de la franchise.
+
+- [Niveau du vaisseau V21](docs/ship-level-delivery-v21.md)
+- [Modules et installations V22](docs/ship-interior-delivery-v22.md)
+- [Lot volcan V19 et sources](docs/biome-decor-volcano-lot-01.md)
+- [Audit monde, progression et exploration](docs/audit-commercial-world-2026-08-31.md)
+- [Audit général de production](docs/audit-commercial-metroidvania-2026-08-31.md)
+
+Les rapports de livraison conservent les chiffres et résultats de leur propre
+révision. Les décomptes actuels figurent en tête de ce README.
+
+## Notes historiques V3 à V7
+
+Ces documents décrivent des étapes antérieures, pas la liste actuelle des
+missions, des salles ou des assets :
+
+- **V3** : rig articulé du chasseur, pièces d'armure, équipements et origine
+  commune du canon. [Audit de modularité](docs/AUDIT-MODULARITE-V3.md).
+- **V4** : première livraison des systèmes de chasse, du hub, de trois missions
+  et de leurs boss. Les descriptions de six salles et de trois mondes sont
+  historiques. Les itinéraires déclarés dans ce catalogue ne prouvent pas
+  l'existence de verrous ou de boucles de type metroidvania.
+  [Rapport V4](docs/MISE-A-JOUR-V4.md).
+- **V5/V6** : plaques cinéma, catalogue étendu, carte galactique, rite de trophée
+  et menus. [Plaques V5](docs/MISE-A-JOUR-V5-PLAQUES-CINEMA.md).
+- **V7** : lot de trente ennemis animés avec sources, prompts et strips séparés.
+  Ses nombres de vagues et de sprites chargés décrivent cette livraison ; ils
+  ne résument pas les huit chasses actuelles.
+  [Archive des ennemis V7](art-source/v7/enemies/README.md).
+
+*Predator* et *Yautja* appartiennent à leurs ayants droit. Ce projet de fan non
+commercial n'est ni officiel, ni affilié à 20th Century Studios ou Disney.

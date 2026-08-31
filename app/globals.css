@@ -6091,3 +6091,13 @@ select:focus-visible,
   .physical-deck-screen > .screen-safe { padding: 68px 6px 8px; }
   .physical-deck-toolbar .ghost-button { min-height: 36px; padding: 6px; font-size: .6rem; }
 }
+
+/* Recovery and controller-accessible campaign management. */
+.save-transfer, .game-credits { margin-block: 1.2rem; padding: 1rem; border: 1px solid #536c66; background: #0a1415; }
+.save-import-label { display: grid; gap: .6rem; margin-block: 1rem; }
+.save-import-label input { max-width: 100%; }
+.save-import-confirm { padding: .8rem; border: 1px solid #cfab68; }
+.save-import-confirm button { margin: .4rem; }
+.save-warning button { margin-left: .65rem; padding: .35rem .7rem; color: #fff5d3; border: 1px solid currentColor; background: #382914; }
+.save-recovery-note { position: fixed; bottom: 1rem; left: 1rem; right: 1rem; z-index: 90; padding: .75rem; background: #173d35; color: #eafff4; border: 1px solid #80c9b2; }
+.game-credits summary { cursor: pointer; padding: .4rem; }

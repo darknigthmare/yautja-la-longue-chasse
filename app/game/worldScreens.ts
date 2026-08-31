@@ -881,7 +881,11 @@ export function validateWorldScreens(
 ): readonly string[] {
   const errors: string[] = [];
   const ids = new Set<string>();
+  const featureIds = new Set<string>();
 
+  if (!Number.isFinite(layout.worldWidth) || layout.worldWidth <= 0) {
+    errors.push(`${layout.missionId}: world width must be finite and positive`);
+  }
   if (layout.worldWidth !== expectedWorldWidth) {
     errors.push(
       `${layout.missionId}: world width ${layout.worldWidth} != ${expectedWorldWidth}`,
@@ -902,6 +906,10 @@ export function validateWorldScreens(
     ids.add(screen.id);
     if (screen.order !== index) {
       errors.push(`${screen.id}: order ${screen.order} != ${index}`);
+    }
+    if (!screen.id.trim()) errors.push(`${layout.missionId}: empty screen id`);
+    if (![screen.startX, screen.endX, screen.order].every(Number.isFinite)) {
+      errors.push(`${screen.id}: non-finite screen bounds or order`);
     }
     if (screen.startX >= screen.endX) {
       errors.push(`${screen.id}: empty or inverted bounds`);
@@ -924,7 +932,19 @@ export function validateWorldScreens(
     if (screen.features.length === 0) {
       errors.push(`${screen.id}: traversal feature required`);
     }
+    for (const layer of Object.values(screen.layers)) {
+      if (!Number.isFinite(layer.parallax) || layer.parallax < 0) {
+        errors.push(`${screen.id}: invalid layer parallax`);
+      }
+    }
     for (const item of screen.features) {
+      if (!item.id.trim() || featureIds.has(item.id)) {
+        errors.push(`${screen.id}: empty or duplicate feature id ${item.id}`);
+      }
+      featureIds.add(item.id);
+      if (!Number.isFinite(item.x)) {
+        errors.push(`${screen.id}: feature ${item.id} has a non-finite anchor`);
+      }
       if (item.x < screen.startX || item.x >= screen.endX) {
         errors.push(`${screen.id}: feature ${item.id} is outside its bounds`);
       }
@@ -935,7 +955,17 @@ export function validateWorldScreens(
     layout.screens.map((screen) => [screen.id, new Set<string>()]),
   );
   const connectionIds = new Set<string>();
+  const edgeKeys = new Set<string>();
   for (const connection of layout.connections) {
+    if (!connection.id.trim()) errors.push(`${layout.missionId}: empty connection id`);
+    const edgeKey = [connection.fromScreenId, connection.toScreenId].sort().join("\0");
+    if (edgeKeys.has(edgeKey)) {
+      errors.push(`${connection.id}: duplicate screen edge`);
+    }
+    edgeKeys.add(edgeKey);
+    if (!Number.isFinite(connection.transitionX)) {
+      errors.push(`${connection.id}: non-finite transition coordinate`);
+    }
     if (connectionIds.has(connection.id)) {
       errors.push(`${layout.missionId}: duplicate connection ${connection.id}`);
     }

@@ -349,6 +349,34 @@ export interface AiOccluder {
   protection: number;
 }
 
+/** First contact along a projectile step, retaining the runtime square hitbox. */
+export function sweptProjectileImpactTime(
+  from: WorldPoint,
+  to: WorldPoint,
+  radius: number,
+  target: Pick<AiOccluder, "x" | "y" | "width" | "height">,
+): number | null {
+  if (![from.x, from.y, to.x, to.y, radius, target.x, target.y, target.width, target.height].every(Number.isFinite) ||
+    radius < 0 || target.width <= 0 || target.height <= 0) return null;
+  let entry = 0;
+  let exit = 1;
+  for (const [origin, movement, minimum, maximum] of [
+    [from.x, to.x - from.x, target.x - radius, target.x + target.width + radius],
+    [from.y, to.y - from.y, target.y - radius, target.y + target.height + radius],
+  ]) {
+    if (Math.abs(movement) < 1e-9) {
+      if (origin < minimum || origin > maximum) return null;
+      continue;
+    }
+    const first = (minimum - origin) / movement;
+    const second = (maximum - origin) / movement;
+    entry = Math.max(entry, Math.min(first, second));
+    exit = Math.min(exit, Math.max(first, second));
+    if (entry > exit) return null;
+  }
+  return entry;
+}
+
 function segmentIntersectsRect(
   source: WorldPoint,
   target: WorldPoint,

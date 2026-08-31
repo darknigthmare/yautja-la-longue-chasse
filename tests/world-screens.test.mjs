@@ -131,3 +131,33 @@ test("validator reports gaps, invalid boundaries and disconnected graphs", () =>
   assert.ok(errors.some((message) => message.includes("shared boundary")));
   assert.ok(errors.some((message) => message.includes("disconnected")));
 });
+
+
+test("non-finite room anchors, boundaries and layer motion fail validation", () => {
+  for (const value of [NaN, Infinity, -Infinity]) {
+    const broken = structuredClone(world.worldScreensFor("jungle-vey"));
+    broken.screens[0].features[0].x = value;
+    broken.screens[1].startX = value;
+    broken.screens[0].layers.background.parallax = value;
+    const errors = world.validateWorldScreens(broken);
+    assert.ok(errors.some((error) => error.includes("non-finite anchor")));
+    assert.ok(errors.some((error) => error.includes("non-finite screen bounds")));
+    assert.ok(errors.some((error) => error.includes("invalid layer parallax")));
+  }
+});
+
+test("feature identity remains unique across the whole mission", () => {
+  const broken = structuredClone(world.worldScreensFor("ice-cryostalker"));
+  broken.screens[1].features[0].id = broken.screens[0].features[0].id;
+  assert.ok(world.validateWorldScreens(broken).some((error) => error.includes("duplicate feature id")));
+});
+
+test("renaming a reverse connection cannot hide a duplicated physical passage", () => {
+  const broken = structuredClone(world.worldScreensFor("volcano-bad-blood"));
+  const connection = broken.connections[0];
+  broken.connections.push({
+    ...connection, id: "different-id-for-same-edge",
+    fromScreenId: connection.toScreenId, toScreenId: connection.fromScreenId,
+  });
+  assert.ok(world.validateWorldScreens(broken).some((error) => error.includes("duplicate screen edge")));
+});

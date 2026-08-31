@@ -323,7 +323,7 @@ test("unlock curve is gradual and a fresh sidecar starts on the classic ship", (
   const save = defaultSave(FIXED_TIME);
   const state = progression.createDefaultShipProgression(save, FIXED_TIME);
 
-  assert.equal(state.version, 2);
+  assert.equal(state.version, 3);
   assert.equal(state.selectedShipId, "classic-predator-spaceship");
   assert.deepEqual(state.unlockedShipIds, ["classic-predator-spaceship"]);
 
@@ -398,7 +398,8 @@ test("v1 migration preserves sidecar progress and repairs fleet fields safely", 
     save,
     FIXED_TIME,
   );
-  assert.equal(migrated.version, 2);
+  assert.equal(migrated.version, 3);
+  assert.equal(migrated.ownerSaveCreatedAt, save.createdAt);
   assert.equal(migrated.selectedShipId, "classic-predator-spaceship");
   assert.deepEqual(migrated.unlockedShipIds, ["classic-predator-spaceship"]);
   assert.equal(migrated.training.targeting.attempts, 4);
