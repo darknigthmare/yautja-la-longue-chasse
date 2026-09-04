@@ -153,6 +153,8 @@ export interface ShipHubProps {
   onOpenTrophies: () => void;
   onOpenArchives: () => void;
   onOpenCustomization: () => void;
+  /** Open the separate THE PIT combat simulation from the training chamber. */
+  onOpenPit?: () => void;
   onApplyLoadout?: (
     loadout: Loadout,
     appearance: HunterAppearance,
@@ -229,6 +231,7 @@ export default function ShipHub({
   onOpenTrophies,
   onOpenArchives,
   onOpenCustomization,
+  onOpenPit,
   onApplyLoadout,
   onTrainingRequested,
   onNotify,
@@ -752,7 +755,7 @@ export default function ShipHub({
     }
 
     if (activeRoomId === "training") {
-      return (
+      const drills = (
         Object.keys(TRAINING_LABELS) as TrainingDisciplineId[]
       ).map((disciplineId) => ({
         id: `train-${disciplineId}`,
@@ -760,6 +763,17 @@ export default function ShipHub({
         detail: `Record ${progression.training[disciplineId].bestScore}/100 · ${progression.training[disciplineId].attempts} essai(s)`,
         run: () => requestTraining(disciplineId),
       }));
+      return [
+        ...(onOpenPit
+          ? [{
+              id: "open-the-pit",
+              label: "THE PIT · combat 1 contre 1",
+              detail: "Entrer dans le Cercle de basalte : entraînement, duel CPU ou versus local.",
+              run: onOpenPit,
+            }]
+          : []),
+        ...drills,
+      ];
     }
 
     return [
@@ -791,6 +805,7 @@ export default function ShipHub({
     onOpenArmory,
     onOpenCustomization,
     onOpenMap,
+    onOpenPit,
     onOpenTrophies,
     progression,
     requestTraining,

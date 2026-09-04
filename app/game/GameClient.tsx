@@ -12,7 +12,17 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import { useMenuGamepad } from "./useMenuGamepad";
+import type { PitMatchCompleteResult } from "./PitCanvas";
 import { matchesControlAction } from "./systems/controlBindings";
+import {
+  applyPitResult,
+  clearPitSave,
+  createPitSave,
+  loadPitSave,
+  pitSaveStorageKey,
+  writePitSave,
+  type PitMatchResult,
+} from "./systems/pitSave";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -174,6 +184,7 @@ import type {
 } from "./types";
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
+const PitCanvas = React.lazy(() => import("./PitCanvas"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
@@ -194,6 +205,7 @@ type Screen =
   | "deck"
   | "medbay"
   | "training"
+  | "pit"
   | "map"
   | "armory"
   | "customization"
@@ -1121,6 +1133,162 @@ export default function GameClient() {
     return result.save;
   }, [reconcileHuntWrite]);
 
+  const recordPitMatch = useCallback((result: PitMatchCompleteResult) => {
+    const ownerSaveCreatedAt = saveRef.current.createdAt;
+    const key = pitSaveStorageKey(ownerSaveCreatedAt);
+    const outcome =
+      result.winnerId === null
+        ? "draw"
+        : result.winnerId === result.leftId
+          ? "victory"
+          : "defeat";
+    const matchResult: PitMatchResult = {
+      id: result.resultId,
+      mode: result.mode,
+      outcome,
+      fighterId: result.leftId,
+      roundsWon: result.leftRoundsWon,
+      roundsLost: result.rightRoundsWon,
+      roundsDrawn: result.roundsDrawn,
+      completedAt: new Date().toISOString(),
+    };
+    const resultLabel =
+      outcome === "victory" ? "Victoire" : outcome === "defeat" ? "Défaite" : "Égalité";
+
+    const persistResult = () => {
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const loaded = loadPitSave({
+          key,
+          expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
+        });
+        if (loaded.failure) {
+          if (loaded.failure === "read-failed" && attempt < 2) continue;
+          setToast(
+            loaded.failure === "owner-conflict"
+              ? "Archives THE PIT liées à une autre campagne : résultat non enregistré."
+              : "Archives THE PIT indisponibles : résultat non enregistré.",
+          );
+          return;
+        }
+
+        const current =
+          loaded.save ?? createPitSave(ownerSaveCreatedAt, matchResult.completedAt);
+        const application = applyPitResult(current, matchResult);
+        if (!application.applied) {
+          setToast(`${resultLabel} THE PIT déjà enregistrée · aucun doublon créé.`);
+          return;
+        }
+        const written = writePitSave(application.save, {
+          key,
+          expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
+        });
+        if (written.persisted) {
+          setToast(`${resultLabel} THE PIT enregistrée · aucun gain de campagne.`);
+          return;
+        }
+        if (
+          attempt < 2 &&
+          (written.failure === "stale-sequence" ||
+            written.failure === "stale-revision" ||
+            written.failure === "read-failed")
+        ) {
+          continue;
+        }
+        setToast("Résultat THE PIT non confirmé par le stockage local.");
+        return;
+      }
+    };
+
+    const persistSafely = () => {
+      try {
+        persistResult();
+      } catch {
+        setToast("Résultat THE PIT conservé à l’écran, mais son écriture a échoué.");
+      }
+    };
+    const runWithFallbackLease = (retriesRemaining = 50) => {
+      if (typeof window === "undefined") {
+        persistSafely();
+        return;
+      }
+      const lockKey = `${key}.write-lock`;
+      try {
+        const storage = window.localStorage;
+        const now = Date.now();
+        let heldUntil = 0;
+        try {
+          const held = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+            expiresAt?: unknown;
+          } | null;
+          heldUntil =
+            held && typeof held.expiresAt === "number" ? held.expiresAt : 0;
+        } catch {
+          heldUntil = 0;
+        }
+        if (heldUntil > now) {
+          if (retriesRemaining > 0) {
+            window.setTimeout(
+              () => runWithFallbackLease(retriesRemaining - 1),
+              50,
+            );
+          } else {
+            setToast("Résultat THE PIT en attente : une autre session écrit les archives.");
+          }
+          return;
+        }
+
+        const token = createHuntRunId();
+        storage.setItem(
+          lockKey,
+          JSON.stringify({ token, expiresAt: now + 2_000 }),
+        );
+        const confirmed = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+          token?: unknown;
+        } | null;
+        if (confirmed?.token !== token) {
+          if (retriesRemaining > 0) {
+            window.setTimeout(
+              () => runWithFallbackLease(retriesRemaining - 1),
+              50,
+            );
+          } else {
+            setToast("Résultat THE PIT en attente : verrou local indisponible.");
+          }
+          return;
+        }
+        try {
+          persistSafely();
+        } finally {
+          const latest = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+            token?: unknown;
+          } | null;
+          if (latest?.token === token) storage.removeItem(lockKey);
+        }
+      } catch {
+        persistSafely();
+      }
+    };
+
+    if (typeof navigator !== "undefined" && navigator.locks) {
+      let callbackStarted = false;
+      try {
+        void navigator.locks
+          .request(`yautja-the-pit:${key}`, () => {
+            callbackStarted = true;
+            persistSafely();
+          })
+          .catch(() => {
+            if (!callbackStarted) runWithFallbackLease();
+            else setToast("Résultat THE PIT non confirmé par le verrou navigateur.");
+          });
+      } catch {
+        runWithFallbackLease();
+      }
+    } else {
+      runWithFallbackLease();
+    }
+  }, []);
+
   const go = useCallback(
     (next: Screen) => {
       void playSound("ui");
@@ -1735,6 +1903,7 @@ export default function GameClient() {
       setResetArmed(true);
       return;
     }
+    const previousOwnerSaveCreatedAt = saveRef.current.createdAt;
     const fresh = defaultSave();
     const written = replaceSaveWithStatus(fresh);
     setSaveFailure(written.failure);
@@ -1745,6 +1914,7 @@ export default function GameClient() {
     const shipReset = resetShipProgressionWithStatus(written.save);
     setSelectedShipId(shipReset.state.selectedShipId);
     const huntReset = clearActiveHuntSave();
+    const pitReset = clearPitSave(previousOwnerSaveCreatedAt);
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
@@ -1757,8 +1927,8 @@ export default function GameClient() {
     setLastResult(null);
     setLastRewardSummary(null);
     setScreen("title");
-    setToast(shipReset.persisted && huntReset.cleared
-      ? "Archives de chasse réinitialisées."
+    setToast(shipReset.persisted && huntReset.cleared && pitReset.cleared
+      ? "Archives de chasse et du PIT réinitialisées."
       : "Campagne réinitialisée. Le nettoyage des archives annexes n’est pas confirmé ; les données d’un autre profil sont ignorées.");
   }, [clearHuntSession, resetArmed]);
 
@@ -1818,7 +1988,7 @@ export default function GameClient() {
     else if (screen !== "title") go("deck");
   }, [go, pendingHuntResult, screen, settingsOpen]);
   const menuGamepadEnabled = !trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["mission", "deck", "ship", "map", "training"].includes(screen));
+    !["mission", "deck", "ship", "map", "training", "pit"].includes(screen));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}`, menuBack);
 
   const primaryWeapon =
@@ -1860,7 +2030,7 @@ export default function GameClient() {
     : null;
 
   const topBar =
-    screen !== "title" && screen !== "mission" ? (
+    screen !== "title" && screen !== "mission" && screen !== "pit" ? (
       <TopBar
         save={save}
         onShip={() => go("deck")}
@@ -1978,6 +2148,9 @@ export default function GameClient() {
                 <button type="button" className="ghost-button" onClick={() => go("ship")}>
                   Console du vaisseau
                 </button>
+                <button type="button" className="ghost-button" onClick={() => go("pit")}>
+                  THE PIT · combat
+                </button>
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
                   Pause / réglages
                 </button>
@@ -2039,6 +2212,7 @@ export default function GameClient() {
             onOpenCustomization={() =>
               openStationScreen("customization", "ship")
             }
+            onOpenPit={() => go("pit")}
             onApplyLoadout={applyShipLoadout}
             onSelectedShipChange={setSelectedShipId}
             onNotify={setToast}
@@ -2072,6 +2246,7 @@ export default function GameClient() {
               onOpenCustomization={() =>
                 openStationScreen("customization", "deck")
               }
+              onOpenPit={() => go("pit")}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
               onNotify={setToast}
@@ -3230,6 +3405,19 @@ export default function GameClient() {
       )}
 
         </div>
+      )}
+
+      {screen === "pit" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <PitCanvas
+            controlBindings={save.settings.controlBindings}
+            highContrast={save.settings.highContrastVision}
+            reducedGore={save.settings.reducedGore}
+            screenShake={save.settings.screenShake}
+            onMatchComplete={recordPitMatch}
+            onExit={() => go("deck")}
+          />
+        </Suspense>
       )}
 
       {screen === "mission" && selectedMission && (

@@ -84,6 +84,7 @@ import {
   hunterWeaponChargeRatio,
   type AiBrain,
   type AiCoordinationGroup,
+  type BossEffectKind,
   type BossMechanicState,
   type HunterProjectileRecovery,
   type HuntTrap,
@@ -102,6 +103,21 @@ import {
   type ArsenalRuntimeState,
   type GearEffectEvent,
 } from "./systems/arsenal";
+import {
+  canHuntMeleeHitTarget,
+  cancelHuntMeleeAttack,
+  createHuntMeleeState,
+  currentHuntMeleeAttack,
+  huntMeleeHitboxOverlaps,
+  huntMeleeMovementMultiplier,
+  huntMeleePhaseLabel,
+  normalizeHuntMeleeState,
+  registerHuntMeleeTargetHit,
+  requestHuntMeleeAttack,
+  resolveHuntMeleeHitbox,
+  stepHuntMeleeCombat,
+  type HuntMeleeState,
+} from "./systems/huntMeleeCombat";
 import {
   createDropShipArrival,
   createTrophyRitual,
@@ -311,6 +327,7 @@ interface PlayerState extends Vec2 {
   dreadAngles: number[];
   dreadVelocities: number[];
   attackFlash: number;
+  melee: HuntMeleeState;
   invulnerability: number;
   meleeCooldown: number;
   weaponCooldown: number;
@@ -339,6 +356,8 @@ interface EnemyState extends Vec2 {
   pendingAttackId: string | null;
   restrainedUntil: number;
   hitFlash: number;
+  hitStunSeconds: number;
+  knockbackVelocityX: number;
   scanned: boolean;
   alive: boolean;
   deathAnimation: number;
@@ -1136,6 +1155,8 @@ function makeEnemy(
     pendingAttackId: null,
     restrainedUntil: 0,
     hitFlash: 0,
+    hitStunSeconds: 0,
+    knockbackVelocityX: 0,
     scanned: false,
     alive: true,
     deathAnimation: 0,
@@ -1295,6 +1316,7 @@ function makeGameState(
       dreadAngles: [0, 0, 0, 0, 0, 0, 0],
       dreadVelocities: [0, 0, 0, 0, 0, 0, 0],
       attackFlash: 0,
+      melee: createHuntMeleeState(),
       invulnerability: 0,
       meleeCooldown: 0,
       weaponCooldown: 0,
@@ -1380,6 +1402,8 @@ function makeGameState(
       pendingAttackId: null,
       restrainedUntil: 0,
       hitFlash: 0,
+      hitStunSeconds: 0,
+      knockbackVelocityX: 0,
       scanned: false,
       alive: true,
       deathAnimation: 0,
@@ -1439,17 +1463,59 @@ function makeGameState(
 }
 
 function clonePlayerState(player: PlayerState): PlayerState {
+  const savedMelee = (player as PlayerState & { melee?: unknown }).melee;
+  const melee =
+    savedMelee &&
+    typeof savedMelee === "object" &&
+    !Array.isArray(savedMelee) &&
+    ["idle", "startup", "active", "recovery"].includes(
+      String((savedMelee as { phase?: unknown }).phase),
+    )
+      ? (savedMelee as HuntMeleeState)
+      : null;
   return {
     ...player,
     aimPoint: { ...player.aimPoint },
     weaponAmmo: [...player.weaponAmmo] as [number, number],
     dreadAngles: [...player.dreadAngles],
     dreadVelocities: [...player.dreadVelocities],
+    melee: melee
+      ? {
+          ...melee,
+          hitTargetIds: Array.isArray(melee.hitTargetIds)
+            ? [...melee.hitTargetIds]
+            : [],
+          profile: melee.profile ? { ...melee.profile } : null,
+          queuedProfile: melee.queuedProfile
+            ? { ...melee.queuedProfile }
+            : null,
+        }
+      : {
+          phase: "idle",
+          phaseRemainingSeconds: 0,
+          comboIndex: 0,
+          actionSequence: 0,
+          facing: 1,
+          buffered: false,
+          queuedFacing: 1,
+          hitTargetIds: [],
+          profile: null,
+          queuedProfile: null,
+        },
   };
 }
 
 function cloneEnemyState(enemy: EnemyState): EnemyState {
-  return { ...enemy };
+  return {
+    ...enemy,
+    hitStunSeconds:
+      Number.isFinite(enemy.hitStunSeconds) && enemy.hitStunSeconds > 0
+        ? enemy.hitStunSeconds
+        : 0,
+    knockbackVelocityX: Number.isFinite(enemy.knockbackVelocityX)
+      ? enemy.knockbackVelocityX
+      : 0,
+  };
 }
 
 function cloneProjectileState(projectile: ProjectileState): ProjectileState {
@@ -1950,6 +2016,20 @@ function restoreCheckpoint(
   player.cloaked = mode === "resume" ? player.cloaked : false;
   player.aiming = false;
   player.weaponChargeSeconds = 0;
+  if (mode === "retry") {
+    player.melee = {
+      ...player.melee,
+      phase: "idle",
+      phaseRemainingSeconds: 0,
+      comboIndex: 0,
+      buffered: false,
+      hitTargetIds: [],
+      profile: null,
+      queuedProfile: null,
+    };
+    player.attackFlash = 0;
+    player.meleeCooldown = 0;
+  }
 
   return {
     ...state,
@@ -2779,7 +2859,7 @@ function drawEnemySheetFrame(
 
 function enemyAnimationFrame(enemy: EnemyState, elapsed: number): number {
   if (!enemy.alive) return 5;
-  if (enemy.hitFlash > 0) return 4;
+  if (enemy.hitFlash > 0 || enemy.hitStunSeconds > 0) return 4;
   if (enemy.telegraph > 0 || enemy.pendingAttackId) return 3;
   const v8Definition = ecologyV8EnemyForId(enemy.archetype);
   const v7Definition = enemyV7ForId(enemy.archetype);
@@ -5075,23 +5155,42 @@ function renderGame(
     );
     drawAimAssist(context, state, mission, loadout, appearance);
   }
-  if (!hunterInsideShip && state.player.attackFlash > 0) {
+  const meleePhaseLabel = huntMeleePhaseLabel(state.player.melee);
+  if (!hunterInsideShip && meleePhaseLabel) {
+    const meleeAttack = currentHuntMeleeAttack(state.player.melee);
     const centerX =
       state.player.x +
       state.player.width / 2 +
-      state.player.facing * 58;
-    context.strokeStyle = "#e4fff5";
-    context.lineWidth = 5;
-    context.beginPath();
-    context.arc(
-      centerX,
-      state.player.y + 55,
-      54,
-      state.player.facing < 0 ? Math.PI * 0.55 : -Math.PI * 0.45,
-      state.player.facing < 0 ? Math.PI * 1.45 : Math.PI * 0.45,
+      state.player.melee.facing *
+        Math.min(84, (meleeAttack?.reachPx ?? 108) * 0.48);
+    const centerY = state.player.y + state.player.height * 0.48;
+    context.save();
+    if (state.player.melee.phase === "active") {
+      context.strokeStyle =
+        state.player.melee.comboIndex === 2 ? "#ffe29a" : "#e4fff5";
+      context.lineWidth = state.player.melee.comboIndex === 2 ? 7 : 5;
+      context.beginPath();
+      context.arc(
+        centerX,
+        centerY,
+        Math.min(76, 48 + (meleeAttack?.reachPx ?? 90) * 0.18),
+        state.player.melee.facing < 0 ? Math.PI * 0.55 : -Math.PI * 0.45,
+        state.player.melee.facing < 0 ? Math.PI * 1.45 : Math.PI * 0.45,
+      );
+      context.stroke();
+    }
+    context.fillStyle =
+      state.player.melee.phase === "active" ? "#f4fff9" : "#a7c8bb";
+    context.font = "800 10px system-ui, sans-serif";
+    context.textAlign = "center";
+    context.fillText(
+      `${meleePhaseLabel}  ${state.player.melee.comboIndex + 1}/3`,
+      state.player.x + state.player.width / 2,
+      state.player.y - 12,
     );
-    context.stroke();
+    context.restore();
   }
+
 
   if (state.scanPulse > 0) {
     const radius = (1 - state.scanPulse / 0.55) * 420;
@@ -5923,7 +6022,6 @@ function playerMelee(
     meleeStats,
   );
   if (
-    player.meleeCooldown > 0 ||
     player.stamina < meleeAttack.staminaCost ||
     state.phase === "dead" ||
     state.phase === "finished"
@@ -5934,52 +6032,160 @@ function playerMelee(
     loadout.armorId,
     inventory.armorUpgrades[loadout.armorId],
   );
-  forceDecloak(state);
-  player.stamina -= meleeAttack.staminaCost;
-  player.meleeCooldown = meleeAttack.cooldownSeconds;
-  player.attackFlash = 0.16;
-  queueSound(state, "slash");
-  const center = {
-    x:
-      player.x +
-      player.width / 2 +
-      player.facing * (meleeWeaponId === "combistick" ? 82 : 56),
-    y: player.y + player.height * 0.48,
-  };
-  emitNoise(
-    state,
-    "melee",
-    meleeAttack.noiseLoudness,
-    meleeAttack.noiseRadius,
-    center,
+  const request = requestHuntMeleeAttack(
+    normalizeHuntMeleeState(player.melee),
+    {
+      weaponId: meleeWeaponId,
+      damage: meleeAttack.damage * armor.meleeDamageMultiplier,
+      cooldownSeconds: meleeAttack.cooldownSeconds,
+      reachPx: meleeAttack.meleeReachPx,
+      maxTargetHits: meleeAttack.maxTargetHits,
+      noiseLoudness: meleeAttack.noiseLoudness,
+      noiseRadius: meleeAttack.noiseRadius,
+    },
+    player.facing,
   );
+  if (!request.accepted) return;
+
+  forceDecloak(state);
+  player.stamina = Math.max(0, player.stamina - meleeAttack.staminaCost);
+  player.melee = request.state;
+  player.meleeCooldown = request.state.phaseRemainingSeconds;
+}
+
+function updatePlayerMeleeCombat(
+  state: GameState,
+  mission: MissionDefinition,
+  delta: number,
+  cancelled: boolean,
+): void {
+  const player = state.player;
+  if (cancelled) {
+    player.melee = cancelHuntMeleeAttack(player.melee);
+    player.meleeCooldown = 0;
+    player.attackFlash = 0;
+    return;
+  }
+
+  const meleeStep = stepHuntMeleeCombat(player.melee, delta);
+  player.melee = meleeStep.state;
+  player.meleeCooldown =
+    player.melee.phase === "idle" ? 0 : player.melee.phaseRemainingSeconds;
+  player.attackFlash =
+    player.melee.phase === "active"
+      ? Math.max(player.attackFlash, 0.045)
+      : Math.max(0, player.attackFlash - delta);
+
+  for (const comboIndex of meleeStep.startedComboIndexes) {
+    announce(
+      state,
+      `Enchainement de lames ${comboIndex + 1}/3.`,
+      0.7,
+    );
+  }
+
+  if (player.melee.phase !== "active") return;
+
+  const attack = currentHuntMeleeAttack(player.melee);
+  const hitbox = resolveHuntMeleeHitbox(player.melee, player);
+  if (!attack || !hitbox || !player.melee.profile) return;
+
+  if (
+    meleeStep.enteredActiveActionIds.includes(player.melee.actionSequence)
+  ) {
+    queueSound(state, "slash");
+    emitNoise(
+      state,
+      "melee",
+      player.melee.profile.noiseLoudness,
+      player.melee.profile.noiseRadius,
+      {
+        x: hitbox.x + hitbox.width / 2,
+        y: hitbox.y + hitbox.height / 2,
+      },
+    );
+  }
+
+  const playerCenterX = player.x + player.width / 2;
   const targets = [
     ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
     ...(state.boss.active && state.boss.alive ? [state.boss] : []),
   ]
-    .map((enemy) => ({
-      enemy,
-      separation: distance(center, {
-        x: enemy.x + enemy.width / 2,
-        y: enemy.y + enemy.height / 2,
-      }),
-    }))
-    .filter((entry) => entry.separation <= meleeAttack.meleeReachPx)
-    .sort((left, right) => left.separation - right.separation)
-    .slice(0, meleeAttack.maxTargetHits)
-    .map((entry) => entry.enemy);
+    .filter(
+      (enemy) =>
+        canHuntMeleeHitTarget(player.melee, enemy.id) &&
+        huntMeleeHitboxOverlaps(hitbox, enemy),
+    )
+    .sort((left, right) => {
+      const leftDistance = Math.abs(left.x + left.width / 2 - playerCenterX);
+      const rightDistance = Math.abs(right.x + right.width / 2 - playerCenterX);
+      if (leftDistance !== rightDistance) return leftDistance - rightDistance;
+      return left.id < right.id ? -1 : left.id > right.id ? 1 : 0;
+    });
+
   let connected = false;
   for (const enemy of targets) {
+    if (!canHuntMeleeHitTarget(player.melee, enemy.id)) break;
     connected = true;
-    damageEnemy(
-      state,
-      mission,
-      enemy,
-      meleeAttack.damage * armor.meleeDamageMultiplier,
-      "melee",
+    damageEnemy(state, mission, enemy, attack.damage, "melee");
+    player.melee = registerHuntMeleeTargetHit(player.melee, enemy.id);
+    if (!enemy.alive) continue;
+
+    const reactionScale = enemy.boss ? 0.48 : 1;
+    enemy.hitStunSeconds = Math.max(
+      enemy.hitStunSeconds,
+      attack.hitStunSeconds * reactionScale,
+    );
+    enemy.knockbackVelocityX =
+      player.melee.facing * attack.knockbackSpeed * reactionScale;
+    enemy.velocityX = enemy.knockbackVelocityX;
+    enemy.hitFlash = Math.max(enemy.hitFlash, enemy.hitStunSeconds);
+    enemy.telegraph = 0;
+    enemy.pendingAttackId = null;
+  }
+  if (connected && state.screenShakeEnabled) {
+    state.screenShake = Math.max(
+      state.screenShake,
+      player.melee.comboIndex === 2 ? 8 : 5,
     );
   }
-  if (connected && state.screenShakeEnabled) state.screenShake = 5;
+}
+
+function stepEnemyMeleeHitReaction(
+  enemy: EnemyState,
+  delta: number,
+  minimumX: number,
+  maximumX: number,
+): boolean {
+  const hitStunSeconds = Number.isFinite(enemy.hitStunSeconds)
+    ? Math.max(0, enemy.hitStunSeconds)
+    : 0;
+  if (hitStunSeconds <= 0) {
+    enemy.hitStunSeconds = 0;
+    enemy.knockbackVelocityX = 0;
+    return false;
+  }
+
+  const reactionDelta = Math.min(Math.max(0, delta), hitStunSeconds);
+  const knockbackVelocity = Number.isFinite(enemy.knockbackVelocityX)
+    ? enemy.knockbackVelocityX
+    : 0;
+  enemy.x = clamp(
+    enemy.x + knockbackVelocity * reactionDelta,
+    minimumX,
+    maximumX,
+  );
+  enemy.knockbackVelocityX =
+    knockbackVelocity * Math.exp(-8.5 * reactionDelta);
+  enemy.velocityX = enemy.knockbackVelocityX;
+  enemy.hitStunSeconds = Math.max(0, hitStunSeconds - delta);
+  enemy.telegraph = 0;
+  enemy.pendingAttackId = null;
+  enemy.attackCooldown = Math.max(
+    Number.isFinite(enemy.attackCooldown) ? enemy.attackCooldown : 0,
+    0.22,
+  );
+  return true;
 }
 
 function playerWeapon(
@@ -6632,7 +6838,11 @@ function updateAimState(
 
   const dx = player.aimPoint.x - origin.x;
   const dy = player.aimPoint.y - origin.y;
-  if (player.aiming && Math.abs(dx) > 18) {
+  if (
+    player.aiming &&
+    Math.abs(dx) > 18 &&
+    (player.melee?.phase ?? "idle") === "idle"
+  ) {
     player.facing = dx >= 0 ? 1 : -1;
   }
   player.aimAngle = Math.atan2(dy, dx);
@@ -6640,7 +6850,12 @@ function updateAimState(
 
 function updateHunterRig(player: PlayerState, delta: number, extracting: boolean): void {
   const gauntletTarget = extracting ? 1 : 0;
-  const bladesTarget = extracting || player.attackFlash > 0 ? 1 : 0;
+  const bladesTarget =
+    extracting ||
+    player.attackFlash > 0 ||
+    (player.melee?.phase ?? "idle") !== "idle"
+      ? 1
+      : 0;
   player.gauntletOpen +=
     (gauntletTarget - player.gauntletOpen) * Math.min(1, delta * 11);
   player.bladeExtension +=
@@ -6861,16 +7076,23 @@ function updatePlayer(
     return;
   }
   const actionLocked = state.trophyExtracting || victoryLocked;
+  updatePlayerMeleeCombat(state, mission, delta, actionLocked);
 
   const targetVelocity =
     (actionLocked ? 0 : moveAxis) *
     300 *
+    huntMeleeMovementMultiplier(player.melee) *
     armor.moveSpeedMultiplier *
     movementSurface.movementMultiplier *
     hazardMovementMultiplier;
   player.velocityX +=
     (targetVelocity - player.velocityX) * Math.min(1, delta * 13);
-  if (!actionLocked && moveAxis !== 0 && !player.aiming) {
+  if (
+    !actionLocked &&
+    moveAxis !== 0 &&
+    !player.aiming &&
+    player.melee.phase === "idle"
+  ) {
     player.facing = moveAxis > 0 ? 1 : -1;
   }
   if (Math.abs(moveAxis) < 0.1) {
@@ -6911,7 +7133,11 @@ function updatePlayer(
   if (consume(input, "melee") && !actionLocked) {
     playerMelee(state, mission, loadout, inventory);
   }
-  if (consume(input, "weapon") && !actionLocked) {
+  if (
+    consume(input, "weapon") &&
+    !actionLocked &&
+    player.melee.phase === "idle"
+  ) {
     playerWeapon(state, mission, loadout, inventory);
   }
   if (consume(input, "scan") && !actionLocked) playerScan(state, mission);
@@ -7013,11 +7239,9 @@ function updatePlayer(
   updateHunterRig(player, delta, state.trophyExtracting);
 
   player.invulnerability = Math.max(0, player.invulnerability - delta);
-  player.meleeCooldown = Math.max(0, player.meleeCooldown - delta);
   player.weaponCooldown = Math.max(0, player.weaponCooldown - delta);
   player.scanCooldown = Math.max(0, player.scanCooldown - delta);
   player.healCooldown = Math.max(0, player.healCooldown - delta);
-  player.attackFlash = Math.max(0, player.attackFlash - delta);
   player.stamina = Math.min(
     player.maxStamina,
     player.stamina +
@@ -7126,6 +7350,18 @@ function updateRegularEnemy(
     return;
   }
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
+  if (
+    ((enemy.hitStunSeconds ?? 0) > 0 ||
+      Math.abs(enemy.knockbackVelocityX ?? 0) > 0.01) &&
+    stepEnemyMeleeHitReaction(
+      enemy,
+      delta,
+      Math.max(0, enemy.patrolLeft - 90),
+      Math.min(state.world.width - enemy.width, enemy.patrolRight + 90),
+    )
+  ) {
+    return;
+  }
   if (enemy.restrainedUntil > state.elapsed) {
     const cancelledAttack = stepRegularAttackTelegraph(
       {
@@ -7615,6 +7851,16 @@ function drawGuardianAdaptiveField(
   context.restore();
 }
 
+const BOSS_EFFECTS_PRESERVED_DURING_HIT_STUN = new Set<BossEffectKind>([
+  "purge-started",
+  "purge-console-disabled",
+  "purge-cancelled",
+  "purge-detonated",
+  "guardian-adaptive-warning",
+  "guardian-adaptive-evaded",
+  "guardian-adaptive-field",
+]);
+
 function updateBoss(
   state: GameState,
   mission: MissionDefinition,
@@ -7630,6 +7876,33 @@ function updateBoss(
     (state.bossMechanics.purgeSeconds !== null ||
       boss.health / boss.maxHealth <= 0.18);
   if (!boss.alive && !pendingBadBloodPurge) return;
+
+  // Resolve an interrupting melee reaction before advancing any boss decision.
+  // Only an armed purge or an already-running Guardian field may keep ticking:
+  // both are persistent world hazards that must not be frozen by hit chaining.
+  boss.hitFlash = Math.max(0, boss.hitFlash - delta);
+  const bossReacting =
+    ((boss.hitStunSeconds ?? 0) > 0 ||
+      Math.abs(boss.knockbackVelocityX ?? 0) > 0.01) &&
+    stepEnemyMeleeHitReaction(
+      boss,
+      delta,
+      boss.patrolLeft,
+      boss.patrolRight,
+    );
+  const guardianAdaptation =
+    state.bossMechanics.missionId === "ruins-ancient-guardian"
+      ? state.bossMechanics.guardianAdaptation
+      : null;
+  const persistentHazardNeedsTick =
+    pendingBadBloodPurge ||
+    Boolean(
+      guardianAdaptation &&
+        (guardianAdaptation.warningSeconds > 0 ||
+          guardianAdaptation.fieldSeconds > 0),
+    );
+  if (bossReacting && !persistentHazardNeedsTick) return;
+
   const difficultyDef = DIFFICULTY_BY_ID[difficulty];
   const bossRestrained = boss.restrainedUntil > state.elapsed;
   if (bossRestrained) {
@@ -7652,6 +7925,7 @@ function updateBoss(
       (cover) => !state.brokenPillarIds.has(cover.id),
     ),
   );
+  const bossMechanicsBeforeStep = state.bossMechanics;
   const mechanicStep = stepBossMechanics(state.bossMechanics, {
     deltaSeconds: delta,
     elapsedSeconds: state.elapsed,
@@ -7672,7 +7946,16 @@ function updateBoss(
       (enemy) => enemy.alive && enemy.active,
     ).length,
   });
-  state.bossMechanics = mechanicStep.state;
+  state.bossMechanics = bossReacting
+    ? ({
+        ...mechanicStep.state,
+        attackCooldownSeconds: Math.max(
+          bossMechanicsBeforeStep.attackCooldownSeconds,
+          0.35,
+        ),
+        sequence: bossMechanicsBeforeStep.sequence,
+      } as BossMechanicState)
+    : mechanicStep.state;
   state.bossVulnerabilityMultiplier =
     mechanicStep.decision.vulnerabilityMultiplier;
   state.bossThermalVisibility = mechanicStep.decision.thermalVisibility;
@@ -7681,6 +7964,12 @@ function updateBoss(
   state.disabledConsoleId = null;
 
   for (const effect of mechanicStep.effects) {
+    if (
+      bossReacting &&
+      !BOSS_EFFECTS_PRESERVED_DURING_HIT_STUN.has(effect.kind)
+    ) {
+      continue;
+    }
     switch (effect.kind) {
       case "spawn-support":
         spawnBossSupport(
@@ -7917,11 +8206,11 @@ function updateBoss(
   }
 
   if (!boss.alive) return;
+  if (bossReacting) return;
   if (bossRestrained) {
     boss.velocityX = 0;
     return;
   }
-  boss.hitFlash = Math.max(0, boss.hitFlash - delta);
   const wasTelegraphing = boss.telegraph > 0;
   let executedAttackId: string | null = null;
   boss.telegraph = Math.max(0, boss.telegraph - delta);
