@@ -1,9 +1,13 @@
 import {
   createPitCombatState,
+  PIT_ARENAS,
+  PIT_FIGHTERS,
   PIT_STATE_VERSION,
   PIT_TICK_RATE,
   serializePitCombat,
   stepPitCombat,
+  stepPitCombatV2Compatibility,
+  type PitArenaId,
   type PitAttackKind,
   type PitCombatMode,
   type PitCombatState,
@@ -12,8 +16,8 @@ import {
   type PitMatchPhase,
 } from "./pitCombat";
 
-export const PIT_REPLAY_VERSION = 2;
-export const PIT_REPLAY_ENCODING = "input-rle-v2";
+export const PIT_REPLAY_VERSION = 3;
+export const PIT_REPLAY_ENCODING = "input-rle-v3";
 export const PIT_REPLAY_MAX_SERIALIZED_BYTES = 64 * 1024;
 export const PIT_REPLAY_MAX_TICKS = PIT_TICK_RATE * 60 * 10;
 export const PIT_REPLAY_MAX_SEGMENTS = 5_000;
@@ -108,7 +112,7 @@ export interface PitReplay {
   version: typeof PIT_REPLAY_VERSION;
   engineVersion: typeof PIT_STATE_VERSION;
   tickRate: typeof PIT_TICK_RATE;
-  arenaId: "the-pit";
+  arenaId: PitArenaId;
   encoding: typeof PIT_REPLAY_ENCODING;
   seed: number;
   rules: { mode: PitCombatMode };
@@ -120,6 +124,7 @@ export interface PitReplay {
 export interface PitReplayRecordingOptions {
   fighters?: readonly [PitFighterId, PitFighterId];
   rules?: { mode: PitCombatMode };
+  arenaId?: PitArenaId;
   seed?: number;
 }
 
@@ -156,6 +161,7 @@ interface ValidatedReplay {
 interface NormalizedRecordingOptions {
   fighters: readonly [PitFighterId, PitFighterId];
   rules: { mode: PitCombatMode };
+  arenaId: PitArenaId;
   seed: number;
 }
 
@@ -173,7 +179,11 @@ function isIntegerBetween(value: unknown, minimum: number, maximum: number): val
 }
 
 function isFighterId(value: unknown): value is PitFighterId {
-  return value === "jungle-hunter" || value === "berserker";
+  return typeof value === "string" && Object.hasOwn(PIT_FIGHTERS, value);
+}
+
+function isArenaId(value: unknown): value is PitArenaId {
+  return typeof value === "string" && Object.hasOwn(PIT_ARENAS, value);
 }
 
 function isCombatMode(value: unknown): value is PitCombatMode {
@@ -188,7 +198,7 @@ function serializedByteLength(serialized: string): number {
   return new TextEncoder().encode(serialized).byteLength;
 }
 
-/** V1 archives are intentionally rejected: their V1 engine checksum cannot be verified by the V2 simulator. */
+/** V1 archives remain rejected. Published V2 archives migrate after their old checksum is verified. */
 export type PitReplayRejectionCode =
   | "invalid-replay"
   | "legacy-version"
@@ -208,7 +218,7 @@ export class PitReplayCompatibilityError extends Error {
 function replayRejectionCode(value: unknown): PitReplayRejectionCode {
   if (!isRecord(value)) return "invalid-replay";
   if (typeof value.version === "number" && Number.isInteger(value.version)) {
-    if (value.version < PIT_REPLAY_VERSION) return "legacy-version";
+    if (value.version < 2) return "legacy-version";
     if (value.version > PIT_REPLAY_VERSION) return "future-version";
   }
   if (value.version === PIT_REPLAY_VERSION &&
@@ -276,14 +286,30 @@ export function decodePitReplayInputs(inputPair: number): readonly [PitInput, Pi
   return [decodePitReplayInput(playerOne), decodePitReplayInput(playerTwo)];
 }
 
-function checksumCombatState(state: PitCombatState): string {
-  const serialized = serializePitCombat(state);
+function checksumSerializedCombat(serialized: string): string {
   let hash = 0x811c9dc5;
   for (let index = 0; index < serialized.length; index += 1) {
     hash ^= serialized.charCodeAt(index);
     hash = Math.imul(hash, 0x01000193);
   }
   return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function checksumCombatState(state: PitCombatState): string {
+  return checksumSerializedCombat(serializePitCombat(state));
+}
+
+function checksumCombatStateForV2(state: PitCombatState): string {
+  const canonical = JSON.parse(serializePitCombat(state)) as Record<string, unknown>;
+  canonical.version = 2;
+  delete canonical.techniqueEffects;
+  delete canonical.nextTechniqueEffectId;
+  if (Array.isArray(canonical.fighters)) {
+    for (const fighter of canonical.fighters) {
+      if (isRecord(fighter)) delete fighter.techniqueStatus;
+    }
+  }
+  return checksumSerializedCombat(JSON.stringify(canonical));
 }
 
 function metadataFor(state: PitCombatState, ticks: number): PitReplayMetadata {
@@ -309,7 +335,7 @@ function equalMetadata(left: PitReplayMetadata, right: PitReplayMetadata): boole
 }
 
 function normalizeRecordingOptions(options: PitReplayRecordingOptions): NormalizedRecordingOptions {
-  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "rules", "seed"])) throw replayError();
+  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "rules", "arenaId", "seed"])) throw replayError();
   const fighters = options.fighters ?? ["jungle-hunter", "berserker"];
   if (!Array.isArray(fighters) || fighters.length !== 2 || !isFighterId(fighters[0]) ||
     !isFighterId(fighters[1]) || fighters[0] === fighters[1]) {
@@ -317,11 +343,14 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   }
   const rules = options.rules ?? { mode: "match" };
   if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode"]) || !isCombatMode(rules.mode)) throw replayError();
+  const arenaId = options.arenaId ?? "the-pit";
+  if (!isArenaId(arenaId)) throw replayError();
   const seed = options.seed ?? 0;
   if (!isIntegerBetween(seed, 0, PIT_REPLAY_MAX_SEED)) throw replayError();
   return {
     fighters: [fighters[0], fighters[1]],
     rules: { mode: rules.mode },
+    arenaId,
     seed,
   };
 }
@@ -331,7 +360,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     value.version !== PIT_REPLAY_VERSION ||
     value.engineVersion !== PIT_STATE_VERSION ||
     value.tickRate !== PIT_TICK_RATE ||
-    value.arenaId !== "the-pit" ||
+    !isArenaId(value.arenaId) ||
     value.encoding !== PIT_REPLAY_ENCODING ||
     !isIntegerBetween(value.seed, 0, PIT_REPLAY_MAX_SEED)) {
     return null;
@@ -383,7 +412,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     version: PIT_REPLAY_VERSION,
     engineVersion: PIT_STATE_VERSION,
     tickRate: PIT_TICK_RATE,
-    arenaId: "the-pit",
+    arenaId: value.arenaId,
     encoding: PIT_REPLAY_ENCODING,
     seed: value.seed,
     rules: { mode: value.rules.mode },
@@ -403,22 +432,82 @@ function structuralReplay(value: unknown): PitReplay | null {
   return replay;
 }
 
-function validateAndReplay(value: unknown): ValidatedReplay | null {
-  const replay = structuralReplay(value);
-  if (!replay) return null;
-  let state = createPitCombatState(replay.fighters[0], replay.fighters[1], replay.rules);
+type PitCombatStepper = (
+  state: PitCombatState,
+  inputs: readonly [PitInput, PitInput],
+) => PitCombatState;
+
+function simulateReplay(
+  replay: PitReplay,
+  step: PitCombatStepper = stepPitCombat,
+): { state: PitCombatState; ticks: number } | null {
+  let state = createPitCombatState(replay.fighters[0], replay.fighters[1], {
+    ...replay.rules,
+    arenaId: replay.arenaId,
+  });
   let processedTicks = 0;
   for (const [runTicks, inputPair] of replay.segments) {
     const inputs = decodePitReplayInputs(inputPair);
     for (let runTick = 0; runTick < runTicks; runTick += 1) {
       if (state.phase === "match-over") return null;
-      state = stepPitCombat(state, inputs);
+      state = step(state, inputs);
       processedTicks += 1;
     }
   }
-  const actualMetadata = metadataFor(state, processedTicks);
+  return { state, ticks: processedTicks };
+}
+
+function migratePitReplayV2(value: unknown): PitReplay | null {
+  if (
+    !isRecord(value) ||
+    !hasOnlyKeys(value, REPLAY_KEYS) ||
+    value.version !== 2 ||
+    value.engineVersion !== 2 ||
+    value.tickRate !== PIT_TICK_RATE ||
+    value.arenaId !== "the-pit" ||
+    value.encoding !== "input-rle-v2" ||
+    !Array.isArray(value.fighters) ||
+    value.fighters.length !== 2 ||
+    (value.fighters[0] !== "jungle-hunter" && value.fighters[0] !== "berserker") ||
+    (value.fighters[1] !== "jungle-hunter" && value.fighters[1] !== "berserker") ||
+    value.fighters[0] === value.fighters[1]
+  ) {
+    return null;
+  }
+  const converted = structuralReplay({
+    ...value,
+    version: PIT_REPLAY_VERSION,
+    engineVersion: PIT_STATE_VERSION,
+    encoding: PIT_REPLAY_ENCODING,
+  });
+  if (!converted) return null;
+  const legacySimulation = simulateReplay(
+    converted,
+    stepPitCombatV2Compatibility,
+  );
+  if (!legacySimulation) return null;
+  const legacyMetadata: PitReplayMetadata = {
+    ...metadataFor(legacySimulation.state, legacySimulation.ticks),
+    checksum: checksumCombatStateForV2(legacySimulation.state),
+  };
+  if (!equalMetadata(converted.metadata, legacyMetadata)) return null;
+
+  const currentSimulation = simulateReplay(converted);
+  if (!currentSimulation) return null;
+  return {
+    ...converted,
+    metadata: metadataFor(currentSimulation.state, currentSimulation.ticks),
+  };
+}
+
+function validateAndReplay(value: unknown): ValidatedReplay | null {
+  const replay = migratePitReplayV2(value) ?? structuralReplay(value);
+  if (!replay) return null;
+  const simulated = simulateReplay(replay);
+  if (!simulated) return null;
+  const actualMetadata = metadataFor(simulated.state, simulated.ticks);
   if (!equalMetadata(replay.metadata, actualMetadata)) return null;
-  return { replay, finalState: state };
+  return { replay, finalState: simulated.state };
 }
 
 export function normalizePitReplay(value: unknown): PitReplay | null {
@@ -459,7 +548,7 @@ class ReplayRecorder implements PitReplayRecorder {
     this.state = createPitCombatState(
       this.options.fighters[0],
       this.options.fighters[1],
-      this.options.rules,
+      { ...this.options.rules, arenaId: this.options.arenaId },
     );
   }
 
@@ -494,7 +583,7 @@ class ReplayRecorder implements PitReplayRecorder {
       version: PIT_REPLAY_VERSION,
       engineVersion: PIT_STATE_VERSION,
       tickRate: PIT_TICK_RATE,
-      arenaId: "the-pit",
+      arenaId: this.options.arenaId,
       encoding: PIT_REPLAY_ENCODING,
       seed: this.options.seed,
       rules: { ...this.options.rules },

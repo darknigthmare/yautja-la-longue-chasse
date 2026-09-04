@@ -50,7 +50,13 @@ export type RouteId =
   | "mining-gantry"
   | "sanctum-floor"
   | "vent-flank"
-  | "ruin-highline";
+  | "ruin-highline"
+  | "volcano-forge-route"
+  | "swamp-brood-route"
+  | "desert-crypt-route"
+  | "ocean-pressure-route"
+  | "fungal-memory-route"
+  | "ruins-oracle-route";
 
 export interface WorldPlatform extends WorldRect {
   id: string;

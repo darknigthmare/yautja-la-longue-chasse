@@ -20,8 +20,10 @@ import { ExplorationMap } from "./ExplorationMap";
 import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
 import { PilotExplorationMap } from "./PilotExplorationMap";
 import { IceExplorationMap } from "./IceExplorationMap";
+import { ExpansionExplorationMap } from "./ExpansionExplorationMap";
 import { drawIceRegionBackdrop, drawIceRegionPlatform, drawIceRegionDevices, ICE_REGION_TEXTURE_PATHS, type IceRegionTextures } from "./iceExplorationRendering";
 import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";
+import { isExpansionExplorationMission } from "./systems/expansionExplorationRegions";
 import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { PILOT_MISSION_ID } from "./systems/metroidvaniaPilot";
@@ -104,18 +106,30 @@ import {
   type GearEffectEvent,
 } from "./systems/arsenal";
 import {
+  HUNT_MELEE_DODGE_INVULNERABILITY_SECONDS,
+  HUNT_MELEE_EXECUTION_HEALTH_RATIO,
   canHuntMeleeHitTarget,
+  canHuntMeleeParry,
   cancelHuntMeleeAttack,
+  consumeHuntMeleeParry,
   createHuntMeleeState,
   currentHuntMeleeAttack,
+  huntMeleeDodgeVelocity,
   huntMeleeHitboxOverlaps,
+  isHuntMeleeDodgeInvulnerable,
   huntMeleeMovementMultiplier,
   huntMeleePhaseLabel,
+  huntMeleeStaminaMultiplier,
   normalizeHuntMeleeState,
   registerHuntMeleeTargetHit,
   requestHuntMeleeAttack,
+  requestHuntMeleeDodge,
+  requestHuntMeleeParry,
+  requestHuntMeleeTechniqueAttack,
   resolveHuntMeleeHitbox,
   stepHuntMeleeCombat,
+  stepHuntMeleeVerticalReaction,
+  type HuntMeleeActionKind,
   type HuntMeleeState,
 } from "./systems/huntMeleeCombat";
 import {
@@ -358,6 +372,8 @@ interface EnemyState extends Vec2 {
   hitFlash: number;
   hitStunSeconds: number;
   knockbackVelocityX: number;
+  knockbackVelocityY: number;
+  knockbackRestY: number;
   scanned: boolean;
   alive: boolean;
   deathAnimation: number;
@@ -1157,6 +1173,8 @@ function makeEnemy(
     hitFlash: 0,
     hitStunSeconds: 0,
     knockbackVelocityX: 0,
+    knockbackVelocityY: 0,
+    knockbackRestY: spawnY,
     scanned: false,
     alive: true,
     deathAnimation: 0,
@@ -1404,6 +1422,8 @@ function makeGameState(
       hitFlash: 0,
       hitStunSeconds: 0,
       knockbackVelocityX: 0,
+      knockbackVelocityY: 0,
+      knockbackRestY: FLOOR_Y - bossHeight,
       scanned: false,
       alive: true,
       deathAnimation: 0,
@@ -1463,45 +1483,16 @@ function makeGameState(
 }
 
 function clonePlayerState(player: PlayerState): PlayerState {
-  const savedMelee = (player as PlayerState & { melee?: unknown }).melee;
-  const melee =
-    savedMelee &&
-    typeof savedMelee === "object" &&
-    !Array.isArray(savedMelee) &&
-    ["idle", "startup", "active", "recovery"].includes(
-      String((savedMelee as { phase?: unknown }).phase),
-    )
-      ? (savedMelee as HuntMeleeState)
-      : null;
+  const melee = normalizeHuntMeleeState(
+    (player as PlayerState & { melee?: unknown }).melee,
+  );
   return {
     ...player,
     aimPoint: { ...player.aimPoint },
     weaponAmmo: [...player.weaponAmmo] as [number, number],
     dreadAngles: [...player.dreadAngles],
     dreadVelocities: [...player.dreadVelocities],
-    melee: melee
-      ? {
-          ...melee,
-          hitTargetIds: Array.isArray(melee.hitTargetIds)
-            ? [...melee.hitTargetIds]
-            : [],
-          profile: melee.profile ? { ...melee.profile } : null,
-          queuedProfile: melee.queuedProfile
-            ? { ...melee.queuedProfile }
-            : null,
-        }
-      : {
-          phase: "idle",
-          phaseRemainingSeconds: 0,
-          comboIndex: 0,
-          actionSequence: 0,
-          facing: 1,
-          buffered: false,
-          queuedFacing: 1,
-          hitTargetIds: [],
-          profile: null,
-          queuedProfile: null,
-        },
+    melee,
   };
 }
 
@@ -1515,6 +1506,12 @@ function cloneEnemyState(enemy: EnemyState): EnemyState {
     knockbackVelocityX: Number.isFinite(enemy.knockbackVelocityX)
       ? enemy.knockbackVelocityX
       : 0,
+    knockbackVelocityY: Number.isFinite(enemy.knockbackVelocityY)
+      ? enemy.knockbackVelocityY
+      : 0,
+    knockbackRestY: Number.isFinite(enemy.knockbackRestY)
+      ? enemy.knockbackRestY
+      : enemy.y,
   };
 }
 
@@ -2017,16 +2014,7 @@ function restoreCheckpoint(
   player.aiming = false;
   player.weaponChargeSeconds = 0;
   if (mode === "retry") {
-    player.melee = {
-      ...player.melee,
-      phase: "idle",
-      phaseRemainingSeconds: 0,
-      comboIndex: 0,
-      buffered: false,
-      hitTargetIds: [],
-      profile: null,
-      queuedProfile: null,
-    };
+    player.melee = cancelHuntMeleeAttack(player.melee);
     player.attackFlash = 0;
     player.meleeCooldown = 0;
   }
@@ -5183,8 +5171,13 @@ function renderGame(
       state.player.melee.phase === "active" ? "#f4fff9" : "#a7c8bb";
     context.font = "800 10px system-ui, sans-serif";
     context.textAlign = "center";
+    const comboSuffix =
+      state.player.melee.actionKind === "light" &&
+      state.player.melee.phase !== "idle"
+        ? `  ${state.player.melee.comboIndex + 1}/3`
+        : "";
     context.fillText(
-      `${meleePhaseLabel}  ${state.player.melee.comboIndex + 1}/3`,
+      `${meleePhaseLabel}${comboSuffix}`,
       state.player.x + state.player.width / 2,
       state.player.y - 12,
     );
@@ -6053,6 +6046,203 @@ function playerMelee(
   player.meleeCooldown = request.state.phaseRemainingSeconds;
 }
 
+function nearestHuntMeleeTarget(
+  state: GameState,
+  maximumGapPx: number,
+): EnemyState | null {
+  const player = state.player;
+  const playerCenterX = player.x + player.width / 2;
+  const playerCenterY = player.y + player.height / 2;
+  const candidates = [
+    ...state.enemies.filter((enemy) => enemy.alive && enemy.active),
+    ...(state.boss.active && state.boss.alive ? [state.boss] : []),
+  ]
+    .map((enemy) => {
+      const enemyCenterX = enemy.x + enemy.width / 2;
+      const enemyCenterY = enemy.y + enemy.height / 2;
+      const forwardDistance = (enemyCenterX - playerCenterX) * player.facing;
+      const horizontalGap = Math.max(
+        0,
+        Math.abs(enemyCenterX - playerCenterX) -
+          (player.width + enemy.width) / 2,
+      );
+      return {
+        enemy,
+        forwardDistance,
+        horizontalGap,
+        verticalDistance: Math.abs(enemyCenterY - playerCenterY),
+      };
+    })
+    .filter(
+      ({ enemy, forwardDistance, horizontalGap, verticalDistance }) =>
+        forwardDistance >= -Math.min(18, enemy.width * 0.18) &&
+        horizontalGap <= maximumGapPx &&
+        verticalDistance <= (player.height + enemy.height) * 0.62,
+    )
+    .sort((left, right) => {
+      if (left.horizontalGap !== right.horizontalGap) {
+        return left.horizontalGap - right.horizontalGap;
+      }
+      return left.enemy.id < right.enemy.id
+        ? -1
+        : left.enemy.id > right.enemy.id
+          ? 1
+          : 0;
+    });
+  return candidates[0]?.enemy ?? null;
+}
+
+function playerMeleeTechnique(
+  state: GameState,
+  loadout: Loadout,
+  inventory: PlayerInventory,
+  actionKind: Exclude<HuntMeleeActionKind, "light">,
+  target: EnemyState | null,
+): void {
+  const player = state.player;
+  const activeWeaponId = equippedWeapon(
+    loadout,
+    player.activeWeaponSlot,
+  ).id;
+  const meleeWeaponId: WeaponId =
+    activeWeaponId === "combistick" &&
+    player.weaponAmmo[player.activeWeaponSlot] > 0
+      ? "combistick"
+      : "wristblades";
+  const meleeStats = effectiveWeaponStats(
+    meleeWeaponId,
+    inventory.weaponUpgrades[meleeWeaponId],
+  );
+  const meleeAttack = resolveHunterWeaponAttack(
+    meleeWeaponId,
+    meleeStats,
+  );
+  const armor = effectiveArmorStats(
+    loadout.armorId,
+    inventory.armorUpgrades[loadout.armorId],
+  );
+  const staminaCost =
+    meleeAttack.staminaCost * huntMeleeStaminaMultiplier(actionKind);
+  if (
+    player.stamina < staminaCost ||
+    state.phase === "dead" ||
+    state.phase === "finished"
+  ) {
+    if (player.stamina < staminaCost) {
+      announce(state, "Endurance insuffisante pour cette technique.", 1.4);
+    }
+    return;
+  }
+
+  const request = requestHuntMeleeTechniqueAttack(
+    player.melee,
+    {
+      weaponId: meleeWeaponId,
+      damage: meleeAttack.damage * armor.meleeDamageMultiplier,
+      cooldownSeconds: meleeAttack.cooldownSeconds,
+      reachPx: meleeAttack.meleeReachPx,
+      maxTargetHits: meleeAttack.maxTargetHits,
+      noiseLoudness: meleeAttack.noiseLoudness,
+      noiseRadius: meleeAttack.noiseRadius,
+    },
+    player.facing,
+    actionKind,
+    {
+      grounded: player.grounded,
+      targetId: target?.id ?? null,
+      targetHealthRatio: target ? target.health / target.maxHealth : null,
+      targetIsBoss: target?.boss ?? false,
+      targetInRange: target !== null,
+      targetTelegraphing: Boolean(
+        target && (target.telegraph > 0 || target.pendingAttackId),
+      ),
+    },
+  );
+  if (!request.accepted) return;
+
+  forceDecloak(state);
+  player.stamina = Math.max(0, player.stamina - staminaCost);
+  player.melee = request.state;
+  player.meleeCooldown = request.state.phaseRemainingSeconds;
+  if (actionKind === "aerial" && player.climbing) {
+    player.climbing = false;
+    player.climbZoneId = null;
+    player.velocityY = Math.max(player.velocityY, 90);
+  }
+  const labels: Readonly<Record<Exclude<HuntMeleeActionKind, "light">, string>> = {
+    heavy: "Attaque lourde armée.",
+    aerial: "Frappe aérienne engagée.",
+    "guard-break": "Garde adverse brisée.",
+    throw: "Projection verrouillée.",
+    execution: "Exécution rituelle engagée.",
+  };
+  announce(state, labels[actionKind], 1.1);
+}
+
+function playerMeleeParry(state: GameState): void {
+  const staminaCost = 8;
+  if (state.player.stamina < staminaCost) {
+    announce(state, "Endurance insuffisante pour parer.", 1.2);
+    return;
+  }
+  const request = requestHuntMeleeParry(state.player.melee);
+  if (!request.accepted) return;
+  forceDecloak(state);
+  state.player.stamina -= staminaCost;
+  state.player.weaponChargeSeconds = 0;
+  state.player.melee = request.state;
+  announce(state, "Parade armée : réponds pendant l'impact.", 1.1);
+}
+
+function playerMeleeDodge(
+  state: GameState,
+  direction: -1 | 1,
+): void {
+  const staminaCost = 10;
+  if (state.player.stamina < staminaCost) {
+    announce(state, "Endurance insuffisante pour esquiver.", 1.2);
+    return;
+  }
+  const request = requestHuntMeleeDodge(state.player.melee, direction);
+  if (!request.accepted) return;
+  forceDecloak(state);
+  state.player.stamina -= staminaCost;
+  state.player.melee = request.state;
+  state.player.invulnerability = Math.max(
+    state.player.invulnerability,
+    HUNT_MELEE_DODGE_INVULNERABILITY_SECONDS,
+  );
+  state.player.velocityX = huntMeleeDodgeVelocity(request.state);
+  state.jumpAssist = freshJumpAssistState({ requireRelease: true });
+  announce(state, "Esquive de chasse.", 0.8);
+}
+
+function resolvePlayerMeleeParry(
+  state: GameState,
+  attacker: EnemyState,
+): boolean {
+  if (!canHuntMeleeParry(state.player.melee)) return false;
+  state.player.melee = consumeHuntMeleeParry(state.player.melee);
+  const playerCenterX = state.player.x + state.player.width / 2;
+  const attackerCenterX = attacker.x + attacker.width / 2;
+  const pushDirection: -1 | 1 = attackerCenterX >= playerCenterX ? 1 : -1;
+  const reactionScale = attacker.boss ? 0.55 : 1;
+  attacker.hitStunSeconds = Math.max(
+    attacker.hitStunSeconds,
+    0.52 * reactionScale,
+  );
+  attacker.knockbackVelocityX = pushDirection * 340 * reactionScale;
+  attacker.velocityX = attacker.knockbackVelocityX;
+  attacker.hitFlash = Math.max(attacker.hitFlash, 0.18);
+  attacker.telegraph = 0;
+  attacker.pendingAttackId = null;
+  attacker.attackCooldown = Math.max(attacker.attackCooldown, 0.65);
+  queueSound(state, "slash");
+  if (state.screenShakeEnabled) state.screenShake = Math.max(state.screenShake, 5);
+  announce(state, attacker.boss ? "Parade Apex réussie." : "Parade parfaite.", 1.2);
+  return true;
+}
+
 function updatePlayerMeleeCombat(
   state: GameState,
   mission: MissionDefinition,
@@ -6069,6 +6259,12 @@ function updatePlayerMeleeCombat(
 
   const meleeStep = stepHuntMeleeCombat(player.melee, delta);
   player.melee = meleeStep.state;
+  if (isHuntMeleeDodgeInvulnerable(player.melee)) {
+    player.invulnerability = Math.max(
+      player.invulnerability,
+      delta + Number.EPSILON * 8,
+    );
+  }
   player.meleeCooldown =
     player.melee.phase === "idle" ? 0 : player.melee.phaseRemainingSeconds;
   player.attackFlash =
@@ -6127,7 +6323,10 @@ function updatePlayerMeleeCombat(
   for (const enemy of targets) {
     if (!canHuntMeleeHitTarget(player.melee, enemy.id)) break;
     connected = true;
-    damageEnemy(state, mission, enemy, attack.damage, "melee");
+    const resolvedDamage = attack.isExecution
+      ? Math.max(attack.damage, enemy.health)
+      : attack.damage;
+    damageEnemy(state, mission, enemy, resolvedDamage, "melee");
     player.melee = registerHuntMeleeTargetHit(player.melee, enemy.id);
     if (!enemy.alive) continue;
 
@@ -6138,16 +6337,33 @@ function updatePlayerMeleeCombat(
     );
     enemy.knockbackVelocityX =
       player.melee.facing * attack.knockbackSpeed * reactionScale;
+    if (Math.abs(enemy.knockbackVelocityY) <= 0.01) {
+      enemy.knockbackRestY = enemy.y;
+    }
+    enemy.knockbackVelocityY =
+      attack.verticalKnockbackSpeed * reactionScale;
     enemy.velocityX = enemy.knockbackVelocityX;
     enemy.hitFlash = Math.max(enemy.hitFlash, enemy.hitStunSeconds);
     enemy.telegraph = 0;
     enemy.pendingAttackId = null;
   }
+  if (connected && attack.kind === "aerial") {
+    player.velocityY = Math.min(player.velocityY, -285);
+    player.aerialBoostUsed = false;
+  }
+  if (connected && attack.isExecution) {
+    announce(state, "Exécution accomplie : prise honorable confirmée.", 1.8);
+  }
   if (connected && state.screenShakeEnabled) {
-    state.screenShake = Math.max(
-      state.screenShake,
-      player.melee.comboIndex === 2 ? 8 : 5,
-    );
+    const impactShake =
+      attack.isExecution || attack.isThrow
+        ? 12
+        : attack.kind === "heavy" || attack.breaksGuard
+          ? 9
+          : player.melee.comboIndex === 2
+            ? 8
+            : 5;
+    state.screenShake = Math.max(state.screenShake, impactShake);
   }
 }
 
@@ -6160,23 +6376,48 @@ function stepEnemyMeleeHitReaction(
   const hitStunSeconds = Number.isFinite(enemy.hitStunSeconds)
     ? Math.max(0, enemy.hitStunSeconds)
     : 0;
-  if (hitStunSeconds <= 0) {
+  const knockbackVelocityX = Number.isFinite(enemy.knockbackVelocityX)
+    ? enemy.knockbackVelocityX
+    : 0;
+  const knockbackVelocityY = Number.isFinite(enemy.knockbackVelocityY)
+    ? enemy.knockbackVelocityY
+    : 0;
+  const knockbackRestY = Number.isFinite(enemy.knockbackRestY)
+    ? enemy.knockbackRestY
+    : enemy.y;
+  const airborne = enemy.y < knockbackRestY - 0.01;
+  if (
+    hitStunSeconds <= 0 &&
+    Math.abs(knockbackVelocityX) <= 0.01 &&
+    Math.abs(knockbackVelocityY) <= 0.01 &&
+    !airborne
+  ) {
     enemy.hitStunSeconds = 0;
     enemy.knockbackVelocityX = 0;
+    enemy.knockbackVelocityY = 0;
+    enemy.y = knockbackRestY;
     return false;
   }
 
-  const reactionDelta = Math.min(Math.max(0, delta), hitStunSeconds);
-  const knockbackVelocity = Number.isFinite(enemy.knockbackVelocityX)
-    ? enemy.knockbackVelocityX
-    : 0;
+  const reactionDelta = Math.max(0, delta);
   enemy.x = clamp(
-    enemy.x + knockbackVelocity * reactionDelta,
+    enemy.x + knockbackVelocityX * reactionDelta,
     minimumX,
     maximumX,
   );
   enemy.knockbackVelocityX =
-    knockbackVelocity * Math.exp(-8.5 * reactionDelta);
+    knockbackVelocityX * Math.exp(-8.5 * reactionDelta);
+  const verticalReaction = stepHuntMeleeVerticalReaction(
+    {
+      y: enemy.y,
+      velocityY: knockbackVelocityY,
+      restY: knockbackRestY,
+    },
+    reactionDelta,
+  );
+  enemy.y = verticalReaction.state.y;
+  enemy.knockbackVelocityY = verticalReaction.state.velocityY;
+  enemy.knockbackRestY = verticalReaction.state.restY;
   enemy.velocityX = enemy.knockbackVelocityX;
   enemy.hitStunSeconds = Math.max(0, hitStunSeconds - delta);
   enemy.telegraph = 0;
@@ -6943,6 +7184,11 @@ function updatePlayer(
     (isHeld(input, "right") ? 1 : 0) - (isHeld(input, "left") ? 1 : 0);
   const climbAxis =
     (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
+  const meleeInputQueued = input.pressed.has("melee");
+  const dodgeRequested =
+    player.grounded &&
+    isHeld(input, "down") &&
+    input.pressed.has("jump");
   if (consume(input, "weaponOne")) {
     selectWeaponSlot(state, loadout, 0);
   }
@@ -7078,20 +7324,27 @@ function updatePlayer(
   const actionLocked = state.trophyExtracting || victoryLocked;
   updatePlayerMeleeCombat(state, mission, delta, actionLocked);
 
+  const dodgeVelocity = huntMeleeDodgeVelocity(player.melee);
   const targetVelocity =
-    (actionLocked ? 0 : moveAxis) *
-    300 *
-    huntMeleeMovementMultiplier(player.melee) *
-    armor.moveSpeedMultiplier *
-    movementSurface.movementMultiplier *
-    hazardMovementMultiplier;
+    dodgeVelocity !== 0
+      ? dodgeVelocity *
+        armor.moveSpeedMultiplier *
+        movementSurface.movementMultiplier *
+        hazardMovementMultiplier
+      : (actionLocked ? 0 : moveAxis) *
+        300 *
+        huntMeleeMovementMultiplier(player.melee) *
+        armor.moveSpeedMultiplier *
+        movementSurface.movementMultiplier *
+        hazardMovementMultiplier;
   player.velocityX +=
     (targetVelocity - player.velocityX) * Math.min(1, delta * 13);
   if (
     !actionLocked &&
     moveAxis !== 0 &&
     !player.aiming &&
-    player.melee.phase === "idle"
+    player.melee.phase === "idle" &&
+    player.melee.defensePhase === "neutral"
   ) {
     player.facing = moveAxis > 0 ? 1 : -1;
   }
@@ -7113,6 +7366,8 @@ function updatePlayer(
   );
   if (
     !actionLocked &&
+    !meleeInputQueued &&
+    !dodgeRequested &&
     climbAxis !== 0 &&
     currentClimbZone &&
     Math.abs(moveAxis) < 0.5
@@ -7129,14 +7384,104 @@ function updatePlayer(
     player.climbZoneId = null;
   }
 
-  updatePlayerJump(state, input, delta, actionLocked);
+  if (!actionLocked && dodgeRequested) {
+    consume(input, "jump");
+    const dodgeDirection: -1 | 1 =
+      moveAxis === 0 ? (player.facing === 1 ? -1 : 1) : moveAxis > 0 ? 1 : -1;
+    playerMeleeDodge(state, dodgeDirection);
+  } else {
+    updatePlayerJump(state, input, delta, actionLocked);
+  }
+
   if (consume(input, "melee") && !actionLocked) {
-    playerMelee(state, mission, loadout, inventory);
+    if (player.aiming && player.grounded) {
+      playerMeleeParry(state);
+    } else if (!player.grounded) {
+      playerMeleeTechnique(
+        state,
+        loadout,
+        inventory,
+        "aerial",
+        null,
+      );
+    } else {
+      const activeWeaponId = equippedWeapon(
+        loadout,
+        player.activeWeaponSlot,
+      ).id;
+      const meleeWeaponId: WeaponId =
+        activeWeaponId === "combistick" &&
+        player.weaponAmmo[player.activeWeaponSlot] > 0
+          ? "combistick"
+          : "wristblades";
+      const contextualMeleeStats = effectiveWeaponStats(
+        meleeWeaponId,
+        inventory.weaponUpgrades[meleeWeaponId],
+      );
+      const contextualReach = resolveHunterWeaponAttack(
+        meleeWeaponId,
+        contextualMeleeStats,
+      ).meleeReachPx;
+      const closeTarget = nearestHuntMeleeTarget(
+        state,
+        contextualReach * 0.62,
+      );
+      const guardTarget = nearestHuntMeleeTarget(
+        state,
+        contextualReach * 0.96,
+      );
+      if (isHeld(input, "up")) {
+        playerMeleeTechnique(
+          state,
+          loadout,
+          inventory,
+          "throw",
+          closeTarget?.boss ? null : closeTarget,
+        );
+      } else if (isHeld(input, "down")) {
+        if (
+          closeTarget &&
+          !closeTarget.boss &&
+          closeTarget.health / closeTarget.maxHealth <=
+            HUNT_MELEE_EXECUTION_HEALTH_RATIO
+        ) {
+          playerMeleeTechnique(
+            state,
+            loadout,
+            inventory,
+            "execution",
+            closeTarget,
+          );
+        } else if (
+          guardTarget &&
+          (guardTarget.telegraph > 0 || guardTarget.pendingAttackId)
+        ) {
+          playerMeleeTechnique(
+            state,
+            loadout,
+            inventory,
+            "guard-break",
+            guardTarget,
+          );
+        } else {
+          playerMeleeTechnique(
+            state,
+            loadout,
+            inventory,
+            "heavy",
+            null,
+          );
+        }
+      } else {
+        playerMelee(state, mission, loadout, inventory);
+      }
+    }
   }
   if (
     consume(input, "weapon") &&
     !actionLocked &&
-    player.melee.phase === "idle"
+    player.melee.phase === "idle" &&
+    player.melee.defensePhase === "neutral"
   ) {
     playerWeapon(state, mission, loadout, inventory);
   }
@@ -7352,7 +7697,9 @@ function updateRegularEnemy(
   enemy.hitFlash = Math.max(0, enemy.hitFlash - delta);
   if (
     ((enemy.hitStunSeconds ?? 0) > 0 ||
-      Math.abs(enemy.knockbackVelocityX ?? 0) > 0.01) &&
+      Math.abs(enemy.knockbackVelocityX ?? 0) > 0.01 ||
+      Math.abs(enemy.knockbackVelocityY ?? 0) > 0.01 ||
+      enemy.y < (enemy.knockbackRestY ?? enemy.y) - 0.01) &&
     stepEnemyMeleeHitReaction(
       enemy,
       delta,
@@ -7624,7 +7971,9 @@ function updateRegularEnemy(
     attackStep.executedAttackId === REGULAR_MELEE_ATTACK_ID
   ) {
     if (targetDistance < meleeRange) {
-      hurtPlayer(state, enemy.damage, mission);
+      if (!resolvePlayerMeleeParry(state, enemy)) {
+        hurtPlayer(state, enemy.damage, mission);
+      }
       emitNoise(state, "melee", 0.6, 360, selfPosition, enemy.id);
     }
   }
@@ -7766,7 +8115,9 @@ function executeBossAttack(
     Math.abs(dx) < 165 &&
     Math.abs(dy) < 135
   ) {
-    hurtPlayer(state, damage, mission);
+    if (!resolvePlayerMeleeParry(state, boss)) {
+      hurtPlayer(state, damage, mission);
+    }
   } else if (attack.behavior === "charge") {
     boss.velocityX = boss.facing * 760;
     if (Math.abs(dx) < 230 && Math.abs(dy) < 150) {
@@ -7883,7 +8234,9 @@ function updateBoss(
   boss.hitFlash = Math.max(0, boss.hitFlash - delta);
   const bossReacting =
     ((boss.hitStunSeconds ?? 0) > 0 ||
-      Math.abs(boss.knockbackVelocityX ?? 0) > 0.01) &&
+      Math.abs(boss.knockbackVelocityX ?? 0) > 0.01 ||
+      Math.abs(boss.knockbackVelocityY ?? 0) > 0.01 ||
+      boss.y < (boss.knockbackRestY ?? boss.y) - 0.01) &&
     stepEnemyMeleeHitReaction(
       boss,
       delta,
@@ -10007,7 +10360,8 @@ export default function HuntCanvas({
           Jeu de chasse en vue latérale. Utilise {controlActionShortcut("hunt.moveLeft", activeBindings)}
           {" et "}{controlActionShortcut("hunt.moveRight", activeBindings)} pour te déplacer,
           {" "}{controlActionShortcut("hunt.jump", activeBindings)} pour sauter et
-          {" "}{controlActionShortcut("hunt.melee", activeBindings)} pour attaquer.
+          {" "}{controlActionShortcut("hunt.melee", activeBindings)} pour les lames.
+          Les directions et la visée combinées aux lames déclenchent les techniques avancées.
         </canvas>
 
         {!assetsReady ? (
@@ -10092,6 +10446,14 @@ export default function HuntCanvas({
               {mission.id === ICE_MISSION_ID && (
                 <IceExplorationMap progress={ui.exploration} playerX={ui.playerX} playerY={ui.playerY} />
               )}
+              {isExpansionExplorationMission(mission.id) && (
+                <ExpansionExplorationMap
+                  missionId={mission.id}
+                  progress={ui.exploration}
+                  playerX={ui.playerX}
+                  playerY={ui.playerY}
+                />
+              )}
               <ExplorationMap
                 missionId={mission.id}
                 playerX={ui.playerX}
@@ -10166,7 +10528,7 @@ export default function HuntCanvas({
             type="button"
             {...makeHoldHandlers("up")}
             style={styles.controlButton}
-            aria-label="Grimper"
+            aria-label="Grimper — maintenir avec Lames pour projeter"
           >
             ⇧
           </button>
@@ -10182,7 +10544,7 @@ export default function HuntCanvas({
             type="button"
             {...makeHoldHandlers("down")}
             style={styles.controlButton}
-            aria-label="Descendre d’un arbre ou d’une liane"
+            aria-label="Descendre — maintenir avec Lames pour lourde ou exécution, avec Saut pour esquiver"
           >
             ⇩
           </button>
@@ -10198,7 +10560,7 @@ export default function HuntCanvas({
 
         <div style={styles.actionControls} role="group" aria-label="Actions tactiles">
           <ActionButton
-            label="Lames"
+            label="Lames / technique"
             shortcut={controlActionShortcut("hunt.melee", activeBindings)}
             onPress={() => pressAction("melee")}
           />
@@ -10293,7 +10655,11 @@ export default function HuntCanvas({
         <span>{controlActionShortcut("hunt.moveLeft", activeBindings)}/{controlActionShortcut("hunt.moveRight", activeBindings)} · déplacement</span>
         <span>{controlActionShortcut("hunt.moveUp", activeBindings)}/{controlActionShortcut("hunt.moveDown", activeBindings)} · grimpe</span>
         <span>{controlActionShortcut("hunt.jump", activeBindings)} · saut (maintenir : plus haut)</span>
-        <span>{controlActionShortcut("hunt.melee", activeBindings)}/clic · lames</span>
+        <span>{controlActionShortcut("hunt.melee", activeBindings)}/clic · lames légères ou aériennes</span>
+        <span>{controlActionShortcut("hunt.moveDown", activeBindings)} + {controlActionShortcut("hunt.melee", activeBindings)} · lourde, brise-garde ou exécution contextuelle</span>
+        <span>{controlActionShortcut("hunt.moveUp", activeBindings)} + {controlActionShortcut("hunt.melee", activeBindings)} · projection rapprochée</span>
+        <span>{controlActionShortcut("hunt.aim", activeBindings)} + {controlActionShortcut("hunt.melee", activeBindings)} · parade</span>
+        <span>{controlActionShortcut("hunt.moveDown", activeBindings)} + {controlActionShortcut("hunt.jump", activeBindings)} · esquive</span>
         <span>{controlActionShortcut("hunt.aim", activeBindings)}/clic droit/LT · viser</span>
         <span>{controlActionShortcut("hunt.selectWeaponOne", activeBindings)}/{controlActionShortcut("hunt.selectWeaponTwo", activeBindings)} · sélectionner l’arme</span>
         <span>{controlActionShortcut("hunt.weaponPrimary", activeBindings)}/RT · utiliser {weapon.name}</span>

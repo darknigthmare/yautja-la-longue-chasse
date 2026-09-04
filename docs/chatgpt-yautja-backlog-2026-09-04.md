@@ -1,8 +1,8 @@
 # Backlog croisé du projet ChatGPT Yautja
 
-Date de reprise : 4 septembre 2026
+Date de reprise : 4–5 septembre 2026
 Projet ChatGPT : `Yautja The Long Hunt` (`g-p-6a96ebd8ad388191b2f2b48b2107abed`)
-Base de code auditée : `6338b489c29ee0838edb422f8c2faf0a5a5ffafa`
+Base initialement auditée : `6338b489c29ee0838edb422f8c2faf0a5a5ffafa` ; état fonctionnel mis à jour avec le lot de reprise du 5 septembre.
 
 ## Périmètre retrouvé
 
@@ -12,7 +12,7 @@ Le connecteur du projet ChatGPT expose deux conversations Yautja récentes dont
 le champ `projectId` correspond exactement au projet indiqué ci-dessus :
 
 1. `Audit état du jeu` : un tour utilisateur, audit général de la version live. La réponse dépasse la limite de lecture du connecteur après le début de la section Personnalisation ; les sections 1 à 8 sont exploitables et ont été recoupées avec le dépôt.
-2. `Concevoir le DLC` : quatre demandes utilisateur, spécification de THE PIT, des movesets de 53 Hunters et de 424 finishers. La conversation est complète. Les pièces jointes annoncées par ChatGPT ne sont pas récupérables depuis le connecteur et aucun master THE PIT n'existe dans ce dépôt.
+2. `Concevoir le DLC` : quatre demandes utilisateur, spécification de THE PIT, des movesets de 53 Hunters et de 424 finishers. La conversation est complète. Les pièces jointes annoncées par ChatGPT ne sont pas récupérables depuis le connecteur ; aucun fichier master issu de ces pièces jointes n'a pu être récupéré.
 
 L'énumération officielle est limitée aux 50 conversations récentes et ne fournit
 ni pagination, ni recherche, ni filtre `projectId`. L'archive disponible concerne
@@ -54,12 +54,13 @@ Son état croisé avec le dépôt est le suivant :
   cependant une structure trop proche fondée sur scans, éliminations, prises,
   boss et extraction ; leurs situations et conséquences doivent être davantage
   différenciées.
-- **Combat et exploration** : une tranche de mêlée légère déterministe est
-  intégrée à la campagne avec phases, combo de trois coups, hitboxes, hitstun et
-  knockback. Les attaques lourdes et aériennes, la parade, l'esquive, le
-  brise-garde, la projection et l'exécution restent à produire. Seules les
-  régions jungle et glace disposent d'une branche Metroidvania persistante ;
-  les six autres régions restent à produire.
+- **Combat et exploration** : la mêlée de chasse comprend désormais combo
+  léger, lourde, aérienne, parade, esquive, brise-garde, projection et exécution,
+  avec phases, hitboxes, hitstun, knockback, endurance et sauvegarde compatible.
+  Les huit chasses ont une branche Metroidvania persistante ; les six nouvelles
+  régions possèdent chacune danger, capacité, verrou, trophée, raccourci et carte
+  spécialisée. Les animations synchronisées, visuels propres et playtests sur
+  manette physique restent à produire.
 - **Version PC indépendante** : aucun exécutable natif, installateur signé,
   mise à jour, fonctionnement hors ligne garanti ou validation Steam Deck
   n'existe. Le runtime reste un jeu React/Canvas publié sur le Web.
@@ -74,14 +75,14 @@ Ce fichier suit le code réellement présent. Une promesse écrite dans un chat 
 | Hub physique modulaire | Fait structurellement en V21/V22 | Supports de trophées, simulacre d'entraînement et pupitre du sas à modulariser davantage ; vie de clan, dialogues, événements post-chasse, réactions aux trophées, évolution par rang et validation interactive | P2 |
 | Huit chasses | Fait pour la boucle principale | Objectifs, routes et conséquences plus distincts dans les cinq dernières chasses | P1 |
 | Sauvegarde campagne et chasse active | Avancé | Export intégral des sidecars, profils multiples, diagnostic et éventuel cloud | P2 |
-| Déplacement | Avancé | Rebord, glissade, descente rapide, chute contrôlée, attaque aérienne et attaque depuis paroi | P1 |
-| Mêlée de chasse | Partiel | Tranche légère déterministe livrée : startup/actif/récupération, combo de 3 coups, hitboxes directionnelles, hitstun et knockback sur ennemis et boss, interruptions. Restent les attaques lourde et aérienne, la parade, l’esquive, le brise-garde, la projection et l’exécution. | P0/P1 |
+| Déplacement | Avancé | Rebord, glissade, descente rapide, chute contrôlée et attaque depuis paroi ; la frappe aérienne avec rebond est livrée | P1 |
+| Mêlée de chasse | Avancé | Légère en combo de 3, lourde, aérienne, parade, esquive, brise-garde, projection avec réaction verticale et exécution sont intégrées avec fenêtres déterministes et contrôles clavier, manette et tactiles. Restent animations synchronisées, sons/haptique et playtests matériels. | P1/P2 |
 | Combat à distance | Partiel | Chaleur plasma, variantes de flèches, rappel manuel du disque et interactions avec le décor | P1 |
 | Furtivité et perception | Partiel avancé | Cadavres, lumières, fausses traces, imitation, panique et adaptation aux habitudes du joueur | P1 |
 | Honneur contextuel | Partiel | Statut armé, proie indigne/blessée, avertissement avant violation et interdits de clan | P1 |
 | IA | Partiel | Soins, VIP, renforts complexes, familles, conflits inter-espèces, pièges IA et vol de trophée | P1 |
 | Boss | Partiel | Structure complète d'étude et de contre-chasse pour chaque Apex, blessures localisées et routes détruites | P1 |
-| Metroidvania | Deux régions sur huit | Six branches régionales, capacités permanentes et cartes spécialisées | P1 |
+| Metroidvania | Huit régions sur huit | Les six nouvelles branches, capacités, revisites, trophées et cartes spécialisées sont intégrés. Restent les bitmaps propres aux biomes et le playtest physique complet de chaque saut. | P2 |
 | Art V19 | Partiel | 336 références de décor encore absentes, puis validation en mouvement | P1/P2 |
 | QA commerciale | Non validé | Parcours joués, performances, manettes physiques, Steam Deck, exécutable signé et droits de diffusion | P1 avant diffusion commerciale |
 | Version PC indépendante | Absente | Exécutable natif, installation et mise à jour signées, mode hors ligne, sauvegardes adaptées et validation matérielle | P1 si cette distribution est retenue |
@@ -91,11 +92,11 @@ Ce fichier suit le code réellement présent. Une promesse écrite dans un chat 
 ### Contrat du mode
 
 - Combat 2D un contre un, simulation fixe à 60 ticks.
-- Deux rounds gagnants, 99 secondes par round.
+- Deux rounds gagnants et 99 secondes par round dans les modes standard ; la Descente utilise une manche décisive et conserve la santé entre les étages.
 - Léger, moyen, lourd et technique ; garde haute/basse, projection et anti-air.
 - Startup, actif, récupération, hitboxes, hurtboxes, pushboxes, hitstun, blockstun, knockdown et relevée.
 - Échanges simultanés équitables, combo scaling et protections contre les boucles.
-- Modes CPU, versus local et entraînement libre sur une simulation déterministe.
+- Modes CPU, versus local, entraînement libre, Arcade, Circuit du clan et Descente sur le même cœur déterministe.
 - Progression et sauvegarde PIT séparées de la campagne ; récompenses uniquement cosmétiques.
 - Accès depuis le vaisseau, antichambre jouable et raccourci direct.
 
@@ -105,16 +106,19 @@ Ce fichier suit le code réellement présent. Une promesse écrite dans un chat 
 - [x] **PIT-02 — données isolées** : sidecar PIT et archive replay séparés, versionnés et liés au propriétaire ; gestion des conflits, idempotence, verrou Web Locks avec lease de secours stabilisé, réparation verrouillée des archives corrompues, 23 actions configurables J1/J2/pause et migration des commandes V1 ; enregistrement compact des entrées résolues puis relecture déterministe sans statistiques ni récompense. Parcours navigateur vérifié jusqu’à ARCHIVE RESTITUÉE.
 - [x] **PIT-03 — ressources de combat** : Traque, Rupture de chasse, Instinct de survie et camouflage lisible.
 - [x] **PIT-04 — entraînement professionnel** : frame data, hitboxes affichables, dummy réglable, enregistrement et lecture d'entrées.
-- [ ] **PIT-05 — première édition** : douze combattants, huit arènes, arcade individuel, histoire en cinq chapitres et Descente des fosses.
+- [x] **PIT-05 — première édition jouable** : douze combattants sélectionnables, deux boss Chronique non sélectionnables, huit arènes à quatre plans et douze parcours Arcade de huit combats sont intégrés. Le Circuit du clan comprend cinq chapitres et douze combats, avec le rival au combat 11 et Warlord au combat 12. La Descente comprend huit étages à branches, santé persistante, combats, reliques, récupérations et deux boss finaux possibles. Les douze combattants et les deux boss possèdent chacun une technique dédiée, avec entités, déclencheurs, mouvements, hitboxes, statuts et rendu propres selon l'arme. Les six modificateurs et quatre reliques de la Descente altèrent réellement les duels. Arcade conserve ses statistiques, son meilleur palier, ses complétions et ses cosmétiques ; Circuit et Descente sauvegardent et reprennent leurs runs complets en V5 après acquittement durable. Les récompenses restent uniquement cosmétiques. Le rendu des combattants repose encore sur des silhouettes vectorielles temporaires ; les sprites, animations synchronisées et finishers relèvent des lots PIT-06 et PIT-08.
 - [ ] **PIT-06 — finishers de la première édition** : huit séquences par combattant, variantes de victime et mode gore réduit.
 - [ ] **PIT-07 — roster complet** : 53 Hunters et 1 179 actions de movesets.
 - [ ] **PIT-08 — production longue** : 154 projections synchronisées, 424 finishers, 3 074 plaquettes, 12 296 clips et 38 054 poses originales.
 
 Les volumes PIT-07 et PIT-08 sont des budgets de production, pas des contenus déjà créés. Toute référence officielle reste privée ; seuls le code, les données et les visuels originaux ou générés pour le projet peuvent être publiés.
 
+Limite P2 connue : les parcours normaux tiennent dans le sidecar V5 de 64 Kio. De nombreux runs simultanés cumulant de longues séries de défaites peuvent atteindre ce plafond ; l'écriture échoue alors explicitement sans annoncer de progression.
+
 ## Ordre de reprise
 
-1. Étendre la mêlée des chasses avec lourde, aérienne, parade, esquive, brise-garde, projection et exécution.
-2. Étendre les six régions Metroidvania et leurs cartes.
-3. Enrichir furtivité, IA, honneur et structure des Apex.
-4. Terminer l'art, l'équilibrage, les playtests, les performances et la distribution native.
+1. Différencier les cinq chasses d'extension et enrichir furtivité, perception, IA, honneur et contre-chasse des Apex.
+2. Compléter le déplacement avancé et le combat à distance.
+3. Produire PIT-06 ; traiter PIT-07 et PIT-08 comme des programmes de production distincts et budgétés.
+4. Terminer les 336 visuels V19 manquants, les animations, l'équilibrage, les playtests matériels et les performances.
+5. Produire la version PC indépendante si cette distribution est retenue.

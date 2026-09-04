@@ -6,7 +6,7 @@ import ts from "typescript";
 import { build } from "esbuild";
 import { isBoundedJsonValue } from "../app/game/systems/activeHuntSave.ts";
 
-const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export * from "./app/game/systems/huntMeleeCombat"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
 const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
 const world = compiled.exports;

@@ -209,9 +209,9 @@ const iceAcquired = {
   discoveredRoomIds: ["ice-region-approach", "ice-region-shaft", "ice-region-relay", "ice-region-vault", "ice-region-return"],
 };
 
-test("exploration mission provenance separates every jungle and ice collection", () => {
-  for (const id of ["jungle-vey", "ice-cryostalker"]) assert.equal(isExplorationMission(id), true);
-  for (const id of [undefined, null, {}, true, 1, "volcano-bad-blood", "jungle-vey "]) {
+test("exploration mission provenance separates authored missions from malformed ids", () => {
+  for (const id of ["jungle-vey", "ice-cryostalker", "volcano-bad-blood"]) assert.equal(isExplorationMission(id), true);
+  for (const id of [undefined, null, {}, true, 1, "unknown-hunt", "jungle-vey "]) {
     assert.equal(isExplorationMission(id), false);
     assert.deepEqual(explorationForMission(id, acquired), defaultExplorationProgress());
   }

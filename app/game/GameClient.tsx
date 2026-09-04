@@ -12,7 +12,13 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import { useMenuGamepad } from "./useMenuGamepad";
-import type { PitMatchCompleteResult } from "./PitCanvas";
+import type {
+  PitMatchCompleteResult,
+  PitMatchPersistenceAck,
+  PitRunTransition,
+  PitStoredCircuitRuns,
+  PitStoredDescentRuns,
+} from "./PitCanvas";
 import { matchesControlAction } from "./systems/controlBindings";
 import { normalizePitReplay, type PitReplay } from "./systems/pitReplay";
 import {
@@ -26,11 +32,19 @@ import {
   applyPitResult,
   clearPitSave,
   createPitSave,
+  getPitCircuitRun,
+  getPitDescentRun,
   loadPitSave,
+  persistPitCircuitRun,
+  persistPitDescentRun,
   pitSaveStorageKey,
+  replacePitCircuitRun,
+  replacePitDescentRun,
   writePitSave,
   type PitMatchResult,
+  type PitSaveV5,
 } from "./systems/pitSave";
+import { PIT_FIRST_EDITION_FIGHTER_IDS } from "./systems/pitFirstEdition";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -822,6 +836,172 @@ function hydratePitReplayForOwner(
   return { replay: null, diagnostic };
 }
 
+function pitRunSnapshots(pitSave: PitSaveV5): {
+  circuitRuns: PitStoredCircuitRuns;
+  descentRuns: PitStoredDescentRuns;
+} {
+  return {
+    circuitRuns: Object.fromEntries(
+      PIT_FIRST_EDITION_FIGHTER_IDS.map((fighterId) => [
+        fighterId,
+        getPitCircuitRun(pitSave, fighterId),
+      ]),
+    ) as PitStoredCircuitRuns,
+    descentRuns: Object.fromEntries(
+      PIT_FIRST_EDITION_FIGHTER_IDS.map((fighterId) => [
+        fighterId,
+        getPitDescentRun(pitSave, fighterId),
+      ]),
+    ) as PitStoredDescentRuns,
+  };
+}
+
+interface PitWriteLockMessages {
+  readonly busy: string;
+  readonly unavailable: string;
+  readonly unreadable: string;
+  readonly replaced: string;
+  readonly browser: string;
+}
+
+interface PitWriteLockOptions {
+  readonly key: string;
+  readonly operation: () => PitMatchPersistenceAck;
+  readonly failed: (message: string) => PitMatchPersistenceAck;
+  readonly notify: (message: string) => void;
+  readonly messages: PitWriteLockMessages;
+}
+
+function withPitWriteLock({
+  key,
+  operation,
+  failed,
+  notify,
+  messages,
+}: PitWriteLockOptions): Promise<PitMatchPersistenceAck> {
+  return new Promise<PitMatchPersistenceAck>((resolve) => {
+    let settled = false;
+    const settle = (acknowledgement: PitMatchPersistenceAck) => {
+      if (settled) return;
+      settled = true;
+      resolve(acknowledgement);
+    };
+    const fail = (message: string) => {
+      notify(message);
+      settle(failed(message));
+    };
+    const execute = () => {
+      try {
+        settle(operation());
+      } catch {
+        fail(messages.browser);
+      }
+    };
+    const runWithFallbackLease = (retriesRemaining = 50) => {
+      if (typeof window === "undefined") {
+        execute();
+        return;
+      }
+      const lockKey = key + ".write-lock";
+      const retryLease = (message: string) => {
+        if (retriesRemaining > 0) {
+          window.setTimeout(
+            () => runWithFallbackLease(retriesRemaining - 1),
+            50,
+          );
+        } else {
+          fail(message);
+        }
+      };
+      try {
+        const storage = window.localStorage;
+        const now = Date.now();
+        let heldUntil = 0;
+        try {
+          const held = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+            expiresAt?: unknown;
+          } | null;
+          heldUntil =
+            held && typeof held.expiresAt === "number" ? held.expiresAt : 0;
+        } catch {
+          heldUntil = 0;
+        }
+        if (heldUntil > now) {
+          retryLease(messages.busy);
+          return;
+        }
+
+        const token = createHuntRunId();
+        storage.setItem(
+          lockKey,
+          JSON.stringify({ token, expiresAt: now + 2_000 }),
+        );
+        const claimed = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+          token?: unknown;
+        } | null;
+        if (claimed?.token !== token) {
+          retryLease(messages.unavailable);
+          return;
+        }
+
+        // localStorage has no atomic compare-and-set. Let simultaneous claimants
+        // settle, then verify the winning token immediately before the write.
+        window.setTimeout(() => {
+          let stabilized: { token?: unknown } | null;
+          try {
+            stabilized = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+              token?: unknown;
+            } | null;
+          } catch {
+            retryLease(messages.unreadable);
+            return;
+          }
+          if (stabilized?.token !== token) {
+            retryLease(messages.replaced);
+            return;
+          }
+          try {
+            execute();
+          } finally {
+            try {
+              const latest = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+                token?: unknown;
+              } | null;
+              if (latest?.token === token) storage.removeItem(lockKey);
+            } catch {
+              // The short lease expires on its own if confirmation is unavailable.
+            }
+          }
+        }, 25);
+      } catch {
+        fail(messages.unavailable);
+      }
+    };
+
+    if (typeof navigator !== "undefined" && navigator.locks) {
+      let callbackStarted = false;
+      try {
+        void navigator.locks
+          .request("yautja-the-pit:" + key, () => {
+            callbackStarted = true;
+            execute();
+          })
+          .catch(() => {
+            if (!callbackStarted) {
+              runWithFallbackLease();
+              return;
+            }
+            fail(messages.browser);
+          });
+      } catch {
+        runWithFallbackLease();
+      }
+    } else {
+      runWithFallbackLease();
+    }
+  });
+}
+
 export default function GameClient() {
   const [screen, setScreen] = useState<Screen>("title");
   const [save, setSave] = useState<SaveGame>(() =>
@@ -844,6 +1024,9 @@ export default function GameClient() {
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
   const [lastPitReplay, setLastPitReplay] = useState<PitReplay | null>(null);
+  const [pitUnlockedCosmeticIds, setPitUnlockedCosmeticIds] = useState<string[]>([]);
+  const [pitCircuitRuns, setPitCircuitRuns] = useState<PitStoredCircuitRuns>({});
+  const [pitDescentRuns, setPitDescentRuns] = useState<PitStoredDescentRuns>({});
   const [resumableHunt, setResumableHunt] =
     useState<ActiveHuntSaveV1 | null>(null);
   const [huntResumePayload, setHuntResumePayload] =
@@ -1175,7 +1358,13 @@ export default function GameClient() {
     return result.save;
   }, [reconcileHuntWrite]);
 
-  const recordPitMatch = useCallback((result: PitMatchCompleteResult) => {
+  const recordPitMatch = useCallback((
+    result: PitMatchCompleteResult,
+    nextCircuitRun?: Extract<
+      PitRunTransition,
+      { readonly kind: "circuit-persist" }
+    >["run"],
+  ): Promise<PitMatchPersistenceAck> => {
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const key = pitSaveStorageKey(ownerSaveCreatedAt);
     const recordedReplay = result.replay
@@ -1193,15 +1382,25 @@ export default function GameClient() {
       mode: result.mode,
       outcome,
       fighterId: result.leftId,
+      arenaId: result.arenaId,
       roundsWon: result.leftRoundsWon,
       roundsLost: result.rightRoundsWon,
       roundsDrawn: result.roundsDrawn,
+      arcadeEncounterIndex: result.arcadeEncounterIndex,
+      arcadeCompleted: result.arcadeCompleted,
+      circuitFightIndex: result.circuitFightIndex,
+      circuitCompleted: result.circuitCompleted,
+      cosmeticRewardIds: result.cosmeticRewardIds,
       completedAt: new Date().toISOString(),
     };
     const resultLabel =
       outcome === "victory" ? "Victoire" : outcome === "defeat" ? "Défaite" : "Égalité";
+    const failed = (message: string): PitMatchPersistenceAck => ({
+      persisted: false,
+      message,
+    });
 
-    const persistResult = () => {
+    const persistResult = (): PitMatchPersistenceAck => {
       for (let attempt = 0; attempt < 3; attempt += 1) {
         const loaded = loadPitSave({
           key,
@@ -1209,28 +1408,50 @@ export default function GameClient() {
         });
         if (loaded.failure) {
           if (loaded.failure === "read-failed" && attempt < 2) continue;
-          setToast(
-            loaded.failure === "owner-conflict"
-              ? "Archives THE PIT liées à une autre campagne : résultat non enregistré."
-              : "Archives THE PIT indisponibles : résultat non enregistré.",
-          );
-          return;
+          const message = loaded.failure === "owner-conflict"
+            ? "Archives THE PIT liées à une autre campagne : résultat non enregistré."
+            : "Archives THE PIT indisponibles : résultat non enregistré.";
+          setToast(message);
+          return failed(message);
         }
 
         const current =
           loaded.save ?? createPitSave(ownerSaveCreatedAt, matchResult.completedAt);
-        const application = applyPitResult(current, matchResult);
-        if (!application.applied) {
-          setToast(`${resultLabel} THE PIT déjà enregistrée · aucun doublon créé.`);
-          return;
+        const resultApplication = applyPitResult(current, matchResult);
+        let nextPitSave = resultApplication.save;
+        let mutationApplied = resultApplication.applied;
+        if (nextCircuitRun) {
+          const runApplication = persistPitCircuitRun(
+            nextPitSave,
+            nextCircuitRun,
+            matchResult.completedAt,
+          );
+          nextPitSave = runApplication.save;
+          mutationApplied = mutationApplied || runApplication.applied;
         }
-        const written = writePitSave(application.save, {
+        if (!mutationApplied) {
+          setPitUnlockedCosmeticIds([...nextPitSave.unlockedCosmeticIds]);
+          if (nextCircuitRun) {
+            const snapshots = pitRunSnapshots(nextPitSave);
+            setPitCircuitRuns(snapshots.circuitRuns);
+            setPitDescentRuns(snapshots.descentRuns);
+          }
+          setToast(resultLabel + " THE PIT déjà enregistrée · aucun doublon créé.");
+          return { persisted: true };
+        }
+        const written = writePitSave(nextPitSave, {
           key,
           expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
         });
-        if (written.persisted) {
-          setToast(`${resultLabel} THE PIT enregistrée · aucun gain de campagne.`);
-          return;
+        if (written.persisted && written.save) {
+          setPitUnlockedCosmeticIds([...written.save.unlockedCosmeticIds]);
+          if (nextCircuitRun) {
+            const snapshots = pitRunSnapshots(written.save);
+            setPitCircuitRuns(snapshots.circuitRuns);
+            setPitDescentRuns(snapshots.descentRuns);
+          }
+          setToast(resultLabel + " THE PIT enregistrée · aucun gain de campagne.");
+          return { persisted: true };
         }
         if (
           attempt < 2 &&
@@ -1240,9 +1461,13 @@ export default function GameClient() {
         ) {
           continue;
         }
-        setToast("Résultat THE PIT non confirmé par le stockage local.");
-        return;
+        const message = "Résultat THE PIT non confirmé par le stockage local.";
+        setToast(message);
+        return failed(message);
       }
+      const message = "Résultat THE PIT non confirmé après plusieurs tentatives.";
+      setToast(message);
+      return failed(message);
     };
 
     const persistReplay = () => {
@@ -1281,118 +1506,143 @@ export default function GameClient() {
       }
     };
 
-    const persistSafely = () => {
-      if (saveRef.current.createdAt !== ownerSaveCreatedAt) return;
+    const persistSafely = (): PitMatchPersistenceAck => {
+      if (saveRef.current.createdAt !== ownerSaveCreatedAt) {
+        const message = "La campagne active a changé : résultat THE PIT non enregistré.";
+        setToast(message);
+        return failed(message);
+      }
+
+      let acknowledgement: PitMatchPersistenceAck;
       try {
-        persistResult();
+        acknowledgement = persistResult();
       } catch {
-        setToast("Résultat THE PIT conservé à l’écran, mais son écriture a échoué.");
+        const message = "Résultat THE PIT conservé à l’écran, mais son écriture a échoué.";
+        setToast(message);
+        acknowledgement = failed(message);
       }
       try {
         persistReplay();
       } catch {
         setToast("Replay THE PIT conservé en mémoire ; archive locale non confirmée.");
       }
+      return acknowledgement;
     };
-    const runWithFallbackLease = (retriesRemaining = 50) => {
-      if (typeof window === "undefined") {
-        persistSafely();
-        return;
+
+    return withPitWriteLock({
+      key,
+      operation: persistSafely,
+      failed,
+      notify: setToast,
+      messages: {
+        busy: "Résultat THE PIT en attente : une autre session écrit les archives.",
+        unavailable: "Résultat THE PIT en attente : verrou local indisponible.",
+        unreadable: "Résultat THE PIT en attente : verrou local illisible.",
+        replaced: "Résultat THE PIT en attente : verrou local repris par une autre session.",
+        browser: "Résultat THE PIT non confirmé par le verrou navigateur.",
+      },
+    });
+  }, []);
+
+  const recordPitRunTransition = useCallback((
+    transition: PitRunTransition,
+  ): Promise<PitMatchPersistenceAck> => {
+    const ownerSaveCreatedAt = saveRef.current.createdAt;
+    const key = pitSaveStorageKey(ownerSaveCreatedAt);
+    const failed = (message: string): PitMatchPersistenceAck => ({
+      persisted: false,
+      message,
+    });
+
+    const persistTransition = (): PitMatchPersistenceAck => {
+      if (saveRef.current.createdAt !== ownerSaveCreatedAt) {
+        const message = "La campagne active a changé : route THE PIT non enregistrée.";
+        setToast(message);
+        return failed(message);
       }
-      const lockKey = `${key}.write-lock`;
-      const retryLease = (message: string) => {
-        if (retriesRemaining > 0) {
-          window.setTimeout(
-            () => runWithFallbackLease(retriesRemaining - 1),
-            50,
-          );
-        } else {
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const loaded = loadPitSave({
+          key,
+          expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
+        });
+        if (loaded.failure) {
+          if (loaded.failure === "read-failed" && attempt < 2) continue;
+          const message = loaded.failure === "owner-conflict"
+            ? "Archives THE PIT liées à une autre campagne : route non enregistrée."
+            : "Archives THE PIT indisponibles : route non enregistrée.";
           setToast(message);
+          return failed(message);
         }
-      };
-      try {
-        const storage = window.localStorage;
-        const now = Date.now();
-        let heldUntil = 0;
+
+        const updatedAt = new Date().toISOString();
+        const current = loaded.save ?? createPitSave(ownerSaveCreatedAt, updatedAt);
         try {
-          const held = JSON.parse(storage.getItem(lockKey) ?? "null") as {
-            expiresAt?: unknown;
-          } | null;
-          heldUntil =
-            held && typeof held.expiresAt === "number" ? held.expiresAt : 0;
+          const application = transition.kind === "circuit-persist"
+            ? persistPitCircuitRun(current, transition.run, updatedAt)
+            : transition.kind === "circuit-replace"
+              ? replacePitCircuitRun(current, transition.run, updatedAt)
+              : transition.kind === "descent-persist"
+                ? persistPitDescentRun(current, transition.run, updatedAt)
+                : replacePitDescentRun(current, transition.run, updatedAt);
+
+          if (!application.applied) {
+            const snapshots = pitRunSnapshots(application.save);
+            setPitUnlockedCosmeticIds([...application.save.unlockedCosmeticIds]);
+            setPitCircuitRuns(snapshots.circuitRuns);
+            setPitDescentRuns(snapshots.descentRuns);
+            return { persisted: true };
+          }
+
+          const written = writePitSave(application.save, {
+            key,
+            expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
+          });
+          if (written.persisted && written.save) {
+            const snapshots = pitRunSnapshots(written.save);
+            setPitUnlockedCosmeticIds([...written.save.unlockedCosmeticIds]);
+            setPitCircuitRuns(snapshots.circuitRuns);
+            setPitDescentRuns(snapshots.descentRuns);
+            setToast(
+              (transition.kind.startsWith("descent") ? "Descente" : "Circuit") +
+                " THE PIT enregistré · aucun gain de campagne.",
+            );
+            return { persisted: true };
+          }
+          if (
+            attempt < 2 &&
+            (written.failure === "stale-sequence" ||
+              written.failure === "stale-revision" ||
+              written.failure === "read-failed")
+          ) {
+            continue;
+          }
+          const message = "Route THE PIT non confirmée par le stockage local.";
+          setToast(message);
+          return failed(message);
         } catch {
-          heldUntil = 0;
+          const message = "Transition THE PIT incompatible avec la sauvegarde durable.";
+          setToast(message);
+          return failed(message);
         }
-        if (heldUntil > now) {
-          retryLease("Résultat THE PIT en attente : une autre session écrit les archives.");
-          return;
-        }
-
-        const token = createHuntRunId();
-        storage.setItem(
-          lockKey,
-          JSON.stringify({ token, expiresAt: now + 2_000 }),
-        );
-        const claimed = JSON.parse(storage.getItem(lockKey) ?? "null") as {
-          token?: unknown;
-        } | null;
-        if (claimed?.token !== token) {
-          retryLease("Résultat THE PIT en attente : verrou local indisponible.");
-          return;
-        }
-
-        // localStorage has no atomic compare-and-set. Let simultaneous claimants
-        // settle, then verify the winning token immediately before both writes.
-        window.setTimeout(() => {
-          let stabilized: { token?: unknown } | null;
-          try {
-            stabilized = JSON.parse(storage.getItem(lockKey) ?? "null") as {
-              token?: unknown;
-            } | null;
-          } catch {
-            retryLease("Résultat THE PIT en attente : verrou local illisible.");
-            return;
-          }
-          if (stabilized?.token !== token) {
-            retryLease("Résultat THE PIT en attente : verrou local repris par une autre session.");
-            return;
-          }
-          try {
-            persistSafely();
-          } finally {
-            try {
-              const latest = JSON.parse(storage.getItem(lockKey) ?? "null") as {
-                token?: unknown;
-              } | null;
-              if (latest?.token === token) storage.removeItem(lockKey);
-            } catch {
-              // The short lease expires on its own if confirmation is unavailable.
-            }
-          }
-        }, 25);
-      } catch {
-        persistSafely();
       }
+      const message = "Route THE PIT non confirmée après plusieurs tentatives.";
+      setToast(message);
+      return failed(message);
     };
 
-    if (typeof navigator !== "undefined" && navigator.locks) {
-      let callbackStarted = false;
-      try {
-        void navigator.locks
-          .request(`yautja-the-pit:${key}`, () => {
-            callbackStarted = true;
-            persistSafely();
-          })
-          .catch(() => {
-            if (!callbackStarted) runWithFallbackLease();
-            else setToast("Résultat THE PIT non confirmé par le verrou navigateur.");
-          });
-      } catch {
-        runWithFallbackLease();
-      }
-    } else {
-      runWithFallbackLease();
-    }
+    return withPitWriteLock({
+      key,
+      operation: persistTransition,
+      failed,
+      notify: setToast,
+      messages: {
+        busy: "Route THE PIT en attente : une autre session écrit les archives.",
+        unavailable: "Route THE PIT en attente : verrou local indisponible.",
+        unreadable: "Route THE PIT en attente : verrou local illisible.",
+        replaced: "Route THE PIT en attente : verrou local repris par une autre session.",
+        browser: "Route THE PIT non confirmée par le verrou navigateur.",
+      },
+    });
   }, []);
 
   const go = useCallback(
@@ -1402,6 +1652,28 @@ export default function GameClient() {
     },
     [playSound],
   );
+
+  const openPit = useCallback(() => {
+    const ownerSaveCreatedAt = saveRef.current.createdAt;
+    const loaded = loadPitSave({
+      key: pitSaveStorageKey(ownerSaveCreatedAt),
+      expectedOwnerSaveCreatedAt: ownerSaveCreatedAt,
+    });
+    if (loaded.save) {
+      const snapshots = pitRunSnapshots(loaded.save);
+      setPitUnlockedCosmeticIds([...loaded.save.unlockedCosmeticIds]);
+      setPitCircuitRuns(snapshots.circuitRuns);
+      setPitDescentRuns(snapshots.descentRuns);
+    } else {
+      setPitUnlockedCosmeticIds([]);
+      setPitCircuitRuns({});
+      setPitDescentRuns({});
+    }
+    if (loaded.failure) {
+      setToast("Progression THE PIT indisponible ; les routes et palettes restent protégées.");
+    }
+    go("pit");
+  }, [go]);
 
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
@@ -2036,6 +2308,9 @@ export default function GameClient() {
     setLastResult(null);
     setLastRewardSummary(null);
     setLastPitReplay(null);
+    setPitUnlockedCosmeticIds([]);
+    setPitCircuitRuns({});
+    setPitDescentRuns({});
     setScreen("title");
     setToast(shipReset.persisted && huntReset.cleared && pitReset.cleared && pitReplayReset.cleared
       ? "Archives de chasse et du PIT réinitialisées."
@@ -2059,13 +2334,12 @@ export default function GameClient() {
       link.download = `yautja-campagne-${new Date().toISOString().slice(0, 10)}.json`;
       link.click();
       window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-      setSaveTransferMessage("Export de la campagne préparé. La chasse active et les configurations du vaisseau ne sont pas incluses.");
+      setSaveTransferMessage("Export de la campagne préparé. La chasse active, les configurations du vaisseau et les données THE PIT ne sont pas incluses.");
     } catch { setSaveTransferMessage("Impossible de préparer cet export. Les archives locales restent intactes."); }
   }, [save]);
 
   const confirmImport = useCallback(() => {
     if (!importCandidate) return;
-    const previousOwnerSaveCreatedAt = saveRef.current.createdAt;
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
     catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
@@ -2074,9 +2348,14 @@ export default function GameClient() {
       return;
     }
     const huntReset = clearActiveHuntSave();
-    const pitReplayReset = clearPitReplayArchive({
-      ownerSaveCreatedAt: previousOwnerSaveCreatedAt,
+    const importedPit = loadPitSave({
+      key: pitSaveStorageKey(result.save.createdAt),
+      expectedOwnerSaveCreatedAt: result.save.createdAt,
     });
+    const importedPitSnapshots = importedPit.save
+      ? pitRunSnapshots(importedPit.save)
+      : null;
+    const importedReplay = hydratePitReplayForOwner(result.save.createdAt);
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
@@ -2089,12 +2368,23 @@ export default function GameClient() {
     setSelectedMission(null);
     setLastResult(null);
     setLastRewardSummary(null);
-    setLastPitReplay(null);
+    setLastPitReplay(importedReplay.replay);
+    setPitUnlockedCosmeticIds(
+      importedPit.save ? [...importedPit.save.unlockedCosmeticIds] : [],
+    );
+    setPitCircuitRuns(importedPitSnapshots?.circuitRuns ?? {});
+    setPitDescentRuns(importedPitSnapshots?.descentRuns ?? {});
     setImportCandidate(null);
     setScreen("title");
-    setSaveTransferMessage(shipReset.persisted && huntReset.cleared && pitReplayReset.cleared
-      ? "Campagne importée. L’ancienne chasse suspendue a été retirée."
-      : "Campagne importée. Le nettoyage des archives annexes n’est pas confirmé ; vérifiez la reprise proposée avant de jouer.");
+    const pitHydrationConfirmed =
+      !importedPit.failure && !importedReplay.diagnostic;
+    setSaveTransferMessage(
+      shipReset.persisted && huntReset.cleared && pitHydrationConfirmed
+        ? "Campagne importée. La chasse suspendue a été retirée ; les données THE PIT locales liées à cette campagne ont été conservées et rechargées."
+        : shipReset.persisted && huntReset.cleared
+          ? "Campagne importée. Les archives THE PIT locales ont été préservées, mais leur reprise automatique n’est pas confirmée."
+          : "Campagne importée. Le nettoyage de la chasse suspendue ou la reprise du vaisseau n’est pas confirmé ; vérifiez l’état avant de jouer.",
+    );
   }, [clearHuntSession, importCandidate]);
 
   const menuBack = useCallback(() => {
@@ -2263,7 +2553,7 @@ export default function GameClient() {
                 <button type="button" className="ghost-button" onClick={() => go("ship")}>
                   Console du vaisseau
                 </button>
-                <button type="button" className="ghost-button" onClick={() => go("pit")}>
+                <button type="button" className="ghost-button" onClick={openPit}>
                   THE PIT · combat
                 </button>
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
@@ -2327,7 +2617,7 @@ export default function GameClient() {
             onOpenCustomization={() =>
               openStationScreen("customization", "ship")
             }
-            onOpenPit={() => go("pit")}
+            onOpenPit={openPit}
             onApplyLoadout={applyShipLoadout}
             onSelectedShipChange={setSelectedShipId}
             onNotify={setToast}
@@ -2361,7 +2651,7 @@ export default function GameClient() {
               onOpenCustomization={() =>
                 openStationScreen("customization", "deck")
               }
-              onOpenPit={() => go("pit")}
+              onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
               onNotify={setToast}
@@ -3530,7 +3820,11 @@ export default function GameClient() {
             lastReplay={lastPitReplay}
             reducedGore={save.settings.reducedGore}
             screenShake={save.settings.screenShake}
+            unlockedCosmeticIds={pitUnlockedCosmeticIds}
+            savedCircuitRuns={pitCircuitRuns}
+            savedDescentRuns={pitDescentRuns}
             onMatchComplete={recordPitMatch}
+            onRunTransition={recordPitRunTransition}
             onExit={() => go("deck")}
           />
         </Suspense>
@@ -3841,7 +4135,7 @@ export default function GameClient() {
             </div>
             <section className="save-transfer" aria-labelledby="save-transfer-title">
               <h3 id="save-transfer-title">Archives et récupération</h3>
-              <p>Exportez votre campagne pour la conserver sur un autre appareil. La chasse en cours et les configurations du vaisseau ne font pas partie de cet export.</p>
+              <p>Exportez votre campagne pour la conserver sur un autre appareil. La chasse en cours, les configurations du vaisseau et les données THE PIT ne font pas partie de cet export ; THE PIT reste local et lié à cette campagne.</p>
               <div className="modal-actions">
                 <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne</button>
                 <button type="button" className="ghost-button" onClick={() => persist(save)}>Réessayer la sauvegarde</button>
@@ -3862,7 +4156,7 @@ export default function GameClient() {
               </label>
               {importCandidate && <div className="save-import-confirm">
                 <p><strong>{importCandidate.profile.hunterName}</strong> · {importCandidate.statistics.missionsCompleted} chasses terminées · {formatTime(importCandidate.profile.playTimeSeconds)}</p>
-                <p>Cette opération remplace la campagne actuelle et retire sa chasse suspendue.</p>
+                <p>Cette opération remplace la campagne actuelle et retire sa chasse suspendue. Les archives THE PIT ne sont ni importées ni supprimées ; les données locales déjà liées à cette campagne seront reprises.</p>
                 <button type="button" className="ghost-button danger" onClick={confirmImport}>Confirmer le remplacement par cette archive</button>
                 <button type="button" className="ghost-button" onClick={() => setImportCandidate(null)}>Annuler l’import</button>
               </div>}

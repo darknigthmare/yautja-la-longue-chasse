@@ -81,7 +81,14 @@ export type MissionProgressStatus = "locked" | "available" | "completed";
 export type UpgradeLevel = 0 | 1 | 2;
 
 /** Permanent traversal unlocks, independent of mission scores and equipment. */
-export type ExplorationAbilityId = "aerial-boost";
+export type ExplorationAbilityId =
+  | "aerial-boost"
+  | "thermal-resistance"
+  | "acid-protection"
+  | "cutting-blade"
+  | "aquatic-respirator"
+  | "spore-vision"
+  | "ancient-tech-detection";
 
 export interface ExplorationProgress {
   abilityIds: ExplorationAbilityId[];

@@ -94,9 +94,28 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.ticks, inputs.length);
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
-  assert.equal(replay.version, 2);
-  assert.equal(replay.encoding, "input-rle-v2");
+  assert.equal(replay.version, 3);
+  assert.equal(replay.encoding, "input-rle-v3");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
+});
+
+test("the selected fighter roster and arena survive deterministic replay", () => {
+  const inputs = Array.from({ length: 90 }, (_, frame) => [
+    frame < 30 ? { right: true } : frame === 45 ? { attack: "light" } : {},
+    frame < 30 ? { left: true } : {},
+  ]);
+  const replay = pit.recordPitReplay(inputs, {
+    fighters: ["wolf", "falconer"],
+    arenaId: "abyssal-bridge",
+    seed: 81,
+  });
+  assert.deepEqual(replay.fighters, ["wolf", "falconer"]);
+  assert.equal(replay.arenaId, "abyssal-bridge");
+  assert.equal(pit.playPitReplay(replay).arenaId, "abyssal-bridge");
+  assert.equal(
+    pit.normalizePitReplay({ ...plain(replay), arenaId: "forged-arena" }),
+    null,
+  );
 });
 
 test("JSON serialization round-trips canonically inside the 64 KiB sidecar budget", () => {
@@ -153,8 +172,10 @@ test("normalization rejects future, corrupt, non-canonical and reward-bearing pa
   const corruptions = [
     { ...plain(replay), version: replay.version + 1 },
     { ...plain(replay), engineVersion: replay.engineVersion + 1 },
-    { ...plain(replay), encoding: "input-rle-v3" },
+    { ...plain(replay), encoding: "input-rle-v99" },
     { ...plain(replay), campaignReward: { honor: 9_999 } },
+    { ...plain(replay), arenaId: "constructor" },
+    { ...plain(replay), fighters: ["toString", "berserker"] },
     { ...plain(replay), metadata: { ...plain(replay.metadata), winnerId: "berserker" } },
     { ...plain(replay), metadata: { ...plain(replay.metadata), checksum: "00000000" } },
     { ...plain(replay), segments: [[1, 5 << 7]] },
@@ -206,6 +227,103 @@ test("current schema supports training and reversed fighters while future schema
   assert.equal(pit.normalizePitReplay({ ...plain(restored), version: pit.PIT_REPLAY_VERSION + 1 }), null);
 });
 
+test("published V2 Jungle/Berserker basalt replays migrate to V3 after checksum verification", () => {
+  const current = pit.recordPitReplay([
+    [{ right: true }, {}],
+    [{ attack: "light" }, { guardHigh: true }],
+    [{}, {}],
+  ], {
+    fighters: ["jungle-hunter", "berserker"],
+    arenaId: "the-pit",
+    seed: 19,
+  });
+  const finalState = pit.playPitReplay(current);
+  const legacyState = JSON.parse(pit.serializePitCombat(finalState));
+  legacyState.version = 2;
+  delete legacyState.techniqueEffects;
+  delete legacyState.nextTechniqueEffectId;
+  for (const fighter of legacyState.fighters) delete fighter.techniqueStatus;
+  assert.equal("techniqueEffects" in legacyState, false);
+  assert.equal("nextTechniqueEffectId" in legacyState, false);
+  assert.equal(legacyState.fighters.some((fighter) => "techniqueStatus" in fighter), false);
+  let hash = 0x811c9dc5;
+  const serializedLegacyState = JSON.stringify(legacyState);
+  for (let index = 0; index < serializedLegacyState.length; index += 1) {
+    hash ^= serializedLegacyState.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  const legacy = {
+    ...plain(current),
+    version: 2,
+    engineVersion: 2,
+    encoding: "input-rle-v2",
+    metadata: {
+      ...plain(current.metadata),
+      checksum: (hash >>> 0).toString(16).padStart(8, "0"),
+    },
+  };
+
+  const migrated = pit.normalizePitReplay(legacy);
+  assert.ok(migrated);
+  assert.equal(migrated.version, 3);
+  assert.equal(migrated.engineVersion, 3);
+  assert.equal(migrated.encoding, "input-rle-v3");
+  assert.deepEqual(migrated.fighters, legacy.fighters);
+  assert.equal(migrated.arenaId, "the-pit");
+  assert.equal(
+    pit.serializePitCombat(pit.playPitReplay(migrated)),
+    pit.serializePitCombat(finalState),
+  );
+  assert.equal(pit.normalizePitReplay({
+    ...legacy,
+    metadata: { ...legacy.metadata, checksum: "00000000" },
+  }), null);
+});
+
+test("a published V2 technique replay validates with V2 melee semantics before V3 resimulation", () => {
+  let randomState = 1;
+  const random = () => (
+    (randomState = (Math.imul(randomState, 1_664_525) + 1_013_904_223) >>> 0) /
+    2 ** 32
+  );
+  const inputs = Array.from({ length: 300 }, (_, frame) => {
+    const playerInput = (slot) => {
+      const roll = random();
+      if (frame < 35) return slot === 0 ? { right: true } : { left: true };
+      if (roll < 0.025) return { attack: "technique" };
+      if (roll < 0.04) return { attack: "light" };
+      if (roll < 0.05) return { attack: "heavy" };
+      if (roll < 0.07) return { guardLow: true, down: true };
+      if (roll < 0.09) return { guardHigh: true };
+      return {};
+    };
+    return [playerInput(0), playerInput(1)];
+  });
+  const current = pit.recordPitReplay(inputs, { seed: 1 });
+  const legacy = {
+    ...plain(current),
+    version: 2,
+    engineVersion: 2,
+    encoding: "input-rle-v2",
+    metadata: {
+      ticks: 300,
+      durationMs: 5_000,
+      winnerId: null,
+      finalPhase: "round",
+      completed: false,
+      finalFrame: 300,
+      // Captured from the published V2 engine before world techniques existed.
+      checksum: "bf4337d5",
+    },
+  };
+
+  const migrated = pit.normalizePitReplay(legacy);
+  assert.ok(migrated);
+  assert.equal(migrated.metadata.checksum, current.metadata.checksum);
+  assert.notEqual(migrated.metadata.checksum, legacy.metadata.checksum);
+  assert.deepEqual(pit.playPitReplay(migrated), pit.playPitReplay(current));
+});
+
 test("legacy V1 and future replay envelopes are rejected with explicit compatibility codes", () => {
   const replay = plain(pit.recordPitReplay([
     [{ right: true }, {}],
@@ -246,7 +364,7 @@ test("legacy V1 and future replay envelopes are rejected with explicit compatibi
       error.code === "incompatible-engine",
   );
   assert.throws(
-    () => pit.deserializePitReplay(JSON.stringify({ version: 2, segments: "bad" })),
+    () => pit.deserializePitReplay(JSON.stringify({ version: pit.PIT_REPLAY_VERSION, segments: "bad" })),
     (error) =>
       error instanceof pit.PitReplayCompatibilityError &&
       error.code === "invalid-replay",

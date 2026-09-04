@@ -68,8 +68,14 @@ test("THE PIT terminal results stay isolated from campaign rewards", async () =>
   assert.match(callbackSource, /writePitSave/);
   assert.match(callbackSource, /expectedOwnerSaveCreatedAt/);
   assert.match(callbackSource, /id: result\.resultId/);
-  assert.match(callbackSource, /navigator\.locks/);
-  assert.match(callbackSource, /runWithFallbackLease/);
+  assert.match(callbackSource, /withPitWriteLock\(\{/);
+  const lockStart = gameClientSource.indexOf("function withPitWriteLock");
+  const lockEnd = gameClientSource.indexOf("export default function GameClient", lockStart);
+  assert.ok(lockStart >= 0 && lockEnd > lockStart);
+  const lockSource = gameClientSource.slice(lockStart, lockEnd);
+  assert.match(lockSource, /navigator\.locks/);
+  assert.match(lockSource, /runWithFallbackLease/);
+  assert.match(lockSource, /\.write-lock/);
   assert.match(callbackSource, /pitSaveStorageKey/);
   assert.doesNotMatch(callbackSource, /applyMissionResult|writeSaveWithStatus/);
   assert.match(gameClientSource, /onMatchComplete=\{recordPitMatch\}/);

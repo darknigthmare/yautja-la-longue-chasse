@@ -75,6 +75,17 @@ const recordDeclaration = findVariable("recordPitMatch");
 assert.ok(ts.isCallExpression(recordDeclaration.initializer));
 const recordCallback = recordDeclaration.initializer.arguments[0];
 assert.ok(ts.isArrowFunction(recordCallback));
+const lockDeclaration = findFunction("withPitWriteLock");
+const compiledWriteLock = ts.transpileModule(
+  lockDeclaration.getText(ast),
+  {
+    compilerOptions: {
+      module: ts.ModuleKind.None,
+      target: ts.ScriptTarget.ES2022,
+    },
+  },
+).outputText;
+
 const compiledRecordCallback = ts.transpileModule(
   `const callback = ${recordCallback.getText(ast)};`,
   {
@@ -95,6 +106,7 @@ function createHarness(overrides = {}) {
     replayClears: 0,
     replayCreates: 0,
     statWrites: 0,
+    cosmeticUpdates: [],
     toasts: [],
   };
   const saveRef = { current: { createdAt: OWNER } };
@@ -106,11 +118,18 @@ function createHarness(overrides = {}) {
     normalizePitReplay: (value) => value,
     setLastPitReplay: (value) => calls.replayMemory.push(value),
     loadPitSave: () => ({ save: null, loaded: false, failure: null }),
-    createPitSave: (ownerSaveCreatedAt, createdAt) => ({ ownerSaveCreatedAt, createdAt }),
-    applyPitResult: (save) => ({ applied: true, save: { ...save, revision: 1 } }),
-    writePitSave: () => {
+    createPitSave: (ownerSaveCreatedAt, createdAt) => ({
+      ownerSaveCreatedAt,
+      createdAt,
+      unlockedCosmeticIds: [],
+    }),
+    applyPitResult: (save) => ({
+      applied: true,
+      save: { ...save, revision: 1 },
+    }),
+    writePitSave: (save) => {
       calls.statWrites += 1;
-      return { persisted: true, failure: null };
+      return { persisted: true, failure: null, save };
     },
     loadPitReplayArchive: () => {
       calls.replayLoads += 1;
@@ -139,9 +158,18 @@ function createHarness(overrides = {}) {
       return { persisted: true, failure: null };
     },
     setToast: (message) => calls.toasts.push(message),
+    setPitUnlockedCosmeticIds: (ids) => calls.cosmeticUpdates.push([...ids]),
     createHuntRunId: () => "test-lock",
     ...overrides,
   };
+  const lockNames = Object.keys(environment);
+  const lockFactory = new Function(
+    ...lockNames,
+    compiledWriteLock + "\nreturn withPitWriteLock;",
+  );
+  environment.withPitWriteLock = lockFactory(
+    ...lockNames.map((name) => environment[name]),
+  );
   const names = Object.keys(environment);
   const factory = new Function(
     ...names,
@@ -161,6 +189,7 @@ function completedResult(replay = { version: 1, metadata: { checksum: "feedbeef"
     winnerId: "jungle-hunter",
     leftId: "jungle-hunter",
     rightId: "berserker",
+    arenaId: "the-pit",
     round: 2,
     leftRoundsWon: 2,
     rightRoundsWon: 0,
@@ -215,12 +244,77 @@ test("a delayed browser lock cannot resurrect an archive after its campaign owne
       },
     },
   });
-  harness.callback(completedResult());
+  let promiseSettled = false;
+  const acknowledgementPromise = harness.callback(completedResult());
+  acknowledgementPromise.then(() => {
+    promiseSettled = true;
+  });
+  await Promise.resolve();
   assert.equal(typeof lockedOperation, "function");
+  assert.equal(promiseSettled, false);
   harness.saveRef.current = { createdAt: "2026-09-05T12:00:00.000Z" };
   await lockedOperation();
+  const acknowledgement = await acknowledgementPromise;
+  assert.deepEqual(acknowledgement, {
+    persisted: false,
+    message: "La campagne active a changé : résultat THE PIT non enregistré.",
+  });
   assert.equal(harness.calls.statWrites, 0);
   assert.equal(harness.calls.replayWrites, 0);
+});
+
+test("a failed Arcade write returns a retryable acknowledgement and the same result can succeed", async () => {
+  let writeAttempt = 0;
+  const appliedIds = [];
+  const harness = createHarness({
+    applyPitResult: (save, result) => {
+      appliedIds.push(result.id);
+      return {
+        applied: true,
+        save: {
+          ...save,
+          revision: (save.revision ?? 0) + 1,
+          unlockedCosmeticIds: result.cosmeticRewardIds ?? [],
+        },
+      };
+    },
+    writePitSave: (save) => {
+      harness.calls.statWrites += 1;
+      writeAttempt += 1;
+      return writeAttempt === 1
+        ? { persisted: false, failure: "write-failed", save: null }
+        : { persisted: true, failure: null, save };
+    },
+  });
+  const result = {
+    ...completedResult(null),
+    mode: "arcade",
+    arcadeEncounterIndex: 7,
+    arcadeCompleted: true,
+    cosmeticRewardIds: ["pit-palette-jungle-hunter-judgment"],
+  };
+
+  const first = await harness.callback(result);
+  assert.equal(first.persisted, false);
+  assert.match(first.message, /non confirmé/);
+  const second = await harness.callback(result);
+  assert.deepEqual(second, { persisted: true });
+  assert.deepEqual(appliedIds, [result.resultId, result.resultId]);
+  assert.deepEqual(harness.calls.cosmeticUpdates.at(-1), result.cosmeticRewardIds);
+});
+
+test("an idempotent duplicate is acknowledged as persisted and refreshes cosmetics", async () => {
+  const unlockedCosmeticIds = ["pit-palette-jungle-hunter-judgment"];
+  const confirmedSave = { ownerSaveCreatedAt: OWNER, unlockedCosmeticIds };
+  const harness = createHarness({
+    loadPitSave: () => ({ save: confirmedSave, loaded: true, failure: null }),
+    applyPitResult: () => ({ applied: false, save: confirmedSave }),
+  });
+
+  const acknowledgement = await harness.callback(completedResult(null));
+  assert.deepEqual(acknowledgement, { persisted: true });
+  assert.equal(harness.calls.statWrites, 0);
+  assert.deepEqual(harness.calls.cosmeticUpdates, [unlockedCosmeticIds]);
 });
 
 test("hydration, confirmed replacement and PitCanvas all stay bound to the campaign owner", () => {
@@ -238,9 +332,14 @@ test("hydration, confirmed replacement and PitCanvas all stay bound to the campa
   assert.match(resetSource, /setLastPitReplay\(null\)/);
 
   const importSource = source.slice(importStart, source.indexOf("const menuBack", importStart));
-  assert.ok(importSource.indexOf("if (!result.persisted") < importSource.indexOf("clearPitReplayArchive"));
-  assert.match(importSource, /clearPitReplayArchive\(\{\s*ownerSaveCreatedAt: previousOwnerSaveCreatedAt/);
-  assert.match(importSource, /setLastPitReplay\(null\)/);
+  assert.ok(importSource.indexOf("if (!result.persisted") < importSource.indexOf("loadPitSave"));
+  assert.match(importSource, /expectedOwnerSaveCreatedAt: result\.save\.createdAt/);
+  assert.match(importSource, /hydratePitReplayForOwner\(result\.save\.createdAt\)/);
+  assert.match(importSource, /setLastPitReplay\(importedReplay\.replay\)/);
+  assert.match(importSource, /setPitCircuitRuns\(importedPitSnapshots\?\.circuitRuns \?\? \{\}\)/);
+  assert.match(importSource, /setPitDescentRuns\(importedPitSnapshots\?\.descentRuns \?\? \{\}\)/);
+  assert.doesNotMatch(importSource, /clearPitSave|clearPitReplayArchive|pitOwnersToClear/);
+  assert.match(importSource, /données THE PIT locales liées à cette campagne ont été conservées et rechargées/);
 });
 
 test("hydration diagnoses replay failures without deleting any archive", () => {
@@ -306,7 +405,23 @@ test("write-time repair never clears future or foreign-owner replay archives", (
   }
 });
 
-test("fallback lease waits for stabilization and retries when another claimant wins", () => {
+test("results and route transitions share the same browser lock and fallback lease", () => {
+  const transitionDeclaration = findVariable("recordPitRunTransition");
+  assert.ok(ts.isCallExpression(transitionDeclaration.initializer));
+  const transitionCallback = transitionDeclaration.initializer.arguments[0];
+  assert.ok(ts.isArrowFunction(transitionCallback));
+
+  const matchSource = recordCallback.getText(ast);
+  const transitionSource = transitionCallback.getText(ast);
+  assert.match(matchSource, /withPitWriteLock\(\{/);
+  assert.match(transitionSource, /withPitWriteLock\(\{/);
+  assert.match(matchSource, /operation: persistSafely/);
+  assert.match(transitionSource, /operation: persistTransition/);
+  assert.match(compiledWriteLock, /\.write-lock/);
+  assert.match(compiledWriteLock, /stabilized\?\.token !== token/);
+});
+
+test("fallback lease waits for stabilization and retries when another claimant wins", async () => {
   const values = new Map();
   const timers = [];
   const fakeWindow = {
@@ -328,7 +443,7 @@ test("fallback lease waits for stabilization and retries when another claimant w
   };
   const harness = createHarness({ navigator: {}, window: fakeWindow });
   const lockKey = `pit:${OWNER}.write-lock`;
-  harness.callback(completedResult());
+  const acknowledgementPromise = harness.callback(completedResult());
 
   assert.equal(harness.calls.statWrites, 0);
   assert.equal(harness.calls.replayWrites, 0);
@@ -355,6 +470,7 @@ test("fallback lease waits for stabilization and retries when another claimant w
   assert.equal(harness.calls.statWrites, 1);
   assert.equal(harness.calls.replayWrites, 1);
   assert.equal(values.has(lockKey), false);
+  assert.deepEqual(await acknowledgementPromise, { persisted: true });
 });
 
 test("the replay path never invokes campaign persistence or campaign rewards", () => {

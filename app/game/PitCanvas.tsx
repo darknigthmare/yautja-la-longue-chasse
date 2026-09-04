@@ -11,20 +11,26 @@ import {
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import {
-  PIT_ARENA,
+  PIT_ARENAS,
+  PIT_ARENA_IDS,
   PIT_CLOAK_COST,
   PIT_FIGHTERS,
   PIT_MAX_TRAQUE,
+  PIT_PLAYABLE_FIGHTER_IDS,
   PIT_TICK_RATE,
   createPitCombatState,
   getPitFighterBoxes,
+  getPitTechniqueBox,
   rematchPitCombat,
   stepPitCombat,
+  type PitArenaId,
   type PitAttackKind,
   type PitCombatEvent,
   type PitCombatState,
   type PitFighterId,
+  type PitPlayableFighterId,
   type PitInput,
+  type PitTechniqueEffectState,
 } from "./systems/pitCombat";
 import {
   PIT_CONTROL_ACTION_IDS,
@@ -33,6 +39,45 @@ import {
   type ControlActionId,
   type ControlBindings,
 } from "./systems/controlBindings";
+import {
+  PIT_ARCADE_COSMETICS,
+  PIT_ARCADE_ENCOUNTER_COUNT,
+  PIT_ARCADE_LADDERS,
+  PIT_DESCENT_FLOOR_COUNT,
+  PIT_DESCENT_MAX_HEALTH,
+  PIT_DESCENT_MODIFIERS,
+  PIT_DESCENT_RELICS,
+  applyPitArcadeEncounterResult,
+  applyPitDescentResolution,
+  createPitArcadeRun,
+  createPitDescentPlan,
+  createPitDescentRun,
+  selectPitDescentNode,
+  type PitArcadeCosmeticDefinition,
+  type PitArcadeRun,
+  type PitDescentNode,
+  type PitDescentRun,
+} from "./systems/pitArcade";
+import {
+  preparePitDescentCombat,
+  stepPitDescentCombat,
+  type PitDescentCombatContext,
+  type PitDescentCombatPresentation,
+} from "./systems/pitDescentCombat";
+import {
+  PIT_CIRCUIT_FIGHT_COUNT,
+  PIT_CIRCUIT_MAX_RESULTS,
+  PIT_CLAN_CIRCUITS,
+  applyPitCircuitFightResult,
+  createPitCircuitRun,
+  selectPitCircuitFight,
+  type PitCircuitRun,
+} from "./systems/pitCircuit";
+import {
+  isPitFirstEditionFighterId,
+  type PitTechniqueDevice,
+  type PitTechniqueStatusKind,
+} from "./systems/pitFirstEdition";
 import {
   createPitReplayReader,
   createPitReplayRecorder,
@@ -60,20 +105,104 @@ import {
 } from "./systems/pitTraining";
 import styles from "./PitCanvas.module.css";
 
-type PitMode = "cpu" | "local" | "training";
+type PitMode = "cpu" | "local" | "training" | "arcade" | "circuit" | "descent";
 type PitTrainingActivity = "idle" | "recording" | "playback";
 
 export interface PitMatchCompleteResult {
   resultId: string;
-  mode: PitMode;
+  mode: Exclude<PitMode, "descent">;
   winnerId: PitFighterId | null;
-  leftId: PitFighterId;
+  leftId: PitPlayableFighterId;
   rightId: PitFighterId;
+  arenaId: PitArenaId;
   round: number;
   leftRoundsWon: number;
   rightRoundsWon: number;
   roundsDrawn: number;
+  arcadeEncounterIndex?: number;
+  arcadeCompleted?: boolean;
+  circuitFightIndex?: number;
+  circuitCompleted?: boolean;
+  cosmeticRewardIds?: readonly string[];
   replay: PitReplay | null;
+}
+
+export type PitMatchPersistenceAck =
+  | { readonly persisted: true }
+  | { readonly persisted: false; readonly message: string };
+
+type PitMatchCompleteHandler = (
+  result: PitMatchCompleteResult,
+  nextCircuitRun?: PitCircuitRun,
+) => Promise<PitMatchPersistenceAck>;
+
+export type PitStoredCircuitRuns = Readonly<
+  Partial<Record<PitPlayableFighterId, PitCircuitRun | null>>
+>;
+export type PitStoredDescentRuns = Readonly<
+  Partial<Record<PitPlayableFighterId, PitDescentRun | null>>
+>;
+
+export type PitRunTransition =
+  | {
+      readonly id: string;
+      readonly kind: "circuit-persist";
+      readonly run: PitCircuitRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "circuit-replace";
+      readonly run: PitCircuitRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "descent-persist";
+      readonly run: PitDescentRun;
+    }
+  | {
+      readonly id: string;
+      readonly kind: "descent-replace";
+      readonly run: PitDescentRun;
+    };
+
+type PitRunTransitionHandler = (
+  transition: PitRunTransition,
+) => Promise<PitMatchPersistenceAck>;
+
+type PitArcadePersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitArcadePersistenceState {
+  readonly status: PitArcadePersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitArcadeSettlement {
+  readonly result: PitMatchCompleteResult;
+  readonly nextRun: PitArcadeRun;
+}
+
+type PitCircuitPersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitCircuitPersistenceState {
+  readonly status: PitCircuitPersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitCircuitSettlement {
+  readonly result: PitMatchCompleteResult;
+  readonly nextRun: PitCircuitRun;
+}
+
+type PitRunTransitionPersistenceStatus = "idle" | "pending" | "confirmed" | "failed";
+
+interface PitRunTransitionPersistenceState {
+  readonly status: PitRunTransitionPersistenceStatus;
+  readonly message: string;
+}
+
+interface PendingPitRunTransition {
+  readonly transition: PitRunTransition;
+  readonly onPersisted: () => void;
 }
 
 interface PitCanvasProps {
@@ -81,8 +210,12 @@ interface PitCanvasProps {
   highContrast: boolean;
   reducedGore: boolean;
   screenShake: boolean;
+  unlockedCosmeticIds?: readonly string[];
+  savedCircuitRuns?: PitStoredCircuitRuns;
+  savedDescentRuns?: PitStoredDescentRuns;
   onExit: () => void;
-  onMatchComplete?: (result: PitMatchCompleteResult) => void;
+  onMatchComplete?: PitMatchCompleteHandler;
+  onRunTransition?: PitRunTransitionHandler;
   lastReplay?: PitReplay | null;
 }
 
@@ -93,6 +226,12 @@ interface ImpactFlash {
   blocked: boolean;
 }
 
+interface PitDescentResourceFeedback {
+  readonly frame: number;
+  readonly durationFrames: number;
+  readonly fighterIds: readonly PitFighterId[];
+}
+
 const EMPTY_INPUT: PitInput = Object.freeze({});
 const PIT_PLAYER_ONE_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
   (actionId) => actionId.startsWith("pit.p1"),
@@ -100,6 +239,14 @@ const PIT_PLAYER_ONE_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
 const PIT_PLAYER_TWO_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
   (actionId) => actionId.startsWith("pit.p2"),
 );
+const PIT_SELECTABLE_MODES: readonly PitMode[] = ["cpu", "local", "training", "arcade", "circuit", "descent"];
+
+function cyclePitMode(current: PitMode, direction: -1 | 1): PitMode {
+  const index = PIT_SELECTABLE_MODES.indexOf(current);
+  return PIT_SELECTABLE_MODES[
+    (index + direction + PIT_SELECTABLE_MODES.length) % PIT_SELECTABLE_MODES.length
+  ];
+}
 
 function createPitResultId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -108,11 +255,42 @@ function createPitResultId(): string {
   return `pit-${Date.now().toString(36)}-${performance.now().toString(36).replace(".", "")}`;
 }
 
+function createPitDescentSeed(): number {
+  if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {
+    return crypto.getRandomValues(new Uint32Array(1))[0] ?? 0;
+  }
+  return Date.now() >>> 0;
+}
+
 const ACTION_LABELS: Record<PitAttackKind, string> = {
   light: "Lame rapide",
   medium: "Balayage",
   heavy: "Frappe lourde",
   technique: "Technique basse",
+};
+
+const TECHNIQUE_DEVICE_COLORS: Record<PitTechniqueDevice, string> = {
+  disc: "#d8fff7",
+  net: "#8df4cc",
+  plasma: "#ff715d",
+  shoulder: "#ffae5a",
+  whip: "#c9f8e8",
+  "bolt-trap": "#d8b06b",
+  shockwave: "#ef8a55",
+  drone: "#77d9d0",
+  "counter-blade": "#e8e0bc",
+  spear: "#ebd58f",
+  "bow-snare": "#9be09d",
+  "code-parry": "#79fff0",
+  "warlord-wave": "#df5a42",
+  "stone-heart-charge": "#d6a15d",
+};
+
+const TECHNIQUE_STATUS_LABELS: Record<PitTechniqueStatusKind, string> = {
+  netted: "FILET",
+  pinned: "IMMOBILISÉ",
+  tracked: "TRAQUÉ",
+  staggered: "ÉBRANLÉ",
 };
 
 function firstBinding(bindings: ControlBindings, action: ControlActionId): string {
@@ -215,7 +393,13 @@ function cpuInput(state: PitCombatState): PitInput {
 
 function eventLabel(event: PitCombatEvent): string {
   if (event.type === "round-start") return `MANCHE ${event.round} · COMBAT`;
-  if (event.type === "attack-start") return ACTION_LABELS[event.attack].toUpperCase();
+  if (event.type === "attack-start") {
+    return (
+      event.attack === "technique"
+        ? PIT_FIGHTERS[event.fighterId].attacks.technique.label
+        : ACTION_LABELS[event.attack]
+    ).toUpperCase();
+  }
   if (event.type === "throw-start") return "SAISIE RITUELLE";
   if (event.type === "hit") return `${event.combo > 1 ? `${event.combo} COUPS · ` : ""}${event.damage} DÉGÂTS`;
   if (event.type === "block") return `GARDE · ${event.damage} DÉGÂTS RÉSIDUELS`;
@@ -229,6 +413,123 @@ function eventLabel(event: PitCombatEvent): string {
   return event.result.reason === "timeout" ? "TEMPS ÉCOULÉ" : event.result.reason.toUpperCase();
 }
 
+function drawTechniqueEffect(
+  context: CanvasRenderingContext2D,
+  state: PitCombatState,
+  effect: PitTechniqueEffectState,
+  groundY: number,
+  highContrast: boolean,
+  showHitboxes: boolean,
+): void {
+  const owner = state.fighters[effect.ownerSlot];
+  const technique = PIT_FIGHTERS[owner.definitionId].technique;
+  const box = getPitTechniqueBox(state, effect);
+  const x = box.x;
+  const y = groundY - box.y - box.height;
+  const centerX = x + box.width / 2;
+  const centerY = y + box.height / 2;
+  const color = highContrast ? "#ffffff" : TECHNIQUE_DEVICE_COLORS[technique.device];
+  const pulse = 0.72 + Math.sin((state.frame + effect.id * 11) * 0.22) * 0.18;
+
+  context.save();
+  context.globalAlpha = effect.phase === "arming" ? pulse * 0.55 : effect.phase === "returning" ? 0.72 : 0.94;
+  context.strokeStyle = color;
+  context.fillStyle = color;
+  context.shadowColor = color;
+  context.shadowBlur = effect.phase === "active" ? 12 : 5;
+  context.lineWidth = 3;
+  if (effect.phase === "arming") context.setLineDash([5, 5]);
+  if (effect.phase === "returning") context.setLineDash([10, 4]);
+
+  if (technique.device === "net" || technique.device === "bow-snare") {
+    context.strokeRect(x, y, box.width, box.height);
+    for (let offset = 8; offset < box.width; offset += 10) {
+      context.beginPath();
+      context.moveTo(x + offset, y);
+      context.lineTo(x + Math.max(0, offset - 15), y + box.height);
+      context.stroke();
+    }
+    for (let offset = 8; offset < box.height; offset += 10) {
+      context.beginPath();
+      context.moveTo(x, y + offset);
+      context.lineTo(x + box.width, y + Math.max(0, offset - 8));
+      context.stroke();
+    }
+  } else if (
+    technique.device === "disc" ||
+    technique.device === "counter-blade" ||
+    technique.device === "code-parry"
+  ) {
+    context.beginPath();
+    context.ellipse(centerX, centerY, box.width * 0.48, Math.max(4, box.height * 0.22), 0, 0, Math.PI * 2);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.moveTo(centerX, y);
+    context.lineTo(centerX, y + box.height);
+    context.stroke();
+  } else if (technique.device === "plasma" || technique.device === "shoulder") {
+    const radius = Math.max(5, Math.min(box.width, box.height) * 0.42);
+    const glow = context.createRadialGradient(centerX, centerY, 1, centerX, centerY, radius);
+    glow.addColorStop(0, "#ffffff");
+    glow.addColorStop(0.35, color);
+    glow.addColorStop(1, "rgba(255,80,50,0)");
+    context.fillStyle = glow;
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    context.fill();
+  } else if (
+    technique.device === "shockwave" ||
+    technique.device === "warlord-wave"
+  ) {
+    context.beginPath();
+    context.ellipse(centerX, y + box.height, box.width * 0.48, Math.max(5, box.height * 0.28), 0, Math.PI, Math.PI * 2);
+    context.stroke();
+    context.globalAlpha *= 0.55;
+    context.beginPath();
+    context.ellipse(centerX, y + box.height, box.width * 0.32, Math.max(3, box.height * 0.18), 0, Math.PI, Math.PI * 2);
+    context.stroke();
+  } else if (technique.device === "drone") {
+    context.beginPath();
+    context.ellipse(centerX, centerY, box.width * 0.34, box.height * 0.3, 0, 0, Math.PI * 2);
+    context.fill();
+    context.beginPath();
+    context.moveTo(x, centerY);
+    context.lineTo(x + box.width, centerY);
+    context.moveTo(centerX, y);
+    context.lineTo(centerX, y + box.height);
+    context.stroke();
+  } else if (technique.device === "bolt-trap") {
+    context.beginPath();
+    context.moveTo(x, y + box.height);
+    context.lineTo(centerX, y);
+    context.lineTo(x + box.width, y + box.height);
+    context.closePath();
+    context.stroke();
+  } else {
+    context.beginPath();
+    context.moveTo(x, centerY + technique.height * 0.12);
+    context.lineTo(x + box.width, centerY - technique.height * 0.12);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(x + box.width, centerY - technique.height * 0.12);
+    context.lineTo(x + box.width - effect.direction * 12, centerY - 8);
+    context.lineTo(x + box.width - effect.direction * 12, centerY + 8);
+    context.closePath();
+    context.fill();
+  }
+
+  context.restore();
+  if (showHitboxes) {
+    context.save();
+    context.strokeStyle = "#d888ff";
+    context.lineWidth = 2;
+    context.strokeRect(x, y, box.width, box.height);
+    context.restore();
+  }
+}
+
 function drawArena(
   canvas: HTMLCanvasElement,
   state: PitCombatState,
@@ -236,47 +537,173 @@ function drawArena(
   reducedGore: boolean,
   showHitboxes: boolean,
   impact: ImpactFlash | null,
+  leftCosmeticPalette: PitArcadeCosmeticDefinition["palette"] | null,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
-  const { width, height, groundY } = PIT_ARENA;
+  const arena = PIT_ARENAS[state.arenaId];
+  const { width, height, groundY } = arena;
   context.clearRect(0, 0, width, height);
 
   const sky = context.createLinearGradient(0, 0, 0, height);
-  sky.addColorStop(0, highContrast ? "#091719" : "#070908");
-  sky.addColorStop(0.58, highContrast ? "#15302e" : "#171513");
+  sky.addColorStop(0, highContrast ? "#071d22" : arena.palette.sky);
+  sky.addColorStop(0.62, highContrast ? "#15302e" : arena.palette.ground);
   sky.addColorStop(1, "#020303");
   context.fillStyle = sky;
   context.fillRect(0, 0, width, height);
 
-  // A deterministic basalt circle assembled from original vector forms.
   context.save();
-  context.globalAlpha = 0.84;
-  for (let i = 0; i < 31; i += 1) {
-    const x = 30 + i * 31;
-    const ridge = 34 + ((i * 47) % 72);
-    context.fillStyle = i % 3 === 0 ? "#19221f" : i % 3 === 1 ? "#101715" : "#24201b";
+  context.globalAlpha = highContrast ? 0.82 : 0.64;
+  context.strokeStyle = highContrast ? "#84ffe4" : arena.palette.accent;
+  context.fillStyle = highContrast ? "#173f3b" : arena.palette.ground;
+  context.lineWidth = 3;
+
+  if (arena.id === "the-pit") {
+    for (let index = 0; index < 31; index += 1) {
+      const x = 30 + index * 31;
+      const ridge = 34 + ((index * 47) % 72);
+      context.beginPath();
+      context.moveTo(x - 22, groundY);
+      context.lineTo(x - 14, groundY - ridge * 0.54);
+      context.lineTo(x - 3, groundY - ridge);
+      context.lineTo(x + 15, groundY - ridge * 0.66);
+      context.lineTo(x + 22, groundY);
+      context.closePath();
+      context.fill();
+    }
+    for (let ring = 0; ring < 4; ring += 1) {
+      context.beginPath();
+      context.ellipse(width / 2, groundY + 41, 470 - ring * 64, 75 - ring * 8, 0, Math.PI, Math.PI * 2);
+      context.stroke();
+    }
+  } else if (arena.id === "trophy-hall") {
+    for (let index = 0; index < 7; index += 1) {
+      const x = 72 + index * 136;
+      context.fillRect(x - 15, 80, 30, groundY - 80);
+      context.strokeRect(x - 25, 55, 50, 32);
+      context.beginPath();
+      context.arc(x, 70, 9 + index % 3, 0, Math.PI * 2);
+      context.stroke();
+      context.fillRect(x - 35, groundY - 35, 70, 35);
+    }
     context.beginPath();
-    context.moveTo(x - 22, groundY);
-    context.lineTo(x - 14, groundY - ridge * 0.54);
-    context.lineTo(x - 3, groundY - ridge);
-    context.lineTo(x + 15, groundY - ridge * 0.66);
-    context.lineTo(x + 22, groundY);
-    context.closePath();
-    context.fill();
+    context.moveTo(0, 98);
+    context.lineTo(width, 98);
+    context.stroke();
+  } else if (arena.id === "canopy-causeway") {
+    context.beginPath();
+    context.arc(width * 0.72, 104, 54, 0, Math.PI * 2);
+    context.stroke();
+    for (let index = 0; index < 8; index += 1) {
+      const x = 30 + index * 142;
+      context.fillRect(x, 72, 34 + index % 2 * 13, groundY - 72);
+      context.beginPath();
+      context.moveTo(x + 14, 132 + index * 7 % 65);
+      context.quadraticCurveTo(x + 78, 86, x + 126, 122 + index * 11 % 80);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(x + 48, 0);
+      context.bezierCurveTo(x + 33, 110, x + 84, 178, x + 54, groundY);
+      context.stroke();
+    }
+  } else if (arena.id === "frost-chamber") {
+    for (let index = 0; index < 14; index += 1) {
+      const x = 12 + index * 73;
+      const shard = 76 + (index * 29) % 128;
+      context.beginPath();
+      context.moveTo(x, groundY);
+      context.lineTo(x + 28, groundY - shard);
+      context.lineTo(x + 57, groundY);
+      context.closePath();
+      context.stroke();
+      if (index % 2 === 0) context.fill();
+    }
+    for (let index = 0; index < 36; index += 1) {
+      const x = (index * 97 + state.frame / 3) % width;
+      const y = (index * 53 + state.frame / 5) % Math.max(1, groundY - 35);
+      context.fillRect(x, y, 2, 2);
+    }
+  } else if (arena.id === "ash-courtyard") {
+    for (let index = 0; index < 6; index += 1) {
+      const x = 44 + index * 172;
+      context.fillRect(x, 130 - index % 2 * 35, 38, groundY - 130 + index % 2 * 35);
+      context.beginPath();
+      context.arc(x + 82, 168, 66, Math.PI, Math.PI * 2);
+      context.stroke();
+    }
+    for (let index = 0; index < 28; index += 1) {
+      const x = (index * 83 + state.frame * 0.4) % width;
+      const y = groundY - ((index * 37 + state.frame * 0.65) % 220);
+      context.fillRect(x, y, 3, 3);
+    }
+  } else if (arena.id === "glass-terrace") {
+    for (let index = 0; index < 10; index += 1) {
+      const x = -40 + index * 112;
+      const top = 54 + index % 3 * 38;
+      context.beginPath();
+      context.moveTo(x, groundY);
+      context.lineTo(x + 68, top);
+      context.lineTo(x + 118, groundY);
+      context.closePath();
+      context.stroke();
+      if (index % 2 === 0) context.fill();
+    }
+    context.beginPath();
+    context.moveTo(0, 190);
+    context.lineTo(width, 112);
+    context.moveTo(0, 252);
+    context.lineTo(width, 176);
+    context.stroke();
+  } else if (arena.id === "abyssal-bridge") {
+    context.globalAlpha = highContrast ? 0.88 : 0.74;
+    for (let band = 0; band < 7; band += 1) {
+      context.beginPath();
+      for (let x = 0; x <= width; x += 24) {
+        const y = 52 + band * 43 + Math.sin((x + state.frame * 0.55 + band * 31) / 54) * 11;
+        if (x === 0) context.moveTo(x, y);
+        else context.lineTo(x, y);
+      }
+      context.stroke();
+    }
+    for (let index = 0; index < 8; index += 1) {
+      const x = 64 + index * 128;
+      context.beginPath();
+      context.arc(x, groundY + 22, 78, Math.PI, Math.PI * 2);
+      context.stroke();
+    }
+    context.fillStyle = highContrast ? "#7ffff0" : arena.palette.accent;
+    for (let index = 0; index < 5; index += 1) {
+      const x = 110 + index * 190 + Math.sin((state.frame + index * 40) / 90) * 26;
+      const y = 92 + index % 3 * 58;
+      context.beginPath();
+      context.ellipse(x, y, 34 + index * 4, 9 + index, 0, 0, Math.PI * 2);
+      context.fill();
+      context.beginPath();
+      context.moveTo(x - 28, y);
+      context.lineTo(x - 55, y - 18);
+      context.lineTo(x - 55, y + 18);
+      context.closePath();
+      context.fill();
+    }
+  } else {
+    for (let index = 0; index < 6; index += 1) {
+      const x = 65 + index * 168;
+      context.fillRect(x, 108 + index % 2 * 30, 42, groundY - 108 - index % 2 * 30);
+      context.beginPath();
+      context.arc(x + 21, 118, 61, Math.PI, Math.PI * 2);
+      context.stroke();
+    }
+    context.beginPath();
+    context.moveTo(width * 0.34, groundY);
+    context.lineTo(width * 0.5, 92);
+    context.lineTo(width * 0.66, groundY);
+    context.stroke();
   }
   context.restore();
 
-  context.strokeStyle = highContrast ? "rgba(103,255,221,.34)" : "rgba(208,157,76,.22)";
-  context.lineWidth = 2;
-  for (let ring = 0; ring < 4; ring += 1) {
-    context.beginPath();
-    context.ellipse(width / 2, groundY + 41, 470 - ring * 64, 75 - ring * 8, 0, Math.PI, Math.PI * 2);
-    context.stroke();
-  }
-  context.fillStyle = "#0b0e0d";
+  context.fillStyle = highContrast ? "#06100e" : arena.palette.ground;
   context.fillRect(0, groundY, width, height - groundY);
-  context.strokeStyle = "#6f5735";
+  context.strokeStyle = highContrast ? "#8fffe1" : arena.palette.accent;
   context.lineWidth = 5;
   context.beginPath();
   context.moveTo(0, groundY + 1);
@@ -285,27 +712,34 @@ function drawArena(
   }
   context.stroke();
 
-  for (let i = 0; i < 7; i += 1) {
-    const x = 105 + i * 126;
-    const flame = 8 + ((state.frame + i * 19) % 14);
-    context.fillStyle = "rgba(218,113,44,.18)";
+  for (let index = 0; index < 7; index += 1) {
+    const x = 105 + index * 126;
+    const pulse = 8 + ((state.frame + index * 19) % 14);
+    context.globalAlpha = 0.22;
+    context.fillStyle = highContrast ? "#8fffe1" : arena.palette.accent;
     context.beginPath();
-    context.arc(x, groundY + 48, 17 + flame / 3, 0, Math.PI * 2);
+    context.arc(x, groundY + 48, 17 + pulse / 3, 0, Math.PI * 2);
     context.fill();
-    context.fillStyle = "#d17b36";
-    context.fillRect(x - 2, groundY + 37 - flame, 4, flame);
+    context.globalAlpha = 1;
+    context.fillRect(x - 2, groundY + 37 - pulse, 4, pulse);
+  }
+
+  for (const effect of state.techniqueEffects) {
+    drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes);
   }
 
   state.fighters.forEach((fighter) => {
     const definition = PIT_FIGHTERS[fighter.definitionId];
+    const fighterPalette =
+      fighter.slot === 0 && leftCosmeticPalette ? leftCosmeticPalette : definition.palette;
     const boxes = getPitFighterBoxes(fighter);
     const body = boxes.pushbox;
     const screenY = groundY - fighter.y;
     const bodyTop = screenY - body.height;
     const primary = highContrast
       ? fighter.slot === 0 ? "#e6d07a" : "#ff6d65"
-      : definition.palette.primary;
-    const accent = highContrast ? "#eafcff" : definition.palette.accent;
+      : fighterPalette.primary;
+    const accent = highContrast ? "#eafcff" : fighterPalette.accent;
     const lean = fighter.phase === "startup" ? fighter.facing * 6 : fighter.phase === "active" ? fighter.facing * 13 : 0;
 
     context.save();
@@ -333,7 +767,7 @@ function drawArena(
     context.lineTo(-24, body.height - 30);
     context.closePath();
     context.fill();
-    context.fillStyle = definition.palette.secondary;
+    context.fillStyle = fighterPalette.secondary;
     context.fillRect(-24 + lean, 39, 48, 23);
     context.fillStyle = accent;
     context.beginPath();
@@ -362,6 +796,35 @@ function drawArena(
         boxes.hurtbox.width + 6,
         boxes.hurtbox.height + 6,
       );
+      context.restore();
+    }
+
+    if (fighter.techniqueStatus) {
+      const statusColor = highContrast
+        ? "#ffffff"
+        : TECHNIQUE_DEVICE_COLORS[
+            PIT_FIGHTERS[fighter.techniqueStatus.sourceFighterId].technique.device
+          ];
+      context.save();
+      context.globalAlpha = 0.82;
+      context.strokeStyle = statusColor;
+      context.lineWidth = 2;
+      context.setLineDash(fighter.techniqueStatus.kind === "tracked" ? [3, 5] : [8, 4]);
+      context.lineDashOffset = -(state.frame % 12);
+      context.strokeRect(
+        boxes.hurtbox.x - 5,
+        groundY - boxes.hurtbox.y - boxes.hurtbox.height - 5,
+        boxes.hurtbox.width + 10,
+        boxes.hurtbox.height + 10,
+      );
+      if (fighter.techniqueStatus.kind === "netted" || fighter.techniqueStatus.kind === "pinned") {
+        context.beginPath();
+        context.moveTo(boxes.hurtbox.x, groundY - boxes.hurtbox.y - boxes.hurtbox.height);
+        context.lineTo(boxes.hurtbox.x + boxes.hurtbox.width, groundY - boxes.hurtbox.y);
+        context.moveTo(boxes.hurtbox.x + boxes.hurtbox.width, groundY - boxes.hurtbox.y - boxes.hurtbox.height);
+        context.lineTo(boxes.hurtbox.x, groundY - boxes.hurtbox.y);
+        context.stroke();
+      }
       context.restore();
     }
 
@@ -429,14 +892,24 @@ function TouchButton({
   );
 }
 
-function FighterCard({ fighterId, side }: { fighterId: PitFighterId; side: "GAUCHE" | "DROITE" }) {
+function FighterCard({
+  fighterId,
+  side,
+  paletteOverride = null,
+}: {
+  fighterId: PitFighterId;
+  side: "GAUCHE" | "DROITE";
+  paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
+}) {
   const fighter = PIT_FIGHTERS[fighterId];
+  const palette = paletteOverride ?? fighter.palette;
   return (
-    <article className={styles.fighterCard} style={{ "--fighter": fighter.palette.primary } as React.CSSProperties}>
+    <article className={styles.fighterCard} style={{ "--fighter": palette.primary } as React.CSSProperties}>
       <span className={styles.sideLabel}>{side}</span>
       <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
       <h3>{fighter.name}</h3>
-      <p>{fighter.epithet}</p>
+      <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
+      <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
       <dl>
         <div><dt>VIE</dt><dd>{fighter.maxHealth}</dd></div>
         <div><dt>PUISSANCE</dt><dd>{Math.round(fighter.power * 100)}</dd></div>
@@ -451,13 +924,24 @@ export default function PitCanvas({
   highContrast,
   reducedGore,
   screenShake,
+  unlockedCosmeticIds = [],
+  savedCircuitRuns = {},
+  savedDescentRuns = {},
   onExit,
   onMatchComplete,
+  onRunTransition,
   lastReplay = null,
 }: PitCanvasProps) {
   const [mode, setMode] = useState<PitMode>("cpu");
-  const [leftId, setLeftId] = useState<PitFighterId>("jungle-hunter");
-  const [rightId, setRightId] = useState<PitFighterId>("berserker");
+  const [leftId, setLeftId] = useState<PitPlayableFighterId>("jungle-hunter");
+  const [rightId, setRightId] = useState<PitPlayableFighterId>("berserker");
+  const [arenaId, setArenaId] = useState<PitArenaId>("the-pit");
+  const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
+  const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
+  const [descentRun, setDescentRun] = useState<PitDescentRun | null>(null);
+  const [descentOptionIndex, setDescentOptionIndex] = useState(0);
+  const [descentDraftSeed, setDescentDraftSeed] = useState(0);
+  const [activeMatchResultId, setActiveMatchResultId] = useState("");
   const [combat, setCombat] = useState<PitCombatState | null>(null);
   const [announcement, setAnnouncement] = useState("CHOISIS LE RITUEL");
   const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
@@ -472,6 +956,24 @@ export default function PitCanvas({
   const [trainingRecordedTicks, setTrainingRecordedTicks] = useState(0);
   const [trainingNotice, setTrainingNotice] = useState("");
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
+  const [descentCombatPresentation, setDescentCombatPresentation] =
+    useState<PitDescentCombatPresentation | null>(null);
+  const [descentResourceFeedback, setDescentResourceFeedback] =
+    useState<PitDescentResourceFeedback | null>(null);
+  const [equippedCosmeticId, setEquippedCosmeticId] = useState<string | null>(null);
+  const [arcadePersistence, setArcadePersistence] = useState<PitArcadePersistenceState>({
+    status: "idle",
+    message: "",
+  });
+  const [circuitPersistence, setCircuitPersistence] = useState<PitCircuitPersistenceState>({
+    status: "idle",
+    message: "",
+  });
+  const [runTransitionPersistence, setRunTransitionPersistence] =
+    useState<PitRunTransitionPersistenceState>({
+      status: "idle",
+      message: "",
+    });
   const [touchAvailable] = useState(() =>
     typeof navigator !== "undefined" &&
       (navigator.maxTouchPoints > 0 || window.matchMedia("(any-pointer: coarse)").matches),
@@ -479,6 +981,7 @@ export default function PitCanvas({
   const combatRef = useRef<PitCombatState | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rootRef = useRef<HTMLElement>(null);
+  const resultOverlayRef = useRef<HTMLDivElement>(null);
   const resultPrimaryRef = useRef<HTMLButtonElement>(null);
   const pressedKeysRef = useRef(new Set<string>());
   const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
@@ -488,10 +991,20 @@ export default function PitCanvas({
   const matchResultIdRef = useRef("");
   const recorderRef = useRef<PitReplayRecorder | null>(null);
   const replayReaderRef = useRef<PitReplayReader | null>(null);
+  const arcadeRunRef = useRef<PitArcadeRun | null>(null);
+  const circuitRunRef = useRef<PitCircuitRun | null>(null);
+  const descentRunRef = useRef<PitDescentRun | null>(null);
+  const descentCombatContextRef = useRef<PitDescentCombatContext | null>(null);
   const trainingSettingsRef = useRef(trainingSettings);
   const trainingActivityRef = useRef<PitTrainingActivity>("idle");
   const trainingRecorderRef = useRef<PitTrainingSequenceRecorder | null>(null);
   const trainingReaderRef = useRef<PitTrainingSequenceReader | null>(null);
+  const pendingArcadeSettlementRef = useRef<PendingPitArcadeSettlement | null>(null);
+  const arcadePersistenceAttemptRef = useRef(0);
+  const pendingCircuitSettlementRef = useRef<PendingPitCircuitSettlement | null>(null);
+  const circuitPersistenceAttemptRef = useRef(0);
+  const pendingRunTransitionRef = useRef<PendingPitRunTransition | null>(null);
+  const runTransitionAttemptRef = useRef(0);
   const normalizedLastReplay = useMemo(
     () => lastReplay ? normalizePitReplay(lastReplay) : null,
     [lastReplay],
@@ -502,6 +1015,15 @@ export default function PitCanvas({
     : "";
   const activeReplayNotice = replayNotice || invalidReplayMessage;
   const activeAriaAnnouncement = invalidReplayMessage || ariaAnnouncement;
+  const runTransitionSelectionLocked =
+    runTransitionPersistence.status === "pending" ||
+    runTransitionPersistence.status === "failed";
+  const selectedArcadeCosmetic = PIT_ARCADE_COSMETICS[leftId];
+  const selectedCosmeticUnlocked = unlockedCosmeticIds.includes(selectedArcadeCosmetic.id);
+  const equippedArcadeCosmetic =
+    selectedCosmeticUnlocked && equippedCosmeticId === selectedArcadeCosmetic.id
+      ? selectedArcadeCosmetic
+      : null;
   const gameplayKeyCodes = useMemo(() => {
     const actionIds = mode === "local"
       ? [...PIT_PLAYER_ONE_ACTION_IDS, ...PIT_PLAYER_TWO_ACTION_IDS]
@@ -513,6 +1035,18 @@ export default function PitCanvas({
     combatRef.current = next;
     setCombat(next);
   }, []);
+
+  const changePitMode = useCallback((nextMode: PitMode) => {
+    if (runTransitionSelectionLocked) return;
+    setMode(nextMode);
+    if (
+      nextMode === "descent" &&
+      descentRunRef.current?.fighterId !== leftId &&
+      !savedDescentRuns[leftId]
+    ) {
+      setDescentDraftSeed(createPitDescentSeed());
+    }
+  }, [leftId, runTransitionSelectionLocked, savedDescentRuns]);
 
   const resetLiveInputs = useCallback(() => {
     pressedKeysRef.current.clear();
@@ -628,6 +1162,7 @@ export default function PitCanvas({
       recorderRef.current = createPitReplayRecorder({
         fighters: [next.fighters[0].definitionId, next.fighters[1].definitionId],
         rules: next.rules,
+        arenaId: next.arenaId,
       });
       setReplayNotice("");
     } catch {
@@ -637,29 +1172,369 @@ export default function PitCanvas({
     }
   }, []);
 
-  const startMatch = useCallback(() => {
-    const next = createPitCombatState(leftId, rightId, { mode: mode === "training" ? "training" : "match" });
+  const launchLiveMatch = useCallback((
+    playerId: PitPlayableFighterId,
+    opponentId: PitFighterId,
+    nextArenaId: PitArenaId,
+    nextMode: PitMode,
+    descentRunState?: PitDescentRun,
+    descentNode?: PitDescentNode,
+  ) => {
+    let next = createPitCombatState(playerId, opponentId, {
+      mode: nextMode === "training" ? "training" : "match",
+      arenaId: nextArenaId,
+    });
+    if (nextMode === "descent") {
+      if (!descentRunState || !descentNode) {
+        throw new Error("A Descent duel requires its persisted route and node.");
+      }
+      const prepared = preparePitDescentCombat(next, descentRunState, descentNode);
+      next = prepared.state;
+      // Descente uses one decisive round so the route health cannot be reset by a normal best-of-three.
+      next.fighters[0] = { ...next.fighters[0], roundsWon: 1 };
+      next.fighters[1] = { ...next.fighters[1], roundsWon: 1 };
+      descentCombatContextRef.current = prepared.context;
+      setDescentCombatPresentation(prepared.presentation);
+    } else {
+      descentCombatContextRef.current = null;
+      setDescentCombatPresentation(null);
+    }
+    setDescentResourceFeedback(null);
     clearTrainingActivity();
     setTrainingNotice("");
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
+    setActiveMatchResultId(matchResultIdRef.current);
     replayReaderRef.current = null;
     setPlaybackReplay(null);
     setReplayEnded(false);
     setImpact(null);
+    pendingArcadeSettlementRef.current = null;
+    arcadePersistenceAttemptRef.current += 1;
+    setArcadePersistence({ status: "idle", message: "" });
+    pendingCircuitSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    setCircuitPersistence({ status: "idle", message: "" });
+    pendingRunTransitionRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    setRunTransitionPersistence({ status: "idle", message: "" });
+    setArenaId(nextArenaId);
     resetLiveInputs();
-    if (mode === "training") recorderRef.current = null;
+    if (nextMode === "training" || nextMode === "descent") recorderRef.current = null;
     else beginRecording(next);
-    const message = mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT";
+    const message = nextMode === "training"
+      ? "ENTRAÎNEMENT LIBRE"
+      : nextMode === "arcade"
+        ? "ARCADE · COMBAT"
+        : nextMode === "circuit"
+          ? "CIRCUIT DU CLAN · COMBAT"
+          : nextMode === "descent"
+            ? "DESCENTE · MANCHE DÉCISIVE"
+            : "MANCHE 1 · COMBAT";
     setAnnouncement(message);
-    setAriaAnnouncement(mode === "training" ? "Entraînement libre commencé." : "Manche 1. Combat.");
+    setAriaAnnouncement(
+      nextMode === "training"
+        ? "Entraînement libre commencé."
+        : nextMode === "arcade"
+          ? "Combat du parcours Arcade commencé."
+          : nextMode === "circuit"
+            ? "Combat du Circuit du clan commencé."
+            : nextMode === "descent"
+              ? "Combat décisif de la Descente commencé avec la santé conservée."
+              : "Manche 1. Combat.",
+    );
     changeCombat(next);
-  }, [beginRecording, changeCombat, clearTrainingActivity, leftId, mode, resetLiveInputs, rightId]);
+  }, [beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs]);
+
+  const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
+    pendingRunTransitionRef.current = settlement;
+    const attempt = runTransitionAttemptRef.current + 1;
+    runTransitionAttemptRef.current = attempt;
+    setRunTransitionPersistence({
+      status: "pending",
+      message: "Écriture durable de la route THE PIT en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onRunTransition
+          ? await onRunTransition(settlement.transition)
+          : {
+              persisted: false,
+              message: "La sauvegarde des routes THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture de la route THE PIT a échoué.",
+        };
+      }
+      if (
+        runTransitionAttemptRef.current !== attempt ||
+        pendingRunTransitionRef.current?.transition.id !== settlement.transition.id
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setRunTransitionPersistence({ status: "failed", message: acknowledgement.message });
+        return;
+      }
+      pendingRunTransitionRef.current = null;
+      setRunTransitionPersistence({ status: "confirmed", message: "Route THE PIT enregistrée." });
+      settlement.onPersisted();
+    };
+    void submit();
+  }, [onRunTransition]);
+
+  const retryRunTransition = useCallback(() => {
+    const settlement = pendingRunTransitionRef.current;
+    if (settlement) submitRunTransition(settlement);
+  }, [submitRunTransition]);
+
+  const launchCircuitSnapshot = useCallback((
+    baseRun: PitCircuitRun,
+    mutationKind: "circuit-persist" | "circuit-replace",
+  ) => {
+    const historyExhausted =
+      baseRun.appliedResults.length >= PIT_CIRCUIT_MAX_RESULTS;
+    const launchRun = historyExhausted
+      ? createPitCircuitRun(baseRun.fighterId)
+      : baseRun;
+    const launchMutationKind = historyExhausted
+      ? "circuit-replace"
+      : mutationKind;
+    if (historyExhausted) {
+      setReplayNotice(
+        "Historique du Circuit plein : nouveau Circuit créé, statistiques conservées.",
+      );
+    }
+    const fight = PIT_CLAN_CIRCUITS[launchRun.fighterId].fights[launchRun.fightIndex];
+    if (!fight) return;
+    const selectedRun = launchRun.selectedFightId
+      ? launchRun
+      : selectPitCircuitFight(launchRun, fight.id);
+    const launch = () => {
+      circuitRunRef.current = selectedRun;
+      setCircuitRun(selectedRun);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      launchLiveMatch(
+        selectedRun.fighterId,
+        fight.opponentId,
+        fight.arenaId,
+        "circuit",
+      );
+    };
+    if (launchRun.selectedFightId) {
+      launch();
+      return;
+    }
+    submitRunTransition({
+      transition: {
+        id: createPitResultId(),
+        kind: launchMutationKind,
+        run: selectedRun,
+      },
+      onPersisted: launch,
+    });
+  }, [launchLiveMatch, submitRunTransition]);
+
+  const resolveDescentNonCombat = useCallback((
+    selectedRun: PitDescentRun,
+    node: PitDescentNode,
+  ) => {
+    const transitionId = createPitResultId();
+    const application = applyPitDescentResolution(selectedRun, {
+      id: transitionId,
+      nodeId: node.id,
+    });
+    submitRunTransition({
+      transition: {
+        id: transitionId,
+        kind: "descent-persist",
+        run: application.run,
+      },
+      onPersisted: () => {
+        descentRunRef.current = application.run;
+        setDescentRun(application.run);
+        setDescentOptionIndex(0);
+        setAnnouncement(node.kind === "relic" ? "RELIQUE SCELLÉE" : "SANTÉ RESTAURÉE");
+        setAriaAnnouncement(
+          node.kind === "relic"
+            ? "Relique temporaire de Descente enregistrée."
+            : "Récupération de santé de Descente enregistrée.",
+        );
+      },
+    });
+  }, [submitRunTransition]);
+
+  const enterPersistedDescentRun = useCallback((run: PitDescentRun) => {
+    descentRunRef.current = run;
+    setDescentRun(run);
+    const plan = createPitDescentPlan(run.fighterId, run.seed);
+    const node = run.selectedNodeId
+      ? plan.floors[run.completedFloors]?.options.find(
+          (candidate) => candidate.id === run.selectedNodeId,
+        ) ?? null
+      : null;
+    if (!node) return;
+    if ((node.kind === "fight" || node.kind === "boss") && node.opponentId) {
+      launchLiveMatch(run.fighterId, node.opponentId, node.arenaId, "descent", run, node);
+      return;
+    }
+    resolveDescentNonCombat(run, node);
+  }, [launchLiveMatch, resolveDescentNonCombat]);
+
+  const chooseDescentBranch = useCallback((
+    baseRun: PitDescentRun,
+    optionIndex: number,
+    mutationKind: "descent-persist" | "descent-replace" = "descent-persist",
+  ) => {
+    if (baseRun.phase !== "active" || baseRun.selectedNodeId) {
+      enterPersistedDescentRun(baseRun);
+      return;
+    }
+    const floor = createPitDescentPlan(baseRun.fighterId, baseRun.seed)
+      .floors[baseRun.completedFloors];
+    const node = floor?.options[
+      Math.max(0, Math.min(optionIndex, (floor?.options.length ?? 1) - 1))
+    ];
+    if (!node) return;
+    const selectedRun = selectPitDescentNode(baseRun, node.id);
+    submitRunTransition({
+      transition: {
+        id: createPitResultId(),
+        kind: mutationKind,
+        run: selectedRun,
+      },
+      onPersisted: () => enterPersistedDescentRun(selectedRun),
+    });
+  }, [enterPersistedDescentRun, submitRunTransition]);
+
+  const startMatch = useCallback(() => {
+    if (
+      runTransitionPersistence.status === "failed" &&
+      (mode === "circuit" || mode === "descent")
+    ) {
+      retryRunTransition();
+      return;
+    }
+    if (runTransitionPersistence.status === "pending") return;
+    if (mode === "arcade") {
+      const run = createPitArcadeRun(leftId);
+      const encounter = PIT_ARCADE_LADDERS[leftId].encounters[0];
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      arcadeRunRef.current = run;
+      setArcadeRun(run);
+      launchLiveMatch(leftId, encounter.opponentId, encounter.arenaId, "arcade");
+      return;
+    }
+    if (mode === "circuit") {
+      const localRun = circuitRunRef.current?.fighterId === leftId
+        ? circuitRunRef.current
+        : null;
+      const storedRun = localRun ?? savedCircuitRuns[leftId] ?? null;
+      const historyExhausted =
+        storedRun?.phase === "active" &&
+        storedRun.appliedResults.length >= PIT_CIRCUIT_MAX_RESULTS;
+      const baseRun =
+        storedRun?.phase === "active" && !historyExhausted
+          ? storedRun
+          : createPitCircuitRun(leftId);
+      if (historyExhausted) {
+        setReplayNotice(
+          "Historique du Circuit plein : nouveau Circuit créé, statistiques conservées.",
+        );
+      }
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      launchCircuitSnapshot(
+        baseRun,
+        storedRun?.phase === "completed" || historyExhausted
+          ? "circuit-replace"
+          : "circuit-persist",
+      );
+      return;
+    }
+    if (mode === "descent") {
+      const localRun = descentRunRef.current?.fighterId === leftId
+        ? descentRunRef.current
+        : null;
+      const storedRun = localRun ?? savedDescentRuns[leftId] ?? null;
+      const freshSeed = storedRun && storedRun.phase !== "active"
+        ? createPitDescentSeed()
+        : descentDraftSeed;
+      if (storedRun && storedRun.phase !== "active") {
+        setDescentDraftSeed(freshSeed);
+      }
+      const baseRun = storedRun?.phase === "active"
+        ? storedRun
+        : createPitDescentRun(leftId, freshSeed);
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      chooseDescentBranch(
+        baseRun,
+        descentOptionIndex,
+        storedRun && storedRun.phase !== "active" ? "descent-replace" : "descent-persist",
+      );
+      return;
+    }
+    arcadeRunRef.current = null;
+    setArcadeRun(null);
+    circuitRunRef.current = null;
+    setCircuitRun(null);
+    descentRunRef.current = null;
+    setDescentRun(null);
+    launchLiveMatch(leftId, rightId, arenaId, mode);
+  }, [
+    arenaId,
+    chooseDescentBranch,
+    descentDraftSeed,
+    descentOptionIndex,
+    launchCircuitSnapshot,
+    launchLiveMatch,
+    leftId,
+    mode,
+    rightId,
+    retryRunTransition,
+    runTransitionPersistence.status,
+    savedCircuitRuns,
+    savedDescentRuns,
+  ]);
+
+  const chooseDisplayedDescentBranch = useCallback((optionIndex: number) => {
+    if (runTransitionSelectionLocked) return;
+    setDescentOptionIndex(optionIndex);
+    const localRun = descentRunRef.current?.fighterId === leftId
+      ? descentRunRef.current
+      : null;
+    const storedRun = localRun ?? savedDescentRuns[leftId] ?? null;
+    const baseRun = storedRun?.phase === "active"
+      ? storedRun
+      : createPitDescentRun(leftId, descentDraftSeed);
+    chooseDescentBranch(
+      baseRun,
+      optionIndex,
+      storedRun && storedRun.phase !== "active" ? "descent-replace" : "descent-persist",
+    );
+  }, [
+    chooseDescentBranch,
+    descentDraftSeed,
+    leftId,
+    runTransitionSelectionLocked,
+    savedDescentRuns,
+  ]);
 
   const swapSides = useCallback(() => {
-    setLeftId((current) => current === "jungle-hunter" ? "berserker" : "jungle-hunter");
-    setRightId((current) => current === "jungle-hunter" ? "berserker" : "jungle-hunter");
-  }, []);
+    setLeftId(rightId);
+    setRightId(leftId);
+  }, [leftId, rightId]);
 
   const returnToSelection = useCallback(() => {
     recorderRef.current = null;
@@ -667,24 +1542,256 @@ export default function PitCanvas({
     clearTrainingActivity();
     setPlaybackReplay(null);
     setReplayEnded(false);
+    pendingArcadeSettlementRef.current = null;
+    arcadePersistenceAttemptRef.current += 1;
+    setArcadePersistence({ status: "idle", message: "" });
+    pendingCircuitSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    setCircuitPersistence({ status: "idle", message: "" });
+    pendingRunTransitionRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    setRunTransitionPersistence({ status: "idle", message: "" });
+    arcadeRunRef.current = null;
+    setArcadeRun(null);
+    circuitRunRef.current = null;
+    setCircuitRun(null);
+    descentRunRef.current = null;
+    setDescentRun(null);
+    descentCombatContextRef.current = null;
+    setDescentCombatPresentation(null);
+    setDescentResourceFeedback(null);
     resetLiveInputs();
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
   }, [changeCombat, clearTrainingActivity, resetLiveInputs]);
 
+  const submitArcadeSettlement = useCallback((settlement: PendingPitArcadeSettlement) => {
+    pendingArcadeSettlementRef.current = settlement;
+    const attempt = arcadePersistenceAttemptRef.current + 1;
+    arcadePersistenceAttemptRef.current = attempt;
+    setArcadePersistence({
+      status: "pending",
+      message: "Enregistrement du résultat Arcade en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onMatchComplete
+          ? await onMatchComplete(settlement.result)
+          : {
+              persisted: false,
+              message: "La sauvegarde THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture du résultat THE PIT a échoué.",
+        };
+      }
+
+      if (
+        arcadePersistenceAttemptRef.current !== attempt ||
+        pendingArcadeSettlementRef.current?.result.resultId !== settlement.result.resultId
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setArcadePersistence({
+          status: "failed",
+          message: acknowledgement.message,
+        });
+        return;
+      }
+
+      pendingArcadeSettlementRef.current = null;
+      arcadeRunRef.current = settlement.nextRun;
+      setArcadeRun(settlement.nextRun);
+      setArcadePersistence({
+        status: "confirmed",
+        message: "Résultat Arcade enregistré.",
+      });
+    };
+
+    void submit();
+  }, [onMatchComplete]);
+
+  const retryArcadeSettlement = useCallback(() => {
+    const settlement = pendingArcadeSettlementRef.current;
+    if (settlement) submitArcadeSettlement(settlement);
+  }, [submitArcadeSettlement]);
+
+  const submitCircuitSettlement = useCallback((settlement: PendingPitCircuitSettlement) => {
+    pendingCircuitSettlementRef.current = settlement;
+    const attempt = circuitPersistenceAttemptRef.current + 1;
+    circuitPersistenceAttemptRef.current = attempt;
+    setCircuitPersistence({
+      status: "pending",
+      message: "Enregistrement du résultat du Circuit en cours…",
+    });
+
+    const submit = async () => {
+      let acknowledgement: PitMatchPersistenceAck;
+      try {
+        acknowledgement = onMatchComplete
+          ? await onMatchComplete(settlement.result, settlement.nextRun)
+          : {
+              persisted: false,
+              message: "La sauvegarde THE PIT n’est pas disponible.",
+            };
+      } catch {
+        acknowledgement = {
+          persisted: false,
+          message: "L’écriture du résultat THE PIT a échoué.",
+        };
+      }
+
+      if (
+        circuitPersistenceAttemptRef.current !== attempt ||
+        pendingCircuitSettlementRef.current?.result.resultId !== settlement.result.resultId
+      ) {
+        return;
+      }
+      if (!acknowledgement.persisted) {
+        setCircuitPersistence({
+          status: "failed",
+          message: acknowledgement.message,
+        });
+        return;
+      }
+
+      pendingCircuitSettlementRef.current = null;
+      circuitRunRef.current = settlement.nextRun;
+      setCircuitRun(settlement.nextRun);
+      setCircuitPersistence({
+        status: "confirmed",
+        message: "Résultat du Circuit enregistré.",
+      });
+    };
+
+    void submit();
+  }, [onMatchComplete]);
+
+  const retryCircuitSettlement = useCallback(() => {
+    const settlement = pendingCircuitSettlementRef.current;
+    if (settlement) submitCircuitSettlement(settlement);
+  }, [submitCircuitSettlement]);
+
+  useEffect(() => () => {
+    arcadePersistenceAttemptRef.current += 1;
+    pendingArcadeSettlementRef.current = null;
+    circuitPersistenceAttemptRef.current += 1;
+    pendingCircuitSettlementRef.current = null;
+    runTransitionAttemptRef.current += 1;
+    pendingRunTransitionRef.current = null;
+  }, []);
+
+  const continueArcade = useCallback(() => {
+    if (arcadePersistence.status !== "confirmed") return;
+    const run = arcadeRunRef.current;
+    if (!run || !run.appliedResultIds.includes(matchResultIdRef.current)) return;
+    if (run.phase !== "active") {
+      returnToSelection();
+      return;
+    }
+    const encounter = PIT_ARCADE_LADDERS[run.fighterId].encounters[run.encounterIndex];
+    launchLiveMatch(run.fighterId, encounter.opponentId, encounter.arenaId, "arcade");
+  }, [arcadePersistence.status, launchLiveMatch, returnToSelection]);
+
+  const continueCircuit = useCallback(() => {
+    if (runTransitionPersistence.status === "failed") {
+      retryRunTransition();
+      return;
+    }
+    if (runTransitionPersistence.status === "pending") return;
+    if (circuitPersistence.status !== "confirmed") return;
+    const run = circuitRunRef.current;
+    if (
+      !run ||
+      !run.appliedResults.some((result) => result.resultId === matchResultIdRef.current)
+    ) {
+      return;
+    }
+    if (run.phase !== "active") {
+      returnToSelection();
+      return;
+    }
+    launchCircuitSnapshot(run, "circuit-persist");
+  }, [
+    circuitPersistence.status,
+    launchCircuitSnapshot,
+    retryRunTransition,
+    returnToSelection,
+    runTransitionPersistence.status,
+  ]);
+
+  const continueDescent = useCallback(() => {
+    if (runTransitionPersistence.status !== "confirmed") return;
+    const run = descentRunRef.current;
+    if (
+      !run ||
+      !run.appliedResolutionIds.includes(matchResultIdRef.current) ||
+      run.phase !== "active"
+    ) {
+      return;
+    }
+    recorderRef.current = null;
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    setDescentOptionIndex(0);
+    setAnnouncement("CHOISISSEZ LA BRANCHE");
+    setAriaAnnouncement(
+      "Étage enregistré. Choisissez la prochaine branche de la Descente.",
+    );
+    descentCombatContextRef.current = null;
+    setDescentCombatPresentation(null);
+    setDescentResourceFeedback(null);
+    changeCombat(null);
+  }, [changeCombat, runTransitionPersistence.status]);
+
+  const restartDescent = useCallback(() => {
+    const current = descentRunRef.current;
+    if (!current || runTransitionPersistence.status === "pending") return;
+    const nextSeed = createPitDescentSeed();
+    setDescentDraftSeed(nextSeed);
+    const freshRun = createPitDescentRun(current.fighterId, nextSeed);
+    setDescentOptionIndex(0);
+    chooseDescentBranch(freshRun, 0, "descent-replace");
+  }, [chooseDescentBranch, runTransitionPersistence.status]);
+
   const startReplay = useCallback((candidate: PitReplay) => {
     try {
       const replay = normalizePitReplay(candidate);
       if (!replay) throw new Error("invalid replay");
       const reader = createPitReplayReader(replay);
-      const next = createPitCombatState(replay.fighters[0], replay.fighters[1], replay.rules);
+      const next = createPitCombatState(replay.fighters[0], replay.fighters[1], {
+        ...replay.rules,
+        arenaId: replay.arenaId,
+      });
       recorderRef.current = null;
       replayReaderRef.current = reader;
       clearTrainingActivity();
       reportedMatchFrameRef.current = null;
-      setLeftId(replay.fighters[0]);
-      setRightId(replay.fighters[1]);
+      if (isPitFirstEditionFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
+      if (isPitFirstEditionFighterId(replay.fighters[1])) setRightId(replay.fighters[1]);
+      setArenaId(replay.arenaId);
+      arcadeRunRef.current = null;
+      setArcadeRun(null);
+      circuitRunRef.current = null;
+      setCircuitRun(null);
+      descentRunRef.current = null;
+      setDescentRun(null);
+      descentCombatContextRef.current = null;
+      setDescentCombatPresentation(null);
+      setDescentResourceFeedback(null);
+      pendingCircuitSettlementRef.current = null;
+      circuitPersistenceAttemptRef.current += 1;
+      setCircuitPersistence({ status: "idle", message: "" });
+      pendingRunTransitionRef.current = null;
+      runTransitionAttemptRef.current += 1;
+      setRunTransitionPersistence({ status: "idle", message: "" });
       setPlaybackReplay(replay);
       setReplayEnded(false);
       setReplayNotice("");
@@ -707,6 +1814,7 @@ export default function PitCanvas({
     setTrainingNotice("");
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
+    setActiveMatchResultId(matchResultIdRef.current);
     replayReaderRef.current = null;
     setPlaybackReplay(null);
     setReplayEnded(false);
@@ -764,11 +1872,31 @@ export default function PitCanvas({
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      if (viewPhase === "match-over") resultPrimaryRef.current?.focus({ preventScroll: true });
-      else rootRef.current?.focus({ preventScroll: true });
+      if (viewPhase !== "match-over") {
+        rootRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      if (
+        !playbackReplay &&
+        (
+          (mode === "arcade" &&
+            (arcadePersistence.status === "idle" || arcadePersistence.status === "pending")) ||
+          (mode === "circuit" &&
+            (circuitPersistence.status === "idle" ||
+              circuitPersistence.status === "pending" ||
+              runTransitionPersistence.status === "pending")) ||
+          (mode === "descent" &&
+            (runTransitionPersistence.status === "idle" ||
+              runTransitionPersistence.status === "pending"))
+        )
+      ) {
+        resultOverlayRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      resultPrimaryRef.current?.focus({ preventScroll: true });
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [viewPhase]);
+  }, [arcadePersistence.status, circuitPersistence.status, mode, playbackReplay, runTransitionPersistence.status, viewPhase]);
 
   useEffect(() => {
     if (viewPhase === "combat") {
@@ -798,19 +1926,64 @@ export default function PitCanvas({
       } else {
         const previous = state.previous;
         if (viewPhase === "selection") {
-          if ((current[0] && !previous[0]) || (current[2] && !previous[2])) {
-            setMode((selected) => selected === "cpu" ? "training" : selected === "local" ? "cpu" : "local");
+          const menuDescentRun =
+            descentRunRef.current?.fighterId === leftId
+              ? descentRunRef.current
+              : savedDescentRuns[leftId] ?? null;
+          const canChooseDescentBranch =
+            mode === "descent" &&
+            menuDescentRun?.phase === "active" &&
+            !menuDescentRun.selectedNodeId;
+          if (
+            !runTransitionSelectionLocked &&
+            ((current[0] && !previous[0]) || (current[2] && !previous[2]))
+          ) {
+            if (canChooseDescentBranch) {
+              setDescentOptionIndex((selected) => Math.max(0, selected - 1));
+            } else {
+              changePitMode(cyclePitMode(mode, -1));
+            }
           }
-          if ((current[1] && !previous[1]) || (current[3] && !previous[3])) {
-            setMode((selected) => selected === "cpu" ? "local" : selected === "local" ? "training" : "cpu");
+          if (
+            !runTransitionSelectionLocked &&
+            ((current[1] && !previous[1]) || (current[3] && !previous[3]))
+          ) {
+            if (canChooseDescentBranch && menuDescentRun) {
+              const optionCount = createPitDescentPlan(
+                menuDescentRun.fighterId,
+                menuDescentRun.seed,
+              ).floors[menuDescentRun.completedFloors]?.options.length ?? 1;
+              setDescentOptionIndex((selected) => Math.min(optionCount - 1, selected + 1));
+            } else {
+              changePitMode(cyclePitMode(mode, 1));
+            }
           }
           if (current[4] && !previous[4]) startMatch();
           if (current[5] && !previous[5]) onExit();
-          if (current[6] && !previous[6]) swapSides();
+          if (
+            !runTransitionSelectionLocked &&
+            current[6] &&
+            !previous[6]
+          ) swapSides();
           if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
         } else {
           if (current[4] && !previous[4]) {
             if (playbackReplay && availableReplay) startReplay(availableReplay);
+            else if (mode === "arcade" && arcadePersistence.status === "failed") {
+              retryArcadeSettlement();
+            } else if (mode === "arcade") continueArcade();
+            else if (mode === "circuit" && runTransitionPersistence.status === "failed") {
+              retryRunTransition();
+            } else if (mode === "circuit" && runTransitionPersistence.status === "pending") {
+              // The next selected fight stays blocked until its durable acknowledgement.
+            } else if (mode === "circuit" && circuitPersistence.status === "failed") {
+              retryCircuitSettlement();
+            } else if (mode === "circuit") continueCircuit();
+            else if (mode === "descent" && runTransitionPersistence.status === "failed") {
+              retryRunTransition();
+            } else if (mode === "descent" && descentRunRef.current?.phase === "active") {
+              continueDescent();
+            } else if (mode === "descent") restartDescent();
             else startRematch();
           }
           if (current[5] && !previous[5]) onExit();
@@ -822,7 +1995,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [availableReplay, onExit, playbackReplay, startMatch, startRematch, startReplay, swapSides, viewPhase]);
+  }, [arcadePersistence.status, availableReplay, changePitMode, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
   const simulationRunning = combat !== null && combat.phase !== "match-over" &&
     (!playbackReplay || !replayEnded);
@@ -864,7 +2037,7 @@ export default function PitCanvas({
             combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
           );
           let secondInput: PitInput;
-          if (mode === "cpu") {
+          if (mode === "cpu" || mode === "arcade" || mode === "circuit" || mode === "descent") {
             secondInput = cpuInput(current);
           } else if (mode === "training") {
             const activity = trainingActivityRef.current;
@@ -927,7 +2100,32 @@ export default function PitCanvas({
           }
         }
 
-        current = stepPitCombat(current, inputs);
+        if (mode === "descent" && descentCombatContextRef.current) {
+          const descentFrame = stepPitDescentCombat(
+            current,
+            inputs,
+            descentCombatContextRef.current,
+          );
+          current = descentFrame.state;
+          descentCombatContextRef.current = descentFrame.context;
+          setDescentCombatPresentation(descentFrame.presentation);
+          const resourceFighterIds = [
+            ...new Set(
+              current.events.flatMap((event) =>
+                event.type === "traque-gain" ? [event.fighterId] : [],
+              ),
+            ),
+          ];
+          if (resourceFighterIds.length > 0) {
+            setDescentResourceFeedback({
+              frame: current.frame,
+              durationFrames: descentFrame.presentation.resourceFeedbackFrames,
+              fighterIds: resourceFighterIds,
+            });
+          }
+        } else {
+          current = stepPitCombat(current, inputs);
+        }
         if (current.events.length > 0) {
           const latest = current.events[current.events.length - 1];
           setAnnouncement(eventLabel(latest));
@@ -937,8 +2135,9 @@ export default function PitCanvas({
           if (essential) setAriaAnnouncement(eventLabel(essential));
           if (latest.type === "hit" || latest.type === "block") {
             const defender = current.fighters.find((fighter) => fighter.definitionId === latest.defenderId);
+            const groundY = PIT_ARENAS[current.arenaId].groundY;
             setImpact(defender
-              ? { frame: current.frame, x: defender.x, y: PIT_ARENA.groundY - defender.y - 64, blocked: latest.type === "block" }
+              ? { frame: current.frame, x: defender.x, y: groundY - defender.y - 64, blocked: latest.type === "block" }
               : null);
           }
         }
@@ -968,12 +2167,18 @@ export default function PitCanvas({
       reducedGore,
       combat.rules.mode === "training" && trainingSettings.showHitboxes,
       impact,
+      equippedArcadeCosmetic?.palette ?? null,
     );
-  }, [combat, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
+  }, [combat, equippedArcadeCosmetic, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
       reportedMatchFrameRef.current !== null) return;
+    const playerId = combat.fighters[0].definitionId;
+    if (!isPitFirstEditionFighterId(playerId)) {
+      reportedMatchFrameRef.current = combat.frame;
+      return;
+    }
     reportedMatchFrameRef.current = combat.frame;
     let replay: PitReplay | null = null;
     if (recorderRef.current) {
@@ -986,12 +2191,139 @@ export default function PitCanvas({
       }
     }
     recorderRef.current = null;
-    onMatchComplete?.({
+
+    if (mode === "descent") {
+      const currentRun = descentRunRef.current;
+      const currentNode = currentRun?.selectedNodeId
+        ? createPitDescentPlan(currentRun.fighterId, currentRun.seed)
+            .floors[currentRun.completedFloors]?.options.find(
+              (node) => node.id === currentRun.selectedNodeId,
+            ) ?? null
+        : null;
+      if (
+        !currentRun ||
+        !currentNode ||
+        (currentNode.kind !== "fight" && currentNode.kind !== "boss")
+      ) {
+        setReplayNotice("Descente interrompue : branche de combat indisponible.");
+        return;
+      }
+      const playerWon = combat.matchWinnerId === playerId;
+      const fighterMaximum = PIT_FIGHTERS[playerId].maxHealth;
+      const remainingHealth = playerWon
+        ? Math.max(
+            1,
+            Math.min(
+              currentRun.health,
+              Math.round(
+                (combat.fighters[0].health / fighterMaximum) * PIT_DESCENT_MAX_HEALTH,
+              ),
+            ),
+          )
+        : 0;
+      let application: ReturnType<typeof applyPitDescentResolution>;
+      try {
+        application = applyPitDescentResolution(currentRun, {
+          id: matchResultIdRef.current,
+          nodeId: currentNode.id,
+          victory: playerWon,
+          remainingHealth,
+          roundsWon: Math.max(0, combat.fighters[0].roundsWon - 1),
+          roundsLost: Math.max(0, combat.fighters[1].roundsWon - 1),
+          roundsDrawn: Math.max(0, combat.round - 1),
+        });
+      } catch {
+        setReplayNotice("Descente interrompue : résultat de combat incompatible.");
+        return;
+      }
+      submitRunTransition({
+        transition: {
+          id: matchResultIdRef.current,
+          kind: "descent-persist",
+          run: application.run,
+        },
+        onPersisted: () => {
+          descentRunRef.current = application.run;
+          setDescentRun(application.run);
+          setAnnouncement(
+            application.run.phase === "completed"
+              ? "DESCENTE ACCOMPLIE"
+              : application.run.phase === "failed"
+                ? "DESCENTE INTERROMPUE"
+                : "ÉTAGE SCELLÉ",
+          );
+          setAriaAnnouncement("Résultat de la Descente enregistré.");
+        },
+      });
+      return;
+    }
+
+    let playedArcadeIndex: number | undefined;
+    let completedArcade = false;
+    let playedCircuitIndex: number | undefined;
+    let completedCircuit = false;
+    let cosmeticRewardIds: readonly string[] | undefined;
+    let nextArcadeRun: PitArcadeRun | null = null;
+    let nextCircuitRun: PitCircuitRun | null = null;
+    if (mode === "arcade") {
+      const currentRun = arcadeRunRef.current;
+      if (!currentRun) {
+        setReplayNotice("Parcours Arcade interrompu : état de run indisponible.");
+        return;
+      }
+      playedArcadeIndex = currentRun.encounterIndex;
+      try {
+        const application = applyPitArcadeEncounterResult(currentRun, {
+          id: matchResultIdRef.current,
+          encounterIndex: currentRun.encounterIndex,
+          outcome: combat.matchWinnerId === playerId ? "victory" : "defeat",
+        });
+        nextArcadeRun = application.run;
+        completedArcade = application.run.phase === "completed";
+        cosmeticRewardIds = application.run.cosmeticRewardIds;
+      } catch {
+        setReplayNotice("Parcours Arcade interrompu : résultat incompatible.");
+        return;
+      }
+    } else if (mode === "circuit") {
+      const currentRun = circuitRunRef.current;
+      const currentFight = currentRun
+        ? PIT_CLAN_CIRCUITS[currentRun.fighterId].fights[currentRun.fightIndex]
+        : null;
+      if (!currentRun || !currentFight || currentRun.selectedFightId !== currentFight.id) {
+        setReplayNotice("Circuit du clan interrompu : état de run indisponible.");
+        return;
+      }
+      playedCircuitIndex = currentRun.fightIndex;
+      try {
+        const application = applyPitCircuitFightResult(currentRun, {
+          resultId: matchResultIdRef.current,
+          fightId: currentFight.id,
+          outcome: combat.matchWinnerId === null
+            ? "draw"
+            : combat.matchWinnerId === playerId
+              ? "victory"
+              : "defeat",
+        });
+        const previouslyUnlocked = new Set(currentRun.unlockedPitCosmeticIds);
+        nextCircuitRun = application.run;
+        completedCircuit = application.run.phase === "completed";
+        cosmeticRewardIds = application.run.unlockedPitCosmeticIds.filter(
+          (rewardId) => !previouslyUnlocked.has(rewardId),
+        );
+      } catch {
+        setReplayNotice("Circuit du clan interrompu : résultat incompatible.");
+        return;
+      }
+    }
+
+    const matchResult: PitMatchCompleteResult = {
       resultId: matchResultIdRef.current,
       mode,
       winnerId: combat.matchWinnerId,
-      leftId: combat.fighters[0].definitionId,
+      leftId: playerId,
       rightId: combat.fighters[1].definitionId,
+      arenaId: combat.arenaId,
       round: combat.round,
       leftRoundsWon: combat.fighters[0].roundsWon,
       rightRoundsWon: combat.fighters[1].roundsWon,
@@ -999,9 +2331,28 @@ export default function PitCanvas({
         0,
         combat.round - combat.fighters[0].roundsWon - combat.fighters[1].roundsWon,
       ),
+      arcadeEncounterIndex: playedArcadeIndex,
+      arcadeCompleted: mode === "arcade" ? completedArcade : undefined,
+      circuitFightIndex: playedCircuitIndex,
+      circuitCompleted: mode === "circuit" ? completedCircuit : undefined,
+      cosmeticRewardIds,
       replay,
-    });
-  }, [combat, mode, onMatchComplete, playbackReplay]);
+    };
+
+    if (nextArcadeRun) {
+      submitArcadeSettlement({ result: matchResult, nextRun: nextArcadeRun });
+      return;
+    }
+    if (nextCircuitRun) {
+      submitCircuitSettlement({ result: matchResult, nextRun: nextCircuitRun });
+      return;
+    }
+    if (onMatchComplete) {
+      void Promise.resolve(onMatchComplete(matchResult)).catch(() => {
+        setReplayNotice("Le résultat THE PIT n’a pas pu être enregistré.");
+      });
+    }
+  }, [combat, mode, onMatchComplete, playbackReplay, submitArcadeSettlement, submitCircuitSettlement, submitRunTransition]);
 
   const shortcuts = useMemo(() => ({
     p1: {
@@ -1036,10 +2387,53 @@ export default function PitCanvas({
   }), [controlBindings]);
 
   if (!combat) {
+    const previewLadder = PIT_ARCADE_LADDERS[leftId];
+    const previewEncounter = previewLadder.encounters[0];
+    const previewCircuit = PIT_CLAN_CIRCUITS[leftId];
+    const previewCircuitFight = previewCircuit.fights[0];
+    const previewDescentRun = descentRun?.fighterId === leftId
+      ? descentRun
+      : savedDescentRuns[leftId] ?? null;
+    const previewDescentPlan = createPitDescentPlan(
+      leftId,
+      previewDescentRun?.seed ?? descentDraftSeed,
+    );
+    const previewDescentFloorIndex = previewDescentRun?.phase === "active"
+      ? Math.min(previewDescentRun.completedFloors, PIT_DESCENT_FLOOR_COUNT - 1)
+      : 0;
+    const previewDescentFloor = previewDescentPlan.floors[previewDescentFloorIndex];
+    const previewDescentNode =
+      previewDescentFloor.options.find(
+        (node) => node.id === previewDescentRun?.selectedNodeId,
+      ) ??
+      previewDescentFloor.options[
+        Math.max(
+          0,
+          Math.min(descentOptionIndex, previewDescentFloor.options.length - 1),
+        )
+      ];
+    const previewRightId: PitFighterId = mode === "arcade"
+      ? previewEncounter.opponentId
+      : mode === "circuit"
+        ? previewCircuitFight.opponentId
+        : mode === "descent" && previewDescentNode.opponentId
+          ? previewDescentNode.opponentId
+          : rightId;
+    const previewArenaId = mode === "arcade"
+      ? previewEncounter.arenaId
+      : mode === "circuit"
+        ? previewCircuitFight.arenaId
+        : mode === "descent"
+          ? previewDescentNode.arenaId
+          : arenaId;
+    const previewArena = PIT_ARENAS[previewArenaId];
+    const descentCompletedFloors = previewDescentRun?.completedFloors ?? 0;
+    const descentHealth = previewDescentRun?.health ?? PIT_DESCENT_MAX_HEALTH;
+
     return (
       <section
         ref={rootRef}
-        className={`screen ${styles.root} ${highContrast ? styles.highContrast : ""}`}
+        className={["screen", styles.root, highContrast ? styles.highContrast : ""].join(" ")}
         aria-labelledby="pit-title"
         tabIndex={-1}
         data-screen-focus
@@ -1050,52 +2444,466 @@ export default function PitCanvas({
         <div className={styles.selectionBackdrop} aria-hidden="true"><span /><span /><span /></div>
         <header className={styles.selectionHeader}>
           <div>
-            <span className={styles.eyebrow}>ARCHIVE DE COMBAT · SIMULATION NON CANONIQUE</span>
+            <span className={styles.eyebrow}>PREMIÈRE ÉDITION · SIMULATION NON CANONIQUE</span>
             <h2 id="pit-title">THE PIT</h2>
-            <p>Cercle de basalte · règles fixes · aucun gain de campagne</p>
+            <p>12 combattants · 8 arènes · règles fixes · aucun gain de campagne</p>
           </div>
           <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>
         </header>
 
         <div className={styles.versusGrid}>
-          <FighterCard fighterId={leftId} side="GAUCHE" />
-          <div className={styles.versusMark}><span>VS</span><small>PREMIER À 2</small></div>
-          <FighterCard fighterId={rightId} side="DROITE" />
+          <FighterCard fighterId={leftId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />
+          <div className={styles.versusMark}>
+            <span>{mode === "descent" && !previewDescentNode.opponentId ? "→" : "VS"}</span>
+            <small>{mode === "descent" ? "MANCHE DÉCISIVE" : "PREMIER À 2"}</small>
+          </div>
+          {mode === "descent" && !previewDescentNode.opponentId ? (
+            <article className={styles.descentEventCard}>
+              <span className={styles.sideLabel}>BRANCHE</span>
+              <strong>
+                {previewDescentNode.relicId
+                  ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name
+                  : "Récupération rituelle"}
+              </strong>
+              <p>
+                {previewDescentNode.relicId
+                  ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description
+                  : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}
+              </p>
+              <small>Aucun résultat de combat n’est forgé pour cet étage.</small>
+            </article>
+          ) : (
+            <FighterCard fighterId={previewRightId} side="DROITE" />
+          )}
         </div>
 
-        <button type="button" className={styles.swapButton} onClick={swapSides}>⇄ Permuter les côtés</button>
+        <div className={styles.selectionControls}>
+          <label>
+            <span>Combattant joueur</span>
+            <select
+              aria-label="Combattant joueur"
+              value={leftId}
+              disabled={runTransitionSelectionLocked}
+              onChange={(event) => {
+                const selected = event.target.value as PitPlayableFighterId;
+                setLeftId(selected);
+                if (selected === rightId) {
+                  setRightId(PIT_PLAYABLE_FIGHTER_IDS.find((fighterId) => fighterId !== selected) ?? "berserker");
+                }
+              }}
+            >
+              {PIT_PLAYABLE_FIGHTER_IDS.map((fighterId) => (
+                <option key={fighterId} value={fighterId}>{PIT_FIGHTERS[fighterId].name}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span>
+              {mode === "arcade"
+                ? "Premier adversaire imposé"
+                : mode === "circuit"
+                  ? "Adversaire du combat 1"
+                  : mode === "descent"
+                    ? "Branche de l’étage " + (previewDescentFloorIndex + 1)
+                    : "Adversaire"}
+            </span>
+            {mode === "arcade" || mode === "circuit" ? (
+              <output>{PIT_FIGHTERS[previewRightId].name}</output>
+            ) : mode === "descent" ? (
+              <output>
+                {previewDescentNode.opponentId
+                  ? PIT_FIGHTERS[previewDescentNode.opponentId].name
+                  : previewDescentNode.relicId
+                    ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name
+                    : "Récupération +" + previewDescentNode.recoveryHealth}
+              </output>
+            ) : (
+              <select
+                aria-label="Adversaire"
+                value={rightId}
+                disabled={runTransitionSelectionLocked}
+                onChange={(event) => setRightId(event.target.value as PitPlayableFighterId)}
+              >
+                {PIT_PLAYABLE_FIGHTER_IDS.map((fighterId) => (
+                  <option key={fighterId} value={fighterId} disabled={fighterId === leftId}>
+                    {PIT_FIGHTERS[fighterId].name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </label>
+          <label>
+            <span>
+              {mode === "arcade" || mode === "circuit" ? "Arène du combat 1" : mode === "descent" ? "Arène de la branche" : "Arène"}
+            </span>
+            <select
+              aria-label="Arène"
+              value={previewArenaId}
+              disabled={
+                runTransitionSelectionLocked ||
+                mode === "arcade" ||
+                mode === "circuit" ||
+                mode === "descent"
+              }
+              onChange={(event) => setArenaId(event.target.value as PitArenaId)}
+            >
+              {PIT_ARENA_IDS.map((candidateArenaId) => (
+                <option key={candidateArenaId} value={candidateArenaId}>
+                  {PIT_ARENAS[candidateArenaId].name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <aside className={styles.cosmeticControl} aria-label="Palette cosmétique THE PIT">
+          <div>
+            <span className={styles.eyebrow}>ARMURE DU JUGEMENT</span>
+            <strong>{selectedArcadeCosmetic.label}</strong>
+          </div>
+          {selectedCosmeticUnlocked ? (
+            <label>
+              <input
+                type="checkbox"
+                checked={equippedArcadeCosmetic !== null}
+                onChange={(event) =>
+                  setEquippedCosmeticId(event.target.checked ? selectedArcadeCosmetic.id : null)
+                }
+              />
+              <span>Équiper la palette pour cette session PIT</span>
+            </label>
+          ) : (
+            <span>Terminez les 8 combats Arcade avec ce chasseur pour la débloquer.</span>
+          )}
+        </aside>
+
+        <article
+          className={styles.arenaPreview}
+          style={{
+            "--arena-sky": previewArena.palette.sky,
+            "--arena-ground": previewArena.palette.ground,
+            "--arena-accent": previewArena.palette.accent,
+          } as React.CSSProperties}
+        >
+          <div>
+            <span className={styles.eyebrow}>ARÈNE SÉLECTIONNÉE</span>
+            <strong>{previewArena.name}</strong>
+            <p>{previewArena.setting}</p>
+          </div>
+          <ul aria-label="Plans de décor indépendants">
+            {previewArena.layers.map((layer) => (
+              <li key={layer.id}>{layer.depth === "far" ? "Lointain" : layer.depth === "mid" ? "Médian" : layer.depth === "near" ? "Proche" : "Avant-plan"}</li>
+            ))}
+          </ul>
+        </article>
 
         <div className={styles.modeGrid} role="radiogroup" aria-label="Mode de combat">
           {([
             ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
             ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
             ["training", "Entraînement", "Mannequin réglable, hitboxes, frame data et séquences d’entrées."],
+            ["arcade", "Arcade individuel", "Huit rencontres propres au combattant, rival puis Warlord."],
+            ["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement."],
+            ["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss."],
           ] as const).map(([id, label, description]) => (
             <button
               key={id}
               type="button"
               role="radio"
               aria-checked={mode === id}
-              className={`${styles.modeCard} ${mode === id ? styles.modeCardActive : ""}`}
-              onClick={() => setMode(id)}
+              className={[styles.modeCard, mode === id ? styles.modeCardActive : ""].join(" ")}
+              disabled={runTransitionSelectionLocked}
+              onClick={() => changePitMode(id)}
             >
               <strong>{label}</strong><span>{description}</span>
             </button>
           ))}
         </div>
 
+        {mode === "arcade" ? (
+          <aside className={styles.arcadeBrief} aria-label={"Parcours Arcade de " + PIT_FIGHTERS[leftId].name}>
+            <div>
+              <span className={styles.eyebrow}>PARCOURS INDIVIDUEL · 8 COMBATS · 2 CONTINUES</span>
+              <strong>{PIT_FIGHTERS[leftId].name}</strong>
+              <p>{previewLadder.intro}</p>
+            </div>
+            <ol>
+              {previewLadder.encounters.map((encounter) => (
+                <li key={encounter.id}>
+                  <span>{encounter.index}</span>
+                  <div>
+                    <strong>{PIT_FIGHTERS[encounter.opponentId].name}</strong>
+                    <small>{PIT_ARENAS[encounter.arenaId].name}{encounter.kind === "rival" ? " · RIVAL" : encounter.kind === "boss" ? " · BOSS" : ""}</small>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        ) : mode === "circuit" ? (
+          <aside className={styles.circuitBrief} aria-label={"Circuit du clan de " + PIT_FIGHTERS[leftId].name}>
+            <div className={styles.circuitBriefHeader}>
+              <span className={styles.eyebrow}>RITE COMPLET · 5 CHAPITRES · 12 COMBATS</span>
+              <strong>{PIT_FIGHTERS[leftId].name}</strong>
+              <p>Le rival garde le combat 11. Warlord attend au combat 12 devant le Tribunal.</p>
+            </div>
+            <ol className={styles.circuitChapters}>
+              {previewCircuit.chapters.map(({ chapter, fights }) => (
+                <li key={chapter.id} className={styles.circuitChapter}>
+                  <div>
+                    <span>CHAPITRE {chapter.index} · {chapter.format.toUpperCase()}</span>
+                    <strong>{chapter.name}</strong>
+                    <p>{chapter.objective}</p>
+                  </div>
+                  <ol className={styles.circuitFightList}>
+                    {fights.map((fight) => (
+                      <li key={fight.id}>
+                        <span>{fight.index}</span>
+                        <div>
+                          <strong>{PIT_FIGHTERS[fight.opponentId].name}</strong>
+                          <small>
+                            {PIT_ARENAS[fight.arenaId].name}
+                            {fight.kind === "rival" ? " · RIVAL" : fight.kind === "boss" ? " · WARLORD" : ""}
+                          </small>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <small className={styles.circuitReward}>Récompense cosmétique PIT à la fin du chapitre</small>
+                </li>
+              ))}
+            </ol>
+          </aside>
+        ) : mode === "descent" ? (
+          <aside
+            className={styles.descentBrief}
+            aria-label={"Descente de " + PIT_FIGHTERS[leftId].name}
+          >
+            <header className={styles.descentBriefHeader}>
+              <div>
+                <span className={styles.eyebrow}>SURVIE · 8 ÉTAGES · ROUTES À BRANCHES</span>
+                <strong>{PIT_FIGHTERS[leftId].name}</strong>
+                <p>
+                  {previewDescentRun?.phase === "completed"
+                    ? "Descente accomplie. La Bannière du Survivant est enregistrée."
+                    : previewDescentRun?.phase === "failed"
+                      ? "Route interrompue. Recommencez explicitement pour générer un nouveau tracé."
+                      : previewDescentRun
+                        ? "Reprise durable à l’étage " + (descentCompletedFloors + 1) + "."
+                        : "Nouvelle route déterministe générée au premier départ."}
+                </p>
+              </div>
+              <div className={styles.descentVitals}>
+                <span>SANTÉ DE RUN · {descentHealth}/{PIT_DESCENT_MAX_HEALTH}</span>
+                <div
+                  className={styles.descentHealthTrack}
+                  role="progressbar"
+                  aria-label="Santé persistante de la Descente"
+                  aria-valuemin={0}
+                  aria-valuemax={PIT_DESCENT_MAX_HEALTH}
+                  aria-valuenow={descentHealth}
+                >
+                  <i style={{ width: (descentHealth / PIT_DESCENT_MAX_HEALTH) * 100 + "%" }} />
+                </div>
+                <small>
+                  {previewDescentRun?.recoveriesRemaining ?? 2} récupération(s) disponible(s)
+                  · seed {previewDescentPlan.seed}
+                </small>
+              </div>
+            </header>
+
+            <ol className={styles.descentFloors}>
+              {previewDescentPlan.floors.map((floor) => {
+                const floorResolved = floor.index <= descentCompletedFloors;
+                const floorCurrent =
+                  (previewDescentRun?.phase ?? "active") === "active" &&
+                  floor.index === descentCompletedFloors + 1;
+                return (
+                  <li
+                    key={floor.index}
+                    className={[
+                      styles.descentFloor,
+                      floorResolved ? styles.descentFloorResolved : "",
+                      floorCurrent ? styles.descentFloorCurrent : "",
+                    ].join(" ")}
+                    aria-current={floorCurrent ? "step" : undefined}
+                  >
+                    <div className={styles.descentFloorHeading}>
+                      <span>ÉTAGE {floor.index}</span>
+                      <strong>{floor.options[0].label}</strong>
+                    </div>
+                    <div className={styles.descentBranches}>
+                      {floor.options.map((node, optionIndex) => {
+                        const selected =
+                          floorCurrent &&
+                          (previewDescentRun?.selectedNodeId === node.id ||
+                            (!previewDescentRun?.selectedNodeId &&
+                              optionIndex === Math.min(
+                                descentOptionIndex,
+                                floor.options.length - 1,
+                              )));
+                        const nodeTitle = node.opponentId
+                          ? PIT_FIGHTERS[node.opponentId].name
+                          : node.relicId
+                            ? PIT_DESCENT_RELICS[node.relicId].name
+                            : "Récupération +" + node.recoveryHealth;
+                        return (
+                          <button
+                            key={node.id}
+                            type="button"
+                            className={[
+                              styles.descentBranch,
+                              selected ? styles.descentBranchSelected : "",
+                            ].join(" ")}
+                            disabled={
+                              !floorCurrent ||
+                              runTransitionSelectionLocked ||
+                              Boolean(
+                                previewDescentRun?.selectedNodeId &&
+                                  previewDescentRun.selectedNodeId !== node.id,
+                              )
+                            }
+                            aria-pressed={selected}
+                            onClick={() => chooseDisplayedDescentBranch(optionIndex)}
+                          >
+                            <span>
+                              {previewDescentRun?.selectedNodeId === node.id
+                                ? "REPRENDRE"
+                                : node.kind === "boss"
+                                ? "BOSS"
+                                : node.kind === "fight"
+                                  ? "DUEL"
+                                  : node.kind === "relic"
+                                    ? "RELIQUE"
+                                    : "SOIN"}
+                            </span>
+                            <strong>{nodeTitle}</strong>
+                            <small>{PIT_ARENAS[node.arenaId].name}</small>
+                            {node.modifierIds.map((modifierId) => (
+                              <em key={modifierId}>
+                                {PIT_DESCENT_MODIFIERS[modifierId].name}
+                              </em>
+                            ))}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+
+            <div className={styles.descentContracts}>
+              <article>
+                <strong>RELIQUES TEMPORAIRES</strong>
+                <p>
+                  {previewDescentRun?.temporaryRelicIds.length
+                    ? previewDescentRun.temporaryRelicIds
+                        .map((relicId) => PIT_DESCENT_RELICS[relicId].name)
+                        .join(" · ")
+                    : "Aucune relique portée sur cette route."}
+                </p>
+              </article>
+              <article>
+                <strong>CONTRAT DE LA BRANCHE</strong>
+                <p>
+                  {previewDescentNode.modifierIds.length
+                    ? previewDescentNode.modifierIds
+                        .map(
+                          (modifierId) =>
+                            PIT_DESCENT_MODIFIERS[modifierId].name +
+                            " — " +
+                            PIT_DESCENT_MODIFIERS[modifierId].description,
+                        )
+                        .join(" ")
+                    : previewDescentNode.relicId
+                      ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description
+                      : previewDescentNode.kind === "recovery"
+                        ? "Le soin est borné à " + PIT_DESCENT_MAX_HEALTH + " et consomme une récupération."
+                        : "Aucun modificateur sur ce duel."}
+                </p>
+              </article>
+            </div>
+            <p className={styles.descentHonesty}>
+              Santé, soins, embranchements, échec et boss sont actifs. Chaque duel utilise une
+              manche décisive pour conserver la santé entre les étages ; son replay est désactivé.
+              Les six modificateurs et quatre reliques altèrent réellement le duel : mobilité,
+              garde, Traque, poussée, visibilité, feedback, protection et camouflage.
+              Récompense finale unique : Bannière du Survivant de la Descente.
+            </p>
+          </aside>
+        ) : (
+          <button
+            type="button"
+            className={styles.swapButton}
+            disabled={runTransitionSelectionLocked}
+            onClick={swapSides}
+          >⇄ Permuter les côtés</button>
+        )}
+
         <div className={styles.selectionActions}>
-          <button type="button" className={styles.startButton} onClick={startMatch}>ENTRER DANS LE CERCLE</button>
+          <button
+            type="button"
+            className={styles.startButton}
+            onClick={
+              (mode === "circuit" || mode === "descent") &&
+              runTransitionPersistence.status === "failed"
+                ? retryRunTransition
+                : startMatch
+            }
+            disabled={runTransitionPersistence.status === "pending"}
+            aria-keyshortcuts="Enter Space"
+            data-gamepad-shortcut="A"
+          >
+            <span>
+              {mode === "arcade"
+                ? "LANCER LE PARCOURS ARCADE"
+                : mode === "circuit"
+                  ? runTransitionPersistence.status === "failed"
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : runTransitionPersistence.status === "pending"
+                      ? "ENREGISTREMENT DU COMBAT…"
+                      : "LANCER LE CIRCUIT DU CLAN"
+                  : mode === "descent"
+                    ? runTransitionPersistence.status === "failed"
+                      ? "RÉESSAYER L’ENREGISTREMENT"
+                      : runTransitionPersistence.status === "pending"
+                        ? "ENREGISTREMENT DE LA ROUTE…"
+                        : previewDescentRun?.phase === "completed" ||
+                            previewDescentRun?.phase === "failed"
+                          ? "RECOMMENCER LA DESCENTE"
+                          : previewDescentRun?.selectedNodeId
+                            ? "REPRENDRE LA BRANCHE"
+                            : previewDescentRun
+                              ? "ENTRER À L’ÉTAGE " + (descentCompletedFloors + 1)
+                              : "COMMENCER LA DESCENTE"
+                    : "ENTRER DANS L’ARÈNE"}
+            </span>
+            <small>Clavier : Entrée · Manette : A · Tactile : toucher</small>
+          </button>
           {availableReplay ? (
             <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>
               REVOIR LE DERNIER DUEL
             </button>
           ) : null}
         </div>
+        {(mode === "circuit" || mode === "descent") &&
+        runTransitionPersistence.status !== "idle" ? (
+          <p
+            className={styles.runPersistenceNotice}
+            data-status={runTransitionPersistence.status}
+            role={runTransitionPersistence.status === "failed" ? "alert" : "status"}
+          >
+            {runTransitionPersistence.message}
+            {runTransitionPersistence.status === "failed"
+              ? " La même transition sera réessayée sans créer de doublon."
+              : ""}
+          </p>
+        ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          Simulation isolée : aucun honneur, trophée ou progression n’est attribué.<br />
-          Manette : croix directionnelle pour le mode · A démarrer · X permuter · Y dernier duel · B revenir.
+          Silhouettes vectorielles temporaires ; profils et règles issus du moteur de combat actuel.<br />
+          Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
+          Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
       </section>
     );
@@ -1104,12 +2912,71 @@ export default function PitCanvas({
   const [left, right] = combat.fighters;
   const leftDefinition = PIT_FIGHTERS[left.definitionId];
   const rightDefinition = PIT_FIGHTERS[right.definitionId];
+  const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
   const recentImpact = impact && combat.frame - impact.frame < 8;
   const shake = screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
+  const descentResourceFeedbackActive = Boolean(
+    descentResourceFeedback &&
+      combat.frame - descentResourceFeedback.frame <
+        descentResourceFeedback.durationFrames,
+  );
+  const leftDescentResourcePulse =
+    descentResourceFeedbackActive &&
+    Boolean(descentResourceFeedback?.fighterIds.includes(left.definitionId));
+  const rightDescentResourcePulse =
+    descentResourceFeedbackActive &&
+    Boolean(descentResourceFeedback?.fighterIds.includes(right.definitionId));
   const winner = combat.matchWinnerId ? PIT_FIGHTERS[combat.matchWinnerId] : null;
   const terminal = combat.phase === "match-over" || replayEnded;
   const trainingRules = combat.rules.mode === "training";
+  const terminalArcadeRun = mode === "arcade" && !playbackReplay ? arcadeRun : null;
+  const arcadePlayerWon = combat.matchWinnerId === left.definitionId;
+  const arcadeResolutionReady = arcadePersistence.status === "confirmed" && Boolean(
+    terminalArcadeRun?.appliedResultIds.includes(activeMatchResultId),
+  );
+  const arcadePersistenceFailed = arcadePersistence.status === "failed";
+  const arcadeLadder = terminalArcadeRun
+    ? PIT_ARCADE_LADDERS[terminalArcadeRun.fighterId]
+    : null;
+  const terminalCircuitRun = mode === "circuit" && !playbackReplay ? circuitRun : null;
+  const circuitAppliedResult = terminalCircuitRun?.appliedResults.find(
+    (result) => result.resultId === activeMatchResultId,
+  ) ?? null;
+  const circuitResolutionReady =
+    circuitPersistence.status === "confirmed" && circuitAppliedResult !== null;
+  const circuitPersistenceFailed = circuitPersistence.status === "failed";
+  const circuitRoutePersistencePending =
+    mode === "circuit" && runTransitionPersistence.status === "pending";
+  const circuitRoutePersistenceFailed =
+    mode === "circuit" && runTransitionPersistence.status === "failed";
+  const circuitDefinition = terminalCircuitRun
+    ? PIT_CLAN_CIRCUITS[terminalCircuitRun.fighterId]
+    : null;
+  const circuitRewardedChapter = circuitAppliedResult && circuitDefinition
+    ? circuitDefinition.chapters.find(
+        ({ fights }) => fights[fights.length - 1]?.id === circuitAppliedResult.fightId,
+      )?.chapter ?? null
+    : null;
+  const terminalDescentRun = mode === "descent" && !playbackReplay ? descentRun : null;
+  const descentAppliedResolution = terminalDescentRun?.resolutionHistory.find(
+    (resolution) => resolution.id === activeMatchResultId,
+  ) ?? null;
+  const descentResolutionReady =
+    runTransitionPersistence.status === "confirmed" && descentAppliedResolution !== null;
+  const descentPersistenceFailed = runTransitionPersistence.status === "failed";
+  const descentRoutePlan = terminalDescentRun
+    ? createPitDescentPlan(terminalDescentRun.fighterId, terminalDescentRun.seed)
+    : null;
+  const descentCombatNode = descentRoutePlan && terminalDescentRun
+    ? descentRoutePlan.floors
+        .flatMap((floor) => floor.options)
+        .find(
+          (node) =>
+            node.id ===
+            (descentAppliedResolution?.nodeId ?? terminalDescentRun.selectedNodeId),
+        ) ?? null
+    : null;
   const frameReadouts = trainingRules && trainingSettings.showFrameData
     ? ([getPitTrainingFrameReadout(combat, 0), getPitTrainingFrameReadout(combat, 1)] as const)
     : null;
@@ -1127,16 +2994,57 @@ export default function PitCanvas({
       </div>
       <header className={styles.matchHeader} inert={terminal}>
         <button type="button" className={styles.utilityButton} onClick={() => setShowHelp((value) => !value)}>Commandes</button>
-        <span>{playbackReplay ? "RELECTURE" : mode === "cpu" ? "DUEL CPU" : mode === "local" ? "VERSUS LOCAL" : "ENTRAÎNEMENT"}</span>
+        <span>
+          {playbackReplay
+            ? "RELECTURE"
+            : mode === "cpu"
+              ? "DUEL CPU"
+              : mode === "local"
+                ? "VERSUS LOCAL"
+                : mode === "arcade"
+                  ? "ARCADE INDIVIDUEL"
+                  : mode === "circuit"
+                    ? "CIRCUIT DU CLAN"
+                    : mode === "descent"
+                      ? "DESCENTE · SURVIE"
+                      : "ENTRAÎNEMENT"}
+          {" · "}{arenaDefinition.name}
+        </span>
         <button type="button" className={styles.utilityButton} onClick={returnToSelection}>Quitter · {shortcuts.pause}</button>
       </header>
 
       {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
+      {mode === "descent" && terminalDescentRun ? (
+        <aside className={styles.descentMatchStatus} aria-label="État de la Descente">
+          <strong>
+            ÉTAGE {Math.min(
+              PIT_DESCENT_FLOOR_COUNT,
+              terminalDescentRun.completedFloors +
+                (terminalDescentRun.selectedNodeId ? 1 : 0),
+            )}/{PIT_DESCENT_FLOOR_COUNT}
+          </strong>
+          <span>SANTÉ DE RUN · {terminalDescentRun.health}/{PIT_DESCENT_MAX_HEALTH}</span>
+          <span>
+            RELIQUES · {terminalDescentRun.temporaryRelicIds.length
+              ? terminalDescentRun.temporaryRelicIds
+                  .map((relicId) => PIT_DESCENT_RELICS[relicId].name)
+                  .join(" · ")
+              : "AUCUNE"}
+          </span>
+          <span>
+            MODIFICATEURS · {descentCombatNode?.modifierIds.length
+              ? descentCombatNode.modifierIds
+                  .map((modifierId) => PIT_DESCENT_MODIFIERS[modifierId].name)
+                  .join(" · ")
+              : "AUCUN"}
+          </span>
+        </aside>
+      ) : null}
       <div className={styles.hud} inert={terminal}>
         <div className={styles.fighterHud}>
           <div><strong>{leftDefinition.name}</strong><span>{left.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={leftDefinition.maxHealth} aria-valuenow={left.health}><i style={{ width: `${left.health / leftDefinition.maxHealth * 100}%` }} /></div>
-          <div className={styles.resourceRow}>
+          <div className={`${styles.resourceRow} ${leftDescentResourcePulse ? styles.descentResourcePulse : ""}`}>
             <span className={left.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
             <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={left.traque}><i style={{ width: `${left.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
             <span>{left.traque}</span>
@@ -1145,14 +3053,15 @@ export default function PitCanvas({
             {left.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(left.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
             {left.cloakPhase !== "inactive" ? <span>CAMO · {left.cloakPhase.toUpperCase()}</span> : left.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(left.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
             {left.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+            {left.techniqueStatus ? <span>{TECHNIQUE_STATUS_LABELS[left.techniqueStatus.kind]} · {Math.ceil(left.techniqueStatus.framesRemaining / PIT_TICK_RATE)} s</span> : null}
           </div>
           <div className={styles.roundPips} aria-label={`${left.roundsWon} manche gagnée`}><i className={left.roundsWon >= 1 ? styles.won : ""} /><i className={left.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
-        <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
+        <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : mode === "descent" ? "MANCHE DÉCISIVE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
         <div className={`${styles.fighterHud} ${styles.fighterHudRight}`}>
           <div><strong>{rightDefinition.name}</strong><span>{right.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={rightDefinition.maxHealth} aria-valuenow={right.health}><i style={{ width: `${right.health / rightDefinition.maxHealth * 100}%` }} /></div>
-          <div className={styles.resourceRow}>
+          <div className={`${styles.resourceRow} ${rightDescentResourcePulse ? styles.descentResourcePulse : ""}`}>
             <span className={right.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
             <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={right.traque}><i style={{ width: `${right.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
             <span>{right.traque}</span>
@@ -1161,13 +3070,21 @@ export default function PitCanvas({
             {right.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(right.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
             {right.cloakPhase !== "inactive" ? <span>CAMO · {right.cloakPhase.toUpperCase()}</span> : right.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(right.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
             {right.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+            {right.techniqueStatus ? <span>{TECHNIQUE_STATUS_LABELS[right.techniqueStatus.kind]} · {Math.ceil(right.techniqueStatus.framesRemaining / PIT_TICK_RATE)} s</span> : null}
           </div>
           <div className={styles.roundPips} aria-label={`${right.roundsWon} manche gagnée`}><i className={right.roundsWon >= 1 ? styles.won : ""} /><i className={right.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
       </div>
 
       <div className={styles.arenaShell} style={{ transform: `translateX(${shake}px)` }}>
-        <canvas ref={canvasRef} className={styles.canvas} width={PIT_ARENA.width} height={PIT_ARENA.height} aria-hidden="true" />
+        <canvas ref={canvasRef} className={styles.canvas} width={arenaDefinition.width} height={arenaDefinition.height} aria-hidden="true" />
+        {mode === "descent" && descentCombatPresentation?.blackMistLongRange ? (
+          <div
+            className={styles.descentBlackMist}
+            style={{ opacity: descentCombatPresentation.blackMistStrength }}
+            aria-hidden="true"
+          />
+        ) : null}
         <div className={styles.announcement} aria-hidden="true">{announcement}</div>
         {left.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboLeft}`}>{left.comboHitsReceived}<small>COUPS</small></div> : null}
         {right.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboRight}`}>{right.comboHitsReceived}<small>COUPS</small></div> : null}
@@ -1252,9 +3169,11 @@ export default function PitCanvas({
           </div>
         ) : terminal ? (
           <div
+            ref={resultOverlayRef}
             className={styles.resultOverlay}
             role="dialog"
             aria-modal="true"
+            tabIndex={-1}
             aria-labelledby="pit-result"
             onKeyDown={(event) => {
               if (event.key !== "Tab") return;
@@ -1265,16 +3184,199 @@ export default function PitCanvas({
               buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
             }}
           >
-            <span>{playbackReplay ? "RELECTURE TERMINÉE" : "MATCH TERMINÉ"}</span>
-            <h3 id="pit-result">{playbackReplay ? "Archive restituée" : winner ? `${winner.name} l’emporte` : "Égalité"}</h3>
-            <p>{playbackReplay ? "A ou Y pour revoir · B pour revenir au vaisseau." : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}</p>
+            <span>
+              {playbackReplay
+                ? "RELECTURE TERMINÉE"
+                : mode === "arcade"
+                  ? arcadePersistenceFailed
+                    ? "SAUVEGARDE ARCADE REQUISE"
+                    : arcadeResolutionReady
+                      ? terminalArcadeRun?.phase === "completed"
+                        ? "PARCOURS ARCADE ACCOMPLI"
+                        : terminalArcadeRun?.phase === "failed"
+                          ? "PARCOURS ARCADE INTERROMPU"
+                          : "ARCADE · " + (terminalArcadeRun?.victories ?? 0) + "/" + PIT_ARCADE_ENCOUNTER_COUNT
+                      : "ENREGISTREMENT DU RÉSULTAT"
+                  : mode === "circuit"
+                    ? circuitPersistenceFailed
+                      ? "SAUVEGARDE CIRCUIT REQUISE"
+                      : circuitResolutionReady
+                        ? terminalCircuitRun?.phase === "completed"
+                          ? "CIRCUIT DU CLAN ACCOMPLI"
+                          : "CIRCUIT · " + (terminalCircuitRun?.victories ?? 0) + "/" + PIT_CIRCUIT_FIGHT_COUNT
+                        : "ENREGISTREMENT DU RÉSULTAT"
+                    : mode === "descent"
+                      ? descentPersistenceFailed
+                        ? "SAUVEGARDE DESCENTE REQUISE"
+                        : descentResolutionReady
+                          ? terminalDescentRun?.phase === "completed"
+                            ? "DESCENTE ACCOMPLIE"
+                            : terminalDescentRun?.phase === "failed"
+                              ? "DESCENTE INTERROMPUE"
+                              : "DESCENTE · " + (terminalDescentRun?.completedFloors ?? 0) + "/" + PIT_DESCENT_FLOOR_COUNT
+                          : "ENREGISTREMENT DU RÉSULTAT"
+                      : "MATCH TERMINÉ"}
+            </span>
+            <h3 id="pit-result">
+              {playbackReplay
+                ? "Archive restituée"
+                : mode === "arcade" && arcadePersistenceFailed
+                  ? "Résultat non enregistré"
+                  : mode === "arcade" && !arcadeResolutionReady
+                    ? "Validation du combat"
+                    : mode === "arcade" && terminalArcadeRun?.phase === "completed"
+                      ? "Jugement accompli"
+                      : mode === "arcade" && terminalArcadeRun?.phase === "failed"
+                        ? "La fosse se referme"
+                        : mode === "circuit" && circuitPersistenceFailed
+                          ? "Résultat non enregistré"
+                          : mode === "circuit" && !circuitResolutionReady
+                            ? "Validation du combat"
+                            : mode === "circuit" && terminalCircuitRun?.phase === "completed"
+                              ? "Jugement accompli"
+                              : mode === "descent" && descentPersistenceFailed
+                                ? "Route non enregistrée"
+                                : mode === "descent" && !descentResolutionReady
+                                  ? "Validation de l’étage"
+                                  : mode === "descent" && terminalDescentRun?.phase === "completed"
+                                    ? "Survivant de la Descente"
+                                    : mode === "descent" && terminalDescentRun?.phase === "failed"
+                                      ? "La route se referme"
+                                      : winner
+                                        ? winner.name + " l’emporte"
+                                        : "Égalité"}
+            </h3>
+            <p>
+              {playbackReplay
+                ? "A ou Y pour revoir · B pour revenir au vaisseau."
+                : mode === "arcade"
+                  ? arcadePersistenceFailed
+                    ? arcadePersistence.message + " Réessayez avec le même résultat avant de poursuivre ; aucune progression ni récompense n’est annoncée."
+                    : !arcadeResolutionReady
+                      ? "Le résultat est en cours d’enregistrement. Le parcours reste bloqué jusqu’à confirmation."
+                      : terminalArcadeRun?.phase === "completed"
+                        ? (arcadeLadder?.ending ?? "Le parcours est scellé.") + " Palette cosmétique PIT débloquée ; équipez-la pour cette session depuis la sélection."
+                        : terminalArcadeRun?.phase === "failed"
+                          ? "Les deux continues sont épuisés. Le parcours peut être recommencé depuis la sélection."
+                          : arcadePlayerWon
+                            ? "Victoire enregistrée. Prochain combat : " + ((terminalArcadeRun?.encounterIndex ?? 0) + 1) + "/" + PIT_ARCADE_ENCOUNTER_COUNT + "."
+                            : "Défaite enregistrée. " + (terminalArcadeRun?.continuesRemaining ?? 0) + " continue(s) restante(s) pour ce combat."
+                  : mode === "circuit"
+                    ? circuitRoutePersistenceFailed
+                      ? runTransitionPersistence.message + " Réessayez la même sélection avant de poursuivre ; le combat suivant reste non publié."
+                      : circuitRoutePersistencePending
+                        ? "La sélection du prochain combat est en cours d’enregistrement. Le Circuit reste bloqué jusqu’à l’accusé durable."
+                        : circuitPersistenceFailed
+                          ? circuitPersistence.message + " Réessayez avec le même résultat avant de poursuivre ; aucune progression ni récompense n’est annoncée."
+                          : !circuitResolutionReady
+                            ? "Le résultat est en cours d’enregistrement. Le Circuit reste bloqué jusqu’à confirmation."
+                        : terminalCircuitRun?.phase === "completed"
+                          ? "Warlord est vaincu au douzième combat. Le Jugement et sa récompense cosmétique PIT sont enregistrés."
+                          : circuitAppliedResult?.outcome === "victory"
+                            ? "Victoire enregistrée. " +
+                              (circuitRewardedChapter
+                                ? "Chapitre « " + circuitRewardedChapter.name + " » accompli et récompense cosmétique PIT enregistrée. "
+                                : "") +
+                              "Prochain combat : " + ((terminalCircuitRun?.fightIndex ?? 0) + 1) + "/" + PIT_CIRCUIT_FIGHT_COUNT + "."
+                            : circuitAppliedResult?.outcome === "draw"
+                              ? "Égalité enregistrée. Le même combat doit être rejoué."
+                              : "Défaite enregistrée. Le même combat doit être rejoué."
+                    : mode === "descent"
+                      ? descentPersistenceFailed
+                        ? runTransitionPersistence.message + " Réessayez la même transition avant de poursuivre ; la progression, la santé et la récompense restent non publiées."
+                        : !descentResolutionReady
+                          ? "Le résultat est en cours d’enregistrement. La route reste bloquée jusqu’à l’accusé durable."
+                          : terminalDescentRun?.phase === "completed"
+                            ? "Les huit étages et le boss sont scellés. La Bannière du Survivant, récompense finale unique, est enregistrée."
+                            : terminalDescentRun?.phase === "failed"
+                              ? "La santé de run est épuisée. Recommencez explicitement pour générer une nouvelle route."
+                              : "Étage enregistré avec " + (terminalDescentRun?.health ?? 0) + "/" + PIT_DESCENT_MAX_HEALTH + " santé. Choisissez ensuite la prochaine branche."
+                      : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}
+            </p>
             <div className={styles.overlayActions}>
               {playbackReplay && availableReplay ? (
                 <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={() => startReplay(availableReplay)}>Revoir</button>
+              ) : mode === "arcade" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={!arcadePersistenceFailed && !arcadeResolutionReady}
+                  onClick={arcadePersistenceFailed ? retryArcadeSettlement : continueArcade}
+                >
+                  {arcadePersistenceFailed
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : !arcadeResolutionReady
+                      ? "Enregistrement…"
+                      : terminalArcadeRun?.phase === "active"
+                        ? arcadePlayerWon
+                          ? "Combat suivant"
+                          : "Utiliser un continue"
+                        : "Retour à la sélection"}
+                </button>
+              ) : mode === "circuit" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={
+                    circuitRoutePersistencePending ||
+                    (!circuitRoutePersistenceFailed &&
+                      !circuitPersistenceFailed &&
+                      !circuitResolutionReady)
+                  }
+                  onClick={
+                    circuitRoutePersistenceFailed
+                      ? retryRunTransition
+                      : circuitPersistenceFailed
+                        ? retryCircuitSettlement
+                        : continueCircuit
+                  }
+                  aria-keyshortcuts="Enter Space"
+                  data-gamepad-shortcut="A"
+                >
+                  {circuitRoutePersistenceFailed
+                    ? "RÉESSAYER LA SÉLECTION"
+                    : circuitRoutePersistencePending
+                      ? "Sélection en cours…"
+                      : circuitPersistenceFailed
+                        ? "RÉESSAYER L’ENREGISTREMENT"
+                        : !circuitResolutionReady
+                          ? "Enregistrement…"
+                      : terminalCircuitRun?.phase === "active"
+                        ? circuitAppliedResult?.outcome === "victory"
+                          ? "Combat suivant"
+                          : "Rejouer le combat"
+                        : "Retour à la sélection"}
+                </button>
+              ) : mode === "descent" ? (
+                <button
+                  ref={resultPrimaryRef}
+                  type="button"
+                  className={styles.startButton}
+                  disabled={!descentPersistenceFailed && !descentResolutionReady}
+                  onClick={
+                    descentPersistenceFailed
+                      ? retryRunTransition
+                      : terminalDescentRun?.phase === "active"
+                        ? continueDescent
+                        : restartDescent
+                  }
+                  aria-keyshortcuts="Enter Space"
+                  data-gamepad-shortcut="A"
+                >
+                  {descentPersistenceFailed
+                    ? "RÉESSAYER L’ENREGISTREMENT"
+                    : !descentResolutionReady
+                      ? "Enregistrement…"
+                      : terminalDescentRun?.phase === "active"
+                        ? "Choisir la branche suivante"
+                        : "Recommencer la Descente"}
+                </button>
               ) : (
                 <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
               )}
-              {!playbackReplay && availableReplay ? (
+              {!playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
                 <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>
               ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>

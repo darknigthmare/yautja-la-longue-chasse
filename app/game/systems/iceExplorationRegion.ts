@@ -6,6 +6,8 @@ export const ICE_MISSION_ID: MissionId = "ice-cryostalker";
 export const ICE_RELAY_ID = "ice-mine-relay";
 export const ICE_HATCH_ID = "ice-return-hatch";
 export const ICE_SECRET_ID = "ice-clan-cache";
+export const ICE_THERMAL_RETURN_GATE_ID = "ice-region-thermal-return-gate";
+export const ICE_THERMAL_RETURN_ROUTE_ID = "ice-region-thermal-return-route";
 export const ICE_GROUND_Y = 624;
 export const ICE_RELAY_FLOOR_Y = 304;
 export const ICE_VAULT_FLOOR_Y = 392;
@@ -20,6 +22,10 @@ export const ICE_CACHE: Readonly<WorldRect> = { x: 1240, y: 344, width: 48, heig
 export const ICE_HATCH: Readonly<WorldRect> = { x: 1320, y: 392, width: 110, height: 24 };
 export const ICE_RIGHT_WALL: Readonly<WorldRect> = { x: 1430, y: 0, width: 28, height: 416 };
 export const ICE_LADDER: Readonly<WorldRect> = { x: 1348, y: 212, width: 44, height: 412 };
+export const ICE_THERMAL_RETURN_STARTER: Readonly<WorldRect> = { x: 1510, y: 510, width: 260, height: 22 };
+export const ICE_THERMAL_RETURN_LEDGE: Readonly<WorldRect> = { x: 1770, y: 304, width: 320, height: 24 };
+export const ICE_THERMAL_RETURN_GATE: Readonly<WorldRect> = { x: 2090, y: 0, width: 28, height: 328 };
+export const ICE_THERMAL_RETURN_BRIDGE: Readonly<WorldRect> = { x: 2118, y: 304, width: 250, height: 24 };
 export const ICE_REPLACEMENT_SPAN = { minX: 400, maxX: 1460 } as const;
 
 export interface IceRegionRoom extends WorldRect {
@@ -57,6 +63,11 @@ export function iceRegionPlatforms(progress: ExplorationProgress): WorldPlatform
     slab("ice-region-high-gantry", ICE_HIGH_PLATFORM),
     slab("ice-region-vault-floor", ICE_VAULT, "ice"),
     slab("ice-region-outer-wall", ICE_RIGHT_WALL, "ice"),
+    slab("ice-region-thermal-return-starter", ICE_THERMAL_RETURN_STARTER, "ice", "one-way"),
+    slab("ice-region-thermal-return-ledge", ICE_THERMAL_RETURN_LEDGE, "ice", "one-way"),
+    ...(state.abilityIds.includes("thermal-resistance")
+      ? [slab(ICE_THERMAL_RETURN_ROUTE_ID, ICE_THERMAL_RETURN_BRIDGE, "metal", "one-way")]
+      : [slab(ICE_THERMAL_RETURN_GATE_ID, ICE_THERMAL_RETURN_GATE, "metal")]),
     ...(state.openedGateIds.includes(ICE_RELAY_ID)
       ? [slab("ice-region-deployed-bridge", ICE_BRIDGE)] : [slab(ICE_RELAY_ID, ICE_DOOR)]),
     ...(!state.openedGateIds.includes(ICE_HATCH_ID) ? [slab(ICE_HATCH_ID, ICE_HATCH)] : []),
@@ -117,6 +128,12 @@ export function iceInteract(progress: ExplorationProgress, body: WorldRect): Ice
 export function iceHint(progress: ExplorationProgress, body: WorldRect): string | null {
   if (!validBody(body)) return null;
   const state = normalizeExplorationProgress(progress);
+  if (onFloor(body, ICE_THERMAL_RETURN_LEDGE.y)
+    && distanceX(body, ICE_THERMAL_RETURN_GATE) <= 44) {
+    return state.abilityIds.includes("thermal-resistance")
+      ? "Résistance thermique active : route supérieure vers le relais ouverte."
+      : "Passage cryothermique scellé : résistance thermique du volcan requise";
+  }
   if (onFloor(body, ICE_RELAY_FLOOR_Y) && near(body, ICE_RELAY)) {
     return state.openedGateIds.includes(ICE_RELAY_ID) ? "Passerelle déployée : la chambre se trouve en contrebas." : "Alimenter le relais supérieur";
   }

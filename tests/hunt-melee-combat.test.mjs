@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { runInNewContext } from "node:vm";
 import ts from "typescript";
 
 async function importTypeScriptModule(relativePath) {
@@ -274,5 +275,414 @@ test("HuntCanvas consumes the pure melee phases and applies real hit reactions",
       source.includes(`  "${persistentEffect}",`),
       `missing explicit hitstun-safe passive: ${persistentEffect}`,
     );
+  }
+});
+
+
+test("advanced hunt techniques expose authored risk, target locks and contextual gates", async () => {
+  const melee = await meleePromise;
+
+  const heavy = melee.requestHuntMeleeTechniqueAttack(
+    melee.createHuntMeleeState(),
+    profile,
+    1,
+    "heavy",
+    { grounded: true },
+  );
+  assert.equal(heavy.accepted, true);
+  assert.equal(heavy.state.actionKind, "heavy");
+  assert.equal(melee.currentHuntMeleeAttack(heavy.state).damage, profile.damage * 1.82);
+  assert.equal(melee.isHuntMeleeBufferWindowOpen(heavy.state), false);
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "heavy",
+      { grounded: false },
+    ).accepted,
+    false,
+  );
+
+  const aerial = melee.requestHuntMeleeTechniqueAttack(
+    melee.createHuntMeleeState(),
+    profile,
+    -1,
+    "aerial",
+    { grounded: false },
+  );
+  assert.equal(aerial.accepted, true);
+  assert.equal(melee.currentHuntMeleeAttack(aerial.state).kind, "aerial");
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "aerial",
+      { grounded: true },
+    ).accepted,
+    false,
+  );
+
+  const guardContext = {
+    grounded: true,
+    targetId: "guard-a",
+    targetHealthRatio: 0.7,
+    targetInRange: true,
+    targetTelegraphing: true,
+    targetIsBoss: false,
+  };
+  const guardBreak = melee.requestHuntMeleeTechniqueAttack(
+    melee.createHuntMeleeState(),
+    profile,
+    1,
+    "guard-break",
+    guardContext,
+  );
+  assert.equal(guardBreak.accepted, true);
+  assert.equal(guardBreak.state.lockedTargetId, "guard-a");
+  assert.equal(melee.currentHuntMeleeAttack(guardBreak.state).breaksGuard, true);
+  let guardActive = advanceToActive(melee, guardBreak.state);
+  assert.equal(melee.canHuntMeleeHitTarget(guardActive, "guard-a"), true);
+  assert.equal(melee.canHuntMeleeHitTarget(guardActive, "guard-b"), false);
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "guard-break",
+      { ...guardContext, targetTelegraphing: false },
+    ).accepted,
+    false,
+  );
+});
+
+test("an accepted locked technique leaves its target untouched until the active hit", async () => {
+  const melee = await meleePromise;
+  const source = await readFile(
+    new URL("../app/game/HuntCanvas.tsx", import.meta.url),
+    "utf8",
+  );
+  const sourceFile = ts.createSourceFile(
+    "HuntCanvas.tsx",
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX,
+  );
+  const declaration = sourceFile.statements.find(
+    (statement) =>
+      ts.isFunctionDeclaration(statement) &&
+      statement.name?.text === "playerMeleeTechnique",
+  );
+  assert.ok(declaration, "playerMeleeTechnique must remain independently testable");
+  const transpiled = ts.transpileModule(
+    `${declaration.getText(sourceFile)}\nexport { playerMeleeTechnique };`,
+    {
+      compilerOptions: {
+        module: ts.ModuleKind.CommonJS,
+        target: ts.ScriptTarget.ES2020,
+      },
+      fileName: "HuntCanvas-technique.ts",
+      reportDiagnostics: true,
+    },
+  );
+  const errors = (transpiled.diagnostics ?? []).filter(
+    (diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error,
+  );
+  assert.deepEqual(errors, []);
+
+  const compiled = { exports: {} };
+  runInNewContext(transpiled.outputText, {
+    module: compiled,
+    exports: compiled.exports,
+    equippedWeapon: () => ({ id: "wristblades" }),
+    effectiveWeaponStats: () => ({}),
+    resolveHunterWeaponAttack: () => ({
+      staminaCost: 8,
+      damage: profile.damage,
+      cooldownSeconds: profile.cooldownSeconds,
+      meleeReachPx: profile.reachPx,
+      maxTargetHits: profile.maxTargetHits,
+      noiseLoudness: profile.noiseLoudness,
+      noiseRadius: profile.noiseRadius,
+    }),
+    effectiveArmorStats: () => ({ meleeDamageMultiplier: 1 }),
+    huntMeleeStaminaMultiplier: melee.huntMeleeStaminaMultiplier,
+    requestHuntMeleeTechniqueAttack: melee.requestHuntMeleeTechniqueAttack,
+    forceDecloak: (state) => {
+      state.player.cloaked = false;
+    },
+    announce: () => undefined,
+  });
+
+  const target = {
+    id: "prey-a",
+    health: 10,
+    maxHealth: 100,
+    boss: false,
+    telegraph: 0.19,
+    pendingAttackId: "regular-melee",
+    hitStunSeconds: 0,
+    knockbackVelocityX: 75,
+    velocityX: -110,
+  };
+  const targetBeforeRequest = structuredClone(target);
+  const state = {
+    phase: "active",
+    player: {
+      activeWeaponSlot: 0,
+      weaponAmmo: [-1, -1],
+      stamina: 100,
+      melee: melee.createHuntMeleeState(),
+      facing: 1,
+      grounded: true,
+      climbing: false,
+      climbZoneId: null,
+      cloaked: true,
+    },
+  };
+  const loadout = {
+    weaponIds: ["wristblades", "combistick"],
+    armorId: "test",
+  };
+  const inventory = {
+    weaponUpgrades: { wristblades: 0 },
+    armorUpgrades: { test: 0 },
+  };
+
+  compiled.exports.playerMeleeTechnique(
+    state,
+    loadout,
+    inventory,
+    "execution",
+    target,
+  );
+
+  assert.equal(
+    state.player.melee.phase,
+    "startup",
+    "the technique request was accepted",
+  );
+  assert.ok(
+    state.player.stamina < 100,
+    "an accepted request pays its stamina cost",
+  );
+  assert.deepEqual(
+    target,
+    targetBeforeRequest,
+    "startup must not cancel a telegraph, stop movement or grant hit stun",
+  );
+});
+
+test("projection and execution reject bosses or invalid ranges and lock one vulnerable prey", async () => {
+  const melee = await meleePromise;
+  const base = {
+    grounded: true,
+    targetId: "prey-a",
+    targetHealthRatio: 0.2,
+    targetInRange: true,
+    targetTelegraphing: false,
+    targetIsBoss: false,
+  };
+  const thrown = melee.requestHuntMeleeTechniqueAttack(
+    melee.createHuntMeleeState(),
+    profile,
+    1,
+    "throw",
+    base,
+  );
+  assert.equal(thrown.accepted, true);
+  assert.equal(melee.currentHuntMeleeAttack(thrown.state).isThrow, true);
+  assert.equal(melee.currentHuntMeleeAttack(thrown.state).maxTargetHits, 1);
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "throw",
+      { ...base, targetIsBoss: true },
+    ).accepted,
+    false,
+  );
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "throw",
+      { ...base, targetInRange: false },
+    ).accepted,
+    false,
+  );
+
+  const execution = melee.requestHuntMeleeTechniqueAttack(
+    melee.createHuntMeleeState(),
+    profile,
+    -1,
+    "execution",
+    base,
+  );
+  assert.equal(execution.accepted, true);
+  assert.equal(melee.currentHuntMeleeAttack(execution.state).isExecution, true);
+  assert.equal(execution.state.lockedTargetId, "prey-a");
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "execution",
+      { ...base, targetHealthRatio: melee.HUNT_MELEE_EXECUTION_HEALTH_RATIO + 0.001 },
+    ).accepted,
+    false,
+  );
+  assert.equal(
+    melee.requestHuntMeleeTechniqueAttack(
+      melee.createHuntMeleeState(),
+      profile,
+      1,
+      "execution",
+      { ...base, targetHealthRatio: 0 },
+    ).accepted,
+    false,
+  );
+});
+
+test("vertical projection launches once and lands exactly on its captured floor", async () => {
+  const melee = await meleePromise;
+  let reaction = melee.stepHuntMeleeVerticalReaction(
+    { y: 500, velocityY: -250, restY: 500 },
+    1 / 60,
+  );
+  assert.equal(reaction.active, true);
+  assert.ok(reaction.state.y < 500);
+  assert.ok(reaction.state.velocityY < 0);
+
+  for (let frame = 0; frame < 120 && reaction.active; frame += 1) {
+    reaction = melee.stepHuntMeleeVerticalReaction(reaction.state, 1 / 60);
+  }
+  assert.deepEqual(reaction, {
+    state: { y: 500, velocityY: 0, restY: 500 },
+    active: false,
+  });
+
+  const floorClamp = melee.stepHuntMeleeVerticalReaction(
+    { y: 500, velocityY: 260, restY: 500 },
+    1 / 60,
+  );
+  assert.deepEqual(floorClamp, {
+    state: { y: 500, velocityY: 0, restY: 500 },
+    active: false,
+  });
+});
+
+test("parry has one early active window and a deterministic cooldown", async () => {
+  const melee = await meleePromise;
+  const requested = melee.requestHuntMeleeParry(melee.createHuntMeleeState());
+  assert.equal(requested.accepted, true);
+  assert.equal(requested.state.defensePhase, "parry");
+  assert.equal(melee.canHuntMeleeParry(requested.state), true);
+  assert.equal(melee.requestHuntMeleeParry(requested.state).accepted, false);
+  const late = melee.stepHuntMeleeCombat(
+    requested.state,
+    melee.HUNT_MELEE_PARRY_ACTIVE_SECONDS + 0.01,
+  ).state;
+  assert.equal(melee.canHuntMeleeParry(late), false);
+
+  const consumed = melee.consumeHuntMeleeParry(requested.state);
+  assert.equal(consumed.defensePhase, "neutral");
+  assert.equal(melee.canHuntMeleeParry(consumed), false);
+  assert.equal(melee.requestHuntMeleeParry(consumed).accepted, false);
+  const cooled = melee.stepHuntMeleeCombat(consumed, 0.6).state;
+  assert.equal(melee.requestHuntMeleeParry(cooled).accepted, true);
+});
+
+test("dodge exposes only an opening invulnerability window and directional movement", async () => {
+  const melee = await meleePromise;
+  const requested = melee.requestHuntMeleeDodge(melee.createHuntMeleeState(), -1);
+  assert.equal(requested.accepted, true);
+  assert.equal(requested.state.defensePhase, "dodge");
+  assert.equal(melee.isHuntMeleeDodgeInvulnerable(requested.state), true);
+  assert.ok(melee.huntMeleeDodgeVelocity(requested.state) < 0);
+  assert.equal(melee.requestHuntMeleeAttack(requested.state, profile, 1).accepted, false);
+
+  const late = melee.stepHuntMeleeCombat(
+    requested.state,
+    melee.HUNT_MELEE_DODGE_INVULNERABILITY_SECONDS + 0.01,
+  ).state;
+  assert.equal(melee.isHuntMeleeDodgeInvulnerable(late), false);
+  assert.ok(melee.huntMeleeDodgeVelocity(late) < 0);
+
+  const recovered = melee.stepHuntMeleeCombat(late, 0.5).state;
+  assert.equal(recovered.defensePhase, "neutral");
+  assert.equal(melee.huntMeleeDodgeVelocity(recovered), 0);
+  assert.equal(melee.requestHuntMeleeDodge(recovered, 1).accepted, true);
+});
+
+test("V1 saves migrate to light combat and malformed locked techniques fail closed", async () => {
+  const melee = await meleePromise;
+  const v1 = startAttack(melee);
+  const { actionKind, lockedTargetId, defensePhase, defenseRemainingSeconds,
+    defenseCooldownSeconds, dodgeDirection, parryConsumed, ...legacy } = v1;
+  void actionKind;
+  void lockedTargetId;
+  void defensePhase;
+  void defenseRemainingSeconds;
+  void defenseCooldownSeconds;
+  void dodgeDirection;
+  void parryConsumed;
+  const migrated = melee.normalizeHuntMeleeState(legacy);
+  assert.equal(migrated.actionKind, "light");
+  assert.equal(migrated.defensePhase, "neutral");
+
+  const malformed = melee.normalizeHuntMeleeState({
+    ...v1,
+    actionKind: "execution",
+    lockedTargetId: null,
+  });
+  assert.equal(malformed.phase, "idle");
+
+  const run = () => {
+    let state = melee.createHuntMeleeState();
+    state = melee.requestHuntMeleeDodge(state, 1).state;
+    for (let frame = 0; frame < 80; frame += 1) {
+      state = melee.stepHuntMeleeCombat(state, 1 / 60).state;
+      if (frame === 35) {
+        state = melee.requestHuntMeleeTechniqueAttack(
+          state,
+          profile,
+          1,
+          "heavy",
+          { grounded: true },
+        ).state;
+      }
+    }
+    return state;
+  };
+  assert.deepEqual(run(), run());
+});
+
+test("HuntCanvas wires every advanced technique to contextual controls and hit resolution", async () => {
+  const source = await readFile(
+    new URL("../app/game/HuntCanvas.tsx", import.meta.url),
+    "utf8",
+  );
+  for (const marker of [
+    "requestHuntMeleeTechniqueAttack(",
+    "requestHuntMeleeParry(",
+    "requestHuntMeleeDodge(",
+    "resolvePlayerMeleeParry(state, enemy)",
+    "resolvePlayerMeleeParry(state, boss)",
+    "stepHuntMeleeVerticalReaction(",
+    "enemy.knockbackVelocityY =",
+    '"aerial",',
+    '"guard-break",',
+    '"throw",',
+    '"execution",',
+    "HUNT_MELEE_EXECUTION_HEALTH_RATIO",
+    "lourde, brise-garde ou exécution contextuelle",
+    "projection rapprochée",
+  ]) {
+    assert.ok(source.includes(marker), `missing advanced hunt integration: ${marker}`);
   }
 });
