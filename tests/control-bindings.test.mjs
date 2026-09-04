@@ -41,7 +41,7 @@ function mutableDefaults() {
 }
 
 test("the AZERTY defaults cover every stable action without contextual conflicts", () => {
-  assert.equal(controls.CONTROL_ACTION_IDS.length, 71);
+  assert.equal(controls.CONTROL_ACTION_IDS.length, 73);
   assert.deepEqual(
     Object.keys(controls.DEFAULT_CONTROL_BINDINGS),
     controls.CONTROL_ACTION_IDS,
@@ -80,14 +80,14 @@ test("the AZERTY defaults cover every stable action without contextual conflicts
 });
 
 test("THE PIT exposes complete collision-safe bindings for both local players", () => {
-  assert.equal(controls.PIT_CONTROL_ACTION_IDS.length, 23);
+  assert.equal(controls.PIT_CONTROL_ACTION_IDS.length, 25);
   assert.deepEqual(
     controls.PIT_CONTROL_ACTION_IDS,
     controls.CONTROL_ACTION_IDS.filter((actionId) => actionId.startsWith("pit.")),
   );
 
   const pitEntries = controls.controlBindingsForContext("pit");
-  assert.equal(pitEntries.length, 23);
+  assert.equal(pitEntries.length, 25);
   assert.deepEqual(
     pitEntries.map((entry) => entry.actionId),
     controls.PIT_CONTROL_ACTION_IDS,
@@ -108,6 +108,8 @@ test("THE PIT exposes complete collision-safe bindings for both local players", 
   assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p1Jump"], ["Space"]);
   assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p2MoveLeft"], ["Numpad4"]);
   assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p2Throw"], ["NumpadEnter"]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p1Resource"], ["KeyH"]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p2Resource"], ["NumpadSubtract"]);
 
   const pitCodes = new Set(pitEntries.flatMap((entry) => entry.keyCodes));
   for (const code of pitCodes) {
@@ -129,16 +131,22 @@ test("THE PIT exposes complete collision-safe bindings for both local players", 
 });
 
 test("THE PIT input adapter resolves remapped P1 and P2 controls deterministically", () => {
-  const remapped = controls.rebindControlAction(
+  const remappedAttack = controls.rebindControlAction(
     controls.DEFAULT_CONTROL_BINDINGS,
     "pit.p1AttackLight",
     ["KeyB"],
+  );
+  assert.equal(remappedAttack.accepted, true);
+  const remapped = controls.rebindControlAction(
+    remappedAttack.bindings,
+    "pit.p1Resource",
+    ["KeyV"],
   );
   assert.equal(remapped.accepted, true);
   assert.deepEqual(
     controls.pitInputFromControlCodes(
       1,
-      new Set(["KeyQ", "KeyI", "KeyB"]),
+      new Set(["KeyQ", "KeyI", "KeyB", "KeyV"]),
       remapped.bindings,
     ),
     {
@@ -150,10 +158,11 @@ test("THE PIT input adapter resolves remapped P1 and P2 controls deterministical
       guardLow: false,
       attack: "light",
       throw: false,
+      resource: true,
     },
   );
   assert.deepEqual(
-    controls.pitInputFromControlCodes(2, ["Numpad6", "Numpad5", "NumpadEnter"]),
+    controls.pitInputFromControlCodes(2, ["Numpad6", "Numpad5", "NumpadEnter", "NumpadSubtract"]),
     {
       left: false,
       right: true,
@@ -163,6 +172,7 @@ test("THE PIT input adapter resolves remapped P1 and P2 controls deterministical
       guardLow: false,
       attack: "heavy",
       throw: true,
+      resource: true,
     },
   );
   assert.equal(
@@ -286,7 +296,7 @@ test("matching helpers prefer physical codes and provide a key-only fallback", (
   );
 });
 
-test("v1 binding envelopes migrate by restoring every THE PIT action", () => {
+test("v1 and v2 binding envelopes migrate without losing existing remaps", () => {
   const legacyBindings = Object.fromEntries(
     Object.entries(mutableDefaults()).filter(([actionId]) => !actionId.startsWith("pit.")),
   );
@@ -301,13 +311,30 @@ test("v1 binding envelopes migrate by restoring every THE PIT action", () => {
   assert.deepEqual(migrated.bindings["pit.p2AttackLight"], ["Numpad1"]);
   assert.equal(
     migrated.issues.filter((entry) => entry.code === "missing-action").length,
-    23,
+    25,
   );
   assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
 
   const serialized = controls.serializeControlBindings(migrated.bindings);
-  assert.equal(serialized.version, 2);
-  assert.equal(Object.keys(serialized.bindings).length, 71);
+  assert.equal(serialized.version, 3);
+  assert.equal(Object.keys(serialized.bindings).length, 73);
+
+  const versionTwoBindings = mutableDefaults();
+  delete versionTwoBindings["pit.p1Resource"];
+  delete versionTwoBindings["pit.p2Resource"];
+  versionTwoBindings["pit.p1AttackLight"] = ["KeyB"];
+  const migratedV2 = controls.deserializeControlBindings({
+    version: 2,
+    bindings: versionTwoBindings,
+  });
+  assert.equal(migratedV2.restored, true);
+  assert.deepEqual(migratedV2.bindings["pit.p1AttackLight"], ["KeyB"]);
+  assert.deepEqual(migratedV2.bindings["pit.p1Resource"], ["KeyH"]);
+  assert.deepEqual(migratedV2.bindings["pit.p2Resource"], ["NumpadSubtract"]);
+  assert.equal(
+    migratedV2.issues.filter((entry) => entry.code === "missing-action").length,
+    2,
+  );
 });
 
 test("versioned persistence round-trips and corrupt storage falls back atomically", () => {

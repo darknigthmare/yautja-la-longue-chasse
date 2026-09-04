@@ -4,12 +4,29 @@ export const PIT_ROUND_FRAMES = PIT_TICK_RATE * PIT_ROUND_SECONDS;
 export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
-export const PIT_STATE_VERSION = 1;
+export const PIT_STATE_VERSION = 2;
+export const PIT_MAX_TRAQUE = 1_000;
+export const PIT_ROUND_TRAQUE_CARRY_CAP = 500;
+export const PIT_CLOAK_COST = 350;
+export const PIT_RUPTURE_COST = PIT_MAX_TRAQUE;
+export const PIT_INSTINCT_TRAQUE_BONUS = 200;
+export const PIT_INSTINCT_FRAMES = 360;
+export const PIT_CLOAK_STARTUP_FRAMES = 8;
+export const PIT_CLOAK_ACTIVE_FRAMES = 180;
+export const PIT_CLOAK_RECOVERY_FRAMES = 10;
+export const PIT_CLOAK_COOLDOWN_FRAMES = 240;
+export const PIT_RUPTURE_INVULNERABILITY_FRAMES = 20;
+export const PIT_RUPTURE_BLOCKSTUN_FRAMES = 18;
+export const PIT_RUPTURE_PUSHBACK = 96;
+export const PIT_PRESSURE_GAIN_INTERVAL = 12;
+export const PIT_PRESSURE_MIN_DISTANCE = 140;
+export const PIT_PRESSURE_MAX_DISTANCE = 360;
 
 export type PitFighterId = "jungle-hunter" | "berserker";
 export type PitAttackKind = "light" | "medium" | "heavy" | "technique";
 export type PitHitLevel = "high" | "mid" | "low";
 export type PitGuard = "high" | "low" | null;
+export type PitCloakPhase = "inactive" | "startup" | "active" | "recovery";
 export type PitCombatPhase =
   | "idle"
   | "startup"
@@ -88,12 +105,14 @@ export interface PitInput {
   guardLow?: boolean;
   attack?: PitAttackKind;
   throw?: boolean;
+  resource?: boolean;
 }
 
 interface PitInputLatch {
   jump: boolean;
   attack: PitAttackKind | null;
   throw: boolean;
+  resource: boolean;
 }
 
 export interface PitActionState {
@@ -123,6 +142,14 @@ export interface PitFighterState {
   comboHitsReceived: number;
   comboLastHitFrame: number;
   roundsWon: number;
+  traque: number;
+  pressureFrames: number;
+  ruptureUsedThisRound: boolean;
+  survivalTriggeredThisRound: boolean;
+  survivalInstinctFrames: number;
+  cloakPhase: PitCloakPhase;
+  cloakFramesRemaining: number;
+  cloakCooldownFrames: number;
   inputLatch: PitInputLatch;
 }
 
@@ -139,6 +166,11 @@ export type PitCombatEvent =
   | { type: "throw-start"; frame: number; fighterId: PitFighterId }
   | { type: "hit"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId; attack: PitAttackKind | "throw"; damage: number; combo: number; antiAir: boolean }
   | { type: "block"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId; attack: PitAttackKind; damage: number }
+  | { type: "traque-gain"; frame: number; fighterId: PitFighterId; amount: number; source: "damage" | "guard" | "pressure" | "instinct" }
+  | { type: "rupture"; frame: number; fighterId: PitFighterId; attackerId: PitFighterId }
+  | { type: "survival-instinct"; frame: number; fighterId: PitFighterId }
+  | { type: "cloak-start"; frame: number; fighterId: PitFighterId }
+  | { type: "cloak-end"; frame: number; fighterId: PitFighterId; reason: "expired" | "action" | "hit" | "rupture" }
   | { type: "combo-break"; frame: number; fighterId: PitFighterId }
   | { type: "round-end"; frame: number; result: PitRoundResult }
   | { type: "match-end"; frame: number; winnerId: PitFighterId };
@@ -278,6 +310,7 @@ function latchFromInput(input: PitInput = {}): PitInputLatch {
     jump: Boolean(input.jump),
     attack: input.attack ?? null,
     throw: Boolean(input.throw),
+    resource: Boolean(input.resource),
   };
 }
 
@@ -286,6 +319,7 @@ function freshFighter(
   id: PitFighterId,
   roundsWon = 0,
   inputLatch: PitInputLatch = latchFromInput(),
+  traque = 0,
 ): PitFighterState {
   const definition = PIT_FIGHTERS[id];
   return {
@@ -308,6 +342,14 @@ function freshFighter(
     comboHitsReceived: 0,
     comboLastHitFrame: -PIT_COMBO_RESET_FRAMES,
     roundsWon,
+    traque: Math.max(0, Math.min(PIT_MAX_TRAQUE, Math.round(traque))),
+    pressureFrames: 0,
+    ruptureUsedThisRound: false,
+    survivalTriggeredThisRound: false,
+    survivalInstinctFrames: 0,
+    cloakPhase: "inactive",
+    cloakFramesRemaining: 0,
+    cloakCooldownFrames: 0,
     inputLatch: { ...inputLatch },
   };
 }
@@ -392,6 +434,74 @@ function clampFighterX(fighter: PitFighterState, x: number): number {
   return Math.max(minFighterX(fighter), Math.min(maxFighterX(fighter), x));
 }
 
+function addTraque(
+  state: PitCombatState,
+  fighter: PitFighterState,
+  requestedAmount: number,
+  source: "damage" | "guard" | "pressure" | "instinct",
+): number {
+  const amount = Math.max(0, Math.min(Math.round(requestedAmount), PIT_MAX_TRAQUE - fighter.traque));
+  if (amount === 0) return 0;
+  fighter.traque += amount;
+  state.events.push({
+    type: "traque-gain",
+    frame: state.frame,
+    fighterId: fighter.definitionId,
+    amount,
+    source,
+  });
+  return amount;
+}
+
+function startCloak(state: PitCombatState, fighter: PitFighterState): void {
+  fighter.traque -= PIT_CLOAK_COST;
+  fighter.cloakPhase = "startup";
+  fighter.cloakFramesRemaining = PIT_CLOAK_STARTUP_FRAMES;
+  fighter.guard = null;
+  fighter.crouching = false;
+  state.events.push({ type: "cloak-start", frame: state.frame, fighterId: fighter.definitionId });
+}
+
+function endCloak(
+  state: PitCombatState,
+  fighter: PitFighterState,
+  reason: "expired" | "action" | "hit" | "rupture",
+  useRecovery: boolean,
+): void {
+  if (fighter.cloakPhase === "inactive") return;
+  if (fighter.cloakPhase === "recovery") {
+    if (!useRecovery) {
+      fighter.cloakPhase = "inactive";
+      fighter.cloakFramesRemaining = 0;
+      fighter.cloakCooldownFrames = PIT_CLOAK_COOLDOWN_FRAMES;
+    }
+    return;
+  }
+  fighter.cloakPhase = useRecovery ? "recovery" : "inactive";
+  fighter.cloakFramesRemaining = useRecovery ? PIT_CLOAK_RECOVERY_FRAMES : 0;
+  if (!useRecovery) fighter.cloakCooldownFrames = PIT_CLOAK_COOLDOWN_FRAMES;
+  state.events.push({ type: "cloak-end", frame: state.frame, fighterId: fighter.definitionId, reason });
+}
+
+function advanceCloakTimer(state: PitCombatState, fighter: PitFighterState): void {
+  if (fighter.cloakPhase === "inactive") {
+    fighter.cloakCooldownFrames = Math.max(0, fighter.cloakCooldownFrames - 1);
+    return;
+  }
+  fighter.cloakFramesRemaining = Math.max(0, fighter.cloakFramesRemaining - 1);
+  if (fighter.cloakFramesRemaining > 0) return;
+  if (fighter.cloakPhase === "startup") {
+    fighter.cloakPhase = "active";
+    fighter.cloakFramesRemaining = PIT_CLOAK_ACTIVE_FRAMES;
+  } else if (fighter.cloakPhase === "active") {
+    endCloak(state, fighter, "expired", true);
+  } else {
+    fighter.cloakPhase = "inactive";
+    fighter.cloakFramesRemaining = 0;
+    fighter.cloakCooldownFrames = PIT_CLOAK_COOLDOWN_FRAMES;
+  }
+}
+
 function updateFighter(
   state: PitCombatState,
   fighter: PitFighterState,
@@ -402,13 +512,50 @@ function updateFighter(
   const jumpPressed = Boolean(input.jump) && !fighter.inputLatch.jump;
   const throwPressed = Boolean(input.throw) && !fighter.inputLatch.throw;
   const attackPressed = isPressed(input.attack, fighter.inputLatch.attack);
+  const resourcePressed = Boolean(input.resource) && !fighter.inputLatch.resource;
+
+  advanceCloakTimer(state, fighter);
+  if (
+    fighter.cloakPhase === "active" &&
+    (attackPressed || throwPressed || Boolean(input.guardHigh) || Boolean(input.guardLow))
+  ) {
+    endCloak(state, fighter, "action", true);
+  }
+
+  const requestsAnotherAction =
+    attackPressed ||
+    throwPressed ||
+    Boolean(input.guardHigh) ||
+    Boolean(input.guardLow) ||
+    jumpPressed ||
+    Boolean(input.down);
+  if (
+    resourcePressed &&
+    !requestsAnotherAction &&
+    fighter.health > 0 &&
+    fighter.phase === "idle" &&
+    fighter.action === null &&
+    fighter.grounded &&
+    fighter.guard === null &&
+    fighter.cloakPhase === "inactive" &&
+    fighter.cloakCooldownFrames === 0 &&
+    fighter.traque >= PIT_CLOAK_COST
+  ) {
+    startCloak(state, fighter);
+  }
 
   if (fighter.wakeInvulnerabilityFrames > 0) fighter.wakeInvulnerabilityFrames -= 1;
   if (state.frame - fighter.comboLastHitFrame > PIT_COMBO_RESET_FRAMES && fighter.phase === "idle") {
     fighter.comboHitsReceived = 0;
   }
 
-  if (fighter.phase === "hitstun" || fighter.phase === "blockstun") {
+  if (fighter.cloakPhase === "startup" && fighter.phase === "idle" && fighter.action === null) {
+    const direction = Number(Boolean(input.right)) - Number(Boolean(input.left));
+    const speedMultiplier = fighter.survivalInstinctFrames > 0 ? 1.08 : 1;
+    fighter.velocityX = direction * definition.walkSpeed * 0.5 * speedMultiplier;
+    fighter.guard = null;
+    fighter.crouching = false;
+  } else if (fighter.phase === "hitstun" || fighter.phase === "blockstun") {
     fighter.stunFrames = Math.max(0, fighter.stunFrames - 1);
     fighter.velocityX *= 0.82;
     if (fighter.stunFrames === 0) {
@@ -468,7 +615,9 @@ function updateFighter(
       : null;
 
     const direction = Number(Boolean(input.right)) - Number(Boolean(input.left));
-    const speed = fighter.grounded ? definition.walkSpeed : definition.airSpeed;
+    const instinctSpeed = fighter.survivalInstinctFrames > 0 ? 1.08 : 1;
+    const cloakSpeed = fighter.cloakPhase === "active" ? 1.12 : 1;
+    const speed = (fighter.grounded ? definition.walkSpeed : definition.airSpeed) * instinctSpeed * cloakSpeed;
     fighter.velocityX = direction * (fighter.crouching ? speed * 0.42 : speed);
 
     if (jumpPressed && fighter.grounded && fighter.guard === null) {
@@ -499,6 +648,7 @@ function updateFighter(
     jump: Boolean(input.jump),
     attack: input.attack ?? null,
     throw: Boolean(input.throw),
+    resource: Boolean(input.resource),
   };
 
   if (!fighter.grounded) {
@@ -609,6 +759,11 @@ function guardBlocks(guard: PitGuard, hitLevel: PitHitLevel): boolean {
   return guard === hitLevel;
 }
 
+function damageAfterInstinct(defender: PitFighterState, damage: number): number {
+  if (damage === 0 || defender.survivalInstinctFrames === 0) return damage;
+  return Math.max(1, Math.ceil(damage * 0.9));
+}
+
 function collectImpact(
   state: PitCombatState,
   attacker: PitFighterState,
@@ -616,7 +771,7 @@ function collectImpact(
 ): PendingImpact | null {
   const actionState = attacker.action;
   if (!actionState || attacker.phase !== "active" || actionState.connected) return null;
-  if (defender.wakeInvulnerabilityFrames > 0) return null;
+  if (defender.health <= 0 || defender.wakeInvulnerabilityFrames > 0) return null;
   const hitbox = getPitFighterBoxes(attacker).hitbox;
   if (!hitbox || !boxesOverlap(hitbox, getPitFighterBoxes(defender).hurtbox)) return null;
 
@@ -627,7 +782,10 @@ function collectImpact(
       defenderSlot: defender.slot,
       kind: "throw",
       blocked: false,
-      damage: Math.round(THROW_DAMAGE * PIT_FIGHTERS[attacker.definitionId].power),
+      damage: damageAfterInstinct(
+        defender,
+        Math.round(THROW_DAMAGE * PIT_FIGHTERS[attacker.definitionId].power),
+      ),
       stun: 42,
       pushback: 42,
       knockdown: true,
@@ -650,7 +808,12 @@ function collectImpact(
     defenderSlot: defender.slot,
     kind: move.kind,
     blocked,
-    damage: blocked ? move.chipDamage : Math.max(1, Math.round(move.damage * PIT_FIGHTERS[attacker.definitionId].power * scale)),
+    damage: damageAfterInstinct(
+      defender,
+      blocked
+        ? move.chipDamage
+        : Math.max(1, Math.round(move.damage * PIT_FIGHTERS[attacker.definitionId].power * scale)),
+    ),
     stun: blocked ? move.blockstun : move.hitstun,
     pushback: blocked ? move.pushback * 0.62 : move.pushback,
     knockdown: !blocked && (move.knockdown || antiAir || combo >= PIT_MAX_COMBO_HITS),
@@ -663,7 +826,9 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
   const attacker = state.fighters[impact.attackerSlot];
   const defender = state.fighters[impact.defenderSlot];
   if (attacker.action) attacker.action.connected = true;
+  const healthBefore = defender.health;
   defender.health = Math.max(0, defender.health - impact.damage);
+  const actualDamage = healthBefore - defender.health;
   defender.velocityX = 0;
   defender.x = clampFighterX(defender, defender.x + attacker.facing * impact.pushback);
   if (impact.launchY > 0) {
@@ -683,8 +848,12 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
       attackerId: attacker.definitionId,
       defenderId: defender.definitionId,
       attack: impact.kind as PitAttackKind,
-      damage: impact.damage,
+      damage: actualDamage,
     });
+    addTraque(state, attacker, actualDamage, "damage");
+    addTraque(state, defender, Math.ceil(actualDamage / 2), "damage");
+    const guardGain = impact.kind === "heavy" || impact.kind === "technique" ? 12 : 6;
+    addTraque(state, defender, guardGain, "guard");
     return;
   }
 
@@ -709,10 +878,30 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
     attackerId: attacker.definitionId,
     defenderId: defender.definitionId,
     attack: impact.kind,
-    damage: impact.damage,
+    damage: actualDamage,
     combo: impact.combo,
     antiAir: impact.launchY > 0,
   });
+  endCloak(state, defender, "hit", false);
+  addTraque(state, attacker, actualDamage, "damage");
+  addTraque(state, defender, Math.ceil(actualDamage / 2), "damage");
+
+  const maxHealth = PIT_FIGHTERS[defender.definitionId].maxHealth;
+  if (
+    defender.health > 0 &&
+    defender.health <= maxHealth * 0.25 &&
+    !defender.survivalTriggeredThisRound
+  ) {
+    defender.survivalTriggeredThisRound = true;
+    defender.survivalInstinctFrames = PIT_INSTINCT_FRAMES;
+    state.events.push({
+      type: "survival-instinct",
+      frame: state.frame,
+      fighterId: defender.definitionId,
+    });
+    addTraque(state, defender, PIT_INSTINCT_TRAQUE_BONUS, "instinct");
+  }
+
   if (impact.combo >= PIT_MAX_COMBO_HITS) {
     defender.wakeInvulnerabilityFrames = Math.max(defender.wakeInvulnerabilityFrames, 60);
     state.events.push({ type: "combo-break", frame: state.frame, fighterId: defender.definitionId });
@@ -757,6 +946,119 @@ function evaluateRound(state: PitCombatState): void {
   }
 }
 
+interface PendingRupture {
+  fighterSlot: 0 | 1;
+  attackerSlot: 0 | 1;
+  pushDirection: -1 | 1;
+}
+
+function collectRuptures(
+  fighters: readonly [PitFighterState, PitFighterState],
+  inputs: readonly [PitInput, PitInput],
+): PendingRupture[] {
+  const ruptures: PendingRupture[] = [];
+  for (const slot of [0, 1] as const) {
+    const fighter = fighters[slot];
+    const input = inputs[slot] ?? {};
+    const resourcePressed = Boolean(input.resource) && !fighter.inputLatch.resource;
+    if (
+      !resourcePressed ||
+      fighter.health <= 0 ||
+      fighter.phase !== "hitstun" ||
+      fighter.comboHitsReceived < 2 ||
+      fighter.traque < PIT_RUPTURE_COST ||
+      fighter.ruptureUsedThisRound
+    ) {
+      continue;
+    }
+    const attackerSlot = (slot === 0 ? 1 : 0) as 0 | 1;
+    ruptures.push({
+      fighterSlot: slot,
+      attackerSlot,
+      pushDirection: fighters[attackerSlot].x >= fighter.x ? 1 : -1,
+    });
+  }
+  return ruptures;
+}
+
+function applyRuptures(state: PitCombatState, ruptures: readonly PendingRupture[]): void {
+  if (ruptures.length === 0) return;
+
+  // Clear every eligible defender from the same pre-update snapshot first.
+  // This prevents slot order from deciding the result when both fighters break.
+  for (const rupture of ruptures) {
+    const fighter = state.fighters[rupture.fighterSlot];
+    fighter.traque = Math.max(0, fighter.traque - PIT_RUPTURE_COST);
+    fighter.ruptureUsedThisRound = true;
+    fighter.action = null;
+    fighter.guard = null;
+    fighter.crouching = false;
+    fighter.phase = "idle";
+    fighter.stunFrames = 0;
+    fighter.knockdownFrames = 0;
+    fighter.comboHitsReceived = 0;
+    fighter.comboLastHitFrame = state.frame - PIT_COMBO_RESET_FRAMES - 1;
+    fighter.velocityX = 0;
+    fighter.wakeInvulnerabilityFrames = Math.max(
+      fighter.wakeInvulnerabilityFrames,
+      PIT_RUPTURE_INVULNERABILITY_FRAMES,
+    );
+    endCloak(state, fighter, "rupture", false);
+  }
+
+  for (const rupture of ruptures) {
+    const fighter = state.fighters[rupture.fighterSlot];
+    const attacker = state.fighters[rupture.attackerSlot];
+    attacker.x = clampFighterX(attacker, attacker.x + rupture.pushDirection * PIT_RUPTURE_PUSHBACK);
+    attacker.velocityX = 0;
+    attacker.action = null;
+    attacker.guard = null;
+    attacker.crouching = false;
+    if (
+      attacker.phase === "knockdown" &&
+      attacker.knockdownFrames >= PIT_RUPTURE_BLOCKSTUN_FRAMES
+    ) {
+      attacker.stunFrames = 0;
+    } else {
+      attacker.phase = "blockstun";
+      attacker.stunFrames = Math.max(attacker.stunFrames, PIT_RUPTURE_BLOCKSTUN_FRAMES);
+      attacker.knockdownFrames = 0;
+    }
+    attacker.comboHitsReceived = 0;
+    attacker.comboLastHitFrame = state.frame - PIT_COMBO_RESET_FRAMES - 1;
+    endCloak(state, attacker, "rupture", false);
+    state.events.push({
+      type: "rupture",
+      frame: state.frame,
+      fighterId: fighter.definitionId,
+      attackerId: attacker.definitionId,
+    });
+  }
+
+  resolvePushboxes(state.fighters[0], state.fighters[1]);
+}
+
+function updatePressureTraque(state: PitCombatState): void {
+  const [left, right] = state.fighters;
+  const distance = Math.abs(right.x - left.x);
+  const pressureActive =
+    left.health > 0 &&
+    right.health > 0 &&
+    distance >= PIT_PRESSURE_MIN_DISTANCE &&
+    distance <= PIT_PRESSURE_MAX_DISTANCE;
+  for (const fighter of state.fighters) {
+    if (!pressureActive) {
+      fighter.pressureFrames = 0;
+      continue;
+    }
+    fighter.pressureFrames += 1;
+    if (fighter.pressureFrames >= PIT_PRESSURE_GAIN_INTERVAL) {
+      fighter.pressureFrames = 0;
+      addTraque(state, fighter, 1, "pressure");
+    }
+  }
+}
+
 function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitInput]): void {
   const [left, right] = state.fighters;
   state.round += 1;
@@ -764,8 +1066,20 @@ function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitIn
   state.roundFramesRemaining = PIT_ROUND_FRAMES;
   state.transitionFramesRemaining = 0;
   state.fighters = [
-    freshFighter(0, left.definitionId, left.roundsWon, latchFromInput(inputs[0] ?? {})),
-    freshFighter(1, right.definitionId, right.roundsWon, latchFromInput(inputs[1] ?? {})),
+    freshFighter(
+      0,
+      left.definitionId,
+      left.roundsWon,
+      latchFromInput(inputs[0] ?? {}),
+      Math.min(left.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
+    ),
+    freshFighter(
+      1,
+      right.definitionId,
+      right.roundsWon,
+      latchFromInput(inputs[1] ?? {}),
+      Math.min(right.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
+    ),
   ];
   state.events.push({ type: "round-start", frame: state.frame, round: state.round });
 }
@@ -793,9 +1107,19 @@ export function stepPitCombat(
   }
   const previousLeft = cloneFighter(state.fighters[0]);
   const previousRight = cloneFighter(state.fighters[1]);
+  const instinctActiveAtFrameStart = [
+    previousLeft.survivalInstinctFrames > 0,
+    previousRight.survivalInstinctFrames > 0,
+  ] as const;
+  const ruptures = collectRuptures(
+    [previousLeft, previousRight],
+    [inputs[0] ?? {}, inputs[1] ?? {}],
+  );
+
   updateFighter(state, state.fighters[0], previousRight, inputs[0] ?? {});
   updateFighter(state, state.fighters[1], previousLeft, inputs[1] ?? {});
   resolvePushboxes(state.fighters[0], state.fighters[1]);
+  applyRuptures(state, ruptures);
 
   // Both impacts are gathered before either is applied, so a same-frame trade
   // remains valid even when the first applied impact causes a KO or hitstun.
@@ -804,6 +1128,16 @@ export function stepPitCombat(
     collectImpact(state, state.fighters[1], state.fighters[0]),
   ].filter((impact): impact is PendingImpact => impact !== null);
   for (const impact of impacts) applyImpact(state, impact);
+
+  updatePressureTraque(state);
+  for (const slot of [0, 1] as const) {
+    if (instinctActiveAtFrameStart[slot]) {
+      state.fighters[slot].survivalInstinctFrames = Math.max(
+        0,
+        state.fighters[slot].survivalInstinctFrames - 1,
+      );
+    }
+  }
 
   if (state.rules.mode === "match") evaluateRound(state);
   return state;
@@ -819,6 +1153,9 @@ export function serializePitCombat(state: PitCombatState): string {
 
 const PIT_ATTACK_KINDS: readonly PitAttackKind[] = ["light", "medium", "heavy", "technique"];
 const PIT_COMBAT_PHASES: readonly PitCombatPhase[] = ["idle", "startup", "active", "recovery", "hitstun", "blockstun", "knockdown"];
+const PIT_CLOAK_PHASES: readonly PitCloakPhase[] = ["inactive", "startup", "active", "recovery"];
+const PIT_TRAQUE_SOURCES: readonly Extract<PitCombatEvent, { type: "traque-gain" }>["source"][] = ["damage", "guard", "pressure", "instinct"];
+const PIT_CLOAK_END_REASONS: readonly Extract<PitCombatEvent, { type: "cloak-end" }>["reason"][] = ["expired", "action", "hit", "rupture"];
 const PIT_MATCH_PHASES: readonly PitMatchPhase[] = ["round", "round-over", "match-over"];
 const PIT_COMBAT_MODES: readonly PitCombatMode[] = ["match", "training"];
 const PIT_RESULT_REASONS: readonly PitRoundResult["reason"][] = ["ko", "double-ko", "timeout", "draw"];
@@ -866,6 +1203,7 @@ function isInputLatch(value: unknown): value is PitInputLatch {
   return isRecord(value) &&
     typeof value.jump === "boolean" &&
     typeof value.throw === "boolean" &&
+    typeof value.resource === "boolean" &&
     (value.attack === null || isAttackKind(value.attack));
 }
 
@@ -889,6 +1227,30 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
   if (!isIntegerBetween(value.comboHitsReceived, 0, PIT_MAX_COMBO_HITS)) return false;
   if (!isIntegerBetween(value.comboLastHitFrame, -PIT_COMBO_RESET_FRAMES, stateFrame)) return false;
   if (!isIntegerBetween(value.roundsWon, 0, 2) || !isInputLatch(value.inputLatch)) return false;
+  if (!isIntegerBetween(value.traque, 0, PIT_MAX_TRAQUE)) return false;
+  if (!isIntegerBetween(value.pressureFrames, 0, PIT_PRESSURE_GAIN_INTERVAL - 1)) return false;
+  if (typeof value.ruptureUsedThisRound !== "boolean" || typeof value.survivalTriggeredThisRound !== "boolean") return false;
+  if (!isIntegerBetween(value.survivalInstinctFrames, 0, PIT_INSTINCT_FRAMES)) return false;
+  if (!value.survivalTriggeredThisRound && value.survivalInstinctFrames !== 0) return false;
+  if (!PIT_CLOAK_PHASES.includes(value.cloakPhase as PitCloakPhase)) return false;
+  const cloakPhase = value.cloakPhase as PitCloakPhase;
+  const cloakFrameMaximum = cloakPhase === "startup"
+    ? PIT_CLOAK_STARTUP_FRAMES
+    : cloakPhase === "active"
+      ? PIT_CLOAK_ACTIVE_FRAMES
+      : cloakPhase === "recovery"
+        ? PIT_CLOAK_RECOVERY_FRAMES
+        : 0;
+  if (!isIntegerBetween(value.cloakFramesRemaining, cloakPhase === "inactive" ? 0 : 1, cloakFrameMaximum)) return false;
+  if (!isIntegerBetween(value.cloakCooldownFrames, 0, PIT_CLOAK_COOLDOWN_FRAMES)) return false;
+  if (cloakPhase !== "inactive" && value.cloakCooldownFrames !== 0) return false;
+  if (
+    (cloakPhase === "startup" || cloakPhase === "active") &&
+    (phase !== "idle" || value.action !== null || value.guard !== null)
+  ) {
+    return false;
+  }
+  if (cloakPhase === "startup" && (!value.grounded || value.crouching)) return false;
   if ((phase === "hitstun" || phase === "blockstun") && value.stunFrames === 0) return false;
   if (phase === "knockdown" && value.knockdownFrames === 0) return false;
   return !(value.grounded === true && value.y !== 0);
@@ -899,7 +1261,28 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
   const knownFighter = (candidate: unknown) => isFighterId(candidate) && fighterIds.includes(candidate);
   if (value.type === "round-start") return isIntegerBetween(value.round, 1, stateRound);
   if (value.type === "attack-start") return knownFighter(value.fighterId) && isAttackKind(value.attack);
-  if (value.type === "throw-start" || value.type === "combo-break") return knownFighter(value.fighterId);
+  if (
+    value.type === "throw-start" ||
+    value.type === "combo-break" ||
+    value.type === "survival-instinct" ||
+    value.type === "cloak-start"
+  ) {
+    return knownFighter(value.fighterId);
+  }
+  if (value.type === "traque-gain") {
+    return knownFighter(value.fighterId) &&
+      isIntegerBetween(value.amount, 1, PIT_MAX_TRAQUE) &&
+      PIT_TRAQUE_SOURCES.includes(value.source as Extract<PitCombatEvent, { type: "traque-gain" }>["source"]);
+  }
+  if (value.type === "rupture") {
+    return knownFighter(value.fighterId) &&
+      knownFighter(value.attackerId) &&
+      value.fighterId !== value.attackerId;
+  }
+  if (value.type === "cloak-end") {
+    return knownFighter(value.fighterId) &&
+      PIT_CLOAK_END_REASONS.includes(value.reason as Extract<PitCombatEvent, { type: "cloak-end" }>["reason"]);
+  }
   if (value.type === "block") {
     return knownFighter(value.attackerId) && knownFighter(value.defenderId) && value.attackerId !== value.defenderId &&
       isAttackKind(value.attack) && isIntegerBetween(value.damage, 0, 1_000);
@@ -913,10 +1296,38 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
   return value.type === "match-end" && knownFighter(value.winnerId);
 }
 
+function migratePitCombatV1(candidate: unknown): unknown {
+  if (!isRecord(candidate) || candidate.version !== 1 || !Array.isArray(candidate.fighters)) {
+    return candidate;
+  }
+  return {
+    ...candidate,
+    version: PIT_STATE_VERSION,
+    fighters: candidate.fighters.map((fighter) => {
+      if (!isRecord(fighter)) return fighter;
+      const inputLatch = isRecord(fighter.inputLatch)
+        ? { ...fighter.inputLatch, resource: false }
+        : fighter.inputLatch;
+      return {
+        ...fighter,
+        traque: 0,
+        pressureFrames: 0,
+        ruptureUsedThisRound: false,
+        survivalTriggeredThisRound: false,
+        survivalInstinctFrames: 0,
+        cloakPhase: "inactive",
+        cloakFramesRemaining: 0,
+        cloakCooldownFrames: 0,
+        inputLatch,
+      };
+    }),
+  };
+}
+
 export function deserializePitCombat(serialized: string): PitCombatState {
   let candidate: unknown;
   try {
-    candidate = JSON.parse(serialized);
+    candidate = migratePitCombatV1(JSON.parse(serialized));
   } catch {
     throw new Error("Invalid or incompatible THE PIT combat state.");
   }

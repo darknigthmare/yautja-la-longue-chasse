@@ -12,7 +12,9 @@ import {
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import {
   PIT_ARENA,
+  PIT_CLOAK_COST,
   PIT_FIGHTERS,
+  PIT_MAX_TRAQUE,
   PIT_TICK_RATE,
   createPitCombatState,
   getPitFighterBoxes,
@@ -39,9 +41,27 @@ import {
   type PitReplayReader,
   type PitReplayRecorder,
 } from "./systems/pitReplay";
+import {
+  PIT_TRAINING_ACTION_LABELS,
+  PIT_TRAINING_DUMMY_OPTIONS,
+  PIT_TRAINING_PLAYBACK_OPTIONS,
+  PIT_TRAINING_SEQUENCE_MAX_TICKS,
+  createPitTrainingSequenceReader,
+  createPitTrainingSequenceRecorder,
+  createPitTrainingSettings,
+  getPitTrainingFrameReadout,
+  resetPitTrainingPositions,
+  resolvePitTrainingDummyInput,
+  updatePitTrainingSettings,
+  type PitTrainingSequence,
+  type PitTrainingSequenceReader,
+  type PitTrainingSequenceRecorder,
+  type PitTrainingSettingsPatch,
+} from "./systems/pitTraining";
 import styles from "./PitCanvas.module.css";
 
 type PitMode = "cpu" | "local" | "training";
+type PitTrainingActivity = "idle" | "recording" | "playback";
 
 export interface PitMatchCompleteResult {
   resultId: string;
@@ -109,6 +129,7 @@ function mergeInputs(primary: PitInput, secondary: PitInput): PitInput {
     guardLow: primary.guardLow || secondary.guardLow,
     attack: primary.attack ?? secondary.attack,
     throw: primary.throw || secondary.throw,
+    resource: primary.resource || secondary.resource,
   };
 }
 
@@ -134,22 +155,42 @@ function readGamepad(gamepad: Gamepad | null): PitInput {
     guardHigh: pressed(4),
     guardLow: pressed(6),
     throw: pressed(7),
+    resource: pressed(8),
   };
 }
 
 function isNeutralInput(input: PitInput): boolean {
   return !input.left && !input.right && !input.down && !input.jump &&
-    !input.guardHigh && !input.guardLow && !input.attack && !input.throw;
+    !input.guardHigh && !input.guardLow && !input.attack && !input.throw && !input.resource;
 }
 
 /** Deterministic state-only rival: no random calls and no player-input access. */
 function cpuInput(state: PitCombatState): PitInput {
   const cpu = state.fighters[1];
   const opponent = state.fighters[0];
-  if (state.phase !== "round" || cpu.phase !== "idle") return EMPTY_INPUT;
+  if (state.phase !== "round") return EMPTY_INPUT;
+  if (
+    cpu.phase === "hitstun" &&
+    cpu.comboHitsReceived >= 2 &&
+    !cpu.ruptureUsedThisRound &&
+    cpu.traque >= PIT_MAX_TRAQUE
+  ) {
+    return { resource: true };
+  }
+  if (cpu.phase !== "idle") return EMPTY_INPUT;
   const signedDistance = opponent.x - cpu.x;
   const distance = Math.abs(signedDistance);
   const beat = state.frame % 180;
+
+  if (
+    cpu.traque >= PIT_CLOAK_COST &&
+    cpu.traque < PIT_MAX_TRAQUE &&
+    cpu.cloakPhase === "inactive" &&
+    cpu.cloakCooldownFrames === 0 &&
+    state.frame % 240 === 0
+  ) {
+    return { resource: true };
+  }
 
   if (distance > 116) {
     return {
@@ -178,6 +219,11 @@ function eventLabel(event: PitCombatEvent): string {
   if (event.type === "throw-start") return "SAISIE RITUELLE";
   if (event.type === "hit") return `${event.combo > 1 ? `${event.combo} COUPS · ` : ""}${event.damage} DÉGÂTS`;
   if (event.type === "block") return `GARDE · ${event.damage} DÉGÂTS RÉSIDUELS`;
+  if (event.type === "traque-gain") return `TRAQUE +${event.amount}`;
+  if (event.type === "rupture") return "RUPTURE DE CHASSE";
+  if (event.type === "survival-instinct") return "INSTINCT DE SURVIE";
+  if (event.type === "cloak-start") return "CAMOUFLAGE ARMÉ";
+  if (event.type === "cloak-end") return event.reason === "expired" ? "CAMOUFLAGE ÉPUISÉ" : "CAMOUFLAGE ROMPU";
   if (event.type === "combo-break") return "RUPTURE DE COMBO";
   if (event.type === "match-end") return "MATCH TERMINÉ";
   return event.result.reason === "timeout" ? "TEMPS ÉCOULÉ" : event.result.reason.toUpperCase();
@@ -270,6 +316,12 @@ function drawArena(
     context.ellipse(0, body.height + fighter.y + 4, definition.bodyWidth * 0.72, 9, 0, 0, Math.PI * 2);
     context.fill();
 
+    if (fighter.cloakPhase !== "inactive") {
+      context.globalAlpha = fighter.cloakPhase === "active" ? 0.38 : fighter.cloakPhase === "startup" ? 0.68 : 0.54;
+      context.shadowColor = highContrast ? "#ffffff" : "#72d8c2";
+      context.shadowBlur = fighter.cloakPhase === "active" ? 13 : 7;
+    }
+
     context.fillStyle = primary;
     context.beginPath();
     context.moveTo(-18 + lean, 30);
@@ -296,6 +348,22 @@ function drawArena(
     context.lineTo(43 + (fighter.phase === "active" ? 20 : 0), 65);
     context.stroke();
     context.restore();
+
+    if (fighter.cloakPhase !== "inactive") {
+      context.save();
+      context.globalAlpha = fighter.cloakPhase === "active" ? 0.82 : 0.58;
+      context.strokeStyle = highContrast ? "#ffffff" : "#72d8c2";
+      context.lineWidth = fighter.cloakPhase === "active" ? 2 : 1;
+      context.setLineDash([7, 5]);
+      context.lineDashOffset = -(state.frame % 12);
+      context.strokeRect(
+        boxes.hurtbox.x - 3,
+        groundY - boxes.hurtbox.y - boxes.hurtbox.height - 3,
+        boxes.hurtbox.width + 6,
+        boxes.hurtbox.height + 6,
+      );
+      context.restore();
+    }
 
     if (showHitboxes) {
       const paintBox = (box: { x: number; y: number; width: number; height: number }, color: string) => {
@@ -398,7 +466,11 @@ export default function PitCanvas({
   const [playbackReplay, setPlaybackReplay] = useState<PitReplay | null>(null);
   const [replayEnded, setReplayEnded] = useState(false);
   const [showHelp, setShowHelp] = useState(true);
-  const [showHitboxes, setShowHitboxes] = useState(false);
+  const [trainingSettings, setTrainingSettings] = useState(() => createPitTrainingSettings());
+  const [trainingSequence, setTrainingSequence] = useState<PitTrainingSequence | null>(null);
+  const [trainingActivity, setTrainingActivity] = useState<PitTrainingActivity>("idle");
+  const [trainingRecordedTicks, setTrainingRecordedTicks] = useState(0);
+  const [trainingNotice, setTrainingNotice] = useState("");
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
   const [touchAvailable] = useState(() =>
     typeof navigator !== "undefined" &&
@@ -416,6 +488,10 @@ export default function PitCanvas({
   const matchResultIdRef = useRef("");
   const recorderRef = useRef<PitReplayRecorder | null>(null);
   const replayReaderRef = useRef<PitReplayReader | null>(null);
+  const trainingSettingsRef = useRef(trainingSettings);
+  const trainingActivityRef = useRef<PitTrainingActivity>("idle");
+  const trainingRecorderRef = useRef<PitTrainingSequenceRecorder | null>(null);
+  const trainingReaderRef = useRef<PitTrainingSequenceReader | null>(null);
   const normalizedLastReplay = useMemo(
     () => lastReplay ? normalizePitReplay(lastReplay) : null,
     [lastReplay],
@@ -444,6 +520,109 @@ export default function PitCanvas({
     touchInputsRef.current.forEach((entries) => entries.clear());
   }, []);
 
+  const focusCombatRoot = useCallback(() => {
+    window.requestAnimationFrame(() => rootRef.current?.focus({ preventScroll: true }));
+  }, []);
+
+  const changeTrainingActivity = useCallback((next: PitTrainingActivity) => {
+    trainingActivityRef.current = next;
+    setTrainingActivity(next);
+  }, []);
+
+  const applyTrainingSettings = useCallback((patch: PitTrainingSettingsPatch) => {
+    setTrainingSettings((current) => {
+      const next = updatePitTrainingSettings(current, patch);
+      trainingSettingsRef.current = next;
+      return next;
+    });
+  }, []);
+
+  const clearTrainingActivity = useCallback(() => {
+    trainingRecorderRef.current = null;
+    trainingReaderRef.current = null;
+    changeTrainingActivity("idle");
+  }, [changeTrainingActivity]);
+
+  const finishTrainingRecording = useCallback((automatic = false) => {
+    const recorder = trainingRecorderRef.current;
+    trainingRecorderRef.current = null;
+    changeTrainingActivity("idle");
+    focusCombatRoot();
+    if (!recorder || recorder.tickCount === 0) {
+      setTrainingNotice("Aucune entrée enregistrée.");
+      setAriaAnnouncement("Aucune commande du mannequin n’a été enregistrée.");
+      return;
+    }
+    try {
+      const sequence = recorder.finish();
+      setTrainingSequence(sequence);
+      const seconds = (sequence.metadata.durationMs / 1_000).toFixed(1).replace(".0", "");
+      setTrainingNotice(`${automatic ? "Limite atteinte · " : ""}${seconds} s · ${sequence.metadata.ticks} images prêtes.`);
+      setAriaAnnouncement(`Séquence du mannequin enregistrée pendant ${seconds} secondes.`);
+    } catch {
+      setTrainingNotice("Séquence invalide. Recommencez l’enregistrement.");
+      setAriaAnnouncement("La séquence du mannequin n’a pas pu être conservée.");
+    }
+  }, [changeTrainingActivity, focusCombatRoot]);
+
+  const startTrainingRecording = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    trainingReaderRef.current = null;
+    trainingRecorderRef.current = createPitTrainingSequenceRecorder();
+    setTrainingRecordedTicks(0);
+    changeTrainingActivity("recording");
+    setTrainingNotice("Commandes J1 dirigées vers le mannequin · 12 s maximum.");
+    setAnnouncement("ENREGISTREMENT MANNEQUIN");
+    setAriaAnnouncement("Enregistrement du mannequin commencé. Les commandes du joueur un contrôlent le mannequin.");
+    resetLiveInputs();
+    changeCombat(resetPitTrainingPositions(current));
+    focusCombatRoot();
+  }, [changeCombat, changeTrainingActivity, focusCombatRoot, resetLiveInputs]);
+
+  const startTrainingPlayback = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training" || !trainingSequence) return;
+    try {
+      trainingRecorderRef.current = null;
+      trainingReaderRef.current = createPitTrainingSequenceReader(
+        trainingSequence,
+        trainingSettingsRef.current.sequencePlayback,
+      );
+      changeTrainingActivity("playback");
+      setTrainingNotice(trainingSettingsRef.current.sequencePlayback === "loop" ? "Lecture du mannequin en boucle." : "Lecture unique du mannequin.");
+      setAnnouncement("LECTURE MANNEQUIN");
+      setAriaAnnouncement("Lecture de la séquence du mannequin commencée.");
+      resetLiveInputs();
+      changeCombat(resetPitTrainingPositions(current));
+      focusCombatRoot();
+    } catch {
+      clearTrainingActivity();
+      setTrainingNotice("Impossible de lire cette séquence.");
+      setAriaAnnouncement("La séquence du mannequin est illisible.");
+    }
+  }, [changeCombat, changeTrainingActivity, clearTrainingActivity, focusCombatRoot, resetLiveInputs, trainingSequence]);
+
+  const stopTrainingPlayback = useCallback(() => {
+    trainingReaderRef.current = null;
+    changeTrainingActivity("idle");
+    setTrainingNotice("Lecture arrêtée. Le comportement choisi reprend.");
+    setAriaAnnouncement("Lecture du mannequin arrêtée.");
+    focusCombatRoot();
+  }, [changeTrainingActivity, focusCombatRoot]);
+
+  const resetTraining = useCallback(() => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    clearTrainingActivity();
+    resetLiveInputs();
+    setTrainingNotice("Positions, vie et ressources réinitialisées.");
+    setAnnouncement("POSITIONS RÉINITIALISÉES");
+    setAriaAnnouncement("Positions, vie et ressources réinitialisées.");
+    changeCombat(resetPitTrainingPositions(current));
+    focusCombatRoot();
+  }, [changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
+
   const beginRecording = useCallback((next: PitCombatState) => {
     try {
       recorderRef.current = createPitReplayRecorder({
@@ -460,6 +639,8 @@ export default function PitCanvas({
 
   const startMatch = useCallback(() => {
     const next = createPitCombatState(leftId, rightId, { mode: mode === "training" ? "training" : "match" });
+    clearTrainingActivity();
+    setTrainingNotice("");
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
     replayReaderRef.current = null;
@@ -467,12 +648,13 @@ export default function PitCanvas({
     setReplayEnded(false);
     setImpact(null);
     resetLiveInputs();
-    beginRecording(next);
+    if (mode === "training") recorderRef.current = null;
+    else beginRecording(next);
     const message = mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT";
     setAnnouncement(message);
     setAriaAnnouncement(mode === "training" ? "Entraînement libre commencé." : "Manche 1. Combat.");
     changeCombat(next);
-  }, [beginRecording, changeCombat, leftId, mode, resetLiveInputs, rightId]);
+  }, [beginRecording, changeCombat, clearTrainingActivity, leftId, mode, resetLiveInputs, rightId]);
 
   const swapSides = useCallback(() => {
     setLeftId((current) => current === "jungle-hunter" ? "berserker" : "jungle-hunter");
@@ -482,13 +664,14 @@ export default function PitCanvas({
   const returnToSelection = useCallback(() => {
     recorderRef.current = null;
     replayReaderRef.current = null;
+    clearTrainingActivity();
     setPlaybackReplay(null);
     setReplayEnded(false);
     resetLiveInputs();
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
-  }, [changeCombat, resetLiveInputs]);
+  }, [changeCombat, clearTrainingActivity, resetLiveInputs]);
 
   const startReplay = useCallback((candidate: PitReplay) => {
     try {
@@ -498,6 +681,7 @@ export default function PitCanvas({
       const next = createPitCombatState(replay.fighters[0], replay.fighters[1], replay.rules);
       recorderRef.current = null;
       replayReaderRef.current = reader;
+      clearTrainingActivity();
       reportedMatchFrameRef.current = null;
       setLeftId(replay.fighters[0]);
       setRightId(replay.fighters[1]);
@@ -513,12 +697,14 @@ export default function PitCanvas({
       setReplayNotice("Le dernier duel est illisible ou incompatible.");
       setAriaAnnouncement("Impossible de relire le dernier duel.");
     }
-  }, [changeCombat, resetLiveInputs]);
+  }, [changeCombat, clearTrainingActivity, resetLiveInputs]);
 
   const startRematch = useCallback(() => {
     const current = combatRef.current;
     if (!current) return;
     const next = rematchPitCombat(current);
+    clearTrainingActivity();
+    setTrainingNotice("");
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
     replayReaderRef.current = null;
@@ -531,7 +717,7 @@ export default function PitCanvas({
     setAnnouncement(next.rules.mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
     setAriaAnnouncement(next.rules.mode === "training" ? "Entraînement libre recommencé." : "Revanche. Manche 1. Combat.");
     changeCombat(next);
-  }, [beginRecording, changeCombat, resetLiveInputs]);
+  }, [beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs]);
 
   const setTouchToken = useCallback((slot: 0 | 1, token: string, pressed: boolean) => {
     const entries = touchInputsRef.current[slot];
@@ -673,7 +859,7 @@ export default function PitCanvas({
           if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
             combatGamepadReadyRef.current[0] = true;
           }
-          const firstInput = mergeInputs(
+          let firstInput = mergeInputs(
             mergeInputs(keyboardOne, touchOne),
             combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
           );
@@ -681,7 +867,41 @@ export default function PitCanvas({
           if (mode === "cpu") {
             secondInput = cpuInput(current);
           } else if (mode === "training") {
-            secondInput = current.frame % 300 < 150 ? { guardHigh: true } : { guardLow: true };
+            const activity = trainingActivityRef.current;
+            if (activity === "recording") {
+              secondInput = firstInput;
+              firstInput = EMPTY_INPUT;
+              const recorder = trainingRecorderRef.current;
+              if (recorder) {
+                try {
+                  recorder.append(secondInput);
+                  if (recorder.tickCount % 6 === 0 || recorder.tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) {
+                    setTrainingRecordedTicks(recorder.tickCount);
+                  }
+                  if (recorder.tickCount >= PIT_TRAINING_SEQUENCE_MAX_TICKS) {
+                    finishTrainingRecording(true);
+                  }
+                } catch {
+                  trainingRecorderRef.current = null;
+                  changeTrainingActivity("idle");
+                  setTrainingNotice("Enregistrement interrompu. La session reste jouable.");
+                  setAriaAnnouncement("Enregistrement du mannequin interrompu.");
+                }
+              }
+            } else if (activity === "playback") {
+              const trainingTick = trainingReaderRef.current?.next();
+              if (!trainingTick || trainingTick.done) {
+                trainingReaderRef.current = null;
+                changeTrainingActivity("idle");
+                setTrainingNotice("Lecture terminée. Le comportement choisi reprend.");
+                setAriaAnnouncement("Lecture de la séquence du mannequin terminée.");
+                secondInput = resolvePitTrainingDummyInput(trainingSettingsRef.current, current);
+              } else {
+                secondInput = trainingTick.value.input;
+              }
+            } else {
+              secondInput = resolvePitTrainingDummyInput(trainingSettingsRef.current, current);
+            }
           } else {
             const keyboardTwo = pitInputFromControlCodes(2, pressedKeysRef.current, controlBindings);
             const touchTwo = pitInputFromControlCodes(2, touchInputsRef.current[1], controlBindings);
@@ -737,12 +957,19 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(requestId);
-  }, [controlBindings, mode, playbackReplay, replayEnded, simulationRunning]);
+  }, [changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, replayEnded, simulationRunning]);
 
   useEffect(() => {
     if (!combat || !canvasRef.current) return;
-    drawArena(canvasRef.current, combat, highContrast, reducedGore, combat.rules.mode === "training" && showHitboxes, impact);
-  }, [combat, highContrast, impact, mode, reducedGore, showHitboxes]);
+    drawArena(
+      canvasRef.current,
+      combat,
+      highContrast,
+      reducedGore,
+      combat.rules.mode === "training" && trainingSettings.showHitboxes,
+      impact,
+    );
+  }, [combat, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -789,6 +1016,7 @@ export default function PitCanvas({
       guardHigh: firstBinding(controlBindings, "pit.p1GuardHigh"),
       guardLow: firstBinding(controlBindings, "pit.p1GuardLow"),
       throw: firstBinding(controlBindings, "pit.p1Throw"),
+      resource: firstBinding(controlBindings, "pit.p1Resource"),
     },
     p2: {
       left: firstBinding(controlBindings, "pit.p2MoveLeft"),
@@ -802,6 +1030,7 @@ export default function PitCanvas({
       guardHigh: firstBinding(controlBindings, "pit.p2GuardHigh"),
       guardLow: firstBinding(controlBindings, "pit.p2GuardLow"),
       throw: firstBinding(controlBindings, "pit.p2Throw"),
+      resource: firstBinding(controlBindings, "pit.p2Resource"),
     },
     pause: firstBinding(controlBindings, "pit.pause"),
   }), [controlBindings]);
@@ -840,7 +1069,7 @@ export default function PitCanvas({
           {([
             ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
             ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
-            ["training", "Entraînement", "Adversaire en garde alternée et hitboxes optionnelles."],
+            ["training", "Entraînement", "Mannequin réglable, hitboxes, frame data et séquences d’entrées."],
           ] as const).map(([id, label, description]) => (
             <button
               key={id}
@@ -881,6 +1110,9 @@ export default function PitCanvas({
   const winner = combat.matchWinnerId ? PIT_FIGHTERS[combat.matchWinnerId] : null;
   const terminal = combat.phase === "match-over" || replayEnded;
   const trainingRules = combat.rules.mode === "training";
+  const frameReadouts = trainingRules && trainingSettings.showFrameData
+    ? ([getPitTrainingFrameReadout(combat, 0), getPitTrainingFrameReadout(combat, 1)] as const)
+    : null;
 
   return (
     <section
@@ -904,12 +1136,32 @@ export default function PitCanvas({
         <div className={styles.fighterHud}>
           <div><strong>{leftDefinition.name}</strong><span>{left.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={leftDefinition.maxHealth} aria-valuenow={left.health}><i style={{ width: `${left.health / leftDefinition.maxHealth * 100}%` }} /></div>
+          <div className={styles.resourceRow}>
+            <span className={left.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
+            <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={left.traque}><i style={{ width: `${left.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
+            <span>{left.traque}</span>
+          </div>
+          <div className={styles.fighterStatuses} aria-label={`États de ${leftDefinition.name}`}>
+            {left.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(left.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
+            {left.cloakPhase !== "inactive" ? <span>CAMO · {left.cloakPhase.toUpperCase()}</span> : left.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(left.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
+            {left.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+          </div>
           <div className={styles.roundPips} aria-label={`${left.roundsWon} manche gagnée`}><i className={left.roundsWon >= 1 ? styles.won : ""} /><i className={left.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
         <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
         <div className={`${styles.fighterHud} ${styles.fighterHudRight}`}>
           <div><strong>{rightDefinition.name}</strong><span>{right.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={rightDefinition.maxHealth} aria-valuenow={right.health}><i style={{ width: `${right.health / rightDefinition.maxHealth * 100}%` }} /></div>
+          <div className={styles.resourceRow}>
+            <span className={right.traque >= PIT_MAX_TRAQUE ? styles.resourceReady : ""}>TRAQUE</span>
+            <div className={styles.resourceTrack} role="progressbar" aria-label={`Traque de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={PIT_MAX_TRAQUE} aria-valuenow={right.traque}><i style={{ width: `${right.traque / PIT_MAX_TRAQUE * 100}%` }} /></div>
+            <span>{right.traque}</span>
+          </div>
+          <div className={styles.fighterStatuses} aria-label={`États de ${rightDefinition.name}`}>
+            {right.survivalInstinctFrames > 0 ? <span>INSTINCT · {Math.ceil(right.survivalInstinctFrames / PIT_TICK_RATE)} s</span> : null}
+            {right.cloakPhase !== "inactive" ? <span>CAMO · {right.cloakPhase.toUpperCase()}</span> : right.cloakCooldownFrames > 0 ? <span>CAMO · {Math.ceil(right.cloakCooldownFrames / PIT_TICK_RATE)} s</span> : null}
+            {right.ruptureUsedThisRound ? <span>RUPTURE UTILISÉE</span> : null}
+          </div>
           <div className={styles.roundPips} aria-label={`${right.roundsWon} manche gagnée`}><i className={right.roundsWon >= 1 ? styles.won : ""} /><i className={right.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
       </div>
@@ -919,11 +1171,78 @@ export default function PitCanvas({
         <div className={styles.announcement} aria-hidden="true">{announcement}</div>
         {left.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboLeft}`}>{left.comboHitsReceived}<small>COUPS</small></div> : null}
         {right.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboRight}`}>{right.comboHitsReceived}<small>COUPS</small></div> : null}
-        {trainingRules ? (
-          <label className={styles.hitboxToggle} inert={terminal}>
-            <input type="checkbox" checked={showHitboxes} onChange={(event) => setShowHitboxes(event.target.checked)} />
-            Hitboxes
-          </label>
+        {frameReadouts ? (
+          <aside className={styles.frameDataPanel} aria-label="Données d’images en temps réel" aria-live="off">
+            {frameReadouts.map((readout) => {
+              const definition = readout.fighterSlot === 0 ? leftDefinition : rightDefinition;
+              const phase = readout.phaseTotalFrames
+                ? `${readout.phaseLabel} ${readout.phaseFrame}/${readout.phaseTotalFrames}`
+                : readout.framesRemaining !== null
+                  ? `${readout.phaseLabel} · ${readout.framesRemaining} restantes`
+                  : readout.phaseLabel;
+              return (
+                <article key={readout.fighterSlot}>
+                  <strong>{definition.name} · F{readout.globalFrame}</strong>
+                  <span>{readout.actionLabel ?? "Aucune action"}{readout.actionTotalFrames ? ` · ${readout.actionFrame}/${readout.actionTotalFrames}` : ""}</span>
+                  <span>{phase}{readout.connected ? " · CONTACT" : ""}</span>
+                </article>
+              );
+            })}
+          </aside>
+        ) : null}
+        {trainingRules && !playbackReplay ? (
+          <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal}>
+            <strong>LABORATOIRE · MANNEQUIN</strong>
+            <div className={styles.trainingOptions}>
+              <label>
+                <span>Comportement</span>
+                <select
+                  aria-label="Comportement du mannequin"
+                  value={trainingSettings.dummyBehavior}
+                  disabled={trainingActivity !== "idle"}
+                  onChange={(event) => applyTrainingSettings({ dummyBehavior: event.target.value as typeof trainingSettings.dummyBehavior })}
+                >
+                  {PIT_TRAINING_DUMMY_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label><input type="checkbox" checked={trainingSettings.showHitboxes} onChange={(event) => applyTrainingSettings({ showHitboxes: event.target.checked })} /> Hitboxes</label>
+              <label><input type="checkbox" checked={trainingSettings.showFrameData} onChange={(event) => applyTrainingSettings({ showFrameData: event.target.checked })} /> Frame data</label>
+              <label>
+                <span>Lecture</span>
+                <select
+                  aria-label="Mode de lecture de la séquence"
+                  value={trainingSettings.sequencePlayback}
+                  disabled={trainingActivity !== "idle"}
+                  onChange={(event) => applyTrainingSettings({ sequencePlayback: event.target.value as typeof trainingSettings.sequencePlayback })}
+                >
+                  {PIT_TRAINING_PLAYBACK_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+            </div>
+            <div className={styles.trainingActions}>
+              <button type="button" className={styles.trainingButton} onClick={resetTraining}>{PIT_TRAINING_ACTION_LABELS.resetPositions}</button>
+              {trainingActivity === "recording" ? (
+                <button type="button" className={styles.trainingButton} onClick={() => finishTrainingRecording()}>{PIT_TRAINING_ACTION_LABELS.stopRecording}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingRecording} disabled={trainingActivity === "playback"}>{PIT_TRAINING_ACTION_LABELS.startRecording}</button>
+              )}
+              {trainingActivity === "playback" ? (
+                <button type="button" className={styles.trainingButton} onClick={stopTrainingPlayback}>{PIT_TRAINING_ACTION_LABELS.stopPlayback}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingPlayback} disabled={!trainingSequence || trainingActivity === "recording"}>{PIT_TRAINING_ACTION_LABELS.playSequence}</button>
+              )}
+            </div>
+            <span className={styles.trainingRecording} role="status">
+              {trainingActivity === "recording"
+                ? "Enregistrement en cours · 12 secondes maximum."
+                : trainingNotice || "Réglez le mannequin, puis mesurez ou enregistrez sa réponse."}
+            </span>
+            {trainingActivity === "recording" ? (
+              <span className={styles.trainingRecording} aria-hidden="true">
+                {trainingRecordedTicks}/{PIT_TRAINING_SEQUENCE_MAX_TICKS} images
+              </span>
+            ) : null}
+          </aside>
         ) : null}
         {combat.phase === "round-over" && !replayEnded ? (
           <div className={styles.resultOverlay} role="status" aria-live="assertive">
@@ -976,18 +1295,18 @@ export default function PitCanvas({
               <div>
                 <strong>JOUEUR 1 · PROFIL THE PIT</strong>
                 <span>{shortcuts.p1.left}/{shortcuts.p1.right} marcher · {shortcuts.p1.down} accroupi · {shortcuts.p1.jump} saut · {shortcuts.p1.light} rapide</span>
-                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection</span>
+                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection · {shortcuts.p1.resource} Traque</span>
               </div>
               {mode === "local" ? (
                 <div>
                   <strong>JOUEUR 2 · PROFIL THE PIT</strong>
                   <span>{shortcuts.p2.left}/{shortcuts.p2.right} marcher · {shortcuts.p2.down} accroupi · {shortcuts.p2.jump} saut · {shortcuts.p2.light} rapide</span>
-                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection</span>
+                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection · {shortcuts.p2.resource} Traque</span>
                 </div>
               ) : null}
             </>
           )}
-          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection</span></div>
+          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection · Select Traque</span></div>
         </aside>
       ) : null}
 
@@ -1006,6 +1325,7 @@ export default function PitCanvas({
           <TouchButton label="GARDE ↑" token={controlBindings["pit.p1GuardHigh"][0] ?? "KeyI"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
           <TouchButton label="GARDE ↓" token={controlBindings["pit.p1GuardLow"][0] ?? "KeyO"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
           <TouchButton label="PROJ." token={controlBindings["pit.p1Throw"][0] ?? "KeyP"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="TRAQUE" token={controlBindings["pit.p1Resource"][0] ?? "KeyH"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
         </div>
         {mode === "local" ? (
           <div className={`${styles.touchGroup} ${styles.touchGroupPlayerTwo}`}>
@@ -1020,6 +1340,7 @@ export default function PitCanvas({
             <TouchButton label="J2 GARDE ↑" token={controlBindings["pit.p2GuardHigh"][0] ?? "Numpad9"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
             <TouchButton label="J2 GARDE ↓" token={controlBindings["pit.p2GuardLow"][0] ?? "Numpad0"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
             <TouchButton label="J2 PROJ." token={controlBindings["pit.p2Throw"][0] ?? "NumpadEnter"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TRAQUE" token={controlBindings["pit.p2Resource"][0] ?? "NumpadSubtract"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
           </div>
         ) : null}
       </div> : null}

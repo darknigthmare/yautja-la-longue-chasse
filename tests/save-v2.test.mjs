@@ -147,7 +147,7 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
 
 test("keyboard bindings persist custom keys and repair malformed profiles", () => {
   const source = defaultSave("2026-01-01T00:00:00.000Z");
-  assert.equal(Object.keys(source.settings.controlBindings).length, 71);
+  assert.equal(Object.keys(source.settings.controlBindings).length, 73);
   assert.deepEqual(source.settings.controlBindings["hunt.moveLeft"], [
     "KeyQ",
     "ArrowLeft",

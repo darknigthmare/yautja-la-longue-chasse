@@ -53,12 +53,13 @@ function completeMatch() {
 
 test("input packing round-trips both players without storing unrelated fields", () => {
   const inputs = [
-    { left: true, down: true, jump: true, guardLow: true, attack: "technique", throw: true },
-    { right: true, guardHigh: true, attack: "heavy" },
+    { left: true, down: true, jump: true, guardLow: true, attack: "technique", throw: true, resource: true },
+    { right: true, guardHigh: true, attack: "heavy", resource: true },
   ];
   const packed = pit.encodePitReplayInputs(inputs);
   assert.ok(Number.isInteger(packed));
-  assert.ok(packed >= 0 && packed < 2 ** 20);
+  assert.ok(packed >= 0 && packed < 2 ** 22);
+  assert.equal(pit.encodePitReplayInput({ resource: true }), 1 << 10);
   assert.deepEqual(plain(pit.decodePitReplayInputs(packed)), inputs);
   assert.throws(
     () => pit.encodePitReplayInput({ attack: "fatality" }),
@@ -76,11 +77,13 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
       right: frame < 80,
       jump: frame === 90,
       attack: frame === 130 ? "medium" : frame === 220 ? "technique" : undefined,
+      resource: frame === 300,
     },
     {
       left: frame < 65,
       guardHigh: frame >= 120 && frame < 160,
       attack: frame === 215 ? "heavy" : undefined,
+      resource: frame === 310,
     },
   ]);
   const replay = pit.recordPitReplay(inputs, { seed: 42 });
@@ -91,6 +94,8 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.ticks, inputs.length);
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
+  assert.equal(replay.version, 2);
+  assert.equal(replay.encoding, "input-rle-v2");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
 });
 
@@ -148,7 +153,7 @@ test("normalization rejects future, corrupt, non-canonical and reward-bearing pa
   const corruptions = [
     { ...plain(replay), version: replay.version + 1 },
     { ...plain(replay), engineVersion: replay.engineVersion + 1 },
-    { ...plain(replay), encoding: "input-rle-v2" },
+    { ...plain(replay), encoding: "input-rle-v3" },
     { ...plain(replay), campaignReward: { honor: 9_999 } },
     { ...plain(replay), metadata: { ...plain(replay.metadata), winnerId: "berserker" } },
     { ...plain(replay), metadata: { ...plain(replay.metadata), checksum: "00000000" } },
@@ -198,5 +203,52 @@ test("current schema supports training and reversed fighters while future schema
   assert.equal(restored.metadata.finalPhase, "round");
   assert.equal(restored.metadata.winnerId, null);
   assert.equal(restored.metadata.completed, false);
-  assert.equal(pit.normalizePitReplay({ ...plain(restored), version: 2 }), null);
+  assert.equal(pit.normalizePitReplay({ ...plain(restored), version: pit.PIT_REPLAY_VERSION + 1 }), null);
+});
+
+test("legacy V1 and future replay envelopes are rejected with explicit compatibility codes", () => {
+  const replay = plain(pit.recordPitReplay([
+    [{ right: true }, {}],
+    [{ resource: true }, {}],
+  ]));
+  const legacy = {
+    ...replay,
+    version: 1,
+    engineVersion: 1,
+    encoding: "input-rle-v1",
+  };
+  const future = {
+    ...replay,
+    version: pit.PIT_REPLAY_VERSION + 1,
+  };
+  const incompatibleEngine = {
+    ...replay,
+    engineVersion: replay.engineVersion + 1,
+  };
+
+  assert.equal(pit.normalizePitReplay(legacy), null);
+  assert.throws(
+    () => pit.deserializePitReplay(JSON.stringify(legacy)),
+    (error) =>
+      error instanceof pit.PitReplayCompatibilityError &&
+      error.code === "legacy-version",
+  );
+  assert.throws(
+    () => pit.playPitReplay(future),
+    (error) =>
+      error instanceof pit.PitReplayCompatibilityError &&
+      error.code === "future-version",
+  );
+  assert.throws(
+    () => pit.createPitReplayReader(incompatibleEngine),
+    (error) =>
+      error instanceof pit.PitReplayCompatibilityError &&
+      error.code === "incompatible-engine",
+  );
+  assert.throws(
+    () => pit.deserializePitReplay(JSON.stringify({ version: 2, segments: "bad" })),
+    (error) =>
+      error instanceof pit.PitReplayCompatibilityError &&
+      error.code === "invalid-replay",
+  );
 });

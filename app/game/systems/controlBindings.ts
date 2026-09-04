@@ -7,7 +7,7 @@ import type { PitInput } from "./pitCombat";
  * settings screen, save migration, or Node test can use the same rules.
  */
 
-export const CONTROL_BINDING_SCHEMA_VERSION = 2 as const;
+export const CONTROL_BINDING_SCHEMA_VERSION = 3 as const;
 
 export const CONTROL_CONTEXTS = [
   "hunt",
@@ -60,6 +60,7 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "pit.p1GuardHigh", context: "pit", behavior: "hold", label: "J1 — Garde haute" },
   { id: "pit.p1GuardLow", context: "pit", behavior: "hold", label: "J1 — Garde basse" },
   { id: "pit.p1Throw", context: "pit", behavior: "press", label: "J1 — Projection" },
+  { id: "pit.p1Resource", context: "pit", behavior: "press", label: "J1 — Action de Traque" },
   { id: "pit.p2MoveLeft", context: "pit", behavior: "hold", label: "J2 — Se déplacer à gauche" },
   { id: "pit.p2MoveRight", context: "pit", behavior: "hold", label: "J2 — Se déplacer à droite" },
   { id: "pit.p2MoveDown", context: "pit", behavior: "hold", label: "J2 — S’accroupir" },
@@ -71,6 +72,7 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "pit.p2GuardHigh", context: "pit", behavior: "hold", label: "J2 — Garde haute" },
   { id: "pit.p2GuardLow", context: "pit", behavior: "hold", label: "J2 — Garde basse" },
   { id: "pit.p2Throw", context: "pit", behavior: "press", label: "J2 — Projection" },
+  { id: "pit.p2Resource", context: "pit", behavior: "press", label: "J2 — Action de Traque" },
   { id: "pit.pause", context: "pit", behavior: "press", label: "Quitter / retour vaisseau" },
 
   { id: "galaxy.flyLeft", context: "galaxy", behavior: "hold", label: "Piloter à gauche" },
@@ -141,6 +143,7 @@ type PitPlayerControlActions = Readonly<{
   guardHigh: PitControlActionId;
   guardLow: PitControlActionId;
   throw: PitControlActionId;
+  resource: PitControlActionId;
 }>;
 
 const PIT_CONTROL_ACTIONS_BY_PLAYER: Readonly<
@@ -158,6 +161,7 @@ const PIT_CONTROL_ACTIONS_BY_PLAYER: Readonly<
     guardHigh: "pit.p1GuardHigh",
     guardLow: "pit.p1GuardLow",
     throw: "pit.p1Throw",
+    resource: "pit.p1Resource",
   }),
   2: Object.freeze({
     moveLeft: "pit.p2MoveLeft",
@@ -171,6 +175,7 @@ const PIT_CONTROL_ACTIONS_BY_PLAYER: Readonly<
     guardHigh: "pit.p2GuardHigh",
     guardLow: "pit.p2GuardLow",
     throw: "pit.p2Throw",
+    resource: "pit.p2Resource",
   }),
 });
 
@@ -324,6 +329,7 @@ export const DEFAULT_CONTROL_BINDINGS = freezeBindings({
   "pit.p1GuardHigh": ["KeyI"],
   "pit.p1GuardLow": ["KeyO"],
   "pit.p1Throw": ["KeyP"],
+  "pit.p1Resource": ["KeyH"],
   "pit.p2MoveLeft": ["Numpad4"],
   "pit.p2MoveRight": ["Numpad6"],
   "pit.p2MoveDown": ["Numpad2"],
@@ -335,6 +341,7 @@ export const DEFAULT_CONTROL_BINDINGS = freezeBindings({
   "pit.p2GuardHigh": ["Numpad9"],
   "pit.p2GuardLow": ["Numpad0"],
   "pit.p2Throw": ["NumpadEnter"],
+  "pit.p2Resource": ["NumpadSubtract"],
   "pit.pause": ["Escape"],
 
   "galaxy.flyLeft": ["KeyQ", "ArrowLeft"],
@@ -682,6 +689,7 @@ export function pitInputFromControlCodes(
     guardLow: pressed(actions.guardLow),
     attack,
     throw: pressed(actions.throw),
+    resource: pressed(actions.resource),
   });
 }
 
@@ -862,6 +870,13 @@ export interface SerializedControlBindingsV1 {
 }
 
 export interface SerializedControlBindingsV2 {
+  readonly version: 2;
+  readonly bindings: Readonly<
+    Partial<Record<ControlActionId, readonly string[]>>
+  >;
+}
+
+export interface SerializedControlBindingsV3 {
   readonly version: typeof CONTROL_BINDING_SCHEMA_VERSION;
   readonly bindings: Readonly<Record<ControlActionId, readonly string[]>>;
 }
@@ -878,7 +893,7 @@ export class ControlBindingsSerializationError extends Error {
 
 export function serializeControlBindings(
   input: unknown,
-): SerializedControlBindingsV2 {
+): SerializedControlBindingsV3 {
   const normalized = normalizeControlBindings(input);
   if (!normalized.valid) {
     throw new ControlBindingsSerializationError(normalized.issues);
@@ -933,7 +948,8 @@ export function deserializeControlBindings(
       "Les commandes enregistrées doivent être un objet versionné.",
     ));
   }
-  if (decoded.version !== 1 && decoded.version !== CONTROL_BINDING_SCHEMA_VERSION) {
+  if (decoded.version !== 1 && decoded.version !== 2 &&
+    decoded.version !== CONTROL_BINDING_SCHEMA_VERSION) {
     return failedDeserialization(issue(
       "error",
       "unsupported-version",

@@ -12,13 +12,13 @@ import {
   type PitMatchPhase,
 } from "./pitCombat";
 
-export const PIT_REPLAY_VERSION = 1;
-export const PIT_REPLAY_ENCODING = "input-rle-v1";
+export const PIT_REPLAY_VERSION = 2;
+export const PIT_REPLAY_ENCODING = "input-rle-v2";
 export const PIT_REPLAY_MAX_SERIALIZED_BYTES = 64 * 1024;
 export const PIT_REPLAY_MAX_TICKS = PIT_TICK_RATE * 60 * 10;
 export const PIT_REPLAY_MAX_SEGMENTS = 5_000;
 
-const PIT_REPLAY_INPUT_BITS = 10;
+const PIT_REPLAY_INPUT_BITS = 11;
 const PIT_REPLAY_INPUT_MASK = (1 << PIT_REPLAY_INPUT_BITS) - 1;
 const PIT_REPLAY_INPUT_PAIR_MAX = (1 << (PIT_REPLAY_INPUT_BITS * 2)) - 1;
 const PIT_REPLAY_MAX_SEED = 0xffff_ffff;
@@ -32,6 +32,7 @@ const INPUT_FLAGS = {
   guardHigh: 1 << 4,
   guardLow: 1 << 5,
   throw: 1 << 6,
+  resource: 1 << 10,
 } as const;
 
 const ATTACK_SHIFT = 7;
@@ -57,8 +58,18 @@ const INPUT_KEYS = [
   "guardLow",
   "attack",
   "throw",
+  "resource",
 ] as const;
-const BOOLEAN_INPUT_KEYS = ["left", "right", "down", "jump", "guardHigh", "guardLow", "throw"] as const;
+const BOOLEAN_INPUT_KEYS = [
+  "left",
+  "right",
+  "down",
+  "jump",
+  "guardHigh",
+  "guardLow",
+  "throw",
+  "resource",
+] as const;
 const REPLAY_KEYS = [
   "version",
   "engineVersion",
@@ -177,8 +188,39 @@ function serializedByteLength(serialized: string): number {
   return new TextEncoder().encode(serialized).byteLength;
 }
 
-function replayError(): Error {
-  return new Error(INVALID_REPLAY_MESSAGE);
+/** V1 archives are intentionally rejected: their V1 engine checksum cannot be verified by the V2 simulator. */
+export type PitReplayRejectionCode =
+  | "invalid-replay"
+  | "legacy-version"
+  | "future-version"
+  | "incompatible-engine";
+
+export class PitReplayCompatibilityError extends Error {
+  readonly code: PitReplayRejectionCode;
+
+  constructor(code: PitReplayRejectionCode = "invalid-replay") {
+    super(INVALID_REPLAY_MESSAGE);
+    this.name = "PitReplayCompatibilityError";
+    this.code = code;
+  }
+}
+
+function replayRejectionCode(value: unknown): PitReplayRejectionCode {
+  if (!isRecord(value)) return "invalid-replay";
+  if (typeof value.version === "number" && Number.isInteger(value.version)) {
+    if (value.version < PIT_REPLAY_VERSION) return "legacy-version";
+    if (value.version > PIT_REPLAY_VERSION) return "future-version";
+  }
+  if (value.version === PIT_REPLAY_VERSION &&
+    value.engineVersion !== undefined &&
+    value.engineVersion !== PIT_STATE_VERSION) {
+    return "incompatible-engine";
+  }
+  return "invalid-replay";
+}
+
+function replayError(code: PitReplayRejectionCode = "invalid-replay"): PitReplayCompatibilityError {
+  return new PitReplayCompatibilityError(code);
 }
 
 function assertInput(input: unknown): asserts input is PitInput {
@@ -385,7 +427,7 @@ export function normalizePitReplay(value: unknown): PitReplay | null {
 
 export function serializePitReplay(value: unknown): string {
   const replay = normalizePitReplay(value);
-  if (!replay) throw replayError();
+  if (!replay) throw replayError(replayRejectionCode(value));
   const serialized = JSON.stringify(replay);
   if (serializedByteLength(serialized) > PIT_REPLAY_MAX_SERIALIZED_BYTES) throw replayError();
   return serialized;
@@ -402,7 +444,7 @@ export function deserializePitReplay(serialized: string): PitReplay {
     throw replayError();
   }
   const replay = normalizePitReplay(candidate);
-  if (!replay) throw replayError();
+  if (!replay) throw replayError(replayRejectionCode(candidate));
   return replay;
 }
 
@@ -522,12 +564,12 @@ class ReplayReader implements PitReplayReader {
 
 export function createPitReplayReader(value: unknown): PitReplayReader {
   const replay = normalizePitReplay(value);
-  if (!replay) throw replayError();
+  if (!replay) throw replayError(replayRejectionCode(value));
   return new ReplayReader(replay);
 }
 
 export function playPitReplay(value: unknown): PitCombatState {
   const validated = validateAndReplay(value);
-  if (!validated) throw replayError();
+  if (!validated) throw replayError(replayRejectionCode(value));
   return validated.finalState;
 }

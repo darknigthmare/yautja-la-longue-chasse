@@ -103,8 +103,8 @@ Ce fichier suit le code réellement présent. Une promesse écrite dans un chat 
 
 - [x] **PIT-01 — tranche verticale jouable** : moteur déterministe, Jungle Hunter, Berserker, Cercle de basalte, CPU, versus local, entraînement, rounds, revanche et retour au vaisseau.
 - [x] **PIT-02 — données isolées** : sidecar PIT et archive replay séparés, versionnés et liés au propriétaire ; gestion des conflits, idempotence, verrou Web Locks avec lease de secours stabilisé, réparation verrouillée des archives corrompues, 23 actions configurables J1/J2/pause et migration des commandes V1 ; enregistrement compact des entrées résolues puis relecture déterministe sans statistiques ni récompense. Parcours navigateur vérifié jusqu’à ARCHIVE RESTITUÉE.
-- [ ] **PIT-03 — ressources de combat** : Traque, Rupture de chasse, Instinct de survie et camouflage lisible.
-- [ ] **PIT-04 — entraînement professionnel** : frame data, hitboxes affichables, dummy réglable, enregistrement et lecture d'entrées.
+- [x] **PIT-03 — ressources de combat** : Traque, Rupture de chasse, Instinct de survie et camouflage lisible.
+- [x] **PIT-04 — entraînement professionnel** : frame data, hitboxes affichables, dummy réglable, enregistrement et lecture d'entrées.
 - [ ] **PIT-05 — première édition** : douze combattants, huit arènes, arcade individuel, histoire en cinq chapitres et Descente des fosses.
 - [ ] **PIT-06 — finishers de la première édition** : huit séquences par combattant, variantes de victime et mode gore réduit.
 - [ ] **PIT-07 — roster complet** : 53 Hunters et 1 179 actions de movesets.
@@ -114,8 +114,7 @@ Les volumes PIT-07 et PIT-08 sont des budgets de production, pas des contenus d�
 
 ## Ordre de reprise
 
-1. Produire PIT-03/PIT-04 : Traque, Rupture de chasse, Instinct de survie, camouflage lisible, frame data et mannequin configurable.
-2. Étendre la mêlée des chasses avec lourde, aérienne, parade, esquive, brise-garde, projection et exécution.
-3. Étendre les six régions Metroidvania et leurs cartes.
-4. Enrichir furtivité, IA, honneur et structure des Apex.
-5. Terminer l'art, l'équilibrage, les playtests, les performances et la distribution native.
+1. Étendre la mêlée des chasses avec lourde, aérienne, parade, esquive, brise-garde, projection et exécution.
+2. Étendre les six régions Metroidvania et leurs cartes.
+3. Enrichir furtivité, IA, honneur et structure des Apex.
+4. Terminer l'art, l'équilibrage, les playtests, les performances et la distribution native.
