@@ -24,7 +24,21 @@ import {
   type PitFighterId,
   type PitInput,
 } from "./systems/pitCombat";
-import type { ControlBindings } from "./systems/controlBindings";
+import {
+  PIT_CONTROL_ACTION_IDS,
+  matchesControlAction,
+  pitInputFromControlCodes,
+  type ControlActionId,
+  type ControlBindings,
+} from "./systems/controlBindings";
+import {
+  createPitReplayReader,
+  createPitReplayRecorder,
+  normalizePitReplay,
+  type PitReplay,
+  type PitReplayReader,
+  type PitReplayRecorder,
+} from "./systems/pitReplay";
 import styles from "./PitCanvas.module.css";
 
 type PitMode = "cpu" | "local" | "training";
@@ -39,6 +53,7 @@ export interface PitMatchCompleteResult {
   leftRoundsWon: number;
   rightRoundsWon: number;
   roundsDrawn: number;
+  replay: PitReplay | null;
 }
 
 interface PitCanvasProps {
@@ -48,6 +63,7 @@ interface PitCanvasProps {
   screenShake: boolean;
   onExit: () => void;
   onMatchComplete?: (result: PitMatchCompleteResult) => void;
+  lastReplay?: PitReplay | null;
 }
 
 interface ImpactFlash {
@@ -58,60 +74,18 @@ interface ImpactFlash {
 }
 
 const EMPTY_INPUT: PitInput = Object.freeze({});
-const PLAYER_TWO_KEYS = {
-  left: "Numpad4",
-  right: "Numpad6",
-  down: "Numpad2",
-  jump: "Numpad0",
-  light: "Numpad1",
-  medium: "Numpad3",
-  heavy: "Numpad5",
-  technique: "NumpadDecimal",
-  guardHigh: "Numpad7",
-  guardLow: "Numpad8",
-  throw: "Numpad9",
-} as const;
-
-type PitExtraAction = "medium" | "heavy" | "technique" | "guardHigh" | "guardLow" | "throw";
-type PitExtraKeys = Readonly<Record<PitExtraAction, string>>;
-
-const PLAYER_ONE_KEY_CANDIDATES: Readonly<Record<PitExtraAction, readonly string[]>> = {
-  medium: ["KeyK", "KeyN", "BracketLeft"],
-  heavy: ["KeyL", "KeyB", "BracketRight"],
-  technique: ["KeyU", "KeyG", "Semicolon"],
-  guardHigh: ["KeyI", "KeyT", "Comma"],
-  guardLow: ["KeyO", "KeyY", "Period"],
-  throw: ["KeyP", "KeyF", "Slash"],
-};
-
-const PLAYER_ONE_KEY_FALLBACKS = [
-  "KeyA", "KeyW", "KeyX", "KeyR", "KeyC", "KeyV", "KeyH", "KeyM", "KeyE", "KeyJ",
-  "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0",
-  "BracketLeft", "BracketRight", "Semicolon", "Comma", "Period", "Slash",
-] as const;
-
-const PLAYER_TWO_CODE_SET = new Set<string>(Object.values(PLAYER_TWO_KEYS));
+const PIT_PLAYER_ONE_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
+  (actionId) => actionId.startsWith("pit.p1"),
+);
+const PIT_PLAYER_TWO_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
+  (actionId) => actionId.startsWith("pit.p2"),
+);
 
 function createPitResultId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return `pit-${crypto.randomUUID()}`;
   }
   return `pit-${Date.now().toString(36)}-${performance.now().toString(36).replace(".", "")}`;
-}
-
-function resolvePitExtraKeys(bindings: ControlBindings): PitExtraKeys {
-  const occupied = new Set<string>(PLAYER_TWO_CODE_SET);
-  for (const [action, codes] of Object.entries(bindings)) {
-    if (action.startsWith("hunt.")) codes.forEach((code) => occupied.add(code));
-  }
-  const resolved = {} as Record<PitExtraAction, string>;
-  for (const action of Object.keys(PLAYER_ONE_KEY_CANDIDATES) as PitExtraAction[]) {
-    const key = PLAYER_ONE_KEY_CANDIDATES[action].find((candidate) => !occupied.has(candidate));
-    const fallback = PLAYER_ONE_KEY_FALLBACKS.find((candidate) => !occupied.has(candidate));
-    resolved[action] = key ?? fallback ?? `PitTouch${action}`;
-    occupied.add(resolved[action]);
-  }
-  return resolved;
 }
 
 const ACTION_LABELS: Record<PitAttackKind, string> = {
@@ -121,63 +95,8 @@ const ACTION_LABELS: Record<PitAttackKind, string> = {
   technique: "Technique basse",
 };
 
-function hasAnyCode(
-  codes: Set<string>,
-  bindings: readonly string[],
-  blockedCodes?: ReadonlySet<string>,
-): boolean {
-  return bindings.some((code) => !blockedCodes?.has(code) && codes.has(code));
-}
-
-function firstBinding(bindings: ControlBindings, action: keyof ControlBindings): string {
+function firstBinding(bindings: ControlBindings, action: ControlActionId): string {
   return compactControlKeyLabel(bindings[action][0] ?? "—");
-}
-
-function inputFromKeyboard(
-  codes: Set<string>,
-  bindings: ControlBindings,
-  slot: 0 | 1,
-  extraKeys: PitExtraKeys,
-  blockedCodes?: ReadonlySet<string>,
-): PitInput {
-  if (slot === 1) {
-    return {
-      left: codes.has(PLAYER_TWO_KEYS.left),
-      right: codes.has(PLAYER_TWO_KEYS.right),
-      down: codes.has(PLAYER_TWO_KEYS.down),
-      jump: codes.has(PLAYER_TWO_KEYS.jump),
-      guardHigh: codes.has(PLAYER_TWO_KEYS.guardHigh),
-      guardLow: codes.has(PLAYER_TWO_KEYS.guardLow),
-      attack: codes.has(PLAYER_TWO_KEYS.light)
-        ? "light"
-        : codes.has(PLAYER_TWO_KEYS.medium)
-          ? "medium"
-          : codes.has(PLAYER_TWO_KEYS.heavy)
-            ? "heavy"
-            : codes.has(PLAYER_TWO_KEYS.technique)
-              ? "technique"
-              : undefined,
-      throw: codes.has(PLAYER_TWO_KEYS.throw),
-    };
-  }
-  return {
-    left: hasAnyCode(codes, bindings["hunt.moveLeft"], blockedCodes),
-    right: hasAnyCode(codes, bindings["hunt.moveRight"], blockedCodes),
-    down: hasAnyCode(codes, bindings["hunt.moveDown"], blockedCodes),
-    jump: hasAnyCode(codes, bindings["hunt.jump"], blockedCodes),
-    guardHigh: codes.has(extraKeys.guardHigh),
-    guardLow: codes.has(extraKeys.guardLow),
-    attack: hasAnyCode(codes, bindings["hunt.melee"], blockedCodes)
-      ? "light"
-      : codes.has(extraKeys.medium)
-        ? "medium"
-        : codes.has(extraKeys.heavy)
-          ? "heavy"
-          : codes.has(extraKeys.technique)
-            ? "technique"
-            : undefined,
-    throw: codes.has(extraKeys.throw),
-  };
 }
 
 function mergeInputs(primary: PitInput, secondary: PitInput): PitInput {
@@ -466,12 +385,18 @@ export default function PitCanvas({
   screenShake,
   onExit,
   onMatchComplete,
+  lastReplay = null,
 }: PitCanvasProps) {
   const [mode, setMode] = useState<PitMode>("cpu");
   const [leftId, setLeftId] = useState<PitFighterId>("jungle-hunter");
   const [rightId, setRightId] = useState<PitFighterId>("berserker");
   const [combat, setCombat] = useState<PitCombatState | null>(null);
   const [announcement, setAnnouncement] = useState("CHOISIS LE RITUEL");
+  const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
+  const [replayNotice, setReplayNotice] = useState("");
+  const [recordedReplay, setRecordedReplay] = useState<PitReplay | null>(null);
+  const [playbackReplay, setPlaybackReplay] = useState<PitReplay | null>(null);
+  const [replayEnded, setReplayEnded] = useState(false);
   const [showHelp, setShowHelp] = useState(true);
   const [showHitboxes, setShowHitboxes] = useState(false);
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
@@ -485,52 +410,128 @@ export default function PitCanvas({
   const resultPrimaryRef = useRef<HTMLButtonElement>(null);
   const pressedKeysRef = useRef(new Set<string>());
   const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
-  const menuGamepadRef = useRef({ previous: Array.from({ length: 7 }, () => false), ready: false });
+  const menuGamepadRef = useRef({ previous: Array.from({ length: 8 }, () => false), ready: false });
   const combatGamepadReadyRef = useRef<[boolean, boolean]>([false, false]);
   const reportedMatchFrameRef = useRef<number | null>(null);
   const matchResultIdRef = useRef("");
-  const extraKeys = useMemo(() => resolvePitExtraKeys(controlBindings), [controlBindings]);
-  const gameplayKeyCodes = useMemo(() => new Set<string>([
-    ...controlBindings["hunt.moveLeft"],
-    ...controlBindings["hunt.moveRight"],
-    ...controlBindings["hunt.moveDown"],
-    ...controlBindings["hunt.jump"],
-    ...controlBindings["hunt.melee"],
-    ...Object.values(extraKeys),
-    ...(mode === "local" ? Object.values(PLAYER_TWO_KEYS) : []),
-  ]), [controlBindings, extraKeys, mode]);
+  const recorderRef = useRef<PitReplayRecorder | null>(null);
+  const replayReaderRef = useRef<PitReplayReader | null>(null);
+  const normalizedLastReplay = useMemo(
+    () => lastReplay ? normalizePitReplay(lastReplay) : null,
+    [lastReplay],
+  );
+  const availableReplay = recordedReplay ?? normalizedLastReplay;
+  const invalidReplayMessage = lastReplay && !normalizedLastReplay
+    ? "Le dernier duel enregistré est illisible ou incompatible."
+    : "";
+  const activeReplayNotice = replayNotice || invalidReplayMessage;
+  const activeAriaAnnouncement = invalidReplayMessage || ariaAnnouncement;
+  const gameplayKeyCodes = useMemo(() => {
+    const actionIds = mode === "local"
+      ? [...PIT_PLAYER_ONE_ACTION_IDS, ...PIT_PLAYER_TWO_ACTION_IDS]
+      : PIT_PLAYER_ONE_ACTION_IDS;
+    return new Set(actionIds.flatMap((actionId) => controlBindings[actionId]));
+  }, [controlBindings, mode]);
 
   const changeCombat = useCallback((next: PitCombatState | null) => {
     combatRef.current = next;
     setCombat(next);
   }, []);
 
+  const resetLiveInputs = useCallback(() => {
+    pressedKeysRef.current.clear();
+    combatGamepadReadyRef.current = [false, false];
+    touchInputsRef.current.forEach((entries) => entries.clear());
+  }, []);
+
+  const beginRecording = useCallback((next: PitCombatState) => {
+    try {
+      recorderRef.current = createPitReplayRecorder({
+        fighters: [next.fighters[0].definitionId, next.fighters[1].definitionId],
+        rules: next.rules,
+      });
+      setReplayNotice("");
+    } catch {
+      recorderRef.current = null;
+      setReplayNotice("Enregistrement du duel indisponible. Le combat continue.");
+      setAriaAnnouncement("Enregistrement du duel indisponible. Le combat continue.");
+    }
+  }, []);
+
   const startMatch = useCallback(() => {
     const next = createPitCombatState(leftId, rightId, { mode: mode === "training" ? "training" : "match" });
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
     setImpact(null);
-    pressedKeysRef.current.clear();
-    combatGamepadReadyRef.current = [false, false];
-    touchInputsRef.current.forEach((entries) => entries.clear());
-    setAnnouncement(mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
+    resetLiveInputs();
+    beginRecording(next);
+    const message = mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT";
+    setAnnouncement(message);
+    setAriaAnnouncement(mode === "training" ? "Entraînement libre commencé." : "Manche 1. Combat.");
     changeCombat(next);
-  }, [changeCombat, leftId, mode, rightId]);
+  }, [beginRecording, changeCombat, leftId, mode, resetLiveInputs, rightId]);
 
   const swapSides = useCallback(() => {
     setLeftId((current) => current === "jungle-hunter" ? "berserker" : "jungle-hunter");
     setRightId((current) => current === "jungle-hunter" ? "berserker" : "jungle-hunter");
   }, []);
 
+  const returnToSelection = useCallback(() => {
+    recorderRef.current = null;
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
+    resetLiveInputs();
+    setAnnouncement("CHOISIS LE RITUEL");
+    setAriaAnnouncement("Retour à la sélection du rituel.");
+    changeCombat(null);
+  }, [changeCombat, resetLiveInputs]);
+
+  const startReplay = useCallback((candidate: PitReplay) => {
+    try {
+      const replay = normalizePitReplay(candidate);
+      if (!replay) throw new Error("invalid replay");
+      const reader = createPitReplayReader(replay);
+      const next = createPitCombatState(replay.fighters[0], replay.fighters[1], replay.rules);
+      recorderRef.current = null;
+      replayReaderRef.current = reader;
+      reportedMatchFrameRef.current = null;
+      setLeftId(replay.fighters[0]);
+      setRightId(replay.fighters[1]);
+      setPlaybackReplay(replay);
+      setReplayEnded(false);
+      setReplayNotice("");
+      setImpact(null);
+      resetLiveInputs();
+      setAnnouncement("RELECTURE · COMBAT");
+      setAriaAnnouncement("Relecture du dernier duel commencée.");
+      changeCombat(next);
+    } catch {
+      setReplayNotice("Le dernier duel est illisible ou incompatible.");
+      setAriaAnnouncement("Impossible de relire le dernier duel.");
+    }
+  }, [changeCombat, resetLiveInputs]);
+
   const startRematch = useCallback(() => {
     const current = combatRef.current;
     if (!current) return;
+    const next = rematchPitCombat(current);
     reportedMatchFrameRef.current = null;
     matchResultIdRef.current = createPitResultId();
+    replayReaderRef.current = null;
+    setPlaybackReplay(null);
+    setReplayEnded(false);
     combatGamepadReadyRef.current = [false, false];
     setImpact(null);
-    changeCombat(rematchPitCombat(current));
-  }, [changeCombat]);
+    resetLiveInputs();
+    beginRecording(next);
+    setAnnouncement(next.rules.mode === "training" ? "ENTRAÎNEMENT LIBRE" : "MANCHE 1 · COMBAT");
+    setAriaAnnouncement(next.rules.mode === "training" ? "Entraînement libre recommencé." : "Revanche. Manche 1. Combat.");
+    changeCombat(next);
+  }, [beginRecording, changeCombat, resetLiveInputs]);
 
   const setTouchToken = useCallback((slot: 0 | 1, token: string, pressed: boolean) => {
     const entries = touchInputsRef.current[slot];
@@ -540,10 +541,10 @@ export default function PitCanvas({
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Escape") {
+      if (matchesControlAction("pit.pause", event, controlBindings)) {
         event.preventDefault();
         if (!combatRef.current || combatRef.current.phase === "match-over") onExit();
-        else changeCombat(null);
+        else returnToSelection();
         return;
       }
       const target = event.target;
@@ -551,7 +552,7 @@ export default function PitCanvas({
         target instanceof HTMLElement &&
         target.closest("button, input, select, textarea, a[href]")
       ) return;
-      if (!combatRef.current || combatRef.current.phase !== "round") return;
+      if (playbackReplay || !combatRef.current || combatRef.current.phase !== "round") return;
       if (!gameplayKeyCodes.has(event.code)) return;
       event.preventDefault();
       pressedKeysRef.current.add(event.code);
@@ -566,13 +567,14 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [changeCombat, gameplayKeyCodes, onExit]);
+  }, [controlBindings, gameplayKeyCodes, onExit, playbackReplay, returnToSelection]);
 
   const viewPhase = combat === null
     ? "selection"
-    : combat.phase === "match-over"
+    : combat.phase === "match-over" || replayEnded
       ? "match-over"
       : "combat";
+
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -584,7 +586,7 @@ export default function PitCanvas({
 
   useEffect(() => {
     if (viewPhase === "combat") {
-      menuGamepadRef.current = { previous: Array.from({ length: 7 }, () => false), ready: false };
+      menuGamepadRef.current = { previous: Array.from({ length: 8 }, () => false), ready: false };
       return;
     }
     let requestId = 0;
@@ -599,8 +601,9 @@ export default function PitCanvas({
             Boolean(gamepad.buttons[0]?.pressed),
             Boolean(gamepad.buttons[1]?.pressed),
             Boolean(gamepad.buttons[2]?.pressed),
+            Boolean(gamepad.buttons[3]?.pressed),
           ]
-        : Array.from({ length: 7 }, () => false);
+        : Array.from({ length: 8 }, () => false);
       const state = menuGamepadRef.current;
       if (!gamepad) {
         state.ready = false;
@@ -618,9 +621,14 @@ export default function PitCanvas({
           if (current[4] && !previous[4]) startMatch();
           if (current[5] && !previous[5]) onExit();
           if (current[6] && !previous[6]) swapSides();
+          if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
         } else {
-          if (current[4] && !previous[4]) startRematch();
+          if (current[4] && !previous[4]) {
+            if (playbackReplay && availableReplay) startReplay(availableReplay);
+            else startRematch();
+          }
           if (current[5] && !previous[5]) onExit();
+          if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
         }
       }
       state.previous = current;
@@ -628,9 +636,10 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [onExit, startMatch, startRematch, swapSides, viewPhase]);
+  }, [availableReplay, onExit, playbackReplay, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
-  const simulationRunning = combat !== null && combat.phase !== "match-over";
+  const simulationRunning = combat !== null && combat.phase !== "match-over" &&
+    (!playbackReplay || !replayEnded);
 
   useEffect(() => {
     if (!simulationRunning) return;
@@ -643,45 +652,69 @@ export default function PitCanvas({
       accumulator += Math.min(250, Math.max(0, now - previousTime));
       previousTime = now;
       let current = combatRef.current;
+      let shouldContinue = true;
       while (current && accumulator >= fixedStep) {
-        const gamepads = navigator.getGamepads?.() ?? [];
-        const keyboardOne = inputFromKeyboard(
-          pressedKeysRef.current,
-          controlBindings,
-          0,
-          extraKeys,
-          mode === "local" ? PLAYER_TWO_CODE_SET : undefined,
-        );
-        const touchOne = inputFromKeyboard(touchInputsRef.current[0], controlBindings, 0, extraKeys);
-        const firstPadInput = readGamepad(gamepads[0] ?? null);
-        if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
-          combatGamepadReadyRef.current[0] = true;
-        }
-        const firstInput = mergeInputs(
-          mergeInputs(keyboardOne, touchOne),
-          combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
-        );
-        let secondInput: PitInput;
-        if (mode === "cpu") {
-          secondInput = cpuInput(current);
-        } else if (mode === "training") {
-          secondInput = current.frame % 300 < 150 ? { guardHigh: true } : { guardLow: true };
-        } else {
-          const keyboardTwo = inputFromKeyboard(pressedKeysRef.current, controlBindings, 1, extraKeys);
-          const touchTwo = inputFromKeyboard(touchInputsRef.current[1], controlBindings, 1, extraKeys);
-          const secondPadInput = readGamepad(gamepads[1] ?? null);
-          if (!combatGamepadReadyRef.current[1] && isNeutralInput(secondPadInput)) {
-            combatGamepadReadyRef.current[1] = true;
+        let inputs: readonly [PitInput, PitInput];
+        if (playbackReplay) {
+          const replayTick = replayReaderRef.current?.next();
+          if (!replayTick || replayTick.done) {
+            setReplayEnded(true);
+            setAnnouncement("RELECTURE TERMINÉE");
+            setAriaAnnouncement("Relecture du dernier duel terminée.");
+            shouldContinue = false;
+            break;
           }
-          secondInput = mergeInputs(
-            mergeInputs(keyboardTwo, touchTwo),
-            combatGamepadReadyRef.current[1] ? secondPadInput : EMPTY_INPUT,
+          inputs = replayTick.value.inputs;
+        } else {
+          const gamepads = navigator.getGamepads?.() ?? [];
+          const keyboardOne = pitInputFromControlCodes(1, pressedKeysRef.current, controlBindings);
+          const touchOne = pitInputFromControlCodes(1, touchInputsRef.current[0], controlBindings);
+          const firstPadInput = readGamepad(gamepads[0] ?? null);
+          if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
+            combatGamepadReadyRef.current[0] = true;
+          }
+          const firstInput = mergeInputs(
+            mergeInputs(keyboardOne, touchOne),
+            combatGamepadReadyRef.current[0] ? firstPadInput : EMPTY_INPUT,
           );
+          let secondInput: PitInput;
+          if (mode === "cpu") {
+            secondInput = cpuInput(current);
+          } else if (mode === "training") {
+            secondInput = current.frame % 300 < 150 ? { guardHigh: true } : { guardLow: true };
+          } else {
+            const keyboardTwo = pitInputFromControlCodes(2, pressedKeysRef.current, controlBindings);
+            const touchTwo = pitInputFromControlCodes(2, touchInputsRef.current[1], controlBindings);
+            const secondPadInput = readGamepad(gamepads[1] ?? null);
+            if (!combatGamepadReadyRef.current[1] && isNeutralInput(secondPadInput)) {
+              combatGamepadReadyRef.current[1] = true;
+            }
+            secondInput = mergeInputs(
+              mergeInputs(keyboardTwo, touchTwo),
+              combatGamepadReadyRef.current[1] ? secondPadInput : EMPTY_INPUT,
+            );
+          }
+          inputs = [firstInput, secondInput];
+          if (recorderRef.current) {
+            try {
+              // Record the fully merged pair before advancing the visible simulation.
+              recorderRef.current.append(inputs);
+            } catch {
+              recorderRef.current = null;
+              setReplayNotice("Enregistrement interrompu. Le combat reste jouable.");
+              setAriaAnnouncement("Enregistrement du duel interrompu. Le combat continue.");
+            }
+          }
         }
-        current = stepPitCombat(current, [firstInput, secondInput]);
+
+        current = stepPitCombat(current, inputs);
         if (current.events.length > 0) {
           const latest = current.events[current.events.length - 1];
           setAnnouncement(eventLabel(latest));
+          const essential = [...current.events].reverse().find((event) =>
+            event.type === "round-start" || event.type === "round-end" || event.type === "match-end"
+          );
+          if (essential) setAriaAnnouncement(eventLabel(essential));
           if (latest.type === "hit" || latest.type === "block") {
             const defender = current.fighters.find((fighter) => fighter.definitionId === latest.defenderId);
             setImpact(defender
@@ -690,25 +723,42 @@ export default function PitCanvas({
           }
         }
         accumulator -= fixedStep;
+        if (current.phase === "match-over") {
+          shouldContinue = false;
+          accumulator = 0;
+          break;
+        }
       }
       if (current) {
         combatRef.current = current;
         setCombat(current);
       }
-      requestId = window.requestAnimationFrame(animate);
+      if (shouldContinue) requestId = window.requestAnimationFrame(animate);
     };
     requestId = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(requestId);
-  }, [controlBindings, extraKeys, mode, simulationRunning]);
+  }, [controlBindings, mode, playbackReplay, replayEnded, simulationRunning]);
 
   useEffect(() => {
     if (!combat || !canvasRef.current) return;
-    drawArena(canvasRef.current, combat, highContrast, reducedGore, mode === "training" && showHitboxes, impact);
+    drawArena(canvasRef.current, combat, highContrast, reducedGore, combat.rules.mode === "training" && showHitboxes, impact);
   }, [combat, highContrast, impact, mode, reducedGore, showHitboxes]);
 
   useEffect(() => {
-    if (!combat || combat.phase !== "match-over" || reportedMatchFrameRef.current !== null) return;
+    if (!combat || playbackReplay || combat.phase !== "match-over" ||
+      reportedMatchFrameRef.current !== null) return;
     reportedMatchFrameRef.current = combat.frame;
+    let replay: PitReplay | null = null;
+    if (recorderRef.current) {
+      try {
+        replay = recorderRef.current.finish();
+        setRecordedReplay(replay);
+      } catch {
+        setReplayNotice("Le duel est terminé, mais son replay n’a pas pu être conservé.");
+        setAriaAnnouncement("Duel terminé. Son replay n’a pas pu être conservé.");
+      }
+    }
+    recorderRef.current = null;
     onMatchComplete?.({
       resultId: matchResultIdRef.current,
       mode,
@@ -722,15 +772,38 @@ export default function PitCanvas({
         0,
         combat.round - combat.fighters[0].roundsWon - combat.fighters[1].roundsWon,
       ),
+      replay,
     });
-  }, [combat, mode, onMatchComplete]);
+  }, [combat, mode, onMatchComplete, playbackReplay]);
 
   const shortcuts = useMemo(() => ({
-    left: firstBinding(controlBindings, "hunt.moveLeft"),
-    right: firstBinding(controlBindings, "hunt.moveRight"),
-    down: firstBinding(controlBindings, "hunt.moveDown"),
-    jump: firstBinding(controlBindings, "hunt.jump"),
-    light: firstBinding(controlBindings, "hunt.melee"),
+    p1: {
+      left: firstBinding(controlBindings, "pit.p1MoveLeft"),
+      right: firstBinding(controlBindings, "pit.p1MoveRight"),
+      down: firstBinding(controlBindings, "pit.p1MoveDown"),
+      jump: firstBinding(controlBindings, "pit.p1Jump"),
+      light: firstBinding(controlBindings, "pit.p1AttackLight"),
+      medium: firstBinding(controlBindings, "pit.p1AttackMedium"),
+      heavy: firstBinding(controlBindings, "pit.p1AttackHeavy"),
+      technique: firstBinding(controlBindings, "pit.p1AttackTechnique"),
+      guardHigh: firstBinding(controlBindings, "pit.p1GuardHigh"),
+      guardLow: firstBinding(controlBindings, "pit.p1GuardLow"),
+      throw: firstBinding(controlBindings, "pit.p1Throw"),
+    },
+    p2: {
+      left: firstBinding(controlBindings, "pit.p2MoveLeft"),
+      right: firstBinding(controlBindings, "pit.p2MoveRight"),
+      down: firstBinding(controlBindings, "pit.p2MoveDown"),
+      jump: firstBinding(controlBindings, "pit.p2Jump"),
+      light: firstBinding(controlBindings, "pit.p2AttackLight"),
+      medium: firstBinding(controlBindings, "pit.p2AttackMedium"),
+      heavy: firstBinding(controlBindings, "pit.p2AttackHeavy"),
+      technique: firstBinding(controlBindings, "pit.p2AttackTechnique"),
+      guardHigh: firstBinding(controlBindings, "pit.p2GuardHigh"),
+      guardLow: firstBinding(controlBindings, "pit.p2GuardLow"),
+      throw: firstBinding(controlBindings, "pit.p2Throw"),
+    },
+    pause: firstBinding(controlBindings, "pit.pause"),
   }), [controlBindings]);
 
   if (!combat) {
@@ -742,6 +815,9 @@ export default function PitCanvas({
         tabIndex={-1}
         data-screen-focus
       >
+        <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
+          {activeAriaAnnouncement}
+        </div>
         <div className={styles.selectionBackdrop} aria-hidden="true"><span /><span /><span /></div>
         <header className={styles.selectionHeader}>
           <div>
@@ -779,10 +855,18 @@ export default function PitCanvas({
           ))}
         </div>
 
-        <button type="button" className={styles.startButton} onClick={startMatch}>ENTRER DANS LE CERCLE</button>
+        <div className={styles.selectionActions}>
+          <button type="button" className={styles.startButton} onClick={startMatch}>ENTRER DANS LE CERCLE</button>
+          {availableReplay ? (
+            <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>
+              REVOIR LE DERNIER DUEL
+            </button>
+          ) : null}
+        </div>
+        {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
           Simulation isolée : aucun honneur, trophée ou progression n’est attribué.<br />
-          Manette : croix directionnelle pour le mode · A démarrer · X permuter · B revenir.
+          Manette : croix directionnelle pour le mode · A démarrer · X permuter · Y dernier duel · B revenir.
         </p>
       </section>
     );
@@ -795,6 +879,8 @@ export default function PitCanvas({
   const recentImpact = impact && combat.frame - impact.frame < 8;
   const shake = screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
   const winner = combat.matchWinnerId ? PIT_FIGHTERS[combat.matchWinnerId] : null;
+  const terminal = combat.phase === "match-over" || replayEnded;
+  const trainingRules = combat.rules.mode === "training";
 
   return (
     <section
@@ -804,19 +890,23 @@ export default function PitCanvas({
       tabIndex={-1}
       data-screen-focus
     >
-      <header className={styles.matchHeader} inert={combat.phase === "match-over"}>
+      <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
+        {activeAriaAnnouncement}
+      </div>
+      <header className={styles.matchHeader} inert={terminal}>
         <button type="button" className={styles.utilityButton} onClick={() => setShowHelp((value) => !value)}>Commandes</button>
-        <span>{mode === "cpu" ? "DUEL CPU" : mode === "local" ? "VERSUS LOCAL" : "ENTRAÎNEMENT"}</span>
-        <button type="button" className={styles.utilityButton} onClick={() => changeCombat(null)}>Quitter · Échap</button>
+        <span>{playbackReplay ? "RELECTURE" : mode === "cpu" ? "DUEL CPU" : mode === "local" ? "VERSUS LOCAL" : "ENTRAÎNEMENT"}</span>
+        <button type="button" className={styles.utilityButton} onClick={returnToSelection}>Quitter · {shortcuts.pause}</button>
       </header>
 
-      <div className={styles.hud} inert={combat.phase === "match-over"}>
+      {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
+      <div className={styles.hud} inert={terminal}>
         <div className={styles.fighterHud}>
           <div><strong>{leftDefinition.name}</strong><span>{left.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={leftDefinition.maxHealth} aria-valuenow={left.health}><i style={{ width: `${left.health / leftDefinition.maxHealth * 100}%` }} /></div>
           <div className={styles.roundPips} aria-label={`${left.roundsWon} manche gagnée`}><i className={left.roundsWon >= 1 ? styles.won : ""} /><i className={left.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
-        <div className={styles.timer}><small>{mode === "training" ? "SESSION LIBRE" : `MANCHE ${combat.round}`}</small><strong>{mode === "training" ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
+        <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
         <div className={`${styles.fighterHud} ${styles.fighterHudRight}`}>
           <div><strong>{rightDefinition.name}</strong><span>{right.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={rightDefinition.maxHealth} aria-valuenow={right.health}><i style={{ width: `${right.health / rightDefinition.maxHealth * 100}%` }} /></div>
@@ -826,22 +916,22 @@ export default function PitCanvas({
 
       <div className={styles.arenaShell} style={{ transform: `translateX(${shake}px)` }}>
         <canvas ref={canvasRef} className={styles.canvas} width={PIT_ARENA.width} height={PIT_ARENA.height} aria-hidden="true" />
-        <div className={styles.announcement} role="status" aria-live="polite">{announcement}</div>
+        <div className={styles.announcement} aria-hidden="true">{announcement}</div>
         {left.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboLeft}`}>{left.comboHitsReceived}<small>COUPS</small></div> : null}
         {right.comboHitsReceived > 1 ? <div className={`${styles.combo} ${styles.comboRight}`}>{right.comboHitsReceived}<small>COUPS</small></div> : null}
-        {mode === "training" ? (
-          <label className={styles.hitboxToggle} inert={combat.phase === "match-over"}>
+        {trainingRules ? (
+          <label className={styles.hitboxToggle} inert={terminal}>
             <input type="checkbox" checked={showHitboxes} onChange={(event) => setShowHitboxes(event.target.checked)} />
             Hitboxes
           </label>
         ) : null}
-        {combat.phase === "round-over" ? (
+        {combat.phase === "round-over" && !replayEnded ? (
           <div className={styles.resultOverlay} role="status" aria-live="assertive">
             <span>MANCHE {combat.round}</span>
             <h3>{combat.lastRoundResult?.reason === "draw" || combat.lastRoundResult?.reason === "double-ko" ? "Égalité" : `${PIT_FIGHTERS[combat.lastRoundResult?.winnerId ?? leftId].name} gagne`}</h3>
             <p>La prochaine manche commence dans {Math.ceil(combat.transitionFramesRemaining / PIT_TICK_RATE)} s</p>
           </div>
-        ) : combat.phase === "match-over" ? (
+        ) : terminal ? (
           <div
             className={styles.resultOverlay}
             role="dialog"
@@ -856,11 +946,18 @@ export default function PitCanvas({
               buttons[(index + (event.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
             }}
           >
-            <span>MATCH TERMINÉ</span>
-            <h3 id="pit-result">{winner ? `${winner.name} l’emporte` : "Égalité"}</h3>
-            <p>Manette : A pour la revanche · B pour revenir au vaisseau.</p>
+            <span>{playbackReplay ? "RELECTURE TERMINÉE" : "MATCH TERMINÉ"}</span>
+            <h3 id="pit-result">{playbackReplay ? "Archive restituée" : winner ? `${winner.name} l’emporte` : "Égalité"}</h3>
+            <p>{playbackReplay ? "A ou Y pour revoir · B pour revenir au vaisseau." : "A pour la revanche · Y pour revoir · B pour revenir au vaisseau."}</p>
             <div className={styles.overlayActions}>
-              <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
+              {playbackReplay && availableReplay ? (
+                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={() => startReplay(availableReplay)}>Revoir</button>
+              ) : (
+                <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
+              )}
+              {!playbackReplay && availableReplay ? (
+                <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>
+              ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>
             </div>
           </div>
@@ -868,38 +965,61 @@ export default function PitCanvas({
       </div>
 
       {showHelp ? (
-        <aside className={styles.helpPanel} inert={combat.phase === "match-over"}>
-          <div>
-            <strong>JOUEUR 1 · COMMANDES DE CHASSE</strong>
-            <span>{shortcuts.left}/{shortcuts.right} marcher · {shortcuts.down} accroupi · {shortcuts.jump} saut · {shortcuts.light} rapide</span>
-            <span>{compactControlKeyLabel(extraKeys.medium)} moyen · {compactControlKeyLabel(extraKeys.heavy)} lourd · {compactControlKeyLabel(extraKeys.technique)} bas · {compactControlKeyLabel(extraKeys.guardHigh)}/{compactControlKeyLabel(extraKeys.guardLow)} gardes haute/basse · {compactControlKeyLabel(extraKeys.throw)} projection</span>
-          </div>
-          {mode === "local" ? <div><strong>JOUEUR 2 · PAVÉ NUMÉRIQUE</strong><span>4/6 marcher · 2 accroupi · 0 saut · 1/3/5/. attaques · 7/8 gardes · 9 projection</span></div> : null}
-          <div><strong>MANETTE</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection</span></div>
+        <aside className={styles.helpPanel} inert={terminal}>
+          {playbackReplay ? (
+            <div>
+              <strong>RELECTURE</strong>
+              <span>Les commandes de combat, les manettes et le tactile sont désactivés pendant la restitution.</span>
+            </div>
+          ) : (
+            <>
+              <div>
+                <strong>JOUEUR 1 · PROFIL THE PIT</strong>
+                <span>{shortcuts.p1.left}/{shortcuts.p1.right} marcher · {shortcuts.p1.down} accroupi · {shortcuts.p1.jump} saut · {shortcuts.p1.light} rapide</span>
+                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection</span>
+              </div>
+              {mode === "local" ? (
+                <div>
+                  <strong>JOUEUR 2 · PROFIL THE PIT</strong>
+                  <span>{shortcuts.p2.left}/{shortcuts.p2.right} marcher · {shortcuts.p2.down} accroupi · {shortcuts.p2.jump} saut · {shortcuts.p2.light} rapide</span>
+                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection</span>
+                </div>
+              ) : null}
+            </>
+          )}
+          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection</span></div>
         </aside>
       ) : null}
 
-      {touchAvailable ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={combat.phase === "match-over"}>
+      {touchAvailable && !playbackReplay ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal}>
         <div className={styles.touchGroup}>
-          <TouchButton label="◀" token={controlBindings["hunt.moveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="▼" token={controlBindings["hunt.moveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="▶" token={controlBindings["hunt.moveRight"][0] ?? "KeyD"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="SAUT" token={controlBindings["hunt.jump"][0] ?? "Space"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▶" token={controlBindings["pit.p1MoveRight"][0] ?? "KeyD"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="SAUT" token={controlBindings["pit.p1Jump"][0] ?? "Space"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
         </div>
         <div className={styles.touchGroup}>
-          <TouchButton label="R" token={controlBindings["hunt.melee"][0] ?? "KeyJ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="M" token={extraKeys.medium} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="L" token={extraKeys.heavy} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="BAS" token={extraKeys.technique} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="GARDE ↑" token={extraKeys.guardHigh} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-          <TouchButton label="GARDE ↓" token={extraKeys.guardLow} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-          <TouchButton label="PROJ." token={extraKeys.throw} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="R" token={controlBindings["pit.p1AttackLight"][0] ?? "KeyJ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="M" token={controlBindings["pit.p1AttackMedium"][0] ?? "KeyK"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="L" token={controlBindings["pit.p1AttackHeavy"][0] ?? "KeyL"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="TECH." token={controlBindings["pit.p1AttackTechnique"][0] ?? "KeyU"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="GARDE ↑" token={controlBindings["pit.p1GuardHigh"][0] ?? "KeyI"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="GARDE ↓" token={controlBindings["pit.p1GuardLow"][0] ?? "KeyO"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="PROJ." token={controlBindings["pit.p1Throw"][0] ?? "KeyP"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
         </div>
         {mode === "local" ? (
           <div className={`${styles.touchGroup} ${styles.touchGroupPlayerTwo}`}>
-            {Object.entries(PLAYER_TWO_KEYS).map(([label, token]) => (
-              <TouchButton key={label} label={`J2 ${label}`} token={token} onChange={(entry, pressed) => setTouchToken(1, entry, pressed)} />
-            ))}
+            <TouchButton label="J2 ◀" token={controlBindings["pit.p2MoveLeft"][0] ?? "Numpad4"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▼" token={controlBindings["pit.p2MoveDown"][0] ?? "Numpad2"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▶" token={controlBindings["pit.p2MoveRight"][0] ?? "Numpad6"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 SAUT" token={controlBindings["pit.p2Jump"][0] ?? "Numpad8"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 R" token={controlBindings["pit.p2AttackLight"][0] ?? "Numpad1"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 M" token={controlBindings["pit.p2AttackMedium"][0] ?? "Numpad3"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 L" token={controlBindings["pit.p2AttackHeavy"][0] ?? "Numpad5"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TECH." token={controlBindings["pit.p2AttackTechnique"][0] ?? "Numpad7"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↑" token={controlBindings["pit.p2GuardHigh"][0] ?? "Numpad9"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↓" token={controlBindings["pit.p2GuardLow"][0] ?? "Numpad0"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 PROJ." token={controlBindings["pit.p2Throw"][0] ?? "NumpadEnter"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
           </div>
         ) : null}
       </div> : null}

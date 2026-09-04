@@ -41,7 +41,7 @@ function mutableDefaults() {
 }
 
 test("the AZERTY defaults cover every stable action without contextual conflicts", () => {
-  assert.equal(controls.CONTROL_ACTION_IDS.length, 48);
+  assert.equal(controls.CONTROL_ACTION_IDS.length, 71);
   assert.deepEqual(
     Object.keys(controls.DEFAULT_CONTROL_BINDINGS),
     controls.CONTROL_ACTION_IDS,
@@ -77,6 +77,99 @@ test("the AZERTY defaults cover every stable action without contextual conflicts
     assert.ok(entries.length > 0);
     assert.ok(entries.every((entry) => entry.actionId.startsWith(`${context}.`)));
   }
+});
+
+test("THE PIT exposes complete collision-safe bindings for both local players", () => {
+  assert.equal(controls.PIT_CONTROL_ACTION_IDS.length, 23);
+  assert.deepEqual(
+    controls.PIT_CONTROL_ACTION_IDS,
+    controls.CONTROL_ACTION_IDS.filter((actionId) => actionId.startsWith("pit.")),
+  );
+
+  const pitEntries = controls.controlBindingsForContext("pit");
+  assert.equal(pitEntries.length, 23);
+  assert.deepEqual(
+    pitEntries.map((entry) => entry.actionId),
+    controls.PIT_CONTROL_ACTION_IDS,
+  );
+  assert.ok(
+    pitEntries
+      .filter((entry) => entry.actionId !== "pit.pause")
+      .every((entry) => /^J[12] — /.test(entry.label)),
+  );
+  assert.equal(
+    pitEntries.find((entry) => entry.actionId === "pit.pause")?.label,
+    "Quitter / retour vaisseau",
+  );
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p1MoveLeft"], [
+    "KeyQ",
+    "ArrowLeft",
+  ]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p1Jump"], ["Space"]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p2MoveLeft"], ["Numpad4"]);
+  assert.deepEqual(controls.DEFAULT_CONTROL_BINDINGS["pit.p2Throw"], ["NumpadEnter"]);
+
+  const pitCodes = new Set(pitEntries.flatMap((entry) => entry.keyCodes));
+  for (const code of pitCodes) {
+    const matches = controls.matchingControlActions("pit", code);
+    assert.equal(matches.length, 1, `${code} doit piloter une seule action THE PIT`);
+  }
+
+  const conflicting = mutableDefaults();
+  conflicting["pit.p2AttackLight"] = ["KeyJ"];
+  const validation = controls.validateControlBindings(conflicting);
+  assert.equal(validation.valid, false);
+  assert.deepEqual(validation.conflicts, [
+    {
+      context: "pit",
+      keyCode: "KeyJ",
+      actionIds: ["pit.p1AttackLight", "pit.p2AttackLight"],
+    },
+  ]);
+});
+
+test("THE PIT input adapter resolves remapped P1 and P2 controls deterministically", () => {
+  const remapped = controls.rebindControlAction(
+    controls.DEFAULT_CONTROL_BINDINGS,
+    "pit.p1AttackLight",
+    ["KeyB"],
+  );
+  assert.equal(remapped.accepted, true);
+  assert.deepEqual(
+    controls.pitInputFromControlCodes(
+      1,
+      new Set(["KeyQ", "KeyI", "KeyB"]),
+      remapped.bindings,
+    ),
+    {
+      left: true,
+      right: false,
+      down: false,
+      jump: false,
+      guardHigh: true,
+      guardLow: false,
+      attack: "light",
+      throw: false,
+    },
+  );
+  assert.deepEqual(
+    controls.pitInputFromControlCodes(2, ["Numpad6", "Numpad5", "NumpadEnter"]),
+    {
+      left: false,
+      right: true,
+      down: false,
+      jump: false,
+      guardHigh: false,
+      guardLow: false,
+      attack: "heavy",
+      throw: true,
+    },
+  );
+  assert.equal(
+    controls.pitInputFromControlCodes(1, ["KeyJ", "KeyK"]).attack,
+    "light",
+    "la priorité multi-coups doit rester stable",
+  );
 });
 
 test("key names normalize to serializable KeyboardEvent codes and duplicates are removed", () => {
@@ -191,6 +284,30 @@ test("matching helpers prefer physical codes and provide a key-only fallback", (
     controls.matchingControlActions("workshop", { code: "KeyQ", key: "a" }),
     ["workshop.left"],
   );
+});
+
+test("v1 binding envelopes migrate by restoring every THE PIT action", () => {
+  const legacyBindings = Object.fromEntries(
+    Object.entries(mutableDefaults()).filter(([actionId]) => !actionId.startsWith("pit.")),
+  );
+  assert.equal(Object.keys(legacyBindings).length, 48);
+
+  const migrated = controls.deserializeControlBindings({
+    version: 1,
+    bindings: legacyBindings,
+  });
+  assert.equal(migrated.restored, true);
+  assert.deepEqual(migrated.bindings["pit.p1AttackLight"], ["KeyJ"]);
+  assert.deepEqual(migrated.bindings["pit.p2AttackLight"], ["Numpad1"]);
+  assert.equal(
+    migrated.issues.filter((entry) => entry.code === "missing-action").length,
+    23,
+  );
+  assert.deepEqual(controls.findControlBindingConflicts(migrated.bindings), []);
+
+  const serialized = controls.serializeControlBindings(migrated.bindings);
+  assert.equal(serialized.version, 2);
+  assert.equal(Object.keys(serialized.bindings).length, 71);
 });
 
 test("versioned persistence round-trips and corrupt storage falls back atomically", () => {

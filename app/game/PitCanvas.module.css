@@ -22,9 +22,9 @@
 .selectionHeader p { margin: 14px 0 0; color: var(--pit-dim); letter-spacing: .12em; text-transform: uppercase; font-size: .74rem; }
 .eyebrow, .sideLabel { color: #72d8c2; font-size: .68rem; font-weight: 800; letter-spacing: .18em; }
 
-.exitButton, .utilityButton, .swapButton, .startButton, .modeCard, .touchButton { color: inherit; border: 1px solid rgba(212,169,93,.38); background: rgba(5,10,9,.8); font: inherit; cursor: pointer; }
+.exitButton, .utilityButton, .swapButton, .startButton, .replayButton, .modeCard, .touchButton { color: inherit; border: 1px solid rgba(212,169,93,.38); background: rgba(5,10,9,.8); font: inherit; cursor: pointer; }
 .exitButton, .utilityButton { min-height: 42px; padding: 9px 15px; letter-spacing: .08em; text-transform: uppercase; }
-.exitButton:hover, .utilityButton:hover, .swapButton:hover, .modeCard:hover { border-color: var(--pit-gold); background: rgba(212,169,93,.1); }
+.exitButton:hover, .utilityButton:hover, .swapButton:hover, .replayButton:hover, .modeCard:hover { border-color: var(--pit-gold); background: rgba(212,169,93,.1); }
 
 .versusGrid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: clamp(12px, 3vw, 44px); align-items: center; width: min(1040px, calc(100% - 32px)); margin: 10px auto; }
 .fighterCard { position: relative; min-height: 282px; padding: 22px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--fighter), white 16%); background: linear-gradient(145deg, color-mix(in srgb, var(--fighter), transparent 83%), rgba(3,7,6,.92)); box-shadow: inset 0 -80px 100px rgba(0,0,0,.28); }
@@ -51,11 +51,16 @@
 .modeCardActive { border-color: #72d8c2; background: rgba(70,166,145,.14); box-shadow: inset 0 0 30px rgba(65,209,177,.06); }
 .startButton { display: block; min-height: 52px; margin: 22px auto 0; padding: 12px 28px; border-color: var(--pit-gold); color: #080b09; background: linear-gradient(135deg, #f1d18b, #b77b37); font-weight: 1000; letter-spacing: .12em; }
 .startButton:hover { filter: brightness(1.12); }
+.selectionActions { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 22px auto 0; }
+.selectionActions .startButton { margin: 0; }
+.replayButton { min-height: 52px; padding: 12px 22px; color: #b9fff0; border-color: rgba(114,216,194,.6); background: rgba(14,45,39,.82); font-weight: 900; letter-spacing: .08em; }
+.replayNotice { position: relative; z-index: 2; width: min(760px, calc(100% - 32px)); margin: 12px auto 0; color: #ffd98a; text-align: center; font-size: .72rem; }
 .selectionFootnote { position: relative; margin: 12px auto 26px; color: var(--pit-dim); text-align: center; font-size: .7rem; }
 
 .matchRoot { display: flex; flex-direction: column; overflow: hidden; background: #030504; }
 .matchHeader { flex: 0 0 auto; align-items: center; padding: 8px 14px; color: var(--pit-dim); background: #070b09; font-size: .68rem; font-weight: 900; letter-spacing: .16em; }
 .utilityButton { min-height: 32px; padding: 5px 10px; font-size: .64rem; }
+.replayNoticeMatch { position: relative; z-index: 8; margin: 0; padding: 5px 12px; color: #ffd98a; background: #261b0d; text-align: center; font-size: .68rem; }
 .hud { position: relative; z-index: 5; display: grid; grid-template-columns: minmax(0,1fr) 96px minmax(0,1fr); gap: 12px; align-items: start; padding: 10px clamp(10px,3vw,34px) 8px; background: linear-gradient(#0a0f0d, #050706); }
 .fighterHud > div:first-child { display: flex; justify-content: space-between; gap: 10px; font-size: .72rem; letter-spacing: .08em; }.fighterHud > div:first-child span { color: var(--pit-dim); font-size: .56rem; }
 .fighterHudRight > div:first-child { flex-direction: row-reverse; }.fighterHudRight .healthTrack i { margin-left: auto; }.fighterHudRight .roundPips { justify-content: flex-end; }
@@ -69,7 +74,7 @@
 .announcement { position: absolute; top: 18px; left: 50%; padding: 5px 12px; transform: translateX(-50%); color: var(--pit-gold); background: rgba(0,0,0,.55); font-size: clamp(.62rem,1.5vw,.8rem); font-weight: 900; letter-spacing: .14em; pointer-events: none; }
 .combo { position: absolute; top: 25%; color: #fff2bd; font-size: clamp(2rem,6vw,5.4rem); font-weight: 1000; font-style: italic; text-shadow: 0 3px 0 #703a22; }.combo small { display: block; font-size: .18em; letter-spacing: .2em; }.comboLeft { left: 7%; }.comboRight { right: 7%; text-align: right; }
 .hitboxToggle { position: absolute; right: 12px; bottom: 12px; padding: 7px 10px; color: #8fffe1; background: rgba(0,0,0,.72); font-size: .7rem; }
-.resultOverlay { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 9px; padding: 20px; text-align: center; background: rgba(1,4,3,.78); backdrop-filter: blur(4px); }.resultOverlay > span { color: #72d8c2; font-size: .68rem; font-weight: 900; letter-spacing: .2em; }.resultOverlay h3 { margin: 0; color: var(--pit-gold); font-size: clamp(2rem,7vw,5rem); text-transform: uppercase; }.resultOverlay p { color: var(--pit-dim); }.overlayActions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }.overlayActions .startButton { margin: 0; }.overlayActions .exitButton { min-height: 52px; }
+.resultOverlay { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 9px; padding: 20px; text-align: center; background: rgba(1,4,3,.78); backdrop-filter: blur(4px); }.resultOverlay > span { color: #72d8c2; font-size: .68rem; font-weight: 900; letter-spacing: .2em; }.resultOverlay h3 { margin: 0; color: var(--pit-gold); font-size: clamp(2rem,7vw,5rem); text-transform: uppercase; }.resultOverlay p { color: var(--pit-dim); }.overlayActions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }.overlayActions .startButton { margin: 0; }.overlayActions .exitButton, .overlayActions .replayButton { min-height: 52px; }
 
 .helpPanel { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; flex: 0 0 auto; padding: 9px 14px; border-top: 1px solid rgba(212,169,93,.2); background: #080c0a; }.helpPanel div { display: grid; gap: 3px; }.helpPanel strong { color: #72d8c2; font-size: .58rem; letter-spacing: .11em; }.helpPanel span { color: var(--pit-dim); font-size: .65rem; line-height: 1.35; }
 .touchRows { position: absolute; z-index: 10; right: 12px; bottom: 70px; left: 12px; display: flex; justify-content: space-between; gap: 10px; pointer-events: none; }.touchGroup { display: flex; flex-wrap: wrap; gap: 5px; max-width: 310px; pointer-events: auto; }.touchButton { min-width: 42px; min-height: 42px; padding: 5px 8px; border-color: rgba(114,216,194,.35); border-radius: 4px; background: rgba(3,9,8,.72); color: #dffcf4; font-size: .64rem; font-weight: 900; touch-action: none; user-select: none; }.touchButton:active { color: #08100e; background: #72d8c2; }.touchButtonWide { min-width: 58px; }.touchGroupPlayerTwo { position: absolute; right: 0; bottom: 52px; justify-content: flex-end; opacity: .86; }
@@ -77,5 +82,7 @@
 @media (max-width: 760px) {
   .selectionHeader { align-items: flex-start; }.selectionHeader h2 { font-size: 3rem; }.versusGrid { grid-template-columns: 1fr 52px 1fr; gap: 6px; }.fighterCard { min-height: 228px; padding: 12px; }.fighterCard h3 { margin-top: 122px; font-size: 1rem; }.fighterCard p { font-size: .65rem; }.fighterCard dl { gap: 8px; flex-wrap: wrap; }.fighterCard dd { font-size: .7rem; }.maskGlyph { transform: translateX(-50%) scale(.76); transform-origin: top center; }.modeGrid { grid-template-columns: 1fr; }.hud { grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }.fighterHud > div:first-child span { display: none; }.fighterHud > div:first-child strong { font-size: .55rem; }.timer strong { font-size: 1.4rem; }.helpPanel { grid-template-columns: 1fr; max-height: 112px; overflow: auto; }.touchRows { bottom: 125px; }.canvas { min-height: 250px; }
 }
+
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 @media (prefers-reduced-motion: reduce) { .arenaShell, .healthTrack i { transition: none; } }

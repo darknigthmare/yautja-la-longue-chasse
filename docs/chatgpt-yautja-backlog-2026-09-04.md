@@ -102,7 +102,7 @@ Ce fichier suit le code réellement présent. Une promesse écrite dans un chat 
 ### Livraison par lots
 
 - [x] **PIT-01 — tranche verticale jouable** : moteur déterministe, Jungle Hunter, Berserker, Cercle de basalte, CPU, versus local, entraînement, rounds, revanche et retour au vaisseau.
-- [ ] **PIT-02 — données isolées** : sidecar PIT versionné et lié au propriétaire, gestion des conflits, idempotence et verrouillage livrés ; restent les contrôles PIT entièrement configurables et le replay sérialisé.
+- [x] **PIT-02 — données isolées** : sidecar PIT et archive replay séparés, versionnés et liés au propriétaire ; gestion des conflits, idempotence, verrou Web Locks avec lease de secours stabilisé, réparation verrouillée des archives corrompues, 23 actions configurables J1/J2/pause et migration des commandes V1 ; enregistrement compact des entrées résolues puis relecture déterministe sans statistiques ni récompense. Parcours navigateur vérifié jusqu’à ARCHIVE RESTITUÉE.
 - [ ] **PIT-03 — ressources de combat** : Traque, Rupture de chasse, Instinct de survie et camouflage lisible.
 - [ ] **PIT-04 — entraînement professionnel** : frame data, hitboxes affichables, dummy réglable, enregistrement et lecture d'entrées.
 - [ ] **PIT-05 — première édition** : douze combattants, huit arènes, arcade individuel, histoire en cinq chapitres et Descente des fosses.
@@ -114,7 +114,7 @@ Les volumes PIT-07 et PIT-08 sont des budgets de production, pas des contenus d�
 
 ## Ordre de reprise
 
-1. Terminer PIT-02 puis PIT-03/PIT-04 : contrôles configurables, replay, ressources de combat et entraînement avancé.
+1. Produire PIT-03/PIT-04 : Traque, Rupture de chasse, Instinct de survie, camouflage lisible, frame data et mannequin configurable.
 2. Étendre la mêlée des chasses avec lourde, aérienne, parade, esquive, brise-garde, projection et exécution.
 3. Étendre les six régions Metroidvania et leurs cartes.
 4. Enrichir furtivité, IA, honneur et structure des Apex.

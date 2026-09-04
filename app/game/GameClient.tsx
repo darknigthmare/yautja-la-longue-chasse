@@ -14,6 +14,14 @@ import HunterRigPreview from "./HunterRigPreview";
 import { useMenuGamepad } from "./useMenuGamepad";
 import type { PitMatchCompleteResult } from "./PitCanvas";
 import { matchesControlAction } from "./systems/controlBindings";
+import { normalizePitReplay, type PitReplay } from "./systems/pitReplay";
+import {
+  clearPitReplayArchive,
+  createPitReplayArchive,
+  loadPitReplayArchive,
+  withLatestPitReplay,
+  writePitReplayArchive,
+} from "./systems/pitReplayStorage";
 import {
   applyPitResult,
   clearPitSave,
@@ -784,6 +792,36 @@ function qualityLabel(result: MissionResult): string {
   }[result.trophyQuality];
 }
 
+interface PitReplayHydrationResult {
+  replay: PitReplay | null;
+  diagnostic: string | null;
+}
+
+function hydratePitReplayForOwner(
+  ownerSaveCreatedAt: string,
+): PitReplayHydrationResult {
+  const loaded = loadPitReplayArchive({ ownerSaveCreatedAt });
+  if (!loaded.failure) {
+    return {
+      replay: loaded.archive?.latestReplay ?? null,
+      diagnostic: null,
+    };
+  }
+  if (loaded.failure === "corrupt-save") {
+    return {
+      replay: null,
+      diagnostic: "Archive replay THE PIT corrompue détectée. Elle sera réparée sous verrou au prochain match.",
+    };
+  }
+  const diagnostic = {
+    "future-version": "Archive replay THE PIT d’une version plus récente préservée.",
+    "owner-conflict": "Archive replay THE PIT liée à une autre campagne préservée.",
+    "read-failed": "Archive replay THE PIT illisible ; aucun effacement tenté.",
+    "storage-unavailable": "Archive replay THE PIT indisponible pour cette session.",
+  }[loaded.failure];
+  return { replay: null, diagnostic };
+}
+
 export default function GameClient() {
   const [screen, setScreen] = useState<Screen>("title");
   const [save, setSave] = useState<SaveGame>(() =>
@@ -805,6 +843,7 @@ export default function GameClient() {
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
+  const [lastPitReplay, setLastPitReplay] = useState<PitReplay | null>(null);
   const [resumableHunt, setResumableHunt] =
     useState<ActiveHuntSaveV1 | null>(null);
   const [huntResumePayload, setHuntResumePayload] =
@@ -866,6 +905,9 @@ export default function GameClient() {
         return;
       }
       setSelectedShipId(loadShipProgression(loadedSave).selectedShipId);
+      const replayHydration = hydratePitReplayForOwner(loadedSave.createdAt);
+      setLastPitReplay(replayHydration.replay);
+      if (replayHydration.diagnostic) setToast(replayHydration.diagnostic);
       const activeHuntResult = loadActiveHuntSave();
       const candidate = activeHuntResult.save;
       if (candidate) {
@@ -1136,6 +1178,10 @@ export default function GameClient() {
   const recordPitMatch = useCallback((result: PitMatchCompleteResult) => {
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const key = pitSaveStorageKey(ownerSaveCreatedAt);
+    const recordedReplay = result.replay
+      ? normalizePitReplay(result.replay)
+      : null;
+    if (recordedReplay) setLastPitReplay(recordedReplay);
     const outcome =
       result.winnerId === null
         ? "draw"
@@ -1199,11 +1245,53 @@ export default function GameClient() {
       }
     };
 
+    const persistReplay = () => {
+      if (!recordedReplay) return;
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const loaded = loadPitReplayArchive({ ownerSaveCreatedAt });
+        if (loaded.failure === "corrupt-save") {
+          const cleared = clearPitReplayArchive({ ownerSaveCreatedAt });
+          if (!cleared.cleared) {
+            setToast("Replay THE PIT conservé en mémoire ; archive corrompue non supprimée.");
+            return;
+          }
+        } else if (loaded.failure) {
+          if (loaded.failure === "read-failed" && attempt < 2) continue;
+          setToast("Replay THE PIT conservé en mémoire ; archive locale non confirmée.");
+          return;
+        }
+        const current = loaded.archive ??
+          createPitReplayArchive(ownerSaveCreatedAt, matchResult.completedAt);
+        const next = withLatestPitReplay(
+          current,
+          recordedReplay,
+          matchResult.completedAt,
+        );
+        const written = writePitReplayArchive(next, { ownerSaveCreatedAt });
+        if (written.persisted) return;
+        if (
+          attempt < 2 &&
+          (written.failure === "stale-revision" ||
+            written.failure === "read-failed")
+        ) {
+          continue;
+        }
+        setToast("Replay THE PIT conservé en mémoire ; archive locale non confirmée.");
+        return;
+      }
+    };
+
     const persistSafely = () => {
+      if (saveRef.current.createdAt !== ownerSaveCreatedAt) return;
       try {
         persistResult();
       } catch {
         setToast("Résultat THE PIT conservé à l’écran, mais son écriture a échoué.");
+      }
+      try {
+        persistReplay();
+      } catch {
+        setToast("Replay THE PIT conservé en mémoire ; archive locale non confirmée.");
       }
     };
     const runWithFallbackLease = (retriesRemaining = 50) => {
@@ -1212,6 +1300,16 @@ export default function GameClient() {
         return;
       }
       const lockKey = `${key}.write-lock`;
+      const retryLease = (message: string) => {
+        if (retriesRemaining > 0) {
+          window.setTimeout(
+            () => runWithFallbackLease(retriesRemaining - 1),
+            50,
+          );
+        } else {
+          setToast(message);
+        }
+      };
       try {
         const storage = window.localStorage;
         const now = Date.now();
@@ -1226,14 +1324,7 @@ export default function GameClient() {
           heldUntil = 0;
         }
         if (heldUntil > now) {
-          if (retriesRemaining > 0) {
-            window.setTimeout(
-              () => runWithFallbackLease(retriesRemaining - 1),
-              50,
-            );
-          } else {
-            setToast("Résultat THE PIT en attente : une autre session écrit les archives.");
-          }
+          retryLease("Résultat THE PIT en attente : une autre session écrit les archives.");
           return;
         }
 
@@ -1242,28 +1333,43 @@ export default function GameClient() {
           lockKey,
           JSON.stringify({ token, expiresAt: now + 2_000 }),
         );
-        const confirmed = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+        const claimed = JSON.parse(storage.getItem(lockKey) ?? "null") as {
           token?: unknown;
         } | null;
-        if (confirmed?.token !== token) {
-          if (retriesRemaining > 0) {
-            window.setTimeout(
-              () => runWithFallbackLease(retriesRemaining - 1),
-              50,
-            );
-          } else {
-            setToast("Résultat THE PIT en attente : verrou local indisponible.");
-          }
+        if (claimed?.token !== token) {
+          retryLease("Résultat THE PIT en attente : verrou local indisponible.");
           return;
         }
-        try {
-          persistSafely();
-        } finally {
-          const latest = JSON.parse(storage.getItem(lockKey) ?? "null") as {
-            token?: unknown;
-          } | null;
-          if (latest?.token === token) storage.removeItem(lockKey);
-        }
+
+        // localStorage has no atomic compare-and-set. Let simultaneous claimants
+        // settle, then verify the winning token immediately before both writes.
+        window.setTimeout(() => {
+          let stabilized: { token?: unknown } | null;
+          try {
+            stabilized = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+              token?: unknown;
+            } | null;
+          } catch {
+            retryLease("Résultat THE PIT en attente : verrou local illisible.");
+            return;
+          }
+          if (stabilized?.token !== token) {
+            retryLease("Résultat THE PIT en attente : verrou local repris par une autre session.");
+            return;
+          }
+          try {
+            persistSafely();
+          } finally {
+            try {
+              const latest = JSON.parse(storage.getItem(lockKey) ?? "null") as {
+                token?: unknown;
+              } | null;
+              if (latest?.token === token) storage.removeItem(lockKey);
+            } catch {
+              // The short lease expires on its own if confirmation is unavailable.
+            }
+          }
+        }, 25);
       } catch {
         persistSafely();
       }
@@ -1915,6 +2021,9 @@ export default function GameClient() {
     setSelectedShipId(shipReset.state.selectedShipId);
     const huntReset = clearActiveHuntSave();
     const pitReset = clearPitSave(previousOwnerSaveCreatedAt);
+    const pitReplayReset = clearPitReplayArchive({
+      ownerSaveCreatedAt: previousOwnerSaveCreatedAt,
+    });
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
@@ -1926,8 +2035,9 @@ export default function GameClient() {
     setSelectedMission(null);
     setLastResult(null);
     setLastRewardSummary(null);
+    setLastPitReplay(null);
     setScreen("title");
-    setToast(shipReset.persisted && huntReset.cleared && pitReset.cleared
+    setToast(shipReset.persisted && huntReset.cleared && pitReset.cleared && pitReplayReset.cleared
       ? "Archives de chasse et du PIT réinitialisées."
       : "Campagne réinitialisée. Le nettoyage des archives annexes n’est pas confirmé ; les données d’un autre profil sont ignorées.");
   }, [clearHuntSession, resetArmed]);
@@ -1955,6 +2065,7 @@ export default function GameClient() {
 
   const confirmImport = useCallback(() => {
     if (!importCandidate) return;
+    const previousOwnerSaveCreatedAt = saveRef.current.createdAt;
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
     catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
@@ -1963,6 +2074,9 @@ export default function GameClient() {
       return;
     }
     const huntReset = clearActiveHuntSave();
+    const pitReplayReset = clearPitReplayArchive({
+      ownerSaveCreatedAt: previousOwnerSaveCreatedAt,
+    });
     clearHuntSession();
     pendingTerminalRunRef.current = null;
     setPendingHuntResult(null);
@@ -1975,9 +2089,10 @@ export default function GameClient() {
     setSelectedMission(null);
     setLastResult(null);
     setLastRewardSummary(null);
+    setLastPitReplay(null);
     setImportCandidate(null);
     setScreen("title");
-    setSaveTransferMessage(shipReset.persisted && huntReset.cleared
+    setSaveTransferMessage(shipReset.persisted && huntReset.cleared && pitReplayReset.cleared
       ? "Campagne importée. L’ancienne chasse suspendue a été retirée."
       : "Campagne importée. Le nettoyage des archives annexes n’est pas confirmé ; vérifiez la reprise proposée avant de jouer.");
   }, [clearHuntSession, importCandidate]);
@@ -3412,6 +3527,7 @@ export default function GameClient() {
           <PitCanvas
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
+            lastReplay={lastPitReplay}
             reducedGore={save.settings.reducedGore}
             screenShake={save.settings.screenShake}
             onMatchComplete={recordPitMatch}

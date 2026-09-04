@@ -77,8 +77,9 @@ test("THE PIT terminal results stay isolated from campaign rewards", async () =>
 
   assert.match(
     pitCanvasSource,
-    /combat\.phase !== "match-over" \|\| reportedMatchFrameRef\.current !== null/,
+    /playbackReplay \|\| combat\.phase !== "match-over"/,
   );
+  assert.match(pitCanvasSource, /reportedMatchFrameRef\.current !== null/);
   assert.match(pitCanvasSource, /leftRoundsWon: combat\.fighters\[0\]\.roundsWon/);
   assert.doesNotMatch(pitCanvasSource, /applyMissionResult|writeSaveWithStatus/);
 });

@@ -1,3 +1,5 @@
+import type { PitInput } from "./pitCombat";
+
 /**
  * Pure keyboard-binding model shared by every playable surface.
  *
@@ -5,10 +7,11 @@
  * settings screen, save migration, or Node test can use the same rules.
  */
 
-export const CONTROL_BINDING_SCHEMA_VERSION = 1 as const;
+export const CONTROL_BINDING_SCHEMA_VERSION = 2 as const;
 
 export const CONTROL_CONTEXTS = [
   "hunt",
+  "pit",
   "galaxy",
   "shipHub",
   "training",
@@ -45,6 +48,30 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "hunt.useGearTwo", context: "hunt", behavior: "press", label: "Utiliser l’équipement 2" },
   { id: "hunt.interact", context: "hunt", behavior: "press", label: "Interagir" },
   { id: "hunt.pause", context: "hunt", behavior: "press", label: "Pause" },
+
+  { id: "pit.p1MoveLeft", context: "pit", behavior: "hold", label: "J1 — Se déplacer à gauche" },
+  { id: "pit.p1MoveRight", context: "pit", behavior: "hold", label: "J1 — Se déplacer à droite" },
+  { id: "pit.p1MoveDown", context: "pit", behavior: "hold", label: "J1 — S’accroupir" },
+  { id: "pit.p1Jump", context: "pit", behavior: "press", label: "J1 — Sauter" },
+  { id: "pit.p1AttackLight", context: "pit", behavior: "press", label: "J1 — Attaque légère" },
+  { id: "pit.p1AttackMedium", context: "pit", behavior: "press", label: "J1 — Attaque moyenne" },
+  { id: "pit.p1AttackHeavy", context: "pit", behavior: "press", label: "J1 — Attaque lourde" },
+  { id: "pit.p1AttackTechnique", context: "pit", behavior: "press", label: "J1 — Attaque technique" },
+  { id: "pit.p1GuardHigh", context: "pit", behavior: "hold", label: "J1 — Garde haute" },
+  { id: "pit.p1GuardLow", context: "pit", behavior: "hold", label: "J1 — Garde basse" },
+  { id: "pit.p1Throw", context: "pit", behavior: "press", label: "J1 — Projection" },
+  { id: "pit.p2MoveLeft", context: "pit", behavior: "hold", label: "J2 — Se déplacer à gauche" },
+  { id: "pit.p2MoveRight", context: "pit", behavior: "hold", label: "J2 — Se déplacer à droite" },
+  { id: "pit.p2MoveDown", context: "pit", behavior: "hold", label: "J2 — S’accroupir" },
+  { id: "pit.p2Jump", context: "pit", behavior: "press", label: "J2 — Sauter" },
+  { id: "pit.p2AttackLight", context: "pit", behavior: "press", label: "J2 — Attaque légère" },
+  { id: "pit.p2AttackMedium", context: "pit", behavior: "press", label: "J2 — Attaque moyenne" },
+  { id: "pit.p2AttackHeavy", context: "pit", behavior: "press", label: "J2 — Attaque lourde" },
+  { id: "pit.p2AttackTechnique", context: "pit", behavior: "press", label: "J2 — Attaque technique" },
+  { id: "pit.p2GuardHigh", context: "pit", behavior: "hold", label: "J2 — Garde haute" },
+  { id: "pit.p2GuardLow", context: "pit", behavior: "hold", label: "J2 — Garde basse" },
+  { id: "pit.p2Throw", context: "pit", behavior: "press", label: "J2 — Projection" },
+  { id: "pit.pause", context: "pit", behavior: "press", label: "Quitter / retour vaisseau" },
 
   { id: "galaxy.flyLeft", context: "galaxy", behavior: "hold", label: "Piloter à gauche" },
   { id: "galaxy.flyRight", context: "galaxy", behavior: "hold", label: "Piloter à droite" },
@@ -87,10 +114,65 @@ export const CONTROL_ACTION_IDS = Object.freeze(
   CONTROL_ACTION_DEFINITIONS.map((definition) => definition.id),
 ) as readonly ControlActionId[];
 
+export type PitControlActionId = Extract<ControlActionId, `pit.${string}`>;
+
+export const PIT_CONTROL_ACTION_IDS = Object.freeze(
+  CONTROL_ACTION_IDS.filter(
+    (actionId): actionId is PitControlActionId => actionId.startsWith("pit."),
+  ),
+) as readonly PitControlActionId[];
+
 export type ControlKeyCode = string;
 export type ControlBindings = Readonly<
   Record<ControlActionId, readonly ControlKeyCode[]>
 >;
+
+export type PitControlPlayer = 1 | 2;
+
+type PitPlayerControlActions = Readonly<{
+  moveLeft: PitControlActionId;
+  moveRight: PitControlActionId;
+  moveDown: PitControlActionId;
+  jump: PitControlActionId;
+  attackLight: PitControlActionId;
+  attackMedium: PitControlActionId;
+  attackHeavy: PitControlActionId;
+  attackTechnique: PitControlActionId;
+  guardHigh: PitControlActionId;
+  guardLow: PitControlActionId;
+  throw: PitControlActionId;
+}>;
+
+const PIT_CONTROL_ACTIONS_BY_PLAYER: Readonly<
+  Record<PitControlPlayer, PitPlayerControlActions>
+> = Object.freeze({
+  1: Object.freeze({
+    moveLeft: "pit.p1MoveLeft",
+    moveRight: "pit.p1MoveRight",
+    moveDown: "pit.p1MoveDown",
+    jump: "pit.p1Jump",
+    attackLight: "pit.p1AttackLight",
+    attackMedium: "pit.p1AttackMedium",
+    attackHeavy: "pit.p1AttackHeavy",
+    attackTechnique: "pit.p1AttackTechnique",
+    guardHigh: "pit.p1GuardHigh",
+    guardLow: "pit.p1GuardLow",
+    throw: "pit.p1Throw",
+  }),
+  2: Object.freeze({
+    moveLeft: "pit.p2MoveLeft",
+    moveRight: "pit.p2MoveRight",
+    moveDown: "pit.p2MoveDown",
+    jump: "pit.p2Jump",
+    attackLight: "pit.p2AttackLight",
+    attackMedium: "pit.p2AttackMedium",
+    attackHeavy: "pit.p2AttackHeavy",
+    attackTechnique: "pit.p2AttackTechnique",
+    guardHigh: "pit.p2GuardHigh",
+    guardLow: "pit.p2GuardLow",
+    throw: "pit.p2Throw",
+  }),
+});
 
 export type ControlBindingsInput = Partial<
   Record<ControlActionId, string | readonly string[]>
@@ -230,6 +312,30 @@ export const DEFAULT_CONTROL_BINDINGS = freezeBindings({
   "hunt.useGearTwo": ["Digit4", "Numpad4"],
   "hunt.interact": ["KeyE"],
   "hunt.pause": ["Escape"],
+
+  "pit.p1MoveLeft": ["KeyQ", "ArrowLeft"],
+  "pit.p1MoveRight": ["KeyD", "ArrowRight"],
+  "pit.p1MoveDown": ["KeyS", "ArrowDown"],
+  "pit.p1Jump": ["Space"],
+  "pit.p1AttackLight": ["KeyJ"],
+  "pit.p1AttackMedium": ["KeyK"],
+  "pit.p1AttackHeavy": ["KeyL"],
+  "pit.p1AttackTechnique": ["KeyU"],
+  "pit.p1GuardHigh": ["KeyI"],
+  "pit.p1GuardLow": ["KeyO"],
+  "pit.p1Throw": ["KeyP"],
+  "pit.p2MoveLeft": ["Numpad4"],
+  "pit.p2MoveRight": ["Numpad6"],
+  "pit.p2MoveDown": ["Numpad2"],
+  "pit.p2Jump": ["Numpad8"],
+  "pit.p2AttackLight": ["Numpad1"],
+  "pit.p2AttackMedium": ["Numpad3"],
+  "pit.p2AttackHeavy": ["Numpad5"],
+  "pit.p2AttackTechnique": ["Numpad7"],
+  "pit.p2GuardHigh": ["Numpad9"],
+  "pit.p2GuardLow": ["Numpad0"],
+  "pit.p2Throw": ["NumpadEnter"],
+  "pit.pause": ["Escape"],
 
   "galaxy.flyLeft": ["KeyQ", "ArrowLeft"],
   "galaxy.flyRight": ["KeyD", "ArrowRight"],
@@ -542,6 +648,43 @@ export function controlKeyCodeFromInput(
   return normalizeControlKeyCode(input.key);
 }
 
+/** Resolve one keyboard snapshot into the exact input shape consumed by THE PIT. */
+export function pitInputFromControlCodes(
+  player: PitControlPlayer,
+  inputs: Iterable<KeyboardInputLike | string>,
+  bindings: ControlBindings = DEFAULT_CONTROL_BINDINGS,
+): PitInput {
+  const pressedCodes = new Set<ControlKeyCode>();
+  for (const input of inputs) {
+    const code = controlKeyCodeFromInput(input);
+    if (code) pressedCodes.add(code);
+  }
+
+  const actions = PIT_CONTROL_ACTIONS_BY_PLAYER[player];
+  const pressed = (actionId: PitControlActionId) =>
+    bindings[actionId].some((code) => pressedCodes.has(code));
+  const attack = pressed(actions.attackLight)
+    ? "light"
+    : pressed(actions.attackMedium)
+      ? "medium"
+      : pressed(actions.attackHeavy)
+        ? "heavy"
+        : pressed(actions.attackTechnique)
+          ? "technique"
+          : undefined;
+
+  return Object.freeze({
+    left: pressed(actions.moveLeft),
+    right: pressed(actions.moveRight),
+    down: pressed(actions.moveDown),
+    jump: pressed(actions.jump),
+    guardHigh: pressed(actions.guardHigh),
+    guardLow: pressed(actions.guardLow),
+    attack,
+    throw: pressed(actions.throw),
+  });
+}
+
 export function matchesControlAction(
   actionId: ControlActionId,
   input: KeyboardInputLike | string,
@@ -712,6 +855,13 @@ export function rebindControlAction(
 }
 
 export interface SerializedControlBindingsV1 {
+  readonly version: 1;
+  readonly bindings: Readonly<
+    Partial<Record<ControlActionId, readonly string[]>>
+  >;
+}
+
+export interface SerializedControlBindingsV2 {
   readonly version: typeof CONTROL_BINDING_SCHEMA_VERSION;
   readonly bindings: Readonly<Record<ControlActionId, readonly string[]>>;
 }
@@ -728,7 +878,7 @@ export class ControlBindingsSerializationError extends Error {
 
 export function serializeControlBindings(
   input: unknown,
-): SerializedControlBindingsV1 {
+): SerializedControlBindingsV2 {
   const normalized = normalizeControlBindings(input);
   if (!normalized.valid) {
     throw new ControlBindingsSerializationError(normalized.issues);
@@ -783,7 +933,7 @@ export function deserializeControlBindings(
       "Les commandes enregistrées doivent être un objet versionné.",
     ));
   }
-  if (decoded.version !== CONTROL_BINDING_SCHEMA_VERSION) {
+  if (decoded.version !== 1 && decoded.version !== CONTROL_BINDING_SCHEMA_VERSION) {
     return failedDeserialization(issue(
       "error",
       "unsupported-version",

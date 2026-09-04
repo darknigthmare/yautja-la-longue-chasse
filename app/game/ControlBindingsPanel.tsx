@@ -14,6 +14,7 @@ import {
 
 const CONTEXT_LABELS: Readonly<Record<ControlContextId, string>> = {
   hunt: "Chasse",
+  pit: "THE PIT",
   galaxy: "Galaxie",
   shipHub: "Vaisseau",
   training: "Entraînement",
