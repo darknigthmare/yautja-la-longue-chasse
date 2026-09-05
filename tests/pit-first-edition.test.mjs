@@ -110,7 +110,18 @@ test("all fourteen combatants provide complete frame data for four engine attack
         assert.ok(move[field] >= 0, fighter.id + "." + kind + "." + field);
       }
       assert.ok(move.startup > 0 && move.active > 0 && move.recovery > 0);
-      assert.ok(move.damage > 0 && move.hitstun > 0 && move.range > 0 && move.height > 0);
+      assert.ok(move.range > 0 && move.height > 0);
+      if (fighter.id === "falconer" && kind === "technique") {
+        assert.equal(move.damage, 0);
+        assert.equal(move.chipDamage, 0);
+        assert.equal(move.hitstun, 0);
+        assert.equal(move.blockstun, 0);
+        assert.equal(move.pushback, 0);
+        assert.equal(move.knockdown, false);
+        assert.equal(move.antiAir, false);
+      } else {
+        assert.ok(move.damage > 0 && move.hitstun > 0);
+      }
       assert.ok(move.chipDamage <= move.damage);
       assert.ok(["high", "mid", "low"].includes(move.hitLevel));
       assert.equal(typeof move.knockdown, "boolean");
@@ -300,6 +311,7 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   ]);
   for (const definition of techniques) {
     assert.match(definition.id, /^[a-z0-9-]+$/);
+    assert.ok(["strike", "mark"].includes(definition.contactEffect));
     assert.ok(["linear", "returning", "homing", "stationary", "attached"].includes(definition.motion));
     assert.ok(["contact", "counter"].includes(definition.trigger));
     for (const field of [
@@ -325,7 +337,15 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["city-hunter"].technique.status, "netted");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.scar.technique.guardBreak, true);
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["feral-hunter"].technique.motion, "stationary");
-  assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.falconer.technique.motion, "homing");
+  const falconer = edition.PIT_FIRST_EDITION_FIGHTERS.falconer;
+  assert.equal(falconer.technique.motion, "homing");
+  assert.equal(falconer.technique.contactEffect, "mark");
+  assert.equal(falconer.technique.damageScale, 0);
+  assert.equal(falconer.technique.chipScale, 0);
+  assert.equal(falconer.technique.status, "tracked");
+  assert.equal(falconer.technique.cloakLocked, true);
+  assert.equal(falconer.attacks.technique.label, "Marquage du drone");
+  assert.equal(techniques.filter((definition) => definition.contactEffect === "mark").length, 1);
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.scarface.technique.trigger, "counter");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.witch.technique.device, "bow-snare");
 });

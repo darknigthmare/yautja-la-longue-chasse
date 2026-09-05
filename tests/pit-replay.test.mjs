@@ -6,7 +6,7 @@ const bundle = await build({
   stdin: {
     contents: [
       'export * from "./app/game/systems/pitReplay";',
-      'export { createPitCombatState, serializePitCombat, stepPitCombat } from "./app/game/systems/pitCombat";',
+      'export { createPitCombatState, PIT_FIGHTERS, serializePitCombat, stepPitCombat } from "./app/game/systems/pitCombat";',
     ].join("\n"),
     resolveDir: process.cwd(),
     loader: "ts",
@@ -95,6 +95,7 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
   assert.equal(replay.version, 3);
+  assert.equal(replay.engineVersion, 4);
   assert.equal(replay.encoding, "input-rle-v3");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
 });
@@ -116,6 +117,72 @@ test("the selected fighter roster and arena survive deterministic replay", () =>
     pit.normalizePitReplay({ ...plain(replay), arenaId: "forged-arena" }),
     null,
   );
+});
+
+test("Falconer reconnaissance marking stays deterministic in training replays", () => {
+  const inputs = Array.from({ length: 100 }, (_, frame) => [
+    frame === 0 ? { attack: "technique" } : {},
+    frame < 78 ? { guardHigh: true } : {},
+  ]);
+  const options = {
+    fighters: ["falconer", "berserker"],
+    rules: { mode: "training" },
+    seed: 82,
+  };
+  const replay = pit.recordPitReplay(inputs, options);
+  const direct = runInputs(inputs, options);
+  const replayed = pit.playPitReplay(replay);
+
+  assert.equal(pit.serializePitCombat(replayed), pit.serializePitCombat(direct));
+  assert.equal(replayed.fighters[1].health, pit.PIT_FIGHTERS.berserker.maxHealth);
+  assert.equal(replayed.fighters[1].phase, "idle");
+  assert.equal(replayed.fighters[1].stunFrames, 0);
+  assert.equal(replayed.fighters[1].comboHitsReceived, 0);
+  assert.deepEqual(replayed.fighters[1].techniqueStatus, {
+    kind: "tracked",
+    sourceFighterId: "falconer",
+    framesRemaining: direct.fighters[1].techniqueStatus.framesRemaining,
+  });
+  assert.equal(replay.engineVersion, 4);
+  assert.ok(pit.normalizePitReplay(replay));
+});
+
+test("published engine V3 Falconer replays are rejected as incompatible", () => {
+  // Captured from engine V3 before the armed-drone damage was corrected to marking.
+  const publishedV3FalconerReplay = {
+    version: 3,
+    engineVersion: 3,
+    tickRate: 60,
+    arenaId: "the-pit",
+    encoding: "input-rle-v3",
+    seed: 82,
+    rules: { mode: "training" },
+    fighters: ["falconer", "berserker"],
+    segments: [[1, 33280], [77, 32768], [22, 0]],
+    metadata: {
+      ticks: 100,
+      durationMs: 1667,
+      winnerId: null,
+      finalPhase: "round",
+      completed: false,
+      finalFrame: 100,
+      checksum: "42dd6ae3",
+    },
+  };
+
+  assert.equal(pit.normalizePitReplay(publishedV3FalconerReplay), null);
+  for (const load of [
+    () => pit.deserializePitReplay(JSON.stringify(publishedV3FalconerReplay)),
+    () => pit.createPitReplayReader(publishedV3FalconerReplay),
+    () => pit.playPitReplay(publishedV3FalconerReplay),
+  ]) {
+    assert.throws(
+      load,
+      (error) =>
+        error instanceof pit.PitReplayCompatibilityError &&
+        error.code === "incompatible-engine",
+    );
+  }
 });
 
 test("JSON serialization round-trips canonically inside the 64 KiB sidecar budget", () => {
@@ -266,7 +333,7 @@ test("published V2 Jungle/Berserker basalt replays migrate to V3 after checksum 
   const migrated = pit.normalizePitReplay(legacy);
   assert.ok(migrated);
   assert.equal(migrated.version, 3);
-  assert.equal(migrated.engineVersion, 3);
+  assert.equal(migrated.engineVersion, 4);
   assert.equal(migrated.encoding, "input-rle-v3");
   assert.deepEqual(migrated.fighters, legacy.fighters);
   assert.equal(migrated.arenaId, "the-pit");

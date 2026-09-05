@@ -138,7 +138,28 @@ test("owner namespaces cannot be read, written or cleared through another key", 
     "owner-conflict",
   );
 
-  storage.setItem(ownerKey, JSON.stringify({ ...archive, ownerSaveCreatedAt: OTHER_OWNER }));
+  const foreignLegacyArchive = JSON.stringify({
+    ...archive,
+    ownerSaveCreatedAt: OTHER_OWNER,
+    latestReplay: {
+      ...archive.latestReplay,
+      engineVersion: archive.latestReplay.engineVersion - 1,
+    },
+  });
+  storage.setItem(ownerKey, foreignLegacyArchive);
+  assert.equal(storageApi.loadPitReplayArchive({
+    ownerSaveCreatedAt: OWNER,
+    storage,
+  }).failure, "owner-conflict");
+  assert.equal(
+    storageApi.writePitReplayArchive(archive, {
+      ownerSaveCreatedAt: OWNER,
+      storage,
+    }).failure,
+    "owner-conflict",
+  );
+  assert.equal(storage.getItem(ownerKey), foreignLegacyArchive);
+
   const cleared = storageApi.clearPitReplayArchive({
     ownerSaveCreatedAt: OWNER,
     storage,
@@ -210,6 +231,24 @@ test("corrupt, oversized and future archives have distinct safe failures", () =>
     ownerSaveCreatedAt: OWNER,
     storage,
   }).failure, "future-version");
+
+  const incompatibleArchive = JSON.stringify({
+    ...archiveWithReplay(),
+    latestReplay: { ...replay, engineVersion: replay.engineVersion - 1 },
+  });
+  storage.setItem(key, incompatibleArchive);
+  assert.equal(storageApi.loadPitReplayArchive({
+    ownerSaveCreatedAt: OWNER,
+    storage,
+  }).failure, "incompatible-engine");
+  assert.equal(
+    storageApi.writePitReplayArchive(archiveWithReplay(), {
+      ownerSaveCreatedAt: OWNER,
+      storage,
+    }).failure,
+    "incompatible-engine",
+  );
+  assert.equal(storage.getItem(key), incompatibleArchive);
 
   storage.setItem(key, JSON.stringify({
     ...archiveWithReplay(),

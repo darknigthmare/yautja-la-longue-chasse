@@ -45,6 +45,7 @@ export type PitReplayStorageLoadFailure =
   | "read-failed"
   | "corrupt-save"
   | "future-version"
+  | "incompatible-engine"
   | "owner-conflict";
 
 export interface PitReplayStorageLoadResult {
@@ -58,6 +59,7 @@ export type PitReplayStorageWriteFailure =
   | "read-failed"
   | "corrupt-save"
   | "future-version"
+  | "incompatible-engine"
   | "owner-conflict"
   | "stale-revision"
   | "quota-exceeded"
@@ -134,6 +136,17 @@ function hasFutureVersion(value: unknown): boolean {
   );
 }
 
+function hasIncompatibleEngine(value: unknown): boolean {
+  if (!isRecord(value) || !isRecord(value.latestReplay)) return false;
+  return (
+    value.latestReplay.version === PIT_REPLAY_VERSION &&
+    typeof value.latestReplay.engineVersion === "number" &&
+    Number.isInteger(value.latestReplay.engineVersion) &&
+    value.latestReplay.engineVersion >= 1 &&
+    value.latestReplay.engineVersion < PIT_STATE_VERSION
+  );
+}
+
 function browserStorage(): PitReplayStorage | null {
   if (typeof window === "undefined") return null;
   try {
@@ -158,6 +171,14 @@ function expectedKey(options: PitReplayStorageOptions): string | null {
   } catch {
     return null;
   }
+}
+
+function hasDifferentOwner(value: unknown, ownerSaveCreatedAt: string): boolean {
+  return (
+    isRecord(value) &&
+    isValidIsoDate(value.ownerSaveCreatedAt) &&
+    value.ownerSaveCreatedAt !== ownerSaveCreatedAt
+  );
 }
 
 function isQuotaError(error: unknown): boolean {
@@ -325,8 +346,14 @@ export function loadPitReplayArchive(
   } catch {
     return { archive: null, loaded: false, failure: "corrupt-save" };
   }
+  if (hasDifferentOwner(parsed, options.ownerSaveCreatedAt)) {
+    return { archive: null, loaded: false, failure: "owner-conflict" };
+  }
   if (hasFutureVersion(parsed)) {
     return { archive: null, loaded: false, failure: "future-version" };
+  }
+  if (hasIncompatibleEngine(parsed)) {
+    return { archive: null, loaded: false, failure: "incompatible-engine" };
   }
   const archive = normalizePitReplayArchive(parsed);
   if (!archive) {
@@ -342,18 +369,21 @@ export function writePitReplayArchive(
   value: unknown,
   options: PitReplayStorageOptions,
 ): PitReplayStorageWriteResult {
+  const key = expectedKey(options);
+  if (!key || hasDifferentOwner(value, options.ownerSaveCreatedAt)) {
+    return { archive: null, persisted: false, failure: "owner-conflict" };
+  }
   if (hasFutureVersion(value)) {
     return { archive: null, persisted: false, failure: "future-version" };
+  }
+  if (hasIncompatibleEngine(value)) {
+    return { archive: null, persisted: false, failure: "incompatible-engine" };
   }
   const archive = normalizePitReplayArchive(value);
   if (!archive) {
     return { archive: null, persisted: false, failure: "corrupt-save" };
   }
-  const key = expectedKey(options);
-  if (
-    !key ||
-    archive.ownerSaveCreatedAt !== options.ownerSaveCreatedAt
-  ) {
+  if (archive.ownerSaveCreatedAt !== options.ownerSaveCreatedAt) {
     return { archive, persisted: false, failure: "owner-conflict" };
   }
   const storage = storageFromOptions(options);
@@ -376,8 +406,14 @@ export function writePitReplayArchive(
       } catch {
         return { archive, persisted: false, failure: "corrupt-save" };
       }
+      if (hasDifferentOwner(currentValue, archive.ownerSaveCreatedAt)) {
+        return { archive, persisted: false, failure: "owner-conflict" };
+      }
       if (hasFutureVersion(currentValue)) {
         return { archive, persisted: false, failure: "future-version" };
+      }
+      if (hasIncompatibleEngine(currentValue)) {
+        return { archive, persisted: false, failure: "incompatible-engine" };
       }
       const current = normalizePitReplayArchive(currentValue);
       if (!current) {

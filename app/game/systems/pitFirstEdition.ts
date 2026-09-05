@@ -91,6 +91,7 @@ export type PitTechniqueStatusKind = "netted" | "pinned" | "tracked" | "staggere
 export interface PitEditionTechniqueDefinition {
   readonly id: string;
   readonly device: PitTechniqueDevice;
+  readonly contactEffect: "strike" | "mark";
   readonly motion: PitTechniqueMotion;
   readonly trigger: PitTechniqueTrigger;
   readonly lifetimeFrames: number;
@@ -348,6 +349,7 @@ const BALANCE = {
 } as const;
 
 const BASE_TECHNIQUE: Omit<PitEditionTechniqueDefinition, "id" | "device"> = {
+  contactEffect: "strike",
   motion: "linear",
   trigger: "contact",
   lifetimeFrames: 36,
@@ -512,11 +514,21 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     maxHealth: 965, walkSpeed: 4.75, airSpeed: 3.7, jumpSpeed: 13.2, power: 0.99,
     bodyWidth: 53, bodyHeight: 117, crouchHeight: 81,
     palette: { primary: "#55463c", secondary: "#1f1b19", accent: "#bd694d" },
-    attacks: moves(["Estoc du faucon", "Balayage du fauconnier", "Fendoir céleste", "Interception du drone"], BALANCE.airControl),
+    attacks: {
+      ...moves(["Estoc du faucon", "Balayage du fauconnier", "Fendoir céleste", "Marquage du drone"], BALANCE.airControl),
+      technique: move(
+        "technique",
+        "Marquage du drone",
+        [10, 5, 18, 0, 0, 0, 104, 52, 0],
+        "mid",
+      ),
+    },
     technique: technique("falconer-drone-intercept", "drone", {
+      contactEffect: "mark",
       motion: "homing", lifetimeFrames: 72, armFrames: 8, speed: 7,
-      width: 46, height: 34, verticalOffset: 66, damageScale: 0.92,
-      hitstunBonus: 4, status: "tracked", statusFrames: 150,
+      width: 46, height: 34, verticalOffset: 66, damageScale: 0,
+      chipScale: 0, hitstunBonus: 0, blockstunBonus: 0, pushbackScale: 0,
+      knockdown: false, status: "tracked", statusFrames: 150,
       movementScale: 0.9, cloakLocked: true,
     }),
     arcadeIntro: "Falconer cartographie les arènes avant le premier gong et referme chaque échappatoire.",

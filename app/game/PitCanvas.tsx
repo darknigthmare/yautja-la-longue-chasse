@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- local selection illustrations use the delivered WebP directly */
+
 import {
   type PointerEvent as ReactPointerEvent,
   useCallback,
@@ -10,6 +12,7 @@ import {
 } from "react";
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
+import { getPitFighterKeyArt } from "./pitVisualAssets";
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -74,6 +77,7 @@ import {
   type PitCircuitRun,
 } from "./systems/pitCircuit";
 import {
+  getPitFirstEditionFighter,
   isPitFirstEditionFighterId,
   type PitTechniqueDevice,
   type PitTechniqueStatusKind,
@@ -902,11 +906,36 @@ function FighterCard({
   paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
 }) {
   const fighter = PIT_FIGHTERS[fighterId];
+  const profile = getPitFirstEditionFighter(fighterId);
   const palette = paletteOverride ?? fighter.palette;
+  const keyArt = getPitFighterKeyArt(fighterId);
+  const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
+  const visibleArt = keyArt && failedArtSrc !== keyArt.src ? keyArt : null;
   return (
-    <article className={styles.fighterCard} style={{ "--fighter": palette.primary } as React.CSSProperties}>
+    <article
+      className={styles.fighterCard}
+      style={{ "--fighter": palette.primary } as React.CSSProperties}
+      aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
+      data-fighter-id={fighterId}
+      data-fighter-art={visibleArt ? "selection-key-art" : "mask-glyph"}
+    >
       <span className={styles.sideLabel}>{side}</span>
-      <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
+      <div className={styles.fighterMedia}>
+        {visibleArt ? (
+          <img
+            key={visibleArt.src}
+            className={styles.fighterKeyArt}
+            src={visibleArt.src}
+            width={visibleArt.width}
+            height={visibleArt.height}
+            alt={visibleArt.alt}
+            decoding="async"
+            onError={() => setFailedArtSrc(visibleArt.src)}
+          />
+        ) : (
+          <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
+        )}
+      </div>
       <h3>{fighter.name}</h3>
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
       <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
@@ -915,6 +944,22 @@ function FighterCard({
         <div><dt>PUISSANCE</dt><dd>{Math.round(fighter.power * 100)}</dd></div>
         <div><dt>MOBILITÉ</dt><dd>{Math.round(fighter.walkSpeed * 20)}</dd></div>
       </dl>
+      <details key={fighterId} className={styles.fighterProfile}>
+        <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du chasseur</summary>
+        <p className={styles.fighterSource}>{profile.sourceWork}</p>
+        <p>{profile.arcadeIntro}</p>
+        <p>
+          <strong>{fighter.attacks.technique.label}</strong>
+          {" · portée "}{fighter.attacks.technique.range}{" · préparation "}
+          {fighter.attacks.technique.startup}{" images"}
+        </p>
+        {visibleArt ? (
+          <small>
+            Illustration de sélection.
+            {paletteOverride ? " La palette Armure du Jugement s’applique pendant le duel." : ""}
+          </small>
+        ) : null}
+      </details>
     </article>
   );
 }

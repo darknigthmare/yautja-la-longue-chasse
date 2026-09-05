@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-05",
+  "provider": "OpenAI built-in imagegen",
+  "usage": "selection-illustrations-only",
+  "background": "opaque dark green-black",
+  "runtimeConversion": "sharp WebP quality 94 effort 6; no creative processing",
+  "entries": [
+    {
+      "id": "jungle-hunter",
+      "input": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "inputPreviewHeight": 640,
+      "source": "art-source/v23/pit/sources/jungle-hunter-key-art.png",
+      "runtime": "public/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp",
+      "sourceSha256": "973f9403e323d96ccb38bba19f74a63e5735423572d5652da9f8fea87fe924b2",
+      "runtimeSha256": "b16541a2244902606b690b71faad0dc2f992f645345e5cea69376804a011d200",
+      "sourceBytes": 1913139,
+      "runtimeBytes": 251422,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "visualReview": {
+        "status": "no-blocking-coherence-defect-observed",
+        "checked": [
+          "hands and fingers",
+          "weapon grip",
+          "wrists and joints",
+          "weapon continuity and attachment",
+          "body completeness",
+          "no crop",
+          "correct selected identity"
+        ],
+        "independentReview": true,
+        "handCorrection": null,
+        "filmOneToOneCertified": false
+      }
+    },
+    {
+      "id": "city-hunter",
+      "input": "public/game/sprites/v5/film-plates/city-hunter.png",
+      "inputPreviewHeight": 896,
+      "source": "art-source/v23/pit/sources/city-hunter-key-art.png",
+      "runtime": "public/game/assets/v23/pit/fighters/city-hunter-key-art.webp",
+      "sourceSha256": "547107f0539e3d0a75135d703afa31d2e0d554ee6fab613087dcc4cc03b22bb1",
+      "runtimeSha256": "812311ba196139286f224d762fce0f8617fdbaa13d3769a270aa12f47f216e09",
+      "sourceBytes": 2380768,
+      "runtimeBytes": 295006,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "visualReview": {
+        "status": "no-blocking-coherence-defect-observed",
+        "checked": [
+          "hands and fingers",
+          "weapon grip",
+          "wrists and joints",
+          "weapon continuity and attachment",
+          "body completeness",
+          "no crop",
+          "correct selected identity"
+        ],
+        "independentReview": true,
+        "handCorrection": "Both grips regenerated after user reported malformed hand",
+        "filmOneToOneCertified": false
+      }
+    },
+    {
+      "id": "berserker",
+      "input": "public/game/sprites/v5/film-plates/berserker.png",
+      "inputPreviewHeight": 896,
+      "source": "art-source/v23/pit/sources/berserker-key-art.png",
+      "runtime": "public/game/assets/v23/pit/fighters/berserker-key-art.webp",
+      "sourceSha256": "2f70ce65f76b095c4059922c8b535e147c739f994e7e617226d27d9cb09de4db",
+      "runtimeSha256": "5e38dcd86cc58b353502e4363c71e818b1a6b20cd5babc18505c8daf0b3021d1",
+      "sourceBytes": 1949712,
+      "runtimeBytes": 271308,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "visualReview": {
+        "status": "no-blocking-coherence-defect-observed",
+        "checked": [
+          "hands and fingers",
+          "weapon grip",
+          "wrists and joints",
+          "weapon continuity and attachment",
+          "body completeness",
+          "no crop",
+          "correct selected identity"
+        ],
+        "independentReview": true,
+        "handCorrection": null,
+        "filmOneToOneCertified": false
+      }
+    },
+    {
+      "id": "wolf",
+      "input": "public/game/sprites/v5/film-plates/wolf.png",
+      "inputPreviewHeight": 896,
+      "source": "art-source/v23/pit/sources/wolf-key-art.png",
+      "runtime": "public/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "sourceSha256": "0f72f3349949943ce281832de1ae3b644942685a9bd458d4ec274bbdc570fe8e",
+      "runtimeSha256": "540fdda50e347ba305e474bec0a53f14b99f24881cbc9a42621868b295618fa1",
+      "sourceBytes": 2054636,
+      "runtimeBytes": 326792,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "visualReview": {
+        "status": "no-blocking-coherence-defect-observed",
+        "checked": [
+          "hands and fingers",
+          "weapon grip",
+          "wrists and joints",
+          "weapon continuity and attachment",
+          "body completeness",
+          "no crop",
+          "correct selected identity"
+        ],
+        "independentReview": true,
+        "handCorrection": null,
+        "filmOneToOneCertified": false
+      }
+    }
+  ],
+  "browserChecks": {
+    "desktop": "four images loaded 1024x1536 object-fit contain",
+    "mobile": "390x844 no horizontal page overflow; City Hunter/Wolf loaded",
+    "animationsDelivered": 0
+  },
+  "validation": {
+    "pitAndIntegrationTestsPassed": 160,
+    "typecheck": "passed",
+    "gameSmoke": "City Hunter versus Wolf started; no browser errors",
+    "filmOneToOneCertified": false
+  }
+}

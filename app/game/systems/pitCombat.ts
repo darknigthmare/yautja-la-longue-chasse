@@ -18,7 +18,7 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 3;
+export const PIT_STATE_VERSION = 4;
 export const PIT_MAX_TRAQUE = 1_000;
 export const PIT_ROUND_TRAQUE_CARRY_CAP = 500;
 export const PIT_CLOAK_COST = 350;
@@ -224,7 +224,7 @@ export type PitCombatEvent =
   | { type: "rupture"; frame: number; fighterId: PitFighterId; attackerId: PitFighterId }
   | { type: "survival-instinct"; frame: number; fighterId: PitFighterId }
   | { type: "cloak-start"; frame: number; fighterId: PitFighterId }
-  | { type: "cloak-end"; frame: number; fighterId: PitFighterId; reason: "expired" | "action" | "hit" | "rupture" }
+  | { type: "cloak-end"; frame: number; fighterId: PitFighterId; reason: "expired" | "action" | "hit" | "rupture" | "tracked" }
   | { type: "combo-break"; frame: number; fighterId: PitFighterId }
   | { type: "round-end"; frame: number; result: PitRoundResult }
   | { type: "match-end"; frame: number; winnerId: PitFighterId };
@@ -490,7 +490,7 @@ function startCloak(state: PitCombatState, fighter: PitFighterState): void {
 function endCloak(
   state: PitCombatState,
   fighter: PitFighterState,
-  reason: "expired" | "action" | "hit" | "rupture",
+  reason: "expired" | "action" | "hit" | "rupture" | "tracked",
   useRecovery: boolean,
 ): void {
   if (fighter.cloakPhase === "inactive") return;
@@ -1072,7 +1072,9 @@ function collectTechniqueImpacts(state: PitCombatState): CollectedTechniqueImpac
     }
 
     const move = PIT_FIGHTERS[attacker.definitionId].attacks.technique;
+    const marksOnly = technique.contactEffect === "mark";
     const blocked =
+      !marksOnly &&
       !technique.guardBreak &&
       guardBlocks(defender.guard, move.hitLevel) &&
       (defender.phase === "idle" || defender.phase === "blockstun");
@@ -1081,39 +1083,45 @@ function collectTechniqueImpacts(state: PitCombatState): CollectedTechniqueImpac
       !blocked &&
       defender.comboHitsReceived > 0 &&
       (defender.phase === "hitstun" || defender.phase === "knockdown");
-    const combo = blocked
+    const combo = marksOnly
       ? 0
-      : Math.min(
+      : blocked
+        ? 0
+        : Math.min(
           PIT_MAX_COMBO_HITS,
           continuesCombo ? defender.comboHitsReceived + 1 : 1,
         );
-    const comboScale = blocked
+    const comboScale = blocked || marksOnly
       ? 1
       : Math.max(0.35, 1 - Math.max(0, combo - 1) * 0.12);
     const comboDamageBase =
       move.damage *
       PIT_FIGHTERS[attacker.definitionId].power *
       technique.damageScale;
-    const rawDamage = blocked
-      ? Math.round(move.chipDamage * technique.chipScale)
-      : Math.max(1, Math.round(comboDamageBase * comboScale));
+    const rawDamage = marksOnly
+      ? 0
+      : blocked
+        ? Math.round(move.chipDamage * technique.chipScale)
+        : Math.max(1, Math.round(comboDamageBase * comboScale));
     impacts.push({
       attackerSlot: effect.ownerSlot,
       defenderSlot,
       kind: "technique",
       blocked,
       damage: damageAfterInstinct(defender, rawDamage),
-      stun:
-        (blocked ? move.blockstun + technique.blockstunBonus : move.hitstun + technique.hitstunBonus),
-      pushback:
-        (blocked ? move.pushback * 0.62 : move.pushback) * technique.pushbackScale,
-      knockdown: !blocked && (technique.knockdown || antiAir),
-      launchY: antiAir ? move.launchY : 0,
+      stun: marksOnly
+        ? 0
+        : (blocked ? move.blockstun + technique.blockstunBonus : move.hitstun + technique.hitstunBonus),
+      pushback: marksOnly
+        ? 0
+        : (blocked ? move.pushback * 0.62 : move.pushback) * technique.pushbackScale,
+      knockdown: !marksOnly && !blocked && (technique.knockdown || antiAir),
+      launchY: !marksOnly && antiAir ? move.launchY : 0,
       combo,
       effectId: effect.id,
       technique,
       impactDirection: effect.direction,
-      comboDamageBase: blocked ? undefined : comboDamageBase,
+      comboDamageBase: blocked || marksOnly ? undefined : comboDamageBase,
     });
     if (technique.trigger === "counter") counteredSlots.add(defenderSlot);
   }
@@ -1168,6 +1176,21 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
         );
       }
     }
+  }
+  if (impact.technique?.contactEffect === "mark") {
+    if (
+      impact.technique.status &&
+      impact.technique.statusFrames > 0 &&
+      defender.health > 0
+    ) {
+      defender.techniqueStatus = {
+        kind: impact.technique.status,
+        sourceFighterId: attacker.definitionId,
+        framesRemaining: impact.technique.statusFrames,
+      };
+      endCloak(state, defender, "tracked", false);
+    }
+    return;
   }
   const healthBefore = defender.health;
   defender.health = Math.max(0, defender.health - impact.damage);
@@ -1563,7 +1586,7 @@ const PIT_CLOAK_PHASES: readonly PitCloakPhase[] = ["inactive", "startup", "acti
 const PIT_TECHNIQUE_EFFECT_PHASES: readonly PitTechniqueEffectPhase[] = ["arming", "active", "returning"];
 const PIT_TECHNIQUE_STATUS_KINDS: readonly PitTechniqueStatusKind[] = ["netted", "pinned", "tracked", "staggered"];
 const PIT_TRAQUE_SOURCES: readonly Extract<PitCombatEvent, { type: "traque-gain" }>["source"][] = ["damage", "guard", "pressure", "instinct"];
-const PIT_CLOAK_END_REASONS: readonly Extract<PitCombatEvent, { type: "cloak-end" }>["reason"][] = ["expired", "action", "hit", "rupture"];
+const PIT_CLOAK_END_REASONS: readonly Extract<PitCombatEvent, { type: "cloak-end" }>["reason"][] = ["expired", "action", "hit", "rupture", "tracked"];
 const PIT_MATCH_PHASES: readonly PitMatchPhase[] = ["round", "round-over", "match-over"];
 const PIT_COMBAT_MODES: readonly PitCombatMode[] = ["match", "training"];
 const PIT_RESULT_REASONS: readonly PitRoundResult["reason"][] = ["ko", "double-ko", "timeout", "draw"];

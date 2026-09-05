@@ -837,27 +837,113 @@ test("the Feral bolt trap arms before contact and Witch bow-snare pins on arriva
   assert.equal(bow.fighters[1].techniqueStatus.sourceFighterId, "witch");
 });
 
-test("Falconer drone homes after arming and marks camouflage as unavailable", async () => {
+test("Falconer reconnaissance drone marks without damage, guard reaction or hitstun", async () => {
   const pit = await pitPromise;
-  let state = pit.createPitCombatState("falconer", "berserker");
-  state.fighters[0].x = 220;
-  state.fighters[1].x = 700;
-  state = pit.stepPitCombat(state, [{ attack: "technique" }, {}]);
-  state = advance(pit, state, pit.PIT_FIGHTERS.falconer.attacks.technique.startup);
-  const spawnX = state.techniqueEffects[0].x;
-  let guard = 0;
-  while (!state.fighters[1].techniqueStatus && guard < 100) {
-    state = pit.stepPitCombat(state, [{}, {}]);
-    guard += 1;
-  }
-  assert.ok(state.fighters[1].techniqueStatus, "homing drone should eventually connect");
-  assert.equal(state.fighters[1].techniqueStatus.kind, "tracked");
-  assert.ok(guard > 0);
-  assert.ok(spawnX < state.fighters[1].x);
-  state.fighters[1].traque = pit.PIT_CLOAK_COST;
-  state = advance(pit, state, state.fighters[1].stunFrames + 1);
-  state = pit.stepPitCombat(state, [{}, { resource: true }]);
-  assert.equal(state.fighters[1].cloakPhase, "inactive");
+  const markTarget = (current, ownerSlot, defenderInput = {}) => {
+    const techniqueInputs = ownerSlot === 0
+      ? [{ attack: "technique" }, defenderInput]
+      : [defenderInput, { attack: "technique" }];
+    const neutralInputs = ownerSlot === 0
+      ? [{}, defenderInput]
+      : [defenderInput, {}];
+    let next = pit.stepPitCombat(current, techniqueInputs);
+    const owner = next.fighters[ownerSlot];
+    next = advance(
+      pit,
+      next,
+      pit.PIT_FIGHTERS[owner.definitionId].attacks.technique.startup,
+      neutralInputs,
+    );
+    let elapsed = 0;
+    const defenderSlot = ownerSlot === 0 ? 1 : 0;
+    while (!next.fighters[defenderSlot].techniqueStatus && elapsed < 100) {
+      next = pit.stepPitCombat(next, neutralInputs);
+      elapsed += 1;
+    }
+    assert.ok(next.fighters[defenderSlot].techniqueStatus, "recon drone should acquire its target");
+    return next;
+  };
+
+  let guarded = pit.createPitCombatState(
+    "falconer",
+    "berserker",
+    { mode: "training" },
+  );
+  guarded.fighters[0].x = 220;
+  guarded.fighters[1].x = 700;
+  const guardedHealth = guarded.fighters[1].health;
+  const guardedX = guarded.fighters[1].x;
+  guarded = markTarget(guarded, 0, { guardHigh: true });
+
+  assert.deepEqual(guarded.fighters[1].techniqueStatus, {
+    kind: "tracked",
+    sourceFighterId: "falconer",
+    framesRemaining: pit.PIT_FIGHTERS.falconer.technique.statusFrames,
+  });
+  assert.equal(guarded.fighters[1].health, guardedHealth);
+  assert.equal(guarded.fighters[1].x, guardedX);
+  assert.equal(guarded.fighters[1].phase, "idle");
+  assert.equal(guarded.fighters[1].stunFrames, 0);
+  assert.equal(guarded.fighters[1].guard, "high");
+  assert.equal(guarded.fighters[1].comboHitsReceived, 0);
+  assert.equal(guarded.events.some((event) => event.type === "hit"), false);
+  assert.equal(guarded.events.some((event) => event.type === "block"), false);
+
+  const trackedX = guarded.fighters[1].x;
+  guarded = pit.stepPitCombat(guarded, [{}, { right: true }]);
+  assert.ok(
+    Math.abs(
+      guarded.fighters[1].x -
+      trackedX -
+      pit.PIT_FIGHTERS.berserker.walkSpeed *
+        pit.PIT_FIGHTERS.falconer.technique.movementScale
+    ) < 1e-9,
+  );
+  guarded.fighters[1].traque = pit.PIT_CLOAK_COST;
+  guarded = pit.stepPitCombat(guarded, [{}, { resource: true }]);
+  assert.equal(guarded.fighters[1].cloakPhase, "inactive");
+  assert.deepEqual(
+    pit.deserializePitCombat(pit.serializePitCombat(guarded)),
+    guarded,
+  );
+
+  let cloaked = pit.createPitCombatState(
+    "falconer",
+    "berserker",
+    { mode: "training" },
+  );
+  cloaked.fighters[0].x = 220;
+  cloaked.fighters[1].x = 700;
+  cloaked.fighters[1].cloakPhase = "active";
+  cloaked.fighters[1].cloakFramesRemaining = pit.PIT_CLOAK_ACTIVE_FRAMES;
+  const cloakedHealth = cloaked.fighters[1].health;
+  cloaked = markTarget(cloaked, 0);
+  assert.equal(cloaked.fighters[1].health, cloakedHealth);
+  assert.equal(cloaked.fighters[1].cloakPhase, "inactive");
+  assert.equal(
+    cloaked.events.some(
+      (event) => event.type === "cloak-end" && event.reason === "tracked",
+    ),
+    true,
+  );
+  assert.equal(cloaked.events.some((event) => event.type === "hit"), false);
+
+  let cpuSide = pit.createPitCombatState(
+    "berserker",
+    "falconer",
+    { mode: "training" },
+  );
+  cpuSide.fighters[0].x = 220;
+  cpuSide.fighters[1].x = 700;
+  const playerHealth = cpuSide.fighters[0].health;
+  cpuSide = markTarget(cpuSide, 1);
+  assert.equal(cpuSide.fighters[0].health, playerHealth);
+  assert.deepEqual(cpuSide.fighters[0].techniqueStatus, {
+    kind: "tracked",
+    sourceFighterId: "falconer",
+    framesRemaining: pit.PIT_FIGHTERS.falconer.technique.statusFrames,
+  });
+  assert.equal(cpuSide.fighters[0].phase, "idle");
 });
 
 test("whip pulls, spear dashes and counter recipes intercept a same-frame strike", async () => {

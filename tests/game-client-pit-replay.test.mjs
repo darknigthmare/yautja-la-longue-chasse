@@ -362,6 +362,16 @@ test("hydration diagnoses replay failures without deleting any archive", () => {
   assert.match(corrupted.result.diagnostic, /réparée sous verrou au prochain match/);
   assert.equal(corrupted.clearCalls, 0);
 
+  const incompatible = hydrateWith({
+    archive: null,
+    loaded: false,
+    failure: "incompatible-engine",
+  });
+  assert.equal(incompatible.result.replay, null);
+  assert.match(incompatible.result.diagnostic, /ancien moteur/);
+  assert.match(incompatible.result.diagnostic, /ne sera pas relue/);
+  assert.equal(incompatible.clearCalls, 0);
+
   for (const failure of ["future-version", "owner-conflict"]) {
     const protectedArchive = hydrateWith({
       archive: null,
@@ -374,18 +384,20 @@ test("hydration diagnoses replay failures without deleting any archive", () => {
   }
 });
 
-test("a corrupt replay appearing after hydration is safely cleared and recreated during the locked write", () => {
-  const harness = createHarness({
-    loadPitReplayArchive: () => {
-      harness.calls.replayLoads += 1;
-      return { archive: null, loaded: false, failure: "corrupt-save" };
-    },
-  });
-  harness.callback(completedResult());
-  assert.equal(harness.calls.replayLoads, 1);
-  assert.equal(harness.calls.replayClears, 1);
-  assert.equal(harness.calls.replayCreates, 1);
-  assert.equal(harness.calls.replayWrites, 1);
+test("a corrupt or engine-incompatible replay is safely replaced during the locked write", () => {
+  for (const failure of ["corrupt-save", "incompatible-engine"]) {
+    const harness = createHarness({
+      loadPitReplayArchive: () => {
+        harness.calls.replayLoads += 1;
+        return { archive: null, loaded: false, failure };
+      },
+    });
+    harness.callback(completedResult());
+    assert.equal(harness.calls.replayLoads, 1);
+    assert.equal(harness.calls.replayClears, 1);
+    assert.equal(harness.calls.replayCreates, 1);
+    assert.equal(harness.calls.replayWrites, 1);
+  }
 });
 
 test("write-time repair never clears future or foreign-owner replay archives", () => {

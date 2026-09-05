@@ -827,6 +827,12 @@ function hydratePitReplayForOwner(
       diagnostic: "Archive replay THE PIT corrompue détectée. Elle sera réparée sous verrou au prochain match.",
     };
   }
+  if (loaded.failure === "incompatible-engine") {
+    return {
+      replay: null,
+      diagnostic: "Archive replay THE PIT créée par un ancien moteur. Elle ne sera pas relue et sera remplacée sous verrou au prochain match.",
+    };
+  }
   const diagnostic = {
     "future-version": "Archive replay THE PIT d’une version plus récente préservée.",
     "owner-conflict": "Archive replay THE PIT liée à une autre campagne préservée.",
@@ -1474,10 +1480,17 @@ export default function GameClient() {
       if (!recordedReplay) return;
       for (let attempt = 0; attempt < 3; attempt += 1) {
         const loaded = loadPitReplayArchive({ ownerSaveCreatedAt });
-        if (loaded.failure === "corrupt-save") {
+        if (
+          loaded.failure === "corrupt-save" ||
+          loaded.failure === "incompatible-engine"
+        ) {
           const cleared = clearPitReplayArchive({ ownerSaveCreatedAt });
           if (!cleared.cleared) {
-            setToast("Replay THE PIT conservé en mémoire ; archive corrompue non supprimée.");
+            setToast(
+              loaded.failure === "incompatible-engine"
+                ? "Replay THE PIT conservé en mémoire ; archive d'un ancien moteur non remplacée."
+                : "Replay THE PIT conservé en mémoire ; archive corrompue non supprimée.",
+            );
             return;
           }
         } else if (loaded.failure) {
