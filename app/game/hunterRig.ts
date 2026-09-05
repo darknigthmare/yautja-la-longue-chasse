@@ -121,6 +121,12 @@ export interface HunterRigInput {
   worldY?: number;
   /** Uniform output scale. */
   scale?: number;
+  /** Additive local joint rotations for authored actions; radians. */
+  jointRotations?: Partial<Record<Exclude<HunterRigBoneId, "root">, number>>;
+  /** Additive offset in unscaled, right-facing canonical coordinates. */
+  rootOffset?: Partial<RigPoint>;
+  /** Additive local root rotation, mirrored together with the skeleton. */
+  rootRotation?: number;
 }
 
 export interface HunterRigAnchors {
@@ -494,6 +500,13 @@ export function transformPoint(
 export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
   const pose = solvePose(input);
   const facing: HunterRigFacing = input.facing < 0 ? -1 : 1;
+  const finiteOffset = (value: number | undefined): number =>
+    value !== undefined && Number.isFinite(value) ? value : 0;
+  const jointOffset = (boneId: Exclude<HunterRigBoneId, "root">): number =>
+    finiteOffset(input.jointRotations?.[boneId]);
+  const rootRotation = finiteOffset(input.rootRotation);
+  pose.rootX += finiteOffset(input.rootOffset?.x);
+  pose.rootY += finiteOffset(input.rootOffset?.y);
   if (input.handAimAngle !== undefined) {
     const localHandAim =
       facing > 0
@@ -537,9 +550,13 @@ export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
   const casterUpperRotation = 0;
   const casterLowerRotation = 0;
   const casterAncestorRotation =
+    rootRotation +
     pose.pelvis +
+    jointOffset("pelvis") +
     pose.torso +
-    casterMountRotation;
+    jointOffset("torso") +
+    casterMountRotation +
+    jointOffset("casterShoulderMount");
   const casterYokeRotation = hasExplicitAim
     ? localAim - casterAncestorRotation
     : 0;
@@ -575,7 +592,7 @@ export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
         HUNTER_RIG_CANVAS.groundY +
           (input.worldY ?? 0) +
           pose.rootY * scale,
-        0,
+        rootRotation * facing,
         facing * scale,
         scale,
       );
@@ -589,7 +606,7 @@ export function solveHunterRig(input: HunterRigInput): HunterRigFrame {
     const local = matrixFromTransform(
       x,
       definition.y,
-      (definition.rotation ?? 0) + (dynamicRotations[boneId] ?? 0),
+      (definition.rotation ?? 0) + (dynamicRotations[boneId] ?? 0) + jointOffset(boneId),
     );
     localMatrices[boneId] = local;
     const parentId = definition.parentId;

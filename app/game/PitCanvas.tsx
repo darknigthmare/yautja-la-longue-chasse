@@ -2492,6 +2492,7 @@ export default function PitCanvas({
             <span className={styles.eyebrow}>PREMIÈRE ÉDITION · SIMULATION NON CANONIQUE</span>
             <h2 id="pit-title">THE PIT</h2>
             <p>12 combattants · 8 arènes · règles fixes · aucun gain de campagne</p>
+            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · rigs provisoires ↗</a>
           </div>
           <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>
         </header>

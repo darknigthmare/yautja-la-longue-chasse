@@ -145,3 +145,7 @@ Les manques du jeu principal restent ceux du tableau précédent : modularisatio
 ## Compatibilité après correction Falconer
 
 Le moteur de duel passe en V4. Les replays du moteur V3 sont explicitement incompatibles et ne sont plus rejoués avec les nouvelles règles. Le format compact de replay reste V3. Les archives sont remplacées sous verrou lors du prochain enregistrement ; une archive liée à une autre campagne reste préservée. La campagne et les statistiques Circuit/Descente ne sont pas réinitialisées.
+
+## Atelier modulaire V24 — 5 septembre 2026
+
+La route `/pit-lab` prépare les animations Jungle Hunter/Berserker à partir des quinze segments V3 par corps, avec dix-sept séquences, pause, avance d’une image, zoom et deux orientations. Les fragments parasites des mains et d’une jambière sont exclus du rendu ; Berserker ne reçoit pas de filet dans cet atelier. Les masques et armures restent provisoires : le rendu normal des matchs est inchangé, aucune animation synchronisée ni nouvelle image OpenAI n’est déclarée livrée. Cela ne clôture pas PIT-04, PIT-06 ou PIT-08. Voir [l’audit V24](pit-animation-v24-audit.md).
