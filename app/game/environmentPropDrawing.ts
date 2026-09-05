@@ -14,8 +14,9 @@ export interface EnvironmentPropDrawPlan {
 }
 
 // The V19 pipeline preserves at least 24 fully transparent pixels on every edge.
-// Crop it only for covers, hazards and floor modules. Platforms and climbables
-// retain their existing full-image framing and reach. All scales stay uniform.
+// Gameplay modules use the painted rectangle, including platforms and climbs.
+// Keeping their transparent frame created air between the collider and its art.
+// Cropping known empty padding at draw time leaves source bitmaps untouched.
 const V19_TRANSPARENT_PADDING = 24;
 const MAX_MODULES_PER_PROP = 256;
 
@@ -25,9 +26,7 @@ export function environmentPropDrawPlan(
   role: EnvironmentPropRole,
   bounds: EnvironmentPropDrawBounds,
 ): EnvironmentPropDrawPlan | null {
-  const padding = role === "cover" || role === "surface" || role === "hazard"
-    ? V19_TRANSPARENT_PADDING
-    : 0;
+  const padding = role === "decoration" ? 0 : V19_TRANSPARENT_PADDING;
   if (
     ![naturalWidth, naturalHeight, bounds.x, bounds.y, bounds.width, bounds.height].every(Number.isFinite) ||
     naturalWidth <= padding * 2 ||
@@ -95,10 +94,20 @@ export function environmentPropDrawPlan(
     x = bounds.x + (bounds.width - width) / 2;
     y = bottom - height;
   } else if (role === "platform") {
-    width = bounds.width * 1.06;
-    height = width / ratio;
+    // A tall variant must not become a 1,000px pillar when fitted to a wide
+    // one-way ledge. Repeat native-ratio modules within a bounded fascia.
+    const span = bounds.width * 1.06;
+    height = Math.min(span / ratio, Math.max(64, Math.min(144, bounds.height * 4)));
+    width = height * ratio;
     x = bounds.x - bounds.width * 0.03;
     y = bounds.y - 4;
+    const count = Math.ceil(span / width);
+    if (!Number.isFinite(count) || count < 1 || count > MAX_MODULES_PER_PROP) return null;
+    return {
+      source,
+      tiles: Array.from({ length: count }, (_, index) => ({ x: x + index * width, y, width, height })),
+      clip: { x, y, width: span, height },
+    };
   }
 
   if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) return null;

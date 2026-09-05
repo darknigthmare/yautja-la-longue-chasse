@@ -2688,15 +2688,16 @@ export default function PitCanvas({
         ) : mode === "circuit" ? (
           <aside className={styles.circuitBrief} aria-label={"Circuit du clan de " + PIT_FIGHTERS[leftId].name}>
             <div className={styles.circuitBriefHeader}>
-              <span className={styles.eyebrow}>RITE COMPLET · 5 CHAPITRES · 12 COMBATS</span>
+              <span className={styles.eyebrow}>CHRONIQUE · 5 CHAPITRES · 12 COMBATS</span>
               <strong>{PIT_FIGHTERS[leftId].name}</strong>
-              <p>Le rival garde le combat 11. Warlord attend au combat 12 devant le Tribunal.</p>
+              <p>Une chronique reconstituée réunit des chasseurs de différentes époques. Le rival garde le combat 11, puis la reconstitution de Warlord attend au combat 12 devant le Tribunal.</p>
+              <p>Ce parcours en duels est distinct de l’histoire prévue pour votre chasseur personnel face aux Bad Blood de Cinder. Les choix de voie et l’enquête ne sont pas encore jouables.</p>
             </div>
             <ol className={styles.circuitChapters}>
               {previewCircuit.chapters.map(({ chapter, fights }) => (
                 <li key={chapter.id} className={styles.circuitChapter}>
                   <div>
-                    <span>CHAPITRE {chapter.index} · {chapter.format.toUpperCase()}</span>
+                    <span>CHAPITRE {chapter.index} · {fights.length} DUEL{fights.length > 1 ? "S" : ""}</span>
                     <strong>{chapter.name}</strong>
                     <p>{chapter.objective}</p>
                   </div>

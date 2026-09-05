@@ -2603,7 +2603,7 @@ export default function GameClient() {
       )}
 
       {shipStationOpen && (
-        <div className="ship-station-layer" role="dialog" aria-modal="true"
+        <div className="ship-station-layer" data-station-screen={screen} role="dialog" aria-modal="true"
           aria-label="Installation du vaisseau" ref={stationDialogRef} tabIndex={-1}
           inert={settingsOpen || trophyWorkshop !== null}>
           <div className="ship-station-toolbar" inert={shipDrillActive}>

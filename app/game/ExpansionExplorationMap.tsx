@@ -34,10 +34,10 @@ const roomBoxes = [
 ] as const;
 
 const connections = [
-  { from: 0, to: 1, path: "M95 112 V82 H275 V62", lock: 0 },
-  { from: 1, to: 2, path: "M350 43 H390", lock: 0 },
-  { from: 2, to: 3, path: "M550 43 H640 V112", lock: 1 },
-  { from: 3, to: 0, path: "M640 150 V172 H95 V150", lock: 1 },
+  { from: 0, to: 1, path: "M95 112 V82 H275 V62", access: "entry" },
+  { from: 1, to: 2, path: "M350 43 H390", access: "gate" },
+  { from: 2, to: 3, path: "M550 43 H640 V112", access: "shortcut" },
+  { from: 3, to: 0, path: "M640 150 V172 H95 V150", access: "free" },
 ] as const;
 
 const MISSION_LABELS: Readonly<Record<MissionId, string>> = {
@@ -92,10 +92,13 @@ export function ExpansionExplorationMap({
           const from = snapshot.rooms[connection.from];
           const to = snapshot.rooms[connection.to];
           if (!from.discovered && !to.discovered) return null;
-          const lock = snapshot.locks[connection.lock];
+          const lock = connection.access === "entry" ? snapshot.entry
+            : connection.access === "free" ? { opened: true, label: "Chemin principal" }
+              : snapshot.locks[connection.access === "gate" ? 0 : 1];
           const explored = from.discovered && to.discovered;
           return (
-            <g key={connection.path} data-expansion-connection={index}>
+            <g key={connection.path} data-expansion-connection={index}
+              data-access={connection.access} data-opened={lock.opened ? "true" : "false"}>
               <path
                 d={connection.path}
                 fill="none"
@@ -136,7 +139,8 @@ export function ExpansionExplorationMap({
         <strong style={{ color: "#efffb2" }}>Objectif : </strong>{snapshot.objective}
       </p>
       <p style={{ margin: "0 0 4px", fontSize: 11, lineHeight: 1.4 }}>
-        <strong>Capacité : </strong>{snapshot.reminder} · <strong>Danger : </strong>{snapshot.danger}
+        <strong>Accès : </strong>{snapshot.entry.label} — {snapshot.entry.opened ? "acquise" : "requise"}
+        {" · "}<strong>Capacité : </strong>{snapshot.reminder} · <strong>Danger : </strong>{snapshot.danger}
       </p>
       <ul style={{ margin: "4px 0", paddingLeft: 18, fontSize: 11, lineHeight: 1.4 }}>
         {snapshot.locks.map((lock) => (

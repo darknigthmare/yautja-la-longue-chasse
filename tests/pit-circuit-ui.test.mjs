@@ -16,7 +16,7 @@ test("Clan Circuit is a selectable CPU mode with a complete five-chapter preview
   );
   assert.match(canvas, /previewCircuit\.chapters\.map/);
   assert.match(canvas, /fights\.map\(\(fight\)/);
-  assert.match(canvas, /RITE COMPLET · 5 CHAPITRES · 12 COMBATS/);
+  assert.match(canvas, /CHRONIQUE · 5 CHAPITRES · 12 COMBATS/);
   assert.match(canvas, /combat 11[\s\S]*Warlord[\s\S]*combat 12/);
   assert.match(canvas, /fight\.kind === "rival"/);
   assert.match(canvas, /fight\.kind === "boss"/);

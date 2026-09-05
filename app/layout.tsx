@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Yautja : La Longue Chasse",
     description:
-      "Un jeu d’action 2D complet de chasse interstellaire, d’honneur et de trophées.",
+      "Un jeu de fan d’action 2D en développement : chasse interstellaire, honneur et trophées.",
     icons: {
       icon: "/game/sprites/hunter.webp",
       shortcut: "/game/sprites/hunter.webp",

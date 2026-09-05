@@ -114,6 +114,35 @@ function visible(rect: ShipRectangle, camera: ShipRectangle): boolean {
     rect.y + rect.height >= camera.y - 100 && rect.y <= camera.y + camera.height + 100;
 }
 
+/** Corridor/shaft panels keep their authored module size; crossbeams cover joins. */
+export function shipWallPlacements(space: ShipRectangle & { deckY: number }): ShipRectangle[] {
+  const wall = SHIP_INTERIOR_KIT.wall;
+  if (![space.x, space.y, space.width, space.height, space.deckY].every(Number.isFinite) ||
+      space.width <= 0 || space.height <= 0) return [];
+  const columns = Math.ceil(space.width / wall.width);
+  const rows = Math.ceil(space.height / wall.height);
+  if (columns * rows > 256) return [];
+  return Array.from({ length: columns * rows }, (_, index) => ({
+    x: space.x + index % columns * wall.width,
+    y: space.deckY - rows * wall.height + Math.floor(index / columns) * wall.height,
+    width: wall.width, height: wall.height,
+  }));
+}
+
+function ShipWallBackground({ space }: { space: ShipSpaceDefinition }) {
+  if (space.kind !== "corridor" && space.kind !== "shaft") {
+    return <image href={wallFor(space).src} x={space.x} y={space.y} width={space.width} height={space.height} preserveAspectRatio="xMidYMid slice" />;
+  }
+  const wall = SHIP_INTERIOR_KIT.wall;
+  return <g data-ship-wall-modules={space.id} data-wall-collision="none">
+    {shipWallPlacements(space).map((box, index) => <g key={index}>
+      <image data-wall-segment={index} href={wall.src} {...box} preserveAspectRatio="xMidYMid meet" />
+      <path data-wall-joint={index} d={`M${box.x} ${box.y}V${box.y + box.height} M${box.x} ${box.y}H${box.x + box.width}`}
+        fill="none" stroke="#192b25" strokeWidth={wall.jointCoverWidth} />
+    </g>)}
+  </g>;
+}
+
 function wallFor(space: ShipSpaceDefinition) {
   if (space.kind === "navigation") return SHIP_LEVEL_ART.wallObservatory;
   if (space.kind === "trophies" || space.kind === "archives" || space.kind === "training") return SHIP_LEVEL_ART.wallSanctum;
@@ -142,7 +171,7 @@ export default function ShipLevelScene({ player, camera, doors, appearance, load
 
     <g data-ship-layer="background">
       {spaces.map((space) => <g key={space.id} data-ship-space={space.id} clipPath={`url(#${sceneId}-${space.id})`}>
-        <image href={wallFor(space).src} x={space.x} y={space.y} width={space.width} height={space.height} preserveAspectRatio="xMidYMid slice" />
+        <ShipWallBackground space={space} />
         {space.kind === "shaft" ? <path d={`M${space.x + 20} ${space.y}V${space.y + space.height} M${space.x + space.width - 20} ${space.y}V${space.y + space.height}`} stroke="#54716b" strokeWidth="8" opacity=".5" /> : null}
         <rect x={space.x} y={space.deckY - 42} width={space.width} height="42" fill={`url(#${sceneId}-floor-light)`} />
       </g>)}
@@ -220,7 +249,7 @@ export default function ShipLevelScene({ player, camera, doors, appearance, load
   </svg>;
 }
 
-/** A certified atlas cell, clipped independently from neighbouring objects. */
+/** A registered atlas cell, clipped independently; registration is not film-fidelity certification. */
 function AtlasProp({ visualId, x, y, width, height }: { visualId: V6VisualId; x: number; y: number; width: number; height: number }) {
   const visual = getV6Visual(visualId);
   const atlas = V6_ATLASES[visual.atlasId];
@@ -306,7 +335,7 @@ function DeckHunter({ player, appearance, loadout, suspended }: { player: Physic
   // Rig feet are registered at y=366 in a 256×384 frame. Collision remains 112 units.
   const size = 92;
   const scale = size / 256;
-  const pose = player.climbing ? "climb" : !player.onSurface ? "jump" : Math.abs(player.velocityX) > 1 && !suspended ? "run" : "idle";
+  const pose = player.climbing ? "climb" : !player.onSurface ? player.velocityY > 0 ? "fall" : "jump" : Math.abs(player.velocityX) > 1 && !suspended ? "run" : "idle";
   return <g data-physical-ship-hunter="" data-ship-layer="hunter" pointerEvents="none">
     <ellipse cx={player.x} cy={player.y + 1} rx="24" ry="4" fill="#000" opacity=".6" />
     <foreignObject x={player.x - size / 2} y={player.y - 366 * scale} width={size} height={384 * scale} overflow="visible">

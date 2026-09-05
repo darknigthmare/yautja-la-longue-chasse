@@ -46,7 +46,10 @@
     "ship-interior:v22:audit": "node scripts/audit-ship-interior-v22.mjs",
     "biome-decor:v19:audit-batch": "node scripts/audit-biome-decor-v19-batch.mjs",
     "biome-decor:v19:audit-available": "node scripts/audit-biome-decor-v19-available.mjs --report outputs/qa-commercial-audit/available-assets.json",
-    "qa:release": "npm run lint && npm run typecheck && npm run biome-decor:v19:audit-available && npm run test"
+    "qa:release": "npm run lint && npm run typecheck && npm run biome-decor:v19:audit-available && npm run test",
+    "build:desktop": "vite build --config desktop/vite.config.ts",
+    "package:windows": "npm run build:desktop && node scripts/package-desktop.mjs",
+    "qa:desktop": "node scripts/verify-desktop.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
@@ -56,6 +59,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.50.0",
+    "@electron/packager": "20.3.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
@@ -63,8 +67,10 @@
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",
+    "electron": "44.2.0",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.12",
+    "playwright-core": "1.63.0",
     "react-server-dom-webpack": "19.2.8",
     "sharp": "0.35.3",
     "tailwindcss": "4.2.1",

@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     // Generated QA exports are not application source.
     "outputs/**",
+    "tmp/**",
     "build/**",
     "next-env.d.ts",
   ]),

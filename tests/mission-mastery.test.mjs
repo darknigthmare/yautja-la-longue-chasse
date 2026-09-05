@@ -230,3 +230,76 @@ test("le calcul ne modifie ni la mission ni la progression", () => {
   assert.deepEqual(mission, missionBefore);
   assert.deepEqual(progress, progressBefore);
 });
+
+test("les objectifs de revisite suivent les preuves acquises sans sauter de sceau", () => {
+  const mission = getMission();
+  const progress = createProgress({
+    status: "completed", completions: 1, bestScore: 79,
+    bestTimeSeconds: mission.parTimeSeconds + 15,
+    bestDifficultyId: "hunter",
+    completedObjectiveIds: requiredObjectiveIds(mission),
+  });
+  const before = structuredClone(progress);
+  const scoreTarget = mastery.getMissionReplayGoals(mission, progress);
+  assert.equal(scoreTarget[0].id, "mastery:grade-a");
+  assert.match(scoreTarget[0].instruction, /80/);
+  assert.match(scoreTarget[0].progressLabel, /79\/100/);
+
+  const timeTarget = mastery.getMissionReplayGoals(mission, { ...progress, bestScore: 80 });
+  assert.equal(timeTarget[0].id, "mastery:under-par");
+  assert.match(timeTarget[0].instruction, /extraction/);
+
+  const difficultyTarget = mastery.getMissionReplayGoals(mission, {
+    ...progress, bestScore: 80, bestTimeSeconds: mission.parTimeSeconds,
+  });
+  assert.equal(difficultyTarget[0].id, "mastery:elite-difficulty");
+  assert.match(difficultyTarget[0].instruction, /Elite ou Elder/);
+  assert.deepEqual(progress, before);
+});
+
+test("les objectifs de revisite ne déverrouillent pas une chasse verrouillée", () => {
+  assert.deepEqual(
+    mastery.getMissionReplayGoals(getMission(), createProgress({ status: "locked" })),
+    [],
+  );
+});
+
+test("un objectif secondaire manquant reste proposé après les cinq sceaux", () => {
+  const mission = {
+    ...getMission(),
+    objectives: [
+      ...getMission().objectives.filter((objective) => objective.required),
+      { id: "side-a", label: "Récupérer la balise", description: "Explorer la route basse.",
+        kind: "recover", required: false, targetCount: 1, honorBonus: 5 },
+      { id: "side-b", label: "Scanner la trace", description: "Revenir par la corniche.",
+        kind: "scan", required: false, targetCount: 1, honorBonus: 5 },
+    ],
+  };
+  const progress = createProgress({
+    status: "completed", completions: 3, bestScore: 96,
+    bestTimeSeconds: mission.parTimeSeconds, bestDifficultyId: "elder",
+    completedObjectiveIds: [...requiredObjectiveIds(mission), "unknown"],
+  });
+  assert.equal(mastery.calculateMissionMastery(mission, progress).mastered, true);
+  const goals = mastery.getMissionReplayGoals(mission, progress);
+  assert.equal(goals.length, 1);
+  assert.equal(goals[0].id, "objective:side-a");
+  assert.equal(goals[0].objectiveId, "side-a");
+  assert.match(goals[0].progressLabel, /2 objectif/);
+  assert.match(goals[0].instruction, /route basse/);
+
+  const afterFirst = mastery.getMissionReplayGoals(mission, {
+    ...progress, completedObjectiveIds: [...progress.completedObjectiveIds, "side-a"],
+  });
+  assert.equal(afterFirst[0].objectiveId, "side-b");
+  assert.deepEqual(mastery.getMissionReplayGoals(mission, {
+    ...progress, completedObjectiveIds: [...progress.completedObjectiveIds, "side-a", "side-b"],
+  }), []);
+});
+
+test("une ancienne progression sans réussite conserve une cible de première extraction", () => {
+  const goals = mastery.getMissionReplayGoals(getMission(), createProgress());
+  assert.equal(goals[0].id, "mastery:hunt-completed");
+  assert.match(goals[0].instruction, /extraction/);
+  assert.ok(goals.every((goal) => !("currencyReward" in goal) && !("honorReward" in goal)));
+});

@@ -267,7 +267,7 @@ test("visible PIT wiring lists roster and arenas, exposes all published modes, a
   assert.match(canvas, /PIT_ARCADE_LADDERS\[leftId\]/);
   assert.match(canvas, /LANCER LE PARCOURS ARCADE/);
   assert.match(canvas, /Circuit du clan/);
-  assert.match(canvas, /RITE COMPLET · 5 CHAPITRES · 12 COMBATS/);
+  assert.match(canvas, /CHRONIQUE · 5 CHAPITRES · 12 COMBATS/);
   assert.match(canvas, /Descente/);
   assert.match(canvas, /Huit étages à branches, santé persistante/);
   assert.doesNotMatch(canvas, /Prochain lot/);

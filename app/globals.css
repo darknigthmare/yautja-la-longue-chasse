@@ -6101,3 +6101,36 @@ select:focus-visible,
 .save-warning button { margin-left: .65rem; padding: .35rem .7rem; color: #fff5d3; border: 1px solid currentColor; background: #382914; }
 .save-recovery-note { position: fixed; bottom: 1rem; left: 1rem; right: 1rem; z-index: 90; padding: .75rem; background: #173d35; color: #eafff4; border: 1px solid #80c9b2; }
 .game-credits summary { cursor: pointer; padding: .4rem; }
+
+/* The map has its own scrolling dossier. Keep parent actions in a separate row
+   so scrolling a contract into view cannot move the map title underneath them. */
+.ship-station-layer[data-station-screen="map"] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ship-station-layer[data-station-screen="map"] > .ship-station-toolbar {
+  position: relative;
+  z-index: 40;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+}
+.ship-station-layer[data-station-screen="map"] > .ship-station-toolbar > button {
+  width: auto;
+}
+.ship-station-layer[data-station-screen="map"] > .ship-station-toolbar > button:first-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.ship-station-layer[data-station-screen="map"] > .ship-station-toolbar > button:last-child {
+  flex: 0 0 auto;
+}
+.ship-station-layer[data-station-screen="map"] > .galaxy-v10-screen {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+}
+.ship-station-layer[data-station-screen="map"] .galaxy-v10-shell {
+  min-height: 100%;
+  padding-top: 12px;
+}

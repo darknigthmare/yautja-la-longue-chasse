@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import sharp from "sharp";
+import { fileURLToPath } from "node:url";
 import {
   drawEnvironmentProp,
   environmentPropDrawPlan,
@@ -92,17 +94,18 @@ test("standing and fallen covers fit uniformly and keep their foot at the collid
 test("platforms preserve their top alignment and climbables their full vertical reach", () => {
   const platform = environmentPropDrawPlan(768, 300, "platform", bounds);
   assertUniform(platform);
-  assert.deepEqual(platform.source, { x: 0, y: 0, width: 768, height: 300 });
-  close(platform.tiles[0].width, bounds.width * 1.06);
-  close(platform.tiles[0].height, bounds.width * 1.06 * 300 / 768);
-  close(platform.tiles[0].x, bounds.x - bounds.width * 0.03);
+  assert.deepEqual(platform.source, { x: 24, y: 24, width: 720, height: 252 });
+  close(platform.clip.width, bounds.width * 1.06);
+  close(platform.clip.x, bounds.x - bounds.width * 0.03);
+  close(platform.tiles[0].x, platform.clip.x);
   close(platform.tiles[0].y, bounds.y - 4);
-  close(platform.tiles[0].x + platform.tiles[0].width / 2, bounds.x + bounds.width / 2);
+  assert.ok(platform.tiles.every(tile => tile.height <= 144));
+  assert.ok(platform.tiles.at(-1).x + platform.tiles.at(-1).width >= platform.clip.x + platform.clip.width);
   const ladder = environmentPropDrawPlan(160, 768, "climbable", bounds);
   assertUniform(ladder);
-  assert.deepEqual(ladder.source, { x: 0, y: 0, width: 160, height: 768 });
-  close(ladder.tiles[0].width, bounds.height * 160 / 768);
-  close(ladder.tiles[0].x, bounds.x + (bounds.width - bounds.height * 160 / 768) / 2);
+  assert.deepEqual(ladder.source, { x: 24, y: 24, width: 112, height: 720 });
+  close(ladder.tiles[0].width, bounds.height * 112 / 720);
+  close(ladder.tiles[0].x, bounds.x + (bounds.width - bounds.height * 112 / 720) / 2);
   close(ladder.tiles[0].y, bounds.y);
   close(ladder.tiles[0].height, bounds.height);
 });
@@ -162,4 +165,51 @@ test("canvas crops only known padding, clips repeated spans, and restores render
   drawEnvironmentProp(context, image, "surface", bounds, NaN);
   drawEnvironmentProp(context, { naturalWidth: 0, naturalHeight: 0 }, "surface", bounds);
   assert.equal(events.length, before);
+});
+
+test("real V19 platform and climbable painted bounds meet collision sockets without transparent offsets", async () => {
+  const cases = [
+    ["platform", "jungle/plt/plt-expedition-deck-01-low-wide.webp", { x: 400, y: 310, width: 1000, height: 28 }],
+    ["climbable", "jungle/clm/clm-field-ladder-01-straight.webp", { x: 240, y: 100, width: 50, height: 500 }],
+  ];
+  for (const [role, relativePath, area] of cases) {
+    const imagePath = fileURLToPath(new URL("../public/game/assets/v19/biome-decor/" + relativePath, import.meta.url));
+    const { data, info } = await sharp(imagePath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    const plan = environmentPropDrawPlan(info.width, info.height, role, area);
+    assertUniform(plan);
+    let top = info.height;
+    let bottom = -1;
+    for (let y = 0; y < info.height; y++) for (let x = 0; x < info.width; x++) {
+      if (data[(y * info.width + x) * 4 + 3] <= 16) continue;
+      assert.ok(x >= 24 && x < info.width - 24 && y >= 24 && y < info.height - 24, "draw crop preserves all visible source pixels");
+      top = Math.min(top, y);
+      bottom = Math.max(bottom, y);
+    }
+    const tile = plan.tiles[0];
+    const scale = tile.height / plan.source.height;
+    const paintedTop = tile.y + (top - plan.source.y) * scale;
+    const expectedTop = role === "platform" ? area.y - 4 : area.y;
+    assert.ok(Math.abs(paintedTop - expectedTop) <= scale, "no padding-sized air gap above painted platform or climb");
+    if (role === "climbable") {
+      const paintedBottom = tile.y + (bottom + 1 - plan.source.y) * scale;
+      assert.ok(Math.abs(paintedBottom - area.y - area.height) <= scale, "the painted ladder reaches both collision endpoints");
+    }
+  }
+});
+
+
+test("the real narrow ruin platform repeats within the ledge instead of becoming a world-height pillar", async () => {
+  const imagePath = fileURLToPath(new URL("../public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp", import.meta.url));
+  const meta = await sharp(imagePath).metadata();
+  const area = { x: 2500, y: 382, width: 450, height: 24 };
+  const plan = environmentPropDrawPlan(meta.width, meta.height, "platform", area);
+  assertUniform(plan);
+  assert.ok(plan.tiles.length > 1, "a tall silhouette is tiled across a wide ledge");
+  assert.ok(plan.tiles.every(tile => tile.height <= 96 && tile.y === area.y - 4));
+  assert.equal(plan.clip.width, 477);
+  assert.equal(plan.clip.x, area.x - 13.5);
+  for (let i = 1; i < plan.tiles.length; i++) close(plan.tiles[i].x, plan.tiles[i - 1].x + plan.tiles[i - 1].width);
+  const final = plan.tiles.at(-1);
+  assert.ok(final.x < plan.clip.x + plan.clip.width);
+  assert.ok(final.x + final.width >= plan.clip.x + plan.clip.width);
 });

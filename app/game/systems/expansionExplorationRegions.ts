@@ -142,13 +142,15 @@ const VOLCANO_LAYOUT: ExpansionRegionLayout = {
 };
 
 const SWAMP_LAYOUT: ExpansionRegionLayout = {
-  replacementSpan: { minX: 340, maxX: 1_660 }, moduleFloorY: 454, vaultFloorY: 476,
-  starter: rect(450, 532, 250, 22), upperFloor: rect(650, 454, 400, 24),
-  module: rect(730, 398, 54, 56), gate: rect(1_050, 0, 30, 478),
-  bridge: rect(1_080, 454, 150, 24), vaultFloor: rect(1_230, 476, 220, 24),
+  replacementSpan: { minX: 340, maxX: 1_660 }, moduleFloorY: 350, vaultFloorY: 476,
+  // 182 px from the starter: the jungle boost is a physical prerequisite,
+  // not an arbitrary refusal after a normal jump already reaches the module.
+  starter: rect(450, 532, 250, 22), upperFloor: rect(650, 350, 400, 24),
+  module: rect(730, 294, 54, 56), gate: rect(1_050, 0, 30, 500),
+  bridge: rect(1_080, 350, 150, 24), vaultFloor: rect(1_230, 476, 220, 24),
   secret: rect(1_315, 420, 54, 56), hatch: rect(1_450, 476, 120, 24),
   outerWall: rect(1_570, 0, 28, 500), returnClimbable: rect(1_488, 250, 44, 374),
-  hazard: rect(790, 338, 290, 116),
+  hazard: rect(790, 234, 290, 116),
 };
 
 const DESERT_LAYOUT: ExpansionRegionLayout = {
@@ -162,13 +164,14 @@ const DESERT_LAYOUT: ExpansionRegionLayout = {
 };
 
 const OCEAN_LAYOUT: ExpansionRegionLayout = {
-  replacementSpan: { minX: 320, maxX: 1_600 }, moduleFloorY: 360, vaultFloorY: 470,
-  starter: rect(430, 494, 230, 22), upperFloor: rect(660, 360, 260, 24),
-  module: rect(760, 304, 54, 56), gate: rect(920, 0, 30, 494),
-  bridge: rect(950, 360, 200, 24), vaultFloor: rect(1_150, 470, 210, 24),
+  replacementSpan: { minX: 320, maxX: 1_600 }, moduleFloorY: 320, vaultFloorY: 470,
+  // 174 px from the starter is above the 139 px ordinary jump apex.
+  starter: rect(430, 494, 230, 22), upperFloor: rect(660, 320, 260, 24),
+  module: rect(760, 264, 54, 56), gate: rect(920, 0, 30, 494),
+  bridge: rect(950, 320, 200, 24), vaultFloor: rect(1_150, 470, 210, 24),
   secret: rect(1_225, 414, 54, 56), hatch: rect(1_360, 470, 120, 24),
   outerWall: rect(1_480, 0, 28, 494), returnClimbable: rect(1_398, 190, 44, 434),
-  hazard: rect(860, 244, 290, 116),
+  hazard: rect(860, 204, 290, 116),
 };
 
 const FUNGAL_LAYOUT: ExpansionRegionLayout = {
@@ -409,6 +412,15 @@ export function expansionRegionPlatforms(
       width: layout.module.width + 20,
       height: 12,
     }, "one-way"),
+    // The vault has a continuous underside even before its elevated bridge
+    // deploys. Otherwise a boosted jump from the story floor enters behind
+    // the closed gate through the empty bridge span.
+    platform(spec, `${spec.prefix}-vault-underfloor`, {
+      x: layout.gate.x + layout.gate.width,
+      y: layout.vaultFloorY,
+      width: layout.vaultFloor.x - layout.gate.x - layout.gate.width,
+      height: layout.vaultFloor.height,
+    }),
     platform(spec, `${spec.prefix}-vault-floor`, layout.vaultFloor),
     platform(spec, `${spec.prefix}-relic-plinth`, {
       x: layout.secret.x - 10,
@@ -616,7 +628,9 @@ export function expansionRegionHint(
   if (onFloor(body, layout.moduleFloorY) && near(body, layout.module)) {
     return state.abilityIds.includes(spec.abilityId)
       ? `${spec.copy.abilityLabel} installée : ${spec.copy.gateLabel.toLocaleLowerCase("fr")} à proximité.`
-      : `Installer : ${spec.copy.abilityLabel}`;
+      : state.abilityIds.includes("aerial-boost")
+        ? `Installer : ${spec.copy.abilityLabel}`
+        : "Impulsion aérienne de la jungle requise avant cette installation facultative.";
   }
   if (onFloor(body, layout.moduleFloorY) && horizontalDistance(body, layout.gate) <= 44
     && !state.openedGateIds.includes(spec.gateId)) {
@@ -626,13 +640,18 @@ export function expansionRegionHint(
   }
   if (onFloor(body, layout.vaultFloorY)) {
     if (near(body, layout.secret, 28) && !state.secretIds.includes(spec.secretId)) {
-      return `Récupérer : ${spec.copy.secretLabel}`;
+      return state.openedGateIds.includes(spec.gateId)
+        ? `Récupérer : ${spec.copy.secretLabel}`
+        : `${spec.copy.gateLabel} doit d’abord être neutralisé.`;
     }
     if (horizontalDistance(body, layout.hatch) <= 18
       && !state.openedGateIds.includes(spec.shortcutId)) {
+      if (!state.openedGateIds.includes(spec.gateId)) {
+        return `${spec.copy.gateLabel} doit d’abord être neutralisé.`;
+      }
       return state.abilityIds.includes(spec.shortcutRequirement)
         ? `Ouvrir le raccourci : ${spec.copy.shortcutLabel}`
-        : `${spec.copy.shortcutLabel} : verrou de retour à identifier`;
+        : `${spec.copy.shortcutLabel} : ${shortcutAbilityLabel(spec)} requise ; retour possible par le passage déjà ouvert.`;
     }
   }
   const room = expansionRegionRoomAt(
@@ -648,9 +667,17 @@ export function expansionRegionHint(
   return null;
 }
 
+function shortcutAbilityLabel(spec: ExpansionRegionSpec): string {
+  if (spec.shortcutRequirement === "aerial-boost") return "impulsion aérienne";
+  const origin = Object.values(EXPANSION_EXPLORATION_SPECS)
+    .find((candidate) => candidate.abilityId === spec.shortcutRequirement);
+  return origin?.copy.abilityLabel.toLocaleLowerCase("fr") ?? "capacité de la chasse indiquée";
+}
+
 export interface ExpansionRegionMapSnapshot {
   missionId: ExpansionExplorationMissionId;
   title: string;
+  entry: { opened: boolean; label: string };
   rooms: readonly {
     id: string;
     label: string | null;
@@ -685,10 +712,14 @@ export function expansionRegionMapSnapshot(
   const current = expansionRegionRoomAt(missionId, playerX, playerY);
   const gateOpen = state.openedGateIds.includes(spec.gateId);
   const secretRecovered = state.secretIds.includes(spec.secretId);
+  const hasBoost = state.abilityIds.includes("aerial-boost");
+  const hasAbility = state.abilityIds.includes(spec.abilityId);
+  const shortcutOpen = state.openedGateIds.includes(spec.shortcutId);
   const vaultDiscovered = discovered.has(`${spec.prefix}-vault`);
   return {
     missionId: spec.missionId,
     title: spec.copy.regionLabel,
+    entry: { opened: hasBoost, label: "Impulsion aérienne de la jungle" },
     rooms: spec.rooms.map((room) => ({
       id: room.id,
       label: discovered.has(room.id) ? room.label : null,
@@ -706,7 +737,7 @@ export function expansionRegionMapSnapshot(
       {
         id: spec.shortcutId,
         label: spec.copy.shortcutLabel,
-        opened: state.openedGateIds.includes(spec.shortcutId),
+        opened: shortcutOpen,
         requires: spec.shortcutRequirement,
         originMissionId: spec.shortcutOriginMissionId,
       },
@@ -719,13 +750,16 @@ export function expansionRegionMapSnapshot(
       label: vaultDiscovered || secretRecovered ? spec.copy.secretLabel : null,
       recovered: secretRecovered,
     },
-    objective: !state.abilityIds.includes(spec.abilityId)
-      ? spec.copy.moduleLabel
+    objective: !hasAbility
+      ? hasBoost ? spec.copy.moduleLabel : "Revenir avec l’impulsion aérienne de la jungle ; branche facultative"
       : !gateOpen ? spec.copy.gateLabel
         : !vaultDiscovered ? "Explorer la chambre au-delà du passage"
-          : !secretRecovered ? spec.copy.secretLabel : spec.copy.shortcutLabel,
+          : !secretRecovered ? spec.copy.secretLabel
+            : shortcutOpen ? "Branche explorée ; reprendre la chasse sur le chemin principal"
+              : state.abilityIds.includes(spec.shortcutRequirement) ? spec.copy.shortcutLabel
+                : `Reprendre la chasse ; revenir avec ${shortcutAbilityLabel(spec)} pour le raccourci`,
     reminder: spec.copy.abilityLabel,
-    danger: spec.copy.hazardLabel,
+    danger: hasAbility ? `Neutralisé : ${spec.copy.hazardLabel}` : spec.copy.hazardLabel,
     apexTrace: vaultDiscovered ? spec.copy.apexTrace : null,
   };
 }

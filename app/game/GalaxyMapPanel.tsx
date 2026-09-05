@@ -47,7 +47,8 @@ import {
   type GalaxySystemNode,
 } from "./galaxyNavigation";
 import { galaxyOrbitRingGeometry } from "./galaxyRegistry";
-import { calculateMissionMastery } from "./missionMastery";
+import { calculateMissionMastery, getMissionReplayGoals } from "./missionMastery";
+import replayStyles from "./MissionReplayGoals.module.css";
 import {
   GALAXY_V10_BACKGROUNDS,
   galaxyBodyVisualPath,
@@ -1010,8 +1011,11 @@ function PlanetDossier({
     activeMission && progress
       ? calculateMissionMastery(activeMission, progress)
       : null;
+  const replayGoals = activeMission && progress
+    ? getMissionReplayGoals(activeMission, progress)
+    : [];
   return (
-    <div className="galaxy-v10-dossier">
+    <div className={`galaxy-v10-dossier ${replayStyles.dossier}`}>
       <div className="galaxy-v10-planet-view">
         <div className="galaxy-v10-scan-grid" aria-hidden="true" />
         <img src={galaxyBodyVisualPath(body)} alt={`${GALAXY_BODY_KIND_LABELS[body.bodyKind]} ${body.name}`} />
@@ -1058,10 +1062,27 @@ function PlanetDossier({
                     </li>
                   ))}
                 </ul>
+                <p className={replayStyles.cumulativeNote}>Sceaux cumulés sur vos chasses réussies, pas nécessairement dans une seule tentative.</p>
+                {progress?.status !== "locked" ? (
+                  <section className={replayStyles.goals} aria-label="Objectifs de revisite">
+                    <h3>{progress && progress.completions > 0 ? "Votre prochaine revisite" : "Objectifs à préparer"}</h3>
+                    {replayGoals.length > 0 ? replayGoals.map((goal) => (
+                      <article key={goal.id}>
+                        <small>{goal.kind === "mastery" ? "Prochain sceau" : "Objectif secondaire"}</small>
+                        <strong>{goal.title}</strong>
+                        <p>{goal.instruction}</p>
+                        <span>{goal.progressLabel}</span>
+                      </article>
+                    )) : (
+                      <p>Tous les sceaux et objectifs de ce contrat sont consignés. Vous pouvez rejouer librement ou comparer vos records, sans nouvel objectif de maîtrise annoncé.</p>
+                    )}
+                    <p className={replayStyles.rewardNote}>Les règles de récompense de la chasse restent inchangées. Une nouvelle tentative ne garantit ni trophée inédit ni nouvelle scène narrative.</p>
+                  </section>
+                ) : null}
               </div>
             ) : null}
             <button type="button" className="alien-button" disabled={progress?.status === "locked"} onClick={() => onChooseMission(activeMission)}>
-              {progress?.status === "locked" ? "Trophée précédent requis" : "Préparer la chasse"}
+              {progress?.status === "locked" ? "Trophée précédent requis" : progress && progress.completions > 0 ? "Préparer cette revisite" : "Préparer la chasse"}
             </button>
           </div>
         ) : bodyMission ? (

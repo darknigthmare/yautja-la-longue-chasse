@@ -21,6 +21,7 @@ import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotR
 import { PilotExplorationMap } from "./PilotExplorationMap";
 import { IceExplorationMap } from "./IceExplorationMap";
 import { ExpansionExplorationMap } from "./ExpansionExplorationMap";
+import { drawExpansionRegionDevices, EXPANSION_DEVICE_TEXTURE_PATHS, type ExpansionDeviceTextures } from "./expansionExplorationRendering";
 import { drawIceRegionBackdrop, drawIceRegionPlatform, drawIceRegionDevices, ICE_REGION_TEXTURE_PATHS, type IceRegionTextures } from "./iceExplorationRendering";
 import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";
 import { isExpansionExplorationMission } from "./systems/expansionExplorationRegions";
@@ -603,6 +604,7 @@ interface AssetBank {
   platformStone: HTMLImageElement | null;
   pilotModule: HTMLImageElement | null;
   iceRegionTextures: IceRegionTextures;
+  expansionDeviceTextures: ExpansionDeviceTextures;
   platformCrown: HTMLImageElement | null;
   platformExpedition: HTMLImageElement | null;
   foregroundFerns: HTMLImageElement | null;
@@ -4486,6 +4488,9 @@ function renderGame(
   }
   if (mission.id === ICE_MISSION_ID) {
     drawIceRegionDevices(context, state.exploration, assets.iceRegionTextures);
+  }
+  if (isExpansionExplorationMission(mission.id)) {
+    drawExpansionRegionDevices(context, mission.id, state.exploration, assets.expansionDeviceTextures, state.player);
   }
   for (const cover of state.world.covers) {
     const broken = state.brokenPillarIds.has(cover.id);
@@ -9481,6 +9486,7 @@ export default function HuntCanvas({
       platformStone: null,
       pilotModule: null,
       iceRegionTextures: { ice: null, metal: null, relay: null },
+      expansionDeviceTextures: { module: null, bindings: null },
       platformCrown: null,
       platformExpedition: null,
       foregroundFerns: null,
@@ -9688,6 +9694,11 @@ export default function HuntCanvas({
     if (mission.id === ICE_MISSION_ID) {
       for (const key of ["ice", "metal", "relay"] as const) {
         queueImage(ICE_REGION_TEXTURE_PATHS[key], image => { assets.iceRegionTextures[key] = image; });
+      }
+    }
+    if (isExpansionExplorationMission(mission.id)) {
+      for (const key of ["module", "bindings"] as const) {
+        queueImage(EXPANSION_DEVICE_TEXTURE_PATHS[key], image => { assets.expansionDeviceTextures[key] = image; });
       }
     }
     if (mission.id === PILOT_MISSION_ID) {

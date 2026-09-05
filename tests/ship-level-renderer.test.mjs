@@ -5,9 +5,9 @@ import { runInNewContext } from "node:vm";
 import { build } from "esbuild";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { SHIP_LEVEL_ART } from "../app/game/shipInteriorKit.ts";
+import { SHIP_INTERIOR_KIT, SHIP_LEVEL_ART } from "../app/game/shipInteriorKit.ts";
 import { SHIP_LEVEL_ART_V22 } from "../app/game/shipInteriorV22.ts";
-import { SHIP_LEVEL_SURFACES, SHIP_LEVEL_LADDERS } from "../app/game/systems/shipLevelLayout.ts";
+import { SHIP_LEVEL_SURFACES, SHIP_LEVEL_LADDERS, SHIP_LEVEL_CORRIDORS, SHIP_LEVEL_SHAFTS } from "../app/game/systems/shipLevelLayout.ts";
 
 // Bundle the real renderer and layout; the independently tested animated rig is
 // replaced with a tiny element so these tests need no canvas or browser globals.
@@ -16,12 +16,12 @@ const bundle = await build({
   platform: "node", format: "cjs", jsx: "automatic", external: ["react", "react-dom"],
   plugins: [{ name: "isolate-hunter-canvas", setup(builder) {
     builder.onResolve({ filter: /^\.\/HunterRigPreview$/ }, () => ({ path: "hunter-rig", namespace: "test" }));
-    builder.onLoad({ filter: /.*/, namespace: "test" }, () => ({ contents: "export default function HunterRigPreview() { return null; }", loader: "js" }));
+    builder.onLoad({ filter: /.*/, namespace: "test" }, () => ({ contents: "import { createElement } from 'react'; export default function HunterRigPreview(props) { return createElement('span', { 'data-test-hunter-pose': props.pose }); }", loader: "js" }));
   } }],
 });
 const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports, require: createRequire(import.meta.url), console });
-const { default: Scene, ShipLevelMiniMap, ShipTrophyWall, shipArtPlacement, shipRepeatPlacements } = compiled.exports;
+const { default: Scene, ShipLevelMiniMap, ShipTrophyWall, shipArtPlacement, shipRepeatPlacements, shipWallPlacements } = compiled.exports;
 const render = (component, props) => renderToStaticMarkup(createElement(component, props));
 const player = { x: 3500, y: 1360, velocityX: 0, velocityY: 0, facing: -1, onSurface: true, climbing: false, phase: 0 };
 const base = {
@@ -208,5 +208,38 @@ test("V22 furniture uses dedicated bitmap assets while preserving equipped items
       assert.match(html, /data-owned-gear="audio-decoy"/);
       assert.doesNotMatch(html, /data-owned-gear="(?:snare|netgun)"/);
     }
+  }
+});
+
+test("corridor and shaft walls retain nominal modules and conceal every repeated join", () => {
+  const wall = SHIP_INTERIOR_KIT.wall;
+  const spaces = [...SHIP_LEVEL_CORRIDORS, ...SHIP_LEVEL_SHAFTS];
+  for (const space of spaces) {
+    const boxes = shipWallPlacements(space);
+    assert.ok(boxes.length > 0);
+    assert.ok(Math.min(...boxes.map(box => box.y)) <= space.y);
+    assert.equal(Math.max(...boxes.map(box => box.y + box.height)), space.deckY);
+    assert.equal(Math.min(...boxes.map(box => box.x)), space.x);
+    assert.ok(Math.max(...boxes.map(box => box.x + box.width)) >= space.x + space.width);
+    for (const box of boxes) {
+      assert.equal(box.width, wall.width);
+      assert.equal(box.height, wall.height);
+      assert.equal(box.width / box.height, wall.sourceWidth / wall.sourceHeight);
+    }
+  }
+  const html = render(Scene, { ...base, camera: { x: 0, y: 0, width: 4000, height: 1500 } });
+  const count = spaces.reduce((sum, space) => sum + shipWallPlacements(space).length, 0);
+  assert.equal((html.match(/data-wall-segment=/g) ?? []).length, count);
+  assert.equal((html.match(/data-wall-joint=/g) ?? []).length, count);
+  assert.equal((html.match(/data-wall-collision="none"/g) ?? []).length, spaces.length);
+});
+
+test("ship hunter switches from ascent to fall while collision motion remains unchanged", () => {
+  for (const [velocityY, pose] of [[-180, "jump"], [180, "fall"]]) {
+    const state = { ...player, onSurface: false, velocityY };
+    const before = { ...state };
+    const html = render(Scene, { ...base, player: state });
+    assert.ok(html.includes('data-test-hunter-pose="' + pose + '"'));
+    assert.deepEqual(state, before);
   }
 });
