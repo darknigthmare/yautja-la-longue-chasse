@@ -1,0 +1,180 @@
+[
+  {
+    "id": "jungle-walk-guided",
+    "characterId": "jungle-hunter",
+    "name": "Jungle Hunter",
+    "clip": "walk",
+    "cols": 4,
+    "rows": 2,
+    "status": "rejected",
+    "notes": [
+      "Cycle incomplet : les contacts des jambes ne s'alternent pas correctement.",
+      "Canvas 1672×941 : la grille 4×2 n'est pas divisible verticalement.",
+      "Pivots et retour de boucle à redessiner."
+    ],
+    "frames": [
+      "Contact ambigu, jambe avant à comparer à la cellule5.",
+      "Compression insuffisamment distincte du contact.",
+      "Pose de passage présente, alternance à reprendre.",
+      "Retour prématuré au contact de la première cellule.",
+      "Contact trop semblable à1 pour représenter l'autre jambe.",
+      "Transfert d'appui incomplet.",
+      "Autre pose de passage, ordre du cycle incohérent.",
+      "Transition vers1 non validée."
+    ]
+  },
+  {
+    "id": "city-thrust-fixed",
+    "characterId": "city-hunter",
+    "name": "City Hunter",
+    "clip": "combistick-thrust",
+    "cols": 3,
+    "rows": 2,
+    "status": "draft",
+    "notes": [
+      "Mains et continuité du manche améliorées par la correction OpenAI.",
+      "La fente dépasse encore la cellule4 ; longueur apparente du manche variable.",
+      "Pivots et distance des prises à stabiliser avant intégration."
+    ],
+    "frames": [
+      "Deux prises lisibles, arme entière.",
+      "Anticipation dessinée, vérifier fixité des prises.",
+      "Partie arrière de la lance restaurée ; longueur à harmoniser.",
+      "Fente lisible mais pointe hors cellule4.",
+      "Retrait et prises présents ; appuis à aligner.",
+      "Retour en garde ; comparer échelle et ancrage à1."
+    ]
+  },
+  {
+    "id": "wolf-high-guard",
+    "characterId": "wolf",
+    "name": "Wolf",
+    "clip": "high-guard",
+    "cols": 3,
+    "rows": 2,
+    "status": "draft",
+    "notes": [
+      "Six étapes de garde et réaction lisibles, deux canons conservés.",
+      "Pivots et taille apparente entre rangées à contrôler en lecture.",
+      "Fidélité du masque issue d'une adaptation de projet, pas certifiée1:1."
+    ],
+    "frames": [
+      "Garde basse initiale et deux poings lisibles.",
+      "Deux avant-bras montent vers le masque.",
+      "Protection haute et inclinaison du masque.",
+      "Recul et flexion sous impact invisible.",
+      "Descente des bras et retour de poids.",
+      "Garde finale, retour temporel à contrôler."
+    ]
+  },
+  {
+    "id": "celtic-shoulder-check",
+    "characterId": "celtic",
+    "name": "Celtic",
+    "clip": "shoulder-check",
+    "cols": 3,
+    "rows": 2,
+    "status": "rejected",
+    "notes": [
+      "La cellule3 représente un coup de poing, pas la percussion d'épaule attendue.",
+      "Débordement de cellule et déplacements d'appuis.",
+      "Biomask et armure à confronter aux vues officielles."
+    ],
+    "frames": [
+      "Garde initiale, mains fermées.",
+      "Compression très profonde, appui arrière à contrôler.",
+      "Action incorrecte : bras tendu en coup de poing ; débordement.",
+      "Épaule plus lisible, ancrage à reconstruire.",
+      "Récupération dessinée mais translation marquée.",
+      "Retour de garde à rapprocher de1."
+    ]
+  },
+  {
+    "id": "scar-caster-aim",
+    "characterId": "scar",
+    "name": "Scar",
+    "clip": "caster-control",
+    "cols": 3,
+    "rows": 2,
+    "status": "rejected",
+    "notes": [
+      "Commande du gantelet anatomiquement ambiguë et boîtier sur mauvais avant-bras dans plusieurs cellules.",
+      "Trajectoire du doigt ne démontre pas l'appui correct sur le dispositif.",
+      "Ne pas recopier ces erreurs dans les autres actions."
+    ],
+    "frames": [
+      "Boîtier visible côté proche : référence anatomique à corriger.",
+      "Changement trop faible et même problème d'équipement.",
+      "Main croisée mais contact avec le gantelet non établi.",
+      "Geste et côtés de gantelet incohérents.",
+      "Sortie du geste sans maintien cohérent du boîtier.",
+      "Garde finale héritant du placement erroné."
+    ]
+  },
+  {
+    "id": "falconer-drone-command",
+    "characterId": "falconer",
+    "name": "Falconer",
+    "clip": "drone-control",
+    "cols": 3,
+    "rows": 2,
+    "status": "rejected",
+    "notes": [
+      "Motif de résille encore présent malgré la correction demandée.",
+      "Dispositif dorsal et boîtier ne démontrent pas le drone exact du film.",
+      "Canon visuel et manipulation à corriger avant acceptation."
+    ],
+    "frames": [
+      "Résille incorrecte conservée sur le corps.",
+      "Boîtier levé, identité visuelle toujours à corriger.",
+      "Contact index/gantelet approximatif et objet dorsal ambigu.",
+      "Regard relevé correctement, équipement non validé.",
+      "Sortie de commande lisible mais résille incorrecte.",
+      "Retour en garde ; silhouette drone non établie."
+    ]
+  },
+  {
+    "id": "feral-shield-guard",
+    "characterId": "feral-hunter",
+    "name": "Feral",
+    "clip": "shield-guard",
+    "cols": 3,
+    "rows": 2,
+    "status": "draft",
+    "notes": [
+      "Ouverture et fermeture segmentées du bouclier lisibles ; bouclier sur avant-bras gauche.",
+      "Contrôler le contact du bouclier avec le bras et l'anatomie des doigts à taille de jeu.",
+      "Aucune certification1:1 et aucune autre animation livrée pour ce personnage."
+    ],
+    "frames": [
+      "Bouclier replié, deux mains visibles.",
+      "Avant-bras gauche levé, segments partiellement ouverts.",
+      "Ouverture plus large mais légère différence avec2.",
+      "Bouclier déployé devant le torse, bras en partie occulté.",
+      "Repli intermédiaire lisible.",
+      "Retour replié, appuis à aligner avec1."
+    ]
+  },
+  {
+    "id": "berserker-wrist-strike-repair",
+    "characterId": "berserker",
+    "name": "Berserker",
+    "clip": "wrist-strike",
+    "cols": 3,
+    "rows": 2,
+    "status": "draft",
+    "notes": [
+      "Pose2 réparée avec lame alignée sur l'avant-bras, sans manche tenu.",
+      "La lame de la cellule4 dépasse sa cellule ; silhouette du tranchant à vérifier à fort zoom.",
+      "Longueur de lame, ancrage du canon et continuité des appuis restent à valider."
+    ],
+    "frames": [
+      "Lame unique sortie du gantelet, main séparée.",
+      "Correction : lame dans l'axe du gantelet ; vérifier les arêtes.",
+      "Descente du bras et lame, trajectoire à rapprocher de2.",
+      "Fin de frappe ; dépassement de la pointe hors cellule4.",
+      "Retrait à droite, main libre visible.",
+      "Retour en garde ; cohérence des appuis à reprendre."
+    ]
+  }
+]
