@@ -1,0 +1,894 @@
+{
+  "schemaVersion": 1,
+  "scope": "Revue visuelle des cinq séquences bitmap disponibles, après recalage proposé, sans génération supplémentaire",
+  "reviewDate": "2026-09-05",
+  "overallStatus": "usable-for-review",
+  "gameplayValidated": false,
+  "reviewMethod": {
+    "sourceImagesRewritten": false,
+    "wholeSheetsInspected": 5,
+    "visibleFigureCellsInspected": 30,
+    "sourceInspection": "Feuilles complètes et gros plans de mains/armes via sharp en mémoire ; aucun fichier image réécrit.",
+    "playbackTested": false,
+    "perfectOneToOneFidelityRequiredForReview": false,
+    "obviousAnatomyOrEquipmentErrorsMayBeAccepted": false,
+    "registrationSource": {
+      "path": "art-source/v27/known-yautja/frame-registration.json",
+      "sha256AtReview": "af9f3f9adf1a47956d020952a5ca78d5cd931cf2f2a3ff820d5979de7308de90"
+    },
+    "independence": {
+      "primaryReviewer": "/root/pit_animation_lab",
+      "independentOfGenerationFor": [
+        "wolf-high-guard",
+        "feral-shield-guard",
+        "chopper-idle"
+      ],
+      "selfReviewFor": [
+        "wolf-hit-reaction",
+        "greyback-idle"
+      ],
+      "independentSecondReadForSelfReviewedSources": {
+        "reviewer": "/root/modular_asset_audit",
+        "sources": [
+          "wolf-hit-reaction",
+          "greyback-idle"
+        ],
+        "finding": "Aucun membre manquant, arme manifestement flottante ou main franchement surnuméraire constaté ; réserves canon Wolf pose 2 et respiration Greyback conservées."
+      }
+    }
+  },
+  "statusSemantics": {
+    "draft": "Pas encore suffisamment évalué pour proposer un clip de travail.",
+    "usable-for-review": "Base visuelle exploitable après correction des blocages d’import, pour tester le mouvement et ses transitions ; pas une approbation gameplay ou finale.",
+    "rejected": "Défaut visuel bloquant confirmé que le seul recalage ne peut résoudre."
+  },
+  "defectSemantics": {
+    "blockingDefects": "Défauts anatomiques/équipement confirmés empêchant l’usage prévu même après recalage. Liste vide signifie aucun défaut de cette gravité observé, pas perfection certifiée.",
+    "importBlockers": "Blocages de lecture brute, réparables par extraction, transparence et pivots sans invention graphique.",
+    "nonBlockingConcerns": "Réserves à contrôler dans une revue animée ; certaines peuvent devenir bloquantes si le défaut devient perceptible en mouvement."
+  },
+  "summary": {
+    "sequences": 5,
+    "usableForReview": 5,
+    "draft": 0,
+    "rejected": 0,
+    "gameplayValidated": 0,
+    "finalAnimationAccepted": 0,
+    "confirmedVisualBlockingDefects": 0,
+    "rawImportReady": 0
+  },
+  "entries": [
+    {
+      "id": "wolf-high-guard",
+      "characterId": "wolf",
+      "name": "Wolf",
+      "status": "usable-for-review",
+      "statusReason": "La séquence dessinée est lisible et peut être évaluée comme clip après détourage contrôlé et recalage ; aucun défaut anatomique franchement bloquant observé.",
+      "gameplayValidated": false,
+      "finalAnimationAccepted": false,
+      "canonicalOneToOneCertified": false,
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/wolf-high-guard.png",
+        "sha256": "d911dcc7763030c3ad64f4abe182d1e7a2d377c7eb367d04e74510062b7d9e8b",
+        "bytes": 2029087,
+        "width": 1536,
+        "height": 1024,
+        "bitDepth": 8,
+        "pngColorType": 2,
+        "hasAlpha": false,
+        "unchangedByReview": true
+      },
+      "registration": {
+        "path": "art-source/v27/known-yautja/frame-registration.json",
+        "entryId": "wolf-high-guard",
+        "sourceHashMatches": true,
+        "frameCount": 6,
+        "rectangles": "free-rectangles",
+        "pivots": "two-foot contact midpoint; lower near sole baseline",
+        "constantScaleRequired": true,
+        "perFrameStretchAllowed": false,
+        "automaticMirroringAllowed": false
+      },
+      "reviewEvidence": {
+        "wholeSheetInspected": true,
+        "readOnlyDetailCropsInspected": [
+          {
+            "frame": 2,
+            "sourceRect": [
+              690,
+              140,
+              220,
+              145
+            ],
+            "focus": "deux poings, poignets et gantelets"
+          }
+        ],
+        "playbackInspected": false,
+        "generatedByThisReviewer": false,
+        "independentSecondReviewer": null
+      },
+      "blockingDefects": [],
+      "importBlockers": [
+        {
+          "code": "opaque-nonuniform-magenta",
+          "scope": "direct-transparent-runtime-import",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Source PNG RGB opaque : magenta visuellement plat mais numériquement variable, pas un canal alpha.",
+          "resolution": "Préparer le color-key dans le pipeline contrôlé et vérifier contours, trous et halos. Ne pas remplacer par une prétendue transparence ni modifier les pixels sources."
+        },
+        {
+          "code": "unregistered-root",
+          "scope": "unaligned-frame-playback",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Positions des silhouettes et des appuis variables dans les cellules ; lecture brute provoquerait un glissement ou un saut de l’acteur.",
+          "resolution": "Utiliser les rectangles libres et pivots enregistrés, avec une seule échelle constante par acteur. Le recul de gameplay reste piloté par la simulation, pas inventé depuis les marges de la feuille."
+        }
+      ],
+      "nonBlockingConcerns": [
+        {
+          "code": "far-cannon-occlusion",
+          "frames": [
+            4,
+            5
+          ],
+          "detail": "Surveiller la continuité du canon éloigné lorsque la tête et les épaules se replient ; vérifier le passage en mouvement avant acceptation finale."
+        },
+        {
+          "code": "guard-compression-not-idle",
+          "frames": [
+            4
+          ],
+          "detail": "La flexion plus basse peut servir de réaction de blocage ; elle ne doit pas être interprétée automatiquement comme une garde basse différente."
+        },
+        {
+          "code": "source-proportions-vary-slightly",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Petites variations de proportions et texture ; le recalage doit préserver les dessins sans ajuster indépendamment leur hauteur."
+        }
+      ],
+      "handsAndEquipment": [
+        "Deux mains attachées aux poignets, poings lisibles ; aucun doigt surnuméraire clairement visible dans la feuille ou le gros plan de la pose 2.",
+        "Biomask, armure, gantelets et trophées restent identifiables d’une pose à l’autre.",
+        "Les deux casters sont lisibles dans les poses ouvertes ; le caster éloigné est davantage occulté dans les poses penchées, surtout 4–5. Ce n’est pas une preuve certaine de suppression."
+      ],
+      "expectedMechanic": {
+        "intendedUse": "montée, maintien et sortie de garde haute",
+        "loopWholeSheet": false,
+        "entryFrames": [
+          1,
+          2,
+          3
+        ],
+        "holdFrames": [
+          3
+        ],
+        "optionalBlockReactionFrames": [
+          4
+        ],
+        "exitFrames": [
+          5,
+          6
+        ],
+        "simulationContract": "La protection est déterminée par l’état de garde existant ; la présence d’un poing ou d’une pose basse n’ajoute pas de protection.",
+        "loopApproval": "do-not-loop-whole-sheet"
+      },
+      "expectedTransitions": [
+        {
+          "from": "idle",
+          "to": "high-guard",
+          "sequence": [
+            1,
+            2,
+            3
+          ],
+          "note": "Terminer la montée puis maintenir la pose 3 tant que la garde est active."
+        },
+        {
+          "from": "high-guard",
+          "to": "block-reaction",
+          "sequence": [
+            3,
+            4,
+            3
+          ],
+          "note": "Proposition de revue uniquement lors d’un impact réellement bloqué."
+        },
+        {
+          "from": "high-guard",
+          "to": "idle",
+          "sequence": [
+            3,
+            5,
+            6
+          ],
+          "note": "Ne pas jouer la sortie tant que l’entrée de garde reste maintenue."
+        }
+      ],
+      "beforeGameplayAcceptance": [
+        "Lecture animée des transitions et du raccord final.",
+        "Contrôle des contours après color-key et du recalage à l’échelle réelle du jeu.",
+        "Couplage aux états existants sans modifier hitboxes, dégâts, invulnérabilité ou cadence de simulation.",
+        "Validation humaine des mains et armes dans le mouvement ; les détails fins ne sont pas certifiés par une lecture statique."
+      ]
+    },
+    {
+      "id": "feral-shield-guard",
+      "characterId": "feral-hunter",
+      "name": "Feral",
+      "status": "usable-for-review",
+      "statusReason": "La séquence dessinée est lisible et peut être évaluée comme clip après détourage contrôlé et recalage ; aucun défaut anatomique franchement bloquant observé.",
+      "gameplayValidated": false,
+      "finalAnimationAccepted": false,
+      "canonicalOneToOneCertified": false,
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/feral-shield-guard.png",
+        "sha256": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+        "bytes": 2057533,
+        "width": 1536,
+        "height": 1024,
+        "bitDepth": 8,
+        "pngColorType": 2,
+        "hasAlpha": false,
+        "unchangedByReview": true
+      },
+      "registration": {
+        "path": "art-source/v27/known-yautja/frame-registration.json",
+        "entryId": "feral-shield-guard",
+        "sourceHashMatches": true,
+        "frameCount": 6,
+        "rectangles": "free-rectangles",
+        "pivots": "two-foot contact midpoint; lower near sole baseline",
+        "constantScaleRequired": true,
+        "perFrameStretchAllowed": false,
+        "automaticMirroringAllowed": false
+      },
+      "reviewEvidence": {
+        "wholeSheetInspected": true,
+        "readOnlyDetailCropsInspected": [
+          {
+            "frame": 2,
+            "sourceRect": [
+              835,
+              122,
+              100,
+              162
+            ],
+            "focus": "main, poignée et segments de bouclier"
+          }
+        ],
+        "playbackInspected": false,
+        "generatedByThisReviewer": false,
+        "independentSecondReviewer": null
+      },
+      "blockingDefects": [],
+      "importBlockers": [
+        {
+          "code": "opaque-nonuniform-magenta",
+          "scope": "direct-transparent-runtime-import",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Source PNG RGB opaque : magenta visuellement plat mais numériquement variable, pas un canal alpha.",
+          "resolution": "Préparer le color-key dans le pipeline contrôlé et vérifier contours, trous et halos. Ne pas remplacer par une prétendue transparence ni modifier les pixels sources."
+        },
+        {
+          "code": "unregistered-root",
+          "scope": "unaligned-frame-playback",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Positions des silhouettes et des appuis variables dans les cellules ; lecture brute provoquerait un glissement ou un saut de l’acteur.",
+          "resolution": "Utiliser les rectangles libres et pivots enregistrés, avec une seule échelle constante par acteur. Le recul de gameplay reste piloté par la simulation, pas inventé depuis les marges de la feuille."
+        }
+      ],
+      "nonBlockingConcerns": [
+        {
+          "code": "shield-deployment-sparse",
+          "frames": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "detail": "Passage d’éventail partiel au disque complet peu échantillonné. Suffisant pour une revue de déploiement, mais le raccord et la lecture de la prise doivent être contrôlés à vitesse réelle."
+        },
+        {
+          "code": "shield-detail-not-certified",
+          "frames": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "detail": "Le nombre et le tracé exacts des segments ne sont pas certifiés 1:1 ; aucune rupture flottante évidente ne justifie de rejeter cette base."
+        }
+      ],
+      "handsAndEquipment": [
+        "La main côté bouclier paraît reliée à la poignée et au gantelet ; les doigts visibles de la pose 2 forment une prise plausible.",
+        "Le bras opposé conserve ses lames, et le masque osseux reste identifiable dans les six poses.",
+        "La main disparaît naturellement derrière le disque complet en pose 4 ; ce masquage n’est pas un membre manquant."
+      ],
+      "expectedMechanic": {
+        "intendedUse": "déploiement et maintien de bouclier",
+        "loopWholeSheet": false,
+        "entryFrames": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "holdFrames": [
+          4
+        ],
+        "exitFrames": [
+          5,
+          6
+        ],
+        "simulationContract": "Ne pas activer une parade ou une invulnérabilité à partir du seul dessin. Maintenir le bouclier ouvert tant que l’état défensif le demande.",
+        "loopApproval": "do-not-loop-whole-sheet"
+      },
+      "expectedTransitions": [
+        {
+          "from": "shield-folded",
+          "to": "shield-guard",
+          "sequence": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "note": "Déploiement progressif ; éviter une boucle qui replie le bouclier pendant le maintien."
+        },
+        {
+          "from": "shield-guard",
+          "to": "shield-folded",
+          "sequence": [
+            4,
+            5,
+            6
+          ],
+          "note": "Rétraction seulement à la sortie de l’état."
+        }
+      ],
+      "beforeGameplayAcceptance": [
+        "Lecture animée des transitions et du raccord final.",
+        "Contrôle des contours après color-key et du recalage à l’échelle réelle du jeu.",
+        "Couplage aux états existants sans modifier hitboxes, dégâts, invulnérabilité ou cadence de simulation.",
+        "Validation humaine des mains et armes dans le mouvement ; les détails fins ne sont pas certifiés par une lecture statique."
+      ]
+    },
+    {
+      "id": "wolf-hit-reaction",
+      "characterId": "wolf",
+      "name": "Wolf",
+      "status": "usable-for-review",
+      "statusReason": "La séquence dessinée est lisible et peut être évaluée comme clip après détourage contrôlé et recalage ; aucun défaut anatomique franchement bloquant observé.",
+      "gameplayValidated": false,
+      "finalAnimationAccepted": false,
+      "canonicalOneToOneCertified": false,
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/wolf-hit-reaction.png",
+        "sha256": "09f217eeffe72b06cd941430df768f42fdfc52fda108e23c4f8d2899d1be54ac",
+        "bytes": 2121285,
+        "width": 1536,
+        "height": 1024,
+        "bitDepth": 8,
+        "pngColorType": 2,
+        "hasAlpha": false,
+        "unchangedByReview": true
+      },
+      "registration": {
+        "path": "art-source/v27/known-yautja/frame-registration.json",
+        "entryId": "wolf-hit-reaction",
+        "sourceHashMatches": true,
+        "frameCount": 6,
+        "rectangles": "free-rectangles",
+        "pivots": "two-foot contact midpoint; lower near sole baseline",
+        "constantScaleRequired": true,
+        "perFrameStretchAllowed": false,
+        "automaticMirroringAllowed": false
+      },
+      "reviewEvidence": {
+        "wholeSheetInspected": true,
+        "readOnlyDetailCropsInspected": [
+          {
+            "frame": 2,
+            "sourceRect": [
+              512,
+              0,
+              512,
+              512
+            ],
+            "focus": "masque, poings et canon éloigné ; débordement du canon de la pose 3 sur le bord droit de cette cellule nominale"
+          }
+        ],
+        "playbackInspected": false,
+        "generatedByThisReviewer": true,
+        "independentSecondReviewer": "/root/modular_asset_audit"
+      },
+      "blockingDefects": [],
+      "importBlockers": [
+        {
+          "code": "opaque-nonuniform-magenta",
+          "scope": "direct-transparent-runtime-import",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Source PNG RGB opaque : magenta visuellement plat mais numériquement variable, pas un canal alpha.",
+          "resolution": "Préparer le color-key dans le pipeline contrôlé et vérifier contours, trous et halos. Ne pas remplacer par une prétendue transparence ni modifier les pixels sources."
+        },
+        {
+          "code": "unregistered-root",
+          "scope": "unaligned-frame-playback",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Positions des silhouettes et des appuis variables dans les cellules ; lecture brute provoquerait un glissement ou un saut de l’acteur.",
+          "resolution": "Utiliser les rectangles libres et pivots enregistrés, avec une seule échelle constante par acteur. Le recul de gameplay reste piloté par la simulation, pas inventé depuis les marges de la feuille."
+        },
+        {
+          "code": "nominal-grid-cuts-cannon",
+          "scope": "fixed-512px-grid-import",
+          "frames": [
+            2,
+            3
+          ],
+          "finding": "Le canon de la pose 3 dépasse à gauche de sa cellule nominale et entrerait dans la cellule 2. Ce dépassement est une erreur de mise en grille, pas une partie manquante de l’image entière.",
+          "resolution": "Utiliser les rectangles libres indépendants du registration. L’espace vide entre personnages permet de récupérer le canon entier sans retoucher les pixels ; ne pas tronquer à x=1024."
+        }
+      ],
+      "nonBlockingConcerns": [
+        {
+          "code": "second-cannon-not-confirmable",
+          "frames": [
+            2
+          ],
+          "detail": "Contrôler le raccord 1→2→3 pour distinguer occultation et disparition perceptible. Si le canon semble clignoter après recalage, la pose 2 devra être corrigée avant usage final."
+        },
+        {
+          "code": "large-recovery-jump",
+          "frames": [
+            3,
+            4
+          ],
+          "detail": "La flexion de récupération est très différente du recul maximal. Le rythme doit rendre cette transition lisible ; ne pas prétendre à une animation déjà fluide."
+        }
+      ],
+      "handsAndEquipment": [
+        "Deux bras et jambes complets, poings plausibles ; aucun membre manquant ou arme manifestement flottante constaté dans les feuilles et la seconde lecture indépendante.",
+        "Le masque, la poitrine, les gantelets et les lames gardent une continuité visuelle suffisante pour une revue du recul.",
+        "Un seul caster est clairement identifiable en pose 2. Le second peut être occulté par la tête/épaule ; ne pas transformer cette réserve en certification de présence ni en preuve certaine de suppression."
+      ],
+      "expectedMechanic": {
+        "intendedUse": "réaction à un coup avec recul du buste puis récupération",
+        "loopWholeSheet": false,
+        "entryFrames": [
+          1,
+          2,
+          3
+        ],
+        "recoveryFrames": [
+          4,
+          5,
+          6
+        ],
+        "terminalHoldFrame": 6,
+        "simulationContract": "One-shot piloté par un hitstun existant. Ne pas changer la durée de stun ni ajouter du déplacement mondial d’après le décalage des cases. La pose 4 est une flexion, pas une chute/KO.",
+        "loopApproval": "do-not-loop-whole-sheet"
+      },
+      "expectedTransitions": [
+        {
+          "from": "combat-state",
+          "to": "hit-reaction",
+          "sequence": [
+            1,
+            2,
+            3
+          ],
+          "note": "Déclencher sur un événement de coup réellement reçu, pas en boucle."
+        },
+        {
+          "from": "hit-reaction",
+          "to": "ready",
+          "sequence": [
+            4,
+            5,
+            6
+          ],
+          "note": "Raccorder à la garde ou l’idle courant quand la simulation autorise la reprise."
+        }
+      ],
+      "beforeGameplayAcceptance": [
+        "Lecture animée des transitions et du raccord final.",
+        "Contrôle des contours après color-key et du recalage à l’échelle réelle du jeu.",
+        "Couplage aux états existants sans modifier hitboxes, dégâts, invulnérabilité ou cadence de simulation.",
+        "Validation humaine des mains et armes dans le mouvement ; les détails fins ne sont pas certifiés par une lecture statique."
+      ]
+    },
+    {
+      "id": "chopper-idle",
+      "characterId": "chopper",
+      "name": "Chopper",
+      "status": "usable-for-review",
+      "statusReason": "La séquence dessinée est lisible et peut être évaluée comme clip après détourage contrôlé et recalage ; aucun défaut anatomique franchement bloquant observé.",
+      "gameplayValidated": false,
+      "finalAnimationAccepted": false,
+      "canonicalOneToOneCertified": false,
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/chopper-idle.png",
+        "sha256": "55bb85222b65f2127633b4edaabbb8ea205c9b59d91879a91ec6ce7871bb7fc0",
+        "bytes": 2379626,
+        "width": 1536,
+        "height": 1024,
+        "bitDepth": 8,
+        "pngColorType": 2,
+        "hasAlpha": false,
+        "unchangedByReview": true
+      },
+      "registration": {
+        "path": "art-source/v27/known-yautja/frame-registration.json",
+        "entryId": "chopper-idle",
+        "sourceHashMatches": true,
+        "frameCount": 6,
+        "rectangles": "free-rectangles",
+        "pivots": "two-foot contact midpoint; lower near sole baseline",
+        "constantScaleRequired": true,
+        "perFrameStretchAllowed": false,
+        "automaticMirroringAllowed": false
+      },
+      "reviewEvidence": {
+        "wholeSheetInspected": true,
+        "readOnlyDetailCropsInspected": [
+          {
+            "frame": 1,
+            "sourceRect": [
+              105,
+              195,
+              102,
+              223
+            ],
+            "focus": "main proche, gantelet et attache de lame"
+          },
+          {
+            "frame": 1,
+            "sourceRect": [
+              340,
+              225,
+              140,
+              195
+            ],
+            "focus": "main opposée et lame"
+          }
+        ],
+        "playbackInspected": false,
+        "generatedByThisReviewer": false,
+        "independentSecondReviewer": null
+      },
+      "blockingDefects": [],
+      "importBlockers": [
+        {
+          "code": "opaque-nonuniform-magenta",
+          "scope": "direct-transparent-runtime-import",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Source PNG RGB opaque : magenta visuellement plat mais numériquement variable, pas un canal alpha.",
+          "resolution": "Préparer le color-key dans le pipeline contrôlé et vérifier contours, trous et halos. Ne pas remplacer par une prétendue transparence ni modifier les pixels sources."
+        },
+        {
+          "code": "unregistered-root",
+          "scope": "unaligned-frame-playback",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Positions des silhouettes et des appuis variables dans les cellules ; lecture brute provoquerait un glissement ou un saut de l’acteur.",
+          "resolution": "Utiliser les rectangles libres et pivots enregistrés, avec une seule échelle constante par acteur. Le recul de gameplay reste piloté par la simulation, pas inventé depuis les marges de la feuille."
+        }
+      ],
+      "nonBlockingConcerns": [
+        {
+          "code": "very-small-motion",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Garde presque statique. Utilisable pour tester un idle discret, pas à compter comme six gestes de combat différents ni comme respiration déjà démontrée en boucle."
+        },
+        {
+          "code": "tight-source-margins",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Les grandes piques et lames approchent les bords de rangée ; employer les cadres libres avec marge, sans découpe arbitraire ni étirement."
+        },
+        {
+          "code": "loop-seam-unverified",
+          "frames": [
+            6,
+            1
+          ],
+          "detail": "Vérifier le raccord retour vers la pose 1 à faible vitesse puis à vitesse réelle."
+        }
+      ],
+      "handsAndEquipment": [
+        "Deux piques portant deux crânes et deux grandes lames d’avant-bras restent visibles sur les six poses.",
+        "Les lames prolongent leurs gantelets ; aucune arme détachée ou prise impossible n’est visible dans les gros plans.",
+        "Les mains sont compactes ou légèrement ouvertes au repos, reliées aux poignets. Le détail de chaque doigt n’est pas certifié, mais aucune main franchement surnuméraire n’est constatée."
+      ],
+      "expectedMechanic": {
+        "intendedUse": "idle de combat avec micro-variations de garde",
+        "loopWholeSheet": true,
+        "candidateSequence": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "simulationContract": "Boucle visuelle sans root motion, attaque, extension supplémentaire des lames ni modification de hitbox.",
+        "loopApproval": "candidate-after-playback-review"
+      },
+      "expectedTransitions": [
+        {
+          "from": "idle",
+          "to": "idle",
+          "sequence": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1
+          ],
+          "note": "Tester le raccord à échelle constante ; conserver les pieds ancrés grâce aux pivots."
+        },
+        {
+          "from": "idle",
+          "to": "action",
+          "sequence": null,
+          "note": "Interrompre sur l’état réel de combat sans attendre une boucle complète."
+        }
+      ],
+      "beforeGameplayAcceptance": [
+        "Lecture animée des transitions et du raccord final.",
+        "Contrôle des contours après color-key et du recalage à l’échelle réelle du jeu.",
+        "Couplage aux états existants sans modifier hitboxes, dégâts, invulnérabilité ou cadence de simulation.",
+        "Validation humaine des mains et armes dans le mouvement ; les détails fins ne sont pas certifiés par une lecture statique."
+      ]
+    },
+    {
+      "id": "greyback-idle",
+      "characterId": "greyback",
+      "name": "Greyback / Elder",
+      "status": "usable-for-review",
+      "statusReason": "La séquence dessinée est lisible et peut être évaluée comme clip après détourage contrôlé et recalage ; aucun défaut anatomique franchement bloquant observé.",
+      "gameplayValidated": false,
+      "finalAnimationAccepted": false,
+      "canonicalOneToOneCertified": false,
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/greyback-idle.png",
+        "sha256": "d6893f4fbecce95f292d436be7ab311ee05882dbf96f774227d955003afd4b7f",
+        "bytes": 2005723,
+        "width": 1536,
+        "height": 1024,
+        "bitDepth": 8,
+        "pngColorType": 2,
+        "hasAlpha": false,
+        "unchangedByReview": true
+      },
+      "registration": {
+        "path": "art-source/v27/known-yautja/frame-registration.json",
+        "entryId": "greyback-idle",
+        "sourceHashMatches": true,
+        "frameCount": 6,
+        "rectangles": "free-rectangles",
+        "pivots": "two-foot contact midpoint; lower near sole baseline",
+        "constantScaleRequired": true,
+        "perFrameStretchAllowed": false,
+        "automaticMirroringAllowed": false
+      },
+      "reviewEvidence": {
+        "wholeSheetInspected": true,
+        "readOnlyDetailCropsInspected": [
+          {
+            "frame": 1,
+            "sourceRect": [
+              170,
+              206,
+              215,
+              128
+            ],
+            "focus": "deux poings, pistolet à la ceinture et gantelets"
+          }
+        ],
+        "playbackInspected": false,
+        "generatedByThisReviewer": true,
+        "independentSecondReviewer": "/root/modular_asset_audit"
+      },
+      "blockingDefects": [],
+      "importBlockers": [
+        {
+          "code": "opaque-nonuniform-magenta",
+          "scope": "direct-transparent-runtime-import",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Source PNG RGB opaque : magenta visuellement plat mais numériquement variable, pas un canal alpha.",
+          "resolution": "Préparer le color-key dans le pipeline contrôlé et vérifier contours, trous et halos. Ne pas remplacer par une prétendue transparence ni modifier les pixels sources."
+        },
+        {
+          "code": "unregistered-root",
+          "scope": "unaligned-frame-playback",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "finding": "Positions des silhouettes et des appuis variables dans les cellules ; lecture brute provoquerait un glissement ou un saut de l’acteur.",
+          "resolution": "Utiliser les rectangles libres et pivots enregistrés, avec une seule échelle constante par acteur. Le recul de gameplay reste piloté par la simulation, pas inventé depuis les marges de la feuille."
+        }
+      ],
+      "nonBlockingConcerns": [
+        {
+          "code": "breathing-not-established",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Six poses de garde très proches. Une boucle de repos peut être testée après recalage ; le mouvement respiratoire n’est pas encore établi par une lecture animée."
+        },
+        {
+          "code": "source-position-drift",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Déplacement des silhouettes dans les cases et changement de ligne de pieds entre rangées. Corrigeable par pivots sans altérer l’anatomie."
+        },
+        {
+          "code": "small-prop-detail",
+          "frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "detail": "Le pistolet rangé est stable mais petit ; éviter une promesse de gravure/forme exacte ou l’ajout d’une action de dégainage à partir de ces poses."
+        }
+      ],
+      "handsAndEquipment": [
+        "Variante démasquée cohérente, visage âgé, dreads gris-bleu sombres et canon unique maintenus.",
+        "Les deux poings sont plausibles dans le gros plan et la seconde lecture ; aucun doigt manifestement surnuméraire constaté. Mandibules et petits détails non certifiés.",
+        "Le pistolet reste rangé à la même zone de ceinture ; ne pas déduire d’inscription lisible ni une exactitude de son mécanisme à cette échelle."
+      ],
+      "expectedMechanic": {
+        "intendedUse": "idle démasqué, garde au repos",
+        "loopWholeSheet": true,
+        "candidateSequence": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "simulationContract": "Aucun déplacement mondial et aucun dégainage. L’idle ne change pas de masque, canon ou équipement.",
+        "loopApproval": "candidate-after-playback-review"
+      },
+      "expectedTransitions": [
+        {
+          "from": "idle",
+          "to": "idle",
+          "sequence": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1
+          ],
+          "note": "Vérifier le souffle discret et le raccord, pas seulement la différence de pixels."
+        },
+        {
+          "from": "idle",
+          "to": "action",
+          "sequence": null,
+          "note": "Raccorder au même variant démasqué et au même équipement ; ne pas utiliser comme animation de cadeau/tir du pistolet."
+        }
+      ],
+      "beforeGameplayAcceptance": [
+        "Lecture animée des transitions et du raccord final.",
+        "Contrôle des contours après color-key et du recalage à l’échelle réelle du jeu.",
+        "Couplage aux états existants sans modifier hitboxes, dégâts, invulnérabilité ou cadence de simulation.",
+        "Validation humaine des mains et armes dans le mouvement ; les détails fins ne sont pas certifiés par une lecture statique."
+      ]
+    }
+  ],
+  "nextAcceptanceGate": [
+    "Préparer les sources dans le lecteur avec rectangles libres, color-key explicite et pivots enregistrés.",
+    "Examiner les cinq séquences en mouvement à l’échelle du jeu, notamment les raccords 6→1 des idles et les changements d’armes occultées.",
+    "Segmenter entrée/maintien/sortie des gardes ; ne pas boucler le déploiement complet lorsque le joueur maintient une défense.",
+    "Ne relier au gameplay qu’après contrôle séparé des états et de leur durée. Aucun changement de simulation n’est autorisé par cette revue."
+  ]
+}

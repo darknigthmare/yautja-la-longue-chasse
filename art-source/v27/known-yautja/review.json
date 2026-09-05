@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "scope": "Known Yautja only; authored sprite trials and registration; not full roster completion",
+  "createdOn": "2026-09-05",
+  "entries": [
+    {
+      "id": "wolf-high-guard",
+      "name": "Wolf",
+      "variantId": "avpr-2007-dual-caster",
+      "action": "Garde haute — entrée, protection, sortie",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Six poses V26 conservées ; seuls le découpage et les appuis de lecture changent.",
+        "Contrôler la continuité des deux canons et des lames pendant les transitions.",
+        "Séparer entrée, maintien et sortie avant raccordement à high-guard / blockstun.high."
+      ]
+    },
+    {
+      "id": "feral-shield-guard",
+      "name": "Feral",
+      "variantId": "prey-2022-shield",
+      "action": "Bouclier — ouverture, garde, fermeture",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Six poses V26 conservées, appuis recalés sans changer leur échelle.",
+        "Le bras gauche peut être caché par son bouclier opaque ; ce n'est pas une main manquante.",
+        "Contrôler l'articulation des segments et la main droite en lecture lente."
+      ]
+    },
+    {
+      "id": "wolf-hit-reaction",
+      "name": "Wolf",
+      "variantId": "avpr-2007-dual-caster",
+      "action": "Coup reçu — recul et récupération",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Nouvelle source OpenAI V27, six dessins.",
+        "Le canon de la troisième pose dépasse la grille théorique mais pas la figure voisine : un rectangle libre le conserve.",
+        "Le deuxième canon de la pose 2 n'est pas confirmable sur cette vue ; fidélité à revoir avant intégration."
+      ]
+    },
+    {
+      "id": "chopper-idle",
+      "name": "Chopper",
+      "variantId": "avp-2004-scimitars",
+      "action": "Attente — essai de respiration",
+      "status": "draft",
+      "loop": true,
+      "notes": [
+        "Nouvelle source OpenAI V27, six cellules ; mouvements très faibles à contrôler en superposition.",
+        "Les deux crânes sur piques et les deux scimitars fixés aux avant-bras doivent rester rigides.",
+        "Une image différente par empreinte ne suffit pas à prouver une respiration lisible."
+      ]
+    },
+    {
+      "id": "greyback-idle",
+      "name": "Greyback / Elder",
+      "variantId": "predator2-1990-unmasked",
+      "action": "Attente — respiration démasquée",
+      "status": "draft",
+      "loop": true,
+      "notes": [
+        "Nouvelle source OpenAI V27, visage démasqué constant, arme rangée.",
+        "Référence du pistolet : Raphael Adolini 1715 ; aucune inscription nouvelle ne doit être inventée.",
+        "Contrôler visage, mains, chevelure et ancrage du canon pendant la boucle."
+      ]
+    }
+  ],
+  "discardedExperiments": [
+    {
+      "id": "jungle-walk-contact-01",
+      "reason": "Le dessin ne permet pas de confirmer l'alternance des jambes demandée ; non retenu.",
+      "savedSource": false
+    },
+    {
+      "id": "jungle-walk-contact-05",
+      "reason": "Même jambe de contact que l'autre essai et canon d'épaule absent ; non retenu.",
+      "savedSource": false
+    }
+  ],
+  "fidelityReferences": [
+    {
+      "characterId": "chopper",
+      "url": "https://www.prime1studio.com/avp-chopper-predator/MMPR-06.html",
+      "notes": "Source officielle sous licence : masque à branchies, scimitars montés aux avant-bras, deux crânes humains sur piques dorsales."
+    },
+    {
+      "characterId": "greyback",
+      "url": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+      "notes": "Elder / Greyback de Predator 2, pistolet à silex et variantes de tête."
+    },
+    {
+      "characterId": "greyback",
+      "url": "https://www.hottoys.jp/item/view/100002566",
+      "notes": "Référence officielle du pistolet portant Raphael Adolini 1715."
+    }
+  ],
+  "completion": {
+    "newSheets": 3,
+    "newCells": 18,
+    "reRegisteredExistingSheets": 2,
+    "existingCells": 12,
+    "gameplayValidatedClips": 0,
+    "completeCharacters": 0
+  }
+}

@@ -123,10 +123,22 @@ export default function PitAnimationLab() {
         <div>
           <p className={styles.eyebrow}>THE PIT · CONTRÔLE DE PRODUCTION</p>
           <h1>Atelier d’animation</h1>
-          <p>Corps et équipement séparés, gestes calculés sur les images de simulation.</p>
+          <p>Revue des planches dessinées et contrôle des rigs provisoires.</p>
         </div>
         <Link href="/" className={styles.back}>Retour au jeu</Link>
       </header>
+      <section className={styles.notice} aria-label="Revue des planches dessinées">
+        <div className={styles.buttons}>
+          <a className={styles.back} href="/game/assets/v27/sprite-review/index.html"
+            target="_blank" rel="noopener noreferrer" aria-describedby="sprite-review-v27-status">
+            Planches dessinées · revue V27
+          </a>
+        </div>
+        <p id="sprite-review-v27-status">
+          <strong>Brouillons · 5 séquences · 30 cellules.</strong>{" "}
+          Ces essais ne constituent pas des animations complètes de personnages et ne sont pas validés pour les combats.
+        </p>
+      </section>
       <p className={styles.notice}>
         <strong>Rigs V3 provisoires · fidélité des personnages non validée.</strong>{" "}
         Les masques et armures doivent encore être corrigés. Cet atelier ne remplace pas le rendu des combats ni les illustrations V23.

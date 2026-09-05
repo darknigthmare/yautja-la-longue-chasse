@@ -8,9 +8,17 @@ export type HunterSpriteFacing = "left" | "right";
 export type HunterSpriteRect = readonly [x: number, y: number, width: number, height: number];
 export type HunterSpritePivot = readonly [x: number, y: number];
 
+/** Opt-in RGB despill, bounded to the connected outer background fringe. */
+export interface HunterSpriteMagentaFringe {
+  readonly mode: "connected-magenta";
+  readonly radius: 1 | 2 | 3;
+  readonly minExcess: number;
+  readonly strength: number;
+}
+
 export type HunterSpriteTransparency =
   | { readonly mode: "alpha" }
-  | { readonly mode: "color-key"; readonly rgb: readonly [red: number, green: number, blue: number]; readonly tolerance: number };
+  | { readonly mode: "color-key"; readonly rgb: readonly [red: number, green: number, blue: number]; readonly tolerance: number; readonly fringe?: HunterSpriteMagentaFringe };
 
 export interface HunterSpriteAtlasPage {
   readonly id: string;
@@ -105,6 +113,9 @@ export function validateHunterSpriteAtlas(value: unknown): HunterSpriteAtlasVali
         !transparency.rgb.every((channel: unknown) => typeof channel === "number" &&
           Number.isInteger(channel) && channel >= 0 && channel <= 255)) {
         report(path + ".transparency.rgb", "invalid-color-key");
+      }
+      if (transparency.fringe !== undefined && !validMagentaFringe(transparency.fringe, transparency.rgb)) {
+        report(path + ".transparency.fringe", "invalid-magenta-fringe");
       }
       if (!finite(transparency.tolerance) || transparency.tolerance < 0 ||
         transparency.tolerance > 64 || !Number.isInteger(transparency.tolerance)) {
@@ -321,6 +332,111 @@ const defaultReadbackCanvas = (): HunterSpriteReadbackCanvas => {
   throw new Error("Canvas readback unavailable.");
 };
 
+function validMagentaFringe(value: unknown, rgb: unknown): value is HunterSpriteMagentaFringe {
+  return isRecord(value) && value.mode === "connected-magenta" &&
+    Array.isArray(rgb) && rgb[0] === 255 && rgb[1] === 0 && rgb[2] === 255 &&
+    (value.radius === 1 || value.radius === 2 || value.radius === 3) &&
+    typeof value.minExcess === "number" && Number.isInteger(value.minExcess) &&
+    value.minExcess >= 16 && value.minExcess <= 96 &&
+    typeof value.strength === "number" && Number.isFinite(value.strength) &&
+    value.strength > 0 && value.strength <= 1;
+}
+
+export interface HunterSpriteTransparencyResult {
+  readonly pixels: Uint8ClampedArray;
+  readonly keyedPixels: number;
+  /** RGB-corrected pixels, not removed pixels or approved animation frames. */
+  readonly fringePixels: number;
+}
+
+/**
+ * Pure preview/runtime pixel processing; does not approve art or change sources.
+ * The original RGB tolerance still defines the reserved key color everywhere.
+ * Optional despill can only grow 1-3 pixels from edge-connected background,
+ * through magenta-dominant pixels. It never changes non-key alpha, greens or
+ * interior colors behind an uncontaminated contour. Enclosed key islands do
+ * not become fringe seeds. No broad purple deletion or silhouette erosion.
+ */
+export function processHunterSpriteTransparency(
+  source: Uint8ClampedArray,
+  width: number,
+  height: number,
+  config: HunterSpriteTransparency,
+): HunterSpriteTransparencyResult {
+  if (!positiveInteger(width) || !positiveInteger(height) ||
+    !Number.isSafeInteger(width * height * 4) || source.length !== width * height * 4) {
+    throw new RangeError("Invalid sprite pixel dimensions.");
+  }
+  if (!config || (config.mode !== "alpha" && config.mode !== "color-key")) {
+    throw new RangeError("Explicit transparency configuration required.");
+  }
+  const pixels = new Uint8ClampedArray(source);
+  if (config.mode === "alpha") return { pixels, keyedPixels: 0, fringePixels: 0 };
+  const { rgb, tolerance, fringe } = config;
+  if (!Array.isArray(rgb) || rgb.length !== 3 ||
+    !rgb.every(channel => Number.isInteger(channel) && channel >= 0 && channel <= 255) ||
+    !Number.isInteger(tolerance) || tolerance < 0 || tolerance > 64 ||
+    (fringe !== undefined && !validMagentaFringe(fringe, rgb))) {
+    throw new RangeError("Invalid color-key or bounded magenta-fringe configuration.");
+  }
+  const count = width * height;
+  const keyMask = fringe ? new Uint8Array(count) : null;
+  let keyedPixels = 0;
+  for (let pixel = 0; pixel < count; pixel++) {
+    const offset = pixel * 4;
+    const keyed = Math.abs(source[offset] - rgb[0]) <= tolerance &&
+      Math.abs(source[offset + 1] - rgb[1]) <= tolerance &&
+      Math.abs(source[offset + 2] - rgb[2]) <= tolerance;
+    if (keyed && source[offset + 3] > 0) {
+      pixels[offset + 3] = 0;
+      keyedPixels++;
+    }
+    if (keyMask && (keyed || source[offset + 3] === 0)) keyMask[pixel] = 1;
+  }
+  if (!fringe || !keyMask) return { pixels, keyedPixels, fringePixels: 0 };
+
+  // Four-connectivity cannot jump diagonally through a one-pixel contour.
+  const seen = new Uint8Array(count);
+  const distance = new Uint8Array(count);
+  const queue = new Uint32Array(count);
+  let length = 0;
+  const seed = (pixel: number) => {
+    if (keyMask[pixel] && !seen[pixel]) { seen[pixel] = 1; queue[length++] = pixel; }
+  };
+  for (let x = 0; x < width; x++) { seed(x); seed((height - 1) * width + x); }
+  for (let y = 0; y < height; y++) { seed(y * width); seed(y * width + width - 1); }
+  const neighbors = (pixel: number, visit: (neighbor: number) => void) => {
+    const x = pixel % width;
+    if (x > 0) visit(pixel - 1);
+    if (x + 1 < width) visit(pixel + 1);
+    if (pixel >= width) visit(pixel - width);
+    if (pixel + width < count) visit(pixel + width);
+  };
+  // Complete the background flood before adding a single fringe candidate.
+  for (let index = 0; index < length; index++) neighbors(queue[index], seed);
+  let fringePixels = 0;
+  for (let index = 0; index < length; index++) {
+    const pixel = queue[index];
+    if (distance[pixel] >= fringe.radius) continue;
+    neighbors(pixel, (neighbor) => {
+      if (seen[neighbor] || keyMask[neighbor]) return;
+      const offset = neighbor * 4;
+      const excess = Math.min(source[offset], source[offset + 2]) - source[offset + 1];
+      if (excess < fringe.minExcess) return;
+      seen[neighbor] = 1;
+      distance[neighbor] = distance[pixel] + 1;
+      queue[length++] = neighbor;
+      const correction = Math.round(excess * fringe.strength);
+      if (correction === 0) return;
+      pixels[offset] = source[offset] - correction;
+      pixels[offset + 2] = source[offset + 2] - correction;
+      // Keep coverage/alpha and green exactly: even a one-pixel dread survives.
+      fringePixels++;
+    });
+  }
+  return { pixels, keyedPixels, fringePixels };
+}
+
 /** Require a transparent outer border and visible content in every reviewed cell. */
 function reviewedCellDigest(
   pixels: Uint8ClampedArray, pageWidth: number, rect: HunterSpriteRect,
@@ -375,12 +491,8 @@ export function prepareHunterSpriteAtlasPage(
     const pixels = imageData.data;
     if (pixels.length !== page.width * page.height * 4) return null;
     if (page.transparency.mode === "color-key") {
-      const { rgb, tolerance } = page.transparency;
-      for (let offset = 0; offset < pixels.length; offset += 4) {
-        if (Math.abs(pixels[offset] - rgb[0]) <= tolerance &&
-          Math.abs(pixels[offset + 1] - rgb[1]) <= tolerance &&
-          Math.abs(pixels[offset + 2] - rgb[2]) <= tolerance) pixels[offset + 3] = 0;
-      }
+      const processed = processHunterSpriteTransparency(pixels, page.width, page.height, page.transparency);
+      pixels.set(processed.pixels);
       context.putImageData(imageData, 0, 0);
     }
     const frameDigests = new Map<string, string>();

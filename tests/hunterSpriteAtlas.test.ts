@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
+import sharp from "sharp";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
 import type {
@@ -273,4 +275,127 @@ test("lookup and coverage do not mutate even a deeply frozen manifest", () => {
   }
   api.countHunterSpriteAtlasCoverage([atlas], [requirement()]);
   assert.equal(JSON.stringify(atlas), serialized);
+});
+
+
+const fringeConfig = {
+  mode: "color-key", rgb: [255, 0, 255], tolerance: 48,
+  fringe: { mode: "connected-magenta", radius: 2, minExcess: 24, strength: 1 },
+} as const;
+function pixelFixture(width = 16, height = 16) {
+  const pixels = new Uint8ClampedArray(width * height * 4);
+  for (let i = 0; i < pixels.length; i += 4) pixels.set([255, 0, 255, 255], i);
+  const set = (x: number, y: number, rgba: readonly number[]) => pixels.set(rgba, (y * width + x) * 4);
+  const get = (data: Uint8ClampedArray, x: number, y: number) => [...data.slice((y * width + x) * 4, (y * width + x + 1) * 4)];
+  return { width, height, pixels, set, get };
+}
+
+test("optional fringe despill is bounded, non-destructive and preserves thin opaque dreads", () => {
+  const sample = pixelFixture();
+  for (let y = 3; y <= 12; y++) for (let x = 3; x <= 12; x++) sample.set(x, y, [30, 55, 40, 255]);
+  // Actual Wolf fringe colors on two directly connected rows.
+  for (let x = 5; x <= 10; x++) {
+    sample.set(x, 3, [195, 10, 176, 255]);
+    sample.set(x, 4, [143, 14, 125, 255]);
+    sample.set(x, 5, [171, 24, 153, 255]);
+  }
+  sample.set(8, 8, [150, 20, 180, 255]); // Intentional interior purple.
+  for (let y = 3; y <= 12; y++) sample.set(1, y, [20, 15, 17, 255]); // One-pixel dread.
+  const before = new Uint8ClampedArray(sample.pixels);
+  const result = api.processHunterSpriteTransparency(sample.pixels, sample.width, sample.height, fringeConfig);
+  assert.deepEqual(sample.pixels, before);
+  assert.deepEqual(sample.get(result.pixels, 8, 3), [29, 10, 10, 255]);
+  assert.deepEqual(sample.get(result.pixels, 8, 4), [32, 14, 14, 255]);
+  assert.deepEqual(sample.get(result.pixels, 8, 5), [171, 24, 153, 255], "third contaminated row is outside radius two");
+  assert.deepEqual(sample.get(result.pixels, 8, 8), [150, 20, 180, 255]);
+  for (let y = 3; y <= 12; y++) assert.deepEqual(sample.get(result.pixels, 1, y), [20, 15, 17, 255]);
+  assert.ok(result.fringePixels > 0);
+  for (let i = 0; i < before.length; i += 4) {
+    if (!(before[i] >= 207 && before[i + 1] <= 48 && before[i + 2] >= 207)) {
+      assert.equal(result.pixels[i + 3], before[i + 3], "despill never erodes alpha outside the reserved key");
+    }
+  }
+});
+
+test("enclosed key islands cannot seed interior despill and diagonals cannot bypass a thin contour", () => {
+  const sample = pixelFixture(7, 7);
+  for (let y = 1; y < 6; y++) for (let x = 1; x < 6; x++) sample.set(x, y, [30, 55, 40, 255]);
+  sample.set(3, 3, [255, 0, 255, 255]); // Base key policy still applies to reserved magenta.
+  sample.set(3, 4, [150, 20, 180, 255]);
+  const result = api.processHunterSpriteTransparency(sample.pixels, 7, 7, fringeConfig);
+  assert.equal(sample.get(result.pixels, 3, 3)[3], 0);
+  assert.deepEqual(sample.get(result.pixels, 3, 4), [150, 20, 180, 255]);
+  const diagonal = pixelFixture(3, 3);
+  for (let y = 0; y < 3; y++) for (let x = 0; x < 3; x++) diagonal.set(x, y, [30, 55, 40, 255]);
+  diagonal.set(0, 0, [255, 0, 255, 255]);
+  diagonal.set(1, 1, [150, 20, 180, 255]);
+  const untouched = api.processHunterSpriteTransparency(diagonal.pixels, 3, 3, fringeConfig);
+  assert.deepEqual(diagonal.get(untouched.pixels, 1, 1), [150, 20, 180, 255]);
+  assert.equal(untouched.fringePixels, 0);
+});
+
+test("legacy color-key and alpha mode remain unchanged unless explicit bounded fringe is requested", () => {
+  const sample = pixelFixture(3, 3);
+  sample.set(1, 1, [195, 10, 176, 128]);
+  const original = new Uint8ClampedArray(sample.pixels);
+  const legacy = api.processHunterSpriteTransparency(sample.pixels, 3, 3, {
+    mode: "color-key", rgb: [255, 0, 255], tolerance: 48,
+  });
+  assert.deepEqual(sample.get(legacy.pixels, 1, 1), [195, 10, 176, 128]);
+  assert.equal(legacy.fringePixels, 0);
+  const half = api.processHunterSpriteTransparency(sample.pixels, 3, 3, {
+    ...fringeConfig, fringe: { ...fringeConfig.fringe, strength: 0.5 },
+  });
+  assert.deepEqual(sample.get(half.pixels, 1, 1), [112, 10, 93, 128]);
+  const alpha = api.processHunterSpriteTransparency(sample.pixels, 3, 3, { mode: "alpha" });
+  assert.deepEqual(alpha.pixels, original);
+  assert.notEqual(alpha.pixels, sample.pixels);
+});
+
+test("invalid or broad fringe configurations fail validation and never approve a draft", () => {
+  const reviewed = review();
+  for (const bad of [
+    { ...fringeConfig, fringe: { ...fringeConfig.fringe, radius: 4 } },
+    { ...fringeConfig, fringe: { ...fringeConfig.fringe, minExcess: 0 } },
+    { ...fringeConfig, fringe: { ...fringeConfig.fringe, strength: 2 } },
+    { ...fringeConfig, rgb: [0, 255, 0] },
+  ]) {
+    const invalid = { ...reviewed, pages: [{ ...reviewed.pages[0], transparency: bad }] };
+    assert.equal(api.validateHunterSpriteAtlas(invalid).valid, false);
+    assert.throws(() => api.processHunterSpriteTransparency(new Uint8ClampedArray(16), 2, 2,
+      bad as unknown as Parameters<typeof api.processHunterSpriteTransparency>[3]), RangeError);
+  }
+  assert.throws(() => api.processHunterSpriteTransparency(new Uint8ClampedArray(15), 2, 2, fringeConfig), RangeError);
+  const unreviewed = { ...draft(), pages: [{ ...draft().pages[0], transparency: fringeConfig }] };
+  const sample = fixture(unreviewed.pages[0]);
+  assert.equal(api.prepareHunterSpriteAtlasPage(unreviewed, unreviewed.pages[0].id, sample.image, sample.createCanvas), null);
+  assert.equal(api.countHunterSpriteAtlasCoverage([unreviewed], [requirement()]).coveredCount, 0);
+});
+
+test("real V26 Wolf/Feral fringe improves in memory while original pixels and all non-key alpha are preserved", async () => {
+  for (const name of ["wolf-high-guard", "feral-shield-guard"]) {
+    const path = new URL("../art-source/v26/known-yautja/sources/" + name + ".png", import.meta.url);
+    const source = await readFile(path);
+    const { data, info } = await sharp(source).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    const pixels = new Uint8ClampedArray(data);
+    const original = new Uint8ClampedArray(pixels);
+    const result = api.processHunterSpriteTransparency(pixels, info.width, info.height, fringeConfig);
+    assert.ok(result.fringePixels > 1000, name + " must exercise real contaminated edges");
+    let changed = 0;
+    for (let offset = 0; offset < pixels.length; offset += 4) {
+      if (result.pixels[offset] !== original[offset] || result.pixels[offset + 2] !== original[offset + 2]) {
+        changed++;
+        assert.ok(result.pixels[offset] <= original[offset]);
+        assert.ok(result.pixels[offset + 2] <= original[offset + 2]);
+        assert.equal(result.pixels[offset + 1], original[offset + 1]);
+        assert.equal(result.pixels[offset + 3], original[offset + 3], "color-corrected thin contours retain coverage");
+      }
+      if (!(original[offset] >= 207 && original[offset + 1] <= 48 && original[offset + 2] >= 207)) {
+        assert.equal(result.pixels[offset + 3], original[offset + 3]);
+      }
+    }
+    assert.equal(changed, result.fringePixels);
+    assert.deepEqual(pixels, original);
+    assert.deepEqual(await readFile(path), source, "PNG source remains byte-for-byte intact");
+  }
 });
