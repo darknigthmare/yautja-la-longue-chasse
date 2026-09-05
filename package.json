@@ -50,9 +50,10 @@
     "build:desktop": "vite build --config desktop/vite.config.ts",
     "package:windows": "npm run build:desktop && node scripts/package-desktop.mjs",
     "qa:desktop": "node scripts/verify-desktop.mjs",
-    "sprites:qa": "node scripts/audit-known-yautja-sprite-roster.mjs --check && node scripts/audit-known-yautja-sprite-batch.mjs && node scripts/build-known-yautja-sprite-preview-v27.mjs --check && node --experimental-strip-types --test tests/hunterSpriteAtlas.test.ts tests/hunterSpriteMotion.test.ts",
-    "sprites:preview": "node scripts/build-known-yautja-sprite-preview-v27.mjs",
-    "sprites:preview:v26": "node scripts/build-known-yautja-sprite-preview.mjs"
+    "sprites:qa": "node scripts/audit-known-yautja-sprite-roster.mjs --check && node scripts/audit-known-yautja-sprite-batch.mjs && node scripts/build-known-yautja-sprite-preview-v27.mjs --check && node scripts/build-known-hunter-sprite-preview-v28.mjs --check && node --experimental-strip-types --test tests/hunterSpriteAtlas.test.ts tests/hunterSpriteMotion.test.ts tests/known-hunter-preview-v28.test.mjs",
+    "sprites:preview": "node scripts/build-known-hunter-sprite-preview-v28.mjs",
+    "sprites:preview:v26": "node scripts/build-known-yautja-sprite-preview.mjs",
+    "sprites:preview:v27": "node scripts/build-known-yautja-sprite-preview-v27.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

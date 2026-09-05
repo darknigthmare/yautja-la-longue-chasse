@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 1,
+  "scope": "Tracker2010 V28 corrected single-caster sheet: mechanical registration proposals; source pixels unchanged",
+  "reviewDate": "2026-09-05",
+  "entries": [
+    {
+      "id": "tracker-guard-absorb",
+      "characterId": "tracker",
+      "clip": "guard-absorb",
+      "status": "draft-registration-only",
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb-v2.png",
+        "sha256": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+        "sha256AfterRead": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+        "unchanged": true,
+        "bytes": 1932274,
+        "width": 1536,
+        "height": 1024,
+        "channels": 3,
+        "hasAlpha": false,
+        "background": "opaque magenta; no alpha conversion performed"
+      },
+      "measurementMethod": {
+        "separation": "Full-width column projection inside each half-height row, separated by12 consecutive empty columns; no512px-wide clipping.",
+        "boundsPolicy": "Union of t160/180/200 bounds plus8px margin.",
+        "pivotPolicy": "Midpoint of two measured sole contact spans, at lower/near sole baseline. Constant scale across the clip."
+      },
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            148,
+            35,
+            282,
+            435
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                148,
+                35,
+                282,
+                435
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                148,
+                35,
+                282,
+                435
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                148,
+                35,
+                283,
+                435
+              ]
+            }
+          ],
+          "rectPx": [
+            140,
+            27,
+            299,
+            451
+          ],
+          "pivotSourcePx": {
+            "x": 275,
+            "y": 470
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 443
+          },
+          "pivotInNominalCellPx": {
+            "x": 275,
+            "y": 470
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 185.5,
+                "y": 470
+              },
+              "contactSpanPx": [
+                158,
+                213
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 364.5,
+                "y": 462
+              },
+              "contactSpanPx": [
+                322,
+                407
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Two plausible empty hands, single right forearm blade, two mask tusks. Corrected sheet shows one open shoulder-caster bore; lower duplicate muzzle from first draft removed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 2,
+          "stage": "raising-high-guard",
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            612,
+            38,
+            260,
+            434
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                612,
+                38,
+                260,
+                434
+              ]
+            }
+          ],
+          "rectPx": [
+            604,
+            30,
+            276,
+            450
+          ],
+          "pivotSourcePx": {
+            "x": 739,
+            "y": 472
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 442
+          },
+          "pivotInNominalCellPx": {
+            "x": 227,
+            "y": 472
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 472
+              },
+              "contactSpanPx": [
+                621,
+                677
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 829,
+                "y": 465
+              },
+              "contactSpanPx": [
+                787,
+                871
+              ],
+              "lowerFootBandWidthPx": 90
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Two fists raised near head; single right forearm blade follows housing. Single caster partly obscured by mask/guard, no second muzzle observed.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 3,
+          "stage": "high-guard",
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1086,
+            35,
+            259,
+            438
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                437
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                438
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1086,
+                35,
+                259,
+                438
+              ]
+            }
+          ],
+          "rectPx": [
+            1078,
+            27,
+            275,
+            454
+          ],
+          "pivotSourcePx": {
+            "x": 1212.75,
+            "y": 473
+          },
+          "pivotPx": {
+            "x": 134.75,
+            "y": 446
+          },
+          "pivotInNominalCellPx": {
+            "x": 188.75,
+            "y": 473
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1123.5,
+                "y": 473
+              },
+              "contactSpanPx": [
+                1096,
+                1151
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1260,
+                1344
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "High guard: both fists present and separate. Mask tusks retained, no held sword. Fine finger/thumb arrangement not anatomically certified.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 4,
+          "stage": "blocked-impact-compression",
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            155,
+            572,
+            272,
+            392
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                155,
+                572,
+                272,
+                392
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                155,
+                572,
+                272,
+                392
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                154,
+                572,
+                274,
+                392
+              ]
+            }
+          ],
+          "rectPx": [
+            146,
+            564,
+            290,
+            408
+          ],
+          "pivotSourcePx": {
+            "x": 292.75,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 146.75,
+            "y": 400
+          },
+          "pivotInNominalCellPx": {
+            "x": 292.75,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 201.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                174,
+                229
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 384,
+                "y": 955
+              },
+              "contactSpanPx": [
+                342,
+                426
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Blocked-hit recoil with knees bent and torso backward. Two hands remain in guard. Caster can be normally occluded by head/guard; hidden equipment is not certified absent or present from this frame alone.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 5,
+          "stage": "guard-recovery",
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            612,
+            534,
+            259,
+            430
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                612,
+                535,
+                259,
+                429
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                612,
+                534,
+                259,
+                430
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                612,
+                534,
+                260,
+                430
+              ]
+            }
+          ],
+          "rectPx": [
+            604,
+            526,
+            276,
+            446
+          ],
+          "pivotSourcePx": {
+            "x": 738.25,
+            "y": 964
+          },
+          "pivotPx": {
+            "x": 134.25,
+            "y": 438
+          },
+          "pivotInNominalCellPx": {
+            "x": 226.25,
+            "y": 452
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 648.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                621,
+                676
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 828,
+                "y": 957
+              },
+              "contactSpanPx": [
+                786,
+                870
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Return toward ready with two hands and one wrist blade. One shoulder caster visible; corrected sheet preserves the tusked mask and armor.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "measuredBoundsPx": [
+            1092,
+            535,
+            282,
+            430
+          ],
+          "thresholdBounds": [
+            {
+              "threshold": 160,
+              "boundsPx": [
+                1092,
+                535,
+                282,
+                430
+              ]
+            },
+            {
+              "threshold": 180,
+              "boundsPx": [
+                1092,
+                535,
+                282,
+                430
+              ]
+            },
+            {
+              "threshold": 200,
+              "boundsPx": [
+                1092,
+                534,
+                282,
+                431
+              ]
+            }
+          ],
+          "rectPx": [
+            1084,
+            526,
+            298,
+            447
+          ],
+          "pivotSourcePx": {
+            "x": 1219,
+            "y": 965
+          },
+          "pivotPx": {
+            "x": 135,
+            "y": 439
+          },
+          "pivotInNominalCellPx": {
+            "x": 195,
+            "y": 453
+          },
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1129.5,
+                "y": 965
+              },
+              "contactSpanPx": [
+                1102,
+                1157
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1308.5,
+                "y": 957
+              },
+              "contactSpanPx": [
+                1267,
+                1350
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "uniformScaleMultiplier": 1,
+          "anatomyReview": "Ready recovered: two hands, one right forearm blade and one shoulder caster observed. No duplicate lower muzzle. Loop/transition alignment needs playback review.",
+          "status": "registration-proposal-not-art-approved",
+          "observedMaskState": "masked with two ivory tusks",
+          "observedBladeConfiguration": "one blade on anatomical-right forearm gauntlet; hands empty",
+          "intendedShoulderCannonCount": 1
+        }
+      ],
+      "checks": {
+        "frameCount": 6,
+        "rectanglesInsideSource": true,
+        "rectanglesDisjoint": true,
+        "thresholdCoverage": [
+          {
+            "threshold": 160,
+            "measuredForegroundPixels": 345466,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 180,
+            "measuredForegroundPixels": 346538,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          },
+          {
+            "threshold": 200,
+            "measuredForegroundPixels": 347966,
+            "foregroundPixelsOutsideRegisteredRects": 0
+          }
+        ],
+        "actualFiguresOverlapObserved": false,
+        "nearFootWidthRangePx": [
+          65,
+          66
+        ],
+        "silhouetteHeightRangePx": [
+          392,
+          438
+        ],
+        "nominalRootXRangePx": [
+          188.75,
+          292.75
+        ],
+        "nominalRootYRangePx": [
+          452,
+          473
+        ],
+        "automaticRescaleRecommended": false,
+        "animationPlaybackVerified": false,
+        "anatomyCertified": false,
+        "cinemaFidelityCertified": false,
+        "promptMaxTotalHeightPx": 340,
+        "promptHeightLimitMet": false,
+        "promptMinimumMarginPx": 75,
+        "promptMarginMet": false,
+        "requestedUniformMagentaBackgroundMet": false,
+        "correctedEquipmentIssue": "Second barrel-like opening from original draft replaced through integrated image generation; original preserved."
+      },
+      "actionReview": {
+        "requested": "Tracker2010 raises high guard, absorbs a blocked impact, recovers.",
+        "observed": "Ready, raised forearms, high guard, backward compression, recovery and ready return are visible. Frames2/3 are close, frame4 is the clearest absorption pose.",
+        "recommendation": "Treat as guard entry1-3, optional held frame3, blocked-hit reaction4-5, return6; do not loop impacts as an idle.",
+        "limits": [
+          "Actual playback/transition timing not verified here",
+          "Pose2/3 difference is small; not a locomotion clip",
+          "Caster in frame4 can be hidden by ordinary overlap",
+          "Mask proportions and blade projection are not a1:1 film match"
+        ]
+      },
+      "notes": [
+        "Selected PNG is tracker-guard-absorb-v2.png, generated solely through integrated OpenAI correction. Original tracker-guard-absorb.png is retained as rejected equipment draft.",
+        "No creative script retouching or source overwrite. Source RGB PNG bytes reconstructed from integrated dataURL and SHA verified.",
+        "Read-only official Hot Toys/Sideshow browser references were inspected before generation; V5 two-blade/netting approximations were not treated as canon.",
+        "Body heights392-438px exceed the requested340px maximum; silhouettes remain complete and frame rectangles do not overlap. No per-frame rescaling.",
+        "Near-foot width65-66px is stable across poses; source sheet placement drifts and is corrected only by pivots at one constant scale.",
+        "Magenta is opaque and nonuniform despite the prompt. No checkerboard observed. Color-key rendering and final hand/edge review remain runtime work.",
+        "Self-review supports usable-for-review after registration, not gameplay approval, anatomy certification or global1:1 fidelity.",
+        "Selected v2 background samples: corners223,13,228 /227,22,230 /218,36,224 /224,33,227; gutter239,5,241. Integrated correction is a new source; unchanged-source SHA refers to preserving its bytes after generation, not matching the first draft."
+      ]
+    }
+  ]
+}

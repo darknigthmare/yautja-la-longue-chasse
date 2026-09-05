@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chasseurs connus — revue des sprites V28</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101714;color:#e5eae2;font:15px/1.5 system-ui,sans-serif}
+main{max-width:1420px;margin:auto;padding:24px}h1{font-size:clamp(24px,3vw,34px);margin:0}h2{font-size:21px;margin:10px 0}
+p{overflow-wrap:anywhere}.muted{color:#afc0b2}.notice{margin:18px 0;padding:14px 18px;background:#302a1c;border-left:4px solid #d6ac66}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+button,select{font:inherit;color:inherit;background:#263b2e;border:1px solid #637c68;border-radius:6px;padding:8px 12px;min-height:44px}
+button{cursor:pointer}button:disabled,select:disabled{opacity:.5;cursor:default}
+label{display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:100%;min-width:0}select{max-width:100%;min-width:0}
+.sequence-control{flex:1 1 400px}.sequence-control select{width:100%}
+:is(button,select,input,canvas,a):focus-visible{outline:3px solid #e8b567;outline-offset:3px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.panel{padding:16px;background:#18231c;border:1px solid #344e3e;border-radius:10px;min-width:0}
+canvas{display:block;width:100%;height:auto;border:1px solid #47614f;image-rendering:pixelated;background:#101714}
+#frame{width:min(230px,100%);min-height:32px}#notes{padding-left:20px}#facts{overflow-wrap:anywhere}
+.badge{color:#f0c88b;font-size:13px;letter-spacing:.04em}.timeline{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.timeline button{min-width:44px;padding:5px 12px}.timeline button[aria-current=step]{background:#526d43;border-color:#e2c789}
+#error{color:#ffb4a2}.tiny{font-size:13px}.back{color:#e0c68e}
+@media(max-width:850px){main{padding:14px}.layout{grid-template-columns:1fr}.sequence-control{flex-basis:100%}}
+@media(max-width:420px){.panel{padding:10px}.controls{gap:8px}button,select{padding:8px}.notice{padding:12px}.sequence-control select{font-size:14px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" id="lab-link" href="/pit-lab">Retour au laboratoire</a>
+<h1>Chasseurs connus — revue des sprites V28</h1>
+<p class="muted" id="summary"></p>
+<p class="muted tiny" id="species-counts"></p>
+<div class="notice">
+<strong>Lot de revue uniquement : aucun personnage humain ou Yautja n’est déclaré complet.</strong>
+Les statuts artistiques restent visibles ; cette page peut montrer des brouillons et des refus sans les valider pour le jeu.
+L’armure Yautja ne change pas l’espèce d’un personnage humain. Les PNG sources restent intacts.
+Le détourage éventuel se fait dans le Canvas ; l’alpha natif est conservé.
+</div>
+<div class="controls" aria-label="Filtres des personnages">
+<label for="species">Espèce <select id="species"><option value="all">Toutes</option><option value="human">Humains</option><option value="yautja">Yautja</option></select></label>
+<label for="family">Famille <select id="family"><option value="all">Toutes les familles</option></select></label>
+<span class="muted tiny" id="filtered-count" role="status"></span>
+<label class="sequence-control" for="sequence">Séquence <select id="sequence"></select></label>
+</div>
+<div class="controls" aria-label="Lecture des poses">
+<button id="play" type="button" aria-pressed="false">Lire</button>
+<button id="previous" type="button">Image précédente</button><button id="next" type="button">Image suivante</button>
+<label for="loop">Répéter <input id="loop" type="checkbox"></label>
+<label for="speed">Vitesse <select id="speed"><option value="0.25">×0,25</option><option value="0.5" selected>×0,5</option><option value="1">×1</option><option value="2">×2</option></select></label>
+</div>
+<div class="layout">
+<section class="panel" aria-labelledby="name">
+<div class="badge" id="status"></div><h2 id="name"></h2><p class="muted tiny" id="identity"></p>
+<canvas id="sprite" width="640" height="600" tabindex="0" role="img" aria-label="Revue du personnage" aria-describedby="keyboard-help">Prévisualisation des poses dessinées.</canvas>
+<div class="timeline" id="timeline" aria-label="Choisir une pose"></div>
+<div class="controls">
+<label for="frame">Image <input id="frame" type="range" min="0" value="0" step="1"><output id="counter" for="frame"></output></label>
+<label for="registered"><input id="registered" type="checkbox" checked>Appuis recalés</label>
+<label for="onion"><input id="onion" type="checkbox">Pose précédente</label>
+</div>
+<p id="stage"></p>
+<p class="muted tiny" id="keyboard-help">Canvas au clavier : flèches pour changer de pose, Début/Fin pour les extrémités, Espace pour lire ou suspendre.</p>
+<p class="muted tiny">Une même échelle pour toutes les poses du clip, sans normalisation individuelle de hauteur, interpolation ou miroir. Sans recalage, le bas du rectangle sert de pivot de comparaison. Les phases du gameplay ne sont pas modifiées.</p>
+</section>
+<section class="panel" aria-label="Source et contrôle artistique">
+<canvas id="sheet" width="768" height="512" role="img" aria-label="Planche originale et rectangle de découpage">Planche PNG originale.</canvas>
+<div class="controls">
+<label for="background">Fond <select id="background"><option value="#24372b">Vert sombre</option><option value="#deded5">Clair</option><option value="#111111">Noir</option></select></label>
+<label for="matte">Détourage <select id="matte"><option value="source">Source</option><option value="key">Clé simple</option><option value="fringe">Clé et liseré</option></select></label>
+</div>
+<ul id="notes"></ul><p class="muted tiny" id="facts"></p><p id="error" role="alert"></p>
+<p class="muted tiny">Orange : rectangle libre de la pose. La planche conserve ses proportions originales. Le détourage ne corrige ni anatomie, ni équipement, ni continuité du mouvement.</p>
+</section>
+</div>
+</main>
+<script>/*__SPRITE_DATA__*/</script>
+<script>/*__SPRITE_CLIENT__*/</script>
+</body>
+</html>

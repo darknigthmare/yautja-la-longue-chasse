@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "characterId": "fugitive",
+  "clipId": "fugitive-hit-reaction",
+  "status": "draft-for-visual-review",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "mode": "integrated-built-in",
+    "apiKeyUsed": false,
+    "model": "not exposed by tool",
+    "date": "2026-09-05",
+    "inputReferences": "Browser-rendered official/ licensed photo screenshots displayed in conversation; original downloaded photos not redistributed.",
+    "referencePathReadFailedWith": "Windows sandbox ACL helper failure; in-conversation reference previews used instead.",
+    "prompts": [
+      "art-source/v28/known-hunters/prompts/fugitive-hit-reaction.txt"
+    ]
+  },
+  "selectedSource": {
+    "path": "art-source/v28/known-hunters/sources/fugitive-hit-reaction.png",
+    "bytes": 2021581,
+    "sha256": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+    "width": 1536,
+    "height": 1024,
+    "channels": 3,
+    "hasAlpha": false
+  },
+  "persistence": {
+    "originalDataUrlBytes": true,
+    "assembly": "24,000-character base64 fragments,12 workers, sorted then decoded once",
+    "bitmapMutation": false,
+    "creativeScriptRetouch": false,
+    "keyExtractionSaved": false
+  },
+  "rejectedDrafts": [],
+  "registration": "art-source/v28/known-hunters/characters/fugitive/registration.json",
+  "references": "art-source/v28/known-hunters/characters/fugitive/references.json",
+  "fidelity1to1Certified": false,
+  "anatomyCertified": false,
+  "playbackVerified": false,
+  "gameplayApproved": false
+}

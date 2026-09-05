@@ -1,0 +1,61 @@
+{
+  "reviewDate": "2026-09-05",
+  "reviewer": "modular_asset_audit",
+  "manifestSha256": "554282574e5868945c6444516c711ea414ca9c3d6d83b4f2da54b8eb3d068068",
+  "scope": "Visual inspection of actual Chrome review captures, separate from automatic 850 checks; not gameplay or complete-art approval.",
+  "captureInspection": [
+    {
+      "file": "http-canvas-machiko-clan-hit-reaction.png",
+      "finding": "Human face, hands and boots remain visible; full figure and carried rifle fit the canvas. Arm/hand attachment plausible at captured recoil pose. Wrist blades not deployed.",
+      "sha256": "05b7efe687b8ecdc26b895d07fd508ca6c09fc2ec80cf8a61551bfd50a35fe70"
+    },
+    {
+      "file": "http-canvas-machiko-ryushi-high-guard.png",
+      "finding": "Human Ryushi clothing remains distinct from clan armor. Rifle aiming pose and sheathed sword readable. Small magenta/purple edge residue visible around rifle/sling and some fine contours; retained as a finishing reserve.",
+      "sha256": "82f7caf9eecf1e71c446f323532a097fd714bb1a0f62c9c7bd1540bcce4b4381"
+    },
+    {
+      "file": "http-canvas-theta-blade-guard.png",
+      "finding": "Human unmasked figure in gold armor, held blade and free hand visible. Complete silhouette with no extra limb or detached object evident at captured pose. Fine finger count and exact blade silhouette not certified.",
+      "sha256": "5b8a83de9a058b0e8e0706f7e7c7dd1d2222a614d99d2374c8cbec6aa4ec52b3"
+    },
+    {
+      "file": "http-canvas-theta-hit-reaction.png",
+      "finding": "Backward recoil is readable; blade remains attached to the hand and complete boots remain above the canvas boundary. This capture alone does not prove every motion transition.",
+      "sha256": "5439bd08e930e9868fff695f6afca7d09f8eaade8d171c3f38b936b2306cdcc2"
+    },
+    {
+      "file": "http-canvas-tracker-guard-absorb.png",
+      "finding": "One shoulder caster bore visible in captured ready pose, two tusks and gauntlet-mounted single blade retained; two plausible empty hands. No duplicate lower cannon opening observed.",
+      "sha256": "d3f9dd53946b61abb037486e23f6aa19c59db6f8d13e69c4c624a143a3599087"
+    },
+    {
+      "file": "http-mobile-machiko-ryushi-high-guard.png",
+      "finding": "390px mobile controls remain within viewport; visible species/variant distinction and draft label. Long page requires vertical scrolling.",
+      "sha256": "3b215ebaf13814ad59cccd2fc8c579bccfc7f1a45586bf56e5ef5c079c09b016"
+    },
+    {
+      "file": "http-mobile-theta-blade-guard.png",
+      "finding": "390px mobile title, filters and controls wrap within viewport; human identity and draft status are explicit.",
+      "sha256": "1078bad92760ddccbac9f6b2f8b8d7558417e24611508a6a2accd0a689a7b16a"
+    },
+    {
+      "file": "http-light-matte.png",
+      "finding": "Fugitive on light background has a complete silhouette and four forearm blades. Original magenta sheet intentionally stays visible in source panel. No fake alpha certification.",
+      "sha256": "bf58c8c1d0674804e78de35c40f0885826f2dcc793758724ecf644103a2d2f1f"
+    }
+  ],
+  "limits": [
+    "132 individual rendered poses checked numerically (66 per mode); visual close reading here is limited to the named captures.",
+    "Play-once/repeat and keyboard transitions exercised on Fugitive; this is not manual playback review of all11 clips.",
+    "Six unique canvas hashes per clip establish distinct renders, not physical motion quality or canonical fidelity.",
+    "Tracker art was authored by this reviewer earlier; this is an independent review of the parent's renderer, not an independent artistic origin. Its source also received a second reading by pit_animation_lab.",
+    "Four human sheet captures were reviewed independently of their generating agents.",
+    "Fine magenta residue, exact face/hand anatomy, authored pose timing and species proportions still require finishing review.",
+    "No code, manifest, source bitmap, deployment or gameplay change was made in this QA subtask."
+  ],
+  "status": "review-surface-runtime-pass-with-art-reservations",
+  "cinemaFidelityCertified": false,
+  "anatomyCertified": false,
+  "gameplayApproved": false
+}

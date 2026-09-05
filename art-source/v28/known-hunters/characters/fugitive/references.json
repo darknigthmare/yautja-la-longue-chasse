@@ -1,0 +1,71 @@
+{
+  "characterId": "fugitive",
+  "work": "The Predator",
+  "year": 2018,
+  "variant": "masked fully armored Fugitive; not Lab Escape",
+  "reviewDate": "2026-09-05",
+  "status": "reference-informed-adaptation-not-1to1-certified",
+  "sources": [
+    {
+      "title": "NECA Ultimate Fugitive Predator2018 shipping gallery",
+      "url": "https://necaonline.com/2018/08/shipping-this-week-ultimate-fugitive-predator-and-tmnt-michelangelo-restock/",
+      "type": "official-manufacturer-text-and-gallery",
+      "inspection": "Product text and browser-rendered full body/close-up photos visually inspected.",
+      "screenshots": [
+        "tmp/v28-tracker-fugitive-refs/fugitive-page.png",
+        "tmp/v28-tracker-fugitive-refs/fugitive-detail.png",
+        "tmp/v28-tracker-fugitive-refs/fugitive-side.png"
+      ],
+      "supports": [
+        "Armored Fugitive2018 with masked/unmasked variant heads",
+        "Four wrist blades and one articulated shoulder cannon",
+        "Two blades attached to each forearm housing visible in masked gallery image",
+        "Pewter mask with gold mouth accent; full chest armor, ribbed abdomen, gray/gold leg armor",
+        "Anatomical-right shoulder caster in frontal body photograph"
+      ],
+      "screenshotProof": [
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/fugitive-page.png",
+          "sha256": "90e27b79828282e3d2151fadd1d46212c08bcbf6fe10e9ba15d40274f0d39878"
+        },
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/fugitive-detail.png",
+          "sha256": "de89908eff83c571eb905f2354cf4b2bdd3edd8af9e8440b7ee0b73c2d2e8f1c"
+        },
+        {
+          "path": "tmp/v28-tracker-fugitive-refs/fugitive-side.png",
+          "sha256": "4ab4bbf104908c8bdeae02d73ff80bcf5f727ec142968c380abd6c576aeaad3a"
+        }
+      ]
+    },
+    {
+      "title": "NECA Lab Escape variant for exclusion",
+      "url": "https://necaonline.com/2019/02/predator-2018-7-scale-action-figure-ultimate-fugitive-predator-lab-escape/",
+      "type": "official-manufacturer-text",
+      "inspection": "Search-index text distinguishes the Lab Escape head/damaged mask/rifle/shuriken accessories; live fetch failed.",
+      "supports": [
+        "Lab Escape is a separate depiction and its accessories are excluded from this armored clip"
+      ]
+    }
+  ],
+  "localReference": {
+    "path": "public/game/sprites/v5/film-plates/fugitive.png",
+    "role": "Style continuity and previous-game comparison, not1:1 proof",
+    "observedConflicts": [
+      "No strong equipment-count conflict with licensed armored variant, but local colors/proportions remain adaptations."
+    ],
+    "sha256": "b0c6c70011ed1eeb912cbf89523981b104fef5648a47252e5fbcd2a500e9f766"
+  },
+  "promptInvariants": [
+    "Mask remains on in all six poses",
+    "One anatomical-right shoulder caster",
+    "Two blades per gauntlet, four total, no sword in hand",
+    "No Lab Escape rifle, no Predator Killer suit, no Assassin exoskin",
+    "Two hands, fixed scale and planted soles"
+  ],
+  "limitations": [
+    "Fine hand digits, exact armor relief and mask dimensions are not certified1:1.",
+    "The unmasked photo supplies armor placement only; all generated poses are masked.",
+    "References remain private browser screenshots under tmp and are not redistributed as game textures."
+  ]
+}

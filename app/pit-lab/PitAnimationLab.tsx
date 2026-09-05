@@ -7,6 +7,7 @@ import { resolvePitFighterAnimation } from "../game/pitFighterAnimation";
 import { drawPitModularFighter, loadPitFighterArt, type PitFighterArtBank, type PitModularFighterId } from "../game/pitFighterRendering";
 import { PIT_FIGHTERS } from "../game/systems/pitCombat";
 import styles from "./PitAnimationLab.module.css";
+import knownHunterReview from "../../public/game/assets/v28/sprite-review/manifest.json";
 
 export default function PitAnimationLab() {
   const [fighterId, setFighterId] = useState<PitModularFighterId>("jungle-hunter");
@@ -129,14 +130,15 @@ export default function PitAnimationLab() {
       </header>
       <section className={styles.notice} aria-label="Revue des planches dessinées">
         <div className={styles.buttons}>
-          <a className={styles.back} href="/game/assets/v27/sprite-review/index.html"
-            target="_blank" rel="noopener noreferrer" aria-describedby="sprite-review-v27-status">
-            Planches dessinées · revue V27
+          <a className={styles.back} href="/game/assets/v28/sprite-review/index.html"
+            target="_blank" rel="noopener noreferrer" aria-describedby="sprite-review-v28-status">
+            Planches dessinées · revue V28
           </a>
+          <a className={styles.back} href="/game/assets/v27/sprite-review/index.html" target="_blank" rel="noopener noreferrer">Archive V27</a>
         </div>
-        <p id="sprite-review-v27-status">
-          <strong>Brouillons · 5 séquences · 30 cellules.</strong>{" "}
-          Ces essais ne constituent pas des animations complètes de personnages et ne sont pas validés pour les combats.
+        <p id="sprite-review-v28-status">
+          <strong>Brouillons · {knownHunterReview.counts.sheets} séquences · {knownHunterReview.counts.cells} cellules · {knownHunterReview.counts.subjects} personnages.</strong>{" "}
+          Machiko et Theta restent des personnages humains, avec leurs variantes séparées. Ces essais ne constituent pas des animations complètes et ne sont pas validés pour les combats.
         </p>
       </section>
       <p className={styles.notice}>

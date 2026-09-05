@@ -1,0 +1,3657 @@
+{
+  "schemaVersion": 1,
+  "scope": "Revue de sprites dessinés pour Yautja connus et, sur demande explicite, Machiko Noguchi et Theta Berwick. Aucun changement du gameplay.",
+  "sourceMutation": false,
+  "includeV27": true,
+  "completion": {
+    "surface": "review-only",
+    "completeSubjectIds": [],
+    "gameplayValidatedClips": 0
+  },
+  "counts": {
+    "sheets": 11,
+    "cells": 66,
+    "subjects": 8,
+    "variants": 9,
+    "humanSheets": 4,
+    "yautjaSheets": 7,
+    "statuses": {
+      "draft": 11,
+      "rejected": 0,
+      "validated": 0
+    }
+  },
+  "generator": {
+    "builderSha256": "c5c3990343dba5d544ae7f1a8228e6565eafc9d719fdc8f6706b8a6356067c93",
+    "clientSha256": "909609fe57945a7045dc3660239cdf4e487bac890e24916272e499db64c82f6e",
+    "templateSha256": "4bf1d9ceeb8da6823b90923a4b3358dc37a73a0e55487d09dbf5605715fd0859",
+    "transparencyProcessorSha256": "10cf2fb0fe1e2e70af9e3587773f2d6d4e4b71016160130c1801030c7f30df3a"
+  },
+  "entries": [
+    {
+      "id": "machiko-clan-hit-reaction",
+      "characterId": "machiko",
+      "name": "Machiko Noguchi",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "machiko-clan-armor",
+      "variantLabel": "Comics · armure de clan",
+      "action": "Impact et reprise d’appui",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Humaine : visage, mains et bottes humains ; l’armure ne change pas son espèce.",
+        "Variante de clan distincte de Ryushi, d’après la figurine NECA issue des comics.",
+        "Lames de poignet rétractées pendant la tenue du fusil : l’essai aux lames inversées a été rejeté.",
+        "Six poses dessinées à revoir en mouvement ; cicatrice et petits détails du visage non certifiés 1:1."
+      ],
+      "reviewScale": 0.8,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/machiko-clan-hit-reaction.png",
+        "sha256": "a90bfaf2a5f4f02dff7c066ec16eb610394b01bd34b2940373c543b78bf16b44",
+        "bytes": 1824504,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "rect": [
+            117,
+            43,
+            274,
+            460
+          ],
+          "pivot": [
+            135.5,
+            452
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 143,
+                "y": 495
+              },
+              "contactSpanPx": [
+                125,
+                161
+              ],
+              "lowerFootBandWidthPx": 49
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 362,
+                "y": 495
+              },
+              "contactSpanPx": [
+                343,
+                381
+              ],
+              "lowerFootBandWidthPx": 66
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "initial-impact",
+          "rect": [
+            576,
+            72,
+            307,
+            430
+          ],
+          "pivot": [
+            162.25,
+            421
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 633,
+                "y": 493
+              },
+              "contactSpanPx": [
+                616,
+                650
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 843.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                814,
+                873
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "peak-standing-recoil",
+          "rect": [
+            1025,
+            92,
+            342,
+            411
+          ],
+          "pivot": [
+            187.5,
+            403
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1083.5,
+                "y": 495
+              },
+              "contactSpanPx": [
+                1066,
+                1101
+              ],
+              "lowerFootBandWidthPx": 56
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1341.5,
+                "y": 491
+              },
+              "contactSpanPx": [
+                1325,
+                1358
+              ],
+              "lowerFootBandWidthPx": 62
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "catch-balance",
+          "rect": [
+            117,
+            584,
+            250,
+            397
+          ],
+          "pivot": [
+            96.5,
+            389
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 143,
+                "y": 973
+              },
+              "contactSpanPx": [
+                125,
+                161
+              ],
+              "lowerFootBandWidthPx": 61
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 284,
+                "y": 971
+              },
+              "contactSpanPx": [
+                266,
+                302
+              ],
+              "lowerFootBandWidthPx": 65
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "rising-recovery",
+          "rect": [
+            594,
+            534,
+            256,
+            447
+          ],
+          "pivot": [
+            110.25,
+            439
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 620,
+                "y": 973
+              },
+              "contactSpanPx": [
+                602,
+                638
+              ],
+              "lowerFootBandWidthPx": 46
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 788.5,
+                "y": 971
+              },
+              "contactSpanPx": [
+                769,
+                808
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "ready",
+          "rect": [
+            1060,
+            527,
+            273,
+            460
+          ],
+          "pivot": [
+            130.75,
+            452
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1086,
+                "y": 979
+              },
+              "contactSpanPx": [
+                1068,
+                1104
+              ],
+              "lowerFootBandWidthPx": 49
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1295.5,
+                "y": 978
+              },
+              "contactSpanPx": [
+                1267,
+                1324
+              ],
+              "lowerFootBandWidthPx": 66
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "machiko-ryushi-high-guard",
+      "characterId": "machiko",
+      "name": "Machiko Noguchi",
+      "species": "human",
+      "family": "human-hunters",
+      "familyLabel": "Chasseurs humains · tenue Ryushi",
+      "variantId": "machiko-ryushi",
+      "variantLabel": "Ryushi · tenue olive et katana",
+      "action": "Visée défensive au fusil",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Variante Ryushi en vêtements humains, séparée de l’armure de clan ; elle ne compte pas comme une seconde armure.",
+        "Référence Prime 1 sous licence inspirée de la couverture Aliens vs. Predator n°4.",
+        "L’action dessinée est une visée défensive et un recul au fusil, pas une parade de mêlée.",
+        "Katana au fourreau ; visage et mains humains. Pas encore un cycle de déplacement ni un ensemble complet."
+      ],
+      "reviewScale": 0.8,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/machiko-ryushi-high-guard.png",
+        "sha256": "acb10f71b1ffe6298854a403407573bc46ea30eb597173f321c0dd47515169ee",
+        "bytes": 1730916,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "low-ready",
+          "rect": [
+            105,
+            53,
+            280,
+            432
+          ],
+          "pivot": [
+            135.5,
+            424
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 128.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                113,
+                144
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 352.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                329,
+                376
+              ],
+              "lowerFootBandWidthPx": 59
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "raise-rifle",
+          "rect": [
+            591,
+            54,
+            305,
+            431
+          ],
+          "pivot": [
+            131.25,
+            423
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 615,
+                "y": 477
+              },
+              "contactSpanPx": [
+                599,
+                631
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 829.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                806,
+                853
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "raised-defensive-aim",
+          "rect": [
+            1080,
+            53,
+            276,
+            432
+          ],
+          "pivot": [
+            130.5,
+            424
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1103.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1088,
+                1119
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1317.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1294,
+                1341
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "braced-recoil",
+          "rect": [
+            133,
+            529,
+            273,
+            440
+          ],
+          "pivot": [
+            130.25,
+            431
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 158,
+                "y": 960
+              },
+              "contactSpanPx": [
+                142,
+                174
+              ],
+              "lowerFootBandWidthPx": 43
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 368.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                341,
+                396
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "lower-rifle",
+          "rect": [
+            589,
+            527,
+            282,
+            441
+          ],
+          "pivot": [
+            135.75,
+            433
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 613,
+                "y": 960
+              },
+              "contactSpanPx": [
+                597,
+                629
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 836.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                811,
+                862
+              ],
+              "lowerFootBandWidthPx": 64
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "low-ready",
+          "rect": [
+            1075,
+            536,
+            279,
+            432
+          ],
+          "pivot": [
+            134.75,
+            424
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1098.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                1083,
+                1114
+              ],
+              "lowerFootBandWidthPx": 40
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1321,
+                "y": 960
+              },
+              "contactSpanPx": [
+                1297,
+                1345
+              ],
+              "lowerFootBandWidthPx": 60
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theta-blade-guard",
+      "characterId": "theta-berwick",
+      "name": "Theta Berwick",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "variantLabel": "Marvel 2023 · armure dorée · démasquée",
+      "action": "Garde à la machette",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Theta est le personnage qui correspond probablement à la description de l’humaine des comics récents.",
+        "Variante fondée sur la couverture officielle Predator (2023) n°2 ; silhouette et visage humains.",
+        "Prise inversée du couteau en pose 3 corrigée par une retouche OpenAI, sans correction anatomique par code.",
+        "Les traces vertes sont dessinées dans la source, pas des effets de combat séparés. Fidélité 1:1 non certifiée."
+      ],
+      "reviewScale": 0.8,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-blade-guard.png",
+        "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+        "bytes": 1836921,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "low-ready",
+          "rect": [
+            174,
+            48,
+            240,
+            436
+          ],
+          "pivot": [
+            122.75,
+            428
+          ],
+          "durationTicks": 8,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 206.5,
+                "y": 476
+              },
+              "contactSpanPx": [
+                192,
+                221
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 387,
+                "y": 461
+              },
+              "contactSpanPx": [
+                369,
+                405
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "raise-blade-guard",
+          "rect": [
+            628,
+            50,
+            248,
+            434
+          ],
+          "pivot": [
+            117.5,
+            426
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 476
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 836,
+                "y": 461
+              },
+              "contactSpanPx": [
+                818,
+                854
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "high-guard-hold",
+          "rect": [
+            1077,
+            45,
+            258,
+            438
+          ],
+          "pivot": [
+            117.5,
+            430
+          ],
+          "durationTicks": 10,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1103.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                1088,
+                1119
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1285.5,
+                "y": 461
+              },
+              "contactSpanPx": [
+                1268,
+                1303
+              ],
+              "lowerFootBandWidthPx": 68
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "absorb-recoil",
+          "rect": [
+            168,
+            520,
+            278,
+            452
+          ],
+          "pivot": [
+            148.75,
+            444
+          ],
+          "durationTicks": 7,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 213.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                198,
+                229
+              ],
+              "lowerFootBandWidthPx": 52
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 420,
+                "y": 948
+              },
+              "contactSpanPx": [
+                403,
+                437
+              ],
+              "lowerFootBandWidthPx": 71
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "lower-blade",
+          "rect": [
+            628,
+            541,
+            240,
+            436
+          ],
+          "pivot": [
+            122,
+            428
+          ],
+          "durationTicks": 8,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 659,
+                "y": 969
+              },
+              "contactSpanPx": [
+                644,
+                674
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 841,
+                "y": 955
+              },
+              "contactSpanPx": [
+                825,
+                857
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "rect": [
+            1076,
+            541,
+            242,
+            437
+          ],
+          "pivot": [
+            124,
+            429
+          ],
+          "durationTicks": 10,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1108,
+                "y": 970
+              },
+              "contactSpanPx": [
+                1093,
+                1123
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1292,
+                "y": 956
+              },
+              "contactSpanPx": [
+                1275,
+                1309
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theta-hit-reaction",
+      "characterId": "theta-berwick",
+      "name": "Theta Berwick",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "variantLabel": "Marvel 2023 · armure dorée · démasquée",
+      "action": "Coup au corps et récupération",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Même variante humaine en armure dorée que la garde ; aucune mandibule ni anatomie Yautja.",
+        "Machette conservée à main droite pendant le recul et la reprise d’appui.",
+        "Six poses originales OpenAI, sans interpolation ni miroir automatique.",
+        "Les transitions, la stabilité des proportions et les traces de bataille restent à valider pour l’utilisation en jeu."
+      ],
+      "reviewScale": 0.8,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/theta-hit-reaction.png",
+        "sha256": "ed417fd72d53d359835326cbc9d22962027e190453648d7a5199c257eef3bccb",
+        "bytes": 1900263,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "rect": [
+            143,
+            51,
+            253,
+            439
+          ],
+          "pivot": [
+            127,
+            431
+          ],
+          "durationTicks": 8,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 171,
+                "y": 482
+              },
+              "contactSpanPx": [
+                156,
+                186
+              ],
+              "lowerFootBandWidthPx": 46
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 369,
+                "y": 471
+              },
+              "contactSpanPx": [
+                351,
+                387
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "rect": [
+            617,
+            57,
+            279,
+            429
+          ],
+          "pivot": [
+            155,
+            421
+          ],
+          "durationTicks": 5,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 680.5,
+                "y": 478
+              },
+              "contactSpanPx": [
+                666,
+                695
+              ],
+              "lowerFootBandWidthPx": 86
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 863.5,
+                "y": 465
+              },
+              "contactSpanPx": [
+                845,
+                882
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "recoil-peak",
+          "rect": [
+            1101,
+            78,
+            278,
+            407
+          ],
+          "pivot": [
+            149.25,
+            399
+          ],
+          "durationTicks": 7,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1157.5,
+                "y": 477
+              },
+              "contactSpanPx": [
+                1143,
+                1172
+              ],
+              "lowerFootBandWidthPx": 115
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1343,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1325,
+                1361
+              ],
+              "lowerFootBandWidthPx": 73
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "fold-forward",
+          "rect": [
+            144,
+            591,
+            243,
+            365
+          ],
+          "pivot": [
+            122,
+            357
+          ],
+          "durationTicks": 8,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 173.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                158,
+                189
+              ],
+              "lowerFootBandWidthPx": 126
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 358.5,
+                "y": 939
+              },
+              "contactSpanPx": [
+                340,
+                377
+              ],
+              "lowerFootBandWidthPx": 75
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "recover-upright",
+          "rect": [
+            627,
+            543,
+            243,
+            421
+          ],
+          "pivot": [
+            122,
+            413
+          ],
+          "durationTicks": 8,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 655,
+                "y": 956
+              },
+              "contactSpanPx": [
+                640,
+                670
+              ],
+              "lowerFootBandWidthPx": 45
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 843,
+                "y": 944
+              },
+              "contactSpanPx": [
+                826,
+                860
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "rect": [
+            1088,
+            530,
+            254,
+            439
+          ],
+          "pivot": [
+            127.5,
+            431
+          ],
+          "durationTicks": 10,
+          "supportPoints": [
+            {
+              "id": "screen-left-support",
+              "sourcePx": {
+                "x": 1116,
+                "y": 961
+              },
+              "contactSpanPx": [
+                1102,
+                1130
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-support",
+              "sourcePx": {
+                "x": 1315,
+                "y": 951
+              },
+              "contactSpanPx": [
+                1297,
+                1333
+              ],
+              "lowerFootBandWidthPx": 72
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tracker-guard-absorb",
+      "characterId": "tracker",
+      "name": "Tracker",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "Yautja connus",
+      "variantId": "predators-2010",
+      "variantLabel": "Predators (2010) · masque à défenses",
+      "action": "Garde et absorption",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Masque à deux défenses, torse sans filet, une lame au poignet droit et un canon à l’épaule gauche.",
+        "Référence Hot Toys sous licence ; l’ancienne illustration V5 n’a pas été reprise comme vérité.",
+        "Canon doublé du premier essai corrigé par OpenAI ; v1 rejetée conservée dans les sources privées.",
+        "Les poses 2 et 3 forment un maintien de garde proche. Occultations normales possibles ; aucun gameplay validé."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/tracker-guard-absorb-v2.png",
+        "sha256": "e4e2be3dd53112d376deadce01dc982117ce9a476f57c51b6e510b024e23cb16",
+        "bytes": 1932274,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "rect": [
+            140,
+            27,
+            299,
+            451
+          ],
+          "pivot": [
+            135,
+            443
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 185.5,
+                "y": 470
+              },
+              "contactSpanPx": [
+                158,
+                213
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 364.5,
+                "y": 462
+              },
+              "contactSpanPx": [
+                322,
+                407
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "raising-high-guard",
+          "rect": [
+            604,
+            30,
+            276,
+            450
+          ],
+          "pivot": [
+            135,
+            442
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 472
+              },
+              "contactSpanPx": [
+                621,
+                677
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 829,
+                "y": 465
+              },
+              "contactSpanPx": [
+                787,
+                871
+              ],
+              "lowerFootBandWidthPx": 90
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "high-guard",
+          "rect": [
+            1078,
+            27,
+            275,
+            454
+          ],
+          "pivot": [
+            134.75,
+            446
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1123.5,
+                "y": 473
+              },
+              "contactSpanPx": [
+                1096,
+                1151
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302,
+                "y": 465
+              },
+              "contactSpanPx": [
+                1260,
+                1344
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "blocked-impact-compression",
+          "rect": [
+            146,
+            564,
+            290,
+            408
+          ],
+          "pivot": [
+            146.75,
+            400
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 201.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                174,
+                229
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 384,
+                "y": 955
+              },
+              "contactSpanPx": [
+                342,
+                426
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "guard-recovery",
+          "rect": [
+            604,
+            526,
+            276,
+            446
+          ],
+          "pivot": [
+            134.25,
+            438
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 648.5,
+                "y": 964
+              },
+              "contactSpanPx": [
+                621,
+                676
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 828,
+                "y": 957
+              },
+              "contactSpanPx": [
+                786,
+                870
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "rect": [
+            1084,
+            526,
+            298,
+            447
+          ],
+          "pivot": [
+            135,
+            439
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1129.5,
+                "y": 965
+              },
+              "contactSpanPx": [
+                1102,
+                1157
+              ],
+              "lowerFootBandWidthPx": 66
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1308.5,
+                "y": 957
+              },
+              "contactSpanPx": [
+                1267,
+                1350
+              ],
+              "lowerFootBandWidthPx": 89
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fugitive-hit-reaction",
+      "characterId": "fugitive",
+      "name": "Fugitive",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "Yautja connus",
+      "variantId": "the-predator-2018-armored",
+      "variantLabel": "The Predator (2018) · armure",
+      "action": "Impact et récupération",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Variante armurée d’après NECA sous licence ; distincte de Lab Escape et de Predator Killer.",
+        "Deux lames par gantelet selon la référence inspectée ; pas de fusil tenu inventé.",
+        "Deuxième lecture indépendante sans main supplémentaire ni arme détachée évidente.",
+        "Détails partiellement occultés : anatomie et fidélité non certifiées 1:1. Six poses ne couvrent pas toutes ses animations."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V28",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v28/known-hunters/sources/fugitive-hit-reaction.png",
+        "sha256": "6cad1bfac5c15ab432b9aa045fb7dd36eaa8f357a3818a888346b79859d4dfce",
+        "bytes": 2021581,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "rect": [
+            137,
+            53,
+            317,
+            448
+          ],
+          "pivot": [
+            132.5,
+            440
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 167.5,
+                "y": 493
+              },
+              "contactSpanPx": [
+                145,
+                190
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 371.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                340,
+                403
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "impact-recoil",
+          "rect": [
+            547,
+            80,
+            367,
+            421
+          ],
+          "pivot": [
+            202.75,
+            412
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 649,
+                "y": 492
+              },
+              "contactSpanPx": [
+                626,
+                672
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 850.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                819,
+                882
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "maximum-recoil",
+          "rect": [
+            1016,
+            98,
+            374,
+            403
+          ],
+          "pivot": [
+            228.25,
+            394
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1150.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                1127,
+                1174
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1338,
+                "y": 486
+              },
+              "contactSpanPx": [
+                1312,
+                1364
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "forward-low-recovery",
+          "rect": [
+            144,
+            614,
+            287,
+            361
+          ],
+          "pivot": [
+            125.5,
+            353
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 175.5,
+                "y": 967
+              },
+              "contactSpanPx": [
+                152,
+                199
+              ],
+              "lowerFootBandWidthPx": 48
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 363.5,
+                "y": 960
+              },
+              "contactSpanPx": [
+                332,
+                395
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "rising-recovery",
+          "rect": [
+            594,
+            554,
+            318,
+            423
+          ],
+          "pivot": [
+            131.5,
+            415
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 624.5,
+                "y": 969
+              },
+              "contactSpanPx": [
+                602,
+                647
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 826.5,
+                "y": 962
+              },
+              "contactSpanPx": [
+                795,
+                858
+              ],
+              "lowerFootBandWidthPx": 69
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "ready-recovered",
+          "rect": [
+            1070,
+            534,
+            316,
+            443
+          ],
+          "pivot": [
+            131.75,
+            435
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1101,
+                "y": 969
+              },
+              "contactSpanPx": [
+                1078,
+                1124
+              ],
+              "lowerFootBandWidthPx": 47
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1302.5,
+                "y": 963
+              },
+              "contactSpanPx": [
+                1271,
+                1334
+              ],
+              "lowerFootBandWidthPx": 70
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wolf-high-guard",
+      "characterId": "wolf",
+      "name": "Wolf",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "known-yautja",
+      "variantId": "avpr-2007-dual-caster",
+      "variantLabel": "avpr-2007-dual-caster",
+      "action": "Garde haute — entrée, protection, sortie",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Six poses V26 conservées ; seuls le découpage et les appuis de lecture changent.",
+        "Contrôler la continuité des deux canons et des lames pendant les transitions.",
+        "Séparer entrée, maintien et sortie avant raccordement à high-guard / blockstun.high."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V27",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/wolf-high-guard.png",
+        "sha256": "d911dcc7763030c3ad64f4abe182d1e7a2d377c7eb367d04e74510062b7d9e8b",
+        "bytes": 2029087,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready",
+          "rect": [
+            164,
+            70,
+            287,
+            434
+          ],
+          "pivot": [
+            136.25,
+            426
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 201.5,
+                "y": 496
+              },
+              "contactSpanPx": [
+                175,
+                228
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 399,
+                "y": 474
+              },
+              "contactSpanPx": [
+                378,
+                420
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "raise-forearms",
+          "rect": [
+            625,
+            76,
+            287,
+            428
+          ],
+          "pivot": [
+            135.75,
+            420
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 662,
+                "y": 496
+              },
+              "contactSpanPx": [
+                636,
+                688
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 859.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                839,
+                880
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "high-guard",
+          "rect": [
+            1091,
+            92,
+            272,
+            412
+          ],
+          "pivot": [
+            137,
+            404
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1128.5,
+                "y": 496
+              },
+              "contactSpanPx": [
+                1102,
+                1155
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1327.5,
+                "y": 475
+              },
+              "contactSpanPx": [
+                1307,
+                1348
+              ],
+              "lowerFootBandWidthPx": 86
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "absorb-recoil",
+          "rect": [
+            161,
+            597,
+            271,
+            381
+          ],
+          "pivot": [
+            138,
+            372
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 198.5,
+                "y": 969
+              },
+              "contactSpanPx": [
+                172,
+                225
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 399.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                376,
+                423
+              ],
+              "lowerFootBandWidthPx": 86
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "recover",
+          "rect": [
+            626,
+            579,
+            283,
+            399
+          ],
+          "pivot": [
+            135.75,
+            391
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 663.5,
+                "y": 970
+              },
+              "contactSpanPx": [
+                637,
+                690
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 860,
+                "y": 949
+              },
+              "contactSpanPx": [
+                839,
+                881
+              ],
+              "lowerFootBandWidthPx": 87
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "return-ready",
+          "rect": [
+            1101,
+            559,
+            286,
+            419
+          ],
+          "pivot": [
+            135.25,
+            411
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1138,
+                "y": 970
+              },
+              "contactSpanPx": [
+                1112,
+                1164
+              ],
+              "lowerFootBandWidthPx": 59
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1334.5,
+                "y": 949
+              },
+              "contactSpanPx": [
+                1313,
+                1356
+              ],
+              "lowerFootBandWidthPx": 88
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feral-shield-guard",
+      "characterId": "feral-hunter",
+      "name": "Feral",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "known-yautja",
+      "variantId": "prey-2022-shield",
+      "variantLabel": "prey-2022-shield",
+      "action": "Bouclier — ouverture, garde, fermeture",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Six poses V26 conservées, appuis recalés sans changer leur échelle.",
+        "Le bras gauche peut être caché par son bouclier opaque ; ce n'est pas une main manquante.",
+        "Contrôler l'articulation des segments et la main droite en lecture lente."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V27",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v26/known-yautja/sources/feral-shield-guard.png",
+        "sha256": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+        "bytes": 2057533,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "folded-guard",
+          "rect": [
+            102,
+            48,
+            323,
+            441
+          ],
+          "pivot": [
+            148,
+            433
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 148,
+                "y": 481
+              },
+              "contactSpanPx": [
+                129,
+                167
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 352,
+                "y": 466
+              },
+              "contactSpanPx": [
+                332,
+                372
+              ],
+              "lowerFootBandWidthPx": 77
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "raise-and-start-unfold",
+          "rect": [
+            599,
+            53,
+            333,
+            436
+          ],
+          "pivot": [
+            149.75,
+            428
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 646,
+                "y": 481
+              },
+              "contactSpanPx": [
+                627,
+                665
+              ],
+              "lowerFootBandWidthPx": 43
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 851.5,
+                "y": 466
+              },
+              "contactSpanPx": [
+                832,
+                871
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "half-unfolded",
+          "rect": [
+            1078,
+            56,
+            338,
+            433
+          ],
+          "pivot": [
+            150,
+            425
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1125.5,
+                "y": 481
+              },
+              "contactSpanPx": [
+                1106,
+                1145
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1330.5,
+                "y": 466
+              },
+              "contactSpanPx": [
+                1311,
+                1350
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "fully-deployed",
+          "rect": [
+            92,
+            532,
+            330,
+            439
+          ],
+          "pivot": [
+            150.75,
+            431
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 138.5,
+                "y": 963
+              },
+              "contactSpanPx": [
+                119,
+                158
+              ],
+              "lowerFootBandWidthPx": 44
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 347,
+                "y": 948
+              },
+              "contactSpanPx": [
+                327,
+                367
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "fold-and-lower",
+          "rect": [
+            588,
+            534,
+            320,
+            437
+          ],
+          "pivot": [
+            148.25,
+            429
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 634,
+                "y": 963
+              },
+              "contactSpanPx": [
+                615,
+                653
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 838.5,
+                "y": 948
+              },
+              "contactSpanPx": [
+                819,
+                858
+              ],
+              "lowerFootBandWidthPx": 78
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "return-folded",
+          "rect": [
+            1084,
+            538,
+            317,
+            433
+          ],
+          "pivot": [
+            145.5,
+            425
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1128,
+                "y": 963
+              },
+              "contactSpanPx": [
+                1109,
+                1147
+              ],
+              "lowerFootBandWidthPx": 42
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1331,
+                "y": 947
+              },
+              "contactSpanPx": [
+                1311,
+                1351
+              ],
+              "lowerFootBandWidthPx": 76
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wolf-hit-reaction",
+      "characterId": "wolf",
+      "name": "Wolf",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "known-yautja",
+      "variantId": "avpr-2007-dual-caster",
+      "variantLabel": "avpr-2007-dual-caster",
+      "action": "Coup reçu — recul et récupération",
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Nouvelle source OpenAI V27, six dessins.",
+        "Le canon de la troisième pose dépasse la grille théorique mais pas la figure voisine : un rectangle libre le conserve.",
+        "Le deuxième canon de la pose 2 n'est pas confirmable sur cette vue ; fidélité à revoir avant intégration."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V27",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/wolf-hit-reaction.png",
+        "sha256": "09f217eeffe72b06cd941430df768f42fdfc52fda108e23c4f8d2899d1be54ac",
+        "bytes": 2121285,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "initial-brace",
+          "rect": [
+            161,
+            90,
+            318,
+            428
+          ],
+          "pivot": [
+            162.75,
+            420
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 217,
+                "y": 510
+              },
+              "contactSpanPx": [
+                192,
+                242
+              ],
+              "lowerFootBandWidthPx": 61
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 430.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                402,
+                459
+              ],
+              "lowerFootBandWidthPx": 98
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "backward-chest-recoil",
+          "rect": [
+            570,
+            96,
+            375,
+            419
+          ],
+          "pivot": [
+            222.25,
+            411
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 677,
+                "y": 507
+              },
+              "contactSpanPx": [
+                651,
+                703
+              ],
+              "lowerFootBandWidthPx": 60
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 907.5,
+                "y": 492
+              },
+              "contactSpanPx": [
+                879,
+                936
+              ],
+              "lowerFootBandWidthPx": 99
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "maximum-backward-stagger",
+          "rect": [
+            993,
+            86,
+            428,
+            426
+          ],
+          "pivot": [
+            274.5,
+            418
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1145,
+                "y": 504
+              },
+              "contactSpanPx": [
+                1128,
+                1162
+              ],
+              "lowerFootBandWidthPx": 62
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1390,
+                "y": 489
+              },
+              "contactSpanPx": [
+                1369,
+                1411
+              ],
+              "lowerFootBandWidthPx": 94
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "low-forward-recovery",
+          "rect": [
+            147,
+            615,
+            301,
+            344
+          ],
+          "pivot": [
+            141.5,
+            335
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 189,
+                "y": 950
+              },
+              "contactSpanPx": [
+                163,
+                215
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 388,
+                "y": 934
+              },
+              "contactSpanPx": [
+                359,
+                417
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "rise-and-reset",
+          "rect": [
+            584,
+            536,
+            332,
+            422
+          ],
+          "pivot": [
+            161,
+            414
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 626,
+                "y": 950
+              },
+              "contactSpanPx": [
+                600,
+                652
+              ],
+              "lowerFootBandWidthPx": 62
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 864,
+                "y": 934
+              },
+              "contactSpanPx": [
+                837,
+                891
+              ],
+              "lowerFootBandWidthPx": 96
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "recovered-guard",
+          "rect": [
+            1088,
+            541,
+            284,
+            420
+          ],
+          "pivot": [
+            144.75,
+            412
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1127,
+                "y": 953
+              },
+              "contactSpanPx": [
+                1103,
+                1151
+              ],
+              "lowerFootBandWidthPx": 58
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1338.5,
+                "y": 937
+              },
+              "contactSpanPx": [
+                1314,
+                1363
+              ],
+              "lowerFootBandWidthPx": 91
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chopper-idle",
+      "characterId": "chopper",
+      "name": "Chopper",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "known-yautja",
+      "variantId": "avp-2004-scimitars",
+      "variantLabel": "avp-2004-scimitars",
+      "action": "Attente — essai de respiration",
+      "status": "draft",
+      "loop": true,
+      "notes": [
+        "Nouvelle source OpenAI V27, six cellules ; mouvements très faibles à contrôler en superposition.",
+        "Les deux crânes sur piques et les deux scimitars fixés aux avant-bras doivent rester rigides.",
+        "Une image différente par empreinte ne suffit pas à prouver une respiration lisible."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V27",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/chopper-idle.png",
+        "sha256": "55bb85222b65f2127633b4edaabbb8ea205c9b59d91879a91ec6ce7871bb7fc0",
+        "bytes": 2379626,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready-1",
+          "rect": [
+            105,
+            24,
+            369,
+            492
+          ],
+          "pivot": [
+            175,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 174,
+                "y": 508
+              },
+              "contactSpanPx": [
+                144,
+                204
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 386,
+                "y": 498
+              },
+              "contactSpanPx": [
+                359,
+                413
+              ],
+              "lowerFootBandWidthPx": 99
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "ready-2",
+          "rect": [
+            583,
+            24,
+            378,
+            492
+          ],
+          "pivot": [
+            179.25,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 654.5,
+                "y": 508
+              },
+              "contactSpanPx": [
+                624,
+                685
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 870,
+                "y": 499
+              },
+              "contactSpanPx": [
+                842,
+                898
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "ready-3",
+          "rect": [
+            1064,
+            24,
+            376,
+            492
+          ],
+          "pivot": [
+            177.5,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1133.5,
+                "y": 508
+              },
+              "contactSpanPx": [
+                1103,
+                1164
+              ],
+              "lowerFootBandWidthPx": 64
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1349.5,
+                "y": 499
+              },
+              "contactSpanPx": [
+                1322,
+                1377
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "ready-4",
+          "rect": [
+            104,
+            525,
+            371,
+            492
+          ],
+          "pivot": [
+            176.5,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 174.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                145,
+                204
+              ],
+              "lowerFootBandWidthPx": 63
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 386.5,
+                "y": 999
+              },
+              "contactSpanPx": [
+                359,
+                414
+              ],
+              "lowerFootBandWidthPx": 100
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "ready-5",
+          "rect": [
+            584,
+            525,
+            376,
+            493
+          ],
+          "pivot": [
+            178,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 653.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                623,
+                684
+              ],
+              "lowerFootBandWidthPx": 65
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 870.5,
+                "y": 1000
+              },
+              "contactSpanPx": [
+                843,
+                898
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "ready-6",
+          "rect": [
+            1063,
+            525,
+            375,
+            492
+          ],
+          "pivot": [
+            178.25,
+            484
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1133.5,
+                "y": 1009
+              },
+              "contactSpanPx": [
+                1103,
+                1164
+              ],
+              "lowerFootBandWidthPx": 64
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1349,
+                "y": 1000
+              },
+              "contactSpanPx": [
+                1322,
+                1376
+              ],
+              "lowerFootBandWidthPx": 101
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    },
+    {
+      "id": "greyback-idle",
+      "characterId": "greyback",
+      "name": "Greyback / Elder",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "known-yautja",
+      "variantId": "predator2-1990-unmasked",
+      "variantLabel": "predator2-1990-unmasked",
+      "action": "Attente — respiration démasquée",
+      "status": "draft",
+      "loop": true,
+      "notes": [
+        "Nouvelle source OpenAI V27, visage démasqué constant, arme rangée.",
+        "Référence du pistolet : Raphael Adolini 1715 ; aucune inscription nouvelle ne doit être inventée.",
+        "Contrôler visage, mains, chevelure et ancrage du canon pendant la boucle."
+      ],
+      "reviewScale": 0.95,
+      "ticksPerSecond": 60,
+      "sourceBatch": "V27",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 24,
+          "strength": 1
+        }
+      },
+      "source": {
+        "path": "art-source/v27/known-yautja/sources/greyback-idle.png",
+        "sha256": "d6893f4fbecce95f292d436be7ab311ee05882dbf96f774227d955003afd4b7f",
+        "bytes": 2005723,
+        "width": 1536,
+        "height": 1024,
+        "hasAlpha": false
+      },
+      "registrationStatus": "draft-registration-only",
+      "frames": [
+        {
+          "index": 1,
+          "stage": "ready-1",
+          "rect": [
+            166,
+            45,
+            223,
+            464
+          ],
+          "pivot": [
+            125.25,
+            456
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 231.5,
+                "y": 501
+              },
+              "contactSpanPx": [
+                208,
+                255
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 351,
+                "y": 486
+              },
+              "contactSpanPx": [
+                342,
+                360
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 2,
+          "stage": "ready-2",
+          "rect": [
+            647,
+            42,
+            222,
+            467
+          ],
+          "pivot": [
+            124.25,
+            459
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 711.5,
+                "y": 501
+              },
+              "contactSpanPx": [
+                688,
+                735
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 831,
+                "y": 486
+              },
+              "contactSpanPx": [
+                822,
+                840
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 3,
+          "stage": "ready-3",
+          "rect": [
+            1146,
+            45,
+            221,
+            464
+          ],
+          "pivot": [
+            124.75,
+            456
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1211,
+                "y": 501
+              },
+              "contactSpanPx": [
+                1187,
+                1235
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1330.5,
+                "y": 486
+              },
+              "contactSpanPx": [
+                1322,
+                1339
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 4,
+          "stage": "ready-4",
+          "rect": [
+            168,
+            535,
+            220,
+            465
+          ],
+          "pivot": [
+            124.25,
+            457
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 231.5,
+                "y": 992
+              },
+              "contactSpanPx": [
+                208,
+                255
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 353,
+                "y": 976
+              },
+              "contactSpanPx": [
+                335,
+                371
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "nominalCellPx": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 5,
+          "stage": "ready-5",
+          "rect": [
+            646,
+            535,
+            222,
+            465
+          ],
+          "pivot": [
+            125,
+            457
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 711,
+                "y": 992
+              },
+              "contactSpanPx": [
+                688,
+                734
+              ],
+              "lowerFootBandWidthPx": 54
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 831,
+                "y": 977
+              },
+              "contactSpanPx": [
+                822,
+                840
+              ],
+              "lowerFootBandWidthPx": 80
+            }
+          ],
+          "nominalCellPx": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "index": 6,
+          "stage": "ready-6",
+          "rect": [
+            1148,
+            535,
+            219,
+            465
+          ],
+          "pivot": [
+            123.5,
+            457
+          ],
+          "durationTicks": 6,
+          "supportPoints": [
+            {
+              "id": "screen-left-near-foot",
+              "sourcePx": {
+                "x": 1210.5,
+                "y": 992
+              },
+              "contactSpanPx": [
+                1187,
+                1234
+              ],
+              "lowerFootBandWidthPx": 55
+            },
+            {
+              "id": "screen-right-far-foot",
+              "sourcePx": {
+                "x": 1332.5,
+                "y": 976
+              },
+              "contactSpanPx": [
+                1315,
+                1350
+              ],
+              "lowerFootBandWidthPx": 79
+            }
+          ],
+          "nominalCellPx": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ]
+    }
+  ]
+}

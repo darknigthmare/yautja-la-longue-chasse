@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "scope": "Revue de sprites dessinés pour Yautja connus et, sur demande explicite, Machiko Noguchi et Theta Berwick. Aucun changement du gameplay.",
+  "includeV27": true,
+  "reviewDate": "2026-09-05",
+  "entries": [
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Humaine : visage, mains et bottes humains ; l’armure ne change pas son espèce.",
+        "Variante de clan distincte de Ryushi, d’après la figurine NECA issue des comics.",
+        "Lames de poignet rétractées pendant la tenue du fusil : l’essai aux lames inversées a été rejeté.",
+        "Six poses dessinées à revoir en mouvement ; cicatrice et petits détails du visage non certifiés 1:1."
+      ],
+      "id": "machiko-clan-hit-reaction",
+      "characterId": "machiko",
+      "name": "Machiko Noguchi",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "machiko-clan-armor",
+      "variantLabel": "Comics · armure de clan",
+      "action": "Impact et reprise d’appui",
+      "reviewScale": 0.8
+    },
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Variante Ryushi en vêtements humains, séparée de l’armure de clan ; elle ne compte pas comme une seconde armure.",
+        "Référence Prime 1 sous licence inspirée de la couverture Aliens vs. Predator n°4.",
+        "L’action dessinée est une visée défensive et un recul au fusil, pas une parade de mêlée.",
+        "Katana au fourreau ; visage et mains humains. Pas encore un cycle de déplacement ni un ensemble complet."
+      ],
+      "id": "machiko-ryushi-high-guard",
+      "characterId": "machiko",
+      "name": "Machiko Noguchi",
+      "species": "human",
+      "family": "human-hunters",
+      "familyLabel": "Chasseurs humains · tenue Ryushi",
+      "variantId": "machiko-ryushi",
+      "variantLabel": "Ryushi · tenue olive et katana",
+      "action": "Visée défensive au fusil",
+      "reviewScale": 0.8
+    },
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Theta est le personnage qui correspond probablement à la description de l’humaine des comics récents.",
+        "Variante fondée sur la couverture officielle Predator (2023) n°2 ; silhouette et visage humains.",
+        "Prise inversée du couteau en pose 3 corrigée par une retouche OpenAI, sans correction anatomique par code.",
+        "Les traces vertes sont dessinées dans la source, pas des effets de combat séparés. Fidélité 1:1 non certifiée."
+      ],
+      "id": "theta-blade-guard",
+      "characterId": "theta-berwick",
+      "name": "Theta Berwick",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "variantLabel": "Marvel 2023 · armure dorée · démasquée",
+      "action": "Garde à la machette",
+      "reviewScale": 0.8
+    },
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Même variante humaine en armure dorée que la garde ; aucune mandibule ni anatomie Yautja.",
+        "Machette conservée à main droite pendant le recul et la reprise d’appui.",
+        "Six poses originales OpenAI, sans interpolation ni miroir automatique.",
+        "Les transitions, la stabilité des proportions et les traces de bataille restent à valider pour l’utilisation en jeu."
+      ],
+      "id": "theta-hit-reaction",
+      "characterId": "theta-berwick",
+      "name": "Theta Berwick",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "familyLabel": "Humains en armure Yautja",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "variantLabel": "Marvel 2023 · armure dorée · démasquée",
+      "action": "Coup au corps et récupération",
+      "reviewScale": 0.8
+    },
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Masque à deux défenses, torse sans filet, une lame au poignet droit et un canon à l’épaule gauche.",
+        "Référence Hot Toys sous licence ; l’ancienne illustration V5 n’a pas été reprise comme vérité.",
+        "Canon doublé du premier essai corrigé par OpenAI ; v1 rejetée conservée dans les sources privées.",
+        "Les poses 2 et 3 forment un maintien de garde proche. Occultations normales possibles ; aucun gameplay validé."
+      ],
+      "id": "tracker-guard-absorb",
+      "characterId": "tracker",
+      "name": "Tracker",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "Yautja connus",
+      "variantId": "predators-2010",
+      "variantLabel": "Predators (2010) · masque à défenses",
+      "action": "Garde et absorption",
+      "reviewScale": 0.95
+    },
+    {
+      "status": "draft",
+      "loop": false,
+      "notes": [
+        "Variante armurée d’après NECA sous licence ; distincte de Lab Escape et de Predator Killer.",
+        "Deux lames par gantelet selon la référence inspectée ; pas de fusil tenu inventé.",
+        "Deuxième lecture indépendante sans main supplémentaire ni arme détachée évidente.",
+        "Détails partiellement occultés : anatomie et fidélité non certifiées 1:1. Six poses ne couvrent pas toutes ses animations."
+      ],
+      "id": "fugitive-hit-reaction",
+      "characterId": "fugitive",
+      "name": "Fugitive",
+      "species": "yautja",
+      "family": "known-yautja",
+      "familyLabel": "Yautja connus",
+      "variantId": "the-predator-2018-armored",
+      "variantLabel": "The Predator (2018) · armure",
+      "action": "Impact et récupération",
+      "reviewScale": 0.95
+    }
+  ]
+}
