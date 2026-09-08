@@ -235,3 +235,27 @@
 
 .animationLabLink { display: inline-block; margin-top: 14px; padding: 8px 0; color: var(--pit-gold); font-size: .78rem; text-underline-offset: 4px; }
 .animationLabLink:focus-visible { outline: 2px solid var(--pit-gold); outline-offset: 5px; }
+
+/* Training tools stay scrollable instead of covering an entire small arena. */
+.trainingTools { position: relative; right: auto; bottom: auto; flex: 0 0 auto; width: 100%; max-height: min(280px, 32vh); overflow: auto; overscroll-behavior: contain; }
+@media (max-width: 650px) { .trainingTools { max-height: 30vh; } }
+.trainingLessons { border-top: 1px solid rgba(114,216,194,.3); padding-top: 7px; }
+.trainingLessons summary { cursor: pointer; color: #b9fff0; font-size: .72rem; padding: 5px 0; }
+.trainingLessons p, .lessonStatus span { font-size: .68rem; line-height: 1.45; color: #d3d8ca; margin: 6px 0; }
+.lessonStatus { margin-top: 7px; padding: 7px; border: 1px solid #56695e; }
+.lessonStatus strong { color: #f1d18b; font-size: .7rem; line-height: 1.45; }
+.lessonStatus[data-status="success"] { border-color: #8fffe1; }
+.lessonStatus[data-status="failed"] { border-color: #efad79; }
+.trainingButton:focus-visible, .trainingLessons summary:focus-visible { outline: 2px solid #8fffe1; outline-offset: 2px; }
+@media (pointer: coarse) { .trainingTools .trainingButton { min-height: 44px; } }
+
+
+/* Selection faces the opposing card; front-facing plates keep their authored view. */
+.fighterKeyArt { transform: scaleX(1); }
+.fighterKeyArt[data-native-facing="right"][data-facing="left"] { transform: scaleX(-1); }
+.fighterArtNotice { display: block; margin-top: 7px; color: var(--pit-dim); font-size: .7rem; }
+/* Inline status occupies its own row; it never overlays the arena or input controls. */
+.bitmapArtStatus { position: relative; display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: center; width: min(1200px, calc(100% - 24px)); margin: 0 auto 8px; font-size: .65rem; line-height: 1.45; color: var(--pit-dim); }
+.bitmapArtStatus > span { border: 1px solid #477566; border-radius: 3px; padding: 3px 7px; color: #c2e3d9; background: #0d1915; }
+.bitmapArtStatus > span[data-pit-bitmap-status="missing"] { border-color: #a77f51; color: #e5bf91; }
+.bitmapArtStatus > small { flex: 0 0 100%; font-size: .65rem; }

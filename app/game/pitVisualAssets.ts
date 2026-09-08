@@ -7,6 +7,7 @@ export interface PitFighterKeyArt {
   readonly width: 1024;
   readonly height: 1536;
   readonly kind: "selection-key-art";
+  readonly nativeFacing: "right";
   readonly background: "#101916";
   readonly alt: string;
 }
@@ -20,8 +21,10 @@ export type PitIllustratedFighterId = typeof PIT_ILLUSTRATED_FIGHTER_IDS[number]
 /**
  * Delivery: opaque WebP, 1024 × 1536 (2:3), whole body inside the image.
  * Background: flat #101916. These illustrations are not modular sprite cutouts.
- * Preserve the authored pose and equipment: contain, never crop or mirror.
- * Only register delivered assets; other fighters retain the mask glyph fallback.
+ * All four delivered V23 poses face right. Selection mirrors the right-hand
+ * card toward its opponent; this is a display convention, not an authored reverse view.
+ * Keep the entire image contained. Existing V5 cutouts may supply other IDs;
+ * frontal cutouts remain neutral and IDs without either visual are explicitly pending.
  */
 export const PIT_FIGHTER_KEY_ART: Readonly<Record<PitIllustratedFighterId, PitFighterKeyArt>> = {
   "jungle-hunter": {
@@ -30,6 +33,7 @@ export const PIT_FIGHTER_KEY_ART: Readonly<Record<PitIllustratedFighterId, PitFi
     width: 1024,
     height: 1536,
     kind: "selection-key-art",
+    nativeFacing: "right",
     background: "#101916",
     alt: "Jungle Hunter en pied, biomask argenté et équipement de chasse du film Predator.",
   },
@@ -39,6 +43,7 @@ export const PIT_FIGHTER_KEY_ART: Readonly<Record<PitIllustratedFighterId, PitFi
     width: 1024,
     height: 1536,
     kind: "selection-key-art",
+    nativeFacing: "right",
     background: "#101916",
     alt: "City Hunter en pied, biomask cuivré et équipement de chasse du film Predator 2.",
   },
@@ -48,6 +53,7 @@ export const PIT_FIGHTER_KEY_ART: Readonly<Record<PitIllustratedFighterId, PitFi
     width: 1024,
     height: 1536,
     kind: "selection-key-art",
+    nativeFacing: "right",
     background: "#101916",
     alt: "Berserker en pied, biomask orné d’une mâchoire osseuse et armure du film Predators.",
   },
@@ -57,6 +63,7 @@ export const PIT_FIGHTER_KEY_ART: Readonly<Record<PitIllustratedFighterId, PitFi
     width: 1024,
     height: 1536,
     kind: "selection-key-art",
+    nativeFacing: "right",
     background: "#101916",
     alt: "Wolf en pied, biomask gravé et équipement de vétéran du film Aliens vs. Predator: Requiem.",
   },

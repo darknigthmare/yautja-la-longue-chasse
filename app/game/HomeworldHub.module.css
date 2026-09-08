@@ -1,0 +1,76 @@
+.hub { --gold: #d5ac63; position: relative; color: #f1e7d7; background: #090d10; border: 1px solid #4d4639; border-radius: 16px; overflow: hidden; }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 18px 22px; background: linear-gradient(110deg,#1d2428,#111719); border-bottom: 1px solid #5a4c36; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .17em; font-size: 10px; font-weight: 800; }
+.header h2 { margin: 3px 0 5px; font-size: clamp(18px,2vw,25px); font-weight: 700; }
+.header p { margin: 0; color: #b5bbb8; font-size: 12px; }
+.header button,.dialog button,.footer button { color: #f0e4ce; border: 1px solid #6a5b43; background: #222a2c; border-radius: 5px; padding: 9px 13px; cursor: pointer; }
+.header button:focus-visible,.dialog button:focus-visible,.footer button:focus-visible,.touch button:focus-visible { outline: 2px solid #f5ca7a; outline-offset: 3px; }
+.viewport { position: relative; height: clamp(400px,61vh,690px); overflow: hidden; isolation: isolate; outline: none; background: #11171b; touch-action: pan-y; }
+.viewport:focus-visible { box-shadow: inset 0 0 0 2px #d5ac63; }
+.sky { position: absolute; inset: 0; background: linear-gradient(180deg,#110e17a0,#79442b30 45%,#17120ddd), url('/game/backgrounds/volcanic-depth-v4.webp') center/cover; filter: saturate(.5); z-index: -3; }
+.distant { position: absolute; inset: -60px; background: url('/game/backgrounds/ruins-depth-v8.png') center/cover; opacity: .22; mix-blend-mode: luminosity; z-index: -2; }
+.haze { position: absolute; inset: 0; background: linear-gradient(0deg,#03090dbb,transparent 22%,transparent 68%,#18151888); pointer-events: none; z-index: 4; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.district { position: absolute; pointer-events: none; overflow: hidden; }
+.districtBackdrop { position: absolute; inset: 40px 16px 0; opacity: .32; background: linear-gradient(0deg,#10191f,transparent 90%),url('/game/ship-interior/v21/wall-sanctum.webp') center/cover; mask-image: linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); }
+.district:nth-child(3n + 2) .districtBackdrop { background-image: linear-gradient(0deg,#10191f,transparent 90%),url('/game/ship-interior/v21/wall-machinery.webp'); }
+.district:nth-child(3n) .districtBackdrop { background-image: linear-gradient(0deg,#10191f,transparent 90%),url('/game/ship-interior/v21/wall-observatory.webp'); }
+.districtName { position: absolute; top: 36px; left: 100px; right: 90px; color: #dfcdad; font-size: 20px; text-transform: uppercase; font-weight: 700; letter-spacing: .2em; text-shadow: 0 2px 5px #000; white-space: nowrap; }
+.districtNumber { display: block; color: var(--district-accent,#bf9354); font: 11px monospace; letter-spacing: .3em; margin-bottom: 8px; }
+.spire { position: absolute; bottom: 5px; width: 65px; height: 285px; background: linear-gradient(90deg,#090e13,#283336 48%,#11191e 60%); clip-path: polygon(25% 17%,38% 17%,50% 0,62% 17%,80% 17%,85% 100%,8% 100%); border-bottom: 2px solid var(--district-accent,#c79e5b); }
+.spire::after { content: ''; position: absolute; top: 100px; bottom: 30px; left: 47%; width: 3px; background: var(--district-accent,#c79e5b); opacity: .4; box-shadow: 0 0 18px currentColor; }
+.arch { position: absolute; height: 220px; width: 180px; bottom: 0; opacity: .5; object-fit: contain; }
+.platform { position: absolute; z-index: 2; background: linear-gradient(#726249 0,#302d26 6px,#172124 7px,#080e12 75%); border-top: 2px solid #d3b27b; box-shadow: 0 -6px 24px #e8a84e14,0 20px 35px #020508b0; }
+.platform::after { content: ''; position: absolute; top: 9px; left: 0; right: 0; height: 18px; opacity: .5; background: repeating-linear-gradient(125deg,transparent 0 17px,#56615c 18px 19px,transparent 20px 42px); }
+.lift { position: absolute; width: 88px; border-left: 3px solid #4c6465; border-right: 3px solid #4c6465; background: repeating-linear-gradient(0deg,#80b1b10c 0 43px,#8cc3bd55 44px 47px,#12333333 48px 49px); z-index: 1; }
+.lift::before { content: '↕'; display: grid; place-items: center; position: absolute; left: 21px; top: 60px; width: 40px; height: 40px; color: #c8efdf; background: #123333; border: 1px solid #62918d; border-radius: 50%; font-size: 25px; }
+.liftLabel { position: absolute; left: -35px; right: -35px; top: 13px; text-align: center; color: #a9d4c9; font: 11px monospace; }
+.point { position: absolute; width: 160px; height: 210px; transform: translate(-50%,-100%); pointer-events: none; z-index: 3; }
+.prop { position: absolute; inset: auto 0 0; width: 160px; height: 150px; object-fit: contain; filter: drop-shadow(0 8px 7px #000b); }
+.point[data-kind='ship'] { width: 400px; height: 270px; }
+.point[data-kind='ship'] .prop { width: 400px; height: 245px; }
+.point[data-kind='evidence'] .prop { width: 96px; height: 100px; left: 32px; }
+.point[data-kind='region'] .prop { width: 160px; height: 220px; opacity: .6; }
+.pointTag { position: absolute; left: 50%; bottom: 210px; transform: translateX(-50%); padding: 6px 10px; background: #111a1ddd; border: 1px solid #66634f; color: #d5d4c2; font-size: 11px; white-space: nowrap; border-radius: 3px; }
+.point[data-kind='evidence'] .pointTag { bottom: 112px; color: #f1c57f; border-color: #a77b3d; }
+.point[data-kind='ship'] .pointTag { bottom: 245px; }
+.npc { position: absolute; width: 112px; height: 168px; bottom: -7.875px; left: 24px; }
+.pointBeacon { position: absolute; bottom: 0; left: 35%; right: 35%; height: 3px; background: #d3b27b; box-shadow: 0 0 14px #ffc66a; }
+.hero { position: absolute; width: 112px; height: 168px; margin-left: -56px; margin-top: -160.125px; z-index: 4; will-change: transform; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 33px; width: 60px; height: 6px; background: #000a; filter: blur(4px); border-radius: 50%; }
+.heroMark { position: absolute; top: 8px; left: 55px; width: 13px; height: 4px; background: #c4f3e3; box-shadow: 0 0 9px #59c4ab; }
+.foreground { position: absolute; pointer-events: none; bottom: -40px; height: 270px; width: 100px; opacity: .28; background: url('/game/ship-interior/v21/foreground-rib.webp') center/contain no-repeat; z-index: 5; }
+.location { position: absolute; left: 18px; top: 18px; z-index: 6; pointer-events: none; text-shadow: 0 2px 5px #000; }
+.location strong { display: block; font-size: 15px; color: #eed5a9; }
+.location span { display: block; max-width: 380px; margin-top: 5px; color: #c5cdca; font-size: 11px; }
+.minimap { position: absolute; top: 18px; right: 18px; width: 185px; height: 86px; background: #081116de; border: 1px solid #667069; border-radius: 5px; z-index: 6; }
+.mapDistrict { position: absolute; background: #65716844; border: 1px solid #79897855; }
+.mapDistrict[data-visited='true'] { background: #b2925540; border-color: #c2a96e88; }
+.mapActor { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #d6ffe9; box-shadow: 0 0 5px #62ebc0; transform: translate(-50%,-50%); }
+.prompt { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); max-width: calc(100% - 32px); border: 1px solid #b5945d; border-radius: 5px; padding: 10px 15px; background: #111b20f0; color: #f0dcb9; text-align: center; font-size: 13px; z-index: 7; cursor: pointer; }
+.prompt:focus-visible { outline: 2px solid #f0cf96; outline-offset: 3px; }
+.prompt kbd { margin-right: 10px; color: #13201f; background: #d5bf91; border-radius: 3px; padding: 3px 6px; font-size: 11px; }
+.pause { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; z-index: 8; color: #ead4b1; background: #061014bb; backdrop-filter: blur(3px); }
+.pause strong { font-size: 20px; }
+.pause button { padding: 11px 20px; color: #142021; background: #ddbd7f; border: 0; border-radius: 5px; cursor: pointer; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid #544d3c; padding: 12px 18px; background: #10191e; }
+.progress { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
+.progress span { color: #aaa; font-size: 11px; }
+.help { color: #9aafad; font-size: 11px; padding: 8px 18px 11px; background: #0e1619; line-height: 1.7; }
+.help kbd { color: #dfc591; }
+.touch { display: flex; justify-content: space-between; gap: 10px; padding: 9px 16px; background: #10191e; border-top: 1px solid #293536; }
+.touchGroup { display: flex; gap: 6px; }
+.touch button { min-width: 42px; min-height: 42px; border: 1px solid #536765; color: #e1e5d4; background: #203033; border-radius: 6px; font-size: 16px; touch-action: none; user-select: none; }
+.touch button:active { background: #64735b; }
+.backdrop { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; padding: 16px; background: #03090dd4; backdrop-filter: blur(5px); }
+.dialog { width: min(640px,100%); max-height: calc(100% - 12px); overflow: auto; border: 1px solid #957747; border-radius: 10px; background: linear-gradient(145deg,#263032,#0c161c); padding: 26px; box-shadow: 0 24px 80px #000a; }
+.dialog h3 { margin: 9px 0 15px; font-size: 25px; color: #ebd6b0; }
+.dialog p { font-size: 14px; line-height: 1.7; color: #c5ceca; }
+.dialogActions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.dialog button:disabled { opacity: .5; cursor: not-allowed; }
+.dialog .primary { background: #b69251; color: #10191c; border-color: #d6b579; }
+.dialog ul { padding-left: 20px; font-size: 13px; line-height: 1.8; color: #c7d1c9; }
+.notice { margin: 14px 0; padding: 11px 14px; border-left: 2px solid #ae8649; background: #be9a5712; font-size: 12px; color: #ddc5a0; line-height: 1.6; }
+.srOnly { position: absolute; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 650px) { .header { padding: 13px; align-items: flex-start; gap: 8px; }.header p { display: none; }.header button { font-size: 11px; padding: 8px; }.viewport { height: 460px; }.minimap { width: 126px; height: 60px; right: 10px; top: 10px; }.location { top: 78px; left: 12px; }.location span { max-width: 240px; }.footer { padding: 10px 12px; }.footer button { font-size: 11px; }.dialog { padding: 20px; }.dialog h3 { font-size: 21px; }.touch { padding: 8px; gap: 4px; }.touchGroup { gap: 4px; }.touch button { min-width: 38px; }.prompt { bottom: 12px; font-size: 12px; }.help { padding: 8px 12px; } }
+@media (prefers-reduced-motion: reduce) { .world,.hero { will-change: auto; } }

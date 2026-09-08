@@ -1,3 +1,8 @@
+// @ts-expect-error Node's strip-types test runner needs an explicit extension.
+import { OptionalAudioFiles } from "./audioFiles.ts";
+
+export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
+
 /**
  * Petit moteur sonore procédural pour le jeu.
  *
@@ -43,6 +48,8 @@ export type GameSfxId =
   | "trophy"
   | "victory"
   | "defeat";
+
+export interface GameAudioOptions { manifestUrl?: string }
 
 export interface GameAudioMix {
   master: number;
@@ -102,6 +109,15 @@ export class GameAudio {
   private cloakVoice: CloakVoice | null = null;
   private ambienceVoice: AmbienceVoice | null = null;
   private ambienceRequest = 0;
+  private requestedAmbience: GameAudioBiome | null = null;
+  private musicRequest = 0;
+  private requestedMusic: GameMusicContext | null = null;
+  private cloakFileActive = false;
+  private fileAudio: OptionalAudioFiles;
+
+  constructor(options: GameAudioOptions = {}) {
+    this.fileAudio = new OptionalAudioFiles(() => this.context && this.effects && this.music ? { context: this.context, effects: this.effects, music: this.music } : null, options.manifestUrl);
+  }
 
   /**
    * À appeler depuis une interaction utilisateur pour satisfaire les règles
@@ -161,6 +177,7 @@ export class GameAudio {
       primer.buffer = this.context.createBuffer(1, 1, this.context.sampleRate);
       primer.connect(this.master!);
       primer.start();
+      if (this.context.state === "running") this.fileAudio.unlock();
     } catch {
       // Un refus d'autoplay ne doit jamais interrompre la partie.
     }
@@ -228,7 +245,7 @@ export class GameAudio {
   }
 
   get activeAmbience(): GameAudioBiome | null {
-    return this.ambienceVoice?.biome ?? null;
+    return (this.fileAudio.activeLoop("ambience") as GameAudioBiome | null) ?? this.ambienceVoice?.biome ?? null;
   }
 
   /**
@@ -243,12 +260,21 @@ export class GameAudio {
     // Navigation or stop may happen while autoplay unlock is still pending.
     // Only the latest requested location may install a persistent voice.
     const request = ++this.ambienceRequest;
-    if (this.ambienceVoice?.biome === biome) return;
+    this.requestedAmbience = biome;
+    if (this.activeAmbience === biome) return;
     await this.unlock();
     if (this.disposed || request !== this.ambienceRequest) return;
     const now = this.readyTime();
     if (now === null) return;
     const fadeSeconds = Math.max(0, options.fadeSeconds ?? 0.7);
+    void this.fileAudio.startLoop("ambience", biome, fadeSeconds, () => {
+      if (this.requestedAmbience !== biome || !this.context) return;
+      const previous = this.ambienceVoice; this.ambienceVoice = null;
+      if (previous) this.stopAmbienceVoice(previous, this.context.currentTime, fadeSeconds);
+    }, () => {
+      const at = this.readyTime();
+      if (this.requestedAmbience === biome && !this.ambienceVoice && at !== null) this.ambienceVoice = this.createAmbienceVoice(biome, at, fadeSeconds);
+    });
     const previous = this.ambienceVoice;
     const next = this.createAmbienceVoice(biome, now, fadeSeconds);
     if (!next) return;
@@ -260,6 +286,8 @@ export class GameAudio {
 
   stopAmbience(fadeSeconds = 0.45): void {
     this.ambienceRequest += 1;
+    this.requestedAmbience = null;
+    this.fileAudio.stopLoop("ambience", fadeSeconds);
     const voice = this.ambienceVoice;
     const context = this.context;
     if (!voice || !context) return;
@@ -271,11 +299,37 @@ export class GameAudio {
     );
   }
 
+
+  /** Music is an optional streaming layer independent from the location ambience. */
+  async setMusicContext(context: GameMusicContext | null, options: AmbienceOptions = {}): Promise<void> {
+    if (this.disposed) return;
+    const request = ++this.musicRequest;
+    const fade = Math.max(0, options.fadeSeconds ?? .6);
+    if (context === null) { this.stopMusic(fade); return; }
+    if (context !== this.requestedMusic) this.fileAudio.stopLoop("music", fade);
+    this.requestedMusic = context;
+    await this.unlock();
+    if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic) return;
+    void this.fileAudio.startLoop("music", context, fade);
+  }
+
+  stopMusic(fadeSeconds = .4): void {
+    this.musicRequest++; this.requestedMusic = null;
+    this.fileAudio.stopLoop("music", fadeSeconds);
+  }
+
+  preloadSfx(ids?: readonly GameSfxId[]): Promise<void> { return this.fileAudio.preloadSfx(ids); }
+
+  getAudioDiagnostics() {
+    return this.fileAudio.diagnostics(this.muted || this.masterVolume === 0).map(entry => ({ ...entry, state: (entry.category === "sfx" ? this.effectsVolume : this.musicVolume) === 0 ? "disabled" as const : entry.state }));
+  }
+
   // -------------------------------------------------------------------------
   // Sons courts d'interface et de déplacement
   // -------------------------------------------------------------------------
 
   ui(): void {
+    if (this.fileAudio.playSfx("ui")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -289,6 +343,7 @@ export class GameAudio {
   }
 
   select(): void {
+    if (this.fileAudio.playSfx("select")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -309,6 +364,7 @@ export class GameAudio {
   }
 
   jump(): void {
+    if (this.fileAudio.playSfx("jump")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -403,6 +459,7 @@ export class GameAudio {
   }
 
   footstep(intensity = 1): void {
+    if (this.fileAudio.playSfx("footstep", intensity)) return;
     const now = this.readyTime();
     if (now === null) return;
     const weight = Math.max(0.25, Math.min(1.5, intensity));
@@ -426,6 +483,7 @@ export class GameAudio {
   }
 
   weaponSwitch(): void {
+    if (this.fileAudio.playSfx("weapon-switch")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -448,6 +506,7 @@ export class GameAudio {
   }
 
   mask(on: boolean): void {
+    if (this.fileAudio.playSfx(on ? "mask-on" : "mask-off")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -470,6 +529,7 @@ export class GameAudio {
   }
 
   medicomp(): void {
+    if (this.fileAudio.playSfx("medicomp")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -486,6 +546,7 @@ export class GameAudio {
   }
 
   netgun(): void {
+    if (this.fileAudio.playSfx("netgun")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -508,6 +569,7 @@ export class GameAudio {
   }
 
   snare(): void {
+    if (this.fileAudio.playSfx("snare")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -530,6 +592,7 @@ export class GameAudio {
   }
 
   enemyAlert(): void {
+    if (this.fileAudio.playSfx("enemy-alert")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -546,6 +609,7 @@ export class GameAudio {
   }
 
   objective(): void {
+    if (this.fileAudio.playSfx("objective")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -566,6 +630,7 @@ export class GameAudio {
   // -------------------------------------------------------------------------
 
   slash(): void {
+    if (this.fileAudio.playSfx("slash")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -588,6 +653,7 @@ export class GameAudio {
   }
 
   plasma(): void {
+    if (this.fileAudio.playSfx("plasma")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -619,6 +685,7 @@ export class GameAudio {
   }
 
   scan(): void {
+    if (this.fileAudio.playSfx("scan")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -636,6 +703,13 @@ export class GameAudio {
   }
 
   cloak(on: boolean): void {
+    if (on && this.cloakFileActive) return;
+    if (!on) { this.cloakFileActive = false; if (this.context) this.stopCloak(this.context.currentTime); }
+    if (this.fileAudio.playSfx(on ? "cloak-on" : "cloak-off")) {
+      this.cloakFileActive = on;
+      if (on && this.context) this.stopCloak(this.context.currentTime);
+      return;
+    }
     const now = this.readyTime();
     if (now === null) return;
 
@@ -703,6 +777,7 @@ export class GameAudio {
   }
 
   hit(): void {
+    if (this.fileAudio.playSfx("hit")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -729,6 +804,7 @@ export class GameAudio {
   // -------------------------------------------------------------------------
 
   trophy(): void {
+    if (this.fileAudio.playSfx("trophy")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -745,6 +821,7 @@ export class GameAudio {
   }
 
   victory(): void {
+    if (this.fileAudio.playSfx("victory")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -766,6 +843,7 @@ export class GameAudio {
   }
 
   defeat(): void {
+    if (this.fileAudio.playSfx("defeat")) return;
     const now = this.readyTime();
     if (now === null) return;
 
@@ -802,6 +880,8 @@ export class GameAudio {
     }
 
     this.disposed = true;
+    this.musicRequest++; this.requestedMusic = null; this.requestedAmbience = null;
+    this.fileAudio.dispose();
 
     if (this.context) {
       this.stopCloak(this.context.currentTime, true);

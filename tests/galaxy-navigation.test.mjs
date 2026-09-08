@@ -532,7 +532,7 @@ test("physical deck exposes eight traversable stations and three input families"
   assert.doesNotMatch(source, /combat rituel/);
 });
 
-test("the physical medbay reuses the functional ShipHub treatment room and returns to deck", async () => {
+test("the shared medbay reuses ShipHub and returns to its originating hub", async () => {
   const source = await readFile(
     resolve(projectRoot, "app/game/GameClient.tsx"),
     "utf8",
@@ -544,6 +544,6 @@ test("the physical medbay reuses the functional ShipHub treatment room and retur
   assert.match(source, /← Retour au pont physique/);
   assert.match(
     source,
-    /physical-medbay-entry__back[\s\S]*onClick=\{\(\) => go\("deck"\)\}/,
+    /physical-medbay-entry__back[\s\S]*onClick=\{\(\) => go\(hubLocation\)\}/,
   );
 });

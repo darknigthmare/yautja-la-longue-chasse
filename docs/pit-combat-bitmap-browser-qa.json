@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "actualComponent": "app/game/PitCanvas.tsx",
+  "browser": "Chrome headless",
+  "registryRequests": [
+    "/game/sprites/v5/film-plates/jungle-hunter.png",
+    "/game/sprites/v5/film-plates/berserker.png"
+  ],
+  "defaultDraws": {
+    "http://127.0.0.1:4394/game/sprites/v5/film-plates/jungle-hunter.png": {
+      "count": 7,
+      "matrix": {
+        "a": 0.08579881489276886,
+        "b": 0,
+        "c": 0,
+        "d": 0.08579881489276886,
+        "e": 300,
+        "f": 430
+      },
+      "args": [
+        -390,
+        -1433,
+        775,
+        1514
+      ]
+    },
+    "http://127.0.0.1:4394/game/sprites/v5/film-plates/berserker.png": {
+      "count": 7,
+      "matrix": {
+        "a": -0.09752198308706284,
+        "b": 0,
+        "c": 0,
+        "d": 0.09752198308706284,
+        "e": 660,
+        "f": 430
+      },
+      "args": [
+        -531,
+        -1326,
+        1055,
+        1401
+      ]
+    }
+  },
+  "pausedFrames": {
+    "before": "19",
+    "after": "19"
+  },
+  "highContrastPreservesBothImages": true,
+  "missingFighter": "scarface",
+  "missingText": "Scarface · image indisponible · repère de combat",
+  "missingDraws": {
+    "http://127.0.0.1:4394/game/sprites/v5/film-plates/berserker.png": {
+      "count": 26,
+      "matrix": {
+        "a": -0.09752198308706284,
+        "b": 0,
+        "c": 0,
+        "d": 0.09752198308706284,
+        "e": 660,
+        "f": 430
+      },
+      "args": [
+        -531,
+        -1326,
+        1055,
+        1401
+      ]
+    }
+  },
+  "errors": [],
+  "testedAt": "2026-09-08T03:57:49.317Z",
+  "limits": "Fixed existing V5 presentation poses only; no animation, full campaign or physical controller certification."
+}

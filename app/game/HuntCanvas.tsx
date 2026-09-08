@@ -217,7 +217,7 @@ import {
   evaluateMissionHonorRules,
   honorRuleEventId,
 } from "./honorRules";
-import type { GameSfxId } from "./sound";
+import type { GameSfxId, GameMusicContext } from "./sound";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -251,6 +251,7 @@ interface HuntCanvasProps {
   screenShake: boolean;
   highContrastVision: boolean;
   onSound?(sound: GameSfxId): void;
+  onMusicContext?(context: GameMusicContext | null): void;
   explorationProgress?: ExplorationProgress;
   onExplorationProgress?(progress: ExplorationProgress): void;
   onFinish(result: MissionResult): void;
@@ -717,6 +718,7 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  musicContext: "exploration" | "combat" | "boss";
   playerX: number;
   playerY: number;
   exploration: ExplorationProgress;
@@ -811,6 +813,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 }
 
 const EMPTY_UI: UiSnapshot = {
+  musicContext: "exploration",
   playerX: 0,
   playerY: 0,
   exploration: defaultExplorationProgress(),
@@ -2564,6 +2567,9 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
         )
       : null;
   return {
+    musicContext: state.boss.active && state.boss.alive ? "boss"
+      : state.enemies.some(enemy => enemy.active && enemy.alive &&
+          state.aiBrains[enemy.id]?.mode === "engage") ? "combat" : "exploration",
     playerX: state.player.x + state.player.width / 2,
     playerY: state.player.y + state.player.height / 2,
     exploration: normalizeExplorationProgress(state.exploration),
@@ -9226,6 +9232,7 @@ export default function HuntCanvas({
   screenShake,
   highContrastVision,
   onSound,
+  onMusicContext,
   explorationProgress,
   onExplorationProgress,
   onFinish,
@@ -9268,6 +9275,11 @@ export default function HuntCanvas({
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
+
+  // Audio observes simulation snapshots; no combat or timing depends on playback.
+  useEffect(() => {
+    onMusicContext?.(ui.paused || ui.phase === "dead" || ui.phase === "finished" ? null : ui.musicContext);
+  }, [onMusicContext, ui.musicContext, ui.paused, ui.phase]);
 
   useEffect(() => {
     finishRef.current = onFinish;

@@ -82,6 +82,10 @@ export interface GalaxyMapPanelProps {
   onStateChange?: (state: GalaxyNavigationState) => void;
   onBack: () => void;
   onChooseMission: (mission: MissionDefinition) => void;
+  /** A social destination, separate from the eight campaign contracts. */
+  onVisitHomeworld?: () => void;
+  justiceControlLabel?: string;
+  onOpenJustice?: () => void;
 }
 
 const MISSION_BY_ID = Object.freeze(
@@ -197,6 +201,9 @@ export default function GalaxyMapPanel({
   onStateChange,
   onBack,
   onChooseMission,
+  onVisitHomeworld,
+  justiceControlLabel,
+  onOpenJustice,
 }: GalaxyMapPanelProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const suspendedRef = useRef(suspended);
@@ -717,6 +724,15 @@ export default function GalaxyMapPanel({
             </div>
           </div>
           <div className="galaxy-v10-header-tools">
+            {onOpenJustice && <button type="button" className="galaxy-v10-text-button"
+              disabled={suspended} title={justiceControlLabel}
+              onClick={() => { if (!suspendedRef.current) onOpenJustice(); }}>
+              Contrôles connus · dossier
+            </button>}
+            {onVisitHomeworld && <button type="button" className="galaxy-v10-text-button"
+              disabled={suspended} onClick={() => { if (!suspendedRef.current) onVisitHomeworld(); }}>
+              Yautja Prime · monde natal
+            </button>}
             <span title={selectedShip.name}>
               Vaisseau · {selectedShip.shortName}
             </span>

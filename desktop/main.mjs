@@ -2,7 +2,9 @@ import { app, BrowserWindow, dialog, Menu, protocol, session, shell } from "elec
 import fs from "node:fs";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
-import { APP_ORIGIN, CSP, isAppRoute, isAppUrl, resolveAppFile } from "./protocol.mjs";
+import { Readable } from "node:stream";
+import { DESKTOP_RELEASE_TAG } from "./release.mjs";
+import { APP_ORIGIN, CSP, isAppRoute, isAppUrl, resolveAppFile, parseAudioByteRange } from "./protocol.mjs";
 
 app.setName("Yautja La Longue Chasse");
 const qaProfile = process.env.YAUTJA_DESKTOP_QA_PROFILE;
@@ -36,7 +38,7 @@ function createWindow(route = "/") {
   const win = new BrowserWindow({
     width: 1440, height: 900, minWidth: 960, minHeight: 640,
     backgroundColor: "#050706", show: false,
-    title: "Yautja : La Longue Chasse · PC V25 · hors ligne",
+    title: "Yautja : La Longue Chasse · PC " + DESKTOP_RELEASE_TAG.toUpperCase() + " · hors ligne",
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: false, contextIsolation: true, sandbox: true,
@@ -112,11 +114,27 @@ if (!app.requestSingleInstanceLock()) {
     const file = resolveAppFile(rendererRoot, request.url, request.method);
     if (!file) return new Response("Accès refusé", { status: 403 });
     try {
-      if (!fs.statSync(file).isFile()) return new Response("Introuvable", { status: 404 });
-      const mime = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json", ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".ogg": "audio/ogg", ".wav": "audio/wav", ".mp3": "audio/mpeg", ".woff2": "font/woff2" };
-      const headers = new Headers({ "Content-Type": mime[path.extname(file)] ?? "application/octet-stream" });
+      const stat = fs.statSync(file);
+      if (!stat.isFile()) return new Response("Introuvable", { status: 404 });
+      const mime = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json", ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".svg": "image/svg+xml", ".ogg": "audio/ogg", ".wav": "audio/wav", ".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".flac": "audio/flac", ".aac": "audio/aac", ".webm": "audio/webm", ".opus": "audio/ogg", ".woff2": "font/woff2" };
+      const headers = new Headers({ "Content-Type": mime[path.extname(file).toLowerCase()] ?? "application/octet-stream" });
       headers.set("Content-Security-Policy", CSP);
       headers.set("X-Content-Type-Options", "nosniff");
+
+      if (/\.(ogg|mp3|m4a|wav|flac|aac|webm|opus)$/i.test(file)) {
+        headers.set("Accept-Ranges", "bytes");
+        const range = parseAudioByteRange(request.headers.get("range"), stat.size);
+        if (range === false) { headers.set("Content-Range", "bytes */" + stat.size); return new Response(null, { status: 416, headers }); }
+        const start = range?.start ?? 0; const end = range?.end ?? stat.size - 1;
+        headers.set("Content-Length", String(Math.max(0, end - start + 1)));
+        if (range) headers.set("Content-Range", "bytes " + start + "-" + end + "/" + stat.size);
+        if (request.method === "HEAD" || !stat.size) return new Response(null, { status: range ? 206 : 200, headers });
+        const stream = fs.createReadStream(file, { start, end });
+        const cancel = () => stream.destroy();
+        request.signal.addEventListener("abort", cancel, { once: true });
+        stream.once("close", () => request.signal.removeEventListener("abort", cancel));
+        return new Response(Readable.toWeb(stream), { status: range ? 206 : 200, headers });
+      }
       return new Response(request.method === "HEAD" ? null : await readFile(file), { status: 200, headers });
     } catch { return new Response("Introuvable", { status: 404 }); }
   });
@@ -133,7 +151,7 @@ if (!app.requestSingleInstanceLock()) {
     { label: "Édition", submenu: [{ role: "undo" }, { role: "redo" }, { type: "separator" }, { role: "cut" }, { role: "copy" }, { role: "paste" }, { role: "selectAll" }] },
     { label: "Aide", submenu: [
       { label: "À propos de cette version", click: () => { void dialog.showMessageBox({
-        title: "Yautja : La Longue Chasse", message: "Édition PC V25 · " + app.getVersion(),
+        title: "Yautja : La Longue Chasse", message: "Édition PC " + DESKTOP_RELEASE_TAG.toUpperCase() + " · " + app.getVersion(),
         detail: "Jeu de fan non commercial. Moteur 2D React/Canvas, runtime Electron embarqué.\n\nJeu et ateliers accessibles sans réseau. Sauvegardes PC séparées du navigateur ; utilisez les exports et imports du jeu pour transférer la campagne.\n\nAlt : menu PC. F11 : plein écran. La signature, les tests matériels et la production artistique finale restent à terminer.",
       }); } },
     ] },

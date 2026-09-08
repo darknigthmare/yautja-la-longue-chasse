@@ -7,6 +7,8 @@
  */
 
 import type { ControlBindings } from "./systems/controlBindings";
+import type { HomeworldProgress } from "./systems/homeworld";
+import type { JusticeProgress } from "./systems/justice";
 
 // ---------------------------------------------------------------------------
 // Stable content identifiers
@@ -616,4 +618,8 @@ export interface SaveGame {
   statistics: GameStatistics;
   settings: GameSettings;
   storyCompleted: boolean;
+  /** Homeworld is a separate social destination; it does not replace campaign hunts. */
+  homeworld: HomeworldProgress;
+  /** Evidence and warrants are independent of honor and versus matches. */
+  justice: JusticeProgress;
 }

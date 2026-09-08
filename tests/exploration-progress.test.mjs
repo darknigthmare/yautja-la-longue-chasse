@@ -63,7 +63,7 @@ test("new campaign exploration is empty and all default collections have separat
   first.discoveredRoomIds.push("jungle-pilot-module");
   assert.deepEqual(second, { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] });
   assert.deepEqual(defaultSave(createdAt).exploration, second);
-  assert.equal(SAVE_VERSION, 6);
+  assert.equal(SAVE_VERSION, 7);
 });
 
 test("exploration normalization rejects malformed collections and arbitrary ids or fields", () => {
@@ -121,7 +121,7 @@ test("schema four migration preserves the campaign but cannot infer or inject ex
   legacy.exploration = acquired;
   const before = structuredClone(legacy);
   const migrated = normalizeSave(legacy);
-  assert.equal(migrated.version, 6);
+  assert.equal(migrated.version, SAVE_VERSION);
   assert.deepEqual(migrated.exploration, defaultExplorationProgress());
   assert.deepEqual(migrated, normalizeSave(current));
   assert.deepEqual(legacy, before);
@@ -198,7 +198,7 @@ test("campaign storage and exported save round-trip permanent unlocks with exist
   assert.deepEqual(loaded.save.exploration, acquired);
   const imported = parseSaveImport(exportSave(loaded.save));
   assert.equal(imported.failure, null);
-  assert.equal(imported.save.version, 6);
+  assert.equal(imported.save.version, SAVE_VERSION);
   assert.deepEqual(imported.save.exploration, acquired);
 });
 
@@ -238,7 +238,7 @@ test("schema five migrates existing jungle discoveries without granting future i
   legacy.exploration = mergeExplorationProgress(acquired, iceAcquired);
   const before = structuredClone(legacy);
   const migrated = normalizeSave(legacy);
-  assert.equal(migrated.version, 6);
+  assert.equal(migrated.version, SAVE_VERSION);
   assert.deepEqual(migrated.exploration, acquired);
   assert.deepEqual(migrated, normalizeSave({ ...legacy, version: 6, exploration: acquired }));
   assert.deepEqual(legacy, before);

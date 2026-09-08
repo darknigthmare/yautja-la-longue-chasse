@@ -139,7 +139,8 @@ test("GameClient hydrates and atomically persists V5 Circuit and Descente snapsh
   assert.match(client, /savedDescentRuns=\{pitDescentRuns\}/);
   assert.match(client, /onRunTransition=\{recordPitRunTransition\}/);
 
-  const transition = section(client, "const recordPitRunTransition", "const go = useCallback");
+  // Stop at this hook boundary; unrelated social saves may follow it.
+  const transition = section(client, "const recordPitRunTransition", "  }, []);");
   assert.match(transition, /persistPitCircuitRun/);
   assert.match(transition, /replacePitCircuitRun/);
   assert.match(transition, /persistPitDescentRun/);

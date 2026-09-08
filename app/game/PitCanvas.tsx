@@ -13,6 +13,7 @@ import {
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { getPitCombatBitmapArtDefinition, loadPitCombatBitmapArt, getPitCombatBitmapArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -107,6 +108,8 @@ import {
   type PitTrainingSequenceRecorder,
   type PitTrainingSettingsPatch,
 } from "./systems/pitTraining";
+import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick, advancePitTrainingClock } from "./systems/pitTrainingClock";
+import { PIT_TRAINING_LESSONS, preparePitTrainingLesson, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
 import styles from "./PitCanvas.module.css";
 
 type PitMode = "cpu" | "local" | "training" | "arcade" | "circuit" | "descent";
@@ -217,6 +220,7 @@ interface PitCanvasProps {
   unlockedCosmeticIds?: readonly string[];
   savedCircuitRuns?: PitStoredCircuitRuns;
   savedDescentRuns?: PitStoredDescentRuns;
+  exitLabel?: string;
   onExit: () => void;
   onMatchComplete?: PitMatchCompleteHandler;
   onRunTransition?: PitRunTransitionHandler;
@@ -542,6 +546,7 @@ function drawArena(
   showHitboxes: boolean,
   impact: ImpactFlash | null,
   leftCosmeticPalette: PitArcadeCosmeticDefinition["palette"] | null,
+  fighterArt: PitCombatBitmapArtBank | null,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -747,45 +752,77 @@ function drawArena(
     const lean = fighter.phase === "startup" ? fighter.facing * 6 : fighter.phase === "active" ? fighter.facing * 13 : 0;
 
     context.save();
-    context.translate(fighter.x, bodyTop);
-    context.scale(fighter.facing, 1);
     context.fillStyle = "rgba(0,0,0,.45)";
     context.beginPath();
-    context.ellipse(0, body.height + fighter.y + 4, definition.bodyWidth * 0.72, 9, 0, 0, Math.PI * 2);
+    context.ellipse(fighter.x, groundY + 4, definition.bodyWidth * 0.72, 9, 0, 0, Math.PI * 2);
     context.fill();
-
-    if (fighter.cloakPhase !== "inactive") {
-      context.globalAlpha = fighter.cloakPhase === "active" ? 0.38 : fighter.cloakPhase === "startup" ? 0.68 : 0.54;
-      context.shadowColor = highContrast ? "#ffffff" : "#72d8c2";
-      context.shadowBlur = fighter.cloakPhase === "active" ? 13 : 7;
+    if (fighter.slot === 0 && leftCosmeticPalette) {
+      context.strokeStyle = fighterPalette.primary;
+      context.lineWidth = 3;
+      context.stroke();
     }
-
-    context.fillStyle = primary;
-    context.beginPath();
-    context.moveTo(-18 + lean, 30);
-    context.lineTo(18 + lean, 30);
-    context.lineTo(25, body.height - 31);
-    context.lineTo(15, body.height);
-    context.lineTo(2, body.height - 38);
-    context.lineTo(-12, body.height);
-    context.lineTo(-24, body.height - 30);
-    context.closePath();
-    context.fill();
-    context.fillStyle = fighterPalette.secondary;
-    context.fillRect(-24 + lean, 39, 48, 23);
-    context.fillStyle = accent;
-    context.beginPath();
-    context.arc(lean, 18, 18, 0, Math.PI * 2);
-    context.fill();
-    context.fillStyle = "#111816";
-    context.fillRect(lean - 14, 14, 28, 8);
-    context.strokeStyle = accent;
-    context.lineWidth = 5;
-    context.beginPath();
-    context.moveTo(18 + lean, 49);
-    context.lineTo(43 + (fighter.phase === "active" ? 20 : 0), 65);
-    context.stroke();
     context.restore();
+
+    // These are the delivered, character-specific PNG plates. They remain fixed
+    // poses, never promoted to complete animation clips or used as hitboxes.
+    const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent });
+    if (!bitmapDrawn) {
+      context.save();
+      context.translate(fighter.x, bodyTop);
+      context.scale(fighter.facing, 1);
+      if (fighter.cloakPhase !== "inactive") {
+        context.globalAlpha = fighter.cloakPhase === "active" ? 0.38 : fighter.cloakPhase === "startup" ? 0.68 : 0.54;
+        context.shadowColor = highContrast ? "#ffffff" : "#72d8c2";
+        context.shadowBlur = fighter.cloakPhase === "active" ? 13 : 7;
+      }
+
+      context.fillStyle = primary;
+      context.beginPath();
+      context.moveTo(-18 + lean, 30);
+      context.lineTo(18 + lean, 30);
+      context.lineTo(25, body.height - 31);
+      context.lineTo(15, body.height);
+      context.lineTo(2, body.height - 38);
+      context.lineTo(-12, body.height);
+      context.lineTo(-24, body.height - 30);
+      context.closePath();
+      context.fill();
+      context.fillStyle = fighterPalette.secondary;
+      context.fillRect(-24 + lean, 39, 48, 23);
+      context.fillStyle = accent;
+      context.beginPath();
+      context.arc(lean, 18, 18, 0, Math.PI * 2);
+      context.fill();
+      context.fillStyle = "#111816";
+      context.fillRect(lean - 14, 14, 28, 8);
+      context.strokeStyle = accent;
+      context.lineWidth = 5;
+      context.beginPath();
+      context.moveTo(18 + lean, 49);
+      context.lineTo(43 + (fighter.phase === "active" ? 20 : 0), 65);
+      context.stroke();
+      context.restore();
+    } else if (fighter.phase === "startup" || boxes.hitbox) {
+      // Until authored attack poses exist, keep the real anticipation/contact
+      // readable through a separate cue. This cue cannot deal or extend damage.
+      context.save();
+      context.strokeStyle = fighter.phase === "startup" ? "#f7ce79" : "#fff2bf";
+      context.lineWidth = fighter.phase === "startup" ? 2 : 4;
+      context.globalAlpha = fighter.phase === "startup" ? .8 : .9;
+      context.beginPath();
+      if (boxes.hitbox) {
+        const hit = boxes.hitbox;
+        const y = groundY - hit.y - hit.height;
+        const fromX = fighter.facing === 1 ? hit.x : hit.x + hit.width;
+        const toX = fighter.facing === 1 ? hit.x + hit.width : hit.x;
+        context.moveTo(fromX, y + hit.height * .7);
+        context.quadraticCurveTo(toX, y - 8, toX, y + hit.height * .8);
+      } else {
+        context.arc(fighter.x + fighter.facing * definition.bodyWidth * .65, bodyTop + 38, 8, 0, Math.PI * 2);
+      }
+      context.stroke();
+      context.restore();
+    }
 
     if (fighter.cloakPhase !== "inactive") {
       context.save();
@@ -896,7 +933,7 @@ function TouchButton({
   );
 }
 
-function FighterCard({
+export function FighterCard({
   fighterId,
   side,
   paletteOverride = null,
@@ -909,15 +946,18 @@ function FighterCard({
   const profile = getPitFirstEditionFighter(fighterId);
   const palette = paletteOverride ?? fighter.palette;
   const keyArt = getPitFighterKeyArt(fighterId);
+  const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId);
+  const selectedArt = keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
   const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
-  const visibleArt = keyArt && failedArtSrc !== keyArt.src ? keyArt : null;
+  const visibleArt = selectedArt && failedArtSrc !== selectedArt.src ? selectedArt : null;
+  const facing = visibleArt?.nativeFacing === "neutral" ? "neutral" : side === "DROITE" ? "left" : "right";
   return (
     <article
       className={styles.fighterCard}
       style={{ "--fighter": palette.primary } as React.CSSProperties}
       aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
       data-fighter-id={fighterId}
-      data-fighter-art={visibleArt ? "selection-key-art" : "mask-glyph"}
+      data-fighter-art={visibleArt?.kind ?? "mask-glyph"}
     >
       <span className={styles.sideLabel}>{side}</span>
       <div className={styles.fighterMedia}>
@@ -929,6 +969,8 @@ function FighterCard({
             width={visibleArt.width}
             height={visibleArt.height}
             alt={visibleArt.alt}
+            data-native-facing={visibleArt.nativeFacing}
+            data-facing={facing}
             decoding="async"
             onError={() => setFailedArtSrc(visibleArt.src)}
           />
@@ -936,6 +978,7 @@ function FighterCard({
           <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
         )}
       </div>
+      {!visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? "Image indisponible" : "Image à produire"}</small> : null}
       <h3>{fighter.name}</h3>
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
       <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
@@ -955,8 +998,8 @@ function FighterCard({
         </p>
         {visibleArt ? (
           <small>
-            Illustration de sélection.
-            {paletteOverride ? " La palette Armure du Jugement s’applique pendant le duel." : ""}
+            {visibleArt.kind === "static-bitmap" ? "Illustration détourée existante · pose fixe provisoire." : "Illustration de sélection."}
+            {paletteOverride ? " La palette Armure du Jugement colore le repère au sol ; l’illustration conserve ses couleurs." : ""}
           </small>
         ) : null}
       </details>
@@ -972,6 +1015,7 @@ export default function PitCanvas({
   unlockedCosmeticIds = [],
   savedCircuitRuns = {},
   savedDescentRuns = {},
+  exitLabel = "Retour au vaisseau",
   onExit,
   onMatchComplete,
   onRunTransition,
@@ -988,6 +1032,16 @@ export default function PitCanvas({
   const [descentDraftSeed, setDescentDraftSeed] = useState(0);
   const [activeMatchResultId, setActiveMatchResultId] = useState("");
   const [combat, setCombat] = useState<PitCombatState | null>(null);
+  const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
+  const renderedLeftId = combat?.fighters[0].definitionId ?? leftId;
+  const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
+  useEffect(() => {
+    const controller = new AbortController();
+    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal })
+      .then((bank) => { if (!controller.signal.aborted) setFighterArt(bank); });
+    return () => controller.abort();
+  }, [renderedLeftId, renderedRightId]);
+
   const [announcement, setAnnouncement] = useState("CHOISIS LE RITUEL");
   const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
   const [replayNotice, setReplayNotice] = useState("");
@@ -1000,6 +1054,10 @@ export default function PitCanvas({
   const [trainingActivity, setTrainingActivity] = useState<PitTrainingActivity>("idle");
   const [trainingRecordedTicks, setTrainingRecordedTicks] = useState(0);
   const [trainingNotice, setTrainingNotice] = useState("");
+  const [trainingPaused, setTrainingPaused] = useState(false);
+  const [trainingLesson, setTrainingLesson] = useState<PitTrainingLesson | null>(null);
+  const trainingClockRef = useRef(createPitTrainingClock());
+  const trainingLessonRef = useRef<PitTrainingLesson | null>(null);
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
   const [descentCombatPresentation, setDescentCombatPresentation] =
     useState<PitDescentCombatPresentation | null>(null);
@@ -1116,11 +1174,33 @@ export default function PitCanvas({
     });
   }, []);
 
+  const clearTrainingLesson = useCallback(() => {
+    trainingLessonRef.current = null;
+    setTrainingLesson(null);
+    trainingClockRef.current = createPitTrainingClock();
+    setTrainingPaused(false);
+  }, []);
+
+  const toggleTrainingPause = useCallback(() => {
+    if (combatRef.current?.rules.mode !== "training" || trainingLessonRef.current?.status === "success" ||
+      trainingLessonRef.current?.status === "failed") return;
+    const paused = !trainingClockRef.current.paused;
+    trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, paused);
+    setTrainingPaused(paused);
+    setAriaAnnouncement(paused ? "Simulation gelée. Chaque avance consomme un seul tick à 60 Hz." : "Simulation reprise.");
+  }, []);
+
+  const advanceTrainingTick = useCallback(() => {
+    if (combatRef.current?.rules.mode !== "training") return;
+    trainingClockRef.current = requestPitTrainingTick(trainingClockRef.current);
+  }, []);
+
   const clearTrainingActivity = useCallback(() => {
     trainingRecorderRef.current = null;
     trainingReaderRef.current = null;
     changeTrainingActivity("idle");
-  }, [changeTrainingActivity]);
+    clearTrainingLesson();
+  }, [changeTrainingActivity, clearTrainingLesson]);
 
   const finishTrainingRecording = useCallback((automatic = false) => {
     const recorder = trainingRecorderRef.current;
@@ -1147,6 +1227,7 @@ export default function PitCanvas({
   const startTrainingRecording = useCallback(() => {
     const current = combatRef.current;
     if (!current || current.rules.mode !== "training") return;
+    clearTrainingLesson();
     trainingReaderRef.current = null;
     trainingRecorderRef.current = createPitTrainingSequenceRecorder();
     setTrainingRecordedTicks(0);
@@ -1157,11 +1238,12 @@ export default function PitCanvas({
     resetLiveInputs();
     changeCombat(resetPitTrainingPositions(current));
     focusCombatRoot();
-  }, [changeCombat, changeTrainingActivity, focusCombatRoot, resetLiveInputs]);
+  }, [changeCombat, changeTrainingActivity, clearTrainingLesson, focusCombatRoot, resetLiveInputs]);
 
   const startTrainingPlayback = useCallback(() => {
     const current = combatRef.current;
     if (!current || current.rules.mode !== "training" || !trainingSequence) return;
+    clearTrainingLesson();
     try {
       trainingRecorderRef.current = null;
       trainingReaderRef.current = createPitTrainingSequenceReader(
@@ -1180,7 +1262,7 @@ export default function PitCanvas({
       setTrainingNotice("Impossible de lire cette séquence.");
       setAriaAnnouncement("La séquence du mannequin est illisible.");
     }
-  }, [changeCombat, changeTrainingActivity, clearTrainingActivity, focusCombatRoot, resetLiveInputs, trainingSequence]);
+  }, [changeCombat, changeTrainingActivity, clearTrainingActivity, clearTrainingLesson, focusCombatRoot, resetLiveInputs, trainingSequence]);
 
   const stopTrainingPlayback = useCallback(() => {
     trainingReaderRef.current = null;
@@ -1199,6 +1281,23 @@ export default function PitCanvas({
     setAnnouncement("POSITIONS RÉINITIALISÉES");
     setAriaAnnouncement("Positions, vie et ressources réinitialisées.");
     changeCombat(resetPitTrainingPositions(current));
+    focusCombatRoot();
+  }, [changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
+
+  const startTrainingLesson = useCallback((id: PitTrainingLessonId) => {
+    const current = combatRef.current;
+    if (!current || current.rules.mode !== "training") return;
+    const prepared = preparePitTrainingLesson(current, id);
+    clearTrainingActivity();
+    resetLiveInputs();
+    recorderRef.current = null;
+    trainingLessonRef.current = prepared.lesson;
+    setTrainingLesson(prepared.lesson);
+    setTrainingNotice("");
+    setImpact(null);
+    setAnnouncement("EXERCICE GUIDÉ");
+    setAriaAnnouncement(prepared.lesson.message);
+    changeCombat(prepared.state);
     focusCombatRoot();
   }, [changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
 
@@ -2053,11 +2152,18 @@ export default function PitCanvas({
     const fixedStep = 1_000 / PIT_TICK_RATE;
 
     const animate = (now: number) => {
-      accumulator += Math.min(250, Math.max(0, now - previousTime));
+      const elapsed = Math.min(250, Math.max(0, now - previousTime));
+      if (mode === "training" && !playbackReplay) {
+        const transport = advancePitTrainingClock(trainingClockRef.current, elapsed);
+        trainingClockRef.current = transport.clock;
+        accumulator = transport.ticks * fixedStep;
+      } else {
+        accumulator += elapsed;
+      }
       previousTime = now;
       let current = combatRef.current;
       let shouldContinue = true;
-      while (current && accumulator >= fixedStep) {
+      while (current && accumulator + 1e-8 >= fixedStep) {
         let inputs: readonly [PitInput, PitInput];
         if (playbackReplay) {
           const replayTick = replayReaderRef.current?.next();
@@ -2086,7 +2192,9 @@ export default function PitCanvas({
             secondInput = cpuInput(current);
           } else if (mode === "training") {
             const activity = trainingActivityRef.current;
-            if (activity === "recording") {
+            if (trainingLessonRef.current) {
+              secondInput = resolvePitTrainingLessonInput(trainingLessonRef.current, current);
+            } else if (activity === "recording") {
               secondInput = firstInput;
               firstInput = EMPTY_INPUT;
               const recorder = trainingRecorderRef.current;
@@ -2145,6 +2253,7 @@ export default function PitCanvas({
           }
         }
 
+        const previousCombat = current;
         if (mode === "descent" && descentCombatContextRef.current) {
           const descentFrame = stepPitDescentCombat(
             current,
@@ -2171,6 +2280,17 @@ export default function PitCanvas({
         } else {
           current = stepPitCombat(current, inputs);
         }
+        if (mode === "training" && trainingLessonRef.current) {
+          const nextLesson = evaluatePitTrainingLesson(trainingLessonRef.current, previousCombat, current);
+          trainingLessonRef.current = nextLesson;
+          setTrainingLesson(nextLesson);
+          if (nextLesson.status !== "running") {
+            trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, true);
+            setTrainingPaused(true);
+            setAriaAnnouncement(nextLesson.message);
+            accumulator = fixedStep;
+          }
+        }
         if (current.events.length > 0) {
           const latest = current.events[current.events.length - 1];
           setAnnouncement(eventLabel(latest));
@@ -2193,7 +2313,7 @@ export default function PitCanvas({
           break;
         }
       }
-      if (current) {
+      if (current && current !== combatRef.current) {
         combatRef.current = current;
         setCombat(current);
       }
@@ -2213,8 +2333,9 @@ export default function PitCanvas({
       combat.rules.mode === "training" && trainingSettings.showHitboxes,
       impact,
       equippedArcadeCosmetic?.palette ?? null,
+      fighterArt,
     );
-  }, [combat, equippedArcadeCosmetic, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
+  }, [combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -2494,7 +2615,7 @@ export default function PitCanvas({
             <p>12 combattants · 8 arènes · règles fixes · aucun gain de campagne</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · rigs provisoires ↗</a>
           </div>
-          <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>
+          <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
         </header>
 
         <div className={styles.versusGrid}>
@@ -2647,7 +2768,7 @@ export default function PitCanvas({
           {([
             ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
             ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
-            ["training", "Entraînement", "Mannequin réglable, hitboxes, frame data et séquences d’entrées."],
+            ["training", "Entraînement", "Gel, avance d’un tick, quatre exercices guidés, mannequin et séquences d’entrées."],
             ["arcade", "Arcade individuel", "Huit rencontres propres au combattant, rival puis Warlord."],
             ["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement."],
             ["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss."],
@@ -3123,6 +3244,17 @@ export default function PitCanvas({
         </div>
       </div>
 
+      <div className={styles.bitmapArtStatus} aria-label="État des visuels de combat">
+        {[left, right].map((fighter) => {
+          const status = getPitCombatBitmapArtStatus(fighterArt, fighter.definitionId);
+          return <span key={fighter.slot} data-pit-bitmap-slot={fighter.slot}
+            data-pit-bitmap-id={fighter.definitionId} data-pit-bitmap-status={status}>
+            {PIT_FIGHTERS[fighter.definitionId].name} · {status === "static-bitmap" ? "image du chasseur · pose fixe provisoire" : status === "loading" ? "chargement de l’image" : "image indisponible · repère de combat"}
+          </span>;
+        })}
+        <small>Animations complètes à produire. Le cercle annonce une attaque et l’arc montre son contact actif ; ces repères ne sont pas des poses animées.</small>
+        {equippedArcadeCosmetic ? <small>La palette de l’Armure du Jugement colore le repère au sol ; les couleurs des PNG d’origine sont conservées.</small> : null}
+      </div>
       <div className={styles.arenaShell} style={{ transform: `translateX(${shake}px)` }}>
         <canvas ref={canvasRef} className={styles.canvas} width={arenaDefinition.width} height={arenaDefinition.height} aria-hidden="true" />
         {mode === "descent" && descentCombatPresentation?.blackMistLongRange ? (
@@ -3152,60 +3284,6 @@ export default function PitCanvas({
                 </article>
               );
             })}
-          </aside>
-        ) : null}
-        {trainingRules && !playbackReplay ? (
-          <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal}>
-            <strong>LABORATOIRE · MANNEQUIN</strong>
-            <div className={styles.trainingOptions}>
-              <label>
-                <span>Comportement</span>
-                <select
-                  aria-label="Comportement du mannequin"
-                  value={trainingSettings.dummyBehavior}
-                  disabled={trainingActivity !== "idle"}
-                  onChange={(event) => applyTrainingSettings({ dummyBehavior: event.target.value as typeof trainingSettings.dummyBehavior })}
-                >
-                  {PIT_TRAINING_DUMMY_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-                </select>
-              </label>
-              <label><input type="checkbox" checked={trainingSettings.showHitboxes} onChange={(event) => applyTrainingSettings({ showHitboxes: event.target.checked })} /> Hitboxes</label>
-              <label><input type="checkbox" checked={trainingSettings.showFrameData} onChange={(event) => applyTrainingSettings({ showFrameData: event.target.checked })} /> Frame data</label>
-              <label>
-                <span>Lecture</span>
-                <select
-                  aria-label="Mode de lecture de la séquence"
-                  value={trainingSettings.sequencePlayback}
-                  disabled={trainingActivity !== "idle"}
-                  onChange={(event) => applyTrainingSettings({ sequencePlayback: event.target.value as typeof trainingSettings.sequencePlayback })}
-                >
-                  {PIT_TRAINING_PLAYBACK_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-                </select>
-              </label>
-            </div>
-            <div className={styles.trainingActions}>
-              <button type="button" className={styles.trainingButton} onClick={resetTraining}>{PIT_TRAINING_ACTION_LABELS.resetPositions}</button>
-              {trainingActivity === "recording" ? (
-                <button type="button" className={styles.trainingButton} onClick={() => finishTrainingRecording()}>{PIT_TRAINING_ACTION_LABELS.stopRecording}</button>
-              ) : (
-                <button type="button" className={styles.trainingButton} onClick={startTrainingRecording} disabled={trainingActivity === "playback"}>{PIT_TRAINING_ACTION_LABELS.startRecording}</button>
-              )}
-              {trainingActivity === "playback" ? (
-                <button type="button" className={styles.trainingButton} onClick={stopTrainingPlayback}>{PIT_TRAINING_ACTION_LABELS.stopPlayback}</button>
-              ) : (
-                <button type="button" className={styles.trainingButton} onClick={startTrainingPlayback} disabled={!trainingSequence || trainingActivity === "recording"}>{PIT_TRAINING_ACTION_LABELS.playSequence}</button>
-              )}
-            </div>
-            <span className={styles.trainingRecording} role="status">
-              {trainingActivity === "recording"
-                ? "Enregistrement en cours · 12 secondes maximum."
-                : trainingNotice || "Réglez le mannequin, puis mesurez ou enregistrez sa réponse."}
-            </span>
-            {trainingActivity === "recording" ? (
-              <span className={styles.trainingRecording} aria-hidden="true">
-                {trainingRecordedTicks}/{PIT_TRAINING_SEQUENCE_MAX_TICKS} images
-              </span>
-            ) : null}
           </aside>
         ) : null}
         {combat.phase === "round-over" && !replayEnded ? (
@@ -3426,11 +3504,96 @@ export default function PitCanvas({
               {!playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
                 <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>
               ) : null}
-              <button type="button" className={styles.exitButton} onClick={onExit}>Retour au vaisseau</button>
+              <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
             </div>
           </div>
         ) : null}
       </div>
+
+        {trainingRules && !playbackReplay ? (
+          <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal}>
+            <strong>LABORATOIRE · {trainingPaused ? "SIMULATION GELÉE" : "60 TICKS / SECONDE"}</strong>
+            <div className={styles.trainingActions}>
+              <button type="button" className={styles.trainingButton} onClick={toggleTrainingPause} aria-pressed={trainingPaused}
+                disabled={trainingLesson !== null && trainingLesson.status !== "running"}>
+                {trainingPaused ? "Reprendre la simulation" : "Geler la simulation"}
+              </button>
+              <button type="button" className={styles.trainingButton} onClick={advanceTrainingTick}
+                disabled={!trainingPaused || (trainingLesson !== null && trainingLesson.status !== "running")}>
+                Avancer d’un tick
+              </button>
+              <span className={styles.trainingRecording}>F{combat.frame} · boutons accessibles avec Tab puis Entrée / Espace.</span>
+            </div>
+            <details className={styles.trainingLessons} open={trainingLesson !== null}>
+              <summary>Exercices guidés · 4 disponibles</summary>
+              <div className={styles.trainingActions}>
+                {PIT_TRAINING_LESSONS.map((lesson) => <button key={lesson.id} type="button" className={styles.trainingButton}
+                  onClick={() => startTrainingLesson(lesson.id)}>{lesson.label}</button>)}
+              </div>
+              <p>Mannequin pédagogique : {trainingLesson ? rightDefinition.name : "Jungle Hunter ou City Hunter, selon votre combattant"}. Déchoppe indisponible : cette mécanique n’existe pas encore dans le moteur V4.</p>
+              {trainingLesson ? <div role="status" className={styles.lessonStatus} data-status={trainingLesson.status}>
+                <strong>{PIT_TRAINING_LESSONS.find((lesson) => lesson.id === trainingLesson.id)?.objective}</strong>
+                <p>{trainingLesson.message}</p>
+                <span>{trainingLesson.id === "corner-escape"
+                  ? `Contrôle retrouvé : ${trainingLesson.progress}/15 ticks`
+                  : `Étapes : ${trainingLesson.progress}/${trainingLesson.target}`} · {Math.floor(trainingLesson.elapsedTicks / PIT_TICK_RATE)} s / 30 s</span>
+                <div className={styles.trainingActions}>
+                  <button type="button" className={styles.trainingButton} onClick={() => startTrainingLesson(trainingLesson.id)}>Recommencer l’exercice</button>
+                  <button type="button" className={styles.trainingButton} onClick={resetTraining}>Retour à l’entraînement libre</button>
+                </div>
+              </div> : null}
+            </details>
+            <div className={styles.trainingOptions}>
+              <label>
+                <span>Comportement</span>
+                <select
+                  aria-label="Comportement du mannequin"
+                  value={trainingSettings.dummyBehavior}
+                  disabled={trainingActivity !== "idle" || trainingLesson !== null}
+                  onChange={(event) => applyTrainingSettings({ dummyBehavior: event.target.value as typeof trainingSettings.dummyBehavior })}
+                >
+                  {PIT_TRAINING_DUMMY_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+              <label><input type="checkbox" checked={trainingSettings.showHitboxes} onChange={(event) => applyTrainingSettings({ showHitboxes: event.target.checked })} /> Hitboxes</label>
+              <label><input type="checkbox" checked={trainingSettings.showFrameData} onChange={(event) => applyTrainingSettings({ showFrameData: event.target.checked })} /> Frame data</label>
+              <label>
+                <span>Lecture</span>
+                <select
+                  aria-label="Mode de lecture de la séquence"
+                  value={trainingSettings.sequencePlayback}
+                  disabled={trainingActivity !== "idle"}
+                  onChange={(event) => applyTrainingSettings({ sequencePlayback: event.target.value as typeof trainingSettings.sequencePlayback })}
+                >
+                  {PIT_TRAINING_PLAYBACK_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+            </div>
+            <div className={styles.trainingActions}>
+              <button type="button" className={styles.trainingButton} onClick={resetTraining}>{PIT_TRAINING_ACTION_LABELS.resetPositions}</button>
+              {trainingActivity === "recording" ? (
+                <button type="button" className={styles.trainingButton} onClick={() => finishTrainingRecording()}>{PIT_TRAINING_ACTION_LABELS.stopRecording}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingRecording} disabled={trainingActivity === "playback" || trainingLesson !== null}>{PIT_TRAINING_ACTION_LABELS.startRecording}</button>
+              )}
+              {trainingActivity === "playback" ? (
+                <button type="button" className={styles.trainingButton} onClick={stopTrainingPlayback}>{PIT_TRAINING_ACTION_LABELS.stopPlayback}</button>
+              ) : (
+                <button type="button" className={styles.trainingButton} onClick={startTrainingPlayback} disabled={!trainingSequence || trainingActivity === "recording" || trainingLesson !== null}>{PIT_TRAINING_ACTION_LABELS.playSequence}</button>
+              )}
+            </div>
+            <span className={styles.trainingRecording} role="status">
+              {trainingActivity === "recording"
+                ? "Enregistrement en cours · 12 secondes maximum."
+                : trainingNotice || "Réglez le mannequin, puis mesurez ou enregistrez sa réponse."}
+            </span>
+            {trainingActivity === "recording" ? (
+              <span className={styles.trainingRecording} aria-hidden="true">
+                {trainingRecordedTicks}/{PIT_TRAINING_SEQUENCE_MAX_TICKS} images
+              </span>
+            ) : null}
+          </aside>
+        ) : null}
 
       {showHelp ? (
         <aside className={styles.helpPanel} inert={terminal}>

@@ -1,0 +1,78 @@
+{
+  "cold": {
+    "tone": 2,
+    "noise": 1
+  },
+  "afterLoad": {
+    "tone": 2,
+    "noise": 1
+  },
+  "hot": {
+    "tone": 2,
+    "noise": 1
+  },
+  "mix": {
+    "master": 0,
+    "music": 0,
+    "effects": 0
+  },
+  "diagnostics": [
+    {
+      "id": "plasma",
+      "category": "sfx",
+      "folder": "sfx/plasma",
+      "sources": [
+        {
+          "url": "/audio-test/effect.wav",
+          "mime": "audio/wav",
+          "bytes": 3244,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "fallback": "procedural",
+      "state": "ready",
+      "selectedSource": "/audio-test/effect.wav",
+      "fallbackUsed": true
+    },
+    {
+      "id": "combat",
+      "category": "music",
+      "folder": "music/combat",
+      "sources": [
+        {
+          "url": "/audio-test/broken.wav",
+          "mime": "audio/wav",
+          "bytes": 3244,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "url": "/audio-test/score.wav",
+          "mime": "audio/wav",
+          "bytes": 3244,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "fallback": "silence",
+      "state": "ready",
+      "selectedSource": "/audio-test/score.wav",
+      "fallbackUsed": false
+    },
+    {
+      "id": "menu",
+      "category": "music",
+      "folder": "music/menu",
+      "sources": [],
+      "fallback": "silence",
+      "state": "absent",
+      "selectedSource": null,
+      "fallbackUsed": false
+    }
+  ],
+  "errors": [],
+  "missingScoreStopsPrior": true,
+  "disposed": true,
+  "fixtureOnly": true,
+  "productionRecordingsSupplied": 0,
+  "activeMutedEffectChecked": true,
+  "verifiedAt": "2026-09-08T03:09:43.9304232Z"
+}

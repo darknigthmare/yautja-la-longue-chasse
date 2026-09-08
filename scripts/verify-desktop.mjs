@@ -2,11 +2,12 @@ import { _electron as electron } from "playwright-core";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
 
-const evidence = path.resolve("tmp/desktop-qa");
+const evidence = path.resolve("tmp/desktop-qa", DESKTOP_RELEASE_TAG);
 await fs.mkdir(evidence, { recursive: true });
 const profile = await fs.mkdtemp(path.join(evidence, "profile-"));
-const executablePath = path.resolve("tmp/desktop-release/Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe");
+const executablePath = path.resolve("tmp/desktop-release", DESKTOP_RELEASE_TAG, "Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe");
 const checks = [];
 const errors = [];
 const failedLocalRequests = [];
@@ -33,6 +34,7 @@ try {
   current = await launch();
   const { instance, page } = current;
   assert.equal(page.url(), "yautja://game/");
+  assert.equal(await instance.evaluate(({app})=>app.getVersion()),DESKTOP_VERSION);
   const security = await instance.evaluate(({ BrowserWindow }) => {
     const prefs = BrowserWindow.getAllWindows()[0].webContents.getLastWebPreferences();
     return { sandbox: prefs.sandbox, contextIsolation: prefs.contextIsolation, nodeIntegration: prefs.nodeIntegration, webSecurity: prefs.webSecurity };
@@ -46,9 +48,11 @@ try {
   const local = await page.evaluate(async () => {
     const asset = await fetch("/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp");
     const privateFile = await fetch("/.env.local");
-    return { asset: asset.status, bytes: (await asset.arrayBuffer()).byteLength, privateFile: privateFile.status };
+    const audio = await fetch("/audio/manifest.json");
+    const inventory = audio.ok ? await audio.json() : null;
+    return { asset: asset.status, bytes: (await asset.arrayBuffer()).byteLength, privateFile: privateFile.status, audio: audio.status, audioSlots: inventory?.entries?.length };
   });
-  assert.equal(local.asset, 200); assert.ok(local.bytes > 10000); assert.equal(local.privateFile, 403);
+  assert.equal(local.asset, 200); assert.ok(local.bytes > 10000); assert.equal(local.privateFile, 403); assert.equal(local.audio,200); assert.equal(local.audioSlots,37);
   checks.push("Packaged EXE boots, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
 
   await page.getByRole("button", { name: "Réglages", exact: true }).click();
@@ -72,12 +76,56 @@ try {
   checks.push("Real setting persisted; campaign exported through the native download path.");
 
   await page.getByRole("button", { name: "Jouer", exact: true }).click();
+
+  await page.getByRole("button", { name: "Yautja Prime · monde natal", exact: true }).click();
+  await page.locator("[data-homeworld-hub]").waitFor();
+  const city = page.getByRole("group", { name: "Cité jouable en deux dimensions" });
+  const cityX = () => page.locator("[data-homeworld-actor]").getAttribute("data-x").then(Number);
+  const walkTo = async (target) => {
+    for (let attempt = 0; attempt < 40; attempt++) {
+      const x = await cityX(); if (Math.abs(x - target) < 20) return;
+      await city.focus(); const key = x < target ? "ArrowRight" : "ArrowLeft";
+      await page.keyboard.down(key); await page.waitForTimeout(Math.min(700,Math.abs(x-target)/300*1000)); await page.keyboard.up(key);
+      await page.waitForTimeout(80);
+    }
+    throw new Error("Homeworld target was not reached: " + target);
+  };
+  await walkTo(440); await city.focus(); await page.keyboard.press("e");
+  await page.getByRole("dialog").waitFor(); await page.keyboard.press("Escape");
+  await walkTo(960); await city.focus(); await page.keyboard.press("e");
+  await page.getByRole("dialog").waitFor(); await page.keyboard.press("Escape");
+  const citySave = JSON.parse(await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")));
+  assert.ok(citySave.homeworld.visitedDistrictIds.includes("port"));
+  assert.ok(citySave.homeworld.evidenceIds.includes("suspect-trophy"));
+  assert.ok(citySave.homeworld.greetedNpcIds.includes("dock-officer"));
+  await page.screenshot({path:path.join(evidence,"homeworld-pc.png")});
+  await walkTo(1080); await city.focus(); await page.keyboard.press("e");
+  await page.getByRole("button",{name:"Partir vers les Marches de Cendre",exact:true}).click();
+  await page.getByRole("region",{name:"Expédition des Marches de Cendre",exact:true}).waitFor();
+  await page.getByRole("button",{name:"Retour sans rapport",exact:true}).click();
+  await page.getByRole("button",{name:"Abandonner et rentrer",exact:true}).click();
+  await page.locator("[data-homeworld-hub]").waitFor();
+  await page.getByRole("button",{name:/^Dossier ·/}).click();
+  await page.getByRole("heading",{name:"Dossier des Enforcers",exact:true}).waitFor();
+  await page.getByRole("article").filter({has:page.getByRole("heading",{name:"Enquêter sur la marque falsifiée",exact:true})}).getByRole("button",{name:"Examiner ce choix",exact:true}).click();
+  await page.getByRole("button",{name:"Confirmer ce choix",exact:true}).click();
+  const justiceSave = JSON.parse(await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")));
+  assert.equal(justiceSave.justice.originChoice,"investigator");
+  assert.notEqual(justiceSave.justice.declaration,"bad-blood");
+  assert.equal(justiceSave.profile.honor,citySave.profile.honor);
+  await page.screenshot({path:path.join(evidence,"justice-pc.png")});
+  await page.getByRole("button",{name:"Fermer le dossier",exact:true}).click();
+  await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
+  checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
   await page.getByRole("radio", { name: /Entraînement/ }).click();
   await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
   assert.ok(await page.locator("canvas").count() > 0);
-  checks.push("Hub to THE PIT training arena loads locally.");
+  await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="static-bitmap"]').waitFor();
+  await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="static-bitmap"]').waitFor();
+  await page.screenshot({ path: path.join(evidence, "pit-combat-pc.png") });
+  checks.push("Hub to THE PIT training arena loads locally, with the exact Jungle Hunter and Berserker fixed-pose PNGs.");
 
   await page.goto("yautja://game/");
   await page.getByRole("button", { name: "Jouer", exact: true }).click();
@@ -106,7 +154,9 @@ try {
   await current.page.getByRole("button", { name: /^Reprendre la chasse :/ }).waitFor();
   await current.page.getByRole("button", { name: "Réglages", exact: true }).click();
   assert.equal(await current.page.getByRole("checkbox", { name: "Violence atténuée" }).isChecked(), true);
-  checks.push("Campaign bytes, suspended hunt and setting retained after clean process exit and cold restart.");
+  const restarted=JSON.parse(await current.page.evaluate(()=>localStorage.getItem("yautja-long-hunt.save")));
+  assert.equal(restarted.justice.originChoice,"investigator"); assert.ok(restarted.homeworld.evidenceIds.includes("suspect-trophy"));
+  checks.push("Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart.");
   await close(current.instance); current = undefined;
   assert.deepEqual(errors, []);
   assert.deepEqual(failedLocalRequests, []);

@@ -1,0 +1,213 @@
+{
+  "surface": "Actual FighterCard and its production CSS in React fixture",
+  "checks": {
+    "fourV23Priority": true,
+    "rightCardsFaceOpponent": true,
+    "fiveV5Fallbacks": true,
+    "frontalsNotMirrored": true,
+    "missingArtExplicit": true,
+    "containNoCrop": true
+  },
+  "rows": [
+    {
+      "id": "jungle-hunter",
+      "side": 0,
+      "src": "/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "jungle-hunter",
+      "side": 1,
+      "src": "/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "city-hunter",
+      "side": 0,
+      "src": "/game/assets/v23/pit/fighters/city-hunter-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "city-hunter",
+      "side": 1,
+      "src": "/game/assets/v23/pit/fighters/city-hunter-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "berserker",
+      "side": 0,
+      "src": "/game/assets/v23/pit/fighters/berserker-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "berserker",
+      "side": 1,
+      "src": "/game/assets/v23/pit/fighters/berserker-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "wolf",
+      "side": 0,
+      "src": "/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "wolf",
+      "side": 1,
+      "src": "/game/assets/v23/pit/fighters/wolf-key-art.webp",
+      "width": 1024,
+      "height": 1536,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "scar",
+      "side": 0,
+      "src": "/game/sprites/v5/film-plates/scar.png",
+      "width": 1139,
+      "height": 1356,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "scar",
+      "side": 1,
+      "src": "/game/sprites/v5/film-plates/scar.png",
+      "width": 1139,
+      "height": 1356,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "celtic",
+      "side": 0,
+      "src": "/game/sprites/v5/film-plates/celtic.png",
+      "width": 951,
+      "height": 1160,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "celtic",
+      "side": 1,
+      "src": "/game/sprites/v5/film-plates/celtic.png",
+      "width": 951,
+      "height": 1160,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "feral-hunter",
+      "side": 0,
+      "src": "/game/sprites/v5/film-plates/feral-hunter.png",
+      "width": 1086,
+      "height": 1479,
+      "nativeFacing": "neutral",
+      "facing": "neutral",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "feral-hunter",
+      "side": 1,
+      "src": "/game/sprites/v5/film-plates/feral-hunter.png",
+      "width": 1086,
+      "height": 1479,
+      "nativeFacing": "neutral",
+      "facing": "neutral",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "falconer",
+      "side": 0,
+      "src": "/game/sprites/v5/film-plates/falconer.png",
+      "width": 974,
+      "height": 1009,
+      "nativeFacing": "right",
+      "facing": "right",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "falconer",
+      "side": 1,
+      "src": "/game/sprites/v5/film-plates/falconer.png",
+      "width": 974,
+      "height": 1009,
+      "nativeFacing": "right",
+      "facing": "left",
+      "transform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "kok-warlord",
+      "side": 0,
+      "src": "/game/sprites/v5/film-plates/kok-warlord.png",
+      "width": 1102,
+      "height": 1219,
+      "nativeFacing": "neutral",
+      "facing": "neutral",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    },
+    {
+      "id": "kok-warlord",
+      "side": 1,
+      "src": "/game/sprites/v5/film-plates/kok-warlord.png",
+      "width": 1102,
+      "height": 1219,
+      "nativeFacing": "neutral",
+      "facing": "neutral",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "fit": "contain"
+    }
+  ],
+  "errors": [],
+  "failedAssets": []
+}

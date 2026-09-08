@@ -6,8 +6,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "prebuild": "npm run biome-decor:v19:runtime-data",
-    "dev": "vinext dev",
+    "prebuild": "npm run audio:manifest && npm run biome-decor:v19:runtime-data",
+    "dev": "node scripts/audio-dev.mjs",
     "build": "vinext build",
     "start": "node scripts/start-production.mjs",
     "test": "npm run build && node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
@@ -53,7 +53,12 @@
     "sprites:qa": "node scripts/audit-known-yautja-sprite-roster.mjs --check && node scripts/audit-known-yautja-sprite-batch.mjs && node scripts/build-known-yautja-sprite-preview-v27.mjs --check && node scripts/build-known-hunter-sprite-preview-v28.mjs --check && node --experimental-strip-types --test tests/hunterSpriteAtlas.test.ts tests/hunterSpriteMotion.test.ts tests/known-hunter-preview-v28.test.mjs",
     "sprites:preview": "node scripts/build-known-hunter-sprite-preview-v28.mjs",
     "sprites:preview:v26": "node scripts/build-known-yautja-sprite-preview.mjs",
-    "sprites:preview:v27": "node scripts/build-known-yautja-sprite-preview-v27.mjs"
+    "sprites:preview:v27": "node scripts/build-known-yautja-sprite-preview-v27.mjs",
+    "audio:manifest": "node scripts/build-audio-manifest.mjs",
+    "audio:watch": "node scripts/build-audio-manifest.mjs --watch",
+    "audio:qa": "node scripts/build-audio-manifest.mjs && node --experimental-strip-types --test tests/sound-lifecycle.test.mjs tests/audio-files.test.mjs tests/audio-manifest.test.mjs",
+    "prebuild:desktop": "npm run audio:manifest && node scripts/stamp-desktop-build.mjs --before",
+    "postbuild:desktop": "node scripts/stamp-desktop-build.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

@@ -27,6 +27,7 @@ test("PIT selection art only registers the four delivered fighters with unique l
     const asset = registry.getPitFighterKeyArt(id);
     assert.equal(asset.fighterId, id);
     assert.equal(asset.kind, "selection-key-art");
+    assert.equal(asset.nativeFacing, "right");
     assert.equal(asset.background, "#101916");
     assert.equal(asset.src, `/game/assets/v23/pit/fighters/${id}-key-art.webp`);
     assert.equal(asset.width, 1024);

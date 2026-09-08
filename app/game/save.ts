@@ -1,3 +1,5 @@
+import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
+import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -54,7 +56,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 6;
+export const SAVE_VERSION = 7;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -324,6 +326,8 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       controlBindings: DEFAULT_CONTROL_BINDINGS,
     },
     storyCompleted: false,
+    homeworld: defaultHomeworldProgress(),
+    justice: defaultJusticeProgress(),
   };
 }
 
@@ -497,6 +501,13 @@ const SAVE_MIGRATIONS: Readonly<
     // V5 authored only jungle exploration. Preserve those permanent unlocks;
     // future/foreign ice fields cannot pre-award a newly introduced branch.
     exploration: explorationForMission("jungle-vey", input.exploration),
+  }),
+  6: (input) => ({
+    ...input,
+    version: 7,
+    // V6 had no social world. Never infer city proofs or affiliations from rank.
+    homeworld: defaultHomeworldProgress(),
+    justice: defaultJusticeProgress(),
   }),
 };
 
@@ -1206,6 +1217,8 @@ export function normalizeSave(value: unknown): SaveGame {
         : fallback.settings.controlBindings,
     },
     storyCompleted,
+    homeworld: normalizeHomeworldProgress(source.homeworld),
+    justice: normalizeJusticeProgress(source.justice),
   };
 }
 
@@ -1260,6 +1273,11 @@ export interface SaveWriteResult {
   failure: SaveWriteFailure | null;
 }
 
+export type SaveWriteReconciliation =
+  | { status: "confirmed"; save: SaveGame; failure: null }
+  | { status: "retry"; save: null; failure: null }
+  | { status: "refused"; save: null; failure: SaveWriteFailure };
+
 export interface SaveImportWriteResult {
   save: SaveGame | null;
   persisted: boolean;
@@ -1273,10 +1291,52 @@ function saveBackupKey(key: string): string {
 // Each tab remembers the exact primary it loaded/wrote. A subsequent write
 // from another tab is a conflict, never an invitation to replace its progress.
 const observedCampaigns = new WeakMap<Storage, Map<string, string | null>>();
+// Only an actual attempted write can be reconciled. Keep immutable bytes here,
+// rather than trusting a caller's mutable SaveGame or accepting a newer save.
+const unconfirmedCampaignWrites = new WeakMap<SaveWriteResult, {
+  storage: Storage;
+  key: string;
+  ownerCreatedAt: string;
+  serialized: string;
+  previousSerialized: string | null;
+  observedBefore: string | null | undefined;
+}>();
 function observeCampaign(storage: Storage, key: string, serialized: string | null): void {
   const observed = observedCampaigns.get(storage) ?? new Map<string, string | null>();
   observed.set(key, serialized);
   observedCampaigns.set(storage, observed);
+}
+
+/** Confirm one exact attempted primary without writing or loading another owner. */
+export function reconcileSaveWrite(
+  attempt: SaveWriteResult,
+  ownerCreatedAt: string,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteReconciliation {
+  const refused = (failure: SaveWriteFailure): SaveWriteReconciliation => ({ status: "refused", save: null, failure });
+  if (!storage) return refused("storage-unavailable");
+  const receipt = unconfirmedCampaignWrites.get(attempt);
+  if (!receipt || receipt.storage !== storage || receipt.key !== key || receipt.ownerCreatedAt !== ownerCreatedAt) {
+    return refused("save-conflict");
+  }
+  // Another local load/write can also supersede this attempt. Do not rewind its
+  // observation, even if the primary has since been restored to older bytes.
+  if (observedCampaigns.get(storage)?.get(key) !== receipt.observedBefore) return refused("save-conflict");
+  let serialized: string | null;
+  try { serialized = storage.getItem(key); } catch { return refused("read-failed"); }
+  if (serialized === receipt.serialized) {
+    const parsed = parseSaveImport(serialized);
+    if (!parsed.save || parsed.save.createdAt !== ownerCreatedAt) return refused("save-conflict");
+    observeCampaign(storage, key, serialized);
+    unconfirmedCampaignWrites.delete(attempt);
+    return { status: "confirmed", save: parsed.save, failure: null };
+  }
+  if (serialized === receipt.previousSerialized) {
+    unconfirmedCampaignWrites.delete(attempt);
+    return { status: "retry", save: null, failure: null };
+  }
+  return refused("save-conflict");
 }
 
 function inspectSavePayload(value: unknown): SaveImportParseResult {
@@ -1384,9 +1444,11 @@ function persistCampaign(
   if (!storage) return failed("storage-unavailable");
 
   let previousSerialized: string | null;
+  let previousPrimarySerialized: string | null;
   let previous: SaveGame | null = null;
   try {
     previousSerialized = storage.getItem(key);
+    previousPrimarySerialized = previousSerialized;
     const observed = observedCampaigns.get(storage);
     if (!replaceExisting && observed?.has(key) && observed.get(key) !== previousSerialized) {
       return failed("save-conflict");
@@ -1413,14 +1475,23 @@ function persistCampaign(
 
   const serialized = JSON.stringify(snapshot);
   if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
+  const observedBefore = observedCampaigns.get(storage)?.get(key);
+  const unconfirmed = (): SaveWriteResult => {
+    const result = failed("write-failed");
+    unconfirmedCampaignWrites.set(result, {
+      storage, key, ownerCreatedAt: snapshot.createdAt, serialized,
+      previousSerialized: previousPrimarySerialized, observedBefore,
+    });
+    return result;
+  };
   try {
     // A Storage setItem is atomic for this key. Do not consume quota with the
     // optional backup until the new primary snapshot has succeeded.
     storage.setItem(key, serialized);
-    if (storage.getItem(key) !== serialized) return failed("write-failed");
+    if (storage.getItem(key) !== serialized) return unconfirmed();
     observeCampaign(storage, key, serialized);
   } catch {
-    return failed("write-failed");
+    return unconfirmed();
   }
   try {
     // A reset/import with a different owner must not resurrect the former

@@ -24,6 +24,9 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "PhysicalShipDeck",
     "TrophyWorkshop",
     "EnemyBestiaryV8",
+    "HomeworldHub",
+    "HomeworldExpedition",
+    "JusticePanel",
   ]) {
     assert.match(
       source,
@@ -45,7 +48,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.equal(source.match(/<PitCanvas/g)?.length, 1);
   assert.equal(
     source.match(/<Suspense fallback=\{<DeferredGameScreen \/>\}>/g)?.length,
-    8,
+    11,
   );
   assert.match(
     source,
@@ -59,7 +62,7 @@ test("THE PIT terminal results stay isolated from campaign rewards", async () =>
     readFile(pitCanvasUrl, "utf8"),
   ]);
   const callbackStart = gameClientSource.indexOf("const recordPitMatch");
-  const callbackEnd = gameClientSource.indexOf("const go = useCallback", callbackStart);
+  const callbackEnd = gameClientSource.indexOf("const recordPitRunTransition", callbackStart);
   assert.ok(callbackStart >= 0 && callbackEnd > callbackStart);
   const callbackSource = gameClientSource.slice(callbackStart, callbackEnd);
 

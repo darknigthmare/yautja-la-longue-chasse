@@ -145,12 +145,15 @@ import {
   replaceSaveWithStatus,
   type SaveLoadFailure,
   type SaveWriteFailure,
+  type SaveWriteResult,
   normalizeSave,
+  reconcileSaveWrite,
   writeSaveWithStatus,
 } from "./save";
 import {
   GameAudio,
   type GameAudioBiome,
+  type GameMusicContext,
   type GameSfxId,
 } from "./sound";
 import {
@@ -205,6 +208,15 @@ import type {
   WeaponId,
 } from "./types";
 
+import type { HomeworldProgress, HomeworldService } from "./systems/homeworld";
+
+import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
+
+import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
+
+const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
+const JusticePanel = React.lazy(() => import("./JusticePanel"));
+const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitCanvas"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
@@ -225,6 +237,9 @@ type Screen =
   | "title"
   | "ship"
   | "deck"
+  | "homeworld"
+  | "homeworld-expedition"
+  | "justice"
   | "medbay"
   | "training"
   | "pit"
@@ -238,12 +253,12 @@ type Screen =
   | "debrief"
   | "ending";
 
-type MapReturnScreen = Extract<Screen, "ship" | "deck">;
+type MapReturnScreen = Extract<Screen, "ship" | "deck" | "homeworld">;
 type StationScreen = Extract<
   Screen,
-  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training"
+  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice"
 >;
-type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing">;
+type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld">;
 
 const STABLE_BOOT_TIME = "2026-07-18T00:00:00.000Z";
 
@@ -1010,12 +1025,18 @@ function withPitWriteLock({
 
 export default function GameClient() {
   const [screen, setScreen] = useState<Screen>("title");
+  const [huntMusicContext, setHuntMusicContext] = useState<GameMusicContext | null>("exploration");
+  const [hubLocation, setHubLocation] = useState<"deck" | "homeworld">("deck");
+  const [justiceReturnScreen, setJusticeReturnScreen] = useState<"deck" | "homeworld" | "map">("deck");
+  const [justiceJurisdiction, setJusticeJurisdiction] = useState<JusticeJurisdictionId>("homeworld");
+  const [pitReturnScreen, setPitReturnScreen] = useState<"deck" | "homeworld">("deck");
   const [save, setSave] = useState<SaveGame>(() =>
     defaultSave(STABLE_BOOT_TIME),
   );
   // Runtime discoveries and terminal callbacks may occur before React commits.
   // Update this ref alongside every local save so their unions never use stale state.
   const saveRef = useRef(save);
+  const expeditionOwnerRef = useRef<string | null>(null);
   const [selectedMission, setSelectedMission] =
     useState<MissionDefinition | null>(null);
   const [galaxyNavigationState, setGalaxyNavigationState] =
@@ -1074,8 +1095,9 @@ export default function GameClient() {
   const shipStationOpen = screen === "ship" || screen === "map" ||
     screen === "briefing" || screen === "armory" || screen === "customization" ||
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
-    screen === "training";
-  const deckVisible = screen === "deck" || shipStationOpen;
+    screen === "training" || screen === "justice";
+  const deckVisible = screen === "deck" || (shipStationOpen && hubLocation === "deck");
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "pit" || screen === "homeworld-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1155,6 +1177,7 @@ export default function GameClient() {
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
         ? selectedMission.biome
+        : screen === "homeworld-expedition" ? "volcano"
         : screen === "title"
           ? null
           : "ship";
@@ -1164,6 +1187,21 @@ export default function GameClient() {
       audio.stopAmbience(0.55);
     }
   }, [screen, selectedMission]);
+
+  useEffect(() => {
+    const context: GameMusicContext | null = settingsOpen ? null
+      : screen === "title" ? "menu"
+      : screen === "mission" ? huntMusicContext
+      : screen === "homeworld-expedition" ? "exploration"
+      : screen === "map" ? "galaxy"
+      : screen === "pit" ? "combat"
+      : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
+      : "ship";
+    const apply = () => { void audioRef.current?.setMusicContext(document.hidden ? null : context, { fadeSeconds: 0.5 }); };
+    apply();
+    document.addEventListener("visibilitychange", apply);
+    return () => document.removeEventListener("visibilitychange", apply);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -1271,7 +1309,7 @@ export default function GameClient() {
       if (nestedDialog && nestedDialog !== dialog) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        setScreen("deck");
+        setScreen(hubLocation);
       } else if (event.key === "Tab") {
         const controls = Array.from(dialog.querySelectorAll<HTMLElement>(
           'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]',
@@ -1288,10 +1326,10 @@ export default function GameClient() {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [settingsOpen, shipStationOpen, trophyWorkshop]);
+  }, [settingsOpen, shipStationOpen, trophyWorkshop, hubLocation]);
 
   const playSound = useCallback(
-    async (
+    (
       sound:
         | "ui"
         | "select"
@@ -1301,16 +1339,17 @@ export default function GameClient() {
     ) => {
       const audio = audioRef.current;
       if (!audio) return;
-      await audio.unlock();
+      void audio.unlock();
       audio[sound]();
     },
     [],
   );
 
-  const playGameplaySound = useCallback(async (sound: GameSfxId) => {
+  const playGameplaySound = useCallback((sound: GameSfxId) => {
     const audio = audioRef.current;
     if (!audio) return;
-    await audio.unlock();
+    // Never queue an old shot behind a delayed autoplay unlock.
+    void audio.unlock();
     audio.playSfx(sound);
   }, []);
 
@@ -1658,15 +1697,105 @@ export default function GameClient() {
     });
   }, []);
 
+  // City choices are acknowledged only after durable storage confirms the write.
+  // A failed write must not announce a completed investigation or apply a reward.
+  const pendingSocialWriteRef = useRef<{ attempt: SaveWriteResult; updateSerialized: string } | null>(null);
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "homeworld" | "justice">>): boolean => {
+    const current = saveRef.current;
+    if (pendingTerminalRunRef.current) {
+      setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
+      return false;
+    }
+    const updateSerialized = JSON.stringify({ homeworld: update.homeworld, justice: update.justice });
+    const pending = pendingSocialWriteRef.current;
+    if (pending) {
+      const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
+      if (recovered.status === "refused") {
+        if (pending.attempt.save.createdAt !== current.createdAt) pendingSocialWriteRef.current = null;
+        setSaveFailure(recovered.failure);
+        setToast("Sauvegarde précédente non confirmée : aucune autre progression n’a été remplacée. Réessaie après vérification de la campagne.");
+        return false;
+      }
+      pendingSocialWriteRef.current = null;
+      if (recovered.status === "confirmed") {
+        saveRef.current = recovered.save;
+        setSave(recovered.save);
+        setSaveFailure(null);
+        if (pending.updateSerialized === updateSerialized) return true;
+        // This request was computed before the preceding write was confirmed.
+        // Refresh the caller first; never overwrite that progress with old data.
+        setToast("Sauvegarde précédente récupérée. Réessaie cette nouvelle action depuis le dossier actualisé.");
+        return false;
+      }
+    }
+    const next = { ...current, ...update };
+    const session = activeHuntSessionRef.current;
+    if (session && isExplorationMission(session.missionId)) {
+      const failure = explorationWriteFailure(session, next, reconcileHuntWrite());
+      if (failure) { setSaveFailure(failure); return false; }
+    }
+    const result = writeSaveWithStatus(next);
+    setSaveFailure(result.failure);
+    if (!result.persisted) {
+      if (result.failure === "write-failed") pendingSocialWriteRef.current = { attempt: result, updateSerialized };
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    return true;
+  }, [reconcileHuntWrite]);
+
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress) =>
+    persistSocialProgress({ homeworld }), [persistSocialProgress]);
+  const persistJusticeProgress = useCallback((justice: JusticeProgress) =>
+    persistSocialProgress({ justice }), [persistSocialProgress]);
+
+  // The shared intervention clock advances only in active hubs/navigation.
+  // It never erases a warrant and does not write once per animation frame.
+  useEffect(() => {
+    if (settingsOpen || !["deck", "homeworld", "map", "justice"].includes(screen)) return;
+    const timer = window.setInterval(() => {
+      const current = saveRef.current.justice;
+      if (document.hidden || current.detention || current.intervention.cooldownTicks <= 0) return;
+      persistJusticeProgress(advanceJusticeTime(current, 300));
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [screen, settingsOpen, persistJusticeProgress]);
+
   const go = useCallback(
     (next: Screen) => {
       void playSound("ui");
+      if (next === "deck" || next === "ship") setHubLocation("deck");
+      if (next === "homeworld") setHubLocation("homeworld");
       setScreen(next);
     },
     [playSound],
   );
 
+  const openHomeworldExpedition = useCallback(() => {
+    if (!saveRef.current.homeworld.evidenceIds.includes("suspect-trophy")) {
+      setToast("Relève d’abord la marque du trophée au port."); return;
+    }
+    expeditionOwnerRef.current = saveRef.current.createdAt;
+    go("homeworld-expedition");
+  }, [go]);
+
+  const completeHomeworldExpedition = useCallback((raw: HomeworldExpeditionProof) => {
+    const proof = normalizeHomeworldExpeditionProof(raw);
+    const current = saveRef.current;
+    if (!proof || expeditionOwnerRef.current !== current.createdAt ||
+        !current.homeworld.evidenceIds.includes("suspect-trophy")) {
+      return { persisted: false, message: "Rapport ou propriétaire de campagne incompatible. Aucun progrès n’a été ajouté." };
+    }
+    const previous = current.homeworld.expeditions["ash-marches"];
+    const report = previous ? { ...proof, secretFound: previous.secretFound || proof.secretFound, ticks: Math.min(previous.ticks, proof.ticks) } : proof;
+    const persisted = persistHomeworldProgress({ ...current.homeworld, expeditions: { "ash-marches": report } });
+    if (persisted) setToast("Rapport des Marches conservé : le convoi confirme le transfert suspect. Aucun trophée du convoi n’est attribué au chasseur.");
+    return { persisted, message: persisted ? undefined : "Écriture non confirmée. Reste à la navette et réessaie ; le rapport n’est pas encore acquis." };
+  }, [persistHomeworldProgress]);
+
   const openPit = useCallback(() => {
+    setPitReturnScreen(screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({
       key: pitSaveStorageKey(ownerSaveCreatedAt),
@@ -1686,10 +1815,11 @@ export default function GameClient() {
       setToast("Progression THE PIT indisponible ; les routes et palettes restent protégées.");
     }
     go("pit");
-  }, [go]);
+  }, [go, screen, shipStationOpen, hubLocation]);
 
   const openMap = useCallback(
     (returnScreen: MapReturnScreen) => {
+      setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setMapReturnScreen(returnScreen);
       go("map");
     },
@@ -1698,21 +1828,43 @@ export default function GameClient() {
 
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen) => {
+      setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setStationReturnScreen(returnScreen);
+      if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
       go(next);
     },
     [go],
   );
 
+  const openHomeworldService = useCallback((service: HomeworldService) => {
+    if (service === "justice") setJusticeJurisdiction("homeworld");
+    if (service === "pit") openPit();
+    else openStationScreen(service, "homeworld");
+  }, [openPit, openStationScreen]);
+
   const chooseMission = useCallback(
     (mission: MissionDefinition) => {
       if (save.missionProgress[mission.id].status === "locked") return;
+      const justice = saveRef.current.justice;
+      const control = getJusticeRouteControl(justice, "clan-core");
+      if (justice.intervention.stage !== "none" || justice.detention || control.kind === "identity-check" || control.kind === "summons") {
+        const jurisdiction = justice.detention?.jurisdictionId ?? justice.intervention.jurisdictionId ?? "clan-core";
+        if (!justice.detention && justice.intervention.stage === "none") {
+          const result = applyJusticeAction(justice, { type: "request-control", jurisdictionId: jurisdiction });
+          if (!result.ok || result.changed && !persistJusticeProgress(result.progress)) return;
+        }
+        setJusticeJurisdiction(jurisdiction);
+        setJusticeReturnScreen("map");
+        setScreen("justice");
+        setToast("Contrôle connu sur la route : identité, contestation, reddition ou route de repli. Le dossier reste distinct de la chasse.");
+        return;
+      }
       void playSound("select");
       setSelectedMission(mission);
       setBriefingAtAirlock(false);
       setScreen("briefing");
     },
-    [playSound, save.missionProgress],
+    [playSound, save.missionProgress, persistJusticeProgress],
   );
 
   const clearHuntSession = useCallback(() => {
@@ -2554,6 +2706,38 @@ export default function GameClient() {
         </section>
       )}
 
+      {homeworldMounted && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen" hidden={screen === "pit" || screen === "homeworld-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
+            <div className="screen-safe">
+              <div className="physical-deck-toolbar">
+                <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>
+                <button type="button" className="ghost-button" onClick={() => {
+                  setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
+                }}>Dossier · {getJusticeStatus(save.justice).label}</button>
+                <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>
+                <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
+              </div>
+              <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId}
+                suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
+                onProgress={persistHomeworldProgress} onService={openHomeworldService}
+                onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
+            </div>
+          </section>
+        </Suspense>
+      )}
+
+      {screen === "homeworld-expedition" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen">
+            <div className="screen-safe">
+              <HomeworldExpedition key={save.createdAt} save={save} suspended={settingsOpen}
+                onComplete={completeHomeworldExpedition} onExit={() => go("homeworld")} />
+            </div>
+          </section>
+        </Suspense>
+      )}
+
       {deckVisible && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen physical-deck-screen" inert={shipStationOpen || settingsOpen}>
@@ -2566,6 +2750,12 @@ export default function GameClient() {
                 <button type="button" className="ghost-button" onClick={() => go("ship")}>
                   Console du vaisseau
                 </button>
+                <button type="button" className="ghost-button" onClick={() => go("homeworld")}>
+                  Yautja Prime · monde natal
+                </button>
+                <button type="button" className="ghost-button" onClick={() => {
+                  setJusticeJurisdiction("homeworld"); openStationScreen("justice", "deck");
+                }}>Mandats et alignement</button>
                 <button type="button" className="ghost-button" onClick={openPit}>
                   THE PIT · combat
                 </button>
@@ -2604,16 +2794,23 @@ export default function GameClient() {
 
       {shipStationOpen && (
         <div className="ship-station-layer" data-station-screen={screen} role="dialog" aria-modal="true"
-          aria-label="Installation du vaisseau" ref={stationDialogRef} tabIndex={-1}
+          aria-label={hubLocation === "homeworld" ? "Service du monde natal" : "Installation du vaisseau"} ref={stationDialogRef} tabIndex={-1}
           inert={settingsOpen || trophyWorkshop !== null}>
           <div className="ship-station-toolbar" inert={shipDrillActive}>
-            <button type="button" className="ghost-button" onClick={() => go("deck")}>
-              ← Retour au pont · Échap
+            <button type="button" className="ghost-button" onClick={() => go(hubLocation)}>
+              {hubLocation === "homeworld" ? "← Retour à la cité · Échap" : "← Retour au pont · Échap"}
             </button>
             <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
               Réglages
             </button>
           </div>
+      {screen === "justice" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}
+            onProgress={persistJusticeProgress} onClose={() => go(justiceReturnScreen)} onNotify={setToast} embedded />
+        </Suspense>
+      )}
+
       {screen === "ship" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <ShipHub
@@ -2644,9 +2841,9 @@ export default function GameClient() {
             <button
               type="button"
               className="physical-medbay-entry__back ghost-button"
-              onClick={() => go("deck")}
+              onClick={() => go(hubLocation)}
             >
-              ← Retour au pont physique
+              {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
             </button>
             <ShipHub
               embedded
@@ -2656,13 +2853,13 @@ export default function GameClient() {
               controlBindings={save.settings.controlBindings}
               key={screen}
               initialRoomId={screen === "training" ? "training" : "medbay"}
-              onOpenDeck={() => go("deck")}
-              onOpenMap={() => openMap("deck")}
-              onOpenArmory={() => openStationScreen("armory", "deck")}
-              onOpenTrophies={() => openStationScreen("trophies", "deck")}
-              onOpenArchives={() => openStationScreen("codex", "deck")}
+              onOpenDeck={() => go(hubLocation)}
+              onOpenMap={() => openMap(hubLocation)}
+              onOpenArmory={() => openStationScreen("armory", hubLocation)}
+              onOpenTrophies={() => openStationScreen("trophies", hubLocation)}
+              onOpenArchives={() => openStationScreen("codex", hubLocation)}
               onOpenCustomization={() =>
-                openStationScreen("customization", "deck")
+                openStationScreen("customization", hubLocation)
               }
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
@@ -2684,6 +2881,9 @@ export default function GameClient() {
             onStateChange={setGalaxyNavigationState}
             onBack={() => go(mapReturnScreen)}
             onChooseMission={chooseMission}
+            onVisitHomeworld={() => go("homeworld")}
+            justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
+            onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
           />
         </Suspense>
       )}
@@ -3838,7 +4038,8 @@ export default function GameClient() {
             savedDescentRuns={pitDescentRuns}
             onMatchComplete={recordPitMatch}
             onRunTransition={recordPitRunTransition}
-            onExit={() => go("deck")}
+            exitLabel={pitReturnScreen === "homeworld" ? "Retour à la cité" : "Retour au vaisseau"}
+            onExit={() => go(pitReturnScreen)}
           />
         </Suspense>
       )}
@@ -3869,6 +4070,7 @@ export default function GameClient() {
             onInvalidateHunt={invalidateActiveHuntPersistence}
             onResumeFailure={rejectActiveHuntResume}
             onSound={playGameplaySound}
+            onMusicContext={setHuntMusicContext}
             onFinish={completeMission}
             onAbort={(result) => completeMission(result, true)}
           />
