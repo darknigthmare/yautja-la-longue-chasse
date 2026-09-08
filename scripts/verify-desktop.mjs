@@ -14,7 +14,12 @@ const failedLocalRequests = [];
 async function launch() {
   const instance = await electron.launch({ executablePath, env: { ...process.env, YAUTJA_DESKTOP_QA_PROFILE: profile }, timeout: 60000 });
   const page = await instance.firstWindow();
-  // Keep automated hidden-window simulation ticking; this is not a performance benchmark.
+  // A hidden Electron window can deliver only one compositor frame despite
+  // backgroundThrottling=false. Control the browser clock for this QA profile;
+  // keep real keyboard input and game/save logic unchanged. This is not a
+  // hardware cadence or visible-window performance measurement.
+  await page.clock.install();
+  await page.reload();
   await instance.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.setBackgroundThrottling(false));
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("requestfailed", (request) => { if (request.url().startsWith("yautja:")) failedLocalRequests.push({ url: request.url(), error: request.failure() }); });
@@ -85,15 +90,15 @@ try {
     for (let attempt = 0; attempt < 40; attempt++) {
       const x = await cityX(); if (Math.abs(x - target) < 20) return;
       await city.focus(); const key = x < target ? "ArrowRight" : "ArrowLeft";
-      await page.keyboard.down(key); await page.waitForTimeout(Math.min(700,Math.abs(x-target)/300*1000)); await page.keyboard.up(key);
-      await page.waitForTimeout(80);
+      await page.keyboard.down(key); await page.clock.runFor(Math.round(Math.min(700,Math.abs(x-target)/300*1000))); await page.keyboard.up(key);
+      await page.clock.runFor(80);
     }
     throw new Error("Homeworld target was not reached: " + target);
   };
   await walkTo(440); await city.focus(); await page.keyboard.press("e");
-  await page.getByRole("dialog").waitFor(); await page.keyboard.press("Escape");
+  await page.getByRole("dialog").waitFor(); await page.getByRole("button", { name: "Revenir à la cité", exact: true }).click(); await page.getByRole("dialog").waitFor({state:"hidden"}); await page.clock.runFor(64);
   await walkTo(960); await city.focus(); await page.keyboard.press("e");
-  await page.getByRole("dialog").waitFor(); await page.keyboard.press("Escape");
+  await page.getByRole("dialog").waitFor(); await page.getByRole("button", { name: "Revenir à la cité", exact: true }).click(); await page.getByRole("dialog").waitFor({state:"hidden"}); await page.clock.runFor(64);
   const citySave = JSON.parse(await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")));
   assert.ok(citySave.homeworld.visitedDistrictIds.includes("port"));
   assert.ok(citySave.homeworld.evidenceIds.includes("suspect-trophy"));
@@ -160,7 +165,7 @@ try {
   await close(current.instance); current = undefined;
   assert.deepEqual(errors, []);
   assert.deepEqual(failedLocalRequests, []);
-  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session; not a physical controller, performance or full campaign certification." }, null, 2));
+  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
   console.log(JSON.stringify({ passed: true, checks, errors, failedLocalRequests }, null, 2));
 } finally {
   if (current) await close(current.instance);

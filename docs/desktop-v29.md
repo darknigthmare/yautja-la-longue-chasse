@@ -24,8 +24,28 @@ Les autres protections restent en place : sandbox Electron, isolation du context
 - réglage réel, export natif et persistance après redémarrage ;
 - parcours Homeworld au clavier, rencontre, première preuve et entrée/sortie des Marches de Cendre ;
 - ouverture du dossier des Enforcers, choix d’enquête sans modification de l’honneur et conservation du dossier ;
-- entrée dans THE PIT, route galactique, lancement et suspension d’une chasse.
+- entrée dans THE PIT avec les PNG exacts Jungle Hunter et Berserker, route galactique, lancement et suspension d’une chasse.
 
-La preuve d’exécution est `tmp/desktop-qa/v29/verification.json`, accompagnée de captures Homeworld et Justice. **La présence du script ne vaut pas réussite : seule une exécution avec `passed: true` qualifie l’EXE produit.** Le test utilise une fenêtre masquée et n’évalue pas le matériel physique, les performances ni toute la campagne.
+La preuve d’exécution est `tmp/desktop-qa/v29/verification.json`, accompagnée de captures Homeworld, Justice et THE PIT. **La présence du script ne vaut pas réussite : seule une exécution avec `passed: true` qualifie l’EXE produit.** Le test utilise une fenêtre masquée et une horloge navigateur contrôlée avec les vraies touches. La fenêtre masquée ne produisait qu’un callback requestAnimationFrame en 800 ms malgré le focus et la visibilité ; la recette pilote donc la cadence sans modifier le moteur ni injecter de sauvegarde. Elle ne certifie pas la cadence sur écran réel, le matériel physique, les performances ni toute la campagne.
 
 Pour jouer, extraire tout le portable et lancer `Yautja-La-Longue-Chasse.exe`. Les sauvegardes habituelles restent dans `%APPDATA%\YautjaLaLongueChasse`, séparées du navigateur. Conserver ce dossier lors des mises à jour ; l’export/import du jeu permet le transfert de campagne.
+
+## Résultat exécuté le 8 septembre 2026
+
+La construction et la recette de l’EXE ont réussi : `npm run package:windows`, puis `npm run qa:desktop` avec `passed: true`, zéro erreur JavaScript et zéro requête locale échouée. Les réglages, l’export natif, la cité (PNJ et première preuve), l’entrée/retour des Marches, le choix d’enquête des Enforcers, les deux PNG du combat, la route galactique et la suspension de chasse ont été exercés. Les octets de campagne, la preuve, le dossier, la chasse suspendue et le réglage ont été conservés après fermeture réelle et nouveau processus.
+
+Le paquet exécute le commit source `866a797343761a8d0ee23d3fb88707a597d427ba`. Les adaptations ultérieures concernent la recette et cette preuve, pas le binaire. L’empreinte des 2 001 fichiers sources était identique avant et après compilation :
+`11ab365174380f461c0096252da7fe30ac2c0cd55b2b06bbda1bb831344baaf4`.
+
+| Élément | Résultat |
+| --- | --- |
+| Version | 1.0.29, Electron 44.2.0, Windows x64 |
+| ZIP portable | `tmp/desktop-release/v29/Yautja-La-Longue-Chasse-PC-V29.zip` |
+| Taille ZIP | 441 353 467 octets |
+| SHA-256 ZIP | `6eff4b304b77a26deb942fa6e37bd77653057b3837da4221117e81633c5219c0` |
+| SHA-256 EXE | `edc9fa8d71193ff47808857ba4dcc26308d3b1900da75c650408f5c328368b42` |
+| SHA-256 app.asar | `2933cef8ee7b7c0ea1a0383edd46d9798d31ba93ffa43259d315f6f78c858b0b` |
+| Inspection | 77 entrées ZIP, 2 109 entrées ASAR ; aucune source privée, sauvegarde, `.env` ou dépendance de développement |
+| Audio | 37 emplacements dans le manifeste local ; aucun enregistrement de production fourni |
+
+Les captures natives ont été inspectées visuellement. Le ZIP V25 reste présent à son emplacement précédent (425 771 120 octets). La preuve résumée est conservée dans [desktop-v29-qa.json](desktop-v29-qa.json). L’archive est locale ; elle n’a pas été envoyée à un hébergeur par cette recette.
