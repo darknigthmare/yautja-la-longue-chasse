@@ -30,7 +30,7 @@ test("only the real eight runtime arenas are marked playable", () => {
   const concepts = catalogue.PIT_ARENA_CATALOGUE.filter(({ runtimeStatus }) => runtimeStatus === "concept");
   assert.equal(playable.length, 8);
   assert.equal(concepts.length, 92);
-  assert(playable.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId && runtimeVisualPlanes === 4));
+  assert(playable.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId && runtimeVisualPlanes === 6));
   assert(concepts.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId === null && runtimeVisualPlanes === 0));
   assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.playable, 8);
   assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.concept, 92);

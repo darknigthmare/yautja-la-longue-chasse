@@ -1,4 +1,9 @@
 import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
+import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
+import {
+  drawPitSpriteSheetAnimation, drawPitSpriteSheetHold, loadPitSpriteSheetAnimations, resolvePitSpriteSheetAnimation, resolvePitSpriteSheetHold, getPitSpriteSheetAnimationVisualBounds,
+  type PitSpriteSheetAnimationBank, type PitSpriteSheetAnimationDefinition, type PitSpriteSheetAnimationOptions,
+} from "./pitSpriteSheetAnimation";
 
 /** All 14 exact-ID PIT fighters: six V31 and eight preserved V5 plates. Fixed poses only. */
 export const PIT_COMBAT_BITMAP_FIGHTER_IDS = [
@@ -60,21 +65,28 @@ export function getPitCombatBitmapArtDefinition(id: PitFighterId): PitCombatBitm
 export function getPitCombatBitmapVisualBounds(
   fighter: PitFighterState,
   groundY: number,
+  registry: readonly PitSpriteSheetAnimationDefinition[] = PIT_SPRITE_SHEET_REGISTRY,
 ): { x: number; y: number; width: number; height: number } | null {
   const art = getPitCombatBitmapArtDefinition(fighter.definitionId);
   if (!art || ![fighter.x, fighter.y, groundY].every(Number.isFinite) ||
     (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / (art.pivot[1] - art.bodyTopY);
   const direction = art.nativeFacing === "right" ? fighter.facing : 1;
-  return {
+  const bounds = {
     x: fighter.x - (direction === 1 ? art.pivot[0] : art.width - art.pivot[0]) * scale,
     y: groundY - fighter.y - art.pivot[1] * scale,
     width: art.width * scale,
     height: art.height * scale,
   };
+  const animated = getPitSpriteSheetAnimationVisualBounds(fighter, groundY, registry);
+  if (!animated) return bounds;
+  const x = Math.min(bounds.x, animated.x), y = Math.min(bounds.y, animated.y);
+  return { x, y, width: Math.max(bounds.x + bounds.width, animated.x + animated.width) - x,
+    height: Math.max(bounds.y + bounds.height, animated.y + animated.height) - y };
 }
 
 export interface PitCombatBitmapArtBank {
+  readonly spriteSheets?: PitSpriteSheetAnimationBank;
   readonly images: ReadonlyMap<PitFighterId, HTMLImageElement>;
   readonly requestedIds: ReadonlySet<PitFighterId>;
   readonly readyIds: ReadonlySet<PitFighterId>;
@@ -82,6 +94,17 @@ export interface PitCombatBitmapArtBank {
   readonly cancelled: boolean;
 }
 export type PitCombatBitmapArtStatus = "static-bitmap" | "loading" | "missing";
+
+/** Current state coverage is separate from the presence of a static selection plate. */
+export function getPitCombatBitmapFighterArtStatus(
+  bank: PitCombatBitmapArtBank | null,
+  fighter: PitFighterState,
+  options: PitSpriteSheetAnimationOptions = {},
+): PitCombatBitmapArtStatus | "sprite-sheet-animation" | "sprite-sheet-hold" {
+  if (!bank?.cancelled && resolvePitSpriteSheetAnimation(bank?.spriteSheets, fighter, options)) return "sprite-sheet-animation";
+  if (!bank?.cancelled && resolvePitSpriteSheetHold(bank?.spriteSheets, fighter, options)) return "sprite-sheet-hold";
+  return getPitCombatBitmapArtStatus(bank, fighter.definitionId);
+}
 
 export function getPitCombatBitmapArtStatus(bank: PitCombatBitmapArtBank | null, id: PitFighterId): PitCombatBitmapArtStatus {
   const definition = getPitCombatBitmapArtDefinition(id);
@@ -120,20 +143,22 @@ function hasExpectedAlpha(image: HTMLImageElement, definition: PitCombatBitmapAr
 /** Load only the selected IDs; an abandoned selection cannot publish late images. */
 export async function loadPitCombatBitmapArt(
   ids: readonly PitFighterId[],
-  options: { signal?: AbortSignal; timeoutMs?: number } = {},
+  options: { signal?: AbortSignal; timeoutMs?: number; spriteSheetRegistry?: readonly PitSpriteSheetAnimationDefinition[] } = {},
 ): Promise<PitCombatBitmapArtBank> {
   const requestedIds = new Set(ids);
   const readyIds = new Set<PitFighterId>();
   const failedIds = new Set<PitFighterId>();
   const images = new Map<PitFighterId, HTMLImageElement>();
+  let spriteSheets: PitSpriteSheetAnimationBank | undefined = undefined;
   const { signal } = options;
   const timeoutMs = Number.isFinite(options.timeoutMs)
     ? Math.max(1, Math.min(30_000, Math.floor(options.timeoutMs!))) : 12_000;
-  const bank = (): PitCombatBitmapArtBank => ({ images, requestedIds, readyIds, failedIds, cancelled: Boolean(signal?.aborted) });
+  const bank = (): PitCombatBitmapArtBank => ({ images, requestedIds, readyIds, failedIds, spriteSheets, cancelled: Boolean(signal?.aborted) });
   if (signal?.aborted || typeof Image === "undefined" || typeof document === "undefined") {
     requestedIds.forEach(id => failedIds.add(id));
     return bank();
   }
+  const animationLoad = loadPitSpriteSheetAnimations(ids, options.spriteSheetRegistry ?? PIT_SPRITE_SHEET_REGISTRY, options);
   await Promise.all([...requestedIds].map(async id => {
     const definition = getPitCombatBitmapArtDefinition(id);
     if (!definition) { failedIds.add(id); return; }
@@ -165,6 +190,7 @@ export async function loadPitCombatBitmapArt(
     if (image && !signal?.aborted) { images.set(id, image); readyIds.add(id); }
     else failedIds.add(id);
   }));
+  spriteSheets = await animationLoad;
   if (signal?.aborted) {
     images.clear(); readyIds.clear();
     requestedIds.forEach(id => failedIds.add(id));
@@ -172,14 +198,16 @@ export async function loadPitCombatBitmapArt(
   return bank();
 }
 
-/** Static presentation only: never write combat, action timers, hitboxes or saves. */
+/** Reviewed animation for the actual state, otherwise the explicitly static plate. */
 export function drawPitCombatBitmapFighter(
   context: CanvasRenderingContext2D,
   bank: PitCombatBitmapArtBank | null,
   fighter: PitFighterState,
   groundY: number,
-  options: { highContrast?: boolean; accent?: string } = {},
+  options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
+  if (bank && !bank.cancelled && drawPitSpriteSheetAnimation(context, bank.spriteSheets, fighter, groundY, options)) return true;
+  if (bank && !bank.cancelled && drawPitSpriteSheetHold(context, bank.spriteSheets, fighter, groundY, options)) return true;
   if (!bank || getPitCombatBitmapArtStatus(bank, fighter.definitionId) !== "static-bitmap" ||
     !Number.isFinite(fighter.x) || !Number.isFinite(fighter.y) || !Number.isFinite(groundY) ||
     (fighter.facing !== -1 && fighter.facing !== 1)) return false;

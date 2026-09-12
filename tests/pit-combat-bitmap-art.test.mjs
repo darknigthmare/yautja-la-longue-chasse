@@ -5,16 +5,23 @@ import { readFile } from "node:fs/promises";
 import { build } from "esbuild";
 import sharp from "sharp";
 
-const built = await build({
+// Fixture tests inject their own reviewed art; production registry is verified separately.
+const registryFixture = { name: "empty-production-registry", setup(bundle) {
+  bundle.onResolve({ filter: /pitSpriteSheetRegistry$/ }, () => ({ path: "registry", namespace: "fixture" }));
+  bundle.onLoad({ filter: /.*/, namespace: "fixture" }, () => ({ contents: "export const PIT_SPRITE_SHEET_REGISTRY = [];", loader: "js" }));
+} };
+const built = await build({ plugins: [registryFixture],
   stdin: { contents: "export * from './app/game/pitCombatBitmapArt.ts'; export { createPitCombatState, PIT_FIGHTERS } from './app/game/systems/pitCombat.ts';", resolveDir: fileURLToPath(new URL("..", import.meta.url)) },
   bundle: true, format: "esm", platform: "node", write: false, logLevel: "silent",
 });
 const {
   PIT_COMBAT_BITMAP_FIGHTER_IDS: ids, getPitCombatBitmapArtDefinition: definitionFor,
-  loadPitCombatBitmapArt: load, getPitCombatBitmapArtStatus: status,
+  loadPitCombatBitmapArt: rawLoad, getPitCombatBitmapArtStatus: status,
   getPitCombatBitmapVisualBounds: visualBounds,
   drawPitCombatBitmapFighter: draw, createPitCombatState, PIT_FIGHTERS,
 } = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
+
+const load = (ids, options = {}) => rawLoad(ids, { ...options, spriteSheetRegistry: [] });
 
 test("all fourteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
   assert.equal(ids.length, 14);
@@ -242,7 +249,7 @@ test("per-asset camera bounds cover exactly the same complete rectangle that Can
     const rect = context.calls.find(call => call[0] === "drawImage").slice(2);
     const a = translation[0] + rect[0] * scale[0];
     const b = translation[0] + (rect[0] + rect[2]) * scale[0];
-    const bounds = visualBounds(fighter, 430);
+    const bounds = visualBounds(fighter, 430, []);
     assert.ok(Math.abs(bounds.x - Math.min(a, b)) < 1e-8, id);
     assert.ok(Math.abs(bounds.width - Math.abs(b - a)) < 1e-8, id);
     assert.ok(Math.abs(bounds.y - (translation[1] + rect[1] * scale[1])) < 1e-8, id);

@@ -13,7 +13,8 @@ import {
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
-import { getPitCombatBitmapArtDefinition, loadPitCombatBitmapArt, getPitCombatBitmapArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
+import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, PIT_ARENA_BITMAP_PLANES, type PitArenaArtBank } from "./pitArenaRendering";
+import { getPitCombatBitmapArtDefinition, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -568,6 +569,8 @@ function drawArena(
   impact: ImpactFlash | null,
   leftCosmeticPalette: PitArcadeCosmeticDefinition["palette"] | null,
   fighterArt: PitCombatBitmapArtBank | null,
+  arenaArt: PitArenaArtBank | null,
+  reducedMotion: boolean,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -582,194 +585,12 @@ function drawArena(
   canvas.dataset.pitCameraCenterX = camera.centerX.toFixed(2);
   canvas.dataset.pitCameraCenterY = camera.centerY.toFixed(2);
 
+  const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion });
+  canvas.dataset.pitArenaId = state.arenaId;
+  canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== state.arenaId ? "loading" : backdropReport.missingPaths.length ? "partial" : "bitmap";
+  canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
   context.save();
   applyPitPresentationCamera(context, width, height, camera);
-
-  // The presentation can reserve weapon tips beyond collision-wall coordinates.
-  // Extend only the painted backdrop and floor; arena geometry stays unchanged.
-  const viewLeft = camera.centerX - width / camera.zoom / 2;
-  const viewTop = camera.centerY - height / camera.zoom / 2;
-  const viewWidth = width / camera.zoom;
-  const viewHeight = height / camera.zoom;
-  const sky = context.createLinearGradient(0, 0, 0, height);
-  sky.addColorStop(0, highContrast ? "#071d22" : arena.palette.sky);
-  sky.addColorStop(0.62, highContrast ? "#15302e" : arena.palette.ground);
-  sky.addColorStop(1, "#020303");
-  context.fillStyle = sky;
-  context.fillRect(viewLeft, viewTop, viewWidth, viewHeight);
-
-  context.save();
-  context.globalAlpha = highContrast ? 0.82 : 0.64;
-  context.strokeStyle = highContrast ? "#84ffe4" : arena.palette.accent;
-  context.fillStyle = highContrast ? "#173f3b" : arena.palette.ground;
-  context.lineWidth = 3;
-
-  if (arena.id === "the-pit") {
-    for (let index = 0; index < 31; index += 1) {
-      const x = 30 + index * 31;
-      const ridge = 34 + ((index * 47) % 72);
-      context.beginPath();
-      context.moveTo(x - 22, groundY);
-      context.lineTo(x - 14, groundY - ridge * 0.54);
-      context.lineTo(x - 3, groundY - ridge);
-      context.lineTo(x + 15, groundY - ridge * 0.66);
-      context.lineTo(x + 22, groundY);
-      context.closePath();
-      context.fill();
-    }
-    for (let ring = 0; ring < 4; ring += 1) {
-      context.beginPath();
-      context.ellipse(width / 2, groundY + 41, 470 - ring * 64, 75 - ring * 8, 0, Math.PI, Math.PI * 2);
-      context.stroke();
-    }
-  } else if (arena.id === "trophy-hall") {
-    for (let index = 0; index < 7; index += 1) {
-      const x = 72 + index * 136;
-      context.fillRect(x - 15, 80, 30, groundY - 80);
-      context.strokeRect(x - 25, 55, 50, 32);
-      context.beginPath();
-      context.arc(x, 70, 9 + index % 3, 0, Math.PI * 2);
-      context.stroke();
-      context.fillRect(x - 35, groundY - 35, 70, 35);
-    }
-    context.beginPath();
-    context.moveTo(0, 98);
-    context.lineTo(width, 98);
-    context.stroke();
-  } else if (arena.id === "canopy-causeway") {
-    context.beginPath();
-    context.arc(width * 0.72, 104, 54, 0, Math.PI * 2);
-    context.stroke();
-    for (let index = 0; index < 8; index += 1) {
-      const x = 30 + index * 142;
-      context.fillRect(x, 72, 34 + index % 2 * 13, groundY - 72);
-      context.beginPath();
-      context.moveTo(x + 14, 132 + index * 7 % 65);
-      context.quadraticCurveTo(x + 78, 86, x + 126, 122 + index * 11 % 80);
-      context.stroke();
-      context.beginPath();
-      context.moveTo(x + 48, 0);
-      context.bezierCurveTo(x + 33, 110, x + 84, 178, x + 54, groundY);
-      context.stroke();
-    }
-  } else if (arena.id === "frost-chamber") {
-    for (let index = 0; index < 14; index += 1) {
-      const x = 12 + index * 73;
-      const shard = 76 + (index * 29) % 128;
-      context.beginPath();
-      context.moveTo(x, groundY);
-      context.lineTo(x + 28, groundY - shard);
-      context.lineTo(x + 57, groundY);
-      context.closePath();
-      context.stroke();
-      if (index % 2 === 0) context.fill();
-    }
-    for (let index = 0; index < 36; index += 1) {
-      const x = (index * 97 + state.frame / 3) % width;
-      const y = (index * 53 + state.frame / 5) % Math.max(1, groundY - 35);
-      context.fillRect(x, y, 2, 2);
-    }
-  } else if (arena.id === "ash-courtyard") {
-    for (let index = 0; index < 6; index += 1) {
-      const x = 44 + index * 172;
-      context.fillRect(x, 130 - index % 2 * 35, 38, groundY - 130 + index % 2 * 35);
-      context.beginPath();
-      context.arc(x + 82, 168, 66, Math.PI, Math.PI * 2);
-      context.stroke();
-    }
-    for (let index = 0; index < 28; index += 1) {
-      const x = (index * 83 + state.frame * 0.4) % width;
-      const y = groundY - ((index * 37 + state.frame * 0.65) % 220);
-      context.fillRect(x, y, 3, 3);
-    }
-  } else if (arena.id === "glass-terrace") {
-    for (let index = 0; index < 10; index += 1) {
-      const x = -40 + index * 112;
-      const top = 54 + index % 3 * 38;
-      context.beginPath();
-      context.moveTo(x, groundY);
-      context.lineTo(x + 68, top);
-      context.lineTo(x + 118, groundY);
-      context.closePath();
-      context.stroke();
-      if (index % 2 === 0) context.fill();
-    }
-    context.beginPath();
-    context.moveTo(0, 190);
-    context.lineTo(width, 112);
-    context.moveTo(0, 252);
-    context.lineTo(width, 176);
-    context.stroke();
-  } else if (arena.id === "abyssal-bridge") {
-    context.globalAlpha = highContrast ? 0.88 : 0.74;
-    for (let band = 0; band < 7; band += 1) {
-      context.beginPath();
-      for (let x = 0; x <= width; x += 24) {
-        const y = 52 + band * 43 + Math.sin((x + state.frame * 0.55 + band * 31) / 54) * 11;
-        if (x === 0) context.moveTo(x, y);
-        else context.lineTo(x, y);
-      }
-      context.stroke();
-    }
-    for (let index = 0; index < 8; index += 1) {
-      const x = 64 + index * 128;
-      context.beginPath();
-      context.arc(x, groundY + 22, 78, Math.PI, Math.PI * 2);
-      context.stroke();
-    }
-    context.fillStyle = highContrast ? "#7ffff0" : arena.palette.accent;
-    for (let index = 0; index < 5; index += 1) {
-      const x = 110 + index * 190 + Math.sin((state.frame + index * 40) / 90) * 26;
-      const y = 92 + index % 3 * 58;
-      context.beginPath();
-      context.ellipse(x, y, 34 + index * 4, 9 + index, 0, 0, Math.PI * 2);
-      context.fill();
-      context.beginPath();
-      context.moveTo(x - 28, y);
-      context.lineTo(x - 55, y - 18);
-      context.lineTo(x - 55, y + 18);
-      context.closePath();
-      context.fill();
-    }
-  } else {
-    for (let index = 0; index < 6; index += 1) {
-      const x = 65 + index * 168;
-      context.fillRect(x, 108 + index % 2 * 30, 42, groundY - 108 - index % 2 * 30);
-      context.beginPath();
-      context.arc(x + 21, 118, 61, Math.PI, Math.PI * 2);
-      context.stroke();
-    }
-    context.beginPath();
-    context.moveTo(width * 0.34, groundY);
-    context.lineTo(width * 0.5, 92);
-    context.lineTo(width * 0.66, groundY);
-    context.stroke();
-  }
-  context.restore();
-
-  context.fillStyle = highContrast ? "#06100e" : arena.palette.ground;
-  context.fillRect(viewLeft, groundY, viewWidth, Math.max(0, viewTop + viewHeight - groundY));
-  context.strokeStyle = highContrast ? "#8fffe1" : arena.palette.accent;
-  context.lineWidth = 5;
-  context.beginPath();
-  const floorLeft = Math.floor(viewLeft / 24) * 24;
-  context.moveTo(floorLeft, groundY + 1);
-  for (let x = floorLeft; x <= viewLeft + viewWidth + 24; x += 24) {
-    context.lineTo(x, groundY + ((x * 13) % 7));
-  }
-  context.stroke();
-
-  for (let index = 0; index < 7; index += 1) {
-    const x = 105 + index * 126;
-    const pulse = 8 + ((state.frame + index * 19) % 14);
-    context.globalAlpha = 0.22;
-    context.fillStyle = highContrast ? "#8fffe1" : arena.palette.accent;
-    context.beginPath();
-    context.arc(x, groundY + 48, 17 + pulse / 3, 0, Math.PI * 2);
-    context.fill();
-    context.globalAlpha = 1;
-    context.fillRect(x - 2, groundY + 37 - pulse, 4, pulse);
-  }
 
   for (const effect of state.techniqueEffects) {
     drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes);
@@ -803,7 +624,7 @@ function drawArena(
 
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
-    const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent });
+    const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, simulationFrame: state.frame, combat: state });
     if (!bitmapDrawn) {
       context.save();
       context.translate(fighter.x, bodyTop);
@@ -930,6 +751,8 @@ function drawArena(
     context.globalAlpha = 1;
   }
   context.restore();
+  const foregroundReport = drawPitArenaForeground(context, state, camera, arenaArt, { highContrast, reducedMotion });
+  canvas.dataset.pitArenaPlanes = [...backdropReport.drawnPlanes, ...foregroundReport.drawnPlanes].join(",");
 }
 
 function TouchButton({
@@ -1081,6 +904,14 @@ export default function PitCanvas({
   const [activeMatchResultId, setActiveMatchResultId] = useState("");
   const [combat, setCombat] = useState<PitCombatState | null>(null);
   const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
+  const [arenaArt, setArenaArt] = useState<PitArenaArtBank | null>(null);
+  const renderedArenaId = combat?.arenaId ?? arenaId;
+  useEffect(() => {
+    const controller = new AbortController();
+    void loadPitArenaArt(renderedArenaId, { signal: controller.signal })
+      .then((bank) => { if (!controller.signal.aborted) setArenaArt(bank); });
+    return () => controller.abort();
+  }, [renderedArenaId]);
   const renderedLeftId = combat?.fighters[0].definitionId ?? leftId;
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
   useEffect(() => {
@@ -2391,8 +2222,10 @@ export default function PitCanvas({
       impact,
       equippedArcadeCosmetic?.palette ?? null,
       fighterArt,
+      arenaArt,
+      reducedCameraMotion,
     );
-  }, [combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, reducedGore, trainingSettings.showHitboxes]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, reducedGore, trainingSettings.showHitboxes]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -2815,8 +2648,8 @@ export default function PitCanvas({
             <p>{previewArena.setting}</p>
           </div>
           <ul aria-label="Plans de décor indépendants">
-            {previewArena.layers.map((layer) => (
-              <li key={layer.id}>{layer.depth === "far" ? "Lointain" : layer.depth === "mid" ? "Médian" : layer.depth === "near" ? "Proche" : "Avant-plan"}</li>
+            {PIT_ARENA_BITMAP_PLANES.map((plane) => (
+              <li key={plane}>{plane} · {plane === "P0" ? "Panorama" : plane === "P1" ? "Lointain" : plane === "P2" ? "Architecture" : plane === "P3" ? "Accessoires" : plane === "P4" ? "Sol" : "Avant-plan"}</li>
             ))}
           </ul>
         </article>
@@ -2833,7 +2666,7 @@ export default function PitCanvas({
               <ol start={wave.first}>
                 {PIT_ARENA_CATALOGUE.filter(({ wave: entryWave }) => entryWave === wave.id).map((entry) => <li key={entry.id}>
                   <span>{entry.name}</span>
-                  <em data-status={entry.runtimeStatus}>{entry.runtimeStatus === "playable" ? "Jouable · 4 plans runtime" : "Conception · cible P0–P5"}</em>
+                  <em data-status={entry.runtimeStatus}>{entry.runtimeStatus === "playable" ? "Jouable · 6 plans bitmap" : "Conception · cible P0–P5"}</em>
                 </li>)}
               </ol>
             </section>)}
@@ -3146,7 +2979,7 @@ export default function PitCanvas({
         ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          14 combattants avec une illustration bitmap ; poses fixes, animations complètes encore à produire.<br />
+          14 combattants avec une illustration bitmap ; premières animations V32 selon le personnage et l’action, bibliothèque complète en production.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
@@ -3331,13 +3164,13 @@ export default function PitCanvas({
 
       <div className={styles.bitmapArtStatus} aria-label="État des visuels de combat">
         {[left, right].map((fighter) => {
-          const status = getPitCombatBitmapArtStatus(fighterArt, fighter.definitionId);
+          const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: combat.frame, combat });
           return <span key={fighter.slot} data-pit-bitmap-slot={fighter.slot}
             data-pit-bitmap-id={fighter.definitionId} data-pit-bitmap-status={status}>
-            {PIT_FIGHTERS[fighter.definitionId].name} · {status === "static-bitmap" ? "image du chasseur · pose fixe provisoire" : status === "loading" ? "chargement de l’image" : "image indisponible · repère de combat"}
+            {PIT_FIGHTERS[fighter.definitionId].name} · {status === "sprite-sheet-animation" ? "animation dessinée · sprite sheet" : status === "sprite-sheet-hold" ? "pose dessinée tenue · action encore sans animation" : status === "static-bitmap" ? "image du chasseur · pose fixe pour cette action" : status === "loading" ? "chargement de l’image" : "image indisponible · repère de combat"}
           </span>;
         })}
-        <small>Animations complètes à produire. Le cercle annonce une attaque et l’arc montre son contact actif ; ces repères ne sont pas des poses animées.</small>
+        <small>Animation dessinée lorsqu’un clip validé couvre l’action ; pose fixe pour les gestes restants. Le cercle et l’arc restent des aides de lecture du combat.</small>
         {equippedArcadeCosmetic ? <small>La palette de l’Armure du Jugement colore le repère au sol ; les couleurs des PNG d’origine sont conservées.</small> : null}
       </div>
       <div className={styles.throwTechStatus} data-active={combat.pendingThrow !== null}>

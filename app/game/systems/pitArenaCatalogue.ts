@@ -22,7 +22,7 @@ export interface PitArenaCatalogueEntry {
   readonly runtimeStatus: "playable" | "concept";
   readonly runtimeArenaId: PitArenaId | null;
   readonly authoredTargetPlanes: 6;
-  readonly runtimeVisualPlanes: 0 | 4;
+  readonly runtimeVisualPlanes: 0 | 6;
   readonly layers: readonly PitArenaCatalogueLayer[];
   readonly sectors: 1 | 2 | 3;
   readonly interactiveProps: readonly string[];
@@ -209,7 +209,7 @@ export const PIT_ARENA_CATALOGUE: readonly PitArenaCatalogueEntry[] = CONCEPTS.m
       runtimeStatus: playable ? "playable" : "concept",
       runtimeArenaId: playable ? RUNTIME_ARENAS[index] : null,
       authoredTargetPlanes: 6,
-      runtimeVisualPlanes: playable ? 4 : 0,
+      runtimeVisualPlanes: playable ? 6 : 0,
       layers: PIT_ARENA_CATALOGUE_LAYERS,
       sectors: wave === "pure-duel" ? 1 : number % 5 === 0 ? 3 : 2,
       interactiveProps: wave === "pure-duel"
