@@ -5,11 +5,13 @@ import crypto from "node:crypto";
 import sharp from "sharp";
 import { build } from "esbuild";
 import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
+import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
 
 const root = process.cwd();
 const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
 const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
-const manifest = api.PIT_ARENA_PRODUCTION_MANIFEST;
+// Audit original archive references, not the smaller runtime attestations.
+const { source: manifest } = await checkPitArenaRuntimeData(root);
 assert.equal(manifest.schemaVersion, 1);
 assert.equal(manifest.production, "v33-pit-independent-arena-art");
 assert.equal(manifest.stages.length, 100);
@@ -101,6 +103,6 @@ for (const stage of manifest.stages) {
       }
     }
   }
-  if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(stage.legacyRuntimeArenaId), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
+  if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(stage.legacyRuntimeArenaId, manifest), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
 }
-console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(), verifiedImages: checks }, null, 2));
+console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(manifest), verifiedImages: checks }, null, 2));

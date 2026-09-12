@@ -2,30 +2,66 @@
   "version": "V33",
   "checkedOn": "2026-09-12",
   "scope": "Common game code and web delivery; no new Windows executable claimed",
-  "build": { "command": "npm run build", "exitCode": 0 },
-  "lint": { "command": "npm run lint", "exitCode": 0, "warnings": 0 },
-  "types": { "command": "npm run typecheck", "exitCode": 0 },
+  "build": {
+    "command": "node node_modules/next/dist/bin/next build --webpack",
+    "exitCode": 0,
+    "scope": "Final corrected source on the Windows working copy"
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "warnings": 0
+  },
+  "types": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
   "regression": {
     "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
-    "passed": 1133,
+    "passed": 1139,
     "failed": 0,
     "skipped": 0,
     "exitCode": 0
   },
-  "arenaSources": { "result": "PASS", "integratedImages": 36, "specifiedSubplans": 31, "runtimeKits": 2, "catalogueEntries": 100, "legacyPlayable": 8 },
-  "hunterInventory": { "result": "PASS", "indexedNewSourceSheets": 20, "recordsWithRuntimeClips": 3, "completeCharactersClaimed": 0 },
+  "arenaSources": {
+    "result": "PASS",
+    "integratedImages": 36,
+    "specifiedSubplans": 31,
+    "runtimeKits": 2,
+    "catalogueEntries": 100,
+    "legacyPlayable": 8
+  },
+  "hunterInventory": {
+    "result": "PASS",
+    "indexedNewSourceSheets": 20,
+    "recordsWithRuntimeClips": 3,
+    "completeCharactersClaimed": 0
+  },
   "browserProofs": [
     "docs/v33-the-pit-fullapp-qa.json",
     "docs/v33-trophy-hall-fullapp-qa.json",
     "docs/v33-berserker-fullapp-qa.json",
     "docs/v33-production-review-qa.json"
   ],
-  "publicMetadataReview": { "checkedJsonFiles": 29, "checkedStrings": 16434, "personalPathsFound": 0, "recognizableSecretsFound": 0, "rawConversationArchivesFound": 0 },
+  "publicMetadataReview": {
+    "checkedJsonFiles": 29,
+    "checkedStrings": 16434,
+    "personalPathsFound": 0,
+    "recognizableSecretsFound": 0,
+    "rawConversationArchivesFound": 0
+  },
   "limitations": [
     "The100-arena dedicated conversation is still unavailable;2 original proposed kits are integrated, not100 finished kits.",
     "Berserker has7 accepted pages and54 runtime drawings;10 complete animation families per hunter are not finished.",
     "Vehicles and propulsion are art-review assets, not rideable gameplay.",
     "Small isolated magenta fringe pixels remain in some hunter drawings and in the stabilizer review.",
     "Windows packaging remains V32 until separately built and verified."
-  ]
+  ],
+  "deploymentRegression": {
+    "initialFailure": "art-source excluded from Vercel but imported by runtime",
+    "fix": "Versioned allow-listed runtime projection under app/game, no deployed archive dependency",
+    "newTests": 6,
+    "sourceReferencesStillAudited": true,
+    "localTurbopackLimitation": "Existing Windows asset junctions outside the filesystem root; Next webpack and its full browser flow passed. Cloud Turbopack must be checked independently."
+  }
 }

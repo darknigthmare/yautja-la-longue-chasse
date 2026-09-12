@@ -1,8 +1,9 @@
 {
   "passed": true,
-  "checkedAt": "2026-09-12T19:18:34.729Z",
+  "checkedAt": "2026-09-12T19:43:25.611Z",
   "surface": "full-application-play-pit-training",
-  "url": "http://localhost:4173",
+  "verifiedContentVersion": "V33",
+  "url": "http://127.0.0.1:4173",
   "checks": [
     {
       "name": "live-match",
@@ -32,5 +33,6 @@
   ],
   "mobileNoOverflow": true,
   "errors": [],
-  "failedRequests": []
+  "failedRequests": [],
+  "buildCompiler": "Next.js16.3.5 webpack"
 }

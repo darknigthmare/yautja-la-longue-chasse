@@ -41,3 +41,9 @@ Commandes :
 Les preuves des décors sont dans `v33-the-pit-fullapp-qa.json` et `v33-trophy-hall-fullapp-qa.json`. Le manifeste Berserker distingue chaque source acceptée ou rejetée. Les recettes visuelles brutes et les conversations récupérées restent dans le répertoire privé et ignoré `work/`.
 
 Cette livraison concerne le moteur commun et sa publication web V33. Le paquet Windows existant conserve son numéro V32 tant qu’un nouveau paquet n’a pas été construit et testé séparément ; aucun exécutable V33 n’est annoncé ici.
+
+## Correction de déploiement et vérification finale
+
+Le premier déploiement a détecté un import direct du manifeste dans `art-source`, dossier exclu volontairement de Vercel. Le moteur importe désormais `app/game/pitArenaProductionData.generated.json`, produit par liste blanche et versionné. Cette projection conserve les réglages et états vérifiés, sans importer les prompts, reçus ni fichiers de preuve. L’audit local continue de vérifier les sources originales et refuse une projection périmée. Les commandes `npm run pit-arenas:v33:runtime-data` et `npm run pit-arenas:v33:runtime-check` permettent la génération et la vérification.
+
+Après correction : **1139 tests passent**, dont six nouvelles protections contre une dépendance aux archives, une fuite de champs privés ou une désynchronisation. ESLint et TypeScript passent. Le build Next.js avec webpack et les trois recettes de navigateur passent sur les sources corrigées. Turbopack local reste incompatible avec les anciennes jonctions Windows de certaines ressources ; son résultat cloud doit être constaté sur Vercel, et non déduit de ce build local. Les exclusions de déploiement et les jonctions existantes sont inchangées.

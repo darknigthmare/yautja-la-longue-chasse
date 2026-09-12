@@ -59,7 +59,9 @@
     "audio:watch": "node scripts/build-audio-manifest.mjs --watch",
     "audio:qa": "node scripts/build-audio-manifest.mjs && node --experimental-strip-types --test tests/sound-lifecycle.test.mjs tests/audio-files.test.mjs tests/audio-manifest.test.mjs",
     "prebuild:desktop": "npm run audio:manifest && node scripts/stamp-desktop-build.mjs --before",
-    "postbuild:desktop": "node scripts/stamp-desktop-build.mjs"
+    "postbuild:desktop": "node scripts/stamp-desktop-build.mjs",
+    "pit-arenas:v33:runtime-data": "node scripts/build-pit-arena-runtime-v33.mjs",
+    "pit-arenas:v33:runtime-check": "node scripts/build-pit-arena-runtime-v33.mjs --check"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

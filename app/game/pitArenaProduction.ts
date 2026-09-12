@@ -1,4 +1,4 @@
-import productionManifestJson from "../../art-source/v33/pit-arenas/production-manifest.json";
+import productionManifestJson from "./pitArenaProductionData.generated.json";
 import type { PitArenaId } from "./systems/pitCombat";
 
 export type PitArenaProductionStatus = "planned" | "generated" | "reviewed" | "integrated";
@@ -8,7 +8,9 @@ export interface PitArenaProductionFrame {
   readonly status: PitArenaProductionStatus;
   readonly generation: null | {
     readonly generator: "openai-imagegen";
-    readonly source: string;
+    /** Local production records carry a path; the deployable projection only carries its checked attestation. */
+    readonly source?: string;
+    readonly sourceRecorded?: boolean;
     readonly sha256: string;
     readonly width: number;
     readonly height: number;
@@ -16,12 +18,13 @@ export interface PitArenaProductionFrame {
     readonly contentBounds: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
   };
   readonly review: null | {
-    readonly evidence: string;
+    readonly evidence?: string;
+    readonly evidenceRecorded?: boolean;
     readonly coherence: true;
     readonly layout: true;
     readonly alpha: true;
   };
-  readonly integration: null | { readonly evidence: string };
+  readonly integration: null | { readonly evidence?: string; readonly evidenceRecorded?: boolean };
 }
 export interface PitArenaProductionPlacement {
   readonly x: number;
@@ -33,7 +36,8 @@ export interface PitArenaProductionAsset {
   readonly id: string;
   readonly role: string;
   readonly drawOrder?: number;
-  readonly contour: string;
+  /** Authoring-only contour brief; omitted from the runtime projection. */
+  readonly contour?: string;
   readonly alphaRequired: boolean;
   readonly requiredForRuntime: boolean;
   readonly mode: "cover" | "module" | "repeat-x" | "strip-x";
@@ -90,7 +94,7 @@ export function isPitArenaProductionFrameReviewed(frame: PitArenaProductionFrame
   const evidence = frame.generation;
   return (frame.status === "reviewed" || frame.status === "integrated")
     && evidence?.generator === "openai-imagegen"
-    && typeof evidence.source === "string" && evidence.source.length > 0
+    && (evidence.sourceRecorded === true || (typeof evidence.source === "string" && evidence.source.length > 0))
     && /^[a-f0-9]{64}$/.test(evidence.sha256)
     && Number.isInteger(evidence.width) && evidence.width > 0
     && Number.isInteger(evidence.height) && evidence.height > 0
@@ -102,8 +106,9 @@ export function isPitArenaProductionFrameReviewed(frame: PitArenaProductionFrame
     && evidence.contentBounds.y + evidence.contentBounds.height <= evidence.height
     && (!alphaRequired || evidence.hasAlpha === true)
     && frame.review?.coherence === true && frame.review.layout === true && frame.review.alpha === true
-    && typeof frame.review.evidence === "string" && frame.review.evidence.length > 0
-    && (frame.status !== "integrated" || Boolean(frame.integration?.evidence));
+    && (frame.review.evidenceRecorded === true || (typeof frame.review.evidence === "string" && frame.review.evidence.length > 0))
+    && (frame.status !== "integrated" || frame.integration?.evidenceRecorded === true
+      || (typeof frame.integration?.evidence === "string" && frame.integration.evidence.length > 0));
 }
 
 /** A partial animation holds its first reviewed drawing; missing frames are never requested. */

@@ -24,6 +24,7 @@ try {
     if (response.status() === 200 && framePaths.has(pathname)) loadedImages.add(pathname);
   });
   await page.goto(base, { waitUntil: 'networkidle', timeout: 120000 });
+  await page.waitForFunction(() => document.querySelector('[data-game-content-version="V33"]'));
   await page.getByRole('button', { name: 'Jouer', exact: true }).click();
   await page.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
   await page.getByRole('radio', { name: /Entraînement/ }).click();
@@ -53,7 +54,7 @@ try {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({ path: output + '/mobile.png', fullPage: true });
   assert.deepEqual(errors, []); assert.deepEqual(failedRequests, []);
-  const result = { passed: true, checkedAt: new Date().toISOString(), surface: 'full-application-play-pit-training', url: base, checks, loadedImageFiles: [...loadedImages].sort(), mobileNoOverflow: true, errors, failedRequests };
+  const result = { passed: true, checkedAt: new Date().toISOString(), surface: 'full-application-play-pit-training', verifiedContentVersion: 'V33', url: base, checks, loadedImageFiles: [...loadedImages].sort(), mobileNoOverflow: true, errors, failedRequests };
   await fs.writeFile(output + '/browser-qa.json', JSON.stringify(result, null, 2));
   console.log(JSON.stringify(result));
 } catch (error) {
