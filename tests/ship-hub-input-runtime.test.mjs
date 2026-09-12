@@ -146,7 +146,10 @@ test("deck pause follows saved keyboard bindings without repeat activation", () 
 test("holding Escape to open pause does not immediately close its settings dialog", () => {
   const listeners = new Map(); const closed = [];
   class Element {}
-  const environment = { settingsOpen: true, HTMLElement: Element,
+  const cleared = [];
+  const environment = { settingsOpen: true, archiveTransferBusy: false, archiveSelectionRef: { current: 0 },
+    setImportCandidate: value => cleared.push(["light", value]), setCompleteImportPlan: value => cleared.push(["complete", value]),
+    HTMLElement: Element,
     settingsDialogRef: { current: { querySelectorAll: () => [] } },
     document: { activeElement: null, addEventListener: (type, fn) => listeners.set(type, fn), removeEventListener: (type) => listeners.delete(type) },
     window: { requestAnimationFrame: () => 1, cancelAnimationFrame() {} },
@@ -157,6 +160,13 @@ test("holding Escape to open pause does not immediately close its settings dialo
   handler(keyEvent("Escape", "Escape", { repeat: true }));
   handler(keyEvent("Escape", "Escape", { defaultPrevented: true }));
   assert.deepEqual(closed, []);
+  environment.archiveTransferBusy = true;
+  handler(keyEvent("Escape", "Escape"));
+  assert.deepEqual(closed, []); assert.deepEqual(cleared, []);
+  assert.equal(environment.archiveSelectionRef.current, 0);
+  environment.archiveTransferBusy = false;
   handler(keyEvent("Escape", "Escape")); assert.deepEqual(closed, [false]);
+  assert.deepEqual(cleared, [["light", null], ["complete", null]]);
+  assert.equal(environment.archiveSelectionRef.current, 1);
   cleanup(); assert.equal(listeners.size, 0);
 });

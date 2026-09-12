@@ -35,6 +35,12 @@ const JUNGLE_ROOM_IDS = [
   "jungle-pilot-gallery",
   "jungle-pilot-archive",
   "jungle-pilot-descent",
+  "jungle-pilot-canopy-west",
+  "jungle-pilot-canopy-heart",
+  "jungle-pilot-ravine",
+  "jungle-pilot-river-caves",
+  "jungle-pilot-vey-camp",
+  "jungle-pilot-duel-extraction",
 ] as const;
 const ICE_ROOM_IDS = [
   "ice-region-approach",

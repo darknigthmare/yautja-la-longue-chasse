@@ -1,3 +1,5 @@
+import { archiveTransferPending } from "./archiveTransferGuard";
+
 /**
  * Versioned persistence envelope for an interrupted hunt.
  *
@@ -558,6 +560,7 @@ export function writeActiveHuntSave<
   if (!storage) {
     return { save, persisted: false, failure: "storage-unavailable" };
   }
+  if (archiveTransferPending(storage)) return { save, persisted: false, failure: "protected-save" };
   const key = keyFromOptions(options);
   try {
     const currentSerialized = storage.getItem(key);
@@ -605,6 +608,7 @@ export function writeActiveHuntSave<
 
   try {
     const serialized = JSON.stringify(save);
+    if (archiveTransferPending(storage)) return { save, persisted: false, failure: "protected-save" };
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) return { save, persisted: false, failure: "write-failed" };
     return { save, persisted: true, failure: null };
@@ -641,6 +645,7 @@ export function claimActiveHuntSave<
   if (!save) return { save: null, persisted: false, failure: "invalid-save" };
   const storage = storageFromOptions(options);
   if (!storage) return { save, persisted: false, failure: "storage-unavailable" };
+  if (archiveTransferPending(storage)) return { save, persisted: false, failure: "protected-save" };
   const key = keyFromOptions(options);
   try {
     const serialized = storage.getItem(key);
@@ -662,6 +667,7 @@ export function claimActiveHuntSave<
   }
   try {
     const serialized = JSON.stringify(save);
+    if (archiveTransferPending(storage)) return { save, persisted: false, failure: "protected-save" };
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) return { save, persisted: false, failure: "write-failed" };
     return { save, persisted: true, failure: null };
@@ -676,6 +682,7 @@ export function clearActiveHuntSave(
 ): ActiveHuntClearResult {
   const storage = storageFromOptions(options);
   if (!storage) return { cleared: false, failure: "storage-unavailable" };
+  if (archiveTransferPending(storage)) return { cleared: false, failure: "clear-failed" };
   const key = keyFromOptions(options);
   if (options.expectedRunId !== undefined || options.expectedSequence !== undefined) {
     try {
@@ -704,6 +711,7 @@ export function clearActiveHuntSave(
     }
   }
   try {
+    if (archiveTransferPending(storage)) return { cleared: false, failure: "clear-failed" };
     storage.removeItem(key);
     return { cleared: true, failure: null };
   } catch {
@@ -711,6 +719,7 @@ export function clearActiveHuntSave(
       // Some restricted stores reject removal while still allowing writes. An
       // empty tombstone is deliberately not a valid envelope and therefore can
       // never resurrect a compatible interrupted hunt.
+      if (archiveTransferPending(storage)) return { cleared: false, failure: "clear-failed" };
       storage.setItem(key, "");
       return { cleared: true, failure: null };
     } catch {

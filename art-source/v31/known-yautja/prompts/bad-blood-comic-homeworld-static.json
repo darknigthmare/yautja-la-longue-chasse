@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "assetId": "bad-blood-comic-homeworld-static",
+  "fighterId": "bad-blood-comic",
+  "name": "Bad Blood Predator",
+  "rosterIds": {
+    "catalogue": "Y-021",
+    "dlc": "C-008"
+  },
+  "useCase": "homeworld-named-hero-plate",
+  "status": "static-reviewed-candidate",
+  "scope": "One fixed full-body Homeworld identity plate; no animation clips.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI integrated ImageGen",
+    "performed": true,
+    "generationOutputId": "exec-3efd504d-d6c5-4485-9533-ac4465fc7fa3",
+    "sourcePath": "art-source/v31/known-yautja/sources/bad-blood-comic-chroma.png",
+    "sourceMetadata": {
+      "bytes": 2317585,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "sha256": "426066d19c5c56b12f2bed2fbed5fe05f39f6a05042e84dd7d80099438d05d79"
+    },
+    "runtimeCandidatePath": "public/game/sprites/v31/film-plates/bad-blood-comic.png",
+    "runtimeCandidateMetadata": {
+      "bytes": 1650790,
+      "width": 1054,
+      "height": 1568,
+      "hasAlpha": true,
+      "sha256": "ee92cbe5f535bcde6a81cd88db9da6f4c5dead4326435f4baf9fe4c3dd3b5b0f"
+    },
+    "staticVisualReview": true,
+    "reviewBasis": "Producing agent reported generation, chroma cleanup, alpha extraction, and static visual review.",
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "integration": {
+    "publicManifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "confirmed": true,
+    "runtimeUrl": "/game/sprites/v31/film-plates/bad-blood-comic.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/bad-blood-comic.png",
+    "runtimeSha256": "ee92cbe5f535bcde6a81cd88db9da6f4c5dead4326435f4baf9fe4c3dd3b5b0f",
+    "note": "Static Homeworld integration confirmed by the public V31 manifest; animation coverage remains zero.",
+    "manifestSnapshotRecordedIn": "art-source/v31/known-yautja/homeworld-named-nine-manifest.json"
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-licensed-product-reference",
+      "url": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-bad-blood-deluxe-7-scale-action-figure",
+      "access": "NECA page reviewed directly.",
+      "supports": [
+        "individual based on Dark Horse Predator: Bad Blood by Evan Dorkin and Derek Thompson",
+        "sword",
+        "spear",
+        "trophy heads",
+        "piercings",
+        "dense character-specific decoration"
+      ]
+    },
+    {
+      "class": "official-publisher-collection-context",
+      "url": "https://www.marvel.com/comics/collection/92869/predator_the_original_years_omnibus_vol_1_hardcover",
+      "access": "Direct fetch returned HTTP 403; retained from V26 as publisher/reprint context, with no visual claim adopted."
+    },
+    {
+      "class": "official-licensed-event-context",
+      "url": "https://necaonline.com/2018/02/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-more/",
+      "access": "Indexed official text reviewed; it confirms the Bad Blood versus Enforcer licensed pairing and a masked Bad Blood head option."
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Bad_Blood_Predator",
+      "access": "Direct fetch returned HTTP 402; no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "this ID denotes the comic individual, not the generic dishonored rank",
+        "barbaric bone-and-trophy silhouette",
+        "large sword gap",
+        "local enforcer-mask module is only a proxy"
+      ]
+    },
+    {
+      "class": "local-production-boundary",
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "supports": [
+        "Dark Horse design and licensed figure",
+        "accessories must be indexed individually",
+        "comic pages and turnaround remain required"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "licensed": [
+      "NECA explicitly identifies this individual and lists sword, spear, trophy heads, and piercings.",
+      "A licensed later head option is masked."
+    ],
+    "localLore": [
+      "The project maps a dark, trophy-heavy berserker silhouette and uses an Enforcer-like mask module only as a temporary proxy."
+    ],
+    "interpretation": [
+      "This plate chooses one large sword for silhouette clarity; it does not assert a simultaneous full licensed loadout.",
+      "Exact trophy heads, piercings, mask state, armor, and left/right asymmetry require comic panels or licensed turnarounds."
+    ],
+    "secondaryClaimsAdopted": [],
+    "genericBadBloodRank": false,
+    "identityFidelityCertified": false,
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "The individual Bad Blood Predator from the Dark Horse comic, as original unofficial fan-made Homeworld game art; never depict the generic Bad Blood rank or Enforcer.",
+    "anatomy": [
+      "adult male Yautja with feral, physically credible proportions",
+      "scarred and pierced features only where licensed/reference-proven",
+      "correct Yautja hands, feet, mandibles, dreadlocks, and limb count"
+    ],
+    "equipment": [
+      "one large licensed-style sword as the principal prop",
+      "comic-accurate trophies and piercings only from one reference state",
+      "mask or unmasked state must match the supplied source",
+      "omit spear and other weapons to avoid an unproven simultaneous loadout",
+      "do not borrow Enforcer armor or crest"
+    ],
+    "asymmetry": [
+      "preserve exact piercings, trophy positions, gauntlet sides, shoulder armor, straps, scars, blade grip, and mask damage",
+      "do not mirror or aggregate different figure/comic states"
+    ],
+    "composition": [
+      "one complete full-body figure",
+      "right-facing three-quarter lateral menacing stance",
+      "portrait framing with at least 10 percent padding",
+      "feet, dreadlocks, trophies, hands, and sword fully inside frame"
+    ],
+    "style": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "feral readable silhouette at gameplay size",
+      "original fan-made derivative design, not copied comic or packaging art"
+    ],
+    "background": [
+      "exact flat opaque #00FF00 chroma green",
+      "no floor, shadow, scenery, gradient, fog, particles, vignette, text, logo, UI, or watermark",
+      "no green spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "Enforcer substitution",
+      "generic dishonored-rank icon",
+      "unproven full arsenal",
+      "floating trophies",
+      "extra limbs",
+      "malformed grip",
+      "copied comic panel",
+      "1:1 or official claim"
+    ]
+  },
+  "rightsNote": "Original unofficial fan-made OpenAI artwork for this project; not rights-holder art and not certified 1:1."
+}

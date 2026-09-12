@@ -3,7 +3,16 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
+import { build } from "esbuild";
 import { sweptProjectileImpactTime, stepSmartDiscFlight, calculateLineOfSightOcclusion, resolveHunterSplashDamage } from "../app/game/systems/huntSystems.ts";
+
+const oserisBundle = await build({
+  stdin: { contents: 'export { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID } from "./app/game/systems/metroidvaniaPilot";', resolveDir: process.cwd(), loader: "ts" },
+  bundle: true, write: false, format: "cjs", platform: "node", logLevel: "silent",
+});
+const oserisModule = { exports: {} };
+runInNewContext(oserisBundle.outputFiles[0].text, { module: oserisModule, exports: oserisModule.exports });
+const { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID } = oserisModule.exports;
 
 const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -20,7 +29,7 @@ function fixture(overrides = {}) {
   const projectile = { x: 0, y: 50, velocityX: 6000, velocityY: 0, radius: 2, life: 1, damage: 25, hostile: false, coverGraceSeconds: 0, weaponId: "yautja-bow", recovery: "none", maxTargetHits: 1, ...overrides };
   const state = { projectiles: [projectile], world: { width: 1000, floorY: 100, covers: [] }, brokenPillarIds: new Set(), screenShakeEnabled: false, enemies: [], boss: enemy("boss", 900, { active: false }), player: { x: 500, y: 40, width: 40, height: 50 } };
   const hits = [], playerHits = [], recovered = [];
-  const dependencies = { sweptProjectileImpactTime, stepSmartDiscFlight, calculateLineOfSightOcclusion, resolveHunterSplashDamage, overlaps, VIEW_HEIGHT: 720,
+  const dependencies = { sweptProjectileImpactTime, stepSmartDiscFlight, calculateLineOfSightOcclusion, resolveHunterSplashDamage, overlaps, VIEW_HEIGHT: 720, OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID,
     distance: (a, b) => Math.hypot(a.x - b.x, a.y - b.y),
     damageEnemy: (_state, _mission, target, amount) => { hits.push([target.id, amount]); target.health -= amount; if (target.health <= 0) target.alive = false; },
     hurtPlayer: (_state, amount) => playerHits.push(amount),
@@ -29,7 +38,7 @@ function fixture(overrides = {}) {
     settleRecoverableProjectile: runtimeFunction("settleRecoverableProjectile", { clamp: (n, low, high) => Math.max(low, Math.min(high, n)) }),
   };
   const update = runtimeFunction("updateProjectiles", dependencies);
-  return { projectile, state, hits, playerHits, recovered, step: () => update(state, {}, 1 / 60) };
+  return { projectile, state, hits, playerHits, recovered, step: (mission = {}) => update(state, mission, 1 / 60) };
 }
 
 test("sweep catches a thin obstacle crossed between two frames", () => {
@@ -106,6 +115,17 @@ test("destroyed cover and inactive enemies never absorb the trajectory", () => {
   assert.deepEqual(f.hits, [["live", 25]]);
 });
 
+
+test("Oseris projectiles remain active throughout the authored vertical range", () => {
+  const canopy = fixture({ x: 100, y: -500, velocityX: 0, velocityY: 0 });
+  canopy.step({ id: PILOT_MISSION_ID });
+  assert.equal(canopy.state.projectiles.length, 1);
+  assert.equal(canopy.projectile.y, -500);
+
+  const ordinary = fixture({ x: 100, y: -500, velocityX: 0, velocityY: 0 });
+  ordinary.step({ id: "ice-cryostalker" });
+  assert.equal(ordinary.state.projectiles.length, 0, "other missions keep their original viewport bound");
+});
 
 test("solid gallery floor blocks an ascending hostile shot but one-way ledges remain permeable", () => {
   for (const collision of ["solid", "one-way"]) {

@@ -27,7 +27,7 @@ import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";
 import { isExpansionExplorationMission } from "./systems/expansionExplorationRegions";
 import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
-import { PILOT_MISSION_ID } from "./systems/metroidvaniaPilot";
+import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform } from "./systems/platformCollision";
 import { freshJumpAssistState, stepJumpAssist, predictLandingWithinBuffer, type JumpAssistState, type JumpAssistResult } from "./systems/jumpAssist";
 import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
@@ -645,6 +645,7 @@ interface GameState {
   paused: boolean;
   elapsed: number;
   cameraX: number;
+  cameraY: number;
   worldScreenId: string;
   visitedScreenIds: string[];
   exploration: ExplorationProgress;
@@ -1293,6 +1294,7 @@ function makeGameState(
     paused: false,
     elapsed: 0,
     cameraX: 0,
+    cameraY: 0,
     worldScreenId: getWorldScreenAtX(mission.id, world.spawn.x).id,
     visitedScreenIds: discoverWorldScreen(mission.id, [], world.spawn.x),
     exploration,
@@ -1953,6 +1955,12 @@ function deserializeActiveHuntCheckpoint(
   };
 }
 
+/** Reuse the live decoder when validating a full archive before replacement. */
+export function isRestorableHuntArchive(snapshot: JsonObject, retryCheckpoint: JsonObject | null): boolean {
+  return deserializeActiveHuntCheckpoint(snapshot) !== null &&
+    (retryCheckpoint === null || deserializeActiveHuntCheckpoint(retryCheckpoint) !== null);
+}
+
 function persistencePayloadFor(state: GameState): HuntPersistencePayload | null {
   if (state.phase === "dead" || state.phase === "finished") return null;
   const snapshot = serializeActiveHuntCheckpoint(
@@ -2000,6 +2008,12 @@ function restoreCheckpoint(
     player.climbing = false;
     player.climbZoneId = null;
   }
+  const minimumPlayerY = world.minY ?? 0;
+  if (player.y < minimumPlayerY) {
+    player.y = minimumPlayerY;
+    player.previousY = player.y;
+    player.velocityY = Math.max(0, player.velocityY);
+  }
   if (player.climbing && !world.climbables.some(zone => zone.id === player.climbZoneId)) {
     player.climbing = false;
     player.climbZoneId = null;
@@ -2046,6 +2060,11 @@ function restoreCheckpoint(
       player.x - VIEW_WIDTH * 0.38,
       0,
       state.world.width - VIEW_WIDTH,
+    ),
+    cameraY: targetOserisCameraY(
+      state.world.missionId,
+      player.y + player.height / 2,
+      VIEW_HEIGHT,
     ),
     worldScreenId: getWorldScreenAtX(
       state.world.missionId,
@@ -4261,6 +4280,7 @@ function renderGame(
   const shakeX =
     state.screenShake > 0 ? (Math.random() - 0.5) * state.screenShake : 0;
   const cameraX = state.cameraX + shakeX;
+  const cameraY = state.cameraY;
   const palette = mission.palette;
   const worldScreenLayout = worldScreensFor(mission.id);
 
@@ -4334,7 +4354,7 @@ function renderGame(
   }
 
   context.save();
-  context.translate(-cameraX, 0);
+  context.translate(-cameraX, -cameraY);
 
   if (mission.id === PILOT_MISSION_ID) drawPilotBackdrop(context, cameraX);
   if (mission.id === ICE_MISSION_ID) drawIceRegionBackdrop(context, cameraX, assets.iceRegionTextures);
@@ -4359,25 +4379,7 @@ function renderGame(
     "world-back",
     cameraX,
   );
-  context.save();
-  context.globalAlpha = 0.34;
-  context.strokeStyle = palette.accent;
-  context.fillStyle = palette.accent;
-  context.setLineDash([9, 13]);
-  context.lineWidth = 2;
-  context.font = "800 11px system-ui, sans-serif";
-  for (const [index, connection] of worldScreenLayout.connections.entries()) {
-    context.beginPath();
-    context.moveTo(connection.transitionX, 76);
-    context.lineTo(connection.transitionX, state.world.floorY);
-    context.stroke();
-    context.fillText(
-      `PASSAGE ${String(index + 2).padStart(2, "0")}`,
-      connection.transitionX + 10,
-      98,
-    );
-  }
-  context.restore();
+  // Authoring passage markers stay out of the commercial presentation.
 
   for (const surface of state.world.surfaces) {
     const assignment = environmentGameplayPropForGeometryId(
@@ -4436,8 +4438,11 @@ function renderGame(
       drawIceRegionPlatform(context, platform, assets.iceRegionTextures);
       continue;
     }
-    if (platform.id.startsWith("jungle-pilot-") || platform.id === "jungle-resonance-seal" || platform.id === "jungle-canopy-hatch") {
-      drawPilotPlatform(context, platform, assets.platformStone);
+    if (platform.id.startsWith("jungle-pilot-") || platform.id.startsWith("jungle-vertical-") || platform.id === "jungle-resonance-seal" || platform.id === "jungle-canopy-hatch") {
+      const pilotTexture = platform.material === "root" ? assets.platformRoot
+        : platform.material === "metal" ? assets.platformCrown
+          : assets.platformStone;
+      drawPilotPlatform(context, platform, pilotTexture);
       continue;
     }
     const assignment = environmentGameplayPropForGeometryId(
@@ -7079,7 +7084,14 @@ function updateAimState(
       0,
       state.world.width,
     );
-    player.aimPoint.y = clamp(input.pointerScreen.y, 18, VIEW_HEIGHT - 18);
+    const minimumAimY = state.world.missionId === PILOT_MISSION_ID
+      ? OSERIS_VERTICAL_BOUNDS.minY
+      : 18;
+    player.aimPoint.y = clamp(
+      input.pointerScreen.y + (state.cameraY ?? 0),
+      minimumAimY,
+      state.world.floorY - 18,
+    );
   } else if (nearest) {
     player.aimPoint.x = nearest.x + nearest.width / 2;
     player.aimPoint.y = nearest.y + nearest.height * 0.42;
@@ -7565,6 +7577,11 @@ function updatePlayer(
   player.y = motion.y;
   player.velocityX = motion.velocityX;
   player.velocityY = motion.velocityY;
+  const minimumPlayerY = state.world.minY ?? 0;
+  if (player.y < minimumPlayerY) {
+    player.y = minimumPlayerY;
+    player.velocityY = Math.max(0, player.velocityY);
+  }
   player.grounded = motion.grounded;
   if (player.grounded) player.aerialBoostUsed = false;
   if (!wasGrounded && player.grounded && impactVelocity > 180) {
@@ -8965,11 +8982,17 @@ function updateProjectiles(
 
     if (consumed) continue;
 
+    const minimumProjectileY = mission.id === PILOT_MISSION_ID
+      ? OSERIS_VERTICAL_BOUNDS.minY - 100
+      : -100;
+    const maximumProjectileY = mission.id === PILOT_MISSION_ID
+      ? OSERIS_VERTICAL_BOUNDS.maxY + 100
+      : VIEW_HEIGHT + 100;
     const withinWorld =
       projectile.x > -50 &&
       projectile.x < state.world.width + 50 &&
-      projectile.y > -100 &&
-      projectile.y < VIEW_HEIGHT + 100;
+      projectile.y > minimumProjectileY &&
+      projectile.y < maximumProjectileY;
     if (projectile.life <= 0 || !withinWorld) {
       if (projectile.recovery === "pickup") {
         settleRecoverableProjectile(state, projectile);
@@ -9214,6 +9237,13 @@ function stepGame(
   );
   state.cameraX +=
     (desiredCamera - state.cameraX) * Math.min(1, delta * 6);
+  const desiredCameraY = targetOserisCameraY(
+    mission.id,
+    state.player.y + state.player.height / 2,
+    VIEW_HEIGHT,
+  );
+  state.cameraY +=
+    (desiredCameraY - state.cameraY) * Math.min(1, delta * 5);
 }
 
 // ---------------------------------------------------------------------------

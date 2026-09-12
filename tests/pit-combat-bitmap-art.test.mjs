@@ -12,15 +12,17 @@ const built = await build({
 const {
   PIT_COMBAT_BITMAP_FIGHTER_IDS: ids, getPitCombatBitmapArtDefinition: definitionFor,
   loadPitCombatBitmapArt: load, getPitCombatBitmapArtStatus: status,
+  getPitCombatBitmapVisualBounds: visualBounds,
   drawPitCombatBitmapFighter: draw, createPitCombatState, PIT_FIGHTERS,
 } = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
 
-test("nine exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
-  assert.deepEqual(ids, ["jungle-hunter", "city-hunter", "scar", "celtic", "wolf", "feral-hunter", "berserker", "falconer", "kok-warlord"]);
+test("all fourteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
+  assert.equal(ids.length, 14);
+  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS)));
   for (const id of ids) {
     const definition = definitionFor(id);
     assert.equal(definition.kind, "static-bitmap");
-    assert.equal(definition.src, "/game/sprites/v5/film-plates/" + id + ".png");
+    assert.equal(definition.src, "/game/sprites/" + (["city-hunter", "scarface", "stone-heart", "valkyrie", "witch", "enforcer"].includes(id) ? "v31" : "v5") + "/film-plates/" + id + ".png");
     const local = fileURLToPath(new URL("../public" + definition.src, import.meta.url));
     const metadata = await sharp(local).metadata();
     assert.equal(metadata.width, definition.width, id);
@@ -38,7 +40,7 @@ test("nine exact-ID alpha plates exist with their expected dimensions and consta
     assert.ok(definition.bodyTopY >= 0 && definition.bodyTopY < definition.pivot[1]);
     assert.ok(Object.isFrozen(definition) && Object.isFrozen(definition.pivot));
   }
-  for (const id of ["scarface", "valkyrie", "witch", "enforcer", "stone-heart"]) assert.equal(definitionFor(id), null);
+  for (const id of ["unknown-hunter", "constructor", "toString", ""]) assert.equal(definitionFor(id), null);
 });
 
 function fakeBrowser(behavior = {}) {
@@ -92,14 +94,15 @@ function fakeBrowser(behavior = {}) {
   return { instances, requested, restore() { globalThis.Image = previousImage; globalThis.document = previousDocument; } };
 }
 
-test("the loader requests only the chosen unique IDs and exposes missing art honestly", async () => {
-  const browser = fakeBrowser();
+test("the loader requests only the chosen unique IDs and exposes a real image-load failure honestly", async () => {
+  const browser = fakeBrowser({ enforcer: { error: true } });
   try {
     assert.equal(status(null, "wolf"), "loading");
-    assert.equal(status(null, "enforcer"), "missing");
+    assert.equal(status(null, "enforcer"), "loading");
+    assert.equal(status(null, "unknown-hunter"), "missing");
     assert.equal(draw({}, null, createPitCombatState().fighters[0], 500), false);
     const bank = await load(["wolf", "wolf", "enforcer"]);
-    assert.deepEqual(browser.requested, [definitionFor("wolf").src]);
+    assert.deepEqual(browser.requested, [definitionFor("wolf").src, definitionFor("enforcer").src]);
     assert.deepEqual([...bank.readyIds], ["wolf"]);
     assert.deepEqual([...bank.failedIds], ["enforcer"]);
     assert.equal(status(bank, "wolf"), "static-bitmap");
@@ -226,4 +229,68 @@ test("the static adapter neither imports the rig nor approves draft sprite sheet
   const source = await readFile(new URL("../app/game/pitCombatBitmapArt.ts", import.meta.url), "utf8");
   assert.doesNotMatch(source, /from ["'][^"']*(?:save|hunterRig|hunterSpriteAtlas|hunterSpriteMotion|pitFighterAnimation)/);
   assert.doesNotMatch(source, /localStorage|sessionStorage|validated|v28/);
+});
+
+test("per-asset camera bounds cover exactly the same complete rectangle that Canvas draws", () => {
+  for (const id of ids) for (const facing of [-1, 1]) for (const crouching of [false, true]) {
+    const fighter = createPitCombatState(id, id === "wolf" ? "scar" : "wolf").fighters[0];
+    Object.assign(fighter, { x: 54, y: 80, facing, crouching });
+    const context = recordingContext(), bank = readyBank(id);
+    assert.equal(draw(context, bank, fighter, 430), true);
+    const translation = context.calls.find(call => call[0] === "translate").slice(1);
+    const scale = context.calls.find(call => call[0] === "scale").slice(1);
+    const rect = context.calls.find(call => call[0] === "drawImage").slice(2);
+    const a = translation[0] + rect[0] * scale[0];
+    const b = translation[0] + (rect[0] + rect[2]) * scale[0];
+    const bounds = visualBounds(fighter, 430);
+    assert.ok(Math.abs(bounds.x - Math.min(a, b)) < 1e-8, id);
+    assert.ok(Math.abs(bounds.width - Math.abs(b - a)) < 1e-8, id);
+    assert.ok(Math.abs(bounds.y - (translation[1] + rect[1] * scale[1])) < 1e-8, id);
+    assert.ok(Math.abs(bounds.height - rect[3] * scale[1]) < 1e-8, id);
+  }
+  assert.equal(visualBounds({ ...createPitCombatState().fighters[0], definitionId: "unknown-hunter" }, 430), null);
+});
+
+test("City Hunter V31 support, crown and foot midpoint come from the delivered alpha", async () => {
+  const art = definitionFor("city-hunter");
+  const { data, info } = await sharp(fileURLToPath(new URL("../public" + art.src, import.meta.url)))
+    .ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const scan = (x0, x1, y0, y1) => {
+    let left = info.width, right = -1, top = info.height, bottom = -1;
+    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+      if (data[(y * info.width + x) * 4 + 3] <= 16) continue;
+      left = Math.min(left, x); right = Math.max(right, x);
+      top = Math.min(top, y); bottom = Math.max(bottom, y);
+    }
+    return { left, right, top, bottom };
+  };
+  const all = scan(0, info.width, 0, info.height);
+  const crown = scan(350, 720, 0, 400);
+  const rearFoot = scan(0, 580, 1300, info.height);
+  const frontFoot = scan(580, info.width, 1300, info.height);
+  assert.equal(art.bodyTopY, crown.top);
+  assert.equal(art.pivot[1], all.bottom + 1);
+  assert.equal(art.pivot[0], Math.round((rearFoot.left + rearFoot.right + frontFoot.left + frontFoot.right) / 4));
+  assert.deepEqual([art.width, art.height, ...art.pivot, art.bodyTopY], [987, 1568, 560, 1484, 84]);
+});
+
+test("five added V31 plates use measured lower-foot midpoints and crown alpha rather than guessed sprite origins", async () => {
+  for (const id of ["scarface", "stone-heart", "valkyrie", "witch", "enforcer"]) {
+    const art = definitionFor(id);
+    const { data, info } = await sharp(fileURLToPath(new URL("../public" + art.src, import.meta.url)))
+      .ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    let top = info.height, bottom = -1;
+    const halves = [{ left: info.width, right: -1 }, { left: info.width, right: -1 }];
+    for (let y = 0; y < info.height; y++) for (let x = 0; x < info.width; x++) {
+      if (data[(y * info.width + x) * 4 + 3] <= 16) continue;
+      top = Math.min(top, y); bottom = Math.max(bottom, y);
+      if (y < 1203) continue;
+      const foot = halves[x < Math.floor(info.width / 2) ? 0 : 1];
+      foot.left = Math.min(foot.left, x); foot.right = Math.max(foot.right, x);
+    }
+    assert.equal(art.bodyTopY, top, id);
+    assert.equal(art.pivot[1], bottom + 1, id);
+    assert.equal(art.pivot[0], Math.round(halves.reduce((sum, foot) => sum + foot.left + foot.right, 0) / 4), id);
+    assert.equal(art.nativeFacing, "right", id);
+  }
 });

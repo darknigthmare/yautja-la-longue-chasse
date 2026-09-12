@@ -1,10 +1,18 @@
 # Rapprochement du chat d’audit avec le jeu — 8 septembre 2026
 
+> **État historique supersédé.** Cette matrice conserve fidèlement le constat du 8 septembre. Les livraisons [V29](chatgpt-v29-delivery.md), [V30](chatgpt-v30-delivery.md) et [V31](chatgpt-v31-delivery.md) remplacent ses affirmations devenues obsolètes, notamment sur l’export intégral, la déchoppe, le monde natal et la distribution PC. La V31 a reçu sa qualification locale ; le package Windows et la publication publique restent en cours et ne sont pas prouvés par ce lien.
+
 Source : [Audit complet du dernier état live](https://chatgpt.com/share/6a9f6d0f-4f4c-83eb-b254-067d9d8bbfaf), texte récupéré dans `tmp/chatgpt-audit-2026-09-08/share-4.conversation.md` (sections 1 à 29). Ce document compare les demandes de cette conversation avec le dépôt, sans transformer les notes et pourcentages subjectifs du chat en mesures de production.
 
 Le chat décrit le commit ancien `6338b489d919b274b56bbce8581c268284fd13b8`. La base de cette relecture est **V28, commit `d26cde7`**, augmentée du lot d’entraînement PIT du 8 septembre vérifié ci-dessous. Les nouveaux travaux du monde natal, des Bad Blood et d’audio en cours dans la même session doivent recevoir leur propre recette avant d’être comptés livrés. Cette matrice ne certifie ni toute l’histoire du dossier ChatGPT ni des pièces jointes non récupérées.
 
 **Livré** désigne un comportement présent avec une preuve ciblée ; **partiel** signifie qu’une partie du besoin existe ; **absent** signifie que le besoin précisé n’est pas implémenté dans la base relue. La présence d’une fonction ou d’un test ne certifie pas le confort, la durée ou les performances sur matériel physique.
+
+## Addendum factuel V31
+
+La qualification locale V31 a réussi : `qa:release` compte 1 103 tests réussis sur 1 103, la projection V19 contient 464 paires master/runtime, l’audit npm signale 0 vulnérabilité et la QA navigateur locale est PASS. Le package Windows V31 et la publication publique restent en cours tant que leurs résultats ne sont pas enregistrés.
+
+Le lot visuel relie quinze plaques Homeworld aux identifiants exacts de leurs presets. THE PIT possède quatorze plaques statiques sur quatorze combattants, avec une pose gauche dédiée à City Hunter. Le bilan reste de seize poses statiques, zéro animation et 264 entrées d’animation manquantes. Ces correspondances ne constituent ni une certification officielle ni une fidélité 1:1.
 
 ## Matrice des demandes
 

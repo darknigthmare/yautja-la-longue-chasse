@@ -7,6 +7,7 @@ import {
   serializePitCombat,
   stepPitCombat,
   stepPitCombatV2Compatibility,
+  stepPitCombatV4Compatibility,
   type PitArenaId,
   type PitAttackKind,
   type PitCombatMode,
@@ -110,7 +111,7 @@ export interface PitReplayMetadata {
 
 export interface PitReplay {
   version: typeof PIT_REPLAY_VERSION;
-  engineVersion: typeof PIT_STATE_VERSION;
+  engineVersion: 4 | typeof PIT_STATE_VERSION;
   tickRate: typeof PIT_TICK_RATE;
   arenaId: PitArenaId;
   encoding: typeof PIT_REPLAY_ENCODING;
@@ -223,7 +224,7 @@ function replayRejectionCode(value: unknown): PitReplayRejectionCode {
   }
   if (value.version === PIT_REPLAY_VERSION &&
     value.engineVersion !== undefined &&
-    value.engineVersion !== PIT_STATE_VERSION) {
+    value.engineVersion !== 4 && value.engineVersion !== PIT_STATE_VERSION) {
     return "incompatible-engine";
   }
   return "invalid-replay";
@@ -302,6 +303,7 @@ function checksumCombatState(state: PitCombatState): string {
 function checksumCombatStateForV2(state: PitCombatState): string {
   const canonical = JSON.parse(serializePitCombat(state)) as Record<string, unknown>;
   canonical.version = 2;
+  delete canonical.pendingThrow;
   delete canonical.techniqueEffects;
   delete canonical.nextTechniqueEffectId;
   if (Array.isArray(canonical.fighters)) {
@@ -312,7 +314,14 @@ function checksumCombatStateForV2(state: PitCombatState): string {
   return checksumSerializedCombat(JSON.stringify(canonical));
 }
 
-function metadataFor(state: PitCombatState, ticks: number): PitReplayMetadata {
+function checksumCombatStateForV4(state: PitCombatState): string {
+  const canonical = JSON.parse(serializePitCombat(state)) as Record<string, unknown>;
+  canonical.version = 4;
+  delete canonical.pendingThrow;
+  return checksumSerializedCombat(JSON.stringify(canonical));
+}
+
+function metadataFor(state: PitCombatState, ticks: number, engineVersion: 4 | typeof PIT_STATE_VERSION = PIT_STATE_VERSION): PitReplayMetadata {
   return {
     ticks,
     durationMs: Math.round((ticks * 1_000) / PIT_TICK_RATE),
@@ -320,7 +329,7 @@ function metadataFor(state: PitCombatState, ticks: number): PitReplayMetadata {
     finalPhase: state.phase,
     completed: state.phase === "match-over",
     finalFrame: state.frame,
-    checksum: checksumCombatState(state),
+    checksum: engineVersion === 4 ? checksumCombatStateForV4(state) : checksumCombatState(state),
   };
 }
 
@@ -358,7 +367,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
 function structuralReplay(value: unknown): PitReplay | null {
   if (!isRecord(value) || !hasOnlyKeys(value, REPLAY_KEYS) ||
     value.version !== PIT_REPLAY_VERSION ||
-    value.engineVersion !== PIT_STATE_VERSION ||
+    (value.engineVersion !== 4 && value.engineVersion !== PIT_STATE_VERSION) ||
     value.tickRate !== PIT_TICK_RATE ||
     !isArenaId(value.arenaId) ||
     value.encoding !== PIT_REPLAY_ENCODING ||
@@ -410,7 +419,7 @@ function structuralReplay(value: unknown): PitReplay | null {
 
   const replay: PitReplay = {
     version: PIT_REPLAY_VERSION,
-    engineVersion: PIT_STATE_VERSION,
+    engineVersion: value.engineVersion,
     tickRate: PIT_TICK_RATE,
     arenaId: value.arenaId,
     encoding: PIT_REPLAY_ENCODING,
@@ -439,7 +448,7 @@ type PitCombatStepper = (
 
 function simulateReplay(
   replay: PitReplay,
-  step: PitCombatStepper = stepPitCombat,
+  step: PitCombatStepper = replay.engineVersion === 4 ? stepPitCombatV4Compatibility : stepPitCombat,
 ): { state: PitCombatState; ticks: number } | null {
   let state = createPitCombatState(replay.fighters[0], replay.fighters[1], {
     ...replay.rules,
@@ -477,7 +486,7 @@ function migratePitReplayV2(value: unknown): PitReplay | null {
   const converted = structuralReplay({
     ...value,
     version: PIT_REPLAY_VERSION,
-    engineVersion: PIT_STATE_VERSION,
+    engineVersion: 4,
     encoding: PIT_REPLAY_ENCODING,
   });
   if (!converted) return null;
@@ -496,7 +505,7 @@ function migratePitReplayV2(value: unknown): PitReplay | null {
   if (!currentSimulation) return null;
   return {
     ...converted,
-    metadata: metadataFor(currentSimulation.state, currentSimulation.ticks),
+    metadata: metadataFor(currentSimulation.state, currentSimulation.ticks, converted.engineVersion),
   };
 }
 
@@ -505,7 +514,7 @@ function validateAndReplay(value: unknown): ValidatedReplay | null {
   if (!replay) return null;
   const simulated = simulateReplay(replay);
   if (!simulated) return null;
-  const actualMetadata = metadataFor(simulated.state, simulated.ticks);
+  const actualMetadata = metadataFor(simulated.state, simulated.ticks, replay.engineVersion);
   if (!equalMetadata(replay.metadata, actualMetadata)) return null;
   return { replay, finalState: simulated.state };
 }
@@ -655,6 +664,15 @@ export function createPitReplayReader(value: unknown): PitReplayReader {
   const replay = normalizePitReplay(value);
   if (!replay) throw replayError(replayRejectionCode(value));
   return new ReplayReader(replay);
+}
+
+/** Rendering playback must use the same rules as validation; V4 never gains V5 techs. */
+export function stepPitReplayCombat(
+  state: PitCombatState, inputs: readonly [PitInput, PitInput], engineVersion: PitReplay["engineVersion"],
+): PitCombatState {
+  if (engineVersion === 4) return stepPitCombatV4Compatibility(state, inputs);
+  if (engineVersion === PIT_STATE_VERSION) return stepPitCombat(state, inputs);
+  throw replayError("incompatible-engine");
 }
 
 export function playPitReplay(value: unknown): PitCombatState {

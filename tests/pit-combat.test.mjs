@@ -98,6 +98,8 @@ test("movement, jump, crouch boxes and an unblockable throw remain canvas-ready"
   const initialHealth = state.fighters[1].health;
   state = pit.stepPitCombat(state, [{ throw: true }, { guardHigh: true }]);
   state = advance(pit, state, 7, [{}, { guardHigh: true }]);
+  assert.equal(state.pendingThrow.framesRemaining, pit.PIT_THROW_TECH_WINDOW_FRAMES);
+  state = advance(pit, state, pit.PIT_THROW_TECH_WINDOW_FRAMES, [{}, { guardHigh: true }]);
   assert.ok(state.fighters[1].health < initialHealth);
   assert.equal(state.fighters[1].phase, "knockdown");
   assert.equal(state.events[0].type, "hit");

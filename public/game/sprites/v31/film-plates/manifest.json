@@ -1,0 +1,1050 @@
+{
+  "schemaVersion": 1,
+  "scope": "V31 static plates: City Hunter right/left, five PIT fighters, and nine named Homeworld hunters",
+  "createdAt": "2026-09-12T14:39:35.045Z",
+  "rightsNote": "Original fan-made OpenAI artwork; visual review is project QA only. No official affiliation, rights-holder approval, or 1:1 certification. Hashori is an explicitly original noncanonical visual interpretation from a text-only character.",
+  "processingNote": "Chroma masters are preserved under art-source; runtime PNGs are alpha cutouts. Homeworld registrations are measured from alpha bounds and are not combat-animation pivots.",
+  "coverage": {
+    "fighters": 15,
+    "staticPoses": 16,
+    "homeworldStaticPlates": 9,
+    "completeAnimationSets": 0,
+    "animationClips": 0,
+    "officialCertifications": 0,
+    "oneToOneCertifications": 0
+  },
+  "entries": [
+    {
+      "id": "city-hunter",
+      "fighterId": "city-hunter",
+      "runtimeUrl": "/game/sprites/v31/film-plates/city-hunter.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/city-hunter.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-a0ee7258-953b-471a-b52f-a845d6b41202.png",
+        "masterPath": "art-source/v31/known-yautja/sources/city-hunter-hand-repair-chroma.png",
+        "metadata": {
+          "bytes": 1900682,
+          "width": 995,
+          "height": 1580,
+          "hasAlpha": false,
+          "sha256": "5113a2e76c463d377a6b96ad340e2d1211e8c48bded6b1b8ea5782b22cf8bd81"
+        }
+      },
+      "metadata": {
+        "bytes": 1489126,
+        "width": 987,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "790960999113935af3f2f147cdf2cff5e93eb1fdeb805d9d165fb714e3dde668"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          84,
+          84,
+          902,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1091029,
+        "partial": 27940,
+        "opaque": 428647
+      },
+      "combatRegistration": {
+        "pivot": [
+          560,
+          1484
+        ],
+        "bodyTopY": 84,
+        "method": "Alpha >16. Support=maxY+1; crown=minY inside x350..719/y0..399. X is rounded mean of rear-foot x260..510 and front-foot x644..824 centers measured below y1300."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "city-hunter-left",
+      "fighterId": "city-hunter",
+      "runtimeUrl": "/game/sprites/v31/film-plates/city-hunter-left.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/city-hunter-left.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "left",
+      "usage": [
+        "selection-opponent"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-49e098da-686b-48d5-a506-f0cafd93ad08.png",
+        "masterPath": "art-source/v31/known-yautja/sources/city-hunter-left-chroma.png",
+        "metadata": {
+          "bytes": 1939049,
+          "width": 995,
+          "height": 1581,
+          "hasAlpha": false,
+          "sha256": "c0be6ca195d2d80a29420aa37141867ed8f1cb0452925f27e030bc7d17d916bf"
+        }
+      },
+      "metadata": {
+        "bytes": 1573094,
+        "width": 1098,
+        "height": 1493,
+        "hasAlpha": true,
+        "sha256": "9e519b332b93d83050f197261f6f270346709bee16d9743c905f90f94e0a5f1a"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          80,
+          80,
+          1017,
+          1412
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1162790,
+        "partial": 10683,
+        "opaque": 465841
+      },
+      "review": {
+        "visuallyInspected": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "scarface",
+      "fighterId": "scarface",
+      "runtimeUrl": "/game/sprites/v31/film-plates/scarface.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/scarface.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-fallback"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-1ba677fe-78d9-4fee-a44e-99c245e5be88.png",
+        "masterPath": "art-source/v31/known-yautja/sources/scarface-chroma.png",
+        "metadata": {
+          "bytes": 2274674,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "1f7b4b48bec36e36c1fcca3fbc22d890d4f2956dead30fd929844aa6d80bce5d"
+        }
+      },
+      "metadata": {
+        "bytes": 1786696,
+        "width": 1083,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "db1e0e6cfa7bda03921b64fe20358b696241057c59f50cc90585fa554bac85c5"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          84,
+          84,
+          998,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1121964,
+        "partial": 28582,
+        "opaque": 547598
+      },
+      "combatRegistration": {
+        "pivot": [
+          490,
+          1484
+        ],
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1203,
+          "splitX": 541,
+          "halves": [
+            {
+              "left": 90,
+              "right": 287
+            },
+            {
+              "left": 668,
+              "right": 915
+            }
+          ]
+        },
+        "method": "Alpha >16. Support=maxY+1; visually reviewed crown is the topmost silhouette. X is the rounded mean of the two foot-region centers below y1203, split at half image width."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "identityReviewed": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "stone-heart",
+      "fighterId": "stone-heart",
+      "runtimeUrl": "/game/sprites/v31/film-plates/stone-heart.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/stone-heart.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-fallback"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-23d90f1d-1802-4962-8003-565c1528e82b.png",
+        "masterPath": "art-source/v31/known-yautja/sources/stone-heart-chroma.png",
+        "metadata": {
+          "bytes": 2302091,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "f292da99c582d19442defd892e6bd60c9f5ede84875087dac26f540bd6378ead"
+        }
+      },
+      "metadata": {
+        "bytes": 1870714,
+        "width": 1038,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "3bc40905110d31d3a631a19e1ef81ec3fe478e588067b4550918e4ad5a9e6c4f"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          84,
+          84,
+          953,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1007036,
+        "partial": 34387,
+        "opaque": 586161
+      },
+      "combatRegistration": {
+        "pivot": [
+          478,
+          1484
+        ],
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1203,
+          "splitX": 519,
+          "halves": [
+            {
+              "left": 103,
+              "right": 318
+            },
+            {
+              "left": 598,
+              "right": 894
+            }
+          ]
+        },
+        "method": "Alpha >16. Support=maxY+1; visually reviewed crown is the topmost silhouette. X is the rounded mean of the two foot-region centers below y1203, split at half image width."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "identityReviewed": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "valkyrie",
+      "fighterId": "valkyrie",
+      "runtimeUrl": "/game/sprites/v31/film-plates/valkyrie.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/valkyrie.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-fallback"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-ee2d108c-fcd2-4fde-b1a9-9d0110f16d30.png",
+        "masterPath": "art-source/v31/known-yautja/sources/valkyrie-chroma.png",
+        "metadata": {
+          "bytes": 2120137,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "7bc43aca94fe60b30d14b13c7de54eded3811d4473cc7c8e3d2604bacde3c2e2"
+        }
+      },
+      "metadata": {
+        "bytes": 1369723,
+        "width": 1047,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "1188e38aea42f070a58b38f57161ab1e52a3df3d9cc73d48d9324bca1a530e93"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          84,
+          84,
+          962,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1212804,
+        "partial": 29119,
+        "opaque": 399773
+      },
+      "combatRegistration": {
+        "pivot": [
+          567,
+          1484
+        ],
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1203,
+          "splitX": 523,
+          "halves": [
+            {
+              "left": 182,
+              "right": 364
+            },
+            {
+              "left": 760,
+              "right": 962
+            }
+          ]
+        },
+        "method": "Alpha >16. Support=maxY+1; visually reviewed crown is the topmost silhouette. X is the rounded mean of the two foot-region centers below y1203, split at half image width."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "identityReviewed": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "witch",
+      "fighterId": "witch",
+      "runtimeUrl": "/game/sprites/v31/film-plates/witch.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/witch.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-fallback"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-56605dc0-4810-4cbe-b1c7-391ea478ff08.png",
+        "masterPath": "art-source/v31/known-yautja/sources/witch-chroma.png",
+        "metadata": {
+          "bytes": 2186029,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "3f7825368a1e04ec394da8e8f23c6f93f4adb94c562ca4d50f4563a16146970c"
+        }
+      },
+      "metadata": {
+        "bytes": 1501701,
+        "width": 1014,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "a7ec3f48cee5f21243ab5e864c48a1d5ea6488fc4ca7180abbb2a0986efdf232"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          84,
+          84,
+          929,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1118896,
+        "partial": 46452,
+        "opaque": 424604
+      },
+      "combatRegistration": {
+        "pivot": [
+          399,
+          1484
+        ],
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1203,
+          "splitX": 507,
+          "halves": [
+            {
+              "left": 84,
+              "right": 249
+            },
+            {
+              "left": 516,
+              "right": 747
+            }
+          ]
+        },
+        "method": "Alpha >16. Support=maxY+1; visually reviewed crown is the topmost silhouette. X is the rounded mean of the two foot-region centers below y1203, split at half image width."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "identityReviewed": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "enforcer",
+      "fighterId": "enforcer",
+      "runtimeUrl": "/game/sprites/v31/film-plates/enforcer.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/enforcer.png",
+      "kind": "static-bitmap",
+      "nativeFacing": "right",
+      "usage": [
+        "combat-fixed-pose",
+        "selection-fallback"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "sessionOutputFile": "exec-edba7c25-9243-45d6-96a7-3c2e68ea22f7.png",
+        "masterPath": "art-source/v31/known-yautja/sources/enforcer-chroma.png",
+        "metadata": {
+          "bytes": 2117343,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "e9ae6ae7b23594393ee9fdb7545365f1c10a211c58a75ced2f77182b393af895"
+        }
+      },
+      "metadata": {
+        "bytes": 1519157,
+        "width": 1095,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "3e5296ee60a90bcadb314b2ae900f2444f57479792456617ed3d04bc25801069"
+      },
+      "alphaValidation": {
+        "threshold": 16,
+        "boundsInclusive": [
+          85,
+          84,
+          1010,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1244897,
+        "partial": 30698,
+        "opaque": 441365
+      },
+      "combatRegistration": {
+        "pivot": [
+          513,
+          1484
+        ],
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1203,
+          "splitX": 547,
+          "halves": [
+            {
+              "left": 193,
+              "right": 386
+            },
+            {
+              "left": 613,
+              "right": 859
+            }
+          ]
+        },
+        "method": "Alpha >16. Support=maxY+1; visually reviewed crown is the topmost silhouette. X is the rounded mean of the two foot-region centers below y1203, split at half image width."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "identityReviewed": true,
+        "officialCertification": false,
+        "animationFramesApproved": 0,
+        "oneToOneCertified": false
+      }
+    },
+    {
+      "id": "alpha",
+      "fighterId": "alpha",
+      "runtimeUrl": "/game/sprites/v31/film-plates/alpha.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/alpha.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-a3464b6a-ff13-4601-9014-b56a283e45d4",
+        "sessionOutputFile": "exec-a3464b6a-ff13-4601-9014-b56a283e45d4.png",
+        "masterPath": "art-source/v31/known-yautja/sources/alpha-chroma.png",
+        "metadata": {
+          "bytes": 2046365,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "f0d88a0f488a998d42b517996bd835061fcc9bd21706d9c1096da935c29ae316"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/alpha-homeworld-static.json",
+        "promptSha256": "d5914826cfbac81f7a2a8ff721a70f392aa5dfd301d581dbb1483a84e508caeb"
+      },
+      "metadata": {
+        "bytes": 1489776,
+        "width": 863,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "88c9b66f897ba035931ed2f1aefd033040a0ba4aa5030233fbcc81e869b23fb1"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          778,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 899937,
+        "partial": 33488,
+        "opaque": 419759
+      },
+      "displayRegistration": {
+        "pivot": [
+          431,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "samurai",
+      "fighterId": "samurai",
+      "runtimeUrl": "/game/sprites/v31/film-plates/samurai.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/samurai.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-06754b83-db0e-4963-a6b0-d7732bd55d55",
+        "sessionOutputFile": "exec-06754b83-db0e-4963-a6b0-d7732bd55d55.png",
+        "masterPath": "art-source/v31/known-yautja/sources/samurai-chroma.png",
+        "metadata": {
+          "bytes": 2197716,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "759f6d309a37ca80b5bd3c83a1e0e6a62752470cb5f780e4beeb07c513c47f24"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/samurai-homeworld-static.json",
+        "promptSha256": "4fca098fb53eff7952b1ee4db77162f97b461f816ad69f10c671dc054c0f8500"
+      },
+      "metadata": {
+        "bytes": 1472385,
+        "width": 967,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "ee2777788db5390553e8a5f08eb1323516f32edc30b48f8eb7423586d839c743"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          882,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1051141,
+        "partial": 29847,
+        "opaque": 435268
+      },
+      "displayRegistration": {
+        "pivot": [
+          483,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "cleopatra",
+      "fighterId": "cleopatra",
+      "runtimeUrl": "/game/sprites/v31/film-plates/cleopatra.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/cleopatra.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-2e9908db-e43d-45f4-8fc1-02261aec175c",
+        "sessionOutputFile": "exec-2e9908db-e43d-45f4-8fc1-02261aec175c.png",
+        "masterPath": "art-source/v31/known-yautja/sources/cleopatra-chroma.png",
+        "metadata": {
+          "bytes": 2026878,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "86b1fd4f0be392558448ae15d4549b116cc31d4274e22ec74651448b7405f84a"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/cleopatra-homeworld-static.json",
+        "promptSha256": "5ee0b334fe2849a5d30ea4da3a4ff32b1d83f6d14735dcc9758781dcad48ada5"
+      },
+      "metadata": {
+        "bytes": 1333186,
+        "width": 691,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "51d86d19dcfd9c4333ec1990f178de95c553ed4ad030fb7cef8329b311b12f0a"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          606,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 676462,
+        "partial": 27290,
+        "opaque": 379736
+      },
+      "displayRegistration": {
+        "pivot": [
+          345,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "bionic",
+      "fighterId": "bionic",
+      "runtimeUrl": "/game/sprites/v31/film-plates/bionic.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/bionic.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-484105b7-4d9e-4728-b59e-a19d6edd583f",
+        "sessionOutputFile": "exec-484105b7-4d9e-4728-b59e-a19d6edd583f.png",
+        "masterPath": "art-source/v31/known-yautja/sources/bionic-chroma.png",
+        "metadata": {
+          "bytes": 2289742,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "c3e26463f25cd58d0de9664a1e203eeeb7f3d54c202936e45909f0f03e65aece"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/bionic-homeworld-static.json",
+        "promptSha256": "980b9c49be0d5d9b3323cc1766e10784e861afc38929a9673896e554b31bee36"
+      },
+      "metadata": {
+        "bytes": 1651319,
+        "width": 874,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "0ecf025c1504953e6303d46c8de9df243dc60632bd1526597ef3d2f8668b3f9e"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          789,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 847968,
+        "partial": 29193,
+        "opaque": 493271
+      },
+      "displayRegistration": {
+        "pivot": [
+          437,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "broken-tusk",
+      "fighterId": "broken-tusk",
+      "runtimeUrl": "/game/sprites/v31/film-plates/broken-tusk.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/broken-tusk.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-e95c63dd-5a1f-49e6-a293-807dff03e2f4",
+        "sessionOutputFile": "exec-e95c63dd-5a1f-49e6-a293-807dff03e2f4.png",
+        "masterPath": "art-source/v31/known-yautja/sources/broken-tusk-chroma.png",
+        "metadata": {
+          "bytes": 2151431,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "3987456d8c5767704d972b798bddb3b6aba47d114cbfb97627714504f70d4fa5"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/broken-tusk-homeworld-static.json",
+        "promptSha256": "f7b02703f9a3c941c8f830b307e267d3ad810fac70d177a0fa0bb96e8ec13da8"
+      },
+      "metadata": {
+        "bytes": 1482644,
+        "width": 738,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "2cf3177ff903317a450400b750a6f1ae3a5ccc473fa3bc20ab983cb35f99b861"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          653,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 694476,
+        "partial": 29316,
+        "opaque": 433392
+      },
+      "displayRegistration": {
+        "pivot": [
+          369,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "ahab",
+      "fighterId": "ahab",
+      "runtimeUrl": "/game/sprites/v31/film-plates/ahab.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/ahab.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-b3ffb36c-5973-446e-9a90-ccbffbc183fc",
+        "sessionOutputFile": "exec-b3ffb36c-5973-446e-9a90-ccbffbc183fc.png",
+        "masterPath": "art-source/v31/known-yautja/sources/ahab-chroma.png",
+        "metadata": {
+          "bytes": 1816195,
+          "width": 1374,
+          "height": 1145,
+          "hasAlpha": false,
+          "sha256": "084b8516c2e9fd810e7f44a7964449ad528447660f7067aea4439e618c5536ca"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/ahab-homeworld-static.json",
+        "promptSha256": "5592422847030c06a604edfb27674fdedb5eb0ef7cf28fc427b1086160d27366"
+      },
+      "metadata": {
+        "bytes": 1338075,
+        "width": 869,
+        "height": 1270,
+        "hasAlpha": true,
+        "sha256": "c55e25057d734e877e71aec719a535b1bbfe15316f518141c6af45e30036ef0d"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          68,
+          68,
+          800,
+          1201
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 686823,
+        "partial": 14044,
+        "opaque": 402763
+      },
+      "displayRegistration": {
+        "pivot": [
+          434,
+          1202
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "big-mama",
+      "fighterId": "big-mama",
+      "runtimeUrl": "/game/sprites/v31/film-plates/big-mama.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/big-mama.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-d97a94db-bcab-42b4-ae7a-d7df98475746",
+        "sessionOutputFile": "exec-d97a94db-bcab-42b4-ae7a-d7df98475746.png",
+        "masterPath": "art-source/v31/known-yautja/sources/big-mama-chroma.png",
+        "metadata": {
+          "bytes": 2212404,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "5d82176dfbca2cf63e0f9c681a66920209e79b02d3add8e5672c523201129921"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/big-mama-homeworld-static.json",
+        "promptSha256": "9dcafcd8da3ff008413b9d1bfd31d2f214bc790463b6587a0e639d45f0085f8a"
+      },
+      "metadata": {
+        "bytes": 1555574,
+        "width": 799,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "0a501470c74d1db777e30058ceb7f183a571a05efe55ba80181cd640a15f6d09"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          714,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 764182,
+        "partial": 41944,
+        "opaque": 446706
+      },
+      "displayRegistration": {
+        "pivot": [
+          399,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "bad-blood-comic",
+      "fighterId": "bad-blood-comic",
+      "runtimeUrl": "/game/sprites/v31/film-plates/bad-blood-comic.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/bad-blood-comic.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-3efd504d-d6c5-4485-9533-ac4465fc7fa3",
+        "sessionOutputFile": "exec-3efd504d-d6c5-4485-9533-ac4465fc7fa3.png",
+        "masterPath": "art-source/v31/known-yautja/sources/bad-blood-comic-chroma.png",
+        "metadata": {
+          "bytes": 2317585,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "426066d19c5c56b12f2bed2fbed5fe05f39f6a05042e84dd7d80099438d05d79"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/bad-blood-comic-homeworld-static.json",
+        "promptSha256": "33b66fe7c415a654a1b50d863d4064ef75994023e7cb0acfd4f5f4f0e91776bc"
+      },
+      "metadata": {
+        "bytes": 1650790,
+        "width": 1054,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "ee92cbe5f535bcde6a81cd88db9da6f4c5dead4326435f4baf9fe4c3dd3b5b0f"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          969,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1128961,
+        "partial": 49938,
+        "opaque": 473773
+      },
+      "displayRegistration": {
+        "pivot": [
+          527,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified"
+      }
+    },
+    {
+      "id": "hashori",
+      "fighterId": "hashori",
+      "runtimeUrl": "/game/sprites/v31/film-plates/hashori.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/hashori.png",
+      "kind": "static-bitmap",
+      "staticStatus": "static-reviewed-candidate",
+      "nativeFacing": "right",
+      "usage": [
+        "homeworld-player"
+      ],
+      "source": {
+        "generator": "OpenAI imagegen (built-in)",
+        "generationOutputId": "exec-da06fd87-2178-4482-a57d-7c18cfe7ed1f",
+        "sessionOutputFile": "exec-da06fd87-2178-4482-a57d-7c18cfe7ed1f.png",
+        "masterPath": "art-source/v31/known-yautja/sources/hashori-chroma.png",
+        "metadata": {
+          "bytes": 2110139,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "51d3454cfe54641228a1990515624d379d87db8861301e2cace6ba719c5b0d5f"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/hashori-homeworld-static.json",
+        "promptSha256": "b3a3e2ed537569236583ffee4c5b5d64fd1134a128d5c4e9845dbdcb7e3c2755"
+      },
+      "metadata": {
+        "bytes": 1399303,
+        "width": 726,
+        "height": 1568,
+        "hasAlpha": true,
+        "sha256": "fd9718b7fd1b9341893a0c6cfe1d663a726b49135c68fb5c38106b25dd03ede5"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          641,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 695461,
+        "partial": 30917,
+        "opaque": 411990
+      },
+      "displayRegistration": {
+        "pivot": [
+          363,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "review": {
+        "visuallyInspected": true,
+        "reviewBasis": "Producing agent static review",
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "animationFramesApproved": 0,
+        "visualCanonStatus": "original-noncanonical-text-interpretation",
+        "note": "Hashori has no reviewed canonical visual; every visible design choice is an original noncanonical project interpretation."
+      }
+    }
+  ],
+  "updatedAt": "2026-09-12T15:27:24.223Z"
+}

@@ -67,10 +67,8 @@ test("PIT loader is safe during SSR and partial profiles never render missing li
   assert.equal(drawPitModularFighter(context, partial, { definitionId: "jungle-hunter" }, 0, 500), false);
 });
 
-test("PIT atelier does not silently replace the published combat art or alter replay version", async () => {
+test("PIT atelier does not silently replace the published combat art", async () => {
   const canvas = await readFile(new URL("../app/game/PitCanvas.tsx", import.meta.url), "utf8");
   assert.match(canvas, /href="\/pit-lab"/);
   assert.doesNotMatch(canvas, /drawPitModularFighter/);
-  const combat = await readFile(new URL("../app/game/systems/pitCombat.ts", import.meta.url), "utf8");
-  assert.match(combat, /PIT_STATE_VERSION = 4/);
 });

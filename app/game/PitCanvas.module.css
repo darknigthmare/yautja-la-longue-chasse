@@ -207,7 +207,7 @@
 .touchRows { position: absolute; z-index: 10; right: 12px; bottom: 70px; left: 12px; display: flex; justify-content: space-between; gap: 10px; pointer-events: none; }.touchGroup { display: flex; flex-wrap: wrap; gap: 5px; max-width: 310px; pointer-events: auto; }.touchButton { min-width: 42px; min-height: 42px; padding: 5px 8px; border-color: rgba(114,216,194,.35); border-radius: 4px; background: rgba(3,9,8,.72); color: #dffcf4; font-size: .64rem; font-weight: 900; touch-action: none; user-select: none; }.touchButton:active { color: #08100e; background: #72d8c2; }.touchButtonWide { min-width: 58px; }.touchGroupPlayerTwo { position: absolute; right: 0; bottom: 52px; justify-content: flex-end; opacity: .86; }
 
 @media (max-width: 760px) {
-  .selectionHeader { align-items: flex-start; }.selectionHeader h2 { font-size: 3rem; }.versusGrid { grid-template-columns: 1fr 52px 1fr; gap: 6px; }.fighterCard { min-height: 228px; padding: 12px; }.fighterCard h3 { margin-top: 8px; font-size: 1rem; overflow-wrap: anywhere; }.fighterMedia { height: clamp(170px, 30vh, 240px); }.fighterCard p { font-size: .65rem; }.fighterCard dl { gap: 8px; flex-wrap: wrap; }.fighterCard dd { font-size: .7rem; }.maskGlyph { transform: translateX(-50%) scale(.76); transform-origin: top center; }.modeGrid { grid-template-columns: 1fr; }.hud { grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }.fighterHud > div:first-child span { display: none; }.fighterHud > div:first-child strong { font-size: .55rem; }.timer strong { font-size: 1.4rem; }.helpPanel { grid-template-columns: 1fr; max-height: 112px; overflow: auto; }.touchRows { bottom: 125px; }.canvas { min-height: 250px; }
+  .selectionHeader { align-items: flex-start; }.selectionHeader h2 { font-size: 3rem; }.versusGrid { grid-template-columns: 1fr 52px 1fr; gap: 6px; }.fighterCard { min-height: 228px; padding: 12px; }.fighterCard h3 { margin-top: 8px; font-size: 1rem; overflow-wrap: anywhere; }.fighterMedia { height: clamp(170px, 30vh, 240px); }.fighterCard p { font-size: .65rem; }.fighterCard dl { gap: 8px; flex-wrap: wrap; }.fighterCard dd { font-size: .7rem; }.fighterMedia .maskGlyph { transform: translate(-50%, -50%) scale(.76); transform-origin: center; }.modeGrid { grid-template-columns: 1fr; }.hud { grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }.fighterHud > div:first-child span { display: none; }.fighterHud > div:first-child strong { font-size: .55rem; }.timer strong { font-size: 1.4rem; }.helpPanel { grid-template-columns: 1fr; max-height: 112px; overflow: auto; }.touchRows { bottom: 125px; }.canvas { min-height: 250px; }
 }
 
 @media (max-width: 760px) {
@@ -259,3 +259,92 @@
 .bitmapArtStatus > span { border: 1px solid #477566; border-radius: 3px; padding: 3px 7px; color: #c2e3d9; background: #0d1915; }
 .bitmapArtStatus > span[data-pit-bitmap-status="missing"] { border-color: #a77f51; color: #e5bf91; }
 .bitmapArtStatus > small { flex: 0 0 100%; font-size: .65rem; }
+
+.throwTechStatus { padding: 7px 12px; min-height: 36px; font-size: 12px; line-height: 1.5; color: #c6cec7; background: #111a18; border: 1px solid #314c42; }
+.throwTechStatus[data-active="true"] { color: #fff0b7; background: #332914; border-color: #d9bb60; }
+.throwTechStatus strong { margin-right: 10px; }
+
+/* Touch controls own a row between the arena and laboratory; never cover lesson text. */
+.matchRoot:has(.touchRows) { overflow-y: auto; }
+.matchRoot:has(.touchRows) .arenaShell { flex: 1 0 250px; }
+.touchRows { position: relative; inset: auto; flex: 0 0 auto; flex-wrap: wrap; justify-content: center; padding: 8px; background: #07100e; border-top: 1px solid #314c42; }
+.touchGroupPlayerTwo { position: relative; inset: auto; flex-basis: 100%; max-width: none; justify-content: center; }
+
+
+/* The 100-stage conversation contract is visible without implying that concepts are playable. */
+.arenaCatalogue {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto 16px;
+  color: #d9e6df;
+  background: linear-gradient(145deg, #111a18f2, #090e0df5);
+  border: 1px solid #435b52;
+}
+
+.arenaCatalogue > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 16px;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.arenaCatalogue > summary > span:first-child { display: inline-flex; flex-direction: column; gap: 3px; }
+.arenaCatalogue > summary strong { color: #f0fff8; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; }
+.arenaCatalogue > summary small { color: #829991; font-size: .62rem; }
+.arenaCatalogue > summary > span:last-child { color: #d0ae68; font: .66rem ui-monospace, monospace; white-space: nowrap; }
+.arenaCatalogue[open] > summary { border-bottom: 1px solid #34463f; }
+
+.catalogueTruth,
+.catalogueRights {
+  margin: 0;
+  padding: 12px 16px;
+  color: #aebdb7;
+  font-size: .68rem;
+  line-height: 1.55;
+}
+
+.catalogueTruth { background: #13201d; border-bottom: 1px solid #2c4038; }
+.catalogueRights { color: #bea979; border-top: 1px solid #2c4038; }
+
+.catalogueWaves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-height: 430px;
+  padding: 14px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.catalogueWaves section {
+  min-width: 0;
+  padding: 10px;
+  background: #0d1513;
+  border: 1px solid #2d4039;
+}
+
+.catalogueWaves h3 {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: #e8f5ef;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.catalogueWaves h3 small { color: #9c875e; font: .58rem ui-monospace, monospace; white-space: nowrap; }
+.catalogueWaves ol { display: grid; gap: 4px; margin: 0; padding-left: 28px; }
+.catalogueWaves li { padding: 5px 6px; color: #8ea199; font: .62rem ui-monospace, monospace; background: #111b18; }
+.catalogueWaves li::marker { color: #7f9d91; }
+.catalogueWaves li span { display: block; color: #d1ddd7; font-family: inherit; }
+.catalogueWaves li em { display: block; margin-top: 2px; color: #778982; font-size: .52rem; font-style: normal; text-transform: uppercase; }
+.catalogueWaves li em[data-status='playable'] { color: #8ed7bd; }
+
+@media (max-width: 720px) {
+  .arenaCatalogue > summary { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .catalogueWaves { grid-template-columns: 1fr; max-height: 360px; }
+}

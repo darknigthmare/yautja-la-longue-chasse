@@ -5,10 +5,10 @@ import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
 
-const jumpBundle = await build({ stdin: { contents: 'export { freshJumpAssistState } from "./app/game/systems/jumpAssist";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
+const jumpBundle = await build({ stdin: { contents: 'export { freshJumpAssistState } from "./app/game/systems/jumpAssist"; export { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID } from "./app/game/systems/metroidvaniaPilot";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
 const jumpModule = { exports: {} };
 runInNewContext(jumpBundle.outputFiles[0].text, { module: jumpModule, exports: jumpModule.exports });
-const { freshJumpAssistState } = jumpModule.exports;
+const { freshJumpAssistState, OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID } = jumpModule.exports;
 
 const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -136,12 +136,22 @@ test("controller aim ignores a stale mouse position while pointer aim remains pr
     solvePlayerRigFrame: () => ({ anchors: { muzzle: { x: 0, y: 50 } } }),
     distance: (a, b) => Math.hypot(a.x - b.x, a.y - b.y),
     clamp: (n, min, max) => Math.max(min, Math.min(max, n)), VIEW_HEIGHT: 720,
+    PILOT_MISSION_ID, OSERIS_VERTICAL_BOUNDS,
   });
   const input = { keyboardHeld: new Set(["aim"]), gamepadHeld: new Set(), pointerScreen: { x: 100, y: 100 } };
-  const state = { player: { aiming: false, activeWeaponSlot: 1, weaponCooldown: 0, weaponChargeSeconds: 0, aimPoint: { x: 0, y: 0 }, facing: 1 }, cameraX: 0, world: { width: 8400 }, boss: { active: false }, enemies: [{ x: 600, y: 30, width: 40, height: 40, alive: true, active: true }] };
+  const state = { player: { aiming: false, activeWeaponSlot: 1, weaponCooldown: 0, weaponChargeSeconds: 0, aimPoint: { x: 0, y: 0 }, facing: 1 }, cameraX: 0, cameraY: 0, world: { width: 8400, floorY: 624, missionId: "ice-cryostalker" }, boss: { active: false }, enemies: [{ x: 600, y: 30, width: 40, height: 40, alive: true, active: true }] };
   updateAim(state, input, {}, 1 / 60);
   assert.deepEqual(state.player.aimPoint, { x: 100, y: 100 });
   input.keyboardHeld.clear(); input.gamepadHeld.add("aim");
   updateAim(state, input, {}, 1 / 60);
   assert.deepEqual(state.player.aimPoint, { x: 620, y: 46.8 });
+
+  input.gamepadHeld.clear(); input.keyboardHeld.add("aim");
+  state.world.missionId = PILOT_MISSION_ID; state.cameraY = -560;
+  input.pointerScreen = { x: 100, y: 140 };
+  updateAim(state, input, {}, 1 / 60);
+  assert.deepEqual(state.player.aimPoint, { x: 100, y: -420 }, "pointer screen coordinates follow the vertical world camera");
+  input.pointerScreen.y = -400;
+  updateAim(state, input, {}, 1 / 60);
+  assert.equal(state.player.aimPoint.y, OSERIS_VERTICAL_BOUNDS.minY, "pointer aim remains inside the authored Oseris ceiling");
 });

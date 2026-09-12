@@ -56,7 +56,7 @@ test("rendering a frozen combat state is deterministic and cannot change replay 
     assert.equal(pit.serializePitCombat(state), serialized);
     assert.deepEqual(state.fighters.map(pit.getPitFighterBoxes), boxes);
   }
-  assert.equal(state.version, 4);
+  assert.equal(state.version, 5);
 });
 
 test("each available melee action has distinct anticipation, contact and recovery poses", () => {

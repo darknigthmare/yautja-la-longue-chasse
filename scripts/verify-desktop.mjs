@@ -4,6 +4,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
 
+const EXPECTED_CONTENT_VERSION = DESKTOP_RELEASE_TAG.toUpperCase();
+
 const evidence = path.resolve("tmp/desktop-qa", DESKTOP_RELEASE_TAG);
 await fs.mkdir(evidence, { recursive: true });
 const profile = await fs.mkdtemp(path.join(evidence, "profile-"));
@@ -40,6 +42,10 @@ try {
   const { instance, page } = current;
   assert.equal(page.url(), "yautja://game/");
   assert.equal(await instance.evaluate(({app})=>app.getVersion()),DESKTOP_VERSION);
+  assert.equal(
+    await page.locator("[data-game-content-version]").first().getAttribute("data-game-content-version"),
+    EXPECTED_CONTENT_VERSION,
+  );
   const security = await instance.evaluate(({ BrowserWindow }) => {
     const prefs = BrowserWindow.getAllWindows()[0].webContents.getLastWebPreferences();
     return { sandbox: prefs.sandbox, contextIsolation: prefs.contextIsolation, nodeIntegration: prefs.nodeIntegration, webSecurity: prefs.webSecurity };
@@ -58,7 +64,7 @@ try {
     return { asset: asset.status, bytes: (await asset.arrayBuffer()).byteLength, privateFile: privateFile.status, audio: audio.status, audioSlots: inventory?.entries?.length };
   });
   assert.equal(local.asset, 200); assert.ok(local.bytes > 10000); assert.equal(local.privateFile, 403); assert.equal(local.audio,200); assert.equal(local.audioSlots,37);
-  checks.push("Packaged EXE boots, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
+  checks.push("Packaged EXE boots with the expected V31 content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
 
   await page.getByRole("button", { name: "Réglages", exact: true }).click();
   await page.getByRole("checkbox", { name: "Violence atténuée" }).check();
@@ -71,7 +77,7 @@ try {
       });
     });
   }, exportPath);
-  await page.getByRole("button", { name: "Exporter la campagne", exact: true }).click();
+  await page.getByRole("button", { name: "Exporter la campagne légère", exact: true }).click();
   assert.equal(await instance.evaluate(() => globalThis.yautjaQaDownload), "completed");
   const exportText = await fs.readFile(exportPath, "utf8");
   assert.ok(exportText.length > 500); assert.ok(JSON.parse(exportText));
@@ -84,27 +90,47 @@ try {
 
   await page.getByRole("button", { name: "Yautja Prime · monde natal", exact: true }).click();
   await page.locator("[data-homeworld-hub]").waitFor();
-  const city = page.getByRole("group", { name: "Cité jouable en deux dimensions" });
-  const cityX = () => page.locator("[data-homeworld-actor]").getAttribute("data-x").then(Number);
-  const walkTo = async (target) => {
-    for (let attempt = 0; attempt < 40; attempt++) {
-      const x = await cityX(); if (Math.abs(x - target) < 20) return;
-      await city.focus(); const key = x < target ? "ArrowRight" : "ArrowLeft";
-      await page.keyboard.down(key); await page.clock.runFor(Math.round(Math.min(700,Math.abs(x-target)/300*1000))); await page.keyboard.up(key);
-      await page.clock.runFor(80);
+  const city = page.getByRole("group", { name: "Cité jouable en perspective 2.5D" });
+  await city.waitFor();
+  const cityComposition = await page.locator("[data-homeworld-hub]").evaluate((root) => ({
+    districts: root.querySelectorAll("[data-texture]").length,
+    buildings: root.querySelectorAll("[data-variant]").length,
+    wholeCharacterPlates: root.querySelectorAll('[data-whole-character-plate="true"]').length,
+  }));
+  assert.equal(cityComposition.districts, 12);
+  assert.equal(cityComposition.buildings, 13);
+  assert.ok(cityComposition.wholeCharacterPlates >= 2);
+  const cityPosition = async () => ({
+    x: Number(await page.locator("[data-homeworld-actor]").getAttribute("data-x")),
+    y: Number(await page.locator("[data-homeworld-actor]").getAttribute("data-y")),
+  });
+  const walkTo = async (targetX, targetY, tolerance = 105) => {
+    for (let attempt = 0; attempt < 140; attempt++) {
+      const current = await cityPosition();
+      const dx = targetX - current.x, dy = targetY - current.y;
+      if (Math.hypot(dx, dy) <= tolerance) return;
+      await city.focus();
+      const keys = [];
+      if (Math.abs(dx) > 28) keys.push(dx > 0 ? "ArrowRight" : "ArrowLeft");
+      if (Math.abs(dy) > 24) keys.push(dy > 0 ? "ArrowDown" : "ArrowUp");
+      for (const key of keys) await page.keyboard.down(key);
+      await page.clock.runFor(120);
+      for (const key of keys) await page.keyboard.up(key);
+      await page.clock.runFor(34);
     }
-    throw new Error("Homeworld target was not reached: " + target);
+    const current = await cityPosition();
+    throw new Error(`Homeworld target was not reached: ${targetX},${targetY}; stopped at ${current.x},${current.y}`);
   };
-  await walkTo(440); await city.focus(); await page.keyboard.press("e");
+  await walkTo(690, 2080); await city.focus(); await page.keyboard.press("e");
   await page.getByRole("dialog").waitFor(); await page.getByRole("button", { name: "Revenir à la cité", exact: true }).click(); await page.getByRole("dialog").waitFor({state:"hidden"}); await page.clock.runFor(64);
-  await walkTo(960); await city.focus(); await page.keyboard.press("e");
+  await walkTo(1040, 1970); await city.focus(); await page.keyboard.press("e");
   await page.getByRole("dialog").waitFor(); await page.getByRole("button", { name: "Revenir à la cité", exact: true }).click(); await page.getByRole("dialog").waitFor({state:"hidden"}); await page.clock.runFor(64);
   const citySave = JSON.parse(await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")));
   assert.ok(citySave.homeworld.visitedDistrictIds.includes("port"));
   assert.ok(citySave.homeworld.evidenceIds.includes("suspect-trophy"));
   assert.ok(citySave.homeworld.greetedNpcIds.includes("dock-officer"));
   await page.screenshot({path:path.join(evidence,"homeworld-pc.png")});
-  await walkTo(1080); await city.focus(); await page.keyboard.press("e");
+  await walkTo(970, 1770, 95); await city.focus(); await page.keyboard.press("e");
   await page.getByRole("button",{name:"Partir vers les Marches de Cendre",exact:true}).click();
   await page.getByRole("region",{name:"Expédition des Marches de Cendre",exact:true}).waitFor();
   await page.getByRole("button",{name:"Retour sans rapport",exact:true}).click();
@@ -123,10 +149,15 @@ try {
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
+  await page.getByText(/12 combattants · 8 arènes jouables · catalogue de production : 100 stages/).waitFor();
   await page.getByRole("radio", { name: /Entraînement/ }).click();
   await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
   assert.ok(await page.locator("canvas").count() > 0);
+  const pitCanvas = page.getByRole("region", { name: "Combat THE PIT" }).locator("canvas");
+  await page.clock.runFor(64);
+  const pitCameraZoom = Number(await pitCanvas.getAttribute("data-pit-camera-zoom"));
+  assert.ok(Number.isFinite(pitCameraZoom) && pitCameraZoom >= 1);
   await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="static-bitmap"]').waitFor();
   await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="static-bitmap"]').waitFor();
   await page.screenshot({ path: path.join(evidence, "pit-combat-pc.png") });
@@ -145,7 +176,12 @@ try {
   await page.getByRole("button", { name: /^Départ rapide$/i }).click();
   await page.getByRole("group", { name: "État du chasseur" }).waitFor();
   const pause = page.getByRole("button", { name: "Mettre en pause et consulter la carte", exact: true });
-  if (await pause.count()) await pause.click();
+  if (await pause.count()) {
+    await pause.click();
+    const pilotMap = page.locator('[data-pilot-map="jungle-vey"]');
+    await pilotMap.waitFor();
+    assert.equal(await pilotMap.locator("[data-pilot-room]").count(), 12);
+  }
   await page.getByRole("button", { name: "Suspendre et sauvegarder", exact: true }).click();
   const suspended = await page.evaluate(() => localStorage.getItem("yautja-long-hunt.active-hunt"));
   assert.ok(suspended && suspended.length > 500);
@@ -165,8 +201,8 @@ try {
   await close(current.instance); current = undefined;
   assert.deepEqual(errors, []);
   assert.deepEqual(failedLocalRequests, []);
-  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
-  console.log(JSON.stringify({ passed: true, checks, errors, failedLocalRequests }, null, 2));
+  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
+  console.log(JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, checks, errors, failedLocalRequests }, null, 2));
 } finally {
   if (current) await close(current.instance);
 }

@@ -18,7 +18,10 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 4;
+export const PIT_STATE_VERSION = 5;
+/** Eight 60Hz reaction ticks after a grounded neutral/guard capture. */
+export const PIT_THROW_TECH_WINDOW_FRAMES = 8;
+export const PIT_THROW_TECH_RECOVERY_FRAMES = 12;
 export const PIT_MAX_TRAQUE = 1_000;
 export const PIT_ROUND_TRAQUE_CARRY_CAP = 500;
 export const PIT_CLOAK_COST = 350;
@@ -218,6 +221,8 @@ export type PitCombatEvent =
   | { type: "round-start"; frame: number; round: number }
   | { type: "attack-start"; frame: number; fighterId: PitFighterId; attack: PitAttackKind }
   | { type: "throw-start"; frame: number; fighterId: PitFighterId }
+  | { type: "throw-caught"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId }
+  | { type: "throw-tech"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId }
   | { type: "hit"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId; attack: PitAttackKind | "throw"; damage: number; combo: number; antiAir: boolean }
   | { type: "block"; frame: number; attackerId: PitFighterId; defenderId: PitFighterId; attack: PitAttackKind; damage: number }
   | { type: "traque-gain"; frame: number; fighterId: PitFighterId; amount: number; source: "damage" | "guard" | "pressure" | "instinct" }
@@ -228,6 +233,12 @@ export type PitCombatEvent =
   | { type: "combo-break"; frame: number; fighterId: PitFighterId }
   | { type: "round-end"; frame: number; result: PitRoundResult }
   | { type: "match-end"; frame: number; winnerId: PitFighterId };
+
+export interface PitPendingThrow {
+  attackerSlot: 0 | 1;
+  capturedFrame: number;
+  framesRemaining: number;
+}
 
 export interface PitCombatState {
   version: typeof PIT_STATE_VERSION;
@@ -241,6 +252,7 @@ export interface PitCombatState {
   rules: PitCombatRules;
   fighters: [PitFighterState, PitFighterState];
   techniqueEffects: PitTechniqueEffectState[];
+  pendingThrow: PitPendingThrow | null;
   nextTechniqueEffectId: number;
   lastRoundResult: PitRoundResult | null;
   matchWinnerId: PitFighterId | null;
@@ -398,6 +410,7 @@ export function createPitCombatState(
     rules: { mode: options.mode ?? "match" },
     fighters: [freshFighter(0, leftId), freshFighter(1, rightId)],
     techniqueEffects: [],
+    pendingThrow: null,
     nextTechniqueEffectId: 1,
     lastRoundResult: null,
     matchWinnerId: null,
@@ -420,6 +433,7 @@ function cloneState(state: PitCombatState): PitCombatState {
     rules: { ...state.rules },
     fighters: [cloneFighter(state.fighters[0]), cloneFighter(state.fighters[1])],
     techniqueEffects: state.techniqueEffects.map((effect) => ({ ...effect })),
+    pendingThrow: state.pendingThrow ? { ...state.pendingThrow } : null,
     lastRoundResult: state.lastRoundResult ? { ...state.lastRoundResult } : null,
     events: [],
   };
@@ -1030,6 +1044,85 @@ function collectImpact(
   };
 }
 
+/** A capture is short shared hitstop: actors, statuses and projectiles wait, but
+ * the match clock and input edges continue. No damage or resource is awarded
+ * before its deadline. Attack recovery/hitstun and airborne targets cannot tech. */
+function canTechThrow(fighter: PitFighterState): boolean {
+  return fighter.grounded && fighter.health > 0 &&
+    (fighter.phase === "idle" || fighter.phase === "blockstun" ||
+      (fighter.action?.kind === "throw" &&
+        (fighter.phase === "startup" || fighter.phase === "active")));
+}
+
+function finishThrowTech(state: PitCombatState, attackerSlot: 0 | 1): void {
+  const attacker = state.fighters[attackerSlot];
+  const defender = state.fighters[attackerSlot === 0 ? 1 : 0];
+  const direction = attacker.x <= defender.x ? 1 : -1;
+  state.pendingThrow = null;
+  for (const fighter of state.fighters) {
+    fighter.action = null;
+    fighter.phase = "blockstun";
+    fighter.stunFrames = PIT_THROW_TECH_RECOVERY_FRAMES;
+    fighter.knockdownFrames = 0;
+    fighter.velocityX = 0;
+    fighter.velocityY = 0;
+    fighter.guard = null;
+    fighter.crouching = false;
+    fighter.comboHitsReceived = 0;
+    fighter.pressureFrames = 0;
+  }
+  attacker.x = clampFighterX(attacker, attacker.x - direction * 28);
+  defender.x = clampFighterX(defender, defender.x + direction * 28);
+  resolvePushboxes(state.fighters[0], state.fighters[1]);
+  state.events.push({ type: "throw-tech", frame: state.frame,
+    attackerId: attacker.definitionId, defenderId: defender.definitionId });
+}
+
+function beginThrowCapture(state: PitCombatState, impact: PendingImpact): void {
+  state.pendingThrow = { attackerSlot: impact.attackerSlot,
+    capturedFrame: state.frame, framesRemaining: PIT_THROW_TECH_WINDOW_FRAMES };
+  for (const fighter of state.fighters) {
+    fighter.action = null;
+    fighter.phase = "blockstun";
+    fighter.stunFrames = 1;
+    fighter.knockdownFrames = 0;
+    fighter.guard = null;
+    fighter.crouching = false;
+    fighter.velocityX = 0;
+    fighter.velocityY = 0;
+    endCloak(state, fighter, "action", false);
+  }
+  state.events.push({ type: "throw-caught", frame: state.frame,
+    attackerId: state.fighters[impact.attackerSlot].definitionId,
+    defenderId: state.fighters[impact.defenderSlot].definitionId });
+}
+
+function advancePendingThrow(state: PitCombatState, inputs: readonly [PitInput, PitInput]): void {
+  const pending = state.pendingThrow!;
+  const defenderSlot = pending.attackerSlot === 0 ? 1 : 0;
+  const defender = state.fighters[defenderSlot];
+  const pressed = Boolean(inputs[defenderSlot]?.throw) && !defender.inputLatch.throw;
+  // All edges are consumed while captured; holding a button never auto-retries.
+  state.fighters[0].inputLatch = latchFromInput(inputs[0] ?? {});
+  state.fighters[1].inputLatch = latchFromInput(inputs[1] ?? {});
+  if (pressed) {
+    finishThrowTech(state, pending.attackerSlot);
+    return;
+  }
+  pending.framesRemaining -= 1;
+  if (pending.framesRemaining > 0) return;
+  state.pendingThrow = null;
+  const attacker = state.fighters[pending.attackerSlot];
+  attacker.phase = "blockstun";
+  attacker.stunFrames = THROW_RECOVERY;
+  applyImpact(state, {
+    attackerSlot: pending.attackerSlot, defenderSlot, kind: "throw",
+    blocked: false, damage: damageAfterInstinct(defender,
+      Math.round(THROW_DAMAGE * PIT_FIGHTERS[attacker.definitionId].power)),
+    stun: 42, pushback: 42, knockdown: true, launchY: 0, combo: 1,
+  });
+}
+
 interface CollectedTechniqueImpacts {
   impacts: PendingImpact[];
   counteredSlots: Set<0 | 1>;
@@ -1445,6 +1538,7 @@ function updatePressureTraque(state: PitCombatState): void {
 function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitInput]): void {
   const [left, right] = state.fighters;
   state.round += 1;
+  state.pendingThrow = null;
   state.phase = "round";
   state.roundFramesRemaining = PIT_ROUND_FRAMES;
   state.transitionFramesRemaining = 0;
@@ -1471,6 +1565,7 @@ function stepPitCombatInternal(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput],
   legacyV2Techniques: boolean,
+  throwTechEnabled: boolean,
 ): PitCombatState {
   if (current.phase === "match-over") {
     if (current.events.length === 0) return current;
@@ -1488,6 +1583,12 @@ function stepPitCombatInternal(
 
   if (state.rules.mode === "match") {
     state.roundFramesRemaining = Math.max(0, state.roundFramesRemaining - 1);
+  }
+  if (throwTechEnabled && state.pendingThrow) {
+    advancePendingThrow(state, inputs);
+    if (state.rules.mode === "match") evaluateRound(state);
+    if (state.phase !== "round") state.pendingThrow = null;
+    return state;
   }
   const previousLeft = cloneFighter(state.fighters[0]);
   const previousRight = cloneFighter(state.fighters[1]);
@@ -1534,9 +1635,30 @@ function stepPitCombatInternal(
     (impact): impact is PendingImpact =>
       impact !== null && !techniqueImpacts.counteredSlots.has(impact.attackerSlot),
   );
-  for (const pendingImpact of [...techniqueImpacts.impacts, ...directImpacts]) {
-    const impact = sequenceImpact(state, pendingImpact);
-    if (impact) applyImpact(state, impact);
+  const allImpacts = [...techniqueImpacts.impacts, ...directImpacts];
+  const throws = directImpacts.filter((impact) => impact.kind === "throw");
+  const strikes = allImpacts.filter((impact) => impact.kind !== "throw");
+  if (throwTechEnabled && throws.length > 0 && strikes.length === 0) {
+    if (throws.length === 2) {
+      // Simultaneous active throws break symmetrically; neither array slot wins.
+      finishThrowTech(state, throws[0].attackerSlot);
+    } else {
+      const impact = throws[0];
+      if (canTechThrow(state.fighters[impact.defenderSlot])) {
+        const previous = impact.defenderSlot === 0 ? previousLeft : previousRight;
+        const pressed = Boolean(inputs[impact.defenderSlot]?.throw) && !previous.inputLatch.throw;
+        if (pressed) finishThrowTech(state, impact.attackerSlot);
+        else beginThrowCapture(state, impact);
+      } else {
+        applyImpact(state, impact);
+      }
+    }
+  } else {
+    // An active strike wins over a capture; legacy V4 keeps its original trades.
+    for (const pendingImpact of throwTechEnabled ? strikes : allImpacts) {
+      const impact = sequenceImpact(state, pendingImpact);
+      if (impact) applyImpact(state, impact);
+    }
   }
 
   updatePressureTraque(state);
@@ -1550,6 +1672,7 @@ function stepPitCombatInternal(
   }
 
   if (state.rules.mode === "match") evaluateRound(state);
+  if (state.phase !== "round") state.pendingThrow = null;
   return state;
 }
 
@@ -1557,7 +1680,15 @@ export function stepPitCombat(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
-  return stepPitCombatInternal(current, inputs, false);
+  return stepPitCombatInternal(current, inputs, false, true);
+}
+
+/** Published V29 replay rules: immediate throws, no capture window or tech. */
+export function stepPitCombatV4Compatibility(
+  current: PitCombatState,
+  inputs: readonly [PitInput, PitInput] = [{}, {}],
+): PitCombatState {
+  return stepPitCombatInternal(current, inputs, false, false);
 }
 
 /** Verifies checksums from the published V2 replay engine before migration. */
@@ -1565,7 +1696,7 @@ export function stepPitCombatV2Compatibility(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
-  return stepPitCombatInternal(current, inputs, true);
+  return stepPitCombatInternal(current, inputs, true, false);
 }
 
 export function rematchPitCombat(state: PitCombatState): PitCombatState {
@@ -1765,6 +1896,9 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
     return knownFighter(value.fighterId) &&
       PIT_CLOAK_END_REASONS.includes(value.reason as Extract<PitCombatEvent, { type: "cloak-end" }>["reason"]);
   }
+  if (value.type === "throw-caught" || value.type === "throw-tech") {
+    return knownFighter(value.attackerId) && knownFighter(value.defenderId) && value.attackerId !== value.defenderId;
+  }
   if (value.type === "block") {
     return knownFighter(value.attackerId) && knownFighter(value.defenderId) && value.attackerId !== value.defenderId &&
       isAttackKind(value.attack) && isIntegerBetween(value.damage, 0, 1_000);
@@ -1780,7 +1914,7 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
 
 function migratePitCombatState(candidate: unknown): unknown {
   if (!isRecord(candidate) ||
-    ![1, 2, PIT_STATE_VERSION].includes(candidate.version as number) ||
+    ![1, 2, 4, PIT_STATE_VERSION].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }
@@ -1788,6 +1922,7 @@ function migratePitCombatState(candidate: unknown): unknown {
   return {
     ...candidate,
     version: PIT_STATE_VERSION,
+    ...(candidate.version !== PIT_STATE_VERSION ? { pendingThrow: null } : {}),
     techniqueEffects: candidate.techniqueEffects ?? [],
     nextTechniqueEffectId: candidate.nextTechniqueEffectId ?? 1,
     fighters: candidate.fighters.map((fighter) => {
@@ -1822,6 +1957,20 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     throw new Error("Invalid or incompatible THE PIT combat state.");
   }
   if (!isRecord(candidate) ||
+    !(candidate.pendingThrow === null || (
+      isRecord(candidate.pendingThrow) &&
+      Object.keys(candidate.pendingThrow).length === 3 &&
+      (candidate.pendingThrow.attackerSlot === 0 || candidate.pendingThrow.attackerSlot === 1) &&
+      isIntegerBetween(candidate.pendingThrow.capturedFrame, 1, candidate.frame as number) &&
+      isIntegerBetween(candidate.pendingThrow.framesRemaining, 1, PIT_THROW_TECH_WINDOW_FRAMES) &&
+      (candidate.frame as number) - (candidate.pendingThrow.capturedFrame as number) ===
+        PIT_THROW_TECH_WINDOW_FRAMES - (candidate.pendingThrow.framesRemaining as number) &&
+      candidate.phase === "round" &&
+      Array.isArray(candidate.fighters) &&
+      candidate.fighters.every((fighter) => isRecord(fighter) && fighter.grounded === true &&
+        fighter.health as number > 0 && fighter.phase === "blockstun" && fighter.action === null &&
+        fighter.stunFrames === 1 && fighter.velocityX === 0 && fighter.velocityY === 0)
+    )) ||
     candidate.version !== PIT_STATE_VERSION ||
     candidate.tickRate !== PIT_TICK_RATE ||
     !isArenaId(candidate.arenaId) ||

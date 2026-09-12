@@ -1,3 +1,4 @@
+import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import {
@@ -1316,6 +1317,7 @@ export function reconcileSaveWrite(
 ): SaveWriteReconciliation {
   const refused = (failure: SaveWriteFailure): SaveWriteReconciliation => ({ status: "refused", save: null, failure });
   if (!storage) return refused("storage-unavailable");
+  if (archiveTransferPending(storage)) return refused("protected-save");
   const receipt = unconfirmedCampaignWrites.get(attempt);
   if (!receipt || receipt.storage !== storage || receipt.key !== key || receipt.ownerCreatedAt !== ownerCreatedAt) {
     return refused("save-conflict");
@@ -1325,6 +1327,7 @@ export function reconcileSaveWrite(
   if (observedCampaigns.get(storage)?.get(key) !== receipt.observedBefore) return refused("save-conflict");
   let serialized: string | null;
   try { serialized = storage.getItem(key); } catch { return refused("read-failed"); }
+  if (archiveTransferPending(storage)) return refused("protected-save");
   if (serialized === receipt.serialized) {
     const parsed = parseSaveImport(serialized);
     if (!parsed.save || parsed.save.createdAt !== ownerCreatedAt) return refused("save-conflict");
@@ -1442,6 +1445,7 @@ function persistCampaign(
   const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
   if (!validated.save) return failed("invalid-save");
   if (!storage) return failed("storage-unavailable");
+  if (archiveTransferPending(storage)) return failed("protected-save");
 
   let previousSerialized: string | null;
   let previousPrimarySerialized: string | null;
@@ -1487,6 +1491,7 @@ function persistCampaign(
   try {
     // A Storage setItem is atomic for this key. Do not consume quota with the
     // optional backup until the new primary snapshot has succeeded.
+    if (archiveTransferPending(storage)) return failed("protected-save");
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) return unconfirmed();
     observeCampaign(storage, key, serialized);
@@ -1499,13 +1504,13 @@ function persistCampaign(
     const backup = previous && previous.createdAt === snapshot.createdAt && previousSerialized
       ? previousSerialized
       : serialized;
-    storage.setItem(saveBackupKey(key), backup);
+    if (!archiveTransferPending(storage)) storage.setItem(saveBackupKey(key), backup);
   } catch {
     // Preserve the recovery copy until the replacement primary is confirmed.
     // If a reset's new backup cannot be written, retire a foreign recovery copy
     // only now: the new campaign already has a verified durable primary.
     if (replaceExisting && previous?.createdAt !== snapshot.createdAt) {
-      try { storage.removeItem(saveBackupKey(key)); } catch {
+      try { if (!archiveTransferPending(storage)) storage.removeItem(saveBackupKey(key)); } catch {
         // Both cleanup operations can be blocked. Prefer retained data to loss;
         // the old recovery copy may remain until storage access is restored.
       }

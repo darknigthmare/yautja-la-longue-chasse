@@ -11,6 +11,10 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import { GAME_CONTENT_VERSION, GAME_CONTENT_LABEL } from "./buildInfo";
+import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
+import { ARCHIVE_TRANSFER_JOURNAL_KEY } from "./systems/archiveTransferGuard";
+import { recoverArchiveTransaction, withArchiveTransferLock } from "./systems/archiveTransaction";
 import { useMenuGamepad } from "./useMenuGamepad";
 import type {
   PitMatchCompleteResult,
@@ -208,13 +212,15 @@ import type {
   WeaponId,
 } from "./types";
 
-import type { HomeworldProgress, HomeworldService } from "./systems/homeworld";
+import { recordGlassDesertExpedition, type HomeworldProgress, type HomeworldService } from "./systems/homeworld";
+import type { GlassDesertProof } from "./systems/glassDesert";
 
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
+const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -239,6 +245,7 @@ type Screen =
   | "deck"
   | "homeworld"
   | "homeworld-expedition"
+  | "glass-desert-expedition"
   | "justice"
   | "medbay"
   | "training"
@@ -1066,6 +1073,10 @@ export default function GameClient() {
   const [saveFailure, setSaveFailure] = useState<SaveWriteFailure | null>(null);
   const [saveLoadIssue, setSaveLoadIssue] = useState<SaveLoadFailure | null>(null);
   const [importCandidate, setImportCandidate] = useState<SaveGame | null>(null);
+  const [completeImportPlan, setCompleteImportPlan] = useState<CompleteArchiveImportPlan | null>(null);
+  const [archiveRecoveryIssue, setArchiveRecoveryIssue] = useState<string | null>(null);
+  const [archiveTransferBusy, setArchiveTransferBusy] = useState(false);
+  const archiveSelectionRef = useRef(0);
   const [saveTransferMessage, setSaveTransferMessage] = useState<string | null>(null);
   const pendingTerminalRunRef = useRef<string | null>(null);
   const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
@@ -1097,14 +1108,30 @@ export default function GameClient() {
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = screen === "deck" || (shipStationOpen && hubLocation === "deck");
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "pit" || screen === "homeworld-expedition"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
-    const hydrationTask = window.setTimeout(() => {
+    let hydrationCancelled = false;
+    const hydrationTask = window.setTimeout(async () => {
+      try {
+        if (window.localStorage.getItem(ARCHIVE_TRANSFER_JOURNAL_KEY) !== null) {
+          const recovery = await withArchiveTransferLock(() => recoverArchiveTransaction(window.localStorage));
+          if (hydrationCancelled) return;
+          if (!recovery.acquired || recovery.value.status === "blocked") {
+            setArchiveRecoveryIssue(recovery.acquired ? recovery.value.message : recovery.reason);
+            return;
+          }
+          setSaveTransferMessage(recovery.value.message);
+        }
+      } catch {
+        setArchiveRecoveryIssue("Impossible de vérifier le journal des archives. Aucune sauvegarde partielle ne sera chargée.");
+        return;
+      }
+      if (hydrationCancelled) return;
       const loaded = loadSaveWithStatus();
       const loadedSave = loaded.save;
       saveRef.current = loadedSave;
@@ -1152,10 +1179,21 @@ export default function GameClient() {
     const audio = new GameAudio();
     audioRef.current = audio;
     return () => {
+      hydrationCancelled = true;
       window.clearTimeout(hydrationTask);
       audio.dispose();
       audioRef.current = null;
     };
+  }, []);
+
+  useEffect(() => {
+    const archiveChanged = (event: StorageEvent) => {
+      if (event.key === ARCHIVE_TRANSFER_JOURNAL_KEY && event.newValue !== null) {
+        setArchiveRecoveryIssue("Une autre session importe ses archives. Ce jeu est suspendu pour ne pas réécrire les anciennes données ; reprenez après vérification.");
+      }
+    };
+    window.addEventListener("storage", archiveChanged);
+    return () => window.removeEventListener("storage", archiveChanged);
   }, []);
 
   useEffect(() => {
@@ -1177,6 +1215,7 @@ export default function GameClient() {
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
         ? selectedMission.biome
+        : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
         : screen === "title"
           ? null
@@ -1192,7 +1231,7 @@ export default function GameClient() {
     const context: GameMusicContext | null = settingsOpen ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
-      : screen === "homeworld-expedition" ? "exploration"
+      : screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
       : screen === "map" ? "galaxy"
       : screen === "pit" ? "combat"
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
@@ -1259,6 +1298,9 @@ export default function GameClient() {
       if (event.key === "Escape") {
         if (event.repeat) return;
         event.preventDefault();
+        if (archiveTransferBusy) return;
+        ++archiveSelectionRef.current;
+        setImportCandidate(null); setCompleteImportPlan(null);
         setSettingsOpen(false);
         setResetArmed(false);
         return;
@@ -1282,7 +1324,7 @@ export default function GameClient() {
       document.removeEventListener("keydown", onKeyDown);
       previouslyFocused?.focus();
     };
-  }, [settingsOpen]);
+  }, [settingsOpen, archiveTransferBusy]);
 
   useEffect(() => {
     if (screen !== "deck" || settingsOpen) return;
@@ -1772,7 +1814,14 @@ export default function GameClient() {
     [playSound],
   );
 
-  const openHomeworldExpedition = useCallback(() => {
+  const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
+    if (regionId === "glass-desert") {
+      if (!saveRef.current.homeworld.expeditions["ash-marches"]) {
+        setToast("Rapporte d’abord la preuve des Marches de Cendre avant de suivre la route du désert."); return;
+      }
+      expeditionOwnerRef.current = saveRef.current.createdAt;
+      go("glass-desert-expedition"); return;
+    }
     if (!saveRef.current.homeworld.evidenceIds.includes("suspect-trophy")) {
       setToast("Relève d’abord la marque du trophée au port."); return;
     }
@@ -1789,9 +1838,20 @@ export default function GameClient() {
     }
     const previous = current.homeworld.expeditions["ash-marches"];
     const report = previous ? { ...proof, secretFound: previous.secretFound || proof.secretFound, ticks: Math.min(previous.ticks, proof.ticks) } : proof;
-    const persisted = persistHomeworldProgress({ ...current.homeworld, expeditions: { "ash-marches": report } });
+    const persisted = persistHomeworldProgress({ ...current.homeworld, expeditions: { ...current.homeworld.expeditions, "ash-marches": report } });
     if (persisted) setToast("Rapport des Marches conservé : le convoi confirme le transfert suspect. Aucun trophée du convoi n’est attribué au chasseur.");
     return { persisted, message: persisted ? undefined : "Écriture non confirmée. Reste à la navette et réessaie ; le rapport n’est pas encore acquis." };
+  }, [persistHomeworldProgress]);
+
+  const completeGlassDesert = useCallback((proof: GlassDesertProof) => {
+    const current = saveRef.current;
+    if (expeditionOwnerRef.current !== current.createdAt) return { persisted: false, message: "Le propriétaire de campagne a changé. Aucun rapport ajouté." };
+    const result = recordGlassDesertExpedition(current.homeworld, proof);
+    if (!result.ok) return { persisted: false, message: result.message };
+    // Even an identical revisit must confirm the current durable campaign.
+    const persisted = persistHomeworldProgress(result.progress);
+    if (persisted) setToast(result.message);
+    return { persisted, message: persisted ? undefined : "Rapport non confirmé. Reste à la navette et réessaie la sauvegarde." };
   }, [persistHomeworldProgress]);
 
   const openPit = useCallback(() => {
@@ -2503,8 +2563,108 @@ export default function GameClient() {
     } catch { setSaveTransferMessage("Impossible de préparer cet export. Les archives locales restent intactes."); }
   }, [save]);
 
+  const downloadArchiveFile = useCallback((serialized: string, filename: string) => {
+    const url = URL.createObjectURL(new Blob([serialized], { type: "application/json" }));
+    const link = document.createElement("a");
+    link.href = url; link.download = filename; link.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }, []);
+
+  const exportComplete = useCallback(async () => {
+    if (archiveTransferBusy) return;
+    setArchiveTransferBusy(true);
+    try {
+      const locked = await withArchiveTransferLock(() => createCompleteArchive(saveRef.current, window.localStorage));
+      if (!locked.acquired) throw new Error(locked.reason);
+      const result = locked.value;
+      const hunt = result.archive.attachments.activeHunt;
+      if (hunt && !(await import("./HuntCanvas")).isRestorableHuntArchive(hunt.snapshot, hunt.retryCheckpoint)) {
+        throw new Error("Le checkpoint suspendu est illisible. Exportez la campagne légère pour la conserver.");
+      }
+      downloadArchiveFile(result.serialized, `yautja-integrale-${new Date().toISOString().slice(0, 10)}.json`);
+      setSaveTransferMessage("Archive intégrale préparée depuis les données enregistrées. " + result.warnings.join(" "));
+    } catch (error) {
+      setSaveTransferMessage(error instanceof Error ? error.message : "Impossible de préparer l’archive intégrale. Les données locales restent intactes.");
+    } finally { setArchiveTransferBusy(false); }
+  }, [archiveTransferBusy, downloadArchiveFile]);
+
+  const readArchiveFile = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.currentTarget.files?.[0];
+    event.currentTarget.value = "";
+    const selection = ++archiveSelectionRef.current;
+    setImportCandidate(null); setCompleteImportPlan(null);
+    if (!file || screen !== "title" || archiveTransferBusy) return;
+    if (file.size > COMPLETE_ARCHIVE_MAX_BYTES) { setSaveTransferMessage("Archive trop volumineuse (3 Mio maximum pour l’intégrale)."); return; }
+    setArchiveTransferBusy(true);
+    try {
+      const text = await file.text();
+      const envelope: unknown = JSON.parse(text.replace(/^\uFEFF/, ""));
+      if (isJsonObject(envelope) && envelope.format === COMPLETE_ARCHIVE_FORMAT) {
+        const parsed = parseCompleteArchive(text);
+        if (!parsed.archive) throw new Error("Archive intégrale refusée (" + parsed.failure + "). Aucune donnée remplacée.");
+        const hunt = parsed.archive.attachments.activeHunt;
+        if (hunt && !(await import("./HuntCanvas")).isRestorableHuntArchive(hunt.snapshot, hunt.retryCheckpoint)) {
+          throw new Error("Le checkpoint ne peut pas être repris par cette version du jeu. Aucune donnée remplacée.");
+        }
+        if (selection !== archiveSelectionRef.current) return;
+        setCompleteImportPlan(prepareCompleteArchiveImport(parsed.archive, window.localStorage));
+        setSaveTransferMessage("Archive intégrale vérifiée. Examinez son contenu avant de confirmer le remplacement.");
+      } else {
+        const parsed = parseSaveImport(text);
+        if (selection !== archiveSelectionRef.current) return;
+        setImportCandidate(parsed.save);
+        setSaveTransferMessage(parsed.save ? "Archive légère vérifiée. Confirmez son remplacement ci-dessous." : `Archive refusée (${parsed.failure}). Aucune donnée remplacée.`);
+      }
+    } catch (error) {
+      if (selection === archiveSelectionRef.current) setSaveTransferMessage(error instanceof Error ? error.message : "Impossible de lire le fichier. Aucune donnée remplacée.");
+    } finally { if (selection === archiveSelectionRef.current) setArchiveTransferBusy(false); }
+  }, [archiveTransferBusy, screen]);
+
+  const confirmCompleteImport = useCallback(async () => {
+    if (!completeImportPlan || screen !== "title" || archiveTransferBusy) return;
+    setArchiveTransferBusy(true);
+    try {
+      const result = await withArchiveTransferLock(() => importCompleteArchive(completeImportPlan, window.localStorage));
+      if (!result.acquired) { setSaveTransferMessage(result.reason); return; }
+      if (result.value.persisted) {
+        // Reload every mounted service and its ownership observations from the
+        // verified set, including the checkpoint. Never reset these sidecars.
+        window.location.reload();
+        return;
+      }
+      setSaveTransferMessage(result.value.recovery.message || "Import non confirmé. Les anciennes archives n’ont pas été remplacées.");
+      setCompleteImportPlan(null);
+      if (result.value.recovery.status === "blocked" || window.localStorage.getItem(ARCHIVE_TRANSFER_JOURNAL_KEY) !== null) {
+        setArchiveRecoveryIssue(result.value.recovery.message || "Un import attend sa récupération.");
+      }
+    } catch (error) {
+      setSaveTransferMessage(error instanceof Error ? error.message : "Import refusé. Aucune confirmation de remplacement.");
+    } finally { setArchiveTransferBusy(false); }
+  }, [archiveTransferBusy, completeImportPlan, screen]);
+
+  const retryArchiveRecovery = useCallback(async () => {
+    if (archiveTransferBusy) return;
+    setArchiveTransferBusy(true);
+    try {
+      const result = await withArchiveTransferLock(() => recoverArchiveTransaction(window.localStorage));
+      if (!result.acquired) { setArchiveRecoveryIssue(result.reason); return; }
+      if (result.value.status === "blocked") setArchiveRecoveryIssue(result.value.message);
+      else window.location.reload();
+    } catch { setArchiveRecoveryIssue("La lecture reste indisponible. Le journal est conservé."); }
+    finally { setArchiveTransferBusy(false); }
+  }, [archiveTransferBusy]);
+
+  const exportRecoveryJournal = useCallback(() => {
+    try {
+      const raw = window.localStorage.getItem(ARCHIVE_TRANSFER_JOURNAL_KEY);
+      if (raw === null) { setSaveTransferMessage("Aucun journal local : réessayez la récupération pour recharger les archives confirmées."); return; }
+      downloadArchiveFile(raw, "yautja-journal-recuperation.json");
+      setSaveTransferMessage("Journal sauvegardé localement. Ce fichier de secours contient les archives avant et après import, pas un diagnostic à publier.");
+    } catch { setSaveTransferMessage("Le journal n’est pas lisible. Aucun fichier incomplet n’a été préparé."); }
+  }, [downloadArchiveFile]);
+
   const confirmImport = useCallback(() => {
-    if (!importCandidate) return;
+    if (!importCandidate || screen !== "title" || archiveTransferBusy) return;
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
     catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
@@ -2550,16 +2710,17 @@ export default function GameClient() {
           ? "Campagne importée. Les archives THE PIT locales ont été préservées, mais leur reprise automatique n’est pas confirmée."
           : "Campagne importée. Le nettoyage de la chasse suspendue ou la reprise du vaisseau n’est pas confirmé ; vérifiez l’état avant de jouer.",
     );
-  }, [clearHuntSession, importCandidate]);
+  }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
   const menuBack = useCallback(() => {
-    if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); }
+    if (archiveTransferBusy || archiveRecoveryIssue) return;
+    if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); setCompleteImportPlan(null); ++archiveSelectionRef.current; setArchiveTransferBusy(false); }
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
     else if (screen !== "title") go("deck");
-  }, [go, pendingHuntResult, screen, settingsOpen]);
-  const menuGamepadEnabled = !trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["mission", "deck", "ship", "map", "training", "pit"].includes(screen));
-  useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}`, menuBack);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen]);
+  const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
+    !["mission", "deck", "ship", "map", "training", "pit", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+  useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
 
   const primaryWeapon =
     WEAPONS.find((weapon) => weapon.id === save.loadout.weaponIds[1]) ??
@@ -2612,6 +2773,24 @@ export default function GameClient() {
       />
     ) : null;
 
+  if (archiveRecoveryIssue) return (
+    <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION}>
+      <section className="screen panel-screen" role="alertdialog" aria-modal="true" aria-labelledby="archive-recovery-title">
+        <div className="screen-safe">
+          <h1 id="archive-recovery-title">Archives protégées</h1>
+          <p>{archiveRecoveryIssue}</p>
+          <p>Le jeu attend la vérification du transfert. Les données du journal ne sont ni effacées ni publiées.</p>
+          <div className="modal-actions">
+            <button type="button" className="alien-button" disabled={archiveTransferBusy} onClick={retryArchiveRecovery}>Réessayer la récupération</button>
+            <button type="button" className="ghost-button" onClick={exportRecoveryJournal}>Exporter le journal de récupération</button>
+            <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne en mémoire</button>
+          </div>
+          {saveTransferMessage && <p role="status">{saveTransferMessage}</p>}
+        </div>
+      </section>
+    </main>
+  );
+
   return (
     <main
       ref={gameShellRef}
@@ -2623,6 +2802,7 @@ export default function GameClient() {
           : save.settings.highContrastVision
       }
       aria-label="Yautja : La Longue Chasse"
+      data-game-content-version={GAME_CONTENT_VERSION}
     >
       <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
 
@@ -2708,7 +2888,7 @@ export default function GameClient() {
 
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen" hidden={screen === "pit" || screen === "homeworld-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
+          <section className="screen panel-screen" hidden={screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <div className="physical-deck-toolbar">
                 <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>
@@ -2733,6 +2913,17 @@ export default function GameClient() {
             <div className="screen-safe">
               <HomeworldExpedition key={save.createdAt} save={save} suspended={settingsOpen}
                 onComplete={completeHomeworldExpedition} onExit={() => go("homeworld")} />
+            </div>
+          </section>
+        </Suspense>
+      )}
+
+      {screen === "glass-desert-expedition" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <section className="screen panel-screen">
+            <div className="screen-safe">
+              <GlassDesertExpedition key={save.createdAt} save={save} suspended={settingsOpen}
+                onComplete={completeGlassDesert} onExit={() => go("homeworld")} />
             </div>
           </section>
         </Suspense>
@@ -4241,7 +4432,8 @@ export default function GameClient() {
           className="modal-backdrop"
           role="presentation"
           onMouseDown={(event) => {
-            if (event.currentTarget === event.target) {
+            if (event.currentTarget === event.target && !archiveTransferBusy) {
+              setCompleteImportPlan(null); setImportCandidate(null); ++archiveSelectionRef.current;
               setSettingsOpen(false);
               setResetArmed(false);
             }
@@ -4350,25 +4542,27 @@ export default function GameClient() {
             </div>
             <section className="save-transfer" aria-labelledby="save-transfer-title">
               <h3 id="save-transfer-title">Archives et récupération</h3>
-              <p>Exportez votre campagne pour la conserver sur un autre appareil. La chasse en cours, les configurations du vaisseau et les données THE PIT ne font pas partie de cet export ; THE PIT reste local et lié à cette campagne.</p>
+              <p>L’export léger conserve la campagne, les options, l’inventaire, l’apparence, les trophées, Homeworld et la Justice. L’archive intégrale ajoute la chasse suspendue et son checkpoint, le vaisseau, ses préréglages, l’atelier, l’entraînement, l’infirmerie, THE PIT et son dernier replay.</p>
+              <p>Seules les données déjà enregistrées sont transférées. La position instantanée d’une visite du hub et une expédition non rapportée ne sont pas des checkpoints sauvegardés. Aucun cloud ni envoi automatique.</p>
               <div className="modal-actions">
-                <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne</button>
+                <button type="button" className="ghost-button" onClick={exportCampaign}>Exporter la campagne légère</button>
+                <button type="button" className="ghost-button" disabled={archiveTransferBusy} onClick={exportComplete}>Exporter l’archive intégrale</button>
                 <button type="button" className="ghost-button" onClick={() => persist(save)}>Réessayer la sauvegarde</button>
               </div>
               <label className="save-import-label">Charger une archive JSON
-                <input type="file" accept="application/json,.json" onChange={async (event) => {
-                  const file = event.currentTarget.files?.[0];
-                  event.currentTarget.value = "";
-                  setImportCandidate(null);
-                  if (!file) return;
-                  if (file.size > 2_000_000) { setSaveTransferMessage("Archive trop volumineuse (2 Mo maximum)."); return; }
-                  try {
-                    const parsed = parseSaveImport(await file.text());
-                    setImportCandidate(parsed.save);
-                    setSaveTransferMessage(parsed.save ? "Archive vérifiée. Confirmez son remplacement ci-dessous." : `Archive refusée (${parsed.failure}). Aucune donnée remplacée.`);
-                  } catch { setSaveTransferMessage("Impossible de lire ce fichier. Aucune donnée remplacée."); }
-                }} />
+                <input type="file" accept="application/json,.json" disabled={screen !== "title" || archiveTransferBusy} onChange={readArchiveFile} />
               </label>
+              {screen !== "title" && <p>Pour remplacer les archives, suspendez la chasse éventuelle puis revenez au titre.
+                {screen !== "mission" && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
+              </p>}
+              {archiveTransferBusy && <p role="status">Vérification des archives…</p>}
+              {completeImportPlan && <div className="save-import-confirm" aria-label="Prévisualisation de l’archive intégrale">
+                <p><strong>{completeImportPlan.archive.campaign.profile.hunterName}</strong> · {completeImportPlan.archive.campaign.statistics.missionsCompleted} chasses terminées · contenu {completeImportPlan.archive.contentVersion}</p>
+                <ul>{completeArchiveSummary(completeImportPlan.archive).map((line) => <li key={line}>{line}</li>)}</ul>
+                <p>Fermez les autres fenêtres du jeu avant cette opération. Elle remplace la campagne et toutes les annexes indiquées. Une annexe absente retire la donnée correspondante pour cette campagne ; les archives THE PIT d’autres campagnes restent intactes. Exportez l’état actuel avant remplacement. Un changement local depuis cette prévisualisation annule la confirmation.</p>
+                <button type="button" className="ghost-button danger" disabled={archiveTransferBusy} onClick={confirmCompleteImport}>Confirmer le remplacement intégral</button>
+                <button type="button" className="ghost-button" disabled={archiveTransferBusy} onClick={() => { ++archiveSelectionRef.current; setCompleteImportPlan(null); }}>Annuler l’import intégral</button>
+              </div>}
               {importCandidate && <div className="save-import-confirm">
                 <p><strong>{importCandidate.profile.hunterName}</strong> · {importCandidate.statistics.missionsCompleted} chasses terminées · {formatTime(importCandidate.profile.playTimeSeconds)}</p>
                 <p>Cette opération remplace la campagne actuelle et retire sa chasse suspendue. Les archives THE PIT ne sont ni importées ni supprimées ; les données locales déjà liées à cette campagne seront reprises.</p>
@@ -4380,6 +4574,7 @@ export default function GameClient() {
             </section>
             <details className="game-credits">
               <summary>Crédits et statut du projet</summary>
+              <p>Version de contenu {GAME_CONTENT_VERSION} · {GAME_CONTENT_LABEL}</p>
               <p>La Longue Chasse : projet original de fan inspiré de Predator. Création et intégration des visuels avec OpenAI ; ambiances et effets sonores procéduraux.</p>
               <p>Projet non commercial, sans affiliation officielle revendiquée. Les références de franchise restent identifiées dans le codex. Une diffusion commerciale et une certification sur consoles ou Steam Deck ne sont pas acquises.</p>
             </details>
@@ -4388,6 +4583,7 @@ export default function GameClient() {
                 type="button"
                 className="ghost-button danger"
                 onClick={resetProgress}
+                disabled={archiveTransferBusy}
               >
                 {resetArmed
                   ? "Confirmer la réinitialisation"
@@ -4396,7 +4592,9 @@ export default function GameClient() {
               <button
                 type="button"
                 className="alien-button small"
+                disabled={archiveTransferBusy}
                 onClick={() => {
+                  setCompleteImportPlan(null); setImportCandidate(null); ++archiveSelectionRef.current;
                   setSettingsOpen(false);
                   setResetArmed(false);
                 }}

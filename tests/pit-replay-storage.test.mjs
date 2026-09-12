@@ -234,7 +234,7 @@ test("corrupt, oversized and future archives have distinct safe failures", () =>
 
   const incompatibleArchive = JSON.stringify({
     ...archiveWithReplay(),
-    latestReplay: { ...replay, engineVersion: replay.engineVersion - 1 },
+    latestReplay: { ...replay, engineVersion: 3 },
   });
   storage.setItem(key, incompatibleArchive);
   assert.equal(storageApi.loadPitReplayArchive({
@@ -280,7 +280,7 @@ test("storage, quota and silent-drop failures are never reported as persisted", 
   }).failure, "storage-unavailable");
 
   const unreadable = {
-    getItem() { throw new Error("denied"); },
+    getItem(key) { if (key === "yautja-long-hunt.archive-transfer") return null; throw new Error("denied"); },
     setItem() {},
   };
   assert.equal(storageApi.loadPitReplayArchive({
@@ -343,4 +343,20 @@ test("clear removes only the confirmed owner namespace, including corrupt data",
     ownerSaveCreatedAt: OWNER,
     storage,
   }), { cleared: true, failure: null });
+});
+
+
+test("published V4 replay bytes remain owned, readable and exportable without a V5 rewrite", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const historical = JSON.parse(await readFile(new URL("./fixtures/pit-replay-v4-throw.json", import.meta.url), "utf8"));
+  const archive = storageApi.withLatestPitReplay(storageApi.createPitReplayArchive(OWNER), historical.replay, UPDATED);
+  const storage = memoryStorage();
+  const written = storageApi.writePitReplayArchive(archive, { ownerSaveCreatedAt: OWNER, storage });
+  assert.equal(written.persisted, true);
+  const before = [...storage.values.entries()];
+  const loaded = storageApi.loadPitReplayArchive({ ownerSaveCreatedAt: OWNER, storage });
+  assert.equal(loaded.loaded, true);
+  assert.equal(loaded.archive.latestReplay.engineVersion, 4);
+  assert.equal(replayApi.serializePitReplay(loaded.archive.latestReplay), JSON.stringify(historical.replay));
+  assert.deepEqual([...storage.values.entries()], before);
 });

@@ -1,37 +1,53 @@
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
 import type { RankId } from "../types";
+import { normalizeGlassDesertProof, type GlassDesertProof } from "./glassDesert";
+export type HomeworldPlayableRegionId = "ash-marches" | "glass-desert";
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./homeworldExpedition";
+import {
+  HOMEWORLD_DISTRICTS,
+  HOMEWORLD_POINT_POSITIONS,
+  districtAtHomeworldPosition,
+  type HomeworldActor,
+} from "./homeworldCity";
+export {
+  HOMEWORLD_ACTOR,
+  HOMEWORLD_BUILDINGS,
+  HOMEWORLD_DISTRICTS,
+  HOMEWORLD_GENERIC_HUNTER_PLATES,
+  HOMEWORLD_NPC_COLLIDERS,
+  HOMEWORLD_NPC_PLATES,
+  HOMEWORLD_POINT_POSITIONS,
+  HOMEWORLD_POINT_PROP_COLLIDERS,
+  HOMEWORLD_PROPS,
+  HOMEWORLD_STREETS,
+  HOMEWORLD_TROPHY_SLOTS,
+  HOMEWORLD_WORLD,
+  createHomeworldActor,
+  homeworldBuildingCollision,
+  homeworldBuildingDoorPosition,
+  homeworldCollisionAt,
+  homeworldHeroPlate,
+  homeworldNpcPlate,
+  homeworldTrophyDisplays,
+  isHomeworldTerrainWalkable,
+  isHomeworldWalkable,
+  nearestHomeworldDoor,
+  pointInHomeworldPolygon,
+  polygonCss,
+  shouldFadeHomeworldForeground,
+  stepHomeworldActor,
+  type HomeworldActor,
+  type HomeworldCollision,
+  type HomeworldDistrict,
+  type HomeworldFootprint,
+  type HomeworldInput,
+  type HomeworldTrophyDisplay,
+} from "./homeworldCity";
 
 export type HomeworldService = "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "pit" | "justice";
 export type HomeworldWitnessChoice = "protect" | "restitution" | "investigate";
 export type HomeworldEvidenceId = "suspect-trophy" | "memory-register" | "undercity-testimony";
 export type HomeworldAudienceOutcome = "protected-witness" | "ordered-restitution" | "continued-investigation";
-
-export const HOMEWORLD_WORLD = { width: 4_800, height: 1_700 } as const;
-export const HOMEWORLD_ACTOR = { halfWidth: 24, height: 100, walkSpeed: 300, liftSpeed: 250, jumpSpeed: 420, gravity: 1_000, tickSeconds: 1 / 60 } as const;
-export interface HomeworldDistrict { id: string; name: string; description: string; x: number; y: number; width: number; height: number; floorY: number; accent: string }
-const district = (id: string, name: string, description: string, column: number, floorY: number, accent: string): HomeworldDistrict => ({ id, name, description, x: 120 + column * 1_200, y: floorY - 360, width: 960, height: 360, floorY, accent });
-export const HOMEWORLD_DISTRICTS: readonly HomeworldDistrict[] = [
-  district("port", "Port des Chasses", "Ton vaisseau reste ton refuge. Les convois et les navettes animent les quais.", 0, 1_500, "#dfb078"),
-  district("market", "Marché des Clans", "Des échoppes spécialisées se partagent la grande route des artisans.", 1, 1_500, "#9ec9bd"),
-  district("forges", "Forges Profondes", "Les plateformes industrielles préparent armes et parures sans supprimer la forge du vaisseau.", 2, 1_500, "#ef925b"),
-  district("undercity", "Sous-Cité", "Des refuges et des galeries de maintenance relient les quartiers loin des regards.", 3, 1_500, "#a494ce"),
-  district("esplanade", "Esplanade des Trophées", "Les prises possédées sont présentées publiquement ; aucune collection achetée ne prouve une chasse.", 0, 1_000, "#d9c28a"),
-  district("terraces", "Terrasses des Chasseurs", "Les instructeurs proposent les exercices de mobilité, de visée et de camouflage.", 1, 1_000, "#a8c98a"),
-  district("clans", "Domaine des Clans", "Délégations, repos et soins gardent les services ordinaires accessibles.", 2, 1_000, "#8bbaca"),
-  district("enforcers", "Bastion des Enforcers", "Les preuves précèdent les accusations. Un témoignage compte davantage qu'une rumeur.", 3, 1_000, "#c3b8b0"),
-  district("memory", "Maison de la Mémoire", "Les registres permettent de comparer l'origine des prises et leurs marques.", 0, 500, "#99cbd1"),
-  district("arenas", "Grandes Arènes", "THE PIT conserve son entrée propre ; il ne verrouille aucune étape de l'enquête.", 1, 500, "#d59b8e"),
-  district("temple", "Temple des Rites", "Les rites et rangs déjà acquis sont reconnus sans rétrograder le chasseur.", 2, 500, "#c5b6db"),
-  district("citadel", "Citadelle du Trône", "Le Roi de la Chasse représente cette cité et ses clans alliés, dans la continuité originale du jeu.", 3, 500, "#e2c56a"),
-];
-/** Three continuous public lanes and three shafts create two independent circulation loops. */
-export const HOMEWORLD_PLATFORMS = [500, 1_000, 1_500].map((y) => ({ id: `public-lane-${y}`, x: 100, y, width: 4_600, height: 28 }));
-export const HOMEWORLD_LIFTS = [
-  { id: "port-memory-lift", label: "Ascenseur des archives", x: 700, top: 500, bottom: 1_500, halfWidth: 56 },
-  { id: "central-lift", label: "Liaison des artisans", x: 2_400, top: 500, bottom: 1_500, halfWidth: 56 },
-  { id: "maintenance-lift", label: "Raccourci de maintenance", x: 4_100, top: 500, bottom: 1_500, halfWidth: 56 },
-] as const;
 
 export const HOMEWORLD_ORGANIZATIONS = [
   { id: "first-blood-houses", name: "Maisons du Premier Sang", description: "Des maisons attachées aux traditions, sans parler pour tous les Yautja." },
@@ -71,7 +87,7 @@ export const HOMEWORLD_REGIONS = [
   { id: "cold-crown", name: "Couronne Froide", description: "Très hauts massifs, glace et vestiges d'expéditions. Un carnivore isolé thermiquement laisse des indices physiques ; la préparation remplace une jauge de température punitive.", sourceCompleteness: "complete-description" },
   { id: "first-city-ruins", name: "Ruines de la Première Cité", description: "Site patrimonial, installations récentes suspectes, mécanismes de chasse, archives scellées, sentinelles et pièges.", sourceCompleteness: "complete-description" },
   { id: "forbidden-reserve", name: "Réserve Interdite", description: "Stations d'observation et confinement de créatures rapportées d'expédition. Les éventuels xénomorphes ne sont pas la faune ordinaire du monde natal.", sourceCompleteness: "complete-description" },
-].map((region) => ({ ...region, status: region.id === "ash-marches" ? "playable-introduction" as const : "not-playable" as const }));
+].map((region) => ({ ...region, status: (region.id === "ash-marches" || region.id === "glass-desert") ? "playable-introduction" as const : "not-playable" as const }));
 
 /** Complete recovered outline, explicitly separate from the playable introductory dossier. */
 export const HOMEWORLD_CAMPAIGN_ACTS = [
@@ -96,7 +112,7 @@ const regionDoors = [
   { districtId: "arenas", x: 2180, y: 500 },
   { districtId: "enforcers", x: 4660, y: 1000 },
 ];
-export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = [
+const HOMEWORLD_POINT_BLUEPRINTS: readonly HomeworldPoint[] = [
   { id: "personal-ship", label: "Sas de ton vaisseau", kind: "ship", districtId: "port", x: 240, y: 1_500, description: "Rentrer à bord sans quitter ta campagne ni perdre ton dossier." },
   { id: "dock-officer-point", label: "Officier des quais", kind: "npc", districtId: "port", x: 440, y: 1_500, npcId: "dock-officer", description: "Écouter les nouvelles du convoi." },
   { id: "suspect-trophy-point", label: "Trophée du convoi", kind: "evidence", districtId: "port", x: 960, y: 1_500, evidenceId: "suspect-trophy", description: "Inspecter la marque sans prendre possession du trophée." },
@@ -108,24 +124,33 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = [
   servicePoint("medbay-service", "Maison des soins", "clans", 3_000, 1_000, "medbay", "clan-healer"),
   { id: "enforcer-point", label: "Capitaine des Enforcers", kind: "service", service: "justice", districtId: "enforcers", x: 4_400, y: 1_000, npcId: "enforcer-captain", description: "Comprendre pourquoi une audience requiert plusieurs preuves." },
   { id: "memory-register-point", label: "Registre du mausolée", kind: "evidence", districtId: "memory", x: 450, y: 500, evidenceId: "memory-register", npcId: "memory-keeper", description: "Comparer la marque relevée aux quais avec les archives." },
-  servicePoint("memory-service", "Archives de chasse", "memory", 950, 500, "codex", "memory-keeper"),
+  { id: "memory-service", label: "Archives de chasse", kind: "service", service: "codex", districtId: "memory", x: 950, y: 500, description: "Service partagé avec ton vaisseau : ton équipement et ta progression sont conservés." },
   servicePoint("pit-service", "Entrée THE PIT", "arenas", 1_700, 500, "pit", "arena-steward"),
   { id: "temple-point", label: "Gardienne des rites", kind: "npc", districtId: "temple", x: 3_000, y: 500, npcId: "rite-keeper", description: "Faire reconnaître ton rang actuel, sans rite ni serment obligatoire." },
   { id: "audience-point", label: "Audience du Roi de la Chasse", kind: "audience", districtId: "citadel", x: 4_400, y: 500, npcId: "hunt-king", description: "Présenter le dossier et la décision expliquée au témoin." },
-  ...HOMEWORLD_REGIONS.map((region, index): HomeworldPoint => ({ id: `region-${region.id}`, label: region.name, kind: "region", ...regionDoors[index], regionId: region.id, description: region.id === "ash-marches" ? "Suivre le convoi dans les cendres, écarter la fausse piste et rapporter une preuve au port." : `${region.description} Région à produire : aucune chasse accessible ici.` })),
+  ...HOMEWORLD_REGIONS.map((region, index): HomeworldPoint => ({ id: `region-${region.id}`, label: region.name, kind: "region", ...regionDoors[index], regionId: region.id, description: (region.id === "ash-marches" || region.id === "glass-desert") ? region.id === "ash-marches" ? "Suivre le convoi dans les cendres, écarter la fausse piste et rapporter une preuve au port." : "Traverser le verre avec prudence et documenter les proies détournées. Rapport durable des Marches requis." : `${region.description} Région à produire : aucune chasse accessible ici.` })),
 ];
+export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEPRINTS.map((point): HomeworldPoint => {
+  const position = HOMEWORLD_POINT_POSITIONS[point.id as keyof typeof HOMEWORLD_POINT_POSITIONS];
+  if (!position) throw new Error(`Missing authored Homeworld position: ${point.id}`);
+  return { ...point, ...position };
+});
 
-export interface HomeworldProgress { version: 1; expeditions: { "ash-marches": HomeworldExpeditionProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
 const choices: readonly HomeworldWitnessChoice[] = ["protect", "restitution", "investigate"];
 const outcomes: Record<HomeworldWitnessChoice, HomeworldAudienceOutcome> = { protect: "protected-witness", restitution: "ordered-restitution", investigate: "continued-investigation" };
-export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, expeditions: { "ash-marches": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
+export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
 export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   const clean = defaultHomeworldProgress();
   if (!record(value) || value.version !== 1) return clean;
-  if (record(value.expeditions)) clean.expeditions["ash-marches"] = normalizeHomeworldExpeditionProof(value.expeditions["ash-marches"]);
+  if (record(value.expeditions)) {
+    clean.expeditions["ash-marches"] = normalizeHomeworldExpeditionProof(value.expeditions["ash-marches"]);
+    // V7 saves without the second region retain their first report unchanged.
+    if (clean.expeditions["ash-marches"]) clean.expeditions["glass-desert"] = normalizeGlassDesertProof(value.expeditions["glass-desert"]);
+  }
   const ids = (candidate: unknown, allowed: readonly string[]) => Array.isArray(candidate) ? allowed.filter((id) => candidate.includes(id)) : [];
   clean.visitedDistrictIds = ids(value.visitedDistrictIds, HOMEWORLD_DISTRICTS.map(({ id }) => id));
   clean.greetedNpcIds = ids(value.greetedNpcIds, HOMEWORLD_NPCS.map(({ id }) => id));
@@ -190,54 +215,31 @@ export function applyHomeworldAction(value: HomeworldProgress, action: Homeworld
   }
 }
 
-export interface HomeworldActor { x: number; y: number; vx: number; vy: number; grounded: boolean; facing: -1 | 1 }
-export interface HomeworldInput { moveX: number; climb: number; jumpPressed: boolean }
-export function createHomeworldActor(): HomeworldActor { return { x: 300, y: 1_500, vx: 0, vy: 0, grounded: true, facing: 1 }; }
-const landingAt = (x: number, y: number) => HOMEWORLD_PLATFORMS.find((platform) => x >= platform.x && x <= platform.x + platform.width && Math.abs(y - platform.y) < 0.01);
-function advanceActor(current: HomeworldActor, input: HomeworldInput, dt: number): HomeworldActor {
-  const horizontal = clamp(finite(input.moveX), -1, 1);
-  const vertical = clamp(finite(input.climb), -1, 1);
-  let x = clamp(current.x + horizontal * HOMEWORLD_ACTOR.walkSpeed * dt, 124, 4_676);
-  let y = current.y;
-  let vy = current.vy;
-  let grounded = false;
-  const lift = HOMEWORLD_LIFTS.find((item) => Math.abs(current.x - item.x) <= item.halfWidth && current.y >= item.top && current.y <= item.bottom);
-  const onLanding = Boolean(landingAt(current.x, current.y));
-  // Horizontal input exits a landing. Up/down alone starts a ride; releasing controls holds the cabin.
-  const riding = lift && !input.jumpPressed && !(horizontal !== 0 && onLanding) && (vertical !== 0 || (!onLanding && horizontal === 0 && current.vy === 0));
-  if (riding) {
-    x = lift.x;
-    y = clamp(current.y + vertical * HOMEWORLD_ACTOR.liftSpeed * dt, lift.top, lift.bottom);
-    vy = 0; grounded = Boolean(landingAt(x, y));
-  } else {
-    if (input.jumpPressed && (onLanding || (lift && current.vy === 0))) vy = -HOMEWORLD_ACTOR.jumpSpeed;
-    vy += HOMEWORLD_ACTOR.gravity * dt;
-    const intendedY = current.y + vy * dt;
-    y = intendedY;
-    if (vy >= 0) for (const platform of HOMEWORLD_PLATFORMS) {
-      if (x + HOMEWORLD_ACTOR.halfWidth > platform.x && x - HOMEWORLD_ACTOR.halfWidth < platform.x + platform.width && current.y <= platform.y + 0.01 && intendedY >= platform.y) { y = Math.min(y, platform.y); grounded = true; }
-    }
-    if (grounded) vy = 0;
-    y = clamp(y, HOMEWORLD_ACTOR.height, 1_500);
-  }
-  return { x, y, vx: (x - current.x) / dt, vy, grounded, facing: horizontal === 0 ? current.facing : horizontal < 0 ? -1 : 1 };
-}
-/** Bounded substeps prevent long-frame falls and preserve all authored one-way landings. */
-export function stepHomeworldActor(actor: HomeworldActor, input: HomeworldInput, elapsedSeconds: number): HomeworldActor {
-  let remaining = clamp(finite(elapsedSeconds), 0, 1 / 30);
-  if (remaining === 0) return actor;
-  let next: HomeworldActor = { x: clamp(finite(actor.x, 300), 124, 4_676), y: clamp(finite(actor.y, 1_500), HOMEWORLD_ACTOR.height, 1_500), vx: finite(actor.vx), vy: clamp(finite(actor.vy), -600, 1_400), grounded: actor.grounded === true, facing: actor.facing === -1 ? -1 : 1 };
-  let jumpPressed = input.jumpPressed;
-  while (remaining > 0.000001) { const dt = Math.min(remaining, HOMEWORLD_ACTOR.tickSeconds); next = advanceActor(next, { ...input, jumpPressed }, dt); jumpPressed = false; remaining -= dt; }
-  return next;
-}
 export function nearestHomeworldPoint(actor: Pick<HomeworldActor, "x" | "y">): HomeworldPoint | null {
   if (!Number.isFinite(actor.x) || !Number.isFinite(actor.y)) return null;
   let nearest: HomeworldPoint | null = null;
-  let distance = 110;
-  for (const point of HOMEWORLD_POINTS) { const candidate = Math.hypot(actor.x - point.x, (actor.y - point.y) * 1.5); if (candidate < distance) { distance = candidate; nearest = point; } }
+  let distance = 145;
+  for (const point of HOMEWORLD_POINTS) {
+    const candidate = Math.hypot(actor.x - point.x, (actor.y - point.y) * 0.82);
+    if (candidate < distance) { distance = candidate; nearest = point; }
+  }
   return nearest;
 }
-export function districtAtHomeworldActor(actor: Pick<HomeworldActor, "x" | "y">): HomeworldDistrict | null {
-  return HOMEWORLD_DISTRICTS.find((item) => actor.x >= item.x && actor.x <= item.x + item.width && actor.y >= item.y && actor.y <= item.floorY + 1) ?? null;
+export function districtAtHomeworldActor(actor: Pick<HomeworldActor, "x" | "y">) {
+  return districtAtHomeworldPosition(actor);
+}
+
+/** Validate and merge before durable storage; never changes honor, gear or acts. */
+export function recordGlassDesertExpedition(value:HomeworldProgress,raw:unknown):HomeworldActionResult {
+  const progress=normalizeHomeworldProgress(value),proof=normalizeGlassDesertProof(raw);
+  const result=(ok:boolean,changed:boolean,message:string)=>({progress,ok,changed,message});
+  if(!proof)return result(false,false,"Rapport du Désert incomplet ou incompatible.");
+  if(!progress.expeditions["ash-marches"])return result(false,false,"Un rapport durable des Marches de Cendre est requis avant cette enquête.");
+  const previous=progress.expeditions["glass-desert"];
+  if(previous&&(previous.crossingRoute!==proof.crossingRoute||previous.beaconDisposition!==proof.beaconDisposition))
+    return result(false,false,"Les choix de la première enquête sont conservés. Une revisite ne peut pas réécrire la traversée ni le sort de la balise.");
+  const merged=previous?{...previous,secretFound:previous.secretFound||proof.secretFound,ticks:Math.min(previous.ticks,proof.ticks)}:proof;
+  const changed=JSON.stringify(previous)!==JSON.stringify(merged);
+  progress.expeditions["glass-desert"]=merged;
+  return result(true,changed,changed?"Rapport du Désert prêt à enregistrer : détournement documenté, sans coupable désigné.":"Ce rapport et ses meilleurs relevés sont déjà conservés.");
 }

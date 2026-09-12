@@ -52,6 +52,22 @@ test("invalid extents and floor height cannot produce a valid level", () => {
   check(broken, /invalid dimensions or floor height/);
 });
 
+test("an explicit negative ceiling validates stacked rooms without weakening legacy bounds", () => {
+  const vertical = blueprint();
+  vertical.minY = -560;
+  vertical.platforms.push({
+    id: "vertical-test", x: 500, y: -120, width: 300, height: 24,
+    material: "root", routeId: "canopy", collision: "one-way",
+    noiseMultiplier: 0.6, trackPersistence: 0.2,
+  });
+  assert.deepEqual(world.validateWorldBlueprint(vertical), []);
+  const missingExtent = structuredClone(vertical);
+  delete missingExtent.minY;
+  check(missingExtent, /vertical-test escapes/);
+  vertical.minY = 1;
+  check(vertical, /invalid dimensions or floor height/);
+});
+
 test("hazard timing and damage reject non-finite values and negative damage", () => {
   for (const field of ["periodSeconds", "activeSeconds", "phaseSeconds"]) {
     const broken = blueprint();

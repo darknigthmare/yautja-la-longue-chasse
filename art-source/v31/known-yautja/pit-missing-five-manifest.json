@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "lotId": "v31-known-yautja-pit-missing-five",
+  "createdAt": "2026-09-12",
+  "scope": "Independent provenance and fidelity briefs for five static PIT identity plates: scarface, stone-heart, valkyrie, witch, and enforcer.",
+  "status": "integrated-static-candidates",
+  "rightsNote": "Original fan-made OpenAI artwork for this project. Non-official, with no franchise, rights-holder, or 1:1 certification.",
+  "coverage": {
+    "requestedFighters": 5,
+    "structuredPrompts": 5,
+    "generatedCandidateBitmaps": 5,
+    "staticCandidatesVisuallyReviewed": 5,
+    "runtimeIntegrationsConfirmedByPublicManifest": 5,
+    "animationClipsGeneratedOrReviewed": 0,
+    "officialCertifications": 0,
+    "oneToOneCertifications": 0
+  },
+  "stateDefinition": {
+    "integrated-static-candidate": "A producing agent generated the bitmap with built-in OpenAI ImageGen, reported a contact-sheet visual review, and the public V31 manifest records its runtime file and hash. This confirms one fixed fan-made plate only, not official art, exact reconstruction, or animation coverage.",
+    "integrated-proof": "A public runtime manifest entry with runtime path and verifiable file hash; file presence alone is insufficient."
+  },
+  "researchRun": {
+    "officialTextReview": {
+      "scarface": "NECA direct page returned HTTP 403; indexed official text reviewed.",
+      "stone-heart": "NECA Store official licensed product text reviewed directly.",
+      "valkyrie": "PlayStation Blog / IllFonic developer text reviewed directly.",
+      "witch": "IllFonic CommunityTeam release note reviewed directly; page date is 2025-04-24.",
+      "enforcer": "NECA direct page returned HTTP 403; indexed official text reviewed. The indexed text did not enumerate a reliable loadout."
+    },
+    "secondaryReview": "All five AVP Fandom direct requests returned HTTP 402. Those URLs are retained only as secondary community indexes; no visual claim was adopted from them.",
+    "visualSourceReview": "A separate browser inspection attempt in this research task was blocked by the local Windows sandbox helper. No primary-source screenshot is claimed as reviewed here.",
+    "candidateReview": "The producing agent separately confirmed static contact-sheet inspection of all five generated candidates."
+  },
+  "sourcePriority": [
+    "Direct game capture, primary comic panel, or rights-holder material for geometry and asymmetry.",
+    "Official publisher, developer, or licensed manufacturer text for identity and explicitly named equipment.",
+    "Local project lore for gameplay adaptation only.",
+    "Secondary community pages as discovery indexes only, never sole visual authority."
+  ],
+  "sourcesByFighter": {
+    "scarface": {
+      "officialOrLicensed": [
+        "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/"
+      ],
+      "secondary": [
+        "https://avp.fandom.com/wiki/Scarface"
+      ]
+    },
+    "stone-heart": {
+      "officialOrLicensed": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator"
+      ],
+      "secondary": [
+        "https://avp.fandom.com/wiki/Stone_Heart"
+      ]
+    },
+    "valkyrie": {
+      "officialOrLicensed": [
+        "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/"
+      ],
+      "secondary": [
+        "https://avp.fandom.com/wiki/Valkyrie_Predator"
+      ]
+    },
+    "witch": {
+      "officialOrLicensed": [
+        "https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352"
+      ],
+      "secondary": [
+        "https://avp.fandom.com/wiki/Witch_Predator"
+      ]
+    },
+    "enforcer": {
+      "officialOrLicensed": [
+        "https://necaonline.com/2014/08/closer-look-enforcer-predator-action-figure-from-series-12/",
+        "https://necaonline.com/2018/02/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-more/"
+      ],
+      "secondary": [
+        "https://avp.fandom.com/wiki/Enforcer_Predator"
+      ]
+    }
+  },
+  "localInputs": [
+    {
+      "path": "art-source/v26/known-yautja/roster.json",
+      "sha256": "bb3e020ba8a3bbc3fcdd31cfed8220790c74430ad464f95821096771a92b3f33",
+      "role": "roster IDs and curated source URLs"
+    },
+    {
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "role": "local lore and adaptation direction"
+    },
+    {
+      "path": "app/game/systems/pitFirstEdition.ts",
+      "sha256": "63d61e40a331652d4f19f71e3deed3c9ccfdea7a1ec7605dd10d21ac7900fd45",
+      "role": "PIT mechanics, not canonical visual proof"
+    },
+    {
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "role": "production fidelity boundaries"
+    }
+  ],
+  "adaptationBoundaries": [
+    "Scarface: Spear Gun and Maul are licensed, but simultaneous use and exact scar/gear asymmetry are not proven by the reviewed text.",
+    "Stone Heart: extended integrated blades and lights are licensed anchors; do not invent a portable loadout or LED colors.",
+    "Valkyrie: the official reviewed weapon is a two-handed Norse Hammer; the PIT spear is gameplay adaptation only.",
+    "Witch: bone/hide and tracking drone are official anchors; the PIT bow-snare is local adaptation, and the drone should have a separate asset.",
+    "Enforcer: never transfer the Bad Blood Predator's arsenal; omit a wrist speargun until primary imagery resolves geometry and side."
+  ],
+  "publicIntegrationCheck": {
+    "manifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "checkedOn": "2026-09-12",
+    "confirmed": true,
+    "observedScope": "V31 PIT plates: City Hunter and five previously missing fighters",
+    "observedEntries": [
+      "city-hunter",
+      "city-hunter-left",
+      "scarface",
+      "stone-heart",
+      "valkyrie",
+      "witch",
+      "enforcer"
+    ],
+    "note": "The public V31 manifest names all five fighters and records runtime paths and hashes. This confirms static runtime integration only; animation coverage remains zero.",
+    "checkedAt": "2026-09-12T14:57:24.879Z",
+    "manifestSha256AtCheck": "3315641984c8f3da4e4979ad4cd6de475826c88f807561ed717853f8bef86b2a"
+  },
+  "entries": [
+    {
+      "fighterId": "scarface",
+      "status": "integrated-static-candidate",
+      "promptPath": "art-source/v31/known-yautja/prompts/scarface-pit-static.json",
+      "promptSha256": "50fafab7e7a571e5e23d88c9d6251e2dfb279ff9d6f38310ff2931c97acd7ff0",
+      "candidateMasterPath": "art-source/v31/known-yautja/sources/scarface-chroma.png",
+      "candidateSha256": "1f7b4b48bec36e36c1fcca3fbc22d890d4f2956dead30fd929844aa6d80bce5d",
+      "generationOutputId": "exec-1ba677fe-78d9-4fee-a44e-99c245e5be88",
+      "integrated": true,
+      "animationClips": 0,
+      "officialCertification": false,
+      "oneToOneCertified": false,
+      "runtimeUrl": "/game/sprites/v31/film-plates/scarface.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/scarface.png",
+      "runtimeSha256": "db1e0e6cfa7bda03921b64fe20358b696241057c59f50cc90585fa554bac85c5",
+      "runtimeKind": "static-bitmap"
+    },
+    {
+      "fighterId": "stone-heart",
+      "status": "integrated-static-candidate",
+      "promptPath": "art-source/v31/known-yautja/prompts/stone-heart-pit-static.json",
+      "promptSha256": "80db2058441d568c68c46b1d6e1952f4e5c79ee0fd6d4d8ffc616e585fcd0e22",
+      "candidateMasterPath": "art-source/v31/known-yautja/sources/stone-heart-chroma.png",
+      "candidateSha256": "f292da99c582d19442defd892e6bd60c9f5ede84875087dac26f540bd6378ead",
+      "generationOutputId": "exec-23d90f1d-1802-4962-8003-565c1528e82b",
+      "integrated": true,
+      "animationClips": 0,
+      "officialCertification": false,
+      "oneToOneCertified": false,
+      "runtimeUrl": "/game/sprites/v31/film-plates/stone-heart.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/stone-heart.png",
+      "runtimeSha256": "3bc40905110d31d3a631a19e1ef81ec3fe478e588067b4550918e4ad5a9e6c4f",
+      "runtimeKind": "static-bitmap"
+    },
+    {
+      "fighterId": "valkyrie",
+      "status": "integrated-static-candidate",
+      "promptPath": "art-source/v31/known-yautja/prompts/valkyrie-pit-static.json",
+      "promptSha256": "2f9df0d098f7e0a351ebaf4d6c080ba46db708cbdf71aa8676978db7b6262b34",
+      "candidateMasterPath": "art-source/v31/known-yautja/sources/valkyrie-chroma.png",
+      "candidateSha256": "7bc43aca94fe60b30d14b13c7de54eded3811d4473cc7c8e3d2604bacde3c2e2",
+      "generationOutputId": "exec-ee2d108c-fcd2-4fde-b1a9-9d0110f16d30",
+      "integrated": true,
+      "animationClips": 0,
+      "officialCertification": false,
+      "oneToOneCertified": false,
+      "runtimeUrl": "/game/sprites/v31/film-plates/valkyrie.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/valkyrie.png",
+      "runtimeSha256": "1188e38aea42f070a58b38f57161ab1e52a3df3d9cc73d48d9324bca1a530e93",
+      "runtimeKind": "static-bitmap"
+    },
+    {
+      "fighterId": "witch",
+      "status": "integrated-static-candidate",
+      "promptPath": "art-source/v31/known-yautja/prompts/witch-pit-static.json",
+      "promptSha256": "c9e1cc5259726f0e6a98731ee76d68b90687ea8f42b42598108f6a8fff98ff62",
+      "candidateMasterPath": "art-source/v31/known-yautja/sources/witch-chroma.png",
+      "candidateSha256": "3f7825368a1e04ec394da8e8f23c6f93f4adb94c562ca4d50f4563a16146970c",
+      "generationOutputId": "exec-56605dc0-4810-4cbe-b1c7-391ea478ff08",
+      "integrated": true,
+      "animationClips": 0,
+      "officialCertification": false,
+      "oneToOneCertified": false,
+      "runtimeUrl": "/game/sprites/v31/film-plates/witch.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/witch.png",
+      "runtimeSha256": "a7ec3f48cee5f21243ab5e864c48a1d5ea6488fc4ca7180abbb2a0986efdf232",
+      "runtimeKind": "static-bitmap"
+    },
+    {
+      "fighterId": "enforcer",
+      "status": "integrated-static-candidate",
+      "promptPath": "art-source/v31/known-yautja/prompts/enforcer-pit-static.json",
+      "promptSha256": "343b4f85d561f87847aa8f643908327ce4e86faa057a05b6367e18fbbd8ae2ed",
+      "candidateMasterPath": "art-source/v31/known-yautja/sources/enforcer-chroma.png",
+      "candidateSha256": "e9ae6ae7b23594393ee9fdb7545365f1c10a211c58a75ced2f77182b393af895",
+      "generationOutputId": "exec-edba7c25-9243-45d6-96a7-3c2e68ea22f7",
+      "integrated": true,
+      "animationClips": 0,
+      "officialCertification": false,
+      "oneToOneCertified": false,
+      "runtimeUrl": "/game/sprites/v31/film-plates/enforcer.png",
+      "runtimePath": "public/game/sprites/v31/film-plates/enforcer.png",
+      "runtimeSha256": "3e5296ee60a90bcadb314b2ae900f2444f57479792456617ed3d04bc25801069",
+      "runtimeKind": "static-bitmap"
+    }
+  ],
+  "acceptanceGates": [
+    "Use direct primary visuals for anatomy, equipment geometry, and left/right asymmetry before calling any fighter fidelity-accepted.",
+    "Require exact opaque #00FF00 background, no green spill or subject green, no floor/shadow/text/logo/UI, and no crop.",
+    "Validate alpha extraction, runtime dimensions, hash, pivot, and public manifest entry before marking integrated.",
+    "Treat every plate as a fixed pose. A commercial combat set still requires independently authored and reviewed movement, attack, hit, defeat, transition, and effect clips."
+  ],
+  "warning": "This lot records sources, constraints, generation provenance, and static review only. It does not certify rights-holder approval, exact franchise reproduction, runtime integration, gameplay behavior, animation completeness, or commercial-release readiness."
+}

@@ -1,6 +1,6 @@
-/** Temporary compatibility for Vinext 0.0.50 on Windows.
- * Its cache keys use path.relative (backslashes), while requests use URL slashes.
- * Keep the dependency untouched and preserve the server's hidden metadata boundary.
+/** Windows compatibility for Vinext static-cache keys.
+ * Some builds use path.relative (backslashes), while requests use URL slashes.
+ * Preserve the server's hidden metadata boundary and keep installation idempotent.
  */
 const installed = new WeakSet();
 export function installWindowsStaticCacheCompatibility(CacheClass, platform = process.platform) {

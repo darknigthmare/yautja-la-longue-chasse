@@ -39,10 +39,9 @@ test("production assets resolve from URL paths through the real vinext cache wit
   installWindowsStaticCacheCompatibility(StaticFileCache, "linux");
   assert.equal(StaticFileCache.prototype.lookup, originalLookup, "non-Windows startup stays unchanged");
 
-  if (process.platform === "win32") {
-    assert.equal(cache.lookup(fixturePath), undefined, "reproduce vinext 0.0.50 slash/cache mismatch");
-    assert.ok(cache.lookup("/" + fixturePath.slice(1).replaceAll("/", "\\")), "file exists under the native cache key");
-  }
+  // Vinext 1.0 resolves canonical URL paths on Windows itself. Keep the
+  // compatibility hook as an idempotent guard for older packaged runtimes.
+  if (process.platform === "win32") assert.ok(cache.lookup(fixturePath));
   installWindowsStaticCacheCompatibility(StaticFileCache, "win32");
   const patchedLookup = StaticFileCache.prototype.lookup;
   installWindowsStaticCacheCompatibility(StaticFileCache, "win32");

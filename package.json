@@ -50,6 +50,7 @@
     "build:desktop": "vite build --config desktop/vite.config.ts",
     "package:windows": "npm run build:desktop && node scripts/package-desktop.mjs",
     "qa:desktop": "node scripts/verify-desktop.mjs",
+    "qa:desktop:package": "node scripts/verify-desktop-package.mjs",
     "sprites:qa": "node scripts/audit-known-yautja-sprite-roster.mjs --check && node scripts/audit-known-yautja-sprite-batch.mjs && node scripts/build-known-yautja-sprite-preview-v27.mjs --check && node scripts/build-known-hunter-sprite-preview-v28.mjs --check && node --experimental-strip-types --test tests/hunterSpriteAtlas.test.ts tests/hunterSpriteMotion.test.ts tests/known-hunter-preview-v28.test.mjs",
     "sprites:preview": "node scripts/build-known-hunter-sprite-preview-v28.mjs",
     "sprites:preview:v26": "node scripts/build-known-yautja-sprite-preview.mjs",
@@ -62,38 +63,38 @@
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
-    "next": "16.2.12",
+    "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.50.0",
+    "@cloudflare/vite-plugin": "1.54.8",
     "@electron/packager": "20.3.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
+    "@vitejs/plugin-rsc": "0.5.34",
     "drizzle-kit": "0.31.10",
     "electron": "44.2.0",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.12",
     "playwright-core": "1.63.0",
     "react-server-dom-webpack": "19.2.8",
-    "sharp": "0.35.3",
+    "sharp": "0.35.4",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
-    "vinext": "0.0.50",
+    "vinext": "^1.0.0-beta.9",
     "vite": "8.1.5",
-    "wrangler": "4.114.0"
+    "wrangler": "4.131.1"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {
       "esbuild": "0.25.12"
     },
     "postcss": "8.5.23",
-    "sharp": "0.35.3",
+    "sharp": "0.35.4",
     "undici": "7.29.0"
   },
   "type": "module"

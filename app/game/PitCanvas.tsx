@@ -27,6 +27,7 @@ import {
   getPitTechniqueBox,
   rematchPitCombat,
   stepPitCombat,
+  PIT_THROW_TECH_WINDOW_FRAMES,
   type PitArenaId,
   type PitAttackKind,
   type PitCombatEvent,
@@ -36,6 +37,16 @@ import {
   type PitInput,
   type PitTechniqueEffectState,
 } from "./systems/pitCombat";
+import {
+  advancePitPresentationCamera,
+  applyPitPresentationCamera,
+  type PitPresentationCamera,
+} from "./systems/pitCamera";
+import {
+  PIT_ARENA_CATALOGUE,
+  PIT_ARENA_CATALOGUE_SUMMARY,
+  PIT_ARENA_CATALOGUE_WAVES,
+} from "./systems/pitArenaCatalogue";
 import {
   PIT_CONTROL_ACTION_IDS,
   matchesControlAction,
@@ -85,6 +96,7 @@ import {
 } from "./systems/pitFirstEdition";
 import {
   createPitReplayReader,
+  stepPitReplayCombat,
   createPitReplayRecorder,
   normalizePitReplay,
   type PitReplay,
@@ -363,6 +375,12 @@ function cpuInput(state: PitCombatState): PitInput {
   ) {
     return { resource: true };
   }
+  if (state.pendingThrow) {
+    // React to a visible capture after five ticks, never to the player's input.
+    return state.pendingThrow.attackerSlot === 0 &&
+      state.pendingThrow.framesRemaining === 3 &&
+      state.pendingThrow.capturedFrame % 3 !== 0 ? { throw: true } : EMPTY_INPUT;
+  }
   if (cpu.phase !== "idle") return EMPTY_INPUT;
   const signedDistance = opponent.x - cpu.x;
   const distance = Math.abs(signedDistance);
@@ -409,6 +427,8 @@ function eventLabel(event: PitCombatEvent): string {
     ).toUpperCase();
   }
   if (event.type === "throw-start") return "SAISIE RITUELLE";
+  if (event.type === "throw-caught") return "SAISI · PROJECTION POUR DÉCHOPPER";
+  if (event.type === "throw-tech") return "DÉCHOPPE RÉUSSIE";
   if (event.type === "hit") return `${event.combo > 1 ? `${event.combo} COUPS · ` : ""}${event.damage} DÉGÂTS`;
   if (event.type === "block") return `GARDE · ${event.damage} DÉGÂTS RÉSIDUELS`;
   if (event.type === "traque-gain") return `TRAQUE +${event.amount}`;
@@ -541,6 +561,7 @@ function drawTechniqueEffect(
 function drawArena(
   canvas: HTMLCanvasElement,
   state: PitCombatState,
+  camera: PitPresentationCamera,
   highContrast: boolean,
   reducedGore: boolean,
   showHitboxes: boolean,
@@ -553,13 +574,29 @@ function drawArena(
   const arena = PIT_ARENAS[state.arenaId];
   const { width, height, groundY } = arena;
   context.clearRect(0, 0, width, height);
+  context.fillStyle = highContrast ? "#071d22" : arena.palette.sky;
+  context.fillRect(0, 0, width, height);
+  canvas.dataset.pitCameraMode = camera.mode;
+  canvas.dataset.pitCameraZoom = camera.zoom.toFixed(4);
+  canvas.dataset.pitCameraTargetZoom = camera.targetZoom.toFixed(4);
+  canvas.dataset.pitCameraCenterX = camera.centerX.toFixed(2);
+  canvas.dataset.pitCameraCenterY = camera.centerY.toFixed(2);
 
+  context.save();
+  applyPitPresentationCamera(context, width, height, camera);
+
+  // The presentation can reserve weapon tips beyond collision-wall coordinates.
+  // Extend only the painted backdrop and floor; arena geometry stays unchanged.
+  const viewLeft = camera.centerX - width / camera.zoom / 2;
+  const viewTop = camera.centerY - height / camera.zoom / 2;
+  const viewWidth = width / camera.zoom;
+  const viewHeight = height / camera.zoom;
   const sky = context.createLinearGradient(0, 0, 0, height);
   sky.addColorStop(0, highContrast ? "#071d22" : arena.palette.sky);
   sky.addColorStop(0.62, highContrast ? "#15302e" : arena.palette.ground);
   sky.addColorStop(1, "#020303");
   context.fillStyle = sky;
-  context.fillRect(0, 0, width, height);
+  context.fillRect(viewLeft, viewTop, viewWidth, viewHeight);
 
   context.save();
   context.globalAlpha = highContrast ? 0.82 : 0.64;
@@ -711,12 +748,13 @@ function drawArena(
   context.restore();
 
   context.fillStyle = highContrast ? "#06100e" : arena.palette.ground;
-  context.fillRect(0, groundY, width, height - groundY);
+  context.fillRect(viewLeft, groundY, viewWidth, Math.max(0, viewTop + viewHeight - groundY));
   context.strokeStyle = highContrast ? "#8fffe1" : arena.palette.accent;
   context.lineWidth = 5;
   context.beginPath();
-  context.moveTo(0, groundY + 1);
-  for (let x = 0; x <= width; x += 24) {
+  const floorLeft = Math.floor(viewLeft / 24) * 24;
+  context.moveTo(floorLeft, groundY + 1);
+  for (let x = floorLeft; x <= viewLeft + viewWidth + 24; x += 24) {
     context.lineTo(x, groundY + ((x * 13) % 7));
   }
   context.stroke();
@@ -891,6 +929,7 @@ function drawArena(
     context.stroke();
     context.globalAlpha = 1;
   }
+  context.restore();
 }
 
 function TouchButton({
@@ -945,7 +984,7 @@ export function FighterCard({
   const fighter = PIT_FIGHTERS[fighterId];
   const profile = getPitFirstEditionFighter(fighterId);
   const palette = paletteOverride ?? fighter.palette;
-  const keyArt = getPitFighterKeyArt(fighterId);
+  const keyArt = getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
   const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId);
   const selectedArt = keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
   const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
@@ -1021,6 +1060,15 @@ export default function PitCanvas({
   onRunTransition,
   lastReplay = null,
 }: PitCanvasProps) {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  const reducedCameraMotion = prefersReducedMotion || !screenShake;
   const [mode, setMode] = useState<PitMode>("cpu");
   const [leftId, setLeftId] = useState<PitPlayableFighterId>("jungle-hunter");
   const [rightId, setRightId] = useState<PitPlayableFighterId>("berserker");
@@ -1048,7 +1096,8 @@ export default function PitCanvas({
   const [recordedReplay, setRecordedReplay] = useState<PitReplay | null>(null);
   const [playbackReplay, setPlaybackReplay] = useState<PitReplay | null>(null);
   const [replayEnded, setReplayEnded] = useState(false);
-  const [showHelp, setShowHelp] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
+  const [showTrainingTools, setShowTrainingTools] = useState(false);
   const [trainingSettings, setTrainingSettings] = useState(() => createPitTrainingSettings());
   const [trainingSequence, setTrainingSequence] = useState<PitTrainingSequence | null>(null);
   const [trainingActivity, setTrainingActivity] = useState<PitTrainingActivity>("idle");
@@ -1083,6 +1132,7 @@ export default function PitCanvas({
   );
   const combatRef = useRef<PitCombatState | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const cameraRef = useRef<PitPresentationCamera | null>(null);
   const rootRef = useRef<HTMLElement>(null);
   const resultOverlayRef = useRef<HTMLDivElement>(null);
   const resultPrimaryRef = useRef<HTMLButtonElement>(null);
@@ -1363,6 +1413,7 @@ export default function PitCanvas({
     runTransitionAttemptRef.current += 1;
     setRunTransitionPersistence({ status: "idle", message: "" });
     setArenaId(nextArenaId);
+    cameraRef.current = null;
     resetLiveInputs();
     if (nextMode === "training" || nextMode === "descent") recorderRef.current = null;
     else beginRecording(next);
@@ -2278,7 +2329,9 @@ export default function PitCanvas({
             });
           }
         } else {
-          current = stepPitCombat(current, inputs);
+          current = playbackReplay
+            ? stepPitReplayCombat(current, inputs, playbackReplay.engineVersion)
+            : stepPitCombat(current, inputs);
         }
         if (mode === "training" && trainingLessonRef.current) {
           const nextLesson = evaluatePitTrainingLesson(trainingLessonRef.current, previousCombat, current);
@@ -2295,7 +2348,8 @@ export default function PitCanvas({
           const latest = current.events[current.events.length - 1];
           setAnnouncement(eventLabel(latest));
           const essential = [...current.events].reverse().find((event) =>
-            event.type === "round-start" || event.type === "round-end" || event.type === "match-end"
+            event.type === "round-start" || event.type === "round-end" || event.type === "match-end" ||
+            event.type === "throw-caught" || event.type === "throw-tech"
           );
           if (essential) setAriaAnnouncement(eventLabel(essential));
           if (latest.type === "hit" || latest.type === "block") {
@@ -2325,9 +2379,12 @@ export default function PitCanvas({
 
   useEffect(() => {
     if (!combat || !canvasRef.current) return;
+    const camera = advancePitPresentationCamera(cameraRef.current, combat, { reducedMotion: reducedCameraMotion });
+    cameraRef.current = camera;
     drawArena(
       canvasRef.current,
       combat,
+      camera,
       highContrast,
       reducedGore,
       combat.rules.mode === "training" && trainingSettings.showHitboxes,
@@ -2335,7 +2392,7 @@ export default function PitCanvas({
       equippedArcadeCosmetic?.palette ?? null,
       fighterArt,
     );
-  }, [combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedGore, trainingSettings.showHitboxes]);
+  }, [combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, reducedGore, trainingSettings.showHitboxes]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -2612,7 +2669,7 @@ export default function PitCanvas({
           <div>
             <span className={styles.eyebrow}>PREMIÈRE ÉDITION · SIMULATION NON CANONIQUE</span>
             <h2 id="pit-title">THE PIT</h2>
-            <p>12 combattants · 8 arènes · règles fixes · aucun gain de campagne</p>
+            <p>12 combattants · 8 arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · rigs provisoires ↗</a>
           </div>
           <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
@@ -2764,11 +2821,31 @@ export default function PitCanvas({
           </ul>
         </article>
 
+        <details className={styles.arenaCatalogue}>
+          <summary>
+            <span><strong>Répertoire des 100 arènes</strong><small>Contrat récupéré des conversations</small></span>
+            <span>{PIT_ARENA_CATALOGUE_SUMMARY.playable} jouables · {PIT_ARENA_CATALOGUE_SUMMARY.concept} en conception</span>
+          </summary>
+          <p className={styles.catalogueTruth}>Les huit stages actuels restent les seuls jouables. Les 92 autres sont des fiches de production : six plans P0–P5 visés, transitions réservées aux ruptures ou projections confirmées, deux combattants déplacés ensemble et dangers neutralisés en compétition.</p>
+          <div className={styles.catalogueWaves}>
+            {PIT_ARENA_CATALOGUE_WAVES.map((wave) => <section key={wave.id}>
+              <h3>{wave.label}<small>{wave.first}–{wave.last} · {wave.count}</small></h3>
+              <ol start={wave.first}>
+                {PIT_ARENA_CATALOGUE.filter(({ wave: entryWave }) => entryWave === wave.id).map((entry) => <li key={entry.id}>
+                  <span>{entry.name}</span>
+                  <em data-status={entry.runtimeStatus}>{entry.runtimeStatus === "playable" ? "Jouable · 4 plans runtime" : "Conception · cible P0–P5"}</em>
+                </li>)}
+              </ol>
+            </section>)}
+          </div>
+          <p className={styles.catalogueRights}>Les arènes 51–60 sont des études de composition. Elles exigent des visuels originaux du projet et ne copient aucun asset officiel.</p>
+        </details>
+
         <div className={styles.modeGrid} role="radiogroup" aria-label="Mode de combat">
           {([
             ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
             ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
-            ["training", "Entraînement", "Gel, avance d’un tick, quatre exercices guidés, mannequin et séquences d’entrées."],
+            ["training", "Entraînement", "Gel, avance d’un tick, cinq exercices guidés, mannequin et séquences d’entrées."],
             ["arcade", "Arcade individuel", "Huit rencontres propres au combattant, rival puis Warlord."],
             ["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement."],
             ["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss."],
@@ -3069,7 +3146,7 @@ export default function PitCanvas({
         ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          Silhouettes vectorielles temporaires ; profils et règles issus du moteur de combat actuel.<br />
+          14 combattants avec une illustration bitmap ; poses fixes, animations complètes encore à produire.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
@@ -3083,7 +3160,7 @@ export default function PitCanvas({
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
   const recentImpact = impact && combat.frame - impact.frame < 8;
-  const shake = screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
+  const shake = !reducedCameraMotion && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
   const descentResourceFeedbackActive = Boolean(
     descentResourceFeedback &&
       combat.frame - descentResourceFeedback.frame <
@@ -3161,7 +3238,9 @@ export default function PitCanvas({
         {activeAriaAnnouncement}
       </div>
       <header className={styles.matchHeader} inert={terminal}>
-        <button type="button" className={styles.utilityButton} onClick={() => setShowHelp((value) => !value)}>Commandes</button>
+        <button type="button" className={styles.utilityButton} aria-expanded={showHelp} onClick={() => setShowHelp((value) => !value)}>
+          {showHelp ? "Masquer les commandes" : "Commandes"}
+        </button>
         <span>
           {playbackReplay
             ? "RELECTURE"
@@ -3177,7 +3256,13 @@ export default function PitCanvas({
                       ? "DESCENTE · SURVIE"
                       : "ENTRAÎNEMENT"}
           {" · "}{arenaDefinition.name}
+          {reducedCameraMotion ? " · CAMÉRA FIXE" : ""}
         </span>
+        {trainingRules && !playbackReplay ? (
+          <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={() => setShowTrainingTools((value) => !value)}>
+            {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
+          </button>
+        ) : null}
         <button type="button" className={styles.utilityButton} onClick={returnToSelection}>Quitter · {shortcuts.pause}</button>
       </header>
 
@@ -3255,7 +3340,16 @@ export default function PitCanvas({
         <small>Animations complètes à produire. Le cercle annonce une attaque et l’arc montre son contact actif ; ces repères ne sont pas des poses animées.</small>
         {equippedArcadeCosmetic ? <small>La palette de l’Armure du Jugement colore le repère au sol ; les couleurs des PNG d’origine sont conservées.</small> : null}
       </div>
-      <div className={styles.arenaShell} style={{ transform: `translateX(${shake}px)` }}>
+      <div className={styles.throwTechStatus} data-active={combat.pendingThrow !== null}>
+        {playbackReplay?.engineVersion === 4
+          ? "RELECTURE V4 · règles historiques, sans fenêtre de déchoppe."
+          : combat.pendingThrow
+            ? <><strong>SAISIE · {combat.pendingThrow.framesRemaining}/{PIT_THROW_TECH_WINDOW_FRAMES} ticks</strong> {combat.pendingThrow.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / RT / PROJ. : nouvel appui pour déchopper.</>
+            : <>Déchoppe : Projection après la saisie · {PIT_THROW_TECH_WINDOW_FRAMES} ticks / 133 ms · relâchez puis réappuyez.</>}
+      </div>
+      <div className={styles.arenaShell} style={{ transform: `translateX(${shake}px)` }}
+        data-pit-frame={combat.frame} data-pit-throw-remaining={combat.pendingThrow?.framesRemaining ?? 0}
+        data-pit-throw-attacker={combat.pendingThrow?.attackerSlot ?? ""}>
         <canvas ref={canvasRef} className={styles.canvas} width={arenaDefinition.width} height={arenaDefinition.height} aria-hidden="true" />
         {mode === "descent" && descentCombatPresentation?.blackMistLongRange ? (
           <div
@@ -3510,7 +3604,42 @@ export default function PitCanvas({
         ) : null}
       </div>
 
-        {trainingRules && !playbackReplay ? (
+      {touchAvailable && !playbackReplay ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal}>
+        <div className={styles.touchGroup}>
+          <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="▶" token={controlBindings["pit.p1MoveRight"][0] ?? "KeyD"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="SAUT" token={controlBindings["pit.p1Jump"][0] ?? "Space"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+        </div>
+        <div className={styles.touchGroup}>
+          <TouchButton label="R" token={controlBindings["pit.p1AttackLight"][0] ?? "KeyJ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="M" token={controlBindings["pit.p1AttackMedium"][0] ?? "KeyK"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="L" token={controlBindings["pit.p1AttackHeavy"][0] ?? "KeyL"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="TECH." token={controlBindings["pit.p1AttackTechnique"][0] ?? "KeyU"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
+          <TouchButton label="GARDE ↑" token={controlBindings["pit.p1GuardHigh"][0] ?? "KeyI"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="GARDE ↓" token={controlBindings["pit.p1GuardLow"][0] ?? "KeyO"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="PROJ." token={controlBindings["pit.p1Throw"][0] ?? "KeyP"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+          <TouchButton label="TRAQUE" token={controlBindings["pit.p1Resource"][0] ?? "KeyH"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
+        </div>
+        {mode === "local" ? (
+          <div className={`${styles.touchGroup} ${styles.touchGroupPlayerTwo}`}>
+            <TouchButton label="J2 ◀" token={controlBindings["pit.p2MoveLeft"][0] ?? "Numpad4"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▼" token={controlBindings["pit.p2MoveDown"][0] ?? "Numpad2"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 ▶" token={controlBindings["pit.p2MoveRight"][0] ?? "Numpad6"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 SAUT" token={controlBindings["pit.p2Jump"][0] ?? "Numpad8"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 R" token={controlBindings["pit.p2AttackLight"][0] ?? "Numpad1"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 M" token={controlBindings["pit.p2AttackMedium"][0] ?? "Numpad3"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 L" token={controlBindings["pit.p2AttackHeavy"][0] ?? "Numpad5"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TECH." token={controlBindings["pit.p2AttackTechnique"][0] ?? "Numpad7"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↑" token={controlBindings["pit.p2GuardHigh"][0] ?? "Numpad9"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 GARDE ↓" token={controlBindings["pit.p2GuardLow"][0] ?? "Numpad0"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 PROJ." token={controlBindings["pit.p2Throw"][0] ?? "NumpadEnter"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+            <TouchButton label="J2 TRAQUE" token={controlBindings["pit.p2Resource"][0] ?? "NumpadSubtract"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
+          </div>
+        ) : null}
+      </div> : null}
+
+        {trainingRules && !playbackReplay && showTrainingTools ? (
           <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal}>
             <strong>LABORATOIRE · {trainingPaused ? "SIMULATION GELÉE" : "60 TICKS / SECONDE"}</strong>
             <div className={styles.trainingActions}>
@@ -3525,12 +3654,12 @@ export default function PitCanvas({
               <span className={styles.trainingRecording}>F{combat.frame} · boutons accessibles avec Tab puis Entrée / Espace.</span>
             </div>
             <details className={styles.trainingLessons} open={trainingLesson !== null}>
-              <summary>Exercices guidés · 4 disponibles</summary>
+              <summary>Exercices guidés · {PIT_TRAINING_LESSONS.length} disponibles</summary>
               <div className={styles.trainingActions}>
                 {PIT_TRAINING_LESSONS.map((lesson) => <button key={lesson.id} type="button" className={styles.trainingButton}
                   onClick={() => startTrainingLesson(lesson.id)}>{lesson.label}</button>)}
               </div>
-              <p>Mannequin pédagogique : {trainingLesson ? rightDefinition.name : "Jungle Hunter ou City Hunter, selon votre combattant"}. Déchoppe indisponible : cette mécanique n’existe pas encore dans le moteur V4.</p>
+              <p>Mannequin pédagogique : {trainingLesson ? rightDefinition.name : "Jungle Hunter ou City Hunter, selon votre combattant"}. Déchoppe : nouvel appui sur Projection dans les {PIT_THROW_TECH_WINDOW_FRAMES} ticks après la saisie. Au sol : repos, garde ou contre-saisie. Pas pendant une frappe, sa récupération ou un étourdissement par un coup.</p>
               {trainingLesson ? <div role="status" className={styles.lessonStatus} data-status={trainingLesson.status}>
                 <strong>{PIT_TRAINING_LESSONS.find((lesson) => lesson.id === trainingLesson.id)?.objective}</strong>
                 <p>{trainingLesson.message}</p>
@@ -3607,55 +3736,22 @@ export default function PitCanvas({
               <div>
                 <strong>JOUEUR 1 · PROFIL THE PIT</strong>
                 <span>{shortcuts.p1.left}/{shortcuts.p1.right} marcher · {shortcuts.p1.down} accroupi · {shortcuts.p1.jump} saut · {shortcuts.p1.light} rapide</span>
-                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection · {shortcuts.p1.resource} Traque</span>
+                <span>{shortcuts.p1.medium} moyen · {shortcuts.p1.heavy} lourd · {shortcuts.p1.technique} technique · {shortcuts.p1.guardHigh}/{shortcuts.p1.guardLow} gardes · {shortcuts.p1.throw} projection / déchoppe · {shortcuts.p1.resource} Traque</span>
               </div>
               {mode === "local" ? (
                 <div>
                   <strong>JOUEUR 2 · PROFIL THE PIT</strong>
                   <span>{shortcuts.p2.left}/{shortcuts.p2.right} marcher · {shortcuts.p2.down} accroupi · {shortcuts.p2.jump} saut · {shortcuts.p2.light} rapide</span>
-                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection · {shortcuts.p2.resource} Traque</span>
+                  <span>{shortcuts.p2.medium} moyen · {shortcuts.p2.heavy} lourd · {shortcuts.p2.technique} technique · {shortcuts.p2.guardHigh}/{shortcuts.p2.guardLow} gardes · {shortcuts.p2.throw} projection / déchoppe · {shortcuts.p2.resource} Traque</span>
                 </div>
               ) : null}
             </>
           )}
-          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection · Select Traque</span></div>
+          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection / déchoppe · Select Traque</span></div>
         </aside>
       ) : null}
 
-      {touchAvailable && !playbackReplay ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal}>
-        <div className={styles.touchGroup}>
-          <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="▶" token={controlBindings["pit.p1MoveRight"][0] ?? "KeyD"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="SAUT" token={controlBindings["pit.p1Jump"][0] ?? "Space"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-        </div>
-        <div className={styles.touchGroup}>
-          <TouchButton label="R" token={controlBindings["pit.p1AttackLight"][0] ?? "KeyJ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="M" token={controlBindings["pit.p1AttackMedium"][0] ?? "KeyK"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="L" token={controlBindings["pit.p1AttackHeavy"][0] ?? "KeyL"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="TECH." token={controlBindings["pit.p1AttackTechnique"][0] ?? "KeyU"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
-          <TouchButton label="GARDE ↑" token={controlBindings["pit.p1GuardHigh"][0] ?? "KeyI"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-          <TouchButton label="GARDE ↓" token={controlBindings["pit.p1GuardLow"][0] ?? "KeyO"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-          <TouchButton label="PROJ." token={controlBindings["pit.p1Throw"][0] ?? "KeyP"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-          <TouchButton label="TRAQUE" token={controlBindings["pit.p1Resource"][0] ?? "KeyH"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} wide />
-        </div>
-        {mode === "local" ? (
-          <div className={`${styles.touchGroup} ${styles.touchGroupPlayerTwo}`}>
-            <TouchButton label="J2 ◀" token={controlBindings["pit.p2MoveLeft"][0] ?? "Numpad4"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 ▼" token={controlBindings["pit.p2MoveDown"][0] ?? "Numpad2"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 ▶" token={controlBindings["pit.p2MoveRight"][0] ?? "Numpad6"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 SAUT" token={controlBindings["pit.p2Jump"][0] ?? "Numpad8"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 R" token={controlBindings["pit.p2AttackLight"][0] ?? "Numpad1"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 M" token={controlBindings["pit.p2AttackMedium"][0] ?? "Numpad3"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 L" token={controlBindings["pit.p2AttackHeavy"][0] ?? "Numpad5"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 TECH." token={controlBindings["pit.p2AttackTechnique"][0] ?? "Numpad7"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 GARDE ↑" token={controlBindings["pit.p2GuardHigh"][0] ?? "Numpad9"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 GARDE ↓" token={controlBindings["pit.p2GuardLow"][0] ?? "Numpad0"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 PROJ." token={controlBindings["pit.p2Throw"][0] ?? "NumpadEnter"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-            <TouchButton label="J2 TRAQUE" token={controlBindings["pit.p2Resource"][0] ?? "NumpadSubtract"} onChange={(token, pressed) => setTouchToken(1, token, pressed)} />
-          </div>
-        ) : null}
-      </div> : null}
+
     </section>
   );
 }

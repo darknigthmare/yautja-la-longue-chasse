@@ -1,9 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {
+import { build } from "esbuild";
+import { fileURLToPath } from "node:url";
+const bundled = await build({
+  entryPoints: [fileURLToPath(new URL("../app/game/systems/activeHuntSave.ts", import.meta.url))],
+  bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
+});
+const {
   ACTIVE_HUNT_SAVE_VERSION, ACTIVE_HUNT_RUNTIME_REVISION, ACTIVE_HUNT_STORAGE_KEY,
   claimActiveHuntSave, clearActiveHuntSave, loadActiveHuntSave, writeActiveHuntSave,
-} from "../app/game/systems/activeHuntSave.ts";
+} = await import("data:text/javascript;base64," + Buffer.from(bundled.outputFiles[0].text).toString("base64"));
 
 function candidate(overrides = {}) {
   return { version: ACTIVE_HUNT_SAVE_VERSION, runtimeRevision: ACTIVE_HUNT_RUNTIME_REVISION,
@@ -68,7 +74,7 @@ test("read denial, disappeared candidates and future or corrupt values are never
   const missing = fixture(); missing.values.clear();
   assert.equal(claimActiveHuntSave(candidate(), "resumed-tab", { storage: missing.storage }).failure, "stale-run");
   assert.equal(claimActiveHuntSave(candidate(), "resumed-tab", { storage: null }).failure, "storage-unavailable");
-  const denied = fixture(); denied.storage.getItem = () => { throw new Error("blocked"); };
+  const denied = fixture(); denied.storage.getItem = key => { if (key === "yautja-long-hunt.archive-transfer") return null; throw new Error("blocked"); };
   assert.equal(claimActiveHuntSave(candidate(), "resumed-tab", { storage: denied.storage }).failure, "read-failed");
   for (const bytes of ["{corrupt", JSON.stringify(candidate({ version: ACTIVE_HUNT_SAVE_VERSION + 1 })), JSON.stringify(candidate({ runtimeRevision: ACTIVE_HUNT_RUNTIME_REVISION + 1 }))]) {
     const f = fixture(); f.values.set(ACTIVE_HUNT_STORAGE_KEY, bytes);
@@ -79,9 +85,13 @@ test("read denial, disappeared candidates and future or corrupt values are never
 });
 
 test("failed claim readback remains inconclusive without deleting a successfully written identity", () => {
-  const f = fixture(); let reads = 0;
-  const get = f.storage.getItem;
-  f.storage.getItem = key => { reads += 1; if (reads === 2) throw new Error("readback blocked"); return get(key); };
+  const f = fixture(); let huntWritten = false, readbackDenied = false;
+  const get = f.storage.getItem, set = f.storage.setItem;
+  f.storage.setItem = (key, value) => { set(key, value); if (key === ACTIVE_HUNT_STORAGE_KEY) huntWritten = true; };
+  f.storage.getItem = key => {
+    if (key === ACTIVE_HUNT_STORAGE_KEY && huntWritten && !readbackDenied) { readbackDenied = true; throw new Error("readback blocked"); }
+    return get(key);
+  };
   const result = claimActiveHuntSave(candidate(), "resumed-tab", { storage: f.storage });
   assert.equal(result.persisted, false); assert.equal(result.failure, "write-failed");
   assert.equal(JSON.parse(f.values.get(ACTIVE_HUNT_STORAGE_KEY)).runId, "resumed-tab");

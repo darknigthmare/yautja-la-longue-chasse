@@ -7,6 +7,7 @@ export const PIT_TRAINING_LESSONS = [
   { id: "guard-low", label: "Garde basse", objective: "Bloquer trois attaques basses sans encaisser de coup.", hint: "Maintenez la garde basse. La garde haute ne protège pas de cette attaque basse." },
   { id: "anti-air", label: "Anti-air", objective: "Intercepter trois sauts avec une frappe lourde anti-air.", hint: "Anticipez le décollage du mannequin avec la frappe lourde. Un coup au sol ne compte pas." },
   { id: "corner-escape", label: "Sortie du coin", objective: "Repousser le mannequin et retrouver le contrôle hors du coin sans être touché.", hint: "Créez de l’espace avec vos frappes lourdes, avancez vers le centre entre les coups, puis retrouvez une posture neutre." },
+  { id: "throw-tech", label: "Déchoppe", objective: "Défaire trois saisies sans subir de projection.", hint: "Attendez la saisie, puis appuyez à nouveau sur Projection dans les 8 ticks (133 ms). Relâchez entre les essais ; un bouton maintenu ne compte pas." },
   { id: "traque", label: "Utiliser la Traque", objective: "Activer le camouflage, l’interrompre par une attaque et toucher.", hint: "350 points fournis pour cet exercice. Activez Traque au sol, sans garde ni autre action, puis approchez et frappez." },
 ] as const;
 
@@ -37,7 +38,7 @@ export function preparePitTrainingLesson(current: PitCombatState, id: PitTrainin
   const left = state.fighters[0];
   const right = state.fighters[1];
   left.x = id === "corner-escape" ? arena.leftWall + PIT_FIGHTERS[left.definitionId].bodyWidth / 2 + 4 : 380;
-  right.x = left.x + (id === "guard-low" ? 115 : id === "corner-escape" ? 95 : 78);
+  right.x = left.x + (id === "guard-low" ? 115 : id === "corner-escape" ? 95 : id === "throw-tech" ? 58 : 78);
   if (id === "traque") left.traque = PIT_CLOAK_COST;
   const lesson: PitTrainingLesson = {
     id, status: "running", progress: 0, target: id === "corner-escape" ? 15 : 3,
@@ -55,6 +56,11 @@ export function resolvePitTrainingLessonInput(lesson: PitTrainingLesson, state: 
   const distance = player.x - dummy.x;
   const toward = distance < 0 ? { left: true } : { right: true };
   const tick = lesson.elapsedTicks;
+  if (lesson.id === "throw-tech") {
+    if (state.pendingThrow) return {};
+    if (Math.abs(distance) > 60 && dummy.phase === "idle") return toward;
+    return tick % 150 === 30 ? { throw: true } : {};
+  }
   if (lesson.id === "guard-low") {
     if (Math.abs(distance) > 120 && dummy.phase === "idle") return toward;
     return tick % 150 === 30 ? { attack: "technique" } : {};
@@ -87,7 +93,7 @@ export function evaluatePitTrainingLesson(
       dummy.health < previous.fighters[1].health));
   const playerHit = next.events.some((event) => event.type === "hit" &&
     event.defenderId === player.definitionId && player.health < previous.fighters[0].health);
-  if ((lesson.id === "guard-low" || lesson.id === "corner-escape") && playerHit) {
+  if ((lesson.id === "guard-low" || lesson.id === "corner-escape" || lesson.id === "throw-tech") && playerHit) {
     return { ...lesson, elapsedTicks, observedFrame: next.frame, status: "failed", message: "Coup reçu. Recommencez la situation et ajustez votre timing." };
   }
   if (lesson.id === "guard-low") {
@@ -95,6 +101,10 @@ export function evaluatePitTrainingLesson(
       event.attackerId === dummy.definitionId && event.defenderId === player.definitionId &&
       PIT_FIGHTERS[dummy.definitionId].attacks[event.attack].hitLevel === "low") &&
       player.guard === "low") progress += 1;
+  } else if (lesson.id === "throw-tech") {
+    if (next.events.some((event) => event.type === "throw-tech" &&
+      event.attackerId === dummy.definitionId && event.defenderId === player.definitionId &&
+      player.health === previous.fighters[0].health)) progress += 1;
   } else if (lesson.id === "anti-air") {
     if (next.events.some((event) => event.type === "hit" && event.attackerId === player.definitionId &&
       event.antiAir && dummy.health < previous.fighters[1].health)) progress += 1;

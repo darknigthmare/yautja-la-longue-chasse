@@ -1,3 +1,5 @@
+import { archiveTransferPending } from "./archiveTransferGuard";
+
 /**
  * Persistent sidecar for THE PIT.
  *
@@ -1054,6 +1056,50 @@ export function normalizePitSave(value: unknown): PitSaveV5 | null {
   }
 }
 
+function hasSameCanonicalPitValue(left: unknown, right: unknown): boolean {
+  if (left === right) return true;
+  if (Array.isArray(left) || Array.isArray(right)) {
+    return (
+      Array.isArray(left) &&
+      Array.isArray(right) &&
+      left.length === right.length &&
+      left.every((entry, index) =>
+        hasSameCanonicalPitValue(entry, right[index]),
+      )
+    );
+  }
+  if (!isRecord(left) || !isRecord(right)) return false;
+  const leftKeys = Object.keys(left).sort();
+  const rightKeys = Object.keys(right).sort();
+  return (
+    leftKeys.length === rightKeys.length &&
+    leftKeys.every(
+      (key, index) =>
+        key === rightKeys[index] &&
+        hasSameCanonicalPitValue(left[key], right[key]),
+    )
+  );
+}
+
+/**
+ * Accept a current PIT sidecar only when every nested field is already
+ * canonical. Complete archives use this boundary so malformed V5 data cannot
+ * be repaired silently; normalizePitSave remains the explicit V0-V4 migration.
+ */
+export function validateCanonicalPitSave(value: unknown): PitSaveV5 | null {
+  if (
+    !isRecord(value) ||
+    value.version !== PIT_SAVE_VERSION ||
+    value.runtimeRevision !== PIT_SAVE_RUNTIME_REVISION
+  ) {
+    return null;
+  }
+  const normalized = normalizePitSave(value);
+  return normalized && hasSameCanonicalPitValue(value, normalized)
+    ? normalized
+    : null;
+}
+
 /** Apply once within the retained 1,024-result idempotency window. */
 export function applyPitResult(
   current: PitSaveV5,
@@ -1757,6 +1803,7 @@ export function writePitSave(
   }
   const storage = storageFromOptions(options);
   if (!storage) return { save, persisted: false, failure: "storage-unavailable" };
+  if (archiveTransferPending(storage)) return { save, persisted: false, failure: "write-denied" };
   const key = options.key ?? PIT_SAVE_STORAGE_KEY;
   try {
     const currentSerialized = storage.getItem(key);
@@ -1796,6 +1843,7 @@ export function writePitSave(
     return { save, persisted: false, failure: "invalid-save" };
   }
   try {
+    if (archiveTransferPending(storage)) return { save, persisted: false, failure: "write-denied" };
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) {
       return { save, persisted: false, failure: "write-denied" };
@@ -1826,6 +1874,7 @@ export function clearPitSave(
   }
   const storage = storageFromOptions(options);
   if (!storage) return { cleared: false, failure: "storage-unavailable" };
+  if (archiveTransferPending(storage)) return { cleared: false, failure: "write-denied" };
   if (typeof storage.removeItem !== "function") {
     return { cleared: false, failure: "write-denied" };
   }
@@ -1843,6 +1892,7 @@ export function clearPitSave(
         // was derived from the confirmed campaign owner.
       }
     }
+    if (archiveTransferPending(storage)) return { cleared: false, failure: "write-denied" };
     storage.removeItem(key);
     return storage.getItem(key) === null
       ? { cleared: true, failure: null }

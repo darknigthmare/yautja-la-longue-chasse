@@ -147,7 +147,7 @@ test("an autosave detects another tab replacing the loaded campaign", () => {
 });
 
 test("read errors and silently dropped writes never report durable persistence", () => {
-  const readBlocked = { getItem() { throw new Error("blocked"); }, setItem() {} };
+  const readBlocked = { getItem(name) { if (name === "yautja-long-hunt.archive-transfer") return null; throw new Error("blocked"); }, setItem() {} };
   assert.equal(loadSaveWithStatus(readBlocked, key).failure, "read-failed");
   assert.equal(writeSaveWithStatus(campaign(), readBlocked, key).failure, "read-failed");
   const dropped = { getItem() { return null; }, setItem() {} };
@@ -177,11 +177,17 @@ test("a reset cannot revive a foreign backup when redundancy storage fails", () 
 
 test("a failed confirmation stays explicit even when the primary write actually succeeded", () => {
   const storage = storageWith();
-  let reads = 0;
-  const get = storage.getItem;
+  let primaryWritten = false, readbackDenied = false;
+  const get = storage.getItem, set = storage.setItem;
+  storage.setItem = (name, value) => {
+    set(name, value);
+    if (name === key) primaryWritten = true;
+  };
   storage.getItem = name => {
-    reads += 1;
-    if (reads === 2) throw new Error("readback blocked");
+    if (name === key && primaryWritten && !readbackDenied) {
+      readbackDenied = true;
+      throw new Error("readback blocked");
+    }
     return get(name);
   };
   const result = writeSaveWithStatus(campaign(400), storage, key);

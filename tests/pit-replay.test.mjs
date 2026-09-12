@@ -95,7 +95,7 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
   assert.equal(replay.version, 3);
-  assert.equal(replay.engineVersion, 4);
+  assert.equal(replay.engineVersion, 5);
   assert.equal(replay.encoding, "input-rle-v3");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
 });
@@ -143,7 +143,7 @@ test("Falconer reconnaissance marking stays deterministic in training replays", 
     sourceFighterId: "falconer",
     framesRemaining: direct.fighters[1].techniqueStatus.framesRemaining,
   });
-  assert.equal(replay.engineVersion, 4);
+  assert.equal(replay.engineVersion, 5);
   assert.ok(pit.normalizePitReplay(replay));
 });
 
@@ -307,6 +307,7 @@ test("published V2 Jungle/Berserker basalt replays migrate to V3 after checksum 
   const finalState = pit.playPitReplay(current);
   const legacyState = JSON.parse(pit.serializePitCombat(finalState));
   legacyState.version = 2;
+  delete legacyState.pendingThrow;
   delete legacyState.techniqueEffects;
   delete legacyState.nextTechniqueEffectId;
   for (const fighter of legacyState.fighters) delete fighter.techniqueStatus;
@@ -386,7 +387,9 @@ test("a published V2 technique replay validates with V2 melee semantics before V
 
   const migrated = pit.normalizePitReplay(legacy);
   assert.ok(migrated);
-  assert.equal(migrated.metadata.checksum, current.metadata.checksum);
+  assert.equal(migrated.engineVersion, 4);
+  assert.equal(migrated.metadata.checksum, "eb9a5a41");
+  assert.notEqual(migrated.metadata.checksum, current.metadata.checksum);
   assert.notEqual(migrated.metadata.checksum, legacy.metadata.checksum);
   assert.deepEqual(pit.playPitReplay(migrated), pit.playPitReplay(current));
 });

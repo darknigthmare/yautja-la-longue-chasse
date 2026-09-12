@@ -7,8 +7,46 @@ type PilotTextures = { stone: HTMLImageElement | null; module: HTMLImageElement 
 /** Reusable pieces share collision bounds. Decorations remain on their own plane. */
 export function drawPilotBackdrop(context: CanvasRenderingContext2D, cameraX: number): void {
   context.save();
-  for (const room of PILOT_ROOMS.filter(room => room.level === "upper")) {
+  for (const room of PILOT_ROOMS) {
     if (room.x > cameraX + 1280 || room.x + room.width < cameraX) continue;
+    if (room.level === "canopy") {
+      const canopy = context.createLinearGradient(0, room.y, 0, 120);
+      canopy.addColorStop(0, "#0e3029ee");
+      canopy.addColorStop(0.58, "#173d2fc4");
+      canopy.addColorStop(1, "#08171322");
+      context.fillStyle = canopy;
+      context.fillRect(room.x, room.y, room.width, room.height + 130);
+      // Three-to-four-screen trunks create stable landmarks across the full height.
+      for (let x = room.x + 95; x < room.x + room.width; x += 260) {
+        context.fillStyle = "#182a22d9";
+        context.beginPath();
+        context.moveTo(x - 22, 405);
+        context.lineTo(x - 8, room.y + 35);
+        context.lineTo(x + 46, room.y + 20);
+        context.lineTo(x + 64, 405);
+        context.closePath();
+        context.fill();
+        context.strokeStyle = "#78916f55";
+        context.lineWidth = 4;
+        for (let y = room.y + 80; y < 300; y += 110) {
+          context.beginPath(); context.moveTo(x + 6, y); context.quadraticCurveTo(x + 70, y + 55, x + 34, y + 110); context.stroke();
+        }
+      }
+      continue;
+    }
+    if (room.level === "cave") {
+      const cave = context.createLinearGradient(0, room.y, 0, room.y + room.height);
+      cave.addColorStop(0, "#07110fcc");
+      cave.addColorStop(1, "#020707f4");
+      context.fillStyle = cave;
+      context.fillRect(room.x, room.y, room.width, room.height);
+      context.strokeStyle = "#4f786c55";
+      for (let x = room.x + 45; x < room.x + room.width; x += 150) {
+        context.beginPath(); context.moveTo(x, room.y); context.lineTo(x + 36, room.y + 52); context.lineTo(x + 70, room.y); context.stroke();
+      }
+      continue;
+    }
+    if (room.level !== "upper") continue;
     const wash = context.createLinearGradient(0, 150, 0, 392);
     wash.addColorStop(0, "#09231b00");
     wash.addColorStop(1, "#081e19e8");
@@ -86,7 +124,7 @@ export function drawPilotDevices(context: CanvasRenderingContext2D, progress: Ex
   }
   if (!progress.openedGateIds.includes("jungle-resonance-seal")) {
     context.fillStyle = "#d9b277";
-    for (let y = 48; y < PILOT_SEAL.height; y += 37) context.fillRect(PILOT_SEAL.x + 10, y, 8, 15);
+    for (let y = PILOT_SEAL.y + 48; y < PILOT_SEAL.y + PILOT_SEAL.height; y += 37) context.fillRect(PILOT_SEAL.x + 10, y, 8, 15);
     label(context, { ...PILOT_SEAL, y: 262 }, "SCEAU DE RÉSONANCE", "#ebc482");
   }
   if (!progress.openedGateIds.includes("jungle-canopy-hatch")) {

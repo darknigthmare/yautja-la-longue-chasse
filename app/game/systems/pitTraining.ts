@@ -389,7 +389,10 @@ export function getPitTrainingFrameReadout(
   let phaseTotalFrames: number | null = null;
   let framesRemaining: number | null = null;
 
-  if (action?.kind === "attack" && action.attack) {
+  if (state.pendingThrow) {
+    actionLabel = state.pendingThrow.attackerSlot === fighterSlot ? "Saisie en attente" : "Fenêtre de déchoppe";
+    framesRemaining = state.pendingThrow.framesRemaining;
+  } else if (action?.kind === "attack" && action.attack) {
     const definition = PIT_FIGHTERS[fighter.definitionId].attacks[action.attack];
     actionLabel = definition.label;
     actionTotalFrames = definition.startup + definition.active + definition.recovery;

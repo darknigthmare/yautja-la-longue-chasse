@@ -1,0 +1,688 @@
+.hub {
+  --gold: #d5ac63;
+  position: relative;
+  overflow: hidden;
+  color: #f1e7d7;
+  background: #090d10;
+  border: 1px solid #4d4639;
+  border-radius: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px;
+  background: linear-gradient(110deg, #1d2428, #111719);
+  border-bottom: 1px solid #5a4c36;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  margin: 3px 0 5px;
+  font-size: clamp(18px, 2vw, 25px);
+  font-weight: 700;
+}
+
+.header p {
+  margin: 0;
+  color: #b5bbb8;
+  font-size: 12px;
+}
+
+.header button,
+.dialog button,
+.footer button {
+  padding: 9px 13px;
+  color: #f0e4ce;
+  cursor: pointer;
+  background: #222a2c;
+  border: 1px solid #6a5b43;
+  border-radius: 5px;
+}
+
+.header button:focus-visible,
+.dialog button:focus-visible,
+.footer button:focus-visible,
+.touch button:focus-visible {
+  outline: 2px solid #f5ca7a;
+  outline-offset: 3px;
+}
+
+.viewport {
+  position: relative;
+  height: clamp(430px, 64vh, 720px);
+  overflow: hidden;
+  touch-action: pan-y;
+  isolation: isolate;
+  background: #11171b;
+  outline: none;
+}
+
+.viewport:focus-visible {
+  box-shadow: inset 0 0 0 2px #d5ac63;
+}
+
+.sky {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 14%, #d36d4030, transparent 26%),
+    linear-gradient(180deg, #110e17a0, #79442b30 45%, #17120ddd),
+    url('/game/backgrounds/volcanic-depth-v4.webp') center / cover;
+  filter: saturate(.58) contrast(1.08);
+}
+
+.distant {
+  position: absolute;
+  z-index: -2;
+  inset: -90px;
+  opacity: .28;
+  background:
+    linear-gradient(0deg, #05090c 3%, transparent 44%),
+    url('/game/backgrounds/ruins-depth-v8.png') center / cover;
+  mix-blend-mode: luminosity;
+}
+
+.haze {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, #03090d9c, transparent 18%, transparent 72%, #18151866);
+}
+
+.world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.street {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(152deg, transparent 0 42px, #d7b76d16 43px 45px, transparent 46px 88px),
+    linear-gradient(165deg, color-mix(in srgb, var(--street-accent), #24272a 78%), #10191c 72%);
+  border: 2px solid color-mix(in srgb, var(--street-accent), transparent 44%);
+  filter: drop-shadow(0 24px 20px #0009);
+}
+
+.street[data-kind='ramp'] {
+  background:
+    repeating-linear-gradient(160deg, #d3bd8b20 0 4px, transparent 5px 28px),
+    linear-gradient(140deg, #273133, #131c20);
+}
+
+.street[data-kind='undercity'] {
+  background:
+    repeating-linear-gradient(132deg, #765f9b18 0 3px, transparent 4px 34px),
+    linear-gradient(155deg, #171623, #090d12);
+}
+
+.district {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--district-accent), #1b2528 90%), #10181c 68%);
+  border: 2px solid color-mix(in srgb, var(--district-accent), transparent 46%);
+  filter: drop-shadow(0 20px 22px #0009);
+}
+
+.districtTexture {
+  position: absolute;
+  inset: 0;
+  opacity: .26;
+  background-position: center;
+  background-size: 360px auto;
+  transform: rotate(-2deg) scale(1.04);
+  mask-image: linear-gradient(140deg, #000 5%, #0007 64%, transparent 100%);
+}
+
+.district[data-texture='sanctum'] .districtTexture {
+  background-image: url('/game/ship-interior/v21/wall-sanctum.webp');
+}
+
+.district[data-texture='machinery'] .districtTexture {
+  background-image: url('/game/ship-interior/v21/wall-machinery.webp');
+}
+
+.district[data-texture='observatory'] .districtTexture {
+  background-image: url('/game/ship-interior/v21/wall-observatory.webp');
+}
+
+.districtName {
+  position: absolute;
+  top: 19%;
+  left: 18%;
+  color: #dfcdad;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-shadow: 0 2px 6px #000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+}
+
+.districtNumber {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--district-accent, #bf9354);
+  font: 10px ui-monospace, monospace;
+  letter-spacing: .26em;
+}
+
+.building {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(0 18px 13px #000c);
+  transform: skewX(-2deg);
+  transform-origin: 50% 100%;
+}
+
+.buildingFacade {
+  position: absolute;
+  inset: 19% 4% 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, #050a0dbc, transparent 18%, transparent 78%, #030709c7),
+    linear-gradient(0deg, #071013b8, transparent 38%),
+    var(--building-wall) center / cover;
+  border: 1px solid #5b625d;
+  border-top: 2px solid #b6955c;
+  clip-path: polygon(4% 8%, 93% 0, 100% 100%, 0 100%);
+}
+
+.buildingRoof {
+  position: absolute;
+  z-index: 2;
+  top: 5%;
+  left: -2%;
+  width: 104%;
+  height: 28%;
+  background:
+    repeating-linear-gradient(145deg, #bca87530 0 4px, transparent 5px 38px),
+    linear-gradient(155deg, #59605b, #11191c 66%);
+  border: 1px solid #8b7c61;
+  clip-path: polygon(8% 10%, 90% 0, 100% 58%, 12% 100%, 0 54%);
+}
+
+.building[data-variant='tower'] .buildingFacade {
+  clip-path: polygon(18% 0, 82% 0, 96% 100%, 4% 100%);
+}
+
+.building[data-variant='stall'] .buildingFacade {
+  inset: 28% 3% 0;
+}
+
+.building[data-variant='gate'] .buildingFacade {
+  border-top-color: #9dc4bb;
+}
+
+.buildingDoor {
+  position: absolute;
+  z-index: 3;
+  bottom: -4px;
+  left: 50%;
+  width: 28%;
+  height: 58%;
+  overflow: hidden;
+  opacity: .88;
+  transform: translateX(-50%);
+}
+
+.buildingDoor[data-side='left'] { left: 31%; }
+.buildingDoor[data-side='right'] { left: 69%; }
+
+.buildingDoorFrame {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.buildingDoorLeaf {
+  position: absolute;
+  z-index: 1;
+  right: 24%;
+  bottom: 5%;
+  left: 24%;
+  height: 72%;
+  background:
+    repeating-linear-gradient(90deg, #8ca69b22 0 7px, transparent 8px 14px),
+    linear-gradient(180deg, #344c4e, #111b20 74%);
+  border: 1px solid #7d8c7b;
+  box-shadow: inset 0 0 15px #000b;
+  transform-origin: 50% 0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.buildingDoorGlow {
+  position: absolute;
+  z-index: 3;
+  right: 28%;
+  bottom: 5%;
+  left: 28%;
+  height: 3px;
+  opacity: .22;
+  background: #8ccbb5;
+  box-shadow: 0 0 9px #6ee2bb;
+  transition: opacity 180ms ease, box-shadow 180ms ease;
+}
+
+.buildingDoor[data-active='true'] .buildingDoorLeaf {
+  opacity: .24;
+  transform: translateY(-48%) scaleY(.18);
+}
+
+.buildingDoor[data-active='true'] .buildingDoorGlow {
+  opacity: 1;
+  box-shadow: 0 0 17px #9bffdc;
+}
+
+.building > span {
+  position: absolute;
+  z-index: 4;
+  right: 11%;
+  bottom: 12px;
+  max-width: 52%;
+  padding: 4px 6px;
+  color: #d9c7a8;
+  font: 10px ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-align: right;
+  text-transform: uppercase;
+  background: #071013c7;
+  border-right: 2px solid #bd9558;
+}
+
+.decorProp {
+  position: absolute;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 8px #000b);
+  transition: opacity 160ms ease, filter 160ms ease;
+}
+
+.decorProp[data-plane='rear'] { opacity: .52; filter: saturate(.65) drop-shadow(0 8px 8px #000b); }
+.decorProp[data-plane='front'] { opacity: .7; filter: blur(.25px) saturate(.72) drop-shadow(0 15px 11px #000d); }
+.decorProp[data-plane='front'][data-faded='true'] { opacity: .14; filter: blur(.2px) saturate(.55) drop-shadow(0 8px 6px #0008); }
+
+.trophyDisplay {
+  position: absolute;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 7px #000d);
+  transform: translate(-50%, -100%);
+}
+
+.trophyDisplay[data-plane='rear'] {
+  opacity: .7;
+  filter: saturate(.8) drop-shadow(0 6px 6px #000b);
+}
+
+.point {
+  position: absolute;
+  width: 160px;
+  height: 210px;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+}
+
+.prop {
+  position: absolute;
+  inset: auto 0 0;
+  width: 160px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px #000b);
+}
+
+.stationProp {
+  width: 132px;
+  height: 118px;
+  opacity: .9;
+}
+
+.point[data-has-npc='true'][data-has-station='true'] .stationProp {
+  left: -34px;
+  width: 126px;
+  height: 112px;
+}
+
+.point[data-has-npc='true'][data-has-station='true'] .wholeNpc {
+  left: 47px;
+  width: 116px;
+}
+
+.point[data-kind='ship'] {
+  width: 420px;
+  height: 280px;
+}
+
+.point[data-kind='ship'] .prop {
+  width: 420px;
+  height: 255px;
+}
+
+.point[data-kind='evidence'] .prop {
+  left: 32px;
+  width: 96px;
+  height: 100px;
+}
+
+.point[data-kind='region'] .prop {
+  width: 160px;
+  height: 220px;
+  opacity: .62;
+}
+
+.wholeNpc {
+  position: absolute;
+  bottom: -2px;
+  left: 18px;
+  width: 124px;
+  height: 190px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 7px #000d);
+}
+
+.pointTag {
+  position: absolute;
+  bottom: 204px;
+  left: 50%;
+  max-width: 240px;
+  padding: 6px 10px;
+  color: #d5d4c2;
+  font-size: 11px;
+  white-space: nowrap;
+  background: #111a1de8;
+  border: 1px solid #66634f;
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+
+.point[data-kind='evidence'] .pointTag {
+  bottom: 112px;
+  color: #f1c57f;
+  border-color: #a77b3d;
+}
+
+.point[data-kind='ship'] .pointTag { bottom: 252px; }
+
+.pointBeacon {
+  position: absolute;
+  right: 35%;
+  bottom: 0;
+  left: 35%;
+  height: 3px;
+  background: #d3b27b;
+  box-shadow: 0 0 14px #ffc66a;
+}
+
+.hero {
+  position: absolute;
+  width: 132px;
+  height: 205px;
+  margin-top: -202px;
+  margin-left: -66px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.heroPlate {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 7px 6px #000e);
+}
+
+.hero[data-facing='-1'] .heroPlate {
+  transform: scaleX(-1);
+}
+
+.hero[data-moving='true'] .heroPlate {
+  filter: drop-shadow(0 9px 7px #000e) brightness(1.04);
+}
+
+.hero::after {
+  position: absolute;
+  right: 31px;
+  bottom: 0;
+  left: 31px;
+  height: 8px;
+  content: '';
+  background: #000b;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.heroMark {
+  position: absolute;
+  top: 5px;
+  left: 60px;
+  width: 13px;
+  height: 4px;
+  background: #c4f3e3;
+  box-shadow: 0 0 9px #59c4ab;
+}
+
+.foreground {
+  position: absolute;
+  z-index: 5;
+  bottom: -40px;
+  width: 110px;
+  height: 290px;
+  pointer-events: none;
+  opacity: .3;
+  background: url('/game/ship-interior/v21/foreground-rib.webp') center / contain no-repeat;
+}
+
+.location {
+  position: absolute;
+  z-index: 6;
+  top: 18px;
+  left: 18px;
+  pointer-events: none;
+  text-shadow: 0 2px 5px #000;
+}
+
+.location strong {
+  display: block;
+  color: #eed5a9;
+  font-size: 15px;
+}
+
+.location span {
+  display: block;
+  max-width: 410px;
+  margin-top: 5px;
+  color: #c5cdca;
+  font-size: 11px;
+}
+
+.minimap {
+  position: absolute;
+  z-index: 6;
+  top: 18px;
+  right: 18px;
+  width: 205px;
+  height: 102px;
+  background: #081116e8;
+  border: 1px solid #667069;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px #0008;
+}
+
+.mapDistrict {
+  position: absolute;
+  background: #65716844;
+  border: 1px solid #79897855;
+  transform: rotate(-3deg);
+}
+
+.mapDistrict[data-visited='true'] {
+  background: #b2925540;
+  border-color: #c2a96e88;
+}
+
+.mapActor {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #d6ffe9;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #62ebc0;
+  transform: translate(-50%, -50%);
+}
+
+.prompt {
+  position: absolute;
+  z-index: 7;
+  bottom: 22px;
+  left: 50%;
+  max-width: calc(100% - 32px);
+  padding: 10px 15px;
+  color: #f0dcb9;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  background: #111b20f2;
+  border: 1px solid #b5945d;
+  border-radius: 5px;
+  transform: translateX(-50%);
+}
+
+.prompt:focus-visible { outline: 2px solid #f0cf96; outline-offset: 3px; }
+.prompt kbd { margin-right: 10px; padding: 3px 6px; color: #13201f; font-size: 11px; background: #d5bf91; border-radius: 3px; }
+
+.pause {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  color: #ead4b1;
+  text-align: center;
+  background: #061014bb;
+  backdrop-filter: blur(3px);
+}
+
+.pause strong { font-size: 20px; }
+.pause button { padding: 11px 20px; color: #142021; cursor: pointer; background: #ddbd7f; border: 0; border-radius: 5px; }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 18px;
+  background: #10191e;
+  border-top: 1px solid #544d3c;
+}
+
+.progress { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
+.progress span { color: #aaa; font-size: 11px; }
+.help { padding: 8px 18px 11px; color: #9aafad; font-size: 11px; line-height: 1.7; background: #0e1619; }
+.help kbd { color: #dfc591; }
+
+.touch {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 16px;
+  background: #10191e;
+  border-top: 1px solid #293536;
+}
+
+.touchGroup { display: flex; gap: 6px; }
+.touch button { min-width: 42px; min-height: 42px; color: #e1e5d4; font-size: 16px; cursor: pointer; user-select: none; touch-action: none; background: #203033; border: 1px solid #536765; border-radius: 6px; }
+.touch button:active { background: #64735b; }
+
+.backdrop {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #03090dd4;
+  backdrop-filter: blur(5px);
+}
+
+.dialog {
+  width: min(640px, 100%);
+  max-height: calc(100% - 12px);
+  padding: 26px;
+  overflow: auto;
+  background: linear-gradient(145deg, #263032, #0c161c);
+  border: 1px solid #957747;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px #000a;
+}
+
+.dialog h3 { margin: 9px 0 15px; color: #ebd6b0; font-size: 25px; }
+.dialog p { color: #c5ceca; font-size: 14px; line-height: 1.7; }
+.dialogActions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+.dialog button:disabled { cursor: not-allowed; opacity: .5; }
+.dialog .primary { color: #10191c; background: #b69251; border-color: #d6b579; }
+.dialog ul { padding-left: 20px; color: #c7d1c9; font-size: 13px; line-height: 1.8; }
+
+.notice {
+  margin: 14px 0;
+  padding: 11px 14px;
+  color: #ddc5a0;
+  font-size: 12px;
+  line-height: 1.6;
+  background: #be9a5712;
+  border-left: 2px solid #ae8649;
+}
+
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip-path: inset(50%); }
+
+@media (max-width: 650px) {
+  .header { align-items: flex-start; gap: 8px; padding: 13px; }
+  .header p { display: none; }
+  .header button { padding: 8px; font-size: 11px; }
+  .viewport { height: 500px; }
+  .minimap { top: 10px; right: 10px; width: 138px; height: 70px; }
+  .location { top: 84px; left: 12px; }
+  .location span { max-width: 250px; }
+  .footer { padding: 10px 12px; }
+  .footer button { font-size: 11px; }
+  .dialog { padding: 20px; }
+  .dialog h3 { font-size: 21px; }
+  .touch { gap: 4px; padding: 8px; }
+  .touchGroup { gap: 4px; }
+  .touch button { min-width: 38px; }
+  .prompt { bottom: 12px; font-size: 12px; }
+  .help { padding: 8px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world,
+  .hero { will-change: auto; }
+}

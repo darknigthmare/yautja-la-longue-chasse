@@ -7,6 +7,7 @@ import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
 import { desktopSourceStamp, cleanDesktopSourceCommit } from "./stamp-desktop-build.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
+const releaseLabel = DESKTOP_RELEASE_TAG.toUpperCase();
 const buildRoot = await fs.realpath(path.join(root, "tmp", "desktop-build"));
 const renderer = path.join(buildRoot, "renderer");
 const sourceCommit = cleanDesktopSourceCommit();
@@ -28,7 +29,7 @@ for (const name of ["main.mjs", "protocol.mjs", "release.mjs"]) await fs.copyFil
 await fs.writeFile(path.join(stage, "package.json"), JSON.stringify({
   name: "yautja-la-longue-chasse-pc", productName: "Yautja La Longue Chasse",
   version: DESKTOP_VERSION, author: "Yautja La Longue Chasse - projet de fan", private: true, type: "module", main: "main.mjs",
-  description: "Jeu de fan non commercial - edition PC hors ligne V29",
+  description: `Jeu de fan non commercial - edition PC hors ligne ${releaseLabel}`,
 }, null, 2));
 const pkg = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 const directories = await packager({
@@ -39,7 +40,7 @@ const directories = await packager({
   appCopyright: "Projet de fan non commercial, sans affiliation officielle",
 });
 const directory = directories[0];
-const readme = "YAUTJA : LA LONGUE CHASSE - PC V29\r\n\r\nExtraire TOUT le dossier, puis lancer Yautja-La-Longue-Chasse.exe.\r\nAucun navigateur, Node, serveur ou reseau requis pour jouer.\r\nF11 : plein ecran. Alt : menu PC.\r\nAvant de fermer une chasse : Pause > Suspendre. Ne pas ignorer une alerte de sauvegarde.\r\nSauvegardes : %APPDATA%\\YautjaLaLongueChasse, distinctes du navigateur.\r\nLes exports/imports dans le jeu permettent le transfert de campagne.\r\nConserver ce dossier de profil lors d'une mise a jour manuelle.\r\n\r\nVersion de developpement non signee, non commerciale et non certifiee Steam Deck.\r\nLe runtime utilise Electron/Chromium et le moteur React/Canvas du jeu.\r\nContenu et visuels encore en production ; voir le rapprochement des conversations et le dossier V29 dans les sources.\r\nConserver LICENSE et LICENSES.chromium.html avec le programme.\r\n";
+const readme = `YAUTJA : LA LONGUE CHASSE - PC ${releaseLabel}\r\n\r\nExtraire TOUT le dossier, puis lancer Yautja-La-Longue-Chasse.exe.\r\nAucun navigateur, Node, serveur ou reseau requis pour jouer.\r\nF11 : plein ecran. Alt : menu PC.\r\nAvant de fermer une chasse : Pause > Suspendre. Ne pas ignorer une alerte de sauvegarde.\r\nSauvegardes : %APPDATA%\\YautjaLaLongueChasse, distinctes du navigateur.\r\nLes exports/imports dans le jeu permettent le transfert leger de campagne ou le transfert integral des archives et du checkpoint.\r\nConserver ce dossier de profil lors d'une mise a jour manuelle.\r\n\r\nVersion de developpement non signee, non commerciale et non certifiee Steam Deck.\r\nLe runtime utilise Electron/Chromium et le moteur React/Canvas du jeu.\r\nContenu et visuels encore en production ; voir le rapprochement des conversations et le dossier ${releaseLabel} dans les sources.\r\nConserver LICENSE et LICENSES.chromium.html avec le programme.\r\n`;
 await fs.writeFile(path.join(directory, "LIRE-MOI.txt"), readme, "utf8");
 const hashes = {};
 for (const name of ["Yautja-La-Longue-Chasse.exe", "resources/app.asar"]) {

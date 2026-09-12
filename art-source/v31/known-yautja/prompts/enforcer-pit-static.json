@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "assetId": "enforcer-pit-static",
+  "fighterId": "enforcer",
+  "rosterIds": {
+    "yautja": "Y-077",
+    "game": "C-009"
+  },
+  "status": "integrated-static-candidate",
+  "scope": "Single static PIT identity plate; no animation frames.",
+  "promptRecordType": "Post-generation fidelity and regeneration brief; not a verbatim record of the completed generation request.",
+  "generation": {
+    "provider": "OpenAI imagegen (built-in)",
+    "performed": true,
+    "sessionOutputId": "exec-edba7c25-9243-45d6-96a7-3c2e68ea22f7",
+    "candidateMasterPath": "art-source/v31/known-yautja/sources/enforcer-chroma.png",
+    "candidateSha256": "e9ae6ae7b23594393ee9fdb7545365f1c10a211c58a75ced2f77182b393af895",
+    "staticVisualReview": true,
+    "animationClipsReviewed": 0,
+    "officialCertification": false,
+    "oneToOneCertified": false
+  },
+  "sourceEvidence": [
+    {
+      "class": "official-licensed-product-page",
+      "url": "https://necaonline.com/2014/08/closer-look-enforcer-predator-action-figure-from-series-12/",
+      "reviewedAs": "Indexed official text; direct page access returned HTTP 403 during this research pass.",
+      "supports": [
+        "Enforcer identity",
+        "Dark Horse Predator: Bad Blood source",
+        "licensed action-figure interpretation",
+        "character-specific accessories are mentioned but not enumerated in the reviewed indexed text"
+      ]
+    },
+    {
+      "class": "official-licensed-event-post",
+      "url": "https://necaonline.com/2018/02/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-more/",
+      "reviewedAs": "Retained from the V26 official/licensed source list; it is contextual support, not a complete Enforcer turnaround."
+    },
+    {
+      "class": "secondary-community-index-only",
+      "url": "https://avp.fandom.com/wiki/Enforcer_Predator",
+      "reviewedAs": "Direct access returned HTTP 402; retained only as the V26 secondary index, with no visual claim adopted."
+    },
+    {
+      "class": "local-project-lore",
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "supports": [
+        "large super-class body direction",
+        "ochre mottling",
+        "central-blade Enforcer mask proxy",
+        "disciplined code-enforcement role",
+        "wrist speargun noted outside the current modular arsenal"
+      ]
+    },
+    {
+      "class": "local-production-catalogue",
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "supports": [
+        "Dark Horse and licensed-figure anchor",
+        "do not transfer the Bad Blood Predator arsenal",
+        "comic pages or turnaround still required"
+      ]
+    }
+  ],
+  "truthBoundary": {
+    "officialOrLicensed": [
+      "Enforcer comes from Dark Horse Predator: Bad Blood and has a licensed NECA figure interpretation.",
+      "The reviewed indexed official text does not enumerate enough accessory geometry for a reliable loadout reconstruction."
+    ],
+    "localInterpretation": [
+      "Super-class scale, ochre mottling, gunmetal palette, code-parry posture, and the central-blade mask shorthand come from project lore."
+    ],
+    "productionInference": [
+      "Empty hands are used to prevent accidental transfer of the Bad Blood Predator's arsenal.",
+      "The wrist speargun is omitted until a primary comic panel or licensed turnaround resolves its shape and side.",
+      "Exact mask crest, armor, trophies, and left/right asymmetry require attached primary images."
+    ],
+    "secondaryClaimsAdopted": [],
+    "oneToOneCertified": false
+  },
+  "structuredPrompt": {
+    "subject": "Enforcer Predator from Dark Horse Predator: Bad Blood, as original fan-made game art anchored to licensed identity evidence.",
+    "anatomy": [
+      "very large adult male Yautja proportions",
+      "disciplined upright power rather than berserker hunch",
+      "broad chest, long strong forearms, planted legs, correct Yautja hands and feet",
+      "umber-black veteran dreadlocks",
+      "mask remains on unless a primary comic panel proves an unmasked identity state"
+    ],
+    "equipment": [
+      "empty hands for the identity plate",
+      "reference-matched Enforcer biomask and gunmetal field armor",
+      "omit wrist speargun until its exact geometry and side are primary-source proven",
+      "do not borrow weapons, trophies, or armor from the Bad Blood Predator"
+    ],
+    "asymmetry": [
+      "preserve exact central crest or blade profile from the attached reference",
+      "preserve pauldron side, gauntlet designs, netting breaks, straps, pouches, trophies, scars, and armor damage",
+      "never mirror one reference side to invent the other"
+    ],
+    "poseAndFraming": [
+      "one complete full-body fighter",
+      "right-facing three-quarter lateral guarded code-parry stance",
+      "portrait canvas",
+      "subject about 80 percent of image height",
+      "at least 10 percent clear padding on every edge",
+      "feet, mask crest, armor tips, and dreadlock tips fully visible"
+    ],
+    "renderStyle": [
+      "dense cinematic 32-bit-era pre-rendered pixel art",
+      "authoritative readable silhouette at gameplay size",
+      "controlled metal, mesh, skin, and leather separation",
+      "no photoreal live-action compositing"
+    ],
+    "background": [
+      "exact flat opaque chroma green #00FF00",
+      "no gradient, floor, shadow, fog, particles, vignette, or scenery",
+      "no green light, spill, halo, reflection, or #00FF00 on the subject"
+    ],
+    "forbidden": [
+      "text",
+      "logo",
+      "UI",
+      "watermark",
+      "border",
+      "cropping",
+      "Bad Blood Predator arsenal",
+      "unproven wrist speargun",
+      "generic Predator mask",
+      "extra limbs",
+      "copied comic panel",
+      "copied official key art"
+    ]
+  },
+  "acceptanceGate": [
+    "Compare mask crest, armor, body scale, trophies, equipment, and asymmetry against attached primary comic panels or licensed turnarounds.",
+    "Reject borrowed Bad Blood gear and any claim of official, exact, or 1:1 fidelity.",
+    "Approve only as a static fan-made identity plate; animation coverage remains zero."
+  ],
+  "rightsAndLabel": "Original fan-made derivative artwork for this project; non-official and not certified 1:1.",
+  "integration": {
+    "confirmed": true,
+    "manifestPath": "public/game/sprites/v31/film-plates/manifest.json",
+    "runtimeUrl": "/game/sprites/v31/film-plates/enforcer.png",
+    "runtimePath": "public/game/sprites/v31/film-plates/enforcer.png",
+    "runtimeKind": "static-bitmap",
+    "runtimeSha256": "3e5296ee60a90bcadb314b2ae900f2444f57479792456617ed3d04bc25801069"
+  }
+}

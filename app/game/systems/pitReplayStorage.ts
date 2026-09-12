@@ -1,3 +1,4 @@
+import { archiveTransferPending } from "./archiveTransferGuard";
 import {
   PIT_REPLAY_VERSION,
   normalizePitReplay,
@@ -143,7 +144,7 @@ function hasIncompatibleEngine(value: unknown): boolean {
     typeof value.latestReplay.engineVersion === "number" &&
     Number.isInteger(value.latestReplay.engineVersion) &&
     value.latestReplay.engineVersion >= 1 &&
-    value.latestReplay.engineVersion < PIT_STATE_VERSION
+    value.latestReplay.engineVersion < 4
   );
 }
 
@@ -391,6 +392,8 @@ export function writePitReplayArchive(
     return { archive, persisted: false, failure: "storage-unavailable" };
   }
 
+  if (archiveTransferPending(storage)) return { archive, persisted: false, failure: "write-denied" };
+
   try {
     const currentSerialized = storage.getItem(key);
     if (currentSerialized !== null) {
@@ -437,6 +440,7 @@ export function writePitReplayArchive(
     return { archive, persisted: false, failure: "corrupt-save" };
   }
   try {
+    if (archiveTransferPending(storage)) return { archive, persisted: false, failure: "write-denied" };
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) {
       return { archive, persisted: false, failure: "write-denied" };
@@ -459,6 +463,7 @@ export function clearPitReplayArchive(
   if (!key) return { cleared: false, failure: "owner-conflict" };
   const storage = storageFromOptions(options);
   if (!storage) return { cleared: false, failure: "storage-unavailable" };
+  if (archiveTransferPending(storage)) return { cleared: false, failure: "write-denied" };
   if (typeof storage.removeItem !== "function") {
     return { cleared: false, failure: "write-denied" };
   }
@@ -483,6 +488,7 @@ export function clearPitReplayArchive(
     }
   }
   try {
+    if (archiveTransferPending(storage)) return { cleared: false, failure: "write-denied" };
     storage.removeItem(key);
     return storage.getItem(key) === null
       ? { cleared: true, failure: null }

@@ -25,6 +25,7 @@ import {
 
 function isExplorationFeature(id: string): boolean {
   return id.startsWith("jungle-pilot-")
+    || id.startsWith("jungle-vertical-")
     || id.startsWith("ice-region-")
     || id.startsWith("volcano-forge-")
     || id.startsWith("swamp-brood-")

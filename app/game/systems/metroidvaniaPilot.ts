@@ -1,6 +1,22 @@
 import type { ExplorationProgress, MissionId } from "../types";
 import { mergeExplorationProgress, normalizeExplorationProgress } from "./explorationProgress";
 import type { WorldBlueprint, WorldClimbable, WorldPlatform, WorldRect } from "./worldBlueprints";
+import {
+  OSERIS_CAVE_PLATFORMS,
+  OSERIS_ROOMS,
+  OSERIS_VERTICAL_BOUNDS,
+  OSERIS_VERTICAL_PLATFORMS,
+  isOserisVerticalGeometry,
+  oserisRoomAt,
+  oserisVerticalClimbables,
+  type OserisRoom,
+} from "./oserisLevelDesign";
+export {
+  OSERIS_LEVEL_DESIGN_SUMMARY,
+  OSERIS_ROOM_CONNECTIONS,
+  OSERIS_VERTICAL_BOUNDS,
+  targetOserisCameraY,
+} from "./oserisLevelDesign";
 
 export const PILOT_MISSION_ID: MissionId = "jungle-vey";
 export const PILOT_UPPER_FLOOR_Y = 392;
@@ -13,27 +29,15 @@ export const PILOT_SECRET_ID = "jungle-clan-cache";
 // Runtime coordinates, with x/y at the top-left. Render and collision share them.
 export const PILOT_MODULE: Readonly<WorldRect> = { x: 2522, y: 560, width: 56, height: 64 };
 export const PILOT_CACHE: Readonly<WorldRect> = { x: 1652, y: 340, width: 56, height: 52 };
-export const PILOT_SEAL: Readonly<WorldRect> = { x: 1120, y: 0, width: 28, height: 392 };
+export const PILOT_SEAL: Readonly<WorldRect> = { x: 1120, y: OSERIS_VERTICAL_BOUNDS.minY, width: 28, height: 1_192 };
 export const PILOT_HATCH: Readonly<WorldRect> = { x: 1980, y: 392, width: 160, height: 24 };
 export const PILOT_RIGHT_WALL: Readonly<WorldRect> = { x: 2200, y: 0, width: 28, height: 416 };
 export const PILOT_ROPE: Readonly<WorldRect> = { x: 2038, y: 240, width: 44, height: 384 };
 export const PILOT_GALLERY: Readonly<WorldRect> = { x: 800, y: 392, width: 1400, height: 24 };
 export const PILOT_REPLACEMENT_SPAN = { minX: 400, maxX: 2240 } as const;
 
-export interface PilotRoom extends WorldRect {
-  id: string;
-  label: string;
-  level: "upper" | "lower";
-}
-
-export const PILOT_ROOMS: readonly PilotRoom[] = [
-  { id: "jungle-pilot-approach", label: "Approche", level: "lower", x: 400, y: 0, width: 400, height: 624 },
-  { id: "jungle-pilot-underpass", label: "Passage inférieur", level: "lower", x: 800, y: 416, width: 1428, height: 208 },
-  { id: "jungle-pilot-module", label: "Relais d’impulsion", level: "lower", x: 2228, y: 416, width: 532, height: 208 },
-  { id: "jungle-pilot-gallery", label: "Galerie suspendue", level: "upper", x: 800, y: 0, width: 320, height: 392 },
-  { id: "jungle-pilot-archive", label: "Archives du clan", level: "upper", x: 1120, y: 0, width: 860, height: 392 },
-  { id: "jungle-pilot-descent", label: "Puits de retour", level: "upper", x: 1980, y: 0, width: 248, height: 416 },
-];
+export type PilotRoom = OserisRoom;
+export const PILOT_ROOMS: readonly PilotRoom[] = OSERIS_ROOMS;
 
 function validRect(rect: WorldRect): boolean {
   return [rect.x, rect.y, rect.width, rect.height].every(Number.isFinite)
@@ -42,9 +46,7 @@ function validRect(rect: WorldRect): boolean {
 
 /** Positions are body centres, so the upper room is never revealed through its floor. */
 export function pilotRoomAt(playerX: number, playerY: number): PilotRoom | null {
-  if (!Number.isFinite(playerX) || !Number.isFinite(playerY)) return null;
-  return PILOT_ROOMS.find((room) => playerX >= room.x && playerX < room.x + room.width
-    && playerY >= room.y && playerY < room.y + room.height) ?? null;
+  return oserisRoomAt(playerX, playerY);
 }
 
 export function discoverPilotRooms(progress: ExplorationProgress, playerRect: WorldRect): ExplorationProgress {
@@ -67,21 +69,25 @@ export function pilotPlatforms(progress: ExplorationProgress): WorldPlatform[] {
     platform("jungle-pilot-right-wall", PILOT_RIGHT_WALL),
     ...(!state.openedGateIds.includes(PILOT_SEAL_ID) ? [platform(PILOT_SEAL_ID, PILOT_SEAL)] : []),
     ...(!state.openedGateIds.includes(PILOT_HATCH_ID) ? [platform(PILOT_HATCH_ID, PILOT_HATCH)] : []),
+    ...OSERIS_VERTICAL_PLATFORMS,
+    ...OSERIS_CAVE_PLATFORMS,
   ];
 }
 
 export function pilotClimbables(progress: ExplorationProgress): WorldClimbable[] {
-  if (!normalizeExplorationProgress(progress).openedGateIds.includes(PILOT_HATCH_ID)) return [];
+  const state = normalizeExplorationProgress(progress);
+  const canopy = [...oserisVerticalClimbables(state)];
+  if (!state.openedGateIds.includes(PILOT_HATCH_ID)) return canopy;
   return [{
     ...PILOT_ROPE, id: "jungle-pilot-return-rope", kind: "rope", routeId: "canopy",
     climbSpeedMultiplier: 1, staminaPerSecond: 0,
     // The rope rises above the upper floor, leaving enough fall time to reach either lip.
     dismounts: [{ x: 1900, y: 392 }, { x: 2128, y: 392 }, { x: 2024, y: 624 }],
-  }];
+  }, ...canopy];
 }
 
 function authoredPilotGeometry(id: string): boolean {
-  return id.startsWith("jungle-pilot-") || id === PILOT_SEAL_ID || id === PILOT_HATCH_ID;
+  return id.startsWith("jungle-pilot-") || isOserisVerticalGeometry(id) || id === PILOT_SEAL_ID || id === PILOT_HATCH_ID;
 }
 
 /** Apply to runtime-expanded worlds only; other missions and the main ground route stay intact. */
@@ -91,8 +97,12 @@ export function applyPilotWorld(baseWorld: WorldBlueprint, progress: Exploration
     && rect.x + rect.width > PILOT_REPLACEMENT_SPAN.minX && rect.y < PILOT_GROUND_Y;
   return {
     ...baseWorld,
-    platforms: [...baseWorld.platforms.filter((entry) => !authoredPilotGeometry(entry.id) && !replaced(entry)), ...pilotPlatforms(progress)],
-    climbables: [...baseWorld.climbables.filter((entry) => !authoredPilotGeometry(entry.id) && !replaced(entry)), ...pilotClimbables(progress)],
+    minY: OSERIS_VERTICAL_BOUNDS.minY,
+    platforms: [...baseWorld.platforms.filter((entry) => !authoredPilotGeometry(entry.id) && entry.routeId !== "canopy" && !replaced(entry)), ...pilotPlatforms(progress)],
+    climbables: [...baseWorld.climbables.filter((entry) => !authoredPilotGeometry(entry.id) && entry.routeId !== "canopy" && !replaced(entry)), ...pilotClimbables(progress)],
+    routes: baseWorld.routes.map((route) => route.id === "canopy"
+      ? { ...route, requirements: ["climb", "aerial-boost"] as const }
+      : route),
   };
 }
 

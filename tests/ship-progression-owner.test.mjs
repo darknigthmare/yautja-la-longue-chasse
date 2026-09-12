@@ -138,7 +138,7 @@ test("storage errors are visible through ship write and reset results", () => {
   const save = oldSave(), state = createDefaultShipProgression(save);
   assert.equal(writeShipProgressionWithStatus(state, save, null).failure, "storage-unavailable");
   assert.equal(resetShipProgressionWithStatus(save, null).failure, "storage-unavailable");
-  const blocked = { getItem() { throw new Error("blocked"); } };
+  const blocked = { getItem(key) { if (key === "yautja-long-hunt.archive-transfer") return null; throw new Error("blocked"); } };
   assert.equal(writeShipProgressionWithStatus(state, save, blocked).failure, "read-failed");
   const dropped = { getItem() { return null; }, setItem() {} };
   assert.equal(writeShipProgressionWithStatus(state, save, dropped).failure, "write-failed");

@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import ts from "typescript";
+import { build } from "esbuild";
+import { fileURLToPath } from "node:url";
 
 const source = await readFile(
   new URL("../app/game/systems/activeHuntSave.ts", import.meta.url),
@@ -20,8 +22,12 @@ const errors = (transpiled.diagnostics ?? []).filter(
 );
 assert.deepEqual(errors, []);
 
+const bundle = await build({
+  entryPoints: [fileURLToPath(new URL("../app/game/systems/activeHuntSave.ts", import.meta.url))],
+  bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
+});
 const runtime = await import(
-  `data:text/javascript;base64,${Buffer.from(transpiled.outputText).toString("base64")}`
+  `data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString("base64")}`
 );
 
 const {
@@ -274,7 +280,8 @@ test("load reports invalid and incompatible persisted envelopes", () => {
 
 test("storage failures are never mistaken for successful persistence", () => {
   const readBlocked = {
-    getItem() {
+    getItem(key) {
+      if (key === "yautja-long-hunt.archive-transfer") return null;
       throw new Error("blocked");
     },
     setItem() {},

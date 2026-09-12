@@ -124,14 +124,17 @@ test("all 14 combatants retain their actual dedicated technique identity", () =>
     action: { kind: "attack", attack: "technique", frame: 12, connected: false } }, "berserker"), 112)?.techniqueId, "berserker-ground-shock");
 });
 
-test("live throws retain 7/2/21 timing and distinguish successful versus missed recovery", () => {
-  for (const connected of [false, true]) {
+test("historical V4 throws retain 7/2/21 while V5 whiffs retain that timing", () => {
+  for (const [stepper, connected] of [
+    [pit.stepPitCombatV4Compatibility, false], [pit.stepPitCombatV4Compatibility, true],
+    [pit.stepPitCombat, false],
+  ] as const) {
     let state = pit.createPitCombatState();
     state.fighters[0].x = 400;
     state.fighters[1].x = connected ? 450 : 850;
     const seen = new Map<number, NonNullable<ReturnType<typeof api.describePitHunterSpriteMotion>>>();
     for (let step = 0; step < 33; step++) {
-      state = pit.stepPitCombat(state, [step === 0 ? { throw: true } : {}, {}]);
+      state = stepper(state, [step === 0 ? { throw: true } : {}, {}]);
       if (state.fighters[0].action) {
         const motion = api.describePitHunterSpriteMotion(state.fighters[0], state.frame);
         assert.ok(motion);
@@ -148,6 +151,76 @@ test("live throws retain 7/2/21 timing and distinguish successful versus missed 
     assert.equal(seen.get(9)?.throwOutcome, connected ? "connected" : "whiff");
     assert.equal(seen.get(9)?.clipId, "pit.stand.throw.recovery." + (connected ? "connected" : "whiff"));
   }
+});
+
+test("V5 capture uses both roles and its eight-tick clock without substituting generic art", () => {
+  let state = pit.createPitCombatState();
+  state.fighters[0].x = 400; state.fighters[1].x = 450;
+  for (let step = 0; !state.pendingThrow && step < 12; step++)
+    state = pit.stepPitCombat(state, [step === 0 ? { throw: true } : {}, {}]);
+  assert.ok(state.pendingThrow);
+  const health = state.fighters.map(fighter => fighter.health);
+  for (let elapsed = 0; elapsed < pit.PIT_THROW_TECH_WINDOW_FRAMES; elapsed++) {
+    assert.ok(state.pendingThrow);
+    const before = pit.serializePitCombat(state); freeze(state);
+    for (const slot of [0, 1] as const) {
+      const motion = api.describePitCombatHunterSpriteMotion(state, slot)!;
+      assert.ok(motion);
+      assert.equal(motion.clipId, "pit.stand.throw.capture." + (slot === 0 ? "attacker" : "defender"));
+      assert.equal(motion.phase, "capture"); assert.equal(motion.elapsedTicks, elapsed);
+      assert.equal(motion.durationTicks, 8); assert.equal(motion.clock, "throw-phase");
+      assert.equal(api.resolvePitHunterSpriteFrame(atlas("pit.stand.blockstun.high", motion.facing), motion), null);
+      assert.equal(api.resolvePitHunterSpriteFrame(atlas("pit.stand.throw.active", motion.facing), motion), null);
+    }
+    assert.deepEqual(state.fighters.map(fighter => fighter.health), health);
+    assert.equal(pit.serializePitCombat(state), before);
+    state = pit.stepPitCombat(state, [{}, {}]);
+  }
+  assert.equal(state.pendingThrow, null); assert.ok(state.fighters[1].health < health[1]);
+  let cursor: PitHunterSpriteCursor | null = null;
+  for (let elapsed = 0; elapsed < 21; elapsed++) {
+    const motion: NonNullable<ReturnType<typeof api.describePitCombatHunterSpriteMotion>> = api.describePitCombatHunterSpriteMotion(state, 0, cursor)!;
+    assert.ok(motion);
+    assert.equal(motion.clipId, "pit.stand.throw.recovery.connected");
+    assert.equal(motion.elapsedTicks, elapsed); assert.equal(motion.durationTicks, 21);
+    assert.equal(motion.throwOutcome, "connected"); cursor = motion.cursor;
+    assert.equal(api.describePitCombatHunterSpriteMotion(state, 1)?.phase, "knockdown");
+    if (elapsed > 0) assert.equal(api.describePitCombatHunterSpriteMotion(state, 0), null,
+      "an arbitrary recovery seek must not guess a block or throw");
+    state = pit.stepPitCombat(state, [{}, {}]);
+  }
+  assert.equal(api.describePitCombatHunterSpriteMotion(state, 0, cursor)?.clipId, "idle");
+});
+
+test("V5 tech uses the real twelve-tick recovery and cannot mutate replay state or hitboxes", () => {
+  let state = pit.createPitCombatState();
+  state.fighters[0].x = 400; state.fighters[1].x = 450;
+  for (let step = 0; !state.pendingThrow && step < 12; step++)
+    state = pit.stepPitCombat(state, [step === 0 ? { throw: true } : {}, {}]);
+  assert.ok(state.pendingThrow);
+  const health = state.fighters.map(fighter => fighter.health);
+  state = pit.stepPitCombat(state, [{}, { throw: true }]);
+  assert.ok(state.events.some(event => event.type === "throw-tech"));
+  const cursors: (PitHunterSpriteCursor | null)[] = [null, null];
+  for (let elapsed = 0; elapsed < pit.PIT_THROW_TECH_RECOVERY_FRAMES; elapsed++) {
+    const bytes = pit.serializePitCombat(state);
+    const boxes = state.fighters.map(pit.getPitFighterBoxes); freeze(state);
+    for (const slot of [0, 1] as const) {
+      const motion = api.describePitCombatHunterSpriteMotion(state, slot, cursors[slot])!;
+      assert.ok(motion);
+      assert.equal(motion.clipId, "pit.stand.throw.recovery.teched");
+      assert.equal(motion.phase, "recovery"); assert.equal(motion.throwOutcome, "teched");
+      assert.equal(motion.elapsedTicks, elapsed); assert.equal(motion.durationTicks, 12);
+      assert.equal(api.resolvePitHunterSpriteFrame(atlas("pit.stand.blockstun.high", motion.facing), motion), null);
+      cursors[slot] = motion.cursor;
+    }
+    assert.equal(pit.serializePitCombat(state), bytes);
+    assert.deepEqual(state.fighters.map(pit.getPitFighterBoxes), boxes);
+    assert.deepEqual(state.fighters.map(fighter => fighter.health), health);
+    state = pit.stepPitCombat(state, [{}, {}]);
+  }
+  assert.equal(api.describePitCombatHunterSpriteMotion(state, 0, cursors[0])?.clipId, "idle");
+  assert.equal(api.describePitCombatHunterSpriteMotion(state, 1, cursors[1])?.clipId, "idle");
 });
 
 test("locomotion uses facing-relative travel, never a run or discrete backstep substitute", () => {
@@ -274,7 +347,7 @@ test("observing real fights cannot mutate simulation/replay serialization or hit
     api.resolvePitHunterSpriteFrame(atlas(current.clipId, current.facing), current);
     assert.equal(pit.serializePitCombat(state), before);
     assert.deepEqual(state.fighters.map(pit.getPitFighterBoxes), boxes);
-    assert.equal(state.version, 4);
+    assert.equal(state.version, pit.PIT_STATE_VERSION);
   }
 });
 

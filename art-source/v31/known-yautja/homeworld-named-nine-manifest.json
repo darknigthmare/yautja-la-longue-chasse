@@ -1,0 +1,915 @@
+{
+  "schemaVersion": 1,
+  "lotId": "v31-homeworld-named-nine",
+  "createdAt": "2026-09-12T15:26:39.118Z",
+  "scope": "Provenance for nine named Homeworld static plates: Alpha, Samurai, Cleopatra, Bionic, Broken Tusk, Ahab, Big Mama, Bad Blood comics, and Hashori.",
+  "status": "static-reviewed-candidates-integrated",
+  "rightsNote": "All nine bitmaps are original unofficial fan-made OpenAI artwork for this project. Project visual review is not rights-holder approval, official art, canonical proof, or 1:1 certification.",
+  "coverage": {
+    "namedHunters": 9,
+    "structuredPromptFiles": 9,
+    "sourceMasters": 9,
+    "runtimeStaticPlates": 9,
+    "publicManifestIntegrations": 9,
+    "animationClips": 0,
+    "officialCertifications": 0,
+    "oneToOneCertifications": 0
+  },
+  "publicManifest": {
+    "path": "public/game/sprites/v31/film-plates/manifest.json",
+    "sha256AtCheck": "7fb30ccae4c942d5050656d3e1e10c597b370b1fa0d0947e1cac89f0a4bd2139",
+    "scope": "V31 static plates: City Hunter right/left, five PIT fighters, and nine named Homeworld hunters",
+    "coverage": {
+      "fighters": 15,
+      "staticPoses": 16,
+      "homeworldStaticPlates": 9,
+      "completeAnimationSets": 0,
+      "animationClips": 0,
+      "officialCertifications": 0,
+      "oneToOneCertifications": 0
+    },
+    "totalEntries": 16,
+    "confirmedHomeworldEntries": [
+      "alpha",
+      "samurai",
+      "cleopatra",
+      "bionic",
+      "broken-tusk",
+      "ahab",
+      "big-mama",
+      "bad-blood-comic",
+      "hashori"
+    ]
+  },
+  "localInputs": [
+    {
+      "path": "art-source/v26/known-yautja/roster.json",
+      "sha256": "bb3e020ba8a3bbc3fcdd31cfed8220790c74430ad464f95821096771a92b3f33",
+      "role": "IDs, source links, certification gates"
+    },
+    {
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc",
+      "role": "project lore and explicit adaptation notes"
+    },
+    {
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0",
+      "role": "licensed-reference and missing-turnaround boundaries"
+    },
+    {
+      "path": "docs/yautja-visual-fidelity-rule.md",
+      "sha256": "dc49c84db96616ff6c353f833649c892fadacc2ecbb7c8508451f75e9e4df3be",
+      "role": "no modular or generated asset may prove canonical 1:1 fidelity"
+    }
+  ],
+  "researchBoundaries": [
+    "Official publisher, developer, and licensed-manufacturer references support only the details they explicitly show or state.",
+    "Secondary community and bibliographic pages are discovery indexes, not sole visual authority.",
+    "Local lore and modular presets are adaptation inputs, never canonical visual proof.",
+    "A generated plate can be visually reviewed and integrated while remaining non-official and non-1:1.",
+    "Hashori has no reviewed canonical visual; her V31 plate is explicitly an original noncanonical interpretation."
+  ],
+  "entries": [
+    {
+      "fighterId": "alpha",
+      "name": "Alpha Predator",
+      "rosterIds": {
+        "catalogue": "Y-008",
+        "dlc": "G-021"
+      },
+      "work": "Predator: Hunting Grounds / NECA",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-a3464b6a-ff13-4601-9014-b56a283e45d4",
+        "sourcePath": "art-source/v31/known-yautja/sources/alpha-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2046365,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "f0d88a0f488a998d42b517996bd835061fcc9bd21706d9c1096da935c29ae316"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/alpha.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/alpha.png",
+        "runtimeMetadata": {
+          "bytes": 1489776,
+          "width": 863,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "88c9b66f897ba035931ed2f1aefd033040a0ba4aa5030233fbcc81e869b23fb1"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/alpha-homeworld-static.json",
+        "promptSha256": "d5914826cfbac81f7a2a8ff721a70f392aa5dfd301d581dbb1483a84e508caeb"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          778,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 899937,
+        "partial": 33488,
+        "opaque": 419759
+      },
+      "displayRegistration": {
+        "pivot": [
+          431,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://blog.playstation.com/2020/07/17/july-free-update-comes-to-predator-hunting-grounds/",
+          "https://necaonline.com/2020/01/predator-7-scale-action-figure-ultimate-alpha-predator-100th-edition-figure/"
+        ],
+        "secondaryOrIndexReferences": [],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "shared-local-input"
+          }
+        ],
+        "interpretation": "Reference-informed stylized fan art of the licensed 2020 design; exact geometry and 1:1 likeness are not certified.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "samurai",
+      "name": "Samurai Predator",
+      "rosterIds": {
+        "catalogue": "Y-174",
+        "dlc": "G-022"
+      },
+      "work": "Predator: Hunting Grounds",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-06754b83-db0e-4963-a6b0-d7732bd55d55",
+        "sourcePath": "art-source/v31/known-yautja/sources/samurai-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2197716,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "759f6d309a37ca80b5bd3c83a1e0e6a62752470cb5f780e4beeb07c513c47f24"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/samurai.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/samurai.png",
+        "runtimeMetadata": {
+          "bytes": 1472385,
+          "width": 967,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "ee2777788db5390553e8a5f08eb1323516f32edc30b48f8eb7423586d839c743"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/samurai-homeworld-static.json",
+        "promptSha256": "4fca098fb53eff7952b1ee4db77162f97b461f816ad69f10c671dc054c0f8500"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          882,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1051141,
+        "partial": 29847,
+        "opaque": 435268
+      },
+      "displayRegistration": {
+        "pivot": [
+          483,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/"
+        ],
+        "secondaryOrIndexReferences": [],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "shared-local-input"
+          }
+        ],
+        "interpretation": "Reference-informed fan art of the official Hunting Grounds class; armor, mask, and weapon geometry remain project interpretation unless checked against direct captures.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "cleopatra",
+      "name": "Cleopatra Predator",
+      "rosterIds": {
+        "catalogue": "Y-055",
+        "dlc": "G-026"
+      },
+      "work": "Predator: Hunting Grounds",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-2e9908db-e43d-45f4-8fc1-02261aec175c",
+        "sourcePath": "art-source/v31/known-yautja/sources/cleopatra-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2026878,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "86b1fd4f0be392558448ae15d4549b116cc31d4274e22ec74651448b7405f84a"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/cleopatra.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/cleopatra.png",
+        "runtimeMetadata": {
+          "bytes": 1333186,
+          "width": 691,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "51d86d19dcfd9c4333ec1990f178de95c553ed4ad030fb7cef8329b311b12f0a"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/cleopatra-homeworld-static.json",
+        "promptSha256": "5ee0b334fe2849a5d30ea4da3a4ff32b1d83f6d14735dcc9758781dcad48ada5"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          606,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 676462,
+        "partial": 27290,
+        "opaque": 379736
+      },
+      "displayRegistration": {
+        "pivot": [
+          345,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://blog.playstation.com/2021/08/31/become-the-fearsome-cleopatra-with-this-months-new-additions-to-predator-hunting-grounds/"
+        ],
+        "secondaryOrIndexReferences": [],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "shared-local-input"
+          }
+        ],
+        "interpretation": "Reference-informed fan art of the official Hunting Grounds class; anatomy, jewelry, armor, and asymmetry remain non-certified.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "bionic",
+      "name": "Bionic Predator",
+      "rosterIds": {
+        "catalogue": "Y-029",
+        "dlc": "G-033"
+      },
+      "work": "Predator: Hunting Grounds",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-484105b7-4d9e-4728-b59e-a19d6edd583f",
+        "sourcePath": "art-source/v31/known-yautja/sources/bionic-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2289742,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "c3e26463f25cd58d0de9664a1e203eeeb7f3d54c202936e45909f0f03e65aece"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/bionic.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/bionic.png",
+        "runtimeMetadata": {
+          "bytes": 1651319,
+          "width": 874,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "0ecf025c1504953e6303d46c8de9df243dc60632bd1526597ef3d2f8668b3f9e"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/bionic-homeworld-static.json",
+        "promptSha256": "980b9c49be0d5d9b3323cc1766e10784e861afc38929a9673896e554b31bee36"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          789,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 847968,
+        "partial": 29193,
+        "opaque": 493271
+      },
+      "displayRegistration": {
+        "pivot": [
+          437,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://forum.predator.illfonic.com/t/patch-notes-2-42/28894"
+        ],
+        "secondaryOrIndexReferences": [],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "shared-local-input"
+          }
+        ],
+        "interpretation": "Reference-informed fan art based on an IllFonic release reference; cybernetic topology and sides remain non-certified.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "broken-tusk",
+      "name": "Broken Tusk / Dachande",
+      "rosterIds": {
+        "catalogue": "Y-061",
+        "dlc": "C-001"
+      },
+      "work": "Aliens vs. Predator / Aliens vs. Predator: Prey",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-e95c63dd-5a1f-49e6-a293-807dff03e2f4",
+        "sourcePath": "art-source/v31/known-yautja/sources/broken-tusk-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2151431,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "3987456d8c5767704d972b798bddb3b6aba47d114cbfb97627714504f70d4fa5"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/broken-tusk.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/broken-tusk.png",
+        "runtimeMetadata": {
+          "bytes": 1482644,
+          "width": 738,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "2cf3177ff903317a450400b750a6f1ae3a5ccc473fa3bc20ab983cb35f99b861"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/broken-tusk-homeworld-static.json",
+        "promptSha256": "f7b02703f9a3c941c8f830b307e267d3ad810fac70d177a0fa0bb96e8ec13da8"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          653,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 694476,
+        "partial": 29316,
+        "opaque": 433392
+      },
+      "displayRegistration": {
+        "pivot": [
+          369,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://digital.darkhorse.com/books/47483ce0aec5466783599e38c9d0ac47/aliens-vs-predator-the-original-comics-series-30th-anniversary-edition",
+          "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/"
+        ],
+        "secondaryOrIndexReferences": [],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "shared-local-input"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "shared-local-input"
+          }
+        ],
+        "interpretation": "Dark Horse and licensed-figure references inform the plate; comic pages remain authoritative and no exact turnaround certification is claimed.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "ahab",
+      "name": "Ahab",
+      "rosterIds": {
+        "catalogue": "Y-004",
+        "dlc": "C-006"
+      },
+      "work": "Fire and Stone / Life and Death",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-b3ffb36c-5973-446e-9a90-ccbffbc183fc",
+        "sourcePath": "art-source/v31/known-yautja/sources/ahab-chroma.png",
+        "sourceMetadata": {
+          "bytes": 1816195,
+          "width": 1374,
+          "height": 1145,
+          "hasAlpha": false,
+          "sha256": "084b8516c2e9fd810e7f44a7964449ad528447660f7067aea4439e618c5536ca"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/ahab.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/ahab.png",
+        "runtimeMetadata": {
+          "bytes": 1338075,
+          "width": 869,
+          "height": 1270,
+          "hasAlpha": true,
+          "sha256": "c55e25057d734e877e71aec719a535b1bbfe15316f518141c6af45e30036ef0d"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/ahab-homeworld-static.json",
+        "promptSha256": "5592422847030c06a604edfb27674fdedb5eb0ef7cf28fc427b1086160d27366"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          68,
+          68,
+          800,
+          1201
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 686823,
+        "partial": 14044,
+        "opaque": 402763
+      },
+      "displayRegistration": {
+        "pivot": [
+          434,
+          1202
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+          "https://digital.darkhorse.com/pages/51/aliens-predator-avp-prometheus-fire-and-stone"
+        ],
+        "secondaryOrIndexReferences": [
+          "https://avp.fandom.com/wiki/Ahab"
+        ],
+        "localReferences": [
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "local-project-lore"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "local-production-boundary"
+          }
+        ],
+        "interpretation": "Licensed NECA details inform the design, but every trophy, weapon, scar, and side still requires comic-panel or licensed-turnaround confirmation.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "big-mama",
+      "name": "Big Mama",
+      "rosterIds": {
+        "catalogue": "Y-027",
+        "dlc": "C-007"
+      },
+      "work": "Aliens vs. Predator: Deadliest of the Species",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-d97a94db-bcab-42b4-ae7a-d7df98475746",
+        "sourcePath": "art-source/v31/known-yautja/sources/big-mama-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2212404,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "5d82176dfbca2cf63e0f9c681a66920209e79b02d3add8e5672c523201129921"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/big-mama.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/big-mama.png",
+        "runtimeMetadata": {
+          "bytes": 1555574,
+          "width": 799,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "0a501470c74d1db777e30058ceb7f183a571a05efe55ba80181cd640a15f6d09"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/big-mama-homeworld-static.json",
+        "promptSha256": "9dcafcd8da3ff008413b9d1bfd31d2f214bc790463b6587a0e639d45f0085f8a"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          714,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 764182,
+        "partial": 41944,
+        "opaque": 446706
+      },
+      "displayRegistration": {
+        "pivot": [
+          399,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1"
+        ],
+        "secondaryOrIndexReferences": [
+          "https://www.comics.org/issue/172977/",
+          "https://avp.fandom.com/wiki/Big_Mama"
+        ],
+        "localReferences": [
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "local-project-lore"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "local-production-boundary"
+          }
+        ],
+        "interpretation": "No primary multi-angle gallery was reviewed; the body, mask, palette, equipment, and asymmetry remain a local fan-made interpretation.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "bad-blood-comic",
+      "name": "Bad Blood Predator",
+      "rosterIds": {
+        "catalogue": "Y-021",
+        "dlc": "C-008"
+      },
+      "work": "Predator: Bad Blood",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-3efd504d-d6c5-4485-9533-ac4465fc7fa3",
+        "sourcePath": "art-source/v31/known-yautja/sources/bad-blood-comic-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2317585,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "426066d19c5c56b12f2bed2fbed5fe05f39f6a05042e84dd7d80099438d05d79"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/bad-blood-comic.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/bad-blood-comic.png",
+        "runtimeMetadata": {
+          "bytes": 1650790,
+          "width": 1054,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "ee92cbe5f535bcde6a81cd88db9da6f4c5dead4326435f4baf9fe4c3dd3b5b0f"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/bad-blood-comic-homeworld-static.json",
+        "promptSha256": "33b66fe7c415a654a1b50d863d4064ef75994023e7cb0acfd4f5f4f0e91776bc"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          969,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 1128961,
+        "partial": 49938,
+        "opaque": 473773
+      },
+      "displayRegistration": {
+        "pivot": [
+          527,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predator-bad-blood-deluxe-7-scale-action-figure",
+          "https://www.marvel.com/comics/collection/92869/predator_the_original_years_omnibus_vol_1_hardcover",
+          "https://necaonline.com/2018/02/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-more/"
+        ],
+        "secondaryOrIndexReferences": [
+          "https://avp.fandom.com/wiki/Bad_Blood_Predator"
+        ],
+        "localReferences": [
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "local-project-lore"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "local-production-boundary"
+          }
+        ],
+        "interpretation": "Licensed NECA evidence identifies sword, spear, trophies, and piercings; the plate selects a static state and does not certify every accessory or comic detail.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "reference-informed-fan-art-not-1-to-1-certified"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false
+      }
+    },
+    {
+      "fighterId": "hashori",
+      "name": "Hashori",
+      "rosterIds": {
+        "catalogue": "Y-106",
+        "dlc": "N-001"
+      },
+      "work": "Voir la source individuelle",
+      "continuity": "expanded",
+      "status": "static-reviewed-candidate",
+      "integrated": true,
+      "usage": [
+        "homeworld-player"
+      ],
+      "generation": {
+        "provider": "OpenAI integrated ImageGen",
+        "generationOutputId": "exec-da06fd87-2178-4482-a57d-7c18cfe7ed1f",
+        "sourcePath": "art-source/v31/known-yautja/sources/hashori-chroma.png",
+        "sourceMetadata": {
+          "bytes": 2110139,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": false,
+          "sha256": "51d3454cfe54641228a1990515624d379d87db8861301e2cace6ba719c5b0d5f"
+        },
+        "runtimePath": "public/game/sprites/v31/film-plates/hashori.png",
+        "runtimeUrl": "/game/sprites/v31/film-plates/hashori.png",
+        "runtimeMetadata": {
+          "bytes": 1399303,
+          "width": 726,
+          "height": 1568,
+          "hasAlpha": true,
+          "sha256": "fd9718b7fd1b9341893a0c6cfe1d663a726b49135c68fb5c38106b25dd03ede5"
+        },
+        "promptPath": "art-source/v31/known-yautja/prompts/hashori-homeworld-static.json",
+        "promptSha256": "b3a3e2ed537569236583ffee4c5b5d64fd1134a128d5c4e9845dbdcb7e3c2755"
+      },
+      "alphaValidation": {
+        "threshold": 8,
+        "boundsInclusive": [
+          84,
+          84,
+          641,
+          1483
+        ],
+        "outerEdgeMaxAlpha": 0,
+        "transparent": 695461,
+        "partial": 30917,
+        "opaque": 411990
+      },
+      "displayRegistration": {
+        "pivot": [
+          363,
+          1484
+        ],
+        "method": "Alpha >8 bounds; X is the rounded bounds center and Y is support maxY+1. Stored for static Homeworld placement, not validated as a combat foot pivot."
+      },
+      "sourceBoundary": {
+        "officialOrLicensedReferences": [
+          "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/"
+        ],
+        "secondaryOrIndexReferences": [
+          "https://avp.fandom.com/wiki/Hashori"
+        ],
+        "localReferences": [
+          {
+            "path": "art-source/v26/known-yautja/roster.json",
+            "classification": "local-roster-gate"
+          },
+          {
+            "path": "app/game/hunterLore.ts",
+            "classification": "local-project-lore-and-interpretation"
+          },
+          {
+            "path": "docs/DLC-PRIVE-CATALOGUE.md",
+            "classification": "local-production-boundary"
+          },
+          {
+            "path": "docs/yautja-visual-fidelity-rule.md",
+            "classification": "local-fidelity-rule"
+          }
+        ],
+        "interpretation": "No canonical visual was established. The entire visible appearance is an explicit original noncanonical interpretation of a text-only character.",
+        "v26IdentityStatus": "catalogue-label-not-independently-certified",
+        "v26VisualStatus": "not-certified",
+        "hasLocalPrimaryVisualReference": false,
+        "canonicalVisualStatus": "none-established-original-noncanonical-interpretation"
+      },
+      "review": {
+        "staticVisualReview": true,
+        "animationClipsReviewed": 0,
+        "officialCertification": false,
+        "oneToOneCertified": false,
+        "identityFidelityCertified": false,
+        "textInterpretation": true,
+        "canonicalVisualAvailable": false
+      }
+    }
+  ],
+  "warning": "This manifest proves file provenance, hashes, alpha bounds, static review, and public runtime registration. It proves no animation set, gameplay behavior, rights-holder approval, exact franchise reproduction, or commercial-release readiness.",
+  "updatedAt": "2026-09-12T15:27:24.231Z"
+}

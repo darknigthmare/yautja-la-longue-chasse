@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "component": "GlassDesertExpedition",
+  "fixtureOnly": true,
+  "marchesPrerequisite": "Fixture data only; final integration must earn it",
+  "realKeyboardTraversal": true,
+  "clock": "Controlled browser clock",
+  "route": "decoy-corridor",
+  "pause": {
+    "x": 1201.6666666666654,
+    "y": 900,
+    "tick": 964
+  },
+  "failedPersistenceKeptExpedition": true,
+  "noReportBeforeAck": true,
+  "report": {
+    "ash-marches": {
+      "expeditionId": "ash-marches",
+      "trueTrailInspected": true,
+      "falseTrailRejected": true,
+      "obstacleMoved": true,
+      "convoyRecovered": true,
+      "shortcutOpened": true,
+      "secretFound": true,
+      "ticks": 1500
+    },
+    "glass-desert": {
+      "expeditionId": "glass-desert",
+      "terrainSurveyed": true,
+      "transportLogRecovered": true,
+      "diversionCorroborated": true,
+      "safePassageOpened": true,
+      "crossingRoute": "decoy-corridor",
+      "beaconDisposition": "disable",
+      "secretFound": false,
+      "ticks": 2586
+    }
+  },
+  "gamepadChoices": "Emulated pad selected both second options",
+  "mobilePointerMovement": {
+    "before": 110,
+    "after": 230.8333333333335
+  },
+  "mobileOverflow": false,
+  "errors": [],
+  "failedRequests": [],
+  "testedAt": "2026-09-08T05:37:31.685Z"
+}

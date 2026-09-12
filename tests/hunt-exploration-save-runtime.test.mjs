@@ -4,7 +4,15 @@ import test from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { build } from "esbuild";
-import { isBoundedJsonValue } from "../app/game/systems/activeHuntSave.ts";
+import { fileURLToPath } from "node:url";
+
+const activeHuntBundle = await build({
+  entryPoints: [fileURLToPath(new URL("../app/game/systems/activeHuntSave.ts", import.meta.url))],
+  bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
+});
+const { isBoundedJsonValue } = await import(
+  "data:text/javascript;base64," + Buffer.from(activeHuntBundle.outputFiles[0].text).toString("base64")
+);
 
 const bundle = await build({ stdin: { contents: 'export * from "./app/game/systems/explorationMap"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationRegions"; export * from "./app/game/systems/jumpAssist"; export * from "./app/game/systems/platformCollision"; export * from "./app/game/systems/huntMeleeCombat"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {worldScreensFor,getWorldScreenAtX} from "./app/game/worldScreens";', resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "cjs", platform: "node" });
 const compiled = { exports: {} };
@@ -22,7 +30,7 @@ function runtime(names, dependencies) {
 }
 // The VM and host have different Object prototypes; bridge only JSON data to
 // the real bounded-value validator, as the app does within its single realm.
-const environment = { ...world, isBoundedJsonValue: value => isBoundedJsonValue(JSON.parse(JSON.stringify(value))), ACTIVE_HUNT_SNAPSHOT_VERSION: 1, ACTIVE_HUNT_PHASES: new Set(["tracking", "target", "trophy", "extraction"]), VIEW_WIDTH: 1280, clamp: (n, min, max) => Math.max(min, Math.min(max, n)) };
+const environment = { ...world, isBoundedJsonValue: value => isBoundedJsonValue(JSON.parse(JSON.stringify(value))), ACTIVE_HUNT_SNAPSHOT_VERSION: 1, ACTIVE_HUNT_PHASES: new Set(["tracking", "target", "trophy", "extraction"]), VIEW_WIDTH: 1280, VIEW_HEIGHT: 720, clamp: (n, min, max) => Math.max(min, Math.min(max, n)) };
 const api = runtime(names, environment);
 const plain = value => JSON.parse(JSON.stringify(value));
 const missionId = "jungle-vey";
@@ -31,7 +39,7 @@ function fixture() {
   const player = Object.fromEntries(["previousY", "velocityX", "velocityY", "medicomps", "activeWeaponSlot", "aimAngle", "gauntletOpen", "bladeExtension", "attackFlash", "invulnerability", "meleeCooldown", "weaponCooldown", "weaponChargeSeconds", "scanCooldown", "healCooldown"].map(key => [key, 0]));
   Object.assign(player, { x: rooms[2].startX + 100, y: 400, width: 72, height: 116, health: 80, maxHealth: 100, stamina: 80, maxStamina: 100, energy: 50, maxEnergy: 100, facing: 1, grounded: true, cloaked: false, maskOn: true, aiming: false, climbing: false, aimPoint: { x: 100, y: 100 }, weaponAmmo: [6, -1], dreadAngles: [], dreadVelocities: [] });
   const state = Object.fromEntries(["ecologySpawnIndex", "honor", "kills", "scans", "supportKills", "damageTaken", "trophyExtraction", "nextProjectileId", "nextSignalId"].map(key => [key, 0]));
-  Object.assign(state, { phase: "tracking", elapsed: 120, player, visitedScreenIds: [rooms[0].id, rooms[2].id], world: { width: 8400, missionId }, nextCheckpointIndex: 1, bossVulnerabilityMultiplier: 1, bossThermalVisibility: 1, boss: { x: 7400, y: 400, width: 120, height: 150, health: 300, maxHealth: 300, alive: true, active: false }, bossMechanics: { missionId }, aiBrains: {}, mud: {}, arsenal: { slots: [{}, {}], activeEffects: [] }, trophyRitual: null, trophyClaim: null, trophyVictory: null, dropShip: null });
+  Object.assign(state, { phase: "tracking", elapsed: 120, cameraX: 0, cameraY: 0, player, visitedScreenIds: [rooms[0].id, rooms[2].id], world: { width: 8400, missionId }, nextCheckpointIndex: 1, bossVulnerabilityMultiplier: 1, bossThermalVisibility: 1, boss: { x: 7400, y: 400, width: 120, height: 150, health: 300, maxHealth: 300, alive: true, active: false }, bossMechanics: { missionId }, aiBrains: {}, mud: {}, arsenal: { slots: [{}, {}], activeEffects: [] }, trophyRitual: null, trophyClaim: null, trophyVictory: null, dropShip: null });
   for (const key of ["enemies", "projectiles", "scentNodes", "noiseEvents", "tracks", "scanNodes", "recoveryNodes", "purgeConsoleNodes", "regularTrophyDrops", "honorEvents", "traps"]) state[key] = [];
   for (const key of ["spawnedWaves", "completedObjectives", "brokenPillarIds"]) state[key] = new Set();
   for (const key of ["secondWindUsed", "energyWeaponsLocked", "bossHitPillar", "playerUsedRangedWeapon", "playerUsedEnergyWeapon", "trophyExtracting", "trophyCarried", "rangedBossViolation"]) state[key] = false;
@@ -50,6 +58,25 @@ test("checkpoint captures detached discovery and saves/restores it through the r
   const restored = api.restoreCheckpoint(state, decoded.checkpoint, "resume");
   assert.deepEqual(plain(restored.visitedScreenIds), [rooms[0].id, rooms[2].id]);
   assert.equal(restored.paused, true);
+  assert.equal(restored.cameraY, 0, "a ground checkpoint restores the neutral vertical camera");
+});
+
+test("vertical camera position is derived from the hunter and never serialized", () => {
+  const state = fixture();
+  state.exploration = world.mergeExplorationProgress(world.defaultExplorationProgress(), { abilityIds: ["aerial-boost"] });
+  state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
+  state.player.x = 1300;
+  state.player.y = -300;
+  state.cameraY = -123;
+  const checkpoint = api.captureCheckpoint(state, "resume");
+  assert.equal("cameraY" in checkpoint, false);
+  const restored = api.restoreCheckpoint(state, checkpoint, "resume");
+  assert.equal(restored.cameraY, world.targetOserisCameraY(missionId, -242, 720));
+  assert.ok(restored.cameraY < 0 && restored.cameraY >= world.OSERIS_VERTICAL_BOUNDS.minY);
+
+  state.world = world.worldBlueprintFor("ice-cryostalker");
+  const otherMission = api.restoreCheckpoint(state, api.captureCheckpoint(state, "resume"), "resume");
+  assert.equal(otherMission.cameraY, 0, "missions without a vertical layout always restore a neutral camera");
 });
 
 test("legacy checkpoints reveal only their actual room and foreign ids never enter the map", () => {
@@ -74,7 +101,7 @@ test("retry preserves knowledge found after the checkpoint without revealing ski
 
 test("a newly entered sector is discovered before the checkpoint on the same simulation frame", () => {
   const state = fixture(); state.elapsed = 1; state.player.x = 100; state.visitedScreenIds = [rooms[0].id]; state.worldScreenId = rooms[0].id;
-  Object.assign(state, { paused: false, messageTimer: 0, scanPulse: 0, screenShake: 0, cameraX: 0 });
+  Object.assign(state, { paused: false, messageTimer: 0, scanPulse: 0, screenShake: 0, cameraX: 0, cameraY: 0 });
   const captures = [];
   const noOp = () => {};
   const { stepGame } = runtime(["stepGame"], { ...environment, pollGamepad: () => null, consume: () => false, tickArsenalRuntime: value => value,

@@ -14,6 +14,9 @@ import {
   PIT_CLOAK_STARTUP_FRAMES,
   PIT_CLOAK_ACTIVE_FRAMES,
   PIT_CLOAK_RECOVERY_FRAMES,
+  PIT_THROW_TECH_WINDOW_FRAMES,
+  PIT_THROW_TECH_RECOVERY_FRAMES,
+  type PitCombatState,
   type PitFighterState,
   type PitAttackKind,
 } from "./systems/pitCombat";
@@ -21,8 +24,8 @@ import {
 export type PitHunterSpritePosture = "stand" | "crouch" | "air";
 export type PitHunterSpritePhase =
   "locomotion" | "hold" | "startup" | "active" | "recovery" |
-  "hitstun" | "blockstun" | "knockdown" | "ko";
-export type PitHunterSpriteClock = "action-phase" | "cloak-phase" | "observed-entry";
+  "hitstun" | "blockstun" | "capture" | "knockdown" | "ko";
+export type PitHunterSpriteClock = "action-phase" | "cloak-phase" | "throw-phase" | "observed-entry";
 
 /**
  * Optional presentation history supplied by the caller, never saved into PIT.
@@ -47,7 +50,7 @@ export interface PitHunterSpriteMotion {
   readonly phase: PitHunterSpritePhase;
   readonly action: PitAttackKind | "throw" | null;
   readonly techniqueId: string | null;
-  readonly throwOutcome: "pending" | "connected" | "whiff" | null;
+  readonly throwOutcome: "pending" | "connected" | "whiff" | "teched" | null;
   readonly clock: PitHunterSpriteClock;
   readonly elapsedTicks: number;
   /** A real simulation phase duration; null means natural authored playback. */
@@ -67,7 +70,7 @@ export interface PitHunterSpriteFrame {
   readonly frame: HunterSpriteAtlasFrameLookup;
 }
 
-/** Presentation copy of private PIT V4 throw timing, checked against live ticks. */
+/** Historical V4 throw timing; V5 retains it for startup, whiffs and recovery. */
 export const PIT_HUNTER_SPRITE_THROW_TIMING = Object.freeze({
   startup: 7, active: 2, recovery: 21,
 });
@@ -87,14 +90,16 @@ const cloakDuration = (phase: PitFighterState["cloakPhase"]): number | null =>
  * Describes required art even when none exists. Attacks use action.frame, never
  * the render clock. Entry clocks for guards/jumps/reactions cannot be fully
  * reconstructed from an arbitrary PIT snapshot; first observation starts at 0.
- * No landing, synchronized victim, run or discrete backstep is invented.
+ * V5 callers must use describePitCombatHunterSpriteMotion for capture context.
+ * No landing, run or discrete backstep is invented; missing clips stay missing.
  */
 export function describePitHunterSpriteMotion(
   fighter: PitFighterState,
   simulationFrame: number,
   previous?: PitHunterSpriteCursor | null,
+  combat?: Pick<PitCombatState, "frame" | "pendingThrow" | "events">,
 ): PitHunterSpriteMotion | null {
-  if (!tick(simulationFrame) ||
+  if ((combat && combat.frame !== simulationFrame) || !tick(simulationFrame) ||
     !Object.prototype.hasOwnProperty.call(PIT_FIGHTERS, fighter.definitionId) ||
     (fighter.facing !== -1 && fighter.facing !== 1) ||
     ![fighter.health, fighter.velocityX, fighter.velocityY, fighter.comboLastHitFrame].every(finite) ||
@@ -131,9 +136,52 @@ export function describePitHunterSpriteMotion(
     phase = "hitstun";
     remainingTicks = fighter.stunFrames;
   } else if (fighter.phase === "blockstun") {
-    clipId = prefix + "blockstun." + (fighter.guard === "low" || fighter.crouching ? "low" : "high");
-    phase = "blockstun";
-    remainingTicks = fighter.stunFrames;
+    const pending = combat?.pendingThrow;
+    const tech = combat?.events.some(event => event.frame === simulationFrame &&
+      event.type === "throw-tech" &&
+      (event.attackerId === fighter.definitionId || event.defenderId === fighter.definitionId));
+    const connected = combat?.events.some(event => event.frame === simulationFrame &&
+      event.type === "hit" && event.attack === "throw" && event.attackerId === fighter.definitionId);
+    // Keep only an observed, uninterrupted recovery. A mid-recovery seek cannot
+    // identify a throw from an ambiguous blockstun counter or invent its art.
+    const continuing = combat && previous && previous.characterId === fighter.definitionId &&
+      previous.slot === fighter.slot && previous.simulationFrame <= simulationFrame &&
+      previous.health === fighter.health && previous.hitMarker === fighter.comboLastHitFrame &&
+      previous.remainingTicks !== null &&
+      previous.remainingTicks - (simulationFrame - previous.simulationFrame) === fighter.stunFrames &&
+      !combat.events.some(event => event.frame === simulationFrame &&
+        (event.type === "hit" || event.type === "block") && event.defenderId === fighter.definitionId)
+      ? previous.clipId : null;
+    const techedRecovery = tech || continuing === prefix + "throw.recovery.teched";
+    const connectedRecovery = connected || continuing === prefix + "throw.recovery.connected";
+    if (pending) {
+      if (fighter.action || !fighter.grounded || fighter.stunFrames !== 1 ||
+        !tick(pending.capturedFrame) || !tick(pending.framesRemaining) ||
+        pending.framesRemaining < 1 || pending.framesRemaining > PIT_THROW_TECH_WINDOW_FRAMES ||
+        simulationFrame - pending.capturedFrame !== PIT_THROW_TECH_WINDOW_FRAMES - pending.framesRemaining) return null;
+      clipId = prefix + "throw.capture." + (pending.attackerSlot === fighter.slot ? "attacker" : "defender");
+      phase = "capture";
+      action = "throw";
+      throwOutcome = "pending";
+      clock = "throw-phase";
+      durationTicks = PIT_THROW_TECH_WINDOW_FRAMES;
+      elapsedTicks = durationTicks - pending.framesRemaining;
+    } else if (combat && !fighter.action && (techedRecovery || connectedRecovery)) {
+      throwOutcome = techedRecovery ? "teched" : "connected";
+      clipId = prefix + "throw.recovery." + throwOutcome;
+      phase = "recovery";
+      action = "throw";
+      clock = "throw-phase";
+      durationTicks = techedRecovery ? PIT_THROW_TECH_RECOVERY_FRAMES : PIT_HUNTER_SPRITE_THROW_TIMING.recovery;
+      if (fighter.stunFrames < 1 || fighter.stunFrames > durationTicks) return null;
+      elapsedTicks = durationTicks - fighter.stunFrames;
+      remainingTicks = fighter.stunFrames;
+    } else {
+      if (combat && fighter.guard === null && !fighter.crouching) return null;
+      clipId = prefix + "blockstun." + (fighter.guard === "low" || fighter.crouching ? "low" : "high");
+      phase = "blockstun";
+      remainingTicks = fighter.stunFrames;
+    }
   } else if (fighter.action) {
     const current = fighter.action;
     if (!tick(current.frame) ||
@@ -215,6 +263,19 @@ export function describePitHunterSpriteMotion(
       techniqueStatus: fighter.techniqueStatus?.kind ?? null,
     },
   };
+}
+
+/**
+ * V5 entry point: capture has an exact clock; recovery identity needs its real
+ * event or an uninterrupted cursor. An ambiguous mid-recovery seek returns null.
+ * This metadata does not certify any authored capture or tech frames.
+ */
+export function describePitCombatHunterSpriteMotion(
+  state: PitCombatState,
+  slot: 0 | 1,
+  previous?: PitHunterSpriteCursor | null,
+): PitHunterSpriteMotion | null {
+  return describePitHunterSpriteMotion(state.fighters[slot], state.frame, previous, state);
 }
 
 /**

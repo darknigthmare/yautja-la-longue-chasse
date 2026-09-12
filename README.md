@@ -4,7 +4,7 @@ Jeu d'action 2D en vue latérale, original et non commercial, inspiré de l'univ
 *Predator*. Le joueur prépare son chasseur dans un vaisseau, choisit son contrat
 et son arsenal, puis traque des proies sur plusieurs planètes.
 
-## État actuel — 31 août 2026
+## État actuel — 12 septembre 2026 · V31
 
 - **Huit chasses scénarisées** : jungle, glace, volcan, marais, désert, océan,
   monde fongique et ruines. Chacune possède une cible Apex, des objectifs, une
@@ -13,6 +13,10 @@ et son arsenal, puis traque des proies sur plusieurs planètes.
   portes motorisées, échelles et reliefs internes. Les parois, installations,
   armes équipées, trophées possédés et éléments d'avant-plan restent séparés.
   Le plan du vaisseau pose une balise ; il ne téléporte pas le joueur.
+- **Monde natal en perspective 2.5D** : cité au sol de 5 200 × 2 600 pixels, douze quartiers irréguliers reliés par neuf rues ou rampes, treize bâtiments indépendants, portes, accessoires répartis en profondeur et personnages rendus par plaques entières. Quinze presets connus possèdent une plaque Homeworld reliée à leur identifiant exact ; ce terme ne certifie pas une fidélité officielle ou 1:1.
+- **THE PIT V31** : caméra de présentation dynamique bornée, aide et laboratoire repliables, huit arènes jouables et catalogue de production honnête de cent concepts. Les quatorze combattants sur quatorze possèdent une plaque bitmap statique ; City Hunter dispose de sa pose gauche dédiée pour le côté droit de la sélection. Les 92 autres fiches d’arène ne sont pas annoncées jouables.
+- **Animation V31** : seize poses statiques, zéro animation et 264 entrées d’animation encore manquantes. Une pose fixe n’est pas comptée comme un clip.
+- **Pilote Oseris vertical** : douze salles reliées sur quatre niveaux, canopée, ravin, grottes, raccourcis et passages conditionnés. La cible de 48 salles et huit sous-régions reste un objectif de production.
 - **Décors de biome V19 : 464 paires master/runtime disponibles sur 800**,
   soit **336 ressources restant à produire**. Le registre ne charge que les
   paires présentes. L'audit des ressources disponibles contrôle les fichiers,
@@ -27,12 +31,12 @@ et son arsenal, puis traque des proies sur plusieurs planètes.
   configurations d'équipement, entraînements et codex. La fin de campagne
   ouvre Elder ; les huit chasses restent rejouables avec des sceaux de maîtrise.
 
-Les niveaux de chasse restent des parcours horizontaux successifs. Les
-plateformes, grimpes, couvertures, sols et dangers sont jouables, mais les
-« routes » du catalogue ne constituent pas des verrous de capacités ou un
-réseau de régions interconnectées. Boucles d'exploration, capacités ouvrant de
-nouveaux passages et secrets persistants restent à développer pour un
-metroidvania complet.
+Le pilote Oseris possède désormais une première topologie verticale de douze
+salles avec connexions, niveaux de hauteur, verrous et raccourcis. Cette base
+ne constitue pas encore le niveau final de 48 salles et huit sous-régions. Les
+autres chasses conservent en grande partie leurs parcours horizontaux ; leurs
+boucles, alternatives et retours par capacités demandent encore une production
+et des essais complets avant de revendiquer un metroidvania commercial achevé.
 
 L'[audit du jeu selon des critères de production commerciale](docs/audit-commercial-metroidvania-2026-08-31.md)
 distingue les systèmes présents, les corrections apportées, les contrôles
@@ -94,10 +98,12 @@ stockage et permettent l'export JSON, l'import avec aperçu et confirmation,
 et la réinitialisation. Une sauvegarde d'une version future n'est pas écrasée
 silencieusement.
 
-**L'export porte sur la campagne principale** : il n'inclut ni la chasse active
-suspendue, ni les états annexes et configurations du vaisseau. Ces données sont
-stockées séparément sur l'appareil. Un import n'est confirmé qu'après écriture ;
-si le nettoyage des archives annexes échoue, le jeu l'indique.
+**Deux formats de transfert sont proposés.** L'export léger porte sur la
+campagne principale et reste utile en récupération. L'archive intégrale ajoute
+la chasse suspendue, le checkpoint, les états du vaisseau, THE PIT et le dernier
+replay pour le même propriétaire. Son import affiche un aperçu, vérifie les
+formats et propriétaires, journalise le remplacement puis écrit la campagne en
+dernier. Il ne s'agit ni d'un cloud ni d'une transaction serveur globale.
 
 En chasse, la pause propose **Suspendre et sauvegarder**. La reprise restaure
 les données de cette chasse, dont les secteurs découverts. Les relais de
@@ -115,6 +121,12 @@ Cette commande exécute le lint, TypeScript, l'audit strict de toutes les paires
 V19 **disponibles**, puis la compilation et l'ensemble des tests automatisés.
 Elle ne remplace pas l'audit de complétude des 800 décors.
 
+Dernière qualification locale V31 observée : `qa:release` réussi avec **1 103
+tests sur 1 103**, **464 paires** V19 disponibles, audit npm à **0
+vulnérabilité** et QA navigateur locale **PASS**. Le package Windows V31 et la
+publication publique restent en cours tant que leurs résultats réels ne sont
+pas enregistrés.
+
 Commandes individuelles :
 
 ```powershell
@@ -122,6 +134,14 @@ npm.cmd run lint
 npm.cmd run typecheck
 npm.cmd test
 npm.cmd run biome-decor:v19:audit-available
+```
+
+Après un commit propre, le portable Windows se construit et se qualifie avec :
+
+```powershell
+npm.cmd run package:windows
+npm.cmd run qa:desktop
+npm.cmd run qa:desktop:package
 ```
 
 `npm.cmd test` compile le jeu puis exécute **tous les fichiers
@@ -134,9 +154,9 @@ projection de disponibilité avec `npm.cmd run biome-decor:v19:runtime-data`.
 sont pas produites ; ses seuils n'ont pas été abaissés pour obtenir un succès.
 
 Les tests de fonctions runtime et les rendus React statiques ne sont pas des
-essais interactifs du jeu. Aucun test navigateur/manette en conditions réelles,
-portage natif ou statut de sortie commerciale n'est revendiqué par ces
-commandes. Les limites de vérification figurent dans l'audit.
+essais interactifs du jeu. La QA navigateur locale observée ne constitue ni un
+test de manette ou de matériel cible, ni un portage natif, ni un statut de sortie
+commerciale. Les limites de vérification figurent dans l'audit.
 
 ## Assets et documentation actuelle
 
@@ -147,6 +167,8 @@ paquet public. Les images du projet sont des créations originales, avec leurs
 références et approximations documentées ; elles ne sont pas présentées comme
 des fichiers officiels de la franchise.
 
+- [Livraison de contenu V31](docs/chatgpt-v31-delivery.md)
+- [Préparation de l'édition PC V31](docs/desktop-v31.md)
 - [Niveau du vaisseau V21](docs/ship-level-delivery-v21.md)
 - [Modules et installations V22](docs/ship-interior-delivery-v22.md)
 - [Lot volcan V19 et sources](docs/biome-decor-volcano-lot-01.md)

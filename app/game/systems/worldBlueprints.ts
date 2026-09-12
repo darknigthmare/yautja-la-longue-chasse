@@ -150,6 +150,7 @@ export interface TrackSurface extends WorldRect {
 export type RouteRequirement =
   | "none"
   | "climb"
+  | "aerial-boost"
   | "mask"
   | "cloak"
   | "timed-hazard";
@@ -186,6 +187,8 @@ export interface WorldBlueprint {
   missionId: MissionId;
   biome: BiomeId;
   width: number;
+  /** Optional authored ceiling for vertically stacked rooms; legacy worlds start at zero. */
+  minY?: number;
   height: 720;
   floorY: 624;
   spawn: WorldPoint;
@@ -1321,6 +1324,7 @@ export function validateWorldBlueprint(
 ): readonly string[] {
   const errors: string[] = [];
   const ids = new Set<string>();
+  const worldMinY = blueprint.minY ?? 0;
   const finite = (label: string, ...values: number[]): boolean => {
     if (values.every(Number.isFinite)) return true;
     errors.push(`${label} has a non-finite value`);
@@ -1335,7 +1339,7 @@ export function validateWorldBlueprint(
     if (!finite(label, position.x, position.y)) return;
     if (
       position.x < 0 || position.x > blueprint.width ||
-      position.y < 0 || position.y > blueprint.height
+      position.y < worldMinY || position.y > blueprint.height
     ) {
       errors.push(`${label} escapes the world bounds`);
     }
@@ -1346,7 +1350,7 @@ export function validateWorldBlueprint(
       errors.push(`${label} has a non-positive size`);
     }
     if (
-      rect.x < 0 || rect.y < 0 ||
+      rect.x < 0 || rect.y < worldMinY ||
       rect.x + rect.width > blueprint.width ||
       rect.y + rect.height > blueprint.height
     ) {
@@ -1361,9 +1365,9 @@ export function validateWorldBlueprint(
   };
 
   if (
-    finite("world", blueprint.width, blueprint.height, blueprint.floorY) &&
-    (blueprint.width <= 0 || blueprint.height <= 0 ||
-      blueprint.floorY <= 0 || blueprint.floorY > blueprint.height)
+    finite("world", blueprint.width, worldMinY, blueprint.height, blueprint.floorY) &&
+    (blueprint.width <= 0 || blueprint.height <= 0 || worldMinY > 0 ||
+      worldMinY >= blueprint.floorY || blueprint.floorY <= 0 || blueprint.floorY > blueprint.height)
   ) {
     errors.push("world has invalid dimensions or floor height");
   }

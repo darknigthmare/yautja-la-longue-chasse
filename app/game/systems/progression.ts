@@ -1,3 +1,4 @@
+import { archiveTransferPending } from "./archiveTransferGuard";
 import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
   DEFAULT_SHIP_ID,
@@ -1028,6 +1029,53 @@ export function normalizeShipProgression(
   };
 }
 
+function hasSameCanonicalValue(left: unknown, right: unknown): boolean {
+  if (left === right) return true;
+  if (Array.isArray(left) || Array.isArray(right)) {
+    return (
+      Array.isArray(left) &&
+      Array.isArray(right) &&
+      left.length === right.length &&
+      left.every((entry, index) =>
+        hasSameCanonicalValue(entry, right[index]),
+      )
+    );
+  }
+  if (!isRecord(left) || !isRecord(right)) return false;
+  const leftKeys = Object.keys(left).sort();
+  const rightKeys = Object.keys(right).sort();
+  return (
+    leftKeys.length === rightKeys.length &&
+    leftKeys.every(
+      (key, index) =>
+        key === rightKeys[index] &&
+        hasSameCanonicalValue(left[key], right[key]),
+    )
+  );
+}
+
+/**
+ * Accept a current sidecar only when every nested field is already canonical
+ * for its campaign. Archive import must reject malformed values instead of
+ * using the permissive runtime normalizer to repair them silently.
+ */
+export function validateCanonicalShipProgression(
+  value: unknown,
+  save: SaveGame,
+): ShipProgressionState | null {
+  if (
+    !isRecord(value) ||
+    value.version !== SHIP_PROGRESSION_VERSION ||
+    value.ownerSaveCreatedAt !== save.createdAt ||
+    typeof value.updatedAt !== "string" ||
+    !Number.isFinite(Date.parse(value.updatedAt))
+  ) {
+    return null;
+  }
+  const normalized = normalizeShipProgression(value, save, value.updatedAt);
+  return hasSameCanonicalValue(value, normalized) ? normalized : null;
+}
+
 export function synchronizeShipProgression(
   state: ShipProgressionState,
   save: SaveGame,
@@ -1576,7 +1624,7 @@ export function loadShipProgression(
           Date.parse(parsed.updatedAt) >= Date.parse(save.createdAt)))) {
       // Bind an adopted legacy sidecar now, before a later reset can change
       // campaigns. Failure preserves the original data and usable memory state.
-      writeShipProgressionWithStatus(state, save, storage, key);
+      if (!archiveTransferPending(storage)) writeShipProgressionWithStatus(state, save, storage, key);
     }
     return state;
   } catch {
@@ -1597,6 +1645,7 @@ export function writeShipProgressionWithStatus(
   });
   if (state.ownerSaveCreatedAt !== save.createdAt) return failed("save-owner");
   if (!storage) return failed("storage-unavailable");
+  if (archiveTransferPending(storage)) return failed("protected-save");
   try {
     const campaignFailure = currentCampaignFailure(storage, save);
     if (campaignFailure) return failed(campaignFailure);
@@ -1613,6 +1662,7 @@ export function writeShipProgressionWithStatus(
   try {
     const serialized = JSON.stringify(snapshot);
     if (new TextEncoder().encode(serialized).byteLength > SHIP_PROGRESSION_MAX_SERIALIZED_BYTES) return failed("write-failed");
+    if (archiveTransferPending(storage)) return failed("protected-save");
     storage.setItem(key, serialized);
     if (storage.getItem(key) !== serialized) return failed("write-failed");
     return { state: snapshot, persisted: true, failure: null };
@@ -1630,6 +1680,7 @@ export function resetShipProgressionWithStatus(
   const state = createDefaultShipProgression(save);
   const failed = (failure: ShipProgressionWriteFailure): ShipProgressionWriteResult => ({ state, persisted: false, failure });
   if (!storage) return failed("storage-unavailable");
+  if (archiveTransferPending(storage)) return failed("protected-save");
   try {
     const campaignFailure = currentCampaignFailure(storage, save);
     if (campaignFailure) return failed(campaignFailure);
@@ -1638,12 +1689,14 @@ export function resetShipProgressionWithStatus(
   }
   try {
     const serialized = JSON.stringify(state);
+    if (archiveTransferPending(storage)) return failed("protected-save");
     storage.setItem(key, serialized);
     if (storage.getItem(key) === serialized) return { state, persisted: true, failure: null };
   } catch {
     // A quota can reject replacement while removal still succeeds.
   }
   try {
+    if (archiveTransferPending(storage)) return failed("protected-save");
     storage.removeItem(key);
     if (storage.getItem(key) === null) return { state, persisted: true, failure: null };
   } catch {

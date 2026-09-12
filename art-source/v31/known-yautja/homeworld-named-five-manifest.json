@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "lotId": "v31-homeworld-known-yautja-named-five",
+  "createdAt": "2026-09-12",
+  "scope": "Five distinct static full-body plates for Alpha, Samurai, Cleopatra, Bionic, and Broken Tusk / Dachande.",
+  "status": "runtime-bitmaps-produced-not-wired-by-this-lot",
+  "rightsNote": "Original unofficial fan-made OpenAI artwork for this project. No rights-holder approval or 1:1 certification is claimed.",
+  "coverage": {
+    "requestedCharacters": 5,
+    "generatedAndVisuallyReviewedStaticCandidates": 5,
+    "transparentRuntimeBitmaps": 5,
+    "codeIntegrations": 0,
+    "animationClipsGeneratedOrReviewed": 0,
+    "officialCertifications": 0,
+    "oneToOneCertifications": 0
+  },
+  "localInputs": [
+    {
+      "path": "art-source/v26/known-yautja/roster.json",
+      "sha256": "bb3e020ba8a3bbc3fcdd31cfed8220790c74430ad464f95821096771a92b3f33"
+    },
+    {
+      "path": "docs/yautja-visual-fidelity-rule.md",
+      "sha256": "dc49c84db96616ff6c353f833649c892fadacc2ecbb7c8508451f75e9e4df3be"
+    },
+    {
+      "path": "app/game/hunterLore.ts",
+      "sha256": "bd40f527f92efb26f0409c81aa4fedcf225ffd546db799c753a7033df73db7cc"
+    },
+    {
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "7f2ecee2fa7393e399e68d3443c6fc823b666c4ad2fcabb8322c9d92d562eec0"
+    }
+  ],
+  "sourcePriority": [
+    "Official screen/game capture or primary comic panels for geometry, state, and asymmetry.",
+    "Official publisher/developer or licensed manufacturer material for identity and named equipment.",
+    "Project roster and lore only for constrained adaptation, never as proof of a precise canonical turnaround."
+  ],
+  "visualQaPolicy": [
+    "Inspect full native image for identity, right-facing orientation, crop, hands, joints, equipment attachment, and duplicate limbs.",
+    "Reject opaque checkerboard or dark background; convert an accepted chroma source to real alpha and inspect the keyed result.",
+    "Treat each plate as one fixed pose, never as an animation sheet or modular equipment delivery."
+  ],
+  "entries": [
+    {
+      "id": "alpha",
+      "name": "Alpha Predator",
+      "catalogueId": "Y-008",
+      "status": "generated-and-visually-reviewed-static-candidate",
+      "identityAnchor": "Pale ashen founder hunter, primitive bone-and-bronze armor, sculpted skull biomask, bone trophies, signature sickle.",
+      "officialOrLicensedReferenceUrls": [
+        "https://blog.playstation.com/2020/07/17/july-free-update-comes-to-predator-hunting-grounds/",
+        "https://necaonline.com/2020/01/predator-7-scale-action-figure-ultimate-alpha-predator-100th-edition-figure/"
+      ],
+      "promptPath": "art-source/v31/known-yautja/prompts/alpha-homeworld-static.json",
+      "promptSha256": "d5914826cfbac81f7a2a8ff721a70f392aa5dfd301d581dbb1483a84e508caeb",
+      "generationProvider": "OpenAI integrated ImageGen",
+      "generationOutputId": "exec-a3464b6a-ff13-4601-9014-b56a283e45d4",
+      "masterPath": "art-source/v31/known-yautja/sources/alpha-chroma.png",
+      "masterSha256": "f0d88a0f488a998d42b517996bd835061fcc9bd21706d9c1096da935c29ae316",
+      "masterDimensions": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 3
+      },
+      "runtimePath": "public/game/sprites/v31/film-plates/alpha.png",
+      "runtimeUrl": "/game/sprites/v31/film-plates/alpha.png",
+      "runtimeSha256": "88c9b66f897ba035931ed2f1aefd033040a0ba4aa5030233fbcc81e869b23fb1",
+      "runtimeDimensions": {
+        "width": 863,
+        "height": 1568,
+        "channels": 4
+      },
+      "chromaKeyMedianRgb": [
+        3,
+        248,
+        8
+      ],
+      "alpha": {
+        "realAlpha": true,
+        "transparentPixels": 899937,
+        "opaquePixels": 429595,
+        "partiallyTransparentSourceEdgePixels": 15426,
+        "subjectBounds": {
+          "minX": 84,
+          "minY": 84,
+          "maxX": 778,
+          "maxY": 1483
+        }
+      },
+      "pivot": {
+        "x": 448,
+        "y": 1484,
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1202,
+          "splitX": 431,
+          "halves": [
+            {
+              "left": 166,
+              "right": 327
+            },
+            {
+              "left": 521,
+              "right": 778
+            }
+          ]
+        },
+        "policy": "rounded mean of the two foot-region centers below 76.7 percent image height, split at half image width; support is max alpha Y plus one"
+      },
+      "visualReview": "Accepted after a background-only correction: complete profile-right silhouette, two coherent hands, clear closed sickle grip, two complete feet, attached trophies and armor; no visible duplicate limb.",
+      "orientation": "faces-right",
+      "runtimeKind": "static-bitmap",
+      "animationClips": 0,
+      "codeIntegratedByThisLot": false,
+      "officialCertification": false,
+      "oneToOneCertified": false
+    },
+    {
+      "id": "samurai",
+      "name": "Samurai Predator",
+      "catalogueId": "Y-174",
+      "status": "generated-and-visually-reviewed-static-candidate",
+      "identityAnchor": "Ochre hunter in worn lamellar Yautja armor, ornate kabuto/oni biomask, cord ties, official Predator Katana and secured scabbard.",
+      "officialOrLicensedReferenceUrls": [
+        "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/"
+      ],
+      "promptPath": "art-source/v31/known-yautja/prompts/samurai-homeworld-static.json",
+      "promptSha256": "4fca098fb53eff7952b1ee4db77162f97b461f816ad69f10c671dc054c0f8500",
+      "generationProvider": "OpenAI integrated ImageGen",
+      "generationOutputId": "exec-06754b83-db0e-4963-a6b0-d7732bd55d55",
+      "masterPath": "art-source/v31/known-yautja/sources/samurai-chroma.png",
+      "masterSha256": "759f6d309a37ca80b5bd3c83a1e0e6a62752470cb5f780e4beeb07c513c47f24",
+      "masterDimensions": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 3
+      },
+      "runtimePath": "public/game/sprites/v31/film-plates/samurai.png",
+      "runtimeUrl": "/game/sprites/v31/film-plates/samurai.png",
+      "runtimeSha256": "ee2777788db5390553e8a5f08eb1323516f32edc30b48f8eb7423586d839c743",
+      "runtimeDimensions": {
+        "width": 967,
+        "height": 1568,
+        "channels": 4
+      },
+      "chromaKeyMedianRgb": [
+        3,
+        249,
+        2
+      ],
+      "alpha": {
+        "realAlpha": true,
+        "transparentPixels": 1051141,
+        "opaquePixels": 444423,
+        "partiallyTransparentSourceEdgePixels": 12733,
+        "subjectBounds": {
+          "minX": 84,
+          "minY": 84,
+          "maxX": 882,
+          "maxY": 1483
+        }
+      },
+      "pivot": {
+        "x": 439,
+        "y": 1484,
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1202,
+          "splitX": 483,
+          "halves": [
+            {
+              "left": 158,
+              "right": 328
+            },
+            {
+              "left": 508,
+              "right": 760
+            }
+          ]
+        },
+        "policy": "rounded mean of the two foot-region centers below 76.7 percent image height, split at half image width; support is max alpha Y plus one"
+      },
+      "visualReview": "Accepted: complete right-facing silhouette, continuous single-edged katana and hilt, readable closed grip and relaxed free hand, scabbard and cords visibly attached, both feet complete.",
+      "orientation": "faces-right",
+      "runtimeKind": "static-bitmap",
+      "animationClips": 0,
+      "codeIntegratedByThisLot": false,
+      "officialCertification": false,
+      "oneToOneCertified": false
+    },
+    {
+      "id": "cleopatra",
+      "name": "Cleopatra Predator",
+      "catalogueId": "Y-055",
+      "status": "generated-and-visually-reviewed-static-candidate",
+      "identityAnchor": "Powerful Elder Huntress with crowned pharaonic biomask, aged-gold armor, attached trophies, shoulder caster and separately mounted Cleopatra smart disc.",
+      "officialOrLicensedReferenceUrls": [
+        "https://blog.playstation.com/2021/08/31/become-the-fearsome-cleopatra-with-this-months-new-additions-to-predator-hunting-grounds/"
+      ],
+      "promptPath": "art-source/v31/known-yautja/prompts/cleopatra-homeworld-static.json",
+      "promptSha256": "5ee0b334fe2849a5d30ea4da3a4ff32b1d83f6d14735dcc9758781dcad48ada5",
+      "generationProvider": "OpenAI integrated ImageGen",
+      "generationOutputId": "exec-2e9908db-e43d-45f4-8fc1-02261aec175c",
+      "masterPath": "art-source/v31/known-yautja/sources/cleopatra-chroma.png",
+      "masterSha256": "86b1fd4f0be392558448ae15d4549b116cc31d4274e22ec74651448b7405f84a",
+      "masterDimensions": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 3
+      },
+      "runtimePath": "public/game/sprites/v31/film-plates/cleopatra.png",
+      "runtimeUrl": "/game/sprites/v31/film-plates/cleopatra.png",
+      "runtimeSha256": "51d86d19dcfd9c4333ec1990f178de95c553ed4ad030fb7cef8329b311b12f0a",
+      "runtimeDimensions": {
+        "width": 691,
+        "height": 1568,
+        "channels": 4
+      },
+      "chromaKeyMedianRgb": [
+        3,
+        248,
+        11
+      ],
+      "alpha": {
+        "realAlpha": true,
+        "transparentPixels": 676462,
+        "opaquePixels": 387830,
+        "partiallyTransparentSourceEdgePixels": 13078,
+        "subjectBounds": {
+          "minX": 84,
+          "minY": 84,
+          "maxX": 606,
+          "maxY": 1483
+        }
+      },
+      "pivot": {
+        "x": 330,
+        "y": 1484,
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1202,
+          "splitX": 345,
+          "halves": [
+            {
+              "left": 84,
+              "right": 225
+            },
+            {
+              "left": 403,
+              "right": 606
+            }
+          ]
+        },
+        "policy": "rounded mean of the two foot-region centers below 76.7 percent image height, split at half image width; support is max alpha Y plus one"
+      },
+      "visualReview": "Accepted after a background-only correction: crown and profile face right, two connected readable hands, complete feet, caster and disc mount physically attached, no held weapon or visible limb defect.",
+      "orientation": "faces-right",
+      "runtimeKind": "static-bitmap",
+      "animationClips": 0,
+      "codeIntegratedByThisLot": false,
+      "officialCertification": false,
+      "oneToOneCertified": false
+    },
+    {
+      "id": "bionic",
+      "name": "Bionic Predator",
+      "catalogueId": "Y-029",
+      "status": "generated-and-visually-reviewed-static-candidate",
+      "identityAnchor": "Unmasked super-class veteran with organic dark mottled skin and one coherent chain of asymmetrical gunmetal reconstruction from face to arm, torso and leg.",
+      "officialOrLicensedReferenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-42/28894"
+      ],
+      "promptPath": "art-source/v31/known-yautja/prompts/bionic-homeworld-static.json",
+      "promptSha256": "980b9c49be0d5d9b3323cc1766e10784e861afc38929a9673896e554b31bee36",
+      "generationProvider": "OpenAI integrated ImageGen",
+      "generationOutputId": "exec-484105b7-4d9e-4728-b59e-a19d6edd583f",
+      "masterPath": "art-source/v31/known-yautja/sources/bionic-chroma.png",
+      "masterSha256": "c3e26463f25cd58d0de9664a1e203eeeb7f3d54c202936e45909f0f03e65aece",
+      "masterDimensions": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 3
+      },
+      "runtimePath": "public/game/sprites/v31/film-plates/bionic.png",
+      "runtimeUrl": "/game/sprites/v31/film-plates/bionic.png",
+      "runtimeSha256": "0ecf025c1504953e6303d46c8de9df243dc60632bd1526597ef3d2f8668b3f9e",
+      "runtimeDimensions": {
+        "width": 874,
+        "height": 1568,
+        "channels": 4
+      },
+      "chromaKeyMedianRgb": [
+        3,
+        249,
+        1
+      ],
+      "alpha": {
+        "realAlpha": true,
+        "transparentPixels": 847968,
+        "opaquePixels": 502568,
+        "partiallyTransparentSourceEdgePixels": 12623,
+        "subjectBounds": {
+          "minX": 84,
+          "minY": 84,
+          "maxX": 789,
+          "maxY": 1483
+        }
+      },
+      "pivot": {
+        "x": 434,
+        "y": 1484,
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1202,
+          "splitX": 437,
+          "halves": [
+            {
+              "left": 120,
+              "right": 291
+            },
+            {
+              "left": 534,
+              "right": 789
+            }
+          ]
+        },
+        "policy": "rounded mean of the two foot-region centers below 76.7 percent image height, split at half image width; support is max alpha Y plus one"
+      },
+      "visualReview": "Accepted: unmasked right-facing head, facial implant and red bionic eye remain on the same reconstructed side as arm/torso/leg plates, both hands and feet complete, cables visibly anchored.",
+      "orientation": "faces-right",
+      "runtimeKind": "static-bitmap",
+      "animationClips": 0,
+      "codeIntegratedByThisLot": false,
+      "officialCertification": false,
+      "oneToOneCertified": false
+    },
+    {
+      "id": "broken-tusk",
+      "name": "Broken Tusk / Dachande",
+      "catalogueId": "Y-061",
+      "status": "generated-and-visually-reviewed-static-candidate",
+      "identityAnchor": "Unmasked ochre veteran Dachande with one damaged outer tusk, ringed black dreadlocks, worn classic AVP armor, caster, back-mounted long blade and holstered sidearm.",
+      "officialOrLicensedReferenceUrls": [
+        "https://digital.darkhorse.com/books/47483ce0aec5466783599e38c9d0ac47/aliens-vs-predator-the-original-comics-series-30th-anniversary-edition",
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/"
+      ],
+      "promptPath": "art-source/v31/known-yautja/prompts/broken-tusk-homeworld-static.json",
+      "promptSha256": "f7b02703f9a3c941c8f830b307e267d3ad810fac70d177a0fa0bb96e8ec13da8",
+      "generationProvider": "OpenAI integrated ImageGen",
+      "generationOutputId": "exec-e95c63dd-5a1f-49e6-a293-807dff03e2f4",
+      "masterPath": "art-source/v31/known-yautja/sources/broken-tusk-chroma.png",
+      "masterSha256": "3987456d8c5767704d972b798bddb3b6aba47d114cbfb97627714504f70d4fa5",
+      "masterDimensions": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 3
+      },
+      "runtimePath": "public/game/sprites/v31/film-plates/broken-tusk.png",
+      "runtimeUrl": "/game/sprites/v31/film-plates/broken-tusk.png",
+      "runtimeSha256": "2cf3177ff903317a450400b750a6f1ae3a5ccc473fa3bc20ab983cb35f99b861",
+      "runtimeDimensions": {
+        "width": 738,
+        "height": 1568,
+        "channels": 4
+      },
+      "chromaKeyMedianRgb": [
+        3,
+        249,
+        1
+      ],
+      "alpha": {
+        "realAlpha": true,
+        "transparentPixels": 694476,
+        "opaquePixels": 442607,
+        "partiallyTransparentSourceEdgePixels": 12530,
+        "subjectBounds": {
+          "minX": 84,
+          "minY": 84,
+          "maxX": 653,
+          "maxY": 1483
+        }
+      },
+      "pivot": {
+        "x": 357,
+        "y": 1484,
+        "bodyTopY": 84,
+        "footMeasurement": {
+          "startY": 1202,
+          "splitX": 369,
+          "halves": [
+            {
+              "left": 108,
+              "right": 269
+            },
+            {
+              "left": 398,
+              "right": 653
+            }
+          ]
+        },
+        "policy": "rounded mean of the two foot-region centers below 76.7 percent image height, split at half image width; support is max alpha Y plus one"
+      },
+      "visualReview": "Accepted as a static fan interpretation: complete profile-right silhouette, asymmetric damaged outer tusk is visible, both relaxed hands and feet are complete, long back blade and sidearm remain attached to harness/holster.",
+      "orientation": "faces-right",
+      "runtimeKind": "static-bitmap",
+      "animationClips": 0,
+      "codeIntegratedByThisLot": false,
+      "officialCertification": false,
+      "oneToOneCertified": false
+    }
+  ],
+  "warning": "These five files are fixed fan-made identity plates. They do not constitute sprite sheets, animations, separated props, a primary-source turnaround, or commercial rights clearance."
+}

@@ -90,13 +90,13 @@ test("guided scenarios are transient, deterministic, and reject match mode", () 
     assert.deepEqual(pit.preparePitTrainingLesson(original,definition.id),pit.preparePitTrainingLesson(original,definition.id));
     const prepared=pit.preparePitTrainingLesson(original,definition.id);
     assert.equal(prepared.state.arenaId,original.arenaId);
-    assert.equal(prepared.state.version,4);
+    assert.equal(prepared.state.version,pit.PIT_STATE_VERSION);
     assert.doesNotMatch(JSON.stringify(prepared.lesson),/reward|save|campaign|palette/);
     assert.equal(pit.evaluatePitTrainingLesson(prepared.lesson,prepared.state,prepared.state),prepared.lesson);
   }
   assert.equal(JSON.stringify(original),before);
   assert.throws(()=>pit.preparePitTrainingLesson(pit.createPitCombatState(),"guard-low"),/training/);
-  assert.throws(()=>pit.preparePitTrainingLesson(original,"throw-tech"),/training/);
+  assert.throws(()=>pit.preparePitTrainingLesson(original,"not-a-lesson"),/training/);
 });
 test("low guard requires real low blocks and rejects high guard", () => {
   const good=exercise("guard-low",()=>({guardLow:true,down:true}));

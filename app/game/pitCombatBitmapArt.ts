@@ -1,10 +1,15 @@
 import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
 
-/** Existing, exact-ID V5 illustrations. These are fixed poses, not animation clips. */
+/** All 14 exact-ID PIT fighters: six V31 and eight preserved V5 plates. Fixed poses only. */
 export const PIT_COMBAT_BITMAP_FIGHTER_IDS = [
   "jungle-hunter", "city-hunter", "scar", "celtic", "wolf", "feral-hunter",
   "berserker", "falconer", "kok-warlord",
+  "scarface", "stone-heart", "valkyrie", "witch", "enforcer",
 ] as const satisfies readonly PitFighterId[];
+
+export const PIT_V31_BITMAP_FIGHTER_IDS: readonly PitFighterId[] = [
+  "city-hunter", "scarface", "stone-heart", "valkyrie", "witch", "enforcer",
+];
 
 export interface PitCombatBitmapArtDefinition {
   readonly fighterId: PitFighterId;
@@ -19,13 +24,13 @@ export interface PitCombatBitmapArtDefinition {
   readonly kind: "static-bitmap";
 }
 
-// Measured on the delivered alpha PNGs and inspected as a nine-image montage.
+// Measured on all delivered alpha PNGs; V31 identities and orientations visually reviewed.
 // Feral and the Warlord face the viewer: do not invent a side or mirror them.
 // Other plates have a rightward three-quarter presentation; mirroring is a
 // provisional display convention, never a separately authored/canon side view.
 const MEASUREMENTS: readonly [PitFighterId, number, number, number, number, number, "right" | "neutral"][] = [
   ["jungle-hunter", 775, 1514, 390, 1433, 81, "right"],
-  ["city-hunter", 866, 1396, 500, 1320, 75, "right"],
+  ["city-hunter", 987, 1568, 560, 1484, 84, "right"],
   ["scar", 1139, 1356, 510, 1283, 142, "right"],
   ["celtic", 951, 1160, 382, 1098, 153, "right"],
   ["wolf", 804, 983, 396, 930, 68, "right"],
@@ -33,9 +38,14 @@ const MEASUREMENTS: readonly [PitFighterId, number, number, number, number, numb
   ["berserker", 1055, 1401, 531, 1326, 75, "right"],
   ["falconer", 974, 1009, 577, 955, 54, "right"],
   ["kok-warlord", 1102, 1219, 520, 1154, 65, "neutral"],
+  ["scarface", 1083, 1568, 490, 1484, 84, "right"],
+  ["stone-heart", 1038, 1568, 478, 1484, 84, "right"],
+  ["valkyrie", 1047, 1568, 567, 1484, 84, "right"],
+  ["witch", 1014, 1568, 399, 1484, 84, "right"],
+  ["enforcer", 1095, 1568, 513, 1484, 84, "right"],
 ];
 const DEFINITIONS: readonly PitCombatBitmapArtDefinition[] = MEASUREMENTS.map(([fighterId, width, height, px, py, bodyTopY, nativeFacing]) => Object.freeze({
-  fighterId, src: "/game/sprites/v5/film-plates/" + fighterId + ".png",
+  fighterId, src: "/game/sprites/" + (PIT_V31_BITMAP_FIGHTER_IDS.includes(fighterId) ? "v31" : "v5") + "/film-plates/" + fighterId + ".png",
   width, height, pivot: Object.freeze([px, py] as const), bodyTopY, nativeFacing,
   kind: "static-bitmap",
 }));
@@ -43,6 +53,27 @@ const DEFINITIONS: readonly PitCombatBitmapArtDefinition[] = MEASUREMENTS.map(([
 export function getPitCombatBitmapArtDefinition(id: PitFighterId): PitCombatBitmapArtDefinition | null {
   return DEFINITIONS.find(definition => definition.fighterId === id) ?? null;
 }
+/** Full source rectangle after the same pivot, body scale and facing as draw.
+ * Transparent padding is intentionally retained: framing must never cut a plate.
+ * Available before image loading, so a late bitmap cannot change the camera.
+ */
+export function getPitCombatBitmapVisualBounds(
+  fighter: PitFighterState,
+  groundY: number,
+): { x: number; y: number; width: number; height: number } | null {
+  const art = getPitCombatBitmapArtDefinition(fighter.definitionId);
+  if (!art || ![fighter.x, fighter.y, groundY].every(Number.isFinite) ||
+    (fighter.facing !== 1 && fighter.facing !== -1)) return null;
+  const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / (art.pivot[1] - art.bodyTopY);
+  const direction = art.nativeFacing === "right" ? fighter.facing : 1;
+  return {
+    x: fighter.x - (direction === 1 ? art.pivot[0] : art.width - art.pivot[0]) * scale,
+    y: groundY - fighter.y - art.pivot[1] * scale,
+    width: art.width * scale,
+    height: art.height * scale,
+  };
+}
+
 export interface PitCombatBitmapArtBank {
   readonly images: ReadonlyMap<PitFighterId, HTMLImageElement>;
   readonly requestedIds: ReadonlySet<PitFighterId>;
