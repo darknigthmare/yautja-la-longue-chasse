@@ -1,0 +1,586 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T17:49:50.228Z",
+  "method": "Native Chrome Canvas with real loader/renderer; controlled pose snapshots only",
+  "readyClipCount": 16,
+  "records": [
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 0,
+      "rect": [
+        58,
+        106,
+        260,
+        358
+      ],
+      "magentaPixels": 10,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 10,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 1,
+      "rect": [
+        432,
+        105,
+        264,
+        359
+      ],
+      "magentaPixels": 12,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 20,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 2,
+      "rect": [
+        809,
+        102,
+        264,
+        362
+      ],
+      "magentaPixels": 35,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 30,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 3,
+      "rect": [
+        1199,
+        108,
+        261,
+        356
+      ],
+      "magentaPixels": 13,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 0,
+      "rect": [
+        71,
+        564,
+        263,
+        362
+      ],
+      "magentaPixels": 13,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 10,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 1,
+      "rect": [
+        452,
+        564,
+        274,
+        361
+      ],
+      "magentaPixels": 14,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 20,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 2,
+      "rect": [
+        835,
+        563,
+        271,
+        362
+      ],
+      "magentaPixels": 16,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 30,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 3,
+      "rect": [
+        1210,
+        564,
+        268,
+        362
+      ],
+      "magentaPixels": 4,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.startup",
+      "frameIndex": 0,
+      "rect": [
+        56,
+        126,
+        264,
+        333
+      ],
+      "magentaPixels": 12,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 5,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.active",
+      "frameIndex": 0,
+      "rect": [
+        420,
+        122,
+        385,
+        336
+      ],
+      "magentaPixels": 2,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 8,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 0,
+      "rect": [
+        812,
+        120,
+        262,
+        340
+      ],
+      "magentaPixels": 23,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 13,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 1,
+      "rect": [
+        1216,
+        116,
+        252,
+        346
+      ],
+      "magentaPixels": 6,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.startup",
+      "frameIndex": 0,
+      "rect": [
+        65,
+        583,
+        270,
+        341
+      ],
+      "magentaPixels": 15,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 5,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.active",
+      "frameIndex": 0,
+      "rect": [
+        364,
+        580,
+        386,
+        344
+      ],
+      "magentaPixels": 26,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 8,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 0,
+      "rect": [
+        837,
+        581,
+        273,
+        344
+      ],
+      "magentaPixels": 36,
+      "borderPixels": 0
+    },
+    {
+      "id": "jungle-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 13,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 1,
+      "rect": [
+        1212,
+        574,
+        266,
+        353
+      ],
+      "magentaPixels": 49,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 0,
+      "rect": [
+        73,
+        21,
+        239,
+        457
+      ],
+      "magentaPixels": 11,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 10,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 1,
+      "rect": [
+        458,
+        21,
+        238,
+        457
+      ],
+      "magentaPixels": 14,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 20,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 2,
+      "rect": [
+        839,
+        19,
+        241,
+        459
+      ],
+      "magentaPixels": 16,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": 1,
+      "tick": 30,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 3,
+      "rect": [
+        1228,
+        21,
+        236,
+        457
+      ],
+      "magentaPixels": 9,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 0,
+      "rect": [
+        66,
+        530,
+        245,
+        459
+      ],
+      "magentaPixels": 15,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 10,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 1,
+      "rect": [
+        449,
+        530,
+        245,
+        459
+      ],
+      "magentaPixels": 14,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 20,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 2,
+      "rect": [
+        834,
+        527,
+        245,
+        462
+      ],
+      "magentaPixels": 18,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "idle",
+      "facing": -1,
+      "tick": 30,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "idle",
+      "frameIndex": 3,
+      "rect": [
+        1217,
+        530,
+        245,
+        459
+      ],
+      "magentaPixels": 15,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.startup",
+      "frameIndex": 0,
+      "rect": [
+        55,
+        38,
+        274,
+        438
+      ],
+      "magentaPixels": 8,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 4,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.active",
+      "frameIndex": 0,
+      "rect": [
+        407,
+        38,
+        385,
+        438
+      ],
+      "magentaPixels": 17,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 7,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 0,
+      "rect": [
+        823,
+        37,
+        278,
+        439
+      ],
+      "magentaPixels": 2,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": 1,
+      "tick": 12,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 1,
+      "rect": [
+        1229,
+        36,
+        246,
+        442
+      ],
+      "magentaPixels": 16,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 0,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.startup",
+      "frameIndex": 0,
+      "rect": [
+        53,
+        536,
+        277,
+        439
+      ],
+      "magentaPixels": 8,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 4,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.active",
+      "frameIndex": 0,
+      "rect": [
+        351,
+        534,
+        387,
+        441
+      ],
+      "magentaPixels": 26,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 7,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 0,
+      "rect": [
+        812,
+        533,
+        284,
+        441
+      ],
+      "magentaPixels": 4,
+      "borderPixels": 0
+    },
+    {
+      "id": "city-hunter",
+      "action": "light",
+      "facing": -1,
+      "tick": 12,
+      "status": "sprite-sheet-animation",
+      "drawn": true,
+      "clipId": "pit.stand.light.recovery",
+      "frameIndex": 1,
+      "rect": [
+        1211,
+        533,
+        257,
+        442
+      ],
+      "magentaPixels": 16,
+      "borderPixels": 0
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

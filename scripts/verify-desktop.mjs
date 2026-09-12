@@ -77,7 +77,7 @@ try {
     return { asset: asset.status, bytes: (await asset.arrayBuffer()).byteLength, privateFile: privateFile.status, audio: audio.status, audioSlots: inventory?.entries?.length };
   });
   assert.equal(local.asset, 200); assert.ok(local.bytes > 10000); assert.equal(local.privateFile, 403); assert.equal(local.audio,200); assert.equal(local.audioSlots,37);
-  checks.push("Packaged EXE boots with the expected V31 content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
+  checks.push("Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
 
   await page.getByRole("button", { name: "Réglages", exact: true }).click();
   await page.getByRole("checkbox", { name: "Violence atténuée" }).check();
@@ -171,10 +171,12 @@ try {
   await page.clock.runFor(64);
   const pitCameraZoom = Number(await pitCanvas.getAttribute("data-pit-camera-zoom"));
   assert.ok(Number.isFinite(pitCameraZoom) && pitCameraZoom >= 1);
-  await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="static-bitmap"]').waitFor();
+  await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="sprite-sheet-animation"]').waitFor();
   await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="static-bitmap"]').waitFor();
+  await pitCanvas.locator('xpath=self::*[@data-pit-arena-planes="P0,P1,P2,P3,P4,P5"]').waitFor();
+  assert.equal(await pitCanvas.getAttribute("data-pit-arena-missing-assets"), "0");
   await captureWindow(instance, "pit-combat-pc.png");
-  checks.push("Hub to THE PIT training arena loads locally, with the exact Jungle Hunter and Berserker fixed-pose PNGs.");
+  checks.push("Hub to THE PIT loads locally with an authored Jungle Hunter animation and the existing Berserker bitmap.");
 
   await page.goto("yautja://game/");
   await page.getByRole("button", { name: "Jouer", exact: true }).click();
