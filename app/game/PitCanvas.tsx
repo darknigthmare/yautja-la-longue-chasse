@@ -589,6 +589,9 @@ function drawArena(
   canvas.dataset.pitArenaId = state.arenaId;
   canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== state.arenaId ? "loading" : backdropReport.missingPaths.length ? "partial" : "bitmap";
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
+  canvas.dataset.pitArenaArtSource = arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
+  canvas.dataset.pitArenaLoadedImages = String(arenaArt?.images.size ?? 0);
+  canvas.dataset.pitArenaSubplans = String(arenaArt?.productionKit?.planes.reduce((sum, plane) => sum + plane.assets.length, 0) ?? 0);
   context.save();
   applyPitPresentationCamera(context, width, height, camera);
 

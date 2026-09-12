@@ -1,0 +1,703 @@
+{
+  "schemaVersion": 1,
+  "id": "v33-moto-antigrav-chasse",
+  "checkedAt": "2026-09-12T18:31:41.390Z",
+  "status": "authored-review",
+  "tool": "image_gen integrated",
+  "lore": "original-game-interpretation-not-film-replica",
+  "generatedImages": 4,
+  "publicReviewImages": 2,
+  "rejectedDrafts": 2,
+  "validatedRuntimeClips": 0,
+  "implementedGameplay": false,
+  "sourceBytesPreserved": true,
+  "prompts": "art-source/v33/vehicles/moto-antigrav-chasse-prompts-v33.json",
+  "assets": [
+    {
+      "id": "identity",
+      "origin": "exec-a5d4dd5e-3f24-42da-8b91-2f1d1feddab4.png",
+      "filename": "moto-antigrav-chasse-identity-v33.png",
+      "status": "authored-review",
+      "public": true,
+      "config": {
+        "mode": "alpha"
+      },
+      "columns": 1,
+      "rows": 2,
+      "notes": [
+        "Original interpretation, not a movie replica.",
+        "Two opposite drawn views; scale and mechanical attachments still require final approval."
+      ],
+      "sourcePath": "art-source/v33/vehicles/moto-antigrav-chasse-identity-v33.png",
+      "publicPath": "/game/vehicles/v33/moto-antigrav-chasse-identity-v33.png",
+      "sha256": "23e6ebcd583e89469bae80a5195aff68b8e88cc1bdf63d2b0120d49965e0e1d2",
+      "bytes": 2444813,
+      "width": 1536,
+      "height": 1024,
+      "rawAlpha": {
+        "zero": 854282,
+        "partial": 718582,
+        "opaque": 0
+      },
+      "prepared": {
+        "keyedPixels": 0,
+        "fringePixels": 0
+      },
+      "cells": [
+        {
+          "index": 0,
+          "reviewCell": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "visiblePixels": 361150,
+          "alpha16Bounds": [
+            36,
+            11,
+            1483,
+            501
+          ],
+          "borderVisiblePixels": 244,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "c7dcb6a05417930e1f224f684f7b48c5190366874d592bcd0ad42e98d8e004f7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "reviewCell": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "visiblePixels": 357432,
+          "alpha16Bounds": [
+            18,
+            512,
+            1483,
+            468
+          ],
+          "borderVisiblePixels": 281,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "c9d027c4ea9457359745363fc06ddd7c5bad16276fcf06988dd2bb6ea83e55e5",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "stabilizers-draft-checkerboard",
+      "origin": "exec-37733d9b-35f5-4f3e-a274-f637a3ec285a.png",
+      "filename": "drafts/moto-antigrav-chasse-stabilizers-checkerboard-draft-v33.png",
+      "status": "rejected",
+      "public": false,
+      "config": {
+        "mode": "alpha"
+      },
+      "columns": 2,
+      "rows": 4,
+      "notes": [
+        "Opaque checkerboard background.",
+        "Forward support pops into existence at full deployment."
+      ],
+      "sourcePath": "art-source/v33/vehicles/drafts/moto-antigrav-chasse-stabilizers-checkerboard-draft-v33.png",
+      "publicPath": null,
+      "sha256": "be38b6c643a1786a79b5d90e289cb3ba5969242a91ca7f91dd505314907c40f6",
+      "bytes": 2930199,
+      "width": 1536,
+      "height": 1024,
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 0,
+        "fringePixels": 0
+      },
+      "cells": [
+        {
+          "index": 0,
+          "reviewCell": [
+            0,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            0,
+            0,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "1b5136755d083ff8462d4ed84ce59400ada1116c9bf67a9a4d08c2040e655ab2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "reviewCell": [
+            768,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            768,
+            0,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "f88c4d0ef2de4134445079a9ebbbd3a941ecff43d2f57e5cc6e2b792a265dd7c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "reviewCell": [
+            0,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            0,
+            256,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "b25104be5f470a9afe8cc655e4964def8ebbfcdc406e657f0e677fcbb83e0948",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "reviewCell": [
+            768,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            768,
+            256,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "49dc90f5f319d8166e8f61ca9af268f0efc0a2efe1c6ed5b0d6e2815b8767cde",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "reviewCell": [
+            0,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            0,
+            512,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "df55f1d85869090ae1e423034ec78a24997b755334f33610e63fd43a10364e80",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "reviewCell": [
+            768,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            768,
+            512,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "d2cdc72d632ae437c3901e28b18ef4f64edba9a60fe15386530012fba691de28",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "reviewCell": [
+            0,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            0,
+            768,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "312104c5a41c80bd377100bcd3feb9537d8ea6cced2b08279ad06ed470d34908",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "reviewCell": [
+            768,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 196608,
+          "alpha16Bounds": [
+            768,
+            768,
+            768,
+            256
+          ],
+          "borderVisiblePixels": 2044,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "e45d4b1bb1bc98e7c4c87527742e9c98b59f52bdf60de72662937d50bdf27b34",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "stabilizers-draft-magenta",
+      "origin": "exec-98b1d8d9-8916-4fb1-a3b9-2346d6391352.png",
+      "filename": "drafts/moto-antigrav-chasse-stabilizers-magenta-draft-v33.png",
+      "status": "rejected",
+      "public": false,
+      "config": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "columns": 2,
+      "rows": 4,
+      "notes": [
+        "Background corrected to explicit color-key.",
+        "Forward support progression still discontinuous."
+      ],
+      "sourcePath": "art-source/v33/vehicles/drafts/moto-antigrav-chasse-stabilizers-magenta-draft-v33.png",
+      "publicPath": null,
+      "sha256": "4926fdc0939f6bb2b407baa0397333dd178ff97c65b69c0354aa936000081cb7",
+      "bytes": 2358568,
+      "width": 1536,
+      "height": 1024,
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 892224,
+        "fringePixels": 27291
+      },
+      "cells": [
+        {
+          "index": 0,
+          "reviewCell": [
+            0,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 84036,
+          "alpha16Bounds": [
+            23,
+            14,
+            745,
+            187
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "dc092cbecb858541fa443414a97543bad2dc3caf4b157e7c676f52ac6852026d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "reviewCell": [
+            768,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 85086,
+          "alpha16Bounds": [
+            768,
+            14,
+            766,
+            219
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 538,
+          "pixelDigest": "b71eb83b9656dfc4869c5d16877bd7423b0af423fef753c3915a09e77b92836c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "reviewCell": [
+            0,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 85816,
+          "alpha16Bounds": [
+            23,
+            268,
+            745,
+            227
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 461,
+          "pixelDigest": "b907afe853f89c3e406269e061eb4dfbff69a4dd42992b627c823458af7c23e0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "reviewCell": [
+            768,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 86536,
+          "alpha16Bounds": [
+            768,
+            268,
+            766,
+            236
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 64,
+          "pixelDigest": "e4531de6d46b86040cdd351e73c84719da278fb5443cab0072bbf46236f6d1ec",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "reviewCell": [
+            0,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 85408,
+          "alpha16Bounds": [
+            23,
+            524,
+            745,
+            223
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 145,
+          "pixelDigest": "8c4e20c69e39e55f7f375d3bcc5c901bbb9f659fbee583329a4184db9bca0b6b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "reviewCell": [
+            768,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 85269,
+          "alpha16Bounds": [
+            768,
+            524,
+            765,
+            220
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 200,
+          "pixelDigest": "d1401de6ba1463e48066339a55f92857860abaa99fbe41692f50daf037151c31",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "reviewCell": [
+            0,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 84274,
+          "alpha16Bounds": [
+            23,
+            780,
+            745,
+            189
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 41,
+          "pixelDigest": "29f830aec53387eea68d64e2eb7bc582b4c53075ff03f06fc83c6cd5ca9f7a94",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "reviewCell": [
+            768,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 84215,
+          "alpha16Bounds": [
+            768,
+            780,
+            766,
+            189
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 45,
+          "pixelDigest": "27cb6cc47d1c24382df145dab12b66b5f926bcc83e1178d222abd43002eaa8a5",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "stabilizers-review",
+      "origin": "exec-0789fc34-024c-4eab-a71f-e81c38ed91ba.png",
+      "filename": "moto-antigrav-chasse-stabilizers-v33.png",
+      "status": "authored-review",
+      "public": true,
+      "config": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "columns": 2,
+      "rows": 4,
+      "notes": [
+        "Eight right-facing pose samples, not a validated runtime clip.",
+        "Forward support now visible across deployment; root/footrest relationship still needs mechanical review.",
+        "Margins smaller than requested; explicit frame extraction and pivots not accepted.",
+        "No rider or VFX baked into vehicle; support mechanics share vehicle sheet."
+      ],
+      "sourcePath": "art-source/v33/vehicles/moto-antigrav-chasse-stabilizers-v33.png",
+      "publicPath": "/game/vehicles/v33/moto-antigrav-chasse-stabilizers-v33.png",
+      "sha256": "3ad906ffa719a5b75be122895c10da2ecfab70917ce76a8425c95b03b23c9d4d",
+      "bytes": 2305081,
+      "width": 1536,
+      "height": 1024,
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 894038,
+        "fringePixels": 26199
+      },
+      "cells": [
+        {
+          "index": 0,
+          "reviewCell": [
+            0,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 83655,
+          "alpha16Bounds": [
+            23,
+            13,
+            745,
+            188
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "04b7dad5bac2150537080e0deada79b0467568d74fae5effba4dc8c3e7aa8df6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "reviewCell": [
+            768,
+            0,
+            768,
+            256
+          ],
+          "visiblePixels": 84714,
+          "alpha16Bounds": [
+            768,
+            13,
+            766,
+            220
+          ],
+          "borderVisiblePixels": 2,
+          "residualMagentaPixels": 69,
+          "pixelDigest": "6a85d14a1d5971da9fcc7ef6b0b0c1e9f9d65f2a1ea3b204bd1c96c63e81299e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "reviewCell": [
+            0,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 85329,
+          "alpha16Bounds": [
+            24,
+            268,
+            744,
+            227
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 64,
+          "pixelDigest": "02be840bedf0f6a0d680bb2834a04af10151b4428905db611579b8946d75decd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "reviewCell": [
+            768,
+            256,
+            768,
+            256
+          ],
+          "visiblePixels": 86634,
+          "alpha16Bounds": [
+            768,
+            268,
+            766,
+            236
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 84,
+          "pixelDigest": "475deb8407fd3eb806365f2daf37fef85d15385c3c7cd2e850b10ef97d0b9b03",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "reviewCell": [
+            0,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 85287,
+          "alpha16Bounds": [
+            23,
+            524,
+            745,
+            224
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 70,
+          "pixelDigest": "f1f07a2eacb7194db3bd3567e571f154e4c70497159a28d27da00041b1f707e9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "reviewCell": [
+            768,
+            512,
+            768,
+            256
+          ],
+          "visiblePixels": 85117,
+          "alpha16Bounds": [
+            768,
+            524,
+            766,
+            221
+          ],
+          "borderVisiblePixels": 2,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "a8c29c1e5ccba281ac4839a9e48bf6812f275985fd9516a29ac7bd194c22b284",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "reviewCell": [
+            0,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 84069,
+          "alpha16Bounds": [
+            24,
+            780,
+            744,
+            189
+          ],
+          "borderVisiblePixels": 4,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "ca4e8f759c810719390f1a0f5d8be2860ac7db480208840693aaf1622e511a6f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "reviewCell": [
+            768,
+            768,
+            768,
+            256
+          ],
+          "visiblePixels": 84021,
+          "alpha16Bounds": [
+            768,
+            780,
+            766,
+            189
+          ],
+          "borderVisiblePixels": 3,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "92e485cc3d36951c4afe1ef4b0c5b8b15cc0ec7b34e20b7633223c023e14e8fb",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    }
+  ],
+  "additionalCorrections": [
+    {
+      "manifest": "art-source/v33/vehicles/moto-stabilizers-repair-v33.json",
+      "status": "authored-review",
+      "sourceBytesPreserved": true,
+      "validatedRuntimeClips": 0
+    }
+  ]
+}

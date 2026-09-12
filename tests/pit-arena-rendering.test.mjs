@@ -6,7 +6,7 @@ import { build } from "esbuild";
 import sharp from "sharp";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
-const bundled = await build({ stdin: { contents: 'export * from "./app/game/pitArenaRendering"; export { createPitCombatState, PIT_ARENAS, stepPitCombat, serializePitCombat } from "./app/game/systems/pitCombat";', loader: "ts", resolveDir: root }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundled = await build({ stdin: { contents: 'export * from "./app/game/pitArenaRendering"; export { resolvePitArenaProductionKit } from "./app/game/pitArenaProduction"; export { createPitCombatState, PIT_ARENAS, stepPitCombat, serializePitCombat } from "./app/game/systems/pitCombat";', loader: "ts", resolveDir: root }, bundle: true, write: false, format: "esm", platform: "node" });
 const api = await import("data:text/javascript;base64," + Buffer.from(bundled.outputFiles[0].text).toString("base64"));
 const stateFor = arenaId => api.createPitCombatState("jungle-hunter", "city-hunter", { mode: "training", arenaId });
 
@@ -26,7 +26,7 @@ async function bankFor(arenaId) {
     const metadata = await sharp(root + "public" + src).metadata();
     images.set(src, { src, naturalWidth: metadata.width, naturalHeight: metadata.height });
   }
-  return { arenaId, images, requestedPaths: new Set(images.keys()), failedPaths: new Set(), cancelled: false };
+  return { arenaId, images, requestedPaths: new Set(images.keys()), failedPaths: new Set(), cancelled: false, productionKit: api.resolvePitArenaProductionKit(arenaId) ?? undefined };
 }
 
 test("every playable arena references real bitmap assets and alpha modules in six distinct passes", async () => {
@@ -113,7 +113,8 @@ test("floor tiling covers every visible screen edge at camera extrema without ga
   for (const centerX of [-100, 100, 480, 850, 1060]) for (const zoom of [.8, .9, 1.95]) {
     const context = contextRecorder();
     api.drawPitArenaBackdrop(context, state, { arenaId, centerX, centerY: 270, zoom }, bank);
-    const tiles = context.calls.filter(call => call.method === "drawImage" && call.args[0].src === api.PIT_ARENA_ART_DEFINITIONS[arenaId].floor.src);
+    const floorSrc = bank.productionKit?.planes.find(plane => plane.id === "P4")?.assets.find(asset => asset.mode === "repeat-x")?.frames[0]?.path ?? api.PIT_ARENA_ART_DEFINITIONS[arenaId].floor.src;
+    const tiles = context.calls.filter(call => call.method === "drawImage" && call.args[0].src === floorSrc);
     assert.ok(tiles[0].args[5] <= 0);
     assert.ok(tiles.at(-1).args[5] + tiles.at(-1).args[7] >= 960);
     for (let i = 1; i < tiles.length; i++) assert.ok(tiles[i].args[5] <= tiles[i - 1].args[5] + tiles[i - 1].args[7]);

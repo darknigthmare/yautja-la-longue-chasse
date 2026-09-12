@@ -1,0 +1,99 @@
+[
+  {
+    "id": "p0-a-vault-depth",
+    "prompt": "Use case: stylized-concept. Production game bitmap, asset THE PIT / Cercle de basalte / P0a vault depth. Create ONE wide 1536x1024 background image for a premium hand-painted 2D side-view fighting game in the user's Yautja fan game. This is an original Yautja orbital clan dueling annex in the Cinder system, NOT an outdoor volcano. ONLY the farthest environmental layer: deep dark interior of an immense basalt-black vaulted alien chamber, near-black bronze curved ceiling ribs tiny and distant, cold desaturated blue depths with very subdued warm amber reflections. View horizontally at fighter eye level, straight-on stage elevation. Compose empty quiet dark center and lower two thirds behind fighters; distant ceiling arches concentrated top quarter. The bottom has only depth darkness, NO combat floor, NO ground edge, NO close pillars, NO door, NO platforms, NO props, NO trophies, NO braziers, NO fighters, NO crowd, NO text, symbols resembling letters, UI, borders, logos or watermark. This image is intentionally sparse because six other independent layers will be composited in front. Materials textured, painterly crisp, no pixel noise. Atmospheric low contrast, generous overscan edges, full-bleed opaque panorama, consistent light from above left. Do not make a finished flattened arena scene; generate only the remote chamber depth.",
+    "sourceFile": "exec-eb7aae4c-c078-4e97-a07d-6f815aba44dd.png",
+    "review": "Far-depth only, quiet foreground; image visually reviewed, dimensions pending.",
+    "pixelCheck": {
+      "id": "p0-a-vault-depth",
+      "file": "exec-eb7aae4c-c078-4e97-a07d-6f815aba44dd.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "alphaBounds": null,
+      "zeroAlpha": 0,
+      "sha256": "71a9444ef64661edb4d7a205f0c56167d8563ca33917248c7a574299e0816570",
+      "validation": "needs-visual-runtime-review"
+    }
+  },
+  {
+    "id": "p0-b-vault-haze",
+    "prompt": "Create ONE isolated modular atmospheric haze layer for THE PIT, an original Yautja orbital basalt chamber. Asset P0b, 1536x1024 wide landscape, genuine transparent RGBA background. Only a few very faint blue-grey translucent smoke wisps curving horizontally across the lower middle with soft irregular alpha edges and vast fully transparent gaps. Hand-painted 2D game bitmap, extremely subtle low opacity, not bright white smoke, barely amber bounce on one small wisp. No objects, architecture, floor, character, text, UI, solid backdrop, baked checkerboard or border. The upper half mostly entirely transparent. Export true transparency; this is a single atmosphere overlay, not a finished scene.",
+    "sourceFile": "exec-335f5e23-3e86-476a-b336-c393d282dee2.png",
+    "review": "Pending alpha validation",
+    "pixelCheck": {
+      "id": "p0-b-vault-haze",
+      "file": "exec-335f5e23-3e86-476a-b336-c393d282dee2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        243
+      ],
+      "alphaBounds": [
+        0,
+        32,
+        1536,
+        998
+      ],
+      "zeroAlpha": 1218814,
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "validation": "needs-visual-runtime-review"
+    }
+  },
+  {
+    "id": "p1-a-gallery-left",
+    "prompt": "Use case: stylized-concept. ONE modular background prop for an original Yautja orbital duel chamber, THE PIT. Asset P1a LEFT distant gallery. Transparent RGBA, portrait 1024x1536. A single narrow ancient-futuristic basalt and patinated bronze gallery structure: two elevated balcony tiers, ribbed supports, small recessed amber lamps, uneven alien angular architectural silhouette. No people. Front-facing side-elevation for 2D fighting game, no isometric floor, lit subtly from upper left. Occupy middle 80% of canvas with fully visible outline and generous transparent margins. Structure low-contrast dark cold slate with weathered bronze edges; sparse tiny warm lamps. The left outer side has a tall buttress, the right inner side steps down toward the empty fight center. Hand-painted premium 2D game environment texture, material details restrained at game scale. Only this one isolated gallery silhouette, not a finished arena: NO background image, floor, fog, characters, near pillars, trophy, text, lettering, logos, watermark, frame or baked checkerboard. True empty transparency around the whole standalone structure and through large open arches.",
+    "sourceFile": "exec-aae865b0-9ec1-4561-a1a7-80b0e53fd69c.png",
+    "review": "Left outer buttress, gallery silhouette; pending alpha/QA",
+    "pixelCheck": {
+      "id": "p1-a-gallery-left",
+      "file": "exec-aae865b0-9ec1-4561-a1a7-80b0e53fd69c.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        27,
+        67,
+        993,
+        1536
+      ],
+      "zeroAlpha": 1008339,
+      "sha256": "c5ac6b5cdebc5e5dc2441da6b90332c14eba2d0db28db8b1e25c8b688914f2ae",
+      "validation": "needs-visual-runtime-review"
+    }
+  },
+  {
+    "id": "p1-b-gallery-right",
+    "prompt": "Create the independently drawn RIGHT companion module to the gallery in the reference. One isolated distant gallery prop, true transparent RGBA portrait 1024x1536. Preserve the same hand-painted dark basalt slabs, weathered bronze trim, thin restrained amber lights, upper-left lighting and straight-on 2D game side elevation. Match scale of two stacked balcony tiers with large open arches. This time the tall outer buttress is on the RIGHT, the left balcony ends step down toward the arena center. It is NOT an automatic reflected copy: distinct stone seams, smaller upper lamp, different chips in right buttress; same architectural family and same proportions. Entire outline has clear transparent margins, arches are transparent, no hazy opaque fill. No crowd, near props, floor, background, text or border. Generate only this standalone right gallery.",
+    "sourceFile": "exec-ee8c8207-9a2c-44bf-8283-a5fa842a03bd.png",
+    "reference": "p1-a-gallery-left",
+    "review": "Independent right gallery; pending alpha/QA",
+    "pixelCheck": {
+      "id": "p1-b-gallery-right",
+      "file": "exec-ee8c8207-9a2c-44bf-8283-a5fa842a03bd.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "alphaBounds": null,
+      "zeroAlpha": 0,
+      "sha256": "d3a8fd706694f53a8c9617927043745e41fa2fddef1005c68724217f95adb3a5",
+      "validation": "rejected-opaque-background"
+    }
+  }
+]

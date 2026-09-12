@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T19:18:34.729Z",
+  "surface": "full-application-play-pit-training",
+  "url": "http://localhost:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "trophy-hall",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 14,
+      "subplans": 14,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v33/pit-arenas/trophy-hall/p0-a-archive-depth.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p1-a-vault-rib-left.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p1-b-vault-rib-right.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p2-a-central-archive-arch.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p2-b-display-case-left.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p2-c-display-case-right.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p3-a-trophy-crowned-skull.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p3-b-trophy-armored-jaw.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p4-a-gallery-floor-tile.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p4-b-gallery-front-fascia.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p5-a-hanging-token-left.png",
+    "/game/sprites/v33/pit-arenas/trophy-hall/p5-b-hanging-token-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

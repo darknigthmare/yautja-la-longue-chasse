@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T19:16:22.966Z",
+  "surface": "full-application-play-pit-training",
+  "url": "http://localhost:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "the-pit",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 22,
+      "subplans": 17,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v33/pit-arenas/the-pit/p0-a-vault-depth.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p1-a-gallery-left.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p1-b-gallery-right.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p2-a-ritual-pillar-left.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p2-b-ritual-pillar-right.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p2-c-service-door-frame.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p2-d-service-door-leaf-v2.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-a-brazier-left.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-b-brazier-right.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-d-ceremonial-trophy.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p4-a-ring-rear-fascia.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p4-b-basalt-floor-tile.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p4-c-ring-front-fascia.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p5-a-chain-left.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p5-b-chain-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

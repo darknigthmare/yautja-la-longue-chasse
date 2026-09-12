@@ -1,0 +1,6383 @@
+{
+  "schemaVersion": 1,
+  "id": "v33-berserker-all-production",
+  "checkedAt": "2026-09-12T19:06:28.061Z",
+  "tool": "image_gen integrated",
+  "reference": {
+    "path": "public/game/assets/v23/pit/fighters/berserker-key-art.webp",
+    "sha256": "5e38dcd86cc58b353502e4363c71e818b1a6b20cd5babc18505c8daf0b3021d1",
+    "decision": "V23 conservée pour tout le lot après comparaison visuelle avec V5. La V5 comporte filet, trophée hanche/colonne, écran ouvert et lame ambiguë ; pas de mélange partiel. Aucune revendication1:1 film."
+  },
+  "generatedSheets": 20,
+  "generatedPoseSamples": 160,
+  "validatedRuntimeClips": 26,
+  "sourceBytesPreserved": true,
+  "assets": [
+    {
+      "id": "idle",
+      "label": "idle",
+      "status": "validated",
+      "notes": [
+        "Huit poses idle complètes et distinctes, deux orientations dessinées séparément ; masque, silhouette et lame unique relus visuellement.",
+        "Lecture Canvas réelle validée avec cadence de10ticks par dessin et bord entièrement transparent ; identité V23 du projet, sans revendication1:1 film.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-idle-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-idle-v33.png",
+      "sha256": "b5428a52f4efde8877abb8d77b01d2e27f208c8f0c6241ce54a8373a763869ac",
+      "bytes": 2476188,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1011084,
+        "fringePixels": 27578
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Relaxed ready stance, weight centered, right blade lowered and forearm aligned.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 72848,
+          "alpha16Bounds": [
+            38,
+            18,
+            315,
+            463
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "8be933e21ca68ea0d9e5dd58c553d760b59dafbb852b054d57a1859d8af5d3e4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Inhale: chest rises slightly, shoulders lift minimally, free left fingers flex coherently; feet unchanged.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 72286,
+          "alpha16Bounds": [
+            423,
+            16,
+            330,
+            464
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "741a6bdd4eefa1fd6fd664b39518742a6b1e44a86bc9d972159d8a7c003f0458",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Exhale: chest settles, shoulder cannon and dreadlocks settle slightly; hands remain anatomically stable.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 69772,
+          "alpha16Bounds": [
+            805,
+            24,
+            301,
+            455
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 83,
+          "pixelDigest": "8c2c159fcf5f1a4c9ffdfb5b2fcd05b663d222274e261cf2d9f5d75e024f991f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Return toward neutral breathing stance, a small free-hand guard adjustment; feet unchanged.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 69297,
+          "alpha16Bounds": [
+            1192,
+            21,
+            308,
+            458
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 86,
+          "pixelDigest": "7f6b31f3c5b0c3424581e034bb008d09212b929aaec91256570dbe289a48fc61",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Relaxed ready stance, weight centered, right blade lowered and forearm aligned.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 70248,
+          "alpha16Bounds": [
+            46,
+            519,
+            301,
+            463
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "12f532fe492a65dc873c3290ce78959d7b14f4d9bca5b1ca93ef52fe8069a79b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Inhale: chest rises slightly, shoulders lift minimally, free left fingers flex coherently; feet unchanged.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 69791,
+          "alpha16Bounds": [
+            416,
+            518,
+            311,
+            464
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "a644243b6c8b041e62c7b0112331e358cc005079927cb8c764df1f37af0b493f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Exhale: chest settles, shoulder cannon and dreadlocks settle slightly; hands remain anatomically stable.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 69524,
+          "alpha16Bounds": [
+            816,
+            528,
+            299,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "ac1135470c33a496a001195d61d477c82b81f4e69b89c38c88da9c9e2fe7297f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Return toward neutral breathing stance, a small free-hand guard adjustment; feet unchanged.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 68014,
+          "alpha16Bounds": [
+            1200,
+            524,
+            294,
+            458
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "5cabdbc415b23a86d21dd0ceb7e1fac09984002409315985a9166d44f311264c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "actionId": "idle",
+      "revision": 0,
+      "originId": "exec-1a92ef72-9ba8-40fc-8727-40f79bfd622a.png",
+      "acceptedActionId": "idle",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.016Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                35,
+                15,
+                321,
+                469
+              ],
+              "pivot": [
+                162,
+                465
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                420,
+                13,
+                336,
+                470
+              ],
+              "pivot": [
+                167,
+                466
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                802,
+                21,
+                307,
+                461
+              ],
+              "pivot": [
+                161.5,
+                457
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                1189,
+                18,
+                314,
+                464
+              ],
+              "pivot": [
+                158.5,
+                460
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                43,
+                516,
+                307,
+                469
+              ],
+              "pivot": [
+                147.5,
+                465
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                413,
+                515,
+                317,
+                470
+              ],
+              "pivot": [
+                156,
+                466
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                813,
+                525,
+                305,
+                460
+              ],
+              "pivot": [
+                145,
+                456
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "berserker-idle",
+              "rect": [
+                1197,
+                521,
+                300,
+                464
+              ],
+              "pivot": [
+                145.5,
+                460
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "berserker-idle",
+          "rect": [
+            35,
+            15,
+            321,
+            469
+          ],
+          "pivot": [
+            162,
+            465
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "berserker-idle",
+          "rect": [
+            420,
+            13,
+            336,
+            470
+          ],
+          "pivot": [
+            167,
+            466
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "berserker-idle",
+          "rect": [
+            802,
+            21,
+            307,
+            461
+          ],
+          "pivot": [
+            161.5,
+            457
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "berserker-idle",
+          "rect": [
+            1189,
+            18,
+            314,
+            464
+          ],
+          "pivot": [
+            158.5,
+            460
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "berserker-idle",
+          "rect": [
+            43,
+            516,
+            307,
+            469
+          ],
+          "pivot": [
+            147.5,
+            465
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "berserker-idle",
+          "rect": [
+            413,
+            515,
+            317,
+            470
+          ],
+          "pivot": [
+            156,
+            466
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "berserker-idle",
+          "rect": [
+            813,
+            525,
+            305,
+            460
+          ],
+          "pivot": [
+            145,
+            456
+          ],
+          "durationTicks": 10
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "berserker-idle",
+          "rect": [
+            1197,
+            521,
+            300,
+            464
+          ],
+          "pivot": [
+            145.5,
+            460
+          ],
+          "durationTicks": 10
+        }
+      ]
+    },
+    {
+      "id": "walk-forward",
+      "label": "marche avant",
+      "status": "rejected",
+      "notes": [
+        "Eight poses produced, body/feet complete.",
+        "Leg alternation insufficient: contact1/contact3 appear to keep the same leg leading; passing shapes repeat. Do not publish as a working walk cycle."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-walk-forward-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-walk-forward-v33.png",
+      "sha256": "4f76df8b7716c0702345ff99c188ed40c2b59d6997f06d86470da74b6a012c0a",
+      "bytes": 2391018,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1043845,
+        "fringePixels": 23930
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Forward foot contact: anatomical right leg leads, left leg trailing, opposing arm swing.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 70048,
+          "alpha16Bounds": [
+            39,
+            27,
+            318,
+            461
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "f1baf63a4cb63b7f57d72db69b49feb775afd1bbcebe4996970a7ca0bfe36b96",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Down/passing: leading right leg supports the weight, trailing left knee passes under hips, heel lifts.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 62746,
+          "alpha16Bounds": [
+            439,
+            25,
+            260,
+            465
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 226,
+          "pixelDigest": "1cfbed52221fda82c58b11bcd8916cc49df6512629708f448a7cbc2c5f07b98f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Opposite contact: anatomical LEFT leg clearly leads now, right leg visibly trailing, arms reversed.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 69706,
+          "alpha16Bounds": [
+            771,
+            28,
+            353,
+            458
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "6cd90acc1ae1521ba294d961f9dbb0c02ff48dbd443e68aef5b5d38720cccd9d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Opposite passing: left leg supports, right knee passes forward, opposite heel lift.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 66417,
+          "alpha16Bounds": [
+            1185,
+            31,
+            293,
+            458
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "317119938ffb643b961d438d53c3896b9e5e4556025b1e6390dca8b517974036",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Forward foot contact: anatomical right leg leads, left leg trailing, opposing arm swing.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 68655,
+          "alpha16Bounds": [
+            36,
+            530,
+            336,
+            450
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 150,
+          "pixelDigest": "21a7054849e36fb6cb5e96b6992ecfa6f2fda7947fd2d72df243930c688dbae9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Down/passing: leading right leg supports the weight, trailing left knee passes under hips, heel lifts.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 60487,
+          "alpha16Bounds": [
+            467,
+            535,
+            249,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 317,
+          "pixelDigest": "a7c9f5d41c3e55ffdde8798abac0942aa93a4a69f26266eab191a3f07cb3f2da",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Opposite contact: anatomical LEFT leg clearly leads now, right leg visibly trailing, arms reversed.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 66499,
+          "alpha16Bounds": [
+            785,
+            531,
+            336,
+            448
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 141,
+          "pixelDigest": "67529743ec746501787e52ed2e20f6e3709c1ed50d38aab97a69ed268e0af2f4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Opposite passing: left leg supports, right knee passes forward, opposite heel lift.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64461,
+          "alpha16Bounds": [
+            1200,
+            533,
+            297,
+            448
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "76b1c8097d2830684bba9c48196a471d192099f3bbf51ba1b7b4e46581abac9b",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "walk-forward",
+      "revision": 0,
+      "originId": "exec-310d3f51-2952-44a8-aab3-c2bea73889c2.png"
+    },
+    {
+      "id": "walk-backward",
+      "label": "recul",
+      "status": "rejected",
+      "notes": [
+        "Eight complete backward-guard drawings produced.",
+        "Contact phases1/3 retain matching leg lead rather than a clear opposite contact; locomotion cycle not accepted."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-walk-backward-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-walk-backward-v33.png",
+      "sha256": "05cd168fb2b07ccba72a6afa09ee1e87fb33fd2b59eebfa2d55b2d75ef44479a",
+      "bytes": 2467502,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1038306,
+        "fringePixels": 26043
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Backward first step: anatomical right foot reaches behind the facing direction, left foot supports.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 70379,
+          "alpha16Bounds": [
+            24,
+            32,
+            360,
+            429
+          ],
+          "gridBorderPixels": 5,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "6f95560ea11bfd69f1cd95bd89365e28f7b07f90b4d2c95ae5f53c4dcce200e0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Backward weight transfer onto right leg, left foot lifts and passes rearward.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 63691,
+          "alpha16Bounds": [
+            473,
+            33,
+            276,
+            433
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 221,
+          "pixelDigest": "99aa8df8eeada7e712f8727b45e2cf47e60938e29fa5907a6967495ab202382a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Opposite backward step: anatomical LEFT foot reaches behind, right foot supports.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 70193,
+          "alpha16Bounds": [
+            796,
+            33,
+            354,
+            429
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 86,
+          "pixelDigest": "b67f768046e9d787b3b58aa12a440885df2ed150d31380c8be5005d0704bba6c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Opposite transfer onto left leg, right foot lifts and returns rearward.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 61927,
+          "alpha16Bounds": [
+            1212,
+            32,
+            310,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "040e6e36d19a676c7529c5768d93462ebd23e827348454772c5314d939175c8a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Backward first step: anatomical right foot reaches behind the facing direction, left foot supports.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 71056,
+          "alpha16Bounds": [
+            25,
+            532,
+            350,
+            438
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "d2ef8a5ace7718edf6fad2ba31edb80de6da8f28ae9d3c1d12fe074bb0ac6942",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Backward weight transfer onto right leg, left foot lifts and passes rearward.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64326,
+          "alpha16Bounds": [
+            409,
+            531,
+            307,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "211b85fca77703b3bb769ddfd8816b1e72986070e24a54f6a5ae96e8824691db",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Opposite backward step: anatomical LEFT foot reaches behind, right foot supports.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 70106,
+          "alpha16Bounds": [
+            785,
+            531,
+            362,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 104,
+          "pixelDigest": "c305531bfcbd398c8236f097bc8f1088faca333b859da152838497a3b29b4412",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Opposite transfer onto left leg, right foot lifts and returns rearward.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 62880,
+          "alpha16Bounds": [
+            1175,
+            529,
+            324,
+            444
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 67,
+          "pixelDigest": "0a1fe4e6130fa231f0791db415825f4a2432e13731495d6d74f6083c39629363",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "walk-backward",
+      "revision": 0,
+      "originId": "exec-4cc0a2f7-9bd2-4f0f-8d94-267cf02b848d.png"
+    },
+    {
+      "id": "crouch",
+      "label": "accroupissement",
+      "status": "validated",
+      "notes": [
+        "Trois dessins par orientation retenus pour la descente puis le maintien accroupi : debout, intermédiaire, bas.",
+        "La quatrième pose de remontée demeure hors clip ; aucune fausse remontée pendant le maintien de la commande.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-crouch-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-crouch-v33.png",
+      "sha256": "64439e5650533ac0e2c84415dbc80cbed34bafea1e2b859b9a58cf2a1097a314",
+      "bytes": 2485973,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1027138,
+        "fringePixels": 28795
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Standing ready, knees just beginning to bend.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 76050,
+          "alpha16Bounds": [
+            14,
+            24,
+            351,
+            470
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 81,
+          "pixelDigest": "59febe75b8677796a7370c2bb41ce47389c7ad5cfe01a5c265d627a0d7a45fa5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Half crouch, hips lower, knees bend naturally and weight stays above feet.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 72305,
+          "alpha16Bounds": [
+            399,
+            60,
+            366,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 79,
+          "pixelDigest": "a6e6b62f16b6956e076ea5dd367bd22b45b30f10f9c1e70566e23a2e90e33de0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Full compact crouch: deeply bent knees, torso balanced forward, left hand guarding, blade low and safe.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 60569,
+          "alpha16Bounds": [
+            780,
+            160,
+            367,
+            332
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "5c28c4afcf9c164e0068d6c04be81586b5b33011ec2d7d3d732eec2d0384b987",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Begin rising from crouch, hips lift and knees partially straighten.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 67590,
+          "alpha16Bounds": [
+            1172,
+            80,
+            358,
+            413
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 69,
+          "pixelDigest": "45a1059269c65237c99956b143b96d476af30359245d0cc29e5a19f5fbd7ead8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Standing ready, knees just beginning to bend.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 74723,
+          "alpha16Bounds": [
+            19,
+            532,
+            356,
+            461
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "c3ea71449119e1f7fcb2a39f5bead05a130deb7fdb6a2f347f265135fd5dce1a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Half crouch, hips lower, knees bend naturally and weight stays above feet.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 68791,
+          "alpha16Bounds": [
+            391,
+            568,
+            358,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "cf713d24e9779d6b580160d2242f2b2d99c9ebee1b3c7a76b4bb869474870a12",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Full compact crouch: deeply bent knees, torso balanced forward, left hand guarding, blade low and safe.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 58371,
+          "alpha16Bounds": [
+            776,
+            663,
+            365,
+            330
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "4b2f952c99b09cc60e7407103cc9844fd3185080b6e4ab4cec982141c6b67da5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Begin rising from crouch, hips lift and knees partially straighten.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 67327,
+          "alpha16Bounds": [
+            1166,
+            573,
+            357,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "7c338a51315d00f0bd93dd287f22e84779dc010b3fbc84b700aaebb2ca806bfb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "actionId": "crouch",
+      "revision": 0,
+      "originId": "exec-768e56f0-812f-4f4a-a6cd-19f37a5291de.png",
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                11,
+                21,
+                357,
+                476
+              ],
+              "pivot": [
+                175,
+                472
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                396,
+                57,
+                372,
+                438
+              ],
+              "pivot": [
+                188.5,
+                434
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                777,
+                157,
+                373,
+                338
+              ],
+              "pivot": [
+                189,
+                334
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                16,
+                529,
+                362,
+                467
+              ],
+              "pivot": [
+                184,
+                463
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                388,
+                565,
+                364,
+                430
+              ],
+              "pivot": [
+                179,
+                426
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-crouch",
+              "rect": [
+                773,
+                660,
+                371,
+                336
+              ],
+              "pivot": [
+                184,
+                332
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "berserker-crouch",
+          "rect": [
+            11,
+            21,
+            357,
+            476
+          ],
+          "pivot": [
+            175,
+            472
+          ],
+          "durationTicks": 2
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "berserker-crouch",
+          "rect": [
+            396,
+            57,
+            372,
+            438
+          ],
+          "pivot": [
+            188.5,
+            434
+          ],
+          "durationTicks": 2
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "berserker-crouch",
+          "rect": [
+            777,
+            157,
+            373,
+            338
+          ],
+          "pivot": [
+            189,
+            334
+          ],
+          "durationTicks": 30
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "berserker-crouch",
+          "rect": [
+            16,
+            529,
+            362,
+            467
+          ],
+          "pivot": [
+            184,
+            463
+          ],
+          "durationTicks": 2
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "berserker-crouch",
+          "rect": [
+            388,
+            565,
+            364,
+            430
+          ],
+          "pivot": [
+            179,
+            426
+          ],
+          "durationTicks": 2
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "berserker-crouch",
+          "rect": [
+            773,
+            660,
+            371,
+            336
+          ],
+          "pivot": [
+            184,
+            332
+          ],
+          "durationTicks": 30
+        }
+      ]
+    },
+    {
+      "id": "jump-land",
+      "label": "saut et réception",
+      "status": "authored-review",
+      "notes": [
+        "Anticipation, ascent, tucked descent and landing are distinct in both facings.",
+        "Some blade tips approach cell boundaries; explicit rectangle/ground-pivot review required before runtime use."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-jump-land-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-jump-land-v33.png",
+      "sha256": "e71e1de4087862128afa640e50e3e8d44418a811211ee7c887471d04a5c45af9",
+      "bytes": 2317786,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1101258,
+        "fringePixels": 25357
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Takeoff anticipation: compressed bent knees, hips low, torso leaning toward jump.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 62347,
+          "alpha16Bounds": [
+            17,
+            133,
+            367,
+            371
+          ],
+          "gridBorderPixels": 15,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "f7fad2ce532fc72dcce5efe2c78480b36ff743ce2d1e25840b8f36b346d112ae",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Ascending airborne: body extended upward, feet no longer at ground line, knees beginning to tuck.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 65376,
+          "alpha16Bounds": [
+            384,
+            20,
+            384,
+            468
+          ],
+          "gridBorderPixels": 31,
+          "residualMagentaPixels": 166,
+          "pixelDigest": "1d4eddda2f3ed208afcb0c93cc9c192c98b60c3d40ad38a268ad3b8f9c376d04",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Descending airborne: knees more tucked, arms balance naturally, blade away from torso.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53168,
+          "alpha16Bounds": [
+            768,
+            36,
+            379,
+            343
+          ],
+          "gridBorderPixels": 16,
+          "residualMagentaPixels": 45,
+          "pixelDigest": "1db8ebef130632dbbaf4f6af7ef013fb512d44e7b6af2689f1659488c8f5f18d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Grounded landing: feet planted, knees strongly bent absorbing impact, torso stabilized.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 61498,
+          "alpha16Bounds": [
+            1153,
+            153,
+            366,
+            351
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 102,
+          "pixelDigest": "67195a2c054cf87087108bdeb658b67b1c9977b5b2211c9656ba54e60fb5a973",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Takeoff anticipation: compressed bent knees, hips low, torso leaning toward jump.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59612,
+          "alpha16Bounds": [
+            24,
+            629,
+            360,
+            356
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "ca1b364daf83f0b82ead28ef6bca1a5033631d4c6f937f5c57d438069377ca23",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Ascending airborne: body extended upward, feet no longer at ground line, knees beginning to tuck.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59285,
+          "alpha16Bounds": [
+            384,
+            515,
+            384,
+            444
+          ],
+          "gridBorderPixels": 21,
+          "residualMagentaPixels": 146,
+          "pixelDigest": "6799922668bdc601e1019b1a2189ee9895373d86e4f6a054cd3b7f822d71c6a3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Descending airborne: knees more tucked, arms balance naturally, blade away from torso.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50601,
+          "alpha16Bounds": [
+            768,
+            539,
+            378,
+            336
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 88,
+          "pixelDigest": "32e755944ba99abeb363cbc5a0a99003c1aebbcc1e458d7bb0606ac1eb84eb5b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Grounded landing: feet planted, knees strongly bent absorbing impact, torso stabilized.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59719,
+          "alpha16Bounds": [
+            1154,
+            642,
+            364,
+            344
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "50b4ae26925070c5f432c43d7330112631d54eb987ee9394d572c39bc18d2d9d",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "jump-land",
+      "revision": 0,
+      "originId": "exec-ea734572-c891-4d2f-aa56-24f8fd51ce44.png"
+    },
+    {
+      "id": "guard",
+      "label": "garde",
+      "status": "authored-review",
+      "notes": [
+        "Eight distinct guard/brace poses, single forearm-mounted blade, no shield or added weapon.",
+        "High free-hand position touches mask; guard silhouette and hidden blade-hand anatomy require close-up review before acceptance."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-guard-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-guard-v33.png",
+      "sha256": "6ff0138d583ce6add114ef2a4617edd0a786b0c2de806577434ecec1551168a6",
+      "bytes": 2380296,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1039712,
+        "fringePixels": 22680
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Raise guard: left forearm begins crossing chest, right blade arm remains safely forward.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 67150,
+          "alpha16Bounds": [
+            29,
+            32,
+            310,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "ea8ea8f5ea1a416b70667d550ae266465c16106939ca26bc7ccd7d5c89b092b4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "High guard: free left forearm protecting head, right forearm compact at chest, blade not crossing skull.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 66132,
+          "alpha16Bounds": [
+            413,
+            27,
+            315,
+            461
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 102,
+          "pixelDigest": "7f2af76d6338856dc08b4806bd9ba4a31a4aa9a72bcd91be062bfc31a51d3b8d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Brace on block: upper body leans back slightly, shoulders compressed, feet planted, no impact VFX.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 66243,
+          "alpha16Bounds": [
+            792,
+            41,
+            329,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "27cc0a6ec0afeb40e1661f3c83eb1653a514015ad36e13ae5482730863ce2e8c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Recover stable guard: left forearm returns chest height, weight centered.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 66548,
+          "alpha16Bounds": [
+            1164,
+            27,
+            317,
+            461
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 142,
+          "pixelDigest": "295fe2fd3b37701c470db6240e47055f88979984a2540d4e0d32d17b220e2a2c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Raise guard: left forearm begins crossing chest, right blade arm remains safely forward.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 67732,
+          "alpha16Bounds": [
+            41,
+            527,
+            328,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 85,
+          "pixelDigest": "5c2499ba203bf1e918258a368e8e402234a0940dc822b56396e62e3d69c3433e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "High guard: free left forearm protecting head, right forearm compact at chest, blade not crossing skull.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 66354,
+          "alpha16Bounds": [
+            415,
+            517,
+            318,
+            464
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "7ec0e1fa8e1d560e06d5c1c8c917b81cb1b1870b7d3b0c0393e813ee49a705aa",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Brace on block: upper body leans back slightly, shoulders compressed, feet planted, no impact VFX.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 65915,
+          "alpha16Bounds": [
+            773,
+            532,
+            331,
+            449
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "74dea4fbd262b4788ba842b9f83e7e705d5f61caa542aa390ea377f8fc075a69",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Recover stable guard: left forearm returns chest height, weight centered.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 67078,
+          "alpha16Bounds": [
+            1184,
+            522,
+            318,
+            459
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "ac63b1689c248e96c8b382a26dceb8b2a0b56f23806eced054969f51c498a9b6",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "guard",
+      "revision": 0,
+      "originId": "exec-bc73e620-0ccc-4b2c-99d9-1decf8359579.png"
+    },
+    {
+      "id": "hurt",
+      "label": "hurt",
+      "status": "authored-review",
+      "notes": [
+        "Readable non-graphic recoil, peak recoil, balance recovery and neutral phases.",
+        "Tilted head changes mask projection; reference-shape consistency and outer foot margins need close review."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-hurt-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+      "sha256": "f5430784fc4bd4ea40ded6095db75689b278a577a16be303a4c7cd64d4b0993b",
+      "bytes": 2416746,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1054286,
+        "fringePixels": 26891
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "First hit reaction: shoulders jerk back, chin lifts slightly behind intact mask, arms recoil.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 67984,
+          "alpha16Bounds": [
+            25,
+            31,
+            359,
+            481
+          ],
+          "gridBorderPixels": 43,
+          "residualMagentaPixels": 42,
+          "pixelDigest": "d85d4918227bbc45186718a4beba3d4d578b7e5ab8a15f1fe04040d00e6ccdb9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Peak recoil: torso bends backward at hips, one knee softens, one foot briefly unweights.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 60391,
+          "alpha16Bounds": [
+            384,
+            33,
+            362,
+            446
+          ],
+          "gridBorderPixels": 8,
+          "residualMagentaPixels": 76,
+          "pixelDigest": "bbc8e067d9a9cdc5d0106c57aed18f37d542bfcecf8b0459b94a736d01bbba34",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Regain balance: forward foot plants, torso begins returning upright, left hand near chest.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64482,
+          "alpha16Bounds": [
+            797,
+            41,
+            316,
+            438
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "08f1be3095af73000c28cf13bf6f8c7d6afd38e3c11e611f5ae1d72808a8fac3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Recover stance: knees rebalance, shoulders lower, blade safely aligned with right forearm.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 67508,
+          "alpha16Bounds": [
+            1184,
+            26,
+            313,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "93b4f5b6423947dc7f9a2ead516cb9fc7ee535a53f17114695c20e0402fd162d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "First hit reaction: shoulders jerk back, chin lifts slightly behind intact mask, arms recoil.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 65809,
+          "alpha16Bounds": [
+            23,
+            512,
+            331,
+            443
+          ],
+          "gridBorderPixels": 38,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "e49b01ce1a2139912b1a5b90d9936b7577788788b9ef40833490282f21f35f4f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Peak recoil: torso bends backward at hips, one knee softens, one foot briefly unweights.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 60400,
+          "alpha16Bounds": [
+            386,
+            516,
+            335,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "607781a3ff31992bd22e4f8d227ef786be84e85802924cd3fecef61697746ccd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Regain balance: forward foot plants, torso begins returning upright, left hand near chest.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64055,
+          "alpha16Bounds": [
+            795,
+            525,
+            320,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 32,
+          "pixelDigest": "16d56eac40567a6e02fc20bcf6b25f1cdcfada8cf497478aedcbab647e5828fa",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Recover stance: knees rebalance, shoulders lower, blade safely aligned with right forearm.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 67949,
+          "alpha16Bounds": [
+            1178,
+            514,
+            316,
+            444
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "5d06c81d0c4090ebc29efa4c72b710ee6fc64273d017a55d70523adb8acfbc68",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "hurt",
+      "revision": 0,
+      "originId": "exec-0e675cfe-9b0e-4393-b09c-4239e30aaf0c.png"
+    },
+    {
+      "id": "light",
+      "label": "attaque légère",
+      "status": "rejected",
+      "notes": [
+        "Startup/strike/recovery poses drawn in both facings.",
+        "Active strike hides or omits the fist at the end of the right gauntlet; cannot validate wrist-blade anatomy.",
+        "Active blade crosses requested regular-cell boundary. Requires targeted hand repair and explicit safe frame extraction."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-light-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-light-v33.png",
+      "sha256": "a1e9f4c901fbd25fdc324c9a758a13e2462f258155f9302b9fc91c2669faf0e2",
+      "bytes": 2329762,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1084811,
+        "fringePixels": 21225
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Startup: compact anatomical RIGHT forearm draws back beside torso; left hand guards.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 60633,
+          "alpha16Bounds": [
+            33,
+            57,
+            351,
+            427
+          ],
+          "gridBorderPixels": 24,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "27e9a823fccbf2bce4907e522669623110f14978984eba8226015ff4818a0b2a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Active strike: quick SHORT forward jab/slash with the single right wrist blade extending in forearm axis past empty fist.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 56273,
+          "alpha16Bounds": [
+            384,
+            58,
+            384,
+            426
+          ],
+          "gridBorderPixels": 36,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "61316bbaa016d7bdc5fca2dfb1cffb4d50c78f1ff7158abe40b9a531edda1799",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Early recovery: right elbow retracts, blade sweeps away from torso, left hand stays guard.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 60763,
+          "alpha16Bounds": [
+            768,
+            60,
+            344,
+            427
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 118,
+          "pixelDigest": "f197ea98f78f6d070fd874a03d199218f84168a7c6d2fe0e85c24642e74cc62e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Late recovery: right arm lowered to neutral ready stance, hips square and feet stable.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 63538,
+          "alpha16Bounds": [
+            1215,
+            52,
+            288,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 76,
+          "pixelDigest": "6be06fd0edbf7e0f0abe7ef46b343ffe7a8b3f8005e2b890d2af38b9051827b5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Startup: compact anatomical RIGHT forearm draws back beside torso; left hand guards.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 61426,
+          "alpha16Bounds": [
+            45,
+            537,
+            339,
+            429
+          ],
+          "gridBorderPixels": 11,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "55108ea796d9fcfc278582d77722660ff67ecb7791f994a963bd089f7bb061cb",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Active strike: quick SHORT forward jab/slash with the single right wrist blade extending in forearm axis past empty fist.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 59519,
+          "alpha16Bounds": [
+            384,
+            538,
+            384,
+            428
+          ],
+          "gridBorderPixels": 70,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "d57ba739ca74d4fb99b111adc86dd6fa3bb7ff9d8c84db6118b4a0346e8d714e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Early recovery: right elbow retracts, blade sweeps away from torso, left hand stays guard.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 61570,
+          "alpha16Bounds": [
+            768,
+            538,
+            376,
+            429
+          ],
+          "gridBorderPixels": 57,
+          "residualMagentaPixels": 77,
+          "pixelDigest": "1e219e98bbcfaf6c4e92c9061870bbc2a06bdbbafa88a06765dda5f8e61b08ea",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Late recovery: right arm lowered to neutral ready stance, hips square and feet stable.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64331,
+          "alpha16Bounds": [
+            1192,
+            532,
+            307,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "34f76121475e704030d77a82316aa8260f3e90cf3eadaaef73ece2a30fd68d16",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "light",
+      "revision": 0,
+      "originId": "exec-4b5b32c3-4656-4686-a170-cb2b38f49df7.png"
+    },
+    {
+      "id": "medium",
+      "label": "attaque moyenne",
+      "status": "rejected",
+      "notes": [
+        "Both directions have four action poses and the fist is visible in active phase.",
+        "Active wrist weapon appears split into two parallel blades rather than the reference single blade.",
+        "Left-facing early recovery rotates far away from intended compact side-view stance; not accepted."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-medium-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-medium-v33.png",
+      "sha256": "4ef3a8004c24a8ec00d6fa0fd5917d059ff67557edeceee9bb047cc0470d1a92",
+      "bytes": 2408860,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1058535,
+        "fringePixels": 24156
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Startup: turn hips slightly away, pull right forearm back at waist and bend knees.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 68930,
+          "alpha16Bounds": [
+            21,
+            50,
+            363,
+            428
+          ],
+          "gridBorderPixels": 4,
+          "residualMagentaPixels": 74,
+          "pixelDigest": "325d8ce12708d436990960211307a47b6cfb7c3cc368643bcbfa6ab318fdbb49",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Active strike: strong waist-height horizontal right wrist-blade sweep toward opponent, shoulders and hips turning naturally.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 62319,
+          "alpha16Bounds": [
+            384,
+            47,
+            384,
+            432
+          ],
+          "gridBorderPixels": 24,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "cdd65ab32f0723de315b39e81bdef7865c466f851156824772f2d866341b4340",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Early recovery: sweep ends, right elbow bends, hips return while feet stabilize.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 64771,
+          "alpha16Bounds": [
+            768,
+            50,
+            384,
+            428
+          ],
+          "gridBorderPixels": 27,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "c02bb72d83f4ad46a576cdf96409dc9e2a305d7d974c11c502bfa58fd777fde8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Late recovery: return to upright ready stance with left hand raised and single blade low.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 62996,
+          "alpha16Bounds": [
+            1152,
+            45,
+            337,
+            438
+          ],
+          "gridBorderPixels": 6,
+          "residualMagentaPixels": 150,
+          "pixelDigest": "591352244401b1721a0f6c727e66465aa326af458f2d6d3ebb97ffd79f31f546",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Startup: turn hips slightly away, pull right forearm back at waist and bend knees.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 65444,
+          "alpha16Bounds": [
+            24,
+            533,
+            360,
+            430
+          ],
+          "gridBorderPixels": 13,
+          "residualMagentaPixels": 66,
+          "pixelDigest": "ac7fed92a3890eaacc1d0f2228bb8bfe03cfc963cbf1d1bfd1dd929a902c3c76",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Active strike: strong waist-height horizontal right wrist-blade sweep toward opponent, shoulders and hips turning naturally.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 61544,
+          "alpha16Bounds": [
+            384,
+            529,
+            384,
+            432
+          ],
+          "gridBorderPixels": 79,
+          "residualMagentaPixels": 72,
+          "pixelDigest": "3bd8ae8b7cc63b5d33af7a037efcc1772c21ec42bf61b50006ef79309c88c2ff",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Early recovery: sweep ends, right elbow bends, hips return while feet stabilize.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 63568,
+          "alpha16Bounds": [
+            768,
+            531,
+            381,
+            429
+          ],
+          "gridBorderPixels": 58,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "146138f7dbea0712bfcdf5b0249003b1201354d309a70c67cc9667257cf30fbc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Late recovery: return to upright ready stance with left hand raised and single blade low.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64757,
+          "alpha16Bounds": [
+            1207,
+            530,
+            310,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 205,
+          "pixelDigest": "7ee9d608924bb230e1c5ea28f71376a4482031788b845e60a1c87592b0d72522",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "medium",
+      "revision": 0,
+      "originId": "exec-19dc4d7e-b9ca-40f1-97ca-6a943d0407c0.png"
+    },
+    {
+      "id": "heavy",
+      "label": "attaque lourde",
+      "status": "rejected",
+      "notes": [
+        "La lame du startup ne prolonge pas clairement l'axe du poignet : son orientation évoque une lame rabattue vers l'avant-bras.",
+        "Les dessins d'impact et de suivi masquent le poing et peuvent évoquer deux pointes de lame ; cohérence anatomique non validable.",
+        "Une variation dessinée est présente mais ce n'est pas un clip accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/berserker-heavy-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/berserker-heavy-v33.png",
+      "sha256": "dbea647a6c4b5a1dbdb0302549de0ba384e9e3054527fdce04ce2e27022d7d79",
+      "bytes": 2318481,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1089690,
+        "fringePixels": 26408
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "Startup: bend knees and lift anatomical RIGHT elbow back/up, wrist blade stays aligned with forearm and away from mask.",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 65645,
+          "alpha16Bounds": [
+            43,
+            27,
+            341,
+            453
+          ],
+          "gridBorderPixels": 20,
+          "residualMagentaPixels": 61,
+          "pixelDigest": "1fa2a33812e6ecd75296549136ec181f3c642466649e2690cfbc84536449ca52",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "Active strike: powerful descending diagonal right wrist-blade blow, torso leans into strike, knees anchored.",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 58785,
+          "alpha16Bounds": [
+            384,
+            64,
+            384,
+            415
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "5e38012522f1c8683a805528dd79a435affa6e13999b40be71ebfd9164312643",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "Early recovery: low follow-through, blade lowered beside lead leg without intersecting it, right elbow begins returning.",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54671,
+          "alpha16Bounds": [
+            768,
+            92,
+            353,
+            386
+          ],
+          "gridBorderPixels": 3,
+          "residualMagentaPixels": 192,
+          "pixelDigest": "6b05ea8f1a00d7de952169ffce4e85abff14553d3176c1548529b0e31c502ac2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "Late recovery: rise and reset both shoulders into ready stance, left hand protecting chest.",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 63518,
+          "alpha16Bounds": [
+            1192,
+            45,
+            300,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 63,
+          "pixelDigest": "99671baa4994edb61dc93ffb009c39015034aba2db410eac35980e0ab7ccd54c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "Startup: bend knees and lift anatomical RIGHT elbow back/up, wrist blade stays aligned with forearm and away from mask.",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 64755,
+          "alpha16Bounds": [
+            35,
+            518,
+            341,
+            445
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 53,
+          "pixelDigest": "3afa77a8d48e1ad73cd8ab35b4a0ca0ad83e07dc7659ab32d986f1dbe4b88e89",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "Active strike: powerful descending diagonal right wrist-blade blow, torso leans into strike, knees anchored.",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 60011,
+          "alpha16Bounds": [
+            402,
+            555,
+            366,
+            408
+          ],
+          "gridBorderPixels": 42,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "a397944c09c2528750cf4d9ed95a9b4f299ca0d19a05dfd774768b11eb16a516",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "Early recovery: low follow-through, blade lowered beside lead leg without intersecting it, right elbow begins returning.",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54477,
+          "alpha16Bounds": [
+            768,
+            573,
+            373,
+            388
+          ],
+          "gridBorderPixels": 42,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "499e8ed6545455bd3d8601e1c22c7499097920e69310210e4eceeb452e753da1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "Late recovery: rise and reset both shoulders into ready stance, left hand protecting chest.",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 61312,
+          "alpha16Bounds": [
+            1203,
+            537,
+            296,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 72,
+          "pixelDigest": "79b327fba15f8428c79bbf29a26aa0bf1109b3ff835fd3102f5c9b13397c4ee8",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "actionId": "heavy",
+      "revision": 0,
+      "originId": "exec-cd69ee07-c019-47ad-b701-4ff3472096ca.png"
+    },
+    {
+      "id": "repair-walk-forward",
+      "actionId": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "notes": [
+        "La première réparation améliore la lisibilité du pied levé, mais contacts1/3 et passages2/4 restent trop similaires : alternance droite/gauche encore non fiable."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-walk-forward-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-forward-repair-v33.png",
+      "originId": "exec-23eb02da-070f-4a95-9fb1-1d9ac0df8bae.png",
+      "sha256": "a3963fc90f483f69aef0401049fb2f7ecedef05fb7f6206a4eb6c0f620ba929f",
+      "bytes": 2425863,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1049891,
+        "fringePixels": 23531
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            45,
+            20,
+            337,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 86,
+          "pixelDigest": "8e79337b53b199fb4701a0987acbe64df3dec0e6e7b1708c539d591ffaaf1df3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            437,
+            20,
+            298,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 112,
+          "pixelDigest": "3d0801b35cf247d776bf0f73f3299631b9e93322cedb065cb64e5b3668ebe049",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            815,
+            22,
+            337,
+            450
+          ],
+          "gridBorderPixels": 24,
+          "residualMagentaPixels": 81,
+          "pixelDigest": "1dc32b77fa5376f4c13e877a68c388b4f19da7dc6c0f28e2c339cb5f6298ad14",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1152,
+            21,
+            348,
+            452
+          ],
+          "gridBorderPixels": 25,
+          "residualMagentaPixels": 104,
+          "pixelDigest": "b491ec61c25617fe66c64902563132e21a268e0a5e489e632dd4870ee9c754dc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            20,
+            527,
+            317,
+            455
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "171fda2a29ce848cbb4eb27641c01511f17792b96ce2e7001112762af091de0f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            413,
+            525,
+            294,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "bf9882e0efb16134bd275861e0a75dcba43456c2ac8345710658c70b9fbaf4af",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            769,
+            526,
+            336,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "2da0da86fd0ee2f5956669e1e3c11b2115c88f5ea5b0ed5ddf8296707aeccd2d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1183,
+            524,
+            300,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 110,
+          "pixelDigest": "41842bab53078e39428baf17eefebbf1584281bffa5c7f1fdd296c73d342e818",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "repair-walk-backward",
+      "actionId": "walk-backward",
+      "revision": 1,
+      "status": "authored-review",
+      "notes": [
+        "Les passages2/4 montrent désormais deux appuis et jambes levées différents, mais les contacts1/3 restent trop similaires et doivent être corrigés avant validation d’un cycle complet."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-walk-backward-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-backward-repair-v33.png",
+      "originId": "exec-99a4140a-aebd-4510-9fa6-348a9b72ea4c.png",
+      "sha256": "e190ead66daf3aba972739675bf1b0906d85e3277630ba2ef0a20d640058c5e6",
+      "bytes": 2413553,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1045192,
+        "fringePixels": 25415
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            18,
+            27,
+            357,
+            452
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "ea3e901d54f7fa55f0b5c7be699e39c1192529318627c2ca752db5fb62bf6515",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            402,
+            26,
+            348,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "5b952f2afe37f167f344be7983baa2110893513dcfcb5071a12c1c85ce2339f9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            788,
+            28,
+            357,
+            452
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "b11be342121da62b5a9d3de1d44a8815170b4420a24a57e1af6a8d25540c8dc0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1185,
+            27,
+            336,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "765642356a5ca19297f635e3602f29e14998313ae4e1595236bd9c147e84688f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            16,
+            534,
+            358,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "41fc1fbe4745bf0c1c4742ae063f851271c306d663ee89bd07323d33df2dbd55",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            402,
+            536,
+            343,
+            452
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 76,
+          "pixelDigest": "392ba2979e4e3f36c05ab99ffde79a2c9403812728d2f5cdf22e00609af67673",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            784,
+            534,
+            355,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "2a1533a9e10ebafaad62099e522731eb2f70014e874405c348b62d772cb09d4e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1170,
+            535,
+            336,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "b90b9e6edc8f89fd589faf360b03c6218dcbb14448282d67b0b42785b65cfdae",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "repair-light",
+      "actionId": "light",
+      "revision": 1,
+      "status": "authored-review",
+      "notes": [
+        "Poing fermé désormais visible sous une lame unique cohérente avec l’avant-bras dans les deux orientations.",
+        "Les pointes de contact débordent les cellules ; le contact gauche chevauche la boîte du pied voisin. Espacement à réparer avant extraction runtime."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-light-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-light-repair-v33.png",
+      "originId": "exec-7c5ad5a3-5b3c-4339-ab6f-edf1369af82b.png",
+      "sha256": "49574b44848749fe82a5f9705cb07413cd8ccfccd480beb5c9f1287d890333b5",
+      "bytes": 2342931,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1076377,
+        "fringePixels": 22765
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            45,
+            39,
+            286,
+            437
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 148,
+          "pixelDigest": "530500597ba934742d70cbfa294d0a8bb06fe5cbca2c4e09bc7319554ba25091",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            396,
+            41,
+            372,
+            435
+          ],
+          "gridBorderPixels": 7,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "6390857f27fe7efe59db0227137e73986e9ed63d89bc3421bd2b1f4bb8c77174",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            768,
+            40,
+            329,
+            436
+          ],
+          "gridBorderPixels": 7,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "ffeac4b61ce5b4bf5dd0c4f83a9a0c5300b2c752ce9660159efb99d04fd5e0ca",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1194,
+            37,
+            304,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "7e451e151bfde7627434d382be96e608d2e90e28787427bf87dde38b553c3f32",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            38,
+            537,
+            346,
+            430
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "98f7a658d22962364a290834355cbb90cc38a94002470aeb9da8a797d1f2287d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            384,
+            540,
+            341,
+            427
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "6c6c9315b81e3dc2d2dbe393ea92f99be523e0714de6b1215f37b4ee3955e56e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            800,
+            542,
+            299,
+            425
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "c9c5de7c91efb706d2cbba9a0576eb1e6420a039de633f74aa80451fd23c9d82",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1165,
+            537,
+            315,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "ae494a497c2607336c16324f252326669e8c0959c4a3ee2758f22c58ec0548db",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "repair-medium",
+      "actionId": "medium",
+      "revision": 1,
+      "status": "validated",
+      "notes": [
+        "Startup, contact et deux dessins de récupération acceptés dans chaque orientation ; lame unique, poing visible et buste orienté vers l’adversaire.",
+        "Le contact droit dépasse la grille nominale, mais son rectangle explicite complet est isolé des voisins et passe la préparation alpha réelle.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-medium-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-medium-repair-v33.png",
+      "originId": "exec-baa1e42d-580c-4a84-83de-e251f77bada2.png",
+      "sha256": "fcb5c4df3390f9781dc2ce9047b8cf6f5031adc04dadd30ad7fb2d59b0d5669a",
+      "bytes": 1818540,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1322485,
+        "fringePixels": 14412
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            87,
+            166,
+            205,
+            299
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "4bff99295feb7a49acca25122a474f5077ad8e483605ccf30ff5201eb3ccdcce",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            436,
+            166,
+            332,
+            297
+          ],
+          "gridBorderPixels": 6,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "5001eea32745779f93668faa9c242f6e876e83b330881dc730ba6495a3ae6834",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            768,
+            166,
+            289,
+            299
+          ],
+          "gridBorderPixels": 6,
+          "residualMagentaPixels": 71,
+          "pixelDigest": "1f8aec70d333f9647f7573c28cc4b876e325cf7ce81427ecade355e954644d9d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1253,
+            166,
+            187,
+            300
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "0ea86cd936b1710b73861f277c41cc8cc5242035abb36cf6744b1502d107027b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            95,
+            636,
+            203,
+            298
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "99515f61d51ff34e85730787665abc12efb3a3f9334a8f745a91ffa000c465b2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            386,
+            636,
+            358,
+            295
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "9976319b174683e5476a77908c68eec45a6aa8eed5e4b318e8ea7b1829229dc8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            874,
+            636,
+            204,
+            298
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 85,
+          "pixelDigest": "547d2ab19961b371c759e6f0faec6fef85bbd4179ea67964fa8cde92dc3d4764",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1249,
+            636,
+            186,
+            298
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "4b8233b2add58e6ad0dcb3324e677dfa86f717a8093674fd3d2e381f8964e873",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "acceptedActionId": "medium",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                84,
+                163,
+                211,
+                305
+              ],
+              "pivot": [
+                103,
+                301
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                433,
+                163,
+                369,
+                303
+              ],
+              "pivot": [
+                119,
+                299
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                852,
+                163,
+                208,
+                305
+              ],
+              "pivot": [
+                102,
+                301
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                1250,
+                163,
+                193,
+                306
+              ],
+              "pivot": [
+                96,
+                302
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                92,
+                633,
+                209,
+                304
+              ],
+              "pivot": [
+                104,
+                300
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                383,
+                633,
+                364,
+                301
+              ],
+              "pivot": [
+                242.5,
+                297
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                871,
+                633,
+                210,
+                304
+              ],
+              "pivot": [
+                104.5,
+                300
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-medium",
+              "rect": [
+                1246,
+                633,
+                192,
+                304
+              ],
+              "pivot": [
+                95.5,
+                300
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            84,
+            163,
+            211,
+            305
+          ],
+          "pivot": [
+            103,
+            301
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            433,
+            163,
+            369,
+            303
+          ],
+          "pivot": [
+            119,
+            299
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            852,
+            163,
+            208,
+            305
+          ],
+          "pivot": [
+            102,
+            301
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "berserker-medium",
+          "rect": [
+            1250,
+            163,
+            193,
+            306
+          ],
+          "pivot": [
+            96,
+            302
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            92,
+            633,
+            209,
+            304
+          ],
+          "pivot": [
+            104,
+            300
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            383,
+            633,
+            364,
+            301
+          ],
+          "pivot": [
+            242.5,
+            297
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "berserker-medium",
+          "rect": [
+            871,
+            633,
+            210,
+            304
+          ],
+          "pivot": [
+            104.5,
+            300
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "berserker-medium",
+          "rect": [
+            1246,
+            633,
+            192,
+            304
+          ],
+          "pivot": [
+            95.5,
+            300
+          ],
+          "durationTicks": 1
+        }
+      ]
+    },
+    {
+      "id": "repair-heavy",
+      "actionId": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "notes": [
+        "Quatre dessins par orientation pour startup, contact diagonal bas et deux récupérations ; lame unique dans l’axe du gantelet et poing visible.",
+        "Aucune posture au-dessus de la tête conservée ; proportions et ancrage validés dans la lecture Canvas des phases moteur.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-heavy-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-heavy-repair-v33.png",
+      "originId": "exec-12ce5559-dbfb-4236-a8b3-a7d92ba3b4d7.png",
+      "sha256": "7e89d5388bf6e557036a008775d647aedc0764be1d165d9f1a84eac02b94f46c",
+      "bytes": 1913983,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1274826,
+        "fringePixels": 18508
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            85,
+            121,
+            234,
+            338
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "00db4e4b8d288d3227eddc39ad0c7858ffe68ab7ce6ccaf0919e7c85d48de315",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            439,
+            134,
+            286,
+            324
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "c1176d033045639d89bedbfef4be677d94280e3a167d85fb6b7c8b23f09555ad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            826,
+            169,
+            262,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "9686124706206d13f97e837016192031a638656abdfb2f7def9228d7fd6a74bf",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1228,
+            120,
+            212,
+            339
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "69862e7bb75fb6e72399f4723059466330cdc2448467001c15ca4b807d940c28",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            78,
+            601,
+            248,
+            335
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "f22ff24c59ef6fe65406c69d9417e394d68477db2836c3e1d9d9763ec69c6c2a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            433,
+            612,
+            296,
+            324
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 61,
+          "pixelDigest": "55cd7e96aaf924b5b51f548b57a986cc36ba977c98a2dec32579745c2382c631",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            842,
+            650,
+            262,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "164301355f8e51ae3963716428fb021f2161a16759c3763b326a2004b6217185",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1227,
+            599,
+            220,
+            341
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "f387de364853338e75f6e812ad6aa46cf6d1fa3cb42dfbd51b380478bbe5fb86",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "acceptedActionId": "heavy",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                82,
+                118,
+                240,
+                344
+              ],
+              "pivot": [
+                102.5,
+                340
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                436,
+                131,
+                292,
+                330
+              ],
+              "pivot": [
+                118,
+                326
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                823,
+                166,
+                268,
+                296
+              ],
+              "pivot": [
+                124.5,
+                292
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                1225,
+                117,
+                218,
+                345
+              ],
+              "pivot": [
+                108,
+                341
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                75,
+                598,
+                254,
+                341
+              ],
+              "pivot": [
+                143,
+                337
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                430,
+                609,
+                302,
+                330
+              ],
+              "pivot": [
+                182.5,
+                326
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                839,
+                647,
+                268,
+                296
+              ],
+              "pivot": [
+                140,
+                292
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-heavy",
+              "rect": [
+                1224,
+                596,
+                226,
+                347
+              ],
+              "pivot": [
+                110,
+                343
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            82,
+            118,
+            240,
+            344
+          ],
+          "pivot": [
+            102.5,
+            340
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            436,
+            131,
+            292,
+            330
+          ],
+          "pivot": [
+            118,
+            326
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            823,
+            166,
+            268,
+            296
+          ],
+          "pivot": [
+            124.5,
+            292
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "berserker-heavy",
+          "rect": [
+            1225,
+            117,
+            218,
+            345
+          ],
+          "pivot": [
+            108,
+            341
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            75,
+            598,
+            254,
+            341
+          ],
+          "pivot": [
+            143,
+            337
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            430,
+            609,
+            302,
+            330
+          ],
+          "pivot": [
+            182.5,
+            326
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "berserker-heavy",
+          "rect": [
+            839,
+            647,
+            268,
+            296
+          ],
+          "pivot": [
+            140,
+            292
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "berserker-heavy",
+          "rect": [
+            1224,
+            596,
+            226,
+            347
+          ],
+          "pivot": [
+            110,
+            343
+          ],
+          "durationTicks": 1
+        }
+      ]
+    },
+    {
+      "id": "repair-light-spacing",
+      "actionId": "light",
+      "revision": 2,
+      "status": "validated",
+      "notes": [
+        "Startup, contact et deux dessins de récupération acceptés dans chaque orientation ; poing fermé visible sous une seule lame de gantelet.",
+        "Espacement et rectangles explicites contrôlés sans élément voisin ni bord tronqué ; cadence calée sur les phases du moteur.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-light-spacing-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-light-spacing-repair-v33.png",
+      "originId": "exec-f7cff9a0-bce7-486b-b9df-a7296dd1b640.png",
+      "sha256": "5dc30ecb07491d53accddabb07bfc1547630b9b00c383f8860143d8a539860f0",
+      "bytes": 1863602,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1285254,
+        "fringePixels": 14785
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            72,
+            121,
+            204,
+            328
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "bc98fb5d61e52d8c3998a08c44783cdb49201e20660b21e1c43858eac98625fe",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            440,
+            121,
+            328,
+            328
+          ],
+          "gridBorderPixels": 3,
+          "residualMagentaPixels": 64,
+          "pixelDigest": "fe4dd0fd760e027f10b01fab3c31af0c3b0d6d3503eee30034c1a87d7d166d34",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            768,
+            121,
+            285,
+            328
+          ],
+          "gridBorderPixels": 3,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "1f62654a05ac249902354860464881e91e28b3f1f11165d9cf32735ebb8842ef",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1240,
+            119,
+            215,
+            330
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 118,
+          "pixelDigest": "2bae8e3bbe78df963b8f117abb695f90fed0df4db626a27a2b59a5e8a5dcfb9c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            92,
+            597,
+            217,
+            333
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "00cfe342656dcb8f96cab1c443a4ae7cd5350fa5f699c6651783ae889f19f0e5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            400,
+            600,
+            326,
+            329
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "6741638c14e79b9a87d49d65981df34a73f4afcffb6888375c1c75a96564349a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            876,
+            598,
+            217,
+            331
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 42,
+          "pixelDigest": "490ed04673c76e0e558153aefd16c796fee43e3ecb43237dc6c3aebe27d826f0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1230,
+            596,
+            218,
+            333
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 75,
+          "pixelDigest": "73a5aad932f944fe5ca26af175817f938ab5c30da7faa72b36914b9b5981d7ac",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "acceptedActionId": "light",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                69,
+                118,
+                210,
+                334
+              ],
+              "pivot": [
+                104.5,
+                330
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                437,
+                118,
+                336,
+                334
+              ],
+              "pivot": [
+                108.5,
+                330
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                845,
+                118,
+                211,
+                334
+              ],
+              "pivot": [
+                105,
+                330
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                1237,
+                116,
+                221,
+                336
+              ],
+              "pivot": [
+                104,
+                332
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                89,
+                594,
+                223,
+                339
+              ],
+              "pivot": [
+                111,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                397,
+                597,
+                332,
+                335
+              ],
+              "pivot": [
+                218.5,
+                331
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                873,
+                595,
+                223,
+                337
+              ],
+              "pivot": [
+                111,
+                333
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "berserker-light",
+              "rect": [
+                1227,
+                593,
+                224,
+                339
+              ],
+              "pivot": [
+                116.5,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            69,
+            118,
+            210,
+            334
+          ],
+          "pivot": [
+            104.5,
+            330
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            437,
+            118,
+            336,
+            334
+          ],
+          "pivot": [
+            108.5,
+            330
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            845,
+            118,
+            211,
+            334
+          ],
+          "pivot": [
+            105,
+            330
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "berserker-light",
+          "rect": [
+            1237,
+            116,
+            221,
+            336
+          ],
+          "pivot": [
+            104,
+            332
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            89,
+            594,
+            223,
+            339
+          ],
+          "pivot": [
+            111,
+            335
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            397,
+            597,
+            332,
+            335
+          ],
+          "pivot": [
+            218.5,
+            331
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "berserker-light",
+          "rect": [
+            873,
+            595,
+            223,
+            337
+          ],
+          "pivot": [
+            111,
+            333
+          ],
+          "durationTicks": 1
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "berserker-light",
+          "rect": [
+            1227,
+            593,
+            224,
+            339
+          ],
+          "pivot": [
+            116.5,
+            335
+          ],
+          "durationTicks": 1
+        }
+      ]
+    },
+    {
+      "id": "repair-guard",
+      "actionId": "guard",
+      "revision": 1,
+      "status": "validated",
+      "notes": [
+        "Quatre dessins par orientation pour entrée, garde haute, absorption et garde stabilisée ; la pose finale est tenue.",
+        "Poing droit visible sous la lame unique ; main gauche haute séparée du casque. Les avant-bras croisés ont été relus sur source et capture Canvas.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-guard-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-guard-repair-v33.png",
+      "originId": "exec-aec3945f-96ec-4003-a798-f89c828a25a2.png",
+      "sha256": "3c40aa306cff4dbac44dec00fa4f5cad6e08b087976b9091f0ffacdc817f4d23",
+      "bytes": 2012884,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1207100,
+        "fringePixels": 17139
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            73,
+            70,
+            230,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "ee0f121d93b971fb38dee921cb5a140642595b34ee4ca33885d3221411b4fdef",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            439,
+            70,
+            261,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 113,
+          "pixelDigest": "2bea12be2a95277b0d1d472e69fd2bdeee2c112c2c873ae115b1b4972b6a8893",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            803,
+            93,
+            285,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "7d3ee7586bff5cd9d1bd95728c9dbb2a371b22fd5c894c77c9879d6432743be6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1193,
+            77,
+            257,
+            384
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 118,
+          "pixelDigest": "8c561f18f1fb1c9a9a9342cdb556744b6633e44f4ee226f087e63c835e0b3ce4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            66,
+            573,
+            254,
+            376
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "81e174aee9399f018ef60e9e7e86ad489b36d8f116b1a7e8d04821e84329dd7a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            447,
+            570,
+            261,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "fdb24be8e77804b414cae78342fb17d5fa7cbc691c5b3747734816a9ea167f98",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            811,
+            595,
+            283,
+            356
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 111,
+          "pixelDigest": "ea13248cabae8da2afd767946f3a7e612ccc7963c361476947a4faef5dee8cb7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1200,
+            570,
+            260,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 113,
+          "pixelDigest": "73d929daaff7627ff712ecbfe87f73fe4a185cd3e91c07b3b2d0339544dea6b4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                70,
+                67,
+                236,
+                397
+              ],
+              "pivot": [
+                117.5,
+                393
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                436,
+                67,
+                267,
+                397
+              ],
+              "pivot": [
+                125,
+                393
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                800,
+                90,
+                291,
+                374
+              ],
+              "pivot": [
+                128.5,
+                370
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                1190,
+                74,
+                263,
+                390
+              ],
+              "pivot": [
+                125,
+                386
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                63,
+                570,
+                260,
+                382
+              ],
+              "pivot": [
+                129.5,
+                378
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                444,
+                567,
+                267,
+                386
+              ],
+              "pivot": [
+                134.5,
+                382
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                808,
+                592,
+                289,
+                362
+              ],
+              "pivot": [
+                154,
+                358
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-high-guard",
+              "rect": [
+                1197,
+                567,
+                266,
+                388
+              ],
+              "pivot": [
+                135.5,
+                384
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            70,
+            67,
+            236,
+            397
+          ],
+          "pivot": [
+            117.5,
+            393
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            436,
+            67,
+            267,
+            397
+          ],
+          "pivot": [
+            125,
+            393
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            800,
+            90,
+            291,
+            374
+          ],
+          "pivot": [
+            128.5,
+            370
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            1190,
+            74,
+            263,
+            390
+          ],
+          "pivot": [
+            125,
+            386
+          ],
+          "durationTicks": 6
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            63,
+            570,
+            260,
+            382
+          ],
+          "pivot": [
+            129.5,
+            378
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            444,
+            567,
+            267,
+            386
+          ],
+          "pivot": [
+            134.5,
+            382
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            808,
+            592,
+            289,
+            362
+          ],
+          "pivot": [
+            154,
+            358
+          ],
+          "durationTicks": 3
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "berserker-high-guard",
+          "rect": [
+            1197,
+            567,
+            266,
+            388
+          ],
+          "pivot": [
+            135.5,
+            384
+          ],
+          "durationTicks": 6
+        }
+      ]
+    },
+    {
+      "id": "repair-walk-forward-joints",
+      "actionId": "walk-forward",
+      "revision": 2,
+      "status": "rejected",
+      "notes": [
+        "La réparation ciblée des colonnes3/4 ne résout pas le même appui apparent au contact et au passage. Trois tentatives ne suffisent pas à valider l’alternance ; ne pas déclarer de cycle de marche."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-walk-forward-joints-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-forward-joints-repair-v33.png",
+      "originId": "exec-e1b95175-69da-4079-b84a-a127a8a7ea24.png",
+      "sha256": "a6aab139602fcf02c5b22e40b6d9b042dd7e01e5d0168e1f2e3cb148edfb3074",
+      "bytes": 2365512,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1046561,
+        "fringePixels": 23006
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            45,
+            21,
+            337,
+            455
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "ed1f53e89d0555adb52f8e12a2dc12f00ee86f0bf712dca321f02099d34ef432",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            436,
+            21,
+            299,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "e8f80e104c0bf85b30c7f1b0e2c836586589ce0b54d644e22f390dad637bc72d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            824,
+            21,
+            322,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 78,
+          "pixelDigest": "ddf77a4b31b23cb1199f8c865719e4f541c73ded501bfa9311ff7b5399d4aab5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1200,
+            21,
+            300,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "221c66f910aacd33ecc4c4bb0740904524abc9aaeba102766b1fd3abb71a4456",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            20,
+            527,
+            317,
+            455
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "cad4c1b7ebf8538245aaced956094850ea47a26e367a880f457e9c98d2b46d19",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            414,
+            526,
+            293,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "7b5744194e5c4430682c693485bb05e1a2a86f7ba87c6cbd6fae927e63d78b9f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            780,
+            525,
+            316,
+            458
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "2aca01dbe9b25542f9a87d039e43b18e45cd6a46473abae229daf642f82e5448",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1195,
+            524,
+            313,
+            460
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "c47fac22cb760c2c7d90d1be6a9428fc0adef716f1e856a7c21be5574e2536cd",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    },
+    {
+      "id": "repair-walk-backward-joints",
+      "actionId": "walk-backward",
+      "revision": 2,
+      "status": "validated",
+      "notes": [
+        "Contacts opposés et passages à appuis distincts relus ; quatre dessins par orientation forment le cycle de recul.",
+        "Pivot horizontal défini au bassin pour éviter un déplacement artificiel du buste quand un seul pied porte le poids.",
+        "À échelle native, quelques pixels magenta isolés demeurent sur de petits détails ; aucun halo continu ni fond opaque accepté."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-walk-backward-joints-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-backward-joints-repair-v33.png",
+      "originId": "exec-c6a91303-ac48-475a-b348-22e54ab36eba.png",
+      "sha256": "e95a3ead046973dd703e862d4f329c9f3fe449bb8b7f450d33e8ed6b027c8b62",
+      "bytes": 2310573,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1050254,
+        "fringePixels": 25146
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            18,
+            28,
+            358,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 35,
+          "pixelDigest": "803bb20677344d4753a6dbff9d9b5d7ab926eafbea376a7a6f97399f228f57a1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            402,
+            26,
+            348,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "dcf1c1885a3049dce79519e4fd1a605d8a29621bece55b30f5b0a2528ec91243",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            802,
+            27,
+            346,
+            450
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "67336fd7364bf122c6b7e66c6fadf8c1bcb169510c6b2fb7b301db2e2dfc961f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1186,
+            27,
+            335,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "1769015e9c464bc84bf5c9713a3c998ca3a954bae9fcad70de193013f4451fc9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            16,
+            534,
+            358,
+            454
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "b166d8e4d5986fe3c33c13c26710b50292594dde8bad60392d382f29a149a973",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            402,
+            536,
+            344,
+            452
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 58,
+          "pixelDigest": "2a24c2db21546d3bf29f1280746eb95cff755c3cefd68a2c90cca932edea1566",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            784,
+            535,
+            353,
+            444
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "d3a4d72e9c5cec55aab883e3a7936030eb9d201d1b7baecc7f1d8e23320c0033",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1170,
+            535,
+            336,
+            446
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "c124782a72fffea28ff68f0929875f79544e19618f42d0f77c3d0d5a3fbdbf72",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T19:13:41.017Z"
+      },
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                15,
+                25,
+                364,
+                457
+              ],
+              "pivot": [
+                178,
+                453
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                399,
+                23,
+                354,
+                459
+              ],
+              "pivot": [
+                181,
+                455
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                799,
+                24,
+                352,
+                456
+              ],
+              "pivot": [
+                179,
+                452
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                1183,
+                24,
+                341,
+                453
+              ],
+              "pivot": [
+                178,
+                449
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                13,
+                531,
+                364,
+                460
+              ],
+              "pivot": [
+                182,
+                456
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                399,
+                533,
+                350,
+                458
+              ],
+              "pivot": [
+                176,
+                454
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                781,
+                532,
+                359,
+                450
+              ],
+              "pivot": [
+                184,
+                446
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "berserker-walk-backward",
+              "rect": [
+                1167,
+                532,
+                342,
+                452
+              ],
+              "pivot": [
+                181,
+                448
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            15,
+            25,
+            364,
+            457
+          ],
+          "pivot": [
+            178,
+            453
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            399,
+            23,
+            354,
+            459
+          ],
+          "pivot": [
+            181,
+            455
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            799,
+            24,
+            352,
+            456
+          ],
+          "pivot": [
+            179,
+            452
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            1183,
+            24,
+            341,
+            453
+          ],
+          "pivot": [
+            178,
+            449
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            13,
+            531,
+            364,
+            460
+          ],
+          "pivot": [
+            182,
+            456
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            399,
+            533,
+            350,
+            458
+          ],
+          "pivot": [
+            176,
+            454
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            781,
+            532,
+            359,
+            450
+          ],
+          "pivot": [
+            184,
+            446
+          ],
+          "durationTicks": 8
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "berserker-walk-backward",
+          "rect": [
+            1167,
+            532,
+            342,
+            452
+          ],
+          "pivot": [
+            181,
+            448
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "revision": 3,
+      "status": "rejected",
+      "notes": [
+        "La conversion du meilleur recul altère les contacts au lieu de préserver leur opposition ; appui répété et texture de peau plus quadrillée.",
+        "Ne pas enregistrer comme marche avant, malgré les genoux visiblement levés."
+      ],
+      "sourcePath": "art-source/v33/pit/berserker/repairs/berserker-walk-forward-cycle-repair-v33.png",
+      "publicPath": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-forward-cycle-repair-v33.png",
+      "originId": "exec-97ca72dc-768a-431a-a09c-394576618dae.png",
+      "sha256": "c2f5f549b3ccd8545378c25db971b170154fae9f83421dc8216f16c66ef45566",
+      "bytes": 2260627,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1043691,
+        "fringePixels": 27987
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            18,
+            28,
+            358,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 53,
+          "pixelDigest": "b85e1ec02fc4794983a5ed7bce38dc2a81f72744b01984019f519c47f548896c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            401,
+            26,
+            349,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "020211db4a2ffacb18d5ef6c8878cce72d2d2ec573a0a97b639d6de15acbec92",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            802,
+            28,
+            343,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 64,
+          "pixelDigest": "6341d5575354a6d853c3cb0d696ce2d7a072e7ae212581a8048d39276d68cd21",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1183,
+            27,
+            338,
+            451
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "701e3d9bd5c12dacd454ac115a700c6238532342f1b2b241d6e12e6541ae3ead",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            16,
+            535,
+            358,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "2c08166f14935a5d7b6fb29b0d881ca2f0bf30667c913431e41932fda1ae21a6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            402,
+            537,
+            343,
+            447
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "49b5000a3d16c91775e57cdbb7cbf507defa4dc44f386f14bad667822489fc28",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            784,
+            535,
+            352,
+            453
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "15e64457b427b77d595dc6a15658dfdfadd3bd85b651e0cfb0689301b60cefa9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1170,
+            536,
+            336,
+            448
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "7c847fb0b506bb2fa2dd6f45e94dc877feff3c0007ef9100a06fb84eee3312b8",
+          "runtimeFrameAccepted": false
+        }
+      ]
+    }
+  ],
+  "acceptedSourcePages": 7,
+  "runtimeDrawings": 54,
+  "actionSequencesIncludingFacings": 14,
+  "acceptedDefinitionPath": "art-source/v33/pit/berserker/berserker-runtime-atlas-v33.json",
+  "runtimeLimitations": [
+    "Forward walk remains an authored idle hold: rejected sources never become clips.",
+    "Crouch exit, low guard, jump/landing, hurt and all other unlisted actions remain uncovered.",
+    "Visible magenta edge residue is measured and remains an art cleanup limitation, not claimed absent.",
+    "Identity follows the existing V23 presentation; no certified1:1 film fidelity."
+  ],
+  "counts": {
+    "producedSourceSheets": 20,
+    "producedPoseSamples": 160,
+    "acceptedSourcePages": 7,
+    "authoredReviewPages": 5,
+    "rejectedPages": 8,
+    "runtimeDistinctDrawings": 54,
+    "runtimeClips": 26,
+    "actionSequencesIncludingFacings": 14
+  },
+  "nativeContrastReview": {
+    "method": "Chrome renderer intégré, deviceScaleFactor1, Canvas240×170 sans scale du contexte ni CSS ; fond clair et sombre",
+    "captures": 16,
+    "magentaPixelsPerPose": {
+      "minimum": 5,
+      "maximum": 15
+    },
+    "continuousHaloObserved": false,
+    "sourcePixelsModified": false,
+    "sharedProcessorChanged": false,
+    "evidencePrivate": "work/v33-sources/berserker-native-contrast/contrast-native.png"
+  },
+  "livePitCanvasReview": {
+    "passed": true,
+    "checkedAt": "2026-09-12T19:19:21.046Z",
+    "keyboardChecks": 14,
+    "facings": [
+      "right",
+      "left"
+    ],
+    "actions": [
+      "light",
+      "medium",
+      "heavy",
+      "crouch",
+      "high-guard",
+      "walk-backward",
+      "forward-held-fallback"
+    ],
+    "javascriptErrors": 0,
+    "httpErrors": 0,
+    "privateReport": "work/v33-sources/berserker-live-v33-qa/browser-qa.json"
+  },
+  "validation": {
+    "unitAndProductionTests": {
+      "passed": 27,
+      "failed": 0
+    },
+    "typecheck": "PASS",
+    "targetedEslint": "PASS"
+  }
+}

@@ -1,5 +1,6 @@
 import { PIT_ARENAS, PIT_FIGHTERS, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
+import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
 
 /** These six bitmap passes are presentation only. They never alter the arena or replay. */
 export type PitArenaPlaneId = "P0" | "P1" | "P2" | "P3" | "P4" | "P5";
@@ -25,6 +26,7 @@ export interface PitArenaArtBank {
   readonly requestedPaths: ReadonlySet<string>;
   readonly failedPaths: ReadonlySet<string>;
   readonly cancelled: boolean;
+  readonly productionKit?: PitArenaProductionKit;
 }
 export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean }
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
@@ -144,17 +146,27 @@ export const PIT_ARENA_ART_DEFINITIONS: Readonly<Record<PitArenaId, PitArenaArtD
 export const PIT_ARENA_PARALLAX = { P0: .05, P1: .12, P2: .24, P3: .43, P4: 1, P5: 1.08 } as const;
 export const PIT_ARENA_BITMAP_PLANES: readonly PitArenaPlaneId[] = ["P0", "P1", "P2", "P3", "P4", "P5"];
 
-export function getPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
+function getLegacyPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
   const art = PIT_ARENA_ART_DEFINITIONS[arenaId];
   return [...new Set([art.backdrop, art.floor.src, ...Object.values(art.planes).flatMap(plane => plane.map(item => item.src))])];
+}
+
+export function getPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
+  return resolvePitArenaProductionKit(arenaId)?.paths ?? getLegacyPitArenaArtPaths(arenaId);
 }
 
 /** A grounded floor must follow the exact gameplay camera, despite the concept P4 factor. */
 export function getPitArenaLayerTransform(
   arenaId: PitArenaId, planeId: PitArenaPlaneId, camera: PitPresentationCamera, reducedMotion = false,
 ): PitArenaLayerTransform {
+  return getPitArenaSubplanTransform(arenaId, PIT_ARENA_PARALLAX[planeId], camera, reducedMotion);
+}
+
+export function getPitArenaSubplanTransform(
+  arenaId: PitArenaId, parallax: number, camera: PitPresentationCamera, reducedMotion = false,
+): PitArenaLayerTransform {
   const arena = PIT_ARENAS[arenaId];
-  const factor = reducedMotion ? 1 : PIT_ARENA_PARALLAX[planeId];
+  const factor = reducedMotion ? 1 : Number.isFinite(parallax) ? Math.max(0, Math.min(2, parallax)) : 1;
   const zoom = Number.isFinite(camera.zoom) && camera.zoom > 0 ? camera.zoom : 1;
   const x = Number.isFinite(camera.centerX) ? camera.centerX : arena.width / 2;
   const y = Number.isFinite(camera.centerY) ? camera.centerY : arena.height / 2;
@@ -188,8 +200,10 @@ export function getPitArenaForegroundOpacity(
 }
 
 /** Load only the selected stage and abandon the whole bank on cancellation. */
-export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: AbortSignal; timeoutMs?: number } = {}): Promise<PitArenaArtBank> {
-  const requestedPaths = new Set(getPitArenaArtPaths(arenaId));
+export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: AbortSignal; timeoutMs?: number; productionManifest?: PitArenaProductionManifest } = {}): Promise<PitArenaArtBank> {
+  let productionKit = resolvePitArenaProductionKit(arenaId, options.productionManifest) ?? undefined;
+  const requestedPaths = new Set(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId));
+  const expectedFrames = new Map(productionKit?.planes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => [frame.path, frame] as const))) ?? []);
   const images = new Map<string, HTMLImageElement>();
   const failedPaths = new Set<string>();
   const signal = options.signal;
@@ -197,7 +211,7 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
   if (signal?.aborted || typeof Image === "undefined") {
     return { arenaId, images, requestedPaths, failedPaths: requestedPaths, cancelled: Boolean(signal?.aborted) };
   }
-  await Promise.all([...requestedPaths].map(src => new Promise<void>(resolve => {
+  const loadPaths = async (paths: readonly string[]) => Promise.all(paths.map(src => new Promise<void>(resolve => {
     let image: HTMLImageElement;
     try { image = new Image(); } catch { failedPaths.add(src); resolve(); return; }
     let settled = false;
@@ -213,14 +227,26 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
     };
     const abort = () => finish(false);
     const timer = setTimeout(() => finish(false), timeoutMs);
-    image.onload = () => finish(image.naturalWidth > 0 && image.naturalHeight > 0);
+    image.onload = () => {
+      const expected = expectedFrames.get(src)?.generation;
+      finish(image.naturalWidth > 0 && image.naturalHeight > 0
+        && (!expected || (image.naturalWidth === expected.width && image.naturalHeight === expected.height)));
+    };
     image.onerror = () => finish(false);
     signal?.addEventListener("abort", abort, { once: true });
     if (signal?.aborted) { finish(false); return; }
     try { image.src = src; } catch { finish(false); }
   })));
+  await loadPaths([...requestedPaths]);
+  if (productionKit && !signal?.aborted && productionKit.requiredPaths.some(src => !images.has(src))) {
+    // A failed independent kit cannot leave a partly replaced arena. Recover the complete legacy kit.
+    productionKit = undefined;
+    const fallback = getLegacyPitArenaArtPaths(arenaId);
+    fallback.forEach(src => requestedPaths.add(src));
+    await loadPaths(fallback.filter(src => !images.has(src)));
+  }
   if (signal?.aborted) { images.clear(); requestedPaths.forEach(src => failedPaths.add(src)); }
-  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted) };
+  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit };
 }
 
 function drawProps(context: CanvasRenderingContext2D, plane: "P1" | "P2" | "P3" | "P5", state: PitCombatState,
@@ -246,12 +272,105 @@ function drawProps(context: CanvasRenderingContext2D, plane: "P1" | "P2" | "P3" 
   return drawn;
 }
 
+
+/** Independent bitmaps preserve their aspect ratio and retain authored world placements. */
+function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaProductionPlane,
+  state: PitCombatState, camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): boolean {
+  const arena = PIT_ARENAS[state.arenaId];
+  let drawn = false;
+  for (const asset of plane.assets) {
+    const completeLoop = asset.animation && asset.frames.length > 1 && asset.frames.every(frame => bank.images.has(frame.path));
+    const frameIndex = completeLoop && !options.reducedMotion
+      ? Math.floor(Math.max(0, state.frame) * asset.animation!.fps / 60) % asset.frames.length
+      : completeLoop && options.reducedMotion ? Math.min(asset.frames.length - 1, Math.max(0, asset.animation!.reducedMotionFrame)) : 0;
+    const frame = asset.frames[frameIndex];
+    if (!frame?.generation) continue;
+    const image = bank.images.get(frame.path);
+    if (!image) continue;
+    const source = asset.sourceCrop ?? frame.generation.contentBounds;
+    // The actual contact tile is always world-locked, even when a draft data factor is wrong.
+    const factor = asset.mode === "repeat-x" ? 1 : asset.parallax;
+    const transform = getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion);
+    for (const placement of asset.placements) {
+      context.save();
+      try {
+        context.globalAlpha *= asset.opacity * (options.highContrast ? .45 : 1);
+        if (asset.mode === "repeat-x" || asset.mode === "strip-x") {
+          const width = (asset.mode === "strip-x" ? placement.height * source.width / source.height : placement.width) * transform.scale;
+          const height = source.height / source.width * width;
+          const origin = placement.x * transform.scale + transform.translateX;
+          const floorY = (asset.mode === "repeat-x" ? arena.groundY : placement.y) * transform.scale + transform.translateY;
+          const first = Math.floor(-origin / width) - 1;
+          const last = Math.ceil((arena.width - origin) / width) + 1;
+          for (let index = first; index <= last; index++) context.drawImage(image, source.x, source.y, source.width, source.height, origin + index * width, floorY, width + .5, height);
+        } else if (asset.mode === "cover") {
+          const left = Math.min(placement.x, -transform.translateX / transform.scale - 2);
+          const top = Math.min(placement.y, -transform.translateY / transform.scale - 2);
+          const right = Math.max(placement.x + placement.width, (arena.width - transform.translateX) / transform.scale + 2);
+          const bottom = Math.max(placement.y + placement.height, (arena.height - transform.translateY) / transform.scale + 2);
+          const cover = Math.max((right - left) / source.width, (bottom - top) / source.height);
+          const width = source.width * cover;
+          const height = source.height * cover;
+          context.translate(transform.translateX, transform.translateY);
+          context.scale(transform.scale, transform.scale);
+          context.drawImage(image, source.x, source.y, source.width, source.height, (left + right - width) / 2, (top + bottom - height) / 2, width, height);
+        } else {
+          const fit = Math.min(placement.width / source.width, placement.height / source.height);
+          const width = source.width * fit * transform.scale;
+          const height = source.height * fit * transform.scale;
+          const bounds = {
+            x: (placement.x + placement.width / 2) * transform.scale + transform.translateX - width / 2,
+            y: asset.anchorToGround
+              ? (() => {
+                const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
+                return arena.groundY * ground.scale + ground.translateY
+                  + (placement.y + placement.height - arena.groundY) * transform.scale - height;
+              })()
+              : (placement.y + placement.height) * transform.scale + transform.translateY - height,
+            width, height,
+          };
+          if (plane.id === "P5") context.globalAlpha *= getPitArenaForegroundOpacity(bounds, state, camera);
+          context.drawImage(image, source.x, source.y, source.width, source.height, bounds.x, bounds.y, bounds.width, bounds.height);
+        }
+        drawn = true;
+      } finally { context.restore(); }
+    }
+  }
+  return drawn;
+}
+
+function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCombatState,
+  camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): PitArenaDrawReport {
+  const arena = PIT_ARENAS[state.arenaId];
+  const drawnPlanes: PitArenaPlaneId[] = [];
+  const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
+  const floorY = arena.groundY * ground.scale + ground.translateY;
+  context.save();
+  try {
+    context.imageSmoothingEnabled = true;
+    context.fillStyle = options.highContrast ? "#06100e" : arena.palette.sky;
+    context.fillRect(0, 0, arena.width, arena.height);
+    for (const plane of bank.productionKit!.planes.filter(entry => entry.id !== "P5")) {
+      if (plane.id === "P4") {
+        context.fillStyle = options.highContrast ? "#06100e" : arena.palette.ground;
+        context.fillRect(0, floorY, arena.width, Math.max(0, arena.height - floorY));
+      }
+      if (drawProductionPlane(context, plane, state, camera, bank, options)) drawnPlanes.push(plane.id);
+    }
+    context.globalAlpha = options.highContrast ? .9 : .36;
+    context.fillStyle = options.highContrast ? "#c4ffed" : arena.palette.accent;
+    context.fillRect(0, floorY, arena.width, options.highContrast ? 2 : 1);
+  } finally { context.restore(); }
+  return { drawnPlanes, missingPaths: [...bank.requestedPaths].filter(src => !bank.images.has(src)) };
+}
+
 /** Called on an untransformed canvas, before the combat world transform. */
 export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: PitCombatState, camera: PitPresentationCamera,
   bank: PitArenaArtBank | null, options: PitArenaRenderOptions = {}): PitArenaDrawReport {
   const arena = PIT_ARENAS[state.arenaId];
   const art = PIT_ARENA_ART_DEFINITIONS[state.arenaId];
   const validBank = bank && bank.arenaId === state.arenaId && !bank.cancelled ? bank : null;
+  if (validBank?.productionKit) return drawProductionBackdrop(context, state, camera, validBank, options);
   const drawnPlanes: PitArenaPlaneId[] = [];
   context.save();
   try {
@@ -303,13 +422,18 @@ export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: P
     context.fillStyle = options.highContrast ? "#c4ffed" : arena.palette.accent;
     context.fillRect(0, floorY, arena.width, options.highContrast ? 2 : 1);
   } finally { context.restore(); }
-  return { drawnPlanes, missingPaths: getPitArenaArtPaths(state.arenaId).filter(src => !validBank?.images.has(src)) };
+  return { drawnPlanes, missingPaths: [...(validBank?.requestedPaths ?? getPitArenaArtPaths(state.arenaId))].filter(src => !validBank?.images.has(src)) };
 }
 
 /** Called after restoring the world transform. P5 never covers the HUD or changes collision. */
 export function drawPitArenaForeground(context: CanvasRenderingContext2D, state: PitCombatState, camera: PitPresentationCamera,
   bank: PitArenaArtBank | null, options: PitArenaRenderOptions = {}): PitArenaDrawReport {
   if (!bank || bank.cancelled || bank.arenaId !== state.arenaId) return { drawnPlanes: [], missingPaths: [] };
+  if (bank.productionKit) {
+    const plane = bank.productionKit.planes.find(entry => entry.id === "P5");
+    const drawn = plane ? drawProductionPlane(context, plane, state, camera, bank, options) : false;
+    return { drawnPlanes: drawn ? ["P5"] : [], missingPaths: plane?.assets.flatMap(asset => asset.frames.map(frame => frame.path)).filter(src => !bank.images.has(src)) ?? [] };
+  }
   const drawn = drawProps(context, "P5", state, camera, bank, options);
   return { drawnPlanes: drawn ? ["P5"] : [], missingPaths: PIT_ARENA_ART_DEFINITIONS[state.arenaId].planes.P5.filter(item => !bank.images.has(item.src)).map(item => item.src) };
 }

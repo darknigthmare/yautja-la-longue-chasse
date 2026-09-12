@@ -1,0 +1,2419 @@
+{
+  "schemaVersion": 1,
+  "id": "yautja-v33-vehicles-production",
+  "updatedAt": "2026-09-12",
+  "status": "in-production",
+  "scope": "50 vehicles and biological mounts from the accessible conversation; not a claim of shipped assets.",
+  "source": {
+    "threadId": "6aa47c2d-c088-83eb-b65e-c82b918ee68d",
+    "title": "Ajout des véhicules Yautja",
+    "availableTurns": 2,
+    "paginationComplete": true,
+    "attachmentsReturned": 0,
+    "privateArchive": "work/v33-sources/vehicles-conversation.md",
+    "claimedZipSha256": "58fa1207f3ceaa7e88dea9fd5fd76ad37ad9e892373deb30cd9b7855dbda7ba2",
+    "zipRecovered": false
+  },
+  "totals": {
+    "entries": 50,
+    "clanUtility": 24,
+    "badBloodEnforcer": 10,
+    "biologicalMounts": 16,
+    "generatedAssets": 6,
+    "acceptedAnimationClips": 0,
+    "integratedRideableVehicles": 0,
+    "publicReviewImages": 4,
+    "rejectedSourceImages": 2
+  },
+  "artContract": {
+    "status": "proposed-for-production",
+    "literalVehicleSheetCountFromSource": null,
+    "notes": [
+      "The conversation does not specify ten sheets per vehicle or a precise frame grid.",
+      "Game-facing side views must be authored in both directions; presentation views never count as playable clips.",
+      "Maintain separate vehicle, rider, trophies, equipment, contact shadows and effects for modularity.",
+      "Actual alpha or explicit color key, no opaque checkerboard; explicit rectangles, pivots and tick durations.",
+      "Source PNGs, prompts and references must be retained; all accepted clips require visual and runtime QA."
+    ]
+  },
+  "primaryReferences": [
+    {
+      "id": "neca-blade-fighter",
+      "url": "https://necaonline.com/2014/12/closer-look-predator-blade-fighter-vehicle-and-packaging/",
+      "supports": "NECA vehicle, homage to 1993 Kenner toy, cockpit/cannons/projectile/blades/storage; not film canon or real-world craft dimensions"
+    },
+    {
+      "id": "neca-viper",
+      "url": "https://necaonline.com/2014/09/closer-look-viper-predator-action-figure-series-12/",
+      "supports": "Viper is a NECA original associated with the Blade Fighter"
+    },
+    {
+      "id": "badlands-hunkin",
+      "url": "https://www.mathunkin.com/",
+      "supports": "Production concept references for hoverbikes and ejector sequence; WIP, image contents not yet inspected"
+    },
+    {
+      "id": "badlands-20th",
+      "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "supports": "Official film reference and trailers; no exact vehicle class/stats provided by page"
+    },
+    {
+      "id": "bone-bison-designer",
+      "url": "https://jsmarantz.artstation.com/projects/NqOo21",
+      "supports": "Production concept reference for Bone Bison species; does not validate domestication/war-mount role"
+    }
+  ],
+  "firstOpenAIProduction": {
+    "vehicleId": "moto-antigrav-de-chasse",
+    "status": "authored-review",
+    "deliverable": "Unoccupied side-view identity sheet with left and right authored views and a consistent Yautja scale reference, then modular rider and real movement frames.",
+    "referenceGate": "Review the Mat Hunkin hoverbike view sheet against final Badlands footage; identify what is concept-only before claiming 1:1.",
+    "generationAuthorizedInThisSubtask": true,
+    "actualReference": "Original fallback approved because primary NECA pages returned403; not a1:1 Badlands replica.",
+    "additionalCorrection": {
+      "source": "art-source/v33/vehicles/moto-stabilizers-repair-v33.json",
+      "authoredDrawings": 8,
+      "runtimeAccepted": false
+    },
+    "propulsionVfx": {
+      "source": "art-source/v33/vehicles/moto-propulsion-fx-provenance-v33.json",
+      "status": "authored-review",
+      "generatedDrawings": 8,
+      "runtimeAccepted": false
+    }
+  },
+  "unresolvedSourceDetails": [
+    "ZIP and six claimed production files unavailable; internal content references cannot establish file contents.",
+    "Most final additional entries have names only, no numerical stats or animation-specific brief.",
+    "Hover Bike Clan Lord is not separately named in the final 50; its mapping to Moto antigrav de clan is provisional.",
+    "Cargo Sled appears in the earlier progression tree but is not an explicit final inventory entry; do not silently count a 51st.",
+    "The first draft counts three path families; the final message adds HEAVY and SPECIAL, producing five."
+  ],
+  "entries": [
+    {
+      "sequence": 1,
+      "id": "blade-fighter-k-93",
+      "name": "Blade Fighter K-93",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1102,
+            1102
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            133,
+            188
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1181,
+            1196
+          ]
+        }
+      ],
+      "loreClassification": "licensed-merchandise-reference-with-game-adaptation",
+      "referenceStatus": "primary-reference-identified",
+      "requestedActions": [
+        "déplacement gravitationnel",
+        "tir double canon plasma",
+        "missile",
+        "déplacement latéral",
+        "dash",
+        "esquive",
+        "verrouillage",
+        "mâchoire de capture",
+        "éperonnage",
+        "vol stationnaire court"
+      ],
+      "aliases": [
+        "Kenner Blade Fighter",
+        "Blade Fighter — Kenner Legacy Skin"
+      ],
+      "priority": 2,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 2,
+      "id": "blade-fighter-viper",
+      "name": "Blade Fighter Viper",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1103,
+            1103
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1094,
+            1096
+          ]
+        }
+      ],
+      "loreClassification": "licensed-merchandise-reference-with-game-adaptation",
+      "referenceStatus": "primary-reference-identified",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 3,
+      "id": "moto-antigrav-de-clan",
+      "name": "Moto antigrav de clan",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1104,
+            1104
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            106,
+            131
+          ]
+        }
+      ],
+      "loreClassification": "film-production-reference-with-game-adaptation",
+      "referenceStatus": "primary-concept-reference-identified-visual-review-pending",
+      "requestedActions": [
+        "déplacement antigravité",
+        "double tir Plasma Caster",
+        "champ frontal",
+        "scanner",
+        "camouflage"
+      ],
+      "aliases": [
+        "Hover Bike « Clan Lord »"
+      ],
+      "aliasStatus": "rapprochement provisoire ; le nom final ne confirme pas que le modèle Clan Lord est identique",
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 4,
+      "id": "moto-antigrav-de-chasse",
+      "name": "Moto antigrav de chasse",
+      "category": "clan-utility",
+      "status": "authored-review",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1105,
+            1105
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            47,
+            104
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1198,
+            1211
+          ]
+        }
+      ],
+      "loreClassification": "film-production-reference-with-game-adaptation",
+      "referenceStatus": "primary-concept-reference-identified-visual-review-pending",
+      "requestedActions": [
+        "accélération",
+        "boost",
+        "freinage",
+        "dérapage gravitationnel",
+        "saut",
+        "Grav Leap",
+        "vol stationnaire court",
+        "camouflage court",
+        "vision thermique",
+        "rappel autopilote",
+        "tir monté",
+        "Predator Drive-By",
+        "Trophy Pass",
+        "demi-tour 180°",
+        "saut-démontage offensif",
+        "marquage thermique"
+      ],
+      "aliases": [
+        "Hover Bike — modèle Badlands"
+      ],
+      "priority": 1,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "authored-review",
+        "sheetCount": 1,
+        "frameCount": 8,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [
+          "right"
+        ],
+        "sourceSpecRecovered": false,
+        "notes": "Eight pose samples; no accepted gameplay clip, stable pivot/timing/coverage pending review."
+      },
+      "assets": [
+        {
+          "id": "identity",
+          "status": "authored-review",
+          "sourcePath": "art-source/v33/vehicles/moto-antigrav-chasse-identity-v33.png",
+          "publicPath": "/game/vehicles/v33/moto-antigrav-chasse-identity-v33.png",
+          "sha256": "23e6ebcd583e89469bae80a5195aff68b8e88cc1bdf63d2b0120d49965e0e1d2"
+        },
+        {
+          "id": "stabilizers-draft-checkerboard",
+          "status": "rejected",
+          "sourcePath": "art-source/v33/vehicles/drafts/moto-antigrav-chasse-stabilizers-checkerboard-draft-v33.png",
+          "publicPath": null,
+          "sha256": "be38b6c643a1786a79b5d90e289cb3ba5969242a91ca7f91dd505314907c40f6"
+        },
+        {
+          "id": "stabilizers-draft-magenta",
+          "status": "rejected",
+          "sourcePath": "art-source/v33/vehicles/drafts/moto-antigrav-chasse-stabilizers-magenta-draft-v33.png",
+          "publicPath": null,
+          "sha256": "4926fdc0939f6bb2b407baa0397333dd178ff97c65b69c0354aa936000081cb7"
+        },
+        {
+          "id": "stabilizers-review",
+          "status": "authored-review",
+          "sourcePath": "art-source/v33/vehicles/moto-antigrav-chasse-stabilizers-v33.png",
+          "publicPath": "/game/vehicles/v33/moto-antigrav-chasse-stabilizers-v33.png",
+          "sha256": "3ad906ffa719a5b75be122895c10da2ecfab70917ce76a8425c95b03b23c9d4d"
+        }
+      ],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 4,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 5,
+      "id": "grav-sled-eclaireur",
+      "name": "Grav-Sled éclaireur",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1106,
+            1106
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            394,
+            409
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "glisse antigravité",
+        "course de vitesse"
+      ],
+      "aliases": [
+        "Grav Sled"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 6,
+      "id": "hunter-speeder",
+      "name": "Hunter Speeder",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1107,
+            1107
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            190,
+            220
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "traversée rapide des terrains ouverts et eaux peu profondes"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 7,
+      "id": "thunder-fang",
+      "name": "Thunder Fang",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1108,
+            1108
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 8,
+      "id": "skimmer-des-dunes",
+      "name": "Skimmer des dunes",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1109,
+            1109
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            411,
+            433
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "traversée rapide",
+        "poussière en plusieurs couches parallaxe"
+      ],
+      "aliases": [
+        "Yautja Sand Skimmer"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 9,
+      "id": "skimmer-des-marais",
+      "name": "Skimmer des marais",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1110,
+            1110
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 10,
+      "id": "skimmer-cryo",
+      "name": "Skimmer cryo",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1111,
+            1111
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 11,
+      "id": "jungle-strider",
+      "name": "Jungle Strider",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1112,
+            1112
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            435,
+            454
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "marche articulée",
+        "saut",
+        "escalade de pente",
+        "franchissement des racines et rochers"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 12,
+      "id": "cliff-crawler",
+      "name": "Cliff Crawler",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1113,
+            1113
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            456,
+            470
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "marche à six pattes",
+        "adhérence aux parois",
+        "adhérence aux plafonds",
+        "déplacement vertical sur falaise"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 13,
+      "id": "burrower-rig",
+      "name": "Burrower Rig",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1114,
+            1114
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 14,
+      "id": "river-manta",
+      "name": "River Manta",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1115,
+            1115
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 15,
+      "id": "canopy-glider",
+      "name": "Canopy Glider",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1116,
+            1116
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 16,
+      "id": "skiff-de-deploiement",
+      "name": "Skiff de déploiement",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1117,
+            1117
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            351,
+            369
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "déploiement de 4 à 8 Yautja",
+        "descente atmosphérique",
+        "débarquement"
+      ],
+      "aliases": [
+        "Hunt Deployment Skiff",
+        "Hunt Skiff"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": {
+        "min": 4,
+        "max": 8,
+        "source": "initial conversation"
+      },
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 17,
+      "id": "war-skiff",
+      "name": "War Skiff",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1118,
+            1118
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            371,
+            392
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "tir canon plasma",
+        "bouclier",
+        "tourelle",
+        "camouflage partiel",
+        "pose de mines"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 18,
+      "id": "crawler-de-siege",
+      "name": "Crawler de siège",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1119,
+            1119
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 19,
+      "id": "trophy-carrier",
+      "name": "Trophy Carrier",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1120,
+            1120
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            289,
+            324
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "transport antigravité",
+        "chargement de trophées et proies vivantes"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 20,
+      "id": "grand-trophy-hauler",
+      "name": "Grand Trophy Hauler",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1121,
+            1121
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            326,
+            349
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "arrivée sur balise",
+        "extraction défendue",
+        "accrochage visible du trophée",
+        "départ chargé"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 21,
+      "id": "forge-mobile-de-clan",
+      "name": "Forge mobile de clan",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1122,
+            1122
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 22,
+      "id": "medivac-scarab",
+      "name": "Medivac Scarab",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1123,
+            1123
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 23,
+      "id": "capsule-drop-spear",
+      "name": "Capsule Drop Spear",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1124,
+            1124
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 24,
+      "id": "sphere-dejection-atmospherique",
+      "name": "Sphère d’éjection atmosphérique",
+      "category": "clan-utility",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1125,
+            1125
+          ]
+        }
+      ],
+      "loreClassification": "film-production-reference-with-game-adaptation",
+      "referenceStatus": "primary-concept-reference-identified-visual-review-pending",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 25,
+      "id": "blood-runner",
+      "name": "Blood Runner",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1129,
+            1129
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            222,
+            252
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "conduite rapide",
+        "brouillage identification",
+        "combat monté"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 26,
+      "id": "bone-grinder",
+      "name": "Bone Grinder",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1130,
+            1130
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 27,
+      "id": "scavenger-raider",
+      "name": "Scavenger Raider",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1131,
+            1131
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 28,
+      "id": "sled-du-voleur-de-trophees",
+      "name": "Sled du voleur de trophées",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1132,
+            1132
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 29,
+      "id": "moto-de-poursuite-enforcer",
+      "name": "Moto de poursuite Enforcer",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1133,
+            1133
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            254,
+            287
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "poursuite",
+        "scan Bad Blood",
+        "marquage cible",
+        "EMP",
+        "filet renforcé",
+        "immobilisation gravitationnelle",
+        "tir plasma précis"
+      ],
+      "aliases": [
+        "Enforcer Pursuit Bike"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 30,
+      "id": "interceptor-enforcer",
+      "name": "Interceptor Enforcer",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1134,
+            1134
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "interception au niveau de recherche 4"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 31,
+      "id": "skiff-prison-enforcer",
+      "name": "Skiff-prison Enforcer",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1135,
+            1135
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "déploiement prison et escouade au niveau de recherche 5"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 32,
+      "id": "chariot-de-larbitre",
+      "name": "Chariot de l’Arbitre",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1136,
+            1136
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "intervention au niveau de recherche maximal"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 33,
+      "id": "sled-drone-pisteur",
+      "name": "Sled-drone pisteur",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1137,
+            1137
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "pistage au niveau de recherche 1"
+      ],
+      "aliases": [
+        "Tracker Drone Sled"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 34,
+      "id": "porte-barricade-enforcer",
+      "name": "Porte-barricade Enforcer",
+      "category": "bad-blood-enforcer",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1138,
+            1138
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "barricades et filets de véhicule au niveau de recherche 3"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 35,
+      "id": "kharha",
+      "name": "Kha’Rha",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1142,
+            1142
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            484,
+            525
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1213,
+            1225
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "course",
+        "saut",
+        "charge montée à la lance",
+        "griffes",
+        "morsure",
+        "escalade légère",
+        "rugissement",
+        "pistage olfactif",
+        "rappel selon BOND",
+        "protection du cavalier"
+      ],
+      "aliases": [
+        "Kha'Rha — Destrier Yautja classique"
+      ],
+      "priority": 3,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 36,
+      "id": "kharha-de-guerre",
+      "name": "Kha’Rha de guerre",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1143,
+            1143
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            527,
+            547
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "Predator Charge",
+        "destruction de paroi fragile"
+      ],
+      "aliases": [
+        "War Kha'Rha"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 37,
+      "id": "forest-stalker",
+      "name": "Forest Stalker",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1144,
+            1144
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            549,
+            573
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "course sur branches",
+        "bond entre arbres",
+        "grimpe",
+        "suspension brève"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 38,
+      "id": "sand-mauler",
+      "name": "Sand Mauler",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1145,
+            1145
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            575,
+            595
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "course endurante sur sable",
+        "détection de créatures enterrées"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 39,
+      "id": "stoneback",
+      "name": "Stoneback",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1146,
+            1146
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            597,
+            620
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "transport lourd",
+        "charge",
+        "destruction de barricades et portes"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 40,
+      "id": "ice-fang",
+      "name": "Ice Fang",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1147,
+            1147
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            622,
+            638
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "course sur glace",
+        "traversée de neige profonde",
+        "escalade de glacier",
+        "souffle au premier plan"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 41,
+      "id": "swamp-strider",
+      "name": "Swamp Strider",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1148,
+            1148
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            640,
+            657
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "marche amphibie",
+        "traversée de boue et marécage"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 42,
+      "id": "night-stalker",
+      "name": "Night Stalker",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1149,
+            1149
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            659,
+            675
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "camouflage biologique imparfait par chromatophores"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 43,
+      "id": "blood-beast",
+      "name": "Blood Beast",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1150,
+            1150
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            677,
+            698
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "agressivité",
+        "attaque du maître si Feral Gauge atteint 100 %"
+      ],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 44,
+      "id": "grande-bete-des-elders",
+      "name": "Grande Bête des Elders",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "description-partial",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1151,
+            1151
+          ]
+        },
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            700,
+            714
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [
+        "arrivée cérémonielle"
+      ],
+      "aliases": [
+        "Elder Great Beast"
+      ],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 45,
+      "id": "bone-bison-de-guerre",
+      "name": "Bone-Bison de guerre",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1152,
+            1152
+          ]
+        }
+      ],
+      "loreClassification": "film-creature-reference-original-war-mount",
+      "referenceStatus": "primary-concept-reference-identified-visual-review-pending",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 46,
+      "id": "razorwing",
+      "name": "Razorwing",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1153,
+            1153
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 47,
+      "id": "cliff-leaper",
+      "name": "Cliff Leaper",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1154,
+            1154
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 48,
+      "id": "burrow-wyrm",
+      "name": "Burrow Wyrm",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1155,
+            1155
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 49,
+      "id": "ash-horn",
+      "name": "Ash Horn",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1156,
+            1156
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    },
+    {
+      "sequence": 50,
+      "id": "storm-runner",
+      "name": "Storm Runner",
+      "category": "biological-mount",
+      "status": "planned",
+      "sourceCoverage": "name-only",
+      "sourceRefs": [
+        {
+          "file": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1157,
+            1157
+          ]
+        }
+      ],
+      "loreClassification": "original-game-design-until-reference-established",
+      "referenceStatus": "original-design-brief-partial",
+      "requestedActions": [],
+      "aliases": [],
+      "priority": null,
+      "preciseDimensions": null,
+      "crew": null,
+      "animationPlan": {
+        "status": "planned",
+        "sheetCount": null,
+        "frameCount": null,
+        "timings": null,
+        "rectangles": null,
+        "pivots": null,
+        "authoredFacings": [],
+        "sourceSpecRecovered": false
+      },
+      "assets": [],
+      "runtimeStatus": "planned",
+      "generatedAssetCount": 0,
+      "acceptedClipCount": 0
+    }
+  ]
+}
