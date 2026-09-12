@@ -36,6 +36,19 @@ async function close(instance) {
   }).catch(() => {});
   await instance.close().catch(() => {});
 }
+async function captureWindow(instance, fileName) {
+  // Playwright's page screenshot can stall on the hidden Electron compositor.
+  // Capture through Electron itself so visual evidence remains deterministic.
+  const pngBase64 = await instance.evaluate(async ({ BrowserWindow }) => {
+    const window = BrowserWindow.getAllWindows()[0];
+    if (!window) throw new Error("Desktop window is unavailable for capture.");
+    const image = await window.webContents.capturePage();
+    return image.toPNG().toString("base64");
+  });
+  const bytes = Buffer.from(pngBase64, "base64");
+  assert.ok(bytes.length > 1_000, `Desktop capture ${fileName} is unexpectedly empty.`);
+  await fs.writeFile(path.join(evidence, fileName), bytes);
+}
 let current;
 try {
   current = await launch();
@@ -129,7 +142,7 @@ try {
   assert.ok(citySave.homeworld.visitedDistrictIds.includes("port"));
   assert.ok(citySave.homeworld.evidenceIds.includes("suspect-trophy"));
   assert.ok(citySave.homeworld.greetedNpcIds.includes("dock-officer"));
-  await page.screenshot({path:path.join(evidence,"homeworld-pc.png")});
+  await captureWindow(instance, "homeworld-pc.png");
   await walkTo(970, 1770, 95); await city.focus(); await page.keyboard.press("e");
   await page.getByRole("button",{name:"Partir vers les Marches de Cendre",exact:true}).click();
   await page.getByRole("region",{name:"Expédition des Marches de Cendre",exact:true}).waitFor();
@@ -144,7 +157,7 @@ try {
   assert.equal(justiceSave.justice.originChoice,"investigator");
   assert.notEqual(justiceSave.justice.declaration,"bad-blood");
   assert.equal(justiceSave.profile.honor,citySave.profile.honor);
-  await page.screenshot({path:path.join(evidence,"justice-pc.png")});
+  await captureWindow(instance, "justice-pc.png");
   await page.getByRole("button",{name:"Fermer le dossier",exact:true}).click();
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
@@ -160,7 +173,7 @@ try {
   assert.ok(Number.isFinite(pitCameraZoom) && pitCameraZoom >= 1);
   await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="static-bitmap"]').waitFor();
   await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="static-bitmap"]').waitFor();
-  await page.screenshot({ path: path.join(evidence, "pit-combat-pc.png") });
+  await captureWindow(instance, "pit-combat-pc.png");
   checks.push("Hub to THE PIT training arena loads locally, with the exact Jungle Hunter and Berserker fixed-pose PNGs.");
 
   await page.goto("yautja://game/");
