@@ -1,44 +1,35 @@
-# Édition PC 1.0.31 — préparation
+# Édition PC 1.0.31 — livraison V31 qualifiée
 
-Cette édition portable Windows x64 correspond au contenu V31. Elle reste un jeu de fan non commercial, non signé et en développement. Le numéro 1.0.31 ne constitue ni une certification commerciale, ni une validation de campagne complète, ni une certification Steam Deck.
+Cette édition portable Windows x64 correspond au contenu V31 du commit source et runtime `c3f39e080197e639e10e68672101ad12ee394bd9`. Elle reste un jeu de fan non commercial, non signé et en développement. Le numéro 1.0.31 ne constitue ni une certification commerciale, ni une validation de campagne complète, ni une certification Steam Deck.
 
-## Construction prévue
+## Construction exécutée
 
-Le paquet doit être construit uniquement depuis un commit propre. La commande suivante régénère l’inventaire audio, construit le renderer Vite hors ligne puis prépare l’application Electron :
+La construction a été produite dans `tmp/desktop-release/v31/Yautja-La-Longue-Chasse-win32-x64/`. Le digest des sources est :
 
-    npm.cmd run package:windows
+    ab468a19b161c3909cd45b259399b0bd4959c9ea9bcdcfd9698545d7340aa71c
 
-La sortie attendue est tmp/desktop-release/v31/Yautja-La-Longue-Chasse-win32-x64/ et le manifeste attendu est tmp/desktop-release/v31/manifest-v31.json. Il doit enregistrer le commit source, l’empreinte des sources, Electron, la version 1.0.31 et les SHA-256 de l’EXE et de app.asar. Le script refuse un arbre source desktop non commité ou un renderer devenu périmé.
+Les éditions V25 et V29 restent dans leurs répertoires historiques ; la sortie V31 est isolée.
 
-Les éditions V25 et V29 restent dans leurs répertoires historiques. La sortie V31 est isolée et ne doit pas les remplacer.
+## Résultats desktop
 
-## Recettes prévues
-
-Après construction :
-
-    npm.cmd run qa:desktop
-    npm.cmd run qa:desktop:package
-
-La première commande doit lancer l’EXE dans un profil temporaire, confirmer la version PC et le marqueur de contenu V31, les protections Electron, les ressources locales, la persistance, la cité 2.5D, THE PIT et les douze salles déclarées par la carte Oseris. La seconde inspecte l’ASAR, refuse les chemins privés ou de développement et recalcule les empreintes du manifeste.
-
-Pour produire ensuite un ZIP qui conserve le dossier racine :
-
-    tar.exe -a -c -f "tmp\desktop-release\v31\Yautja-La-Longue-Chasse-PC-V31.zip" -C "tmp\desktop-release\v31" "Yautja-La-Longue-Chasse-win32-x64"
-    npm.cmd run qa:desktop:package -- --zip
-
-La recette avec --zip vérifie la structure, la présence de l’EXE, de app.asar et du LIRE-MOI, puis calcule la taille et le SHA-256 dans tmp/desktop-qa/v31/archive-verification.json.
-
-## État actuel
-
-| Élément | État |
+| Élément | Résultat |
 | --- | --- |
-| Métadonnées 1.0.31 / V31 | Préparées dans les sources |
-| Build Electron V31 | En attente |
-| Recette EXE | En attente |
-| Inspection ASAR | En attente |
-| ZIP portable et SHA-256 | En attente |
-| Publication du ZIP | Non prévue par ces scripts |
+| Métadonnées 1.0.31 / V31 | PASS |
+| Recette EXE | PASS — `2026-09-12T16:15:46.160Z` |
+| EXE SHA-256 | `6459cd47f201c11965123cce7a7580f54f6199662fae3d421a3f04d946547c62` |
+| Inspection `app.asar` | PASS — 2 132 entrées |
+| `app.asar` SHA-256 | `fe31fc3ff906114583cc40647da5c14fffac173eee50774636d1fdf70a6333b6` |
+| ZIP portable | PASS — 77 entrées |
+| Taille du ZIP | 465 811 593 octets |
+| ZIP SHA-256 | `c3c222f1a61cada9e04d0e812e72abfdbbb19198edc4a951bbbb3b0cfac97e1d` |
+| Recette archive | PASS — `2026-09-12T16:16:48.992Z` |
 
-La présence des scripts et chemins ci-dessus ne vaut pas résultat. Les valeurs exécutées seront recopiées dans docs/desktop-v31-qa.json seulement après une recette avec passed: true.
+Le ZIP qualifié se trouve dans `tmp/desktop-release/v31/Yautja-La-Longue-Chasse-PC-V31.zip`. La preuve suivie complète est [desktop-v31-qa.json](desktop-v31-qa.json).
 
-Le runtime prévu bloque le réseau, garde le renderer dans la sandbox, active l’isolation du contexte et désactive l’intégration Node. Ces contrôles ne certifient pas la cadence sur matériel réel, une manette physique, une session longue, un installateur, une signature ou les droits de commercialisation.
+## Publication Web distincte
+
+Le déploiement `dpl_CLqvEZyH37nCWxLSnqMW5HmUNtjK` est `READY` sur [yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app), cible `production`, SHA Git `c3f39e0`. Cette publication Web ne signifie pas que le ZIP Windows est distribué publiquement.
+
+## Limites
+
+La recette automatisée valide le package et les parcours consignés. Elle ne certifie pas la cadence sur matériel cible, une manette physique, une session longue, un installateur, une signature, Steam Deck, une campagne commerciale complète ou les droits de commercialisation. Les 264 entrées d’animation manquantes restent une dette de production distincte.

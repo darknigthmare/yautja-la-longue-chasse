@@ -1,6 +1,6 @@
 # Rapprochement du chat d’audit avec le jeu — 8 septembre 2026
 
-> **État historique supersédé.** Cette matrice conserve fidèlement le constat du 8 septembre. Les livraisons [V29](chatgpt-v29-delivery.md), [V30](chatgpt-v30-delivery.md) et [V31](chatgpt-v31-delivery.md) remplacent ses affirmations devenues obsolètes, notamment sur l’export intégral, la déchoppe, le monde natal et la distribution PC. La V31 a reçu sa qualification locale ; le package Windows et la publication publique restent en cours et ne sont pas prouvés par ce lien.
+> **État historique supersédé.** Cette matrice conserve fidèlement le constat du 8 septembre. Les livraisons [V29](chatgpt-v29-delivery.md), [V30](chatgpt-v30-delivery.md) et [V31](chatgpt-v31-delivery.md) remplacent ses affirmations devenues obsolètes, notamment sur l’export intégral, la déchoppe, le monde natal et la distribution PC. Le commit V31 `c3f39e080197e639e10e68672101ad12ee394bd9` a depuis reçu sa qualification locale, desktop et publique.
 
 Source : [Audit complet du dernier état live](https://chatgpt.com/share/6a9f6d0f-4f4c-83eb-b254-067d9d8bbfaf), texte récupéré dans `tmp/chatgpt-audit-2026-09-08/share-4.conversation.md` (sections 1 à 29). Ce document compare les demandes de cette conversation avec le dépôt, sans transformer les notes et pourcentages subjectifs du chat en mesures de production.
 
@@ -10,9 +10,11 @@ Le chat décrit le commit ancien `6338b489d919b274b56bbce8581c268284fd13b8`. La 
 
 ## Addendum factuel V31
 
-La qualification locale V31 a réussi : `qa:release` compte 1 103 tests réussis sur 1 103, la projection V19 contient 464 paires master/runtime, l’audit npm signale 0 vulnérabilité et la QA navigateur locale est PASS. Le package Windows V31 et la publication publique restent en cours tant que leurs résultats ne sont pas enregistrés.
+La qualification V31 a réussi : `qa:release` compte 1 103 tests réussis sur 1 103, la projection V19 contient 464 paires master/runtime, l’audit npm signale 0 vulnérabilité et la QA navigateur locale est PASS. Le package Windows 1.0.31/V31 est PASS. La production Vercel `dpl_CLqvEZyH37nCWxLSnqMW5HmUNtjK` est READY sur [yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app), cible `production`, SHA Git `c3f39e0`. Les preuves suivies sont [desktop-v31-qa.json](desktop-v31-qa.json), [v31-public-browser-qa.json](v31-public-browser-qa.json) et [v31-public-http-qa.json](v31-public-http-qa.json).
 
-Le lot visuel relie quinze plaques Homeworld aux identifiants exacts de leurs presets. THE PIT possède quatorze plaques statiques sur quatorze combattants, avec une pose gauche dédiée à City Hunter. Le bilan reste de seize poses statiques, zéro animation et 264 entrées d’animation manquantes. Ces correspondances ne constituent ni une certification officielle ni une fidélité 1:1.
+La recette publique de l’archive intégrale a validé réglages et preset, match et replay THE PIT, chasse Oseris suspendue, export sans écriture, import et rechargement exacts, conflits, concurrence et mobile, sans erreur JavaScript ni requête en échec. La recette Homeworld a validé douze quartiers, treize bâtiments, onze accessoires, treize plaques de héros, l’orientation, le PNJ, la preuve et la porte, sans erreur ni ressource en échec.
+
+Le lot visuel relie quinze plaques Homeworld aux identifiants exacts de leurs presets. THE PIT possède quatorze plaques statiques sur quatorze combattants, avec une pose gauche dédiée à City Hunter. Le bilan reste de seize poses statiques, zéro animation et 264 entrées d’animation manquantes. Ces correspondances ne constituent ni une certification officielle ni une fidélité 1:1. Les recettes ne certifient pas une manette physique, le matériel cible ni un jeu commercial complet.
 
 ## Matrice des demandes
 
@@ -76,7 +78,7 @@ Cette recette est une preuve historique V25 relue, pas un nouveau test du binair
 2. Produire les animations réellement dessinées et synchronisées, les modules artistiques manquants et les 336 paires V19 restantes.
 3. Livrer l’export/import intégral avec ses annexes et une stratégie de conflits testée.
 4. Terminer les exigences d’accessibilité, audio et contrôles puis effectuer les playtests matériels et chronométrés.
-5. Requalifier le paquet PC contenant les nouvelles versions ; signature, installateur, mises à jour et droits demeurent des chantiers distincts.
+5. Conserver les preuves du paquet PC V31 ; signature, installateur, mises à jour et droits demeurent des chantiers distincts.
 
 
 ## Première région natale : Marches de Cendre
@@ -97,4 +99,4 @@ Le build Vinext de production local a été parcouru sans injection de progressi
 Cette recette a aussi révélé que la barre globale recouvrait les boutons supérieurs de l’expédition. La CSS a été corrigée en remettant la scène dans le flux du conteneur, sous cette barre ; la fixture avec header global et vue mobile passe. Le parcours intégré a pu être terminé avec la commande normale Échap pour la pause. Preuves : `tmp/homeworld-integrated-keyboard-qa/browser-qa.json` et `reload-journal.png`. Aucun message JavaScript ni requête d’asset en erreur. Le libellé de sortie du PIT est désormais conditionné à la destination réelle. La dernière recette intégrée sur le build rassemblant ces corrections passe avec les clics normaux : Pause accessible, sortie du PIT libellée « Retour à la cité », preuve complète conservée au rechargement et journal cohérent. Preuves finales : `tmp/homeworld-integrated-qa/browser-qa.json`, `expedition-grazer.png`, `returned-to-port.png`, `pit-from-city.png` et `reload-journal.png`. Aucun message JavaScript ni asset en erreur.
 
 
-Le cadrage du brouteur a ensuite été corrigé : sa planche de 1536 × 192 contient six cellules de 256 × 192. Chaque phase choisit une pose vivante adaptée, avec son orientation native et un appui constant ; les poses de blessure et de mort ne tournent plus dans la locomotion. Les tests de cellules alpha et la capture corrigée du composant ont passé. La qualification publique utilisera le build Next de Vercel, distinct de Vinext local.
+Le cadrage du brouteur a ensuite été corrigé : sa planche de 1536 × 192 contient six cellules de 256 × 192. Chaque phase choisit une pose vivante adaptée, avec son orientation native et un appui constant ; les poses de blessure et de mort ne tournent plus dans la locomotion. Les tests de cellules alpha et la capture corrigée du composant ont passé. La qualification publique V31 utilise le build de production Vercel, distinct du build Vinext local, et ses résultats sont consignés dans les preuves suivies.

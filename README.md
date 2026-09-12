@@ -121,11 +121,18 @@ Cette commande exécute le lint, TypeScript, l'audit strict de toutes les paires
 V19 **disponibles**, puis la compilation et l'ensemble des tests automatisés.
 Elle ne remplace pas l'audit de complétude des 800 décors.
 
-Dernière qualification locale V31 observée : `qa:release` réussi avec **1 103
-tests sur 1 103**, **464 paires** V19 disponibles, audit npm à **0
-vulnérabilité** et QA navigateur locale **PASS**. Le package Windows V31 et la
-publication publique restent en cours tant que leurs résultats réels ne sont
-pas enregistrés.
+La qualification V31 du commit
+`c3f39e080197e639e10e68672101ad12ee394bd9` a réussi : `qa:release`
+compte **1 103 tests sur 1 103**, **464 paires** V19 disponibles, l’audit npm
+signale **0 vulnérabilité** et la QA navigateur locale est **PASS**.
+
+Le package Windows **1.0.31 / V31** est **PASS**. Son EXE, son ASAR de 2 132
+entrées et son ZIP de 465 811 593 octets ont été contrôlés ; les empreintes et
+horodatages figurent dans [la preuve desktop](docs/desktop-v31-qa.json). La
+production Vercel `dpl_CLqvEZyH37nCWxLSnqMW5HmUNtjK` est **READY** sur
+[yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app),
+cible `production`, SHA Git `c3f39e0`. Les parcours publics et les réponses
+HTTP sont consignés dans les preuves liées ci-dessous.
 
 Commandes individuelles :
 
@@ -168,7 +175,10 @@ références et approximations documentées ; elles ne sont pas présentées com
 des fichiers officiels de la franchise.
 
 - [Livraison de contenu V31](docs/chatgpt-v31-delivery.md)
-- [Préparation de l'édition PC V31](docs/desktop-v31.md)
+- [Édition PC V31 qualifiée](docs/desktop-v31.md)
+- [Preuve desktop V31](docs/desktop-v31-qa.json)
+- [Preuve navigateur publique V31](docs/v31-public-browser-qa.json)
+- [Preuve HTTP publique V31](docs/v31-public-http-qa.json)
 - [Niveau du vaisseau V21](docs/ship-level-delivery-v21.md)
 - [Modules et installations V22](docs/ship-interior-delivery-v22.md)
 - [Lot volcan V19 et sources](docs/biome-decor-volcano-lot-01.md)

@@ -1,0 +1,50 @@
+{
+  "format": "yautja-v31-public-http-qa",
+  "version": 1,
+  "passed": true,
+  "sourceCommit": "c3f39e080197e639e10e68672101ad12ee394bd9",
+  "runtimeCommit": "c3f39e080197e639e10e68672101ad12ee394bd9",
+  "deployment": {
+    "id": "dpl_CLqvEZyH37nCWxLSnqMW5HmUNtjK",
+    "state": "READY",
+    "target": "production",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "gitSha": "c3f39e0"
+  },
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 47848,
+      "mediaType": "text/html"
+    },
+    {
+      "path": "/game/sprites/v31/film-plates/manifest.json",
+      "status": 200,
+      "bytes": 34382,
+      "mediaType": "json"
+    },
+    {
+      "path": "/game/sprites/v31/film-plates/city-hunter-left.png",
+      "status": 200,
+      "bytes": 1573094,
+      "mediaType": "png"
+    },
+    {
+      "path": "/game/sprites/v31/film-plates/hashori.png",
+      "status": 200,
+      "bytes": 1399303,
+      "mediaType": "png"
+    },
+    {
+      "path": "/game/sprites/v31/film-plates/scarface.png",
+      "status": 200,
+      "bytes": 1786696,
+      "mediaType": "png"
+    }
+  ],
+  "limits": [
+    "These HTTP samples do not certify every route or asset.",
+    "No target-hardware or complete commercial-game certification."
+  ]
+}
