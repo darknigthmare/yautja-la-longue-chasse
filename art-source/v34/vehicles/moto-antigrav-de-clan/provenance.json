@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "moto-antigrav-de-clan",
+  "name": "Moto antigrav de clan",
+  "lore": "Adaptation latérale du concept Yautja Hoverbike V10 de Mat Hunkin, daté 01/05/24. Le nom de classe « clan » est celui du jeu et n’est pas certifié par le concept.",
+  "assets": [
+    {
+      "id": "concept-v10-identity-r1",
+      "actionId": "identity",
+      "label": "Moto — adaptation du concept V10",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/moto-antigrav-de-clan/concept-v10-identity-r1.png",
+      "publicPath": "/game/vehicles/v34/moto-antigrav-de-clan/concept-v10-identity-r1.png",
+      "originId": "exec-73136b3e-f6a6-4d6b-8613-76a8a84928ee.png",
+      "width": 1983,
+      "height": 793,
+      "sha256": "759883d8ecfbf37f389ee1880178d589d900694052bffaa636a5c686a9880337",
+      "bytes": 1525194,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572519
+      },
+      "prompt": "Create a faithful 2D game sprite adaptation of the YAUTJA HOVERBIKE V10 dated 01/05/24 shown on the LEFT HALF of the supplied Mat Hunkin Predator Badlands production concept sheet. Use ONLY that V10 vehicle identity; do not mix in the different V8 silhouette from the right half. Preserve the bulky separated front and rear armored pods, layered flat dark slate shingle plates, curved ribbed silver-blue/bronze side channels, deep central low seated rider space with padded saddle and compact handlebars, connected exposed lower tubular chassis, small round underbody joints and the long flat downward/outward stabilizer paddles shown in that V10 reference. Preserve proportions, plate rhythms, intake shapes and hardware attachment logic as closely as visible. REMOVE THE RIDER entirely: no hands, legs, human/Yautja anatomy or ghost body. Do not add wheels, big weapons, headlights, trophies, skulls or new decorative fins. Produce exactly TWO clean whole-vehicle horizontal SIDE profiles SIDE BY SIDE, first facing RIGHT, second facing LEFT, same scale with all pods/paddles within its own half and wide blank margins. Opposite side unseen detail is a conservative reconstruction, same mechanical structure. Flat MAGENTA #FF00FF background, no shadow, scene, labels, caption, logo, watermark or copied reference sheet layout. Detailed painted game bitmap, gameplay side camera with only minimal elevation to expose the seat and stabilizer attachment. This is an adaptation of a production CONCEPT, not a claim of exact final-film appearance.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/Badlands_16_2400.jpg",
+          "sha256": "ceac8d83efbf55ed52d9ab260d07499fb728b0f316ca9638faef80a4ba7834e8"
+        },
+        {
+          "url": "https://www.mathunkin.com/",
+          "role": "Primary artist portfolio, current reference inspected"
+        },
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            106,
+            131
+          ],
+          "role": "Game class brief"
+        }
+      ],
+      "notes": [
+        "Référence effectivement inspectée : partie V10 gauche de Badlands_16_2400.jpg. La partie V8 droite n’est pas fusionnée intentionnellement.",
+        "Fidélité au concept à contrôler ; version finale du film, échelle Yautja et côté caché non certifiés 1:1.",
+        "Pilote absent et modules d’armes séparés. Deux vues de présentation ne constituent pas une animation."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            991,
+            793
+          ],
+          "alpha16Bounds": [
+            41,
+            229,
+            891,
+            339
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 170892,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            991,
+            0,
+            992,
+            793
+          ],
+          "alpha16Bounds": [
+            1051,
+            229,
+            891,
+            339
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 170487,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

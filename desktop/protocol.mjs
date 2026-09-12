@@ -2,6 +2,14 @@ import path from "node:path";
 
 export const APP_ORIGIN = "yautja://game";
 export const APP_ROUTES = new Set(["/", "/pit-lab", "/rig-lab"]);
+// Only these bundled documents may open as auxiliary windows; they are not SPA routes.
+export const APP_DOCUMENT_ROUTES = new Set([
+  "/game/assets/v27/sprite-review/index.html",
+  "/game/assets/v28/sprite-review/index.html",
+  "/game/assets/v33/production-review/index.html",
+  "/game/assets/v34/production-review/index.html",
+  "/game/assets/v34/vehicle-assembly-review/index.html",
+]);
 export const CSP = [
   "default-src 'self'",
   "script-src 'self'",
@@ -25,9 +33,14 @@ export function isAppUrl(value) {
   } catch { return false; }
 }
 
+export function appRoutePath(value) {
+  if (!isAppUrl(value)) return null;
+  const route = new URL(value).pathname.replace(/\/$/, "") || "/";
+  return APP_ROUTES.has(route) || APP_DOCUMENT_ROUTES.has(route) ? route : null;
+}
+
 export function isAppRoute(value) {
-  if (!isAppUrl(value)) return false;
-  return APP_ROUTES.has(new URL(value).pathname.replace(/\/$/, "") || "/");
+  return appRoutePath(value) !== null;
 }
 
 /** Decode once, reject Windows path syntax and traversal, then enforce containment. */
@@ -64,4 +77,13 @@ export function parseAudioByteRange(header, size) {
     if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start >= size || end < start) return false;
   }
   return { start, end };
+}
+
+/** User-triggered exports stay limited to local saves and bundled raster game art. */
+export function appDownloadKind(value) {
+  if (value.startsWith("blob:" + APP_ORIGIN + "/") || /^data:application\/json(?:;[^,]*)?,/i.test(value)) return "save";
+  if (!isAppUrl(value)) return null;
+  const name = new URL(value).pathname;
+  if (!name.startsWith("/game/") || !/\.(png|webp|jpe?g)$/i.test(name)) return null;
+  return resolveAppFile(path.resolve("bundled-renderer"), value) ? "image" : null;
 }

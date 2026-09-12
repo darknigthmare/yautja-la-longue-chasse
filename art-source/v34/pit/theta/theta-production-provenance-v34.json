@@ -1,0 +1,4851 @@
+{
+  "schemaVersion": 1,
+  "id": "theta-production-v34",
+  "fighterId": "theta",
+  "checkedAt": "2026-09-12T22:45:13.083Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/assets/v28/sprite-review/theta-blade-guard.png",
+    "sha256": "27500ff6fbe935c3abb0fe94435e648b8d6ee9730810036d9d926706aa00c8e8",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 12,
+  "generatedPoseSamples": 96,
+  "validatedRuntimeClips": 0,
+  "acceptedSourcePages": 0,
+  "runtimeDrawings": 0,
+  "actionSequencesIncludingFacings": 0,
+  "counts": {
+    "validated": 0,
+    "authoredReview": 8,
+    "rejected": 4
+  },
+  "runtimeLimitations": [
+    "Human fighter is not present in PIT_FIGHTERS; no combat stats, hitboxes, attack timings or playable selection wired.",
+    "Workshop review frames and review timing are not runtime coverage.",
+    "Walking families remain rejected; no false alternating cycle or engine mirror.",
+    "Jump page has four key poses, not complete rise/fall/landing phase clips.",
+    "Forward pose-guide repair rejected for anatomy and facing drift.",
+    "Existing V28 fan-made reference, not a certified1:1 official design. Original gameplay moves are adaptations."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+      "originId": "exec-f1d679ad-e973-4861-83ee-1944711d98de.png",
+      "sha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
+      "bytes": 1832135,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four idle drawings each facing, human hands and single handheld blade coherent. Same gold armor identity. Native Canvas review passed; no combat fighter wired.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1291762,
+        "fringePixels": 16247
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35150,
+          "alpha16Bounds": [
+            143,
+            80,
+            185,
+            384
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "81c5a30c73a2be26f84fcb9ebf17258817a59cd6d466ab5863dd5811fa9e28d9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35482,
+          "alpha16Bounds": [
+            501,
+            78,
+            182,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "d267a8473ce17976f0fbb18f8505d19ca6a9a4143a5e570fc17d704ff71827b4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 34283,
+          "alpha16Bounds": [
+            851,
+            94,
+            186,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "383108f710364170a7ed0093c9137c04fe78de29bd9b7e779b0b403317764dd5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35029,
+          "alpha16Bounds": [
+            1212,
+            81,
+            185,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "f422f30b4f54bf808854de654af1836ec93234793da0c1f9db4577df2ab96927",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35401,
+          "alpha16Bounds": [
+            121,
+            559,
+            189,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "5eab55921a3ace747ae564f17ef5ca3f55d930f9c6cb09c42b690fbc4a715bd5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36042,
+          "alpha16Bounds": [
+            477,
+            554,
+            190,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 228,
+          "pixelDigest": "6290c4dea7792a9e924424475e7590c9eb4fdc2cf5a1d8ede7bbe55ea757aab0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34344,
+          "alpha16Bounds": [
+            849,
+            573,
+            182,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 105,
+          "pixelDigest": "16cd3b1f177a6800743a0c21893b4ac3f8f803ed85000e1eb179bc459b3744a2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35371,
+          "alpha16Bounds": [
+            1204,
+            559,
+            186,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "608e67528049a54b0aee80e3c9609a725e39c2f64dfd891120967e051116fc58",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 0,
+          "rect": [
+            140,
+            77,
+            191,
+            390
+          ],
+          "pivot": [
+            97.5,
+            386
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-0",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 1,
+          "rect": [
+            498,
+            75,
+            188,
+            392
+          ],
+          "pivot": [
+            95,
+            388
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-1",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 2,
+          "rect": [
+            848,
+            91,
+            192,
+            376
+          ],
+          "pivot": [
+            96.5,
+            372
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-2",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.idle",
+          "index": 3,
+          "rect": [
+            1209,
+            78,
+            191,
+            389
+          ],
+          "pivot": [
+            97,
+            385
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-3",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 0,
+          "rect": [
+            118,
+            556,
+            195,
+            391
+          ],
+          "pivot": [
+            94.5,
+            387
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-0",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 1,
+          "rect": [
+            474,
+            551,
+            196,
+            397
+          ],
+          "pivot": [
+            94.5,
+            393
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-1",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 2,
+          "rect": [
+            846,
+            570,
+            188,
+            377
+          ],
+          "pivot": [
+            91.5,
+            373
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-2",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.idle",
+          "index": 3,
+          "rect": [
+            1201,
+            556,
+            192,
+            392
+          ],
+          "pivot": [
+            93.5,
+            388
+          ],
+          "pageId": "theta-idle",
+          "durationTicks": 10,
+          "phase": "breathing-3",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 382,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 382
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.343Z"
+      }
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/theta/theta-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-walk-forward-v34.png",
+      "originId": "exec-a658c66c-9a37-4988-ad84-7392887aae21.png",
+      "sha256": "8d03d8059918d813ff4c674bc09168ff678be8affbd1e20a84e04b2256b40e05",
+      "bytes": 1826653,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward walking repeats same contact/support pattern in1/3 and2/4; blade also overlaps shin in left first pose. Not an alternating cycle.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1305729,
+        "fringePixels": 15714
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35322,
+          "alpha16Bounds": [
+            88,
+            84,
+            245,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 142,
+          "pixelDigest": "d2a4885ce7ad4516597672e01ddfb1b33789dc75254e26a3589eaab12d7d4377",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32704,
+          "alpha16Bounds": [
+            498,
+            84,
+            169,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 243,
+          "pixelDigest": "7681373f3f25c0f7396b53f50761195b764792eb3e061227d54d8994e821f407",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33364,
+          "alpha16Bounds": [
+            838,
+            85,
+            235,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 112,
+          "pixelDigest": "1ea0a63b9172627e4964564a2e6a99e19ebaa15353ebb25c47666f51647d3f7f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32706,
+          "alpha16Bounds": [
+            1237,
+            84,
+            173,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "c512ddc2db7ff0356574bab036b0d720d28e94b20d804e8db5be34d5321d60c9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34165,
+          "alpha16Bounds": [
+            87,
+            564,
+            236,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "12904cedb55bcd730b26602b474fd9731b907435d97672782c5a006db1db3061",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32331,
+          "alpha16Bounds": [
+            502,
+            564,
+            162,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "78278d74c776fb5b7f12b2edc6531c50f58920d3dca52527b9e8cadac175d1d7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 33328,
+          "alpha16Bounds": [
+            832,
+            564,
+            237,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "b28ea8ec28cadbc7ce9c4f9fad5d777ff75eb8829724b3d1bc62f65212c93393",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 33215,
+          "alpha16Bounds": [
+            1237,
+            564,
+            174,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "1c3aa2638bf5acf17cb96538b3b1c0a68c2050756b1ff787565cea03ebf98480",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            85,
+            81,
+            251,
+            387
+          ],
+          "pivot": [
+            125,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            495,
+            81,
+            175,
+            388
+          ],
+          "pivot": [
+            95.5,
+            384
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            835,
+            82,
+            241,
+            387
+          ],
+          "pivot": [
+            120,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            1234,
+            81,
+            179,
+            388
+          ],
+          "pivot": [
+            94,
+            384
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            84,
+            561,
+            242,
+            386
+          ],
+          "pivot": [
+            120.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            499,
+            561,
+            168,
+            386
+          ],
+          "pivot": [
+            83.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            829,
+            561,
+            243,
+            386
+          ],
+          "pivot": [
+            121,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "theta-walk-forward",
+          "rect": [
+            1234,
+            561,
+            180,
+            386
+          ],
+          "pivot": [
+            83.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/theta/theta-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-walk-backward-v34.png",
+      "originId": "exec-5e48945b-d38a-4206-bd26-b09b7c29a1c3.png",
+      "sha256": "308a5c06c06d4859aebad8bc3a0b3874e2c6139be8acf96b7ce9c43a5b94dfc2",
+      "bytes": 1887647,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Backward gait repeats the same supporting/lifted leg, with blade crossing the rear shin. No coherent alternating cycle accepted.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1273138,
+        "fringePixels": 16663
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37898,
+          "alpha16Bounds": [
+            99,
+            82,
+            235,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 155,
+          "pixelDigest": "17a7da6881f0c96d5d67dd5b3a05bf15a452fe139d78b82582b72ff852b25cc9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36492,
+          "alpha16Bounds": [
+            461,
+            81,
+            242,
+            379
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 148,
+          "pixelDigest": "6a6c392a1d34fe85a1a3f9b797309b097408f0577a3ccfecd1bd2631ba54d147",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37284,
+          "alpha16Bounds": [
+            840,
+            82,
+            221,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "999a99a925737a7be2510b22e77dd39b2b6cc82243ac4fb72cebfc9edc9770b5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36733,
+          "alpha16Bounds": [
+            1216,
+            79,
+            227,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "cde64462da87a5fba904bc29114449378a93660ab3786057bd4ed7810fe97b63",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38077,
+          "alpha16Bounds": [
+            93,
+            566,
+            237,
+            378
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "62b491700457896c4f9e894953a9b0461a794c1179b7338c44407c1ec0dc52eb",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37373,
+          "alpha16Bounds": [
+            480,
+            560,
+            234,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "3d4ba47a0d06182a474a5a4884671daa7e35592e068b32e351d7879fb9516704",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38230,
+          "alpha16Bounds": [
+            847,
+            564,
+            224,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "7274d862f6c021063830aa3f6839eb41a7049d5769f5e27261f8731ead5c9404",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37639,
+          "alpha16Bounds": [
+            1222,
+            559,
+            225,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "e56582e0e75a90e5533ce0ac0771f5e0b86897e291825cc876c37f6ed1f57311",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            96,
+            79,
+            241,
+            387
+          ],
+          "pivot": [
+            120,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            458,
+            78,
+            248,
+            385
+          ],
+          "pivot": [
+            206,
+            381
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            837,
+            79,
+            227,
+            387
+          ],
+          "pivot": [
+            113,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            1213,
+            76,
+            233,
+            388
+          ],
+          "pivot": [
+            193.5,
+            384
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            90,
+            563,
+            243,
+            384
+          ],
+          "pivot": [
+            121,
+            380
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            477,
+            557,
+            240,
+            387
+          ],
+          "pivot": [
+            38,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            844,
+            561,
+            230,
+            386
+          ],
+          "pivot": [
+            114.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "theta-walk-backward",
+          "rect": [
+            1219,
+            556,
+            231,
+            387
+          ],
+          "pivot": [
+            39,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+      "originId": "exec-94813e53-dbb5-46c7-a4e0-66ef4c38cf94.png",
+      "sha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
+      "bytes": 1878758,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Coherent standing/half/low kneeling crouch/rise poses and complete hands. Low pose is an asymmetrical crouch with rear knee low, not both-heels squat; first three frames only for entering/holding crouch. Blade overlays shin in perspective but has continuous outline.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1271152,
+        "fringePixels": 16705
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41599,
+          "alpha16Bounds": [
+            116,
+            79,
+            229,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 144,
+          "pixelDigest": "b725bf97659543faad7977663d6ad9ede19d17e8ada6a058c75fa4a0cc1d51ac",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37750,
+          "alpha16Bounds": [
+            480,
+            132,
+            231,
+            336
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "3889a33be1382518e979fda04b5e892e481db6a69b389b2a4e295ff13c517f69",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33551,
+          "alpha16Bounds": [
+            852,
+            196,
+            211,
+            268
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 82,
+          "pixelDigest": "8915924be77b6a1604cfe1ed962587a64ff61b06aabdab481670a7af1dfb8581",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36710,
+          "alpha16Bounds": [
+            1213,
+            135,
+            218,
+            330
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 102,
+          "pixelDigest": "fb43a4678d710360fde797a00dc936c5e1cdfe613cfd2ebfd4f955c17a8a0a48",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42315,
+          "alpha16Bounds": [
+            94,
+            550,
+            238,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 149,
+          "pixelDigest": "c0b537a69cb835e919bfacaab31505927fdc7ccda6aa36477824ab24ece6857e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38398,
+          "alpha16Bounds": [
+            471,
+            598,
+            233,
+            340
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "691db8a7d3b7fd0cb017b5b259440645b1c779ae59ea7648d274a7fa52f40500",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 33450,
+          "alpha16Bounds": [
+            842,
+            669,
+            212,
+            266
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 152,
+          "pixelDigest": "6e1b011a5e53fff075730f9013ab7fb06195bc0041c43eb54c224384cfe34a32",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37939,
+          "alpha16Bounds": [
+            1205,
+            598,
+            223,
+            337
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "b16c0f1d6e5529d73bdf6ee3cf1caa1165b6f31d0196b162e00bb116e3a624ff",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 0,
+          "rect": [
+            113,
+            76,
+            235,
+            395
+          ],
+          "pivot": [
+            118.5,
+            391
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 2,
+          "phase": "entry",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 1,
+          "rect": [
+            477,
+            129,
+            237,
+            342
+          ],
+          "pivot": [
+            118,
+            338
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 2,
+          "phase": "descending",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.crouch",
+          "index": 2,
+          "rect": [
+            849,
+            193,
+            217,
+            274
+          ],
+          "pivot": [
+            108,
+            270
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 30,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 0,
+          "rect": [
+            91,
+            547,
+            244,
+            395
+          ],
+          "pivot": [
+            119,
+            391
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 2,
+          "phase": "entry",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 1,
+          "rect": [
+            468,
+            595,
+            239,
+            346
+          ],
+          "pivot": [
+            119,
+            342
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 2,
+          "phase": "descending",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.crouch",
+          "index": 2,
+          "rect": [
+            839,
+            666,
+            218,
+            272
+          ],
+          "pivot": [
+            108.5,
+            268
+          ],
+          "pageId": "theta-crouch",
+          "durationTicks": 30,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 387,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 387
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.363Z"
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-jump-land-v34.png",
+      "originId": "exec-31ce49f4-3054-4166-9355-601478f24743.png",
+      "sha256": "d16d67b807a3e65a689d9f5c205ee56bf81e05b5ef099b794ffcddf199102ddf",
+      "bytes": 1835450,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four jump/landing poses; left row source rise/fall reversed, review order0,2,1,3. Blade and two human legs retained. One drawing per phase; not a complete runtime jump atlas.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1299100,
+        "fringePixels": 15117
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 32467,
+          "alpha16Bounds": [
+            142,
+            205,
+            220,
+            269
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 187,
+          "pixelDigest": "580bfe24e420eb7da4dd872f89b516ac4b4e891a79f37795a235bd7e0b7cac1c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35114,
+          "alpha16Bounds": [
+            487,
+            55,
+            221,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 242,
+          "pixelDigest": "979acde8f4b13bff5e86c94e69cd53c783d6a213782764549706fbb464d0e98f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 34804,
+          "alpha16Bounds": [
+            829,
+            81,
+            216,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 3,
+          "pixelDigest": "efc06f5f9fd8bd0395255c052dda760a85ce63eab6f7c84d4308f4e9209f9815",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 34114,
+          "alpha16Bounds": [
+            1185,
+            194,
+            215,
+            282
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 140,
+          "pixelDigest": "f719b56b9da1a70379ecc7373b3a7b31e7bc679a7857d2dfa598a324cf6a2e67",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34265,
+          "alpha16Bounds": [
+            128,
+            675,
+            222,
+            283
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "3769093dda0f314bb9ccbfdc3819c1acee9a4fd20a348764897a443d4e3837bf",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35206,
+          "alpha16Bounds": [
+            488,
+            560,
+            218,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 205,
+          "pixelDigest": "865aa1d239764ab862fc1e00637da12889ebeb8624ab0dafccf5048c323e8d5b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35077,
+          "alpha16Bounds": [
+            826,
+            536,
+            220,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 254,
+          "pixelDigest": "20683e0350c6802ef269538883b9c43e19463ff5607fdc767cce637da8e7abb3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 32717,
+          "alpha16Bounds": [
+            1176,
+            684,
+            217,
+            273
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 232,
+          "pixelDigest": "65e18b5427ac0ce168b5de4145911bd33c3223d66f1c2ce58eaeb3f8da8f3cc1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "rect": [
+            139,
+            202,
+            226,
+            275
+          ],
+          "pivot": [
+            107,
+            271
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 5,
+          "phase": "launch",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "rect": [
+            484,
+            52,
+            227,
+            358
+          ],
+          "pivot": [
+            99,
+            354
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 4,
+          "phase": "rise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "rect": [
+            826,
+            78,
+            222,
+            391
+          ],
+          "pivot": [
+            172,
+            387
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 6,
+          "phase": "fall",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "rect": [
+            1182,
+            191,
+            221,
+            288
+          ],
+          "pivot": [
+            108.5,
+            284
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 7,
+          "phase": "landing",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "rect": [
+            125,
+            672,
+            228,
+            289
+          ],
+          "pivot": [
+            117.5,
+            285
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 5,
+          "phase": "launch",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "rect": [
+            823,
+            533,
+            226,
+            358
+          ],
+          "pivot": [
+            126.5,
+            354
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 4,
+          "phase": "rise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "rect": [
+            485,
+            557,
+            224,
+            393
+          ],
+          "pivot": [
+            50.5,
+            389
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 6,
+          "phase": "fall",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "rect": [
+            1173,
+            681,
+            223,
+            279
+          ],
+          "pivot": [
+            115,
+            275
+          ],
+          "pageId": "theta-jump-land",
+          "durationTicks": 7,
+          "phase": "landing",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 384,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 384
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.374Z"
+      }
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+      "originId": "exec-b1a38484-49fd-46ff-ba00-7e01e2d3a6c1.png",
+      "sha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
+      "bytes": 1754269,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1339853,
+        "fringePixels": 14949
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right sword hand raises from hip",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 30623,
+          "alpha16Bounds": [
+            137,
+            120,
+            192,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "61c1fc588b58c2d50c8701eb2afdbe456e829ed96b73d4ce4557c1812f7e6672",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "single blade held diagonal upward in front of chest, left fist near cheek",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 28553,
+          "alpha16Bounds": [
+            488,
+            125,
+            217,
+            337
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 25,
+          "pixelDigest": "9d16a48efe490a9bdf204632cf9ce77c5246de518e8ec0976e4c43675e38deaf",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "knees flex behind blade guard",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 28472,
+          "alpha16Bounds": [
+            840,
+            120,
+            200,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 3,
+          "pixelDigest": "e738b1651234b007b34f5289e1f9aaf05cc080d440f2070daf4eed9485a25b6e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled protective blade guard",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 28674,
+          "alpha16Bounds": [
+            1199,
+            111,
+            204,
+            351
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 32,
+          "pixelDigest": "54f461eeed28fd5c83d36988c32aa04153699ca6a0006cea2cba85fe1e45484c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right sword hand raises from hip",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 30669,
+          "alpha16Bounds": [
+            138,
+            570,
+            196,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "cbde7ea5a2e304489a206482437bbae1b72450ec84e4cc3a8d2e72c420f59c71",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "single blade held diagonal upward in front of chest, left fist near cheek",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 28701,
+          "alpha16Bounds": [
+            482,
+            572,
+            215,
+            340
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "bdeeacac1e927d1fa090184038d614af274a004f124a2abc6d7985d83f3d91d6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "knees flex behind blade guard",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 28313,
+          "alpha16Bounds": [
+            853,
+            573,
+            195,
+            338
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "f6bd206e400351041bd9cf607ce7288436e04dfdd600a1e58606136dbaf4182a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled protective blade guard",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 29006,
+          "alpha16Bounds": [
+            1214,
+            559,
+            195,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "452215b1b2e3c446e791f0b23b395fb891ee65bc0a2532b9c9d3b328d511ada8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "rect": [
+            134,
+            117,
+            198,
+            348
+          ],
+          "pivot": [
+            98.5,
+            344
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "raise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "rect": [
+            485,
+            122,
+            223,
+            343
+          ],
+          "pivot": [
+            100,
+            339
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "brace",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "rect": [
+            837,
+            117,
+            206,
+            348
+          ],
+          "pivot": [
+            99.5,
+            344
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "absorb",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "rect": [
+            1196,
+            108,
+            210,
+            357
+          ],
+          "pivot": [
+            99.5,
+            353
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 6,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "rect": [
+            135,
+            567,
+            202,
+            348
+          ],
+          "pivot": [
+            100.5,
+            344
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "raise",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "rect": [
+            479,
+            569,
+            221,
+            346
+          ],
+          "pivot": [
+            120,
+            342
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "brace",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "rect": [
+            850,
+            570,
+            201,
+            344
+          ],
+          "pivot": [
+            100.5,
+            340
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 3,
+          "phase": "absorb",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "rect": [
+            1211,
+            556,
+            201,
+            358
+          ],
+          "pivot": [
+            101,
+            354
+          ],
+          "pageId": "theta-guard",
+          "durationTicks": 6,
+          "phase": "held",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 340,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 340
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.381Z"
+      }
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+      "originId": "exec-ca475821-318b-4e25-b081-8b925a9d5fa6.png",
+      "sha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
+      "bytes": 1962544,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four coherent recoil drawings with stable handheld blade and armor; source neutral/small/large/neutral uses reviewed order0,2,1,3 for impact then recovery. Both facings independent.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1235682,
+        "fringePixels": 17303
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42750,
+          "alpha16Bounds": [
+            119,
+            58,
+            217,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "abdc20b9ade44d7e812c71a8ab0c4ba300a16efc32d97a3acc02709864fd85f6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40354,
+          "alpha16Bounds": [
+            485,
+            76,
+            230,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 150,
+          "pixelDigest": "4c5af5b26bf7860fbf5587f5b6f24e2b9d97ab84539f98a498fb51dcfba9a47a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41155,
+          "alpha16Bounds": [
+            823,
+            87,
+            252,
+            375
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "aef457fa2f454a35b0d91ee7e8720d4386c4d917fa51c3c19a3fe1ad00a856b3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41996,
+          "alpha16Bounds": [
+            1203,
+            57,
+            215,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "5d15b5bc679ebba745ee0151d322b3b20ea60ac612c175951901739740aea337",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43787,
+          "alpha16Bounds": [
+            106,
+            533,
+            231,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 153,
+          "pixelDigest": "c4ac7d6748cb6c4ae73b830278107c6fa1f71448e1c8090e7c6cbe04865f24f1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41745,
+          "alpha16Bounds": [
+            463,
+            544,
+            239,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "41eaa4f8c34c7a82d7db93473af3a341ecf70d8faf5d9fe7515cf2392411dcb3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41645,
+          "alpha16Bounds": [
+            808,
+            558,
+            243,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 169,
+          "pixelDigest": "c11f715d914aadc3b71f4f770edb23c671b991cdd12baa3a9a4e3545af1702b9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43750,
+          "alpha16Bounds": [
+            1198,
+            534,
+            227,
+            413
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "f8e34069dd42fff66fcd285313f044b4f1bab3d107b5a95a9203f033018851f5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 0,
+          "rect": [
+            116,
+            55,
+            223,
+            411
+          ],
+          "pivot": [
+            112.5,
+            407
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 2,
+          "phase": "small-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 1,
+          "rect": [
+            820,
+            84,
+            258,
+            381
+          ],
+          "pivot": [
+            141.5,
+            377
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "maximum-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 2,
+          "rect": [
+            482,
+            73,
+            236,
+            393
+          ],
+          "pivot": [
+            122,
+            389
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "settling",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 3,
+          "rect": [
+            1200,
+            54,
+            221,
+            413
+          ],
+          "pivot": [
+            111,
+            409
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 0,
+          "rect": [
+            103,
+            530,
+            237,
+            417
+          ],
+          "pivot": [
+            117,
+            413
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 2,
+          "phase": "small-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 1,
+          "rect": [
+            805,
+            555,
+            249,
+            392
+          ],
+          "pivot": [
+            115,
+            388
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "maximum-recoil",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 2,
+          "rect": [
+            460,
+            541,
+            245,
+            406
+          ],
+          "pivot": [
+            115.5,
+            402
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "settling",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 3,
+          "rect": [
+            1195,
+            531,
+            233,
+            419
+          ],
+          "pivot": [
+            112.5,
+            415
+          ],
+          "pageId": "theta-hurt",
+          "durationTicks": 3,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 406,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 406
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.390Z"
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+      "originId": "exec-e89cfaf6-d364-4421-94b6-223f4f9474b2.png",
+      "sha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
+      "bytes": 1813757,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four compact sword-thrust stages per facing with visible right-hand handle. Off-hand is partly occluded behind the extended arm during contact; no extra hand detected. Explicit occupied-span rectangles used for contact over grid boundary.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1302608,
+        "fringePixels": 16128
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right elbow pulls blade back slightly beside hip",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33999,
+          "alpha16Bounds": [
+            90,
+            95,
+            234,
+            350
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "9dad7bcafeaf2fa5a333025a07e5e7b42ae478d2f279189d90eb54acdcfd1185",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "short forward horizontal blade thrust at waist height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 31768,
+          "alpha16Bounds": [
+            433,
+            105,
+            335,
+            340
+          ],
+          "gridBorderPixels": 22,
+          "residualMagentaPixels": 12,
+          "pixelDigest": "0991a581c22ff84d685dd60251635aa1f91254a2818b3297f0796d771c2a13fd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right hand retracts blade halfway",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33820,
+          "alpha16Bounds": [
+            768,
+            103,
+            325,
+            342
+          ],
+          "gridBorderPixels": 22,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "a16c174121d6efd6f89c40aeeaa30cbf453d4a2714c43b6a0d93d3617ddad8ff",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance blade lowered",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 33521,
+          "alpha16Bounds": [
+            1221,
+            94,
+            220,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "756f2de7475b82219c80ea581f8cf76c918139d7dff42c2be88a6e4482238cf9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right elbow pulls blade back slightly beside hip",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34687,
+          "alpha16Bounds": [
+            102,
+            560,
+            235,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "35cff4fcdb4807997d35a54949c44b1e145d523a2e9d281edae949567b4553ad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "short forward horizontal blade thrust at waist height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 33770,
+          "alpha16Bounds": [
+            384,
+            565,
+            379,
+            349
+          ],
+          "gridBorderPixels": 2,
+          "residualMagentaPixels": 2,
+          "pixelDigest": "40b59c303c30b85162d407d4782464eb9d4547e67851bdf600a04beaaa6ce116",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right hand retracts blade halfway",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 33893,
+          "alpha16Bounds": [
+            861,
+            565,
+            245,
+            349
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "1557a3eb497ce5c92791f96c9adb71e408d364cc16c537dafa87734f087f93d4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance blade lowered",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 34798,
+          "alpha16Bounds": [
+            1224,
+            556,
+            227,
+            358
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "68bfc2be7d87a37f989e99aa3ca77ce40071c06c5a0efdcc2844092799ca7315",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "rect": [
+            87,
+            92,
+            240,
+            356
+          ],
+          "pivot": [
+            123,
+            352
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "rect": [
+            430,
+            102,
+            389,
+            346
+          ],
+          "pivot": [
+            128.5,
+            342
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "rect": [
+            854,
+            100,
+            242,
+            348
+          ],
+          "pivot": [
+            120.5,
+            344
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "rect": [
+            1218,
+            91,
+            226,
+            358
+          ],
+          "pivot": [
+            112.5,
+            354
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "rect": [
+            99,
+            557,
+            241,
+            360
+          ],
+          "pivot": [
+            120,
+            356
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "rect": [
+            381,
+            562,
+            385,
+            355
+          ],
+          "pivot": [
+            253,
+            351
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "rect": [
+            858,
+            562,
+            251,
+            355
+          ],
+          "pivot": [
+            125,
+            351
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "rect": [
+            1221,
+            553,
+            233,
+            364
+          ],
+          "pivot": [
+            116,
+            360
+          ],
+          "pageId": "theta-light",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 346,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 346
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.398Z"
+      }
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+      "originId": "exec-b556e0df-f081-4932-bbf8-0769655d6740.png",
+      "sha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
+      "bytes": 1903373,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1265544,
+        "fringePixels": 17310
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right sword hand draws back at right hip",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40776,
+          "alpha16Bounds": [
+            67,
+            91,
+            284,
+            367
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 23,
+          "pixelDigest": "bd497ed8674b2b7d7afcec05404be01d3ee56c185b767e9f9d58a81b080c4d3f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "horizontal medium sword sweep extending toward opponent at ribs",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35341,
+          "alpha16Bounds": [
+            457,
+            90,
+            311,
+            368
+          ],
+          "gridBorderPixels": 23,
+          "residualMagentaPixels": 2,
+          "pixelDigest": "2f2cfd359531386b6f9685832826790b30c2fcd4dbf009167163013e3c4d7da0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right elbow folds back with blade across waist",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40453,
+          "alpha16Bounds": [
+            768,
+            87,
+            326,
+            371
+          ],
+          "gridBorderPixels": 23,
+          "residualMagentaPixels": 63,
+          "pixelDigest": "ede2ced4ded5aa56a5fce665e69b2e96930bc2a4d458c95fb32cc8c3201b23ae",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral low blade stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37177,
+          "alpha16Bounds": [
+            1237,
+            88,
+            225,
+            371
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 162,
+          "pixelDigest": "5b917960f4fa7d27d2c271ab98b6bd206a8b69b274febcc67bb865e629541cb1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right sword hand draws back at right hip",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40113,
+          "alpha16Bounds": [
+            91,
+            578,
+            279,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 34,
+          "pixelDigest": "2e42549d8dbcc0693158713bfc741e56567eaed4e0929fbcb41034d627ebfb46",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "horizontal medium sword sweep extending toward opponent at ribs",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36269,
+          "alpha16Bounds": [
+            406,
+            578,
+            350,
+            367
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "bd26a37f63659225f51bd129029039285c9f564443d8fe1fcc19679b64d66f5a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right elbow folds back with blade across waist",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39402,
+          "alpha16Bounds": [
+            848,
+            576,
+            251,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 48,
+          "pixelDigest": "f0d25a7f46a239229a8dca4f8bec897638571ecd20c5eba3e28f0fed834dc5e6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral low blade stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37789,
+          "alpha16Bounds": [
+            1219,
+            575,
+            232,
+            372
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 186,
+          "pixelDigest": "530ea326aa732d75c17c3b8efa2db57417abb6028b96c46accfe9499794e5131",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 0,
+          "rect": [
+            64,
+            88,
+            290,
+            373
+          ],
+          "pivot": [
+            157.5,
+            369
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 1,
+          "rect": [
+            454,
+            87,
+            362,
+            374
+          ],
+          "pivot": [
+            132.5,
+            370
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 2,
+          "rect": [
+            840,
+            84,
+            257,
+            377
+          ],
+          "pivot": [
+            126,
+            373
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 3,
+          "rect": [
+            1234,
+            85,
+            231,
+            377
+          ],
+          "pivot": [
+            115,
+            373
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "rect": [
+            88,
+            575,
+            285,
+            374
+          ],
+          "pivot": [
+            132,
+            370
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "rect": [
+            403,
+            575,
+            356,
+            373
+          ],
+          "pivot": [
+            222.5,
+            369
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "rect": [
+            845,
+            573,
+            257,
+            376
+          ],
+          "pivot": [
+            128,
+            372
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "rect": [
+            1216,
+            572,
+            238,
+            378
+          ],
+          "pivot": [
+            118.5,
+            374
+          ],
+          "pageId": "theta-medium",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 367,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 367
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.405Z"
+      }
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/theta/theta-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+      "originId": "exec-f39efddb-92c2-4325-808c-3ac681b969fe.png",
+      "sha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
+      "bytes": 1874521,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four complete heavy diagonal sword stages each facing with both hands visible and coherent hilt. Bottom active sword begins above nominal512 row boundary; explicit row split485 used, never fixed-grid cropping.",
+        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1283482,
+        "fringePixels": 18477
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "low loaded stance with right blade hand drawn back",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            485
+          ],
+          "visiblePixels": 39703,
+          "alpha16Bounds": [
+            60,
+            129,
+            288,
+            341
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "6834f79d9f1b087caa076e51f8aa6c0be7e5026fd3ee3affa4fe70385fd364c6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "heavy diagonal upward sword sweep from hip toward opponent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            485
+          ],
+          "visiblePixels": 35784,
+          "alpha16Bounds": [
+            465,
+            30,
+            303,
+            439
+          ],
+          "gridBorderPixels": 41,
+          "residualMagentaPixels": 2,
+          "pixelDigest": "d228aa9e4a900647e81100b776e61efd263925bbe4024d30337e354d5d48ca62",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right elbow retracts and torso settles",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            485
+          ],
+          "visiblePixels": 34459,
+          "alpha16Bounds": [
+            768,
+            29,
+            317,
+            440
+          ],
+          "gridBorderPixels": 40,
+          "residualMagentaPixels": 0,
+          "pixelDigest": "c60fbe376cbc953e2685dc224f15437c32a5228f15852b499bc3e2a670a19304",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral low sword stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            485
+          ],
+          "visiblePixels": 35469,
+          "alpha16Bounds": [
+            1232,
+            121,
+            222,
+            348
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "5152b9cdab10106dcdec7415fa5350a1ab585a2af8fc0e08789df595cb4d8721",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "low loaded stance with right blade hand drawn back",
+          "reviewGridRect": [
+            0,
+            485,
+            384,
+            539
+          ],
+          "visiblePixels": 38471,
+          "alpha16Bounds": [
+            97,
+            599,
+            284,
+            338
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 2,
+          "pixelDigest": "caba4fffc66fbd010a8b0a945903f130d675ab4aa06c8ce48dcd7f0ffeac7542",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "heavy diagonal upward sword sweep from hip toward opponent",
+          "reviewGridRect": [
+            384,
+            485,
+            384,
+            539
+          ],
+          "visiblePixels": 35460,
+          "alpha16Bounds": [
+            435,
+            502,
+            302,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 1,
+          "pixelDigest": "09241eac3f9bd7057849b709668fb08cb85cca2a5539ce177f685becd2a66011",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right elbow retracts and torso settles",
+          "reviewGridRect": [
+            768,
+            485,
+            384,
+            539
+          ],
+          "visiblePixels": 33975,
+          "alpha16Bounds": [
+            870,
+            591,
+            224,
+            349
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 4,
+          "pixelDigest": "05fbf28a862d6c8a8a96d726a05941e39ff08b6a38211da01838a90828fb3a8f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral low sword stance",
+          "reviewGridRect": [
+            1152,
+            485,
+            384,
+            539
+          ],
+          "visiblePixels": 36061,
+          "alpha16Bounds": [
+            1236,
+            588,
+            219,
+            353
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "9114827cfc5e8662fe01badd59a5dc7344b2cd46eee995898008874130a26fe1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 0,
+          "rect": [
+            57,
+            126,
+            294,
+            347
+          ],
+          "pivot": [
+            151,
+            343
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 1,
+          "rect": [
+            462,
+            26,
+            315,
+            446
+          ],
+          "pivot": [
+            128,
+            442
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 2,
+          "rect": [
+            845,
+            115,
+            243,
+            357
+          ],
+          "pivot": [
+            117.5,
+            353
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.heavy",
+          "index": 3,
+          "rect": [
+            1229,
+            118,
+            228,
+            354
+          ],
+          "pivot": [
+            113.5,
+            350
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 0,
+          "rect": [
+            94,
+            596,
+            290,
+            344
+          ],
+          "pivot": [
+            136,
+            340
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 5,
+          "phase": "startup",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 1,
+          "rect": [
+            432,
+            499,
+            308,
+            440
+          ],
+          "pivot": [
+            185,
+            436
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 4,
+          "phase": "contact",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 2,
+          "rect": [
+            867,
+            588,
+            230,
+            355
+          ],
+          "pivot": [
+            114.5,
+            351
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 6,
+          "phase": "recovery",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.heavy",
+          "index": 3,
+          "rect": [
+            1233,
+            585,
+            225,
+            359
+          ],
+          "pivot": [
+            112,
+            355
+          ],
+          "pageId": "theta-heavy",
+          "durationTicks": 7,
+          "phase": "neutral",
+          "reviewFrameAccepted": true,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "bodyHeightPx": 346,
+      "reviewPlayback": {
+        "scope": "Workshop preview only. Timings are review cadence, not a combat contract.",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "noMirror": true,
+        "bodyHeightPx": 346
+      },
+      "acceptance": {
+        "scope": "Only listed workshop reviewFrames, not combat runtime.",
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "reviewedAt": "2026-09-12T22:50:15.412Z"
+      }
+    },
+    {
+      "id": "repair-walk-forward-poses",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/theta/theta-repair-walk-forward-poses-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-repair-walk-forward-poses-v34.png",
+      "originId": "exec-f8bff3de-8cd1-4a16-8bef-36cb65d4adfd.png",
+      "sha256": "188fbaa9d6757b9f6962414bf365759bbb59040926836414ac7298d9aac360b5",
+      "bytes": 2005534,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Pose-guide repair rejected: both rows face right, and boot toes become claw-like with armor drift. Cross-character pose guide contaminated anatomy; no part accepted.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1210499,
+        "fringePixels": 15900
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48420,
+          "alpha16Bounds": [
+            87,
+            61,
+            260,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 160,
+          "pixelDigest": "07da59ed21bf9327ed7b3479f0b906478d874aa123212dc843d93a38151d056d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43138,
+          "alpha16Bounds": [
+            478,
+            59,
+            227,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 225,
+          "pixelDigest": "971966afea9c10784072d7d344bef9af757ed56b348b63e52ae6c2d1f045889d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46306,
+          "alpha16Bounds": [
+            817,
+            61,
+            258,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 253,
+          "pixelDigest": "5bccf06ad2cbe99027342b3062ce8ce0fb5db18f9a1c26580d432c800e7e96f0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44693,
+          "alpha16Bounds": [
+            1208,
+            57,
+            227,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 221,
+          "pixelDigest": "0d76bad4404560c1b5b79c66ac16a9db34293c558d6e2efb446d1f9cefaf579e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47413,
+          "alpha16Bounds": [
+            88,
+            537,
+            278,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 175,
+          "pixelDigest": "1c0a0831838079707635666bc9effb62ec9bd808a69f8ea1913eabb622e7900c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42719,
+          "alpha16Bounds": [
+            455,
+            535,
+            233,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 229,
+          "pixelDigest": "343d9f6da8c43cac7376dfdaa9e17767c24d6b883bf44e371ee1b8f4073af941",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46352,
+          "alpha16Bounds": [
+            814,
+            538,
+            269,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 232,
+          "pixelDigest": "f9769f2a419e302e620fbfb51f75c23e285d5597a5a0fdfbb03e672e0ab4f5f1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43324,
+          "alpha16Bounds": [
+            1194,
+            536,
+            227,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 321,
+          "pixelDigest": "9f3a3009f55eb302aa541c347d25414b52cfeab8930c1cb4d64ad28e48569c6e",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            84,
+            58,
+            266,
+            414
+          ],
+          "pivot": [
+            128.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            475,
+            56,
+            233,
+            417
+          ],
+          "pivot": [
+            152.5,
+            413
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            814,
+            58,
+            264,
+            415
+          ],
+          "pivot": [
+            135.5,
+            411
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            1205,
+            54,
+            233,
+            420
+          ],
+          "pivot": [
+            108.5,
+            416
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            85,
+            534,
+            284,
+            422
+          ],
+          "pivot": [
+            144,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            452,
+            532,
+            239,
+            424
+          ],
+          "pivot": [
+            185,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            811,
+            535,
+            275,
+            422
+          ],
+          "pivot": [
+            144.5,
+            418
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "theta-repair-walk-forward-poses",
+          "rect": [
+            1191,
+            533,
+            233,
+            424
+          ],
+          "pivot": [
+            158,
+            420
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "poseReferencePath": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png"
+    },
+    {
+      "id": "repair-walk-backward-legs",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/theta/theta-repair-walk-backward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/theta/theta-repair-walk-backward-legs-v34.png",
+      "originId": "exec-ec83d312-44ae-4bbf-834e-b5de9fa26976.png",
+      "sha256": "a46c1b56edf0ce8337ba56f2c41df15cd1e177710ed246950a3879cdc3aec806",
+      "bytes": 1836943,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Leg silhouettes changed but rear lifted shin remains intersected/obscured by blade; thigh/tabard overlap also differs substantially in3/4. Not approved as a clean backward cycle.",
+        "Excluded from approved workshop phase playback; original source retained for inspection."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1276864,
+        "fringePixels": 14528
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38081,
+          "alpha16Bounds": [
+            99,
+            82,
+            235,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "f58ea5126123a47b8f0699a482f708a18c7a7a75dc9cd77452c741fa719d2185",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36649,
+          "alpha16Bounds": [
+            461,
+            81,
+            242,
+            379
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "5a2517ecc88eeb25ed869f91a0dd03c3599d74394f46ee9c68e02d698139726f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36895,
+          "alpha16Bounds": [
+            841,
+            81,
+            242,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 149,
+          "pixelDigest": "43c140eaf11d7486efc07e2af758474fe73838d7712e3b1519c0bb24d1a33192",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35384,
+          "alpha16Bounds": [
+            1217,
+            79,
+            226,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 323,
+          "pixelDigest": "83d87dedf26487ed438b6f48bf01e825691996c8af7b18a2113596a3174b6b20",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38259,
+          "alpha16Bounds": [
+            94,
+            566,
+            237,
+            378
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "bde7899a89a855615082a0009ba292f512c1f94f08134f08e1c715262f81899a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37505,
+          "alpha16Bounds": [
+            479,
+            559,
+            236,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "36a6eb4cacc319adae9c140df7b369976691f8bd6a279f467817d03280acbda2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36788,
+          "alpha16Bounds": [
+            829,
+            563,
+            248,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "e09ecf1b9924e1219d2ad17623fd3d7ad0b5e1d90f133d645074ffec9d1ef423",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36439,
+          "alpha16Bounds": [
+            1223,
+            559,
+            226,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 281,
+          "pixelDigest": "19819faceb79cd0264977dfa0f3f07ba09bc539a3134a28d93c78d80b6210156",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            96,
+            79,
+            241,
+            387
+          ],
+          "pivot": [
+            120,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            458,
+            78,
+            248,
+            385
+          ],
+          "pivot": [
+            206.5,
+            381
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            838,
+            78,
+            248,
+            395
+          ],
+          "pivot": [
+            131,
+            391
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            1214,
+            76,
+            232,
+            395
+          ],
+          "pivot": [
+            163,
+            391
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            91,
+            563,
+            243,
+            384
+          ],
+          "pivot": [
+            121,
+            380
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            476,
+            556,
+            242,
+            389
+          ],
+          "pivot": [
+            39,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            826,
+            560,
+            254,
+            387
+          ],
+          "pivot": [
+            119.5,
+            383
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "theta-repair-walk-backward-legs",
+          "rect": [
+            1220,
+            556,
+            232,
+            396
+          ],
+          "pivot": [
+            64.5,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "species": "human",
+      "family": "humans-in-yautja-armor"
+    }
+  ],
+  "variantId": "marvel-2023-gold-armor-unmasked",
+  "species": "human",
+  "family": "humans-in-yautja-armor",
+  "initialFamiliesProduced": 10,
+  "targetedRepairSheets": 2,
+  "reviewedSourcePages": 8,
+  "reviewedDrawings": 62,
+  "reviewedSequencesIncludingFacings": 16,
+  "nativeContrastReview": {
+    "captures": 124,
+    "bodyHeightPx": 120,
+    "devicePixelRatio": 1,
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 20,
+    "method": "Real prepareHunterSpriteAtlasPage and drawHunterSpriteAtlasFrame in Chrome; no source editing."
+  }
+}

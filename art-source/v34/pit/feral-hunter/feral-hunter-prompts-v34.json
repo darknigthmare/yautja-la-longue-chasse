@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "feral-hunter",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: idle. Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep.\n\nFOUR stages per row: 1: neutral alert; 2: inhale shoulders slightly raised; 3: exhale relaxed knees; 4: return toward neutral\n\nShield stays FOLDED compact on LEFT wrist for all idle poses. Exactly8, not6. RIGHT-facing top4 and LEFT-facing bottom4. Complete two empty hands visible.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "8distinct idle poses; bone mask, bare body, folded left shield and2right wrist blades consistent. Candidate after transparency/pivot/native QA."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "originId": "exec-ca1495de-78fe-4627-8d50-67dff4cd71b6.png",
+      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
+      "bytes": 2100765,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION forward walk, four ANIMATED GAIT KEYFRAMES, not static fighting stances. STRICT PROFILE legs; camera-near leg brighter copper, far leg slightly shadowed. Column1 BRIGHT NEAR LEG stretched FORWARD heel contact, DARK FAR LEG stretched backward. Column2 BRIGHT NEAR LEG planted vertically supporting, DARK FAR KNEE lifted passing forward. Column3 DARK FAR LEG stretched FORWARD heel contact, BRIGHT NEAR LEG stretched BACKWARD; front/back limbs must SWITCH. Column4 DARK FAR LEG planted supporting, BRIGHT NEAR KNEE lifted passing forward. Ground feet at equal baseline. Shield folded, empty hands relaxed, two right wrist blades. Repeat4kinematicstages facingLEFT bottom row by redrawing opposite profile. Exactly8drawings. Priority leg alternation and anatomy over small texture details.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "rejected",
+      "notes": [
+        "Forward walk repeats the same contact and lifted knee in columns1/3 and2/4; shield also partially opens contrary to folded intent. Not a real alternating gait."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-walk-forward-v34.png",
+      "originId": "exec-d09576bf-80a7-4c65-be96-99edb71d3f58.png",
+      "sha256": "ee6070227cbd64089d0fd4a7861a75f6bb04a45dc78038a506732d2e2e23c588",
+      "bytes": 2078534,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nBACKWARD RETREAT LOOP. Exactly4distinct stages each facing. Stage1 RIGHT foot reaches BACKWARD toes touching, LEFT foot forward. Stage2 RIGHT foot supports vertically under hip, LEFT foot lifts and pulls back. Stage3 LEFT foot reaches BACKWARD toes touching, RIGHT foot now forward. Stage4 LEFT foot supports vertically, RIGHT foot lifts and pulls back. Important opposite legs alternate; DO NOT repeat stage1 as3 or2 as4. Full bare legs make joints visible. LEFT SHIELD FULLY FOLDED CLOSED against gauntlet throughout, no fan segments sticking out. Empty hands low guard,2right wrist blades attached. TOP4faceRIGHT BOTTOM4faceLEFT. Same scale, clear pose separation.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Passing phases2/4 now use visibly opposite support legs and shield remains folded. Contact phases1/3 still repeat near-leg rear position; targeted column3 correction required."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-walk-backward-v34.png",
+      "originId": "exec-e2a2cdd0-1b3a-4d00-82d3-ddc59c50e000.png",
+      "sha256": "d72d1f55e1ef260a18bbde0024c9fc13eac7c9b48db99372e777c5a900a8e11b",
+      "bytes": 2083323,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale.\n\nEach row4stages: standing combat stance; half squat descending; deep stable crouch with both heels grounded; half squat rising\n\nLEFT shield stays completely FOLDED flat on gauntlet. Two RIGHT wrist blades point safely away from knee. Hands empty, complete fingers separate, no hand fused to knee. Both feet grounded. TOP4RIGHT BOTTOM4LEFT, exactly8drawings.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Crouch depth and grounded feet coherent; shield is consistently partly deployed rather than fully folded requested. Right hand partly occluded by own gauntlet in deep pose; inspect at native scale before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "originId": "exec-20ea605f-66c2-4e64-84ac-0effc93c00ef.png",
+      "sha256": "b4d325c71e9ff6b8b799f4b7d3681b40dc1fb58db759cd51fc0ae51c92ff88f3",
+      "bytes": 2112400,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate.\n\nFour stages each row: deep launch crouch; airborne rising knees bent; falling feet extending downward; landing crouch absorbing impact\n\nTOP4FACE RIGHT, BOTTOM4FACE LEFT, exactly8sprites. Shield remains COMPACT FOLDED. Empty hands and complete feet, wrist blades attached2. The two airborne stages must show different leg configurations for rise versus descent. Body same scale, no VFX.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Launch/rise/fall/landing distinct with complete extremities. Shield partly deployed contrary to folded prompt; sample4phases per facing still lack full engine jump phase coverage."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-jump-land-v34.png",
+      "originId": "exec-b92b9756-6b4e-46fc-9afb-eb54f802da21.png",
+      "sha256": "fc0b9e7d2db210ea659cb39f741a41c2d17b7bf4db6f3fffbff4e07ca865e9a5",
+      "bytes": 2054359,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: LEFT WRIST SHIELD HIGH GUARD. Four stages per row: LEFT forearm raises, bronze shield starts folded compact; shield half-deployed fan at left forearm, right empty fist lowered visible; shield fully deployed circular segmented disk, knees bend to absorb; settled full shield high guard, right fist still visible\n\nShield is gauntlet-mounted bronze segmented fan from reference, hinged to LEFT forearm, not held like a hand-grip prop. Right empty fist at waist BELOW TWO mounted right wrist blades and far away from shield. Mask/face must remain visible beside shield. Top4FACE RIGHT bottom4FACE LEFT. Final shield stays open held, not retracting. Exactly8independent drawings.",
+      "phase": [
+        "LEFT forearm raises, bronze shield starts folded compact",
+        "shield half-deployed fan at left forearm, right empty fist lowered visible",
+        "shield fully deployed circular segmented disk, knees bend to absorb",
+        "settled full shield high guard, right fist still visible"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four clear shield deployment stages ending full open, right fist and2blades readable. Full deployment occurs stage4 rather than3; timing must reflect observed artwork. Candidate high guard both facings."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "originId": "exec-0b0e79be-42c8-402b-9117-954ba94f5aef.png",
+      "sha256": "e9ff3cd206cdb3751bcad44ae116f8c9b9fc0ecc528a7fd75917dd4293226806",
+      "bytes": 2236911,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent.\n\nEach row4stages: small torso recoil from chest hit; larger backward torso lean, knees bent; recover torso upright with protective arms; return to neutral stance\n\nShield FOLDED compact on left forearm throughout. Right2wrist blades fixed; both empty hands clearly drawn without fusing fingers or arms. No blood, no VFX, no second character.8drawings top4RIGHT bottom4LEFT.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four readable recoil/recovery drawings per facing with complete hands. Shield partially deployed during recoil then folded in neutral; document observed transition rather than claim constant folded shield."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "originId": "exec-f337868f-0ae2-49ab-a33a-7fe1641253fe.png",
+      "sha256": "779612a2564d8823582d2ff12f8f969947f33b8212113107c3bbef0907a14e0b",
+      "bytes": 2056250,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Fast short wrist blade jab. Mounted blade assembly physically attached to right gauntlet. EMPTY clenched right fist visible below blades; no handheld weapon.\n\nFour stages each row: short right forearm retract startup; short forward right wrist-blade jab contact; right forearm retracts halfway; neutral combat stance\n\nATTACK PRIORITY: empty RIGHT fist visibly protrudes below TWO short parallel mounted blades. No handheld sword, no detachedblade, no missing fist. Left shield compact folded. Each sprite including attack silhouette fits280px width and350px height centered in384x512cell, with52px empty magenta margins. Top4RIGHT bottom4LEFT; exactly8drawings.",
+      "phase": [
+        "short right forearm retract startup",
+        "short forward right wrist-blade jab contact",
+        "right forearm retracts halfway",
+        "neutral combat stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Light thrust contact has visible empty fist and2short wrist blades, complete startup/contact/recovery/neutral. Half-deployed left shield stays consistent; use measured rectangles because contact crosses nominal cell boundary."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "originId": "exec-07a2bf20-27aa-4eaf-8008-868e4ede8e93.png",
+      "sha256": "35a34210df4018ab0b6140f1985e1144a90a652e5fb96e6742a5ef6aeb7324fb",
+      "bytes": 2107382,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Medium reaching wrist blade thrust. No sword, no detached blades, no extra equipment. Right fist visibly empty beneath mounted blades.\n\nFour stages per row: right elbow draws back at waist; right forearm extends horizontally to opponent at chest height; right forearm retracts to ribs; neutral stance\n\nStrong wrist anatomy: right EMPTY FIST visibly beyond gauntlet with knuckles below TWO short parallel dorsal wrist blades. Blades never handheld or replacing hand. Left shield partly deployed same small fan for all4poses is allowed. Keep4stages meaningful medium reaching lunge with bent front knee at contact. All8 complete with60px gutters, body250px tall uniform. Top4RIGHT bottom4LEFT.",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Medium lunge stages keep fist/gauntlet continuity and2short mounted blades. Empty fists are visible in startup/contact/recovery, shield stable half-deployed; candidate both facings."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-medium-v34.png",
+      "originId": "exec-c97bfef5-3f7a-488c-887f-35626187147d.png",
+      "sha256": "31092a483e487a309680f1fcbfa2c9867b432436317559179d38c571285b5f7f",
+      "bytes": 2140230,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\n\nFERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.\n\nACTION: Heavy low diagonal mounted wrist blade attack, not overhead. Right empty fist remains visibly connected to the forearm; blades follow gauntlet axis. No motion trails or effects.\n\nFour stages per row: low loaded diagonal right arm drawn back at hip; right forearm drives forward slightly upward in a heavy low diagonal slash; right elbow retracts with body settling; neutral stance\n\nEMPTY RIGHT FIST, wrist and knuckles must remain visibly extending below TWO mounted wrist blades in every stage especially CONTACT. Blades remain short as reference, no spear, no sword handle. Left shield stays half-deployed compact fan. Heavy move uses stronger torso rotation and knee flexion, never overhead or broken wrist. Body250px tall with large margins. All8complete top4RIGHT bottom4LEFT.",
+      "phase": [
+        "low loaded diagonal right arm drawn back at hip",
+        "right forearm drives forward slightly upward in a heavy low diagonal slash",
+        "right elbow retracts with body settling",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Heavy low slash retains complete empty clawed hands below two mounted blades; hand is open rather than requested fist. Stronger shoulder rotation is distinct from medium lunge; candidate both facings."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-heavy-v34.png",
+      "originId": "exec-468a51ff-5877-4045-b901-a763b782455b.png",
+      "sha256": "03fee1b3831d6191818f48411d92c248a19b30a0a93882811ebb2e771bc621dc",
+      "bytes": 2035554,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "repair-walk-backward-contacts",
+      "actionId": "walk-backward",
+      "prompt": "Edit FIRST attached Feral backward walking spritesheet; SECOND is identity reference only. Preserve exactly 1536x1024, 4 columns x2 rows, flat #FF00FF, same 8 characters, all equipment, body scale and spacing. ONLY FIX BOTH THIRD-COLUMN LEG CONTACT POSES. In first column anatomical RIGHT near-camera thigh trails backward and LEFT far thigh leads forward. Third column MUST be the opposite leg contact, NOT the same contact redrawn: anatomical RIGHT near-camera thigh from bone-trophy hip now slopes FORWARD TOWARD FACE, crosses visibly IN FRONT of the other thigh, right knee forward/right foot forward; anatomical LEFT far thigh trails BACKWARD away from face, left knee and foot behind. Top row column3 facing RIGHT: nearest RIGHT thigh slopes image-RIGHT and covers left thigh; its knee and foot at rightmost foreground, LEFT thigh travels image-left behind. Bottom row column3 facing LEFT: nearest RIGHT thigh slopes image-LEFT and covers left thigh; right knee and foot at leftmost foreground, LEFT thigh trails image-right behind. Important this reverses hip-thigh overlap and which leg contacts the front, not just separating the feet. Preserve column1,2,4 in each row unchanged. Columns2/4 already show opposite support legs and are good. Preserve two legs total, continuous correct hip/knee/ankle anatomy. No text or arrows. FERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.",
+      "phase": [
+        "contact-right-trails",
+        "pass-left-support",
+        "contact-right-leads",
+        "pass-right-support"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Both third-column contacts now reverse the near leg and overlap order; columns 2 and 4 retain opposite support legs. Source sequence reads as a forward gait; backward playback must reverse phase order explicitly. Candidate pending native Canvas and alpha checks."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "originId": "exec-db40d02d-893d-4ecc-a0c3-855fe23c3da4.png",
+      "sha256": "7c74e35203814a394f1790eb34b378ff4bba62ee3e20494392baeea6a4009507",
+      "bytes": 2020691,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "prompt": "Create repaired Feral FORWARD COMBAT WALK animation spritesheet based on FIRST image successful 4 phase leg cycle; SECOND image is identity only. 1536x1024 flat #FF00FF, exact4columns2rows, top4facingRIGHT bottom4facingLEFT drawn independently. Preserve ALL LEG POSES AND OVERLAP from FIRST image! They finally alternate correctly: column1 near right leg BEHIND and far left leg FORWARD; column2 left leg SUPPORTS and right leg LIFTS behind; column3 near RIGHT leg FORWARD crossing in FRONT of left thigh, left leg TRAILS; column4 right leg SUPPORTS and left leg LIFTS behind. Preserve these actual anatomical alternations. New forward walk demeanor: torso leans 8degrees toward face, head forward with aggressive attention, arms counter-swing subtly against leading leg while keeping two right wrist blades securely mounted and folded compact left fan shield. For column1 right arm is forward/down, left arm back; column3 right arm back/down, left arm forward, not the same arms on every frame. Four separate fullbody drawings in each row with margins, no overlapping cells, no text/arrows/scenery or shadows, grounded stride feet consistent. FERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.",
+      "phase": [
+        "contact-left",
+        "pass-left-support",
+        "contact-right",
+        "pass-right-support"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Four leg phases retain alternating left/right contacts and support legs. Forward torso lean is distinct; arm counter-swing remains slight, a guarded combat gait rather than a full running cycle. Pending native Canvas and alpha checks."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-c366f8cb-639a-4730-a986-cd2ce5bfc037.png",
+      "sha256": "71374a2cff78917a4944e21e0fe5df6e35a0c1821af69fac41e755b94e53e5e1",
+      "bytes": 2064810,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "feral-hunter",
+      "id": "repair-medium-spacing",
+      "actionId": "medium",
+      "prompt": "Repair FIRST attached Feral medium wrist-blade attack animation ONLY for production spacing. SECOND is original identity reference. Recompose all8drawings SMALLER and widely spaced:1536x1024, exact4equalcolumns each384px and2rows each512px. Full-body standing height240px, full action bounding box maximum240pxW by320pxH INCLUDING all blades/hands/dreads; at least72px completely empty magenta gutter at BOTH sides of EACH cell. Place each character centered horizontally with feet near row baseline420px then932px. Preserve all4 distinct phases: column1 windup fist pulled beside waist; column2 active extended empty right fist with2short parallel blades mounted ABOVE dorsal wrist; column3 arm drawn back recovery, column4 relaxed ready neutral. Top4facingRIGHT, bottom4facingLEFT independently. Preserve the visible complete empty right fist under the mounted blades in EVERY pose, not handheld blades. Preserve left forearm half-fan shield, stable ivory skull mask, proportions of identity, two arms/hands/legs only. Uniformly smaller fullbody, DO NOT stretch or squeeze proportions, DO NOT crop blade tips or feet. Huge empty background gutters are REQUIRED. Flat exact #FF00FF background without checkerboard, labels, text, shadows or environment. FERAL HUNTER from Prey, preserve attached V28 existing project presentation identity. Lean tall muscular brown/copper mottled skin, bare chest and legs WITHOUT net suit, long black dreadlocks, elongated worn ivory bone skull biomask over upper face with exposed reddish lower mandibles, no silver helmet. Segmented dark metal/leather skirt armor with small bone trophy at hip, ankle wraps, bare clawed feet. Slim mechanical gauntlets. Exactly TWO short parallel wrist blades mounted on anatomical RIGHT dorsal forearm; empty right hand visible below. LEFT forearm carries compact folded segmented bronze fan shield; no separate hand-held shield and no new weapon. No shoulder cannons, no gun, no chest plate. Both facings independently drawn; preserve shield left and blades right as anatomical sides. Reference has6samples but OUTPUT MUST8drawings4columns2rows.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+      "status": "authored-review",
+      "notes": [
+        "Wider spacing separates all eight silhouettes. Top row order startup/active/recovery/neutral; bottom row generated neutral/startup/active/recovery and must explicitly reorder frames [1,2,3,0]. Both empty right fists and two mounted blades are visible. Pending alpha and native Canvas checks."
+      ],
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "originId": "exec-e3d0d47a-a1d1-4ce3-abf3-6a01db579095.png",
+      "sha256": "85d86cd6297f251ae21bf2c2862ff796b8c59edac87aaddbd6ccd402970d0a23",
+      "bytes": 1749435,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

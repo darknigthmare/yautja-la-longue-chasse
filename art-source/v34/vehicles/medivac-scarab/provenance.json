@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "medivac-scarab",
+  "name": "Medivac Scarab",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Armored medical evacuation hover-carrier PROPOSAL, compact rounded beetle hull with sealed dorsal medical pod and shut petal doors, empty two-stretcher loading bay suggested by rear ramp seams, pale ivory and dark bronze armor with small amber status lamps. No red cross or Earth insignia, no patient, surgical tools or blood. Medical pod detachable in later layers.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Medivac Scarab — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/medivac-scarab/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/medivac-scarab/identity-r1.png",
+      "originId": "exec-bb36993c-3380-4d6c-b97d-a61dc3f02ba1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "9aa31233e2528ca8ec4cdb2e1c2a34915eaf470688b9727995d470a35a7f60ec",
+      "bytes": 1453371,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Armored medical evacuation hover-carrier PROPOSAL, compact rounded beetle hull with sealed dorsal medical pod and shut petal doors, empty two-stretcher loading bay suggested by rear ramp seams, pale ivory and dark bronze armor with small amber status lamps. No red cross or Earth insignia, no patient, surgical tools or blood. Medical pod detachable in later layers.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 5,
+          "recoveredLine": 1123,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux profils stricts, coque et pod médical fermés, raccords de rampe lisibles, aucun patient, sang, outil ou emblème terrestre.",
+        "Le pod demeure visuellement intégré dans cette identité ; sa séparation modulaire reste un livrable ultérieur."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            38,
+            233,
+            802,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 203820,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            935,
+            233,
+            803,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 203967,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

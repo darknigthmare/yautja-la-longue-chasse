@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nFAMILY IDLE: Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep. Four ordered phases: neutral alert; inhale shoulders slightly raised; exhale relaxed knees; return toward neutral. Rifle remains cradled horizontally low at waist in every pose, never fired; human palms keep same grips. Adult human full body.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Four idle stages and complete rifle grips drawn both orientations. Left row shoulder cannon appears duplicated or rear-facing; needs targeted orientation review before any runtime acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-idle-v34.png",
+      "originId": "exec-1f65ad19-c1ad-4a69-bffb-63f0c6323d6f.png",
+      "sha256": "13eddea06675dc75b4fd7f709d7a2a7fa7abc1cf7a23fb79c9b41e687f1b4e25",
+      "bytes": 1855462,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nFAMILY FORWARD WALK. Four phases: near right leg forward heel contact / far left leg behind; right supporting leg vertical / LEFT knee passes forward; far LEFT leg now forward heel contact / near RIGHT leg behind; left supporting leg vertical / RIGHT knee passes forward. Forward walk cycle. Both feet must alternate support. Phases1 and3 are opposite leg contacts, phases2 and4 opposite passing knees. Body remains in place on the sheet; no duplicates. Rifle cradled steady. Cannon has ONE forward muzzle only: top row points RIGHT, bottom row points LEFT, its rear is closed flat, no second barrel. Far-leg and near-leg alternate contact; in columns 2 and4 lift DIFFERENT legs.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "rejected",
+      "notes": [
+        "Forward gait rejected: same leading leg in contacts1/3 and same lifted knee in passes2/4. Cannon aim improved but gait not alternating."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-walk-forward-v34.png",
+      "originId": "exec-9646bdd8-891e-4e86-aed6-3dcf3c61042c.png",
+      "sha256": "a7df1b6cad80bfea0932ab7231bc67bd303f8b504f7b91ca7badbd54bc37fc1f",
+      "bytes": 1933077,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nFAMILY BACKWARD WALK. Backward retreat cycle, still looking at opponent. Opposite legs clearly support phases1/3 and2/4. Track front-facing vs rear-facing direction independently; do not repurpose forward sheet. Four ordered stages: 1 near leg stretched BACKWARD, far leg forward; 2 near leg bears weight, far knee lifted behind; 3 far leg stretched BACKWARD, near leg forward; 4 far leg bears weight, near knee lifted behind. Alternate the two legs rather than repeating the same leg. Opposing contact legs must visibly exchange which thigh occludes the other. Cannon has ONE forward muzzle only: top faces RIGHT, bottom LEFT, closed rear. Rifle grips never change.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "rejected",
+      "notes": [
+        "Backward gait repeats the same contact and rear lifted leg in columns1/3 and2/4. Small isolated stray marks near belt. No usable alternating cycle."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-walk-backward-v34.png",
+      "originId": "exec-aba38710-5fa1-463f-b495-b82dad9b5b56.png",
+      "sha256": "1a6a808f0979c70649987315528c7e696760f41ea410c5ac7b22fd5d5970832b",
+      "bytes": 1768206,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nCROUCH AND RISE four stages: standing combat stance; half squat descending; deep stable crouch with both heels grounded; half squat rising. Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale. Rifle in both hands remains horizontal at chest, never intersects knee; elbows bend naturally. One cannon muzzle always facing with her face: RIGHT top, LEFT bottom, closed rear. No blades or new equipment.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Both rows have four coherent crouch depths with intact rifle grips and single forward-aimed shoulder cannon. First three drawings are candidate entry/held-crouch; rising fourth must not loop while crouching. Pending measured alpha/pivot review; no human combat fighter runtime exists yet."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+      "originId": "exec-42250d82-eca5-4531-9f35-b4e993b47fa7.png",
+      "sha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+      "bytes": 1861082,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nJUMP AND LANDING four stages: deep launch crouch; airborne rising knees bent; falling feet extending downward; landing crouch absorbing impact. Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate. Rifle held safely in both hands close to torso, weapon shape rigid. Shoulder cannon one muzzle facing same direction as nose. Small adult human full-body sprites with generous margin; consistent body size, airborne poses are raised not enlarged.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Four readable launch/rise/fall/landing poses per facing, consistent rifle and adult human anatomy. Review sheet only: one drawing per distinct jump phase is insufficient for complete engine phase clips."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-jump-land-v34.png",
+      "originId": "exec-d5ea8ec1-7e6e-4291-9cf1-e74fd0fc8b3e.png",
+      "sha256": "a2fdf3da59a31d9c88ac9d6b64e8eea1920298940a183f820c4afb08e9f9bd31",
+      "bytes": 1858437,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nHIGH GUARD four stages: rifle lifts from waist toward upper chest; rifle horizontal protective brace at collarbone; knees flex and torso absorbs impact behind rifle; settled high protective rifle brace. She keeps both original hand grips, holding the SAME rifle horizontally as a protective bar at upper chest, never aims it at her own face. Barrel stays toward opponent. Complete gloved wrists and fingers. Single cannon muzzle same facing as nose. No firing, no VFX.",
+      "phase": [
+        "rifle lifts from waist toward upper chest",
+        "rifle horizontal protective brace at collarbone",
+        "knees flex and torso absorbs impact behind rifle",
+        "settled high protective rifle brace"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Four readable raising/bracing guard stages, complete glove grips, cannon aimed correctly. Rifle stock extends more in high poses than in low pose; rigid weapon-length consistency needs final review before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-guard-v34.png",
+      "originId": "exec-e7a216f9-2686-4a4a-ad05-4ea081e7effc.png",
+      "sha256": "0ad597dbabbfeb086e7a2d80fd78b91e8ce32537b433a46c18cdd4e2edfd87f6",
+      "bytes": 1919884,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nHURT / NON-GRAPHIC CHEST RECOIL. Four phases: small torso recoil from chest hit; larger backward torso lean, knees bent; recover torso upright with protective arms; return to neutral stance. Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent. Same compact rifle stays held close to abdomen with both hands, rigid shape and short stock unchanged. Single shoulder cannon muzzle points along face direction in BOTH rows. No wounds or blood.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Coherent rifle grips, cannon orientation, armor and four recoil drawings. Source order is neutral/small recoil/large recoil/neutral; candidate reaction playback should use 0,2,1,3 for impact then recovery. No runtime fighter currently wired."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+      "originId": "exec-dad9eb8a-d508-449e-8d92-a0ec730215a1.png",
+      "sha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+      "bytes": 1889095,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nLIGHT MELEE ACTION, four ordered stages: rifle retracts toward ribs; short two-handed forward rifle shove contact; rifle retracts halfway with elbows bending; return to compact low ready. Compact two-handed rifle shove, no gunshot. Rifle muzzle faces opponent throughout, right hand retains pistol grip and left hand foregrip throughout, no hand swaps, no detaching weapon. Rifle always same rigid compact shape and short stock; never becomes longer. One cannon with one forward muzzle same facing as nose. Human joints and hands clear.",
+      "phase": [
+        "rifle retracts toward ribs",
+        "short two-handed forward rifle shove contact",
+        "rifle retracts halfway with elbows bending",
+        "return to compact low ready"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Four coherent two-handed rifle shove stages both facings. Right hand remains on rear grip and left under fore-end; no new blade or firearm effect. Original game move adaptation, not a canonical named technique."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+      "originId": "exec-8ffd6a07-9e6b-4761-9e9d-3dae7ba251fa.png",
+      "sha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+      "bytes": 1775690,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nMEDIUM ATTACK is a controlled FRONT KICK, four ordered phases: right knee chambers at waist, left foot planted; right foot extends short front kick toward opponent, left leg supports; right knee folds back after kick; right foot down return to neutral. Keep the rifle cradled in both hands at upper abdomen, rigid short compact shape; do not swing or fire it. Exactly two legs and two complete boots; same right leg kicks, opposite leg firmly supports throughout. Compact kick, enough room inside each cell. Single cannon muzzle oriented same as face. Original game move interpretation. No impact victim/effects.",
+      "phase": [
+        "right knee chambers at waist, left foot planted",
+        "right foot extends short front kick toward opponent, left leg supports",
+        "right knee folds back after kick",
+        "right foot down return to neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Front kick has coherent human hip/knee/boot, rifle held consistently and cannon facing opponent. Source order is neutral/chamber/contact/retract; intended attack playback must reorder 1,2,3,0. Original game adaptation, no canonical move claim."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+      "originId": "exec-5eaf55e4-ccf9-401e-b949-1a33573331b7.png",
+      "sha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+      "bytes": 1827985,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nMACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.\nHEAVY MELEE: stronger two-handed rifle/body shove, four stages: low brace loads weight onto rear leg, rifle close to chest; powerful forward body lunge with both hands pushing rifle outward at chest height; elbows retract while knees absorb return; settled upright low ready. Wider grounded stance and greater torso rotation than light shove, not a shot. Rifle remains the same rigid compact blue-gray weapon with short stock, held at correct pistol and foregrip throughout. No separate blade. Both shoulder and rifle muzzles aim toward opponent. TWO arms and hands always, no duplicated forearms, no victim, no impact effects. Full silhouettes separated generously.",
+      "phase": [
+        "low brace loads weight onto rear leg, rifle close to chest",
+        "powerful forward body lunge with both hands pushing rifle outward at chest height",
+        "elbows retract while knees absorb return",
+        "settled upright low ready"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Heavy forward rifle shove has four grounded stages both orientations, complete gloves and coherent weapon grips. Wider silhouettes require explicit occupied-column rectangles rather than fixed cells. Original game adaptation, not canonical named move."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+      "originId": "exec-4c2c7ecf-bfb6-4b66-8467-0a11cdacb1fb.png",
+      "sha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+      "bytes": 1884847,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-idle-cannon",
+      "actionId": "idle",
+      "prompt": "Repair the FIRST attached eight-pose MACHIKO CLAN idle sheet using SECOND attached identity reference. Keep body poses, rifle grips, clothing and face unchanged. Fix ONLY shoulder cannon orientation: each sprite has exactly ONE cannon, on anatomical left shoulder. TOP row single open muzzle points RIGHT. BOTTOM row single open muzzle points LEFT toward her opponent, not backward. Rear end is a short closed flat dark cap, never a second muzzle. Remove any duplicate cannon on opposite shoulder. Preserve eight full-body drawings, four columns/two rows, independently authored orientations, flat #FF00FF background, no text/VFX/shadows. Keep original dimensions1536x1024, complete feet. MACHIKO NOGUCHI, adult human Japanese warrior, specifically the attached project's CLAN ARMOR variant, not the Ryushi outfit. Preserve adult human five-finger hands and human proportions, unmasked olive-toned face, black swept-back braided/dreadlocked ponytail with tiny gold/red bands. Gunmetal silver segmented shoulder plates, curved dark steel torso armor, narrow metal belt/segmented hip armor, black mesh bodysuit visible on thighs, silver knee/shin plates over brown boots, dark brown gloves. Small dark shoulder cannon on anatomical LEFT shoulder, aimed toward her facing. The ONLY handheld weapon is the same bulky blue-gray science-fiction RIFLE from the reference, right hand on pistol grip (index along receiver at rest), left hand supports fore-end. Complete hands with coherent fingers wrapped around visible grips. No wrist blades, no spear, no invented sword. Keep torso fully armored as reference, no sexualized posing. Both directions independently drawn, never swap anatomical hands or cannon side. Reference is existing fan-made project art, not a claim of official 1:1 canon.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Repair removes duplicated cannon. Right row all four candidate idle drawings. Left row columns1/3 have consistent forward cannon; columns2/4 cannon mounting position changes across shoulder and remain excluded from candidate playback."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+      "originId": "exec-08bf5fe4-2b45-433a-bf61-533933c2f168.png",
+      "sha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+      "bytes": 1813441,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-walk-forward-legs",
+      "actionId": "walk-forward",
+      "prompt": "Repair the FIRST attached Machiko walk sheet, identity SECOND attachment. Keep upper body rifle, face, cannon, armor style unchanged. ALL eight sprites full body,1536x1024,4columns2rows,topRIGHTbottomLEFT,solid#FF00FF. First sheet repeats same leg: FIX THE LEGS ONLY. In EACH ROW columns1+2 stay as anchor. Column3: swap both thigh trajectories at HIP: the thigh visible IN FRONT of the other at crotch goes FORWARD, the thigh BEHIND goes BACKWARD; opposite of column1. The near-side shin and boot must be the forward planted boot in column3, far-side shin the rear planted boot. Column4: near-side THIGH rises toward opponent, its knee clearly overlaps far-side thigh; far-side leg extends vertical supporting body. This is the OPPOSITE knee from column2. Keep both boots complete, no extra leg, no duplicated joint. Exactly alternating contact/pass/oppositecontact/oppositepass, original layout and equipment.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Repair changes near-thigh occlusion and lifted knee in columns3/4. Candidate contact/pass/opposite contact/opposite pass; requires native-size leg-support review before animation approval. Gear unchanged."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-forward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-forward-legs-v34.png",
+      "originId": "exec-8666ba81-e23b-431c-9023-36e4d50533e5.png",
+      "sha256": "b1c673c60d3aabe1b9502bc6ac7b44c39394cdb2641cf1ca7df44dd4e61c83a2",
+      "bytes": 1873199,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-walk-backward-legs",
+      "actionId": "walk-backward",
+      "prompt": "Repair FIRST attached Machiko backward walk sheet; SECOND is identity reference. Preserve same upper bodies and 4columns2rows1536x1024. Top facesRIGHT bottomfacesLEFT. Fix leg alternation: keep columns1 and2. Column3 MUST have NEAR thigh swung FORWARD visibly crossing over the far thigh at pelvis, near boot planted forward; FAR thigh trails backward with far boot toes planted behind. This reverses leg support from column1. Column4 MUST have NEAR knee flexed with near boot lifted behind body, FAR leg straight supporting body below pelvis; opposite of column2. Two human legs only, visible coherent hips/knees, same armor segments. Remove isolated dark flecks on magenta near belts. Retain SAME compact rifle and one shoulder cannon facing opponent, no new equipment. Solid flat#FF00FF, no labels or VFX. Four contact/pass/oppositecontact/oppositepass RETREAT stages.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "rejected",
+      "notes": [
+        "Repair still does not establish clearly alternating backward support; glove/gauntlet color also drifts in lower row. No backward cycle accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-backward-legs-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-walk-backward-legs-v34.png",
+      "originId": "exec-92ec6f30-db65-48ec-ac45-8a8eca78f308.png",
+      "sha256": "a8b69221c2f780b9b4068e076f862b391e29d52545790fd6d9bf438f339acd30",
+      "bytes": 1722644,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "species": "human",
+      "family": "humans-in-yautja-armor",
+      "id": "repair-guard-rifle",
+      "actionId": "guard",
+      "prompt": "Repair FIRST attached Machiko guard sheet using SECOND identity reference. Keep the four body stages and both independently authored directions,4x2 1536x1024,flat#FF00FF. Fix only RIFLE consistency: weapon MUST remain the same rigid compact boxy blue-gray rifle of pose1, with its SHORT rear section ending immediately behind pistol-grip hand. In poses2,3,4 REMOVE the invented long thin horizontal shoulder-stock extension. Do not add or lengthen a stock. Match barrel/receiver/magazine ratios to pose1. Preserve two intact hands: right at rear grip, left supporting front underside. A protective brace may sit below chin without touching shoulder. Cannon single muzzle aims along nose. All armor, face, legs and eight body silhouettes stay unchanged.",
+      "phase": [
+        "rifle lifts from waist toward upper chest",
+        "rifle horizontal protective brace at collarbone",
+        "knees flex and torso absorbs impact behind rifle",
+        "settled high protective rifle brace"
+      ],
+      "referencePath": "public/game/assets/v28/sprite-review/machiko-clan-hit-reaction.png",
+      "status": "authored-review",
+      "notes": [
+        "Long invented stock removed across guard stages; short rigid receiver preserved within this corrected page. Both grips and forward cannon visible. Rifle is somewhat more compact than presentation; fidelity limitation retained."
+      ],
+      "sourcePath": "art-source/v34/pit/machiko-noguchi/machiko-noguchi-repair-guard-rifle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-guard-rifle-v34.png",
+      "originId": "exec-b831fe13-a4d5-40be-84bc-ec072486e308.png",
+      "sha256": "bb24a6ced1f88cc941333f8d27e4062a9b14804444475fc59c4b4bdd0c53a3c3",
+      "bytes": 1856132,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

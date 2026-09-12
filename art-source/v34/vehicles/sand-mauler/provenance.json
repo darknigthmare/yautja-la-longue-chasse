@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "sand-mauler",
+  "name": "Sand Mauler",
+  "lore": "Création originale du jeu, selon le brief partiel ; pas une espèce canonique revendiquée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Sand Mauler — corps, deux orientations",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/sand-mauler/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/sand-mauler/identity-r1.png",
+      "originId": "exec-ef8cdf7e-c543-4106-ba8e-b22cf3bdce6c.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a21470a71ee550a330963b202d2af126221de087b40ae3ba950fac26a5535295",
+      "bytes": 1579485,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Create a NEW original alien riding animal design for the 2D Yautja fan-game La Longue Chasse, not a claimed canonical creature. Exactly TWO full-body SIDE profile drawings SIDE BY SIDE, left drawing facing RIGHT, right drawing facing LEFT. Same anatomy and scale in separately drawn opposing sides. Entire silhouette inside each half with generous MAGENTA #FF00FF blank margins, no cropping. Detailed painted game bitmap. No environment, ground shadow, labels, text, borders, rider, saddle, harness, armor, chains or effects. Bare creature base layer. Distinct limb roots and separated feet, physically plausible joints. Desert mount with EXACTLY SIX legs in three pairs, each pair attached at its own shoulder/rib/hip station. Long low ochre reptilian body, thick sandy granular hide, broad shovel-like claw feet splayed for dunes, long counterbalancing tail, blunt armored crocodile-like skull with lateral sensory pits to detect buried movement. Six feet visibly staggered at distinct horizontal positions, no missing middle far leg, no seventh leg. Slightly elevated side camera only enough to expose the far three legs. No tentacles or dorsal spikes.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            575,
+            595
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Identité en revue ; nombre de membres, appuis et détails à contrôler. Selle, cavalier et effets indépendants à produire.",
+        "Inspection visuelle finale : chaque vue ne présente que cinq pieds sur les six imposés ; la patte médiane opposée est absente. Rejet anatomique, aucun clip runtime accepté."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            5,
+            364,
+            737,
+            277
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 97055,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            768,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            794,
+            363,
+            737,
+            278
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 96989,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-right-r2",
+      "actionId": "identity",
+      "label": "Sand Mauler — tentative anatomique droite R2",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/sand-mauler/identity-right-r2.png",
+      "publicPath": "/game/vehicles/v34/sand-mauler/identity-right-r2.png",
+      "originId": "exec-b3b483c9-c5cf-47e9-9581-453bf7d806e3.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2139e7e498f9e27e5bb40eae7e14e2cb82e46413953f238e3a55b69421ec745c",
+      "bytes": 1782576,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the immediately preceding Sand Mauler image as the exact visual reference. Redraw it as ONE single complete creature only, facing RIGHT in a strict flat orthographic side profile, centered on pure uniform MAGENTA #FF00FF. Preserve the same ochre reptilian species, blunt armored crocodile-like skull with lateral sensory pits, long low body, granular hide, shovel feet and full tail. Fix only the anatomy: EXACTLY SIX legs total from three paired body stations (front, middle, rear). Show ALL SIX complete legs and ALL SIX complete shovel-claw feet separately countable. Stagger the far-side legs and feet slightly horizontally and vertically while the torso/head remain strict side profile. Every leg visibly connects to its proper root; no hidden middle leg, fused feet, stump, floating foot, seventh limb or tentacle. Full body, tail and all feet entirely in frame with generous blank magenta margins. Neutral balanced standing pose. No second creature, reflection, divider, grid, text, labels, ground, shadow, rider, saddle, harness, armor, chains or effects. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/sand-mauler/identity-r1.png",
+          "sha256": "a21470a71ee550a330963b202d2af126221de087b40ae3ba950fac26a5535295"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : cinq pieds seulement ; la patte médiane opposée reste absente. Tentative rejetée, aucun clip runtime accepté.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34.",
+        "Inspection visuelle finale : cinq pieds seulement ; la patte médiane opposée reste absente malgré la reprise. Tentative rejetée, aucun clip runtime accepté."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "alpha16Bounds": [
+            33,
+            298,
+            1434,
+            466
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 310756,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-right-r3",
+      "actionId": "identity",
+      "label": "Sand Mauler — corps droit, six appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/sand-mauler/identity-right-r3.png",
+      "publicPath": "/game/vehicles/v34/sand-mauler/identity-right-r3.png",
+      "originId": "exec-1d8c0621-691a-4149-b663-63744b9cd04b.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "3257a62dca7acadc067c771e48a24108b90a2843475168ea0dfffcf850f4cece",
+      "bytes": 1757176,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Correct the immediately preceding single Sand Mauler right-facing image. Preserve its exact design and pure #FF00FF background, but it still has only FIVE visible feet. Add the missing FAR-SIDE MIDDLE leg and foot under the center of the belly. Final anatomy must be EXACTLY SIX full legs and EXACTLY SIX separate feet, visibly countable from tail to head as: rear-near foot, rear-far foot, middle-near foot, middle-far foot, front-near foot, front-far foot. Use three large near-side legs and three slightly smaller/darker far-side legs; offset every foot horizontally so none overlaps. Each of all six legs must have a visible hip root, upper limb, joint, lower limb and complete shovel-claw foot. Keep ONE creature only, facing RIGHT, strict side-profile head and torso, full tail and all feet in frame. No labels, numbers, arrows, grid, ground, shadow, second view, rider, saddle, armor, chains, effects or extra limb. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "originId": "exec-b3b483c9-c5cf-47e9-9581-453bf7d806e3.png",
+          "role": "Rejected five-foot correction used only as visual edit base"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : trois pattes proches et trois pattes opposées, six racines et six pieds complets séparément lisibles. Plaque statique en revue ; aucun clip runtime accepté.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "alpha16Bounds": [
+            33,
+            299,
+            1434,
+            465
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 320450,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-left-r3",
+      "actionId": "identity",
+      "label": "Sand Mauler — corps gauche, six appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/sand-mauler/identity-left-r3.png",
+      "publicPath": "/game/vehicles/v34/sand-mauler/identity-left-r3.png",
+      "originId": "exec-74b639d8-db40-4502-b4c7-6f966b5dbbc0.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d13c6bef147a742cf54856c945ddc41f382e10e15041a67942e3cab7ec5064bc",
+      "bytes": 1754572,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Use the immediately preceding accepted Sand Mauler right-facing six-legged image as the exact design reference. Independently redraw the SAME creature's opposite side as ONE single complete strict flat orthographic side profile facing LEFT, centered on pure uniform MAGENTA #FF00FF. Preserve identical species, ochre palette, head, sensory pits, proportions, granular hide, full tail and shovel feet. Preserve the corrected anatomy: EXACTLY SIX full legs from three paired body stations and EXACTLY SIX separate complete feet. Show three large near-side legs and three slightly smaller/darker far-side legs, all six hip roots and all six feet separately countable with horizontal offsets; no hidden/fused limb, stump, floating foot or seventh leg. Full silhouette entirely in frame with generous margins. No second creature, reflection, divider, grid, text, labels, ground, shadow, rider, saddle, harness, armor, chains or effects. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/sand-mauler/identity-right-r3.png",
+          "role": "Accepted opposite-facing design reference"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : six membres complets et six pieds séparément lisibles dans l’orientation gauche. Plaque statique en revue ; aucun clip runtime accepté.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "alpha16Bounds": [
+            52,
+            298,
+            1439,
+            467
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 324209,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 4,
+  "acceptedRuntimeClips": 0
+}

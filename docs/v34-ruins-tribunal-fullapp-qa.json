@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-12T21:26:00.969Z",
+  "surface": "full-application-play-pit-training",
+  "verifiedContentVersion": "V34",
+  "fighters": [
+    "jungle-hunter",
+    "city-hunter"
+  ],
+  "url": "http://[::1]:4173",
+  "checks": [
+    {
+      "name": "live-match",
+      "arena": "ruins-tribunal",
+      "planes": "P0,P1,P2,P3,P4,P5",
+      "source": "openai-v33-independent",
+      "loadedImages": 14,
+      "subplans": 14,
+      "missing": 0
+    }
+  ],
+  "loadedImageFiles": [
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p0-a-depth.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-a-distant-left.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-b-distant-right.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-c-central-structure.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-a-prop-left.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-b-prop-right.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-c-light-left.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-d-light-right.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-a-foreground-left.png",
+    "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-b-foreground-right.png"
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": []
+}

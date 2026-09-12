@@ -61,8 +61,8 @@ test("runtime summaries and actual render plans retain all 100 entries and exact
     assert.deepEqual(client?.paths, original?.paths);
     assert.deepEqual(client?.requiredPaths, original?.requiredPaths);
     if (original) for (const [index, plane] of original.planes.entries()) {
-      assert.deepEqual(client.planes[index].assets.map(asset => [asset.id, asset.mode, asset.parallax, asset.placements, asset.sourceCrop, asset.anchorToGround, asset.animation]),
-        plane.assets.map(asset => [asset.id, asset.mode, asset.parallax, asset.placements, asset.sourceCrop, asset.anchorToGround, asset.animation]));
+      assert.deepEqual(client.planes[index].assets.map(asset => [asset.id, asset.mode, asset.parallax, asset.placements, asset.sourceCrop, asset.anchorToGround, asset.verticalAlign, asset.animation]),
+        plane.assets.map(asset => [asset.id, asset.mode, asset.parallax, asset.placements, asset.sourceCrop, asset.anchorToGround, asset.verticalAlign, asset.animation]));
     }
   }
 });

@@ -4,7 +4,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { Readable } from "node:stream";
 import { DESKTOP_RELEASE_TAG } from "./release.mjs";
-import { APP_ORIGIN, CSP, isAppRoute, isAppUrl, resolveAppFile, parseAudioByteRange } from "./protocol.mjs";
+import { APP_ORIGIN, CSP, appRoutePath, isAppUrl, resolveAppFile, parseAudioByteRange, appDownloadKind } from "./protocol.mjs";
 
 app.setName("Yautja La Longue Chasse");
 const qaProfile = process.env.YAUTJA_DESKTOP_QA_PROFILE;
@@ -34,7 +34,15 @@ function explainExternalLink() {
 function createWindow(route = "/") {
   const isMain = route === "/";
   const existing = isMain ? mainWindow : auxiliary.get(route);
-  if (existing && !existing.isDestroyed()) { existing.focus(); return existing; }
+  if (existing && !existing.isDestroyed()) {
+    if (appRoutePath(existing.webContents.getURL()) !== route) {
+      void existing.loadURL(APP_ORIGIN + route).catch((error) => logError("reload " + error.message));
+    }
+    if (existing.isMinimized()) existing.restore();
+    if (!qaProfile) existing.show();
+    existing.focus();
+    return existing;
+  }
   const win = new BrowserWindow({
     width: 1440, height: 900, minWidth: 960, minHeight: 640,
     backgroundColor: "#050706", show: false,
@@ -50,13 +58,13 @@ function createWindow(route = "/") {
   win.once("ready-to-show", () => { if (!qaProfile) win.show(); });
   win.webContents.on("page-title-updated", (event) => event.preventDefault());
   win.webContents.on("will-navigate", (event, url) => {
-    if (!isAppRoute(url)) { event.preventDefault(); explainExternalLink(); }
+    const target = appRoutePath(url);
+    if (!target) { event.preventDefault(); explainExternalLink(); return; }
+    if (target !== route) { event.preventDefault(); createWindow(target); }
   });
   win.webContents.setWindowOpenHandler(({ url }) => {
-    if (isAppRoute(url)) {
-      const target = new URL(url).pathname.replace(/\/$/, "") || "/";
-      createWindow(target);
-    } else explainExternalLink();
+    const target = appRoutePath(url);
+    if (target) createWindow(target); else explainExternalLink();
     return { action: "deny" };
   });
   win.webContents.on("will-attach-webview", (event) => event.preventDefault());
@@ -103,10 +111,11 @@ if (!app.requestSingleInstanceLock()) {
   currentSession.setDevicePermissionHandler(() => false);
   currentSession.webRequest.onBeforeRequest({ urls: ["http://*/*", "https://*/*", "ws://*/*", "wss://*/*", "file:///*", "ftp://*/*"] }, (_details, callback) => callback({ cancel: true }));
   currentSession.on("will-download", (event, item) => {
-    if (!item.getURL().startsWith("blob:" + APP_ORIGIN + "/") && !item.getURL().startsWith("data:application/json")) { event.preventDefault(); return; }
+    const kind = appDownloadKind(item.getURL());
+    if (!kind) { event.preventDefault(); return; }
     item.setSaveDialogOptions({
-      title: "Exporter une sauvegarde Yautja", defaultPath: path.join(app.getPath("documents"), path.basename(item.getFilename())),
-      filters: [{ name: "Sauvegarde JSON", extensions: ["json"] }],
+      title: kind === "image" ? "Exporter une image du jeu" : "Exporter une sauvegarde Yautja", defaultPath: path.join(app.getPath("documents"), path.basename(item.getFilename())),
+      filters: kind === "image" ? [{ name: "Image du jeu", extensions: ["png", "webp", "jpg", "jpeg"] }] : [{ name: "Sauvegarde JSON", extensions: ["json"] }],
     });
   });
   const rendererRoot = path.join(app.getAppPath(), "renderer");

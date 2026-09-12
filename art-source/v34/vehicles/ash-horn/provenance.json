@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "ash-horn",
+  "name": "Ash Horn",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Original volcanic-region mount PROPOSAL, exactly FOUR powerful quadruped limbs, stocky low body, dark ash-black coarse hide with charcoal natural plates, broad boar-like alien head and a single forward swept keratin brow horn, wide split claw feet, short thick tail. No lava veins, flames, breath cloud or magical aura. Physically grounded creature, neutral balanced stance, all four legs visible.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Ash Horn — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/ash-horn/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/ash-horn/identity-r1.png",
+      "originId": "exec-15d9b1f5-eeee-480d-9b50-8e36a1a720e2.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "fabace2afec6ea53f86e492375fbb0a867c7c393b77af15d251ca73737e02260",
+      "bytes": 1651542,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Bare animal layer: no saddle, tack or armor. Original volcanic-region mount PROPOSAL, exactly FOUR powerful quadruped limbs, stocky low body, dark ash-black coarse hide with charcoal natural plates, broad boar-like alien head and a single forward swept keratin brow horn, wide split claw feet, short thick tail. No lava veins, flames, breath cloud or magical aura. Physically grounded creature, neutral balanced stance, all four legs visible.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 16,
+          "recoveredLine": 1156,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen original identity proposal; no canonical appearance is asserted.",
+        "Visually inspected: both opposing profiles show exactly four separately readable legs and four complete split-claw feet, plus one forward brow horn. The generator also introduced paired lower-jaw tusks not specified in the bounded brief; retain authored-review pending silhouette approval.",
+        "No lava, fire, breath cloud, aura, tack, armor, saddle or rider. Static review sheet only; runtime transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            19,
+            172,
+            783,
+            534
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 221762,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            974,
+            172,
+            783,
+            535
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 221545,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

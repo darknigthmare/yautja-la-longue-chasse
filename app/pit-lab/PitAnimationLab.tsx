@@ -130,7 +130,7 @@ export default function PitAnimationLab() {
       </header>
       <section className={styles.notice} aria-label="Revue des planches dessinées">
         <div className={styles.buttons}>
-          <a className={styles.back} href="/game/assets/v33/production-review/index.html" target="_blank" rel="noopener noreferrer">Atelier OpenAI V33 · décors, chasseurs et véhicules</a>
+          <a className={styles.back} href="/game/assets/v34/production-review/index.html" target="_blank" rel="noopener noreferrer">Atelier OpenAI V34 · décors, chasseurs et véhicules</a>
           <a className={styles.back} href="/game/assets/v28/sprite-review/index.html"
             target="_blank" rel="noopener noreferrer" aria-describedby="sprite-review-v28-status">
             Planches dessinées · revue V28

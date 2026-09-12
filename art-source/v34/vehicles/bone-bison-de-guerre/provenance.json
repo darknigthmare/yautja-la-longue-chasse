@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "bone-bison-de-guerre",
+  "name": "Bone-Bison de guerre",
+  "lore": "La créature est adaptée d’un concept de production attribué à Jerad S. Marantz, consulté via une reproduction secondaire. Son dressage, son équipement et son emploi comme monture de guerre sont des créations du jeu.",
+  "assets": [
+    {
+      "id": "body-colour-concept-r1",
+      "actionId": "body",
+      "label": "Bone Bison — corps de référence couleur",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/body-colour-concept-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/body-colour-concept-r1.png",
+      "originId": "exec-0ba7a5bf-8ffa-44dc-910c-aac038229158.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa",
+      "bytes": 1878717,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572987
+      },
+      "prompt": "Create a faithful 2D painted GAME SPRITE adaptation of the large BONE BISON creature in the supplied colour side-view concept attributed to Jerad S. Marantz. Preserve this exact unusual silhouette: huge high narrow bristly shoulder hump rising steeply from a very LOW long bowed neck, compact massive body tapering to a much lower rear, long downward-curved nose ending near the ground in a huge forward sweeping upward-tipped broad dark keratin horn, small recessed warm eye high behind the nose, dark blue-grey angular overlapping organic armour scutes interspersed with brown leathery/furred grooves along flanks and legs, brown dorsal bristle ridge and a thick short pointed plated tail extending down and behind. This is NOT an Earth buffalo/rhino/elephant: no buffalo head, no round ears, no elephant trunk, no branching antlers, no metal plates. Exactly FOUR stout functional legs, two front and two rear, clearly distinguish all four feet with a slightly staggered idle stance. Anatomy and plate distribution must remain coherent in both orientations. Exactly TWO whole-body side profiles SIDE BY SIDE, first facing RIGHT, second facing LEFT, no perspective depth. Equal scale and baseline. No rider, saddle, reins, armour attachments, human scale figure or ground. Preserve the enormous distinctive curved front horn entirely inside each half. Pure flat MAGENTA #FF00FF background, no shadow. Wide 10-percent clear margins and centre gutter. No text, reference captions, watermark, logos, UI or scenery. Detailed original bitmap rendering based on the concept, not a copy of the reference composition. Do not mix other black design variants into this colour design.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/bone-bison-attributed-1618284.jpg",
+          "sha256": "205c9c48241404d8f8436064edb4665182b4f2eeda47b093fe4ab5ac73e6d0c2"
+        },
+        {
+          "url": "https://yautjaclan.com/news/official-predator-badlands-bone-bison-concept-art-gives-closer-look-at-genna-creature",
+          "role": "Secondary reproduction attributed to Jerad S. Marantz; four views inspected"
+        },
+        {
+          "url": "https://www.instagram.com/p/DSqDF7cgXaG/",
+          "role": "Attributed primary publication link, content unavailable in current tool"
+        }
+      ],
+      "notes": [
+        "Référence couleur choisie : vue de profil 1618284. Les deux concepts noirs ne sont pas fusionnés avec elle.",
+        "Morphologie du concept adaptée ; 1:1 final-film non certifié. Aucun caractère militaire ou dressage canonique n’est déduit du concept."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "body",
+          "reviewGridRect": [
+            0,
+            0,
+            1033,
+            761
+          ],
+          "alpha16Bounds": [
+            30,
+            97,
+            963,
+            548
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 243461,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "body",
+          "reviewGridRect": [
+            1033,
+            0,
+            1034,
+            761
+          ],
+          "alpha16Bounds": [
+            1076,
+            96,
+            962,
+            549
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 243402,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "war-saddle-module-r1",
+      "actionId": "saddle",
+      "label": "Bone Bison — selle de guerre originale",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/war-saddle-module-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/war-saddle-module-r1.png",
+      "originId": "exec-29fe306f-ff6f-4b2b-abea-f3e84aa89201.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "c83ce64cf1f42cbd1179a1c13afb4578e392ddfee2aaa0a487f1a564dd06768c",
+      "bytes": 1731943,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572987
+      },
+      "prompt": "Create an independent removable riding-saddle module designed to fit the Bone Bison body just shown. This equipment is an ORIGINAL GAME INVENTION, not claimed movie canon. Show NO creature or rider. Exactly TWO separate complete saddle assemblies side by side, one oriented RIGHT then the other LEFT. Each has one compact low dark leather seat placed BEHIND the enormous shoulder hump, short bronze mounting rail, open curved padded frame shaped to the declining back, two modest stirrups and broad natural leather belly straps hanging free; avoid rigid bands over the raised hump. No spikes or weapon, no tusks, skulls or anatomy. Side elevation, same scale both views. Original weathered dark bronze Yautja craft, restrained engraved geometric detail, no readable writing. Matte magenta #FF00FF background, no shadows, big blank margins. All strap ends and stirrups completely visible and separated from the other assembly. Detailed painted game bitmap matching the provided creature's art style. Mechanical saddlery attachment must be coherent and all parts connected to the saddle; do not draw a rider-shaped void or animal body filler.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/bone-bison-attributed-1618284.jpg",
+          "sha256": "205c9c48241404d8f8436064edb4665182b4f2eeda47b093fe4ab5ac73e6d0c2"
+        },
+        {
+          "url": "https://yautjaclan.com/news/official-predator-badlands-bone-bison-concept-art-gives-closer-look-at-genna-creature",
+          "role": "Secondary reproduction attributed to Jerad S. Marantz; four views inspected"
+        },
+        {
+          "url": "https://www.instagram.com/p/DSqDF7cgXaG/",
+          "role": "Attributed primary publication link, content unavailable in current tool"
+        },
+        {
+          "path": "public/game/vehicles/v34/bone-bison-de-guerre/body-colour-concept-r1.png",
+          "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+        }
+      ],
+      "notes": [
+        "Référence couleur choisie : vue de profil 1618284. Les deux concepts noirs ne sont pas fusionnés avec elle.",
+        "Morphologie du concept adaptée ; 1:1 final-film non certifié. Aucun caractère militaire ou dressage canonique n’est déduit du concept.",
+        "Pièces d’équipement inventées pour le jeu ; calage sur le corps et animation non encore validés."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "saddle",
+          "reviewGridRect": [
+            0,
+            0,
+            1033,
+            761
+          ],
+          "alpha16Bounds": [
+            98,
+            60,
+            809,
+            589
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 198957,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "saddle",
+          "reviewGridRect": [
+            1033,
+            0,
+            1034,
+            761
+          ],
+          "alpha16Bounds": [
+            1161,
+            60,
+            809,
+            589
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 198416,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "war-flank-guard-module-r1",
+      "actionId": "flank-armor",
+      "label": "Bone Bison — garde de flanc originale",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/war-flank-guard-module-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/war-flank-guard-module-r1.png",
+      "originId": "exec-6980bcdf-c6f8-474d-8339-e0a9cd9c57e7.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "dee3273a92c8d8905d435a033dd1c5e1bc1ff69836320efa7a62972cf2fa2de7",
+      "bytes": 1743296,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572987
+      },
+      "prompt": "Create a separate modular protective FLANK GUARD for the supplied Bone Bison's optional original game war equipment. NO creature, animal anatomy, rider or saddle in this image. Exactly TWO independently illustrated side views side by side: first a RIGHT-facing set, second LEFT-facing corresponding set. Each is one low curved flexible guard with THREE overlapping dark bronze plates, thick leather edge trim and two short upper mounting tabs intended to hang from a saddle just behind the giant shoulder hump and above the legs. Broad curved underside leaves leg motion free. Preserve same three plates and proportions in each view. No horn, tusk, face, skull, dangling chain, weapons or writing. Worn Yautja geometric craftsmanship, fine amber connector light only, not magical. Orthographic side-view 2D painted game bitmap, crisp extractible silhouettes, pure flat magenta #FF00FF background. Wide margins, no shadow, no grid or labels. Design an independent attachment, not armour baked onto the animal. This military use is an original game adaptation rather than a canon assertion.",
+      "references": [
+        {
+          "path": "work/v34/primary-reference-review/bone-bison-attributed-1618284.jpg",
+          "sha256": "205c9c48241404d8f8436064edb4665182b4f2eeda47b093fe4ab5ac73e6d0c2"
+        },
+        {
+          "url": "https://yautjaclan.com/news/official-predator-badlands-bone-bison-concept-art-gives-closer-look-at-genna-creature",
+          "role": "Secondary reproduction attributed to Jerad S. Marantz; four views inspected"
+        },
+        {
+          "url": "https://www.instagram.com/p/DSqDF7cgXaG/",
+          "role": "Attributed primary publication link, content unavailable in current tool"
+        },
+        {
+          "path": "public/game/vehicles/v34/bone-bison-de-guerre/body-colour-concept-r1.png",
+          "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+        }
+      ],
+      "notes": [
+        "Référence couleur choisie : vue de profil 1618284. Les deux concepts noirs ne sont pas fusionnés avec elle.",
+        "Morphologie du concept adaptée ; 1:1 final-film non certifié. Aucun caractère militaire ou dressage canonique n’est déduit du concept.",
+        "Pièces d’équipement inventées pour le jeu ; calage sur le corps et animation non encore validés."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "flank-armor",
+          "reviewGridRect": [
+            0,
+            0,
+            1033,
+            761
+          ],
+          "alpha16Bounds": [
+            137,
+            46,
+            806,
+            653
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 219198,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "flank-armor",
+          "reviewGridRect": [
+            1033,
+            0,
+            1034,
+            761
+          ],
+          "alpha16Bounds": [
+            1124,
+            46,
+            805,
+            653
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 219174,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 3,
+  "acceptedRuntimeClips": 0
+}

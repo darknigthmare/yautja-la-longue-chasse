@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "war-skiff",
+  "name": "War Skiff",
+  "lore": "Proposition originale pour le jeu d’après le catalogue de la conversation véhicules ; aucune fidélité canonique 1:1 revendiquée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "War Skiff — châssis, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/war-skiff/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/war-skiff/identity-r1.png",
+      "originId": "exec-5fa3a9f2-d613-4d08-a565-a5d1dbc68d92.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "9a81d78afcfd608ecb9647341e9f7d9309b7e7dbcef8258ef95a83e290949e37",
+      "bytes": 1527837,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Use the provided open squad-deployment skiff as the structural family reference. Create the WAR SKIFF ORIGINAL GAME ADAPTATION as a new reinforced bare combat chassis in the SAME side-view camera, materials and silhouette family. Exactly TWO full views side by side, left facing RIGHT and right facing LEFT, independent opposing-side details, same scale and wide blank margins. Preserve protected forward pilot well, compact rear engines, underside antigravity nodes and stowed landing assemblies. Replace the six exposed passenger harnesses with a lower enclosed armored central equipment bay, a strong EMPTY turret mounting ring on its roof, an empty forward plasma-cannon mount and a protected empty mine-dispenser hardpoint beneath the rear. No actual turret, cannon, mine, pilot, passengers, trophy, muzzle flash or energy shield because all are separate future layers. Heavy blackened bronze-gunmetal plates and modest cyan status lamps. Vehicle remains a compact atmosphere skiff, not a giant interstellar spacecraft. Pure uniform MAGENTA #FF00FF background, no shadow, checkerboard, text, symbols, labels or scenery. Sharp painted game art, connected plausible machinery in both profiles.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "role": "Recovered user vehicle design brief"
+        },
+        {
+          "path": "art-source/v34/vehicles/skiff-de-deploiement/identity-r1.png",
+          "sha256": "dbcb7d4aafb0cf93d2be8266f21c366db713777eed8c0c9a2b834235561db477"
+        }
+      ],
+      "notes": [
+        "Châssis vide ; armements, passagers et effets doivent rester des modules indépendants.",
+        "Proposition graphique à contrôler en assemblage ; aucune animation ni conduite en jeu validée."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            28,
+            138,
+            1016,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 203006,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1129,
+            139,
+            1015,
+            367
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 203037,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

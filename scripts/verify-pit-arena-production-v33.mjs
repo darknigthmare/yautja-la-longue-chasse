@@ -46,7 +46,7 @@ for (const stage of manifest.stages) {
         assert(Number.isInteger(asset.animation.reducedMotionFrame) && asset.animation.reducedMotionFrame >= 0 && asset.animation.reducedMotionFrame < asset.frames.length);
       }
       for (const frame of asset.frames) {
-        assert.match(frame.path, /^\/game\/sprites\/v33\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34)\/pit-arenas\/[a-z0-9/-]+\.png$/);
         assert(frame.path.startsWith(stage.assetDirectory + "/") && !frame.path.includes(".."));
         assert(!imagePaths.has(frame.path), "Each requested file belongs to one independent sub-plan: " + frame.path);
         imagePaths.add(frame.path);

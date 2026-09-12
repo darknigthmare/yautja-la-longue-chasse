@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "interceptor-enforcer",
+  "name": "Interceptor Enforcer",
+  "lore": "Proposition originale du jeu à partir de la hiérarchie de poursuite du brief. Aucun détail de silhouette canonique revendiqué.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Interceptor Enforcer — châssis, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/interceptor-enforcer/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/interceptor-enforcer/identity-r1.png",
+      "originId": "exec-78ee6057-d374-424c-9dbd-6f06b45c5681.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "c265af10705630181cc95680b5951641cf35da403a413d01e154bcf34196915e",
+      "bytes": 1376968,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Original production vehicle concept for the 2D Yautja fan-game La Longue Chasse. No claim this is an existing canonical film vehicle. Exactly TWO entire side-profile views SIDE BY SIDE; left craft pointing RIGHT and right craft LEFT. SAME construction, separate opposite-side details, identical scale. All parts inside each half with wide blank margins. Pure solid MAGENTA #FF00FF background, sharp painted game bitmap, no floor shadow, text, grid, scenery, rider, prisoners, body, trophy or effect. Dark bronze-black alien metal, restrained pale cyan operational lamps, severe maintained Enforcer industrial design. Base chassis and integrated fixed equipment only: leave removable armaments/cargo separate. A heavy low altitude interception hovercraft bigger than a pursuit motorcycle, enclosed angular single cockpit with opaque armored canopy, two long streamlined flanking antigravity sponsons, strong forward sensor prong, broad rear acceleration turbine, protected side hardpoint sockets for later net launcher and beam weapon. Low fast profile, compact and aerodynamic, small functional stabilizer fins. No giant airplane wings, wheels, helicopter blades, miniguns or deployed beam.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Conception graphique proposée ; les dimensions, statistiques et capacités non précisées par la source restent indéfinies.",
+        "Châssis statique en revue, pas une animation ni un véhicule jouable."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            29,
+            221,
+            822,
+            369
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 189600,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            923,
+            222,
+            822,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 189691,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

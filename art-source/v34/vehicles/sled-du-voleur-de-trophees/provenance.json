@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "sled-du-voleur-de-trophees",
+  "name": "Sled du voleur de trophées",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Fast illicit trophy-smuggling hover-sled PROPOSAL, narrow low prow and empty saddle, elongated empty load bed with closed hidden-compartment seams, four empty trophy clamp brackets, compact jammer antenna and old scavenged thruster housings. Dark gunmetal with worn bone-colored plates, no trophy or bone actually loaded.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Sled du voleur de trophées — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/sled-du-voleur-de-trophees/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/sled-du-voleur-de-trophees/identity-r1.png",
+      "originId": "exec-9fed45f4-b1cd-4118-9a5a-560fbe7d2bc7.png",
+      "width": 1942,
+      "height": 809,
+      "sha256": "22bb2b94afb7bf13b18a28bbcd3e701a8f89c007d42750c3a931da6c84165364",
+      "bytes": 1291637,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571078
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Fast illicit trophy-smuggling hover-sled PROPOSAL, narrow low prow and empty saddle, elongated empty load bed with closed hidden-compartment seams, four empty trophy clamp brackets, compact jammer antenna and old scavenged thruster housings. Dark gunmetal with worn bone-colored plates, no trophy or bone actually loaded.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 9,
+          "recoveredLine": 1132,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen identity candidate. Static review sheet only; no gameplay or animation acceptance implied.",
+        "Both silhouettes are strict opposing side profiles with empty saddle and load bed, but only three unambiguous U-shaped trophy clamp brackets are visible per side instead of the four requested; keep authored-review until the modular hardpoint count is resolved.",
+        "Source and public copies remain byte-identical; color-key transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            971,
+            809
+          ],
+          "alpha16Bounds": [
+            19,
+            214,
+            903,
+            296
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 123859,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            971,
+            0,
+            971,
+            809
+          ],
+          "alpha16Bounds": [
+            1020,
+            215,
+            903,
+            295
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 124031,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

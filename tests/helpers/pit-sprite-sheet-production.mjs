@@ -82,6 +82,7 @@ export async function auditPitSpriteSheetProduction() {
       if (clip.id === "walk" || clip.id === "walk-backward") fighter.velocityX = fighter.facing * (clip.id === "walk" ? 3 : -3);
       else if (clip.id === "crouch") fighter.crouching = true;
       else if (clip.id === "high-guard" || clip.id === "low-guard") fighter.guard = clip.id === "high-guard" ? "high" : "low";
+      else if (clip.id === "pit.stand.hitstun") { fighter.phase = "hitstun"; fighter.stunFrames = 40; }
       else if (clip.id !== "idle") {
         const match = /^pit\.stand\.(light|medium|heavy)\.(startup|active|recovery)$/.exec(clip.id);
         assert.ok(match, "Production audit needs a real engine-state fixture for " + clip.id);

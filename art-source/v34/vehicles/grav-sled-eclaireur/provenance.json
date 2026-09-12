@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "grav-sled-eclaireur",
+  "name": "Grav-Sled éclaireur",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/grav-sled-eclaireur/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/grav-sled-eclaireur/identity-r1.png",
+      "originId": "exec-d593acf4-2172-47f7-80d9-1bc520518919.png",
+      "width": 2079,
+      "height": 756,
+      "sha256": "e977fc0c6d3c72d68f0dcd8db6aef2069fed055bacbb0db68e6f18c4b7f218cb",
+      "bytes": 548871,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1351805,
+        "partial": 219035,
+        "opaque": 884
+      },
+      "prompt": "Create an ORIGINAL fan-game vehicle asset for La Longue Chasse. This is a new game design proposal, not a film vehicle replica. Exactly TWO complete side-profile views arranged SIDE BY SIDE in TWO COLUMNS and ONE ROW: left vehicle faces RIGHT, right vehicle faces LEFT, independently drawn opposite sides with coherent matching construction. Horizontal orthographic side-scrolling camera, not isometric or top view. All vehicle parts fully visible, identical scale, each fits central70percent of its cell with broad empty margins and center gutter. Flat pure MAGENTA #FF00FF background with no shadows, glow spill, checkerboard, text, labels, symbols, grid or environment. No pilot, passengers, bodies, trophies, crates, detachable weapons, exhaust plumes or dust; these belong to independent modules. Sharp detailed painted sci-fi game art, believable serviceable construction, dark weathered metal and restrained bronze accents, no copied logos. Vehicle: GRAV-SLED ECLAIREUR, a small utility antigravity board for scouts and messengers. Very low narrow elongated dark gunmetal standing deck with worn nonslip tread, raised small bronze prow, two foot retention brackets, compact recessed blue-green antigravity emitters beneath fore and aft ends, discreet side status lamps and segmented removable service panels. No wheels, no handlebars, no seat, no cockpit, no turrets. Distinct simple agile utility silhouette, not a hoverbike with parts missing. Deck carries one standing hunter but do not draw that person. Both side views must match the same emitter and bracket count.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            394,
+            409
+          ],
+          "role": "Partial original game design brief; styling details remain proposals."
+        }
+      ],
+      "notes": [
+        "Original game design based on the recovered description, not film canon and not a verified 1:1 replica.",
+        "Independent vehicle body: rider, equipment and effects remain separate production work."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1039,
+            756
+          ],
+          "alpha16Bounds": [
+            59,
+            272,
+            932,
+            179
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 101584,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1039,
+            0,
+            1040,
+            756
+          ],
+          "alpha16Bounds": [
+            1088,
+            272,
+            933,
+            179
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 101553,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "antigrav-activation-r1",
+      "actionId": "antigrav-activation",
+      "label": "Activation et arrêt antigrav · 4 phases · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/grav-sled-eclaireur/antigrav-activation-r1.png",
+      "publicPath": "/game/vehicles/v34/grav-sled-eclaireur/antigrav-activation-r1.png",
+      "originId": "exec-7798b598-bed8-45ab-be6a-2751b0647508.png",
+      "width": 2078,
+      "height": 757,
+      "sha256": "8cf0d581cf81dfdd3a67cb66e152f93b50ebbf3ca02ebfc2a4a0851d0bc9129a",
+      "bytes": 1278138,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573046
+      },
+      "prompt": "Use the immediately preceding Grav-Sled Éclaireur identity as the exact design reference. Preserve the same very low narrow elongated dark gunmetal standing deck, worn nonslip tread, small raised bronze prow, exactly two foot-retention brackets, compact recessed cyan-blue antigravity emitters under fore and aft ends, discreet side lamps and segmented service panels. No wheel, handlebar, seat, cockpit, weapon, cargo, rider or person. Create a clean 2D game animation source sheet on pure uniform MAGENTA #FF00FF. EXACTLY EIGHT complete vehicle drawings in a regular 4 COLUMNS by 2 ROWS arrangement, no border or grid line. TOP ROW has four independently drawn strict side profiles facing RIGHT. BOTTOM ROW has four independently drawn strict side profiles facing LEFT. The left-facing row must be independently constructed with coherent opposite-side panels, never a mirrored copy. Every cell has the same vehicle scale, full silhouette, generous blank margin and consistent component count. No text, labels, numbers, arrows, floor, shadow, scenery, dust, exhaust, pilot, UI or watermark. ANIMATION: ANTIGRAV ACTIVATION AND STOP, four ordered phases per orientation. Frame 1 fully powered off: cyan emitters dark and chassis at lowest neutral height. Frame 2 ignition: emitters faint cyan and chassis beginning to rise slightly. Frame 3 stable hover: emitters clearly lit with restrained cyan core and chassis at its highest of these subtle offsets. Frame 4 shutdown: emitters dimming and chassis settling back toward low height. Keep the hull shape rigid and identical; only emitter light intensity and a small vertical suspension/hover offset change. No light beam, aura or particles. These are source frames only, not a contact-sheet mockup.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/grav-sled-eclaireur/identity-r1.png",
+          "sha256": "e977fc0c6d3c72d68f0dcd8db6aef2069fed055bacbb0db68e6f18c4b7f218cb"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : huit cellules présentes, quatre profils droits en rangée haute et quatre profils gauches indépendamment dessinés en rangée basse. Intensité des deux émetteurs et hauteur varient sans pilote.",
+        "Pivots, hauteur au sol et cadence restent à mesurer après découpe ; aucune cellule n’est acceptée comme frame runtime.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key exécuté par processHunterSpriteTransparency dans la revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "power-off",
+          "reviewGridRect": [
+            0,
+            0,
+            519,
+            378
+          ],
+          "alpha16Bounds": [
+            38,
+            199,
+            465,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26312,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "ignition",
+          "reviewGridRect": [
+            519,
+            0,
+            520,
+            378
+          ],
+          "alpha16Bounds": [
+            553,
+            192,
+            462,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25987,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "stable-hover",
+          "reviewGridRect": [
+            1039,
+            0,
+            519,
+            378
+          ],
+          "alpha16Bounds": [
+            1065,
+            188,
+            462,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 25789,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "shutdown",
+          "reviewGridRect": [
+            1558,
+            0,
+            520,
+            378
+          ],
+          "alpha16Bounds": [
+            1577,
+            199,
+            463,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26222,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "power-off",
+          "reviewGridRect": [
+            0,
+            378,
+            519,
+            379
+          ],
+          "alpha16Bounds": [
+            37,
+            492,
+            467,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 27024,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "ignition",
+          "reviewGridRect": [
+            519,
+            378,
+            520,
+            379
+          ],
+          "alpha16Bounds": [
+            552,
+            487,
+            466,
+            94
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26769,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "stable-hover",
+          "reviewGridRect": [
+            1039,
+            378,
+            519,
+            379
+          ],
+          "alpha16Bounds": [
+            1064,
+            480,
+            464,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26411,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "shutdown",
+          "reviewGridRect": [
+            1558,
+            378,
+            520,
+            379
+          ],
+          "alpha16Bounds": [
+            1576,
+            491,
+            466,
+            93
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 27110,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "drive-tilt-r1",
+      "actionId": "drive-tilt",
+      "label": "Inclinaison de conduite · 4 phases · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/grav-sled-eclaireur/drive-tilt-r1.png",
+      "publicPath": "/game/vehicles/v34/grav-sled-eclaireur/drive-tilt-r1.png",
+      "originId": "exec-d7160d7e-970a-43e2-8273-aff6f1bf97dc.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "693921c2e959181037d1bea91a96e2e8d24c469a2e73daed2185c312454fab02",
+      "bytes": 1208603,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Use the immediately preceding Grav-Sled Éclaireur identity as the exact design reference. Preserve the same very low narrow elongated dark gunmetal standing deck, worn nonslip tread, small raised bronze prow, exactly two foot-retention brackets, compact recessed cyan-blue antigravity emitters under fore and aft ends, discreet side lamps and segmented service panels. No wheel, handlebar, seat, cockpit, weapon, cargo, rider or person. Create a clean 2D game animation source sheet on pure uniform MAGENTA #FF00FF. EXACTLY EIGHT complete vehicle drawings in a regular 4 COLUMNS by 2 ROWS arrangement, no border or grid line. TOP ROW has four independently drawn strict side profiles facing RIGHT. BOTTOM ROW has four independently drawn strict side profiles facing LEFT. The left-facing row must be independently constructed with coherent opposite-side panels, never a mirrored copy. Every cell has the same vehicle scale, full silhouette, generous blank margin and consistent component count. No text, labels, numbers, arrows, floor, shadow, scenery, dust, exhaust, pilot, UI or watermark. ANIMATION: DRIVING PITCH/TILT, four ordered poses per orientation while antigrav emitters stay steadily and identically lit. Frame 1 modest nose-down braking pitch, frame 2 level neutral, frame 3 modest nose-up acceleration pitch, frame 4 small rebound toward level. Rotate the entire rigid sled around one consistent central pivot; do not bend, stretch or redesign the hull. Keep motion subtle and readable for side-scrolling gameplay, with all parts inside every cell. No speed lines, ground, dust, trail, glow spill or rider. These are source frames only, not a contact-sheet mockup.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/grav-sled-eclaireur/identity-r1.png",
+          "sha256": "e977fc0c6d3c72d68f0dcd8db6aef2069fed055bacbb0db68e6f18c4b7f218cb"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : huit cellules et deux rangées opposées complètes ; quatre inclinaisons rigides lisibles, sans cavalier ni effet de vitesse.",
+        "L’axe de rotation apparent doit être normalisé au même pivot après découpe ; aucune cellule n’est acceptée comme frame runtime.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key exécuté par processHunterSpriteTransparency dans la revue V34.",
+        "Audit de cadrage : la cellule 0 conserve 5 pixels alpha>16 sur sa frontière de cellule, alors que les sept autres cellules sont à 0. Statut maintenu authored-review ; recadrage/pivot obligatoire avant acceptation runtime."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "brake-nose-down",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            31,
+            217,
+            412,
+            102
+          ],
+          "gridBorderPixels": 5,
+          "visiblePixels": 21066,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "level",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            469,
+            218,
+            406,
+            84
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20405,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "acceleration-nose-up",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            901,
+            207,
+            401,
+            97
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20151,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "rebound",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1344,
+            215,
+            405,
+            85
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20363,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "brake-nose-down",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            30,
+            604,
+            409,
+            92
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 21011,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "level",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            467,
+            601,
+            406,
+            83
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20804,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "acceleration-nose-up",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            909,
+            596,
+            404,
+            94
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20608,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "rebound",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1347,
+            602,
+            407,
+            82
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20627,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 3,
+  "acceptedRuntimeClips": 0
+}

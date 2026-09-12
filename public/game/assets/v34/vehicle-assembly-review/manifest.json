@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "title": "Revue de montage véhicules V34",
+  "state": "review-only",
+  "playable": false,
+  "sourceBitmapsPreserved": true,
+  "transparencyPipeline": "processHunterSpriteTransparency",
+  "canvas": {
+    "width": 1200,
+    "height": 800,
+    "safeMargin": 18
+  },
+  "resources": [
+    {
+      "id": "seat-base-detached-r1",
+      "label": "Éjection — siège sans bras mobile",
+      "src": "/game/vehicles/v34/sphere-dejection-atmospherique/seat-base-detached-r1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "5f699879bef3b4894b6f04f52332e32d495eb8849754de309d1443dfa7898796",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "controller-arch-states-r1",
+      "label": "Éjection — bras de commande articulé",
+      "src": "/game/vehicles/v34/sphere-dejection-atmospherique/controller-arch-states-r1.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "25c57f378f8f2cde8d43f24a801a0947390be5748dcbd6f737d2fe84193b0067",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "body-colour-concept-r1",
+      "label": "Bone Bison — corps de référence couleur",
+      "src": "/game/vehicles/v34/bone-bison-de-guerre/body-colour-concept-r1.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "war-saddle-module-r1",
+      "label": "Bone Bison — selle de guerre originale",
+      "src": "/game/vehicles/v34/bone-bison-de-guerre/war-saddle-module-r1.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "c83ce64cf1f42cbd1179a1c13afb4578e392ddfee2aaa0a487f1a564dd06768c",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "war-flank-guard-module-r1",
+      "label": "Bone Bison — garde de flanc originale",
+      "src": "/game/vehicles/v34/bone-bison-de-guerre/war-flank-guard-module-r1.png",
+      "width": 2067,
+      "height": 761,
+      "sha256": "dee3273a92c8d8905d435a033dd1c5e1bc1ff69836320efa7a62972cf2fa2de7",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    }
+  ],
+  "assemblies": [
+    {
+      "id": "ejection-seat-controller",
+      "name": "Sphère d’éjection atmosphérique · siège et bras",
+      "status": "authored-review",
+      "calibrationStatus": "static-pivot-review",
+      "playable": false,
+      "facings": [
+        "right"
+      ],
+      "defaultFacing": "right",
+      "notes": [
+        "Le bras source ne fournit que la vue droite : aucune vue gauche n’est simulée ou miroir.",
+        "Le corps du siège reste fixe ; les quatre dessins du bras utilisent chacun un pivot manuel sur la douille arrière.",
+        "Montage de revue uniquement : interpolation, collisions, coque, pilote et animation jouable restent absents."
+      ],
+      "anchor": [
+        620,
+        710
+      ],
+      "base": {
+        "resourceId": "seat-base-detached-r1",
+        "scale": 0.82,
+        "frameByFacing": {
+          "right": {
+            "facing": "right",
+            "phase": "seat-base",
+            "sourceRect": [
+              0,
+              0,
+              887,
+              887
+            ],
+            "visibleRect": [
+              99,
+              301,
+              725,
+              473
+            ]
+          }
+        },
+        "sourcePivot": [
+          461.5,
+          774
+        ]
+      },
+      "sockets": {
+        "controller": {
+          "sourcePoint": [
+            184,
+            344
+          ]
+        }
+      },
+      "modules": [
+        {
+          "id": "controller-arm",
+          "label": "Bras de commande",
+          "resourceId": "controller-arch-states-r1",
+          "defaultEnabled": true,
+          "socketId": "controller",
+          "scale": 0.48,
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "stowed",
+                "sourceRect": [
+                  0,
+                  0,
+                  543,
+                  724
+                ],
+                "visibleRect": [
+                  76,
+                  334,
+                  390,
+                  300
+                ],
+                "sourcePivot": [
+                  145,
+                  580
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "opening",
+                "sourceRect": [
+                  543,
+                  0,
+                  543,
+                  724
+                ],
+                "visibleRect": [
+                  65,
+                  177,
+                  395,
+                  457
+                ],
+                "sourcePivot": [
+                  130,
+                  580
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "extended",
+                "sourceRect": [
+                  1086,
+                  0,
+                  543,
+                  724
+                ],
+                "visibleRect": [
+                  40,
+                  91,
+                  407,
+                  543
+                ],
+                "sourcePivot": [
+                  106,
+                  580
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "control-position",
+                "sourceRect": [
+                  1629,
+                  0,
+                  543,
+                  724
+                ],
+                "visibleRect": [
+                  18,
+                  203,
+                  476,
+                  431
+                ],
+                "sourcePivot": [
+                  78,
+                  580
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "animation": {
+        "moduleId": "controller-arm",
+        "label": "Déploiement du bras",
+        "fps": 2.2
+      }
+    },
+    {
+      "id": "bone-bison-war-fit",
+      "name": "Bone Bison · diagnostic des modules",
+      "status": "authored-review",
+      "calibrationStatus": "common-origin-unregistered",
+      "playable": false,
+      "facings": [
+        "right",
+        "left"
+      ],
+      "defaultFacing": "right",
+      "notes": [
+        "La superposition naïve à origine et échelle communes recouvre la silhouette ; elle ne valide pas le calage et n’évalue pas encore les transformations propres à chaque module.",
+        "Selle et garde restent désactivées par défaut et ne sont activables que pour diagnostiquer l’absence d’enregistrement commun.",
+        "Les deux orientations viennent de dessins distincts ; aucun côté n’est obtenu par miroir logiciel."
+      ],
+      "anchor": [
+        600,
+        710
+      ],
+      "base": {
+        "resourceId": "body-colour-concept-r1",
+        "scale": 0.91,
+        "frameByFacing": {
+          "right": {
+            "facing": "right",
+            "phase": "body",
+            "sourceRect": [
+              0,
+              0,
+              1033,
+              761
+            ],
+            "visibleRect": [
+              30,
+              97,
+              963,
+              548
+            ]
+          },
+          "left": {
+            "facing": "left",
+            "phase": "body",
+            "sourceRect": [
+              1033,
+              0,
+              1034,
+              761
+            ],
+            "visibleRect": [
+              43,
+              96,
+              962,
+              549
+            ]
+          }
+        },
+        "sourcePivot": [
+          516.5,
+          645
+        ]
+      },
+      "modules": [
+        {
+          "id": "war-saddle",
+          "label": "Selle de guerre",
+          "resourceId": "war-saddle-module-r1",
+          "defaultEnabled": false,
+          "scale": 0.91,
+          "anchorMode": "base-grid",
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "saddle",
+                "sourceRect": [
+                  0,
+                  0,
+                  1033,
+                  761
+                ],
+                "visibleRect": [
+                  98,
+                  60,
+                  809,
+                  589
+                ]
+              }
+            ],
+            "left": [
+              {
+                "facing": "left",
+                "phase": "saddle",
+                "sourceRect": [
+                  1033,
+                  0,
+                  1034,
+                  761
+                ],
+                "visibleRect": [
+                  128,
+                  60,
+                  809,
+                  589
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "flank-guard",
+          "label": "Garde de flanc",
+          "resourceId": "war-flank-guard-module-r1",
+          "defaultEnabled": false,
+          "scale": 0.91,
+          "anchorMode": "base-grid",
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "flank-armor",
+                "sourceRect": [
+                  0,
+                  0,
+                  1033,
+                  761
+                ],
+                "visibleRect": [
+                  137,
+                  46,
+                  806,
+                  653
+                ]
+              }
+            ],
+            "left": [
+              {
+                "facing": "left",
+                "phase": "flank-armor",
+                "sourceRect": [
+                  1033,
+                  0,
+                  1034,
+                  761
+                ],
+                "visibleRect": [
+                  91,
+                  46,
+                  805,
+                  653
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

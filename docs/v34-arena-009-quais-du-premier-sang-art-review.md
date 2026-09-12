@@ -1,0 +1,34 @@
+# Quais du Premier Sang — revue du kit V34
+
+Proposition originale du projet, fondée sur le catalogue local et pitFirstEdition. La conversation détaillée manquante n'est pas présentée comme retrouvée.
+
+Contexte : Anneau d'amarrage entre navettes de chasse
+
+Direction visuelle : Cold blue orbital light, dark burnished Yautja alloy, restrained red navigation lamps, warm worn bronze fasteners.
+
+Quatorze images OpenAI intégrées à la chaîne de production, chacune générée seule et conservée sans retouche de pixels. Les prompts, originaux et SHA complets sont archivés sous art-source/v34/pit-arenas/arena-009-quais-du-premier-sang. Les statuts reviewed concernent ici l'inspection des images individuelles et de leurs fenêtres de rendu ; le kit reste désactivé avant sa recette de composition.
+
+| Plan | Image distincte | Dimensions | Transparence | SHA court |
+|---|---|---|---|---|
+| P0 | p0-a-depth | 1536×1024 | opaque prévu | c584bfb3ae1e |
+| P1 | p1-a-distant-left | 1774×887 | alpha réel | de632e467148 |
+| P1 | p1-b-distant-right | 1774×887 | alpha réel | 8cb84c076c9c |
+| P2 | p2-a-support-left | 1024×1536 | alpha réel | a0948d91bf39 |
+| P2 | p2-b-support-right | 1024×1536 | alpha réel | 9b5589130e46 |
+| P2 | p2-c-central-structure | 1374×1145 | alpha réel | f4d8bca1ba1d |
+| P3 | p3-a-prop-left | 1536×1024 | alpha réel | c4ae7ccaae62 |
+| P3 | p3-b-prop-right | 1536×1024 | alpha réel | 85a95f142822 |
+| P3 | p3-c-light-left | 1024×1536 | alpha réel | 666d9f7ce84f |
+| P3 | p3-d-light-right | 1024×1536 | alpha réel | 8cd294c5ab3f |
+| P4 | p4-a-contact-floor | 2172×724 | alpha réel | 8000eb73a939 |
+| P4 | p4-b-front-fascia | 2172×724 | alpha réel | ef6f36657bca |
+| P5 | p5-a-foreground-left | 1024×1536 | alpha réel | 3a2f9560323d |
+| P5 | p5-b-foreground-right | 1223×1286 | alpha réel | af8cc67c9636 |
+
+Les ouvertures sont transparentes, les accessoires et luminaires ne sont pas imprimés dans le fond. Les supports proches sont ancrés verticalement au sol réel ; les objets suspendus sont alignés par leur sommet. Le sol de contact est au facteur 1, avec une première ligne opaque mesurée. Les avant-plans s'effacent devant un combattant. Les 14 dessins sont fixes : aucune animation nouvelle n'est annoncée pour ce kit.
+
+Kit de production pour une entrée concept du catalogue. Il reste non jouable : aucune attribution de runtimeArenaId, aucune activation runtime. La recette utilise un étalon géométrique séparé du registre du jeu.
+
+## Revue de composition non jouable
+
+Les captures centre, rapprochée et coins gauche/droit ont été inspectées avec les vrais PNG et deux combattants du projet. Sol et appuis sont cohérents, les ouvertures gardent leur transparence et les éléments suspendus conservent leur ancrage. La recette docs/v34-arena-009-quais-du-premier-sang-renderer-qa.json valide six plans, huit scénarios et le cadrage mobile, sans erreur ni changement du combat ou de la caméra. Cette prévisualisation utilise uniquement dans le harnais la géométrie de THE PIT comme gabarit de contrôle. Elle ne valide ni le level design final ni un accès dans le jeu : statut concept, aucun identifiant d'arène runtime, runtimeEnabled=false, images reviewed et integration=null sont conservés.

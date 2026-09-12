@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "chariot-de-larbitre",
+  "name": "Chariot de l’Arbitre",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Heavy ceremonial Enforcer command hovercraft PROPOSAL for maximum pursuit tier, broad armored chassis, elevated EMPTY protected command seat under a short arched canopy, symmetrical reinforced forward prow, tall restrained geometric bronze crest, recessed cyan antigravity emitters and EMPTY equipment hardpoints. No crown, humanoid face decoration, banners, skulls, operator or weapons. Severe prestigious practical machine.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Chariot de l’Arbitre — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/chariot-de-larbitre/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/chariot-de-larbitre/identity-r1.png",
+      "originId": "exec-729b3a3b-a145-4272-9796-cde8eb5dddfb.png",
+      "width": 2089,
+      "height": 753,
+      "sha256": "3e09a138ff7270765c89b152adf41beb8e9d16a6f302f0ecbbcb64c944d6d2a7",
+      "bytes": 1150744,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1089454,
+        "partial": 481904,
+        "opaque": 1659
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Heavy ceremonial Enforcer command hovercraft PROPOSAL for maximum pursuit tier, broad armored chassis, elevated EMPTY protected command seat under a short arched canopy, symmetrical reinforced forward prow, tall restrained geometric bronze crest, recessed cyan antigravity emitters and EMPTY equipment hardpoints. No crown, humanoid face decoration, banners, skulls, operator or weapons. Severe prestigious practical machine.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 10,
+          "recoveredLine": 1136,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen identity candidate. Static review sheet only; no gameplay or animation acceptance implied.",
+        "Strict opposing side silhouettes; protected command seat, hardpoints and canopy remain empty, with no operator, weapon, banner, skull or crown. Background/keyability must be decided from decoded pixel metadata rather than the preview background.",
+        "Source and public copies remain byte-identical; color-key transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1044,
+            753
+          ],
+          "alpha16Bounds": [
+            39,
+            123,
+            986,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 230180,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1044,
+            0,
+            1045,
+            753
+          ],
+          "alpha16Bounds": [
+            1065,
+            123,
+            986,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 230260,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

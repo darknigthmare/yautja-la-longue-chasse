@@ -1,0 +1,7225 @@
+{
+  "schemaVersion": 1,
+  "id": "celtic-production-v34",
+  "fighterId": "celtic",
+  "checkedAt": "2026-09-12T22:08:17.822Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/sprites/v5/film-plates/celtic.png",
+    "sha256": "daf6110f7a2241d2f2169530be905da848d02ea796fac07e3661c2ce28ca9f4a",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 16,
+  "generatedPoseSamples": 128,
+  "validatedRuntimeClips": 26,
+  "acceptedSourcePages": 7,
+  "runtimeDrawings": 50,
+  "actionSequencesIncludingFacings": 14,
+  "counts": {
+    "validated": 7,
+    "authoredReview": 1,
+    "rejected": 8
+  },
+  "runtimeLimitations": [
+    "Idle : génération refusée par le fournisseur, aucune image produite ; les états non couverts reviennent à la présentation bitmap historique.",
+    "Marche avant : initiale et réparation rejetées pour contacts et appuis répétés.",
+    "Saut/réception : planche de revue, pas assez de dessins par phase moteur ; non intégrée.",
+    "Light et medium : récupération avec une seule pose neutre tenue ; transition intermédiaire manquante.",
+    "Autres gardes, attaques aériennes/accroupies et états non listés restent manquants.",
+    "Référence V5 historique du projet, non certifiée cinéma 1:1 ; quelques pixels magenta fins persistent."
+  ],
+  "assets": [
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-walk-forward-v34.png",
+      "originId": "exec-47588ce8-decf-404f-9be7-2a7f4072492e.png",
+      "sha256": "3ad97b6da49bf1200a4cb0f2faa3bd44a4c2401991c0e5bde42f3679d1b47334",
+      "bytes": 2088632,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward contacts1/3 and passages2/4 repeat the same anatomical leg; gait not accepted. Mask, chest armor, two-ended spear and empty right hand remain coherent with V5."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1236644,
+        "fringePixels": 24226
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45040,
+          "alpha16Bounds": [
+            72,
+            56,
+            284,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "52d9ab97a5e56a4703e7f41ffb6acf46b5a3ac8a8abb261f14f1310ffd37a389",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41649,
+          "alpha16Bounds": [
+            446,
+            53,
+            252,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 79,
+          "pixelDigest": "1286d3a5b632c9ccc5141713257bcc6c3202c149176d8a92c34556f0bed25543",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43638,
+          "alpha16Bounds": [
+            799,
+            57,
+            255,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 75,
+          "pixelDigest": "df55751820b9360c21029bcb47197be9afcf0e47d6e64cbe9252f530ef056d7f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41132,
+          "alpha16Bounds": [
+            1174,
+            55,
+            248,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "c8436b743e854789d094e09670540d36fd4837dc6c2d66205b5d65a85e8a0ef4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42857,
+          "alpha16Bounds": [
+            106,
+            553,
+            243,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 11,
+          "pixelDigest": "353d4229752eaae6f350ef0caab58d9e801643a6c1575d56b594b59dbfb2299f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39730,
+          "alpha16Bounds": [
+            470,
+            548,
+            237,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "9bd17e30a4307d3245475ee7f6e62b18e7586074568404169cfb2341beba7d54",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42163,
+          "alpha16Bounds": [
+            835,
+            548,
+            247,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 166,
+          "pixelDigest": "d7ed39706414e2d77d9d9c2964639fd57398f1887c94553733831bd2370e4735",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40011,
+          "alpha16Bounds": [
+            1204,
+            548,
+            242,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "023d900464d4021105f2ab840d99335553e544e3291380b7084f07689e7a366d",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            69,
+            53,
+            290,
+            416
+          ],
+          "pivot": [
+            124,
+            412
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            443,
+            50,
+            258,
+            420
+          ],
+          "pivot": [
+            126.5,
+            416
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            796,
+            54,
+            261,
+            415
+          ],
+          "pivot": [
+            126.5,
+            411
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            1171,
+            52,
+            254,
+            418
+          ],
+          "pivot": [
+            130,
+            414
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            103,
+            550,
+            249,
+            403
+          ],
+          "pivot": [
+            129,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            467,
+            545,
+            243,
+            409
+          ],
+          "pivot": [
+            97,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            832,
+            545,
+            253,
+            407
+          ],
+          "pivot": [
+            128.5,
+            403
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "celtic-walk-forward",
+          "rect": [
+            1201,
+            545,
+            248,
+            409
+          ],
+          "pivot": [
+            98,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-walk-backward-v34.png",
+      "originId": "exec-c012a722-61bc-4024-9950-cbba2f78da6b.png",
+      "sha256": "506b13a115c77333d43593fe153ffdb1df5628be62f1070f67ef8c07c8003cb7",
+      "bytes": 2061098,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Opposite contact overlaps appear in1/3, but2/4 repeat the raised near leg. Second-column support requires targeted repair; no runtime acceptance yet. Both spear tips and hands visible."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1235842,
+        "fringePixels": 21593
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45886,
+          "alpha16Bounds": [
+            68,
+            76,
+            286,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 162,
+          "pixelDigest": "985168bbfcfb78a805e3ae862566fd061c926c2868d88aad9542fc222444dfe6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41108,
+          "alpha16Bounds": [
+            470,
+            61,
+            239,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "0269fdc39930d2f92d91f2caeb46b66f3b03887b330022ba085bed9c5ea1bdf7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43725,
+          "alpha16Bounds": [
+            847,
+            63,
+            248,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "e9b28ca7db8ca9bc8fd3a5e4b4ec80182a669107aa98146641ecd05c63c861a3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40817,
+          "alpha16Bounds": [
+            1233,
+            60,
+            241,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 85,
+          "pixelDigest": "5b848133fa5c3ecd84b9daebfece630029464c78ceca28ca0cee2cbd303c2efd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42873,
+          "alpha16Bounds": [
+            70,
+            559,
+            254,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 162,
+          "pixelDigest": "4045c2de70c852bc0630b6433d4cd4d7e7e34b33d5a13b4a8636b766b80f5764",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40448,
+          "alpha16Bounds": [
+            459,
+            541,
+            232,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 66,
+          "pixelDigest": "7cb1486ddfe421ac9372d9b44bc855d4ce5b9a4412d31145d0eb15e80dcf9807",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43334,
+          "alpha16Bounds": [
+            833,
+            546,
+            241,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 166,
+          "pixelDigest": "88a1784800f2b64732df099dc7278a1cf77fee7df78db951d921eed821abfb0f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38831,
+          "alpha16Bounds": [
+            1224,
+            545,
+            234,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 161,
+          "pixelDigest": "bee1b49bee10c79ea5793f31fae4bb74b5166a99bbf430bc23b8d886c7e5471c",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            65,
+            73,
+            292,
+            388
+          ],
+          "pivot": [
+            107,
+            384
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            467,
+            58,
+            245,
+            397
+          ],
+          "pivot": [
+            100,
+            393
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            844,
+            60,
+            254,
+            396
+          ],
+          "pivot": [
+            114,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            1230,
+            57,
+            247,
+            398
+          ],
+          "pivot": [
+            101.5,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            67,
+            556,
+            260,
+            386
+          ],
+          "pivot": [
+            154,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            456,
+            538,
+            238,
+            402
+          ],
+          "pivot": [
+            143.5,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            830,
+            543,
+            247,
+            398
+          ],
+          "pivot": [
+            126,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "celtic-walk-backward",
+          "rect": [
+            1221,
+            542,
+            240,
+            398
+          ],
+          "pivot": [
+            137.5,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-crouch-v34.png",
+      "originId": "exec-491917d9-d9f3-4cfa-8b17-cdfc014b4514.png",
+      "sha256": "8cc00162aa5ebe58903e96d192cb358f38887b29a9d03f5b88a25d444ef02701",
+      "bytes": 2036870,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "First three drawings enter and hold crouch; rising fourth excluded."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1237828,
+        "fringePixels": 22318
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47829,
+          "alpha16Bounds": [
+            80,
+            67,
+            252,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 93,
+          "pixelDigest": "9a5a2587f30cbaad0b2f477eed96ab99415fffdd60983ac4c1f1ae4be661d629",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half-crouch",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42500,
+          "alpha16Bounds": [
+            473,
+            89,
+            231,
+            373
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 249,
+          "pixelDigest": "1ca2977a8424b668a57fc2df61528af883086faa872385db6af0c5e6ed7c3cdd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep-crouch",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 35033,
+          "alpha16Bounds": [
+            856,
+            124,
+            200,
+            338
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "df99d4ead3c835431b780d564b3e431dc158caac14369d7387bf99ef3c024b6f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42826,
+          "alpha16Bounds": [
+            1220,
+            77,
+            224,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 240,
+          "pixelDigest": "54f0480c343c21bfcc470332f13a95dcb7ee194ace0b5d96961f13f9641df2de",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46129,
+          "alpha16Bounds": [
+            85,
+            562,
+            230,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 58,
+          "pixelDigest": "5f17d19419b13128f6be8b6be8ee876fb43ab506815ecb12ad932bcb8837428f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half-crouch",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41800,
+          "alpha16Bounds": [
+            468,
+            573,
+            224,
+            370
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "5e83acc328b7358ef57e793284567fe068de0efd8d49598d94d923b8bd654994",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep-crouch",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 35072,
+          "alpha16Bounds": [
+            851,
+            608,
+            205,
+            335
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 76,
+          "pixelDigest": "bb16edc1e4b127263fd9891a971d23c12e32a98078b49161cf1bb7407a852600",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43847,
+          "alpha16Bounds": [
+            1215,
+            562,
+            225,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 206,
+          "pixelDigest": "fede4ac66effea9ffe9bdd94e195fdb3ab8faa7c1f8d146342207693a5787134",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "celtic-crouch",
+          "rect": [
+            77,
+            64,
+            258,
+            401
+          ],
+          "pivot": [
+            117,
+            397
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "celtic-crouch",
+          "rect": [
+            470,
+            86,
+            237,
+            379
+          ],
+          "pivot": [
+            111.5,
+            375
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "celtic-crouch",
+          "rect": [
+            853,
+            121,
+            206,
+            344
+          ],
+          "pivot": [
+            102,
+            340
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "celtic-crouch",
+          "rect": [
+            82,
+            559,
+            236,
+            387
+          ],
+          "pivot": [
+            123,
+            383
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "celtic-crouch",
+          "rect": [
+            465,
+            570,
+            230,
+            376
+          ],
+          "pivot": [
+            121,
+            372
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "celtic-crouch",
+          "rect": [
+            848,
+            605,
+            211,
+            341
+          ],
+          "pivot": [
+            109.5,
+            337
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                77,
+                64,
+                258,
+                401
+              ],
+              "pivot": [
+                117,
+                397
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                470,
+                86,
+                237,
+                379
+              ],
+              "pivot": [
+                111.5,
+                375
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                853,
+                121,
+                206,
+                344
+              ],
+              "pivot": [
+                102,
+                340
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                82,
+                559,
+                236,
+                387
+              ],
+              "pivot": [
+                123,
+                383
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                465,
+                570,
+                230,
+                376
+              ],
+              "pivot": [
+                121,
+                372
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-crouch",
+              "rect": [
+                848,
+                605,
+                211,
+                341
+              ],
+              "pivot": [
+                109.5,
+                337
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.092Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-jump-land-v34.png",
+      "originId": "exec-0aac326c-705b-4503-aea6-c625675229bc.png",
+      "sha256": "76397b75f8229b333784502817582c3caf779c8cc946341f016f9b7ed1bc7f32",
+      "bytes": 2071772,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four distinct launch/rise/fall/landing drawings in each facing, complete anatomy and spear tips. Review-only: one drawing per jump phase is not a complete runtime jumping library."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1235366,
+        "fringePixels": 21679
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "launch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43903,
+          "alpha16Bounds": [
+            59,
+            85,
+            245,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 282,
+          "pixelDigest": "6fd1bf033c8e1242ed77c4482de3980623eec4b95c140ff418dc46a3da9f2220",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "rise",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40353,
+          "alpha16Bounds": [
+            434,
+            20,
+            236,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 300,
+          "pixelDigest": "5cc86adbaeee33a96d93659746c51490fe964a6178d006d02961871429ae3e1b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "fall",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46170,
+          "alpha16Bounds": [
+            791,
+            40,
+            261,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 252,
+          "pixelDigest": "873fcb337c845baa88e9062e2abe8a9d3fb4d3c7198b3b0293ce1874e2d21231",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42747,
+          "alpha16Bounds": [
+            1182,
+            126,
+            267,
+            374
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 203,
+          "pixelDigest": "35c8c7772ebfc44221088ae95e0f0a2c0e8484ae06d3b9dae2dbe3672c42f209",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "launch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41821,
+          "alpha16Bounds": [
+            74,
+            594,
+            237,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 242,
+          "pixelDigest": "38f7482fa9e314d0657245f84cc428c810574be35925aab4ff6f8a95dd3cd7e2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "rise",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39247,
+          "alpha16Bounds": [
+            480,
+            519,
+            228,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 244,
+          "pixelDigest": "c12f881f186b87cd039006c4ba0b0898d3e670f482184667ed2af014e583e2c1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "fall",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43639,
+          "alpha16Bounds": [
+            853,
+            538,
+            240,
+            428
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 227,
+          "pixelDigest": "d1a135425e6679df8da6551a6f87d4010ecb2d48b8da7219e84e967350f1a9a6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39618,
+          "alpha16Bounds": [
+            1222,
+            639,
+            252,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "478887f59f8b62c3f27824037af6fab16cc1087edac1775e41a497248195d876",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            56,
+            82,
+            251,
+            420
+          ],
+          "pivot": [
+            116,
+            416
+          ],
+          "durationTicks": 10,
+          "phase": "launch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            431,
+            17,
+            242,
+            397
+          ],
+          "pivot": [
+            126,
+            393
+          ],
+          "durationTicks": 10,
+          "phase": "rise",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            788,
+            37,
+            267,
+            441
+          ],
+          "pivot": [
+            130,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "fall",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            1179,
+            123,
+            273,
+            380
+          ],
+          "pivot": [
+            138,
+            376
+          ],
+          "durationTicks": 10,
+          "phase": "landing",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            71,
+            591,
+            243,
+            407
+          ],
+          "pivot": [
+            129.5,
+            403
+          ],
+          "durationTicks": 10,
+          "phase": "launch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            477,
+            516,
+            234,
+            391
+          ],
+          "pivot": [
+            111.5,
+            387
+          ],
+          "durationTicks": 10,
+          "phase": "rise",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            850,
+            535,
+            246,
+            434
+          ],
+          "pivot": [
+            129,
+            430
+          ],
+          "durationTicks": 10,
+          "phase": "fall",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "celtic-jump-land",
+          "rect": [
+            1219,
+            636,
+            258,
+            363
+          ],
+          "pivot": [
+            133,
+            359
+          ],
+          "durationTicks": 10,
+          "phase": "landing",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-guard-v34.png",
+      "originId": "exec-edd724ef-b22b-4f10-83e7-249755450a74.png",
+      "sha256": "5c775f8b2268f9851f589d89effb6d1915c979a200e91ca2b6fbc3deb3a55e69",
+      "bytes": 2112183,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four clear guard stages and stable spear. Raised right hand is too obscured by gauntlet/blade mount to certify continuity; needs targeted visible-fist repair before runtime acceptance."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1199671,
+        "fringePixels": 28152
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50731,
+          "alpha16Bounds": [
+            34,
+            54,
+            291,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 163,
+          "pixelDigest": "fe315f280747249a6678a36479f52162779f1cf59ab5405d96725269ffd2a25d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45367,
+          "alpha16Bounds": [
+            438,
+            49,
+            251,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "2ad9b3c300b76aba56649f5d8d78d79034f105c55e748ed96d653bd4b9ff8922",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45617,
+          "alpha16Bounds": [
+            823,
+            52,
+            254,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 9,
+          "pixelDigest": "e3cf138d5e97a7fed0e58e5a5a5894484a37b31e1edfa98369cfcfe5bb862225",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45952,
+          "alpha16Bounds": [
+            1207,
+            50,
+            246,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 15,
+          "pixelDigest": "13c72c8c6af360e0ed56b472e1327894da450c3bb6c112112614258b0c360e29",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49846,
+          "alpha16Bounds": [
+            54,
+            556,
+            272,
+            413
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "26b0f5cdf5da16b59bc46889fd302c68d668ee841c76d40cf7547d29e6fdc868",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45199,
+          "alpha16Bounds": [
+            453,
+            554,
+            252,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "0ae36dcd0d7d9063762135f973c264a7578f0c6bab7ae5450f1dcb6bf0384ce5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45150,
+          "alpha16Bounds": [
+            834,
+            555,
+            253,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "7cebd71a9e45b14852b5f420190640ef93bfdbfad674080cd0f7199c6fca27e7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45331,
+          "alpha16Bounds": [
+            1235,
+            553,
+            241,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 19,
+          "pixelDigest": "9600fe3338b4448cc82d47d43c8ec95ef64c4937c79daeae5f028ba8c26bb491",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "celtic-guard",
+          "rect": [
+            31,
+            51,
+            297,
+            423
+          ],
+          "pivot": [
+            146.5,
+            419
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "celtic-guard",
+          "rect": [
+            435,
+            46,
+            257,
+            428
+          ],
+          "pivot": [
+            124.5,
+            424
+          ],
+          "durationTicks": 10,
+          "phase": "raise-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "celtic-guard",
+          "rect": [
+            820,
+            49,
+            260,
+            425
+          ],
+          "pivot": [
+            122,
+            421
+          ],
+          "durationTicks": 10,
+          "phase": "brace-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "celtic-guard",
+          "rect": [
+            1204,
+            47,
+            252,
+            428
+          ],
+          "pivot": [
+            121.5,
+            424
+          ],
+          "durationTicks": 10,
+          "phase": "held-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 0,
+          "pageId": "celtic-guard",
+          "rect": [
+            51,
+            553,
+            278,
+            419
+          ],
+          "pivot": [
+            133,
+            415
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 1,
+          "pageId": "celtic-guard",
+          "rect": [
+            450,
+            551,
+            258,
+            420
+          ],
+          "pivot": [
+            131.5,
+            416
+          ],
+          "durationTicks": 10,
+          "phase": "raise-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 2,
+          "pageId": "celtic-guard",
+          "rect": [
+            831,
+            552,
+            259,
+            420
+          ],
+          "pivot": [
+            133,
+            416
+          ],
+          "durationTicks": 10,
+          "phase": "brace-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.guard",
+          "index": 3,
+          "pageId": "celtic-guard",
+          "rect": [
+            1232,
+            550,
+            247,
+            421
+          ],
+          "pivot": [
+            124,
+            417
+          ],
+          "durationTicks": 10,
+          "phase": "held-guard",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-hurt-v34.png",
+      "originId": "exec-cdd447c7-61fa-40cb-b865-e0c8120baa77.png",
+      "sha256": "7eb2e7f915833ba0b3f1de3561f71dbb4bdb9a5e2d9659d56d12afcea4b25fc7",
+      "bytes": 2230669,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Four recoil phases with complete hands and spear. Strong-recoil lower-leg armor shifts toward bronze/gold compared to silver reference; material-color consistency needs correction before acceptance."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1166349,
+        "fringePixels": 24434
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51327,
+          "alpha16Bounds": [
+            62,
+            64,
+            307,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 160,
+          "pixelDigest": "4202fb0561d3c851107a9dabc97fcca21ecf776460050fed374b8a77c01b1577",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50751,
+          "alpha16Bounds": [
+            437,
+            80,
+            309,
+            383
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 155,
+          "pixelDigest": "a3c38ac921fcb115bb5baf6f90893f821a02a4ae1bfc8ed78bfd194805e52e67",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50897,
+          "alpha16Bounds": [
+            809,
+            76,
+            298,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 146,
+          "pixelDigest": "ee709b3c051336a1a979b4e6a7fa1ac9f71847f4a144a92fade8957ca04bf1b8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52256,
+          "alpha16Bounds": [
+            1196,
+            63,
+            295,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 177,
+          "pixelDigest": "c3a0d724ce66762b3cd67b158fc4f92d4a3ed18beb9ce9e314849f24b347e748",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49755,
+          "alpha16Bounds": [
+            45,
+            570,
+            288,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 145,
+          "pixelDigest": "f4fcaca8701d7a7ed23185579809a9dec4bffaa971637fbfd610ba8eb4635150",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50005,
+          "alpha16Bounds": [
+            408,
+            581,
+            303,
+            377
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 182,
+          "pixelDigest": "01b711ca605158d33b319458c9914307a51efeb38db27fdab8c708723b30aeca",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50494,
+          "alpha16Bounds": [
+            792,
+            578,
+            299,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "33e9b5d3a4a038e76867dcaf4b3d9e81a62f81961e29d5cf75a5d9d98a4a6544",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51030,
+          "alpha16Bounds": [
+            1181,
+            568,
+            285,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 84,
+          "pixelDigest": "11681eeb51d66101a06ad4f656e940cf05906195eadbafa2a42417510752b0d4",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 0,
+          "pageId": "celtic-hurt",
+          "rect": [
+            59,
+            61,
+            313,
+            405
+          ],
+          "pivot": [
+            118.5,
+            401
+          ],
+          "durationTicks": 10,
+          "phase": "recoil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 1,
+          "pageId": "celtic-hurt",
+          "rect": [
+            434,
+            77,
+            315,
+            389
+          ],
+          "pivot": [
+            115.5,
+            385
+          ],
+          "durationTicks": 10,
+          "phase": "strong-recoil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 2,
+          "pageId": "celtic-hurt",
+          "rect": [
+            806,
+            73,
+            304,
+            393
+          ],
+          "pivot": [
+            116,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "recover",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.hurt",
+          "index": 3,
+          "pageId": "celtic-hurt",
+          "rect": [
+            1193,
+            60,
+            301,
+            406
+          ],
+          "pivot": [
+            125,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 0,
+          "pageId": "celtic-hurt",
+          "rect": [
+            42,
+            567,
+            294,
+            394
+          ],
+          "pivot": [
+            167,
+            390
+          ],
+          "durationTicks": 10,
+          "phase": "recoil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 1,
+          "pageId": "celtic-hurt",
+          "rect": [
+            405,
+            578,
+            309,
+            383
+          ],
+          "pivot": [
+            193.5,
+            379
+          ],
+          "durationTicks": 10,
+          "phase": "strong-recoil",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 2,
+          "pageId": "celtic-hurt",
+          "rect": [
+            789,
+            575,
+            305,
+            386
+          ],
+          "pivot": [
+            191.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "recover",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.hurt",
+          "index": 3,
+          "pageId": "celtic-hurt",
+          "rect": [
+            1178,
+            565,
+            291,
+            396
+          ],
+          "pivot": [
+            172,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-light-v34.png",
+      "originId": "exec-5d808f4d-45ce-47e8-bffe-d21b98828b6a.png",
+      "sha256": "9a8909c862f5ef1ab6f10afd853b06e7e7fa658d29d30946b1024a4d06f308bc",
+      "bytes": 2034425,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Contact fist is complete beneath mount, but contact blades collapse together in profile and recovery blades point backward toward elbow instead of beyond wrist. Needs blade-direction repair before runtime acceptance."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1238901,
+        "fringePixels": 22185
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41107,
+          "alpha16Bounds": [
+            73,
+            49,
+            214,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 152,
+          "pixelDigest": "0daca0fd83b30eda54bedef00b6b9b75ba4ffd9381944cfb1854e237fc7206b9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42638,
+          "alpha16Bounds": [
+            424,
+            50,
+            298,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 106,
+          "pixelDigest": "5261191771dc5bc9c92d6e947657c761d4096a2d81729888589b6b9a3bf9f70e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40949,
+          "alpha16Bounds": [
+            835,
+            47,
+            218,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "ae05b0414809fa3b6319957853ea9292332a0c40c48760cdef4af87895d9fb7c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42774,
+          "alpha16Bounds": [
+            1217,
+            49,
+            220,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "ecada193e343fbf172d44205b407718d8a833a085351079c1cb8b36a95efe901",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41011,
+          "alpha16Bounds": [
+            93,
+            560,
+            210,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 141,
+          "pixelDigest": "a3cc53446589d9d3805723ef21fa51782fdfe598cbe46501d8318c8c078a4daa",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42624,
+          "alpha16Bounds": [
+            428,
+            558,
+            294,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "470e09d3ea511c4f6c0ce3bb0dc2b67d62b9f290172bce537eebda976f71ea6e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39967,
+          "alpha16Bounds": [
+            861,
+            560,
+            213,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "fbbbb1f15d81f8786fdb98a9e98f3ac335636910eafb0d74508208cccc700bc4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42893,
+          "alpha16Bounds": [
+            1238,
+            560,
+            222,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 20,
+          "pixelDigest": "7fd7282b5b201cc9006d174389a485abbd7c8b06268d2a44408a179aab6d7460",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "celtic-light",
+          "rect": [
+            70,
+            46,
+            220,
+            409
+          ],
+          "pivot": [
+            100.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "celtic-light",
+          "rect": [
+            421,
+            47,
+            304,
+            408
+          ],
+          "pivot": [
+            122,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "celtic-light",
+          "rect": [
+            832,
+            44,
+            224,
+            411
+          ],
+          "pivot": [
+            109,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "celtic-light",
+          "rect": [
+            1214,
+            46,
+            226,
+            409
+          ],
+          "pivot": [
+            111.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "celtic-light",
+          "rect": [
+            90,
+            557,
+            216,
+            409
+          ],
+          "pivot": [
+            113.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "celtic-light",
+          "rect": [
+            425,
+            555,
+            300,
+            411
+          ],
+          "pivot": [
+            177.5,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "celtic-light",
+          "rect": [
+            858,
+            557,
+            219,
+            410
+          ],
+          "pivot": [
+            112.5,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "celtic-light",
+          "rect": [
+            1235,
+            557,
+            228,
+            409
+          ],
+          "pivot": [
+            113,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-medium-v34.png",
+      "originId": "exec-a30c0b18-d019-4475-aa84-c160831d7a0e.png",
+      "sha256": "ec8412bc6ef7a6d1980013c82eefa897cff18dca21396a307a91b9d2df69873e",
+      "bytes": 2108863,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Only source columns 1,2,4 per facing accepted. Column3 has an obscured/incorrect hand and is excluded. Three distinct drawings cover startup/contact/settled recovery; no intermediate recovery invented."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1219415,
+        "fringePixels": 20491
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44979,
+          "alpha16Bounds": [
+            52,
+            40,
+            246,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 172,
+          "pixelDigest": "a2cf0188836933b667e1ea8bd5b313a892c32e2472985c142e66754f128d8387",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45500,
+          "alpha16Bounds": [
+            418,
+            42,
+            350,
+            419
+          ],
+          "gridBorderPixels": 18,
+          "residualMagentaPixels": 177,
+          "pixelDigest": "ef9c79e67422b5482085c8f75d31e09d5d38ce886595f442583b6a5254490aad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42425,
+          "alpha16Bounds": [
+            768,
+            41,
+            323,
+            421
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "70f035477538a3229370f17002c3cef2c63777b0d74bd7dce60d5020f947edbb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43637,
+          "alpha16Bounds": [
+            1253,
+            41,
+            220,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 189,
+          "pixelDigest": "03c1013970225cdb04f3cfe65dfdae32c835d32612238297383536a1323c03ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44910,
+          "alpha16Bounds": [
+            71,
+            545,
+            313,
+            420
+          ],
+          "gridBorderPixels": 14,
+          "residualMagentaPixels": 144,
+          "pixelDigest": "59dea0ec195493853b822bfa3a33312a4da6c37db33c358ddf1c6ca056f060b5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45859,
+          "alpha16Bounds": [
+            384,
+            546,
+            370,
+            420
+          ],
+          "gridBorderPixels": 15,
+          "residualMagentaPixels": 218,
+          "pixelDigest": "c48091f190e4fe25ddd792c5ca0f3b89f4c5956ec0d0dc99d42bbf6435305077",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42204,
+          "alpha16Bounds": [
+            864,
+            545,
+            239,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "8fb53ddd616e7becf06544817916f1d8acbfa4d873bbbff46a29f95bb70403f8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43935,
+          "alpha16Bounds": [
+            1258,
+            544,
+            221,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 175,
+          "pixelDigest": "c77f957769e7801f0537389c7725bc375a102c2b87d9e8a12b69ba87afcab905",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            49,
+            37,
+            252,
+            428
+          ],
+          "pivot": [
+            115,
+            424
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            415,
+            39,
+            412,
+            425
+          ],
+          "pivot": [
+            139,
+            421
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            1250,
+            38,
+            226,
+            429
+          ],
+          "pivot": [
+            105.5,
+            425
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            68,
+            542,
+            253,
+            426
+          ],
+          "pivot": [
+            130,
+            422
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            355,
+            543,
+            402,
+            426
+          ],
+          "pivot": [
+            259.5,
+            422
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "celtic-medium",
+          "rect": [
+            1255,
+            541,
+            227,
+            429
+          ],
+          "pivot": [
+            118.5,
+            425
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                49,
+                37,
+                252,
+                428
+              ],
+              "pivot": [
+                115,
+                424
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                415,
+                39,
+                412,
+                425
+              ],
+              "pivot": [
+                139,
+                421
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                1250,
+                38,
+                226,
+                429
+              ],
+              "pivot": [
+                105.5,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                68,
+                542,
+                253,
+                426
+              ],
+              "pivot": [
+                130,
+                422
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                355,
+                543,
+                402,
+                426
+              ],
+              "pivot": [
+                259.5,
+                422
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-medium",
+              "rect": [
+                1255,
+                541,
+                227,
+                429
+              ],
+              "pivot": [
+                118.5,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.medium.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-heavy-v34.png",
+      "originId": "exec-71f2308c-158e-47e7-bdff-fbbb79f85310.png",
+      "sha256": "7d6c07d9541c6e2db274dc0b099cc921c99c1120d3491c163a6f7d1d55907ee8",
+      "bytes": 2177891,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Four distinct stages with complete empty right hand below the two dorsal wrist blades."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1195533,
+        "fringePixels": 23552
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49206,
+          "alpha16Bounds": [
+            40,
+            77,
+            334,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 139,
+          "pixelDigest": "5572092d0031f38f5663bda3c6ec1eef51d624812a54ce84a7e74ea7552ec3bc",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45556,
+          "alpha16Bounds": [
+            415,
+            40,
+            349,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "e7b13b1da73c428c9e13926fed4d8919654d5eb1b6dcd361b9b122f2f9e2b570",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45625,
+          "alpha16Bounds": [
+            799,
+            54,
+            301,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 225,
+          "pixelDigest": "e93ffd845be33924740b57ef8e5a72b7664f78ffca03b51ba7f4c7da14e980f4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49887,
+          "alpha16Bounds": [
+            1216,
+            46,
+            285,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "614874bfb119aa8b6d1674411b3d1fdd935064b3006766f541d9c3b4ddc54aa1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47966,
+          "alpha16Bounds": [
+            34,
+            563,
+            311,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 149,
+          "pixelDigest": "7fabcb2df610017329eb6e60e7e976d252232c008cfeedc1b5b1a535e8096e94",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45523,
+          "alpha16Bounds": [
+            388,
+            541,
+            347,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "2722ee080eac1f0c25ed57c49bc03383f24366eaba2ee4856ac79139981ec656",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45189,
+          "alpha16Bounds": [
+            815,
+            563,
+            307,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 195,
+          "pixelDigest": "7606439e96425c824c38bf5853b08aeeab3b01b880f34fcd3d450288e17ac27e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48379,
+          "alpha16Bounds": [
+            1190,
+            548,
+            283,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 148,
+          "pixelDigest": "87681ed755751419c524d7650705e2ae3df9509c0b8f0410f9e0d5b345786758",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            37,
+            74,
+            340,
+            392
+          ],
+          "pivot": [
+            132.5,
+            388
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            412,
+            37,
+            355,
+            430
+          ],
+          "pivot": [
+            139.5,
+            426
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            796,
+            51,
+            307,
+            416
+          ],
+          "pivot": [
+            129,
+            412
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "celtic-heavy",
+          "rect": [
+            1213,
+            43,
+            291,
+            424
+          ],
+          "pivot": [
+            117.5,
+            420
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            31,
+            560,
+            317,
+            401
+          ],
+          "pivot": [
+            181,
+            397
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            385,
+            538,
+            353,
+            427
+          ],
+          "pivot": [
+            210,
+            423
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "celtic-heavy",
+          "rect": [
+            812,
+            560,
+            313,
+            406
+          ],
+          "pivot": [
+            179.5,
+            402
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "celtic-heavy",
+          "rect": [
+            1187,
+            545,
+            289,
+            420
+          ],
+          "pivot": [
+            171,
+            416
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                37,
+                74,
+                340,
+                392
+              ],
+              "pivot": [
+                132.5,
+                388
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                412,
+                37,
+                355,
+                430
+              ],
+              "pivot": [
+                139.5,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                796,
+                51,
+                307,
+                416
+              ],
+              "pivot": [
+                129,
+                412
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                1213,
+                43,
+                291,
+                424
+              ],
+              "pivot": [
+                117.5,
+                420
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                31,
+                560,
+                317,
+                401
+              ],
+              "pivot": [
+                181,
+                397
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                385,
+                538,
+                353,
+                427
+              ],
+              "pivot": [
+                210,
+                423
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                812,
+                560,
+                313,
+                406
+              ],
+              "pivot": [
+                179.5,
+                402
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "celtic-heavy",
+              "rect": [
+                1187,
+                545,
+                289,
+                420
+              ],
+              "pivot": [
+                171,
+                416
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.heavy.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-light-blades",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-light-blades-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-light-blades-v34.png",
+      "originId": "exec-46ea20d5-c1d9-4c60-be5e-b1530bd2453c.png",
+      "sha256": "9d4b33dabeade0b8a03fdd13f00453bd1f091c8f06a7ac4e36dee5287351fd81",
+      "bytes": 1992948,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Contact now has two blade tips, but both recovery poses retain backward blades pointing toward elbow. Repair failed for recovery and is not accepted."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1236848,
+        "fringePixels": 20950
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41996,
+          "alpha16Bounds": [
+            73,
+            49,
+            214,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 164,
+          "pixelDigest": "35560b6428c9a4fc2fe37414ddfe728a605edfe784879117a7e86e20a19f8a43",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43097,
+          "alpha16Bounds": [
+            424,
+            50,
+            324,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "65766cdc6be52b3ada4bd847aa8dbddfbcbbe1b53927f647d8e0c1e9257ef94c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40980,
+          "alpha16Bounds": [
+            835,
+            47,
+            218,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "8b779506e748058f4981438a8768b874f9519be23cbc7e3d4aabd0c35a6e11fd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42824,
+          "alpha16Bounds": [
+            1221,
+            49,
+            216,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 228,
+          "pixelDigest": "6b2f36622ecfa13ef6e8426dc58102c8002931e75776a60858c5ffe2487d7924",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41046,
+          "alpha16Bounds": [
+            93,
+            560,
+            210,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 146,
+          "pixelDigest": "ef6f5f7c84b303545fa2151068852e4e2557c8f9abbb925f1f7327faf7868f65",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43271,
+          "alpha16Bounds": [
+            393,
+            559,
+            329,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "217a9948a8639b26594676f65ca06cc6126cb92a36f46269186768aa2464f342",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39972,
+          "alpha16Bounds": [
+            861,
+            560,
+            213,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "1b4103ba016e373ebd2cfbb1387e67bdb715ea98e78bc949da3e44085df41795",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42830,
+          "alpha16Bounds": [
+            1238,
+            560,
+            221,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 28,
+          "pixelDigest": "0279856f81b80c653f3ed588dd921699d37ccfe5368e0dabda09fbbbc5c9277c",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            70,
+            46,
+            220,
+            409
+          ],
+          "pivot": [
+            101,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            421,
+            47,
+            330,
+            408
+          ],
+          "pivot": [
+            122,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            832,
+            44,
+            224,
+            411
+          ],
+          "pivot": [
+            109,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            1218,
+            46,
+            222,
+            409
+          ],
+          "pivot": [
+            107.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            90,
+            557,
+            216,
+            409
+          ],
+          "pivot": [
+            113.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            390,
+            556,
+            335,
+            410
+          ],
+          "pivot": [
+            212.5,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            858,
+            557,
+            219,
+            409
+          ],
+          "pivot": [
+            113,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "celtic-repair-light-blades",
+          "rect": [
+            1235,
+            557,
+            227,
+            409
+          ],
+          "pivot": [
+            112.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-light-recovery",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-light-recovery-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-light-recovery-v34.png",
+      "originId": "exec-128c1579-87db-47d1-b789-9913c0115053.png",
+      "sha256": "c8fc9fec4f955741ded382ea62186623b217c342d605c308efe0670ab9f4ef86",
+      "bytes": 1949657,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Only source columns 1,2,4 per facing accepted. Column3 has an obscured/incorrect hand and is excluded. Three distinct drawings cover startup/contact/settled recovery; no intermediate recovery invented."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1238520,
+        "fringePixels": 20685
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41835,
+          "alpha16Bounds": [
+            73,
+            49,
+            214,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "364314d03f615fc94cd90bc1f15e909f0245fa1524f2f635747971c1864bd2e2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42993,
+          "alpha16Bounds": [
+            424,
+            50,
+            324,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "a97499f80737ece5c3f6d2f6451a04acfd2cdaf227ac1422ebd118841fbde44e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40418,
+          "alpha16Bounds": [
+            836,
+            48,
+            216,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "6388687f783afe8fdefbbca88437a1119dc8a2809c81706667ef31458b2049d7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42696,
+          "alpha16Bounds": [
+            1221,
+            49,
+            216,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 226,
+          "pixelDigest": "1509941bed83203230af3af923701e3ecec08cfe320938a4cf69f1532949d7a8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40906,
+          "alpha16Bounds": [
+            93,
+            561,
+            211,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 166,
+          "pixelDigest": "cd7d745bd4cad4df82a333b93545249a7edfff3b4e6e9d30467754fcb7f11f32",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43127,
+          "alpha16Bounds": [
+            393,
+            560,
+            329,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "300cb1486d5fd430b493c01701c854df82ef5bbf87ff8e48b4420f564cd11615",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39673,
+          "alpha16Bounds": [
+            861,
+            561,
+            213,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 110,
+          "pixelDigest": "7c18892c43407541ec69ac5ca5f6241cda6499f9f29392c07a4c0f6934a57247",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42696,
+          "alpha16Bounds": [
+            1237,
+            561,
+            222,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "21f46d4d6829a8dd4d8f9fd814ab673cf26efd67557c17a2b9de92f9bad74224",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            70,
+            46,
+            220,
+            409
+          ],
+          "pivot": [
+            100.5,
+            405
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            421,
+            47,
+            330,
+            408
+          ],
+          "pivot": [
+            122,
+            404
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            1218,
+            46,
+            222,
+            409
+          ],
+          "pivot": [
+            107.5,
+            405
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            90,
+            558,
+            217,
+            408
+          ],
+          "pivot": [
+            114,
+            404
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            390,
+            557,
+            335,
+            409
+          ],
+          "pivot": [
+            213,
+            405
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "celtic-repair-light-recovery",
+          "rect": [
+            1234,
+            558,
+            228,
+            409
+          ],
+          "pivot": [
+            113.5,
+            405
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                70,
+                46,
+                220,
+                409
+              ],
+              "pivot": [
+                100.5,
+                405
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                421,
+                47,
+                330,
+                408
+              ],
+              "pivot": [
+                122,
+                404
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                1218,
+                46,
+                222,
+                409
+              ],
+              "pivot": [
+                107.5,
+                405
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                90,
+                558,
+                217,
+                408
+              ],
+              "pivot": [
+                114,
+                404
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                390,
+                557,
+                335,
+                409
+              ],
+              "pivot": [
+                213,
+                405
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-light-recovery",
+              "rect": [
+                1234,
+                558,
+                228,
+                409
+              ],
+              "pivot": [
+                113.5,
+                405
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.light.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-guard-hand",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+      "originId": "exec-dffdf843-37ba-473d-8e12-5ed3b6e8bc5e.png",
+      "sha256": "fad6035ecd6add8303e8620dae88e35502bc7d32c1663f3d4a07969dc1b19e88",
+      "bytes": 2006735,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Four guard stages preserve complete right fist below two dorsal mounted blades."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1205693,
+        "fringePixels": 28278
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49882,
+          "alpha16Bounds": [
+            35,
+            54,
+            290,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 42,
+          "pixelDigest": "058e6976deeef77398bdbdc661e34299143e124f16e001b66c6c2a07eff0ebff",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44791,
+          "alpha16Bounds": [
+            439,
+            49,
+            249,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 4,
+          "pixelDigest": "233ec26c5dbdef90963b006e71530b0861697ea56ab4c9bb3b6bc3f7eaac67f6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44782,
+          "alpha16Bounds": [
+            823,
+            52,
+            253,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 6,
+          "pixelDigest": "e405c26cb45c77b0e7f29e0f82a315e5e9b663761ea8bd555320cc73a2ee112d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45055,
+          "alpha16Bounds": [
+            1208,
+            50,
+            244,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 12,
+          "pixelDigest": "ea51afd107ba78fa2bdff11bf7b16edeacb1d7a9deb0f8285e843219e96d0d02",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49043,
+          "alpha16Bounds": [
+            55,
+            557,
+            271,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "47779dbe1764208148a66e8a8a9055691fbbf06dc903238795d7db0bff3f6487",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44616,
+          "alpha16Bounds": [
+            453,
+            555,
+            252,
+            413
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "0be56162e1fd7f731371ffcc61a83601f6086fd52ab4981e460cbd8d4ffe510b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44458,
+          "alpha16Bounds": [
+            834,
+            555,
+            252,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "b27d71951f96a8e15d4ad4cd105bd78961f2885c319e7640e2e9641d88cf69f4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44544,
+          "alpha16Bounds": [
+            1235,
+            554,
+            240,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 18,
+          "pixelDigest": "9b84f1db9ba9c7ec548c003e11c005605d8367b601ecfd30ee14e04591320709",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            32,
+            51,
+            296,
+            423
+          ],
+          "pivot": [
+            146.5,
+            419
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            436,
+            46,
+            255,
+            429
+          ],
+          "pivot": [
+            123.5,
+            425
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            820,
+            49,
+            259,
+            426
+          ],
+          "pivot": [
+            121.5,
+            422
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            1205,
+            47,
+            250,
+            428
+          ],
+          "pivot": [
+            120.5,
+            424
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            52,
+            554,
+            277,
+            418
+          ],
+          "pivot": [
+            133,
+            414
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            450,
+            552,
+            258,
+            419
+          ],
+          "pivot": [
+            132,
+            415
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            831,
+            552,
+            258,
+            420
+          ],
+          "pivot": [
+            132.5,
+            416
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "celtic-repair-guard-hand",
+          "rect": [
+            1232,
+            551,
+            246,
+            421
+          ],
+          "pivot": [
+            123.5,
+            417
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                32,
+                51,
+                296,
+                423
+              ],
+              "pivot": [
+                146.5,
+                419
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                436,
+                46,
+                255,
+                429
+              ],
+              "pivot": [
+                123.5,
+                425
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                820,
+                49,
+                259,
+                426
+              ],
+              "pivot": [
+                121.5,
+                422
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                1205,
+                47,
+                250,
+                428
+              ],
+              "pivot": [
+                120.5,
+                424
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                52,
+                554,
+                277,
+                418
+              ],
+              "pivot": [
+                133,
+                414
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                450,
+                552,
+                258,
+                419
+              ],
+              "pivot": [
+                132,
+                415
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                831,
+                552,
+                258,
+                420
+              ],
+              "pivot": [
+                132.5,
+                416
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-guard-hand",
+              "rect": [
+                1232,
+                551,
+                246,
+                421
+              ],
+              "pivot": [
+                123.5,
+                417
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-hurt-armor",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-hurt-armor-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-hurt-armor-v34.png",
+      "originId": "exec-220245ec-c12b-4cc7-8929-647d20b98961.png",
+      "sha256": "907171ab768f17bfcee7432ccdfaf0918bc9a46862f7fc1859d4a70e43967360",
+      "bytes": 2093027,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Silver leg armor corrected in second pose of both rows."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1172253,
+        "fringePixels": 26439
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50639,
+          "alpha16Bounds": [
+            63,
+            64,
+            306,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 197,
+          "pixelDigest": "3a2bcb2d3c53b0781f0d1dc3809c8465940a176cf73003c6d2ba33225f61d49a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49996,
+          "alpha16Bounds": [
+            437,
+            81,
+            309,
+            382
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 194,
+          "pixelDigest": "e1b52b217011088b5ae10f7da65ecde84c9441a46c5e8256b3a19dd63852b15b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50067,
+          "alpha16Bounds": [
+            809,
+            76,
+            297,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 236,
+          "pixelDigest": "ad6db495a0443503c85cd0551d902b91ae5bdc11e4c0f3d220f6488108bf2487",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51285,
+          "alpha16Bounds": [
+            1197,
+            63,
+            294,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "c60cd8dc71c9411064720c0fe78240dc0cb795a6f186745727c20ad2f5e86bee",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49107,
+          "alpha16Bounds": [
+            45,
+            571,
+            288,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 195,
+          "pixelDigest": "db3412e86c5b629497be3205a9c47bf68ee260c7a5f138221f0a627f3ba98581",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49540,
+          "alpha16Bounds": [
+            408,
+            581,
+            302,
+            378
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 242,
+          "pixelDigest": "5d6cb86a22c6c47f9a0aba179f7fb72b6c4a9acce13df39c91c042d4c92231fe",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49746,
+          "alpha16Bounds": [
+            792,
+            578,
+            298,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 198,
+          "pixelDigest": "1c8d5f65a8e2efc8775b8768e6e9a20f266c20f335c97042ea998ca2a0fbfe33",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50231,
+          "alpha16Bounds": [
+            1180,
+            569,
+            285,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 145,
+          "pixelDigest": "16e347ce3a5755c39741928c5d707731ca63cd637aaebd3e54304385bbe57c3c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            60,
+            61,
+            312,
+            405
+          ],
+          "pivot": [
+            117,
+            401
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            434,
+            78,
+            315,
+            388
+          ],
+          "pivot": [
+            115.5,
+            384
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            806,
+            73,
+            303,
+            393
+          ],
+          "pivot": [
+            116.5,
+            389
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            1194,
+            60,
+            300,
+            406
+          ],
+          "pivot": [
+            123.5,
+            402
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            42,
+            568,
+            294,
+            394
+          ],
+          "pivot": [
+            167,
+            390
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            405,
+            578,
+            308,
+            384
+          ],
+          "pivot": [
+            194,
+            380
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            789,
+            575,
+            304,
+            387
+          ],
+          "pivot": [
+            191.5,
+            383
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "celtic-repair-hurt-armor",
+          "rect": [
+            1177,
+            566,
+            291,
+            396
+          ],
+          "pivot": [
+            173.5,
+            392
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                60,
+                61,
+                312,
+                405
+              ],
+              "pivot": [
+                117,
+                401
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                434,
+                78,
+                315,
+                388
+              ],
+              "pivot": [
+                115.5,
+                384
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                806,
+                73,
+                303,
+                393
+              ],
+              "pivot": [
+                116.5,
+                389
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                1194,
+                60,
+                300,
+                406
+              ],
+              "pivot": [
+                123.5,
+                402
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                42,
+                568,
+                294,
+                394
+              ],
+              "pivot": [
+                167,
+                390
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                405,
+                578,
+                308,
+                384
+              ],
+              "pivot": [
+                194,
+                380
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                789,
+                575,
+                304,
+                387
+              ],
+              "pivot": [
+                191.5,
+                383
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "celtic-repair-hurt-armor",
+              "rect": [
+                1177,
+                566,
+                291,
+                396
+              ],
+              "pivot": [
+                173.5,
+                392
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.hitstun",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-backward-support",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png",
+      "originId": "exec-c2432a21-c44d-428d-b692-9f7b76024e63.png",
+      "sha256": "51df4e386987eb418c003df1c52fa13fe0b9d4454133de1b67d1467be84b8591",
+      "bytes": 2012309,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Distinct opposing contacts and support-leg phases; manual pelvis projection pivots."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1237620,
+        "fringePixels": 21310
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45859,
+          "alpha16Bounds": [
+            68,
+            76,
+            286,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 154,
+          "pixelDigest": "28c5e0dba1bab6e487db4e690115961614cd7d0dbfd0713f924782e8562e5d60",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40428,
+          "alpha16Bounds": [
+            479,
+            60,
+            230,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "3a8df3af5cfd973936242f970399053d366848807c9a80161e1c7a273ef9bae5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43615,
+          "alpha16Bounds": [
+            848,
+            63,
+            247,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "4df568151dca59de68608d0f73d46d0237d443695c3f5bb72a953f1629166d73",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40772,
+          "alpha16Bounds": [
+            1233,
+            60,
+            242,
+            393
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "370a24ee2da2885e043e41a39fae33914d3f67b653ef88d9f74da949bee1bf7c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42835,
+          "alpha16Bounds": [
+            70,
+            559,
+            254,
+            381
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 157,
+          "pixelDigest": "8f6c07c1b1a09a08ea1e8cdb516e86bdc42c59d4cb06014636745f82660b679a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39765,
+          "alpha16Bounds": [
+            457,
+            539,
+            231,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "9b2833fe7c466987ba7dbe5539ea8863be839e12857133f0d2f9b04ce2cd8c62",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43226,
+          "alpha16Bounds": [
+            834,
+            546,
+            240,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 151,
+          "pixelDigest": "37cb8579fd9e39839c5621e3d36961fe5a1d8f8c45b2aa7e01a8cfba5942d863",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38744,
+          "alpha16Bounds": [
+            1224,
+            545,
+            234,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 153,
+          "pixelDigest": "21cadd9889a2efb1895826851738d4007d20eded15ece8b8edff039627900eea",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            65,
+            73,
+            292,
+            387
+          ],
+          "pivot": [
+            106,
+            383
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            476,
+            57,
+            236,
+            403
+          ],
+          "pivot": [
+            76,
+            399
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            845,
+            60,
+            253,
+            396
+          ],
+          "pivot": [
+            98,
+            392
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            1230,
+            57,
+            248,
+            399
+          ],
+          "pivot": [
+            100,
+            395
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            67,
+            556,
+            260,
+            387
+          ],
+          "pivot": [
+            151,
+            383
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            454,
+            536,
+            237,
+            405
+          ],
+          "pivot": [
+            147,
+            401
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            831,
+            543,
+            246,
+            398
+          ],
+          "pivot": [
+            152,
+            394
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "celtic-repair-walk-backward-support",
+          "rect": [
+            1221,
+            542,
+            240,
+            398
+          ],
+          "pivot": [
+            138,
+            394
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                65,
+                73,
+                292,
+                387
+              ],
+              "pivot": [
+                106,
+                383
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                476,
+                57,
+                236,
+                403
+              ],
+              "pivot": [
+                76,
+                399
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                845,
+                60,
+                253,
+                396
+              ],
+              "pivot": [
+                98,
+                392
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                1230,
+                57,
+                248,
+                399
+              ],
+              "pivot": [
+                100,
+                395
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                67,
+                556,
+                260,
+                387
+              ],
+              "pivot": [
+                151,
+                383
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                454,
+                536,
+                237,
+                405
+              ],
+              "pivot": [
+                147,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                831,
+                543,
+                246,
+                398
+              ],
+              "pivot": [
+                152,
+                394
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "celtic-repair-walk-backward-support",
+              "rect": [
+                1221,
+                542,
+                240,
+                398
+              ],
+              "pivot": [
+                138,
+                394
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T22:10:33.093Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-medium-hand",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-medium-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-medium-hand-v34.png",
+      "originId": "exec-2bcd1441-4317-47f3-ae9e-0a8b7f446929.png",
+      "sha256": "1f324b59bc91a1b3676cd3317af42199e8bdf8365ae8032986a11d387cd65cba",
+      "bytes": 2074345,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Recovery fist became oversized compared with contact and wrist bend remains questionable; intermediate recovery drawing2 excluded. Only startup/contact/neutral end-pose are eligible for limited three-drawing phase coverage."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1218866,
+        "fringePixels": 19333
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44897,
+          "alpha16Bounds": [
+            52,
+            40,
+            246,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 172,
+          "pixelDigest": "7d2d3d4e4f52c2661381e0ed355654aa75984183de869db89a87e5c23bdda08a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45470,
+          "alpha16Bounds": [
+            418,
+            42,
+            350,
+            420
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "faa1d43f7faa6d3c3907d14a40a46c53590cdf636a370231f40577db36ed7337",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42776,
+          "alpha16Bounds": [
+            768,
+            41,
+            323,
+            421
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "8a690e04cd9c6ecf5ff2e1e754e1cd9293cce0f0df5ca921cf423c9a3e562487",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43565,
+          "alpha16Bounds": [
+            1253,
+            41,
+            220,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 212,
+          "pixelDigest": "47717d50be5a36c1faa356885c55d66f653b973dd1ebfd31b7fbf95697502887",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44810,
+          "alpha16Bounds": [
+            72,
+            545,
+            312,
+            420
+          ],
+          "gridBorderPixels": 14,
+          "residualMagentaPixels": 157,
+          "pixelDigest": "bc3a310d862a13be611df1004198c0dddd3895aac3fde87a3bd951a59902a037",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45831,
+          "alpha16Bounds": [
+            384,
+            546,
+            370,
+            420
+          ],
+          "gridBorderPixels": 14,
+          "residualMagentaPixels": 227,
+          "pixelDigest": "2be44cdbbcfb2166a25bea88c7ab108ca6571968c658a838235b7b57a2886cae",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42766,
+          "alpha16Bounds": [
+            864,
+            545,
+            239,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "dd72cb39ca32396e4c119047662bddc2f11c4896895712705452103a5c4f80c1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43883,
+          "alpha16Bounds": [
+            1258,
+            544,
+            221,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 194,
+          "pixelDigest": "2313d9ce2b4ec43987be86f53153cc198f20f1ac6eb552b861639ade8bb5fb64",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            49,
+            37,
+            252,
+            429
+          ],
+          "pivot": [
+            115,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            415,
+            39,
+            412,
+            426
+          ],
+          "pivot": [
+            139,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            854,
+            38,
+            240,
+            427
+          ],
+          "pivot": [
+            119,
+            423
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            1250,
+            38,
+            226,
+            429
+          ],
+          "pivot": [
+            105,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            69,
+            542,
+            252,
+            426
+          ],
+          "pivot": [
+            129,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            355,
+            543,
+            402,
+            426
+          ],
+          "pivot": [
+            259.5,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            861,
+            542,
+            245,
+            426
+          ],
+          "pivot": [
+            122,
+            422
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "celtic-repair-medium-hand",
+          "rect": [
+            1255,
+            541,
+            227,
+            429
+          ],
+          "pivot": [
+            118.5,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-88c21b99-a880-4d4a-924d-bff2cbd17d2e.png",
+      "sha256": "e5ec9036a9f23bb18d24e3af1196a64d37f7e796fc716b6fa118e442d5ec1529",
+      "bytes": 2006773,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward-walk repair rejected: contacts in columns 1 and 3 are effectively repeated, and columns 2 and 4 lift the same leg. No alternating gait; not integrated."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1230035,
+        "fringePixels": 20945
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "opposite contact",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45690,
+          "alpha16Bounds": [
+            75,
+            66,
+            286,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 196,
+          "pixelDigest": "2781bd546a9af9aa56c9132ddf56e19ad7cc780ba3741fd2924bc17cb3e2cf54",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right swing forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41177,
+          "alpha16Bounds": [
+            466,
+            59,
+            251,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "10e3552ad1cb1a49131c648c6d763758046d540e538293f32cbd60fb16ea80f2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right contact",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44530,
+          "alpha16Bounds": [
+            842,
+            62,
+            260,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 161,
+          "pixelDigest": "15fcbf74c8dd3442ea91ed062102e9e08b5e128f59ff41939909f17ad1b2b55d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left swing forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40642,
+          "alpha16Bounds": [
+            1227,
+            58,
+            252,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "9f580ce97f41701bbd897627d97478d62879e91e2495380c24a8f29ea9b5fb6b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "opposite contact",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45014,
+          "alpha16Bounds": [
+            65,
+            531,
+            259,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "11f3f801f6c4abcb30dadee391d2a93ff0a772bb16524c9bed4e113c899832a0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right swing forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40553,
+          "alpha16Bounds": [
+            441,
+            533,
+            248,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 82,
+          "pixelDigest": "dc512b0485fca56f4f0ba03627e2c28be337ed693060698c8e3c78781b898a07",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right contact",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44751,
+          "alpha16Bounds": [
+            827,
+            534,
+            258,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 179,
+          "pixelDigest": "1d50c6466ce0fd246e026375c57f0b2a612e142e44d220a058ffdc35ae56460a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left swing forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40472,
+          "alpha16Bounds": [
+            1211,
+            534,
+            251,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "762c2546e5371cd6b73b563b5e76066d68b9d65c30288c3248e9c78455f89ab4",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            72,
+            63,
+            292,
+            395
+          ],
+          "pivot": [
+            133.5,
+            391
+          ],
+          "durationTicks": 10,
+          "phase": "opposite contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            463,
+            56,
+            257,
+            403
+          ],
+          "pivot": [
+            119,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "right swing forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            839,
+            59,
+            266,
+            400
+          ],
+          "pivot": [
+            116,
+            396
+          ],
+          "durationTicks": 10,
+          "phase": "right contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            1224,
+            55,
+            258,
+            404
+          ],
+          "pivot": [
+            127.5,
+            400
+          ],
+          "durationTicks": 10,
+          "phase": "left swing forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            62,
+            528,
+            265,
+            411
+          ],
+          "pivot": [
+            144.5,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "opposite contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            438,
+            530,
+            254,
+            407
+          ],
+          "pivot": [
+            161,
+            403
+          ],
+          "durationTicks": 10,
+          "phase": "right swing forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            824,
+            531,
+            264,
+            408
+          ],
+          "pivot": [
+            144,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "right contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "celtic-repair-walk-forward-cycle",
+          "rect": [
+            1208,
+            531,
+            257,
+            408
+          ],
+          "pivot": [
+            119,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "left swing forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    }
+  ],
+  "acceptedDefinitionPath": "art-source/v34/pit/celtic/celtic-runtime-atlas-v34.json",
+  "nativeContrastReview": {
+    "captures": 100,
+    "bodyPixels": "real game scale, no Canvas scaling",
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 27,
+    "keyComparison": [
+      {
+        "pageId": "celtic-repair-walk-backward-support",
+        "removedPixels": 1925,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-crouch",
+        "removedPixels": 2260,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-repair-guard-hand",
+        "removedPixels": 2683,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-repair-hurt-armor",
+        "removedPixels": 2499,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-repair-light-recovery",
+        "removedPixels": 2230,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-medium",
+        "removedPixels": 2295,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "celtic-heavy",
+        "removedPixels": 2494,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ],
+    "method": "Real loadPitSpriteSheetAnimations and drawPitSpriteSheetAnimation in Chrome"
+  },
+  "initialFamiliesProduced": 9,
+  "targetedRepairSheets": 7,
+  "missingFamilies": [
+    {
+      "actionId": "idle",
+      "status": "generation-blocked",
+      "imageProduced": false,
+      "reason": "Provider rejected output; no retry or bypass."
+    }
+  ],
+  "livePitCanvasReview": {
+    "passed": true,
+    "checkedAt": "2026-09-12T22:12:07.131Z",
+    "checks": [
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "forward-static-keyboard",
+        "slot": 0,
+        "facing": "right",
+        "status": "static-bitmap"
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "forward-static-keyboard",
+        "slot": 1,
+        "facing": "left",
+        "status": "static-bitmap"
+      }
+    ],
+    "errors": [],
+    "failedRequests": []
+  }
+}

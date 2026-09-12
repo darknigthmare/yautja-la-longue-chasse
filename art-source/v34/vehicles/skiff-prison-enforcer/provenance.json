@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "skiff-prison-enforcer",
+  "name": "Skiff-prison Enforcer",
+  "lore": "Proposition originale du jeu à partir de la hiérarchie de poursuite du brief. Aucun détail de silhouette canonique revendiqué.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Skiff-prison Enforcer — châssis, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/skiff-prison-enforcer/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/skiff-prison-enforcer/identity-r1.png",
+      "originId": "exec-8a410e31-7114-4f83-908f-c989f0544924.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "f95d45d02f5d7c733c14925f80edb73b4940862cdef6d0a20c3a4cee6408389e",
+      "bytes": 1336147,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Original production vehicle concept for the 2D Yautja fan-game La Longue Chasse. No claim this is an existing canonical film vehicle. Exactly TWO entire side-profile views SIDE BY SIDE; left craft pointing RIGHT and right craft LEFT. SAME construction, separate opposite-side details, identical scale. All parts inside each half with wide blank margins. Pure solid MAGENTA #FF00FF background, sharp painted game bitmap, no floor shadow, text, grid, scenery, rider, prisoners, body, trophy or effect. Dark bronze-black alien metal, restrained pale cyan operational lamps, severe maintained Enforcer industrial design. Base chassis and integrated fixed equipment only: leave removable armaments/cargo separate. A medium prisoner-transport antigravity skiff with a compact armored forward cockpit, EMPTY recessed rectangular cell bay behind it with four thick structural cage pillars and lowered loading ramp outline, solid containment-module sockets visible around the opening but NO energy bars or cage door drawn now, side guard standing ledges and underside grav nodes. Empty bay clearly visible, no occupant, no chains. Body has balanced believable load path and broad stable hull. Separate modular door will be attached later.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Conception graphique proposée ; les dimensions, statistiques et capacités non précisées par la source restent indéfinies.",
+        "Châssis statique en revue, pas une animation ni un véhicule jouable."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            8,
+            220,
+            859,
+            347
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 181474,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            907,
+            220,
+            860,
+            348
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 181630,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

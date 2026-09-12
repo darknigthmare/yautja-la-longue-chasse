@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "cliff-crawler",
+  "name": "Cliff Crawler",
+  "lore": "Proposition originale de La Longue Chasse d’après le brief partiel récupéré ; aucun statut canonique revendiqué.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Cliff Crawler — corps, deux orientations",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/cliff-crawler/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/cliff-crawler/identity-r1.png",
+      "originId": "exec-f0b82969-9244-4c33-a16c-5c604e00aef6.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "7bed2ef3e2282741a4318e0cec16334c636f6e220aba7af90d61b74b075b98d1",
+      "bytes": 1647468,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Create an original Yautja-inspired creature or vehicle design for the 2D fan-game La Longue Chasse. Not a canonical franchise replica. Exactly TWO complete side-profile views arranged SIDE BY SIDE, two columns ONE ROW, left view faces RIGHT and right view faces LEFT. Separately draw the opposite side of the SAME design at identical scale and anatomy. Flat PURE MAGENTA #FF00FF background. No shadows, scenery, text, watermark, panels, grid, ground or effects. Both full silhouettes entirely inside their own half with generous blank margins and no parts crossing the center gutter. Detailed hand-painted production bitmap for horizontal side-scrolling play. No people, rider, cargo, mounted weapon, trophy or detachable saddle baked in. Keep body and attachments separable. Compact mountain climbing robotic walker, exactly SIX mechanical legs: three near-side legs and three far-side legs, each pair offset so six individual claw feet can be counted. Low flattened black bronze body, open EMPTY central pilot well with integral console, rear enclosed battery, articulated spider-like legs ending in broad magnetic adhesion claw pads. Balanced standing pose. All legs emerge from three paired body stations, joints plausible and matching between opposite sides. No seventh limb, no wheels, no gun, no organic flesh. Clear distinct silhouette from a four-legged Jungle Strider.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            456,
+            470
+          ],
+          "role": "Recovered user brief"
+        }
+      ],
+      "notes": [
+        "Vue d’identité et non animation. Anatomie, raccords et modules à valider avant intégration.",
+        "Inspection visuelle : seulement cinq pieds sont lisibles sur chaque vue. Le brief impose six pattes ; reprise anatomique nécessaire.",
+        "Inspection visuelle : seulement cinq pieds sont lisibles sur chaque vue. Le brief impose six pattes ; reprise anatomique nécessaire."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            23,
+            184,
+            842,
+            497
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 199732,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            909,
+            184,
+            842,
+            498
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 199838,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-r2",
+      "actionId": "identity",
+      "label": "Cliff Crawler — correction des appuis",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/cliff-crawler/identity-r2.png",
+      "publicPath": "/game/vehicles/v34/cliff-crawler/identity-r2.png",
+      "originId": "exec-1b69cc78-f184-494c-b45a-31d8443c2ee0.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "80c2043088a66a7034e49fbff79ed04e8cd3e550626bafd06d6b285bc7bc9380",
+      "bytes": 1674067,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Correct the provided Cliff Crawler identity sheet. Keep the SAME dark bronze chassis and EMPTY cockpit and TWO side-by-side opposite-facing views on uniform MAGENTA. Critical mechanical correction: EACH vehicle must show exactly SIX independently visible complete mechanical legs and SIX separated feet. Current image only shows five feet; add the missing FAR MIDDLE leg with a visible hip connector under the mid-body, slim upper shaft, bent knee, lower shaft and adhesion-claw foot. Move the far feet to stagger across the gaps: count front-near, front-far, middle-near, middle-far, rear-near, rear-far. Do not add seven, do not count toes as legs. Every leg is attached to its correct paired hip station; no floating foot. Use a slightly elevated SIDE game camera if necessary to expose the missing far-middle foot behind the near middle leg, but preserve horizontal profile, consistent scale and full blank margins. No rider, weapons, text, arrows, numbered labels, floor, shadows, glow or extra views. Precise hand-painted sci-fi vehicle bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/cliff-crawler/identity-r1.png",
+          "sha256": "7bed2ef3e2282741a4318e0cec16334c636f6e220aba7af90d61b74b075b98d1"
+        }
+      ],
+      "notes": [
+        "Correction générée mais inspection constate encore cinq pieds visibles au lieu de six. Rejet pour validation anatomique.",
+        "Inspection visuelle : seulement cinq pieds sont lisibles sur chaque vue. Le brief impose six pattes ; reprise anatomique nécessaire."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            22,
+            184,
+            842,
+            498
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 202903,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            911,
+            184,
+            841,
+            498
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 202721,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-right-r3",
+      "actionId": "identity",
+      "label": "Cliff Crawler — tentative droite R3",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/cliff-crawler/identity-right-r3.png",
+      "publicPath": "/game/vehicles/v34/cliff-crawler/identity-right-r3.png",
+      "originId": "exec-e817e5ce-1b8e-49ad-a3e5-cdbf04aca958.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "fb2b8b6f7b465b562c7c2ae8b47b64311fa061d3fdacfc500f2a1ddec2c773d8",
+      "bytes": 1644278,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Use the immediately preceding Cliff Crawler image as the exact machine design reference. Redraw it as ONE single complete vehicle only, facing RIGHT in a strict flat orthographic side profile, centered on pure uniform MAGENTA #FF00FF. Preserve the same low flattened black-bronze mountain walker chassis, open EMPTY central pilot well, front prow and enclosed rear battery. Critical correction: EXACTLY SIX complete spider-like mechanical legs from THREE paired stations (front, middle, rear). Show three large near-side legs and three slightly smaller/darker far-side legs. ALL SIX hip connectors, joint chains and ALL SIX complete magnetic adhesion-claw feet must be separately visible and countable, arranged at six staggered horizontal positions. Specifically expose the far-middle leg between the near-middle and near-front legs. No hidden/fused shaft, floating foot, missing foot, seventh leg, wheel or extra arm. Full chassis and every foot entirely in frame with generous magenta margins. Balanced standing pose. No second vehicle, reflection, divider, grid, text, labels, ground, shadow, glow, rider, weapon or cargo. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/cliff-crawler/identity-r2.png",
+          "sha256": "80c2043088a66a7034e49fbff79ed04e8cd3e550626bafd06d6b285bc7bc9380"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : cinq pieds seulement ; troisième patte opposée encore absente. Tentative rejetée.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34.",
+        "Inspection visuelle finale : seulement cinq chaînes de jambe et cinq pieds ; la troisième jambe opposée manque encore. Tentative rejetée."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "alpha16Bounds": [
+            148,
+            91,
+            1355,
+            701
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 441627,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-right-r4",
+      "actionId": "identity",
+      "label": "Cliff Crawler — châssis droit, six appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/cliff-crawler/identity-right-r4.png",
+      "publicPath": "/game/vehicles/v34/cliff-crawler/identity-right-r4.png",
+      "originId": "exec-6c6687a8-27f7-40b6-b22b-9d118e26a09d.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "7717e95aed28d972d7ff249d14dab9484af7ecc40dd2814f1b5690d89de5e2fc",
+      "bytes": 1665291,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Correct the immediately preceding single Cliff Crawler right-facing image. Keep the same chassis and pure #FF00FF background. It still has only FIVE feet: three large near-side feet and only two small far-side feet. Add the missing third FAR-SIDE leg and foot under the chassis. Final machine must have EXACTLY SIX complete legs and EXACTLY SIX separate adhesion feet, ordered tail-to-nose as rear-near, rear-far, middle-near, middle-far, front-near, front-far. Show three large near-side assemblies and three smaller darker far-side assemblies. Place the new far-middle foot in an empty horizontal gap so none overlap. Every one of six legs needs visible body socket, upper arm, knee, lower shaft and full foot. Do not remove an existing leg and do not add seven. ONE vehicle only, facing RIGHT, strict side-profile chassis, full frame and margins. Empty cockpit. No grid, text, labels, arrows, ground, shadow, rider, weapon, wheels, extra view or effects. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "originId": "exec-e817e5ce-1b8e-49ad-a3e5-cdbf04aca958.png",
+          "role": "Rejected five-foot correction used only as visual edit base"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : trois grandes jambes proches et trois jambes opposées, six chaînes articulées et six pieds d’adhérence séparément lisibles. Plaque statique en revue.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "alpha16Bounds": [
+            149,
+            91,
+            1365,
+            702
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 462847,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-left-r4",
+      "actionId": "identity",
+      "label": "Cliff Crawler — châssis gauche, six appuis",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/cliff-crawler/identity-left-r4.png",
+      "publicPath": "/game/vehicles/v34/cliff-crawler/identity-left-r4.png",
+      "originId": "exec-30623bab-1f8c-491a-a187-7f18c34bb19e.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "e5846d305a224fea76f4e3c567c4172bd6d2ef9d43c8eaa4612e528238c9b5cf",
+      "bytes": 1661369,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Use the immediately preceding accepted Cliff Crawler six-legged right-facing machine as the exact design reference. Independently redraw the SAME vehicle's opposite side as ONE single complete strict flat orthographic side profile facing LEFT, centered on pure uniform MAGENTA #FF00FF. Preserve identical low black-bronze chassis, empty central pilot well, front prow and rear battery. Preserve EXACTLY SIX full articulated legs from three paired stations and EXACTLY SIX separate complete magnetic adhesion feet: three large near-side assemblies and three smaller darker far-side assemblies, all body sockets, joints and feet visible at staggered horizontal positions. No hidden/fused shaft, missing foot, floating foot, seventh leg, wheel or extra arm. Full vehicle and all feet in frame with generous margins. No second vehicle, reflection, divider, grid, text, labels, ground, shadow, glow, rider, weapon or cargo. Detailed hand-painted 2D game bitmap.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/cliff-crawler/identity-right-r4.png",
+          "role": "Accepted opposite-facing design reference"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : six jambes articulées et six pieds complets distincts dans l’orientation gauche. Plaque statique en revue.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key appliqué par le renderer de revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "alpha16Bounds": [
+            200,
+            90,
+            1387,
+            702
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 467657,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 5,
+  "acceptedRuntimeClips": 0
+}

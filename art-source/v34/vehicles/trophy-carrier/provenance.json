@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "trophy-carrier",
+  "name": "Trophy Carrier",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · châssis de transport",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/trophy-carrier/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/trophy-carrier/identity-r1.png",
+      "originId": "exec-15c0d65c-a740-4578-ac05-384056fb4f9c.png",
+      "width": 2079,
+      "height": 756,
+      "sha256": "6ff6135da617d3865da7d85901633afc2b9453a024050dac46ec7823986ccade",
+      "bytes": 1367068,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1571724
+      },
+      "prompt": "Create an ORIGINAL Yautja-inspired fan-game transport design for La Longue Chasse, not a film vehicle replica. Two complete independent orthographic SIDE PROFILE views, SIDE BY SIDE in TWO COLUMNS and ONE ROW: left craft facing RIGHT, right craft facing LEFT. Identical scale, matching structural layout seen from opposite sides. Horizontal side-scrolling gameplay camera, no isometric or top view. Complete nose, rear, landing assemblies and equipment mounting points with wide clear margins. Each craft within central70percent of its half; broad center gutter. Detailed sharp hand-painted sci-fi game bitmap, weathered dark gunmetal and bronze, functional alien hunting technology. NO pilots, riders, creatures, corpses, trophies, cargo, guns, fire, exhaust, shadow, scenery, logos, writing, grid or checkerboard. The empty chassis and fixed structural framework only; riders, loads, weapons, effects and movable accessories are separate later modules. Uniform flat pure MAGENTA #FF00FF background, no colored lighting spill. Vehicle: TROPHY CARRIER, a compact utilitarian antigravity cargo transporter. Low broad reinforced rectangular load deck with beveled corners and visible nonslip plates, low open front control station for one standing operator with compact yoke, sturdy short protective side rails, repeated visible tie-down sockets, large rear loading aperture without a deployed ramp, four low blue-green antigravity pods beneath the deck corners, worn service panels. The EMPTY open cargo bed is the main feature and must be clearly visible in profile through the low rails. Modest purposeful industrial scale, much smaller and simpler than a ceremonial grand hauler. No giant arches, tall cage, crane, trailer, wheels or spaceship wings.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            296,
+            336
+          ],
+          "role": "Original game description; exact construction is a new design proposal."
+        }
+      ],
+      "notes": [
+        "Empty utility cargo bed. Trophies, load restraints and cargo remain independent future modules."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1039,
+            756
+          ],
+          "alpha16Bounds": [
+            35,
+            219,
+            951,
+            279
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 169135,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1039,
+            0,
+            1040,
+            756
+          ],
+          "alpha16Bounds": [
+            1092,
+            219,
+            952,
+            279
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 169158,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

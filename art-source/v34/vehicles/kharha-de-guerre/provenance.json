@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "kharha-de-guerre",
+  "name": "Kha’Rha de guerre",
+  "lore": "Variante originale du Kha’Rha du jeu, pas une créature canonique.",
+  "assets": [
+    {
+      "id": "body-r1",
+      "actionId": "identity",
+      "label": "Corps de la variante de guerre — deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kharha-de-guerre/body-r1.png",
+      "publicPath": "/game/vehicles/v34/kharha-de-guerre/body-r1.png",
+      "originId": "exec-7e384c6b-9b40-43ae-b7a6-846ffd89970b.png",
+      "width": 2170,
+      "height": 725,
+      "sha256": "9828ee9e0310275fb0abe81d4dda744ca6e66cfc6bf41570021f7aea9cee641a",
+      "bytes": 1505486,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573250
+      },
+      "prompt": "Use the provided Kha’Rha sheet as the exact SPECIES IDENTITY reference: same reptile-feline head, long heavy tail, olive-brown pebbled skin, four claw limbs and natural brown dorsal armor scutes. Draw the War Kha’Rha, a larger more powerfully built adult of the SAME original game species, as a BARE BODY base layer. Broader load-bearing shoulders and deeper chest, thicker neck and more muscular thighs, but no new horns, wings, limbs or species redesign. EXACTLY FOUR legs, visibly separated feet in BOTH views. Two FULL horizontal side profiles SIDE BY SIDE; left faces RIGHT, right faces LEFT, same scale and stance, opposing-side fine scars/scutes drawn separately. Give each view a generous clear margin of at least 8 percent inside its half including full tail. Entire animal within frame. PURE MAGENTA #FF00FF background, no shadow, environment, text, label or grid. NO rider, saddle, chains, metal armor or ceremonial props: the helmet, neck plates and flank armor will be independent layers added afterward. Sharp painted 2D game bitmap. Neutral standing identity poses, not an animation.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r3.png",
+          "sha256": "a3bd799b2130c30c2919188ffbf32bad25c0c3e2104ba9544c95f0f723478c4b"
+        },
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            527,
+            547
+          ],
+          "role": "Larger war mount with independent head, neck and flank armor"
+        }
+      ],
+      "notes": [
+        "Corps nu indépendant pour l’assemblage modulaire. Armure de tête, cou, flancs et selle à produire.",
+        "Identité en revue : aucune charge ni destruction de paroi jouable validée."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            28,
+            167,
+            989,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 147953,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1085,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            1153,
+            167,
+            990,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 147836,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "helmet-r1",
+      "actionId": "head-armor",
+      "label": "Casque indépendant",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kharha-de-guerre/helmet-r1.png",
+      "publicPath": "/game/vehicles/v34/kharha-de-guerre/helmet-r1.png",
+      "originId": "exec-0ff82360-5735-4e70-b6b3-fcc08466f8d9.png",
+      "width": 2170,
+      "height": 725,
+      "sha256": "acbda4c13f8dbd58b93a173cd3aa0b059ff9a9a19352a03114e8168590518be9",
+      "bytes": 1558228,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573250
+      },
+      "prompt": "Use the displayed War Kha’Rha body only as a FIT AND CAMERA reference. Generate ONLY a detachable ceremonial Yautja metal ARMOR MODULE for that animal, not the creature. Two opposite side views SIDE BY SIDE, left module oriented to creature facing RIGHT, right module to creature facing LEFT. Same scale and construction, full component in each half, generous blank margins, PURE MAGENTA #FF00FF background. Empty inner spaces are magenta. No flesh, skin, eye, tooth, paw, tail, creature silhouette, mannequin, rider, saddle, weapon, text, numbered labels, grid, shadow or scenery. Sharp painted game asset, dark bronze metal with subtle worn edges and practical leather fasteners. Do not draw the complete assembled animal. A fitted protective low brow-and-snout helmet following the Kha’Rha's long blunt reptile-feline skull. Open eye slot, open jaw clearance, layered forehead plate and small side cheek guards, modest rear fastening tab. NO huge horns or false mandibles. LOWER JAW COMPLETELY OPEN, helmet should not prevent the animal biting. Only this hollow rigid helmet shell; no neck or chest plates.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kharha-de-guerre/body-r1.png",
+          "sha256": "9828ee9e0310275fb0abe81d4dda744ca6e66cfc6bf41570021f7aea9cee641a"
+        },
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            527,
+            547
+          ],
+          "role": "Armor head, neck and flanks"
+        }
+      ],
+      "notes": [
+        "Module graphique indépendant. Son ancrage et ses déformations articulées sur le corps restent à valider.",
+        "Deux vues statiques ; ne compte pas comme animation."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "head-armor",
+          "reviewGridRect": [
+            0,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            192,
+            72,
+            803,
+            488
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 173726,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "head-armor",
+          "reviewGridRect": [
+            1085,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            1179,
+            71,
+            805,
+            489
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 173952,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "neck-armor-r1",
+      "actionId": "neck-armor",
+      "label": "Barde de cou indépendante",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kharha-de-guerre/neck-armor-r1.png",
+      "publicPath": "/game/vehicles/v34/kharha-de-guerre/neck-armor-r1.png",
+      "originId": "exec-3d2bf4cf-966f-45df-a423-e65f03142df8.png",
+      "width": 2170,
+      "height": 725,
+      "sha256": "46613ca0a75314a8ed9eee48d7ed8b88515288d71b2f6f144d8d54261778402f",
+      "bytes": 1558852,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573250
+      },
+      "prompt": "Use the displayed War Kha’Rha body only as a FIT AND CAMERA reference. Generate ONLY a detachable ceremonial Yautja metal ARMOR MODULE for that animal, not the creature. Two opposite side views SIDE BY SIDE, left module oriented to creature facing RIGHT, right module to creature facing LEFT. Same scale and construction, full component in each half, generous blank margins, PURE MAGENTA #FF00FF background. Empty inner spaces are magenta. No flesh, skin, eye, tooth, paw, tail, creature silhouette, mannequin, rider, saddle, weapon, text, numbered labels, grid, shadow or scenery. Sharp painted game asset, dark bronze metal with subtle worn edges and practical leather fasteners. Do not draw the complete assembled animal. Articulated protective neck collar barding made from four overlapping short curved bronze lames, following the slope from back of skull to top of muscular shoulder. Clearly visible hinge overlap and flexible leather strap backing, open underside for throat movement. No helmet or flank plates. Two empty side-profile collar assemblies, not an animal neck. Compact curved layered trapezoid silhouette.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kharha-de-guerre/body-r1.png",
+          "sha256": "9828ee9e0310275fb0abe81d4dda744ca6e66cfc6bf41570021f7aea9cee641a"
+        },
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            527,
+            547
+          ],
+          "role": "Armor head, neck and flanks"
+        }
+      ],
+      "notes": [
+        "Module graphique indépendant. Son ancrage et ses déformations articulées sur le corps restent à valider.",
+        "Deux vues statiques ; ne compte pas comme animation."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neck-armor",
+          "reviewGridRect": [
+            0,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            219,
+            75,
+            761,
+            549
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 172041,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "neck-armor",
+          "reviewGridRect": [
+            1085,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            1185,
+            75,
+            761,
+            549
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 172072,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "flank-armor-r1",
+      "actionId": "flank-armor",
+      "label": "Plaques de flanc indépendantes",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kharha-de-guerre/flank-armor-r1.png",
+      "publicPath": "/game/vehicles/v34/kharha-de-guerre/flank-armor-r1.png",
+      "originId": "exec-6307d94e-ea10-47b6-9308-ff035834aac9.png",
+      "width": 2170,
+      "height": 725,
+      "sha256": "44c6aaa19852284ffb54783418e04e6919012cb66ea4611b01eaa2d55fd9a562",
+      "bytes": 1698817,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573250
+      },
+      "prompt": "Use the displayed War Kha’Rha body only as a FIT AND CAMERA reference. Generate ONLY a detachable ceremonial Yautja metal ARMOR MODULE for that animal, not the creature. Two opposite side views SIDE BY SIDE, left module oriented to creature facing RIGHT, right module to creature facing LEFT. Same scale and construction, full component in each half, generous blank margins, PURE MAGENTA #FF00FF background. Empty inner spaces are magenta. No flesh, skin, eye, tooth, paw, tail, creature silhouette, mannequin, rider, saddle, weapon, text, numbered labels, grid, shadow or scenery. Sharp painted game asset, dark bronze metal with subtle worn edges and practical leather fasteners. Do not draw the complete assembled animal. One coherent detachable flank armor assembly per view: three overlapping broad curved bronze plates forming a low horizontal band for the barrel torso behind the shoulder, a rounded hip-edge plate and two small fastening straps. Arched lower clearance around the upper legs so walking is unobstructed. No saddle, head, collar or complete harness. Right-facing and left-facing flank assembly show opposite-side attachment details.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kharha-de-guerre/body-r1.png",
+          "sha256": "9828ee9e0310275fb0abe81d4dda744ca6e66cfc6bf41570021f7aea9cee641a"
+        },
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            527,
+            547
+          ],
+          "role": "Armor head, neck and flanks"
+        }
+      ],
+      "notes": [
+        "Module graphique indépendant. Son ancrage et ses déformations articulées sur le corps restent à valider.",
+        "Deux vues statiques ; ne compte pas comme animation."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "flank-armor",
+          "reviewGridRect": [
+            0,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            134,
+            132,
+            852,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 209053,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "flank-armor",
+          "reviewGridRect": [
+            1085,
+            0,
+            1085,
+            725
+          ],
+          "alpha16Bounds": [
+            1180,
+            133,
+            852,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 208924,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 4,
+  "acceptedRuntimeClips": 0
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "scavenger-raider",
+  "name": "Scavenger Raider",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Outlaw salvage hover-truck PROPOSAL, compact front cockpit, long open EMPTY salvage flatbed with detachable cargo sockets, stowed claw crane behind cabin, mismatched antigravity pods and visibly repaired armor. Asymmetrical service panels but same logical structure on both sides. No actual cargo, loose chains, skulls or guns.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Scavenger Raider — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/scavenger-raider/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/scavenger-raider/identity-r1.png",
+      "originId": "exec-8e825ba5-30f2-441c-9003-acda7b12d5a1.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "f08e7355c55c1a2bfceb03df1a4fbbc478e3860e0e9a669c03b97c30d3056ded",
+      "bytes": 1482332,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Outlaw salvage hover-truck PROPOSAL, compact front cockpit, long open EMPTY salvage flatbed with detachable cargo sockets, stowed claw crane behind cabin, mismatched antigravity pods and visibly repaired armor. Asymmetrical service panels but same logical structure on both sides. No actual cargo, loose chains, skulls or guns.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 8,
+          "recoveredLine": 1131,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux profils latéraux complets, plateau vide, points d'arrimage libres, grue repliée, pods antigrav et panneaux réparés cohérents.",
+        "La cabine industrielle reste une proposition originale à contrôler en contexte Yautja ; aucune cargaison, arme, chaîne ou trophée n'est dessiné."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            48,
+            182,
+            993,
+            341
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 166282,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1131,
+            182,
+            992,
+            340
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 166918,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

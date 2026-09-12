@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "hunter-speeder",
+  "name": "Hunter Speeder",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/hunter-speeder/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/hunter-speeder/identity-r1.png",
+      "originId": "exec-968a608d-79f5-4831-9789-3a6bd9c488a6.png",
+      "width": 1983,
+      "height": 793,
+      "sha256": "c1e1e6747b4ffd9e7c968c801723dcacbfc54e7ab441743fda1eed0e4957e829",
+      "bytes": 920739,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1138578,
+        "partial": 433549,
+        "opaque": 392
+      },
+      "prompt": "Create an ORIGINAL fan-game vehicle asset for La Longue Chasse. This is a new game design proposal, not a film vehicle replica. Exactly TWO complete side-profile views arranged SIDE BY SIDE in TWO COLUMNS and ONE ROW: left vehicle faces RIGHT, right vehicle faces LEFT, independently drawn opposite sides with coherent matching construction. Horizontal orthographic side-scrolling camera, not isometric or top view. All vehicle parts fully visible, identical scale, each fits central70percent of its cell with broad empty margins and center gutter. Flat pure MAGENTA #FF00FF background with no shadows, glow spill, checkerboard, text, labels, symbols, grid or environment. No pilot, passengers, bodies, trophies, crates, detachable weapons, exhaust plumes or dust; these belong to independent modules. Sharp detailed painted sci-fi game art, believable serviceable construction, dark weathered metal and restrained bronze accents, no copied logos. Vehicle: HUNTER SPEEDER, an original compact heavy antigravity jet-ski inspired by a scarab beetle shape. Lower and shorter than a large Blade Fighter but bulkier than a light hoverbike. Rounded armored charcoal-bronze beetle-like front fairing, a low forward-leaning riding saddle integrated into the dark central body, short compact side handlegrips positioned for a pilot leaning forward, two swept stabilizer fins and recessed green antigravity nodes under a broad low hull. Clearly mechanical, not a living beetle. Curving layered shell panels suggest scarab wing cases, strong protected underside for shallow water and swamp traversal. No actual insect legs, no wheels, no giant front blades or mounted guns. Keep clean modular hardpoints on the sides.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            190,
+            220
+          ],
+          "role": "Partial original game design brief; styling details remain proposals."
+        }
+      ],
+      "notes": [
+        "Original game design based on the recovered description, not film canon and not a verified 1:1 replica.",
+        "Independent vehicle body: rider, equipment and effects remain separate production work."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            991,
+            793
+          ],
+          "alpha16Bounds": [
+            46,
+            182,
+            914,
+            352
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 206389,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            991,
+            0,
+            992,
+            793
+          ],
+          "alpha16Bounds": [
+            1020,
+            183,
+            913,
+            351
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 206022,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "antigrav-activation-r1",
+      "actionId": "antigrav-activation",
+      "label": "Activation et arrêt antigrav · 4 phases · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/hunter-speeder/antigrav-activation-r1.png",
+      "publicPath": "/game/vehicles/v34/hunter-speeder/antigrav-activation-r1.png",
+      "originId": "exec-c9464dd2-1ebf-4225-94ff-b0d277194993.png",
+      "width": 1983,
+      "height": 793,
+      "sha256": "273ef99af94be8ead999b129b9048810e1fbce0f5584af999a9d77c265e13d92",
+      "bytes": 1521388,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572519
+      },
+      "prompt": "Use the immediately preceding Hunter Speeder identity as the exact design reference. Preserve the same compact heavy antigravity jet-ski/scarab machine: rounded layered charcoal-bronze mechanical front fairing, low empty forward-leaning saddle, short compact handlegrips, two swept stabilizer fins, broad protected underside, exactly two recessed green antigravity nodes, side service hardpoint and no insect legs. No wheel, giant blade, gun, cargo, trophy, rider or person. Create a clean 2D game animation source sheet on pure uniform MAGENTA #FF00FF. EXACTLY EIGHT complete vehicle drawings in a regular 4 COLUMNS by 2 ROWS arrangement with no border or grid line. TOP ROW has four independently drawn strict side profiles facing RIGHT. BOTTOM ROW has four independently drawn strict side profiles facing LEFT. The left-facing row must be independently constructed with coherent opposite-side shell panels, never a mirrored copy. Every cell uses the same scale, full silhouette, generous blank margin, identical saddle/handlegrip/fin/node count and coherent panel construction. No text, labels, numbers, arrows, floor, shadow, scenery, water, mud, dust, exhaust, pilot, UI or watermark. ANIMATION: ANTIGRAV ACTIVATION AND STOP, four ordered phases per orientation. Frame 1 fully powered off with both green emitters dark and hull at lowest neutral height. Frame 2 ignition with faint green emitter cores and a slight rise. Frame 3 stable hover with both emitters clearly but restrainedly lit and hull at the highest subtle offset. Frame 4 shutdown with emitters dimming and hull settling. Keep the rigid hull, saddle, grips and fins geometrically identical; only emitter intensity and small vertical hover offset change. No beam, aura, particles or glow spill. Source frames only.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/hunter-speeder/identity-r1.png",
+          "sha256": "c1e1e6747b4ffd9e7c968c801723dcacbfc54e7ab441743fda1eed0e4957e829"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : huit cellules présentes, quatre profils droits et quatre profils gauches indépendants ; selle, grips, fin et deux nœuds restent cohérents, sans pilote.",
+        "Variations lumineuses et hauteur de coque restent des sources de revue ; pivots et cadence non validés.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key exécuté par processHunterSpriteTransparency dans la revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "power-off",
+          "reviewGridRect": [
+            0,
+            0,
+            495,
+            396
+          ],
+          "alpha16Bounds": [
+            27,
+            152,
+            450,
+            176
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50222,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "ignition",
+          "reviewGridRect": [
+            495,
+            0,
+            496,
+            396
+          ],
+          "alpha16Bounds": [
+            516,
+            147,
+            450,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50158,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "stable-hover",
+          "reviewGridRect": [
+            991,
+            0,
+            496,
+            396
+          ],
+          "alpha16Bounds": [
+            1006,
+            140,
+            450,
+            177
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50386,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "shutdown",
+          "reviewGridRect": [
+            1487,
+            0,
+            496,
+            396
+          ],
+          "alpha16Bounds": [
+            1497,
+            151,
+            451,
+            175
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50157,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "power-off",
+          "reviewGridRect": [
+            0,
+            396,
+            495,
+            397
+          ],
+          "alpha16Bounds": [
+            33,
+            474,
+            453,
+            176
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50688,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "ignition",
+          "reviewGridRect": [
+            495,
+            396,
+            496,
+            397
+          ],
+          "alpha16Bounds": [
+            524,
+            474,
+            452,
+            175
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50593,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "stable-hover",
+          "reviewGridRect": [
+            991,
+            396,
+            496,
+            397
+          ],
+          "alpha16Bounds": [
+            1015,
+            472,
+            451,
+            175
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50212,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "shutdown",
+          "reviewGridRect": [
+            1487,
+            396,
+            496,
+            397
+          ],
+          "alpha16Bounds": [
+            1504,
+            475,
+            452,
+            174
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 50245,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "drive-tilt-r1",
+      "actionId": "drive-tilt",
+      "label": "Inclinaison de conduite · 4 phases · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/hunter-speeder/drive-tilt-r1.png",
+      "publicPath": "/game/vehicles/v34/hunter-speeder/drive-tilt-r1.png",
+      "originId": "exec-0ee90d4c-38df-4f37-957d-9a2ae7ac5e0d.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "3e9611bc59d72443d229948a3dd02c6e2ef36d8cc75a2eabbb6ac81dfb1602bb",
+      "bytes": 1480415,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Use the immediately preceding Hunter Speeder identity as the exact design reference. Preserve the same compact heavy antigravity jet-ski/scarab machine: rounded layered charcoal-bronze mechanical front fairing, low empty forward-leaning saddle, short compact handlegrips, two swept stabilizer fins, broad protected underside, exactly two recessed green antigravity nodes, side service hardpoint and no insect legs. No wheel, giant blade, gun, cargo, trophy, rider or person. Create a clean 2D game animation source sheet on pure uniform MAGENTA #FF00FF. EXACTLY EIGHT complete vehicle drawings in a regular 4 COLUMNS by 2 ROWS arrangement with no border or grid line. TOP ROW has four independently drawn strict side profiles facing RIGHT. BOTTOM ROW has four independently drawn strict side profiles facing LEFT. The left-facing row must be independently constructed with coherent opposite-side shell panels, never a mirrored copy. Every cell uses the same scale, full silhouette, generous blank margin, identical saddle/handlegrip/fin/node count and coherent panel construction. No text, labels, numbers, arrows, floor, shadow, scenery, water, mud, dust, exhaust, pilot, UI or watermark. ANIMATION: DRIVING PITCH/TILT, four ordered rigid-body poses per orientation while both green emitters remain steadily and identically lit. Frame 1 modest nose-down braking pitch, frame 2 level neutral, frame 3 modest nose-up acceleration pitch, frame 4 small rebound toward level. Rotate the complete rigid speeder around one consistent center-of-mass pivot; do not bend, stretch, move the saddle independently or redesign panels. Keep every silhouette fully within its cell. No speed lines, ground, water, dust, trail, wake, glow spill or rider. Source frames only.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/hunter-speeder/identity-r1.png",
+          "sha256": "c1e1e6747b4ffd9e7c968c801723dcacbfc54e7ab441743fda1eed0e4957e829"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : huit cellules complètes ; les quatre angles de tangage sont lisibles dans chaque orientation sans déformation majeure du châssis ni pilote.",
+        "Axe de masse, alignement vertical, raccord des panneaux et cadence restent à normaliser avant toute acceptation runtime.",
+        "Source et copie publique conservées octet pour octet ; détourage color-key exécuté par processHunterSpriteTransparency dans la revue V34."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "brake-nose-down",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            21,
+            181,
+            408,
+            170
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42406,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "level",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            464,
+            174,
+            410,
+            164
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42429,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "acceleration-nose-up",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            909,
+            153,
+            399,
+            191
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42457,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "rebound",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1341,
+            172,
+            410,
+            162
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42134,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "brake-nose-down",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            28,
+            554,
+            406,
+            165
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 41734,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "level",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            463,
+            534,
+            411,
+            164
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 43018,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "acceleration-nose-up",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            905,
+            523,
+            402,
+            186
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42175,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "rebound",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1342,
+            536,
+            410,
+            162
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42439,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 3,
+  "acceptedRuntimeClips": 0
+}

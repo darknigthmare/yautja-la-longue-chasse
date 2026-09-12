@@ -326,7 +326,8 @@ function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaP
                 return arena.groundY * ground.scale + ground.translateY
                   + (placement.y + placement.height - arena.groundY) * transform.scale - height;
               })()
-              : (placement.y + placement.height) * transform.scale + transform.translateY - height,
+              : asset.verticalAlign === "top" ? placement.y * transform.scale + transform.translateY
+                : (placement.y + placement.height) * transform.scale + transform.translateY - height,
             width, height,
           };
           if (plane.id === "P5") context.globalAlpha *= getPitArenaForegroundOpacity(bounds, state, camera);

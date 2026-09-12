@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "skimmer-des-dunes",
+  "name": "Skimmer des dunes",
+  "lore": "original-game-design-proposal",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/skimmer-des-dunes/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/skimmer-des-dunes/identity-r1.png",
+      "originId": "exec-bdc3de02-d4a4-4fff-bae5-fe6ae5b31dc9.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "a88f8112096de098f2fdaf3262e2f59717613aa2c3a1bc849d142791b62f5c38",
+      "bytes": 921804,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 1180565,
+        "partial": 391002,
+        "opaque": 961
+      },
+      "prompt": "Create an ORIGINAL fan-game vehicle asset for La Longue Chasse. This is a new game design proposal, not a film vehicle replica. Exactly TWO complete side-profile views arranged SIDE BY SIDE in TWO COLUMNS and ONE ROW: left vehicle faces RIGHT, right vehicle faces LEFT, independently drawn opposite sides with coherent matching construction. Horizontal orthographic side-scrolling camera, not isometric or top view. All vehicle parts fully visible, identical scale, each fits central70percent of its cell with broad empty margins and center gutter. Flat pure MAGENTA #FF00FF background with no shadows, glow spill, checkerboard, text, labels, symbols, grid or environment. No pilot, passengers, bodies, trophies, crates, detachable weapons, exhaust plumes or dust; these belong to independent modules. Sharp detailed painted sci-fi game art, believable serviceable construction, dark weathered metal and restrained bronze accents, no copied logos. Vehicle: SKIMMER DES DUNES, an original broad low desert antigravity craft. Long sandstone-bronze armored body, low protected central rider well without canopy, compact control yoke integrated in the well, broad side outrigger pods attached through sturdy low braces and layered downward-facing antigravity emitter housings. Near and far outriggers readable as connected structure in side profile, not loose floating parts. Sand-worn plating, screened cooling vents, rugged replaceable front skid bumper that normally floats above the sand, subdued teal power accents. A wide stable desert silhouette, heavier than a scout board, no wheels, tracks, sails, large wings or guns. Do not draw dust or ground; dust plumes must remain separate assets.",
+      "references": [
+        {
+          "source": "recovered-vehicle-conversation",
+          "lines": [
+            411,
+            433
+          ],
+          "role": "Partial original game design brief; styling details remain proposals."
+        }
+      ],
+      "notes": [
+        "Original game design based on the recovered description, not film canon and not a verified 1:1 replica.",
+        "Independent vehicle body: rider, equipment and effects remain separate production work."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            37,
+            182,
+            1003,
+            304
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 185090,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1133,
+            183,
+            1003,
+            303
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 185053,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

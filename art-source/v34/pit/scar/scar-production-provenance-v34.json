@@ -1,0 +1,5956 @@
+{
+  "schemaVersion": 1,
+  "id": "scar-production-v34",
+  "fighterId": "scar",
+  "checkedAt": "2026-09-12T21:34:02.341Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/sprites/v5/film-plates/scar.png",
+    "sha256": "48f58c97db62db42746398e6ae45e8a63f098283cc032e346dfd1c8aff608e08",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 12,
+  "generatedPoseSamples": 96,
+  "validatedRuntimeClips": 28,
+  "acceptedSourcePages": 8,
+  "runtimeDrawings": 62,
+  "actionSequencesIncludingFacings": 16,
+  "counts": {
+    "validated": 8,
+    "authoredReview": 0,
+    "rejected": 4
+  },
+  "runtimeLimitations": [
+    "Saut/réception : génération refusée par le fournisseur, aucune image produite.",
+    "Marche avant : initiale et correction rejetées pour appuis répétés ; maintien idle honnête.",
+    "Garde basse, attaques aériennes/accroupies et autres états non listés restent manquants.",
+    "La référence V5 est la présentation historique du projet, sans certification cinéma 1:1. Quelques pixels colorés fins peuvent persister ; aucun atlas complet annoncé."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-idle-v34.png",
+      "originId": "exec-928b9d05-6fa6-4584-ac16-1eb79de5fc9f.png",
+      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
+      "bytes": 2216119,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Final cannon inspection distinguishes the red forward muzzle from the dark rear cap: both rows aim toward their authored facing. Earlier preliminary concern cleared."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1152551,
+        "fringePixels": 21347
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53614,
+          "alpha16Bounds": [
+            75,
+            30,
+            251,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 185,
+          "pixelDigest": "8c9db81b8b41a3dc97944d68180f59edff7e3b9471377fd4fa838bb0cb131168",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54216,
+          "alpha16Bounds": [
+            464,
+            29,
+            237,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 275,
+          "pixelDigest": "d6c03084a92c18b4de918be04124bffd64a4562b4f35b04625e6c8eb9cf0d343",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50517,
+          "alpha16Bounds": [
+            835,
+            34,
+            243,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 290,
+          "pixelDigest": "4c723863f57ce6d69e42e1ea5e401bc0cb5070b849a43acca9ca8f53f29921ee",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53138,
+          "alpha16Bounds": [
+            1208,
+            29,
+            244,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 318,
+          "pixelDigest": "ceb1da95e295f1ceb213aaf1e3bc22ca65a0571f2e588d9e6df5d24ca15a2e65",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52983,
+          "alpha16Bounds": [
+            76,
+            543,
+            241,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 282,
+          "pixelDigest": "85a04f7f2e67dec084fed493169d2a66ea8c69a72c197002274ca933300f9d96",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53555,
+          "alpha16Bounds": [
+            454,
+            542,
+            235,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 295,
+          "pixelDigest": "5245f162602142e951b4b955901d0be4c007d503cebca098712250e288a1308d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50045,
+          "alpha16Bounds": [
+            833,
+            546,
+            242,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 263,
+          "pixelDigest": "901fb73b4023f4a39693a3d88f730ec80ac66fd9f1033ec4d86b4c502641e460",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52245,
+          "alpha16Bounds": [
+            1214,
+            543,
+            232,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 271,
+          "pixelDigest": "5e119c7f9ab09b79e77a6f965ea31ad1e3639db5b406a7fe4ec7bc6f55208735",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "scar-idle",
+          "rect": [
+            72,
+            27,
+            257,
+            446
+          ],
+          "pivot": [
+            127.5,
+            442
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "scar-idle",
+          "rect": [
+            461,
+            26,
+            243,
+            447
+          ],
+          "pivot": [
+            124.5,
+            443
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "scar-idle",
+          "rect": [
+            832,
+            31,
+            249,
+            442
+          ],
+          "pivot": [
+            119,
+            438
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "scar-idle",
+          "rect": [
+            1205,
+            26,
+            250,
+            447
+          ],
+          "pivot": [
+            126,
+            443
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "scar-idle",
+          "rect": [
+            73,
+            540,
+            247,
+            441
+          ],
+          "pivot": [
+            120.5,
+            437
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "scar-idle",
+          "rect": [
+            451,
+            539,
+            241,
+            442
+          ],
+          "pivot": [
+            119,
+            438
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "scar-idle",
+          "rect": [
+            830,
+            543,
+            248,
+            436
+          ],
+          "pivot": [
+            128,
+            432
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "scar-idle",
+          "rect": [
+            1211,
+            540,
+            238,
+            441
+          ],
+          "pivot": [
+            119,
+            437
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                72,
+                27,
+                257,
+                446
+              ],
+              "pivot": [
+                127.5,
+                442
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                461,
+                26,
+                243,
+                447
+              ],
+              "pivot": [
+                124.5,
+                443
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                832,
+                31,
+                249,
+                442
+              ],
+              "pivot": [
+                119,
+                438
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                1205,
+                26,
+                250,
+                447
+              ],
+              "pivot": [
+                126,
+                443
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                73,
+                540,
+                247,
+                441
+              ],
+              "pivot": [
+                120.5,
+                437
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                451,
+                539,
+                241,
+                442
+              ],
+              "pivot": [
+                119,
+                438
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                830,
+                543,
+                248,
+                436
+              ],
+              "pivot": [
+                128,
+                432
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-idle",
+              "rect": [
+                1211,
+                540,
+                238,
+                441
+              ],
+              "pivot": [
+                119,
+                437
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "idle",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.575Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/scar/scar-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-walk-forward-v34.png",
+      "originId": "exec-e6676d9c-b19d-4a95-adc9-0bf7b6321850.png",
+      "sha256": "ae1b6f71e0b1a763f2cac9f7789156223903781090a66a8f4d4ccabb32c4876e",
+      "bytes": 1987856,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Columns1/3 repeat the same contact leg and2/4 repeat the same supporting leg. No true alternating walk cycle accepted. Equipment is coherent but gait must be repaired."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1262042,
+        "fringePixels": 20023
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40384,
+          "alpha16Bounds": [
+            61,
+            42,
+            230,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "5ec71e20d0fe955470ebc88745ee06f1753ed2d1e6a5f07fd69a22f2186ed20f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38683,
+          "alpha16Bounds": [
+            469,
+            38,
+            207,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 86,
+          "pixelDigest": "3d9cdef7f2954a347d111cb7c61143047ec7770b92d4050ec9fad8bed6e7de2b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40038,
+          "alpha16Bounds": [
+            841,
+            33,
+            226,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "6094ee52ba0d1d3c9e2de19d1b14d0be35709a913a90a2ab2f572b12e257fc63",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37961,
+          "alpha16Bounds": [
+            1242,
+            33,
+            207,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "f45bc3541a7ac0972143e833de977cb5e7a589800b9dfdce799ba162ecebca28",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39390,
+          "alpha16Bounds": [
+            74,
+            526,
+            213,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "081c48c60ab1048da58ab4534d6fd300f80087ff112f7ed419729a06f8aed4ce",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37269,
+          "alpha16Bounds": [
+            461,
+            526,
+            206,
+            397
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 140,
+          "pixelDigest": "7dd68d2c9eb85e5721fa89b5c9aefd3abe8d3257a893db0382ff3d2eba1c4da0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39399,
+          "alpha16Bounds": [
+            837,
+            526,
+            230,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "e741e1e9fe87fe53f2e50e63295dccb880f93d369dee3b662dbadfef6cf924af",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37698,
+          "alpha16Bounds": [
+            1226,
+            526,
+            209,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "f0884d644d72c2136bd8a143412aa8008d23e285a9c23ab2c9a1ce31ec637f17",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            58,
+            39,
+            236,
+            402
+          ],
+          "pivot": [
+            108.5,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            466,
+            35,
+            213,
+            410
+          ],
+          "pivot": [
+            90,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            838,
+            30,
+            232,
+            410
+          ],
+          "pivot": [
+            115,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            1239,
+            30,
+            213,
+            415
+          ],
+          "pivot": [
+            99.5,
+            411
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            71,
+            523,
+            219,
+            403
+          ],
+          "pivot": [
+            109,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            458,
+            523,
+            212,
+            403
+          ],
+          "pivot": [
+            108.5,
+            399
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            834,
+            523,
+            236,
+            400
+          ],
+          "pivot": [
+            116.5,
+            396
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "scar-walk-forward",
+          "rect": [
+            1223,
+            523,
+            215,
+            402
+          ],
+          "pivot": [
+            106,
+            398
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/scar/scar-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-walk-backward-v34.png",
+      "originId": "exec-402d58e1-1647-4b5f-8128-837f814ad61a.png",
+      "sha256": "4c91a64252cc60633e9c24c3c356cdc4fb41b6d4ee9d088642703225da6c8cf9",
+      "bytes": 2200994,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Contacts in columns1/3 appear to reverse near-leg overlap, but passing poses2/4 lift the same leg. Column2 needs anatomical support-leg repair; no runtime walk accepted yet."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1179649,
+        "fringePixels": 22851
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49718,
+          "alpha16Bounds": [
+            48,
+            42,
+            259,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 158,
+          "pixelDigest": "0f05d09d155114343b9d78e72f0411ad96e62c9a443db2881e13ee7be41b7cb0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48441,
+          "alpha16Bounds": [
+            436,
+            35,
+            238,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "1e43b2c7a157bba0e7fc7c7220ddcc4c3d76772fc05c52681f2035fc05efac49",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49803,
+          "alpha16Bounds": [
+            813,
+            40,
+            252,
+            427
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 189,
+          "pixelDigest": "2fe5e43298873fd466e94522be7178063d6401f161c7fc67070b854a5839fab4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48165,
+          "alpha16Bounds": [
+            1204,
+            35,
+            259,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "5da82353d0278f31d7269792a02e19d4aa6d42ea88e1354e12e4d78ba1138b6d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50573,
+          "alpha16Bounds": [
+            63,
+            541,
+            251,
+            429
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 206,
+          "pixelDigest": "2e6c7c04eb0c3a583ba7d9f32435d5dfb3e863ff6cb072521d1fbd632c46e4b6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48182,
+          "alpha16Bounds": [
+            450,
+            534,
+            238,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "4deb0d55665f8c6afa2e3f46a05ff9a4db49a74be3026f65204b8ea93ab8c113",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49987,
+          "alpha16Bounds": [
+            828,
+            540,
+            249,
+            429
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 187,
+          "pixelDigest": "f3dbbb08bf4dacb68b33d3ee95530216f00b7be560e52d0d977485094b893f4c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48346,
+          "alpha16Bounds": [
+            1209,
+            534,
+            249,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "a05d5bfaae5e2e9fc87c57831f5dfadb1547097faec464b5491681ac97eac4be",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            45,
+            39,
+            265,
+            432
+          ],
+          "pivot": [
+            124.5,
+            428
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            433,
+            32,
+            244,
+            438
+          ],
+          "pivot": [
+            101.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            810,
+            37,
+            258,
+            433
+          ],
+          "pivot": [
+            123,
+            429
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            1201,
+            32,
+            265,
+            438
+          ],
+          "pivot": [
+            86.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            60,
+            538,
+            257,
+            435
+          ],
+          "pivot": [
+            124.5,
+            431
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            447,
+            531,
+            244,
+            438
+          ],
+          "pivot": [
+            150.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            825,
+            537,
+            255,
+            435
+          ],
+          "pivot": [
+            127,
+            431
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "scar-walk-backward",
+          "rect": [
+            1206,
+            531,
+            255,
+            438
+          ],
+          "pivot": [
+            173,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-crouch-v34.png",
+      "originId": "exec-596c67a5-62d2-4bbc-8e54-e365d4442acb.png",
+      "sha256": "7b4a04c23132c2f89ddbfebed5fb715ddf5c0f266d0eae3ea8858d815f5a703e",
+      "bytes": 2062567,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "First three drawings enter and hold deep crouch; rising fourth excluded. Left hand keeps spear grip, right hand visible beside knee."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1222730,
+        "fringePixels": 20627
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47567,
+          "alpha16Bounds": [
+            57,
+            46,
+            250,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 304,
+          "pixelDigest": "f60dc0aed39d229e51d01fa25c2151d487414d53a233e22f8063f364dc95f0e9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44010,
+          "alpha16Bounds": [
+            456,
+            85,
+            245,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 303,
+          "pixelDigest": "f91411d3bda6e176244bb1943c920b6e6bf113b415b5149379fa9c5e52274928",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 37187,
+          "alpha16Bounds": [
+            855,
+            112,
+            220,
+            353
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 239,
+          "pixelDigest": "929ae7b8e01198515284a82c135addb2d79ed2369885a112f14a5e54ea9220bd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44604,
+          "alpha16Bounds": [
+            1221,
+            85,
+            247,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 295,
+          "pixelDigest": "64e8d7755ce93856adacab9ffde17d8e5d2384f4f98dc94b5ff6be9abcd2e79b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47822,
+          "alpha16Bounds": [
+            60,
+            544,
+            243,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 317,
+          "pixelDigest": "a9ae2698b08010dc7b22c99f6f7d8eeed3cda1acc4f990b4aa84e3353806c70b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45084,
+          "alpha16Bounds": [
+            447,
+            570,
+            241,
+            378
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 351,
+          "pixelDigest": "42d1f4f90eeddbc0fbd48cc13b4b21b3dd65b90a8c6c48e0ddb1998a4fb40579",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38448,
+          "alpha16Bounds": [
+            828,
+            596,
+            237,
+            350
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 299,
+          "pixelDigest": "290178119ec8d1c5fca5a7ebd1c017448428ed642b38865ecb5286ba56bc8b94",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45412,
+          "alpha16Bounds": [
+            1220,
+            574,
+            242,
+            374
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 284,
+          "pixelDigest": "ea6cd2aac6a5f3648c66ca2d750695492cd274e87f7dca8a9e08079594cb21c0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "scar-crouch",
+          "rect": [
+            54,
+            43,
+            256,
+            425
+          ],
+          "pivot": [
+            127.5,
+            421
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "scar-crouch",
+          "rect": [
+            453,
+            82,
+            251,
+            386
+          ],
+          "pivot": [
+            120.5,
+            382
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "scar-crouch",
+          "rect": [
+            852,
+            109,
+            226,
+            359
+          ],
+          "pivot": [
+            105.5,
+            355
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "scar-crouch",
+          "rect": [
+            57,
+            541,
+            249,
+            410
+          ],
+          "pivot": [
+            129,
+            406
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "scar-crouch",
+          "rect": [
+            444,
+            567,
+            247,
+            384
+          ],
+          "pivot": [
+            131,
+            380
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "scar-crouch",
+          "rect": [
+            825,
+            593,
+            243,
+            356
+          ],
+          "pivot": [
+            126,
+            352
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                54,
+                43,
+                256,
+                425
+              ],
+              "pivot": [
+                127.5,
+                421
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                453,
+                82,
+                251,
+                386
+              ],
+              "pivot": [
+                120.5,
+                382
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                852,
+                109,
+                226,
+                359
+              ],
+              "pivot": [
+                105.5,
+                355
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                57,
+                541,
+                249,
+                410
+              ],
+              "pivot": [
+                129,
+                406
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                444,
+                567,
+                247,
+                384
+              ],
+              "pivot": [
+                131,
+                380
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-crouch",
+              "rect": [
+                825,
+                593,
+                243,
+                356
+              ],
+              "pivot": [
+                126,
+                352
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-guard-v34.png",
+      "originId": "exec-4d86522b-892c-4381-b840-368793bbc239.png",
+      "sha256": "220d62176002c2695ce57f51179cbe11c324f8e0708ba47442ac979cd590d590",
+      "bytes": 2174399,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Four distinct stages end in held high guard; right hand partly occluded by its own mounted blades."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1175902,
+        "fringePixels": 20322
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54944,
+          "alpha16Bounds": [
+            47,
+            28,
+            256,
+            442
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 210,
+          "pixelDigest": "8f168a8e3d999dc03fdeba89231978f4587d23436674ee70e6d75232c526e203",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48491,
+          "alpha16Bounds": [
+            459,
+            28,
+            245,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "3c5ed3dcd67c7f8e1759da918029f71352cf66189cb2906559f3173bb7ba92cb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48293,
+          "alpha16Bounds": [
+            838,
+            28,
+            256,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 159,
+          "pixelDigest": "4e2396c10a8005187686c9b988fee8ab0f45e31faff7a609ef6ad4201270be7d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47914,
+          "alpha16Bounds": [
+            1211,
+            27,
+            244,
+            442
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 165,
+          "pixelDigest": "8f8cfcc385b552587e4ef1da505974505fcb960dcd777240387f8cd65e6db12a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53119,
+          "alpha16Bounds": [
+            72,
+            540,
+            249,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 174,
+          "pixelDigest": "7d14e642d241a23a608599a3640de74e8351fa4787e3788f59acba01a13a7971",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "raise-guard",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48131,
+          "alpha16Bounds": [
+            454,
+            534,
+            238,
+            438
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 112,
+          "pixelDigest": "21382d7757590ee99fc36ee77c44d2f9c4d38b9373e806f21838f189fbed86f6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "brace-guard",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48061,
+          "alpha16Bounds": [
+            837,
+            535,
+            243,
+            438
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 176,
+          "pixelDigest": "48446fb79eac3d1fbe2009e61daaca9704029e02ef6e5b72d6f6b21ed6491f98",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "held-guard",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48009,
+          "alpha16Bounds": [
+            1223,
+            537,
+            245,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 151,
+          "pixelDigest": "218f1727f4aa6a9159aa48afa436ebc74dfe093d84be81fc731406ead9d3f1ac",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "scar-guard",
+          "rect": [
+            44,
+            25,
+            262,
+            448
+          ],
+          "pivot": [
+            137,
+            444
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "scar-guard",
+          "rect": [
+            456,
+            25,
+            251,
+            446
+          ],
+          "pivot": [
+            120,
+            442
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "scar-guard",
+          "rect": [
+            835,
+            25,
+            262,
+            447
+          ],
+          "pivot": [
+            123.5,
+            443
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "scar-guard",
+          "rect": [
+            1208,
+            24,
+            250,
+            448
+          ],
+          "pivot": [
+            124,
+            444
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "scar-guard",
+          "rect": [
+            69,
+            537,
+            255,
+            438
+          ],
+          "pivot": [
+            121.5,
+            434
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "scar-guard",
+          "rect": [
+            451,
+            531,
+            244,
+            444
+          ],
+          "pivot": [
+            121.5,
+            440
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "scar-guard",
+          "rect": [
+            834,
+            532,
+            249,
+            444
+          ],
+          "pivot": [
+            124.5,
+            440
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "scar-guard",
+          "rect": [
+            1220,
+            534,
+            251,
+            441
+          ],
+          "pivot": [
+            125.5,
+            437
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                44,
+                25,
+                262,
+                448
+              ],
+              "pivot": [
+                137,
+                444
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                456,
+                25,
+                251,
+                446
+              ],
+              "pivot": [
+                120,
+                442
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                835,
+                25,
+                262,
+                447
+              ],
+              "pivot": [
+                123.5,
+                443
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                1208,
+                24,
+                250,
+                448
+              ],
+              "pivot": [
+                124,
+                444
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                69,
+                537,
+                255,
+                438
+              ],
+              "pivot": [
+                121.5,
+                434
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                451,
+                531,
+                244,
+                444
+              ],
+              "pivot": [
+                121.5,
+                440
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                834,
+                532,
+                249,
+                444
+              ],
+              "pivot": [
+                124.5,
+                440
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-guard",
+              "rect": [
+                1220,
+                534,
+                251,
+                441
+              ],
+              "pivot": [
+                125.5,
+                437
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-hurt-v34.png",
+      "originId": "exec-6af0a693-ad49-49d7-a1b7-64e596cf747a.png",
+      "sha256": "7090d329fd96402ff5b73079345ed52dadb2effda04e3c5a74ad05e5ea5ea8de",
+      "bytes": 2126041,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1196452,
+        "fringePixels": 22307
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46538,
+          "alpha16Bounds": [
+            90,
+            58,
+            233,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 206,
+          "pixelDigest": "07951da00a71c33e3846cf4b68c6565751453a51e24cb0a196dee393ce784101",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45964,
+          "alpha16Bounds": [
+            480,
+            57,
+            231,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "13fafcda8f8e6d0e0f56eb9da721efad89a81f6b0e739e097d9c7014556ef436",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46626,
+          "alpha16Bounds": [
+            840,
+            57,
+            231,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 205,
+          "pixelDigest": "6633376d45ef9bacfde98a9027fdb043f90906f678aca14b8d0facfeeaef306e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48847,
+          "alpha16Bounds": [
+            1216,
+            51,
+            235,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 224,
+          "pixelDigest": "a8481d5c21931ff0898a56237f45e71bb611de2102fed989355d1a605edc163e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "recoil",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47055,
+          "alpha16Bounds": [
+            105,
+            556,
+            232,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 213,
+          "pixelDigest": "65539dfb7feae79f5e110f478e12f798df07192d2e3a4ed4c9e0547153fd3599",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "strong-recoil",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45917,
+          "alpha16Bounds": [
+            465,
+            556,
+            237,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "870c4920ff6344b15598db4c3241a0e0c9302be05d0acfa24cb977b560aa55a2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46509,
+          "alpha16Bounds": [
+            845,
+            556,
+            235,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 167,
+          "pixelDigest": "9f7d8eaa7f83de85e06578934672950827a85dfcc907ad444413037b3ffd1102",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48956,
+          "alpha16Bounds": [
+            1223,
+            549,
+            236,
+            413
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 188,
+          "pixelDigest": "f3f6597c7d8b16a98ea40fa4299446459f3aa96999ab09f2d1c86decd475a652",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "scar-hurt",
+          "rect": [
+            87,
+            55,
+            239,
+            412
+          ],
+          "pivot": [
+            117,
+            408
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "scar-hurt",
+          "rect": [
+            477,
+            54,
+            237,
+            413
+          ],
+          "pivot": [
+            121,
+            409
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "scar-hurt",
+          "rect": [
+            837,
+            54,
+            237,
+            413
+          ],
+          "pivot": [
+            119.5,
+            409
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "scar-hurt",
+          "rect": [
+            1213,
+            48,
+            241,
+            418
+          ],
+          "pivot": [
+            127,
+            414
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "scar-hurt",
+          "rect": [
+            102,
+            553,
+            238,
+            412
+          ],
+          "pivot": [
+            120,
+            408
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "scar-hurt",
+          "rect": [
+            462,
+            553,
+            243,
+            410
+          ],
+          "pivot": [
+            119,
+            406
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "scar-hurt",
+          "rect": [
+            842,
+            553,
+            241,
+            412
+          ],
+          "pivot": [
+            117,
+            408
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "scar-hurt",
+          "rect": [
+            1220,
+            546,
+            242,
+            419
+          ],
+          "pivot": [
+            118,
+            415
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                87,
+                55,
+                239,
+                412
+              ],
+              "pivot": [
+                117,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                477,
+                54,
+                237,
+                413
+              ],
+              "pivot": [
+                121,
+                409
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                837,
+                54,
+                237,
+                413
+              ],
+              "pivot": [
+                119.5,
+                409
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                1213,
+                48,
+                241,
+                418
+              ],
+              "pivot": [
+                127,
+                414
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                102,
+                553,
+                238,
+                412
+              ],
+              "pivot": [
+                120,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                462,
+                553,
+                243,
+                410
+              ],
+              "pivot": [
+                119,
+                406
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                842,
+                553,
+                241,
+                412
+              ],
+              "pivot": [
+                117,
+                408
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "scar-hurt",
+              "rect": [
+                1220,
+                546,
+                242,
+                419
+              ],
+              "pivot": [
+                118,
+                415
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.hitstun",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/scar/scar-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-light-v34.png",
+      "originId": "exec-43311471-5221-4847-a7a3-282741bb5240.png",
+      "sha256": "578fe95aa6ef59e4f12efa42b2ba3e9ae9580db7e74b504820c2190ba263b823",
+      "bytes": 2078288,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Startup/recovery/neutral hands readable. At contact, blades run across the fist silhouette rather than clearly above its dorsal mount; targeted mount/hand separation required before acceptance. Spear grip remains separate."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1223551,
+        "fringePixels": 18024
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44060,
+          "alpha16Bounds": [
+            51,
+            56,
+            245,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "c7388c6759abc97f96eeecb427f4ed935d796cc63fc3a50bf11958abed531d33",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46077,
+          "alpha16Bounds": [
+            400,
+            49,
+            323,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 204,
+          "pixelDigest": "94c9a0d5fcd8c946830711b06d5916167afe2cca4788e93b9c50ce072227dee6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42392,
+          "alpha16Bounds": [
+            813,
+            56,
+            236,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "179a59c23d4ce4adcd6d25ee9d5357911aa0f3923168305a46ee3f784a130f62",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42608,
+          "alpha16Bounds": [
+            1213,
+            54,
+            213,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 269,
+          "pixelDigest": "460e1c2aa380116b1d7055f7b68ba0c93da403256800d5705f08b18ad1aecba6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43264,
+          "alpha16Bounds": [
+            80,
+            545,
+            243,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "540e00ea857caea5e102a69ee5963a89e51dd059e5fe9032b6cad97df571c7e2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45384,
+          "alpha16Bounds": [
+            405,
+            541,
+            331,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 196,
+          "pixelDigest": "e83fa22494a63cb7c8ad5eb6a9a0787f0e5749287e5ed1aef5c7702fa595883b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42710,
+          "alpha16Bounds": [
+            862,
+            544,
+            237,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 109,
+          "pixelDigest": "5d57a0ec3190d2c7c1405fbf6b723d0dd23af9bee4226a009cac71bfd2753a23",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42818,
+          "alpha16Bounds": [
+            1240,
+            544,
+            210,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 217,
+          "pixelDigest": "399d5059d994139eeee53b000a29f8486461925c8ce1e8fc54ceaa44e427ada8",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "scar-light",
+          "rect": [
+            48,
+            53,
+            251,
+            393
+          ],
+          "pivot": [
+            114,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "scar-light",
+          "rect": [
+            397,
+            46,
+            329,
+            400
+          ],
+          "pivot": [
+            122,
+            396
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "scar-light",
+          "rect": [
+            810,
+            53,
+            242,
+            393
+          ],
+          "pivot": [
+            113,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "scar-light",
+          "rect": [
+            1210,
+            51,
+            219,
+            395
+          ],
+          "pivot": [
+            107,
+            391
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "scar-light",
+          "rect": [
+            77,
+            542,
+            249,
+            392
+          ],
+          "pivot": [
+            130.5,
+            388
+          ],
+          "durationTicks": 10,
+          "phase": "startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "scar-light",
+          "rect": [
+            402,
+            538,
+            337,
+            396
+          ],
+          "pivot": [
+            211,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "active",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "scar-light",
+          "rect": [
+            859,
+            541,
+            243,
+            393
+          ],
+          "pivot": [
+            125,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "scar-light",
+          "rect": [
+            1237,
+            541,
+            216,
+            393
+          ],
+          "pivot": [
+            109,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-medium-v34.png",
+      "originId": "exec-862c1be7-4d39-47a0-b07b-2496ada09eea.png",
+      "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919",
+      "bytes": 1981066,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1259041,
+        "fringePixels": 18863
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39993,
+          "alpha16Bounds": [
+            67,
+            58,
+            262,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "4f19d5be592f405290887166f5d47afdba8c440f555aced2b1b011c899eddaff",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40820,
+          "alpha16Bounds": [
+            417,
+            67,
+            351,
+            382
+          ],
+          "gridBorderPixels": 21,
+          "residualMagentaPixels": 169,
+          "pixelDigest": "a7b59917388dc3b6d6a8ff7260b130667b303ce908b1a803b9bbb1a191b138c7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 38207,
+          "alpha16Bounds": [
+            768,
+            58,
+            320,
+            392
+          ],
+          "gridBorderPixels": 15,
+          "residualMagentaPixels": 220,
+          "pixelDigest": "99eb687a2590d8899078fe42e09888a3f8454444788141fe7918305f128c7e7d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39183,
+          "alpha16Bounds": [
+            1250,
+            61,
+            215,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "f68488518b824dbe8a025425c683012601ac87a1f3dafeac90e66d3972f8deae",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40017,
+          "alpha16Bounds": [
+            72,
+            552,
+            312,
+            383
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 141,
+          "pixelDigest": "2a6e527c4ee4e43ad00dff781e8bfd48521c50d86d18b89a230ed0c18e049b65",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39368,
+          "alpha16Bounds": [
+            384,
+            568,
+            360,
+            365
+          ],
+          "gridBorderPixels": 11,
+          "residualMagentaPixels": 130,
+          "pixelDigest": "28bf1b4c865c982574402fb9bcedd71cc338e08bbddd926090726141c9cdd2d1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37491,
+          "alpha16Bounds": [
+            840,
+            558,
+            260,
+            377
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 223,
+          "pixelDigest": "d90cfa00ffd69e89a9925d2b9d901f04b1026e2f1945482f446f1b1861b61f05",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 38744,
+          "alpha16Bounds": [
+            1247,
+            561,
+            222,
+            375
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "2abdfa626c5a2813261e25e81fb91a63dcdd9e221ae388bdd3a1f86be6028cd9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            64,
+            55,
+            268,
+            397
+          ],
+          "pivot": [
+            124,
+            393
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            414,
+            64,
+            407,
+            388
+          ],
+          "pivot": [
+            153,
+            384
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            842,
+            55,
+            249,
+            398
+          ],
+          "pivot": [
+            124,
+            394
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "scar-medium",
+          "rect": [
+            1247,
+            58,
+            221,
+            395
+          ],
+          "pivot": [
+            110,
+            391
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            69,
+            549,
+            256,
+            389
+          ],
+          "pivot": [
+            127.5,
+            385
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            342,
+            565,
+            405,
+            371
+          ],
+          "pivot": [
+            257,
+            367
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "scar-medium",
+          "rect": [
+            837,
+            555,
+            266,
+            383
+          ],
+          "pivot": [
+            132.5,
+            379
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "scar-medium",
+          "rect": [
+            1244,
+            558,
+            228,
+            381
+          ],
+          "pivot": [
+            113.5,
+            377
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                64,
+                55,
+                268,
+                397
+              ],
+              "pivot": [
+                124,
+                393
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                414,
+                64,
+                407,
+                388
+              ],
+              "pivot": [
+                153,
+                384
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                842,
+                55,
+                249,
+                398
+              ],
+              "pivot": [
+                124,
+                394
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                1247,
+                58,
+                221,
+                395
+              ],
+              "pivot": [
+                110,
+                391
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                69,
+                549,
+                256,
+                389
+              ],
+              "pivot": [
+                127.5,
+                385
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                342,
+                565,
+                405,
+                371
+              ],
+              "pivot": [
+                257,
+                367
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                837,
+                555,
+                266,
+                383
+              ],
+              "pivot": [
+                132.5,
+                379
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-medium",
+              "rect": [
+                1244,
+                558,
+                228,
+                381
+              ],
+              "pivot": [
+                113.5,
+                377
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.medium.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+      "originId": "exec-50aa08dc-f759-4173-b77a-b64334920f27.png",
+      "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+      "bytes": 2232291,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Left source row order neutral/recovery/active/startup is explicitly reversed [3,2,1,0]. No horizontal mirror."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1166888,
+        "fringePixels": 23501
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51810,
+          "alpha16Bounds": [
+            43,
+            40,
+            298,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "c304e9af8846de68f6f4215eddc64d0ce361f70ace0d01e0b4c9cfe5c3e7b322",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49079,
+          "alpha16Bounds": [
+            413,
+            49,
+            330,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 182,
+          "pixelDigest": "a60795d11e646b4eada9d52ff9701f311cff8be2f1a0b851b8b27b127eafa4c6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48484,
+          "alpha16Bounds": [
+            790,
+            51,
+            302,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 164,
+          "pixelDigest": "4c235f9a4faaff9c4af03a5e2d1b9edc19f1d7103a6eeb69e4bb31fd5bf3d29a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52865,
+          "alpha16Bounds": [
+            1206,
+            42,
+            283,
+            425
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 197,
+          "pixelDigest": "e3648b3e344a9458d6ad07519bb4cfa8ddf1a6fdee22a34159e732068e3a91f6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53409,
+          "alpha16Bounds": [
+            47,
+            547,
+            285,
+            419
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 209,
+          "pixelDigest": "3a1cbe5aa49477d47018ba74dbd5e4264db16b53ac3ca73bfc9721952a129f11",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48746,
+          "alpha16Bounds": [
+            440,
+            552,
+            300,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "b9c7343597a0dff64fdd0bf8ffb09a1e5e6344dda3d856fe95679a4390aa5cd7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49208,
+          "alpha16Bounds": [
+            785,
+            553,
+            333,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 198,
+          "pixelDigest": "3a5586cf573cb91eb4a0dff00a77346f90558b8fec78f39b13a79d132046e5a1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52375,
+          "alpha16Bounds": [
+            1191,
+            544,
+            304,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "e04e00692e29384e09f772687203f38ea8f7794441626b58bc89b090f5eb65ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            40,
+            37,
+            304,
+            432
+          ],
+          "pivot": [
+            147,
+            428
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            410,
+            46,
+            336,
+            422
+          ],
+          "pivot": [
+            142,
+            418
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            787,
+            48,
+            308,
+            421
+          ],
+          "pivot": [
+            140,
+            417
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "scar-heavy",
+          "rect": [
+            1203,
+            39,
+            289,
+            431
+          ],
+          "pivot": [
+            133,
+            427
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            1188,
+            541,
+            310,
+            429
+          ],
+          "pivot": [
+            159.5,
+            425
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            782,
+            550,
+            339,
+            420
+          ],
+          "pivot": [
+            194.5,
+            416
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "scar-heavy",
+          "rect": [
+            437,
+            549,
+            306,
+            420
+          ],
+          "pivot": [
+            162,
+            416
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "scar-heavy",
+          "rect": [
+            44,
+            544,
+            291,
+            425
+          ],
+          "pivot": [
+            156,
+            421
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                40,
+                37,
+                304,
+                432
+              ],
+              "pivot": [
+                147,
+                428
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                410,
+                46,
+                336,
+                422
+              ],
+              "pivot": [
+                142,
+                418
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                787,
+                48,
+                308,
+                421
+              ],
+              "pivot": [
+                140,
+                417
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                1203,
+                39,
+                289,
+                431
+              ],
+              "pivot": [
+                133,
+                427
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                1188,
+                541,
+                310,
+                429
+              ],
+              "pivot": [
+                159.5,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                782,
+                550,
+                339,
+                420
+              ],
+              "pivot": [
+                194.5,
+                416
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                437,
+                549,
+                306,
+                420
+              ],
+              "pivot": [
+                162,
+                416
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-heavy",
+              "rect": [
+                44,
+                544,
+                291,
+                425
+              ],
+              "pivot": [
+                156,
+                421
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.heavy.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-light-mount",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "originId": "exec-fec13655-41e7-433c-afff-46c228061616.png",
+      "sha256": "2c52131d1721389e910d3c48d90445d73fb833495ed38d7b173ca3d6a8b66486",
+      "bytes": 2036690,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Both contact fists repaired below the dorsal gauntlet blade rails; no blades emerge through knuckles."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1223410,
+        "fringePixels": 17761
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43806,
+          "alpha16Bounds": [
+            51,
+            56,
+            245,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "af0906352b431f3a1761b7da1531e75928ff15eb7d042a108cb9866947547a11",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46178,
+          "alpha16Bounds": [
+            400,
+            49,
+            323,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 191,
+          "pixelDigest": "ef5ee1da5eb7a95aa1851aeb5a88030f0a3642e52f71441204795d903032c6be",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42262,
+          "alpha16Bounds": [
+            813,
+            56,
+            237,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 104,
+          "pixelDigest": "aa92ff79cab2837a7af1ab85bc1c63aa777a195e897228e6db6f3c6157b9b25e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42668,
+          "alpha16Bounds": [
+            1214,
+            53,
+            212,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 250,
+          "pixelDigest": "85dd7caef502c3d50d7d7c073c3d76b193fc416f1ead527a6f2474aae2482591",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43318,
+          "alpha16Bounds": [
+            80,
+            544,
+            243,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 105,
+          "pixelDigest": "a859d3009310f409fff628b835fac36a2c81508a4d3c742edca6742c9b0bc01e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45690,
+          "alpha16Bounds": [
+            405,
+            541,
+            331,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 199,
+          "pixelDigest": "88d04705b32157ee0006d3e98f038b04f4bc0eb4f17f880d39b363334ec23eed",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42672,
+          "alpha16Bounds": [
+            862,
+            544,
+            237,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "ee4a95496a421c10c29af50a17c62f2bd96ecb9870cbca731e6b79953a1f0fb0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42860,
+          "alpha16Bounds": [
+            1240,
+            544,
+            211,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 253,
+          "pixelDigest": "982a02c4d9048aa8bd61886b1cb99ab3d5877874f93d7229bf24e32c4f31fb4b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            48,
+            53,
+            251,
+            393
+          ],
+          "pivot": [
+            114,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            397,
+            46,
+            329,
+            400
+          ],
+          "pivot": [
+            122,
+            396
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            810,
+            53,
+            243,
+            393
+          ],
+          "pivot": [
+            113,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            1211,
+            50,
+            218,
+            396
+          ],
+          "pivot": [
+            106,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            77,
+            541,
+            249,
+            393
+          ],
+          "pivot": [
+            130.5,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            402,
+            538,
+            337,
+            396
+          ],
+          "pivot": [
+            211,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            859,
+            541,
+            243,
+            393
+          ],
+          "pivot": [
+            124.5,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "scar-repair-light-mount",
+          "rect": [
+            1237,
+            541,
+            217,
+            393
+          ],
+          "pivot": [
+            108.5,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                48,
+                53,
+                251,
+                393
+              ],
+              "pivot": [
+                114,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                397,
+                46,
+                329,
+                400
+              ],
+              "pivot": [
+                122,
+                396
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                810,
+                53,
+                243,
+                393
+              ],
+              "pivot": [
+                113,
+                389
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                1211,
+                50,
+                218,
+                396
+              ],
+              "pivot": [
+                106,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                77,
+                541,
+                249,
+                393
+              ],
+              "pivot": [
+                130.5,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                402,
+                538,
+                337,
+                396
+              ],
+              "pivot": [
+                211,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                859,
+                541,
+                243,
+                393
+              ],
+              "pivot": [
+                124.5,
+                389
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "scar-repair-light-mount",
+              "rect": [
+                1237,
+                541,
+                217,
+                393
+              ],
+              "pivot": [
+                108.5,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.light.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-backward-support",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "originId": "exec-b288f315-fff2-4ed9-923b-2e1b0572ccb9.png",
+      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+      "bytes": 2147132,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Contact poses and near/far support legs alternate. Pelvis-projected walking pivots manually reviewed."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1179800,
+        "fringePixels": 21734
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49617,
+          "alpha16Bounds": [
+            48,
+            42,
+            259,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "abac1797c3e9d1593801c6e934e4e04ee954ad4767a42ae0cd9b39ebe63652cf",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47913,
+          "alpha16Bounds": [
+            433,
+            32,
+            255,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "7860bc95a7d652d53d5d4d6b6c7d7e0a2ed79fa15cd3fce02e752a34cb063551",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49636,
+          "alpha16Bounds": [
+            813,
+            41,
+            252,
+            427
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 161,
+          "pixelDigest": "49da04f4984879034eeac436b1528b71b757ae2eb3e3f5a92044d5f61fbbd547",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48212,
+          "alpha16Bounds": [
+            1204,
+            35,
+            259,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 123,
+          "pixelDigest": "cc4ebda704329ac4070c69e3f347d8c624eb75786fd3d01fd7e69f461210c08c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50440,
+          "alpha16Bounds": [
+            64,
+            540,
+            250,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 167,
+          "pixelDigest": "9a589cf5c549839d459e8f7d504dbdf0cd166f6bb585eb50deac2e7841f5bd84",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49000,
+          "alpha16Bounds": [
+            429,
+            534,
+            265,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "215af0c84153bcbf5ef78ca337c3264442130e10e4ec41e149dc3b92f398606c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49927,
+          "alpha16Bounds": [
+            828,
+            540,
+            250,
+            428
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 164,
+          "pixelDigest": "0ba7cffc439883a0365a26a87e43391081b1f9b2e877b067bd8bc39f14c09271",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48319,
+          "alpha16Bounds": [
+            1209,
+            534,
+            249,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "dba74e437c036256b16895b37c59aafdff398092ac2d22f28fa52d780fecf8e9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            45,
+            39,
+            265,
+            432
+          ],
+          "pivot": [
+            140,
+            428
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            430,
+            29,
+            261,
+            442
+          ],
+          "pivot": [
+            137,
+            438
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            810,
+            38,
+            258,
+            433
+          ],
+          "pivot": [
+            136,
+            429
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1201,
+            32,
+            265,
+            438
+          ],
+          "pivot": [
+            119,
+            434
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            61,
+            537,
+            256,
+            436
+          ],
+          "pivot": [
+            139,
+            432
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            426,
+            531,
+            271,
+            441
+          ],
+          "pivot": [
+            159,
+            437
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            825,
+            537,
+            256,
+            434
+          ],
+          "pivot": [
+            135,
+            430
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1206,
+            531,
+            255,
+            438
+          ],
+          "pivot": [
+            130,
+            434
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                45,
+                39,
+                265,
+                432
+              ],
+              "pivot": [
+                140,
+                428
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                430,
+                29,
+                261,
+                442
+              ],
+              "pivot": [
+                137,
+                438
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                810,
+                38,
+                258,
+                433
+              ],
+              "pivot": [
+                136,
+                429
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1201,
+                32,
+                265,
+                438
+              ],
+              "pivot": [
+                119,
+                434
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                61,
+                537,
+                256,
+                436
+              ],
+              "pivot": [
+                139,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                426,
+                531,
+                271,
+                441
+              ],
+              "pivot": [
+                159,
+                437
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                825,
+                537,
+                256,
+                434
+              ],
+              "pivot": [
+                135,
+                430
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1206,
+                531,
+                255,
+                438
+              ],
+              "pivot": [
+                130,
+                434
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:36:02.578Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/scar/scar-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/scar/scar-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-017c91c5-157e-4d96-be6a-6a768ccd4fe9.png",
+      "sha256": "50044b90d2c6c04391c42fec4762267e9815059c82e0527c4199a8c66e109982",
+      "bytes": 2166206,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward repair loses the alternating contacts and does not provide a clean opposite support passage; no runtime forward walk accepted. Corrected backward source is retained separately."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1156883,
+        "fringePixels": 22258
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52519,
+          "alpha16Bounds": [
+            60,
+            33,
+            268,
+            433
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 191,
+          "pixelDigest": "a385c69552c259f7551abda35b74eabad917189655823a628eed70bbfa2e1df7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49737,
+          "alpha16Bounds": [
+            432,
+            29,
+            269,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 130,
+          "pixelDigest": "5b82ccde19cf73d8994200d4687feab41f237b3307adb2948dfcb481f40e8708",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52846,
+          "alpha16Bounds": [
+            801,
+            30,
+            279,
+            437
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 203,
+          "pixelDigest": "33fc4f026dffaa10dc43f89447c28512ec058fc583f0673c260a1ca196791683",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52066,
+          "alpha16Bounds": [
+            1189,
+            30,
+            273,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 168,
+          "pixelDigest": "dc1611c30184a09c2c14d0f77407770f9defcb8c850b01c36760b881218bdf12",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left-front",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52285,
+          "alpha16Bounds": [
+            57,
+            521,
+            277,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 188,
+          "pixelDigest": "5cbc996740227ad2649c114331cc4b9b5c3accefc321b36397c5721a96e0b06e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50830,
+          "alpha16Bounds": [
+            417,
+            520,
+            289,
+            434
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 152,
+          "pixelDigest": "268e6f62a20f790679dc7782e1f3e8ba47c4764e0891e2bf1698d0e4c69064fd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-front",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53218,
+          "alpha16Bounds": [
+            808,
+            521,
+            282,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 171,
+          "pixelDigest": "d1d716b3e4eabed617b39e62c2267b5f97effb2f1b3627c8d3b7f998e3d292e1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52480,
+          "alpha16Bounds": [
+            1191,
+            520,
+            280,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 164,
+          "pixelDigest": "029e12ba2b0549dc726f62660bc727571a51f3351a25b3a9bc36f9b3ff030d77",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            57,
+            30,
+            274,
+            439
+          ],
+          "pivot": [
+            134.5,
+            435
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            429,
+            26,
+            275,
+            445
+          ],
+          "pivot": [
+            100.5,
+            441
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            798,
+            27,
+            285,
+            443
+          ],
+          "pivot": [
+            134.5,
+            439
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            1186,
+            27,
+            279,
+            441
+          ],
+          "pivot": [
+            142.5,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            54,
+            518,
+            283,
+            438
+          ],
+          "pivot": [
+            131.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "contact-left-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            414,
+            517,
+            295,
+            440
+          ],
+          "pivot": [
+            197.5,
+            436
+          ],
+          "durationTicks": 10,
+          "phase": "pass-left-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            805,
+            518,
+            288,
+            437
+          ],
+          "pivot": [
+            140.5,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "contact-right-front",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "scar-repair-walk-forward-cycle",
+          "rect": [
+            1188,
+            517,
+            286,
+            437
+          ],
+          "pivot": [
+            136,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "pass-right-support",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    }
+  ],
+  "acceptedDefinitionPath": "art-source/v34/pit/scar/scar-runtime-atlas-v34.json",
+  "nativeContrastReview": {
+    "captures": 124,
+    "bodyPixels": "real game scale, no Canvas scaling",
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 25,
+    "keyComparison": [
+      {
+        "pageId": "scar-idle",
+        "removedPixels": 2833,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-repair-walk-backward-support",
+        "removedPixels": 2284,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-crouch",
+        "removedPixels": 2688,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-guard",
+        "removedPixels": 2270,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-hurt",
+        "removedPixels": 2507,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-repair-light-mount",
+        "removedPixels": 2233,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-medium",
+        "removedPixels": 2236,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "scar-heavy",
+        "removedPixels": 2561,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ],
+    "method": "Real loadPitSpriteSheetAnimations and drawPitSpriteSheetAnimation in Chrome"
+  },
+  "livePitCanvasReview": {
+    "passed": true,
+    "checkedAt": "2026-09-12T21:36:43.226Z",
+    "checks": [
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "forward-hold-keyboard",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 1
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "forward-hold-keyboard",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 1
+      }
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  "missingFamilies": [
+    {
+      "actionId": "jump-land",
+      "status": "generation-blocked",
+      "imageProduced": false,
+      "reason": "Provider rejected output; no retry or bypass."
+    }
+  ]
+}

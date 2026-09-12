@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "bone-grinder",
+  "name": "Bone Grinder",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Outlaw heavy scavenging vehicle PROPOSAL with squat patchwork armored hull, rough segmented tracks, large EMPTY front attachment yoke for a later grinding module, exposed protected power cables, small single rider well and empty chain/trophy mounts. Blackened iron, old bronze and battered burgundy plates; no bones, flesh, skulls, rotating saw or blood baked into base.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Bone Grinder — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-grinder/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-grinder/identity-r1.png",
+      "originId": "exec-1788e9ad-b2e3-4a3e-9379-88360066026b.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "41e1eb26db730ecbca43c47af5d287b3ae2775bb470d5ada2539498a420dc04f",
+      "bytes": 1817470,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Outlaw heavy scavenging vehicle PROPOSAL with squat patchwork armored hull, rough segmented tracks, large EMPTY front attachment yoke for a later grinding module, exposed protected power cables, small single rider well and empty chain/trophy mounts. Blackened iron, old bronze and battered burgundy plates; no bones, flesh, skulls, rotating saw or blood baked into base.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 7,
+          "recoveredLine": 1130,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux profils complets, trains chenillés raccordés, yoke frontal vide, câbles protégés et puits de conduite sans occupant.",
+        "Aucun broyeur, os, crâne, chair, chaîne chargée ou sang n'est intégré à la base."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            25,
+            248,
+            693,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 198635,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            768,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            818,
+            248,
+            693,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 198783,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

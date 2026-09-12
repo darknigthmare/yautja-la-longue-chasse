@@ -2505,8 +2505,8 @@ export default function PitCanvas({
           <div>
             <span className={styles.eyebrow}>PREMIÈRE ÉDITION · SIMULATION NON CANONIQUE</span>
             <h2 id="pit-title">THE PIT</h2>
-            <p>12 combattants · 8 arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
-            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · rigs provisoires ↗</a>
+            <p>{PIT_PLAYABLE_FIGHTER_IDS.length} combattants sélectionnables · {PIT_ARENA_IDS.length} arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
+            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
           </div>
           <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
         </header>
@@ -2982,7 +2982,7 @@ export default function PitCanvas({
         ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          14 combattants avec une illustration bitmap ; premières animations V32 selon le personnage et l’action, bibliothèque complète en production.<br />
+          14 combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>

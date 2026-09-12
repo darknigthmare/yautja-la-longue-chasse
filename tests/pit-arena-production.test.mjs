@@ -220,3 +220,71 @@ test("separate Hall trophies remain inside their display cases through actual dr
     }
   }
 });
+
+const v34ArenaIds = ["canopy-causeway", "frost-chamber", "ash-courtyard", "glass-terrace", "abyssal-bridge", "ruins-tribunal"];
+
+test("six V34 playable kits each own fourteen unique drawings without borrowing earlier art", () => {
+  const previous = new Set(["the-pit", "trophy-hall"].flatMap(id => api.resolvePitArenaProductionKit(id).planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.generation.sha256)))));
+  const hashes = new Set();
+  for (const id of v34ArenaIds) {
+    const kit = api.resolvePitArenaProductionKit(id);
+    assert(kit, id);
+    assert.equal(kit.paths.length, 14);
+    assert.equal(kit.planes.length, 6);
+    assert.equal(kit.planes.flatMap(p => p.assets).length, 14);
+    for (const plane of kit.planes) for (const asset of plane.assets) {
+      assert.equal(asset.animation, null, "Fixed drawings cannot claim new animation coverage");
+      if (plane.id === "P4") assert.equal(asset.parallax, 1);
+      for (const frame of asset.frames) {
+        assert(frame.path.startsWith(`/game/sprites/v34/pit-arenas/${id}/`));
+        assert(!previous.has(frame.generation.sha256));
+        assert(!hashes.has(frame.generation.sha256));
+        hashes.add(frame.generation.sha256);
+      }
+    }
+  }
+  assert.equal(hashes.size, 84);
+  assert.equal(api.summarizePitArenaProduction().legacyPlayable, 8);
+});
+
+test("V34 grounded objects keep their feet on P4 and suspended modules remain attached to their top anchors", () => {
+  for (const id of v34ArenaIds) {
+    const kit = api.resolvePitArenaProductionKit(id);
+    const images = new Map(kit.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => [f.path, { src: f.path, naturalWidth: f.generation.width, naturalHeight: f.generation.height }]))));
+    const bank = { arenaId: id, productionKit: kit, images, requestedPaths: new Set(kit.paths), failedPaths: new Set(), cancelled: false };
+    const state = api.createPitCombatState("jungle-hunter", "city-hunter", { mode: "training", arenaId: id });
+    for (const centerX of [100, 480, 860]) for (const centerY of [180, 360]) for (const zoom of [.8, 1.95]) for (const reducedMotion of [false, true]) {
+      const camera = { arenaId: id, centerX, centerY, zoom };
+      const context = recorder();
+      api.drawPitArenaBackdrop(context, state, camera, bank, { reducedMotion });
+      api.drawPitArenaForeground(context, state, camera, bank, { reducedMotion });
+      const drawings = context.calls.filter(call => call.name === "drawImage");
+      const floor = drawings.find(call => call.args[0].src.endsWith("/p4-a-contact-floor.png"));
+      assert(floor);
+      for (const plane of kit.planes) for (const asset of plane.assets.filter(a => a.mode === "module")) {
+        const drawing = drawings.find(call => call.args[0].src === asset.frames[0].path);
+        assert(drawing, id + " " + asset.id);
+        const [sx, sy, sw, sh, dx, dy, dw, dh] = drawing.args.slice(1);
+        assert(sx >= 0 && sy >= 0 && Number.isFinite(dx));
+        assert(Math.abs(dw / dh - sw / sh) < 1e-9, asset.id + " distorted");
+        if (asset.anchorToGround) assert(Math.abs(dy + dh - floor.args[6]) < 5, id + " " + asset.id + " floats above the floor");
+        if (asset.verticalAlign === "top") {
+          const transform = api.getPitArenaSubplanTransform(id, asset.parallax, camera, reducedMotion);
+          assert(Math.abs(dy - (asset.placements[0].y * transform.scale + transform.translateY)) < 1e-9, asset.id + " detached from top anchor");
+        }
+      }
+    }
+  }
+});
+
+test("a required image failure in any V34 kit selects its own complete legacy fallback", async () => {
+  for (const id of v34ArenaIds) {
+    await withImages(fakeImageClass(src => src.endsWith("/p3-c-light-left.png")), async () => {
+      const bank = await api.loadPitArenaArt(id);
+      assert.equal(bank.productionKit, undefined, id);
+      assert(bank.failedPaths.has(`/game/sprites/v34/pit-arenas/${id}/p3-c-light-left.png`));
+      const old = api.PIT_ARENA_ART_DEFINITIONS[id];
+      for (const src of [old.backdrop, old.floor.src, ...Object.values(old.planes).flatMap(p => p.map(a => a.src))]) assert(bank.images.has(src));
+    });
+  }
+});

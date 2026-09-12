@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "crawler-de-siege",
+  "name": "Crawler de siège",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Massive low siege carrier PROPOSAL on two broad segmented track assemblies, thick sloped alien armor, deep angular front ramp door CLOSED, broad empty turret ring at top center and four empty equipment hardpoints. No cannon or bombs. Industrial worn black bronze with protected vents, heavy stable profile. No human tank insignia.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Crawler de siège — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/crawler-de-siege/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/crawler-de-siege/identity-r1.png",
+      "originId": "exec-4f8d289b-6715-4d32-a9bc-7bc5bfdf193f.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "18343731be552570b2ede94befbb37c3904e0d73b9bae5ff6bb69af20114ecea",
+      "bytes": 1587928,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Empty vehicle chassis: removable weapons and props excluded. Massive low siege carrier PROPOSAL on two broad segmented track assemblies, thick sloped alien armor, deep angular front ramp door CLOSED, broad empty turret ring at top center and four empty equipment hardpoints. No cannon or bombs. Industrial worn black bronze with protected vents, heavy stable profile. No human tank insignia.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 3,
+          "recoveredLine": 1119,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "Inspection visuelle : deux profils latéraux complets et stables, chenilles et rampe raccordées, anneau de tourelle et points d'équipement laissés vides, aucune arme ajoutée.",
+        "Candidat d'identité statique uniquement ; asymétries, modules et animations restent à produire séparément."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            48,
+            187,
+            991,
+            316
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 255094,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1133,
+            187,
+            991,
+            316
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 255335,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

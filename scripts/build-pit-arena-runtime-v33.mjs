@@ -55,6 +55,7 @@ export function projectPitArenaRuntimeData(source) {
           mode: asset.mode,
           ...(asset.sourceCrop ? { sourceCrop: box(asset.sourceCrop) } : {}),
           ...(asset.anchorToGround === undefined ? {} : { anchorToGround: asset.anchorToGround }),
+          ...(asset.verticalAlign === undefined ? {} : { verticalAlign: asset.verticalAlign }),
           parallax: asset.parallax,
           opacity: asset.opacity,
           placements: asset.placements.map(box),

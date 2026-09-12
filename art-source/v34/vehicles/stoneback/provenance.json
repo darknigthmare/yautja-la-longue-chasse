@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "stoneback",
+  "name": "Stoneback",
+  "lore": "Création originale du jeu, selon le brief partiel ; pas une espèce canonique revendiquée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Stoneback — corps, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/stoneback/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/stoneback/identity-r1.png",
+      "originId": "exec-680c4988-e18d-4585-a499-320d6ddd3a09.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "bc3af4ac2f881a7e080ec12c9e08255df128bd0ab0e36fa1d715080941aa980e",
+      "bytes": 1868775,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Create a NEW original alien riding animal design for the 2D Yautja fan-game La Longue Chasse, not a claimed canonical creature. Exactly TWO full-body SIDE profile drawings SIDE BY SIDE, left drawing facing RIGHT, right drawing facing LEFT. Same anatomy and scale in separately drawn opposing sides. Entire silhouette inside each half with generous MAGENTA #FF00FF blank margins, no cropping. Detailed painted game bitmap. No environment, ground shadow, labels, text, borders, rider, saddle, harness, armor, chains or effects. Bare creature base layer. Distinct limb roots and separated feet, physically plausible joints. Enormous slow heavy alien rhinoceros-like quadruped, EXACTLY FOUR pillar legs, very wide broad carrying back, layered natural slate-grey mineral-like scutes forming a protective carapace, low massive head with a strong single forward horn and two much smaller cheek spurs, thick hide creases and broad clawed hooves. Distinct from a real rhino: longer wedge skull, plate seams, low bronze green undertones, thick short muscular tail. All four feet visible and separated, side-on balanced neutral standing. No added cargo deck, armor or gear.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            597,
+            620
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Identité en revue ; nombre de membres, appuis et détails à contrôler. Selle, cavalier et effets indépendants à produire."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            19,
+            142,
+            858,
+            565
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 286493,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            896,
+            142,
+            859,
+            565
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 286425,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

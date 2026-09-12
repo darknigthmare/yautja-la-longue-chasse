@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "celtic",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nFORWARD WALK fourphasecycle perrow.1nearRIGHTleg trailingBEHIND, farLEFTleg contactsFORWARD;2LEFTlegsupportswhileRIGHTknee passes raisedbehind;3nearRIGHTleg contactsFORWARD withrightthigh crossing inFRONT ofleftthigh, LEFTleg trails;4RIGHTlegsupportswhileLEFTkneepassesraisedbehind. Contacts1/3 reverse thigh/armoroverlap and passes2/4 use opposite supporting legs. Not fourvariants ofsamecontact. Stable upright double-ended spear in lefthand, alltipsinsidecell; rightemptyhandbelow2blades. Heavy deliberate gait, slightforwardtorsolean. Bodyheight260px,spear340px,widegutters,4RIGHTtop4LEFTbottom.",
+      "phase": [
+        "contact-left",
+        "pass-left-support",
+        "contact-right",
+        "pass-right-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "rejected",
+      "notes": [
+        "Forward contacts1/3 and passages2/4 repeat the same anatomical leg; gait not accepted. Mask, chest armor, two-ended spear and empty right hand remain coherent with V5."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-walk-forward-v34.png",
+      "originId": "exec-47588ce8-decf-404f-9be7-2a7f4072492e.png",
+      "sha256": "3ad97b6da49bf1200a4cb0f2faa3bd44a4c2401991c0e5bde42f3679d1b47334",
+      "bytes": 2088632,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nBACKWARD WALK,4distinctposes per row:1RIGHTnearlegcontactBEHIND, LEFTfarlegcontactFRONT.2RIGHTnearlegsupports nearly straight behindpelvis while LEFTfarleg knee is raisedtowardface; LEFTthigh originatesFARside and passesBEHINDsupportingRIGHTthigh.3RIGHTnearleg contactsFRONT, crossesINFRONT ofLEFTthigh,LEFTtrails.4LEFTfarlegsupports whileRIGHTnearleg liftskneeforwardtowardface. Columns1/3oppositecontact and2/4oppositesupport MUST lookdistinct through thighoverlap/armor. Keep all equipment coherent andspearendsvisible, lefthandgripfixed, rightemptyclawedhand. Heavycautiousretreat withbodyfacingopponent. 4RIGHTtop4LEFTbottom separatelydrawn, 1536x1024magenta.",
+      "phase": [
+        "contact-left-front",
+        "pass-right-support",
+        "contact-right-front",
+        "pass-left-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Opposite contact overlaps appear in1/3, but2/4 repeat the raised near leg. Second-column support requires targeted repair; no runtime acceptance yet. Both spear tips and hands visible."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-walk-backward-v34.png",
+      "originId": "exec-c012a722-61bc-4024-9950-cbba2f78da6b.png",
+      "sha256": "506b13a115c77333d43593fe153ffdb1df5628be62f1070f67ef8c07c8003cb7",
+      "bytes": 2061098,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nCROUCH movement: four phases EACH row 1standingready,2half crouch knees flex,3deep compact crouch hipslow heelsgrounded,4rising towardstanding. No kneeanatomydistortion. Right hand EMPTY visible beside ownknee with exactly2gauntletmountedblades; never merge handwitharmor. Left hand securelygripsdouble-endedspear keptclose/vertical; bottom tip can approach ground but mustnot enter foot. Entiretwoendedspear visible eachcell, keepbodyandspear small enoughwithmargin. 4RIGHTtop4LEFTbottom, no texts.",
+      "phase": [
+        "standing",
+        "half-crouch",
+        "deep-crouch",
+        "rising"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Standing/half/deep/rising crouch poses distinct; complete right hand beside knee, double-ended spear kept clear of feet. First3 drawings are candidate crouch entry/hold; no idle animation implied."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-crouch-v34.png",
+      "originId": "exec-491917d9-d9f3-4cfa-8b17-cdfc014b4514.png",
+      "sha256": "8cc00162aa5ebe58903e96d192cb358f38887b29a9d03f5b88a25d444ef02701",
+      "bytes": 2036870,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nAthletic JUMP/SAFE LANDING movement, solo character, no attack or injury. Four phases eachrow:1kneesbend forlaunch heelsgrounded,2rising airborne bothkneesflexed,3descending airborne legs extend towardground,4safe landing lowkneesfeetplanted. Keepfullbodyinthesameeachcellnotcrossinggutters. Left hand carries the reference combistick upright alongsidebody, bothendsinsidecell, rightemptyhandbelowgauntletblades. Bodyheight250pxandallsilhouetteincludingstaffheight350pxmax. FourRIGHTtopFourLEFTbottom. No groundshadow/dust/text/arrows.",
+      "phase": [
+        "launch",
+        "rise",
+        "fall",
+        "landing"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Four distinct launch/rise/fall/landing drawings in each facing, complete anatomy and spear tips. Review-only: one drawing per jump phase is not a complete runtime jumping library."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-jump-land-v34.png",
+      "originId": "exec-0aac326c-705b-4503-aea6-c625675229bc.png",
+      "sha256": "76397b75f8229b333784502817582c3caf779c8cc946341f016f9b7ed1bc7f32",
+      "bytes": 2071772,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nDEFENSIVE HIGH GUARD, fourdistinctposes eachrow:1neutralready,2rightforearmraisingacrosschest,3highguard beforemaskwithtwo dorsalbladespointingupandaway,4firmheldhighguard slightshouldersettle. Rightemptyhandcompletebelowblades; not replacedbyblades. Left hand continuesholdingdoubleendedspearuprighttofrontside, spear notpassingthroughrightarm. Feetplanted, bodymaintainsbulk, no extra shield. Both spearends insidecell. 4RIGHTtop4LEFTbottom,body260px max forspacing.",
+      "phase": [
+        "neutral",
+        "raise-guard",
+        "brace-guard",
+        "held-guard"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Four clear guard stages and stable spear. Raised right hand is too obscured by gauntlet/blade mount to certify continuity; needs targeted visible-fist repair before runtime acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-guard-v34.png",
+      "originId": "exec-edd724ef-b22b-4f10-83e7-249755450a74.png",
+      "sha256": "5c775f8b2268f9851f589d89effb6d1915c979a200e91ca2b6fbc3deb3a55e69",
+      "bytes": 2112183,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nNon-graphic game RECOIL AND RECOVERY, solo no injury or opponent. Fourphaseeachrow:1slighttorsoandheadrecoil,2strongerrecoilkneesflexstaystanding,3regainingbalance,4neutralready. Keephelmetsamegrilleandengraving, 2arms2hands2legsallintact. EMPTYRIGHTHANDvisiblebelowbladegauntlet inall4poses, completefingers; lefthand grips doubleendedspear, bothendsinsidecell, holdsitawayfrombody. Bodyheight260px spear350maxwidegutters. No redblood/trails/effects.",
+      "phase": [
+        "recoil",
+        "strong-recoil",
+        "recover",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Four recoil phases with complete hands and spear. Strong-recoil lower-leg armor shifts toward bronze/gold compared to silver reference; material-color consistency needs correction before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-hurt-v34.png",
+      "originId": "exec-cdd447c7-61fa-40cb-b865-e0c8120baa77.png",
+      "sha256": "7eb2e7f915833ba0b3f1de3561f71dbb4bdb9a5e2d9659d56d12afcea4b25fc7",
+      "bytes": 2230669,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nLIGHT SOLO GAME MOVE. Fourposes eachrow:1shortanticipationrightfistbesidewaist,2shortstraight rightarmjabchestheight,3rightfistpullsback besidechest,4readyrightopenhanddown. CRITICAL right hand complete EMPTY CLOSED FIST at contact, fourknuckles+thumb BELOW two long blades. Bothsilverblades run frommetalrails ONTOPofRIGHTGAUNTLET, passABOVEbackofhand withvisiblegap andextendbeyondfist. Neverfromknuckles,nofingerblades,nogrippedweapon. LEFT hand holdsdoubleendedcombistickupright behindrightarm, bothendstipsvisible. Silverarmorstableallposes. Entirebody+reach≤280pxW,body260pxH,spear330pxH; generousmagenta gutters,4RIGHTtop4LEFTbottom.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Contact fist is complete beneath mount, but contact blades collapse together in profile and recovery blades point backward toward elbow instead of beyond wrist. Needs blade-direction repair before runtime acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-light-v34.png",
+      "originId": "exec-5d808f4d-45ce-47e8-bffe-d21b98828b6a.png",
+      "sha256": "9a8909c862f5ef1ab6f10afd853b06e7e7fa658d29d30946b1024a4d06f308bc",
+      "bytes": 2034425,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nMEDIUM SOLO GAME MOVE. Fourphases1winduprightelbowback fistnearwaist,2forwardlunge/rightarmstraighttowardfacing,3recoverrightarm pulledbackforearmheldforward atwaistheight,4readyrightarmdown. At ALL phases wristblades point DISTALLY alongforearm TOWARD AND BEYOND the hand, NEVER back toward elbow. ExactlyTWO separateparallelsilverblades fromdorsalrails ABOVE completeEMPTYFIST withairgapaboveknuckles. Show4knucklesandthumbbelowbladesincontact. Left hand keeps doubleendedspear upright clearofrightarm, notthroughfist. Silverchest/shoulders/shinsremainsteelgray. Keep8fullbodies andspeartips with widegutter; character250pxhigh and silhouette≤270pxwide;4RIGHTtop4LEFTbottom.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Active fists and both dorsal blade rails visible, blades point distally. Recovery hand is partly hidden by forearm equipment and opposite arm; needs targeted hand separation before acceptance."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-medium-v34.png",
+      "originId": "exec-a30c0b18-d019-4475-aa84-c160831d7a0e.png",
+      "sha256": "ec8412bc6ef7a6d1980013c82eefa897cff18dca21396a307a91b9d2df69873e",
+      "bytes": 2108863,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nHEAVY SOLO GAME MOVE, fourdistinctphasesperrow:1strongrightelbowbackwindup,2powerfulforwardwrist sweep chestheight withhiprotation,3followthroughrightarmdown besideknee,4returnready. Right hand MUST remain fully visible EMPTY withfingersslightlycurledbelowtwo dorsalgauntletblades. Blade roots frommetalrails, bothpointalongforearmdistallyBEYONDhand, never towardelbow. Left hand securelycarriesdouble-endedspeartoopposite side andawayfromrightarm, bothendstipsvisible. Stablegrayarmormaterials. Movementexpressedwithbodypose only,no effects/opponent/blood. Body250pxhigh, totalreach280pxW max, 1536x1024eightfullbodies4RIGHTtop4LEFTbottom.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Four distinct heavy phases, complete empty open right hands visible under two distal blade rails in all poses; left spear grip and silver armor coherent. Candidate pending alpha/native validation."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-heavy-v34.png",
+      "originId": "exec-71f2308c-158e-47e7-bdff-fbbb79f85310.png",
+      "sha256": "7d6c07d9541c6e2db274dc0b099cc921c99c1120d3491c163a6f7d1d55907ee8",
+      "bytes": 2177891,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-light-blades",
+      "actionId": "light",
+      "prompt": "Edit FIRST Celtic light sprite sheet, SECOND reference identity only. Keep8poses4x2,1536x1024,flatmagenta,allgear/bodyplacements. Repair mounted wrist blades: SECOND COLUMNcontactbothrows show exactlyTWO separate parallel silver blades fromTOPgauntlet rails ABOVE emptyfist, two distinct tips. THIRD COLUMNrecoverybothrows rotate blades180degrees fromwrongbackwards orientation so tips pointtowardHAND beyondfist, neverbacktowelbow. Toprow3handatrightendofforearm: bladespointIMAGE RIGHT beyondhand; bottomrow3handatleftend: bladespointIMAGE LEFT beyondhand. Visibleclosedemptyfistbelowblade rails, fourknucklesandthumb; gauntletforearmcontinuous. Preserve otherposes, spearleftgripandtwotips. Do not add/duplicate limb or weapon, no labels. CELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "rejected",
+      "notes": [
+        "Contact now has two blade tips, but both recovery poses retain backward blades pointing toward elbow. Repair failed for recovery and is not accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-light-blades-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-light-blades-v34.png",
+      "originId": "exec-46ea20d5-c1d9-4c60-be5e-b1530bd2453c.png",
+      "sha256": "9d4b33dabeade0b8a03fdd13f00453bd1f091c8f06a7ac4e36dee5287351fd81",
+      "bytes": 1992948,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-light-recovery",
+      "actionId": "light",
+      "prompt": "Edit FIRST Celtic sheet: REPLACE ONLY THIRD COLUMN RIGHT ARM POSE in BOTHROWS; SECOND image identity only. Keepfirstsecondfourthcolumnsunchanged. Thirdcolumnshouldnowshow recovery with RIGHT UPPERARM verticalbesidetorso, elbowbent90degreesand RIGHTFOREARM extending FORWARD atBELTheight, halfwaybetweencontactandneutral. CompleteemptyclosedRIGHTFIST atforwardend, beyondbodyoutline. Two longsilver wristblades mountonTOPgauntlet andpointFORWARDbeyondfist. Toprow3forearmpointsIMAGE RIGHT, bothbladeTIPS beyondfisttoRIGHT; bottomrow3forearmpointsIMAGE LEFT, bothbladeTIPS beyondfisttoLEFT. Oldarmcrossedhighchestwithbackwardblades MUSTBEGONE. Drawnewposeclearlylowforward, notslightrevisionoldpose. KeepLEFTspearhand visibleaboveandseparate, speardoubletipsinframe. 1536x1024,4x2,flatmagenta,nootherchanges. CELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Replacement recovery still hides/fuses the right hand behind its equipment and opposite arm. Only drawings0/1/3 (startup/contact/settled recovery) are potential salvage; bad intermediate drawing2 must never be registered."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-light-recovery-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-light-recovery-v34.png",
+      "originId": "exec-128c1579-87db-47d1-b789-9913c0115053.png",
+      "sha256": "c8fc9fec4f955741ded382ea62186623b217c342d605c308efe0670ab9f4ef86",
+      "bytes": 1949657,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-guard-hand",
+      "actionId": "guard",
+      "prompt": "Edit FIRST Celtic guard spritesheet, SECOND is identityreference. Keep1536x1024,4columns2rowsflatmagenta,gearandposes. ONLY make RIGHT HAND plainly visible in columns2/3/4BOTHrows. At end of metalforearmgauntlet draw a COMPLETE EMPTY golden CLOSED FIST withfour curledknuckles andthumb, positioned onTORSO/FACE side of the2mountedblades (betweenmask/chestandbladerails). A short visible skinwrist connectsmetalgauntlettohand. Two silverbladesstay attachedTOP/outsidegauntlet extendingpastfist, neverreplacingfingers. Adjust forearm angle slightlyawayfrommask ifneeded forclean visiblefistsilhouette. No extraarms,hands orweapons. Left hand keepsspeartwoendedgrip, allother anatomy andarmor unchanged, no text.",
+      "phase": [
+        "neutral",
+        "raise-guard",
+        "brace-guard",
+        "held-guard"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Raised right fists now visibly connect to the gauntlets beside the two mounted blade rails. All4 guard stages retain full hands and spear grip. Candidate pending native/pixel checks."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+      "originId": "exec-dffdf843-37ba-473d-8e12-5ed3b6e8bc5e.png",
+      "sha256": "fad6035ecd6add8303e8620dae88e35502bc7d32c1663f3d4a07969dc1b19e88",
+      "bytes": 2006735,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-hurt-armor",
+      "actionId": "hurt",
+      "prompt": "Correct FIRST Celtic recoil sprite sheet only METAL MATERIAL COLOR in SECOND COLUMN BOTHROWS. The second-column shin/knee armor wrongly turned bronze/gold. Change ALL hard armor plates on both lowerlegs andknees in these two poses to same cool SILVER GUNMETAL gray highlights as columns1/3/4 and SECONDidentityreference. Preserve skin goldenbrown, meshblack, leatherbrown, and goldenbonejewelry. No geometry/pose/equipment/hand changes, no extra limbs. Exact4x2eightposes1536x1024magenta, twoendedspearunchanged, allothercolumnsunchanged. Avoid recoloring skin asmetal; onlyexistingarmoredplates.",
+      "phase": [
+        "recoil",
+        "strong-recoil",
+        "recover",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Strong-recoil shin/knee plates restored to silver gunmetal in both facings without changing skin or pose. Four intact reaction stages candidate for hitstun."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-hurt-armor-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-hurt-armor-v34.png",
+      "originId": "exec-220245ec-c12b-4cc7-8929-647d20b98961.png",
+      "sha256": "907171ab768f17bfcee7432ccdfaf0918bc9a46862f7fc1859d4a70e43967360",
+      "bytes": 2093027,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-walk-backward-support",
+      "actionId": "walk-backward",
+      "prompt": "Edit FIRST Celtic backwardwalk sheet ONLY SECOND COLUMN BOTHROWS leganatomy, SECONDreferenceidentity. Column2 must lift LEFT FAR leg and support onRIGHT NEAR leg, opposite ofcolumn4. Toprow2RIGHTnear thigh fromskulltrophyhip imageLEFT descendsstraighttoLEFTplantedfoot; LEFTfar thigh fromimageRIGHTpelvis liftskneeFORWARD imageRIGHT, passesBEHINDnear supportingleg. Bottomrow2RIGHTnear thigh fromskulltrophyhip imageRIGHT descendsstraighttoRIGHTplantedfoot; LEFTfar thigh fromimageLEFTpelvis liftskneeFORWARD imageLEFT behindnear supportingleg. Clear near/far thighoverlap, noextra leg. Keepcolumns1/3oppositecontactsandcolumn4unchanged. Armorgraymetal andhands/speartwoendsunchanged. Exact1536x1024,4x2,flat#FF00FF, no labels.",
+      "phase": [
+        "contact-left-front",
+        "pass-right-support",
+        "contact-right-front",
+        "pass-left-support"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Opposite near/far support legs now differ between2/4, contacts1/3 differ. Passing2 is a bent rear-leg passage rather than requested forward knee; gait must be reviewed in actual temporal playback."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png",
+      "originId": "exec-c2432a21-c44d-428d-b692-9f7b76024e63.png",
+      "sha256": "51df4e386987eb418c003df1c52fa13fe0b9d4454133de1b67d1467be84b8591",
+      "bytes": 2012309,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-medium-hand",
+      "actionId": "medium",
+      "prompt": "Edit FIRST Celtic medium sheet ONLY THIRD COLUMN recovery hand BOTHROWS. Keep all8poses/gear1536x1024flatmagenta. Make RIGHT fist clearly visible BELOW the mountedblade rails: bendrightelbow so forearm angled15degreesDOWN towardfacing atwaistlevel, pullit slightlyawayfromotherarm. ShowcompletegoldenclosedEMPTYfist withfourknucklesandthumb belowtwo dorsalblades. Toprow3fistpointsright andbladespointdownRIGHT beyondhand; bottomrow3fistpointsleft andbladespointdownLEFT beyondhand. The leftspearfist remains higher andseparate, nevermergehands. No newarm orhand, simplyclarify existingrightwristandfist. Two bladeshaverootsonTOPgauntlet, nohandheldweapons. Allotherframesunchanged. SECONDreferenceonlyidentity.",
+      "phase": [
+        "startup",
+        "active",
+        "recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "authored-review",
+      "notes": [
+        "Recovery fist became oversized compared with contact and wrist bend remains questionable; intermediate recovery drawing2 excluded. Only startup/contact/neutral end-pose are eligible for limited three-drawing phase coverage."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-medium-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-medium-hand-v34.png",
+      "originId": "exec-2bcd1441-4317-47f3-ae9e-0a8b7f446929.png",
+      "sha256": "1f324b59bc91a1b3676cd3317af42199e8bdf8365ae8032986a11d387cd65cba",
+      "bytes": 2074345,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "celtic",
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nCELTIC, preserve attached V5 historical project presentation identity. Broad muscular heavy golden spotted skin under black mesh bodysuit. Distinctive SILVER ENGRAVED biomask with angular ridged crown and vertical comb/grille lower jaw, black darkeye slits, no red forehead scar. Long black dreadlocks with gold rings. Heavy layered silver shoulder plates, curved silver chest armor, silver shin/kneeguards, darkbrown split leather loincloth and silver segmented front belt. Two bone skull trophies at chest and one small longbeak skull at right hip. NO SHOULDER CANNON (none in reference), no added gun. Exactly TWO broad long parallel wrist blades mounted on anatomical RIGHT dorsal forearm; complete EMPTY right hand below. LEFT hand alone carries long segmented DOUBLE-ENDED COMBISTICK spear with pointed metal tip at BOTH ends; keep its visible grip and both spearends inside cell. Never turn it into sword or swap hands. Twoarms twohands twolegs, coherent fingers. Each facing drawn independently, asymmetrical anatomy/weapons preserved.\nCreate a NEW FORWARD WALK cycle using the FIRST attached sheet as leg/equipment anchor and SECOND image as identity reference. Keep all armor, hands, double-ended spear and two dorsal wristblades. The first image is a backward cycle: for the new FORWARD cycle reorder its four poses within EACH facing as existing columns 1,4,3,2. Then redraw, do not collage or flip, with very slight torso lean toward facing. Exact phases: 1 RIGHT anatomical leg trailing ground contact, left leg leading; 2 RIGHT anatomical knee swings FORWARD while LEFT leg supports; 3 RIGHT anatomical leg leading ground contact, left leg trailing; 4 LEFT knee swings FORWARD while RIGHT leg supports. Thus both knees take turns, no same-leg repeated swing. Preserve distinct front/back leg armor. Four coherent consecutive in-place walking phases each orientation independently, hands and spear stable, no attacks. 8 complete full-body sprites only. Enough margin for spear tips.",
+      "phase": [
+        "opposite contact",
+        "right swing forward",
+        "right contact",
+        "left swing forward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/celtic.png",
+      "status": "rejected",
+      "notes": [
+        "Forward-walk repair rejected: contacts in columns 1 and 3 are effectively repeated, and columns 2 and 4 lift the same leg. No alternating gait; not integrated."
+      ],
+      "sourcePath": "art-source/v34/pit/celtic/celtic-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/celtic/celtic-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-88c21b99-a880-4d4a-924d-bff2cbd17d2e.png",
+      "sha256": "e5ec9036a9f23bb18d24e3af1196a64d37f7e796fc716b6fa118e442d5ec1529",
+      "bytes": 2006773,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

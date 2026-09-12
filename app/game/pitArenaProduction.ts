@@ -44,6 +44,8 @@ export interface PitArenaProductionAsset {
   readonly sourceCrop?: PitArenaProductionPlacement;
   /** Keep a floor-mounted prop vertically attached while its horizontal depth remains independent. */
   readonly anchorToGround?: boolean;
+  /** Hanging modules keep their authored top position even when their aspect ratio differs. */
+  readonly verticalAlign?: "top" | "bottom";
   readonly parallax: number;
   readonly opacity: number;
   readonly placements: readonly PitArenaProductionPlacement[];
@@ -139,7 +141,7 @@ export function resolvePitArenaProductionKit(
       if (!frames.length) continue;
       // A data typo must not request another arena, a remote URL, or a private source file.
       if (!frames.every(frame => frame.path.startsWith(stage.assetDirectory + "/")
-        && /^\/game\/sprites\/v33\/pit-arenas\/[a-z0-9/-]+\.png$/.test(frame.path)
+        && /^\/game\/sprites\/v(?:33|34)\/pit-arenas\/[a-z0-9/-]+\.png$/.test(frame.path)
         && !frame.path.includes(".."))) return null;
       frames.forEach(frame => paths.add(frame.path));
       if (asset.requiredForRuntime) requiredPaths.push(frames[0].path);

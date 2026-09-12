@@ -1,0 +1,2300 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "kha-rha",
+  "name": "Kha’Rha",
+  "lore": "original-game-creature",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Identité · corps indépendant",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/identity-r1.png",
+      "originId": "exec-5b3e9da8-4f99-4606-9522-c76be5372439.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "1ff6a91cce77f378aa3a135ee184d460f1735230ea3909cddc419306e5fd3975",
+      "bytes": 2232130,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "alpha"
+      },
+      "rawAlpha": {
+        "zero": 990602,
+        "partial": 582262,
+        "opaque": 0
+      },
+      "prompt": "Create the original Kha'Rha biological hunting mount for the fan game La Longue Chasse, as a reusable 2D side-scrolling game asset. This is an ORIGINAL game creature, not an established Predator film animal, not an existing artist's design. Two complete strictly SIDE PROFILE drawings stacked vertically, upper facing RIGHT and lower facing LEFT as separately drawn opposite-side anatomy. Both exactly same body proportions and scale, all feet and tail visible with generous blank margins. Huge powerful quadruped blending feline musculature with reptilian charcoal-olive pebbled skin, partial natural dark bronze-brown segmented carapace over shoulders and upper spine, massive low broad predatory jaw, small amber eyes, thick muscular neck, powerful haunches, long balancing tapered tail. Exactly FOUR legs, each with a coherent paw and FOUR clear hooked claws; offset far legs enough to count all four. No humanoid hands, no mandibles borrowed from the rider, no horns, wings or duplicate limbs. Back has a broad low clear saddle-bearing area between shoulders and hips; no tall spikes there. Neutral alert standing pose, jaw closed, calm capable hunting partner. NO saddle, rider, tack, harness, straps, weapons, trophies or shadow because those are separate modules. Camera horizontal orthographic true profile, not top-down or isometric. Detailed hand-painted sci-fi game art with restrained highlights and crisp silhouette. True transparent alpha background, absolutely no painted checkerboard, labels, text, symbols, frame or scenery.",
+      "references": [],
+      "notes": [
+        "Original design from the recovered Kha’Rha brief: muscular feline-reptilian quadruped, partial carapace and enormous jaw. Not claimed as franchise canon.",
+        "The saddle, rider, tack, trophies and shadow must remain independent modules.",
+        "Superseded identity: haze or overlapping extraction rectangles; use identity-r3."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            51,
+            13,
+            1432,
+            499
+          ],
+          "gridBorderPixels": 45,
+          "visiblePixels": 272455,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            50,
+            512,
+            1435,
+            492
+          ],
+          "gridBorderPixels": 70,
+          "visiblePixels": 272324,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "identity-r2",
+      "actionId": "identity",
+      "label": "identity-r2",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/identity-r2.png",
+      "originId": "exec-4307a3e9-95bb-435f-868f-acc1d0cdb7f1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c",
+      "bytes": 2284958,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Edit the attached two-view Kha'Rha creature sheet. Preserve exactly this original animal's anatomy, scale, bronze natural carapace, charcoal-olive skin, four strong legs, four clawed paws, amber eyes, broad jaw and long tail. Upper animal faces RIGHT and lower LEFT. Remove ALL background haze, smoke, shadow, vignette, brown glow and ground shading, replacing the background with perfectly uniform solid RGB255,0,255 MAGENTA #FF00FF. Do not add magenta light to the animal. Reposition and slightly reduce both complete animals equally so each fits inside its own half of the sheet with at least 8 percent clear margin on every side, particularly between the upper animal's feet and lower animal's back, and above the top shoulder plates. Every tail tip and claw fully visible. No saddle, rider, harness, labels, borders, text or grid. Keep body proportions identical to reference, both drawings same scale. Clean sharp silhouette suitable for removing the explicitly declared magenta color key. No checkerboard.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r1.png",
+          "sha256": "1ff6a91cce77f378aa3a135ee184d460f1735230ea3909cddc419306e5fd3975"
+        }
+      ],
+      "notes": [
+        "Original Kha’Rha mount from the recovered conversation; not franchise canon.",
+        "Separate equipment layer. Assembly and animation review pending.",
+        "Superseded identity: haze or overlapping extraction rectangles; use identity-r3."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            50,
+            15,
+            1432,
+            497
+          ],
+          "gridBorderPixels": 46,
+          "visiblePixels": 270188,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            51,
+            512,
+            1434,
+            492
+          ],
+          "gridBorderPixels": 56,
+          "visiblePixels": 270898,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "saddle-r1",
+      "actionId": "saddle",
+      "label": "saddle-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/saddle-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/saddle-r1.png",
+      "originId": "exec-ab1c891d-e5e3-416a-8bd7-c6402d40548b.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e8090d6cebf22b9ccccb969f689d6bde90186e154cea4e9ba3434ef07ba30e6e",
+      "bytes": 1675594,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Create a separate modular SADDLE AND HARNESS sprite sheet for the large original quadruped Kha'Rha shown in the provided reference. The mount itself is only a proportion reference; DO NOT draw any animal, head, legs, tail or rider in the output. Draw exactly TWO complete independent equipment modules, one facing right above, one facing left below, true side profile. Minimalist alien hunter saddle: low dark brown leather pad shaped to fit the broad back just behind the shoulder carapace, dark bronze compact pommel and cantle, small cyan biometric contact device embedded in its side, two sturdy leather straps going down around the animal's girth, modest leg rests. NO handlebars or reins, no steering column, no tall throne, no large spikes, no trophies, no weapons. Strap loops are open equipment shapes, not filled animal silhouettes. Keep consistent scale, proportions, buckle count and strap arrangement on both sides. Complete modules centered within two equal stacked cells with wide margins. Uniform flat MAGENTA #FF00FF background, no shadow, gradient, checker, text or annotations. Crisp detailed hand-painted game art, independent layer ready for later mounting-point calibration; do not show it already mounted.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r1.png",
+          "sha256": "1ff6a91cce77f378aa3a135ee184d460f1735230ea3909cddc419306e5fd3975"
+        }
+      ],
+      "notes": [
+        "Original Kha’Rha mount from the recovered conversation; not franchise canon.",
+        "Separate equipment layer. Assembly and animation review pending.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "saddle",
+          "reviewGridRect": [
+            0,
+            0,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            358,
+            13,
+            783,
+            499
+          ],
+          "gridBorderPixels": 50,
+          "visiblePixels": 125409,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "saddle",
+          "reviewGridRect": [
+            0,
+            512,
+            1536,
+            512
+          ],
+          "alpha16Bounds": [
+            387,
+            512,
+            783,
+            461
+          ],
+          "gridBorderPixels": 54,
+          "visiblePixels": 128310,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            356,
+            11,
+            787,
+            471
+          ],
+          "pivot": [
+            399,
+            172
+          ],
+          "facing": "right",
+          "phase": "saddle",
+          "durationTicks": 9,
+          "reviewWindow": [
+            330,
+            0,
+            850,
+            491
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            385,
+            501,
+            787,
+            474
+          ],
+          "pivot": [
+            395,
+            180
+          ],
+          "facing": "left",
+          "phase": "saddle",
+          "durationTicks": 9,
+          "reviewWindow": [
+            350,
+            491,
+            850,
+            533
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        400
+      ]
+    },
+    {
+      "id": "walk-r1",
+      "actionId": "walk",
+      "label": "walk-r1",
+      "status": "rejected",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/walk-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/walk-r1.png",
+      "originId": "exec-1f3422d9-735b-4408-98fc-9e2903636de5.png",
+      "width": 1535,
+      "height": 1025,
+      "sha256": "e8bd11f0e5df82d872fdf39d7fa0b0a4280b13bdbc7c6080a84f13c50dcab6ae",
+      "bytes": 1374132,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573375
+      },
+      "prompt": "Create an animation sprite sheet for EXACTLY the original Kha'Rha creature in the reference: same broad low reptilian jaw, amber eye, charcoal-olive feline musculature, low dark bronze shoulder and spine carapace, FOUR quadruped legs with clawed paws, same long tapered tail. NO saddle, rider, straps, equipment, shadows or background scenery. True orthographic SIDE view, camera never changes. Exact regular four columns by two rows grid, each of eight complete animals at IDENTICAL scale centered within central70percent of its cell with large flat MAGENTA #FF00FF gutters on ALL sides. All paws and entire tail tip inside each cell. Upper row faces RIGHT; bottom row faces LEFT, independently drawn with coherent anatomy and the same chronological action. Keep the same head, carapace plate design, number of limbs and body length in every drawing. No labels, grid lines, text, checkerboard, duplicate extra legs or humanoid hands. Crisp detailed painted game sprites. Animate a FOUR-PHASE WALK gait in place: pose1 near foreleg forward contacting ground and near hindleg behind, opposite far pair counterposed; pose2 weight on foreleg, near hindleg passes forward under belly, opposite foreleg lifts; pose3 exact opposite leg cycle with near foreleg behind and near hindleg forward contacting, far legs counterposed; pose4 opposite passing recovery. Four physically DIFFERENT weight-bearing quadruped poses, not four copies or vertical translations. At least two paws support the heavy body in each walking phase. Body stays nearly level, subtle shoulder transfer and tail counterbalance. Clear countable separation of all four limbs, feet align to same ground baseline across row.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Visual review: weight-bearing phases exist but near/far foreleg alternation is insufficient; not accepted as a complete walking cycle.",
+        "Rejected as a walk cycle: foreleg alternation does not complete the requested gait."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-a",
+          "reviewGridRect": [
+            0,
+            0,
+            383,
+            512
+          ],
+          "alpha16Bounds": [
+            12,
+            191,
+            367,
+            152
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 24200,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "passing-a",
+          "reviewGridRect": [
+            383,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            393,
+            190,
+            365,
+            153
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 23021,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-b",
+          "reviewGridRect": [
+            767,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            770,
+            189,
+            369,
+            154
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 23950,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "passing-b",
+          "reviewGridRect": [
+            1151,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1155,
+            190,
+            364,
+            152
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 23286,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-a",
+          "reviewGridRect": [
+            0,
+            512,
+            383,
+            513
+          ],
+          "alpha16Bounds": [
+            17,
+            649,
+            362,
+            148
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 23029,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "passing-a",
+          "reviewGridRect": [
+            383,
+            512,
+            384,
+            513
+          ],
+          "alpha16Bounds": [
+            395,
+            648,
+            364,
+            150
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22643,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-b",
+          "reviewGridRect": [
+            767,
+            512,
+            384,
+            513
+          ],
+          "alpha16Bounds": [
+            774,
+            648,
+            365,
+            150
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 23229,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "passing-b",
+          "reviewGridRect": [
+            1151,
+            512,
+            384,
+            513
+          ],
+          "alpha16Bounds": [
+            1156,
+            647,
+            366,
+            149
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22816,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "run-r1",
+      "actionId": "run",
+      "label": "run-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/run-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/run-r1.png",
+      "originId": "exec-8c392bef-4f44-415b-acd8-43aabe557243.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c991f2d23884057c256754f711e5511a54b6234352f9e3f28968f0c23ce835b7",
+      "bytes": 1608782,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Create an animation sprite sheet for EXACTLY the original Kha'Rha creature in the reference: same broad low reptilian jaw, amber eye, charcoal-olive feline musculature, low dark bronze shoulder and spine carapace, FOUR quadruped legs with clawed paws, same long tapered tail. NO saddle, rider, straps, equipment, shadows or background scenery. True orthographic SIDE view, camera never changes. Exact regular four columns by two rows grid, each of eight complete animals at IDENTICAL scale centered within central70percent of its cell with large flat MAGENTA #FF00FF gutters on ALL sides. All paws and entire tail tip inside each cell. Upper row faces RIGHT; bottom row faces LEFT, independently drawn with coherent anatomy and the same chronological action. Keep the same head, carapace plate design, number of limbs and body length in every drawing. No labels, grid lines, text, checkerboard, duplicate extra legs or humanoid hands. Crisp detailed painted game sprites. Animate a FOUR-PHASE FELINE BOUND RUN cycle in place: pose1 front paws reach forward for landing while rear legs trail; pose2 weight compresses onto front limbs, rear legs collect beneath pelvis; pose3 hind legs drive off extending behind as front limbs fold up beneath chest; pose4 airborne suspension with forelimbs reaching forward and hindlimbs gathering for next stride. Four physically DISTINCT running poses with actual joint articulation and coherent weight, not translated standing pictures. Preserve exact creature identity and realistic four-leg anatomy. Back flexes moderately, tail balances the bound, whole body remains inside each cell. Do not turn the animal toward viewer.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Visual review: independently articulated bound phases; left-facing drawings need chronological reordering before playback.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "landing",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            11,
+            203,
+            373,
+            153
+          ],
+          "gridBorderPixels": 18,
+          "visiblePixels": 25624,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "compression",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            384,
+            203,
+            376,
+            154
+          ],
+          "gridBorderPixels": 16,
+          "visiblePixels": 22760,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "push",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            775,
+            194,
+            358,
+            164
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22328,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "suspension",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1155,
+            194,
+            366,
+            134
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 21144,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "landing",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            17,
+            666,
+            364,
+            130
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 20700,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "compression",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            403,
+            663,
+            358,
+            160
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22072,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "push",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            776,
+            671,
+            366,
+            152
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 22549,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "suspension",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "alpha16Bounds": [
+            1152,
+            669,
+            371,
+            153
+          ],
+          "gridBorderPixels": 6,
+          "visiblePixels": 25392,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            9,
+            201,
+            379,
+            157
+          ],
+          "pivot": [
+            234,
+            156
+          ],
+          "facing": "right",
+          "phase": "landing",
+          "durationTicks": 6,
+          "reviewWindow": [
+            0,
+            0,
+            392,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            394,
+            201,
+            368,
+            158
+          ],
+          "pivot": [
+            224,
+            156
+          ],
+          "facing": "right",
+          "phase": "compression",
+          "durationTicks": 6,
+          "reviewWindow": [
+            392,
+            0,
+            378,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            773,
+            192,
+            362,
+            168
+          ],
+          "pivot": [
+            217,
+            165
+          ],
+          "facing": "right",
+          "phase": "push",
+          "durationTicks": 6,
+          "reviewWindow": [
+            770,
+            0,
+            377,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1153,
+            192,
+            370,
+            138
+          ],
+          "pivot": [
+            217,
+            165
+          ],
+          "facing": "right",
+          "phase": "suspension",
+          "durationTicks": 6,
+          "reviewWindow": [
+            1147,
+            0,
+            389,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1150,
+            667,
+            375,
+            157
+          ],
+          "pivot": [
+            145,
+            156
+          ],
+          "facing": "left",
+          "phase": "landing",
+          "durationTicks": 6,
+          "reviewWindow": [
+            1147,
+            512,
+            389,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            774,
+            669,
+            370,
+            156
+          ],
+          "pivot": [
+            136,
+            154
+          ],
+          "facing": "left",
+          "phase": "compression",
+          "durationTicks": 6,
+          "reviewWindow": [
+            770,
+            512,
+            377,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            401,
+            661,
+            362,
+            164
+          ],
+          "pivot": [
+            129,
+            162
+          ],
+          "facing": "left",
+          "phase": "push",
+          "durationTicks": 6,
+          "reviewWindow": [
+            390,
+            512,
+            380,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            15,
+            664,
+            368,
+            134
+          ],
+          "pivot": [
+            136,
+            159
+          ],
+          "facing": "left",
+          "phase": "suspension",
+          "durationTicks": 6,
+          "reviewWindow": [
+            0,
+            512,
+            390,
+            512
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    },
+    {
+      "id": "jump-r1",
+      "actionId": "jump",
+      "label": "jump-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/jump-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/jump-r1.png",
+      "originId": "exec-92e145a4-977d-4386-b064-d0d074f82a3a.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "83294f6bc5ef946f1423a551d4014b9379843b30a7b0f3821dba899281398cc8",
+      "bytes": 1437827,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Draw an eight-pose full-body animation sprite sheet of the exact original Kha'Rha animal in the reference, maintaining the same olive-charcoal muscular quadruped anatomy, large reptilian muzzle, amber eyes, natural dark bronze shoulder and spine plates, four paws, and long tapered tail. No rider, saddle, harness, weapons, ground shadows, scenery or text. Strict horizontal side profile for 2D game. Four columns by two rows, upper four facing RIGHT and lower four facing LEFT as independently drawn opposite-side anatomy. All eight complete animals identical scale, each inside CENTRAL65percent of its cell with large pure flat MAGENTA #FF00FF margins and gutters; nothing touches cell borders. True joint articulation, no camera rotation, no merely shifting a standing drawing. Never add limbs, hands, horns or change the plate pattern. Animate a four-pose LONG JUMP: first compressed anticipation with all paws planted, forequarters low and bent powerful hind legs; second upward launch with hind legs extending and front paws lifting; third fully airborne forward stretched body, front legs reaching and hind legs trailing; fourth landing with front paws grounded, shoulders compressing and hind paws coming down. Same chronological order in both rows. Mouth closed throughout. Preserve all four limbs and tail continuity, align grounded anticipation and landing paws to a common floor baseline. Do not draw motion trails. Complete visible body in every pose.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Generated as four articulated jump poses per facing. Extraction windows and contact baselines must be measured.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "anticipation",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            10,
+            253,
+            431,
+            128
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 26060,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "launch",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            461,
+            159,
+            426,
+            222
+          ],
+          "gridBorderPixels": 9,
+          "visiblePixels": 26056,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "airborne",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            887,
+            159,
+            424,
+            146
+          ],
+          "gridBorderPixels": 9,
+          "visiblePixels": 27267,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1330,
+            239,
+            423,
+            142
+          ],
+          "gridBorderPixels": 2,
+          "visiblePixels": 26474,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "anticipation",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            23,
+            681,
+            420,
+            130
+          ],
+          "gridBorderPixels": 8,
+          "visiblePixels": 26216,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "launch",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            443,
+            588,
+            406,
+            222
+          ],
+          "gridBorderPixels": 7,
+          "visiblePixels": 26287,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "airborne",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            894,
+            596,
+            436,
+            133
+          ],
+          "gridBorderPixels": 7,
+          "visiblePixels": 27102,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1330,
+            665,
+            431,
+            146
+          ],
+          "gridBorderPixels": 6,
+          "visiblePixels": 26552,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            8,
+            251,
+            435,
+            132
+          ],
+          "pivot": [
+            277,
+            129
+          ],
+          "facing": "right",
+          "phase": "anticipation",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            448,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            459,
+            157,
+            378,
+            226
+          ],
+          "pivot": [
+            236,
+            223
+          ],
+          "facing": "right",
+          "phase": "launch",
+          "durationTicks": 9,
+          "reviewWindow": [
+            450,
+            0,
+            397,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            858,
+            157,
+            455,
+            150
+          ],
+          "pivot": [
+            262,
+            223
+          ],
+          "facing": "right",
+          "phase": "airborne",
+          "durationTicks": 9,
+          "reviewWindow": [
+            850,
+            0,
+            472,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1328,
+            237,
+            427,
+            146
+          ],
+          "pivot": [
+            247,
+            143
+          ],
+          "facing": "right",
+          "phase": "landing",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1322,
+            0,
+            452,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            21,
+            679,
+            436,
+            134
+          ],
+          "pivot": [
+            152,
+            131
+          ],
+          "facing": "left",
+          "phase": "anticipation",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            443,
+            465,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            470,
+            586,
+            381,
+            226
+          ],
+          "pivot": [
+            140,
+            224
+          ],
+          "facing": "left",
+          "phase": "launch",
+          "durationTicks": 9,
+          "reviewWindow": [
+            465,
+            443,
+            405,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            892,
+            594,
+            448,
+            137
+          ],
+          "pivot": [
+            153,
+            216
+          ],
+          "facing": "left",
+          "phase": "airborne",
+          "durationTicks": 9,
+          "reviewWindow": [
+            875,
+            443,
+            465,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1339,
+            666,
+            424,
+            147
+          ],
+          "pivot": [
+            156,
+            144
+          ],
+          "facing": "left",
+          "phase": "landing",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1339,
+            443,
+            435,
+            444
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    },
+    {
+      "id": "bite-r1",
+      "actionId": "roar",
+      "label": "bite-r1",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/bite-r1.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/bite-r1.png",
+      "originId": "exec-fd63875f-00d7-45bd-a5c4-b55e55b1caa1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "4cb8cd6fa278ace3d366c9078ae9d2f7efd26dacba983e69501be0862861df24",
+      "bytes": 1518907,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Draw an eight-pose full-body animation sprite sheet of the exact original Kha'Rha animal in the reference, maintaining the same olive-charcoal muscular quadruped anatomy, large reptilian muzzle, amber eyes, natural dark bronze shoulder and spine plates, four paws, and long tapered tail. No rider, saddle, harness, weapons, ground shadows, scenery or text. Strict horizontal side profile for 2D game. Four columns by two rows, upper four facing RIGHT and lower four facing LEFT as independently drawn opposite-side anatomy. All eight complete animals identical scale, each inside CENTRAL65percent of its cell with large pure flat MAGENTA #FF00FF margins and gutters; nothing touches cell borders. True joint articulation, no camera rotation, no merely shifting a standing drawing. Never add limbs, hands, horns or change the plate pattern. Animate a four-pose BITING ATTACK in place: first alert preparation with closed mouth and head drawn back slightly; second head lunges a short distance forward with jaw visibly open, showing realistic single upper/lower tooth rows and tongue; third jaws snap almost shut after the bite, neck muscles engaged; fourth head returns toward alert stance, mouth closed. Same chronological order in both rows. All four paws support the animal at all times; a small forward weight shift only. The large mouth opens through its actual jaw hinge, no exploding or duplicated skull. No gore, victim, blood, projectile or motion trail. Keep original broad head proportions, not dragon or crocodile snout.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Requested biting attack, but the generated head lifts and roars without a forward contact. Reclassified as a roar candidate only; the biting attack remains missing.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "prepare",
+          "reviewGridRect": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            20,
+            154,
+            417,
+            185
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 31855,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "jaw-open",
+          "reviewGridRect": [
+            443,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            458,
+            151,
+            425,
+            188
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 31963,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "jaw-close",
+          "reviewGridRect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "alpha16Bounds": [
+            895,
+            166,
+            419,
+            173
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 30453,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "recover",
+          "reviewGridRect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "alpha16Bounds": [
+            1331,
+            154,
+            415,
+            185
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 31649,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "prepare",
+          "reviewGridRect": [
+            0,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            31,
+            561,
+            412,
+            184
+          ],
+          "gridBorderPixels": 4,
+          "visiblePixels": 31477,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "jaw-open",
+          "reviewGridRect": [
+            443,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            443,
+            556,
+            441,
+            190
+          ],
+          "gridBorderPixels": 3,
+          "visiblePixels": 31061,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "jaw-close",
+          "reviewGridRect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "alpha16Bounds": [
+            898,
+            570,
+            421,
+            175
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 31027,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "recover",
+          "reviewGridRect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "alpha16Bounds": [
+            1338,
+            560,
+            415,
+            185
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 31785,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            18,
+            152,
+            421,
+            189
+          ],
+          "pivot": [
+            258,
+            186
+          ],
+          "facing": "right",
+          "phase": "prepare",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            448,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            456,
+            149,
+            429,
+            192
+          ],
+          "pivot": [
+            262,
+            189
+          ],
+          "facing": "right",
+          "phase": "jaw-open",
+          "durationTicks": 9,
+          "reviewWindow": [
+            448,
+            0,
+            443,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            893,
+            164,
+            423,
+            177
+          ],
+          "pivot": [
+            257,
+            174
+          ],
+          "facing": "right",
+          "phase": "jaw-close",
+          "durationTicks": 9,
+          "reviewWindow": [
+            891,
+            0,
+            435,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1329,
+            152,
+            419,
+            189
+          ],
+          "pivot": [
+            256,
+            186
+          ],
+          "facing": "right",
+          "phase": "recover",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1326,
+            0,
+            448,
+            443
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            29,
+            559,
+            419,
+            188
+          ],
+          "pivot": [
+            142,
+            186
+          ],
+          "facing": "left",
+          "phase": "prepare",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            443,
+            460,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            470,
+            554,
+            416,
+            194
+          ],
+          "pivot": [
+            145,
+            191
+          ],
+          "facing": "left",
+          "phase": "jaw-open",
+          "durationTicks": 9,
+          "reviewWindow": [
+            460,
+            443,
+            432,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            896,
+            568,
+            425,
+            179
+          ],
+          "pivot": [
+            148,
+            177
+          ],
+          "facing": "left",
+          "phase": "jaw-close",
+          "durationTicks": 9,
+          "reviewWindow": [
+            892,
+            443,
+            438,
+            444
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1336,
+            558,
+            419,
+            189
+          ],
+          "pivot": [
+            154,
+            187
+          ],
+          "facing": "left",
+          "phase": "recover",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    },
+    {
+      "id": "identity-r3",
+      "actionId": "identity",
+      "label": "identity-r3",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/identity-r3.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/identity-r3.png",
+      "originId": "exec-d2df466f-5b7e-4c06-a28f-d8e90f3dcdc3.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "a3bd799b2130c30c2919188ffbf32bad25c0c3e2104ba9544c95f0f723478c4b",
+      "bytes": 1400957,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572528
+      },
+      "prompt": "Re-layout the two exact Kha'Rha creature drawings in the reference for safe sprite extraction. Keep both creature designs and anatomy unchanged, same scale relative to each other, same skin and armor. Put them SIDE BY SIDE in ONE ROW, not stacked: left cell contains the full creature facing RIGHT, right cell contains full creature facing LEFT. Each complete creature fills only the CENTRAL70percent width of its half of the image. Both centered vertically around middle of the canvas, with huge completely empty top/bottom margins, and a broad magenta gutter between the two facing noses. All four paws and tail tips visible, no cutoff or overlap. Use uniform pure flat MAGENTA #FF00FF background. Do not add saddle, shadow, mist, grid, labels, text, border or scenery. This is the exact same two-view identity sheet rearranged into TWO COLUMNS and ONE ROW, not an animation and not a new creature design.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Two-column layout corrects overlapping bounding rectangles of earlier two-row identity.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            32,
+            190,
+            930,
+            320
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 114463,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "alpha16Bounds": [
+            1200,
+            189,
+            938,
+            321
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 115616,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            30,
+            188,
+            934,
+            324
+          ],
+          "pivot": [
+            610,
+            322
+          ],
+          "facing": "right",
+          "phase": "identity",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            1086,
+            724
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            1198,
+            187,
+            942,
+            325
+          ],
+          "pivot": [
+            332,
+            323
+          ],
+          "facing": "left",
+          "phase": "identity",
+          "durationTicks": 9,
+          "reviewWindow": [
+            1086,
+            0,
+            1086,
+            724
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    },
+    {
+      "id": "bite-right-r2",
+      "actionId": "bite",
+      "label": "bite-right-r2",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/bite-right-r2.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/bite-right-r2.png",
+      "originId": "exec-33ac9e06-7aa8-42f5-9346-dcf094d52b08.png",
+      "width": 1535,
+      "height": 1025,
+      "sha256": "260df0794d7256554c5eb8e20b7f25fbf2dc66c5dcc9897018bc2c121d0b9085",
+      "bytes": 1604267,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573375
+      },
+      "prompt": "Make a precise FOUR-FRAME RIGHT-FACING BITING ATTACK sprite sheet of the exact original Kha'Rha quadruped in this reference. Four complete animals in a spacious TWO COLUMNS by TWO ROWS grid, read top-left, top-right, bottom-left, bottom-right. Every creature faces RIGHT in true horizontal side view; same body size, same carapace plate pattern, same olive dark skin, same broad low muzzle, exactly four coherent legs and complete long tail in every cell. Frame1 anticipation: four paws grounded, head low at shoulder height, neck drawn slightly back, jaw closed. Frame2 active bite: body lunges horizontally forward supported by front paw, NECK AND HEAD STRETCH FORWARD LOW AND LEVEL with the back, jaws open wide toward RIGHT, not upward; upper and lower jaws around an imaginary point directly in front, sharp teeth coherent, eye still visible. Frame3 contact: same extended LOW LEVEL head position, jaws snapped shut forward, visible neck muscle tension, no victim drawn. Frame4 recovery: head and body return to alert grounded stance. This is a LOW HORIZONTAL CHOMP, not a roar; NEVER tilt the muzzle upward. No blood or victim. Each full animal inside central70percent of cell with very wide flat pure MAGENTA #FF00FF gutters. No rider, saddle, props, shadow, motion trails, labels or checkerboard. Real distinct articulated poses, not translated identical pictures.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/identity-r2.png",
+          "sha256": "2ee1e47b34214d7aca680532f32cdf58a6036e10289bac1b3e98f33e9bac8a9c"
+        }
+      ],
+      "notes": [
+        "Corrected low horizontal bite, four distinct drawn poses facing right.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "anticipation",
+          "reviewGridRect": [
+            0,
+            0,
+            767,
+            512
+          ],
+          "alpha16Bounds": [
+            21,
+            152,
+            746,
+            251
+          ],
+          "gridBorderPixels": 9,
+          "visiblePixels": 72241,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "lunge",
+          "reviewGridRect": [
+            767,
+            0,
+            768,
+            512
+          ],
+          "alpha16Bounds": [
+            767,
+            180,
+            746,
+            221
+          ],
+          "gridBorderPixels": 9,
+          "visiblePixels": 73371,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact",
+          "reviewGridRect": [
+            0,
+            512,
+            767,
+            513
+          ],
+          "alpha16Bounds": [
+            17,
+            643,
+            748,
+            228
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 73584,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            767,
+            512,
+            768,
+            513
+          ],
+          "alpha16Bounds": [
+            790,
+            616,
+            711,
+            260
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 77377,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            19,
+            150,
+            698,
+            255
+          ],
+          "pivot": [
+            461,
+            253
+          ],
+          "facing": "right",
+          "phase": "anticipation",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            730,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            749,
+            178,
+            766,
+            225
+          ],
+          "pivot": [
+            471,
+            225
+          ],
+          "facing": "right",
+          "phase": "lunge",
+          "durationTicks": 9,
+          "reviewWindow": [
+            735,
+            0,
+            800,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            15,
+            641,
+            752,
+            232
+          ],
+          "pivot": [
+            457,
+            235
+          ],
+          "facing": "right",
+          "phase": "contact",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            512,
+            777,
+            513
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            788,
+            614,
+            715,
+            264
+          ],
+          "pivot": [
+            462,
+            262
+          ],
+          "facing": "right",
+          "phase": "recovery",
+          "durationTicks": 9,
+          "reviewWindow": [
+            777,
+            512,
+            758,
+            513
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    },
+    {
+      "id": "bite-left-r2",
+      "actionId": "bite",
+      "label": "bite-left-r2",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/kha-rha/bite-left-r2.png",
+      "publicPath": "/game/vehicles/v34/kha-rha/bite-left-r2.png",
+      "originId": "exec-b4f2265f-a42d-4adf-bf91-68847921a3d6.png",
+      "width": 1534,
+      "height": 1025,
+      "sha256": "e08293e96f7811dbdf5bb4ba5cc20cdfa8d7f8dc1135075c2693c92ce55b9601",
+      "bytes": 1549140,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572350
+      },
+      "prompt": "Use this four-pose RIGHT-facing Kha'Rha biting attack sheet as the exact animation and character reference. Draw the corresponding independently authored OPPOSITE SIDE, with ALL FOUR ANIMALS FACING LEFT. Preserve the same original quadruped design, bronze carapace plates, olive charcoal skin, amber eye, broad jaw, four legs, claws, full tail, scale and strict side-view camera. Same 2 columns by2rows chronological order: top-left anticipation, top-right LOW HORIZONTAL forward lunge with jaws wide open toward LEFT, bottom-left extended contact with jaws snapped shut toward LEFT, bottom-right recovery. The head must remain LOW AND LEVEL with spine during lunge/contact, not lifted to roar. Far and near legs are now viewed from the opposite side with coherent overlap; do not merely mirror a finished screenshot including its sheet layout. Every complete animal fully within its own cell, central70percent width with WIDE magenta gutters, no clipping of tail or nose. Uniform pure flat MAGENTA #FF00FF background. No rider, saddle, shadow, victim, blood, labels, text or grid. Keep original body proportions stable across frames, distinct physically articulated poses, sharp game sprite finish.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/kha-rha/bite-right-r2.png",
+          "sha256": "260df0794d7256554c5eb8e20b7f25fbf2dc66c5dcc9897018bc2c121d0b9085"
+        }
+      ],
+      "notes": [
+        "Independently generated opposite-side bite poses.",
+        "Nonuniform safe extraction windows and explicit contact pivots are for artistic playback only. No rideable or combat-ready creature is implied.",
+        "The body, saddle and future rider remain separate source assets; their assembly still requires calibration."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "anticipation",
+          "reviewGridRect": [
+            0,
+            0,
+            767,
+            512
+          ],
+          "alpha16Bounds": [
+            45,
+            171,
+            709,
+            236
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 71714,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "lunge",
+          "reviewGridRect": [
+            767,
+            0,
+            767,
+            512
+          ],
+          "alpha16Bounds": [
+            783,
+            178,
+            728,
+            224
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 71886,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "left",
+          "phase": "contact",
+          "reviewGridRect": [
+            0,
+            512,
+            767,
+            513
+          ],
+          "alpha16Bounds": [
+            49,
+            625,
+            709,
+            235
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 72388,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            767,
+            512,
+            767,
+            513
+          ],
+          "alpha16Bounds": [
+            803,
+            620,
+            708,
+            247
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 75732,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [
+        {
+          "rect": [
+            43,
+            169,
+            713,
+            240
+          ],
+          "pivot": [
+            241,
+            238
+          ],
+          "facing": "left",
+          "phase": "anticipation",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            0,
+            767,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            781,
+            176,
+            732,
+            228
+          ],
+          "pivot": [
+            269,
+            231
+          ],
+          "facing": "left",
+          "phase": "lunge",
+          "durationTicks": 9,
+          "reviewWindow": [
+            767,
+            0,
+            767,
+            512
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            47,
+            623,
+            713,
+            239
+          ],
+          "pivot": [
+            226,
+            244
+          ],
+          "facing": "left",
+          "phase": "contact",
+          "durationTicks": 9,
+          "reviewWindow": [
+            0,
+            512,
+            767,
+            513
+          ],
+          "gridBorderPixels": 0
+        },
+        {
+          "rect": [
+            801,
+            618,
+            712,
+            251
+          ],
+          "pivot": [
+            251,
+            249
+          ],
+          "facing": "left",
+          "phase": "recovery",
+          "durationTicks": 9,
+          "reviewWindow": [
+            767,
+            512,
+            767,
+            513
+          ],
+          "gridBorderPixels": 0
+        }
+      ],
+      "gameplayImplemented": false,
+      "previewAnchor": [
+        600,
+        700
+      ]
+    }
+  ],
+  "generatedSources": 10,
+  "acceptedRuntimeClips": 0
+}

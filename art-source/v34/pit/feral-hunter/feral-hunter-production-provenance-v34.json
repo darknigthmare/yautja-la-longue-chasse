@@ -1,0 +1,6394 @@
+{
+  "schemaVersion": 1,
+  "id": "feral-hunter-production-v34",
+  "fighterId": "feral-hunter",
+  "checkedAt": "2026-09-12T21:10:28.229Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/assets/v28/sprite-review/feral-shield-guard.png",
+    "sha256": "e4d6057092cb7a495d7349c09cf7a77c0300309bc7bc23af3b5d63ef09f97e62",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica."
+  },
+  "generatedSheets": 13,
+  "generatedPoseSamples": 104,
+  "validatedRuntimeClips": 30,
+  "acceptedSourcePages": 9,
+  "runtimeDrawings": 70,
+  "actionSequencesIncludingFacings": 18,
+  "counts": {
+    "validated": 9,
+    "authoredReview": 1,
+    "rejected": 3
+  },
+  "runtimeLimitations": [
+    "Saut/réception : planche de revue uniquement, couverture moteur insuffisante.",
+    "Garde basse, attaques aériennes/accroupies, déplacements spéciaux et états non listés restent à produire.",
+    "Les détails fins peuvent conserver quelques pixels colorés ; aucun fond magenta opaque ni recadrage tronqué.",
+    "Référence V28 du projet, sans certification de fidélité cinéma 1:1. Aucun atlas de personnage complet n’est annoncé."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "originId": "exec-ca1495de-78fe-4627-8d50-67dff4cd71b6.png",
+      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
+      "bytes": 2100765,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1208194,
+        "fringePixels": 23660
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46225,
+          "alpha16Bounds": [
+            91,
+            57,
+            224,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "ca9703e073140709b6cc21a0a3ba3ae467e53ea220ee08c0b86eec0d2267882b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45505,
+          "alpha16Bounds": [
+            470,
+            54,
+            219,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 135,
+          "pixelDigest": "0f88a542a6fa076bd477170185e8261743736cb76a4be746919b1346ad1a7e3e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45019,
+          "alpha16Bounds": [
+            844,
+            67,
+            219,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 137,
+          "pixelDigest": "c0ba8b3aeaa65e2ae11212d4814ee315c3d9f99f76cb0a104a9a15647131410f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46254,
+          "alpha16Bounds": [
+            1203,
+            56,
+            228,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "2b6da15769cc8ed80d694ec9bce854771ed4ee0590e6c706940e4ea60691ea2d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46286,
+          "alpha16Bounds": [
+            99,
+            542,
+            231,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 141,
+          "pixelDigest": "93437bab3823e8afdbec84a7a260cf00af0c11f2d3d6f6d433b2ed73b186d38c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46021,
+          "alpha16Bounds": [
+            480,
+            540,
+            229,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 130,
+          "pixelDigest": "477f66b60a7bb9d245cd01734c484897ec83ee33569421be692616cbda1bbd42",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43580,
+          "alpha16Bounds": [
+            848,
+            562,
+            225,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "c2f4171fb53405b7fa732c57b7acfdbde9ac5ff1aa1dcd3985d49475a7771e08",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45780,
+          "alpha16Bounds": [
+            1221,
+            543,
+            227,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "e1ada7c7249e5029f913cfe9952fa465e3f5e3900b4724f52a5303b0f022fc51",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            88,
+            54,
+            230,
+            424
+          ],
+          "pivot": [
+            119.5,
+            420
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            467,
+            51,
+            225,
+            428
+          ],
+          "pivot": [
+            116,
+            424
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            841,
+            64,
+            225,
+            414
+          ],
+          "pivot": [
+            114.5,
+            410
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            1200,
+            53,
+            234,
+            426
+          ],
+          "pivot": [
+            124,
+            422
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            96,
+            539,
+            237,
+            422
+          ],
+          "pivot": [
+            114,
+            418
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            477,
+            537,
+            235,
+            424
+          ],
+          "pivot": [
+            112,
+            420
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            845,
+            559,
+            231,
+            402
+          ],
+          "pivot": [
+            111.5,
+            398
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "feral-hunter-idle",
+          "rect": [
+            1218,
+            540,
+            233,
+            421
+          ],
+          "pivot": [
+            111,
+            417
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                88,
+                54,
+                230,
+                424
+              ],
+              "pivot": [
+                119.5,
+                420
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                467,
+                51,
+                225,
+                428
+              ],
+              "pivot": [
+                116,
+                424
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                841,
+                64,
+                225,
+                414
+              ],
+              "pivot": [
+                114.5,
+                410
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                1200,
+                53,
+                234,
+                426
+              ],
+              "pivot": [
+                124,
+                422
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                96,
+                539,
+                237,
+                422
+              ],
+              "pivot": [
+                114,
+                418
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                477,
+                537,
+                235,
+                424
+              ],
+              "pivot": [
+                112,
+                420
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                845,
+                559,
+                231,
+                402
+              ],
+              "pivot": [
+                111.5,
+                398
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "feral-hunter-idle",
+              "rect": [
+                1218,
+                540,
+                233,
+                421
+              ],
+              "pivot": [
+                111,
+                417
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "idle",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.420Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-walk-forward-v34.png",
+      "originId": "exec-d09576bf-80a7-4c65-be96-99edb71d3f58.png",
+      "sha256": "ee6070227cbd64089d0fd4a7861a75f6bb04a45dc78038a506732d2e2e23c588",
+      "bytes": 2078534,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Forward walk repeats the same contact and lifted knee in columns1/3 and2/4; shield also partially opens contrary to folded intent. Not a real alternating gait."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1224018,
+        "fringePixels": 25639
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44635,
+          "alpha16Bounds": [
+            88,
+            57,
+            275,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 183,
+          "pixelDigest": "9f05c27b8aeba62106d5cca82034593fbd3f08bc8860dd2bbe0b8cffe29614f3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42637,
+          "alpha16Bounds": [
+            445,
+            51,
+            212,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "ecbd9a59e22147648e0d1d92fcd7bc5f991771e18bd0a4e678be30c65907bba4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43515,
+          "alpha16Bounds": [
+            834,
+            59,
+            274,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 118,
+          "pixelDigest": "1f4e38cd2465029b87b2a8800fdb92e1caca9b05e87d7e0162fb063e186bc36a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42098,
+          "alpha16Bounds": [
+            1211,
+            53,
+            212,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 143,
+          "pixelDigest": "9b3db991ee58e03ce3796b0e0dd4af3d2242e13b83c32f206f67e4c07b6e9abe",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45267,
+          "alpha16Bounds": [
+            53,
+            538,
+            277,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 110,
+          "pixelDigest": "e00ef6392aa12d5cfd84a0a4690783cc2003b5583754319d1f0d74316f89933e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42483,
+          "alpha16Bounds": [
+            468,
+            538,
+            218,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "d111cca297bb8565428ce4f14662f5a8b971833b0b0692ebe9832479306bb5d9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44586,
+          "alpha16Bounds": [
+            796,
+            539,
+            277,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 173,
+          "pixelDigest": "cb881b62c0e1384ad08981a1a4ee84d7a7d835269f5fc1f1671d7b9584faede6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43625,
+          "alpha16Bounds": [
+            1231,
+            536,
+            223,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 126,
+          "pixelDigest": "f4b499b9968417d9afb62fffe9651f2aafa2e98a226431397e130853dda8c8e1",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            85,
+            54,
+            281,
+            409
+          ],
+          "pivot": [
+            140,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            442,
+            48,
+            218,
+            417
+          ],
+          "pivot": [
+            126.5,
+            413
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            831,
+            56,
+            280,
+            409
+          ],
+          "pivot": [
+            138,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            1208,
+            50,
+            218,
+            415
+          ],
+          "pivot": [
+            101,
+            411
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            50,
+            535,
+            283,
+            410
+          ],
+          "pivot": [
+            142,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            465,
+            535,
+            224,
+            412
+          ],
+          "pivot": [
+            99,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            793,
+            536,
+            283,
+            410
+          ],
+          "pivot": [
+            142,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "feral-hunter-walk-forward",
+          "rect": [
+            1228,
+            533,
+            229,
+            414
+          ],
+          "pivot": [
+            127.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-walk-backward-v34.png",
+      "originId": "exec-e2a2cdd0-1b3a-4d00-82d3-ddc59c50e000.png",
+      "sha256": "d72d1f55e1ef260a18bbde0024c9fc13eac7c9b48db99372e777c5a900a8e11b",
+      "bytes": 2083323,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Passing phases2/4 now use visibly opposite support legs and shield remains folded. Contact phases1/3 still repeat near-leg rear position; targeted column3 correction required."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1220500,
+        "fringePixels": 22092
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46597,
+          "alpha16Bounds": [
+            93,
+            62,
+            260,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 101,
+          "pixelDigest": "8049b899391e72eb5bcbfdb012eb48f2a0d5e567eff234d1ec6d23521198c15e",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41479,
+          "alpha16Bounds": [
+            479,
+            63,
+            217,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "6efbf3d6339c1e1941f9208b3eeb481cb1a4e30704669cc5fc9a8e413b834dd8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44583,
+          "alpha16Bounds": [
+            828,
+            63,
+            237,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 104,
+          "pixelDigest": "9d0ff87f3b139bc25e00693af55841faff85c38b3fc7891fdd02e71c9a1937d0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41155,
+          "alpha16Bounds": [
+            1202,
+            64,
+            217,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 119,
+          "pixelDigest": "969a697c0ca1a746bb8a4d549789dcdcdb617742e36bf0706483540c6e798016",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46905,
+          "alpha16Bounds": [
+            116,
+            539,
+            251,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "a3e7be7633f34bc997432caaf1eeb77ac3c114ebbe8a8158acea55cb4ed69af0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42442,
+          "alpha16Bounds": [
+            477,
+            539,
+            228,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "e0bf63eb18ea1161f70f23f3920ab44e9c64bc59ee9e99d88af4b63b83738f65",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45968,
+          "alpha16Bounds": [
+            840,
+            541,
+            241,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "22fb77ab081303f5f9b9b42e43a3f75ceb6c45c599b37f1619cff1f0956255b6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43235,
+          "alpha16Bounds": [
+            1212,
+            540,
+            231,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "f73c182ba787ba9fd5cf1be3f65002fac7df40549135f433dcc7056d4f70b4f3",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            90,
+            59,
+            266,
+            411
+          ],
+          "pivot": [
+            123,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            476,
+            60,
+            223,
+            407
+          ],
+          "pivot": [
+            147,
+            403
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            825,
+            60,
+            243,
+            410
+          ],
+          "pivot": [
+            124.5,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            1199,
+            61,
+            223,
+            409
+          ],
+          "pivot": [
+            110.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            113,
+            536,
+            257,
+            416
+          ],
+          "pivot": [
+            131,
+            412
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            474,
+            536,
+            234,
+            411
+          ],
+          "pivot": [
+            73,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            837,
+            538,
+            247,
+            413
+          ],
+          "pivot": [
+            119.5,
+            409
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "feral-hunter-walk-backward",
+          "rect": [
+            1209,
+            537,
+            237,
+            414
+          ],
+          "pivot": [
+            116.5,
+            410
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "originId": "exec-20ea605f-66c2-4e64-84ac-0effc93c00ef.png",
+      "sha256": "b4d325c71e9ff6b8b799f4b7d3681b40dc1fb58db759cd51fc0ae51c92ff88f3",
+      "bytes": 2112400,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "First three drawings descend then hold; fourth rising pose excluded. Half-deployed left fan shield remains mounted."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1199458,
+        "fringePixels": 23619
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51768,
+          "alpha16Bounds": [
+            75,
+            59,
+            271,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 78,
+          "pixelDigest": "7c86f26af36c0731e99686af482842b5ab94b8298fc28c4b0b44a6f16a18f0fd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46536,
+          "alpha16Bounds": [
+            450,
+            134,
+            266,
+            342
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 85,
+          "pixelDigest": "4a3d3023c048743552f2f99c4d7a521696524fe3a947cfd8a40624f7d055cc23",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40254,
+          "alpha16Bounds": [
+            826,
+            198,
+            256,
+            273
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 180,
+          "pixelDigest": "0146d0b551e9dc7a265b8355db1dc1b28a2ecb8669c41cd72255eb575faaf6ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47226,
+          "alpha16Bounds": [
+            1176,
+            119,
+            263,
+            357
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 93,
+          "pixelDigest": "7f7657f335e2108b85d8e72273acbfc112a5ddbf1bc0f61fdf38bc056f0be9af",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52687,
+          "alpha16Bounds": [
+            78,
+            536,
+            274,
+            421
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 123,
+          "pixelDigest": "e13eaf7e24f47a94abc395d9dcad2cb16de96f03dfb2119c92291520d95f9c79",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47002,
+          "alpha16Bounds": [
+            453,
+            597,
+            265,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "e240f0dbb7fe14ca2379570b03ba628c400bb1245d884b8c7d8c6a9434f35c42",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40622,
+          "alpha16Bounds": [
+            822,
+            663,
+            248,
+            283
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 236,
+          "pixelDigest": "813411c2f49b56400efc86c1c10e7a9967d591864e2ac5607090f1cdaf2dc53e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47311,
+          "alpha16Bounds": [
+            1186,
+            591,
+            266,
+            360
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 175,
+          "pixelDigest": "43c48352b6d077c87fa713f8a3937d629873b5552820dd1eab1dbe3ba8ae8e9d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            72,
+            56,
+            277,
+            427
+          ],
+          "pivot": [
+            135,
+            423
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            447,
+            131,
+            272,
+            348
+          ],
+          "pivot": [
+            134.5,
+            344
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            823,
+            195,
+            262,
+            279
+          ],
+          "pivot": [
+            106,
+            275
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            75,
+            533,
+            280,
+            427
+          ],
+          "pivot": [
+            137.5,
+            423
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            450,
+            594,
+            271,
+            360
+          ],
+          "pivot": [
+            135.5,
+            356
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "feral-hunter-crouch",
+          "rect": [
+            819,
+            660,
+            254,
+            289
+          ],
+          "pivot": [
+            145.5,
+            285
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                72,
+                56,
+                277,
+                427
+              ],
+              "pivot": [
+                135,
+                423
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                447,
+                131,
+                272,
+                348
+              ],
+              "pivot": [
+                134.5,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                823,
+                195,
+                262,
+                279
+              ],
+              "pivot": [
+                106,
+                275
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                75,
+                533,
+                280,
+                427
+              ],
+              "pivot": [
+                137.5,
+                423
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                450,
+                594,
+                271,
+                360
+              ],
+              "pivot": [
+                135.5,
+                356
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-crouch",
+              "rect": [
+                819,
+                660,
+                254,
+                289
+              ],
+              "pivot": [
+                145.5,
+                285
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-jump-land-v34.png",
+      "originId": "exec-b92b9756-6b4e-46fc-9afb-eb54f802da21.png",
+      "sha256": "fc0b9e7d2db210ea659cb39f741a41c2d17b7bf4db6f3fffbff4e07ca865e9a5",
+      "bytes": 2054359,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Launch/rise/fall/landing distinct with complete extremities. Shield partly deployed contrary to folded prompt; sample4phases per facing still lack full engine jump phase coverage."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1241465,
+        "fringePixels": 23238
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42150,
+          "alpha16Bounds": [
+            58,
+            171,
+            305,
+            291
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 239,
+          "pixelDigest": "72f139bfe8f7ee3111ba35d7be591dabfa28c6f992b48d2c8a68459e82e91051",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39408,
+          "alpha16Bounds": [
+            444,
+            56,
+            289,
+            367
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 237,
+          "pixelDigest": "388b994606ac852da5bc9c995dee2bc6584f9d8e25fa90b6042f09f9da25f74f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42353,
+          "alpha16Bounds": [
+            806,
+            59,
+            273,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 155,
+          "pixelDigest": "97812c0f2db75470bb869047d8134e505613162b3211905cc1073793eca48f1b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41573,
+          "alpha16Bounds": [
+            1176,
+            202,
+            302,
+            260
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 297,
+          "pixelDigest": "ab201ef49123976413287a172798d2cc84ac179e7505967fb53ca24f6e02463f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42340,
+          "alpha16Bounds": [
+            58,
+            643,
+            305,
+            296
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 195,
+          "pixelDigest": "eb70ca959e793e8405a31d4691add9f3ee1bc52e3f724fda16debc46ffcbc948",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 37708,
+          "alpha16Bounds": [
+            460,
+            536,
+            281,
+            354
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 198,
+          "pixelDigest": "36c4131643b450f32dc052591cfd96da8dd3c606b028c477480402f46d18a6a8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42180,
+          "alpha16Bounds": [
+            824,
+            540,
+            268,
+            389
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 140,
+          "pixelDigest": "7e75d88cc144455763b0a513526f1984b335f84b861be1573a2968879767ca45",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43687,
+          "alpha16Bounds": [
+            1177,
+            667,
+            299,
+            272
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 240,
+          "pixelDigest": "4dc7b0c76508d55811180b5fe5cd6f5b9118716c3b0165f23a785fda38202f83",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            55,
+            168,
+            311,
+            297
+          ],
+          "pivot": [
+            137.5,
+            293
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            441,
+            53,
+            295,
+            373
+          ],
+          "pivot": [
+            119,
+            369
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            803,
+            56,
+            279,
+            401
+          ],
+          "pivot": [
+            227.5,
+            397
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            1173,
+            199,
+            308,
+            266
+          ],
+          "pivot": [
+            169.5,
+            262
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            55,
+            640,
+            311,
+            302
+          ],
+          "pivot": [
+            173,
+            298
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            457,
+            533,
+            287,
+            360
+          ],
+          "pivot": [
+            170.5,
+            356
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            821,
+            537,
+            274,
+            395
+          ],
+          "pivot": [
+            42.5,
+            391
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "feral-hunter-jump-land",
+          "rect": [
+            1174,
+            664,
+            305,
+            278
+          ],
+          "pivot": [
+            145,
+            274
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "originId": "exec-0b0e79be-42c8-402b-9117-954ba94f5aef.png",
+      "sha256": "e9ff3cd206cdb3751bcad44ae116f8c9b9fc0ecc528a7fd75917dd4293226806",
+      "bytes": 2236911,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Shield is folded at frame0, partially deployed at1/2 and fully deployed only at3; final drawing is held."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1159229,
+        "fringePixels": 24139
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "LEFT forearm raises, bronze shield starts folded compact",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49077,
+          "alpha16Bounds": [
+            74,
+            60,
+            269,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "485e26f91d01179678897833fe3866107b7aaf08af41d8d6af5d9d98dfb778ee",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "shield half-deployed fan at left forearm, right empty fist lowered visible",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49839,
+          "alpha16Bounds": [
+            472,
+            61,
+            270,
+            408
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 90,
+          "pixelDigest": "a2a84cde80f3eb0bc2dadeefed9b40c8bdcbefaf2ca28526716edbc375f13174",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "shield fully deployed circular segmented disk, knees bend to absorb",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50629,
+          "alpha16Bounds": [
+            833,
+            75,
+            266,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 203,
+          "pixelDigest": "0da4634358adef35120ba8727f65063bd3f07b99d6b0c4e18daf5fda0e54bc2f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled full shield high guard, right fist still visible",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55910,
+          "alpha16Bounds": [
+            1195,
+            74,
+            287,
+            396
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 102,
+          "pixelDigest": "0f640bbb7ce13a2e691e1c97c8ba08924f5b08efd90779163ed30ab9ce81fdac",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "LEFT forearm raises, bronze shield starts folded compact",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49495,
+          "alpha16Bounds": [
+            85,
+            539,
+            263,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 63,
+          "pixelDigest": "95576302fa84d2b3ae0c688b4ec892a728fd2d030f2432d86b15368dcb24daa6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "shield half-deployed fan at left forearm, right empty fist lowered visible",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50097,
+          "alpha16Bounds": [
+            472,
+            540,
+            269,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 42,
+          "pixelDigest": "c38a9bb4eb5db674470dcbfaae33abfd169c5076185f8470a2792e1e4104fb6d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "shield fully deployed circular segmented disk, knees bend to absorb",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51102,
+          "alpha16Bounds": [
+            820,
+            555,
+            271,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "1260dc4cd9a51f6a5d0ebff32fdd814dfedb2c1416247291d38c80b7a048bead",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled full shield high guard, right fist still visible",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 57486,
+          "alpha16Bounds": [
+            1180,
+            548,
+            286,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 78,
+          "pixelDigest": "7df6090733ecc332957e62f1a16efcdaa0e788a882326cc29d3b82eab8a87ba8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            71,
+            57,
+            275,
+            415
+          ],
+          "pivot": [
+            136,
+            411
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            469,
+            58,
+            276,
+            414
+          ],
+          "pivot": [
+            129.5,
+            410
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            830,
+            72,
+            272,
+            401
+          ],
+          "pivot": [
+            128,
+            397
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            1192,
+            71,
+            293,
+            402
+          ],
+          "pivot": [
+            129.5,
+            398
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            82,
+            536,
+            269,
+            413
+          ],
+          "pivot": [
+            134,
+            409
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            469,
+            537,
+            275,
+            415
+          ],
+          "pivot": [
+            145,
+            411
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            817,
+            552,
+            277,
+            400
+          ],
+          "pivot": [
+            144.5,
+            396
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "feral-hunter-guard",
+          "rect": [
+            1177,
+            545,
+            292,
+            408
+          ],
+          "pivot": [
+            159,
+            404
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                71,
+                57,
+                275,
+                415
+              ],
+              "pivot": [
+                136,
+                411
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                469,
+                58,
+                276,
+                414
+              ],
+              "pivot": [
+                129.5,
+                410
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                830,
+                72,
+                272,
+                401
+              ],
+              "pivot": [
+                128,
+                397
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                1192,
+                71,
+                293,
+                402
+              ],
+              "pivot": [
+                129.5,
+                398
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                82,
+                536,
+                269,
+                413
+              ],
+              "pivot": [
+                134,
+                409
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                469,
+                537,
+                275,
+                415
+              ],
+              "pivot": [
+                145,
+                411
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                817,
+                552,
+                277,
+                400
+              ],
+              "pivot": [
+                144.5,
+                396
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-guard",
+              "rect": [
+                1177,
+                545,
+                292,
+                408
+              ],
+              "pivot": [
+                159,
+                404
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "originId": "exec-f337868f-0ae2-49ab-a33a-7fe1641253fe.png",
+      "sha256": "779612a2564d8823582d2ff12f8f969947f33b8212113107c3bbef0907a14e0b",
+      "bytes": 2056250,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "The partly open fan shield recoils with the body and closes in neutral."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1232018,
+        "fringePixels": 23606
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42260,
+          "alpha16Bounds": [
+            86,
+            87,
+            239,
+            378
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 167,
+          "pixelDigest": "85309ede10bfe8c8f914ec559a816de5aabf69071b8aeff19b3e703a17ed5f41",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44102,
+          "alpha16Bounds": [
+            463,
+            95,
+            237,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 186,
+          "pixelDigest": "052da41ad907d57199944407ee2b5cdd2bd52b63d14b57ef0f06f50b36c7fda4",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40782,
+          "alpha16Bounds": [
+            810,
+            88,
+            241,
+            377
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 98,
+          "pixelDigest": "15e0a67cc7faf3d9826f1c1a8e52e7bf02423aa7fd0caea94348ca73ff18025e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42550,
+          "alpha16Bounds": [
+            1202,
+            65,
+            237,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "424dd883eea6781d29b22725f6cce8bca755882a6443508225898be0b11743e7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42669,
+          "alpha16Bounds": [
+            94,
+            551,
+            236,
+            380
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 141,
+          "pixelDigest": "cf14d1e5c210998eed6d5f646284058534c2fd56e36167a682788cc3156c904f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44490,
+          "alpha16Bounds": [
+            470,
+            558,
+            237,
+            373
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 200,
+          "pixelDigest": "c847dee56a8647e39653e10fd2715f93a8efc5b3377a8e0039b5f1912238e092",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41031,
+          "alpha16Bounds": [
+            839,
+            555,
+            238,
+            377
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "9786cf44b0b80eef959c26ab07f73b8fce314f8e16ae6d860ea996ef1d5bbf9b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42962,
+          "alpha16Bounds": [
+            1204,
+            534,
+            242,
+            398
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 139,
+          "pixelDigest": "ac35edc5d9ff8f37469cfc21120fc4101f5940e130d29c6fa2c9c825e456d6ec",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            83,
+            84,
+            245,
+            384
+          ],
+          "pivot": [
+            127,
+            380
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            460,
+            92,
+            243,
+            374
+          ],
+          "pivot": [
+            126,
+            370
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            807,
+            85,
+            247,
+            383
+          ],
+          "pivot": [
+            128.5,
+            379
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            1199,
+            62,
+            243,
+            406
+          ],
+          "pivot": [
+            117.5,
+            402
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            91,
+            548,
+            242,
+            386
+          ],
+          "pivot": [
+            118,
+            382
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            467,
+            555,
+            243,
+            379
+          ],
+          "pivot": [
+            116.5,
+            375
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            836,
+            552,
+            244,
+            383
+          ],
+          "pivot": [
+            123,
+            379
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "feral-hunter-hurt",
+          "rect": [
+            1201,
+            531,
+            248,
+            404
+          ],
+          "pivot": [
+            126.5,
+            400
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                83,
+                84,
+                245,
+                384
+              ],
+              "pivot": [
+                127,
+                380
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                460,
+                92,
+                243,
+                374
+              ],
+              "pivot": [
+                126,
+                370
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                807,
+                85,
+                247,
+                383
+              ],
+              "pivot": [
+                128.5,
+                379
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                1199,
+                62,
+                243,
+                406
+              ],
+              "pivot": [
+                117.5,
+                402
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                91,
+                548,
+                242,
+                386
+              ],
+              "pivot": [
+                118,
+                382
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                467,
+                555,
+                243,
+                379
+              ],
+              "pivot": [
+                116.5,
+                375
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                836,
+                552,
+                244,
+                383
+              ],
+              "pivot": [
+                123,
+                379
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "feral-hunter-hurt",
+              "rect": [
+                1201,
+                531,
+                248,
+                404
+              ],
+              "pivot": [
+                126.5,
+                400
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.hitstun",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "originId": "exec-07a2bf20-27aa-4eaf-8008-868e4ede8e93.png",
+      "sha256": "35a34210df4018ab0b6140f1985e1144a90a652e5fb96e6742a5ef6aeb7324fb",
+      "bytes": 2107382,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1202866,
+        "fringePixels": 21869
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "short right forearm retract startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45925,
+          "alpha16Bounds": [
+            62,
+            72,
+            271,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 117,
+          "pixelDigest": "6350c6d242e6437879da8f2b99ea9665045de0ce24276da57087d84cdc980b67",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "short forward right wrist-blade jab contact",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44809,
+          "alpha16Bounds": [
+            414,
+            74,
+            354,
+            389
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "a13924256945ba03f37e5f2d3bd5d2d2428a51659515049564e0ee0287147fa5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts halfway",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44279,
+          "alpha16Bounds": [
+            768,
+            74,
+            299,
+            390
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 107,
+          "pixelDigest": "45983b24cbe9eff7cedcfad67169b0fb98e45d23d1562e9314d6744de551e8eb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47880,
+          "alpha16Bounds": [
+            1194,
+            74,
+            271,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "e2bd9c51cf3bf5a0badd0f7c1b7fae75126b88281c189c1ea7fa274c8a83eca7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "short right forearm retract startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46500,
+          "alpha16Bounds": [
+            69,
+            549,
+            315,
+            394
+          ],
+          "gridBorderPixels": 8,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "5331a985d53c8e97a5836f40fc9b71f53c19657d372f1d9ec2d2eee2b43f3655",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "short forward right wrist-blade jab contact",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45423,
+          "alpha16Bounds": [
+            384,
+            549,
+            352,
+            395
+          ],
+          "gridBorderPixels": 9,
+          "residualMagentaPixels": 142,
+          "pixelDigest": "5788fd2fd5066215a2dc7bc3c39eee671b8ed0cea93f6a2f243f27bef087af8e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts halfway",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45902,
+          "alpha16Bounds": [
+            826,
+            549,
+            276,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 115,
+          "pixelDigest": "6768490c7656c45563538a68160c9e4b27fa80c980c7e385f3d1818039bb3296",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49280,
+          "alpha16Bounds": [
+            1201,
+            549,
+            273,
+            394
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "a89a6cba8d7b786cb486af7d348d7fe6401033905b4e131ebbf958aecf47b0f5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            59,
+            69,
+            277,
+            397
+          ],
+          "pivot": [
+            126,
+            393
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            411,
+            71,
+            373,
+            395
+          ],
+          "pivot": [
+            135.5,
+            391
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            796,
+            71,
+            274,
+            396
+          ],
+          "pivot": [
+            128,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            1191,
+            71,
+            277,
+            396
+          ],
+          "pivot": [
+            123.5,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            66,
+            546,
+            280,
+            400
+          ],
+          "pivot": [
+            147,
+            396
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            373,
+            546,
+            366,
+            401
+          ],
+          "pivot": [
+            229.5,
+            397
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            823,
+            546,
+            282,
+            400
+          ],
+          "pivot": [
+            148.5,
+            396
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-light",
+          "rect": [
+            1198,
+            546,
+            279,
+            400
+          ],
+          "pivot": [
+            148,
+            396
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                59,
+                69,
+                277,
+                397
+              ],
+              "pivot": [
+                126,
+                393
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                411,
+                71,
+                373,
+                395
+              ],
+              "pivot": [
+                135.5,
+                391
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                796,
+                71,
+                274,
+                396
+              ],
+              "pivot": [
+                128,
+                392
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                1191,
+                71,
+                277,
+                396
+              ],
+              "pivot": [
+                123.5,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                66,
+                546,
+                280,
+                400
+              ],
+              "pivot": [
+                147,
+                396
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                373,
+                546,
+                366,
+                401
+              ],
+              "pivot": [
+                229.5,
+                397
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                823,
+                546,
+                282,
+                400
+              ],
+              "pivot": [
+                148.5,
+                396
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-light",
+              "rect": [
+                1198,
+                546,
+                279,
+                400
+              ],
+              "pivot": [
+                148,
+                396
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.light.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-medium-v34.png",
+      "originId": "exec-c97bfef5-3f7a-488c-887f-35626187147d.png",
+      "sha256": "31092a483e487a309680f1fcbfa2c9867b432436317559179d38c571285b5f7f",
+      "bytes": 2140230,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Medium lunge stages keep fist/gauntlet continuity and2short mounted blades. Empty fists are visible in startup/contact/recovery, shield stable half-deployed; candidate both facings."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1197951,
+        "fringePixels": 22958
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47703,
+          "alpha16Bounds": [
+            65,
+            65,
+            289,
+            385
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 116,
+          "pixelDigest": "787a085674a0581f216597f042106df331661e5ffd39d49078c9b71c4bee5843",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44661,
+          "alpha16Bounds": [
+            415,
+            79,
+            353,
+            371
+          ],
+          "gridBorderPixels": 39,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "3c7e32b9e52f0ae7b7c2625fa97ae9cbf7d227d7750e1ea031d38df30b74ddb2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46810,
+          "alpha16Bounds": [
+            768,
+            69,
+            343,
+            381
+          ],
+          "gridBorderPixels": 39,
+          "residualMagentaPixels": 150,
+          "pixelDigest": "5e17e30c77e8851a34c184bfaed5d175ccfc45ab9657172bca84c7fcb7f950da",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47489,
+          "alpha16Bounds": [
+            1219,
+            62,
+            268,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "5e6392add873878a3f07b07c7258450ec252d68dc8adcc7d5d2e473bf85d285f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right elbow draws back at waist",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47777,
+          "alpha16Bounds": [
+            73,
+            538,
+            282,
+            392
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 175,
+          "pixelDigest": "a1dfaeee88a2d00bc14667cc9fca9ac6909a71d8e129d0c4da6458a7be97e792",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46060,
+          "alpha16Bounds": [
+            385,
+            551,
+            383,
+            380
+          ],
+          "gridBorderPixels": 49,
+          "residualMagentaPixels": 114,
+          "pixelDigest": "de2878a1bd8374e20a1ba62626426d2d78f87935abbd535dcf638ed3538ac87f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right forearm retracts to ribs",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45958,
+          "alpha16Bounds": [
+            768,
+            545,
+            361,
+            386
+          ],
+          "gridBorderPixels": 47,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "a4c0ef2591dcdf6d0d4e8047bf649b4d46f8c6f6f784368815526d02a2506d78",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48455,
+          "alpha16Bounds": [
+            1214,
+            541,
+            267,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 222,
+          "pixelDigest": "6803a438c7d31236cb0572509216736d9dbe88f17d1b7b7488364cb20c471b24",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "feral-hunter-medium",
+          "rect": [
+            70,
+            535,
+            288,
+            398
+          ],
+          "pivot": [
+            155.5,
+            394
+          ],
+          "durationTicks": 10,
+          "phase": "right elbow draws back at waist",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "feral-hunter-medium",
+          "rect": [
+            382,
+            548,
+            405,
+            386
+          ],
+          "pivot": [
+            257.5,
+            382
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm extends horizontally to opponent at chest height",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "feral-hunter-medium",
+          "rect": [
+            842,
+            542,
+            290,
+            392
+          ],
+          "pivot": [
+            158.5,
+            388
+          ],
+          "durationTicks": 10,
+          "phase": "right forearm retracts to ribs",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "feral-hunter-medium",
+          "rect": [
+            1211,
+            538,
+            273,
+            396
+          ],
+          "pivot": [
+            146.5,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "neutral stance",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-heavy-v34.png",
+      "originId": "exec-468a51ff-5877-4045-b901-a763b782455b.png",
+      "sha256": "03fee1b3831d6191818f48411d92c248a19b30a0a93882811ebb2e771bc621dc",
+      "bytes": 2035554,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Open empty right claws in the heavy contact are intentional visible anatomy; two short blades stay mounted above the wrist."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1232015,
+        "fringePixels": 24294
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "low loaded diagonal right arm drawn back at hip",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45893,
+          "alpha16Bounds": [
+            50,
+            104,
+            297,
+            360
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 160,
+          "pixelDigest": "f4bea786a69bd269b5b1e0397e92e9136d27fc34c58136fd34ebc38cf6341a56",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right forearm drives forward slightly upward in a heavy low diagonal slash",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41497,
+          "alpha16Bounds": [
+            421,
+            109,
+            347,
+            353
+          ],
+          "gridBorderPixels": 10,
+          "residualMagentaPixels": 185,
+          "pixelDigest": "fd868bfac10ed71f0d3d42af961b8d22f71130d4ced13974a97c9fe7b2f8d39f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right elbow retracts with body settling",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40308,
+          "alpha16Bounds": [
+            768,
+            122,
+            329,
+            340
+          ],
+          "gridBorderPixels": 9,
+          "residualMagentaPixels": 120,
+          "pixelDigest": "983720f1611bba1dfc8930c44f23e55bc787988acdc4df913090515297d465bd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43563,
+          "alpha16Bounds": [
+            1217,
+            97,
+            256,
+            372
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 132,
+          "pixelDigest": "bfa1c2ad5bba815e608bdfeabe64ffb79066a9c5caab327d34e7724fae10dfeb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "low loaded diagonal right arm drawn back at hip",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44984,
+          "alpha16Bounds": [
+            65,
+            574,
+            295,
+            359
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 182,
+          "pixelDigest": "8b58a141de140b15684142c5317db722756e5903502e661c27ec6a8510cdb2ad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right forearm drives forward slightly upward in a heavy low diagonal slash",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41106,
+          "alpha16Bounds": [
+            393,
+            577,
+            350,
+            353
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 111,
+          "pixelDigest": "7fa721e297ac0a53639ff2401d8fdeeaa886f70df82490309130b962f4af6e7b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right elbow retracts with body settling",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41018,
+          "alpha16Bounds": [
+            812,
+            587,
+            295,
+            344
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 121,
+          "pixelDigest": "9111264dcddf442eb5514440175c9ffcb803516db9be48368d4e0333f05a5af3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42480,
+          "alpha16Bounds": [
+            1223,
+            570,
+            250,
+            363
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 123,
+          "pixelDigest": "53757feee471a84c5ff5739c721e2ad55943c543e0c746eb774d2db9aa200a09",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            47,
+            101,
+            303,
+            366
+          ],
+          "pivot": [
+            134,
+            362
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            418,
+            106,
+            358,
+            359
+          ],
+          "pivot": [
+            134.5,
+            355
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            805,
+            119,
+            295,
+            346
+          ],
+          "pivot": [
+            138,
+            342
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            1214,
+            94,
+            262,
+            378
+          ],
+          "pivot": [
+            117.5,
+            374
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            62,
+            571,
+            301,
+            365
+          ],
+          "pivot": [
+            165,
+            361
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            390,
+            574,
+            356,
+            359
+          ],
+          "pivot": [
+            222,
+            355
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            809,
+            584,
+            301,
+            350
+          ],
+          "pivot": [
+            162,
+            346
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-heavy",
+          "rect": [
+            1220,
+            567,
+            256,
+            369
+          ],
+          "pivot": [
+            135,
+            365
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                47,
+                101,
+                303,
+                366
+              ],
+              "pivot": [
+                134,
+                362
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                418,
+                106,
+                358,
+                359
+              ],
+              "pivot": [
+                134.5,
+                355
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                805,
+                119,
+                295,
+                346
+              ],
+              "pivot": [
+                138,
+                342
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                1214,
+                94,
+                262,
+                378
+              ],
+              "pivot": [
+                117.5,
+                374
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                62,
+                571,
+                301,
+                365
+              ],
+              "pivot": [
+                165,
+                361
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                390,
+                574,
+                356,
+                359
+              ],
+              "pivot": [
+                222,
+                355
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                809,
+                584,
+                301,
+                350
+              ],
+              "pivot": [
+                162,
+                346
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-heavy",
+              "rect": [
+                1220,
+                567,
+                256,
+                369
+              ],
+              "pivot": [
+                135,
+                365
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.heavy.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-backward-contacts",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "originId": "exec-db40d02d-893d-4ecc-a0c3-855fe23c3da4.png",
+      "sha256": "7c74e35203814a394f1790eb34b378ff4bba62ee3e20494392baeea6a4009507",
+      "bytes": 2020691,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Alternating contact and support legs verified. Explicit reverse playback order [0,3,2,1] creates backward gait. Pelvis-projected pivots are manually reviewed. No image mirroring."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1226777,
+        "fringePixels": 21259
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-right-trails",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46438,
+          "alpha16Bounds": [
+            94,
+            62,
+            259,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "f227ad36d1eb69c8e7c15d70def8e07aa93bffa86c16d9e8ba0af95e0ccc650c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41247,
+          "alpha16Bounds": [
+            479,
+            62,
+            217,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 99,
+          "pixelDigest": "4726bd61bf7befcea1b6e2d23c22d4620fd10500600a4b3114da2c63f76a1883",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right-leads",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42629,
+          "alpha16Bounds": [
+            838,
+            63,
+            231,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "2fdfa9cfbf9d88015b0f50f79bf2dfa0b579ccd8507b74f79ac8e9dcd24e1f64",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40940,
+          "alpha16Bounds": [
+            1202,
+            65,
+            217,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "9ad4343addb1ff321aa188536cc0513ffcdd86a6f84618cccab70fc62d4c0692",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-right-trails",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46683,
+          "alpha16Bounds": [
+            116,
+            539,
+            251,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 106,
+          "pixelDigest": "6df26e5733673a4082581e95e673cd54dbd81a1fdccbd1e25994de035084d8a9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42262,
+          "alpha16Bounds": [
+            477,
+            539,
+            229,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 75,
+          "pixelDigest": "f18f342484e6170e21cbfa3b5b5f4e9478fcf481fe7dc1b9c2c3e2592932cb2a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right-leads",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42957,
+          "alpha16Bounds": [
+            820,
+            541,
+            241,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 147,
+          "pixelDigest": "af1d06562b463f6265a1392faa8418d640a1b42f213550525c27279c1f773a72",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42931,
+          "alpha16Bounds": [
+            1212,
+            539,
+            231,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 108,
+          "pixelDigest": "7f89161f999ce1f012b1f5f959df4976639ff6036dd369214c9902d34a26eb9c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            91,
+            59,
+            265,
+            411
+          ],
+          "pivot": [
+            142,
+            407
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            1199,
+            62,
+            223,
+            408
+          ],
+          "pivot": [
+            131,
+            404
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            835,
+            60,
+            237,
+            410
+          ],
+          "pivot": [
+            140,
+            406
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            476,
+            59,
+            223,
+            408
+          ],
+          "pivot": [
+            125,
+            404
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            113,
+            536,
+            257,
+            415
+          ],
+          "pivot": [
+            97,
+            411
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            1209,
+            536,
+            237,
+            415
+          ],
+          "pivot": [
+            106,
+            411
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            817,
+            538,
+            247,
+            411
+          ],
+          "pivot": [
+            133,
+            407
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "feral-hunter-repair-walk-backward-contacts",
+          "rect": [
+            474,
+            536,
+            235,
+            410
+          ],
+          "pivot": [
+            101,
+            406
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                91,
+                59,
+                265,
+                411
+              ],
+              "pivot": [
+                142,
+                407
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                1199,
+                62,
+                223,
+                408
+              ],
+              "pivot": [
+                131,
+                404
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                835,
+                60,
+                237,
+                410
+              ],
+              "pivot": [
+                140,
+                406
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                476,
+                59,
+                223,
+                408
+              ],
+              "pivot": [
+                125,
+                404
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                113,
+                536,
+                257,
+                415
+              ],
+              "pivot": [
+                97,
+                411
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                1209,
+                536,
+                237,
+                415
+              ],
+              "pivot": [
+                106,
+                411
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                817,
+                538,
+                247,
+                411
+              ],
+              "pivot": [
+                133,
+                407
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-backward-contacts",
+              "rect": [
+                474,
+                536,
+                235,
+                410
+              ],
+              "pivot": [
+                101,
+                406
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-forward-cycle",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "originId": "exec-c366f8cb-639a-4730-a986-cd2ce5bfc037.png",
+      "sha256": "71374a2cff78917a4944e21e0fe5df6e35a0c1821af69fac41e755b94e53e5e1",
+      "bytes": 2064810,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Alternating contacts/support legs verified; guarded arm swing is slight. Pelvis-projected pivots are manually reviewed."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1192674,
+        "fringePixels": 22441
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50041,
+          "alpha16Bounds": [
+            90,
+            57,
+            276,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "971ac962fcb70b83aa565d3d862f317501b1899d52072290e85d07610235bfe6",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45364,
+          "alpha16Bounds": [
+            474,
+            57,
+            249,
+            409
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 88,
+          "pixelDigest": "d42b7a6c5e9d514d96c31fde8d4b8b9998926571f564d331eccd8a57811f7a51",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48411,
+          "alpha16Bounds": [
+            820,
+            57,
+            255,
+            412
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 125,
+          "pixelDigest": "7d83ddf0f444fa66959cb1f425d65cfd39d8894aee4aed539dd512926369953c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45464,
+          "alpha16Bounds": [
+            1205,
+            57,
+            243,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "4c1eba5954665b03ed6a35f12483a15e87bbc363ae3bce757782acbc1b95ad07",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "contact-left",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50007,
+          "alpha16Bounds": [
+            93,
+            537,
+            276,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "7b49ce63af3afa64e9fa7f9a61de0ea124042cee5fc36062689bc90b605cb0b1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "pass-left-support",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45932,
+          "alpha16Bounds": [
+            465,
+            538,
+            253,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 70,
+          "pixelDigest": "a53b72844dfc35346404b31c6e7160d4f524b1be647d3e523fc044840a199e9a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "contact-right",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48307,
+          "alpha16Bounds": [
+            814,
+            537,
+            255,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 133,
+          "pixelDigest": "4043ae0339f9923921307826f7f45e67956d098ca77ad94dc2715bb90b544796",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "pass-right-support",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46664,
+          "alpha16Bounds": [
+            1194,
+            537,
+            254,
+            411
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 70,
+          "pixelDigest": "40c57b749f29368bc8deb18afdb0b914eda8b5bf58d952858aebe1c1bb7d9063",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk",
+          "index": 0,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            87,
+            54,
+            282,
+            418
+          ],
+          "pivot": [
+            153,
+            414
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk",
+          "index": 1,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            471,
+            54,
+            255,
+            415
+          ],
+          "pivot": [
+            139,
+            411
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk",
+          "index": 2,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            817,
+            54,
+            261,
+            418
+          ],
+          "pivot": [
+            150,
+            414
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk",
+          "index": 3,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            1202,
+            54,
+            249,
+            417
+          ],
+          "pivot": [
+            136,
+            413
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk",
+          "index": 0,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            90,
+            534,
+            282,
+            417
+          ],
+          "pivot": [
+            126,
+            413
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk",
+          "index": 1,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            462,
+            535,
+            259,
+            412
+          ],
+          "pivot": [
+            122,
+            408
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk",
+          "index": 2,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            811,
+            534,
+            261,
+            416
+          ],
+          "pivot": [
+            142,
+            412
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk",
+          "index": 3,
+          "pageId": "feral-hunter-repair-walk-forward-cycle",
+          "rect": [
+            1191,
+            534,
+            260,
+            417
+          ],
+          "pivot": [
+            125,
+            413
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                87,
+                54,
+                282,
+                418
+              ],
+              "pivot": [
+                153,
+                414
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                471,
+                54,
+                255,
+                415
+              ],
+              "pivot": [
+                139,
+                411
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                817,
+                54,
+                261,
+                418
+              ],
+              "pivot": [
+                150,
+                414
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                1202,
+                54,
+                249,
+                417
+              ],
+              "pivot": [
+                136,
+                413
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                90,
+                534,
+                282,
+                417
+              ],
+              "pivot": [
+                126,
+                413
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                462,
+                535,
+                259,
+                412
+              ],
+              "pivot": [
+                122,
+                408
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                811,
+                534,
+                261,
+                416
+              ],
+              "pivot": [
+                142,
+                412
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-hunter-repair-walk-forward-cycle",
+              "rect": [
+                1191,
+                534,
+                260,
+                417
+              ],
+              "pivot": [
+                125,
+                413
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-medium-spacing",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "publicPath": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "originId": "exec-e3d0d47a-a1d1-4ce3-abf3-6a01db579095.png",
+      "sha256": "85d86cd6297f251ae21bf2c2862ff796b8c59edac87aaddbd6ccd402970d0a23",
+      "bytes": 1749435,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V28 project shield-guard presentation; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Left source row is neutral/startup/active/recovery; explicit runtime order [1,2,3,0] restores startup/active/recovery/neutral."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1354443,
+        "fringePixels": 15716
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 26924,
+          "alpha16Bounds": [
+            79,
+            142,
+            211,
+            287
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 105,
+          "pixelDigest": "6433060bacb0f0b539271ae196e43a70f4673748d304450816459afd18924936",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 26549,
+          "alpha16Bounds": [
+            426,
+            147,
+            305,
+            282
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 86,
+          "pixelDigest": "3eb5b4052f478effed6ee26b692284ad5ae1349f5da419af358dc6d26ff4a445",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 26982,
+          "alpha16Bounds": [
+            831,
+            144,
+            222,
+            285
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "e9559897965611f202ab8ff82e314d50f1a5ed2cd3c731856ef213db87819898",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 27353,
+          "alpha16Bounds": [
+            1228,
+            140,
+            196,
+            289
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 79,
+          "pixelDigest": "0bfe7d4aff9ee519d24e9cc5ff16425d902fbd1284709d096ff4d24f60214231",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 28412,
+          "alpha16Bounds": [
+            96,
+            602,
+            210,
+            291
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 95,
+          "pixelDigest": "b6ab0f75c76c0550e4f0cf54a6a7c0e2917318cab2430698fc9b88d55d50b63a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "active",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 27743,
+          "alpha16Bounds": [
+            465,
+            603,
+            228,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "adf15e7a7fc51ebae7d7b032e595fed772ceb7ae3d20d71cd0bae81a539334db",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 27203,
+          "alpha16Bounds": [
+            792,
+            605,
+            311,
+            288
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 78,
+          "pixelDigest": "18a81d8464576273964109a5a96d2632fc64de5419a8da80104e2ad67af77bf2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 27255,
+          "alpha16Bounds": [
+            1242,
+            603,
+            216,
+            290
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 131,
+          "pixelDigest": "5b757ceae63a778eef70efd539769ea70a3dfb435a1a4f2341ca6b91e197d31d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            76,
+            139,
+            217,
+            293
+          ],
+          "pivot": [
+            100,
+            289
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            423,
+            144,
+            311,
+            288
+          ],
+          "pivot": [
+            109,
+            284
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            828,
+            141,
+            228,
+            291
+          ],
+          "pivot": [
+            103.5,
+            287
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            1225,
+            137,
+            202,
+            295
+          ],
+          "pivot": [
+            94.5,
+            291
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            462,
+            600,
+            234,
+            296
+          ],
+          "pivot": [
+            125.5,
+            292
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            789,
+            602,
+            317,
+            294
+          ],
+          "pivot": [
+            203.5,
+            290
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            1239,
+            600,
+            222,
+            296
+          ],
+          "pivot": [
+            117,
+            292
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "feral-hunter-repair-medium-spacing",
+          "rect": [
+            93,
+            599,
+            216,
+            297
+          ],
+          "pivot": [
+            115,
+            293
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                76,
+                139,
+                217,
+                293
+              ],
+              "pivot": [
+                100,
+                289
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                423,
+                144,
+                311,
+                288
+              ],
+              "pivot": [
+                109,
+                284
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                828,
+                141,
+                228,
+                291
+              ],
+              "pivot": [
+                103.5,
+                287
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                1225,
+                137,
+                202,
+                295
+              ],
+              "pivot": [
+                94.5,
+                291
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                462,
+                600,
+                234,
+                296
+              ],
+              "pivot": [
+                125.5,
+                292
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                789,
+                602,
+                317,
+                294
+              ],
+              "pivot": [
+                203.5,
+                290
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                1239,
+                600,
+                222,
+                296
+              ],
+              "pivot": [
+                117,
+                292
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "feral-hunter-repair-medium-spacing",
+              "rect": [
+                93,
+                599,
+                216,
+                297
+              ],
+              "pivot": [
+                115,
+                293
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.medium.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T21:15:06.421Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    }
+  ],
+  "acceptedDefinitionPath": "art-source/v34/pit/feral-hunter/feral-hunter-runtime-atlas-v34.json",
+  "nativeContrastReview": {
+    "captures": 140,
+    "bodyPixels": "real game scale, no Canvas scaling",
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 19,
+    "keyComparison": [
+      {
+        "pageId": "feral-hunter-idle",
+        "removedPixels": 2586,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-repair-walk-forward-cycle",
+        "removedPixels": 2544,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-repair-walk-backward-contacts",
+        "removedPixels": 2222,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-crouch",
+        "removedPixels": 2594,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-guard",
+        "removedPixels": 2649,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-hurt",
+        "removedPixels": 2545,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-light",
+        "removedPixels": 2336,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-repair-medium-spacing",
+        "removedPixels": 1694,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "feral-hunter-heavy",
+        "removedPixels": 2749,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ],
+    "method": "Real loadPitSpriteSheetAnimations and drawPitSpriteSheetAnimation in Chrome"
+  },
+  "livePitCanvasReview": {
+    "passed": true,
+    "checkedAt": "2026-09-12T21:16:17.300Z",
+    "checks": [
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 0,
+        "facing": "right",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk",
+        "slot": 0,
+        "facing": "right",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "light",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.light.startup",
+          "pit.stand.light.active",
+          "pit.stand.light.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "medium",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.medium.startup",
+          "pit.stand.medium.active",
+          "pit.stand.medium.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "attack-keyboard",
+        "action": "heavy",
+        "slot": 1,
+        "facing": "left",
+        "phases": [
+          "pit.stand.heavy.startup",
+          "pit.stand.heavy.active",
+          "pit.stand.heavy.recovery"
+        ],
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "crouch",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 3
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "high-guard",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk-backward",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      },
+      {
+        "kind": "state-keyboard",
+        "action": "walk",
+        "slot": 1,
+        "facing": "left",
+        "uniqueDrawings": 4
+      }
+    ],
+    "errors": [],
+    "failedRequests": []
+  }
+}

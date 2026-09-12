@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "porte-barricade-enforcer",
+  "name": "Porte-barricade Enforcer",
+  "lore": "Proposition originale du jeu à partir de la hiérarchie de poursuite du brief. Aucun détail de silhouette canonique revendiqué.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Porte-barricade Enforcer — châssis, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/porte-barricade-enforcer/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/porte-barricade-enforcer/identity-r1.png",
+      "originId": "exec-6426e57f-b7cc-4e6e-a20d-3bc1b284556a.png",
+      "width": 1983,
+      "height": 793,
+      "sha256": "c634b2cf4912e2990430178ce5be1e2256819ed82e1494672179004c3eda2f17",
+      "bytes": 1309187,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572519
+      },
+      "prompt": "Original production vehicle concept for the 2D Yautja fan-game La Longue Chasse. No claim this is an existing canonical film vehicle. Exactly TWO entire side-profile views SIDE BY SIDE; left craft pointing RIGHT and right craft LEFT. SAME construction, separate opposite-side details, identical scale. All parts inside each half with wide blank margins. Pure solid MAGENTA #FF00FF background, sharp painted game bitmap, no floor shadow, text, grid, scenery, rider, prisoners, body, trophy or effect. Dark bronze-black alien metal, restrained pale cyan operational lamps, severe maintained Enforcer industrial design. Base chassis and integrated fixed equipment only: leave removable armaments/cargo separate. An armored mobile roadblock carrier on four independent short antigravity nacelles. Flat elongated heavy utility chassis, small offset protected front operator pod, central EMPTY transverse barricade cradle, two rear telescoping deployment crane arms STOWED, visible hinged stabilizer feet folded under side edges, separate empty sockets for a vehicle net. Keep silhouette side-view readable. No actual barricade panel or net loaded, no energy shield, no weapons. It is a compact specialist utility machine, not a battle tank.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            1288,
+            1312
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Conception graphique proposée ; les dimensions, statistiques et capacités non précisées par la source restent indéfinies.",
+        "Châssis statique en revue, pas une animation ni un véhicule jouable."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            991,
+            793
+          ],
+          "alpha16Bounds": [
+            35,
+            228,
+            923,
+            286
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 149680,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            991,
+            0,
+            992,
+            793
+          ],
+          "alpha16Bounds": [
+            1027,
+            228,
+            921,
+            286
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 149906,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

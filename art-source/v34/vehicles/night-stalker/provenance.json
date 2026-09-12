@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "night-stalker",
+  "name": "Night Stalker",
+  "lore": "Création originale du jeu, selon le brief partiel ; pas une espèce canonique revendiquée.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Night Stalker — corps, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/night-stalker/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/night-stalker/identity-r1.png",
+      "originId": "exec-807a9ac5-12be-48f1-add5-86924fbf04a3.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f261648cb5e7dd4170c435dcac7d32184f28bac7718c16c40a430b515da225c7",
+      "bytes": 1646265,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Create an ORIGINAL alien mount concept for the Yautja fan-game La Longue Chasse. This is a game design, not a canonical franchise creature. Two complete side profiles SIDE BY SIDE, left animal facing RIGHT, right animal facing LEFT. Identical species/body proportions, independent opposite-side details, same scale, pure flat MAGENTA #FF00FF background and wide blank margins. No ground, shadow, scenery, text, labels, panel dividers or rider. Paint a sharp game bitmap with clear anatomy and visible joints. No saddle, harness, cargo, chains or removable armor baked onto the animal; these are separate later modules. Lean nocturnal quadruped alien animal with exactly FOUR long silent padded claw feet, velvet dark charcoal and deep blue skin covered with tiny irregular muted grey-green chromatophore patches, narrow reflective amber eyes and low ridged reptilian ears. Long muscular tail, smooth flexible neck, wide gripping paws and slim horizontal feline-reptile frame. Camouflage is only surface mottling, NOT invisibility or glowing sci-fi hologram. Four full legs clearly apart, no tendrils or extra mouth limbs. No magic aura.",
+      "references": [
+        {
+          "source": "work/v33-sources/vehicles-conversation.md",
+          "lines": [
+            659,
+            675
+          ],
+          "role": "Recovered brief"
+        }
+      ],
+      "notes": [
+        "Identité en revue ; nombre de membres, appuis et détails à contrôler. Selle, cavalier et effets indépendants à produire."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            10,
+            269,
+            738,
+            444
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 123760,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            768,
+            0,
+            768,
+            1024
+          ],
+          "alpha16Bounds": [
+            788,
+            269,
+            738,
+            445
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 123686,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

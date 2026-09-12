@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicleId": "razorwing",
+  "name": "Razorwing",
+  "lore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Original flying alien mount PROPOSAL with exactly TWO hind legs and TWO bat-like wing forelimbs, leathery ribbed dark olive membranes tightly folded against body in neutral perched identity pose, long narrow toothy reptilian head, hooked talons, thin tail with small stabilizing natural fin. No feathers or extra walking forelegs. Four appendages total, clear folded wing anatomy, no perch rock or platform.",
+  "assets": [
+    {
+      "id": "identity-r1",
+      "actionId": "identity",
+      "label": "Razorwing — identité, deux orientations",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/razorwing/identity-r1.png",
+      "publicPath": "/game/vehicles/v34/razorwing/identity-r1.png",
+      "originId": "exec-9508386d-d7d2-4afe-b6ee-6daaed886983.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "d70522488fc5d9b051aece7881c2bafe11ed454e4e6c03947457f160db993695",
+      "bytes": 1488606,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1573538
+      },
+      "prompt": "Generate an ORIGINAL new design proposal for the 2D Yautja fan-game La Longue Chasse, based on a requested name with only partial or no precise visual specification. This is NOT a canonical film replica. Exactly TWO complete SIDE profiles SIDE BY SIDE: left view facing RIGHT, right view facing LEFT, independently draw the same construction/anatomy in opposite orientations and identical scale. Entire silhouettes must fit in the central 80 percent of each half with generous blank outer and central margins. Pure uniform MAGENTA #FF00FF background. Detailed hand-painted bitmap, no ground shadow, scenery, text, watermarks, diagram labels or grid. No human, Yautja rider, passengers, cargo, trophies, UI or effects. Bare animal layer: no saddle, tack or armor. Original flying alien mount PROPOSAL with exactly TWO hind legs and TWO bat-like wing forelimbs, leathery ribbed dark olive membranes tightly folded against body in neutral perched identity pose, long narrow toothy reptilian head, hooked talons, thin tail with small stabilizing natural fin. No feathers or extra walking forelegs. Four appendages total, clear folded wing anatomy, no perch rock or platform.\nProduction correction: use a strict flat orthographic side-view camera with zero three-quarter perspective. Exactly two independently authored opposing side profiles in one horizontal row. Preserve a wide empty magenta gutter and at least 10 percent blank margin around each complete silhouette. Every requested removable module must stay absent, closed, folded, stowed, or represented only by an empty hardpoint exactly as specified.",
+      "references": [
+        {
+          "source": "work/v34/original-vehicle-generation-queue.json",
+          "queueIndex": 13,
+          "recoveredLine": 1153,
+          "role": "Recovered user request normalized as an explicit original design proposal"
+        }
+      ],
+      "notes": [
+        "OpenAI ImageGen original identity proposal; no canonical appearance is asserted.",
+        "Visually inspected at source resolution: each strict profile has two complete hind legs and two folded bat-like wing forelimbs, with no extra walking forelegs, perch, feathers, saddle or rider; paired folded wing structures remain densely overlapped and require rig review before animation slicing.",
+        "Static bare-animal review sheet only; no gameplay, rig or animation acceptance implied. Runtime transparency is applied by the production review renderer."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "identity",
+          "reviewGridRect": [
+            0,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            23,
+            81,
+            802,
+            734
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 139519,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "identity",
+          "reviewGridRect": [
+            887,
+            0,
+            887,
+            887
+          ],
+          "alpha16Bounds": [
+            949,
+            81,
+            802,
+            733
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 139489,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    }
+  ],
+  "generatedSources": 1,
+  "acceptedRuntimeClips": 0
+}

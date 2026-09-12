@@ -162,7 +162,7 @@ try {
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
-  await page.getByText(/12 combattants · 8 arènes jouables · catalogue de production : 100 stages/).waitFor();
+  await page.getByText(/12 combattants sélectionnables · 8 arènes jouables · catalogue de production : 100 stages/).waitFor();
   await page.getByRole("radio", { name: /Entraînement/ }).click();
   await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
@@ -172,11 +172,11 @@ try {
   const pitCameraZoom = Number(await pitCanvas.getAttribute("data-pit-camera-zoom"));
   assert.ok(Number.isFinite(pitCameraZoom) && pitCameraZoom >= 1);
   await page.locator('[data-pit-bitmap-slot="0"][data-pit-bitmap-id="jungle-hunter"][data-pit-bitmap-status="sprite-sheet-animation"]').waitFor();
-  await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="static-bitmap"]').waitFor();
+  await page.locator('[data-pit-bitmap-slot="1"][data-pit-bitmap-id="berserker"][data-pit-bitmap-status="sprite-sheet-animation"]').waitFor();
   await pitCanvas.locator('xpath=self::*[@data-pit-arena-planes="P0,P1,P2,P3,P4,P5"]').waitFor();
   assert.equal(await pitCanvas.getAttribute("data-pit-arena-missing-assets"), "0");
   await captureWindow(instance, "pit-combat-pc.png");
-  checks.push("Hub to THE PIT loads locally with an authored Jungle Hunter animation and the existing Berserker bitmap.");
+  checks.push("Hub to THE PIT loads locally with authored Jungle Hunter and Berserker animations.");
 
   await page.goto("yautja://game/");
   await page.getByRole("button", { name: "Jouer", exact: true }).click();

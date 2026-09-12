@@ -7,8 +7,11 @@ import { chromium } from "playwright-core";
 
 const root = process.cwd();
 const arenaId = process.argv[2] ?? "the-pit";
-assert(["the-pit", "trophy-hall"].includes(arenaId), "Only completed arena kits may be previewed by this harness");
-const output = path.resolve("work/v33/arena-browser-qa", arenaId === "the-pit" ? "." : arenaId);
+const knownPlayableIds=["the-pit", "trophy-hall", "canopy-causeway", "frost-chamber", "ash-courtyard", "glass-terrace", "abyssal-bridge", "ruins-tribunal"];
+const conceptPreview=/^arena-0(?:09|10|11|12)-[a-z0-9-]+$/.test(arenaId);
+assert(knownPlayableIds.includes(arenaId)||conceptPreview,"Only specified production kits may be previewed");
+const v34 = !["the-pit", "trophy-hall"].includes(arenaId);
+const output = path.resolve(v34 ? "work/v34/arena-browser-qa" : "work/v33/arena-browser-qa", arenaId === "the-pit" ? "." : arenaId);
 await fs.mkdir(output, { recursive: true });
 const compiled = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export * from "./app/game/pitArenaRendering"; export * from "./app/game/pitCombatBitmapArt"; export { createPitCombatState, serializePitCombat, PIT_ARENAS } from "./app/game/systems/pitCombat";', loader: "ts", resolveDir: root }, write: false, bundle: true, format: "iife", globalName: "arenaApi", platform: "browser", logLevel: "silent" });
 const html = '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recette renderer THE PIT V33</title><style>body{margin:0;background:#07090c;color:#eee;font:14px system-ui}h1{font:16px system-ui;margin:6px}canvas{display:block;max-width:100%;height:auto}</style></head><body><h1>THE PIT · kit indépendant V33 · harnais de recette du renderer</h1><canvas width="960" height="540"></canvas><script src="/bundle.js"></script></body></html>';
@@ -38,9 +41,15 @@ try {
   await page.goto(url, { waitUntil: "networkidle" });
   assert.equal(await page.title(), "Recette renderer THE PIT V33");
   assert.equal(await page.locator("canvas").count(), 1);
-  const loaded = await page.evaluate(async (arenaId) => {
+  const loaded = await page.evaluate(async ({ requestedId, conceptPreview }) => {
+    const arenaId=conceptPreview?"the-pit":requestedId;
     const manifest = structuredClone(arenaApi.PIT_ARENA_PRODUCTION_MANIFEST);
-    manifest.stages.find(stage => stage.legacyRuntimeArenaId === arenaId).runtimeEnabled = true; // Preview the reviewed kit without publishing its enable flag.
+    if(conceptPreview){
+      const target=manifest.stages.find(stage=>stage.catalogueId===requestedId);
+      if(!target||target.legacyRuntimeStatus!=="concept"||target.legacyRuntimeArenaId!==null||target.runtimeEnabled)throw new Error("Invalid concept preview boundary");
+      // Local test-only geometry proxy. The source manifest and game remain unchanged.
+      manifest.stages=[{...target,legacyRuntimeArenaId:arenaId,legacyRuntimeStatus:"playable",runtimeEnabled:true}];
+    }else manifest.stages.find(stage => stage.legacyRuntimeArenaId === arenaId).runtimeEnabled = true;
     window.arenaBank = await arenaApi.loadPitArenaArt(arenaId, { productionManifest: manifest });
     window.fighterBank = await arenaApi.loadPitCombatBitmapArt(["jungle-hunter", "city-hunter"]);
     window.renderScenario = ({ centerX = 480, centerY = 270, zoom = 1, positions = [330, 630], reducedMotion = false, highContrast = false, frame = 0 } = {}) => {
@@ -62,7 +71,7 @@ try {
       return { planes: [...back.drawnPlanes, ...front.drawnPlanes], missing: [...back.missingPaths, ...front.missingPaths], fighters, unchangedState: snapshot === arenaApi.serializePitCombat(state), unchangedCamera: beforeCamera === JSON.stringify(camera) };
     };
     return { independentKit: Boolean(window.arenaBank.productionKit), images: window.arenaBank.images.size, expectedImages: window.arenaBank.productionKit?.paths.length, failed: [...window.arenaBank.failedPaths], fighterFailures: [...window.fighterBank.failedIds] };
-  }, arenaId);
+  }, {requestedId:arenaId,conceptPreview});
   assert.equal(loaded.independentKit, true);
   assert.equal(loaded.images, loaded.expectedImages);
   assert(loaded.images >= 14);
@@ -93,8 +102,8 @@ try {
   await page.screenshot({ path: path.join(output, "mobile.png"), fullPage: true });
   assert.deepEqual(errors, []);
   assert.deepEqual(failedRequests, []);
-  const report = { result: "PASS", arenaId, checkedAt: new Date().toISOString(), surface: "isolated-renderer-with-real-game-fighters-and-images", applicationFlowVerified: false, loaded, scenarios, mobileNoOverflow: noOverflow, errors, failedRequests, evidenceDirectory: path.relative(root, output).replaceAll("\\", "/"), limit: "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here." };
-  await fs.writeFile(arenaId === "the-pit" ? "docs/v33-arena-renderer-qa.json" : "docs/v33-trophy-hall-renderer-qa.json", JSON.stringify(report, null, 2) + "\n");
+  const report = { result: "PASS", arenaId, conceptPreview, playablePromotion:false, checkedAt: new Date().toISOString(), surface: "isolated-renderer-with-real-game-fighters-and-images", applicationFlowVerified: false, loaded, scenarios, mobileNoOverflow: noOverflow, errors, failedRequests, evidenceDirectory: path.relative(root, output).replaceAll("\\", "/"), limit: "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here." };
+  await fs.writeFile(v34 ? `docs/v34-${arenaId}-renderer-qa.json` : arenaId === "the-pit" ? "docs/v33-arena-renderer-qa.json" : "docs/v33-trophy-hall-renderer-qa.json", JSON.stringify(report, null, 2) + "\n");
   console.log(JSON.stringify(report));
 } catch (error) {
   if (page) await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true });
