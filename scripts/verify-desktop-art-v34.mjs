@@ -33,6 +33,16 @@ async function newWindowAfter(action) {
   return page;
 }
 
+async function activateInterceptedLink(page, name) {
+  const activated = await page.evaluate(label => {
+    const link = [...document.querySelectorAll('a')].find(candidate => candidate.textContent?.includes(label));
+    if (!link) return false;
+    link.click();
+    return true;
+  }, name);
+  assert(activated, 'Lien inter-route introuvable : ' + name);
+}
+
 try {
   const main = await app.firstWindow();
   watch(main);
@@ -42,9 +52,9 @@ try {
 
   await main.getByRole('button', { name: 'Jouer', exact: true }).click();
   await main.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
-  const lab = await newWindowAfter(() => main.getByRole('link', { name: /Atelier d’animation/ }).click());
+  const lab = await newWindowAfter(() => main.getByRole('link', { name: /Atelier d’animation/ }).click({ noWaitAfter: true }));
   await lab.waitForURL('yautja://game/pit-lab');
-  const gallery = await newWindowAfter(() => lab.getByRole('link', { name: /Atelier OpenAI V34/ }).click());
+  const gallery = await newWindowAfter(() => lab.getByRole('link', { name: /Atelier OpenAI V34/ }).click({ noWaitAfter: true }));
   await gallery.waitForURL('yautja://game/game/assets/v34/production-review/index.html');
   await gallery.waitForFunction(() => document.querySelector('#canvas')?.dataset.loaded === 'true');
 
@@ -74,7 +84,7 @@ try {
   assert.equal(createHash('sha256').update(await fs.readFile(exportPath)).digest('hex'), expected.sha256);
 
   const windowCountBeforeAssembly = app.windows().length;
-  const assembly = await newWindowAfter(() => gallery.getByRole('link', { name: 'Assemblage des véhicules', exact: true }).click());
+  const assembly = await newWindowAfter(() => gallery.getByRole('link', { name: 'Assemblage des véhicules', exact: true }).click({ noWaitAfter: true }));
   await assembly.waitForURL('yautja://game/game/assets/v34/vehicle-assembly-review/index.html');
   await assembly.waitForFunction(() => document.body.dataset.ready === 'true');
   assert.equal(app.windows().length, windowCountBeforeAssembly + 1);
@@ -91,22 +101,22 @@ try {
   assert.equal(frames.size, 4);
 
   const routedWindowCount = app.windows().length;
-  await assembly.getByRole('link', { name: 'Atelier V34', exact: true }).click();
+  await assembly.getByRole('link', { name: 'Atelier V34', exact: true }).click({ noWaitAfter: true });
   await gallery.waitForURL('yautja://game/game/assets/v34/production-review/index.html');
   await gallery.waitForFunction(() => document.querySelector('#canvas')?.dataset.loaded === 'true');
   assert.equal(assembly.url(), 'yautja://game/game/assets/v34/vehicle-assembly-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);
 
-  await lab.getByRole('link', { name: /Atelier OpenAI V34/ }).click();
+  await lab.getByRole('link', { name: /Atelier OpenAI V34/ }).click({ noWaitAfter: true });
   await gallery.waitForURL('yautja://game/game/assets/v34/production-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);
 
-  await gallery.getByRole('link', { name: /Laboratoire THE PIT/ }).click();
+  await activateInterceptedLink(gallery, 'Laboratoire THE PIT');
   await lab.waitForURL('yautja://game/pit-lab');
   assert.equal(gallery.url(), 'yautja://game/game/assets/v34/production-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);
 
-  await assembly.getByRole('link', { name: 'Retour au jeu', exact: true }).click();
+  await activateInterceptedLink(assembly, 'Retour au jeu');
   await main.waitForURL('yautja://game/');
   assert.equal(assembly.url(), 'yautja://game/game/assets/v34/vehicle-assembly-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);

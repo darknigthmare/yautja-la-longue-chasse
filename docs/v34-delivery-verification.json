@@ -1,0 +1,269 @@
+{
+  "contentVersion": "V34",
+  "recordedAt": "2026-09-12T23:24:44.534Z",
+  "deployment": {
+    "id": "dpl_7p5X59U5TQgHRhtfqqMCagF4rbx6",
+    "url": "yautja-la-longue-chasse-cec7nx4cc-darknigthmares-projects.vercel.app",
+    "state": "READY",
+    "commit": "abf24c204dc0249cee26498dbd50e41ea9a98db1",
+    "target": "production",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ]
+  },
+  "http": [
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "status": 200,
+      "bytes": 47848
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+      "status": 200,
+      "bytes": 5519
+    },
+    {
+      "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/vehicle-assembly-review/index.html",
+      "status": 200,
+      "bytes": 5572
+    }
+  ],
+  "automatedTests": {
+    "passed": 1150,
+    "failed": 0
+  },
+  "browserReview": {
+    "passed": true,
+    "checkedAt": "2026-09-12T23:23:29.310Z",
+    "url": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+    "loadedAndShaVerified": 381,
+    "vehicleReviewDistinctFrames": 8,
+    "propulsionReviewDistinctFrames": 8,
+    "newVehicleChecks": [
+      {
+        "id": "v34-blade-fighter-k-93-blades-r2",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-blade-fighter-k-93-cannons-r2",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-blade-fighter-k-93-muzzle-fx-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-grav-sled-eclaireur-antigrav-activation-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-grav-sled-eclaireur-drive-tilt-r1",
+        "distinctReviewFrames": 7,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-hunter-speeder-antigrav-activation-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-hunter-speeder-drive-tilt-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-kha-rha-run-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-kha-rha-jump-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-kha-rha-bite-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-kha-rha-bite-right-r2",
+        "distinctReviewFrames": 4,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-kha-rha-bite-left-r2",
+        "distinctReviewFrames": 4,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-shared-vehicle-fx-antigrav-pulse-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-shared-vehicle-fx-dust-trail-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-shared-vehicle-fx-water-wake-r1",
+        "distinctReviewFrames": 8,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      },
+      {
+        "id": "v34-sphere-dejection-atmospherique-controller-arch-states-r1",
+        "distinctReviewFrames": 4,
+        "pivotFramingInsideCanvas": true,
+        "acceptedRuntimeClip": false
+      }
+    ],
+    "searchAndStatusFilters": true,
+    "emptySearchClearsStaleState": true,
+    "mobileNoOverflow": true,
+    "missingAssetClearsStaleState": true,
+    "missingAssetRecovers": true,
+    "errors": []
+  },
+  "browserCombat": {
+    "passed": true,
+    "checkedAt": "2026-09-12T23:20:32.857Z",
+    "surface": "full-application-play-pit-training",
+    "verifiedContentVersion": "V34",
+    "fighters": [
+      "wolf",
+      "celtic"
+    ],
+    "fighterArtStates": [
+      {
+        "slot": 0,
+        "fighterId": "wolf",
+        "facing": "right",
+        "idleStatus": "sprite-sheet-animation"
+      },
+      {
+        "slot": 1,
+        "fighterId": "celtic",
+        "facing": "left",
+        "idleStatus": "static-bitmap"
+      }
+    ],
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "checks": [
+      {
+        "name": "live-match",
+        "arena": "ruins-tribunal",
+        "planes": "P0,P1,P2,P3,P4,P5",
+        "source": "openai-v33-independent",
+        "loadedImages": 14,
+        "subplans": 14,
+        "missing": 0
+      }
+    ],
+    "loadedImageFiles": [
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p0-a-depth.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-a-distant-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-b-distant-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-c-central-structure.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-a-prop-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-b-prop-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-c-light-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-d-light-right.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-a-foreground-left.png",
+      "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-b-foreground-right.png"
+    ],
+    "mobileNoOverflow": true,
+    "errors": [],
+    "failedRequests": []
+  },
+  "desktop": {
+    "passed": true,
+    "desktopVersion": "1.0.34",
+    "contentVersion": "V34",
+    "checks": [
+      "Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.",
+      "Real setting persisted; campaign exported through the native download path.",
+      "Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.",
+      "Hub to THE PIT loads locally with authored Jungle Hunter and Berserker animations.",
+      "Local galaxy route to Oseris, mission briefing, deployment and suspended hunt saved.",
+      "Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart."
+    ],
+    "errors": [],
+    "failedLocalRequests": [],
+    "testedAt": "2026-09-12T23:14:25.835Z",
+    "limit": "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified."
+  },
+  "desktopWorkshops": {
+    "passed": true,
+    "version": "1.0.34",
+    "checkedAt": "2026-09-12T23:22:07.600Z",
+    "actualNavigation": {
+      "main": "yautja://game/",
+      "lab": "yautja://game/pit-lab",
+      "productionReview": "yautja://game/game/assets/v34/production-review/index.html",
+      "vehicleAssemblyReview": "yautja://game/game/assets/v34/vehicle-assembly-review/index.html",
+      "windowCount": 4
+    },
+    "sourceImageExportShaVerified": true,
+    "packagedManifestVerified": true,
+    "distinctAssemblyPoses": 4,
+    "routeWindowsWithoutDuplicates": true,
+    "networkBlocked": true,
+    "errors": [],
+    "failed": [],
+    "httpErrors": [],
+    "limit": "Hidden QA profile; four button-stepped poses, not a visible-window framerate or hardware certification."
+  },
+  "desktopArchive": {
+    "passed": true,
+    "releaseTag": "v34",
+    "sourceCommit": "abf24c204dc0249cee26498dbd50e41ea9a98db1",
+    "sourceDigest": "ee70feebb7fc6ad504af0d3e2ca370c36ff811a13e2d0a2a6d4fcfaca534e313",
+    "version": "1.0.34",
+    "asarEntries": 2613,
+    "asarTopLevel": [
+      "/main.mjs",
+      "/package.json",
+      "/protocol.mjs",
+      "/release.mjs",
+      "/renderer"
+    ],
+    "audioManifestIncluded": true,
+    "manifestHashesVerified": true,
+    "zip": "tmp/desktop-release/v34/Yautja-La-Longue-Chasse-PC-V34.zip",
+    "zipBytes": 1140156036,
+    "zipSha256": "d8f75a5c74810a8f474b5548ef6052db8e463efa4febd8b4a9adda8140970206",
+    "zipEntries": 74,
+    "testedAt": "2026-09-12T23:16:49.843Z"
+  },
+  "scopeLimits": [
+    "Production artistique incomplète :12kits revus,8arènes jouables,143clips chasseurs validés et aucun véhicule conduisible dans cet instantané.",
+    "Session PC cachée avec horloge de test ; performances matérielles, manette physique et campagne complète non certifiées.",
+    "Paquet Windows non signé ; projet de fan non commercial."
+  ]
+}
