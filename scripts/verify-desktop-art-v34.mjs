@@ -264,7 +264,7 @@ try {
   assert.equal(assembly.url(), 'yautja://game/game/assets/v34/vehicle-assembly-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);
 
-  await lab.getByRole('link', { name: /Atelier OpenAI V34/ }).click({ noWaitAfter: true });
+  await activateInterceptedLink(lab, 'Atelier OpenAI V34');
   await gallery.waitForURL('yautja://game/game/assets/v34/production-review/index.html');
   assert.equal(app.windows().length, routedWindowCount);
 

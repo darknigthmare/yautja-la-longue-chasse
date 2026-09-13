@@ -48,6 +48,23 @@ async function captureWindow(instance, fileName) {
   const bytes = Buffer.from(pngBase64, "base64");
   assert.ok(bytes.length > 1_000, `Desktop capture ${fileName} is unexpectedly empty.`);
   await fs.writeFile(path.join(evidence, fileName), bytes);
+  if (fileName.startsWith("pit-")) {
+    // Hidden-window compositor captures can lag behind the DOM. Read the real
+    // combat canvas pixels and their runtime markers as independent evidence.
+    const gamePage = instance.windows().find(candidate => candidate.url() === "yautja://game/");
+    assert(gamePage, "The packaged game page must exist for combat capture.");
+    const canvas = await gamePage.evaluate(() => {
+      const element = document.querySelector("canvas[data-pit-arena-id]");
+      if (!element) return null;
+      return { png: element.toDataURL("image/png"), arena: { ...element.dataset }, simulationFrame: document.querySelector("[data-pit-frame]")?.dataset.pitFrame, fighters: [...document.querySelectorAll("[data-pit-bitmap-slot]")].map(node => ({ ...node.dataset })) };
+    });
+    assert(canvas && canvas.arena.pitArenaArtStatus === "bitmap", "Combat capture must contain the active bitmap arena.");
+    const stem = fileName.replace(/\.png$/, "");
+    await fs.writeFile(path.join(evidence, stem + "-canvas.png"), Buffer.from(canvas.png.split(",")[1], "base64"));
+    const state = { arena: canvas.arena, simulationFrame: canvas.simulationFrame, fighters: canvas.fighters };
+    await fs.writeFile(path.join(evidence, stem + "-state.json"), JSON.stringify({ ...state, combatPixelsSource: "HTMLCanvasElement.toDataURL", windowCompositorMayLagWhenHidden: true }, null, 2));
+  }
+
 }
 let current;
 try {
