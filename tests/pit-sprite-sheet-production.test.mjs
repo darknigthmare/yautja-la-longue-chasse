@@ -5,7 +5,7 @@ import { auditPitSpriteSheetProduction } from "./helpers/pit-sprite-sheet-produc
 test("real V32/V33 PNGs prepare as distinct transparent cells and every registered facing/phase resolves in the combat renderer", async () => {
   const report = await auditPitSpriteSheetProduction();
   assert.equal(report.status, "PASS");
-  assert.deepEqual(new Set(report.fighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic"]));
+  assert.deepEqual(new Set(report.fighters), new Set(["jungle-hunter", "city-hunter", "berserker", "wolf", "feral-hunter", "scar", "celtic", "tracker", "greyback"]));
   assert.ok(report.pageCount >= 11);
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
@@ -18,6 +18,8 @@ test("real V32/V33 PNGs prepare as distinct transparent cells and every register
   assert.equal(report.clips.filter(clip => clip.fighterId === "scar").length, 28);
   assert.equal(report.clips.filter(clip => clip.fighterId === "celtic").length, 26);
   assert.equal(report.clips.some(clip => clip.fighterId === "celtic" && (clip.clipId === "idle" || clip.clipId === "walk")), false, "Missing idle and rejected forward gait must remain absent");
+  assert.equal(report.clips.filter(clip => clip.fighterId === "tracker").length, 28);
+  assert.equal(report.clips.filter(clip => clip.fighterId === "greyback").length, 28);
   const berserker = report.clips.filter(clip => clip.fighterId === "berserker");
   assert.equal(berserker.length, 26);
   assert.equal(berserker.some(clip => clip.clipId === "walk"), false, "Rejected forward walking must not become coverage");

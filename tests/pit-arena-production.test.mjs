@@ -51,12 +51,13 @@ async function withImages(implementation, callback) {
   try { return await callback(); } finally { if (old === undefined) delete globalThis.Image; else globalThis.Image = old; }
 }
 
-test("100 production entries retain the exact 8 playable / 92 concept boundary", () => {
+test("100 production entries preserve 8 legacy arenas plus 12 explicit duel extensions", () => {
   const summary = api.summarizePitArenaProduction();
   assert.equal(summary.stages, 100);
   assert.equal(summary.primaryPlaneTargets, 600);
   assert.equal(summary.legacyPlayable, 8);
-  assert.equal(summary.concepts, 92);
+  assert.equal(summary.concepts, 80);
+  assert.equal(summary.runtimePlayable, 20);
   assert.equal(new Set(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.map(stage => stage.catalogueId)).size, 100);
   for (const stage of api.PIT_ARENA_PRODUCTION_MANIFEST.stages) assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
   const fixture = reviewedFixture();
@@ -192,7 +193,7 @@ test("the Hall uses fourteen new image files, with no borrowed THE PIT image or 
   const hallHashes = hall.planes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => frame.generation.sha256)));
   assert.equal(new Set(hallHashes).size, 14);
   assert(hallHashes.every(hash => !previousHashes.has(hash)));
-  assert(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.filter(stage => stage.legacyRuntimeStatus === "concept").every(stage => !stage.runtimeEnabled));
+  assert(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.filter(stage => stage.legacyRuntimeStatus === "concept" && !stage.runtimeExtension).every(stage => !stage.runtimeEnabled));
 });
 
 test("separate Hall trophies remain inside their display cases through actual draw projections", () => {

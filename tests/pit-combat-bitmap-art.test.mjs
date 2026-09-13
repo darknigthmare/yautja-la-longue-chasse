@@ -23,8 +23,8 @@ const {
 
 const load = (ids, options = {}) => rawLoad(ids, { ...options, spriteSheetRegistry: [] });
 
-test("all fourteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
-  assert.equal(ids.length, 14);
+test("all sixteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
+  assert.equal(ids.length, 16);
   assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS)));
   for (const id of ids) {
     const definition = definitionFor(id);

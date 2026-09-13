@@ -19,7 +19,11 @@ try{
  assert(manifest.entries.length>=35);const canvas=page.locator('#canvas');
  for(const entry of manifest.entries){
   await page.locator('#asset').selectOption(entry.id);
-  await page.waitForFunction(id=>{const c=document.getElementById('canvas');return c?.dataset.assetId===id&&c.dataset.loaded==='true';},entry.id);
+  await page.waitForFunction(id=>{const c=document.getElementById('canvas');return c?.dataset.assetId===id&&c.dataset.loaded==='true';},entry.id).catch(async error=>{
+    const detail={entryId:entry.id,src:entry.src,error:String(error),errors,visibleError:await page.locator('#error').innerText(),canvas:await canvas.evaluate(node=>({...node.dataset})),selection:await page.locator('#asset').inputValue()};
+    await fs.writeFile(output+'/failure.json',JSON.stringify(detail,null,2)+'\n');
+    console.log(JSON.stringify(detail));throw error;
+  });
   assert.equal(await page.locator('#error').innerText(),'');
   assert((await page.locator('#digest').innerText()).includes(entry.sha256));
   if(entry.status==='rejected')assert.equal(await page.locator('#play').isDisabled(),true);

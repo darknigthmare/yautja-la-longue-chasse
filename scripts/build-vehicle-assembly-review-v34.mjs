@@ -16,7 +16,7 @@ function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
-function assetFrom(manifest, id) {
+function assetFrom(manifest, id, transparencyOverride) {
   const asset = manifest.assets.find(candidate => candidate.id === id);
   assert(asset, `Missing asset ${manifest.vehicleId}/${id}`);
   assert.equal(asset.status, 'authored-review', `${id} must remain review-only`);
@@ -34,7 +34,7 @@ function assetFrom(manifest, id) {
     height: asset.height,
     sha256: asset.sha256,
     status: asset.status,
-    transparency: asset.transparency,
+    transparency: transparencyOverride ?? asset.transparency,
   };
 }
 
@@ -55,14 +55,42 @@ function localCell(asset, index) {
   };
 }
 
+function reviewFrames(asset) {
+  assert.deepEqual(asset.runtimeClips, [], asset.id + ' must not expose a runtime clip');
+  assert(Array.isArray(asset.reviewFrames) && asset.reviewFrames.length > 0, 'Missing free review frames: ' + asset.id);
+  return asset.reviewFrames.map((frame, index) => {
+    assert(Array.isArray(frame.rect) && frame.rect.length === 4, 'Invalid review rect: ' + asset.id + '/' + index);
+    assert(Array.isArray(frame.pivot) && frame.pivot.length === 2, 'Invalid review pivot: ' + asset.id + '/' + index);
+    const [x, y, width, height] = frame.rect;
+    assert(x >= 0 && y >= 0 && width > 0 && height > 0 && x + width <= asset.width && y + height <= asset.height,
+      'Review rect outside source: ' + asset.id + '/' + index);
+    assert(frame.pivot[0] >= 0 && frame.pivot[1] >= 0 && frame.pivot[0] <= width && frame.pivot[1] <= height,
+      'Review pivot outside free rect: ' + asset.id + '/' + index);
+    return {
+      facing: frame.facing,
+      phase: frame.phase,
+      sourceRect: frame.rect,
+      visibleRect: [0, 0, width, height],
+      sourcePivot: frame.pivot,
+    };
+  });
+}
+
 const seatManifest = readJson('art-source/v34/vehicles/sphere-dejection-atmospherique/provenance.json');
 const bisonManifest = readJson('art-source/v34/vehicles/bone-bison-de-guerre/provenance.json');
+const razorManifest = readJson('art-source/v34/vehicles/razorwing/provenance.json');
 const seatBaseRaw = seatManifest.assets.find(asset => asset.id === 'seat-base-detached-r1');
 const armRaw = seatManifest.assets.find(asset => asset.id === 'controller-arch-states-r1');
 const bisonBodyRaw = bisonManifest.assets.find(asset => asset.id === 'body-colour-concept-r1');
 const saddleRaw = bisonManifest.assets.find(asset => asset.id === 'war-saddle-module-r1');
 const guardRaw = bisonManifest.assets.find(asset => asset.id === 'war-flank-guard-module-r1');
+const flightBodyRaw = razorManifest.assets.find(asset => asset.id === 'flight-body-layer-r1');
+const nearWingRightRaw = razorManifest.assets.find(asset => asset.id === 'near-wing-right-beat-r1');
+const nearWingLeftRaw = razorManifest.assets.find(asset => asset.id === 'near-wing-left-beat-r1');
+const farWingRightRaw = razorManifest.assets.find(asset => asset.id === 'far-wing-right-beat-r1');
+const farWingLeftRaw = razorManifest.assets.find(asset => asset.id === 'far-wing-left-beat-r1');
 assert(seatBaseRaw && armRaw && bisonBodyRaw && saddleRaw && guardRaw, 'Incomplete modular source set');
+assert(flightBodyRaw && nearWingRightRaw && nearWingLeftRaw && farWingRightRaw && farWingLeftRaw, 'Incomplete Razorwing layer set');
 
 const resources = [
   assetFrom(seatManifest, 'seat-base-detached-r1'),
@@ -70,6 +98,16 @@ const resources = [
   assetFrom(bisonManifest, 'body-colour-concept-r1'),
   assetFrom(bisonManifest, 'war-saddle-module-r1'),
   assetFrom(bisonManifest, 'war-flank-guard-module-r1'),
+  assetFrom(razorManifest, 'flight-body-layer-r1', {
+    mode: 'color-key',
+    rgb: [255, 0, 255],
+    tolerance: 64,
+    fringe: { mode: 'connected-magenta', radius: 3, minExcess: 16, strength: 1 },
+  }),
+  assetFrom(razorManifest, 'near-wing-right-beat-r1'),
+  assetFrom(razorManifest, 'near-wing-left-beat-r1'),
+  assetFrom(razorManifest, 'far-wing-right-beat-r1'),
+  assetFrom(razorManifest, 'far-wing-left-beat-r1'),
 ];
 
 const armCells = armRaw.cells.map((_, index) => localCell(armRaw, index));
@@ -82,6 +120,20 @@ const bisonFrames = Object.fromEntries(['right', 'left'].map((facing, index) => 
   saddle: localCell(saddleRaw, index),
   guard: localCell(guardRaw, index),
 }]));
+
+
+const razorFrames = {
+  body: reviewFrames(flightBodyRaw),
+  nearRight: reviewFrames(nearWingRightRaw),
+  nearLeft: reviewFrames(nearWingLeftRaw),
+  farRight: reviewFrames(farWingRightRaw),
+  farLeft: reviewFrames(farWingLeftRaw),
+};
+assert.deepEqual(razorFrames.body.map(frame => frame.facing), ['right', 'left']);
+for (const id of ['nearRight', 'nearLeft', 'farRight', 'farLeft']) {
+  assert.equal(razorFrames[id].length, 6, id + ' must keep six measured review poses');
+  assert.equal(new Set(razorFrames[id].map(frame => frame.phase)).size, 6, id + ' phases must remain distinct');
+}
 
 const manifest = {
   schemaVersion: 1,
@@ -136,16 +188,17 @@ const manifest = {
     },
     {
       id: 'bone-bison-war-fit',
-      name: 'Bone Bison · diagnostic des modules',
+      name: 'Bone Bison · montage de guerre statique',
       status: 'authored-review',
-      calibrationStatus: 'common-origin-unregistered',
+      calibrationStatus: 'static-module-fit-review',
       playable: false,
       facings: ['right', 'left'],
       defaultFacing: 'right',
       notes: [
-        'La superposition naïve à origine et échelle communes recouvre la silhouette ; elle ne valide pas le calage et n’évalue pas encore les transformations propres à chaque module.',
-        'Selle et garde restent désactivées par défaut et ne sont activables que pour diagnostiquer l’absence d’enregistrement commun.',
+        'La selle et la garde utilisent chacune une échelle et une translation propres, calibrées séparément pour les deux orientations.',
+        'La selle repose sur le dos descendant derrière la bosse ; la garde couvre le flanc sans masquer les articulations ni les pieds.',
         'Les deux orientations viennent de dessins distincts ; aucun côté n’est obtenu par miroir logiciel.',
+        'Montage statique de revue uniquement : les douze poses de marche r2 restent authored-review et ne portent encore aucun module animé.',
       ],
       anchor: [600, 710],
       base: {
@@ -156,16 +209,88 @@ const manifest = {
       },
       modules: [
         {
-          id: 'war-saddle', label: 'Selle de guerre', resourceId: 'war-saddle-module-r1', defaultEnabled: false,
-          scale: 0.91, anchorMode: 'base-grid',
-          framesByFacing: Object.fromEntries(Object.entries(bisonFrames).map(([facing, set]) => [facing, [set.saddle]])),
-        },
-        {
-          id: 'flank-guard', label: 'Garde de flanc', resourceId: 'war-flank-guard-module-r1', defaultEnabled: false,
-          scale: 0.91, anchorMode: 'base-grid',
+          id: 'flank-guard', label: 'Garde de flanc', resourceId: 'war-flank-guard-module-r1', defaultEnabled: true,
+          scale: 0.25,
+          transformByFacing: {
+            right: { x: 300.75, y: 338.5, scale: 0.25 },
+            left: { x: 640.75, y: 338.5, scale: 0.25 },
+          },
           framesByFacing: Object.fromEntries(Object.entries(bisonFrames).map(([facing, set]) => [facing, [set.guard]])),
         },
+        {
+          id: 'war-saddle', label: 'Selle de guerre', resourceId: 'war-saddle-module-r1', defaultEnabled: true,
+          scale: 0.36,
+          transformByFacing: {
+            right: { x: 224.7, y: 203.4, scale: 0.36 },
+            left: { x: 602.9, y: 203.4, scale: 0.36 },
+          },
+          framesByFacing: Object.fromEntries(Object.entries(bisonFrames).map(([facing, set]) => [facing, [set.saddle]])),
+        },
       ],
+    },
+    {
+      id: 'razorwing-flight-rig-review',
+      name: 'Razorwing \u00b7 montage de vol en revue',
+      status: 'authored-review',
+      calibrationStatus: 'estimated-flight-rig-review',
+      playable: false,
+      facings: ['right', 'left'],
+      defaultFacing: 'right',
+      notes: [
+        'Les ailes arri\u00e8re passent derri\u00e8re le corps et les ailes proches devant ; chaque aile reste masquable s\u00e9par\u00e9ment.',
+        'Les 26 dessins utiles sont d\u00e9coup\u00e9s par rectangles libres mesur\u00e9s : la grille approximative des planches ne sert jamais de crop.',
+        'Les deux orientations utilisent des corps et des ailes source distincts ; aucun miroir logiciel.',
+        'Le corps r1 reste utilis\u00e9 en revue : m\u00eame \u00e0 la tol\u00e9rance maximale 64, des pixels magenta restent visibles dans les cavit\u00e9s des griffes et derri\u00e8re la cr\u00eate.',
+        'Quatre corrections OpenAI opaques ont \u00e9t\u00e9 rejet\u00e9es pour la m\u00eame frange ; la tentative alpha a \u00e9t\u00e9 rejet\u00e9e car son damier \u00e9tait peint sans canal alpha.',
+        'Pivots, raccords et topologie restent estim\u00e9s pour inspection. Aucune animation de vol, collision ou pose moteur n\u2019est accept\u00e9e.',
+      ],
+      anchor: [850, 440],
+      anchorByFacing: { right: [850, 440], left: [550, 440] },
+      base: {
+        resourceId: 'flight-body-layer-r1',
+        scale: 0.85,
+        frameByFacing: { right: razorFrames.body[0], left: razorFrames.body[1] },
+        sourcePivot: [497, 146],
+        sourcePivotByFacing: { right: [497, 146], left: [236, 146] },
+      },
+      sockets: {
+        wingRoot: {
+          sourcePoint: [497, 146],
+          sourcePointByFacing: { right: [497, 146], left: [236, 146] },
+        },
+      },
+      modules: [
+        {
+          id: 'far-wing',
+          label: 'Aile arri\u00e8re',
+          resourceId: 'far-wing-right-beat-r1',
+          resourceIdByFacing: { right: 'far-wing-right-beat-r1', left: 'far-wing-left-beat-r1' },
+          defaultEnabled: true,
+          layer: 'behind',
+          socketId: 'wingRoot',
+          scale: 1,
+          offsetByFacing: { right: [-8, -5], left: [8, -5] },
+          framesByFacing: { right: razorFrames.farRight, left: razorFrames.farLeft },
+        },
+        {
+          id: 'near-wing',
+          label: 'Aile proche',
+          resourceId: 'near-wing-right-beat-r1',
+          resourceIdByFacing: { right: 'near-wing-right-beat-r1', left: 'near-wing-left-beat-r1' },
+          defaultEnabled: true,
+          layer: 'front',
+          socketId: 'wingRoot',
+          scale: 1.15,
+          offsetByFacing: { right: [0, 0], left: [0, 0] },
+          framesByFacing: { right: razorFrames.nearRight, left: razorFrames.nearLeft },
+        },
+      ],
+      animation: {
+        moduleId: 'near-wing',
+        linkedModuleIds: ['near-wing', 'far-wing'],
+        label: 'Battement des ailes \u00b7 revue',
+        fps: 2.4,
+      },
     },
   ],
 };
@@ -175,12 +300,25 @@ for (const assembly of manifest.assemblies) {
   assert.equal(assembly.playable, false);
   assert.equal(assembly.status, 'authored-review');
   assert(assembly.facings.includes(assembly.defaultFacing));
+  assert(resources.some(resource => resource.id === assembly.base.resourceId), `Unknown base resource ${assembly.base.resourceId}`);
   for (const facing of assembly.facings) assert(assembly.base.frameByFacing[facing], `Missing base facing ${assembly.id}/${facing}`);
   for (const part of assembly.modules) {
     assert(resources.some(resource => resource.id === part.resourceId), `Unknown module resource ${part.resourceId}`);
+    for (const id of Object.values(part.resourceIdByFacing ?? {})) assert(resources.some(resource => resource.id === id), `Unknown facing resource ${id}`);
+    assert(part.layer === undefined || part.layer === 'behind' || part.layer === 'front', `Invalid layer ${assembly.id}/${part.id}`);
     for (const facing of assembly.facings) assert(part.framesByFacing[facing]?.length, `Missing module facing ${assembly.id}/${part.id}/${facing}`);
+    if (part.transformByFacing) for (const facing of assembly.facings) {
+      const transform = part.transformByFacing[facing];
+      assert(transform && Number.isFinite(transform.x) && Number.isFinite(transform.y) && transform.scale > 0,
+        `Invalid module transform ${assembly.id}/${part.id}/${facing}`);
+    }
+  }
+  if (assembly.animation?.linkedModuleIds) for (const id of assembly.animation.linkedModuleIds) {
+    assert(assembly.modules.some(part => part.id === id), `Unknown linked animation module ${assembly.id}/${id}`);
   }
 }
+assert.equal(resources.find(resource => resource.id === 'flight-body-layer-r1').transparency.tolerance, 64);
+assert.equal(resources.find(resource => resource.id === 'flight-body-layer-r1').transparency.fringe.radius, 3);
 
 fs.mkdirSync(OUTPUT, { recursive: true });
 fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
@@ -203,4 +341,6 @@ console.log(JSON.stringify({
   controllerPoses: armCells.length,
   seatFacings: manifest.assemblies[0].facings,
   bisonFacings: manifest.assemblies[1].facings,
+  razorwingFacings: manifest.assemblies[2].facings,
+  razorwingReviewPoses: razorFrames.nearRight.length,
 }));

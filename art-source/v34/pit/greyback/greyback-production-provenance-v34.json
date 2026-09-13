@@ -1,0 +1,7340 @@
+{
+  "schemaVersion": 1,
+  "id": "greyback-production-v34",
+  "fighterId": "greyback",
+  "checkedAt": "2026-09-13T00:07:54.330Z",
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "reference": {
+    "path": "public/game/sprites/v5/film-plates/greyback.png",
+    "sha256": "16608adf4bc243ea39e137f309d1b4c011af6556aeca438d540f391cef9e2007",
+    "decision": "Existing project presentation inspected and displayed before each call; fan-made identity guidance, not certified1:1 film replica.",
+    "variantId": "predator2-1990-elder-unmasked-flintlock"
+  },
+  "generatedSheets": 16,
+  "generatedPoseSamples": 128,
+  "validatedRuntimeClips": 28,
+  "acceptedSourcePages": 8,
+  "runtimeDrawings": 61,
+  "actionSequencesIncludingFacings": 16,
+  "counts": {
+    "validated": 8,
+    "authoredReview": 1,
+    "rejected": 7
+  },
+  "runtimeLimitations": [
+    "Marche avant rejetée pour contacts répétés ; pose idle tenue pour cet état.",
+    "Saut/réception : planche de revue uniquement, pas de faux cycle.",
+    "Garde gauche : trois dessins retenus, première pose défectueuse exclue.",
+    "Riposte, autres gardes, blockstun et attaques aériennes/accroupies sans clips dédiés.",
+    "Attaques et profil : adaptations. Silex et canon ne tirent pas.",
+    "Référence V5 fan-made, non certifiée cinéma 1:1. Variante ancien Predator 2 distincte de Golden Angel jeune et Elder AVP.",
+    "Chroniques absentes : duels et entraînement seulement."
+  ],
+  "assets": [
+    {
+      "id": "idle",
+      "actionId": "idle",
+      "label": "idle",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-idle-v34.png",
+      "originId": "exec-931841ff-07bf-4cd4-b254-33be3d49fe93.png",
+      "sha256": "8fcc9308dc12f668f6ba2cae5c235eaf78ddc7c120eb5d3ca15893395deaa7fd",
+      "bytes": 2175540,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Four distinct stance drawings per orientation. Old Greyback, not young Golden Angel or AVP Elder."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1188911,
+        "fringePixels": 20243
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48471,
+          "alpha16Bounds": [
+            97,
+            51,
+            244,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "820f39624f32b9d647e319fb7204366cdc78a1d44de9eca56d941fcfbbe2123f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48099,
+          "alpha16Bounds": [
+            483,
+            51,
+            244,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 129,
+          "pixelDigest": "e2750d070fa49c1a328d71e48547b13e72a3bf14199b877a7c2e148cb815d0cd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48229,
+          "alpha16Bounds": [
+            855,
+            65,
+            250,
+            410
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 134,
+          "pixelDigest": "ae31dbc198c9b08d6f7ea782dbc7de9663ba4569b4b1edb8e979bdcc96f1c534",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48171,
+          "alpha16Bounds": [
+            1248,
+            51,
+            241,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 124,
+          "pixelDigest": "a253236801767b4f182bb376f854526ddc9c281235820b9951b747c811328600",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral alert",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48119,
+          "alpha16Bounds": [
+            43,
+            558,
+            243,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "c04584061f096300118c53fd9e0ace9d4f2e2c4ccf1da9a3bf264e01abdbbfb5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "inhale shoulders slightly raised",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 48048,
+          "alpha16Bounds": [
+            425,
+            558,
+            245,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 127,
+          "pixelDigest": "9a66ddcb789f2f0148b4b529513f10fe82e8c8db0f95d5e5a20964f5db9c853f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "exhale relaxed knees",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47231,
+          "alpha16Bounds": [
+            811,
+            576,
+            247,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "e098bc6ab9fe3778ffbebdae46b10c146a1300b532da0414f11cf6edd6d7a6f1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return toward neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47585,
+          "alpha16Bounds": [
+            1191,
+            558,
+            243,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 53,
+          "pixelDigest": "7588056085c10db73be1f342a430759e61864914757f098186e1ceb03662b8ef",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "greyback-idle",
+          "rect": [
+            94,
+            48,
+            250,
+            430
+          ],
+          "pivot": [
+            104,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "greyback-idle",
+          "rect": [
+            480,
+            48,
+            250,
+            430
+          ],
+          "pivot": [
+            101.5,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "greyback-idle",
+          "rect": [
+            852,
+            62,
+            256,
+            416
+          ],
+          "pivot": [
+            109.5,
+            412
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "greyback-idle",
+          "rect": [
+            1245,
+            48,
+            247,
+            430
+          ],
+          "pivot": [
+            102.5,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 0,
+          "pageId": "greyback-idle",
+          "rect": [
+            40,
+            555,
+            249,
+            430
+          ],
+          "pivot": [
+            146.5,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 1,
+          "pageId": "greyback-idle",
+          "rect": [
+            422,
+            555,
+            251,
+            430
+          ],
+          "pivot": [
+            148,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 2,
+          "pageId": "greyback-idle",
+          "rect": [
+            808,
+            573,
+            253,
+            413
+          ],
+          "pivot": [
+            146.5,
+            409
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "idle",
+          "index": 3,
+          "pageId": "greyback-idle",
+          "rect": [
+            1188,
+            555,
+            249,
+            430
+          ],
+          "pivot": [
+            147,
+            426
+          ],
+          "durationTicks": 10,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                94,
+                48,
+                250,
+                430
+              ],
+              "pivot": [
+                104,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                480,
+                48,
+                250,
+                430
+              ],
+              "pivot": [
+                101.5,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                852,
+                62,
+                256,
+                416
+              ],
+              "pivot": [
+                109.5,
+                412
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                1245,
+                48,
+                247,
+                430
+              ],
+              "pivot": [
+                102.5,
+                426
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                40,
+                555,
+                249,
+                430
+              ],
+              "pivot": [
+                146.5,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                422,
+                555,
+                251,
+                430
+              ],
+              "pivot": [
+                148,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                808,
+                573,
+                253,
+                413
+              ],
+              "pivot": [
+                146.5,
+                409
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                1188,
+                555,
+                249,
+                430
+              ],
+              "pivot": [
+                147,
+                426
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "idle",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.379Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-walk-forward-v34.png",
+      "originId": "exec-5b8ce724-f40a-4f57-8427-e7dbc874e09b.png",
+      "sha256": "e0fb15254599fafa421b3c6e7ec9a3988715eea1cf80523b320c059fe04a65fb",
+      "bytes": 2307060,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Both rows repeat leg contacts1/3 and passing support2/4. Feet and hands drawn coherently but not a complete alternating gait. Left pistol remains in grip, no firing; weapon fidelity does not rescue locomotion."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1156544,
+        "fringePixels": 21975
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55039,
+          "alpha16Bounds": [
+            76,
+            40,
+            279,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "0037c02c1817485ada4e8341f0b82a5fcc04ba2502a0a5668b5d020b6e44df81",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50406,
+          "alpha16Bounds": [
+            476,
+            33,
+            258,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "eb333516902f54df48b4b2ddee3c9ea22b476aea236d1d90b67e0ffd3060c89c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52533,
+          "alpha16Bounds": [
+            828,
+            44,
+            278,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "446bb707cfea4c05d121c4b96d5e801c6aca00252710358683859a03860c53b1",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51207,
+          "alpha16Bounds": [
+            1247,
+            33,
+            253,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "e29a877a2cf2d70a7b5dbcaaae5ff9ea8332eb39de0a1817386ae83ad1514aa3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53790,
+          "alpha16Bounds": [
+            36,
+            543,
+            285,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 62,
+          "pixelDigest": "a8962b6662e7b5bc8c67626c31ac6c01d494b77971ef76587bacdf075b05f514",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50764,
+          "alpha16Bounds": [
+            416,
+            536,
+            252,
+            443
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 79,
+          "pixelDigest": "7f0b1869bd58decfe40106f86b6d67f3fa57e79318815179e3f9373a301e169f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51437,
+          "alpha16Bounds": [
+            814,
+            550,
+            273,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "9b9faf36931dff0373c5abe6f63d9fb13d71fa9903c34414946eb9688efe7b3d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51144,
+          "alpha16Bounds": [
+            1181,
+            537,
+            254,
+            443
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 97,
+          "pixelDigest": "b32dbcd3ba3720f01b4a694abc130e34fa5c9661d433431ed2726049e34f5b32",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            73,
+            37,
+            285,
+            441
+          ],
+          "pivot": [
+            136,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            473,
+            30,
+            264,
+            446
+          ],
+          "pivot": [
+            86.5,
+            442
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            825,
+            41,
+            284,
+            438
+          ],
+          "pivot": [
+            134.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            1244,
+            30,
+            259,
+            447
+          ],
+          "pivot": [
+            86,
+            443
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            33,
+            540,
+            291,
+            438
+          ],
+          "pivot": [
+            141.5,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            413,
+            533,
+            258,
+            449
+          ],
+          "pivot": [
+            170.5,
+            445
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            811,
+            547,
+            279,
+            432
+          ],
+          "pivot": [
+            139,
+            428
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "greyback-walk-forward",
+          "rect": [
+            1178,
+            534,
+            260,
+            449
+          ],
+          "pivot": [
+            172,
+            445
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-walk-backward-v34.png",
+      "originId": "exec-bf647574-08be-4b6d-b73e-119fb4a657ec.png",
+      "sha256": "25102e07fa2d540b973a833077868414872c673a9861533a2bc3b8c4d6bca348",
+      "bytes": 2109534,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Passing frames2/4 use different legs, but contacts1/3 still same near leg behind both rows. Needs column3 opposite contact before loop acceptance. Pistol remains coherent."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1230785,
+        "fringePixels": 21610
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44170,
+          "alpha16Bounds": [
+            77,
+            55,
+            271,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "e86115749e9f74c2e31180577810ce7188c4e3209f841af969b41c39cb2df810",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42244,
+          "alpha16Bounds": [
+            481,
+            51,
+            225,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 61,
+          "pixelDigest": "080f0cbe69cd2cdb2351e2954b7e4774af61ba0542e56b79286ed6e564fc1cd8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44297,
+          "alpha16Bounds": [
+            822,
+            56,
+            264,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 67,
+          "pixelDigest": "d7c1366bea3dd7d68d0ebf3bd4c03726c32b836ac38d678f78444158c5fe62de",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40908,
+          "alpha16Bounds": [
+            1225,
+            52,
+            248,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 74,
+          "pixelDigest": "7a064caefdb420509e7a0439b286612769881dcf75efc8e3e4e2ad5adf05a0af",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43615,
+          "alpha16Bounds": [
+            41,
+            549,
+            269,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "73a605f6dd6d90ab253cf7d4b8a5db84bedf6a7b3adbc323ed98dad80f5ac4b9",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42098,
+          "alpha16Bounds": [
+            441,
+            548,
+            221,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 91,
+          "pixelDigest": "f07cb42078dfa8f3a585da967ee32d379bd79c623a0d531d210c0735b1ef9995",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43935,
+          "alpha16Bounds": [
+            804,
+            549,
+            269,
+            399
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "46b7c1c596095f410856198da2a6660994f48037d8a4746d7816080808de5f7b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40812,
+          "alpha16Bounds": [
+            1198,
+            548,
+            250,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 75,
+          "pixelDigest": "3acfb71e6d3be1739ae426b908e332c4f08c17318b278bff8b8651c30d4b3b7c",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            74,
+            52,
+            277,
+            409
+          ],
+          "pivot": [
+            127.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            478,
+            48,
+            231,
+            412
+          ],
+          "pivot": [
+            80,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            819,
+            53,
+            270,
+            409
+          ],
+          "pivot": [
+            120.5,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            1222,
+            49,
+            254,
+            412
+          ],
+          "pivot": [
+            137.5,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            38,
+            546,
+            275,
+            406
+          ],
+          "pivot": [
+            146.5,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            438,
+            545,
+            227,
+            408
+          ],
+          "pivot": [
+            145,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            801,
+            546,
+            275,
+            405
+          ],
+          "pivot": [
+            153,
+            401
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "greyback-walk-backward",
+          "rect": [
+            1195,
+            545,
+            256,
+            408
+          ],
+          "pivot": [
+            114.5,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "crouch",
+      "actionId": "crouch",
+      "label": "crouch",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-crouch-v34.png",
+      "originId": "exec-8a72f3e2-7df3-4dc8-95bc-ddba04d77cc9.png",
+      "sha256": "71fe74ef6dc41d80860fbb2959ff054c48eaf103b7f83441694bd49ac3931ce3",
+      "bytes": 2068273,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "First three drawings enter/hold crouch; fourth rising drawing excluded."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1240669,
+        "fringePixels": 18195
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46513,
+          "alpha16Bounds": [
+            92,
+            67,
+            260,
+            395
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "ff62f90af75fbbb1be97a12327594007f3ad7da1e801c4f84292c7eb49bda1e2",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43377,
+          "alpha16Bounds": [
+            477,
+            115,
+            261,
+            347
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 77,
+          "pixelDigest": "81f538b4ec1ffec1a4be3c0542a5f02bf01364268d5b345055e582fe1442984c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 36727,
+          "alpha16Bounds": [
+            852,
+            194,
+            270,
+            268
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 157,
+          "pixelDigest": "a21918e6053d518b0029aca50acb637b38eb542169753a1fa09547043faa8b93",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41063,
+          "alpha16Bounds": [
+            1242,
+            119,
+            250,
+            343
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 100,
+          "pixelDigest": "3b0c5ae7a77456bd3171c6faf41d8b957febd02b84a49c343edec57f51040f93",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "standing combat stance",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44509,
+          "alpha16Bounds": [
+            39,
+            570,
+            265,
+            372
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "a346428080c890e46f864e5eb7727e83f71277353d38a6b1d913c9946f7304f8",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "half squat descending",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42047,
+          "alpha16Bounds": [
+            419,
+            603,
+            260,
+            339
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "cf72d367218667f4d311862c4db62e0da18c85c64d80b9fffa94ea61ec9f8f15",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "deep stable crouch with both heels grounded",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 36435,
+          "alpha16Bounds": [
+            795,
+            676,
+            268,
+            266
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 128,
+          "pixelDigest": "a5859e6209aaa6e1ca82e15f49ed4f50bdae3a34e4ef965db39cdc5f42406295",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "half squat rising",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41524,
+          "alpha16Bounds": [
+            1188,
+            602,
+            254,
+            340
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 78,
+          "pixelDigest": "0a5f3d3838b288ba98cc94073276a199b87c3ccd6785e56fecb4f8b7b525f6b5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "greyback-crouch",
+          "rect": [
+            89,
+            64,
+            266,
+            401
+          ],
+          "pivot": [
+            109.5,
+            397
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "greyback-crouch",
+          "rect": [
+            474,
+            112,
+            267,
+            353
+          ],
+          "pivot": [
+            104.5,
+            349
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "greyback-crouch",
+          "rect": [
+            849,
+            191,
+            276,
+            274
+          ],
+          "pivot": [
+            106,
+            270
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 0,
+          "pageId": "greyback-crouch",
+          "rect": [
+            36,
+            567,
+            271,
+            378
+          ],
+          "pivot": [
+            156.5,
+            374
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 1,
+          "pageId": "greyback-crouch",
+          "rect": [
+            416,
+            600,
+            266,
+            345
+          ],
+          "pivot": [
+            164,
+            341
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "crouch",
+          "index": 2,
+          "pageId": "greyback-crouch",
+          "rect": [
+            792,
+            673,
+            274,
+            272
+          ],
+          "pivot": [
+            162.5,
+            268
+          ],
+          "durationTicks": 30,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                89,
+                64,
+                266,
+                401
+              ],
+              "pivot": [
+                109.5,
+                397
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                474,
+                112,
+                267,
+                353
+              ],
+              "pivot": [
+                104.5,
+                349
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                849,
+                191,
+                276,
+                274
+              ],
+              "pivot": [
+                106,
+                270
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                36,
+                567,
+                271,
+                378
+              ],
+              "pivot": [
+                156.5,
+                374
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                416,
+                600,
+                266,
+                345
+              ],
+              "pivot": [
+                164,
+                341
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                792,
+                673,
+                274,
+                272
+              ],
+              "pivot": [
+                162.5,
+                268
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "crouch",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "label": "jump-land",
+      "revision": 1,
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-jump-land-v34.png",
+      "originId": "exec-ad1d15a1-c29d-4fed-a829-385fdd14a8b0.png",
+      "sha256": "ac79c85f77de6efa60bd8a594c620b05bfceacec85c69eb4eafc87bfb0edea44",
+      "bytes": 2119932,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Launch/airborne/fall/landing full bodies, hands and left pistol stable. RIGHT columns1,2,3,4; LEFT requires1,3,2,4 because rise/fall reversed. Jump pivot/body trajectory remains game adaptation and unintegrated."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1237928,
+        "fringePixels": 19668
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42317,
+          "alpha16Bounds": [
+            36,
+            168,
+            313,
+            286
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 122,
+          "pixelDigest": "651d572e3534df879ce821b3f055d131025b6e14d57d2957d0b875c4d652a5c7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 39658,
+          "alpha16Bounds": [
+            423,
+            32,
+            297,
+            318
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 96,
+          "pixelDigest": "9e902b792b08b981111fec277a4eeaf3a017563d1c76585a9dae53fd3eb3eff5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44151,
+          "alpha16Bounds": [
+            800,
+            34,
+            300,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "8f199efce98750f6ebd7414d9fa55fa9542e0d00ca908222ccb36fa4e03bc9ef",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41977,
+          "alpha16Bounds": [
+            1206,
+            168,
+            311,
+            287
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 136,
+          "pixelDigest": "d77b79a3110232f151246d475ddd1081fe09b3ed0b4498dba1699c2b2cc76409",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "deep launch crouch",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41347,
+          "alpha16Bounds": [
+            22,
+            680,
+            309,
+            288
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 149,
+          "pixelDigest": "a205ef4282f88d457005e9e131dec874d893b13a96ff97da7ead5f95a1f27666",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "airborne rising knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44355,
+          "alpha16Bounds": [
+            439,
+            547,
+            290,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 47,
+          "pixelDigest": "87e752ec981628c4f2bf3e656e434f02ff43b211e15ae03a028e95fa817cde8a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "falling feet extending downward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 39155,
+          "alpha16Bounds": [
+            816,
+            544,
+            297,
+            314
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 93,
+          "pixelDigest": "a4f8c61d9f544ce2354186f08d138f147d887d3ccb32b70e204655bfb6eb163f",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "landing crouch absorbing impact",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 41976,
+          "alpha16Bounds": [
+            1192,
+            677,
+            308,
+            288
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 167,
+          "pixelDigest": "9b7d430fa5d25c1e99a821d3b14580a3af963047f8c4766092d7f0020f892ec2",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            33,
+            165,
+            319,
+            292
+          ],
+          "pivot": [
+            138,
+            288
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            420,
+            29,
+            303,
+            324
+          ],
+          "pivot": [
+            125.5,
+            320
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            797,
+            31,
+            306,
+            406
+          ],
+          "pivot": [
+            211,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            1203,
+            165,
+            317,
+            293
+          ],
+          "pivot": [
+            141.5,
+            289
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 0,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            19,
+            677,
+            315,
+            294
+          ],
+          "pivot": [
+            176.5,
+            290
+          ],
+          "durationTicks": 10,
+          "phase": "deep launch crouch",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 1,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            436,
+            544,
+            296,
+            406
+          ],
+          "pivot": [
+            90,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "airborne rising knees bent",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 2,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            813,
+            541,
+            303,
+            320
+          ],
+          "pivot": [
+            178,
+            316
+          ],
+          "durationTicks": 10,
+          "phase": "falling feet extending downward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.jump-land",
+          "index": 3,
+          "pageId": "greyback-jump-land",
+          "rect": [
+            1189,
+            674,
+            314,
+            294
+          ],
+          "pivot": [
+            174.5,
+            290
+          ],
+          "durationTicks": 10,
+          "phase": "landing crouch absorbing impact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "guard",
+      "actionId": "guard",
+      "label": "guard",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-guard-v34.png",
+      "originId": "exec-a7e98cde-3ecf-4d9a-be56-99972ac4f79f.png",
+      "sha256": "12a8d2d2d97f09ff32a30c68ace8ea75a24d1d0dfdb43ae3b876da25c04a448d",
+      "bytes": 2183229,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Right four drawings; left columns 2,3,4 only. First left drawing has inconsistent arm/gun arrangement."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1190699,
+        "fringePixels": 18901
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right empty fist raises toward cheek, left pistol low and away",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49866,
+          "alpha16Bounds": [
+            101,
+            67,
+            257,
+            418
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "617c0ac303db1fe43534997273c4e72cbc15a05bfe3140e7125dade41a38d9aa",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "full right forearm guard beside face, left pistol muzzle low",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47730,
+          "alpha16Bounds": [
+            456,
+            67,
+            249,
+            417
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 88,
+          "pixelDigest": "bc0dce87f6a1e6549136d29f9c6eac6f85b37d406cf44c6e0d01f2eeba18dbba",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "absorb with knees flexed and right armored forearm protective",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 46463,
+          "alpha16Bounds": [
+            794,
+            116,
+            299,
+            368
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 32,
+          "pixelDigest": "241113117959183d6d80bdf47c714abc9273e027864c3e65742501a7dcdb3fb3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "settled full right forearm guard held",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 47983,
+          "alpha16Bounds": [
+            1213,
+            64,
+            250,
+            420
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 84,
+          "pixelDigest": "0dd5101b6905725cc4517b8fbfa11c6c41df657cc4d1529b0a198c792470cadd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right empty fist raises toward cheek, left pistol low and away",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49480,
+          "alpha16Bounds": [
+            67,
+            553,
+            232,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 74,
+          "pixelDigest": "7f1b90fc5b0114f2d2af7274d2cfb77a6be86ebb82c7472641789ea9853b0861",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "full right forearm guard beside face, left pistol muzzle low",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46910,
+          "alpha16Bounds": [
+            415,
+            555,
+            247,
+            415
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 77,
+          "pixelDigest": "ab1b00850a50326fd573868c38759eb115edf954d95b3164d80a36af536e1d01",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "absorb with knees flexed and right armored forearm protective",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46243,
+          "alpha16Bounds": [
+            791,
+            603,
+            300,
+            365
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "4ef696104c4481026d2cff1579e1b4e8805ef4df3e0e2136f1ad149fa8696666",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "settled full right forearm guard held",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47490,
+          "alpha16Bounds": [
+            1189,
+            556,
+            249,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 62,
+          "pixelDigest": "5022f1a5d99dba5a6951807a40fbbf31cc800cfb33b993de852a48a64c01c093",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "greyback-guard",
+          "rect": [
+            98,
+            64,
+            263,
+            424
+          ],
+          "pivot": [
+            113,
+            420
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "greyback-guard",
+          "rect": [
+            453,
+            64,
+            255,
+            423
+          ],
+          "pivot": [
+            112.5,
+            419
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "greyback-guard",
+          "rect": [
+            791,
+            113,
+            305,
+            374
+          ],
+          "pivot": [
+            142.5,
+            370
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "high-guard",
+          "index": 3,
+          "pageId": "greyback-guard",
+          "rect": [
+            1210,
+            61,
+            256,
+            426
+          ],
+          "pivot": [
+            112.5,
+            422
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 0,
+          "pageId": "greyback-guard",
+          "rect": [
+            412,
+            552,
+            253,
+            421
+          ],
+          "pivot": [
+            137,
+            417
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 1,
+          "pageId": "greyback-guard",
+          "rect": [
+            788,
+            600,
+            306,
+            371
+          ],
+          "pivot": [
+            159,
+            367
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "high-guard",
+          "index": 2,
+          "pageId": "greyback-guard",
+          "rect": [
+            1186,
+            553,
+            255,
+            422
+          ],
+          "pivot": [
+            139,
+            418
+          ],
+          "durationTicks": 6,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                98,
+                64,
+                263,
+                424
+              ],
+              "pivot": [
+                113,
+                420
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                453,
+                64,
+                255,
+                423
+              ],
+              "pivot": [
+                112.5,
+                419
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                791,
+                113,
+                305,
+                374
+              ],
+              "pivot": [
+                142.5,
+                370
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                1210,
+                61,
+                256,
+                426
+              ],
+              "pivot": [
+                112.5,
+                422
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                412,
+                552,
+                253,
+                421
+              ],
+              "pivot": [
+                137,
+                417
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                788,
+                600,
+                306,
+                371
+              ],
+              "pivot": [
+                159,
+                367
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                1186,
+                553,
+                255,
+                422
+              ],
+              "pivot": [
+                139,
+                418
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "high-guard",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "hurt",
+      "actionId": "hurt",
+      "label": "hurt",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-hurt-v34.png",
+      "originId": "exec-2ef9d47b-0624-4a03-ab09-35393f307d39.png",
+      "sha256": "2c0c53fae0bb0c01fca5cb4bf05685c6c03b5735e8845b16a8f118b4ebc5953a",
+      "bytes": 2219873,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Reordered impact, deeper recoil, recovery, neutral."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1186579,
+        "fringePixels": 21590
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49620,
+          "alpha16Bounds": [
+            83,
+            52,
+            255,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 51,
+          "pixelDigest": "4cd6b5318b6451b8558c31457816ea1ce809b3a8423b176e98d3afbe44f585b7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 48238,
+          "alpha16Bounds": [
+            478,
+            59,
+            255,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 30,
+          "pixelDigest": "2e0b94259befa939da764b058b95390221af35fa0173cadf98b5275443686f30",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49695,
+          "alpha16Bounds": [
+            814,
+            85,
+            322,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "a211a1395ae7d1da4b49f0396e1bc3f1e8a0adebef1191f0964720630d991eab",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45786,
+          "alpha16Bounds": [
+            1254,
+            52,
+            237,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "b0711b5953e05417ce4c8c5c62a737fd33b08aa0d4a0edd74cd7ee9fecddd31e",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "small torso recoil from chest hit",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49843,
+          "alpha16Bounds": [
+            45,
+            563,
+            255,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 51,
+          "pixelDigest": "8c912935eacb3db4d7c56310aa1bd4da33e986f16dd3b76613a8fce0938e09af",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "larger backward torso lean, knees bent",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 47405,
+          "alpha16Bounds": [
+            420,
+            567,
+            348,
+            417
+          ],
+          "gridBorderPixels": 15,
+          "residualMagentaPixels": 46,
+          "pixelDigest": "b9ffff23d5d6c9a5e2831bd75b9fe98e5e4ff70ccc16e35ff87849c1396e10cb",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "recover torso upright with protective arms",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49365,
+          "alpha16Bounds": [
+            768,
+            596,
+            308,
+            388
+          ],
+          "gridBorderPixels": 16,
+          "residualMagentaPixels": 43,
+          "pixelDigest": "6958071a1ff463238042904bbd2bf7193245e9499fae9b80ace4ab5371a06a7d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return to neutral stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46333,
+          "alpha16Bounds": [
+            1198,
+            563,
+            242,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "f5169e3107f74250724de47d96fd88305b01ba46c27a171da725bf16f8194cfe",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "greyback-hurt",
+          "rect": [
+            475,
+            56,
+            261,
+            420
+          ],
+          "pivot": [
+            115.5,
+            416
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "greyback-hurt",
+          "rect": [
+            811,
+            82,
+            328,
+            394
+          ],
+          "pivot": [
+            160.5,
+            390
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "greyback-hurt",
+          "rect": [
+            1251,
+            49,
+            243,
+            428
+          ],
+          "pivot": [
+            103.5,
+            424
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "greyback-hurt",
+          "rect": [
+            80,
+            49,
+            261,
+            428
+          ],
+          "pivot": [
+            109,
+            424
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 0,
+          "pageId": "greyback-hurt",
+          "rect": [
+            417,
+            564,
+            244,
+            423
+          ],
+          "pivot": [
+            142,
+            419
+          ],
+          "durationTicks": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 1,
+          "pageId": "greyback-hurt",
+          "rect": [
+            753,
+            593,
+            326,
+            394
+          ],
+          "pivot": [
+            166.5,
+            390
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 2,
+          "pageId": "greyback-hurt",
+          "rect": [
+            1195,
+            560,
+            248,
+            428
+          ],
+          "pivot": [
+            139.5,
+            424
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "index": 3,
+          "pageId": "greyback-hurt",
+          "rect": [
+            42,
+            560,
+            261,
+            428
+          ],
+          "pivot": [
+            150.5,
+            424
+          ],
+          "durationTicks": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                475,
+                56,
+                261,
+                420
+              ],
+              "pivot": [
+                115.5,
+                416
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                811,
+                82,
+                328,
+                394
+              ],
+              "pivot": [
+                160.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                1251,
+                49,
+                243,
+                428
+              ],
+              "pivot": [
+                103.5,
+                424
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                80,
+                49,
+                261,
+                428
+              ],
+              "pivot": [
+                109,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                417,
+                564,
+                244,
+                423
+              ],
+              "pivot": [
+                142,
+                419
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                753,
+                593,
+                326,
+                394
+              ],
+              "pivot": [
+                166.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                1195,
+                560,
+                248,
+                428
+              ],
+              "pivot": [
+                139.5,
+                424
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                42,
+                560,
+                261,
+                428
+              ],
+              "pivot": [
+                150.5,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.hitstun",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "light",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-light-v34.png",
+      "originId": "exec-fa27e612-062d-4b15-9f3e-f86c36a79e1e.png",
+      "sha256": "f58d0d71b8391ab8a4878296c21071552ace1e0b01090ddbb6aecc7a5da33573",
+      "bytes": 2257879,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Contact column2 both facings punches with opposite arm and moves pistol into arm previously unarmed. This is a hand/equipment side swap, not permitted despite clear fists. Needs anatomical right-arm contact redraw."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1162193,
+        "fringePixels": 20708
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right EMPTY fist draws back beside ribs",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52343,
+          "alpha16Bounds": [
+            75,
+            49,
+            287,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 29,
+          "pixelDigest": "ce03f64d4dc6087bf4b770d99395be954b81e34e0bd09927d368491f37e149f3",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "short right EMPTY punch extends toward opponent chest",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50432,
+          "alpha16Bounds": [
+            433,
+            54,
+            335,
+            426
+          ],
+          "gridBorderPixels": 20,
+          "residualMagentaPixels": 33,
+          "pixelDigest": "3a96004841f8e1d8ad26f4e3db18a66f4dd215c7385f603ee06479f85ad0daa5",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right fist retracts halfway",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51274,
+          "alpha16Bounds": [
+            768,
+            51,
+            349,
+            430
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "baab6fff040b58b349a6a991b04f3613d6580aa9a7ae496df8980654b4e60c0d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral stance with right open hand low",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52757,
+          "alpha16Bounds": [
+            1237,
+            43,
+            252,
+            439
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "a3c22e6ea56a40ab46fdb660b7b1a413bfaf7ed805b84160b7a46d266857c8f8",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right EMPTY fist draws back beside ribs",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51068,
+          "alpha16Bounds": [
+            41,
+            552,
+            272,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 27,
+          "pixelDigest": "dc6cbab29bea089a0f21392c5152b214d714e55cb5aed7c1409a4224c1777d2b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "short right EMPTY punch extends toward opponent chest",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49664,
+          "alpha16Bounds": [
+            404,
+            561,
+            329,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 21,
+          "pixelDigest": "d01118b143592ecef9b85761afd719b1c6adb8063d7b9bc3b4c7979053f28c57",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right fist retracts halfway",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50847,
+          "alpha16Bounds": [
+            808,
+            555,
+            273,
+            429
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "38d3e5835148ab6467059329e5820a0711ed710c0a7aa7c90553f542efbff713",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral stance with right open hand low",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52286,
+          "alpha16Bounds": [
+            1208,
+            548,
+            248,
+            436
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "cf470cce4df70d499298d6b9d9dd1c55a053c22d42993282216ebfdd680f02cd",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "greyback-light",
+          "rect": [
+            72,
+            46,
+            293,
+            438
+          ],
+          "pivot": [
+            120,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "right EMPTY fist draws back beside ribs",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "greyback-light",
+          "rect": [
+            430,
+            51,
+            342,
+            432
+          ],
+          "pivot": [
+            123,
+            428
+          ],
+          "durationTicks": 10,
+          "phase": "short right EMPTY punch extends toward opponent chest",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "greyback-light",
+          "rect": [
+            836,
+            48,
+            284,
+            436
+          ],
+          "pivot": [
+            121,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "right fist retracts halfway",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "greyback-light",
+          "rect": [
+            1234,
+            40,
+            258,
+            445
+          ],
+          "pivot": [
+            108.5,
+            441
+          ],
+          "durationTicks": 10,
+          "phase": "neutral stance with right open hand low",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "greyback-light",
+          "rect": [
+            38,
+            549,
+            278,
+            437
+          ],
+          "pivot": [
+            156.5,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "right EMPTY fist draws back beside ribs",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "greyback-light",
+          "rect": [
+            401,
+            558,
+            335,
+            429
+          ],
+          "pivot": [
+            209,
+            425
+          ],
+          "durationTicks": 10,
+          "phase": "short right EMPTY punch extends toward opponent chest",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "greyback-light",
+          "rect": [
+            805,
+            552,
+            279,
+            435
+          ],
+          "pivot": [
+            158.5,
+            431
+          ],
+          "durationTicks": 10,
+          "phase": "right fist retracts halfway",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "greyback-light",
+          "rect": [
+            1205,
+            545,
+            254,
+            442
+          ],
+          "pivot": [
+            146.5,
+            438
+          ],
+          "durationTicks": 10,
+          "phase": "neutral stance with right open hand low",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "medium",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-medium-v34.png",
+      "originId": "exec-9d62dd17-71a6-488c-8a28-f1827f1c6384.png",
+      "sha256": "9bc87031e076053e79b951a92131e259a3cf88c9a67a6785ac5039dfb43d8352",
+      "bytes": 2116998,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Pistol entirely disappears during knee-lift column2 and swaps to opposite hand at kick column3 both rows. Invalid equipment continuity; no medium clip accepted."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1222693,
+        "fringePixels": 19757
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right knee raised loading frontkick",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45324,
+          "alpha16Bounds": [
+            80,
+            64,
+            255,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 63,
+          "pixelDigest": "1e2392ea3d41811a5a7f55fa2232fcefc983ff4930d759cf9c2dd008405e6285",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right leg extends forward sole first at waist height",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41285,
+          "alpha16Bounds": [
+            463,
+            57,
+            211,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "0619372083c8acacbff89b6f6604618c2c14653ee85c21c3bff007eeb1746cf6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right knee retracts bent beneath torso",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44076,
+          "alpha16Bounds": [
+            794,
+            60,
+            337,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "f0076030a16270cc83d94e759aad4703029b4c3cd72a7b9e9df2acef8ffe2342",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "right foot lands and neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41803,
+          "alpha16Bounds": [
+            1234,
+            61,
+            234,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 55,
+          "pixelDigest": "15d0ddc490b55adfb1b783a1780f137416814bf8d6c990d445373adce496633c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right knee raised loading frontkick",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45983,
+          "alpha16Bounds": [
+            51,
+            564,
+            243,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 63,
+          "pixelDigest": "1525ebbc98702215d4a52c49a591a508897280f3095983a584698b19f2c2a099",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right leg extends forward sole first at waist height",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42401,
+          "alpha16Bounds": [
+            454,
+            562,
+            314,
+            386
+          ],
+          "gridBorderPixels": 27,
+          "residualMagentaPixels": 44,
+          "pixelDigest": "d3ee9ae46ca3999308b3fc454286ec5f3d66b40e0df95d3d713c89273dfcc1f7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right knee retracts bent beneath torso",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44584,
+          "alpha16Bounds": [
+            768,
+            563,
+            334,
+            391
+          ],
+          "gridBorderPixels": 29,
+          "residualMagentaPixels": 37,
+          "pixelDigest": "e195d10f8249ad35feea7a17cfe482f98a69d0e08d678e54fd35a698a779bc2c",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "right foot lands and neutral combat stance",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44715,
+          "alpha16Bounds": [
+            1207,
+            564,
+            238,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 61,
+          "pixelDigest": "0782d7987869fb4dc7bafd30534aa9b1ed07cf612b7f097bb5332d6a9c8ac761",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "greyback-medium",
+          "rect": [
+            77,
+            61,
+            261,
+            393
+          ],
+          "pivot": [
+            113.5,
+            389
+          ],
+          "durationTicks": 10,
+          "phase": "right knee raised loading frontkick",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "greyback-medium",
+          "rect": [
+            460,
+            54,
+            217,
+            392
+          ],
+          "pivot": [
+            118.5,
+            388
+          ],
+          "durationTicks": 10,
+          "phase": "right leg extends forward sole first at waist height",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "greyback-medium",
+          "rect": [
+            791,
+            57,
+            343,
+            396
+          ],
+          "pivot": [
+            117,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "right knee retracts bent beneath torso",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "greyback-medium",
+          "rect": [
+            1231,
+            58,
+            240,
+            394
+          ],
+          "pivot": [
+            104,
+            390
+          ],
+          "durationTicks": 10,
+          "phase": "right foot lands and neutral combat stance",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 0,
+          "pageId": "greyback-medium",
+          "rect": [
+            48,
+            561,
+            249,
+            396
+          ],
+          "pivot": [
+            139,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "right knee raised loading frontkick",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 1,
+          "pageId": "greyback-medium",
+          "rect": [
+            451,
+            559,
+            222,
+            392
+          ],
+          "pivot": [
+            100.5,
+            388
+          ],
+          "durationTicks": 10,
+          "phase": "right leg extends forward sole first at waist height",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 2,
+          "pageId": "greyback-medium",
+          "rect": [
+            754,
+            560,
+            351,
+            397
+          ],
+          "pivot": [
+            230.5,
+            393
+          ],
+          "durationTicks": 10,
+          "phase": "right knee retracts bent beneath torso",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.medium",
+          "index": 3,
+          "pageId": "greyback-medium",
+          "rect": [
+            1204,
+            561,
+            244,
+            396
+          ],
+          "pivot": [
+            140.5,
+            392
+          ],
+          "durationTicks": 10,
+          "phase": "right foot lands and neutral combat stance",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "heavy",
+      "actionId": "heavy",
+      "label": "heavy",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-heavy-v34.png",
+      "originId": "exec-8f07265d-0726-4ba6-9023-717e752a8d9d.png",
+      "sha256": "a06002d4d15a73a10f9edc97726efb5f36303447d155ff3999c7dcb00e4de0d5",
+      "bytes": 2324056,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Short shoulder/body check, not blade attack. Left reordered startup/contact/recovery/neutral."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1139725,
+        "fringePixels": 20503
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "knees flexed body loaded backward, right empty fist at ribs",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54752,
+          "alpha16Bounds": [
+            56,
+            55,
+            295,
+            416
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 70,
+          "pixelDigest": "3fffb2ce191afd3a668380486774bedebd82bec6dee5ebdfde1321ad5281c525",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right armored shoulder thrust forward in short body-check, right fist still at ribs",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54951,
+          "alpha16Bounds": [
+            439,
+            77,
+            329,
+            393
+          ],
+          "gridBorderPixels": 18,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "97b4b6259964180aae029fd2955576c5fa973d0d7e7ce15813a3a62f59f24bc3",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "shoulder retracts and torso begins upright",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54775,
+          "alpha16Bounds": [
+            768,
+            50,
+            357,
+            421
+          ],
+          "gridBorderPixels": 18,
+          "residualMagentaPixels": 67,
+          "pixelDigest": "5042d433a258e1410206142bc9ad174b639cc1b100c9511ff8b91b775f49966d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral standing",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 54785,
+          "alpha16Bounds": [
+            1235,
+            20,
+            267,
+            456
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 83,
+          "pixelDigest": "2d86b6fbe1bdcb9c8ced67d409297233eacbc8f9cdb60ad7cb656a51acaba55a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "knees flexed body loaded backward, right empty fist at ribs",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53221,
+          "alpha16Bounds": [
+            32,
+            540,
+            260,
+            445
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 57,
+          "pixelDigest": "cfe8f8eee412ecb0174c543d6c93ee6c4f6737eeca10a9e69e5466576949cece",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right armored shoulder thrust forward in short body-check, right fist still at ribs",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52473,
+          "alpha16Bounds": [
+            418,
+            560,
+            350,
+            423
+          ],
+          "gridBorderPixels": 15,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "686b7927a89ae742200b1d3121f17e280a8688e161cf1b0e306b0e31f850c088",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "shoulder retracts and torso begins upright",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54124,
+          "alpha16Bounds": [
+            768,
+            581,
+            328,
+            401
+          ],
+          "gridBorderPixels": 17,
+          "residualMagentaPixels": 34,
+          "pixelDigest": "93c78fc4d975053c9c40a8af8f899532eff6b6e2a34088de9a959c47b1188967",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral standing",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 54058,
+          "alpha16Bounds": [
+            1192,
+            571,
+            289,
+            414
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 71,
+          "pixelDigest": "9b15bdebdd82d7f89d20bd7e260c8e2e4a7d23c2d07cf9e58e10c69667992475",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            53,
+            52,
+            301,
+            422
+          ],
+          "pivot": [
+            125.5,
+            418
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            436,
+            74,
+            345,
+            399
+          ],
+          "pivot": [
+            134,
+            395
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            831,
+            47,
+            297,
+            427
+          ],
+          "pivot": [
+            124.5,
+            423
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "greyback-heavy",
+          "rect": [
+            1232,
+            17,
+            273,
+            462
+          ],
+          "pivot": [
+            118,
+            458
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            415,
+            557,
+            282,
+            429
+          ],
+          "pivot": [
+            162.5,
+            425
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            760,
+            578,
+            339,
+            407
+          ],
+          "pivot": [
+            204,
+            403
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 0,
+          "pageId": "greyback-heavy",
+          "rect": [
+            1189,
+            568,
+            295,
+            420
+          ],
+          "pivot": [
+            172,
+            416
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "index": 1,
+          "pageId": "greyback-heavy",
+          "rect": [
+            29,
+            537,
+            266,
+            451
+          ],
+          "pivot": [
+            148,
+            447
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                53,
+                52,
+                301,
+                422
+              ],
+              "pivot": [
+                125.5,
+                418
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                436,
+                74,
+                345,
+                399
+              ],
+              "pivot": [
+                134,
+                395
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                831,
+                47,
+                297,
+                427
+              ],
+              "pivot": [
+                124.5,
+                423
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                1232,
+                17,
+                273,
+                462
+              ],
+              "pivot": [
+                118,
+                458
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                415,
+                557,
+                282,
+                429
+              ],
+              "pivot": [
+                162.5,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                760,
+                578,
+                339,
+                407
+              ],
+              "pivot": [
+                204,
+                403
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                1189,
+                568,
+                295,
+                420
+              ],
+              "pivot": [
+                172,
+                416
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                29,
+                537,
+                266,
+                451
+              ],
+              "pivot": [
+                148,
+                447
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.heavy.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-light-arm",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-light-arm-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-light-arm-v34.png",
+      "originId": "exec-61b17a73-db2a-4f99-9abb-8d5c445e0dad.png",
+      "sha256": "8aeff08bd44009a5c18c0b4b0f88498434dea64d61a1a0fe8d9364f329b34766",
+      "bytes": 2172161,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Targeted edit did not fix contact hand swap: near armored arm still holds pistol while far arm punches. No contact frame accepted, no fake light clip."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1161550,
+        "fringePixels": 19293
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "right fist startup",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52316,
+          "alpha16Bounds": [
+            75,
+            49,
+            288,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 26,
+          "pixelDigest": "d4f26d0ae0f6935a9da1066f711bf1362dd4876cbf426e229351b97ff8ee8912",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right fist contact",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51046,
+          "alpha16Bounds": [
+            433,
+            53,
+            335,
+            427
+          ],
+          "gridBorderPixels": 20,
+          "residualMagentaPixels": 34,
+          "pixelDigest": "ac7089268fb5def3a114e49f391729d1e35d8d9afc73f6471db2e345c763b9cf",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right fist recovery",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 51203,
+          "alpha16Bounds": [
+            768,
+            50,
+            349,
+            431
+          ],
+          "gridBorderPixels": 19,
+          "residualMagentaPixels": 17,
+          "pixelDigest": "8b1ab03e9dd3cc4ef3aec12430c4f649653ac982a7084b89f35fb2c913a06a26",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52622,
+          "alpha16Bounds": [
+            1237,
+            42,
+            252,
+            440
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 83,
+          "pixelDigest": "c52203096e233ce13eb4e160402c11640ed5afd56fd7f5ec242ce10c110057c4",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "right fist startup",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51004,
+          "alpha16Bounds": [
+            42,
+            552,
+            271,
+            431
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "54223f9dd8f97fa54014e06fb4364bcf57b2f219972ed59ba3a5c4cc42fb7ab2",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right fist contact",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50195,
+          "alpha16Bounds": [
+            403,
+            559,
+            330,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 16,
+          "pixelDigest": "86fa672f71a82b32ec15be0b12cc2b1f07a3c817d6ee517f4b22699d451c0ccc",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right fist recovery",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50748,
+          "alpha16Bounds": [
+            809,
+            554,
+            272,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 38,
+          "pixelDigest": "0dda72971804396054ea0fdf3aba1a95fd46ac3ee4649f0474b6d118c222045d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52180,
+          "alpha16Bounds": [
+            1208,
+            547,
+            248,
+            437
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "49ae9aa40bacf5b5925d66ea6555a161f935b99aa664f57dd0748df9140d57da",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            72,
+            46,
+            294,
+            438
+          ],
+          "pivot": [
+            120,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "right fist startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            430,
+            50,
+            343,
+            433
+          ],
+          "pivot": [
+            126.5,
+            429
+          ],
+          "durationTicks": 10,
+          "phase": "right fist contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            836,
+            47,
+            284,
+            437
+          ],
+          "pivot": [
+            121,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "right fist recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            1234,
+            39,
+            258,
+            446
+          ],
+          "pivot": [
+            108.5,
+            442
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 0,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            39,
+            549,
+            277,
+            437
+          ],
+          "pivot": [
+            155.5,
+            433
+          ],
+          "durationTicks": 10,
+          "phase": "right fist startup",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 1,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            400,
+            556,
+            336,
+            430
+          ],
+          "pivot": [
+            207.5,
+            426
+          ],
+          "durationTicks": 10,
+          "phase": "right fist contact",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 2,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            806,
+            551,
+            278,
+            436
+          ],
+          "pivot": [
+            157.5,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "right fist recovery",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.light",
+          "index": 3,
+          "pageId": "greyback-repair-light-arm",
+          "rect": [
+            1205,
+            544,
+            254,
+            443
+          ],
+          "pivot": [
+            147,
+            439
+          ],
+          "durationTicks": 10,
+          "phase": "neutral",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-light-cross",
+      "actionId": "light",
+      "label": "light",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+      "originId": "exec-47847cf2-bfb3-4981-b19a-db544b6fe572.png",
+      "sha256": "5d51b5d9e38b454d5db3241401d68f4195b4618196fc4a87719a4920d8e2834d",
+      "bytes": 2231625,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Right fist attacks while pistol stays in left hand; torso rotation preserves arm assignment."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1166459,
+        "fringePixels": 20221
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right fist tucked by ribs",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49763,
+          "alpha16Bounds": [
+            64,
+            50,
+            264,
+            423
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "f7cb53e92d139a1785bf1e533ba143bcf715188a0a05fb1904aa159a2fa6292f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right cross punch with armored shoulder rotated strongly forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52499,
+          "alpha16Bounds": [
+            431,
+            50,
+            335,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 89,
+          "pixelDigest": "be99cc20c6d9c77fa8698244dcef9fb687003b150086195ed119c9bd8bc84549",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "right elbow returning beside ribs",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 49958,
+          "alpha16Bounds": [
+            839,
+            50,
+            284,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 35,
+          "pixelDigest": "9e447d7d33f327528ff97041ea08f806d1b2431c6d1c44d3d20e5dc39f465cf1",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "neutral left pistol low right open hand",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50801,
+          "alpha16Bounds": [
+            1233,
+            50,
+            256,
+            422
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 170,
+          "pixelDigest": "f98c256526ad00a291168eed7fbc3c85e5bf2790a758b0b02d9d02d122ef51ad",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right fist tucked by ribs",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49608,
+          "alpha16Bounds": [
+            45,
+            560,
+            262,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "88fe8b99b4ff0030e0e06ebba030bfa331eabb586e8269346b4b11fb8ffb53e0",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right cross punch with armored shoulder rotated strongly forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53190,
+          "alpha16Bounds": [
+            400,
+            559,
+            337,
+            426
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 58,
+          "pixelDigest": "22524d2b9000f17f206d3be419d412bd11aa11afabb40a02fbee8e3f6d6ad8d9",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "right elbow returning beside ribs",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 49452,
+          "alpha16Bounds": [
+            824,
+            560,
+            272,
+            425
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 66,
+          "pixelDigest": "a9de017f5fd9892e8ab93699bdfff10d54e818500d0cade84619db8cb0f57b40",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "neutral left pistol low right open hand",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 51134,
+          "alpha16Bounds": [
+            1210,
+            560,
+            253,
+            424
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 138,
+          "pixelDigest": "7ff873ba96b400c2cdeb850fb733b6ed0b27a1589fd70c7092cf27c003bb7cca",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            61,
+            47,
+            270,
+            429
+          ],
+          "pivot": [
+            115,
+            425
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            428,
+            47,
+            341,
+            430
+          ],
+          "pivot": [
+            132.5,
+            426
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            836,
+            47,
+            290,
+            430
+          ],
+          "pivot": [
+            124,
+            426
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            1230,
+            47,
+            262,
+            428
+          ],
+          "pivot": [
+            114.5,
+            424
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            42,
+            557,
+            268,
+            430
+          ],
+          "pivot": [
+            145,
+            426
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            397,
+            556,
+            343,
+            432
+          ],
+          "pivot": [
+            209.5,
+            428
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 0,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            821,
+            557,
+            278,
+            431
+          ],
+          "pivot": [
+            150.5,
+            427
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "index": 1,
+          "pageId": "greyback-repair-light-cross",
+          "rect": [
+            1207,
+            557,
+            259,
+            430
+          ],
+          "pivot": [
+            141,
+            426
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                61,
+                47,
+                270,
+                429
+              ],
+              "pivot": [
+                115,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                428,
+                47,
+                341,
+                430
+              ],
+              "pivot": [
+                132.5,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                836,
+                47,
+                290,
+                430
+              ],
+              "pivot": [
+                124,
+                426
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                1230,
+                47,
+                262,
+                428
+              ],
+              "pivot": [
+                114.5,
+                424
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                42,
+                557,
+                268,
+                430
+              ],
+              "pivot": [
+                145,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                397,
+                556,
+                343,
+                432
+              ],
+              "pivot": [
+                209.5,
+                428
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                821,
+                557,
+                278,
+                431
+              ],
+              "pivot": [
+                150.5,
+                427
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                1207,
+                557,
+                259,
+                430
+              ],
+              "pivot": [
+                141,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.light.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-medium-pistol",
+      "actionId": "medium",
+      "label": "medium",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+      "originId": "exec-8754431d-ea55-4427-8ef0-0d78cf6fb257.png",
+      "sha256": "42ac22317256dc456ae99905ebe1d9102728e00bb16e840450f9cb5dc0d4194c",
+      "bytes": 2072350,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Pistol remains in left hand; generic frontal kick adaptation, no claim of specific anatomical kicking leg."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1216966,
+        "fringePixels": 20129
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 45444,
+          "alpha16Bounds": [
+            80,
+            64,
+            255,
+            387
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 65,
+          "pixelDigest": "51f5efd430c67159cd4f2a935d211fb1c85977f339fb4393ecaec487523b8ba5",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "knee load",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 43339,
+          "alpha16Bounds": [
+            463,
+            57,
+            269,
+            386
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "f4e0af400945b356227bf7758af27db8ab98dad724f5ea11c0f29bc76917fcce",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "front kick contact",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44629,
+          "alpha16Bounds": [
+            789,
+            59,
+            345,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 54,
+          "pixelDigest": "5672d88505983d5bfd770423bedf8dfc299adc1dcebd6d74508712306d6c829a",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "return foot",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 41874,
+          "alpha16Bounds": [
+            1235,
+            61,
+            233,
+            388
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 39,
+          "pixelDigest": "309c6ec0d6beeae7d2943b89d223640393361191528016d35c10f22492a46b10",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "neutral",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 46095,
+          "alpha16Bounds": [
+            51,
+            564,
+            244,
+            390
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "98a15a79455af6770ae5f7a3e8d59367930e8d4a0911af13d561f9762f0d4374",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "knee load",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44001,
+          "alpha16Bounds": [
+            417,
+            561,
+            351,
+            387
+          ],
+          "gridBorderPixels": 29,
+          "residualMagentaPixels": 48,
+          "pixelDigest": "e7eb9ebf0db52ad2ccc8fe7b6de3eb01f4e195778cbe1911c566383bd5b3688c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "front kick contact",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45513,
+          "alpha16Bounds": [
+            768,
+            562,
+            338,
+            392
+          ],
+          "gridBorderPixels": 29,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "f05a209e70c40cfd9f8bc61ef344159708275adab81129c91ba3936070e7cbcd",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "return foot",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 45003,
+          "alpha16Bounds": [
+            1207,
+            563,
+            239,
+            391
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "76a4abc27a2ce176e5c4f0f3e96793745ffc9b0b0874412adeb91adae818269f",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            460,
+            54,
+            275,
+            392
+          ],
+          "pivot": [
+            118.5,
+            388
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            786,
+            56,
+            351,
+            396
+          ],
+          "pivot": [
+            122,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            1232,
+            58,
+            239,
+            394
+          ],
+          "pivot": [
+            103,
+            390
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            77,
+            61,
+            261,
+            393
+          ],
+          "pivot": [
+            114,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            414,
+            558,
+            261,
+            393
+          ],
+          "pivot": [
+            138,
+            389
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            755,
+            559,
+            354,
+            398
+          ],
+          "pivot": [
+            230,
+            394
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 0,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            1204,
+            560,
+            245,
+            397
+          ],
+          "pivot": [
+            141.5,
+            393
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "index": 1,
+          "pageId": "greyback-repair-medium-pistol",
+          "rect": [
+            48,
+            561,
+            250,
+            396
+          ],
+          "pivot": [
+            139.5,
+            392
+          ],
+          "durationTicks": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                460,
+                54,
+                275,
+                392
+              ],
+              "pivot": [
+                118.5,
+                388
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                786,
+                56,
+                351,
+                396
+              ],
+              "pivot": [
+                122,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                1232,
+                58,
+                239,
+                394
+              ],
+              "pivot": [
+                103,
+                390
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                77,
+                61,
+                261,
+                393
+              ],
+              "pivot": [
+                114,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                414,
+                558,
+                261,
+                393
+              ],
+              "pivot": [
+                138,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                755,
+                559,
+                354,
+                398
+              ],
+              "pivot": [
+                230,
+                394
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                1204,
+                560,
+                245,
+                397
+              ],
+              "pivot": [
+                141.5,
+                393
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                48,
+                561,
+                250,
+                396
+              ],
+              "pivot": [
+                139.5,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "pit.stand.medium.startup",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-backward-contact",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-backward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-contact-v34.png",
+      "originId": "exec-725caede-7283-43e5-9b21-27e73bd3bec3.png",
+      "sha256": "9a78c2bd7ac91f24f93edae775aa5e42a08b9cae796c953daa6f312d3208ab97",
+      "bytes": 2050930,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Column3 changes thigh occlusion toward opposite contact, but introduces turquoise kneecap color absent from identity on both rows. Candidate motion requires armor color correction before acceptance; no runtime promotion."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1229513,
+        "fringePixels": 21108
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44286,
+          "alpha16Bounds": [
+            77,
+            54,
+            271,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 54,
+          "pixelDigest": "ddc2357815c6d2e3707005fce7dc7a9738ada026fb41abd21ba21357137bc312",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42239,
+          "alpha16Bounds": [
+            481,
+            51,
+            226,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "cb38f42a66cf8a54fc9a1c3184feadb1b7e0acd10c925cc9d5474a265dabeb1b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44314,
+          "alpha16Bounds": [
+            823,
+            52,
+            265,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 52,
+          "pixelDigest": "c50ba20e2f3fd36b3f58f5e1221abe2e9fdbade34a9eba6b87f4c5cb7f725978",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40881,
+          "alpha16Bounds": [
+            1225,
+            52,
+            248,
+            406
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 62,
+          "pixelDigest": "9363a94ce2ce6798669384cb6bf1dfc43acffbd51f371a1ab5b4e72192faa1cd",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43729,
+          "alpha16Bounds": [
+            41,
+            549,
+            269,
+            400
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 49,
+          "pixelDigest": "2e98b1a5e21ea6f62dfd3367593d84001c397f119a5040f854b9883f0b6dfd00",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42121,
+          "alpha16Bounds": [
+            442,
+            547,
+            221,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "0730c8fe32d38dcef72e7d26dfdba7f29f80bd032ae619bc4b39985b765faaa0",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44941,
+          "alpha16Bounds": [
+            806,
+            546,
+            261,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 87,
+          "pixelDigest": "839646ae495de4b7571e933953a8fcb63f6607741b1b928cda33d5cfead0901d",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40840,
+          "alpha16Bounds": [
+            1199,
+            548,
+            248,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 80,
+          "pixelDigest": "876628390cfb11266d49e3bb9d1da09116da794a9e1a2668f7249e2208d61cf7",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            74,
+            51,
+            277,
+            411
+          ],
+          "pivot": [
+            128.5,
+            407
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            478,
+            48,
+            232,
+            412
+          ],
+          "pivot": [
+            80,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            820,
+            49,
+            271,
+            412
+          ],
+          "pivot": [
+            130,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            1222,
+            49,
+            254,
+            412
+          ],
+          "pivot": [
+            137.5,
+            408
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            38,
+            546,
+            275,
+            406
+          ],
+          "pivot": [
+            147,
+            402
+          ],
+          "durationTicks": 10,
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            439,
+            544,
+            227,
+            409
+          ],
+          "pivot": [
+            145,
+            405
+          ],
+          "durationTicks": 10,
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            803,
+            543,
+            267,
+            410
+          ],
+          "pivot": [
+            131,
+            406
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-backward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-backward-contact",
+          "rect": [
+            1196,
+            545,
+            254,
+            408
+          ],
+          "pivot": [
+            113.5,
+            404
+          ],
+          "durationTicks": 10,
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    },
+    {
+      "id": "repair-walk-backward-armor",
+      "actionId": "walk-backward",
+      "label": "walk-backward",
+      "revision": 1,
+      "status": "validated",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+      "originId": "exec-89842a5c-254f-42eb-a350-6b5352fc6714.png",
+      "sha256": "e679ba819c79c64648205dc3df04d36ebed2389a19708700ed0713ec6574527e",
+      "bytes": 2025821,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predator 2 (1990) old unmasked Elder with flintlock; not certified 1:1.",
+        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
+        "Distinct alternating contacts, armor color corrected, explicit pelvis projection pivots."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1229027,
+        "fringePixels": 20814
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44376,
+          "alpha16Bounds": [
+            78,
+            54,
+            271,
+            405
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 68,
+          "pixelDigest": "f8951f819929a895d1c74e8e6b6d8bd0d65b95220f1626b0b08005cbe1ba61e7",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 42337,
+          "alpha16Bounds": [
+            482,
+            50,
+            225,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 56,
+          "pixelDigest": "adcf7cea1ce9c7bce6c095b2e87b273d9c049c98ab8f49fd1f8869452b90d20b",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 44287,
+          "alpha16Bounds": [
+            824,
+            52,
+            264,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 71,
+          "pixelDigest": "f325b7b529a16a84388ba168b1b476f61135d372428d70c2d519ff061d3be428",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 40906,
+          "alpha16Bounds": [
+            1225,
+            51,
+            248,
+            407
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 104,
+          "pixelDigest": "bba850b586ac773a85ededee3a6d1422253a95c5e99a0260c2756abab80b3a8c",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 43812,
+          "alpha16Bounds": [
+            41,
+            548,
+            269,
+            401
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 73,
+          "pixelDigest": "0d42c52a6d934cb7f4e39380d3ea5d9105267df83fdb66d49ea7dcd50e4fc9fc",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right rear leg supports; LEFT knee travels backward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 42234,
+          "alpha16Bounds": [
+            442,
+            547,
+            221,
+            403
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 103,
+          "pixelDigest": "ac10852e9a09f0cb9b7ce33ba10040a994e95c7ee462e22ae0a847c3b3acb610",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg behind toes contact; near RIGHT leg forward",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 44951,
+          "alpha16Bounds": [
+            807,
+            546,
+            260,
+            404
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 94,
+          "pixelDigest": "040165a614bd152144053ac5e0c8812342e5e6315f68b30ba60bb80f2a1b2a67",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left rear leg supports; RIGHT knee travels backward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 40934,
+          "alpha16Bounds": [
+            1199,
+            548,
+            248,
+            402
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 92,
+          "pixelDigest": "bc2275af14d4dce0d948daf1e1d66cb25992fccbb023878fb8bdf5a5aeee475d",
+          "runtimeFrameAccepted": false,
+          "supersededByExplicitReviewFrames": true
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            75,
+            51,
+            277,
+            411
+          ],
+          "pivot": [
+            136,
+            407
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            479,
+            47,
+            231,
+            413
+          ],
+          "pivot": [
+            108,
+            409
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            821,
+            49,
+            270,
+            413
+          ],
+          "pivot": [
+            148,
+            409
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "right",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            1222,
+            48,
+            254,
+            413
+          ],
+          "pivot": [
+            138,
+            409
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            38,
+            545,
+            275,
+            407
+          ],
+          "pivot": [
+            148,
+            403
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            439,
+            544,
+            227,
+            409
+          ],
+          "pivot": [
+            129,
+            405
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            804,
+            543,
+            266,
+            410
+          ],
+          "pivot": [
+            147,
+            406
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "facing": "left",
+          "clipId": "walk-backward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-backward-armor",
+          "rect": [
+            1196,
+            545,
+            254,
+            408
+          ],
+          "pivot": [
+            144,
+            404
+          ],
+          "durationTicks": 8,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "runtimeClips": [
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                75,
+                51,
+                277,
+                411
+              ],
+              "pivot": [
+                136,
+                407
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                479,
+                47,
+                231,
+                413
+              ],
+              "pivot": [
+                108,
+                409
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                821,
+                49,
+                270,
+                413
+              ],
+              "pivot": [
+                148,
+                409
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                1222,
+                48,
+                254,
+                413
+              ],
+              "pivot": [
+                138,
+                409
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                38,
+                545,
+                275,
+                407
+              ],
+              "pivot": [
+                148,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                439,
+                544,
+                227,
+                409
+              ],
+              "pivot": [
+                129,
+                405
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                804,
+                543,
+                266,
+                410
+              ],
+              "pivot": [
+                147,
+                406
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                1196,
+                545,
+                254,
+                408
+              ],
+              "pivot": [
+                144,
+                404
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ],
+      "acceptedActionId": "walk-backward",
+      "acceptance": {
+        "visual": true,
+        "nativeCanvas": true,
+        "transparentBorders": true,
+        "noEngineMirror": true,
+        "validatedAt": "2026-09-12T23:58:25.381Z",
+        "scope": "Only listed runtimeClips/facings; other drawings remain review samples."
+      }
+    },
+    {
+      "id": "repair-walk-forward-contact",
+      "actionId": "walk-forward",
+      "label": "walk-forward",
+      "revision": 1,
+      "status": "rejected",
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-forward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-forward-contact-v34.png",
+      "originId": "exec-229804a1-0fad-4a59-993e-52725a8315d2.png",
+      "sha256": "fdc49ad3e399b84851c94b55544d8f11811a1c5eb129a08606ef90353296b27c",
+      "bytes": 2245822,
+      "width": 1536,
+      "height": 1024,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Correction widens stride but still repeats support/passing configuration2/4 and does not establish a clear alternating contact1/3. No accepted forwardwalk cycle."
+      ],
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prepared": {
+        "keyedPixels": 1150384,
+        "fringePixels": 21313
+      },
+      "distinctGridDrawings": 8,
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 55059,
+          "alpha16Bounds": [
+            76,
+            40,
+            279,
+            435
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 54,
+          "pixelDigest": "ae6c560f6acddaf6c8d8491fe443c2071ce6243d153f8c024cfb7ad856854811",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 50654,
+          "alpha16Bounds": [
+            476,
+            32,
+            258,
+            441
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 74,
+          "pixelDigest": "4bfb4f7a4c0b74bec442e677d1ad6f64fea9bacfbaf66f7d28a7575cd72fd61a",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 53472,
+          "alpha16Bounds": [
+            799,
+            43,
+            315,
+            432
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 54,
+          "pixelDigest": "2830c9092e8684e4afdcaf582561c7d7928665506cd006ad72e72d7668cdc5ad",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            0,
+            384,
+            512
+          ],
+          "visiblePixels": 52410,
+          "alpha16Bounds": [
+            1245,
+            32,
+            257,
+            442
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 36,
+          "pixelDigest": "8bab1cc62a121eed29d62652f1fa2c2bd918953645957e194eed92c74a3a3a13",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "reviewGridRect": [
+            0,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53793,
+          "alpha16Bounds": [
+            36,
+            542,
+            285,
+            433
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 40,
+          "pixelDigest": "663b94f3bdb81c4eeec24ed192ab70b20ed4ffe9a7fe96da1833ee83cd4692b6",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "reviewGridRect": [
+            384,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 50899,
+          "alpha16Bounds": [
+            416,
+            536,
+            252,
+            442
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 85,
+          "pixelDigest": "068623690e1b9e91fb447bbf0734819071adbec255030d86b95ce77edc3b77e7",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 6,
+          "facing": "left",
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "reviewGridRect": [
+            768,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 53803,
+          "alpha16Bounds": [
+            815,
+            548,
+            304,
+            430
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 48,
+          "pixelDigest": "d98d625ca09341d2e787059c31f0e4c7b5c360d9a64c58f3ec36ac339dbbdb4b",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 7,
+          "facing": "left",
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "reviewGridRect": [
+            1152,
+            512,
+            384,
+            512
+          ],
+          "visiblePixels": 52390,
+          "alpha16Bounds": [
+            1181,
+            536,
+            254,
+            443
+          ],
+          "gridBorderPixels": 0,
+          "residualMagentaPixels": 50,
+          "pixelDigest": "3b9a9dd54afce5f0f5463978f339f5968cf595a2be5e85db7e0fb3eb8665bb1c",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "reviewFrames": [
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            73,
+            37,
+            285,
+            441
+          ],
+          "pivot": [
+            136,
+            437
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            473,
+            29,
+            264,
+            447
+          ],
+          "pivot": [
+            86.5,
+            443
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            796,
+            40,
+            321,
+            438
+          ],
+          "pivot": [
+            162,
+            434
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "right",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            1242,
+            29,
+            263,
+            448
+          ],
+          "pivot": [
+            77,
+            444
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 0,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            33,
+            539,
+            291,
+            439
+          ],
+          "pivot": [
+            141.5,
+            435
+          ],
+          "durationTicks": 10,
+          "phase": "near right leg forward heel contact / far left leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 1,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            413,
+            533,
+            258,
+            448
+          ],
+          "pivot": [
+            170.5,
+            444
+          ],
+          "durationTicks": 10,
+          "phase": "right supporting leg vertical / LEFT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 2,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            812,
+            545,
+            310,
+            436
+          ],
+          "pivot": [
+            149.5,
+            432
+          ],
+          "durationTicks": 10,
+          "phase": "far LEFT leg now forward heel contact / near RIGHT leg behind",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        },
+        {
+          "facing": "left",
+          "clipId": "review.walk-forward",
+          "index": 3,
+          "pageId": "greyback-repair-walk-forward-contact",
+          "rect": [
+            1178,
+            533,
+            260,
+            449
+          ],
+          "pivot": [
+            172.5,
+            445
+          ],
+          "durationTicks": 10,
+          "phase": "left supporting leg vertical / RIGHT knee passes forward",
+          "measurement": "alpha-connected-column-spans",
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": []
+    }
+  ],
+  "acceptedDefinitionPath": "art-source/v34/pit/greyback/greyback-runtime-atlas-v34.json",
+  "nativeContrastReview": {
+    "captures": 122,
+    "bodyPixels": "real game scale, no Canvas scaling",
+    "backgrounds": [
+      "#f4f4ed",
+      "#0b1110"
+    ],
+    "errors": 0,
+    "failedRequests": 0,
+    "borderPixels": 0,
+    "maxResidualMagentaPixels": 15,
+    "keyComparison": [
+      {
+        "pageId": "greyback-idle",
+        "removedPixels": 1952,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-repair-walk-backward-armor",
+        "removedPixels": 1994,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-crouch",
+        "removedPixels": 1751,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-guard",
+        "removedPixels": 1949,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-hurt",
+        "removedPixels": 2020,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-repair-light-cross",
+        "removedPixels": 2085,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-repair-medium-pistol",
+        "removedPixels": 1842,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      },
+      {
+        "pageId": "greyback-heavy",
+        "removedPixels": 1940,
+        "minR": 191,
+        "minB": 191,
+        "maxG": 64
+      }
+    ],
+    "method": "Real loadPitSpriteSheetAnimations and drawPitSpriteSheetAnimation in Chrome"
+  },
+  "variantId": "predator2-1990-elder-unmasked-flintlock",
+  "runtimeAvailability": {
+    "modes": [
+      "cpu",
+      "local",
+      "training"
+    ],
+    "progressionModes": [],
+    "replay": "replay and JSON export verified in real PitCanvas",
+    "statisticsPersistence": false
+  },
+  "nativeInterfaceReview": {
+    "keyboardChecks": 14,
+    "facings": [
+      "right",
+      "left"
+    ],
+    "missingPageFallback": "static-bitmap",
+    "errors": 0
+  }
+}

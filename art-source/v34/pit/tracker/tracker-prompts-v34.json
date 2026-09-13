@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nIDLE four stages: neutral alert; inhale shoulders slightly raised; exhale relaxed knees; return toward neutral. Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep. Both clawed hands empty and open relaxed; two mounted wrist blades outside right fingers, not held. Red lights small. No equipment moves attachment.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Four distinct subtle idle poses both facings. Empty hands and two V5-mounted blades separate, hip tether and mask stable. Uses V5 fan-made loadout; not movie-certified. Private cache only; no runtime approval yet."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-idle-v34.png",
+      "originId": "exec-9fb5eecd-7680-4121-9f30-0c3ff0e622c6.png",
+      "sha256": "7fa295e991e8c2c1d3a1b1d73ff13f6e03a410c98795900cd7203b33bfeb5399",
+      "bytes": 2230213,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nFORWARD WALK, four stages: near right leg forward heel contact / far left leg behind; right supporting leg vertical / LEFT knee passes forward; far LEFT leg now forward heel contact / near RIGHT leg behind; left supporting leg vertical / RIGHT knee passes forward. Forward walk cycle. Both feet must alternate support. Phases1 and3 are opposite leg contacts, phases2 and4 opposite passing knees. Body remains in place on the sheet; no duplicates. At hip, column1 near thigh reaches forward, column3 near thigh trails backward. Column2 far leg swings through while near supports; column4 near leg swings through while far supports. Knees must alternate, not same pose twice. Arms relaxed with EMPTY hands and fixed blade mounts outside fingers. No dogs or extras.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "rejected",
+      "notes": [
+        "Same near-leg contact and swing repeated in1/3 and2/4, not an alternating walk. Private source retained, no playback approved."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-walk-forward-v34.png",
+      "originId": "exec-adbc1875-bdd1-4f16-aa38-21794ff9777c.png",
+      "sha256": "f0a245e6e335bfc0bf59a0924c20513ca9450d5412588580fdef2f591b9a75c8",
+      "bytes": 2125159,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nBACKWARD RETREAT four phases: near RIGHT leg behind, right toes contact; far LEFT leg forward; right rear leg supports; LEFT knee travels backward; far LEFT leg behind toes contact; near RIGHT leg forward; left rear leg supports; RIGHT knee travels backward. Backward retreat cycle, still looking at opponent. Opposite legs clearly support phases1/3 and2/4. Track front-facing vs rear-facing direction independently; do not repurpose forward sheet. Use real opposing supports: first NEAR leg behind touching down, third NEAR leg forward and FAR leg behind touching down; second FAR knee travels back, fourth NEAR knee travels back. Four biomechanically different leg poses per facing. Keep mounted blades and open EMPTY hands clear of legs. Body same scale.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Passing legs differ between2/4, but contact poses1/3 still use same near/far support. Needs targeted opposite contact3 repair before any looping approval. Hands and blade mounts coherent."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-walk-backward-v34.png",
+      "originId": "exec-2951b8d8-f433-4a8b-91fe-f2872548180e.png",
+      "sha256": "d4eeb387e377acb7912adc0dd688bf70c525853ccf3f5dd165ba499fc89471f0",
+      "bytes": 2137044,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nCROUCH four ordered stages: standing combat stance; half squat descending; deep stable crouch with both heels grounded; half squat rising. Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale. Two open EMPTY clawed hands remain visible outside knees, right dorsal blades point down clear of shin. Gauntlet rails must not replace fingers. Same head and torso scale; deep squat via bent hips/knees, not body deformation. Full feet and mask tusks.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Four crouch depths both facings, empty hands and two mounted blades visible without leg fusion. First3 intended for entry/held crouch, fourth rise excluded from held state."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-crouch-v34.png",
+      "originId": "exec-6da5a169-4bc0-44f7-b74f-5ff352c48c33.png",
+      "sha256": "7e8acdd1ecaf0d8cf8ef303f82c786601b2bfce4a15a5185d1ecb72375af80a8",
+      "bytes": 2173406,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nJUMP LAND four ordered stages each row: deep launch crouch; airborne rising knees bent; falling feet extending downward; landing crouch absorbing impact. Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate. Two EMPTY claw hands visible, dorsal wristblade pair remains attached, keep arms clear of knees. All eight drawings exactly same body scale, separate rows, no smoke.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Four readable launch/rise/fall/landing poses per facing; both hands remain empty below paired dorsal blades. No obvious missing limb at sheet review. Airborne sole-based pivot is provisional; engine jump mapping not validated."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-jump-land-v34.png",
+      "originId": "exec-89872f83-c11c-4831-90ce-44f1edf5ca09.png",
+      "sha256": "3c7a03fd55e1708f30a02f59f85fa6603df33d71576f955bc4ae5c6b28a138b0",
+      "bytes": 2091648,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nGUARD four ordered stages per row: left forearm raises from chest; right closed empty fist near waist; full guard left forearm vertical beside cheek; right forearm across sternum; absorb guard with knees flexed and shoulders braced; settled full guard held, both fists visible. Unarmed defensive guard sequence. Do not touch mask or cover hands. Keep mounted blades pointed away from face. Final pose holds full guard, not neutral. EXACTLY two empty clenched fists with visible knuckles. Right gauntlet two blade rails distinct above right fist, blades angled safely AWAY from mask. Left unarmed hand protects cheek without touching mask.",
+      "phase": [
+        "left forearm raises from chest; right closed empty fist near waist",
+        "full guard left forearm vertical beside cheek; right forearm across sternum",
+        "absorb guard with knees flexed and shoulders braced",
+        "settled full guard held, both fists visible"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "rejected",
+      "notes": [
+        "Right weapon hand disappears behind blade rails in raised guard phases2-4 instead of remaining an anatomically complete fist. Left hand reads correctly. Needs targeted right fist repair, no guard clip accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-guard-v34.png",
+      "originId": "exec-bb596fe6-adaf-4bc5-b7e8-7cb7fa2c6c6d.png",
+      "sha256": "8be749694b8abdbd3de877c0985635cc043b12c1fa2a36b595e26c434702f4cd",
+      "bytes": 2217538,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nHURT four ordered stages per row: small torso recoil from chest hit; larger backward torso lean, knees bent; recover torso upright with protective arms; return to neutral stance. Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent. BOTH empty open claw hands fully visible OUTSIDE torso silhouette. Wristblades mounted above right hand, never instead of a hand. Muzzle tusks and paired blades constant.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Source actual ordering is neutral/small recoil/large recoil/neutral both rows, not requested recovery column3. Candidate playback should use columns2,3,2,4. Two hands and gauntlet blades read coherently; no blood/effects."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-hurt-v34.png",
+      "originId": "exec-167638f3-1066-4854-a980-bf81b7e31326.png",
+      "sha256": "b32b6e13c5370acf81e5cafd7423712042338f376194c5d3482b8f331a0d5836",
+      "bytes": 2302348,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nLIGHT four ordered stages per row: short right forearm retract startup; short forward right wrist-blade jab contact; right forearm retracts halfway; neutral combat stance. Fast short wrist blade jab. Mounted blade assembly physically attached to right gauntlet. EMPTY clenched right fist visible below blades; no handheld weapon. Show a COMPLETE RIGHT HAND in all four frames: visible golden four knuckles, thumb curled below fingers, fist extends 30px beyond the sleeve, below the two silver blades. Blade rails sit dorsal above wrist, NOT a replacement for the hand. Very short straight jab. Two silver blade tips never merge.",
+      "phase": [
+        "short right forearm retract startup",
+        "short forward right wrist-blade jab contact",
+        "right forearm retracts halfway",
+        "neutral combat stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Visible complete empty right fist beneath paired wrist blades in contact. Right order columns1,2,3,4; left actual order requires4,2,3,1 for startup/contact/recovery/neutral. No engine clip accepted before pixel/Canvas review."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-light-v34.png",
+      "originId": "exec-4d34841a-2678-476f-92fa-f2dd517dc13f.png",
+      "sha256": "fdbcc00a266894ad1d7bf532958583af1033e41f411298f26084d0747da05c1e",
+      "bytes": 2141579,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nMEDIUM four ordered stages BOTH rows: right elbow draws back at waist; right forearm extends horizontally to opponent at chest height; right forearm retracts to ribs; neutral stance. Medium reaching wrist blade thrust. No sword, no detached blades, no extra equipment. Right fist visibly empty beneath mounted blades. A stronger longer lunge than light jab, torso rotated and front knee flexed on contact. COMPLETE RIGHT HAND golden four knuckles and curled thumb plainly visible 30px beyond gauntlet sleeve BELOW blade rails. Keep EMPTY right fist, not a sword hilt. Bottom row ordered startup/contact/retract/neutral from LEFT TO RIGHT, all noses face LEFT.",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Partial candidate RIGHT only columns1,2,4: complete fist at contact and neutral. Column3 recovery hides weapon hand and must be excluded. LEFT startup column1 loses both extended blades, column3 hides hand; left action rejected. Large forward reach crosses nominal cell2 boundary, explicit union rectangles required, no grid crop."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-medium-v34.png",
+      "originId": "exec-721d4d38-2d24-4818-a5a8-ebf8360cb164.png",
+      "sha256": "f013ff2c6377d7e423fe1d7895667ede580ae778ff80b56c2648f2a5ebb9cbdf",
+      "bytes": 2205702,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nTRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.\nHEAVY four ordered stages BOTH rows: low loaded diagonal right arm drawn back at hip; right forearm drives forward slightly upward in a heavy low diagonal slash; right elbow retracts with body settling; neutral stance. Heavy low diagonal mounted wrist blade attack, not overhead. Right empty fist remains visibly connected to the forearm; blades follow gauntlet axis. No motion trails or effects. COMPLETE RIGHT EMPTY GOLDEN FIST clearly extends below TWO LONG PARALLEL MOUNTED BLADES in EVERY frame; do not omit any hand. Low-to-middle diagonal sweep, long blade pair constant length, no blade retraction. Other empty left fist stays away from weapon arm. Do not duplicate light punch, heavy loaded torso and knee bend.",
+      "phase": [
+        "low loaded diagonal right arm drawn back at hip",
+        "right forearm drives forward slightly upward in a heavy low diagonal slash",
+        "right elbow retracts with body settling",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Low sweep with complete empty fist in startup/contact/neutral, blade pair stable. Candidate RIGHT columns1,2,4 and LEFT columns4,3,1 (source left sequence reversed). Middle recovery wrist obscures hand, exclude right3/left2. Three distinct drawings each action group, no invented tween."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-heavy-v34.png",
+      "originId": "exec-74adf345-7aa8-483c-9255-44bf9a56489e.png",
+      "sha256": "58ebce960f55086b71288ae5dfe46c25ec31d1df9f185f1b6c4d0377b3dac04f",
+      "bytes": 2134374,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "repair-guard-hand",
+      "actionId": "guard",
+      "prompt": "Correct first attached Tracker guard sheet, using second image as identity reference. Preserve full1536x1024 4x2 layout and same equipment, magenta background. MAIN DEFECT: weapon hand missing in poses. Redraw every RIGHT HAND as COMPLETE golden ochre empty closed fist with four knuckles and curled thumb, clearly visible BELOW dorsal wristblade rails beyond sleeve. Make right arm a low diagonal guard at abdomen, NOT across left arm. LEFT unarmed fist raised beside cheek; both fists must be separated by clear negative space. Right pair of long wristblades diagonal downforward, away from left elbow and mask. Four stages each row: low preparation; full left-high/right-low guard; absorb with knee flex; held full guard. Top facesRIGHT, bottom facesLEFT independently. Same two arms/two hands/two legs. No blade replaces fingers. No new gear, no text, no shadows.TRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.",
+      "phase": [
+        "left forearm raises from chest; right closed empty fist near waist",
+        "full guard left forearm vertical beside cheek; right forearm across sternum",
+        "absorb guard with knees flexed and shoulders braced",
+        "settled full guard held, both fists visible"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Repair restores a complete golden right fist beneath dorsal rails in all8 poses. Low-right/high-left guard keeps hands separated, no gauntlet-hand replacement. Candidate four guard poses per facing; native Canvas still required."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+      "originId": "exec-60aa7d21-6d32-4f00-877f-d167ee41f07e.png",
+      "sha256": "df57147c987968b9d9ed232e24ef9059c4ee0d0710e501d7a448d10fcff3f2ac",
+      "bytes": 2214763,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "repair-walk-backward-contact",
+      "actionId": "walk-backward",
+      "prompt": "Repair ONLY the THIRD COLUMN of BOTH ROWS of first attached Tracker retreat spritesheet. Second image is Tracker identity. Keep all other six sprites and entire1536x1024 sheet arrangement unchanged. In third column swap the legs' contact positions so it is the OPPOSITE contact to column1: TOP third near camera RIGHT LEG extends FORWARD toward screenRIGHT, right foot fully grounded on right side; FAR LEFT LEG extends BEHIND toward screenLEFT, left toes touch floor and heel raised. Make near right thigh visibly overlap far left thigh. BOTTOM third same anatomical reversal independently drawn facingLEFT: near visible leg forward towardLEFT, far leg behind towardRIGHT toes down heelup. Column1 remains original opposite stride. Two legs and two feet only. Preserve hands,two wristblades,tusks,skin,armor,margins. No labels,no new gear,magenta background. This is backward gait with actual alternating right and left support, not four poses of same rear leg.TRACKER, preserve attached historical V5 project presentation identity from Predators(2010), original fan-made not official1:1. Tall muscular Super Predator, golden ochre skin with dark large mottled spots, bare spotted torso crossed by thin brown leather straps, long black dreadlocks with brass bands. Dark scratched oval metallic BIOMASK with red eye slits and two prominent curved ivory tusks fixed at lower mask sides. Heavy dark gunmetal right shoulder armor, dark metallic gauntlets with red indicator lights. Anatomical RIGHT dorsal forearm carries the V5 presentation's exactly TWO long parallel silver wristblades; EMPTY complete right hand below the rails. Left hand also empty, left gauntlet broad with red lights. Brown long leather split loincloth with layered black central plates, waist belt, braided tether and small red-lit device at right hip. Dark metal knee/shin armor, clawed Yautja feet. No shoulder cannon, no spear, no gun, no dogs, no invented handheld sword. Both anatomical weapon sides must persist across independently drawn facings; do not horizontally mirror. Preserve recognizable tusked mask and all limb/hand count.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Column3 now has near thigh crossing in front toward opponent while far foot is behind, opposite column1; passing legs differ columns2/4. Candidate backward cycle both facings. Native cadence and foot pivot review still required."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+      "originId": "exec-30145240-a584-4859-9d1f-cb46b42e9ae4.png",
+      "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+      "bytes": 2079285,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "repair-walk-forward-alternation",
+      "actionId": "walk-forward",
+      "prompt": "Fix the locomotion of first Tracker spritesheet using second identity reference. Keep1536x1024, 4columns2rows, same armor,hands,blades,mask. FOUR ACTUAL ALTERNATING FORWARD WALK KEYFRAMES, topRIGHT,bottomLEFT. In column1 NEAR leg extended forward heel-down toe-up, FAR leg behind toes-down heel-up. Column2: NEAR leg is vertical grounded support, FAR thigh lifts passing forward bent knee. Column3: FAR leg extended forward heel-down toe-up, NEAR leg behind toes-down heel-up; NEAR thigh overlaps far thigh at hip then extends BACK. Column4: FAR leg vertical grounded support, NEAR thigh lifts forward bent knee. Column3 must visually DIFFER from column1 by leg occlusion, column4 opposite leg support to2. Keep torso position and body scale stable, slight arm swing with mounted blades clear of feet. BOTHrows separate character facings, nose never turns. Two legs only, correct kneecap hinges. No captions, no groundshadow, exact flatmagenta.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "rejected",
+      "notes": [
+        "Repair still repeats the same near-forward contact in columns1/3 and same support/passing legs2/4 both facings. Larger knee lift does not constitute alternating walk. No forward walk accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-walk-forward-alternation-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-walk-forward-alternation-v34.png",
+      "originId": "exec-433c69c9-dbc2-4b58-a0a5-dbbc28b23c0f.png",
+      "sha256": "be4da949924899abc7b27d6c47ae42708706bfeeedd06ab5e114aa4cf64ff527",
+      "bytes": 2088816,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "repair-medium-hand",
+      "actionId": "medium",
+      "prompt": "Repair first attached Tracker medium attack sheet using second identity reference. Keep1536x1024,4columns2rows,magenta,fullbodies and all equipment. BOTH ROWS exact order startup/contact/recover/neutral. Preserve contact poses column2. Fix bottom LEFT startup column1: draw right elbow retracted at hip with COMPLETE golden EMPTY FIST and exactly TWO LONG SILVER WRISTBLADES mounted over fist, never missing blades. Fix column3 BOTH ROWS: lower right arm diagonal toward own front hip so golden fist and wrist are entirely visible below two blades with clear separation from torso. Blades must remain same length as contact. BOTH hands visibly complete every sprite, left hand empty held away from right. Bottom row noses faceLEFT, topRIGHT, anatomically independent. No sword held,no new gear,no labels. At least three clear distinct poses per action, fullblade tips within canvas.",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "Repair restores two extended blades and complete right fist in LEFT startup. Candidate BOTH facings columns1,2,4 only for startup/contact/neutral recovery. Column3 still hides right hand, excluded. No interpolated replacement drawing."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-medium-hand-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-medium-hand-v34.png",
+      "originId": "exec-45a4eab0-9b60-4f03-b036-d4d5301f84fb.png",
+      "sha256": "50a74ce2b614e0d7e4b02e9dd1602261c7341c6787329da7ae3730a9557cdefe",
+      "bytes": 2140114,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "id": "repair-medium-spacing",
+      "actionId": "medium",
+      "prompt": "Re-layout FIRST Tracker medium spritesheet to provide clean rectangular sprite crops. Preserve each of eight drawings and their pose/identity/equipment from first; second is identity reference. Same1536x1024 canvas flatmagenta. UNIFORMLY REDUCE EACH FIGURE to 75% of current scale (body around300px), center each in own384x512cell. Huge clear magenta gutters BETWEEN every pair; no horizontal bounding rectangles overlap. Preserve contact pairedwristblades and EMPTY fists, botharms/hands/legs, no redesign. TopRIGHTbottomLEFT. Col1startup,col2contact,col3recovery,col4neutral. Complete tips/feet, no labels/no shadows. This is spacing correction, not change attack.",
+      "phase": [
+        "right elbow draws back at waist",
+        "right forearm extends horizontally to opponent at chest height",
+        "right forearm retracts to ribs",
+        "neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/tracker.png",
+      "status": "authored-review",
+      "notes": [
+        "OpenAI re-layout separates rectangle bounds with smaller uniformly proportioned drawings. Candidate columns1,2,4 both facings; column3 hand remains hidden and excluded. Renderer must use measured body height (~300px), never stretch. Slight detail softening versus larger source acknowledged."
+      ],
+      "sourcePath": "art-source/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+      "publicPath": "/game/sprites/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+      "originId": "exec-7978afbd-5603-409d-b186-7dcdee480738.png",
+      "sha256": "f920e649b41bbd4468842012edcbeedb880504aef65822d38e1f43a25a528410",
+      "bytes": 1765606,
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "reviewStatusMeaning": "Statuses and notes in generated[] are historical observations immediately after generation. Final acceptance lives in production provenance, not this immutable-prompt history.",
+  "finalReviewPath": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+}

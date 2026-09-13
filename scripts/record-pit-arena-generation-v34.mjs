@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
 
 const receiptPath = process.argv[2];
+const archiveOnly = process.argv.includes("--archive-only");
 assert(receiptPath?.startsWith("work/v34/"));
 const receipt = JSON.parse(await fs.readFile(receiptPath, "utf8"));
 assert(/^[a-z0-9-]+$/.test(receipt.arenaId) && /^[a-z0-9-]+$/.test(receipt.id));
@@ -13,7 +14,7 @@ const root = `art-source/v34/pit-arenas/${receipt.arenaId}`;
 const original = `${root}/sources/${receipt.id}-${measured.sha256.slice(0,12)}.png`;
 const publicPath = `/game/sprites/v34/pit-arenas/${receipt.arenaId}/${receipt.id}.png`;
 await fs.mkdir(`${root}/sources`, { recursive: true });
-await fs.mkdir(path.dirname("public" + publicPath), { recursive: true });
+if (!archiveOnly) await fs.mkdir(path.dirname("public" + publicPath), { recursive: true });
 await fs.copyFile(receipt.sourcePath, original);
 const accepted = !receipt.alphaRequired || (measured.hasAlpha && measured.transparentPixels > 0 && measured.visiblePixels > 0);
 let contactCrop = null;
@@ -32,13 +33,13 @@ if (receipt.floor && accepted) {
     }
   }
 }
-const passed = accepted && (!receipt.floor || Boolean(contactCrop));
+const passed = !archiveOnly && accepted && (!receipt.floor || Boolean(contactCrop));
 if (passed) {
   try { const old = await inspectPitArenaImage("public"+publicPath); assert.equal(old.sha256, measured.sha256, "Refusing to overwrite a different accepted PNG"); }
   catch(error) { if (error.code!=="ENOENT") throw error; }
   await fs.copyFile(receipt.sourcePath, "public"+publicPath);
 }
-const result = {...receipt, generator:"openai-imagegen", sourceFile:path.basename(receipt.sourcePath), archivedSource:original, publicPath:passed?publicPath:null, accepted:passed, contactCrop,...measured};
+const result = {...receipt, generator:"openai-imagegen", sourceFile:path.basename(receipt.sourcePath), archivedSource:original, publicPath:passed?publicPath:null, accepted:passed, ...(archiveOnly ? {excludedFromCoverage:true} : {}), contactCrop,...measured};
 delete result.sourcePath;
 const evidence = `${root}/receipt-${receipt.id}-${measured.sha256.slice(0,12)}.json`;
 await fs.writeFile(evidence, JSON.stringify(result,null,2)+"\n", {flag:"wx"});

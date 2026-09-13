@@ -21,7 +21,6 @@ import {
   PIT_CLOAK_COST,
   PIT_FIGHTERS,
   PIT_MAX_TRAQUE,
-  PIT_PLAYABLE_FIGHTER_IDS,
   PIT_TICK_RATE,
   createPitCombatState,
   getPitFighterBoxes,
@@ -90,7 +89,6 @@ import {
   type PitCircuitRun,
 } from "./systems/pitCircuit";
 import {
-  getPitFirstEditionFighter,
   isPitFirstEditionFighterId,
   type PitTechniqueDevice,
   type PitTechniqueStatusKind,
@@ -100,6 +98,7 @@ import {
   stepPitReplayCombat,
   createPitReplayRecorder,
   normalizePitReplay,
+  serializePitReplay,
   type PitReplay,
   type PitReplayReader,
   type PitReplayRecorder,
@@ -123,6 +122,8 @@ import {
 } from "./systems/pitTraining";
 import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick, advancePitTrainingClock } from "./systems/pitTrainingClock";
 import { PIT_TRAINING_LESSONS, preparePitTrainingLesson, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
+import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
+import PitExtensionPortrait from "./PitExtensionPortrait";
 import styles from "./PitCanvas.module.css";
 
 type PitMode = "cpu" | "local" | "training" | "arcade" | "circuit" | "descent";
@@ -260,15 +261,6 @@ const PIT_PLAYER_ONE_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
 const PIT_PLAYER_TWO_ACTION_IDS = PIT_CONTROL_ACTION_IDS.filter(
   (actionId) => actionId.startsWith("pit.p2"),
 );
-const PIT_SELECTABLE_MODES: readonly PitMode[] = ["cpu", "local", "training", "arcade", "circuit", "descent"];
-
-function cyclePitMode(current: PitMode, direction: -1 | 1): PitMode {
-  const index = PIT_SELECTABLE_MODES.indexOf(current);
-  return PIT_SELECTABLE_MODES[
-    (index + direction + PIT_SELECTABLE_MODES.length) % PIT_SELECTABLE_MODES.length
-  ];
-}
-
 function createPitResultId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return `pit-${crypto.randomUUID()}`;
@@ -587,9 +579,9 @@ function drawArena(
 
   const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion });
   canvas.dataset.pitArenaId = state.arenaId;
-  canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== state.arenaId ? "loading" : backdropReport.missingPaths.length ? "partial" : "bitmap";
+  canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== state.arenaId ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
-  canvas.dataset.pitArenaArtSource = arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
+  canvas.dataset.pitArenaArtSource = arenaArt?.unavailable ? "unavailable" : arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
   canvas.dataset.pitArenaLoadedImages = String(arenaArt?.images.size ?? 0);
   canvas.dataset.pitArenaSubplans = String(arenaArt?.productionKit?.planes.reduce((sum, plane) => sum + plane.assets.length, 0) ?? 0);
   context.save();
@@ -808,7 +800,7 @@ export function FighterCard({
   paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
 }) {
   const fighter = PIT_FIGHTERS[fighterId];
-  const profile = getPitFirstEditionFighter(fighterId);
+  const profile = getPitFighterProfile(fighterId);
   const palette = paletteOverride ?? fighter.palette;
   const keyArt = getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
   const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId);
@@ -822,11 +814,11 @@ export function FighterCard({
       style={{ "--fighter": palette.primary } as React.CSSProperties}
       aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
       data-fighter-id={fighterId}
-      data-fighter-art={visibleArt?.kind ?? "mask-glyph"}
+      data-fighter-art={isPitExpansionFighterId(fighterId) ? "authored-idle-pose" : visibleArt?.kind ?? "mask-glyph"}
     >
       <span className={styles.sideLabel}>{side}</span>
       <div className={styles.fighterMedia}>
-        {visibleArt ? (
+        {isPitExpansionFighterId(fighterId) ? <PitExtensionPortrait key={fighterId + side} fighterId={fighterId} facing={side === "DROITE" ? "left" : "right"}/> : visibleArt ? (
           <img
             key={visibleArt.src}
             className={styles.fighterKeyArt}
@@ -896,8 +888,8 @@ export default function PitCanvas({
   }, []);
   const reducedCameraMotion = prefersReducedMotion || !screenShake;
   const [mode, setMode] = useState<PitMode>("cpu");
-  const [leftId, setLeftId] = useState<PitPlayableFighterId>("jungle-hunter");
-  const [rightId, setRightId] = useState<PitPlayableFighterId>("berserker");
+  const [leftId, setLeftId] = useState<PitVersusFighterId>("jungle-hunter");
+  const [rightId, setRightId] = useState<PitVersusFighterId>("berserker");
   const [arenaId, setArenaId] = useState<PitArenaId>("the-pit");
   const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
   const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
@@ -997,6 +989,21 @@ export default function PitCanvas({
     [lastReplay],
   );
   const availableReplay = recordedReplay ?? normalizedLastReplay;
+  const downloadAvailableReplay = () => {
+    if (!availableReplay) return;
+    try {
+      const url = URL.createObjectURL(new Blob([serializePitReplay(availableReplay)], { type: "application/json" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "the-pit-" + availableReplay.fighters.join("-vs-") + ".json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setReplayNotice("L’export du replay a échoué. Vous pouvez encore revoir le duel dans cette session.");
+    }
+  };
   const invalidReplayMessage = lastReplay && !normalizedLastReplay
     ? "Le dernier duel enregistré est illisible ou incompatible."
     : "";
@@ -1005,10 +1012,10 @@ export default function PitCanvas({
   const runTransitionSelectionLocked =
     runTransitionPersistence.status === "pending" ||
     runTransitionPersistence.status === "failed";
-  const selectedArcadeCosmetic = PIT_ARCADE_COSMETICS[leftId];
-  const selectedCosmeticUnlocked = unlockedCosmeticIds.includes(selectedArcadeCosmetic.id);
+  const selectedArcadeCosmetic = isPitFirstEditionFighterId(leftId) ? PIT_ARCADE_COSMETICS[leftId] : null;
+  const selectedCosmeticUnlocked = selectedArcadeCosmetic !== null && unlockedCosmeticIds.includes(selectedArcadeCosmetic.id);
   const equippedArcadeCosmetic =
-    selectedCosmeticUnlocked && equippedCosmeticId === selectedArcadeCosmetic.id
+    selectedArcadeCosmetic && selectedCosmeticUnlocked && equippedCosmeticId === selectedArcadeCosmetic.id
       ? selectedArcadeCosmetic
       : null;
   const gameplayKeyCodes = useMemo(() => {
@@ -1025,11 +1032,12 @@ export default function PitCanvas({
 
   const changePitMode = useCallback((nextMode: PitMode) => {
     if (runTransitionSelectionLocked) return;
+    if (!canPitFighterEnterMode(leftId, nextMode)) { setReplayNotice("Chronique de ce chasseur non produite : choisissez Duel CPU, Versus local ou Entraînement."); return; }
     setMode(nextMode);
     if (
       nextMode === "descent" &&
       descentRunRef.current?.fighterId !== leftId &&
-      !savedDescentRuns[leftId]
+      !(isPitFirstEditionFighterId(leftId) && savedDescentRuns[leftId])
     ) {
       setDescentDraftSeed(createPitDescentSeed());
     }
@@ -1201,7 +1209,7 @@ export default function PitCanvas({
   }, []);
 
   const launchLiveMatch = useCallback((
-    playerId: PitPlayableFighterId,
+    playerId: PitVersusFighterId,
     opponentId: PitFighterId,
     nextArenaId: PitArenaId,
     nextMode: PitMode,
@@ -1442,6 +1450,7 @@ export default function PitCanvas({
   }, [enterPersistedDescentRun, submitRunTransition]);
 
   const startMatch = useCallback(() => {
+    if (!canPitFighterEnterMode(leftId, mode)) return;
     if (
       runTransitionPersistence.status === "failed" &&
       (mode === "circuit" || mode === "descent")
@@ -1451,6 +1460,7 @@ export default function PitCanvas({
     }
     if (runTransitionPersistence.status === "pending") return;
     if (mode === "arcade") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
       const run = createPitArcadeRun(leftId);
       const encounter = PIT_ARCADE_LADDERS[leftId].encounters[0];
       circuitRunRef.current = null;
@@ -1463,6 +1473,7 @@ export default function PitCanvas({
       return;
     }
     if (mode === "circuit") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
       const localRun = circuitRunRef.current?.fighterId === leftId
         ? circuitRunRef.current
         : null;
@@ -1490,6 +1501,7 @@ export default function PitCanvas({
       return;
     }
     if (mode === "descent") {
+      if (!isPitFirstEditionFighterId(leftId)) return;
       const localRun = descentRunRef.current?.fighterId === leftId
         ? descentRunRef.current
         : null;
@@ -1538,6 +1550,7 @@ export default function PitCanvas({
   ]);
 
   const chooseDisplayedDescentBranch = useCallback((optionIndex: number) => {
+    if (!isPitFirstEditionFighterId(leftId)) return;
     if (runTransitionSelectionLocked) return;
     setDescentOptionIndex(optionIndex);
     const localRun = descentRunRef.current?.fighterId === leftId
@@ -1561,9 +1574,10 @@ export default function PitCanvas({
   ]);
 
   const swapSides = useCallback(() => {
+    if (!canPitFighterEnterMode(rightId, mode)) setMode("cpu");
     setLeftId(rightId);
     setRightId(leftId);
-  }, [leftId, rightId]);
+  }, [leftId, rightId, mode]);
 
   const returnToSelection = useCallback(() => {
     recorderRef.current = null;
@@ -1803,8 +1817,8 @@ export default function PitCanvas({
       replayReaderRef.current = reader;
       clearTrainingActivity();
       reportedMatchFrameRef.current = null;
-      if (isPitFirstEditionFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
-      if (isPitFirstEditionFighterId(replay.fighters[1])) setRightId(replay.fighters[1]);
+      if (isPitVersusFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
+      if (isPitVersusFighterId(replay.fighters[1])) setRightId(replay.fighters[1]);
       setArenaId(replay.arenaId);
       arcadeRunRef.current = null;
       setArcadeRun(null);
@@ -1958,7 +1972,7 @@ export default function PitCanvas({
           const menuDescentRun =
             descentRunRef.current?.fighterId === leftId
               ? descentRunRef.current
-              : savedDescentRuns[leftId] ?? null;
+              : (isPitFirstEditionFighterId(leftId) ? savedDescentRuns[leftId] : null) ?? null;
           const canChooseDescentBranch =
             mode === "descent" &&
             menuDescentRun?.phase === "active" &&
@@ -1970,7 +1984,7 @@ export default function PitCanvas({
             if (canChooseDescentBranch) {
               setDescentOptionIndex((selected) => Math.max(0, selected - 1));
             } else {
-              changePitMode(cyclePitMode(mode, -1));
+              changePitMode(cyclePitMode(mode, -1, leftId));
             }
           }
           if (
@@ -1984,7 +1998,7 @@ export default function PitCanvas({
               ).floors[menuDescentRun.completedFloors]?.options.length ?? 1;
               setDescentOptionIndex((selected) => Math.min(optionCount - 1, selected + 1));
             } else {
-              changePitMode(cyclePitMode(mode, 1));
+              changePitMode(cyclePitMode(mode, 1, leftId));
             }
           }
           if (current[4] && !previous[4]) startMatch();
@@ -2234,10 +2248,6 @@ export default function PitCanvas({
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
       reportedMatchFrameRef.current !== null) return;
     const playerId = combat.fighters[0].definitionId;
-    if (!isPitFirstEditionFighterId(playerId)) {
-      reportedMatchFrameRef.current = combat.frame;
-      return;
-    }
     reportedMatchFrameRef.current = combat.frame;
     let replay: PitReplay | null = null;
     if (recorderRef.current) {
@@ -2250,6 +2260,10 @@ export default function PitCanvas({
       }
     }
     recorderRef.current = null;
+    if (!isPitFirstEditionFighterId(playerId)) {
+      setReplayNotice("Duel de l’extension terminé. Replay consultable et exportable ; statistiques et chroniques de progression non enregistrées pour ce lot.");
+      return;
+    }
 
     if (mode === "descent") {
       const currentRun = descentRunRef.current;
@@ -2446,45 +2460,18 @@ export default function PitCanvas({
   }), [controlBindings]);
 
   if (!combat) {
-    const previewLadder = PIT_ARCADE_LADDERS[leftId];
-    const previewEncounter = previewLadder.encounters[0];
-    const previewCircuit = PIT_CLAN_CIRCUITS[leftId];
-    const previewCircuitFight = previewCircuit.fights[0];
-    const previewDescentRun = descentRun?.fighterId === leftId
-      ? descentRun
-      : savedDescentRuns[leftId] ?? null;
-    const previewDescentPlan = createPitDescentPlan(
-      leftId,
-      previewDescentRun?.seed ?? descentDraftSeed,
-    );
-    const previewDescentFloorIndex = previewDescentRun?.phase === "active"
-      ? Math.min(previewDescentRun.completedFloors, PIT_DESCENT_FLOOR_COUNT - 1)
-      : 0;
-    const previewDescentFloor = previewDescentPlan.floors[previewDescentFloorIndex];
-    const previewDescentNode =
-      previewDescentFloor.options.find(
-        (node) => node.id === previewDescentRun?.selectedNodeId,
-      ) ??
-      previewDescentFloor.options[
-        Math.max(
-          0,
-          Math.min(descentOptionIndex, previewDescentFloor.options.length - 1),
-        )
-      ];
-    const previewRightId: PitFighterId = mode === "arcade"
-      ? previewEncounter.opponentId
-      : mode === "circuit"
-        ? previewCircuitFight.opponentId
-        : mode === "descent" && previewDescentNode.opponentId
-          ? previewDescentNode.opponentId
-          : rightId;
-    const previewArenaId = mode === "arcade"
-      ? previewEncounter.arenaId
-      : mode === "circuit"
-        ? previewCircuitFight.arenaId
-        : mode === "descent"
-          ? previewDescentNode.arenaId
-          : arenaId;
+    const progressionId = isPitFirstEditionFighterId(leftId) ? leftId : null;
+    const previewLadder = progressionId ? PIT_ARCADE_LADDERS[progressionId] : null;
+    const previewEncounter = previewLadder?.encounters[0];
+    const previewCircuit = progressionId ? PIT_CLAN_CIRCUITS[progressionId] : null;
+    const previewCircuitFight = previewCircuit?.fights[0];
+    const previewDescentRun = progressionId ? (descentRun?.fighterId === progressionId ? descentRun : savedDescentRuns[progressionId] ?? null) : null;
+    const previewDescentPlan = progressionId ? createPitDescentPlan(progressionId, previewDescentRun?.seed ?? descentDraftSeed) : null;
+    const previewDescentFloorIndex = previewDescentRun?.phase === "active" ? Math.min(previewDescentRun.completedFloors,PIT_DESCENT_FLOOR_COUNT-1) : 0;
+    const previewDescentFloor = previewDescentPlan?.floors[previewDescentFloorIndex];
+    const previewDescentNode = previewDescentFloor?.options.find(node=>node.id===previewDescentRun?.selectedNodeId) ?? previewDescentFloor?.options[Math.max(0,Math.min(descentOptionIndex,previewDescentFloor.options.length-1))];
+    const previewRightId: PitFighterId = mode === "arcade" && previewEncounter ? previewEncounter.opponentId : mode === "circuit" && previewCircuitFight ? previewCircuitFight.opponentId : mode === "descent" && previewDescentNode?.opponentId ? previewDescentNode.opponentId : rightId;
+    const previewArenaId = mode === "arcade" && previewEncounter ? previewEncounter.arenaId : mode === "circuit" && previewCircuitFight ? previewCircuitFight.arenaId : mode === "descent" && previewDescentNode ? previewDescentNode.arenaId : arenaId;
     const previewArena = PIT_ARENAS[previewArenaId];
     const descentCompletedFloors = previewDescentRun?.completedFloors ?? 0;
     const descentHealth = previewDescentRun?.health ?? PIT_DESCENT_MAX_HEALTH;
@@ -2503,9 +2490,9 @@ export default function PitCanvas({
         <div className={styles.selectionBackdrop} aria-hidden="true"><span /><span /><span /></div>
         <header className={styles.selectionHeader}>
           <div>
-            <span className={styles.eyebrow}>PREMIÈRE ÉDITION · SIMULATION NON CANONIQUE</span>
+            <span className={styles.eyebrow}>PREMIÈRE ÉDITION ET EXTENSIONS · SIMULATION NON CANONIQUE</span>
             <h2 id="pit-title">THE PIT</h2>
-            <p>{PIT_PLAYABLE_FIGHTER_IDS.length} combattants sélectionnables · {PIT_ARENA_IDS.length} arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
+            <p>{PIT_VERSUS_FIGHTER_IDS.length} combattants sélectionnables · {PIT_ARENA_IDS.length} arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
           </div>
           <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
@@ -2514,10 +2501,10 @@ export default function PitCanvas({
         <div className={styles.versusGrid}>
           <FighterCard fighterId={leftId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />
           <div className={styles.versusMark}>
-            <span>{mode === "descent" && !previewDescentNode.opponentId ? "→" : "VS"}</span>
+            <span>{mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? "→" : "VS"}</span>
             <small>{mode === "descent" ? "MANCHE DÉCISIVE" : "PREMIER À 2"}</small>
           </div>
-          {mode === "descent" && !previewDescentNode.opponentId ? (
+          {mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? (
             <article className={styles.descentEventCard}>
               <span className={styles.sideLabel}>BRANCHE</span>
               <strong>
@@ -2545,14 +2532,15 @@ export default function PitCanvas({
               value={leftId}
               disabled={runTransitionSelectionLocked}
               onChange={(event) => {
-                const selected = event.target.value as PitPlayableFighterId;
+                const selected = event.target.value as PitVersusFighterId;
+                if (!canPitFighterEnterMode(selected, mode)) setMode("cpu");
                 setLeftId(selected);
                 if (selected === rightId) {
-                  setRightId(PIT_PLAYABLE_FIGHTER_IDS.find((fighterId) => fighterId !== selected) ?? "berserker");
+                  setRightId(PIT_VERSUS_FIGHTER_IDS.find((fighterId) => fighterId !== selected) ?? "berserker");
                 }
               }}
             >
-              {PIT_PLAYABLE_FIGHTER_IDS.map((fighterId) => (
+              {PIT_VERSUS_FIGHTER_IDS.map((fighterId) => (
                 <option key={fighterId} value={fighterId}>{PIT_FIGHTERS[fighterId].name}</option>
               ))}
             </select>
@@ -2569,7 +2557,7 @@ export default function PitCanvas({
             </span>
             {mode === "arcade" || mode === "circuit" ? (
               <output>{PIT_FIGHTERS[previewRightId].name}</output>
-            ) : mode === "descent" ? (
+            ) : mode === "descent" && previewDescentNode ? (
               <output>
                 {previewDescentNode.opponentId
                   ? PIT_FIGHTERS[previewDescentNode.opponentId].name
@@ -2582,9 +2570,9 @@ export default function PitCanvas({
                 aria-label="Adversaire"
                 value={rightId}
                 disabled={runTransitionSelectionLocked}
-                onChange={(event) => setRightId(event.target.value as PitPlayableFighterId)}
+                onChange={(event) => setRightId(event.target.value as PitVersusFighterId)}
               >
-                {PIT_PLAYABLE_FIGHTER_IDS.map((fighterId) => (
+                {PIT_VERSUS_FIGHTER_IDS.map((fighterId) => (
                   <option key={fighterId} value={fighterId} disabled={fighterId === leftId}>
                     {PIT_FIGHTERS[fighterId].name}
                   </option>
@@ -2616,7 +2604,7 @@ export default function PitCanvas({
           </label>
         </div>
 
-        <aside className={styles.cosmeticControl} aria-label="Palette cosmétique THE PIT">
+        {selectedArcadeCosmetic && <aside className={styles.cosmeticControl} aria-label="Palette cosmétique THE PIT">
           <div>
             <span className={styles.eyebrow}>ARMURE DU JUGEMENT</span>
             <strong>{selectedArcadeCosmetic.label}</strong>
@@ -2635,7 +2623,7 @@ export default function PitCanvas({
           ) : (
             <span>Terminez les 8 combats Arcade avec ce chasseur pour la débloquer.</span>
           )}
-        </aside>
+        </aside>}
 
         <article
           className={styles.arenaPreview}
@@ -2662,7 +2650,7 @@ export default function PitCanvas({
             <span><strong>Répertoire des 100 arènes</strong><small>Contrat récupéré des conversations</small></span>
             <span>{PIT_ARENA_CATALOGUE_SUMMARY.playable} jouables · {PIT_ARENA_CATALOGUE_SUMMARY.concept} en conception</span>
           </summary>
-          <p className={styles.catalogueTruth}>Les huit stages actuels restent les seuls jouables. Les 92 autres sont des fiches de production : six plans P0–P5 visés, transitions réservées aux ruptures ou projections confirmées, deux combattants déplacés ensemble et dangers neutralisés en compétition.</p>
+          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Les nouveaux terrains proposent un duel sur un seul secteur. Les changements de secteur, ruptures de décor et accessoires interactifs restent à réaliser ; les dangers sont neutralisés.</p>
           <div className={styles.catalogueWaves}>
             {PIT_ARENA_CATALOGUE_WAVES.map((wave) => <section key={wave.id}>
               <h3>{wave.label}<small>{wave.first}–{wave.last} · {wave.count}</small></h3>
@@ -2692,7 +2680,7 @@ export default function PitCanvas({
               role="radio"
               aria-checked={mode === id}
               className={[styles.modeCard, mode === id ? styles.modeCardActive : ""].join(" ")}
-              disabled={runTransitionSelectionLocked}
+              disabled={runTransitionSelectionLocked || !canPitFighterEnterMode(leftId, id)}
               onClick={() => changePitMode(id)}
             >
               <strong>{label}</strong><span>{description}</span>
@@ -2700,7 +2688,8 @@ export default function PitCanvas({
           ))}
         </div>
 
-        {mode === "arcade" ? (
+        {isPitExpansionFighterId(leftId) ? <p role="note" data-pit-extension-progress="unavailable">Extension de duel : Arcade, Circuit et Descente indisponibles — chronique personnelle non produite. Les duels ne modifient pas les statistiques de progression.</p> : null}
+        {mode === "arcade" && previewLadder ? (
           <aside className={styles.arcadeBrief} aria-label={"Parcours Arcade de " + PIT_FIGHTERS[leftId].name}>
             <div>
               <span className={styles.eyebrow}>PARCOURS INDIVIDUEL · 8 COMBATS · 2 CONTINUES</span>
@@ -2719,7 +2708,7 @@ export default function PitCanvas({
               ))}
             </ol>
           </aside>
-        ) : mode === "circuit" ? (
+        ) : mode === "circuit" && previewCircuit ? (
           <aside className={styles.circuitBrief} aria-label={"Circuit du clan de " + PIT_FIGHTERS[leftId].name}>
             <div className={styles.circuitBriefHeader}>
               <span className={styles.eyebrow}>CHRONIQUE · 5 CHAPITRES · 12 COMBATS</span>
@@ -2754,7 +2743,7 @@ export default function PitCanvas({
               ))}
             </ol>
           </aside>
-        ) : mode === "descent" ? (
+        ) : mode === "descent" && previewDescentPlan && previewDescentNode ? (
           <aside
             className={styles.descentBrief}
             aria-label={"Descente de " + PIT_FIGHTERS[leftId].name}
@@ -2982,7 +2971,7 @@ export default function PitCanvas({
         ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          14 combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
+          {Object.values(PIT_FIGHTERS).filter((fighter) => getPitCombatBitmapArtDefinition(fighter.id)).length} combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
@@ -3103,6 +3092,11 @@ export default function PitCanvas({
       </header>
 
       {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
+      {arenaArt?.arenaId === combat.arenaId && !arenaArt.cancelled && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? (
+        <p className={styles.replayNoticeMatch} role="status" data-pit-arena-warning="unavailable">
+          Décor indisponible ou incomplet : certaines images n’ont pas pu être chargées. Le duel peut continuer ; quittez puis relancez l’arène pour réessayer.
+        </p>
+      ) : null}
       {mode === "descent" && terminalDescentRun ? (
         <aside className={styles.descentMatchStatus} aria-label="État de la Descente">
           <strong>
@@ -3432,7 +3426,7 @@ export default function PitCanvas({
                 <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
               )}
               {!playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
-                <button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>
+                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{availableReplay.fighters.some(isPitExpansionFighterId) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
               ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
             </div>

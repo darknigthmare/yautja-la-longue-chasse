@@ -261,7 +261,7 @@ test("visible PIT wiring lists roster and arenas, exposes all published modes, a
   const directory = dirname(fileURLToPath(import.meta.url));
   const canvas = readFileSync(join(directory, "../app/game/PitCanvas.tsx"), "utf8");
   const client = readFileSync(join(directory, "../app/game/GameClient.tsx"), "utf8");
-  assert.match(canvas, /PIT_PLAYABLE_FIGHTER_IDS\.map/);
+  assert.match(canvas, /PIT_VERSUS_FIGHTER_IDS\.map/);
   assert.match(canvas, /PIT_ARENA_IDS\.map/);
   assert.match(canvas, /Arcade individuel/);
   assert.match(canvas, /PIT_ARCADE_LADDERS\[leftId\]/);

@@ -18,7 +18,7 @@ function section(source, startNeedle, endNeedle) {
 
 test("Descente is selectable and exposes all eight branched floors", () => {
   assert.match(canvas, /type PitMode = [^;]*"descent"/);
-  assert.match(canvas, /PIT_SELECTABLE_MODES[^\n]*"descent"/);
+  assert.match(canvas, /cyclePitMode[^\n]*from "\.\/systems\/pitRosterExpansion"/);
   assert.match(
     canvas,
     /\["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss\."\]/,
@@ -124,9 +124,9 @@ test("Descente branch and continuation CTAs support keyboard, gamepad and touch"
   assert.match(canvas, /aria-keyshortcuts="Enter Space"/);
   assert.match(canvas, /data-gamepad-shortcut="A"/);
   assert.match(canvas, /Clavier : Entrée · Manette : A · Tactile : toucher/);
-  assert.match(canvas, /const menuDescentRun =[\s\S]*savedDescentRuns\[leftId\] \?\? null/);
-  assert.match(canvas, /changePitMode\(cyclePitMode\(mode, -1\)\)/);
-  assert.match(canvas, /changePitMode\(cyclePitMode\(mode, 1\)\)/);
+  assert.match(canvas, /const menuDescentRun =[\s\S]*isPitFirstEditionFighterId\(leftId\) \? savedDescentRuns\[leftId\] : null/);
+  assert.match(canvas, /changePitMode\(cyclePitMode\(mode, -1, leftId\)\)/);
+  assert.match(canvas, /changePitMode\(cyclePitMode\(mode, 1, leftId\)\)/);
   assert.match(canvas, /previewDescentRun\.selectedNodeId !== node\.id/);
   assert.match(canvas, /mode === "descent"[\s\S]*continueDescent\(\)/);
   assert.match(canvas, /descentPersistenceFailed[\s\S]*retryRunTransition/);

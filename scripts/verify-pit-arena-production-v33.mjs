@@ -8,7 +8,7 @@ import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
 import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
 
 const root = process.cwd();
-const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
+const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
 const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
 // Audit original archive references, not the smaller runtime attestations.
 const { source: manifest } = await checkPitArenaRuntimeData(root);
@@ -26,10 +26,28 @@ for (const stage of manifest.stages) {
   assert.equal(stage.number, catalogue.number);
   assert.equal(stage.name, catalogue.name);
   assert.equal(stage.setting, catalogue.setting);
-  assert.equal(stage.legacyRuntimeArenaId, catalogue.runtimeArenaId);
-  assert.equal(stage.legacyRuntimeStatus, catalogue.runtimeStatus);
+  const runtimeId = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId ?? null;
+  assert.equal(runtimeId, catalogue.runtimeArenaId);
+  if (stage.runtimeExtension) {
+    const extension = api.getPitArenaExtension(stage.catalogueId, stage.number);
+    assert(extension && extension.id === stage.runtimeExtension.arenaId, "Unknown or mismatched gameplay extension");
+    assert.equal(stage.legacyRuntimeArenaId, null); assert.equal(stage.legacyRuntimeStatus, "concept");
+    assert.equal(stage.runtimeExtension.gameplayProfile, extension.gameplayProfile);
+    assert.equal(catalogue.runtimeStatus, "playable");
+    const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
+    assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
+    assert.equal(qa.loaded.images, 14); assert.equal(qa.mobileNoOverflow, true);
+    assert.deepEqual(qa.errors, []); assert.deepEqual(qa.failedRequests, []);
+    assert(qa.scenarios.length >= 8 && qa.scenarios.every(s => s.planes.length === 6 && s.missing.length === 0 && s.unchangedCamera && s.unchangedState));
+    if (stage.runtimeExtension.applicationEvidence) {
+      const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
+      assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
+      assert.deepEqual(appQa.errors, []); assert.deepEqual(appQa.failedRequests, []);
+      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === 14 && check.subplans === 14 && check.missing === 0));
+    }
+  } else assert.equal(stage.legacyRuntimeStatus, catalogue.runtimeStatus);
   assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
-  if (!stage.legacyRuntimeArenaId) assert.equal(stage.runtimeEnabled, false, "Concept art cannot unlock unimplemented gameplay");
+  if (!runtimeId) assert.equal(stage.runtimeEnabled, false, "Concept art cannot unlock unimplemented gameplay");
   for (const plane of stage.planes) {
     assert.equal(plane.status, api.getPitArenaProductionPlaneStatus(plane.assets), `Stale aggregate status ${stage.catalogueId}/${plane.id}`);
     for (const asset of plane.assets) {
@@ -60,6 +78,14 @@ for (const stage of manifest.stages) {
         assert.equal(frame.generation?.generator, "openai-imagegen", frame.path);
         assert(frame.generation.source && !path.isAbsolute(frame.generation.source) && !frame.generation.source.includes(".."), frame.path);
         await fs.access(path.resolve(root, frame.generation.source));
+        if (frame.generation.source.startsWith("art-source/v34/pit-arenas/")) {
+          const receipt = JSON.parse(await fs.readFile(frame.generation.source, "utf8"));
+          assert.equal(receipt.accepted, true); assert.notEqual(receipt.excludedFromCoverage, true);
+          assert.equal(receipt.sha256, frame.generation.sha256); assert.equal(receipt.publicPath, frame.path);
+          assert(receipt.prompt && receipt.archivedSource.startsWith("art-source/v34/pit-arenas/") && !receipt.archivedSource.includes(".."));
+          const original = await fs.readFile(path.resolve(root, receipt.archivedSource));
+          assert.equal(crypto.createHash("sha256").update(original).digest("hex"), frame.generation.sha256, "Original source changed: " + frame.path);
+        }
         const diskPath = path.resolve(root, "public", "." + frame.path);
         const bytes = await fs.readFile(diskPath);
         const metadata = await sharp(bytes).metadata();
@@ -103,6 +129,6 @@ for (const stage of manifest.stages) {
       }
     }
   }
-  if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(stage.legacyRuntimeArenaId, manifest), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
+  if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(runtimeId, manifest), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
 }
 console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(manifest), verifiedImages: checks }, null, 2));

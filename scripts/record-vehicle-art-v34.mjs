@@ -9,6 +9,8 @@ import { build } from 'esbuild';
 // A receipt writer and pixel audit, never an image generator or an automatic art approval.
 const job = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 for (const value of [job.vehicleId, job.id]) assert(/^[a-z0-9-]+$/.test(value));
+const originId = job.originId ?? path.basename(job.input);
+assert(typeof originId === 'string' && /^[A-Za-z0-9._-]+$/.test(originId), 'Invalid originId');
 const bytes = fs.readFileSync(job.input);
 const metadata = await sharp(bytes).metadata();
 const { data, info } = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -21,7 +23,13 @@ for (let offset = 0; offset < data.length; offset += 4) {
 const trueAlpha = Boolean(metadata.hasAlpha && clear > info.width * info.height * .01);
 const keyable = !trueAlpha && job.colorKey === 'magenta' && magenta > info.width * info.height * .15;
 const transparency = trueAlpha ? { mode: 'alpha' } : keyable ? { mode: 'color-key', rgb: [255, 0, 255], tolerance: 48, fringe: { mode: 'connected-magenta', radius: 2, minExcess: 16, strength: 1 } } : { mode: 'alpha' };
-const temp = 'work/v34/vehicle-processing';fs.mkdirSync(temp, { recursive: true });
+const detectedStatus = trueAlpha || keyable ? 'authored-review' : 'rejected';
+const reviewStatus = job.reviewStatus ?? detectedStatus;
+assert(['authored-review', 'rejected'].includes(reviewStatus), 'Invalid reviewStatus');
+if (reviewStatus === 'authored-review') assert(trueAlpha || keyable, 'Cannot approve a source without alpha or removable color key');
+if (reviewStatus === 'rejected') assert(typeof job.rejectionReason === 'string' && job.rejectionReason.trim(), 'A rejected source requires rejectionReason');
+const tempRoot = 'work/v34/vehicle-processing';fs.mkdirSync(tempRoot, { recursive: true });
+const temp = fs.mkdtempSync(path.join(tempRoot, job.vehicleId + '-' + job.id + '-'));
 await build({ entryPoints: ['app/game/hunterSpriteAtlas.ts'], outfile: temp + '/transparency.mjs', bundle: true, platform: 'node', format: 'esm', logLevel: 'silent' });
 const processor = await import(pathToFileURL(path.resolve(temp, 'transparency.mjs')).href);
 const processed = processor.processHunterSpriteTransparency(data, info.width, info.height, transparency).pixels;
@@ -50,8 +58,9 @@ for (const output of [sourcePath, 'public' + publicPath]) {
   else fs.writeFileSync(output, bytes);
 }
 const digest = value => crypto.createHash('sha256').update(value).digest('hex');
-const asset = { id: job.id, actionId: job.actionId, label: job.label ?? job.id, status: trueAlpha || keyable ? 'authored-review' : 'rejected',
-  sourcePath, publicPath, originId: path.basename(job.input), width: info.width, height: info.height, sha256: digest(bytes), bytes: bytes.length,
+const asset = { id: job.id, actionId: job.actionId, label: job.label ?? job.id, status: reviewStatus,
+  rejectionReason: reviewStatus === 'rejected' ? job.rejectionReason.trim() : undefined,
+  sourcePath, publicPath, originId, width: info.width, height: info.height, sha256: digest(bytes), bytes: bytes.length,
   generator: 'openai-imagegen', sourceBytesPreserved: true, transparency, rawAlpha: { zero: clear, partial, opaque: info.width * info.height - clear - partial },
   prompt: job.prompt, references: (job.references ?? []).map(reference => typeof reference === 'string' ? { path: reference, sha256: digest(fs.readFileSync(reference)) } : reference),
   notes: [...(job.notes ?? []), ...(!trueAlpha && !keyable ? ['Rejected for extraction: no actual alpha or declared removable color key.'] : [])], cells, runtimeClips: [], reviewFrames: [], gameplayImplemented: false };

@@ -26,6 +26,8 @@ export interface PitArenaArtBank {
   readonly requestedPaths: ReadonlySet<string>;
   readonly failedPaths: ReadonlySet<string>;
   readonly cancelled: boolean;
+  /** No complete independent kit and no historical art for this extension. */
+  readonly unavailable?: boolean;
   readonly productionKit?: PitArenaProductionKit;
 }
 export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean }
@@ -52,7 +54,7 @@ const fern = "/game/props/v4/foreground-ferns.png";
  * Existing biome panoramas are the P0 image only, never counted again as extra planes.
  * The crop removes their original ground so that only P4 supplies the contact surface.
  */
-export const PIT_ARENA_ART_DEFINITIONS: Readonly<Record<PitArenaId, PitArenaArtDefinition>> = {
+export const PIT_ARENA_ART_DEFINITIONS: Readonly<Partial<Record<PitArenaId, PitArenaArtDefinition>>> = {
   "the-pit": {
     arenaId: "the-pit", provenance: "existing-openai-project-bitmaps",
     backdrop: interior(21, "wall-machinery"), backdropCropBottom: 1,
@@ -148,6 +150,7 @@ export const PIT_ARENA_BITMAP_PLANES: readonly PitArenaPlaneId[] = ["P0", "P1", 
 
 function getLegacyPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
   const art = PIT_ARENA_ART_DEFINITIONS[arenaId];
+  if (!art) return [];
   return [...new Set([art.backdrop, art.floor.src, ...Object.values(art.planes).flatMap(plane => plane.map(item => item.src))])];
 }
 
@@ -246,14 +249,14 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
     await loadPaths(fallback.filter(src => !images.has(src)));
   }
   if (signal?.aborted) { images.clear(); requestedPaths.forEach(src => failedPaths.add(src)); }
-  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit };
+  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit, unavailable: !productionKit && !PIT_ARENA_ART_DEFINITIONS[arenaId] };
 }
 
 function drawProps(context: CanvasRenderingContext2D, plane: "P1" | "P2" | "P3" | "P5", state: PitCombatState,
   camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): boolean {
   const transform = getPitArenaLayerTransform(state.arenaId, plane, camera, options.reducedMotion);
   let drawn = false;
-  for (const item of PIT_ARENA_ART_DEFINITIONS[state.arenaId].planes[plane]) {
+  for (const item of PIT_ARENA_ART_DEFINITIONS[state.arenaId]?.planes[plane] ?? []) {
     const image = bank.images.get(item.src);
     if (!image) continue;
     const width = item.height * image.naturalWidth / image.naturalHeight;
@@ -378,8 +381,8 @@ export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: P
     context.imageSmoothingEnabled = true;
     context.fillStyle = options.highContrast ? "#06100e" : arena.palette.sky;
     context.fillRect(0, 0, arena.width, arena.height);
-    const backdrop = validBank?.images.get(art.backdrop);
-    if (backdrop) {
+    const backdrop = art && validBank?.images.get(art.backdrop);
+    if (backdrop && art) {
       const transform = getPitArenaLayerTransform(state.arenaId, "P0", camera, options.reducedMotion);
       const sourceHeight = backdrop.naturalHeight * art.backdropCropBottom;
       // Overscan each edge; camera extrema never expose an empty sky strip.
@@ -406,8 +409,8 @@ export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: P
     const floorY = arena.groundY * ground.scale + ground.translateY;
     context.fillStyle = options.highContrast ? "#06100e" : arena.palette.ground;
     context.fillRect(0, floorY, arena.width, Math.max(0, arena.height - floorY));
-    const floor = validBank?.images.get(art.floor.src);
-    if (floor) {
+    const floor = art && validBank?.images.get(art.floor.src);
+    if (floor && art) {
       const [sx, sy, sw, sh] = art.floor.crop;
       const tileWidth = art.floor.tileWidth * ground.scale;
       const tileHeight = sh / sw * tileWidth;
@@ -436,5 +439,5 @@ export function drawPitArenaForeground(context: CanvasRenderingContext2D, state:
     return { drawnPlanes: drawn ? ["P5"] : [], missingPaths: plane?.assets.flatMap(asset => asset.frames.map(frame => frame.path)).filter(src => !bank.images.has(src)) ?? [] };
   }
   const drawn = drawProps(context, "P5", state, camera, bank, options);
-  return { drawnPlanes: drawn ? ["P5"] : [], missingPaths: PIT_ARENA_ART_DEFINITIONS[state.arenaId].planes.P5.filter(item => !bank.images.has(item.src)).map(item => item.src) };
+  return { drawnPlanes: drawn ? ["P5"] : [], missingPaths: (PIT_ARENA_ART_DEFINITIONS[state.arenaId]?.planes.P5 ?? []).filter(item => !bank.images.has(item.src)).map(item => item.src) };
 }

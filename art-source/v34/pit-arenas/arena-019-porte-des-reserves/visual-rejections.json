@@ -1,0 +1,19 @@
+{
+  "arenaId": "arena-019-porte-des-reserves",
+  "rejections": [
+    {
+      "id": "p3-c-light-left",
+      "sha256Prefix": "18530a031359",
+      "reason": "Arche entière et plusieurs luminaires ajoutés au lieu de la lampe suspendue seule : modularité invalide. Nouvelle lampe isolée v2 sélectionnée.",
+      "selectedReplacement": "p3-c-light-left-v2",
+      "countedInCoverage": false
+    },
+    {
+      "id": "p2-b-support-right",
+      "sha256Prefix": "e44456ee3de7",
+      "reason": "Montant droit dessiné comme un montant gauche avec linteau non demandé : mauvais sens vers ouverture centrale. Nouveau module droit v2 isolé.",
+      "selectedReplacement": "p2-b-support-right-v2",
+      "countedInCoverage": false
+    }
+  ]
+}

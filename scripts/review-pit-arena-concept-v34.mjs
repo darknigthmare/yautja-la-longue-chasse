@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import assert from "node:assert/strict";
 
 const arenaId = process.argv[2];
-assert(/^arena-0(?:09|10|11|12)-[a-z0-9-]+$/.test(arenaId));
+assert(/^arena-0(?:09|1[0-9]|20)-[a-z0-9-]+$/.test(arenaId));
 const proof = `docs/v34-${arenaId}-renderer-qa.json`;
 const qa = JSON.parse(await fs.readFile(proof, "utf8"));
 assert.equal(qa.result, "PASS");

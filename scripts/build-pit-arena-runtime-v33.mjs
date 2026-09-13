@@ -40,6 +40,7 @@ export function projectPitArenaRuntimeData(source) {
       legacyRuntimeStatus: stage.legacyRuntimeStatus,
       sourceConfirmation: stage.sourceConfirmation,
       runtimeEnabled: stage.runtimeEnabled,
+      ...(stage.runtimeExtension ? { runtimeExtension: { arenaId: stage.runtimeExtension.arenaId, gameplayProfile: stage.runtimeExtension.gameplayProfile, rendererEvidenceRecorded: hasReference(stage.runtimeExtension.rendererEvidence), applicationEvidenceRecorded: hasReference(stage.runtimeExtension.applicationEvidence) } } : {}),
       planes: stage.planes.map(plane => ({
         id: plane.id,
         role: plane.role,
@@ -97,6 +98,11 @@ async function readSource(projectRoot) {
 // Authoring-only validation: a runtime attestation is never accepted in place of the actual source evidence.
 export async function verifyPitArenaSourceReferences(source, projectRoot = root) {
   const evidence = new Set();
+  for (const stage of source.stages) if (stage.runtimeExtension) {
+    assert(hasReference(stage.runtimeExtension.rendererEvidence), "Missing extension renderer approval: " + stage.catalogueId);
+    evidence.add(stage.runtimeExtension.rendererEvidence);
+    if (stage.runtimeExtension.applicationEvidence) evidence.add(stage.runtimeExtension.applicationEvidence);
+  }
   for (const stage of source.stages) for (const plane of stage.planes) for (const asset of plane.assets) for (const frame of asset.frames) {
     if (frame.status === "planned") continue;
     assert(hasReference(frame.generation?.source), "Missing original generation receipt: " + frame.path);

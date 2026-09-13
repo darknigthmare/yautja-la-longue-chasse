@@ -130,6 +130,126 @@
           "strength": 1
         }
       }
+    },
+    {
+      "id": "flight-body-layer-r1",
+      "label": "Razorwing — corps en vol, ailes masquées",
+      "src": "/game/vehicles/v34/razorwing/flight-body-layer-r1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 3,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "near-wing-right-beat-r1",
+      "label": "Razorwing — aile proche droite, essai de battement",
+      "src": "/game/vehicles/v34/razorwing/near-wing-right-beat-r1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e61885db2a1dbc64a5519852a966d8cc6565cb32a9e2ec201bd4c9669018b9d9",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "near-wing-left-beat-r1",
+      "label": "Razorwing — aile proche gauche",
+      "src": "/game/vehicles/v34/razorwing/near-wing-left-beat-r1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d7bb9a1452c1f67314cd463e5ab50be7e42cb7cfdc01c8bee3b533f1d3407710",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "far-wing-right-beat-r1",
+      "label": "Razorwing — aile arrière droite",
+      "src": "/game/vehicles/v34/razorwing/far-wing-right-beat-r1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "199951a50d7b6c4f8e4ea6fa281c3fea35f3a0b0f84b359fe59bb3aa75d4df0a",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
+    },
+    {
+      "id": "far-wing-left-beat-r1",
+      "label": "Razorwing — aile arrière gauche",
+      "src": "/game/vehicles/v34/razorwing/far-wing-left-beat-r1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6d2100742538e2ebf1423d39bfb1f32054ad89f1a2026bd62d454f58c1b26b00",
+      "status": "authored-review",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      }
     }
   ],
   "assemblies": [
@@ -288,9 +408,9 @@
     },
     {
       "id": "bone-bison-war-fit",
-      "name": "Bone Bison · diagnostic des modules",
+      "name": "Bone Bison · montage de guerre statique",
       "status": "authored-review",
-      "calibrationStatus": "common-origin-unregistered",
+      "calibrationStatus": "static-module-fit-review",
       "playable": false,
       "facings": [
         "right",
@@ -298,9 +418,10 @@
       ],
       "defaultFacing": "right",
       "notes": [
-        "La superposition naïve à origine et échelle communes recouvre la silhouette ; elle ne valide pas le calage et n’évalue pas encore les transformations propres à chaque module.",
-        "Selle et garde restent désactivées par défaut et ne sont activables que pour diagnostiquer l’absence d’enregistrement commun.",
-        "Les deux orientations viennent de dessins distincts ; aucun côté n’est obtenu par miroir logiciel."
+        "La selle et la garde utilisent chacune une échelle et une translation propres, calibrées séparément pour les deux orientations.",
+        "La selle repose sur le dos descendant derrière la bosse ; la garde couvre le flanc sans masquer les articulations ni les pieds.",
+        "Les deux orientations viennent de dessins distincts ; aucun côté n’est obtenu par miroir logiciel.",
+        "Montage statique de revue uniquement : les douze poses de marche r2 restent authored-review et ne portent encore aucun module animé."
       ],
       "anchor": [
         600,
@@ -350,58 +471,23 @@
       },
       "modules": [
         {
-          "id": "war-saddle",
-          "label": "Selle de guerre",
-          "resourceId": "war-saddle-module-r1",
-          "defaultEnabled": false,
-          "scale": 0.91,
-          "anchorMode": "base-grid",
-          "framesByFacing": {
-            "right": [
-              {
-                "facing": "right",
-                "phase": "saddle",
-                "sourceRect": [
-                  0,
-                  0,
-                  1033,
-                  761
-                ],
-                "visibleRect": [
-                  98,
-                  60,
-                  809,
-                  589
-                ]
-              }
-            ],
-            "left": [
-              {
-                "facing": "left",
-                "phase": "saddle",
-                "sourceRect": [
-                  1033,
-                  0,
-                  1034,
-                  761
-                ],
-                "visibleRect": [
-                  128,
-                  60,
-                  809,
-                  589
-                ]
-              }
-            ]
-          }
-        },
-        {
           "id": "flank-guard",
           "label": "Garde de flanc",
           "resourceId": "war-flank-guard-module-r1",
-          "defaultEnabled": false,
-          "scale": 0.91,
-          "anchorMode": "base-grid",
+          "defaultEnabled": true,
+          "scale": 0.25,
+          "transformByFacing": {
+            "right": {
+              "x": 300.75,
+              "y": 338.5,
+              "scale": 0.25
+            },
+            "left": {
+              "x": 640.75,
+              "y": 338.5,
+              "scale": 0.25
+            }
+          },
           "framesByFacing": {
             "right": [
               {
@@ -440,8 +526,726 @@
               }
             ]
           }
+        },
+        {
+          "id": "war-saddle",
+          "label": "Selle de guerre",
+          "resourceId": "war-saddle-module-r1",
+          "defaultEnabled": true,
+          "scale": 0.36,
+          "transformByFacing": {
+            "right": {
+              "x": 224.7,
+              "y": 203.4,
+              "scale": 0.36
+            },
+            "left": {
+              "x": 602.9,
+              "y": 203.4,
+              "scale": 0.36
+            }
+          },
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "saddle",
+                "sourceRect": [
+                  0,
+                  0,
+                  1033,
+                  761
+                ],
+                "visibleRect": [
+                  98,
+                  60,
+                  809,
+                  589
+                ]
+              }
+            ],
+            "left": [
+              {
+                "facing": "left",
+                "phase": "saddle",
+                "sourceRect": [
+                  1033,
+                  0,
+                  1034,
+                  761
+                ],
+                "visibleRect": [
+                  128,
+                  60,
+                  809,
+                  589
+                ]
+              }
+            ]
+          }
         }
       ]
+    },
+    {
+      "id": "razorwing-flight-rig-review",
+      "name": "Razorwing · montage de vol en revue",
+      "status": "authored-review",
+      "calibrationStatus": "estimated-flight-rig-review",
+      "playable": false,
+      "facings": [
+        "right",
+        "left"
+      ],
+      "defaultFacing": "right",
+      "notes": [
+        "Les ailes arrière passent derrière le corps et les ailes proches devant ; chaque aile reste masquable séparément.",
+        "Les 26 dessins utiles sont découpés par rectangles libres mesurés : la grille approximative des planches ne sert jamais de crop.",
+        "Les deux orientations utilisent des corps et des ailes source distincts ; aucun miroir logiciel.",
+        "Le corps r1 reste utilisé en revue : même à la tolérance maximale 64, des pixels magenta restent visibles dans les cavités des griffes et derrière la crête.",
+        "Quatre corrections OpenAI opaques ont été rejetées pour la même frange ; la tentative alpha a été rejetée car son damier était peint sans canal alpha.",
+        "Pivots, raccords et topologie restent estimés pour inspection. Aucune animation de vol, collision ou pose moteur n’est acceptée."
+      ],
+      "anchor": [
+        850,
+        440
+      ],
+      "anchorByFacing": {
+        "right": [
+          850,
+          440
+        ],
+        "left": [
+          550,
+          440
+        ]
+      },
+      "base": {
+        "resourceId": "flight-body-layer-r1",
+        "scale": 0.85,
+        "frameByFacing": {
+          "right": {
+            "facing": "right",
+            "phase": "body",
+            "sourceRect": [
+              21,
+              309,
+              733,
+              338
+            ],
+            "visibleRect": [
+              0,
+              0,
+              733,
+              338
+            ],
+            "sourcePivot": [
+              497,
+              146
+            ]
+          },
+          "left": {
+            "facing": "left",
+            "phase": "body",
+            "sourceRect": [
+              782,
+              309,
+              733,
+              338
+            ],
+            "visibleRect": [
+              0,
+              0,
+              733,
+              338
+            ],
+            "sourcePivot": [
+              236,
+              146
+            ]
+          }
+        },
+        "sourcePivot": [
+          497,
+          146
+        ],
+        "sourcePivotByFacing": {
+          "right": [
+            497,
+            146
+          ],
+          "left": [
+            236,
+            146
+          ]
+        }
+      },
+      "sockets": {
+        "wingRoot": {
+          "sourcePoint": [
+            497,
+            146
+          ],
+          "sourcePointByFacing": {
+            "right": [
+              497,
+              146
+            ],
+            "left": [
+              236,
+              146
+            ]
+          }
+        }
+      },
+      "modules": [
+        {
+          "id": "far-wing",
+          "label": "Aile arrière",
+          "resourceId": "far-wing-right-beat-r1",
+          "resourceIdByFacing": {
+            "right": "far-wing-right-beat-r1",
+            "left": "far-wing-left-beat-r1"
+          },
+          "defaultEnabled": true,
+          "layer": "behind",
+          "socketId": "wingRoot",
+          "scale": 1,
+          "offsetByFacing": {
+            "right": [
+              -8,
+              -5
+            ],
+            "left": [
+              8,
+              -5
+            ]
+          },
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "wingbeat-1",
+                "sourceRect": [
+                  38,
+                  60,
+                  475,
+                  405
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  475,
+                  405
+                ],
+                "sourcePivot": [
+                  454,
+                  243
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-2",
+                "sourceRect": [
+                  546,
+                  150,
+                  456,
+                  315
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  456,
+                  315
+                ],
+                "sourcePivot": [
+                  435,
+                  153
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-3",
+                "sourceRect": [
+                  1052,
+                  208,
+                  429,
+                  245
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  429,
+                  245
+                ],
+                "sourcePivot": [
+                  408,
+                  77
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-4",
+                "sourceRect": [
+                  83,
+                  678,
+                  413,
+                  214
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  413,
+                  214
+                ],
+                "sourcePivot": [
+                  392,
+                  81
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-5",
+                "sourceRect": [
+                  559,
+                  589,
+                  448,
+                  344
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  448,
+                  344
+                ],
+                "sourcePivot": [
+                  427,
+                  185
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-6",
+                "sourceRect": [
+                  1045,
+                  536,
+                  457,
+                  397
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  457,
+                  397
+                ],
+                "sourcePivot": [
+                  436,
+                  237
+                ]
+              }
+            ],
+            "left": [
+              {
+                "facing": "left",
+                "phase": "wingbeat-1",
+                "sourceRect": [
+                  79,
+                  59,
+                  453,
+                  401
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  453,
+                  401
+                ],
+                "sourcePivot": [
+                  20,
+                  233
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-2",
+                "sourceRect": [
+                  535,
+                  149,
+                  424,
+                  310
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  424,
+                  310
+                ],
+                "sourcePivot": [
+                  20,
+                  145
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-3",
+                "sourceRect": [
+                  1022,
+                  223,
+                  404,
+                  225
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  404,
+                  225
+                ],
+                "sourcePivot": [
+                  20,
+                  66
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-4",
+                "sourceRect": [
+                  79,
+                  681,
+                  396,
+                  213
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  396,
+                  213
+                ],
+                "sourcePivot": [
+                  20,
+                  72
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-5",
+                "sourceRect": [
+                  535,
+                  581,
+                  411,
+                  338
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  411,
+                  338
+                ],
+                "sourcePivot": [
+                  20,
+                  172
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-6",
+                "sourceRect": [
+                  1033,
+                  524,
+                  448,
+                  394
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  448,
+                  394
+                ],
+                "sourcePivot": [
+                  20,
+                  229
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "near-wing",
+          "label": "Aile proche",
+          "resourceId": "near-wing-right-beat-r1",
+          "resourceIdByFacing": {
+            "right": "near-wing-right-beat-r1",
+            "left": "near-wing-left-beat-r1"
+          },
+          "defaultEnabled": true,
+          "layer": "front",
+          "socketId": "wingRoot",
+          "scale": 1.15,
+          "offsetByFacing": {
+            "right": [
+              0,
+              0
+            ],
+            "left": [
+              0,
+              0
+            ]
+          },
+          "framesByFacing": {
+            "right": [
+              {
+                "facing": "right",
+                "phase": "wingbeat-1",
+                "sourceRect": [
+                  13,
+                  27,
+                  482,
+                  402
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  482,
+                  402
+                ],
+                "sourcePivot": [
+                  461,
+                  238
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-2",
+                "sourceRect": [
+                  527,
+                  176,
+                  476,
+                  253
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  476,
+                  253
+                ],
+                "sourcePivot": [
+                  455,
+                  89
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-3",
+                "sourceRect": [
+                  1054,
+                  221,
+                  462,
+                  259
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  462,
+                  259
+                ],
+                "sourcePivot": [
+                  441,
+                  44
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-4",
+                "sourceRect": [
+                  78,
+                  677,
+                  417,
+                  215
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  417,
+                  215
+                ],
+                "sourcePivot": [
+                  396,
+                  81
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-5",
+                "sourceRect": [
+                  543,
+                  580,
+                  460,
+                  341
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  460,
+                  341
+                ],
+                "sourcePivot": [
+                  439,
+                  179
+                ]
+              },
+              {
+                "facing": "right",
+                "phase": "wingbeat-6",
+                "sourceRect": [
+                  1035,
+                  534,
+                  480,
+                  387
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  480,
+                  387
+                ],
+                "sourcePivot": [
+                  459,
+                  225
+                ]
+              }
+            ],
+            "left": [
+              {
+                "facing": "left",
+                "phase": "wingbeat-1",
+                "sourceRect": [
+                  36,
+                  29,
+                  464,
+                  403
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  464,
+                  403
+                ],
+                "sourcePivot": [
+                  20,
+                  236
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-2",
+                "sourceRect": [
+                  514,
+                  173,
+                  460,
+                  258
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  460,
+                  258
+                ],
+                "sourcePivot": [
+                  20,
+                  91
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-3",
+                "sourceRect": [
+                  1059,
+                  225,
+                  441,
+                  257
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  441,
+                  257
+                ],
+                "sourcePivot": [
+                  20,
+                  45
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-4",
+                "sourceRect": [
+                  28,
+                  682,
+                  430,
+                  217
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  430,
+                  217
+                ],
+                "sourcePivot": [
+                  20,
+                  77
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-5",
+                "sourceRect": [
+                  522,
+                  575,
+                  468,
+                  348
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  468,
+                  348
+                ],
+                "sourcePivot": [
+                  20,
+                  184
+                ]
+              },
+              {
+                "facing": "left",
+                "phase": "wingbeat-6",
+                "sourceRect": [
+                  1037,
+                  531,
+                  473,
+                  391
+                ],
+                "visibleRect": [
+                  0,
+                  0,
+                  473,
+                  391
+                ],
+                "sourcePivot": [
+                  20,
+                  228
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "animation": {
+        "moduleId": "near-wing",
+        "linkedModuleIds": [
+          "near-wing",
+          "far-wing"
+        ],
+        "label": "Battement des ailes · revue",
+        "fps": 2.4
+      }
     }
   ]
 }

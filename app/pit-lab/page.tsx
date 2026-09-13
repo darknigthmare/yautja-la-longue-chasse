@@ -1,4 +1,4 @@
-import PitAnimationLab from "./PitAnimationLab";
+import PitAnimationLab from "./PitProductionAnimationLab";
 
 export const metadata = {
   title: "Atelier d’animation THE PIT · La Longue Chasse",

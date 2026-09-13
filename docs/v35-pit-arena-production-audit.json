@@ -1,0 +1,1747 @@
+{
+  "result": "PASS",
+  "stages": 100,
+  "primaryPlaneTargets": 600,
+  "specifiedSubplans": 283,
+  "requestedImageFiles": 288,
+  "fileStatus": {
+    "planned": 0,
+    "generated": 0,
+    "reviewed": 0,
+    "integrated": 288
+  },
+  "legacyPlayable": 8,
+  "runtimePlayable": 20,
+  "concepts": 80,
+  "readyRuntimeKits": 20,
+  "verifiedImages": [
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-a-vault-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p1-a-gallery-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p1-b-gallery-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p2-a-ritual-pillar-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p2-b-ritual-pillar-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p2-c-service-door-frame.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p2-d-service-door-leaf-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-a-brazier-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-b-brazier-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-d-ceremonial-trophy.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p4-a-ring-rear-fascia.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p4-b-basalt-floor-tile.png",
+      "width": 1838,
+      "height": 856,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p4-c-ring-front-fascia.png",
+      "width": 1983,
+      "height": 793,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p5-a-chain-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p5-b-chain-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p0-a-archive-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p1-a-vault-rib-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p1-b-vault-rib-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p2-a-central-archive-arch.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p2-b-display-case-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p2-c-display-case-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p3-a-trophy-crowned-skull.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p3-b-trophy-armored-jaw.png",
+      "width": 1254,
+      "height": 1254,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p3-c-archive-lamp-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p3-d-archive-lamp-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p4-a-gallery-floor-tile.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p4-b-gallery-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p5-a-hanging-token-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/trophy-hall/p5-b-hanging-token-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p2-a-support-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p2-b-support-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p2-c-central-structure.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p5-a-foreground-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/canopy-causeway/p5-b-foreground-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p1-a-distant-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p2-a-support-left-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p2-b-support-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p5-a-foreground-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/frost-chamber/p5-b-foreground-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p1-a-distant-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ash-courtyard/p5-b-foreground-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p1-a-distant-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p2-a-support-left.png",
+      "width": 1145,
+      "height": 1374,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p2-c-central-structure.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/glass-terrace/p5-b-foreground-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p0-a-depth-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p2-a-support-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p2-b-support-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p2-c-central-structure.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p4-a-contact-floor.png",
+      "width": 2161,
+      "height": 728,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p5-a-foreground-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/abyssal-bridge/p5-b-foreground-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-a-distant-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+      "width": 2048,
+      "height": 768,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/ruins-tribunal/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p1-a-distant-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p1-b-distant-right.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p2-c-central-structure.png",
+      "width": 1374,
+      "height": 1145,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-009-quais-du-premier-sang/p5-b-foreground-right.png",
+      "width": 1223,
+      "height": 1286,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p1-a-distant-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p2-c-central-structure.png",
+      "width": 1206,
+      "height": 1305,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p1-a-distant-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p2-b-support-right.png",
+      "width": 1145,
+      "height": 1374,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p3-a-prop-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p1-b-distant-right.png",
+      "width": 1209,
+      "height": 1300,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-a-prop-left.png",
+      "width": 1223,
+      "height": 1286,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p1-a-distant-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p2-c-central-structure.png",
+      "width": 1224,
+      "height": 1285,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-a-prop-left.png",
+      "width": 1224,
+      "height": 1285,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-b-prop-right.png",
+      "width": 1214,
+      "height": 1295,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p1-a-distant-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p1-b-distant-right.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p2-c-central-structure.png",
+      "width": 1374,
+      "height": 1145,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p3-b-prop-right.png",
+      "width": 1161,
+      "height": 1355,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-014-cour-des-navigateurs/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p2-a-support-left.png",
+      "width": 1334,
+      "height": 1179,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p2-b-support-right.png",
+      "width": 1214,
+      "height": 1295,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p3-a-prop-left.png",
+      "width": 1374,
+      "height": 1145,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-015-bastion-des-enforcers/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p0-a-depth-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p1-a-distant-left.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-b-support-right.png",
+      "width": 1145,
+      "height": 1374,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-b-prop-right.png",
+      "width": 1349,
+      "height": 1166,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+      "width": 2146,
+      "height": 733,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-b-support-right.png",
+      "width": 1222,
+      "height": 1287,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+      "width": 1774,
+      "height": 887,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p0-a-depth-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p1-b-distant-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p2-b-support-right.png",
+      "width": 1236,
+      "height": 1272,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p2-c-central-structure.png",
+      "width": 1328,
+      "height": 1184,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p3-b-prop-right.png",
+      "width": 1225,
+      "height": 1284,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p3-d-light-right-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-018-observatoire-des-lunes/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p1-a-distant-left.png",
+      "width": 1145,
+      "height": 1374,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p2-a-support-left.png",
+      "width": 1222,
+      "height": 1287,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p2-b-support-right-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p3-b-prop-right.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p3-c-light-left-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p0-a-depth.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-a-distant-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p1-b-distant-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-a-support-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-b-support-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p2-c-central-structure.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-a-prop-left.png",
+      "width": 1536,
+      "height": 1024,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-b-prop-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-c-light-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p3-d-light-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-a-contact-floor.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png",
+      "width": 2172,
+      "height": 724,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-a-foreground-left.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    },
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p5-b-foreground-right.png",
+      "width": 1024,
+      "height": 1536,
+      "status": "integrated"
+    }
+  ]
+}

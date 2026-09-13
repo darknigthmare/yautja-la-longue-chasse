@@ -1,4 +1,5 @@
 import { archiveTransferPending } from "./archiveTransferGuard";
+import { isPitExtensionArenaId, type PitRuntimeArenaId } from "./pitArenaExtensions";
 
 /**
  * Persistent sidecar for THE PIT.
@@ -56,7 +57,7 @@ export type PitSaveMode = "cpu" | "local" | "training" | "arcade" | "circuit" | 
 export type PitMatchMode = Exclude<PitSaveMode, "descent">;
 export type PitSaveOutcome = "victory" | "defeat" | "draw";
 export type PitSavedFighterId = PitFirstEditionFighterId;
-export type PitSavedArenaId = PitFirstEditionArenaId;
+export type PitSavedArenaId = PitRuntimeArenaId;
 export type PitTrainingGuard = "none" | "high" | "low" | "alternating";
 
 export interface PitModeStats {
@@ -292,7 +293,7 @@ function isFighter(value: unknown): value is PitSavedFighterId {
 
 function isArena(value: unknown): value is PitSavedArenaId {
   return typeof value === "string" &&
-    PIT_FIRST_EDITION_ARENA_IDS.includes(value as PitSavedArenaId);
+    (PIT_FIRST_EDITION_ARENA_IDS.includes(value as PitFirstEditionArenaId) || isPitExtensionArenaId(value));
 }
 
 function isGuard(value: unknown): value is PitTrainingGuard {
@@ -1158,6 +1159,11 @@ export function applyPitResult(
     (!isArcadeResult && !isCircuitResult && cosmeticRewardIds.length > 0)
   ) {
     throw new Error("Invalid THE PIT Clan Circuit result.");
+  }
+
+  if (isArcadeResult && isPitExtensionArenaId(arenaId)) {
+    // Expansion arenas are neutral duels; the original Arcade routes stay fixed.
+    throw new Error("Invalid THE PIT Arcade arena: duel extension.");
   }
 
   if (isArcadeResult) {

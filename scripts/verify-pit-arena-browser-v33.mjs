@@ -8,7 +8,10 @@ import { chromium } from "playwright-core";
 const root = process.cwd();
 const arenaId = process.argv[2] ?? "the-pit";
 const knownPlayableIds=["the-pit", "trophy-hall", "canopy-causeway", "frost-chamber", "ash-courtyard", "glass-terrace", "abyssal-bridge", "ruins-tribunal"];
-const conceptPreview=/^arena-0(?:09|10|11|12)-[a-z0-9-]+$/.test(arenaId);
+const sourceManifest=JSON.parse(await fs.readFile("art-source/v33/pit-arenas/production-manifest.json","utf8"));
+const extension=sourceManifest.stages.find(stage=>stage.runtimeExtension?.arenaId===arenaId&&stage.runtimeEnabled);
+if(extension) knownPlayableIds.push(arenaId);
+const conceptPreview=!extension&&/^arena-0(?:09|1[0-9]|20)-[a-z0-9-]+$/.test(arenaId);
 assert(knownPlayableIds.includes(arenaId)||conceptPreview,"Only specified production kits may be previewed");
 const v34 = !["the-pit", "trophy-hall"].includes(arenaId);
 const output = path.resolve(v34 ? "work/v34/arena-browser-qa" : "work/v33/arena-browser-qa", arenaId === "the-pit" ? "." : arenaId);
@@ -49,7 +52,7 @@ try {
       if(!target||target.legacyRuntimeStatus!=="concept"||target.legacyRuntimeArenaId!==null||target.runtimeEnabled)throw new Error("Invalid concept preview boundary");
       // Local test-only geometry proxy. The source manifest and game remain unchanged.
       manifest.stages=[{...target,legacyRuntimeArenaId:arenaId,legacyRuntimeStatus:"playable",runtimeEnabled:true}];
-    }else manifest.stages.find(stage => stage.legacyRuntimeArenaId === arenaId).runtimeEnabled = true;
+    }else manifest.stages.find(stage => stage.legacyRuntimeArenaId === arenaId || stage.runtimeExtension?.arenaId === arenaId).runtimeEnabled = true;
     window.arenaBank = await arenaApi.loadPitArenaArt(arenaId, { productionManifest: manifest });
     window.fighterBank = await arenaApi.loadPitCombatBitmapArt(["jungle-hunter", "city-hunter"]);
     window.renderScenario = ({ centerX = 480, centerY = 270, zoom = 1, positions = [330, 630], reducedMotion = false, highContrast = false, frame = 0 } = {}) => {
@@ -103,7 +106,7 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual(failedRequests, []);
   const report = { result: "PASS", arenaId, conceptPreview, playablePromotion:false, checkedAt: new Date().toISOString(), surface: "isolated-renderer-with-real-game-fighters-and-images", applicationFlowVerified: false, loaded, scenarios, mobileNoOverflow: noOverflow, errors, failedRequests, evidenceDirectory: path.relative(root, output).replaceAll("\\", "/"), limit: "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here." };
-  await fs.writeFile(v34 ? `docs/v34-${arenaId}-renderer-qa.json` : arenaId === "the-pit" ? "docs/v33-arena-renderer-qa.json" : "docs/v33-trophy-hall-renderer-qa.json", JSON.stringify(report, null, 2) + "\n");
+  await fs.writeFile(extension ? `docs/v34-${arenaId}-runtime-renderer-qa.json` : v34 ? `docs/v34-${arenaId}-renderer-qa.json` : arenaId === "the-pit" ? "docs/v33-arena-renderer-qa.json" : "docs/v33-trophy-hall-renderer-qa.json", JSON.stringify(report, null, 2) + "\n");
   console.log(JSON.stringify(report));
 } catch (error) {
   if (page) await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true });

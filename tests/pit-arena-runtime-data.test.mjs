@@ -49,15 +49,16 @@ test("runtime summaries and actual render plans retain all 100 entries and exact
   assert.equal(runtime.summarizePitArenaProduction().stages, 100);
   assert.equal(runtime.summarizePitArenaProduction().primaryPlaneTargets, 600);
   assert.equal(runtime.summarizePitArenaProduction().legacyPlayable, 8);
-  assert.equal(runtime.summarizePitArenaProduction().concepts, 92);
+  assert.equal(runtime.summarizePitArenaProduction().concepts, 80);
   for (const stage of source.stages) {
     const projected = runtime.PIT_ARENA_PRODUCTION_MANIFEST.stages.find(entry => entry.catalogueId === stage.catalogueId);
     assert(projected);
     assert.equal(projected.name, stage.name);
     assert.deepEqual(projected.planes.map(plane => [plane.id, plane.status]), stage.planes.map(plane => [plane.id, plane.status]));
-    if (!stage.legacyRuntimeArenaId) continue;
-    const original = runtime.resolvePitArenaProductionKit(stage.legacyRuntimeArenaId, source);
-    const client = runtime.resolvePitArenaProductionKit(stage.legacyRuntimeArenaId);
+    const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId;
+    if (!id) continue;
+    const original = runtime.resolvePitArenaProductionKit(id, source);
+    const client = runtime.resolvePitArenaProductionKit(id);
     assert.deepEqual(client?.paths, original?.paths);
     assert.deepEqual(client?.requiredPaths, original?.requiredPaths);
     if (original) for (const [index, plane] of original.planes.entries()) {
@@ -86,7 +87,7 @@ test("unknown private fields cannot leak through the projection allow-list", () 
 });
 
 test("authoring validation requires original proof paths, never runtime-only attestations", async () => {
-  await assert.rejects(verifyPitArenaSourceReferences(projectPitArenaRuntimeData(source), root), /Missing original generation receipt/);
+  await assert.rejects(verifyPitArenaSourceReferences(projectPitArenaRuntimeData(source), root), /Missing (original generation receipt|extension renderer approval)/);
   const missing = structuredClone(source);
   missing.stages[0].planes[0].assets[0].frames[0].generation.source = "art-source/v33/pit-arenas/missing-receipt-for-regression.json";
   await assert.rejects(verifyPitArenaSourceReferences(missing, root), { code: "ENOENT" });

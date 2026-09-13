@@ -5,11 +5,11 @@ import {
   type PitSpriteSheetAnimationBank, type PitSpriteSheetAnimationDefinition, type PitSpriteSheetAnimationOptions,
 } from "./pitSpriteSheetAnimation";
 
-/** All 14 exact-ID PIT fighters: six V31 and eight preserved V5 plates. Fixed poses only. */
+/** Exact-ID PIT fighters, including the separate V34 duel extension. Fixed poses only. */
 export const PIT_COMBAT_BITMAP_FIGHTER_IDS = [
   "jungle-hunter", "city-hunter", "scar", "celtic", "wolf", "feral-hunter",
   "berserker", "falconer", "kok-warlord",
-  "scarface", "stone-heart", "valkyrie", "witch", "enforcer",
+  "scarface", "stone-heart", "valkyrie", "witch", "enforcer", "tracker", "greyback",
 ] as const satisfies readonly PitFighterId[];
 
 export const PIT_V31_BITMAP_FIGHTER_IDS: readonly PitFighterId[] = [
@@ -34,6 +34,8 @@ export interface PitCombatBitmapArtDefinition {
 // Other plates have a rightward three-quarter presentation; mirroring is a
 // provisional display convention, never a separately authored/canon side view.
 const MEASUREMENTS: readonly [PitFighterId, number, number, number, number, number, "right" | "neutral"][] = [
+  ["tracker", 751, 997, 381, 944, 53, "right"],
+  ["greyback", 946, 1551, 422, 1468, 83, "right"],
   ["jungle-hunter", 775, 1514, 390, 1433, 81, "right"],
   ["city-hunter", 987, 1568, 560, 1484, 84, "right"],
   ["scar", 1139, 1356, 510, 1283, 142, "right"],

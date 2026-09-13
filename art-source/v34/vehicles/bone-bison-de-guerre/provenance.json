@@ -310,8 +310,698 @@
       "runtimeClips": [],
       "reviewFrames": [],
       "gameplayImplemented": false
+    },
+    {
+      "id": "walk-right-r1",
+      "actionId": "walk",
+      "label": "Bone Bison — marche droite, premier essai",
+      "status": "rejected",
+      "rejectionReason": "Collisions du contour détouré avec quatre frontières de cellule : 4, 3, 4 et 3 pixels (14 pixels au total) ; remplacement walk-right-r2 disponible.",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-right-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-right-r1.png",
+      "originId": "exec-1cd7e922-9d1b-47e2-939f-91d0cda83e5c.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43",
+      "bytes": 2065006,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Create one production 2D side-scrolling game animation sprite sheet based exactly on the attached established Bone Bison body design. This is the SAME animal, not a redesign: blue-grey layered organic bony plates, large shoulder hump with brown bristly mane, very low long head with a huge broad upward-curving lower horn, short armoured tail, exactly FOUR weight-bearing legs and cloven dark feet. No rider, no saddle, no harness, no manufactured armor, no text. Use the attached RIGHT-facing animal as the consistent identity reference. Every sprite faces RIGHT in true orthographic side view. One complete slow WALK cycle of SIX distinct sequential frames arranged in a perfectly regular 3-column by 2-row grid, read left-to-right then next row. Frame order: left hind lift/push, left hind plant/right fore lift, right fore plant, right hind lift/push, right hind plant/left fore lift, left fore plant returning toward first frame. Preserve exactly four legs in every frame; legs move at the joints, NEVER duplicate feet or append ghost limbs. Near and far legs separated enough to read, the hidden far pair modestly darker. Horn shape, skull, dorsal plate pattern, mass and body proportions remain fixed; subtle shoulder/hip weight shift, very small head bob. Animation stays in place, no travel across cells. Same scale in all 6 square cells, centered same body origin and common foot contact baseline. Show the COMPLETE horn, mane, tail and feet in each cell, with at least 10 percent safety margin all around; no touching neighboring cells. Crisp detailed hand-painted raster game art with sharp readable contour matching the reference, no smear/motion blur. Wide image 1536 x 1024, each cell exactly 512 x 512. Flat uniform pure magenta #FF00FF key background with no shadows, no gradients, no grid lines, no captions. The creature itself contains no magenta pixels.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/bone-bison-de-guerre/body-colour-concept-r1.png",
+          "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+        }
+      ],
+      "notes": [
+        "Nouvelle vague isolée du paquet V34 gelé. Quatre membres visibles ; appuis et continuité à revoir en mouvement. Marges horizontales inférieures au brief ; aucune animation acceptée dans le moteur.",
+        "Rejet technique complet : cellules 0, 1, 3 et 4 en collision de bord (14 pixels cumulés)."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "walk-1",
+          "reviewGridRect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            16,
+            99,
+            496,
+            300
+          ],
+          "gridBorderPixels": 4,
+          "visiblePixels": 70494,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "walk-2",
+          "reviewGridRect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            512,
+            97,
+            508,
+            302
+          ],
+          "gridBorderPixels": 3,
+          "visiblePixels": 71419,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "walk-3",
+          "reviewGridRect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1036,
+            97,
+            489,
+            302
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 71236,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "walk-4",
+          "reviewGridRect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            23,
+            598,
+            489,
+            306
+          ],
+          "gridBorderPixels": 4,
+          "visiblePixels": 71068,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "right",
+          "phase": "walk-5",
+          "reviewGridRect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            512,
+            598,
+            511,
+            306
+          ],
+          "gridBorderPixels": 3,
+          "visiblePixels": 72717,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "right",
+          "phase": "walk-6",
+          "reviewGridRect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1044,
+            601,
+            481,
+            303
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 70689,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "walk-left-r1",
+      "actionId": "walk",
+      "label": "Bone Bison — marche gauche, premier essai",
+      "status": "rejected",
+      "rejectionReason": "Collisions du contour détouré avec cinq frontières de cellule : 7, 8, 7, 12 et 9 pixels (43 pixels au total) ; remplacement walk-left-r2 disponible.",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-left-r1.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-left-r1.png",
+      "originId": "exec-95d5d128-dbc9-4623-a4de-88c8a61ce15c.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d63bbcc4ebb55a487e48efede08bf40089925e17cf6c4c3e736c437c6189c403",
+      "bytes": 2023504,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "Generate a complementary six-frame WALK LEFT sprite sheet of the exact Bone Bison creature shown in the attached two-direction identity reference and right-walk sheet. Preserve original identity: huge bristly brown shoulder hump, blue-grey overlapping organic bony plates, low sweeping long head and oversized upcurved lower horn, short pointed armoured tail and exactly FOUR legs. Use the LEFT-facing identity specimen for this side. NOT a buffalo or rhino. No mechanical armour, saddle, rider, straps, accessories, captions or scenery. Every pose faces LEFT in a strict orthographic side view. Six genuinely sequential poses of a slow four-beat walking cycle, 3 equal columns x 2 equal rows, 1536x1024 total. Each frame occupies a 512x512 cell. The creature should occupy ONLY 78 percent of each cell width, ensuring at least 50 pixels empty margin on both sides, including the very tip of the horn and tail. Maintain identical scale and the same shoulder and grounded foot baseline positions across all six cells; animation in place. Show exactly four distinct legs, two near, two far darkened, no extra ghost legs or duplicated feet. Frame1 near rear starts lifting; frame2 near rear reaches forward and plants while near fore lifts; frame3 near fore plants; frame4 far rear lifts; frame5 far rear plants while far fore lifts; frame6 far fore plants and connects to frame1. The two halves must use different near versus far leg actions rather than repeat identical steps. Keep plate pattern, horn length/shape, body volume and colour invariant. Small natural shoulder/hip movement, no whole-body zoom. Feet flex at joints, no motion blur. Sharp detailed raster painted game art matching the identity, no perspective rotation. Uniform flat pure MAGENTA #FF00FF background, no ground shadow, grid lines, labels, color swatches or numbers. Whole animal inside every cell. This is an animation production source sheet, not a poster or collage.",
+      "references": [
+        {
+          "path": "art-source/v34/vehicles/bone-bison-de-guerre/body-colour-concept-r1.png",
+          "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+        },
+        {
+          "path": "work/v34/private-root-wave/walk-right-r1.png",
+          "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43"
+        }
+      ],
+      "notes": [
+        "Vague suivante en attente de revue en mouvement. Quatre membres présents ; mouvement et raccord à valider. Certaines marges très étroites ; planche non acceptée pour le moteur.",
+        "Rejet technique complet : cellules 1, 2, 3, 4 et 5 en collision de bord (43 pixels cumulés)."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "walk-1",
+          "reviewGridRect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            23,
+            103,
+            484,
+            298
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 69420,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "walk-2",
+          "reviewGridRect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            519,
+            102,
+            505,
+            299
+          ],
+          "gridBorderPixels": 7,
+          "visiblePixels": 69988,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "left",
+          "phase": "walk-3",
+          "reviewGridRect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1024,
+            102,
+            486,
+            299
+          ],
+          "gridBorderPixels": 8,
+          "visiblePixels": 70906,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "left",
+          "phase": "walk-4",
+          "reviewGridRect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            22,
+            597,
+            490,
+            299
+          ],
+          "gridBorderPixels": 7,
+          "visiblePixels": 69253,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "walk-5",
+          "reviewGridRect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            512,
+            597,
+            512,
+            299
+          ],
+          "gridBorderPixels": 12,
+          "visiblePixels": 69647,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "walk-6",
+          "reviewGridRect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1024,
+            597,
+            487,
+            299
+          ],
+          "gridBorderPixels": 9,
+          "visiblePixels": 71247,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "walk-right-r2",
+      "actionId": "walk",
+      "label": "Bone Bison — marche droite, cadrage corrigé",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-right-r2.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-right-r2.png",
+      "originId": "exec-12002563-9bea-4fe6-9c8c-73e5b2f1e0dd.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "1e0af94c6fe7a349054e8167b4a5f36b8ccc08a32d66256acc467aecf53bb1ea",
+      "bytes": 1689770,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "EDIT the attached right-facing Bone Bison animation sheet. Mandatory correction: shrink EACH of the six complete creatures to 75 percent of its current size and center it within its ORIGINAL 512x512 cell, leaving a wide clear magenta margin on both sides. Keep the canvas exactly1536x1024 with exactly3 columns and2rows. Each animal INCLUDING its horn and tail must fit within an imaginary rectangle from cell x=65 to x=447, and y=130 to y=380. That means the entire animal width must be at most382 pixels, NEVER near500. Do not draw rectangles or guides. Preserve the SIX DIFFERENT walking poses in their current reading order and retain all4legs per pose, original bony plate pattern, brown bristly hump, horn profile and pointed tail. Keep identical scale and aligned planted-foot groundline in all cells. Everything faces RIGHT. Do not simplify the creature, redesign anatomy, add/remove limbs, add new equipment, turn its head, add shadows, add text or change the six-cell arrangement. Only fix the too-large sprite footprints and any tiny contour crossing at the cell boundaries. Flat pure MAGENTA#FF00FF background, crisp detailed 2D painted game sprite contours. Large blank padding is intentional and essential for reliable animation extraction.",
+      "references": [
+        {
+          "path": "work/v34/private-root-wave/walk-right-r1.png",
+          "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43"
+        }
+      ],
+      "notes": [
+        "Remplace la r1 dont la corne coupe une frontière de cellule. Source générée à nouveau par OpenAI, jamais réduite par un outil externe. Revue de la démarche encore requise.",
+        "Revue technique r2 : six cellules distinctes, aucune collision de bord ; anatomie, appuis et raccord cyclique restent à valider avant tout clip runtime."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "right",
+          "phase": "walk-1",
+          "reviewGridRect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            77,
+            153,
+            365,
+            217
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 37724,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "right",
+          "phase": "walk-2",
+          "reviewGridRect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            592,
+            153,
+            362,
+            216
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 37783,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "right",
+          "phase": "walk-3",
+          "reviewGridRect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1103,
+            152,
+            361,
+            217
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 38143,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "right",
+          "phase": "walk-4",
+          "reviewGridRect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            78,
+            626,
+            366,
+            224
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 39176,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "right",
+          "phase": "walk-5",
+          "reviewGridRect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            590,
+            626,
+            369,
+            224
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 40200,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "right",
+          "phase": "walk-6",
+          "reviewGridRect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1102,
+            627,
+            362,
+            223
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 39362,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
+    },
+    {
+      "id": "walk-left-r2",
+      "actionId": "walk",
+      "label": "Bone Bison — marche gauche, cadrage corrigé",
+      "status": "authored-review",
+      "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-left-r2.png",
+      "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-left-r2.png",
+      "originId": "exec-5b613c69-be67-4540-9fc1-e5c2e542e205.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "544e4ff5a005e042c786a44e860a2e6524118ac91f495fb9475312b51ec4d71b",
+      "bytes": 1715724,
+      "generator": "openai-imagegen",
+      "sourceBytesPreserved": true,
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 48,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "rawAlpha": {
+        "zero": 0,
+        "partial": 0,
+        "opaque": 1572864
+      },
+      "prompt": "EDIT the attached LEFT-facing Bone Bison animation sheet. Critical correction: shrink EACH of the six complete creatures to75percent of its present size and center it within its ORIGINAL512x512cell, with a wide clean magenta margin on both sides. Keep image1536x1024, exactly3columns and2rows. Every animal INCLUDING horn and tail must fit entirely between local cell x65 and447 and y130 and380. Maximum complete sprite width382pixels, not500. Do not draw guides. Preserve the SIX DIFFERENT walking poses, LEFT-facing direction, reading order, exactlyFOURlegs and original identity: blue-grey layered bony plates, brown bristly shoulder hump, low head with huge sweeping curved horn, short pointed tail. Align grounded feet on one consistent baseline per row; keep the same scale across all6cells. No body rotation, no weapon, rider, harness, saddle, text, extra limbs, duplicate feet, motion blur or scenery. Only correct overly large sprite footprints and tiny crossings between neighboring animation cells. Flat pure MAGENTA#FF00FF background, sharp hand-painted raster game-art silhouette. Large empty padding is intentional. Keep all horn tips, tail tips and feet visibly separated from each cell boundary.",
+      "references": [
+        {
+          "path": "work/v34/private-root-wave/walk-left-r1.png",
+          "sha256": "d63bbcc4ebb55a487e48efede08bf40089925e17cf6c4c3e736c437c6189c403"
+        }
+      ],
+      "notes": [
+        "Remplace la r1 : 7 pixels touchent la frontière de cellule1. Image corrigée par OpenAI, source conservée intacte. Revue de la démarche toujours requise.",
+        "Revue technique r2 : six cellules distinctes, aucune collision de bord ; anatomie, appuis et raccord cyclique restent à valider avant tout clip runtime."
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "facing": "left",
+          "phase": "walk-1",
+          "reviewGridRect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            66,
+            172,
+            380,
+            226
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 41470,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 1,
+          "facing": "left",
+          "phase": "walk-2",
+          "reviewGridRect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            569,
+            171,
+            385,
+            227
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42169,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 2,
+          "facing": "left",
+          "phase": "walk-3",
+          "reviewGridRect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1077,
+            169,
+            387,
+            229
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42878,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 3,
+          "facing": "left",
+          "phase": "walk-4",
+          "reviewGridRect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            62,
+            627,
+            389,
+            232
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 42841,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 4,
+          "facing": "left",
+          "phase": "walk-5",
+          "reviewGridRect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            568,
+            626,
+            387,
+            233
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 43488,
+          "runtimeFrameAccepted": false
+        },
+        {
+          "index": 5,
+          "facing": "left",
+          "phase": "walk-6",
+          "reviewGridRect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alpha16Bounds": [
+            1077,
+            627,
+            392,
+            232
+          ],
+          "gridBorderPixels": 0,
+          "visiblePixels": 44282,
+          "runtimeFrameAccepted": false
+        }
+      ],
+      "runtimeClips": [],
+      "reviewFrames": [],
+      "gameplayImplemented": false
     }
   ],
-  "generatedSources": 3,
+  "generatedSources": 7,
   "acceptedRuntimeClips": 0
 }

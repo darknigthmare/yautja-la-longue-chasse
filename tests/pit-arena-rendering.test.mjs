@@ -29,8 +29,8 @@ async function bankFor(arenaId) {
   return { arenaId, images, requestedPaths: new Set(images.keys()), failedPaths: new Set(), cancelled: false, productionKit: api.resolvePitArenaProductionKit(arenaId) ?? undefined };
 }
 
-test("every playable arena references real bitmap assets and alpha modules in six distinct passes", async () => {
-  assert.deepEqual(Object.keys(api.PIT_ARENA_ART_DEFINITIONS).sort(), Object.keys(api.PIT_ARENAS).sort());
+test("historical fallback definitions reference real bitmaps and independent alpha modules", async () => {
+  assert.deepEqual(Object.keys(api.PIT_ARENA_ART_DEFINITIONS).sort(), Object.keys(api.PIT_ARENAS).filter(id => !id.startsWith("arena-")).sort());
   const allPaths = new Set();
   for (const [arenaId, art] of Object.entries(api.PIT_ARENA_ART_DEFINITIONS)) {
     assert.equal(art.arenaId, arenaId);
@@ -87,7 +87,7 @@ test("foreground near either fighter fades without hiding remote props", () => {
   assert.equal(api.getPitArenaForegroundOpacity({ x: -250, y: 315, width: 30, height: 95 }, state, camera), .78);
 });
 
-test("all eight stages draw real images in six passes without changing combat, camera or replay", async () => {
+test("all registered stages draw real images in six passes without changing combat, camera or replay", async () => {
   for (const arenaId of Object.keys(api.PIT_ARENAS)) {
     const state = stateFor(arenaId);
     const camera = cameraFor(state);

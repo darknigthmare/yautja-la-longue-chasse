@@ -1,10 +1,11 @@
+import { PIT_EXPANSION_FIGHTERS, type PitExpansionFighterId } from "./pitRosterExpansion";
+import { PIT_EXTENSION_ARENAS, PIT_EXTENSION_ARENA_IDS, type PitRuntimeArenaId } from "./pitArenaExtensions";
 import {
   PIT_CHRONICLE_BOSSES,
   PIT_FIRST_EDITION_ARENAS,
   PIT_FIRST_EDITION_ARENA_IDS,
   PIT_FIRST_EDITION_FIGHTERS,
   PIT_FIRST_EDITION_FIGHTER_IDS,
-  type PitFirstEditionArenaId,
   type PitFirstEditionCombatantId,
   type PitFirstEditionFighterId,
   type PitEditionTechniqueDefinition,
@@ -39,11 +40,11 @@ export const PIT_PRESSURE_GAIN_INTERVAL = 12;
 export const PIT_PRESSURE_MIN_DISTANCE = 140;
 export const PIT_PRESSURE_MAX_DISTANCE = 360;
 
-export type PitFighterId = PitFirstEditionCombatantId;
+export type PitFighterId = PitFirstEditionCombatantId | PitExpansionFighterId;
 export type PitPlayableFighterId = PitFirstEditionFighterId;
-export type PitArenaId = PitFirstEditionArenaId;
+export type PitArenaId = PitRuntimeArenaId;
 export const PIT_PLAYABLE_FIGHTER_IDS = PIT_FIRST_EDITION_FIGHTER_IDS;
-export const PIT_ARENA_IDS = PIT_FIRST_EDITION_ARENA_IDS;
+export const PIT_ARENA_IDS = [...PIT_FIRST_EDITION_ARENA_IDS, ...PIT_EXTENSION_ARENA_IDS] as const;
 export type PitAttackKind = "light" | "medium" | "heavy" | "technique";
 export type PitHitLevel = "high" | "mid" | "low";
 export type PitGuard = "high" | "low" | null;
@@ -275,6 +276,7 @@ export interface PitFighterBoxes {
 const CONTENT_FIGHTERS = {
   ...PIT_FIRST_EDITION_FIGHTERS,
   ...PIT_CHRONICLE_BOSSES,
+  ...PIT_EXPANSION_FIGHTERS,
 };
 
 export const PIT_FIGHTERS: Record<PitFighterId, PitFighterDefinition> =
@@ -307,7 +309,7 @@ export const PIT_FIGHTERS: Record<PitFighterId, PitFighterDefinition> =
 
 export const PIT_ARENAS: Record<PitArenaId, PitArenaDefinition> =
   Object.fromEntries(
-    Object.entries(PIT_FIRST_EDITION_ARENAS).map(([id, arena]) => [
+    Object.entries({ ...PIT_FIRST_EDITION_ARENAS, ...PIT_EXTENSION_ARENAS }).map(([id, arena]) => [
       id,
       {
         ...arena,

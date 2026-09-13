@@ -1,0 +1,384 @@
+{
+  "fighterId": "jungle-hunter",
+  "bodyHeightPx": 446,
+  "pageBodyHeightPx": {
+    "jungle-hunter-v34-hurt": 446,
+    "jungle-hunter-v34-repair-walk-forward-alternation": 440,
+    "jungle-hunter-v34-repair-crouch-planted": 380
+  },
+  "atlas": {
+    "schemaVersion": 1,
+    "id": "jungle-hunter-v34-contribution",
+    "characterId": "jungle-hunter",
+    "variantId": "the-pit-v32",
+    "sourceKind": "authored-frames",
+    "status": "validated",
+    "pages": [
+      {
+        "id": "jungle-hunter-v34-hurt",
+        "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "jungle-hunter-v34-repair-walk-forward-alternation",
+        "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      },
+      {
+        "id": "jungle-hunter-v34-repair-crouch-planted",
+        "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+        "width": 1536,
+        "height": 1024,
+        "status": "validated",
+        "transparency": {
+          "mode": "color-key",
+          "rgb": [
+            255,
+            0,
+            255
+          ],
+          "tolerance": 64,
+          "fringe": {
+            "mode": "connected-magenta",
+            "radius": 2,
+            "minExcess": 16,
+            "strength": 1
+          }
+        }
+      }
+    ],
+    "clips": [
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              431,
+              38,
+              298,
+              449
+            ],
+            "pivot": [
+              151,
+              445
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              784,
+              78,
+              315,
+              409
+            ],
+            "pivot": [
+              175,
+              405
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              1183,
+              46,
+              315,
+              441
+            ],
+            "pivot": [
+              136.5,
+              437
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              40,
+              24,
+              310,
+              463
+            ],
+            "pivot": [
+              146,
+              459
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "pit.stand.hitstun",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              407,
+              547,
+              294,
+              431
+            ],
+            "pivot": [
+              143.5,
+              427
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              786,
+              584,
+              306,
+              394
+            ],
+            "pivot": [
+              143.5,
+              390
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              1178,
+              557,
+              314,
+              421
+            ],
+            "pivot": [
+              173,
+              417
+            ],
+            "durationTicks": 3
+          },
+          {
+            "pageId": "jungle-hunter-v34-hurt",
+            "rect": [
+              34,
+              540,
+              311,
+              437
+            ],
+            "pivot": [
+              165,
+              433
+            ],
+            "durationTicks": 3
+          }
+        ]
+      },
+      {
+        "id": "walk",
+        "facing": "left",
+        "status": "validated",
+        "loop": true,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+            "rect": [
+              41,
+              541,
+              285,
+              437
+            ],
+            "pivot": [
+              146,
+              433
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+            "rect": [
+              432,
+              541,
+              260,
+              434
+            ],
+            "pivot": [
+              144,
+              430
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+            "rect": [
+              775,
+              539,
+              297,
+              436
+            ],
+            "pivot": [
+              176,
+              432
+            ],
+            "durationTicks": 8
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+            "rect": [
+              1179,
+              540,
+              288,
+              438
+            ],
+            "pivot": [
+              168,
+              434
+            ],
+            "durationTicks": 8
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "right",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              61,
+              90,
+              280,
+              389
+            ],
+            "pivot": [
+              139.5,
+              385
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              455,
+              128,
+              276,
+              351
+            ],
+            "pivot": [
+              123.5,
+              347
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              830,
+              185,
+              268,
+              296
+            ],
+            "pivot": [
+              121.5,
+              292
+            ],
+            "durationTicks": 30
+          }
+        ]
+      },
+      {
+        "id": "crouch",
+        "facing": "left",
+        "status": "validated",
+        "loop": false,
+        "ticksPerSecond": 60,
+        "frames": [
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              53,
+              540,
+              292,
+              380
+            ],
+            "pivot": [
+              149.5,
+              376
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              432,
+              571,
+              283,
+              348
+            ],
+            "pivot": [
+              154,
+              344
+            ],
+            "durationTicks": 2
+          },
+          {
+            "pageId": "jungle-hunter-v34-repair-crouch-planted",
+            "rect": [
+              803,
+              632,
+              268,
+              288
+            ],
+            "pivot": [
+              132.5,
+              284
+            ],
+            "durationTicks": 30
+          }
+        ]
+      }
+    ]
+  }
+}

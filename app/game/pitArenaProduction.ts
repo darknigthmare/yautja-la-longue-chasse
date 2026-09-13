@@ -1,5 +1,6 @@
 import productionManifestJson from "./pitArenaProductionData.generated.json";
-import type { PitArenaId } from "./systems/pitCombat";
+import { isPitFirstEditionArenaId, type PitFirstEditionArenaId } from "./systems/pitFirstEdition";
+import { getPitArenaExtension, type PitRuntimeArenaId as PitArenaId, type PitExtensionArenaId } from "./systems/pitArenaExtensions";
 
 export type PitArenaProductionStatus = "planned" | "generated" | "reviewed" | "integrated";
 export type PitArenaProductionPlaneId = "P0" | "P1" | "P2" | "P3" | "P4" | "P5";
@@ -67,7 +68,9 @@ export interface PitArenaProductionStage {
   readonly name: string;
   readonly setting: string;
   readonly wave: string;
-  readonly legacyRuntimeArenaId: PitArenaId | null;
+  readonly legacyRuntimeArenaId: PitFirstEditionArenaId | null;
+  /** Explicit neutral-duel approval; never inferred from reviewed image status. */
+  readonly runtimeExtension?: { readonly arenaId: PitExtensionArenaId; readonly gameplayProfile: "neutral-duel-v1"; readonly rendererEvidence?: string; readonly rendererEvidenceRecorded?: boolean; readonly applicationEvidence?: string; readonly applicationEvidenceRecorded?: boolean };
   readonly legacyRuntimeStatus: "playable" | "concept";
   readonly sourceConfirmation: "pending-dedicated-conversation" | "confirmed";
   readonly runtimeEnabled: boolean;
@@ -122,12 +125,17 @@ export function getPitArenaProductionUsableFrames(asset: PitArenaProductionAsset
   return [asset.frames[0]];
 }
 
-/** Concepts cannot acquire gameplay merely by having pictures; only the existing runtime mapping is accepted. */
+/** Concepts require an explicit authored extension and renderer approval in addition to complete art. */
 export function resolvePitArenaProductionKit(
   arenaId: PitArenaId, manifest: PitArenaProductionManifest = PIT_ARENA_PRODUCTION_MANIFEST,
 ): PitArenaProductionKit | null {
-  const stage = manifest.stages.find(entry => entry.legacyRuntimeArenaId === arenaId);
-  if (!stage || !stage.runtimeEnabled || stage.legacyRuntimeStatus !== "playable"
+  const stage = manifest.stages.find(entry => entry.legacyRuntimeArenaId === arenaId || entry.runtimeExtension?.arenaId === arenaId);
+  const extension = stage && getPitArenaExtension(stage.catalogueId, stage.number);
+  const extensionApproved = extension?.id === arenaId && stage?.legacyRuntimeStatus === "concept" && stage.legacyRuntimeArenaId === null
+    && stage.runtimeExtension?.gameplayProfile === "neutral-duel-v1"
+    && (stage.runtimeExtension.rendererEvidenceRecorded === true || Boolean(stage.runtimeExtension.rendererEvidence));
+  const historical = isPitFirstEditionArenaId(arenaId) && stage?.legacyRuntimeArenaId === arenaId && stage.legacyRuntimeStatus === "playable";
+  if (!stage || !stage.runtimeEnabled || (!historical && !extensionApproved)
     || stage.planes.length !== 6 || !PLANE_IDS.every(id => stage.planes.some(plane => plane.id === id))) return null;
   const requiredPaths: string[] = [];
   const paths = new Set<string>();
@@ -167,8 +175,9 @@ export function summarizePitArenaProduction(manifest: PitArenaProductionManifest
     requestedImageFiles: frames.length,
     fileStatus: counts,
     legacyPlayable: manifest.stages.filter(stage => stage.legacyRuntimeStatus === "playable").length,
-    concepts: manifest.stages.filter(stage => stage.legacyRuntimeStatus === "concept").length,
-    readyRuntimeKits: manifest.stages.filter(stage => stage.legacyRuntimeArenaId && resolvePitArenaProductionKit(stage.legacyRuntimeArenaId, manifest)).length,
+    runtimePlayable: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return id && resolvePitArenaProductionKit(id, manifest); }).length,
+    concepts: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return !id || !resolvePitArenaProductionKit(id, manifest); }).length,
+    readyRuntimeKits: manifest.stages.filter(stage => { const id = stage.legacyRuntimeArenaId ?? stage.runtimeExtension?.arenaId; return id && resolvePitArenaProductionKit(id, manifest); }).length,
   };
 }
 

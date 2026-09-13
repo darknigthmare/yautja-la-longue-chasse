@@ -43,10 +43,10 @@
     "productionRecords": 267,
     "initialFamilyTargets": 2670,
     "completedCharacters": 0,
-    "recordsWithRuntimeClips": 7,
-    "indexedSourceReferences": 106,
-    "uniqueSourceSheetsIndexed": 106,
-    "newV34SourceSheets": 86
+    "recordsWithRuntimeClips": 9,
+    "indexedSourceReferences": 146,
+    "uniqueSourceSheetsIndexed": 146,
+    "newV34SourceSheets": 126
   },
   "initialFamilies": [
     {
@@ -8420,73 +8420,342 @@
       "firstLot": [
         {
           "familyId": "idle",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-idle-v34.png",
+              "sha256": "8fcc9308dc12f668f6ba2cae5c235eaf78ddc7c120eb5d3ca15893395deaa7fd",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "idle",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "idle",
+              "facing": "left",
+              "frameCount": 4,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "walk-forward",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-walk-forward-v34.png",
+              "sha256": "e0fb15254599fafa421b3c6e7ec9a3988715eea1cf80523b320c059fe04a65fb",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-walk-forward-contact-v34.png",
+              "sha256": "fdc49ad3e399b84851c94b55544d8f11811a1c5eb129a08606ef90353296b27c",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "walk-backward",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-walk-backward-v34.png",
+              "sha256": "25102e07fa2d540b973a833077868414872c673a9861533a2bc3b8c4d6bca348",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-walk-backward-contact-v34.png",
+              "sha256": "9a78c2bd7ac91f24f93edae775aa5e42a08b9cae796c953daa6f312d3208ab97",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+              "sha256": "e679ba819c79c64648205dc3df04d36ebed2389a19708700ed0713ec6574527e",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "walk-backward",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "walk-backward",
+              "facing": "left",
+              "frameCount": 4,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "crouch",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-crouch-v34.png",
+              "sha256": "71fe74ef6dc41d80860fbb2959ff054c48eaf103b7f83441694bd49ac3931ce3",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "crouch",
+              "facing": "right",
+              "frameCount": 3,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "crouch",
+              "facing": "left",
+              "frameCount": 3,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "jump-land",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-jump-land-v34.png",
+              "sha256": "ac79c85f77de6efa60bd8a594c620b05bfceacec85c69eb4eafc87bfb0edea44",
+              "reviewStatus": "authored-review",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "guard",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-guard-v34.png",
+              "sha256": "12a8d2d2d97f09ff32a30c68ace8ea75a24d1d0dfdb43ae3b876da25c04a448d",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "high-guard",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "high-guard",
+              "facing": "left",
+              "frameCount": 3,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "hurt",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-hurt-v34.png",
+              "sha256": "2c0c53fae0bb0c01fca5cb4bf05685c6c03b5735e8845b16a8f118b4ebc5953a",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "light",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-light-v34.png",
+              "sha256": "f58d0d71b8391ab8a4878296c21071552ace1e0b01090ddbb6aecc7a5da33573",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-light-arm-v34.png",
+              "sha256": "8aeff08bd44009a5c18c0b4b0f88498434dea64d61a1a0fe8d9364f329b34766",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+              "sha256": "5d51b5d9e38b454d5db3241401d68f4195b4618196fc4a87719a4920d8e2834d",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.light.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.recovery",
+              "facing": "right",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.recovery",
+              "facing": "left",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "medium",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-medium-v34.png",
+              "sha256": "9bc87031e076053e79b951a92131e259a3cf88c9a67a6785ac5039dfb43d8352",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+              "sha256": "42ac22317256dc456ae99905ebe1d9102728e00bb16e840450f9cb5dc0d4194c",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.medium.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.recovery",
+              "facing": "right",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.recovery",
+              "facing": "left",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "heavy",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/greyback/greyback-heavy-v34.png",
+              "sha256": "a06002d4d15a73a10f9edc97726efb5f36303447d155ff3999c7dcb00e4de0d5",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.heavy.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.recovery",
+              "facing": "right",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "greyback-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.recovery",
+              "facing": "left",
+              "frameCount": 2,
+              "atlas": "greyback-pit-v34"
+            }
+          ]
         }
       ]
     },
@@ -9322,24 +9591,70 @@
         },
         {
           "familyId": "walk-forward",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-forward-v34.png",
+              "sha256": "a941a23776c5511a3f4c6a1c235c3599f660a4f9d3dc32a710e4eb98f18463ff",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+              "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "walk-backward",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-backward-v34.png",
+              "sha256": "17674b2b878a06240a3e23b5c4f4e00109afeccd5bc480952a09b2d30127d16f",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "crouch",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+              "sha256": "a00ee2490ceba65fe31172e920936a9f280e043afb57acb954fdace10ab680ba",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+              "sha256": "4a37c009da8e45e5cd48d9c47ca1aeefd47e0c508f43bb4238bcc9e61cedc898",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "crouch",
+              "facing": "right",
+              "frameCount": 3,
+              "atlas": "jungle-hunter-pit-v32"
+            },
+            {
+              "id": "crouch",
+              "facing": "left",
+              "frameCount": 3,
+              "atlas": "jungle-hunter-pit-v32"
+            }
+          ]
         },
         {
           "familyId": "jump-land",
@@ -9350,16 +9665,30 @@
         },
         {
           "familyId": "guard",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-guard-v34.png",
+              "sha256": "edfb956e7a3d0103be4c5d26ff8cc1a90e93798222ed7ee4f357b239bbeb8c77",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "hurt",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+              "sha256": "92d1487daffcb26ffbc570472202e6d3e9f9d6ecb0d8b8f6bc5b0b949286d712",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
@@ -9408,16 +9737,30 @@
         },
         {
           "familyId": "medium",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-medium-v34.png",
+              "sha256": "cf02044ca318346e136abbed176c88fd0b6eeb7194267213e633d0d721321c84",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "heavy",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/jungle-hunter/jungle-hunter-heavy-v34.png",
+              "sha256": "1cc7db79536519d1999682a71d51b3a4297c1048fc6da87245ac3cff5f7909ff",
+              "reviewStatus": "authored-review",
+              "provenance": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         }
       ]
@@ -17139,73 +17482,336 @@
       "firstLot": [
         {
           "familyId": "idle",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-idle-v34.png",
+              "sha256": "7fa295e991e8c2c1d3a1b1d73ff13f6e03a410c98795900cd7203b33bfeb5399",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "idle",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "idle",
+              "facing": "left",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "walk-forward",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-walk-forward-v34.png",
+              "sha256": "f0a245e6e335bfc0bf59a0924c20513ca9450d5412588580fdef2f591b9a75c8",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/tracker/tracker-repair-walk-forward-alternation-v34.png",
+              "sha256": "be4da949924899abc7b27d6c47ae42708706bfeeedd06ab5e114aa4cf64ff527",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "walk-backward",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-walk-backward-v34.png",
+              "sha256": "d4eeb387e377acb7912adc0dd688bf70c525853ccf3f5dd165ba499fc89471f0",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+              "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "walk-backward",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "walk-backward",
+              "facing": "left",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "crouch",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-crouch-v34.png",
+              "sha256": "7e8acdd1ecaf0d8cf8ef303f82c786601b2bfce4a15a5185d1ecb72375af80a8",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "crouch",
+              "facing": "right",
+              "frameCount": 3,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "crouch",
+              "facing": "left",
+              "frameCount": 3,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "jump-land",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-jump-land-v34.png",
+              "sha256": "3c7a03fd55e1708f30a02f59f85fa6603df33d71576f955bc4ae5c6b28a138b0",
+              "reviewStatus": "authored-review",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "guard",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-guard-v34.png",
+              "sha256": "8be749694b8abdbd3de877c0985635cc043b12c1fa2a36b595e26c434702f4cd",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+              "sha256": "df57147c987968b9d9ed232e24ef9059c4ee0d0710e501d7a448d10fcff3f2ac",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "high-guard",
+              "facing": "right",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "high-guard",
+              "facing": "left",
+              "frameCount": 4,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "hurt",
-          "status": "planned",
+          "status": "authored-awaiting-or-failed-review",
           "complete": false,
-          "artifacts": [],
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-hurt-v34.png",
+              "sha256": "b32b6e13c5370acf81e5cafd7423712042338f376194c5d3482b8f331a0d5836",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
           "runtimeClips": []
         },
         {
           "familyId": "light",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-light-v34.png",
+              "sha256": "fdbcc00a266894ad1d7bf532958583af1033e41f411298f26084d0747da05c1e",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.light.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.recovery",
+              "facing": "right",
+              "frameCount": 2,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.light.recovery",
+              "facing": "left",
+              "frameCount": 2,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "medium",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-medium-v34.png",
+              "sha256": "f013ff2c6377d7e423fe1d7895667ede580ae778ff80b56c2648f2a5ebb9cbdf",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/tracker/tracker-repair-medium-hand-v34.png",
+              "sha256": "50a74ce2b614e0d7e4b02e9dd1602261c7341c6787329da7ae3730a9557cdefe",
+              "reviewStatus": "rejected",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            },
+            {
+              "path": "art-source/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+              "sha256": "f920e649b41bbd4468842012edcbeedb880504aef65822d38e1f43a25a528410",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.medium.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.recovery",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.medium.recovery",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         },
         {
           "familyId": "heavy",
-          "status": "planned",
+          "status": "runtime-partial",
           "complete": false,
-          "artifacts": [],
-          "runtimeClips": []
+          "artifacts": [
+            {
+              "path": "art-source/v34/pit/tracker/tracker-heavy-v34.png",
+              "sha256": "58ebce960f55086b71288ae5dfe46c25ec31d1df9f185f1b6c4d0377b3dac04f",
+              "reviewStatus": "validated",
+              "provenance": "art-source/v34/pit/tracker/tracker-production-provenance-v34.json"
+            }
+          ],
+          "runtimeClips": [
+            {
+              "id": "pit.stand.heavy.startup",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.active",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.recovery",
+              "facing": "right",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.startup",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.active",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            },
+            {
+              "id": "pit.stand.heavy.recovery",
+              "facing": "left",
+              "frameCount": 1,
+              "atlas": "tracker-pit-v34"
+            }
+          ]
         }
       ]
     },

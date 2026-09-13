@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "idle",
+      "actionId": "idle",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nIDLE four poses per row: neutral alert; inhale shoulders slightly raised; exhale relaxed knees; return toward neutral. Subtle breathing loop. Both feet remain fixed. Four clearly separate but restrained breathing poses; no footstep. Left hand maintains steady flintlock grip and downward muzzle. Right hand open with all fingers separate. Mouth and mandibles remain SAME anatomical arrangement in all8, no roar motion. Cannon points toward opponent over right shoulder; complete barrel within cell.",
+      "phase": [
+        "neutral alert",
+        "inhale shoulders slightly raised",
+        "exhale relaxed knees",
+        "return toward neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Eight distinct breathing drawings, fixed planted feet, coherent left flintlock grip/right empty hand, shoulder cannon present. Third pose has slightly more open mandibles; no extra face structure obvious. Fan-made V5 identity, exact film fidelity not certified."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-idle-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-idle-v34.png",
+      "originId": "exec-931841ff-07bf-4cd4-b254-33be3d49fe93.png",
+      "sha256": "8fcc9308dc12f668f6ba2cae5c235eaf78ddc7c120eb5d3ca15893395deaa7fd",
+      "bytes": 2175540,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nFORWARD WALK 4 successive gait keys eachrow. 1 near leg forward heel contact far legbehind;2 near leg planted vertical supports body and FAR knee lifted passingforward;3 FAR leg forward heelcontact, NEAR leg BEHIND with toescontact, nearthigh visibly crosses behind farleg;4 FAR legvertical supports body and NEAR knee lifted passingforward. Actual oppositeleg occlusion between1/3, not duplicate poses. Bothfeet alternate weight. Pistolgrip stable lefthand muzzlelow, rightemptyhand slight naturalarmswing. TopRIGHTbottomLEFT.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Both rows repeat leg contacts1/3 and passing support2/4. Feet and hands drawn coherently but not a complete alternating gait. Left pistol remains in grip, no firing; weapon fidelity does not rescue locomotion."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-walk-forward-v34.png",
+      "originId": "exec-5b8ce724-f40a-4f57-8427-e7dbc874e09b.png",
+      "sha256": "e0fb15254599fafa421b3c6e7ec9a3988715eea1cf80523b320c059fe04a65fb",
+      "bytes": 2307060,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nBACKWARD RETREAT, controlled slow walk still facing opponent. Four stages per row:1 NEAR leg reaches backward toes touch with heelup, FAR legforward supports;2 NEAR legvertical supports, FAR leg lifts knee ahead preparing to travel backward;3 NEAR thigh now reaches FORWARD and foot grounded while FAR leg reaches BACK toes touch heelup, near thigh visibly occludes far thigh;4 FAR legvertical supports, NEAR leg lifts foot BEHIND with bent knee. Four different leg configurations, no repeating contacts or passingknee. Pistolleft gripfixed, right handopen, gentlebodybob. Correct2legs/2feet, no trails.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Passing frames2/4 use different legs, but contacts1/3 still same near leg behind both rows. Needs column3 opposite contact before loop acceptance. Pistol remains coherent."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-walk-backward-v34.png",
+      "originId": "exec-bf647574-08be-4b6d-b73e-119fb4a657ec.png",
+      "sha256": "25102e07fa2d540b973a833077868414872c673a9861533a2bc3b8c4d6bca348",
+      "bytes": 2109534,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nCROUCH four ordered stages eachrow: standing combat stance; half squat descending; deep stable crouch with both heels grounded; half squat rising. Four successive depths of controlled crouch and rise. Knees anatomically hinge, no extra legs, keep constant character scale. LEFT hand holds flintlock above and outside knee, barrel points forward/down away from feet; never swaps hand. RIGHT empty openhand balances outside right knee. Both hands visible, no limb overlap causing extra fingers. Cannon remains correctly mounted behind shoulder, complete barrel. No folding/shrinking body scale; crouch via knees.",
+      "phase": [
+        "standing combat stance",
+        "half squat descending",
+        "deep stable crouch with both heels grounded",
+        "half squat rising"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Readable standing/half/deep/rising crouch with same gear, left pistol clear of knees, right hand visible. Candidate entry/held crouch first3 poses each facing; rising fourth excluded from held state."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-crouch-v34.png",
+      "originId": "exec-8a72f3e2-7df3-4dc8-95bc-ddba04d77cc9.png",
+      "sha256": "71fe74ef6dc41d80860fbb2959ff054c48eaf103b7f83441694bd49ac3931ce3",
+      "bytes": 2068273,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "jump-land",
+      "actionId": "jump-land",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nJUMP LAND four ordered stages perrow: deep launch crouch; airborne rising knees bent; falling feet extending downward; landing crouch absorbing impact. Standing jump with visible launch, airborne rise, fall and landing. Clean empty air around body; no dust or effects. Each pose remains separate. Controlled short standing hop adapted for game. LEFT hand keeps pistol gripped and muzzle angled away from own body throughout; no dropped weapon. RIGHT empty hand balances outside torso. Keep shoulder cannon safely mounted and same height. No effects, all toes visible, four mandibles anatomically stable.",
+      "phase": [
+        "deep launch crouch",
+        "airborne rising knees bent",
+        "falling feet extending downward",
+        "landing crouch absorbing impact"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Launch/airborne/fall/landing full bodies, hands and left pistol stable. RIGHT columns1,2,3,4; LEFT requires1,3,2,4 because rise/fall reversed. Jump pivot/body trajectory remains game adaptation and unintegrated."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-jump-land-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-jump-land-v34.png",
+      "originId": "exec-ad1d15a1-c29d-4fed-a829-385fdd14a8b0.png",
+      "sha256": "ac79c85f77de6efa60bd8a594c620b05bfceacec85c69eb4eafc87bfb0edea44",
+      "bytes": 2119932,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nGUARD adapted to his equipment four ordered stages: right empty fist raises toward cheek, left pistol low and away; full right forearm guard beside face, left pistol muzzle low; absorb with knees flexed and right armored forearm protective; settled full right forearm guard held. RIGHT EMPTY FIST with clear knuckles protects face. LEFT hand holds pistol securely LOW outside body, muzzle downforward, never next to face or crossed with other forearm. All8poses same grip/armor/face/cannon. End heldguard, not neutral. No new weapons or wristblades.",
+      "phase": [
+        "right empty fist raises toward cheek, left pistol low and away",
+        "full right forearm guard beside face, left pistol muzzle low",
+        "absorb with knees flexed and right armored forearm protective",
+        "settled full right forearm guard held"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "RIGHT guard four poses readable, fist complete and pistol lowered. LEFT column1 has inconsistent arm/pistol arrangement versus other3; exclude it. LEFT candidate columns2,3,4 are fullguard/absorb/settledguard. Shoulder weapon and mandibles require final native review."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-guard-v34.png",
+      "originId": "exec-a7e98cde-3ecf-4d9a-be56-99972ac4f79f.png",
+      "sha256": "12a8d2d2d97f09ff32a30c68ace8ea75a24d1d0dfdb43ae3b876da25c04a448d",
+      "bytes": 2183229,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nHURT chest-reaction four poses: small torso recoil from chest hit; larger backward torso lean, knees bent; recover torso upright with protective arms; return to neutral stance. Reaction to a chest impact. No blood, no injury, no attacker, no VFX. Feet remain planted, arms and hands coherent. Right empty hand opens for balance outside body. Left hand ALWAYS firmly holding same flintlock, muzzle pointed downaway even during lean. No blood/no injury/VFX/attacker. No dropping pistol. Two complete arms,hands,legs,feet. Stable shoulder cannon and face anatomy.",
+      "phase": [
+        "small torso recoil from chest hit",
+        "larger backward torso lean, knees bent",
+        "recover torso upright with protective arms",
+        "return to neutral stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Actual source neutral/small recoil/large recoil/recovery, candidate playback columns2,3,4,1 both facings. Two hands and pistol grip preserved, no blood/effects. Original camera/scale remains consistent."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-hurt-v34.png",
+      "originId": "exec-2ef9d47b-0624-4a03-ab09-35393f307d39.png",
+      "sha256": "2c0c53fae0bb0c01fca5cb4bf05685c6c03b5735e8845b16a8f118b4ebc5953a",
+      "bytes": 2219873,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "light",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nLIGHT UNARMED PUNCH game adaptation, exactly four phases each row: right EMPTY fist draws back beside ribs; short right EMPTY punch extends toward opponent chest; right fist retracts halfway; neutral stance with right open hand low. Absolutely NO wristblades, sword or new weapon. LEFT hand holds antique pistol LOW and away throughout, NEVER attacks with pistol, NEVER fires. Right complete closed fist with four knuckles and curledthumb clear at contact, wrist aligned with forearm. Shoulder cannon inactive. Readable short jab, no giantlunge, noVFX.",
+      "phase": [
+        "right EMPTY fist draws back beside ribs",
+        "short right EMPTY punch extends toward opponent chest",
+        "right fist retracts halfway",
+        "neutral stance with right open hand low"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Contact column2 both facings punches with opposite arm and moves pistol into arm previously unarmed. This is a hand/equipment side swap, not permitted despite clear fists. Needs anatomical right-arm contact redraw."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-light-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-light-v34.png",
+      "originId": "exec-fa27e612-062d-4b15-9f3e-f86c36a79e1e.png",
+      "sha256": "f58d0d71b8391ab8a4878296c21071552ace1e0b01090ddbb6aecc7a5da33573",
+      "bytes": 2257879,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nMEDIUM FRONT KICK, unarmed game adaptation. Four stages eachrow right knee raised loading frontkick; right leg extends forward sole first at waist height; right knee retracts bent beneath torso; right foot lands and neutral combat stance. Exactly2legs, left leg stays planted supportsbody, right shin/foot extends without dislocation. LEFT hand still holds antique flintlock LOW OUTSIDE left hip, barrel downaway not intersecting kickedleg. RIGHT hand EMPTY balances outsidebody, shoulder cannoninactive. No wristblades/no newweapons. Keep footcomplete and allclaws, same3D limbvolume at allangles.",
+      "phase": [
+        "right knee raised loading frontkick",
+        "right leg extends forward sole first at waist height",
+        "right knee retracts bent beneath torso",
+        "right foot lands and neutral combat stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Pistol entirely disappears during knee-lift column2 and swaps to opposite hand at kick column3 both rows. Invalid equipment continuity; no medium clip accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-medium-v34.png",
+      "originId": "exec-9d62dd17-71a6-488c-8a28-f1827f1c6384.png",
+      "sha256": "9bc87031e076053e79b951a92131e259a3cf88c9a67a6785ac5039dfb43d8352",
+      "bytes": 2116998,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nHEAVY SHOULDER BODY-CHECK game adaptation, four stages knees flexed body loaded backward, right empty fist at ribs; right armored shoulder thrust forward in short body-check, right fist still at ribs; shoulder retracts and torso begins upright; neutral standing. Keep BOTH ARMS in SAME roles allposes: right armored shoulder and right EMPTY fist at ribs on NEAR side drive the bodycheck. LEFT flintlock hand always on FAR side, low forward, muzzle downoutward visible. NO punch/no weapon attack/no firing. Do NOT swap hands. Short strong forwardtorsolean, headtiltswithspine, cannonattached and inactive. Complete fullbody, twoarms/hands/legs, no extra limbs.",
+      "phase": [
+        "knees flexed body loaded backward, right empty fist at ribs",
+        "right armored shoulder thrust forward in short body-check, right fist still at ribs",
+        "shoulder retracts and torso begins upright",
+        "neutral standing"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Heavy shoulder/body-check preserves left pistol and right empty fist across all drawings. Game adaptation, not a canon move. RIGHT order1,2,3,4; LEFT order2,3,4,1 for loaded/contact/recovery/neutral. Contact displacement deliberately short; no invisible longer blade strike implied."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-heavy-v34.png",
+      "originId": "exec-8f07265d-0726-4ba6-9023-717e752a8d9d.png",
+      "sha256": "a06002d4d15a73a10f9edc97726efb5f36303447d155ff3999c7dcb00e4de0d5",
+      "bytes": 2324056,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-light-arm",
+      "actionId": "light",
+      "prompt": "Repair ONLY COLUMN2 BOTH ROWS of first Greyback punch sheet, using second image for identity. Current column2 uses WRONG ARM and magically transfers pistol. KEEP ALL other6poses unchanged. In TOP column2, extend NEAR-camera arm from the LARGE LAYERED SHOULDER PAULDRON straight toward screenRIGHT; this is the same right arm whose fist is at chest in column1. It crosses IN FRONT of chest, elbow/gauntlet lead to EMPTY CLOSED FIST. FAR arm stays LOW FORWARD holding flintlock exactly like column1, pistol at front side, not moved to nearhip. In BOTTOM column2 same independently: arm ATTACHED TO LARGE PAULDRON extends across chest towardLEFT emptyfist, far lowerarm keeps pistol downforward. No hand swap, no droppedweapon, no newblade. Botharms clearly connect to ownshoulders; twohands. Complete fullbody1536x1024 4x2,flatmagenta,no labels.",
+      "phase": [
+        "right fist startup",
+        "right fist contact",
+        "right fist recovery",
+        "neutral"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Targeted edit did not fix contact hand swap: near armored arm still holds pistol while far arm punches. No contact frame accepted, no fake light clip."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-light-arm-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-light-arm-v34.png",
+      "originId": "exec-61b17a73-db2a-4f99-9abb-8d5c445e0dad.png",
+      "sha256": "8aeff08bd44009a5c18c0b4b0f88498434dea64d61a1a0fe8d9364f329b34766",
+      "bytes": 2172161,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-light-cross",
+      "actionId": "light",
+      "prompt": "Create ONE professional 2D side-view fighting game bitmap sprite sheet for THE PIT, original fan-made art based on attached existing project character presentation. Exactly 1536x1024 landscape, four columns by two rows, exactly EIGHT separate full-body drawings. TOP ROW four poses FACE RIGHT (nose/toes/opponent direction RIGHT); BOTTOM ROW same four stages independently drawn FACE LEFT. Do not mirror or flip the image: preserve anatomical equipment sides. Camera orthographic profile, with slight torso three-quarter only to read equipment. Same character identity, proportions, gear, colors, rendering style in EVERY pose. No labels, no text, no UI, no grid, no shadows on ground, no VFX, no scenery. Background perfectly uniform solid chroma key RGB255,0,255 #FF00FF, absolutely no gradients/checkerboard/white outline; this is an explicit color-key production source. Each sprite SMALL: only260px tall from standing soles to skull, including gear at most290px. Sheet mostly empty magenta, at least70%. HUGE gutters: nothing within45px of each 384x512 cell boundary. Same scale all poses, complete feet, dreads, blades and cannons with ample margins. Strict anatomical quality: two arms, two hands, two legs, five digits when fingers visible, no merged fingers or joints. No invented weapons; every weapon mount physically coherent.\nGREYBACK, elderly unmasked Predator2(1990) variant, preserve this attached historical V5 project presentation, original fan-made identity not certified official1:1. Aged gray-brown mottled skin, wrinkled ridged bald forehead, two eyes, four mandibular tusks around one toothy mouth, no biomask. Long thick graying black dreadlocks brass rings. Bone/teeth trophy necklace, dark worn bronze-gray layered lamellar chest/right-shoulder armor over black diamond mesh, brown leather crossed waist belts and long pointed layered split loinplates, dark engraved gauntlets/knee/shin armor, five clawed bare toes. ONE cylindrical shoulder cannon on mechanical mount over anatomical RIGHT shoulder as in project reference. Anatomical LEFT hand securely holds ONE antique brown wood/brass/silver flintlock pistol, muzzle angled downforward, four fingers around grip and thumb opposite; index rests outside trigger, no firing. Anatomical RIGHT hand EMPTY, visible claw fingers or complete closed fist, no extended wristblades in this reference. Brown right hip holster. Preserve sides independently when facing left, never copy/mirror. No sword, no spear, no dogs, no second pistol, no new weapons. Calm experienced elder body proportions.\nREDRAW LIGHT RIGHT CROSS PUNCH four stages: near right fist tucked by ribs; right cross punch with armored shoulder rotated strongly forward; right elbow returning beside ribs; neutral left pistol low right open hand. CRITICAL column2 contact: torso turns until near RIGHT SHOULDER LARGE METAL PAULDRON lies in front, back threequarter torso visible. Entire near shoulder-to-upperarm-to-elbow-to-gauntlet-to-EMPTYFIST forms a continuous straight forward arm IN FRONT of chest, clear silhouette. Opposite LEFT arm remains lower/far, holding antique pistol outside forward thigh. The cannon mount rotates with torso. Weapon NEVER changeshand. Toprightcontact travelsRIGHT; bottomleftcontact travelsLEFT independently. Don't draw a far-arm jab. Show shoulder armor on the punching arm. Original gameart, no effect.",
+      "phase": [
+        "near right fist tucked by ribs",
+        "right cross punch with armored shoulder rotated strongly forward",
+        "right elbow returning beside ribs",
+        "neutral left pistol low right open hand"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Redraw succeeds: contact extends near armored right arm across torso, left pistol stays in far hand both facings. Complete fist/grip; startup/contact/recovery/neutral all4 usable candidates. No invented wristblade, no firearm discharge."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+      "originId": "exec-47847cf2-bfb3-4981-b19a-db544b6fe572.png",
+      "sha256": "5d51b5d9e38b454d5db3241401d68f4195b4618196fc4a87719a4920d8e2834d",
+      "bytes": 2231625,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-medium-pistol",
+      "actionId": "medium",
+      "prompt": "Fix equipment in first Greyback kick sheet using second identity. Preserve legposes,bodyfacearmor and1536x1024 fourcolumns2rows. Change ONLY arms/hands in columns2and3 of bothrows. Restore antique FLINTLOCK in LEFT FAR hand in BOTH knee-loading and kick contact. That farhand is on screenRIGHT of torso in top row, screenLEFT of torso in bottom row. Move left far pistol forearm a little UP and OUT at waist so muzzle points diagonallydownforward above/beside leg without touching it. Keep pistol SAME hand as column1. Near RIGHT arm with largepauldron remains EMPTY completeopenhand beside ownhip, DO NOT holdpistol there. Absolutelyno disappearedpistol/no swaphands. One pistol, twoarms,twohands. No newweapons/no shot/no VFX,flatmagenta.",
+      "phase": [
+        "neutral",
+        "knee load",
+        "front kick contact",
+        "return foot"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Repair restores pistol consistently in far left hand and empty near right hand throughout. Actual sequence neutral/knee-load/kick/return-foot: playback columns2,3,4,1. Front kick limb appears far-side rather than requested anatomical right; treat as generic frontkick adaptation, no side-specific canon claim."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+      "originId": "exec-8754431d-ea55-4427-8ef0-0d78cf6fb257.png",
+      "sha256": "42ac22317256dc456ae99905ebe1d9102728e00bb16e840450f9cb5dc0d4194c",
+      "bytes": 2072350,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-walk-backward-contact",
+      "actionId": "walk-backward",
+      "prompt": "Repair ONLY THIRD COLUMN of BOTHROWS of first Greyback backwardwalk sheet, keep other6figures,1536x1024,bgmagenta unchanged. Secondimage identity. Thirdcolumnmustbeoppositelegcontacttocolumn1: near thigh from nearhip swings FORWARD and visibly OVERLAPS farthigh at hip, NEAR kneecap/frontshin now on FRONT side of body. TOP third nearleg extends towardRIGHT groundedfrontfoot, farleg extendsbehind LEFT toesdownheelup. BOTTOMthird nearleg extends towardLEFT groundedfrontfoot, farlegbehindRIGHT toesdownheelup. Draw trousermesh and kneearmor so front/back depthreadclearly; do not duplicate column1withsamelegbehind. Preserve leftpistol,rightemptyhand,cannon,face,armposes. Twolegs only, no newgear.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Column3 changes thigh occlusion toward opposite contact, but introduces turquoise kneecap color absent from identity on both rows. Candidate motion requires armor color correction before acceptance; no runtime promotion."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-backward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-contact-v34.png",
+      "originId": "exec-725caede-7283-43e5-9b21-27e73bd3bec3.png",
+      "sha256": "9a78c2bd7ac91f24f93edae775aa5e42a08b9cae796c953daa6f312d3208ab97",
+      "bytes": 2050930,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-walk-backward-armor",
+      "actionId": "walk-backward",
+      "prompt": "Minimal COLOR repair of first image only. Preserve all eight Greyback poses, their exact limb position, gear, silhouette and magenta background. The FRONT KNEECAP in THIRD COLUMN TOP and THIRD COLUMN BOTTOM is wrongly turquoise/cyan. Repaint ONLY those two turquoise armor plates as scratched neutral dark gray-bronze metal matching every other kneecap and the second identity reference. No blue,green,cyan,glow anywhere on knee. Keep changed alternating contact leg positions exactly, no pose changes. Same1536x1024 output. No new details, no text.",
+      "phase": [
+        "near RIGHT leg behind, right toes contact; far LEFT leg forward",
+        "right rear leg supports; LEFT knee travels backward",
+        "far LEFT leg behind toes contact; near RIGHT leg forward",
+        "left rear leg supports; RIGHT knee travels backward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "authored-review",
+      "notes": [
+        "Turquoise artifact removed; all knee armor neutral worn gray-bronze. Opposite contact thigh occlusion and different passing legs retained. Candidate backward loop both directions, native cadence still to inspect."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+      "originId": "exec-89842a5c-254f-42eb-a350-6b5352fc6714.png",
+      "sha256": "e679ba819c79c64648205dc3df04d36ebed2389a19708700ed0713ec6574527e",
+      "bytes": 2025821,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "id": "repair-walk-forward-contact",
+      "actionId": "walk-forward",
+      "prompt": "Repair locomotion of first Greyback forwardwalk sheet. Keep columns1and2 poses unchanged. In column3 BOTHROWS change leg OCCLUSION: nearhip-thigh extends BACKWARD behind torso, knee towardrear, nearfoot behind toesdownheelup; farthigh extends FORWARD behind nearthigh and farfoot heelcontact towardopponent. In column4, FAR leg planted verticalsupportsbody, NEAR thigh lifts FORWARD with bentknee and liftedfoot. Column3 is OPPOSITE contact to1 and column4 OPPOSITE passing leg to2. Do not just redraw same leg configuration. Armposes,pistolgrip,cannon,face,colors unchanged. Pistolleft,emptyrighthand. Secondimageidentity. Full1536x1024 4columns2rows,topRIGHTbottomLEFT,flatmagenta,no labels.",
+      "phase": [
+        "near right leg forward heel contact / far left leg behind",
+        "right supporting leg vertical / LEFT knee passes forward",
+        "far LEFT leg now forward heel contact / near RIGHT leg behind",
+        "left supporting leg vertical / RIGHT knee passes forward"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/greyback.png",
+      "status": "rejected",
+      "notes": [
+        "Correction widens stride but still repeats support/passing configuration2/4 and does not establish a clear alternating contact1/3. No accepted forwardwalk cycle."
+      ],
+      "sourcePath": "art-source/v34/pit/greyback/greyback-repair-walk-forward-contact-v34.png",
+      "publicPath": "/game/sprites/v34/pit/greyback/greyback-repair-walk-forward-contact-v34.png",
+      "originId": "exec-229804a1-0fad-4a59-993e-52725a8315d2.png",
+      "sha256": "fdc49ad3e399b84851c94b55544d8f11811a1c5eb129a08606ef90353296b27c",
+      "bytes": 2245822,
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "reviewStatusMeaning": "Statuses and notes in generated[] are historical observations immediately after generation. Final acceptance lives in production provenance, not this immutable-prompt history.",
+  "finalReviewPath": "art-source/v34/pit/greyback/greyback-production-provenance-v34.json"
+}

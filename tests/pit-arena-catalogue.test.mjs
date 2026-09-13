@@ -25,15 +25,15 @@ test("the recovered conversation contract contains exactly 100 uniquely named ar
   assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.total, 100);
 });
 
-test("only the real eight runtime arenas are marked playable", () => {
+test("eight historical arenas and twelve authored extensions are playable", () => {
   const playable = catalogue.PIT_ARENA_CATALOGUE.filter(({ runtimeStatus }) => runtimeStatus === "playable");
   const concepts = catalogue.PIT_ARENA_CATALOGUE.filter(({ runtimeStatus }) => runtimeStatus === "concept");
-  assert.equal(playable.length, 8);
-  assert.equal(concepts.length, 92);
+  assert.equal(playable.length, 20);
+  assert.equal(concepts.length, 80);
   assert(playable.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId && runtimeVisualPlanes === 6));
   assert(concepts.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId === null && runtimeVisualPlanes === 0));
-  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.playable, 8);
-  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.concept, 92);
+  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.playable, 20);
+  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.concept, 80);
 });
 
 test("all arena designs carry the six-plane, fair-transition and competitive-hazard contracts", () => {

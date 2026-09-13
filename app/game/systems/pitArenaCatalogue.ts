@@ -1,4 +1,5 @@
 import { PIT_ARENAS, type PitArenaId } from "./pitCombat";
+import { getPitArenaExtension } from "./pitArenaExtensions";
 
 export type PitArenaCatalogueWave =
   | "lore-foundation"
@@ -24,7 +25,11 @@ export interface PitArenaCatalogueEntry {
   readonly authoredTargetPlanes: 6;
   readonly runtimeVisualPlanes: 0 | 6;
   readonly layers: readonly PitArenaCatalogueLayer[];
+  /** Authored target, not shipped sector coverage. */
   readonly sectors: 1 | 2 | 3;
+  readonly implementedSectors: 0 | 1;
+  readonly interactivePropsImplemented: false;
+  readonly transitionsImplemented: false;
   readonly interactiveProps: readonly string[];
   readonly transitionPolicy: {
     readonly carriesBothFighters: true;
@@ -44,7 +49,7 @@ export const PIT_ARENA_CATALOGUE_LAYERS: readonly PitArenaCatalogueLayer[] = [
   { id: "P1", role: "silhouettes et repères lointains", parallax: 0.12 },
   { id: "P2", role: "architecture de fond", parallax: 0.24 },
   { id: "P3", role: "activité médiane et public", parallax: 0.43 },
-  { id: "P4", role: "sol de combat, ruptures et props actifs", parallax: 0.78 },
+  { id: "P4", role: "sol de combat, ruptures et props actifs", parallax: 1 },
   { id: "P5", role: "avant-plan occultant avec fondu de lisibilité", parallax: 1.08 },
 ] as const;
 
@@ -198,20 +203,26 @@ export const PIT_ARENA_CATALOGUE: readonly PitArenaCatalogueEntry[] = CONCEPTS.m
   ([name, setting], index): PitArenaCatalogueEntry => {
     const number = index + 1;
     const wave = WAVE_BY_NUMBER(number);
-    const playable = number <= RUNTIME_ARENAS.length;
+    const id = `arena-${String(number).padStart(3, "0")}-${slug(name)}`;
+    const extension = getPitArenaExtension(id, number);
+    const runtimeArenaId = RUNTIME_ARENAS[index] ?? (extension && Object.hasOwn(PIT_ARENAS, extension.id) ? extension.id : null);
+    const playable = runtimeArenaId !== null;
     const referenceIndex = number - 51;
     return {
       number,
-      id: `arena-${String(number).padStart(3, "0")}-${slug(name)}`,
+      id,
       name,
       setting,
       wave,
       runtimeStatus: playable ? "playable" : "concept",
-      runtimeArenaId: playable ? RUNTIME_ARENAS[index] : null,
+      runtimeArenaId,
       authoredTargetPlanes: 6,
       runtimeVisualPlanes: playable ? 6 : 0,
       layers: PIT_ARENA_CATALOGUE_LAYERS,
       sectors: wave === "pure-duel" ? 1 : number % 5 === 0 ? 3 : 2,
+      implementedSectors: playable ? 1 : 0,
+      interactivePropsImplemented: false,
+      transitionsImplemented: false,
       interactiveProps: wave === "pure-duel"
         ? []
         : number % 3 === 0

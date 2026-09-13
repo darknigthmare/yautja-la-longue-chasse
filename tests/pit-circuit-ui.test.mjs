@@ -9,7 +9,7 @@ const [canvas, client] = await Promise.all([
 
 test("Clan Circuit is a selectable CPU mode with a complete five-chapter preview", () => {
   assert.match(canvas, /type PitMode = [^;]*"circuit"/);
-  assert.match(canvas, /PIT_SELECTABLE_MODES[^\n]*"circuit"/);
+  assert.match(canvas, /cyclePitMode[^\n]*from "\.\/systems\/pitRosterExpansion"/);
   assert.match(
     canvas,
     /\["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement\."\]/,

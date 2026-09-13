@@ -4,6 +4,12 @@ type Rect = [number, number, number, number];
 type Point = [number, number];
 type Facing = 'right' | 'left';
 
+type ModuleTransform = {
+  x: number;
+  y: number;
+  scale: number;
+};
+
 interface Resource {
   id: string;
   label: string;
@@ -27,9 +33,13 @@ interface AssemblyModule {
   id: string;
   label: string;
   resourceId: string;
+  resourceIdByFacing?: Partial<Record<Facing, string>>;
   defaultEnabled: boolean;
   scale: number;
+  layer?: 'behind' | 'front';
   anchorMode?: 'base-grid';
+  transformByFacing?: Partial<Record<Facing, ModuleTransform>>;
+  offsetByFacing?: Partial<Record<Facing, Point>>;
   socketId?: string;
   framesByFacing: Partial<Record<Facing, Frame[]>>;
 }
@@ -38,21 +48,23 @@ interface Assembly {
   id: string;
   name: string;
   status: 'authored-review';
-  calibrationStatus: 'static-pivot-review' | 'common-origin-unregistered';
+  calibrationStatus: 'static-pivot-review' | 'static-module-fit-review' | 'common-origin-unregistered' | 'estimated-flight-rig-review';
   playable: false;
   facings: Facing[];
   defaultFacing: Facing;
   notes: string[];
   anchor: Point;
+  anchorByFacing?: Partial<Record<Facing, Point>>;
   base: {
     resourceId: string;
     scale: number;
     frameByFacing: Partial<Record<Facing, Frame>>;
     sourcePivot: Point;
+    sourcePivotByFacing?: Partial<Record<Facing, Point>>;
   };
-  sockets?: Record<string, { sourcePoint: Point }>;
+  sockets?: Record<string, { sourcePoint: Point; sourcePointByFacing?: Partial<Record<Facing, Point>> }>;
   modules: AssemblyModule[];
-  animation?: { moduleId: string; label: string; fps: number };
+  animation?: { moduleId: string; linkedModuleIds?: string[]; label: string; fps: number };
 }
 
 interface Manifest {
@@ -192,9 +204,34 @@ function alphaMetrics() {
   };
 }
 
+function animationPart() {
+  return current?.animation
+    ? current.modules.find(part => part.id === current.animation?.moduleId)
+    : undefined;
+}
+
+function animationFrameCount() {
+  return animationPart()?.framesByFacing[facing]?.length ?? 0;
+}
+
+function animationIsEnabled() {
+  if (!current?.animation || animationFrameCount() < 2) return false;
+  const linked = current.animation.linkedModuleIds ?? [current.animation.moduleId];
+  return linked.some(id => enabledModules.get(id));
+}
+
+function idlePlayLabel() {
+  const count = current ? animationFrameCount() : 0;
+  return count > 1 ? `Lire les ${count} poses` : 'Pose fixe';
+}
+
+function selectedResourceId(part: AssemblyModule) {
+  return part.resourceIdByFacing?.[facing] ?? part.resourceId;
+}
+
 function stop() {
   playing = false;
-  playButton.textContent = 'Lire les 4 poses';
+  playButton.textContent = idlePlayLabel();
   canvas.dataset.playing = 'false';
 }
 
@@ -204,27 +241,39 @@ function render() {
   compositionContext.imageSmoothingEnabled = true;
   const baseFrame = current.base.frameByFacing[facing];
   if (!baseFrame) throw new Error(`Orientation de corps absente : ${facing}`);
-  const [basePivotX, basePivotY] = current.base.sourcePivot;
-  const baseX = current.anchor[0] - basePivotX * current.base.scale;
-  const baseY = current.anchor[1] - basePivotY * current.base.scale;
-  drawFrame(resource(current.base.resourceId).surface, baseFrame, baseX, baseY, current.base.scale);
+  const anchor = current.anchorByFacing?.[facing] ?? current.anchor;
+  const [basePivotX, basePivotY] = current.base.sourcePivotByFacing?.[facing] ?? current.base.sourcePivot;
+  const baseX = anchor[0] - basePivotX * current.base.scale;
+  const baseY = anchor[1] - basePivotY * current.base.scale;
 
-  for (const part of current.modules) {
-    if (!enabledModules.get(part.id)) continue;
+  const drawPart = (part: AssemblyModule) => {
+    if (!enabledModules.get(part.id)) return;
     const frame = frameFor(part);
-    if (!frame) continue;
+    if (!frame) return;
     let moduleX = baseX;
     let moduleY = baseY;
-    if (part.anchorMode !== 'base-grid') {
+    let moduleScale = part.scale;
+    const calibrated = part.transformByFacing?.[facing];
+    if (calibrated) {
+      moduleX = calibrated.x;
+      moduleY = calibrated.y;
+      moduleScale = calibrated.scale;
+    } else if (part.anchorMode !== 'base-grid') {
       const socket = part.socketId ? current.sockets?.[part.socketId] : undefined;
       if (!socket || !frame.sourcePivot) throw new Error(`Pivot incomplet pour ${part.label}.`);
-      const socketX = baseX + socket.sourcePoint[0] * current.base.scale;
-      const socketY = baseY + socket.sourcePoint[1] * current.base.scale;
-      moduleX = socketX - frame.sourcePivot[0] * part.scale;
-      moduleY = socketY - frame.sourcePivot[1] * part.scale;
+      const sourcePoint = socket.sourcePointByFacing?.[facing] ?? socket.sourcePoint;
+      const offset = part.offsetByFacing?.[facing] ?? [0, 0];
+      const socketX = baseX + sourcePoint[0] * current.base.scale + offset[0];
+      const socketY = baseY + sourcePoint[1] * current.base.scale + offset[1];
+      moduleX = socketX - frame.sourcePivot[0] * moduleScale;
+      moduleY = socketY - frame.sourcePivot[1] * moduleScale;
     }
-    drawFrame(resource(part.resourceId).surface, frame, moduleX, moduleY, part.scale);
-  }
+    drawFrame(resource(selectedResourceId(part)).surface, frame, moduleX, moduleY, moduleScale);
+  };
+
+  for (const part of current.modules.filter(candidate => candidate.layer === 'behind')) drawPart(part);
+  drawFrame(resource(current.base.resourceId).surface, baseFrame, baseX, baseY, current.base.scale);
+  for (const part of current.modules.filter(candidate => candidate.layer !== 'behind')) drawPart(part);
 
   const metrics = alphaMetrics();
   fillBackground();
@@ -232,14 +281,11 @@ function render() {
   context.strokeStyle = 'rgba(220, 235, 202, .24)';
   context.lineWidth = 1;
   context.beginPath();
-  context.moveTo(0, current.anchor[1] + 0.5);
-  context.lineTo(canvas.width, current.anchor[1] + 0.5);
+  context.moveTo(0, anchor[1] + 0.5);
+  context.lineTo(canvas.width, anchor[1] + 0.5);
   context.stroke();
 
-  const animationModule = current.animation
-    ? current.modules.find(part => part.id === current.animation?.moduleId)
-    : undefined;
-  const frames = animationModule?.framesByFacing[facing] ?? [];
+  const frames = animationPart()?.framesByFacing[facing] ?? [];
   const phase = frames[Math.min(pose, frames.length - 1)]?.phase;
   element('pose').textContent = frames.length ? `${pose + 1}/${frames.length} · ${phase}` : 'Pose fixe';
   element('overflow').textContent = metrics.safe
@@ -252,18 +298,17 @@ function render() {
   canvas.dataset.pose = String(pose);
   canvas.dataset.overflow = String(metrics.borderPixels);
   canvas.dataset.modules = current.modules.filter(part => enabledModules.get(part.id)).map(part => part.id).join(',');
+  canvas.dataset.calibration = current.calibrationStatus;
+  canvas.dataset.playable = String(current.playable);
 }
 
 function updateButtons() {
-  const animationModule = current.animation
-    ? current.modules.find(part => part.id === current.animation?.moduleId)
-    : undefined;
-  const frameCount = animationModule?.framesByFacing[facing]?.length ?? 0;
-  const enabled = Boolean(animationModule && enabledModules.get(animationModule.id) && frameCount > 1);
+  const enabled = animationIsEnabled();
   previousButton.disabled = !enabled;
   nextButton.disabled = !enabled;
   playButton.disabled = !enabled;
   if (!enabled) stop();
+  else if (!playing) playButton.textContent = idlePlayLabel();
 }
 
 function rebuildModules() {
@@ -308,9 +353,13 @@ function selectAssembly() {
     ? 'Source disponible : droite uniquement · aucun miroir.'
     : 'Deux dessins source indépendants · aucun miroir.';
   element('assembly-name').textContent = current.name;
-  element('calibration').textContent = current.calibrationStatus === 'static-pivot-review'
-    ? 'Pivot statique calibré · revue visuelle'
-    : 'Calage non validé · repères indépendants';
+  const calibrationLabels: Record<Assembly['calibrationStatus'], string> = {
+    'static-pivot-review': 'Pivot statique calibré · revue visuelle',
+    'static-module-fit-review': 'Modules calés séparément · revue statique',
+    'common-origin-unregistered': 'Calage non validé · repères indépendants',
+    'estimated-flight-rig-review': 'Pivots estimés · vol non validé',
+  };
+  element('calibration').textContent = calibrationLabels[current.calibrationStatus];
   element('calibration').dataset.status = current.calibrationStatus;
   const notes = element('notes');
   notes.replaceChildren(...current.notes.map(note => {
@@ -335,21 +384,19 @@ facingSelect.addEventListener('change', () => {
 backgroundSelect.addEventListener('change', render);
 previousButton.addEventListener('click', () => {
   stop();
-  const part = current.modules.find(candidate => candidate.id === current.animation?.moduleId);
-  const count = part?.framesByFacing[facing]?.length ?? 1;
+  const count = Math.max(animationFrameCount(), 1);
   pose = (pose - 1 + count) % count;
   render();
 });
 nextButton.addEventListener('click', () => {
   stop();
-  const part = current.modules.find(candidate => candidate.id === current.animation?.moduleId);
-  const count = part?.framesByFacing[facing]?.length ?? 1;
+  const count = Math.max(animationFrameCount(), 1);
   pose = (pose + 1) % count;
   render();
 });
 playButton.addEventListener('click', () => {
   playing = !playing;
-  playButton.textContent = playing ? 'Pause' : 'Lire les 4 poses';
+  playButton.textContent = playing ? 'Pause' : idlePlayLabel();
   canvas.dataset.playing = String(playing);
   lastFrameAt = performance.now();
 });
@@ -358,8 +405,7 @@ window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',
 
 function tick(now: number) {
   if (playing && current.animation && now - lastFrameAt >= 1000 / current.animation.fps) {
-    const part = current.modules.find(candidate => candidate.id === current.animation?.moduleId);
-    const count = part?.framesByFacing[facing]?.length ?? 1;
+    const count = Math.max(animationFrameCount(), 1);
     pose = (pose + 1) % count;
     lastFrameAt = now;
     render();

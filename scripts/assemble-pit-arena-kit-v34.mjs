@@ -7,7 +7,9 @@ let selectedVariants={};try{selectedVariants=JSON.parse(await fs.readFile("art-s
 const briefs=JSON.parse(await fs.readFile("art-source/v34/pit-arenas/production-briefs.json","utf8")).kits;
 let conceptBriefs=[];
 try{conceptBriefs=JSON.parse(await fs.readFile("art-source/v34/pit-arenas/concept-wave-01-briefs.json","utf8")).kits;}catch(error){if(error.code!=="ENOENT")throw error;}
-const brief=[...briefs,...conceptBriefs].find(kit=>kit.arenaId===arenaId);
+let wave02Briefs=[];
+try{wave02Briefs=JSON.parse(await fs.readFile("art-source/v34/pit-arenas/concept-wave-02-briefs.json","utf8")).kits;}catch(error){if(error.code!=="ENOENT")throw error;}
+const brief=[...briefs,...conceptBriefs,...wave02Briefs].find(kit=>kit.arenaId===arenaId);
 assert(brief,"Unknown V34 arena");
 const manifestPath="art-source/v33/pit-arenas/production-manifest.json";
 const manifest=JSON.parse(await fs.readFile(manifestPath,"utf8"));
@@ -20,6 +22,10 @@ const evidence=`docs/v34-${arenaId}-art-review.md`;
 const boxes=[[-160,-100,1280,700],[-80,-50,380,520],[660,-50,380,520],[-70,60,310,370],[720,60,310,370],[315,100,330,328],[205,335,118,93],[637,335,118,93],[200,-18,60,225],[700,-18,60,225],[0,430,640,35],[0,454,1280,110],[-75,-20,180,500],[855,-20,180,500]];
 if(arenaId==="canopy-causeway") boxes[5]=[160,318,640,110];
 if(arenaId==="abyssal-bridge") boxes[5]=[170,265,620,163];
+if(arenaId==="arena-014-cour-des-navigateurs"){boxes[5]=[330,78,300,300];boxes[6]=[420,365,120,63];}
+if(arenaId==="arena-015-bastion-des-enforcers"){boxes[3]=[-115,130,400,300];boxes[4]=[675,130,400,300];boxes[8]=[155,-18,150,225];}
+if(arenaId==="arena-018-observatoire-des-lunes"){boxes[9]=[685,-18,90,225];}
+if(arenaId==="arena-019-porte-des-reserves"){boxes[5]=[260,80,440,348];}
 const roles=["Profondeur atmosphérique","Repère éloigné gauche","Repère éloigné droit","Support architectural gauche","Support architectural droit","Structure centrale","Accessoire de sol gauche","Accessoire de sol droit","Luminaire suspendu gauche","Luminaire suspendu droit","Sol de contact","Façade du sol","Premier plan gauche","Premier plan droit"];
 const receiptRows=[];
 for(const plane of stage.planes){plane.assets=[];plane.subplanSpecification="proposed-original";if(plane.id==="P4")plane.nominalParallax=1;}
@@ -38,7 +44,7 @@ for(const [index,spec] of brief.assets.entries()){
   const ground=index>=3&&index<=7;
   const asset={id:spec.id,role:roles[index],contour:"Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",alphaRequired:spec.alphaRequired,requiredForRuntime:true,
     mode:index===0?"cover":index===10?"repeat-x":index===11?"strip-x":"module",
-    parallax:index===10||index===11?1:plane.nominalParallax,opacity:index===1||index===2?.55:index>=3&&index<=5?.88:1,
+    parallax:index===10||index===11?1:arenaId==="arena-014-cour-des-navigateurs"&&index===5?.43:plane.nominalParallax,opacity:index===1||index===2?.55:index>=3&&index<=5?.88:1,
     ...(ground?{anchorToGround:true}:{}),...(index===8||index===9||index>=12?{verticalAlign:"top"}:{}),
     ...(spec.floor?{sourceCrop:check.contactCrop}:{}),placements:[{x,y,width,height}],animation:null,
     frames:[{path:check.publicPath,status:"reviewed",generation:{generator:"openai-imagegen",source:check.evidence,sha256:check.sha256,width:check.width,height:check.height,hasAlpha:check.hasAlpha,contentBounds:check.contentBounds},review:{evidence,coherence:true,layout:true,alpha:true},integration:null}]};

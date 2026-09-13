@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "surface": "full-application-pit-missing-png",
+  "verifiedContentVersion": "V35",
+  "checkedAt": "2026-09-13T00:47:32.173Z",
+  "url": "http://127.0.0.1:4173",
+  "arenaId": "arena-019-porte-des-reserves",
+  "failedPath": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p4-a-contact-floor.png",
+  "intentionalHttpStatus": 404,
+  "canvas": {
+    "pitCameraMode": "follow",
+    "pitCameraZoom": "1.5726",
+    "pitCameraTargetZoom": "1.5726",
+    "pitCameraCenterX": "482.55",
+    "pitCameraCenterY": "359.00",
+    "pitArenaId": "arena-019-porte-des-reserves",
+    "pitArenaArtStatus": "unavailable",
+    "pitArenaMissingAssets": "1",
+    "pitArenaArtSource": "unavailable",
+    "pitArenaLoadedImages": "13",
+    "pitArenaSubplans": "0",
+    "pitArenaPlanes": ""
+  },
+  "errors": [],
+  "failures": [
+    {
+      "path": "/game/sprites/v34/pit-arenas/arena-019-porte-des-reserves/p4-a-contact-floor.png",
+      "status": 404
+    }
+  ],
+  "visibleUnavailableWarning": true,
+  "noLegacyFallback": true,
+  "simulationContinues": true,
+  "beforeFrame": 19,
+  "afterFrame": 44
+}

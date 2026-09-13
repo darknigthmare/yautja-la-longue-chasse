@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const base = process.env.V34_QA_URL || 'http://localhost:4173';
+const contentSource = await fs.readFile('app/game/buildInfo.ts', 'utf8');
+const expectedContentVersion = process.env.V34_QA_CONTENT_VERSION || contentSource.match(/GAME_CONTENT_VERSION = "([^"]+)"/)[1];
 const playerId = process.env.V34_QA_PLAYER || 'jungle-hunter';
 const opponentId = process.env.V34_QA_OPPONENT || 'city-hunter';
 assert.notEqual(playerId, opponentId, 'QA requires two distinct combatants; the selection disables mirror matches.');
@@ -31,7 +33,7 @@ try {
     if (response.status() === 200 && framePaths.has(pathname)) loadedImages.add(pathname);
   });
   await page.goto(base, { waitUntil: 'networkidle', timeout: 120000 });
-  await page.waitForFunction(() => document.querySelector('[data-game-content-version="V34"]'));
+  await page.waitForFunction(version => document.querySelector('[data-game-content-version="' + version + '"]'), expectedContentVersion);
   await page.getByRole('button', { name: 'Jouer', exact: true }).click();
   await page.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
   await page.getByRole('radio', { name: /Entraînement/ }).click();
@@ -68,7 +70,7 @@ try {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({ path: output + '/mobile.png', fullPage: true });
   assert.deepEqual(errors, []); assert.deepEqual(failedRequests, []);
-  const result = { passed: true, checkedAt: new Date().toISOString(), surface: 'full-application-play-pit-training', verifiedContentVersion: 'V34', fighters: [playerId, opponentId], fighterArtStates, url: base, checks, loadedImageFiles: [...loadedImages].sort(), mobileNoOverflow: true, errors, failedRequests };
+  const result = { passed: true, checkedAt: new Date().toISOString(), surface: 'full-application-play-pit-training', verifiedContentVersion: expectedContentVersion, fighters: [playerId, opponentId], fighterArtStates, url: base, checks, loadedImageFiles: [...loadedImages].sort(), mobileNoOverflow: true, errors, failedRequests };
   await fs.writeFile(output + '/browser-qa.json', JSON.stringify(result, null, 2));
   console.log(JSON.stringify(result));
 } catch (error) {

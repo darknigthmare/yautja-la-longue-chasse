@@ -20,11 +20,11 @@
     "badBloodEnforcer": 10,
     "biologicalMounts": 16,
     "vehicleEntriesWithArt": 50,
-    "vehicleSourceImages": 98,
+    "vehicleSourceImages": 113,
     "sharedEffectSourceImages": 3,
-    "generatedSourceImagesTotal": 101,
-    "publicReviewImages": 99,
-    "rejectedSourceImages": 18,
+    "generatedSourceImagesTotal": 116,
+    "publicReviewImages": 114,
+    "rejectedSourceImages": 25,
     "acceptedAnimationClips": 0,
     "integratedRideableVehicles": 0,
     "fullyProducedVehicles": 0
@@ -13816,10 +13816,700 @@
           "runtimeClips": [],
           "reviewFrames": [],
           "gameplayImplemented": false
+        },
+        {
+          "id": "walk-right-r1",
+          "actionId": "walk",
+          "label": "Bone Bison — marche droite, premier essai",
+          "status": "rejected",
+          "rejectionReason": "Collisions du contour détouré avec quatre frontières de cellule : 4, 3, 4 et 3 pixels (14 pixels au total) ; remplacement walk-right-r2 disponible.",
+          "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-right-r1.png",
+          "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-right-r1.png",
+          "originId": "exec-1cd7e922-9d1b-47e2-939f-91d0cda83e5c.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43",
+          "bytes": 2065006,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create one production 2D side-scrolling game animation sprite sheet based exactly on the attached established Bone Bison body design. This is the SAME animal, not a redesign: blue-grey layered organic bony plates, large shoulder hump with brown bristly mane, very low long head with a huge broad upward-curving lower horn, short armoured tail, exactly FOUR weight-bearing legs and cloven dark feet. No rider, no saddle, no harness, no manufactured armor, no text. Use the attached RIGHT-facing animal as the consistent identity reference. Every sprite faces RIGHT in true orthographic side view. One complete slow WALK cycle of SIX distinct sequential frames arranged in a perfectly regular 3-column by 2-row grid, read left-to-right then next row. Frame order: left hind lift/push, left hind plant/right fore lift, right fore plant, right hind lift/push, right hind plant/left fore lift, left fore plant returning toward first frame. Preserve exactly four legs in every frame; legs move at the joints, NEVER duplicate feet or append ghost limbs. Near and far legs separated enough to read, the hidden far pair modestly darker. Horn shape, skull, dorsal plate pattern, mass and body proportions remain fixed; subtle shoulder/hip weight shift, very small head bob. Animation stays in place, no travel across cells. Same scale in all 6 square cells, centered same body origin and common foot contact baseline. Show the COMPLETE horn, mane, tail and feet in each cell, with at least 10 percent safety margin all around; no touching neighboring cells. Crisp detailed hand-painted raster game art with sharp readable contour matching the reference, no smear/motion blur. Wide image 1536 x 1024, each cell exactly 512 x 512. Flat uniform pure magenta #FF00FF key background with no shadows, no gradients, no grid lines, no captions. The creature itself contains no magenta pixels.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/bone-bison-de-guerre/body-colour-concept-r1.png",
+              "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+            }
+          ],
+          "notes": [
+            "Nouvelle vague isolée du paquet V34 gelé. Quatre membres visibles ; appuis et continuité à revoir en mouvement. Marges horizontales inférieures au brief ; aucune animation acceptée dans le moteur.",
+            "Rejet technique complet : cellules 0, 1, 3 et 4 en collision de bord (14 pixels cumulés)."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "walk-1",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                16,
+                99,
+                496,
+                300
+              ],
+              "gridBorderPixels": 4,
+              "visiblePixels": 70494,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "right",
+              "phase": "walk-2",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                512,
+                97,
+                508,
+                302
+              ],
+              "gridBorderPixels": 3,
+              "visiblePixels": 71419,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "right",
+              "phase": "walk-3",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1036,
+                97,
+                489,
+                302
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 71236,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "right",
+              "phase": "walk-4",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                23,
+                598,
+                489,
+                306
+              ],
+              "gridBorderPixels": 4,
+              "visiblePixels": 71068,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "right",
+              "phase": "walk-5",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                512,
+                598,
+                511,
+                306
+              ],
+              "gridBorderPixels": 3,
+              "visiblePixels": 72717,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "right",
+              "phase": "walk-6",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1044,
+                601,
+                481,
+                303
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 70689,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "walk-left-r1",
+          "actionId": "walk",
+          "label": "Bone Bison — marche gauche, premier essai",
+          "status": "rejected",
+          "rejectionReason": "Collisions du contour détouré avec cinq frontières de cellule : 7, 8, 7, 12 et 9 pixels (43 pixels au total) ; remplacement walk-left-r2 disponible.",
+          "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-left-r1.png",
+          "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-left-r1.png",
+          "originId": "exec-95d5d128-dbc9-4623-a4de-88c8a61ce15c.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d63bbcc4ebb55a487e48efede08bf40089925e17cf6c4c3e736c437c6189c403",
+          "bytes": 2023504,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Generate a complementary six-frame WALK LEFT sprite sheet of the exact Bone Bison creature shown in the attached two-direction identity reference and right-walk sheet. Preserve original identity: huge bristly brown shoulder hump, blue-grey overlapping organic bony plates, low sweeping long head and oversized upcurved lower horn, short pointed armoured tail and exactly FOUR legs. Use the LEFT-facing identity specimen for this side. NOT a buffalo or rhino. No mechanical armour, saddle, rider, straps, accessories, captions or scenery. Every pose faces LEFT in a strict orthographic side view. Six genuinely sequential poses of a slow four-beat walking cycle, 3 equal columns x 2 equal rows, 1536x1024 total. Each frame occupies a 512x512 cell. The creature should occupy ONLY 78 percent of each cell width, ensuring at least 50 pixels empty margin on both sides, including the very tip of the horn and tail. Maintain identical scale and the same shoulder and grounded foot baseline positions across all six cells; animation in place. Show exactly four distinct legs, two near, two far darkened, no extra ghost legs or duplicated feet. Frame1 near rear starts lifting; frame2 near rear reaches forward and plants while near fore lifts; frame3 near fore plants; frame4 far rear lifts; frame5 far rear plants while far fore lifts; frame6 far fore plants and connects to frame1. The two halves must use different near versus far leg actions rather than repeat identical steps. Keep plate pattern, horn length/shape, body volume and colour invariant. Small natural shoulder/hip movement, no whole-body zoom. Feet flex at joints, no motion blur. Sharp detailed raster painted game art matching the identity, no perspective rotation. Uniform flat pure MAGENTA #FF00FF background, no ground shadow, grid lines, labels, color swatches or numbers. Whole animal inside every cell. This is an animation production source sheet, not a poster or collage.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/bone-bison-de-guerre/body-colour-concept-r1.png",
+              "sha256": "91b36f6b8f7ff0fa7235383fdac948ceb534cf7b8cd8052b48336b3a32160caa"
+            },
+            {
+              "path": "work/v34/private-root-wave/walk-right-r1.png",
+              "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43"
+            }
+          ],
+          "notes": [
+            "Vague suivante en attente de revue en mouvement. Quatre membres présents ; mouvement et raccord à valider. Certaines marges très étroites ; planche non acceptée pour le moteur.",
+            "Rejet technique complet : cellules 1, 2, 3, 4 et 5 en collision de bord (43 pixels cumulés)."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "left",
+              "phase": "walk-1",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                23,
+                103,
+                484,
+                298
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 69420,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "walk-2",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                519,
+                102,
+                505,
+                299
+              ],
+              "gridBorderPixels": 7,
+              "visiblePixels": 69988,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "left",
+              "phase": "walk-3",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1024,
+                102,
+                486,
+                299
+              ],
+              "gridBorderPixels": 8,
+              "visiblePixels": 70906,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "left",
+              "phase": "walk-4",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                22,
+                597,
+                490,
+                299
+              ],
+              "gridBorderPixels": 7,
+              "visiblePixels": 69253,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "left",
+              "phase": "walk-5",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                512,
+                597,
+                512,
+                299
+              ],
+              "gridBorderPixels": 12,
+              "visiblePixels": 69647,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "left",
+              "phase": "walk-6",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1024,
+                597,
+                487,
+                299
+              ],
+              "gridBorderPixels": 9,
+              "visiblePixels": 71247,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "walk-right-r2",
+          "actionId": "walk",
+          "label": "Bone Bison — marche droite, cadrage corrigé",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-right-r2.png",
+          "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-right-r2.png",
+          "originId": "exec-12002563-9bea-4fe6-9c8c-73e5b2f1e0dd.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "1e0af94c6fe7a349054e8167b4a5f36b8ccc08a32d66256acc467aecf53bb1ea",
+          "bytes": 1689770,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "EDIT the attached right-facing Bone Bison animation sheet. Mandatory correction: shrink EACH of the six complete creatures to 75 percent of its current size and center it within its ORIGINAL 512x512 cell, leaving a wide clear magenta margin on both sides. Keep the canvas exactly1536x1024 with exactly3 columns and2rows. Each animal INCLUDING its horn and tail must fit within an imaginary rectangle from cell x=65 to x=447, and y=130 to y=380. That means the entire animal width must be at most382 pixels, NEVER near500. Do not draw rectangles or guides. Preserve the SIX DIFFERENT walking poses in their current reading order and retain all4legs per pose, original bony plate pattern, brown bristly hump, horn profile and pointed tail. Keep identical scale and aligned planted-foot groundline in all cells. Everything faces RIGHT. Do not simplify the creature, redesign anatomy, add/remove limbs, add new equipment, turn its head, add shadows, add text or change the six-cell arrangement. Only fix the too-large sprite footprints and any tiny contour crossing at the cell boundaries. Flat pure MAGENTA#FF00FF background, crisp detailed 2D painted game sprite contours. Large blank padding is intentional and essential for reliable animation extraction.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/walk-right-r1.png",
+              "sha256": "40b36e024832d8ec9a31a1e044b6f97e04783ff4e3163c38006c8ccf2a7abb43"
+            }
+          ],
+          "notes": [
+            "Remplace la r1 dont la corne coupe une frontière de cellule. Source générée à nouveau par OpenAI, jamais réduite par un outil externe. Revue de la démarche encore requise.",
+            "Revue technique r2 : six cellules distinctes, aucune collision de bord ; anatomie, appuis et raccord cyclique restent à valider avant tout clip runtime."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "walk-1",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                77,
+                153,
+                365,
+                217
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 37724,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "right",
+              "phase": "walk-2",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                592,
+                153,
+                362,
+                216
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 37783,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "right",
+              "phase": "walk-3",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1103,
+                152,
+                361,
+                217
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 38143,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "right",
+              "phase": "walk-4",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                78,
+                626,
+                366,
+                224
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 39176,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "right",
+              "phase": "walk-5",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                590,
+                626,
+                369,
+                224
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 40200,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "right",
+              "phase": "walk-6",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1102,
+                627,
+                362,
+                223
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 39362,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "walk-left-r2",
+          "actionId": "walk",
+          "label": "Bone Bison — marche gauche, cadrage corrigé",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/bone-bison-de-guerre/walk-left-r2.png",
+          "publicPath": "/game/vehicles/v34/bone-bison-de-guerre/walk-left-r2.png",
+          "originId": "exec-5b613c69-be67-4540-9fc1-e5c2e542e205.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "544e4ff5a005e042c786a44e860a2e6524118ac91f495fb9475312b51ec4d71b",
+          "bytes": 1715724,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "EDIT the attached LEFT-facing Bone Bison animation sheet. Critical correction: shrink EACH of the six complete creatures to75percent of its present size and center it within its ORIGINAL512x512cell, with a wide clean magenta margin on both sides. Keep image1536x1024, exactly3columns and2rows. Every animal INCLUDING horn and tail must fit entirely between local cell x65 and447 and y130 and380. Maximum complete sprite width382pixels, not500. Do not draw guides. Preserve the SIX DIFFERENT walking poses, LEFT-facing direction, reading order, exactlyFOURlegs and original identity: blue-grey layered bony plates, brown bristly shoulder hump, low head with huge sweeping curved horn, short pointed tail. Align grounded feet on one consistent baseline per row; keep the same scale across all6cells. No body rotation, no weapon, rider, harness, saddle, text, extra limbs, duplicate feet, motion blur or scenery. Only correct overly large sprite footprints and tiny crossings between neighboring animation cells. Flat pure MAGENTA#FF00FF background, sharp hand-painted raster game-art silhouette. Large empty padding is intentional. Keep all horn tips, tail tips and feet visibly separated from each cell boundary.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/walk-left-r1.png",
+              "sha256": "d63bbcc4ebb55a487e48efede08bf40089925e17cf6c4c3e736c437c6189c403"
+            }
+          ],
+          "notes": [
+            "Remplace la r1 : 7 pixels touchent la frontière de cellule1. Image corrigée par OpenAI, source conservée intacte. Revue de la démarche toujours requise.",
+            "Revue technique r2 : six cellules distinctes, aucune collision de bord ; anatomie, appuis et raccord cyclique restent à valider avant tout clip runtime."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "left",
+              "phase": "walk-1",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                66,
+                172,
+                380,
+                226
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 41470,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "walk-2",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                569,
+                171,
+                385,
+                227
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 42169,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "left",
+              "phase": "walk-3",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1077,
+                169,
+                387,
+                229
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 42878,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "left",
+              "phase": "walk-4",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                62,
+                627,
+                389,
+                232
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 42841,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "left",
+              "phase": "walk-5",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                568,
+                626,
+                387,
+                233
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 43488,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "left",
+              "phase": "walk-6",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1077,
+                627,
+                392,
+                232
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 44282,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
         }
       ],
       "runtimeStatus": "planned",
-      "generatedAssetCount": 3,
+      "generatedAssetCount": 7,
       "acceptedClipCount": 0,
       "productionLore": "La créature est adaptée d’un concept de production attribué à Jerad S. Marantz, consulté via une reproduction secondaire. Son dressage, son équipement et son emploi comme monture de guerre sont des créations du jeu.",
       "runtimeActionsAccepted": [],
@@ -13853,7 +14543,10 @@
         "sourceSpecRecovered": false,
         "completeMoveset": false,
         "acceptedClipCount": 0,
-        "authoredFacings": [],
+        "authoredFacings": [
+          "right",
+          "left"
+        ],
         "note": "Source sheets and review frames are not accepted runtime coverage; the recovered conversation gives no fixed sheet count per vehicle."
       },
       "assets": [
@@ -13950,10 +14643,1810 @@
           "runtimeClips": [],
           "reviewFrames": [],
           "gameplayImplemented": false
+        },
+        {
+          "id": "body-base-layer-r1",
+          "actionId": "body",
+          "label": "Razorwing — corps indépendant des ailes",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/body-base-layer-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/body-base-layer-r1.png",
+          "originId": "exec-97b7a563-3e73-4d1e-94a9-b597a7150f8f.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "1d105a8978f57e02cfbd4e7f264f1846847697aafcff990aba73701dc00637a3",
+          "bytes": 1591936,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create the standalone BASE BODY LAYER for the attached ORIGINAL Razorwing game creature, maintaining its exact established identity and true side-view pose. This is a modular sprite construction asset: the two wing layers are HIDDEN, so do NOT draw wings, wing membranes, wing finger bones, forearms, foreclaws or extra front legs. Nothing is injured or cut: the shoulder behind the neck is a small clean naturally scaled oval attachment area, no exposed muscle, no blood, no wound, no mechanical socket. Preserve the long narrow olive-grey reptilian head, swept-back black crest spines, angular dark eye, thin long dorsal-spined tail with the small triangular stabilizing tail fin, lean scaled torso and exactly TWO digitigrade hind legs with coherent hooked toes. Match the two orientations of the attached established character without changing its species into a bird/dragon redesign. Exactly TWO full-body profiles side-by-side on a1536x1024 canvas: first facing RIGHT, second facing LEFT. Maintain same scale, body proportions, standing foot baseline and posture. Each complete silhouette must be comfortably inside its768x1024cell with at least80pixels of empty magenta around extremities. The crest, nose, tailfin and every toe must fit. The base is smooth and intact under where the detachable wing artwork will be composited. No ground shadow, rock, perch, rider, saddle, armor, accessories, symbols, letters, watermark or border. Detailed hand-painted 2D bitmap game art matching the reference. Uniform flat pureMAGENTA#FF00FFbackground. The purpose is to independently animate foreground wing and background wing around their shoulder without repainting the body.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/identity-r1.png",
+              "sha256": "d70522488fc5d9b051aece7881c2bafe11ed454e4e6c03947457f160db993695"
+            }
+          ],
+          "notes": [
+            "Corps du modèle original avec les deux calques d’ailes masqués. Deux pattes arrière, aucune nouvelle patte avant. Points d’attache et assemblage à caler dans la revue, aucun vol jouable déclaré.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                21,
+                135,
+                713,
+                706
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 104387,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                802,
+                135,
+                713,
+                706
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 104389,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                19,
+                133,
+                717,
+                710
+              ],
+              "pivot": [
+                491,
+                225
+              ],
+              "facing": "right",
+              "phase": "body",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                800,
+                133,
+                717,
+                710
+              ],
+              "pivot": [
+                225,
+                225
+              ],
+              "facing": "left",
+              "phase": "body",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            600,
+            430
+          ]
+        },
+        {
+          "id": "flight-body-layer-r1",
+          "actionId": "flight-body",
+          "label": "Razorwing — corps en vol, ailes masquées",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-r1.png",
+          "originId": "exec-393517e7-f4e1-438e-be63-2e2ad99eb84a.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4",
+          "bytes": 1437878,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create the IN-FLIGHT BASE BODY LAYER of the exact original Razorwing creature in the attached wing-hidden body reference. Preserve its species and detailed olive-grey scales, black swept-back cranial spines, narrow long reptilian snout, dorsal spines and thin long tail ending in a small triangular tail fin. The animal is now flying horizontally: torso and tail align near horizontal, neck extended forward, head looking forward, exactly TWO digitigrade hind legs TUCKED naturally underneath the hips, both folded feet visible and readable with the same coherent toes. Its two wing layers are intentionally HIDDEN for modular 2D animation: NO wings, membranes, forearms, foreclaws or added front legs in this image. Shoulder attachment is clean intact natural scales, not an injury and not a robotic socket. No blood, wounds, saddle, rider, harness, armour or effect. Exactly TWO independent full body side views in one row, first RIGHT-facing and second LEFT-facing, identical scale and body pose. 1536x1024 total canvas, each768x1024half contains its entire complete animal centered. Very generous blank padding: maximum silhouette width600pixels per half; do NOT approach the central divider or outer border. Keep nose, crest, all toes and tailfin at least60pixels inside each half. Strict orthographic side-scrolling game perspective, no turning toward camera. Detailed crisp hand-painted bitmap art like reference, no shadow, environment, text, labels, grid or watermark. Uniform flat pureMAGENTA#FF00FF background. This is one detachable body layer; wings will later pivot behind and in front of this body.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/body-base-layer-r1.png",
+              "sha256": "1d105a8978f57e02cfbd4e7f264f1846847697aafcff990aba73701dc00637a3"
+            }
+          ],
+          "notes": [
+            "Deux jambes arrière repliées, aile proche et aile arrière absentes du calque. Posture de vol proposée, pas de conduite ni de boucle finale. Ancrages épaules à mesurer.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                23,
+                311,
+                729,
+                334
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63170,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                784,
+                311,
+                729,
+                334
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 62898,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                21,
+                309,
+                733,
+                338
+              ],
+              "pivot": [
+                497,
+                146
+              ],
+              "facing": "right",
+              "phase": "body",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                782,
+                309,
+                733,
+                338
+              ],
+              "pivot": [
+                236,
+                146
+              ],
+              "facing": "left",
+              "phase": "body",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            600,
+            430
+          ]
+        },
+        {
+          "id": "near-wing-right-beat-r1",
+          "actionId": "wingbeat",
+          "label": "Razorwing — aile proche droite, essai de battement",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/near-wing-right-beat-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/near-wing-right-beat-r1.png",
+          "originId": "exec-4986cc6a-010c-479a-8759-a09d67b151d2.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e61885db2a1dbc64a5519852a966d8cc6565cb32a9e2ec201bd4c9669018b9d9",
+          "bytes": 1728864,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create one MODULAR NEAR-WING animation source sheet for the ORIGINAL Razorwing creature shown in the reference images. The full creature with folded wings is the identity reference; the wing-hidden standing and flight bodies show the body layer which MUST NOT be drawn here. ONLY ONE NEAR WING per cell, no body, head, neck, legs, tail or second wing. Match the olive-black leathery membrane, long slender pale-olive bones/fingers and hooked wrist thumb claw of the existing folded wing. The animal this wing will attach to faces RIGHT: wing shoulder root is at the RIGHT side of the module, outer membrane/fingers trail towards LEFT. Six coherent stages of a single wingbeat, true orthographic side view, not frontal butterfly wings. Arrange a perfectly regular3column by2row grid, 1536x1024 total with512x512cells. The root is the rounded natural scaled shoulder cap at exactly local(420,256) in EVERY cell; it never shifts or changes size. Keep all wing tissue inside localx[65,450],y[60,450]. Phase1 raised extended wing;2 forward power sweep towards level;3 fully lowered wing;4 recovery with elbow partially folding and membrane feathered;5 elbow rising and membrane reopening;6 nearly fully raised preparing to return to1. Wing bones remain connected root→upper arm→elbow→wrist→the SAME membrane-supported fingers in every drawing. No detached bones, duplicated claws, added fingers or changing skeletal construction. The root area is whole and clean, no wound, blood or bone section. Keep equal scale and coherent finger count across6poses, accurate folds rather than replacing wings with six unrelated fins. Crisp original painted2D bitmap game art matching reference. Pure uniformMAGENTA#FF00FFbackground; no labels, guide lines, text, letters, numbering, shadows or effects. Empty padding is essential. This sheet is ONLY the near-side wing, so a later separate far-wing module can be layered behind the body.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/identity-r1.png",
+              "sha256": "d70522488fc5d9b051aece7881c2bafe11ed454e4e6c03947457f160db993695"
+            },
+            {
+              "path": "work/v34/private-root-wave/body-base-layer-r1.png",
+              "sha256": "1d105a8978f57e02cfbd4e7f264f1846847697aafcff990aba73701dc00637a3"
+            },
+            {
+              "path": "work/v34/private-root-wave/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            }
+          ],
+          "notes": [
+            "Un seul membre-aile par cellule, indépendant du corps. Squelette en déploiement proposé à partir d’une référence aux ailes repliées : nombre de doigts, continuité et placement à revoir ; pas de certification1:1. Le pivot généré n’obéit pas exactement aux coordonnées demandées : mesure obligatoire avant assemblage.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                15,
+                29,
+                478,
+                398
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 61031,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                529,
+                178,
+                472,
+                249
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 48120,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1056,
+                223,
+                458,
+                255
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 44679,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                80,
+                679,
+                413,
+                211
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 43941,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                545,
+                582,
+                456,
+                337
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 51123,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1037,
+                536,
+                476,
+                383
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 58634,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                13,
+                27,
+                482,
+                402
+              ],
+              "pivot": [
+                461,
+                238
+              ],
+              "facing": "right",
+              "phase": "wingbeat-1",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                527,
+                176,
+                476,
+                253
+              ],
+              "pivot": [
+                455,
+                89
+              ],
+              "facing": "right",
+              "phase": "wingbeat-2",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1054,
+                221,
+                462,
+                259
+              ],
+              "pivot": [
+                441,
+                44
+              ],
+              "facing": "right",
+              "phase": "wingbeat-3",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                78,
+                677,
+                417,
+                215
+              ],
+              "pivot": [
+                396,
+                81
+              ],
+              "facing": "right",
+              "phase": "wingbeat-4",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                543,
+                580,
+                460,
+                341
+              ],
+              "pivot": [
+                439,
+                179
+              ],
+              "facing": "right",
+              "phase": "wingbeat-5",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1035,
+                534,
+                480,
+                387
+              ],
+              "pivot": [
+                459,
+                225
+              ],
+              "facing": "right",
+              "phase": "wingbeat-6",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            950,
+            400
+          ]
+        },
+        {
+          "id": "near-wing-left-beat-r1",
+          "actionId": "wingbeat",
+          "label": "Razorwing — aile proche gauche",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/near-wing-left-beat-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/near-wing-left-beat-r1.png",
+          "originId": "exec-acbb9098-75cc-443b-a7df-f986e13618b4.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d7bb9a1452c1f67314cd463e5ab50be7e42cb7cfdc01c8bee3b533f1d3407710",
+          "bytes": 1721997,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create the LEFT-facing companion of this original Razorwing NEAR-WING six-stage wingbeat source sheet. Same one alien wing and exactly the same connected bone, finger and membrane construction in all six poses; preserve the number of long membrane rays and the single wrist thumb without adding or deleting an appendage. This output contains ONLY ONE WING PER CELL, no body, head, legs, tail, secondary wing, labels or markings. It attaches to the LEFT-facing creature: every rounded clean scaled shoulder root is near the LEFT of its cell, and the membrane extends RIGHT. Six sequential stages in the SAME reading order as the reference: raised, power sweep toward level, lowered, feathered recovery, reopening upward, almost fully raised. 1536x1024 canvas with a precise3columns x2rows grid; each cell512x512. Use a stable local root center near(80,256) across all6cells. Entire complete wing including all membrane tips fits inside cellx[50,450],y[60,450], with wide padding. Same scale and root-cap size across frames. Preserve the olive-black leathery translucent membranes, pale olive supporting bones, hooked wrist claw and crisp painted2D bitmap style. Do not simply draw six unrelated wing shapes; identical finger topology must bend at the same joints. No wound, blood, exposed muscle or severed section: this is a clean modular layer hidden behind a shoulder overlap in the final assembly. Uniform pureMAGENTA#FF00FFbackground, no floor, shadows, glow, text, numbers, grids or effects. The shoulder root never travels between cells. Orthographic side-scrolling game camera only.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/near-wing-right-beat-r1.png",
+              "sha256": "e61885db2a1dbc64a5519852a966d8cc6565cb32a9e2ec201bd4c9669018b9d9"
+            }
+          ],
+          "notes": [
+            "Membre-aile indépendant, source OpenAI conservée. Topologie en déploiement et montage à contrôler avant animation finale.",
+            "La grille demandée n’est pas respectée exactement : rectangles et pivots de chaque membre entier doivent être mesurés, jamais rognés automatiquement sur la grille.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                38,
+                31,
+                460,
+                399
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 61031,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                516,
+                175,
+                456,
+                254
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 48082,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1061,
+                227,
+                437,
+                253
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 42631,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                30,
+                684,
+                426,
+                213
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 47559,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                524,
+                577,
+                464,
+                344
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 55253,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1039,
+                533,
+                469,
+                387
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 60451,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                36,
+                29,
+                464,
+                403
+              ],
+              "pivot": [
+                20,
+                236
+              ],
+              "facing": "left",
+              "phase": "wingbeat-1",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                514,
+                173,
+                460,
+                258
+              ],
+              "pivot": [
+                20,
+                91
+              ],
+              "facing": "left",
+              "phase": "wingbeat-2",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1059,
+                225,
+                441,
+                257
+              ],
+              "pivot": [
+                20,
+                45
+              ],
+              "facing": "left",
+              "phase": "wingbeat-3",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                28,
+                682,
+                430,
+                217
+              ],
+              "pivot": [
+                20,
+                77
+              ],
+              "facing": "left",
+              "phase": "wingbeat-4",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                522,
+                575,
+                468,
+                348
+              ],
+              "pivot": [
+                20,
+                184
+              ],
+              "facing": "left",
+              "phase": "wingbeat-5",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1037,
+                531,
+                473,
+                391
+              ],
+              "pivot": [
+                20,
+                228
+              ],
+              "facing": "left",
+              "phase": "wingbeat-6",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            250,
+            400
+          ]
+        },
+        {
+          "id": "far-wing-right-beat-r1",
+          "actionId": "wingbeat",
+          "label": "Razorwing — aile arrière droite",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/far-wing-right-beat-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/far-wing-right-beat-r1.png",
+          "originId": "exec-e7caa0e1-646b-4c04-8569-232a1fc48aae.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "199951a50d7b6c4f8e4ea6fa281c3fea35f3a0b0f84b359fe59bb3aa75d4df0a",
+          "bytes": 1643591,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create the independent FAR-WING layer for the same original Razorwing, using the supplied near-wing sheets as strict construction references. Output ONLY the one wing behind the body, six sequential wingbeat phases, for a creature facing RIGHT: root attachment at RIGHT of each cell and membrane spreading/trailing LEFT. Do not include the creature or a second wing. SAME topology in every frame: the same upper-arm/elbow/wrist and same long finger rays and hooked tips, no added or missing bones. Match the established olive membranes and dark keratin claw tips, but show the farther wing's slightly darker underside and mildly foreshortened profile so it remains visually distinct behind the body. This is drawn separately, not a duplicate pasted near wing. Stable root size and local root center near(400,250), independent rounded clean scaled overlap pad, no wound, cut flesh or mechanical socket. Six stages in order: high extended, downstroke toward level, lowered, folded/feathered recovery, reopening upward, high return. Precisely3columns x2rows on1536x1024, cells512x512. Keep EVERY complete wing inside localx[70,430],y[70,440]. Reduce scale sufficiently to leave at least50pixels clear magenta on every side. Equal scale in all6cells; no tip crosses a neighboring cell. Orthographic side-scrolling game asset with detailed crisp hand-painted bitmap style matching reference. Uniform pureMAGENTA#FF00FFbackground. NO body, neck, legs, tail, labels, numbers, captions, shadow, grid or effects. The result is a clean separate far-wing source for shoulder-pivot assembly behind a matching body, not a finished flight composite.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/near-wing-right-beat-r1.png",
+              "sha256": "e61885db2a1dbc64a5519852a966d8cc6565cb32a9e2ec201bd4c9669018b9d9"
+            },
+            {
+              "path": "work/v34/private-root-wave/near-wing-left-beat-r1.png",
+              "sha256": "d7bb9a1452c1f67314cd463e5ab50be7e42cb7cfdc01c8bee3b533f1d3407710"
+            }
+          ],
+          "notes": [
+            "Membre-aile indépendant, source OpenAI conservée. Topologie en déploiement et montage à contrôler avant animation finale.",
+            "La grille demandée n’est pas respectée exactement : rectangles et pivots de chaque membre entier doivent être mesurés, jamais rognés automatiquement sur la grille.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                40,
+                62,
+                471,
+                401
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 59987,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                548,
+                152,
+                452,
+                311
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 51550,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1054,
+                210,
+                425,
+                241
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 44313,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                85,
+                680,
+                409,
+                210
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 43736,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                561,
+                591,
+                444,
+                340
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 51007,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "right",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1047,
+                538,
+                453,
+                393
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 55748,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                38,
+                60,
+                475,
+                405
+              ],
+              "pivot": [
+                454,
+                243
+              ],
+              "facing": "right",
+              "phase": "wingbeat-1",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                546,
+                150,
+                456,
+                315
+              ],
+              "pivot": [
+                435,
+                153
+              ],
+              "facing": "right",
+              "phase": "wingbeat-2",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1052,
+                208,
+                429,
+                245
+              ],
+              "pivot": [
+                408,
+                77
+              ],
+              "facing": "right",
+              "phase": "wingbeat-3",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                83,
+                678,
+                413,
+                214
+              ],
+              "pivot": [
+                392,
+                81
+              ],
+              "facing": "right",
+              "phase": "wingbeat-4",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                559,
+                589,
+                448,
+                344
+              ],
+              "pivot": [
+                427,
+                185
+              ],
+              "facing": "right",
+              "phase": "wingbeat-5",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1045,
+                536,
+                457,
+                397
+              ],
+              "pivot": [
+                436,
+                237
+              ],
+              "facing": "right",
+              "phase": "wingbeat-6",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            950,
+            400
+          ]
+        },
+        {
+          "id": "far-wing-left-beat-r1",
+          "actionId": "wingbeat",
+          "label": "Razorwing — aile arrière gauche",
+          "status": "authored-review",
+          "sourcePath": "art-source/v34/vehicles/razorwing/far-wing-left-beat-r1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/far-wing-left-beat-r1.png",
+          "originId": "exec-d92a7fcc-0324-41ac-8af9-70e6206983b0.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6d2100742538e2ebf1423d39bfb1f32054ad89f1a2026bd62d454f58c1b26b00",
+          "bytes": 1612446,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Create the complementary LEFT-facing FAR-WING sheet for the original Razorwing, matching exactly the six sequential poses and wing anatomy in the attached RIGHT-facing far-wing reference. Output only one separate FAR wing per cell, rounded clean scaled shoulder root at LEFT of every cell, olive leathery membrane and supporting fingers reaching RIGHT. Same connected upper arm, elbow, wrist and same long finger rays and claw topology in each drawing, no extra claws or disconnected bones. Six distinct wingbeat phases in order: fully raised, power stroke toward level, lowered, feathered recovery, reopening upward, raised return. Same darker underside and modest foreshortening of the far wing, consistent with layering behind a body. Precise3column x2row grid on1536x1024,512x512cells. CRITICAL: each entire wing must fit in the central74percent of the cell width and height. Leave at least65pixels clear magenta padding around every root and every wingtip. Local root center near(105,255), unchanged cap size and location. Shrink every complete wing enough to guarantee no cell-boundary crossings. Match detailed2D painted bitmap style and crisp organic contours. No creature, body, head, tail, hindlegs, second wing, wound, blood, muscle cross-section, mechanical part, rider, saddle, equipment, text, labels, grid, shadows or effects. Uniform pureMAGENTA#FF00FFbackground. This is the separate far-side wing with a natural shoulder overlap cap, for modular assembly, not a finished animal drawing.",
+          "references": [
+            {
+              "path": "work/v34/private-root-wave/far-wing-right-beat-r1.png",
+              "sha256": "199951a50d7b6c4f8e4ea6fa281c3fea35f3a0b0f84b359fe59bb3aa75d4df0a"
+            }
+          ],
+          "notes": [
+            "Membre-aile indépendant, source OpenAI conservée. Topologie en déploiement et montage à contrôler avant animation finale.",
+            "La grille demandée n’est pas respectée exactement : rectangles et pivots de chaque membre entier doivent être mesurés, jamais rognés automatiquement sur la grille.",
+            "Atlas libre mesuré sur les silhouettes entières : les cellules inexactes du générateur ne servent pas au découpage. Aucun dessin ne touche le bord de l’image source.",
+            "Pivots estimés pour revue ; les 12 compositions privées passent le cadrage, mais le squelette et le raccord visuel ne sont pas approuvés pour le moteur."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                81,
+                61,
+                431,
+                397
+              ],
+              "gridBorderPixels": 7,
+              "visiblePixels": 57286,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                512,
+                92,
+                445,
+                365
+              ],
+              "gridBorderPixels": 7,
+              "visiblePixels": 48930,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 2,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1024,
+                225,
+                400,
+                221
+              ],
+              "gridBorderPixels": 10,
+              "visiblePixels": 41418,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 3,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                81,
+                683,
+                392,
+                209
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 42847,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 4,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                537,
+                583,
+                407,
+                334
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 49151,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 5,
+              "facing": "left",
+              "phase": "wingbeat",
+              "reviewGridRect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "alpha16Bounds": [
+                1035,
+                526,
+                444,
+                390
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 55492,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [
+            {
+              "rect": [
+                79,
+                59,
+                453,
+                401
+              ],
+              "pivot": [
+                20,
+                233
+              ],
+              "facing": "left",
+              "phase": "wingbeat-1",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                535,
+                149,
+                424,
+                310
+              ],
+              "pivot": [
+                20,
+                145
+              ],
+              "facing": "left",
+              "phase": "wingbeat-2",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1022,
+                223,
+                404,
+                225
+              ],
+              "pivot": [
+                20,
+                66
+              ],
+              "facing": "left",
+              "phase": "wingbeat-3",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                79,
+                681,
+                396,
+                213
+              ],
+              "pivot": [
+                20,
+                72
+              ],
+              "facing": "left",
+              "phase": "wingbeat-4",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                535,
+                581,
+                411,
+                338
+              ],
+              "pivot": [
+                20,
+                172
+              ],
+              "facing": "left",
+              "phase": "wingbeat-5",
+              "durationTicks": 9
+            },
+            {
+              "rect": [
+                1033,
+                524,
+                448,
+                394
+              ],
+              "pivot": [
+                20,
+                229
+              ],
+              "facing": "left",
+              "phase": "wingbeat-6",
+              "durationTicks": 9
+            }
+          ],
+          "gameplayImplemented": false,
+          "previewAnchor": [
+            250,
+            400
+          ]
+        },
+        {
+          "id": "flight-body-layer-r2",
+          "actionId": "flight-body",
+          "label": "Razorwing — corps en vol corrigé, ailes masquées",
+          "status": "rejected",
+          "rejectionReason": "La correction conserve des liseres magenta visibles dans les trous des griffes et derriere les cretes apres le detourage borne tolerance 64/frange 3; elle ne peut pas remplacer r1 dans le montage.",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-r2.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-r2.png",
+          "originId": "exec-13dece84-fb18-4bfb-8712-f36fb8babe37.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "4cde5ebd7b7485ba071b41a56d078c91206e0a7d000bfb7c6438f3940af9500d",
+          "bytes": 1442342,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Use case: precise-object-edit\nAsset type: modular 2D game sprite source sheet for Razorwing flight body, revision r2.\nInput image: the most recent image is the sole edit target and authoritative identity/composition reference.\nPrimary request: Correct only the magenta-background contamination and edge artifacts in the existing flight-body sheet. Keep exactly two complete wingless Razorwing flight bodies in the same positions, scale, pose, orientation and proportions: one looking right on the left half, one looking left on the right half.\nScene/backdrop: perfectly uniform pure chroma magenta #FF00FF across every background region, including all small holes between folded claws, toes, crest spines, tail gaps and silhouette cavities.\nSubject invariants: preserve the creature identity 1:1, olive and brown palette, head and crest shape, closed mouth, neck, torso, folded limbs, exactly the same visible legs, claws, toes and tail geometry. Preserve the same painted 2D bitmap style, sharp contours, separation between limbs, and wide clear padding. No wings; this is the body layer only.\nComposition/framing: landscape source sheet, exactly two separate side-profile bodies, full silhouettes completely inside the image, no overlap, no crop, same right/left placement and alignment as the input.\nConstraints: change only background cleanliness and contaminated edge pixels; no pink or purple fringe on the animal; no magenta trapped inside claw, toe, crest or tail holes; no erosion of feet, claws, crest, limbs or tail; no mirror shortcut; both drawings remain distinct authored orientations.\nAvoid: new anatomy, extra limbs, missing toes, fused feet, wings, rider, saddle, equipment, text, labels, grid, shadows, glow, motion effects, scenery, transparency, gradients, off-magenta background, watermark.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            }
+          ],
+          "notes": [
+            "Édition OpenAI ciblée de r1 : fond magenta nettoyé dans les trous des griffes et derrière la crête ; r1 reste conservée.",
+            "Deux corps complets sans ailes, orientations droite et gauche réellement rendues ; géométrie et pivots à remesurer avant tout montage.",
+            "Asset de revue uniquement : aucun clip de vol, aucune collision et aucune animation jouable acceptés.",
+            "Inspection comparative r1/r2 au plafond de detourage: franges magenta encore visibles; tentative rejetee avant integration."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                23,
+                311,
+                729,
+                335
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63219,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                784,
+                311,
+                728,
+                335
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 62892,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "flight-body-layer-r2-attempt2",
+          "actionId": "flight-body",
+          "label": "Razorwing — tentative 2 de correction du corps en vol",
+          "status": "rejected",
+          "rejectionReason": "Les crops après détourage maximal tolérance 64/frange 3 montrent encore des liserés magenta visibles dans les boucles des griffes et derrière les crêtes.",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-r2-attempt2.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-r2-attempt2.png",
+          "originId": "exec-7d9fa3d7-da67-4fd0-a474-a14761169b99.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "98bc492e2fbf2a1aed3b6ec8d11e7f9e05df393f26cd84949b8b5d71b6a27d95",
+          "bytes": 1429694,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Use case: precise-object-edit\nAsset type: modular 2D game sprite source sheet for Razorwing flight body, clean revision candidate.\nInput images: the full landscape image with exactly two wingless bodies is the edit target; the crop comparison image is supporting defect evidence only. Do not reproduce the crop layout or labels.\nPrimary request: remove every visible pink/magenta fringe from the bodies while preserving both full body silhouettes and their exact placement. This is a surgical chroma-key cleanup, not a redesign.\nRequired edge treatment: draw a continuous crisp dark olive/black outline wherever the animal meets the background, especially around every claw loop, toe, folded foot, thin crest spine, neck spine and tail fin. Immediately outside that dark outline and inside every enclosed hole, use only perfectly flat pure #FF00FF. No antialiased pink transition pixels, no bright magenta crescent, dot or halo may remain attached to the animal.\nCritical defect zones: fully clean the hollow loops inside all frontmost curled claws, the narrow gaps between toes, and all gaps behind/between the swept-back head crest spines on BOTH orientations. The crop evidence shows the forbidden bright pink crescents and dots; replace those artifacts with flat #FF00FF bounded by the dark contour.\nInvariants: exactly two complete wingless Razorwing bodies; first looks right on left half, second looks left on right half; same coordinates, size, pose, olive/brown palette, anatomy, folded two hind legs, readable separate toes, head, crest, torso and tail geometry as the full input sheet. Keep their distinct authored orientations. Preserve full silhouettes within the image and the central separation.\nAvoid: geometry changes, rescaling, repositioning, wings, extra or missing limbs/toes, fused feet, background gradient/noise, pink/purple edge color, transparency, text, crop labels, grid, shadow, rider, equipment, scenery, watermark.\nOutput: one 1536x1024 landscape PNG-like sprite sheet, pure #FF00FF background, no text.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            },
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r2.png",
+              "sha256": "4cde5ebd7b7485ba071b41a56d078c91206e0a7d000bfb7c6438f3940af9500d"
+            }
+          ],
+          "notes": [
+            "Tentative OpenAI distincte conservée pour traçabilité ; ne pas utiliser dans l’atelier.",
+            "Le fond reste enfermé dans des boucles de griffes avec une frange rose non éliminée par le processeur borné."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                24,
+                311,
+                728,
+                335
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63390,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                784,
+                311,
+                728,
+                335
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63182,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "flight-body-layer-r2-attempt3",
+          "actionId": "flight-body",
+          "label": "Razorwing — tentative 3 de correction du corps en vol",
+          "status": "rejected",
+          "rejectionReason": "Malgré une amélioration, les crops au détourage maximal tolérance 64/frange 3 gardent des pixels magenta visibles dans les griffes et sous les crêtes.",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-r2-attempt3.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-r2-attempt3.png",
+          "originId": "exec-a4304621-0f20-44e2-8df0-89571708567b.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6bbf3a1731ffeb137c9a4de2fa2277767d99e07f20fa6eb669c8518830049323",
+          "bytes": 1435511,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Edit ciblé du corps Razorwing en vol : ouvrir les boucles des griffes, renforcer les contours sombres et supprimer les franges magenta, sans changer les deux silhouettes ni leur placement.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            },
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r2-attempt2.png",
+              "sha256": "98bc492e2fbf2a1aed3b6ec8d11e7f9e05df393f26cd84949b8b5d71b6a27d95"
+            }
+          ],
+          "notes": [
+            "Tentative OpenAI distincte conservée et rejetée avant intégration.",
+            "Bornes complètes et anatomie cohérente, mais propreté chroma insuffisante pour remplacer la source active."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                24,
+                310,
+                728,
+                339
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63894,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                784,
+                310,
+                728,
+                339
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 63548,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "flight-body-layer-r2-attempt4",
+          "actionId": "flight-body",
+          "label": "Razorwing — tentative 4 de correction du corps en vol",
+          "status": "rejected",
+          "rejectionReason": "Le fond opaque conserve encore des pixels magenta visibles dans les cavités fermées des griffes après le détourage maximal tolérance 64/frange 3.",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-r2-attempt4.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-r2-attempt4.png",
+          "originId": "exec-84cbbdd9-7926-418b-a047-eb608c5fe711.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "645eb6e7b7171c49da8dc7c5439e068c914b0d8da59824e71c07b0638eb46fc4",
+          "bytes": 1435408,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Correction OpenAI à bord dur du corps Razorwing en vol, sans modifier les deux silhouettes, visant à supprimer toute frange magenta sur les griffes et les crêtes.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            },
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r2-attempt3.png",
+              "sha256": "6bbf3a1731ffeb137c9a4de2fa2277767d99e07f20fa6eb669c8518830049323"
+            }
+          ],
+          "notes": [
+            "Tentative OpenAI distincte conservée et rejetée avant intégration.",
+            "La sortie reste opaque et le processeur connected-magenta ne peut pas dépolluer entièrement les cavités fermées ; essai alpha natif requis."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                24,
+                308,
+                730,
+                341
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 65052,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                782,
+                307,
+                730,
+                342
+              ],
+              "gridBorderPixels": 0,
+              "visiblePixels": 64942,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
+        },
+        {
+          "id": "flight-body-layer-alpha-attempt1",
+          "actionId": "flight-body",
+          "label": "Razorwing — tentative alpha native du corps en vol",
+          "status": "rejected",
+          "rejectionReason": "La sortie ImageGen ne contient aucun canal alpha : PNG RGB opaque avec damier de transparence peint dans l’image.",
+          "sourcePath": "art-source/v34/vehicles/razorwing/flight-body-layer-alpha-attempt1.png",
+          "publicPath": "/game/vehicles/v34/razorwing/flight-body-layer-alpha-attempt1.png",
+          "originId": "exec-3010deeb-93e2-477b-9a67-531229ebc999.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "37c3728d81a1253d33c617c4bc491cdb0a1d888025e2cfdf70659ebc182c665e",
+          "bytes": 1824412,
+          "generator": "openai-imagegen",
+          "sourceBytesPreserved": true,
+          "transparency": {
+            "mode": "alpha"
+          },
+          "rawAlpha": {
+            "zero": 0,
+            "partial": 0,
+            "opaque": 1572864
+          },
+          "prompt": "Use case: background-extraction\nAsset type: modular 2D game sprite sheet, Razorwing flight body revision.\nInput image: the most recent full two-body landscape sheet is the sole edit target and authoritative geometry/anatomy reference.\nPrimary request: remove the magenta background completely and output a genuine native transparent alpha background. Preserve the two Razorwing bodies and their authored pixels as faithfully as possible.\nTransparency requirements: all space around the bodies and every hole between curled claws, separated toes, crest spines, neck spines and tail fins must be fully transparent. Preserve clean anti-aliased alpha at the actual dark animal contours. No pink, purple or magenta RGB fringe may remain on any visible animal pixel. Do not add checkerboard artwork; the PNG itself must carry transparency.\nInvariants: keep exactly two complete wingless bodies at the same size, pose and coordinates as input; right-facing body on the left half, left-facing body on the right half; same olive/brown palette, head, crest, closed mouth, neck, torso, two folded hind legs, separate readable toes/claws, tail and tail fin. Keep both drawings distinct; no software-mirror appearance. Do not redesign or open/close the claws.\nComposition: 1536x1024 landscape sheet, full silhouettes entirely inside frame, no overlap or crop, same central gap and margins.\nAvoid: wings, extra or missing anatomy, fused feet, rescaling, repositioning, background color or scenery, shadows, text, labels, grid, checker pattern, rider, saddle, equipment, glow, watermark.\nOutput one PNG with real alpha transparency and no background.",
+          "references": [
+            {
+              "path": "art-source/v34/vehicles/razorwing/flight-body-layer-r1.png",
+              "sha256": "f74c56a30ae8cfc900252bbd290b28738c82673d42a2097da94c2b552b8fe8f4"
+            }
+          ],
+          "notes": [
+            "Tentative OpenAI alpha conservée pour traçabilité ; ne pas utiliser dans l’atelier.",
+            "Audit Sharp : hasAlpha=false, 0 pixel transparent, 0 pixel partiel, 1 572 864 pixels opaques.",
+            "Rejected for extraction: no actual alpha or declared removable color key."
+          ],
+          "cells": [
+            {
+              "index": 0,
+              "facing": "right",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                0,
+                0,
+                768,
+                1024
+              ],
+              "gridBorderPixels": 3580,
+              "visiblePixels": 786432,
+              "runtimeFrameAccepted": false
+            },
+            {
+              "index": 1,
+              "facing": "left",
+              "phase": "flight-body",
+              "reviewGridRect": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "alpha16Bounds": [
+                768,
+                0,
+                768,
+                1024
+              ],
+              "gridBorderPixels": 3580,
+              "visiblePixels": 786432,
+              "runtimeFrameAccepted": false
+            }
+          ],
+          "runtimeClips": [],
+          "reviewFrames": [],
+          "gameplayImplemented": false
         }
       ],
       "runtimeStatus": "planned",
-      "generatedAssetCount": 1,
+      "generatedAssetCount": 12,
       "acceptedClipCount": 0,
       "productionLore": "Original non-canonical design proposal derived from the requested name and bounded visual brief: Original flying alien mount PROPOSAL with exactly TWO hind legs and TWO bat-like wing forelimbs, leathery ribbed dark olive membranes tightly folded against body in neutral perched identity pose, long narrow toothy reptilian head, hooked talons, thin tail with small stabilizing natural fin. No feathers or extra walking forelegs. Four appendages total, clear folded wing anatomy, no perch rock or platform.",
       "runtimeActionsAccepted": [],

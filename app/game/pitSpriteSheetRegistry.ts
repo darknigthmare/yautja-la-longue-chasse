@@ -7,7 +7,10 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
     "bodyHeightPx": 350,
     "pageBodyHeightPx": {
       "jungle-hunter-idle": 350,
-      "jungle-hunter-light": 333
+      "jungle-hunter-light": 333,
+      "jungle-hunter-v34-hurt": 446,
+      "jungle-hunter-v34-repair-walk-forward-alternation": 440,
+      "jungle-hunter-v34-repair-crouch-planted": 380
     },
     "atlas": {
       "schemaVersion": 1,
@@ -53,6 +56,72 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
               255
             ],
             "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "jungle-hunter-v34-hurt",
+          "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "jungle-hunter-v34-repair-crouch-planted",
+          "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
             "fringe": {
               "mode": "connected-magenta",
               "radius": 2,
@@ -121,7 +190,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 356
               ],
               "pivot": [
-                130.0,
+                130,
                 351
               ],
               "durationTicks": 10
@@ -144,7 +213,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 362
               ],
               "pivot": [
-                131.0,
+                131,
                 357
               ],
               "durationTicks": 10
@@ -172,7 +241,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 362
               ],
               "pivot": [
-                135.0,
+                135,
                 357
               ],
               "durationTicks": 10
@@ -232,7 +301,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 336
               ],
               "pivot": [
-                134.0,
+                134,
                 331
               ],
               "durationTicks": 10
@@ -338,7 +407,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 344
               ],
               "pivot": [
-                139.0,
+                139,
                 339
               ],
               "durationTicks": 10
@@ -356,6 +425,303 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 348
               ],
               "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                431,
+                38,
+                298,
+                449
+              ],
+              "pivot": [
+                151,
+                445
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                784,
+                78,
+                315,
+                409
+              ],
+              "pivot": [
+                175,
+                405
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                1183,
+                46,
+                315,
+                441
+              ],
+              "pivot": [
+                136.5,
+                437
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                40,
+                24,
+                310,
+                463
+              ],
+              "pivot": [
+                146,
+                459
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                407,
+                547,
+                294,
+                431
+              ],
+              "pivot": [
+                143.5,
+                427
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                786,
+                584,
+                306,
+                394
+              ],
+              "pivot": [
+                143.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                1178,
+                557,
+                314,
+                421
+              ],
+              "pivot": [
+                173,
+                417
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "jungle-hunter-v34-hurt",
+              "rect": [
+                34,
+                540,
+                311,
+                437
+              ],
+              "pivot": [
+                165,
+                433
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                41,
+                541,
+                285,
+                437
+              ],
+              "pivot": [
+                146,
+                433
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                432,
+                541,
+                260,
+                434
+              ],
+              "pivot": [
+                144,
+                430
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                775,
+                539,
+                297,
+                436
+              ],
+              "pivot": [
+                176,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                1179,
+                540,
+                288,
+                438
+              ],
+              "pivot": [
+                168,
+                434
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                61,
+                90,
+                280,
+                389
+              ],
+              "pivot": [
+                139.5,
+                385
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                455,
+                128,
+                276,
+                351
+              ],
+              "pivot": [
+                123.5,
+                347
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                830,
+                185,
+                268,
+                296
+              ],
+              "pivot": [
+                121.5,
+                292
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                53,
+                540,
+                292,
+                380
+              ],
+              "pivot": [
+                149.5,
+                376
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                432,
+                571,
+                283,
+                348
+              ],
+              "pivot": [
+                154,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-crouch-planted",
+              "rect": [
+                803,
+                632,
+                268,
+                288
+              ],
+              "pivot": [
+                132.5,
+                284
+              ],
+              "durationTicks": 30
             }
           ]
         }
@@ -504,7 +870,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 459
               ],
               "pivot": [
-                122.0,
+                122,
                 454
               ],
               "durationTicks": 10
@@ -518,7 +884,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 459
               ],
               "pivot": [
-                123.0,
+                123,
                 454
               ],
               "durationTicks": 10
@@ -532,7 +898,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 462
               ],
               "pivot": [
-                122.0,
+                122,
                 457
               ],
               "durationTicks": 10
@@ -546,7 +912,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 459
               ],
               "pivot": [
-                123.0,
+                123,
                 454
               ],
               "durationTicks": 10
@@ -592,7 +958,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 438
               ],
               "pivot": [
-                138.0,
+                138,
                 433
               ],
               "durationTicks": 10
@@ -615,7 +981,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 439
               ],
               "pivot": [
-                138.0,
+                138,
                 434
               ],
               "durationTicks": 10
@@ -629,7 +995,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 442
               ],
               "pivot": [
-                119.0,
+                119,
                 437
               ],
               "durationTicks": 10
@@ -675,7 +1041,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
                 441
               ],
               "pivot": [
-                247.0,
+                247,
                 436
               ],
               "durationTicks": 10
@@ -6690,6 +7056,2580 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
               "pivot": [
                 171,
                 416
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "tracker",
+    "bodyHeightPx": 410,
+    "pageBodyHeightPx": {
+      "tracker-idle": 410,
+      "tracker-repair-walk-backward-contact": 400,
+      "tracker-crouch": 400,
+      "tracker-repair-guard-hand": 425,
+      "tracker-hurt": 423,
+      "tracker-light": 380,
+      "tracker-repair-medium-spacing": 300,
+      "tracker-heavy": 370
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "tracker-pit-v34",
+      "characterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "tracker-idle",
+          "src": "/game/sprites/v34/pit/tracker/tracker-idle-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-repair-walk-backward-contact",
+          "src": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-crouch",
+          "src": "/game/sprites/v34/pit/tracker/tracker-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-repair-guard-hand",
+          "src": "/game/sprites/v34/pit/tracker/tracker-repair-guard-hand-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-hurt",
+          "src": "/game/sprites/v34/pit/tracker/tracker-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-light",
+          "src": "/game/sprites/v34/pit/tracker/tracker-light-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-repair-medium-spacing",
+          "src": "/game/sprites/v34/pit/tracker/tracker-repair-medium-spacing-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "tracker-heavy",
+          "src": "/game/sprites/v34/pit/tracker/tracker-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                74,
+                46,
+                247,
+                415
+              ],
+              "pivot": [
+                129,
+                411
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                444,
+                39,
+                252,
+                422
+              ],
+              "pivot": [
+                138.5,
+                418
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                830,
+                61,
+                240,
+                400
+              ],
+              "pivot": [
+                127.5,
+                396
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                1199,
+                44,
+                252,
+                418
+              ],
+              "pivot": [
+                135,
+                414
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                75,
+                550,
+                257,
+                418
+              ],
+              "pivot": [
+                118.5,
+                414
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                453,
+                543,
+                260,
+                425
+              ],
+              "pivot": [
+                118.5,
+                421
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                839,
+                565,
+                250,
+                403
+              ],
+              "pivot": [
+                118,
+                399
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "tracker-idle",
+              "rect": [
+                1215,
+                551,
+                252,
+                417
+              ],
+              "pivot": [
+                119,
+                413
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                71,
+                63,
+                288,
+                405
+              ],
+              "pivot": [
+                129,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                455,
+                64,
+                264,
+                405
+              ],
+              "pivot": [
+                127,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                829,
+                64,
+                267,
+                407
+              ],
+              "pivot": [
+                134,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1224,
+                65,
+                257,
+                404
+              ],
+              "pivot": [
+                132,
+                400
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                51,
+                554,
+                279,
+                404
+              ],
+              "pivot": [
+                149,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                437,
+                555,
+                266,
+                403
+              ],
+              "pivot": [
+                150,
+                399
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                811,
+                554,
+                269,
+                401
+              ],
+              "pivot": [
+                154,
+                397
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1203,
+                555,
+                258,
+                402
+              ],
+              "pivot": [
+                132,
+                398
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                49,
+                59,
+                277,
+                409
+              ],
+              "pivot": [
+                133,
+                405
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                431,
+                104,
+                287,
+                363
+              ],
+              "pivot": [
+                133,
+                359
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                824,
+                177,
+                289,
+                289
+              ],
+              "pivot": [
+                136,
+                285
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                52,
+                548,
+                287,
+                399
+              ],
+              "pivot": [
+                150,
+                395
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                427,
+                589,
+                281,
+                358
+              ],
+              "pivot": [
+                151.5,
+                354
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-crouch",
+              "rect": [
+                807,
+                664,
+                286,
+                283
+              ],
+              "pivot": [
+                151,
+                279
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                43,
+                47,
+                273,
+                430
+              ],
+              "pivot": [
+                136,
+                426
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                433,
+                47,
+                270,
+                430
+              ],
+              "pivot": [
+                134.5,
+                426
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                814,
+                79,
+                279,
+                397
+              ],
+              "pivot": [
+                139,
+                393
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                1203,
+                47,
+                267,
+                431
+              ],
+              "pivot": [
+                133,
+                427
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                67,
+                552,
+                268,
+                432
+              ],
+              "pivot": [
+                133.5,
+                428
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                446,
+                552,
+                271,
+                432
+              ],
+              "pivot": [
+                135,
+                428
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                829,
+                579,
+                283,
+                404
+              ],
+              "pivot": [
+                141,
+                400
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-repair-guard-hand",
+              "rect": [
+                1214,
+                552,
+                271,
+                432
+              ],
+              "pivot": [
+                135,
+                428
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                38,
+                37,
+                289,
+                427
+              ],
+              "pivot": [
+                146,
+                423
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                811,
+                88,
+                310,
+                376
+              ],
+              "pivot": [
+                182.5,
+                372
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                448,
+                59,
+                288,
+                405
+              ],
+              "pivot": [
+                160.5,
+                401
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                1213,
+                37,
+                285,
+                428
+              ],
+              "pivot": [
+                144,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                37,
+                523,
+                286,
+                426
+              ],
+              "pivot": [
+                140.5,
+                422
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                769,
+                569,
+                309,
+                380
+              ],
+              "pivot": [
+                124.5,
+                376
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                387,
+                549,
+                281,
+                400
+              ],
+              "pivot": [
+                123.5,
+                396
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "tracker-hurt",
+              "rect": [
+                1209,
+                523,
+                289,
+                426
+              ],
+              "pivot": [
+                143,
+                422
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                46,
+                93,
+                269,
+                381
+              ],
+              "pivot": [
+                119.5,
+                377
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                352,
+                96,
+                384,
+                377
+              ],
+              "pivot": [
+                140,
+                373
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                776,
+                98,
+                296,
+                376
+              ],
+              "pivot": [
+                132,
+                372
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                1213,
+                88,
+                257,
+                387
+              ],
+              "pivot": [
+                120,
+                383
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                1210,
+                580,
+                275,
+                375
+              ],
+              "pivot": [
+                148.5,
+                371
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                370,
+                583,
+                390,
+                370
+              ],
+              "pivot": [
+                246.5,
+                366
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                838,
+                583,
+                294,
+                367
+              ],
+              "pivot": [
+                164,
+                363
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "tracker-light",
+              "rect": [
+                36,
+                575,
+                262,
+                379
+              ],
+              "pivot": [
+                138.5,
+                375
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                86,
+                115,
+                205,
+                307
+              ],
+              "pivot": [
+                97,
+                303
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                438,
+                129,
+                342,
+                289
+              ],
+              "pivot": [
+                121.5,
+                285
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                1243,
+                115,
+                181,
+                309
+              ],
+              "pivot": [
+                89.5,
+                305
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                91,
+                593,
+                202,
+                308
+              ],
+              "pivot": [
+                101,
+                304
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                376,
+                601,
+                344,
+                299
+              ],
+              "pivot": [
+                223.5,
+                295
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-medium-spacing",
+              "rect": [
+                1244,
+                590,
+                191,
+                315
+              ],
+              "pivot": [
+                99.5,
+                311
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                55,
+                92,
+                280,
+                362
+              ],
+              "pivot": [
+                131,
+                358
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                407,
+                111,
+                352,
+                339
+              ],
+              "pivot": [
+                153,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                1218,
+                79,
+                232,
+                376
+              ],
+              "pivot": [
+                116.5,
+                372
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                1200,
+                598,
+                280,
+                360
+              ],
+              "pivot": [
+                149,
+                356
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                777,
+                616,
+                353,
+                339
+              ],
+              "pivot": [
+                198.5,
+                335
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-heavy",
+              "rect": [
+                84,
+                582,
+                233,
+                377
+              ],
+              "pivot": [
+                115.5,
+                373
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "greyback",
+    "bodyHeightPx": 424,
+    "pageBodyHeightPx": {
+      "greyback-idle": 424,
+      "greyback-repair-walk-backward-armor": 405,
+      "greyback-crouch": 390,
+      "greyback-guard": 420,
+      "greyback-hurt": 422,
+      "greyback-repair-light-cross": 424,
+      "greyback-repair-medium-pistol": 390,
+      "greyback-heavy": 450
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "greyback-pit-v34",
+      "characterId": "greyback",
+      "variantId": "predator2-1990-elder-unmasked-flintlock",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "greyback-idle",
+          "src": "/game/sprites/v34/pit/greyback/greyback-idle-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-repair-walk-backward-armor",
+          "src": "/game/sprites/v34/pit/greyback/greyback-repair-walk-backward-armor-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-crouch",
+          "src": "/game/sprites/v34/pit/greyback/greyback-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-guard",
+          "src": "/game/sprites/v34/pit/greyback/greyback-guard-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-hurt",
+          "src": "/game/sprites/v34/pit/greyback/greyback-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-repair-light-cross",
+          "src": "/game/sprites/v34/pit/greyback/greyback-repair-light-cross-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-repair-medium-pistol",
+          "src": "/game/sprites/v34/pit/greyback/greyback-repair-medium-pistol-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "greyback-heavy",
+          "src": "/game/sprites/v34/pit/greyback/greyback-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                94,
+                48,
+                250,
+                430
+              ],
+              "pivot": [
+                104,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                480,
+                48,
+                250,
+                430
+              ],
+              "pivot": [
+                101.5,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                852,
+                62,
+                256,
+                416
+              ],
+              "pivot": [
+                109.5,
+                412
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                1245,
+                48,
+                247,
+                430
+              ],
+              "pivot": [
+                102.5,
+                426
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                40,
+                555,
+                249,
+                430
+              ],
+              "pivot": [
+                146.5,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                422,
+                555,
+                251,
+                430
+              ],
+              "pivot": [
+                148,
+                426
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                808,
+                573,
+                253,
+                413
+              ],
+              "pivot": [
+                146.5,
+                409
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "greyback-idle",
+              "rect": [
+                1188,
+                555,
+                249,
+                430
+              ],
+              "pivot": [
+                147,
+                426
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                75,
+                51,
+                277,
+                411
+              ],
+              "pivot": [
+                136,
+                407
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                479,
+                47,
+                231,
+                413
+              ],
+              "pivot": [
+                108,
+                409
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                821,
+                49,
+                270,
+                413
+              ],
+              "pivot": [
+                148,
+                409
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                1222,
+                48,
+                254,
+                413
+              ],
+              "pivot": [
+                138,
+                409
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                38,
+                545,
+                275,
+                407
+              ],
+              "pivot": [
+                148,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                439,
+                544,
+                227,
+                409
+              ],
+              "pivot": [
+                129,
+                405
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                804,
+                543,
+                266,
+                410
+              ],
+              "pivot": [
+                147,
+                406
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "greyback-repair-walk-backward-armor",
+              "rect": [
+                1196,
+                545,
+                254,
+                408
+              ],
+              "pivot": [
+                144,
+                404
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                89,
+                64,
+                266,
+                401
+              ],
+              "pivot": [
+                109.5,
+                397
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                474,
+                112,
+                267,
+                353
+              ],
+              "pivot": [
+                104.5,
+                349
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                849,
+                191,
+                276,
+                274
+              ],
+              "pivot": [
+                106,
+                270
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                36,
+                567,
+                271,
+                378
+              ],
+              "pivot": [
+                156.5,
+                374
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                416,
+                600,
+                266,
+                345
+              ],
+              "pivot": [
+                164,
+                341
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-crouch",
+              "rect": [
+                792,
+                673,
+                274,
+                272
+              ],
+              "pivot": [
+                162.5,
+                268
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                98,
+                64,
+                263,
+                424
+              ],
+              "pivot": [
+                113,
+                420
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                453,
+                64,
+                255,
+                423
+              ],
+              "pivot": [
+                112.5,
+                419
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                791,
+                113,
+                305,
+                374
+              ],
+              "pivot": [
+                142.5,
+                370
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                1210,
+                61,
+                256,
+                426
+              ],
+              "pivot": [
+                112.5,
+                422
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                412,
+                552,
+                253,
+                421
+              ],
+              "pivot": [
+                137,
+                417
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                788,
+                600,
+                306,
+                371
+              ],
+              "pivot": [
+                159,
+                367
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-guard",
+              "rect": [
+                1186,
+                553,
+                255,
+                422
+              ],
+              "pivot": [
+                139,
+                418
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                475,
+                56,
+                261,
+                420
+              ],
+              "pivot": [
+                115.5,
+                416
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                811,
+                82,
+                328,
+                394
+              ],
+              "pivot": [
+                160.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                1251,
+                49,
+                243,
+                428
+              ],
+              "pivot": [
+                103.5,
+                424
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                80,
+                49,
+                261,
+                428
+              ],
+              "pivot": [
+                109,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                417,
+                564,
+                244,
+                423
+              ],
+              "pivot": [
+                142,
+                419
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                753,
+                593,
+                326,
+                394
+              ],
+              "pivot": [
+                166.5,
+                390
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                1195,
+                560,
+                248,
+                428
+              ],
+              "pivot": [
+                139.5,
+                424
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "greyback-hurt",
+              "rect": [
+                42,
+                560,
+                261,
+                428
+              ],
+              "pivot": [
+                150.5,
+                424
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                61,
+                47,
+                270,
+                429
+              ],
+              "pivot": [
+                115,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                428,
+                47,
+                341,
+                430
+              ],
+              "pivot": [
+                132.5,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                836,
+                47,
+                290,
+                430
+              ],
+              "pivot": [
+                124,
+                426
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                1230,
+                47,
+                262,
+                428
+              ],
+              "pivot": [
+                114.5,
+                424
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                42,
+                557,
+                268,
+                430
+              ],
+              "pivot": [
+                145,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                397,
+                556,
+                343,
+                432
+              ],
+              "pivot": [
+                209.5,
+                428
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                821,
+                557,
+                278,
+                431
+              ],
+              "pivot": [
+                150.5,
+                427
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-light-cross",
+              "rect": [
+                1207,
+                557,
+                259,
+                430
+              ],
+              "pivot": [
+                141,
+                426
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                460,
+                54,
+                275,
+                392
+              ],
+              "pivot": [
+                118.5,
+                388
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                786,
+                56,
+                351,
+                396
+              ],
+              "pivot": [
+                122,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                1232,
+                58,
+                239,
+                394
+              ],
+              "pivot": [
+                103,
+                390
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                77,
+                61,
+                261,
+                393
+              ],
+              "pivot": [
+                114,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                414,
+                558,
+                261,
+                393
+              ],
+              "pivot": [
+                138,
+                389
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                755,
+                559,
+                354,
+                398
+              ],
+              "pivot": [
+                230,
+                394
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                1204,
+                560,
+                245,
+                397
+              ],
+              "pivot": [
+                141.5,
+                393
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-repair-medium-pistol",
+              "rect": [
+                48,
+                561,
+                250,
+                396
+              ],
+              "pivot": [
+                139.5,
+                392
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                53,
+                52,
+                301,
+                422
+              ],
+              "pivot": [
+                125.5,
+                418
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                436,
+                74,
+                345,
+                399
+              ],
+              "pivot": [
+                134,
+                395
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                831,
+                47,
+                297,
+                427
+              ],
+              "pivot": [
+                124.5,
+                423
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                1232,
+                17,
+                273,
+                462
+              ],
+              "pivot": [
+                118,
+                458
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                415,
+                557,
+                282,
+                429
+              ],
+              "pivot": [
+                162.5,
+                425
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                760,
+                578,
+                339,
+                407
+              ],
+              "pivot": [
+                204,
+                403
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                1189,
+                568,
+                295,
+                420
+              ],
+              "pivot": [
+                172,
+                416
+              ],
+              "durationTicks": 1
+            },
+            {
+              "pageId": "greyback-heavy",
+              "rect": [
+                29,
+                537,
+                266,
+                451
+              ],
+              "pivot": [
+                148,
+                447
               ],
               "durationTicks": 1
             }

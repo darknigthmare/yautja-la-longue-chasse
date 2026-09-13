@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen integrated",
+  "sourceBytesPreserved": true,
+  "generated": [
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "crouch",
+      "actionId": "crouch",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCES: first image is the existing V5 JUNGLE HUNTER presentation, authoritative identity and gear. Second image is the existing V32 idle sprite sheet, a style/scale reference only. Create new poses, do not copy the idle pose.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nFour sequential CROUCH stages: standing ready, half descent, deep stable crouch, half rise. Hip and knees bend naturally; both feet remain grounded, body/head same scale. Empty hands outside knees, mounted wristblades angled away from thighs. No floating feet or fused hands.",
+      "phase": [
+        "standing ready",
+        "half descent",
+        "deep stable crouch",
+        "half rise"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "authored-review",
+      "notes": [
+        "Eight separate drawings, correct facing and recognizable gear. Deep pose folds a leg behind and may read as a kneel; held crouch requires review or targeted replacement. No runtime approval."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+      "originId": "exec-9e38389d-3c73-413e-80f2-5d6aa3021e82.png",
+      "sha256": "a00ee2490ceba65fe31172e920936a9f280e043afb57acb954fdace10ab680ba",
+      "bytes": 2078024,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "guard",
+      "actionId": "guard",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nHIGH GUARD four sequential poses: arms lift from ready, both forearms form high defensive guard without hiding all face, shoulders absorb a small implied impact, elbows relax back toward guard. Four distinct poses. Empty hands with believable fingers, right mounted blades point safely outward, no weapon held. Feet grounded throughout. No projectile, attacker, sparks or injury.",
+      "phase": [
+        "guard entry",
+        "high guard set",
+        "block absorption",
+        "guard return"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "rejected",
+      "notes": [
+        "Raised blade-gauntlet ends in rails/blades without a readable complete right hand in guard poses. Rejected for hand anatomy; do not approve runtime guard."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-guard-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-guard-v34.png",
+      "originId": "exec-ca0fea13-f52c-4bb5-8ef7-d5aa85d3ab5c.png",
+      "sha256": "edfb956e7a3d0103be4c5d26ff8cc1a90e93798222ed7ee4f357b239bbeb8c77",
+      "bytes": 2277236,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "hurt",
+      "actionId": "hurt",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nHURT reaction without injury: four sequential full body key poses after an implied light impact, upright reaction with head turning slightly, torso recoils backward, knees lower to regain balance, returns toward fighting stance. Do not turn away from opponent. No blood, wound, attacker, graphic content or effects. Coherent joints, complete EMPTY hands, cannon/wristblades rigid on their own mounts.\nThe RIGHT HAND must remain visually separate from the wristblade gauntlet: wrist joint then palm, visible thumb and curled fingers, rails attached to back of forearm, blades parallel OUTSIDE the fingers. Gauntlet cannot terminate directly into blades with no hand.",
+      "phase": [
+        "upright reaction",
+        "small backward recoil",
+        "lower recovery",
+        "regaining stance"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "authored-review",
+      "notes": [
+        "Eight sequential recoil/recovery poses with complete hands and mounted equipment. Source review only; timings/crops not yet accepted."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+      "originId": "exec-fcde8b93-39d3-4641-bf98-94473431b7aa.png",
+      "sha256": "92d1487daffcb26ffbc570472202e6d3e9f9d6ecb0d8b8f6bc5b0b949286d712",
+      "bytes": 2396886,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "medium",
+      "actionId": "medium",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nMEDIUM ATTACK, an original gameplay front kick: four phases, lift the forward knee, extend that leg forward horizontally waist high with heel/toes together, withdraw same leg with knee bent, place same foot back to fighting stance. Opposite foot supports all airborne leg phases. No extra third leg. Hands remain open in guard, wristblades safely away from knee, cannon stays mounted. No opponent, no injury/effects.\nMake the figures SMALL enough to leave wide blank magenta gutters even with fully extended kicking leg. Exactly TWO open complete hands per body, neither gauntlet replaces the hand. Blades mounted on dorsal forearm OUTSIDE fingers.",
+      "phase": [
+        "grounded ready",
+        "front kick chamber",
+        "front kick extension",
+        "leg withdrawal"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "rejected",
+      "notes": [
+        "Front kick phases supplied but right hand is not clearly present beyond the blade gauntlet in multiple poses. Recovery also stops at chamber, no grounded final. Requires hand repair and correct phase mapping."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-medium-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-medium-v34.png",
+      "originId": "exec-279f1d63-cf59-439b-a9b9-c91c1ef0cde8.png",
+      "sha256": "cf02044ca318346e136abbed176c88fd0b6eeb7194267213e633d0d721321c84",
+      "bytes": 2031969,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "heavy",
+      "actionId": "heavy",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nHEAVY ATTACK, original gameplay shoulder/body check: four phases, coil knees and rotate torso modestly; lean forward leading anatomical RIGHT armored shoulder into imagined opponent while both forearms remain bent; recoil torso and shift weight back; grounded return to fighting stance. Feet never leave ground. No jumping or teleport, no extra weapon, no cannon used to strike, no opponent/effects.\nPriority anatomy: keep anatomical RIGHT arm somewhat lowered and held OUTSIDE torso silhouette in all four poses, elbow modestly bent, show entire golden spotted wrist/palm/five curled digits dangling visibly BELOW the armored gauntlet, with two silver blades extending separately to OUTSIDE of the hand. Do not hide that hand in the torso or behind the gauntlet. Both hands empty.",
+      "phase": [
+        "ready",
+        "body-check coil",
+        "forward body-check",
+        "grounded recovery"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "authored-review",
+      "notes": [
+        "Two distinct forward weight shifts between ready/recovery, complete right hand visible outside blade rails. Actual phases relabeled to reflect received drawings. Gameplay move alignment pending."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-heavy-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-heavy-v34.png",
+      "originId": "exec-6579ecf4-c081-45b3-81ea-f44190453f70.png",
+      "sha256": "1cc7db79536519d1999682a71d51b3a4297c1048fc6da87245ac3cff5f7909ff",
+      "bytes": 2410741,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "walk-forward",
+      "actionId": "walk-forward",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nFORWARD WALK four successive gait poses, all still look toward opponent. FIRST near leg is forward and heel contacts ground, far leg behind. SECOND near leg supports body while far leg passes forward bent knee. THIRD far leg is now forward heel contact, near leg behind. FOURTH far leg supports body while near leg passes forward bent knee. MUST alternate NEAR and FAR leg support and contact: poses 1 and 3 show opposite leg leading, NOT the same stance repeated. Same torso height with slight natural bob, feet anchored in contact, arms mild opposing swing, empty hands clear of mounted wristblade rails.\nKeep anatomical right hand low and OUTSIDE body silhouette, visible spotted palm and curled fingers distinct from metal gauntlet; blades extend parallel along outer side of hand, never replacing it.",
+      "phase": [
+        "near leg forward contact",
+        "near leg planted far leg passes",
+        "far leg forward contact",
+        "far leg planted near leg passes"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "rejected",
+      "notes": [
+        "Contacts 1 and 3 repeat the same near leg forward; left-facing passing poses also repeat same support. No full alternating forward walking cycle. Hands readable; cannot label this a valid walk."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-forward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-walk-forward-v34.png",
+      "originId": "exec-010a1047-51a3-473c-8806-89654daeb5fa.png",
+      "sha256": "a941a23776c5511a3f4c6a1c235c3599f660a4f9d3dc32a710e4eb98f18463ff",
+      "bytes": 2226331,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "walk-backward",
+      "actionId": "walk-backward",
+      "prompt": "Use case: stylized-concept. Asset type: independent bitmap animation sheet for THE PIT 2D fighting game. Original fan-made game art.\nREFERENCE: attached existing V5 JUNGLE HUNTER presentation is the identity and equipment reference. Create new articulated game poses, not copies of the presentation.\nExactly 1536x1024 pixels landscape, FOUR columns by TWO rows, EIGHT full-body separate character drawings. Top row sequence faces RIGHT, bottom row sequence independently drawn faces LEFT. No horizontal mirroring: preserve anatomical equipment sides. Slight three-quarter torso allowed but nose, toes and gaze face opponent consistently.\nIdentity: Jungle Hunter film-1987 masked design as the supplied project presentation: smooth silver elongated bio-mask with narrow dark eyes, black dreadlocks with gold bands, yellow-olive spotted skin under black mesh netting over torso and thighs, bronze/silver segmented shoulder/thigh/shin armor, small bone trophy necklace, dark brown belt, rust-red split loincloth. Anatomical LEFT shoulder carries the one compact cylindrical plasma cannon with curved cable/backpack; anatomical RIGHT dorsal forearm carries exactly TWO parallel silver wristblades in mounted rails, separate from the EMPTY complete clawed hand. Left wrist has the armored control gauntlet. No handheld weapon. Five digits when individually visible, exactly two arms/hands/legs/feet. Preserve mounted gear during articulation.\nPolished detailed painted pixel-game bitmap style, clear dark outlines, same scale and proportions every drawing. Each standing body ONLY 265 pixels tall, with all gear at most 300 high, centered in its 384x512 cell; huge empty gutters at least 45 pixels from all cell boundaries, no overlapping silhouettes. Uniform flat chroma key #FF00FF background, no shadows, checkerboard, gradients, floor, scene, lines, labels, text, VFX, extra characters, duplicate limbs or severed fingers.\n\nBACKWARD RETREAT four successive gait poses while gaze/nose remain facing opponent. FIRST near leg behind toe contacts ground, far leg forward. SECOND near rear leg supports while far knee retracts backward under hips. THIRD far leg behind toe contact, near leg forward: this is the OPPOSITE leg contact to first. FOURTH far rear leg supports while near knee retracts backward. Clearly alternate near/far leg contact and support; do not repeat same stance twice. No running, no forward walking relabeled backward. Hands empty and clear of blades; subtle defensive guard.\nThe alternating legs are the main requirement. In pose3 the NEAR thigh and shin sweep visibly BACK behind the hip silhouette, while FAR shin/foot appear toward opponent. This must visibly contrast pose1, not same legs repeated. Two complete empty hands outside blade rails, no gait looping by mirroring.",
+      "phase": [
+        "near leg rear toe contact",
+        "near leg supports far leg retracts",
+        "far leg rear toe contact",
+        "far leg supports near leg retracts"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "rejected",
+      "notes": [
+        "Same rear contact support repeated at poses 1 and 3; left passing pose repeated at 2/4. Right hand concealed/replaced by wristblade gauntlet in several poses. No retreat cycle approval."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-walk-backward-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-walk-backward-v34.png",
+      "originId": "exec-b3392ffa-1c26-42be-be26-0ae65638d888.png",
+      "sha256": "17674b2b878a06240a3e23b5c4f4e00109afeccd5bc480952a09b2d30127d16f",
+      "bytes": 2147099,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-presentation",
+      "id": "repair-walk-forward-alternation",
+      "actionId": "walk-forward",
+      "prompt": "Use case: precise-object-edit. IMAGE1 is the edit target: the 8-pose Jungle Hunter forward walk sheet. IMAGE2 is identity reference only. Correct the LEG CONTACT sequence, not the face, hands, weapons, clothes or style. Preserve entire sheet geometry, 1536x1024, pure #FF00FF background, two rows of four full figures. Top faces RIGHT, bottom faces LEFT. Columns1 and2 BOTH rows must remain unchanged. TOP COLUMN4 remains unchanged. Only redraw both legs in COLUMN3 BOTH rows, and in BOTTOM COLUMN4.\nCOLUMN3 TOP: the NEAR anatomical right thigh/shin sweep BACK toward screenLEFT; its rear toes touch the ground, heel visibly raised. The FAR anatomical left thigh and shin reach FORWARD toward screenRIGHT, front heel contacts ground, toes lifted slightly. Show near thigh overlapping in front of far leg at hips and then moving BACK. This must be opposite to column1, where the near leg was forward. COLUMN3 BOTTOM: independently draw near anatomical LEFT leg BACK toward screenRIGHT, rear toes contact, heel raised; far anatomical RIGHT leg FORWARD toward screenLEFT, front heel contacts. The far knee is clearly visible forward; near thigh sweeps backward to rear ankle. BOTTOM COLUMN4: NEAR left leg is now supporting body almost straight under hip, full foot on ground; FAR right leg swings FORWARD toward screenLEFT with bent knee, foot airborne; near thigh must be the outside layer, far thigh behind. This contrasts column2, where near leg was lifted. No crossing knee into wrong shin, exactly two hips/two knees/two ankles/two feet. Keep all eight upper bodies, heads, complete empty hands, correct right wristblade rails and left shoulder cannons unchanged. No mirrored figures, no extra limbs, labels or arrows.",
+      "phase": [
+        "near leg forward contact",
+        "near leg planted far leg passes",
+        "far leg forward contact",
+        "far leg planted near leg passes"
+      ],
+      "revision": 2,
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "status": "authored-review",
+      "notes": [
+        "Left-facing contact3 and passing4 now visibly change leg support; full left cycle requires renderer review. Right-facing contact3 still repeats near-leg-leading and is rejected for looping. Never mirror the left cycle to claim right-facing coverage."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "originId": "exec-27d7c9f3-3aaf-4b69-983f-f18fe21d63f5.png",
+      "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+      "bytes": 2136880,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "predator-1987-v5-project-presentation",
+      "id": "repair-crouch-planted",
+      "actionId": "crouch",
+      "label": "Crouch — two planted feet correction",
+      "prompt": "Targeted image edit: the FIRST provided image is the exact Jungle Hunter crouch animation sheet to repair; SECOND is this project's historical V5 identity reference. Edit ONLY column THREE in BOTH ROWS of the first 1536x1024 sheet. Keep the other SIX drawings, margins, color palette, flat solid magenta background #FF00FF, camera and 4 columns x2 rows layout unchanged. The third drawing must be a real LOW TWO-FOOT SQUAT, not kneeling: BOTH feet entirely grounded on the same horizontal baseline as the other drawings; both shins largely VERTICAL, both knees bent forward/up at approximately90degrees, hips dropped BETWEEN the legs to crouch. NO knee on floor, NO folded horizontal shin below the body, NO foot hidden or missing. Standing reference body height approx390sourcepixels; squat head-to-floor approx275pixels (70%). Top row independently drawn facingRIGHT, lower row independently drawn facingLEFT. Two complete arms, two legs, two clawed feet, two readable hands. Both hands remain separated from knees and equipment, empty; right hand visible below exactlyTWO mounted dorsal right-gauntlet wrist blades. No handheld sword or additional limbs. Preserve V5 Jungle Hunter gray-silver plain mask, dark dreadlocks with gold rings, golden spotted skin under dark mesh, silver segmented leg armor, necklace, reddish brown loincloth, shoulder cannon and all mounting sides. This is fan-made project art not a claim of official1:1 film reproduction. Anatomical equipment sides remain consistent across independently redrawn facing views. Do not touch any other six poses; no text, labels, floor, shadows, checkerboard or background effects.",
+      "phase": [
+        "ready",
+        "entry",
+        "deep planted squat",
+        "rise"
+      ],
+      "referencePath": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "referenceInputs": [
+        "public/game/sprites/v34/pit/jungle-hunter/jungle-hunter-crouch-v34.png",
+        "public/game/sprites/v5/film-plates/jungle-hunter.png"
+      ],
+      "status": "authored-review",
+      "notes": [
+        "Targeted correction now plants both feet and removes kneeling, with readable hands and mounted wristblades. Candidate only pending pixel and native Canvas QA."
+      ],
+      "sourcePath": "art-source/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+      "originId": "exec-96f8d5b6-d70a-4d51-b72a-fc6bbc7c22fb.png",
+      "sha256": "4a37c009da8e45e5cd48d9c47ca1aeefd47e0c508f43bb4238bcc9e61cedc898",
+      "bytes": 2062019,
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "reviewStatusMeaning": "Historical generation-stage notes; final statuses and exact frames are in production provenance.",
+  "finalReviewPath": "art-source/v34/pit/jungle-hunter/jungle-hunter-production-provenance-v34.json"
+}

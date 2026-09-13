@@ -158,14 +158,14 @@
 .replayNotice { position: relative; z-index: 2; width: min(760px, calc(100% - 32px)); margin: 12px auto 0; color: #ffd98a; text-align: center; font-size: .72rem; }
 .selectionFootnote { position: relative; margin: 12px auto 26px; color: var(--pit-dim); text-align: center; font-size: .7rem; }
 
-.matchRoot { display: flex; flex-direction: column; overflow: hidden; background: #030504; }
+.matchRoot { --pit-stage-width: 100vw; --pit-lab-width: 330px; display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; background: #030504; }
 .matchHeader { flex: 0 0 auto; align-items: center; padding: 8px 14px; color: var(--pit-dim); background: #070b09; font-size: .68rem; font-weight: 900; letter-spacing: .16em; }
 .utilityButton { min-height: 32px; padding: 5px 10px; font-size: .64rem; }
-.replayNoticeMatch { position: relative; z-index: 8; margin: 0; padding: 5px 12px; color: #ffd98a; background: #261b0d; text-align: center; font-size: .68rem; }
+.replayNoticeMatch { flex: 0 0 auto; position: relative; z-index: 8; margin: 0; padding: 5px 12px; color: #ffd98a; background: #261b0d; text-align: center; font-size: .68rem; }
 .descentMatchStatus { position: relative; z-index: 6; display: flex; flex: 0 0 auto; gap: 10px; align-items: center; padding: 6px 14px; overflow: hidden; border-top: 1px solid rgba(114,216,194,.18); border-bottom: 1px solid rgba(114,216,194,.24); color: var(--pit-dim); background: #07100e; font-size: .52rem; letter-spacing: .06em; white-space: nowrap; }
 .descentMatchStatus strong { color: var(--pit-gold); }
 .descentMatchStatus span { overflow: hidden; text-overflow: ellipsis; }
-.hud { position: relative; z-index: 5; display: grid; grid-template-columns: minmax(0,1fr) 96px minmax(0,1fr); gap: 12px; align-items: start; padding: 10px clamp(10px,3vw,34px) 8px; background: linear-gradient(#0a0f0d, #050706); }
+.hud { flex: 0 0 auto; position: relative; z-index: 5; display: grid; grid-template-columns: minmax(0,1fr) 96px minmax(0,1fr); gap: 12px; align-items: start; padding: 10px clamp(10px,3vw,34px) 8px; background: linear-gradient(#0a0f0d, #050706); }
 .fighterHud > div:first-child { display: flex; justify-content: space-between; gap: 10px; font-size: .72rem; letter-spacing: .08em; }.fighterHud > div:first-child span { color: var(--pit-dim); font-size: .56rem; }
 .fighterHudRight > div:first-child { flex-direction: row-reverse; }.fighterHudRight .healthTrack i { margin-left: auto; }.fighterHudRight .roundPips { justify-content: flex-end; }
 .healthTrack { height: 17px; margin-top: 5px; padding: 3px; border: 1px solid rgba(239,221,177,.33); background: #17100f; }.healthTrack i { display: block; height: 100%; background: linear-gradient(90deg,#7fcf7b,#d2c961); transition: width 80ms linear; }
@@ -182,9 +182,25 @@
 .roundPips { display: flex; gap: 5px; margin-top: 5px; }.roundPips i { width: 15px; height: 5px; border: 1px solid var(--pit-gold); }.roundPips i.won { background: var(--pit-gold); box-shadow: 0 0 8px rgba(212,169,93,.5); }
 .timer { display: grid; place-items: center; color: var(--pit-gold); }.timer small { font-size: .52rem; letter-spacing: .1em; }.timer strong { font-size: 2rem; line-height: 1; }
 
-.arenaShell { position: relative; min-height: 0; flex: 1 1 auto; overflow: hidden; transition: transform 35ms linear; background: #050706; }
+/* Keep the actual canvas box and its overlays at the simulation's 16:9 ratio.
+   Height is shared with the HUD; the width cap also handles portrait screens. */
+.arenaShell {
+  position: relative;
+  flex: 1 0 0;
+  align-self: center;
+  width: auto;
+  max-width: 100%;
+  min-height: min(180px, calc(var(--pit-stage-width) * 9 / 16));
+  max-height: calc(var(--pit-stage-width) * 9 / 16);
+  aspect-ratio: 16 / 9;
+  margin-block: auto;
+  overflow: hidden;
+  outline: 1px solid rgba(114,216,194,.22);
+  transition: transform 35ms linear;
+  background: #050706;
+}
 .descentBlackMist { position: absolute; z-index: 1; inset: 0; background: radial-gradient(circle at 50% 58%, rgba(4,10,8,.12) 0 18%, rgba(2,8,7,.72) 62%, #010302 100%); pointer-events: none; transition: opacity 90ms linear; }
-.canvas { display: block; width: 100%; height: 100%; min-height: 300px; object-fit: contain; background: #060807; }
+.canvas { display: block; width: 100%; height: 100%; min-height: 0; aspect-ratio: 16 / 9; object-fit: contain; background: #060807; }
 .announcement { position: absolute; z-index: 2; top: 18px; left: 50%; padding: 5px 12px; transform: translateX(-50%); color: var(--pit-gold); background: rgba(0,0,0,.55); font-size: clamp(.62rem,1.5vw,.8rem); font-weight: 900; letter-spacing: .14em; pointer-events: none; }
 .combo { position: absolute; z-index: 2; top: 25%; color: #fff2bd; font-size: clamp(2rem,6vw,5.4rem); font-weight: 1000; font-style: italic; text-shadow: 0 3px 0 #703a22; }.combo small { display: block; font-size: .18em; letter-spacing: .2em; }.comboLeft { left: 7%; }.comboRight { right: 7%; text-align: right; }
 .hitboxToggle { position: absolute; right: 12px; bottom: 12px; padding: 7px 10px; color: #8fffe1; background: rgba(0,0,0,.72); font-size: .7rem; }
@@ -207,7 +223,7 @@
 .touchRows { position: absolute; z-index: 10; right: 12px; bottom: 70px; left: 12px; display: flex; justify-content: space-between; gap: 10px; pointer-events: none; }.touchGroup { display: flex; flex-wrap: wrap; gap: 5px; max-width: 310px; pointer-events: auto; }.touchButton { min-width: 42px; min-height: 42px; padding: 5px 8px; border-color: rgba(114,216,194,.35); border-radius: 4px; background: rgba(3,9,8,.72); color: #dffcf4; font-size: .64rem; font-weight: 900; touch-action: none; user-select: none; }.touchButton:active { color: #08100e; background: #72d8c2; }.touchButtonWide { min-width: 58px; }.touchGroupPlayerTwo { position: absolute; right: 0; bottom: 52px; justify-content: flex-end; opacity: .86; }
 
 @media (max-width: 760px) {
-  .selectionHeader { align-items: flex-start; }.selectionHeader h2 { font-size: 3rem; }.versusGrid { grid-template-columns: 1fr 52px 1fr; gap: 6px; }.fighterCard { min-height: 228px; padding: 12px; }.fighterCard h3 { margin-top: 8px; font-size: 1rem; overflow-wrap: anywhere; }.fighterMedia { height: clamp(170px, 30vh, 240px); }.fighterCard p { font-size: .65rem; }.fighterCard dl { gap: 8px; flex-wrap: wrap; }.fighterCard dd { font-size: .7rem; }.fighterMedia .maskGlyph { transform: translate(-50%, -50%) scale(.76); transform-origin: center; }.modeGrid { grid-template-columns: 1fr; }.hud { grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }.fighterHud > div:first-child span { display: none; }.fighterHud > div:first-child strong { font-size: .55rem; }.timer strong { font-size: 1.4rem; }.helpPanel { grid-template-columns: 1fr; max-height: 112px; overflow: auto; }.touchRows { bottom: 125px; }.canvas { min-height: 250px; }
+  .selectionHeader { align-items: flex-start; }.selectionHeader h2 { font-size: 3rem; }.versusGrid { grid-template-columns: 1fr 52px 1fr; gap: 6px; }.fighterCard { min-height: 228px; padding: 12px; }.fighterCard h3 { margin-top: 8px; font-size: 1rem; overflow-wrap: anywhere; }.fighterMedia { height: clamp(170px, 30vh, 240px); }.fighterCard p { font-size: .65rem; }.fighterCard dl { gap: 8px; flex-wrap: wrap; }.fighterCard dd { font-size: .7rem; }.fighterMedia .maskGlyph { transform: translate(-50%, -50%) scale(.76); transform-origin: center; }.modeGrid { grid-template-columns: 1fr; }.hud { grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }.fighterHud > div:first-child span { display: none; }.fighterHud > div:first-child strong { font-size: .55rem; }.timer strong { font-size: 1.4rem; }.helpPanel { grid-template-columns: 1fr; max-height: 112px; overflow: auto; }.touchRows { bottom: 125px; }
 }
 
 @media (max-width: 760px) {
@@ -255,18 +271,18 @@
 .fighterKeyArt[data-native-facing="right"][data-facing="left"] { transform: scaleX(-1); }
 .fighterArtNotice { display: block; margin-top: 7px; color: var(--pit-dim); font-size: .7rem; }
 /* Inline status occupies its own row; it never overlays the arena or input controls. */
-.bitmapArtStatus { position: relative; display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: center; width: min(1200px, calc(100% - 24px)); margin: 0 auto 8px; font-size: .65rem; line-height: 1.45; color: var(--pit-dim); }
+.bitmapArtStatus { flex: 0 0 auto; position: relative; display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: center; width: min(1200px, calc(100% - 24px)); margin: 0 auto 8px; font-size: .65rem; line-height: 1.45; color: var(--pit-dim); }
 .bitmapArtStatus > span { border: 1px solid #477566; border-radius: 3px; padding: 3px 7px; color: #c2e3d9; background: #0d1915; }
 .bitmapArtStatus > span[data-pit-bitmap-status="missing"] { border-color: #a77f51; color: #e5bf91; }
 .bitmapArtStatus > small { flex: 0 0 100%; font-size: .65rem; }
 
-.throwTechStatus { padding: 7px 12px; min-height: 36px; font-size: 12px; line-height: 1.5; color: #c6cec7; background: #111a18; border: 1px solid #314c42; }
+.throwTechStatus { flex: 0 0 auto; padding: 7px 12px; min-height: 36px; font-size: 12px; line-height: 1.5; color: #c6cec7; background: #111a18; border: 1px solid #314c42; }
 .throwTechStatus[data-active="true"] { color: #fff0b7; background: #332914; border-color: #d9bb60; }
 .throwTechStatus strong { margin-right: 10px; }
 
 /* Touch controls own a row between the arena and laboratory; never cover lesson text. */
 .matchRoot:has(.touchRows) { overflow-y: auto; }
-.matchRoot:has(.touchRows) .arenaShell { flex: 1 0 250px; }
+.matchRoot:has(.touchRows) .arenaShell { flex: 1 0 0; }
 .touchRows { position: relative; inset: auto; flex: 0 0 auto; flex-wrap: wrap; justify-content: center; padding: 8px; background: #07100e; border-top: 1px solid #314c42; }
 .touchGroupPlayerTwo { position: relative; inset: auto; flex-basis: 100%; max-width: none; justify-content: center; }
 
@@ -347,4 +363,39 @@
 @media (max-width: 720px) {
   .arenaCatalogue > summary { align-items: flex-start; flex-direction: column; gap: 6px; }
   .catalogueWaves { grid-template-columns: 1fr; max-height: 360px; }
+}
+
+
+/* A side laboratory preserves the combat height on desktop. Its controls still
+   scroll independently; portrait screens keep the laboratory below the arena. */
+@media (min-width: 1000px) {
+  .matchRoot:has(.trainingTools) {
+    --pit-stage-width: calc(100vw - var(--pit-lab-width));
+    padding-right: var(--pit-lab-width);
+  }
+  .trainingTools {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--pit-lab-width);
+    height: 100%;
+    max-height: none;
+    align-content: start;
+    border-width: 0 0 0 1px;
+  }
+  .trainingOptions { grid-template-columns: minmax(0,1fr); }
+}
+
+@media (max-width: 760px) {
+  .matchHeader { flex-wrap: wrap; gap: 6px; }
+  .matchHeader > span { flex-basis: 100%; order: -1; text-align: center; }
+  .matchHeader > button { flex: 1 1 auto; }
+  .matchRoot .arenaShell, .matchRoot:has(.touchRows) .arenaShell { flex: 0 0 auto; width: 100%; height: auto; min-height: 0; max-height: none; margin-block: 0; }
+  /* Optional frame data occupies the upper architecture, clear of the fighters. */
+  .frameDataPanel { top: 4px; left: 4px; width: calc(100% - 8px); gap: 4px; }
+  .frameDataPanel article { padding: 3px 5px; }
+  .frameDataPanel strong { font-size: .46rem; }
+  .frameDataPanel span { margin-top: 1px; font-size: .44rem; line-height: 1.15; }
+  .announcement { top: 48px; max-width: calc(100% - 8px); font-size: .48rem; }
 }

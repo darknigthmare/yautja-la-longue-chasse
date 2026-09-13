@@ -162,7 +162,7 @@ try {
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
-  await page.getByText(/12 combattants sélectionnables · 8 arènes jouables · catalogue de production : 100 stages/).waitFor();
+  await page.getByText(/14 combattants sélectionnables · 20 arènes jouables · catalogue de production : 100 stages/).waitFor();
   await page.getByRole("radio", { name: /Entraînement/ }).click();
   await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
@@ -177,6 +177,37 @@ try {
   assert.equal(await pitCanvas.getAttribute("data-pit-arena-missing-assets"), "0");
   await captureWindow(instance, "pit-combat-pc.png");
   checks.push("Hub to THE PIT loads locally with authored Jungle Hunter and Berserker animations.");
+
+  for (const scenario of [
+    { arenaId: "arena-009-quais-du-premier-sang", player: "tracker", opponent: "greyback" },
+    { arenaId: "arena-020-trone-fracture", player: "greyback", opponent: "tracker" },
+  ]) {
+    await page.getByRole("button", { name: /^Quitter ·/ }).click();
+    await page.getByRole("combobox", { name: "Combattant joueur", exact: true }).selectOption(scenario.player);
+    await page.getByRole("combobox", { name: "Adversaire", exact: true }).selectOption(scenario.opponent);
+    await page.getByRole("combobox", { name: "Arène", exact: true }).selectOption(scenario.arenaId);
+    for (const modeLabel of [/Arcade individuel/, /Circuit du clan/, /Descente/]) {
+      assert.equal(await page.getByRole("radio", { name: modeLabel }).isDisabled(), true);
+    }
+    await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
+    await page.clock.runFor(250);
+    const extensionCanvas = page.locator('canvas[data-pit-arena-id="' + scenario.arenaId + '"]');
+    await extensionCanvas.locator('xpath=self::*[@data-pit-arena-art-status="bitmap"]').waitFor();
+    assert.equal(await extensionCanvas.getAttribute("data-pit-arena-loaded-images"), "14");
+    assert.equal(await extensionCanvas.getAttribute("data-pit-arena-planes"), "P0,P1,P2,P3,P4,P5");
+    assert.equal(await extensionCanvas.getAttribute("data-pit-arena-missing-assets"), "0");
+    for (const [slot, fighterId] of [scenario.player, scenario.opponent].entries()) {
+      await page.locator('[data-pit-bitmap-slot="' + slot + '"][data-pit-bitmap-id="' + fighterId + '"][data-pit-bitmap-status="sprite-sheet-animation"]').waitFor();
+    }
+    const before = Number(await page.locator("[data-pit-frame]").first().getAttribute("data-pit-frame"));
+    await page.keyboard.down("ArrowRight");
+    await page.clock.runFor(350);
+    await page.keyboard.up("ArrowRight");
+    assert(Number(await page.locator("[data-pit-frame]").first().getAttribute("data-pit-frame")) > before);
+    await captureWindow(instance, "pit-pc-" + scenario.arenaId + ".png");
+    checks.push("Packaged extension duel " + scenario.player + "/" + scenario.opponent + " on " + scenario.arenaId + ": 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.");
+  }
+
 
   await page.goto("yautja://game/");
   await page.getByRole("button", { name: "Jouer", exact: true }).click();
