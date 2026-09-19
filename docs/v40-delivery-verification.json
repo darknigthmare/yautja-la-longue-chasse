@@ -1,0 +1,510 @@
+{
+  "version": "V40",
+  "checkedAt": "2026-09-19T20:39:48.730Z",
+  "status": "published-and-verified",
+  "production": {
+    "deploymentId": "dpl_GYLRPLqM67vMUydoY8RoQ6m9TVFz",
+    "state": "READY",
+    "gitCommit": "9ba877c503b6c776c78df6415f9cd148cfcd069e",
+    "branch": "main",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentUrl": "https://yautja-la-longue-chasse-pcshijm1m-darknigthmares-projects.vercel.app",
+    "framework": "nextjs",
+    "verificationMethod": "Vercel exact commit READY and production alias, followed by three public browser suites and asset HTTP/SHA-256 verification"
+  },
+  "localCommands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1318,
+      "passed": 1318,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "art": {
+      "passed": true,
+      "version": "V40",
+      "checkedAt": "2026-09-19T20:39:00.278Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "labChecks": [
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        },
+        {
+          "fighter": "scar",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Browser input only, no complete moveset or physical hardware certification.",
+        "Scar reuses eight existing retreat drawings in reverse order; no new Scar image is claimed.",
+        "Machiko guards are held defensive poses, not blockstun or low guard."
+      ]
+    },
+    "pitControls": {
+      "passed": true,
+      "version": "V40",
+      "checkedAt": "2026-09-19T20:38:02.251Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app/",
+      "input": "virtual-standard-gamepads-and-real-DOM-callbacks",
+      "physicalControllerCertified": false,
+      "checks": [
+        {
+          "name": "identical-opponent-rejected",
+          "fighterId": "machiko-noguchi",
+          "validOpponentPreserved": "theta",
+          "enteredCombat": true
+        },
+        {
+          "name": "identical-opponent-rejected",
+          "fighterId": "scar",
+          "validOpponentPreserved": "theta",
+          "enteredCombat": true
+        },
+        {
+          "name": "changing-J1-preserves-distinct-opponent",
+          "fighterId": "theta"
+        },
+        {
+          "name": "sparse-pad-menu-to-combat",
+          "browserSlot": 2,
+          "role": "J1",
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "commands-pointer",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "laboratory-keyboard",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "commands-touch",
+          "focusRestored": true,
+          "heldGuardPurged": true,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "sparse-pad-briefing",
+          "browserSlot": 2,
+          "explicitStart": true
+        },
+        {
+          "name": "two-sparse-pads-and-J1-loss",
+          "J1slot": 1,
+          "J2slot": 3,
+          "localOne": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ],
+          "localTwo": [
+            [],
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ]
+          ],
+          "afterDisconnect": [
+            [],
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ]
+          ],
+          "noRolePromotion": true
+        },
+        {
+          "name": "reconnect-and-J2-loss",
+          "heldInputSuppressed": true,
+          "reconnected": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ],
+          "afterJ2Disconnect": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "explicit-selection-reassigns-roles",
+          "newJ1slot": 3,
+          "phases": [
+            [
+              "STARTUP",
+              "ACTIVE",
+              "RECOVERY"
+            ],
+            []
+          ]
+        },
+        {
+          "name": "existing-save-unchanged",
+          "localStorageWrites": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    "ashExpedition": {
+      "passed": true,
+      "expectedVersion": "V40",
+      "checkedAt": "2026-09-19T20:37:55.793Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": [
+        "Entered the city, physically reached and inspected the convoy trophy, then used the real unlocked Ash door; no seeded progression.",
+        "Connected pad in slot 2: held connection inputs blocked, neutral then intentional stick moves actor.",
+        "Start pauses and resumes after release, without replaying a held direction.",
+        "B opens confirmation safely, Down cycles real choices, A continues once and B cancels without movement or auto-abandon.",
+        "Outside focus/settings cannot control expedition; P remapped through real UI pauses/resumes even from focused modal button, repeat ignored.",
+        "Window inactivity resumes intentionally; real movement plus X/Y inspect the nearby true trail, without awarding an unreported mission.",
+        "At 390px no horizontal overflow; deliberate B → Down → A abandons and returns to the actual city, preserving durable progression."
+      ],
+      "routeEvidence": [
+        {
+          "from": {
+            "x": 430,
+            "y": 2210
+          },
+          "target": {
+            "x": 1040,
+            "y": 1970
+          },
+          "actual": {
+            "x": 1027,
+            "y": 2004
+          },
+          "waypoints": 28
+        },
+        {
+          "from": {
+            "x": 1027,
+            "y": 2004
+          },
+          "target": {
+            "x": 970,
+            "y": 1770
+          },
+          "actual": {
+            "x": 975,
+            "y": 1797
+          },
+          "waypoints": 11
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Real city-to-Ash expedition route, isolated profile and virtual pad in slot 2; no saved-state injection, no hardware controller certification. Unit callbacks separately cover report failure/saving states.",
+      "visualInspection": {
+        "reviewed": true,
+        "captures": [
+          "ash-controls-1280.png",
+          "ash-controls-390.png"
+        ],
+        "observations": [
+          "Terrain, personnage, trace inspectée et commandes visibles dans les captures publiques.",
+          "À 390 px, boutons disposés sur plusieurs lignes sans débordement horizontal.",
+          "Cadrage et art existants inchangés ; aucune certification matérielle ni nouvelle couverture d’animation annoncée."
+        ]
+      }
+    }
+  },
+  "assets": {
+    "schemaVersion": 1,
+    "passed": true,
+    "startedAt": "2026-09-19T20:38:04.567Z",
+    "baseUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "expectedReleaseCommit": "9ba877c503b6c776c78df6415f9cd148cfcd069e",
+    "expectedDeployment": "dpl_GYLRPLqM67vMUydoY8RoQ6m9TVFz",
+    "readySignalReceived": true,
+    "scope": "Anonymous public HTTP and in-memory SHA verification only. Browser playability is verified separately.",
+    "routes": [
+      {
+        "path": "/",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 48186,
+        "sha256": "be40b31827be5da4d91bff497c65660273734a3d54f8877e0ce3a5f37edaabd5",
+        "vercelRequestId": "cdg1::iad1::65nf2-1789850285819-a7b752400c70",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "Yautja",
+          "La Longue Chasse"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/pit-lab",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 15819,
+        "sha256": "b922d37cb8c533035ef372791f30eb689b7b82e713ff5093e2a540a2e72b23fd",
+        "vercelRequestId": "cdg1::iad1::rsrng-1789850285816-b910671ef036",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "data-pit-production-lab",
+          "Machiko Noguchi",
+          "Theta",
+          "/game/assets/v34/production-review/index.html"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/game/assets/v34/production-review/index.html",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 5519,
+        "sha256": "bcb7ecaa2c844336dbb0ca30138de3d14309e69b32a494e7ae505707a6a0def7",
+        "vercelRequestId": "cdg1::gjjk4-1789850285820-27ab8c99b139",
+        "vercelCache": "MISS",
+        "etag": "W/\"6363a153057c1032a66321f3f20057b1\"",
+        "checkedMarkers": [
+          "Atelier OpenAI",
+          "coverage-hunters",
+          "./review.js"
+        ],
+        "passed": true
+      }
+    ],
+    "manifest": {
+      "path": "/game/assets/v34/production-review/manifest.json",
+      "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 858051,
+      "sha256": "18b2f6962508ef6afe1dc6432c84e0243565b485356ee986d3b4bd8a8be9fd61",
+      "vercelRequestId": "cdg1::65nf2-1789850286705-619242cf4ae8",
+      "vercelCache": "MISS",
+      "etag": "W/\"6675bfe718b5bb021d57701bf3039914\"",
+      "localSha256": "18b2f6962508ef6afe1dc6432c84e0243565b485356ee986d3b4bd8a8be9fd61",
+      "equalsLocal": true,
+      "entryCount": 551,
+      "coverage": {
+        "completeGameImplied": false,
+        "arenas": {
+          "requested": 100,
+          "playable": 20,
+          "reviewedKits": 20,
+          "selectedSourceImages": 288
+        },
+        "hunters": {
+          "runtimeFighters": 11,
+          "validatedClips": 263,
+          "initialFamiliesPerDesign": 10,
+          "completeMovesets": 0
+        },
+        "vehicles": {
+          "requested": 50,
+          "entriesWithSourceArt": 50,
+          "entriesWithNonRejectedDrafts": 50,
+          "acceptedAnimationClips": 0,
+          "rideableVehicles": 0
+        }
+      },
+      "allCandidateAssetsPresent": true,
+      "passed": true
+    },
+    "assets": [
+      {
+        "path": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2147132,
+        "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+        "vercelRequestId": "cdg1::kntxt-1789850286937-40768302fb8b",
+        "vercelCache": "MISS",
+        "etag": "\"95053265aad721a03d0013d9f856e577\"",
+        "localSha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+        "provenanceSha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+        "provenancePath": "docs/art/v40/scar/provenance.json",
+        "fighterId": "scar",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1586420,
+        "sha256": "cb1039609eb409aa1237cd1e59dd7f36e8a322ca9fe553cf37ec0d661267a51b",
+        "vercelRequestId": "cdg1::xw2fg-1789850286936-4bf60b9b18f6",
+        "vercelCache": "MISS",
+        "etag": "\"db8006c60cc023ef74c024233b25768c\"",
+        "localSha256": "cb1039609eb409aa1237cd1e59dd7f36e8a322ca9fe553cf37ec0d661267a51b",
+        "provenanceSha256": "cb1039609eb409aa1237cd1e59dd7f36e8a322ca9fe553cf37ec0d661267a51b",
+        "provenancePath": "docs/art/v40/machiko-noguchi/provenance.json",
+        "fighterId": "machiko-noguchi",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "persistentPngDownloads": 0,
+    "localCommitAtVerification": "9ba877c503b6c776c78df6415f9cd148cfcd069e",
+    "expectedUniquePngPages": 2,
+    "finishedAt": "2026-09-19T20:38:06.453Z",
+    "totalVerifiedPngBytes": 3733552
+  },
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 263,
+    "addedClips": 4,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "generationAttempts": 3,
+    "newSelectedSourceImages": 1,
+    "newDrawings": 4,
+    "reusedScarDrawings": 8,
+    "reviewSourceImages": 551
+  },
+  "visualReview": {
+    "machikoHandsWeaponCannonAndNativeLightDark": true,
+    "machikoBothGuardsInCombat": true,
+    "scarBothAdvancesStopRetreat": true,
+    "panelsMobile390": true
+  },
+  "limitations": [
+    "Machiko high guard only; no low guard or blockstun clip. Rifle and cannon remain slightly bulkier than V34.",
+    "Scar walk reuses existing retreat drawings in reverse order with the original coarse four-frame cadence.",
+    "Exact 1:1 official fidelity, full movesets, physical controller and Steam Deck certification are not claimed.",
+    "Windows portable remains V35.",
+    "Twenty playable arenas remain distinct from the one hundred requested. Youth campaign, Berceau and rideable vehicles remain outstanding.",
+    "Private ChatGPT access is still deferred at the owner request."
+  ]
+}
