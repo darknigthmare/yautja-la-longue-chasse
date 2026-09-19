@@ -8,6 +8,8 @@ import {
   evaluateChroniclePromotion, migrateV35ClanChronicle,
 } from "./systems/clanChronicle";
 import styles from "./ClanChroniclePanel.module.css";
+import TribeArtGallery from "./TribeArtGallery";
+import tribeArt from "./tribeArtV37.json";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -30,6 +32,14 @@ const preserves = [
 ] as const;
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
 
+
+const regionSourceNames: Record<string, string> = { "Désert": "HOMEWORLD_DESERT_V2.png", "Forêt": "HOMEWORLD_FOREST_V2.png", "Slums": "HOMEWORLD_SLUMS_V2.png", "Lava": "HOMEWORLD_LAVA_V2.png", "Darkjungle": "HOMEWORLD_DARKJUNGLE_V2.png" };
+const sourceArtByName = new Map(tribeArt.assets.map(asset => [asset.sourceName, asset]));
+function HomeworldRegionArt({ name }: { name: string }) {
+  const art = sourceArtByName.get(regionSourceNames[name]);
+  return art ? <img className={styles.regionArt} src={art.thumbnailSrc} alt={"Illustration de la tribu " + name + " · source V2, niveau non livré"} width={320} height={220} loading="lazy" decoding="async" /> : null;
+}
+
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
 export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; onClose: () => void }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans">("journey");
@@ -39,12 +49,12 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
     const search = fold(query.trim());
     return concepts.entries.filter(entry => fold(`${entry.id} ${entry.profile} ${entry.weapon}`).includes(search));
   }, [query]);
-  return <section className={styles.panel} aria-labelledby="chronicle-title" data-clan-chronicle="design-v36" data-chronicle-write-policy="read-only">
+  return <section className={styles.panel} aria-labelledby="chronicle-title" data-clan-chronicle="design-v37" data-chronicle-write-policy="read-only">
     <header className={styles.header}>
-      <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V36</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
+      <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V37</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
       <button type="button" onClick={onClose}>Retour au menu</button>
     </header>
-    <p className={styles.notice}><strong>Parcours en conception, pas encore jouable.</strong> Ce dossier rassemble les nouvelles règles et les fiches récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. « Jouer » conserve la campagne existante.</p>
+    <p className={styles.notice}><strong>Parcours en conception, pas encore jouable.</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. « Jouer » conserve la campagne existante.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
@@ -79,7 +89,8 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
     {section === "worlds" && <div>
       <h3 className={styles.subheading}>Homeworld · cinq familles confirmées</h3>
       <p>Chaque famille prévoit une zone de chasse, un mini-hub tribal habité et un territoire Élite séparé. Tous les territoires Élite demandent le rang Élite.</p>
-      <div className={styles.cards}>{regions.map(([name, rank, description]) => <article key={name} tabIndex={0}><span className={styles.badge}>{rank} · normal et tribal</span><h4>{name}</h4><p>{description}</p></article>)}</div>
+      <div className={styles.cards}>{regions.map(([name, rank, description]) => <article key={name} tabIndex={0}><HomeworldRegionArt name={name} /><span className={styles.badge}>{rank} · normal et tribal</span><h4>{name}</h4><p>{description}</p></article>)}</div>
+      <TribeArtGallery />
       <h3 className={styles.subheading}>Dix réserves proposées · quatre-vingts secteurs à construire</h3>
       <p>Les noms et géographies ci-dessous sont des créations proposées pour le jeu. Chaque réserve prévoit huit secteurs reliés et deux voies d’évasion à préparer. Ce ne sont pas les arènes de THE PIT ni un Battle Royale à 100 joueurs.</p>
       <div className={styles.cards}>{preserves.map(([name, biome, layout]) => <article key={name} tabIndex={0}><span className={styles.badge}>Non jouable</span><h4>{name} · {biome}</h4><p>{layout}.</p></article>)}</div>

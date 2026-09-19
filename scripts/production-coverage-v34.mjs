@@ -30,7 +30,7 @@ export function productionCoverage(entries, stages) {
     completeGameImplied: false,
     arenas: { requested: stages.length, playable: stages.filter(stage => stage.runtimeEnabled).length,
       reviewedKits: stages.filter(reviewedKit).length, selectedSourceImages: entries.filter(entry => entry.category === 'arena').length },
-    hunters: { runtimeFighters: fighters.length, validatedClips: fighters.reduce((sum, fighter) => sum + fighter.atlas.clips.filter(clip => clip.status === 'validated').length, 0),
+    hunters: { runtimeFighters: new Set(fighters.map(fighter => fighter.fighterId)).size, validatedClips: fighters.reduce((sum, fighter) => sum + fighter.atlas.clips.filter(clip => clip.status === 'validated').length, 0),
       initialFamiliesPerDesign: 10, completeMovesets: 0 },
     vehicles: { requested: catalogue.entries.length, entriesWithSourceArt: vehicleIds.size,
       entriesWithNonRejectedDrafts: publicDraftIds.size, acceptedAnimationClips: acceptedVehicleClips, rideableVehicles: 0 },

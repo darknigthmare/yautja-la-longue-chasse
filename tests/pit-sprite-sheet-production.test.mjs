@@ -9,6 +9,10 @@ test("real V32/V33 PNGs prepare as distinct transparent cells and every register
   assert.ok(report.pageCount >= 11);
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
+  const city = report.clips.filter(clip => clip.fighterId === "city-hunter");
+  assert.equal(city.length, 9);
+  assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "right" && clip.ready).length, 1);
+  assert.equal(city.some(clip => clip.clipId === "high-guard" && clip.facing === "left"), false, "One facing must never create mirrored coverage");
   const wolf = report.clips.filter(clip => clip.fighterId === "wolf");
   assert.equal(wolf.length, 17);
   assert.equal(wolf.some(clip => clip.clipId === "walk" || clip.clipId === "walk-backward" || clip.clipId.startsWith("pit.stand.medium")), false);

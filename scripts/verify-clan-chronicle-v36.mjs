@@ -26,10 +26,10 @@ try {
   page.on("pageerror", e => errors.push(e.message));
   page.on("response", r => { if (r.status() >= 400) failedRequests.push({ url: r.url(), status: r.status() }); });
   await page.goto(base, { waitUntil: "networkidle", timeout: 120000 });
-  await page.locator('[data-game-content-version="V36"]').waitFor();
+  await page.locator('[data-game-content-version="V37"]').waitFor();
   const storedBefore = await page.evaluate(() => JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort())));
   await page.getByRole("button", { name: "Dossier de campagne", exact: true }).click();
-  const panel = page.locator('[data-clan-chronicle="design-v36"]');
+  const panel = page.locator('[data-clan-chronicle="design-v37"]');
   await panel.waitFor();
   await page.locator('[data-chronicle-legacy-rank="elder"]').waitFor();
   assert.match(await panel.innerText(), /Parcours en conception, pas encore jouable/);
@@ -74,7 +74,7 @@ try {
   checks.push("Existing adult campaign still opens its ship with THE PIT access.");
   assert.deepEqual(errors, []);
   assert.deepEqual(failedRequests, []);
-  const report = { url: base, version: "V36", checkedAt: new Date().toISOString(), checks, errors, failedRequests, limitations: ["No playable youth chapter or new art claimed.", "No physical controller or PC package verification in this run."] };
+  const report = { url: base, version: "V37", checkedAt: new Date().toISOString(), checks, errors, failedRequests, limitations: ["No playable youth chapter is implied by this dossier check; imported source art is verified separately.", "No physical controller or PC package verification in this run."] };
   await fs.writeFile(output + "/verification.json", JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));
 } finally { await browser.close(); }

@@ -32,3 +32,9 @@ test('the shared vehicle effect library is not a fifty-first catalogue vehicle',
   assert(coverage.vehicles.entriesWithNonRejectedDrafts <= coverage.vehicles.entriesWithSourceArt);
   assert(coverage.vehicles.entriesWithSourceArt <= 50);
 });
+
+test('an additional City Hunter atlas adds one clip, not an extra animated fighter', () => {
+  const coverage = productionCoverage([], []);
+  assert.equal(coverage.hunters.runtimeFighters, 9);
+  assert.equal(coverage.hunters.validatedClips, 205);
+});

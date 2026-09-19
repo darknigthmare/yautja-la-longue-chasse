@@ -12,7 +12,7 @@
     },
     "hunters": {
       "runtimeFighters": 9,
-      "validatedClips": 204,
+      "validatedClips": 205,
       "initialFamiliesPerDesign": 10,
       "completeMovesets": 0
     },
@@ -26,7 +26,7 @@
   },
   "totals": {
     "arena": 288,
-    "hunter": 146,
+    "hunter": 147,
     "vehicle": 114
   },
   "entries": [
@@ -30482,6 +30482,60 @@
           "facing": "left",
           "phase": "identity",
           "durationTicks": 9
+        }
+      ]
+    },
+    {
+      "id": "v34-city-hunter-v37-high-guard-right",
+      "category": "hunter",
+      "name": "City Hunter · Garde haute · droite · deux dessins",
+      "src": "/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+      "status": "integrated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "3d1cfd804a182ccee1c89cd50ef42118390504adaf15b8792a701a020d3f626a",
+      "transparency": {
+        "mode": "alpha"
+      },
+      "notes": [
+        "Costume comparé au City Hunter V32 : masque cuivre ovale, genoux carrés, protections tibiales et disque bronze.",
+        "Deux mains rattachées aux poignets ; poing avant partiellement occulté par le gantelet. Pas de certification anatomique ou de fidélité officielle absolue.",
+        "Seules les cases 1 et 3 de la colonne droite sont utilisées. Colonne gauche exclue : séparation alpha insuffisante.",
+        "Deux dessins natifs, boucle de 120 ticks à 60 Hz, aucun miroir, aucune garde gauche ni réaction blockstun déclarée.",
+        "Une génération et deux corrections OpenAI. Les versions intermédiaires rejetées restent privées et ne sont pas des clips livrés."
+      ],
+      "frames": [
+        {
+          "pageId": "city-hunter-high-guard-right-v37-v32-continuity",
+          "rect": [
+            925,
+            29,
+            344,
+            490
+          ],
+          "pivot": [
+            170.5,
+            483
+          ],
+          "durationTicks": 60,
+          "facing": "right",
+          "phase": "high-guard"
+        },
+        {
+          "pageId": "city-hunter-high-guard-right-v37-v32-continuity",
+          "rect": [
+            925,
+            537,
+            344,
+            479
+          ],
+          "pivot": [
+            170.5,
+            473
+          ],
+          "durationTicks": 60,
+          "facing": "right",
+          "phase": "high-guard"
         }
       ]
     }

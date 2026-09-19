@@ -9637,5 +9637,68 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "city-hunter",
+    "bodyHeightPx": 504,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-high-guard-right-v37",
+      "characterId": "city-hunter",
+      "variantId": "the-pit-v37",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-high-guard-right-v37-v32-continuity",
+          "src": "/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha"
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-high-guard-right-v37-v32-continuity",
+              "rect": [
+                925,
+                29,
+                344,
+                490
+              ],
+              "pivot": [
+                170.5,
+                483
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "city-hunter-high-guard-right-v37-v32-continuity",
+              "rect": [
+                925,
+                537,
+                344,
+                479
+              ],
+              "pivot": [
+                170.5,
+                473
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
   }
 ];
