@@ -222,6 +222,7 @@ import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
+const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitCanvas"));
@@ -241,6 +242,7 @@ const ControlBindingsPanel = React.lazy(
 
 type Screen =
   | "title"
+  | "clan-chronicle"
   | "ship"
   | "deck"
   | "homeworld"
@@ -2716,6 +2718,7 @@ export default function GameClient() {
     if (archiveTransferBusy || archiveRecoveryIssue) return;
     if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); setCompleteImportPlan(null); ++archiveSelectionRef.current; setArchiveTransferBusy(false); }
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
+    else if (screen === "clan-chronicle") go("title");
     else if (screen !== "title") go("deck");
   }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
@@ -2761,7 +2764,7 @@ export default function GameClient() {
     : null;
 
   const topBar =
-    screen !== "title" && screen !== "mission" && screen !== "pit" ? (
+    screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
       <TopBar
         save={save}
         onShip={() => go("deck")}
@@ -2845,6 +2848,9 @@ export default function GameClient() {
                 >
                   Jouer
                 </button>
+                <button type="button" className="ghost-button" onClick={() => go("clan-chronicle")}>
+                  Dossier de campagne
+                </button>
                 {save.statistics.missionsStarted > 0 && (
                   <button
                     type="button"
@@ -2882,6 +2888,16 @@ export default function GameClient() {
                 bladesExtended
               />
             </div>
+          </div>
+        </section>
+      )}
+
+      {screen === "clan-chronicle" && (
+        <section className="screen panel-screen" inert={settingsOpen}>
+          <div className="screen-safe">
+            <Suspense fallback={<DeferredGameScreen />}>
+              <ClanChroniclePanel save={save} onClose={() => go("title")} />
+            </Suspense>
           </div>
         </section>
       )}
