@@ -1,0 +1,568 @@
+{
+  "version": "V41",
+  "checkedAt": "2026-09-19T21:57:28.249Z",
+  "status": "published-web-and-packaged-windows-verified",
+  "production": {
+    "deploymentId": "dpl_Dx6y5X6uXKVkSxWb3aVwTy3dDVdA",
+    "state": "READY",
+    "gitCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+    "branch": "main",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentUrl": "https://yautja-la-longue-chasse-i9c9qdugm-darknigthmares-projects.vercel.app",
+    "framework": "nextjs",
+    "verificationMethod": "Vercel exact commit READY and production alias, followed by two public browser suites and asset HTTP/SHA-256 verification"
+  },
+  "localCommands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1336,
+      "passed": 1336,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "art": {
+      "passed": true,
+      "version": "V41",
+      "checkedAt": "2026-09-19T21:52:09.202Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "labChecks": [
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true,
+          "attackReturnsToIdle": true,
+          "uncoveredWalkRemainsHold": true,
+          "existingGuardAndRetreatPreserved": true
+        },
+        {
+          "fighter": "celtic",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2,
+          "nativeOrientation": true,
+          "stableGround": true,
+          "attackReturnsToIdle": true,
+          "uncoveredWalkRemainsHold": true,
+          "existingGuardAndRetreatPreserved": true
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "right",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        },
+        {
+          "fighter": "tracker",
+          "clip": "walk",
+          "facing": "left",
+          "drawings": 4,
+          "realForwardMovement": true,
+          "advanceStopRetreat": true,
+          "sourceReuse": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Browser input only, no complete moveset or physical hardware certification.",
+        "Tracker reuses eight existing retreat drawings in reverse order; no new Tracker image is claimed.",
+        "Celtic gains idle only; uncovered states remain native idle holds, not complete animations."
+      ]
+    },
+    "homeworldRecovery": {
+      "passed": true,
+      "expectedVersion": "V41",
+      "checkedAt": "2026-09-19T21:51:04.661Z",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": [
+        "Fresh campaign enters the real city, records Port and inspects the actual convoy trophy before fault injection; no seeded state.",
+        "Physical crossing into Market reaches actual save refusal: pending notice appears, durable slot remains unchanged, no retry loop across 3.2 seconds.",
+        "Keyboard retry while storage still refuses remains pending, attempts once, announces no successful visit and leaves the slot unchanged.",
+        "Storage restored: actual gamepad Down/A retries successfully once, removes pending buttons, preserves useful focus and cannot activate the next action with held A.",
+        "Recovered Market visit is unique, pre-existing trophy evidence and all non-visit progression stay intact; no further save loop or actor reset.",
+        "Real page reload retains exactly Port+Market, prior evidence and campaign identity, with no pending visit or horizontal overflow at 390px."
+      ],
+      "routeEvidence": [
+        {
+          "from": {
+            "x": 430,
+            "y": 2210
+          },
+          "target": {
+            "x": 1040,
+            "y": 1970
+          },
+          "actual": {
+            "x": 1030,
+            "y": 2003
+          },
+          "waypoints": 28
+        },
+        {
+          "from": {
+            "x": 1030,
+            "y": 2003
+          },
+          "target": {
+            "x": 1750,
+            "y": 2000
+          },
+          "actual": {
+            "x": 1726,
+            "y": 2024
+          },
+          "waypoints": 29
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Fresh isolated campaign; real city movement and trophy inspection. Only setItem on the campaign primary slot is fault-injected. No actor/progression/save injection; virtual gamepad is not physical hardware certification.",
+      "storageProof": {
+        "refusedAttempts": 2,
+        "recoveryWrites": 1,
+        "beforeVisited": [
+          "port"
+        ],
+        "afterVisited": [
+          "port",
+          "market"
+        ],
+        "sourceMutation": false
+      },
+      "visualInspection": {
+        "reviewed": true,
+        "captures": [
+          "homeworld-recovery-refused-1280.png",
+          "homeworld-recovery-pending-toast-390.png",
+          "homeworld-recovery-pending-390.png",
+          "homeworld-recovery-reloaded-390.png"
+        ],
+        "observations": [
+          "Avis de refus et bouton de reprise visibles dans la production desktop et mobile.",
+          "Notification globale existante : chevauchement temporaire de 2 600 ms documenté ; après expiration normale, le bouton mobile est confirmé actionnable.",
+          "Après rechargement public : 2/12 quartiers et 1/3 preuves conservés, aucune attente ni débordement horizontal."
+        ]
+      }
+    }
+  },
+  "assets": {
+    "schemaVersion": 1,
+    "passed": true,
+    "startedAt": "2026-09-19T21:51:12.735Z",
+    "baseUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "expectedReleaseCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+    "expectedDeployment": "dpl_Dx6y5X6uXKVkSxWb3aVwTy3dDVdA",
+    "readySignalReceived": true,
+    "scope": "Anonymous public HTTP and in-memory SHA verification only. Browser playability is verified separately.",
+    "routes": [
+      {
+        "path": "/",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 48186,
+        "sha256": "1c6996843ff9cd7412d13643f9d407b2c38583aaba27ac4aeef76014ad3c74e7",
+        "vercelRequestId": "cdg1::iad1::9n6bj-1789854674067-b058ecb6d753",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "Yautja",
+          "La Longue Chasse"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/pit-lab",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/pit-lab",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 15819,
+        "sha256": "3a4348dcd8cb02d8604efafc217addd9f4ee192e8d807c55ea398b53b79999ca",
+        "vercelRequestId": "cdg1::iad1::h8tm2-1789854674069-4c6e00a0b5d7",
+        "vercelCache": "MISS",
+        "etag": null,
+        "checkedMarkers": [
+          "data-pit-production-lab",
+          "Machiko Noguchi",
+          "Theta",
+          "/game/assets/v34/production-review/index.html"
+        ],
+        "passed": true
+      },
+      {
+        "path": "/game/assets/v34/production-review/index.html",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/index.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 5519,
+        "sha256": "bcb7ecaa2c844336dbb0ca30138de3d14309e69b32a494e7ae505707a6a0def7",
+        "vercelRequestId": "cdg1::wd2k2-1789854674064-85c64475e97b",
+        "vercelCache": "MISS",
+        "etag": "W/\"6363a153057c1032a66321f3f20057b1\"",
+        "checkedMarkers": [
+          "Atelier OpenAI",
+          "coverage-hunters",
+          "./review.js"
+        ],
+        "passed": true
+      }
+    ],
+    "manifest": {
+      "path": "/game/assets/v34/production-review/manifest.json",
+      "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/assets/v34/production-review/manifest.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 864091,
+      "sha256": "ba24f5ec4ec7b2eb4678de09c30493ec81127a5496260dc7e728e0c1ef00a5da",
+      "vercelRequestId": "cdg1::kmngp-1789854674904-0b68f1b9ac1e",
+      "vercelCache": "MISS",
+      "etag": "W/\"2e98a5108f26e4a3c58a7704fc42d0d4\"",
+      "localSha256": "ba24f5ec4ec7b2eb4678de09c30493ec81127a5496260dc7e728e0c1ef00a5da",
+      "equalsLocal": true,
+      "entryCount": 552,
+      "coverage": {
+        "completeGameImplied": false,
+        "arenas": {
+          "requested": 100,
+          "playable": 20,
+          "reviewedKits": 20,
+          "selectedSourceImages": 288
+        },
+        "hunters": {
+          "runtimeFighters": 11,
+          "validatedClips": 267,
+          "initialFamiliesPerDesign": 10,
+          "completeMovesets": 0
+        },
+        "vehicles": {
+          "requested": 50,
+          "entriesWithSourceArt": 50,
+          "entriesWithNonRejectedDrafts": 50,
+          "acceptedAnimationClips": 0,
+          "rideableVehicles": 0
+        }
+      },
+      "allCandidateAssetsPresent": true,
+      "passed": true
+    },
+    "assets": [
+      {
+        "path": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 2079285,
+        "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+        "vercelRequestId": "cdg1::5n2w7-1789854675110-4e80d19a7cb4",
+        "vercelCache": "MISS",
+        "etag": "\"70ea59bcc08418e5f2ccb952aea6e3ea\"",
+        "localSha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+        "provenanceSha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
+        "provenancePath": "docs/art/v41/tracker/provenance.json",
+        "fighterId": "tracker",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      },
+      {
+        "path": "/game/sprites/v41/pit/celtic/idle.png",
+        "requestedUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v41/pit/celtic/idle.png",
+        "responseUrl": "https://yautja-la-longue-chasse.vercel.app/game/sprites/v41/pit/celtic/idle.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 1877882,
+        "sha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+        "vercelRequestId": "cdg1::h8tm2-1789854675112-04542b219070",
+        "vercelCache": "MISS",
+        "etag": "\"346fefbaa01f31dfefaacd27c0c8a1a7\"",
+        "localSha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+        "provenanceSha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+        "provenancePath": "docs/art/v41/celtic/provenance.json",
+        "fighterId": "celtic",
+        "width": 1536,
+        "height": 1024,
+        "remoteEqualsLocalEqualsProvenance": true,
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "persistentPngDownloads": 0,
+    "localCommitAtVerification": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+    "expectedUniquePngPages": 2,
+    "finishedAt": "2026-09-19T21:51:14.513Z",
+    "totalVerifiedPngBytes": 3957167
+  },
+  "desktop": {
+    "schemaVersion": 1,
+    "passed": true,
+    "version": "1.0.41",
+    "releaseTag": "v41",
+    "sourceCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+    "sourceDigest": "8b8c569d86b2e27d53ab21cc132a44dfb537e36ec5d0ff6cc3e3961ba4004160",
+    "electron": "44.2.0",
+    "platform": "win32-x64",
+    "signed": false,
+    "networkRequired": false,
+    "verifiedAt": "2026-09-19T21:56:54.715Z",
+    "paths": {
+      "exe": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-win32-x64\\Yautja-La-Longue-Chasse.exe",
+      "asar": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-win32-x64\\resources\\app.asar",
+      "zip": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-PC-V41.zip",
+      "manifest": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\manifest-v41.json"
+    },
+    "byteSizes": {
+      "exe": 246202368,
+      "asar": 1655007527,
+      "zip": 1768811471,
+      "manifest": 529
+    },
+    "sha256": {
+      "exe": "bf43ff5b3b87fec5990c461341987c2d78e2c6386078dd32e5f2a5cfed1e026c",
+      "asar": "e64d7d9bdcf57ba0033dd41cf3f0cab073c650e2fa07427e359a13e0ca16aa3f",
+      "zip": "6aa8453b921d54560d845bbaa9895fb5e392dbfc6525c17071f132d717b133c5",
+      "manifest": "d8a98f9929e5d7418481c3f14fc447c16f18a4ef80644158ce6861af6621821d"
+    },
+    "packageDirectory": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-win32-x64",
+    "packageBytes": 2040309615,
+    "reports": {
+      "exeQa": "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\verification.json",
+      "archiveVerification": "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\archive-verification.json",
+      "zipCreation": "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\zip-creation.json",
+      "zipPayloadVerification": "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\zip-payload-verification.json"
+    },
+    "reportSha256": {
+      "exeQa": "d5c0ea528b028f544964bbeda12c35de5cbefb8ec4f67c07bdbff3597ea3639d",
+      "archiveVerification": "a38401a0afa73113fc92e1d3480930365a072f1c18d0b248f14d92e35e5ee78a",
+      "zipCreation": "6f2724cb95ab343d980ce9c364e541b28511120b8c494c06ba233ed870e97e9d",
+      "zipPayloadVerification": "cb529938198ae20dc5633b0eebc7f7b584adf9d94260c46ed811ce4898252419"
+    },
+    "checks": {
+      "realExeQaPassed": true,
+      "coldRestartAndSavePreserved": true,
+      "offlineGalleryAndWindowPolicyPassed": true,
+      "archiveAllowlistAndHashesPassed": true,
+      "zipEntriesVerified": 77,
+      "zipExeAndAsarPayloadsVerifiedInStream": true,
+      "oldV35ExeAndAsarHashesUnchanged": true,
+      "oldV35ZipBytesUnchanged": true
+    },
+    "screenshots": [
+      "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\gallery-original-pc.png",
+      "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\pit-pc-theta-arena-009-quais-du-premier-sang-canvas.png"
+    ],
+    "freeBytesOnS": 8922046464,
+    "limits": [
+      "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified.",
+      "Unsigned fan-game development build; no physical-controller or full-campaign certification."
+    ],
+    "oldV35": {
+      "manifest": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\tmp\\desktop-release\\v35\\manifest-v35.json",
+      "zip": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\tmp\\desktop-release\\v35\\Yautja-La-Longue-Chasse-PC-V35.zip",
+      "zipBytes": 1409408353
+    },
+    "evidence": {
+      "exeQa": {
+        "passed": true,
+        "desktopVersion": "1.0.41",
+        "contentVersion": "V41",
+        "executablePath": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-win32-x64\\Yautja-La-Longue-Chasse.exe",
+        "profile": "S:\\CodexTemp\\yautja-v41-portable\\qa\\v41\\profile-j4ahht",
+        "checks": [
+          "Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.",
+          "Offline gallery opens a decoded full-resolution local raster in a sandboxed auxiliary window, reuses it, rejects HTML/SVG/JS/external windows and preserves the save.",
+          "Real setting persisted; campaign exported through the native download path.",
+          "Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.",
+          "Hub to THE PIT loads locally with authored Jungle Hunter and Berserker animations.",
+          "Packaged extension duel tracker/greyback on arena-009-quais-du-premier-sang: 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.",
+          "Packaged extension duel greyback/tracker on arena-020-trone-fracture: 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.",
+          "Packaged extension duel theta/machiko-noguchi on arena-009-quais-du-premier-sang: 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.",
+          "Local galaxy route to Oseris, mission briefing, deployment and suspended hunt saved.",
+          "Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart."
+        ],
+        "errors": [],
+        "failedLocalRequests": [],
+        "testedAt": "2026-09-19T21:53:18.153Z",
+        "limit": "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified."
+      },
+      "archiveVerification": {
+        "passed": true,
+        "releaseTag": "v41",
+        "sourceCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+        "sourceDigest": "8b8c569d86b2e27d53ab21cc132a44dfb537e36ec5d0ff6cc3e3961ba4004160",
+        "version": "1.0.41",
+        "asarEntries": 3233,
+        "asarTopLevel": [
+          "/main.mjs",
+          "/package.json",
+          "/protocol.mjs",
+          "/release.mjs",
+          "/renderer"
+        ],
+        "audioManifestIncluded": true,
+        "manifestHashesVerified": true,
+        "zip": "S:/CodexTemp/yautja-v41-portable/release/v41/Yautja-La-Longue-Chasse-PC-V41.zip",
+        "zipBytes": 1768811471,
+        "zipSha256": "6aa8453b921d54560d845bbaa9895fb5e392dbfc6525c17071f132d717b133c5",
+        "zipEntries": 77,
+        "testedAt": "2026-09-19T21:55:49.619Z"
+      },
+      "zipCreation": {
+        "version": "1.0.41",
+        "zip": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-PC-V41.zip",
+        "bytes": 1768811471,
+        "sha256": "6aa8453b921d54560d845bbaa9895fb5e392dbfc6525c17071f132d717b133c5",
+        "packageBytes": 2040309615,
+        "createdAt": "2026-09-19T21:54:56.116Z"
+      },
+      "zipPayloadVerification": {
+        "passed": true,
+        "version": "1.0.41",
+        "sourceCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+        "zip": "S:\\CodexTemp\\yautja-v41-portable\\release\\v41\\Yautja-La-Longue-Chasse-PC-V41.zip",
+        "checkedAt": "2026-09-19T21:55:46.281Z",
+        "payloads": [
+          {
+            "entry": "Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe",
+            "bytes": 246202368,
+            "sha256": "bf43ff5b3b87fec5990c461341987c2d78e2c6386078dd32e5f2a5cfed1e026c",
+            "extractionExitCode": 0,
+            "stderr": "",
+            "matchesPackageManifest": true
+          },
+          {
+            "entry": "Yautja-La-Longue-Chasse-win32-x64/resources/app.asar",
+            "bytes": 1655007527,
+            "sha256": "e64d7d9bdcf57ba0033dd41cf3f0cab073c650e2fa07427e359a13e0ca16aa3f",
+            "extractionExitCode": 0,
+            "stderr": "",
+            "matchesPackageManifest": true
+          }
+        ],
+        "verification": "tar -xOf streamed into SHA256; no extracted files or whole-payload buffer"
+      }
+    }
+  },
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 267,
+    "addedClips": 4,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "generationAttempts": 3,
+    "newSelectedSourceImages": 1,
+    "newDrawings": 4,
+    "reusedTrackerDrawings": 8,
+    "reviewSourceImages": 552
+  },
+  "limitations": [
+    "Celtic idle only: two drawings per facing, no complete moveset.",
+    "Tracker forward walk reuses eight existing retreat drawings in reverse order with the original coarse four-frame cadence.",
+    "Official 1:1 fidelity, physical controller and Steam Deck certification are not claimed.",
+    "Homeworld pending district visits are recoverable within the active city; leaving before acknowledgement cannot guarantee unsaved visits.",
+    "Windows executable is unsigned; physical controller and Steam Deck hardware were not tested.",
+    "Twenty playable arenas remain distinct from the one hundred requested. Youth campaign, Berceau and rideable vehicles remain outstanding.",
+    "Private ChatGPT access remains deferred at the owner request."
+  ],
+  "publicVisualReview": {
+    "status": "PASS-independent-production-visual-review",
+    "checkedAt": "2026-09-19T21:53:26.412Z",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "parentConfirmedDeploymentCommit": "a6f2e8a54fcd8c4b9715448f67c15394c0779de8",
+    "commitIdentityIndependentlyVerifiedByThisScript": false,
+    "verificationReport": "work/v41/production-art-qa/report.json",
+    "processExitCode": 0,
+    "browserClosed": true,
+    "browserClosureEvidence": "verify-pit-art-v41.mjs completed successfully after awaited browser.close() in finally",
+    "inspected": [
+      {
+        "path": "work/v41/production-art-qa/celtic-idle-right.png",
+        "sha256": "6ad57d34fa338de1f8ecd6e4f359c5695649f77db32e885761a6d9a3af2d2b2b"
+      },
+      {
+        "path": "work/v41/production-art-qa/celtic-idle-left.png",
+        "sha256": "b2fef9aa057ec9d2393558d3361c542f2e23868bf540ce3b13fee855c3a0b70b"
+      },
+      {
+        "path": "work/v41/production-art-qa/tracker-advance-right.png",
+        "sha256": "5215e2c584aaa7b2f80c8920b4762d5a970e35bb477f23e7755c2185edf832c0"
+      },
+      {
+        "path": "work/v41/production-art-qa/tracker-advance-left.png",
+        "sha256": "e991d5be3a62f5e40fa43698bbd51ed066121ffe0e5cc0f47171535051c89058"
+      },
+      {
+        "path": "work/v41/production-art-qa/mobile.png",
+        "sha256": "3dc2807aad07b84c4f61b24914f71f2f866c1c98c03bad9c7cef5b3b223e51c8"
+      }
+    ],
+    "findings": [
+      "Celtic and Tracker face the opponent in both tested orientations.",
+      "Bodies, spear tips, wrist blades and feet remain within their rendered bounds.",
+      "Celtic body scale is consistent across facing; floor placement is stable.",
+      "No broad chroma halo, rectangular background, page error, failed HTTP response or mobile horizontal overflow observed.",
+      "Narrow magenta details remain inside some Celtic blade pixels, as already declared in the source review."
+    ],
+    "limitations": [
+      "Mobile verification is a 390x844 viewport layout check, not a physical touch-device certification.",
+      "Still screenshots do not independently certify detailed gait kinematics; the completed browser harness does verify real advance, stop, retreat and clip progression.",
+      "No new source, runtime change or commit produced by this QA."
+    ]
+  }
+}
