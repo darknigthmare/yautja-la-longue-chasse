@@ -45,6 +45,8 @@ export default defineConfig(async () => {
 
   return {
     build: {
+      // Preserve a pre-cleaned local output junction only when explicitly requested.
+      emptyOutDir: process.env.YAUTJA_KEEP_BUILD_ROOT === "1" ? false : undefined,
       rolldownOptions: {
         output: {
           codeSplitting: {

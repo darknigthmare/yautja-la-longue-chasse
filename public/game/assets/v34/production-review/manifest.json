@@ -12,7 +12,7 @@
     },
     "hunters": {
       "runtimeFighters": 9,
-      "validatedClips": 205,
+      "validatedClips": 208,
       "initialFamiliesPerDesign": 10,
       "completeMovesets": 0
     },
@@ -26,7 +26,7 @@
   },
   "totals": {
     "arena": 288,
-    "hunter": 147,
+    "hunter": 148,
     "vehicle": 114
   },
   "entries": [
@@ -1271,7 +1271,7 @@
       "category": "hunter",
       "name": "Berserker · hurt",
       "src": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "f5430784fc4bd4ea40ded6095db75689b278a577a16be303a4c7cd64d4b0993b",
@@ -1291,86 +1291,140 @@
         }
       },
       "notes": [
-        "Readable non-graphic recoil, peak recoil, balance recovery and neutral phases.",
-        "Tilted head changes mask projection; reference-shape consistency and outer foot margins need close review."
+        "Source OpenAI V33 préservée ; revue V38 et recadrages irréguliers remplacent les cellules de grille coupées.",
+        "Two oriented standing hitstun clips, eight distinct drawings; no knockdown, blockstun, recovery-to-standing or complete moveset claim"
       ],
       "frames": [
         {
+          "pageId": "berserker-hurt-v38",
           "rect": [
-            797,
-            41,
-            316,
-            438
-          ],
-          "facing": "right",
-          "phase": "Regain balance: forward foot plants, torso begins returning upright, left hand near chest.",
-          "pivot": [
-            158,
-            438
-          ],
-          "durationTicks": 9
-        },
-        {
-          "rect": [
-            1184,
-            26,
-            313,
+            22,
+            28,
+            367,
             453
           ],
+          "pivot": [
+            210,
+            450
+          ],
+          "durationTicks": 2,
           "facing": "right",
-          "phase": "Recover stance: knees rebalance, shoulders lower, blade safely aligned with right forearm.",
-          "pivot": [
-            156.5,
-            453
-          ],
-          "durationTicks": 9
+          "phase": "pit.stand.hitstun"
         },
         {
+          "pageId": "berserker-hurt-v38",
           "rect": [
-            386,
-            516,
-            335,
-            440
+            398,
+            30,
+            351,
+            452
           ],
-          "facing": "left",
-          "phase": "Peak recoil: torso bends backward at hips, one knee softens, one foot briefly unweights.",
           "pivot": [
-            167.5,
-            440
+            214,
+            449
           ],
-          "durationTicks": 9
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
         },
         {
+          "pageId": "berserker-hurt-v38",
           "rect": [
-            795,
-            525,
-            320,
-            432
-          ],
-          "facing": "left",
-          "phase": "Regain balance: forward foot plants, torso begins returning upright, left hand near chest.",
-          "pivot": [
-            160,
-            432
-          ],
-          "durationTicks": 9
-        },
-        {
-          "rect": [
-            1178,
-            514,
-            316,
+            794,
+            38,
+            322,
             444
           ],
+          "pivot": [
+            165.5,
+            441
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            1181,
+            23,
+            319,
+            459
+          ],
+          "pivot": [
+            162,
+            456
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            20,
+            506,
+            337,
+            452
+          ],
+          "pivot": [
+            148,
+            449
+          ],
+          "durationTicks": 2,
           "facing": "left",
-          "phase": "Recover stance: knees rebalance, shoulders lower, blade safely aligned with right forearm.",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            383,
+            513,
+            341,
+            446
+          ],
+          "pivot": [
+            170,
+            443
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            792,
+            522,
+            326,
+            438
+          ],
           "pivot": [
             158,
-            444
+            435
           ],
-          "durationTicks": 9
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
+        },
+        {
+          "pageId": "berserker-hurt-v38",
+          "rect": [
+            1175,
+            511,
+            322,
+            450
+          ],
+          "pivot": [
+            161.5,
+            447
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "phase": "pit.stand.hitstun"
         }
-      ]
+      ],
+      "reviewedIn": "V38"
     },
     {
       "id": "berserker-light",
@@ -30535,6 +30589,59 @@
           ],
           "durationTicks": 60,
           "facing": "right",
+          "phase": "high-guard"
+        }
+      ]
+    },
+    {
+      "id": "v34-city-hunter-v38-high-guard-left",
+      "category": "hunter",
+      "name": "City Hunter · Garde haute · gauche · deux dessins",
+      "src": "/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+      "status": "integrated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cb581407eb92306b4d1b3e9afec0b03f4f5960e6c6dd0736b2adaa52048666b6",
+      "transparency": {
+        "mode": "alpha"
+      },
+      "notes": [
+        "Garde haute gauche dessinée indépendamment, deux poses respiratoires de 60 ticks ; aucun miroir ni réaction blockstun.",
+        "Masque cuivre, disque, genouillères carrées, tibias, deux mains et gantelet portant les lames comparés au V32 gauche.",
+        "Une génération OpenAI native et une correction ; première version rejetée pour lames sur le mauvais bras.",
+        "Alpha natif, crops irréguliers et pivots stables ; fidélité officielle absolue non certifiée."
+      ],
+      "frames": [
+        {
+          "pageId": "city-hunter-high-guard-left-v38",
+          "rect": [
+            140,
+            45,
+            551,
+            911
+          ],
+          "pivot": [
+            272,
+            895
+          ],
+          "durationTicks": 60,
+          "facing": "left",
+          "phase": "high-guard"
+        },
+        {
+          "pageId": "city-hunter-high-guard-left-v38",
+          "rect": [
+            880,
+            60,
+            541,
+            897
+          ],
+          "pivot": [
+            268,
+            881
+          ],
+          "durationTicks": 60,
+          "facing": "left",
           "phase": "high-guard"
         }
       ]

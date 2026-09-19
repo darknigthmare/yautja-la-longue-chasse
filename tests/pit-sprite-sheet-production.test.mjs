@@ -10,9 +10,9 @@ test("real V32/V33 PNGs prepare as distinct transparent cells and every register
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
   const city = report.clips.filter(clip => clip.fighterId === "city-hunter");
-  assert.equal(city.length, 9);
+  assert.equal(city.length, 10);
   assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "right" && clip.ready).length, 1);
-  assert.equal(city.some(clip => clip.clipId === "high-guard" && clip.facing === "left"), false, "One facing must never create mirrored coverage");
+  assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "left" && clip.ready).length, 1, "Left guard requires its own authored atlas");
   const wolf = report.clips.filter(clip => clip.fighterId === "wolf");
   assert.equal(wolf.length, 17);
   assert.equal(wolf.some(clip => clip.clipId === "walk" || clip.clipId === "walk-backward" || clip.clipId.startsWith("pit.stand.medium")), false);
@@ -25,7 +25,8 @@ test("real V32/V33 PNGs prepare as distinct transparent cells and every register
   assert.equal(report.clips.filter(clip => clip.fighterId === "tracker").length, 28);
   assert.equal(report.clips.filter(clip => clip.fighterId === "greyback").length, 28);
   const berserker = report.clips.filter(clip => clip.fighterId === "berserker");
-  assert.equal(berserker.length, 26);
+  assert.equal(berserker.length, 28);
+  assert.equal(berserker.filter(clip => clip.clipId === "pit.stand.hitstun" && clip.ready && clip.drawnCells === 4).length, 2);
   assert.equal(berserker.some(clip => clip.clipId === "walk"), false, "Rejected forward walking must not become coverage");
   for (const facing of ["right", "left"]) for (const clipId of ["crouch", "high-guard", "walk-backward", "pit.stand.medium.startup", "pit.stand.medium.active", "pit.stand.medium.recovery", "pit.stand.heavy.startup", "pit.stand.heavy.active", "pit.stand.heavy.recovery"]) {
     assert.ok(berserker.some(clip => clip.facing === facing && clip.clipId === clipId && clip.ready));

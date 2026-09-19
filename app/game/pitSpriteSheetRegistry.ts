@@ -9700,5 +9700,236 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "berserker",
+    "bodyHeightPx": 460,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "berserker-hitstun-v38",
+      "characterId": "berserker",
+      "variantId": "the-pit-v33-v23-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "berserker-hurt-v38",
+          "src": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 48,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                22,
+                28,
+                367,
+                453
+              ],
+              "pivot": [
+                210,
+                450
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                398,
+                30,
+                351,
+                452
+              ],
+              "pivot": [
+                214,
+                449
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                794,
+                38,
+                322,
+                444
+              ],
+              "pivot": [
+                165.5,
+                441
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                1181,
+                23,
+                319,
+                459
+              ],
+              "pivot": [
+                162,
+                456
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                20,
+                506,
+                337,
+                452
+              ],
+              "pivot": [
+                148,
+                449
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                383,
+                513,
+                341,
+                446
+              ],
+              "pivot": [
+                170,
+                443
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                792,
+                522,
+                326,
+                438
+              ],
+              "pivot": [
+                158,
+                435
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "berserker-hurt-v38",
+              "rect": [
+                1175,
+                511,
+                322,
+                450
+              ],
+              "pivot": [
+                161.5,
+                447
+              ],
+              "durationTicks": 3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "city-hunter",
+    "bodyHeightPx": 900,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-high-guard-left-v38",
+      "characterId": "city-hunter",
+      "variantId": "the-pit-v38",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-high-guard-left-v38",
+          "src": "/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha"
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-high-guard-left-v38",
+              "rect": [
+                140,
+                45,
+                551,
+                911
+              ],
+              "pivot": [
+                272,
+                895
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "city-hunter-high-guard-left-v38",
+              "rect": [
+                880,
+                60,
+                541,
+                897
+              ],
+              "pivot": [
+                268,
+                881
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

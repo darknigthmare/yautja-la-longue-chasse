@@ -17,6 +17,7 @@ import {
   polygonCss,
   type HomeworldPoint,
 } from "./systems/homeworld";
+import { homeworldPropArtPlacement } from "./systems/homeworldCity";
 import styles from "./HomeworldCity.module.css";
 
 const WORLD_ART = "/game/ship-interior/";
@@ -139,10 +140,7 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
       alt=""
       draggable={false}
       style={{
-        left: prop.x - prop.width / 2,
-        top: prop.y - prop.height,
-        width: prop.width,
-        height: prop.height,
+        ...homeworldPropArtPlacement(prop),
         zIndex: Math.round(prop.y) - (prop.plane === "rear" ? 180 : 0),
       }}
     />)}
@@ -202,10 +200,7 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
         alt=""
         draggable={false}
         style={{
-          left: prop.x - prop.width / 2,
-          top: prop.y - prop.height,
-          width: prop.width,
-          height: prop.height,
+          ...homeworldPropArtPlacement(prop),
           zIndex: Math.round(prop.y),
         }}
       />;

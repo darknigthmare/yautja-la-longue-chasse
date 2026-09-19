@@ -1,6 +1,6 @@
 import {
   createPitCombatState, PIT_ARENAS, PIT_CLOAK_COST, PIT_FIGHTERS, PIT_TICK_RATE,
-  type PitCombatState, type PitInput,
+  type PitCombatState, type PitFighterId, type PitInput,
 } from "./pitCombat";
 
 export const PIT_TRAINING_LESSONS = [
@@ -24,12 +24,33 @@ export interface PitTrainingLesson {
 }
 export const PIT_TRAINING_LESSON_LIMIT = PIT_TICK_RATE * 30;
 
+/** Availability follows the actual authored move; lessons never grant missing combat abilities. */
+export function getPitTrainingLessonAvailability(
+  fighterId: PitFighterId,
+  id: PitTrainingLessonId,
+): { readonly available: boolean; readonly reason: string | null } {
+  const fighter = Object.hasOwn(PIT_FIGHTERS, fighterId) ? PIT_FIGHTERS[fighterId] : null;
+  if (!fighter || !PIT_TRAINING_LESSONS.some((lesson) => lesson.id === id)) {
+    return { available: false, reason: "Exercice ou chasseur indisponible." };
+  }
+  const heavy = fighter.attacks.heavy;
+  if (id === "anti-air" && (!heavy.antiAir || !Number.isFinite(heavy.launchY) || heavy.launchY <= 0)) {
+    return {
+      available: false,
+      reason: fighter.name + " ne possède pas de frappe lourde anti-air : cet exercice est indisponible pour ce chasseur.",
+    };
+  }
+  return { available: true, reason: null };
+}
+
 /** Dedicated situations are transient training state, never replay seeds or campaign rewards. */
 export function preparePitTrainingLesson(current: PitCombatState, id: PitTrainingLessonId) {
   if (current.rules.mode !== "training" || !PIT_TRAINING_LESSONS.some((lesson) => lesson.id === id)) {
     throw new Error("A guided lesson requires a valid training session.");
   }
   const playerId = current.fighters[0].definitionId;
+  const availability = getPitTrainingLessonAvailability(playerId, id);
+  if (!availability.available) throw new Error(availability.reason ?? "Exercice indisponible.");
   const dummyId = playerId === "jungle-hunter" ? "city-hunter" : "jungle-hunter";
   const state = createPitCombatState(playerId, dummyId, {
     mode: "training", arenaId: current.arenaId,

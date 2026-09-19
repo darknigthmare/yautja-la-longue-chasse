@@ -27,11 +27,21 @@ function provenanceFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap(item => item.isDirectory() ? provenanceFiles(path.join(directory, item.name))
     : /provenance.*\.json$/.test(item.name) ? [path.join(directory, item.name)] : []);
 }
-for (const [category, directory] of [['hunter', 'art-source/v34/pit'], ['vehicle', 'art-source/v34/vehicles'], ['hunter', 'docs/art/v37']]) {
+for (const [category, directory] of [['hunter', 'art-source/v34/pit'], ['vehicle', 'art-source/v34/vehicles'], ['hunter', 'docs/art/v37'], ['hunter', 'docs/art/v38']]) {
   for (const file of provenanceFiles(directory).sort()) {
     const manifest = read(file);
     for (const asset of manifest.assets ?? []) {
-      if (!asset.publicPath || knownSources.has(asset.publicPath)) continue;
+      if (!asset.publicPath) continue;
+      if (knownSources.has(asset.publicPath)) {
+        // An explicit later review may qualify existing pixels without counting a new source.
+        if (asset.replacesReview) {
+          const existing = entries.find(entry => entry.src === asset.publicPath);
+          assert(existing && existing.sha256 === asset.sha256 && existing.width === asset.width && existing.height === asset.height, 'A review override must preserve its source');
+          assert(asset.status === 'integrated' && asset.reviewFrames?.length > 0, 'A review override needs accepted frames');
+          Object.assign(existing, { status: asset.status, frames: asset.reviewFrames, transparency: asset.transparency, notes: asset.notes ?? [], reviewedIn: manifest.version });
+        }
+        continue;
+      }
       const owner = manifest.fighterId ?? manifest.hunterId ?? manifest.vehicleId ?? path.basename(path.dirname(file));
       const label = manifest.name ?? manifest.fighterName ?? manifest.vehicleName ?? owner;
       const explicitFrames = asset.reviewFrames ?? [];

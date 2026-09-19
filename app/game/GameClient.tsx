@@ -227,6 +227,7 @@ const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitCanvas"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
+const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const PhysicalShipDeck = React.lazy(() => import("./PhysicalShipDeck"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
@@ -3943,6 +3944,9 @@ export default function GameClient() {
               id="trophies-title"
               onBack={() => go(stationReturnScreen)}
             />
+            <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
+              <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
+            </Suspense>
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>

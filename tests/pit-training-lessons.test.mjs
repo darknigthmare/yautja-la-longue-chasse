@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { build } from "esbuild";
 const bundle = await build({
   stdin: { contents: [
@@ -7,6 +8,7 @@ const bundle = await build({
     'export * from "./app/game/systems/pitTrainingClock";',
     'export * from "./app/game/systems/pitTrainingLessons";',
     'export * from "./app/game/systems/pitCombat";',
+    'export * from "./app/game/systems/pitRosterExpansion";',
   ].join("\n"), resolveDir: process.cwd(), loader: "ts" },
   bundle: true, write: false, platform: "node", format: "esm",
 });
@@ -155,10 +157,22 @@ test("lesson evaluation is idempotent and completed exercises stop producing dum
   assert.equal(pit.evaluatePitTrainingLesson(observed,prepared.state,after),observed);
 });
 
-test("every selectable fighter can launch all lessons with a distinct dummy", () => {
-  for(const id of pit.PIT_PLAYABLE_FIGHTER_IDS){
+test("every selectable fighter can launch supported lessons with a distinct dummy", () => {
+  assert.equal(pit.PIT_VERSUS_FIGHTER_IDS.length, 14);
+  for(const id of pit.PIT_VERSUS_FIGHTER_IDS){
     const original=pit.createPitCombatState(id,id==="jungle-hunter"?"berserker":"jungle-hunter",{mode:"training"});
     for(const definition of pit.PIT_TRAINING_LESSONS){
+      const availability=pit.getPitTrainingLessonAvailability(id,definition.id);
+      const unsupported=definition.id==="anti-air"&&["tracker","greyback"].includes(id);
+      assert.equal(availability.available,!unsupported,id+" "+definition.id);
+      if(unsupported){
+        const before=JSON.stringify(original);
+        assert.match(availability.reason,/ne possède pas de frappe lourde anti-air/);
+        assert.throws(()=>pit.preparePitTrainingLesson(original,definition.id),/indisponible/);
+        assert.equal(JSON.stringify(original),before,"refused lesson must preserve the session");
+        continue;
+      }
+      assert.equal(availability.reason,null);
       const prepared=pit.preparePitTrainingLesson(original,definition.id);
       assert.equal(prepared.state.fighters[0].definitionId,id);
       assert.notEqual(prepared.state.fighters[1].definitionId,id);
@@ -170,4 +184,32 @@ test("every selectable fighter can launch all lessons with a distinct dummy", ()
     }
     assert.equal(lesson.status,"success",id+": "+JSON.stringify(lesson));
   }
+});
+
+
+test("lesson availability rejects unknown content without granting a combat ability", () => {
+  assert.equal(pit.getPitTrainingLessonAvailability("missing-hunter","anti-air").available,false);
+  assert.equal(pit.getPitTrainingLessonAvailability("tracker","missing-lesson").available,false);
+  for(const id of ["tracker","greyback"]){
+    const original=pit.createPitCombatState(id,"jungle-hunter",{mode:"training"});
+    const before=JSON.stringify(pit.PIT_FIGHTERS[id]);
+    assert.throws(()=>pit.preparePitTrainingLesson(original,"anti-air"),/indisponible/);
+    assert.equal(JSON.stringify(pit.PIT_FIGHTERS[id]),before);
+    for(const move of Object.values(pit.PIT_FIGHTERS[id].attacks)){
+      assert.equal(move.antiAir,false);
+      assert.equal(move.launchY,0);
+    }
+  }
+});
+
+test("training UI explains disabled lessons and restores combat focus after resuming", async () => {
+  const canvas=await readFile(new URL("../app/game/PitCanvas.tsx",import.meta.url),"utf8");
+  assert.match(canvas,/trainingLessonChoices\.filter\(\(lesson\) => lesson\.available\)\.length/);
+  assert.match(canvas,/disabled=\{!lesson\.available\} aria-describedby=\{lesson\.available \? undefined : "pit-training-unavailable-" \+ lesson\.id\}/);
+  assert.match(canvas,/id=\{"pit-training-unavailable-" \+ lesson\.id\}>\{lesson\.reason\}/);
+  const pause=canvas.slice(canvas.indexOf("const toggleTrainingPause ="),canvas.indexOf("const advanceTrainingTick ="));
+  assert.match(pause,/resetLiveInputs\(\)/);
+  assert.match(pause,/if \(!paused\) focusCombatRoot\(\)/);
+  const start=canvas.slice(canvas.indexOf("const startTrainingLesson ="),canvas.indexOf("const beginRecording ="));
+  assert.ok(start.indexOf("if (!availability.available)")<start.indexOf("preparePitTrainingLesson(current, id)"));
 });

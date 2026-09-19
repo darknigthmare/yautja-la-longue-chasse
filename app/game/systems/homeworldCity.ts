@@ -8,6 +8,8 @@
 
 import type { HunterPresetId, TrophyRecord } from "../types";
 import { trophyWallVisualForDefinitionId } from "../trophyVisualRegistry";
+import { SHIP_LEVEL_ART } from "../shipInteriorKit";
+import { SHIP_LEVEL_ART_V22 } from "../shipInteriorV22";
 
 export interface HomeworldVec2 {
   readonly x: number;
@@ -61,6 +63,31 @@ export interface HomeworldDecorProp {
   readonly fadeRadius?: number;
 }
 
+const HOMEWORLD_PROP_ART = [
+  SHIP_LEVEL_ART.navigationConsole,
+  SHIP_LEVEL_ART.foregroundRib,
+  ...Object.values(SHIP_LEVEL_ART_V22),
+];
+
+/**
+ * The authored box contains the painted silhouette; x/y is its bottom center.
+ * Transparent margins stay intact in the source image. Ground collisions and
+ * depth sorting continue to use the unchanged authored coordinates and sizes.
+ */
+export function homeworldPropArtPlacement(prop: HomeworldDecorProp): {
+  left: number; top: number; width: number; height: number;
+} {
+  const art = HOMEWORLD_PROP_ART.find(candidate => candidate.src === prop.asset);
+  if (!art) return { left: prop.x - prop.width / 2, top: prop.y - prop.height, width: prop.width, height: prop.height };
+  const bounds = art.alphaBounds;
+  const scale = Math.min(prop.width / bounds.width, prop.height / bounds.height);
+  return {
+    left: prop.x - (bounds.x + bounds.width / 2) * scale,
+    top: prop.y - (bounds.y + bounds.height) * scale,
+    width: art.sourceWidth * scale,
+    height: art.sourceHeight * scale,
+  };
+}
 export interface HomeworldCollision {
   readonly kind: "building" | "prop" | "npc";
   readonly id: string;

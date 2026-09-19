@@ -121,7 +121,7 @@ import {
   type PitTrainingSettingsPatch,
 } from "./systems/pitTraining";
 import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick, advancePitTrainingClock } from "./systems/pitTrainingClock";
-import { PIT_TRAINING_LESSONS, preparePitTrainingLesson, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
+import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, preparePitTrainingLesson, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
 import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import styles from "./PitCanvas.module.css";
@@ -1077,10 +1077,12 @@ export default function PitCanvas({
     if (combatRef.current?.rules.mode !== "training" || trainingLessonRef.current?.status === "success" ||
       trainingLessonRef.current?.status === "failed") return;
     const paused = !trainingClockRef.current.paused;
+    resetLiveInputs();
     trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, paused);
     setTrainingPaused(paused);
     setAriaAnnouncement(paused ? "Simulation gelée. Chaque avance consomme un seul tick à 60 Hz." : "Simulation reprise.");
-  }, []);
+    if (!paused) focusCombatRoot();
+  }, [focusCombatRoot, resetLiveInputs]);
 
   const advanceTrainingTick = useCallback(() => {
     if (combatRef.current?.rules.mode !== "training") return;
@@ -1179,6 +1181,12 @@ export default function PitCanvas({
   const startTrainingLesson = useCallback((id: PitTrainingLessonId) => {
     const current = combatRef.current;
     if (!current || current.rules.mode !== "training") return;
+    const availability = getPitTrainingLessonAvailability(current.fighters[0].definitionId, id);
+    if (!availability.available) {
+      setTrainingNotice(availability.reason ?? "Exercice indisponible.");
+      setAriaAnnouncement(availability.reason ?? "Exercice indisponible.");
+      return;
+    }
     const prepared = preparePitTrainingLesson(current, id);
     clearTrainingActivity();
     resetLiveInputs();
@@ -3047,6 +3055,9 @@ export default function PitCanvas({
             (descentAppliedResolution?.nodeId ?? terminalDescentRun.selectedNodeId),
         ) ?? null
     : null;
+  const trainingLessonChoices = PIT_TRAINING_LESSONS.map((lesson) => ({
+    ...lesson, ...getPitTrainingLessonAvailability(left.definitionId, lesson.id),
+  }));
   const frameReadouts = trainingRules && trainingSettings.showFrameData
     ? ([getPitTrainingFrameReadout(combat, 0), getPitTrainingFrameReadout(combat, 1)] as const)
     : null;
@@ -3484,11 +3495,15 @@ export default function PitCanvas({
               <span className={styles.trainingRecording}>F{combat.frame} · boutons accessibles avec Tab puis Entrée / Espace.</span>
             </div>
             <details className={styles.trainingLessons} open={trainingLesson !== null}>
-              <summary>Exercices guidés · {PIT_TRAINING_LESSONS.length} disponibles</summary>
+              <summary>Exercices guidés · {trainingLessonChoices.filter((lesson) => lesson.available).length} disponibles</summary>
               <div className={styles.trainingActions}>
-                {PIT_TRAINING_LESSONS.map((lesson) => <button key={lesson.id} type="button" className={styles.trainingButton}
+                {trainingLessonChoices.map((lesson) => <button key={lesson.id} type="button" className={styles.trainingButton}
+                  disabled={!lesson.available} aria-describedby={lesson.available ? undefined : "pit-training-unavailable-" + lesson.id}
                   onClick={() => startTrainingLesson(lesson.id)}>{lesson.label}</button>)}
               </div>
+              {trainingLessonChoices.filter((lesson) => !lesson.available).map((lesson) => (
+                <p key={lesson.id} id={"pit-training-unavailable-" + lesson.id}>{lesson.reason}</p>
+              ))}
               <p>Mannequin pédagogique : {trainingLesson ? rightDefinition.name : "Jungle Hunter ou City Hunter, selon votre combattant"}. Déchoppe : nouvel appui sur Projection dans les {PIT_THROW_TECH_WINDOW_FRAMES} ticks après la saisie. Au sol : repos, garde ou contre-saisie. Pas pendant une frappe, sa récupération ou un étourdissement par un coup.</p>
               {trainingLesson ? <div role="status" className={styles.lessonStatus} data-status={trainingLesson.status}>
                 <strong>{PIT_TRAINING_LESSONS.find((lesson) => lesson.id === trainingLesson.id)?.objective}</strong>
