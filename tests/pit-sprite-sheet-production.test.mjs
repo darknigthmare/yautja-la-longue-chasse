@@ -19,13 +19,13 @@ test("real V32/V33 PNGs prepare as distinct transparent cells and every register
   assert.equal(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).length, 3);
   assert.ok(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).every(clip => clip.facing === "left"));
   assert.equal(report.clips.filter(clip => clip.fighterId === "feral-hunter").length, 30);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "scar").length, 28);
+  assert.equal(report.clips.filter(clip => clip.fighterId === "scar").length, 30);
   assert.equal(report.clips.filter(clip => clip.fighterId === "celtic").length, 26);
   assert.equal(report.clips.some(clip => clip.fighterId === "celtic" && (clip.clipId === "idle" || clip.clipId === "walk")), false, "Missing idle and rejected forward gait must remain absent");
   assert.equal(report.clips.filter(clip => clip.fighterId === "tracker").length, 28);
   assert.equal(report.clips.filter(clip => clip.fighterId === "greyback").length, 28);
   assert.equal(report.clips.filter(clip => clip.fighterId === "theta").length, 26);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "machiko-noguchi").length, 24);
+  assert.equal(report.clips.filter(clip => clip.fighterId === "machiko-noguchi").length, 26);
   assert.equal(report.clips.filter(clip => clip.fighterId === "jungle-hunter" && clip.clipId === "walk-backward").length, 1);
   const berserker = report.clips.filter(clip => clip.fighterId === "berserker");
   assert.equal(berserker.length, 28);

@@ -4,6 +4,8 @@ import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState, type K
 import HunterRigPreview from "./HunterRigPreview";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { matchesControlAction } from "./systems/controlBindings";
+import { createAshGamepadState, stepAshGamepad, type AshPadContext } from "./systems/ashExpeditionInput";
+import { nextHomeworldDialogChoice } from "./systems/homeworldInput";
 import type { SaveGame } from "./types";
 import { ASH_MARCHES, ASH_POINTS, ashPlatforms, createAshExpedition, stepAshExpedition, nearestAshPoint, ashMarchesCompletion, type AshInput, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
 import { ashGrazerVisual } from "./systems/homeworldExpeditionVisuals";
@@ -44,9 +46,12 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
   const queued=useRef<AshInput>({});
   const blocked=suspended||paused||exitConfirm||delivery.status!=="idle";
   const blockedRef=useRef(blocked);
+  const inputContextRef=useRef({suspended,paused,exitConfirm,delivery:delivery.status});
+  const gamepadStateRef=useRef(createAshGamepadState());
+  useLayoutEffect(()=>{inputContextRef.current={suspended,paused,exitConfirm,delivery:delivery.status};},[suspended,paused,exitConfirm,delivery.status]);
   useLayoutEffect(()=>{blockedRef.current=blocked;},[blocked]);
   const bindings=save.settings.controlBindings;
-  const clearInputs=useCallback(()=>{held.current.clear();touches.current.clear();queued.current={};},[]);
+  const clearInputs=useCallback(()=>{held.current.clear();touches.current.clear();queued.current={};gamepadStateRef.current=createAshGamepadState();},[]);
   const focus=()=>rootRef.current?.focus({preventScroll:true});
   const deliver=useCallback(async()=>{
     if(deliveryBusy.current) return;
@@ -97,25 +102,48 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
   useEffect(()=>{if(blocked)clearInputs();},[blocked,clearInputs]);
   useEffect(()=>{
     let frame=0,last=performance.now(),accumulator=0;
-    let previousPad=[false,false,false,false];
     const tick=(now:number)=>{
       const elapsed=Math.min(100,Math.max(0,now-last));last=now;
-      const pad=navigator.getGamepads?.()[0];
-      const buttons=[Boolean(pad?.buttons[0]?.pressed),Boolean(pad?.buttons[2]?.pressed),Boolean(pad?.buttons[3]?.pressed),Boolean(pad?.buttons[9]?.pressed)];
-      if(buttons[3]&&!previousPad[3]&&!suspended)setPaused(value=>!value);
-      if(blockedRef.current){accumulator=0;previousPad=buttons;frame=requestAnimationFrame(tick);return;}
-      queued.current.jumpPressed ||= buttons[0]&&!previousPad[0];
-      queued.current.scanPressed ||= buttons[1]&&!previousPad[1];
-      queued.current.interactPressed ||= buttons[2]&&!previousPad[2];
-      previousPad=buttons;
+      const context=inputContextRef.current;
+      const ownsFocus=!document.hidden&&document.hasFocus()&&!!rootRef.current?.contains(document.activeElement);
+      const pad=Array.from(navigator.getGamepads?.()??[]).find(candidate=>candidate?.connected)??null;
+      const mode:AshPadContext=!ownsFocus||context.suspended||context.delivery==="saving"?"inactive"
+        :context.exitConfirm||context.delivery==="failed"?"dialog":context.paused?"paused":"world";
+      const inputPad=stepAshGamepad(gamepadStateRef.current,pad,mode);
+      gamepadStateRef.current=inputPad.state;
+      const nextFrame=()=>{accumulator=0;frame=requestAnimationFrame(tick);};
+      if(mode==="inactive"){
+        held.current.clear();touches.current.clear();queued.current={};nextFrame();return;
+      }
+      if(inputPad.pause){clearInputs();setPaused(!context.paused);nextFrame();return;}
+      if(inputPad.cancel){
+        clearInputs();
+        if(mode==="world")setExitConfirm(true);
+        else if(context.exitConfirm)setExitConfirm(false);
+        else if(context.delivery==="failed")setDelivery({status:"idle",message:""});
+        else setPaused(false);
+        nextFrame();return;
+      }
+      if(mode==="dialog"||mode==="paused"){
+        const buttons=Array.from(modalRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")??[]);
+        const selected=buttons.findIndex(button=>button===document.activeElement);
+        if(inputPad.menuDirection)buttons[nextHomeworldDialogChoice(selected,buttons.length,inputPad.menuDirection)]?.focus({preventScroll:true});
+        // A only activates an already focused choice. A held through a transition
+        // cannot silently choose an abandon or retry action in the next context.
+        if(inputPad.confirm){if(selected>=0){clearInputs();buttons[selected]?.click();}else buttons[0]?.focus({preventScroll:true});}
+        nextFrame();return;
+      }
+      if(blockedRef.current){nextFrame();return;}
+      queued.current.jumpPressed ||= inputPad.jump;
+      queued.current.scanPressed ||= inputPad.scan;
+      queued.current.interactPressed ||= inputPad.interact;
       accumulator+=elapsed;
       const before=stateRef.current;
       let current=before;
       while(accumulator+1e-8>=1000/60){
-        const left=bindings["hunt.moveLeft"].some(code=>held.current.has(code))||touches.current.has(-1)||Boolean(pad?.buttons[14]?.pressed);
-        const right=bindings["hunt.moveRight"].some(code=>held.current.has(code))||touches.current.has(1)||Boolean(pad?.buttons[15]?.pressed);
-        const axis=pad?.axes[0]??0;
-        const moveX=left===right?(Math.abs(axis)>.2?axis:0):left?-1:1;
+        const left=bindings["hunt.moveLeft"].some(code=>held.current.has(code))||touches.current.has(-1);
+        const right=bindings["hunt.moveRight"].some(code=>held.current.has(code))||touches.current.has(1);
+        const moveX=left===right?inputPad.moveX:left?-1:1;
         const input={...queued.current,moveX};queued.current={};
         current=stepAshExpedition(current,input);
         stateRef.current=current;
@@ -129,12 +157,16 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
     };
     frame=requestAnimationFrame(tick);
     return()=>cancelAnimationFrame(frame);
-    // The current simulation is read from its ref; no render restarts its clock.
-  },[bindings,suspended]);
+    // State lives in refs: a render cannot re-arm a held button or restart time.
+  },[bindings,clearInputs]);
   const keyDown=(event:KeyboardEvent<HTMLElement>)=>{
+    if(matchesControlAction("hunt.pause",event.nativeEvent,bindings)){
+      event.preventDefault();event.stopPropagation();
+      if(!event.repeat&&!suspended&&!exitConfirm&&delivery.status==="idle"){clearInputs();setPaused(value=>!value);}
+      return;
+    }
     if(event.target instanceof HTMLElement&&event.target.closest("button,input,select"))return;
-    if(event.code==="Escape"){event.preventDefault();event.stopPropagation();clearInputs();setPaused(value=>!value);return;}
-    if(blocked)return;
+    if(blocked||event.altKey||event.ctrlKey||event.metaKey)return;
     const action=(["hunt.moveLeft","hunt.moveRight","hunt.jump","hunt.scan","hunt.interact"] as const).find(id=>matchesControlAction(id,event,bindings));
     if(!action)return;
     event.preventDefault();event.stopPropagation();held.current.add(event.code);
@@ -189,7 +221,7 @@ export default function HomeworldExpedition({save,suspended=false,onComplete,onE
       <button onClick={()=>queue({jumpPressed:true})}>Saut · {controlActionShortcut("hunt.jump",bindings)}</button>
       <button onClick={()=>queue({scanPressed:true})}>Scanner · {controlActionShortcut("hunt.scan",bindings)}</button>
       <button onClick={()=>queue({interactPressed:true})}>{point?.id==="extraction"&&complete?"Rapporter au port":point?"Interagir : "+point.label:"Interagir"} · {controlActionShortcut("hunt.interact",bindings)}</button>
-      <small>Stick : marcher · A : saut · X : scanner · Y : interaction. Créature territoriale à contourner ; visuels existants réutilisés.</small>
+      <small>Stick : marcher · A : saut/valider · X : scanner · Y : interaction · B : retour/annuler · Start : pause. Créature territoriale à contourner ; visuels existants réutilisés.</small>
     </footer>
   </section>;
 }

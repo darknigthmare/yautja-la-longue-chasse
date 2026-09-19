@@ -12,7 +12,7 @@
     },
     "hunters": {
       "runtimeFighters": 11,
-      "validatedClips": 259,
+      "validatedClips": 263,
       "initialFamiliesPerDesign": 10,
       "completeMovesets": 0
     },
@@ -26,7 +26,7 @@
   },
   "totals": {
     "arena": 288,
-    "hunter": 148,
+    "hunter": 149,
     "vehicle": 114
   },
   "entries": [
@@ -16716,7 +16716,7 @@
       "category": "hunter",
       "name": "scar · walk-backward",
       "src": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
-      "status": "validated",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
@@ -16736,9 +16736,8 @@
         }
       },
       "notes": [
-        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation; not certified 1:1.",
-        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
-        "Contact poses and near/far support legs alternate. Pelvis-projected walking pivots manually reviewed."
+        "V40 : marche avant par lecture temporelle inverse [0,3,2,1] des huit dessins de recul corrigé V34, sans miroir ni nouveau dessin.",
+        "Recul existant conservé. Boucle courte de quatre appuis, pas de moveset complet ni de nouvelle marche dessinée sur mesure."
       ],
       "frames": [
         {
@@ -16892,8 +16891,161 @@
           "durationTicks": 8,
           "runtimeFrameAccepted": true,
           "phase": "walk-backward"
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            45,
+            39,
+            265,
+            432
+          ],
+          "pivot": [
+            140,
+            428
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1201,
+            32,
+            265,
+            438
+          ],
+          "pivot": [
+            119,
+            434
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            810,
+            38,
+            258,
+            433
+          ],
+          "pivot": [
+            136,
+            429
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            430,
+            29,
+            261,
+            442
+          ],
+          "pivot": [
+            137,
+            438
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            61,
+            537,
+            256,
+            436
+          ],
+          "pivot": [
+            139,
+            432
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            1206,
+            531,
+            255,
+            438
+          ],
+          "pivot": [
+            130,
+            434
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            825,
+            537,
+            256,
+            434
+          ],
+          "pivot": [
+            135,
+            430
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "scar-repair-walk-backward-support",
+          "rect": [
+            426,
+            531,
+            271,
+            441
+          ],
+          "pivot": [
+            159,
+            437
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V40"
     },
     {
       "id": "v34-scar-repair-walk-forward-cycle",
@@ -30644,6 +30796,102 @@
           "durationTicks": 60,
           "facing": "left",
           "phase": "high-guard"
+        }
+      ]
+    },
+    {
+      "id": "v34-machiko-noguchi-machiko-noguchi-high-guard-v40",
+      "category": "hunter",
+      "name": "Machiko Noguchi · Garde haute · deux orientations · quatre dessins",
+      "src": "/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+      "status": "integrated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cb1039609eb409aa1237cd1e59dd7f36e8a322ca9fe553cf37ec0d661267a51b",
+      "transparency": {
+        "mode": "alpha"
+      },
+      "notes": [
+        "Garde haute OpenAI V40 : deux poses par orientation, fusil tenu à deux mains et canon unique. Aucun miroir.",
+        "PNG alpha natif conservé à l’identique ; rectangles mesurés aux bords alpha nuls pour exclure le bruit lointain du master.",
+        "Fusil/canon légèrement plus massifs que V34 ; fidélité officielle 1:1 non certifiée. Garde basse et réaction au blocage restent absentes."
+      ],
+      "frames": [
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            332,
+            45,
+            309,
+            469
+          ],
+          "pivot": [
+            133.5,
+            458
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            924,
+            43,
+            308,
+            472
+          ],
+          "pivot": [
+            132.75,
+            461
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            304,
+            526,
+            307,
+            453
+          ],
+          "pivot": [
+            170.75,
+            448
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-high-guard-v40",
+          "rect": [
+            912,
+            525,
+            292,
+            454
+          ],
+          "pivot": [
+            158.25,
+            449
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "runtimeFrameAccepted": true
         }
       ]
     }

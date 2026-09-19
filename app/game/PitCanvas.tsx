@@ -12,6 +12,7 @@ import {
 } from "react";
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
+import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, PIT_ARENA_BITMAP_PLANES, type PitArenaArtBank } from "./pitArenaRendering";
@@ -982,6 +983,7 @@ export default function PitCanvas({
   const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
   const menuGamepadRef = useRef({ previous: Array.from({ length: 8 }, () => false), ready: false });
   const combatGamepadReadyRef = useRef<[boolean, boolean]>([false, false]);
+  const gamepadAssignmentsRef = useRef(createPitGamepadAssignments());
   const reportedMatchFrameRef = useRef<number | null>(null);
   const matchResultIdRef = useRef("");
   const recorderRef = useRef<PitReplayRecorder | null>(null);
@@ -1085,6 +1087,39 @@ export default function PitCanvas({
   const focusCombatRoot = useCallback(() => {
     window.requestAnimationFrame(() => rootRef.current?.focus({ preventScroll: true }));
   }, []);
+
+  const readAssignedGamepads = useCallback(() => {
+    const previous = gamepadAssignmentsRef.current;
+    const resolved = resolvePitGamepadAssignments(previous, navigator.getGamepads?.() ?? []);
+    gamepadAssignmentsRef.current = resolved.assignments;
+    for (const player of [0, 1] as const) {
+      if (previous[player]?.revision !== resolved.assignments[player]?.revision) {
+        combatGamepadReadyRef.current[player] = false;
+        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 8 }, () => false), ready: false };
+      }
+    }
+    return resolved;
+  }, []);
+
+  useEffect(() => {
+    const onDisconnected = (event: GamepadEvent) => {
+      gamepadAssignmentsRef.current = disconnectPitGamepadAssignment(gamepadAssignmentsRef.current, event.gamepad.index, event.gamepad.id);
+      resetLiveInputs();
+      menuGamepadRef.current = { previous: Array.from({ length: 8 }, () => false), ready: false };
+    };
+    window.addEventListener("gamepaddisconnected", onDisconnected);
+    return () => window.removeEventListener("gamepaddisconnected", onDisconnected);
+  }, [resetLiveInputs]);
+
+  const toggleHelp = useCallback(() => {
+    setShowHelp(!showHelp);
+    if (showHelp) { resetLiveInputs(); focusCombatRoot(); }
+  }, [focusCombatRoot, resetLiveInputs, showHelp]);
+
+  const toggleTrainingTools = useCallback(() => {
+    setShowTrainingTools(!showTrainingTools);
+    if (showTrainingTools) { resetLiveInputs(); focusCombatRoot(); }
+  }, [focusCombatRoot, resetLiveInputs, showTrainingTools]);
 
   const changeTrainingActivity = useCallback((next: PitTrainingActivity) => {
     trainingActivityRef.current = next;
@@ -1260,9 +1295,12 @@ export default function PitCanvas({
 
   useEffect(() => {
     if (trainingLesson?.status !== "briefing") return;
-    let frame = 0, armed = false, previousA = false, previousB = false;
+    let frame = 0, armed = false, previousA = false, previousB = false, padRevision: number | undefined;
     const poll = () => {
-      const pad = navigator.getGamepads?.().find(Boolean);
+      const assigned = readAssignedGamepads();
+      const pad = assigned.pads[0];
+      if (padRevision !== assigned.assignments[0]?.revision) armed = false;
+      padRevision = assigned.assignments[0]?.revision;
       const a = Boolean(pad?.buttons[0]?.pressed), b = Boolean(pad?.buttons[1]?.pressed);
       if (!pad) armed = false;
       else if (!armed) armed = pad.buttons.every(button => !button.pressed) && pad.axes.every(axis => Math.abs(axis) < .32);
@@ -1273,7 +1311,7 @@ export default function PitCanvas({
     };
     frame = window.requestAnimationFrame(poll);
     return () => window.cancelAnimationFrame(frame);
-  }, [beginPreparedTrainingLesson, resetTraining, trainingLesson?.status]);
+  }, [beginPreparedTrainingLesson, readAssignedGamepads, resetTraining, trainingLesson?.status]);
 
   const beginRecording = useCallback((next: PitCombatState) => {
     try {
@@ -1298,6 +1336,12 @@ export default function PitCanvas({
     descentRunState?: PitDescentRun,
     descentNode?: PitDescentNode,
   ) => {
+    if (playerId === opponentId) {
+      const message = "Choisissez deux combattants différents pour entrer dans l’arène.";
+      setReplayNotice(message);
+      setAriaAnnouncement(message);
+      return;
+    }
     let next = createPitCombatState(playerId, opponentId, {
       mode: nextMode === "training" ? "training" : "match",
       arenaId: nextArenaId,
@@ -1686,6 +1730,8 @@ export default function PitCanvas({
     setDescentCombatPresentation(null);
     setDescentResourceFeedback(null);
     resetLiveInputs();
+    gamepadAssignmentsRef.current = createPitGamepadAssignments();
+    menuGamepadRef.current = { previous: Array.from({ length: 8 }, () => false), ready: false };
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
@@ -2038,7 +2084,7 @@ export default function PitCanvas({
     }
     let requestId = 0;
     const pollMenuGamepad = () => {
-      const gamepad = navigator.getGamepads?.().find(Boolean) ?? null;
+      const gamepad = readAssignedGamepads().pads[0];
       const current = gamepad
         ? [
             Boolean(gamepad.buttons[14]?.pressed) || (gamepad.axes[0] ?? 0) < -0.65,
@@ -2128,7 +2174,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [arcadePersistence.status, availableReplay, changePitMode, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
+  }, [arcadePersistence.status, availableReplay, changePitMode, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
   const simulationRunning = combat !== null && combat.phase !== "match-over" &&
     (!playbackReplay || !replayEnded);
@@ -2169,11 +2215,12 @@ export default function PitCanvas({
           }
           inputs = replayTick.value.inputs;
         } else {
-          const gamepads = navigator.getGamepads?.() ?? [];
+          const gamepads = readAssignedGamepads().pads;
           const keyboardOne = pitInputFromControlCodes(1, pressedKeysRef.current, controlBindings);
           const touchOne = pitInputFromControlCodes(1, touchInputsRef.current[0], controlBindings);
           const firstPadInput = readGamepad(gamepads[0] ?? null);
-          if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
+          if (!gamepads[0]) combatGamepadReadyRef.current[0] = false;
+          else if (!combatGamepadReadyRef.current[0] && isNeutralInput(firstPadInput)) {
             combatGamepadReadyRef.current[0] = true;
           }
           let firstInput = mergeInputs(
@@ -2225,7 +2272,8 @@ export default function PitCanvas({
             const keyboardTwo = pitInputFromControlCodes(2, pressedKeysRef.current, controlBindings);
             const touchTwo = pitInputFromControlCodes(2, touchInputsRef.current[1], controlBindings);
             const secondPadInput = readGamepad(gamepads[1] ?? null);
-            if (!combatGamepadReadyRef.current[1] && isNeutralInput(secondPadInput)) {
+            if (!gamepads[1]) combatGamepadReadyRef.current[1] = false;
+            else if (!combatGamepadReadyRef.current[1] && isNeutralInput(secondPadInput)) {
               combatGamepadReadyRef.current[1] = true;
             }
             secondInput = mergeInputs(
@@ -2317,7 +2365,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(requestId);
-  }, [changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, replayEnded, simulationRunning]);
+  }, [changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, readAssignedGamepads, replayEnded, simulationRunning]);
 
   useEffect(() => {
     if (!combat || !canvasRef.current) return;
@@ -2627,8 +2675,10 @@ export default function PitCanvas({
               disabled={runTransitionSelectionLocked}
               onChange={(event) => {
                 const selected = event.target.value as PitVersusFighterId;
+                if (!isPitVersusFighterId(selected)) return;
                 if (!canPitFighterEnterMode(selected, mode)) setMode("cpu");
                 setLeftId(selected);
+                setReplayNotice("");
                 if (selected === rightId) {
                   setRightId(PIT_VERSUS_FIGHTER_IDS.find((fighterId) => fighterId !== selected) ?? "berserker");
                 }
@@ -2664,7 +2714,17 @@ export default function PitCanvas({
                 aria-label="Adversaire"
                 value={rightId}
                 disabled={runTransitionSelectionLocked}
-                onChange={(event) => setRightId(event.target.value as PitVersusFighterId)}
+                onChange={(event) => {
+                  const selected = event.target.value;
+                  if (!isPitVersusFighterId(selected) || selected === leftId) {
+                    const message = "Choisissez un adversaire différent du combattant joueur.";
+                    setReplayNotice(message);
+                    setAriaAnnouncement(message);
+                    return;
+                  }
+                  setRightId(selected);
+                  setReplayNotice("");
+                }}
               >
                 {PIT_VERSUS_FIGHTER_IDS.map((fighterId) => (
                   <option key={fighterId} value={fighterId} disabled={fighterId === leftId}>
@@ -3014,7 +3074,7 @@ export default function PitCanvas({
                 ? retryRunTransition
                 : startMatch
             }
-            disabled={runTransitionPersistence.status === "pending"}
+            disabled={runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId)}
             aria-keyshortcuts="Enter Space"
             data-gamepad-shortcut="A"
           >
@@ -3160,7 +3220,7 @@ export default function PitCanvas({
         {activeAriaAnnouncement}
       </div>
       <header className={styles.matchHeader} inert={terminal}>
-        <button type="button" className={styles.utilityButton} aria-expanded={showHelp} onClick={() => setShowHelp((value) => !value)}>
+        <button type="button" className={styles.utilityButton} aria-expanded={showHelp} onClick={toggleHelp}>
           {showHelp ? "Masquer les commandes" : "Commandes"}
         </button>
         <span>
@@ -3181,7 +3241,7 @@ export default function PitCanvas({
           {reducedCameraMotion ? " · CAMÉRA FIXE" : ""}
         </span>
         {trainingRules && !playbackReplay ? (
-          <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={() => setShowTrainingTools((value) => !value)}>
+          <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>
             {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
           </button>
         ) : null}
@@ -3691,7 +3751,7 @@ export default function PitCanvas({
               ) : null}
             </>
           )}
-          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection / déchoppe · Select Traque</span></div>
+          <div><strong>MANETTE · RETOUR {shortcuts.pause}</strong><span>Stick/D-pad · A saut · X/Y/B/RB attaques · LB/LT gardes · RT projection / déchoppe · Select Traque. Rôles J1/J2 réservés jusqu’au retour à la sélection ; après reconnexion, relâchez les commandes avant de jouer.</span></div>
         </aside>
       ) : null}
 

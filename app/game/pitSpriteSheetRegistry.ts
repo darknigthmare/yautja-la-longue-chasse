@@ -12194,5 +12194,279 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "scar",
+    "bodyHeightPx": 405,
+    "pageBodyHeightPx": {
+      "scar-repair-walk-backward-support": 405
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-walk-forward-v40",
+      "characterId": "scar",
+      "variantId": "the-pit-v34-v5-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-repair-walk-backward-support",
+          "src": "/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                45,
+                39,
+                265,
+                432
+              ],
+              "pivot": [
+                140,
+                428
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1201,
+                32,
+                265,
+                438
+              ],
+              "pivot": [
+                119,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                810,
+                38,
+                258,
+                433
+              ],
+              "pivot": [
+                136,
+                429
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                430,
+                29,
+                261,
+                442
+              ],
+              "pivot": [
+                137,
+                438
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                61,
+                537,
+                256,
+                436
+              ],
+              "pivot": [
+                139,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                1206,
+                531,
+                255,
+                438
+              ],
+              "pivot": [
+                130,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                825,
+                537,
+                256,
+                434
+              ],
+              "pivot": [
+                135,
+                430
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "scar-repair-walk-backward-support",
+              "rect": [
+                426,
+                531,
+                271,
+                441
+              ],
+              "pivot": [
+                159,
+                437
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "machiko-noguchi",
+    "bodyHeightPx": 454,
+    "pageBodyHeightPx": {
+      "machiko-noguchi-high-guard-v40": 454
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "machiko-noguchi-high-guard-v40",
+      "characterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "machiko-noguchi-high-guard-v40",
+          "src": "/game/sprites/v40/pit/machiko-noguchi/high-guard.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha"
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                332,
+                45,
+                309,
+                469
+              ],
+              "pivot": [
+                133.5,
+                458
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                924,
+                43,
+                308,
+                472
+              ],
+              "pivot": [
+                132.75,
+                461
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                304,
+                526,
+                307,
+                453
+              ],
+              "pivot": [
+                170.75,
+                448
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "machiko-noguchi-high-guard-v40",
+              "rect": [
+                912,
+                525,
+                292,
+                454
+              ],
+              "pivot": [
+                158.25,
+                449
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

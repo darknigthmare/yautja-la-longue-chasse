@@ -13,3 +13,14 @@ test('playback uses real engine phase time and the renderer agrees at every tick
  }
  const hit=p.getPitLabDefinitions('tracker')[0].atlas.clips.find(c=>c.id==='pit.stand.hitstun');assert.equal(hit.frames.reduce((sum,_,i)=>sum+p.getPitLabFrameTicks('tracker',hit,i),0),40);
 });
+
+
+test('V40 keeps reused Scar drawings deduplicated and native Machiko guards separately oriented',()=>{
+ const scar=p.getPitLabCoverage('scar');assert.equal(scar.clips,30);assert.equal(scar.drawings,62);
+ const forward=p.getPitLabDefinitions('scar').find(d=>d.atlas.id==='scar-walk-forward-v40');
+ const backward=p.getPitLabDefinitions('scar').flatMap(d=>d.atlas.clips).filter(c=>c.id==='walk-backward');
+ for(const clip of forward.atlas.clips){const source=backward.find(c=>c.facing===clip.facing);assert.deepEqual(clip.frames.map(f=>f.rect),[0,3,2,1].map(i=>source.frames[i].rect));}
+ const human=p.getPitLabDefinitions('machiko-noguchi').flatMap(d=>d.atlas.clips).filter(c=>c.id==='high-guard');
+ assert.equal(human.length,2);assert.deepEqual(new Set(human.map(c=>c.facing)),new Set(['left','right']));
+ assert(human.every(c=>c.frames.length===2));assert.notDeepEqual(human[0].frames.map(f=>f.rect),human[1].frames.map(f=>f.rect));
+});
