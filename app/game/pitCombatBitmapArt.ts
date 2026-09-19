@@ -69,9 +69,11 @@ export function getPitCombatBitmapVisualBounds(
   groundY: number,
   registry: readonly PitSpriteSheetAnimationDefinition[] = PIT_SPRITE_SHEET_REGISTRY,
 ): { x: number; y: number; width: number; height: number } | null {
-  const art = getPitCombatBitmapArtDefinition(fighter.definitionId);
-  if (!art || ![fighter.x, fighter.y, groundY].every(Number.isFinite) ||
+  if (![fighter.x, fighter.y, groundY].every(Number.isFinite) ||
     (fighter.facing !== 1 && fighter.facing !== -1)) return null;
+  const art = getPitCombatBitmapArtDefinition(fighter.definitionId);
+  // Atlas-only duelists still need their full authored silhouette in the camera envelope.
+  if (!art) return getPitSpriteSheetAnimationVisualBounds(fighter, groundY, registry);
   const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / (art.pivot[1] - art.bodyTopY);
   const direction = art.nativeFacing === "right" ? fighter.facing : 1;
   const bounds = {
@@ -110,7 +112,10 @@ export function getPitCombatBitmapFighterArtStatus(
 
 export function getPitCombatBitmapArtStatus(bank: PitCombatBitmapArtBank | null, id: PitFighterId): PitCombatBitmapArtStatus {
   const definition = getPitCombatBitmapArtDefinition(id);
-  if (!definition) return "missing";
+  if (!definition) {
+    const atlasOnly = PIT_SPRITE_SHEET_REGISTRY.some(entry => entry.fighterId === id && entry.atlas.status === "validated");
+    return atlasOnly && (!bank || !bank.requestedIds.has(id)) ? "loading" : "missing";
+  }
   if (!bank || !bank.requestedIds.has(id)) return "loading";
   const image = bank.images.get(id);
   return !bank.cancelled && bank.readyIds.has(id) && image?.complete &&

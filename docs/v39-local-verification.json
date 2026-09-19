@@ -1,0 +1,604 @@
+{
+  "version": "V39",
+  "checkedAt": "2026-09-19T19:55:54.379Z",
+  "status": "passed-local",
+  "commands": {
+    "build": {
+      "exitCode": 0,
+      "engine": "Vinext",
+      "environment": "YAUTJA_KEEP_BUILD_ROOT=1",
+      "output": "Verified pre-cleaned existing D: output junction"
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "note": "Pre-existing ClanChroniclePanel native image warning"
+    },
+    "tests": {
+      "total": 1299,
+      "passed": 1299,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "browser": {
+    "humans": {
+      "passed": true,
+      "version": "V39",
+      "checkedAt": "2026-09-19T19:52:58.421Z",
+      "url": "http://127.0.0.1:4174",
+      "labChecks": [
+        {
+          "fighter": "theta",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "crouch",
+          "facing": "right",
+          "drawings": 3
+        },
+        {
+          "fighter": "theta",
+          "clip": "crouch",
+          "facing": "left",
+          "drawings": 3
+        },
+        {
+          "fighter": "theta",
+          "clip": "high-guard",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "high-guard",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.hitstun",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.hitstun",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.light.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "theta",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "jungle-hunter",
+          "clip": "walk-backward",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "idle",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "idle",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "crouch",
+          "facing": "right",
+          "drawings": 3
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "crouch",
+          "facing": "left",
+          "drawings": 3
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.hitstun",
+          "facing": "right",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.hitstun",
+          "facing": "left",
+          "drawings": 4
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.light.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.medium.recovery",
+          "facing": "left",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.active",
+          "facing": "right",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "drawings": 2
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.startup",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.active",
+          "facing": "left",
+          "drawings": 1
+        },
+        {
+          "fighter": "machiko-noguchi",
+          "clip": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "drawings": 2
+        }
+      ],
+      "combatChecks": [
+        {
+          "player": "theta",
+          "opponent": "machiko-noguchi",
+          "attacks": [
+            "light",
+            "medium",
+            "heavy"
+          ],
+          "opponentReaction": true,
+          "crouch": true
+        },
+        {
+          "player": "machiko-noguchi",
+          "opponent": "theta",
+          "attacks": [
+            "light",
+            "medium",
+            "heavy"
+          ],
+          "opponentReaction": true,
+          "crouch": true
+        },
+        {
+          "fighter": "jungle-hunter",
+          "action": "walk-backward",
+          "facing": "left",
+          "distinctDrawings": 4,
+          "movedRight": true
+        }
+      ],
+      "mobileNoOverflow": true,
+      "errors": [],
+      "failures": [],
+      "limitations": [
+        "Keyboard and browser only; no hardware controller or complete moveset certification.",
+        "Jungle retreat reuses four drawings in reversed playback, not new generated images."
+      ]
+    },
+    "briefing": {
+      "passed": true,
+      "checkedAt": "2026-09-19T19:48:37.944Z",
+      "url": "http://127.0.0.1:4174/",
+      "version": "V39",
+      "checks": [
+        {
+          "name": "cold-loading-and-reading",
+          "heldRequests": 5,
+          "frameBeforeStart": 0,
+          "noManualBypass": true
+        },
+        {
+          "name": "explicit-keyboard-start",
+          "realLowBlocks": 3,
+          "focusRestored": true
+        },
+        {
+          "name": "gamepad-rearm-retry-cancel",
+          "heldARejected": true,
+          "freshAStarts": true,
+          "bReturnsToFreeTraining": true
+        },
+        {
+          "name": "failed-art-mobile-touch",
+          "explicitWarning": true,
+          "explicitTouchStart": true,
+          "noOverflowAt390": true
+        },
+        {
+          "name": "atlas-only-briefing",
+          "fighterId": "theta",
+          "status": "sprite-sheet-animation",
+          "canBegin": true,
+          "frame": 0
+        },
+        {
+          "name": "atlas-only-briefing",
+          "fighterId": "machiko-noguchi",
+          "status": "sprite-sheet-animation",
+          "canBegin": true,
+          "frame": 0
+        }
+      ],
+      "errors": [],
+      "failures": [],
+      "intentionallyFailedImages": [
+        "http://127.0.0.1:4174/game/sprites/v32/pit/city-hunter-idle.png",
+        "http://127.0.0.1:4174/game/sprites/v32/pit/city-hunter-light.png",
+        "http://127.0.0.1:4174/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+        "http://127.0.0.1:4174/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+        "http://127.0.0.1:4174/game/sprites/v31/film-plates/city-hunter.png"
+      ],
+      "existingSaveUnchanged": true
+    },
+    "homeworld": {
+      "passed": true,
+      "expectedVersion": "V39",
+      "checkedAt": "2026-09-19T19:48:36.096Z",
+      "url": "http://127.0.0.1:4174",
+      "checks": [
+        "Initial held stick/A blocked; neutral then a new direction moves the actor.",
+        "Returning focus with stick/A held neither walks nor opens a dialogue.",
+        "Real ship dialogue opens once, Up/Down wrap correctly, B closes without leaking movement.",
+        "Start pauses/resumes after release; held Start and direction stay blocked until the next intentional input.",
+        "Window-blur inactivity resumes with one deliberate Start press after release.",
+        "Actual Enforcer service opens/closes without losing position or replaying a held direction; progression/inventory/trophies unchanged."
+      ],
+      "errors": [],
+      "failures": [],
+      "scope": "Real Homeworld component with virtual navigator.getGamepads input and controlled clock; no physical controller certification, no save injection.",
+      "initialMovement": {
+        "entry": {
+          "x": 430,
+          "y": 2210
+        },
+        "after": {
+          "x": 462,
+          "y": 2210
+        },
+        "focus": {
+          "ownsFocus": true,
+          "windowFocused": true,
+          "hidden": false,
+          "activeTag": "DIV",
+          "activeLabel": "QUARTIER 01Port des ChassesQUARTIER 02Marché des ClansQUARTIER 03Forges ProfondesQUARTIER 04Sous-Cit",
+          "pad": {
+            "connected": true,
+            "id": "Homeworld V39 virtual QA",
+            "index": 0,
+            "axes": [
+              0,
+              0
+            ],
+            "buttons": [
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              },
+              {
+                "pressed": false,
+                "touched": false,
+                "value": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "logs": [
+    {
+      "file": "final-tests.log",
+      "sha256": "ac285a5cf0039dfb24164a2354411a4cf583d6aed566db3461d908827593b435"
+    },
+    {
+      "file": "final-build.log",
+      "sha256": "3e2d25b441dbfc356fde07e41fb4f28364dd4acb117c1e6943209d20e3949452"
+    },
+    {
+      "file": "typecheck.log",
+      "sha256": "fdd4010a5801a43e17e176b5cba5a4bd7484d414d207b9c36a14c36597cfde8e"
+    },
+    {
+      "file": "lint.log",
+      "sha256": "47f9ac92edcaa5111986f392eabf0cfbdfc37101c3dd2735ba9d737f29e0d51a"
+    }
+  ],
+  "coverage": {
+    "selectableFighters": 16,
+    "animatedFighters": 11,
+    "validatedOrientedClips": 259,
+    "addedClips": 51,
+    "completeMovesets": 0,
+    "playableArenas": 20,
+    "requestedArenas": 100,
+    "newGeneratedImages": 0,
+    "reviewSourceImages": 550
+  },
+  "visualReview": {
+    "thetaFramesAndCombat": true,
+    "machikoNative120AndCombat": true,
+    "selectionFacingsAndNoFalseMissingNotice": true,
+    "jungleBackwardLeftLive": true,
+    "homeworld390": true
+  },
+  "limitations": [
+    "Atlas-only human extension has CPU/local/training only; historical campaign routes unchanged.",
+    "Machiko guard and both human walks/jump phases remain unapproved or incomplete.",
+    "Jungle left retreat reuses four frames in reversed playback; no new source art.",
+    "Browser and virtual gamepad QA, not physical controller or Steam Deck certification; Windows package remains V35."
+  ]
+}

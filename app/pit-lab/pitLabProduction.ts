@@ -6,7 +6,7 @@ export const PIT_LAB_FIGHTER_IDS = PIT_VERSUS_FIGHTER_IDS;
 export function getPitLabDefinitions(id: PitFighterId) { return PIT_SPRITE_SHEET_REGISTRY.filter(d => d.fighterId === id && d.atlas.status === 'validated'); }
 export function getPitLabCoverage(id: PitFighterId) {
  const definitions=getPitLabDefinitions(id), clips=definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated'));
- return { fighterId:id, atlasCount:definitions.length, sourcePages:new Set(definitions.flatMap(d=>d.atlas.pages.map(p=>p.src))).size, clips:clips.length, rightClips:clips.filter(c=>c.facing==='right').length, leftClips:clips.filter(c=>c.facing==='left').length, drawings:new Set(clips.flatMap(c=>c.frames.map(f=>f.pageId+':'+f.rect.join(',')))).size };
+ return { fighterId:id, atlasCount:definitions.length, sourcePages:new Set(definitions.flatMap(d=>d.atlas.pages.map(p=>p.src))).size, clips:clips.length, rightClips:clips.filter(c=>c.facing==='right').length, leftClips:clips.filter(c=>c.facing==='left').length, drawings:new Set(definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated').flatMap(c=>c.frames.map(f=>(d.atlas.pages.find(p=>p.id===f.pageId)?.src??f.pageId)+':'+f.rect.join(','))))).size };
 }
 /** The authored phase weights are stretched across the engine's real 60 Hz phase. */
 export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasClip, frameIndex: number): number {

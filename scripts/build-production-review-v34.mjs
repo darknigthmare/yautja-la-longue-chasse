@@ -27,7 +27,7 @@ function provenanceFiles(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap(item => item.isDirectory() ? provenanceFiles(path.join(directory, item.name))
     : /provenance.*\.json$/.test(item.name) ? [path.join(directory, item.name)] : []);
 }
-for (const [category, directory] of [['hunter', 'art-source/v34/pit'], ['vehicle', 'art-source/v34/vehicles'], ['hunter', 'docs/art/v37'], ['hunter', 'docs/art/v38']]) {
+for (const [category, directory] of [['hunter', 'art-source/v34/pit'], ['vehicle', 'art-source/v34/vehicles'], ['hunter', 'docs/art/v37'], ['hunter', 'docs/art/v38'], ['hunter', 'docs/art/v39']]) {
   for (const file of provenanceFiles(directory).sort()) {
     const manifest = read(file);
     for (const asset of manifest.assets ?? []) {

@@ -1,12 +1,12 @@
 import { getPitFirstEditionFighter, isPitFirstEditionFighterId, PIT_FIRST_EDITION_FIGHTER_IDS, type PitEditionFighterDefinition, type PitEditionMoveDefinition, type PitEditionTechniqueDefinition, type PitFirstEditionFighterId, type PitFirstEditionCombatantId } from './pitFirstEdition';
 
 /** Separate duel roster: no entry is added to a first-edition progression table. */
-export const PIT_EXPANSION_FIGHTER_IDS = ['tracker', 'greyback'] as const;
+export const PIT_EXPANSION_FIGHTER_IDS = ['tracker', 'greyback', 'theta', 'machiko-noguchi'] as const;
 export type PitExpansionFighterId = typeof PIT_EXPANSION_FIGHTER_IDS[number];
 export type PitVersusFighterId = PitFirstEditionFighterId | PitExpansionFighterId;
 export const PIT_VERSUS_FIGHTER_IDS = [...PIT_FIRST_EDITION_FIGHTER_IDS, ...PIT_EXPANSION_FIGHTER_IDS] as const;
 export type PitExpansionFighterDefinition = Omit<PitEditionFighterDefinition, 'id' | 'rivalId'> & {readonly id: PitExpansionFighterId; readonly rivalId: null; readonly variantId: string; readonly progressionAvailable: false};
-export function isPitExpansionFighterId(id: unknown): id is PitExpansionFighterId { return id === 'tracker' || id === 'greyback'; }
+export function isPitExpansionFighterId(id: unknown): id is PitExpansionFighterId { return typeof id === 'string' && (PIT_EXPANSION_FIGHTER_IDS as readonly string[]).includes(id); }
 export function isPitVersusFighterId(id: unknown): id is PitVersusFighterId { return isPitFirstEditionFighterId(id) || isPitExpansionFighterId(id); }
 export function canPitFighterEnterMode(id: unknown, mode: string): boolean { return isPitFirstEditionFighterId(id) || (isPitExpansionFighterId(id) && ['cpu','local','training'].includes(mode)); }
 
@@ -42,5 +42,18 @@ export const PIT_EXPANSION_FIGHTERS: Readonly<Record<PitExpansionFighterId,PitEx
   attacks:{light:move('light','Direct du poing droit',[5,3,10,53,15,8,52,38,14]),medium:move('medium','Coup de pied frontal',[9,4,16,80,21,12,79,44,23]),heavy:move('heavy','Heurt à l’épaule',[15,5,25,119,29,17,49,48,37]),technique:move('technique','Riposte de l’ancien',[7,18,23,78,26,14,54,50,27])},technique:counter('greyback-elder-parry','code-parry'),
   arcadeIntro:'L’ancien démasqué de Predator 2, distinct de Golden Angel jeune et de l’Elder d’AVP. Sa présentation V5 conserve le silex dans la main gauche et le canon d’épaule. Dans ce lot, ces armes restent inactives ; coups de poing, pied et épaule sont des adaptations de jeu.',arcadeEnding:'Chronique personnelle non produite : Arcade, Circuit et Descente indisponibles.'
  }
+ ,theta: {
+  id:'theta',variantId:'marvel-2023-gold-armor-unmasked',name:'Theta',epithet:'La chasseuse de prédateurs',sourcePresetId:'theta',sourceWork:'Predator · comics Marvel · présentation dorée V28 du projet',continuity:'expanded',archetype:'duelist',selectable:true,runtimeStatus:'authored',rivalId:null,difficulty:3,progressionAvailable:false,
+  maxHealth:940,walkSpeed:4.8,airSpeed:3.2,jumpSpeed:12.3,power:1,bodyWidth:47,bodyHeight:108,crouchHeight:68,palette:{primary:'#c8a24b',secondary:'#302c26',accent:'#ead99c'},
+  attacks:{light:move('light','Estoc à la lame',[5,3,11,53,16,9,66,40,16]),medium:move('medium','Taille horizontale',[10,4,18,84,23,13,88,46,24]),heavy:{...move('heavy','Taille ascendante',[16,5,26,119,30,18,78,78,34]),antiAir:true,launchY:6.2},technique:move('technique','Contre à la lame',[8,18,24,76,24,14,58,48,25])},technique:counter('theta-blade-counter','counter-blade'),
+  arcadeIntro:'Humaine des comics Predator de Marvel. L’armure dorée et la lame reprennent la présentation V28 du projet, sans certification de fidélité 1:1. Ses coups et son contre sont des adaptations originales pour le duel ; les actions encore sans dessins gardent une pose signalée.',arcadeEnding:'Chronique personnelle non produite : Arcade, Circuit et Descente indisponibles.'
+ },
+ 'machiko-noguchi': {
+  id:'machiko-noguchi',variantId:'machiko-clan-armor',name:'Machiko Noguchi',epithet:'La chasseuse humaine du clan',sourcePresetId:'machiko-noguchi',sourceWork:'Aliens vs. Predator · comics Dark Horse · présentation V28 du projet',continuity:'expanded',archetype:'punisher',selectable:true,runtimeStatus:'authored',rivalId:null,difficulty:3,progressionAvailable:false,
+  maxHealth:960,walkSpeed:4.5,airSpeed:3,jumpSpeed:12,power:1,bodyWidth:49,bodyHeight:110,crouchHeight:70,palette:{primary:'#88775c',secondary:'#293033',accent:'#b98d51'},
+  attacks:{light:move('light','Heurt court au fusil',[6,3,11,55,17,9,60,42,17]),medium:move('medium','Coup de pied frontal',[10,4,17,83,22,12,82,46,24]),heavy:move('heavy','Heurt appuyé au fusil',[16,5,25,121,31,18,78,48,38]),technique:move('technique','Riposte au fusil',[8,18,24,79,25,14,57,48,26])},technique:counter('machiko-rifle-counter','code-parry'),
+  arcadeIntro:'Humaine des comics Aliens vs. Predator de Dark Horse, distincte de Theta. Armure et fusil issus de la présentation V28 du projet. Les coups de contact sont des adaptations de jeu ; le fusil et le canon d’épaule ne tirent pas dans ce lot. Les actions encore sans dessins restent signalées.',arcadeEnding:'Chronique personnelle non produite : Arcade, Circuit et Descente indisponibles.'
+ }
+
 };
 export function getPitFighterProfile(id: PitFirstEditionCombatantId | PitExpansionFighterId) { return isPitExpansionFighterId(id) ? PIT_EXPANSION_FIGHTERS[id] : getPitFirstEditionFighter(id); }

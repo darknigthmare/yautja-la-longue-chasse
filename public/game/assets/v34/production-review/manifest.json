@@ -11,8 +11,8 @@
       "selectedSourceImages": 288
     },
     "hunters": {
-      "runtimeFighters": 9,
-      "validatedClips": 208,
+      "runtimeFighters": 11,
+      "validatedClips": 259,
       "initialFamiliesPerDesign": 10,
       "completeMovesets": 0
     },
@@ -13461,7 +13461,7 @@
       "category": "hunter",
       "name": "jungle-hunter · walk-forward revision2",
       "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
-      "status": "validated",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
@@ -13481,8 +13481,8 @@
         }
       },
       "notes": [
-        "Only left-facing cycle accepted: opposing contacts and passing poses, pelvis projection pivots.",
-        "Right-facing cycle rejected for repeated contact; never mirrored to supply missing coverage."
+        "Marche avant existante conservée; recul gauche V39 lu dans l’ordre temporel inverse, sans miroir ni nouveau dessin.",
+        "Le recul droit reste absent."
       ],
       "frames": [
         {
@@ -13560,8 +13560,85 @@
           "index": 3,
           "runtimeFrameAccepted": true,
           "phase": "walk"
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            41,
+            541,
+            285,
+            437
+          ],
+          "pivot": [
+            146,
+            433
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            1179,
+            540,
+            288,
+            438
+          ],
+          "pivot": [
+            168,
+            434
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            775,
+            539,
+            297,
+            436
+          ],
+          "pivot": [
+            176,
+            432
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            432,
+            541,
+            260,
+            434
+          ],
+          "pivot": [
+            144,
+            430
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 3,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-jungle-hunter-repair-crouch-planted",
@@ -13804,7 +13881,7 @@
       "category": "hunter",
       "name": "machiko-noguchi · crouch",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
@@ -13824,14 +13901,12 @@
         }
       },
       "notes": [
-        "Both rows have four coherent crouch depths with intact rifle grips and single forward-aimed shoulder cannon. First three drawings are candidate entry/held-crouch; rising fourth must not loop while crouching. Measured alpha and pivots passed review; no human combat fighter runtime exists yet.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 0,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             98,
             74,
@@ -13842,16 +13917,15 @@
             126,
             408
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 2,
-          "phase": "entry",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 1,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             485,
             120,
@@ -13862,16 +13936,15 @@
             99.5,
             362
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 2,
-          "phase": "descending",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 2,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             870,
             190,
@@ -13882,16 +13955,15 @@
             75,
             292
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 30,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 0,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             75,
             550,
@@ -13902,16 +13974,15 @@
             136,
             413
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 2,
-          "phase": "entry",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 1,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             442,
             603,
@@ -13922,16 +13993,15 @@
             164,
             360
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 2,
-          "phase": "descending",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 2,
+          "pageId": "machiko-noguchi-crouch",
           "rect": [
             810,
             672,
@@ -13942,13 +14012,15 @@
             164,
             291
           ],
-          "pageId": "machiko-noguchi-crouch",
           "durationTicks": 30,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-jump-land",
@@ -14176,7 +14248,7 @@
       "category": "hunter",
       "name": "machiko-noguchi · hurt",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
@@ -14196,14 +14268,12 @@
         }
       },
       "notes": [
-        "Coherent rifle grips, cannon orientation, armor and four recoil drawings. Source order is neutral/small recoil/large recoil/neutral; review playback uses 0,2,1,3 for impact then recovery. No runtime fighter currently wired.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 0,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             92,
             78,
@@ -14214,16 +14284,15 @@
             113,
             408
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 2,
-          "phase": "small-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 1,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             860,
             123,
@@ -14234,16 +14303,15 @@
             132.5,
             362
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "maximum-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 2,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             497,
             93,
@@ -14254,16 +14322,15 @@
             111.5,
             392
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "settling",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 3,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             1238,
             78,
@@ -14274,16 +14341,15 @@
             111.5,
             407
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 0,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             67,
             556,
@@ -14294,16 +14360,15 @@
             121,
             408
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 2,
-          "phase": "small-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 1,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             822,
             600,
@@ -14314,16 +14379,15 @@
             111.5,
             364
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "maximum-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 2,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             443,
             570,
@@ -14334,16 +14398,15 @@
             114,
             394
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "settling",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 3,
+          "pageId": "machiko-noguchi-hurt",
           "rect": [
             1214,
             556,
@@ -14354,20 +14417,22 @@
             123,
             409
           ],
-          "pageId": "machiko-noguchi-hurt",
           "durationTicks": 3,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-light",
       "category": "hunter",
       "name": "machiko-noguchi · light",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
@@ -14387,14 +14452,12 @@
         }
       },
       "notes": [
-        "Four coherent two-handed rifle shove stages both facings. Right hand remains on rear grip and left under fore-end; no new blade or firearm effect. Original game move adaptation, not a canonical named technique.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 0,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             67,
             108,
@@ -14405,16 +14468,15 @@
             112.5,
             349
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 6,
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 1,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             422,
             118,
@@ -14425,16 +14487,15 @@
             122,
             339
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 2,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             829,
             118,
@@ -14445,16 +14506,15 @@
             115.5,
             339
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 3,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             1214,
             119,
@@ -14465,16 +14525,15 @@
             102.5,
             338
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 6,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 0,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             77,
             567,
@@ -14485,16 +14544,15 @@
             119.5,
             349
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 6,
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 1,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             385,
             569,
@@ -14505,16 +14563,15 @@
             227.5,
             348
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 2,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             836,
             571,
@@ -14525,16 +14582,15 @@
             127.5,
             345
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 3,
+          "pageId": "machiko-noguchi-light",
           "rect": [
             1218,
             574,
@@ -14545,20 +14601,22 @@
             128.5,
             342
           ],
-          "pageId": "machiko-noguchi-light",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 6,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-medium",
       "category": "hunter",
       "name": "machiko-noguchi · medium",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
@@ -14578,14 +14636,12 @@
         }
       },
       "notes": [
-        "Front kick has coherent human hip/knee/boot, rifle held consistently and cannon facing opponent. Source order is neutral/chamber/contact/retract; review playback is reordered 1,2,3,0. Original game adaptation, no canonical move claim.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 0,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             478,
             73,
@@ -14596,16 +14652,15 @@
             62,
             399
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 10,
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 1,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             808,
             79,
@@ -14616,16 +14671,15 @@
             76,
             396
           ],
-          "pageId": "machiko-noguchi-medium",
           "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 2,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             1210,
             78,
@@ -14636,16 +14690,15 @@
             64,
             396
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 8,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 3,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             94,
             79,
@@ -14656,16 +14709,15 @@
             121.5,
             394
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 0,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             463,
             550,
@@ -14676,16 +14728,15 @@
             152,
             407
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 10,
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 1,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             781,
             550,
@@ -14696,16 +14747,15 @@
             246.5,
             405
           ],
-          "pageId": "machiko-noguchi-medium",
           "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 2,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             1235,
             551,
@@ -14716,16 +14766,15 @@
             154,
             408
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 3,
+          "pageId": "machiko-noguchi-medium",
           "rect": [
             84,
             553,
@@ -14736,20 +14785,22 @@
             128.5,
             403
           ],
-          "pageId": "machiko-noguchi-medium",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-heavy",
       "category": "hunter",
       "name": "machiko-noguchi · heavy",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
@@ -14769,14 +14820,12 @@
         }
       },
       "notes": [
-        "Heavy forward rifle shove has four grounded stages both orientations, complete gloves and coherent weapon grips. Wider silhouettes require explicit occupied-column rectangles rather than fixed cells. Original game adaptation, not canonical named move.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 0,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             69,
             117,
@@ -14787,16 +14836,15 @@
             122.5,
             368
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 16,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 1,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             418,
             125,
@@ -14807,16 +14855,15 @@
             159.5,
             360
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 2,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             833,
             138,
@@ -14827,16 +14874,15 @@
             107.5,
             347
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 3,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             1236,
             113,
@@ -14847,16 +14893,15 @@
             115,
             372
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 0,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             99,
             590,
@@ -14867,16 +14912,15 @@
             128.5,
             357
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 16,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 1,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             399,
             593,
@@ -14887,16 +14931,15 @@
             235.5,
             354
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 2,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             862,
             597,
@@ -14907,16 +14950,15 @@
             140.5,
             350
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 3,
+          "pageId": "machiko-noguchi-heavy",
           "rect": [
             1228,
             580,
@@ -14927,20 +14969,22 @@
             120,
             367
           ],
-          "pageId": "machiko-noguchi-heavy",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-repair-idle-cannon",
       "category": "hunter",
       "name": "machiko-noguchi · idle",
       "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
@@ -14960,14 +15004,12 @@
         }
       },
       "notes": [
-        "Repair removes duplicated cannon. Right row all four candidate idle drawings. Left row columns1/3 have consistent forward cannon; columns2/4 cannon mounting position changes across shoulder and remain excluded from candidate playback.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 0,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             132,
             69,
@@ -14978,16 +15020,15 @@
             91.5,
             412
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-0",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 1,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             515,
             68,
@@ -14998,16 +15039,15 @@
             91,
             413
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-1",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 2,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             878,
             86,
@@ -15018,16 +15058,15 @@
             90,
             395
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-2",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 3,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             1233,
             69,
@@ -15038,16 +15077,15 @@
             90,
             412
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-3",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 0,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             88,
             553,
@@ -15058,16 +15096,15 @@
             115.5,
             407
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-0",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 40,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 1,
+          "pageId": "machiko-noguchi-repair-idle-cannon",
           "rect": [
             834,
             570,
@@ -15078,13 +15115,15 @@
             112.5,
             390
           ],
-          "pageId": "machiko-noguchi-repair-idle-cannon",
-          "durationTicks": 10,
-          "phase": "breathing-1",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 40,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-machiko-noguchi-repair-walk-forward-legs",
@@ -16890,7 +16929,7 @@
       "category": "hunter",
       "name": "theta · idle",
       "src": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "d602cfc25fa345314472e6e6fe10f6f06ea35c2cb3bc42b7e339639a902d9fcf",
@@ -16910,14 +16949,13 @@
         }
       },
       "notes": [
-        "Four idle drawings each facing, human hands and single handheld blade coherent. Same gold armor identity. Native Canvas review passed; no combat fighter wired.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 0,
+          "pageId": "theta-idle-v39",
           "rect": [
             140,
             77,
@@ -16928,16 +16966,15 @@
             97.5,
             386
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-0",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 1,
+          "pageId": "theta-idle-v39",
           "rect": [
             498,
             75,
@@ -16948,16 +16985,15 @@
             95,
             388
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-1",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 2,
+          "pageId": "theta-idle-v39",
           "rect": [
             848,
             91,
@@ -16968,16 +17004,15 @@
             96.5,
             372
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-2",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.idle",
-          "index": 3,
+          "pageId": "theta-idle-v39",
           "rect": [
             1209,
             78,
@@ -16988,16 +17023,15 @@
             97,
             385
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-3",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 0,
+          "pageId": "theta-idle-v39",
           "rect": [
             118,
             556,
@@ -17008,16 +17042,15 @@
             94.5,
             387
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-0",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 1,
+          "pageId": "theta-idle-v39",
           "rect": [
             474,
             551,
@@ -17028,16 +17061,15 @@
             94.5,
             393
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-1",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 2,
+          "pageId": "theta-idle-v39",
           "rect": [
             846,
             570,
@@ -17048,16 +17080,15 @@
             91.5,
             373
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-2",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.idle",
-          "index": 3,
+          "pageId": "theta-idle-v39",
           "rect": [
             1201,
             556,
@@ -17068,13 +17099,15 @@
             93.5,
             388
           ],
-          "pageId": "theta-idle",
-          "durationTicks": 10,
-          "phase": "breathing-3",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 24,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-walk-forward",
@@ -17141,7 +17174,7 @@
       "category": "hunter",
       "name": "theta · crouch",
       "src": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "7963593c876f003e37f1ea7d07039544d51a11c8175421b344724cd6abaaa020",
@@ -17161,14 +17194,13 @@
         }
       },
       "notes": [
-        "Coherent standing/half/low kneeling crouch/rise poses and complete hands. Low pose is an asymmetrical crouch with rear knee low, not both-heels squat; first three frames only for entering/holding crouch. Blade overlays shin in perspective but has continuous outline.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 0,
+          "pageId": "theta-crouch-v39",
           "rect": [
             113,
             76,
@@ -17179,16 +17211,15 @@
             118.5,
             391
           ],
-          "pageId": "theta-crouch",
           "durationTicks": 2,
-          "phase": "entry",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 1,
+          "pageId": "theta-crouch-v39",
           "rect": [
             477,
             129,
@@ -17199,16 +17230,15 @@
             118,
             338
           ],
-          "pageId": "theta-crouch",
           "durationTicks": 2,
-          "phase": "descending",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.crouch",
-          "index": 2,
+          "pageId": "theta-crouch-v39",
           "rect": [
             849,
             193,
@@ -17219,16 +17249,15 @@
             108,
             270
           ],
-          "pageId": "theta-crouch",
-          "durationTicks": 30,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 0,
+          "pageId": "theta-crouch-v39",
           "rect": [
             91,
             547,
@@ -17239,16 +17268,15 @@
             119,
             391
           ],
-          "pageId": "theta-crouch",
           "durationTicks": 2,
-          "phase": "entry",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 1,
+          "pageId": "theta-crouch-v39",
           "rect": [
             468,
             595,
@@ -17259,16 +17287,15 @@
             119,
             342
           ],
-          "pageId": "theta-crouch",
           "durationTicks": 2,
-          "phase": "descending",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.crouch",
-          "index": 2,
+          "pageId": "theta-crouch-v39",
           "rect": [
             839,
             666,
@@ -17279,13 +17306,15 @@
             108.5,
             268
           ],
-          "pageId": "theta-crouch",
-          "durationTicks": 30,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-jump-land",
@@ -17483,7 +17512,7 @@
       "category": "hunter",
       "name": "theta · guard",
       "src": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "2560a5dc546d58dd5f91dc7099c09b34732ee4e8981e85bee34203d288c9ee8a",
@@ -17503,13 +17532,13 @@
         }
       },
       "notes": [
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.guard",
-          "index": 0,
+          "pageId": "theta-guard-v39",
           "rect": [
             134,
             117,
@@ -17520,16 +17549,15 @@
             98.5,
             344
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "raise",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.guard",
-          "index": 1,
+          "pageId": "theta-guard-v39",
           "rect": [
             485,
             122,
@@ -17540,16 +17568,15 @@
             100,
             339
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "brace",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.guard",
-          "index": 2,
+          "pageId": "theta-guard-v39",
           "rect": [
             837,
             117,
@@ -17560,16 +17587,15 @@
             99.5,
             344
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "absorb",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 4,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.guard",
-          "index": 3,
+          "pageId": "theta-guard-v39",
           "rect": [
             1196,
             108,
@@ -17580,16 +17606,15 @@
             99.5,
             353
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 6,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 3,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.guard",
-          "index": 0,
+          "pageId": "theta-guard-v39",
           "rect": [
             135,
             567,
@@ -17600,16 +17625,15 @@
             100.5,
             344
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "raise",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.guard",
-          "index": 1,
+          "pageId": "theta-guard-v39",
           "rect": [
             479,
             569,
@@ -17620,16 +17644,15 @@
             120,
             342
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "brace",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.guard",
-          "index": 2,
+          "pageId": "theta-guard-v39",
           "rect": [
             850,
             570,
@@ -17640,16 +17663,15 @@
             100.5,
             340
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 3,
-          "phase": "absorb",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 4,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.guard",
-          "index": 3,
+          "pageId": "theta-guard-v39",
           "rect": [
             1211,
             556,
@@ -17660,20 +17682,22 @@
             101,
             354
           ],
-          "pageId": "theta-guard",
-          "durationTicks": 6,
-          "phase": "held",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "high-guard",
+          "phase": "high-guard",
+          "index": 3,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-hurt",
       "category": "hunter",
       "name": "theta · hurt",
       "src": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "8b30a0cdd883bec937d3e38eaf8cd8805f89a44c7d7512300fef86e39e1e2f6d",
@@ -17693,14 +17717,13 @@
         }
       },
       "notes": [
-        "Four coherent recoil drawings with stable handheld blade and armor; source neutral/small/large/neutral uses reviewed order0,2,1,3 for impact then recovery. Both facings independent.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 0,
+          "pageId": "theta-hurt-v39",
           "rect": [
             116,
             55,
@@ -17711,16 +17734,15 @@
             112.5,
             407
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 2,
-          "phase": "small-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 1,
+          "pageId": "theta-hurt-v39",
           "rect": [
             820,
             84,
@@ -17731,16 +17753,15 @@
             141.5,
             377
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "maximum-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 2,
+          "pageId": "theta-hurt-v39",
           "rect": [
             482,
             73,
@@ -17751,16 +17772,15 @@
             122,
             389
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "settling",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.hurt",
-          "index": 3,
+          "pageId": "theta-hurt-v39",
           "rect": [
             1200,
             54,
@@ -17771,16 +17791,15 @@
             111,
             409
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 0,
+          "pageId": "theta-hurt-v39",
           "rect": [
             103,
             530,
@@ -17791,16 +17810,15 @@
             117,
             413
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 2,
-          "phase": "small-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 1,
+          "pageId": "theta-hurt-v39",
           "rect": [
             805,
             555,
@@ -17811,16 +17829,15 @@
             115,
             388
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "maximum-recoil",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 2,
+          "pageId": "theta-hurt-v39",
           "rect": [
             460,
             541,
@@ -17831,16 +17848,15 @@
             115.5,
             402
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "settling",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.hurt",
-          "index": 3,
+          "pageId": "theta-hurt-v39",
           "rect": [
             1195,
             531,
@@ -17851,20 +17867,22 @@
             112.5,
             415
           ],
-          "pageId": "theta-hurt",
           "durationTicks": 3,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-light",
       "category": "hunter",
       "name": "theta · light",
       "src": "/game/sprites/v34/pit/theta/theta-light-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "d3dde5b4975668431d826f68a1313229b1859e95fa72a489c1af96a7f069d665",
@@ -17884,14 +17902,13 @@
         }
       },
       "notes": [
-        "Four compact sword-thrust stages per facing with visible right-hand handle. Off-hand is partly occluded behind the extended arm during contact; no extra hand detected. Explicit occupied-span rectangles used for contact over grid boundary.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 0,
+          "pageId": "theta-light-v39",
           "rect": [
             87,
             92,
@@ -17902,16 +17919,15 @@
             123,
             352
           ],
-          "pageId": "theta-light",
           "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 1,
+          "pageId": "theta-light-v39",
           "rect": [
             430,
             102,
@@ -17922,16 +17938,15 @@
             128.5,
             342
           ],
-          "pageId": "theta-light",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 2,
+          "pageId": "theta-light-v39",
           "rect": [
             854,
             100,
@@ -17942,16 +17957,15 @@
             120.5,
             344
           ],
-          "pageId": "theta-light",
           "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.light",
-          "index": 3,
+          "pageId": "theta-light-v39",
           "rect": [
             1218,
             91,
@@ -17962,16 +17976,15 @@
             112.5,
             354
           ],
-          "pageId": "theta-light",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 0,
+          "pageId": "theta-light-v39",
           "rect": [
             99,
             557,
@@ -17982,16 +17995,15 @@
             120,
             356
           ],
-          "pageId": "theta-light",
           "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 1,
+          "pageId": "theta-light-v39",
           "rect": [
             381,
             562,
@@ -18002,16 +18014,15 @@
             253,
             351
           ],
-          "pageId": "theta-light",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 2,
+          "pageId": "theta-light-v39",
           "rect": [
             858,
             562,
@@ -18022,16 +18033,15 @@
             125,
             351
           ],
-          "pageId": "theta-light",
           "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.light",
-          "index": 3,
+          "pageId": "theta-light-v39",
           "rect": [
             1221,
             553,
@@ -18042,20 +18052,22 @@
             116,
             360
           ],
-          "pageId": "theta-light",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-medium",
       "category": "hunter",
       "name": "theta · medium",
       "src": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "cf1bf28ab0483c280b3c3598e2150567fab7688b9f5edc9f27d2037651a08857",
@@ -18075,13 +18087,13 @@
         }
       },
       "notes": [
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 0,
+          "pageId": "theta-medium-v39",
           "rect": [
             64,
             88,
@@ -18092,16 +18104,15 @@
             157.5,
             369
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 10,
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 1,
+          "pageId": "theta-medium-v39",
           "rect": [
             454,
             87,
@@ -18112,16 +18123,15 @@
             132.5,
             370
           ],
-          "pageId": "theta-medium",
           "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 2,
+          "pageId": "theta-medium-v39",
           "rect": [
             840,
             84,
@@ -18132,16 +18142,15 @@
             126,
             373
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.medium",
-          "index": 3,
+          "pageId": "theta-medium-v39",
           "rect": [
             1234,
             85,
@@ -18152,16 +18161,15 @@
             115,
             373
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 0,
+          "pageId": "theta-medium-v39",
           "rect": [
             88,
             575,
@@ -18172,16 +18180,15 @@
             132,
             370
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 10,
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 1,
+          "pageId": "theta-medium-v39",
           "rect": [
             403,
             575,
@@ -18192,16 +18199,15 @@
             222.5,
             369
           ],
-          "pageId": "theta-medium",
           "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 2,
+          "pageId": "theta-medium-v39",
           "rect": [
             845,
             573,
@@ -18212,16 +18218,15 @@
             128,
             372
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.medium",
-          "index": 3,
+          "pageId": "theta-medium-v39",
           "rect": [
             1216,
             572,
@@ -18232,20 +18237,22 @@
             118.5,
             374
           ],
-          "pageId": "theta-medium",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-heavy",
       "category": "hunter",
       "name": "theta · heavy",
       "src": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
-      "status": "authored-review",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "20acbb12ab83db3a9df1ce53ad42ba5d4de942464b5195701ded14e6c6097ecc",
@@ -18265,14 +18272,13 @@
         }
       },
       "notes": [
-        "Four complete heavy diagonal sword stages each facing with both hands visible and coherent hilt. Bottom active sword begins above nominal512 row boundary; explicit row split485 used, never fixed-grid cropping.",
-        "Listed review frames passed native Chrome Canvas at120px body height on light/dark backgrounds. No runtime combat clips registered; review cadence is provisional."
+        "V39: dessins OpenAI V34 réutilisés sans modification, deux orientations dessinées séparément.",
+        "Mains humaines, lame unique et armure dorée revues image par image; rectangles irréguliers conservés.",
+        "Séquence de jeu originale; ne certifie ni fidélité 1:1, ni moveset complet."
       ],
       "frames": [
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 0,
+          "pageId": "theta-heavy-v39",
           "rect": [
             57,
             126,
@@ -18283,16 +18289,15 @@
             151,
             343
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 16,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 1,
+          "pageId": "theta-heavy-v39",
           "rect": [
             462,
             26,
@@ -18303,16 +18308,15 @@
             128,
             442
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 2,
+          "pageId": "theta-heavy-v39",
           "rect": [
             845,
             115,
@@ -18323,16 +18327,15 @@
             117.5,
             353
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "right",
-          "clipId": "review.heavy",
-          "index": 3,
+          "pageId": "theta-heavy-v39",
           "rect": [
             1229,
             118,
@@ -18343,16 +18346,15 @@
             113.5,
             350
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 0,
+          "pageId": "theta-heavy-v39",
           "rect": [
             94,
             596,
@@ -18363,16 +18365,15 @@
             136,
             340
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 5,
-          "phase": "startup",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 16,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 1,
+          "pageId": "theta-heavy-v39",
           "rect": [
             432,
             499,
@@ -18383,16 +18384,15 @@
             185,
             436
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 4,
-          "phase": "contact",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 2,
+          "pageId": "theta-heavy-v39",
           "rect": [
             867,
             588,
@@ -18403,16 +18403,15 @@
             114.5,
             351
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 6,
-          "phase": "recovery",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
         },
         {
-          "facing": "left",
-          "clipId": "review.heavy",
-          "index": 3,
+          "pageId": "theta-heavy-v39",
           "rect": [
             1233,
             585,
@@ -18423,13 +18422,15 @@
             112,
             355
           ],
-          "pageId": "theta-heavy",
-          "durationTicks": 7,
-          "phase": "neutral",
-          "reviewFrameAccepted": true,
-          "runtimeFrameAccepted": false
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V39"
     },
     {
       "id": "v34-theta-repair-walk-forward-poses",

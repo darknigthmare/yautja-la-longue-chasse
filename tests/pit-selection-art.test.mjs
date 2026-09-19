@@ -48,3 +48,13 @@ test("actual City Hunter selection uses the repaired V31 combat plate on both si
   assert.doesNotMatch(html, /\/v23\/|\/v5\//);
  }
 });
+
+
+test("atlas portraits own their loading notice without falsely asking for a static plate", () => {
+ for (const id of ["tracker", "greyback", "theta", "machiko-noguchi"]) for (const side of ["GAUCHE", "DROITE"]) {
+  const html = card(id, side);
+  assert.match(html, /data-fighter-art="authored-idle-pose"/);
+  assert.match(html, /<canvas/);
+  assert.doesNotMatch(html, /Image à produire|mask-glyph/);
+ }
+});

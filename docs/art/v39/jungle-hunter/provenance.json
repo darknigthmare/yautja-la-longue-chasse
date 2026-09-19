@@ -1,0 +1,305 @@
+{
+  "version": "V39",
+  "fighterId": "jungle-hunter",
+  "status": "pixel-and-browser-validated",
+  "newGenerations": 0,
+  "newDrawings": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "acceptedOrientedClips": 1,
+  "completeMovesets": 0,
+  "definition": {
+    "fighterId": "jungle-hunter",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "jungle-hunter-v34-repair-walk-forward-alternation": 440
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-walk-backward-left-v39",
+      "characterId": "jungle-hunter",
+      "variantId": "the-pit-v32",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                41,
+                541,
+                285,
+                437
+              ],
+              "pivot": [
+                146,
+                433
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                1179,
+                540,
+                288,
+                438
+              ],
+              "pivot": [
+                168,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                775,
+                539,
+                297,
+                436
+              ],
+              "pivot": [
+                176,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                432,
+                541,
+                260,
+                434
+              ],
+              "pivot": [
+                144,
+                430
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "jungle-hunter-v34-repair-walk-forward-alternation",
+      "publicPath": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            41,
+            541,
+            285,
+            437
+          ],
+          "pivot": [
+            146,
+            433
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 0,
+          "runtimeFrameAccepted": true,
+          "phase": "walk"
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            432,
+            541,
+            260,
+            434
+          ],
+          "pivot": [
+            144,
+            430
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 1,
+          "runtimeFrameAccepted": true,
+          "phase": "walk"
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            775,
+            539,
+            297,
+            436
+          ],
+          "pivot": [
+            176,
+            432
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 2,
+          "runtimeFrameAccepted": true,
+          "phase": "walk"
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            1179,
+            540,
+            288,
+            438
+          ],
+          "pivot": [
+            168,
+            434
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk",
+          "index": 3,
+          "runtimeFrameAccepted": true,
+          "phase": "walk"
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            41,
+            541,
+            285,
+            437
+          ],
+          "pivot": [
+            146,
+            433
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            1179,
+            540,
+            288,
+            438
+          ],
+          "pivot": [
+            168,
+            434
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            775,
+            539,
+            297,
+            436
+          ],
+          "pivot": [
+            176,
+            432
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "rect": [
+            432,
+            541,
+            260,
+            434
+          ],
+          "pivot": [
+            144,
+            430
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "walk-backward",
+          "phase": "walk-backward",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "Marche avant existante conservée; recul gauche V39 lu dans l’ordre temporel inverse, sans miroir ni nouveau dessin.",
+        "Le recul droit reste absent."
+      ]
+    }
+  ],
+  "operation": "Explicit temporal reuse order [0,3,2,1] of the four previously accepted left-facing walk drawings. No mirroring, interpolation, deformation or source pixel edit.",
+  "limits": [
+    "Only the left backward walk is newly mapped; existing pixels are reused."
+  ]
+}

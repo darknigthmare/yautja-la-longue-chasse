@@ -1,0 +1,2029 @@
+{
+  "version": "V39",
+  "fighterId": "machiko-noguchi",
+  "status": "pixel-and-browser-validated",
+  "newGenerations": 0,
+  "newDrawings": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "acceptedOrientedClips": 24,
+  "completeMovesets": 0,
+  "definition": {
+    "fighterId": "machiko-noguchi",
+    "bodyHeightPx": 410,
+    "pageBodyHeightPx": {
+      "machiko-noguchi-repair-idle-cannon": 410,
+      "machiko-noguchi-crouch": 404,
+      "machiko-noguchi-hurt": 404,
+      "machiko-noguchi-light": 345,
+      "machiko-noguchi-medium": 394,
+      "machiko-noguchi-heavy": 368
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "machiko-noguchi-clan-combat-v39",
+      "characterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "machiko-noguchi-repair-idle-cannon",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-crouch",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-hurt",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-light",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-medium",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-heavy",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                132,
+                69,
+                219,
+                416
+              ],
+              "pivot": [
+                91.5,
+                412
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                515,
+                68,
+                218,
+                417
+              ],
+              "pivot": [
+                91,
+                413
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                878,
+                86,
+                207,
+                399
+              ],
+              "pivot": [
+                90,
+                395
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                1233,
+                69,
+                217,
+                416
+              ],
+              "pivot": [
+                90,
+                412
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                88,
+                553,
+                210,
+                411
+              ],
+              "pivot": [
+                115.5,
+                407
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                834,
+                570,
+                204,
+                394
+              ],
+              "pivot": [
+                112.5,
+                390
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                98,
+                74,
+                265,
+                412
+              ],
+              "pivot": [
+                126,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                485,
+                120,
+                266,
+                366
+              ],
+              "pivot": [
+                99.5,
+                362
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                870,
+                190,
+                238,
+                296
+              ],
+              "pivot": [
+                75,
+                292
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                75,
+                550,
+                263,
+                417
+              ],
+              "pivot": [
+                136,
+                413
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                442,
+                603,
+                262,
+                364
+              ],
+              "pivot": [
+                164,
+                360
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                810,
+                672,
+                239,
+                295
+              ],
+              "pivot": [
+                164,
+                291
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                92,
+                78,
+                238,
+                412
+              ],
+              "pivot": [
+                113,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                860,
+                123,
+                247,
+                366
+              ],
+              "pivot": [
+                132.5,
+                362
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                497,
+                93,
+                231,
+                396
+              ],
+              "pivot": [
+                111.5,
+                392
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                1238,
+                78,
+                235,
+                411
+              ],
+              "pivot": [
+                111.5,
+                407
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                67,
+                556,
+                235,
+                412
+              ],
+              "pivot": [
+                121,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                822,
+                600,
+                237,
+                368
+              ],
+              "pivot": [
+                111.5,
+                364
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                443,
+                570,
+                227,
+                398
+              ],
+              "pivot": [
+                114,
+                394
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                1214,
+                556,
+                237,
+                413
+              ],
+              "pivot": [
+                123,
+                409
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                67,
+                108,
+                226,
+                353
+              ],
+              "pivot": [
+                112.5,
+                349
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                422,
+                118,
+                349,
+                343
+              ],
+              "pivot": [
+                122,
+                339
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                829,
+                118,
+                243,
+                343
+              ],
+              "pivot": [
+                115.5,
+                339
+              ],
+              "durationTicks": 5
+            },
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                1214,
+                119,
+                228,
+                342
+              ],
+              "pivot": [
+                102.5,
+                338
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                77,
+                567,
+                234,
+                353
+              ],
+              "pivot": [
+                119.5,
+                349
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                385,
+                569,
+                350,
+                352
+              ],
+              "pivot": [
+                227.5,
+                348
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                836,
+                571,
+                245,
+                349
+              ],
+              "pivot": [
+                127.5,
+                345
+              ],
+              "durationTicks": 5
+            },
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                1218,
+                574,
+                234,
+                346
+              ],
+              "pivot": [
+                128.5,
+                342
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                478,
+                73,
+                217,
+                403
+              ],
+              "pivot": [
+                62,
+                399
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                808,
+                79,
+                326,
+                400
+              ],
+              "pivot": [
+                76,
+                396
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                1210,
+                78,
+                214,
+                400
+              ],
+              "pivot": [
+                64,
+                396
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                94,
+                79,
+                247,
+                398
+              ],
+              "pivot": [
+                121.5,
+                394
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                463,
+                550,
+                218,
+                411
+              ],
+              "pivot": [
+                152,
+                407
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                781,
+                550,
+                326,
+                409
+              ],
+              "pivot": [
+                246.5,
+                405
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                1235,
+                551,
+                218,
+                412
+              ],
+              "pivot": [
+                154,
+                408
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                84,
+                553,
+                254,
+                407
+              ],
+              "pivot": [
+                128.5,
+                403
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                69,
+                117,
+                256,
+                372
+              ],
+              "pivot": [
+                122.5,
+                368
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                418,
+                125,
+                412,
+                364
+              ],
+              "pivot": [
+                159.5,
+                360
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                833,
+                138,
+                253,
+                351
+              ],
+              "pivot": [
+                107.5,
+                347
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                1236,
+                113,
+                231,
+                376
+              ],
+              "pivot": [
+                115,
+                372
+              ],
+              "durationTicks": 13
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                99,
+                590,
+                246,
+                361
+              ],
+              "pivot": [
+                128.5,
+                357
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                399,
+                593,
+                393,
+                358
+              ],
+              "pivot": [
+                235.5,
+                354
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                862,
+                597,
+                249,
+                354
+              ],
+              "pivot": [
+                140.5,
+                350
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                1228,
+                580,
+                241,
+                371
+              ],
+              "pivot": [
+                120,
+                367
+              ],
+              "durationTicks": 13
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "machiko-noguchi-repair-idle-cannon",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c9a288ba1dc97c8463922afe73363ccfa93fe9b21eabfc783f62f2ebe6f94e56",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            132,
+            69,
+            219,
+            416
+          ],
+          "pivot": [
+            91.5,
+            412
+          ],
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            515,
+            68,
+            218,
+            417
+          ],
+          "pivot": [
+            91,
+            413
+          ],
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            878,
+            86,
+            207,
+            399
+          ],
+          "pivot": [
+            90,
+            395
+          ],
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            1233,
+            69,
+            217,
+            416
+          ],
+          "pivot": [
+            90,
+            412
+          ],
+          "durationTicks": 20,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            88,
+            553,
+            210,
+            411
+          ],
+          "pivot": [
+            115.5,
+            407
+          ],
+          "durationTicks": 40,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-repair-idle-cannon",
+          "rect": [
+            834,
+            570,
+            204,
+            394
+          ],
+          "pivot": [
+            112.5,
+            390
+          ],
+          "durationTicks": 40,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    },
+    {
+      "id": "machiko-noguchi-crouch",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "68f1271e63b08765ec35a7515047b148fcb329bf3cd9ce3ae4bea83fedbc6022",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            98,
+            74,
+            265,
+            412
+          ],
+          "pivot": [
+            126,
+            408
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            485,
+            120,
+            266,
+            366
+          ],
+          "pivot": [
+            99.5,
+            362
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            870,
+            190,
+            238,
+            296
+          ],
+          "pivot": [
+            75,
+            292
+          ],
+          "durationTicks": 30,
+          "facing": "right",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            75,
+            550,
+            263,
+            417
+          ],
+          "pivot": [
+            136,
+            413
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            442,
+            603,
+            262,
+            364
+          ],
+          "pivot": [
+            164,
+            360
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-crouch",
+          "rect": [
+            810,
+            672,
+            239,
+            295
+          ],
+          "pivot": [
+            164,
+            291
+          ],
+          "durationTicks": 30,
+          "facing": "left",
+          "clipId": "crouch",
+          "phase": "crouch",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    },
+    {
+      "id": "machiko-noguchi-hurt",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f561c9010676b2fa3c6da141de6bafe0906d2d8fbea3c0cc8f34fa2b36124dd5",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            92,
+            78,
+            238,
+            412
+          ],
+          "pivot": [
+            113,
+            408
+          ],
+          "durationTicks": 2,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            860,
+            123,
+            247,
+            366
+          ],
+          "pivot": [
+            132.5,
+            362
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            497,
+            93,
+            231,
+            396
+          ],
+          "pivot": [
+            111.5,
+            392
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            1238,
+            78,
+            235,
+            411
+          ],
+          "pivot": [
+            111.5,
+            407
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            67,
+            556,
+            235,
+            412
+          ],
+          "pivot": [
+            121,
+            408
+          ],
+          "durationTicks": 2,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            822,
+            600,
+            237,
+            368
+          ],
+          "pivot": [
+            111.5,
+            364
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            443,
+            570,
+            227,
+            398
+          ],
+          "pivot": [
+            114,
+            394
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 2,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-hurt",
+          "rect": [
+            1214,
+            556,
+            237,
+            413
+          ],
+          "pivot": [
+            123,
+            409
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.hitstun",
+          "phase": "pit.stand.hitstun",
+          "index": 3,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    },
+    {
+      "id": "machiko-noguchi-light",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c5cff0205e757f54a61c97622d9fa6e81844d775bbcfee77eb5369b7cb37c141",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            67,
+            108,
+            226,
+            353
+          ],
+          "pivot": [
+            112.5,
+            349
+          ],
+          "durationTicks": 6,
+          "facing": "right",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            422,
+            118,
+            349,
+            343
+          ],
+          "pivot": [
+            122,
+            339
+          ],
+          "durationTicks": 3,
+          "facing": "right",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            829,
+            118,
+            243,
+            343
+          ],
+          "pivot": [
+            115.5,
+            339
+          ],
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            1214,
+            119,
+            228,
+            342
+          ],
+          "pivot": [
+            102.5,
+            338
+          ],
+          "durationTicks": 6,
+          "facing": "right",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            77,
+            567,
+            234,
+            353
+          ],
+          "pivot": [
+            119.5,
+            349
+          ],
+          "durationTicks": 6,
+          "facing": "left",
+          "clipId": "pit.stand.light.startup",
+          "phase": "pit.stand.light.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            385,
+            569,
+            350,
+            352
+          ],
+          "pivot": [
+            227.5,
+            348
+          ],
+          "durationTicks": 3,
+          "facing": "left",
+          "clipId": "pit.stand.light.active",
+          "phase": "pit.stand.light.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            836,
+            571,
+            245,
+            349
+          ],
+          "pivot": [
+            127.5,
+            345
+          ],
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-light",
+          "rect": [
+            1218,
+            574,
+            234,
+            346
+          ],
+          "pivot": [
+            128.5,
+            342
+          ],
+          "durationTicks": 6,
+          "facing": "left",
+          "clipId": "pit.stand.light.recovery",
+          "phase": "pit.stand.light.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    },
+    {
+      "id": "machiko-noguchi-medium",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ce8c95535416e6182fe3349e40b377f861d64e7854ee14fd60bb4e9d7d983895",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            478,
+            73,
+            217,
+            403
+          ],
+          "pivot": [
+            62,
+            399
+          ],
+          "durationTicks": 10,
+          "facing": "right",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            808,
+            79,
+            326,
+            400
+          ],
+          "pivot": [
+            76,
+            396
+          ],
+          "durationTicks": 4,
+          "facing": "right",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            1210,
+            78,
+            214,
+            400
+          ],
+          "pivot": [
+            64,
+            396
+          ],
+          "durationTicks": 8,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            94,
+            79,
+            247,
+            398
+          ],
+          "pivot": [
+            121.5,
+            394
+          ],
+          "durationTicks": 9,
+          "facing": "right",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            463,
+            550,
+            218,
+            411
+          ],
+          "pivot": [
+            152,
+            407
+          ],
+          "durationTicks": 10,
+          "facing": "left",
+          "clipId": "pit.stand.medium.startup",
+          "phase": "pit.stand.medium.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            781,
+            550,
+            326,
+            409
+          ],
+          "pivot": [
+            246.5,
+            405
+          ],
+          "durationTicks": 4,
+          "facing": "left",
+          "clipId": "pit.stand.medium.active",
+          "phase": "pit.stand.medium.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            1235,
+            551,
+            218,
+            412
+          ],
+          "pivot": [
+            154,
+            408
+          ],
+          "durationTicks": 8,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-medium",
+          "rect": [
+            84,
+            553,
+            254,
+            407
+          ],
+          "pivot": [
+            128.5,
+            403
+          ],
+          "durationTicks": 9,
+          "facing": "left",
+          "clipId": "pit.stand.medium.recovery",
+          "phase": "pit.stand.medium.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    },
+    {
+      "id": "machiko-noguchi-heavy",
+      "publicPath": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a468147d2677c6a28278da8541e9ba5a356e99d6a0b6c8d728601009ab903037",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "replacesReview": true,
+      "reviewFrames": [
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            69,
+            117,
+            256,
+            372
+          ],
+          "pivot": [
+            122.5,
+            368
+          ],
+          "durationTicks": 16,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            418,
+            125,
+            412,
+            364
+          ],
+          "pivot": [
+            159.5,
+            360
+          ],
+          "durationTicks": 5,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            833,
+            138,
+            253,
+            351
+          ],
+          "pivot": [
+            107.5,
+            347
+          ],
+          "durationTicks": 12,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            1236,
+            113,
+            231,
+            376
+          ],
+          "pivot": [
+            115,
+            372
+          ],
+          "durationTicks": 13,
+          "facing": "right",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            99,
+            590,
+            246,
+            361
+          ],
+          "pivot": [
+            128.5,
+            357
+          ],
+          "durationTicks": 16,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.startup",
+          "phase": "pit.stand.heavy.startup",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            399,
+            593,
+            393,
+            358
+          ],
+          "pivot": [
+            235.5,
+            354
+          ],
+          "durationTicks": 5,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.active",
+          "phase": "pit.stand.heavy.active",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            862,
+            597,
+            249,
+            354
+          ],
+          "pivot": [
+            140.5,
+            350
+          ],
+          "durationTicks": 12,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 0,
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "machiko-noguchi-heavy",
+          "rect": [
+            1228,
+            580,
+            241,
+            371
+          ],
+          "pivot": [
+            120,
+            367
+          ],
+          "durationTicks": 13,
+          "facing": "left",
+          "clipId": "pit.stand.heavy.recovery",
+          "phase": "pit.stand.heavy.recovery",
+          "index": 1,
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "V39: sources OpenAI V34 inchangées, dessins humains et orientations vérifiés avant intégration.",
+        "Garde écartée car le fusil raccourcit; aucune marche, aucun saut ou finisher déclaré terminé."
+      ]
+    }
+  ],
+  "operation": "Explicit existing rectangles/pivots, real standing-body reference per page, no grid slicing, pixel edit, mirroring, deformation or generated interpolation.",
+  "limits": [
+    "Candidate definition only. Shared registry was not edited. Native duel transitions and fighter scale must be reviewed by root before release.",
+    "Six existing OpenAI source pages and 44 drawings are reused; zero new images or drawings generated.",
+    "12 oriented action sequences are represented by 24 engine phase clips. No complete moveset, certified official 1:1 fidelity or campaign chronicle is claimed.",
+    "Guard-rifle is excluded because its much shorter rifle breaks continuity with idle/attacks.",
+    "Left idle keeps only source columns 1/3; columns 2/4 change cannon mounting position. Both facing cycles last 80 ticks, without interpolation.",
+    "Walking, jumps, guards/blockstun, crouch/air attacks, technique, throws, victims and finishers remain outside this proposal."
+  ],
+  "identityReferences": [
+    "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1"
+  ]
+}

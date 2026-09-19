@@ -9931,5 +9931,2268 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "theta",
+    "bodyHeightPx": 382,
+    "pageBodyHeightPx": {
+      "theta-idle-v39": 382,
+      "theta-crouch-v39": 387,
+      "theta-guard-v39": 340,
+      "theta-hurt-v39": 406,
+      "theta-light-v39": 346,
+      "theta-medium-v39": 367,
+      "theta-heavy-v39": 346
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "theta-duel-v39",
+      "characterId": "theta",
+      "variantId": "marvel-2023-gold-armor-unmasked",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "theta-idle-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-idle-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-crouch-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-guard-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-guard-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-hurt-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-light-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-light-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-medium-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-medium-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "theta-heavy-v39",
+          "src": "/game/sprites/v34/pit/theta/theta-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                140,
+                77,
+                191,
+                390
+              ],
+              "pivot": [
+                97.5,
+                386
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                498,
+                75,
+                188,
+                392
+              ],
+              "pivot": [
+                95,
+                388
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                848,
+                91,
+                192,
+                376
+              ],
+              "pivot": [
+                96.5,
+                372
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                1209,
+                78,
+                191,
+                389
+              ],
+              "pivot": [
+                97,
+                385
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                118,
+                556,
+                195,
+                391
+              ],
+              "pivot": [
+                94.5,
+                387
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                474,
+                551,
+                196,
+                397
+              ],
+              "pivot": [
+                94.5,
+                393
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                846,
+                570,
+                188,
+                377
+              ],
+              "pivot": [
+                91.5,
+                373
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "theta-idle-v39",
+              "rect": [
+                1201,
+                556,
+                192,
+                392
+              ],
+              "pivot": [
+                93.5,
+                388
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                113,
+                76,
+                235,
+                395
+              ],
+              "pivot": [
+                118.5,
+                391
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                477,
+                129,
+                237,
+                342
+              ],
+              "pivot": [
+                118,
+                338
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                849,
+                193,
+                217,
+                274
+              ],
+              "pivot": [
+                108,
+                270
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                91,
+                547,
+                244,
+                395
+              ],
+              "pivot": [
+                119,
+                391
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                468,
+                595,
+                239,
+                346
+              ],
+              "pivot": [
+                119,
+                342
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-crouch-v39",
+              "rect": [
+                839,
+                666,
+                218,
+                272
+              ],
+              "pivot": [
+                108.5,
+                268
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                134,
+                117,
+                198,
+                348
+              ],
+              "pivot": [
+                98.5,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                485,
+                122,
+                223,
+                343
+              ],
+              "pivot": [
+                100,
+                339
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                837,
+                117,
+                206,
+                348
+              ],
+              "pivot": [
+                99.5,
+                344
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                1196,
+                108,
+                210,
+                357
+              ],
+              "pivot": [
+                99.5,
+                353
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                135,
+                567,
+                202,
+                348
+              ],
+              "pivot": [
+                100.5,
+                344
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                479,
+                569,
+                221,
+                346
+              ],
+              "pivot": [
+                120,
+                342
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                850,
+                570,
+                201,
+                344
+              ],
+              "pivot": [
+                100.5,
+                340
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "theta-guard-v39",
+              "rect": [
+                1211,
+                556,
+                201,
+                358
+              ],
+              "pivot": [
+                101,
+                354
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                116,
+                55,
+                223,
+                411
+              ],
+              "pivot": [
+                112.5,
+                407
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                820,
+                84,
+                258,
+                381
+              ],
+              "pivot": [
+                141.5,
+                377
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                482,
+                73,
+                236,
+                393
+              ],
+              "pivot": [
+                122,
+                389
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                1200,
+                54,
+                221,
+                413
+              ],
+              "pivot": [
+                111,
+                409
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                103,
+                530,
+                237,
+                417
+              ],
+              "pivot": [
+                117,
+                413
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                805,
+                555,
+                249,
+                392
+              ],
+              "pivot": [
+                115,
+                388
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                460,
+                541,
+                245,
+                406
+              ],
+              "pivot": [
+                115.5,
+                402
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "theta-hurt-v39",
+              "rect": [
+                1195,
+                531,
+                233,
+                419
+              ],
+              "pivot": [
+                112.5,
+                415
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                87,
+                92,
+                240,
+                356
+              ],
+              "pivot": [
+                123,
+                352
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                430,
+                102,
+                389,
+                346
+              ],
+              "pivot": [
+                128.5,
+                342
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                854,
+                100,
+                242,
+                348
+              ],
+              "pivot": [
+                120.5,
+                344
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                1218,
+                91,
+                226,
+                358
+              ],
+              "pivot": [
+                112.5,
+                354
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                99,
+                557,
+                241,
+                360
+              ],
+              "pivot": [
+                120,
+                356
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                381,
+                562,
+                385,
+                355
+              ],
+              "pivot": [
+                253,
+                351
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                858,
+                562,
+                251,
+                355
+              ],
+              "pivot": [
+                125,
+                351
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "theta-light-v39",
+              "rect": [
+                1221,
+                553,
+                233,
+                364
+              ],
+              "pivot": [
+                116,
+                360
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                64,
+                88,
+                290,
+                373
+              ],
+              "pivot": [
+                157.5,
+                369
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                454,
+                87,
+                362,
+                374
+              ],
+              "pivot": [
+                132.5,
+                370
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                840,
+                84,
+                257,
+                377
+              ],
+              "pivot": [
+                126,
+                373
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                1234,
+                85,
+                231,
+                377
+              ],
+              "pivot": [
+                115,
+                373
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                88,
+                575,
+                285,
+                374
+              ],
+              "pivot": [
+                132,
+                370
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                403,
+                575,
+                356,
+                373
+              ],
+              "pivot": [
+                222.5,
+                369
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                845,
+                573,
+                257,
+                376
+              ],
+              "pivot": [
+                128,
+                372
+              ],
+              "durationTicks": 9
+            },
+            {
+              "pageId": "theta-medium-v39",
+              "rect": [
+                1216,
+                572,
+                238,
+                378
+              ],
+              "pivot": [
+                118.5,
+                374
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                57,
+                126,
+                294,
+                347
+              ],
+              "pivot": [
+                151,
+                343
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                462,
+                26,
+                315,
+                446
+              ],
+              "pivot": [
+                128,
+                442
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                845,
+                115,
+                243,
+                357
+              ],
+              "pivot": [
+                117.5,
+                353
+              ],
+              "durationTicks": 13
+            },
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                1229,
+                118,
+                228,
+                354
+              ],
+              "pivot": [
+                113.5,
+                350
+              ],
+              "durationTicks": 13
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                94,
+                596,
+                290,
+                344
+              ],
+              "pivot": [
+                136,
+                340
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                432,
+                499,
+                308,
+                440
+              ],
+              "pivot": [
+                185,
+                436
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                867,
+                588,
+                230,
+                355
+              ],
+              "pivot": [
+                114.5,
+                351
+              ],
+              "durationTicks": 13
+            },
+            {
+              "pageId": "theta-heavy-v39",
+              "rect": [
+                1233,
+                585,
+                225,
+                359
+              ],
+              "pivot": [
+                112,
+                355
+              ],
+              "durationTicks": 13
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "jungle-hunter",
+    "bodyHeightPx": 440,
+    "pageBodyHeightPx": {
+      "jungle-hunter-v34-repair-walk-forward-alternation": 440
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-walk-backward-left-v39",
+      "characterId": "jungle-hunter",
+      "variantId": "the-pit-v32",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-v34-repair-walk-forward-alternation",
+          "src": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk-backward",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                41,
+                541,
+                285,
+                437
+              ],
+              "pivot": [
+                146,
+                433
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                1179,
+                540,
+                288,
+                438
+              ],
+              "pivot": [
+                168,
+                434
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                775,
+                539,
+                297,
+                436
+              ],
+              "pivot": [
+                176,
+                432
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "jungle-hunter-v34-repair-walk-forward-alternation",
+              "rect": [
+                432,
+                541,
+                260,
+                434
+              ],
+              "pivot": [
+                144,
+                430
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "machiko-noguchi",
+    "bodyHeightPx": 410,
+    "pageBodyHeightPx": {
+      "machiko-noguchi-repair-idle-cannon": 410,
+      "machiko-noguchi-crouch": 404,
+      "machiko-noguchi-hurt": 404,
+      "machiko-noguchi-light": 345,
+      "machiko-noguchi-medium": 394,
+      "machiko-noguchi-heavy": 368
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "machiko-noguchi-clan-combat-v39",
+      "characterId": "machiko-noguchi",
+      "variantId": "machiko-clan-armor",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "machiko-noguchi-repair-idle-cannon",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-repair-idle-cannon-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-crouch",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-crouch-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-hurt",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-hurt-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-light",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-light-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-medium",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-medium-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "machiko-noguchi-heavy",
+          "src": "/game/sprites/v34/pit/machiko-noguchi/machiko-noguchi-heavy-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                132,
+                69,
+                219,
+                416
+              ],
+              "pivot": [
+                91.5,
+                412
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                515,
+                68,
+                218,
+                417
+              ],
+              "pivot": [
+                91,
+                413
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                878,
+                86,
+                207,
+                399
+              ],
+              "pivot": [
+                90,
+                395
+              ],
+              "durationTicks": 20
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                1233,
+                69,
+                217,
+                416
+              ],
+              "pivot": [
+                90,
+                412
+              ],
+              "durationTicks": 20
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                88,
+                553,
+                210,
+                411
+              ],
+              "pivot": [
+                115.5,
+                407
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "machiko-noguchi-repair-idle-cannon",
+              "rect": [
+                834,
+                570,
+                204,
+                394
+              ],
+              "pivot": [
+                112.5,
+                390
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                98,
+                74,
+                265,
+                412
+              ],
+              "pivot": [
+                126,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                485,
+                120,
+                266,
+                366
+              ],
+              "pivot": [
+                99.5,
+                362
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                870,
+                190,
+                238,
+                296
+              ],
+              "pivot": [
+                75,
+                292
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                75,
+                550,
+                263,
+                417
+              ],
+              "pivot": [
+                136,
+                413
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                442,
+                603,
+                262,
+                364
+              ],
+              "pivot": [
+                164,
+                360
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-crouch",
+              "rect": [
+                810,
+                672,
+                239,
+                295
+              ],
+              "pivot": [
+                164,
+                291
+              ],
+              "durationTicks": 30
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                92,
+                78,
+                238,
+                412
+              ],
+              "pivot": [
+                113,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                860,
+                123,
+                247,
+                366
+              ],
+              "pivot": [
+                132.5,
+                362
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                497,
+                93,
+                231,
+                396
+              ],
+              "pivot": [
+                111.5,
+                392
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                1238,
+                78,
+                235,
+                411
+              ],
+              "pivot": [
+                111.5,
+                407
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                67,
+                556,
+                235,
+                412
+              ],
+              "pivot": [
+                121,
+                408
+              ],
+              "durationTicks": 2
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                822,
+                600,
+                237,
+                368
+              ],
+              "pivot": [
+                111.5,
+                364
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                443,
+                570,
+                227,
+                398
+              ],
+              "pivot": [
+                114,
+                394
+              ],
+              "durationTicks": 3
+            },
+            {
+              "pageId": "machiko-noguchi-hurt",
+              "rect": [
+                1214,
+                556,
+                237,
+                413
+              ],
+              "pivot": [
+                123,
+                409
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                67,
+                108,
+                226,
+                353
+              ],
+              "pivot": [
+                112.5,
+                349
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                422,
+                118,
+                349,
+                343
+              ],
+              "pivot": [
+                122,
+                339
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                829,
+                118,
+                243,
+                343
+              ],
+              "pivot": [
+                115.5,
+                339
+              ],
+              "durationTicks": 5
+            },
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                1214,
+                119,
+                228,
+                342
+              ],
+              "pivot": [
+                102.5,
+                338
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                77,
+                567,
+                234,
+                353
+              ],
+              "pivot": [
+                119.5,
+                349
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                385,
+                569,
+                350,
+                352
+              ],
+              "pivot": [
+                227.5,
+                348
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                836,
+                571,
+                245,
+                349
+              ],
+              "pivot": [
+                127.5,
+                345
+              ],
+              "durationTicks": 5
+            },
+            {
+              "pageId": "machiko-noguchi-light",
+              "rect": [
+                1218,
+                574,
+                234,
+                346
+              ],
+              "pivot": [
+                128.5,
+                342
+              ],
+              "durationTicks": 6
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                478,
+                73,
+                217,
+                403
+              ],
+              "pivot": [
+                62,
+                399
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                808,
+                79,
+                326,
+                400
+              ],
+              "pivot": [
+                76,
+                396
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                1210,
+                78,
+                214,
+                400
+              ],
+              "pivot": [
+                64,
+                396
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                94,
+                79,
+                247,
+                398
+              ],
+              "pivot": [
+                121.5,
+                394
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                463,
+                550,
+                218,
+                411
+              ],
+              "pivot": [
+                152,
+                407
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                781,
+                550,
+                326,
+                409
+              ],
+              "pivot": [
+                246.5,
+                405
+              ],
+              "durationTicks": 4
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                1235,
+                551,
+                218,
+                412
+              ],
+              "pivot": [
+                154,
+                408
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "machiko-noguchi-medium",
+              "rect": [
+                84,
+                553,
+                254,
+                407
+              ],
+              "pivot": [
+                128.5,
+                403
+              ],
+              "durationTicks": 9
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                69,
+                117,
+                256,
+                372
+              ],
+              "pivot": [
+                122.5,
+                368
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                418,
+                125,
+                412,
+                364
+              ],
+              "pivot": [
+                159.5,
+                360
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                833,
+                138,
+                253,
+                351
+              ],
+              "pivot": [
+                107.5,
+                347
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                1236,
+                113,
+                231,
+                376
+              ],
+              "pivot": [
+                115,
+                372
+              ],
+              "durationTicks": 13
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                99,
+                590,
+                246,
+                361
+              ],
+              "pivot": [
+                128.5,
+                357
+              ],
+              "durationTicks": 16
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                399,
+                593,
+                393,
+                358
+              ],
+              "pivot": [
+                235.5,
+                354
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                862,
+                597,
+                249,
+                354
+              ],
+              "pivot": [
+                140.5,
+                350
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "machiko-noguchi-heavy",
+              "rect": [
+                1228,
+                580,
+                241,
+                371
+              ],
+              "pivot": [
+                120,
+                367
+              ],
+              "durationTicks": 13
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

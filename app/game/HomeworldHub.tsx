@@ -15,6 +15,7 @@ import {
   type HomeworldAction, type HomeworldPoint, type HomeworldProgress,
   type HomeworldService, type HomeworldWitnessChoice, type HomeworldPlayableRegionId,
 } from "./systems/homeworld";
+import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
 import HomeworldCityScene from "./HomeworldCityScene";
 import styles from "./HomeworldCity.module.css";
 
@@ -50,6 +51,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const pausedRef = useRef(paused || inactive);
   const dialogStateRef = useRef(dialog);
   const visitedAttempt = useRef<string | null>(null);
+  const gamepadStateRef = useRef(createHomeworldGamepadState());
   const bindings = save.settings.controlBindings;
   const district = districtAtHomeworldActor(actor);
   const nearest = nearestHomeworldPoint(actor);
@@ -65,6 +67,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
 
   const clearInputs = useCallback(() => {
     held.current.clear();
+    gamepadStateRef.current = createHomeworldGamepadState();
     touch.current = { left: false, right: false, up: false, down: false, jump: false };
   }, []);
 
@@ -141,53 +144,42 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     let previous = 0;
     let renderedAt = 0;
     let jumpWasPressed = false;
-    let confirmWasPressed = false;
-    let cancelWasPressed = false;
-    let menuDirectionWasPressed = false;
-    let pauseWasPressed = false;
     let clock = 0;
     const keyboardHeld = (action: ControlActionId) => [...held.current].some(code => matchesControlAction(action, code, bindings));
     const frame = (time: number) => {
       const dt = previous ? Math.min((time - previous) / 1000, 1 / 30) : 0;
       previous = time;
-      const ownsFocus = !!rootRef.current?.contains(document.activeElement);
-      const pad = ownsFocus && !document.hidden ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) : null;
-      const button = (index: number) => !!pad?.buttons[index]?.pressed;
-      const confirm = button(0);
-      const cancel = button(1);
-      const pausePressed = button(9);
-      const menuDown = button(13) || (pad?.axes[1] ?? 0) > .5;
-      const menuUp = button(12) || (pad?.axes[1] ?? 0) < -.5;
-      const menuDirectionPressed = menuDown || menuUp;
-      if (pausePressed && !pauseWasPressed && !suspendedRef.current && !dialogStateRef.current) {
-        setPaused(value => !value); setInactive(false); clearInputs();
+      const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
+      const active = ownsFocus && !document.hidden && !suspendedRef.current;
+      const context = !active ? "inactive" : pausedRef.current ? "paused" : dialogStateRef.current ? "dialog" : "world";
+      const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null : null;
+      const gamepad = stepHomeworldGamepad(gamepadStateRef.current, pad, context);
+      gamepadStateRef.current = gamepad.state;
+      if (gamepad.actions.pause) {
+        setPaused(!pausedRef.current); setInactive(false); clearInputs();
       }
-      pauseWasPressed = pausePressed;
       if (!suspendedRef.current && !pausedRef.current) {
         if (dialogStateRef.current) {
           const choices = [...(dialogRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? [])];
-          if (menuDirectionPressed && !menuDirectionWasPressed && choices.length) {
+          if (gamepad.actions.menuDirection && choices.length) {
             const selected = choices.indexOf(document.activeElement as HTMLButtonElement);
-            choices[(selected + (menuDown ? 1 : -1) + choices.length) % choices.length]?.focus();
+            choices[nextHomeworldDialogChoice(selected, choices.length, gamepad.actions.menuDirection)]?.focus();
           }
-          if (cancel && !cancelWasPressed) closeDialog();
-          else if (confirm && !confirmWasPressed) {
+          if (gamepad.actions.cancel) closeDialog();
+          else if (gamepad.actions.confirm) {
             const selected = choices.find(choice => choice === document.activeElement);
             (selected ?? choices[0])?.click();
           }
-        } else if (confirm && !confirmWasPressed) interact();
+        } else if (gamepad.actions.confirm) interact();
       }
-      menuDirectionWasPressed = menuDirectionPressed;
-      confirmWasPressed = confirm;
-      cancelWasPressed = cancel;
-      if (!suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden) {
-        const padX = pad?.axes[0] ?? 0;
-        const padY = pad?.axes[1] ?? 0;
-        const left = keyboardHeld("hunt.moveLeft") || touch.current.left || button(14) || padX < -.22;
-        const right = keyboardHeld("hunt.moveRight") || touch.current.right || button(15) || padX > .22;
-        const up = keyboardHeld("hunt.moveUp") || touch.current.up || button(12) || padY < -.35;
-        const down = keyboardHeld("hunt.moveDown") || touch.current.down || button(13) || padY > .35;
-        const jump = keyboardHeld("hunt.jump") || touch.current.jump || button(2);
+      // Context-changing actions cannot move the actor in the same frame.
+      const handledAction = gamepad.actions.pause || gamepad.actions.confirm || gamepad.actions.cancel;
+      if (!suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden && !handledAction) {
+        const left = keyboardHeld("hunt.moveLeft") || touch.current.left || gamepad.movement.left;
+        const right = keyboardHeld("hunt.moveRight") || touch.current.right || gamepad.movement.right;
+        const up = keyboardHeld("hunt.moveUp") || touch.current.up || gamepad.movement.up;
+        const down = keyboardHeld("hunt.moveDown") || touch.current.down || gamepad.movement.down;
+        const jump = keyboardHeld("hunt.jump") || touch.current.jump || gamepad.movement.jump;
         const next = stepHomeworldActor(actorRef.current, { moveX: Number(right) - Number(left), climb: Number(down) - Number(up), jumpPressed: jump && !jumpWasPressed }, dt);
         jumpWasPressed = jump;
         actorRef.current = next;

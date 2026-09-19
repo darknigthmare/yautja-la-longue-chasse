@@ -14,7 +14,7 @@ export const PIT_TRAINING_LESSONS = [
 export type PitTrainingLessonId = (typeof PIT_TRAINING_LESSONS)[number]["id"];
 export interface PitTrainingLesson {
   readonly id: PitTrainingLessonId;
-  readonly status: "running" | "success" | "failed";
+  readonly status: "briefing" | "running" | "success" | "failed";
   readonly progress: number;
   readonly target: number;
   readonly elapsedTicks: number;

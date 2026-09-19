@@ -13,6 +13,7 @@ import {
 
 import { compactControlKeyLabel } from "./controlBindingLabels";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, PIT_ARENA_BITMAP_PLANES, type PitArenaArtBank } from "./pitArenaRendering";
 import { getPitCombatBitmapArtDefinition, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
@@ -120,9 +121,10 @@ import {
   type PitTrainingSequenceRecorder,
   type PitTrainingSettingsPatch,
 } from "./systems/pitTraining";
-import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick, advancePitTrainingClock } from "./systems/pitTrainingClock";
-import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, preparePitTrainingLesson, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
+import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick } from "./systems/pitTrainingClock";
+import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
 import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
+import { PIT_TRAINING_BRIEFING_TIMEOUT_MS, preparePitTrainingBriefing, beginPitTrainingBriefing, advancePitTrainingSessionClock, getPitTrainingBriefingReadiness, getPitTrainingBriefingControls, type PitTrainingAssetState } from "./systems/pitTrainingBriefing";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import styles from "./PitCanvas.module.css";
 
@@ -620,7 +622,8 @@ function drawArena(
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
     const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, simulationFrame: state.frame, combat: state });
-    if (!bitmapDrawn) {
+    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi";
+    if (!bitmapDrawn && !humanCombatant) {
       context.save();
       context.translate(fighter.x, bodyTop);
       context.scale(fighter.facing, 1);
@@ -655,6 +658,16 @@ function drawArena(
       context.moveTo(18 + lean, 49);
       context.lineTo(43 + (fighter.phase === "active" ? 20 : 0), 65);
       context.stroke();
+      context.restore();
+    } else if (!bitmapDrawn) {
+      // A missing human atlas is a status marker, never a fabricated Yautja body.
+      const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: state.frame, combat: state });
+      context.save();
+      context.fillStyle = highContrast ? "#ffffff" : "#d5e8df";
+      context.font = "11px sans-serif";
+      context.textAlign = "center";
+      context.fillText(definition.name, fighter.x, bodyTop + 35, 155);
+      context.fillText(status === "loading" ? "Visuel en chargement" : "Visuel indisponible", fighter.x, bodyTop + 52, 155);
       context.restore();
     } else if (fighter.phase === "startup" || boxes.hitbox) {
       // Until authored attack poses exist, keep the real anticipation/contact
@@ -835,7 +848,7 @@ export function FighterCard({
           <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
         )}
       </div>
-      {!visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? "Image indisponible" : "Image à produire"}</small> : null}
+      {!isPitExpansionFighterId(fighterId) && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? "Image indisponible" : "Image à produire"}</small> : null}
       <h3>{fighter.name}</h3>
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
       <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
@@ -931,7 +944,10 @@ export default function PitCanvas({
   const [trainingNotice, setTrainingNotice] = useState("");
   const [trainingPaused, setTrainingPaused] = useState(false);
   const [trainingLesson, setTrainingLesson] = useState<PitTrainingLesson | null>(null);
+  const [trainingBriefingTimedOut, setTrainingBriefingTimedOut] = useState(false);
+  const trainingBriefingRef = useRef<HTMLDivElement>(null);
   const trainingClockRef = useRef(createPitTrainingClock());
+  const trainingClockRestartRef = useRef(false);
   const trainingLessonRef = useRef<PitTrainingLesson | null>(null);
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
   const [descentCombatPresentation, setDescentCombatPresentation] =
@@ -1025,6 +1041,23 @@ export default function PitCanvas({
     return new Set(actionIds.flatMap((actionId) => controlBindings[actionId]));
   }, [controlBindings, mode]);
 
+  const briefingFighterStates = combat?.fighters.map((fighter): PitTrainingAssetState => {
+    if (!fighterArt || fighterArt.cancelled || !fighterArt.requestedIds.has(fighter.definitionId)) return "loading";
+    const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: combat.frame, combat });
+    return status === "loading" ? "loading" : status === "missing" ? "failed" : "ready";
+  }) as [PitTrainingAssetState, PitTrainingAssetState] | undefined;
+  const briefingArenaState: PitTrainingAssetState = !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== renderedArenaId
+    ? "loading" : arenaArt.unavailable || arenaArt.failedPaths.size > 0 ? "failed" : "ready";
+  const trainingBriefingReadiness = getPitTrainingBriefingReadiness(briefingFighterStates ?? ["loading", "loading"], briefingArenaState, trainingBriefingTimedOut);
+  const canBeginTrainingLesson = trainingBriefingReadiness.canBegin;
+  const trainingBriefingAssetStatus = trainingBriefingReadiness.status;
+
+  useEffect(() => {
+    if (trainingLesson?.status !== "briefing") return;
+    const timer = window.setTimeout(() => setTrainingBriefingTimedOut(true), PIT_TRAINING_BRIEFING_TIMEOUT_MS);
+    return () => window.clearTimeout(timer);
+  }, [trainingLesson]);
+
   const changeCombat = useCallback((next: PitCombatState | null) => {
     combatRef.current = next;
     setCombat(next);
@@ -1069,13 +1102,15 @@ export default function PitCanvas({
   const clearTrainingLesson = useCallback(() => {
     trainingLessonRef.current = null;
     setTrainingLesson(null);
+    setTrainingBriefingTimedOut(false);
+    trainingClockRestartRef.current = false;
     trainingClockRef.current = createPitTrainingClock();
     setTrainingPaused(false);
   }, []);
 
   const toggleTrainingPause = useCallback(() => {
-    if (combatRef.current?.rules.mode !== "training" || trainingLessonRef.current?.status === "success" ||
-      trainingLessonRef.current?.status === "failed") return;
+    if (combatRef.current?.rules.mode !== "training" ||
+      (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
     const paused = !trainingClockRef.current.paused;
     resetLiveInputs();
     trainingClockRef.current = pausePitTrainingClock(trainingClockRef.current, paused);
@@ -1085,7 +1120,8 @@ export default function PitCanvas({
   }, [focusCombatRoot, resetLiveInputs]);
 
   const advanceTrainingTick = useCallback(() => {
-    if (combatRef.current?.rules.mode !== "training") return;
+    if (combatRef.current?.rules.mode !== "training" ||
+      (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
     trainingClockRef.current = requestPitTrainingTick(trainingClockRef.current);
   }, []);
 
@@ -1187,19 +1223,57 @@ export default function PitCanvas({
       setAriaAnnouncement(availability.reason ?? "Exercice indisponible.");
       return;
     }
-    const prepared = preparePitTrainingLesson(current, id);
+    const prepared = preparePitTrainingBriefing(current, id);
     clearTrainingActivity();
     resetLiveInputs();
     recorderRef.current = null;
     trainingLessonRef.current = prepared.lesson;
     setTrainingLesson(prepared.lesson);
+    trainingClockRef.current = prepared.clock;
+    setTrainingPaused(true);
+    setTrainingBriefingTimedOut(false);
     setTrainingNotice("");
     setImpact(null);
-    setAnnouncement("EXERCICE GUIDÉ");
+    setAnnouncement("PRÉPARATION DE L’EXERCICE");
     setAriaAnnouncement(prepared.lesson.message);
     changeCombat(prepared.state);
+    window.requestAnimationFrame(() => trainingBriefingRef.current?.focus({ preventScroll: true }));
+  }, [changeCombat, clearTrainingActivity, resetLiveInputs]);
+
+  const beginPreparedTrainingLesson = useCallback(() => {
+    const current = combatRef.current, lesson = trainingLessonRef.current;
+    if (!current || !lesson) return;
+    const started = beginPitTrainingBriefing(current, lesson, {
+      status: trainingBriefingAssetStatus, canBegin: canBeginTrainingLesson,
+    });
+    if (!started) return;
+    resetLiveInputs();
+    trainingLessonRef.current = started.lesson;
+    setTrainingLesson(started.lesson);
+    trainingClockRef.current = started.clock;
+    trainingClockRestartRef.current = true;
+    setTrainingPaused(false);
+    setAnnouncement("EXERCICE GUIDÉ");
+    setAriaAnnouncement("Exercice commencé. " + started.lesson.message);
     focusCombatRoot();
-  }, [changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
+  }, [canBeginTrainingLesson, trainingBriefingAssetStatus, focusCombatRoot, resetLiveInputs]);
+
+  useEffect(() => {
+    if (trainingLesson?.status !== "briefing") return;
+    let frame = 0, armed = false, previousA = false, previousB = false;
+    const poll = () => {
+      const pad = navigator.getGamepads?.().find(Boolean);
+      const a = Boolean(pad?.buttons[0]?.pressed), b = Boolean(pad?.buttons[1]?.pressed);
+      if (!pad) armed = false;
+      else if (!armed) armed = pad.buttons.every(button => !button.pressed) && pad.axes.every(axis => Math.abs(axis) < .32);
+      else if (b && !previousB) resetTraining();
+      else if (a && !previousA) beginPreparedTrainingLesson();
+      previousA = a; previousB = b;
+      frame = window.requestAnimationFrame(poll);
+    };
+    frame = window.requestAnimationFrame(poll);
+    return () => window.cancelAnimationFrame(frame);
+  }, [beginPreparedTrainingLesson, resetTraining, trainingLesson?.status]);
 
   const beginRecording = useCallback((next: PitCombatState) => {
     try {
@@ -1893,6 +1967,14 @@ export default function PitCanvas({
         return;
       }
       const target = event.target;
+      if (trainingLessonRef.current?.status === "briefing" &&
+        (target === trainingBriefingRef.current || target === rootRef.current)) {
+        if ((event.code === "Enter" || event.code === "Space") && !event.repeat) {
+          event.preventDefault();
+          beginPreparedTrainingLesson();
+        } else if (gameplayKeyCodes.has(event.code)) event.preventDefault();
+        return;
+      }
       if (
         target instanceof HTMLElement &&
         target.closest("button, input, select, textarea, a[href]")
@@ -1912,7 +1994,7 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [controlBindings, gameplayKeyCodes, onExit, playbackReplay, returnToSelection]);
+  }, [beginPreparedTrainingLesson, controlBindings, gameplayKeyCodes, onExit, playbackReplay, returnToSelection]);
 
   const viewPhase = combat === null
     ? "selection"
@@ -2059,9 +2141,13 @@ export default function PitCanvas({
     const fixedStep = 1_000 / PIT_TICK_RATE;
 
     const animate = (now: number) => {
-      const elapsed = Math.min(250, Math.max(0, now - previousTime));
+      let elapsed = Math.min(250, Math.max(0, now - previousTime));
+      if (mode === "training" && trainingClockRestartRef.current) {
+        elapsed = 0;
+        trainingClockRestartRef.current = false;
+      }
       if (mode === "training" && !playbackReplay) {
-        const transport = advancePitTrainingClock(trainingClockRef.current, elapsed);
+        const transport = advancePitTrainingSessionClock(trainingClockRef.current, elapsed, trainingLessonRef.current);
         trainingClockRef.current = transport.clock;
         accumulator = transport.ticks * fixedStep;
       } else {
@@ -2979,7 +3065,7 @@ export default function PitCanvas({
         ) : null}
         {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
-          {Object.values(PIT_FIGHTERS).filter((fighter) => getPitCombatBitmapArtDefinition(fighter.id)).length} combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
+          {Object.values(PIT_FIGHTERS).filter((fighter) => getPitCombatBitmapArtDefinition(fighter.id) || PIT_SPRITE_SHEET_REGISTRY.some((entry) => entry.fighterId === fighter.id && entry.atlas.status === "validated")).length} combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
@@ -3445,7 +3531,7 @@ export default function PitCanvas({
         ) : null}
       </div>
 
-      {touchAvailable && !playbackReplay ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal}>
+      {touchAvailable && !playbackReplay ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal || trainingLesson?.status === "briefing"}>
         <div className={styles.touchGroup}>
           <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
           <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
@@ -3508,6 +3594,19 @@ export default function PitCanvas({
               {trainingLesson ? <div role="status" className={styles.lessonStatus} data-status={trainingLesson.status}>
                 <strong>{PIT_TRAINING_LESSONS.find((lesson) => lesson.id === trainingLesson.id)?.objective}</strong>
                 <p>{trainingLesson.message}</p>
+                {trainingLesson.status === "briefing" ? (
+                  <div ref={trainingBriefingRef} tabIndex={-1} role="group" aria-label="Préparation de l’exercice"
+                    data-training-briefing={trainingBriefingReadiness.status}>
+                    <p>{getPitTrainingBriefingControls(trainingLesson.id, shortcuts.p1)}</p>
+                    <p role="status" aria-live="polite">{trainingBriefingReadiness.message}</p>
+                    <p>Le mannequin et les 30 secondes restent arrêtés. Entrée / Espace ou A pour commencer ; B pour revenir à l’entraînement libre.</p>
+                    <div className={styles.trainingActions}>
+                      <button type="button" className={styles.trainingButton} disabled={!canBeginTrainingLesson}
+                        onClick={beginPreparedTrainingLesson}>Commencer l’exercice</button>
+                      <button type="button" className={styles.trainingButton} onClick={resetTraining}>Annuler la préparation</button>
+                    </div>
+                  </div>
+                ) : null}
                 <span>{trainingLesson.id === "corner-escape"
                   ? `Contrôle retrouvé : ${trainingLesson.progress}/15 ticks`
                   : `Étapes : ${trainingLesson.progress}/${trainingLesson.target}`} · {Math.floor(trainingLesson.elapsedTicks / PIT_TICK_RATE)} s / 30 s</span>

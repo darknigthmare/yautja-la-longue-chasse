@@ -158,12 +158,14 @@ test("lesson evaluation is idempotent and completed exercises stop producing dum
 });
 
 test("every selectable fighter can launch supported lessons with a distinct dummy", () => {
-  assert.equal(pit.PIT_VERSUS_FIGHTER_IDS.length, 14);
+  assert.ok(pit.PIT_PLAYABLE_FIGHTER_IDS.every(id => pit.PIT_VERSUS_FIGHTER_IDS.includes(id)));
+  assert.ok(pit.PIT_EXPANSION_FIGHTER_IDS.every(id => pit.PIT_VERSUS_FIGHTER_IDS.includes(id)));
   for(const id of pit.PIT_VERSUS_FIGHTER_IDS){
     const original=pit.createPitCombatState(id,id==="jungle-hunter"?"berserker":"jungle-hunter",{mode:"training"});
     for(const definition of pit.PIT_TRAINING_LESSONS){
       const availability=pit.getPitTrainingLessonAvailability(id,definition.id);
-      const unsupported=definition.id==="anti-air"&&["tracker","greyback"].includes(id);
+      const heavy=pit.PIT_FIGHTERS[id].attacks.heavy;
+      const unsupported=definition.id==="anti-air"&&(!heavy.antiAir||!Number.isFinite(heavy.launchY)||heavy.launchY<=0);
       assert.equal(availability.available,!unsupported,id+" "+definition.id);
       if(unsupported){
         const before=JSON.stringify(original);
@@ -211,5 +213,5 @@ test("training UI explains disabled lessons and restores combat focus after resu
   assert.match(pause,/resetLiveInputs\(\)/);
   assert.match(pause,/if \(!paused\) focusCombatRoot\(\)/);
   const start=canvas.slice(canvas.indexOf("const startTrainingLesson ="),canvas.indexOf("const beginRecording ="));
-  assert.ok(start.indexOf("if (!availability.available)")<start.indexOf("preparePitTrainingLesson(current, id)"));
+  assert.ok(start.indexOf("if (!availability.available)")<start.indexOf("preparePitTrainingBriefing(current, id)"));
 });

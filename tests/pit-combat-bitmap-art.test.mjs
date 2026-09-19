@@ -25,7 +25,7 @@ const load = (ids, options = {}) => rawLoad(ids, { ...options, spriteSheetRegist
 
 test("all sixteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
   assert.equal(ids.length, 16);
-  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS)));
+  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS).filter(id => !["theta", "machiko-noguchi"].includes(id))));
   for (const id of ids) {
     const definition = definitionFor(id);
     assert.equal(definition.kind, "static-bitmap");
@@ -235,7 +235,9 @@ test("missing/cancelled/invalid art does not touch Canvas; draw exceptions still
 test("the static adapter neither imports the rig nor approves draft sprite sheets", async () => {
   const source = await readFile(new URL("../app/game/pitCombatBitmapArt.ts", import.meta.url), "utf8");
   assert.doesNotMatch(source, /from ["'][^"']*(?:save|hunterRig|hunterSpriteAtlas|hunterSpriteMotion|pitFighterAnimation)/);
-  assert.doesNotMatch(source, /localStorage|sessionStorage|validated|v28/);
+  assert.doesNotMatch(source, /localStorage|sessionStorage|v28/);
+  // Reading an existing review status is not permission to approve a draft.
+  assert.doesNotMatch(source, /\.status\s*=(?!=)\s*["']validated/);
 });
 
 test("per-asset camera bounds cover exactly the same complete rectangle that Canvas draws", () => {
