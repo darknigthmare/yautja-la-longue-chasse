@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { createHash } from "node:crypto";
+import { desktopBuildPaths, assertDesktopOutputSafety, directoryBytes, assertPackagingSpace, sha256File } from "../desktop/build-paths.mjs";
 import { fileURLToPath } from "node:url";
 import { packager } from "@electron/packager";
 import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
@@ -8,14 +8,23 @@ import { desktopSourceStamp, cleanDesktopSourceCommit } from "./stamp-desktop-bu
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const releaseLabel = DESKTOP_RELEASE_TAG.toUpperCase();
-const buildRoot = await fs.realpath(path.join(root, "tmp", "desktop-build"));
-const renderer = path.join(buildRoot, "renderer");
+const paths = desktopBuildPaths();
+await assertDesktopOutputSafety(paths);
+const buildRoot = await fs.realpath(paths.build);
+const renderer = paths.renderer;
 const sourceCommit = cleanDesktopSourceCommit();
 const builtStamp = JSON.parse(await fs.readFile(path.join(buildRoot, "source-stamp.json"), "utf8"));
 const currentStamp = await desktopSourceStamp();
 if (builtStamp.sourceDigest !== currentStamp.sourceDigest) throw new Error("Desktop renderer is stale: rebuild from the committed sources before packaging.");
-await fs.mkdir(path.join(root, "tmp", "desktop-release", DESKTOP_RELEASE_TAG), { recursive: true });
-const release = await fs.realpath(path.join(root, "tmp", "desktop-release", DESKTOP_RELEASE_TAG));
+await assertPackagingSpace(paths, await directoryBytes(renderer));
+const electronZipDir = process.env.YAUTJA_ELECTRON_ZIP_DIR;
+if (electronZipDir !== undefined) {
+  if (!path.isAbsolute(electronZipDir)) throw new Error("YAUTJA_ELECTRON_ZIP_DIR must be absolute");
+  const pkg = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
+  await fs.access(path.join(electronZipDir, "electron-v" + pkg.devDependencies.electron + "-win32-x64.zip"));
+}
+await fs.mkdir(paths.release, { recursive: true });
+const release = await fs.realpath(paths.release);
 await fs.access(path.join(renderer, "index.html"));
 await fs.mkdir(buildRoot, { recursive: true });
 const stage = await fs.mkdtemp(path.join(buildRoot, "package-"));
@@ -36,6 +45,8 @@ const directories = await packager({
   dir: stage, out: release, name: "Yautja-La-Longue-Chasse",
   executableName: "Yautja-La-Longue-Chasse", platform: "win32", arch: "x64",
   electronVersion: pkg.devDependencies.electron, asar: true, prune: false,
+  ...(paths.output ? { tmpdir: paths.packagerTemp } : {}),
+  ...(electronZipDir ? { electronZipDir } : {}),
   overwrite: true, appVersion: DESKTOP_VERSION, buildVersion: DESKTOP_VERSION,
   appCopyright: "Projet de fan non commercial, sans affiliation officielle",
 });
@@ -44,7 +55,7 @@ const readme = `YAUTJA : LA LONGUE CHASSE - PC ${releaseLabel}\r\n\r\nExtraire T
 await fs.writeFile(path.join(directory, "LIRE-MOI.txt"), readme, "utf8");
 const hashes = {};
 for (const name of ["Yautja-La-Longue-Chasse.exe", "resources/app.asar"]) {
-  hashes[name] = createHash("sha256").update(await fs.readFile(path.join(directory, name))).digest("hex");
+  hashes[name] = await sha256File(path.join(directory, name));
 }
 await fs.writeFile(path.join(release, "manifest-" + DESKTOP_RELEASE_TAG + ".json"), JSON.stringify({
   sourceCommit, sourceDigest: currentStamp.sourceDigest, version: DESKTOP_VERSION, electron: pkg.devDependencies.electron, platform: "win32-x64",

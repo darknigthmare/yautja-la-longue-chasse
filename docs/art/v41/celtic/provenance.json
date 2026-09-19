@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "version": "V41",
+  "fighterId": "celtic",
+  "name": "Celtic",
+  "status": "pixel-and-browser-validated",
+  "generator": "OpenAI image_gen intégré",
+  "generatedOutput": "exec-2b15f4b9-e671-4a12-abd9-b79b43f28373.png",
+  "generationAttempts": 3,
+  "rejectedGenerations": [
+    {
+      "origin": "exec-4168102c-0294-43d8-90df-db20e2907c99.png",
+      "reason": "Continuous alpha1 noise prevents zero-alpha crop separation"
+    },
+    {
+      "origin": "exec-8e40d3e3-48a0-43a7-a012-9a8c42159b94.png",
+      "reason": "Alpha repair retains nonzero separation noise"
+    }
+  ],
+  "newSelectedSourcePages": 1,
+  "newDrawings": 4,
+  "acceptedOrientedClips": 2,
+  "completeMovesets": 0,
+  "sourcePreservedByteForByte": true,
+  "officialFidelityCertified": false,
+  "definition": {
+    "fighterId": "celtic",
+    "bodyHeightPx": 459,
+    "pageBodyHeightPx": {
+      "celtic-idle-v41-right": 459,
+      "celtic-idle-v41-left": 436
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-idle-v41",
+      "characterId": "celtic",
+      "variantId": "the-pit-v34-v5-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-idle-v41-right",
+          "src": "/game/sprites/v41/pit/celtic/idle.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "celtic-idle-v41-left",
+          "src": "/game/sprites/v41/pit/celtic/idle.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-idle-v41-right",
+              "rect": [
+                243,
+                9,
+                359,
+                499
+              ],
+              "pivot": [
+                156.25,
+                495
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "celtic-idle-v41-right",
+              "rect": [
+                923,
+                8,
+                347,
+                502
+              ],
+              "pivot": [
+                148,
+                498
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-idle-v41-left",
+              "rect": [
+                251,
+                513,
+                335,
+                471
+              ],
+              "pivot": [
+                187.75,
+                467
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "celtic-idle-v41-left",
+              "rect": [
+                936,
+                513,
+                326,
+                471
+              ],
+              "pivot": [
+                184.5,
+                467
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "celtic-idle-v41",
+      "label": "Attente · deux orientations · quatre dessins",
+      "publicPath": "/game/sprites/v41/pit/celtic/idle.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "status": "integrated",
+      "reviewFrames": [
+        {
+          "pageId": "celtic-idle-v41-right",
+          "rect": [
+            243,
+            9,
+            359,
+            499
+          ],
+          "pivot": [
+            156.25,
+            495
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-right",
+          "rect": [
+            923,
+            8,
+            347,
+            502
+          ],
+          "pivot": [
+            148,
+            498
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-left",
+          "rect": [
+            251,
+            513,
+            335,
+            471
+          ],
+          "pivot": [
+            187.75,
+            467
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-left",
+          "rect": [
+            936,
+            513,
+            326,
+            471
+          ],
+          "pivot": [
+            184.5,
+            467
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        }
+      ],
+      "notes": [
+        "Attente OpenAI V41 : deux poses de respiration par orientation, mains et lance vérifiées. Aucun miroir.",
+        "PNG source conservé à l’identique. Détourage par le traitement magenta existant, crops mesurés avec bordures alpha nulles.",
+        "Références de hauteur mesurées séparément par orientation ; aucune déformation des sprites. Fidélité officielle 1:1 non certifiée."
+      ]
+    }
+  ],
+  "limits": [
+    "The source bodies measure458/459px right and436/435px left. Two logical pages share one physical PNG, with uniform scale references459/436 respectively; no per-frame rescaling or deformation.",
+    "Two separately authored idle drawings per facing only; no complete moveset or dynamic attack coverage.",
+    "No pixel edits or mirroring. Crops are individually measured; the existing runtime transparency processor is unchanged.",
+    "Native Canvas checks do not replace actual in-game idle/guard/retreat transition QA.",
+    "Project V5 continuity reviewed, not a certified official 1:1 recreation.",
+    "Idle support feet shift approximately2.06px each on the right cycle and0.77px each on the left at122px body height; this short two-drawing breathing cycle is not mathematically foot-locked."
+  ],
+  "references": [
+    "public/game/sprites/v5/film-plates/celtic.png",
+    "public/game/sprites/v34/pit/celtic/celtic-repair-guard-hand-v34.png",
+    "public/game/sprites/v34/pit/celtic/celtic-repair-walk-backward-support-v34.png"
+  ]
+}

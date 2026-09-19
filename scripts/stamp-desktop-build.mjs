@@ -4,9 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { desktopBuildPaths, assertDesktopOutputSafety, directoryBytes, assertFreeBytes } from "../desktop/build-paths.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-export const DESKTOP_SOURCE_PATHS = ["app", "desktop", "public", "package.json", "package-lock.json", "tsconfig.json", "scripts/stamp-desktop-build.mjs", "scripts/package-desktop.mjs"];
+export const DESKTOP_SOURCE_PATHS = ["app", "desktop", "public", "package.json", "package-lock.json", "tsconfig.json", "scripts/stamp-desktop-build.mjs", "scripts/package-desktop.mjs", "scripts/archive-desktop.mjs"];
 const sha256 = file => new Promise((resolve, reject) => { const hash = createHash("sha256"); const stream = createReadStream(file); stream.on("data",chunk=>hash.update(chunk)); stream.on("error",reject); stream.on("end",()=>resolve(hash.digest("hex"))); });
 export async function desktopSourceStamp() {
   const listed = execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", ...DESKTOP_SOURCE_PATHS], { cwd: root, encoding: "utf8" });
@@ -24,9 +25,12 @@ export function cleanDesktopSourceCommit() {
   return execFileSync("git",["rev-parse","HEAD"],{cwd:root,encoding:"utf8"}).trim();
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  const stamp=await desktopSourceStamp();
+  const paths = desktopBuildPaths();
+  await assertDesktopOutputSafety(paths);
   const before=process.argv.includes("--before");
-  if(!before){const initial=JSON.parse(await fs.readFile(path.join(root,"tmp/desktop-build/source-before.json"),"utf8"));if(initial.sourceDigest!==stamp.sourceDigest)throw new Error("Desktop sources changed during build; rebuild before packaging.");}
-  const destination=path.join(root,"tmp/desktop-build",before?"source-before.json":"source-stamp.json");await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,JSON.stringify(stamp,null,2)+"\n");
+  if (before) await assertFreeBytes(paths.build, await directoryBytes(path.join(root, "public"), { followLinks: true }) + 256 * 1024 * 1024, "Desktop renderer build");
+  const stamp=await desktopSourceStamp();
+  if(!before){const initial=JSON.parse(await fs.readFile(path.join(paths.build,"source-before.json"),"utf8"));if(initial.sourceDigest!==stamp.sourceDigest)throw new Error("Desktop sources changed during build; rebuild before packaging.");}
+  const destination=path.join(paths.build,before?"source-before.json":"source-stamp.json");await fs.mkdir(path.dirname(destination),{recursive:true});await fs.writeFile(destination,JSON.stringify(stamp,null,2)+"\n");
   console.log(JSON.stringify({sourceDigest:stamp.sourceDigest,files:stamp.files.length}));
 }

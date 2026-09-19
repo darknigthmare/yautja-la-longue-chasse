@@ -12468,5 +12468,314 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "tracker",
+    "bodyHeightPx": 400,
+    "pageBodyHeightPx": {
+      "tracker-repair-walk-backward-contact": 400
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "tracker-walk-forward-v41",
+      "characterId": "tracker",
+      "variantId": "predators-2010-v5-presentation",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "tracker-repair-walk-backward-contact",
+          "src": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                71,
+                63,
+                288,
+                405
+              ],
+              "pivot": [
+                129,
+                401
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1224,
+                65,
+                257,
+                404
+              ],
+              "pivot": [
+                132,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                829,
+                64,
+                267,
+                407
+              ],
+              "pivot": [
+                134,
+                403
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                455,
+                64,
+                264,
+                405
+              ],
+              "pivot": [
+                127,
+                401
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                51,
+                554,
+                279,
+                404
+              ],
+              "pivot": [
+                149,
+                400
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                1203,
+                555,
+                258,
+                402
+              ],
+              "pivot": [
+                132,
+                398
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                811,
+                554,
+                269,
+                401
+              ],
+              "pivot": [
+                154,
+                397
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "tracker-repair-walk-backward-contact",
+              "rect": [
+                437,
+                555,
+                266,
+                403
+              ],
+              "pivot": [
+                150,
+                399
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "celtic",
+    "bodyHeightPx": 459,
+    "pageBodyHeightPx": {
+      "celtic-idle-v41-right": 459,
+      "celtic-idle-v41-left": 436
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-idle-v41",
+      "characterId": "celtic",
+      "variantId": "the-pit-v34-v5-identity",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-idle-v41-right",
+          "src": "/game/sprites/v41/pit/celtic/idle.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        },
+        {
+          "id": "celtic-idle-v41-left",
+          "src": "/game/sprites/v41/pit/celtic/idle.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "color-key",
+            "rgb": [
+              255,
+              0,
+              255
+            ],
+            "tolerance": 64,
+            "fringe": {
+              "mode": "connected-magenta",
+              "radius": 2,
+              "minExcess": 16,
+              "strength": 1
+            }
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-idle-v41-right",
+              "rect": [
+                243,
+                9,
+                359,
+                499
+              ],
+              "pivot": [
+                156.25,
+                495
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "celtic-idle-v41-right",
+              "rect": [
+                923,
+                8,
+                347,
+                502
+              ],
+              "pivot": [
+                148,
+                498
+              ],
+              "durationTicks": 60
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-idle-v41-left",
+              "rect": [
+                251,
+                513,
+                335,
+                471
+              ],
+              "pivot": [
+                187.75,
+                467
+              ],
+              "durationTicks": 60
+            },
+            {
+              "pageId": "celtic-idle-v41-left",
+              "rect": [
+                936,
+                513,
+                326,
+                471
+              ],
+              "pivot": [
+                184.5,
+                467
+              ],
+              "durationTicks": 60
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

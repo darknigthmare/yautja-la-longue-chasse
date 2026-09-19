@@ -1,3 +1,3 @@
 /** Package metadata is shared by the Windows build, title and verifier. */
-export const DESKTOP_VERSION = "1.0.35";
-export const DESKTOP_RELEASE_TAG = "v35";
+export const DESKTOP_VERSION = "1.0.41";
+export const DESKTOP_RELEASE_TAG = "v41";

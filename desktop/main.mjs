@@ -4,7 +4,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { Readable } from "node:stream";
 import { DESKTOP_RELEASE_TAG } from "./release.mjs";
-import { APP_ORIGIN, CSP, appRoutePath, isAppUrl, resolveAppFile, parseAudioByteRange, appDownloadKind } from "./protocol.mjs";
+import { APP_ORIGIN, CSP, appWindowPath, isAppUrl, resolveAppFile, parseAudioByteRange, appDownloadKind } from "./protocol.mjs";
 
 app.setName("Yautja La Longue Chasse");
 const qaProfile = process.env.YAUTJA_DESKTOP_QA_PROFILE;
@@ -35,7 +35,7 @@ function createWindow(route = "/") {
   const isMain = route === "/";
   const existing = isMain ? mainWindow : auxiliary.get(route);
   if (existing && !existing.isDestroyed()) {
-    if (appRoutePath(existing.webContents.getURL()) !== route) {
+    if (appWindowPath(existing.webContents.getURL()) !== route) {
       void existing.loadURL(APP_ORIGIN + route).catch((error) => logError("reload " + error.message));
     }
     if (existing.isMinimized()) existing.restore();
@@ -58,12 +58,12 @@ function createWindow(route = "/") {
   win.once("ready-to-show", () => { if (!qaProfile) win.show(); });
   win.webContents.on("page-title-updated", (event) => event.preventDefault());
   win.webContents.on("will-navigate", (event, url) => {
-    const target = appRoutePath(url);
+    const target = appWindowPath(url);
     if (!target) { event.preventDefault(); explainExternalLink(); return; }
     if (target !== route) { event.preventDefault(); createWindow(target); }
   });
   win.webContents.setWindowOpenHandler(({ url }) => {
-    const target = appRoutePath(url);
+    const target = appWindowPath(url);
     if (target) createWindow(target); else explainExternalLink();
     return { action: "deny" };
   });

@@ -39,6 +39,18 @@ export function appRoutePath(value) {
   return APP_ROUTES.has(route) || APP_DOCUMENT_ROUTES.has(route) ? route : null;
 }
 
+/** Only bundled raster images may open alongside allowlisted game documents. */
+export function appRasterPath(value) {
+  if (!isAppUrl(value)) return null;
+  const name = new URL(value).pathname;
+  if (!name.startsWith("/game/") || !/\.(png|webp|jpe?g)$/i.test(name)) return null;
+  return resolveAppFile(path.resolve("bundled-renderer"), value) ? name : null;
+}
+
+export function appWindowPath(value) {
+  return appRoutePath(value) ?? appRasterPath(value);
+}
+
 export function isAppRoute(value) {
   return appRoutePath(value) !== null;
 }
@@ -82,8 +94,5 @@ export function parseAudioByteRange(header, size) {
 /** User-triggered exports stay limited to local saves and bundled raster game art. */
 export function appDownloadKind(value) {
   if (value.startsWith("blob:" + APP_ORIGIN + "/") || /^data:application\/json(?:;[^,]*)?,/i.test(value)) return "save";
-  if (!isAppUrl(value)) return null;
-  const name = new URL(value).pathname;
-  if (!name.startsWith("/game/") || !/\.(png|webp|jpe?g)$/i.test(name)) return null;
-  return resolveAppFile(path.resolve("bundled-renderer"), value) ? "image" : null;
+  return appRasterPath(value) ? "image" : null;
 }

@@ -3,13 +3,16 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
+import { desktopBuildPaths, assertDesktopOutputSafety } from "../desktop/build-paths.mjs";
 
 const EXPECTED_CONTENT_VERSION = DESKTOP_RELEASE_TAG.toUpperCase();
 
-const evidence = path.resolve("tmp/desktop-qa", DESKTOP_RELEASE_TAG);
+const paths = desktopBuildPaths();
+await assertDesktopOutputSafety(paths);
+const evidence = paths.evidence;
 await fs.mkdir(evidence, { recursive: true });
 const profile = await fs.mkdtemp(path.join(evidence, "profile-"));
-const executablePath = path.resolve("tmp/desktop-release", DESKTOP_RELEASE_TAG, "Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe");
+const executablePath = path.join(paths.directory, "Yautja-La-Longue-Chasse.exe");
 const checks = [];
 const errors = [];
 const failedLocalRequests = [];
@@ -96,6 +99,42 @@ try {
   assert.equal(local.asset, 200); assert.ok(local.bytes > 10000); assert.equal(local.privateFile, 403); assert.equal(local.audio,200); assert.equal(local.audioSlots,37);
   checks.push("Packaged EXE boots with the expected release content marker, renderer sandboxed, network blocked, bundled art readable, private paths rejected.");
 
+  const gallerySaveBefore = await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save"));
+  await page.getByRole("button", { name: "Dossier de campagne", exact: true }).click();
+  await page.getByRole("button", { name: "Mondes et réserves", exact: true }).click();
+  const gallery = page.locator('[data-tribe-source-gallery="v37"]');
+  await gallery.waitFor();
+  await gallery.getByRole("searchbox").fill("Mycora");
+  const originalLink = gallery.getByRole("link", { name: "Ouvrir en pleine résolution", exact: true });
+  const originalUrl = new URL(await originalLink.getAttribute("href"), page.url()).href;
+  const originalWindow = instance.waitForEvent("window");
+  await originalLink.click();
+  const imagePage = await originalWindow;
+  await imagePage.waitForLoadState("domcontentloaded");
+  await imagePage.waitForFunction(() => document.querySelector("img")?.complete && document.querySelector("img").naturalWidth > 0);
+  assert.equal(imagePage.url(), originalUrl);
+  const dimensions = await imagePage.locator("img").evaluate(image => ({ width: image.naturalWidth, height: image.naturalHeight }));
+  assert(dimensions.width >= 1000 && dimensions.height >= 1000);
+  const imageSecurity = await instance.evaluate(({ BrowserWindow }, url) => {
+    const prefs = BrowserWindow.getAllWindows().find(win => win.webContents.getURL() === url).webContents.getLastWebPreferences();
+    return { sandbox: prefs.sandbox, contextIsolation: prefs.contextIsolation, nodeIntegration: prefs.nodeIntegration, webSecurity: prefs.webSecurity };
+  }, originalUrl);
+  assert.deepEqual(imageSecurity, security);
+  const windowCount = await instance.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length);
+  await originalLink.click();
+  assert.equal(await instance.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length), windowCount, "Repeated image link reuses its auxiliary window");
+  for (const denied of ["yautja://game/game/unknown/index.html", "yautja://game/game/test.svg", "yautja://game/game/test.js", "https://example.com/desktop-denied"]) {
+    await page.evaluate(url => { window.open(url, "_blank"); }, denied);
+    await page.clock.runFor(32);
+    assert.equal(await instance.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().length), windowCount, "Denied auxiliary URL: " + denied);
+  }
+  const imageCapture = await instance.evaluate(async ({ BrowserWindow }, url) => (await BrowserWindow.getAllWindows().find(win => win.webContents.getURL() === url).webContents.capturePage()).toPNG().toString("base64"), originalUrl);
+  await fs.writeFile(path.join(evidence, "gallery-original-pc.png"), Buffer.from(imageCapture, "base64"));
+  await imagePage.close();
+  assert.equal(await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")), gallerySaveBefore);
+  await page.getByRole("button", { name: "Retour au menu", exact: true }).click();
+  checks.push("Offline gallery opens a decoded full-resolution local raster in a sandboxed auxiliary window, reuses it, rejects HTML/SVG/JS/external windows and preserves the save.");
+
   await page.getByRole("button", { name: "Réglages", exact: true }).click();
   await page.getByRole("checkbox", { name: "Violence atténuée" }).check();
   const exportPath = path.join(evidence, "exported-campaign.json");
@@ -179,7 +218,7 @@ try {
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
-  await page.getByText(/14 combattants sélectionnables · 20 arènes jouables · catalogue de production : 100 stages/).waitFor();
+  await page.getByText(/16 combattants sélectionnables · 20 arènes jouables · catalogue de production : 100 stages/).waitFor();
   await page.getByRole("radio", { name: /Entraînement/ }).click();
   await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
@@ -198,6 +237,7 @@ try {
   for (const scenario of [
     { arenaId: "arena-009-quais-du-premier-sang", player: "tracker", opponent: "greyback" },
     { arenaId: "arena-020-trone-fracture", player: "greyback", opponent: "tracker" },
+    { arenaId: "arena-009-quais-du-premier-sang", player: "theta", opponent: "machiko-noguchi" },
   ]) {
     await page.getByRole("button", { name: /^Quitter ·/ }).click();
     await page.getByRole("combobox", { name: "Combattant joueur", exact: true }).selectOption(scenario.player);
@@ -221,7 +261,7 @@ try {
     await page.clock.runFor(350);
     await page.keyboard.up("ArrowRight");
     assert(Number(await page.locator("[data-pit-frame]").first().getAttribute("data-pit-frame")) > before);
-    await captureWindow(instance, "pit-pc-" + scenario.arenaId + ".png");
+    await captureWindow(instance, "pit-pc-" + scenario.player + "-" + scenario.arenaId + ".png");
     checks.push("Packaged extension duel " + scenario.player + "/" + scenario.opponent + " on " + scenario.arenaId + ": 14 bitmaps, six planes, both authored idle facings and advancing keyboard simulation; no borrowed progression.");
   }
 
@@ -266,6 +306,10 @@ try {
   assert.deepEqual(failedLocalRequests, []);
   await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
   console.log(JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, checks, errors, failedLocalRequests }, null, 2));
+} catch (error) {
+  if (current) await captureWindow(current.instance, "failure.png").catch(() => {});
+  await fs.writeFile(path.join(evidence, "failure.json"), JSON.stringify({ error: error.stack || String(error), checks, errors, failedLocalRequests }, null, 2));
+  throw error;
 } finally {
   if (current) await close(current.instance);
 }

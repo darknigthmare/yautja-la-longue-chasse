@@ -12,7 +12,7 @@
     },
     "hunters": {
       "runtimeFighters": 11,
-      "validatedClips": 263,
+      "validatedClips": 267,
       "initialFamiliesPerDesign": 10,
       "completeMovesets": 0
     },
@@ -26,7 +26,7 @@
   },
   "totals": {
     "arena": 288,
-    "hunter": 149,
+    "hunter": 150,
     "vehicle": 114
   },
   "entries": [
@@ -19983,7 +19983,7 @@
       "category": "hunter",
       "name": "tracker · walk-backward",
       "src": "/game/sprites/v34/pit/tracker/tracker-repair-walk-backward-contact-v34.png",
-      "status": "validated",
+      "status": "integrated",
       "width": 1536,
       "height": 1024,
       "sha256": "4f720315955814926d4e20d758ed9f6f3740e8f249556545cc9d73ad6cc99602",
@@ -20003,9 +20003,8 @@
         }
       },
       "notes": [
-        "Visual anatomy and native Canvas review passed for listed oriented clips. Identity follows V5 historical project presentation, Predators (2010) variant; not certified 1:1.",
-        "Color-key tolerance64 explicitly removes near-magenta pixels only; sparse residual color can remain at fine details.",
-        "Distinct alternating contacts and passing poses; manual pelvis projection pivots."
+        "V41 : marche avant par lecture temporelle inverse [0,3,2,1] des huit dessins de recul corrigé V34, sans miroir ni nouveau dessin.",
+        "Recul existant conservé. Boucle courte de quatre appuis, pas de moveset complet ni de nouvelle marche dessinée sur mesure."
       ],
       "frames": [
         {
@@ -20159,8 +20158,161 @@
           "durationTicks": 8,
           "runtimeFrameAccepted": true,
           "phase": "walk-backward"
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            71,
+            63,
+            288,
+            405
+          ],
+          "pivot": [
+            129,
+            401
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1224,
+            65,
+            257,
+            404
+          ],
+          "pivot": [
+            132,
+            400
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            829,
+            64,
+            267,
+            407
+          ],
+          "pivot": [
+            134,
+            403
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            455,
+            64,
+            264,
+            405
+          ],
+          "pivot": [
+            127,
+            401
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "right",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            51,
+            554,
+            279,
+            404
+          ],
+          "pivot": [
+            149,
+            400
+          ],
+          "durationTicks": 8,
+          "index": 0,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            1203,
+            555,
+            258,
+            402
+          ],
+          "pivot": [
+            132,
+            398
+          ],
+          "durationTicks": 8,
+          "index": 1,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            811,
+            554,
+            269,
+            401
+          ],
+          "pivot": [
+            154,
+            397
+          ],
+          "durationTicks": 8,
+          "index": 2,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "tracker-repair-walk-backward-contact",
+          "rect": [
+            437,
+            555,
+            266,
+            403
+          ],
+          "pivot": [
+            150,
+            399
+          ],
+          "durationTicks": 8,
+          "index": 3,
+          "facing": "left",
+          "clipId": "walk",
+          "phase": "walk",
+          "runtimeFrameAccepted": true
         }
-      ]
+      ],
+      "reviewedIn": "V41"
     },
     {
       "id": "v34-tracker-repair-walk-forward-alternation",
@@ -30891,6 +31043,114 @@
           "facing": "left",
           "clipId": "high-guard",
           "phase": "high-guard",
+          "runtimeFrameAccepted": true
+        }
+      ]
+    },
+    {
+      "id": "v34-celtic-celtic-idle-v41",
+      "category": "hunter",
+      "name": "Celtic · Attente · deux orientations · quatre dessins",
+      "src": "/game/sprites/v41/pit/celtic/idle.png",
+      "status": "integrated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+      "transparency": {
+        "mode": "color-key",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 64,
+        "fringe": {
+          "mode": "connected-magenta",
+          "radius": 2,
+          "minExcess": 16,
+          "strength": 1
+        }
+      },
+      "notes": [
+        "Attente OpenAI V41 : deux poses de respiration par orientation, mains et lance vérifiées. Aucun miroir.",
+        "PNG source conservé à l’identique. Détourage par le traitement magenta existant, crops mesurés avec bordures alpha nulles.",
+        "Références de hauteur mesurées séparément par orientation ; aucune déformation des sprites. Fidélité officielle 1:1 non certifiée."
+      ],
+      "frames": [
+        {
+          "pageId": "celtic-idle-v41-right",
+          "rect": [
+            243,
+            9,
+            359,
+            499
+          ],
+          "pivot": [
+            156.25,
+            495
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-right",
+          "rect": [
+            923,
+            8,
+            347,
+            502
+          ],
+          "pivot": [
+            148,
+            498
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "right",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-left",
+          "rect": [
+            251,
+            513,
+            335,
+            471
+          ],
+          "pivot": [
+            187.75,
+            467
+          ],
+          "durationTicks": 60,
+          "index": 0,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
+          "runtimeFrameAccepted": true
+        },
+        {
+          "pageId": "celtic-idle-v41-left",
+          "rect": [
+            936,
+            513,
+            326,
+            471
+          ],
+          "pivot": [
+            184.5,
+            467
+          ],
+          "durationTicks": 60,
+          "index": 1,
+          "facing": "left",
+          "clipId": "idle",
+          "phase": "idle",
           "runtimeFrameAccepted": true
         }
       ]

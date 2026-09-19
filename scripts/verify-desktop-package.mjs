@@ -7,15 +7,18 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DESKTOP_RELEASE_TAG, DESKTOP_VERSION } from "../desktop/release.mjs";
+import { desktopBuildPaths, assertDesktopOutputSafety } from "../desktop/build-paths.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const require = createRequire(import.meta.url);
 const { extractFile, listPackage } = require("@electron/asar");
-const release = path.join(root, "tmp", "desktop-release", DESKTOP_RELEASE_TAG);
+const paths = desktopBuildPaths();
+await assertDesktopOutputSafety(paths);
+const release = paths.release;
 const directory = path.join(release, "Yautja-La-Longue-Chasse-win32-x64");
 const asarPath = path.join(directory, "resources", "app.asar");
 const manifestPath = path.join(release, "manifest-" + DESKTOP_RELEASE_TAG + ".json");
-const evidence = path.join(root, "tmp", "desktop-qa", DESKTOP_RELEASE_TAG);
+const evidence = paths.evidence;
 const zipPath = path.join(release, "Yautja-La-Longue-Chasse-PC-" + DESKTOP_RELEASE_TAG.toUpperCase() + ".zip");
 
 async function sha256(file) {

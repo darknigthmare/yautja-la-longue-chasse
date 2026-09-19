@@ -51,6 +51,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const pausedRef = useRef(paused || inactive);
   const dialogStateRef = useRef(dialog);
   const visitedAttempt = useRef<string | null>(null);
+  const pendingVisitsRef = useRef(new Set<string>());
+  const pendingVisitOwnerRef = useRef(save.createdAt);
+  const [pendingVisitCount, setPendingVisitCount] = useState(0);
   const gamepadStateRef = useRef(createHomeworldGamepadState());
   const bindings = save.settings.controlBindings;
   const district = districtAtHomeworldActor(actor);
@@ -60,7 +63,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const progress = save.homeworld;
   const blocked = suspended || paused || inactive || !!dialog;
 
-  useEffect(() => { progressRef.current = save.homeworld; saveRef.current = save; }, [save]);
+  useEffect(() => {
+    // GameClient also keys this component by createdAt. Keep the local queue
+    // isolated even if another caller reuses the instance for a different save.
+    if (pendingVisitOwnerRef.current !== save.createdAt) {
+      pendingVisitsRef.current.clear(); pendingVisitOwnerRef.current = save.createdAt;
+      visitedAttempt.current = null; setPendingVisitCount(0);
+    }
+    progressRef.current = save.homeworld; saveRef.current = save;
+  }, [save]);
   useEffect(() => { suspendedRef.current = suspended; }, [suspended]);
   useEffect(() => { pausedRef.current = paused || inactive; }, [paused, inactive]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
@@ -84,6 +95,32 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     if (announce) { setAnnouncement(result.message); onNotify(result.message); }
     return { ok: result.ok, message: result.message };
   }, [onNotify, onProgress]);
+
+  // Only IDs reached by the actual city actor enter this retry queue. Failed
+  // writes do not alter local progression, and no frame retries storage by itself.
+  const persistVisit = useCallback((districtId: string) => {
+    if (pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt) return false;
+    const result = persistAction({ type: "visit", districtId }, false);
+    if (result.ok) pendingVisitsRef.current.delete(districtId);
+    else pendingVisitsRef.current.add(districtId);
+    setPendingVisitCount(pendingVisitsRef.current.size);
+    return result.ok;
+  }, [persistAction, save.createdAt]);
+
+  const retryPendingVisits = useCallback(() => {
+    if (suspendedRef.current || pendingVisitsRef.current.size === 0
+      || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt) return;
+    clearInputs();
+    // Recompute each visit against the latest acknowledged progress. Stop after
+    // the first refusal; keep it and the remaining visits available for retry.
+    for (const districtId of [...pendingVisitsRef.current]) {
+      if (!persistVisit(districtId)) return;
+    }
+    const message = "Visites de quartiers enregistrées.";
+    setAnnouncement(message); onNotify(message);
+    // The retry button disappears after success: retain useful keyboard/pad focus.
+    (dialogStateRef.current ? dialogRef.current : viewportRef.current)?.focus({ preventScroll: true });
+  }, [clearInputs, onNotify, persistVisit, save.createdAt]);
 
   const closeDialog = useCallback(() => {
     setDialog(null);
@@ -187,7 +224,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         const entered = districtAtHomeworldActor(next);
         if (entered && visitedAttempt.current !== entered.id) {
           visitedAttempt.current = entered.id;
-          persistAction({ type: "visit", districtId: entered.id }, false);
+          persistVisit(entered.id);
         }
         if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); renderedAt = time; }
       } else jumpWasPressed = false;
@@ -195,7 +232,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [bindings, clearInputs, closeDialog, interact, persistAction]);
+  }, [bindings, clearInputs, closeDialog, interact, persistVisit]);
 
   const onWorldKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== viewportRef.current || blocked || event.altKey || event.ctrlKey || event.metaKey) return;
@@ -290,6 +327,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     <footer className={styles.footer}><div className={styles.progress}><strong>{progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · {progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" onClick={() => { clearInputs(); setDialog({ point: null }); }}>Journal de la cité</button>
     </footer>
+    {pendingVisitCount > 0 && <div className={styles.notice} role="status">
+      <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
+      <button type="button" className="ghost-button small" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>
+    </div>}
     <div id="homeworld-controls" className={styles.help}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. Les Marches de Cendre et le Désert de Verre proposent deux enquêtes jouables. Les huit autres régions et la campagne complète restent à produire.</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {dialog && <div className={styles.backdrop}>
@@ -321,6 +362,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         </>}
         {dialog.message && <div className={styles.notice} role="status">{dialog.message}</div>}
         <div className={styles.dialogActions}>
+          {pendingVisitCount > 0 && <button type="button" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>}
           {selectedRegion?.id === "ash-marches" && onExpedition && <button type="button" className={styles.primary}
             disabled={!progress.evidenceIds.includes("suspect-trophy")}
             onClick={() => { closeDialog(); onExpedition("ash-marches"); }}>Partir vers les Marches de Cendre</button>}

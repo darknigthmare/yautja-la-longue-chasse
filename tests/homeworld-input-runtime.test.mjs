@@ -49,7 +49,7 @@ function fixture() {
     requestAnimationFrame(fn) { const id = ++sequence; frames.set(id, fn); return id; },
     cancelAnimationFrame(id) { frames.delete(id); },
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
-    persistAction() {}, setActor() {}, setPhase() {},
+    persistVisit() {}, setActor() {}, setPhase() {},
     setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive; },
     setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive; events.push(["paused", paused]); },
     clearInputs() { env.held.current.clear(); for (const key of Object.keys(env.touch.current)) env.touch.current[key] = false; env.gamepadStateRef.current = createHomeworldGamepadState(); },

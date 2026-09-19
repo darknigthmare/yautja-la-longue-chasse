@@ -1,0 +1,552 @@
+{
+  "status": "PASS-pixels-native-canvas-pending-visual-signoff",
+  "checkedAt": "2026-09-19T21:39:57.221Z",
+  "sourceSha256": "ae762952428477584d4c23be05b4b15cef55ea0fe0f734ee12d4171c828d9341",
+  "bodyHeightPx": 459,
+  "bodyHeightByFacing": {
+    "right": 459,
+    "left": 436
+  },
+  "measuredFrames": [
+    {
+      "facing": "right",
+      "rect": [
+        243,
+        9,
+        359,
+        499
+      ],
+      "pivot": [
+        156.25,
+        495
+      ],
+      "sourceFootCentersX": [
+        291,
+        507.5
+      ],
+      "crownY": 47,
+      "sourcePivot": [
+        399.25,
+        504
+      ],
+      "bodyHeightMeasured": 458,
+      "visiblePixels": 81191,
+      "boundaryPixels": 0,
+      "pixelsSha256": "d91092cde6571c45aab0c4e254c11725f1e1caa47c621717630ba76cb3a3972f",
+      "visibleBounds": [
+        246,
+        12,
+        353,
+        493
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "right",
+      "rect": [
+        923,
+        8,
+        347,
+        502
+      ],
+      "pivot": [
+        148,
+        498
+      ],
+      "sourceFootCentersX": [
+        970.5,
+        1171.5
+      ],
+      "crownY": 48,
+      "sourcePivot": [
+        1071,
+        506
+      ],
+      "bodyHeightMeasured": 459,
+      "visiblePixels": 80040,
+      "boundaryPixels": 0,
+      "pixelsSha256": "9660498a5e38df95823d55163e04a247ce392ac275a51ae752ec985fb4fb8180",
+      "visibleBounds": [
+        926,
+        11,
+        341,
+        496
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "rect": [
+        251,
+        513,
+        335,
+        471
+      ],
+      "pivot": [
+        187.75,
+        467
+      ],
+      "sourceFootCentersX": [
+        333,
+        544.5
+      ],
+      "crownY": 545,
+      "sourcePivot": [
+        438.75,
+        980
+      ],
+      "bodyHeightMeasured": 436,
+      "visiblePixels": 71942,
+      "boundaryPixels": 0,
+      "pixelsSha256": "ae9321be4c5e8a97c975e40e836a276642b51a578439b592bca4a80d039dd643",
+      "visibleBounds": [
+        254,
+        516,
+        329,
+        465
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    },
+    {
+      "facing": "left",
+      "rect": [
+        936,
+        513,
+        326,
+        471
+      ],
+      "pivot": [
+        184.5,
+        467
+      ],
+      "sourceFootCentersX": [
+        1017.5,
+        1223.5
+      ],
+      "crownY": 546,
+      "sourcePivot": [
+        1120.5,
+        980
+      ],
+      "bodyHeightMeasured": 435,
+      "visiblePixels": 70689,
+      "boundaryPixels": 0,
+      "pixelsSha256": "f86540afa429cb862a00d2a994148641776ac9005327387ce7d1d1b40ba0c04b",
+      "visibleBounds": [
+        939,
+        516,
+        320,
+        465
+      ],
+      "transparentMargins": {
+        "left": 3,
+        "top": 3,
+        "right": 3,
+        "bottom": 3
+      }
+    }
+  ],
+  "preparedKeyedPixels": 1269002,
+  "preparedFringePixels": 15747,
+  "native": {
+    "readyClipCount": 16,
+    "failedAtlasIds": [],
+    "samples": [
+      {
+        "clip": "idle",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "background": "#142322",
+        "rect": [
+          243,
+          9,
+          359,
+          499
+        ],
+        "pivot": [
+          156.25,
+          495
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "right",
+        "elapsed": 60,
+        "index": 1,
+        "background": "#142322",
+        "rect": [
+          923,
+          8,
+          347,
+          502
+        ],
+        "pivot": [
+          148,
+          498
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "high-guard",
+        "facing": "right",
+        "elapsed": 9,
+        "index": 3,
+        "background": "#142322",
+        "rect": [
+          1205,
+          47,
+          250,
+          428
+        ],
+        "pivot": [
+          120.5,
+          424
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.light.active",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "light",
+        "background": "#142322",
+        "rect": [
+          421,
+          47,
+          330,
+          408
+        ],
+        "pivot": [
+          122,
+          404
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.heavy.active",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "heavy",
+        "background": "#142322",
+        "rect": [
+          412,
+          37,
+          355,
+          430
+        ],
+        "pivot": [
+          139.5,
+          426
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "background": "#142322",
+        "rect": [
+          251,
+          513,
+          335,
+          471
+        ],
+        "pivot": [
+          187.75,
+          467
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "left",
+        "elapsed": 60,
+        "index": 1,
+        "background": "#142322",
+        "rect": [
+          936,
+          513,
+          326,
+          471
+        ],
+        "pivot": [
+          184.5,
+          467
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "high-guard",
+        "facing": "left",
+        "elapsed": 9,
+        "index": 3,
+        "background": "#142322",
+        "rect": [
+          1232,
+          551,
+          246,
+          421
+        ],
+        "pivot": [
+          123.5,
+          417
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.light.active",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "light",
+        "background": "#142322",
+        "rect": [
+          390,
+          557,
+          335,
+          409
+        ],
+        "pivot": [
+          213,
+          405
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.heavy.active",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "heavy",
+        "background": "#142322",
+        "rect": [
+          385,
+          538,
+          353,
+          427
+        ],
+        "pivot": [
+          210,
+          423
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "background": "#eeeeea",
+        "rect": [
+          243,
+          9,
+          359,
+          499
+        ],
+        "pivot": [
+          156.25,
+          495
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "right",
+        "elapsed": 60,
+        "index": 1,
+        "background": "#eeeeea",
+        "rect": [
+          923,
+          8,
+          347,
+          502
+        ],
+        "pivot": [
+          148,
+          498
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "high-guard",
+        "facing": "right",
+        "elapsed": 9,
+        "index": 3,
+        "background": "#eeeeea",
+        "rect": [
+          1205,
+          47,
+          250,
+          428
+        ],
+        "pivot": [
+          120.5,
+          424
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.light.active",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "light",
+        "background": "#eeeeea",
+        "rect": [
+          421,
+          47,
+          330,
+          408
+        ],
+        "pivot": [
+          122,
+          404
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.heavy.active",
+        "facing": "right",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "heavy",
+        "background": "#eeeeea",
+        "rect": [
+          412,
+          37,
+          355,
+          430
+        ],
+        "pivot": [
+          139.5,
+          426
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "background": "#eeeeea",
+        "rect": [
+          251,
+          513,
+          335,
+          471
+        ],
+        "pivot": [
+          187.75,
+          467
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "idle",
+        "facing": "left",
+        "elapsed": 60,
+        "index": 1,
+        "background": "#eeeeea",
+        "rect": [
+          936,
+          513,
+          326,
+          471
+        ],
+        "pivot": [
+          184.5,
+          467
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "high-guard",
+        "facing": "left",
+        "elapsed": 9,
+        "index": 3,
+        "background": "#eeeeea",
+        "rect": [
+          1232,
+          551,
+          246,
+          421
+        ],
+        "pivot": [
+          123.5,
+          417
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.light.active",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "light",
+        "background": "#eeeeea",
+        "rect": [
+          390,
+          557,
+          335,
+          409
+        ],
+        "pivot": [
+          213,
+          405
+        ],
+        "drawn": true
+      },
+      {
+        "clip": "pit.stand.heavy.active",
+        "facing": "left",
+        "elapsed": 0,
+        "index": 0,
+        "attack": "heavy",
+        "background": "#eeeeea",
+        "rect": [
+          385,
+          538,
+          353,
+          427
+        ],
+        "pivot": [
+          210,
+          423
+        ],
+        "drawn": true
+      }
+    ],
+    "inGameBodyHeight": 122
+  },
+  "browserClosed": true,
+  "errors": [],
+  "failedRequests": [],
+  "sourcePixelsUnchanged": true,
+  "limits": [
+    "The source bodies measure458/459px right and436/435px left. Two logical pages share one physical PNG, with uniform scale references459/436 respectively; no per-frame rescaling or deformation.",
+    "Two separately authored idle drawings per facing only; no complete moveset or dynamic attack coverage.",
+    "No pixel edits or mirroring. Crops are individually measured; the existing runtime transparency processor is unchanged.",
+    "Native Canvas checks do not replace actual in-game idle/guard/retreat transition QA.",
+    "Project V5 continuity reviewed, not a certified official 1:1 recreation."
+  ]
+}
