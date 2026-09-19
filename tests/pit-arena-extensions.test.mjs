@@ -5,16 +5,18 @@ import { build } from "esbuild";
 const compilation = await build({ stdin: { contents: 'export * from "./app/game/systems/pitArenaExtensions"; export * from "./app/game/systems/pitFirstEdition"; export * from "./app/game/systems/pitCombat"; export * from "./app/game/pitArenaProduction"; export * from "./app/game/pitArenaRendering"; export * from "./app/game/systems/pitReplay";', loader: "ts", resolveDir: process.cwd() }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
 const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
 
-test("twelve explicit duel IDs extend, but never replace, the eight historical arenas", () => {
+test("explicit reviewed duel IDs extend, but never replace, the eight historical arenas", () => {
   assert.equal(api.PIT_FIRST_EDITION_ARENA_IDS.length, 8);
-  assert.equal(api.PIT_EXTENSION_ARENA_IDS.length, 12);
-  assert.equal(api.PIT_ARENA_IDS.length, 20);
+  const enabledExtensions = api.PIT_ARENA_PRODUCTION_MANIFEST.stages.filter(stage => stage.runtimeEnabled && stage.runtimeExtension);
+  assert.equal(api.PIT_EXTENSION_ARENA_IDS.length, enabledExtensions.length);
+  assert.equal(api.PIT_ARENA_IDS.length, 8 + enabledExtensions.length);
   assert.deepEqual(api.PIT_ARENA_IDS.slice(0, 8), api.PIT_FIRST_EDITION_ARENA_IDS);
-  for (const [index, id] of api.PIT_EXTENSION_ARENA_IDS.entries()) {
-    const extension = api.getPitArenaExtension(id, index + 9);
+  for (const id of api.PIT_EXTENSION_ARENA_IDS) {
+    const number = api.PIT_EXTENSION_ARENAS[id].catalogueNumber;
+    const extension = api.getPitArenaExtension(id, number);
     assert(extension);
     assert.equal(api.isPitFirstEditionArenaId(id), false);
-    assert.equal(api.getPitArenaExtension(id, index + 10), null);
+    assert.equal(api.getPitArenaExtension(id, number + 1), null);
     assert.deepEqual(api.PIT_ARENAS[id], { ...extension, palette: { ...extension.palette }, layers: [] });
     assert.equal(extension.implementedSectors, 1);
     assert.equal(extension.interactivePropsImplemented, false);
@@ -23,7 +25,7 @@ test("twelve explicit duel IDs extend, but never replace, the eight historical a
     for (const key of ["width", "height", "groundY", "leftWall", "rightWall", "spawnX"])
       assert.deepEqual(extension[key], api.PIT_FIRST_EDITION_ARENAS["the-pit"][key]);
   }
-  for (const value of ["__proto__", "constructor", "arena-021-marche-du-convoi", null]) assert.equal(api.isPitExtensionArenaId(value), false);
+  for (const value of ["__proto__", "constructor", "arena-999-not-authored", null]) assert.equal(api.isPitExtensionArenaId(value), false);
 });
 
 test("each extension supports deterministic movement, both boundaries, rematch and serialized recovery", () => {

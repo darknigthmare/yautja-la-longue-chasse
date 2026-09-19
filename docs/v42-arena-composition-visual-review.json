@@ -1,0 +1,893 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-19T23:32:21.688Z",
+  "scope": "Visual inspection of actual renderer captures, neutral first-sector composition only; not a claim of unique new modules, interactive props or finished animation.",
+  "compositions": [
+    {
+      "arenaId": "arena-021-marche-du-convoi",
+      "compositionDigest": "64ae22d97ee37c252bba9b5520cfe64ed07e8701f3066cc0b9e97032ed5db7a0",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Inspection centre et coins : route/épaves en profondeur identifiables, accessoires de maintenance isolés, supports latéraux discrets, pieds alignés au sol réel. Les épaves restent au fond, sans interaction annoncée."
+    },
+    {
+      "arenaId": "arena-022-lac-des-signatures",
+      "compositionDigest": "ff22e91df1c99781b0acc0722e9ff396e5ad9393f80cde0453791b6af5816bf9",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Inspection centre et coins : lac et reflets visibles, appareillage de rive cohérent en adaptation originale, sol de duel distinct et horizontal. Aucun reflet ou élément de rive ne masque les combattants."
+    },
+    {
+      "arenaId": "arena-023-ravin-des-planeurs",
+      "compositionDigest": "6d7f39232ca450b4b21455c2e8149ac0a5e5292f6edfa30d54fbaafd4c8929b5",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Inspection centre et coins : ravin vertical, ponts lointains et racines cadrent une composition différente de la Canopée. Les appuis restent sur la plateforme de combat ; feuillages hors de la zone centrale."
+    },
+    {
+      "arenaId": "arena-024-caverne-des-vapeurs",
+      "compositionDigest": "253193fadcd9a3ee512cfa949ac9d0f07219f1941f991e198bfb9afff2945d94",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Inspection centre et coins : profondeur de caverne, évents et lumière chaude lisibles ; supports et accessoires séparés compatibles avec la roche et le métal. Sol et silhouette des combattants restent distincts. Nouvelle revue ambiance centre/coins/phase active : brume alpha V33 légère dans la profondeur, dérive horizontale lente seulement ; conservation du sol et des silhouettes, référence immobile en mouvements réduits. Aucun nouveau dessin de fumée revendiqué."
+    },
+    {
+      "arenaId": "arena-025-corniche-du-leviathan",
+      "compositionDigest": "7c96a928491b434968ce5cdbe929275df1e56c8a72baf5854cca945b932e2609",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Océan agité et grandes côtes en profondeur ; matériel de rive séparé, anneau et appuis distincts dans les deux coins. Aucune créature vivante ni danger marin annoncé."
+    },
+    {
+      "arenaId": "arena-026-nid-des-razorwings",
+      "compositionDigest": "37e67f6c2fd706b8108eb417ea2d8f2d4fb1f0a9b02379b270edd28cb72cd435",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Nids abandonnés reconnaissables sur les pics lointains ; racines et caisses indépendantes compatibles avec un poste de chasse. Le centre et les pieds restent lisibles."
+    },
+    {
+      "arenaId": "arena-027-station-des-braconniers",
+      "compositionDigest": "e6ac3474b4d51fb29128843f44612070fea559e651612210c72f96ada7d2393e",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Poste humain technique reconnaissable au fond, appareils de contrôle et modules Yautja de la zone saisie séparés. Les deux ouvertures latérales restent dégagées."
+    },
+    {
+      "arenaId": "arena-028-mat-du-vaisseau-temple",
+      "compositionDigest": "739b73047184f09b3325e716bbaebefd489e7f265866c16a2549e291171e5c84",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Mât anguleux d’un vaisseau-temple au fond, matériel orbital cohérent dans les plans séparés. Les supports ne masquent aucun chasseur aux coins."
+    },
+    {
+      "arenaId": "arena-029-crypte-du-disciple",
+      "compositionDigest": "0f2f44949eddb0a67a9e993b8d582fc117747470e71eb0ed2be359eec761a9d2",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Crypte froide avec niches et sanctuaire géométrique, aucun saint humain. Bornes rituelles indépendantes et sol uniforme gardent la silhouette des deux chasseurs lisible."
+    },
+    {
+      "arenaId": "arena-030-jardin-des-spores",
+      "compositionDigest": "562c2cde419438920c69d65e8dd77ba414ae4d6c3b712ac24983bdbffcb84461",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Champignons et cloches de confinement apparaissent clairement derrière les modules du conservatoire. Les caisses et racines ne se confondent pas avec le sol physique."
+    },
+    {
+      "arenaId": "arena-031-c-ur-de-mangrove",
+      "compositionDigest": "34289bcdc3add2dea7b40f744472fd763201d99218c1a87f1887f346cc02e34b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Mangrove et eau noire identifiables, passerelle de racines isolée du plan aquatique. Coins dégagés, pas de ralentissement ni immersion simulée annoncée."
+    },
+    {
+      "arenaId": "arena-032-dorsale-du-sandmaw",
+      "compositionDigest": "065ca3ba073c2357a2f7460730610215ab3b391aca3199e5238ba5488e2cefe1",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Dorsale désertique et stries de sable lisibles, plateforme minérale et appareils indépendants. Le Sandmaw demeure une trace lointaine, pas une créature jouable inventée."
+    },
+    {
+      "arenaId": "arena-033-chantier-des-motherships",
+      "compositionDigest": "704c1464e0b5a8363a13a9434ec3856b18d9f587fec03637480dc954e74da575",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Coque de mothership en assemblage visible dans le fond, supports et appareils orbitaux séparés. Le cadrage laisse les deux combattants et leurs appuis au premier plan."
+    },
+    {
+      "arenaId": "arena-034-archive-interdite",
+      "compositionDigest": "2b3cb2966fab786b55d895a6894db56f6d38f3c730ee054b1f185fe204c126fd",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Archive technologique bleue et couloir central libre ; supports blindés cohérents avec une salle interdite. Objets et luminescences au fond ne couvrent pas les pieds."
+    },
+    {
+      "arenaId": "arena-035-fosse-des-cent-masques",
+      "compositionDigest": "243e4dd659e080c98177d5749e7e753d421c664b62d4302b7b43004be79972c0",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Nombreux masques votifs dans la paroi profonde donnent son identité à la fosse. Les bornes indépendantes ne sont pas des trophées gagnés ni des objets interactifs."
+    },
+    {
+      "arenaId": "arena-036-temple-de-la-double-lune",
+      "compositionDigest": "e95e9fb116ae853afbaf01753c0ac0b2c216d02fb588f6e4bea10256cfecbe43",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Cadrage P0 corrigé et refait : les deux lunes différentes restent visibles au centre et dans les deux coins. Temple anguleux et sol rituel lisibles sans pixels retouchés."
+    },
+    {
+      "arenaId": "arena-037-ecluse-des-marais",
+      "compositionDigest": "677d6ad60897cef4cb926434dbdcc5eb65728d8067010fab43a871967caded4f",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Écluse, canaux et eau au fond visibles derrière les montants du sas. Accessoires de rive séparés, sol horizontal au contact et aucun dispositif hydraulique interactif annoncé."
+    },
+    {
+      "arenaId": "arena-038-cicatrice-du-monde",
+      "compositionDigest": "7d9dc19ad29941fcce8ccef7ef6c733deb3f7edb964700044ca16bf1ef6fc519",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : faille rocheuse immense et pont lointain brisé identifiables, sentinelles latérales indépendantes, passage central lisible. Aucune transition de rupture simulée."
+    },
+    {
+      "arenaId": "arena-039-necropole-des-chasseurs",
+      "compositionDigest": "4b731c3dff34da52fc8ee85b3ba2a6804d039c53bce4d35ad4c650222a249190",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : escalier funéraire froid, tombe fermée et stèles identifiables ; accessoires rituels indépendants et contact au sol clair. Aucune récompense de trophée automatique."
+    },
+    {
+      "arenaId": "arena-040-fonderie-zero",
+      "compositionDigest": "517de93d6fbc0e38ef03b2b755e219ac1d7014543b239c8227df7082cf23c64a",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Centre et deux coins inspectés : fours de fonte massifs, cuves suspendues et galeries industrielles au fond ; supports métalliques, enclume et brasier indépendants. Aucun danger mécanique actif annoncé. Nouvelle revue ambiance centre/coins/phase active : cuve de lingots remplacée par le véritable brasero V33, flamme distincte correctement attachée à son ouverture aux trois cadrages ; six dessins originaux réutilisés, référence fixe en mouvements réduits. Le feu ne cause aucun dégât."
+    },
+    {
+      "arenaId": "arena-041-promontoire-de-vey",
+      "compositionDigest": "49c180519341b4baaee3db037bf619c9679e13c604e35d8d81f3f3c414a51f18",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : terrasses militaires ruinées au-dessus du gouffre et de la jungle ; petit matériel distinct, centre dégagé et pieds posés. Interprétation originale sans détail canonique officiel revendiqué."
+    },
+    {
+      "arenaId": "arena-042-couronne-de-glace",
+      "compositionDigest": "7027d0869eaadeac3c8e80d34caa5b4f412726f084f637635388b53c2877526b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : le cadrage supérieur conserve aurore et lune au-dessus de la couronne montagneuse ; équipements indépendants, sol enneigé horizontal, combattants lisibles."
+    },
+    {
+      "arenaId": "arena-043-reacteur-de-basalte",
+      "compositionDigest": "06c1d2fa707ea2f2de1df596b5a31d9390eb6a511620f5cca020cd7af1134e8f",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Centre et deux coins inspectés : colonne orange du réacteur encaissée dans le basalte, structures métalliques latérales cohérentes et aire basse dégagée. Le mécanisme du réacteur reste décoratif. Nouvelle revue ambiance centre/coins/phase active : cuve de lingots remplacée par le véritable brasero V33, flamme distincte correctement attachée à son ouverture aux trois cadrages ; six dessins originaux réutilisés, référence fixe en mouvements réduits. Le feu ne cause aucun dégât."
+    },
+    {
+      "arenaId": "arena-044-pont-des-exiles",
+      "compositionDigest": "fe7172b188411c125574ad489fc5235495c603815182839ea20c5cae8376d516",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : pont suspendu lointain reliant des refuges rocheux, teinte verte patinée, gardiens de pierre latéraux distincts. Contact au sol horizontal et centre lisible."
+    },
+    {
+      "arenaId": "arena-045-galerie-des-serments",
+      "compositionDigest": "551963edf6e2c0626bbfeee340b5d5b2c01e902d6a178fa78bb6530cb52d680b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : hautes arches cérémonielles inclinées vers une place ouverte, horizon lumineux, bannières et repères rituels indépendants. Aucun texte inventé visible."
+    },
+    {
+      "arenaId": "arena-046-station-du-dernier-signal",
+      "compositionDigest": "16ae073c17d0c11c9f27020c22f0e551196ad396fc395e27a95d9dce82288e51",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : le cadrage supérieur conserve entièrement le relais orbital distinct devant le limbe planétaire ; modules de navigation indépendants sur les côtés. Aucune pulsation animée annoncée."
+    },
+    {
+      "arenaId": "arena-047-bassin-des-chasses",
+      "compositionDigest": "13f70683f536c7c36b6feedf2efbff72d235f8fea1acd3c2128b6ae436a125a6",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : amphithéâtre naturel en terrasses, jungle et pistes lointaines identifiables ; gardiens et cargaisons distincts, centre dégagé. Aucune faune ni danger inventé."
+    },
+    {
+      "arenaId": "arena-048-cale-du-vaisseau-perdu",
+      "compositionDigest": "987381c122fb85bfc2f68e743e52e5843442f8fbc6c4022ca767724f43f51516",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : piles de cargaison inclinées et nervures du vaisseau en profondeur ; supports et conteneurs indépendants. La surface réelle du combat reste horizontale malgré la cale inclinée."
+    },
+    {
+      "arenaId": "arena-049-aiguille-des-orages",
+      "compositionDigest": "d15e952bc7e63ad3e2dc889073fc87a427114ea4f9602f47196486fd32be9153",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : le cadrage supérieur préserve aiguille orageuse, lune et éclairs ; accessoires de mesure cohérents avec le métal froid. Les éclairs appartiennent au fond fixe, sans boucle animée annoncée."
+    },
+    {
+      "arenaId": "arena-050-porte-de-l-audience",
+      "compositionDigest": "74a0532b819ce08b02871aa415425e6f6f9d9cb77a7e2a68d0595f96ecbdea39",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : porte monumentale, escalier et bannières en profondeur ; panneaux et repères rituels indépendants, sol doré horizontal. Aucun accès à une audience jouable annoncé."
+    },
+    {
+      "arenaId": "arena-051-golgotha-etude-jaguar",
+      "compositionDigest": "dc7ebf012d5465f9b11850afada1b534197fcda48b285963af53c3dd83f16311",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : ruines sombres en terrasses et chutes dans la profondeur, gardiens de pierre sur les côtés. Étude originale, sans capture ni fidélité 1:1 revendiquée au jeu cité."
+    },
+    {
+      "arenaId": "arena-052-city-in-despair-etude-capcom",
+      "compositionDigest": "0de7ca51745ff7322f4448c58771b7842e0a7a249ecbeadd775e37b881aa935f",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cité industrielle dévastée, passerelles et petits incendies lointains ; containers et supports distincts, aire basse dégagée. Étude originale, pas une reproduction du jeu cité."
+    },
+    {
+      "arenaId": "arena-053-reacteur-aliens-etude-konami",
+      "compositionDigest": "331e5f5e8d8ec53a2e0b76235e2eb90103b7a644a95dbcb186e8db223a1af818",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cuves chaudes et passerelles du réacteur en profondeur ; modules industriels indépendants. Combattants contrastés sur une surface horizontale. Étude originale sans danger de réacteur actif. Nouvelle revue ambiance centre/coins/phase active : cuve de lingots remplacée par le véritable brasero V33, flamme distincte correctement attachée à son ouverture aux trois cadrages ; six dessins originaux réutilisés, référence fixe en mouvements réduits. Le feu ne cause aucun dégât."
+    },
+    {
+      "arenaId": "arena-054-egouts-avp-etude-snes",
+      "compositionDigest": "65b9a20c71787a6de5d4bb2947b8e69d19146e8e3729901cef2c006eae018c0b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : égout voûté, déversement et bassin visibles au fond ; accessoires de pierre/métal latéraux, sol de combat séparé de l’eau. Étude originale, aucune animation d’eau prétendue."
+    },
+    {
+      "arenaId": "arena-055-furnace-alien-3-etude-snes",
+      "compositionDigest": "f9ca7736332111abecf10ec324c99029239dcae64c27ed076e1e72787b9a5201",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cascade de métal incandescent, hauts fourneaux et charpentes au fond ; pièces industrielles indépendantes, aire centrale lisible. Étude originale sans effet de chaleur sur le combat. Nouvelle revue ambiance centre/coins/phase active : cuve de lingots remplacée par le véritable brasero V33, flamme distincte correctement attachée à son ouverture aux trois cadrages ; six dessins originaux réutilisés, référence fixe en mouvements réduits. Le feu ne cause aucun dégât."
+    },
+    {
+      "arenaId": "arena-056-entrance-alien-trilogy-etude-ps1",
+      "compositionDigest": "1cab4b8ba0889b69b7ab5450aab6cc0e9c119da8ed146cbc7ead8250eec26af1",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : entrée de sas massif, éclairage froid et nervures angulaires ; containers et montants distincts. Contact au sol correct. Étude originale sans ouverture de porte implémentée."
+    },
+    {
+      "arenaId": "arena-057-temple-avp-etude-pc",
+      "compositionDigest": "ec25124b5c7267f8169242026b4c9b1799a1f4e03416609496613b769a453cef",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : temple pyramidal et terrasses devant les montagnes ; bannières et repères rituels séparés, combattants dégagés. Étude originale, sans attribution de fidélité aux niveaux historiques."
+    },
+    {
+      "arenaId": "arena-058-engineering-alien-resurrection-etude-ps1",
+      "compositionDigest": "5f28599871ef4745a6e6e852add65e824a8b6c47d7a011283ae8fb035e2d3cf8",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : tuyauteries et colonne mécanique bleue suspendue en profondeur ; accessoires industriels distincts. Couloir central sombre et lisible. Étude originale, sans machine animée annoncée."
+    },
+    {
+      "arenaId": "arena-059-sulaco-infestation-etude-portable",
+      "compositionDigest": "51f17d4144d9cbc49fa4a2a016b59de0d7eca91e4c490ee2930ef805c182cd40",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : contamination organique reconnaissable sur les galeries supérieures du vaisseau ; modules de stockage indépendants et aire basse dégagée. Étude originale, sans créature ni mécanisme inventé."
+    },
+    {
+      "arenaId": "arena-060-nostromo-mess-etude-isolation",
+      "compositionDigest": "258c06f79ffcbd4ad0c68eefddb22e04e7cc7317026f628acf050c77ce8bd146",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : mess avec banquettes et tables en profondeur, baie montrant le limbe planétaire ; accessoires métalliques au premier plan. Étude originale, pas reproduction à l’identique du Nostromo."
+    },
+    {
+      "arenaId": "arena-061-chambre-des-echos",
+      "compositionDigest": "a66c585320c9e74a01975714e8e3e8b4693bb90a21a6c34350ca8a71c82418a9",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png",
+        "ambience-active.png"
+      ],
+      "notes": "Centre et deux coins inspectés : chambre circulaire et obélisque central sous des formations suspendues ; repères rituels indépendants, sol de combat horizontal. Aucune réverbération ou animation simulée dans la preuve visuelle. Nouvelle revue ambiance centre/coins/phase active : brume alpha V33 légère dans la profondeur, dérive horizontale lente seulement ; conservation du sol et des silhouettes, référence immobile en mouvements réduits. Aucun nouveau dessin de fumée revendiqué."
+    },
+    {
+      "arenaId": "arena-062-serre-du-predateur-blanc",
+      "compositionDigest": "6bf610ad35e68399e45ea35418d7913b2577459b936399e83e0003d5c1e97e80",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : serre circulaire gelée, végétation recouverte de givre et cage métallique en profondeur ; matériel indépendant et sol givré cohérents, aucun animal inventé."
+    },
+    {
+      "arenaId": "arena-063-porte-memoire",
+      "compositionDigest": "a0c7cd1206fdf1a38b10c01374e9eda5c2bea935c838747d8987f7473d54ef16",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : salle circulaire de mémoire, rayonnages lumineux et pendentif architectural en profondeur ; instruments de navigation séparés, aire centrale sombre et lisible. Archives non interactives."
+    },
+    {
+      "arenaId": "arena-064-sanctuaire-du-fouisseur",
+      "compositionDigest": "16b28e2fb33be33b0615cefcddff7968450b5c0fb70c3c7e99a33b7364213b9e",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : grands tunnels creusés et lueurs ambrées au fond, structures de verre et pierre au bord ; accessoires distincts et sol stable. Aucun fouisseur animé ni galerie jouable promis."
+    },
+    {
+      "arenaId": "arena-065-cimetiere-des-drones",
+      "compositionDigest": "0f7ccd3da1c391b625126e484675806fe4f313661b7c2a1c6f2f7479024343fd",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : rayonnages de drones, appareils suspendus et pylône central identifiable ; petites pièces de maintenance indépendantes, personnages dégagés. Drones uniquement décoratifs."
+    },
+    {
+      "arenaId": "arena-066-balise-de-rabattage",
+      "compositionDigest": "579ca6a7bb26c54e6c5841653813ce08351bbda5a0da158ac759b235f047d969",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés après correction : antenne désertique et pistes concentriques visibles ; remplacement du premier plan cristallin ambigu par des bordures métalliques réutilisées du bastion. Instruments indépendants et sol stable, aucune balise interactive annoncée."
+    },
+    {
+      "arenaId": "arena-067-terrasses-de-la-premiere-cite",
+      "compositionDigest": "01689a964d36371818961bfed5854aa574c2b39958b5175f5afef904d966b061",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cité en terrasses, escaliers et canaux en profondeur ; bannières et repères rituels indépendants, aire centrale dégagée. Interprétation originale sans chronologie canonique affirmée."
+    },
+    {
+      "arenaId": "arena-068-aqueduc-des-clans",
+      "compositionDigest": "f7ee07bdb92708c3142fe27e433a506abc79912c5d6cbd9f3bea2640efafb58c",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : aqueduc monumental, arches et chutes très lointaines ; encadrements de pierre distincts, matériel bas et sol de duel net. Eau du fond fixe, pas de simulation prétendue."
+    },
+    {
+      "arenaId": "arena-069-salle-du-porte-cendres",
+      "compositionDigest": "6c1f8d43a4fa042fcd1d81d23c1d61b2e14593c6f710f88af67539a48b5a0564",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : salle d’audience chaude et stèle centrale sous hautes arches ; enclume et contenant incandescent indépendants, combattants lisibles. Aucun porteur vivant ni rituel actif inventé."
+    },
+    {
+      "arenaId": "arena-070-nef-des-serpents",
+      "compositionDigest": "b54dccab171c53a9bd94f63c858af12b3681540bc0b36014f36c02ac105de9a3",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : grandes conduites serpentines entre pylônes, passerelles et profondeur bleue ; instruments latéraux et plancher industriel distincts. Aucun serpent vivant ni animation des conduites prétendu."
+    },
+    {
+      "arenaId": "arena-071-observatoire-du-chasseur-mort",
+      "compositionDigest": "ed838ece74d3d315cdcf0f7235d1bd9d871884c576c9660afbedef5000fb5dbe",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : observatoire devant géante annelée, astéroïdes et montagnes ; instruments de mesure indépendants et sol de duel stable. Aucun mouvement orbital ou héritage canonique nouveau affirmé."
+    },
+    {
+      "arenaId": "arena-072-reserve-de-quarantaine",
+      "compositionDigest": "c6a8a1eb9c2e1d3eec6bc956afe9379ed32a3bc301df0e57241c5602d1bd4a97",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : hautes cuves de quarantaine éclairées dans la galerie lointaine ; équipements et contenants séparés, centre dégagé. Cuves décoratives fermées, aucune libération de créature annoncée."
+    },
+    {
+      "arenaId": "arena-073-cascade-de-resine",
+      "compositionDigest": "35c14ec5e1e5cdfaf9047987812437b42360ff4e7f0db6b91bd7c3a50a33f9b1",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cascades de résine dorée entre ruines et végétation en profondeur ; modules végétaux latéraux, caisses et sol enlacé indépendants. La résine du fond est statique, sans animation revendiquée."
+    },
+    {
+      "arenaId": "arena-074-pont-des-trois-soleils",
+      "compositionDigest": "b99268bc551ab5da0f1908f48478892222fefb955617ce84ca9607bea6582d19",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : trois soleils distincts conservés par le cadrage supérieur, pont minéral et longues crêtes derrière ; structures de verre et repères séparés. Soleil et ombres du fond statiques."
+    },
+    {
+      "arenaId": "arena-075-depot-des-prises-contestees",
+      "compositionDigest": "04cf4b3bc2b1df2ab7d96a4d3ac385eafee0c1c96d542f2132128d52eb570405",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : dépôt sécurisé avec cages et réserves lointaines, supports blindés indépendants et repères de prises sur les côtés. Aucun trophée ni récompense octroyé par ce décor."
+    },
+    {
+      "arenaId": "arena-076-atrium-des-mediateurs",
+      "compositionDigest": "6635a3bdc0183bb5605a44c9ea1107900fac124508a7f4696cd061f94d7e563a",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : atrium clair à ailes civiques opposées et estrade vide, colonnes et bannières indépendantes. Aire de duel stable, aucune médiation narrative jouable prétendue."
+    },
+    {
+      "arenaId": "arena-077-fosse-du-tonnerre",
+      "compositionDigest": "4c03ca297ebd03473df0eac2c3c394653ce36ebceb6192b8da8b6285b4e2f5c0",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : fosse volcanique étagée, arcs rocheux et structure résonnante lointaine ; accessoires de forge distincts, personnages lisibles. Aucun choc sonore ou secousse de terrain actif."
+    },
+    {
+      "arenaId": "arena-078-recif-suspendu",
+      "compositionDigest": "ea625d998074597bfa75c9689fdd05bedce22b8083bb494d9bd24dfa8c74f78e",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : récif côtier suspendu à arches ajourées au-dessus de l’océan ; treuils et valve réutilisés séparément sur un pont stable. Eau, brume du fond et récif restent statiques."
+    },
+    {
+      "arenaId": "arena-079-salle-des-routes-stellaires",
+      "compositionDigest": "beec855cecc9f4b346f683e976cbea952c40a30af9e827ac2fc1bd0c1ab1c5ad",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cadrage supérieur préservant la carte stellaire holographique dans la baie ; instruments de navigation indépendants. Carte intégrée au P0 fixe, aucune rotation ou interaction revendiquée."
+    },
+    {
+      "arenaId": "arena-080-dernier-quai",
+      "compositionDigest": "9dcac19ae02150ee7ef98a66ddd71a5c310d9d7c9e86c814debf94f6a0fb838a",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : quai d’extraction nocturne, grues et balises distantes derrière la surface de duel ; instruments bas et montants indépendants. Aucune évacuation ou vaisseau animé simulé."
+    },
+    {
+      "arenaId": "arena-081-cercle-obsidienne",
+      "compositionDigest": "f125460f7d77268da3cb333f6f1774b662e4d0fbc7b182c008543900eece7efa",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : enceinte d’obsidienne massive devant ciel cuivré et astre, gardiens de pierre séparés, terrain plat. Composition de duel pure sans danger ou rupture de secteur."
+    },
+    {
+      "arenaId": "arena-082-cercle-ivoire",
+      "compositionDigest": "63289ec8a44e2aabdd2fd631c9d5ffb521fc409624938c90fc682e0d7d6a0254",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés après correction : cadrage supérieur conservant les deux branches de l’anneau ivoire et les falaises pâles ; stèles indépendantes et sol contrasté. Composition de duel pure."
+    },
+    {
+      "arenaId": "arena-083-cercle-bronze",
+      "compositionDigest": "5058845c4d26b4f53d225cb53e4120319c1c9c5a6af6d6750196e00a01749f7b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : rotonde de bronze à nervures courbes et lumière chaude, accessoires de forge séparés, sol sombre lisible. Aucun mécanisme actif ajouté au duel."
+    },
+    {
+      "arenaId": "arena-084-cercle-jade",
+      "compositionDigest": "dd753167e4c4c13391a5bb6c2338bc734afa16c6b58c9df0ef21cada9c5f34b6",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés après correction : cadrage supérieur conservant le disque clair dans son monument de jade, falaises végétales distinctes et gardiens latéraux. Modules de rangement indépendants, duel pur."
+    },
+    {
+      "arenaId": "arena-085-cercle-sang",
+      "compositionDigest": "45bd5a337229d992568f4e427637bfa6fb31494531b781f878458e9f6086481a",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : anneau brisé complet autour de l’éclipse rouge, hautes arches et estrade lointaine ; repères rituels séparés, combattants dégagés. Composition de duel pure, sans sang ou effets de flashes."
+    },
+    {
+      "arenaId": "arena-086-cercle-cobalt",
+      "compositionDigest": "7f8ed4acc0028265fab141278101baa80afb9892f63175824dec0628b2a7dc89",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : voûte minérale cobalt et hauts piliers froids, instruments séparés et sol givré horizontal. Terrain de duel pur, aucun éclat ni effet climatique actif."
+    },
+    {
+      "arenaId": "arena-087-cercle-ambre",
+      "compositionDigest": "d5ea52f71141c662725c496dc61ea948a443d608d92229bae24f68ee2c85413a",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : grandes parois d’ambre éclairées, arches et crêtes originales au fond ; modules de verre séparés et terrain clair. Aucun animal dans l’ambre animé ou danger ajouté."
+    },
+    {
+      "arenaId": "arena-088-cercle-cendre",
+      "compositionDigest": "1dd9cbe050836a3503b92769866d24ff4bf7db8c8d605615377a1ec0033dd4c4",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : terrasse de cendre grise, crêtes sobres et stèles lointaines ; accessoires de forge indépendants. Pas d’éruption ou dégât environnemental dans ce duel."
+    },
+    {
+      "arenaId": "arena-089-cercle-eclipse",
+      "compositionDigest": "9c6b3d5433f67df737342c6f18564fa6f5f6b9aa2c67718544646b50131162c7",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cadrage conservant l’éclipse complète et son halo doux derrière les pylônes, instruments indépendants. Fond fixe sans clignotement ni modification du combat."
+    },
+    {
+      "arenaId": "arena-090-cercle-aurore",
+      "compositionDigest": "fa86355131b7e8dc42469c98e299c618ab52094b6f3f3192cb268d430e1d330b",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : aurore et lune entièrement lisibles au-dessus du monument polaire ; contenants froids et sol givré séparés. Fond lumineux fixe, aucune neige animée revendiquée."
+    },
+    {
+      "arenaId": "arena-091-duel-des-lames",
+      "compositionDigest": "56f8f024568c1bf0be2611ba31c5948cb75d556938ae38dc01b626420b53d1d5",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : double colonnade d’entraînement aux lames et perspective profonde ; supports blindés et repères rituels distincts. Aucun équipement octroyé par la scène."
+    },
+    {
+      "arenaId": "arena-092-duel-des-disques",
+      "compositionDigest": "e5635df1968cf394035a62640367ec4ba540eef1a12371efa7e97fb4fc8a4d6e",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : anneau monumental conservé dans le cadrage supérieur et cour radiale au fond ; instruments indépendants. Aucun disque peint dans la trajectoire de combat, terrain neutre."
+    },
+    {
+      "arenaId": "arena-093-duel-des-filets",
+      "compositionDigest": "6ce9bd80b6d395d14156127dc7aa2e558faffddf730bb76eb2a2c5f76b8138bd",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : abris de filets et réserves de mailles en retrait, cadre de pierre distinct et matériel bas. Les filets du décor ne capturent pas les joueurs."
+    },
+    {
+      "arenaId": "arena-094-duel-du-plasma",
+      "compositionDigest": "7420deb3210a2ee2de590d0fc00110c9725f7fc60e82785e6edd8f6365bc66e8",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : postes d’observation blindés et parois froides du court de plasma ; instruments et supports métalliques indépendants. Aucun tir ni bonus du décor annoncé."
+    },
+    {
+      "arenaId": "arena-095-duel-des-anciens",
+      "compositionDigest": "4d5d51ebfa119c8bfeabfe439bfae536467f206b19efeab2fe30ca97e8b1fc45",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : sièges vides en demi-cercle et estrade austère en profondeur ; repères rituels séparés. Aucun ancien vivant ou jugement narratif simulé."
+    },
+    {
+      "arenaId": "arena-096-duel-des-jeunes-sangs",
+      "compositionDigest": "6239ffcab39b8b65fb9767c3c5da15f6c99775cd299efe8660fd9d8aa69cdbb1",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : cour d’entraînement lumineuse, râteliers fermés et barrières au fond ; matériel et gardiens latéraux distincts. Terrain neutre sans dommage d’entraînement environnemental."
+    },
+    {
+      "arenaId": "arena-097-duel-du-premier-point",
+      "compositionDigest": "9b5f1c111b4636e5e13ebd15f3effd4a74eb614ccd14ca681f453bc812a88704",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : gradins vides et dalle de tableau sans texte devant les montagnes ; instruments indépendants. La dalle ne prétend pas afficher un score non raccordé."
+    },
+    {
+      "arenaId": "arena-098-duel-de-l-honneur",
+      "compositionDigest": "c3807afa621af6fae2e3df161258ac3b29f4fbb427b1ea101d05d512f3206b76",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : place civique d’honneur avec monument central et ailes symétriques lointaines ; bannières et repères séparés. Aucun gain d’honneur ou de campagne ajouté au décor."
+    },
+    {
+      "arenaId": "arena-099-duel-du-jugement",
+      "compositionDigest": "22912b374870c304edb0d0d52afbcd9d0eafad7a4280b7618a2419ce62e380b5",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : estrade haute du tribunal, colonnades et lune conservées ; supports latéraux et repères distincts, centre sombre lisible. Aucun mécanisme judiciaire actif."
+    },
+    {
+      "arenaId": "arena-100-le-dernier-cercle",
+      "compositionDigest": "f8519d6c72ed10a50cf22aa3cbca5ce81a8ed9a796b1c449c1f43df8748e5e2d",
+      "accepted": true,
+      "captures": [
+        "center.png",
+        "left-corner.png",
+        "right-corner.png"
+      ],
+      "notes": "Centre et deux coins inspectés : anneau cosmique brisé entièrement visible autour du limbe planétaire et du soleil, éléments orbitaux distincts ; sol argenté stable et repères rituels séparés. Dernier cercle de duel pur, sans animation orbitale prétendue."
+    }
+  ]
+}

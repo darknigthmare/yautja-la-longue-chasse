@@ -104,7 +104,7 @@ test("captured snapshots clone, round-trip and reject forged timing or fighter s
   c=>c.fighters[1].stunFrames=2,c=>delete c.pendingThrow,
  ]){const c=JSON.parse(serialized);mutate(c);assert.throws(()=>p.deserializePitCombat(JSON.stringify(c)));}
  const old=JSON.parse(serialized);old.version=4;delete old.pendingThrow;
- const migrated=p.deserializePitCombat(JSON.stringify(old));assert.equal(migrated.version,5);assert.equal(migrated.pendingThrow,null);
+ const migrated=p.deserializePitCombat(JSON.stringify(old));assert.equal(migrated.version,6);assert.equal(migrated.pendingThrow,null);
 });
 test("manual single ticks preserve the full throw-tech window with arbitrary wall delays",()=>{
  let s=caught(),clock=p.createPitTrainingClock(true);
@@ -130,7 +130,7 @@ test("new V5 replays record real techs; relabelling V4 input cannot pass the old
  const reader=p.createPitReplayReader(historical.replay),frames=[];
  while(!reader.done)frames.push(reader.next().value.inputs);
  const replay=p.recordPitReplay(frames,{rules:historical.replay.rules});
- assert.equal(replay.engineVersion,5);assert.equal(replay.version,3);
+ assert.equal(replay.engineVersion,6);assert.equal(replay.version,3);
  const result=p.playPitReplay(replay);assert.deepEqual(result.fighters.map(f=>f.health),[1000,1040]);
  assert.notEqual(replay.metadata.checksum,historical.replay.metadata.checksum);
  assert.equal(p.normalizePitReplay({...historical.replay,engineVersion:5}),null);
@@ -188,7 +188,7 @@ test("tech separation respects either arena wall and keeps the two pushboxes apa
   }
 });
 test("the playback stepper fails closed for unknown engine versions", () => {
-  for(const version of [0,2,3,6,undefined]){
+  for(const version of [0,2,3,7,undefined]){
     assert.throws(()=>p.stepPitReplayCombat(close(),neutral,version),e=>e.code==="incompatible-engine");
   }
 });

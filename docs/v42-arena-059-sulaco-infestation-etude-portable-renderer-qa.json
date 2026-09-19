@@ -1,0 +1,173 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-059-sulaco-infestation-etude-portable",
+  "compositionDigest": "51f17d4144d9cbc49fa4a2a016b59de0d7eca91e4c490ee2930ef805c182cd40",
+  "conceptPreview": true,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-19T22:57:53.259Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 11,
+    "expectedImages": 11,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

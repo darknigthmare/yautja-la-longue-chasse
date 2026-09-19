@@ -1,3 +1,4 @@
+import {selectPitMatch} from './pit-selection-browser-helpers.mjs';
 import { chromium } from 'playwright-core';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -37,11 +38,9 @@ try {
   await page.getByRole('button', { name: 'Jouer', exact: true }).click();
   await page.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
   await page.getByRole('radio', { name: /Entraînement/ }).click();
-  await page.getByRole('combobox', { name: 'Combattant joueur', exact: true }).selectOption(playerId);
-  await page.getByRole('combobox', { name: 'Adversaire', exact: true }).selectOption(opponentId);
-  await page.getByRole('combobox', { name: 'Arène', exact: true }).selectOption(arenaId);
-  await page.screenshot({ path: output + '/selection.png', fullPage: true });
-  await page.getByRole('button', { name: /^ENTRER DANS L’ARÈNE/ }).click();
+  await selectPitMatch(page,{player:playerId,opponent:opponentId,arena:arenaId,launch:false});
+  await page.screenshot({path:output+'/selection.png',fullPage:true});
+  await page.getByRole('button',{name:/^ENTRER DANS L’ARÈNE/}).click();
   await page.waitForFunction(() => document.querySelector('canvas[data-pit-arena-art-status="bitmap"][data-pit-arena-art-source="openai-v33-independent"][data-pit-arena-planes="P0,P1,P2,P3,P4,P5"]'), {}, { timeout: 60000 });
   await page.getByRole('button', { name: 'Laboratoire', exact: true }).click();
   await page.getByRole('combobox', { name: 'Comportement du mannequin', exact: true }).selectOption('idle');

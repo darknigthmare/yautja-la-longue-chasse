@@ -96,7 +96,7 @@ requestAnimationFrame(tick);
 fetch('./manifest.json').then(async response => { if (!response.ok) throw new Error('Catalogue indisponible.');return response.json(); }).then(manifest => {
   const coverage = manifest.coverage;
   if (coverage) {
-    element('coverage-arenas').textContent = `Arènes : ${coverage.arenas.playable}/${coverage.arenas.requested} jouables · ${coverage.arenas.reviewedKits} kits de décor revus.`;
+    element('coverage-arenas').textContent = `Arènes : ${coverage.arenas.playable}/${coverage.arenas.requested} scènes de duel jouables · ${coverage.arenas.reviewedKits} kits revus · ${coverage.arenas.selectedSourceImages} images sources uniques · ${coverage.arenas.sharedModuleInstances ?? 0} réemplois de modules. Les secteurs supplémentaires et animations spécifiques restent suivis séparément.`;
     element('coverage-hunters').textContent = `Combattants : ${coverage.hunters.runtimeFighters} avec clips contrôlés · ${coverage.hunters.validatedClips} clips · ensembles encore partiels.`;
     element('coverage-vehicles').textContent = `Véhicules : ${coverage.vehicles.entriesWithNonRejectedDrafts}/${coverage.vehicles.requested} avec dessins en revue · ${coverage.vehicles.rideableVehicles} conduites jouables.`;
   }

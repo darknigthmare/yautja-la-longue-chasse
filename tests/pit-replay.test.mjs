@@ -95,7 +95,7 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
   assert.equal(replay.version, 3);
-  assert.equal(replay.engineVersion, 5);
+  assert.equal(replay.engineVersion, 6);
   assert.equal(replay.encoding, "input-rle-v3");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
 });
@@ -143,7 +143,7 @@ test("Falconer reconnaissance marking stays deterministic in training replays", 
     sourceFighterId: "falconer",
     framesRemaining: direct.fighters[1].techniqueStatus.framesRemaining,
   });
-  assert.equal(replay.engineVersion, 5);
+  assert.equal(replay.engineVersion, 6);
   assert.ok(pit.normalizePitReplay(replay));
 });
 

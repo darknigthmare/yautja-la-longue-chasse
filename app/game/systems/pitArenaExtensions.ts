@@ -1,9 +1,11 @@
 import type { PitFirstEditionArenaDefinition, PitFirstEditionArenaId } from "./pitFirstEdition";
+import compositionDefinitions from "./pitArenaCompositionsV42.generated.json";
+import productionData from "../pitArenaProductionData.generated.json";
 
 /** Explicitly authored neutral-duel extensions. Art review alone never adds an ID here.
  * The first-edition registry and its campaign/chronicle routes remain unchanged.
  */
-export const PIT_EXTENSION_ARENA_IDS = [
+const HISTORICAL_EXTENSION_IDS = [
   "arena-009-quais-du-premier-sang",
   "arena-010-forge-des-lames-muettes",
   "arena-011-reserve-des-crocs",
@@ -18,7 +20,16 @@ export const PIT_EXTENSION_ARENA_IDS = [
   "arena-020-trone-fracture",
 ] as const;
 
-export type PitExtensionArenaId = (typeof PIT_EXTENSION_ARENA_IDS)[number];
+export type PitExtensionArenaId = (typeof HISTORICAL_EXTENSION_IDS)[number] | `arena-${string}`;
+// Only renderer-approved, explicitly enabled compositions join the playable registry.
+// The authored definitions alone never unlock an arena.
+const approvedCompositions = compositionDefinitions.filter(definition => productionData.stages.some(stage =>
+  stage.catalogueId === definition.id && stage.number === definition.catalogueNumber && stage.runtimeEnabled
+  && "runtimeExtension" in stage && stage.runtimeExtension?.arenaId === definition.id
+  && stage.runtimeExtension.gameplayProfile === "neutral-duel-v1" && stage.runtimeExtension.rendererEvidenceRecorded));
+export const PIT_EXTENSION_ARENA_IDS: readonly PitExtensionArenaId[] = [
+  ...HISTORICAL_EXTENSION_IDS, ...approvedCompositions.map(definition => definition.id as PitExtensionArenaId),
+];
 export type PitRuntimeArenaId = PitFirstEditionArenaId | PitExtensionArenaId;
 export interface PitExtensionArenaDefinition extends Omit<PitFirstEditionArenaDefinition, "id"> {
   readonly id: PitExtensionArenaId;
@@ -45,8 +56,8 @@ const metadata = [
   ["Trône Fracturé", "Salle cérémonielle endommagée par une crise de clan", "#1b141b", "#37242b", "#c29e61"],
 ] as const;
 
-export const PIT_EXTENSION_ARENAS: Readonly<Record<PitExtensionArenaId, PitExtensionArenaDefinition>> = Object.fromEntries(
-  PIT_EXTENSION_ARENA_IDS.map((id, index) => {
+export const PIT_EXTENSION_ARENAS: Readonly<Record<PitExtensionArenaId, PitExtensionArenaDefinition>> = Object.fromEntries([
+  ...HISTORICAL_EXTENSION_IDS.map((id, index) => {
     const [name, setting, sky, ground, accent] = metadata[index];
     return [id, {
       id, name, setting, width: 960, height: 540, groundY: 430,
@@ -57,7 +68,14 @@ export const PIT_EXTENSION_ARENAS: Readonly<Record<PitExtensionArenaId, PitExten
       sourceInterpretation: "original-project-proposal",
     }];
   }),
-) as unknown as Readonly<Record<PitExtensionArenaId, PitExtensionArenaDefinition>>;
+  ...approvedCompositions.map(definition => [definition.id, {
+    ...definition, width: 960, height: 540, groundY: 430,
+    leftWall: 54, rightWall: 906, spawnX: [300, 660], competitiveHazards: false,
+    layers: [], gameplayProfile: "neutral-duel-v1", implementedSectors: 1,
+    interactivePropsImplemented: false, transitionsImplemented: false,
+    sourceInterpretation: "original-project-proposal",
+  }]),
+]) as unknown as Readonly<Record<PitExtensionArenaId, PitExtensionArenaDefinition>>;
 
 export function isPitExtensionArenaId(value: unknown): value is PitExtensionArenaId {
   return typeof value === "string" && Object.hasOwn(PIT_EXTENSION_ARENAS, value);

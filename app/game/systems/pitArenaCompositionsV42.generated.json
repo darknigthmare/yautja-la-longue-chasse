@@ -1,0 +1,882 @@
+[
+  {
+    "id": "arena-021-marche-du-convoi",
+    "catalogueNumber": 21,
+    "name": "Marche du Convoi",
+    "setting": "Route de cendre bordée de carcasses de transport",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-022-lac-des-signatures",
+    "catalogueNumber": 22,
+    "name": "Lac des Signatures",
+    "setting": "Rive où les reflets thermiques brouillent les silhouettes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-023-ravin-des-planeurs",
+    "catalogueNumber": 23,
+    "name": "Ravin des Planeurs",
+    "setting": "Ponts courts dans un couloir de vents violents",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-024-caverne-des-vapeurs",
+    "catalogueNumber": 24,
+    "name": "Caverne des Vapeurs",
+    "setting": "Grottes thermiques aux soupapes lisibles avant activation",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-025-corniche-du-leviathan",
+    "catalogueNumber": 25,
+    "name": "Corniche du Léviathan",
+    "setting": "Rivage cyclopéen battu par une marée de fond",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-026-nid-des-razorwings",
+    "catalogueNumber": 26,
+    "name": "Nid des Razorwings",
+    "setting": "Plateforme haute parmi des nids désertés",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-027-station-des-braconniers",
+    "catalogueNumber": 27,
+    "name": "Station des Braconniers",
+    "setting": "Avant-poste humain saisi puis sécurisé",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-028-mat-du-vaisseau-temple",
+    "catalogueNumber": 28,
+    "name": "Mât du Vaisseau-Temple",
+    "setting": "Pont extérieur d'un croiseur cérémoniel",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-029-crypte-du-disciple",
+    "catalogueNumber": 29,
+    "name": "Crypte du Disciple",
+    "setting": "Salle de rite étroite aux niches symétriques",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-030-jardin-des-spores",
+    "catalogueNumber": 30,
+    "name": "Jardin des Spores",
+    "setting": "Conservatoire fongique sous cloches de quarantaine",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-031-c-ur-de-mangrove",
+    "catalogueNumber": 31,
+    "name": "Cœur de Mangrove",
+    "setting": "Racines géantes et eau peu profonde sans ralentissement classé",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-032-dorsale-du-sandmaw",
+    "catalogueNumber": 32,
+    "name": "Dorsale du Sandmaw",
+    "setting": "Crête désertique ponctuée de vibrations télégraphiées",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-033-chantier-des-motherships",
+    "catalogueNumber": 33,
+    "name": "Chantier des Motherships",
+    "setting": "Docks verticaux devant des coques en assemblage",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-034-archive-interdite",
+    "catalogueNumber": 34,
+    "name": "Archive Interdite",
+    "setting": "Dépôt de données ouvert par deux sas opposés",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-035-fosse-des-cent-masques",
+    "catalogueNumber": 35,
+    "name": "Fosse des Cent Masques",
+    "setting": "Arène profonde entourée de biomasks votifs",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-036-temple-de-la-double-lune",
+    "catalogueNumber": 36,
+    "name": "Temple de la Double Lune",
+    "setting": "Sanctuaire nocturne aux ombres jumelles",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-037-ecluse-des-marais",
+    "catalogueNumber": 37,
+    "name": "Écluse des Marais",
+    "setting": "Plateforme de pompage dans des roseaux luminescents",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-038-cicatrice-du-monde",
+    "catalogueNumber": 38,
+    "name": "Cicatrice du Monde",
+    "setting": "Faille rocheuse traversée par un ancien pont",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-039-necropole-des-chasseurs",
+    "catalogueNumber": 39,
+    "name": "Nécropole des Chasseurs",
+    "setting": "Allée funéraire où aucun trophée n'est attribué au joueur",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-040-fonderie-zero",
+    "catalogueNumber": 40,
+    "name": "Fonderie Zéro",
+    "setting": "Ligne industrielle arrêtée pour le duel",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-041-promontoire-de-vey",
+    "catalogueNumber": 41,
+    "name": "Promontoire de Vey",
+    "setting": "Ruines militaires au-dessus d'une jungle en guerre",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-042-couronne-de-glace",
+    "catalogueNumber": 42,
+    "name": "Couronne de Glace",
+    "setting": "Crête polaire sous une aurore basse",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-043-reacteur-de-basalte",
+    "catalogueNumber": 43,
+    "name": "Réacteur de Basalte",
+    "setting": "Chambre énergétique creusée dans la roche volcanique",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-044-pont-des-exiles",
+    "catalogueNumber": 44,
+    "name": "Pont des Exilés",
+    "setting": "Passage suspendu entre deux refuges clandestins",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-045-galerie-des-serments",
+    "catalogueNumber": 45,
+    "name": "Galerie des Serments",
+    "setting": "Couloir monumental qui s'ouvre en place de combat",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-046-station-du-dernier-signal",
+    "catalogueNumber": 46,
+    "name": "Station du Dernier Signal",
+    "setting": "Relais spatial où pulse une balise perdue",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-047-bassin-des-chasses",
+    "catalogueNumber": 47,
+    "name": "Bassin des Chasses",
+    "setting": "Amphithéâtre naturel entouré de pistes anciennes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-048-cale-du-vaisseau-perdu",
+    "catalogueNumber": 48,
+    "name": "Cale du Vaisseau Perdu",
+    "setting": "Soute inclinée avec cargaison arrimée",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-049-aiguille-des-orages",
+    "catalogueNumber": 49,
+    "name": "Aiguille des Orages",
+    "setting": "Sommet métallique sous des éclairs lointains",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-050-porte-de-l-audience",
+    "catalogueNumber": 50,
+    "name": "Porte de l'Audience",
+    "setting": "Avant-cour du trône configurée pour un duel officiel",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-051-golgotha-etude-jaguar",
+    "catalogueNumber": 51,
+    "name": "Golgotha — étude Jaguar",
+    "setting": "Étude de composition pixel art d'un stage AVP Jaguar",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-052-city-in-despair-etude-capcom",
+    "catalogueNumber": 52,
+    "name": "City in Despair — étude Capcom",
+    "setting": "Étude d'une rue urbaine en ruine à lecture arcade",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-053-reacteur-aliens-etude-konami",
+    "catalogueNumber": 53,
+    "name": "Réacteur Aliens — étude Konami",
+    "setting": "Étude d'une salle industrielle à plans parallèles",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-054-egouts-avp-etude-snes",
+    "catalogueNumber": 54,
+    "name": "Égouts AVP — étude SNES",
+    "setting": "Étude de tunnels bas et répétition de voûtes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-055-furnace-alien-3-etude-snes",
+    "catalogueNumber": 55,
+    "name": "Furnace Alien 3 — étude SNES",
+    "setting": "Étude de fournaise à silhouettes orange et noires",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-056-entrance-alien-trilogy-etude-ps1",
+    "catalogueNumber": 56,
+    "name": "Entrance Alien Trilogy — étude PS1",
+    "setting": "Étude d'un accès militaire en profondeur limitée",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-057-temple-avp-etude-pc",
+    "catalogueNumber": 57,
+    "name": "Temple AVP — étude PC",
+    "setting": "Étude d'un temple massif et d'un horizon froid",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-058-engineering-alien-resurrection-etude-ps1",
+    "catalogueNumber": 58,
+    "name": "Engineering Alien Resurrection — étude PS1",
+    "setting": "Étude d'une ingénierie sombre à balises rouges",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-059-sulaco-infestation-etude-portable",
+    "catalogueNumber": 59,
+    "name": "Sulaco Infestation — étude portable",
+    "setting": "Étude d'un couloir militaire lisible en petits pixels",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-060-nostromo-mess-etude-isolation",
+    "catalogueNumber": 60,
+    "name": "Nostromo Mess — étude Isolation",
+    "setting": "Étude d'un espace civil rétrofuturiste sous tension",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-061-chambre-des-echos",
+    "catalogueNumber": 61,
+    "name": "Chambre des Échos",
+    "setting": "Crypte acoustique où les impacts réveillent des glyphes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-062-serre-du-predateur-blanc",
+    "catalogueNumber": 62,
+    "name": "Serre du Prédateur Blanc",
+    "setting": "Jardin froid sous verrière fissurée",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-063-porte-memoire",
+    "catalogueNumber": 63,
+    "name": "Porte-Mémoire",
+    "setting": "Archive rotative autour d'un anneau de combat",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-064-sanctuaire-du-fouisseur",
+    "catalogueNumber": 64,
+    "name": "Sanctuaire du Fouisseur",
+    "setting": "Caverne vitrifiée avec ondulations sous le sol",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-065-cimetiere-des-drones",
+    "catalogueNumber": 65,
+    "name": "Cimetière des Drones",
+    "setting": "Atelier jonché de machines de pistage désactivées",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-066-balise-de-rabattage",
+    "catalogueNumber": 66,
+    "name": "Balise de Rabattage",
+    "setting": "Site désertique dominé par une antenne clandestine",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-067-terrasses-de-la-premiere-cite",
+    "catalogueNumber": 67,
+    "name": "Terrasses de la Première Cité",
+    "setting": "Étagement patrimonial aux raccourcis fermés pour le duel",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-068-aqueduc-des-clans",
+    "catalogueNumber": 68,
+    "name": "Aqueduc des Clans",
+    "setting": "Canal surélevé traversant les quartiers bas",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-069-salle-du-porte-cendres",
+    "catalogueNumber": 69,
+    "name": "Salle du Porte-Cendres",
+    "setting": "Quartier général d'un prétendant de la campagne",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-070-nef-des-serpents",
+    "catalogueNumber": 70,
+    "name": "Nef des Serpents",
+    "setting": "Vaisseau ancien dont les conduites forment des arcs",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-071-observatoire-du-chasseur-mort",
+    "catalogueNumber": 71,
+    "name": "Observatoire du Chasseur Mort",
+    "setting": "Dôme abandonné face à une géante gazeuse",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-072-reserve-de-quarantaine",
+    "catalogueNumber": 72,
+    "name": "Réserve de Quarantaine",
+    "setting": "Station d'observation sans présenter les xénomorphes comme faune locale",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-073-cascade-de-resine",
+    "catalogueNumber": 73,
+    "name": "Cascade de Résine",
+    "setting": "Paroi de jungle prise dans une sève ambrée",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-074-pont-des-trois-soleils",
+    "catalogueNumber": 74,
+    "name": "Pont des Trois Soleils",
+    "setting": "Chaussée minérale sous des ombres divergentes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-075-depot-des-prises-contestees",
+    "catalogueNumber": 75,
+    "name": "Dépôt des Prises Contestées",
+    "setting": "Entrepôt scellé lié à l'enquête du Homeworld",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-076-atrium-des-mediateurs",
+    "catalogueNumber": 76,
+    "name": "Atrium des Médiateurs",
+    "setting": "Place neutre réservée aux conflits entre maisons",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-077-fosse-du-tonnerre",
+    "catalogueNumber": 77,
+    "name": "Fosse du Tonnerre",
+    "setting": "Cratère où des membranes amplifient chaque choc",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-078-recif-suspendu",
+    "catalogueNumber": 78,
+    "name": "Récif Suspendu",
+    "setting": "Arène côtière taillée dans un organisme minéral mort",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-079-salle-des-routes-stellaires",
+    "catalogueNumber": 79,
+    "name": "Salle des Routes Stellaires",
+    "setting": "Carte galactique projetée derrière un sol sobre",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-080-dernier-quai",
+    "catalogueNumber": 80,
+    "name": "Dernier Quai",
+    "setting": "Embarcadère d'extraction sous alarme",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-081-cercle-obsidienne",
+    "catalogueNumber": 81,
+    "name": "Cercle Obsidienne",
+    "setting": "Sol noir mat, deux piliers et aucune interaction compétitive",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-082-cercle-ivoire",
+    "catalogueNumber": 82,
+    "name": "Cercle Ivoire",
+    "setting": "Dalle claire à limites très contrastées",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-083-cercle-bronze",
+    "catalogueNumber": 83,
+    "name": "Cercle Bronze",
+    "setting": "Anneau métallique chaud pour lecture de tournoi",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-084-cercle-jade",
+    "catalogueNumber": 84,
+    "name": "Cercle Jade",
+    "setting": "Pierre verte sombre et lumière latérale stable",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-085-cercle-sang",
+    "catalogueNumber": 85,
+    "name": "Cercle Sang",
+    "setting": "Dalle rouge désaturée, sans gore ni obstacle",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-086-cercle-cobalt",
+    "catalogueNumber": 86,
+    "name": "Cercle Cobalt",
+    "setting": "Plateau froid sous une voûte bleue",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-087-cercle-ambre",
+    "catalogueNumber": 87,
+    "name": "Cercle Ambre",
+    "setting": "Sol translucide et silhouettes lointaines fixes",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-088-cercle-cendre",
+    "catalogueNumber": 88,
+    "name": "Cercle Cendre",
+    "setting": "Pierre grise avec repères de distance gravés",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-089-cercle-eclipse",
+    "catalogueNumber": 89,
+    "name": "Cercle Éclipse",
+    "setting": "Arène sombre à liserés lumineux accessibles",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-090-cercle-aurore",
+    "catalogueNumber": 90,
+    "name": "Cercle Aurore",
+    "setting": "Plateforme claire sous voiles atmosphériques",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-091-duel-des-lames",
+    "catalogueNumber": 91,
+    "name": "Duel des Lames",
+    "setting": "Salle symétrique marquée pour le corps à corps",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-092-duel-des-disques",
+    "catalogueNumber": 92,
+    "name": "Duel des Disques",
+    "setting": "Cour large avec repères de retour des projectiles",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-093-duel-des-filets",
+    "catalogueNumber": 93,
+    "name": "Duel des Filets",
+    "setting": "Anneau neutre à grande lisibilité au sol",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-094-duel-du-plasma",
+    "catalogueNumber": 94,
+    "name": "Duel du Plasma",
+    "setting": "Plateforme longue avec contraste de trajectoires",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-095-duel-des-anciens",
+    "catalogueNumber": 95,
+    "name": "Duel des Anciens",
+    "setting": "Salle sobre entourée de sièges vides",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-096-duel-des-jeunes-sangs",
+    "catalogueNumber": 96,
+    "name": "Duel des Jeunes Sangs",
+    "setting": "Cour d'entraînement sans dégâts environnementaux",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-097-duel-du-premier-point",
+    "catalogueNumber": 97,
+    "name": "Duel du Premier Point",
+    "setting": "Petit stade pour manches rapides",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-098-duel-de-l-honneur",
+    "catalogueNumber": 98,
+    "name": "Duel de l'Honneur",
+    "setting": "Place officielle sans récompense de campagne",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-099-duel-du-jugement",
+    "catalogueNumber": 99,
+    "name": "Duel du Jugement",
+    "setting": "Tribunal symétrique réservé aux finales",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  },
+  {
+    "id": "arena-100-le-dernier-cercle",
+    "catalogueNumber": 100,
+    "name": "Le Dernier Cercle",
+    "setting": "Arène pure, limites nettes et aucun avantage de côté",
+    "palette": {
+      "sky": "#151b20",
+      "ground": "#2c3033",
+      "accent": "#a5b4be"
+    }
+  }
+]

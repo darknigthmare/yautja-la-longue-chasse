@@ -29,6 +29,11 @@ export function projectPitArenaRuntimeData(source) {
     production: source.production,
     sourceManifestSha256: createHash("sha256").update(JSON.stringify(canonical(source))).digest("hex"),
     sourceNote: "Projection runtime. Les sources de génération et preuves complètes restent dans le manifeste local de production.",
+    ...(source.sharedLibrary ? { sharedLibrary: source.sharedLibrary.map(entry => ({
+      id: entry.id, sourceCatalogueId: entry.sourceCatalogueId, sourceAssetId: entry.sourceAssetId,
+      frames: entry.frames.map(frame => ({path: frame.path, sha256: frame.sha256,
+        width: frame.width, height: frame.height, hasAlpha: frame.hasAlpha, contentBounds: box(frame.contentBounds)})),
+    })) } : {}),
     stages: source.stages.map(stage => ({
       number: stage.number,
       catalogueId: stage.catalogueId,
@@ -49,8 +54,10 @@ export function projectPitArenaRuntimeData(source) {
         subplanSpecification: plane.subplanSpecification,
         assets: plane.assets.map(asset => ({
           id: asset.id,
+          ...(asset.libraryRef ? { libraryRef: asset.libraryRef } : {}),
           role: asset.role,
           ...(asset.drawOrder === undefined ? {} : { drawOrder: asset.drawOrder }),
+          ...(asset.ambientMotion ? { ambientMotion: { kind: asset.ambientMotion.kind, amplitudePx: asset.ambientMotion.amplitudePx, periodFrames: asset.ambientMotion.periodFrames } } : {}),
           alphaRequired: asset.alphaRequired,
           requiredForRuntime: asset.requiredForRuntime,
           mode: asset.mode,
@@ -98,6 +105,37 @@ async function readSource(projectRoot) {
 // Authoring-only validation: a runtime attestation is never accepted in place of the actual source evidence.
 export async function verifyPitArenaSourceReferences(source, projectRoot = root) {
   const evidence = new Set();
+  const library = source.sharedLibrary ?? [];
+  assert.equal(new Set(library.map(entry => entry.id)).size, library.length, "Duplicate shared library ID");
+  for (const entry of library) {
+    const originals = source.stages.find(stage => stage.catalogueId === entry.sourceCatalogueId)?.planes.flatMap(plane => plane.assets).filter(asset => asset.id === entry.sourceAssetId) ?? [];
+    assert.equal(originals.length, 1, "Shared source must resolve uniquely");
+    const original = originals[0];
+    assert(!original.libraryRef, "Shared sources cannot form recursive chains");
+    assert.equal(entry.frames.length, original.frames.length);
+    for (const [index, frame] of entry.frames.entries()) {
+      const sourceFrame = original.frames[index];
+      assert.equal(frame.path, sourceFrame.path);
+      for (const field of ["sha256", "width", "height", "hasAlpha", "contentBounds"])
+        assert.deepEqual(frame[field], sourceFrame.generation?.[field], "Altered shared source " + entry.id);
+    }
+  }
+  for (const stage of source.stages) for (const asset of stage.planes.flatMap(plane => plane.assets)) if (asset.libraryRef) {
+    const entry = library.find(candidate => candidate.id === asset.libraryRef);
+    assert(entry, "Unregistered shared asset " + asset.libraryRef);
+    assert.equal(asset.frames.length, entry.frames.length);
+    for (const [index, frame] of asset.frames.entries()) {
+      assert.equal(frame.path, entry.frames[index].path);
+      for (const field of ["sha256", "width", "height", "hasAlpha", "contentBounds"])
+        assert.deepEqual(frame.generation?.[field], entry.frames[index][field], "Altered shared instance " + asset.libraryRef);
+    }
+  }
+  for (const stage of source.stages) for (const plane of stage.planes) for (const asset of plane.assets) if (asset.ambientMotion) {
+    const motion = asset.ambientMotion;
+    assert(plane.id === 'P0' && asset.mode === 'module' && asset.alphaRequired && !asset.animation && asset.frames.length === 1, 'Only a separate atmospheric alpha can drift');
+    assert(motion.kind === 'drift-x' && Number.isFinite(motion.amplitudePx) && motion.amplitudePx >= 0 && motion.amplitudePx <= 24);
+    assert(Number.isInteger(motion.periodFrames) && motion.periodFrames >= 600 && motion.periodFrames <= 3600);
+  }
   for (const stage of source.stages) if (stage.runtimeExtension) {
     assert(hasReference(stage.runtimeExtension.rendererEvidence), "Missing extension renderer approval: " + stage.catalogueId);
     evidence.add(stage.runtimeExtension.rendererEvidence);

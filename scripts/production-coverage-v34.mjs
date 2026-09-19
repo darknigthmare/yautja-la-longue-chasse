@@ -26,10 +26,15 @@ export function productionCoverage(entries, stages) {
   const reviewedKit = stage => stage.planes.length === 6 && stage.planes.every(plane =>
     plane.assets.some(asset => asset.requiredForRuntime) && plane.assets.filter(asset => asset.requiredForRuntime).every(asset =>
       asset.frames.some(frame => frame.generation && ['reviewed', 'integrated'].includes(frame.status))));
+  const sharedModules = stages.flatMap(stage => stage.planes.flatMap(plane => plane.assets.filter(asset => asset.libraryRef)));
+  const sharedSources = new Set(sharedModules.flatMap(asset => asset.frames.map(frame => frame.path)));
   return {
     completeGameImplied: false,
     arenas: { requested: stages.length, playable: stages.filter(stage => stage.runtimeEnabled).length,
-      reviewedKits: stages.filter(reviewedKit).length, selectedSourceImages: entries.filter(entry => entry.category === 'arena').length },
+      reviewedKits: stages.filter(reviewedKit).length, selectedSourceImages: entries.filter(entry => entry.category === 'arena').length,
+      sharedModuleInstances: sharedModules.length, uniqueSharedSourceImages: sharedSources.size,
+      stagesWithSignatureBacklog: stages.filter(stage => stage.signatureBacklog?.length > 0).length,
+      completeMultiSectorArenasImplied: false },
     hunters: { runtimeFighters: new Set(fighters.map(fighter => fighter.fighterId)).size, validatedClips: fighters.reduce((sum, fighter) => sum + fighter.atlas.clips.filter(clip => clip.status === 'validated').length, 0),
       initialFamiliesPerDesign: 10, completeMovesets: 0 },
     vehicles: { requested: catalogue.entries.length, entriesWithSourceArt: vehicleIds.size,

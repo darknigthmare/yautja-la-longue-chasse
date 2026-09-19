@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {build} from 'esbuild';
+import {chromium} from 'playwright-core';
+import {selectPitMatch} from './pit-selection-browser-helpers.mjs';
+const base=process.env.V42_QA_URL||'http://127.0.0.1:4174', output=process.env.V42_JOURNEY_QA_OUTPUT||'work/v42/stage-journey-qa';
+await fs.mkdir(output,{recursive:true});
+const bundle=await build({stdin:{contents:["export * from './app/game/systems/pitReplay.ts';","export * from './app/game/systems/pitReplayStorage.ts';","export * from './app/game/systems/pitStageJourney.ts';","export {defaultSave,SAVE_STORAGE_KEY} from './app/game/save.ts';"].join('\n'),resolveDir:process.cwd(),loader:'ts'},bundle:true,format:'esm',platform:'node',write:false,logLevel:'silent'});
+const p=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const legacy=JSON.parse(await fs.readFile('tests/fixtures/pit-replay-v5-reserve-throw.json','utf8'));
+const reader=p.createPitReplayReader(legacy),inputs=[];while(!reader.done)inputs.push(reader.next().value.inputs);
+const routeReplay=p.recordPitReplay([...inputs,...Array.from({length:180},()=>[{},{}])],{fighters:legacy.fighters,arenaId:p.PIT_RESERVE_GATE,rules:{mode:'training',stageJourney:p.PIT_RESERVE_JOURNEY}});
+const errors=[],failures=[],checks=[];const browser=await chromium.launch({channel:'chrome',headless:true});let page;
+function watch(page){page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)failures.push({url:r.url(),status:r.status()});});}
+async function enter(page){await page.goto(base,{waitUntil:'networkidle',timeout:120000});await page.getByRole('button',{name:'Jouer',exact:true}).click();await page.getByRole('button',{name:'THE PIT · combat',exact:true}).click();await page.locator('[data-pit-selection-step]').waitFor();}
+const combat=()=>page.locator('canvas[data-pit-scene-arena-id]');
+const positions=()=>combat().getAttribute('data-pit-fighter-positions').then(JSON.parse);
+const saveBytes=()=>page.evaluate(()=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort(([a],[b])=>a.localeCompare(b)))));
+async function launchRoute(){await page.getByRole('radio',{name:/Versus local/}).click();await selectPitMatch(page,{player:'jungle-hunter',opponent:'city-hunter',arena:p.PIT_RESERVE_GATE,launch:false});const opt=page.getByRole('checkbox',{name:/Parcours optionnel/});assert(!(await opt.isChecked()),'neutral by default');await opt.check();await page.locator('[data-pit-journey-assets="ready"]').waitFor();await page.locator('[data-pit-selection-confirm]').click();await page.locator('[data-pit-match-loading]').waitFor({state:'detached'});await combat().waitFor();}
+try{
+ page=await browser.newPage({viewport:{width:1280,height:900}});watch(page);await enter(page);await launchRoute();const before=await saveBytes();
+ assert.equal(await combat().getAttribute('data-pit-stage-sector'),'sas');assert.equal(await combat().getAttribute('data-pit-scene-arena-id'),p.PIT_RESERVE_GATE);
+ await combat().screenshot({path:output+'/sas.png'});
+ await page.keyboard.down('ArrowLeft');await page.keyboard.down('Numpad4');
+ try{await page.waitForFunction(()=>{const a=JSON.parse(document.querySelector('canvas[data-pit-fighter-positions]')?.dataset.pitFighterPositions||'[]');return a.length===2&&a.every(f=>f.x<140);});}finally{await page.keyboard.up('ArrowLeft');await page.keyboard.up('Numpad4');}
+ const beforeThrow=await positions();await page.keyboard.down('NumpadEnter');await page.waitForTimeout(100);await page.keyboard.up('NumpadEnter');await page.locator('canvas[data-pit-stage-sector="court"]').waitFor();
+ assert.equal(await combat().getAttribute('data-pit-arena-id'),p.PIT_RESERVE_GATE);assert.equal(await combat().getAttribute('data-pit-scene-arena-id'),p.PIT_RESERVE_COURT);assert.equal(await combat().getAttribute('data-pit-arena-art-status'),'bitmap');
+ assert.deepEqual((await positions()).map(f=>f.x),[300,660]);assert.equal(await page.locator('[data-pit-match-loading]').count(),0);
+ const transferredFrame=Number(await combat().getAttribute('data-pit-stage-transfer-frame'));assert(transferredFrame>0);
+ await combat().screenshot({path:output+'/court.png'});assert.equal(await saveBytes(),before,'optional exhibition does not change campaign/statistics');
+ checks.push({name:'live-keyboard-confirmed-projection',beforeThrow,transferFrame:transferredFrame,scene:p.PIT_RESERVE_COURT,atomicSlots:[300,660],matchIdPreserved:true,bothKitsPreloaded:true,noSaveMutation:true});
+ await page.close();page=null;
+ // Missing second scene must block departure; retry uses real image loading.
+ page=await browser.newPage({viewport:{width:1280,height:900}});watch(page);await page.route('**/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p0-a-depth.png',r=>r.abort('failed'));await enter(page);await selectPitMatch(page,{player:'jungle-hunter',opponent:'city-hunter',arena:p.PIT_RESERVE_GATE,launch:false});await page.getByRole('checkbox',{name:/Parcours optionnel/}).check();await page.locator('[data-pit-journey-assets="failed"]').waitFor();assert(await page.locator('[data-pit-selection-confirm]').isDisabled());await page.screenshot({path:output+'/missing-court.png'});await page.unroute('**/game/sprites/v34/pit-arenas/arena-011-reserve-des-crocs/p0-a-depth.png');await page.getByRole('button',{name:'Réessayer les deux scènes',exact:true}).click();await page.locator('[data-pit-journey-assets="ready"]').waitFor();assert(await page.locator('[data-pit-selection-confirm]').isEnabled());checks.push({name:'missing-court-blocks-and-recovers'});await page.close();page=null;
+ // Replays use genuine reducer-created inputs, without injecting combat state.
+ for(const [label,replay,sector,scene] of [['v6-route',routeReplay,'court',p.PIT_RESERVE_COURT],['v5-neutral',legacy,'neutral',p.PIT_RESERVE_GATE]]){
+  page=await browser.newPage({viewport:{width:label==='v6-route'?390:1280,height:844}});watch(page);
+  const owner='2026-09-20T00:00:00.000Z',save=p.defaultSave(owner),archive=p.withLatestPitReplay(p.createPitReplayArchive(owner),replay,owner),seed={[p.SAVE_STORAGE_KEY]:JSON.stringify(save),[p.pitReplayStorageKey(owner)]:p.serializePitReplayArchive(archive)};
+  await page.addInitScript(seed=>{if(!sessionStorage.getItem('journey-qa-seeded')){localStorage.clear();for(const[k,v]of Object.entries(seed))localStorage.setItem(k,v);sessionStorage.setItem('journey-qa-seeded','1');}},seed);await enter(page);const before=await saveBytes();await page.getByRole('button',{name:'REVOIR LE DERNIER DUEL',exact:true}).click();await page.locator('[data-pit-match-loading]').waitFor({state:'detached'});if(label==='v6-route'){await page.waitForFunction(()=>Number(document.querySelector('[data-pit-frame]')?.dataset.pitFrame)>=210);await combat().screenshot({path:output+'/v6-route-mobile-scene.png'});}await page.waitForFunction(ticks=>Number(document.querySelector('[data-pit-frame]')?.dataset.pitFrame)>=ticks,replay.metadata.ticks);assert.equal(await combat().getAttribute('data-pit-stage-sector'),sector);assert.equal(await combat().getAttribute('data-pit-scene-arena-id'),scene);assert.equal(await saveBytes(),before);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await combat().screenshot({path:output+'/'+label+'.png'});checks.push({name:label+'-playback',engine:replay.engineVersion,frame:replay.metadata.ticks,sector,scene,saveBytesUnchanged:true,mobile:label==='v6-route'});await page.close();page=null;
+ }
+ assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);const report={passed:true,checkedAt:new Date().toISOString(),url:base,checks,errors,failures,browserClosed:true,scope:'One optional route between two existing bitmaps; no new drawing or complete80-stage-sector claim.'};await fs.writeFile(output+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+}catch(error){if(page){await page.screenshot({path:output+'/failure.png'}).catch(()=>{});await fs.writeFile(output+'/failure.json',JSON.stringify({error:String(error),checks,errors,failures,canvas:await combat().count()?await combat().evaluate(node=>({...node.dataset})):null,body:await page.locator('body').innerText().catch(()=>null)},null,2));}throw error;}finally{await browser.close();}

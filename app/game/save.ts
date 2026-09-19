@@ -1351,6 +1351,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (Number(value.version) > SAVE_VERSION) {
     return { save: null, failure: "future-version" };
   }
+  // Homeworld evolves additively within the campaign version. A newer nested
+  // schema must retain its original bytes, not normalize into an empty dossier.
+  if (isRecord(value.homeworld) && (Number(value.homeworld.version) > 1 ||
+      (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.
   if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {

@@ -1,5 +1,7 @@
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
 import type { RankId } from "../types";
+import { applyHomeworldInquiry, defaultHomeworldInquiry, inquiryPrerequisites, isHomeworldInquiryState, normalizeHomeworldInquiry, type HomeworldInquiryAction, type HomeworldInquiryProgress } from "./homeworldInquiry";
+export { homeworldInquiryJournal, homeworldInquiryDialogue, type HomeworldInquiryAction } from "./homeworldInquiry";
 import { normalizeGlassDesertProof, type GlassDesertProof } from "./glassDesert";
 export type HomeworldPlayableRegionId = "ash-marches" | "glass-desert";
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./homeworldExpedition";
@@ -136,13 +138,13 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
 const choices: readonly HomeworldWitnessChoice[] = ["protect", "restitution", "investigate"];
 const outcomes: Record<HomeworldWitnessChoice, HomeworldAudienceOutcome> = { protect: "protected-witness", restitution: "ordered-restitution", investigate: "continued-investigation" };
-export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
+export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, inquiry: defaultHomeworldInquiry(), expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
 export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   const clean = defaultHomeworldProgress();
   if (!record(value) || value.version !== 1) return clean;
@@ -160,9 +162,10 @@ export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   if (clean.evidenceIds.length === 3 && choices.includes(value.witnessChoice as HomeworldWitnessChoice)) clean.witnessChoice = value.witnessChoice as HomeworldWitnessChoice;
   if (clean.witnessChoice && value.audienceOutcome === outcomes[clean.witnessChoice]) clean.audienceOutcome = outcomes[clean.witnessChoice];
   if (record(value.relations)) for (const { id } of HOMEWORLD_ORGANIZATIONS) clean.relations[id] = clamp(Math.trunc(finite(value.relations[id])), -100, 100);
+  clean.inquiry = normalizeHomeworldInquiry(value.inquiry, inquiryPrerequisites(clean));
   return clean;
 }
-export type HomeworldAction = { type: "visit"; districtId: string } | { type: "greet"; npcId: string } | { type: "inspect"; evidenceId: HomeworldEvidenceId } | { type: "choose-witness"; choice: HomeworldWitnessChoice } | { type: "audience" };
+export type HomeworldAction = { type: "visit"; districtId: string } | { type: "greet"; npcId: string } | { type: "inspect"; evidenceId: HomeworldEvidenceId } | { type: "choose-witness"; choice: HomeworldWitnessChoice } | { type: "audience" } | { type: "counter-inquiry"; action: HomeworldInquiryAction };
 export interface HomeworldActionResult { progress: HomeworldProgress; changed: boolean; ok: boolean; message: string }
 export const HOMEWORLD_WITNESS_CHOICES: readonly { id: HomeworldWitnessChoice; label: string; description: string }[] = [
   { id: "protect", label: "Protéger le témoin", description: "Demander sa protection sans révéler son refuge. Réseau des Bannis +3 ; Cour du Trône -1. Ce choix engage la première audience." },
@@ -173,6 +176,15 @@ export function applyHomeworldAction(value: HomeworldProgress, action: Homeworld
   const progress = normalizeHomeworldProgress(value);
   const reply = (ok: boolean, changed: boolean, message: string): HomeworldActionResult => ({ progress, ok, changed, message });
   switch (action.type) {
+    case "counter-inquiry": {
+      if (!record(value) || value.version !== 1) return reply(false, false, "Format Homeworld incompatible : aucun dossier modifié.");
+      if (value.inquiry !== undefined && (!isHomeworldInquiryState(value.inquiry)
+        || (!inquiryPrerequisites(progress) && (value.inquiry.convoyReviewed || value.inquiry.archiveReviewed || value.inquiry.approach !== null || value.inquiry.followupVerified || value.inquiry.audienceFiled))))
+        return reply(false, false, "Dossier complémentaire incohérent ou incompatible : aucune écriture effectuée.");
+      const result = applyHomeworldInquiry(progress, action.action);
+      progress.inquiry = result.state;
+      return reply(result.ok, result.changed, result.message);
+    }
     case "visit": {
       const destination = HOMEWORLD_DISTRICTS.find(({ id }) => id === action.districtId);
       if (!destination) return reply(false, false, "Quartier inconnu.");

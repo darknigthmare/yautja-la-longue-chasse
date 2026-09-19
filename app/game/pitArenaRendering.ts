@@ -1,3 +1,4 @@
+import { getPitArenaAmbientOffset } from "./pitArenaAmbience";
 import { PIT_ARENAS, PIT_FIGHTERS, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
@@ -30,7 +31,7 @@ export interface PitArenaArtBank {
   readonly unavailable?: boolean;
   readonly productionKit?: PitArenaProductionKit;
 }
-export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean }
+export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean; readonly sceneArenaId?: PitArenaId }
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
 export interface PitArenaDrawReport { readonly drawnPlanes: readonly PitArenaPlaneId[]; readonly missingPaths: readonly string[] }
 
@@ -294,6 +295,8 @@ function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaP
     // The actual contact tile is always world-locked, even when a draft data factor is wrong.
     const factor = asset.mode === "repeat-x" ? 1 : asset.parallax;
     const transform = getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion);
+    const driftX = plane.id === "P0" && asset.mode === "module" && asset.alphaRequired
+      ? getPitArenaAmbientOffset(asset.ambientMotion, state.frame, options.reducedMotion) : 0;
     for (const placement of asset.placements) {
       context.save();
       try {
@@ -322,7 +325,7 @@ function drawProductionPlane(context: CanvasRenderingContext2D, plane: PitArenaP
           const width = source.width * fit * transform.scale;
           const height = source.height * fit * transform.scale;
           const bounds = {
-            x: (placement.x + placement.width / 2) * transform.scale + transform.translateX - width / 2,
+            x: (placement.x + placement.width / 2 + driftX) * transform.scale + transform.translateX - width / 2,
             y: asset.anchorToGround
               ? (() => {
                 const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
@@ -371,6 +374,10 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
 /** Called on an untransformed canvas, before the combat world transform. */
 export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: PitCombatState, camera: PitPresentationCamera,
   bank: PitArenaArtBank | null, options: PitArenaRenderOptions = {}): PitArenaDrawReport {
+  if (options.sceneArenaId && options.sceneArenaId !== state.arenaId) {
+    return drawPitArenaBackdrop(context, { ...state, arenaId: options.sceneArenaId },
+      { ...camera, arenaId: options.sceneArenaId }, bank, { ...options, sceneArenaId: undefined });
+  }
   const arena = PIT_ARENAS[state.arenaId];
   const art = PIT_ARENA_ART_DEFINITIONS[state.arenaId];
   const validBank = bank && bank.arenaId === state.arenaId && !bank.cancelled ? bank : null;
@@ -432,6 +439,10 @@ export function drawPitArenaBackdrop(context: CanvasRenderingContext2D, state: P
 /** Called after restoring the world transform. P5 never covers the HUD or changes collision. */
 export function drawPitArenaForeground(context: CanvasRenderingContext2D, state: PitCombatState, camera: PitPresentationCamera,
   bank: PitArenaArtBank | null, options: PitArenaRenderOptions = {}): PitArenaDrawReport {
+  if (options.sceneArenaId && options.sceneArenaId !== state.arenaId) {
+    return drawPitArenaForeground(context, { ...state, arenaId: options.sceneArenaId },
+      { ...camera, arenaId: options.sceneArenaId }, bank, { ...options, sceneArenaId: undefined });
+  }
   if (!bank || bank.cancelled || bank.arenaId !== state.arenaId) return { drawnPlanes: [], missingPaths: [] };
   if (bank.productionKit) {
     const plane = bank.productionKit.planes.find(entry => entry.id === "P5");

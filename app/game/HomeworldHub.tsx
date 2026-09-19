@@ -11,8 +11,8 @@ import {
   HOMEWORLD_WORLD, HOMEWORLD_DISTRICTS, HOMEWORLD_PROPS, homeworldHeroPlate,
   HOMEWORLD_NPCS, HOMEWORLD_EVIDENCE, HOMEWORLD_REGIONS, HOMEWORLD_WITNESS_CHOICES,
   createHomeworldActor, stepHomeworldActor, nearestHomeworldPoint, nearestHomeworldDoor,
-  districtAtHomeworldActor, applyHomeworldAction, shouldFadeHomeworldForeground,
-  type HomeworldAction, type HomeworldPoint, type HomeworldProgress,
+  districtAtHomeworldActor, applyHomeworldAction, shouldFadeHomeworldForeground, homeworldInquiryJournal, homeworldInquiryDialogue,
+  type HomeworldAction, type HomeworldPoint, type HomeworldProgress, type HomeworldInquiryAction,
   type HomeworldService, type HomeworldWitnessChoice, type HomeworldPlayableRegionId,
 } from "./systems/homeworld";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
@@ -272,8 +272,24 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     setDialog(current => current ? { ...current, message: result.message } : current);
   };
 
+  const submitInquiry = useCallback((action: HomeworldInquiryAction) => {
+    if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt) return;
+    const point = dialogStateRef.current?.point;
+    const nearby = nearestHomeworldPoint(actorRef.current);
+    // A stale dialog or remote call cannot submit a different NPC's evidence.
+    if (!point?.npcId || nearby?.id !== point.id) return;
+    const offered = homeworldInquiryDialogue(progressRef.current, point.npcId)?.options ?? [];
+    if (!offered.some(option => JSON.stringify(option.action) === JSON.stringify(action))) return;
+    clearInputs();
+    const result = persistAction({ type: "counter-inquiry", action });
+    setDialog(current => current ? { ...current, message: result.message } : current);
+    requestAnimationFrame(() => dialogRef.current?.focus({ preventScroll: true }));
+  }, [clearInputs, persistAction, save.createdAt]);
+
+  const inquiryJournal = homeworldInquiryJournal(progress);
   const selectedPoint = dialog?.point;
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
+  const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
   const selectedRegion = HOMEWORLD_REGIONS.find(region => region.id === selectedPoint?.regionId);
   const canChoose = progress.evidenceIds.length === HOMEWORLD_EVIDENCE.length && !progress.witnessChoice;
   const title = selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres";
@@ -324,9 +340,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       <div className={styles.touchGroup}>{touchButton("left", "Marcher à gauche", "←")}{touchButton("right", "Marcher à droite", "→")}</div>
       <div className={styles.touchGroup}>{touchButton("up", "Marcher vers le fond", "↑")}{touchButton("down", "Marcher vers l’avant", "↓")}<button type="button" aria-label="Interagir avec le point proche" disabled={blocked || !nearest} onClick={interact}>◉</button></div>
     </div>
-    <footer className={styles.footer}><div className={styles.progress}><strong>{progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · {progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
+    <footer className={styles.footer}><div className={styles.progress}><strong>{inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · {progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" onClick={() => { clearInputs(); setDialog({ point: null }); }}>Journal de la cité</button>
     </footer>
+    {inquiryJournal.step !== "locked" && <div className={styles.help} data-homeworld-inquiry-step={inquiryJournal.step}><strong>{inquiryJournal.label}</strong> · {inquiryJournal.objective}</div>}
     {pendingVisitCount > 0 && <div className={styles.notice} role="status">
       <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
       <button type="button" className="ghost-button small" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>
@@ -352,13 +369,21 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
           </div></>}
           {selectedPoint.kind === "audience" && <p>Présente les trois preuves et prends position sur le sort du témoin avant l’audience. Cette première décision est conservée dans ta sauvegarde ; elle ne termine pas toute la campagne.</p>}
           {selectedPoint.evidenceId === "undercity-testimony" && canChoose && <><div className={styles.notice}>Les trois preuves sont réunies. Ta première position sur le témoin sera définitive pour cette introduction.</div>{HOMEWORLD_WITNESS_CHOICES.map(choice => <div key={choice.id}><p>{choice.description}</p><button type="button" onClick={() => chooseWitness(choice.id)}>{choice.label}</button></div>)}</>}
+          {inquiryDialogue && <section className={styles.notice} aria-label="Contre-enquête du convoi" data-homeworld-inquiry-dialog={inquiryJournal.step}>
+            <h4>{inquiryDialogue.title}</h4><p>{inquiryDialogue.text}</p>
+            {inquiryDialogue.options.map((option, index) => <div key={index}>
+              {option.consequence && <p>{option.consequence}</p>}
+              <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
+            </div>)}
+          </section>}
         </> : <>
           <p>Un trophée contesté est arrivé dans la cité. Examine sa provenance, consulte le registre des mémoires puis écoute le témoignage des Bas-Fonds.</p>
           {progress.expeditions["ash-marches"] && <p>✓ Rapport de terrain : vraie piste identifiée, fausse piste écartée, convoi retrouvé et passage rouvert.{progress.expeditions["ash-marches"].secretFound ? " Balise des Navigateurs découverte." : ""}</p>}
           {progress.expeditions["glass-desert"] && <p>✓ Rapport du Désert : journal de transit et balise de rabattage concordants. Traversée {progress.expeditions["glass-desert"].crossingRoute === "stepping-stones" ? "par les corniches" : "par diversion du fouisseur"} ; canal {progress.expeditions["glass-desert"].beaconDisposition === "preserve" ? "conservé pour l’enquête" : "coupé pour arrêter l’attraction locale"}.{progress.expeditions["glass-desert"].secretFound ? " Composant ancien documenté." : ""} Aucun coupable n’est encore désigné.</p>}
           <ul>{HOMEWORLD_EVIDENCE.map(evidence => <li key={evidence.id}>{progress.evidenceIds.includes(evidence.id) ? "✓ " : "○ "}{evidence.label}</li>)}</ul>
           <p>{progress.audienceOutcome ? "Ton audience a été enregistrée. Tu peux encore explorer la cité et rencontrer ses habitants." : progress.witnessChoice ? "Ta position sur le témoin est enregistrée. Rejoins la Citadelle pour la première audience." : canChoose ? "Retourne auprès du témoin des Bas-Fonds pour choisir ta position, puis rejoins la Citadelle." : "Les cours, passages et rampes obliques forment un seul réseau au sol. Approche les portes éclairées pour repérer leurs seuils."}</p>
-          <div className={styles.notice}>Livré : cité parcourable, rencontres, dossier introductif et deux enquêtes régionales (Marches de Cendre, Désert de Verre). À produire : huit autres régions et campagne complète La Couronne de Cendres. Les noms de cité, habitants et organisations sont des créations originales pour le jeu, pas des faits de canon.</div>
+          <section className={styles.notice} aria-label="Contre-enquête du convoi"><h4>Contre-enquête du convoi · {inquiryJournal.completed}/5</h4><p><strong>{inquiryJournal.label}</strong></p><p>{inquiryJournal.objective}</p><p>Suite originale adaptée du projet Homeworld : confrontations aux quais et aux archives, priorité chez les Enforcers, vérification puis audience complémentaire. Aucun acte complet, nouveau rang ou trophée n’est attribué.</p></section>
+          <div className={styles.notice}>Livré : cité parcourable, rencontres, dossier introductif, contre-enquête du convoi et deux enquêtes régionales (Marches de Cendre, Désert de Verre). À produire : huit autres régions et campagne complète La Couronne de Cendres. Les noms de cité, habitants et organisations sont des créations originales pour le jeu, pas des faits de canon.</div>
         </>}
         {dialog.message && <div className={styles.notice} role="status">{dialog.message}</div>}
         <div className={styles.dialogActions}>

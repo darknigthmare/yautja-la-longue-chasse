@@ -261,8 +261,23 @@ test("visible PIT wiring lists roster and arenas, exposes all published modes, a
   const directory = dirname(fileURLToPath(import.meta.url));
   const canvas = readFileSync(join(directory, "../app/game/PitCanvas.tsx"), "utf8");
   const client = readFileSync(join(directory, "../app/game/GameClient.tsx"), "utf8");
-  assert.match(canvas, /PIT_VERSUS_FIGHTER_IDS\.map/);
-  assert.match(canvas, /PIT_ARENA_IDS\.map/);
+  const selection = readFileSync(join(directory, "../app/game/PitSelectionFlow.tsx"), "utf8");
+  assert.match(canvas, /<PitSelectionFlow\b/);
+  assert.match(canvas, /mode=\{mode\} playerId=\{leftId\} opponentId=\{previewRightId\} arenaId=\{previewArenaId\}/);
+  assert.match(canvas, /onArenaChange=\{setArenaId\}/);
+  assert.match(selection, /PIT_VERSUS_FIGHTER_IDS\.map/);
+  assert.match(selection, /const stageChoices = PIT_ARENA_IDS\.slice\(/);
+  assert.match(selection, /stageChoices\.map/);
+  assert.match(selection, /PIT_ARENA_IDS\.map/);
+  const modesStart = canvas.indexOf('aria-label="Mode de combat"');
+  const modesEnd = canvas.indexOf("] as const).map", modesStart);
+  assert.ok(modesStart >= 0 && modesEnd > modesStart);
+  const modes = [...canvas.slice(modesStart, modesEnd).matchAll(/\["([^"\n]+)",\s*"([^"\n]+)"/g)]
+    .map(([, id, label]) => [id, label]);
+  assert.deepEqual(modes, [
+    ["cpu", "Duel CPU"], ["local", "Versus local"], ["training", "Entraînement"],
+    ["arcade", "Arcade individuel"], ["circuit", "Circuit du clan"], ["descent", "Descente"],
+  ]);
   assert.match(canvas, /Arcade individuel/);
   assert.match(canvas, /PIT_ARCADE_LADDERS\[leftId\]/);
   assert.match(canvas, /LANCER LE PARCOURS ARCADE/);

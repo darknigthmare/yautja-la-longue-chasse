@@ -1,3 +1,4 @@
+import {selectPitMatch} from './pit-selection-browser-helpers.mjs';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright-core';
@@ -51,9 +52,7 @@ try{
   await page.goto(base,{waitUntil:'networkidle'});await page.locator('[data-game-content-version="V41"]').waitFor();
   await page.getByRole('button',{name:'Jouer',exact:true}).click();await page.getByRole('button',{name:'THE PIT · combat',exact:true}).click();
   await page.getByRole('radio',{name:/Versus local/i}).click();
-  await page.getByRole('combobox',{name:'Combattant joueur',exact:true}).selectOption(player);
-  await page.getByRole('combobox',{name:'Adversaire',exact:true}).selectOption(opponent);
-  await page.getByRole('button',{name:/^ENTRER DANS L’ARÈNE/}).click();
+  await selectPitMatch(page,{player,opponent});
   await page.locator('canvas[data-pit-arena-art-status="bitmap"]').waitFor();
   await page.waitForFunction(()=>[...document.querySelectorAll('[data-pit-bitmap-status]')].every(e=>e.dataset.pitBitmapStatus!=='loading'));
   await page.locator('canvas[data-pit-arena-id]').click();

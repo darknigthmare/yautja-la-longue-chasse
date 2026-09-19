@@ -1,3 +1,4 @@
+import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
 import { PIT_EXPANSION_FIGHTERS, type PitExpansionFighterId } from "./pitRosterExpansion";
 import { PIT_EXTENSION_ARENAS, PIT_EXTENSION_ARENA_IDS, type PitRuntimeArenaId } from "./pitArenaExtensions";
 import {
@@ -19,7 +20,7 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 5;
+export const PIT_STATE_VERSION = 6;
 /** Eight 60Hz reaction ticks after a grounded neutral/guard capture. */
 export const PIT_THROW_TECH_WINDOW_FRAMES = 8;
 export const PIT_THROW_TECH_RECOVERY_FRAMES = 12;
@@ -61,10 +62,12 @@ export type PitMatchPhase = "round" | "round-over" | "match-over";
 export type PitCombatMode = "match" | "training";
 
 export interface PitCombatRules {
+  stageJourney?: PitStageJourneyId;
   mode: PitCombatMode;
 }
 
 export interface PitCombatOptions {
+  stageJourney?: PitStageJourneyId;
   mode?: PitCombatMode;
   arenaId?: PitArenaId;
 }
@@ -219,6 +222,7 @@ export interface PitRoundResult {
 }
 
 export type PitCombatEvent =
+  | { type: "stage-transfer"; frame: number; from: "sas"; to: "court"; exitSide: -1 | 1; attackerId: PitFighterId; defenderId: PitFighterId }
   | { type: "round-start"; frame: number; round: number }
   | { type: "attack-start"; frame: number; fighterId: PitFighterId; attack: PitAttackKind }
   | { type: "throw-start"; frame: number; fighterId: PitFighterId }
@@ -251,6 +255,7 @@ export interface PitCombatState {
   transitionFramesRemaining: number;
   arenaId: PitArenaDefinition["id"];
   rules: PitCombatRules;
+  stageJourney?: PitStageJourneyState;
   fighters: [PitFighterState, PitFighterState];
   techniqueEffects: PitTechniqueEffectState[];
   pendingThrow: PitPendingThrow | null;
@@ -400,6 +405,9 @@ export function createPitCombatState(
   if (!Object.hasOwn(PIT_ARENAS, arenaId)) {
     throw new Error("THE PIT requires a registered arena.");
   }
+  if (options.stageJourney !== undefined && (options.stageJourney !== PIT_RESERVE_JOURNEY || arenaId !== PIT_RESERVE_GATE)) {
+    throw new Error("THE PIT requires a registered stage journey for this arena.");
+  }
   return {
     version: PIT_STATE_VERSION,
     tickRate: PIT_TICK_RATE,
@@ -409,7 +417,8 @@ export function createPitCombatState(
     roundFramesRemaining: PIT_ROUND_FRAMES,
     transitionFramesRemaining: 0,
     arenaId,
-    rules: { mode: options.mode ?? "match" },
+    rules: { mode: options.mode ?? "match", ...(options.stageJourney ? { stageJourney: options.stageJourney } : {}) },
+    ...(options.stageJourney ? { stageJourney: createPitStageJourney() } : {}),
     fighters: [freshFighter(0, leftId), freshFighter(1, rightId)],
     techniqueEffects: [],
     pendingThrow: null,
@@ -433,6 +442,7 @@ function cloneState(state: PitCombatState): PitCombatState {
   return {
     ...state,
     rules: { ...state.rules },
+    ...(state.stageJourney ? { stageJourney: { ...state.stageJourney } } : {}),
     fighters: [cloneFighter(state.fighters[0]), cloneFighter(state.fighters[1])],
     techniqueEffects: state.techniqueEffects.map((effect) => ({ ...effect })),
     pendingThrow: state.pendingThrow ? { ...state.pendingThrow } : null,
@@ -1538,6 +1548,7 @@ function updatePressureTraque(state: PitCombatState): void {
 }
 
 function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitInput]): void {
+  if (state.rules.stageJourney) state.stageJourney = createPitStageJourney();
   const [left, right] = state.fighters;
   state.round += 1;
   state.pendingThrow = null;
@@ -1568,6 +1579,7 @@ function stepPitCombatInternal(
   inputs: readonly [PitInput, PitInput],
   legacyV2Techniques: boolean,
   throwTechEnabled: boolean,
+  stageJourneyEnabled = false,
 ): PitCombatState {
   if (current.phase === "match-over") {
     if (current.events.length === 0) return current;
@@ -1590,6 +1602,7 @@ function stepPitCombatInternal(
     advancePendingThrow(state, inputs);
     if (state.rules.mode === "match") evaluateRound(state);
     if (state.phase !== "round") state.pendingThrow = null;
+    if (stageJourneyEnabled) finishPitStageJourneyFrame(state);
     return state;
   }
   const previousLeft = cloneFighter(state.fighters[0]);
@@ -1675,6 +1688,7 @@ function stepPitCombatInternal(
 
   if (state.rules.mode === "match") evaluateRound(state);
   if (state.phase !== "round") state.pendingThrow = null;
+  if (stageJourneyEnabled) finishPitStageJourneyFrame(state);
   return state;
 }
 
@@ -1682,7 +1696,12 @@ export function stepPitCombat(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
-  return stepPitCombatInternal(current, inputs, false, true);
+  return stepPitCombatInternal(current, inputs, false, true, true);
+}
+
+/** Published V38–V42 engine V5: throw tech, neutral single-scene arenas. */
+export function stepPitCombatV5Compatibility(current: PitCombatState, inputs: readonly [PitInput, PitInput] = [{}, {}]): PitCombatState {
+  return stepPitCombatInternal(current, inputs, false, true, false);
 }
 
 /** Published V29 replay rules: immediate throws, no capture window or tech. */
@@ -1705,7 +1724,7 @@ export function rematchPitCombat(state: PitCombatState): PitCombatState {
   return createPitCombatState(
     state.fighters[0].definitionId,
     state.fighters[1].definitionId,
-    { mode: state.rules.mode, arenaId: state.arenaId },
+    { ...state.rules, arenaId: state.arenaId },
   );
 }
 
@@ -1898,6 +1917,10 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
     return knownFighter(value.fighterId) &&
       PIT_CLOAK_END_REASONS.includes(value.reason as Extract<PitCombatEvent, { type: "cloak-end" }>["reason"]);
   }
+  if (value.type === "stage-transfer") {
+    return value.from === "sas" && value.to === "court" && (value.exitSide === -1 || value.exitSide === 1)
+      && knownFighter(value.attackerId) && knownFighter(value.defenderId) && value.attackerId !== value.defenderId;
+  }
   if (value.type === "throw-caught" || value.type === "throw-tech") {
     return knownFighter(value.attackerId) && knownFighter(value.defenderId) && value.attackerId !== value.defenderId;
   }
@@ -1916,7 +1939,7 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
 
 function migratePitCombatState(candidate: unknown): unknown {
   if (!isRecord(candidate) ||
-    ![1, 2, 4, PIT_STATE_VERSION].includes(candidate.version as number) ||
+    ![1, 2, 4, 5, PIT_STATE_VERSION].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }
@@ -1924,7 +1947,7 @@ function migratePitCombatState(candidate: unknown): unknown {
   return {
     ...candidate,
     version: PIT_STATE_VERSION,
-    ...(candidate.version !== PIT_STATE_VERSION ? { pendingThrow: null } : {}),
+    ...([1, 2, 4].includes(candidate.version as number) ? { pendingThrow: null } : {}),
     techniqueEffects: candidate.techniqueEffects ?? [],
     nextTechniqueEffectId: candidate.nextTechniqueEffectId ?? 1,
     fighters: candidate.fighters.map((fighter) => {
@@ -1978,6 +2001,7 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     !isArenaId(candidate.arenaId) ||
     !isRecord(candidate.rules) ||
     !PIT_COMBAT_MODES.includes(candidate.rules.mode as PitCombatMode) ||
+    !validPitStageJourney(candidate.stageJourney, candidate.rules.stageJourney, candidate.arenaId, candidate.frame as number) ||
     !isIntegerBetween(candidate.frame, 0, Number.MAX_SAFE_INTEGER) ||
     !PIT_MATCH_PHASES.includes(candidate.phase as PitMatchPhase) ||
     !isIntegerBetween(candidate.round, 1, 9_999) ||

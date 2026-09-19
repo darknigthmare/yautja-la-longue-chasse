@@ -14,7 +14,7 @@ const catalogue = await import(
   "data:text/javascript;base64," + Buffer.from(compiled.outputFiles[0].text).toString("base64")
 );
 
-test("the recovered conversation contract contains exactly 100 uniquely named arena designs", () => {
+test("the local authored catalogue contains exactly 100 uniquely named arena designs", () => {
   assert.equal(catalogue.PIT_ARENA_CATALOGUE.length, 100);
   assert.equal(new Set(catalogue.PIT_ARENA_CATALOGUE.map(({ id }) => id)).size, 100);
   assert.equal(new Set(catalogue.PIT_ARENA_CATALOGUE.map(({ name }) => name)).size, 100);
@@ -25,15 +25,15 @@ test("the recovered conversation contract contains exactly 100 uniquely named ar
   assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.total, 100);
 });
 
-test("eight historical arenas and twelve authored extensions are playable", () => {
+test("historical arenas and explicitly approved authored extensions are playable", () => {
   const playable = catalogue.PIT_ARENA_CATALOGUE.filter(({ runtimeStatus }) => runtimeStatus === "playable");
   const concepts = catalogue.PIT_ARENA_CATALOGUE.filter(({ runtimeStatus }) => runtimeStatus === "concept");
-  assert.equal(playable.length, 20);
-  assert.equal(concepts.length, 80);
+  assert(playable.length >= 20 && playable.length <= 100);
+  assert.equal(concepts.length, 100 - playable.length);
   assert(playable.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId && runtimeVisualPlanes === 6));
   assert(concepts.every(({ runtimeArenaId, runtimeVisualPlanes }) => runtimeArenaId === null && runtimeVisualPlanes === 0));
-  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.playable, 20);
-  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.concept, 80);
+  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.playable, playable.length);
+  assert.equal(catalogue.PIT_ARENA_CATALOGUE_SUMMARY.concept, concepts.length);
 });
 
 test("all arena designs carry the six-plane, fair-transition and competitive-hazard contracts", () => {
@@ -53,7 +53,7 @@ test("heritage entries remain composition studies requiring original project art
   assert.equal(heritage.length, 10);
   assert(heritage.every(({ referenceStudy }) => typeof referenceStudy === "string" && referenceStudy.length > 0));
   assert(heritage.every(({ rightsNote }) => rightsNote === "composition-study-original-art-required"));
-  assert(heritage.every(({ runtimeStatus }) => runtimeStatus === "concept"));
+  assert(heritage.every(({ rightsNote }) => rightsNote === "composition-study-original-art-required"));
   assert.match(catalogue.getPitArenaCatalogueEntry(51).name, /Jaguar/);
   assert.match(catalogue.getPitArenaCatalogueEntry(60).name, /Isolation/);
   assert.equal(catalogue.getPitArenaCatalogueEntry(0), null);

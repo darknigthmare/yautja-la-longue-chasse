@@ -2,10 +2,11 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const [canvas, client, styles] = await Promise.all([
+const [canvas, client, styles, selection] = await Promise.all([
   readFile(new URL("../app/game/PitCanvas.tsx", import.meta.url), "utf8"),
   readFile(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8"),
   readFile(new URL("../app/game/PitCanvas.module.css", import.meta.url), "utf8"),
+  readFile(new URL("../app/game/PitSelectionFlow.tsx", import.meta.url), "utf8"),
 ]);
 
 function section(source, startNeedle, endNeedle) {
@@ -102,7 +103,10 @@ test("selection remains locked while a route transition is pending or failed", (
   const modeChange = section(canvas, "const changePitMode", "const resetLiveInputs");
   assert.match(modeChange, /if \(runTransitionSelectionLocked\) return/);
   assert.match(canvas, /disabled=\{runTransitionSelectionLocked\}/);
-  assert.match(canvas, /runTransitionSelectionLocked \|\|\s*mode === "arcade"/);
+  assert.match(canvas, /locked=\{runTransitionSelectionLocked\}/);
+  assert.match(selection, /disabled=\{unavailable\}/);
+  assert.match(selection, /disabled=\{\(locked && state\.step !== "stage"\) \|\| props\.launchDisabled/);
+  assert.ok(selection.indexOf('if (state.step === "stage") { if (stageReady) props.onLaunch(); return; }') < selection.indexOf('if (locked) return;'), "a failed route save can retry its stage confirmation while choices stay locked");
 });
 
 test("relic and recovery floors persist without forging a match result", () => {
@@ -121,10 +125,13 @@ test("relic and recovery floors persist without forging a match result", () => {
 
 test("Descente branch and continuation CTAs support keyboard, gamepad and touch", () => {
   assert.match(canvas, /onClick=\{\(\) => chooseDisplayedDescentBranch\(optionIndex\)\}/);
-  assert.match(canvas, /aria-keyshortcuts="Enter Space"/);
-  assert.match(canvas, /data-gamepad-shortcut="A"/);
-  assert.match(canvas, /Clavier : Entrée · Manette : A · Tactile : toucher/);
-  assert.match(canvas, /const menuDescentRun =[\s\S]*isPitFirstEditionFighterId\(leftId\) \? savedDescentRuns\[leftId\] : null/);
+  assert.match(selection, /aria-keyshortcuts="Enter Space"/);
+  assert.match(selection, /data-gamepad-shortcut="A"/);
+  assert.match(selection, /Entrée \/ A : confirmer/);
+  assert.match(selection, /Au tactile, touche une icône puis confirme/);
+  assert.match(selection, /onClick=\{confirm\}/);
+  assert.match(canvas, /const previewDescentRun =[\s\S]*savedDescentRuns\[progressionId\]/);
+  assert.match(canvas, /onImposedNavigate=\{[\s\S]*?!previewDescentRun\?\.selectedNodeId/);
   assert.match(canvas, /changePitMode\(cyclePitMode\(mode, -1, leftId\)\)/);
   assert.match(canvas, /changePitMode\(cyclePitMode\(mode, 1, leftId\)\)/);
   assert.match(canvas, /previewDescentRun\.selectedNodeId !== node\.id/);

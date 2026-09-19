@@ -1,0 +1,1398 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-061-chambre-des-echos",
+  "compositionDigest": "a66c585320c9e74a01975714e8e3e8b4693bb90a21a6c34350ca8a71c82418a9",
+  "conceptPreview": true,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-19T23:30:35.621Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": {
+    "passed": true,
+    "flameLoops": [],
+    "driftingAlpha": [
+      {
+        "asset": "p0-p0-b-vault-haze",
+        "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+        "measuredDeltaX": 13.98771962138403
+      }
+    ],
+    "reducedMotionHolds": true,
+    "floorUnchanged": true
+  },
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 12,
+    "expectedImages": 12,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            98.68784530386739,
+            50,
+            762.6243093922652,
+            190
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            0,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1280,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1920,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            0,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1425.0151057401813,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            2137.5226586102717,
+            454,
+            713.0075528700906,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            88.2017610497237,
+            43.69312499999995,
+            783.5964779005526,
+            195.22500000000002
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -1256,
+            510.25,
+            992.5,
+            73.34037445991358
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -264,
+            510.25,
+            992.5,
+            73.34037445991358
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            728,
+            510.25,
+            992.5,
+            73.34037445991358
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1720,
+            510.25,
+            992.5,
+            73.34037445991358
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            2712,
+            510.25,
+            992.5,
+            73.34037445991358
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -1368.3867069486405,
+            547.45,
+            1104.8867069486405,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -264,
+            547.45,
+            1104.8867069486405,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            840.3867069486405,
+            547.45,
+            1104.8867069486405,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1944.773413897281,
+            547.45,
+            1104.8867069486405,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            3049.1601208459215,
+            547.45,
+            1104.8867069486405,
+            170.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            100.33332182320441,
+            45.04999999999998,
+            779.7833563535911,
+            194.275
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -1782,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -854,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            74,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1002,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1930,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -1992.271903323263,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -959.1359516616315,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            74,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1107.1359516616315,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            2140.271903323263,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            79.88332182320443,
+            45.04999999999998,
+            779.7833563535911,
+            194.275
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -1434,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -506,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            422,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1350,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            2278,
+            502,
+            928.5,
+            68.60873739798367
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -1539.1359516616315,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -506,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            527.1359516616315,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1560.271903323263,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            2593.4078549848946,
+            536.8,
+            1033.6359516616315,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            102.50096685082872,
+            52.19999999999999,
+            754.9980662983426,
+            188.1
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -928,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -416,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            96,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            608,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1120,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1632,
+            398,
+            512.5,
+            37.85309649543927
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -1044.0120845921451,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -474.00604229607256,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            96,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            666.0060422960726,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1236.0120845921451,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1806.0181268882177,
+            417.20000000000005,
+            570.5060422960726,
+            88
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            136.81906077348066,
+            72,
+            686.3618784530387,
+            171
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -1104,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -528,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            48,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            624,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1200,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1776,
+            414,
+            576.5,
+            42.58473355736918
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -1234.5135951661632,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -593.2567975830816,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            48,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            689.2567975830816,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1330.5135951661632,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1971.7703927492448,
+            435.6,
+            641.7567975830816,
+            99
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            98.68784530386739,
+            50,
+            762.6243093922652,
+            190
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            0,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1280,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1920,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            0,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1425.0151057401813,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            2137.5226586102717,
+            454,
+            713.0075528700906,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+          "args": [
+            39,
+            455,
+            1453,
+            362,
+            99.2741044560762,
+            50,
+            762.6243093922652,
+            190
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            -640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            0,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            640,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1280,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-a-contact-floor.png",
+          "args": [
+            51,
+            322,
+            2083,
+            154,
+            1920,
+            430,
+            640.5,
+            47.316370619299086
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            -712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            0,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            712.5075528700906,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            1425.0151057401813,
+            454,
+            713.0075528700906,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-013-mausolee-des-marques/p4-b-front-fascia.png",
+          "args": [
+            14,
+            195,
+            2144,
+            331,
+            2137.5226586102717,
+            454,
+            713.0075528700906,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

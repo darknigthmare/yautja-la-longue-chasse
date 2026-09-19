@@ -1,0 +1,1425 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-053-reacteur-aliens-etude-konami",
+  "compositionDigest": "331e5f5e8d8ec53a2e0b76235e2eb90103b7a644a95dbcb186e8db223a1af818",
+  "conceptPreview": true,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-19T23:30:23.155Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": {
+    "passed": true,
+    "flameLoops": [
+      {
+        "asset": "p3-p3-c-brazier-flame",
+        "drawings": 6,
+        "reference": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+        "changed": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png"
+      }
+    ],
+    "driftingAlpha": [],
+    "reducedMotionHolds": true,
+    "floorUnchanged": true
+  },
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 17,
+    "expectedImages": 17,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            0,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1280,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1920,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            0,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1063.4157303370787,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1595.1235955056181,
+            454,
+            532.2078651685393,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            778.6465366323907,
+            379.181,
+            80.3089267352185,
+            76.663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -1256,
+            510.25,
+            992.5,
+            83.45584725536993
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -264,
+            510.25,
+            992.5,
+            83.45584725536993
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            728,
+            510.25,
+            992.5,
+            83.45584725536993
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1720,
+            510.25,
+            992.5,
+            83.45584725536993
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            2712,
+            510.25,
+            992.5,
+            83.45584725536993
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -1088.147191011236,
+            547.45,
+            824.647191011236,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -264,
+            547.45,
+            824.647191011236,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            560.147191011236,
+            547.45,
+            824.647191011236,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1384.294382022472,
+            547.45,
+            824.647191011236,
+            170.50000000000003
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            2208.441573033708,
+            547.45,
+            824.647191011236,
+            170.50000000000003
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            870.9019312339333,
+            375.489,
+            77.51613753213367,
+            73.997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -1782,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -854,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            74,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1002,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1930,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -1467.952808988764,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -696.976404494382,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            74,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            844.976404494382,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1615.952808988764,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            2386.9292134831458,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            665.6199312339332,
+            375.489,
+            77.51613753213367,
+            73.997
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -1434,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -506,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            422,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1350,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            2278,
+            502,
+            928.5,
+            78.07159904534606
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -1276.976404494382,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -506,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            264.976404494382,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1035.952808988764,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1806.9292134831458,
+            536.8,
+            771.476404494382,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            700.7544961439589,
+            301.116,
+            59.36300771208226,
+            56.668
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -928,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -416,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            96,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            608,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1120,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1632,
+            398,
+            512.5,
+            43.07398568019093
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -754.732584269663,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -329.3662921348315,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            96,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            521.3662921348315,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            946.732584269663,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1372.0988764044946,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1797.465168539326,
+            417.20000000000005,
+            425.8662921348315,
+            88.00000000000001
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            697.3731362467867,
+            318.59999999999997,
+            58.45372750642673,
+            55.800000000000004
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -1104,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -528,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            48,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            624,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1200,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1776,
+            414,
+            576.5,
+            48.4582338902148
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -909.0741573033708,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -430.5370786516854,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            48,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            526.5370786516854,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1005.0741573033708,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1483.6112359550561,
+            435.6,
+            479.0370786516854,
+            99
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            0,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1280,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1920,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            0,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1063.4157303370787,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1595.1235955056181,
+            454,
+            532.2078651685393,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+          "args": [
+            377,
+            107,
+            815,
+            778,
+            721.525706940874,
+            324,
+            64.94858611825192,
+            62
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            -640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            0,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            640,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1280,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-a-contact-floor.png",
+          "args": [
+            460,
+            300,
+            1676,
+            141,
+            1920,
+            430,
+            640.5,
+            53.84248210023866
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            -531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            0,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            531.7078651685393,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1063.4157303370787,
+            454,
+            532.2078651685393,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-010-forge-des-lames-muettes/p4-b-front-fascia.png",
+          "args": [
+            12,
+            143,
+            2151,
+            445,
+            1595.1235955056181,
+            454,
+            532.2078651685393,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

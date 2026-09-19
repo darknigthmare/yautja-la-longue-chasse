@@ -49,7 +49,7 @@ test("runtime summaries and actual render plans retain all 100 entries and exact
   assert.equal(runtime.summarizePitArenaProduction().stages, 100);
   assert.equal(runtime.summarizePitArenaProduction().primaryPlaneTargets, 600);
   assert.equal(runtime.summarizePitArenaProduction().legacyPlayable, 8);
-  assert.equal(runtime.summarizePitArenaProduction().concepts, 80);
+  assert.equal(runtime.summarizePitArenaProduction().concepts, source.stages.filter(stage => !stage.runtimeEnabled).length);
   for (const stage of source.stages) {
     const projected = runtime.PIT_ARENA_PRODUCTION_MANIFEST.stages.find(entry => entry.catalogueId === stage.catalogueId);
     assert(projected);
@@ -98,7 +98,7 @@ test("the check rejects a stale committed projection after a source-only change"
   const scratch = path.join(root, "work/v33/runtime-data-tests");
   await fs.mkdir(scratch, { recursive: true });
   const fixtureRoot = await fs.mkdtemp(path.join(scratch, "stale-"));
-  const fixture = { ...source, stages: [] };
+  const fixture = { ...source, sharedLibrary: [], stages: [] };
   for (const relative of [PIT_ARENA_SOURCE_PATH, PIT_ARENA_RUNTIME_PATH]) await fs.mkdir(path.dirname(path.join(fixtureRoot, relative)), { recursive: true });
   await fs.writeFile(path.join(fixtureRoot, PIT_ARENA_SOURCE_PATH), JSON.stringify(fixture));
   await fs.writeFile(path.join(fixtureRoot, PIT_ARENA_RUNTIME_PATH), serializePitArenaRuntimeData(fixture));

@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const [canvas, client] = await Promise.all([
+const [canvas, client, selection] = await Promise.all([
   readFile(new URL("../app/game/PitCanvas.tsx", import.meta.url), "utf8"),
   readFile(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8"),
+  readFile(new URL("../app/game/PitSelectionFlow.tsx", import.meta.url), "utf8"),
 ]);
 
 test("Clan Circuit is a selectable CPU mode with a complete five-chapter preview", () => {
@@ -126,10 +127,13 @@ test("Circuit advances and announces rewards only after a persisted acknowledgem
 
 test("Circuit CTA supports keyboard, gamepad and touch activation", () => {
   assert.match(canvas, /LANCER LE CIRCUIT DU CLAN/);
-  assert.match(canvas, /aria-keyshortcuts="Enter Space"/);
-  assert.match(canvas, /data-gamepad-shortcut="A"/);
-  assert.match(canvas, /Clavier : Entrée · Manette : A · Tactile : toucher/);
-  assert.match(canvas, /current\[4\][\s\S]*startMatch\(\)/);
+  assert.match(selection, /aria-keyshortcuts="Enter Space"/);
+  assert.match(selection, /data-gamepad-shortcut="A"/);
+  assert.match(selection, /Entrée \/ A : confirmer/);
+  assert.match(selection, /Au tactile, touche une icône puis confirme/);
+  assert.match(selection, /onClick=\{confirm\}/);
+  assert.match(canvas, /current\[4\][\s\S]*selectionFlowRef\.current\?\.command\("confirm"\)/);
+  assert.match(canvas, /onLaunch=\{[\s\S]*?retryRunTransition : startMatch\}/);
   assert.match(canvas, /mode === "circuit"[\s\S]*continueCircuit\(\)/);
   const start = canvas.slice(
     canvas.indexOf("const startMatch"),

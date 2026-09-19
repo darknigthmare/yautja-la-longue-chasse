@@ -25,17 +25,17 @@ try {
     await page.waitForTimeout(120);
   }
   for (const fighter of ['tracker', 'greyback']) {
-    await page.getByRole('combobox', { name: 'Combattant joueur', exact: true }).selectOption(fighter);
+    await page.locator(`[data-pit-selection-step] [data-choice-id="${fighter}"]`).click();
     await page.getByRole('radio', { name: /^Entraînement/ }).click();
-    for (const expected of ['Duel CPU', 'Versus local', 'Entraînement']) await move(15, expected);
-    for (const expected of ['Versus local', 'Duel CPU', 'Entraînement']) await move(14, expected);
+    for (const expected of ['Duel CPU', 'Versus local', 'Entraînement']) await move(5, expected);
+    for (const expected of ['Versus local', 'Duel CPU', 'Entraînement']) await move(4, expected);
     for (const name of [/^Arcade individuel/, /^Circuit du clan/, /^Descente/]) assert(await page.getByRole('radio', { name }).isDisabled());
     checks.push({ fighter, forwardWrap: true, backwardWrap: true, progressionModesDisabled: true });
   }
-  await page.getByRole('combobox', { name: 'Combattant joueur', exact: true }).selectOption('jungle-hunter');
+  await page.locator('[data-pit-selection-step] [data-choice-id="jungle-hunter"]').click();
   await page.getByRole('radio', { name: /^Entraînement/ }).click();
-  await move(15, 'Arcade individuel');
-  await move(14, 'Entraînement');
+  await move(5, 'Arcade individuel');
+  await move(4, 'Entraînement');
   checks.push({ fighter: 'jungle-hunter', historicalArcadeAccessible: true });
   assert.deepEqual(errors, []);
   const result = { passed: true, checkedAt: new Date().toISOString(), url: base, input: 'virtual-standard-gamepad', physicalControllerCertified: false, checks, errors };

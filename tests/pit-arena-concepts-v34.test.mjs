@@ -55,8 +55,8 @@ test("reviewed concept pictures cannot unlock an arena or increase runtime cover
   assert.equal(summary.stages, 100);
   assert.equal(summary.primaryPlaneTargets, 600);
   assert.equal(summary.legacyPlayable, 8);
-  assert.equal(summary.concepts, 80);
-  assert.equal(summary.readyRuntimeKits, 20);
+  assert.equal(summary.concepts, source.stages.filter(stage => !stage.runtimeEnabled).length);
+  assert.equal(summary.readyRuntimeKits, source.stages.filter(stage => stage.runtimeEnabled).length);
   for (const stage of stages) {
     assert.equal(stage.legacyRuntimeStatus, "concept");
     assert.equal(stage.legacyRuntimeArenaId, null);

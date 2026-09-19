@@ -6,6 +6,7 @@ import sharp from "sharp";
 import { build } from "esbuild";
 import { inspectPitArenaImage } from "./pit-arena-image-metadata.mjs";
 import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
+import { arenaCompositionDigest } from "./lib/pit-arena-composition-v42.mjs";
 
 const root = process.cwd();
 const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
@@ -36,14 +37,25 @@ for (const stage of manifest.stages) {
     assert.equal(catalogue.runtimeStatus, "playable");
     const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
     assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
-    assert.equal(qa.loaded.images, 14); assert.equal(qa.mobileNoOverflow, true);
+    if (stage.compositionContract === 'v42-explicit-shared-library-compositions') {
+      const digest = arenaCompositionDigest(stage);
+      assert.equal(qa.compositionDigest, digest, 'Renderer proof is stale: ' + stage.catalogueId);
+      assert.equal(stage.compositionVisualReview?.digest, digest, 'Visual approval is stale: ' + stage.catalogueId);
+      const visual = JSON.parse(await fs.readFile(stage.compositionVisualReview.evidence, 'utf8'));
+      assert(visual.compositions.some(entry => entry.arenaId === stage.catalogueId && entry.accepted === true && entry.compositionDigest === digest), 'Missing actual composition review');
+    }
+    assert.equal(qa.loaded.images, new Set(stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path)))).size); assert.equal(qa.mobileNoOverflow, true);
     assert.deepEqual(qa.errors, []); assert.deepEqual(qa.failedRequests, []);
     assert(qa.scenarios.length >= 8 && qa.scenarios.every(s => s.planes.length === 6 && s.missing.length === 0 && s.unchangedCamera && s.unchangedState));
     if (stage.runtimeExtension.applicationEvidence) {
       const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
       assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
+      if (stage.compositionContract === 'v42-explicit-shared-library-compositions') {
+        const digest = arenaCompositionDigest(stage);
+        assert(appQa.checks.some(check => check.arena === runtimeId && check.compositionDigest === digest), 'Application proof is stale: ' + stage.catalogueId);
+      }
       assert.deepEqual(appQa.errors, []); assert.deepEqual(appQa.failedRequests, []);
-      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === 14 && check.subplans === 14 && check.missing === 0));
+      assert(appQa.checks.some(check => check.arena === runtimeId && check.loadedImages === new Set(stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path)))).size && check.subplans === stage.planes.reduce((n, p) => n + p.assets.length, 0) && check.missing === 0));
     }
   } else assert.equal(stage.legacyRuntimeStatus, catalogue.runtimeStatus);
   assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
@@ -63,10 +75,11 @@ for (const stage of manifest.stages) {
         assert(Number.isFinite(asset.animation.fps) && asset.animation.fps > 0 && asset.animation.fps <= 30);
         assert(Number.isInteger(asset.animation.reducedMotionFrame) && asset.animation.reducedMotionFrame >= 0 && asset.animation.reducedMotionFrame < asset.frames.length);
       }
+      assert(api.isPitArenaAssetPathAuthorized(stage, asset, manifest), "Unauthorized foreign module: " + asset.id);
       for (const frame of asset.frames) {
-        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34)\/pit-arenas\/[a-z0-9/-]+\.png$/);
-        assert(frame.path.startsWith(stage.assetDirectory + "/") && !frame.path.includes(".."));
-        assert(!imagePaths.has(frame.path), "Each requested file belongs to one independent sub-plan: " + frame.path);
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42)\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert(asset.libraryRef || frame.path.startsWith(stage.assetDirectory + "/"));
+        assert(!imagePaths.has(frame.path) || asset.libraryRef, "Duplicate own file without explicit library reference: " + frame.path);
         imagePaths.add(frame.path);
         assert(["planned", "generated", "reviewed", "integrated"].includes(frame.status), frame.path);
         if (frame.status === "planned") {
@@ -78,11 +91,11 @@ for (const stage of manifest.stages) {
         assert.equal(frame.generation?.generator, "openai-imagegen", frame.path);
         assert(frame.generation.source && !path.isAbsolute(frame.generation.source) && !frame.generation.source.includes(".."), frame.path);
         await fs.access(path.resolve(root, frame.generation.source));
-        if (frame.generation.source.startsWith("art-source/v34/pit-arenas/")) {
+        if (/^art-source\/v(?:34|42)\/pit-arenas\//.test(frame.generation.source)) {
           const receipt = JSON.parse(await fs.readFile(frame.generation.source, "utf8"));
           assert.equal(receipt.accepted, true); assert.notEqual(receipt.excludedFromCoverage, true);
           assert.equal(receipt.sha256, frame.generation.sha256); assert.equal(receipt.publicPath, frame.path);
-          assert(receipt.prompt && receipt.archivedSource.startsWith("art-source/v34/pit-arenas/") && !receipt.archivedSource.includes(".."));
+          assert(receipt.prompt && /^(art-source\/v(?:34|42)\/pit-arenas\/|public\/game\/sprites\/v42\/pit-arenas\/)/.test(receipt.archivedSource) && !receipt.archivedSource.includes(".."));
           const original = await fs.readFile(path.resolve(root, receipt.archivedSource));
           assert.equal(crypto.createHash("sha256").update(original).digest("hex"), frame.generation.sha256, "Original source changed: " + frame.path);
         }
@@ -131,4 +144,4 @@ for (const stage of manifest.stages) {
   }
   if (stage.runtimeEnabled) assert(api.resolvePitArenaProductionKit(runtimeId, manifest), "Enabled kit lacks reviewed required frames: " + stage.catalogueId);
 }
-console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(manifest), verifiedImages: checks }, null, 2));
+console.log(JSON.stringify({ result: "PASS", ...api.summarizePitArenaProduction(manifest), uniqueVerifiedImagePaths: imagePaths.size, verifiedImageInstances: checks }, null, 2));
