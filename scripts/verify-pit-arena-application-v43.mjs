@@ -1,3 +1,4 @@
+import { returnPitSelection } from "./pit-selection-browser-helpers.mjs";
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -67,7 +68,7 @@ try{
   await canvas.screenshot({path:path.join(directory,'arena-mobile.png')});
   await assertSaveUnchanged();
   report.checks.push({arena:runtimeId,catalogueId:stage.catalogueId,number:stage.number,compositionDigest:arenaCompositionDigest(stage),loadedImages:expected.size,subplans,missing:0,planes:data.pitArenaPlanes,simulationFramesAdvanced:afterFrame-beforeFrame,mobileNoOverflow:true,saveBytesUnchanged:true});
-  await page.getByRole('button',{name:/^Quitter ·/}).click();
+  await returnPitSelection(page);
   console.log(JSON.stringify({number:stage.number,arena:runtimeId,passed:true}));
  }
  await assertSaveUnchanged();assert.deepEqual(await page.evaluate(()=>window.__arenaSaveWrites),[]);

@@ -5,6 +5,7 @@ export const YOUTH_ART_MANIFEST: YouthArtManifest = {
   "version": 1,
   "actorKind": "unblooded",
   "scenes": {
+    "desert": { "src": "/game/youth/v49/desert.png", "groundY": 727 },
     "dojo": {
       "src": "/game/youth/v48/dojo.png",
       "groundY": 733
@@ -15,6 +16,11 @@ export const YOUTH_ART_MANIFEST: YouthArtManifest = {
     "quarters": {
       "src": "/game/youth/v48/quarters.png"
     }
+  },
+  "desertProps": {
+    "footprints": { "src": "/game/youth/v49/desert-clues.png", "rect": [19, 306, 700, 261], "pivot": [350, 261] },
+    "branch": { "src": "/game/youth/v49/desert-clues.png", "rect": [796, 240, 627, 314], "pivot": [313, 314] },
+    "stone": { "src": "/game/youth/v49/desert-clues.png", "rect": [1580, 257, 518, 306], "pivot": [259, 306] }
   },
   "blade": {
     "src": "/game/prologue/v47/detached-blade.png"

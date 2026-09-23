@@ -179,3 +179,81 @@ test("the production lab scopes metadata, coverage and isolated samples to the s
     assert.equal(p.resolvePitSpriteSheetAnimation(bank, sample.fighter, { simulationFrame: sample.tick, combat: sample.combat }).resolved.frame.frameIndex, 1);
   } finally { env.restore(); }
 });
+
+test("paired appearance loading keeps both costumes and their animation/fallback independent", async () => {
+  const env = browser();
+  try {
+    const masked = definition(), bare = definition("user-animation-test", "unmasked");
+    const bank = await p.loadPitCombatBitmapArt(["user-animation-test", "user-animation-test"],
+      { variants: ["masked", "unmasked"], spriteSheetRegistry: [masked, bare] });
+    assert.equal(bank.spriteSheets.readyClipCount, 2);
+    assert.equal(env.requests.length, 4, "two selected atlases and two selected original plates");
+    assert.equal(new Set(env.requests).size, 4);
+    // Presentation slots can preview the same identity; gameplay still forbids mirror matches.
+    const first = create().fighters[0];
+    for (const [slot, variant] of [[0, "masked"], [1, "unmasked"]]) {
+      const fighter = { ...first, slot, variantId: variant, facing: 1 };
+      assert.equal(p.isPitCombatBitmapSelectionRequested(bank, fighter.definitionId, variant), true);
+      assert.equal(p.getPitCombatBitmapFighterArtStatus(bank, fighter), "sprite-sheet-animation");
+      const moving = { ...fighter, velocityX: 4 };
+      assert.equal(p.getPitCombatBitmapFighterArtStatus(bank, moving), "static-bitmap");
+      const ctx = context(); assert(p.drawPitCombatBitmapFighter(ctx, bank, moving, 400));
+      assert.equal(ctx.calls.find(call => call[0] === "drawImage")[1].src, `/game/sprites/v44/${variant}.png`);
+    }
+    assert.equal(bank.images.get("user-animation-test").src, "/game/sprites/v44/masked.png", "legacy summary stays first-selected");
+  } finally { env.restore(); }
+});
+
+test("one failed costume cannot borrow another costume with identical bitmap dimensions", async () => {
+  const env = browser(["/game/sprites/v44/unmasked.png"]);
+  try {
+    const bank = await p.loadPitCombatBitmapArt(["user-animation-test", "user-animation-test"],
+      { variants: ["masked", "unmasked"], spriteSheetRegistry: [] });
+    assert.equal(p.getPitCombatBitmapArtStatus(bank, "user-animation-test", "masked"), "static-bitmap");
+    assert.equal(p.getPitCombatBitmapArtStatus(bank, "user-animation-test", "unmasked"), "missing");
+    const fighter = { ...create().fighters[0], variantId: "unmasked" };
+    assert.equal(p.drawPitCombatBitmapFighter(context(), bank, fighter, 400), false);
+    assert.equal(bank.appearanceImages.size, 1);
+  } finally { env.restore(); }
+});
+
+test("repeated identical costumes decode once while retaining two independent animation clocks", async () => {
+  const env = browser();
+  try {
+    const bank = await p.loadPitCombatBitmapArt(["user-animation-test", "user-animation-test"],
+      { variants: ["masked", "masked"], spriteSheetRegistry: [definition()] });
+    assert.equal(env.requests.length, 2);
+    const first = { ...create().fighters[0], facing: 1 }, second = { ...first, slot: 1 };
+    assert.equal(p.resolvePitSpriteSheetAnimation(bank.spriteSheets, first, { simulationFrame: 10 }).resolved.frame.frameIndex, 0);
+    assert.equal(p.resolvePitSpriteSheetAnimation(bank.spriteSheets, first, { simulationFrame: 12 }).resolved.frame.frameIndex, 1);
+    assert.equal(p.resolvePitSpriteSheetAnimation(bank.spriteSheets, second, { simulationFrame: 12 }).resolved.frame.frameIndex, 0);
+  } finally { env.restore(); }
+});
+
+test("blocked impacts retain the correct native guard pose without claiming impact animation", async () => {
+  const env = browser();
+  try {
+    const guard = definition(); guard.atlas.clips[0].id = "high-guard";
+    const bank = await p.loadPitCombatBitmapArt(["user-animation-test"],
+      { variants: ["masked"], spriteSheetRegistry: [guard] });
+    const fighter = { ...create().fighters[0], phase: "blockstun", guard: "high", stunFrames: 8 };
+    const before = structuredClone(fighter);
+    assert.equal(p.resolvePitSpriteSheetAnimation(bank.spriteSheets, fighter), null);
+    assert.equal(p.getPitCombatBitmapFighterArtStatus(bank, fighter), "sprite-sheet-hold");
+    const held = p.resolvePitSpriteSheetHold(bank.spriteSheets, fighter);
+    assert.equal(held.frame.clip.id, "high-guard"); assert.equal(held.frame.frameIndex, 1);
+    assert.equal(p.resolvePitSpriteSheetHold(bank.spriteSheets, fighter, { simulationFrame: 6 }).frame.frameIndex, 1);
+    assert.equal(bank.spriteSheets.readyClipCount, 1, "held guard is not an extra impact clip");
+    const ctx = context(); assert(p.drawPitSpriteSheetHold(ctx, bank.spriteSheets, fighter, 400));
+    assert.equal(ctx.calls.some(call => call[0] === "scale"), false);
+    for (const patch of [{ facing: -1 }, { guard: "low", crouching: true }, { variantId: "unmasked" }]) {
+      assert.equal(p.resolvePitSpriteSheetHold(bank.spriteSheets, { ...fighter, ...patch }), null);
+    }
+    const state = p.createPitCombatState("user-animation-test", "user-other-test", { variants: ["masked", "other-masked"] });
+    state.frame = 20; state.pendingThrow = { attackerSlot: 0, capturedFrame: 20, framesRemaining: 8 };
+    const captured = { ...fighter, stunFrames: 1 };
+    assert.equal(p.resolvePitSpriteSheetHold(bank.spriteSheets, captured, { simulationFrame: 20, combat: state }), null,
+      "throw capture must never display the guard hold");
+    assert.deepEqual(fighter, before);
+  } finally { env.restore(); }
+});

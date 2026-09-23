@@ -143,7 +143,7 @@ test('all six unique receipts require the real complete path, and completion nev
     const next = api.stepYouthTraining(restored, {}, env);
     assert.deepEqual(next.receipts, []);
     assert.equal(next.state.tick, s.tick);
-    assert.match(api.getYouthObjective(s).instruction, /désert reste à venir/);
+    assert.match(api.getYouthObjective(s).instruction, /vers le camp de chasse du désert/);
 });
 test('defeat cannot reward a duel; fresh retry preserves course proof and restarts only combat', () => {
     let s = reach('camp-duel').state;

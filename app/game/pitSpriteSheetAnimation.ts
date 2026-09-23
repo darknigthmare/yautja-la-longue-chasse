@@ -25,6 +25,12 @@ export interface PitSpriteSheetAnimationDefinition {
   readonly bodyHeightPx: number;
   /** Optional measured reference per page, still uniform in both axes. */
   readonly pageBodyHeightPx?: Readonly<Record<string, number>>;
+  /** Alpha-reviewed source bounds for camera framing only; draw rect/pivot stay untouched. */
+  readonly visibleFrameBounds?: readonly {
+    readonly pageId: string;
+    readonly rect: readonly [number, number, number, number];
+    readonly visibleRect: readonly [number, number, number, number];
+  }[];
   readonly atlas: HunterSpriteAtlas;
 }
 export interface PitSpriteSheetAnimationBank {
@@ -61,10 +67,30 @@ const ownsAppearance = (definition: PitSpriteSheetAnimationDefinition, fighter: 
   definition.fighterId === fighter.definitionId && definition.variantId === fighter.variantId;
 const finite = (value: number) => Number.isFinite(value);
 
+function hasValidVisibleBounds(definition: PitSpriteSheetAnimationDefinition): boolean {
+  if (definition.visibleFrameBounds === undefined) return true;
+  if (!Array.isArray(definition.visibleFrameBounds)) return false;
+  const keys = new Set<string>();
+  return definition.visibleFrameBounds.every(bound => {
+    if (!bound || !Array.isArray(bound.rect) || !Array.isArray(bound.visibleRect) ||
+      bound.rect.length !== 4 || bound.visibleRect.length !== 4 ||
+      !bound.visibleRect.every(Number.isSafeInteger)) return false;
+    const key = JSON.stringify([bound.pageId, bound.rect]);
+    if (keys.has(key)) return false;
+    keys.add(key);
+    const original = definition.atlas.clips.flatMap(clip => clip.frames).find(frame =>
+      frame.pageId === bound.pageId && frame.rect.every((value, index) => value === bound.rect[index]));
+    if (!original) return false;
+    const [x, y, width, height] = bound.visibleRect;
+    return width > 0 && height > 0 && x >= original.rect[0] && y >= original.rect[1] &&
+      x + width <= original.rect[0] + original.rect[2] && y + height <= original.rect[1] + original.rect[3];
+  });
+}
+
 function isAcceptedDefinition(definition: PitSpriteSheetAnimationDefinition): boolean {
   const { atlas } = definition;
   return Object.hasOwn(PIT_FIGHTERS, definition.fighterId) && finite(definition.bodyHeightPx) &&
-    definition.bodyHeightPx > 0 && validateHunterSpriteAtlas(atlas).valid &&
+    definition.bodyHeightPx > 0 && validateHunterSpriteAtlas(atlas).valid && hasValidVisibleBounds(definition) &&
     atlas.characterId === definition.fighterId && atlas.status === "validated" &&
     (definition.variantId === undefined || (typeof definition.variantId === "string" &&
       getPitUserVariant(definition.fighterId, definition.variantId) !== null && atlas.variantId === definition.variantId)) &&
@@ -244,10 +270,12 @@ export function getPitSpriteSheetAnimationVisualBounds(
         if (!definition.atlas.pages.some(page => page.id === frame.pageId && page.status === "validated")) continue;
         const reference = definition.pageBodyHeightPx?.[frame.pageId] ?? definition.bodyHeightPx;
         const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / reference;
-        const x = fighter.x - frame.pivot[0] * scale;
-        const y = groundY - fighter.y - frame.pivot[1] * scale;
+        const visible = definition.visibleFrameBounds?.find(bound => bound.pageId === frame.pageId &&
+          bound.rect.every((value, index) => value === frame.rect[index]))?.visibleRect ?? frame.rect;
+        const x = fighter.x + (visible[0] - frame.rect[0] - frame.pivot[0]) * scale;
+        const y = groundY - fighter.y + (visible[1] - frame.rect[1] - frame.pivot[1]) * scale;
         left = Math.min(left, x); top = Math.min(top, y);
-        right = Math.max(right, x + frame.rect[2] * scale); bottom = Math.max(bottom, y + frame.rect[3] * scale);
+        right = Math.max(right, x + visible[2] * scale); bottom = Math.max(bottom, y + visible[3] * scale);
       }
     }
   }
@@ -260,14 +288,16 @@ export interface PitSpriteSheetHoldFrame {
   readonly source: HTMLCanvasElement;
 }
 
-/** Honest static fallback from the first idle drawing of the same authored side. */
+/**
+ * Honest held pose on the same authored side. A blocked hit retains the final
+ * matching guard drawing; it is never certified as a newly drawn impact clip.
+ * Other missing states keep the historical idle or the selected supplied plate.
+ */
 export function resolvePitSpriteSheetHold(
   bank: PitSpriteSheetAnimationBank | null | undefined,
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetHoldFrame | null {
-  // Supplied appearances keep their selected original plate for uncovered states.
-  if (fighter.variantId !== undefined) return null;
   const proof = bank && evidence.get(bank);
   const selection = selectionKey(fighter.definitionId, fighter.variantId);
   if (!proof || bank.cancelled || proof.signal?.aborted || !proof.selections.has(selection)) return null;
@@ -277,9 +307,20 @@ export function resolvePitSpriteSheetHold(
     previous?.selection === selection ? previous.cursor : undefined, options.combat);
   if (!motion) return null;
   proof.cursors.set(fighter.slot, { selection, cursor: motion.cursor });
-  for (const animation of proof.animations) {
-    if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey("idle", motion.facing))) continue;
-    const frame = resolveHunterSpriteAtlasFrame(animation.definition.atlas, "idle", motion.facing, 0);
+  const heldClips: { id: string; finalDrawing: boolean }[] = [];
+  // Capture/throw recovery can also use the simulation's blockstun phase.
+  // Only the actual resolved block reaction may borrow its own guard pose.
+  if (motion.phase === "blockstun") {
+    heldClips.push({ id: motion.posture === "crouch" ? "low-guard" : "high-guard", finalDrawing: true });
+  }
+  if (fighter.variantId === undefined) heldClips.push({ id: "idle", finalDrawing: false });
+  for (const held of heldClips) for (const animation of proof.animations) {
+    if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey(held.id, motion.facing))) continue;
+    const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, held.id, motion.facing, 0);
+    if (!first) continue;
+    const frame = held.finalDrawing
+      ? resolveHunterSpriteAtlasFrame(animation.definition.atlas, held.id, motion.facing, Math.max(0, first.totalTicks - 1))
+      : first;
     if (!frame) continue;
     const source = animation.pages.get(frame.page.id);
     if (source && source.width === frame.page.width && source.height === frame.page.height)

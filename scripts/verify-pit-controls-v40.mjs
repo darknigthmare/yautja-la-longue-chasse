@@ -1,3 +1,4 @@
+import { returnPitSelection, openPitLaboratory } from "./pit-selection-browser-helpers.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -113,8 +114,7 @@ try {
   };
   const lab = () => page.getByRole("complementary", { name: "Laboratoire d’entraînement", exact: true });
   const openLab = async () => {
-    const open = page.getByRole("button", { name: "Laboratoire", exact: true });
-    if (await open.count()) await open.click();
+    await openPitLaboratory(page);
     await lab().waitFor();
   };
 
@@ -134,7 +134,7 @@ try {
     const actual = await page.locator("[data-pit-bitmap-id]").evaluateAll(elements => elements.map(element => element.dataset.pitBitmapId));
     assert.deepEqual(actual, [fighterId, "theta"]);
     report.checks.push({ name: "identical-opponent-rejected", fighterId, validOpponentPreserved: "theta", enteredCombat: true });
-    await page.getByRole("button", { name: /^Quitter ·/ }).click();
+    await returnPitSelection(page);
   }
   // Changing J1 to the current J2 must move the other side to a distinct selection.
   await page.getByRole("combobox", { name: "Adversaire", exact: true }).selectOption("theta");
@@ -184,7 +184,7 @@ try {
   await lab().locator('[data-status="running"]').waitFor();
   report.checks.push({ name: "sparse-pad-briefing", browserSlot: 2, explicitStart: true });
   await disconnect(2);
-  await page.getByRole("button", { name: /^Quitter ·/ }).click();
+  await returnPitSelection(page);
 
   await connect(1, "V40 local J1"); await connect(3, "V40 local J2");
   await choose("Versus local"); await page.waitForTimeout(150); await tapPad(1, 0); await waitCombat();
@@ -205,7 +205,7 @@ try {
   await page.screenshot({ path: path.join(output, "local-roles.png"), fullPage: true });
 
   await disconnect(1); await connect(3, "V40 local J2");
-  await page.getByRole("button", { name: /^Quitter ·/ }).click();
+  await returnPitSelection(page);
   await choose("Entraînement"); await page.waitForTimeout(150); await tapPad(3, 0); await waitCombat();
   const reassigned = await expectAttack(0, () => tapPad(3, 2));
   report.checks.push({ name: "explicit-selection-reassigns-roles", newJ1slot: 3, phases: reassigned });

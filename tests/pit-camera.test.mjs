@@ -253,3 +253,28 @@ test("outward zoom reacts faster than inward zoom without bypassing visual conta
   assert.ok(outward.zoom > target.zoom, "padding allows smooth pullback before hard clipping safety");
   assertContained(outward, state);
 });
+
+
+test("Ahab keeps a constant reduced-motion envelope for both walls, native sides, attacks and normal jumps in every arena", () => {
+  for (const [arenaId, arena] of Object.entries(api.PIT_ARENAS)) {
+    const state = api.createPitCombatState("user-ahab", "city-hunter", { arenaId, mode: "training" });
+    state.fighters[0].variantId = "ahab-avec-casque-0c8ceb1c95";
+    const initial = api.targetPitPresentationCamera(state, { reducedMotion: true });
+    assert.ok(initial.zoom <= api.PIT_CAMERA_LIMITS.fixedZoom);
+    let previous = initial;
+    for (const x of [arena.leftWall, arena.rightWall]) for (const y of [0, 90, 180])
+      for (const facing of [-1, 1]) for (const crouching of [false, true])
+        for (const attack of [null, "light", "medium", "heavy"]) {
+          state.frame += 1;
+          Object.assign(state.fighters[0], { x, y, facing, crouching, phase: attack ? "active" : "idle",
+            action: attack ? { kind: "attack", attack, frame: 0, connected: false } : null });
+          Object.assign(state.fighters[1], { x: x === arena.leftWall ? arena.rightWall : arena.leftWall, facing: -facing });
+          const bytes = api.serializePitCombat(state);
+          const camera = api.advancePitPresentationCamera(previous, state, { reducedMotion: true });
+          assert.deepEqual({ ...camera, frame: initial.frame }, initial, "fixed framing cannot follow live pose or facing");
+          assertContained(camera, state);
+          assert.equal(api.serializePitCombat(state), bytes, "presentation cannot alter damage, collisions or replay state");
+          previous = camera;
+        }
+  }
+});

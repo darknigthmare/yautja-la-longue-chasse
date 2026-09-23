@@ -238,3 +238,106 @@ test("active training forces its own checkpoint resume while a real morning retu
   assert(current); assert(p.writeSaveWithStatus(current, s).persisted);
   result = await p.continueCampaignSlot(1, { expectedRevision: result.catalog.slots[0].revision, location: "youth-training" }, s); assert(result.ok, result.message); assert.equal(result.checkpoint.resumeLocation, "homeworld");
 });
+
+
+function desertInput(state) {
+  if (!state.inputArmed) return {};
+  if (state.phase === "morning") return { confirm: true };
+  const objective = p.getYouthObjective(state), delta = (objective.targetX ?? state.player.x) - state.player.x;
+  const move = Math.abs(delta) > 25 ? dir(delta) : 0;
+  if (["desert-crossing", "desert-return"].includes(state.phase)) {
+    const ahead = p.getYouthObstacles(state).find(o => move === 1 ? o.x > state.player.x && o.x - state.player.x < 65 : o.x + o.width < state.player.x && state.player.x - o.x - o.width < 65);
+    return { move, jump: !!ahead && state.player.vy === 0 && !state.previousButtons.jump, interact: state.phase === "desert-return" && !move && !state.previousButtons.interact };
+  }
+  if (state.phase === "desert-tracks") return { move, interact: !move };
+  if (["desert-briefing", "desert-report"].includes(state.phase)) return { move, interact: !move && !state.previousButtons.interact };
+  return {};
+}
+function desertRoute({ stop = "desert-complete", restoreEvery = 0 } = {}) {
+  let save = until(6), state = save.youthTraining.checkpoint; const receipts = [], phases = new Set();
+  for (let n = 0; n < 15000 && state.phase !== stop; n++) {
+    if (restoreEvery && n % restoreEvery === 0) { state = p.normalizeYouthTraining(JSON.parse(JSON.stringify(state))); assert(state); }
+    const output = p.stepYouthTraining(state, desertInput(state), env); state = output.state; phases.add(state.phase);
+    assert(p.normalizeYouthTraining(state), `desert ${state.phase} tick ${state.tick}`);
+    if (output.receipts.length) { save = p.withYouthProgress(save, output.receipts, state, now); receipts.push(...output.receipts); }
+    else save = p.withYouthCheckpoint(save, state);
+    assert(save, `campaign checkpoint ${state.phase} tick ${state.tick}`);
+  }
+  assert.equal(state.phase, stop); return { state, save, receipts, phases };
+}
+test("V48 morning does not depart without a fresh explicit choice and accepts missing optional desert field", () => {
+  const legacy = until(6); delete legacy.youthTraining.checkpoint.desert;
+  const loaded = p.parseSaveImport(JSON.stringify(legacy)); assert.equal(loaded.failure, null); assert.equal(loaded.save.youthTraining.checkpoint.desert, null);
+  let state = loaded.save.youthTraining.checkpoint; const tick = state.tick;
+  for (let n = 0; n < 100; n++) state = p.stepYouthTraining(state, {}, env).state;
+  assert.equal(state.phase, "morning"); assert.equal(state.tick, tick);
+  state = p.stepYouthTraining(state, { confirm: true }, { ...env, paused: true }).state;
+  for (let n = 0; n < 100; n++) state = p.stepYouthTraining(state, { confirm: true }, env).state;
+  assert.equal(state.phase, "morning"); state = p.stepYouthTraining(state, {}, env).state;
+  const departure = p.stepYouthTraining(state, { confirm: true }, env);
+  assert.equal(departure.state.phase, "desert-briefing"); assert.equal(departure.receipts.length, 0);
+  assert(p.withYouthCheckpoint(loaded.save, departure.state));
+});
+test("guided desert route requires real observation, solid crossings, mentor report and return for five separate proofs", () => {
+  const run = desertRoute(); assert.deepEqual([...run.phases].filter(phase => phase.startsWith("desert-")), ["desert-briefing", "desert-tracks", "desert-crossing", "desert-report", "desert-return", "desert-complete"]);
+  assert.deepEqual(run.receipts.map(r => r.id), p.YOUTH_DESERT_MILESTONES);
+  assert(run.receipts.every(r => r.sourceId === "youth.desert.v49" && r.sceneId === "unblooded-desert"));
+  assert.equal(run.state.desert.clues, 3); assert.equal(run.state.desert.ravineCleared, true);
+  assert.equal(run.save.youthTraining.receipts.length, 11);
+  const original = until(6); assert.deepEqual(run.save.inventory, original.inventory); assert.deepEqual(run.save.loadout, original.loadout);
+  assert.deepEqual(run.save.prologue.chronicle, original.prologue.chronicle); assert.deepEqual(run.save.youthTraining.equipment, original.youthTraining.equipment);
+  assert.equal(run.save.profile.honor, original.profile.honor); assert.equal(run.save.youthTraining.completedAt, original.youthTraining.completedAt);
+  assert.equal(p.getChronicleRank(run.save.prologue.chronicle), "unblooded"); assert.equal(p.parseSaveImport(JSON.stringify(run.save)).failure, null);
+});
+test("remote, brief, moving and paused observation never records a clue", () => {
+  let state = desertRoute({ stop: "desert-tracks" }).state;
+  state = p.stepYouthTraining(state, {}, env).state;
+  for (let n = 0; n < 150; n++) state = p.stepYouthTraining(state, { interact: true }, env).state;
+  assert.equal(state.desert.clues, 0); assert.equal(state.desert.scanTicks, 0);
+  while (state.player.x < 285) state = p.stepYouthTraining(state, { move: 1 }, env).state;
+  for (let n = 0; n < 20; n++) state = p.stepYouthTraining(state, { interact: true }, env).state;
+  assert.equal(state.desert.clues, 0); assert.equal(state.desert.scanTicks, 20);
+  const tick = state.tick;
+  for (let n = 0; n < 1000; n++) state = p.stepYouthTraining(state, { interact: true }, { ...env, paused: true }).state;
+  assert.equal(state.tick, tick); assert.equal(state.desert.scanTicks, 20);
+  state = p.stepYouthTraining(state, {}, env).state;
+  state = p.stepYouthTraining(state, { move: 1, interact: true }, env).state;
+  assert.equal(state.desert.scanTicks, 0); assert.equal(state.desert.clues, 0);
+});
+test("desert obstacles stop walking and physical jump earns crossing only after landing beyond both rocks", () => {
+  let state = desertRoute({ stop: "desert-crossing" }).state;
+  state = p.stepYouthTraining(state, {}, env).state;
+  for (let n = 0; n < 300; n++) state = p.stepYouthTraining(state, { move: 1 }, env).state;
+  assert.equal(state.player.x, 330); assert.equal(state.desert.ravineCleared, false);
+  assert.equal(state.milestones["youth-desert-crossing"], undefined);
+  for (let n = 0; n < 3000 && state.phase === "desert-crossing"; n++) state = p.stepYouthTraining(state, desertInput(state), env).state;
+  assert.equal(state.phase, "desert-report"); assert(state.milestones["youth-desert-crossing"]);
+});
+test("desert checkpoint restores during a held observation and airborne crossing remain playable", () => {
+  const restored = desertRoute({ restoreEvery: 23 }); assert.equal(restored.state.phase, "desert-complete"); assert.equal(restored.receipts.length, 5);
+  assert.equal(restored.save.youthTraining.receipts.length, 11);
+});
+test("desert proofs cannot enter through routine checkpoint or be relabelled as combat training", () => {
+  const before = desertRoute({ stop: "desert-briefing" }); let state = before.state, receipt;
+  for (let n = 0; n < 1000 && state.phase === "desert-briefing"; n++) { const out = p.stepYouthTraining(state, desertInput(state), env); state = out.state; receipt = out.receipts[0] ?? receipt; }
+  assert(receipt); assert.equal(p.withYouthCheckpoint(before.save, state), null);
+  assert.equal(p.withYouthProgress(before.save, [{ ...receipt, sourceId: "youth.training.v48", sceneId: "unblooded-training" }], state), null);
+  const saved = p.withYouthProgress(before.save, [receipt], state, now); assert(saved);
+  const retry = p.withYouthProgress(saved, [receipt], state, now); assert(retry); assert.equal(retry.youthTraining.receipts.length, 7);
+});
+test("corrupt desert checkpoints cannot skip observations, revert to morning or erase acknowledged readings", () => {
+  const run = desertRoute({ stop: "desert-crossing" });
+  for (const mutate of [s => { s.desert = null; }, s => { s.desert.clues = 2; }, s => { s.desert.scanTicks = 99; }, s => { delete s.milestones["youth-desert-observations"]; }]) {
+    const state = clone(run.state); mutate(state); assert.equal(p.normalizeYouthTraining(state), null);
+  }
+  const earlier = clone(path.state); earlier.tick = run.state.tick + 10; earlier.phaseTick = earlier.tick - earlier.phaseStartedAt;
+  assert(p.normalizeYouthTraining(earlier)); assert.equal(p.withYouthCheckpoint(run.save, earlier), null);
+});
+test("quota and concurrent saves refuse desert proof while preserving the last durable campaign", () => {
+  const before = desertRoute({ stop: "desert-briefing" }); const storage = store(before.save); p.loadSaveWithStatus(storage);
+  const after = desertRoute({ stop: "desert-tracks" }).save, bytes = storage.getItem(p.SAVE_STORAGE_KEY), original = storage.setItem;
+  storage.setItem = () => { throw Object.assign(new Error("quota"), { name: "QuotaExceededError" }); };
+  assert.equal(p.writeSaveWithStatus(after, storage).persisted, false); assert.equal(storage.getItem(p.SAVE_STORAGE_KEY), bytes);
+  storage.setItem = original; const concurrent = JSON.stringify({ ...before.save, updatedAt: "2026-09-24T14:00:00.000Z" }); storage.data.set(p.SAVE_STORAGE_KEY, concurrent);
+  assert.equal(p.writeSaveWithStatus(after, storage).failure, "save-conflict"); assert.equal(storage.getItem(p.SAVE_STORAGE_KEY), concurrent);
+});

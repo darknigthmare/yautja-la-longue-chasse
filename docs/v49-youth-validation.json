@@ -1,0 +1,66 @@
+{
+  "version": "V49",
+  "scope": "Youth guided desert continuation and immersive youth HUD",
+  "source": {
+    "conversation": "6aa9e35a-3288-83eb-a8bf-45d3197113bf",
+    "userTurn": "7efc0ab0-c5af-4bea-a1ba-c62bc14676e2"
+  },
+  "targetedTests": {
+    "passed": 52,
+    "failed": 0,
+    "report": "work/v49/youth-hud-tests.tap"
+  },
+  "browserChecks": {
+    "passed": 28,
+    "failed": 0,
+    "reports": [
+      {
+        "profile": "desert",
+        "passed": true,
+        "checks": 5,
+        "report": "outputs/qa-commercial-audit/v49/final-desert-browser-qa/report.json"
+      },
+      {
+        "profile": "accessibility",
+        "passed": true,
+        "checks": 9,
+        "report": "outputs/qa-commercial-audit/v49/final-youth-accessibility-qa/report.json"
+      },
+      {
+        "profile": "reliability",
+        "passed": true,
+        "checks": 5,
+        "report": "outputs/qa-commercial-audit/v49/final-youth-reliability-qa/report.json"
+      },
+      {
+        "profile": "full_training_route",
+        "passed": true,
+        "checks": 9,
+        "report": "outputs/qa-commercial-audit/v49/final-youth-fullscene-qa/report.json"
+      }
+    ]
+  },
+  "visuallyReviewed": [
+    "final-youth-accessibility-qa/desktop-training.png",
+    "final-youth-accessibility-qa/touch-390.png",
+    "final-youth-accessibility-qa/landscape-live-hud.png",
+    "final-desert-browser-qa/desert-returned.png",
+    "final-youth-fullscene-qa/camp-earned-blade-impact.png"
+  ],
+  "captureRoot": "outputs/qa-commercial-audit/v49",
+  "facts": [
+    "V48 morning requires explicit departure",
+    "All five desert receipts follow physical inputs",
+    "No rank, honor, ship, adult loadout or hunt rite added",
+    "Old V48 training route physically replayed in HUD",
+    "Settings panel verified above viewport and simulation frozen",
+    "Virtual gamepad and real CDP touch, not physical hardware"
+  ],
+  "limitations": [
+    "First guided reconnaissance only, not full desert hunting mission",
+    "Painted distant hunters are not simulated NPCs or multiplayer",
+    "Biomask remains stored; no worn-mask animation claim",
+    "Desert background is one bitmap, not full independently layered parallax",
+    "Youth PIT cage and later rites remain unfinished"
+  ]
+}

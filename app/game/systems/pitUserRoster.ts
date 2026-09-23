@@ -41,7 +41,7 @@ const basis = PIT_FIRST_EDITION_FIGHTERS['jungle-hunter'];
 export const PIT_USER_FIGHTERS: Readonly<Record<PitUserFighterId, PitUserFighterDefinition>> = Object.fromEntries(PIT_USER_FIGHTER_IDS.map(id => {
  const source = byId.get(id)!;
  const definition: PitUserFighterDefinition = {
-  ...basis, id, name: source.name, epithet: 'Chasseur fourni · pose fixe',
+  ...basis, id, name: source.name, epithet: 'Chasseur fourni · profil partagé',
   sourcePresetId: id, sourceWork: source.sourceLabel, continuity: 'expanded',
   archetype: 'all-rounder', selectable: true, runtimeStatus: 'vertical-slice', rivalId: null,
   progressionAvailable: false, gameplayAdaptation: 'shared-balanced-duel', canonicalIdentityVerified: false,
@@ -52,7 +52,7 @@ export const PIT_USER_FIGHTERS: Readonly<Record<PitUserFighterId, PitUserFighter
    technique: {...basis.attacks.light, kind: 'technique', label: 'Riposte de duel · adaptation', startup: 8, active: 18, recovery: 24, damage: 78, range: 54},
   },
   technique: {id:'user-balanced-contact-counter',device:'code-parry',contactEffect:'strike',motion:'attached',trigger:'counter',lifetimeFrames:18,armFrames:0,speed:0,returnFrame:null,width:52,height:68,verticalOffset:28,damageScale:1,chipScale:0,hitstunBonus:2,blockstunBonus:0,pushbackScale:1,guardBreak:false,knockdown:false,ownerDashSpeed:0,maxHits:1,rehitFrames:0,status:null,statusFrames:0,movementScale:1,jumpLocked:false,cloakLocked:false},
-  arcadeIntro: 'Visuel et nom fournis dans les packs utilisateur. Pose fixe : aucune animation complète ni fidélité canon 1:1 certifiée. Profil équilibré partagé pour les duels ; les armes représentées ne définissent pas des techniques propres au personnage.',
+  arcadeIntro: 'Visuel et nom fournis dans les packs utilisateur. Les clips validés animent uniquement leur apparence et leur orientation ; les autres actions gardent leur pose fixe. Aucun ensemble complet ni fidélité canon 1:1 certifiés. Profil équilibré partagé pour les duels ; les armes représentées ne définissent pas des techniques propres au personnage.',
   arcadeEnding: 'Chronique personnelle non produite : Arcade, Circuit et Descente indisponibles.',
  };
  return [id, definition];

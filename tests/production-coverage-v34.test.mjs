@@ -33,9 +33,9 @@ test('the shared vehicle effect library is not a fifty-first catalogue vehicle',
   assert(coverage.vehicles.entriesWithSourceArt <= 50);
 });
 
-test('reviewed Ahab appearance adds one fighter and two clips without implying complete movesets', () => {
+test('reviewed masked Ahab native idle, guard and light clips still do not imply a complete moveset', () => {
   const coverage = productionCoverage([], []);
   assert.equal(coverage.hunters.runtimeFighters, 12);
-  assert.equal(coverage.hunters.validatedClips, 269);
+  assert.equal(coverage.hunters.validatedClips, 277);
   assert.equal(coverage.hunters.completeMovesets, 0);
 });

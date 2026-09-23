@@ -1,0 +1,152 @@
+{
+  "version": "V49",
+  "date": "2026-09-23",
+  "scope": [
+    "PIT full-window combat and integrated HUD",
+    "native optional fullscreen and real pause",
+    "Ahab masked native directional drawings and block guard hold",
+    "guided first desert reconnaissance and full-window youth HUD"
+  ],
+  "verification": {
+    "build": {
+      "passed": true,
+      "report": "outputs/qa-commercial-audit/v49/build-final.log"
+    },
+    "typecheck": {
+      "passed": true,
+      "incremental": false,
+      "report": "outputs/qa-commercial-audit/v49/typecheck-build3.log"
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "existingWarnings": 1,
+      "warning": "ClanChroniclePanel.tsx:42 next/no-img-element",
+      "report": "outputs/qa-commercial-audit/v49/lint-build3.log"
+    },
+    "browserBuild2": {
+      "build": "second integrated build before camera-only bounds correction",
+      "checks": 86,
+      "reports": [
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-immersive-browser-qa/report.json",
+          "passed": true,
+          "checks": 10
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-camera-browser-qa/report.json",
+          "passed": true,
+          "checks": 4
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-results-browser-qa/report.json",
+          "passed": true,
+          "checks": 2
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-pit-animation-complete-qa/report.json",
+          "passed": true,
+          "checks": 21
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-desert-browser-qa/report.json",
+          "passed": true,
+          "checks": 5
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-youth-accessibility-qa/report.json",
+          "passed": true,
+          "checks": 9
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-youth-reliability-qa/report.json",
+          "passed": true,
+          "checks": 5
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-youth-fullscene-qa/report.json",
+          "passed": true,
+          "checks": 9
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-nursery-scene-qa/report.json",
+          "passed": true,
+          "checks": 7
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/final-nursery-accessibility-qa/report.json",
+          "passed": true,
+          "checks": 14
+        }
+      ]
+    },
+    "unitSuite": {
+      "passed": true,
+      "tests": 1561,
+      "pass": 1561,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 336413.1555,
+      "report": "outputs/qa-commercial-audit/v49/tests-final.tap",
+      "firstRunRetained": "outputs/qa-commercial-audit/v49/tests-full.tap"
+    },
+    "browserBuild3": {
+      "checks": 29,
+      "reports": [
+        {
+          "report": "outputs/qa-commercial-audit/v49/build3-pit-animation-qa/report.json",
+          "passed": true,
+          "checks": 21
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/build3-fixed-ahab-final/report.json",
+          "passed": true,
+          "checks": 4
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/build3-camera-browser-qa/report.json",
+          "passed": true,
+          "checks": 4
+        }
+      ],
+      "note": "Affected-feature rechecks on final compiled build; repeated checks are not added to the 86 distinct build2 checks."
+    },
+    "sourcePngHashes": {
+      "files": 5,
+      "passed": true,
+      "report": "outputs/qa-commercial-audit/v49/local-art-hashes.json"
+    }
+  },
+  "art": {
+    "generator": "OpenAI built-in image_gen",
+    "acceptedPngFiles": 5,
+    "newAhabDrawings": 12,
+    "newAhabClips": 8,
+    "ahabTotalDrawings": 16,
+    "ahabTotalClips": 10,
+    "sourcePixelsPreserved": true,
+    "transparentNoiseFloor": 2,
+    "cameraOnlyBoundsRenderComparisons": 72,
+    "rgbaDifferences": 0,
+    "provenance": "docs/v49-openai-prompts.json"
+  },
+  "resolvedFindings": [
+    "Fixed reduced-motion camera now reserves the chosen appearance at both walls and normal jump height without following actions.",
+    "Alpha bounds are separate from original drawImage crops and pivots; an attempted draw-crop tightening was rejected after pixel differences.",
+    "Coverage expectation increased from 269 to 277 only for the eight actually delivered Ahab clips.",
+    "Detailed technical phases are only shown in training; passive meter gains no longer repeat a central notice."
+  ],
+  "limits": [
+    "Automated QA profiles, not human testers or physical-device certification.",
+    "No complete moveset or new character-specific spear reach; unanimated states keep exact appearance fallback.",
+    "No mirror duel enabled by variant-aware atlas loading.",
+    "No canon 1:1 certification; reference upload failed, accepted generation used descriptions after visual review.",
+    "Guided reconnaissance only: no complete desert mission, youth PIT, hunt rite, promotion or ship acquisition.",
+    "Desert backdrop is a full painting, not a complete independent parallax layer pack.",
+    "Full roster animation and remaining arena production are unfinished."
+  ],
+  "publication": {
+    "status": "verified separately after commit",
+    "evidence": "outputs/qa-commercial-audit/v49/publication-verified.json"
+  }
+}

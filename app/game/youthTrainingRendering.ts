@@ -1,4 +1,4 @@
-import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, type YouthState } from "./systems/youthTraining";
+import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, YOUTH_DESERT_CLUES, type YouthState } from "./systems/youthTraining";
 
 export const YOUTH_ART_POSES = ["idle", "walk", "jump", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
 export type YouthArtPose = typeof YOUTH_ART_POSES[number];
@@ -9,13 +9,14 @@ export interface YouthPropSprite { src: string; rect: readonly [number, number, 
 export type YouthPropId = "trainingTarget" | "platform" | "marker" | "bladeRack" | "maskPedestal" | "cot" | "door" | "brazier";
 export interface YouthArtManifest {
   version: 1; actorKind: "unblooded";
-  scenes: Record<"dojo" | "camp" | "quarters", { src: string; groundY?: number }>;
+  scenes: Record<"dojo" | "camp" | "quarters", { src: string; groundY?: number }> & { desert?: { src: string; groundY?: number } };
+  desertProps?: Record<"footprints" | "branch" | "stone", YouthPropSprite>;
   blade: { src: string }; props: Record<YouthPropId, YouthPropSprite>;
   actors: Record<"player" | "rival", Record<"left" | "right", YouthActorAtlas>>;
 }
 export interface YouthArtBank { manifest: YouthArtManifest; images: ReadonlyMap<string, HTMLImageElement> }
 export function youthArtSources(manifest: YouthArtManifest) {
-  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src),
+  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src), ...Object.values(manifest.desertProps ?? {}).map(prop => prop.src),
     ...Object.values(manifest.actors).flatMap(actor => [actor.left.src, actor.right.src])])];
 }
 export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap<string, { width: number; height: number }>): string[] {
@@ -30,7 +31,7 @@ export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap
     const image = images.get(scene.src);
     if (scene.groundY !== undefined && (!Number.isFinite(scene.groundY) || scene.groundY <= 0 || image && scene.groundY > image.height)) errors.push(`Sol du décor ${name} hors image.`);
   }
-  for (const [name, prop] of Object.entries(manifest.props)) {
+  for (const [name, prop] of Object.entries({ ...manifest.props, ...manifest.desertProps })) {
     const image = images.get(prop.src); const [x, y, w, h] = prop.rect;
     if (!prop.rect.every(value => Number.isFinite(value) && value >= 0) || w <= 0 || h <= 0 || image && (x + w > image.width || y + h > image.height) || !prop.pivot.every(value => Number.isFinite(value) && value >= 0) || prop.pivot[0] > w || prop.pivot[1] > h) errors.push(`Accessoire ${name} hors atlas.`);
   }
@@ -84,8 +85,10 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   ctx.save(); ctx.clearRect(0, 0, width, height); ctx.fillStyle = "#090705"; ctx.fillRect(0, 0, width, height);
   if (!bank) { ctx.restore(); return; }
   const { manifest, images } = bank;
-  const room = state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
-  const scene = manifest.scenes[room], backdrop = images.get(scene.src)!;
+  const desert = state.phase.startsWith("desert-");
+  const room = desert ? "desert" : state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
+  const scene = manifest.scenes[room]; if (!scene) { ctx.restore(); return; }
+  const backdrop = images.get(scene.src)!;
   const scale = Math.max(width / backdrop.width, height / backdrop.height, groundY / (scene.groundY ?? backdrop.height));
   const top = scene.groundY === undefined ? (height - backdrop.height * scale) / 2 : 0;
   ctx.drawImage(backdrop, (width - backdrop.width * scale) / 2, top, backdrop.width * scale, backdrop.height * scale);
@@ -96,14 +99,27 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   };
   // Modular bitmap props share the exact collision size; yellow landing edges are readable even over detailed art.
   for (const obstacle of getYouthObstacles(state)) {
-    const sprite = manifest.props.platform;
-    prop("platform", obstacle.x + sprite.pivot[0] / sprite.rect[2] * obstacle.width, obstacle.y + sprite.pivot[1] / sprite.rect[3] * obstacle.height, obstacle.height, obstacle.width);
+    const sprite = desert ? manifest.desertProps?.stone : manifest.props.platform;
+    if (sprite) {
+      const image = images.get(sprite.src)!;
+      ctx.drawImage(image, ...sprite.rect, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    }
     ctx.strokeStyle = "#ffdc98"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(obstacle.x, obstacle.y); ctx.lineTo(obstacle.x + obstacle.width, obstacle.y); ctx.stroke();
   }
   if (state.phase === "blade-award") prop("bladeRack", 680, groundY, 108);
   if (state.phase === "armory") prop("maskPedestal", 680, groundY, 100);
   if (["barracks", "rest", "morning"].includes(state.phase)) prop("cot", 680, groundY, 70);
-  prop("brazier", 905, groundY, 96); prop("door", 105, groundY, 166);
+  if (!desert) { prop("brazier", 905, groundY, 96); prop("door", 105, groundY, 166); }
+  else {
+    prop("marker", 110, groundY, 32);
+    if (state.phase === "desert-tracks" && manifest.desertProps) {
+      for (let i = 0; i < YOUTH_DESERT_CLUES.length; i++) {
+        const sprite = manifest.desertProps[(["footprints", "branch", "stone"] as const)[i]], h = i === 0 ? 24 : i === 1 ? 45 : 52, ratio = h / sprite.rect[3];
+        ctx.drawImage(images.get(sprite.src)!, ...sprite.rect, YOUTH_DESERT_CLUES[i].x - sprite.pivot[0] * ratio, groundY - sprite.pivot[1] * ratio, sprite.rect[2] * ratio, h);
+        if (i < (state.desert?.clues ?? 0)) { ctx.strokeStyle = "#91d59c"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(YOUTH_DESERT_CLUES[i].x - 6, groundY - h - 8); ctx.lineTo(YOUTH_DESERT_CLUES[i].x - 1, groundY - h - 3); ctx.lineTo(YOUTH_DESERT_CLUES[i].x + 8, groundY - h - 13); ctx.stroke(); }
+      }
+    }
+  }
   const objective = getYouthObjective(state);
   if (objective.targetX !== null && state.phase !== "rest" && state.phase !== "morning") {
     if (["dojo-move", "dojo-jump", "camp-run"].includes(state.phase)) prop("marker", objective.targetX, groundY, 32);
@@ -128,7 +144,7 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     if (state.rival.action === "thrown") ctx.rotate(state.rival.facing * Math.PI / 3);
     if (!reducedMotion && state.rival.action === "hurt") ctx.globalAlpha = .72;
     prop("trainingTarget", 0, 0, 119); ctx.restore();
-  } else if (["dojo-dodge", "camp-duel", "camp-defeat"].includes(state.phase)) {
+  } else if (["dojo-dodge", "camp-duel", "camp-defeat"].includes(state.phase) || desert) {
     drawActor("rival", 150);
     if (state.rival.action === "jab" && state.rival.actionTick < 32) {
       ctx.strokeStyle = "#ffe2a2"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(state.rival.x, state.rival.y - 168, 10, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * state.rival.actionTick / 32); ctx.stroke();

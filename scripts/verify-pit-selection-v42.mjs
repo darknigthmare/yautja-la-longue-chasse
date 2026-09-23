@@ -1,3 +1,4 @@
+import { returnPitSelection } from "./pit-selection-browser-helpers.mjs";
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { build } from 'esbuild';
@@ -53,7 +54,7 @@ try{
   await page.locator('canvas[data-pit-arena-id]').screenshot({path:output+'/selected-stage-combat.png'});
   assert.equal(await page.locator('[data-pit-bitmap-slot="0"]').getAttribute('data-pit-bitmap-id'),'tracker');
   checks.push({name:'selected-stage-launched',arena:chosenArena});
-  await page.getByRole('button',{name:/^Quitter ·/}).click();
+  await returnPitSelection(page);
   // Existing progression modes remain selectable and keep their imposed encounter.
   await page.locator('[data-choice-id="jungle-hunter"]').click();
   for(const mode of ['Arcade individuel','Circuit du clan','Descente']){

@@ -1,3 +1,4 @@
+import { returnPitSelection, openPitLaboratory } from "./pit-selection-browser-helpers.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -62,8 +63,7 @@ try {
     await page.getByRole("button", { name: /^ENTRER DANS L’ARÈNE/ }).click();
     await page.locator('canvas[data-pit-arena-art-status="bitmap"]').waitFor({ timeout: 60000 });
     await page.waitForFunction(() => [...document.querySelectorAll("[data-pit-bitmap-slot]")].length === 2 && [...document.querySelectorAll("[data-pit-bitmap-slot]")].every(element => !["loading", "missing"].includes(element.dataset.pitBitmapStatus)));
-    const openLab = page.getByRole("button", { name: "Laboratoire", exact: true });
-    if (await openLab.count()) await openLab.click();
+    await openPitLaboratory(page);
     const lab = page.getByRole("complementary", { name: "Laboratoire d’entraînement", exact: true });
     await lab.getByRole("combobox", { name: "Comportement du mannequin", exact: true }).selectOption("idle");
     const summary = lab.locator("summary", { hasText: "Exercices guidés" });
@@ -122,7 +122,7 @@ try {
       await page.screenshot({ path: path.join(output, "mobile.png"), fullPage: true });
       report.mobileNoOverflow = true;
     }
-    await page.getByRole("button", { name: /^Quitter ·/ }).click();
+    await returnPitSelection(page);
     await page.getByRole("combobox", { name: "Combattant joueur", exact: true }).waitFor();
   }
   assert.equal(await snapshot(), before, "Training must not alter stored campaign or PIT state.");

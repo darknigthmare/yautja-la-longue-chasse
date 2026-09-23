@@ -44,3 +44,33 @@ export async function selectPitMatch(page, { player, opponent, arena, launch = t
     if (launch) await page.getByRole('button', { name: /^ENTRER DANS L’ARÈNE/ }).click();
   }
 }
+
+/** Public V49 pause flow, while keeping legacy browser recipes usable on V48. */
+export async function openPitPause(page) {
+  const menu = page.locator('[data-pit-pause-menu]');
+  if (!(await menu.count()) || await menu.isVisible()) return;
+  await page.locator('[data-pit-menu-button]').click();
+  await menu.waitFor({ state: 'visible' });
+}
+
+export async function resumePitFight(page) {
+  const menu = page.locator('[data-pit-pause-menu]');
+  if (await menu.count() && await menu.isVisible()) await menu.locator('[data-pit-resume]').click();
+  await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Combat THE PIT');
+}
+
+export async function returnPitSelection(page) {
+  if (await page.locator('[data-pit-immersive]').count()) {
+    await openPitPause(page);
+    await page.getByRole('button', { name: 'Retour à la sélection', exact: true }).click();
+  } else await page.getByRole('button', { name: /^Quitter ·/ }).click();
+}
+
+export async function openPitLaboratory(page) {
+  const lab = page.getByRole('complementary', { name: 'Laboratoire d’entraînement', exact: true });
+  if (await lab.isVisible()) return;
+  const shortcut = page.getByRole('button', { name: 'Labo', exact: true });
+  if (await shortcut.count()) await shortcut.click();
+  else await page.getByRole('button', { name: 'Laboratoire', exact: true }).click();
+  await lab.waitFor({ state: 'visible' });
+}

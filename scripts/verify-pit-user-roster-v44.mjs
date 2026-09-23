@@ -1,3 +1,4 @@
+import { returnPitSelection } from "./pit-selection-browser-helpers.mjs";
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {chromium} from 'playwright-core';
@@ -56,7 +57,7 @@ try{
  const frame=Number(await page.locator('[data-pit-frame]').getAttribute('data-pit-frame'));await page.waitForTimeout(300);assert(Number(await page.locator('[data-pit-frame]').getAttribute('data-pit-frame'))>frame);
  await page.locator('canvas[data-pit-arena-id]').screenshot({path:output+'/supplied-duel.png'});
  checks.push({name:'actual-duel-render',imagesMatchSelection:true,simulationAdvances:true,animationStatus:'static-bitmap'});
- await page.getByRole('button',{name:/^Quitter ·/}).click();
+ await returnPitSelection(page);
  assert.equal(await page.locator('[data-selection-side="player"] [data-fighter-variant]').getAttribute('data-fighter-variant'),cityVariant.id);
  await page.locator('[data-pit-roster-search]').fill('no-hunter-matches-v44');assert.equal(await page.locator('[data-pit-roster-total] [role="option"]').count(),0);
  await page.locator('[data-pit-roster-search]').fill('');

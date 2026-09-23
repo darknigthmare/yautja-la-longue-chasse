@@ -44,6 +44,16 @@ export async function auditPitSpriteSheetProduction() {
         const sha256 = hash(canonical); allDrawingHashes.add(sha256);
         cells.set(frame.rect.join(","), { rect: frame.rect, pivot: frame.pivot, visiblePixels, transparentPixels, borderPixels, sha256 });
       }
+      for (const bound of entry.visibleFrameBounds ?? []) {
+        if (bound.pageId !== page.id) continue;
+        const [x, y, width, height] = bound.rect;
+        const [vx, vy, vw, vh] = bound.visibleRect;
+        for (let row = y; row < y + height; row++) for (let col = x; col < x + width; col++) {
+          if (col >= vx && col < vx + vw && row >= vy && row < vy + vh) continue;
+          assert.equal(processed.pixels[(row * info.width + col) * 4 + 3], 0,
+            page.id + " camera bounds omitted a visible source pixel");
+        }
+      }
       pages.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, pageId: page.id, src: page.src, width: info.width, height: info.height,
         sourceSha256: hash(bytes), sourceHasAlpha: (await sharp(bytes).metadata()).hasAlpha,
         transparency: page.transparency, keyedPixels: processed.keyedPixels, fringePixels: processed.fringePixels, alphaNoisePixels: processed.alphaNoisePixels,

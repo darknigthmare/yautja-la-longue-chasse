@@ -38,6 +38,9 @@ export interface PitPresentationBounds {
 const MIN_ZOOM = 0.8;
 const MAX_ZOOM = 1.95;
 const FIXED_ZOOM = 0.9;
+const FIXED_JUMP_RESERVE = 180;
+const FIXED_VISUAL_MARGIN = 8;
+const fixedFighterBounds = new Map<string, PitPresentationBounds>();
 const SIDE_MARGIN = 72;
 const TOP_MARGIN = 48;
 const FLOOR_MARGIN = 42;
@@ -95,6 +98,40 @@ export function getPitPresentationBounds(state: PitCombatState): PitPresentation
   return { left, right, top, bottom };
 }
 
+/** Build a static envelope for the chosen appearance, before PNG loading.
+ * Every validated atlas drawing participates, on both sides and at both walls.
+ * Cache only appearance-dependent geometry: live pose, health and movement may
+ * never pump a reduced-motion camera. Gameplay boxes are observed, not edited.
+ */
+function fixedAppearanceBounds(fighter: PitFighterState): PitPresentationBounds {
+  const key = JSON.stringify([fighter.definitionId, fighter.variantId ?? null]);
+  const cached = fixedFighterBounds.get(key);
+  if (cached) return cached;
+  let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
+  for (const facing of [-1, 1] as const) for (const attack of [null, "light", "medium", "heavy"] as const) {
+    const sample: PitFighterState = { ...fighter, x: 0, y: 0, facing, crouching: false, phase: "active",
+      action: attack ? { kind: "attack", attack, frame: 0, connected: false } : null };
+    const bounds = getPitFighterPresentationBounds(sample, 0);
+    left = Math.min(left, bounds.left); right = Math.max(right, bounds.right);
+    top = Math.min(top, bounds.top); bottom = Math.max(bottom, bounds.bottom);
+  }
+  const bounds = { left, right, top, bottom };
+  fixedFighterBounds.set(key, bounds);
+  return bounds;
+}
+
+function fixedPresentationZoom(state: PitCombatState): number {
+  const arena = PIT_ARENAS[state.arenaId];
+  const bounds = state.fighters.map(fixedAppearanceBounds);
+  const left = Math.min(0, ...bounds.map(box => arena.leftWall + box.left - FIXED_VISUAL_MARGIN));
+  const right = Math.max(arena.width, ...bounds.map(box => arena.rightWall + box.right + FIXED_VISUAL_MARGIN));
+  const top = Math.min(0, ...bounds.map(box => arena.groundY - FIXED_JUMP_RESERVE + box.top - FIXED_VISUAL_MARGIN));
+  const bottom = Math.max(arena.height, ...bounds.map(box => arena.groundY + box.bottom + FIXED_VISUAL_MARGIN));
+  return Math.min(FIXED_ZOOM,
+    arena.width / (2 * Math.max(arena.width / 2 - left, right - arena.width / 2)),
+    arena.height / (2 * Math.max(arena.height / 2 - top, bottom - arena.height / 2)));
+}
+
 const fitCenter = (center: number, span: number, low: number, high: number): number =>
   span >= high - low ? (low + high) / 2 : clamp(center, low + span / 2, high - span / 2);
 
@@ -104,11 +141,11 @@ export function targetPitPresentationCamera(
   const arena = PIT_ARENAS[state.arenaId];
   // A constant wider view reserves edge weapon tips and normal aerial motion;
   // it never tracks fighters, shakes, or zooms with attacks.
-  if (options.reducedMotion) return {
-    arenaId: state.arenaId, frame: state.frame, mode: "fixed",
-    centerX: arena.width / 2, centerY: arena.height / 2,
-    zoom: FIXED_ZOOM, targetZoom: FIXED_ZOOM,
-  };
+  if (options.reducedMotion) {
+    const zoom = fixedPresentationZoom(state);
+    return { arenaId: state.arenaId, frame: state.frame, mode: "fixed",
+      centerX: arena.width / 2, centerY: arena.height / 2, zoom, targetZoom: zoom };
+  }
   const bounds = getPitPresentationBounds(state);
   const left = bounds.left - SIDE_MARGIN, right = bounds.right + SIDE_MARGIN;
   const top = bounds.top - TOP_MARGIN;
@@ -174,6 +211,6 @@ export function applyPitPresentationCamera(
   context.translate(-camera.centerX, -camera.centerY);
 }
 export const PIT_CAMERA_LIMITS = {
-  minZoom: MIN_ZOOM, maxZoom: MAX_ZOOM, fixedZoom: FIXED_ZOOM,
+  minZoom: MIN_ZOOM, maxZoom: MAX_ZOOM, fixedZoom: FIXED_ZOOM, fixedJumpReserve: FIXED_JUMP_RESERVE,
   zoomDeadZone: ZOOM_DEAD_ZONE, centerDeadZone: CENTER_DEAD_ZONE,
 } as const;

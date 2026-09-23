@@ -1180,7 +1180,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       saveRef.current = loadedSave;
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
-      else if (loadedSave.youthTraining?.status === "active") { setScreen("youth-training"); setNewGamePhase(null); setHubLocation("homeworld"); }
+      else if (loadedSave.youthTraining && (loadedSave.youthTraining.status === "active" || loadedSave.youthTraining.checkpoint.phase.startsWith("desert-") && loadedSave.youthTraining.checkpoint.phase !== "desert-complete" || entry.location === "youth-training")) { setScreen("youth-training"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (loadedSave.prologue?.status === "completed" && (entry.location === "prologue" || entry.location === "youth-training")) { setScreen("homeworld"); setHubLocation("homeworld"); }
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
@@ -2109,7 +2109,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ["armory", "customization", "training", "medbay", "pit"].includes(service)) {
       const training = saveRef.current.youthTraining;
       setToast(training?.status === "completed"
-        ? "Formation et premier réveil accomplis. La lame est acquise et le biomask reste conservé pour la sortie. La quête du désert et le PIT de jeunesse restent à venir ; les installations des chasseurs autonomes restent fermées."
+        ? "Formation et premier réveil accomplis. La lame est acquise et le biomask reste conservé pour la sortie. Le maître ouvre la reconnaissance accompagnée du désert. Le PIT de jeunesse reste à venir ; les installations des chasseurs autonomes restent fermées."
         : training
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
@@ -3106,17 +3106,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     >
       <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
 
-      {screen === "youth-training" && hydrated && save.youthTraining && <section className="screen panel-screen" inert={settingsOpen} data-youth-campaign>
-        <div className="screen-safe">
-          <div className="physical-deck-toolbar"><button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button></div>
+      {screen === "youth-training" && hydrated && save.youthTraining && <section inert={settingsOpen} data-youth-campaign>
           <Suspense fallback={<DeferredGameScreen />}>
             <YouthTrainingScreen key={save.createdAt} checkpoint={save.youthTraining.checkpoint}
               bindings={save.settings.controlBindings} externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
               persistenceError={nurseryPersistenceError} soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}
               masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
-              onCheckpoint={checkpointYouth} onProgress={progressYouth} onExit={returnToMainMenu} onReturnToCity={returnFromYouthTraining} />
+              onOpenSettings={() => setSettingsOpen(true)} onCheckpoint={checkpointYouth} onProgress={progressYouth} onExit={returnToMainMenu} onReturnToCity={returnFromYouthTraining} />
           </Suspense>
-        </div>
       </section>}
 
       {screen === "prologue" && hydrated && save.prologue && <section className="screen panel-screen" inert={settingsOpen} data-nursery-campaign>

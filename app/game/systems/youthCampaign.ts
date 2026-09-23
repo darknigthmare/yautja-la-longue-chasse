@@ -37,7 +37,7 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
   }
   const equipment = equipmentFor(checkpoint, receipts);
   if (!record(value.equipment) || value.equipment.wristblade !== equipment.wristblade || value.equipment.biomask !== equipment.biomask || value.equipment.accent !== equipment.accent) return null;
-  const complete = checkpoint.phase === "morning";
+  const complete = YOUTH_PHASES.indexOf(checkpoint.phase) >= YOUTH_PHASES.indexOf("morning");
   if ((value.status === "completed") !== complete || (complete ? !iso(value.completedAt) || Date.parse(value.completedAt) < Date.parse(value.startedAt) : value.completedAt !== null)) return null;
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
@@ -88,11 +88,12 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   if (supplied.some(item => !item || !receipts.some(receipt => same(item, receipt))) || new Set(supplied.map(item => item?.id)).size !== supplied.length) return null;
   const fresh = receipts.filter(receipt => !progress.receipts.some(previous => previous.id === receipt.id));
   if (fresh.some(receipt => !supplied.some(item => same(item, receipt)))) return null;
-  if (progress.status === "completed" && !same(checkpoint, progress.checkpoint)) return null;
+  if (previous.desert && (!checkpoint.desert || checkpoint.desert.clues < previous.desert.clues || previous.desert.ravineCleared && !checkpoint.desert.ravineCleared)) return null;
+  if (previous.phase === "desert-complete" && !same(checkpoint, previous)) return null;
   const training = earned(receipts, "youth-camp-duel");
   const chronicle = training ? recordChronicleEvidence(save.prologue!.chronicle, { id: "training-completed", sourceId: "chronicle.training.completed" }) : null;
   if (chronicle && !chronicle.accepted) return null;
-  const completedAt = checkpoint.phase === "morning" ? progress.completedAt ?? now : null;
+  const completedAt = YOUTH_PHASES.indexOf(checkpoint.phase) >= YOUTH_PHASES.indexOf("morning") ? progress.completedAt ?? now : null;
   const youthTraining: YouthCampaignProgress = { ...progress, status: completedAt ? "completed" : "active", checkpoint, receipts, equipment: equipmentFor(checkpoint, receipts), completedAt };
   if (!normalizeYouthCampaign(youthTraining)) return null;
   const playedSeconds = Math.max(0, Math.floor(checkpoint.tick / 60) - Math.floor(progress.checkpoint.tick / 60));
@@ -105,7 +106,9 @@ export function withYouthCheckpoint(save: SaveGame, state: YouthState): SaveGame
 export function withYouthProgress(save: SaveGame, receipts: readonly YouthReceipt[], state: YouthState, now = new Date().toISOString()): SaveGame | null { return advance(save, receipts, state, now); }
 export function youthCampaignObjective(progress: YouthCampaignProgress | null): string {
   if (!progress) return "Le maître t’attend : entre dans le dojo depuis son dialogue pour commencer les exercices.";
-  if (progress.status === "completed") return "Premier réveil accompli. La sortie du désert du lendemain reste à construire ; aucun départ ni rite de chasse n’a été accordé.";
+  if (progress.checkpoint.phase === "desert-complete") return "La reconnaissance accompagnée du désert est rapportée et le groupe est revenu au camp. Le PIT de jeunesse et la véritable chasse restent à venir ; aucun rite ni rang supplémentaire n’est accordé.";
+  if (progress.checkpoint.phase.startsWith("desert-")) return "Rejoins le maître pour reprendre la sortie du désert à son dernier point sûr : observation, passage de basalte et retour accompagné.";
+  if (progress.status === "completed") return "Premier réveil accompli. Rejoins le maître pour partir en reconnaissance accompagnée dans le désert. Aucun départ ne se déclenche sans ton choix.";
   const phase = progress.checkpoint.phase;
   if (phase.startsWith("dojo") || phase === "blade-award") return "Reprends les exercices du dojo avec le maître. La première lame attend la réussite de tous les gestes.";
   if (phase === "armory") return "Rejoins l’armurier dans la formation pour recevoir ton premier biomask et choisir la teinte de son lien.";

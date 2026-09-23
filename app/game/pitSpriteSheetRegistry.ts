@@ -12879,5 +12879,515 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 495,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "ahab-masked-idle-guard-left-v49",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "ahab-masked-idle-guard-left-v49",
+          "src": "/game/sprites/v49/pit/ahab/ahab-masked-idle-guard-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-idle-guard-left-v49",
+              "rect": [
+                0,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                468,
+                503
+              ],
+              "durationTicks": 45
+            },
+            {
+              "pageId": "ahab-masked-idle-guard-left-v49",
+              "rect": [
+                768,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                468,
+                503
+              ],
+              "durationTicks": 45
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-idle-guard-left-v49",
+              "rect": [
+                0,
+                512,
+                768,
+                512
+              ],
+              "pivot": [
+                486.5,
+                483
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "ahab-masked-idle-guard-left-v49",
+              "rect": [
+                768,
+                512,
+                768,
+                512
+              ],
+              "pivot": [
+                486.5,
+                483
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "ahab-masked-idle-guard-left-v49",
+        "rect": [
+          0,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          87,
+          7,
+          628,
+          498
+        ]
+      },
+      {
+        "pageId": "ahab-masked-idle-guard-left-v49",
+        "rect": [
+          768,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          855,
+          3,
+          655,
+          502
+        ]
+      },
+      {
+        "pageId": "ahab-masked-idle-guard-left-v49",
+        "rect": [
+          0,
+          512,
+          768,
+          512
+        ],
+        "visibleRect": [
+          29,
+          542,
+          697,
+          454
+        ]
+      },
+      {
+        "pageId": "ahab-masked-idle-guard-left-v49",
+        "rect": [
+          768,
+          512,
+          768,
+          512
+        ],
+        "visibleRect": [
+          797,
+          545,
+          711,
+          453
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 477,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "ahab-masked-light-right-v49",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "ahab-masked-light-right-v49",
+          "src": "/game/sprites/v49/pit/ahab/ahab-masked-light-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-right-v49",
+              "rect": [
+                0,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                252.5,
+                489
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-right-v49",
+              "rect": [
+                768,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                267.5,
+                488
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-right-v49",
+              "rect": [
+                0,
+                512,
+                858,
+                512
+              ],
+              "pivot": [
+                281.5,
+                482
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "ahab-masked-light-right-v49",
+              "rect": [
+                858,
+                512,
+                678,
+                512
+              ],
+              "pivot": [
+                197,
+                483
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "ahab-masked-light-right-v49",
+        "rect": [
+          0,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          64,
+          9,
+          563,
+          483
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-right-v49",
+        "rect": [
+          768,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          816,
+          15,
+          707,
+          476
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-right-v49",
+        "rect": [
+          0,
+          512,
+          858,
+          512
+        ],
+        "visibleRect": [
+          56,
+          529,
+          795,
+          468
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-right-v49",
+        "rect": [
+          858,
+          512,
+          678,
+          512
+        ],
+        "visibleRect": [
+          867,
+          522,
+          625,
+          475
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 391,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "ahab-masked-light-left-v49",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "ahab-masked-light-left-v49",
+          "src": "/game/sprites/v49/pit/ahab/ahab-masked-light-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-left-v49",
+              "rect": [
+                0,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                478.5,
+                480
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-left-v49",
+              "rect": [
+                768,
+                0,
+                768,
+                512
+              ],
+              "pivot": [
+                484.5,
+                475
+              ],
+              "durationTicks": 3
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-light-left-v49",
+              "rect": [
+                0,
+                512,
+                768,
+                512
+              ],
+              "pivot": [
+                524.5,
+                445
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "ahab-masked-light-left-v49",
+              "rect": [
+                768,
+                512,
+                768,
+                512
+              ],
+              "pivot": [
+                491.5,
+                453
+              ],
+              "durationTicks": 6
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "ahab-masked-light-left-v49",
+        "rect": [
+          0,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          207,
+          87,
+          472,
+          394
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-left-v49",
+        "rect": [
+          768,
+          0,
+          768,
+          512
+        ],
+        "visibleRect": [
+          837,
+          94,
+          617,
+          384
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-left-v49",
+        "rect": [
+          0,
+          512,
+          768,
+          512
+        ],
+        "visibleRect": [
+          38,
+          602,
+          715,
+          358
+        ]
+      },
+      {
+        "pageId": "ahab-masked-light-left-v49",
+        "rect": [
+          768,
+          512,
+          768,
+          512
+        ],
+        "visibleRect": [
+          969,
+          581,
+          503,
+          386
+        ]
+      }
+    ]
   }
 ];

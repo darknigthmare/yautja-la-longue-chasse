@@ -218,7 +218,7 @@ function snapshotWorking(storage: ArchiveStorage): { archive: CompleteArchive; r
 function checkpoint(archive: CompleteArchive, kind: "manual" | "auto", index: number, location: CampaignResumeLocation): Checkpoint {
   const hasActiveHunt = !!archive.attachments.activeHunt;
   const resumeLocation = archive.campaign.prologue?.status === "active" ? "prologue"
-    : archive.campaign.youthTraining?.status === "active" ? "youth-training"
+    : (archive.campaign.youthTraining?.status === "active" || archive.campaign.youthTraining?.checkpoint.phase.startsWith("desert-") && archive.campaign.youthTraining.checkpoint.phase !== "desert-complete") ? "youth-training"
     : archive.campaign.prologue?.status === "completed" && location === "youth-training" ? "homeworld"
     : archive.campaign.prologue?.status === "completed" && (location === "prologue" || location === "new-game") ? "homeworld"
     : hasActiveHunt ? "mission" : location === "mission" || location === "prologue" ? "deck" : location;

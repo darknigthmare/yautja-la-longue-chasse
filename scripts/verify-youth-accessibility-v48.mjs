@@ -14,6 +14,13 @@ await fs.mkdir(out,{recursive:true});const checks=[],errors=[];
 const browser=await chromium.launch({channel:"chrome",headless:true});
 async function start(page){page.setDefaultTimeout(45000);page.on("pageerror",e=>errors.push(e.message));await page.goto(base,{waitUntil:"networkidle",timeout:120000});await page.evaluate(entries=>{localStorage.clear();for(const[k,v]of Object.entries(entries))localStorage.setItem(k,v);},storage);await page.reload({waitUntil:"networkidle"});await page.getByRole("button",{name:/^Continuer/}).click();await page.locator("[data-youth-training]").waitFor();}
 const info=page=>page.locator("[data-youth-training] canvas[data-youth-stage]").evaluate(n=>({tick:Number(n.dataset.youthTick),x:Number(n.dataset.youthPositions.split(",")[0]),paused:n.dataset.youthPaused,phase:n.dataset.youthPhase,assets:n.dataset.youthAssets}));
+async function viewportLayout(page) {
+ const layout=await page.evaluate(()=>{const screen=document.querySelector("[data-youth-immersive]"),canvas=document.querySelector("canvas[data-youth-stage]");const plain=rect=>({x:rect.x,y:rect.y,width:rect.width,height:rect.height});return{screen:plain(screen.getBoundingClientRect()),canvas:plain(canvas.getBoundingClientRect()),width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,externalToolbar:document.querySelectorAll("[data-youth-campaign] .physical-deck-toolbar").length};});
+ assert(Math.abs(layout.screen.x)<1&&Math.abs(layout.screen.y)<1);assert(Math.abs(layout.screen.width-layout.width)<1&&Math.abs(layout.screen.height-layout.height)<1);
+ assert(layout.scrollWidth<=layout.width&&layout.scrollHeight<=layout.height+1,"The playable screen must not become a scrolling page");
+ assert(Math.abs(layout.canvas.width/layout.canvas.height-16/9)<.01,"Authored actor proportions stay 16:9");assert.equal(layout.externalToolbar,0);
+ return layout;
+}
 let page;
 try{
  page=await browser.newPage({viewport:{width:1280,height:900}});let blocked=true;
@@ -22,22 +29,31 @@ try{
  const failed=await info(page);await page.waitForTimeout(300);assert.equal((await info(page)).tick,failed.tick);assert.equal(failed.assets,"false");assert.equal(await page.getByRole("meter").count(),0,"Dojo has no duel meters");
  blocked=false;await page.getByRole("button",{name:"Réessayer le chargement",exact:true}).click();await page.waitForFunction(()=>document.querySelector("[data-youth-training] canvas[data-youth-stage]")?.dataset.youthAssets==="true");
  const canvas=page.locator("[data-youth-training] canvas[data-youth-stage]");assert(await canvas.evaluate(n=>document.activeElement===n));
+ const desktopLayout=await viewportLayout(page);checks.push({name:"youth-full-viewport-hud",layout:desktopLayout,externalPageChrome:false});
  checks.push({name:"missing-png-blocks-training-and-retry-focuses-canvas",expected404:failSrc,clockFrozen:true});
  await canvas.focus();await page.keyboard.press("Tab");await page.getByRole("dialog",{name:"Formation en pause"}).waitFor();
  const paused=await info(page);await page.waitForTimeout(200);assert.equal((await info(page)).tick,paused.tick);
  const buttons=page.getByRole("dialog",{name:"Formation en pause"}).getByRole("button");await buttons.last().focus();await page.keyboard.press("Tab");assert(await buttons.first().evaluate(n=>document.activeElement===n));
+ await page.getByRole("button",{name:"Réglages et sauvegardes",exact:true}).click();
+ const settings=page.getByRole("dialog",{name:"Réglages du biomask",exact:true});await settings.waitFor();
+ const settingsTick=(await info(page)).tick;await page.waitForTimeout(200);assert.equal((await info(page)).tick,settingsTick);
+ const target=settings.getByRole("button",{name:"Fermer",exact:true});await target.scrollIntoViewIfNeeded();
+ assert(await target.evaluate(button=>{const r=button.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest("button")===button;}),"Settings must render above immersive scene");
+ await target.click();await settings.waitFor({state:"hidden"});await page.getByRole("dialog",{name:"Formation en pause"}).waitFor();
+ checks.push({name:"settings-over-immersive-scene",simulationFrozen:true,closeReachableAboveCanvas:true,returnsToPausedScene:true});
  await page.keyboard.press("Escape");await page.getByRole("dialog",{name:"Formation en pause"}).waitFor({state:"hidden"});assert(await canvas.evaluate(n=>document.activeElement===n));
  await page.screenshot({path:path.join(out,"desktop-training.png"),fullPage:true});checks.push({name:"tab-pauses-live-training-and-modal-traps-focus",escapeResumes:true});await page.close();
  page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:"reduce"});await start(page);
  await page.waitForFunction(()=>document.querySelector("[data-youth-training] canvas[data-youth-stage]")?.dataset.youthAssets==="true");
  assert.equal(await page.locator("[data-youth-training]").getAttribute("data-reduced-motion"),"true");
+ const mobileLayout=await viewportLayout(page);assert(mobileLayout.canvas.width>=389);
  const touch=page.locator("[data-youth-action]");assert.equal(await touch.count(),8);assert((await touch.evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().height))).every(h=>h>=44));
  const left=page.locator('[data-youth-action="left"]');await left.scrollIntoViewIfNeeded();const box=await left.boundingBox(),before=await info(page);const cdp=await page.context().newCDPSession(page);
  await cdp.send("Input.dispatchTouchEvent",{type:"touchStart",touchPoints:[{x:box.x+box.width/2,y:box.y+box.height/2}]});
  await page.waitForFunction(x=>Number(document.querySelector("[data-youth-training] canvas[data-youth-stage]").dataset.youthPositions.split(",")[0])<x-20,before.x);
  await cdp.send("Input.dispatchTouchEvent",{type:"touchEnd",touchPoints:[]});await page.waitForTimeout(80);const stopped=await info(page);await page.waitForTimeout(150);assert.equal((await info(page)).x,stopped.x);
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:path.join(out,"touch-390.png"),fullPage:true});checks.push({name:"mobile-touch-and-reduced-motion",buttons:8,minimum44px:true,realTouchMovesAndReleases:true,noOverflow390:true});
- await page.setViewportSize({width:640,height:280});await page.getByRole("button",{name:"Pause et commandes",exact:true}).click();await page.getByRole("dialog",{name:"Formation en pause"}).waitFor();
+ await page.setViewportSize({width:640,height:280});await page.waitForTimeout(100);const landscapeLayout=await viewportLayout(page);await page.screenshot({path:path.join(out,"landscape-live-hud.png"),fullPage:true});checks.push({name:"portrait-landscape-hud",portrait:mobileLayout,landscape:landscapeLayout});await page.getByRole("button",{name:"Pause et commandes",exact:true}).click();await page.getByRole("dialog",{name:"Formation en pause"}).waitFor();
  const resume=page.getByRole("button",{name:"Reprendre la formation",exact:true});await resume.scrollIntoViewIfNeeded();assert(await resume.isVisible());assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await page.screenshot({path:path.join(out,"landscape-pause.png"),fullPage:true});await page.setViewportSize({width:320,height:740});await page.addStyleTag({content:"[data-youth-training] button,[data-youth-training] p,[data-youth-training] span{font-size:200% !important}"});await resume.scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));checks.push({name:"landscape-and-large-text-pause",viewport640x280:true,text200Percent320:true,reachableResume:true});await page.close();
  page=await browser.newPage({viewport:{width:1280,height:900}});await page.addInitScript(()=>{window.__youthPad={connected:true,mapping:"standard",axes:[1,0,0,0],buttons:Array.from({length:17},()=>({pressed:false,value:0}))};Object.defineProperty(navigator,"getGamepads",{configurable:true,value:()=>window.__youthPad.connected?[window.__youthPad]:[]});});

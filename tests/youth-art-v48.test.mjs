@@ -23,3 +23,14 @@ test("all eight modular props are separate nonempty transparent atlas cuts",asyn
  }
  assert.equal(Object.keys(api.YOUTH_ART_MANIFEST.props).length,8);
 });
+
+test("V49 desert uses three separate nonempty clue crops and a calibrated original backdrop",async()=>{
+ const manifest=api.YOUTH_ART_MANIFEST,props=manifest.desertProps;assert.deepEqual(Object.keys(props),["footprints","branch","stone"]);
+ assert.equal(manifest.scenes.desert.groundY,727);const scene=await sharp(path.join("public",manifest.scenes.desert.src)).metadata();assert.equal(scene.width,1672);assert.equal(scene.height,941);
+ const rectangles=new Set();for(const [id,sprite]of Object.entries(props)){
+  rectangles.add(sprite.rect.join(","));const[left,top,width,height]=sprite.rect,file=path.join("public",sprite.src);assert.equal((await sharp(file).metadata()).hasAlpha,true);
+  const{data,info}=await sharp(file).extract({left,top,width,height}).ensureAlpha().raw().toBuffer({resolveWithObject:true});let visible=0;for(let index=info.channels-1;index<data.length;index+=info.channels)if(data[index]>16)visible++;
+  assert(visible>100,id+" is an actual independent bitmap clue");
+ }
+ assert.equal(rectangles.size,3);
+});

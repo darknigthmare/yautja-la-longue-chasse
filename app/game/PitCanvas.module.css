@@ -427,3 +427,140 @@
 @media (pointer: coarse) {
   .matchHeader > button[data-pit-camera-control] { min-height: 44px; min-width: 44px; }
 }
+
+
+/* V49: the fight owns the viewport. Menus float above it; they never reserve
+   rows of page layout or shrink the authored 16:9 fighting surface. */
+.matchRoot, .matchRoot:has(.touchRows), .matchRoot:has(.trainingTools) {
+  --pit-stage-width: 100vw;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  isolation: isolate;
+  background: #020504;
+}
+.matchRoot .arenaShell, .matchRoot:has(.touchRows) .arenaShell {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  max-width: none;
+  margin: 0;
+  aspect-ratio: auto;
+  outline: none;
+}
+.matchRoot .canvas { width: 100%; height: 100%; object-fit: contain; aspect-ratio: auto; }
+.matchRoot .hud {
+  position: absolute;
+  inset: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) auto max(10px, env(safe-area-inset-left));
+  z-index: 5;
+  gap: clamp(12px, 3vw, 44px);
+  padding: 8px 12px 18px;
+  background: linear-gradient(180deg, #020605f5, #020605a8 68%, transparent);
+  pointer-events: none;
+}
+.matchRoot .fighterHud > div:first-child { align-items: center; font-size: clamp(.7rem, 1.2vw, 1rem); text-shadow: 0 2px 3px #000; }
+.matchRoot .fighterHud > div:first-child strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.matchRoot .healthTrack { height: 20px; box-shadow: 0 2px 8px #0009; }
+.matchRoot .resourceRow { font-size: .6rem; }
+.matchRoot .resourceTrack { height: 8px; }
+.matchRoot .fighterStatuses { min-height: 0; margin-top: 5px; }
+.matchRoot .timer strong { font-size: clamp(1.7rem, 3.7vw, 2.8rem); text-shadow: 0 2px 8px #000; }
+.matchRoot .roundPips { margin-top: 6px; }
+.combatActions {
+  position: absolute;
+  z-index: 110;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: max(12px, env(safe-area-inset-left));
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  pointer-events: none;
+}
+.combatActions > button { min-height: 44px; min-width: 44px; background: #020907ce; pointer-events: auto; }
+.stageLabel { margin-right: auto; padding: 6px 9px; max-width: 70%; color: #eee1c4; background: #020605bc; font-size: .65rem; text-shadow: 0 1px 3px #000; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.matchRoot .announcement { top: max(112px, calc(env(safe-area-inset-top) + 100px)); max-width: calc(100% - 24px); text-align: center; }
+.matchRoot .throwTechStatus { position: absolute; z-index: 9; top: max(150px, calc(env(safe-area-inset-top) + 132px)); left: 50%; width: min(520px, calc(100% - 24px)); transform: translateX(-50%); padding: 8px 12px; text-align: center; }
+.matchRoot .throwTechStatus[hidden] { display: none; }
+.matchRoot .frameDataPanel { top: max(145px, calc(env(safe-area-inset-top) + 128px)); }
+.matchRoot .replayNoticeMatch { position: absolute; z-index: 12; top: 155px; left: 10px; right: 10px; padding: 5px 10px; max-height: 22vh; overflow: auto; background: #261b0dea; }
+.matchRoot .resultOverlay { z-index: 25; max-height: 100%; overflow: auto; align-content: safe center; padding: max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom)); }
+.matchRoot .touchRows { position: absolute; inset: auto max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left)); z-index: 10; display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: end; gap: 10px; padding: 0; border: none; background: transparent; }
+.matchRoot .touchGroup { max-width: none; flex-wrap: nowrap; gap: 4px; }
+.matchRoot .touchButton { min-width: 44px; min-height: 44px; padding: 4px; background: #020907c9; border-color: #b2dac679; font-size: .62rem; }
+.matchRoot .touchButtonWide { min-width: 46px; }
+.matchRoot:has(.touchRows) .combatActions { bottom: auto; top: max(96px, calc(env(safe-area-inset-top) + 86px)); }
+.matchRoot .touchGroupPlayerTwo { position: absolute; bottom: 52px; left: 0; right: 0; justify-content: center; }
+.matchRoot .trainingTools { position: absolute; z-index: 20; top: 108px; right: max(10px,env(safe-area-inset-right)); bottom: 68px; width: min(360px,calc(100% - 20px)); height: auto; max-height: none; padding: 12px; align-content: start; border: 1px solid #789b8b; background: #05100ff0; overflow: auto; }
+.labHeading { display: grid; gap: 8px; }
+.labHeading strong { color: #8fffe1; font-size: .65rem; }
+.matchRoot .trainingOptions { grid-template-columns: minmax(0,1fr); }
+.pausePanel { position: absolute; z-index: 150; inset: 0; display: grid; align-items: safe center; justify-items: center; padding: max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left)); overflow: auto; overscroll-behavior: contain; background: #010504d9; backdrop-filter: blur(8px); }
+.pausePanel[hidden] { display: none; }
+.pauseCard { width: min(860px,100%); min-width: 0; padding: clamp(16px,3vw,30px); border: 1px solid #a8874e; background: linear-gradient(135deg,#142019f2,#060b09fa); box-shadow: 0 16px 80px #000b; }
+.pauseCard h2 { margin: 8px 0; color: var(--pit-gold); font-size: clamp(2rem,5vw,4rem); letter-spacing: .15em; }
+.pauseCard > p { margin: 8px 0 14px; color: #d3dcd2; font-size: .86rem; line-height: 1.6; }
+.pausePrimary { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.pausePrimary .startButton { margin: 0; }
+.pauseCard .matchHeader { display: flex; flex-wrap: wrap; padding: 14px 0; gap: 10px; background: transparent; border-block: 1px solid #728e663b; }
+.pauseCard .matchHeader > span { order: -1; flex-basis: 100%; text-align: left; color: #f1dbb2; font-size: .75rem; }
+.pauseCard .utilityButton, .pauseCard .exitButton, .pauseCard summary { min-height: 44px; font-size: .75rem; }
+.pauseCard .helpPanel { display: grid; grid-template-columns: 1fr; padding: 12px 0; max-height: none; overflow: visible; background: transparent; border: none; }
+.pauseCard .helpPanel span { font-size: .82rem; line-height: 1.65; }
+.pauseCard .helpPanel strong { font-size: .75rem; }
+.pauseCard .descentMatchStatus { flex-wrap: wrap; padding: 12px 0; font-size: .7rem; white-space: normal; background: transparent; }
+.pauseCard .journeyStatus { padding: 12px; font-size: .78rem; line-height: 1.6; }
+.presentationDetails { margin: 14px 0; border-block: 1px solid #728e663b; }
+.presentationDetails summary { display: flex; align-items: center; cursor: pointer; color: #cae5d5; }
+.pauseCard .bitmapArtStatus { width: 100%; margin: 10px 0; font-size: .78rem; }
+.pauseCard .bitmapArtStatus > small { font-size: .76rem; }
+.pauseCard > .pauseHint { color: #9eb9aa; font-size: .75rem; }
+.matchRoot button:focus-visible, .pauseCard summary:focus-visible { outline: 3px solid #a4ffe4; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .matchRoot .hud { inset-inline: 3px; gap: 8px; padding: 5px 5px 12px; grid-template-columns: minmax(0,1fr) 55px minmax(0,1fr); }
+  .matchRoot .fighterHud > div:first-child strong { font-size: .68rem; }
+  .matchRoot .healthTrack { height: 14px; margin-top: 4px; padding: 2px; }
+  .matchRoot .resourceRow { gap: 4px; font-size: .46rem; margin-top: 4px; }
+  .matchRoot .resourceTrack { height: 6px; }
+  .matchRoot .fighterStatuses span { font-size: .42rem; }
+  .matchRoot .timer small { font-size: .42rem; }
+  .matchRoot .announcement { top: max(94px, calc(env(safe-area-inset-top) + 84px)); font-size: .58rem; }
+  .matchRoot:has(.touchRows) .announcement { top: max(146px, calc(env(safe-area-inset-top) + 134px)); }
+  .matchRoot .frameDataPanel { top: 158px; }
+  .stageLabel { max-width: 62%; font-size: .52rem; }
+  .matchRoot .touchButton { font-size: .5rem; }
+  .matchRoot .trainingTools { top: 86px; bottom: 60px; }
+}
+@media (orientation: portrait) and (max-width: 760px) {
+  .matchRoot .canvas { object-position: center 35%; }
+  .matchRoot .touchRows { align-items: end; }
+  .matchRoot .touchGroup { display: grid; grid-template-columns: repeat(2,minmax(44px,1fr)); }
+  .matchRoot .touchGroup:nth-child(2) { grid-template-columns: repeat(4,minmax(44px,1fr)); }
+  .matchRoot .touchGroupPlayerTwo { display: grid; bottom: 105px; grid-template-columns: repeat(6,minmax(44px,1fr)); }
+  .matchRoot .touchButton { min-width: 44px; }
+  .matchRoot .resultOverlay h3 { font-size: 1.6rem; }
+  .matchRoot .throwTechStatus { top: 192px; font-size: .7rem; }
+  .pausePanel { padding: max(8px,env(safe-area-inset-top)) 8px max(8px,env(safe-area-inset-bottom)); }
+}
+@media (max-height: 450px) and (orientation: landscape) {
+  .matchRoot .hud { top: max(4px,env(safe-area-inset-top)); padding-top: 2px; }
+  .matchRoot .fighterStatuses { margin-top: 2px; }
+  .matchRoot .roundPips { margin-top: 3px; }
+  .matchRoot .announcement, .matchRoot:has(.touchRows) .announcement { top: 86px; font-size: .52rem; }
+  .matchRoot:has(.touchRows) .combatActions { top: 82px; }
+  .matchRoot .combatActions .stageLabel { display: none; }
+  .matchRoot .combatActions { left: auto; }
+  .matchRoot .throwTechStatus { top: 125px; font-size: .62rem; }
+  .matchRoot .trainingTools { top: 76px; bottom: 58px; }
+  .matchRoot .frameDataPanel { top: 124px; width: min(470px,calc(100% - 20px)); }
+  .pausePanel { align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) { .matchRoot .resourceTrack i { transition: none; } }

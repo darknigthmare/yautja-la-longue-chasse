@@ -10,10 +10,19 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
   const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab");
-  assert.deepEqual(ahab.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.drawnCells, clip.ready]), [
-    ["ahab-avec-casque-0c8ceb1c95", "idle", "right", 2, true],
-    ["ahab-avec-casque-0c8ceb1c95", "high-guard", "right", 2, true],
-  ], "Only the reviewed masked/right drawings may count as Ahab coverage");
+  const ahabExpected = ["idle", "high-guard", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"];
+  assert.deepEqual(ahab.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
+    ahabExpected.flatMap(id => ["right", "left"].map(facing => ["ahab-avec-casque-0c8ceb1c95", id, facing, true].join(":"))).sort(),
+    "Only reviewed masked native idle, guard and complete light attacks count as Ahab coverage");
+  for (const facing of ["right", "left"]) {
+    assert.deepEqual(ahab.filter(clip => clip.facing === facing && clip.clipId.startsWith("pit.stand.light.")).map(clip => clip.drawnCells), [1, 1, 2]);
+    assert.equal(ahab.find(clip => clip.facing === facing && clip.clipId === "idle").drawnCells, 2);
+    assert.equal(ahab.find(clip => clip.facing === facing && clip.clipId === "high-guard").drawnCells, 2);
+  }
+  const newAhabPages = report.pages.filter(page => page.fighterId === "user-ahab" && page.src.includes("/v49/"));
+  assert.equal(newAhabPages.length, 3);
+  assert.equal(newAhabPages.reduce((count, page) => count + page.distinctDrawings, 0), 12);
+  assert(newAhabPages.every(page => page.sourceHasAlpha && page.keyedPixels === 0 && page.cells.every(cell => cell.borderPixels === 0)));
   const ahabPage = report.pages.find(page => page.fighterId === "user-ahab");
   assert.equal(ahabPage.sourceSha256, "bfe5e04dd61416c611de0d304b7ac74383437075240ed0c766edae3ada5364c7");
   assert.equal(ahabPage.alphaNoisePixels, 36579);

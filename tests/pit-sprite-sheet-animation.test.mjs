@@ -272,3 +272,59 @@ test("an uncovered motion holds the first reviewed idle drawing without animatin
     assert.deepEqual(fighter, before);
   } finally { env.restore(); }
 });
+
+
+test("historical blockstun prefers its same-facing guard over an unrelated idle fallback", async () => {
+  const env = browser();
+  try {
+    const bank = await load(["jungle-hunter"], [definition([clip(), clip("high-guard", "right", [frame(1), frame(2)], false)])]);
+    const fighter = { ...createPitCombatState().fighters[0], phase: "blockstun", guard: "high", stunFrames: 9 };
+    const held = resolveHold(bank, fighter);
+    assert.equal(held.frame.clip.id, "high-guard"); assert.equal(held.frame.frameIndex, 1);
+    assert.equal(held.frame.frame.rect[0], 16);
+    const low = resolveHold(bank, { ...fighter, guard: "low", crouching: true });
+    assert.equal(low.frame.clip.id, "idle", "missing low guard must not borrow a high guard");
+    assert.equal(bank.readyClipCount, 2);
+  } finally { env.restore(); }
+});
+
+
+test("reviewed alpha bounds tighten only camera framing, never the draw crop or pivot", async () => {
+  const entry = definition();
+  entry.visibleFrameBounds = [0, 1].map(index => ({ pageId: "body", rect: frame(index).rect, visibleRect: [index * 8 + 2, 2, 3, 3] }));
+  const fighter = createPitCombatState().fighters[0]; Object.assign(fighter, { x: 200, y: 10 });
+  const scale = PIT_FIGHTERS["jungle-hunter"].bodyHeight / 6;
+  const bounds = animationBounds(fighter, 400, [entry]);
+  const expected = { x: 200 - 2 * scale, y: 390 - 5 * scale, width: 3 * scale, height: 3 * scale };
+  for (const key of Object.keys(expected)) assert.ok(Math.abs(bounds[key] - expected[key]) < 1e-8, key);
+  const env = browser();
+  try {
+    const bank = await load(["jungle-hunter"], [entry]), ctx = recordingContext();
+    assert.equal(bank.readyClipCount, 1);
+    assert.equal(draw(ctx, bank, fighter, 400, { simulationFrame: 0 }), true);
+    assert.deepEqual(ctx.calls.find(call => call[0] === "drawImage").slice(2),
+      [0, 0, 8, 8, 200 - 4 * scale, 390 - 7 * scale, 8 * scale, 8 * scale]);
+  } finally { env.restore(); }
+});
+
+test("camera-only bounds reject foreign cells, duplicates and invalid containment before loading", async () => {
+  const valid = { pageId: "body", rect: [0, 0, 8, 8], visibleRect: [2, 2, 3, 3] };
+  const invalid = [
+    [{ ...valid, visibleRect: [-1, 2, 3, 3] }],
+    [{ ...valid, visibleRect: [6, 2, 3, 3] }],
+    [{ ...valid, visibleRect: [2, 2, 0, 3] }],
+    [{ ...valid, visibleRect: [2.5, 2, 3, 3] }],
+    [{ ...valid, pageId: "foreign" }],
+    [{ ...valid, rect: [16, 0, 8, 8] }],
+    [valid, valid],
+  ];
+  const env = browser();
+  try {
+    for (const visibleFrameBounds of invalid) {
+      const entry = definition(undefined, { visibleFrameBounds });
+      assert.equal((await load(["jungle-hunter"], [entry])).readyClipCount, 0);
+      assert.equal(animationBounds(createPitCombatState().fighters[0], 400, [entry]), null);
+    }
+    assert.deepEqual(env.requests, []);
+  } finally { env.restore(); }
+});

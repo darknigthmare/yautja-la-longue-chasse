@@ -95,7 +95,10 @@ export function getPitCombatBitmapVisualBounds(
 }
 
 export interface PitCombatBitmapArtBank {
+  /** Legacy identity summaries; appearance-specific data owns mirror matches. */
   readonly variants?: ReadonlyMap<PitFighterId, string | null>;
+  readonly selectionKeys?: ReadonlySet<string>;
+  readonly appearanceImages?: ReadonlyMap<string, HTMLImageElement>;
   readonly spriteSheets?: PitSpriteSheetAnimationBank;
   readonly images: ReadonlyMap<PitFighterId, HTMLImageElement>;
   readonly requestedIds: ReadonlySet<PitFighterId>;
@@ -116,10 +119,21 @@ export function getPitCombatBitmapFighterArtStatus(
   return getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId);
 }
 
+const bitmapSelectionKey = (id: PitFighterId, variantId?: string | null): string =>
+  JSON.stringify([id, normalizePitUserVariant(id, variantId) ?? null]);
+
+function selectedBitmap(bank: PitCombatBitmapArtBank, id: PitFighterId, variantId?: string | null): HTMLImageElement | undefined {
+  return bank.appearanceImages
+    ? bank.appearanceImages.get(bitmapSelectionKey(id, variantId))
+    : bank.images.get(id);
+}
+
 /** A completed bank for the same identity but another costume is still stale. */
 export function isPitCombatBitmapSelectionRequested(bank: PitCombatBitmapArtBank | null, id: PitFighterId, variantId?: string | null): boolean {
-  return Boolean(bank && !bank.cancelled && bank.requestedIds.has(id) &&
-    (bank.variants?.get(id) ?? null) === (normalizePitUserVariant(id, variantId) ?? null));
+  if (!bank || bank.cancelled || !bank.requestedIds.has(id)) return false;
+  return bank.selectionKeys
+    ? bank.selectionKeys.has(bitmapSelectionKey(id, variantId))
+    : (bank.variants?.get(id) ?? null) === (normalizePitUserVariant(id, variantId) ?? null);
 }
 export function getPitCombatBitmapArtStatus(bank: PitCombatBitmapArtBank | null, id: PitFighterId, variantId?: string | null): PitCombatBitmapArtStatus {
   const definition = getPitCombatBitmapArtDefinition(id, variantId);
@@ -130,7 +144,7 @@ export function getPitCombatBitmapArtStatus(bank: PitCombatBitmapArtBank | null,
   if (bank?.cancelled && bank.requestedIds.has(id)) return "missing";
   if (!isPitCombatBitmapSelectionRequested(bank, id, variantId)) return "loading";
   if (!bank) return "loading";
-  const image = bank.images.get(id);
+  const image = selectedBitmap(bank, id, variantId);
   return !bank.cancelled && bank.readyIds.has(id) && image?.complete &&
     image.naturalWidth === definition.width && image.naturalHeight === definition.height
     ? "static-bitmap" : "missing";
@@ -166,7 +180,13 @@ export async function loadPitCombatBitmapArt(
   options: { signal?: AbortSignal; timeoutMs?: number; spriteSheetRegistry?: readonly PitSpriteSheetAnimationDefinition[]; variants?: readonly (string | null)[] } = {},
 ): Promise<PitCombatBitmapArtBank> {
   const requestedIds = new Set(ids);
-  const variants = new Map(ids.map((id, index) => [id, normalizePitUserVariant(id, options.variants?.[index]) ?? null] as const));
+  const selectedVariants = ids.map((id, index) => normalizePitUserVariant(id, options.variants?.[index]) ?? null);
+  const selections = new Map(ids.map((id, index) => [bitmapSelectionKey(id, selectedVariants[index]),
+    { id, variantId: selectedVariants[index] }] as const));
+  const selectionKeys = new Set(selections.keys());
+  const variants = new Map<PitFighterId, string | null>();
+  for (const { id, variantId } of selections.values()) if (!variants.has(id)) variants.set(id, variantId);
+  const appearanceImages = new Map<string, HTMLImageElement>();
   const readyIds = new Set<PitFighterId>();
   const failedIds = new Set<PitFighterId>();
   const images = new Map<PitFighterId, HTMLImageElement>();
@@ -174,15 +194,16 @@ export async function loadPitCombatBitmapArt(
   const { signal } = options;
   const timeoutMs = Number.isFinite(options.timeoutMs)
     ? Math.max(1, Math.min(30_000, Math.floor(options.timeoutMs!))) : 12_000;
-  const bank = (): PitCombatBitmapArtBank => ({ images, variants, requestedIds, readyIds, failedIds, spriteSheets, cancelled: Boolean(signal?.aborted) });
+  const bank = (): PitCombatBitmapArtBank => ({ images, variants, selectionKeys, appearanceImages,
+    requestedIds, readyIds, failedIds, spriteSheets, cancelled: Boolean(signal?.aborted) });
   if (signal?.aborted || typeof Image === "undefined" || typeof document === "undefined") {
     requestedIds.forEach(id => failedIds.add(id));
     return bank();
   }
   const animationLoad = loadPitSpriteSheetAnimations(ids, options.spriteSheetRegistry ?? PIT_SPRITE_SHEET_REGISTRY,
-    { signal, timeoutMs, variants: ids.map(id => variants.get(id) ?? null) });
-  await Promise.all([...requestedIds].map(async id => {
-    const definition = getPitCombatBitmapArtDefinition(id, variants.get(id));
+    { signal, timeoutMs, variants: selectedVariants });
+  await Promise.all([...selections.entries()].map(async ([selection, { id, variantId }]) => {
+    const definition = getPitCombatBitmapArtDefinition(id, variantId);
     if (!definition) { failedIds.add(id); return; }
     const image = await new Promise<HTMLImageElement | null>(resolve => {
       let candidate: HTMLImageElement;
@@ -209,12 +230,17 @@ export async function loadPitCombatBitmapArt(
       if (signal?.aborted) { finish(false); return; }
       try { candidate.src = definition.src; } catch { finish(false); }
     });
-    if (image && !signal?.aborted) { images.set(id, image); readyIds.add(id); }
+    if (image && !signal?.aborted) {
+      appearanceImages.set(selection, image);
+      // Keep the first selected appearance deterministic even if decoding races.
+      if (variantId === variants.get(id)) images.set(id, image);
+      readyIds.add(id);
+    }
     else failedIds.add(id);
   }));
   spriteSheets = await animationLoad;
   if (signal?.aborted) {
-    images.clear(); readyIds.clear();
+    images.clear(); appearanceImages.clear(); readyIds.clear();
     requestedIds.forEach(id => failedIds.add(id));
   }
   return bank();
@@ -248,7 +274,7 @@ export function drawPitCombatBitmapFighter(
       context.shadowColor = options.accent ?? "#eaffed";
       context.shadowBlur = 4 / scale;
     }
-    context.drawImage(bank.images.get(fighter.definitionId)!, -art.pivot[0], -art.pivot[1], art.width, art.height);
+    context.drawImage(selectedBitmap(bank, fighter.definitionId, fighter.variantId)!, -art.pivot[0], -art.pivot[1], art.width, art.height);
     return true;
   } finally { context.restore(); }
 }

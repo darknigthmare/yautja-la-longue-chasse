@@ -1,3 +1,4 @@
+import { returnPitSelection, openPitLaboratory } from "./pit-selection-browser-helpers.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -76,8 +77,7 @@ try {
     await page.getByRole("combobox", { name: "Adversaire", exact: true }).selectOption("berserker");
     await page.getByRole("button", { name: /^ENTRER DANS L’ARÈNE/ }).click();
     await page.locator('canvas[data-pit-arena-art-status="bitmap"]').waitFor({ timeout: 60000 });
-    const open = page.getByRole("button", { name: "Laboratoire", exact: true });
-    if (await open.count()) await open.click();
+    await openPitLaboratory(page);
     const lab = page.getByRole("complementary", { name: "Laboratoire d’entraînement", exact: true });
     const summary = lab.locator("summary", { hasText: "Exercices guidés" });
     if (await summary.locator("..").getAttribute("open") === null) await summary.click();
@@ -132,7 +132,7 @@ try {
   await briefing.waitFor({ state: "detached" });
   await pad(false);
   report.checks.push({ name: "gamepad-rearm-retry-cancel", heldARejected: true, freshAStarts: true, bReturnsToFreeTraining: true });
-  await page.getByRole("button", { name: /^Quitter ·/ }).click();
+  await returnPitSelection(page);
 
   assert.equal(await storage(), before);
   assert.deepEqual(await page.evaluate(() => window.__briefingWrites), []);
@@ -171,7 +171,7 @@ try {
   await briefing.getByRole("button", { name: "Commencer l’exercice", exact: true }).tap();
   await page.waitForFunction(() => Number(document.querySelector("[data-pit-frame]")?.dataset.pitFrame) > 0);
   report.checks.push({ name: "failed-art-mobile-touch", explicitWarning: true, explicitTouchStart: true, noOverflowAt390: true });
-  await page.getByRole("button", { name: /^Quitter ·/ }).click();
+  await returnPitSelection(page);
   failCity = false;
   for (const fighterId of ["theta", "machiko-noguchi"]) {
     lab = await enter(fighterId);
@@ -184,7 +184,7 @@ try {
     assert.equal(await briefing.getByRole("button", { name: "Commencer l’exercice", exact: true }).isEnabled(), true);
     await page.screenshot({ path: path.join(output, fighterId + "-atlas-ready.png"), fullPage: true });
     report.checks.push({ name: "atlas-only-briefing", fighterId, status, canBegin: true, frame: 0 });
-    await page.getByRole("button", { name: /^Quitter ·/ }).click();
+    await returnPitSelection(page);
   }
   assert.equal(await storage(), before);
   assert.deepEqual(await page.evaluate(() => window.__briefingWrites), []);
