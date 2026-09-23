@@ -1,0 +1,1939 @@
+{
+  "schemaVersion": 1,
+  "release": "V50",
+  "reviewedAt": "2026-09-23T18:53:58.431Z",
+  "status": "art-and-local-runtime-qa-passed-with-declared-adaptations",
+  "scope": "Six supplied masked appearances only; partial movement coverage, not full animation libraries or complete walk cycles.",
+  "generationProvider": "OpenAI built-in imagegen",
+  "exactPrompts": "docs/v50-openai-prompts.json",
+  "rules": {
+    "nativeFacings": true,
+    "algorithmicMirroring": false,
+    "sourcePngMutation": false,
+    "manualMetadataCrops": true,
+    "noiseFloorMaximum": 2,
+    "syntheticMotionFromStaticPose": false,
+    "physicsChanged": false,
+    "canonicalOneToOneCertified": false
+  },
+  "summary": {
+    "acceptedPhysicalPng": 6,
+    "acceptedLogicalPages": 12,
+    "sourceDrawings": 48,
+    "usedDistinctDrawings": 46,
+    "reservedDrawings": 2,
+    "orientedClips": 38,
+    "newWalkClips": 0
+  },
+  "accepted": [
+    {
+      "fighterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "atlasId": "ahab-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-25f26fdb-d1b6-4e86-9efa-1bf9ec0ff2d2.png",
+      "src": "/game/sprites/v50/pit/ahab/ahab-masked-air-movement-v50.png",
+      "sha256": "00571f43e7a9efb7608848420448abcec09e2d2fa948b4c30f5280cd69c78a40",
+      "byteLength": 2202897,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+      "referenceSha256": "0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted six drawings only: ground crouch, extended ascent and tucked air, independently drawn right/left. Elongated animal chest trophy restored, two-handed spear contacts and gross limb anatomy coherent. Grounded landing row reserved because the engine has no landing state. Cannon visibility and small armour details vary; not a source-exact reproduction.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1094195,
+        "alpha1": 36399,
+        "alpha2": 12297,
+        "alpha3To127": 35755,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 48696,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        325,
+        789,
+        1114,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        530,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 6,
+      "orientedClips": 8,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            530,
+            325
+          ],
+          "pivotLocal": [
+            222.75,
+            305
+          ],
+          "pivotAbsolute": [
+            222.75,
+            305
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            222.75,
+            305
+          ],
+          "referenceBodyHeight": 420,
+          "visibleRect": [
+            54,
+            56,
+            460,
+            250
+          ],
+          "visiblePixelCount": 50723,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            325,
+            530,
+            464
+          ],
+          "pivotLocal": [
+            278,
+            440
+          ],
+          "pivotAbsolute": [
+            278,
+            765
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            278,
+            535
+          ],
+          "referenceBodyHeight": 420,
+          "visibleRect": [
+            67,
+            345,
+            445,
+            422
+          ],
+          "visiblePixelCount": 63464,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 1
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            789,
+            530,
+            325
+          ],
+          "pivotLocal": [
+            254,
+            417
+          ],
+          "pivotAbsolute": [
+            254,
+            1206
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            254,
+            976
+          ],
+          "referenceBodyHeight": 420,
+          "visibleRect": [
+            66,
+            808,
+            447,
+            297
+          ],
+          "visiblePixelCount": 53297,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -102
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            530,
+            0,
+            494,
+            325
+          ],
+          "pivotLocal": [
+            277.75,
+            305
+          ],
+          "pivotAbsolute": [
+            807.75,
+            305
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            807.75,
+            305
+          ],
+          "referenceBodyHeight": 417,
+          "visibleRect": [
+            552,
+            57,
+            424,
+            249
+          ],
+          "visiblePixelCount": 45922,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            530,
+            325,
+            494,
+            464
+          ],
+          "pivotLocal": [
+            226,
+            443
+          ],
+          "pivotAbsolute": [
+            756,
+            768
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            756,
+            538
+          ],
+          "referenceBodyHeight": 417,
+          "visibleRect": [
+            545,
+            352,
+            413,
+            417
+          ],
+          "visiblePixelCount": 59528,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            530,
+            789,
+            494,
+            325
+          ],
+          "pivotLocal": [
+            242,
+            419
+          ],
+          "pivotAbsolute": [
+            772,
+            1208
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            772,
+            978
+          ],
+          "referenceBodyHeight": 417,
+          "visibleRect": [
+            544,
+            808,
+            426,
+            295
+          ],
+          "visiblePixelCount": 53924,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -106
+        }
+      ],
+      "reservedRows": [
+        {
+          "row": 3,
+          "facings": [
+            "right",
+            "left"
+          ],
+          "reason": "Grounded landing poses have no matching engine landing state. Never used in the air or counted as runtime coverage."
+        }
+      ],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    },
+    {
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "atlasId": "wolf-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-05ce6079-fad7-41f5-af90-3732e9099d46.png",
+      "src": "/game/sprites/v50/pit/wolf/wolf-masked-air-movement-v50.png",
+      "sha256": "6d7ae67ddff95c03bc0378165f8b83858276d50c34b784ccd6ba19cd1bcd7a75",
+      "byteLength": 2048454,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba.png",
+      "referenceSha256": "4261aca172f71b88b4c212b7988262f38df3816c3e721de4cd51e7e1e2f1d6ba",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted four distinct airborne poses per native orientation. Pistol and wrist-blade handling coherent. Armour/mask simplified, small orange chest trophy less clear; two dorsal handles differ from the mainly single visible shaft in the supplied reference. Project adaptation only.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1170074,
+        "alpha1": 38604,
+        "alpha2": 14152,
+        "alpha3To127": 48248,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 52756,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        429,
+        754,
+        1078,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        512,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 8,
+      "orientedClips": 6,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            429
+          ],
+          "pivotLocal": [
+            308,
+            425
+          ],
+          "pivotAbsolute": [
+            308,
+            425
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            308,
+            178
+          ],
+          "referenceBodyHeight": 403,
+          "visibleRect": [
+            160,
+            16,
+            303,
+            410
+          ],
+          "visiblePixelCount": 42561,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            429,
+            512,
+            325
+          ],
+          "pivotLocal": [
+            294,
+            442
+          ],
+          "pivotAbsolute": [
+            294,
+            871
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            294,
+            624
+          ],
+          "referenceBodyHeight": 403,
+          "visibleRect": [
+            106,
+            432,
+            362,
+            310
+          ],
+          "visiblePixelCount": 44886,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -130
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            754,
+            512,
+            324
+          ],
+          "pivotLocal": [
+            256,
+            432
+          ],
+          "pivotAbsolute": [
+            256,
+            1186
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            256,
+            939
+          ],
+          "referenceBodyHeight": 403,
+          "visibleRect": [
+            116,
+            760,
+            323,
+            310
+          ],
+          "visiblePixelCount": 41075,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -117
+        },
+        {
+          "facing": "right",
+          "row": 3,
+          "rect": [
+            0,
+            1078,
+            512,
+            458
+          ],
+          "pivotLocal": [
+            277,
+            433
+          ],
+          "pivotAbsolute": [
+            277,
+            1511
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            277,
+            1264
+          ],
+          "referenceBodyHeight": 403,
+          "visibleRect": [
+            100,
+            1088,
+            354,
+            419
+          ],
+          "visiblePixelCount": 46538,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -5
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            512,
+            0,
+            512,
+            429
+          ],
+          "pivotLocal": [
+            204,
+            424
+          ],
+          "pivotAbsolute": [
+            716,
+            424
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            716,
+            178
+          ],
+          "referenceBodyHeight": 402,
+          "visibleRect": [
+            562,
+            18,
+            309,
+            407
+          ],
+          "visiblePixelCount": 43211,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            512,
+            429,
+            512,
+            325
+          ],
+          "pivotLocal": [
+            218,
+            441
+          ],
+          "pivotAbsolute": [
+            730,
+            870
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            730,
+            624
+          ],
+          "referenceBodyHeight": 402,
+          "visibleRect": [
+            557,
+            433,
+            359,
+            315
+          ],
+          "visiblePixelCount": 45024,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -123
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            512,
+            754,
+            512,
+            324
+          ],
+          "pivotLocal": [
+            256,
+            431
+          ],
+          "pivotAbsolute": [
+            768,
+            1185
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            768,
+            939
+          ],
+          "referenceBodyHeight": 402,
+          "visibleRect": [
+            585,
+            760,
+            325,
+            310
+          ],
+          "visiblePixelCount": 40740,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -116
+        },
+        {
+          "facing": "left",
+          "row": 3,
+          "rect": [
+            512,
+            1078,
+            512,
+            458
+          ],
+          "pivotLocal": [
+            235,
+            432
+          ],
+          "pivotAbsolute": [
+            747,
+            1510
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            747,
+            1264
+          ],
+          "referenceBodyHeight": 402,
+          "visibleRect": [
+            569,
+            1086,
+            358,
+            431
+          ],
+          "visiblePixelCount": 45999,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 6
+        }
+      ],
+      "reservedRows": [],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    },
+    {
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "atlasId": "falconer-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-b27c9cff-1ce4-4142-bf37-60411e064c26.png",
+      "src": "/game/sprites/v50/pit/falconer/falconer-masked-air-movement-v50.png",
+      "sha256": "0064386e7a4eb821a9a5fefbc4d4e2be901721c82e29e8a5cd21734c6d0b7670",
+      "byteLength": 1847563,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d.png",
+      "referenceSha256": "f5618ed36296630ec9061ebd115a5971e2c02a656412808a7e5bc0d6c8a7b96d",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted four distinct airborne poses per native orientation. No obvious gross limb anomaly. Wrist blade is shorter than the supplied long jagged blade, torso more exposed and mask more beaked. These are declared project adaptations, not 1:1 canon.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1223093,
+        "alpha1": 36916,
+        "alpha2": 11809,
+        "alpha3To127": 34164,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 48725,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        414,
+        756,
+        1060,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        512,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 8,
+      "orientedClips": 6,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            414
+          ],
+          "pivotLocal": [
+            294,
+            401
+          ],
+          "pivotAbsolute": [
+            294,
+            401
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            294,
+            177
+          ],
+          "referenceBodyHeight": 389,
+          "visibleRect": [
+            120,
+            12,
+            255,
+            390
+          ],
+          "visiblePixelCount": 35183,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            414,
+            512,
+            342
+          ],
+          "pivotLocal": [
+            263,
+            399
+          ],
+          "pivotAbsolute": [
+            263,
+            813
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            263,
+            589
+          ],
+          "referenceBodyHeight": 389,
+          "visibleRect": [
+            83,
+            425,
+            306,
+            319
+          ],
+          "visiblePixelCount": 36808,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -70
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            756,
+            512,
+            304
+          ],
+          "pivotLocal": [
+            231,
+            382
+          ],
+          "pivotAbsolute": [
+            231,
+            1138
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            231,
+            914
+          ],
+          "referenceBodyHeight": 389,
+          "visibleRect": [
+            193,
+            768,
+            232,
+            278
+          ],
+          "visiblePixelCount": 33452,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -93
+        },
+        {
+          "facing": "right",
+          "row": 3,
+          "rect": [
+            0,
+            1060,
+            512,
+            476
+          ],
+          "pivotLocal": [
+            279,
+            413
+          ],
+          "pivotAbsolute": [
+            279,
+            1473
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            279,
+            1249
+          ],
+          "referenceBodyHeight": 389,
+          "visibleRect": [
+            82,
+            1075,
+            381,
+            421
+          ],
+          "visiblePixelCount": 45446,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 22
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            512,
+            0,
+            512,
+            414
+          ],
+          "pivotLocal": [
+            218,
+            402
+          ],
+          "pivotAbsolute": [
+            730,
+            402
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            730,
+            177
+          ],
+          "referenceBodyHeight": 390,
+          "visibleRect": [
+            650,
+            12,
+            255,
+            391
+          ],
+          "visiblePixelCount": 34950,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            512,
+            414,
+            512,
+            342
+          ],
+          "pivotLocal": [
+            249,
+            400
+          ],
+          "pivotAbsolute": [
+            761,
+            814
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            761,
+            589
+          ],
+          "referenceBodyHeight": 390,
+          "visibleRect": [
+            635,
+            426,
+            307,
+            317
+          ],
+          "visiblePixelCount": 36552,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -72
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            512,
+            756,
+            512,
+            304
+          ],
+          "pivotLocal": [
+            281,
+            383
+          ],
+          "pivotAbsolute": [
+            793,
+            1139
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            793,
+            914
+          ],
+          "referenceBodyHeight": 390,
+          "visibleRect": [
+            600,
+            769,
+            231,
+            275
+          ],
+          "visiblePixelCount": 33485,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -96
+        },
+        {
+          "facing": "left",
+          "row": 3,
+          "rect": [
+            512,
+            1060,
+            512,
+            476
+          ],
+          "pivotLocal": [
+            233,
+            414
+          ],
+          "pivotAbsolute": [
+            745,
+            1474
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            745,
+            1249
+          ],
+          "referenceBodyHeight": 390,
+          "visibleRect": [
+            561,
+            1075,
+            382,
+            422
+          ],
+          "visiblePixelCount": 45170,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 22
+        }
+      ],
+      "reservedRows": [],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    },
+    {
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "atlasId": "scarface-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-3d41f181-252c-4057-8758-b4e507dc6204.png",
+      "src": "/game/sprites/v50/pit/scarface/scarface-masked-air-movement-v50.png",
+      "sha256": "0d8f3cadac5043b21a6cc0ce32d255f7346e3761194f1104f684457b35abaa2a",
+      "byteLength": 1862533,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "referenceSha256": "bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted corrected curved C blade with short perpendicular grip, replacing the rejected axial two-crescent pole weapon. Source large double arc remains simplified to a single curved arc. Two-handed grip in early poses and one-handed descent with the other arm balancing are coherent. Silver/red armour and skull ornaments remain recognizable; not certified 1:1.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1235232,
+        "alpha1": 37043,
+        "alpha2": 13238,
+        "alpha3To127": 39091,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 50281,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        393,
+        713,
+        1053,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        512,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 8,
+      "orientedClips": 6,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            393
+          ],
+          "pivotLocal": [
+            279,
+            386
+          ],
+          "pivotAbsolute": [
+            279,
+            386
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            279,
+            181
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            178,
+            3,
+            209,
+            384
+          ],
+          "visiblePixelCount": 32239,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            393,
+            512,
+            320
+          ],
+          "pivotLocal": [
+            281,
+            397
+          ],
+          "pivotAbsolute": [
+            281,
+            790
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            281,
+            585
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            127,
+            400,
+            303,
+            291
+          ],
+          "visiblePixelCount": 36238,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -100
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            713,
+            512,
+            340
+          ],
+          "pivotLocal": [
+            263,
+            422
+          ],
+          "pivotAbsolute": [
+            263,
+            1135
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            263,
+            930
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            184,
+            736,
+            232,
+            306
+          ],
+          "visiblePixelCount": 34223,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -94
+        },
+        {
+          "facing": "right",
+          "row": 3,
+          "rect": [
+            0,
+            1053,
+            512,
+            483
+          ],
+          "pivotLocal": [
+            252,
+            421
+          ],
+          "pivotAbsolute": [
+            252,
+            1474
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            252,
+            1269
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            113,
+            1065,
+            297,
+            420
+          ],
+          "visiblePixelCount": 41037,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 10
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            512,
+            0,
+            512,
+            393
+          ],
+          "pivotLocal": [
+            232,
+            386
+          ],
+          "pivotAbsolute": [
+            744,
+            386
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            744,
+            181
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            637,
+            2,
+            209,
+            385
+          ],
+          "visiblePixelCount": 32054,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            512,
+            393,
+            512,
+            320
+          ],
+          "pivotLocal": [
+            231,
+            395
+          ],
+          "pivotAbsolute": [
+            743,
+            788
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            743,
+            583
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            596,
+            400,
+            302,
+            291
+          ],
+          "visiblePixelCount": 36015,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -98
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            512,
+            713,
+            512,
+            340
+          ],
+          "pivotLocal": [
+            256,
+            422
+          ],
+          "pivotAbsolute": [
+            768,
+            1135
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            768,
+            930
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            608,
+            737,
+            232,
+            304
+          ],
+          "visiblePixelCount": 34444,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -95
+        },
+        {
+          "facing": "left",
+          "row": 3,
+          "rect": [
+            512,
+            1053,
+            512,
+            483
+          ],
+          "pivotLocal": [
+            261,
+            421
+          ],
+          "pivotAbsolute": [
+            773,
+            1474
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            773,
+            1269
+          ],
+          "referenceBodyHeight": 338,
+          "visibleRect": [
+            615,
+            1065,
+            300,
+            422
+          ],
+          "visiblePixelCount": 41101,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 12
+        }
+      ],
+      "reservedRows": [],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    },
+    {
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "atlasId": "enforcer-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-835199e2-fd37-44e3-9c8a-ba1677a1b6e5.png",
+      "src": "/game/sprites/v50/pit/enforcer/enforcer-masked-air-movement-v50.png",
+      "sha256": "530ee628dfa51bd3b7e84708a666da4853e7857e8b1a02904db89e25829a9c6e",
+      "byteLength": 1978356,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494.png",
+      "referenceSha256": "ca164d8925d0c7ed7e5d598d93512d4c39c528c6ad0ec7216b55353a933a4494",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted four distinct airborne poses per native orientation. Purple skin, silver finned mask and long spear remain coherent, with two-handed contact. Chest armour more extensive than reference; cannon occluded in right views and visible in left views. Project adaptation only.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1213002,
+        "alpha1": 34506,
+        "alpha2": 11647,
+        "alpha3To127": 35912,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 46153,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        442,
+        768,
+        1076,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        512,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 8,
+      "orientedClips": 6,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            442
+          ],
+          "pivotLocal": [
+            282,
+            431
+          ],
+          "pivotAbsolute": [
+            282,
+            431
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            282,
+            192
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            75,
+            3,
+            398,
+            429
+          ],
+          "visiblePixelCount": 37725,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            442,
+            512,
+            326
+          ],
+          "pivotLocal": [
+            243,
+            421
+          ],
+          "pivotAbsolute": [
+            243,
+            863
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            243,
+            624
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            72,
+            451,
+            413,
+            295
+          ],
+          "visiblePixelCount": 38926,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -118
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            768,
+            512,
+            308
+          ],
+          "pivotLocal": [
+            244,
+            409
+          ],
+          "pivotAbsolute": [
+            244,
+            1177
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            244,
+            938
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            97,
+            785,
+            385,
+            281
+          ],
+          "visiblePixelCount": 36991,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -112
+        },
+        {
+          "facing": "right",
+          "row": 3,
+          "rect": [
+            0,
+            1076,
+            512,
+            460
+          ],
+          "pivotLocal": [
+            253,
+            422
+          ],
+          "pivotAbsolute": [
+            253,
+            1498
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            253,
+            1259
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            75,
+            1089,
+            414,
+            422
+          ],
+          "visiblePixelCount": 42877,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 12
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            512,
+            0,
+            512,
+            442
+          ],
+          "pivotLocal": [
+            230,
+            432
+          ],
+          "pivotAbsolute": [
+            742,
+            432
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            742,
+            192
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            553,
+            4,
+            397,
+            429
+          ],
+          "visiblePixelCount": 38328,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            512,
+            442,
+            512,
+            326
+          ],
+          "pivotLocal": [
+            269,
+            422
+          ],
+          "pivotAbsolute": [
+            781,
+            864
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            781,
+            624
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            544,
+            454,
+            404,
+            295
+          ],
+          "visiblePixelCount": 37258,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -116
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            512,
+            768,
+            512,
+            308
+          ],
+          "pivotLocal": [
+            268,
+            410
+          ],
+          "pivotAbsolute": [
+            780,
+            1178
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            780,
+            938
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            555,
+            786,
+            373,
+            280
+          ],
+          "visiblePixelCount": 37808,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -113
+        },
+        {
+          "facing": "left",
+          "row": 3,
+          "rect": [
+            512,
+            1076,
+            512,
+            460
+          ],
+          "pivotLocal": [
+            259,
+            423
+          ],
+          "pivotAbsolute": [
+            771,
+            1499
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            771,
+            1259
+          ],
+          "referenceBodyHeight": 428,
+          "visibleRect": [
+            535,
+            1090,
+            412,
+            430
+          ],
+          "visiblePixelCount": 43796,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 20
+        }
+      ],
+      "reservedRows": [],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    },
+    {
+      "fighterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "atlasId": "celtic-masked-air-movement-v50",
+      "status": "accepted-as-project-adaptation",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-62fdc4fb-6090-40ec-8bb6-096f9df2c1be.png",
+      "src": "/game/sprites/v50/pit/celtic/celtic-masked-air-movement-v50.png",
+      "sha256": "4e9b31531848f68c33cc4bcc22e191b059ef936258d7f5c3f67127d1ce5dbba2",
+      "byteLength": 2027171,
+      "width": 1024,
+      "height": 1536,
+      "sourceHasAlpha": true,
+      "sourcePixelsModified": false,
+      "referenceSrc": "/game/sprites/v44/user-hunters/0764ed4b539cc40c2c3dc91cfca405f0e01ac7a528a3d3412da18552dbbccb4e.png",
+      "referenceSha256": "0764ed4b539cc40c2c3dc91cfca405f0e01ac7a528a3d3412da18552dbbccb4e",
+      "referenceConditioning": "Text description following visual review of supplied reference. Direct file attachment failed in the image tool; not image-conditioned 1:1.",
+      "visualReview": "Accepted four distinct airborne poses per native orientation. Grilled mask, silver plates, chest trophies and wrist blades remain coherent. Shoulder cannon is not visible in these generated views; armour proportions are adapted. No gross extra-limb or weapon-contact defect identified at review; fine digits and 1:1 fidelity not certified.",
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "alpha0": 1180833,
+        "alpha1": 31759,
+        "alpha2": 11430,
+        "alpha3To127": 36572,
+        "runtimeNoiseFloor": 2,
+        "noisePixelsClearedInMemory": 43189,
+        "sourceAlphaUnchanged": true
+      },
+      "rowCuts": [
+        0,
+        430,
+        774,
+        1088,
+        1536
+      ],
+      "columnCuts": [
+        0,
+        512,
+        1024
+      ],
+      "logicalPages": 2,
+      "sourceDrawings": 8,
+      "usedDistinctDrawings": 8,
+      "orientedClips": 6,
+      "frames": [
+        {
+          "facing": "right",
+          "row": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            430
+          ],
+          "pivotLocal": [
+            326,
+            423
+          ],
+          "pivotAbsolute": [
+            326,
+            423
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            326,
+            180
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            173,
+            10,
+            198,
+            414
+          ],
+          "visiblePixelCount": 39547,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 0
+        },
+        {
+          "facing": "right",
+          "row": 1,
+          "rect": [
+            0,
+            430,
+            512,
+            344
+          ],
+          "pivotLocal": [
+            300,
+            428
+          ],
+          "pivotAbsolute": [
+            300,
+            858
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            300,
+            615
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            102,
+            438,
+            308,
+            323
+          ],
+          "visiblePixelCount": 47349,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -98
+        },
+        {
+          "facing": "right",
+          "row": 2,
+          "rect": [
+            0,
+            774,
+            512,
+            314
+          ],
+          "pivotLocal": [
+            248,
+            407
+          ],
+          "pivotAbsolute": [
+            248,
+            1181
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            248,
+            938
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            174,
+            789,
+            252,
+            283
+          ],
+          "visiblePixelCount": 38088,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -110
+        },
+        {
+          "facing": "right",
+          "row": 3,
+          "rect": [
+            0,
+            1088,
+            512,
+            448
+          ],
+          "pivotLocal": [
+            279,
+            419
+          ],
+          "pivotAbsolute": [
+            279,
+            1507
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            279,
+            1264
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            105,
+            1105,
+            326,
+            416
+          ],
+          "visiblePixelCount": 49516,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 13
+        },
+        {
+          "facing": "left",
+          "row": 0,
+          "rect": [
+            512,
+            0,
+            512,
+            430
+          ],
+          "pivotLocal": [
+            186,
+            423
+          ],
+          "pivotAbsolute": [
+            698,
+            423
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            698,
+            180
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            657,
+            9,
+            197,
+            414
+          ],
+          "visiblePixelCount": 39477,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -1
+        },
+        {
+          "facing": "left",
+          "row": 1,
+          "rect": [
+            512,
+            430,
+            512,
+            344
+          ],
+          "pivotLocal": [
+            216,
+            428
+          ],
+          "pivotAbsolute": [
+            728,
+            858
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            728,
+            615
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            616,
+            440,
+            307,
+            320
+          ],
+          "visiblePixelCount": 47669,
+          "borderAlphaMax": 0,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -99
+        },
+        {
+          "facing": "left",
+          "row": 2,
+          "rect": [
+            512,
+            774,
+            512,
+            314
+          ],
+          "pivotLocal": [
+            268,
+            407
+          ],
+          "pivotAbsolute": [
+            780,
+            1181
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            780,
+            938
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            599,
+            789,
+            254,
+            282
+          ],
+          "visiblePixelCount": 37821,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": -111
+        },
+        {
+          "facing": "left",
+          "row": 3,
+          "rect": [
+            512,
+            1088,
+            512,
+            448
+          ],
+          "pivotLocal": [
+            237,
+            419
+          ],
+          "pivotAbsolute": [
+            749,
+            1507
+          ],
+          "pelvisBeltAnchorAbsolute": [
+            749,
+            1264
+          ],
+          "referenceBodyHeight": 410,
+          "visibleRect": [
+            594,
+            1104,
+            327,
+            417
+          ],
+          "visiblePixelCount": 49375,
+          "borderAlphaMax": 1,
+          "borderPixelsAboveNoiseFloor": 0,
+          "visibleBottomOffsetFromVirtualBaseline": 13
+        }
+      ],
+      "reservedRows": [],
+      "calibrationCaveat": "Manually reviewed pelvis/belt landmarks, approximately four source pixels precision. Constant body reference per orientation and constant virtual leg length; no per-frame rescale. Crouch uses observed ground-contact midpoint. Folded air pivots can lie below the crop. Small drawn leg-length differences remain and require live ground-transition QA."
+    }
+  ],
+  "rejected": [
+    {
+      "file": "exec-0b057b19-118f-4483-b8fa-995d87865a80.png",
+      "fighterId": "user-ahab",
+      "reason": "Rejected walk: repeated leading-leg/contact poses instead of alternating gait, missing animal chest trophy, nominal crop edges clipped. Cannon-direction suspicion was retracted after close inspection and is not a rejection reason.",
+      "sha256": "56ebbbda573460251eb64d8b3248e6b2da856de4dffe1188f39db90b9d3824f1",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-0b057b19-118f-4483-b8fa-995d87865a80.png",
+      "acceptedDrawings": 0
+    },
+    {
+      "file": "exec-915a101c-7ff9-451b-a61c-54c5e88f962f.png",
+      "fighterId": "city-hunter",
+      "reason": "Rejected walk: repeated same contact and same high-knee poses, not a valid alternating walk cycle; nominal grid also cuts visible pixels.",
+      "sha256": "eddddb52f779c0b299cefcba1a9b3ccc3e14c272845c8b70047cbf3e58b2700d",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-915a101c-7ff9-451b-a61c-54c5e88f962f.png",
+      "acceptedDrawings": 0
+    },
+    {
+      "file": "exec-0b484399-2c42-46d3-bf1f-055e9884123a.png",
+      "fighterId": "scarface",
+      "reason": "Rejected weapon identity: long axial staff with two crescent heads instead of supplied large curved arc and short perpendicular handle. Superseded by accepted corrected sheet.",
+      "sha256": "745645293c63969664ef022e9e4b509b131ceec11c252ac5b7a57c120bfb3b75",
+      "sourceFile": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-0b484399-2c42-46d3-bf1f-055e9884123a.png",
+      "acceptedDrawings": 0
+    }
+  ],
+  "omitted": [
+    {
+      "fighterId": "city-hunter",
+      "reason": "Walk quality rejected; subsequent jump-generation request failed in the image tool. Replaced by Celtic in this batch; no City Hunter V50 delivery claimed."
+    }
+  ],
+  "runtimeMapping": {
+    "regular": {
+      "rise": "rows 0 then 1, non-looping",
+      "apex": "row 2 held",
+      "fall": "rows 2 then 3, non-looping"
+    },
+    "ahab": {
+      "crouch": "row 0 held",
+      "rise": "rows 1 then 2, non-looping",
+      "apex": "row 2 held",
+      "fall": "row 2 held",
+      "reserved": "row 3 grounded landing, no runtime clip"
+    }
+  },
+  "limitations": [
+    "No 1:1 fidelity certification; exact visual differences recorded per character.",
+    "No new walk, dash, landing, attack or full-library completion claimed.",
+    "Right and left are separate generated drawings, not transformed mirrored assets.",
+    "Apex physics state is brief; tucked drawing is also honestly reused at initial fall.",
+    "Fine digits are not individually certified; gross anatomy and weapon contact were visually reviewed.",
+    "Late-descent foot offsets and fallback costume scale require browser QA on the final build."
+  ],
+  "runtimeVerification": {
+    "checkedAt": "2026-09-23T19:01:01.985Z",
+    "tests": [
+      {
+        "file": "tests/pit-sprite-sheet-animation.test.mjs",
+        "passed": 18
+      },
+      {
+        "file": "tests/pit-sprite-sheet-production.test.mjs",
+        "passed": 1
+      },
+      {
+        "file": "tests/pit-air-movement-v50.test.mjs",
+        "passed": 12
+      }
+    ],
+    "productionReport": "outputs/qa-commercial-audit/v50/pit-sprite-production.json",
+    "productionTotals": {
+      "logicalPages": 98,
+      "physicalPng": 88,
+      "distinctDrawings": 627,
+      "readyClips": 315,
+      "animatedAppearances": 17
+    },
+    "browserStatus": "passed-release-12-real-input-jumps-with-2-ahab-crouches",
+    "browserRecipe": "scripts/verify-pit-air-movement-v50.mjs",
+    "heldPoseRule": "Single-frame crouch requires explicit heldPoseClips declaration, non-looping prepared one-drawing stance. Held apex/fall requires complete native-facing non-looping rise/apex/fall group, and a rising clip already proven to contain at least two distinct pixel drawings. No global relaxation for idle or walk.",
+    "browserReport": "outputs/qa-commercial-audit/v50/release-air-movement-browser-qa/report.json",
+    "visualReviewReport": "outputs/qa-commercial-audit/v50/final-air-movement-browser-qa/visual-review.json",
+    "browserCheckedAt": "2026-09-23T19:21:28.297Z",
+    "visualCapturesReviewed": 12,
+    "crouchVisualReviewReport": "outputs/qa-commercial-audit/v50/release-air-movement-browser-qa/crouch-visual-review.json",
+    "additionalCrouchCapturesReviewed": 2
+  }
+}

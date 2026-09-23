@@ -851,11 +851,11 @@ export function FighterCard({
       style={{ "--fighter": palette.primary } as React.CSSProperties}
       aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
       data-fighter-id={fighterId}
-      data-fighter-art={authoredPortrait ? "authored-idle-pose" : visibleArt?.kind ?? "mask-glyph"}
+      data-fighter-art={authoredPortrait ? "authored-idle-pose" : visibleArt?.kind ?? "unavailable"}
       data-fighter-variant={userVariant?.id ?? "default"}
     >
       <span className={styles.sideLabel}>{side}</span>
-      <div className={styles.fighterMedia}>
+      <div className={styles.fighterMedia} data-pit-fighter-media>
         {authoredPortrait ? <PitExtensionPortrait key={fighterId + side} fighterId={fighterId} facing={side === "DROITE" ? "left" : "right"}/> : visibleArt ? (
           <img
             key={visibleArt.src}
@@ -872,7 +872,7 @@ export function FighterCard({
             onError={() => setFailedArtSrc(visibleArt.src)}
           />
         ) : (
-          <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
+          <span className={styles.portraitUnavailable} role="status">Portrait indisponible</span>
         )}
         {!authoredPortrait && visibleArt && loadedArtSrc !== visibleArt.src && <span className={styles.portraitLoading} role="status">Chargement du portrait…</span>}
       </div>
@@ -886,7 +886,7 @@ export function FighterCard({
         <div><dt>PUISSANCE</dt><dd>{Math.round(fighter.power * 100)}</dd></div>
         <div><dt>MOBILITÉ</dt><dd>{Math.round(fighter.walkSpeed * 20)}</dd></div>
       </dl>
-      <details key={fighterId} className={styles.fighterProfile}>
+      <details key={fighterId} className={styles.fighterProfile} data-pit-fighter-profile>
         <summary aria-label={`Consulter le profil de ${fighter.name}`}>Profil du chasseur</summary>
         <p className={styles.fighterSource}>{profile.sourceWork}</p>
         <p>{profile.arcadeIntro}</p>
@@ -982,6 +982,7 @@ export default function PitCanvas({
   const [playbackReplay, setPlaybackReplay] = useState<PitReplay | null>(null);
   const [replayEnded, setReplayEnded] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [selectionOptionsOpen, setSelectionOptionsOpen] = useState(false);
   const [showTrainingTools, setShowTrainingTools] = useState(false);
   const [trainingSettings, setTrainingSettings] = useState(() => createPitTrainingSettings());
   const [trainingSequence, setTrainingSequence] = useState<PitTrainingSequence | null>(null);
@@ -1026,11 +1027,13 @@ export default function PitCanvas({
   const cameraRef = useRef<PitPresentationCamera | null>(null);
   const rootRef = useRef<HTMLElement>(null);
   const selectionFlowRef = useRef<PitSelectionFlowHandle>(null);
+  const selectionOptionsRef = useRef<HTMLDialogElement>(null);
+  const selectionOptionsTriggerRef = useRef<HTMLButtonElement>(null);
   const resultOverlayRef = useRef<HTMLDivElement>(null);
   const resultPrimaryRef = useRef<HTMLButtonElement>(null);
   const pressedKeysRef = useRef(new Set<string>());
   const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
-  const menuGamepadRef = useRef({ previous: Array.from({ length: 12 }, () => false), ready: false });
+  const menuGamepadRef = useRef({ previous: Array.from({ length: 13 }, () => false), ready: false });
   const combatGamepadReadyRef = useRef<[boolean, boolean]>([false, false]);
   const gamepadAssignmentsRef = useRef(createPitGamepadAssignments());
   const reportedMatchFrameRef = useRef<number | null>(null);
@@ -1110,6 +1113,9 @@ export default function PitCanvas({
   }, [trainingLesson]);
 
   const changeCombat = useCallback((next: PitCombatState | null) => {
+    // A launched fight or replay never keeps the selection modal in the top layer.
+    selectionOptionsRef.current?.close();
+    setSelectionOptionsOpen(false);
     combatRef.current = next;
     setCombat(next);
   }, []);
@@ -1137,6 +1143,28 @@ export default function PitCanvas({
     window.requestAnimationFrame(() => rootRef.current?.focus({ preventScroll: true }));
   }, []);
 
+  const onSelectionOptionsClosed = useCallback(() => {
+    setSelectionOptionsOpen(false);
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    if (!combatRef.current) selectionOptionsTriggerRef.current?.focus({ preventScroll: true });
+  }, [resetLiveInputs]);
+  const closeSelectionOptions = useCallback(() => {
+    selectionOptionsRef.current?.close();
+    setSelectionOptionsOpen(false);
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+  }, [resetLiveInputs]);
+  const openSelectionOptions = useCallback(() => {
+    const dialog = selectionOptionsRef.current;
+    if (combatRef.current || !dialog || dialog.open) return;
+    resetLiveInputs();
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
+    dialog.showModal();
+    setSelectionOptionsOpen(true);
+    dialog.querySelector<HTMLButtonElement>("[data-pit-options-close]")?.focus();
+  }, [resetLiveInputs]);
+
   const readAssignedGamepads = useCallback(() => {
     const previous = gamepadAssignmentsRef.current;
     const resolved = resolvePitGamepadAssignments(previous, navigator.getGamepads?.() ?? []);
@@ -1144,7 +1172,7 @@ export default function PitCanvas({
     for (const player of [0, 1] as const) {
       if (previous[player]?.revision !== resolved.assignments[player]?.revision) {
         combatGamepadReadyRef.current[player] = false;
-        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
+        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
       }
     }
     return resolved;
@@ -1158,7 +1186,7 @@ export default function PitCanvas({
     const onDisconnected = (event: GamepadEvent) => {
       gamepadAssignmentsRef.current = disconnectPitGamepadAssignment(gamepadAssignmentsRef.current, event.gamepad.index, event.gamepad.id);
       resetLiveInputs();
-      menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
+      menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
     };
     window.addEventListener("gamepaddisconnected", onDisconnected);
     return () => window.removeEventListener("gamepaddisconnected", onDisconnected);
@@ -1775,7 +1803,7 @@ export default function PitCanvas({
     setDescentResourceFeedback(null);
     resetLiveInputs();
     gamepadAssignmentsRef.current = createPitGamepadAssignments();
-    menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
+    menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
@@ -2054,6 +2082,27 @@ export default function PitCanvas({
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+      if (selectionOptionsRef.current?.open) {
+        // Keep Tab in the active game menu; native modal inertness alone can
+        // yield focus to the browser chrome at the last control.
+        if (event.key === "Tab") {
+          const controls = Array.from(selectionOptionsRef.current.querySelectorAll<HTMLElement>(
+            'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), summary, [tabindex="0"]',
+          )).filter(element => element.getClientRects().length > 0 && getComputedStyle(element).visibility !== "hidden");
+          const activeIndex = controls.indexOf(document.activeElement as HTMLElement);
+          if (controls.length && (activeIndex < 0 || (event.shiftKey ? activeIndex === 0 : activeIndex === controls.length - 1))) {
+            event.preventDefault();
+            controls[event.shiftKey ? controls.length - 1 : 0]?.focus();
+          }
+          return;
+        }
+        if (matchesControlAction("pit.pause", event, controlBindings)) {
+          event.preventDefault();
+          if (!event.repeat) closeSelectionOptions();
+        }
+        return;
+      }
       if (event.target instanceof HTMLElement && event.target.closest("input, select, textarea, [contenteditable=\"true\"]") && event.key !== "Escape") return;
       if (matchesControlAction("pit.pause", event, controlBindings)) {
         event.preventDefault();
@@ -2097,7 +2146,7 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [beginPreparedTrainingLesson, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef]);
+  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef]);
 
   const viewPhase = combat === null
     ? "selection"
@@ -2109,7 +2158,7 @@ export default function PitCanvas({
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       if (viewPhase !== "match-over") {
-        if (viewPhase === "selection") selectionFlowRef.current?.focus();
+        if (viewPhase === "selection") { if (!selectionOptionsRef.current?.open) selectionFlowRef.current?.focus(); }
         else rootRef.current?.focus({ preventScroll: true });
         return;
       }
@@ -2137,7 +2186,7 @@ export default function PitCanvas({
 
   useEffect(() => {
     if (viewPhase === "combat") {
-      menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
+      menuGamepadRef.current = { previous: Array.from({ length: 13 }, () => false), ready: false };
       return;
     }
     let requestId = 0;
@@ -2157,8 +2206,9 @@ export default function PitCanvas({
             Boolean(gamepad.buttons[5]?.pressed),
             Boolean(gamepad.buttons[6]?.pressed),
             Boolean(gamepad.buttons[7]?.pressed),
+            Boolean(gamepad.buttons[9]?.pressed),
           ]
-        : Array.from({ length: 12 }, () => false);
+        : Array.from({ length: 13 }, () => false);
       const state = menuGamepadRef.current;
       if (!gamepad) {
         state.ready = false;
@@ -2167,18 +2217,32 @@ export default function PitCanvas({
       } else {
         const previous = state.previous;
         if (viewPhase === "selection") {
-          const directions = ["left", "right", "up", "down"] as const;
-          directions.forEach((direction, index) => {
-            if (current[index] && !previous[index]) selectionFlowRef.current?.command(direction);
-          });
-          if (current[4] && !previous[4]) selectionFlowRef.current?.command("confirm");
-          if (current[5] && !previous[5]) selectionFlowRef.current?.command("back");
-          if (!runTransitionSelectionLocked && current[6] && !previous[6]) swapSides();
-          if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
-          if (current[8] && !previous[8]) changePitMode(cyclePitMode(mode, -1, leftId));
-          if (current[9] && !previous[9]) changePitMode(cyclePitMode(mode, 1, leftId));
-          if (current[10] && !previous[10]) selectionFlowRef.current?.command("variant-prev");
-          if (current[11] && !previous[11]) selectionFlowRef.current?.command("variant-next");
+          if (selectionOptionsRef.current?.open) {
+            if ((current[5] && !previous[5]) || (current[12] && !previous[12])) closeSelectionOptions();
+            else {
+              const items = Array.from(selectionOptionsRef.current.querySelectorAll<HTMLElement>("button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], summary"))
+                .filter(item => item.getClientRects().length > 0);
+              const index = items.indexOf(document.activeElement as HTMLElement);
+              const backward = (current[0] && !previous[0]) || (current[2] && !previous[2]);
+              const forward = (current[1] && !previous[1]) || (current[3] && !previous[3]);
+              if ((backward || forward) && items.length) items[(index + (backward ? -1 : 1) + items.length) % items.length]?.focus();
+              if (current[4] && !previous[4] && selectionOptionsRef.current.contains(document.activeElement)) (document.activeElement as HTMLElement)?.click();
+            }
+          } else if (current[12] && !previous[12]) openSelectionOptions();
+          else {
+            const directions = ["left", "right", "up", "down"] as const;
+            directions.forEach((direction, index) => {
+              if (current[index] && !previous[index]) selectionFlowRef.current?.command(direction);
+            });
+            if (current[4] && !previous[4]) selectionFlowRef.current?.command("confirm");
+            if (current[5] && !previous[5]) selectionFlowRef.current?.command("back");
+            if (!runTransitionSelectionLocked && current[6] && !previous[6]) swapSides();
+            if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
+            if (current[8] && !previous[8]) changePitMode(cyclePitMode(mode, -1, leftId));
+            if (current[9] && !previous[9]) changePitMode(cyclePitMode(mode, 1, leftId));
+            if (current[10] && !previous[10]) selectionFlowRef.current?.command("variant-prev");
+            if (current[11] && !previous[11]) selectionFlowRef.current?.command("variant-next");
+          }
         } else {
           if (current[4] && !previous[4]) {
             if (playbackReplay && availableReplay) startReplay(availableReplay);
@@ -2208,7 +2272,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [arcadePersistence.status, availableReplay, changePitMode, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
+  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
   const suppliedFighterArtFailed = Boolean(combat && combat.fighters.some(fighter =>
     fighter.variantId && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
@@ -2696,7 +2760,8 @@ export default function PitCanvas({
     return (
       <section
         ref={rootRef}
-        className={["screen", styles.root, highContrast ? styles.highContrast : ""].join(" ")}
+        className={["screen", styles.root, styles.selectionRoot, highContrast ? styles.highContrast : ""].join(" ")}
+        data-pit-selection-screen="immersive"
         aria-labelledby="pit-title"
         tabIndex={-1}
         data-screen-focus
@@ -2704,15 +2769,14 @@ export default function PitCanvas({
         <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
           {activeAriaAnnouncement}
         </div>
-        <div className={styles.selectionBackdrop} aria-hidden="true"><span /><span /><span /></div>
+        <div className={styles.selectionBackdrop} aria-hidden="true" />
         <header className={styles.selectionHeader}>
-          <div>
-            <span className={styles.eyebrow}>PREMIÈRE ÉDITION ET EXTENSIONS · SIMULATION NON CANONIQUE</span>
-            <h2 id="pit-title">THE PIT</h2>
-            <p>{PIT_VERSUS_FIGHTER_IDS.length} combattants sélectionnables · {PIT_ARENA_IDS.length} arènes jouables · catalogue de production : 100 stages · aucun gain de campagne</p>
-            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
+          <div><span className={styles.eyebrow}>RITUELS DE COMBAT</span><h2 id="pit-title">THE PIT</h2></div>
+          <p className={styles.selectionPopulation}>{PIT_VERSUS_FIGHTER_IDS.length} chasseurs <span>· {PIT_ARENA_IDS.length} arènes</span></p>
+          <div className={styles.selectionHeaderActions}>
+            <button ref={selectionOptionsTriggerRef} type="button" className={styles.utilityButton} data-pit-options-open aria-haspopup="dialog" aria-expanded={selectionOptionsOpen} onClick={openSelectionOptions}>Options & parcours</button>
+            <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
           </div>
-          <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
         </header>
 
         <div className={styles.modeGrid} role="radiogroup" aria-label="Mode de combat">
@@ -2739,12 +2803,6 @@ export default function PitCanvas({
           ))}
         </div>
 
-        {arenaId === PIT_RESERVE_GATE && (mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
-          <label><input type="checkbox" checked={stageJourneyEnabled} disabled={runTransitionSelectionLocked} onChange={event => setStageJourneyEnabled(event.target.checked)} /> Parcours optionnel · Sas → cour des Réserves</label>
-          <p>Deux lieux existants réutilisés, aucun dessin nouveau. Une projection réellement réussie près d’une limite emporte les deux combattants. Un seul passage par manche ; retour au sas au reset. Sans dégâts de décor ni gain de progression. Le duel neutre reste le réglage par défaut.</p>
-          {selectedJourney && <p data-pit-journey-assets={journeyAssetsFailed ? "failed" : journeyAssetsReady ? "ready" : "loading"}>{journeyAssetsFailed ? "Un des deux décors manque : départ bloqué." : journeyAssetsReady ? "Les deux scènes sont préchargées." : "Préchargement des deux scènes…"}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</p>}
-        </aside>}
-
         <PitSelectionFlow key={mode} ref={selectionFlowRef}
           mode={mode} playerId={leftId} opponentId={previewRightId} arenaId={previewArenaId}
           playerVariantId={leftVariantId} opponentVariantId={previewRightId === rightId ? rightVariantId : null}
@@ -2762,6 +2820,32 @@ export default function PitCanvas({
           launchDisabled={Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId)}
           reducedMotion={reducedCameraMotion} highContrast={highContrast}
         />
+
+        {(((mode === "circuit" || mode === "descent") && runTransitionPersistence.status !== "idle") || activeReplayNotice || (selectedJourney && !journeyAssetsReady)) ? (
+          <div className={styles.selectionNotice} data-pit-selection-notice role={runTransitionPersistence.status === "failed" || journeyAssetsFailed ? "alert" : "status"}>
+            <div>
+              {(mode === "circuit" || mode === "descent") && runTransitionPersistence.status !== "idle" ? <p data-status={runTransitionPersistence.status}>{runTransitionPersistence.message}</p> : null}
+              {activeReplayNotice ? <p>{activeReplayNotice}</p> : null}
+              {selectedJourney && !journeyAssetsReady ? <p>{journeyAssetsFailed ? "Un décor du parcours manque : départ bloqué." : "Chargement des deux scènes du parcours : départ temporairement bloqué."}</p> : null}
+            </div>
+            {runTransitionPersistence.status === "failed" ? <button type="button" onClick={retryRunTransition}>Réessayer l’enregistrement</button> : null}
+            {selectedJourney && journeyAssetsFailed ? <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les décors</button> : null}
+          </div>
+        ) : null}
+        <dialog ref={selectionOptionsRef} className={styles.selectionOptions} data-pit-selection-options aria-labelledby="pit-selection-options-title"
+          onCancel={event => { event.preventDefault(); closeSelectionOptions(); }} onClose={onSelectionOptionsClosed}>
+          <header className={styles.selectionOptionsHeader}>
+            <div><span className={styles.eyebrow}>THE PIT</span><h3 id="pit-selection-options-title">Options & parcours</h3></div>
+            <button type="button" className={styles.utilityButton} data-pit-options-close onClick={closeSelectionOptions}>Fermer · Échap / B</button>
+          </header>
+          <div className={styles.selectionOptionsBody}>
+            <p className={styles.selectionContext}>Simulation de duels non canonique · aucun gain de campagne. Start ouvre les options ; B ou Échap ferme ce panneau sans quitter THE PIT.</p>
+            <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
+        {arenaId === PIT_RESERVE_GATE && (mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
+          <label><input type="checkbox" checked={stageJourneyEnabled} disabled={runTransitionSelectionLocked} onChange={event => setStageJourneyEnabled(event.target.checked)} /> Parcours optionnel · Sas → cour des Réserves</label>
+          <p>Deux lieux existants réutilisés, aucun dessin nouveau. Une projection réellement réussie près d’une limite emporte les deux combattants. Un seul passage par manche ; retour au sas au reset. Sans dégâts de décor ni gain de progression. Le duel neutre reste le réglage par défaut.</p>
+          {selectedJourney && <p data-pit-journey-assets={journeyAssetsFailed ? "failed" : journeyAssetsReady ? "ready" : "loading"}>{journeyAssetsFailed ? "Un des deux décors manque : départ bloqué." : journeyAssetsReady ? "Les deux scènes sont préchargées." : "Préchargement des deux scènes…"}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</p>}
+        </aside>}
 
         {selectedArcadeCosmetic && <aside className={styles.cosmeticControl} aria-label="Palette cosmétique THE PIT">
           <div>
@@ -3036,25 +3120,13 @@ export default function PitCanvas({
             </button>
           ) : null}
         </div>
-        {(mode === "circuit" || mode === "descent") &&
-        runTransitionPersistence.status !== "idle" ? (
-          <p
-            className={styles.runPersistenceNotice}
-            data-status={runTransitionPersistence.status}
-            role={runTransitionPersistence.status === "failed" ? "alert" : "status"}
-          >
-            {runTransitionPersistence.message}
-            {runTransitionPersistence.status === "failed"
-              ? " La même transition sera réessayée sans créer de doublon."
-              : ""}
-          </p>
-        ) : null}
-        {activeReplayNotice ? <p className={styles.replayNotice}>{activeReplayNotice}</p> : null}
         <p className={styles.selectionFootnote}>
           {Object.values(PIT_FIGHTERS).filter((fighter) => getPitCombatBitmapArtDefinition(fighter.id) || PIT_SPRITE_SHEET_REGISTRY.some((entry) => entry.fighterId === fighter.id && entry.atlas.status === "validated")).length} combattants illustrés, adversaires compris ; animations OpenAI contrôlées selon le chasseur et l’action. Les séquences encore absentes utilisent un repli signalé.<br />
           Simulation isolée : aucun honneur, trophée de campagne ou progression de chasse n’est attribué.<br />
           Une palette équipée reste active jusqu’au retour au vaisseau.
         </p>
+          </div>
+        </dialog>
       </section>
     );
   }

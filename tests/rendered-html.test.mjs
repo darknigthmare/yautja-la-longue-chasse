@@ -42,11 +42,16 @@ test("server-renders the campaign menu before local archive hydration", async ()
   assert.match(main, /^<main\b[^>]*\bdata-campaign-menu="main"/);
   assert.match(main, /<h1>Yautja<span>La Longue Chasse<\/span><\/h1>/);
   assert.match(main, /<section\b[^>]*\baria-label="Menu principal"/);
-  assert.match(main, /Cinq parties indépendantes · dix sauvegardes manuelles et deux automatiques par partie\./);
+  assert.match(main, /5 parties · 10 manuelles \+ 2 autos par partie/);
   assert.match(main, /<p\b(?=[^>]*\brole="status")(?=[^>]*\baria-live="polite")[^>]*>Vérification et enregistrement des archives…<\/p>/);
 
   const buttons = [...main.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)];
-  assert.deepEqual(buttons.map(([, , content]) => content.replace(/<small>[\s\S]*?<\/small>/g, "")), [
+  // Read the action label through its presentation spans, excluding helper copy and decorative arrows.
+  const actionLabel = content => content
+    .replace(/<small\b[^>]*>[\s\S]*?<\/small>/gi, "")
+    .replace(/<span\b(?=[^>]*\baria-hidden=["']true["'])[^>]*>[\s\S]*?<\/span>/gi, "")
+    .replace(/<[^>]+>/g, "").trim();
+  assert.deepEqual(buttons.map(([, , content]) => actionLabel(content)), [
     "Continuer", "Nouvelle partie", "Charger une partie", "Actualiser les archives",
   ]);
   // No local archives are available to SSR: actions stay protected until hydration.

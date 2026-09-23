@@ -564,3 +564,113 @@
   .pausePanel { align-items: start; }
 }
 @media (prefers-reduced-motion: reduce) { .matchRoot .resourceTrack i { transition: none; } }
+
+/* V50: the selection, like the duel, is an application screen, not a document. */
+.selectionRoot {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 8px;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  isolation: isolate;
+  background: #06100c;
+}
+.selectionRoot .selectionBackdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 1;
+  background: linear-gradient(90deg, #06100ddd 0%, #07160d9e 24%, #07100bb3 75%, #06100ddb), linear-gradient(0deg, #050c09e6, transparent 50%, #06100abd), url("/game/ship-interior/v21/wall-machinery.webp") center / cover no-repeat;
+  pointer-events: none;
+}
+.selectionRoot .selectionHeader { display: flex; align-items: center; gap: 18px; min-width: 0; min-height: 68px; padding: max(9px, env(safe-area-inset-top)) clamp(10px, 2vw, 34px) 7px; border-bottom: 1px solid #d5b57440; background: #02080599; }
+.selectionRoot .selectionHeader > div:first-child { flex: 0 0 auto; }
+.selectionRoot .selectionHeader h2 { margin: 3px 0 0; color: #f2d59b; font-size: clamp(1.65rem, 2.8vw, 2.8rem); line-height: .95; letter-spacing: .16em; }
+.selectionRoot .selectionHeader .eyebrow { display: block; font-size: .45rem; letter-spacing: .24em; }
+.selectionRoot .selectionHeader .selectionPopulation { flex: 1; margin: 0; font-size: .66rem; line-height: 1.6; color: #acbfaf; letter-spacing: .08em; text-transform: uppercase; }
+.selectionHeaderActions { display: flex; align-items: stretch; gap: 8px; margin-left: auto; }
+.selectionHeaderActions button { min-width: 44px; min-height: 44px; padding: 8px 11px; font-size: .62rem; white-space: normal; }
+.selectionRoot .modeGrid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: stretch; gap: 7px; width: auto; min-width: 0; margin: 0 clamp(10px, 2vw, 34px); padding: 0; }
+.selectionRoot .modeCard { position: relative; min-width: 0; min-height: 44px; padding: 8px 6px; border-color: #9b9d6d66; background: #0b1b14c9; color: #b9cdbd; text-align: center; }
+.selectionRoot .modeCard strong { display: block; font-size: .68rem; line-height: 1.2; letter-spacing: .04em; text-transform: uppercase; }
+.selectionRoot .modeCard > span { display: none; }
+.selectionRoot .modeCardActive { color: #ffe7ae; border-color: #e1bf78; background: linear-gradient(#5b4b295c, #1b2b17); box-shadow: inset 0 -2px #ecc876; }
+.selectionRoot .modeCard:disabled { opacity: .4; cursor: not-allowed; }
+.selectionRoot :is(.modeCard, .selectionHeaderActions button):focus-visible { outline: 3px solid #8de7d4; outline-offset: 2px; }
+.portraitUnavailable { display: grid; place-items: center; width: 100%; height: 100%; min-height: 60px; padding: 10px; color: #adb9a7; font-size: .75rem; text-align: center; background: #0d1712; }
+.selectionOptions { width: min(1050px, calc(100vw - 28px)); height: min(850px, calc(100dvh - 28px)); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid #d8ba77; color: #e7dfc6; background: #091610; box-shadow: 0 20px 100px #000; overflow: hidden; }
+.selectionOptions[open] { display: flex; flex-direction: column; }
+.selectionOptions::backdrop { background: #010603cf; backdrop-filter: blur(5px); }
+.selectionOptionsHeader { display: flex; justify-content: space-between; align-items: center; flex: 0 0 auto; gap: 14px; padding: 14px 20px; background: #17251c; border-bottom: 1px solid #ccad6970; }
+.selectionOptionsHeader h3 { margin: 4px 0 0; color: #f0d291; font-size: 1.3rem; line-height: 1.1; }
+.selectionOptionsHeader button { min-width: 44px; min-height: 44px; font-size: .67rem; }
+.selectionOptionsBody { flex: 1 1 0; min-height: 0; min-width: 0; overflow: auto; overscroll-behavior: contain; padding: 18px 20px; scrollbar-color: #bca771 #15231a; }
+.selectionOptionsBody .selectionContext { margin: 0 0 14px; color: #b5cabc; font-size: .76rem; line-height: 1.6; }
+.selectionOptionsBody .animationLabLink { display: block; margin: 0 0 20px; color: #ade7d2; font-size: .8rem; }
+.selectionOptionsBody :is(.cosmeticControl, .arenaCatalogue, .arcadeBrief, .circuitBrief, .descentBrief, .selectionActions, .selectionFootnote, .journeyChoice) { width: 100%; max-width: none; margin: 0 0 18px; }
+.selectionOptionsBody .selectionActions { justify-content: flex-start; }
+.selectionOptionsBody .selectionActions button { min-height: 44px; }
+.selectionOptionsBody .selectionFootnote { font-size: .74rem; line-height: 1.6; }
+.selectionOptions :is(button, input, select, a, summary):focus-visible { outline: 3px solid #8de7d4; outline-offset: 2px; }
+.selectionOptions button { min-height: 44px; }
+@media (max-width: 1100px) {
+  .selectionRoot .selectionHeader .selectionPopulation { font-size: .57rem; }
+  .selectionRoot .selectionHeader .selectionPopulation span { display: block; }
+}
+@media (max-width: 860px) {
+  .selectionRoot { gap: 6px; }
+  .selectionRoot .selectionHeader { gap: 8px; min-height: 61px; padding-inline: 8px; }
+  .selectionRoot .selectionHeader .selectionPopulation { display: none; }
+  .selectionRoot .selectionHeader h2 { font-size: 1.6rem; }
+  .selectionHeaderActions { gap: 5px; }
+  .selectionHeaderActions button { padding: 5px 7px; font-size: .54rem; max-width: 135px; }
+  .selectionRoot .modeGrid { margin-inline: 8px; gap: 5px; }
+  .selectionRoot .modeCard strong { font-size: .57rem; }
+  .selectionOptions { width: calc(100vw - 12px); height: calc(100dvh - 12px); }
+  .selectionOptionsHeader { padding: 10px; }
+  .selectionOptionsHeader h3 { font-size: 1rem; }
+  .selectionOptionsHeader button { font-size: .59rem; padding: 6px 8px; }
+  .selectionOptionsBody { padding: 13px 10px; }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .selectionRoot .modeGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .selectionRoot .modeCard { padding: 5px; }
+  .selectionRoot .selectionHeader h2 { font-size: 1.3rem; }
+  .selectionRoot .selectionHeader .eyebrow { font-size: .37rem; }
+  .selectionHeaderActions button { max-width: 112px; font-size: .5rem; }
+}
+@media (max-height: 650px) and (orientation: landscape) {
+  .selectionRoot { gap: 4px; }
+  .selectionRoot .selectionHeader { min-height: 48px; padding-block: 3px; }
+  .selectionRoot .selectionHeader h2 { font-size: 1.35rem; }
+  .selectionRoot .selectionHeader .eyebrow { display: none; }
+  .selectionHeaderActions button { min-height: 44px; font-size: .51rem; padding-block: 4px; }
+  .selectionRoot .modeCard { min-height: 36px; padding-block: 4px; }
+  .selectionRoot .modeCard strong { font-size: .52rem; }
+}
+@media (pointer: coarse) { .selectionRoot .modeCard { min-height: 44px; } }
+
+/* Blocking feedback stays in the game screen even while Options is closed. */
+.selectionRoot:has(> .selectionNotice) { grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.selectionNotice { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 10px; max-height: 100px; overflow: auto; margin: 0 clamp(8px, 2vw, 34px) max(7px, env(safe-area-inset-bottom)); padding: 7px 10px; border: 1px solid #d6b06b; background: #191c0ef5; color: #ffe3ac; font-size: .72rem; line-height: 1.4; }
+.selectionNotice p { margin: 2px 0; }
+.selectionNotice button { flex: 0 0 auto; min-height: 44px; border: 1px solid #eed08b; background: #3b4323; color: #fff1c1; padding: 7px 10px; font: inherit; cursor: pointer; }
+.selectionNotice button:focus-visible { outline: 3px solid #8de7d4; outline-offset: 2px; }
+@media(max-width:600px) { .selectionNotice { gap: 6px; font-size: .6rem; padding: 5px 7px; } .selectionNotice button { max-width: 45%; padding: 5px 6px; } }
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .selectionRoot .selectionHeader { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); }
+  .selectionRoot .selectionHeader > div:first-child { min-width: 0; }
+  .selectionRoot .selectionHeader h2 { overflow-wrap: anywhere; }
+  .selectionRoot .selectionHeader .eyebrow { overflow-wrap: anywhere; }
+  .selectionHeaderActions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; min-width: 0; }
+  .selectionHeaderActions button { min-width: 0; max-width: none; overflow-wrap: anywhere; }
+  .selectionRoot .modeCard strong { overflow-wrap: anywhere; }
+  .selectionOptionsHeader { align-items: start; }
+  .selectionOptionsHeader > div { min-width: 0; overflow-wrap: anywhere; }
+  .selectionOptionsHeader button { flex: 0 0 42%; white-space: normal; overflow-wrap: anywhere; }
+}

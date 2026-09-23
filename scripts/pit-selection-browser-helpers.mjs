@@ -28,6 +28,7 @@ export async function choosePitStage(page, arena) {
 
 /** Drive the public roster/stage UI, preserving legacy recipes on older releases. */
 export async function selectPitMatch(page, { player, opponent, arena, launch = true }) {
+  await closePitSelectionOptions(page);
   if (await page.locator('[data-pit-selection-step]').count()) {
     const select = page.locator('[data-pit-selection-step]');
     await choosePitFighter(page, player);
@@ -73,4 +74,21 @@ export async function openPitLaboratory(page) {
   if (await shortcut.count()) await shortcut.click();
   else await page.getByRole('button', { name: 'Laboratoire', exact: true }).click();
   await lab.waitFor({ state: 'visible' });
+}
+
+/** V50 keeps secondary selection controls inside a native modal; legacy pages do not. */
+export async function openPitSelectionOptions(page) {
+  const trigger = page.locator("[data-pit-options-open]");
+  if (!(await trigger.count())) return;
+  const dialog = page.locator("[data-pit-selection-options]");
+  if (await dialog.evaluate(node => node.open)) return;
+  await trigger.click();
+  await dialog.waitFor({ state: "visible" });
+}
+
+export async function closePitSelectionOptions(page) {
+  const dialog = page.locator("[data-pit-selection-options]");
+  if (!(await dialog.count()) || !(await dialog.evaluate(node => node.open))) return;
+  await dialog.locator("[data-pit-options-close]").click();
+  await dialog.waitFor({ state: "hidden" });
 }

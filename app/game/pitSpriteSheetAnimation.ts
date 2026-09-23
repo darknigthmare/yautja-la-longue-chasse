@@ -25,6 +25,8 @@ export interface PitSpriteSheetAnimationDefinition {
   readonly bodyHeightPx: number;
   /** Optional measured reference per page, still uniform in both axes. */
   readonly pageBodyHeightPx?: Readonly<Record<string, number>>;
+  /** Explicitly reviewed single-drawing stances, held without inventing movement. */
+  readonly heldPoseClips?: readonly { readonly id: "crouch"; readonly facing: "left" | "right" }[];
   /** Alpha-reviewed source bounds for camera framing only; draw rect/pivot stay untouched. */
   readonly visibleFrameBounds?: readonly {
     readonly pageId: string;
@@ -87,10 +89,24 @@ function hasValidVisibleBounds(definition: PitSpriteSheetAnimationDefinition): b
   });
 }
 
+function hasValidHeldPoses(definition: PitSpriteSheetAnimationDefinition): boolean {
+  if (definition.heldPoseClips === undefined) return true;
+  if (!Array.isArray(definition.heldPoseClips)) return false;
+  const keys = new Set<string>();
+  return definition.heldPoseClips.every(pose => {
+    if (!pose || pose.id !== "crouch" || (pose.facing !== "left" && pose.facing !== "right")) return false;
+    const key = clipKey(pose.id, pose.facing);
+    if (keys.has(key)) return false;
+    keys.add(key);
+    const clip = definition.atlas.clips.find(candidate => candidate.id === pose.id && candidate.facing === pose.facing);
+    return clip?.status === "validated" && !clip.loop && clip.frames.length === 1;
+  });
+}
+
 function isAcceptedDefinition(definition: PitSpriteSheetAnimationDefinition): boolean {
   const { atlas } = definition;
   return Object.hasOwn(PIT_FIGHTERS, definition.fighterId) && finite(definition.bodyHeightPx) &&
-    definition.bodyHeightPx > 0 && validateHunterSpriteAtlas(atlas).valid && hasValidVisibleBounds(definition) &&
+    definition.bodyHeightPx > 0 && validateHunterSpriteAtlas(atlas).valid && hasValidVisibleBounds(definition) && hasValidHeldPoses(definition) &&
     atlas.characterId === definition.fighterId && atlas.status === "validated" &&
     (definition.variantId === undefined || (typeof definition.variantId === "string" &&
       getPitUserVariant(definition.fighterId, definition.variantId) !== null && atlas.variantId === definition.variantId)) &&
@@ -181,6 +197,25 @@ export async function loadPitSpriteSheetAnimations(
         const accepted = countHunterSpriteAtlasCoverage([groupedAtlas], [{ characterId: atlas.characterId,
           variantId: atlas.variantId, clipId: merged.id, facing: merged.facing, minimumDistinctFrames: 3 }], prepared);
         if (accepted.coveredCount === 1) clips.forEach(clip => readyClips.add(clipKey(clip.id, clip.facing)));
+      }
+      // A jump can hold its tuck at the apex/descent. Require all three phases,
+      // native-facing prepared pixels, and a genuinely changing two-drawing rise.
+      // A lone static jump pose or a repeated/looped drawing never qualifies.
+      for (const facing of ["right", "left"] as const) {
+        const clips = ["rise", "apex", "fall"].map(phase => atlas.clips.find(clip =>
+          clip.id === "pit.air.jump." + phase && clip.facing === facing));
+        if (clips.some(clip => !clip || clip.status !== "validated" || clip.loop) ||
+          !readyClips.has(clipKey("pit.air.jump.rise", facing))) continue;
+        const completeClips = clips.filter((clip): clip is typeof atlas.clips[number] => Boolean(clip));
+        const heldRequirements = completeClips.map(clip => ({ characterId: atlas.characterId,
+          variantId: atlas.variantId, clipId: clip.id, facing, minimumDistinctFrames: 1 }));
+        const heldCoverage = countHunterSpriteAtlasCoverage([atlas], heldRequirements, prepared);
+        if (heldCoverage.coveredCount === 3) completeClips.forEach(clip => readyClips.add(clipKey(clip.id, facing)));
+      }
+      for (const pose of definition.heldPoseClips ?? []) {
+        const held = countHunterSpriteAtlasCoverage([atlas], [{ characterId: atlas.characterId,
+          variantId: atlas.variantId, clipId: pose.id, facing: pose.facing, minimumDistinctFrames: 1 }], prepared);
+        if (held.coveredCount === 1) readyClips.add(clipKey(pose.id, pose.facing));
       }
       if (readyClips.size && !options.signal?.aborted) animations.push({ definition, pages, readyClips });
       else { pages.forEach(canvas => { canvas.width = 0; canvas.height = 0; }); failedAtlasIds.push(atlas.id); }

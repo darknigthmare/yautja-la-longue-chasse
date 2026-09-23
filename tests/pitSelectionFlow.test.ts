@@ -54,10 +54,12 @@ test("holding Escape sends only one selection back command", async () => {
   };
   visit(tree); assert.ok(callback);
   const calls: string[] = [];
+  const options: { current: { open: boolean } | null } = { current: null };
   const js = ts.transpileModule(`const handler = ${callback.getText(tree)};`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
   class EditableElement { closest() { return this; } }
   const handler = runInNewContext(`(() => { ${js}; return handler; })()`, {
     HTMLElement: EditableElement,
+    selectionOptionsRef: options, closeSelectionOptions: () => calls.push("close-options"),
     matchesControlAction: () => true, controlBindings: {}, combatRef: { current: null },
     selectionFlowRef: { current: { command: (command: string) => calls.push(command) } },
   });
@@ -68,6 +70,11 @@ test("holding Escape sends only one selection back command", async () => {
   assert.deepEqual(calls, ["back", "back"], "a remapped pause letter must not leave search");
   handler({ target: new EditableElement(), key: "Escape", repeat: false, preventDefault() {} });
   assert.deepEqual(calls, ["back", "back", "back"], "Escape keeps its explicit back behavior");
+  handler({ defaultPrevented: true, key: "Escape", repeat: false, preventDefault() {} });
+  assert.equal(calls.length, 3, "a profile that consumed Escape must not leave selection");
+  options.current = { open: true };
+  for (const repeat of [false, true, true]) handler({ key: "Escape", repeat, preventDefault() {} });
+  assert.deepEqual(calls, ["back", "back", "back", "close-options"], "Escape closes options once without also sending selection back");
 });
 
 test("unavailable stage Canvas publishes a visible retryable failure", async () => {

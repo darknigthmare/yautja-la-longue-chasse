@@ -95,6 +95,13 @@ export async function auditPitSpriteSheetProduction() {
       else if (clip.id === "crouch") fighter.crouching = true;
       else if (clip.id === "high-guard" || clip.id === "low-guard") fighter.guard = clip.id === "high-guard" ? "high" : "low";
       else if (clip.id === "pit.stand.hitstun") { fighter.phase = "hitstun"; fighter.stunFrames = 40; }
+      else if (/^pit\.air\.jump\.(rise|apex|fall)$/.test(clip.id)) {
+        // PIT stores altitude above the floor and positive vertical speed while
+        // rising. These real engine fields select the clip; no renderer override.
+        const jumpPhase = clip.id.split(".").at(-1);
+        Object.assign(fighter, { grounded: false, y: jumpPhase === "apex" ? 80 : 40,
+          velocityY: jumpPhase === "rise" ? 6 : jumpPhase === "fall" ? -6 : 0 });
+      }
       else if (clip.id !== "idle") {
         const match = /^pit\.stand\.(light|medium|heavy)\.(startup|active|recovery)$/.exec(clip.id);
         assert.ok(match, "Production audit needs a real engine-state fixture for " + clip.id);
@@ -107,8 +114,19 @@ export async function auditPitSpriteSheetProduction() {
       assert.equal(resolved.definition.variantId, entry.variantId, "a supplied costume must own its rendered atlas");
       assert.equal(resolved.resolved.frame.clip.id, clip.id);
       assert.equal(resolved.resolved.frame.clip.facing, clip.facing);
-      clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length,
+      if (clip.id.startsWith("pit.air.jump.")) {
+        assert.equal(fighter.grounded, false);
+        assert.ok(fighter.y > 0, "Airborne production fixtures must be above the floor");
+        assert.equal(fighter.phase, "idle");
+        assert.equal(fighter.action, null, "A jump must not borrow an attack phase");
+        assert.equal(resolved.resolved.motion.posture, "air");
+        assert.equal(resolved.resolved.motion.phase, "locomotion");
+        assert.equal(resolved.resolved.motion.durationTicks, null, "Jump art follows observed motion, not an invented attack timer");
+      }
+      clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, atlasId: entry.atlas.id,
+        clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length,
         authoredTicks: clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0),
+        runtimePosture: resolved.resolved.motion.posture, runtimePhase: resolved.resolved.motion.phase,
         runtimePhaseTicks: resolved.resolved.motion.durationTicks, ready: true });
     }
   } finally { Object.assign(globalThis, previous); }

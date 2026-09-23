@@ -9,11 +9,13 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.ok(report.pageCount >= 11);
   assert.ok(report.distinctDrawings >= 86);
   assert.ok(report.readyPhaseClips >= 42);
-  const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab");
+  const historicalClips = report.clips.filter(clip => clip.variantId === null);
+  const v50Clips = report.clips.filter(clip => clip.atlasId.endsWith("-v50"));
+  const ahab = report.clips.filter(clip => clip.fighterId === "user-ahab" && !clip.atlasId.endsWith("-v50"));
   const ahabExpected = ["idle", "high-guard", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"];
   assert.deepEqual(ahab.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
     ahabExpected.flatMap(id => ["right", "left"].map(facing => ["ahab-avec-casque-0c8ceb1c95", id, facing, true].join(":"))).sort(),
-    "Only reviewed masked native idle, guard and complete light attacks count as Ahab coverage");
+    "V45/V49 masked native idle, guard and complete light attacks remain unchanged");
   for (const facing of ["right", "left"]) {
     assert.deepEqual(ahab.filter(clip => clip.facing === facing && clip.clipId.startsWith("pit.stand.light.")).map(clip => clip.drawnCells), [1, 1, 2]);
     assert.equal(ahab.find(clip => clip.facing === facing && clip.clipId === "idle").drawnCells, 2);
@@ -29,25 +31,61 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.equal(ahabPage.keyedPixels, 0);
   assert.equal(ahabPage.distinctDrawings, 4);
   assert(ahabPage.cells.every(cell => cell.borderPixels === 0));
-  const city = report.clips.filter(clip => clip.fighterId === "city-hunter");
+  const v50Variants = new Map([
+    ["user-ahab", "ahab-avec-casque-0c8ceb1c95"],
+    ["wolf", "wolf-avec-casque-4261aca172"],
+    ["falconer", "falconer-avec-casque-f5618ed362"],
+    ["scarface", "scarface-avec-casque-bca00052d4"],
+    ["enforcer", "enforcer-avec-casque-ca164d8925"],
+    ["celtic", "celtic-avec-casque-0764ed4b53"],
+  ]);
+  assert.equal(v50Clips.filter(clip => clip.fighterId === "user-ahab").length, 8,
+    "Ahab adds only the reviewed masked crouch and three jump phases in both native orientations");
+  assert.deepEqual([...new Set(v50Clips.map(clip => clip.fighterId))].sort(), [...v50Variants.keys()].sort(),
+    "All six reviewed V50 masked fighters must be registered");
+  for (const fighterId of new Set(v50Clips.map(clip => clip.fighterId))) {
+    assert.ok(v50Variants.has(fighterId), "Only the reviewed V50 fighter lot may gain coverage");
+    const variantId = v50Variants.get(fighterId);
+    const clips = v50Clips.filter(clip => clip.fighterId === fighterId);
+    const expectedIds = ["pit.air.jump.rise", "pit.air.jump.apex", "pit.air.jump.fall"];
+    if (fighterId === "user-ahab") expectedIds.unshift("crouch");
+    assert.deepEqual(clips.map(clip => [clip.variantId, clip.clipId, clip.facing, clip.ready].join(":" )).sort(),
+      expectedIds.flatMap(id => ["right", "left"].map(facing => [variantId, id, facing, true].join(":"))).sort(),
+      fighterId + " V50 coverage belongs only to its exact supplied masked appearance");
+    for (const clip of clips) {
+      const airborne = clip.clipId.startsWith("pit.air.jump.");
+      assert.equal(clip.runtimePosture, airborne ? "air" : "crouch");
+      assert.equal(clip.runtimePhase, airborne ? "locomotion" : "hold");
+      assert.equal(clip.runtimePhaseTicks, null);
+      const drawnCells = clip.clipId.endsWith("rise") || (clip.clipId.endsWith("fall") && fighterId !== "user-ahab") ? 2 : 1;
+      assert.equal(clip.drawnCells, drawnCells, fighterId + " " + clip.clipId + " authored frame count");
+    }
+    const pages = report.pages.filter(page => page.fighterId === fighterId && page.src.includes("/v50/"));
+    assert.ok(pages.length > 0);
+    assert.ok(pages.every(page => page.variantId === variantId && page.sourceHasAlpha && page.keyedPixels === 0));
+    const drawings = new Set(pages.flatMap(page => page.cells.map(cell => cell.sha256)));
+    assert.equal(drawings.size, fighterId === "user-ahab" ? 6 : 8,
+      "Clip reuse must not inflate the number of distinct V50 drawings");
+  }
+  const city = historicalClips.filter(clip => clip.fighterId === "city-hunter");
   assert.equal(city.length, 10);
   assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "right" && clip.ready).length, 1);
   assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "left" && clip.ready).length, 1, "Left guard requires its own authored atlas");
-  const wolf = report.clips.filter(clip => clip.fighterId === "wolf");
+  const wolf = historicalClips.filter(clip => clip.fighterId === "wolf");
   assert.equal(wolf.length, 17);
   assert.equal(wolf.some(clip => clip.clipId === "walk" || clip.clipId === "walk-backward" || clip.clipId.startsWith("pit.stand.medium")), false);
   assert.equal(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).length, 3);
   assert.ok(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).every(clip => clip.facing === "left"));
-  assert.equal(report.clips.filter(clip => clip.fighterId === "feral-hunter").length, 30);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "scar").length, 30);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "celtic").length, 28);
-  assert.equal(report.clips.some(clip => clip.fighterId === "celtic" && clip.clipId === "walk"), false, "Rejected forward gait must remain absent");
-  assert.equal(report.clips.filter(clip => clip.fighterId === "tracker").length, 30);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "greyback").length, 28);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "theta").length, 26);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "machiko-noguchi").length, 26);
-  assert.equal(report.clips.filter(clip => clip.fighterId === "jungle-hunter" && clip.clipId === "walk-backward").length, 1);
-  const berserker = report.clips.filter(clip => clip.fighterId === "berserker");
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "feral-hunter").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "scar").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "celtic").length, 28);
+  assert.equal(historicalClips.some(clip => clip.fighterId === "celtic" && clip.clipId === "walk"), false, "Rejected forward gait must remain absent");
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "tracker").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "greyback").length, 28);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "theta").length, 26);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "machiko-noguchi").length, 26);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "jungle-hunter" && clip.clipId === "walk-backward").length, 1);
+  const berserker = historicalClips.filter(clip => clip.fighterId === "berserker");
   assert.equal(berserker.length, 28);
   assert.equal(berserker.filter(clip => clip.clipId === "pit.stand.hitstun" && clip.ready && clip.drawnCells === 4).length, 2);
   assert.equal(berserker.some(clip => clip.clipId === "walk"), false, "Rejected forward walking must not become coverage");
@@ -56,7 +94,7 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   }
   for (const fighterId of report.historicalFighters) for (const facing of ["right", "left"]) {
     for (const clipId of ["idle", "pit.stand.light.startup", "pit.stand.light.active", "pit.stand.light.recovery"]) {
-      assert.ok(report.clips.some(clip => clip.fighterId === fighterId && clip.facing === facing && clip.clipId === clipId && clip.ready));
+      assert.ok(historicalClips.some(clip => clip.fighterId === fighterId && clip.facing === facing && clip.clipId === clipId && clip.ready));
     }
   }
 });

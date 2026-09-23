@@ -74,8 +74,14 @@ try{
  record('filtered-roster-keyboard-entry',await page.locator('[data-choice-id="user-ahab"]').evaluate(el=>el===document.activeElement));
  await page.screenshot({path:output+(baseline?'/baseline':'/fixed')+'-roster-mobile.png'});
  await page.goto(url);await page.getByRole('button',{name:/^Nouvelle partie/}).click();await page.evaluate(()=>document.documentElement.style.fontSize='200%');
- record('campaign-text-200-percent-no-overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
- record('campaign-name-within-screen',await page.getByRole('textbox',{name:'Nom du chasseur'}).evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;}));
+ // The full-screen archive now scrolls internally. Reach the field normally before measuring it.
+ const campaignName=page.getByRole('textbox',{name:'Nom du chasseur'});
+ await campaignName.scrollIntoViewIfNeeded();
+ const campaignLayout=await page.evaluate(()=>{const menu=document.querySelector('[data-campaign-menu]');return{width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,menuWidth:menu.clientWidth,menuScrollWidth:menu.scrollWidth,menuScrollLeft:menu.scrollLeft};});
+ record('campaign-text-200-percent-no-overflow',campaignLayout.documentWidth<=campaignLayout.width&&campaignLayout.menuScrollWidth<=campaignLayout.menuWidth,campaignLayout);
+ const campaignNameBounds=await campaignName.evaluate(el=>{const r=el.getBoundingClientRect();return{left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:innerWidth,height:innerHeight,hit:el===document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)};});
+ record('campaign-name-within-screen',campaignNameBounds.left>=0&&campaignNameBounds.right<=campaignNameBounds.width&&campaignNameBounds.top>=0&&campaignNameBounds.bottom<=campaignNameBounds.height&&campaignNameBounds.hit,campaignNameBounds);
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  await page.screenshot({path:output+(baseline?'/baseline':'/fixed')+'-campaign-text-200.png',fullPage:true});
  const report={profile:'Small-screen, keyboard and reduced-motion player',baseline,checkedAt:new Date().toISOString(),surface:'Real React components bundled into isolated browser fixture; campaign storage callbacks mocked; no full-game or physical iOS certification.',checks,errors,passed:checks.every(check=>check.passed)&&errors.length===0};
  await fs.writeFile(output+(baseline?'/baseline-report.json':'/report.json'),JSON.stringify(report,null,2)+'\n');

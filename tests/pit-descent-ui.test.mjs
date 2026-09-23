@@ -87,7 +87,11 @@ test("route state is published only after a durable acknowledgement and retry ke
   const retry = section(canvas, "const retryRunTransition", "const launchCircuitSnapshot");
   assert.match(retry, /pendingRunTransitionRef\.current/);
   assert.match(retry, /submitRunTransition\(settlement\)/);
-  assert.match(canvas, /La même transition sera réessayée sans créer de doublon/);
+  const notice = section(canvas, "data-pit-selection-notice", "<dialog ref={selectionOptionsRef}");
+  assert.match(notice, /data-status=\{runTransitionPersistence\.status\}[^>]*>\{runTransitionPersistence\.message\}/);
+  assert.match(notice, /runTransitionPersistence\.status === "failed"[^\n]*onClick=\{retryRunTransition\}/);
+  assert.match(notice, /Réessayer l’enregistrement/);
+  assert.match(notice, /role=\{runTransitionPersistence\.status === "failed"[^}]*"alert"/);
   assert.match(canvas, /la progression, la santé et la récompense restent non publiées/);
 });
 

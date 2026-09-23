@@ -328,3 +328,63 @@ test("camera-only bounds reject foreign cells, duplicates and invalid containmen
     assert.deepEqual(env.requests, []);
   } finally { env.restore(); }
 });
+
+test("jump held phases require a complete native non-looping sequence with a genuinely changing rise", async () => {
+  const jumps = (facing = "right") => [
+    clip("pit.air.jump.rise", facing, [frame(0), frame(1)], false),
+    clip("pit.air.jump.apex", facing, [frame(1)], false),
+    clip("pit.air.jump.fall", facing, [frame(1)], false),
+  ];
+  const env = browser();
+  try {
+    const bank = await load(["jungle-hunter"], [definition(jumps())]);
+    assert.equal(bank.readyClipCount, 3, "one prepared tuck may be honestly reused at apex and descent");
+    const fighter = { ...createPitCombatState().fighters[0], grounded: false, y: 50, velocityY: 0 };
+    assert.equal(resolve(bank, fighter, { simulationFrame: 20 }).resolved.frame.clip.id, "pit.air.jump.apex");
+    const falling = { ...fighter, velocityY: -2 };
+    assert.equal(resolve(bank, falling, { simulationFrame: 21 }).resolved.frame.frame.rect[0], 8);
+    assert.equal(resolve(bank, falling, { simulationFrame: 200 }).resolved.frame.frame.rect[0], 8);
+    assert.equal(resolve(bank, { ...falling, facing: -1 }, { simulationFrame: 201 }), null);
+    assert.equal((await load(["jungle-hunter"], [definition(jumps().slice(0, 2))])).readyClipCount, 1,
+      "an incomplete sequence cannot promote a held apex");
+    const looped = jumps(); looped[2].loop = true;
+    assert.equal((await load(["jungle-hunter"], [definition(looped)])).readyClipCount, 1);
+    const wrongFacing = jumps(); wrongFacing[2].facing = "left";
+    assert.equal((await load(["jungle-hunter"], [definition(wrongFacing)])).readyClipCount, 1);
+    const staticRise = jumps(); staticRise[0].frames = [frame(0)];
+    assert.equal((await load(["jungle-hunter"], [definition(staticRise)])).readyClipCount, 0);
+  } finally { env.restore(); }
+  const duplicate = browser("duplicate");
+  try { assert.equal((await load(["jungle-hunter"], [definition(jumps())])).readyClipCount, 0); }
+  finally { duplicate.restore(); }
+  const secondPath = "/game/sprites/v50/unavailable.png";
+  const missingPage = browser("alpha", { errorPath: secondPath });
+  try {
+    const entry = definition(jumps()); entry.atlas.pages.push({ ...entry.atlas.pages[0], id: "missing", src: secondPath });
+    entry.atlas.clips[1].frames[0] = { ...frame(1), pageId: "missing" };
+    assert.equal((await load(["jungle-hunter"], [entry])).readyClipCount, 1,
+      "a missing prepared phase blocks group promotion even when the other held phase exists");
+  } finally { missingPage.restore(); }
+});
+
+test("a declared crouch is an honest held drawing and cannot authorize arbitrary single-frame animations", async () => {
+  const poses = [{ id: "crouch", facing: "right" }];
+  const clips = [clip("crouch", "right", [frame(0)], false)];
+  const env = browser();
+  try {
+    assert.equal((await load(["jungle-hunter"], [definition(clips)])).readyClipCount, 0);
+    const bank = await load(["jungle-hunter"], [definition(clips, { heldPoseClips: poses })]);
+    assert.equal(bank.readyClipCount, 1);
+    const fighter = { ...createPitCombatState().fighters[0], crouching: true };
+    assert.equal(resolve(bank, fighter, { simulationFrame: 1 }).resolved.frame.frameIndex, 0);
+    assert.equal(resolve(bank, fighter, { simulationFrame: 300 }).resolved.frame.frameIndex, 0);
+    for (const invalid of [[...poses, ...poses], [{ id: "idle", facing: "right" }], [{ id: "walk", facing: "right" }], [{ id: "crouch", facing: "left" }]]) {
+      assert.equal((await load(["jungle-hunter"], [definition(clips, { heldPoseClips: invalid })])).readyClipCount, 0);
+    }
+    assert.equal((await load(["jungle-hunter"], [definition([clip("crouch", "right", [frame(0)], true)], { heldPoseClips: poses })])).readyClipCount, 0);
+    assert.equal((await load(["jungle-hunter"], [definition([clip("crouch", "right", [frame(0), frame(1)], false)], { heldPoseClips: poses })])).readyClipCount, 0);
+  } finally { env.restore(); }
+  const empty = browser("empty");
+  try { assert.equal((await load(["jungle-hunter"], [definition(clips, { heldPoseClips: poses })])).readyClipCount, 0); }
+  finally { empty.restore(); }
+});

@@ -13389,5 +13389,2157 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         ]
       }
     ]
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 420,
+    "pageBodyHeightPx": {
+      "ahab-masked-air-right-v50": 420,
+      "ahab-masked-air-left-v50": 417
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "ahab-masked-air-movement-v50",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "ahab-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/ahab/ahab-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "ahab-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/ahab/ahab-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "crouch",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                530,
+                325
+              ],
+              "pivot": [
+                222.75,
+                305
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-right-v50",
+              "rect": [
+                0,
+                325,
+                530,
+                464
+              ],
+              "pivot": [
+                278,
+                440
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "ahab-masked-air-right-v50",
+              "rect": [
+                0,
+                789,
+                530,
+                325
+              ],
+              "pivot": [
+                254,
+                417
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-right-v50",
+              "rect": [
+                0,
+                789,
+                530,
+                325
+              ],
+              "pivot": [
+                254,
+                417
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-right-v50",
+              "rect": [
+                0,
+                789,
+                530,
+                325
+              ],
+              "pivot": [
+                254,
+                417
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "crouch",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-left-v50",
+              "rect": [
+                530,
+                0,
+                494,
+                325
+              ],
+              "pivot": [
+                277.75,
+                305
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-left-v50",
+              "rect": [
+                530,
+                325,
+                494,
+                464
+              ],
+              "pivot": [
+                226,
+                443
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "ahab-masked-air-left-v50",
+              "rect": [
+                530,
+                789,
+                494,
+                325
+              ],
+              "pivot": [
+                242,
+                419
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-left-v50",
+              "rect": [
+                530,
+                789,
+                494,
+                325
+              ],
+              "pivot": [
+                242,
+                419
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-air-left-v50",
+              "rect": [
+                530,
+                789,
+                494,
+                325
+              ],
+              "pivot": [
+                242,
+                419
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "ahab-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          530,
+          325
+        ],
+        "visibleRect": [
+          54,
+          56,
+          460,
+          250
+        ]
+      },
+      {
+        "pageId": "ahab-masked-air-right-v50",
+        "rect": [
+          0,
+          325,
+          530,
+          464
+        ],
+        "visibleRect": [
+          67,
+          345,
+          445,
+          422
+        ]
+      },
+      {
+        "pageId": "ahab-masked-air-right-v50",
+        "rect": [
+          0,
+          789,
+          530,
+          325
+        ],
+        "visibleRect": [
+          66,
+          808,
+          447,
+          297
+        ]
+      },
+      {
+        "pageId": "ahab-masked-air-left-v50",
+        "rect": [
+          530,
+          0,
+          494,
+          325
+        ],
+        "visibleRect": [
+          552,
+          57,
+          424,
+          249
+        ]
+      },
+      {
+        "pageId": "ahab-masked-air-left-v50",
+        "rect": [
+          530,
+          325,
+          494,
+          464
+        ],
+        "visibleRect": [
+          545,
+          352,
+          413,
+          417
+        ]
+      },
+      {
+        "pageId": "ahab-masked-air-left-v50",
+        "rect": [
+          530,
+          789,
+          494,
+          325
+        ],
+        "visibleRect": [
+          544,
+          808,
+          426,
+          295
+        ]
+      }
+    ],
+    "heldPoseClips": [
+      {
+        "id": "crouch",
+        "facing": "right"
+      },
+      {
+        "id": "crouch",
+        "facing": "left"
+      }
+    ]
+  },
+  {
+    "fighterId": "wolf",
+    "variantId": "wolf-avec-casque-4261aca172",
+    "bodyHeightPx": 403,
+    "pageBodyHeightPx": {
+      "wolf-masked-air-right-v50": 403,
+      "wolf-masked-air-left-v50": 402
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "wolf-masked-air-movement-v50",
+      "characterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "wolf-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/wolf/wolf-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "wolf-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/wolf/wolf-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                512,
+                429
+              ],
+              "pivot": [
+                308,
+                425
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "wolf-masked-air-right-v50",
+              "rect": [
+                0,
+                429,
+                512,
+                325
+              ],
+              "pivot": [
+                294,
+                442
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-right-v50",
+              "rect": [
+                0,
+                754,
+                512,
+                324
+              ],
+              "pivot": [
+                256,
+                432
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-right-v50",
+              "rect": [
+                0,
+                754,
+                512,
+                324
+              ],
+              "pivot": [
+                256,
+                432
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "wolf-masked-air-right-v50",
+              "rect": [
+                0,
+                1078,
+                512,
+                458
+              ],
+              "pivot": [
+                277,
+                433
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-left-v50",
+              "rect": [
+                512,
+                0,
+                512,
+                429
+              ],
+              "pivot": [
+                204,
+                424
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "wolf-masked-air-left-v50",
+              "rect": [
+                512,
+                429,
+                512,
+                325
+              ],
+              "pivot": [
+                218,
+                441
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-left-v50",
+              "rect": [
+                512,
+                754,
+                512,
+                324
+              ],
+              "pivot": [
+                256,
+                431
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "wolf-masked-air-left-v50",
+              "rect": [
+                512,
+                754,
+                512,
+                324
+              ],
+              "pivot": [
+                256,
+                431
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "wolf-masked-air-left-v50",
+              "rect": [
+                512,
+                1078,
+                512,
+                458
+              ],
+              "pivot": [
+                235,
+                432
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "wolf-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          512,
+          429
+        ],
+        "visibleRect": [
+          160,
+          16,
+          303,
+          410
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-right-v50",
+        "rect": [
+          0,
+          429,
+          512,
+          325
+        ],
+        "visibleRect": [
+          106,
+          432,
+          362,
+          310
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-right-v50",
+        "rect": [
+          0,
+          754,
+          512,
+          324
+        ],
+        "visibleRect": [
+          116,
+          760,
+          323,
+          310
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-right-v50",
+        "rect": [
+          0,
+          1078,
+          512,
+          458
+        ],
+        "visibleRect": [
+          100,
+          1088,
+          354,
+          419
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-left-v50",
+        "rect": [
+          512,
+          0,
+          512,
+          429
+        ],
+        "visibleRect": [
+          562,
+          18,
+          309,
+          407
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-left-v50",
+        "rect": [
+          512,
+          429,
+          512,
+          325
+        ],
+        "visibleRect": [
+          557,
+          433,
+          359,
+          315
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-left-v50",
+        "rect": [
+          512,
+          754,
+          512,
+          324
+        ],
+        "visibleRect": [
+          585,
+          760,
+          325,
+          310
+        ]
+      },
+      {
+        "pageId": "wolf-masked-air-left-v50",
+        "rect": [
+          512,
+          1078,
+          512,
+          458
+        ],
+        "visibleRect": [
+          569,
+          1086,
+          358,
+          431
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "falconer",
+    "variantId": "falconer-avec-casque-f5618ed362",
+    "bodyHeightPx": 389,
+    "pageBodyHeightPx": {
+      "falconer-masked-air-right-v50": 389,
+      "falconer-masked-air-left-v50": 390
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "falconer-masked-air-movement-v50",
+      "characterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "falconer-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/falconer/falconer-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "falconer-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/falconer/falconer-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                512,
+                414
+              ],
+              "pivot": [
+                294,
+                401
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "falconer-masked-air-right-v50",
+              "rect": [
+                0,
+                414,
+                512,
+                342
+              ],
+              "pivot": [
+                263,
+                399
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-right-v50",
+              "rect": [
+                0,
+                756,
+                512,
+                304
+              ],
+              "pivot": [
+                231,
+                382
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-right-v50",
+              "rect": [
+                0,
+                756,
+                512,
+                304
+              ],
+              "pivot": [
+                231,
+                382
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "falconer-masked-air-right-v50",
+              "rect": [
+                0,
+                1060,
+                512,
+                476
+              ],
+              "pivot": [
+                279,
+                413
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-left-v50",
+              "rect": [
+                512,
+                0,
+                512,
+                414
+              ],
+              "pivot": [
+                218,
+                402
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "falconer-masked-air-left-v50",
+              "rect": [
+                512,
+                414,
+                512,
+                342
+              ],
+              "pivot": [
+                249,
+                400
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-left-v50",
+              "rect": [
+                512,
+                756,
+                512,
+                304
+              ],
+              "pivot": [
+                281,
+                383
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "falconer-masked-air-left-v50",
+              "rect": [
+                512,
+                756,
+                512,
+                304
+              ],
+              "pivot": [
+                281,
+                383
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "falconer-masked-air-left-v50",
+              "rect": [
+                512,
+                1060,
+                512,
+                476
+              ],
+              "pivot": [
+                233,
+                414
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "falconer-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          512,
+          414
+        ],
+        "visibleRect": [
+          120,
+          12,
+          255,
+          390
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-right-v50",
+        "rect": [
+          0,
+          414,
+          512,
+          342
+        ],
+        "visibleRect": [
+          83,
+          425,
+          306,
+          319
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-right-v50",
+        "rect": [
+          0,
+          756,
+          512,
+          304
+        ],
+        "visibleRect": [
+          193,
+          768,
+          232,
+          278
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-right-v50",
+        "rect": [
+          0,
+          1060,
+          512,
+          476
+        ],
+        "visibleRect": [
+          82,
+          1075,
+          381,
+          421
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-left-v50",
+        "rect": [
+          512,
+          0,
+          512,
+          414
+        ],
+        "visibleRect": [
+          650,
+          12,
+          255,
+          391
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-left-v50",
+        "rect": [
+          512,
+          414,
+          512,
+          342
+        ],
+        "visibleRect": [
+          635,
+          426,
+          307,
+          317
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-left-v50",
+        "rect": [
+          512,
+          756,
+          512,
+          304
+        ],
+        "visibleRect": [
+          600,
+          769,
+          231,
+          275
+        ]
+      },
+      {
+        "pageId": "falconer-masked-air-left-v50",
+        "rect": [
+          512,
+          1060,
+          512,
+          476
+        ],
+        "visibleRect": [
+          561,
+          1075,
+          382,
+          422
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scarface",
+    "variantId": "scarface-avec-casque-bca00052d4",
+    "bodyHeightPx": 338,
+    "pageBodyHeightPx": {
+      "scarface-masked-air-right-v50": 338,
+      "scarface-masked-air-left-v50": 338
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scarface-masked-air-movement-v50",
+      "characterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scarface-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/scarface/scarface-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scarface-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/scarface/scarface-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                512,
+                393
+              ],
+              "pivot": [
+                279,
+                386
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scarface-masked-air-right-v50",
+              "rect": [
+                0,
+                393,
+                512,
+                320
+              ],
+              "pivot": [
+                281,
+                397
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-right-v50",
+              "rect": [
+                0,
+                713,
+                512,
+                340
+              ],
+              "pivot": [
+                263,
+                422
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-right-v50",
+              "rect": [
+                0,
+                713,
+                512,
+                340
+              ],
+              "pivot": [
+                263,
+                422
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scarface-masked-air-right-v50",
+              "rect": [
+                0,
+                1053,
+                512,
+                483
+              ],
+              "pivot": [
+                252,
+                421
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-left-v50",
+              "rect": [
+                512,
+                0,
+                512,
+                393
+              ],
+              "pivot": [
+                232,
+                386
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "scarface-masked-air-left-v50",
+              "rect": [
+                512,
+                393,
+                512,
+                320
+              ],
+              "pivot": [
+                231,
+                395
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-left-v50",
+              "rect": [
+                512,
+                713,
+                512,
+                340
+              ],
+              "pivot": [
+                256,
+                422
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scarface-masked-air-left-v50",
+              "rect": [
+                512,
+                713,
+                512,
+                340
+              ],
+              "pivot": [
+                256,
+                422
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "scarface-masked-air-left-v50",
+              "rect": [
+                512,
+                1053,
+                512,
+                483
+              ],
+              "pivot": [
+                261,
+                421
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scarface-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          512,
+          393
+        ],
+        "visibleRect": [
+          178,
+          3,
+          209,
+          384
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-right-v50",
+        "rect": [
+          0,
+          393,
+          512,
+          320
+        ],
+        "visibleRect": [
+          127,
+          400,
+          303,
+          291
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-right-v50",
+        "rect": [
+          0,
+          713,
+          512,
+          340
+        ],
+        "visibleRect": [
+          184,
+          736,
+          232,
+          306
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-right-v50",
+        "rect": [
+          0,
+          1053,
+          512,
+          483
+        ],
+        "visibleRect": [
+          113,
+          1065,
+          297,
+          420
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-left-v50",
+        "rect": [
+          512,
+          0,
+          512,
+          393
+        ],
+        "visibleRect": [
+          637,
+          2,
+          209,
+          385
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-left-v50",
+        "rect": [
+          512,
+          393,
+          512,
+          320
+        ],
+        "visibleRect": [
+          596,
+          400,
+          302,
+          291
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-left-v50",
+        "rect": [
+          512,
+          713,
+          512,
+          340
+        ],
+        "visibleRect": [
+          608,
+          737,
+          232,
+          304
+        ]
+      },
+      {
+        "pageId": "scarface-masked-air-left-v50",
+        "rect": [
+          512,
+          1053,
+          512,
+          483
+        ],
+        "visibleRect": [
+          615,
+          1065,
+          300,
+          422
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "enforcer",
+    "variantId": "enforcer-avec-casque-ca164d8925",
+    "bodyHeightPx": 428,
+    "pageBodyHeightPx": {
+      "enforcer-masked-air-right-v50": 428,
+      "enforcer-masked-air-left-v50": 428
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "enforcer-masked-air-movement-v50",
+      "characterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "enforcer-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/enforcer/enforcer-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "enforcer-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/enforcer/enforcer-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                512,
+                442
+              ],
+              "pivot": [
+                282,
+                431
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "enforcer-masked-air-right-v50",
+              "rect": [
+                0,
+                442,
+                512,
+                326
+              ],
+              "pivot": [
+                243,
+                421
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-right-v50",
+              "rect": [
+                0,
+                768,
+                512,
+                308
+              ],
+              "pivot": [
+                244,
+                409
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-right-v50",
+              "rect": [
+                0,
+                768,
+                512,
+                308
+              ],
+              "pivot": [
+                244,
+                409
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "enforcer-masked-air-right-v50",
+              "rect": [
+                0,
+                1076,
+                512,
+                460
+              ],
+              "pivot": [
+                253,
+                422
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-left-v50",
+              "rect": [
+                512,
+                0,
+                512,
+                442
+              ],
+              "pivot": [
+                230,
+                432
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "enforcer-masked-air-left-v50",
+              "rect": [
+                512,
+                442,
+                512,
+                326
+              ],
+              "pivot": [
+                269,
+                422
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-left-v50",
+              "rect": [
+                512,
+                768,
+                512,
+                308
+              ],
+              "pivot": [
+                268,
+                410
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "enforcer-masked-air-left-v50",
+              "rect": [
+                512,
+                768,
+                512,
+                308
+              ],
+              "pivot": [
+                268,
+                410
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "enforcer-masked-air-left-v50",
+              "rect": [
+                512,
+                1076,
+                512,
+                460
+              ],
+              "pivot": [
+                259,
+                423
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "enforcer-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          512,
+          442
+        ],
+        "visibleRect": [
+          75,
+          3,
+          398,
+          429
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-right-v50",
+        "rect": [
+          0,
+          442,
+          512,
+          326
+        ],
+        "visibleRect": [
+          72,
+          451,
+          413,
+          295
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-right-v50",
+        "rect": [
+          0,
+          768,
+          512,
+          308
+        ],
+        "visibleRect": [
+          97,
+          785,
+          385,
+          281
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-right-v50",
+        "rect": [
+          0,
+          1076,
+          512,
+          460
+        ],
+        "visibleRect": [
+          75,
+          1089,
+          414,
+          422
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-left-v50",
+        "rect": [
+          512,
+          0,
+          512,
+          442
+        ],
+        "visibleRect": [
+          553,
+          4,
+          397,
+          429
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-left-v50",
+        "rect": [
+          512,
+          442,
+          512,
+          326
+        ],
+        "visibleRect": [
+          544,
+          454,
+          404,
+          295
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-left-v50",
+        "rect": [
+          512,
+          768,
+          512,
+          308
+        ],
+        "visibleRect": [
+          555,
+          786,
+          373,
+          280
+        ]
+      },
+      {
+        "pageId": "enforcer-masked-air-left-v50",
+        "rect": [
+          512,
+          1076,
+          512,
+          460
+        ],
+        "visibleRect": [
+          535,
+          1090,
+          412,
+          430
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "celtic",
+    "variantId": "celtic-avec-casque-0764ed4b53",
+    "bodyHeightPx": 410,
+    "pageBodyHeightPx": {
+      "celtic-masked-air-right-v50": 410,
+      "celtic-masked-air-left-v50": 410
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "celtic-masked-air-movement-v50",
+      "characterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "celtic-masked-air-right-v50",
+          "src": "/game/sprites/v50/pit/celtic/celtic-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "celtic-masked-air-left-v50",
+          "src": "/game/sprites/v50/pit/celtic/celtic-masked-air-movement-v50.png",
+          "width": 1024,
+          "height": 1536,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-right-v50",
+              "rect": [
+                0,
+                0,
+                512,
+                430
+              ],
+              "pivot": [
+                326,
+                423
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "celtic-masked-air-right-v50",
+              "rect": [
+                0,
+                430,
+                512,
+                344
+              ],
+              "pivot": [
+                300,
+                428
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-right-v50",
+              "rect": [
+                0,
+                774,
+                512,
+                314
+              ],
+              "pivot": [
+                248,
+                407
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-right-v50",
+              "rect": [
+                0,
+                774,
+                512,
+                314
+              ],
+              "pivot": [
+                248,
+                407
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-air-right-v50",
+              "rect": [
+                0,
+                1088,
+                512,
+                448
+              ],
+              "pivot": [
+                279,
+                419
+              ],
+              "durationTicks": 8
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-left-v50",
+              "rect": [
+                512,
+                0,
+                512,
+                430
+              ],
+              "pivot": [
+                186,
+                423
+              ],
+              "durationTicks": 7
+            },
+            {
+              "pageId": "celtic-masked-air-left-v50",
+              "rect": [
+                512,
+                430,
+                512,
+                344
+              ],
+              "pivot": [
+                216,
+                428
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-left-v50",
+              "rect": [
+                512,
+                774,
+                512,
+                314
+              ],
+              "pivot": [
+                268,
+                407
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "celtic-masked-air-left-v50",
+              "rect": [
+                512,
+                774,
+                512,
+                314
+              ],
+              "pivot": [
+                268,
+                407
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "celtic-masked-air-left-v50",
+              "rect": [
+                512,
+                1088,
+                512,
+                448
+              ],
+              "pivot": [
+                237,
+                419
+              ],
+              "durationTicks": 8
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "celtic-masked-air-right-v50",
+        "rect": [
+          0,
+          0,
+          512,
+          430
+        ],
+        "visibleRect": [
+          173,
+          10,
+          198,
+          414
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-right-v50",
+        "rect": [
+          0,
+          430,
+          512,
+          344
+        ],
+        "visibleRect": [
+          102,
+          438,
+          308,
+          323
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-right-v50",
+        "rect": [
+          0,
+          774,
+          512,
+          314
+        ],
+        "visibleRect": [
+          174,
+          789,
+          252,
+          283
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-right-v50",
+        "rect": [
+          0,
+          1088,
+          512,
+          448
+        ],
+        "visibleRect": [
+          105,
+          1105,
+          326,
+          416
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-left-v50",
+        "rect": [
+          512,
+          0,
+          512,
+          430
+        ],
+        "visibleRect": [
+          657,
+          9,
+          197,
+          414
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-left-v50",
+        "rect": [
+          512,
+          430,
+          512,
+          344
+        ],
+        "visibleRect": [
+          616,
+          440,
+          307,
+          320
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-left-v50",
+        "rect": [
+          512,
+          774,
+          512,
+          314
+        ],
+        "visibleRect": [
+          599,
+          789,
+          254,
+          282
+        ]
+      },
+      {
+        "pageId": "celtic-masked-air-left-v50",
+        "rect": [
+          512,
+          1088,
+          512,
+          448
+        ],
+        "visibleRect": [
+          594,
+          1104,
+          327,
+          417
+        ]
+      }
+    ]
   }
 ];

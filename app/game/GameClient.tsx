@@ -2062,6 +2062,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistHomeworldProgress]);
 
   const openPit = useCallback(() => {
+    // Interaction hints belong to the hub that emitted them, not the duel menu.
+    // Clear before loading so a new PIT storage diagnostic remains visible.
+    setToast(null);
     setPitReturnScreen(screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({

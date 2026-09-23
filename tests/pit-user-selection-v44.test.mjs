@@ -48,7 +48,7 @@ test('a supplied identity defaults to its first real bitmap and groups its other
   assert.equal([...options.matchAll(/<option /g)].length, variants.length);
   assert.doesNotMatch(options, /Présentation actuelle/);
   assert.ok(options.includes(`value="${variants[0].id}" selected=""`));
-  assert.match(html, /Pose bitmap fournie · animation complète non fournie/);
+  assert.match(html, /Les variantes partagent les règles de leur combattant ; elles ne garantissent pas un jeu d’animations complet/);
   assert.match(html, new RegExp(`data-pit-variant-fighter="${id}"`));
 });
 
@@ -62,7 +62,7 @@ test('existing fighters retain their current presentation and can select a suppl
   const selected = variants.at(-1);
   const imported = render({ playerId: id, playerVariantId: selected.id });
   assert.ok(variantSelect(imported).includes(`value="${selected.id}" selected=""`));
-  assert.match(imported, /Pose bitmap fournie · animation complète non fournie/);
+  assert.match(imported, /Les variantes partagent les règles de leur combattant ; elles ne garantissent pas un jeu d’animations complet/);
   assert.equal(rosterIds(imported).filter(value => value === id).length, 1);
 });
 test('selection remount shows the page of the retained fighter after a duel or mode change', () => {
