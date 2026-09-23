@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4174",
+  "at": "2026-09-23T11:52:31.015Z",
+  "checks": [
+    {
+      "name": "first-briefing-actionable",
+      "fullBriefingPreserved": true,
+      "optionalDetailsCollapsed": true
+    },
+    {
+      "name": "real-walk-and-jump",
+      "keyboard": true,
+      "noStateInjection": true
+    },
+    {
+      "name": "real-first-trace",
+      "acceptedScan": true,
+      "traceCount": "1/3",
+      "noStateInjection": true
+    },
+    {
+      "name": "collapse-pause-resume",
+      "canvasFocusRestored": true,
+      "guideHiddenOnPause": true,
+      "noDrillResetAfterResume": true
+    },
+    {
+      "name": "mobile-390",
+      "noHorizontalOverflow": true,
+      "guideWithinViewport": true
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

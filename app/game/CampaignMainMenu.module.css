@@ -4,3 +4,7 @@
 
 .openingVisual.openingVisual.openingVisual{align-self:start;height:440px;min-height:300px;max-height:480px}.openingVisual>img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:720px){.openingVisual.openingVisual.openingVisual{height:270px;min-height:210px;max-height:270px}}
+
+/* Short landscape screens and enlarged text must keep both confirmation actions reachable. */
+.dialog{width:min(580px,100%);max-height:calc(100svh - 40px);overflow-y:auto;overscroll-behavior:contain;overflow-wrap:anywhere}
+.newGame input{width:min(420px,100%);min-width:0}

@@ -28,10 +28,16 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
 }){
  const [view,setView]=useState<'main'|'new'|'load'>('main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
- const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null);
+ const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
  const back=useCallback(()=>{if(busy)return;if(confirmation)setConfirmation(null);else setView('main');},[busy,confirmation]);
  useMenuGamepad(rootRef,true,`${view}:${selected}:${Boolean(confirmation)}:${busy}`,back);
- useLayoutEffect(()=>{const scope=dialogRef.current??rootRef.current;if(scope&&!busy)controls(scope)[0]?.focus();},[view,confirmation,busy]);
+ useLayoutEffect(()=>{
+  if(busy)return;
+  // Closing a checkpoint dialog returns to its exact originating save, not the menu header.
+  const trigger=confirmationTriggerRef.current;
+  if(!confirmation&&trigger?.isConnected){confirmationTriggerRef.current=null;trigger.focus();return;}
+  const scope=dialogRef.current??rootRef.current;if(scope)controls(scope)[0]?.focus();
+ },[view,confirmation,busy]);
  const ready=catalog?.slots.filter(slot=>slot.status==='ready')??[];
  const current=ready.find(slot=>slot.id===catalog?.activeSlotId)??[...ready].sort((a,b)=>Math.max(0,...b.checkpoints.map(c=>Date.parse(c.savedAt)))-Math.max(0,...a.checkpoints.map(c=>Date.parse(c.savedAt))))[0];
  const slot=catalog?.slots.find(slot=>slot.id===selected);
@@ -54,7 +60,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      <label>Nom du chasseur<input maxLength={48} value={name} onChange={event=>setName(event.target.value)} disabled={busy} autoComplete="off" placeholder="Chasseur sans nom" /></label>
      <button className={styles.featured} type="button" disabled={busy||slot?.status!=='empty'} onClick={()=>slot&&onCreate(slot.id,name.trim())}>Créer la partie {slot?.id} et choisir le chasseur</button>
      {slot?.status!=='empty'&&<p role="status">Cet emplacement contient déjà des données. Choisis un emplacement vide ; aucune donnée existante ne sera remplacée.</p>}
-    </div>:slot?.status==='ready'?<><h3>{slot.hunterName} · partie {slot.id}</h3><div className={styles.checkpoints}>{(['manual','auto'] as const).flatMap(kind=>Array.from({length:kind==='manual'?10:2},(_,i)=>{const checkpoint=slot.checkpoints.find(c=>c.kind===kind&&c.index===i+1);return <button type="button" key={`${kind}-${i+1}`} disabled={busy||!checkpoint} data-checkpoint-id={`${kind}-${i+1}`} onClick={()=>checkpoint&&setConfirmation({slot,checkpoint})}><strong>{kind==='manual'?'Manuelle':'Automatique'} {i+1}</strong>{checkpoint?<><span>{date(checkpoint.savedAt)}</span><small>{place(checkpoint)} · {time(checkpoint.playTimeSeconds)}</small></>:<span>Vide</span>}</button>;}))}</div></>:<div role="status"><p>{slot?.status==='blocked'?'Cette archive est protégée. Aucune tentative ne l’efface.':'Cette partie ne contient aucun checkpoint.'}</p>{slot?.recoveryAvailable&&<button type="button" disabled={busy} onClick={()=>onRecover(slot.id)}>Récupérer la copie de secours de la partie {slot.id}</button>}</div>}
+    </div>:slot?.status==='ready'?<><h3>{slot.hunterName} · partie {slot.id}</h3><div className={styles.checkpoints}>{(['manual','auto'] as const).flatMap(kind=>Array.from({length:kind==='manual'?10:2},(_,i)=>{const checkpoint=slot.checkpoints.find(c=>c.kind===kind&&c.index===i+1);return <button type="button" key={`${kind}-${i+1}`} disabled={busy||!checkpoint} data-checkpoint-id={`${kind}-${i+1}`} onClick={event=>{if(checkpoint){confirmationTriggerRef.current=event.currentTarget;setConfirmation({slot,checkpoint});}}}><strong>{kind==='manual'?'Manuelle':'Automatique'} {i+1}</strong>{checkpoint?<><span>{date(checkpoint.savedAt)}</span><small>{place(checkpoint)} · {time(checkpoint.playTimeSeconds)}</small></>:<span>Vide</span>}</button>;}))}</div></>:<div role="status"><p>{slot?.status==='blocked'?'Cette archive est protégée. Aucune tentative ne l’efface.':'Cette partie ne contient aucun checkpoint.'}</p>{slot?.recoveryAvailable&&<button type="button" disabled={busy} onClick={()=>onRecover(slot.id)}>Récupérer la copie de secours de la partie {slot.id}</button>}</div>}
    </section>}
    <footer className={styles.footer}><p role="status" aria-live="polite">{busy?'Vérification et enregistrement des archives…':message}</p><button type="button" disabled={busy} onClick={onRefresh}>Actualiser les archives</button><p>Clavier : flèches, Entrée, Échap · Manette : directions, A, B · Tactile : toucher les choix.<br/>Données locales à cet appareil · aucun envoi automatique.</p></footer>
   </div>
@@ -64,11 +70,17 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
 
 export function CampaignSavePanel({slot,busy,message,onSave,onMainMenu,disabledReason}:{slot:CampaignSlotView|null;busy:boolean;message:string|null;onSave:(index:number,expectedRevision:number)=>void;onMainMenu:()=>void;disabledReason?:string|null}){
  const [replace,setReplace]=useState<{index:number;expectedRevision:number}|null>(null);
+ const replacementTriggerRef=useRef<HTMLButtonElement>(null),cancelReplacementRef=useRef<HTMLButtonElement>(null);
+ useLayoutEffect(()=>{
+  if(replace!==null){cancelReplacementRef.current?.focus();return;}
+  const trigger=replacementTriggerRef.current;replacementTriggerRef.current=null;
+  if(trigger?.isConnected)trigger.focus();
+ },[replace]);
  return <section className={styles.savePanel} aria-labelledby="campaign-save-title" data-campaign-save-panel>
   <h3 id="campaign-save-title">Partie {slot?.id} · Sauvegardes</h3><p>Dix checkpoints manuels et deux automatiques alternées. Les données incluent la campagne et ses annexes ; une chasse reprend au dernier checkpoint confirmé.</p>
   {disabledReason&&<p role="status">{disabledReason}</p>}
-  <div className={styles.manuals}>{Array.from({length:10},(_,i)=>{const index=i+1,checkpoint=slot?.checkpoints.find(c=>c.kind==='manual'&&c.index===index);return <button type="button" key={index} disabled={busy||!slot||Boolean(disabledReason)} data-manual-save={index} onClick={()=>checkpoint?setReplace({index,expectedRevision:slot!.revision}):onSave(index,slot!.revision)}><strong>Manuelle {index}</strong><small>{checkpoint?date(checkpoint.savedAt):'Vide · sauvegarder ici'}</small></button>;})}</div>
-  {replace!==null&&<div className={styles.confirmInline} role="group" aria-label="Confirmation du remplacement manuel"><p>Remplacer la sauvegarde manuelle {replace.index} de cette partie ? Les onze autres emplacements restent inchangés.</p><button type="button" disabled={busy} onClick={()=>setReplace(null)}>Annuler le remplacement</button><button type="button" disabled={busy||Boolean(disabledReason)} onClick={()=>{onSave(replace.index,replace.expectedRevision);setReplace(null);}}>Confirmer le remplacement manuel {replace.index}</button></div>}
+  <div className={styles.manuals}>{Array.from({length:10},(_,i)=>{const index=i+1,checkpoint=slot?.checkpoints.find(c=>c.kind==='manual'&&c.index===index);return <button type="button" key={index} disabled={busy||!slot||Boolean(disabledReason)} data-manual-save={index} onClick={event=>{if(checkpoint){replacementTriggerRef.current=event.currentTarget;setReplace({index,expectedRevision:slot!.revision});}else onSave(index,slot!.revision);}}><strong>Manuelle {index}</strong><small>{checkpoint?date(checkpoint.savedAt):'Vide · sauvegarder ici'}</small></button>;})}</div>
+  {replace!==null&&<div className={styles.confirmInline} role="group" aria-label="Confirmation du remplacement manuel" onKeyDown={event=>{if(event.key==='Escape'&&!busy){event.preventDefault();event.stopPropagation();setReplace(null);}}}><p>Remplacer la sauvegarde manuelle {replace.index} de cette partie ? Les onze autres emplacements restent inchangés.</p><button ref={cancelReplacementRef} type="button" disabled={busy} onClick={()=>setReplace(null)}>Annuler le remplacement</button><button type="button" disabled={busy||Boolean(disabledReason)} onClick={()=>{onSave(replace.index,replace.expectedRevision);setReplace(null);}}>Confirmer le remplacement manuel {replace.index}</button></div>}
   <p>Autos : {[1,2].map(index=>{const checkpoint=slot?.checkpoints.find(c=>c.kind==='auto'&&c.index===index);return `${index} · ${checkpoint?date(checkpoint.savedAt):'vide'}`;}).join(' / ')}</p>
   {message&&<p role="status">{message}</p>}<button type="button" disabled={busy||Boolean(disabledReason)} onClick={onMainMenu}>Sauvegarder et revenir au menu principal</button>
  </section>;

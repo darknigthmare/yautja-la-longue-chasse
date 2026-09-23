@@ -16,7 +16,7 @@ import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePit
 import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
-import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, type PitArenaArtBank } from "./pitArenaRendering";
+import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
 import { getPitCombatBitmapArtDefinition, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
   PIT_ARENAS,
@@ -43,6 +43,7 @@ import {
 import {
   advancePitPresentationCamera,
   applyPitPresentationCamera,
+  resolvePitPresentationMotion,
   type PitPresentationCamera,
 } from "./systems/pitCamera";
 import {
@@ -583,6 +584,8 @@ function drawArena(
   canvas.dataset.pitCameraTargetZoom = camera.targetZoom.toFixed(4);
   canvas.dataset.pitCameraCenterX = camera.centerX.toFixed(2);
   canvas.dataset.pitCameraCenterY = camera.centerY.toFixed(2);
+  canvas.dataset.pitArenaBackScale = getPitArenaLayerTransform(state.arenaId, "P0", camera, reducedMotion).scale.toFixed(4);
+  canvas.dataset.pitArenaFloorScale = getPitArenaLayerTransform(state.arenaId, "P4", camera, reducedMotion).scale.toFixed(4);
 
   const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state) });
   canvas.dataset.pitArenaId = state.arenaId;
@@ -924,7 +927,9 @@ export default function PitCanvas({
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
-  const reducedCameraMotion = prefersReducedMotion || !screenShake;
+  const [fixedCamera, setFixedCamera] = useState(false);
+  const presentationMotion = resolvePitPresentationMotion({ prefersReducedMotion, screenShake, fixedCamera });
+  const reducedCameraMotion = presentationMotion.reducedMotion;
   const [mode, setMode] = useState<PitMode>("cpu");
   const [leftId, setLeftId] = useState<PitVersusFighterId>("jungle-hunter");
   const [rightId, setRightId] = useState<PitVersusFighterId>("berserker");
@@ -3044,7 +3049,7 @@ export default function PitCanvas({
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
   const recentImpact = impact && combat.frame - impact.frame < 8;
-  const shake = !reducedCameraMotion && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
+  const shake = presentationMotion.screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
   const descentResourceFeedbackActive = Boolean(
     descentResourceFeedback &&
       combat.frame - descentResourceFeedback.frame <
@@ -3143,8 +3148,16 @@ export default function PitCanvas({
                       ? "DESCENTE · SURVIE"
                       : "ENTRAÎNEMENT"}
           {" · "}{arenaDefinition.name}
-          {reducedCameraMotion ? " · CAMÉRA FIXE" : ""}
+          {reducedCameraMotion ? " · CAMÉRA FIXE" : " · CAMÉRA DYNAMIQUE"}
         </span>
+        <button type="button" className={styles.utilityButton}
+          data-pit-camera-control
+          aria-pressed={!reducedCameraMotion}
+          disabled={prefersReducedMotion}
+          title={prefersReducedMotion ? "Caméra fixe : préférence système de réduction des mouvements." : "Activer ou désactiver le suivi et le zoom de l’arène."}
+          onClick={() => { setFixedCamera(value => !value); resetLiveInputs(); focusCombatRoot(); }}>
+          {reducedCameraMotion ? "Caméra fixe" : "Caméra dynamique"}
+        </button>
         {trainingRules && !playbackReplay ? (
           <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>
             {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
@@ -3187,7 +3200,7 @@ export default function PitCanvas({
           </span>
         </aside>
       ) : null}
-      <div className={styles.hud} inert={terminal}>
+      <div className={styles.hud} data-pit-hud inert={terminal}>
         <div className={styles.fighterHud}>
           <div><strong>{leftDefinition.name}</strong><span>{left.phase.toUpperCase()}</span></div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${leftDefinition.name}`} aria-valuemin={0} aria-valuemax={leftDefinition.maxHealth} aria-valuenow={left.health}><i style={{ width: `${left.health / leftDefinition.maxHealth * 100}%` }} /></div>

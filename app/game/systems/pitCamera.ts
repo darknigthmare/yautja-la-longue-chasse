@@ -20,6 +20,17 @@ export interface PitPresentationCamera {
   readonly targetZoom: number;
 }
 export interface PitCameraOptions { readonly reducedMotion?: boolean }
+/** Screen shake is an impact effect, not an opt-out from useful duel framing. */
+export function resolvePitPresentationMotion(options: {
+  readonly prefersReducedMotion: boolean;
+  readonly screenShake: boolean;
+  readonly fixedCamera?: boolean;
+}): { readonly reducedMotion: boolean; readonly screenShake: boolean } {
+  return {
+    reducedMotion: options.prefersReducedMotion || Boolean(options.fixedCamera),
+    screenShake: options.screenShake && !options.prefersReducedMotion && !options.fixedCamera,
+  };
+}
 export interface PitPresentationBounds {
   readonly left: number; readonly right: number;
   readonly top: number; readonly bottom: number;
@@ -140,7 +151,10 @@ export function advancePitPresentationCamera(
   if (target.mode === "fixed") return target;
   const frames = clamp(state.frame - previous.frame, 1, 12);
   const positionAlpha = 1 - Math.pow(0.84, frames);
-  const zoomAlpha = 1 - Math.pow(0.88, frames);
+  // Read retreats and aerial space promptly; close in more gently so brief
+  // recoveries and projectile expiry do not produce a distracting zoom pulse.
+  const zoomRetention = target.zoom < previous.zoom ? 0.8 : 0.92;
+  const zoomAlpha = 1 - Math.pow(zoomRetention, frames);
   const desiredZoom = Math.abs(target.zoom - previous.zoom) <= ZOOM_DEAD_ZONE ? previous.zoom : target.zoom;
   const desiredX = Math.abs(target.centerX - previous.centerX) <= CENTER_DEAD_ZONE ? previous.centerX : target.centerX;
   const desiredY = Math.abs(target.centerY - previous.centerY) <= CENTER_DEAD_ZONE ? previous.centerY : target.centerY;

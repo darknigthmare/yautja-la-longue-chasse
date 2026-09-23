@@ -3255,6 +3255,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <div className="briefing-panel">
                 <p className="mission-planet">{selectedMission.planetName}</p>
                 <h2 id="briefing-title">{selectedMission.title}</h2>
+                {newGamePhase === "briefing" && <section className="save-transfer" aria-label="Première chasse guidée" data-first-hunt-briefing>
+                  <h3>Observer · suivre la piste · ramener la prise</h3>
+                  <p>Tu prends le contrôle du chasseur dans la clairière d’Oseris-IV. Commence par te déplacer et sauter ; le guide en jeu indiquera ensuite comment analyser les traces et récupérer le transpondeur.</p>
+                  <p>Aucun exercice ne bloque la chasse. Les commandes affichées suivent tes réglages ; clavier, manette et boutons tactiles restent utilisables.</p>
+                  <button type="button" className="alien-button" onClick={launchMission}>Commencer la première chasse guidée</button>
+                  <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Vérifier mes commandes</button>
+                </section>}
+                <details open={!newGamePhase} data-full-hunt-briefing>
+                <summary>Briefing complet, objectifs, code et équipement</summary>
                 <p>{selectedMission.briefing}</p>
                 {selectedMission.id === "jungle-vey" && (
                   <p className="source-badge">
@@ -3355,6 +3364,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     </strong>
                   </div>
                 </div>
+                </details>
                 <div className="briefing-actions">
                   <button
                     type="button"
@@ -3664,7 +3674,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             />
             {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
               <h2>{save.profile.hunterName} · Première chasse</h2>
-              <p>Choisis ton apparence avec la personnalisation existante. Tu commenceras ensuite par le briefing de Vey et la chasse en jungle. La jeunesse de la nurserie reste en production ; aucun rite de jeunesse n’est attribué.</p>
+              <p>Choisis ton apparence avec la personnalisation existante. Tu commenceras ensuite par le briefing de Vey et la chasse en jungle. Un guide en situation accompagne les déplacements, le saut, les traces et la récupération. La jeunesse de la nurserie reste en production ; aucun rite de jeunesse n’est attribué.</p>
               <button type="button" className="alien-button" onClick={() => { setSelectedMission(MISSIONS.find(mission => mission.id === "jungle-vey")!); setBriefingAtAirlock(true); setNewGamePhase("briefing"); setScreen("briefing"); }}>Confirmer le chasseur et ouvrir le premier briefing</button>
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}
@@ -4390,6 +4400,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HuntCanvas
             mission={selectedMission}
+            firstHuntGuideEnabled={selectedMission.id === "jungle-vey" && save.missionProgress["jungle-vey"].status !== "completed"}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
             loadout={activeMissionSave.loadout}
             inventory={activeMissionSave.inventory}

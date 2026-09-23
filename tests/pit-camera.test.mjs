@@ -184,3 +184,72 @@ test("the constant reduced-motion frame contains every delivered plate at both w
     assertContained(api.targetPitPresentationCamera(state, { reducedMotion: true }), state);
   }
 });
+
+
+test("screen shake can be disabled without disabling dynamic framing; reduced motion remains authoritative", () => {
+  assert.deepEqual(api.resolvePitPresentationMotion({ screenShake: false, prefersReducedMotion: false }),
+    { reducedMotion: false, screenShake: false });
+  assert.deepEqual(api.resolvePitPresentationMotion({ screenShake: true, prefersReducedMotion: false }),
+    { reducedMotion: false, screenShake: true });
+  assert.deepEqual(api.resolvePitPresentationMotion({ screenShake: true, prefersReducedMotion: true }),
+    { reducedMotion: true, screenShake: false });
+  assert.deepEqual(api.resolvePitPresentationMotion({ screenShake: true, prefersReducedMotion: false, fixedCamera: true }),
+    { reducedMotion: true, screenShake: false });
+});
+
+test("a single fighter retreat changes framing visibly, then approaching restores a close view", () => {
+  let state = api.createPitCombatState("jungle-hunter", "city-hunter", { mode: "training" });
+  let camera = api.targetPitPresentationCamera(state);
+  const initial = camera;
+  const rivalX = state.fighters[1].x;
+  let previous = camera;
+  for (let tick = 0; tick < 90; tick++) {
+    state = api.stepPitCombat(state, [{ left: true }, {}]);
+    camera = api.advancePitPresentationCamera(camera, state);
+    assertContained(camera, state);
+    assert.ok(Math.abs(camera.zoom - previous.zoom) < 0.025, "normal walking does not snap zoom");
+    previous = camera;
+  }
+  assert.equal(state.fighters[1].x, rivalX);
+  assert.ok(initial.zoom - camera.zoom > 0.3);
+  assert.ok(initial.centerX - camera.centerX > 80);
+  const wide = camera;
+  for (let tick = 0; tick < 140; tick++) {
+    state = api.stepPitCombat(state, [{ right: true }, {}]);
+    camera = api.advancePitPresentationCamera(camera, state);
+    assertContained(camera, state);
+    assert.ok(Math.abs(camera.zoom - previous.zoom) < 0.025, "approaching does not snap zoom");
+    previous = camera;
+  }
+  assert.ok(camera.zoom - wide.zoom > 0.6, "return to close combat visibly zooms in");
+  assert.ok(camera.zoom > 1.8);
+});
+
+test("camera pans continuously as airborne fighters cross instead of locking to a player slot", () => {
+  const state = stateAt(320, 640, 160, 0);
+  let camera = api.targetPitPresentationCamera(state);
+  for (let tick = 1; tick <= 80; tick++) {
+    state.frame = tick;
+    state.fighters[0].x = 320 + tick * 4;
+    state.fighters[1].x = 640 - tick * 4;
+    state.fighters[0].facing = state.fighters[0].x > state.fighters[1].x ? -1 : 1;
+    state.fighters[1].facing = -state.fighters[0].facing;
+    const next = api.advancePitPresentationCamera(camera, state);
+    assertContained(next, state);
+    assert.ok(Math.abs(next.centerX - camera.centerX) < 6, "cross-up cannot teleport camera center");
+    assert.ok(Math.abs(next.zoom - camera.zoom) < 0.035, "cross-up cannot snap zoom");
+    camera = next;
+  }
+});
+
+test("outward zoom reacts faster than inward zoom without bypassing visual containment", () => {
+  const state = stateAt(160, 800); state.frame = 1;
+  const target = api.targetPitPresentationCamera(state);
+  const wider = { ...target, frame: 0, zoom: target.zoom - 0.1 };
+  const closer = { ...target, frame: 0, zoom: target.zoom + 0.1 };
+  const inward = api.advancePitPresentationCamera(wider, state);
+  const outward = api.advancePitPresentationCamera(closer, state);
+  assert.ok(closer.zoom - outward.zoom > inward.zoom - wider.zoom);
+  assert.ok(outward.zoom > target.zoom, "padding allows smooth pullback before hard clipping safety");
+  assertContained(outward, state);
+});

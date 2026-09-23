@@ -17,6 +17,8 @@ import {
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
+import FirstHuntGuide from "./FirstHuntGuide";
+import { createFirstHuntLearning, observeFirstHunt, firstHuntHint, type FirstHuntObservation, type FirstHuntHint } from "./systems/firstHuntGuide";
 import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
 import { PilotExplorationMap } from "./PilotExplorationMap";
 import { IceExplorationMap } from "./IceExplorationMap";
@@ -240,6 +242,7 @@ import type {
 // ---------------------------------------------------------------------------
 
 interface HuntCanvasProps {
+  firstHuntGuideEnabled?: boolean;
   mission: MissionDefinition;
   encounterRun: number;
   loadout: Loadout;
@@ -2571,6 +2574,20 @@ function currentObjective(
   return {
     title: extractObjective?.label ?? "Rejoindre l’extraction",
     detail: "Atteins la balise à l’est puis embarque avec [E] lorsque le vaisseau est en stationnaire.",
+  };
+}
+
+/** Read only: the apprentice guide cannot alter collisions, rewards or saved evidence. */
+function firstHuntObservation(state: GameState): FirstHuntObservation {
+  return {
+    x: state.player.x + state.player.width / 2, y: state.player.y + state.player.height / 2,
+    velocityY: state.player.velocityY, grounded: state.player.grounded, elapsed: state.elapsed,
+    paused: state.paused, phase: state.phase, energy: state.player.energy, scanCooldown: state.player.scanCooldown,
+    traces: state.scanNodes.map(node => ({ ...node })), recoveries: state.recoveryNodes.map(node => ({ ...node })),
+    bossActive: state.boss.active, bossAlive: state.boss.alive, bossX: state.boss.x + state.boss.width / 2,
+    danger: state.enemies.some(enemy => enemy.alive && enemy.active && state.aiBrains[enemy.id]?.mode === "engage"),
+    extractionX: state.world.extraction.x, trophyExtracting: state.trophyExtracting,
+    transportPhase: state.dropShip?.phase ?? null,
   };
 }
 
@@ -9251,6 +9268,7 @@ function stepGame(
 // ---------------------------------------------------------------------------
 
 export default function HuntCanvas({
+  firstHuntGuideEnabled = false,
   mission,
   encounterRun,
   loadout,
@@ -9305,6 +9323,8 @@ export default function HuntCanvas({
   });
   const [ui, setUi] = useState<UiSnapshot>(EMPTY_UI);
   const [assetsReady, setAssetsReady] = useState(false);
+  const [openingHint, setOpeningHint] = useState<FirstHuntHint | null>(null);
+  const [openingGuideCollapsed, setOpeningGuideCollapsed] = useState(false);
 
   // Audio observes simulation snapshots; no combat or timing depends on playback.
   useEffect(() => {
@@ -9460,6 +9480,9 @@ export default function HuntCanvas({
       game.paused = true;
       window.queueMicrotask(() => resumeFailureRef.current?.());
     }
+    const guideEnabled = firstHuntGuideEnabled && mission.id === "jungle-vey";
+    let guideLearning = createFirstHuntLearning(firstHuntObservation(game), Boolean(restoredHunt));
+    setOpeningHint(guideEnabled ? firstHuntHint(guideLearning) : null);
     let lastExplorationKey = JSON.stringify(normalizeExplorationProgress(explorationProgress));
     const emitExploration = () => {
       if (!isExplorationMission(mission.id)) return;
@@ -9904,6 +9927,7 @@ export default function HuntCanvas({
     });
 
     const restart = () => {
+      const retryFromCheckpoint = Boolean(game.lastCheckpoint);
       const visitedBeforeRetry = game.visitedScreenIds;
       const explorationBeforeRetry = game.exploration;
       game = game.lastCheckpoint
@@ -9919,6 +9943,8 @@ export default function HuntCanvas({
             ecologyRunSeed,
             explorationBeforeRetry,
           );
+      guideLearning = createFirstHuntLearning(firstHuntObservation(game), retryFromCheckpoint);
+      setOpeningHint(guideEnabled ? firstHuntHint(guideLearning) : null);
       game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       game.visitedScreenIds = discoverWorldScreen(
         mission.id,
@@ -10111,6 +10137,7 @@ export default function HuntCanvas({
           fixedStep,
           (result) => finishRef.current(result),
         );
+        if (guideEnabled) guideLearning = observeFirstHunt(guideLearning, firstHuntObservation(game));
         for (const sound of game.soundEvents.splice(0)) {
           soundRef.current?.(sound);
         }
@@ -10150,6 +10177,7 @@ export default function HuntCanvas({
       if (time - lastUiPush >= 100) {
         lastUiPush = time;
         setUi(snapshot(game, mission));
+        setOpeningHint(guideEnabled ? firstHuntHint(guideLearning) : null);
       }
       frameId = requestAnimationFrame(frame);
     };
@@ -10178,6 +10206,7 @@ export default function HuntCanvas({
       requestSuspendRef.current = () => undefined;
     };
   }, [
+    firstHuntGuideEnabled,
     activeBindings,
     appearance,
     difficulty,
@@ -10376,6 +10405,7 @@ export default function HuntCanvas({
 
       {/* Bloc : scène Canvas. Toute action reste doublée par un bouton DOM. */}
       <div style={styles.canvasFrame}>
+        {firstHuntGuideEnabled && assetsReady && !ui.paused && openingHint && <FirstHuntGuide hint={openingHint} bindings={activeBindings} collapsed={openingGuideCollapsed} onToggle={() => setOpeningGuideCollapsed(value => !value)} onReturnToPlay={() => canvasRef.current?.focus()} />}
         <canvas
           ref={canvasRef}
           className="hunt-canvas"

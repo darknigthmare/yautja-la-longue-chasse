@@ -188,7 +188,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
     requestAnimationFrame(() => gridRef.current?.querySelector<HTMLButtonElement>(`[data-choice-id="${id}"]`)?.focus());
   };
   useImperativeHandle(ref, () => ({ command, focus, reset: (playerOverride) => editSlot("player", playerOverride), reviewOpponent: () => editSlot("opponent") }));
-  return <div ref={rootRef} className={styles.flow} data-pit-selection-step={state.step} data-pit-selection-slot={state.slot}
+  return <div ref={rootRef} className={styles.flow} data-reduced-motion={props.reducedMotion} data-pit-selection-step={state.step} data-pit-selection-slot={state.slot}
     onKeyDown={event => {
       if (event.defaultPrevented || event.repeat) return;
       const target = event.target as HTMLElement;

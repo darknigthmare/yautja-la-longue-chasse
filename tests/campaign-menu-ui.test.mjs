@@ -10,10 +10,10 @@ test('manual overwrite confirmation pins the revision originally displayed',()=>
  let state=null;const requested=[];
  const compiled=ts.transpileModule(fs.readFileSync('app/game/CampaignMainMenu.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  const exports={};const jsx=(type,props)=>({type,props});
- vm.runInNewContext(compiled,{exports,require(name){if(name==='react')return{useState:()=>[state,next=>state=next]};if(name==='react/jsx-runtime')return{jsx,jsxs:jsx};return{default:{}};}});
+ vm.runInNewContext(compiled,{exports,require(name){if(name==='react')return{useState:()=>[state,next=>state=next],useRef:()=>({current:null}),useLayoutEffect:()=>{}};if(name==='react/jsx-runtime')return{jsx,jsxs:jsx};return{default:{}};}});
  const walk=node=>!node||typeof node!=='object'?[]:[node,...(Array.isArray(node.props?.children)?node.props.children.flatMap(walk):walk(node.props?.children))];
  const props={slot:{id:1,revision:7,checkpoints:[{id:'manual-1',kind:'manual',index:1,savedAt:'2026-09-20T00:00:00Z'}]},busy:false,message:null,onSave:(...args)=>requested.push(args),onMainMenu(){}};
- let tree=exports.CampaignSavePanel(props);walk(tree).find(node=>node.props?.['data-manual-save']===1).props.onClick();
+ let tree=exports.CampaignSavePanel(props);walk(tree).find(node=>node.props?.['data-manual-save']===1).props.onClick({currentTarget:{isConnected:false}});
  props.slot={...props.slot,revision:9};tree=exports.CampaignSavePanel(props);
  walk(tree).find(node=>node.type==='button'&&Array.isArray(node.props?.children)&&node.props.children[0]==='Confirmer le remplacement manuel ').props.onClick();
  assert.deepEqual(requested,[[1,7]]);

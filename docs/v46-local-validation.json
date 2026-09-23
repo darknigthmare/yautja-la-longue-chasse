@@ -1,0 +1,76 @@
+{
+  "version": "V46",
+  "checkedAt": "2026-09-23T11:58:06.097430+00:00",
+  "build": {
+    "passed": true,
+    "command": "npm run build",
+    "runtime": "Vinext production build, local4174",
+    "log": "work/v46/build-final.log"
+  },
+  "typecheck": {
+    "passed": true,
+    "command": "npm run typecheck"
+  },
+  "lint": {
+    "passed": true,
+    "errors": 0,
+    "warnings": 1,
+    "existingWarning": "ClanChroniclePanel.tsx:40 @next/next/no-img-element"
+  },
+  "tests": {
+    "passed": true,
+    "count": 1474,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 140920.8518,
+    "command": "node --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+    "log": "work/v46/tests-final.tap"
+  },
+  "browser": {
+    "newPlayer": {
+      "passed": true,
+      "checks": 5,
+      "report": "docs/v46-new-player-browser-qa.json"
+    },
+    "competitive": {
+      "passed": true,
+      "checks": 4,
+      "report": "docs/v46-camera-browser-qa.json"
+    },
+    "mobileAccessibility": {
+      "passed": true,
+      "checks": 4,
+      "report": "docs/v46-mobile-accessibility-qa.json"
+    },
+    "reliability": {
+      "passed": true,
+      "checks": 11,
+      "report": "docs/v46-reliability-browser-qa.json"
+    },
+    "animationRegression": {
+      "passed": true,
+      "checks": 8,
+      "report": "docs/v46-animation-regression-qa.json"
+    },
+    "componentAccessibility": {
+      "passed": true,
+      "checks": 13,
+      "report": "docs/v46-accessibility-component-qa.json"
+    }
+  },
+  "integratedBrowserChecks": 32,
+  "componentBrowserChecks": 13,
+  "qaProfiles": [
+    "New player",
+    "Competitive local versus",
+    "Keyboard/touch/small-screen and reduced motion",
+    "Interrupted sessions and storage incidents"
+  ],
+  "correctionDuringValidation": "The pure simulation harness now ignores component CSS and invokes the actual opening-guide functions when testing restart; assertions retained and extended. No runtime change after final build.",
+  "limits": [
+    "Four simulated QA profiles, not external human testers.",
+    "No physical phone/controller/screen reader certification.",
+    "Nursery prologue and complete animation backlog remain unfinished."
+  ],
+  "publication": "Local validation only; production deployment and public QA recorded separately after Git push."
+}

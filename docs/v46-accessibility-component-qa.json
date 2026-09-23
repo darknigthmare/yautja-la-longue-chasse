@@ -1,0 +1,104 @@
+{
+  "profile": "Small-screen, keyboard and reduced-motion player",
+  "baseline": false,
+  "checkedAt": "2026-09-23T11:39:53.412Z",
+  "surface": "Real React components bundled into isolated browser fixture; campaign storage callbacks mocked; no full-game or physical iOS certification.",
+  "checks": [
+    {
+      "name": "checkpoint-focus-return",
+      "passed": true,
+      "details": "Manuelle 1\n23/09/2026 14:00\nVaisseau · 0 h 02"
+    },
+    {
+      "name": "checkpoint-focus-trap",
+      "passed": true
+    },
+    {
+      "name": "landscape-dialog-accessible",
+      "passed": true,
+      "details": {
+        "top": 20,
+        "bottom": 260,
+        "height": 240,
+        "viewport": 280,
+        "overflowY": "auto",
+        "clientHeight": 238,
+        "scrollHeight": 396
+      }
+    },
+    {
+      "name": "landscape-dialog-actions-reachable",
+      "passed": true
+    },
+    {
+      "name": "save-confirmation-focus",
+      "passed": true
+    },
+    {
+      "name": "save-confirmation-escape",
+      "passed": true
+    },
+    {
+      "name": "in-game-reduced-motion",
+      "passed": true,
+      "details": "0s"
+    },
+    {
+      "name": "touch-targets-at-least-44px",
+      "passed": true,
+      "details": [
+        {
+          "label": "J1 · À CONFIRMER",
+          "height": 44,
+          "font": 8.96
+        },
+        {
+          "label": "RIVAL · À CONFIRMER",
+          "height": 44,
+          "font": 8.96
+        },
+        {
+          "label": "Rechercher un chasseur",
+          "height": 44,
+          "font": 16
+        },
+        {
+          "label": "Page suivante",
+          "height": 44,
+          "font": 9.6
+        },
+        {
+          "label": "Présentation du chasseur",
+          "height": 44,
+          "font": 16
+        }
+      ]
+    },
+    {
+      "name": "touch-entry-legibility",
+      "passed": true,
+      "details": [
+        16,
+        16
+      ]
+    },
+    {
+      "name": "roster-no-horizontal-overflow",
+      "passed": true
+    },
+    {
+      "name": "filtered-roster-keyboard-entry",
+      "passed": true
+    },
+    {
+      "name": "campaign-text-200-percent-no-overflow",
+      "passed": true
+    },
+    {
+      "name": "campaign-name-within-screen",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

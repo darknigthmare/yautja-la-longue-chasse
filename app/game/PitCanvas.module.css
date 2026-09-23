@@ -416,3 +416,14 @@
 
 /* Preserve each supplied pose while facing its rival when a side is known. */
 .fighterKeyArt[data-native-facing="left"][data-facing="right"] { transform: scaleX(-1); }
+
+/* Camera controls remain reachable with a long stage title or the side laboratory. */
+.matchHeader { flex-wrap: wrap; gap: 8px 12px; }
+.matchHeader > span { min-width: 0; flex: 1 1 260px; line-height: 1.45; text-align: center; }
+.matchHeader > button:disabled { cursor: default; opacity: .62; }
+@media (max-width: 760px) { .matchHeader > span { flex-basis: 100%; } }
+
+/* The camera toggle stays usable by touch without enlarging unrelated HUD controls. */
+@media (pointer: coarse) {
+  .matchHeader > button[data-pit-camera-control] { min-height: 44px; min-width: 44px; }
+}

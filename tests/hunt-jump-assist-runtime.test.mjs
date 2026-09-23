@@ -15,11 +15,13 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const bundled = await build({
   stdin: {
     contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
-export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings";`,
+export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings";`,
     resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)),
     sourcefile: fileURLToPath(canvasUrl), loader: "tsx",
   },
   bundle: true, write: false, format: "cjs", platform: "node", jsx: "automatic",
+  // This suite executes simulation/lifecycle functions, never component styling.
+  loader: { ".module.css": "empty" },
   external: ["react", "react/jsx-runtime"], logLevel: "silent",
 });
 const browser = { hidden: false, focused: true, pads: [] };
@@ -66,6 +68,10 @@ function fixture({ boost = false, missionId = "jungle-vey" } = {}) {
     Element: class Element {}, lastObservedPaused: false, lastTime: 0, accumulator: 0,
     lastObservedPhase: state.phase, lastPersistedElapsed: 0, lastPersistedCheckpointIndex: 0,
     performance: { now: () => 1234 }, setUi() {}, emitPersistence() {}, persistHuntRef: { current: undefined },
+    guideEnabled: mission.id === "jungle-vey",
+    guideLearning: runtime.createFirstHuntLearning(runtime.firstHuntObservation(state)),
+    openingHint: null,
+    setOpeningHint(hint) { environment.openingHint = hint; },
   };
   environment.isInteractiveControl = lifecycle("isInteractiveControl", environment);
   const keyDown = lifecycle("onKeyDown", environment);
@@ -240,9 +246,31 @@ test("real retry handler clears buffered and held inputs while preserving acquir
   for (const field of ["keyboardHeld", "touchHeld", "gamepadHeld", "pressed"]) assert.equal(f.input[field].size, 0);
   assert.equal(f.input.gamepadNeedsNeutral, true);
   assert.deepEqual(plain(restarted.exploration), inherited);
+  assert.equal(f.environment.guideLearning.resumed, true, "checkpoint retries skip already introduced first steps");
+  assert.deepEqual(plain(f.environment.guideLearning.last), plain(runtime.firstHuntObservation(restarted)),
+    "the guide observes the actual restored actor, not the dead pre-retry state");
+  assert.deepEqual(plain(f.environment.openingHint), plain(runtime.firstHuntHint(f.environment.guideLearning)));
   flatWorld(restarted); const before = jumps(restarted);
   f.down(); f.frame(); assert.equal(jumps(restarted), before);
   f.up(); f.frame(); f.down(); f.frame();
   assert.equal(jumps(restarted), before + 1);
   assert.equal(restarted.player.aerialBoostUsed, false);
+});
+
+
+test("real retry without checkpoint resets the guide from the new hunt and keeps it disabled outside Vey", () => {
+  for (const missionId of ["jungle-vey", "ice-cryostalker"]) {
+    const f = fixture({ missionId });
+    f.environment.guideLearning = { ...f.environment.guideLearning, distance: 500, jumped: true, resumed: true };
+    f.environment.openingHint = { id: "stale-hint" };
+    f.restart();
+    const restarted = f.environment.game;
+    assert.equal(f.environment.guideLearning.resumed, false);
+    assert.equal(f.environment.guideLearning.distance, 0);
+    assert.equal(f.environment.guideLearning.jumped, false);
+    assert.deepEqual(plain(f.environment.guideLearning.last), plain(runtime.firstHuntObservation(restarted)));
+    assert.deepEqual(plain(f.environment.openingHint), missionId === "jungle-vey"
+      ? plain(runtime.firstHuntHint(f.environment.guideLearning)) : null);
+    assert.equal(restarted.jumpAssist.requiresRelease, true);
+  }
 });
