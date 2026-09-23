@@ -12,7 +12,7 @@ export interface CampaignSlotView {id:number;status:'empty'|'ready'|'blocked';re
 export interface CampaignCatalogView {slots:readonly CampaignSlotView[];activeSlotId:number|null}
 const time=(seconds:number)=>`${Math.floor(seconds/3600)} h ${Math.floor(seconds%3600/60).toString().padStart(2,'0')}`;
 const date=(value:string)=>new Date(value).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});
-const place=(checkpoint:CampaignCheckpointView)=>checkpoint.hasActiveHunt?'Chasse suspendue':checkpoint.resumeLocation==='homeworld'?'Yautja Prime':checkpoint.resumeLocation==='prologue'?'Nurserie · prologue':checkpoint.resumeLocation==='new-game'?'Début de campagne':'Vaisseau';
+const place=(checkpoint:CampaignCheckpointView)=>checkpoint.hasActiveHunt?'Chasse suspendue':checkpoint.resumeLocation==='homeworld'?'Yautja Prime':checkpoint.resumeLocation==='prologue'?'Nurserie · prologue':checkpoint.resumeLocation==='youth-training'?'Formation Unblooded':checkpoint.resumeLocation==='new-game'?'Début de campagne':'Vaisseau';
 const controls=(root:HTMLElement)=>Array.from(root.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),select:not(:disabled),a[href]')).filter(node=>node.getClientRects().length>0&&!node.closest('[inert]'));
 function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onBack:()=>void){
  if(event.defaultPrevented||event.repeat||!root)return;
@@ -56,7 +56,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
     <div className={styles.managerHeader}><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':'Charger une partie'}</h2><button type="button" disabled={busy} onClick={back}>Retour au menu · B</button></div>
     <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} aria-pressed={selected===item.id} disabled={busy} onClick={()=>setSelected(item.id)}><span>PARTIE {item.id}</span><strong>{item.status==='empty'?'Emplacement vide':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Illisible ou version future · protégée':item.status==='empty'?'Disponible':`${item.checkpoints.length} / 12 checkpoints`}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
-     <p>La nouvelle partie commence par le prologue de jeunesse dans la nurserie, puis l’accueil Unblooded sur le Homeworld. La formation ultérieure reste à compléter ; aucun rite n’est validé artificiellement.</p>
+     <p>La nouvelle partie commence par le prologue de jeunesse dans la nurserie, puis l’accueil Unblooded sur le Homeworld. Le dojo, la première lame, le biomask, le camp et le repos se jouent ensuite auprès du clan. Les chasses et rites suivants restent à construire.</p>
      <label>Nom du chasseur<input maxLength={48} value={name} onChange={event=>setName(event.target.value)} disabled={busy} autoComplete="off" placeholder="Chasseur sans nom" /></label>
      <button className={styles.featured} type="button" disabled={busy||slot?.status!=='empty'} onClick={()=>slot&&onCreate(slot.id,name.trim())}>Créer la partie {slot?.id} et commencer le prologue</button>
      {slot?.status!=='empty'&&<p role="status">Cet emplacement contient déjà des données. Choisis un emplacement vide ; aucune donnée existante ne sera remplacée.</p>}

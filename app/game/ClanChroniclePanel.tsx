@@ -1,5 +1,7 @@
 "use client";
 
+import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
+
 import { useMemo, useState } from "react";
 import type { SaveGame } from "./types";
 import concepts from "./preserveHumanConceptsV36.json";
@@ -54,7 +56,7 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
       <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V37</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
       <button type="button" onClick={onClose}>Retour</button>
     </header>
-    <p className={styles.notice}><strong>{save.prologue ? "Nurserie jouable ; suite de la jeunesse en cours de construction." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
+    <p className={styles.notice}><strong>{save.prologue ? "Nurserie, dojo, camp et premier réveil jouables ; première sortie de jeunesse à construire." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
@@ -66,6 +68,7 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
         <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le vaisseau, les trophées, les contrats et THE PIT restent accessibles comme auparavant."}</p>
       </aside>
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
+      {save.prologue && <aside className={styles.legacy} data-youth-chronicle><h3>Formation auprès du clan</h3><p>{youthCampaignObjective(save.youthTraining)}</p><p>{youthEquipmentSummary(save.youthTraining)}</p><p>Les gestes du dojo, les remises d’équipement, le parcours chronométré, le duel et le repos gardent leurs propres preuves. Ils ne remplacent ni les Premières Pistes ni la chasse sans guide ; aucun rang supplémentaire ne vient d’une visite de menu.</p></aside>}
       <h3 className={styles.subheading}>Les preuves précèdent les promotions</h3>
       <ol className={styles.rites}>
         {CHRONICLE_RITES.map(rite => {

@@ -1,0 +1,1113 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "file": "camp.png",
+      "src": "/game/youth/v48/camp.png",
+      "sha256": "81f713785e0c8c2ee7688a9fbfa6ad7f9ec5b60c28a88f8d3d84911ede417c72",
+      "bytes": 2337133,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "file": "dojo.png",
+      "src": "/game/youth/v48/dojo.png",
+      "sha256": "75e0e087da5776ade643c113e431fff20c9e67c41006c60f6bca36f9c0c11979",
+      "bytes": 2446954,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "file": "mentor-left.png",
+      "src": "/game/youth/v48/mentor-left.png",
+      "sha256": "f516e88541f751ddeb54b2c076b7cc189b16d829770d439393951c8afd481f8d",
+      "bytes": 1736037,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "file": "mentor-right.png",
+      "src": "/game/youth/v48/mentor-right.png",
+      "sha256": "8a1ea23a230ea8ae3e72aa0b505cb5e40af4e30c92910a3c35f82ca4e084c419",
+      "bytes": 1795770,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "file": "props.png",
+      "src": "/game/youth/v48/props.png",
+      "sha256": "6d834962c19e38f6a1da09b128d6e82bc62ed853948eaa29d77717b849ab1ab5",
+      "bytes": 2062235,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "file": "quarters.png",
+      "src": "/game/youth/v48/quarters.png",
+      "sha256": "124b5b4006fa1a00b983b17f0cfb1dd282fdb158e690afef6ba50e29d24b1daa",
+      "bytes": 2181609,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "file": "unblooded-left.png",
+      "src": "/game/youth/v48/unblooded-left.png",
+      "sha256": "a3e81485b962238e88601e30e00053bf84eeaa1c00f886b754245f2850eb93c6",
+      "bytes": 1470891,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "file": "unblooded-right.png",
+      "src": "/game/youth/v48/unblooded-right.png",
+      "sha256": "ad1873f50d793d0d570379f32ceb4d368843c2bc84c56c88b6f898bab6e78fc6",
+      "bytes": 1366371,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    }
+  ],
+  "atlases": [
+    {
+      "file": "mentor-left.png",
+      "drawings": 20,
+      "bodyHeight": 306.0,
+      "edgeAlphaMax": 1,
+      "visiblePixels": 516034,
+      "visiblePixelsOutsideFrames": 0,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            72,
+            23,
+            135,
+            316
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27471
+        },
+        {
+          "index": 1,
+          "rect": [
+            342,
+            23,
+            138,
+            316
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27688
+        },
+        {
+          "index": 2,
+          "rect": [
+            595,
+            31,
+            206,
+            304
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29149
+        },
+        {
+          "index": 3,
+          "rect": [
+            881,
+            32,
+            211,
+            304
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29908
+        },
+        {
+          "index": 4,
+          "rect": [
+            67,
+            394,
+            195,
+            220
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22670
+        },
+        {
+          "index": 5,
+          "rect": [
+            325,
+            351,
+            157,
+            217
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21643
+        },
+        {
+          "index": 6,
+          "rect": [
+            578,
+            361,
+            227,
+            266
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28425
+        },
+        {
+          "index": 7,
+          "rect": [
+            844,
+            366,
+            256,
+            261
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28218
+        },
+        {
+          "index": 8,
+          "rect": [
+            26,
+            637,
+            229,
+            259
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": [
+            184,
+            690
+          ],
+          "visiblePixels": 27840
+        },
+        {
+          "index": 9,
+          "rect": [
+            282,
+            644,
+            269,
+            252
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": [
+            303,
+            713
+          ],
+          "visiblePixels": 28359
+        },
+        {
+          "index": 10,
+          "rect": [
+            587,
+            643,
+            224,
+            256
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28342
+        },
+        {
+          "index": 11,
+          "rect": [
+            849,
+            643,
+            253,
+            257
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27403
+        },
+        {
+          "index": 12,
+          "rect": [
+            36,
+            980,
+            239,
+            180
+          ],
+          "borderAlphaMax": 10,
+          "bladeHandGlobal": null,
+          "visiblePixels": 24467
+        },
+        {
+          "index": 13,
+          "rect": [
+            305,
+            986,
+            243,
+            179
+          ],
+          "borderAlphaMax": 13,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23009
+        },
+        {
+          "index": 14,
+          "rect": [
+            595,
+            903,
+            226,
+            259
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29082
+        },
+        {
+          "index": 15,
+          "rect": [
+            887,
+            915,
+            210,
+            250
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28070
+        },
+        {
+          "index": 16,
+          "rect": [
+            22,
+            1172,
+            264,
+            190
+          ],
+          "borderAlphaMax": 12,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27610
+        },
+        {
+          "index": 17,
+          "rect": [
+            298,
+            1208,
+            250,
+            177
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 24339
+        },
+        {
+          "index": 18,
+          "rect": [
+            551,
+            1289,
+            256,
+            91
+          ],
+          "borderAlphaMax": 12,
+          "bladeHandGlobal": null,
+          "visiblePixels": 15626
+        },
+        {
+          "index": 19,
+          "rect": [
+            810,
+            1288,
+            287,
+            92
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 16715
+        }
+      ]
+    },
+    {
+      "file": "mentor-right.png",
+      "drawings": 20,
+      "bodyHeight": 322.5,
+      "edgeAlphaMax": 5,
+      "visiblePixels": 534973,
+      "visiblePixelsOutsideFrames": 0,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            67,
+            6,
+            140,
+            330
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28681
+        },
+        {
+          "index": 1,
+          "rect": [
+            344,
+            5,
+            143,
+            329
+          ],
+          "borderAlphaMax": 22,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28415
+        },
+        {
+          "index": 2,
+          "rect": [
+            583,
+            9,
+            208,
+            323
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29804
+        },
+        {
+          "index": 3,
+          "rect": [
+            876,
+            8,
+            229,
+            324
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 31558
+        },
+        {
+          "index": 4,
+          "rect": [
+            17,
+            377,
+            197,
+            229
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23483
+        },
+        {
+          "index": 5,
+          "rect": [
+            336,
+            332,
+            185,
+            228
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23035
+        },
+        {
+          "index": 6,
+          "rect": [
+            564,
+            350,
+            233,
+            266
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28592
+        },
+        {
+          "index": 7,
+          "rect": [
+            844,
+            353,
+            267,
+            265
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28294
+        },
+        {
+          "index": 8,
+          "rect": [
+            12,
+            621,
+            248,
+            258
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": [
+            78,
+            678
+          ],
+          "visiblePixels": 29135
+        },
+        {
+          "index": 9,
+          "rect": [
+            271,
+            621,
+            292,
+            258
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": [
+            543,
+            689
+          ],
+          "visiblePixels": 29320
+        },
+        {
+          "index": 10,
+          "rect": [
+            572,
+            621,
+            233,
+            261
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29375
+        },
+        {
+          "index": 11,
+          "rect": [
+            869,
+            620,
+            249,
+            261
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27626
+        },
+        {
+          "index": 12,
+          "rect": [
+            29,
+            950,
+            221,
+            199
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 26527
+        },
+        {
+          "index": 13,
+          "rect": [
+            277,
+            975,
+            282,
+            173
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23054
+        },
+        {
+          "index": 14,
+          "rect": [
+            580,
+            883,
+            244,
+            266
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 30472
+        },
+        {
+          "index": 15,
+          "rect": [
+            883,
+            888,
+            213,
+            264
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 29359
+        },
+        {
+          "index": 16,
+          "rect": [
+            9,
+            1158,
+            271,
+            220
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 28322
+        },
+        {
+          "index": 17,
+          "rect": [
+            280,
+            1198,
+            268,
+            180
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 27313
+        },
+        {
+          "index": 18,
+          "rect": [
+            554,
+            1278,
+            276,
+            91
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 16827
+        },
+        {
+          "index": 19,
+          "rect": [
+            835,
+            1287,
+            281,
+            88
+          ],
+          "borderAlphaMax": 13,
+          "bladeHandGlobal": null,
+          "visiblePixels": 15787
+        }
+      ]
+    },
+    {
+      "file": "unblooded-left.png",
+      "drawings": 20,
+      "bodyHeight": 309.5,
+      "edgeAlphaMax": 3,
+      "visiblePixels": 438197,
+      "visiblePixelsOutsideFrames": 0,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            73,
+            15,
+            130,
+            317
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23950
+        },
+        {
+          "index": 1,
+          "rect": [
+            338,
+            15,
+            138,
+            318
+          ],
+          "borderAlphaMax": 24,
+          "bladeHandGlobal": null,
+          "visiblePixels": 24255
+        },
+        {
+          "index": 2,
+          "rect": [
+            588,
+            16,
+            201,
+            310
+          ],
+          "borderAlphaMax": 4,
+          "bladeHandGlobal": null,
+          "visiblePixels": 25741
+        },
+        {
+          "index": 3,
+          "rect": [
+            880,
+            15,
+            213,
+            310
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 26014
+        },
+        {
+          "index": 4,
+          "rect": [
+            71,
+            390,
+            186,
+            219
+          ],
+          "borderAlphaMax": 18,
+          "bladeHandGlobal": null,
+          "visiblePixels": 19759
+        },
+        {
+          "index": 5,
+          "rect": [
+            311,
+            348,
+            165,
+            211
+          ],
+          "borderAlphaMax": 14,
+          "bladeHandGlobal": null,
+          "visiblePixels": 18985
+        },
+        {
+          "index": 6,
+          "rect": [
+            594,
+            355,
+            220,
+            259
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 24239
+        },
+        {
+          "index": 7,
+          "rect": [
+            864,
+            357,
+            251,
+            256
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23937
+        },
+        {
+          "index": 8,
+          "rect": [
+            12,
+            630,
+            245,
+            244
+          ],
+          "borderAlphaMax": 10,
+          "bladeHandGlobal": [
+            182,
+            682
+          ],
+          "visiblePixels": 23832
+        },
+        {
+          "index": 9,
+          "rect": [
+            296,
+            630,
+            283,
+            243
+          ],
+          "borderAlphaMax": 45,
+          "bladeHandGlobal": [
+            315,
+            696
+          ],
+          "visiblePixels": 23965
+        },
+        {
+          "index": 10,
+          "rect": [
+            577,
+            627,
+            231,
+            249
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 24835
+        },
+        {
+          "index": 11,
+          "rect": [
+            858,
+            627,
+            229,
+            246
+          ],
+          "borderAlphaMax": 10,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22579
+        },
+        {
+          "index": 12,
+          "rect": [
+            38,
+            950,
+            214,
+            191
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 20678
+        },
+        {
+          "index": 13,
+          "rect": [
+            295,
+            980,
+            270,
+            156
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 19135
+        },
+        {
+          "index": 14,
+          "rect": [
+            574,
+            891,
+            214,
+            253
+          ],
+          "borderAlphaMax": 21,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23996
+        },
+        {
+          "index": 15,
+          "rect": [
+            880,
+            897,
+            199,
+            241
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22989
+        },
+        {
+          "index": 16,
+          "rect": [
+            16,
+            1154,
+            245,
+            225
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 23119
+        },
+        {
+          "index": 17,
+          "rect": [
+            281,
+            1221,
+            251,
+            155
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21022
+        },
+        {
+          "index": 18,
+          "rect": [
+            573,
+            1285,
+            250,
+            77
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 12641
+        },
+        {
+          "index": 19,
+          "rect": [
+            851,
+            1286,
+            253,
+            79
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 12532
+        }
+      ]
+    },
+    {
+      "file": "unblooded-right.png",
+      "drawings": 20,
+      "bodyHeight": 308.5,
+      "edgeAlphaMax": 1,
+      "visiblePixels": 394123,
+      "visiblePixelsOutsideFrames": 0,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            73,
+            10,
+            126,
+            320
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22278
+        },
+        {
+          "index": 1,
+          "rect": [
+            346,
+            12,
+            130,
+            317
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22063
+        },
+        {
+          "index": 2,
+          "rect": [
+            595,
+            16,
+            190,
+            308
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22950
+        },
+        {
+          "index": 3,
+          "rect": [
+            882,
+            21,
+            211,
+            302
+          ],
+          "borderAlphaMax": 10,
+          "bladeHandGlobal": null,
+          "visiblePixels": 22777
+        },
+        {
+          "index": 4,
+          "rect": [
+            30,
+            387,
+            179,
+            216
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 17562
+        },
+        {
+          "index": 5,
+          "rect": [
+            343,
+            341,
+            171,
+            213
+          ],
+          "borderAlphaMax": 8,
+          "bladeHandGlobal": null,
+          "visiblePixels": 18030
+        },
+        {
+          "index": 6,
+          "rect": [
+            577,
+            353,
+            212,
+            256
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21646
+        },
+        {
+          "index": 7,
+          "rect": [
+            856,
+            360,
+            246,
+            249
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 20496
+        },
+        {
+          "index": 8,
+          "rect": [
+            23,
+            630,
+            238,
+            241
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": [
+            80,
+            691
+          ],
+          "visiblePixels": 21191
+        },
+        {
+          "index": 9,
+          "rect": [
+            284,
+            627,
+            269,
+            245
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": [
+            536,
+            687
+          ],
+          "visiblePixels": 21262
+        },
+        {
+          "index": 10,
+          "rect": [
+            583,
+            630,
+            223,
+            242
+          ],
+          "borderAlphaMax": 7,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21846
+        },
+        {
+          "index": 11,
+          "rect": [
+            879,
+            631,
+            223,
+            241
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 19613
+        },
+        {
+          "index": 12,
+          "rect": [
+            34,
+            947,
+            202,
+            193
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 18846
+        },
+        {
+          "index": 13,
+          "rect": [
+            284,
+            983,
+            270,
+            148
+          ],
+          "borderAlphaMax": 5,
+          "bladeHandGlobal": null,
+          "visiblePixels": 17031
+        },
+        {
+          "index": 14,
+          "rect": [
+            586,
+            893,
+            230,
+            250
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21287
+        },
+        {
+          "index": 15,
+          "rect": [
+            891,
+            894,
+            191,
+            240
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21048
+        },
+        {
+          "index": 16,
+          "rect": [
+            20,
+            1149,
+            242,
+            226
+          ],
+          "borderAlphaMax": 11,
+          "bladeHandGlobal": null,
+          "visiblePixels": 21080
+        },
+        {
+          "index": 17,
+          "rect": [
+            291,
+            1216,
+            257,
+            158
+          ],
+          "borderAlphaMax": 6,
+          "bladeHandGlobal": null,
+          "visiblePixels": 19571
+        },
+        {
+          "index": 18,
+          "rect": [
+            567,
+            1287,
+            257,
+            72
+          ],
+          "borderAlphaMax": 12,
+          "bladeHandGlobal": null,
+          "visiblePixels": 12464
+        },
+        {
+          "index": 19,
+          "rect": [
+            846,
+            1290,
+            261,
+            73
+          ],
+          "borderAlphaMax": 9,
+          "bladeHandGlobal": null,
+          "visiblePixels": 11082
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "notes": [
+    "Original OpenAI PNG bytes preserved. Native left/right, no mirroring.",
+    "Opaque silhouettes measured at alpha above64, crop margin2pixels; faint antialias fringes up to45/255 can touch a crop border. No runtime alpha erasure.",
+    "80 distinct source drawings, ten short two-drawing clips per actor direction. Not full production-density animation.",
+    "Per-figure measured rectangles; irregular row spacing is not treated as a uniform grid.",
+    "Only blade-pose hand anchors are consumed by runtime; others are within the sprite body.",
+    "Original clan mentor, Unblooded and homeworld settings are project adaptations, not claimed named canonical likenesses."
+  ],
+  "automatedChecksPassed": true
+}

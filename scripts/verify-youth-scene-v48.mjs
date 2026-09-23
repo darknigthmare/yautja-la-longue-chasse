@@ -5,9 +5,9 @@ import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
 import { chromium } from "playwright-core";
 // Resume an archive exported after an actual keyboard victory; never manufacture completion.
-const base = process.env.V47_QA_URL || "http://127.0.0.1:4174";
-const output = process.env.V47_WELCOME_QA_OUTPUT || "work/v47/unblooded-welcome-qa";
-const archivePath = process.env.V47_PLAYED_ARCHIVE || "work/v47/nursery-scene-browser-qa/played-campaign-storage.json";
+const base = process.env.V48_QA_URL || "http://127.0.0.1:4174";
+const output = process.env.V48_YOUTH_SCENE_QA_OUTPUT || "work/v48/youth-scene-browser-qa";
+const archivePath = process.env.V48_PLAYED_ARCHIVE || "work/v47/final-scene-browser-qa/played-campaign-storage.json";
 const storage = JSON.parse(await fs.readFile(archivePath, "utf8"));
 const original = JSON.parse(storage["yautja-long-hunt.save"]);
 assert.equal(original.prologue.status, "completed");
@@ -17,9 +17,9 @@ async function moduleAt(name) {
  const result = await build({entryPoints:[fileURLToPath(new URL("../app/game/systems/" + name + ".ts", import.meta.url))], bundle:true, write:false, format:"esm", platform:"node", target:"es2022"});
  return import("data:text/javascript;base64," + Buffer.from(result.outputFiles[0].text).toString("base64"));
 }
-const city = await moduleAt("homeworldCity"), world = await moduleAt("homeworld");
+const city = await moduleAt("homeworldCity"), world = await moduleAt("homeworld"), youth = await moduleAt("youthTraining");
 await fs.mkdir(output,{recursive:true});
-const checks=[], errors=[], failures=[], routeEvidence=[];
+const checks=[], errors=[], failures=[], routeEvidence=[], trainingEvidence=[];
 const browser=await chromium.launch({channel:"chrome",headless:true});
 const page=await browser.newPage({viewport:{width:1280,height:900}});
 page.setDefaultTimeout(45000);
@@ -156,25 +156,93 @@ try {
  await approach("training-service");
  await page.locator('[data-unblooded-objective="training"]').waitFor();
  const after=await saved(); assert(after.homeworld.greetedNpcIds.includes("terrace-instructor"));
- assert.equal(after.youthTraining ?? null, null, "Meeting the mentor does not start or complete exercises by itself");
- assert.equal(await page.locator("[data-youth-enter-dojo]").count(), 1, "A physically reached mentor offers the real dojo");
  assert.deepEqual(after.prologue.chronicle,original.prologue.chronicle,"Meeting NPCs must not mint training or Blooded proof");
  assert.deepEqual(after.loadout,original.loadout,"No equipment reward for merely visiting");
  await page.screenshot({path:path.join(output,"mentor-welcome.png"),fullPage:true});
  checks.push({name:"chief-then-mentor-durable",realKeyboard:true,noFakeTrainingOrEquipment:true});
- await close();
- await page.clock.resume(); await page.reload({waitUntil:"networkidle"});
- await page.getByRole("button",{name:/^Continuer/}).click();
- await page.locator('[data-unblooded-objective="training"]').waitFor();
- assert.deepEqual((await saved()).homeworld.greetedNpcIds,after.homeworld.greetedNpcIds);
- await page.setViewportSize({width:390,height:844});await page.waitForTimeout(200);
- assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
- await page.screenshot({path:path.join(output,"unblooded-mobile.png"),fullPage:true});
- checks.push({name:"welcome-reload-and-mobile",greetingsPersist:true,noOverflow390:true});
- assert.deepEqual(errors,[]); assert.deepEqual(failures,[]);
- await fs.writeFile(path.join(output,"report.json"),JSON.stringify({passed:true,base,checks,routeEvidence,errors,failures,limitation:"Isolated browser; actual keyboard movement under controlled clock. Source archive exported from genuine played nursery."},null,2));
- console.log(JSON.stringify({passed:true,checks:checks.length,errors,failures}));
+
+ await page.locator("[data-youth-enter-dojo]").click();
+ const training = page.locator("[data-youth-training]"), canvas = training.locator("canvas[data-youth-stage]");
+ await training.waitFor(); await page.clock.runFor(1000);
+ await page.waitForFunction(() => document.querySelector("[data-youth-training] canvas[data-youth-stage]")?.dataset.youthAssets === "true", null, { timeout: 120000 });
+ const exportStorage = async name => fs.writeFile(path.join(output,name),JSON.stringify(await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).filter(k=>k.includes("yautja")).map(k=>[k,localStorage.getItem(k)]))),null,2));
+ await exportStorage("dojo-start-storage.json");
+ await canvas.focus(); await page.clock.runFor(100);
+ const sceneState=()=>canvas.evaluate(node=>({phase:node.dataset.youthPhase,tick:Number(node.dataset.youthTick),x:node.dataset.youthPositions.split(",").map(Number),y:Number(node.dataset.youthY),vy:Number(node.dataset.youthVy),pose:node.dataset.youthPose,rivalPose:node.dataset.youthRivalPose,rivalTick:Number(node.dataset.youthRivalActionTick),counter:Number(node.dataset.youthCounter),target:node.dataset.youthTarget===""?null:Number(node.dataset.youthTarget),facing:Number(node.dataset.youthFacing),paused:node.dataset.youthPaused==="true",armed:node.dataset.youthArmed==="true",composure:node.dataset.youthComposure.split(",").map(Number)}));
+ assert.equal((await sceneState()).phase,"dojo-move");assert.equal(await training.getByRole("meter").count(),0,"Dojo lessons do not show duel meters");
+ await page.screenshot({path:path.join(output,"dojo-start.png"),fullPage:true});
+ await page.keyboard.down("ArrowRight"); await page.clock.runFor(200); await page.keyboard.press("Escape");
+ const paused=await sceneState();await page.clock.runFor(3000);assert.equal((await sceneState()).tick,paused.tick);
+ const dialog=page.getByRole("dialog",{name:"Formation en pause"});await dialog.waitFor();
+ const controls=dialog.getByRole("button");await controls.last().focus();await page.keyboard.press("Tab");assert(await controls.first().evaluate(e=>document.activeElement===e));
+ await page.getByRole("button",{name:"Reprendre la formation",exact:true}).click();await page.clock.runFor(500);assert.equal((await sceneState()).tick,paused.tick);
+ await page.keyboard.up("ArrowRight");await canvas.focus();await page.clock.runFor(100);
+ checks.push({name:"youth-pause-and-key-release",heldKeysCannotAdvance:true,focusTrap:true,clockFrozen:true});
+ const keys=new Set();const applyKeys=async desired=>{for(const k of keys)if(!desired.has(k)){await page.keyboard.up(k);keys.delete(k);}for(const k of desired)if(!keys.has(k)){await page.keyboard.down(k);keys.add(k);}};
+ let priorPhase="",iterations=0, maskChosen=false,bladeRequested=false,bladeCaptured=false,bladeRivalBefore=null;const visited=new Set();
+ for(;iterations<4000;iterations++){
+  const s=await sceneState();visited.add(s.phase);if(s.phase==="morning")break;
+  if(s.phase!==priorPhase){await applyKeys(new Set());await page.clock.runFor(100);priorPhase=s.phase;
+   if(s.phase.startsWith("dojo-"))assert.equal(await training.getByRole("meter").count(),0);
+   if(s.phase==="camp-duel"){
+    assert.equal(await training.getByRole("meter").count(),2);
+    assert.equal(await training.getByRole("meter",{name:"\u00c9quilibre \u2014 vous",exact:true}).getAttribute("aria-valuenow"),"100");
+    assert.equal(await training.getByRole("meter",{name:"\u00c9quilibre \u2014 ma\u00eetre",exact:true}).getAttribute("aria-valuenow"),"84");
+   }
+   const checkpoint=await saved();trainingEvidence.push({phase:s.phase,tick:s.tick,receipts:checkpoint.youthTraining.receipts.map(r=>({id:r.id,tick:r.tick})),equipment:checkpoint.youthTraining.equipment});await page.screenshot({path:path.join(output,s.phase+".png"),fullPage:true});continue;}
+  if(s.paused||!s.armed){await applyKeys(new Set());await page.clock.runFor(100);continue;}
+  if(s.phase==="armory"&&!maskChosen){await applyKeys(new Set());await page.locator('[data-youth-choice="rust"]').click();await page.clock.runFor(100);maskChosen=true;continue;}
+  if(s.phase==="camp-duel"&&s.pose==="blade"&&!bladeCaptured){
+   await page.clock.runFor(150);const striking=await sceneState();
+   assert.equal(striking.pose,"blade");assert(striking.composure[1]<bladeRivalBefore,"The earned blade must physically hit the rival");
+   await page.clock.runFor(100);
+   assert.equal(await training.getByRole("meter",{name:"\u00c9quilibre \u2014 ma\u00eetre",exact:true}).getAttribute("aria-valuenow"),String(striking.composure[1]));
+   assert.equal(await training.getByRole("meter",{name:"\u00c9quilibre \u2014 vous",exact:true}).getAttribute("aria-valuenow"),String((await sceneState()).composure[0]));
+   await page.screenshot({path:path.join(output,"camp-earned-blade-impact.png"),fullPage:true});bladeCaptured=true;
+   checks.push({name:"earned-blade-physical-strike",realKeyboard:true,rivalBefore:bladeRivalBefore,rivalAfter:striking.composure[1],pose:"blade",readableDuelMeters:true,noDojoMeters:true});
+  }
+  const desired=new Set();const delta=s.target===null?0:s.target-s.x[0];const move=d=>{if(Math.abs(d)>8)desired.add(d<0?"ArrowLeft":"ArrowRight");};
+  if(s.phase==="dojo-move")move(delta);
+  else if(s.phase==="dojo-jump"||s.phase==="camp-run"){
+   move(delta);const direction=delta<0?-1:1;const obstacles=s.phase==="dojo-jump"?[[440,90]]:[[350,70],[650,70]];
+   const ahead=obstacles.find(([x,w])=>direction===1?x>s.x[0]&&x-s.x[0]<65:x+w<s.x[0]&&s.x[0]-x-w<65);
+   if(ahead&&s.vy===0&&!keys.has("Space"))desired.add("Space");
+  }else if(s.phase==="dojo-dodge"){
+   if(s.rivalPose==="jab"&&s.rivalTick>=24&&s.rivalTick<32&&s.pose==="idle"){desired.add("u");desired.add("ArrowLeft");}
+   else if(Math.abs(s.x[1]-s.x[0])>68)move(s.x[1]-s.x[0]);
+  }else if(["dojo-strike","dojo-throw","camp-duel"].includes(s.phase)){
+   const projection=s.phase==="dojo-throw",range=projection?46:59,d=s.x[1]-s.x[0];
+   if(Math.abs(d)>range||s.facing!==(d<0?-1:1))move(d);
+   else if(s.pose==="idle"){const key=projection?"p":s.phase==="camp-duel"&&!bladeRequested?"k":"j";if(!keys.has(key)){desired.add(key);if(key==="k"){bladeRequested=true;bladeRivalBefore=s.composure[1];}}}
+  }else if(["blade-award","armory","barracks"].includes(s.phase)){
+   if(Math.abs(delta)>35)move(delta);else if(!keys.has("h"))desired.add("h");
+  }else if(s.phase==="camp-defeat")throw new Error("Actual keyboard combat was defeated");
+  await applyKeys(desired);await page.clock.runFor(50);
+ }
+ await applyKeys(new Set());await page.clock.runFor(500);assert.equal((await sceneState()).phase,"morning");
+ assert(iterations<4000);assert.equal(visited.size,12);assert(bladeCaptured,"The full route includes a rendered earned-blade impact");
+ await exportStorage("morning-played-storage.json");await page.screenshot({path:path.join(output,"morning.png"),fullPage:true});
+ const morning=await saved();assert.equal(morning.youthTraining.status,"completed");
+ assert(youth.normalizeYouthTraining(morning.youthTraining.checkpoint));
+ assert.deepEqual(morning.youthTraining.receipts.map(r=>r.id),youth.YOUTH_MILESTONES);
+ assert.equal(new Set(morning.youthTraining.receipts.map(r=>r.tick)).size,6);
+ assert.deepEqual(morning.youthTraining.equipment,{wristblade:true,biomask:true,accent:"rust"});
+ assert.deepEqual(morning.inventory,original.inventory,"Training does not mint unrelated adult inventory");
+ assert.deepEqual(morning.loadout,original.loadout);
+ assert.equal(morning.profile.rankId,original.profile.rankId,"Training never grants Blooded");
+ assert.equal(morning.profile.honor,original.profile.honor);
+ assert.equal(morning.prologue.chronicle.evidence.filter(e=>e.id==="training-completed").length,1);
+ for(const entry of trainingEvidence){
+  const passedDojo=youth.YOUTH_PHASES.indexOf(entry.phase)>=youth.YOUTH_PHASES.indexOf("blade-award");
+  if(!passedDojo)assert.equal(entry.receipts.length,0,"No equipment or completion before physical dojo exercises");
+ }
+ checks.push({name:"full-physical-youth-route",realKeyboard:true,stateInjection:false,iterations,phases:[...visited],milestones:6});
+ await page.getByRole("button",{name:"Revenir dans la cité au matin",exact:true}).click();await page.clock.runFor(200);await hub.waitFor();
+ await page.clock.resume();await page.reload({waitUntil:"networkidle"});await page.getByRole("button",{name:/^Continuer/}).click();await hub.waitFor();
+ checks.push({name:"morning-durable-and-return-to-city",completedTrainingPersists:true});
+ await page.setViewportSize({width:390,height:844});await page.waitForTimeout(200);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
+ await fs.writeFile(path.join(output,"report.json"),JSON.stringify({passed:true,base,checks,routeEvidence,trainingEvidence,errors,failures,limitation:"Simulated player; real keyboard movement and controlled browser clock. Initial archive was exported from a genuine nursery victory."},null,2));console.log(JSON.stringify({passed:true,checks:checks.length,errors,failures}));
 } catch(error) {
- await page.screenshot({path:path.join(output,"failure.png"),fullPage:true}).catch(()=>{});
- await fs.writeFile(path.join(output,"report.json"),JSON.stringify({passed:false,base,checks,routeEvidence,errors,failures,error:String(error)},null,2));throw error;
+ await page.screenshot({path:path.join(output,"failure.png"),fullPage:true}).catch(()=>{});await fs.writeFile(path.join(output,"report.json"),JSON.stringify({passed:false,base,checks,routeEvidence,trainingEvidence,errors,failures,error:String(error)},null,2));throw error;
 } finally {await browser.close();}

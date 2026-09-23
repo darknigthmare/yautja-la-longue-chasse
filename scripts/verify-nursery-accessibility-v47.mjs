@@ -58,6 +58,8 @@ try {
   await broken.unroute(`**${missingPath}`);
   await broken.getByRole("button", { name: "Réessayer le chargement", exact: true }).click();
   await phase(broken, "prompt").waitFor({ timeout: 120000 });
+  // Asset recovery rearms input only after a neutral animation frame.
+  await broken.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   const focusAfterRetry = await broken.evaluate(() => { const node=document.activeElement; return { tag: node?.tagName, label: node?.getAttribute("aria-label"), text: node?.textContent?.slice(0,100) }; });
   await broken.keyboard.press("q", { delay: 80 }); await broken.waitForTimeout(250);
   const phaseAfterRetryKey = (await state(broken)).phase;

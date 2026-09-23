@@ -32,7 +32,7 @@ test("V7 adult saves preserve progression without retroactively starting or comp
   const old = p.defaultSave(owner); delete old.prologue; old.version = 7;
   old.profile.honor = 720; old.statistics.missionsCompleted = 3;
   const restored = p.parseSaveImport(JSON.stringify(old));
-  assert.equal(restored.failure, null); assert.equal(restored.save.version, 8);
+  assert.equal(restored.failure, null); assert.equal(restored.save.version, 9);
   assert.equal(restored.save.prologue, null); assert.equal(restored.save.profile.honor, 720); assert.equal(restored.save.statistics.missionsCompleted, 3);
   assert.equal(p.withNurseryCompletion(restored.save, ending.receipt, ending.state), null);
 });

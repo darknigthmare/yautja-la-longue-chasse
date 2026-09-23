@@ -8,6 +8,7 @@
 
 import type { ControlBindings } from "./systems/controlBindings";
 import type { HomeworldProgress } from "./systems/homeworld";
+import type { YouthCampaignProgress } from "./systems/youthCampaign";
 import type { NurseryCampaignProgress } from "./systems/nurseryCampaign";
 import type { JusticeProgress } from "./systems/justice";
 
@@ -607,6 +608,8 @@ export interface GameSettings {
 export interface SaveGame {
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
+  /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
+  youthTraining: YouthCampaignProgress | null;
   version: number;
   createdAt: string;
   updatedAt: string;

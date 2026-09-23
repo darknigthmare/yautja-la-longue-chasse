@@ -108,7 +108,7 @@ try {
     };
   }, mainKey);
   await quota.getByRole("dialog", { name: "Prologue en pause", exact: true }).waitFor({ timeout: 15000 });
-  await quota.getByRole("alert").filter({ hasText: /Sauvegarde du prologue refusée/ }).waitFor();
+  await quota.getByRole("alert").filter({ hasText: /Sauvegarde de jeunesse refusée/ }).waitFor();
   const frozen = await scene(quota); await quota.waitForTimeout(400); assert.equal((await scene(quota)).tick, frozen.tick);
   await quota.getByRole("button", { name: "Enregistrer et revenir au menu", exact: true }).click();
   assert.equal(await quota.locator('[data-campaign-menu="main"]').count(), 0);

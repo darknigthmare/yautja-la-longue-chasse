@@ -1,3 +1,4 @@
+import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
@@ -58,7 +59,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 8;
+export const SAVE_VERSION = 9;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -269,6 +270,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
   return {
     version: SAVE_VERSION,
     prologue: null,
+    youthTraining: null,
     createdAt: now,
     updatedAt: now,
     profile: {
@@ -513,6 +515,7 @@ const SAVE_MIGRATIONS: Readonly<
     justice: defaultJusticeProgress(),
   }),
   7: (input) => ({ ...input, version: 8, prologue: null }),
+  8: (input) => ({ ...input, version: 9, youthTraining: null }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -1224,6 +1227,7 @@ export function normalizeSave(value: unknown): SaveGame {
     homeworld: normalizeHomeworldProgress(source.homeworld),
     justice: normalizeJusticeProgress(source.justice),
     prologue: normalizeNurseryCampaign(source.prologue),
+    youthTraining: normalizeYouthCampaign(source.youthTraining),
   };
 }
 
@@ -1369,6 +1373,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.prologue !== undefined && value.prologue !== null && !normalizeNurseryCampaign(value.prologue)) {
     return { save: null, failure: "invalid-save" };
   }
+  if (isRecord(value.youthTraining) && (Number(value.youthTraining.version) > 1 ||
+      (isRecord(value.youthTraining.checkpoint) && Number(value.youthTraining.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (value.youthTraining !== undefined && value.youthTraining !== null && !normalizeYouthCampaign(value.youthTraining)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (!youthCampaignMatchesSave(value)) return { save: null, failure: "invalid-save" };
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.
   if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {

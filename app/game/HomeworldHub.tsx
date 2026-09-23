@@ -4,6 +4,7 @@
 
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
+import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
@@ -29,11 +30,13 @@ export interface HomeworldHubProps {
   onProgress(next: HomeworldProgress): boolean;
   onService(service: HomeworldService): void;
   onReturnShip(): void;
+  /** Available only at the physically reached mentor after the chief. */
+  onYouthTraining?(): boolean;
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, onProgress, onService, onReturnShip, onExpedition, onNotify }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, onProgress, onService, onReturnShip, onExpedition, onNotify, onYouthTraining }: HomeworldHubProps) {
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
   const [phase, setPhase] = useState(0);
@@ -299,12 +302,12 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
-    : "Accueil et rencontre du mentor enregistrés. La formation du dojo, la première lame et le premier biomask restent à accomplir dans les prochains chapitres.";
+    : youthCampaignObjective(save.youthTraining);
   const youthGreeting: Record<string, string> = {
     "hunt-king": `${save.profile.hunterName}, ton arrivée a été annoncée. La force seule ne suffit pas à servir le clan. Observe, écoute, puis rends-toi auprès de l’instructeur des terrasses. Ton apprentissage commence.`,
-    "terrace-instructor": youthChiefMet ? "Le chef t’a accueilli. Avant de chasser, tu apprendras à te placer, à retenir un coup et à reconnaître une proie digne. Repère cette cour : c’est ici que commencera ta formation." : "Présente-toi d’abord au chef du clan, dans la Citadelle au nord-est. Reviens me voir après cet accueil : nous parlerons de ta formation.",
+    "terrace-instructor": save.youthTraining?.status === "completed" ? "Les gestes, le parcours et le duel sont accomplis. Garde la maîtrise que tu as apprise. Ta prochaine sortie sera accompagnée ; aucun rite de chasse n’a encore été accordé." : youthChiefMet ? "Le chef t’a accueilli. Avant de chasser, tu apprendras à te placer, à retenir un coup et à reconnaître une proie digne. Entre dans le dojo et exécute mes démonstrations. Ta première lame se mérite par les gestes ; l’armurerie et les épreuves du camp suivront." : "Présente-toi d’abord au chef du clan, dans la Citadelle au nord-est. Reviens me voir après cet accueil : nous parlerons de ta formation.",
     "dock-officer": "Ces appareils appartiennent au clan. Ta route commence dans la cité : le chef t’attend à la Citadelle, au nord-est.",
-    "market-artisan": "Ton premier équipement viendra avec la formation. Observe les outils ; ils ne deviennent pas tiens par une simple visite.",
+    "market-artisan": save.youthTraining?.equipment.biomask ? "Ton premier biomask est conservé pour la sortie. Le lien porte la teinte choisie ; les exercices du clan se font encore à visage découvert." : "Ton premier équipement viendra avec la formation. Observe les outils ; ils ne deviennent pas tiens par une simple visite.",
     "forge-artisan": "Une parure ne remplace pas l’apprentissage. Les commandes attendront les étapes de ta formation.",
     "clan-healer": "L’accueil vient d’abord. Pour l’instant, observe les lieux de soin du clan ; aucune infirmerie de vaisseau ne t’est attribuée.",
     "undercity-witness": "Les galeries relient les quartiers du clan. Prends le temps d’écouter leurs habitants avant de te croire prêt à chasser.",
@@ -329,7 +332,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
 
   return <section ref={rootRef} className={styles.hub} aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true">
     <header className={styles.header}>
-      <div><div className={styles.eyebrow}>Yautja Prime · Monde natal</div><h2>La Cité des Premiers Trophées</h2><p>{youthWelcome ? "Ton accueil Unblooded : rencontre le clan et repère les lieux de ta future formation. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure."}</p></div>
+      <div><div className={styles.eyebrow}>Yautja Prime · Monde natal</div><h2>La Cité des Premiers Trophées</h2><p>{youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure."}</p></div>
       <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button>
     </header>
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label="Cité jouable en perspective 2.5D" aria-describedby="homeworld-controls"
@@ -366,10 +369,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       <div className={styles.touchGroup}>{touchButton("left", "Marcher à gauche", "←")}{touchButton("right", "Marcher à droite", "→")}</div>
       <div className={styles.touchGroup}>{touchButton("up", "Marcher vers le fond", "↑")}{touchButton("down", "Marcher vers l’avant", "↓")}<button type="button" aria-label="Interagir avec le point proche" disabled={blocked || !nearest} onClick={interact}>◉</button></div>
     </div>
-    {youthWelcome && <section className={styles.notice} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : "training-pending"}>
-      <strong>Accueil du clan</strong><p>{youthObjective}</p><p>Approche le personnage puis utilise Interaction. Ces rencontres conservent uniquement la visite ; elles n’accordent ni formation, ni arme, ni biomask. Dialogues originaux adaptés pour ce jeu.</p>
+    {youthWelcome && <section className={styles.notice} aria-label="Objectif d’accueil Unblooded" data-unblooded-objective={!youthChiefMet ? "chief" : !youthMentorMet ? "mentor" : save.youthTraining?.status === "completed" ? "desert-pending" : "training"}>
+      <strong>Accueil du clan</strong><p>{youthObjective}</p><p>Approche le personnage puis utilise Interaction. Ces rencontres ouvrent le dojo mais ne valident aucun exercice. Lame et biomask sont enregistrés uniquement aux étapes réussies. Dialogues originaux adaptés pour ce jeu.</p>
     </section>}
-    <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? "Accueil Unblooded · Chef puis mentor" : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
+    <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? save.youthTraining?.status === "completed" ? "Formation accomplie · Premier réveil" : "Apprentissage Unblooded · Auprès du clan" : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" onClick={() => { clearInputs(); setDialog({ point: null }); }}>{youthWelcome ? "Journal de l’accueil" : "Journal de la cité"}</button>
     </footer>
     {!youthWelcome && inquiryJournal.step !== "locked" && <div className={styles.help} data-homeworld-inquiry-step={inquiryJournal.step}><strong>{inquiryJournal.label}</strong> · {inquiryJournal.objective}</div>}
@@ -377,7 +380,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
       <button type="button" className="ghost-button small" disabled={suspended} onClick={retryPendingVisits}>Réessayer l’enregistrement des visites</button>
     </div>}
-    <div id="homeworld-controls" className={styles.help}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Suis les objectifs de l’accueil. Les sorties, exercices du dojo et remises d’équipement viendront avec les étapes suivantes de ta formation." : "Les Marches de Cendre et le Désert de Verre proposent deux enquêtes jouables. Les huit autres régions et la campagne complète restent à produire."}</div>
+    <div id="homeworld-controls" className={styles.help}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, A interaction, B fermer. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. La sortie du désert du lendemain reste à construire." : "Les Marches de Cendre et le Désert de Verre proposent deux enquêtes jouables. Les huit autres régions et la campagne complète restent à produire."}</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {dialog && <div className={styles.backdrop}>
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
@@ -385,10 +388,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         <h3 id="homeworld-dialog-title">{title}</h3>
         {selectedPoint ? <>
           {selectedNpc && <p>« {youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »</p>}
-          {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Accueil original du clan, pas une preuve de formation. Les exercices du dojo et la remise d’équipement restent à produire.</p></div>}
+          {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Accueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.</p></div>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && save.youthTraining?.status !== "completed" && onYouthTraining && <button type="button" data-youth-enter-dojo onClick={() => {
+            clearInputs();
+            if (!onYouthTraining()) setDialog(current => current ? { ...current, message: "L’entrée au dojo n’a pas pu être sauvegardée. Réessaie ici ; aucun exercice n’a été accordé." } : current);
+          }}>{save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.description}</p>
           {selectedPoint.kind === "ship" && <p>{youthWelcome ? "Les appareils du clan occupent les quais. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} t’attend aux quais. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}
-          {selectedRegion && <><p>{selectedRegion.description}</p>{youthWelcome && <p>Les sorties restent fermées pendant cet accueil. La formation, le premier biomask et le repos aux baraquements précèdent la première sortie de jeunesse ; ces scènes restent à construire.</p>}<div className={styles.notice}>
+          {selectedRegion && <><p>{selectedRegion.description}</p>{youthWelcome && <p>Les sorties restent fermées pendant cet accueil. La formation, le premier biomask et le repos aux baraquements précèdent la première sortie de jeunesse ; la quête du désert du lendemain reste à construire.</p>}<div className={styles.notice}>
             {selectedRegion.status === "playable-introduction"
               ? selectedRegion.id === "glass-desert"
                 ? "Deuxième enquête jouable : plaques vitrifiées, fouisseur sensible aux vibrations, corniches ou leurres, site abandonné et balise de rabattage. Choix conservés après retour enregistré ; l’acte II reste à développer."
@@ -407,9 +415,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
             </div>)}
           </section>}
         </> : youthWelcome ? <>
-          <h4>Accueil Unblooded</h4><p>{youthObjective}</p>
+          <h4>Parcours Unblooded</h4><p>{youthObjective}</p><p>{youthEquipmentSummary(save.youthTraining)}</p>
           <ul><li>{youthChiefMet ? "✓" : "○"} Rencontre du chef à la Citadelle.</li><li>{youthMentorMet ? "✓" : "○"} Rencontre de l’instructeur après l’accueil du chef.</li></ul>
-          <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le dojo, la première lame, le premier biomask et le repos aux baraquements restent à produire ; aucune de ces étapes n’est validée par ce journal.</p>
+          <p>Ces échanges sont des rencontres réelles enregistrées dans cette cité. Le journal montre uniquement les étapes réellement jouées : aucune formation ni remise d’équipement n’est validée par sa lecture.</p>
         </> : <>
           <p>Un trophée contesté est arrivé dans la cité. Examine sa provenance, consulte le registre des mémoires puis écoute le témoignage des Bas-Fonds.</p>
           {progress.expeditions["ash-marches"] && <p>✓ Rapport de terrain : vraie piste identifiée, fausse piste écartée, convoi retrouvé et passage rouvert.{progress.expeditions["ash-marches"].secretFound ? " Balise des Navigateurs découverte." : ""}</p>}
