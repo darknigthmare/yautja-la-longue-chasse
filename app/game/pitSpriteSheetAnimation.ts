@@ -170,6 +170,8 @@ export function resolvePitSpriteSheetAnimation(
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetAnimationFrame | null {
+  // Supplied static variants must never borrow a different costume's animation.
+  if (fighter.variantId) return null;
   const proof = bank && evidence.get(bank);
   if (!proof || bank.cancelled || proof.signal?.aborted || !bank.requestedIds.has(fighter.definitionId)) return null;
   const simulationFrame = options.simulationFrame ?? options.combat?.frame ?? 0;
@@ -196,6 +198,7 @@ export function drawPitSpriteSheetAnimation(
   groundY: number,
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
+  if (fighter.variantId) return false;
   if (![fighter.x, fighter.y, groundY].every(finite)) return false;
   const animation = resolvePitSpriteSheetAnimation(bank, fighter, options);
   if (!animation) return false;
@@ -220,6 +223,7 @@ export function getPitSpriteSheetAnimationVisualBounds(
   groundY: number,
   registry: readonly PitSpriteSheetAnimationDefinition[],
 ): { x: number; y: number; width: number; height: number } | null {
+  if (fighter.variantId) return null;
   if (![fighter.x, fighter.y, groundY].every(finite) || (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const facing = fighter.facing === 1 ? "right" : "left";
   let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
@@ -253,6 +257,8 @@ export function resolvePitSpriteSheetHold(
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetHoldFrame | null {
+  // Supplied static variants must never borrow a different costume's animation.
+  if (fighter.variantId) return null;
   const proof = bank && evidence.get(bank);
   if (!proof || bank.cancelled || proof.signal?.aborted || !bank.requestedIds.has(fighter.definitionId)) return null;
   const simulationFrame = options.simulationFrame ?? options.combat?.frame ?? 0;
@@ -278,6 +284,7 @@ export function drawPitSpriteSheetHold(
   groundY: number,
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
+  if (fighter.variantId) return false;
   if (![fighter.x, fighter.y, groundY].every(finite)) return false;
   const hold = resolvePitSpriteSheetHold(bank, fighter, options);
   if (!hold) return false;

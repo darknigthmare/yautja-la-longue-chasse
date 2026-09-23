@@ -1,3 +1,14 @@
+/** Find an identity without depending on its current roster page. */
+export async function choosePitFighter(page, fighter) {
+  const flow = page.locator('[data-pit-selection-step="fighters"]');
+  const option = flow.locator(`[role="option"][data-choice-id="${fighter}"]`);
+  if (!(await option.count())) {
+    const search = flow.locator('[data-pit-roster-search]');
+    if (await search.count()) await search.fill(fighter);
+  }
+  await option.click();
+}
+
 /** Pagination keeps at most24 full-resolution stage thumbnails mounted. */
 export async function choosePitStage(page, arena) {
   const flow = page.locator('[data-pit-selection-step="stage"]');
@@ -19,9 +30,9 @@ export async function choosePitStage(page, arena) {
 export async function selectPitMatch(page, { player, opponent, arena, launch = true }) {
   if (await page.locator('[data-pit-selection-step]').count()) {
     const select = page.locator('[data-pit-selection-step]');
-    await select.locator(`[role="option"][data-choice-id="${player}"]`).click();
+    await choosePitFighter(page, player);
     await select.locator('[data-pit-selection-confirm]').click();
-    if (opponent) await select.locator(`[role="option"][data-choice-id="${opponent}"]`).click();
+    if (opponent) await choosePitFighter(page, opponent);
     await select.locator('[data-pit-selection-confirm]').click();
     if (arena) await choosePitStage(page, arena);
     await page.waitForFunction(() => document.querySelector('[data-pit-stage-preview]')?.dataset.previewStatus === 'ready');

@@ -372,7 +372,7 @@ export function resetPitTrainingPositions(state: PitCombatState): PitCombatState
   return createPitCombatState(
     state.fighters[0].definitionId,
     state.fighters[1].definitionId,
-    { ...state.rules, mode: "training", arenaId: state.arenaId },
+    { ...state.rules, mode: "training", arenaId: state.arenaId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
   );
 }
 

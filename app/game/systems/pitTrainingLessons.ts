@@ -53,7 +53,7 @@ export function preparePitTrainingLesson(current: PitCombatState, id: PitTrainin
   if (!availability.available) throw new Error(availability.reason ?? "Exercice indisponible.");
   const dummyId = playerId === "jungle-hunter" ? "city-hunter" : "jungle-hunter";
   const state = createPitCombatState(playerId, dummyId, {
-    mode: "training", arenaId: current.arenaId,
+    mode: "training", arenaId: current.arenaId, variants: [current.fighters[0].variantId ?? null, null],
   });
   const arena = PIT_ARENAS[state.arenaId];
   const left = state.fighters[0];

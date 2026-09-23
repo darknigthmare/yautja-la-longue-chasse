@@ -23,7 +23,8 @@ try{
   const before=await storage(page);
   await page.getByRole('radio',{name:/Versus local/}).click();
   let flow=page.locator('[data-pit-selection-step]');
-  assert.equal(await flow.getByRole('option').count(),PIT_VERSUS_FIGHTER_IDS.length);
+  assert.equal(Number(await flow.locator('[data-pit-roster-total]').getAttribute('data-pit-roster-total')),PIT_VERSUS_FIGHTER_IDS.length);
+  assert((await flow.locator('[role="option"]').count())<=24);
   await flow.locator('[data-choice-id="tracker"]').click();
   await page.keyboard.press('ArrowRight');
   assert.notEqual(await flow.locator('[role="option"][aria-selected="true"]').getAttribute('data-choice-id'),'tracker');

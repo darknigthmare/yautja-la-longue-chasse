@@ -25,7 +25,7 @@ const load = (ids, options = {}) => rawLoad(ids, { ...options, spriteSheetRegist
 
 test("all sixteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
   assert.equal(ids.length, 16);
-  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS).filter(id => !["theta", "machiko-noguchi"].includes(id))));
+  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS).filter(id => !id.startsWith("user-") && !["theta", "machiko-noguchi"].includes(id))));
   for (const id of ids) {
     const definition = definitionFor(id);
     assert.equal(definition.kind, "static-bitmap");

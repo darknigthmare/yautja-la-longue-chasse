@@ -55,13 +55,19 @@ test("holding Escape sends only one selection back command", async () => {
   visit(tree); assert.ok(callback);
   const calls: string[] = [];
   const js = ts.transpileModule(`const handler = ${callback.getText(tree)};`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
+  class EditableElement { closest() { return this; } }
   const handler = runInNewContext(`(() => { ${js}; return handler; })()`, {
+    HTMLElement: EditableElement,
     matchesControlAction: () => true, controlBindings: {}, combatRef: { current: null },
     selectionFlowRef: { current: { command: (command: string) => calls.push(command) } },
   });
   for (const repeat of [false, true, true]) handler({ repeat, preventDefault() {} });
   assert.deepEqual(calls, ["back"]);
   handler({ repeat: false, preventDefault() {} }); assert.deepEqual(calls, ["back", "back"]);
+  handler({ target: new EditableElement(), key: "e", repeat: false, preventDefault() { throw new Error("Typing must remain editable"); } });
+  assert.deepEqual(calls, ["back", "back"], "a remapped pause letter must not leave search");
+  handler({ target: new EditableElement(), key: "Escape", repeat: false, preventDefault() {} });
+  assert.deepEqual(calls, ["back", "back", "back"], "Escape keeps its explicit back behavior");
 });
 
 test("unavailable stage Canvas publishes a visible retryable failure", async () => {

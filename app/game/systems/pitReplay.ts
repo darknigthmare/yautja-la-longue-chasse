@@ -1,3 +1,4 @@
+import { getPitUserVariant, normalizePitUserVariant } from './pitUserRoster';
 import { PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE } from "./pitStageJourney";
 import {
   createPitCombatState,
@@ -87,6 +88,7 @@ const REPLAY_KEYS = [
   "seed",
   "rules",
   "fighters",
+  "variants",
   "segments",
   "metadata",
 ] as const;
@@ -121,12 +123,14 @@ export interface PitReplay {
   seed: number;
   rules: PitCombatRules;
   fighters: readonly [PitFighterId, PitFighterId];
+  variants?: readonly [string | null, string | null];
   segments: readonly PitReplaySegment[];
   metadata: PitReplayMetadata;
 }
 
 export interface PitReplayRecordingOptions {
   fighters?: readonly [PitFighterId, PitFighterId];
+  variants?: readonly [string | null, string | null];
   rules?: PitCombatRules;
   arenaId?: PitArenaId;
   seed?: number;
@@ -164,6 +168,7 @@ interface ValidatedReplay {
 
 interface NormalizedRecordingOptions {
   fighters: readonly [PitFighterId, PitFighterId];
+  variants?: readonly [string | null, string | null];
   rules: PitCombatRules;
   arenaId: PitArenaId;
   seed: number;
@@ -354,13 +359,21 @@ function equalMetadata(left: PitReplayMetadata, right: PitReplayMetadata): boole
     left.checksum === right.checksum;
 }
 
+function replayVariants(fighters: readonly string[], value: unknown): readonly [string | null, string | null] | undefined | false {
+  if (value !== undefined && (!Array.isArray(value) || value.length !== 2 || value.some((id, index) => id !== null && (typeof id !== 'string' || !getPitUserVariant(fighters[index], id))))) return false;
+  const provided = value as readonly (string | null)[] | undefined;
+  const variants = fighters.map((id, index) => normalizePitUserVariant(id, provided?.[index]) ?? null) as [string | null, string | null];
+  return variants.some(Boolean) ? variants : undefined;
+}
 function normalizeRecordingOptions(options: PitReplayRecordingOptions): NormalizedRecordingOptions {
-  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "rules", "arenaId", "seed"])) throw replayError();
+  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "variants", "rules", "arenaId", "seed"])) throw replayError();
   const fighters = options.fighters ?? ["jungle-hunter", "berserker"];
   if (!Array.isArray(fighters) || fighters.length !== 2 || !isFighterId(fighters[0]) ||
     !isFighterId(fighters[1]) || fighters[0] === fighters[1]) {
     throw replayError();
   }
+  const variants = replayVariants(fighters, options.variants);
+  if (variants === false) throw replayError();
   const rules = options.rules ?? { mode: "match" };
   if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode", "stageJourney"]) || !isCombatMode(rules.mode)) throw replayError();
   const arenaId = options.arenaId ?? "the-pit";
@@ -370,6 +383,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   if (!isIntegerBetween(seed, 0, PIT_REPLAY_MAX_SEED)) throw replayError();
   return {
     fighters: [fighters[0], fighters[1]],
+    ...(variants ? { variants } : {}),
     rules: { mode: rules.mode, ...(rules.stageJourney === PIT_RESERVE_JOURNEY ? { stageJourney: PIT_RESERVE_JOURNEY } : {}) },
     arenaId,
     seed,
@@ -394,6 +408,8 @@ function structuralReplay(value: unknown): PitReplay | null {
     value.fighters[0] === value.fighters[1]) {
     return null;
   }
+  const variants = replayVariants(value.fighters, value.variants);
+  if (variants === false || (variants && value.engineVersion !== PIT_STATE_VERSION)) return null;
   if (!Array.isArray(value.segments) || value.segments.length > PIT_REPLAY_MAX_SEGMENTS) return null;
 
   let ticks = 0;
@@ -439,6 +455,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     seed: value.seed,
     rules: { mode: value.rules.mode, ...(value.rules.stageJourney === PIT_RESERVE_JOURNEY ? { stageJourney: PIT_RESERVE_JOURNEY } : {}) },
     fighters: [value.fighters[0], value.fighters[1]],
+    ...(variants ? { variants } : {}),
     segments,
     metadata: {
       ticks: value.metadata.ticks,
@@ -466,6 +483,7 @@ function simulateReplay(
   let state = createPitCombatState(replay.fighters[0], replay.fighters[1], {
     ...replay.rules,
     arenaId: replay.arenaId,
+    variants: replay.variants,
   });
   let processedTicks = 0;
   for (const [runTicks, inputPair] of replay.segments) {
@@ -570,7 +588,7 @@ class ReplayRecorder implements PitReplayRecorder {
     this.state = createPitCombatState(
       this.options.fighters[0],
       this.options.fighters[1],
-      { ...this.options.rules, arenaId: this.options.arenaId },
+      { ...this.options.rules, arenaId: this.options.arenaId, variants: this.options.variants },
     );
   }
 
@@ -610,6 +628,7 @@ class ReplayRecorder implements PitReplayRecorder {
       seed: this.options.seed,
       rules: { ...this.options.rules },
       fighters: [...this.options.fighters],
+      ...(this.options.variants ? { variants: [...this.options.variants] as [string | null, string | null] } : {}),
       segments: this.segments.map(([ticks, inputPair]) => [ticks, inputPair]),
       metadata: metadataFor(this.state, this.tickCount),
     };

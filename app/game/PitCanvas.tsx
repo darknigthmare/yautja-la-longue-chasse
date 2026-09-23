@@ -17,7 +17,7 @@ import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, type PitArenaArtBank } from "./pitArenaRendering";
-import { getPitCombatBitmapArtDefinition, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
+import { getPitCombatBitmapArtDefinition, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -128,6 +128,7 @@ import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, resolvePitTrain
 import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
 import { PIT_TRAINING_BRIEFING_TIMEOUT_MS, preparePitTrainingBriefing, beginPitTrainingBriefing, advancePitTrainingSessionClock, getPitTrainingBriefingReadiness, getPitTrainingBriefingControls, type PitTrainingAssetState } from "./systems/pitTrainingBriefing";
 import PitExtensionPortrait from "./PitExtensionPortrait";
+import { getPitUserVariant, normalizePitUserVariant } from "./systems/pitUserRoster";
 import PitSelectionFlow, { type PitSelectionFlowHandle } from "./PitSelectionFlow";
 import styles from "./PitCanvas.module.css";
 
@@ -636,7 +637,7 @@ function drawArena(
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
     const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, simulationFrame: state.frame, combat: state });
-    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi";
+    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-");
     if (!bitmapDrawn && !humanCombatant) {
       context.save();
       context.translate(fighter.x, bodyTop);
@@ -821,16 +822,20 @@ export function FighterCard({
   fighterId,
   side,
   paletteOverride = null,
+  variantId = null,
 }: {
   fighterId: PitFighterId;
+  variantId?: string | null;
   side: "GAUCHE" | "DROITE";
   paletteOverride?: PitArcadeCosmeticDefinition["palette"] | null;
 }) {
   const fighter = PIT_FIGHTERS[fighterId];
   const profile = getPitFighterProfile(fighterId);
   const palette = paletteOverride ?? fighter.palette;
-  const keyArt = getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
-  const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId);
+  const userVariant = getPitUserVariant(fighterId, normalizePitUserVariant(fighterId, variantId));
+  const authoredPortrait = isPitExpansionFighterId(fighterId) && !userVariant;
+  const keyArt = userVariant ? null : getPitFighterKeyArt(fighterId, side === "DROITE" ? "left" : "right");
+  const bitmapArt = keyArt ? null : getPitCombatBitmapArtDefinition(fighterId, variantId);
   const selectedArt = keyArt ?? (bitmapArt ? { ...bitmapArt, alt: fighter.name + " en pied, illustration détourée existante en pose fixe." } : null);
   const [failedArtSrc, setFailedArtSrc] = useState<string | null>(null);
   const [loadedArtSrc, setLoadedArtSrc] = useState<string | null>(null);
@@ -842,11 +847,12 @@ export function FighterCard({
       style={{ "--fighter": palette.primary } as React.CSSProperties}
       aria-label={`Profil de ${fighter.name} · côté ${side.toLocaleLowerCase("fr")}`}
       data-fighter-id={fighterId}
-      data-fighter-art={isPitExpansionFighterId(fighterId) ? "authored-idle-pose" : visibleArt?.kind ?? "mask-glyph"}
+      data-fighter-art={authoredPortrait ? "authored-idle-pose" : visibleArt?.kind ?? "mask-glyph"}
+      data-fighter-variant={userVariant?.id ?? "default"}
     >
       <span className={styles.sideLabel}>{side}</span>
       <div className={styles.fighterMedia}>
-        {isPitExpansionFighterId(fighterId) ? <PitExtensionPortrait key={fighterId + side} fighterId={fighterId} facing={side === "DROITE" ? "left" : "right"}/> : visibleArt ? (
+        {authoredPortrait ? <PitExtensionPortrait key={fighterId + side} fighterId={fighterId} facing={side === "DROITE" ? "left" : "right"}/> : visibleArt ? (
           <img
             key={visibleArt.src}
             className={styles.fighterKeyArt}
@@ -864,10 +870,11 @@ export function FighterCard({
         ) : (
           <div className={styles.maskGlyph} aria-hidden="true"><i /><i /><i /></div>
         )}
-        {!isPitExpansionFighterId(fighterId) && visibleArt && loadedArtSrc !== visibleArt.src && <span className={styles.portraitLoading} role="status">Chargement du portrait…</span>}
+        {!authoredPortrait && visibleArt && loadedArtSrc !== visibleArt.src && <span className={styles.portraitLoading} role="status">Chargement du portrait…</span>}
       </div>
-      {!isPitExpansionFighterId(fighterId) && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? "Image indisponible" : "Image à produire"}</small> : null}
+      {!authoredPortrait && !visibleArt ? <small className={styles.fighterArtNotice}>{selectedArt ? <><span>Image indisponible</span> <button type="button" onClick={() => setFailedArtSrc(null)}>Réessayer le portrait</button></> : "Image à produire"}</small> : null}
       <h3>{fighter.name}</h3>
+      {userVariant && <small className={styles.fighterArtNotice}>{userVariant.label} · image fournie · pose fixe</small>}
       <p>{fighter.epithet}{paletteOverride ? " · ARMURE DU JUGEMENT" : ""}</p>
       <small className={styles.techniqueName}>TECHNIQUE · {fighter.attacks.technique.label}</small>
       <dl>
@@ -921,6 +928,8 @@ export default function PitCanvas({
   const [mode, setMode] = useState<PitMode>("cpu");
   const [leftId, setLeftId] = useState<PitVersusFighterId>("jungle-hunter");
   const [rightId, setRightId] = useState<PitVersusFighterId>("berserker");
+  const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
+  const [rightVariantId, setRightVariantId] = useState<string | null>(null);
   const [arenaId, setArenaId] = useState<PitArenaId>("the-pit");
   const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
   const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
@@ -930,6 +939,7 @@ export default function PitCanvas({
   const [activeMatchResultId, setActiveMatchResultId] = useState("");
   const [combat, setCombat] = useState<PitCombatState | null>(null);
   const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
+  const [fighterArtRetry, setFighterArtRetry] = useState(0);
   const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
   const [sceneBanks, setSceneBanks] = useState<ReadonlyMap<PitArenaId, PitArenaArtBank>>(new Map());
   const [sceneRetry, setSceneRetry] = useState(0);
@@ -949,12 +959,14 @@ export default function PitCanvas({
   }, [renderedArenaId, requestedJourney, sceneRetry]);
   const renderedLeftId = combat?.fighters[0].definitionId ?? leftId;
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
+  const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
+  const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
   useEffect(() => {
     const controller = new AbortController();
-    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal })
+    void loadPitCombatBitmapArt([renderedLeftId, renderedRightId], { signal: controller.signal, variants: [renderedLeftVariant, renderedRightVariant] })
       .then((bank) => { if (!controller.signal.aborted) setFighterArt(bank); });
     return () => controller.abort();
-  }, [renderedLeftId, renderedRightId]);
+  }, [renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, fighterArtRetry]);
 
   const [announcement, setAnnouncement] = useState("CHOISIS LE RITUEL");
   const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
@@ -1008,7 +1020,7 @@ export default function PitCanvas({
   const resultPrimaryRef = useRef<HTMLButtonElement>(null);
   const pressedKeysRef = useRef(new Set<string>());
   const touchInputsRef = useRef<[Set<string>, Set<string>]>([new Set(), new Set()]);
-  const menuGamepadRef = useRef({ previous: Array.from({ length: 10 }, () => false), ready: false });
+  const menuGamepadRef = useRef({ previous: Array.from({ length: 12 }, () => false), ready: false });
   const combatGamepadReadyRef = useRef<[boolean, boolean]>([false, false]);
   const gamepadAssignmentsRef = useRef(createPitGamepadAssignments());
   const reportedMatchFrameRef = useRef<number | null>(null);
@@ -1071,7 +1083,7 @@ export default function PitCanvas({
   }, [controlBindings, mode]);
 
   const briefingFighterStates = combat?.fighters.map((fighter): PitTrainingAssetState => {
-    if (!fighterArt || fighterArt.cancelled || !fighterArt.requestedIds.has(fighter.definitionId)) return "loading";
+    if (!isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId)) return "loading";
     const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: combat.frame, combat });
     return status === "loading" ? "loading" : status === "missing" ? "failed" : "ready";
   }) as [PitTrainingAssetState, PitTrainingAssetState] | undefined;
@@ -1122,7 +1134,7 @@ export default function PitCanvas({
     for (const player of [0, 1] as const) {
       if (previous[player]?.revision !== resolved.assignments[player]?.revision) {
         combatGamepadReadyRef.current[player] = false;
-        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 10 }, () => false), ready: false };
+        if (player === 0) menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
       }
     }
     return resolved;
@@ -1132,7 +1144,7 @@ export default function PitCanvas({
     const onDisconnected = (event: GamepadEvent) => {
       gamepadAssignmentsRef.current = disconnectPitGamepadAssignment(gamepadAssignmentsRef.current, event.gamepad.index, event.gamepad.id);
       resetLiveInputs();
-      menuGamepadRef.current = { previous: Array.from({ length: 10 }, () => false), ready: false };
+      menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
     };
     window.addEventListener("gamepaddisconnected", onDisconnected);
     return () => window.removeEventListener("gamepaddisconnected", onDisconnected);
@@ -1345,6 +1357,7 @@ export default function PitCanvas({
     try {
       recorderRef.current = createPitReplayRecorder({
         fighters: [next.fighters[0].definitionId, next.fighters[1].definitionId],
+        variants: [next.fighters[0].variantId ?? null, next.fighters[1].variantId ?? null],
         rules: next.rules,
         arenaId: next.arenaId,
       });
@@ -1373,6 +1386,7 @@ export default function PitCanvas({
     let next = createPitCombatState(playerId, opponentId, {
       mode: nextMode === "training" ? "training" : "match",
       arenaId: nextArenaId,
+      variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
       ...(stageJourneyEnabled && nextArenaId === PIT_RESERVE_GATE && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: PIT_RESERVE_JOURNEY } : {}),
     });
     if (nextMode === "descent") {
@@ -1436,7 +1450,7 @@ export default function PitCanvas({
               : "Manche 1. Combat.",
     );
     changeCombat(next);
-  }, [beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled]);
+  }, [beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -1711,11 +1725,13 @@ export default function PitCanvas({
   }, [leftId, runTransitionSelectionLocked]);
 
   const swapSides = useCallback(() => {
-    selectionFlowRef.current?.reset();
+    selectionFlowRef.current?.reset(rightId);
     if (!canPitFighterEnterMode(rightId, mode)) setMode("cpu");
     setLeftId(rightId);
     setRightId(leftId);
-  }, [leftId, rightId, mode]);
+    setLeftVariantId(rightVariantId);
+    setRightVariantId(leftVariantId);
+  }, [leftId, rightId, leftVariantId, rightVariantId, mode]);
 
   const returnToSelection = useCallback(() => {
     recorderRef.current = null;
@@ -1743,7 +1759,7 @@ export default function PitCanvas({
     setDescentResourceFeedback(null);
     resetLiveInputs();
     gamepadAssignmentsRef.current = createPitGamepadAssignments();
-    menuGamepadRef.current = { previous: Array.from({ length: 10 }, () => false), ready: false };
+    menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
     setAnnouncement("CHOISIS LE RITUEL");
     setAriaAnnouncement("Retour à la sélection du rituel.");
     changeCombat(null);
@@ -1949,9 +1965,11 @@ export default function PitCanvas({
       const replay = normalizePitReplay(candidate);
       if (!replay) throw new Error("invalid replay");
       const reader = createPitReplayReader(replay);
+      if (!canPitFighterEnterMode(replay.fighters[0], mode)) setMode("cpu");
       const next = createPitCombatState(replay.fighters[0], replay.fighters[1], {
         ...replay.rules,
         arenaId: replay.arenaId,
+        variants: replay.variants,
       });
       recorderRef.current = null;
       replayReaderRef.current = reader;
@@ -1960,6 +1978,8 @@ export default function PitCanvas({
       if (isPitVersusFighterId(replay.fighters[0])) setLeftId(replay.fighters[0]);
       if (isPitVersusFighterId(replay.fighters[1])) setRightId(replay.fighters[1]);
       setArenaId(replay.arenaId);
+      setLeftVariantId(replay.variants?.[0] ?? null);
+      setRightVariantId(replay.variants?.[1] ?? null);
       arcadeRunRef.current = null;
       setArcadeRun(null);
       circuitRunRef.current = null;
@@ -1987,7 +2007,7 @@ export default function PitCanvas({
       setReplayNotice("Le dernier duel est illisible ou incompatible.");
       setAriaAnnouncement("Impossible de relire le dernier duel.");
     }
-  }, [changeCombat, clearTrainingActivity, resetLiveInputs]);
+  }, [changeCombat, clearTrainingActivity, resetLiveInputs, mode]);
 
   const startRematch = useCallback(() => {
     const current = combatRef.current;
@@ -2018,6 +2038,7 @@ export default function PitCanvas({
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.target instanceof HTMLElement && event.target.closest("input, select, textarea, [contenteditable=\"true\"]") && event.key !== "Escape") return;
       if (matchesControlAction("pit.pause", event, controlBindings)) {
         event.preventDefault();
         if (event.repeat) return;
@@ -2098,7 +2119,7 @@ export default function PitCanvas({
 
   useEffect(() => {
     if (viewPhase === "combat") {
-      menuGamepadRef.current = { previous: Array.from({ length: 10 }, () => false), ready: false };
+      menuGamepadRef.current = { previous: Array.from({ length: 12 }, () => false), ready: false };
       return;
     }
     let requestId = 0;
@@ -2116,8 +2137,10 @@ export default function PitCanvas({
             Boolean(gamepad.buttons[3]?.pressed),
             Boolean(gamepad.buttons[4]?.pressed),
             Boolean(gamepad.buttons[5]?.pressed),
+            Boolean(gamepad.buttons[6]?.pressed),
+            Boolean(gamepad.buttons[7]?.pressed),
           ]
-        : Array.from({ length: 10 }, () => false);
+        : Array.from({ length: 12 }, () => false);
       const state = menuGamepadRef.current;
       if (!gamepad) {
         state.ready = false;
@@ -2136,6 +2159,8 @@ export default function PitCanvas({
           if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
           if (current[8] && !previous[8]) changePitMode(cyclePitMode(mode, -1, leftId));
           if (current[9] && !previous[9]) changePitMode(cyclePitMode(mode, 1, leftId));
+          if (current[10] && !previous[10]) selectionFlowRef.current?.command("variant-prev");
+          if (current[11] && !previous[11]) selectionFlowRef.current?.command("variant-next");
         } else {
           if (current[4] && !previous[4]) {
             if (playbackReplay && availableReplay) startReplay(availableReplay);
@@ -2167,10 +2192,14 @@ export default function PitCanvas({
     return () => window.cancelAnimationFrame(requestId);
   }, [arcadePersistence.status, availableReplay, changePitMode, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
+  const suppliedFighterArtFailed = Boolean(combat && combat.fighters.some(fighter =>
+    fighter.variantId && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
+    getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: combat.frame, combat }) === "missing"));
   const matchAssetsPending = combat !== null && (
+    suppliedFighterArtFailed ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
     !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId ||
-    !fighterArt || fighterArt.cancelled || combat.fighters.some(fighter => !fighterArt.requestedIds.has(fighter.definitionId))
+    combat.fighters.some(fighter => !isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId))
   );
   const simulationRunning = combat !== null && !matchAssetsPending && combat.phase !== "match-over" &&
     (!playbackReplay || !replayEnded);
@@ -2697,12 +2726,14 @@ export default function PitCanvas({
 
         <PitSelectionFlow key={mode} ref={selectionFlowRef}
           mode={mode} playerId={leftId} opponentId={previewRightId} arenaId={previewArenaId}
+          playerVariantId={leftVariantId} opponentVariantId={previewRightId === rightId ? rightVariantId : null}
+          onPlayerVariantChange={setLeftVariantId} onOpponentVariantChange={setRightVariantId}
           locked={runTransitionSelectionLocked} imposed={mode === "arcade" || mode === "circuit" || mode === "descent"}
           eventOnly={Boolean(mode === "descent" && previewDescentNode && !previewDescentNode.opponentId)}
-          playerPreview={<FighterCard fighterId={leftId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />}
-          opponentPreview={mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? <article className={styles.descentEventCard}><span className={styles.sideLabel}>BRANCHE</span><strong>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name : "Récupération rituelle"}</strong><p>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}</p><small>Aucun résultat de combat n’est forgé pour cet étage.</small></article> : <FighterCard fighterId={previewRightId} side="DROITE" />}
-          onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setLeftId(selected); setReplayNotice(""); if (selected === rightId) setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); }}
-          onOpponentChange={selected => { if (selected !== leftId) { setRightId(selected); setReplayNotice(""); } }}
+          playerPreview={<FighterCard fighterId={leftId} variantId={leftVariantId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />}
+          opponentPreview={mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? <article className={styles.descentEventCard}><span className={styles.sideLabel}>BRANCHE</span><strong>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name : "Récupération rituelle"}</strong><p>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}</p><small>Aucun résultat de combat n’est forgé pour cet étage.</small></article> : <FighterCard fighterId={previewRightId} variantId={previewRightId === rightId ? rightVariantId : null} side="DROITE" />}
+          onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setLeftId(selected); setLeftVariantId(null); setReplayNotice(""); if (selected === rightId) { setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); setRightVariantId(null); } }}
+          onOpponentChange={selected => { if (selected !== leftId) { setRightId(selected); setRightVariantId(null); setReplayNotice(""); } }}
           onArenaChange={setArenaId}
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
           onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
@@ -2754,7 +2785,7 @@ export default function PitCanvas({
 
 
 
-        {isPitExpansionFighterId(leftId) ? <p role="note" data-pit-extension-progress="unavailable">Extension de duel : Arcade, Circuit et Descente indisponibles — chronique personnelle non produite. Les duels ne modifient pas les statistiques de progression.</p> : null}
+        {!isPitFirstEditionFighterId(leftId) ? <p role="note" data-pit-extension-progress="unavailable">Extension de duel : Arcade, Circuit et Descente indisponibles — chronique personnelle non produite. Les duels ne modifient pas les statistiques de progression.</p> : null}
         {mode === "arcade" && previewLadder ? (
           <aside className={styles.arcadeBrief} aria-label={"Parcours Arcade de " + PIT_FIGHTERS[leftId].name}>
             <div>
@@ -3123,7 +3154,7 @@ export default function PitCanvas({
       </header>
 
       {combat.stageJourney && <p className={styles.journeyStatus} data-pit-journey-sector={combat.stageJourney.sector}>{combat.stageJourney.sector === "sas" ? "SAS · Réussis une projection près de la limite gauche ou droite pour rejoindre la cour avec ton adversaire." : "COUR DES RÉSERVES · Les deux combattants ont traversé. Prochaine manche : retour au sas."} Parcours d’exposition, sans statistiques de progression.</p>}
-      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>CHARGEMENT DU COMBAT</strong><span>Préparation des combattants et des plans de l’arène. Le chronomètre est en pause.</span>{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</div> : null}
+      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>{suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong><span>{suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>{suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</div> : null}
       {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
       {arenaArt?.arenaId === sceneArenaId && !arenaArt.cancelled && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? (
         <p className={styles.replayNoticeMatch} role="status" data-pit-arena-warning="unavailable">
@@ -3196,7 +3227,7 @@ export default function PitCanvas({
         {[left, right].map((fighter) => {
           const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: combat.frame, combat });
           return <span key={fighter.slot} data-pit-bitmap-slot={fighter.slot}
-            data-pit-bitmap-id={fighter.definitionId} data-pit-bitmap-status={status}>
+            data-pit-bitmap-id={fighter.definitionId} data-pit-bitmap-variant={fighter.variantId ?? "default"} data-pit-bitmap-status={status}>
             {PIT_FIGHTERS[fighter.definitionId].name} · {status === "sprite-sheet-animation" ? "animation dessinée · sprite sheet" : status === "sprite-sheet-hold" ? "pose dessinée tenue · action encore sans animation" : status === "static-bitmap" ? "image du chasseur · pose fixe pour cette action" : status === "loading" ? "chargement de l’image" : "image indisponible · repère de combat"}
           </span>;
         })}

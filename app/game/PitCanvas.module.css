@@ -413,3 +413,6 @@
 
 /* Portrait slots must not expose an intrinsic-size or partially loaded image. */
 .fighterMedia{overflow:hidden;isolation:isolate}.fighterKeyArt{position:absolute;inset:0;max-width:100%;max-height:100%;visibility:hidden}.fighterKeyArt[data-art-ready="true"]{visibility:visible}.portraitLoading{position:absolute;inset:0;display:grid;place-items:center;color:#c9d5ca;font-size:.7rem}
+
+/* Preserve each supplied pose while facing its rival when a side is known. */
+.fighterKeyArt[data-native-facing="left"][data-facing="right"] { transform: scaleX(-1); }

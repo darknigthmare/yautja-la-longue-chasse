@@ -1,3 +1,4 @@
+import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type PitUserFighterId } from './pitUserRoster';
 import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
 import { PIT_EXPANSION_FIGHTERS, type PitExpansionFighterId } from "./pitRosterExpansion";
 import { PIT_EXTENSION_ARENAS, PIT_EXTENSION_ARENA_IDS, type PitRuntimeArenaId } from "./pitArenaExtensions";
@@ -41,7 +42,7 @@ export const PIT_PRESSURE_GAIN_INTERVAL = 12;
 export const PIT_PRESSURE_MIN_DISTANCE = 140;
 export const PIT_PRESSURE_MAX_DISTANCE = 360;
 
-export type PitFighterId = PitFirstEditionCombatantId | PitExpansionFighterId;
+export type PitFighterId = PitFirstEditionCombatantId | PitExpansionFighterId | PitUserFighterId;
 export type PitPlayableFighterId = PitFirstEditionFighterId;
 export type PitArenaId = PitRuntimeArenaId;
 export const PIT_PLAYABLE_FIGHTER_IDS = PIT_FIRST_EDITION_FIGHTER_IDS;
@@ -67,6 +68,7 @@ export interface PitCombatRules {
 }
 
 export interface PitCombatOptions {
+  variants?: readonly [string | null, string | null];
   stageJourney?: PitStageJourneyId;
   mode?: PitCombatMode;
   arenaId?: PitArenaId;
@@ -185,6 +187,8 @@ export interface PitTechniqueEffectState {
 export interface PitFighterState {
   slot: 0 | 1;
   definitionId: PitFighterId;
+  /** Supplied static appearance; omitted for the legacy authored appearance. */
+  variantId?: string;
   x: number;
   y: number;
   velocityX: number;
@@ -282,6 +286,7 @@ const CONTENT_FIGHTERS = {
   ...PIT_FIRST_EDITION_FIGHTERS,
   ...PIT_CHRONICLE_BOSSES,
   ...PIT_EXPANSION_FIGHTERS,
+  ...PIT_USER_FIGHTERS,
 };
 
 export const PIT_FIGHTERS: Record<PitFighterId, PitFighterDefinition> =
@@ -351,11 +356,13 @@ function freshFighter(
   roundsWon = 0,
   inputLatch: PitInputLatch = latchFromInput(),
   traque = 0,
+  variantId?: string | null,
 ): PitFighterState {
   const definition = PIT_FIGHTERS[id];
   return {
     slot,
     definitionId: id,
+    ...(normalizePitUserVariant(id, variantId) ? { variantId: normalizePitUserVariant(id, variantId) } : {}),
     x: PIT_ARENA.spawnX[slot],
     y: 0,
     velocityX: 0,
@@ -419,7 +426,7 @@ export function createPitCombatState(
     arenaId,
     rules: { mode: options.mode ?? "match", ...(options.stageJourney ? { stageJourney: options.stageJourney } : {}) },
     ...(options.stageJourney ? { stageJourney: createPitStageJourney() } : {}),
-    fighters: [freshFighter(0, leftId), freshFighter(1, rightId)],
+    fighters: [freshFighter(0, leftId, 0, latchFromInput(), 0, options.variants?.[0]), freshFighter(1, rightId, 0, latchFromInput(), 0, options.variants?.[1])],
     techniqueEffects: [],
     pendingThrow: null,
     nextTechniqueEffectId: 1,
@@ -641,7 +648,7 @@ function updateFighter(
       if (state.rules.mode === "training" && fighter.health === 0) {
         Object.assign(
           fighter,
-          freshFighter(fighter.slot, fighter.definitionId, 0, latchFromInput(input)),
+          freshFighter(fighter.slot, fighter.definitionId, 0, latchFromInput(input), 0, fighter.variantId),
         );
       } else {
         fighter.phase = "idle";
@@ -1562,6 +1569,7 @@ function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitIn
       left.roundsWon,
       latchFromInput(inputs[0] ?? {}),
       Math.min(left.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
+      left.variantId,
     ),
     freshFighter(
       1,
@@ -1569,6 +1577,7 @@ function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitIn
       right.roundsWon,
       latchFromInput(inputs[1] ?? {}),
       Math.min(right.traque, PIT_ROUND_TRAQUE_CARRY_CAP),
+      right.variantId,
     ),
   ];
   state.events.push({ type: "round-start", frame: state.frame, round: state.round });
@@ -1724,7 +1733,7 @@ export function rematchPitCombat(state: PitCombatState): PitCombatState {
   return createPitCombatState(
     state.fighters[0].definitionId,
     state.fighters[1].definitionId,
-    { ...state.rules, arenaId: state.arenaId },
+    { ...state.rules, arenaId: state.arenaId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
   );
 }
 
@@ -1807,6 +1816,7 @@ function isTechniqueStatusState(value: unknown): value is PitTechniqueStatusStat
 function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value is PitFighterState {
   if (!isRecord(value) || value.slot !== slot || !isFighterId(value.definitionId)) return false;
   const fighterId = value.definitionId;
+  if (value.variantId !== undefined && (typeof value.variantId !== 'string' || !getPitUserVariant(fighterId, value.variantId))) return false;
   const definition = PIT_FIGHTERS[fighterId];
   if (!PIT_COMBAT_PHASES.includes(value.phase as PitCombatPhase)) return false;
   const phase = value.phase as PitCombatPhase;
@@ -2070,6 +2080,10 @@ export function deserializePitCombat(serialized: string): PitCombatState {
   }
 
   const restored = cloneState(candidate as unknown as PitCombatState);
+  for (const fighter of restored.fighters) {
+    const variantId = normalizePitUserVariant(fighter.definitionId, fighter.variantId);
+    if (variantId) fighter.variantId = variantId;
+  }
   restored.events = (candidate.events as PitCombatEvent[]).map((event) =>
     event.type === "round-end" ? { ...event, result: { ...event.result } } : { ...event },
   );

@@ -104,9 +104,11 @@ test("selection remains locked while a route transition is pending or failed", (
   assert.match(modeChange, /if \(runTransitionSelectionLocked\) return/);
   assert.match(canvas, /disabled=\{runTransitionSelectionLocked\}/);
   assert.match(canvas, /locked=\{runTransitionSelectionLocked\}/);
-  assert.match(selection, /disabled=\{unavailable\}/);
+  assert.match(selection, /disabled=\{isFighterUnavailable\(id\)\}/);
+  assert.match(selection, /const isFighterUnavailable = .* => locked \|\|/);
   assert.match(selection, /disabled=\{\(locked && state\.step !== "stage"\) \|\| props\.launchDisabled/);
-  assert.ok(selection.indexOf('if (state.step === "stage") { if (stageReady) props.onLaunch(); return; }') < selection.indexOf('if (locked) return;'), "a failed route save can retry its stage confirmation while choices stay locked");
+  const confirmSelection = section(selection, "const confirm =", "const back =");
+  assert.ok(confirmSelection.indexOf('if (state.step === "stage") { if (stageReady) props.onLaunch(); return; }') < confirmSelection.indexOf('if (locked) return;'), "a failed route save can retry its stage confirmation while choices stay locked");
 });
 
 test("relic and recovery floors persist without forging a match result", () => {

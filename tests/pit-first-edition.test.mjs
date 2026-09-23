@@ -265,7 +265,8 @@ test("visible PIT wiring lists roster and arenas, exposes all published modes, a
   assert.match(canvas, /<PitSelectionFlow\b/);
   assert.match(canvas, /mode=\{mode\} playerId=\{leftId\} opponentId=\{previewRightId\} arenaId=\{previewArenaId\}/);
   assert.match(canvas, /onArenaChange=\{setArenaId\}/);
-  assert.match(selection, /PIT_VERSUS_FIGHTER_IDS\.map/);
+  assert.match(selection, /PIT_VERSUS_FIGHTER_IDS\.filter/);
+  assert.match(selection, /rosterChoices\.map/);
   assert.match(selection, /const stageChoices = stageIds\.slice\(/);
   assert.match(selection, /stageChoices\.map/);
   assert.match(selection, /PIT_ARENA_IDS\.filter/);

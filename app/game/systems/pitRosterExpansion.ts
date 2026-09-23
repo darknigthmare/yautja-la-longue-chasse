@@ -1,14 +1,15 @@
-import { getPitFirstEditionFighter, isPitFirstEditionFighterId, PIT_FIRST_EDITION_FIGHTER_IDS, type PitEditionFighterDefinition, type PitEditionMoveDefinition, type PitEditionTechniqueDefinition, type PitFirstEditionFighterId, type PitFirstEditionCombatantId } from './pitFirstEdition';
+import { PIT_USER_FIGHTER_IDS, PIT_USER_FIGHTERS, isPitUserFighterId, type PitUserFighterId } from './pitUserRoster';
+import { getPitFirstEditionFighter, isPitFirstEditionFighterId, PIT_FIRST_EDITION_FIGHTER_IDS, PIT_CHRONICLE_BOSS_IDS, isPitChronicleBossId, type PitEditionFighterDefinition, type PitEditionMoveDefinition, type PitEditionTechniqueDefinition, type PitFirstEditionCombatantId } from './pitFirstEdition';
 
 /** Separate duel roster: no entry is added to a first-edition progression table. */
 export const PIT_EXPANSION_FIGHTER_IDS = ['tracker', 'greyback', 'theta', 'machiko-noguchi'] as const;
 export type PitExpansionFighterId = typeof PIT_EXPANSION_FIGHTER_IDS[number];
-export type PitVersusFighterId = PitFirstEditionFighterId | PitExpansionFighterId;
-export const PIT_VERSUS_FIGHTER_IDS = [...PIT_FIRST_EDITION_FIGHTER_IDS, ...PIT_EXPANSION_FIGHTER_IDS] as const;
+export type PitVersusFighterId = PitFirstEditionCombatantId | PitExpansionFighterId | PitUserFighterId;
+export const PIT_VERSUS_FIGHTER_IDS = [...PIT_FIRST_EDITION_FIGHTER_IDS, ...PIT_EXPANSION_FIGHTER_IDS, ...PIT_CHRONICLE_BOSS_IDS, ...PIT_USER_FIGHTER_IDS] as const;
 export type PitExpansionFighterDefinition = Omit<PitEditionFighterDefinition, 'id' | 'rivalId'> & {readonly id: PitExpansionFighterId; readonly rivalId: null; readonly variantId: string; readonly progressionAvailable: false};
 export function isPitExpansionFighterId(id: unknown): id is PitExpansionFighterId { return typeof id === 'string' && (PIT_EXPANSION_FIGHTER_IDS as readonly string[]).includes(id); }
-export function isPitVersusFighterId(id: unknown): id is PitVersusFighterId { return isPitFirstEditionFighterId(id) || isPitExpansionFighterId(id); }
-export function canPitFighterEnterMode(id: unknown, mode: string): boolean { return isPitFirstEditionFighterId(id) || (isPitExpansionFighterId(id) && ['cpu','local','training'].includes(mode)); }
+export function isPitVersusFighterId(id: unknown): id is PitVersusFighterId { return isPitFirstEditionFighterId(id) || isPitExpansionFighterId(id) || isPitChronicleBossId(id) || isPitUserFighterId(id); }
+export function canPitFighterEnterMode(id: unknown, mode: string): boolean { return isPitFirstEditionFighterId(id) || ((isPitExpansionFighterId(id) || isPitChronicleBossId(id) || isPitUserFighterId(id)) && ['cpu','local','training'].includes(mode)); }
 
 const PIT_SELECTABLE_MODES = ['cpu','local','training','arcade','circuit','descent'] as const;
 type PitSelectableMode = typeof PIT_SELECTABLE_MODES[number];
@@ -56,4 +57,4 @@ export const PIT_EXPANSION_FIGHTERS: Readonly<Record<PitExpansionFighterId,PitEx
  }
 
 };
-export function getPitFighterProfile(id: PitFirstEditionCombatantId | PitExpansionFighterId) { return isPitExpansionFighterId(id) ? PIT_EXPANSION_FIGHTERS[id] : getPitFirstEditionFighter(id); }
+export function getPitFighterProfile(id: PitFirstEditionCombatantId | PitExpansionFighterId | PitUserFighterId) { return isPitUserFighterId(id) ? PIT_USER_FIGHTERS[id] : isPitExpansionFighterId(id) ? PIT_EXPANSION_FIGHTERS[id] : getPitFirstEditionFighter(id); }
