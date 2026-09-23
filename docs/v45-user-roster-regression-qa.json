@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-23T05:06:10.339Z",
+  "url": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "name": "variant-keyboard-and-gamepad",
+      "keys": "Q/E",
+      "triggers": "LT/RT",
+      "physicalControllerCertified": false
+    },
+    {
+      "name": "grouped-roster",
+      "total": 195,
+      "maximumMountedTiles": 24,
+      "cityVariants": 13,
+      "oneTilePerIdentity": true,
+      "selectedVariants": [
+        "city-hunter-sans-casque-bfba04e565",
+        "ahab-sans-casque-91544a7fb2"
+      ]
+    },
+    {
+      "name": "actual-duel-render",
+      "imagesMatchSelection": true,
+      "simulationAdvances": true,
+      "animationStatus": "static-bitmap"
+    },
+    {
+      "name": "search-pages-mode-safety",
+      "emptyQuerySafe": true,
+      "secondPageAccessible": true,
+      "unwrittenChroniclesUnavailable": true
+    },
+    {
+      "name": "supplied-image-failure-retry",
+      "pausedFrame": "0",
+      "noGenericReplacement": true,
+      "recovered": true
+    },
+    {
+      "name": "mobile-selection",
+      "width": 390,
+      "variantSelect": true,
+      "noHorizontalOverflow": true,
+      "stageReached": true
+    }
+  ],
+  "errors": [],
+  "responses": []
+}

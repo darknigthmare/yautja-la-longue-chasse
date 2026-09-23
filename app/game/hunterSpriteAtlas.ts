@@ -17,7 +17,11 @@ export interface HunterSpriteMagentaFringe {
 }
 
 export type HunterSpriteTransparency =
-  | { readonly mode: "alpha" }
+  | {
+      readonly mode: "alpha";
+      /** Remove only native alpha values 1 or 2, explicitly and in private memory. */
+      readonly noiseFloor?: 1 | 2;
+    }
   | { readonly mode: "color-key"; readonly rgb: readonly [red: number, green: number, blue: number]; readonly tolerance: number; readonly fringe?: HunterSpriteMagentaFringe };
 
 export interface HunterSpriteAtlasPage {
@@ -108,7 +112,12 @@ export function validateHunterSpriteAtlas(value: unknown): HunterSpriteAtlasVali
     const transparency = page.transparency;
     if (!isRecord(transparency) || (transparency.mode !== "alpha" && transparency.mode !== "color-key")) {
       report(path + ".transparency", "explicit-transparency-required");
+    } else if (transparency.mode === "alpha") {
+      if (transparency.noiseFloor !== undefined && transparency.noiseFloor !== 1 && transparency.noiseFloor !== 2) {
+        report(path + ".transparency.noiseFloor", "invalid-alpha-noise-floor");
+      }
     } else if (transparency.mode === "color-key") {
+      if (transparency.noiseFloor !== undefined) report(path + ".transparency.noiseFloor", "alpha-noise-floor-requires-alpha-mode");
       if (!Array.isArray(transparency.rgb) || transparency.rgb.length !== 3 ||
         !transparency.rgb.every((channel: unknown) => typeof channel === "number" &&
           Number.isInteger(channel) && channel >= 0 && channel <= 255)) {
@@ -345,12 +354,16 @@ function validMagentaFringe(value: unknown, rgb: unknown): value is HunterSprite
 export interface HunterSpriteTransparencyResult {
   readonly pixels: Uint8ClampedArray;
   readonly keyedPixels: number;
+  /** Positive alpha values 1 or 2 removed by an explicit native-alpha policy. */
+  readonly alphaNoisePixels: number;
   /** RGB-corrected pixels, not removed pixels or approved animation frames. */
   readonly fringePixels: number;
 }
 
 /**
  * Pure preview/runtime pixel processing; does not approve art or change sources.
+ * Native alpha is untouched unless noiseFloor explicitly removes values 1 or 2.
+ * This opt-in never changes RGB, alpha above that floor, or the source buffer.
  * The original RGB tolerance still defines the reserved key color everywhere.
  * Optional despill can only grow 1-3 pixels from edge-connected background,
  * through magenta-dominant pixels. It never changes non-key alpha, greens or
@@ -371,7 +384,23 @@ export function processHunterSpriteTransparency(
     throw new RangeError("Explicit transparency configuration required.");
   }
   const pixels = new Uint8ClampedArray(source);
-  if (config.mode === "alpha") return { pixels, keyedPixels: 0, fringePixels: 0 };
+  if (config.mode === "alpha") {
+    const { noiseFloor } = config;
+    if (noiseFloor !== undefined && noiseFloor !== 1 && noiseFloor !== 2) {
+      throw new RangeError("Native alpha noise floor must be exactly 1 or 2.");
+    }
+    let alphaNoisePixels = 0;
+    if (noiseFloor !== undefined) for (let offset = 3; offset < pixels.length; offset += 4) {
+      if (source[offset] > 0 && source[offset] <= noiseFloor) {
+        pixels[offset] = 0;
+        alphaNoisePixels++;
+      }
+    }
+    return { pixels, keyedPixels: 0, fringePixels: 0, alphaNoisePixels };
+  }
+  if ("noiseFloor" in config && config.noiseFloor !== undefined) {
+    throw new RangeError("Native alpha noise floor requires alpha mode.");
+  }
   const { rgb, tolerance, fringe } = config;
   if (!Array.isArray(rgb) || rgb.length !== 3 ||
     !rgb.every(channel => Number.isInteger(channel) && channel >= 0 && channel <= 255) ||
@@ -393,7 +422,7 @@ export function processHunterSpriteTransparency(
     }
     if (keyMask && (keyed || source[offset + 3] === 0)) keyMask[pixel] = 1;
   }
-  if (!fringe || !keyMask) return { pixels, keyedPixels, fringePixels: 0 };
+  if (!fringe || !keyMask) return { pixels, keyedPixels, fringePixels: 0, alphaNoisePixels: 0 };
 
   // Four-connectivity cannot jump diagonally through a one-pixel contour.
   const seen = new Uint8Array(count);
@@ -434,7 +463,7 @@ export function processHunterSpriteTransparency(
       fringePixels++;
     });
   }
-  return { pixels, keyedPixels, fringePixels };
+  return { pixels, keyedPixels, fringePixels, alphaNoisePixels: 0 };
 }
 
 /** Require a transparent outer border and visible content in every reviewed cell. */
@@ -461,7 +490,8 @@ function reviewedCellDigest(
 }
 
 /**
- * Reads decoded pixels once. Alpha mode rejects opaque cells. Explicit color-key
+ * Reads decoded pixels once. Alpha mode rejects opaque cells. Explicit noiseFloor
+ * removes only the declared alpha values 1 or 2 before strict cell-edge checks. Color-key
  * mode removes only matching RGB pixels in this private in-memory Canvas; the
  * source file is never modified. Tainted readback and clipped cells return null.
  * createCanvas is injectable for headless tests; production should omit it.
@@ -490,7 +520,7 @@ export function prepareHunterSpriteAtlasPage(
     const imageData = context.getImageData(0, 0, page.width, page.height);
     const pixels = imageData.data;
     if (pixels.length !== page.width * page.height * 4) return null;
-    if (page.transparency.mode === "color-key") {
+    if (page.transparency.mode === "color-key" || page.transparency.noiseFloor !== undefined) {
       const processed = processHunterSpriteTransparency(pixels, page.width, page.height, page.transparency);
       pixels.set(processed.pixels);
       context.putImageData(imageData, 0, 0);

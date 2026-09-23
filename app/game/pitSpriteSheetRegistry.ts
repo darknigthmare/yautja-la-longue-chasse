@@ -12777,5 +12777,107 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         }
       ]
     }
+  },
+  {
+    "fighterId": "user-ahab",
+    "variantId": "ahab-avec-casque-0c8ceb1c95",
+    "bodyHeightPx": 492,
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "ahab-masked-pit-v45",
+      "characterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "ahab-masked-idle-guard-right-v45",
+          "src": "/game/sprites/v45/pit/ahab/ahab-masked-idle-guard-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-idle-guard-right-v45",
+              "rect": [
+                0,
+                0,
+                768,
+                502
+              ],
+              "pivot": [
+                346.25,
+                500
+              ],
+              "durationTicks": 45
+            },
+            {
+              "pageId": "ahab-masked-idle-guard-right-v45",
+              "rect": [
+                768,
+                0,
+                768,
+                502
+              ],
+              "pivot": [
+                349.25,
+                500
+              ],
+              "durationTicks": 45
+            }
+          ]
+        },
+        {
+          "id": "high-guard",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "ahab-masked-idle-guard-right-v45",
+              "rect": [
+                0,
+                502,
+                768,
+                522
+              ],
+              "pivot": [
+                343.25,
+                501
+              ],
+              "durationTicks": 30
+            },
+            {
+              "pageId": "ahab-masked-idle-guard-right-v45",
+              "rect": [
+                768,
+                502,
+                768,
+                522
+              ],
+              "pivot": [
+                350.5,
+                500
+              ],
+              "durationTicks": 30
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

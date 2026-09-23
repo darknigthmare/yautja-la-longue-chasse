@@ -87,7 +87,7 @@ export function getPitCombatBitmapVisualBounds(
     width: art.width * scale,
     height: art.height * scale,
   };
-  const animated = art.variantId ? null : getPitSpriteSheetAnimationVisualBounds(fighter, groundY, registry);
+  const animated = getPitSpriteSheetAnimationVisualBounds(fighter, groundY, registry);
   if (!animated) return bounds;
   const x = Math.min(bounds.x, animated.x), y = Math.min(bounds.y, animated.y);
   return { x, y, width: Math.max(bounds.x + bounds.width, animated.x + animated.width) - x,
@@ -179,7 +179,8 @@ export async function loadPitCombatBitmapArt(
     requestedIds.forEach(id => failedIds.add(id));
     return bank();
   }
-  const animationLoad = loadPitSpriteSheetAnimations(ids.filter(id => !variants.get(id)), options.spriteSheetRegistry ?? PIT_SPRITE_SHEET_REGISTRY, options);
+  const animationLoad = loadPitSpriteSheetAnimations(ids, options.spriteSheetRegistry ?? PIT_SPRITE_SHEET_REGISTRY,
+    { signal, timeoutMs, variants: ids.map(id => variants.get(id) ?? null) });
   await Promise.all([...requestedIds].map(async id => {
     const definition = getPitCombatBitmapArtDefinition(id, variants.get(id));
     if (!definition) { failedIds.add(id); return; }

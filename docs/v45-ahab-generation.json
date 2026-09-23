@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "generator": "OpenAI built-in image_gen",
+  "inputMode": "Text generation guided by inspection of the user-supplied PNG; local reference upload failed at the filesystem sandbox helper.",
+  "fighterId": "user-ahab",
+  "variantId": "ahab-avec-casque-0c8ceb1c95",
+  "reference": "/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+  "fidelity": "Original fan-game adaptation; not certified 1:1. No paid API generation used.",
+  "candidates": [
+    {
+      "key": "right01",
+      "prompt": "Use case: stylized-concept. Asset type: production sprite-sheet for an existing 2D fighting game, THE PIT. Character design is Ahab Predator wearing his biomask, based on the project's supplied appearance. Keep the following visual identity: scratched silver elongated biomask with small ivory tusks, ochre mottled skin, black netting, layered silver armor, bone trophy on chest, dark dreadlocks, red cape with fur edge, shoulder cannon, double-handed long silver spear. Preserve his muscular proportions, equipment and detailed illustrated raster fighting-game sprite style. Draw real distinct animation poses, not a montage of unrelated characters.\nOutput one 1536 x 1024 landscape sheet with exactly EIGHT full-body sprites, on a precise FOUR-column TWO-row uniform grid (each cell 384 x 512). No text, labels, borders, numbers, floor, shadows, scenery, logos, or extra objects. Genuine transparent background and transparent gutters. Every sprite must fit within its own cell including the complete spear, cape, dreadlocks and feet, at least 16 pixels of clear margin. Keep constant scale, body anatomy, same armor, same masked face, same weapon held in two coherent hands, grounded feet at the same local baseline. Keep hands, thumbs and fingers anatomically coherent, no fused hands, no extra limbs, no detached accessories. Feet alternate clearly in the walk poses; do not slide both feet together.\nReading left-to-right:\nTOP row cells1-4 = a FOUR-frame forward walk cycle: leading foot planted/other foot back; passing pose lifting rear foot; opposite foot planted; opposite passing pose. Keep the spear held diagonally across the body, no attack, cape and dreadlocks lag gently.\nBOTTOM row cells1-2 = TWO distinct subtle idle breathing drawings in the same planted fighting stance; cells3-4 = TWO distinct standing high guard poses with the spear braced protectively before head and upper torso, knees flexed, no strike. These are gameplay motions, not graphic rotations, warps or enlarged copies. Consistent clean detailed raster comic-game rendering, readable at small size.\nEvery frame faces toward screen RIGHT, in a three-quarter side view. This is the player's native facing.",
+      "file": "work/v45/generated-candidates/ahab-right-draft-01.png",
+      "status": "rejected",
+      "reason": "Costume changed (shoulder fur and extra skulls); cells overlap.",
+      "sha256": "192fafa02a04559a034cb68552e6950eb8391b7004d0087b257c7a450aa04f76"
+    },
+    {
+      "key": "right02",
+      "prompt": "Production asset for a 2D fighting game. Create one NATIVE RIGHT-FACING AHAB PREDATOR MASKED sprite sheet. LANDSCAPE 1536x1024, 2 columns and 2 rows, exactly FOUR complete sprites, large clear margins, identical scale in all four 768x512 cells. EVERY BACKGROUND PIXEL IS PURE SOLID MAGENTA #FF00FF, including all gutters, no gradients, no light halos, no shadows, no background art. No text/grid/labels. Sharp, finely detailed painted comic-game raster rendering, not cute, not chibi.\n\nAhab is an ochre mottled-skinned muscular Yautja. Exact costume specification: elongated weathered silver biomask, rounded dome with four slanting forehead grooves, angular eyebrow edge, deep narrow eyes, round spiral cheek vents, two small ivory tusk-like fang projections at the mouth. Long black dreadlocks with sparse brown metallic rings. Jagged overlapping heavy silver armour plates, asymmetrical segmented silver shoulder/chest armour, black diamond body netting, one SINGLE long pale animal skull trophy fixed to the center upper chest (not a necklace of many skulls), silver gauntlets, brown fur only at the hip belt, silver groin guard and segmented silver shin armour. Plain red cloth cape hanging behind him: NO fur shoulder mantle. Three-finger/claw-like feet planted clearly, coherent hands each with four digits plus thumb. Shoulder cannon stays on his anatomical LEFT shoulder and wrist-blade housing on RIGHT forearm.\nHe holds one long silver spear with one broad split/two-pointed blade head, shaft held securely in BOTH hands (right hand at lower shaft near hip, left hand upper shaft before chest), diagonal across torso. Entire spear and cape fit inside cell, never cross cell edges. Both hands visibly grip the SAME shaft; no extra arms/fingers/spears. Camera three-quarter fighting side view aimed to the RIGHT, not pure profile: enough front chest to see the skull trophy. Body proportions muscular and tall, unchanged between poses.\n\nTop left cell: neutral fighting stance, spear held diagonally, knees slightly bent.\nTop right cell: same planted stance with subtle inhalation, chest a little raised and dreads/cape slightly lagged; a distinct idle breathing drawing, feet stay at the exact same anchors.\nBottom left cell: standing high guard, spear braced before upper body, knees moderately bent; still faces RIGHT.\nBottom right cell: same high guard under a small absorbed impact, shoulders lean back slightly, elbows bend, both hands remain on shaft, feet retain same anchors.\nWithin each cell all support feet at y=480 local; body crown around y=95, no independent per-pose scaling. Clear magenta margin16px minimum around every weapon and body. No new ornaments, anatomy drift, mirrored equipment, crossed overlapping hands, warped mask, duplicate limbs.",
+      "file": "work/v45/generated-candidates/ahab-right-draft-02.png",
+      "status": "accepted-partial",
+      "reason": "Visual review acceptable as an adaptation; alpha <=2 noise requires explicit runtime-only preprocessing.",
+      "sha256": "bfe5e04dd61416c611de0d304b7ac74383437075240ed0c766edae3ada5364c7",
+      "runtimeSrc": "/game/sprites/v45/pit/ahab/ahab-masked-idle-guard-right.png",
+      "definition": {
+        "fighterId": "user-ahab",
+        "variantId": "ahab-avec-casque-0c8ceb1c95",
+        "bodyHeightPx": 492,
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "ahab-masked-pit-v45",
+          "characterId": "user-ahab",
+          "variantId": "ahab-avec-casque-0c8ceb1c95",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "ahab-masked-idle-guard-right-v45",
+              "src": "/game/sprites/v45/pit/ahab/ahab-masked-idle-guard-right.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha",
+                "noiseFloor": 2
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "idle",
+              "facing": "right",
+              "status": "validated",
+              "loop": true,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "ahab-masked-idle-guard-right-v45",
+                  "rect": [
+                    0,
+                    0,
+                    768,
+                    502
+                  ],
+                  "pivot": [
+                    346.25,
+                    500
+                  ],
+                  "durationTicks": 45
+                },
+                {
+                  "pageId": "ahab-masked-idle-guard-right-v45",
+                  "rect": [
+                    768,
+                    0,
+                    768,
+                    502
+                  ],
+                  "pivot": [
+                    349.25,
+                    500
+                  ],
+                  "durationTicks": 45
+                }
+              ]
+            },
+            {
+              "id": "high-guard",
+              "facing": "right",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "ahab-masked-idle-guard-right-v45",
+                  "rect": [
+                    0,
+                    502,
+                    768,
+                    522
+                  ],
+                  "pivot": [
+                    343.25,
+                    501
+                  ],
+                  "durationTicks": 30
+                },
+                {
+                  "pageId": "ahab-masked-idle-guard-right-v45",
+                  "rect": [
+                    768,
+                    502,
+                    768,
+                    522
+                  ],
+                  "pivot": [
+                    350.5,
+                    500
+                  ],
+                  "durationTicks": 30
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "left02",
+      "prompt": "Production asset for a 2D fighting game. Create one NATIVE LEFT-FACING AHAB PREDATOR MASKED sprite sheet. LANDSCAPE 1536x1024, 2 columns and 2 rows, exactly FOUR complete sprites, large clear margins, identical scale in all four 768x512 cells. EVERY BACKGROUND PIXEL IS PURE SOLID MAGENTA #FF00FF, including all gutters, no gradients, no light halos, no shadows, no background art. No text/grid/labels. Sharp, finely detailed painted comic-game raster rendering, not cute, not chibi.\n\nAhab is an ochre mottled-skinned muscular Yautja. Exact costume specification: elongated weathered silver biomask, rounded dome with four slanting forehead grooves, angular eyebrow edge, deep narrow eyes, round spiral cheek vents, two small ivory tusk-like fang projections at the mouth. Long black dreadlocks with sparse brown metallic rings. Jagged overlapping heavy silver armour plates, asymmetrical segmented silver shoulder/chest armour, black diamond body netting, one SINGLE long pale animal skull trophy fixed to the center upper chest (not a necklace of many skulls), silver gauntlets, brown fur only at the hip belt, silver groin guard and segmented silver shin armour. Plain red cloth cape hanging behind him: NO fur shoulder mantle. Three-finger/claw-like feet planted clearly, coherent hands each with four digits plus thumb. Shoulder cannon stays on his anatomical LEFT shoulder and wrist-blade housing on RIGHT forearm.\nHe holds one long silver spear with one broad split/two-pointed blade head, shaft held securely in BOTH hands (right hand at lower shaft near hip, left hand upper shaft before chest), diagonal across torso. Entire spear and cape fit inside cell, never cross cell edges. Both hands visibly grip the SAME shaft; no extra arms/fingers/spears. Camera three-quarter fighting side view aimed to the LEFT, not pure profile: enough front chest to see the skull trophy. Body proportions muscular and tall, unchanged between poses.\n\nTop left cell: neutral fighting stance, spear held diagonally, knees slightly bent.\nTop right cell: same planted stance with subtle inhalation, chest a little raised and dreads/cape slightly lagged; a distinct idle breathing drawing, feet stay at the exact same anchors.\nBottom left cell: standing high guard, spear braced before upper body, knees moderately bent; still faces LEFT.\nBottom right cell: same high guard under a small absorbed impact, shoulders lean back slightly, elbows bend, both hands remain on shaft, feet retain same anchors.\nWithin each cell all support feet at y=480 local; body crown around y=95, no independent per-pose scaling. Clear magenta margin16px minimum around every weapon and body. No new ornaments, anatomy drift, mirrored equipment, crossed overlapping hands, warped mask, duplicate limbs.\nAll four poses must look LEFT toward an opponent on the left edge of the screen. Draw the opposite view properly, never flip anatomical equipment: cannon anatomical left shoulder, blade gauntlet anatomical right forearm. Native left-facing idle breathing and high guard for the same outfit.",
+      "file": "work/v45/generated-candidates/ahab-left-draft-02.png",
+      "status": "rejected",
+      "reason": "Human chest skull instead of animal trophy; cannon direction inconsistent; alpha seam cannot pass a <=2 cleanup.",
+      "sha256": "9b92d18252364f25540ce17bf3e9d31b2a919d9109f0a6416c97d935ad10d53e"
+    },
+    {
+      "key": "left03",
+      "prompt": "Production asset for a 2D fighting game. Create one NATIVE LEFT-FACING AHAB PREDATOR MASKED sprite sheet. LANDSCAPE 1536x1024, 2 columns and 2 rows, exactly FOUR complete sprites, VERY GENEROUS EMPTY MARGINS: each complete figure including weapons is ONLY 380 pixels tall, occupying the central 60% of its 768x512 cell. Identical scale in all four cells. EVERY BACKGROUND PIXEL IS PURE SOLID MAGENTA #FF00FF, including all gutters, no gradients, no light halos, no shadows, no background art. No text/grid/labels. Sharp, finely detailed painted comic-game raster rendering, not cute, not chibi.\n\nAhab is an ochre mottled-skinned muscular Yautja. Exact costume specification: elongated weathered silver biomask, rounded dome with four slanting forehead grooves, angular eyebrow edge, deep narrow eyes, round spiral cheek vents, two small ivory tusk-like fang projections at the mouth. Long black dreadlocks with sparse brown metallic rings. Jagged overlapping heavy silver armour plates, asymmetrical segmented silver shoulder/chest armour, black diamond body netting, one SINGLE long pale animal skull trophy fixed to the center upper chest (not a necklace of many skulls), silver gauntlets, brown fur only at the hip belt, silver groin guard and segmented silver shin armour. Plain red cloth cape hanging behind him: NO fur shoulder mantle. Three-finger/claw-like feet planted clearly, coherent hands each with four digits plus thumb. Shoulder cannon stays on his anatomical LEFT shoulder and wrist-blade housing on RIGHT forearm.\nHe holds one long silver spear with one broad split/two-pointed blade head, shaft held securely in BOTH hands (right hand at lower shaft near hip, left hand upper shaft before chest), diagonal across torso. Entire spear and cape fit inside cell, never cross cell edges. Both hands visibly grip the SAME shaft; no extra arms/fingers/spears. Camera three-quarter fighting side view aimed to the LEFT, not pure profile: enough front chest to see the skull trophy. Body proportions muscular and tall, unchanged between poses.\n\nTop left cell: neutral fighting stance, spear held diagonally, knees slightly bent.\nTop right cell: same planted stance with subtle inhalation, chest a little raised and dreads/cape slightly lagged; a distinct idle breathing drawing, feet stay at the exact same anchors.\nBottom left cell: standing high guard, spear braced before upper body, knees moderately bent; still faces LEFT.\nBottom right cell: same high guard under a small absorbed impact, shoulders lean back slightly, elbows bend, both hands remain on shaft, feet retain same anchors.\nWithin each cell all support feet at y=445 local; spear tip never above y=70; body crown around y=150, no independent per-pose scaling. Minimum 60px empty margin at top and bottom of every cell. All four figures must be MUCH SMALLER than the cells to prevent any cell crossing. No new ornaments, anatomy drift, mirrored equipment, crossed overlapping hands, warped mask, duplicate limbs.\nAll four poses must look LEFT toward an opponent on the left edge of the screen. Draw the opposite view properly, never flip anatomical equipment: cannon anatomical left shoulder, blade gauntlet anatomical right forearm. Native left-facing idle breathing and high guard for the same outfit.\nCRITICAL anatomical correction: All FOUR faces, spear tips, and the SHOULDER CANNON BARREL point to SCREEN LEFT, toward the left edge of the image. The visible open round muzzle of the cannon is on its LEFT end, on the LEFT of the shoulder, projecting forward toward the same direction as the face. NEVER let the cannon point behind the hunter to screen right. Chest trophy in every pose is a SINGLE LONG NARROW NON-HUMAN ANIMAL SKULL with a LONG SNOUT, ivory and wedge-shaped, hanging vertically over the chest. NO ROUND HUMAN CRANIUM, NO HUMAN SKULL, NO HUMAN TEETH. There must be no human skull anywhere on the hunter. Keep costume identical between poses. Complete all hands with stable believable fingers around the same spear shaft. This is an original fan-game adaptation, with faithful recognizable Ahab gear.",
+      "file": "work/v45/generated-candidates/ahab-left-draft-03.png",
+      "status": "rejected",
+      "reason": "Animal skull corrected, but cannon direction remains ambiguous with a right-extending barrel and dark opening. Mask ornaments differ from the accepted right-facing page.",
+      "sha256": "fb69f10892bbaf0991e812d7fee8c1b4c6c37e47f3bdba29784f651e354f79da"
+    }
+  ],
+  "newSourcePages": 1,
+  "newDistinctDrawings": 4,
+  "acceptedOrientedClips": 2,
+  "completeMovesets": 0,
+  "sourcePreservedByteForByte": true
+}

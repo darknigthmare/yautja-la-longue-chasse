@@ -2,11 +2,25 @@ import { PIT_VERSUS_FIGHTER_IDS } from '../game/systems/pitRosterExpansion';
 import { createPitCombatState, PIT_FIGHTERS, type PitFighterId } from '../game/systems/pitCombat';
 import { PIT_SPRITE_SHEET_REGISTRY } from '../game/pitSpriteSheetRegistry';
 import type { HunterSpriteAtlasClip } from '../game/hunterSpriteAtlas';
+import { getPitFighterVariants, getPitUserVariant, isPitUserFighterId, normalizePitUserVariant } from '../game/systems/pitUserRoster';
 export const PIT_LAB_FIGHTER_IDS = PIT_VERSUS_FIGHTER_IDS;
-export function getPitLabDefinitions(id: PitFighterId) { return PIT_SPRITE_SHEET_REGISTRY.filter(d => d.fighterId === id && d.atlas.status === 'validated'); }
-export function getPitLabCoverage(id: PitFighterId) {
- const definitions=getPitLabDefinitions(id), clips=definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated'));
- return { fighterId:id, atlasCount:definitions.length, sourcePages:new Set(definitions.flatMap(d=>d.atlas.pages.map(p=>p.src))).size, clips:clips.length, rightClips:clips.filter(c=>c.facing==='right').length, leftClips:clips.filter(c=>c.facing==='left').length, drawings:new Set(definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated').flatMap(c=>c.frames.map(f=>(d.atlas.pages.find(p=>p.id===f.pageId)?.src??f.pageId)+':'+f.rect.join(','))))).size };
+/** Every supplied appearance remains inspectable even before its first atlas exists. */
+export function getPitLabAppearances(id: PitFighterId): readonly { id: string | null; label: string }[] {
+ const supplied=getPitFighterVariants(id).map(variant=>({id:variant.id,label:variant.label}));
+ return isPitUserFighterId(id) ? supplied : [{id:null,label:'Apparence de combat d’origine'},...supplied];
+}
+export function getPitLabSelectedVariant(id: PitFighterId, variantId?: string | null): string | undefined {
+ if(typeof variantId==='string' && !getPitUserVariant(id,variantId))throw new Error('Apparence étrangère au combattant sélectionné');
+ return normalizePitUserVariant(id,variantId);
+}
+export function getPitLabDefinitions(id: PitFighterId, variantId?: string | null) {
+ const selected=getPitLabSelectedVariant(id,variantId);
+ return PIT_SPRITE_SHEET_REGISTRY.filter(d=>d.fighterId===id && d.variantId===selected && d.atlas.status==='validated' &&
+  (selected===undefined || d.atlas.variantId===selected));
+}
+export function getPitLabCoverage(id: PitFighterId, variantId?: string | null) {
+ const definitions=getPitLabDefinitions(id,variantId), clips=definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated'));
+ return { fighterId:id, variantId:getPitLabSelectedVariant(id,variantId)??null, atlasCount:definitions.length, sourcePages:new Set(definitions.flatMap(d=>d.atlas.pages.map(p=>p.src))).size, clips:clips.length, rightClips:clips.filter(c=>c.facing==='right').length, leftClips:clips.filter(c=>c.facing==='left').length, drawings:new Set(definitions.flatMap(d=>d.atlas.clips.filter(c=>c.status==='validated').flatMap(c=>c.frames.map(f=>(d.atlas.pages.find(p=>p.id===f.pageId)?.src??f.pageId)+':'+f.rect.join(','))))).size };
 }
 /** The authored phase weights are stretched across the engine's real 60 Hz phase. */
 export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasClip, frameIndex: number): number {
@@ -19,8 +33,8 @@ export function getPitLabFrameTicks(id: PitFighterId, clip: HunterSpriteAtlasCli
  return Math.ceil((before+clip.frames[index].durationTicks)/total*duration)-Math.ceil(before/total*duration);
 }
 /** Isolated frame inspection, using the actual engine phase durations. No simulation or save is changed. */
-export function createPitLabFrame(id:PitFighterId, clip:HunterSpriteAtlasClip, frameIndex:number) {
- const combat=createPitCombatState(id,id==='jungle-hunter'?'city-hunter':'jungle-hunter');
+export function createPitLabFrame(id:PitFighterId, clip:HunterSpriteAtlasClip, frameIndex:number, variantId?:string|null) {
+ const combat=createPitCombatState(id,id==='jungle-hunter'?'city-hunter':'jungle-hunter',{variants:[getPitLabSelectedVariant(id,variantId)??null,null]});
  const f=combat.fighters[0];f.x=480;f.facing=clip.facing==='right'?1:-1;
  const index=Math.max(0,Math.min(clip.frames.length-1,Math.floor(frameIndex))), total=clip.frames.reduce((n,f)=>n+f.durationTicks,0), elapsed=clip.frames.slice(0,index).reduce((n,f)=>n+f.durationTicks,0);
  let tick=elapsed;

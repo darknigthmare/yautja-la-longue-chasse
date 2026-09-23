@@ -44,9 +44,9 @@ export async function auditPitSpriteSheetProduction() {
         const sha256 = hash(canonical); allDrawingHashes.add(sha256);
         cells.set(frame.rect.join(","), { rect: frame.rect, pivot: frame.pivot, visiblePixels, transparentPixels, borderPixels, sha256 });
       }
-      pages.push({ fighterId: entry.fighterId, pageId: page.id, src: page.src, width: info.width, height: info.height,
+      pages.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, pageId: page.id, src: page.src, width: info.width, height: info.height,
         sourceSha256: hash(bytes), sourceHasAlpha: (await sharp(bytes).metadata()).hasAlpha,
-        transparency: page.transparency, keyedPixels: processed.keyedPixels, fringePixels: processed.fringePixels,
+        transparency: page.transparency, keyedPixels: processed.keyedPixels, fringePixels: processed.fringePixels, alphaNoisePixels: processed.alphaNoisePixels,
         distinctDrawings: new Set([...cells.values()].map(cell => cell.sha256)).size, cells: [...cells.values()] });
       assert.equal(hash(await readFile(path)), hash(bytes), page.id + " source changed during readback");
     }
@@ -72,12 +72,14 @@ export async function auditPitSpriteSheetProduction() {
   } };
   let bank;
   try {
-    bank = await api.loadPitSpriteSheetAnimations(registry.map(entry => entry.fighterId), registry);
+    bank = await api.loadPitSpriteSheetAnimations(registry.map(entry => entry.fighterId), registry,
+      { variants: registry.map(entry => entry.variantId ?? null) });
     assert.equal(bank.cancelled, false);
     assert.deepEqual(bank.failedAtlasIds, []);
     assert.equal(bank.readyClipCount, registry.reduce((count, entry) => count + entry.atlas.clips.length, 0));
     for (const entry of registry) for (const clip of entry.atlas.clips) {
-      const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf");
+      const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf",
+        { variants: [entry.variantId ?? null, null] });
       const fighter = combat.fighters[0]; fighter.facing = clip.facing === "right" ? 1 : -1;
       if (clip.id === "walk" || clip.id === "walk-backward") fighter.velocityX = fighter.facing * (clip.id === "walk" ? 3 : -3);
       else if (clip.id === "crouch") fighter.crouching = true;
@@ -92,16 +94,20 @@ export async function auditPitSpriteSheetProduction() {
       }
       const resolved = api.resolvePitSpriteSheetAnimation(bank, fighter, { simulationFrame: 0, combat });
       assert.ok(resolved, entry.fighterId + " " + clip.id + " " + clip.facing);
+      assert.equal(resolved.definition.variantId, entry.variantId, "a supplied costume must own its rendered atlas");
       assert.equal(resolved.resolved.frame.clip.id, clip.id);
       assert.equal(resolved.resolved.frame.clip.facing, clip.facing);
-      clipReports.push({ fighterId: entry.fighterId, clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length,
+      clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length,
         authoredTicks: clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0),
         runtimePhaseTicks: resolved.resolved.motion.durationTicks, ready: true });
     }
   } finally { Object.assign(globalThis, previous); }
-  const sequences = new Set(clipReports.map(clip => JSON.stringify([clip.fighterId, clip.clipId.replace(/\.(startup|active|recovery)$/, ""), clip.facing])));
+  const sequences = new Set(clipReports.map(clip => JSON.stringify([clip.fighterId, clip.variantId, clip.clipId.replace(/\.(startup|active|recovery)$/, ""), clip.facing])));
   return { schemaVersion: 1, verifiedAt: new Date().toISOString(), status: "PASS", method: "Sharp PNG readback through the real atlas preparation and animation loader",
-    fighters: registry.map(entry => entry.fighterId), pageCount: pages.length, sourceRequests: requests,
+    fighters: [...new Set(registry.map(entry => entry.fighterId))],
+    historicalFighters: [...new Set(registry.filter(entry => entry.variantId === undefined).map(entry => entry.fighterId))],
+    appearances: [...new Map(registry.map(entry => [JSON.stringify([entry.fighterId, entry.variantId ?? null]),
+      { fighterId: entry.fighterId, variantId: entry.variantId ?? null }])).values()], pageCount: pages.length, sourceRequests: requests,
     distinctDrawings: allDrawingHashes.size, readyPhaseClips: bank.readyClipCount, actionSequencesIncludingFacings: sequences.size,
     pages, clips: clipReports, limits: ["Pixel validation does not replace the separate visual anatomy review.",
       "Phase clips are not complete fighter animation libraries.", "The 264 historical production entries are not 264 animation clips or distinct canonical individuals.",

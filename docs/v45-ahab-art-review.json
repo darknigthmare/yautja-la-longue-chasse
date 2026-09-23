@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "version": "V45",
+  "checkedAt": "2026-09-23T05:01:20.967Z",
+  "reviewScope": "Independent source-image visual review and read-only pixel measurements; not in-game or deployment QA",
+  "fighterId": "user-ahab",
+  "variantId": "ahab-avec-casque-0c8ceb1c95",
+  "reference": {
+    "path": "public/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+    "sha256": "0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb",
+    "source": "User-supplied masked Ahab PNG",
+    "referenceUse": "Observed visual reference translated into generation instructions. Root reports that direct local-reference attachment failed; the generated candidate was not conditioned on the exact reference pixels."
+  },
+  "accepted": {
+    "path": "work/v45/generated-candidates/ahab-right-draft-02.png",
+    "sha256": "bfe5e04dd61416c611de0d304b7ac74383437075240ed0c766edae3ada5364c7",
+    "width": 1536,
+    "height": 1024,
+    "visualDecision": "accepted-as-project-adaptation",
+    "technicalDecision": "eligible-only-with-explicit-in-memory-alpha-noise-threshold-2",
+    "runtimeVerified": false,
+    "officialFidelityCertified": false,
+    "sourceBytesPreserved": true,
+    "acceptedDrawings": 4,
+    "acceptedOrientedSequences": 2,
+    "completeMovesets": 0,
+    "facings": [
+      "right"
+    ],
+    "clips": [
+      {
+        "id": "idle",
+        "frameIndices": [
+          0,
+          1
+        ],
+        "loop": true
+      },
+      {
+        "id": "high-guard",
+        "frameIndices": [
+          2,
+          3
+        ],
+        "loop": false,
+        "playbackReview": "Enter the first defensive spear pose, then settle and hold the second braced pose. The second drawing leans back and lowers the crown by 28 source pixels, so repeated alternation would produce a pronounced rocking motion rather than a subtle breathing guard.",
+        "terminalBehavior": "hold-last-authored-frame",
+        "semanticLimit": "Defensive stance adaptation only; no incoming impact is depicted or approved as hitstun or blockstun."
+      }
+    ],
+    "bodyHeightPx": 492,
+    "transparencyRequirement": {
+      "mode": "alpha",
+      "noiseThreshold": 2,
+      "semantics": "Explicitly remove only alpha 1 and 2 in the private runtime readback. Preserve RGB and all alpha values above 2. Never rewrite the source PNG."
+    },
+    "alpha": {
+      "range": [
+        0,
+        254
+      ],
+      "alpha1Pixels": 28184,
+      "alpha2Pixels": 8395,
+      "removedPixelCount": 36579,
+      "equivalentOpaquePixelsRemoved": 176.3686274509804,
+      "pageCoverageEquivalentPercent": 0.011213215347988154,
+      "allProposedBordersAtMostThreshold2": true
+    },
+    "frames": [
+      {
+        "index": 0,
+        "clipId": "idle",
+        "rect": [
+          0,
+          0,
+          768,
+          502
+        ],
+        "pivot": [
+          346.25,
+          500
+        ],
+        "crownY": 9,
+        "sourceFootCentersX": [
+          214,
+          478.5
+        ],
+        "supportYAbove64": 499,
+        "facing": "right",
+        "sourcePivot": [
+          346.25,
+          500
+        ],
+        "maxBorderAlphaBeforeCleanup": 1,
+        "borderPixelsAboveThreshold2": 0,
+        "alpha1Pixels": 7539,
+        "alpha2Pixels": 2106,
+        "removedCoverageEquivalentOpaquePixels": 46.082352941176474,
+        "visibleAfterThreshold2": 106453,
+        "boundsAfterThreshold2": [
+          148,
+          7,
+          675,
+          500
+        ],
+        "canonicalVisiblePixelsSha256AfterThreshold2": "924da232029ae80d5c2d026d584a9b6d19b20b41f35d7fb71fe654f7ac76113e"
+      },
+      {
+        "index": 1,
+        "clipId": "idle",
+        "rect": [
+          768,
+          0,
+          768,
+          502
+        ],
+        "pivot": [
+          349.25,
+          500
+        ],
+        "crownY": 9,
+        "sourceFootCentersX": [
+          985,
+          1249.5
+        ],
+        "supportYAbove64": 500,
+        "facing": "right",
+        "sourcePivot": [
+          1117.25,
+          500
+        ],
+        "maxBorderAlphaBeforeCleanup": 2,
+        "borderPixelsAboveThreshold2": 0,
+        "alpha1Pixels": 6348,
+        "alpha2Pixels": 2275,
+        "removedCoverageEquivalentOpaquePixels": 42.73725490196078,
+        "visibleAfterThreshold2": 116512,
+        "boundsAfterThreshold2": [
+          892,
+          7,
+          1443,
+          500
+        ],
+        "canonicalVisiblePixelsSha256AfterThreshold2": "c53e4eef216856f24e94eb7edd974138aea17f38fb84ba87e6cddfd6a898dd38"
+      },
+      {
+        "index": 2,
+        "clipId": "high-guard",
+        "rect": [
+          0,
+          502,
+          768,
+          522
+        ],
+        "pivot": [
+          343.25,
+          501
+        ],
+        "crownY": 538,
+        "sourceFootCentersX": [
+          207.5,
+          479
+        ],
+        "supportYAbove64": 1001,
+        "facing": "right",
+        "sourcePivot": [
+          343.25,
+          1003
+        ],
+        "maxBorderAlphaBeforeCleanup": 1,
+        "borderPixelsAboveThreshold2": 0,
+        "alpha1Pixels": 6570,
+        "alpha2Pixels": 1911,
+        "removedCoverageEquivalentOpaquePixels": 40.752941176470586,
+        "visibleAfterThreshold2": 101999,
+        "boundsAfterThreshold2": [
+          164,
+          504,
+          644,
+          1003
+        ],
+        "canonicalVisiblePixelsSha256AfterThreshold2": "168426cb5af09bf7ac311d51c4159f80b6aff093df5e69892e6709038ea22009"
+      },
+      {
+        "index": 3,
+        "clipId": "high-guard",
+        "rect": [
+          768,
+          502,
+          768,
+          522
+        ],
+        "pivot": [
+          350.5,
+          500
+        ],
+        "crownY": 566,
+        "sourceFootCentersX": [
+          985,
+          1252
+        ],
+        "supportYAbove64": 1000,
+        "facing": "right",
+        "sourcePivot": [
+          1118.5,
+          1002
+        ],
+        "maxBorderAlphaBeforeCleanup": 2,
+        "borderPixelsAboveThreshold2": 0,
+        "alpha1Pixels": 7727,
+        "alpha2Pixels": 2103,
+        "removedCoverageEquivalentOpaquePixels": 46.79607843137255,
+        "visibleAfterThreshold2": 108694,
+        "boundsAfterThreshold2": [
+          904,
+          504,
+          1412,
+          1002
+        ],
+        "canonicalVisiblePixelsSha256AfterThreshold2": "22f74e64c731792bdaa2fc34c5e5a75d99441b145828bea494f5c89d57c233b0"
+      }
+    ],
+    "visualFindings": [
+      "Four separately drawn right-facing poses; two idle drawings and two defensive spear-guard drawings.",
+      "No observed extra arm, gross hand duplication, detached hand, or broken spear shaft in the enlarged hand/weapon inspection. Both hands remain in contact with the same continuous shaft.",
+      "The shoulder cannon points screen-right, matching the face direction.",
+      "Single elongated animal chest skull and plain red cape remain consistent across the four drawings.",
+      "Mask, armour and spear details are an adaptation and do not reproduce the supplied artwork exactly. No canonical or official 1:1 fidelity claim."
+    ],
+    "supportCalibration": {
+      "method": "Foot centers measured in the contact bands, alpha above64; alpha above2 used for outer support envelope. Manual pivots translate drawings without per-frame rescaling.",
+      "idleFootCentersRelativeToPivot": [
+        [
+          -132.25,
+          132.25
+        ],
+        [
+          -132.25,
+          132.25
+        ]
+      ],
+      "maximumIdleFootCenterDriftSourcePx": 0,
+      "maximumIdleSupportHeightDriftSourcePx": 1,
+      "guardFootCentersRelativeToPivot": [
+        [
+          -135.75,
+          135.75
+        ],
+        [
+          -133.5,
+          133.5
+        ]
+      ],
+      "maximumGuardFootCenterDriftSourcePx": 2.25,
+      "guardVisibleSupportOffsetFromPivotSourcePx": [
+        -2,
+        -2
+      ],
+      "note": "Numerical source-space check only. Requires actual runtime scale, transition and playback QA."
+    }
+  },
+  "rejected": [
+    {
+      "path": "work/v45/generated-candidates/ahab-right-draft-01.png",
+      "sha256": "192fafa02a04559a034cb68552e6950eb8391b7004d0087b257c7a450aa04f76",
+      "width": 1536,
+      "height": 1024,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alpha1Pixels": 38511,
+      "alpha2Pixels": 14002,
+      "decision": "rejected-for-runtime",
+      "acceptedDrawings": 0,
+      "acceptedSequences": 0,
+      "reasons": [
+        "Multiple skull necklace replaces the supplied single elongated animal chest trophy.",
+        "Fur shoulder trim changes the supplied plain red cape and armour silhouette.",
+        "Dense layout crosses nominal 4-by-2 cell borders; no clips approved."
+      ]
+    },
+    {
+      "path": "work/v45/generated-candidates/ahab-left-draft-02.png",
+      "sha256": "9b92d18252364f25540ce17bf3e9d31b2a919d9109f0a6416c97d935ad10d53e",
+      "width": 1536,
+      "height": 1024,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alpha1Pixels": 21383,
+      "alpha2Pixels": 7607,
+      "decision": "rejected-for-runtime",
+      "acceptedDrawings": 0,
+      "acceptedSequences": 0,
+      "reasons": [
+        "Chest trophy is a small human skull rather than the elongated animal skull of the reference and accepted right poses.",
+        "Enlarged inspection confirms a hollow cannon muzzle aimed screen-right while the hunter faces screen-left.",
+        "No separating full-width row survives threshold 2: best seam maxima are 4 on the left column and 14 on the right."
+      ]
+    },
+    {
+      "path": "work/v45/generated-candidates/ahab-left-draft-03.png",
+      "sha256": "fb69f10892bbaf0991e812d7fee8c1b4c6c37e47f3bdba29784f651e354f79da",
+      "width": 1536,
+      "height": 1024,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alpha1Pixels": 19552,
+      "alpha2Pixels": 6989,
+      "decision": "rejected-for-runtime",
+      "acceptedDrawings": 0,
+      "acceptedSequences": 0,
+      "reasons": [
+        "Animal chest trophy is repaired, but the cannon still has ambiguous opposing dark openings: a barrel extends screen-right into a black opening, so correct screen-left aiming is not established.",
+        "Golden mask tusks and a cheek emblem appear here but are absent from the accepted right02 mask. This is inconsistent across the proposed facings.",
+        "Technical alpha eligibility does not override these visual objections."
+      ]
+    }
+  ],
+  "deliveryLimits": [
+    "Only four right-facing drawings in two short sequences are approved for integration. No walk, attack, hitstun, jump, throw, finisher or complete moveset is approved.",
+    "Left-facing play must retain the exact selected static variant fallback; rejected left sheets must not ship as validated atlas pages.",
+    "No mirrored animation is approved.",
+    "Native alpha without the explicit threshold-2 preparation still fails strict border validation.",
+    "Source originals remain immutable. This report does not certify a runtime implementation, build or publication."
+  ]
+}

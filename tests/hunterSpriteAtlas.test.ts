@@ -399,3 +399,95 @@ test("real V26 Wolf/Feral fringe improves in memory while original pixels and al
     assert.deepEqual(await readFile(path), source, "PNG source remains byte-for-byte intact");
   }
 });
+
+test("native alpha noise removal is explicit and preserves RGB, every alpha above the floor and source bytes", () => {
+  const pixels = new Uint8ClampedArray(256 * 4);
+  for (let alpha = 0; alpha < 256; alpha++) pixels.set([alpha, (alpha * 3) % 256, 255 - alpha, alpha], alpha * 4);
+  const before = new Uint8ClampedArray(pixels);
+  const strict = api.processHunterSpriteTransparency(pixels, 256, 1, { mode: "alpha" });
+  assert.deepEqual(strict.pixels, before);
+  assert.equal(strict.alphaNoisePixels, 0);
+  for (const noiseFloor of [1, 2] as const) {
+    const result = api.processHunterSpriteTransparency(pixels, 256, 1, { mode: "alpha", noiseFloor });
+    assert.notEqual(result.pixels, pixels);
+    assert.equal(result.alphaNoisePixels, noiseFloor);
+    assert.equal(result.keyedPixels, 0);
+    assert.equal(result.fringePixels, 0);
+    for (let alpha = 0; alpha < 256; alpha++) {
+      const offset = alpha * 4;
+      assert.deepEqual(result.pixels.slice(offset, offset + 3), before.slice(offset, offset + 3), "all RGB channels remain byte-identical");
+      assert.equal(result.pixels[offset + 3], alpha <= noiseFloor ? 0 : alpha);
+    }
+    assert.deepEqual(pixels, before, "source buffer is immutable");
+  }
+});
+
+test("default cell preparation rejects alpha noise, opted-in preparation clears only its private canvas", () => {
+  const strict = review();
+  const opted: HunterSpriteAtlas = { ...strict, pages: [{ ...strict.pages[0], transparency: { mode: "alpha", noiseFloor: 2 } }] };
+  const sample = fixture(strict.pages[0]);
+  sample.sourcePixels.set([52, 68, 92, 1], 0);
+  sample.sourcePixels.set([88, 12, 44, 2], 4);
+  const original = new Uint8ClampedArray(sample.sourcePixels);
+  assert.equal(api.prepareHunterSpriteAtlasPage(strict, strict.pages[0].id, sample.image, sample.createCanvas), null);
+  assert.equal(sample.output(), null, "strict alpha mode does not alter the decoded canvas");
+  assert.ok(api.prepareHunterSpriteAtlasPage(opted, opted.pages[0].id, sample.image, sample.createCanvas));
+  const output = sample.output(); assert.ok(output);
+  assert.deepEqual(output.slice(0, 8), new Uint8ClampedArray([52, 68, 92, 0, 88, 12, 44, 0]));
+  assert.deepEqual(output.slice(8), original.slice(8));
+  assert.deepEqual(sample.sourcePixels, original);
+  const draftWithPolicy = { ...opted, status: "draft" as const };
+  assert.equal(api.prepareHunterSpriteAtlasPage(draftWithPolicy, opted.pages[0].id, sample.image, sample.createCanvas), null);
+});
+
+test("noiseFloor never relaxes the transparent cell border or makes an empty drawing usable", () => {
+  const base = review();
+  for (const noiseFloor of [1, 2] as const) {
+    const atlas: HunterSpriteAtlas = { ...base, pages: [{ ...base.pages[0], transparency: { mode: "alpha", noiseFloor } }] };
+    for (const [x, y] of [[3, 0], [0, 3], [7, 3], [3, 7]]) {
+      const sample = fixture(atlas.pages[0]);
+      sample.sourcePixels.set([100, 120, 140, noiseFloor + 1], (y * 64 + x) * 4);
+      assert.equal(api.prepareHunterSpriteAtlasPage(atlas, atlas.pages[0].id, sample.image, sample.createCanvas), null,
+        `alpha ${noiseFloor + 1} on a cell border remains invalid`);
+    }
+    const empty = fixture(atlas.pages[0]);
+    for (let offset = 3; offset < empty.sourcePixels.length; offset += 4) empty.sourcePixels[offset] = noiseFloor;
+    assert.equal(api.prepareHunterSpriteAtlasPage(atlas, atlas.pages[0].id, empty.image, empty.createCanvas), null,
+      "noise alone cannot constitute a real drawn frame");
+  }
+});
+
+test("native alpha noise thresholds outside 1 or 2 and use with color-key fail closed", () => {
+  const base = review();
+  const invalid = [0, -1, 3, 255, 1.5, NaN, Infinity, null, "2", true, [], {}]
+    .map(noiseFloor => ({ mode: "alpha", noiseFloor }));
+  invalid.push({ mode: "color-key", noiseFloor: 2, rgb: [255, 0, 255], tolerance: 0 } as typeof invalid[number]);
+  for (const transparency of invalid) {
+    const atlas = { ...base, pages: [{ ...base.pages[0], transparency }] };
+    assert.equal(api.validateHunterSpriteAtlas(atlas).valid, false);
+    assert.throws(() => api.processHunterSpriteTransparency(new Uint8ClampedArray(16), 2, 2,
+      transparency as unknown as Parameters<typeof api.processHunterSpriteTransparency>[3]), RangeError);
+  }
+});
+
+test("prepared pixel evidence binds the exact alpha policy and removed noise cannot inflate drawing coverage", () => {
+  const base = review();
+  const atlas: HunterSpriteAtlas = { ...base, pages: [{ ...base.pages[0], transparency: { mode: "alpha", noiseFloor: 2 } }] };
+  const sample = fixture(atlas.pages[0], true);
+  for (let column = 0; column < 8; column++) {
+    sample.sourcePixels.set([40 + column, 100, 80, column % 2 + 1], (3 * 64 + column * 8 + 3) * 4);
+  }
+  const proof = api.prepareHunterSpriteAtlasPage(atlas, atlas.pages[0].id, sample.image, sample.createCanvas);
+  assert.ok(proof);
+  const coverage = api.countHunterSpriteAtlasCoverage([atlas], [requirement()], [proof]);
+  assert.equal(coverage.entries[0].distinctFrames, 1, "hidden noise colors are not independent drawings");
+  assert.equal(coverage.entries[0].missingReason, "insufficient-distinct-frames");
+  for (const transparency of [{ mode: "alpha" }, { mode: "alpha", noiseFloor: 1 }] as const) {
+    const changed = { ...atlas, pages: [{ ...atlas.pages[0], transparency }] };
+    assert.equal(api.countHunterSpriteAtlasCoverage([changed], [requirement("right", 1)], [proof]).entries[0].missingReason, "unprepared-page");
+    assert.equal(api.drawHunterSpriteAtlasFrame(neverDraw, changed, [proof], {
+      clipId: "idle", facing: "right", elapsedTicks: 0, x: 0, y: 0,
+    }), null);
+  }
+  assert.equal(api.countHunterSpriteAtlasCoverage([atlas], [requirement("right", 1)], [{ ...proof }]).entries[0].missingReason, "unprepared-page");
+});

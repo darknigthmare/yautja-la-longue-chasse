@@ -33,8 +33,9 @@ test('the shared vehicle effect library is not a fifty-first catalogue vehicle',
   assert(coverage.vehicles.entriesWithSourceArt <= 50);
 });
 
-test('additional reviewed atlases add clips, not extra animated fighters', () => {
+test('reviewed Ahab appearance adds one fighter and two clips without implying complete movesets', () => {
   const coverage = productionCoverage([], []);
-  assert.equal(coverage.hunters.runtimeFighters, 11);
-  assert.equal(coverage.hunters.validatedClips, 267);
+  assert.equal(coverage.hunters.runtimeFighters, 12);
+  assert.equal(coverage.hunters.validatedClips, 269);
+  assert.equal(coverage.hunters.completeMovesets, 0);
 });

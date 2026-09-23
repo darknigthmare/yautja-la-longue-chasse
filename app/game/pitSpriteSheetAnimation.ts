@@ -14,10 +14,13 @@ import {
   type PitHunterSpriteFrame,
 } from "./hunterSpriteMotion";
 import { PIT_FIGHTERS, type PitCombatState, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
+import { getPitUserVariant } from "./systems/pitUserRoster";
 
 /** Art review belongs to the registry. Successful decoding never approves art. */
 export interface PitSpriteSheetAnimationDefinition {
   readonly fighterId: PitFighterId;
+  /** Exact supplied appearance owner; omitted only for historical/default artwork. */
+  readonly variantId?: string;
   /** One measured standing-body reference shared by every pose; never fit each pose. */
   readonly bodyHeightPx: number;
   /** Optional measured reference per page, still uniform in both axes. */
@@ -42,7 +45,8 @@ interface PreparedAnimation {
 }
 interface BankEvidence {
   readonly animations: readonly PreparedAnimation[];
-  readonly cursors: Map<0 | 1, PitHunterSpriteCursor>;
+  readonly selections: ReadonlySet<string>;
+  readonly cursors: Map<0 | 1, { selection: string; cursor: PitHunterSpriteCursor }>;
   readonly signal?: AbortSignal;
 }
 export interface PitSpriteSheetAnimationFrame {
@@ -52,6 +56,9 @@ export interface PitSpriteSheetAnimationFrame {
 }
 const evidence = new WeakMap<PitSpriteSheetAnimationBank, BankEvidence>();
 const clipKey = (id: string, facing: string) => JSON.stringify([id, facing]);
+const selectionKey = (id: PitFighterId, variantId?: string | null) => JSON.stringify([id, variantId ?? null]);
+const ownsAppearance = (definition: PitSpriteSheetAnimationDefinition, fighter: PitFighterState) =>
+  definition.fighterId === fighter.definitionId && definition.variantId === fighter.variantId;
 const finite = (value: number) => Number.isFinite(value);
 
 function isAcceptedDefinition(definition: PitSpriteSheetAnimationDefinition): boolean {
@@ -59,6 +66,8 @@ function isAcceptedDefinition(definition: PitSpriteSheetAnimationDefinition): bo
   return Object.hasOwn(PIT_FIGHTERS, definition.fighterId) && finite(definition.bodyHeightPx) &&
     definition.bodyHeightPx > 0 && validateHunterSpriteAtlas(atlas).valid &&
     atlas.characterId === definition.fighterId && atlas.status === "validated" &&
+    (definition.variantId === undefined || (typeof definition.variantId === "string" &&
+      getPitUserVariant(definition.fighterId, definition.variantId) !== null && atlas.variantId === definition.variantId)) &&
     (!definition.pageBodyHeightPx || Object.entries(definition.pageBodyHeightPx).every(([id, value]) =>
       atlas.pages.some(page => page.id === id) && finite(value) && value > 0)) &&
     atlas.pages.every(page => page.width * page.height <= 16_777_216 &&
@@ -95,14 +104,15 @@ function loadPage(src: string, timeoutMs: number, signal?: AbortSignal): Promise
 export async function loadPitSpriteSheetAnimations(
   ids: readonly PitFighterId[],
   registry: readonly PitSpriteSheetAnimationDefinition[],
-  options: { signal?: AbortSignal; timeoutMs?: number } = {},
+  options: { signal?: AbortSignal; timeoutMs?: number; variants?: readonly (string | null)[] } = {},
 ): Promise<PitSpriteSheetAnimationBank> {
   const requestedIds = new Set(ids);
+  const selections = new Set(ids.map((id, index) => selectionKey(id, options.variants?.[index])));
   const failedAtlasIds: string[] = [];
   const animations: PreparedAnimation[] = [];
   const timeoutMs = finite(options.timeoutMs ?? NaN)
     ? Math.max(1, Math.min(30_000, Math.floor(options.timeoutMs!))) : 12_000;
-  const candidates = registry.filter(entry => requestedIds.has(entry.fighterId));
+  const candidates = registry.filter(entry => selections.has(selectionKey(entry.fighterId, entry.variantId)));
   if (!options.signal?.aborted && typeof Image !== "undefined" && typeof document !== "undefined") {
     await Promise.all(candidates.map(async original => {
       if (!isAcceptedDefinition(original)) { failedAtlasIds.push(original.atlas?.id ?? "invalid-atlas"); return; }
@@ -160,7 +170,7 @@ export async function loadPitSpriteSheetAnimations(
   const bank: PitSpriteSheetAnimationBank = Object.freeze({ requestedIds,
     readyClipCount: animations.reduce((sum, entry) => sum + entry.readyClips.size, 0),
     failedAtlasIds: Object.freeze(failedAtlasIds), cancelled: Boolean(options.signal?.aborted) });
-  evidence.set(bank, { animations, cursors: new Map(), signal: options.signal });
+  evidence.set(bank, { animations, selections, cursors: new Map(), signal: options.signal });
   return bank;
 }
 
@@ -170,16 +180,17 @@ export function resolvePitSpriteSheetAnimation(
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetAnimationFrame | null {
-  // Supplied static variants must never borrow a different costume's animation.
-  if (fighter.variantId) return null;
   const proof = bank && evidence.get(bank);
-  if (!proof || bank.cancelled || proof.signal?.aborted || !bank.requestedIds.has(fighter.definitionId)) return null;
+  const selection = selectionKey(fighter.definitionId, fighter.variantId);
+  if (!proof || bank.cancelled || proof.signal?.aborted || !proof.selections.has(selection)) return null;
   const simulationFrame = options.simulationFrame ?? options.combat?.frame ?? 0;
-  const motion = describePitHunterSpriteMotion(fighter, simulationFrame, proof.cursors.get(fighter.slot), options.combat);
+  const previous = proof.cursors.get(fighter.slot);
+  const motion = describePitHunterSpriteMotion(fighter, simulationFrame,
+    previous?.selection === selection ? previous.cursor : undefined, options.combat);
   if (!motion) { proof.cursors.delete(fighter.slot); return null; }
-  proof.cursors.set(fighter.slot, motion.cursor);
+  proof.cursors.set(fighter.slot, { selection, cursor: motion.cursor });
   for (const animation of proof.animations) {
-    if (animation.definition.fighterId !== fighter.definitionId ||
+    if (!ownsAppearance(animation.definition, fighter) ||
       !animation.readyClips.has(clipKey(motion.clipId, motion.facing))) continue;
     const resolved = resolvePitHunterSpriteFrame(animation.definition.atlas, motion);
     if (!resolved) continue;
@@ -198,7 +209,6 @@ export function drawPitSpriteSheetAnimation(
   groundY: number,
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
-  if (fighter.variantId) return false;
   if (![fighter.x, fighter.y, groundY].every(finite)) return false;
   const animation = resolvePitSpriteSheetAnimation(bank, fighter, options);
   if (!animation) return false;
@@ -223,12 +233,11 @@ export function getPitSpriteSheetAnimationVisualBounds(
   groundY: number,
   registry: readonly PitSpriteSheetAnimationDefinition[],
 ): { x: number; y: number; width: number; height: number } | null {
-  if (fighter.variantId) return null;
   if (![fighter.x, fighter.y, groundY].every(finite) || (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const facing = fighter.facing === 1 ? "right" : "left";
   let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
   for (const definition of registry) {
-    if (definition.fighterId !== fighter.definitionId || !isAcceptedDefinition(definition)) continue;
+    if (!ownsAppearance(definition, fighter) || !isAcceptedDefinition(definition)) continue;
     for (const clip of definition.atlas.clips) {
       if (clip.status !== "validated" || clip.facing !== facing) continue;
       for (const frame of clip.frames) {
@@ -257,16 +266,19 @@ export function resolvePitSpriteSheetHold(
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetHoldFrame | null {
-  // Supplied static variants must never borrow a different costume's animation.
-  if (fighter.variantId) return null;
+  // Supplied appearances keep their selected original plate for uncovered states.
+  if (fighter.variantId !== undefined) return null;
   const proof = bank && evidence.get(bank);
-  if (!proof || bank.cancelled || proof.signal?.aborted || !bank.requestedIds.has(fighter.definitionId)) return null;
+  const selection = selectionKey(fighter.definitionId, fighter.variantId);
+  if (!proof || bank.cancelled || proof.signal?.aborted || !proof.selections.has(selection)) return null;
   const simulationFrame = options.simulationFrame ?? options.combat?.frame ?? 0;
-  const motion = describePitHunterSpriteMotion(fighter, simulationFrame, proof.cursors.get(fighter.slot), options.combat);
+  const previous = proof.cursors.get(fighter.slot);
+  const motion = describePitHunterSpriteMotion(fighter, simulationFrame,
+    previous?.selection === selection ? previous.cursor : undefined, options.combat);
   if (!motion) return null;
-  proof.cursors.set(fighter.slot, motion.cursor);
+  proof.cursors.set(fighter.slot, { selection, cursor: motion.cursor });
   for (const animation of proof.animations) {
-    if (animation.definition.fighterId !== fighter.definitionId || !animation.readyClips.has(clipKey("idle", motion.facing))) continue;
+    if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey("idle", motion.facing))) continue;
     const frame = resolveHunterSpriteAtlasFrame(animation.definition.atlas, "idle", motion.facing, 0);
     if (!frame) continue;
     const source = animation.pages.get(frame.page.id);
@@ -284,7 +296,6 @@ export function drawPitSpriteSheetHold(
   groundY: number,
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
-  if (fighter.variantId) return false;
   if (![fighter.x, fighter.y, groundY].every(finite)) return false;
   const hold = resolvePitSpriteSheetHold(bank, fighter, options);
   if (!hold) return false;

@@ -6,6 +6,7 @@ import { getPitFighterVariants, getPitUserVariant } from "./systems/pitUserRoste
 import { PIT_VERSUS_FIGHTER_IDS, canPitFighterEnterMode, isPitExpansionFighterId, type PitVersusFighterId } from "./systems/pitRosterExpansion";
 import { createPitSelectionState, movePitSelectionIndex, reducePitSelection } from "./systems/pitSelectionFlow";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
+import { getPitRosterIcon } from "./pitRosterIcons";
 import { getPitCombatBitmapArtDefinition } from "./pitCombatBitmapArt";
 import { PIT_ARENA_ART_DEFINITIONS } from "./pitArenaRendering";
 import { resolvePitArenaProductionKit } from "./pitArenaProduction";
@@ -35,11 +36,13 @@ const searchText = (value: string) => value.normalize("NFD").replace(/[\u0300-\u
 const stageThumbnail = (id: PitArenaId) => resolvePitArenaProductionKit(id)?.planes.find(plane => plane.id === "P0")?.assets[0]?.frames[0]?.path ?? PIT_ARENA_ART_DEFINITIONS[id]?.backdrop;
 
 function RosterPortrait({ id }: { id: PitVersusFighterId }) {
-  const art = getPitFighterKeyArt(id) ?? getPitCombatBitmapArtDefinition(id) ?? getPitFighterVariants(id)[0];
+  const icon = getPitRosterIcon(id);
+  // Grid thumbnails never trigger multi-megabyte supplied-source downloads.
+  const art = id.startsWith("user-") ? icon : getPitFighterKeyArt(id) ?? getPitCombatBitmapArtDefinition(id) ?? getPitFighterVariants(id)[0];
   const [failed, setFailed] = useState(false);
   return <span className={styles.iconArt} aria-hidden="true">{isPitExpansionFighterId(id)
     ? <PitExtensionPortrait fighterId={id} facing="right" />
-    : art && !failed ? <img src={art.src} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)} />
+    : art && !failed ? <img src={art.src} alt="" width={art.width} height={art.height} data-pit-roster-icon={icon ? id : undefined} loading="lazy" decoding="async" onError={() => setFailed(true)} />
       : <span>{PIT_FIGHTERS[id].name.slice(0, 2)}</span>}</span>;
 }
 

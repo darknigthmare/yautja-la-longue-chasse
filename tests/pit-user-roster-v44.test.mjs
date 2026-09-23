@@ -84,7 +84,8 @@ test('static variant loads only chosen images, accepts original edge alpha, neve
   assert.equal(p.isPitCombatBitmapSelectionRequested(bank,ids[0],'user-mask'),false);
   assert.equal(p.getPitCombatBitmapArtStatus(bank,ids[0],'user-mask'),'loading');
   assert.equal(p.getPitCombatBitmapArtStatus(bank,ids[0],variants[0]),'static-bitmap');
-  assert.equal(bank.spriteSheets.requestedIds.size,0);
+  assert.equal(bank.spriteSheets.requestedIds.size,2);
+  assert.equal(bank.spriteSheets.readyClipCount,0);
   const fighter=p.createPitCombatState(...ids,{variants}).fighters[0];
   assert.equal(p.resolvePitSpriteSheetAnimation(bank.spriteSheets,fighter),null);
   assert.equal(p.resolvePitSpriteSheetHold(bank.spriteSheets,fighter),null);
