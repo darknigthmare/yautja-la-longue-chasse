@@ -1,0 +1,5 @@
+# Revue visuelle du module p4-tiled-roof-floor
+
+Bande horizontale de tuiles sur fascia bois et chevrons. Bord supérieur presque horizontal et régulier, adapté au contact latéral des combattants. Pas de toit fortement diagonal ou de ridge central. Extrémités entières. Dédié au sol japonais ; ne remplace pas une image de temple ou de dalle industrielle par simple recoloration. Contrôle alpha natif : majorité extérieure alpha0, bordure anti-crénelée réelle, mais quelques pixels parasites d’alpha1–15 subsistent loin de la silhouette. Aucun seuil, découpage, nettoyage ou retouche appliqué au PNG. Fond clair #eeeeee et sombre #444444 inspectés ; pas de halo visible à l’échelle d’affichage. Les bornes alpha>0 ne doivent donc pas être interprétées comme les bornes solides pour le placement. Mesures complètes sous work/v43/roof-modules/inspection-a.json.
+
+Module original OpenAI indépendant ; il ne reproduit pas un accessoire identifié du film à l’identique. Alpha natif conservé, pixels non retouchés.

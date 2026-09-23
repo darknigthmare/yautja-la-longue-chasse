@@ -113,9 +113,9 @@ export const PIT_ARENA_PRODUCTION_MANIFEST = productionManifestJson as unknown a
 const PLANE_IDS: readonly PitArenaProductionPlaneId[] = ["P0", "P1", "P2", "P3", "P4", "P5"];
 const STATUS_RANK: Record<PitArenaProductionStatus, number> = { planned: 0, generated: 1, reviewed: 2, integrated: 3 };
 
-const PUBLIC_ARENA_PATH = /^\/game\/sprites\/v(?:33|34|42)\/pit-arenas\/[a-z0-9/-]+\.png$/;
+const PUBLIC_ARENA_PATH = /^\/game\/sprites\/v(?:33|34|42|43)\/pit-arenas\/[a-z0-9/-]+\.png$/;
 function hasExactStageDirectory(stage: PitArenaProductionStage): boolean {
-  const match = /^\/game\/sprites\/v(?:33|34|42)\/pit-arenas\/([a-z0-9-]+)$/.exec(stage.assetDirectory);
+  const match = /^\/game\/sprites\/v(?:33|34|42|43)\/pit-arenas\/([a-z0-9-]+)$/.exec(stage.assetDirectory);
   return Boolean(match && (match[1] === stage.catalogueId
     || (stage.legacyRuntimeArenaId && isPitFirstEditionArenaId(stage.legacyRuntimeArenaId) && match[1] === stage.legacyRuntimeArenaId)));
 }

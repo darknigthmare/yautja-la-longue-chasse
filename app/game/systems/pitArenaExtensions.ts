@@ -1,5 +1,6 @@
 import type { PitFirstEditionArenaDefinition, PitFirstEditionArenaId } from "./pitFirstEdition";
 import compositionDefinitions from "./pitArenaCompositionsV42.generated.json";
+import { PIT_SCREEN_ARENA_DEFINITIONS, getPitScreenArenaMetadata } from "./pitScreenArenas";
 import productionData from "../pitArenaProductionData.generated.json";
 
 /** Explicitly authored neutral-duel extensions. Art review alone never adds an ID here.
@@ -23,7 +24,7 @@ const HISTORICAL_EXTENSION_IDS = [
 export type PitExtensionArenaId = (typeof HISTORICAL_EXTENSION_IDS)[number] | `arena-${string}`;
 // Only renderer-approved, explicitly enabled compositions join the playable registry.
 // The authored definitions alone never unlock an arena.
-const approvedCompositions = compositionDefinitions.filter(definition => productionData.stages.some(stage =>
+const approvedCompositions = [...compositionDefinitions, ...PIT_SCREEN_ARENA_DEFINITIONS].filter(definition => productionData.stages.some(stage =>
   stage.catalogueId === definition.id && stage.number === definition.catalogueNumber && stage.runtimeEnabled
   && "runtimeExtension" in stage && stage.runtimeExtension?.arenaId === definition.id
   && stage.runtimeExtension.gameplayProfile === "neutral-duel-v1" && stage.runtimeExtension.rendererEvidenceRecorded));
@@ -38,7 +39,7 @@ export interface PitExtensionArenaDefinition extends Omit<PitFirstEditionArenaDe
   readonly implementedSectors: 1;
   readonly interactivePropsImplemented: false;
   readonly transitionsImplemented: false;
-  readonly sourceInterpretation: "original-project-proposal";
+  readonly sourceInterpretation: "original-project-proposal" | "screen-reference-2d-adaptation";
 }
 
 const metadata = [
@@ -69,11 +70,11 @@ export const PIT_EXTENSION_ARENAS: Readonly<Record<PitExtensionArenaId, PitExten
     }];
   }),
   ...approvedCompositions.map(definition => [definition.id, {
-    ...definition, width: 960, height: 540, groundY: 430,
+    id: definition.id, name: definition.name, setting: definition.setting, palette: definition.palette, catalogueNumber: definition.catalogueNumber, width: 960, height: 540, groundY: 430,
     leftWall: 54, rightWall: 906, spawnX: [300, 660], competitiveHazards: false,
     layers: [], gameplayProfile: "neutral-duel-v1", implementedSectors: 1,
     interactivePropsImplemented: false, transitionsImplemented: false,
-    sourceInterpretation: "original-project-proposal",
+    sourceInterpretation: getPitScreenArenaMetadata(definition.id) ? "screen-reference-2d-adaptation" : "original-project-proposal",
   }]),
 ]) as unknown as Readonly<Record<PitExtensionArenaId, PitExtensionArenaDefinition>>;
 

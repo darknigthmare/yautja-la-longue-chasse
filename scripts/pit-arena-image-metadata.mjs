@@ -3,7 +3,8 @@ import crypto from "node:crypto";
 import sharp from "sharp";
 
 /** Read-only measurements: PNG bytes remain untouched. Low-alpha glow does not shrink the visible prop. */
-export async function inspectPitArenaImage(file) {
+export async function inspectPitArenaImage(file, { alphaThreshold = 16 } = {}) {
+  if (!Number.isInteger(alphaThreshold) || alphaThreshold < 1 || alphaThreshold > 255) throw new Error("Invalid alpha measurement threshold");
   const bytes = await fs.readFile(file);
   const metadata = await sharp(bytes).metadata();
   const { data, info } = await sharp(bytes).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -12,7 +13,7 @@ export async function inspectPitArenaImage(file) {
     const alpha = data[(y * info.width + x) * info.channels + info.channels - 1];
     if (alpha === 0) transparent++;
     if (alpha > 0) visible++;
-    if (alpha >= 16) { left = Math.min(left, x); top = Math.min(top, y); right = Math.max(right, x); bottom = Math.max(bottom, y); }
+    if (alpha >= alphaThreshold) { left = Math.min(left, x); top = Math.min(top, y); right = Math.max(right, x); bottom = Math.max(bottom, y); }
   }
   if (right < left || bottom < top) throw new Error("No meaningful visible art in " + file);
   return {

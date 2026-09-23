@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-23T02:56:07.094Z",
+  "url": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "name": "stage-family-filter",
+      "kind": "original",
+      "count": 100
+    },
+    {
+      "name": "stage-family-filter",
+      "kind": "film",
+      "count": 27
+    },
+    {
+      "name": "stage-family-filter",
+      "kind": "game",
+      "count": 9
+    },
+    {
+      "name": "roster-stage-keyboard",
+      "fighters": 16,
+      "stages": 136,
+      "separateConfirmations": true,
+      "duplicateDisabled": true,
+      "authoredOpponentLeft": true,
+      "returnPreservesChoices": true,
+      "saveBytesUnchanged": true,
+      "parallaxPlanes": 6
+    },
+    {
+      "name": "selected-stage-launched",
+      "arena": "arena-136-predator-hunting-grounds-airstrip"
+    },
+    {
+      "name": "progression-stage-imposed",
+      "mode": "Arcade individuel"
+    },
+    {
+      "name": "progression-stage-imposed",
+      "mode": "Circuit du clan"
+    },
+    {
+      "name": "descent-branch-reconfirmation",
+      "playerPreserved": true,
+      "rivalReconfirmed": true
+    },
+    {
+      "name": "progression-stage-imposed",
+      "mode": "Descente"
+    },
+    {
+      "name": "explicit-match-loading",
+      "simulationGate": true
+    },
+    {
+      "name": "mobile-touch-and-reduced-motion",
+      "width": 390,
+      "noOverflow": true,
+      "physicalDeviceCertified": false
+    },
+    {
+      "name": "gamepad-selection",
+      "directions": true,
+      "separateAConfirmations": true,
+      "bReturns": true,
+      "shoulderModeSwitch": true,
+      "physicalControllerCertified": false
+    },
+    {
+      "name": "preview-failure-retry",
+      "failedStage": "arena-136-predator-hunting-grounds-airstrip",
+      "blockedLaunch": true,
+      "retryRecovered": true
+    },
+    {
+      "name": "route-persistence-failure-retry",
+      "mode": "circuit",
+      "choicesLocked": true,
+      "noPrematureFight": true,
+      "failedSaveBytesUnchanged": true,
+      "retryLaunched": true
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "browserClosed": true
+}

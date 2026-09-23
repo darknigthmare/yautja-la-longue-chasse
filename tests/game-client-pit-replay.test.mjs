@@ -111,6 +111,7 @@ function createHarness(overrides = {}) {
   };
   const saveRef = { current: { createdAt: OWNER } };
   const environment = {
+    sessionAliveRef: { current: true },
     saveRef,
     navigator: {},
     window: undefined,
@@ -179,6 +180,7 @@ function createHarness(overrides = {}) {
     callback: factory(...names.map((name) => environment[name])),
     calls,
     saveRef,
+    sessionAliveRef: environment.sessionAliveRef,
   };
 }
 
@@ -493,4 +495,18 @@ test("the replay path never invokes campaign persistence or campaign rewards", (
   assert.match(replayPersistence, /withLatestPitReplay/);
   assert.match(replayPersistence, /writePitReplayArchive/);
   assert.doesNotMatch(replayPersistence, /\bpersist\(|honor|troph|reward|missionProgress/i);
+});
+
+
+test("a queued PIT lock cannot write after its campaign session unmounts", async () => {
+  let operation;
+  const harness = createHarness({navigator:{locks:{request(_key, callback){operation=callback;return Promise.resolve();}}}});
+  const pending = harness.callback(completedResult());
+  await Promise.resolve();
+  assert.equal(typeof operation, "function");
+  harness.sessionAliveRef.current = false;
+  await operation();
+  assert.equal((await pending).persisted, false);
+  assert.equal(harness.calls.statWrites, 0);
+  assert.equal(harness.calls.replayWrites, 0);
 });

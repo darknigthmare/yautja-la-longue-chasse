@@ -25,6 +25,7 @@ function callback(name, environment) {
 function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
+    sessionAliveRef: { current: true },
     save: { createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },
@@ -39,6 +40,7 @@ function fixture() {
     setResumableHunt() {}, setHuntResumePayload() {}, setHuntRuntimeSave() {}, setSelectedMission() {},
     setPendingHuntResult(value) { observations.pendingResult = value; },
     setLastResult(value) { observations.lastResult = value; }, setLastRewardSummary(value) { observations.lastRewardSummary = value; }, setToast() {},
+    setNewGamePhase() {},
     setScreen(screen) { observations.screen = screen; },
     persist(save) { environment.save = save; },
     applyMissionResult(save) {
@@ -280,4 +282,18 @@ test("deferred reward retry cannot invalidate a hunt claimed elsewhere after quo
     assert.equal(environment.save.profile.honor, 5, "result remains exportable in memory");
     assert.equal(failure, outcome === "claimed" ? "save-conflict" : "read-failed");
   }
+});
+
+
+test("unmounted campaign callbacks cannot launch, autosave, settle or clear a replacement owner", () => {
+  const { environment, observations, launch, finish, autosave } = fixture();
+  launch();
+  const before = JSON.stringify(observations);
+  environment.sessionAliveRef.current = false;
+  launch();
+  assert.equal(autosave({ elapsed: 4, snapshot: { health: 80 }, retryCheckpoint: null }), null);
+  finish({ outcome: "success" });
+  assert.equal(environment.clearHuntSession(), false);
+  callback("persist", environment)(environment.save);
+  assert.equal(JSON.stringify(observations), before);
 });

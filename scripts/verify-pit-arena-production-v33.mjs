@@ -9,20 +9,21 @@ import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
 import { arenaCompositionDigest } from "./lib/pit-arena-composition-v42.mjs";
 
 const root = process.cwd();
-const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
+const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { PIT_SCREEN_ARENA_DEFINITIONS } from "./app/game/systems/pitScreenArenas"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
 const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
 // Audit original archive references, not the smaller runtime attestations.
 const { source: manifest } = await checkPitArenaRuntimeData(root);
 assert.equal(manifest.schemaVersion, 1);
 assert.equal(manifest.production, "v33-pit-independent-arena-art");
-assert.equal(manifest.stages.length, 100);
+assert.equal(manifest.stages.length, 100 + api.PIT_SCREEN_ARENA_DEFINITIONS.length);
 const ids = new Set();
 const imagePaths = new Set();
 const checks = [];
 for (const stage of manifest.stages) {
   assert(!ids.has(stage.catalogueId), stage.catalogueId);
   ids.add(stage.catalogueId);
-  const catalogue = api.PIT_ARENA_CATALOGUE.find(entry => entry.id === stage.catalogueId);
+  const screen = api.PIT_SCREEN_ARENA_DEFINITIONS.find(entry => entry.id === stage.catalogueId);
+  const catalogue = api.PIT_ARENA_CATALOGUE.find(entry => entry.id === stage.catalogueId) ?? (screen && {number:screen.catalogueNumber,name:screen.name,setting:screen.setting,runtimeArenaId:stage.runtimeEnabled?screen.id:null,runtimeStatus:stage.runtimeEnabled?'playable':'concept'});
   assert(catalogue, `Unknown catalogue ID ${stage.catalogueId}`);
   assert.equal(stage.number, catalogue.number);
   assert.equal(stage.name, catalogue.name);
@@ -37,7 +38,7 @@ for (const stage of manifest.stages) {
     assert.equal(catalogue.runtimeStatus, "playable");
     const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
     assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
-    if (stage.compositionContract === 'v42-explicit-shared-library-compositions') {
+    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions'].includes(stage.compositionContract)) {
       const digest = arenaCompositionDigest(stage);
       assert.equal(qa.compositionDigest, digest, 'Renderer proof is stale: ' + stage.catalogueId);
       assert.equal(stage.compositionVisualReview?.digest, digest, 'Visual approval is stale: ' + stage.catalogueId);
@@ -50,7 +51,7 @@ for (const stage of manifest.stages) {
     if (stage.runtimeExtension.applicationEvidence) {
       const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
       assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
-      if (stage.compositionContract === 'v42-explicit-shared-library-compositions') {
+      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions'].includes(stage.compositionContract)) {
         const digest = arenaCompositionDigest(stage);
         assert(appQa.checks.some(check => check.arena === runtimeId && check.compositionDigest === digest), 'Application proof is stale: ' + stage.catalogueId);
       }
@@ -77,7 +78,7 @@ for (const stage of manifest.stages) {
       }
       assert(api.isPitArenaAssetPathAuthorized(stage, asset, manifest), "Unauthorized foreign module: " + asset.id);
       for (const frame of asset.frames) {
-        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42)\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43)\/pit-arenas\/[a-z0-9/-]+\.png$/);
         assert(asset.libraryRef || frame.path.startsWith(stage.assetDirectory + "/"));
         assert(!imagePaths.has(frame.path) || asset.libraryRef, "Duplicate own file without explicit library reference: " + frame.path);
         imagePaths.add(frame.path);
@@ -91,18 +92,18 @@ for (const stage of manifest.stages) {
         assert.equal(frame.generation?.generator, "openai-imagegen", frame.path);
         assert(frame.generation.source && !path.isAbsolute(frame.generation.source) && !frame.generation.source.includes(".."), frame.path);
         await fs.access(path.resolve(root, frame.generation.source));
-        if (/^art-source\/v(?:34|42)\/pit-arenas\//.test(frame.generation.source)) {
+        if (/^art-source\/v(?:34|42|43)\/pit-arenas\//.test(frame.generation.source)) {
           const receipt = JSON.parse(await fs.readFile(frame.generation.source, "utf8"));
           assert.equal(receipt.accepted, true); assert.notEqual(receipt.excludedFromCoverage, true);
           assert.equal(receipt.sha256, frame.generation.sha256); assert.equal(receipt.publicPath, frame.path);
-          assert(receipt.prompt && /^(art-source\/v(?:34|42)\/pit-arenas\/|public\/game\/sprites\/v42\/pit-arenas\/)/.test(receipt.archivedSource) && !receipt.archivedSource.includes(".."));
+          assert(receipt.prompt && /^(art-source\/v(?:34|42|43)\/pit-arenas\/|public\/game\/sprites\/v(?:42|43)\/pit-arenas\/)/.test(receipt.archivedSource) && !receipt.archivedSource.includes(".."));
           const original = await fs.readFile(path.resolve(root, receipt.archivedSource));
           assert.equal(crypto.createHash("sha256").update(original).digest("hex"), frame.generation.sha256, "Original source changed: " + frame.path);
         }
         const diskPath = path.resolve(root, "public", "." + frame.path);
         const bytes = await fs.readFile(diskPath);
         const metadata = await sharp(bytes).metadata();
-        const measured = await inspectPitArenaImage(diskPath);
+        const measured = await inspectPitArenaImage(diskPath, {alphaThreshold: frame.path.startsWith('/game/sprites/v43/') ? 1 : 16});
         assert.deepEqual(frame.generation.contentBounds, measured.contentBounds, "Stale measured alpha bounds: " + frame.path);
         const crop = asset.sourceCrop ?? frame.generation.contentBounds;
         assert([crop.x, crop.y, crop.width, crop.height].every(Number.isInteger));

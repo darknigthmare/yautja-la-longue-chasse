@@ -7,3 +7,5 @@
 @media(max-width:760px){.duelProfiles article>div:first-of-type{height:125px}.duelProfiles article h3{font-size:.95rem}.roster{max-height:380px}.iconArt{height:78px}.steps{gap:8px}.stages{max-height:300px}}
 
 .stagePages{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;font-size:.66rem}.stagePages button{background:#132219;border:1px solid #a68f54;color:#e3d4ad;padding:8px;font:inherit;min-height:40px}.stagePages button:disabled{opacity:.4}
+
+.stageFilters{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:12px 0}.stageFilters label{display:flex;flex-direction:column;gap:5px;font-size:.65rem;min-width:0;flex:1}.stageFilters select{min-height:42px;width:100%;min-width:0;border:1px solid #a68f54;background:#102019;color:#efddb1;font:inherit;padding:8px}.stageFilters>span{font-size:.68rem;padding:12px 0}.referenceNote{border-left:2px solid #72d8c2;padding:7px 10px;color:#adbbad;font-size:.65rem;line-height:1.5}.stageFilters select:focus-visible{outline:3px solid #72d8c2;outline-offset:2px}@media(max-width:550px){.stageFilters{gap:7px}.stageFilters label{flex-basis:44%}.stageFilters>span{padding:0}}

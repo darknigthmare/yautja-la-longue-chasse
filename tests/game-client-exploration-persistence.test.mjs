@@ -66,6 +66,7 @@ function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
     configuration: {}, lastPersisted: null, lastAttempted: null,
   };
   const environment = {
+    sessionAliveRef: { current: true },
     save: first, saveRef: { current: first }, activeHuntSessionRef: { current: session },
     activeHuntWriteFailureRef: { current: null }, missionSettlementRef: { current: false }, pendingTerminalRunRef: { current: null },
     mergeExplorationProgress: real.mergeExplorationProgress,
@@ -345,4 +346,14 @@ test("ice checks both newer sidecar sequences and replaced campaign owners befor
     assert.equal(f.observed.failure, "save-conflict");
     assert.equal(f.storage.values.get(real.SAVE_STORAGE_KEY), before);
   }
+});
+
+
+test("unmounted campaign rejects queued exploration and active hunt writes", () => {
+  const f = fixture();
+  const before = JSON.stringify([...f.storage.values]);
+  f.environment.sessionAliveRef.current = false;
+  f.discover(ability);
+  assert.equal(f.checkpoint(), null);
+  assert.equal(JSON.stringify([...f.storage.values]), before);
 });

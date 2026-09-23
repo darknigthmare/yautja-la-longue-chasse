@@ -1,7 +1,7 @@
 import { processHunterSpriteTransparency, type HunterSpriteTransparency } from '../app/game/hunterSpriteAtlas';
 
 interface ReviewFrame { rect: [number, number, number, number]; pivot: [number, number]; facing: string; phase: string; durationTicks?: number }
-interface ReviewEntry { id: string; category: string; name: string; src: string; status: string; width: number; height: number; sha256: string; transparency: HunterSpriteTransparency; notes: string[]; frames: ReviewFrame[]; previewAnchor?: [number, number] }
+interface ReviewEntry { id: string; category: string; name: string; src: string; status: string; width: number; height: number; sha256: string; transparency: HunterSpriteTransparency; notes: string[]; frames: ReviewFrame[]; previewAnchor?: [number, number]; nativeFacing?: 'left' | 'right'; assetKind?: string }
 const element = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const category = element<HTMLSelectElement>('category'), selector = element<HTMLSelectElement>('asset');
 const view = element<HTMLSelectElement>('view'), facing = element<HTMLSelectElement>('facing'), background = element<HTMLSelectElement>('background');
@@ -39,7 +39,7 @@ function render() {
     element('frame').textContent = `${index + 1}/${sequence.length} · ${frame.facing} · ${frame.phase}`;
   } else {
     const scale = Math.min(1160 / prepared.width, 760 / prepared.height);const w = prepared.width * scale, h = prepared.height * scale;
-    context.drawImage(prepared, (1200 - w) / 2, (800 - h) / 2, w, h);element('frame').textContent = 'Planche entière · source intacte';
+    context.drawImage(prepared, (1200 - w) / 2, (800 - h) / 2, w, h);element('frame').textContent = current.assetKind === 'single-pose-reference' ? 'Pose fixe · source intacte' : 'Planche entière · source intacte';
   }
   canvas.dataset.assetId = current.id;canvas.dataset.frame = String(index);canvas.dataset.view = view.value;
 }
@@ -54,6 +54,7 @@ async function select() {
   const facings = new Set(selected.frames.map(frame => frame.facing));
   for (const option of Array.from(facing.options)) option.disabled = selected.frames.length > 0 && !facings.has(option.value);
   if (selected.frames.length && !facings.has(facing.value)) facing.value = selected.frames[0].facing;
+  if (!selected.frames.length && selected.nativeFacing) facing.value = selected.nativeFacing;
   canvas.setAttribute('aria-label', selected.name);view.querySelector<HTMLOptionElement>('option[value="frames"]')!.disabled = !selected.frames.length || selected.status === 'rejected';
   if (!selected.frames.length || selected.status === 'rejected') view.value = 'sheet';
   try {
@@ -100,5 +101,5 @@ fetch('./manifest.json').then(async response => { if (!response.ok) throw new Er
     element('coverage-hunters').textContent = `Combattants : ${coverage.hunters.runtimeFighters} avec clips contrôlés · ${coverage.hunters.validatedClips} clips · ensembles encore partiels.`;
     element('coverage-vehicles').textContent = `Véhicules : ${coverage.vehicles.entriesWithNonRejectedDrafts}/${coverage.vehicles.requested} avec dessins en revue · ${coverage.vehicles.rideableVehicles} conduites jouables.`;
   }
-  entries = manifest.entries;element('totals').textContent = `${entries.length} images indexées · images produites avec OpenAI · aucun statut de jeu complet implicite`;filter();
+  entries = manifest.entries;element('totals').textContent = `${entries.length} images indexées · production OpenAI et références utilisateur identifiées séparément · aucun statut de jeu complet implicite`;filter();
 }).catch(error => { element('error').textContent = String(error); });

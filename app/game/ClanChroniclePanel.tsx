@@ -52,7 +52,7 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
   return <section className={styles.panel} aria-labelledby="chronicle-title" data-clan-chronicle="design-v37" data-chronicle-write-policy="read-only">
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V37</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
-      <button type="button" onClick={onClose}>Retour au menu</button>
+      <button type="button" onClick={onClose}>Retour</button>
     </header>
     <p className={styles.notice}><strong>Parcours en conception, pas encore jouable.</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. « Jouer » conserve la campagne existante.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>

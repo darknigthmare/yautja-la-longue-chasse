@@ -52,8 +52,8 @@ test("V34 extensions 9-20 own 168 original selected files with matching source r
 
 test("reviewed concept pictures cannot unlock an arena or increase runtime coverage", () => {
   const summary = api.summarizePitArenaProduction();
-  assert.equal(summary.stages, 100);
-  assert.equal(summary.primaryPlaneTargets, 600);
+  assert.equal(summary.stages, source.stages.length);
+  assert.equal(summary.primaryPlaneTargets, source.stages.length * 6);
   assert.equal(summary.legacyPlayable, 8);
   assert.equal(summary.concepts, source.stages.filter(stage => !stage.runtimeEnabled).length);
   assert.equal(summary.readyRuntimeKits, source.stages.filter(stage => stage.runtimeEnabled).length);

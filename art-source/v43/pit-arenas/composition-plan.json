@@ -1,0 +1,5673 @@
+{
+  "schemaVersion": 1,
+  "contract": "v43-screen-reference-shared-library-compositions",
+  "entries": [
+    {
+      "number": 101,
+      "catalogueId": "arena-101-predator-1987-guerrilla-camp",
+      "workId": "predator-1987",
+      "name": "Camp de guérilla",
+      "setting": "Cour du camp attaqué par le commando",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 102,
+      "catalogueId": "arena-102-predator-1987-rocky-riverbank",
+      "workId": "predator-1987",
+      "name": "Rive rocheuse",
+      "setting": "Bassin et rive rocheuse de la jungle",
+      "p0Placement": {
+        "x": 0,
+        "y": -60,
+        "width": 960,
+        "height": 640
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 103,
+      "catalogueId": "arena-103-predator-1987-final-trap-clearing",
+      "workId": "predator-1987",
+      "name": "Clairière des pièges",
+      "setting": "Terrain du duel final de Dutch",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 104,
+      "catalogueId": "arena-104-predator-2-1990-subway",
+      "workId": "predator-2-1990",
+      "name": "Métro de Los Angeles",
+      "setting": "Intérieur de la rame du métro",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 105,
+      "catalogueId": "arena-105-predator-2-1990-slaughterhouse",
+      "workId": "predator-2-1990",
+      "name": "Chambre froide de l’abattoir",
+      "setting": "Entrepôt réfrigéré où intervient Keyes",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 106,
+      "catalogueId": "arena-106-predator-2-1990-trophy-ship",
+      "workId": "predator-2-1990",
+      "name": "Salle des trophées du vaisseau",
+      "setting": "Intérieur du vaisseau découvert par Harrigan",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-a-vault-rib-left",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p1-a-vault-rib-left",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -100,
+              "y": 30,
+              "width": 190,
+              "height": 390
+            }
+          ]
+        },
+        {
+          "plane": "P1",
+          "assetId": "p1-b-vault-rib-right",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p1-b-vault-rib-right",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": 860,
+              "y": 30,
+              "width": 190,
+              "height": 390
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-a-central-archive-arch",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p2-a-central-archive-arch",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.2,
+          "placements": [
+            {
+              "x": 380,
+              "y": 20,
+              "width": 200,
+              "height": 280
+            }
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-a-trophy-crowned-skull",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p3-a-trophy-crowned-skull",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.85,
+          "placements": [
+            {
+              "x": 155,
+              "y": 190,
+              "width": 68,
+              "height": 68
+            }
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-b-trophy-armored-jaw",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p3-b-trophy-armored-jaw",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.85,
+          "placements": [
+            {
+              "x": 735,
+              "y": 190,
+              "width": 68,
+              "height": 68
+            }
+          ]
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-a-gallery-floor-tile",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p4-a-gallery-floor-tile",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 600,
+              "height": 35
+            }
+          ],
+          "sourceCrop": {
+            "x": 42,
+            "y": 303,
+            "width": 2089,
+            "height": 121
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-b-gallery-front-fascia",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p4-b-gallery-front-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 452,
+              "width": 1280,
+              "height": 140
+            }
+          ]
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-a-hanging-token-left",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p5-a-hanging-token-left",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -60,
+              "y": -20,
+              "width": 110,
+              "height": 500
+            }
+          ]
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-b-hanging-token-right",
+          "sourceCatalogueId": "arena-002-hall-des-trophees",
+          "sourceAssetId": "p5-b-hanging-token-right",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 910,
+              "y": -20,
+              "width": 110,
+              "height": 500
+            }
+          ]
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "referenceLimit": "Independent trophy drawings are original project skulls, not exact replicas of the film trophy wall. Bronze P0 film-space adaptation, ornamental library modules remain explicit reuse."
+    },
+    {
+      "number": 107,
+      "catalogueId": "arena-107-predators-2010-hunting-camp",
+      "workId": "predators-2010",
+      "name": "Camp de chasse",
+      "setting": "Camp des Super Predators",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.24,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.5,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 108,
+      "catalogueId": "arena-108-predators-2010-tall-grass",
+      "workId": "predators-2010",
+      "name": "Champ de hautes herbes",
+      "setting": "Lieu du duel Hanzo/Falconer",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.18,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-tall-grass",
+          "sourceCatalogueId": "arena-108-predators-2010-tall-grass",
+          "sourceAssetId": "p2-tall-grass",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -85,
+              "y": 175,
+              "width": 260,
+              "height": 255
+            },
+            {
+              "x": 785,
+              "y": 175,
+              "width": 260,
+              "height": 255
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 0.55,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 109,
+      "catalogueId": "arena-109-predators-2010-noland-wreck",
+      "workId": "predators-2010",
+      "name": "Épave de Noland",
+      "setting": "Abri métallique de Noland",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 110,
+      "catalogueId": "arena-110-the-predator-2018-stargazer-lab",
+      "workId": "the-predator-2018",
+      "name": "Laboratoire Stargazer",
+      "setting": "Zone de contention et laboratoire",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 111,
+      "catalogueId": "arena-111-the-predator-2018-school-field",
+      "workId": "the-predator-2018",
+      "name": "Terrain de l’école",
+      "setting": "Terrain extérieur de la confrontation",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.18,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 112,
+      "catalogueId": "arena-112-the-predator-2018-forest-crash",
+      "workId": "the-predator-2018",
+      "name": "Épave dans la forêt",
+      "setting": "Zone forestière du dernier affrontement",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 113,
+      "catalogueId": "arena-113-prey-2022-trapper-clearing",
+      "workId": "prey-2022",
+      "name": "Clairière des trappeurs",
+      "setting": "Forêt brûlée et piège des trappeurs",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 114,
+      "catalogueId": "arena-114-prey-2022-bear-river",
+      "workId": "prey-2022",
+      "name": "Rivière de l’ours",
+      "setting": "Rivière et berge de la chasse à l’ours",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 115,
+      "catalogueId": "arena-115-prey-2022-mud-pit",
+      "workId": "prey-2022",
+      "name": "Bourbier",
+      "setting": "Bourbier du combat final",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 116,
+      "catalogueId": "arena-116-killer-of-killers-2025-viking-ice",
+      "workId": "killer-of-killers-2025",
+      "name": "Lac gelé des Vikings",
+      "setting": "Espace enneigé et glace du segment viking",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-ice-floor",
+          "sourceCatalogueId": "arena-116-killer-of-killers-2025-viking-ice",
+          "sourceAssetId": "p4-ice-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 11,
+            "y": 309,
+            "width": 2151,
+            "height": 185
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-ice-fascia",
+          "sourceCatalogueId": "arena-116-killer-of-killers-2025-viking-ice",
+          "sourceAssetId": "p4-ice-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 39,
+            "y": 264,
+            "width": 2094,
+            "height": 301
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 117,
+      "catalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "workId": "killer-of-killers-2025",
+      "name": "Toits du Japon féodal",
+      "setting": "Poursuite sur les toits",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-roofs",
+          "sourceCatalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "sourceAssetId": "p1-distant-roofs",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 180,
+              "width": 1000,
+              "height": 155
+            }
+          ],
+          "sourceCrop": {
+            "x": 19,
+            "y": 297,
+            "width": 1636,
+            "height": 404
+          }
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-wooden-post",
+          "sourceCatalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "sourceAssetId": "p2-wooden-post",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.85,
+          "placements": [
+            {
+              "x": -30,
+              "y": 125,
+              "width": 90,
+              "height": 305
+            },
+            {
+              "x": 885,
+              "y": 125,
+              "width": 90,
+              "height": 305
+            }
+          ],
+          "sourceCrop": {
+            "x": 353,
+            "y": 115,
+            "width": 373,
+            "height": 1307
+          },
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roof-tiles-prop",
+          "sourceCatalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "sourceAssetId": "p3-roof-tiles-prop",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 407,
+              "width": 70,
+              "height": 23
+            },
+            {
+              "x": 830,
+              "y": 407,
+              "width": 70,
+              "height": 23
+            }
+          ],
+          "sourceCrop": {
+            "x": 166,
+            "y": 330,
+            "width": 1231,
+            "height": 405
+          },
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-tiled-roof-floor",
+          "sourceCatalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "sourceAssetId": "p4-tiled-roof-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 1100,
+              "height": 81
+            }
+          ],
+          "sourceCrop": {
+            "x": 38,
+            "y": 445,
+            "width": 1598,
+            "height": 117
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-eaves",
+          "sourceCatalogueId": "arena-117-killer-of-killers-2025-japan-rooftops",
+          "sourceAssetId": "p5-eaves",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -80,
+              "y": -5,
+              "width": 290,
+              "height": 63
+            },
+            {
+              "x": 755,
+              "y": -5,
+              "width": 290,
+              "height": 63
+            }
+          ],
+          "sourceCrop": {
+            "x": 189,
+            "y": 307,
+            "width": 1397,
+            "height": 299
+          },
+          "verticalAlign": "top"
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "referenceLimit": "Japanese roof geometry recomposed laterally from reviewed modules. Roof top contact crop is measured against actual alpha; no industrial or alien ornament reuse."
+    },
+    {
+      "number": 118,
+      "catalogueId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "workId": "killer-of-killers-2025",
+      "name": "Arène des captifs",
+      "setting": "Arène finale Yautja",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-a-gallery-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p1-a-gallery-left",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.22,
+          "placements": [
+            {
+              "x": 0,
+              "y": 90,
+              "width": 280,
+              "height": 330
+            }
+          ]
+        },
+        {
+          "plane": "P1",
+          "assetId": "p1-b-gallery-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p1-b-gallery-right",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.22,
+          "placements": [
+            {
+              "x": 680,
+              "y": 90,
+              "width": 280,
+              "height": 330
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-a-ritual-pillar-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p2-a-ritual-pillar-left",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -35,
+              "y": 70,
+              "width": 170,
+              "height": 365
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-b-ritual-pillar-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p2-b-ritual-pillar-right",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": 825,
+              "y": 70,
+              "width": 170,
+              "height": 365
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-a-brazier-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p3-a-brazier-left",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 148,
+              "y": 352,
+              "width": 116,
+              "height": 76
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-b-brazier-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p3-b-brazier-right",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 696,
+              "y": 352,
+              "width": 116,
+              "height": 76
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-a-chain-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p5-a-chain-left",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -72,
+              "y": 58,
+              "width": 120,
+              "height": 492
+            }
+          ]
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-b-chain-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p5-b-chain-right",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 912,
+              "y": 58,
+              "width": 120,
+              "height": 492
+            }
+          ]
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-floor",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 3,
+            "y": 326,
+            "width": 2152,
+            "height": 147
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-fascia",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 34,
+            "y": 201,
+            "width": 2105,
+            "height": 322
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "referenceLimit": "Ritual edge modules reused from the original project Pit; not exact film set props. Source-backed film setting, lateral duel recomposition."
+    },
+    {
+      "number": 119,
+      "catalogueId": "arena-119-badlands-2025-hostile-forest",
+      "workId": "badlands-2025",
+      "name": "Forêt hostile",
+      "setting": "Forêt de la planète de chasse",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.45,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 120,
+      "catalogueId": "arena-120-badlands-2025-weyland-lab",
+      "workId": "badlands-2025",
+      "name": "Installation Weyland-Yutani",
+      "setting": "Installation montrée avec Tessa",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 121,
+      "catalogueId": "arena-121-badlands-2025-clan-prologue",
+      "workId": "badlands-2025",
+      "name": "Domaine du clan",
+      "setting": "Lieu du prologue de Dek et Kwei",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-a-gallery-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p1-a-gallery-left",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.22,
+          "placements": [
+            {
+              "x": 0,
+              "y": 90,
+              "width": 280,
+              "height": 330
+            }
+          ]
+        },
+        {
+          "plane": "P1",
+          "assetId": "p1-b-gallery-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p1-b-gallery-right",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.22,
+          "placements": [
+            {
+              "x": 680,
+              "y": 90,
+              "width": 280,
+              "height": 330
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-a-ritual-pillar-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p2-a-ritual-pillar-left",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -35,
+              "y": 70,
+              "width": 170,
+              "height": 365
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-b-ritual-pillar-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p2-b-ritual-pillar-right",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": 825,
+              "y": 70,
+              "width": 170,
+              "height": 365
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-a-brazier-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p3-a-brazier-left",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 148,
+              "y": 352,
+              "width": 116,
+              "height": 76
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-b-brazier-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p3-b-brazier-right",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 696,
+              "y": 352,
+              "width": 116,
+              "height": 76
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-a-chain-left",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p5-a-chain-left",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -72,
+              "y": 58,
+              "width": 120,
+              "height": 492
+            }
+          ]
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-b-chain-right",
+          "sourceCatalogueId": "arena-001-cercle-de-basalte",
+          "sourceAssetId": "p5-b-chain-right",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 912,
+              "y": 58,
+              "width": 120,
+              "height": 492
+            }
+          ]
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-floor",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 3,
+            "y": 326,
+            "width": 2152,
+            "height": 147
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-fascia",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 34,
+            "y": 201,
+            "width": 2105,
+            "height": 322
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1",
+      "referenceLimit": "Ritual edge modules reused from the original project Pit; not exact film set props. Source-backed film setting, lateral duel recomposition."
+    },
+    {
+      "number": 122,
+      "catalogueId": "arena-122-avp-2004-sacrificial-chamber",
+      "workId": "avp-2004",
+      "name": "Chambre sacrificielle",
+      "setting": "Chambre des hôtes dans la pyramide",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-stone-lintel",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p1-stone-lintel",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.5,
+          "placements": [
+            {
+              "x": -20,
+              "y": -10,
+              "width": 1000,
+              "height": 95
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-stone-pillar",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p2-stone-pillar",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.85,
+          "placements": [
+            {
+              "x": -70,
+              "y": 10,
+              "width": 210,
+              "height": 420
+            },
+            {
+              "x": 820,
+              "y": 10,
+              "width": 210,
+              "height": 420
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stone-blocks",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p3-stone-blocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 70,
+              "y": 355,
+              "width": 135,
+              "height": 75
+            },
+            {
+              "x": 760,
+              "y": 355,
+              "width": 135,
+              "height": 75
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-stone-edge",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p5-stone-edge",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -80,
+              "y": -15,
+              "width": 160,
+              "height": 540
+            },
+            {
+              "x": 880,
+              "y": -15,
+              "width": 160,
+              "height": 540
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-floor",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 3,
+            "y": 326,
+            "width": 2152,
+            "height": 147
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-fascia",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 34,
+            "y": 201,
+            "width": 2105,
+            "height": 322
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 123,
+      "catalogueId": "arena-123-avp-2004-whaling-station",
+      "workId": "avp-2004",
+      "name": "Station baleinière",
+      "setting": "Surface antarctique de la station abandonnée",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.26,
+          "placements": [
+            {
+              "x": -30,
+              "y": 315,
+              "width": 1020,
+              "height": 75
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-ice-floor",
+          "sourceCatalogueId": "arena-116-killer-of-killers-2025-viking-ice",
+          "sourceAssetId": "p4-ice-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 11,
+            "y": 309,
+            "width": 2151,
+            "height": 185
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-ice-fascia",
+          "sourceCatalogueId": "arena-116-killer-of-killers-2025-viking-ice",
+          "sourceAssetId": "p4-ice-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 39,
+            "y": 264,
+            "width": 2094,
+            "height": 301
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 124,
+      "catalogueId": "arena-124-avp-2004-queen-chamber",
+      "workId": "avp-2004",
+      "name": "Chambre de la reine",
+      "setting": "Chambre de contention de la reine",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-stone-lintel",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p1-stone-lintel",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.5,
+          "placements": [
+            {
+              "x": -20,
+              "y": -10,
+              "width": 1000,
+              "height": 95
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-stone-pillar",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p2-stone-pillar",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.85,
+          "placements": [
+            {
+              "x": -70,
+              "y": 10,
+              "width": 210,
+              "height": 420
+            },
+            {
+              "x": 820,
+              "y": 10,
+              "width": 210,
+              "height": 420
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stone-blocks",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p3-stone-blocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 70,
+              "y": 355,
+              "width": 135,
+              "height": 75
+            },
+            {
+              "x": 760,
+              "y": 355,
+              "width": 135,
+              "height": 75
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-stone-edge",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p5-stone-edge",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -80,
+              "y": -15,
+              "width": 160,
+              "height": 540
+            },
+            {
+              "x": 880,
+              "y": -15,
+              "width": 160,
+              "height": 540
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-floor",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 45
+            }
+          ],
+          "sourceCrop": {
+            "x": 3,
+            "y": 326,
+            "width": 2152,
+            "height": 147
+          }
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-stone-fascia",
+          "sourceCatalogueId": "arena-122-avp-2004-sacrificial-chamber",
+          "sourceAssetId": "p4-stone-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 34,
+            "y": 201,
+            "width": 2105,
+            "height": 322
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 125,
+      "catalogueId": "arena-125-avpr-2007-sewers",
+      "workId": "avpr-2007",
+      "name": "Égouts de Gunnison",
+      "setting": "Galerie des égouts",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.4,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 126,
+      "catalogueId": "arena-126-avpr-2007-hospital-roof",
+      "workId": "avpr-2007",
+      "name": "Toit de l’hôpital",
+      "setting": "Toiture du duel final",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.25,
+          "placements": [
+            {
+              "x": -50,
+              "y": 320,
+              "width": 1060,
+              "height": 65
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 127,
+      "catalogueId": "arena-127-avpr-2007-forest-crash",
+      "workId": "avpr-2007",
+      "name": "Forêt du crash",
+      "setting": "Épave du vaisseau dans les bois",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-pines",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p1-distant-pines",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-bare-trunk",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p2-bare-trunk",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.65,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-stones-deadwood",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p3-stones-deadwood",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-forest-soil",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p4-forest-soil",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 319,
+            "width": 2172,
+            "height": 159
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-branches",
+          "sourceCatalogueId": "arena-113-prey-2022-trapper-clearing",
+          "sourceAssetId": "p5-close-branches",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 450,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-film-not-certified-1to1"
+    },
+    {
+      "number": 128,
+      "catalogueId": "arena-128-avp-classic-2000-colonial-base",
+      "workId": "avp-classic-2000",
+      "name": "Base coloniale — Classic 2000",
+      "setting": "Intérieur d'une base coloniale, lieu-type confirmé ; mission précise non identifiée.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.3,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation"
+    },
+    {
+      "number": 129,
+      "catalogueId": "arena-129-avp-classic-2000-starship",
+      "workId": "avp-classic-2000",
+      "name": "Coursive du vaisseau — Classic 2000",
+      "setting": "Intérieur d'un vaisseau spatial, lieu-type confirmé ; aucun nom de vaisseau attribué.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.3,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation"
+    },
+    {
+      "number": 130,
+      "catalogueId": "arena-130-avp-classic-2000-space-station",
+      "workId": "avp-classic-2000",
+      "name": "Nœud de station — Classic 2000",
+      "setting": "Station spatiale, lieu-type confirmé ; architecture exacte non documentée.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.3,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.5,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 12,
+              "y": 366,
+              "width": 104,
+              "height": 64
+            },
+            {
+              "x": 842,
+              "y": 366,
+              "width": 104,
+              "height": 64
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation"
+    },
+    {
+      "number": 131,
+      "catalogueId": "arena-131-avp-2010-freyas-prospect",
+      "workId": "avp-2010",
+      "name": "Lisière de Freya's Prospect",
+      "setting": "Abords de la colonie Freya's Prospect, entre implantation humaine, jungle et marais.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.28,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-named-location-text-confirmed-visual-layout-unverified; permanent foreground walkway is an authored 2D duel adaptation, not a confirmed level platform."
+    },
+    {
+      "number": 132,
+      "catalogueId": "arena-132-avp-2010-refinery",
+      "workId": "avp-2010",
+      "name": "Raffinerie — Machine",
+      "setting": "Raffinerie de la carte Survivor Machine du Swarm Map Pack.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.28,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-named-map-text-confirmed-visual-layout-unverified; permanent foreground walkway is an authored 2D duel adaptation, not a confirmed level platform."
+    },
+    {
+      "number": 133,
+      "catalogueId": "arena-133-avp-2010-docks",
+      "workId": "avp-2010",
+      "name": "Docks abandonnés de Weyland-Yutani",
+      "setting": "Site portuaire abandonné de Weyland-Yutani, carte Docks du Swarm Map Pack.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.28,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "official-named-map-text-confirmed-visual-layout-unverified; permanent foreground walkway is an authored 2D duel adaptation, not a confirmed level platform."
+    },
+    {
+      "number": 134,
+      "catalogueId": "arena-134-predator-hunting-grounds-overgrowth",
+      "workId": "predator-hunting-grounds-2020",
+      "name": "Overgrowth — rivière des ruines",
+      "setting": "Vallée cachée d'Overgrowth : rivière sinueuse, ruines et jungle montagneuse sud-américaine.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.35,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-jungle-trunks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p2-jungle-trunks",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.45,
+          "placements": [
+            {
+              "x": -80,
+              "y": 60,
+              "width": 260,
+              "height": 370
+            },
+            {
+              "x": 780,
+              "y": 70,
+              "width": 220,
+              "height": 360
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-roots-rocks",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p3-roots-rocks",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 60,
+              "y": 355,
+              "width": 130,
+              "height": 75
+            },
+            {
+              "x": 810,
+              "y": 360,
+              "width": 120,
+              "height": 70
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-floor",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 800,
+              "height": 47
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 341,
+            "width": 2172,
+            "height": 109
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-close-foliage",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p5-close-foliage",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": -65,
+              "y": -25,
+              "width": 150,
+              "height": 530
+            },
+            {
+              "x": 900,
+              "y": -25,
+              "width": 135,
+              "height": 530
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-earth-fascia",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p4-earth-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 453,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 15,
+            "y": 285,
+            "width": 1988,
+            "height": 180
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "developer-named-map-text-confirmed-visual-layout-unverified"
+    },
+    {
+      "number": 135,
+      "catalogueId": "arena-135-predator-hunting-grounds-excavation",
+      "workId": "predator-hunting-grounds-2020",
+      "name": "Excavation — galeries de fouille",
+      "setting": "Anciennes fouilles scientifiques dans les grottes d'Excavation, reprises par Stargazer.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-rail-conduit",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p1-rail-conduit",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.28,
+          "placements": [
+            {
+              "x": -20,
+              "y": 8,
+              "width": 1000,
+              "height": 100
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.55,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "developer-named-map-text-confirmed-visual-layout-unverified"
+    },
+    {
+      "number": 136,
+      "catalogueId": "arena-136-predator-hunting-grounds-airstrip",
+      "workId": "predator-hunting-grounds-2020",
+      "name": "Airstrip — piste de Stargazer",
+      "setting": "Piste de contrebande Stargazer au cœur de la jungle, entre hangars et tours radio.",
+      "p0Placement": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540
+      },
+      "modules": [
+        {
+          "plane": "P1",
+          "assetId": "p1-distant-trees",
+          "sourceCatalogueId": "arena-101-predator-1987-guerrilla-camp",
+          "sourceAssetId": "p1-distant-trees",
+          "mode": "module",
+          "parallax": 0.12,
+          "opacity": 0.23,
+          "placements": [
+            {
+              "x": -150,
+              "y": 50,
+              "width": 500,
+              "height": 380
+            },
+            {
+              "x": 650,
+              "y": 30,
+              "width": 430,
+              "height": 370
+            }
+          ]
+        },
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p2-steel-upright",
+          "mode": "module",
+          "parallax": 0.24,
+          "opacity": 0.72,
+          "placements": [
+            {
+              "x": -55,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            },
+            {
+              "x": 870,
+              "y": 35,
+              "width": 145,
+              "height": 395
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-utility-case",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p3-utility-case",
+          "mode": "module",
+          "parallax": 0.43,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 40,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            },
+            {
+              "x": 790,
+              "y": 350,
+              "width": 130,
+              "height": 80
+            }
+          ],
+          "anchorToGround": true
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-floor",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-floor",
+          "mode": "repeat-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 430,
+              "width": 760,
+              "height": 40
+            }
+          ],
+          "sourceCrop": {
+            "x": 0,
+            "y": 355,
+            "width": 2172,
+            "height": 41
+          }
+        },
+        {
+          "plane": "P5",
+          "assetId": "p5-service-cable",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p5-service-cable",
+          "mode": "module",
+          "parallax": 1.08,
+          "opacity": 0.9,
+          "placements": [
+            {
+              "x": -45,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            },
+            {
+              "x": 915,
+              "y": -20,
+              "width": 90,
+              "height": 500
+            }
+          ],
+          "verticalAlign": "top"
+        },
+        {
+          "plane": "P4",
+          "assetId": "p4-metal-fascia",
+          "sourceCatalogueId": "arena-104-predator-2-1990-subway",
+          "sourceAssetId": "p4-metal-fascia",
+          "mode": "strip-x",
+          "parallax": 1,
+          "opacity": 1,
+          "placements": [
+            {
+              "x": 0,
+              "y": 442,
+              "width": 1280,
+              "height": 150
+            }
+          ],
+          "sourceCrop": {
+            "x": 29,
+            "y": 304,
+            "width": 2117,
+            "height": 111
+          }
+        }
+      ],
+      "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+      "referenceLimit": "developer-named-map-text-confirmed-visual-layout-unverified"
+    }
+  ],
+  "statusAuthority": "Runtime availability and integration are defined only in the production manifest, never inferred from this composition plan."
+}

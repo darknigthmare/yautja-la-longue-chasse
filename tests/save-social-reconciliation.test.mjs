@@ -166,6 +166,7 @@ assert.ok(start > 0 && end > start, "GameClient social callback remains availabl
 const harnessSource = `
 export function mount(initial, api, storage, key) {
   const saveRef = { current: initial };
+  const sessionAliveRef = { current: true };
   let rendered = initial, failure = null, toast = "";
   const useRef = current => ({ current });
   const useCallback = callback => callback;
@@ -182,6 +183,7 @@ export function mount(initial, api, storage, key) {
   ${client.slice(start, end)}
   return {
     act: persistSocialProgress,
+    endSession() { sessionAliveRef.current = false; },
     get save() { return saveRef.current; }, get rendered() { return rendered; },
     get failure() { return failure; }, get toast() { return toast; },
     replaceLocal(next) { saveRef.current = next; rendered = next; },
@@ -272,5 +274,16 @@ test("GameClient drops an old owner's pending receipt without rolling a replacem
   assert.deepEqual([...scenario.storage.values], before);
   assert.equal(component.act({ homeworld: visit }), true);
   assert.equal(component.save.createdAt, replacement.createdAt);
+  assert.deepEqual(component.save.homeworld.evidenceIds, []);
+});
+
+
+test("a detached campaign cannot commit a queued social decision", () => {
+  const scenario = setup();
+  const component = mount(scenario.initial, api, scenario.storage, key);
+  const before = scenario.storage.getItem(key);
+  component.endSession();
+  assert.equal(component.act({homeworld:scenario.next.homeworld}), false);
+  assert.equal(scenario.storage.getItem(key), before);
   assert.deepEqual(component.save.homeworld.evidenceIds, []);
 });

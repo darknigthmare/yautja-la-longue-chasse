@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-09-23",
+  "scope": "ZIP central directory metadata snapshot; follow-up pixel review of eight sources recorded separately.",
+  "archives": [
+    {
+      "name": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "members": 345,
+      "png": 161,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_82_NOUVELLES_VERSIONS.zip",
+      "members": 168,
+      "png": 82,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "members": 420,
+      "png": 172,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_NECA_PACK_COMPLET_RESTAURE.zip",
+      "members": 295,
+      "png": 109,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_IMAGES_58_PNG.zip",
+      "members": 62,
+      "png": 58,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_RECUPERATION_39_IMAGES.zip",
+      "members": 43,
+      "png": 39,
+      "complete": true
+    },
+    {
+      "name": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+      "members": 17,
+      "png": 6,
+      "complete": true
+    },
+    {
+      "name": "YAUTJA_NECA_2_MANQUANTS_DC_2019.zip",
+      "members": 10,
+      "png": 2,
+      "complete": true
+    }
+  ],
+  "totalMembers": 1360,
+  "pngEntries": 629,
+  "candidateUniqueBySizeCRC": 410,
+  "candidateRepeatedEntries": 219,
+  "candidateDuplicateGroups": 205,
+  "unsafeNames": [],
+  "extra": [
+    {
+      "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "nonPairPng": []
+    },
+    {
+      "archive": "YAUTJA_82_NOUVELLES_VERSIONS.zip",
+      "nonPairPng": []
+    },
+    {
+      "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "nonPairPng": [
+        "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/dek_training_armor.png",
+        "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/hive_wars.png",
+        "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/scar.png",
+        "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/youngblood.png"
+      ]
+    }
+  ],
+  "limits": [
+    "CRC and size only identify candidates, not verified pixel or SHA equality.",
+    "629 PNG entries include repeated assets, variants, and references; not 629 distinct hunters.",
+    "RAR header confirms RAR5 only; its member count and images are unverified.",
+    "HTML was read only at the beginning; no embedded image inspected."
+  ],
+  "duplicateMemberPaths": [],
+  "historicalVersions": [
+    {
+      "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "path": "YAUTJA_COMPLEMENTS_80_PAIRES/HISTORIQUE/COMPLEMENTS_AVANT_CORRECTION/lord/sans_casque.png"
+    },
+    {
+      "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "path": "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/dek_training_armor.png"
+    },
+    {
+      "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "path": "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/hive_wars.png"
+    },
+    {
+      "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "path": "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/scar.png"
+    },
+    {
+      "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "path": "YAUTJA_NECA_84_PAIRES/HISTORIQUE/ORIGINAUX_AVANT_CORRECTION/youngblood.png"
+    }
+  ],
+  "followUp": "docs/v43-user-sprite-intake.json"
+}

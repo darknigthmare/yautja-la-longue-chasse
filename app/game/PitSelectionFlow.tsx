@@ -8,6 +8,7 @@ import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { getPitCombatBitmapArtDefinition } from "./pitCombatBitmapArt";
 import { PIT_ARENA_ART_DEFINITIONS } from "./pitArenaRendering";
 import { resolvePitArenaProductionKit } from "./pitArenaProduction";
+import { getPitScreenArenaMetadata, PIT_SCREEN_ARENA_WORKS } from "./systems/pitScreenArenas";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import PitStagePreview, { type PitStagePreviewStatus } from "./PitStagePreview";
 import styles from "./PitSelectionFlow.module.css";
@@ -41,10 +42,33 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const [state, dispatch] = useReducer(reducePitSelection, undefined, createPitSelectionState);
   const [preview, setPreview] = useState<{ id: PitArenaId; status: PitStagePreviewStatus } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null), gridRef = useRef<HTMLDivElement>(null), confirmRef = useRef<HTMLButtonElement>(null);
+  const [stageFamily, setStageFamily] = useState<"all" | "original" | "film" | "game">("all");
+  const [stageWork, setStageWork] = useState("all");
+  const matchingStageIds = PIT_ARENA_IDS.filter(id => {
+    const metadata = getPitScreenArenaMetadata(id);
+    return (stageFamily === "all" || (stageFamily === "original" ? !metadata : metadata?.kind === stageFamily))
+      && (stageWork === "all" || metadata?.workId === stageWork);
+  });
+  // An imposed campaign venue stays visible even after leaving a filtered free duel.
+  const stageIds = imposed ? [arenaId] : matchingStageIds.includes(arenaId) ? matchingStageIds : PIT_ARENA_IDS;
+  const screenMetadata = getPitScreenArenaMetadata(arenaId);
+  const availableWorks = PIT_SCREEN_ARENA_WORKS.filter(work => (stageFamily === "all" || work.kind === stageFamily)
+    && PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.workId === work.id));
+  const changeStageFilter = (family: typeof stageFamily, workId: string) => {
+    if (locked || imposed) return;
+    const ids = PIT_ARENA_IDS.filter(id => {
+      const metadata = getPitScreenArenaMetadata(id);
+      return (family === "all" || (family === "original" ? !metadata : metadata?.kind === family))
+        && (workId === "all" || metadata?.workId === workId);
+    });
+    if (!ids.length) return;
+    setStageFamily(family); setStageWork(workId);
+    if (!ids.includes(arenaId)) props.onArenaChange(ids[0]);
+  };
   const stagePageSize = 24;
-  const stagePage = Math.floor(Math.max(0, PIT_ARENA_IDS.indexOf(arenaId)) / stagePageSize);
-  const stagePageCount = Math.ceil(PIT_ARENA_IDS.length / stagePageSize);
-  const stageChoices = PIT_ARENA_IDS.slice(stagePage * stagePageSize, (stagePage + 1) * stagePageSize);
+  const stagePage = Math.floor(Math.max(0, stageIds.indexOf(arenaId)) / stagePageSize);
+  const stagePageCount = Math.ceil(stageIds.length / stagePageSize);
+  const stageChoices = stageIds.slice(stagePage * stagePageSize, (stagePage + 1) * stagePageSize);
   const stageReady = preview?.id === arenaId && preview.status === "ready";
   const onPreviewStatus = useCallback((id: PitArenaId, status: PitStagePreviewStatus) => setPreview({ id, status }), []);
   const focus = useCallback(() => {
@@ -83,8 +107,8 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
     const buttons = Array.from(gridRef.current?.querySelectorAll<HTMLButtonElement>('[role="option"]') ?? []);
     const columns = gridRef.current ? Math.max(1, getComputedStyle(gridRef.current).gridTemplateColumns.split(" ").length) : 1;
     if (state.step === "stage") {
-      const next = movePitSelectionIndex(PIT_ARENA_IDS.indexOf(arenaId), input, columns, PIT_ARENA_IDS.map(() => true));
-      const id = PIT_ARENA_IDS[next];
+      const next = movePitSelectionIndex(stageIds.indexOf(arenaId), input, columns, stageIds.map(() => true));
+      const id = stageIds[next];
       if (id) {
         props.onArenaChange(id);
         requestAnimationFrame(() => gridRef.current?.querySelector<HTMLButtonElement>(`[data-choice-id="${id}"]`)?.focus());
@@ -125,15 +149,25 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
       </div>}
     </> : <>
       <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{PIT_FIGHTERS[playerId].name} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
+      <div className={styles.stageFilters} aria-label="Filtres des stages">
+        <label>Collection<select aria-label="Collection de stages" disabled={locked || imposed} value={stageFamily} onChange={event => changeStageFilter(event.target.value as typeof stageFamily, "all")}>
+          <option value="all">Tous les stages</option><option value="original">Collection historique</option>
+          {(["film", "game"] as const).filter(kind => PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.kind === kind)).map(kind => <option key={kind} value={kind}>{kind === "film" ? "Films Predator / AVP" : "Jeux Predator / AVP"}</option>)}
+        </select></label>
+        <label>Œuvre<select aria-label="Œuvre du stage" disabled={locked || imposed || !availableWorks.length} value={stageWork} onChange={event => changeStageFilter(stageFamily, event.target.value)}>
+          <option value="all">Toutes les œuvres</option>{availableWorks.map(work => <option key={work.id} value={work.id}>{work.title}</option>)}
+        </select></label><span role="status">{stageIds.length} stage{stageIds.length > 1 ? "s" : ""}</span>
+      </div>
       <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} />
       <p className={styles.stageDescription}>{PIT_ARENAS[arenaId].setting} · Aperçu des plans réels P0–P5{props.reducedMotion ? " · mouvement réduit" : " · parallaxe active"}.</p>
-      <div ref={gridRef} className={styles.stages} role="listbox" aria-label="Arènes disponibles" data-pit-stage-total={PIT_ARENA_IDS.length} data-pit-stage-page={stagePage + 1}>
+      {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Décor adapté à la vue latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan du film ou du jeu n’est pas certifiée.</p>}
+      <div ref={gridRef} className={styles.stages} role="listbox" aria-label="Arènes disponibles" data-pit-stage-total={PIT_ARENA_IDS.length} data-pit-stage-filtered={stageIds.length} data-pit-stage-page={stagePage + 1}>
         {stageChoices.map(id => <button key={id} type="button" role="option" data-choice-id={id} aria-label={PIT_ARENAS[id].name} aria-selected={arenaId === id} disabled={locked || (imposed && id !== arenaId)} tabIndex={arenaId === id ? 0 : -1} onClick={() => props.onArenaChange(id)} onFocus={() => { if (!imposed && id !== arenaId) props.onArenaChange(id); }}><span>{stageThumbnail(id) ? <img src={stageThumbnail(id)} alt="" loading="lazy" decoding="async" /> : null}</span><strong>{PIT_ARENAS[id].name}</strong></button>)}
       </div>
       {stagePageCount > 1 && <nav className={styles.stagePages} aria-label="Pages des arènes">
-        <button type="button" data-pit-stage-page-prev disabled={locked || imposed || stagePage === 0} onClick={() => props.onArenaChange(PIT_ARENA_IDS[(stagePage - 1) * stagePageSize])}>Page précédente</button>
-        <span>Page {stagePage + 1} / {stagePageCount} · {PIT_ARENA_IDS.length} stages</span>
-        <button type="button" data-pit-stage-page-next disabled={locked || imposed || stagePage === stagePageCount - 1} onClick={() => props.onArenaChange(PIT_ARENA_IDS[(stagePage + 1) * stagePageSize])}>Page suivante</button>
+        <button type="button" data-pit-stage-page-prev disabled={locked || imposed || stagePage === 0} onClick={() => props.onArenaChange(stageIds[(stagePage - 1) * stagePageSize])}>Page précédente</button>
+        <span>Page {stagePage + 1} / {stagePageCount} · {stageIds.length} stages</span>
+        <button type="button" data-pit-stage-page-next disabled={locked || imposed || stagePage === stagePageCount - 1} onClick={() => props.onArenaChange(stageIds[(stagePage + 1) * stagePageSize])}>Page suivante</button>
       </nav>}
     </>}
     <div className={styles.actions}><button type="button" onClick={back} disabled={locked}>{state.step === "stage" ? "Retour aux combattants" : state.slot === "opponent" ? "Retour au joueur 1" : "Retour au vaisseau"} · B</button><button ref={confirmRef} type="button" className={styles.confirm} data-pit-selection-confirm aria-keyshortcuts="Enter Space" data-gamepad-shortcut="A" onClick={confirm} disabled={(locked && state.step !== "stage") || props.launchDisabled || (state.step === "stage" && !stageReady)}>{state.step === "stage" ? stageReady ? props.launchLabel : "CHARGEMENT DU STAGE…" : state.slot === "player" ? "CONFIRMER JOUEUR 1" : imposed ? "CONFIRMER LA RENCONTRE" : "CONFIRMER L’ADVERSAIRE"} · A</button></div>

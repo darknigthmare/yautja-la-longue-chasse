@@ -4,23 +4,27 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import { build } from 'esbuild';
 import { productionCoverage } from './production-coverage-v34.mjs';
+import { appendArenaReviewEntries } from './lib/production-review-arenas-v43.mjs';
+import { appendUserSpriteReferences } from './lib/production-review-user-sprites-v43.mjs';
 
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 // Preserve the published V33 archive; append only new, individually recorded V34 assets.
 const entries = read('public/game/assets/v33/production-review/manifest.json').entries;
 const knownSources = new Set(entries.map(entry => entry.src));
 const arenas = read('art-source/v33/pit-arenas/production-manifest.json');
-for (const stage of arenas.stages) for (const plane of stage.planes) for (const asset of plane.assets) {
-  for (const [index, frame] of asset.frames.entries()) {
-    if (!frame.generation || !['reviewed', 'integrated'].includes(frame.status) || knownSources.has(frame.path)) continue;
-    entries.push({ id: 'v34-' + stage.catalogueId + '-' + asset.id + '-' + index, category: 'arena',
-      name: stage.name + ' · ' + plane.id + ' · ' + asset.role, src: frame.path, status: frame.status,
-      width: frame.generation.width, height: frame.generation.height, sha256: frame.generation.sha256,
-      transparency: { mode: 'alpha' }, notes: ['Image indépendante · plan ' + plane.id + ' · parallaxe ' + asset.parallax + '.',
-        'Proposition originale de production issue du catalogue local ; la discussion dédiée aux 100 arènes reste à confirmer.'], frames: [] });
-    knownSources.add(frame.path);
-  }
+const screenDefinitions = read('app/game/systems/pitScreenArenasV43.generated.json').arenas;
+const imported = [];
+const receiptRoot = fs.realpathSync('art-source/v43/pit-arenas');
+for (const definition of screenDefinitions) {
+  assert(/^arena-1(?:0[1-9]|[12][0-9]|3[0-6])-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(definition.id));
+  const file = path.join('art-source/v43/pit-arenas', definition.id, 'receipt-p0-depth.json');
+  if (!fs.existsSync(file)) continue;
+  assert.equal(fs.realpathSync(file).toLowerCase(), path.resolve(receiptRoot, definition.id, 'receipt-p0-depth.json').toLowerCase(), 'Receipt remaps its owned path');
+  const receipt = read(file);
+  if (receipt.accepted && !receipt.excludedFromCoverage) imported.push(receipt);
 }
+appendArenaReviewEntries(entries, arenas.stages, screenDefinitions, imported);
+for (const entry of entries) knownSources.add(entry.src);
 
 function provenanceFiles(directory) {
   if (!fs.existsSync(directory)) return [];
@@ -57,6 +61,8 @@ for (const [category, directory] of [['hunter', 'art-source/v34/pit'], ['vehicle
   }
 }
 
+appendUserSpriteReferences(entries, read('docs/v43-user-sprite-intake.json'));
+
 assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length, 'Duplicate review id');
 for (const entry of entries) {
   assert(entry.src.startsWith('/game/') && !entry.src.includes('..'));
@@ -73,8 +79,8 @@ for (const entry of entries) {
     assert(['left', 'right'].includes(frame.facing));
   }
 }
-const totals = Object.fromEntries(['arena', 'hunter', 'vehicle'].map(category => [category, entries.filter(entry => entry.category === category).length]));
-const manifest = { schemaVersion: 1, title: 'Atelier OpenAI V34', runtimeCompletionNotImplied: true, coverage: productionCoverage(entries, arenas.stages), totals, entries };
+const totals = Object.fromEntries(['arena', 'hunter', 'vehicle', 'reference'].map(category => [category, entries.filter(entry => entry.category === category).length]));
+const manifest = { schemaVersion: 1, title: 'Atelier OpenAI · production', catalogueVersion: 'V43', runtimeCompletionNotImplied: true, coverage: productionCoverage(entries, arenas.stages), totals, entries };
 const out = 'public/game/assets/v34/production-review';fs.mkdirSync(out, { recursive: true });
 fs.writeFileSync(out + '/manifest.json', JSON.stringify(manifest, null, 2) + '\n');
 fs.copyFileSync('scripts/production-review-v34.html', out + '/index.html');

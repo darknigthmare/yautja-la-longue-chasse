@@ -44,10 +44,10 @@ test("the browser dependency graph builds without any archive, proof or authorin
   for (const arena of ["the-pit", "trophy-hall"]) assert(runtime.resolvePitArenaProductionKit(arena));
 });
 
-test("runtime summaries and actual render plans retain all 100 entries and exact source coverage", () => {
+test("runtime summaries and actual render plans retain all historical and additive entries and exact source coverage", () => {
   assert.deepEqual(runtime.summarizePitArenaProduction(), runtime.summarizePitArenaProduction(source));
-  assert.equal(runtime.summarizePitArenaProduction().stages, 100);
-  assert.equal(runtime.summarizePitArenaProduction().primaryPlaneTargets, 600);
+  assert.equal(runtime.summarizePitArenaProduction().stages, source.stages.length);
+  assert.equal(runtime.summarizePitArenaProduction().primaryPlaneTargets, source.stages.length * 6);
   assert.equal(runtime.summarizePitArenaProduction().legacyPlayable, 8);
   assert.equal(runtime.summarizePitArenaProduction().concepts, source.stages.filter(stage => !stage.runtimeEnabled).length);
   for (const stage of source.stages) {

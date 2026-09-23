@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-23",
+  "scope": "Eight user-supplied single-pose PNG assets; not animation sheets",
+  "runtimeIntegrated": false,
+  "galleryIntegrated": true,
+  "archiveInstructionsExecuted": false,
+  "sourceArchivesModified": false,
+  "packs": [
+    {
+      "archive": "THE_PIT_LOT2_6_SPRITES_V1.zip",
+      "archiveSha256": "2ff348407a550e434009b29609c65b791f1117739be01729d4e19eab4fa1483a",
+      "selectedMembers": [
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/CONTROLE_QUALITE_LOT2.json",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/CONTROLE_QUALITE_LOT2.json",
+          "bytes": 356,
+          "sha256": "49f8787b40994347bd87d123760e0787c103462961600aeb26c51b3694eee2e1",
+          "crc32": "75cc6410"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/INVENTAIRE_LOT2.csv",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/INVENTAIRE_LOT2.csv",
+          "bytes": 2210,
+          "sha256": "eab07258821ddedec1396ded0c210519b1247354ead0428fc3cad2d7d862cf30",
+          "crc32": "a61d81fc"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/LIRE_MOI_LOT2.txt",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/LIRE_MOI_LOT2.txt",
+          "bytes": 2068,
+          "sha256": "0b31babfbef3911bbeb564fb72670dd4d693ed73a0f782e61d1eeeada4e9bbff",
+          "crc32": "ab1f99fb"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/MANIFESTE_LOT2.json",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/MANIFESTE_LOT2.json",
+          "bytes": 6538,
+          "sha256": "a79a4fe51e903012f8b27c893512f20a6ab3bf80ba97bb302316736575d28cee",
+          "crc32": "25174861"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/13_Bronze_Cape_Rouge_Lance.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/13_Bronze_Cape_Rouge_Lance.png",
+          "bytes": 2448946,
+          "sha256": "1479d88a8c694f3ecab9134ac10046b274e049528deadd4e0e7dd784c92e9a93",
+          "crc32": "9f8011e7"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png",
+          "bytes": 2654491,
+          "sha256": "860fa4920c236ce41942a04a9b6009a9c84a9e0b870fa3024a387004efdde145",
+          "crc32": "f6e65a65"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/15_Colosse_Blanc_Machoire_Ouverte.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/15_Colosse_Blanc_Machoire_Ouverte.png",
+          "bytes": 2232319,
+          "sha256": "51b40041f37f2d01b15f0887678d32f9738a3dc8c1ddbc2f244d2ecf8fca3369",
+          "crc32": "33a59818"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/16_Creature_Os_Rouge_Quatre_Bras.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/16_Creature_Os_Rouge_Quatre_Bras.png",
+          "bytes": 2020372,
+          "sha256": "84b97d7d0ab484792bcdd18d9a1cb81b011db5dfc4a94a690a9b24ba9b89a3e7",
+          "crc32": "d00be19d"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/17_Yautja_Noel_Armure_Rouge_Sac.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/17_Yautja_Noel_Armure_Rouge_Sac.png",
+          "bytes": 2313551,
+          "sha256": "aed80b240ccb9e82a83b6837648cf133f7d7596f180d75697b6db1f1a5bf2039",
+          "crc32": "eee07f4b"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png",
+          "bytes": 2379509,
+          "sha256": "d510894e8db0647685f0218f07e14d3fde64d013325222d2e400666a3e2b4d5e",
+          "crc32": "2aad75c6"
+        },
+        {
+          "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PROMPTS_GENERATION_LOT2.txt",
+          "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PROMPTS_GENERATION_LOT2.txt",
+          "bytes": 24564,
+          "sha256": "3d75af5459df32759b6882f1f9c53602bcd5b93b3b1bf99ae072927f2d3a8c9d",
+          "crc32": "649b2b7c"
+        }
+      ],
+      "omittedMembers": [
+        "THE_PIT_LOT2_6_SPRITES_V1/CATALOGUE_LOT2.html",
+        "THE_PIT_LOT2_6_SPRITES_V1/REFERENCES/IMG_4106.jpeg",
+        "THE_PIT_LOT2_6_SPRITES_V1/REFERENCES/IMG_4107.jpeg",
+        "THE_PIT_LOT2_6_SPRITES_V1/REFERENCES/IMG_4108.jpeg",
+        "THE_PIT_LOT2_6_SPRITES_V1/REFERENCES/IMG_4109.jpeg",
+        "THE_PIT_LOT2_6_SPRITES_V1/REFERENCES/IMG_4110.jpeg"
+      ]
+    },
+    {
+      "archive": "YAUTJA_NECA_2_MANQUANTS_DC_2019.zip",
+      "archiveSha256": "3c6ad2cb1ed4a7c961ae098e42dddd15832609da765ddd50e69fa06aca19cfb6",
+      "selectedMembers": [
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/INVENTAIRE_COMPLEMENT.csv",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/INVENTAIRE_COMPLEMENT.csv",
+          "bytes": 576,
+          "sha256": "5be7fc41f2c8a40f818bd787ec5be78880e5e69828ee2d14547f885e2ccd25b7",
+          "crc32": "bd8a9a1a"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/LIRE_MOI.md",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/LIRE_MOI.md",
+          "bytes": 2767,
+          "sha256": "804308cc076a1a453839321ee0dbc00f2af1a3a0b3bb6a6459345f3ecd136a59",
+          "crc32": "2af76472"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/CONTROLES_PNG.json",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/CONTROLES_PNG.json",
+          "bytes": 1667,
+          "sha256": "a807c716f8783581195b649d31ef3822b5c3064a0282cd298ccc0e9a9ddccf04",
+          "crc32": "b8a01977"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/batman_vs_predator.json",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/batman_vs_predator.json",
+          "bytes": 6381,
+          "sha256": "4e40b7c55d8ce9978b55d09b77e9147f13214b2719e89637044a4645a407ec70",
+          "crc32": "109ee0ec"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/batman_vs_predator_qa.json",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/batman_vs_predator_qa.json",
+          "bytes": 352,
+          "sha256": "97ed4eca04bd759327f4672a570b9403003d0432bed8b540754d4b94be716b28",
+          "crc32": "b0a2266e"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/sinestro_corps_predator.json",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/metadata/sinestro_corps_predator.json",
+          "bytes": 5474,
+          "sha256": "e0c4f65af481d34b34bd0fdb35bc1ddbde510871476bbb8b609d7ba8aad50485",
+          "crc32": "cb139614"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/batman_vs_predator.png",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/batman_vs_predator.png",
+          "bytes": 2400876,
+          "sha256": "7cc2da0b37ed06e1f638e1430954342319f8d77f41c2bdd860d0ac997d981ab6",
+          "crc32": "e82a7018"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/sinestro_corps_predator.png",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/sinestro_corps_predator.png",
+          "bytes": 2350369,
+          "sha256": "e2af588c6e8544fd451a57a0e6ea7b3c357faadf45a4381a4d17805545d938c0",
+          "crc32": "f5269e66"
+        },
+        {
+          "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/SHA256.txt",
+          "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/SHA256.txt",
+          "bytes": 863,
+          "sha256": "e738a0daaedddd387b458960ada64f6ed4bd12aa2fa7e8719511707775416b5f",
+          "crc32": "e4ed7cb9"
+        }
+      ],
+      "omittedMembers": [
+        "YAUTJA_NECA_COMPLEMENT_UNIQUES/GALERIE_NECA_COMPLEMENT.html"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/13_Bronze_Cape_Rouge_Lance.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/13_Bronze_Cape_Rouge_Lance.png",
+      "bytes": 2448946,
+      "sha256": "1479d88a8c694f3ecab9134ac10046b274e049528deadd4e0e7dd784c92e9a93",
+      "crc32": "9f8011e7",
+      "id": "13_Bronze_Cape_Rouge_Lance",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 54.1439,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        3,
+        13,
+        1023,
+        1521
+      ],
+      "boundsAlpha128": [
+        3,
+        14,
+        1023,
+        1520
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-13-bronze-cape-rouge-lance",
+      "title": "Armure de bronze, cape rouge et lance",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-13-bronze-cape-rouge-lance.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Marges tres serrees a gauche et a droite : source utilisable en reference, recadrage a revoir avant animation."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "13",
+        "title": "Armure de bronze, cape rouge et lance",
+        "file": "PNG/13_Bronze_Cape_Rouge_Lance.png",
+        "reference": "REFERENCES/IMG_4110.jpeg",
+        "reference_note": "Apparence d’après la figurine fournie ; socle et décor exclus du sprite.",
+        "reconstruction_note": "Parties cachées par la cape seulement.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          3,
+          13,
+          1023,
+          1521
+        ],
+        "pivot_proposal_px": [
+          513.0,
+          1521
+        ],
+        "sha256": "1479d88a8c694f3ecab9134ac10046b274e049528deadd4e0e7dd784c92e9a93",
+        "bytes": 2448946,
+        "near_transparent_percent": 56.41
+      }
+    },
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png",
+      "bytes": 2654491,
+      "sha256": "860fa4920c236ce41942a04a9b6009a9c84a9e0b870fa3024a387004efdde145",
+      "crc32": "f6e65a65",
+      "id": "14_Coiffe_Plumes_Rouges_Jade_Trophee",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 53.9961,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        5,
+        6,
+        1014,
+        1528
+      ],
+      "boundsAlpha128": [
+        6,
+        7,
+        1013,
+        1527
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-14-plumes-rouges-jade",
+      "title": "Coiffe a plumes rouges et ornements de jade",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-14-plumes-rouges-jade.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Marges hautes et basses tres serrees ; jambes, pieds et extremite du baton reconstitues dans le pack."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "14",
+        "title": "Coiffe à plumes rouges et ornements de jade",
+        "file": "PNG/14_Coiffe_Plumes_Rouges_Jade_Trophee.png",
+        "reference": "REFERENCES/IMG_4109.jpeg",
+        "reference_note": "Figurine à coiffe de plumes ; bas des jambes et extrémité du bâton reconstitués.",
+        "reconstruction_note": "Bas des jambes, pieds, parties du panache hors cadre et extrémité non visible du bâton reconstitués.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          5,
+          6,
+          1014,
+          1528
+        ],
+        "pivot_proposal_px": [
+          509.5,
+          1528
+        ],
+        "sha256": "860fa4920c236ce41942a04a9b6009a9c84a9e0b870fa3024a387004efdde145",
+        "bytes": 2654491,
+        "near_transparent_percent": 58.87
+      }
+    },
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/15_Colosse_Blanc_Machoire_Ouverte.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/15_Colosse_Blanc_Machoire_Ouverte.png",
+      "bytes": 2232319,
+      "sha256": "51b40041f37f2d01b15f0887678d32f9738a3dc8c1ddbc2f244d2ecf8fca3369",
+      "crc32": "33a59818",
+      "id": "15_Colosse_Blanc_Machoire_Ouverte",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 60.7362,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        93,
+        116,
+        984,
+        1446
+      ],
+      "boundsAlpha128": [
+        93,
+        117,
+        983,
+        1446
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-15-colosse-blanc",
+      "title": "Colosse blanc a machoire ouverte",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-15-colosse-blanc.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Identite descriptive seulement ; volumes tres segmentes aux articulations, a comparer aux references avant usage jouable."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "15",
+        "title": "Colosse blanc à mâchoire ouverte",
+        "file": "PNG/15_Colosse_Blanc_Machoire_Ouverte.png",
+        "reference": "REFERENCES/IMG_4108.jpeg",
+        "reference_note": "Grande figurine blanche à gauche de la photo ; sprite individuel.",
+        "reconstruction_note": "Détails cachés et surfaces non lisibles seulement.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          93,
+          116,
+          984,
+          1446
+        ],
+        "pivot_proposal_px": [
+          538.5,
+          1446
+        ],
+        "sha256": "51b40041f37f2d01b15f0887678d32f9738a3dc8c1ddbc2f244d2ecf8fca3369",
+        "bytes": 2232319,
+        "near_transparent_percent": 61.85,
+        "relative_height_hint": {
+          "compared_to": "16",
+          "factor": 1.25,
+          "note": "Rapport approximatif observé dans la photo, à régler à l’intégration ; les dimensions des PNG ne définissent pas la taille en jeu."
+        }
+      }
+    },
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/16_Creature_Os_Rouge_Quatre_Bras.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/16_Creature_Os_Rouge_Quatre_Bras.png",
+      "bytes": 2020372,
+      "sha256": "84b97d7d0ab484792bcdd18d9a1cb81b011db5dfc4a94a690a9b24ba9b89a3e7",
+      "crc32": "d00be19d",
+      "id": "16_Creature_Os_Rouge_Quatre_Bras",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 72.633,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        173,
+        65,
+        937,
+        1465
+      ],
+      "boundsAlpha128": [
+        173,
+        66,
+        937,
+        1464
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-16-creature-quatre-bras",
+      "title": "Creature blanche et rouge a quatre bras",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-16-creature-quatre-bras.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Quatre bras intentionnels dans la reference declaree ; cette creature ne doit pas devenir un Yautja canon par deduction."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": true,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "16",
+        "title": "Créature blanche et rouge à quatre bras",
+        "file": "PNG/16_Creature_Os_Rouge_Quatre_Bras.png",
+        "reference": "REFERENCES/IMG_4108.jpeg",
+        "reference_note": "Petite figurine à droite de la photo ; quatre bras visibles conservés.",
+        "reconstruction_note": "Implantation arrière des petits bras partiellement masquée dans la référence.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          173,
+          65,
+          937,
+          1465
+        ],
+        "pivot_proposal_px": [
+          555.0,
+          1465
+        ],
+        "sha256": "84b97d7d0ab484792bcdd18d9a1cb81b011db5dfc4a94a690a9b24ba9b89a3e7",
+        "bytes": 2020372,
+        "near_transparent_percent": 74.71,
+        "anatomy": {
+          "main_arms": 2,
+          "small_upper_arms": 2,
+          "legs": 2,
+          "note": "Attache arrière des petits bras partiellement masquée dans la référence."
+        }
+      }
+    },
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/17_Yautja_Noel_Armure_Rouge_Sac.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/17_Yautja_Noel_Armure_Rouge_Sac.png",
+      "bytes": 2313551,
+      "sha256": "aed80b240ccb9e82a83b6837648cf133f7d7596f180d75697b6db1f1a5bf2039",
+      "crc32": "eee07f4b",
+      "id": "17_Yautja_Noel_Armure_Rouge_Sac",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 52.7308,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        19,
+        91,
+        999,
+        1479
+      ],
+      "boundsAlpha128": [
+        20,
+        92,
+        998,
+        1478
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-17-armure-noel",
+      "title": "Apparence de Noel, armure rouge et noire",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-17-armure-noel.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Variante festive fournie, sans validation canon ; parties cachees et petit accessoire gris interpretes."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "17",
+        "title": "Yautja de Noël, armure rouge et noire",
+        "file": "PNG/17_Yautja_Noel_Armure_Rouge_Sac.png",
+        "reference": "REFERENCES/IMG_4107.jpeg",
+        "reference_note": "Tenue de l’illustration fournie ; posture adaptée au combat et parties cachées reconstituées.",
+        "reconstruction_note": "Pieds, bassin et détails masqués par la cheminée, le sac et la pose reconstitués ; petit accessoire gris partiellement caché interprété à partir de sa silhouette visible.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          19,
+          91,
+          999,
+          1479
+        ],
+        "pivot_proposal_px": [
+          509.0,
+          1479
+        ],
+        "sha256": "aed80b240ccb9e82a83b6837648cf133f7d7596f180d75697b6db1f1a5bf2039",
+        "bytes": 2313551,
+        "near_transparent_percent": 53.95
+      }
+    },
+    {
+      "sourceMember": "THE_PIT_LOT2_6_SPRITES_V1/PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png",
+      "localPath": "work/v43/user-sprite-intake/THE_PIT_LOT2_6_SPRITES_V1/PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png",
+      "bytes": 2379509,
+      "sha256": "d510894e8db0647685f0218f07e14d3fde64d013325222d2e400666a3e2b4d5e",
+      "crc32": "2aad75c6",
+      "id": "18_Visage_Orange_Longues_Defenses_Reconstitution",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 56.9155,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        51,
+        16,
+        999,
+        1516
+      ],
+      "boundsAlpha128": [
+        52,
+        16,
+        999,
+        1516
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-lot2-18-visage-orange-reconstitution",
+      "title": "Visage orange aux longues defenses",
+      "publicPath": "/game/sprites/v43/user-packs/lot2-18-visage-orange-reconstitution.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Le corps entier sous le cou est une reconstitution declaree ; aucun personnage connu ne lui est automatiquement attribue."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "18",
+        "title": "Visage orangé aux longues défenses",
+        "file": "PNG/18_Visage_Orange_Longues_Defenses_Reconstitution.png",
+        "reference": "REFERENCES/IMG_4106.jpeg",
+        "reference_note": "Visage d’après le gros plan ; corps sous le cou reconstitué.",
+        "reconstruction_note": "Corps complet sous le cou reconstitué ; armure sobre interprétée.",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "format": "PNG RGBA",
+        "frame_count": 1,
+        "animated": false,
+        "facing": "droite, trois-quarts",
+        "bounds_alpha32": [
+          51,
+          16,
+          999,
+          1516
+        ],
+        "pivot_proposal_px": [
+          525.0,
+          1516
+        ],
+        "sha256": "d510894e8db0647685f0218f07e14d3fde64d013325222d2e400666a3e2b4d5e",
+        "bytes": 2379509,
+        "near_transparent_percent": 58.65
+      }
+    },
+    {
+      "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/batman_vs_predator.png",
+      "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/batman_vs_predator.png",
+      "bytes": 2400876,
+      "sha256": "7cc2da0b37ed06e1f638e1430954342319f8d77f41c2bdd860d0ac997d981ab6",
+      "crc32": "e82a7018",
+      "id": "batman_vs_predator",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 59.7363,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        16,
+        55,
+        1009,
+        1469
+      ],
+      "boundsAlpha128": [
+        17,
+        56,
+        1008,
+        1468
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-dc2019-batman-vs-predator",
+      "title": "Predator de Batman vs. Predator - adaptation NECA 2019",
+      "publicPath": "/game/sprites/v43/user-packs/dc2019-batman-vs-predator.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "right",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Identite et edition declarees par les fichiers du pack ; verification independante de fidelite encore requise."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "batman_vs_predator",
+        "name": "Predator — Batman vs. Predator",
+        "edition": "NECA · SDCC 2019",
+        "url": "https://necaonline.com/2019/05/2019-convention-exclusives-complete-roundup-and-pre-sale-details/",
+        "details": "Peau cuivrée et jaune, masque argent aux yeux jaunes, tablier à quatre plaques, armure asymétrique et canon d’épaule du modèle DC / Dark Horse.",
+        "facing": "trois quarts vers la droite",
+        "file": "sprites/batman_vs_predator.png",
+        "size_bytes": 2400876,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "transparent_percent": 59.736,
+        "bounds_alpha128": [
+          17,
+          56,
+          1008,
+          1468
+        ],
+        "subject_clipped": false,
+        "sha256": "7cc2da0b37ed06e1f638e1430954342319f8d77f41c2bdd860d0ac997d981ab6",
+        "animation_frames": 1
+      }
+    },
+    {
+      "sourceMember": "YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/sinestro_corps_predator.png",
+      "localPath": "work/v43/user-sprite-intake/YAUTJA_NECA_COMPLEMENT_UNIQUES/sprites/sinestro_corps_predator.png",
+      "bytes": 2350369,
+      "sha256": "e2af588c6e8544fd451a57a0e6ea7b3c357faadf45a4381a4d17805545d938c0",
+      "crc32": "f5269e66",
+      "id": "sinestro_corps_predator",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "animated": false,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPercent": 64.5037,
+      "opaquePercent": 0.0,
+      "boundsAlpha32": [
+        61,
+        29,
+        1006,
+        1471
+      ],
+      "boundsAlpha128": [
+        61,
+        29,
+        1005,
+        1471
+      ],
+      "visualReview": "reviewed-with-limitations",
+      "usage": "static-reference-gallery-only",
+      "canonicalIdentityVerified": false,
+      "galleryId": "v43-user-dc2019-sinestro-corps-predator",
+      "title": "Sinestro Corps Predator - adaptation NECA 2019",
+      "publicPath": "/game/sprites/v43/user-packs/dc2019-sinestro-corps-predator.png",
+      "sourceGenerator": "user-supplied",
+      "declaredSha256Matches": true,
+      "nativeFacing": "left",
+      "notes": [
+        "Pose statique unique fournie par l utilisateur ; aucune animation ni hitbox validee.",
+        "PNG original conserve octet pour octet ; provenance OpenAI declaree dans certains documents mais non certifiee independamment.",
+        "Silhouette et mains examinees ; aucune garantie de fidelite anatomique ou canon 1:1.",
+        "Orientation native vers la gauche confirmee visuellement ; aucun miroir applique. Identite declaree par le pack."
+      ],
+      "visualChecks": {
+        "fullSilhouetteVisible": true,
+        "noObviousDetachedHand": true,
+        "fourArmsIntentional": false,
+        "nativeFacingObserved": true,
+        "reviewScale": "512x768 preview; original pixel metrics separately verified"
+      },
+      "sourceMetadata": {
+        "id": "sinestro_corps_predator",
+        "name": "Sinestro Corps Predator",
+        "edition": "NECA · NYCC 2019",
+        "url": "https://necaonline.com/2019/08/nycc-2019-convention-exclusives-complete-roundup-and-pre-sale-details/",
+        "details": "Armure jaune et noire, masque cerclé d’argent, emblème blanc du Sinestro Corps, lance et équipement d’énergie jaune du coffret Green Lantern.",
+        "facing": "trois quarts vers la gauche",
+        "file": "sprites/sinestro_corps_predator.png",
+        "size_bytes": 2350369,
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGBA",
+        "transparent_percent": 64.504,
+        "bounds_alpha128": [
+          61,
+          29,
+          1005,
+          1471
+        ],
+        "subject_clipped": false,
+        "sha256": "e2af588c6e8544fd451a57a0e6ea7b3c357faadf45a4381a4d17805545d938c0",
+        "animation_frames": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Single frames only; no animation, hitboxes, or validated animation pivots.",
+    "Archive claims are recorded as source metadata, not independently certified canon fidelity."
+  ],
+  "galleryIntegrationScope": "Public sources and gallery-generator contract; browser verification recorded separately.",
+  "reviewSummary": {
+    "pngCount": 8,
+    "totalBytes": 18800433,
+    "allSourceHashesMatch": true,
+    "animationsAdded": 0,
+    "runtimeFightersAdded": 0,
+    "allOriginalPngBytesPreserved": true,
+    "independentCanonVerification": "not completed; NECA source pages returned HTTP 403 on 2026-09-23",
+    "metadataTreatedAsInstructions": false
+  }
+}

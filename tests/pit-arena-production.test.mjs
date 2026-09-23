@@ -51,14 +51,15 @@ async function withImages(implementation, callback) {
   try { return await callback(); } finally { if (old === undefined) delete globalThis.Image; else globalThis.Image = old; }
 }
 
-test("100 production entries preserve legacy arenas plus the exact approved duel extensions", () => {
+test("production entries preserve historical arenas and explicitly gated additions", () => {
   const summary = api.summarizePitArenaProduction();
-  assert.equal(summary.stages, 100);
-  assert.equal(summary.primaryPlaneTargets, 600);
+  assert.equal(summary.stages, api.PIT_ARENA_PRODUCTION_MANIFEST.stages.length);
+  assert.equal(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.filter(s => s.number <= 100).length, 100);
+  assert.equal(summary.primaryPlaneTargets, summary.stages * 6);
   assert.equal(summary.legacyPlayable, 8);
-  assert.equal(summary.concepts, 100 - summary.runtimePlayable);
-  assert(summary.runtimePlayable >= 20 && summary.runtimePlayable <= 100);
-  assert.equal(new Set(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.map(stage => stage.catalogueId)).size, 100);
+  assert.equal(summary.concepts, summary.stages - summary.runtimePlayable);
+  assert(summary.runtimePlayable >= 20 && summary.runtimePlayable <= summary.stages);
+  assert.equal(new Set(api.PIT_ARENA_PRODUCTION_MANIFEST.stages.map(stage => stage.catalogueId)).size, summary.stages);
   for (const stage of api.PIT_ARENA_PRODUCTION_MANIFEST.stages) assert.deepEqual(stage.planes.map(plane => plane.id), ["P0", "P1", "P2", "P3", "P4", "P5"]);
   const fixture = reviewedFixture();
   fixture.stages[0].legacyRuntimeStatus = "concept";

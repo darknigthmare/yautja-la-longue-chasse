@@ -11,6 +11,10 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import campaignMenuStyles from "./CampaignMainMenu.module.css";
+import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
+import { CampaignSavePanel } from "./CampaignMainMenu";
+import { loadCampaignSlots, saveCampaignCheckpoint, type CampaignSlotCatalog, type CampaignResumeLocation } from "./systems/campaignSlots";
 import { GAME_CONTENT_VERSION, GAME_CONTENT_LABEL } from "./buildInfo";
 import { COMPLETE_ARCHIVE_FORMAT, COMPLETE_ARCHIVE_MAX_BYTES, createCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, importCompleteArchive, completeArchiveSummary, type CompleteArchiveImportPlan } from "./systems/completeArchive";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY } from "./systems/archiveTransferGuard";
@@ -1034,14 +1038,27 @@ function withPitWriteLock({
 }
 
 export default function GameClient() {
-  const [screen, setScreen] = useState<Screen>("title");
+  return <CampaignFrontEnd SessionComponent={GameSession} />;
+}
+
+function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMainMenu: () => void }) {
+  const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
+  const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
+  const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
+  const [hydrated, setHydrated] = useState(false);
+  const sessionAliveRef = useRef(true);
+  const startupResumeRef = useRef(false);
+  const [campaignCatalog, setCampaignCatalog] = useState<CampaignSlotCatalog | null>(null);
+  const [campaignSaveBusy, setCampaignSaveBusy] = useState(false);
+  const [campaignSaveMessage, setCampaignSaveMessage] = useState<string | null>(null);
+  const campaignOperationRef = useRef(false);
   const [huntMusicContext, setHuntMusicContext] = useState<GameMusicContext | null>("exploration");
-  const [hubLocation, setHubLocation] = useState<"deck" | "homeworld">("deck");
+  const [hubLocation, setHubLocation] = useState<"deck" | "homeworld">(entry.location === "homeworld" ? "homeworld" : "deck");
   const [justiceReturnScreen, setJusticeReturnScreen] = useState<"deck" | "homeworld" | "map">("deck");
   const [justiceJurisdiction, setJusticeJurisdiction] = useState<JusticeJurisdictionId>("homeworld");
   const [pitReturnScreen, setPitReturnScreen] = useState<"deck" | "homeworld">("deck");
   const [save, setSave] = useState<SaveGame>(() =>
-    defaultSave(STABLE_BOOT_TIME),
+    defaultSave(entry.ownerCreatedAt || STABLE_BOOT_TIME),
   );
   // Runtime discoveries and terminal callbacks may occur before React commits.
   // Update this ref alongside every local save so their unions never use stale state.
@@ -1110,7 +1127,7 @@ export default function GameClient() {
     screen === "briefing" || screen === "armory" || screen === "customization" ||
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
-  const deckVisible = screen === "deck" || (shipStationOpen && hubLocation === "deck");
+  const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
   const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -1118,6 +1135,7 @@ export default function GameClient() {
 
   // Charge la progression de l’appareil sans toucher à localStorage au SSR.
   useEffect(() => {
+    sessionAliveRef.current = true;
     let hydrationCancelled = false;
     const hydrationTask = window.setTimeout(async () => {
       try {
@@ -1137,11 +1155,19 @@ export default function GameClient() {
       if (hydrationCancelled) return;
       const loaded = loadSaveWithStatus();
       const loadedSave = loaded.save;
+      if (loaded.loaded && loadedSave.createdAt !== entry.ownerCreatedAt) {
+        sessionAliveRef.current = false;
+        setArchiveRecoveryIssue("La partie active a changé. Cette session ne peut plus écrire dans les archives.");
+        setHydrated(true);
+        return;
+      }
       saveRef.current = loadedSave;
       setSave(loadedSave);
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
       if (!loaded.loaded && loaded.failure) {
+        setHydrated(true);
+        setArchiveRecoveryIssue("La campagne ne peut pas être chargée. Les données restent protégées ; revenez au menu pour vérifier les archives.");
         setSaveFailure(loaded.failure === "storage-unavailable" ? "storage-unavailable" : "protected-save");
         return;
       }
@@ -1176,6 +1202,8 @@ export default function GameClient() {
           setResumableHunt(candidate);
         }
       }
+      setCampaignCatalog(loadCampaignSlots());
+      setHydrated(true);
       // Hydration is read-only: an incompatible/future sidecar may belong to
       // another tab. Only an explicit new hunt, import or reset can replace it.
     }, 0);
@@ -1183,15 +1211,22 @@ export default function GameClient() {
     audioRef.current = audio;
     return () => {
       hydrationCancelled = true;
+      sessionAliveRef.current = false;
+      activeHuntSessionRef.current = null;
+      // Invalidate the latest request generation, rather than a captured DOM ref.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ++archiveSelectionRef.current;
       window.clearTimeout(hydrationTask);
       audio.dispose();
       audioRef.current = null;
     };
-  }, []);
+  }, [entry.ownerCreatedAt]);
 
   useEffect(() => {
     const archiveChanged = (event: StorageEvent) => {
       if (event.key === ARCHIVE_TRANSFER_JOURNAL_KEY && event.newValue !== null) {
+        sessionAliveRef.current = false;
+        activeHuntSessionRef.current = null;
         setArchiveRecoveryIssue("Une autre session importe ses archives. Ce jeu est suspendu pour ne pas réécrire les anciennes données ; reprenez après vérification.");
       }
     };
@@ -1354,7 +1389,9 @@ export default function GameClient() {
       if (nestedDialog && nestedDialog !== dialog) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        setScreen(hubLocation);
+        if (newGamePhase === "identity") setSettingsOpen(true);
+        else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
+        else setScreen(hubLocation);
       } else if (event.key === "Tab") {
         const controls = Array.from(dialog.querySelectorAll<HTMLElement>(
           'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]',
@@ -1371,7 +1408,7 @@ export default function GameClient() {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [settingsOpen, shipStationOpen, trophyWorkshop, hubLocation]);
+  }, [settingsOpen, shipStationOpen, trophyWorkshop, hubLocation, newGamePhase]);
 
   const playSound = useCallback(
     (
@@ -1412,6 +1449,7 @@ export default function GameClient() {
   }, []);
 
   const persist = useCallback((next: SaveGame) => {
+    if (!sessionAliveRef.current) return saveRef.current;
     if (next.createdAt === saveRef.current.createdAt) {
       next = { ...next, exploration: mergeExplorationProgress(saveRef.current.exploration, next.exploration) };
     }
@@ -1604,7 +1642,7 @@ export default function GameClient() {
     };
 
     const persistSafely = (): PitMatchPersistenceAck => {
-      if (saveRef.current.createdAt !== ownerSaveCreatedAt) {
+      if (!sessionAliveRef.current || saveRef.current.createdAt !== ownerSaveCreatedAt) {
         const message = "La campagne active a changé : résultat THE PIT non enregistré.";
         setToast(message);
         return failed(message);
@@ -1652,7 +1690,7 @@ export default function GameClient() {
     });
 
     const persistTransition = (): PitMatchPersistenceAck => {
-      if (saveRef.current.createdAt !== ownerSaveCreatedAt) {
+      if (!sessionAliveRef.current || saveRef.current.createdAt !== ownerSaveCreatedAt) {
         const message = "La campagne active a changé : route THE PIT non enregistrée.";
         setToast(message);
         return failed(message);
@@ -1746,6 +1784,7 @@ export default function GameClient() {
   // A failed write must not announce a completed investigation or apply a reward.
   const pendingSocialWriteRef = useRef<{ attempt: SaveWriteResult; updateSerialized: string } | null>(null);
   const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "homeworld" | "justice">>): boolean => {
+    if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTerminalRunRef.current) {
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
@@ -1931,6 +1970,7 @@ export default function GameClient() {
   );
 
   const clearHuntSession = useCallback(() => {
+    if (!sessionAliveRef.current) return false;
     reconcileHuntWrite();
     const session = activeHuntSessionRef.current;
     const result = session ? clearActiveHuntSave({ expectedRunId: session.runId, expectedSequence: session.sequence }) : { cleared: true, failure: null };
@@ -1943,6 +1983,7 @@ export default function GameClient() {
   }, [reconcileHuntWrite]);
 
   const invalidateActiveHuntPersistence = useCallback(() => {
+    if (!sessionAliveRef.current) return;
     reconcileHuntWrite();
     const session = activeHuntSessionRef.current;
     const result = session ? clearActiveHuntSave({ expectedRunId: session.runId, expectedSequence: session.sequence }) : { cleared: true, failure: null };
@@ -1960,6 +2001,7 @@ export default function GameClient() {
 
   const persistActiveHunt = useCallback(
     (payload: HuntPersistencePayload): ActiveHuntSaveV1 | null => {
+      if (!sessionAliveRef.current) return null;
       const session = activeHuntSessionRef.current;
       if (!session) return null;
 
@@ -2002,6 +2044,7 @@ export default function GameClient() {
   );
 
   const launchMission = useCallback(() => {
+    if (!sessionAliveRef.current) return;
     if (!selectedMission || save.missionProgress[selectedMission.id].status === "locked") return;
     // A sidecar can only survive a reload when its owning campaign snapshot is
     // durable too. Fresh profiles have not necessarily written the main save
@@ -2049,10 +2092,12 @@ export default function GameClient() {
         }
       : null;
     void playSound("select");
+    setNewGamePhase(null);
     setScreen("mission");
   }, [playSound, save, selectedMission]);
 
   const resumeActiveHunt = useCallback(() => {
+    if (!sessionAliveRef.current) return;
     if (!resumableHunt) return;
     const latest = loadActiveHuntSave();
     if (!latest.save || latest.save.runId !== resumableHunt.runId || latest.save.sequence !== resumableHunt.sequence) {
@@ -2116,6 +2161,16 @@ export default function GameClient() {
     setScreen("mission");
   }, [clearHuntSession, playSound, resumableHunt, save]);
 
+  useEffect(() => {
+    if (!hydrated || startupResumeRef.current || entry.location !== "mission") return;
+    const timer = window.setTimeout(() => {
+      startupResumeRef.current = true;
+      if (resumableHunt) resumeActiveHunt();
+      else setCampaignSaveMessage("Le checkpoint de chasse n’est pas reprenable. Les archives sont conservées ; choisissez une autre sauvegarde depuis le menu.");
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [entry.location, hydrated, resumableHunt, resumeActiveHunt]);
+
   const suspendActiveHunt = useCallback(
     (payload: HuntPersistencePayload) => {
       const sidecar = persistActiveHunt(payload);
@@ -2144,6 +2199,7 @@ export default function GameClient() {
   );
 
   const checkHuntSessionForSettlement = useCallback(() => {
+    if (!sessionAliveRef.current) return false;
     const session = activeHuntSessionRef.current;
     if (!session) return false;
     const latest = reconcileHuntWrite();
@@ -2171,6 +2227,7 @@ export default function GameClient() {
   }, [reconcileHuntWrite]);
 
   const persistExplorationProgress = useCallback((progress: ExplorationProgress) => {
+    if (!sessionAliveRef.current) return;
     const session = activeHuntSessionRef.current;
     if (!session || !isExplorationMission(session.missionId) || missionSettlementRef.current || pendingTerminalRunRef.current) return;
     const current = saveRef.current;
@@ -2208,7 +2265,7 @@ export default function GameClient() {
   const completeMission = useCallback(
     (result: MissionResult, returnToDeck = false) => {
       // Runtime callbacks can race at a terminal frame. Settle this run once.
-      if (missionSettlementRef.current) return;
+      if (!sessionAliveRef.current || missionSettlementRef.current) return;
       if (!checkHuntSessionForSettlement()) {
         if (activeHuntSessionRef.current) setPendingHuntResult({ result, returnToDeck });
         return;
@@ -2505,6 +2562,7 @@ export default function GameClient() {
   );
 
   const resetProgress = useCallback(() => {
+    if (!sessionAliveRef.current) return;
     if (!resetArmed) {
       setResetArmed(true);
       return;
@@ -2596,7 +2654,7 @@ export default function GameClient() {
     event.currentTarget.value = "";
     const selection = ++archiveSelectionRef.current;
     setImportCandidate(null); setCompleteImportPlan(null);
-    if (!file || screen !== "title" || archiveTransferBusy) return;
+    if (!sessionAliveRef.current || !file || screen !== "title" || archiveTransferBusy) return;
     if (file.size > COMPLETE_ARCHIVE_MAX_BYTES) { setSaveTransferMessage("Archive trop volumineuse (3 Mio maximum pour l’intégrale)."); return; }
     setArchiveTransferBusy(true);
     try {
@@ -2609,12 +2667,12 @@ export default function GameClient() {
         if (hunt && !(await import("./HuntCanvas")).isRestorableHuntArchive(hunt.snapshot, hunt.retryCheckpoint)) {
           throw new Error("Le checkpoint ne peut pas être repris par cette version du jeu. Aucune donnée remplacée.");
         }
-        if (selection !== archiveSelectionRef.current) return;
+        if (!sessionAliveRef.current || selection !== archiveSelectionRef.current) return;
         setCompleteImportPlan(prepareCompleteArchiveImport(parsed.archive, window.localStorage));
         setSaveTransferMessage("Archive intégrale vérifiée. Examinez son contenu avant de confirmer le remplacement.");
       } else {
         const parsed = parseSaveImport(text);
-        if (selection !== archiveSelectionRef.current) return;
+        if (!sessionAliveRef.current || selection !== archiveSelectionRef.current) return;
         setImportCandidate(parsed.save);
         setSaveTransferMessage(parsed.save ? "Archive légère vérifiée. Confirmez son remplacement ci-dessous." : `Archive refusée (${parsed.failure}). Aucune donnée remplacée.`);
       }
@@ -2624,10 +2682,10 @@ export default function GameClient() {
   }, [archiveTransferBusy, screen]);
 
   const confirmCompleteImport = useCallback(async () => {
-    if (!completeImportPlan || screen !== "title" || archiveTransferBusy) return;
+    if (!sessionAliveRef.current || !completeImportPlan || screen !== "title" || archiveTransferBusy) return;
     setArchiveTransferBusy(true);
     try {
-      const result = await withArchiveTransferLock(() => importCompleteArchive(completeImportPlan, window.localStorage));
+      const result = await withArchiveTransferLock(() => { if (!sessionAliveRef.current) throw new Error("Session terminée : import annulé."); return importCompleteArchive(completeImportPlan, window.localStorage); });
       if (!result.acquired) { setSaveTransferMessage(result.reason); return; }
       if (result.value.persisted) {
         // Reload every mounted service and its ownership observations from the
@@ -2667,7 +2725,7 @@ export default function GameClient() {
   }, [downloadArchiveFile]);
 
   const confirmImport = useCallback(() => {
-    if (!importCandidate || screen !== "title" || archiveTransferBusy) return;
+    if (!sessionAliveRef.current || !importCandidate || screen !== "title" || archiveTransferBusy) return;
     let result: ReturnType<typeof importSaveWithStatus>;
     try { result = importSaveWithStatus(exportSave(importCandidate)); }
     catch { setSaveTransferMessage("Import impossible à préparer. Aucune donnée remplacée par cet import."); return; }
@@ -2715,13 +2773,70 @@ export default function GameClient() {
     );
   }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
+  const campaignLocation: CampaignResumeLocation = screen === "mission" || resumableHunt ? "mission"
+    : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
+  const checkpointBlockedReason = pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
+    : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."
+    : screen === "mission" ? "Suspendez la chasse depuis sa pause pour enregistrer un checkpoint manuel ou changer de partie." : null;
+  const saveManagedCheckpoint = useCallback(async (kind: "manual" | "auto", index?: number, expectedRevision?: number): Promise<boolean> => {
+    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || saveFailure) return false;
+    const catalog = kind === "manual" ? campaignCatalog : loadCampaignSlots();
+    const slot = catalog?.slots.find(item => item.id === entry.slotId);
+    if (!slot || slot.status !== "ready" || slot.ownerCreatedAt !== saveRef.current.createdAt) {
+      setCampaignSaveMessage("Cette session ne possède plus la partie. Aucune sauvegarde créée."); return false;
+    }
+    campaignOperationRef.current = true; setCampaignSaveBusy(true);
+    try {
+      const result = await saveCampaignCheckpoint(entry.slotId, { kind, index, expectedRevision: expectedRevision ?? slot.revision, location: campaignLocation });
+      if (!sessionAliveRef.current) return false;
+      setCampaignCatalog(result.catalog); setCampaignSaveMessage(result.ok ? `${kind === "manual" ? "Sauvegarde manuelle " + index : "Autosauvegarde"} confirmée.` : result.message);
+      return result.ok;
+    } catch (error) {
+      if (sessionAliveRef.current) setCampaignSaveMessage(error instanceof Error ? error.message : "Sauvegarde non confirmée. Aucun changement de partie effectué.");
+      return false;
+    } finally { campaignOperationRef.current = false; if (sessionAliveRef.current) setCampaignSaveBusy(false); }
+  }, [archiveTransferBusy, campaignCatalog, campaignLocation, entry.slotId, hydrated, pendingHuntResult, saveFailure]);
+  const latestCampaignCheckpointRef = useRef(saveManagedCheckpoint);
+  useEffect(() => { latestCampaignCheckpointRef.current = saveManagedCheckpoint; }, [saveManagedCheckpoint]);
+  useEffect(() => {
+    if (!hydrated) return;
+    const timer = window.setTimeout(() => { void latestCampaignCheckpointRef.current("auto"); }, 0);
+    return () => window.clearTimeout(timer);
+  }, [campaignLocation, hydrated]);
+  const returnToMainMenu = useCallback(async () => {
+    if (!sessionAliveRef.current) { onMainMenu(); return; }
+    if (checkpointBlockedReason) { setCampaignSaveMessage(checkpointBlockedReason); return; }
+    setSettingsOpen(true);
+    if (!(await saveManagedCheckpoint("auto"))) return;
+    // Invalidate synchronous and delayed child callbacks BEFORE removing the tree.
+    sessionAliveRef.current = false; activeHuntSessionRef.current = null; ++archiveSelectionRef.current;
+    onMainMenu();
+  }, [checkpointBlockedReason, onMainMenu, saveManagedCheckpoint]);
+  useEffect(() => {
+    if (!hydrated || !sessionAliveRef.current) return;
+    const timer = window.setInterval(() => { if (!document.hidden) void saveManagedCheckpoint("auto"); }, 30000);
+    return () => window.clearInterval(timer);
+  }, [hydrated, saveManagedCheckpoint]);
+
   const menuBack = useCallback(() => {
     if (archiveTransferBusy || archiveRecoveryIssue) return;
     if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); setCompleteImportPlan(null); ++archiveSelectionRef.current; setArchiveTransferBusy(false); }
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
-    else if (screen === "clan-chronicle") go("title");
+    else if (screen === "clan-chronicle") go(chronicleReturnScreen);
+    else if (newGamePhase === "identity") void returnToMainMenu();
+    else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
     else if (screen !== "title") go("deck");
-  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen]);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen]);
+  useEffect(() => {
+    if (screen !== "clan-chronicle" || settingsOpen) return;
+    const onBack = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.repeat || event.defaultPrevented) return;
+      event.preventDefault();
+      menuBack();
+    };
+    document.addEventListener("keydown", onBack);
+    return () => document.removeEventListener("keydown", onBack);
+  }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
     !["mission", "deck", "ship", "map", "training", "pit", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
@@ -2765,7 +2880,7 @@ export default function GameClient() {
     : null;
 
   const topBar =
-    screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
+    !newGamePhase && screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
       <TopBar
         save={save}
         onShip={() => go("deck")}
@@ -2777,11 +2892,14 @@ export default function GameClient() {
       />
     ) : null;
 
+  if (!hydrated && !archiveRecoveryIssue) return <DeferredGameScreen />;
+
   if (archiveRecoveryIssue) return (
     <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION}>
       <section className="screen panel-screen" role="alertdialog" aria-modal="true" aria-labelledby="archive-recovery-title">
         <div className="screen-safe">
           <h1 id="archive-recovery-title">Archives protégées</h1>
+          <button type="button" className="ghost-button" onClick={onMainMenu}>Revenir au menu principal sans écrire</button>
           <p>{archiveRecoveryIssue}</p>
           <p>Le jeu attend la vérification du transfert. Les données du journal ne sont ni effacées ni publiées.</p>
           <div className="modal-actions">
@@ -2807,6 +2925,9 @@ export default function GameClient() {
       }
       aria-label="Yautja : La Longue Chasse"
       data-game-content-version={GAME_CONTENT_VERSION}
+      data-campaign-session={entry.slotId}
+      data-campaign-location={campaignLocation}
+      data-campaign-owner={entry.ownerCreatedAt}
     >
       <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
 
@@ -2825,6 +2946,7 @@ export default function GameClient() {
                 ne revenez pas.
               </p>
               <div className="title-actions">
+                <button type="button" className="ghost-button" disabled={campaignSaveBusy} onClick={() => void returnToMainMenu()}>Menu principal · parties et sauvegardes</button>
                 {resumableHunt && resumableMission && (
                   <button
                     type="button"
@@ -2849,7 +2971,7 @@ export default function GameClient() {
                 >
                   Jouer
                 </button>
-                <button type="button" className="ghost-button" onClick={() => go("clan-chronicle")}>
+                <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("title"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
                 {save.statistics.missionsStarted > 0 && (
@@ -2897,7 +3019,7 @@ export default function GameClient() {
         <section className="screen panel-screen" inert={settingsOpen}>
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
-              <ClanChroniclePanel save={save} onClose={() => go("title")} />
+              <ClanChroniclePanel save={save} onClose={() => go(chronicleReturnScreen)} />
             </Suspense>
           </div>
         </section>
@@ -2958,6 +3080,9 @@ export default function GameClient() {
                 <button type="button" className="ghost-button" onClick={() => go("ship")}>
                   Console du vaisseau
                 </button>
+                <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
+                  Dossier de campagne
+                </button>
                 <button type="button" className="ghost-button" onClick={() => go("homeworld")}>
                   Yautja Prime · monde natal
                 </button>
@@ -3004,14 +3129,14 @@ export default function GameClient() {
         <div className="ship-station-layer" data-station-screen={screen} role="dialog" aria-modal="true"
           aria-label={hubLocation === "homeworld" ? "Service du monde natal" : "Installation du vaisseau"} ref={stationDialogRef} tabIndex={-1}
           inert={settingsOpen || trophyWorkshop !== null}>
-          <div className="ship-station-toolbar" inert={shipDrillActive}>
+          {!newGamePhase && <div className="ship-station-toolbar" inert={shipDrillActive}>
             <button type="button" className="ghost-button" onClick={() => go(hubLocation)}>
               {hubLocation === "homeworld" ? "← Retour à la cité · Échap" : "← Retour au pont · Échap"}
             </button>
             <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
               Réglages
             </button>
-          </div>
+          </div>}
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}
@@ -3107,10 +3232,10 @@ export default function GameClient() {
               title="Préparation de chasse"
               subtitle="Le code récompense la mesure, l’observation et une proie capable de rendre les coups."
               id="briefing-heading"
-              onBack={() => go("map")}
+              onBack={() => newGamePhase ? (setNewGamePhase("identity"), setScreen("customization")) : go("map")}
             />
             <div className="briefing-layout">
-              <div className="briefing-visual">
+              <div className={`briefing-visual ${newGamePhase ? campaignMenuStyles.openingVisual : ""}`}>
                 <img src={missionBackground(selectedMission)} alt="" />
                 <div
                   className={`target-cutout ${
@@ -3531,12 +3656,18 @@ export default function GameClient() {
         >
           <div className="screen-safe">
             <PanelHeader
-              eyebrow="Vaisseau // Quartier du chasseur"
+              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
               subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
               id="customization-title"
-              onBack={() => go(stationReturnScreen)}
+              onBack={() => newGamePhase ? void returnToMainMenu() : go(stationReturnScreen)}
             />
+            {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
+              <h2>{save.profile.hunterName} · Première chasse</h2>
+              <p>Choisis ton apparence avec la personnalisation existante. Tu commenceras ensuite par le briefing de Vey et la chasse en jungle. La jeunesse de la nurserie reste en production ; aucun rite de jeunesse n’est attribué.</p>
+              <button type="button" className="alien-button" onClick={() => { setSelectedMission(MISSIONS.find(mission => mission.id === "jungle-vey")!); setBriefingAtAirlock(true); setNewGamePhase("briefing"); setScreen("briefing"); }}>Confirmer le chasseur et ouvrir le premier briefing</button>
+              <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
+            </section>}
             <div className="customization-layout">
               <aside className="customization-preview">
                 <div className="customization-rig-stage">
@@ -4471,6 +4602,9 @@ export default function GameClient() {
               La difficulté modifie la résistance, les dégâts et la détection
               des proies. La progression n’est jamais supprimée après un échec.
             </p>
+            <CampaignSavePanel slot={campaignCatalog?.slots.find(slot => slot.id === entry.slotId) ?? null}
+              busy={campaignSaveBusy || archiveTransferBusy} message={campaignSaveMessage}
+              disabledReason={checkpointBlockedReason} onSave={(index, expectedRevision) => void saveManagedCheckpoint("manual", index, expectedRevision)} onMainMenu={() => void returnToMainMenu()} />
             <div className="settings-list">
               <div className="setting-row">
                 <label htmlFor="difficulty-select">Difficulté</label>
@@ -4569,8 +4703,9 @@ export default function GameClient() {
                 <button type="button" className="ghost-button" disabled={archiveTransferBusy} onClick={exportComplete}>Exporter l’archive intégrale</button>
                 <button type="button" className="ghost-button" onClick={() => persist(save)}>Réessayer la sauvegarde</button>
               </div>
-              <label className="save-import-label">Charger une archive JSON
-                <input type="file" accept="application/json,.json" disabled={screen !== "title" || archiveTransferBusy} onChange={readArchiveFile} />
+              <p>Pour une nouvelle progression, créez une autre partie au menu principal. L’import JSON de remplacement et la remise à zéro sont protégés dans ce gestionnaire ; les exports restent disponibles.</p>
+              <label className="save-import-label">Charger une archive JSON (remplacement protégé)
+                <input type="file" accept="application/json,.json" disabled={true} onChange={readArchiveFile} />
               </label>
               {screen !== "title" && <p>Pour remplacer les archives, suspendez la chasse éventuelle puis revenez au titre.
                 {screen !== "mission" && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
@@ -4603,7 +4738,7 @@ export default function GameClient() {
                 type="button"
                 className="ghost-button danger"
                 onClick={resetProgress}
-                disabled={archiveTransferBusy}
+                disabled={true}
               >
                 {resetArmed
                   ? "Confirmer la réinitialisation"

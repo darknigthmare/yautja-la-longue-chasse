@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { chromium } from "playwright-core";
+import { enterCampaignDeck } from "./campaign-browser-helpers.mjs";
 
 // Against a server already started by the release owner; no build or fixture server.
 const projectRoot = await fs.realpath(process.cwd());
@@ -10,6 +11,7 @@ const parsedBase = new URL(process.env.V37_QA_URL || "http://127.0.0.1:4174");
 assert(["http:", "https:"].includes(parsedBase.protocol) && !parsedBase.username && !parsedBase.password && !parsedBase.search && !parsedBase.hash,
   "V37_QA_URL must be a plain HTTP(S) application URL.");
 const base = parsedBase.href.replace(/\/+$/, "");
+const expectedVersion = process.env.V37_EXPECT_CONTENT_VERSION ?? "V43";
 const output = path.resolve(projectRoot, process.env.V37_TRIBE_QA_OUTPUT || "work/v37/tribe-gallery-qa");
 const relativeOutput = path.relative(projectRoot, output);
 assert(relativeOutput && !relativeOutput.startsWith("..") && !path.isAbsolute(relativeOutput), "QA output must remain inside this workspace.");
@@ -43,8 +45,8 @@ const fold = text => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLoc
 const pageSize = 12;
 const errors = [], failedResponses = [], failedRequests = [], checkedPages = [], checkedFilters = [], fullResolutionChecks = [];
 const loadedThumbnails = new Set();
-const report = { passed: false, checkedAt: new Date().toISOString(), url: base, version: "V37", sourceCount: catalogue.assets.length,
-  countsByPack, fixture: "isolated-partial-v7-read-only", checkedPages, checkedFilters, fullResolutionChecks,
+const report = { passed: false, checkedAt: new Date().toISOString(), url: base, version: expectedVersion, sourcePackVersion: "V37", sourceCount: catalogue.assets.length,
+  countsByPack, fixture: "isolated-partial-v7-migrated-before-read-only-check", checkedPages, checkedFilters, fullResolutionChecks,
   errors, failedResponses, failedRequests };
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 let page;
@@ -78,12 +80,16 @@ try {
   context.on("page", observePage);
   page = await context.newPage(); observePage(page);
   page.setDefaultTimeout(20000);
-  await page.goto(base, { waitUntil: "networkidle", timeout: 120000 });
-  await page.locator('[data-game-content-version="V37"]').waitFor();
+  await enterCampaignDeck(page, { url: base });
+  await page.locator(`[data-game-content-version="${expectedVersion}"]`).waitFor();
   await page.getByRole("button", { name: "Dossier de campagne", exact: true }).waitFor();
   const storageSnapshot = () => page.evaluate(() => JSON.stringify(Object.fromEntries(Object.entries(localStorage).sort(([a], [b]) => a.localeCompare(b)))));
   const before = await storageSnapshot();
-  assert.equal(JSON.parse(before)[SAVE_KEY], JSON.stringify(fixture), "Isolated fixture bytes must load unchanged.");
+  const loadedFixture = JSON.parse(JSON.parse(before)[SAVE_KEY]);
+  assert.equal(loadedFixture.createdAt, fixture.createdAt);
+  assert.equal(loadedFixture.profile.hunterName, fixture.profile.hunterName);
+  assert.equal(loadedFixture.profile.honor, fixture.profile.honor);
+  assert.equal(JSON.parse(before)["v37-tribe-qa-sentinel"], "unchanged");
   await page.evaluate(() => { window.__tribeStorageWrites = []; });
   await page.getByRole("button", { name: "Dossier de campagne", exact: true }).click();
   const panel = page.locator('[data-clan-chronicle="design-v37"]');
@@ -243,8 +249,9 @@ try {
   assert(mobile.controls.every(control => control.left >= -1 && control.right <= 391), "390px gallery controls overflow.");
   await gallery.screenshot({ path: path.join(output, "gallery-mobile-390.png") });
   report.mobile = { ...mobile, noHorizontalOverflow: true };
-  await panel.getByRole("button", { name: "Retour au menu", exact: true }).click();
-  await page.getByRole("button", { name: "Jouer", exact: true }).waitFor();
+  await panel.getByRole("button", { name: /^Retour/ }).click();
+  await page.locator('[data-campaign-session][data-campaign-location="deck"]').waitFor();
+  await page.getByRole("button", { name: "THE PIT · combat", exact: true }).waitFor();
   const after = await storageSnapshot();
   const storageWrites = await page.evaluate(() => window.__tribeStorageWrites);
   assert.equal(after, before, "Gallery consultation must preserve every localStorage byte.");
