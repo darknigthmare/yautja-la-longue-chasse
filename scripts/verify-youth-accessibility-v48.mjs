@@ -41,7 +41,11 @@ try{
  assert(await target.evaluate(button=>{const r=button.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest("button")===button;}),"Settings must render above immersive scene");
  await target.click();await settings.waitFor({state:"hidden"});await page.getByRole("dialog",{name:"Formation en pause"}).waitFor();
  checks.push({name:"settings-over-immersive-scene",simulationFrozen:true,closeReachableAboveCanvas:true,returnsToPausedScene:true});
- await page.keyboard.press("Escape");await page.getByRole("dialog",{name:"Formation en pause"}).waitFor({state:"hidden"});assert(await canvas.evaluate(n=>document.activeElement===n));
+ await page.keyboard.press("Escape");await page.getByRole("dialog",{name:"Formation en pause"}).waitFor({state:"hidden"});
+ // Resume hides the dialog first and restores focus in requestAnimationFrame.
+ // Observe that real focus handoff; never force focus from the QA recipe.
+ await page.waitForFunction(() => document.activeElement === document.querySelector("canvas[data-youth-stage]"), null, { timeout: 2000 });
+ assert(await canvas.evaluate(n=>document.activeElement===n));
  await page.screenshot({path:path.join(out,"desktop-training.png"),fullPage:true});checks.push({name:"tab-pauses-live-training-and-modal-traps-focus",escapeResumes:true});await page.close();
  page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:"reduce"});await start(page);
  await page.waitForFunction(()=>document.querySelector("[data-youth-training] canvas[data-youth-stage]")?.dataset.youthAssets==="true");

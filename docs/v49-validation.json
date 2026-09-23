@@ -115,6 +115,44 @@
       "files": 5,
       "passed": true,
       "report": "outputs/qa-commercial-audit/v49/local-art-hashes.json"
+    },
+    "browserProduction": {
+      "featureCommit": "e83c31709fca00c63de8d3aeb3d0f98780aa5ef1",
+      "checks": 49,
+      "reports": [
+        {
+          "report": "outputs/qa-commercial-audit/v49/public-immersive-browser-qa/report.json",
+          "passed": true,
+          "checks": 10
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/public-fixed-ahab-browser-qa/report.json",
+          "passed": true,
+          "checks": 4
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/public-pit-animation-qa/report.json",
+          "passed": true,
+          "checks": 21
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/public-desert-browser-qa/report.json",
+          "passed": true,
+          "checks": 5
+        },
+        {
+          "report": "outputs/qa-commercial-audit/v49/public-youth-accessibility-frame-wait-qa/report.json",
+          "passed": true,
+          "checks": 9
+        }
+      ],
+      "focusRecipeCorrection": {
+        "runtimeChanged": false,
+        "reason": "Focus restoration is scheduled on the next animation frame. The original immediate assertion ran before that frame.",
+        "correction": "Wait up to 2 seconds for the actual canvas focus, then retain the original assertion; never force focus.",
+        "initialFailureRetained": "outputs/qa-commercial-audit/v49/public-youth-accessibility-qa/report.json",
+        "measuredProof": "outputs/qa-commercial-audit/v49/public-youth-focus-probe/report.json"
+      }
     }
   },
   "art": {
