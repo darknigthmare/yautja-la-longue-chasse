@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-09-23T03:21:45.5755497Z",
+  "sourceCommit": "b949b1dce39c12a4ca0cb3b5c5add48ca9112f24",
+  "tests": {
+    "durationMs": 155374.5053,
+    "skipped": 0,
+    "total": 1426,
+    "log": "work/v43/tests-final-approved.tap",
+    "passed": 1426,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "lint": {
+    "existingWarning": "ClanChroniclePanel.tsx next/no-img-element",
+    "errors": 0,
+    "warnings": 1
+  },
+  "compiledBuild": "PASS",
+  "browser": {
+    "sourceGallery": "docs/v43-production-gallery-compiled-qa.json",
+    "pitSelection": "docs/v43-pit-selection-compiled-qa.json",
+    "eightUserReferences": "docs/v43-user-sprite-gallery-compiled-qa.json",
+    "campaignMenu": "docs/v43-campaign-menu-compiled-qa.json",
+    "all36Arenas": "docs/v43-arena-application-compiled-qa.json"
+  },
+  "publication": "pending verification",
+  "limits": [
+    "No new Windows V43 executable certified.",
+    "Not all Predator/AVP games or complete hunter animations.",
+    "No exact1to1fidelity certification."
+  ]
+}
