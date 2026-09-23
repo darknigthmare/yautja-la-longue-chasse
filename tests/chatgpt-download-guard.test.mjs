@@ -20,7 +20,7 @@ async function setup(t, limits = {}) {
   const page = { context: () => ({ newCDPSession: async () => pageSession }) };
   const budget = { usedBytes: 0 };
   const guard = await createDownloadGuard(browser, page, { workspace: root, output, budget,
-    limits: { fileBytes: 8, totalBytes: 12, reserveBytes: 0, timeoutMs: 150, pollMs: 5, ...limits } });
+    limits: { fileBytes: 8, totalBytes: 12, reserveBytes: 0, timeoutMs: 5000, pollMs: 5, ...limits } });
   t.after(async () => {
     await guard.close();
     const relative = path.relative(await fs.realpath(os.tmpdir()), await fs.realpath(root));
@@ -70,11 +70,28 @@ test("per-file and total limits cancel before large transfers and count failed r
 
 test("transfer timeout cancels in-flight bytes and removes only its private incomplete files", async t => {
   const f = await setup(t, { timeoutMs: 30 });
-  await assert.rejects(f.guard.download(async () => {
-    f.begin("slow");
-    await fs.writeFile(path.join(f.output, "incoming", "slow.crdownload"), "a");
-    f.progress("slow", 1, 3);
-  }, 1), /deadline/);
+  t.mock.timers.enable({ apis: ["setTimeout", "setInterval"] });
+  const partialPath = path.join(f.output, "incoming", "slow.crdownload");
+  const partialReady = Promise.withResolvers();
+  const transfer = f.guard.download(async () => {
+    try {
+      f.begin("slow");
+      await fs.writeFile(partialPath, "a");
+      f.progress("slow", 1, 3);
+      partialReady.resolve();
+    } catch (error) { partialReady.reject(error); throw error; }
+  }, 1);
+  transfer.catch(partialReady.reject);
+  const rejected = assert.rejects(transfer, /deadline/);
+  // The disk write and queued progress must precede the simulated deadline.
+  await partialReady.promise;
+  await Promise.resolve();
+  assert.equal(await fs.readFile(partialPath, "utf8"), "a");
+  t.mock.timers.tick(29);
+  await Promise.resolve();
+  assert.ok(!f.calls.some(call => call.method === "Browser.cancelDownload"));
+  t.mock.timers.tick(1);
+  await rejected;
   assert.ok(f.calls.some(call => call.method === "Browser.cancelDownload" && call.args.guid === "slow"));
   assert.deepEqual(await fs.readdir(path.join(f.output, "incoming")), []);
   assert.equal(f.budget.usedBytes, 1);
