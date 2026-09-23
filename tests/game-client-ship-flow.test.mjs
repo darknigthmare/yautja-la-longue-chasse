@@ -26,6 +26,9 @@ function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
     sessionAliveRef: { current: true },
+    // Adult campaign fixture has no uncertain nursery transaction.
+    nurseryWriteAttemptRef: { current: null },
+    setNurseryPersistenceError() {},
     save: { createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },

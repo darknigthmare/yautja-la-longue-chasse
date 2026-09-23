@@ -5,7 +5,7 @@ import type { SaveGame } from "./types";
 import concepts from "./preserveHumanConceptsV36.json";
 import {
   CHRONICLE_RANK_LABELS, CHRONICLE_RITES,
-  evaluateChroniclePromotion, migrateV35ClanChronicle,
+  evaluateChroniclePromotion, migrateV35ClanChronicle, getChronicleRank,
 } from "./systems/clanChronicle";
 import styles from "./ClanChroniclePanel.module.css";
 import TribeArtGallery from "./TribeArtGallery";
@@ -44,7 +44,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; onClose: () => void }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans">("journey");
   const [query, setQuery] = useState("");
-  const chronicle = useMemo(() => migrateV35ClanChronicle(save), [save]);
+  const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const results = useMemo(() => {
     const search = fold(query.trim());
     return concepts.entries.filter(entry => fold(`${entry.id} ${entry.profile} ${entry.weapon}`).includes(search));
@@ -54,24 +54,24 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
       <div><p className={styles.eyebrow}>LA LONGUE CHASSE · DOSSIER V37</p><h2 id="chronicle-title">De la nurserie aux étoiles</h2></div>
       <button type="button" onClick={onClose}>Retour</button>
     </header>
-    <p className={styles.notice}><strong>Parcours en conception, pas encore jouable.</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. « Jouer » conserve la campagne existante.</p>
+    <p className={styles.notice}><strong>{save.prologue ? "Nurserie jouable ; suite de la jeunesse en cours de construction." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
 
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>
-        <h3>Campagne existante préservée</h3>
-        <p>{save.profile.hunterName} · {CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
-        <p>Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le vaisseau, les trophées, les contrats et THE PIT restent accessibles comme auparavant.</p>
+        <h3>{save.prologue ? "Chronique de jeunesse" : "Campagne existante préservée"}</h3>
+        <p>{save.profile.hunterName} · {save.prologue ? CHRONICLE_RANK_LABELS[getChronicleRank(chronicle) ?? "youngling"] : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
+        <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le vaisseau, les trophées, les contrats et THE PIT restent accessibles comme auparavant."}</p>
       </aside>
-      <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE PRÉVUE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
+      <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
       <h3 className={styles.subheading}>Les preuves précèdent les promotions</h3>
       <ol className={styles.rites}>
         {CHRONICLE_RITES.map(rite => {
           const evaluation = evaluateChroniclePromotion(chronicle, rite.id);
           return <li key={rite.id} data-chronicle-rite={rite.id}>
-            <span className={styles.badge}>Mission à produire</span>
+            <span className={styles.badge}>{chronicle.rites.some(receipt => receipt.id === rite.id) ? "Rite enregistré" : rite.id === "nursery-recognition" ? "Duel et titre à achever" : "Mission à produire"}</span>
             <h4>{rite.grantsRankId ? CHRONICLE_RANK_LABELS[rite.grantsRankId] : "Adjutant · fonction de second de chasse"}</h4>
             <p>{rite.label}</p>
             <details><summary>Conditions du parcours narratif</summary><ul>{evaluation.missing.map(item => <li key={item.id}>{item.label}</li>)}</ul></details>

@@ -218,8 +218,7 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
     return result;
   }
   if (state.phase === "complete") return result;
-  state.tick++; state.phaseTick++;
-  const neutral = buttonIds.every(id => !input[id]);
+  const neutral = input.move === 0 && buttonIds.every(id => !input[id]);
   if (!state.inputArmed) {
     if (neutral) state.inputArmed = true;
     state.previousButtons = Object.fromEntries(buttonIds.map(id => [id, input[id]])) as unknown as NurseryButtons;
@@ -228,6 +227,11 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
   if (state.inputArmed) for (const id of buttonIds) pressed[id] = input[id] && !previous.previousButtons[id];
   const usable = state.inputArmed;
   state.previousButtons = Object.fromEntries(buttonIds.map(id => [id, input[id]])) as unknown as NurseryButtons;
+  // Readiness and focus recovery require a full release, including movement axes.
+  // Neither fighter gets a head start while the player cannot control the duel.
+  // Preserve airborne momentum and do not replay this waiting time afterwards.
+  if (state.phase === "duel" && !usable) return result;
+  state.tick++; state.phaseTick++;
 
   switch (state.phase) {
     case "loading": transition(state, "prompt", events); break;
@@ -370,6 +374,14 @@ export function normalizeNurseryCheckpoint(raw: unknown): NurseryState | null {
     if (!integer(raw.titleStartedAt, (raw.knockoutAt as number) + NURSERY_TIMING.koTicks + NURSERY_TIMING.villageRevealTicks, raw.tick)) return null;
     if (phase === "complete" && raw.tick < raw.titleStartedAt + NURSERY_TIMING.moonTitleTicks) return null;
   } else if (raw.titleStartedAt !== null) return null;
+  // Both clocks describe the same elapsed simulation. A structurally valid but
+  // inconsistent phase counter must not bypass the knockout/reveal/title time.
+  if (phase === "duel" && raw.phaseTick !== raw.tick - (raw.duelStartedAt as number)) return null;
+  if ((phase === "ko" || phase === "defeat") && raw.phaseTick !== raw.tick - (raw.knockoutAt as number)) return null;
+  if (phase === "village-reveal" && (raw.phaseTick >= NURSERY_TIMING.villageRevealTicks ||
+    raw.tick - raw.phaseTick < (raw.knockoutAt as number) + NURSERY_TIMING.koTicks)) return null;
+  if (phase === "moon-title" && raw.phaseTick !== raw.tick - (raw.titleStartedAt as number)) return null;
+  if (phase === "complete" && raw.phaseTick !== 0) return null;
   return { version: 1, readyMode: raw.readyMode, phase, tick: raw.tick, phaseTick: raw.phaseTick, readyTicks: 0,
     inputArmed: false, previousButtons: noButtons(), player, rival,
     blade: { holder: raw.blade.holder as NurseryActorId | null, x: raw.blade.x }, rivalDecisionTicks: raw.rivalDecisionTicks,

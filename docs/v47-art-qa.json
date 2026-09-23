@@ -1,0 +1,202 @@
+{
+  "version": "V47",
+  "generator": "OpenAI built-in image_gen",
+  "promptRecord": "docs/v47-imagegen-prompts.json",
+  "assets": [
+    {
+      "file": "public/game/prologue/v47/arena.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "bytes": 2546248,
+      "sha256": "d643b42f6102a1bc693797e96696e8e67b4eb9c275b84c9acad0bfc75bf9f269",
+      "alphaRange": null,
+      "fullyTransparentPixels": 0
+    },
+    {
+      "file": "public/game/prologue/v47/detached-blade.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1298935,
+      "sha256": "d986dbef21269a79e8efe615bf44eb0b56d8760f575a542434dd7736539925fb",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1352407
+    },
+    {
+      "file": "public/game/prologue/v47/red-moon.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "bytes": 1949444,
+      "sha256": "1b796d138928e243e56707cb4b4ea8bbb89e1266f513109717c581baafe9c0e1",
+      "alphaRange": null,
+      "fullyTransparentPixels": 0
+    },
+    {
+      "file": "public/game/prologue/v47/unblooded-player.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "bytes": 1688405,
+      "sha256": "c9427bd790908b1f90392dee4b1edc6a1340c345f01c4be57ef0126787f5e699",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 1125894
+    },
+    {
+      "file": "public/game/prologue/v47/village.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "bytes": 2846184,
+      "sha256": "6a5dfbd5de1f93271a0fb4b6670ab177934cd0ad606d19aa099f79bb6b9c5c60",
+      "alphaRange": null,
+      "fullyTransparentPixels": 0
+    },
+    {
+      "file": "public/game/prologue/v47/youngling-player-left.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 1190430,
+      "sha256": "6a8c93ecf5f602361ca410600c9b0a4bc068c676e6a8639d1ba7060b01350bef",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 1108671
+    },
+    {
+      "file": "public/game/prologue/v47/youngling-player-right.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 1052786,
+      "sha256": "1544d86ca88e82c035ac501fb564ca13015dce6d6ea6c14c7a6b050a725da104",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 1176838
+    },
+    {
+      "file": "public/game/prologue/v47/youngling-rival-left.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 1255628,
+      "sha256": "ebc832b7edb6a13ffb0a1ad6500ca7b71cf9b90db55db40fd0681f74c5d72a3e",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 1097435
+    },
+    {
+      "file": "public/game/prologue/v47/youngling-rival-right.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 1391510,
+      "sha256": "d8b5b55b042780d9680a09c0b57330cc23ad3cb3d3e8b19099f477a1fa906860",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 1015898
+    }
+  ],
+  "spriteDrawingsGenerated": 80,
+  "spriteDrawingsUsed": 76,
+  "clips": 40,
+  "directions": "native separate left/right atlases; no runtime mirror",
+  "pixelEdits": "none, original generated PNG bytes copied",
+  "visualReview": {
+    "schemaVersion": 1,
+    "reviewType": "model-visual-review-and-read-only-pixel-analysis",
+    "sourcePngsModified": false,
+    "automatedChecksPassed": true,
+    "atlasesReviewed": 4,
+    "sourceDrawings": 80,
+    "runtimeDistinctDrawings": 76,
+    "runtimeClips": 40,
+    "frameReferences": 80,
+    "runtimeFigureKind": "authored-youngling",
+    "nativeDirections": [
+      "left",
+      "right"
+    ],
+    "readinessCorrection": "cell 4 guard then cell 8 raised arm, last frame held; cell 5 punch not mislabeled as readiness",
+    "timing": {
+      "jab": [
+        8,
+        19
+      ],
+      "blade": [
+        12,
+        22
+      ],
+      "throw": [
+        14,
+        26
+      ],
+      "ready": [
+        20,
+        100
+      ]
+    },
+    "manualVisualFindings": [
+      "Juvenile proportions, short stature and unarmoured clothing are visible; no scaled-down adult armour rig was substituted.",
+      "Player maintains the red sash and rival maintains the gold sash in both native directions.",
+      "No obvious extra limb, missing major limb, severed body crop or floating attached weapon was observed across the four complete sheets.",
+      "Hand anchors were overlaid visually for all four sheets. Two right-facing lying-KO anchors were corrected from the face to the visible hand.",
+      "Readiness was corrected from an incorrect guard/punch pair to guard/raised arm. The raised-arm drawing is intentionally reused for blade windup.",
+      "All cells were bounded using measured transparent gaps; a uniform 4-by-5 subdivision would cut feet in several rows."
+    ],
+    "limitations": [
+      "Two drawings per clip provide a minimal functional animation set; these are not a full high-frame-count production moveset.",
+      "Some closed fists and overlapping hands hide individual fingers, so this review does not certify every digit or eliminate every possible anatomical issue.",
+      "Throws require runtime contact and timing review with the second actor; sheet inspection alone cannot validate the interaction.",
+      "The separate blade must be tested in the runtime after hand-anchor integration.",
+      "These original juvenile designs are game adaptations, not a certification of franchise reference fidelity 1:1.",
+      "No browser runtime, device controller or soundtrack validation is included in this artifact."
+    ],
+    "sourceHashes": {
+      "youngling-player-right.png": "1544d86ca88e82c035ac501fb564ca13015dce6d6ea6c14c7a6b050a725da104",
+      "youngling-player-left.png": "6a8c93ecf5f602361ca410600c9b0a4bc068c676e6a8639d1ba7060b01350bef",
+      "youngling-rival-left.png": "ebc832b7edb6a13ffb0a1ad6500ca7b71cf9b90db55db40fd0681f74c5d72a3e",
+      "youngling-rival-right.png": "d8b5b55b042780d9680a09c0b57330cc23ad3cb3d3e8b19099f477a1fa906860"
+    },
+    "framesJsonSha256": "790c7b5c68cc72a1c8542835cf3b71ae99ca56c5b77c1054485d294e651e4139"
+  },
+  "sceneContinuity": "Arena sky repaired to one red moon, consistent with village and title shot. Ancient dry hollow centipede and safe floor preserved.",
+  "limits": [
+    "Two authored drawings per prologue clip are a first playable animation pass, not the requested full commercial hunter moveset budget.",
+    "Hand anchors reviewed; actual contact and blade placement require browser verification.",
+    "Unblooded cutout is an explicitly static Homeworld exploration image, not an animation sheet."
+  ]
+}

@@ -12,13 +12,14 @@ import {
   HOMEWORLD_POINTS,
   HOMEWORLD_PROPS,
   HOMEWORLD_STREETS,
-  homeworldNpcPlate,
   homeworldTrophyDisplays,
   polygonCss,
   type HomeworldPoint,
 } from "./systems/homeworld";
 import { homeworldPropArtPlacement } from "./systems/homeworldCity";
 import styles from "./HomeworldCity.module.css";
+import HomeworldModularHunter from "./HomeworldModularHunter";
+import { homeworldNpcModules } from "./systems/homeworldCity";
 
 const WORLD_ART = "/game/ship-interior/";
 
@@ -59,13 +60,14 @@ const BUILDING_WALLS = {
 
 interface HomeworldCitySceneProps {
   selectedShipId: ShipId;
+  youthWelcome?: boolean;
   activeDoorId: string | null;
   fadedFrontPropIds: string;
   trophies: readonly TrophyRecord[];
 }
 
 /** Authored modules remain independent so doors, stations, NPCs and trophies can overlap by depth. */
-const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, activeDoorId, fadedFrontPropIds, trophies }: HomeworldCitySceneProps) {
+const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, activeDoorId, fadedFrontPropIds, trophies, youthWelcome = false }: HomeworldCitySceneProps) {
   const trophyDisplays = homeworldTrophyDisplays(trophies);
   const fadedPropIds = new Set(fadedFrontPropIds.split("|").filter(Boolean));
   return <>
@@ -175,15 +177,8 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
       >
         {point.kind === "ship" && <img className={styles.prop} src={shipProfileAssetPath(selectedShipId)} alt="" draggable={false} />}
         {hasStation && <img className={`${styles.prop} ${styles.stationProp}`} src={pointArt(point)} alt="" draggable={false} data-station-art="true" />}
-        {npc && <img
-          className={styles.wholeNpc}
-          src={homeworldNpcPlate(npc.id)}
-          alt=""
-          draggable={false}
-          data-whole-character-plate="true"
-          data-original-city-character="true"
-        />}
-        <span className={styles.pointTag}>{point.kind === "evidence" ? "◇ " : point.kind === "region" ? "↗ " : ""}{point.label}</span>
+        {npc && <HomeworldModularHunter className={styles.wholeNpc} {...homeworldNpcModules(npc.id)} />}
+        <span className={styles.pointTag}>{point.kind === "evidence" ? "◇ " : point.kind === "region" ? "↗ " : ""}{youthWelcome && point.kind === "ship" ? "Transports du clan" : point.label}</span>
         <i className={styles.pointBeacon} />
       </div>;
     })}

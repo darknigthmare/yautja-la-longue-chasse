@@ -29,6 +29,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "GlassDesertExpedition",
     "JusticePanel",
     "ClanChroniclePanel",
+    "NurseryPrologueScreen",
   ]) {
     assert.match(
       source,
@@ -50,7 +51,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
   assert.equal(source.match(/<PitCanvas/g)?.length, 1);
   assert.equal(
     source.match(/<Suspense fallback=\{<DeferredGameScreen \/>\}>/g)?.length,
-    13,
+    14,
   );
   assert.match(
     source,

@@ -46,6 +46,7 @@ test("city originals and unrepresented presets never borrow another known hunter
     assert.equal(homeworldNpcPlate(npcId), asset);
     assert.match(asset, /^\/game\/assets\/v3\/actors\/yautja\/hunter\/body\/.+\.webp$/);
     assert(!asset.includes("/film-plates/"), npcId + " must remain an original city character");
+    assert(!asset.includes("/net/"), npcId + " needs a real body, not a clothes-only plate");
     assert(existsSync("public" + asset), npcId + " has a missing modular body asset");
   }
   assert.equal(homeworldNpcPlate("unknown-city-role"), HOMEWORLD_GENERIC_HUNTER_PLATES.hunter);
@@ -137,7 +138,9 @@ test("the scene keeps stations, NPCs, doors, trophies and occlusion as separate 
   const hub = readFileSync("app/game/HomeworldHub.tsx", "utf8");
   const css = readFileSync("app/game/HomeworldCity.module.css", "utf8");
   assert.match(scene, /data-station-art="true"/);
-  assert.match(scene, /data-original-city-character="true"/);
+  assert.match(scene, /HomeworldModularHunter className=\{styles\.wholeNpc\}/);
+  const modularHunter = readFileSync("app/game/HomeworldModularHunter.tsx", "utf8");
+  for (const layer of ["body", "clothing", "loincloth", "dread"]) assert(modularHunter.includes(`data-homeworld-layer="${layer}"`), "city character is missing its " + layer + " bitmap");
   assert.match(scene, /trophyDisplays\.map/);
   assert.match(scene, /data-faded=\{faded\}/);
   assert.match(scene, /data-active=\{active\}/);

@@ -1,3 +1,4 @@
+import { createNurseryCampaign } from "./nurseryCampaign";
 import { GAME_CONTENT_VERSION } from "../buildInfo";
 import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION } from "../save";
 import type { SaveGame } from "../types";
@@ -14,7 +15,7 @@ export const CAMPAIGN_MANUAL_COUNT = 10;
 export const CAMPAIGN_AUTO_COUNT = 2;
 export const CAMPAIGN_SLOT_VERSION = 1;
 export type CampaignSlotId = typeof CAMPAIGN_SLOT_IDS[number];
-export type CampaignResumeLocation = "new-game" | "deck" | "homeworld" | "mission";
+export type CampaignResumeLocation = "new-game" | "prologue" | "deck" | "homeworld" | "mission";
 export type CampaignCheckpointId = `manual-${number}` | `auto-${number}`;
 export type CampaignSlotFailure = "storage-unavailable" | "read-failed" | "write-failed" | "quota-exceeded" | "unconfirmed-write" | "lock-unavailable" | "protected-save" | "future-version" | "invalid-slot" | "slot-occupied" | "slots-full" | "empty-slot" | "missing-checkpoint" | "save-conflict" | "owner-conflict" | "migration-required" | "recovery-required" | "invalid-archive" | "invalid-location" | "too-large";
 export interface CampaignCheckpointSummary {
@@ -54,7 +55,7 @@ const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v ===
 const bytes = (v: string) => new TextEncoder().encode(v).byteLength;
 const iso = (v: unknown): v is string => typeof v === "string" && v.length <= 128 && Number.isFinite(Date.parse(v));
 const slotIdValid = (v: unknown): v is CampaignSlotId => CAMPAIGN_SLOT_IDS.includes(v as CampaignSlotId);
-const locationValid = (v: unknown): v is CampaignResumeLocation => ["new-game", "deck", "homeworld", "mission"].includes(v as string);
+const locationValid = (v: unknown): v is CampaignResumeLocation => ["new-game", "prologue", "deck", "homeworld", "mission"].includes(v as string);
 export const campaignSlotStorageKey = (id: CampaignSlotId): string => {
   if (!slotIdValid(id)) throw new Error("Invalid campaign slot");
   return SLOT_PREFIX + id;
@@ -87,7 +88,8 @@ function parseSlot(raw: string, id: CampaignSlotId): SlotDocument {
     ids.add(c.id);
     const archive = checkArchive(JSON.stringify(c.archive));
     if (archive.campaign.createdAt !== source.ownerCreatedAt || c.hasActiveHunt !== !!archive.attachments.activeHunt ||
-      c.playTimeSeconds !== archive.campaign.profile.playTimeSeconds || (c.hasActiveHunt !== (c.resumeLocation === "mission"))) fail("owner-conflict", "Une sauvegarde ne correspond pas à sa partie.");
+      c.playTimeSeconds !== archive.campaign.profile.playTimeSeconds || (c.hasActiveHunt !== (c.resumeLocation === "mission")) ||
+      (c.resumeLocation === "prologue" && archive.campaign.prologue?.status !== "active")) fail("owner-conflict", "Une sauvegarde ne correspond pas à sa partie.");
     return { ...c, archive } as Checkpoint;
   });
   if (!ids.has(source.lastCheckpointId)) fail("invalid-slot", "La dernière sauvegarde est absente.");
@@ -214,7 +216,9 @@ function snapshotWorking(storage: ArchiveStorage): { archive: CompleteArchive; r
 }
 function checkpoint(archive: CompleteArchive, kind: "manual" | "auto", index: number, location: CampaignResumeLocation): Checkpoint {
   const hasActiveHunt = !!archive.attachments.activeHunt;
-  const resumeLocation = hasActiveHunt ? "mission" : location === "mission" ? "deck" : location;
+  const resumeLocation = archive.campaign.prologue?.status === "active" ? "prologue"
+    : archive.campaign.prologue?.status === "completed" && (location === "prologue" || location === "new-game") ? "homeworld"
+    : hasActiveHunt ? "mission" : location === "mission" || location === "prologue" ? "deck" : location;
   return { id: `${kind}-${index}`, kind, index, label: kind === "manual" ? `Sauvegarde manuelle ${index}` : `Autosauvegarde ${index}`,
     savedAt: new Date().toISOString(), hasActiveHunt, playTimeSeconds: archive.campaign.profile.playTimeSeconds, resumeLocation, archive };
 }
@@ -312,11 +316,12 @@ export async function createCampaignSlot(id: CampaignSlotId, name = "", storage:
     const owners = new Set(catalog.slots.map(s => s.ownerCreatedAt));
     let timestamp = Date.now(); while (owners.has(new Date(timestamp).toISOString())) timestamp++;
     const save = defaultSave(new Date(timestamp).toISOString());
+    save.prologue = createNurseryCampaign();
     if (name.trim()) save.profile.hunterName = name.trim();
     const archive: CompleteArchive = { format: COMPLETE_ARCHIVE_FORMAT, version: 1, contentVersion: GAME_CONTENT_VERSION,
       exportedAt: new Date().toISOString(), campaign: save,
       attachments: { activeHunt: null, shipProgression: createDefaultShipProgression(save), pit: null, pitReplay: null } };
-    const doc = initialDocument(id, checkArchive(JSON.stringify(archive)), name, "new-game");
+    const doc = initialDocument(id, checkArchive(JSON.stringify(archive)), name, "prologue");
     persistSlot(data, doc, null);
     return { slotId: id, checkpoint: doc.checkpoints[0] };
   });

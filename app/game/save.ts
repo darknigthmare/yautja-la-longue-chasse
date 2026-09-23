@@ -1,3 +1,4 @@
+import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
@@ -57,7 +58,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 7;
+export const SAVE_VERSION = 8;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -267,6 +268,7 @@ function initialMissionProgress(): Record<MissionId, MissionProgress> {
 export function defaultSave(now = new Date().toISOString()): SaveGame {
   return {
     version: SAVE_VERSION,
+    prologue: null,
     createdAt: now,
     updatedAt: now,
     profile: {
@@ -510,6 +512,7 @@ const SAVE_MIGRATIONS: Readonly<
     homeworld: defaultHomeworldProgress(),
     justice: defaultJusticeProgress(),
   }),
+  7: (input) => ({ ...input, version: 8, prologue: null }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -1220,6 +1223,7 @@ export function normalizeSave(value: unknown): SaveGame {
     storyCompleted,
     homeworld: normalizeHomeworldProgress(source.homeworld),
     justice: normalizeJusticeProgress(source.justice),
+    prologue: normalizeNurseryCampaign(source.prologue),
   };
 }
 
@@ -1356,6 +1360,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.homeworld) && (Number(value.homeworld.version) > 1 ||
       (isRecord(value.homeworld.inquiry) && Number(value.homeworld.inquiry.version) > 1))) {
     return { save: null, failure: "future-version" };
+  }
+  if (isRecord(value.prologue) && (Number(value.prologue.version) > 1 ||
+      (isRecord(value.prologue.chronicle) && Number(value.prologue.chronicle.version) > 1) ||
+      (isRecord(value.prologue.checkpoint) && Number(value.prologue.checkpoint.version) > 1))) {
+    return { save: null, failure: "future-version" };
+  }
+  if (value.prologue !== undefined && value.prologue !== null && !normalizeNurseryCampaign(value.prologue)) {
+    return { save: null, failure: "invalid-save" };
   }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.

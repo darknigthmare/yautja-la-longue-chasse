@@ -1,0 +1,144 @@
+{
+  "version": "V47",
+  "checkedAt": "2026-09-23T13:15:34.785917+00:00",
+  "build": {
+    "passed": true,
+    "log": "work/v47/build-final.log"
+  },
+  "typecheck": {
+    "passed": true
+  },
+  "lint": {
+    "passed": true,
+    "errors": 0,
+    "preExistingWarnings": 1
+  },
+  "tests": {
+    "passed": 1501,
+    "failed": 0,
+    "skipped": 0,
+    "log": "work/v47/tests-final.tap"
+  },
+  "browser": [
+    {
+      "profile": "duel-controls",
+      "checks": 7,
+      "passed": true,
+      "report": "work/v47/final-scene-browser-qa/report.json",
+      "names": [
+        "new-game-starts-nursery",
+        "ready-hold-release",
+        "pause-input-neutral",
+        "complete-unmodified-duel",
+        "mobile-touch-and-accessibility",
+        "standard-gamepad",
+        "completion-storage-fault"
+      ]
+    },
+    {
+      "profile": "novice-accessibility",
+      "checks": 14,
+      "passed": true,
+      "report": "work/v47/final-accessibility-browser-qa/report.json",
+      "names": [
+        "missing-png-blocks-scene-without-progress",
+        "missing-png-offers-retry-and-exit",
+        "retry-restores-keyboard-start-focus",
+        "new-player-ready-instructions-and-no-combat-hud",
+        "pause-explains-all-intro-actions",
+        "pause-dialog-keyboard-trap-and-frozen-clock",
+        "press-ready-option-persists-without-progress",
+        "escape-resumes-with-canvas-focus",
+        "leaving-canvas-with-tab-pauses-duel",
+        "window-blur-freezes-with-visible-pause",
+        "landscape-prompt-legible-with-reduced-motion",
+        "landscape-pause-actions-reachable",
+        "pause-text-enlargement-remains-scrollable",
+        "pause-large-text-does-not-overflow-controls"
+      ]
+    },
+    {
+      "profile": "save-reliability",
+      "checks": 4,
+      "passed": true,
+      "report": "work/v47/final-reliability-browser-qa/report.json",
+      "names": [
+        "pause-save-continue",
+        "five-slots-ten-manual-two-auto-and-isolation",
+        "quota-refuses-resume-and-exit-then-recovers",
+        "legacy-v7-migration-keeps-deck-and-pit"
+      ]
+    },
+    {
+      "profile": "progression-art",
+      "checks": 6,
+      "passed": true,
+      "report": "work/v47/final-welcome-browser-qa/report.json",
+      "names": [
+        "real-prologue-handoff",
+        "modular-npcs-and-youth-journal",
+        "no-personal-ship-before-blooded",
+        "mentor-cannot-skip-chief",
+        "chief-then-mentor-durable",
+        "welcome-reload-and-mobile"
+      ]
+    },
+    {
+      "profile": "pit-roster",
+      "checks": 8,
+      "passed": true,
+      "report": "work/v47/final-pit-roster-qa/report.json",
+      "names": [
+        "all-roster-pages",
+        "masked-ahab-lab",
+        "masked-ahab-lab",
+        "lab-appearance-isolation",
+        "masked-ahab-live-animation",
+        "masked-ahab-live-animation",
+        "ahab-masked-left-static",
+        "ahab-unmasked-right-static"
+      ]
+    },
+    {
+      "profile": "pit-camera",
+      "checks": 4,
+      "passed": true,
+      "report": "work/v47/final-pit-camera-qa/report.json",
+      "names": [
+        "single-retreat-and-approach",
+        "jump-framing",
+        "explicit-fixed-camera-toggle",
+        "system-reduced-motion"
+      ]
+    },
+    {
+      "profile": "next-chapter-asset-recovery",
+      "checks": 2,
+      "passed": true,
+      "report": "work/v47/final-handoff-qa/report.json"
+    }
+  ],
+  "browserCheckTotal": 45,
+  "art": {
+    "newOpenAIPngs": 9,
+    "sourceAtlasCells": 80,
+    "usedDrawings": 76,
+    "shortClips": 40,
+    "sourcePixelsUnmodified": true
+  },
+  "limits": [
+    "Simulated QA profiles, not four external human testers.",
+    "Virtual standard gamepad; no physical hardware certification.",
+    "Nursery and initial clan welcome delivered; full dojo, equipment acquisition, barracks and next-day outing remain unfinished.",
+    "Adult PIT animation and full arena-production backlogs remain unfinished."
+  ],
+  "publication": "Public checks are performed after the Git production deployment; see work/v47/publication-verified.json.",
+  "postSuiteTextOnlyChange": {
+    "description": "Unblooded port and forge descriptions, ship label and ship dialog now refer to clan transports; adult copy unchanged.",
+    "typecheck": true,
+    "targetedLint": true,
+    "homeworldAndLazyLoadingTests": 19,
+    "rebuilt": true,
+    "welcomeReplay": "work/v47/final-welcome-browser-qa/report.json"
+  }
+}

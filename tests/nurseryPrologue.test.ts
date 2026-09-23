@@ -254,7 +254,7 @@ test("a full unmodified CPU duel can be won through abstract movement and timed 
   for (let frame = 0; frame < 2000 && state.phase !== "ko" && state.phase !== "defeat"; frame++) {
     const distance = Math.abs(state.rival.x - state.player.x);
     const input: NurseryActions = state.phase === "prompt" ? { confirm: frame % 2 === 0 } :
-      state.phase === "ready" ? { ready: frame % 2 === 0 } : state.phase === "duel" ?
+      state.phase === "ready" ? { ready: frame % 2 === 0 } : state.phase === "duel" && state.inputArmed ?
         { move: distance > 44 ? state.rival.x > state.player.x ? 1 : -1 : 0, light: frame % 30 === 0 } : {};
     state = tick(state, input);
   }
@@ -293,4 +293,91 @@ test("frame adapter caps visible catch-up, discards long stalls and emits comple
   const restored = api.normalizeNurseryCheckpoint(result.state);
   assert.ok(restored);
   assert.equal(api.stepNurseryPrologue(restored, {}, ready).completion, null);
+});
+
+
+test("the CPU cannot attack a player still releasing readiness or paused controls", () => {
+  const starting = tick(atReady("press"), { ready: true });
+  const waiting = advance(starting, 240, { ready: true });
+  assert.equal(waiting.phase, "duel");
+  assert.deepEqual(waiting.player, starting.player);
+  assert.deepEqual(waiting.rival, starting.rival);
+  assert.equal(waiting.rivalDecisionTicks, starting.rivalDecisionTicks);
+  assert.equal(waiting.tick, starting.tick);
+  assert.equal(waiting.phaseTick, starting.phaseTick);
+  const released = tick(waiting);
+  assert.equal(released.inputArmed, true);
+  assert.ok(released.rival.x < starting.rival.x);
+
+  const active = advance(tick(contact(), { throw: true }), 15);
+  const paused = tick(active, {}, { ...env, paused: true });
+  const held = advance(paused, 120, { light: true });
+  assert.deepEqual(held.player, active.player);
+  assert.deepEqual(held.rival, active.rival);
+  assert.equal(held.tick, active.tick);
+  assert.ok(tick(held).rival.y < active.rival.y);
+});
+
+test("a held movement axis cannot rearm the duel after pause or checkpoint restore", () => {
+  const active = tick(duel(), { move: 1 });
+  for (const blocked of [tick(active, {}, { ...env, paused: true }), api.normalizeNurseryCheckpoint(active)!]) {
+    const held = advance(blocked, 120, { move: 1 });
+    assert.equal(held.inputArmed, false);
+    assert.deepEqual(held.player, blocked.player);
+    assert.deepEqual(held.rival, blocked.rival);
+    assert.equal(held.tick, blocked.tick);
+    const released = tick(held);
+    assert.equal(released.inputArmed, true);
+    const moved = tick(released, { move: 1 });
+    assert.ok(moved.player.x > released.player.x);
+  }
+});
+
+test("checkpoint phase clocks cannot shorten the knockout, reveal or title", () => {
+  const fighting = contact();
+  const knockedOut = victory();
+  const village = advance(knockedOut, api.NURSERY_TIMING.koTicks);
+  const title = advance(village, api.NURSERY_TIMING.villageRevealTicks);
+  const complete = advance(title, api.NURSERY_TIMING.moonTitleTicks, {}, { ...env, nextChapterReady: true });
+  assert.equal(village.phase, "village-reveal");
+  assert.equal(title.phase, "moon-title");
+  assert.equal(complete.phase, "complete");
+  for (const state of [fighting, knockedOut, village, title, complete]) {
+    assert.ok(api.normalizeNurseryCheckpoint(state));
+    assert.equal(api.normalizeNurseryCheckpoint({ ...state, phaseTick: state.phaseTick + 1 }), null,
+      `inconsistent ${state.phase} elapsed time must be rejected`);
+  }
+  assert.equal(api.normalizeNurseryCheckpoint({ ...title, phaseTick: api.NURSERY_TIMING.moonTitleTicks }), null);
+  assert.equal(api.stepNurseryPrologue(title, {}, { ...env, nextChapterReady: true }).completion, null);
+});
+
+
+test("every live phase and defeat retry produces a structurally restorable checkpoint", () => {
+  const visited = new Set<string>();
+  for (const strategy of ["wait", "fight"] as const) {
+    let state = api.createNurseryPrologue({ readyMode: "press" });
+    let retried = false;
+    for (let frame = 0; frame < 2400 && state.phase !== "complete"; frame++) {
+      const distance = Math.abs(state.rival.x - state.player.x);
+      const input: NurseryActions = !state.inputArmed ? {} :
+        state.phase === "prompt" ? { confirm: frame % 2 === 0 } :
+        state.phase === "ready" ? { ready: frame % 2 === 0 } :
+        state.phase === "defeat" && !retried ? { retry: true } :
+        state.phase === "duel" && strategy === "fight" ? {
+          move: distance > 44 ? state.rival.x > state.player.x ? 1 : -1 : 0,
+          light: frame % 30 === 0,
+        } : {};
+      const wasDefeated = state.phase === "defeat";
+      state = tick(state, input, { ...env, nextChapterReady: true });
+      if (wasDefeated && state.phase === "ready") retried = true;
+      visited.add(state.phase);
+      const restored = api.normalizeNurseryCheckpoint(JSON.parse(JSON.stringify(state)));
+      assert.ok(restored, `live ${state.phase} checkpoint at tick ${state.tick} must restore`);
+      assert.deepEqual(restored.player, state.player);
+      assert.deepEqual(restored.rival, state.rival);
+    }
+  }
+  for (const phase of ["prompt", "arrival", "ready", "duel", "defeat", "ko", "village-reveal", "moon-title", "complete"]) {
+    assert.ok(visited.has(phase), `scenario must exercise ${phase}`);
+  }
 });

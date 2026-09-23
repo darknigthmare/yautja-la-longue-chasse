@@ -7,13 +7,22 @@ import { after, test } from "node:test";
 import { build } from "vite";
 
 const output = await mkdtemp(join(tmpdir(), "yautja-homeworld-save-"));
-after(() => rm(output, { recursive: true, force: true }));
+after(() => rm(output, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 }));
 await build({ configFile: false, logLevel: "silent", publicDir: false, build: {
   outDir: output, ssr: resolve("app/game/save.ts"),
   rollupOptions: { output: { entryFileNames: "save.mjs" } },
 }});
 const { defaultSave, normalizeSave, writeSaveWithStatus, loadSave, SAVE_VERSION } =
   await import(pathToFileURL(join(output, "save.mjs")).href);
+
+// Finish both bundles before registering tests so cleanup cannot overlap the second build.
+// Justice survives the same campaign serialization and never consumes equipment.
+const justiceOutput = await build({ configFile: false, logLevel: "silent", publicDir: false, build: {
+  outDir: output, emptyOutDir: false, ssr: resolve("app/game/systems/justice.ts"),
+  rollupOptions: { output: { entryFileNames: "justice.mjs" } },
+}});
+void justiceOutput;
+const { applyJusticeAction } = await import(pathToFileURL(join(output, "justice.mjs")).href);
 
 const completed = {
   version: 1, visitedDistrictIds: ["port", "memory", "undercity", "citadel"],
@@ -84,13 +93,6 @@ test("a newer campaign writer wins over a stale city choice", () => {
   assert.equal(loadSave(storage, "city").homeworld.audienceOutcome, null);
 });
 
-// Justice survives the same campaign serialization and never consumes equipment.
-const justiceOutput = await build({ configFile: false, logLevel: "silent", publicDir: false, build: {
-  outDir: output, emptyOutDir: false, ssr: resolve("app/game/systems/justice.ts"),
-  rollupOptions: { output: { entryFileNames: "justice.mjs" } },
-}});
-void justiceOutput;
-const { applyJusticeAction } = await import(pathToFileURL(join(output, "justice.mjs")).href);
 test("mandates survive save reload and a lawful release preserves the inventory", () => {
   const storage = memoryStorage();
   let save = defaultSave();

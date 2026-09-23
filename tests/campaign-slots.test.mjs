@@ -83,7 +83,7 @@ test("switching parties first captures current progress, restores full attachmen
   const s = await migrated(), created = await p.createCampaignSlot(2, "Deuxième", s); assert.equal(created.ok, true);
   advance(s, 999);
   const switched = await p.activateCampaignCheckpoint(2, "auto-1", { expectedRevision: revision(s, 2) }, s);
-  assert.equal(switched.ok, true, switched.message); assert.equal(switched.checkpoint.resumeLocation, "new-game");
+  assert.equal(switched.ok, true, switched.message); assert.equal(switched.checkpoint.resumeLocation, "prologue");
   const secondOwner = switched.save.createdAt; assert.notEqual(secondOwner, owner); assert.equal(catalog(s).activeSlotId, 2);
   assert.equal(JSON.parse(s.getItem(p.SHIP_PROGRESSION_STORAGE_KEY)).ownerSaveCreatedAt, secondOwner);
   assert.equal(doc(s).checkpoints.find(c => c.id === doc(s).lastCheckpointId).playTimeSeconds, 999);
@@ -218,14 +218,14 @@ test("corrupt legacy primary migrates from valid backup without changing any ori
 });
 
 
-test("switching away before personalization preserves new-game until an explicit route completion", async () => {
+test("switching away from an unfinished nursery preserves prologue until a real completion", async () => {
   const s = store(); await p.createCampaignSlot(1, "A", s); await p.activateCampaignCheckpoint(1, "auto-1", { expectedRevision: 1 }, s);
   await p.createCampaignSlot(2, "B", s); await p.activateCampaignCheckpoint(2, "auto-1", { expectedRevision: 1 }, s);
-  const last = doc(s).checkpoints.find(c => c.id === doc(s).lastCheckpointId); assert.equal(last.resumeLocation, "new-game");
+  const last = doc(s).checkpoints.find(c => c.id === doc(s).lastCheckpointId); assert.equal(last.resumeLocation, "prologue");
   const resumed = await p.activateCampaignCheckpoint(1, last.id, { expectedRevision: revision(s) }, s);
-  assert.equal(resumed.ok, true); assert.equal(resumed.checkpoint.resumeLocation, "new-game");
+  assert.equal(resumed.ok, true); assert.equal(resumed.checkpoint.resumeLocation, "prologue");
   const explicit = await p.saveCampaignCheckpoint(1, { kind: "auto", expectedRevision: revision(s), location: "deck" }, s);
-  assert.equal(explicit.ok, true); assert.equal(explicit.checkpoint.resumeLocation, "deck");
+  assert.equal(explicit.ok, true); assert.equal(explicit.checkpoint.resumeLocation, "prologue", "route hints cannot bypass an unfinished nursery");
 });
 
 

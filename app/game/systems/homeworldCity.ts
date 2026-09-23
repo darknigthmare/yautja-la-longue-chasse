@@ -6,7 +6,7 @@
  * and character plates are independent so scenery can overlap by depth.
  */
 
-import type { HunterPresetId, TrophyRecord } from "../types";
+import type { HunterPresetId, HunterBodyMorphId, DreadStyleId, TrophyRecord } from "../types";
 import { trophyWallVisualForDefinitionId } from "../trophyVisualRegistry";
 import { SHIP_LEVEL_ART } from "../shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "../shipInteriorV22";
@@ -235,24 +235,31 @@ const GENERIC_BODY_ROOT = "/game/assets/v3/actors/yautja/hunter/body/";
 
 /** Original city inhabitants use neutral modular bodies, never another named hunter's plate. */
 export const HOMEWORLD_NPC_PLATES: Readonly<Record<string, string>> = {
-  "dock-officer": GENERIC_BODY_ROOT + "classic/net/full.webp",
-  "market-artisan": GENERIC_BODY_ROOT + "huntress/net/full.webp",
+  "dock-officer": GENERIC_BODY_ROOT + "classic/full.webp",
+  "market-artisan": GENERIC_BODY_ROOT + "huntress/full.webp",
   "forge-artisan": GENERIC_BODY_ROOT + "huntress/full.webp",
-  "undercity-witness": GENERIC_BODY_ROOT + "young/net/full.webp",
-  "trophy-herald": GENERIC_BODY_ROOT + "elder/net/full.webp",
+  "undercity-witness": GENERIC_BODY_ROOT + "young/full.webp",
+  "trophy-herald": GENERIC_BODY_ROOT + "elder/full.webp",
   "terrace-instructor": GENERIC_BODY_ROOT + "classic/full.webp",
   "clan-healer": GENERIC_BODY_ROOT + "huntress/full.webp",
-  "enforcer-captain": GENERIC_BODY_ROOT + "super/net/full.webp",
+  "enforcer-captain": GENERIC_BODY_ROOT + "super/full.webp",
   "memory-keeper": GENERIC_BODY_ROOT + "elder/full.webp",
-  "arena-steward": GENERIC_BODY_ROOT + "classic/net/full.webp",
-  "rite-keeper": GENERIC_BODY_ROOT + "huntress/net/full.webp",
-  "hunt-king": GENERIC_BODY_ROOT + "elder/net/full.webp",
+  "arena-steward": GENERIC_BODY_ROOT + "classic/full.webp",
+  "rite-keeper": GENERIC_BODY_ROOT + "huntress/full.webp",
+  "hunt-king": GENERIC_BODY_ROOT + "elder/full.webp",
 } as const;
 
 export const HOMEWORLD_GENERIC_HUNTER_PLATES = {
-  hunter: GENERIC_BODY_ROOT + "young/net/full.webp",
-  huntress: GENERIC_BODY_ROOT + "huntress/net/full.webp",
+  hunter: GENERIC_BODY_ROOT + "young/full.webp",
+  huntress: GENERIC_BODY_ROOT + "huntress/full.webp",
 } as const;
+
+/** Existing V3 clothing is a transparent overlay, never a substitute for a body. */
+export function homeworldNpcModules(npcId: string): { morphId: HunterBodyMorphId; dreadStyleId: DreadStyleId } {
+  const body = HOMEWORLD_NPC_PLATES[npcId] ?? HOMEWORLD_GENERIC_HUNTER_PLATES.hunter;
+  const morphId = body.slice(GENERIC_BODY_ROOT.length).split("/")[0] as HunterBodyMorphId;
+  return { morphId, dreadStyleId: morphId === "elder" ? "elder" : morphId === "huntress" ? "huntress" : morphId === "super" ? "veteran" : "classic" };
+}
 
 const FILM_PLATE_PRESETS = new Set<HunterPresetId>([
   "jungle-hunter", "city-hunter", "greyback", "boar", "shaman", "lost-borg",

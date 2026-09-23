@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4174",
+  "at": "2026-09-23T13:04:48.821Z",
+  "checks": [
+    {
+      "name": "new-game-starts-nursery",
+      "adultIdentityAbsent": true,
+      "allArtDecoded": true,
+      "noHealthHud": true
+    },
+    {
+      "name": "ready-hold-release",
+      "interruptedChargeResets": true,
+      "requiresTwoSeconds": true,
+      "cpuWaitsForRelease": true
+    },
+    {
+      "name": "pause-input-neutral",
+      "actorsAndClockFrozen": true,
+      "heldKeyboardCannotAdvanceOrGiveCpuHeadStart": true
+    },
+    {
+      "name": "complete-unmodified-duel",
+      "realKeyboard": true,
+      "stateInjection": false,
+      "iterations": 176,
+      "nonlethalKo": true,
+      "villageThenMoonThenTitle": true
+    },
+    {
+      "name": "mobile-touch-and-accessibility",
+      "viewport": 390,
+      "coarsePointer": true,
+      "pressReady": true,
+      "realTouchMovement": true,
+      "realTouchPickup": true,
+      "targets44px": true,
+      "reducedMotion": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "standard-gamepad",
+      "virtualHardwareOnly": true,
+      "confirmAndHoldReady": true,
+      "stickMoves": true,
+      "heldAxisBlocksResume": true,
+      "unplugPauses": true
+    },
+    {
+      "name": "completion-storage-fault",
+      "genuineWonCheckpoint": true,
+      "noFalseCompletion": true,
+      "terminalBlurDoesNotTrapRetry": true,
+      "recoveryWithoutReplayingDuel": true
+    }
+  ],
+  "errors": [],
+  "failures": []
+}

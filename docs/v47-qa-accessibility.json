@@ -1,0 +1,193 @@
+{
+  "passed": true,
+  "base": "http://127.0.0.1:4174",
+  "at": "2026-09-23T13:04:02.057Z",
+  "profile": "Simulated novice and keyboard/accessibility QA; real compiled app, no physical-device certification",
+  "checks": [
+    {
+      "name": "missing-png-blocks-scene-without-progress",
+      "passed": true,
+      "details": {
+        "blocked": {
+          "phase": "loading",
+          "tick": 0,
+          "paused": "false",
+          "assets": "false",
+          "positions": "326.00,634.00"
+        },
+        "afterBlocked": {
+          "phase": "loading",
+          "tick": 0,
+          "paused": "false",
+          "assets": "false",
+          "positions": "326.00,634.00"
+        },
+        "status": "active",
+        "injectedFailures": 1
+      }
+    },
+    {
+      "name": "missing-png-offers-retry-and-exit",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "retry-restores-keyboard-start-focus",
+      "passed": true,
+      "details": {
+        "focusAfterRetry": {
+          "tag": "CANVAS",
+          "label": "Duel d’enfance de la nurserie, sans barre de vie. Commandes disponibles dans Pause et commandes.",
+          "text": ""
+        },
+        "phaseAfterRetryKey": "arrival"
+      }
+    },
+    {
+      "name": "new-player-ready-instructions-and-no-combat-hud",
+      "passed": true,
+      "details": {
+        "visibleReadyHint": true,
+        "noHealthOrXpMeter": true
+      }
+    },
+    {
+      "name": "pause-explains-all-intro-actions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "pause-dialog-keyboard-trap-and-frozen-clock",
+      "passed": true,
+      "details": {
+        "wrappedBack": true,
+        "wrappedForward": true
+      }
+    },
+    {
+      "name": "press-ready-option-persists-without-progress",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "escape-resumes-with-canvas-focus",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "leaving-canvas-with-tab-pauses-duel",
+      "passed": true,
+      "details": {
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "text": "Reprendre le prologue"
+        },
+        "before": {
+          "phase": "duel",
+          "tick": 139,
+          "paused": "true",
+          "assets": "true",
+          "positions": "326.00,625.75"
+        },
+        "after": {
+          "phase": "duel",
+          "tick": 139,
+          "paused": "true",
+          "assets": "true",
+          "positions": "326.00,625.75"
+        }
+      }
+    },
+    {
+      "name": "window-blur-freezes-with-visible-pause",
+      "passed": true,
+      "details": {
+        "blurred": {
+          "phase": "duel",
+          "tick": 139,
+          "paused": "true",
+          "assets": "true",
+          "positions": "326.00,625.75"
+        },
+        "after": {
+          "phase": "duel",
+          "tick": 139,
+          "paused": "true",
+          "assets": "true",
+          "positions": "326.00,625.75"
+        },
+        "focusInside": true
+      }
+    },
+    {
+      "name": "landscape-prompt-legible-with-reduced-motion",
+      "passed": true,
+      "details": {
+        "viewport": "640x280"
+      }
+    },
+    {
+      "name": "landscape-pause-actions-reachable",
+      "passed": true,
+      "details": {
+        "layout": {
+          "top": 64,
+          "bottom": 310,
+          "height": 246,
+          "viewport": 280,
+          "scrollHeight": 422,
+          "clientHeight": 244,
+          "overflowY": "auto"
+        },
+        "resumeReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "name": "pause-text-enlargement-remains-scrollable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "pause-large-text-does-not-overflow-controls",
+      "passed": true,
+      "details": [
+        {
+          "text": "Prêt par une pression, sans maintien",
+          "font": "32px",
+          "height": 134.390625,
+          "clientHeight": 134,
+          "scrollHeight": 134,
+          "clientWidth": 240,
+          "scrollWidth": 240
+        },
+        {
+          "text": "Reprendre le prologue",
+          "font": "32px",
+          "height": 101.1875,
+          "clientHeight": 99,
+          "scrollHeight": 99,
+          "clientWidth": 238,
+          "scrollWidth": 238
+        },
+        {
+          "text": "Enregistrer et revenir au menu",
+          "font": "32px",
+          "height": 142.78125,
+          "clientHeight": 141,
+          "scrollHeight": 141,
+          "clientWidth": 238,
+          "scrollWidth": 238
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "unexpectedHttpFailures": [],
+  "expectedAssetFailures": [
+    {
+      "url": "http://127.0.0.1:4174/game/prologue/v47/youngling-player-right.png",
+      "status": 404
+    }
+  ]
+}

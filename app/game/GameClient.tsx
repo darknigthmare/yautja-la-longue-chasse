@@ -11,6 +11,9 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
+import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
+import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
 import campaignMenuStyles from "./CampaignMainMenu.module.css";
 import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
 import { CampaignSavePanel } from "./CampaignMainMenu";
@@ -145,6 +148,7 @@ import {
 } from "./data";
 import {
   applyMissionResult,
+  SAVE_STORAGE_KEY,
   defaultSave,
   loadSaveWithStatus,
   exportSave,
@@ -228,6 +232,7 @@ const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition")
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
+const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
 const PitCanvas = React.lazy(() => import("./PitCanvas"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
@@ -246,6 +251,7 @@ const ControlBindingsPanel = React.lazy(
 );
 
 type Screen =
+  | "prologue"
   | "title"
   | "clan-chronicle"
   | "ship"
@@ -1046,6 +1052,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
   const [hydrated, setHydrated] = useState(false);
+  const [nurseryPersistenceError, setNurseryPersistenceError] = useState<string | null>(null);
+  const nurseryWriteAttemptRef = useRef<SaveWriteResult | null>(null);
+  const nurseryPersistenceHealthyRef = useRef(true);
+  const [nurseryNextChapterReady, setNurseryNextChapterReady] = useState(false);
+  const [nurseryChapterError, setNurseryChapterError] = useState<string | null>(null);
+  const [nurseryChapterLoadAttempt, setNurseryChapterLoadAttempt] = useState(0);
   const sessionAliveRef = useRef(true);
   const startupResumeRef = useRef(false);
   const [campaignCatalog, setCampaignCatalog] = useState<CampaignSlotCatalog | null>(null);
@@ -1163,6 +1175,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       }
       saveRef.current = loadedSave;
       setSave(loadedSave);
+      if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
+      else if (loadedSave.prologue?.status === "completed" && entry.location === "prologue") { setScreen("homeworld"); setHubLocation("homeworld"); }
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
       if (!loaded.loaded && loaded.failure) {
@@ -1220,7 +1234,63 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       audio.dispose();
       audioRef.current = null;
     };
-  }, [entry.ownerCreatedAt]);
+  }, [entry.location, entry.ownerCreatedAt]);
+
+  useEffect(() => {
+    if (!hydrated || screen !== "prologue") return;
+    let cancelled = false, settled = false;
+    const cancelLoads = new Set<() => void>();
+    const fail = () => {
+      if (cancelled || settled) return;
+      settled = true; window.clearTimeout(deadline);
+      for (const cancel of cancelLoads) cancel();
+      setNurseryNextChapterReady(false);
+      setNurseryChapterError("La cité n’est pas encore chargée. Le titre attendra sa disponibilité sans perdre le duel.");
+    };
+    // Bound imports, downloads and decoding together: a stalled resource remains retryable.
+    const deadline = window.setTimeout(fail, 20_000);
+    // The title cannot hand off to a missing chapter or unreadable city art.
+    void Promise.all([import("./HomeworldHub"), import("./systems/homeworld")]).then(async ([, world]) => {
+      if (cancelled || settled) return;
+      const sources = [...new Set([
+        "/game/prologue/v47/unblooded-player.png",
+        ...world.HOMEWORLD_PROPS.map(prop => prop.asset),
+        ...world.HOMEWORLD_NPCS.flatMap(npc => {
+          const body = world.homeworldNpcPlate(npc.id);
+          const morph = body.split("/body/")[1].split("/")[0];
+          const dread = morph === "elder" ? "elder" : morph === "huntress" ? "huntress" : morph === "super" ? "veteran" : "classic";
+          return [body, body.replace("/full.webp", "/net/full.webp"), `/game/assets/v3/actors/yautja/hunter/dreads/registered/${dread}.webp`];
+        }),
+        "/game/ship-interior/v21/wall-sanctum.webp", "/game/ship-interior/v20/corridor-wall.webp",
+        "/game/ship-interior/v21/wall-machinery.webp", "/game/ship-interior/v21/wall-observatory.webp",
+      ])];
+      await Promise.all(sources.map(src => new Promise<void>((resolve, reject) => {
+        const art = new Image();
+        let imageSettled = false;
+        const finish = (error?: Error) => {
+          if (imageSettled) return;
+          imageSettled = true; art.onload = null; art.onerror = null; cancelLoads.delete(cancel);
+          if (error) reject(error); else resolve();
+        };
+        const cancel = () => { finish(new Error("City preload cancelled")); art.removeAttribute("src"); };
+        cancelLoads.add(cancel);
+        art.onload = () => {
+          void art.decode().then(() => {
+            finish(art.naturalWidth > 0 && art.naturalHeight > 0 ? undefined : new Error(src));
+          }).catch(() => finish(new Error(src)));
+        };
+        art.onerror = () => finish(new Error(src)); art.src = src;
+      })));
+      if (!cancelled && !settled) {
+        settled = true; window.clearTimeout(deadline);
+        setNurseryChapterError(null); setNurseryNextChapterReady(true);
+      }
+    }).catch(fail);
+    return () => {
+      cancelled = true; settled = true; window.clearTimeout(deadline);
+      for (const cancel of cancelLoads) cancel();
+    };
+  }, [hydrated, nurseryChapterLoadAttempt, screen]);
 
   useEffect(() => {
     const archiveChanged = (event: StorageEvent) => {
@@ -1255,7 +1325,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ? selectedMission.biome
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
-        : screen === "title"
+        : screen === "title" || screen === "prologue"
           ? null
           : "ship";
     if (ambience) {
@@ -1266,7 +1336,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, selectedMission]);
 
   useEffect(() => {
-    const context: GameMusicContext | null = settingsOpen ? null
+    const context: GameMusicContext | null = settingsOpen || screen === "prologue" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
@@ -1450,6 +1520,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const persist = useCallback((next: SaveGame) => {
     if (!sessionAliveRef.current) return saveRef.current;
+    if (nurseryWriteAttemptRef.current) {
+      setNurseryPersistenceError("La précédente écriture du prologue attend sa vérification. Reprenez son enregistrement avant de changer les réglages.");
+      return saveRef.current;
+    }
     if (next.createdAt === saveRef.current.createdAt) {
       next = { ...next, exploration: mergeExplorationProgress(saveRef.current.exploration, next.exploration) };
     }
@@ -1485,6 +1559,62 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
     return result.save;
   }, [reconcileHuntWrite]);
+
+  const reconcileNurseryAttempt = useCallback((): boolean => {
+    const attempt = nurseryWriteAttemptRef.current;
+    if (!attempt) return true;
+    const result = reconcileSaveWrite(attempt, entry.ownerCreatedAt);
+    if (result.status === "refused") {
+      nurseryPersistenceHealthyRef.current = false;
+      setSaveFailure(result.failure); setNurseryPersistenceError("Sauvegarde non confirmée ou remplacée par une autre session. Le prologue reste suspendu ; vos archives sont préservées."); return false;
+    }
+    nurseryWriteAttemptRef.current = null;
+    if (result.status === "confirmed") { saveRef.current = result.save; setSave(result.save); }
+    return true;
+  }, [entry.ownerCreatedAt]);
+  const persistNursery = useCallback((next: SaveGame): boolean => {
+    if (!sessionAliveRef.current || next.createdAt !== entry.ownerCreatedAt) return false;
+    if (JSON.stringify(next.prologue) === JSON.stringify(saveRef.current.prologue)) {
+      // A paused/no-op checkpoint still needs the same durable owner and bytes.
+      // Parse without observing: reading another tab must not authorize overwriting it.
+      try {
+        const raw = window.localStorage.getItem(SAVE_STORAGE_KEY);
+        const current = raw === null ? null : parseSaveImport(raw).save;
+        if (!current || JSON.stringify(current) !== JSON.stringify(saveRef.current)) {
+          nurseryPersistenceHealthyRef.current = false; setSaveFailure("save-conflict");
+          setNurseryPersistenceError("La sauvegarde a changé dans une autre session. Aucune reprise ni écriture ne remplace ces nouvelles données."); return false;
+        }
+      } catch {
+        nurseryPersistenceHealthyRef.current = false; setSaveFailure("read-failed");
+        setNurseryPersistenceError("Le checkpoint ne peut pas être relu. Réessayez sa sauvegarde avant de quitter."); return false;
+      }
+      nurseryPersistenceHealthyRef.current = true; setNurseryPersistenceError(null); setSaveFailure(null); return true;
+    }
+    const written = writeSaveWithStatus(next);
+    if (!written.persisted) {
+      nurseryPersistenceHealthyRef.current = false;
+      if (written.failure === "write-failed") nurseryWriteAttemptRef.current = written;
+      setSaveFailure(written.failure); setNurseryPersistenceError("Sauvegarde du prologue refusée. Libérez de l’espace ou rétablissez le stockage, puis réessayez. Aucun chapitre n’a été accordé."); return false;
+    }
+    nurseryPersistenceHealthyRef.current = true;
+    saveRef.current = written.save; setSave(written.save); setSaveFailure(null); setNurseryPersistenceError(null);
+    return true;
+  }, [entry.ownerCreatedAt]);
+  const checkpointNursery = useCallback((state: NurseryState): boolean => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    // The terminal snapshot belongs exclusively to the completion transaction.
+    if (saveRef.current.prologue?.status === "completed") return state.phase === "complete";
+    const next = withNurseryCheckpoint(saveRef.current, state);
+    return next !== null && persistNursery(next);
+  }, [persistNursery, reconcileNurseryAttempt]);
+  const completeNursery = useCallback(async (receipt: NurseryCompletionReceipt, state: NurseryState): Promise<boolean> => {
+    if (!sessionAliveRef.current || !nurseryNextChapterReady || !reconcileNurseryAttempt()) return false;
+    const next = withNurseryCompletion(saveRef.current, receipt, state);
+    if (!next || !persistNursery(next)) return false;
+    setNewGamePhase(null); setHubLocation("homeworld"); setScreen("homeworld");
+    setToast("Nurserie achevée et sauvegardée. Quelques années plus tard, ton accueil Unblooded commence dans la cité.");
+    return true;
+  }, [nurseryNextChapterReady, persistNursery, reconcileNurseryAttempt]);
 
   const recordPitMatch = useCallback((
     result: PitMatchCompleteResult,
@@ -1848,6 +1978,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const go = useCallback(
     (next: Screen) => {
+      const chronicle = saveRef.current.prologue?.chronicle;
+      if (chronicle && ["deck", "ship", "map", "mission", "briefing", "title", "armory", "customization", "training", "medbay", "pit"].includes(next) &&
+          !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(chronicle) ?? "")) {
+        setToast("Le vaisseau personnel et les chasses autonomes attendent le rite Blooded. Ton apprentissage se poursuit sur le Homeworld."); return;
+      }
       void playSound("ui");
       if (next === "deck" || next === "ship") setHubLocation("deck");
       if (next === "homeworld") setHubLocation("homeworld");
@@ -1857,6 +1992,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
+    if (saveRef.current.prologue && getChronicleRank(saveRef.current.prologue.chronicle) === "unblooded") {
+      setToast("L’accueil dans la cité précède les sorties. Le dojo, le premier biomask et le repos de la formation restent à accomplir."); return;
+    }
     if (regionId === "glass-desert") {
       if (!saveRef.current.homeworld.expeditions["ash-marches"]) {
         setToast("Rapporte d’abord la preuve des Marches de Cendre avant de suivre la route du désert."); return;
@@ -1939,6 +2077,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
+    const youth = saveRef.current.prologue;
+    if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
+        ["armory", "customization", "training", "medbay", "pit"].includes(service)) {
+      setToast("Cette activité attend sa place dans ta formation. Rencontre d’abord le chef du clan puis l’instructeur des terrasses ; le dojo, la première lame et le biomask ne sont pas encore attribués."); return;
+    }
     if (service === "justice") setJusticeJurisdiction("homeworld");
     if (service === "pit") openPit();
     else openStationScreen(service, "homeworld");
@@ -2773,13 +2916,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     );
   }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
-  const campaignLocation: CampaignResumeLocation = screen === "mission" || resumableHunt ? "mission"
+  const campaignLocation: CampaignResumeLocation = screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
     : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
     : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."
     : screen === "mission" ? "Suspendez la chasse depuis sa pause pour enregistrer un checkpoint manuel ou changer de partie." : null;
   const saveManagedCheckpoint = useCallback(async (kind: "manual" | "auto", index?: number, expectedRevision?: number): Promise<boolean> => {
-    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || saveFailure) return false;
+    if (!sessionAliveRef.current || !hydrated || campaignOperationRef.current || archiveTransferBusy || pendingHuntResult || (saveFailure && !(screen === "prologue" && nurseryPersistenceHealthyRef.current))) return false;
     const catalog = kind === "manual" ? campaignCatalog : loadCampaignSlots();
     const slot = catalog?.slots.find(item => item.id === entry.slotId);
     if (!slot || slot.status !== "ready" || slot.ownerCreatedAt !== saveRef.current.createdAt) {
@@ -2795,7 +2938,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (sessionAliveRef.current) setCampaignSaveMessage(error instanceof Error ? error.message : "Sauvegarde non confirmée. Aucun changement de partie effectué.");
       return false;
     } finally { campaignOperationRef.current = false; if (sessionAliveRef.current) setCampaignSaveBusy(false); }
-  }, [archiveTransferBusy, campaignCatalog, campaignLocation, entry.slotId, hydrated, pendingHuntResult, saveFailure]);
+  }, [archiveTransferBusy, campaignCatalog, campaignLocation, entry.slotId, hydrated, pendingHuntResult, saveFailure, screen]);
   const latestCampaignCheckpointRef = useRef(saveManagedCheckpoint);
   useEffect(() => { latestCampaignCheckpointRef.current = saveManagedCheckpoint; }, [saveManagedCheckpoint]);
   useEffect(() => {
@@ -2805,13 +2948,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [campaignLocation, hydrated]);
   const returnToMainMenu = useCallback(async () => {
     if (!sessionAliveRef.current) { onMainMenu(); return; }
-    if (checkpointBlockedReason) { setCampaignSaveMessage(checkpointBlockedReason); return; }
+    if (checkpointBlockedReason && !(screen === "prologue" && nurseryPersistenceHealthyRef.current)) { setCampaignSaveMessage(checkpointBlockedReason); return; }
     setSettingsOpen(true);
     if (!(await saveManagedCheckpoint("auto"))) return;
     // Invalidate synchronous and delayed child callbacks BEFORE removing the tree.
     sessionAliveRef.current = false; activeHuntSessionRef.current = null; ++archiveSelectionRef.current;
     onMainMenu();
-  }, [checkpointBlockedReason, onMainMenu, saveManagedCheckpoint]);
+  }, [checkpointBlockedReason, onMainMenu, saveManagedCheckpoint, screen]);
   useEffect(() => {
     if (!hydrated || !sessionAliveRef.current) return;
     const timer = window.setInterval(() => { if (!document.hidden) void saveManagedCheckpoint("auto"); }, 30000);
@@ -2838,7 +2981,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["mission", "deck", "ship", "map", "training", "pit", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "mission", "deck", "ship", "map", "training", "pit", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
 
   const primaryWeapon =
@@ -2880,10 +3023,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
+    !newGamePhase && screen !== "prologue" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
       <TopBar
         save={save}
-        onShip={() => go("deck")}
+        onShip={() => go(save.prologue ? "homeworld" : "deck")}
         onSettings={() => {
           void playSound("ui");
           setSettingsOpen(true);
@@ -2930,6 +3073,21 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       data-campaign-owner={entry.ownerCreatedAt}
     >
       <div inert={shipStationOpen || settingsOpen}>{topBar}</div>
+
+      {screen === "prologue" && hydrated && save.prologue && <section className="screen panel-screen" inert={settingsOpen} data-nursery-campaign>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar"><button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button></div>
+          {nurseryChapterError && <div role="status" className="save-transfer"><p>{nurseryChapterError}</p><button type="button" onClick={() => { setNurseryChapterError(null); setNurseryChapterLoadAttempt(value => value + 1); }}>Réessayer le chargement de la cité</button></div>}
+          <Suspense fallback={<DeferredGameScreen />}>
+            <NurseryPrologueScreen key={save.createdAt} checkpoint={save.prologue.checkpoint}
+              bindings={save.settings.controlBindings} nextChapterReady={nurseryNextChapterReady}
+              externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
+              persistenceError={nurseryPersistenceError} soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}
+              masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
+              onCheckpoint={checkpointNursery} onComplete={completeNursery} onExit={returnToMainMenu} />
+          </Suspense>
+        </div>
+      </section>}
 
       {screen === "title" && (
         <section className="screen title-screen" aria-labelledby="game-title">
@@ -3030,13 +3188,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <section className="screen panel-screen" hidden={screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <div className="physical-deck-toolbar">
-                <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>
+                {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
-                <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>
+                {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
               </div>
+              {save.prologue?.status === "completed" && <section className="save-transfer" aria-label="Accueil Unblooded" data-unblooded-welcome>
+                <h2>Quelques années plus tard — Unblooded</h2>
+                <p>{save.profile.hunterName}, ton arrivée a été annoncée. Le chef du clan t’attend. Ton apprentissage commence ; le dojo, l’armurerie et la formation auprès du maître restent à accomplir.</p>
+                <p>Rejoins le chef à la Citadelle, au nord-est, puis l’instructeur des terrasses, au centre de la cité. Approche-les et utilise la commande Interaction pour leur parler. Ce premier accueil jouable ne valide pas les futures scènes du mentor, le premier biomask ou les rites de chasse. Le vaisseau personnel attend le rite Blooded.</p>
+              </section>}
               <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
                 onProgress={persistHomeworldProgress} onService={openHomeworldService}
@@ -4719,7 +4882,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <input type="file" accept="application/json,.json" disabled={true} onChange={readArchiveFile} />
               </label>
               {screen !== "title" && <p>Pour remplacer les archives, suspendez la chasse éventuelle puis revenez au titre.
-                {screen !== "mission" && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
+                {screen !== "mission" && !save.prologue && !pendingHuntResult && <button type="button" className="ghost-button" onClick={() => { setSettingsOpen(false); setScreen("title"); }}>Revenir au titre pour importer</button>}
               </p>}
               {archiveTransferBusy && <p role="status">Vérification des archives…</p>}
               {completeImportPlan && <div className="save-import-confirm" aria-label="Prévisualisation de l’archive intégrale">
@@ -4817,7 +4980,7 @@ function TopBar({
         type="button"
         className="brand-lockup ghost-button"
         onClick={onShip}
-        aria-label="Retour au vaisseau"
+        aria-label={save.prologue ? "Retour à la cité" : "Retour au vaisseau"}
       >
         <span className="brand-rune" aria-hidden="true">
           <span>Y</span>
@@ -4827,7 +4990,7 @@ function TopBar({
       <div className="hunter-stats" aria-label="Progression">
         <span className="stat-chip">
           <small>Rang</small>
-          <strong>{RANK_LABELS[save.profile.rankId]}</strong>
+          <strong>{save.prologue ? CHRONICLE_RANK_LABELS[getChronicleRank(save.prologue.chronicle) ?? "youngling"] : RANK_LABELS[save.profile.rankId]}</strong>
         </span>
         <span className="stat-chip">
           <small>Honneur</small>

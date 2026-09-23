@@ -63,7 +63,7 @@ test("new campaign exploration is empty and all default collections have separat
   first.discoveredRoomIds.push("jungle-pilot-module");
   assert.deepEqual(second, { abilityIds: [], openedGateIds: [], secretIds: [], discoveredRoomIds: [] });
   assert.deepEqual(defaultSave(createdAt).exploration, second);
-  assert.equal(SAVE_VERSION, 7);
+  assert.equal(SAVE_VERSION, 8);
 });
 
 test("exploration normalization rejects malformed collections and arbitrary ids or fields", () => {
