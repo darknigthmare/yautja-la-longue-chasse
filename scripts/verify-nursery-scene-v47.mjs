@@ -10,6 +10,7 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 page.setDefaultTimeout(45000);
 page.on("pageerror", error => errors.push(error.message));
 page.on("response", response => { if (response.status() >= 400) failures.push({ url: response.url(), status: response.status() }); });
+let activePage = page;
 const canvas = page.locator("[data-nursery-prologue] canvas");
 const phase = name => page.locator(`[data-nursery-prologue] canvas[data-nursery-phase="${name}"]`);
 const state = () => canvas.evaluate(node => ({ phase: node.dataset.nurseryPhase, tick: Number(node.dataset.nurseryTick), x: node.dataset.nurseryPositions.split(",").map(Number), paused: node.dataset.nurseryPaused, ready: Number(node.dataset.nurseryReadyTicks), blade: node.dataset.nurseryBlade, poses: node.dataset.nurseryPoses.split(",") }));
@@ -66,6 +67,15 @@ try {
   const playedStorage = await page.evaluate(() => Object.fromEntries(Object.keys(localStorage).filter(key => key.toLowerCase().includes("yautja")).map(key => [key, localStorage.getItem(key)])));
   await fs.writeFile(out + "/played-campaign-storage.json", JSON.stringify(playedStorage, null, 2));
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: "reduce" });
+  activePage = mobile;
+  await mobile.addInitScript(() => {
+    window.__nurseryQaTrace = [];
+    const describe = node => node instanceof HTMLElement ? { tag: node.tagName, action: node.dataset.nurseryAction ?? null, label: node.getAttribute("aria-label") } : String(node);
+    for (const type of ["pointerdown", "pointerup", "touchstart", "touchend", "blur", "focusout", "visibilitychange"]) window.addEventListener(type, event => {
+      window.__nurseryQaTrace.push({ type, at: performance.now(), target: describe(event.target), related: describe(event.relatedTarget), active: describe(document.activeElement), visibility: document.visibilityState });
+      if (window.__nurseryQaTrace.length > 160) window.__nurseryQaTrace.shift();
+    }, true);
+  });
   mobile.setDefaultTimeout(45000); mobile.on("pageerror", error => errors.push(error.message));
   mobile.on("response", response => { if (response.status() >= 400) failures.push({ url: response.url(), status: response.status() }); });
   await mobile.goto(base, { waitUntil: "networkidle", timeout: 120000 });
@@ -82,20 +92,45 @@ try {
   const touchButtons = mobile.locator("[data-nursery-action]");
   assert.equal(await touchButtons.count(), 7);
   assert.ok((await touchButtons.evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().height))).every(height => height >= 44));
+  // The release notice can disappear just after entering the duel and move the
+  // touch row. A stale center can hit the surrounding DIV instead of the button.
+  await mobile.waitForFunction(() => ![...document.querySelectorAll("[role=status]")].some(node => node.textContent.includes("commencer ou reprendre le duel")));
+  const stableTouchBounds = async locator => locator.evaluate(async node => {
+    let previous = null;
+    for (let frame = 0; frame < 20; frame++) {
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      const rect = node.getBoundingClientRect();
+      const bounds = { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+      const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)?.closest("[data-nursery-action]");
+      if (previous && Object.keys(bounds).every(key => Math.abs(bounds[key] - previous[key]) < 0.1) && hit === node) return bounds;
+      previous = bounds;
+    }
+    throw new Error("The touch control did not settle at a hittable position");
+  });
+  const assertTouchTarget = async action => assert.equal(await mobile.evaluate(() => window.__nurseryQaTrace.filter(event => event.type === "pointerdown").at(-1)?.target.action), action, "Real touch must reach the intended control");
   const leftButton = mobile.locator('[data-nursery-action="left"]'); await leftButton.scrollIntoViewIfNeeded();
-  const bounds = await leftButton.boundingBox();
+  const bounds = await stableTouchBounds(leftButton);
   const beforeTouchX = await mobile.locator("[data-nursery-prologue] canvas").evaluate(node => Number(node.dataset.nurseryPositions.split(",")[0]));
   const mobileCdp = await mobile.context().newCDPSession(mobile);
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 }] });
-  await mobile.waitForFunction(x => Number(document.querySelector("[data-nursery-prologue] canvas")?.dataset.nurseryPositions.split(",")[0]) < x - 15, beforeTouchX);
+  await assertTouchTarget("left");
+  await mobile.waitForFunction(x => {
+    const canvas = document.querySelector("[data-nursery-prologue] canvas");
+    return Number(canvas?.dataset.nurseryPositions.split(",")[0]) < x - 15 && canvas?.dataset.nurseryPoses.split(",")[0] === "walk";
+  }, beforeTouchX, { timeout: 1500 }); // A delayed CPU knockback is not movement input.
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   const rightButton = mobile.locator('[data-nursery-action="right"]'); await rightButton.scrollIntoViewIfNeeded();
-  const rightBounds = await rightButton.boundingBox();
+  const rightBounds = await stableTouchBounds(rightButton);
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: rightBounds.x + rightBounds.width / 2, y: rightBounds.y + rightBounds.height / 2 }] });
-  await mobile.waitForFunction(() => Number(document.querySelector("[data-nursery-prologue] canvas")?.dataset.nurseryPositions.split(",")[0]) >= 425);
+  await assertTouchTarget("right");
+  await mobile.waitForFunction(() => {
+    const canvas = document.querySelector("[data-nursery-prologue] canvas");
+    return Number(canvas?.dataset.nurseryPositions.split(",")[0]) >= 425 && canvas?.dataset.nurseryPoses.split(",")[0] === "walk";
+  }, null, { timeout: 1500 });
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-  const pickupBounds = await mobile.locator('[data-nursery-action="pickup"]').boundingBox();
+  const pickupBounds = await stableTouchBounds(mobile.locator('[data-nursery-action="pickup"]'));
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: pickupBounds.x + pickupBounds.width / 2, y: pickupBounds.y + pickupBounds.height / 2 }] });
+  await assertTouchTarget("pickup");
   await mobile.waitForFunction(() => document.querySelector("[data-nursery-prologue] canvas")?.dataset.nurseryBlade === "player");
   await mobileCdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
   await mobile.locator("[data-nursery-prologue] canvas").screenshot({ path: out + "/mobile-blade-held.png" });
@@ -107,6 +142,7 @@ try {
   await mobile.close();
 
   const padPage = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  activePage = padPage;
   padPage.setDefaultTimeout(45000); padPage.on("pageerror", error => errors.push(error.message));
   await padPage.addInitScript(() => {
     window.__nurseryQaPad = { connected: true, mapping: "standard", index: 0, id: "Virtual QA controller", axes: [0, 0, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 })), timestamp: 0 };
@@ -139,6 +175,7 @@ try {
 
   // Restore the genuine title checkpoint captured from the keyboard-won duel, never an invented result.
   const faultPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  activePage = faultPage;
   faultPage.setDefaultTimeout(45000); faultPage.on("pageerror", error => errors.push(error.message));
   await faultPage.addInitScript(storage => {
     for (const [key, value] of Object.entries(storage)) localStorage.setItem(key, value);
@@ -172,7 +209,16 @@ try {
   await fs.writeFile(out + "/report.json", JSON.stringify({ passed: true, base, at: new Date().toISOString(), checks, errors, failures }, null, 2));
   console.log(JSON.stringify({ passed: true, checks }));
 } catch (error) {
-  await page.screenshot({ path: out + "/failure.png" }).catch(() => {});
-  await fs.writeFile(out + "/report.json", JSON.stringify({ passed: false, base, checks, errors, failures, error: String(error) }, null, 2));
+  const failurePage = activePage && !activePage.isClosed() ? activePage : page;
+  await failurePage.screenshot({ path: out + "/failure.png", fullPage: true }).catch(() => {});
+  const diagnostic = await failurePage.evaluate(() => ({
+    viewport: { width: innerWidth, height: innerHeight }, visibility: document.visibilityState,
+    activeElement: document.activeElement?.outerHTML.slice(0,500),
+    scene: { ...document.querySelector("[data-nursery-prologue] canvas")?.dataset },
+    touchActions: [...document.querySelectorAll("[data-nursery-action]")].map(node => node.dataset.nurseryAction),
+    dialogs: [...document.querySelectorAll('[role="dialog"]')].map(node => node.textContent.slice(0,1200)),
+    inputEvents: window.__nurseryQaTrace ?? [],
+  })).catch(() => null);
+  await fs.writeFile(out + "/report.json", JSON.stringify({ passed: false, base, checks, errors, failures, diagnostic, error: String(error) }, null, 2));
   throw error;
 } finally { await browser.close(); }
