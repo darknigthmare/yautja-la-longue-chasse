@@ -16,7 +16,7 @@ import { compactControlKeyLabel } from "./controlBindingLabels";
 import { createPitGamepadAssignments, disconnectPitGamepadAssignment, resolvePitGamepadAssignments } from "./systems/pitGamepadAssignments";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
-import { PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
+import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
 import { getPitCombatBitmapArtDefinition, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import {
@@ -419,8 +419,11 @@ function cpuInput(state: PitCombatState): PitInput {
   return EMPTY_INPUT;
 }
 
-function eventLabel(event: PitCombatEvent): string {
-  if (event.type === "stage-transfer") return "PASSAGE CONFIRMÉ · COUR DES RÉSERVES";
+function eventLabel(event: PitCombatEvent, state: PitCombatState): string {
+  if (event.type === "stage-transfer") {
+    const destination = getPitStageJourneyDefinition(state.rules.stageJourney)?.destinationLabel;
+    return destination ? `PASSAGE CONFIRMÉ · ${destination}` : "PASSAGE CONFIRMÉ";
+  }
   if (event.type === "round-start") return `MANCHE ${event.round} · COMBAT`;
   if (event.type === "attack-start") {
     return (
@@ -977,7 +980,8 @@ export default function PitCanvas({
   const [sceneBanks, setSceneBanks] = useState<ReadonlyMap<PitArenaId, PitArenaArtBank>>(new Map());
   const [sceneRetry, setSceneRetry] = useState(0);
   const renderedArenaId = combat?.arenaId ?? arenaId;
-  const selectedJourney = stageJourneyEnabled && arenaId === PIT_RESERVE_GATE && (mode === "cpu" || mode === "local" || mode === "training") ? PIT_RESERVE_JOURNEY : undefined;
+  const availableJourney = getPitStageJourneyForArena(arenaId);
+  const selectedJourney = stageJourneyEnabled && (mode === "cpu" || mode === "local" || mode === "training") ? availableJourney?.id : undefined;
   const requestedJourney = combat ? combat.rules.stageJourney : selectedJourney;
   const sceneArenaId = combat ? pitStageSceneArena(combat) : renderedArenaId;
   const arenaArt = sceneBanks.get(sceneArenaId) ?? null;
@@ -1478,7 +1482,7 @@ export default function PitCanvas({
       mode: nextMode === "training" ? "training" : "match",
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
-      ...(stageJourneyEnabled && nextArenaId === PIT_RESERVE_GATE && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: PIT_RESERVE_JOURNEY } : {}),
+      ...(stageJourneyEnabled && getPitStageJourneyForArena(nextArenaId) && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: getPitStageJourneyForArena(nextArenaId)!.id } : {}),
     });
     if (nextMode === "descent") {
       if (!descentRunState || !descentNode) {
@@ -2525,12 +2529,12 @@ export default function PitCanvas({
           const latest = current.events[current.events.length - 1];
           // Passive pressure gains arrive every 12 ticks. The resource meter
           // already shows them; central notices are reserved for discrete events.
-          if (latest.type !== "traque-gain" || latest.source !== "pressure") setAnnouncement(eventLabel(latest));
+          if (latest.type !== "traque-gain" || latest.source !== "pressure") setAnnouncement(eventLabel(latest, current));
           const essential = [...current.events].reverse().find((event) =>
             event.type === "round-start" || event.type === "round-end" || event.type === "match-end" ||
             event.type === "throw-caught" || event.type === "throw-tech"
           );
-          if (essential) setAriaAnnouncement(eventLabel(essential));
+          if (essential) setAriaAnnouncement(eventLabel(essential, current));
           if (latest.type === "hit" || latest.type === "block") {
             const defender = current.fighters.find((fighter) => fighter.definitionId === latest.defenderId);
             const groundY = PIT_ARENAS[current.arenaId].groundY;
@@ -2895,7 +2899,7 @@ export default function PitCanvas({
           opponentPreview={mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? <article className={styles.descentEventCard}><span className={styles.sideLabel}>BRANCHE</span><strong>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name : "Récupération rituelle"}</strong><p>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}</p><small>Aucun résultat de combat n’est forgé pour cet étage.</small></article> : <FighterCard fighterId={previewRightId} variantId={previewRightId === rightId ? rightVariantId : null} side="DROITE" />}
           onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setLeftId(selected); setLeftVariantId(null); setReplayNotice(""); if (selected === rightId) { setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); setRightVariantId(null); } }}
           onOpponentChange={selected => { if (selected !== leftId) { setRightId(selected); setRightVariantId(null); setReplayNotice(""); } }}
-          onArenaChange={setArenaId}
+          onArenaChange={selected => { setArenaId(selected); setStageJourneyEnabled(false); }}
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
           onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
           onExit={onExit} launchLabel={selectionLaunchLabel}
@@ -2923,9 +2927,16 @@ export default function PitCanvas({
           <div className={styles.selectionOptionsBody}>
             <p className={styles.selectionContext}>Simulation de duels non canonique · aucun gain de campagne. Start ouvre les options ; B ou Échap ferme ce panneau sans quitter THE PIT.</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
-        {arenaId === PIT_RESERVE_GATE && (mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
-          <label><input type="checkbox" checked={stageJourneyEnabled} disabled={runTransitionSelectionLocked} onChange={event => setStageJourneyEnabled(event.target.checked)} /> Parcours optionnel · Sas → cour des Réserves</label>
-          <p>Deux lieux existants réutilisés, aucun dessin nouveau. Une projection réellement réussie près d’une limite emporte les deux combattants. Un seul passage par manche ; retour au sas au reset. Sans dégâts de décor ni gain de progression. Le duel neutre reste le réglage par défaut.</p>
+        {(mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
+          <label>Parcours disponibles · 5 liaisons d’exposition
+            <select aria-label="Parcours disponibles" data-pit-journey-picker value={selectedJourney ?? ""} disabled={runTransitionSelectionLocked}
+              onChange={event => { const route = getPitStageJourneyDefinition(event.target.value); setStageJourneyEnabled(Boolean(route)); if (route) setArenaId(route.entry); }}>
+              <option value="">Duel neutre · aucun parcours</option>
+              {PIT_STAGE_JOURNEY_ROUTES.map(route => <option key={route.id} value={route.id}>{route.label}</option>)}
+            </select>
+          </label>
+          {availableJourney && <label><input type="checkbox" checked={stageJourneyEnabled} disabled={runTransitionSelectionLocked} onChange={event => setStageJourneyEnabled(event.target.checked)} /> Parcours optionnel · {availableJourney.label}</label>}
+          <p>Deux lieux existants réutilisés, aucun dessin nouveau. Une projection réellement réussie près d’une limite emporte les deux combattants. Un seul passage par manche ; retour au secteur de départ au reset. Sans dégâts de décor ni gain de progression. Le duel neutre reste le réglage par défaut.</p>
           {selectedJourney && <p data-pit-journey-assets={journeyAssetsFailed ? "failed" : journeyAssetsReady ? "ready" : "loading"}>{journeyAssetsFailed ? "Un des deux décors manque : départ bloqué." : journeyAssetsReady ? "Les deux scènes sont préchargées." : "Préchargement des deux scènes…"}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</p>}
         </aside>}
 
@@ -2955,7 +2966,7 @@ export default function PitCanvas({
             <span><strong>Répertoire des 100 arènes</strong><small>Contrat récupéré des conversations</small></span>
             <span>{PIT_ARENA_CATALOGUE_SUMMARY.playable} jouables · {PIT_ARENA_CATALOGUE_SUMMARY.concept} en conception</span>
           </summary>
-          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Les nouveaux terrains proposent un duel sur un seul secteur. Les changements de secteur, ruptures de décor et accessoires interactifs restent à réaliser ; les dangers sont neutralisés.</p>
+          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Chaque terrain propose un duel neutre sur un seul secteur. Cinq parcours d’exposition optionnels relient deux décors existants ; les 75 autres départs du groupe 1–80 restent sans parcours. Ruptures de décor, obstacles interactifs et dangers restent à réaliser.</p>
           <div className={styles.catalogueWaves}>
             {PIT_ARENA_CATALOGUE_WAVES.map((wave) => <section key={wave.id}>
               <h3>{wave.label}<small>{wave.first}–{wave.last} · {wave.count}</small></h3>
@@ -3217,6 +3228,7 @@ export default function PitCanvas({
   const leftDefinition = PIT_FIGHTERS[left.definitionId];
   const rightDefinition = PIT_FIGHTERS[right.definitionId];
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
+  const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
   const recentImpact = roundPresentation.phase === "fight" && combat.phase === "round" && impact && combat.frame - impact.frame < 8;
   const shake = presentationMotion.screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
@@ -3322,7 +3334,7 @@ export default function PitCanvas({
         </p>
       ) : null}
       <div className={styles.combatActions} inert={terminal || menuOpen}>
-        <span className={styles.stageLabel}>{playbackReplay ? "RELECTURE · " : ""}{arenaDefinition.name}{combat.stageJourney ? (combat.stageJourney.sector === "sas" ? " · SAS" : " · COUR") : ""}
+        <span className={styles.stageLabel}>{playbackReplay ? "RELECTURE · " : ""}{arenaDefinition.name}{combat.stageJourney ? (` · ${combat.stageJourney.sector === "sas" ? activeJourneyDefinition?.entryLabel ?? "SECTEUR 1" : activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"}`) : ""}
           {mode === "descent" && terminalDescentRun ? ` · ÉTAGE ${Math.min(PIT_DESCENT_FLOOR_COUNT, terminalDescentRun.completedFloors + 1)}/${PIT_DESCENT_FLOOR_COUNT} · RUN ${terminalDescentRun.health}/${PIT_DESCENT_MAX_HEALTH}` : ""}</span>
         {trainingRules && !playbackReplay && <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>}
         <button type="button" className={styles.utilityButton} data-pit-menu-button aria-label="Pause et menu du combat" onClick={() => openMenu()}>Ⅱ <span>MENU</span></button>
@@ -3837,7 +3849,7 @@ export default function PitCanvas({
         <button type="button" className={styles.utilityButton} onClick={returnToSelection}>Retour à la sélection</button>
       </header>
 
-      {combat.stageJourney && <p className={styles.journeyStatus} data-pit-journey-sector={combat.stageJourney.sector}>{combat.stageJourney.sector === "sas" ? "SAS · Réussis une projection près de la limite gauche ou droite pour rejoindre la cour avec ton adversaire." : "COUR DES RÉSERVES · Les deux combattants ont traversé. Prochaine manche : retour au sas."} Parcours d’exposition, sans statistiques de progression.</p>}
+      {combat.stageJourney && <p className={styles.journeyStatus} data-pit-journey-sector={combat.stageJourney.sector}>{combat.stageJourney.sector === "sas" ? `${activeJourneyDefinition?.entryLabel ?? "SECTEUR 1"} · Réussis une projection près de la limite gauche ou droite pour rejoindre ${activeJourneyDefinition?.destinationLabel ?? "le second secteur"} avec ton adversaire.` : `${activeJourneyDefinition?.destinationLabel ?? "SECTEUR 2"} · Les deux combattants ont traversé. Prochaine manche : retour au secteur de départ.`} Parcours d’exposition, sans statistiques de progression.</p>}
       {mode === "descent" && terminalDescentRun ? (
         <aside className={styles.descentMatchStatus} aria-label="État de la Descente">
           <strong>

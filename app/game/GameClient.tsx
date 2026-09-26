@@ -11,7 +11,7 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
-import { startYouthCampaign, withYouthCheckpoint, withYouthProgress } from "./systems/youthCampaign";
+import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
 import type { YouthState, YouthReceipt } from "./systems/youthTraining";
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
@@ -1180,7 +1180,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       saveRef.current = loadedSave;
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
-      else if (loadedSave.youthTraining && (loadedSave.youthTraining.status === "active" || loadedSave.youthTraining.checkpoint.phase.startsWith("desert-") && loadedSave.youthTraining.checkpoint.phase !== "desert-complete" || entry.location === "youth-training")) { setScreen("youth-training"); setNewGamePhase(null); setHubLocation("homeworld"); }
+      else if (loadedSave.youthTraining && (youthCampaignNeedsScene(loadedSave.youthTraining) || entry.location === "youth-training")) { setScreen("youth-training"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (loadedSave.prologue?.status === "completed" && (entry.location === "prologue" || entry.location === "youth-training")) { setScreen("homeworld"); setHubLocation("homeworld"); }
       setSaveLoadIssue(loaded.failure);
       // Never discard a real hunt merely because its campaign could not be read.
@@ -2112,7 +2112,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ["armory", "customization", "training", "medbay", "pit"].includes(service)) {
       const training = saveRef.current.youthTraining;
       setToast(training?.status === "completed"
-        ? "Formation et premier réveil accomplis. La lame est acquise et le biomask reste conservé pour la sortie. Le maître ouvre la reconnaissance accompagnée du désert. Le PIT de jeunesse reste à venir ; les installations des chasseurs autonomes restent fermées."
+        ? youthCampaignObjective(training) + " Les installations des chasseurs autonomes restent fermées."
         : training
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
@@ -2951,7 +2951,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     );
   }, [clearHuntSession, importCandidate, screen, archiveTransferBusy]);
 
-  const campaignLocation: CampaignResumeLocation = screen === "youth-training" || save.youthTraining?.status === "active" ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
+  const campaignLocation: CampaignResumeLocation = screen === "youth-training" || youthCampaignNeedsScene(save.youthTraining) ? "youth-training" : screen === "prologue" || save.prologue?.status === "active" ? "prologue" : screen === "mission" || resumableHunt ? "mission"
     : newGamePhase ? "new-game" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
     : ["homeworld-expedition", "glass-desert-expedition"].includes(screen) ? "Rapportez ou quittez l’expédition avant de sauvegarder son retour. Une expédition non rapportée n’est pas un checkpoint."

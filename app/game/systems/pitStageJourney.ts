@@ -1,28 +1,31 @@
 import type { PitArenaId, PitCombatState } from "./pitCombat";
+import { getPitStageJourneyDefinition, isPitStageJourneyForArena, type PitStageJourneyId } from "./pitStageJourneyRoutes";
+export { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyDefinition, getPitStageJourneyForArena, isPitStageJourneyForArena, type PitStageJourneyId } from "./pitStageJourneyRoutes";
 
 /** An opt-in exhibition route reusing two existing places; not two new drawings. */
 export const PIT_RESERVE_JOURNEY = "reserve-passage-v1" as const;
 export const PIT_RESERVE_GATE: PitArenaId = "arena-019-porte-des-reserves";
 export const PIT_RESERVE_COURT: PitArenaId = "arena-011-reserve-des-crocs";
-export type PitStageJourneyId = typeof PIT_RESERVE_JOURNEY;
 export interface PitStageJourneyState {
   id: PitStageJourneyId;
   sector: "sas" | "court";
   transferFrame: number | null;
   exitSide: -1 | 1 | null;
 }
-export const createPitStageJourney = (): PitStageJourneyState => ({
-  id: PIT_RESERVE_JOURNEY, sector: "sas", transferFrame: null, exitSide: null,
+export const createPitStageJourney = (id: PitStageJourneyId = PIT_RESERVE_JOURNEY): PitStageJourneyState => ({
+  id, sector: "sas", transferFrame: null, exitSide: null,
 });
 export function pitStageSceneArena(state: Pick<PitCombatState, "arenaId" | "stageJourney">): PitArenaId {
-  return state.stageJourney?.sector === "court" ? PIT_RESERVE_COURT : state.arenaId;
+  const route = getPitStageJourneyDefinition(state.stageJourney?.id);
+  return route && route.entry === state.arenaId && state.stageJourney?.sector === "court" ? route.destination : state.arenaId;
 }
 export function pitStageJourneyArtIds(arenaId: PitArenaId, journey?: PitStageJourneyId): readonly PitArenaId[] {
-  return journey === PIT_RESERVE_JOURNEY && arenaId === PIT_RESERVE_GATE ? [PIT_RESERVE_GATE, PIT_RESERVE_COURT] : [arenaId];
+  const route = getPitStageJourneyDefinition(journey);
+  return route && route.entry === arenaId ? [route.entry, route.destination] : [arenaId];
 }
 export function validPitStageJourney(value: unknown, rule: unknown, arenaId: unknown, frame: number): boolean {
   if (rule === undefined) return value === undefined;
-  if (rule !== PIT_RESERVE_JOURNEY || arenaId !== PIT_RESERVE_GATE || !value || typeof value !== "object" || Array.isArray(value)) return false;
+  if (!isPitStageJourneyForArena(rule, arenaId) || !value || typeof value !== "object" || Array.isArray(value)) return false;
   const candidate = value as Record<string, unknown>;
   if (Object.keys(candidate).length !== 4 || candidate.id !== rule) return false;
   return candidate.sector === "sas" ? candidate.transferFrame === null && candidate.exitSide === null
@@ -35,7 +38,8 @@ export function validPitStageJourney(value: unknown, rule: unknown, arenaId: unk
  * Both fighters share one sector and are relocated in this same authoritative tick.
  */
 export function finishPitStageJourneyFrame(state: PitCombatState): void {
-  if (state.rules.stageJourney !== PIT_RESERVE_JOURNEY || state.arenaId !== PIT_RESERVE_GATE
+  const route = getPitStageJourneyDefinition(state.rules.stageJourney);
+  if (!route || route.entry !== state.arenaId || state.stageJourney?.id !== route.id
     || state.stageJourney?.sector !== "sas" || state.phase !== "round"
     || state.fighters.some(fighter => fighter.health <= 0 || !fighter.grounded)) return;
   const hits = state.events.filter(event => event.type === "hit" && event.attack === "throw" && event.damage > 0);
@@ -56,7 +60,7 @@ export function finishPitStageJourneyFrame(state: PitCombatState): void {
   }
   state.techniqueEffects = [];
   state.pendingThrow = null;
-  state.stageJourney = { id: PIT_RESERVE_JOURNEY, sector: "court", transferFrame: state.frame, exitSide };
+  state.stageJourney = { id: route.id, sector: "court", transferFrame: state.frame, exitSide };
   state.events.push({ type: "stage-transfer", frame: state.frame, from: "sas", to: "court", exitSide,
     attackerId: hit.attackerId, defenderId: hit.defenderId });
 }

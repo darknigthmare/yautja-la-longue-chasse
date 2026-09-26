@@ -1,0 +1,470 @@
+{
+  "release": "V52",
+  "scope": "Read-only registry and supplied-appearance audit; published-browser proof is recorded separately.",
+  "reviewedAt": "2026-09-26T19:27:30.807Z",
+  "counts": {
+    "runtimeFighterIds": 195,
+    "suppliedFighterIds": 193,
+    "suppliedVariants": 410,
+    "suppliedAnimatedVariants": 9,
+    "suppliedStaticOnlyVariants": 401,
+    "registryDefinitions": 32,
+    "animatedFighterIds": 15,
+    "animatedAppearances": 20,
+    "logicalPages": 116,
+    "physicalPng": 98,
+    "readyPhaseClips": 333,
+    "distinctDrawings": 669
+  },
+  "v52Added": {
+    "identities": [
+      "city-hunter",
+      "scar"
+    ],
+    "exactVariants": [
+      "city-hunter-avec-casque-12136078fe",
+      "scar-avec-casque-6a0a69930d"
+    ],
+    "physicalPng": 6,
+    "logicalPages": 12,
+    "orientedPresentationClips": 12,
+    "frameReferences": 36,
+    "distinctDrawings": 26,
+    "gameplayClips": 0
+  },
+  "coverageEvidence": "tests/pit-sprite-sheet-production.test.mjs passed against real PNGs through actual preparation and rendering functions; counts are not just metadata approval.",
+  "targetedGaps": [
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "dedicatedPresentationClips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "frameReferences": 3
+        }
+      ],
+      "remainingAuthoredGameplayClips": [
+        {
+          "id": "idle",
+          "facing": "right"
+        },
+        {
+          "id": "idle",
+          "facing": "left"
+        },
+        {
+          "id": "walk",
+          "facing": "right"
+        },
+        {
+          "id": "walk",
+          "facing": "left"
+        },
+        {
+          "id": "walk-backward",
+          "facing": "right"
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left"
+        },
+        {
+          "id": "crouch",
+          "facing": "right"
+        },
+        {
+          "id": "crouch",
+          "facing": "left"
+        },
+        {
+          "id": "high-guard",
+          "facing": "right"
+        },
+        {
+          "id": "high-guard",
+          "facing": "left"
+        },
+        {
+          "id": "low-guard",
+          "facing": "right"
+        },
+        {
+          "id": "low-guard",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left"
+        }
+      ],
+      "legacyClipsKeptSeparate": 10,
+      "canonical1to1Certified": false,
+      "completeMoveset": false
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "dedicatedPresentationClips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "frameReferences": 3
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "frameReferences": 3
+        }
+      ],
+      "remainingAuthoredGameplayClips": [
+        {
+          "id": "idle",
+          "facing": "right"
+        },
+        {
+          "id": "idle",
+          "facing": "left"
+        },
+        {
+          "id": "walk",
+          "facing": "right"
+        },
+        {
+          "id": "walk",
+          "facing": "left"
+        },
+        {
+          "id": "walk-backward",
+          "facing": "right"
+        },
+        {
+          "id": "walk-backward",
+          "facing": "left"
+        },
+        {
+          "id": "crouch",
+          "facing": "right"
+        },
+        {
+          "id": "crouch",
+          "facing": "left"
+        },
+        {
+          "id": "high-guard",
+          "facing": "right"
+        },
+        {
+          "id": "high-guard",
+          "facing": "left"
+        },
+        {
+          "id": "low-guard",
+          "facing": "right"
+        },
+        {
+          "id": "low-guard",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.hitstun",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.rise",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.apex",
+          "facing": "left"
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "right"
+        },
+        {
+          "id": "pit.air.jump.fall",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.light.recovery",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.medium.recovery",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left"
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right"
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left"
+        }
+      ],
+      "legacyClipsKeptSeparate": 30,
+      "canonical1to1Certified": false,
+      "completeMoveset": false
+    }
+  ],
+  "animatedSuppliedAppearances": [
+    {
+      "fighterId": "user-ahab",
+      "variantId": "ahab-avec-casque-0c8ceb1c95"
+    },
+    {
+      "fighterId": "wolf",
+      "variantId": "wolf-avec-casque-4261aca172"
+    },
+    {
+      "fighterId": "falconer",
+      "variantId": "falconer-avec-casque-f5618ed362"
+    },
+    {
+      "fighterId": "scarface",
+      "variantId": "scarface-avec-casque-bca00052d4"
+    },
+    {
+      "fighterId": "enforcer",
+      "variantId": "enforcer-avec-casque-ca164d8925"
+    },
+    {
+      "fighterId": "celtic",
+      "variantId": "celtic-avec-casque-0764ed4b53"
+    },
+    {
+      "fighterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a"
+    },
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe"
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d"
+    }
+  ],
+  "notes": [
+    "A supplied identity can have several costumes. One animated costume never covers the other variants.",
+    "The 19 gameplay clip IDs in this audit are a production checklist, not franchise canon or a claim that they exhaust every combat action.",
+    "City Hunter and Scar still use their exact static supplied bitmap for uncovered gameplay actions. Legacy clips stay separate.",
+    "V52 presentation drawings use native facings and alpha noiseFloor2 only; no source re-encoding, runtime mirror or foreign-costume substitution.",
+    "The Scar neutral repair was refused by the service. Clean existing drawings are reused, and source first-column cells with insufficient gutters are excluded.",
+    "Waiting holds the first reviewed native intro drawing; ready/countdown holds the last. These held poses add no clip or drawing and do not touch the gameplay cursor."
+  ]
+}

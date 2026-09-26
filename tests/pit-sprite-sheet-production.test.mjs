@@ -68,16 +68,24 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       "Clip reuse must not inflate the number of distinct V50 drawings");
   }
   const presentationClips = report.clips.filter(clip => clip.clipId.startsWith("pit.presentation."));
-  assert.deepEqual(presentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
+  const v51PresentationClips = presentationClips.filter(clip => clip.atlasId.endsWith("-v51"));
+  const v52PresentationClips = presentationClips.filter(clip => clip.atlasId.endsWith("-v52"));
+  assert.deepEqual(v51PresentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
     ["intro", "victory", "defeat"].flatMap(kind => ["right", "left"].map(facing =>
       ["jungle-hunter", "jungle-hunter-avec-casque-53f4eb349a", "jungle-hunter-masked-round-presentation-v51", "pit.presentation." + kind, facing, 3, true].join(":"))).sort(),
     "All six dedicated V51 clips belong to the exact reviewed Jungle Hunter appearance");
-  assert.equal(report.readyPhaseClips, 321, "Presentation adds six clips, never new combat attacks");
+  const v52Appearances = [["city-hunter", "city-hunter-avec-casque-12136078fe"], ["scar", "scar-avec-casque-6a0a69930d"]];
+  assert.deepEqual(v52PresentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
+    v52Appearances.flatMap(([fighterId, variantId]) => ["intro", "victory", "defeat"].flatMap(kind => ["right", "left"].map(facing =>
+      [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
+    "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
+  assert.equal(presentationClips.length, 18);
+  assert.equal(report.readyPhaseClips, 333, "V52 adds twelve presentation clips, never new combat attacks");
   assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 315);
-  assert.equal(report.pageCount, 104);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 92);
-  assert.equal(report.distinctDrawings, 643);
-  assert.equal(report.appearances.length, 18);
+  assert.equal(report.pageCount, 116);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 98);
+  assert.equal(report.distinctDrawings, 669);
+  assert.equal(report.appearances.length, 20);
   assert.equal(report.fighters.length, 15);
   const v51Pages = report.pages.filter(page => page.src.includes("/v51/"));
   assert.equal(v51Pages.length, 6);
@@ -85,6 +93,17 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.equal(new Set(v51Pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 16,
     "Two neutral references reused in presentation do not inflate distinct drawings");
   assert(v51Pages.every(page => page.variantId === "jungle-hunter-avec-casque-53f4eb349a" && page.sourceHasAlpha && page.keyedPixels === 0));
+  const v52Pages = report.pages.filter(page => page.src.includes("/v52/"));
+  assert.equal(v52Pages.length, 12);
+  assert.equal(new Set(v52Pages.map(page => page.src)).size, 6);
+  assert.equal(new Set(v52Pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 26,
+    "Reused presentation stances must not inflate V52 distinct drawings");
+  for (const [fighterId, variantId] of v52Appearances) {
+    const pages = v52Pages.filter(page => page.fighterId === fighterId);
+    assert.equal(new Set(pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, fighterId === "city-hunter" ? 14 : 12);
+    assert(pages.every(page => page.variantId === variantId && page.sourceHasAlpha && page.keyedPixels === 0 && page.transparency.noiseFloor === 2));
+    assert(pages.every(page => page.cells.every(cell => cell.borderPixels === 0)));
+  }
   for (const clip of presentationClips) {
     assert.ok(["intro", "victory", "defeat"].includes(clip.runtimePhase));
     assert.equal(clip.clipId, "pit.presentation." + clip.runtimePhase);

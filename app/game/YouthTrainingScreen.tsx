@@ -9,6 +9,7 @@ import type { ControlBindings } from "./systems/controlBindings";
 import { sampleYouthControls, YOUTH_CONTROL_ACTIONS, type YouthTouchAction } from "./systems/youthControls";
 import { createYouthTraining, normalizeYouthTraining, stepYouthTraining, getYouthObjective, YOUTH_DESERT_CLUES, YOUTH_DESERT_SCAN_TICKS, type YouthState, type YouthReceipt } from "./systems/youthTraining";
 import styles from "./YouthTrainingScreen.module.css";
+import { isYouthPatrolPhase, YOUTH_PATROL_HOLD_TICKS, youthPatrolAssessment } from "./systems/youthPatrol";
 
 export interface YouthTrainingScreenProps {
   checkpoint?: unknown; bindings: ControlBindings; reducedMotion?: boolean; soundEnabled?: boolean;
@@ -22,7 +23,7 @@ export interface YouthTrainingScreenProps {
 const TOUCH_ACTIONS = [["left", "←", "Se déplacer à gauche"], ["right", "→", "Se déplacer à droite"],
   ["jump", "Saut", "Sauter"], ["light", "Poing", "Frapper"], ["blade", "Lame", "Utiliser la lame gagnée"],
   ["dodge", "Esquive", "Esquiver"], ["throw", "Projection", "Projeter la cible proche"], ["interact", "Interagir", "Interagir avec le poste proche"]] as const;
-const ACTIVE = (phase: YouthState["phase"]) => phase.startsWith("dojo-") || phase === "camp-run" || phase === "camp-duel" || (phase.startsWith("desert-") && phase !== "desert-complete");
+const ACTIVE = (phase: YouthState["phase"]) => phase.startsWith("dojo-") || phase === "camp-run" || phase === "camp-duel" || (phase.startsWith("desert-") && phase !== "desert-complete") || (isYouthPatrolPhase(phase) && !["patrol-complete", "patrol-defeat"].includes(phase));
 
 /** Playable training owns neither rank awards nor inventory writes: every earned milestone is persisted by the campaign. */
 export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
@@ -40,7 +41,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
   const [releaseRequired, setReleaseRequired] = useState(false), [pending, setPending] = useState(false);
   const effectivePaused = paused || props.externallyPaused === true, reducedMotion = props.reducedMotion === true || reducedByOs;
   const objective = getYouthObjective(state);
-  const lessonAction = state.phase === "dojo-jump" || state.phase === "camp-run" || state.phase === "desert-crossing" ? "jump" : state.phase === "dojo-dodge" ? "dodge" : state.phase === "dojo-strike" || state.phase === "camp-duel" ? "light" : state.phase === "dojo-throw" ? "throw" : ["blade-award", "armory", "barracks", "desert-briefing", "desert-tracks", "desert-report", "desert-return"].includes(state.phase) ? "interact" : null;
+  const lessonAction = state.phase === "dojo-jump" || state.phase === "camp-run" || state.phase === "desert-crossing" || state.phase === "patrol-ambush" ? "jump" : state.phase === "dojo-dodge" ? "dodge" : state.phase === "dojo-strike" || state.phase === "camp-duel" ? "light" : state.phase === "dojo-throw" ? "throw" : ["blade-award", "armory", "barracks", "desert-briefing", "desert-tracks", "desert-report", "desert-return", "patrol-briefing", "patrol-route", "patrol-assessment", "patrol-return"].includes(state.phase) ? "interact" : null;
   const lessonLabel = lessonAction ? TOUCH_ACTIONS.find(([id]) => id === lessonAction)?.[1] : null;
   useEffect(() => { latestRef.current = props; }, [props]);
   useEffect(() => { const overflow = document.body.style.overflow; document.body.style.overflow = "hidden"; return () => { document.body.style.overflow = overflow; }; }, []);
@@ -147,6 +148,8 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       canvas.dataset.youthClues = String(stateRef.current.desert?.clues ?? 0);
       canvas.dataset.youthScan = String(stateRef.current.desert?.scanTicks ?? 0);
       canvas.dataset.youthComposure = `${stateRef.current.player.composure},${stateRef.current.rival.composure}`;
+      const patrol = stateRef.current.patrol;
+      canvas.dataset.youthPatrol = patrol ? JSON.stringify({ halts: patrol.halts, holdTicks: patrol.holdTicks, attempts: patrol.attempts, evaded: patrol.evaded, hits: patrol.hits, totalHits: patrol.totalHits, grazer: patrol.grazer }) : "";
       if (!pendingRef.current && !busyRef.current && !pausedNow && (phaseChanged || stateRef.current.tick - lastCheckpointTick >= 120)) { lastCheckpointTick = stateRef.current.tick; checkpoint(); }
       if (phaseChanged || timestamp - lastUi >= 80) { lastUi = timestamp; setState(stateRef.current); setReleaseRequired(!blocked && (!armedRef.current || !stateRef.current.inputArmed)); }
       frameId = requestAnimationFrame(render);
@@ -158,13 +161,13 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
     else touchRef.current.delete(action);
   };
   const pulse = (action: YouthTouchAction) => { if (effectivePaused || pendingRef.current) return; touchRef.current.add(action); void audioRef.current?.unlock(); setTimeout(() => touchRef.current.delete(action), 100); };
-  const touchButton = (action: YouthTouchAction, label: string, title: string) => <button type="button" key={action} aria-label={title} data-youth-action={action} disabled={action === "blade" && state.milestones["youth-first-blade"] === undefined}
+  const touchButton = (action: YouthTouchAction, label: string, title: string) => <button type="button" key={action} aria-label={title} data-youth-action={action} disabled={action === "blade" && state.milestones["youth-first-blade"] === undefined || isYouthPatrolPhase(state.phase) && ["light", "blade", "throw"].includes(action)}
     onPointerDown={event => setTouch(action, true, event)} onPointerUp={event => setTouch(action, false, event)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)}
     onKeyDown={event => { if ((event.key === "Enter" || event.key === " ") && !event.repeat) { event.preventDefault(); setTouch(action, true); } }}
     onKeyUp={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setTouch(action, false); } }} onBlur={() => setTouch(action, false)}>{label}</button>;
   const choose = (choice: "ochre" | "ash" | "rust") => { choiceRef.current = choice; canvasRef.current?.focus(); };
   return <section className={styles.screen} data-youth-immersive data-youth-training data-youth-step={state.phase} data-reduced-motion={reducedMotion}>
-    <header className={styles.toolbar}><span>Jeunesse · {state.phase.startsWith("desert-") ? "Sortie accompagnée" : "Formation Unblooded"}</span><div><button type="button" aria-label="Pause et commandes" onClick={pause}>Pause</button><button type="button" aria-label="Commandes tactiles" aria-pressed={showTouch} onClick={() => setShowTouch(value => !value)}>Tactile</button></div></header>
+    <header className={styles.toolbar}><span>Jeunesse · {isYouthPatrolPhase(state.phase) ? "Patrouille accompagnée" : state.phase.startsWith("desert-") ? "Sortie accompagnée" : "Formation Unblooded"}</span><div><button type="button" aria-label="Pause et commandes" onClick={pause}>Pause</button><button type="button" aria-label="Commandes tactiles" aria-pressed={showTouch} onClick={() => setShowTouch(value => !value)}>Tactile</button></div></header>
     <div className={styles.objective} data-youth-hud><h1>{objective.title}</h1><p>{objective.instruction}</p>{state.phase !== "rest" && state.phase !== "morning" && <p className={styles.shortcut}>Déplacement : {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)}{lessonAction && <> · {lessonLabel} : {controlActionShortcut(YOUTH_CONTROL_ACTIONS[lessonAction], props.bindings)}</>}</p>}<div className={styles.measures}>{state.phase === "dojo-dodge" && state.rival.action === "jab" && state.rival.actionTick < 32 && <span role="status">{state.rival.actionTick < 12 ? "Le maître prépare son coup…" : "Esquivez maintenant !"}</span>}{objective.required > 1 && <span>Progression : {objective.counter} / {objective.required}</span>}{objective.timerTicks !== null && <span role="timer">Temps : {(objective.timerTicks / 60).toFixed(1)} s</span>}</div>
       {(state.phase === "camp-duel" || state.phase === "camp-defeat") && <div className={styles.duelMeters} aria-label="Équilibre du duel non létal">
         {([["vous", state.player.composure], ["maître", state.rival.composure]] as const).map(([name, value]) => <div className={styles.duelMeter} key={name}>
@@ -177,15 +180,25 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
         <div><button type="button" data-youth-control aria-expanded={showDemo} onClick={() => setShowDemo(value => !value)}>{showDemo ? "Masquer la démonstration" : "Voir la démonstration"}</button>
         {showDemo && <button type="button" data-youth-control disabled={!bank || effectivePaused} onClick={() => { demoTickRef.current = 0; demoPlayingRef.current = true; canvasRef.current?.focus(); }}>Revoir le geste du maître</button>}</div>
       </div>}
+      {state.phase === "patrol-ambush" && state.patrol && <div className={styles.measures} data-youth-patrol-hud>
+        <span>Chocs : {state.patrol.hits} / 3 · Tentative {state.patrol.attempts}</span>
+        <span role="status">{state.patrol.grazer.phase === "telegraph" ? "Le brouteur se prépare : garde de l’espace !" : state.patrol.grazer.phase === "charge" ? "Charge : saute ou esquive !" : "Observe le prochain signal."}</span>
+      </div>}
     </div>
-    <div className={styles.stage}><canvas ref={canvasRef} data-youth-stage width={960} height={540} tabIndex={0} aria-label="Formation jouable de l’Unblooded. Déplacement, saut, esquive, frappe et projection. Pause pour les commandes."
+    <div className={styles.stage}><canvas ref={canvasRef} data-youth-stage width={960} height={540} tabIndex={0} aria-label={isYouthPatrolPhase(state.phase) ? "Patrouille jouable de l’Unblooded. Déplacement, saut, esquive et interaction. Évitez les charges sans attaquer l’animal. Pause pour les commandes." : "Formation jouable de l’Unblooded. Déplacement, saut, esquive, frappe et projection. Pause pour les commandes."}
       onPointerDown={() => canvasRef.current?.focus()} onBlur={event => { const target = event.relatedTarget; if (bank !== null && ACTIVE(stateRef.current.phase) && !pausedRef.current && !latestRef.current.externallyPaused && !(target instanceof HTMLElement && (target.hasAttribute("data-youth-action") || target.hasAttribute("data-youth-control")))) pause(); }} />
-      {!bank && <div className={styles.overlay} role="status"><p>{artError ? "La formation attend ses images." : "Chargement du dojo…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" data-youth-control onClick={() => { setArtError(""); setLoadAttempt(value => value + 1); }}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
+      {!bank && <div className={styles.overlay} role="status"><p>{artError ? "La formation attend ses images." : isYouthPatrolPhase(state.phase) ? "Chargement de la patrouille…" : "Chargement du dojo…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" data-youth-control onClick={() => { setArtError(""); setLoadAttempt(value => value + 1); }}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
       {state.phase === "desert-tracks" && <aside className={styles.fieldNotes} aria-label="Carnet de terrain" data-youth-field-notes>
         <strong>Observation : {state.desert?.clues ?? 0} / 3</strong>
         <progress max={YOUTH_DESERT_SCAN_TICKS} value={state.desert?.scanTicks ?? 0} aria-label="Examen de l’indice proche" />
         {(state.desert?.clues ?? 0) > 0 && <p>{YOUTH_DESERT_CLUES[(state.desert?.clues ?? 1) - 1].reading}</p>}
       </aside>}
+      {state.phase === "patrol-route" && <aside className={styles.fieldNotes} aria-label="Halte de la patrouille" data-youth-patrol-halt>
+        <strong>Haltes accompagnées : {state.patrol?.halts ?? 0} / 2</strong>
+        <progress max={YOUTH_PATROL_HOLD_TICKS} value={state.patrol?.holdTicks ?? 0} aria-label="Vérification du repère avec le maître" />
+        <p>Le maître doit être à proximité. Attends-le au repère, puis maintiens Interaction.</p>
+      </aside>}
+      {state.phase === "patrol-assessment" && state.patrol && <aside className={styles.fieldNotes} aria-label="Évaluation de la patrouille" data-youth-patrol-assessment><strong>Bilan du maître</strong><p>{youthPatrolAssessment(state.patrol)}</p></aside>}
       {state.phase === "rest" && <div className={styles.rest} role="status"><p>Le camp s’apaise. La nuit passe.</p></div>}
       {paused && !props.externallyPaused && <div className={styles.backdrop}><div ref={panelRef} className={styles.pause} role="dialog" aria-modal="true" aria-label="Formation en pause" onKeyDown={event => {
         if (event.key === "Escape") { event.preventDefault(); resume(); }
@@ -206,7 +219,9 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
     {state.phase === "armory" && !effectivePaused && !pending && <div className={styles.choices}><p>Choisissez la teinte de votre lien, puis rejoignez le poste pour recevoir le biomask. Il sera conservé pour la sortie ; les exercices restent sans masque. Manette : croix haut/bas pour choisir.</p>{(["ochre", "ash", "rust"] as const).map((choice, index) => <button type="button" key={choice} data-youth-choice={choice} aria-pressed={state.cosmetic === choice} onClick={() => choose(choice)}>{["Ocre", "Cendre", "Rouille"][index]}</button>)}</div>}
     {state.phase === "camp-defeat" && !effectivePaused && !pending && <div className={styles.choices}><p>Entraînement non létal. Les exercices déjà réussis restent acquis.</p><button type="button" onClick={() => pulse("retry")}>Réessayer le combat du camp</button></div>}
     {state.phase === "morning" && !pending && <div className={styles.choices}><p>La formation et le repos sont enregistrés. Le maître prépare une reconnaissance accompagnée du désert ; vous ne possédez pas encore de vaisseau.</p><button type="button" data-youth-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Partir vers le désert avec le maître</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité au matin</button></div>}
-    {state.phase === "desert-complete" && !pending && <div className={styles.choices}><p>Le maître a reçu les trois observations et vous êtes revenu au camp. Cette sortie ne valide aucune chasse autonome. La petite cage du PIT de jeunesse reste à venir.</p><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité après la sortie</button></div>}
-    {showTouch && !effectivePaused && !pending && state.phase !== "morning" && state.phase !== "desert-complete" && state.phase !== "rest" && <div className={styles.touch} aria-label="Commandes tactiles de la formation">{TOUCH_ACTIONS.map(([action, label, title]) => touchButton(action, label, title))}</div>}
+    {state.phase === "desert-complete" && !pending && <div className={styles.choices}><p>Le maître a reçu les trois observations et vous êtes revenu au camp. Cette sortie ne valide aucune chasse autonome. La petite cage du PIT de jeunesse reste à venir.</p><button type="button" data-youth-patrol-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Poursuivre la patrouille avec le maître</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité après la sortie</button></div>}
+    {state.phase === "patrol-defeat" && !effectivePaused && !pending && <div className={styles.choices}><p>Le maître a mis le groupe à l’abri. Les haltes et observations déjà enregistrées restent acquises.</p><button type="button" data-youth-patrol-retry onClick={() => { pulse("retry"); canvasRef.current?.focus(); }}>Réessayer la rencontre territoriale</button></div>}
+    {state.phase === "patrol-complete" && !pending && <div className={styles.choices}><p>{state.patrol && youthPatrolAssessment(state.patrol)}</p><p>Patrouille et retour enregistrés. Aucun trophée, rang adulte ou équipement nouveau n’a été accordé.</p><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité après la patrouille</button></div>}
+    {showTouch && !effectivePaused && !pending && state.phase !== "morning" && state.phase !== "desert-complete" && state.phase !== "patrol-complete" && state.phase !== "patrol-defeat" && state.phase !== "rest" && <div className={styles.touch} aria-label="Commandes tactiles de la formation">{TOUCH_ACTIONS.map(([action, label, title]) => touchButton(action, label, title))}</div>}
   </section>;
 }

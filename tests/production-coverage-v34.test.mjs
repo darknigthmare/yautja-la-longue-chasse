@@ -41,7 +41,8 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
   assert.equal(coverage.hunters.runtimeFighters, 15);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 315 + 6);
+  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12,
+    'Global coverage includes the six V51 and twelve V52 ceremony clips, without changing V50 combat coverage');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
   const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
@@ -77,7 +78,8 @@ test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hun
       ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
   const coverage = productionCoverage([], []);
   assert.equal(coverage.hunters.runtimeFighters, 15);
-  assert.equal(coverage.hunters.validatedClips, 321);
+  assert.equal(coverage.hunters.validatedClips, 333,
+    'The exact six V51 clips above remain unchanged while V52 adds twelve independent ceremony clips');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
 });

@@ -1,0 +1,111 @@
+{
+  "version": "V52",
+  "date": "2026-09-26",
+  "localVerification": {
+    "build": {
+      "passed": true,
+      "log": "outputs/qa-commercial-audit/v52/build-final.log"
+    },
+    "desktopRenderer": {
+      "passed": true,
+      "log": "outputs/qa-commercial-audit/v52/desktop-build-final.log",
+      "sourceDigest": "6a47def5090d3237c4468fb7011aa2953d2b07be0cdbb3313518c22100d14b9b"
+    },
+    "typecheck": {
+      "passed": true,
+      "log": "outputs/qa-commercial-audit/v52/typecheck-final.log",
+      "incremental": false
+    },
+    "lint": {
+      "passed": true,
+      "log": "outputs/qa-commercial-audit/v52/lint-final.log",
+      "errors": 0,
+      "existingWarnings": 1,
+      "warning": "ClanChroniclePanel.tsx:42 next/no-img-element"
+    },
+    "tests": {
+      "passed": true,
+      "log": "outputs/qa-commercial-audit/v52/tests-final.log",
+      "passedTests": 1641,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "distinctChecks": 46,
+      "finalBuildChecks": 38,
+      "reports": [
+        {
+          "scope": "patrol",
+          "path": "outputs/qa-commercial-audit/v52/youth/patrol-browser-qa-final/report.json",
+          "passed": true,
+          "checks": 6,
+          "build": "final"
+        },
+        {
+          "scope": "journeys",
+          "path": "outputs/qa-commercial-audit/v52/stage-journeys/browser-build2/report.json",
+          "passed": true,
+          "checks": 8,
+          "build": "final"
+        },
+        {
+          "scope": "presentation",
+          "path": "outputs/qa-commercial-audit/v52/presentation-art-browser-qa-final2/report.json",
+          "passed": true,
+          "checks": 24,
+          "build": "final"
+        },
+        {
+          "scope": "touch-layout",
+          "path": "outputs/qa-commercial-audit/v52/youth/touch-layout-browser-qa/report.json",
+          "passed": true,
+          "checks": 8,
+          "build": "build1 - youth runtime unchanged in final"
+        }
+      ],
+      "errors": 0,
+      "unexpectedHttpErrors": 0
+    },
+    "sourceAssets": {
+      "passed": true,
+      "count": 7,
+      "path": "outputs\\qa-commercial-audit\\v52\\local-assets-final.json"
+    },
+    "availableBiomeArt": {
+      "passed": true,
+      "availablePairs": 464,
+      "plannedPairs": 800,
+      "missingPairs": 336,
+      "completeProduction": false,
+      "path": "outputs\\qa-commercial-audit\\v52\\available-assets.json"
+    },
+    "diffCheck": {
+      "passed": true
+    },
+    "reactReview": "Existing animation-frame refs, save ownership guards, accessibility controls and exact-variant rendering preserved."
+  },
+  "coverage": {
+    "pitAddedClips": 12,
+    "pitAddedDistinctDrawings": 26,
+    "grazerDrawings": 8,
+    "totalPitClips": 333,
+    "totalPitDrawings": 669,
+    "animatedAppearances": 20,
+    "animatedIdentities": 15,
+    "suppliedStaticVariants": 401,
+    "totalOptionalTwoSectorRoutes": 5
+  },
+  "qualificationNotes": [
+    "First full run: three stale source/count assertions failed, corrected while preserving historical coverage; final full suite passed.",
+    "First journey browser pass found a Reserve destination label left in all new routes; runtime corrected and visible labels asserted on final build.",
+    "Art final1 missed a short intro screenshot window; final2 requires passive draw observations and exact crops, records late captures explicitly, all checks passed without combat clock injection.",
+    "Mobile youth checks ran on build1; only PIT code changed afterward. Desktop browser youth route reran on final build.",
+    "Chrome/Chromium controlled input and preference emulation; no physical device or commercial certification.",
+    "No new private ChatGPT conversation retrieval in this lot."
+  ],
+  "distribution": {
+    "webProduction": "Not asserted by this local report; see outputs/qa-commercial-audit/v52/publication-verified.json after publication.",
+    "windowsVersion": "1.0.52",
+    "windowsQualification": "Renderer built; packaging and actual offline EXE QA must pass after source commit. See work/v52-pc/qa/v52/verification.json and package-verification.json when produced."
+  }
+}

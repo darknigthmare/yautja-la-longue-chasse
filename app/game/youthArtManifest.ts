@@ -1,9 +1,31 @@
 import type { YouthArtManifest } from "./youthTrainingRendering";
 
+
+// Eight independently drawn native orientations. Rectangles/pivots are measured
+// from the unchanged OpenAI source; recovery intentionally holds the watch pose.
+const grazerFrame = (rect: readonly [number, number, number, number], pivot: readonly [number, number]) => ({ src: "/game/youth/v52/grazer-native.png", rect, pivot });
+const grazerRight = [
+  grazerFrame([29, 161, 400, 250], [200, 246]),
+  grazerFrame([469, 191, 379, 221], [189.5, 217]),
+  grazerFrame([892, 161, 425, 250], [212.5, 246]),
+  grazerFrame([1376, 172, 374, 241], [187, 237]),
+];
+const grazerLeft = [
+  grazerFrame([39, 522, 396, 258], [198, 254]),
+  grazerFrame([496, 546, 381, 234], [190.5, 230]),
+  grazerFrame([917, 524, 435, 253], [217.5, 249]),
+  grazerFrame([1376, 534, 380, 248], [190, 244]),
+];
+
 /** Native OpenAI raster drawings. Sources unchanged; measured independent rectangles. */
 export const YOUTH_ART_MANIFEST: YouthArtManifest = {
   "version": 1,
   "actorKind": "unblooded",
+  patrolGrazer: {
+    bodyHeight: 250, displayHeight: 100,
+    left: { watch: grazerLeft[0], telegraph: grazerLeft[1], charge: [grazerLeft[2], grazerLeft[3]], recover: grazerLeft[0] },
+    right: { watch: grazerRight[0], telegraph: grazerRight[1], charge: [grazerRight[2], grazerRight[3]], recover: grazerRight[0] },
+  },
   "scenes": {
     "desert": { "src": "/game/youth/v49/desert.png", "groundY": 727 },
     "dojo": {

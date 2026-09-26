@@ -1,4 +1,5 @@
 import type { SaveGame } from "../types";
+import { isYouthPatrolPhase } from "./youthPatrol";
 import { normalizeNurseryCampaign } from "./nurseryCampaign";
 import { recordChronicleEvidence } from "./clanChronicle";
 import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYouthReceipt, getYouthReceipts, type YouthState, type YouthReceipt } from "./youthTraining";
@@ -74,7 +75,8 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   if (!progress || !checkpoint || !youthCampaignMatchesSave(save) || !iso(now) || checkpoint.tick < progress.checkpoint.tick) return null;
   const previous = progress.checkpoint;
   const retryingDuel = previous.phase === "camp-defeat" && checkpoint.phase === "camp-duel" && checkpoint.progress.duelAttempts > previous.progress.duelAttempts;
-  if ((YOUTH_PHASES.indexOf(checkpoint.phase) < YOUTH_PHASES.indexOf(previous.phase) && !retryingDuel) || checkpoint.phaseStartedAt < previous.phaseStartedAt) return null;
+  const retryingPatrol = previous.phase === "patrol-defeat" && checkpoint.phase === "patrol-ambush" && checkpoint.patrol?.attempts === (previous.patrol?.attempts ?? 0) + 1;
+  if ((YOUTH_PHASES.indexOf(checkpoint.phase) < YOUTH_PHASES.indexOf(previous.phase) && !retryingDuel && !retryingPatrol) || checkpoint.phaseStartedAt < previous.phaseStartedAt) return null;
   const counters = ["moveMarkers", "jumps", "dodges", "strikes", "throws", "courseAttempts", "duelAttempts"] as const;
   if (counters.some(key => checkpoint.progress[key] < previous.progress[key])) return null;
   // A failed course may reset its local marks/timer only while increasing its attempt.
@@ -89,7 +91,15 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   const fresh = receipts.filter(receipt => !progress.receipts.some(previous => previous.id === receipt.id));
   if (fresh.some(receipt => !supplied.some(item => same(item, receipt)))) return null;
   if (previous.desert && (!checkpoint.desert || checkpoint.desert.clues < previous.desert.clues || previous.desert.ravineCleared && !checkpoint.desert.ravineCleared)) return null;
-  if (previous.phase === "desert-complete" && !same(checkpoint, previous)) return null;
+  // Existing completed reconnaissance remains a safe stop. Only the explicitly
+  // acknowledged patrol briefing can open the new chapter, never a later proof.
+  if (previous.phase === "desert-complete" && !same(checkpoint, previous) && checkpoint.phase !== "patrol-briefing") return null;
+  if (previous.phase === "patrol-complete" && !same(checkpoint, previous)) return null;
+  if (previous.patrol) {
+    const old = previous.patrol, next = checkpoint.patrol;
+    if (!next || next.halts < old.halts || next.attempts < old.attempts || next.totalHits < old.totalHits ||
+        next.attempts > old.attempts && !retryingPatrol || !retryingPatrol && (next.evaded < old.evaded || next.hits < old.hits)) return null;
+  }
   const training = earned(receipts, "youth-camp-duel");
   const chronicle = training ? recordChronicleEvidence(save.prologue!.chronicle, { id: "training-completed", sourceId: "chronicle.training.completed" }) : null;
   if (chronicle && !chronicle.accepted) return null;
@@ -104,9 +114,17 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
 export function withYouthCheckpoint(save: SaveGame, state: YouthState): SaveGame | null { return advance(save, [], state, new Date().toISOString()); }
 /** Scene receipts and equipment are committed atomically; an identical retry adds nothing. */
 export function withYouthProgress(save: SaveGame, receipts: readonly YouthReceipt[], state: YouthState, now = new Date().toISOString()): SaveGame | null { return advance(save, receipts, state, now); }
+/** Completed refers to the original formation; later active outings resume their own scene. */
+export function youthCampaignNeedsScene(progress: YouthCampaignProgress | null | undefined): boolean {
+  if (!progress) return false;
+  const phase = progress.checkpoint.phase;
+  return progress.status === "active" || phase.startsWith("desert-") && phase !== "desert-complete" || isYouthPatrolPhase(phase) && phase !== "patrol-complete";
+}
 export function youthCampaignObjective(progress: YouthCampaignProgress | null): string {
   if (!progress) return "Le maître t’attend : entre dans le dojo depuis son dialogue pour commencer les exercices.";
-  if (progress.checkpoint.phase === "desert-complete") return "La reconnaissance accompagnée du désert est rapportée et le groupe est revenu au camp. Le PIT de jeunesse et la véritable chasse restent à venir ; aucun rite ni rang supplémentaire n’est accordé.";
+  if (progress.checkpoint.phase === "patrol-complete") return "Patrouille, rencontre territoriale et évaluation sont enregistrées. Le groupe est revenu au camp sans prélever de trophée ; le PIT de jeunesse et les rites de chasse autonome restent à venir.";
+  if (isYouthPatrolPhase(progress.checkpoint.phase)) return "Rejoins le maître pour reprendre la patrouille à son checkpoint : haltes accompagnées, lecture des charges, évaluation et retour. Une interruption ne supprime pas les étapes déjà acquises.";
+  if (progress.checkpoint.phase === "desert-complete") return "La reconnaissance accompagnée du désert est rapportée. Rejoins le maître pour choisir de poursuivre la patrouille ; aucun départ ne se déclenche seul et aucun rite ni rang supplémentaire n’est accordé.";
   if (progress.checkpoint.phase.startsWith("desert-")) return "Rejoins le maître pour reprendre la sortie du désert à son dernier point sûr : observation, passage de basalte et retour accompagné.";
   if (progress.status === "completed") return "Premier réveil accompli. Rejoins le maître pour partir en reconnaissance accompagnée dans le désert. Aucun départ ne se déclenche sans ton choix.";
   const phase = progress.checkpoint.phase;

@@ -1,5 +1,5 @@
 import { getPitUserVariant, normalizePitUserVariant } from './pitUserRoster';
-import { PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE } from "./pitStageJourney";
+import { isPitStageJourneyForArena } from "./pitStageJourney";
 import {
   createPitCombatState,
   PIT_ARENAS,
@@ -378,13 +378,13 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode", "stageJourney"]) || !isCombatMode(rules.mode)) throw replayError();
   const arenaId = options.arenaId ?? "the-pit";
   if (!isArenaId(arenaId)) throw replayError();
-  if (rules.stageJourney !== undefined && (rules.stageJourney !== PIT_RESERVE_JOURNEY || arenaId !== PIT_RESERVE_GATE)) throw replayError();
+  if (rules.stageJourney !== undefined && !isPitStageJourneyForArena(rules.stageJourney, arenaId)) throw replayError();
   const seed = options.seed ?? 0;
   if (!isIntegerBetween(seed, 0, PIT_REPLAY_MAX_SEED)) throw replayError();
   return {
     fighters: [fighters[0], fighters[1]],
     ...(variants ? { variants } : {}),
-    rules: { mode: rules.mode, ...(rules.stageJourney === PIT_RESERVE_JOURNEY ? { stageJourney: PIT_RESERVE_JOURNEY } : {}) },
+    rules: { mode: rules.mode, ...(isPitStageJourneyForArena(rules.stageJourney, arenaId) ? { stageJourney: rules.stageJourney } : {}) },
     arenaId,
     seed,
   };
@@ -402,7 +402,7 @@ function structuralReplay(value: unknown): PitReplay | null {
   }
 
   if (!isRecord(value.rules) || !hasOnlyKeys(value.rules, value.engineVersion === PIT_STATE_VERSION ? ["mode", "stageJourney"] : ["mode"]) || !isCombatMode(value.rules.mode)) return null;
-  if (value.rules.stageJourney !== undefined && (value.rules.stageJourney !== PIT_RESERVE_JOURNEY || value.arenaId !== PIT_RESERVE_GATE)) return null;
+  if (value.rules.stageJourney !== undefined && !isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId)) return null;
   if (!Array.isArray(value.fighters) || value.fighters.length !== 2 ||
     !isFighterId(value.fighters[0]) || !isFighterId(value.fighters[1]) ||
     value.fighters[0] === value.fighters[1]) {
@@ -453,7 +453,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     arenaId: value.arenaId,
     encoding: PIT_REPLAY_ENCODING,
     seed: value.seed,
-    rules: { mode: value.rules.mode, ...(value.rules.stageJourney === PIT_RESERVE_JOURNEY ? { stageJourney: PIT_RESERVE_JOURNEY } : {}) },
+    rules: { mode: value.rules.mode, ...(isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId) ? { stageJourney: value.rules.stageJourney } : {}) },
     fighters: [value.fighters[0], value.fighters[1]],
     ...(variants ? { variants } : {}),
     segments,

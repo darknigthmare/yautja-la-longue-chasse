@@ -1,3 +1,4 @@
+import { isYouthPatrolPhase, YOUTH_PATROL_HALTS } from "./systems/youthPatrol";
 import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, YOUTH_DESERT_CLUES, type YouthState } from "./systems/youthTraining";
 
 export const YOUTH_ART_POSES = ["idle", "walk", "jump", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
@@ -7,16 +8,23 @@ export interface YouthArtClip { loop: boolean; frames: readonly YouthArtFrame[] 
 export interface YouthActorAtlas { src: string; bodyHeight: number; clips: Record<YouthArtPose, YouthArtClip> }
 export interface YouthPropSprite { src: string; rect: readonly [number, number, number, number]; pivot: readonly [number, number] }
 export type YouthPropId = "trainingTarget" | "platform" | "marker" | "bladeRack" | "maskPedestal" | "cot" | "door" | "brazier";
+export interface YouthPatrolGrazerArt {
+  bodyHeight: number; displayHeight: number;
+  left: { watch: YouthPropSprite; telegraph: YouthPropSprite; recover: YouthPropSprite; charge: readonly YouthPropSprite[] };
+  right: { watch: YouthPropSprite; telegraph: YouthPropSprite; recover: YouthPropSprite; charge: readonly YouthPropSprite[] };
+}
+export const youthPatrolGrazerSprites = (art: YouthPatrolGrazerArt | undefined): YouthPropSprite[] => art ? [art.left, art.right].flatMap(side => [side.watch, side.telegraph, side.recover, ...side.charge]) : [];
 export interface YouthArtManifest {
   version: 1; actorKind: "unblooded";
   scenes: Record<"dojo" | "camp" | "quarters", { src: string; groundY?: number }> & { desert?: { src: string; groundY?: number } };
   desertProps?: Record<"footprints" | "branch" | "stone", YouthPropSprite>;
+  patrolGrazer?: YouthPatrolGrazerArt;
   blade: { src: string }; props: Record<YouthPropId, YouthPropSprite>;
   actors: Record<"player" | "rival", Record<"left" | "right", YouthActorAtlas>>;
 }
 export interface YouthArtBank { manifest: YouthArtManifest; images: ReadonlyMap<string, HTMLImageElement> }
 export function youthArtSources(manifest: YouthArtManifest) {
-  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src), ...Object.values(manifest.desertProps ?? {}).map(prop => prop.src),
+  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src), ...Object.values(manifest.desertProps ?? {}).map(prop => prop.src), ...youthPatrolGrazerSprites(manifest.patrolGrazer).map(prop => prop.src),
     ...Object.values(manifest.actors).flatMap(actor => [actor.left.src, actor.right.src])])];
 }
 export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap<string, { width: number; height: number }>): string[] {
@@ -31,10 +39,11 @@ export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap
     const image = images.get(scene.src);
     if (scene.groundY !== undefined && (!Number.isFinite(scene.groundY) || scene.groundY <= 0 || image && scene.groundY > image.height)) errors.push(`Sol du décor ${name} hors image.`);
   }
-  for (const [name, prop] of Object.entries({ ...manifest.props, ...manifest.desertProps })) {
+  for (const [name, prop] of Object.entries({ ...manifest.props, ...manifest.desertProps, ...Object.fromEntries(youthPatrolGrazerSprites(manifest.patrolGrazer).map((sprite, index) => [`grazer-${index}`, sprite])) })) {
     const image = images.get(prop.src); const [x, y, w, h] = prop.rect;
     if (!prop.rect.every(value => Number.isFinite(value) && value >= 0) || w <= 0 || h <= 0 || image && (x + w > image.width || y + h > image.height) || !prop.pivot.every(value => Number.isFinite(value) && value >= 0) || prop.pivot[0] > w || prop.pivot[1] > h) errors.push(`Accessoire ${name} hors atlas.`);
   }
+  if (manifest.patrolGrazer && (!Number.isFinite(manifest.patrolGrazer.bodyHeight) || !(manifest.patrolGrazer.bodyHeight > 0) || !Number.isFinite(manifest.patrolGrazer.displayHeight) || !(manifest.patrolGrazer.displayHeight > 0) || manifest.patrolGrazer.left.charge.length < 1 || manifest.patrolGrazer.right.charge.length < 1)) errors.push("Brouteur : échelle ou poses manquantes.");
   for (const actor of Object.values(manifest.actors)) {
   if (actor.left.src === actor.right.src) errors.push("Deux orientations natives sont requises.");
   for (const direction of ["left", "right"] as const) {
@@ -85,7 +94,8 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   ctx.save(); ctx.clearRect(0, 0, width, height); ctx.fillStyle = "#090705"; ctx.fillRect(0, 0, width, height);
   if (!bank) { ctx.restore(); return; }
   const { manifest, images } = bank;
-  const desert = state.phase.startsWith("desert-");
+  const patrol = isYouthPatrolPhase(state.phase);
+  const desert = state.phase.startsWith("desert-") || patrol;
   const room = desert ? "desert" : state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
   const scene = manifest.scenes[room]; if (!scene) { ctx.restore(); return; }
   const backdrop = images.get(scene.src)!;
@@ -112,6 +122,7 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   if (!desert) { prop("brazier", 905, groundY, 96); prop("door", 105, groundY, 166); }
   else {
     prop("marker", 110, groundY, 32);
+    if (state.phase === "patrol-route") for (const halt of YOUTH_PATROL_HALTS) prop("marker", halt.x, groundY, 32);
     if (state.phase === "desert-tracks" && manifest.desertProps) {
       for (let i = 0; i < YOUTH_DESERT_CLUES.length; i++) {
         const sprite = manifest.desertProps[(["footprints", "branch", "stone"] as const)[i]], h = i === 0 ? 24 : i === 1 ? 45 : 52, ratio = h / sprite.rect[3];
@@ -148,6 +159,17 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     drawActor("rival", 150);
     if (state.rival.action === "jab" && state.rival.actionTick < 32) {
       ctx.strokeStyle = "#ffe2a2"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(state.rival.x, state.rival.y - 168, 10, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * state.rival.actionTick / 32); ctx.stroke();
+    }
+  }
+  if ((state.phase === "patrol-ambush" || state.phase === "patrol-defeat") && state.patrol && manifest.patrolGrazer) {
+    const grazer = state.patrol.grazer, art = manifest.patrolGrazer, side = art[grazer.direction === 1 ? "right" : "left"];
+    const sprite = grazer.phase === "charge" ? side.charge[Math.floor(grazer.ticks / 10) % side.charge.length] : side[grazer.phase];
+    const ratio = art.displayHeight / art.bodyHeight;
+    // Native orientations only; two distinct authored charge drawings per side.
+    ctx.drawImage(images.get(sprite.src)!, ...sprite.rect, grazer.x - sprite.pivot[0] * ratio, groundY - sprite.pivot[1] * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio);
+    if (state.phase === "patrol-ambush" && grazer.phase === "telegraph") {
+      ctx.strokeStyle = "#ffe0a0"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(grazer.x, groundY - art.displayHeight - 14, 11, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = "#ffe0a0"; ctx.font = "bold 16px sans-serif"; ctx.textAlign = "center"; ctx.fillText("!", grazer.x, groundY - art.displayHeight - 9);
     }
   }
   drawActor("player", actorHeight);

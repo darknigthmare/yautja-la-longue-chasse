@@ -1,5 +1,5 @@
 import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type PitUserFighterId } from './pitUserRoster';
-import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, PIT_RESERVE_JOURNEY, PIT_RESERVE_GATE, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
+import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, isPitStageJourneyForArena, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
 import { PIT_EXPANSION_FIGHTERS, type PitExpansionFighterId } from "./pitRosterExpansion";
 import { PIT_EXTENSION_ARENAS, PIT_EXTENSION_ARENA_IDS, type PitRuntimeArenaId } from "./pitArenaExtensions";
 import {
@@ -412,7 +412,7 @@ export function createPitCombatState(
   if (!Object.hasOwn(PIT_ARENAS, arenaId)) {
     throw new Error("THE PIT requires a registered arena.");
   }
-  if (options.stageJourney !== undefined && (options.stageJourney !== PIT_RESERVE_JOURNEY || arenaId !== PIT_RESERVE_GATE)) {
+  if (options.stageJourney !== undefined && !isPitStageJourneyForArena(options.stageJourney, arenaId)) {
     throw new Error("THE PIT requires a registered stage journey for this arena.");
   }
   return {
@@ -425,7 +425,7 @@ export function createPitCombatState(
     transitionFramesRemaining: 0,
     arenaId,
     rules: { mode: options.mode ?? "match", ...(options.stageJourney ? { stageJourney: options.stageJourney } : {}) },
-    ...(options.stageJourney ? { stageJourney: createPitStageJourney() } : {}),
+    ...(options.stageJourney ? { stageJourney: createPitStageJourney(options.stageJourney) } : {}),
     fighters: [freshFighter(0, leftId, 0, latchFromInput(), 0, options.variants?.[0]), freshFighter(1, rightId, 0, latchFromInput(), 0, options.variants?.[1])],
     techniqueEffects: [],
     pendingThrow: null,
@@ -1555,7 +1555,7 @@ function updatePressureTraque(state: PitCombatState): void {
 }
 
 function beginNextRound(state: PitCombatState, inputs: readonly [PitInput, PitInput]): void {
-  if (state.rules.stageJourney) state.stageJourney = createPitStageJourney();
+  if (state.rules.stageJourney) state.stageJourney = createPitStageJourney(state.rules.stageJourney);
   const [left, right] = state.fighters;
   state.round += 1;
   state.pendingThrow = null;

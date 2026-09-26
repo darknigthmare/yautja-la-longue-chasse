@@ -5,19 +5,30 @@ import path from "node:path";
 import { DESKTOP_VERSION, DESKTOP_RELEASE_TAG } from "../desktop/release.mjs";
 import { desktopBuildPaths, assertDesktopOutputSafety } from "../desktop/build-paths.mjs";
 
+import { campaignFixture } from "./campaign-browser-helpers.mjs";
+import { selectPitMatch, openPitSelectionOptions, closePitSelectionOptions, returnPitSelection } from "./pit-selection-browser-helpers.mjs";
+import { verifyDesktopNewCampaign, verifyDesktopPitIntro, advanceDesktopUntil } from "./desktop-current-flows.mjs";
+import { verifyDesktopYouthPatrol } from "./desktop-youth-patrol-v52.mjs";
+
 const EXPECTED_CONTENT_VERSION = DESKTOP_RELEASE_TAG.toUpperCase();
 
 const paths = desktopBuildPaths();
 await assertDesktopOutputSafety(paths);
 const evidence = paths.evidence;
 await fs.mkdir(evidence, { recursive: true });
-const profile = await fs.mkdtemp(path.join(evidence, "profile-"));
+const profiles = {
+  fresh: await fs.mkdtemp(path.join(evidence, "profile-new-")),
+  adult: await fs.mkdtemp(path.join(evidence, "profile-legacy-")),
+  youth: await fs.mkdtemp(path.join(evidence, "profile-patrol-")),
+};
+// Never seed or clear the user's normal PC profile. Every scenario owns its directory.
+const profile = profiles.adult;
 const executablePath = path.join(paths.directory, "Yautja-La-Longue-Chasse.exe");
 const checks = [];
 const errors = [];
 const failedLocalRequests = [];
-async function launch() {
-  const instance = await electron.launch({ executablePath, env: { ...process.env, YAUTJA_DESKTOP_QA_PROFILE: profile }, timeout: 60000 });
+async function launch(qaProfile = profile) {
+  const instance = await electron.launch({ executablePath, env: { ...process.env, YAUTJA_DESKTOP_QA_PROFILE: qaProfile }, timeout: 60000 });
   const page = await instance.firstWindow();
   // A hidden Electron window can deliver only one compositor frame despite
   // backgroundThrottling=false. Control the browser clock for this QA profile;
@@ -28,7 +39,7 @@ async function launch() {
   await instance.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.setBackgroundThrottling(false));
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("requestfailed", (request) => { if (request.url().startsWith("yautja:")) failedLocalRequests.push({ url: request.url(), error: request.failure() }); });
-  await page.getByRole("button", { name: "Jouer", exact: true }).waitFor({ timeout: 30000 });
+  await page.locator('[data-campaign-menu="main"]').waitFor({ timeout: 30000 });
   return { instance, page };
 }
 async function close(instance) {
@@ -71,8 +82,19 @@ async function captureWindow(instance, fileName) {
 }
 let current;
 try {
-  current = await launch();
+  current = await launch(profiles.fresh);
+  await verifyDesktopNewCampaign(current.page, name => captureWindow(current.instance, name), checks);
+  await close(current.instance); current = undefined;
+  current = await launch(profiles.adult);
   const { instance, page } = current;
+  const fixture = await campaignFixture();
+  await page.evaluate(({key, save}) => {
+    if (Object.keys(localStorage).length) throw new Error("Adult fixture requires an empty isolated QA profile");
+    localStorage.setItem(key, JSON.stringify(save));
+  }, fixture);
+  await page.reload();
+  await page.getByRole("button", { name: /^Continuer/ }).click();
+  await page.locator('[data-campaign-location="deck"]').waitFor();
   assert.equal(page.url(), "yautja://game/");
   assert.equal(await instance.evaluate(({app})=>app.getVersion()),DESKTOP_VERSION);
   assert.equal(
@@ -135,7 +157,7 @@ try {
   await page.getByRole("button", { name: "Retour au menu", exact: true }).click();
   checks.push("Offline gallery opens a decoded full-resolution local raster in a sandboxed auxiliary window, reuses it, rejects HTML/SVG/JS/external windows and preserves the save.");
 
-  await page.getByRole("button", { name: "Réglages", exact: true }).click();
+  await page.getByRole("button", { name: "Pause / réglages", exact: true }).click();
   await page.getByRole("checkbox", { name: "Violence atténuée" }).check();
   const exportPath = path.join(evidence, "exported-campaign.json");
   await instance.evaluate(({ session }, target) => {
@@ -154,8 +176,6 @@ try {
   let saved = await page.evaluate(() => localStorage.getItem("yautja-long-hunt.save"));
   assert.ok(saved && saved.length > 500);
   checks.push("Real setting persisted; campaign exported through the native download path.");
-
-  await page.getByRole("button", { name: "Jouer", exact: true }).click();
 
   await page.getByRole("button", { name: "Yautja Prime · monde natal", exact: true }).click();
   await page.locator("[data-homeworld-hub]").waitFor();
@@ -218,9 +238,9 @@ try {
   await page.getByRole("button",{name:"Rejoindre le vaisseau",exact:true}).click();
   checks.push("Homeworld movement, NPC greeting and first evidence persist offline; Marches introduction enters and exits; Justice investigator choice preserves honor.");
   await page.getByRole("button", { name: /THE PIT.*combat/i }).click();
-  await page.getByText(/16 combattants sélectionnables · 20 arènes jouables · catalogue de production : 100 stages/).waitFor();
-  await page.getByRole("radio", { name: /Entraînement/ }).click();
-  await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
+  await page.getByRole("radio", { name: /^Versus local/ }).click();
+  await selectPitMatch(page, { player: "jungle-hunter", opponent: "berserker", arena: "the-pit" });
+  await verifyDesktopPitIntro(page, name => captureWindow(instance, name), checks);
   await page.getByRole("region", { name: "Combat THE PIT" }).waitFor();
   assert.ok(await page.locator("canvas").count() > 0);
   const pitCanvas = page.getByRole("region", { name: "Combat THE PIT" }).locator("canvas");
@@ -239,15 +259,16 @@ try {
     { arenaId: "arena-020-trone-fracture", player: "greyback", opponent: "tracker" },
     { arenaId: "arena-009-quais-du-premier-sang", player: "theta", opponent: "machiko-noguchi" },
   ]) {
-    await page.getByRole("button", { name: /^Quitter ·/ }).click();
-    await page.getByRole("combobox", { name: "Combattant joueur", exact: true }).selectOption(scenario.player);
-    await page.getByRole("combobox", { name: "Adversaire", exact: true }).selectOption(scenario.opponent);
-    await page.getByRole("combobox", { name: "Arène", exact: true }).selectOption(scenario.arenaId);
+    await returnPitSelection(page);
+    await selectPitMatch(page, { player: scenario.player, opponent: scenario.opponent, arena: scenario.arenaId, launch: false });
+    await openPitSelectionOptions(page);
     for (const modeLabel of [/Arcade individuel/, /Circuit du clan/, /Descente/]) {
       assert.equal(await page.getByRole("radio", { name: modeLabel }).isDisabled(), true);
     }
-    await page.getByRole("button", { name: /ENTRER DANS L’ARÈNE/ }).click();
-    await page.clock.runFor(250);
+    await closePitSelectionOptions(page);
+    await page.locator('[data-pit-selection-confirm]').click();
+    await advanceDesktopUntil(page, () => page.locator('[data-pit-immersive]').evaluate(node => node.dataset.pitPresentationPhase === 'fight' && node.dataset.pitPresentationBlocked === 'false'), 'extension fight phase');
+    await page.clock.runFor(100);
     const extensionCanvas = page.locator('canvas[data-pit-arena-id="' + scenario.arenaId + '"]');
     await extensionCanvas.locator('xpath=self::*[@data-pit-arena-art-status="bitmap"]').waitFor();
     assert.equal(await extensionCanvas.getAttribute("data-pit-arena-loaded-images"), "14");
@@ -267,7 +288,7 @@ try {
 
 
   await page.goto("yautja://game/");
-  await page.getByRole("button", { name: "Jouer", exact: true }).click();
+  await page.getByRole("button", { name: /^Continuer/ }).click();
   await page.getByRole("button", { name: /^Console du vaisseau$/i }).click();
   await page.getByRole("button", { name: /^Ouvrir la carte galactique/i }).click();
   for (let level = 0; level < 3; level++) {
@@ -295,16 +316,30 @@ try {
   await close(instance); current = undefined;
   current = await launch();
   assert.equal(await current.page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")), saved);
-  await current.page.getByRole("button", { name: /^Reprendre la chasse :/ }).waitFor();
+  assert.equal(await current.page.evaluate(() => localStorage.getItem("yautja-long-hunt.active-hunt")), suspended);
+  await current.page.getByRole("button", { name: /^Continuer/ }).click();
+  await current.page.getByRole("group", { name: "État du chasseur" }).waitFor();
+  await current.page.getByRole("button", { name: "Mettre en pause et consulter la carte", exact: true }).click();
+  await current.page.getByRole("button", { name: "Suspendre et sauvegarder", exact: true }).click();
   await current.page.getByRole("button", { name: "Réglages", exact: true }).click();
   assert.equal(await current.page.getByRole("checkbox", { name: "Violence atténuée" }).isChecked(), true);
   const restarted=JSON.parse(await current.page.evaluate(()=>localStorage.getItem("yautja-long-hunt.save")));
   assert.equal(restarted.justice.originChoice,"investigator"); assert.ok(restarted.homeworld.evidenceIds.includes("suspect-trophy"));
   checks.push("Campaign bytes, suspended hunt, Homeworld evidence, Justice choice and setting retained after clean process exit and cold restart.");
   await close(current.instance); current = undefined;
+
+  current = await launch(profiles.youth);
+  const youthSave = await verifyDesktopYouthPatrol(current.page, { output: evidence, capture: name => captureWindow(current.instance, name), checks });
+  await close(current.instance); current = undefined;
+  current = await launch(profiles.youth);
+  assert.equal(await current.page.evaluate(() => localStorage.getItem("yautja-long-hunt.save")), youthSave);
+  await current.page.getByRole("button", { name: /^Continuer/ }).click();
+  await current.page.locator('[data-unblooded-objective="patrol-returned"]').waitFor();
+  checks.push("V52 patrol completed through real keys from a physically played V49 archive; 16 proofs and city return survive a cold EXE restart.");
+  await close(current.instance); current = undefined;
   assert.deepEqual(errors, []);
   assert.deepEqual(failedLocalRequests, []);
-  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, executablePath, profile, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
+  await fs.writeFile(path.join(evidence, "verification.json"), JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, executablePath, profiles, checks, errors, failedLocalRequests, testedAt: new Date().toISOString(), limit: "Hidden automated session with controlled browser clock and real keyboard input; visible-window hardware cadence, physical controller, performance and full campaign are not certified." }, null, 2));
   console.log(JSON.stringify({ passed: true, desktopVersion: DESKTOP_VERSION, contentVersion: EXPECTED_CONTENT_VERSION, checks, errors, failedLocalRequests }, null, 2));
 } catch (error) {
   if (current) await captureWindow(current.instance, "failure.png").catch(() => {});

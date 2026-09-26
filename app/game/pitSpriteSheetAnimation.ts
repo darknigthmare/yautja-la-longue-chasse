@@ -260,6 +260,11 @@ export function resolvePitSpriteSheetPresentation(
   const choices: { id: string; mode: "play" | "first" | "last"; status: PitSpriteSheetPresentationFrame["status"] }[] = [];
   if (cue.kind === "intro" || cue.kind === "victory" || cue.kind === "defeat") {
     choices.push({ id: "pit.presentation." + cue.kind, mode: "play", status: "dedicated-animation" });
+  } else if (cue.kind === "waiting" || cue.kind === "ready") {
+    // Keep the exact reviewed entrance connected to its waiting/countdown pose.
+    // This is a held drawing, not a new idle animation or a gameplay cursor.
+    choices.push({ id: "pit.presentation.intro", mode: cue.kind === "waiting" ? "first" : "last",
+      status: "staged-held-pose" });
   }
   if (cue.kind === "defeat") {
     // A crouched or idle drawing is a declared held fallback, not a death clip.
@@ -277,7 +282,7 @@ export function resolvePitSpriteSheetPresentation(
         !animation.readyClips.has(clipKey(choice.id, facing))) continue;
     const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, choice.id, facing, 0);
     if (!first) continue;
-    if (choice.status === "dedicated-animation" && first.clip.loop) continue;
+    if (choice.id.startsWith("pit.presentation.") && first.clip.loop) continue;
     const elapsed = choice.mode === "last" || (cue.reducedMotion && choice.status === "dedicated-animation")
       ? Math.max(0, first.totalTicks - 1)
       : choice.mode === "first" || cue.reducedMotion ? 0

@@ -1,7 +1,8 @@
+import { YOUTH_PATROL_PHASES, YOUTH_PATROL_MILESTONES, YOUTH_PATROL_HALTS, YOUTH_PATROL_HOLD_TICKS, createYouthPatrol, cloneYouthPatrol, normalizeYouthPatrol, retryYouthPatrol, stepYouthPatrolEncounter, isYouthPatrolPhase, type YouthPatrolProgress } from "./youthPatrol";
 /** Deterministic Unblooded training. Original playable adaptation; no rank, XP or adult equipment grant. */
 export const YOUTH_ARENA = { width: 960, height: 540, left: 70, right: 890, groundY: 430, actorHeight: 112, halfWidth: 20, gravity: .55, speed: 3.7 } as const;
 export const YOUTH_TIMING = { tickRate: 60, courseLimitTicks: 2100, restTicks: 180, practiceWindupTicks: 32 } as const;
-export const YOUTH_PHASES = ['dojo-move', 'dojo-jump', 'dojo-dodge', 'dojo-strike', 'dojo-throw', 'blade-award', 'armory', 'camp-run', 'camp-duel', 'camp-defeat', 'barracks', 'rest', 'morning', 'desert-briefing', 'desert-tracks', 'desert-crossing', 'desert-report', 'desert-return', 'desert-complete'] as const;
+export const YOUTH_PHASES = ['dojo-move', 'dojo-jump', 'dojo-dodge', 'dojo-strike', 'dojo-throw', 'blade-award', 'armory', 'camp-run', 'camp-duel', 'camp-defeat', 'barracks', 'rest', 'morning', 'desert-briefing', 'desert-tracks', 'desert-crossing', 'desert-report', 'desert-return', 'desert-complete', ...YOUTH_PATROL_PHASES] as const;
 export type YouthPhase = typeof YOUTH_PHASES[number];
 export type YouthAction = 'idle' | 'jab' | 'blade' | 'throw' | 'dodge' | 'hurt' | 'thrown' | 'ko';
 export type YouthCosmetic = 'ochre' | 'ash' | 'rust';
@@ -36,7 +37,7 @@ export interface YouthEnvironment {
 }
 export const YOUTH_MILESTONES = ['youth-dojo-completed', 'youth-first-blade', 'youth-first-biomask', 'youth-camp-run', 'youth-camp-duel', 'youth-first-rest'] as const;
 export const YOUTH_DESERT_MILESTONES = ['youth-desert-departure', 'youth-desert-observations', 'youth-desert-crossing', 'youth-desert-report', 'youth-desert-return'] as const;
-export const YOUTH_ALL_MILESTONES = [...YOUTH_MILESTONES, ...YOUTH_DESERT_MILESTONES] as const;
+export const YOUTH_ALL_MILESTONES = [...YOUTH_MILESTONES, ...YOUTH_DESERT_MILESTONES, ...YOUTH_PATROL_MILESTONES] as const;
 export const YOUTH_DESERT_CLUES = [
     { x: 300, label: 'Empreintes dans le sable', reading: 'Les bords restent nets : le passage est récent. Les pas vont vers le basalte.' },
     { x: 530, label: 'Branche rompue', reading: 'Le bois clair est encore exposé. Le passage continue vers les roches.' },
@@ -48,8 +49,8 @@ export interface YouthDesertProgress { clues: number; scanTicks: number; ravineC
 export const isYouthDesertPhase = (phase: YouthPhase) => phase.startsWith('desert-');
 export interface YouthReceipt {
     id: YouthMilestone;
-    sourceId: 'youth.training.v48' | 'youth.desert.v49';
-    sceneId: 'unblooded-training' | 'unblooded-desert';
+    sourceId: 'youth.training.v48' | 'youth.desert.v49' | 'youth.patrol.v52';
+    sceneId: 'unblooded-training' | 'unblooded-desert' | 'unblooded-patrol';
     tick: number;
 }
 export interface YouthState {
@@ -68,6 +69,7 @@ export interface YouthState {
     cosmetic: YouthCosmetic | null;
     milestones: Partial<Record<YouthMilestone, number>>;
     desert: YouthDesertProgress | null;
+    patrol: YouthPatrolProgress | null;
     progress: {
         moveMarkers: number;
         jumps: number;
@@ -130,12 +132,13 @@ const canAct = (a: YouthActor) => a.action === 'idle' && grounded(a) && a.compos
 const record = (v: unknown): v is Record<string, unknown> => v !== null && typeof v === 'object' && !Array.isArray(v);
 const integer = (v: unknown, min: number, max: number): v is number => typeof v === 'number' && Number.isSafeInteger(v) && v >= min && v <= max;
 const finite = (v: unknown, min: number, max: number): v is number => typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max;
-const clone = (s: YouthState): YouthState => ({ ...s, previousButtons: { ...s.previousButtons }, player: { ...s.player }, rival: { ...s.rival }, milestones: { ...s.milestones }, desert: s.desert ? { ...s.desert } : null, progress: { ...s.progress } });
-export function createYouthTraining(): YouthState { return { version: 1, phase: 'dojo-move', tick: 0, phaseTick: 0, phaseStartedAt: 0, inputArmed: false, previousButtons: noButtons(), player: actor(200), rival: actor(650, -1), rivalDecisionTicks: 60, practiceThreatened: false, jumpCleared: false, cosmetic: null, milestones: {}, desert: null, progress: { moveMarkers: 0, jumps: 0, dodges: 0, strikes: 0, throws: 0, courseMarkers: 0, courseElapsed: 0, courseAttempts: 1, duelAttempts: 1 } }; }
-export function getYouthObstacles(s: Pick<YouthState, 'phase'>): YouthObstacle[] { return s.phase === 'dojo-jump' ? [{ x: 440, y: 380, width: 90, height: 50 }] : (s.phase === 'camp-run' || s.phase === 'desert-crossing' || s.phase === 'desert-return') ? [{ x: 350, y: 375, width: 70, height: 55 }, { x: 650, y: 350, width: 70, height: 80 }] : []; }
+const clone = (s: YouthState): YouthState => ({ ...s, previousButtons: { ...s.previousButtons }, player: { ...s.player }, rival: { ...s.rival }, milestones: { ...s.milestones }, desert: s.desert ? { ...s.desert } : null, patrol: cloneYouthPatrol(s.patrol), progress: { ...s.progress } });
+export function createYouthTraining(): YouthState { return { version: 1, phase: 'dojo-move', tick: 0, phaseTick: 0, phaseStartedAt: 0, inputArmed: false, previousButtons: noButtons(), player: actor(200), rival: actor(650, -1), rivalDecisionTicks: 60, practiceThreatened: false, jumpCleared: false, cosmetic: null, milestones: {}, desert: null, patrol: null, progress: { moveMarkers: 0, jumps: 0, dodges: 0, strikes: 0, throws: 0, courseMarkers: 0, courseElapsed: 0, courseAttempts: 1, duelAttempts: 1 } }; }
+export function getYouthObstacles(s: Pick<YouthState, 'phase'>): YouthObstacle[] { return s.phase === 'dojo-jump' ? [{ x: 440, y: 380, width: 90, height: 50 }] : (s.phase === 'camp-run' || s.phase === 'desert-crossing' || s.phase === 'desert-return' || s.phase === 'patrol-route' || s.phase === 'patrol-return') ? [{ x: 350, y: 375, width: 70, height: 55 }, { x: 650, y: 350, width: 70, height: 80 }] : []; }
 function receiptFor(id: YouthMilestone, tick: number): YouthReceipt {
     const desert = YOUTH_DESERT_MILESTONES.includes(id as typeof YOUTH_DESERT_MILESTONES[number]);
-    return { id, tick, sourceId: desert ? 'youth.desert.v49' : 'youth.training.v48', sceneId: desert ? 'unblooded-desert' : 'unblooded-training' };
+    const patrol = YOUTH_PATROL_MILESTONES.includes(id as typeof YOUTH_PATROL_MILESTONES[number]);
+    return { id, tick, sourceId: patrol ? 'youth.patrol.v52' : desert ? 'youth.desert.v49' : 'youth.training.v48', sceneId: patrol ? 'unblooded-patrol' : desert ? 'unblooded-desert' : 'unblooded-training' };
 }
 export function getYouthReceipts(s: YouthState): YouthReceipt[] { return YOUTH_ALL_MILESTONES.flatMap(id => s.milestones[id] === undefined ? [] : [receiptFor(id, s.milestones[id]!)]); }
 export function normalizeYouthReceipt(v: unknown, s: YouthState): YouthReceipt | null {
@@ -155,6 +158,13 @@ function transition(s: YouthState, phase: YouthPhase, events: YouthEvent[]) { s.
     if (phase === 'camp-duel')
         s.rival.composure = 84;
 }
+    if (isYouthPatrolPhase(phase)) {
+        if (phase === 'patrol-briefing') s.patrol = createYouthPatrol();
+        if (phase !== 'patrol-defeat') {
+            s.player = actor(phase === 'patrol-ambush' ? 520 : phase === 'patrol-assessment' ? 760 : phase === 'patrol-return' ? 810 : 160);
+            s.rival = actor(phase === 'patrol-ambush' ? 850 : phase === 'patrol-assessment' ? 830 : phase === 'patrol-briefing' ? 650 : 90, -1);
+        }
+    }
     if (isYouthDesertPhase(phase)) {
         s.player = actor(phase === 'desert-return' ? 810 : phase === 'desert-report' ? 770 : phase === 'desert-complete' ? 120 : 160);
         s.rival = actor(phase === 'desert-report' ? 830 : phase === 'desert-briefing' ? 680 : phase === 'desert-complete' ? 240 : phase === 'desert-return' ? 700 : 70, -1);
@@ -306,9 +316,17 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
         if (pressed.confirm) { s.tick++; transition(s, 'desert-briefing', out.events); }
         return out;
     }
-    if (s.phase === 'desert-complete') return out;
+    if (s.phase === 'desert-complete') {
+        if (pressed.confirm) { s.tick++; transition(s, 'patrol-briefing', out.events); }
+        return out;
+    }
+    if (s.phase === 'patrol-complete') return out;
     s.tick++;
     s.phaseTick++;
+    if (s.phase === 'patrol-defeat') {
+        if (pressed.retry || pressed.confirm) { retryYouthPatrol(s.patrol!); transition(s, 'patrol-ambush', out.events); }
+        return out;
+    }
     if (s.phase === 'camp-defeat') {
         if (pressed.retry || pressed.confirm) {
             s.progress.duelAttempts++;
@@ -330,17 +348,17 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
         a.vx = move * YOUTH_ARENA.speed;
         if (move)
             a.facing = move;
-        if (pressed.dodge && !isYouthDesertPhase(s.phase)) {
+        if (pressed.dodge && !isYouthDesertPhase(s.phase) && (!isYouthPatrolPhase(s.phase) || s.phase === 'patrol-ambush')) {
             // A timed dodge must begin inside the announced strike's real reach.
             // Running away first and dodging harmless air never passes the lesson.
             if (s.phase === 'dojo-dodge') s.practiceThreatened = s.rival.action === 'jab' && !s.rival.actionHitResolved && attackConnects(s.rival, a, 75);
             begin(a, 'dodge', move, 'player', out.events);
         }
-        else if (pressed.throw && !isYouthDesertPhase(s.phase))
+        else if (pressed.throw && !isYouthDesertPhase(s.phase) && !isYouthPatrolPhase(s.phase))
             begin(a, 'throw', move, 'player', out.events);
-        else if (pressed.blade && !isYouthDesertPhase(s.phase) && s.milestones['youth-first-blade'] !== undefined)
+        else if (pressed.blade && !isYouthDesertPhase(s.phase) && !isYouthPatrolPhase(s.phase) && s.milestones['youth-first-blade'] !== undefined)
             begin(a, 'blade', move, 'player', out.events);
-        else if (pressed.light && !isYouthDesertPhase(s.phase))
+        else if (pressed.light && !isYouthDesertPhase(s.phase) && !isYouthPatrolPhase(s.phase))
             begin(a, 'jab', move, 'player', out.events);
         else if (pressed.jump) {
             a.vy = -11.7;
@@ -353,18 +371,42 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
             a.facing = move;
     }
     chooseRival(s, out.events);
-    if (['desert-tracks', 'desert-crossing', 'desert-return'].includes(s.phase)) {
+    if (['desert-tracks', 'desert-crossing', 'desert-return', 'patrol-route', 'patrol-return'].includes(s.phase)) {
         s.rival.facing = direction(a.x - s.rival.x);
         s.rival.vx = Math.abs(a.x - s.rival.x) > 105 ? s.rival.facing * 2.6 : 0;
     }
     const obstacles = getYouthObstacles(s);
     advanceActor(a, obstacles, false, s.phase);
-    if (isYouthDesertPhase(s.phase) && grounded(s.rival) && s.rival.vx !== 0 && obstacles.some(o => s.rival.vx > 0 ? o.x > s.rival.x && o.x - s.rival.x < 65 : o.x + o.width < s.rival.x && s.rival.x - o.x - o.width < 65)) s.rival.vy = -11.7;
-    advanceActor(s.rival, isYouthDesertPhase(s.phase) ? obstacles : [], true, s.phase);
+    if ((isYouthDesertPhase(s.phase) || isYouthPatrolPhase(s.phase)) && grounded(s.rival) && s.rival.vx !== 0 && obstacles.some(o => s.rival.vx > 0 ? o.x > s.rival.x && o.x - s.rival.x < 65 : o.x + o.width < s.rival.x && s.rival.x - o.x - o.width < 65)) s.rival.vy = -11.7;
+    advanceActor(s.rival, isYouthDesertPhase(s.phase) || isYouthPatrolPhase(s.phase) ? obstacles : [], true, s.phase);
     separate(s);
     playerStrike(s, out);
     rivalStrike(s, out);
     switch (s.phase) {
+        case 'patrol-briefing':
+            if (pressed.interact && Math.abs(a.x - s.rival.x) <= 50 && canAct(a)) { award(s, 'youth-patrol-departure', out); transition(s, 'patrol-route', out.events); }
+            break;
+        case 'patrol-route': {
+            const patrol = s.patrol!, halt = YOUTH_PATROL_HALTS[patrol.halts];
+            patrol.holdTicks = halt && Math.abs(a.x - halt.x) <= 32 && Math.abs(a.x - s.rival.x) <= 125 && a.y === 430 && canAct(a) && move === 0 && buttons.interact ? patrol.holdTicks + 1 : 0;
+            if (patrol.holdTicks >= YOUTH_PATROL_HOLD_TICKS) {
+                patrol.halts++; patrol.holdTicks = 0;
+                if (patrol.halts === 2) { award(s, 'youth-patrol-route', out); transition(s, 'patrol-ambush', out.events); }
+            }
+            break;
+        }
+        case 'patrol-ambush': {
+            const result = stepYouthPatrolEncounter(s.patrol!, a, out.events);
+            if (result === 'defeated') transition(s, 'patrol-defeat', out.events);
+            if (result === 'cleared') { award(s, 'youth-patrol-encounter', out); transition(s, 'patrol-assessment', out.events); }
+            break;
+        }
+        case 'patrol-assessment':
+            if (pressed.interact && Math.abs(a.x - s.rival.x) <= 50 && canAct(a)) { award(s, 'youth-patrol-evaluation', out); transition(s, 'patrol-return', out.events); }
+            break;
+        case 'patrol-return':
+            if (pressed.interact && Math.abs(a.x - 110) <= 35 && Math.abs(a.x - s.rival.x) <= 125 && a.y === 430 && canAct(a)) { award(s, 'youth-patrol-return', out); transition(s, 'patrol-complete', out.events); }
+            break;
         case 'desert-briefing':
             if (pressed.interact && Math.abs(a.x - s.rival.x) <= 50 && canAct(a)) {
                 award(s, 'youth-desert-departure', out); transition(s, 'desert-tracks', out.events);
@@ -490,6 +532,13 @@ export function getYouthObjective(s: YouthState): YouthObjective {
         case 'desert-report': return { ...base, title: 'Rendre compte au maître', instruction: 'Approche le maître et interagis. Les trois indices concordent ; il décide de faire revenir le groupe au camp.', targetX: s.rival.x };
         case 'desert-return': return { ...base, title: 'Ramener le groupe', instruction: 'Retraverse les blocs vers la gauche, puis interagis à la balise du camp.', targetX: 110 };
         case 'desert-complete': return { ...base, title: 'Retour de la sortie guidée', instruction: 'Observations et retour sont enregistrés. Cette reconnaissance accompagnée ne remplace ni une chasse ni le rite des Premières Pistes.', targetX: null };
+        case 'patrol-briefing': return { ...base, title: 'Reprendre la patrouille accompagnée', instruction: 'Approche le maître et interagis. Deux haltes permettent de vérifier le passage ; reste près du groupe. Cette quête est une adaptation originale du projet.', targetX: s.rival.x };
+        case 'patrol-route': return { ...base, title: 'Garder le groupe réuni', instruction: `Rejoins : ${YOUTH_PATROL_HALTS[s.patrol?.halts ?? 0]?.label ?? 'passage'}. Attends le maître puis maintiens Interaction sans bouger.`, targetX: YOUTH_PATROL_HALTS[s.patrol?.halts ?? 0]?.x ?? null, counter: s.patrol?.halts ?? 0, required: 2 };
+        case 'patrol-ambush': return { ...base, title: 'Surgissement dans le passage', instruction: 'Le brouteur protège son territoire. Lis son signal, saute ou esquive ses charges puis garde tes distances. Évite trois charges, sans attaquer ni poursuivre l’animal ; le maître sécurise le groupe.', targetX: null, counter: s.patrol?.evaded ?? 0, required: 3 };
+        case 'patrol-defeat': return { ...base, title: 'Le maître met le groupe à l’abri', instruction: 'Trois chocs ont interrompu la rencontre. Réessaie uniquement ce passage : tes haltes et les observations du désert restent acquises.', targetX: null };
+        case 'patrol-assessment': return { ...base, title: 'L’évaluation du maître', instruction: 'L’animal garde son passage. Approche le maître et interagis pour rendre compte de ta réaction avant le retour.', targetX: s.rival.x };
+        case 'patrol-return': return { ...base, title: 'Revenir ensemble au camp', instruction: 'Retraverse les blocs vers la gauche, attends le maître puis interagis à la balise. Aucun trophée n’a été prélevé.', targetX: 110 };
+        case 'patrol-complete': return { ...base, title: 'Patrouille et évaluation enregistrées', instruction: 'Le groupe est rentré. Cette expérience accompagnée ne confère ni rite de chasse autonome, ni rang adulte, ni vaisseau.', targetX: null };
     }
 }
 function parseActor(v: unknown): YouthActor | null {
@@ -523,8 +572,9 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
         return null;
     if (ordinal < 4 && p.throws !== 0 || ordinal < 7 && (p.courseMarkers !== 0 || p.courseElapsed !== 0) || ordinal >= 8 && p.courseMarkers !== 3 || ordinal < 6 && v.cosmetic !== null || ordinal >= 7 && v.cosmetic === null)
         return null;
-    const desertOrdinal = Math.max(0, ordinal - YOUTH_PHASES.indexOf('desert-briefing'));
-    const expected = ordinal >= 13 ? 6 + desertOrdinal : ordinal >= 12 ? 6 : ordinal >= 10 ? 5 : ordinal >= 8 ? 4 : ordinal >= 7 ? 3 : ordinal >= 6 ? 2 : ordinal >= 5 ? 1 : 0;
+    const desertOrdinal = Math.min(5, Math.max(0, ordinal - YOUTH_PHASES.indexOf('desert-briefing')));
+    const patrolProofCount = phase === 'patrol-complete' ? 5 : phase === 'patrol-return' ? 4 : phase === 'patrol-assessment' ? 3 : phase === 'patrol-ambush' || phase === 'patrol-defeat' ? 2 : phase === 'patrol-route' ? 1 : 0;
+    const expected = isYouthPatrolPhase(phase) ? 11 + patrolProofCount : ordinal >= 13 ? 6 + desertOrdinal : ordinal >= 12 ? 6 : ordinal >= 10 ? 5 : ordinal >= 8 ? 4 : ordinal >= 7 ? 3 : ordinal >= 6 ? 2 : ordinal >= 5 ? 1 : 0;
     const milestones: Partial<Record<YouthMilestone, number>> = {};
     let last = 0;
     if (Object.keys(v.milestones).length !== expected)
@@ -538,14 +588,17 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     }
     if (ordinal >= 12 && ((milestones['youth-first-rest'] ?? 0) - (milestones['youth-camp-duel'] ?? 0) < 180 || phase === 'morning' && v.milestones['youth-first-rest'] !== v.phaseStartedAt))
         return null;
-    if (phase === 'camp-duel' && player.composure === 0 || phase === 'camp-defeat' && player.composure !== 0 || ordinal >= 10 && player.composure === 0)
+    if (phase === 'camp-duel' && player.composure === 0 || phase === 'camp-defeat' && player.composure !== 0 || ordinal >= 10 && player.composure === 0 && phase !== 'patrol-defeat')
         return null;
     let desert: YouthDesertProgress | null = null;
-    if (isYouthDesertPhase(phase)) {
+    if (isYouthDesertPhase(phase) || isYouthPatrolPhase(phase)) {
         if (!record(v.desert) || !integer(v.desert.clues, 0, 3) || !integer(v.desert.scanTicks, 0, 47) || typeof v.desert.ravineCleared !== 'boolean') return null;
         const d = v.desert;
         if (phase === 'desert-briefing' && (d.clues !== 0 || d.scanTicks !== 0) || phase === 'desert-tracks' && d.clues === 3 || ordinal >= 15 && d.clues !== 3 || phase !== 'desert-tracks' && d.scanTicks !== 0 || ordinal < 15 && d.ravineCleared || ordinal >= 16 && !d.ravineCleared) return null;
         desert = { clues: d.clues as number, scanTicks: d.scanTicks as number, ravineCleared: d.ravineCleared as boolean };
     } else if (v.desert !== undefined && v.desert !== null) return null;
-    return { version: 1, phase, desert, tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
+    const patrol = isYouthPatrolPhase(phase) ? normalizeYouthPatrol(v.patrol, phase) : null;
+    if (isYouthPatrolPhase(phase) ? !patrol : v.patrol !== undefined && v.patrol !== null) return null;
+    if (phase === 'patrol-defeat' && player.composure !== 0 || phase === 'patrol-ambush' && patrol && player.composure !== Math.max(0, 100 - patrol.hits * 34)) return null;
+    return { version: 1, phase, desert, patrol, tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
 }

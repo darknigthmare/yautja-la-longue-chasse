@@ -16180,5 +16180,1193 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         ]
       }
     ]
+  },
+  {
+    "fighterId": "city-hunter",
+    "variantId": "city-hunter-avec-casque-12136078fe",
+    "bodyHeightPx": 491,
+    "pageBodyHeightPx": {
+      "city-hunter-masked-intro-right-v52": 491,
+      "city-hunter-masked-intro-left-v52": 482,
+      "city-hunter-masked-victory-right-v52": 506,
+      "city-hunter-masked-victory-left-v52": 506,
+      "city-hunter-masked-defeat-right-v52": 506,
+      "city-hunter-masked-defeat-left-v52": 482
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-masked-round-presentation-v52",
+      "characterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-masked-intro-right-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-intro-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-intro-left-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-intro-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-victory-right-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-victory-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-victory-left-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-victory-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-defeat-right-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-defeat-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-defeat-left-v52",
+          "src": "/game/sprites/v52/pit/city-hunter/city-hunter-masked-defeat-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-right-v52",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                316.5,
+                499
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "city-hunter-masked-intro-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                245.5,
+                498
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "city-hunter-masked-intro-right-v52",
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                223.5,
+                500
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-right-v52",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                316.5,
+                499
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-victory-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                515
+              ],
+              "pivot": [
+                277.5,
+                512
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-victory-right-v52",
+              "rect": [
+                1024,
+                0,
+                512,
+                515
+              ],
+              "pivot": [
+                243.0,
+                512
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-right-v52",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                316.5,
+                499
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-defeat-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263.0,
+                508
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-defeat-right-v52",
+              "rect": [
+                1024,
+                0,
+                512,
+                525
+              ],
+              "pivot": [
+                254.5,
+                519
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-left-v52",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                294.0,
+                482
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "city-hunter-masked-intro-left-v52",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                297.5,
+                482
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "city-hunter-masked-intro-left-v52",
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                230.0,
+                485
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-left-v52",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                294.0,
+                482
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-victory-left-v52",
+              "rect": [
+                512,
+                515,
+                512,
+                509
+              ],
+              "pivot": [
+                239.5,
+                499
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-victory-left-v52",
+              "rect": [
+                1024,
+                515,
+                512,
+                509
+              ],
+              "pivot": [
+                216.0,
+                500
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-intro-left-v52",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                294.0,
+                482
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-defeat-left-v52",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                236.0,
+                475
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "city-hunter-masked-defeat-left-v52",
+              "rect": [
+                1024,
+                525,
+                512,
+                499
+              ],
+              "pivot": [
+                291.0,
+                469
+              ],
+              "durationTicks": 40
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "city-hunter-masked-intro-right-v52",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          169,
+          9,
+          295,
+          491
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-intro-right-v52",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          638,
+          27,
+          268,
+          472
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-intro-right-v52",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1065,
+          43,
+          366,
+          458
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-intro-left-v52",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          132,
+          513,
+          325,
+          482
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-intro-left-v52",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          658,
+          518,
+          284,
+          477
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-intro-left-v52",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1073,
+          539,
+          365,
+          459
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-victory-right-v52",
+        "rect": [
+          512,
+          0,
+          512,
+          515
+        ],
+        "visibleRect": [
+          636,
+          7,
+          307,
+          506
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-victory-right-v52",
+        "rect": [
+          1024,
+          0,
+          512,
+          515
+        ],
+        "visibleRect": [
+          1094,
+          10,
+          329,
+          503
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-victory-left-v52",
+        "rect": [
+          512,
+          515,
+          512,
+          509
+        ],
+        "visibleRect": [
+          596,
+          518,
+          313,
+          497
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-victory-left-v52",
+        "rect": [
+          1024,
+          515,
+          512,
+          509
+        ],
+        "visibleRect": [
+          1084,
+          518,
+          323,
+          498
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-defeat-right-v52",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          607,
+          125,
+          337,
+          384
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-defeat-right-v52",
+        "rect": [
+          1024,
+          0,
+          512,
+          525
+        ],
+        "visibleRect": [
+          1123,
+          179,
+          310,
+          341
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-defeat-left-v52",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          577,
+          608,
+          343,
+          380
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-defeat-left-v52",
+        "rect": [
+          1024,
+          525,
+          512,
+          499
+        ],
+        "visibleRect": [
+          1160,
+          664,
+          311,
+          331
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scar",
+    "variantId": "scar-avec-casque-6a0a69930d",
+    "bodyHeightPx": 503,
+    "pageBodyHeightPx": {
+      "scar-masked-intro-right-v52": 503,
+      "scar-masked-intro-left-v52": 489,
+      "scar-masked-victory-right-v52": 502,
+      "scar-masked-victory-left-v52": 493,
+      "scar-masked-defeat-right-v52": 498,
+      "scar-masked-defeat-left-v52": 489
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-masked-round-presentation-v52",
+      "characterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-masked-intro-right-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-intro-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-intro-left-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-intro-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-victory-right-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-victory-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-victory-left-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-victory-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-defeat-right-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-defeat-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-defeat-left-v52",
+          "src": "/game/sprites/v52/pit/scar/scar-masked-defeat-v52.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-victory-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                514
+              ],
+              "pivot": [
+                282.0,
+                511
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-masked-intro-right-v52",
+              "rect": [
+                512,
+                0,
+                448,
+                520
+              ],
+              "pivot": [
+                253.5,
+                513
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-masked-intro-right-v52",
+              "rect": [
+                960,
+                0,
+                576,
+                518
+              ],
+              "pivot": [
+                253.0,
+                511
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-intro-right-v52",
+              "rect": [
+                960,
+                0,
+                576,
+                518
+              ],
+              "pivot": [
+                253.0,
+                511
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-victory-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                514
+              ],
+              "pivot": [
+                282.0,
+                511
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-victory-right-v52",
+              "rect": [
+                1024,
+                0,
+                512,
+                514
+              ],
+              "pivot": [
+                254.0,
+                512
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-intro-right-v52",
+              "rect": [
+                960,
+                0,
+                576,
+                518
+              ],
+              "pivot": [
+                253.0,
+                511
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-defeat-right-v52",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259.0,
+                502
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-defeat-right-v52",
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                278.5,
+                502
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-victory-left-v52",
+              "rect": [
+                512,
+                513,
+                512,
+                511
+              ],
+              "pivot": [
+                239.5,
+                493
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-masked-intro-left-v52",
+              "rect": [
+                512,
+                520,
+                448,
+                504
+              ],
+              "pivot": [
+                239.5,
+                485
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "scar-masked-intro-left-v52",
+              "rect": [
+                960,
+                518,
+                576,
+                506
+              ],
+              "pivot": [
+                270.0,
+                485
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-intro-left-v52",
+              "rect": [
+                960,
+                518,
+                576,
+                506
+              ],
+              "pivot": [
+                270.0,
+                485
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-victory-left-v52",
+              "rect": [
+                512,
+                513,
+                512,
+                511
+              ],
+              "pivot": [
+                239.5,
+                493
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-victory-left-v52",
+              "rect": [
+                1024,
+                513,
+                512,
+                511
+              ],
+              "pivot": [
+                236.5,
+                493
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-intro-left-v52",
+              "rect": [
+                960,
+                518,
+                576,
+                506
+              ],
+              "pivot": [
+                270.0,
+                485
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-defeat-left-v52",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                243.5,
+                473
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "scar-masked-defeat-left-v52",
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                473
+              ],
+              "durationTicks": 40
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scar-masked-intro-right-v52",
+        "rect": [
+          512,
+          0,
+          448,
+          520
+        ],
+        "visibleRect": [
+          663,
+          35,
+          242,
+          479
+        ]
+      },
+      {
+        "pageId": "scar-masked-intro-right-v52",
+        "rect": [
+          960,
+          0,
+          576,
+          518
+        ],
+        "visibleRect": [
+          1012,
+          24,
+          410,
+          488
+        ]
+      },
+      {
+        "pageId": "scar-masked-intro-left-v52",
+        "rect": [
+          512,
+          520,
+          448,
+          504
+        ],
+        "visibleRect": [
+          617,
+          543,
+          243,
+          463
+        ]
+      },
+      {
+        "pageId": "scar-masked-intro-left-v52",
+        "rect": [
+          960,
+          518,
+          576,
+          506
+        ],
+        "visibleRect": [
+          1019,
+          528,
+          421,
+          476
+        ]
+      },
+      {
+        "pageId": "scar-masked-victory-right-v52",
+        "rect": [
+          512,
+          0,
+          512,
+          514
+        ],
+        "visibleRect": [
+          632,
+          10,
+          326,
+          502
+        ]
+      },
+      {
+        "pageId": "scar-masked-victory-right-v52",
+        "rect": [
+          1024,
+          0,
+          512,
+          514
+        ],
+        "visibleRect": [
+          1097,
+          15,
+          357,
+          498
+        ]
+      },
+      {
+        "pageId": "scar-masked-victory-left-v52",
+        "rect": [
+          512,
+          513,
+          512,
+          511
+        ],
+        "visibleRect": [
+          590,
+          515,
+          323,
+          492
+        ]
+      },
+      {
+        "pageId": "scar-masked-victory-left-v52",
+        "rect": [
+          1024,
+          513,
+          512,
+          511
+        ],
+        "visibleRect": [
+          1091,
+          514,
+          339,
+          493
+        ]
+      },
+      {
+        "pageId": "scar-masked-defeat-right-v52",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          584,
+          88,
+          373,
+          415
+        ]
+      },
+      {
+        "pageId": "scar-masked-defeat-right-v52",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1126,
+          144,
+          354,
+          359
+        ]
+      },
+      {
+        "pageId": "scar-masked-defeat-left-v52",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          565,
+          570,
+          387,
+          416
+        ]
+      },
+      {
+        "pageId": "scar-masked-defeat-left-v52",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1101,
+          622,
+          387,
+          364
+        ]
+      }
+    ]
   }
 ];

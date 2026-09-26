@@ -135,6 +135,65 @@ test("presentation clocks do not reset or advance the gameplay animation cursor"
   } finally { env.restore(); }
 });
 
+test("reviewed exact intro holds its first pose while waiting and its last pose while ready, without moving gameplay", async () => {
+  const env = browser();
+  try {
+    const entry = definition([
+      clip("idle", "right", [frame(0), frame(1), frame(2)]),
+      clip("idle", "left", [frame(0), frame(1), frame(2)]),
+      clip("pit.presentation.intro", "right", [frame(1), frame(0), frame(2)], false),
+      clip("pit.presentation.intro", "left", [frame(2), frame(0), frame(1)], false),
+    ], { fighterId: "user-ahab", variantId: ahabMasked });
+    const bank = await load(["user-ahab"], [entry], { variants: [ahabMasked] });
+    for (const slot of [0, 1]) {
+      const state = freeze(createPitCombatState(slot === 0 ? "user-ahab" : "wolf", slot === 1 ? "user-ahab" : "wolf",
+        { variants: slot === 0 ? [ahabMasked, null] : [null, ahabMasked] }));
+      const fighter = state.fighters[slot], before = JSON.stringify(state);
+      const facing = slot === 0 ? "right" : "left";
+      const intro = entry.atlas.clips.find(candidate => candidate.id === "pit.presentation.intro" && candidate.facing === facing);
+      assert.equal(resolveGameplay(bank, fighter, { simulationFrame: 100 }).resolved.frame.frameIndex, 0);
+      for (const reducedMotion of [false, true]) for (const elapsedMs of [0, 50, 900]) {
+        for (const presentation of [view({ phase: "intro-right", fighterSlot: slot === 0 ? 1 : 0, elapsedMs }), view({ phase: "countdown", elapsedMs })]) {
+          const held = resolvePresentation(bank, fighter, { presentation, reducedMotion });
+          assert.equal(held.cue.kind, "ready"); assert.equal(held.status, "staged-held-pose");
+          assert.equal(held.frame.clip.id, "pit.presentation.intro"); assert.equal(held.frame.frameIndex, 2);
+          assert.deepEqual(held.frame.frame, intro.frames[2]);
+        }
+        const waiting = resolvePresentation(bank, fighter, { presentation: view({ phase: "intro-left", fighterSlot: slot === 0 ? 1 : 0, elapsedMs }), reducedMotion });
+        assert.equal(waiting.cue.kind, "waiting"); assert.equal(waiting.status, "staged-held-pose");
+        assert.equal(waiting.frame.clip.id, "pit.presentation.intro"); assert.equal(waiting.frame.frameIndex, 0);
+        assert.deepEqual(waiting.frame.frame, intro.frames[0]);
+      }
+      assert.equal(JSON.stringify(state), before);
+      assert.equal(resolveGameplay(bank, fighter, { simulationFrame: 103 }).resolved.frame.frameIndex, 1,
+        "Held presentation poses do not reset or advance the gameplay cursor");
+    }
+  } finally { env.restore(); }
+});
+
+test("held entrance poses reject looped, draft and one-drawing intros and preserve native exact-costume fallbacks", async () => {
+  const env = browser();
+  try {
+    const fighter = createPitCombatState("user-ahab", "wolf", { variants: [ahabMasked, null] }).fighters[0];
+    for (const rejected of [
+      clip("pit.presentation.intro", "right", [frame(1), frame(2)], true),
+      { ...clip("pit.presentation.intro", "right", [frame(1), frame(2)], false), status: "draft" },
+      clip("pit.presentation.intro", "right", [frame(1)], false),
+      clip("pit.presentation.intro", "left", [frame(1), frame(2)], false),
+    ]) {
+      const bank = await load(["user-ahab"], [definition([clip(), rejected], { fighterId: "user-ahab", variantId: ahabMasked })], { variants: [ahabMasked] });
+      for (const phase of ["countdown", "intro-left"]) {
+        const held = resolvePresentation(bank, fighter, { presentation: view({ phase, fighterSlot: 1, elapsedMs: 900 }) });
+        assert.equal(held.status, "staged-held-pose"); assert.equal(held.frame.clip.id, "idle"); assert.equal(held.frame.frameIndex, 0);
+      }
+      assert.equal(resolvePresentation(bank, { ...fighter, variantId: ahabUnmasked }, { presentation: view({ phase: "countdown" }) }), null);
+    }
+    const bank = await load(["user-ahab"], [definition([clip("pit.presentation.intro")], { fighterId: "user-ahab", variantId: ahabMasked })], { variants: [ahabMasked] });
+    assert.equal(resolvePresentation(bank, { ...fighter, facing: -1 }, { presentation: view({ phase: "countdown" }) }), null,
+      "A held pose must never mirror or borrow its opposite-facing intro");
+  } finally { env.restore(); }
+});
+
 test("native facing and exact supplied costume are mandatory for dedicated and reused presentation art", async () => {
   const env = browser();
   try {

@@ -121,7 +121,12 @@ Cette commande exécute le lint, TypeScript, l'audit strict de toutes les paires
 V19 **disponibles**, puis la compilation et l'ensemble des tests automatisés.
 Elle ne remplace pas l'audit de complétude des 800 décors.
 
-La qualification V31 du commit
+La livraison courante est décrite dans [le bilan V52](docs/v52-delivery.md),
+avec [ses validations datées](docs/v52-validation.json) et
+[la qualification PC V52](docs/desktop-v52-validation.md). Les chiffres et
+identifiants V31 ci-dessous sont des preuves historiques, pas le statut actuel.
+
+La qualification historique V31 du commit
 `c3f39e080197e639e10e68672101ad12ee394bd9` a réussi : `qa:release`
 compte **1 103 tests sur 1 103**, **464 paires** V19 disponibles, l’audit npm
 signale **0 vulnérabilité** et la QA navigateur locale est **PASS**.
@@ -152,7 +157,7 @@ npm.cmd run qa:desktop:package
 ```
 
 `npm.cmd test` compile le jeu puis exécute **tous les fichiers
-`tests/*.test.mjs`**. Après ajout de nouveaux décors, régénérer d'abord la
+`tests/*.test.mjs` et `tests/*.test.ts`**. Après ajout de nouveaux décors, régénérer d'abord la
 projection de disponibilité avec `npm.cmd run biome-decor:v19:runtime-data`.
 
 `npm.cmd run qa` conserve le contrôle global de production artistique, dont
@@ -174,6 +179,10 @@ paquet public. Les images du projet sont des créations originales, avec leurs
 références et approximations documentées ; elles ne sont pas présentées comme
 des fichiers officiels de la franchise.
 
+- [Livraison V52 : jeunesse, animations et parcours](docs/v52-delivery.md)
+- [Validations V52](docs/v52-validation.json)
+- [Édition PC V52](docs/desktop-v52-validation.md)
+- [Couverture réelle des animations V52](docs/art/v52/animation-coverage-audit.json)
 - [Livraison de contenu V31](docs/chatgpt-v31-delivery.md)
 - [Édition PC V31 qualifiée](docs/desktop-v31.md)
 - [Preuve desktop V31](docs/desktop-v31-qa.json)
