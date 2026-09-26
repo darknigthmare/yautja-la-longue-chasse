@@ -28,8 +28,19 @@
   },
   "publication": {
     "canonicalUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "qualifiedApplicationCommit": "8a3c8aad2c3d12f0536855dacd76c6c14d1e73f9",
+    "publicBrowserChecks": 59,
+    "publicPngChecks": 8,
+    "touchRecipeCorrection": {
+      "runtimeChanged": false,
+      "diagnosis": "Trusted native jump input occurred during hurt and was correctly refused by gameplay. No input was lost between simulation frames.",
+      "correction": "Wait for an observable grounded idle, armed/unpaused and released input before the same 100ms touch. Original height assertion retained.",
+      "correctedPublicRuns": [8, 8],
+      "countedOnce": true,
+      "evidenceDirectory": "outputs/qa-commercial-audit/v53/youth/public-cage-touch-layout-browser-qa"
+    },
     "verificationReport": "outputs/qa-commercial-audit/v53/publication-verified.json",
-    "rule": "Consult the post-deployment report for actual commit, READY state, aliases and public browser checks. Local qualification alone does not prove publication."
+    "rule": "Consult the post-deployment report for final commit, READY state, aliases, public reports and proof that the QA/documentation follow-up leaves the qualified application unchanged."
   },
   "windowsPortable": {
     "release": "V52 unchanged",

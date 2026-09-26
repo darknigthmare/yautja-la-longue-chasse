@@ -23,8 +23,20 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 640, height: 360 }
  const holdTouch = async (locator, ms) => { const b=await visibleControl(locator), point={x:b.x+b.width/2,y:b.y+b.height/2}; await cdp.send("Input.dispatchTouchEvent",{type:"touchStart",touchPoints:[point]}); await page.clock.runFor(ms); await cdp.send("Input.dispatchTouchEvent",{type:"touchEnd",touchPoints:[]}); await page.clock.runFor(34); };
  for(const action of ["blade"])assert.equal(await page.locator(`[data-youth-action="${action}"]`).isDisabled(),true);
  for(const action of ["left","right","jump","light","throw","dodge","interact"])await visibleControl(page.locator(`[data-youth-action="${action}"]`));
+ // The genuine checkpoint can resume beside a striking rival. A fresh jump
+ // during hitstun is intentionally refused; test input only when acting is legal.
+ const waitForActionable = async () => {
+  await page.clock.runFor(34); // Prior touchEnd is released for two sampled frames.
+  for(let n=0;n<120;n++) {
+   const s=await state();assert.equal(s.phase,"cage-duel","the touch precondition must remain a live duel");
+   if(s.armed&&!s.paused&&s.action==="idle"&&s.y===430&&s.vy===0)return;
+   await page.clock.runFor(17);
+  }
+  assert.fail("No grounded idle state reached before the fresh touch");
+ };
+ await waitForActionable();
  const before=await state();await holdTouch(page.locator('[data-youth-action="left"]'),150);const moved=await state();assert(moved.x<before.x-10,JSON.stringify({before,moved}));assert.equal(moved.paused,false);
- await holdTouch(page.locator('[data-youth-action="jump"]'),100);assert((await state()).y<430);await page.screenshot({path:path.join(output,label+"-touch-gameplay.png"),fullPage:true});
+ await waitForActionable();await holdTouch(page.locator('[data-youth-action="jump"]'),100);assert((await state()).y<430);await page.screenshot({path:path.join(output,label+"-touch-gameplay.png"),fullPage:true});
  checks.push({name:"touch-move-jump-and-controls",viewport,move:moved.x-before.x,noPauseOnTouch:true,bladeControlDisabled:true});
  await page.getByRole("button",{name:"Pause et commandes",exact:true}).tap();await page.clock.runFor(100);
  const dialog=page.getByRole("dialog",{name:"Formation en pause",exact:true});await dialog.waitFor();const paused=await state();await page.clock.runFor(3000);assert.equal((await state()).tick,paused.tick);
