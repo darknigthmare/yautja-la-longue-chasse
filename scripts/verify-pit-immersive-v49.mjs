@@ -8,7 +8,7 @@ const url = process.env.V49_IMMERSIVE_QA_URL || "http://127.0.0.1:4174";
 const output = process.env.V49_IMMERSIVE_QA_OUTPUT || "outputs/qa-commercial-audit/v49/immersive-browser-qa";
 await fs.mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: "chrome", headless: true });
-const checks = [], errors = [], responses = [];
+const checks = [], errors = [], responses = [], contentVersions = [];
 let activePage;
 async function pageFor(options = {}) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 720 }, reducedMotion: "no-preference", ...options });
@@ -23,6 +23,9 @@ async function pageFor(options = {}) {
     Object.defineProperty(navigator, "getGamepads", { configurable: true, value: () => state.connected ? [{ id:"QA virtual controller", index:0, connected:true, mapping:"standard", timestamp:performance.now(), axes:state.axes, buttons:state.buttons.map(pressed=>({pressed,touched:pressed,value:pressed?1:0})) }] : [] });
   });
   await enterCampaignDeck(page, { url });
+  const contentVersion = await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version');
+  contentVersions.push(contentVersion);
+  if (process.env.PIT_QA_EXPECTED_VERSION) assert.equal(contentVersion, process.env.PIT_QA_EXPECTED_VERSION, 'Regression QA must target the requested build');
   await page.getByRole("button", { name: "THE PIT · combat", exact: true }).click();
   return {page,context};
 }
@@ -31,7 +34,12 @@ async function enterMatch(page, mode = "Versus local") {
   await selectPitMatch(page,{player:"jungle-hunter",opponent:"city-hunter",arena:"the-pit"});
   await page.locator("[data-pit-match-loading]").waitFor({state:"detached"});
   await page.locator('[data-pit-immersive="true"]').waitFor();
-  await page.waitForFunction(() => Number(document.querySelector("[data-pit-frame]")?.dataset.pitFrame)>3);
+  // A match now has a real intro/countdown gate; never send inputs before COMBAT.
+  await page.waitForFunction(() => {
+    const root = document.querySelector('[data-pit-presentation-phase]');
+    return (!root || (root.dataset.pitPresentationPhase === 'fight' && root.dataset.pitPresentationBlocked === 'false')) &&
+      Number(document.querySelector('[data-pit-frame]')?.dataset.pitFrame) > 3;
+  });
 }
 const frame = page => page.locator("[data-pit-frame]").getAttribute("data-pit-frame").then(Number);
 const position = page => page.locator("canvas[data-pit-fighter-positions]").evaluate(canvas=>JSON.parse(canvas.dataset.pitFighterPositions)[0]);
@@ -128,7 +136,7 @@ try {
   checks.push({name:"small-screen-200-percent-text-scrollable-pause",menuBox});await mobile.context.close();
 
   assert.deepEqual(errors,[]);assert.deepEqual(responses,[]);
-  const report={passed:true,checkedAt:new Date().toISOString(),url,checks,errors,responses,limits:["Native fullscreen tested in Chrome headless via a real button gesture; other browsers may refuse and retain viewport mode.","Physical controller not tested; virtual Gamepad API exercises Start/B and disconnection.","16:9 artwork is preserved without cropping; portrait and ultrawide screens have intentional unused border space."]};
+  const report={passed:true,checkedAt:new Date().toISOString(),url,contentVersions:[...new Set(contentVersions)],checks,errors,responses,limits:["Native fullscreen tested in Chrome headless via a real button gesture; other browsers may refuse and retain viewport mode.","Physical controller not tested; virtual Gamepad API exercises Start/B and disconnection.","16:9 artwork is preserved without cropping; portrait and ultrawide screens have intentional unused border space."]};
   await fs.writeFile(output+"/report.json",JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify(report));
 } catch(error) {await activePage?.screenshot({path:output+"/failure.png",fullPage:true}).catch(()=>{});await fs.writeFile(output+"/failure.json",JSON.stringify({error:String(error),checks,errors,responses,body:await activePage?.locator("body").innerText().catch(()=>null)},null,2));throw error;}
 finally {await browser.close();}

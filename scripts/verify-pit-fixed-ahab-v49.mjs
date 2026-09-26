@@ -16,13 +16,21 @@ try {
  page=await browser.newPage({viewport:{width:1280,height:720},reducedMotion:"reduce"});page.setDefaultTimeout(45000);
  page.on("pageerror",e=>errors.push(e.message.slice(0,500)));page.on("response",r=>{if(r.status()>=400)responses.push({url:r.url(),status:r.status()});});
  const fixture=structuredClone(await campaignFixture());await page.addInitScript(({key,save})=>localStorage.setItem(key,JSON.stringify(save)),fixture);
- await enterCampaignDeck(page,{url});await page.getByRole("button",{name:"THE PIT · combat",exact:true}).click();
+ await enterCampaignDeck(page,{url});
+ const contentVersion=await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version');
+ if(process.env.PIT_QA_EXPECTED_VERSION)assert.equal(contentVersion,process.env.PIT_QA_EXPECTED_VERSION,'Regression QA must target the requested build');
+ await page.getByRole("button",{name:"THE PIT · combat",exact:true}).click();
  await page.getByRole("radio",{name:/^Versus local/}).click();
  await choosePitFighter(page,"user-ahab");await page.locator('[data-pit-variant-select]').selectOption(variant);
  await page.locator('[data-pit-selection-confirm]').click();await choosePitFighter(page,"city-hunter");await page.locator('[data-pit-selection-confirm]').click();
  await choosePitStage(page,"the-pit");await page.waitForFunction(()=>document.querySelector('[data-pit-stage-preview]')?.dataset.previewStatus==='ready');await page.locator('[data-pit-selection-confirm]').click();
  await page.locator('[data-pit-match-loading]').waitFor({state:'detached'});
- await page.waitForFunction(()=>document.activeElement?.getAttribute('aria-label')==='Combat THE PIT'&&Number(document.querySelector('[data-pit-frame]')?.dataset.pitFrame)>3);
+ // Keep controls neutral throughout the authored intro and countdown.
+ await page.waitForFunction(()=>{
+  const root=document.querySelector('[data-pit-presentation-phase]');
+  return (!root||(root.dataset.pitPresentationPhase==='fight'&&root.dataset.pitPresentationBlocked==='false'))&&
+   document.activeElement?.getAttribute('aria-label')==='Combat THE PIT'&&Number(document.querySelector('[data-pit-frame]')?.dataset.pitFrame)>3;
+ });
  assert.equal(await page.locator('[data-pit-bitmap-slot="0"]').getAttribute('data-pit-bitmap-variant'),variant);
  const snapshot=()=>page.locator('canvas[data-pit-camera-mode]').evaluate(c=>({mode:c.dataset.pitCameraMode,zoom:Number(c.dataset.pitCameraZoom),x:Number(c.dataset.pitCameraCenterX),y:Number(c.dataset.pitCameraCenterY),arenaId:c.dataset.pitArenaId,width:c.width,height:c.height,fighters:JSON.parse(c.dataset.pitFighterPositions)}));
  const initial=await snapshot();assert.equal(initial.mode,'fixed');
@@ -38,6 +46,6 @@ try {
  try {await page.waitForFunction(()=>{const p=JSON.parse(document.querySelector('canvas[data-pit-fighter-positions]').dataset.pitFighterPositions);return p[1].x-p[0].x<70;});await page.keyboard.down('Numpad2');await page.keyboard.down('Numpad4');await page.waitForTimeout(60);await page.keyboard.down('Space');await page.waitForFunction(()=>{const p=JSON.parse(document.querySelector('canvas[data-pit-fighter-positions]').dataset.pitFighterPositions);return p[0].x>p[1].x+45;});await page.keyboard.up('Space');await page.keyboard.up('Numpad2');await page.keyboard.up('Numpad4');await waitX(870,'right');await page.waitForTimeout(300);}finally{await page.keyboard.up('ArrowRight');await page.keyboard.up('Space');await page.keyboard.up('Numpad2');await page.keyboard.up('Numpad4');}
  const right=await snapshot();const rightBounds=contained(right);await page.screenshot({path:output+'/right-wall.png'});checks.push({name:'right-wall',snapshot:right,bounds:rightBounds});await jump('right-wall-jump');
  assert.deepEqual(errors,[]);assert.deepEqual(responses,[]);
- const report={passed:true,checkedAt:new Date().toISOString(),url,variant,checks,errors,responses,limits:['Positions and camera read from the real canvas DOM; alpha envelopes calculated read-only from the exact committed atlas metadata. No combat state or clock injection.','Keyboard movement and system reduced-motion emulation; visual screenshots must also be reviewed.']};await fs.writeFile(output+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,checks:checks.length,zoom:initial.zoom,output}));
+ const report={passed:true,checkedAt:new Date().toISOString(),url,contentVersion,variant,checks,errors,responses,limits:['Positions and camera read from the real canvas DOM; alpha envelopes calculated read-only from the exact committed atlas metadata. No combat state or clock injection.','Keyboard movement and system reduced-motion emulation; visual screenshots must also be reviewed.']};await fs.writeFile(output+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,checks:checks.length,zoom:initial.zoom,output}));
 }catch(error){if(page)await page.screenshot({path:output+'/failure.png'}).catch(()=>{});await fs.writeFile(output+'/failure.json',JSON.stringify({error:String(error).slice(0,2000),checks,errors,responses},null,2));console.error(String(error).slice(0,500));process.exitCode=1;}
 finally{await browser?.close();}

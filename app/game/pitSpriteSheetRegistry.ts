@@ -15541,5 +15541,644 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         ]
       }
     ]
+  },
+  {
+    "fighterId": "jungle-hunter",
+    "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+    "bodyHeightPx": 499,
+    "pageBodyHeightPx": {
+      "jungle-hunter-masked-intro-right-v51": 499,
+      "jungle-hunter-masked-intro-left-v51": 491,
+      "jungle-hunter-masked-victory-right-v51": 655,
+      "jungle-hunter-masked-victory-left-v51": 664,
+      "jungle-hunter-masked-defeat-right-v51": 499,
+      "jungle-hunter-masked-defeat-left-v51": 491
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "jungle-hunter-masked-round-presentation-v51",
+      "characterId": "jungle-hunter",
+      "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "jungle-hunter-masked-intro-right-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-intro-v51.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "jungle-hunter-masked-intro-left-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-intro-v51.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "jungle-hunter-masked-victory-right-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-victory-right-retracted-v51.png",
+          "width": 2172,
+          "height": 724,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "jungle-hunter-masked-victory-left-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-victory-left-retracted-v51.png",
+          "width": 2172,
+          "height": 724,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "jungle-hunter-masked-defeat-right-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-defeat-v51.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "jungle-hunter-masked-defeat-left-v51",
+          "src": "/game/sprites/v51/pit/jungle-hunter/jungle-hunter-masked-defeat-v51.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.presentation.intro",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-intro-right-v51",
+              "rect": [
+                0,
+                0,
+                512,
+                508
+              ],
+              "pivot": [
+                271.5,
+                506
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "jungle-hunter-masked-intro-right-v51",
+              "rect": [
+                512,
+                0,
+                512,
+                525
+              ],
+              "pivot": [
+                249.5,
+                510
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "jungle-hunter-masked-intro-right-v51",
+              "rect": [
+                1024,
+                0,
+                512,
+                511
+              ],
+              "pivot": [
+                230.0,
+                509
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-victory-right-v51",
+              "rect": [
+                0,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                507.0,
+                708
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "jungle-hunter-masked-victory-right-v51",
+              "rect": [
+                724,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                380.0,
+                707
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "jungle-hunter-masked-victory-right-v51",
+              "rect": [
+                1448,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                301.5,
+                707
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-intro-right-v51",
+              "rect": [
+                0,
+                0,
+                512,
+                508
+              ],
+              "pivot": [
+                271.5,
+                506
+              ],
+              "durationTicks": 26
+            },
+            {
+              "pageId": "jungle-hunter-masked-defeat-right-v51",
+              "rect": [
+                512,
+                0,
+                512,
+                525
+              ],
+              "pivot": [
+                250.5,
+                507
+              ],
+              "durationTicks": 44
+            },
+            {
+              "pageId": "jungle-hunter-masked-defeat-right-v51",
+              "rect": [
+                1024,
+                0,
+                512,
+                525
+              ],
+              "pivot": [
+                259.0,
+                503
+              ],
+              "durationTicks": 44
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.intro",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-intro-left-v51",
+              "rect": [
+                0,
+                508,
+                512,
+                516
+              ],
+              "pivot": [
+                256.0,
+                492
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "jungle-hunter-masked-intro-left-v51",
+              "rect": [
+                512,
+                525,
+                512,
+                499
+              ],
+              "pivot": [
+                237.0,
+                477
+              ],
+              "durationTicks": 24
+            },
+            {
+              "pageId": "jungle-hunter-masked-intro-left-v51",
+              "rect": [
+                1024,
+                510,
+                512,
+                514
+              ],
+              "pivot": [
+                222.5,
+                489
+              ],
+              "durationTicks": 24
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.victory",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-victory-left-v51",
+              "rect": [
+                0,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                465.5,
+                706
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "jungle-hunter-masked-victory-left-v51",
+              "rect": [
+                724,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                370.0,
+                706
+              ],
+              "durationTicks": 40
+            },
+            {
+              "pageId": "jungle-hunter-masked-victory-left-v51",
+              "rect": [
+                1448,
+                0,
+                724,
+                724
+              ],
+              "pivot": [
+                279.0,
+                707
+              ],
+              "durationTicks": 40
+            }
+          ]
+        },
+        {
+          "id": "pit.presentation.defeat",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "jungle-hunter-masked-intro-left-v51",
+              "rect": [
+                0,
+                508,
+                512,
+                516
+              ],
+              "pivot": [
+                256.0,
+                492
+              ],
+              "durationTicks": 26
+            },
+            {
+              "pageId": "jungle-hunter-masked-defeat-left-v51",
+              "rect": [
+                512,
+                525,
+                512,
+                499
+              ],
+              "pivot": [
+                258.5,
+                459
+              ],
+              "durationTicks": 44
+            },
+            {
+              "pageId": "jungle-hunter-masked-defeat-left-v51",
+              "rect": [
+                1024,
+                525,
+                512,
+                499
+              ],
+              "pivot": [
+                264.5,
+                455
+              ],
+              "durationTicks": 44
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "jungle-hunter-masked-intro-right-v51",
+        "rect": [
+          0,
+          0,
+          512,
+          508
+        ],
+        "visibleRect": [
+          109,
+          7,
+          325,
+          500
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-intro-right-v51",
+        "rect": [
+          512,
+          0,
+          512,
+          525
+        ],
+        "visibleRect": [
+          650,
+          49,
+          213,
+          462
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-intro-right-v51",
+        "rect": [
+          1024,
+          0,
+          512,
+          511
+        ],
+        "visibleRect": [
+          1078,
+          10,
+          352,
+          500
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-intro-left-v51",
+        "rect": [
+          0,
+          508,
+          512,
+          516
+        ],
+        "visibleRect": [
+          88,
+          510,
+          336,
+          491
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-intro-left-v51",
+        "rect": [
+          512,
+          525,
+          512,
+          499
+        ],
+        "visibleRect": [
+          656,
+          540,
+          199,
+          463
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-intro-left-v51",
+        "rect": [
+          1024,
+          510,
+          512,
+          514
+        ],
+        "visibleRect": [
+          1059,
+          511,
+          375,
+          489
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-defeat-right-v51",
+        "rect": [
+          512,
+          0,
+          512,
+          525
+        ],
+        "visibleRect": [
+          592,
+          147,
+          358,
+          361
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-defeat-right-v51",
+        "rect": [
+          1024,
+          0,
+          512,
+          525
+        ],
+        "visibleRect": [
+          1081,
+          209,
+          404,
+          308
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-defeat-left-v51",
+        "rect": [
+          512,
+          525,
+          512,
+          499
+        ],
+        "visibleRect": [
+          579,
+          630,
+          369,
+          355
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-defeat-left-v51",
+        "rect": [
+          1024,
+          525,
+          512,
+          499
+        ],
+        "visibleRect": [
+          1091,
+          689,
+          395,
+          304
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-right-v51",
+        "rect": [
+          0,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          302,
+          54,
+          410,
+          655
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-right-v51",
+        "rect": [
+          724,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          905,
+          55,
+          398,
+          653
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-right-v51",
+        "rect": [
+          1448,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          1548,
+          14,
+          403,
+          694
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-left-v51",
+        "rect": [
+          0,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          254,
+          43,
+          423,
+          664
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-left-v51",
+        "rect": [
+          724,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          880,
+          47,
+          428,
+          660
+        ]
+      },
+      {
+        "pageId": "jungle-hunter-masked-victory-left-v51",
+        "rect": [
+          1448,
+          0,
+          724,
+          724
+        ],
+        "visibleRect": [
+          1509,
+          13,
+          436,
+          695
+        ]
+      }
+    ]
   }
 ];

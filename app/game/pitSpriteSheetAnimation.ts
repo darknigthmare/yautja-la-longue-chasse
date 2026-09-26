@@ -15,6 +15,8 @@ import {
 } from "./hunterSpriteMotion";
 import { PIT_FIGHTERS, type PitCombatState, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
 import { getPitUserVariant } from "./systems/pitUserRoster";
+import { getPitFighterPresentationCue, getPitFighterPresentationTreatment,
+  type PitFighterPresentationCue, type PitFighterPresentationOptions } from "./pitFighterPresentation";
 
 /** Art review belongs to the registry. Successful decoding never approves art. */
 export interface PitSpriteSheetAnimationDefinition {
@@ -41,7 +43,7 @@ export interface PitSpriteSheetAnimationBank {
   readonly failedAtlasIds: readonly string[];
   readonly cancelled: boolean;
 }
-export interface PitSpriteSheetAnimationOptions {
+export interface PitSpriteSheetAnimationOptions extends PitFighterPresentationOptions {
   /** Actual simulation tick. Omitting it holds observed-entry clips at their start. */
   readonly simulationFrame?: number;
   readonly combat?: Pick<PitCombatState, "frame" | "pendingThrow" | "events">;
@@ -235,12 +237,98 @@ export async function loadPitSpriteSheetAnimations(
   return bank;
 }
 
+export interface PitSpriteSheetPresentationFrame {
+  readonly definition: PitSpriteSheetAnimationDefinition;
+  readonly frame: HunterSpriteAtlasFrameLookup;
+  readonly source: HTMLCanvasElement;
+  readonly status: "dedicated-animation" | "reused-idle-animation" | "staged-held-pose";
+  readonly cue: PitFighterPresentationCue;
+}
+
+/** Presentation time never updates the simulation-motion cursor or fighter state. */
+export function resolvePitSpriteSheetPresentation(
+  bank: PitSpriteSheetAnimationBank | null | undefined,
+  fighter: PitFighterState,
+  options: PitSpriteSheetAnimationOptions = {},
+): PitSpriteSheetPresentationFrame | null {
+  const cue = getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion);
+  const proof = bank && evidence.get(bank);
+  if (!cue || !proof || bank.cancelled || proof.signal?.aborted ||
+      !proof.selections.has(selectionKey(fighter.definitionId, fighter.variantId)) ||
+      (fighter.facing !== 1 && fighter.facing !== -1)) return null;
+  const facing = fighter.facing === 1 ? "right" : "left";
+  const choices: { id: string; mode: "play" | "first" | "last"; status: PitSpriteSheetPresentationFrame["status"] }[] = [];
+  if (cue.kind === "intro" || cue.kind === "victory" || cue.kind === "defeat") {
+    choices.push({ id: "pit.presentation." + cue.kind, mode: "play", status: "dedicated-animation" });
+  }
+  if (cue.kind === "defeat") {
+    // A crouched or idle drawing is a declared held fallback, not a death clip.
+    choices.push({ id: "crouch", mode: "last", status: "staged-held-pose" },
+      { id: "idle", mode: "last", status: "staged-held-pose" });
+  } else {
+    const held = cue.kind === "waiting" || cue.kind === "ready";
+    choices.push({ id: "idle", mode: held ? "first" : "play",
+      status: held ? "staged-held-pose" : "reused-idle-animation" });
+  }
+  // Search by semantic priority before registry order: a later dedicated atlas
+  // must beat an older idle page without borrowing another costume or side.
+  for (const choice of choices) for (const animation of proof.animations) {
+    if (!ownsAppearance(animation.definition, fighter) ||
+        !animation.readyClips.has(clipKey(choice.id, facing))) continue;
+    const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, choice.id, facing, 0);
+    if (!first) continue;
+    if (choice.status === "dedicated-animation" && first.clip.loop) continue;
+    const elapsed = choice.mode === "last" || (cue.reducedMotion && choice.status === "dedicated-animation")
+      ? Math.max(0, first.totalTicks - 1)
+      : choice.mode === "first" || cue.reducedMotion ? 0
+        : Math.floor(cue.elapsedMs * first.clip.ticksPerSecond / 1000);
+    const frame = resolveHunterSpriteAtlasFrame(animation.definition.atlas, choice.id, facing, elapsed);
+    if (!frame) continue;
+    const source = animation.pages.get(frame.page.id);
+    if (source && source.width === frame.page.width && source.height === frame.page.height) {
+      return { definition: animation.definition, frame, source, status: choice.status, cue };
+    }
+  }
+  return null;
+}
+
+export function drawPitSpriteSheetPresentation(
+  context: CanvasRenderingContext2D,
+  bank: PitSpriteSheetAnimationBank | null | undefined,
+  fighter: PitFighterState,
+  groundY: number,
+  options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
+): boolean {
+  if (![fighter.x, fighter.y, groundY].every(finite)) return false;
+  const presentation = resolvePitSpriteSheetPresentation(bank, fighter, options);
+  if (!presentation) return false;
+  const { rect, pivot } = presentation.frame.frame;
+  const bodyHeight = presentation.definition.pageBodyHeightPx?.[presentation.frame.page.id] ?? presentation.definition.bodyHeightPx;
+  const treatment = getPitFighterPresentationTreatment(presentation.cue, presentation.status === "dedicated-animation");
+  const scale = PIT_FIGHTERS[fighter.definitionId].bodyHeight / bodyHeight * treatment.scale;
+  context.save();
+  try {
+    context.filter = treatment.filter;
+    context.globalAlpha *= treatment.alpha;
+    context.imageSmoothingEnabled = false;
+    context.shadowColor = treatment.glow ?? "transparent";
+    context.shadowBlur = treatment.glowBlur;
+    if (options.highContrast) { context.shadowColor = options.accent ?? "#eaffed"; context.shadowBlur = 4; }
+    // Theatre drawings rest on the scene floor even when the final combat tick
+    // had an airborne KO. This is a draw anchor, never a simulation y write.
+    context.drawImage(presentation.source, ...rect,
+      fighter.x - pivot[0] * scale, groundY - pivot[1] * scale, rect[2] * scale, rect[3] * scale);
+    return true;
+  } finally { context.restore(); }
+}
+
 /** Observes uncovered states too, keeping action-entry clocks honest on later coverage. */
 export function resolvePitSpriteSheetAnimation(
   bank: PitSpriteSheetAnimationBank | null | undefined,
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetAnimationFrame | null {
+  if (getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion)) return null;
   const proof = bank && evidence.get(bank);
   const selection = selectionKey(fighter.definitionId, fighter.variantId);
   if (!proof || bank.cancelled || proof.signal?.aborted || !proof.selections.has(selection)) return null;
@@ -271,6 +359,9 @@ export function drawPitSpriteSheetAnimation(
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
   if (![fighter.x, fighter.y, groundY].every(finite)) return false;
+  if (getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion)) {
+    return drawPitSpriteSheetPresentation(context, bank, fighter, groundY, options);
+  }
   const animation = resolvePitSpriteSheetAnimation(bank, fighter, options);
   if (!animation) return false;
   const { rect, pivot } = animation.resolved.frame.frame;
@@ -333,6 +424,7 @@ export function resolvePitSpriteSheetHold(
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitSpriteSheetHoldFrame | null {
+  if (getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion)) return null;
   const proof = bank && evidence.get(bank);
   const selection = selectionKey(fighter.definitionId, fighter.variantId);
   if (!proof || bank.cancelled || proof.signal?.aborted || !proof.selections.has(selection)) return null;

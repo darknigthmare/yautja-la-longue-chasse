@@ -128,6 +128,21 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     (dialogStateRef.current ? dialogRef.current : viewportRef.current)?.focus({ preventScroll: true });
   }, [clearInputs, onNotify, persistVisit, save.createdAt]);
 
+  const enterYouthTraining = useCallback(() => {
+    if (suspendedRef.current || !onYouthTraining
+      || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt) return;
+    clearInputs();
+    // The youth screen unmounts this city. Keep its unacknowledged visit queue
+    // alive until an explicit retry has durably stored every reached district.
+    if (pendingVisitsRef.current.size > 0) {
+      const message = "Des visites de quartiers restent non enregistrées. Réessaie leur enregistrement ici avant de rejoindre le maître ; ta progression reste conservée dans la cité.";
+      setAnnouncement(message); onNotify(message);
+      setDialog(current => current ? { ...current, message } : current);
+      return;
+    }
+    if (!onYouthTraining()) setDialog(current => current ? { ...current, message: "L’entrée au dojo n’a pas pu être sauvegardée. Réessaie ici ; aucun exercice n’a été accordé." } : current);
+  }, [clearInputs, onNotify, onYouthTraining, save.createdAt]);
+
   const closeDialog = useCallback(() => {
     setDialog(null);
     clearInputs();
@@ -389,10 +404,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         {selectedPoint ? <>
           {selectedNpc && <p>« {youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »</p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Accueil original du clan, pas une preuve de formation. Les exercices se jouent dans le dojo, puis au camp.</p></div>}
-          {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo onClick={() => {
-            clearInputs();
-            if (!onYouthTraining()) setDialog(current => current ? { ...current, message: "L’entrée au dojo n’a pas pu être sauvegardée. Réessaie ici ; aucun exercice n’a été accordé." } : current);
-          }}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "desert-complete" ? "Revoir le retour de reconnaissance" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "desert-complete" ? "Revoir le retour de reconnaissance" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}
           <p>{youthWelcome && selectedPoint.kind === "ship" ? "Appareils et transports du clan." : youthWelcome && selectedPoint.service ? "Lieu public du clan : les équipements et exercices sont remis aux étapes prévues de la formation." : youthWelcome && selectedPoint.npcId === "hunt-king" ? "Présente-toi au chef avant de rejoindre ton instructeur." : selectedPoint.description}</p>
           {selectedPoint.kind === "ship" && <p>{youthWelcome ? "Les appareils du clan occupent les quais. Ton propre vaisseau sera acquis après le rite Blooded ; l’accueil et la formation sur le Homeworld viennent d’abord." : <>Le {shipForId(selectedShipId).name} t’attend aux quais. L’armurerie, les trophées et les pièces de ton vaisseau personnel restent accessibles.</>}</p>}

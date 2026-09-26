@@ -67,6 +67,34 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
     assert.equal(drawings.size, fighterId === "user-ahab" ? 6 : 8,
       "Clip reuse must not inflate the number of distinct V50 drawings");
   }
+  const presentationClips = report.clips.filter(clip => clip.clipId.startsWith("pit.presentation."));
+  assert.deepEqual(presentationClips.map(clip => [clip.fighterId, clip.variantId, clip.atlasId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(":" )).sort(),
+    ["intro", "victory", "defeat"].flatMap(kind => ["right", "left"].map(facing =>
+      ["jungle-hunter", "jungle-hunter-avec-casque-53f4eb349a", "jungle-hunter-masked-round-presentation-v51", "pit.presentation." + kind, facing, 3, true].join(":"))).sort(),
+    "All six dedicated V51 clips belong to the exact reviewed Jungle Hunter appearance");
+  assert.equal(report.readyPhaseClips, 321, "Presentation adds six clips, never new combat attacks");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 315);
+  assert.equal(report.pageCount, 104);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 92);
+  assert.equal(report.distinctDrawings, 643);
+  assert.equal(report.appearances.length, 18);
+  assert.equal(report.fighters.length, 15);
+  const v51Pages = report.pages.filter(page => page.src.includes("/v51/"));
+  assert.equal(v51Pages.length, 6);
+  assert.equal(new Set(v51Pages.map(page => page.src)).size, 4);
+  assert.equal(new Set(v51Pages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 16,
+    "Two neutral references reused in presentation do not inflate distinct drawings");
+  assert(v51Pages.every(page => page.variantId === "jungle-hunter-avec-casque-53f4eb349a" && page.sourceHasAlpha && page.keyedPixels === 0));
+  for (const clip of presentationClips) {
+    assert.ok(["intro", "victory", "defeat"].includes(clip.runtimePhase));
+    assert.equal(clip.clipId, "pit.presentation." + clip.runtimePhase);
+    assert.equal(clip.runtimePosture, "presentation");
+    assert.equal(clip.runtimePhaseTicks, null);
+    assert.equal(clip.presentationClockOnly, true); assert.equal(clip.physicsUnchanged, true);
+    assert.equal(clip.status, "dedicated-animation");
+    assert.deepEqual(clip.drawnFrameIndices, Array.from({ length: clip.drawnCells }, (_, index) => index));
+    assert.ok(clip.drawnCells >= 2, "A dedicated sequence must contain real changing drawings");
+  }
   const city = historicalClips.filter(clip => clip.fighterId === "city-hunter");
   assert.equal(city.length, 10);
   assert.equal(city.filter(clip => clip.clipId === "high-guard" && clip.facing === "right" && clip.ready).length, 1);

@@ -9,7 +9,8 @@ const canvas = await readFile(
 
 test("PIT technique entities have a visible Canvas layer and training hitboxes", () => {
   assert.match(canvas, /getPitTechniqueBox/);
-  assert.match(canvas, /for \(const effect of state\.techniqueEffects\)/);
+  assert.match(canvas, /const combatEffectsVisible = presentation\.phase === "fight" && state\.phase === "round"/);
+  assert.match(canvas, /for \(const effect of combatEffectsVisible \? state\.techniqueEffects : \[\]\)/);
   assert.match(canvas, /drawTechniqueEffect\(context, state, effect/);
   assert.match(canvas, /showHitboxes[\s\S]*?#d888ff/);
   assert.match(canvas, /technique\.device === "net"/);

@@ -37,15 +37,17 @@ test('the shared vehicle effect library is not a fifty-first catalogue vehicle',
 test('the six masked V50 movement sheets add only reviewed partial coverage, not walks or complete movesets', () => {
   const coverage = productionCoverage([], []);
   // V50 adds three identities (Falconer, Scarface, Enforcer). Ahab, Wolf and
-  // Celtic already existed; this report counts identities, not 17 appearances.
+  // Celtic already existed; this report counts identities, not appearances.
   assert.equal(coverage.hunters.runtimeFighters, 15);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 277 + 8 + 5 * 6);
+  assert.equal(coverage.hunters.validatedClips, 315 + 6);
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
   const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
   const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
+  assert.equal(registry.reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 315,
+    'The historical and V50 combat coverage remains exactly unchanged');
   const movement = registry.filter(entry => entry.atlas.id.endsWith('-v50'));
   assert.deepEqual(movement.map(entry => entry.fighterId).sort(),
     ['user-ahab', 'wolf', 'falconer', 'scarface', 'enforcer', 'celtic'].sort());
@@ -59,4 +61,23 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
     assert.equal(entry.atlas.clips.some(clip => clip.id === 'walk' || clip.id === 'walk-backward'), false,
       'Rejected walk cycles must not be reclassified as delivered movements');
   }
+});
+
+test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hunter, not a complete moveset', () => {
+  const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
+  const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
+  const dedicated = registry.filter(entry => entry.atlas.id.endsWith('-v51'));
+  assert.equal(dedicated.length, 1);
+  const [entry] = dedicated;
+  assert.equal(entry.atlas.id, 'jungle-hunter-masked-round-presentation-v51');
+  assert.equal(entry.fighterId, 'jungle-hunter');
+  assert.equal(entry.variantId, 'jungle-hunter-avec-casque-53f4eb349a');
+  assert.deepEqual(entry.atlas.clips.map(clip => [clip.id, clip.facing, clip.frames.length, clip.loop, clip.ticksPerSecond, clip.status].join(':')).sort(),
+    ['intro', 'victory', 'defeat'].flatMap(kind => ['right', 'left'].map(facing =>
+      ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
+  const coverage = productionCoverage([], []);
+  assert.equal(coverage.hunters.runtimeFighters, 15);
+  assert.equal(coverage.hunters.validatedClips, 321);
+  assert.equal(coverage.hunters.completeMovesets, 0);
+  assert.equal(coverage.completeGameImplied, false);
 });

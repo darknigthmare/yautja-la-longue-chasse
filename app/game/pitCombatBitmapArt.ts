@@ -2,9 +2,11 @@ import { getPitUserVariant, normalizePitUserVariant } from './systems/pitUserRos
 import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import {
-  drawPitSpriteSheetAnimation, drawPitSpriteSheetHold, loadPitSpriteSheetAnimations, resolvePitSpriteSheetAnimation, resolvePitSpriteSheetHold, getPitSpriteSheetAnimationVisualBounds,
+  drawPitSpriteSheetAnimation, drawPitSpriteSheetHold, drawPitSpriteSheetPresentation, resolvePitSpriteSheetPresentation, loadPitSpriteSheetAnimations, resolvePitSpriteSheetAnimation, resolvePitSpriteSheetHold, getPitSpriteSheetAnimationVisualBounds,
   type PitSpriteSheetAnimationBank, type PitSpriteSheetAnimationDefinition, type PitSpriteSheetAnimationOptions,
 } from "./pitSpriteSheetAnimation";
+
+import { getPitFighterPresentationCue, getPitFighterPresentationTreatment } from "./pitFighterPresentation";
 
 /** Exact-ID PIT fighters, including the separate V34 duel extension. Fixed poses only. */
 export const PIT_COMBAT_BITMAP_FIGHTER_IDS = [
@@ -108,12 +110,31 @@ export interface PitCombatBitmapArtBank {
 }
 export type PitCombatBitmapArtStatus = "static-bitmap" | "loading" | "missing";
 
+export type PitFighterPresentationVisualStatus = "dedicated-animation" | "reused-idle-animation" | "staged-bitmap" | "staged-held-pose" | "none";
+
+/** Truthful UI/QA evidence; stage movement does not create authored clip coverage. */
+export function getPitFighterPresentationVisualStatus(
+  bank: PitCombatBitmapArtBank | null,
+  fighter: PitFighterState,
+  options: PitSpriteSheetAnimationOptions = {},
+): PitFighterPresentationVisualStatus {
+  if (!getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion) || bank?.cancelled) return "none";
+  const frame = resolvePitSpriteSheetPresentation(bank?.spriteSheets, fighter, options);
+  if (frame) return frame.status;
+  return getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId) === "static-bitmap" ? "staged-bitmap" : "none";
+}
+
 /** Current state coverage is separate from the presence of a static selection plate. */
 export function getPitCombatBitmapFighterArtStatus(
   bank: PitCombatBitmapArtBank | null,
   fighter: PitFighterState,
   options: PitSpriteSheetAnimationOptions = {},
 ): PitCombatBitmapArtStatus | "sprite-sheet-animation" | "sprite-sheet-hold" {
+  if (getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion)) {
+    const presentation = !bank?.cancelled && resolvePitSpriteSheetPresentation(bank?.spriteSheets, fighter, options);
+    if (presentation) return presentation.status === "staged-held-pose" ? "sprite-sheet-hold" : "sprite-sheet-animation";
+    return getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId);
+  }
   if (!bank?.cancelled && resolvePitSpriteSheetAnimation(bank?.spriteSheets, fighter, options)) return "sprite-sheet-animation";
   if (!bank?.cancelled && resolvePitSpriteSheetHold(bank?.spriteSheets, fighter, options)) return "sprite-sheet-hold";
   return getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId);
@@ -254,22 +275,33 @@ export function drawPitCombatBitmapFighter(
   groundY: number,
   options: PitSpriteSheetAnimationOptions & { highContrast?: boolean; accent?: string } = {},
 ): boolean {
-  if (bank && !bank.cancelled && drawPitSpriteSheetAnimation(context, bank.spriteSheets, fighter, groundY, options)) return true;
-  if (bank && !bank.cancelled && drawPitSpriteSheetHold(context, bank.spriteSheets, fighter, groundY, options)) return true;
+  const cue = getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion);
+  if (cue) {
+    if (bank && !bank.cancelled && drawPitSpriteSheetPresentation(context, bank.spriteSheets, fighter, groundY, options)) return true;
+  } else {
+    if (bank && !bank.cancelled && drawPitSpriteSheetAnimation(context, bank.spriteSheets, fighter, groundY, options)) return true;
+    if (bank && !bank.cancelled && drawPitSpriteSheetHold(context, bank.spriteSheets, fighter, groundY, options)) return true;
+  }
   if (!bank || getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId) !== "static-bitmap" ||
     !Number.isFinite(fighter.x) || !Number.isFinite(fighter.y) || !Number.isFinite(groundY) ||
     (fighter.facing !== -1 && fighter.facing !== 1)) return false;
   const art = getPitCombatBitmapArtDefinition(fighter.definitionId, fighter.variantId)!;
   const definition = PIT_FIGHTERS[fighter.definitionId];
-  const scale = definition.bodyHeight / (art.pivot[1] - art.bodyTopY);
+  const treatment = cue ? getPitFighterPresentationTreatment(cue) : null;
+  const scale = definition.bodyHeight / (art.pivot[1] - art.bodyTopY) * (treatment?.scale ?? 1);
   const direction = art.nativeFacing === "neutral" ? 1 : art.nativeFacing === "right" ? fighter.facing : -fighter.facing;
   context.save();
   try {
-    context.translate(fighter.x, groundY - fighter.y);
+    context.translate(fighter.x, groundY - (cue ? 0 : fighter.y));
     context.scale(scale * direction, scale);
     context.imageSmoothingEnabled = false;
-    context.filter = "none";
-    if (fighter.cloakPhase !== "inactive") context.globalAlpha *= fighter.cloakPhase === "active" ? .38 : .65;
+    context.filter = treatment?.filter ?? "none";
+    if (treatment) {
+      context.globalAlpha *= treatment.alpha;
+      context.shadowColor = treatment.glow ?? "transparent";
+      context.shadowBlur = treatment.glowBlur / scale;
+    }
+    if (!cue && fighter.cloakPhase !== "inactive") context.globalAlpha *= fighter.cloakPhase === "active" ? .38 : .65;
     if (options.highContrast) {
       context.shadowColor = options.accent ?? "#eaffed";
       context.shadowBlur = 4 / scale;

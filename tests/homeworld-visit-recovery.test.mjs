@@ -45,13 +45,15 @@ function fixture() {
     setActor() {}, setPhase() {}, setPaused() {}, setInactive() {}, closeDialog() {}, interact() {},
     clearInputs() { env.held.current.clear(); env.touch.current = {}; env.gamepadStateRef.current = createHomeworldGamepadState(); },
     setPendingVisitCount(value) { env.pendingVisitCount = value; }, setAnnouncement() {}, onNotify(message) { messages.push(message); },
+    setDialog(update) { env.dialogStateRef.current = typeof update === "function" ? update(env.dialogStateRef.current) : update; },
+    onYouthTraining: () => true,
     persist: () => false,
     onProgress(progress) { attempts.push(structuredClone(progress)); return env.persist(progress); },
   };
   env.save = { ...env.saveRef.current, homeworld: initial };
   env.viewportRef = { current: { focus() { env.document.activeElement = env.viewportRef.current; } } };
   env.dialogRef = { current: { focus() { env.document.activeElement = env.dialogRef.current; }, querySelectorAll: () => [] } };
-  for (const name of ["persistAction", "persistVisit", "retryPendingVisits"]) env[name] = liveCallback(name, env);
+  for (const name of ["persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining"]) env[name] = liveCallback(name, env);
   const effect = liveCallback("poll", env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const tick = (count = 1) => { for (let i = 0; i < count; i++) { time += 1000 / 60; frame(time); } };
@@ -157,4 +159,63 @@ test("successful inline retry restores world focus and dialog retry stays naviga
   assert.equal(f.env.pendingVisitCount, 0); assert.equal(f.attempts.length, 2);
   assert.equal(f.env.document.activeElement, f.env.dialogRef.current);
   assert.equal(closed, 0, "held A after recovery must not activate the next dialog action");
+});
+
+test("entering youth training keeps refused visits alive until an explicit successful retry", () => {
+  const f = fixture(); f.tick();
+  let entries = 0;
+  f.env.onYouthTraining = () => { entries++; return true; };
+  f.env.dialogStateRef.current = { point: { npcId: "terrace-instructor" } };
+  f.env.persist = () => true;
+  f.env.enterYouthTraining();
+  assert.equal(entries, 0, "restored storage alone cannot bypass unacknowledged visits");
+  assert.equal(f.attempts.length, 1, "entry does not retry writes without the retry action");
+  assert.deepEqual([...f.env.pendingVisitsRef.current], ["port"]);
+  assert.match(f.env.dialogStateRef.current.message, /visites de quartiers restent non enregistrées/i);
+  assert.equal(f.messages.at(-1), f.env.dialogStateRef.current.message);
+  f.env.retryPendingVisits();
+  assert.equal(f.env.pendingVisitCount, 0);
+  assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port"]);
+  f.env.enterYouthTraining();
+  assert.equal(entries, 1, "acknowledged visits allow the normal youth transition");
+  assert.equal(f.attempts.length, 2);
+});
+
+test("a partially recovered visit queue still blocks departure for youth training", () => {
+  const f = fixture(); f.tick();
+  f.env.actorRef.current = { ...f.env.actorRef.current, x: 1750, y: 2000 }; f.tick();
+  let writes = 0, entries = 0;
+  f.env.persist = () => ++writes === 1;
+  f.env.onYouthTraining = () => { entries++; return true; };
+  f.env.dialogStateRef.current = { point: { npcId: "terrace-instructor" } };
+  f.env.retryPendingVisits(); f.env.enterYouthTraining();
+  assert.equal(entries, 0);
+  assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port"]);
+  assert.deepEqual([...f.env.pendingVisitsRef.current], ["market"]);
+  f.env.persist = () => true; f.env.retryPendingVisits(); f.env.enterYouthTraining();
+  assert.equal(entries, 1);
+  assert.deepEqual(f.env.progressRef.current.visitedDistrictIds, ["port", "market"]);
+});
+
+test("youth entry ignores a suspended or stale-owner city even with no pending visits", () => {
+  const f = fixture(); let entries = 0;
+  f.env.onYouthTraining = () => { entries++; return true; };
+  f.env.suspendedRef.current = true; f.env.enterYouthTraining();
+  assert.equal(entries, 0);
+  f.env.suspendedRef.current = false;
+  f.env.save = { ...f.env.save, createdAt: "2026-09-26T09:00:00.000Z" };
+  f.env.enterYouthTraining(); assert.equal(entries, 0, "new props cannot use the old owner queue before sync");
+  liveCallback("sync", f.env)(); f.env.enterYouthTraining(); assert.equal(entries, 1);
+  f.env.saveRef.current = { ...f.env.saveRef.current, createdAt: "2026-09-26T10:00:00.000Z" };
+  f.env.enterYouthTraining(); assert.equal(entries, 1, "a ref owner mismatch also keeps the callback inert");
+});
+
+test("with no pending visits youth entry preserves the existing save-refusal feedback", () => {
+  const f = fixture(); let entries = 0;
+  f.env.onYouthTraining = () => { entries++; return false; };
+  f.env.dialogStateRef.current = { point: { npcId: "terrace-instructor" } };
+  f.env.enterYouthTraining();
+  assert.equal(entries, 1);
+  assert.match(f.env.dialogStateRef.current.message, /n’a pas pu être sauvegardée/);
+  assert.equal(f.attempts.length, 0, "entry neither grants a visit nor fakes a storage acknowledgement");
 });

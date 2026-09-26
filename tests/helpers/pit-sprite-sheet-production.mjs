@@ -91,6 +91,44 @@ export async function auditPitSpriteSheetProduction() {
       const combat = api.createPitCombatState(entry.fighterId, entry.fighterId === "wolf" ? "jungle-hunter" : "wolf",
         { variants: [entry.variantId ?? null, null] });
       const fighter = combat.fighters[0]; fighter.facing = clip.facing === "right" ? 1 : -1;
+      const presentationKind = /^pit\.presentation\.(intro|victory|defeat)$/.exec(clip.id)?.[1];
+      if (presentationKind) {
+        const before = JSON.stringify(combat);
+        const authoredTicks = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0);
+        const presentation = { phase: presentationKind === "intro" ? "intro-left" : "match-result",
+          elapsedMs: 0, durationMs: Math.max(1200, (authoredTicks + 2) * 1000 / clip.ticksPerSecond),
+          round: combat.round, fighterSlot: 0,
+          winnerSlot: presentationKind === "defeat" ? 1 : 0, blocksSimulation: true, resultVisible: false };
+        let elapsedTicks = 0;
+        const drawnFrames = [];
+        for (let index = 0; index < clip.frames.length; index++) {
+          const expected = clip.frames[index];
+          // Sample inside each authored interval, leaving the real combat tick fixed.
+          presentation.elapsedMs = (elapsedTicks + .5) * 1000 / clip.ticksPerSecond;
+          const options = { simulationFrame: combat.frame, combat, presentation };
+          const resolved = api.resolvePitSpriteSheetPresentation(bank, fighter, options);
+          assert.ok(resolved, entry.fighterId + " " + clip.id + " " + clip.facing + " cell " + index);
+          assert.equal(resolved.status, "dedicated-animation");
+          assert.equal(resolved.definition.atlas.id, entry.atlas.id);
+          assert.equal(resolved.definition.variantId, entry.variantId);
+          assert.equal(resolved.frame.clip.id, clip.id); assert.equal(resolved.frame.clip.facing, clip.facing);
+          assert.equal(resolved.frame.frameIndex, index); assert.deepEqual(resolved.frame.frame.rect, expected.rect);
+          const calls = [], savedAlpha = [];
+          const context = { globalAlpha: 1, save() { savedAlpha.push(this.globalAlpha); },
+            restore() { this.globalAlpha = savedAlpha.pop(); }, drawImage(...args) { calls.push(args); } };
+          assert.equal(api.drawPitSpriteSheetPresentation(context, bank, fighter, 440, options), true);
+          assert.equal(calls.length, 1); assert.equal(calls[0][0], resolved.source);
+          assert.deepEqual(calls[0].slice(1, 5), expected.rect);
+          assert.equal(context.globalAlpha, 1); assert.equal(savedAlpha.length, 0);
+          assert.equal(JSON.stringify(combat), before, "Presentation cannot rewrite combat state, action or replay ticks");
+          drawnFrames.push(index); elapsedTicks += expected.durationTicks;
+        }
+        clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, atlasId: entry.atlas.id,
+          clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length, authoredTicks,
+          runtimePosture: "presentation", runtimePhase: presentationKind, runtimePhaseTicks: null,
+          presentationClockOnly: true, physicsUnchanged: true, status: "dedicated-animation", drawnFrameIndices: drawnFrames, ready: true });
+        continue;
+      }
       if (clip.id === "walk" || clip.id === "walk-backward") fighter.velocityX = fighter.facing * (clip.id === "walk" ? 3 : -3);
       else if (clip.id === "crouch") fighter.crouching = true;
       else if (clip.id === "high-guard" || clip.id === "low-guard") fighter.guard = clip.id === "high-guard" ? "high" : "low";
