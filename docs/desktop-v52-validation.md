@@ -25,3 +25,11 @@ La patrouille conserve les contrôles de la recette web `verify-youth-patrol-v52
 Après les gates de construction et de packaging, avec le même répertoire de sortie configuré, lancer `npm run qa:desktop`, puis `npm run qa:desktop:package`. L’archive portable se construit et se vérifie séparément avec `scripts/archive-desktop.mjs` et `scripts/verify-desktop-package.mjs --zip`.
 
 Les helpers sont `scripts/desktop-current-flows.mjs` et `scripts/desktop-youth-patrol-v52.mjs`. La fenêtre reste cachée grâce au profil QA ; la capture native peut être en retard sur les pixels Canvas, qui sont également exportés pour les duels. Cette recette ne certifie pas la cadence matérielle, une manette physique, une session longue, une signature Windows, une campagne complète ou les droits de commercialisation.
+
+## Package produit
+
+Le package V52 est construit depuis `ce63b1f6b351da8960a12d8372db237f52a45ed2` ; son empreinte de sources est `6a47def5090d3237c4468fb7011aa2953d2b07be0cdbb3313518c22100d14b9b`. L’ASAR contient 4 168 entrées, uniquement le runtime autorisé. Les sept nouveaux PNG ont été extraits et comparés aux SHA-256 de leur provenance ; le code embarqué contient la patrouille V52. Le ZIP contient 77 entrées et mesure 3 112 088 081 octets. Preuve : `desktop-v52-package.json`.
+
+Les ajustements de recette postérieurs à ce commit ne modifient pas les sources du programme : tolérance de mesure CSS inférieure à un pixel pour le DPI Windows, bouton actuel de galerie, PNJ modulaires décodés, télémétrie PIT cachée par le HUD, routeur de collisions au clavier et attente de l’autopilote. Une chasse suspendue reprend normalement en pause ; la recette clique Reprendre, avance le vrai moteur, puis suspend de nouveau. Aucune sauvegarde personnelle n’est utilisée.
+
+Ces preuves de package ne remplacent pas le passage intégral de `verify-desktop.mjs`. Son fichier `work/v52-pc/qa/v52/verification.json` et le rapport final `outputs/qa-commercial-audit/v52/publication-verified.json` sont les références de qualification effective de l’EXE.

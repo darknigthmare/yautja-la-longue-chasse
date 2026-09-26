@@ -9,18 +9,9 @@ import { build } from "esbuild";
 async function moduleAt(name) { const result = await build({ entryPoints: [fileURLToPath(new URL("../app/game/systems/" + name + ".ts", import.meta.url))], bundle: true, write: false, format: "esm", platform: "node", target: "es2022" }); return import("data:text/javascript;base64," + Buffer.from(result.outputFiles[0].text).toString("base64")); }
 const city = await moduleAt("homeworldCity"), world = await moduleAt("homeworld"), youth = await moduleAt("youthTraining");
 
-export async function verifyDesktopYouthPatrol(page, { output, capture, checks }) {
- const base = "yautja://game/";
- const archivePath = process.env.V52_DESERT_ARCHIVE || "outputs/qa-commercial-audit/v49/public-desert-browser-qa/desert-return-played-storage.json";
- const storage = JSON.parse(await fs.readFile(archivePath, "utf8")), key = "yautja-long-hunt.save", original = JSON.parse(storage[key]);
- assert.equal(original.youthTraining.checkpoint.phase, "desert-complete"); assert.equal(original.youthTraining.receipts.length, 11);
- const routeEvidence = [];
- const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
- const exportStorage = async name => fs.writeFile(path.join(output, name), JSON.stringify(await page.evaluate(() => Object.fromEntries(Object.keys(localStorage).filter(k => k.includes("yautja")).map(k => [k, localStorage.getItem(k)]))), null, 2));
- await page.goto(base, { waitUntil: "networkidle", timeout: 120000 });
- await page.evaluate(entries => { if (Object.keys(localStorage).length) throw new Error("Youth fixture requires an empty isolated QA profile"); for (const [k, v] of Object.entries(entries)) localStorage.setItem(k, v); }, storage);
- await page.reload({ waitUntil: "networkidle" }); await page.getByRole("button", { name: /^Continuer/ }).click();
+export async function createDesktopHomeworldDriver(page) {
  const hub = page.locator("[data-homeworld-hub]"), viewport = page.getByRole("group", { name: "Cité jouable en perspective 2.5D", exact: true });
+ const routeEvidence = [];
  await hub.waitFor();
   const position = () => page.locator("[data-homeworld-actor]").evaluate(element => ({ x: Number(element.dataset.x), y: Number(element.dataset.y) }));
   const segmentClear = (a, b) => {
@@ -107,7 +98,25 @@ export async function verifyDesktopYouthPatrol(page, { output, capture, checks }
   await page.keyboard.press("e"); await page.clock.runFor(100);
   await hub.getByRole("dialog").waitFor();
  };
+ return { position, walkTo, approach, routeEvidence };
+}
+
+export async function verifyDesktopYouthPatrol(page, { output, capture, checks }) {
+ const base = "yautja://game/";
+ const archivePath = process.env.V52_DESERT_ARCHIVE || "outputs/qa-commercial-audit/v49/public-desert-browser-qa/desert-return-played-storage.json";
+ const storage = JSON.parse(await fs.readFile(archivePath, "utf8")), key = "yautja-long-hunt.save", original = JSON.parse(storage[key]);
+ assert.equal(original.youthTraining.checkpoint.phase, "desert-complete"); assert.equal(original.youthTraining.receipts.length, 11);
+ const routeEvidence = [];
+ const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+ const exportStorage = async name => fs.writeFile(path.join(output, name), JSON.stringify(await page.evaluate(() => Object.fromEntries(Object.keys(localStorage).filter(k => k.includes("yautja")).map(k => [k, localStorage.getItem(k)]))), null, 2));
+ await page.goto(base, { waitUntil: "networkidle", timeout: 120000 });
+ await page.evaluate(entries => { if (Object.keys(localStorage).length) throw new Error("Youth fixture requires an empty isolated QA profile"); for (const [k, v] of Object.entries(entries)) localStorage.setItem(k, v); }, storage);
+ await page.reload({ waitUntil: "networkidle" }); await page.getByRole("button", { name: /^Continuer/ }).click();
+ const hub = page.locator("[data-homeworld-hub]");
+ await hub.waitFor();
+ const { approach, routeEvidence: cityRouteEvidence } = await createDesktopHomeworldDriver(page);
  await approach("training-service");
+ routeEvidence.push(...cityRouteEvidence);
  assert.equal((await saved()).youthTraining.checkpoint.phase, "desert-complete");
  await page.getByRole("button", { name: "Préparer la patrouille avec le maître", exact: true }).click();
  const training = page.locator("[data-youth-training]"), canvas = page.locator("canvas[data-youth-stage]");

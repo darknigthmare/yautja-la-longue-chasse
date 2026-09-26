@@ -20,7 +20,7 @@ export async function verifyDesktopNewCampaign(page, capture, checks) {
     return { x: r.x, y: r.y, width: r.width, height: r.height, vw: innerWidth, vh: innerHeight, scrollWidth: document.documentElement.scrollWidth };
   });
   assert.equal(bounds.x, 0); assert.equal(bounds.y, 0);
-  assert.equal(bounds.width, bounds.vw); assert.equal(bounds.height, bounds.vh);
+  assert(Math.abs(bounds.width - bounds.vw) < 1); assert(Math.abs(bounds.height - bounds.vh) < 1); // CSS pixels can be fractional at Windows DPI scaling.
   assert(bounds.scrollWidth <= bounds.vw);
   await capture('campaign-main-pc.png');
   await page.getByRole('button', { name: /^Nouvelle partie/ }).click();

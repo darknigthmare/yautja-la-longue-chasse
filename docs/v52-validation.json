@@ -104,8 +104,42 @@
     "No new private ChatGPT conversation retrieval in this lot."
   ],
   "distribution": {
-    "webProduction": "Not asserted by this local report; see outputs/qa-commercial-audit/v52/publication-verified.json after publication.",
+    "webProduction": "Production ce63b1f was READY and qualified with 46 public checks. A later QA-only commit may be deployed; see publication-verified.json for the final alias state.",
     "windowsVersion": "1.0.52",
-    "windowsQualification": "Renderer built; packaging and actual offline EXE QA must pass after source commit. See work/v52-pc/qa/v52/verification.json and package-verification.json when produced."
+    "windowsQualification": "Renderer built; packaging and actual offline EXE QA must pass after source commit. See work/v52-pc/qa/v52/verification.json and archive-verification.json when produced."
+  },
+  "publicVerification": {
+    "passed": true,
+    "gameplaySourceCommit": "ce63b1f6b351da8960a12d8372db237f52a45ed2",
+    "deploymentId": "dpl_BGVU1yE27qbVMdebKHD7M79ZJdTG",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "distinctChecks": 46,
+    "reports": [
+      {
+        "path": "outputs/qa-commercial-audit/v52/public-presentation-art-browser-qa/report.json",
+        "passed": true,
+        "checks": 24
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v52/public-stage-journeys-browser-qa/report.json",
+        "passed": true,
+        "checks": 8
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v52/youth/public-patrol-browser-qa/report.json",
+        "passed": true,
+        "checks": 6
+      },
+      {
+        "path": "outputs/qa-commercial-audit/v52/youth/public-touch-layout-browser-qa/report.json",
+        "passed": true,
+        "checks": 8
+      }
+    ],
+    "sourceAssets": {
+      "passed": true,
+      "count": 7,
+      "report": "outputs\\qa-commercial-audit\\v52\\public-assets.json"
+    }
   }
 }
