@@ -121,9 +121,9 @@ Cette commande exécute le lint, TypeScript, l'audit strict de toutes les paires
 V19 **disponibles**, puis la compilation et l'ensemble des tests automatisés.
 Elle ne remplace pas l'audit de complétude des 800 décors.
 
-La livraison courante est décrite dans [le bilan V52](docs/v52-delivery.md),
-avec [ses validations datées](docs/v52-validation.json) et
-[la qualification PC V52](docs/desktop-v52-validation.md). Les chiffres et
+La livraison web courante est décrite dans [le bilan V53](docs/v53-delivery.md),
+avec [ses validations datées](docs/v53-validation.json). L'archive Windows
+distribuée reste [la version PC V52](docs/desktop-v52-validation.md). Les chiffres et
 identifiants V31 ci-dessous sont des preuves historiques, pas le statut actuel.
 
 La qualification historique V31 du commit
@@ -179,6 +179,9 @@ paquet public. Les images du projet sont des créations originales, avec leurs
 références et approximations documentées ; elles ne sont pas présentées comme
 des fichiers officiels de la franchise.
 
+- [Livraison V53 : petite Fosse, pas chassés et parcours](docs/v53-delivery.md)
+- [Validations V53](docs/v53-validation.json)
+- [Prompts et sélection des images OpenAI V53](docs/v53-openai-prompts.json)
 - [Livraison V52 : jeunesse, animations et parcours](docs/v52-delivery.md)
 - [Validations V52](docs/v52-validation.json)
 - [Édition PC V52](docs/desktop-v52-validation.md)

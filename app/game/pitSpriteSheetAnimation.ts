@@ -422,6 +422,8 @@ export interface PitSpriteSheetHoldFrame {
 /**
  * Honest held pose on the same authored side. A blocked hit retains the final
  * matching guard drawing; it is never certified as a newly drawn impact clip.
+ * An exact supplied costume may retain its reviewed final intro stance while
+ * standing still. This is a held drawing, never new idle-animation coverage.
  * Other missing states keep the historical idle or the selected supplied plate.
  */
 export function resolvePitSpriteSheetHold(
@@ -445,11 +447,18 @@ export function resolvePitSpriteSheetHold(
   if (motion.phase === "blockstun") {
     heldClips.push({ id: motion.posture === "crouch" ? "low-guard" : "high-guard", finalDrawing: true });
   }
+  if (fighter.variantId !== undefined && motion.clipId === "idle" &&
+    motion.posture === "stand" && motion.phase === "hold" &&
+    fighter.velocityX === 0 && fighter.velocityY === 0 && fighter.y === 0 &&
+    fighter.cloakPhase === "inactive") {
+    heldClips.push({ id: "pit.presentation.intro", finalDrawing: true });
+  }
   if (fighter.variantId === undefined) heldClips.push({ id: "idle", finalDrawing: false });
   for (const held of heldClips) for (const animation of proof.animations) {
     if (!ownsAppearance(animation.definition, fighter) || !animation.readyClips.has(clipKey(held.id, motion.facing))) continue;
     const first = resolveHunterSpriteAtlasFrame(animation.definition.atlas, held.id, motion.facing, 0);
     if (!first) continue;
+    if (held.id === "pit.presentation.intro" && first.clip.loop) continue;
     const frame = held.finalDrawing
       ? resolveHunterSpriteAtlasFrame(animation.definition.atlas, held.id, motion.facing, Math.max(0, first.totalTicks - 1))
       : first;

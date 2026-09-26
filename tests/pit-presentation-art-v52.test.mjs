@@ -70,6 +70,6 @@ for (const [fighterId, variantId, drawings] of appearances) test(`${fighterId} V
   assert.equal(frameHashes.size, drawings); assert.equal(registeredKeys.size, drawings);
   assert.equal(provenance.measurements.length, drawings);
   assert.equal(new Set(definition.atlas.pages.map(page => page.src)).size, 3);
-  assert.equal(PIT_SPRITE_SHEET_REGISTRY.filter(item => item.variantId === variantId).length, 1,
-    'This lot adds presentation coverage only, without quietly borrowing legacy combat animations');
+  assert.equal(PIT_SPRITE_SHEET_REGISTRY.filter(item => item.variantId === variantId && item.atlas.id.endsWith('-v52')).length, 1,
+    'The historical V52 lot remains presentation-only, without borrowing legacy combat animations');
 });

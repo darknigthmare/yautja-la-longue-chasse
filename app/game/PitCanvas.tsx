@@ -2928,7 +2928,7 @@ export default function PitCanvas({
             <p className={styles.selectionContext}>Simulation de duels non canonique · aucun gain de campagne. Start ouvre les options ; B ou Échap ferme ce panneau sans quitter THE PIT.</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
         {(mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
-          <label>Parcours disponibles · 5 liaisons d’exposition
+          <label>Parcours disponibles · {PIT_STAGE_JOURNEY_ROUTES.length} liaisons d’exposition
             <select aria-label="Parcours disponibles" data-pit-journey-picker value={selectedJourney ?? ""} disabled={runTransitionSelectionLocked}
               onChange={event => { const route = getPitStageJourneyDefinition(event.target.value); setStageJourneyEnabled(Boolean(route)); if (route) setArenaId(route.entry); }}>
               <option value="">Duel neutre · aucun parcours</option>
@@ -2966,7 +2966,7 @@ export default function PitCanvas({
             <span><strong>Répertoire des 100 arènes</strong><small>Contrat récupéré des conversations</small></span>
             <span>{PIT_ARENA_CATALOGUE_SUMMARY.playable} jouables · {PIT_ARENA_CATALOGUE_SUMMARY.concept} en conception</span>
           </summary>
-          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Chaque terrain propose un duel neutre sur un seul secteur. Cinq parcours d’exposition optionnels relient deux décors existants ; les 75 autres départs du groupe 1–80 restent sans parcours. Ruptures de décor, obstacles interactifs et dangers restent à réaliser.</p>
+          <p className={styles.catalogueTruth}>{PIT_ARENA_CATALOGUE_SUMMARY.playable} arènes disposent de six plans bitmap ; les {PIT_ARENA_CATALOGUE_SUMMARY.concept} autres restent des fiches de production. Chaque terrain propose un duel neutre sur un seul secteur. {PIT_STAGE_JOURNEY_ROUTES.length} parcours d’exposition optionnels relient deux décors existants ; les {80 - PIT_STAGE_JOURNEY_ROUTES.length} autres départs du groupe 1–80 restent sans parcours. Ruptures de décor, obstacles interactifs et dangers restent à réaliser.</p>
           <div className={styles.catalogueWaves}>
             {PIT_ARENA_CATALOGUE_WAVES.map((wave) => <section key={wave.id}>
               <h3>{wave.label}<small>{wave.first}–{wave.last} · {wave.count}</small></h3>

@@ -3882,7 +3882,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             />
             {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
               <h2>{save.profile.hunterName} · Première chasse</h2>
-              <p>Choisis ton apparence avec la personnalisation existante. Tu commenceras ensuite par le briefing de Vey et la chasse en jungle. Un guide en situation accompagne les déplacements, le saut, les traces et la récupération. La jeunesse de la nurserie reste en production ; aucun rite de jeunesse n’est attribué.</p>
+              <p>Ce checkpoint conserve l’ancien départ de campagne : personnalisation, briefing de Vey puis chasse en jungle. Aucun rite de jeunesse n’est attribué par ce raccourci historique. Pour commencer par la nurserie et poursuivre la formation Unblooded, crée une nouvelle partie dans un emplacement libre depuis le menu principal ; cette sauvegarde restera disponible.</p>
               <button type="button" className="alien-button" onClick={() => { setSelectedMission(MISSIONS.find(mission => mission.id === "jungle-vey")!); setBriefingAtAirlock(true); setNewGamePhase("briefing"); setScreen("briefing"); }}>Confirmer le chasseur et ouvrir le premier briefing</button>
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}

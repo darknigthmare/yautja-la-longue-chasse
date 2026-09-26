@@ -17,10 +17,12 @@ const built = await build({ plugins: [registryFixture], stdin: { contents: `
 const {
   loadPitSpriteSheetAnimations: load,
   resolvePitSpriteSheetAnimation: resolveGameplay,
+  resolvePitSpriteSheetHold: resolveHold,
   resolvePitSpriteSheetPresentation: resolvePresentation,
   drawPitSpriteSheetPresentation: drawPresentation,
   drawPitCombatBitmapFighter: drawWithFallback,
   getPitFighterPresentationVisualStatus: presentationStatus,
+  getPitCombatBitmapFighterArtStatus: combatArtStatus,
   getPitCombatBitmapArtDefinition: bitmapDefinition,
   createPitCombatState,
 } = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
@@ -100,6 +102,72 @@ function recordingContext(throwOnDraw = false) {
     drawImage(...args) { calls.push(["drawImage", ...args]); if (throwOnDraw) throw Error("draw denied"); } };
 }
 const contextState = context => [context.globalAlpha, context.filter, context.shadowColor, context.shadowBlur, context.imageSmoothingEnabled];
+
+test("V53 exact supplied idle holds the final native intro drawing without claiming an idle animation", async () => {
+  const env = browser();
+  try {
+    const entry = definition([
+      clip("pit.presentation.intro", "right", [frame(0), frame(1), frame(2)], false),
+      clip("pit.presentation.intro", "left", [frame(2), frame(0), frame(1)], false),
+    ], { fighterId: "user-ahab", variantId: ahabMasked });
+    const bank = await load(["user-ahab"], [entry], { variants: [ahabMasked] });
+    assert.equal(bank.readyClipCount, 2, "Holding an intro creates no additional clip");
+    for (const slot of [0, 1]) {
+      const state = freeze(createPitCombatState(slot === 0 ? "user-ahab" : "wolf", slot === 1 ? "user-ahab" : "wolf",
+        { variants: slot === 0 ? [ahabMasked, null] : [null, ahabMasked] }));
+      const fighter = state.fighters[slot], before = JSON.stringify(state), art = bitmapBank(fighter, bank);
+      const expected = entry.atlas.clips[slot].frames.at(-1);
+      for (const simulationFrame of [0, 60, 600]) {
+        const options = { simulationFrame };
+        assert.equal(resolveGameplay(bank, fighter, options), null, "No authored idle cycle is invented");
+        const hold = resolveHold(bank, fighter, options);
+        assert.equal(hold.frame.clip.id, "pit.presentation.intro");
+        assert.deepEqual(hold.frame.frame, expected);
+        assert.equal(combatArtStatus(art, fighter, options), "sprite-sheet-hold");
+        const context = recordingContext();
+        assert.equal(drawWithFallback(context, art, fighter, 400, options), true);
+        assert.equal(context.calls.filter(call => call[0] === "drawImage").length, 1);
+        assert(!context.calls.some(call => ["scale", "rotate", "translate"].includes(call[0])), "A native stance is not mirrored, rotated or tweened");
+      }
+      assert.equal(JSON.stringify(state), before);
+      for (const patch of [
+        { velocityX: 2 }, { velocityX: -2 }, { velocityY: 1 }, { y: 1 },
+        { grounded: false }, { crouching: true }, { guard: "high" }, { guard: "low" },
+        { cloakPhase: "active", cloakFramesRemaining: 1 },
+        { cloakPhase: "startup", cloakFramesRemaining: 1 },
+        { phase: "startup", action: { kind: "attack", attack: "light", frame: 0, connected: false } },
+        { phase: "hitstun", stunFrames: 10 }, { phase: "knockdown", knockdownFrames: 10 }, { health: 0 },
+      ]) assert.equal(resolveHold(bank, { ...fighter, ...patch }, { simulationFrame: 601 }), null,
+        "A still intro cannot conceal a missing combat action: " + JSON.stringify(patch));
+      assert.equal(resolveHold(bank, { ...fighter, variantId: ahabUnmasked }), null);
+    }
+  } finally { env.restore(); }
+});
+
+test("V53 idle stance refuses unauthored facings and invalid introductions and keeps real idle animation priority", async () => {
+  const env = browser();
+  try {
+    const fighter = createPitCombatState("user-ahab", "wolf", { variants: [ahabMasked, null] }).fighters[0];
+    for (const rejected of [
+      clip("pit.presentation.intro", "right", [frame(1), frame(2)], true),
+      { ...clip("pit.presentation.intro", "right", [frame(1), frame(2)], false), status: "draft" },
+      clip("pit.presentation.intro", "right", [frame(1)], false),
+      clip("pit.presentation.intro", "left", [frame(1), frame(2)], false),
+    ]) {
+      const bank = await load(["user-ahab"], [definition([rejected], { fighterId: "user-ahab", variantId: ahabMasked })], { variants: [ahabMasked] });
+      assert.equal(resolveHold(bank, fighter), null);
+      assert.equal(combatArtStatus(bitmapBank(fighter, bank), fighter), "static-bitmap");
+    }
+    const entry = definition([clip(), clip("pit.presentation.intro", "right", [frame(1), frame(2)], false)],
+      { fighterId: "user-ahab", variantId: ahabMasked });
+    const controller = new AbortController();
+    const bank = await load(["user-ahab"], [entry], { variants: [ahabMasked], signal: controller.signal });
+    assert.equal(combatArtStatus(bitmapBank(fighter, bank), fighter), "sprite-sheet-animation");
+    assert.equal(resolveGameplay(bank, fighter).resolved.frame.clip.id, "idle");
+    controller.abort(); assert.equal(resolveHold(bank, fighter), null);
+    assert.equal(resolveHold({ ...bank, cancelled: false }, fighter), null, "Forged evidence cannot authorize held art");
+  } finally { env.restore(); }
+});
 
 for (const kind of ["intro", "victory", "defeat"]) test(`dedicated ${kind} wins over earlier fallback art and advances while the simulation is frozen`, async () => {
   const env = browser();

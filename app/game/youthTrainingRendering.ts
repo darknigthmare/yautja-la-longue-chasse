@@ -1,3 +1,4 @@
+import { isYouthCagePhase, YOUTH_CAGE } from "./systems/youthCage";
 import { isYouthPatrolPhase, YOUTH_PATROL_HALTS } from "./systems/youthPatrol";
 import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, YOUTH_DESERT_CLUES, type YouthState } from "./systems/youthTraining";
 
@@ -14,17 +15,26 @@ export interface YouthPatrolGrazerArt {
   right: { watch: YouthPropSprite; telegraph: YouthPropSprite; recover: YouthPropSprite; charge: readonly YouthPropSprite[] };
 }
 export const youthPatrolGrazerSprites = (art: YouthPatrolGrazerArt | undefined): YouthPropSprite[] => art ? [art.left, art.right].flatMap(side => [side.watch, side.telegraph, side.recover, ...side.charge]) : [];
+export const YOUTH_CAGE_NOVICE_POSES = ["idle", "walk", "jump", "windup", "strike", "hurt", "thrown", "ko"] as const;
+export type YouthCageNovicePose = typeof YOUTH_CAGE_NOVICE_POSES[number];
+export interface YouthCageArt {
+  background: { src: string }; structure: YouthPropSprite; floor: YouthPropSprite; insignia: YouthPropSprite;
+  structureDestination: readonly [number, number, number, number]; floorDestination: readonly [number, number, number, number];
+  novice: { bodyHeight: number; left: Record<YouthCageNovicePose, YouthPropSprite>; right: Record<YouthCageNovicePose, YouthPropSprite> };
+}
+export const youthCageSprites = (art: YouthCageArt | undefined): YouthPropSprite[] => art ? [art.structure, art.floor, art.insignia, ...Object.values(art.novice.left), ...Object.values(art.novice.right)] : [];
 export interface YouthArtManifest {
   version: 1; actorKind: "unblooded";
   scenes: Record<"dojo" | "camp" | "quarters", { src: string; groundY?: number }> & { desert?: { src: string; groundY?: number } };
   desertProps?: Record<"footprints" | "branch" | "stone", YouthPropSprite>;
   patrolGrazer?: YouthPatrolGrazerArt;
+  cage?: YouthCageArt;
   blade: { src: string }; props: Record<YouthPropId, YouthPropSprite>;
   actors: Record<"player" | "rival", Record<"left" | "right", YouthActorAtlas>>;
 }
 export interface YouthArtBank { manifest: YouthArtManifest; images: ReadonlyMap<string, HTMLImageElement> }
 export function youthArtSources(manifest: YouthArtManifest) {
-  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src), ...Object.values(manifest.desertProps ?? {}).map(prop => prop.src), ...youthPatrolGrazerSprites(manifest.patrolGrazer).map(prop => prop.src),
+  return [...new Set([...Object.values(manifest.scenes).map(scene => scene.src), ...(manifest.cage ? [manifest.cage.background.src] : []), ...youthCageSprites(manifest.cage).map(sprite => sprite.src), manifest.blade.src, ...Object.values(manifest.props).map(prop => prop.src), ...Object.values(manifest.desertProps ?? {}).map(prop => prop.src), ...youthPatrolGrazerSprites(manifest.patrolGrazer).map(prop => prop.src),
     ...Object.values(manifest.actors).flatMap(actor => [actor.left.src, actor.right.src])])];
 }
 export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap<string, { width: number; height: number }>): string[] {
@@ -39,11 +49,20 @@ export function validateYouthArt(manifest: YouthArtManifest, images: ReadonlyMap
     const image = images.get(scene.src);
     if (scene.groundY !== undefined && (!Number.isFinite(scene.groundY) || scene.groundY <= 0 || image && scene.groundY > image.height)) errors.push(`Sol du décor ${name} hors image.`);
   }
-  for (const [name, prop] of Object.entries({ ...manifest.props, ...manifest.desertProps, ...Object.fromEntries(youthPatrolGrazerSprites(manifest.patrolGrazer).map((sprite, index) => [`grazer-${index}`, sprite])) })) {
+  for (const [name, prop] of Object.entries({ ...manifest.props, ...manifest.desertProps, ...Object.fromEntries(youthCageSprites(manifest.cage).map((sprite, index) => [`cage-${index}`, sprite])), ...Object.fromEntries(youthPatrolGrazerSprites(manifest.patrolGrazer).map((sprite, index) => [`grazer-${index}`, sprite])) })) {
     const image = images.get(prop.src); const [x, y, w, h] = prop.rect;
     if (!prop.rect.every(value => Number.isFinite(value) && value >= 0) || w <= 0 || h <= 0 || image && (x + w > image.width || y + h > image.height) || !prop.pivot.every(value => Number.isFinite(value) && value >= 0) || prop.pivot[0] > w || prop.pivot[1] > h) errors.push(`Accessoire ${name} hors atlas.`);
   }
   if (manifest.patrolGrazer && (!Number.isFinite(manifest.patrolGrazer.bodyHeight) || !(manifest.patrolGrazer.bodyHeight > 0) || !Number.isFinite(manifest.patrolGrazer.displayHeight) || !(manifest.patrolGrazer.displayHeight > 0) || manifest.patrolGrazer.left.charge.length < 1 || manifest.patrolGrazer.right.charge.length < 1)) errors.push("Brouteur : échelle ou poses manquantes.");
+  if (manifest.cage) {
+    const art = manifest.cage;
+    if (!(art.novice.bodyHeight > 0) || !Number.isFinite(art.novice.bodyHeight)) errors.push("Novice de la Fosse : échelle invalide.");
+    for (const side of [art.novice.left, art.novice.right]) {
+      if (YOUTH_CAGE_NOVICE_POSES.some(pose => !side[pose]) || new Set(Object.values(side).map(sprite => `${sprite.src}:${sprite.rect.join(",")}`)).size !== 8) errors.push("Novice de la Fosse : huit dessins natifs distincts requis par orientation.");
+    }
+    if (art.novice.left.idle.src === art.novice.right.idle.src && art.novice.left.idle.rect.join() === art.novice.right.idle.rect.join()) errors.push("Novice de la Fosse : orientation miroir interdite.");
+    for (const rect of [art.structureDestination, art.floorDestination]) if (rect.length !== 4 || !rect.every(Number.isFinite) || rect[2] <= 0 || rect[3] <= 0) errors.push("Petite Fosse : placement du plan invalide.");
+  }
   for (const actor of Object.values(manifest.actors)) {
   if (actor.left.src === actor.right.src) errors.push("Deux orientations natives sont requises.");
   for (const direction of ["left", "right"] as const) {
@@ -94,14 +113,21 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   ctx.save(); ctx.clearRect(0, 0, width, height); ctx.fillStyle = "#090705"; ctx.fillRect(0, 0, width, height);
   if (!bank) { ctx.restore(); return; }
   const { manifest, images } = bank;
+  const cage = isYouthCagePhase(state.phase);
   const patrol = isYouthPatrolPhase(state.phase);
   const desert = state.phase.startsWith("desert-") || patrol;
   const room = desert ? "desert" : state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
-  const scene = manifest.scenes[room]; if (!scene) { ctx.restore(); return; }
+  const scene = cage ? manifest.cage?.background : manifest.scenes[room]; if (!scene) { ctx.restore(); return; }
   const backdrop = images.get(scene.src)!;
-  const scale = Math.max(width / backdrop.width, height / backdrop.height, groundY / (scene.groundY ?? backdrop.height));
-  const top = scene.groundY === undefined ? (height - backdrop.height * scale) / 2 : 0;
+  const sceneGround = "groundY" in scene && typeof scene.groundY === "number" ? scene.groundY : undefined;
+  const scale = Math.max(width / backdrop.width, height / backdrop.height, groundY / (sceneGround ?? backdrop.height));
+  const top = sceneGround === undefined ? (height - backdrop.height * scale) / 2 : 0;
   ctx.drawImage(backdrop, (width - backdrop.width * scale) / 2, top, backdrop.width * scale, backdrop.height * scale);
+  const drawCageSprite = (sprite: YouthPropSprite, destination: readonly [number, number, number, number]) => ctx.drawImage(images.get(sprite.src)!, ...sprite.rect, ...destination);
+  if (cage && manifest.cage) {
+    drawCageSprite(manifest.cage.floor, manifest.cage.floorDestination);
+    drawCageSprite(manifest.cage.structure, manifest.cage.structureDestination);
+  }
   const prop = (id: YouthPropId, x: number, y: number, h: number, explicitWidth?: number) => {
     const sprite = manifest.props[id]; const image = images.get(sprite.src)!; const ratio = h / sprite.rect[3];
     const w = explicitWidth ?? sprite.rect[2] * ratio; const sx = w / sprite.rect[2];
@@ -119,8 +145,8 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   if (state.phase === "blade-award") prop("bladeRack", 680, groundY, 108);
   if (state.phase === "armory") prop("maskPedestal", 680, groundY, 100);
   if (["barracks", "rest", "morning"].includes(state.phase)) prop("cot", 680, groundY, 70);
-  if (!desert) { prop("brazier", 905, groundY, 96); prop("door", 105, groundY, 166); }
-  else {
+  if (!desert && !cage) { prop("brazier", 905, groundY, 96); prop("door", 105, groundY, 166); }
+  else if (desert) {
     prop("marker", 110, groundY, 32);
     if (state.phase === "patrol-route") for (const halt of YOUTH_PATROL_HALTS) prop("marker", halt.x, groundY, 32);
     if (state.phase === "desert-tracks" && manifest.desertProps) {
@@ -144,12 +170,28 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     const frame = youthClipFrame(atlas.clips[pose], poseTick); const actorScale = height / atlas.bodyHeight;
     const x = actor.x - frame.pivot[0] * actorScale, y = actor.y - frame.pivot[1] * actorScale;
     ctx.drawImage(images.get(atlas.src)!, ...frame.rect, x, y, frame.rect[2] * actorScale, frame.rect[3] * actorScale);
+    if (id === "player" && state.cage?.insignia && manifest.cage) {
+      const badge = manifest.cage.insignia, h = 18, w = h * badge.rect[2] / badge.rect[3];
+      drawCageSprite(badge, [actor.x - w / 2, actor.y - height * .68, w, h]);
+    }
     if (pose === "blade") {
       const blade = images.get(manifest.blade.src)!; const h = 30, w = h * blade.width / blade.height;
       ctx.save(); ctx.translate(x + frame.handAnchor[0] * actorScale, y + frame.handAnchor[1] * actorScale); ctx.rotate(actor.facing * Math.PI / 2);
       ctx.drawImage(blade, -w / 2, -h, w, h); ctx.restore();
     }
   };
+  if (cage && manifest.cage) {
+    const a = state.rival, art = manifest.cage.novice, side = art[a.facing === 1 ? "right" : "left"];
+    const pose: YouthCageNovicePose = a.action === "jab" ? a.actionTick < 32 ? "windup" : "strike" : a.action === "hurt" || a.action === "thrown" || a.action === "ko" ? a.action : a.y < groundY - 1 ? "jump" : Math.abs(a.vx) > .1 && Math.floor(state.tick / 10) % 2 ? "walk" : "idle";
+    const sprite = side[pose], ratio = actorHeight / art.bodyHeight;
+    drawCageSprite(sprite, [a.x - sprite.pivot[0] * ratio, a.y - sprite.pivot[1] * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio]);
+    if (state.phase === "cage-duel" && a.action === "jab" && a.actionTick < 32) {
+      ctx.strokeStyle = "#ffe2a2"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(a.x, a.y - 128, 9, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * a.actionTick / 32); ctx.stroke();
+    }
+    if (state.phase === "cage-reward") {
+      const badge = manifest.cage.insignia; drawCageSprite(badge, [YOUTH_CAGE.rewardX - 14, groundY - 50, 28, 34]);
+    }
+  }
   if (["dojo-strike", "dojo-throw"].includes(state.phase)) {
     ctx.save(); ctx.translate(state.rival.x, state.rival.y);
     if (state.rival.action === "thrown") ctx.rotate(state.rival.facing * Math.PI / 3);

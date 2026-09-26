@@ -176,7 +176,7 @@ export async function verifyDesktopYouthPatrol(page, { output, capture, checks }
  }
  await applyKeys(new Set()); await page.clock.runFor(500); assert(iterations < 4500); assert.equal((await state()).phase, "patrol-complete"); assert(defeatChecked); assert(resumed); assert(collisionChecked);
  const completed = await saved(); assert(youth.normalizeYouthTraining(completed.youthTraining.checkpoint));
- assert.deepEqual(completed.youthTraining.receipts.map(r => r.id), youth.YOUTH_ALL_MILESTONES);
+ assert.deepEqual(completed.youthTraining.receipts.map(r => r.id), youth.YOUTH_ALL_MILESTONES.slice(0,16));
  assert.equal(completed.youthTraining.checkpoint.patrol.evaded, 3); assert.equal(completed.youthTraining.checkpoint.patrol.attempts, 2); assert.equal(completed.youthTraining.checkpoint.patrol.totalHits, 3);
  assert.deepEqual([...chargeDirections].sort(), [-1, 1]);
  for (const key of ["prologue", "inventory", "loadout", "statistics"]) assert.deepEqual(completed[key], original[key], key);

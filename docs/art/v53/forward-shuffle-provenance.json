@@ -1,0 +1,264 @@
+{
+  "release": "V53",
+  "generationMode": "builtin image_gen; exact prompts and reference paths in docs/v53-openai-prompts.json",
+  "movement": "Forward fighting shuffle: wide lead stance then trailing foot gathered under pelvis. This is not an alternating natural walk or backward gait.",
+  "physicalPng": 2,
+  "logicalPages": 4,
+  "orientedGameplayClips": 4,
+  "usedDistinctDrawings": 8,
+  "clipFrameReferences": 8,
+  "unchangedSourceBytes": true,
+  "canonicalFidelityCertified": false,
+  "files": [
+    {
+      "fighterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "source": "exec-dcdba885-cc9a-4e64-aaf4-9edc30f62a3c.png",
+      "path": "public/game/sprites/v53/pit/city-hunter/city-hunter-masked-forward-shuffle-v53.png",
+      "sha256": "7fb8e7113d2f02398144ae49e545ed45f05eb58f239f64b46e47c4aa9a604a02",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "measuredBodyReferenceByPage": {
+        "city-hunter-masked-forward-shuffle-right-v53": 359,
+        "city-hunter-masked-forward-shuffle-left-v53": 377
+      },
+      "cells": [
+        {
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            184,
+            138,
+            371,
+            359
+          ],
+          "pivot": [
+            368,
+            497
+          ],
+          "visiblePixels": 43651,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            184,
+            552
+          ]
+        },
+        {
+          "facing": "right",
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ],
+          "visibleRect": [
+            821,
+            143,
+            263,
+            352
+          ],
+          "pivot": [
+            325.5,
+            495
+          ],
+          "visiblePixels": 39952,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            822,
+            1083
+          ]
+        },
+        {
+          "facing": "left",
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            162,
+            745,
+            412,
+            377
+          ],
+          "pivot": [
+            367.5,
+            495
+          ],
+          "visiblePixels": 49480,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            164,
+            571
+          ]
+        },
+        {
+          "facing": "left",
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ],
+          "visibleRect": [
+            781,
+            751,
+            287,
+            369
+          ],
+          "pivot": [
+            297.5,
+            493
+          ],
+          "visiblePixels": 44599,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            783,
+            1066
+          ]
+        }
+      ],
+      "runtimeAccepted": true
+    },
+    {
+      "fighterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "source": "exec-d4b053ef-f5a5-4942-83e0-5d44698fcebc.png",
+      "path": "public/game/sprites/v53/pit/scar/scar-masked-forward-shuffle-v53.png",
+      "sha256": "388dadab26a8b506627b3c2ebc537a6457c3079f401cc78a8b0307b0c18d6f8a",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceBytesUnchanged": true,
+      "measuredBodyReferenceByPage": {
+        "scar-masked-forward-shuffle-right-v53": 571,
+        "scar-masked-forward-shuffle-left-v53": 561
+      },
+      "cells": [
+        {
+          "facing": "right",
+          "rect": [
+            0,
+            0,
+            700,
+            620
+          ],
+          "visibleRect": [
+            74,
+            28,
+            576,
+            571
+          ],
+          "pivot": [
+            362,
+            599
+          ],
+          "visiblePixels": 115976,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            76,
+            648
+          ]
+        },
+        {
+          "facing": "right",
+          "rect": [
+            700,
+            0,
+            554,
+            620
+          ],
+          "visibleRect": [
+            792,
+            30,
+            391,
+            569
+          ],
+          "pivot": [
+            286.5,
+            599
+          ],
+          "visiblePixels": 107528,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            793,
+            1180
+          ]
+        },
+        {
+          "facing": "left",
+          "rect": [
+            0,
+            620,
+            700,
+            634
+          ],
+          "visibleRect": [
+            52,
+            644,
+            569,
+            560
+          ],
+          "pivot": [
+            336,
+            584
+          ],
+          "visiblePixels": 115544,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            54,
+            618
+          ]
+        },
+        {
+          "facing": "left",
+          "rect": [
+            700,
+            620,
+            554,
+            634
+          ],
+          "visibleRect": [
+            752,
+            646,
+            369,
+            561
+          ],
+          "pivot": [
+            235.5,
+            587
+          ],
+          "visiblePixels": 105084,
+          "borderPixelsAboveNoiseFloor2": 0,
+          "feetSpan": [
+            754,
+            1117
+          ]
+        }
+      ],
+      "runtimeAccepted": true
+    }
+  ],
+  "review": {
+    "nativeFacings": "Right figures in top row, left figures in bottom row. Each is an authored drawing; renderer uses no mirroring.",
+    "anatomy": "Whole bodies, two fists, knees and feet inspected. Blades retracted during shuffle; same masked costume preserved. Fine finger and canon1:1 fidelity not certified.",
+    "movement": "Substantial stance-width change with consistent front foot leading; acceptable short approach shuffle, not a full locomotion library.",
+    "pivots": "Each support y is lowest alpha>2 pixel plus one; x is midpoint of the illustrated feet in the bottom50px alpha>16 support band. One body-height reference per native page, never per-frame fitting.",
+    "transparency": "Original true-alpha PNG bytes preserved. Noise-floor2 only; no keying, source cropping or re-encoding.",
+    "limitations": [
+      "Backward movement, guards, jumps and attacks of these supplied costumes remain without dedicated gameplay clips.",
+      "Two drawn phases per orientation; no claim of high-frame-rate or complete moveset animation.",
+      "Four previous natural-walk candidates remain rejected in separate source audit."
+    ]
+  }
+}

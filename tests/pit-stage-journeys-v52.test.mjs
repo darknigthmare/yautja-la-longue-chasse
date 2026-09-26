@@ -23,8 +23,8 @@ function create(route,side=1,mode='training'){
 function project(initial,tech=false){let s=p.stepPitCombat(initial,[{throw:true},{}]);const states=[s];let used=false;
  for(let i=0;i<55;i++){const second=tech&&s.pendingThrow&&!used?{throw:true}:{};if(s.pendingThrow)used=true;s=p.stepPitCombat(s,[{},second]);states.push(s);}return {state:s,states};}
 test('exactly four original exhibition links extend the existing route without inventing images or collision layouts',async()=>{
- assert.equal(routes.length,4);assert.equal(p.PIT_STAGE_JOURNEY_ROUTES.length,5);
- assert.equal(new Set(p.PIT_STAGE_JOURNEY_ROUTES.map(r=>r.entry)).size,5);
+ assert.equal(routes.length,4);assert.equal(p.PIT_STAGE_JOURNEY_ROUTES.filter(r=>r.release==='V42'||r.release==='V52').length,5);
+ assert.equal(new Set(p.PIT_STAGE_JOURNEY_ROUTES.map(r=>r.entry)).size,p.PIT_STAGE_JOURNEY_ROUTES.length);
  for(const route of routes){
   assert.equal(p.getPitStageJourneyForArena(route.entry).id,route.id);
   assert.deepEqual(p.pitStageJourneyArtIds(route.entry,route.id),[route.entry,route.destination]);

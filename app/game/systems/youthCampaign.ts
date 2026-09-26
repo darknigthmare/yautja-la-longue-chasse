@@ -1,3 +1,4 @@
+import { isYouthCagePhase } from "./youthCage";
 import type { SaveGame } from "../types";
 import { isYouthPatrolPhase } from "./youthPatrol";
 import { normalizeNurseryCampaign } from "./nurseryCampaign";
@@ -76,7 +77,8 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   const previous = progress.checkpoint;
   const retryingDuel = previous.phase === "camp-defeat" && checkpoint.phase === "camp-duel" && checkpoint.progress.duelAttempts > previous.progress.duelAttempts;
   const retryingPatrol = previous.phase === "patrol-defeat" && checkpoint.phase === "patrol-ambush" && checkpoint.patrol?.attempts === (previous.patrol?.attempts ?? 0) + 1;
-  if ((YOUTH_PHASES.indexOf(checkpoint.phase) < YOUTH_PHASES.indexOf(previous.phase) && !retryingDuel && !retryingPatrol) || checkpoint.phaseStartedAt < previous.phaseStartedAt) return null;
+  const retryingCage = previous.phase === "cage-defeat" && checkpoint.phase === "cage-intro" && checkpoint.cage?.attempts === (previous.cage?.attempts ?? 0) + 1;
+  if ((YOUTH_PHASES.indexOf(checkpoint.phase) < YOUTH_PHASES.indexOf(previous.phase) && !retryingDuel && !retryingPatrol && !retryingCage) || checkpoint.phaseStartedAt < previous.phaseStartedAt) return null;
   const counters = ["moveMarkers", "jumps", "dodges", "strikes", "throws", "courseAttempts", "duelAttempts"] as const;
   if (counters.some(key => checkpoint.progress[key] < previous.progress[key])) return null;
   // A failed course may reset its local marks/timer only while increasing its attempt.
@@ -94,7 +96,13 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   // Existing completed reconnaissance remains a safe stop. Only the explicitly
   // acknowledged patrol briefing can open the new chapter, never a later proof.
   if (previous.phase === "desert-complete" && !same(checkpoint, previous) && checkpoint.phase !== "patrol-briefing") return null;
-  if (previous.phase === "patrol-complete" && !same(checkpoint, previous)) return null;
+  if (previous.phase === "patrol-complete" && !same(checkpoint, previous) && checkpoint.phase !== "cage-briefing") return null;
+  if (previous.phase === "cage-complete" && !same(checkpoint, previous)) return null;
+  if (previous.cage) {
+    const old = previous.cage, next = checkpoint.cage;
+    if (!next || next.attempts < old.attempts || next.totalDamageTaken < old.totalDamageTaken || old.insignia && !next.insignia ||
+        next.attempts > old.attempts && !retryingCage || !retryingCage && (next.damageDealt < old.damageDealt || next.damageTaken < old.damageTaken)) return null;
+  }
   if (previous.patrol) {
     const old = previous.patrol, next = checkpoint.patrol;
     if (!next || next.halts < old.halts || next.attempts < old.attempts || next.totalHits < old.totalHits ||
@@ -118,11 +126,13 @@ export function withYouthProgress(save: SaveGame, receipts: readonly YouthReceip
 export function youthCampaignNeedsScene(progress: YouthCampaignProgress | null | undefined): boolean {
   if (!progress) return false;
   const phase = progress.checkpoint.phase;
-  return progress.status === "active" || phase.startsWith("desert-") && phase !== "desert-complete" || isYouthPatrolPhase(phase) && phase !== "patrol-complete";
+  return progress.status === "active" || phase.startsWith("desert-") && phase !== "desert-complete" || isYouthPatrolPhase(phase) && phase !== "patrol-complete" || isYouthCagePhase(phase) && phase !== "cage-complete";
 }
 export function youthCampaignObjective(progress: YouthCampaignProgress | null): string {
   if (!progress) return "Le maître t’attend : entre dans le dojo depuis son dialogue pour commencer les exercices.";
-  if (progress.checkpoint.phase === "patrol-complete") return "Patrouille, rencontre territoriale et évaluation sont enregistrées. Le groupe est revenu au camp sans prélever de trophée ; le PIT de jeunesse et les rites de chasse autonome restent à venir.";
+  if (progress.checkpoint.phase === "cage-complete") return "Premier duel de la petite Fosse gagné, insigne cosmétique enregistré. Tu restes Unblooded : les rites de chasse autonome et le vaisseau ne sont pas encore acquis.";
+  if (isYouthCagePhase(progress.checkpoint.phase)) return "Reprends la petite Fosse à son checkpoint : présentation, duel non létal de novices, récompense cosmétique et retour. Aucun droit adulte ne dépend de cette arène secondaire.";
+  if (progress.checkpoint.phase === "patrol-complete") return "Patrouille, rencontre territoriale et évaluation sont enregistrées. Le groupe est revenu au camp sans prélever de trophée ; rejoins le maître pour choisir la petite Fosse de jeunesse. Les rites de chasse autonome restent à venir.";
   if (isYouthPatrolPhase(progress.checkpoint.phase)) return "Rejoins le maître pour reprendre la patrouille à son checkpoint : haltes accompagnées, lecture des charges, évaluation et retour. Une interruption ne supprime pas les étapes déjà acquises.";
   if (progress.checkpoint.phase === "desert-complete") return "La reconnaissance accompagnée du désert est rapportée. Rejoins le maître pour choisir de poursuivre la patrouille ; aucun départ ne se déclenche seul et aucun rite ni rang supplémentaire n’est accordé.";
   if (progress.checkpoint.phase.startsWith("desert-")) return "Rejoins le maître pour reprendre la sortie du désert à son dernier point sûr : observation, passage de basalte et retour accompagné.";
@@ -135,5 +145,5 @@ export function youthCampaignObjective(progress: YouthCampaignProgress | null): 
 }
 export function youthEquipmentSummary(progress: YouthCampaignProgress | null): string {
   const gear = progress?.equipment;
-  return `Équipement de jeunesse : lame de poignet ${gear?.wristblade ? "acquise au dojo" : "non acquise"} ; biomask ${gear?.biomask ? "reçu — conservé pour la sortie" : "non reçu"}${gear?.accent ? ` ; teinte du lien ${gear.accent === "ochre" ? "ocre" : gear.accent === "ash" ? "cendre" : "rouille"}` : ""}. Aucun plasma, équipement adulte ou vaisseau accordé.`;
+  return `Équipement de jeunesse : lame de poignet ${gear?.wristblade ? "acquise au dojo" : "non acquise"} ; biomask ${gear?.biomask ? "reçu — conservé pour la sortie" : "non reçu"}${gear?.accent ? ` ; teinte du lien ${gear.accent === "ochre" ? "ocre" : gear.accent === "ash" ? "cendre" : "rouille"}` : ""}${progress?.checkpoint.cage?.insignia ? " ; insigne de la petite Fosse acquis (cosmétique)" : ""}. Aucun plasma, équipement adulte ou vaisseau accordé.`;
 }

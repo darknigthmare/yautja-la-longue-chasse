@@ -1,4 +1,4 @@
-import type { YouthArtManifest } from "./youthTrainingRendering";
+import type { YouthArtManifest, YouthPropSprite } from "./youthTrainingRendering";
 
 
 // Eight independently drawn native orientations. Rectangles/pivots are measured
@@ -17,10 +17,30 @@ const grazerLeft = [
   grazerFrame([1376, 534, 380, 248], [190, 244]),
 ];
 
+// V53: eight distinct original drawings per direction. Walk alternates the
+// authored guard/walk drawings; windup, impact and result poses are held honestly.
+const cageSprite = (name: string, rect: readonly [number, number, number, number], pivot: readonly [number, number]): YouthPropSprite => ({ src: `/game/youth/v53/${name}.png`, rect, pivot });
+const cageNovice = (side: "left" | "right", bounds: readonly (readonly [number, number, number, number])[]) => {
+  const frames = bounds.map(([x0,y0,x1,y1]) => cageSprite(`novice-${side}`, [x0-4,y0-4,x1-x0+8,y1-y0+8], [(x1-x0)/2+4,y1-y0+2]));
+  return { idle: frames[0], walk: frames[1], jump: frames[2], windup: frames[3], strike: frames[4], hurt: frames[5], thrown: frames[6], ko: frames[7] };
+};
+
 /** Native OpenAI raster drawings. Sources unchanged; measured independent rectangles. */
 export const YOUTH_ART_MANIFEST: YouthArtManifest = {
   "version": 1,
   "actorKind": "unblooded",
+  cage: {
+    background: { src: "/game/youth/v53/cage-background.png" },
+    structure: cageSprite("cage-structure", [55,205,1565,501], [782.5,501]),
+    structureDestination: [140,140,680,295],
+    floor: cageSprite("cage-floor", [39,574,1598,174], [799,174]),
+    floorDestination: [135,421,690,76],
+    insignia: cageSprite("fosse-insignia", [284,79,684,1029], [342,1029]),
+    novice: { bodyHeight: 430,
+      right: cageNovice("right", [[91,41,355,478],[534,44,844,473],[957,44,1244,370],[1385,77,1731,479],[44,502,445,867],[553,500,897,865],[922,523,1315,822],[1410,611,1728,859]]),
+      left: cageNovice("left", [[83,46,354,466],[499,43,816,463],[990,50,1263,356],[1393,78,1717,464],[46,502,418,853],[503,497,814,853],[889,529,1274,810],[1421,607,1728,850]]),
+    },
+  },
   patrolGrazer: {
     bodyHeight: 250, displayHeight: 100,
     left: { watch: grazerLeft[0], telegraph: grazerLeft[1], charge: [grazerLeft[2], grazerLeft[3]], recover: grazerLeft[0] },

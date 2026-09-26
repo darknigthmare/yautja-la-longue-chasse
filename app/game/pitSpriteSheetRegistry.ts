@@ -17368,5 +17368,363 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         ]
       }
     ]
+  },
+  {
+    "fighterId": "city-hunter",
+    "variantId": "city-hunter-avec-casque-12136078fe",
+    "bodyHeightPx": 359,
+    "pageBodyHeightPx": {
+      "city-hunter-masked-forward-shuffle-right-v53": 359,
+      "city-hunter-masked-forward-shuffle-left-v53": 377
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "city-hunter-masked-forward-shuffle-v53",
+      "characterId": "city-hunter",
+      "variantId": "city-hunter-avec-casque-12136078fe",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "city-hunter-masked-forward-shuffle-right-v53",
+          "src": "/game/sprites/v53/pit/city-hunter/city-hunter-masked-forward-shuffle-v53.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "city-hunter-masked-forward-shuffle-left-v53",
+          "src": "/game/sprites/v53/pit/city-hunter/city-hunter-masked-forward-shuffle-v53.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-forward-shuffle-right-v53",
+              "rect": [
+                0,
+                0,
+                627,
+                627
+              ],
+              "pivot": [
+                368,
+                497
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "city-hunter-masked-forward-shuffle-right-v53",
+              "rect": [
+                627,
+                0,
+                627,
+                627
+              ],
+              "pivot": [
+                325.5,
+                495
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "city-hunter-masked-forward-shuffle-left-v53",
+              "rect": [
+                0,
+                627,
+                627,
+                627
+              ],
+              "pivot": [
+                367.5,
+                495
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "city-hunter-masked-forward-shuffle-left-v53",
+              "rect": [
+                627,
+                627,
+                627,
+                627
+              ],
+              "pivot": [
+                297.5,
+                493
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "city-hunter-masked-forward-shuffle-right-v53",
+        "rect": [
+          0,
+          0,
+          627,
+          627
+        ],
+        "visibleRect": [
+          184,
+          138,
+          371,
+          359
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-forward-shuffle-right-v53",
+        "rect": [
+          627,
+          0,
+          627,
+          627
+        ],
+        "visibleRect": [
+          821,
+          143,
+          263,
+          352
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-forward-shuffle-left-v53",
+        "rect": [
+          0,
+          627,
+          627,
+          627
+        ],
+        "visibleRect": [
+          162,
+          745,
+          412,
+          377
+        ]
+      },
+      {
+        "pageId": "city-hunter-masked-forward-shuffle-left-v53",
+        "rect": [
+          627,
+          627,
+          627,
+          627
+        ],
+        "visibleRect": [
+          781,
+          751,
+          287,
+          369
+        ]
+      }
+    ]
+  },
+  {
+    "fighterId": "scar",
+    "variantId": "scar-avec-casque-6a0a69930d",
+    "bodyHeightPx": 571,
+    "pageBodyHeightPx": {
+      "scar-masked-forward-shuffle-right-v53": 571,
+      "scar-masked-forward-shuffle-left-v53": 561
+    },
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "scar-masked-forward-shuffle-v53",
+      "characterId": "scar",
+      "variantId": "scar-avec-casque-6a0a69930d",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "scar-masked-forward-shuffle-right-v53",
+          "src": "/game/sprites/v53/pit/scar/scar-masked-forward-shuffle-v53.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "scar-masked-forward-shuffle-left-v53",
+          "src": "/game/sprites/v53/pit/scar/scar-masked-forward-shuffle-v53.png",
+          "width": 1254,
+          "height": 1254,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "walk",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-forward-shuffle-right-v53",
+              "rect": [
+                0,
+                0,
+                700,
+                620
+              ],
+              "pivot": [
+                362,
+                599
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-masked-forward-shuffle-right-v53",
+              "rect": [
+                700,
+                0,
+                554,
+                620
+              ],
+              "pivot": [
+                286.5,
+                599
+              ],
+              "durationTicks": 10
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "scar-masked-forward-shuffle-left-v53",
+              "rect": [
+                0,
+                620,
+                700,
+                634
+              ],
+              "pivot": [
+                336,
+                584
+              ],
+              "durationTicks": 10
+            },
+            {
+              "pageId": "scar-masked-forward-shuffle-left-v53",
+              "rect": [
+                700,
+                620,
+                554,
+                634
+              ],
+              "pivot": [
+                235.5,
+                587
+              ],
+              "durationTicks": 10
+            }
+          ]
+        }
+      ]
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "scar-masked-forward-shuffle-right-v53",
+        "rect": [
+          0,
+          0,
+          700,
+          620
+        ],
+        "visibleRect": [
+          74,
+          28,
+          576,
+          571
+        ]
+      },
+      {
+        "pageId": "scar-masked-forward-shuffle-right-v53",
+        "rect": [
+          700,
+          0,
+          554,
+          620
+        ],
+        "visibleRect": [
+          792,
+          30,
+          391,
+          569
+        ]
+      },
+      {
+        "pageId": "scar-masked-forward-shuffle-left-v53",
+        "rect": [
+          0,
+          620,
+          700,
+          634
+        ],
+        "visibleRect": [
+          52,
+          644,
+          569,
+          560
+        ]
+      },
+      {
+        "pageId": "scar-masked-forward-shuffle-left-v53",
+        "rect": [
+          700,
+          620,
+          554,
+          634
+        ],
+        "visibleRect": [
+          752,
+          646,
+          369,
+          561
+        ]
+      }
+    ]
   }
 ];

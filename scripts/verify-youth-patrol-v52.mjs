@@ -169,7 +169,7 @@ try {
  }
  await applyKeys(new Set()); await page.clock.runFor(500); assert(iterations < 4500); assert.equal((await state()).phase, "patrol-complete"); assert(defeatChecked); assert(resumed); assert(collisionChecked);
  const completed = await saved(); assert(youth.normalizeYouthTraining(completed.youthTraining.checkpoint));
- assert.deepEqual(completed.youthTraining.receipts.map(r => r.id), youth.YOUTH_ALL_MILESTONES);
+ assert.deepEqual(completed.youthTraining.receipts.map(r => r.id), youth.YOUTH_ALL_MILESTONES.slice(0, 16));
  assert.equal(completed.youthTraining.checkpoint.patrol.evaded, 3); assert.equal(completed.youthTraining.checkpoint.patrol.attempts, 2); assert.equal(completed.youthTraining.checkpoint.patrol.totalHits, 3);
  assert.deepEqual([...chargeDirections].sort(), [-1, 1]);
  for (const key of ["prologue", "inventory", "loadout", "statistics"]) assert.deepEqual(completed[key], original[key], key);
@@ -179,7 +179,7 @@ try {
  await page.getByRole("button", { name: "Revenir dans la cité après la patrouille", exact: true }).click(); await page.clock.runFor(200); await hub.waitFor();
  await page.clock.resume(); await page.reload({ waitUntil: "networkidle" }); await page.getByRole("button", { name: /^Continuer/ }).click(); await hub.waitFor();
  assert.equal((await saved()).youthTraining.checkpoint.phase, "patrol-complete"); await page.locator('[data-unblooded-objective="patrol-returned"]').waitFor();
- checks.push({ name: "patrol-return-durable-homeworld", receiptsUnique: 16, nextYouthPitNotPretendedFinished: true });
+ checks.push({ name: "patrol-return-durable-homeworld", receiptsUnique: 16, nextYouthPitNotAutoStarted: true });
  assert.deepEqual(errors, []); assert.deepEqual(failures, []);
  await fs.writeFile(path.join(output, "report.json"), JSON.stringify({ passed: true, base, checks, routeEvidence, errors, failures, limitation: "Simulated desktop browser QA, 1280x900. Genuine V49 played archive imported only before gameplay. No position, milestone or health injected. Reused V49 backdrop; distant hunters are scenery. This is an original adaptation, not an attested canon quest." }, null, 2)); console.log(JSON.stringify({ passed: true, checks: checks.length }));
 } catch (error) { await page.screenshot({ path: path.join(output, "failure.png"), fullPage: true }).catch(() => {}); await fs.writeFile(path.join(output, "report.json"), JSON.stringify({ passed: false, base, checks, routeEvidence, errors, failures, error: String(error) }, null, 2)); throw error; }

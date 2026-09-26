@@ -1,0 +1,47 @@
+{
+  "release": "V53",
+  "localQualification": {
+    "passed": true,
+    "base": "http://127.0.0.1:4174",
+    "webBuild": { "passed": true, "log": "outputs/qa-commercial-audit/v53/build-final.log" },
+    "typecheck": { "passed": true, "incremental": false, "log": "outputs/qa-commercial-audit/v53/typecheck-final.log" },
+    "lint": { "passed": true, "errors": 0, "warnings": 1, "existingWarning": "ClanChroniclePanel.tsx:42 @next/next/no-img-element", "log": "outputs/qa-commercial-audit/v53/lint-final.log" },
+    "tests": { "passed": 1695, "failed": 0, "skipped": 0, "log": "outputs/qa-commercial-audit/v53/tests-final.log" },
+    "browser": {
+      "passed": 59,
+      "finalBuildChecks": 24,
+      "unchangedRuntimePriorBuildChecks": 35,
+      "buildDifference": "Final build only changes two campaign menu sentences and the second PIT journey counter. Menu and journey checks were rerun after these edits. Youth simulation, renderers, art registry and missing-asset handling are byte-identical between both builds.",
+      "reports": [
+        { "checks": 8, "build": "final", "path": "outputs/qa-commercial-audit/v53/campaign-menu-browser-final/report.json" },
+        { "checks": 16, "build": "final", "path": "outputs/qa-commercial-audit/v53/stage-journeys-final/report.json" },
+        { "checks": 6, "build": "unchanged youth runtime", "path": "outputs/qa-commercial-audit/v53/youth/cage-browser-qa/report.json" },
+        { "checks": 8, "build": "unchanged youth runtime", "path": "outputs/qa-commercial-audit/v53/youth/cage-touch-layout-browser-qa/report.json" },
+        { "checks": 18, "build": "unchanged PIT art runtime", "path": "outputs/qa-commercial-audit/v53/idle-hold-browser-qa-run3/report.json" },
+        { "checks": 3, "build": "unchanged youth runtime", "path": "D:/CodexQA/yautja-v53/cage-asset-retry2/report.json" }
+      ],
+      "visualReview": "Screenshots inspected for actual cage duel/reward, both native shuffle orientations, all eight journey destinations, corrected 13-journey counter, desktop and touch campaign menus.",
+      "hardwareLimit": "Browser touch emulation and virtual standard gamepad only; no physical phone or controller certification."
+    },
+    "runtimeAssets": { "passed": true, "count": 8, "bytes": 9825024, "verification": "HTTP 200, PNG signature, dimensions, SHA-256 and byte-identical to reviewed files", "report": "outputs/qa-commercial-audit/v53/local-assets-final.json" },
+    "desktopRenderer": { "passed": true, "log": "outputs/qa-commercial-audit/v53/desktop-renderer-build.log", "sourceDigest": "ecf2d2072789b7c5f0fd132175a70d05a9fe855cc206bac904f5c10cc72d34ec", "files": 3866, "scope": "Renderer compilation only, not a packaged Windows executable or runtime QA." }
+  },
+  "publication": {
+    "canonicalUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "verificationReport": "outputs/qa-commercial-audit/v53/publication-verified.json",
+    "rule": "Consult the post-deployment report for actual commit, READY state, aliases and public browser checks. Local qualification alone does not prove publication."
+  },
+  "windowsPortable": {
+    "release": "V52 unchanged",
+    "path": "work/v52-pc/release/v52/Yautja-La-Longue-Chasse-PC-V52.zip",
+    "sha256": "82303f52f894b129a8d98cd89c8ed79a3e7507d0196c9c90d3a2559f0ced1d2f",
+    "reverifiedBeforeRemovingRegenerableRenderer": true,
+    "v53PortablePackaged": false
+  },
+  "remaining": [
+    "401 supplied appearances still static; partial animation coverage is not complete movesets.",
+    "67 arena departures among 1-80 have no journey; 81-100 remain pure duels.",
+    "Interactive props, dangers, missing game-reference arena packs, adult Homeworld, following youth rites, piloted vehicles and audio remain open.",
+    "No new private ChatGPT conversations retrieved; no commercial-readiness or franchise-license certification."
+  ]
+}

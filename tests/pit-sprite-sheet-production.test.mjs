@@ -80,13 +80,18 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 333, "V52 adds twelve presentation clips, never new combat attacks");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 315);
-  assert.equal(report.pageCount, 116);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 98);
-  assert.equal(report.distinctDrawings, 669);
+  assert.equal(report.readyPhaseClips, 337, "V53 adds four native forward fighting shuffles, never new attacks");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 319);
+  assert.equal(report.pageCount, 120);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 100);
+  assert.equal(report.distinctDrawings, 677);
   assert.equal(report.appearances.length, 20);
   assert.equal(report.fighters.length, 15);
+  const v53Clips = report.clips.filter(clip => clip.atlasId.endsWith('-v53'));
+  assert.deepEqual(v53Clips.map(clip => [clip.fighterId, clip.variantId, clip.clipId, clip.facing, clip.drawnCells, clip.ready].join(':')).sort(),
+    v52Appearances.flatMap(([fighterId, variantId]) => ['right', 'left'].map(facing => [fighterId, variantId, 'walk', facing, 2, true].join(':'))).sort(),
+    'V53 shuffles belong only to the exact City and Scar masked appearances');
+  assert(v53Clips.every(clip => clip.runtimePhase === 'locomotion' && clip.runtimePosture === 'stand' && clip.runtimePhaseTicks === null));
   const v51Pages = report.pages.filter(page => page.src.includes("/v51/"));
   assert.equal(v51Pages.length, 6);
   assert.equal(new Set(v51Pages.map(page => page.src)).size, 4);

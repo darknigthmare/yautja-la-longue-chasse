@@ -8,6 +8,7 @@ export * from "./app/game/systems/nurseryPrologue";
 export * from "./app/game/systems/youthCampaign";
 export * from "./app/game/systems/youthTraining";
 export * from "./app/game/systems/youthPatrol";
+export * from "./app/game/systems/youthCage";
 export * from "./app/game/systems/clanChronicle";
 export * from "./app/game/systems/campaignSlots";
 `, resolveDir: process.cwd(), loader: "ts" }, bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent" });

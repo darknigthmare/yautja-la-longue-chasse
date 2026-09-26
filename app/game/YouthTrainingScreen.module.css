@@ -72,3 +72,6 @@
  .screen:has(.touch) .notice { bottom:55px; font-size:11px; }
  .choices { max-height:68dvh; bottom:8px; font-size:12px; }
 }
+
+/* V53: the cue remains inside the stage; it never captures combat controls. */
+.cageSignal{position:absolute;z-index:8;left:50%;top:47%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 20px;text-align:center;background:#120b08dc;border-block:1px solid #b18b50;pointer-events:none;text-shadow:0 2px 4px #000;white-space:nowrap}.cageSignal strong{font-size:clamp(20px,4vw,48px);letter-spacing:.08em}.cageSignal span{font-size:clamp(11px,1.6vw,16px)}
