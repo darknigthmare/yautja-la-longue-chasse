@@ -19,6 +19,7 @@ import {
 } from "./systems/homeworld";
 import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogChoice } from "./systems/homeworldInput";
 import HomeworldCityScene from "./HomeworldCityScene";
+import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import styles from "./HomeworldCity.module.css";
 
@@ -43,6 +44,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const [viewportSize, setViewportSize] = useState({ width: 1000, height: 580 });
   const [paused, setPaused] = useState(false);
   const [inactive, setInactive] = useState(false);
+  const [spatialCodexOpen, setSpatialCodexOpen] = useState(false);
+  const spatialCodexOpenRef = useRef(false);
   const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -53,7 +56,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const progressRef = useRef(save.homeworld);
   const saveRef = useRef(save);
   const suspendedRef = useRef(suspended);
-  const pausedRef = useRef(paused || inactive);
+  const pausedRef = useRef(paused || inactive || spatialCodexOpen);
   const dialogStateRef = useRef(dialog);
   const visitedAttempt = useRef<string | null>(null);
   const pendingVisitsRef = useRef(new Set<string>());
@@ -67,7 +70,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const cameraY = Math.max(0, Math.min(HOMEWORLD_WORLD.height - viewportSize.height, actor.y - viewportSize.height * .62));
   const progress = save.homeworld;
   const youthWelcome = Boolean(save.prologue) && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(save.prologue?.chronicle) ?? "");
-  const blocked = suspended || paused || inactive || !!dialog;
+  const blocked = suspended || paused || inactive || !!dialog || spatialCodexOpen;
 
   useEffect(() => {
     // GameClient also keys this component by createdAt. Keep the local queue
@@ -79,7 +82,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
     progressRef.current = save.homeworld; saveRef.current = save;
   }, [save]);
   useEffect(() => { suspendedRef.current = suspended; }, [suspended]);
-  useEffect(() => { pausedRef.current = paused || inactive; }, [paused, inactive]);
+  useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen; }, [paused, inactive, spatialCodexOpen]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
   const clearInputs = useCallback(() => {
@@ -208,7 +211,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       const dt = previous ? Math.min((time - previous) / 1000, 1 / 30) : 0;
       previous = time;
       const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
-      const active = ownsFocus && !document.hidden && !suspendedRef.current;
+      const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current;
       const context = !active ? "inactive" : pausedRef.current ? "paused" : dialogStateRef.current ? "dialog" : "world";
       const pad = active ? [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null : null;
       const gamepad = stepHomeworldGamepad(gamepadStateRef.current, pad, context);
@@ -351,10 +354,14 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
       <button type="button" onClick={() => { clearInputs(); setPaused(value => !value); }}>{paused ? "Reprendre" : "Pause"}</button>
     </header>
     <div ref={viewportRef} className={styles.viewport} tabIndex={0} role="group" aria-label="Cité jouable en perspective 2.5D" aria-describedby="homeworld-controls"
-      onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button")) viewportRef.current?.focus({ preventScroll: true }); }}>
+      onKeyDown={onWorldKey} onBlur={clearInputs} onPointerDown={event => { if (event.target === event.currentTarget || event.target instanceof HTMLElement && !event.target.closest("button,[data-homeworld-spatial-codex]")) viewportRef.current?.focus({ preventScroll: true }); }}>
+      <HomeworldSpatialCodex actor={actor} visitedDistrictIds={progress.visitedDistrictIds} youthWelcome={youthWelcome}
+        open={spatialCodexOpen} disabled={suspended || paused || inactive || !!dialog}
+        onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open; setSpatialCodexOpen(open);
+          if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />
       <div className={styles.sky} aria-hidden="true" /><div className={styles.distant} aria-hidden="true" style={{ transform: `translate(${-cameraX * .018}px,${-cameraY * .025}px)` }} />
       <div className={styles.world} aria-hidden="true" style={{ width: HOMEWORLD_WORLD.width, height: HOMEWORLD_WORLD.height, transform: `translate(${-cameraX}px,${-cameraY}px)` }}>
-        <HomeworldCityScene youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />
+        <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />
         <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${actor.x}px,${actor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
           {!youthWelcome && heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} /> : <img

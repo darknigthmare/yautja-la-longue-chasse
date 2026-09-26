@@ -10,7 +10,9 @@ import { getPitRosterIcon } from "./pitRosterIcons";
 import { getPitCombatBitmapArtDefinition } from "./pitCombatBitmapArt";
 import { PIT_ARENA_ART_DEFINITIONS } from "./pitArenaRendering";
 import { resolvePitArenaProductionKit } from "./pitArenaProduction";
-import { getPitScreenArenaMetadata, PIT_SCREEN_ARENA_WORKS } from "./systems/pitScreenArenas";
+import { getPitScreenArenaMetadata, PIT_STAGE_REFERENCE_WORKS } from "./systems/pitScreenArenas";
+import { getPitCharacterStageAssociation } from "./systems/pitCharacterStages";
+import { getPitLoreStage } from "./systems/pitLoreStages";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import PitStagePreview, { type PitStagePreviewStatus } from "./PitStagePreview";
 import styles from "./PitSelectionFlow.module.css";
@@ -27,6 +29,8 @@ interface Props {
   onPlayerChange: (id: PitVersusFighterId) => void; onOpponentChange: (id: PitVersusFighterId) => void;
   onArenaChange: (id: PitArenaId) => void; onLaunch: () => void; onExit: () => void;
   onImposedNavigate?: (direction: -1 | 1) => void;
+  onStageRetry?: () => void;
+  stageAssetsPending?: boolean;
   launchLabel: string; launchDisabled: boolean; reducedMotion: boolean; highContrast: boolean;
 }
 
@@ -72,7 +76,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const isFighterUnavailable = (id: PitVersusFighterId) => locked || (state.slot === "opponent" ? id === playerId : !canPitFighterEnterMode(id, mode));
   const rosterTabStop = rosterChoices.includes(rosterSelected as PitVersusFighterId) && !isFighterUnavailable(rosterSelected as PitVersusFighterId)
     ? rosterSelected : rosterChoices.find(id => !isFighterUnavailable(id));
-  const [stageFamily, setStageFamily] = useState<"all" | "original" | "film" | "game">("all");
+  const [stageFamily, setStageFamily] = useState<"all" | "original" | "film" | "game" | "comic">("all");
   const [stageWork, setStageWork] = useState("all");
   const matchingStageIds = PIT_ARENA_IDS.filter(id => {
     const metadata = getPitScreenArenaMetadata(id);
@@ -82,7 +86,10 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   // An imposed campaign venue stays visible even after leaving a filtered free duel.
   const stageIds = imposed ? [arenaId] : matchingStageIds.includes(arenaId) ? matchingStageIds : PIT_ARENA_IDS;
   const screenMetadata = getPitScreenArenaMetadata(arenaId);
-  const availableWorks = PIT_SCREEN_ARENA_WORKS.filter(work => (stageFamily === "all" || work.kind === stageFamily)
+  const characterStage = getPitCharacterStageAssociation(playerId);
+  const recommendedStage = characterStage?.stageId && PIT_ARENA_IDS.includes(characterStage.stageId as PitArenaId) ? characterStage.stageId as PitArenaId : null;
+  const loreStage = getPitLoreStage(arenaId);
+  const availableWorks = PIT_STAGE_REFERENCE_WORKS.filter(work => (stageFamily === "all" || work.kind === stageFamily)
     && PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.workId === work.id));
   const changeStageFilter = (family: typeof stageFamily, workId: string) => {
     if (locked || imposed) return;
@@ -99,7 +106,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const stagePage = Math.floor(Math.max(0, stageIds.indexOf(arenaId)) / stagePageSize);
   const stagePageCount = Math.ceil(stageIds.length / stagePageSize);
   const stageChoices = stageIds.slice(stagePage * stagePageSize, (stagePage + 1) * stagePageSize);
-  const stageReady = preview?.id === arenaId && preview.status === "ready";
+  const stageReady = preview?.id === arenaId && preview.status === "ready" && !props.stageAssetsPending;
   const onPreviewStatus = useCallback((id: PitArenaId, status: PitStagePreviewStatus) => setPreview({ id, status }), []);
   const focus = useCallback(() => {
     const selected = gridRef.current?.querySelector<HTMLButtonElement>('[aria-selected="true"]:not(:disabled)');
@@ -257,15 +264,16 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
     </> : <div className={styles.stageLayout}>
       <section className={styles.stageShowcase} aria-label="Arène sélectionnée">
       <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{PIT_FIGHTERS[playerId].name} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
-      <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} />
+      <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} onRetry={props.onStageRetry} />
       <p className={styles.stageDescription}>{PIT_ARENAS[arenaId].setting} · Aperçu des plans réels P0–P5{props.reducedMotion ? " · mouvement réduit" : " · parallaxe active"}.</p>
-      {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Décor adapté à la vue latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan du film ou du jeu n’est pas certifiée.</p>}
+      {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Réinterprétation latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan de l’œuvre n’est pas certifiée.{loreStage && <> <a href={loreStage.sourceUrl} target="_blank" rel="noreferrer">Source du lieu</a></>}</p>}
+      {characterStage && <p className={styles.referenceNote} data-pit-character-stage={characterStage.coverage}>{characterStage.reason}{recommendedStage && !imposed && <button type="button" data-pit-recommended-stage={recommendedStage} disabled={locked || arenaId === recommendedStage} onClick={() => { setStageFamily("all"); setStageWork("all"); props.onArenaChange(recommendedStage); }}>Décor associé à {PIT_FIGHTERS[playerId].name} : {PIT_ARENAS[recommendedStage].name}</button>}</p>}
       </section>
       <section className={styles.stageBrowser} aria-label="Catalogue des arènes">
       <div className={styles.stageFilters} aria-label="Filtres des stages">
         <label>Collection<select aria-label="Collection de stages" disabled={locked || imposed} value={stageFamily} onChange={event => changeStageFilter(event.target.value as typeof stageFamily, "all")}>
           <option value="all">Tous les stages</option><option value="original">Collection historique</option>
-          {(["film", "game"] as const).filter(kind => PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.kind === kind)).map(kind => <option key={kind} value={kind}>{kind === "film" ? "Films Predator / AVP" : "Jeux Predator / AVP"}</option>)}
+          {(["film", "game", "comic"] as const).filter(kind => PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.kind === kind)).map(kind => <option key={kind} value={kind}>{kind === "film" ? "Films Predator / AVP" : kind === "comic" ? "Comics et romans Predator / AVP" : "Jeux Predator / AVP"}</option>)}
         </select></label>
         <label>Œuvre<select aria-label="Œuvre du stage" disabled={locked || imposed || !availableWorks.length} value={stageWork} onChange={event => changeStageFilter(stageFamily, event.target.value)}>
           <option value="all">Toutes les œuvres</option>{availableWorks.map(work => <option key={work.id} value={work.id}>{work.title}</option>)}

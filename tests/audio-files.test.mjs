@@ -125,3 +125,43 @@ test("dispose during SFX decoding settles owned work without trying another enco
     finish({duration:.2}); await tick(); assert.deepEqual(h.played,[]);
   } finally { h.restore(); }
 });
+
+test("pause freezes the current stream, discards one-shots and resumes the same transport", async () => {
+  const h = harness([entry("ambience", "ship", [source("/audio/ship.wav")]), entry("sfx", "hit", [source("/audio/hit.wav")])]);
+  try {
+    h.files.unlock(); await tick(); await h.files.startLoop("ambience", "ship", 0);
+    const stream = h.elements.find(e => e.src === "/audio/ship.wav");
+    stream.currentTime = 1.25;
+    h.files.setPaused(true); assert.equal(stream.paused, true);
+    const before = h.played.length;
+    for (let i = 0; i < 20; i++) assert.equal(h.files.playSfx("hit"), false);
+    assert.equal(h.played.length, before);
+    h.files.setPaused(false); await tick();
+    assert.equal(stream.paused, false); assert.equal(stream.currentTime, 1.25);
+    assert.equal(h.elements.filter(e => e.src === "/audio/ship.wav").length, 1);
+    assert.equal(h.played.filter(e => e === "buffer").length, 0, "paused events must not be replayed");
+  } finally { h.restore(); }
+});
+
+test("pause invalidates a pending loop and only the latest scene starts after resume", async () => {
+  const h = harness([entry("music", "menu", [source("/audio/menu.wav")]), entry("music", "combat", [source("/audio/combat.wav")])], { deferMedia: true });
+  try {
+    h.files.unlock(); await tick();
+    const loading = h.files.startLoop("music", "menu", 0); await tick();
+    h.files.setPaused(true); await loading;
+    await h.files.startLoop("music", "combat", 0);
+    h.pendingMedia.splice(0).forEach(ready => ready()); await tick();
+    assert.deepEqual(h.played, []);
+    h.files.setPaused(false); await tick(); h.pendingMedia.splice(0).forEach(ready => ready()); await tick();
+    assert.deepEqual(h.played, ["/audio/combat.wav"]);
+  } finally { h.restore(); }
+});
+
+test("leaving pause without a previous unlock cannot play a stream", async () => {
+  const h = harness([entry("music", "menu", [source("/audio/menu.wav")])]);
+  try {
+    h.files.setPaused(true); await h.files.startLoop("music", "menu", 0);
+    h.files.setPaused(false); await tick();
+    assert.deepEqual(h.played, []); assert.deepEqual(h.fetched, []);
+  } finally { h.restore(); }
+});

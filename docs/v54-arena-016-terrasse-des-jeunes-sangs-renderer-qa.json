@@ -1,0 +1,1329 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-016-terrasse-des-jeunes-sangs",
+  "compositionDigest": "a04ffa53eba865b281c587dcb5655f38e34c48b79d4923eaf1e9e3422760b1c4",
+  "conceptPreview": false,
+  "playablePromotion": false,
+  "checkedAt": "2026-09-26T23:08:10.442Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "ambienceProof": null,
+  "lifeProof": {
+    "passed": true,
+    "expectedActors": 2,
+    "nativeFrames": 6,
+    "fps": 3,
+    "sampledFrames": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "pausedClockHolds": true,
+    "reducedMotionHolds": true,
+    "combatUnchanged": true
+  },
+  "applicationFlowVerified": false,
+  "loaded": {
+    "independentKit": true,
+    "images": 15,
+    "expectedImages": 15,
+    "failed": [],
+    "fighterFailures": []
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            0,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1280,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1920,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            0,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2009.396551724138,
+            454,
+            1005.198275862069,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -1256,
+            510.25,
+            992.5,
+            80.00768122899663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -264,
+            510.25,
+            992.5,
+            80.00768122899663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            728,
+            510.25,
+            992.5,
+            80.00768122899663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1720,
+            510.25,
+            992.5,
+            80.00768122899663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            2712,
+            510.25,
+            992.5,
+            80.00768122899663
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1821.282327586207,
+            547.45,
+            1557.782327586207,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -264,
+            547.45,
+            1557.782327586207,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1293.282327586207,
+            547.45,
+            1557.782327586207,
+            170.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2850.564655172414,
+            547.45,
+            1557.782327586207,
+            170.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -1782,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -854,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            74,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1002,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1930,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -2839.625,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1382.8125,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            74,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1530.8125,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2987.625,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -1434,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -506,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            422,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1350,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            2278,
+            502,
+            928.5,
+            74.84589534325491
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1962.8125,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -506,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            950.8125,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2407.625,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            3864.4375,
+            536.8,
+            1457.3125,
+            159.5
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -928,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -416,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            96,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            608,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1120,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1632,
+            398,
+            512.5,
+            41.294287085933746
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1511.5172413793105,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -707.7586206896552,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            96,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            899.7586206896552,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1703.5172413793105,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2507.2758620689656,
+            417.20000000000005,
+            804.2586206896552,
+            88.00000000000001
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -1104,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -528,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            48,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            624,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1200,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1776,
+            414,
+            576.5,
+            46.45607297167547
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1760.4568965517242,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -856.2284482758621,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            48,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            952.2284482758621,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1856.4568965517242,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2760.685344827586,
+            435.6,
+            904.7284482758621,
+            99
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          0
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            0,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1280,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1920,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            0,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2009.396551724138,
+            454,
+            1005.198275862069,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "drawCalls": [
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            -640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            0,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            640,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1280,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-a-contact-floor.png",
+          "args": [
+            45,
+            296,
+            2083,
+            168,
+            1920,
+            430,
+            640.5,
+            51.61785885741718
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            -1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            0,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            1004.698275862069,
+            454,
+            1005.198275862069,
+            110
+          ]
+        },
+        {
+          "src": "/game/sprites/v34/pit-arenas/arena-016-terrasse-des-jeunes-sangs/p4-b-front-fascia.png",
+          "args": [
+            14,
+            238,
+            2119,
+            232,
+            2009.396551724138,
+            454,
+            1005.198275862069,
+            110
+          ]
+        }
+      ],
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "life": {
+        "actorsDrawn": 2,
+        "nativeFrames": [
+          0,
+          2
+        ],
+        "missingPaths": []
+      },
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "mobile.png"
+  ],
+  "limit": "Controlled Chromium renderer harness. Full-app navigation, physical hardware cadence, gamepad and deployment are not certified here."
+}

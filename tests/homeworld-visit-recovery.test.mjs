@@ -38,6 +38,7 @@ function fixture() {
     bindings: {}, held: { current: new Set() }, touch: { current: {} }, matchesControlAction: () => false,
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
+    spatialCodexOpenRef: { current: false },
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
     saveRef: { current: { createdAt: owner, profile: { rankId: "youngblood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },

@@ -14,6 +14,7 @@ import {
   type PitHunterSpriteFrame,
 } from "./hunterSpriteMotion";
 import { PIT_FIGHTERS, type PitCombatState, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
+import { getSpriteContact } from "./spriteContact";
 import { getPitUserVariant } from "./systems/pitUserRoster";
 import { getPitFighterPresentationCue, getPitFighterPresentationTreatment,
   type PitFighterPresentationCue, type PitFighterPresentationOptions } from "./pitFighterPresentation";
@@ -322,7 +323,7 @@ export function drawPitSpriteSheetPresentation(
     // Theatre drawings rest on the scene floor even when the final combat tick
     // had an airborne KO. This is a draw anchor, never a simulation y write.
     context.drawImage(presentation.source, ...rect,
-      fighter.x - pivot[0] * scale, groundY - pivot[1] * scale, rect[2] * scale, rect[3] * scale);
+      fighter.x - pivot[0] * scale, groundY - (pivot[1] - (getSpriteContact(presentation.source, rect, pivot[1])?.offsetY ?? 0)) * scale, rect[2] * scale, rect[3] * scale);
     return true;
   } finally { context.restore(); }
 }
@@ -379,7 +380,7 @@ export function drawPitSpriteSheetAnimation(
     if (fighter.cloakPhase !== "inactive") context.globalAlpha *= fighter.cloakPhase === "active" ? .38 : .65;
     if (options.highContrast) { context.shadowColor = options.accent ?? "#eaffed"; context.shadowBlur = 4; }
     context.drawImage(animation.source, ...rect,
-      fighter.x - pivot[0] * scale, groundY - fighter.y - pivot[1] * scale, rect[2] * scale, rect[3] * scale);
+      fighter.x - pivot[0] * scale, groundY - fighter.y - (pivot[1] - (getSpriteContact(animation.source, rect, pivot[1])?.offsetY ?? 0)) * scale, rect[2] * scale, rect[3] * scale);
     return true;
   } finally { context.restore(); }
 }
@@ -490,7 +491,7 @@ export function drawPitSpriteSheetHold(
     if (fighter.cloakPhase !== "inactive") context.globalAlpha *= fighter.cloakPhase === "active" ? .38 : .65;
     if (options.highContrast) { context.shadowColor = options.accent ?? "#eaffed"; context.shadowBlur = 4; }
     context.drawImage(hold.source, ...rect, fighter.x - pivot[0] * scale,
-      groundY - fighter.y - pivot[1] * scale, rect[2] * scale, rect[3] * scale);
+      groundY - fighter.y - (pivot[1] - (getSpriteContact(hold.source, rect, pivot[1])?.offsetY ?? 0)) * scale, rect[2] * scale, rect[3] * scale);
     return true;
   } finally { context.restore(); }
 }

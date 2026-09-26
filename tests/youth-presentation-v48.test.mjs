@@ -11,7 +11,7 @@ function fixture() {
   const props = Object.fromEntries(["trainingTarget", "platform", "marker", "bladeRack", "maskPedestal", "cot", "door", "brazier"].map((name, index) => [name, { src: propSrc, rect: [(index % 4) * 64, Math.floor(index / 4) * 96, 64, 96], pivot: [32, 90] }]));
   return { images, manifest: { version: 1, actorKind: "unblooded", scenes: { dojo: { src: src("dojo") }, camp: { src: src("camp") }, quarters: { src: src("quarters") } }, blade: { src: src("blade") }, props, actors: { player: actor("player"), rival: actor("rival") } } };
 }
-function context() { const draws = []; return { draws, save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); }, stroke() {}, beginPath() {}, moveTo() {}, lineTo() {}, setLineDash() {}, arc() {}, fill() {} }; }
+function context() { const draws = []; return { draws, globalAlpha: 1, ellipse() {}, save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); }, stroke() {}, beginPath() {}, moveTo() {}, lineTo() {}, setLineDash() {}, arc() {}, fill() {} }; }
 test("all unblooded, mentor, backdrop and modular bitmap resources are required", () => {
  const bank = fixture(); assert.equal(api.youthArtSources(bank.manifest).length, 9); assert.deepEqual(api.validateYouthArt(bank.manifest, bank.images), []);
  bank.images.delete(bank.manifest.actors.rival.left.src); assert.match(api.validateYouthArt(bank.manifest, bank.images).join(" "), /non décodée/);

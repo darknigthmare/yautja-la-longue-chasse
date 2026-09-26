@@ -106,6 +106,9 @@ export class GameAudio {
   private musicVolume = 0.65;
   private effectsVolume = 1;
   private disposed = false;
+  private paused = false;
+  private unlocked = false;
+  private transportTransition: Promise<void> = Promise.resolve();
   private cloakVoice: CloakVoice | null = null;
   private ambienceVoice: AmbienceVoice | null = null;
   private ambienceRequest = 0;
@@ -124,9 +127,12 @@ export class GameAudio {
    * d'autoplay des navigateurs. La méthode est idempotente et sûre côté SSR.
    */
   async unlock(): Promise<void> {
-    if (this.disposed || typeof window === "undefined") {
+    if (this.disposed || this.paused || typeof window === "undefined") {
       return;
     }
+    // Scene effects may request ambience before the first click. They cannot
+    // create audio or defeat the browser's gesture requirement.
+    if (!this.unlocked && typeof navigator !== "undefined" && navigator.userActivation?.hasBeenActive === false) return;
 
     if (!this.context) {
       const BrowserAudioContext =
@@ -168,6 +174,8 @@ export class GameAudio {
     }
 
     try {
+      await this.transportTransition;
+      if (this.paused || this.disposed || !this.context) return;
       if (this.context.state === "suspended") {
         await this.context.resume();
       }
@@ -177,7 +185,17 @@ export class GameAudio {
       primer.buffer = this.context.createBuffer(1, 1, this.context.sampleRate);
       primer.connect(this.master!);
       primer.start();
-      if (this.context.state === "running") this.fileAudio.unlock();
+      if (this.context.state === "running" && !this.paused && !this.disposed) {
+        const firstUnlock = !this.unlocked;
+        this.unlocked = true;
+        this.fileAudio.setPaused(false);
+        this.fileAudio.unlock();
+        if (firstUnlock) queueMicrotask(() => {
+          if (this.paused || this.disposed) return;
+          if (this.requestedAmbience && this.activeAmbience !== this.requestedAmbience) void this.startAmbience(this.requestedAmbience);
+          if (this.requestedMusic) void this.setMusicContext(this.requestedMusic);
+        });
+      }
     } catch {
       // Un refus d'autoplay ne doit jamais interrompre la partie.
     }
@@ -187,6 +205,27 @@ export class GameAudio {
   setMuted(muted: boolean): void {
     this.muted = muted;
     this.applyMix();
+  }
+
+  /** Temporary scene/visibility pause, independent from saved volume preferences. */
+  setPaused(paused: boolean): void {
+    if (this.disposed || this.paused === paused) return;
+    this.paused = paused;
+    this.fileAudio.setPaused(true);
+    this.applyMix();
+    const context = this.context;
+    if (!context || !this.unlocked) return;
+    // Serialise the browser's async transport operations. A fast close/open
+    // must not leave an obsolete suspend finishing after the latest resume.
+    this.transportTransition = this.transportTransition.then(async () => {
+      if (this.disposed || this.context !== context) return;
+      if (this.paused) { if (context.state === "running") await context.suspend(); return; }
+      if (context.state === "suspended") await context.resume();
+      if (this.paused || this.disposed || context.state !== "running") return;
+      this.fileAudio.setPaused(false); this.fileAudio.unlock();
+      if (this.requestedAmbience && this.activeAmbience !== this.requestedAmbience) void this.startAmbience(this.requestedAmbience);
+      if (this.requestedMusic) void this.setMusicContext(this.requestedMusic);
+    }).catch(() => undefined);
   }
 
   /** Niveau général normalisé entre 0 et 1. */
@@ -309,7 +348,7 @@ export class GameAudio {
     if (context !== this.requestedMusic) this.fileAudio.stopLoop("music", fade);
     this.requestedMusic = context;
     await this.unlock();
-    if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic) return;
+    if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic || this.readyTime() === null) return;
     void this.fileAudio.startLoop("music", context, fade);
   }
 
@@ -321,7 +360,7 @@ export class GameAudio {
   preloadSfx(ids?: readonly GameSfxId[]): Promise<void> { return this.fileAudio.preloadSfx(ids); }
 
   getAudioDiagnostics() {
-    return this.fileAudio.diagnostics(this.muted || this.masterVolume === 0).map(entry => ({ ...entry, state: (entry.category === "sfx" ? this.effectsVolume : this.musicVolume) === 0 ? "disabled" as const : entry.state }));
+    return this.fileAudio.diagnostics(this.paused || this.muted || this.masterVolume === 0).map(entry => ({ ...entry, state: (entry.category === "sfx" ? this.effectsVolume : this.musicVolume) === 0 ? "disabled" as const : entry.state }));
   }
 
   // -------------------------------------------------------------------------
@@ -917,7 +956,7 @@ export class GameAudio {
   }
 
   private targetMasterGain(): number {
-    return this.muted ? 0 : OUTPUT_HEADROOM * this.masterVolume;
+    return this.paused || this.muted ? 0 : OUTPUT_HEADROOM * this.masterVolume;
   }
 
   private applyMix(fadeSeconds = 0.025): void {
@@ -948,6 +987,7 @@ export class GameAudio {
   private readyTime(): number | null {
     if (
       this.disposed ||
+      this.paused ||
       !this.context ||
       !this.master ||
       !this.effects ||

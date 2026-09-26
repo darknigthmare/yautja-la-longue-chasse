@@ -1,4 +1,5 @@
 import { NURSERY_ARENA, type NurseryPresentation } from "./systems/nurseryPrologue";
+import { drawActorContactShadow, getSpriteContact } from "./spriteContact";
 
 export const NURSERY_ART_POSES = ["idle", "walk", "ready", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
 export type NurseryArtPose = typeof NURSERY_ART_POSES[number];
@@ -106,8 +107,11 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
       const poseTick = actor.pose === "ready" ? Math.max(0, Math.floor(presentation.readyGestureProgress * 120) - 1) : actor.poseTick;
       const frame = nurseryClipFrame(atlas.clips[actor.pose], poseTick);
       const scale = NURSERY_ARENA.actorHeight / atlas.bodyHeight;
-      const x = actor.x - frame.pivot[0] * scale, y = actor.y - frame.pivot[1] * scale;
-      ctx.drawImage(images.get(atlas.src)!, ...frame.rect, x, y, frame.rect[2] * scale, frame.rect[3] * scale);
+      const image = images.get(atlas.src)!, contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+      const x = actor.x - frame.pivot[0] * scale, y = actor.y - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale;
+      const contactX = contact ? x + (contact.left + contact.right) * .5 * scale : actor.x;
+      drawActorContactShadow(ctx, contactX, NURSERY_ARENA.groundY, contact ? Math.max(7, (contact.right - contact.left) * .5 * scale) : 13, NURSERY_ARENA.groundY - actor.y);
+      ctx.drawImage(image, ...frame.rect, x, y, frame.rect[2] * scale, frame.rect[3] * scale);
       if (actor.holdsDetachedBlade) ctx.drawImage(blade, x + frame.handAnchor[0] * scale - bladeWidth / 2, y + frame.handAnchor[1] * scale - bladeHeight * 0.92, bladeWidth, bladeHeight);
     }
     ctx.filter = "none";

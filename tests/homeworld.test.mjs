@@ -10,9 +10,9 @@ const act = (progress, action, settings = context) => applyHomeworldAction(progr
 const chain = () => HOMEWORLD_EVIDENCE.reduce((p, e) => act(p, { type: "inspect", evidenceId: e.id }).progress, defaultHomeworldProgress());
 const input = (moveX = 0, climb = 0, jumpPressed = false) => ({ moveX, climb, jumpPressed });
 const sim = (actor, controls, ticks, dt = 1 / 60) => { let next = actor; for (let i = 0; i < ticks; i++) next = stepHomeworldActor(next, controls, dt); return next; };
-test("the 2.5D city has twelve irregular districts, modular buildings and independent prop planes", () => {
-  assert.equal(HOMEWORLD_DISTRICTS.length, 12);
-  assert.equal(new Set(HOMEWORLD_DISTRICTS.map(d => d.id)).size, 12);
+test("the 2.5D city preserves twelve service districts and adds two connected original districts", () => {
+  assert.equal(HOMEWORLD_DISTRICTS.length, 14);
+  assert.equal(new Set(HOMEWORLD_DISTRICTS.map(d => d.id)).size, 14);
   assert.equal(hw.HOMEWORLD_PLATFORMS, undefined);
   assert.equal(hw.HOMEWORLD_LIFTS, undefined);
   assert(HOMEWORLD_STREETS.length >= 9);
@@ -22,7 +22,7 @@ test("the 2.5D city has twelve irregular districts, modular buildings and indepe
   assert.equal(new Set(HOMEWORLD_BUILDINGS.map(b => b.id)).size, HOMEWORLD_BUILDINGS.length);
   assert.deepEqual(new Set(HOMEWORLD_PROPS.map(p => p.plane)), new Set(["rear", "ground", "front"]));
   for (const district of HOMEWORLD_DISTRICTS) {
-    assert(HOMEWORLD_POINTS.some(p => p.districtId === district.id), district.id);
+    if (!["convoy-works", "rampart-walk"].includes(district.id)) assert(HOMEWORLD_POINTS.some(p => p.districtId === district.id), district.id);
     assert(HOMEWORLD_BUILDINGS.some(b => b.districtId === district.id), district.id + " needs its own building module");
   }
   assert.equal(Object.keys(HOMEWORLD_POINT_POSITIONS).length, HOMEWORLD_POINTS.length);
@@ -190,7 +190,7 @@ test("greetings and visits cannot farm relations and never mutate their input", 
   }
   assert.equal(JSON.stringify(original),json);
   assert.equal(Object.values(p.relations).reduce((a,b)=>a+b,0),HOMEWORLD_NPCS.length);
-  assert.equal(p.visitedDistrictIds.length,12);
+  assert.equal(p.visitedDistrictIds.length,14);
   assert.equal(act(p,{type:"greet",npcId:"invented"}).ok,false);
 });
 test("Elder rank cannot skip ordered evidence, and inspection never awards the suspect trophy", () => {

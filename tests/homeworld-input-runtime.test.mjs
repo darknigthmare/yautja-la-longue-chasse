@@ -41,6 +41,7 @@ function fixture() {
     touch: { current: { left: false, right: false, up: false, down: false, jump: false } },
     gamepadStateRef: { current: createHomeworldGamepadState() },
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
+    spatialCodexOpenRef: { current: false },
     actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
     rootRef: { current: { contains: element => [world, dialog, ...choices].includes(element) } },
     dialogRef: { current: { querySelectorAll: () => choices } },
@@ -50,8 +51,8 @@ function fixture() {
     cancelAnimationFrame(id) { frames.delete(id); },
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
     persistVisit() {}, setActor() {}, setPhase() {},
-    setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive; },
-    setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive; events.push(["paused", paused]); },
+    setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; },
+    setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; events.push(["paused", paused]); },
     clearInputs() { env.held.current.clear(); for (const key of Object.keys(env.touch.current)) env.touch.current[key] = false; env.gamepadStateRef.current = createHomeworldGamepadState(); },
     interact() { events.push(["interact"]); env.clearInputs(); env.dialogStateRef.current = { point: "nearby" }; env.document.activeElement = dialog; },
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
@@ -75,6 +76,22 @@ test("held stick and A on first focus cannot move or open a dialogue until a neu
   assert.ok(f.env.actorRef.current.x > start.x);
   f.release(); f.pad.buttons[0].pressed = true; f.tick(4);
   assert.deepEqual(f.events, [["interact"]], "holding A cannot also choose the first dialog action");
+});
+
+test("V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame", () => {
+  const f = fixture(); f.release();
+  f.env.spatialCodexOpenRef.current = true; f.env.pausedRef.current = true; f.env.clearInputs();
+  const before = { ...f.env.actorRef.current };
+  f.pad.axes[0] = 1; f.pad.buttons[0].pressed = true; f.pad.buttons[9].pressed = true;
+  f.tick(10);
+  assert.deepEqual(f.env.actorRef.current, before);
+  assert.deepEqual(f.events, [], "city must not consume atlas confirm/start or toggle its underlying pause");
+  f.env.spatialCodexOpenRef.current = false; f.env.pausedRef.current = false; f.env.clearInputs();
+  f.tick(4);
+  assert.deepEqual(f.env.actorRef.current, before);
+  assert.deepEqual(f.events, [], "held atlas buttons cannot leak into city interactions");
+  f.release(); f.pad.axes[0] = 1; f.tick(3);
+  assert(f.env.actorRef.current.x > before.x);
 });
 
 for (const transition of ["focus", "window", "hidden", "service"]) test(`Homeworld ${transition} return requires release, without losing position`, () => {

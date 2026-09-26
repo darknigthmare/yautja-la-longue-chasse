@@ -43,6 +43,8 @@ export class OptionalAudioFiles {
   private manifest: AudioManifest | null = null;
   private manifestPromise: Promise<void> | null = null;
   private disposed = false;
+  private paused = false;
+  private unlocked = false;
   private effects = new Map<string, CachedEffect>();
   private fallbackSeen = new Set<string>();
   private loopStates = new Map<string, CachedEffect>();
@@ -62,7 +64,8 @@ export class OptionalAudioFiles {
   constructor(graph: () => Graph | null, manifestUrl = "/audio/manifest.json") { this.graph = graph; this.manifestUrl = manifestUrl; }
 
   unlock(): void {
-    if (this.disposed || typeof window === "undefined" || !this.graph()) return;
+    if (this.disposed || this.paused || typeof window === "undefined" || this.graph()?.context.state !== "running") return;
+    this.unlocked = true;
     this.compatibility ??= document.createElement("audio");
     void this.loadManifest().then(() => this.preloadSfx());
     for (const category of ["ambience", "music"] as const) {
@@ -73,6 +76,39 @@ export class OptionalAudioFiles {
     }
     if (process.env.NODE_ENV === "development" && !this.refreshTimer) {
       this.refreshTimer = setInterval(() => { if (!document.hidden) void this.loadManifest(true); }, 3_000);
+    }
+  }
+
+  /** Pause transport without changing the player's mix or losing the wanted context. */
+  setPaused(paused: boolean): void {
+    if (this.disposed || this.paused === paused) return;
+    this.paused = paused;
+    if (paused) {
+      for (const source of this.sources) { try { source.stop(); } catch {} }
+      for (const [timer, clean] of this.timers) { clearTimeout(timer); clean(); }
+      this.timers.clear();
+      for (const channel of Object.values(this.channels)) {
+        channel.serial++; channel.controller?.abort(); channel.controller = null; channel.pending = false;
+        channel.stream?.audio.pause();
+      }
+      return;
+    }
+    // A transport resume is never an autoplay unlock.
+    if (!this.unlocked || this.graph()?.context.state !== "running") return;
+    for (const category of ["ambience", "music"] as const) {
+      const channel = this.channels[category], stream = channel.stream, serial = channel.serial;
+      if (stream) {
+        void stream.audio.play().then(() => {
+          if (this.paused || this.disposed || channel.serial !== serial) stream.audio.pause();
+        }).catch(() => {
+          if (channel.stream !== stream) return;
+          const state = this.loopStates.get(`${category}/${channel.id}`);
+          if (state) state.state = "blocked";
+          stream.dispose(); channel.stream = null;
+        });
+      } else if (channel.id) {
+        void this.startLoop(category, channel.id, channel.fade, channel.onReady, channel.onUnavailable);
+      }
     }
   }
 
@@ -167,7 +203,7 @@ export class OptionalAudioFiles {
   /** Synchronous dispatch: a loading source only benefits future events. */
   playSfx(id: string, intensity = 1): boolean {
     const graph = this.graph();
-    if (this.disposed || !graph || graph.context.state !== "running") return false;
+    if (this.disposed || this.paused || !graph || graph.context.state !== "running") return false;
     const entry = this.entry("sfx", id);
     if (!entry?.sources.length) { this.fallbackSeen.add(id); return false; }
     const state = this.effects.get(id);
@@ -198,6 +234,7 @@ export class OptionalAudioFiles {
     if (channel.id === id && (channel.pending || channel.stream)) return;
     this.stopLoop(category, fade);
     channel.id = id; channel.fade = clamp(fade, 0, 5); channel.pending = true;
+    if (this.paused) { channel.pending = false; return; }
     const serial = channel.serial;
     await this.loadManifest();
     if (this.disposed || channel.serial !== serial) return;

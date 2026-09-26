@@ -1,4 +1,6 @@
 import { getPitArenaAmbientOffset } from "./pitArenaAmbience";
+import { getPitArenaLifePaths, isPitArenaLifeSheetSize } from "./pitArenaLife";
+import { drawPitArenaLife, type PitArenaLifeReport } from "./pitArenaLifeRendering";
 import { PIT_ARENAS, PIT_FIGHTERS, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
@@ -33,7 +35,13 @@ export interface PitArenaArtBank {
 }
 export interface PitArenaRenderOptions { readonly reducedMotion?: boolean; readonly highContrast?: boolean; readonly sceneArenaId?: PitArenaId }
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
-export interface PitArenaDrawReport { readonly drawnPlanes: readonly PitArenaPlaneId[]; readonly missingPaths: readonly string[] }
+export interface PitArenaDrawReport { readonly drawnPlanes: readonly PitArenaPlaneId[]; readonly missingPaths: readonly string[]; readonly life?: PitArenaLifeReport }
+
+/** A preview succeeding does not make a separate failed combat bank ready. */
+export function isPitArenaArtBankReady(bank: PitArenaArtBank | null | undefined, arenaId?: PitArenaId): boolean {
+  return Boolean(bank && (!arenaId || bank.arenaId === arenaId) && !bank.cancelled && !bank.unavailable
+    && bank.failedPaths.size === 0 && bank.requestedPaths.size > 0 && [...bank.requestedPaths].every(src => bank.images.has(src)));
+}
 
 const biome = (name: string, category: string, asset: string) => `/game/assets/v19/biome-decor/${name}/${category}/${asset}.webp`;
 const interior = (version: number, asset: string) => `/game/ship-interior/v${version}/${asset}.webp`;
@@ -156,7 +164,7 @@ function getLegacyPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
 }
 
 export function getPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
-  return resolvePitArenaProductionKit(arenaId)?.paths ?? getLegacyPitArenaArtPaths(arenaId);
+  return [...new Set([...(resolvePitArenaProductionKit(arenaId)?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...getPitArenaLifePaths(arenaId)])];
 }
 
 /** A grounded floor must follow the exact gameplay camera, despite the concept P4 factor. */
@@ -206,7 +214,8 @@ export function getPitArenaForegroundOpacity(
 /** Load only the selected stage and abandon the whole bank on cancellation. */
 export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: AbortSignal; timeoutMs?: number; productionManifest?: PitArenaProductionManifest } = {}): Promise<PitArenaArtBank> {
   let productionKit = resolvePitArenaProductionKit(arenaId, options.productionManifest) ?? undefined;
-  const requestedPaths = new Set(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId));
+  const lifePaths = new Set(getPitArenaLifePaths(productionKit?.catalogueId ?? arenaId));
+  const requestedPaths = new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...lifePaths]);
   const expectedFrames = new Map(productionKit?.planes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => [frame.path, frame] as const))) ?? []);
   const images = new Map<string, HTMLImageElement>();
   const failedPaths = new Set<string>();
@@ -234,6 +243,7 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: { signal?: A
     image.onload = () => {
       const expected = expectedFrames.get(src)?.generation;
       finish(image.naturalWidth > 0 && image.naturalHeight > 0
+        && (!lifePaths.has(src) || isPitArenaLifeSheetSize(image.naturalWidth, image.naturalHeight))
         && (!expected || (image.naturalWidth === expected.width && image.naturalHeight === expected.height)));
     };
     image.onerror = () => finish(false);
@@ -350,6 +360,7 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
   camera: PitPresentationCamera, bank: PitArenaArtBank, options: PitArenaRenderOptions): PitArenaDrawReport {
   const arena = PIT_ARENAS[state.arenaId];
   const drawnPlanes: PitArenaPlaneId[] = [];
+  let life: PitArenaLifeReport | undefined;
   const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
   const floorY = arena.groundY * ground.scale + ground.translateY;
   context.save();
@@ -363,12 +374,17 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
         context.fillRect(0, floorY, arena.width, Math.max(0, arena.height - floorY));
       }
       if (drawProductionPlane(context, plane, state, camera, bank, options)) drawnPlanes.push(plane.id);
+      if (plane.id === "P3") life = drawPitArenaLife(context, {
+        arenaId: bank.productionKit!.catalogueId, frame: state.frame, groundY: arena.groundY, images: bank.images,
+        transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
+        reducedMotion: options.reducedMotion, highContrast: options.highContrast,
+      });
     }
     context.globalAlpha = options.highContrast ? .9 : .36;
     context.fillStyle = options.highContrast ? "#c4ffed" : arena.palette.accent;
     context.fillRect(0, floorY, arena.width, options.highContrast ? 2 : 1);
   } finally { context.restore(); }
-  return { drawnPlanes, missingPaths: [...bank.requestedPaths].filter(src => !bank.images.has(src)) };
+  return { drawnPlanes, missingPaths: [...bank.requestedPaths].filter(src => !bank.images.has(src)), life };
 }
 
 /** Called on an untransformed canvas, before the combat world transform. */

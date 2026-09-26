@@ -9,19 +9,20 @@ async function loadSystem(relativePath: string) {
     bundle: true, format: "esm", platform: "node", target: "es2022", write: false });
   return import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 }
-const [city, v21, v22] = await Promise.all([
+const [city, v21, v22, v54] = await Promise.all([
   loadSystem("../app/game/systems/homeworldCity.ts"), loadSystem("../app/game/shipInteriorKit.ts"),
   loadSystem("../app/game/shipInteriorV22.ts"),
+  loadSystem("../app/game/systems/homeworldCityArtV54.ts"),
 ]) as [typeof import("../app/game/systems/homeworldCity"), typeof import("../app/game/shipInteriorKit"),
-  typeof import("../app/game/shipInteriorV22")];
-const artwork = [v21.SHIP_LEVEL_ART.navigationConsole, v21.SHIP_LEVEL_ART.foregroundRib, ...Object.values(v22.SHIP_LEVEL_ART_V22)];
+  typeof import("../app/game/shipInteriorV22"), typeof import("../app/game/systems/homeworldCityArtV54")];
+const artwork = [v21.SHIP_LEVEL_ART.navigationConsole, v21.SHIP_LEVEL_ART.foregroundRib, ...Object.values(v22.SHIP_LEVEL_ART_V22), v54.HOMEWORLD_CITY_ART_V54.beacon];
 
 function close(actual: number, expected: number, label: string): void {
   assert.ok(Math.abs(actual - expected) < 1e-8, `${label}: ${actual} != ${expected}`);
 }
 
-test("all eleven city props anchor their actual painted alpha center and bottom, without stretching or cropping", async () => {
-  assert.equal(city.HOMEWORLD_PROPS.length, 11);
+test("all twenty-seven city props anchor their actual painted alpha center and bottom, without stretching or cropping", async () => {
+  assert.equal(city.HOMEWORLD_PROPS.length, 27);
   const measured = new Map<string, { x: number; y: number; width: number; height: number; sourceWidth: number; sourceHeight: number }>();
   for (const prop of city.HOMEWORLD_PROPS) {
     const art = artwork.find(candidate => candidate.src === prop.asset);
@@ -58,7 +59,7 @@ test("all eleven city props anchor their actual painted alpha center and bottom,
     assert.ok(pixels.height * scaleY <= prop.height + 1e-8, `${prop.id} fits height`);
     assert.ok(placement.width >= pixels.width * scaleX && placement.height >= pixels.height * scaleY, `${prop.id} retains the full source`);
   }
-  assert.equal(measured.size, 7, "reuse seven independent source modules for eleven placements");
+  assert.equal(measured.size, 8, "seven historical modules plus one native oblique beacon for sixteen constant-scale placements");
 });
 
 test("the gantry regression removes the prior seventy-pixel gap at its unchanged ground anchor", () => {

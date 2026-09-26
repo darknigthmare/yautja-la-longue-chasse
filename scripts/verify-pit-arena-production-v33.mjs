@@ -9,20 +9,21 @@ import { checkPitArenaRuntimeData } from "./build-pit-arena-runtime-v33.mjs";
 import { arenaCompositionDigest } from "./lib/pit-arena-composition-v42.mjs";
 
 const root = process.cwd();
-const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { PIT_SCREEN_ARENA_DEFINITIONS } from "./app/game/systems/pitScreenArenas"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
+const compilation = await build({ stdin: { contents: 'export * from "./app/game/pitArenaProduction"; export { PIT_ARENA_CATALOGUE } from "./app/game/systems/pitArenaCatalogue"; export { PIT_SCREEN_ARENA_DEFINITIONS } from "./app/game/systems/pitScreenArenas"; export { PIT_LORE_STAGE_DEFINITIONS } from "./app/game/systems/pitLoreStages"; export { getPitArenaLifePaths } from "./app/game/pitArenaLife"; export { getPitArenaExtension } from "./app/game/systems/pitArenaExtensions";', loader: "ts", resolveDir: root }, write: false, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
 const api = await import("data:text/javascript;base64," + Buffer.from(compilation.outputFiles[0].text).toString("base64"));
 // Audit original archive references, not the smaller runtime attestations.
 const { source: manifest } = await checkPitArenaRuntimeData(root);
 assert.equal(manifest.schemaVersion, 1);
 assert.equal(manifest.production, "v33-pit-independent-arena-art");
-assert.equal(manifest.stages.length, 100 + api.PIT_SCREEN_ARENA_DEFINITIONS.length);
+assert.equal(manifest.stages.length, 100 + api.PIT_SCREEN_ARENA_DEFINITIONS.length + api.PIT_LORE_STAGE_DEFINITIONS.length);
 const ids = new Set();
 const imagePaths = new Set();
+const ownedImagePaths = new Set();
 const checks = [];
 for (const stage of manifest.stages) {
   assert(!ids.has(stage.catalogueId), stage.catalogueId);
   ids.add(stage.catalogueId);
-  const screen = api.PIT_SCREEN_ARENA_DEFINITIONS.find(entry => entry.id === stage.catalogueId);
+  const screen = [...api.PIT_SCREEN_ARENA_DEFINITIONS, ...api.PIT_LORE_STAGE_DEFINITIONS].find(entry => entry.id === stage.catalogueId);
   const catalogue = api.PIT_ARENA_CATALOGUE.find(entry => entry.id === stage.catalogueId) ?? (screen && {number:screen.catalogueNumber,name:screen.name,setting:screen.setting,runtimeArenaId:stage.runtimeEnabled?screen.id:null,runtimeStatus:stage.runtimeEnabled?'playable':'concept'});
   assert(catalogue, `Unknown catalogue ID ${stage.catalogueId}`);
   assert.equal(stage.number, catalogue.number);
@@ -38,20 +39,20 @@ for (const stage of manifest.stages) {
     assert.equal(catalogue.runtimeStatus, "playable");
     const qa = JSON.parse(await fs.readFile(stage.runtimeExtension.rendererEvidence, "utf8"));
     assert.equal(qa.result, "PASS"); assert.equal(qa.arenaId, runtimeId);
-    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions'].includes(stage.compositionContract)) {
+    if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions'].includes(stage.compositionContract)) {
       const digest = arenaCompositionDigest(stage);
       assert.equal(qa.compositionDigest, digest, 'Renderer proof is stale: ' + stage.catalogueId);
       assert.equal(stage.compositionVisualReview?.digest, digest, 'Visual approval is stale: ' + stage.catalogueId);
       const visual = JSON.parse(await fs.readFile(stage.compositionVisualReview.evidence, 'utf8'));
       assert(visual.compositions.some(entry => entry.arenaId === stage.catalogueId && entry.accepted === true && entry.compositionDigest === digest), 'Missing actual composition review');
     }
-    assert.equal(qa.loaded.images, new Set(stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path)))).size); assert.equal(qa.mobileNoOverflow, true);
+    assert.equal(qa.loaded.images, new Set([...stage.planes.flatMap(p => p.assets.flatMap(a => a.frames.map(f => f.path))), ...(stage.number >= 137 ? api.getPitArenaLifePaths(stage.catalogueId) : [])]).size); assert.equal(qa.mobileNoOverflow, true);
     assert.deepEqual(qa.errors, []); assert.deepEqual(qa.failedRequests, []);
     assert(qa.scenarios.length >= 8 && qa.scenarios.every(s => s.planes.length === 6 && s.missing.length === 0 && s.unchangedCamera && s.unchangedState));
     if (stage.runtimeExtension.applicationEvidence) {
       const appQa = JSON.parse(await fs.readFile(stage.runtimeExtension.applicationEvidence, "utf8"));
       assert.equal(appQa.passed, true); assert.equal(appQa.mobileNoOverflow, true);
-      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions'].includes(stage.compositionContract)) {
+      if (['v42-explicit-shared-library-compositions','v43-screen-reference-shared-library-compositions','v54-character-lore-shared-library-compositions'].includes(stage.compositionContract)) {
         const digest = arenaCompositionDigest(stage);
         assert(appQa.checks.some(check => check.arena === runtimeId && check.compositionDigest === digest), 'Application proof is stale: ' + stage.catalogueId);
       }
@@ -78,9 +79,14 @@ for (const stage of manifest.stages) {
       }
       assert(api.isPitArenaAssetPathAuthorized(stage, asset, manifest), "Unauthorized foreign module: " + asset.id);
       for (const frame of asset.frames) {
-        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43)\/pit-arenas\/[a-z0-9/-]+\.png$/);
+        assert.match(frame.path, /^\/game\/sprites\/v(?:33|34|42|43|54)\/pit-arenas\/[a-z0-9/-]+\.png$/);
         assert(asset.libraryRef || frame.path.startsWith(stage.assetDirectory + "/"));
-        assert(!imagePaths.has(frame.path) || asset.libraryRef, "Duplicate own file without explicit library reference: " + frame.path);
+        // An authorised alias may be listed before its later-numbered owner.
+        // Only a second ownership claim is invalid; alias authorisation is checked above.
+        if (!asset.libraryRef) {
+          assert(!ownedImagePaths.has(frame.path), "Duplicate own file without explicit library reference: " + frame.path);
+          ownedImagePaths.add(frame.path);
+        }
         imagePaths.add(frame.path);
         assert(["planned", "generated", "reviewed", "integrated"].includes(frame.status), frame.path);
         if (frame.status === "planned") {

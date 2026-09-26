@@ -34,7 +34,7 @@ test("renderer selects both charge drawings in each native direction without can
   const state = patrolRoute({ stop: "patrol-ambush" }).state, seen = new Set();
   for (const direction of [-1, 1]) for (const ticks of [0, 10]) {
     const copy = structuredClone(state); copy.patrol.grazer.direction = direction; copy.patrol.grazer.phase = "charge"; copy.patrol.grazer.ticks = ticks;
-    const draws = [], ctx = { save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); }, stroke() {}, beginPath() {}, moveTo() {}, lineTo() {}, setLineDash() {}, arc() {}, fill() {}, fillText() {}, scale() { assert.fail("native grazer must not be mirrored"); } };
+    const draws = [], ctx = { globalAlpha:1, ellipse() {}, save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); }, stroke() {}, beginPath() {}, moveTo() {}, lineTo() {}, setLineDash() {}, arc() {}, fill() {}, fillText() {}, scale() { assert.fail("native grazer must not be mirrored"); } };
     art.drawYouthScene(ctx, copy, { manifest, images }, false);
     const draw = draws.find(call => call[0].src === atlas.right.watch.src); assert(draw);
     const side = atlas[direction === 1 ? "right" : "left"], sprite = side.charge[ticks / 10];

@@ -7,6 +7,7 @@ import {
 } from "./pitSpriteSheetAnimation";
 
 import { getPitFighterPresentationCue, getPitFighterPresentationTreatment } from "./pitFighterPresentation";
+import { getSpriteContact } from "./spriteContact";
 
 /** Exact-ID PIT fighters, including the separate V34 duel extension. Fixed poses only. */
 export const PIT_COMBAT_BITMAP_FIGHTER_IDS = [
@@ -267,6 +268,37 @@ export async function loadPitCombatBitmapArt(
   return bank();
 }
 
+/** Same selected drawing and scale as the renderer; no collision or fighter writes. */
+export function getPitCombatGroundFootprint(bank: PitCombatBitmapArtBank | null, fighter: PitFighterState,
+  options: PitSpriteSheetAnimationOptions = {}): { x: number; halfWidth: number } {
+  const definition = PIT_FIGHTERS[fighter.definitionId];
+  const fallback = { x: fighter.x, halfWidth: definition.bodyWidth * .72 };
+  if (!bank || bank.cancelled) return fallback;
+  const presentation = resolvePitSpriteSheetPresentation(bank.spriteSheets, fighter, options);
+  const animation = presentation ? null : resolvePitSpriteSheetAnimation(bank.spriteSheets, fighter, options);
+  const hold = presentation || animation ? null : resolvePitSpriteSheetHold(bank.spriteSheets, fighter, options);
+  const selected = presentation ?? animation ?? hold;
+  const frame = presentation?.frame ?? animation?.resolved.frame ?? hold?.frame;
+  let contact, pivotX: number, scale: number, direction = 1;
+  if (selected && frame) {
+    contact = getSpriteContact(selected.source, frame.frame.rect, frame.frame.pivot[1]);
+    pivotX = frame.frame.pivot[0];
+    scale = definition.bodyHeight / (selected.definition.pageBodyHeightPx?.[frame.page.id] ?? selected.definition.bodyHeightPx);
+    if (presentation) scale *= getPitFighterPresentationTreatment(presentation.cue, presentation.status === "dedicated-animation").scale;
+  } else {
+    if (getPitCombatBitmapArtStatus(bank, fighter.definitionId, fighter.variantId) !== "static-bitmap") return fallback;
+    const art = getPitCombatBitmapArtDefinition(fighter.definitionId, fighter.variantId)!;
+    const source = selectedBitmap(bank, fighter.definitionId, fighter.variantId)!;
+    contact = getSpriteContact(source, [0, 0, art.width, art.height], art.pivot[1]);
+    pivotX = art.pivot[0]; scale = definition.bodyHeight / (art.pivot[1] - art.bodyTopY);
+    const cue = getPitFighterPresentationCue(fighter.slot, options.presentation, options.reducedMotion);
+    if (cue) scale *= getPitFighterPresentationTreatment(cue).scale;
+    direction = art.nativeFacing === "neutral" ? 1 : art.nativeFacing === "right" ? fighter.facing : -fighter.facing;
+  }
+  return contact ? { x: fighter.x + ((contact.left + contact.right) / 2 - pivotX) * scale * direction,
+    halfWidth: Math.max(10, (contact.right - contact.left + 1) * scale / 2) } : fallback;
+}
+
 /** Reviewed animation for the actual state, otherwise the explicitly static plate. */
 export function drawPitCombatBitmapFighter(
   context: CanvasRenderingContext2D,
@@ -306,7 +338,9 @@ export function drawPitCombatBitmapFighter(
       context.shadowColor = options.accent ?? "#eaffed";
       context.shadowBlur = 4 / scale;
     }
-    context.drawImage(selectedBitmap(bank, fighter.definitionId, fighter.variantId)!, -art.pivot[0], -art.pivot[1], art.width, art.height);
+    const source = selectedBitmap(bank, fighter.definitionId, fighter.variantId)!;
+    const contact = getSpriteContact(source, [0, 0, art.width, art.height], art.pivot[1]);
+    context.drawImage(source, -art.pivot[0], -art.pivot[1] + (contact?.offsetY ?? 0), art.width, art.height);
     return true;
   } finally { context.restore(); }
 }

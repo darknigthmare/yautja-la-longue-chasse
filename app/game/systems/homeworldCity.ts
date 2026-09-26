@@ -10,6 +10,7 @@ import type { HunterPresetId, HunterBodyMorphId, DreadStyleId, TrophyRecord } fr
 import { trophyWallVisualForDefinitionId } from "../trophyVisualRegistry";
 import { SHIP_LEVEL_ART } from "../shipInteriorKit";
 import { SHIP_LEVEL_ART_V22 } from "../shipInteriorV22";
+import { HOMEWORLD_CITY_ART_V54 } from "./homeworldCityArtV54";
 
 export interface HomeworldVec2 {
   readonly x: number;
@@ -49,6 +50,23 @@ export interface HomeworldBuildingModule {
   readonly height: number;
   readonly variant: "hall" | "stall" | "forge" | "archive" | "gate" | "tower";
   readonly doorSide: "left" | "center" | "right";
+  readonly art?: {
+    readonly src: string; readonly sourceWidth: number; readonly sourceHeight: number;
+    readonly alphaBounds: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
+  };
+}
+
+/** Native whole-building art is contained uniformly; the painted bottom stays at the collision depth. */
+export function homeworldBuildingArtPlacement(building: HomeworldBuildingModule) {
+  if (!building.art) return null;
+  const art = building.art, bounds = art.alphaBounds;
+  const scale = Math.min(building.width / bounds.width, building.height / bounds.height);
+  return {
+    left: building.width / 2 - (bounds.x + bounds.width / 2) * scale,
+    top: building.height - (bounds.y + bounds.height) * scale,
+    width: art.sourceWidth * scale,
+    height: art.sourceHeight * scale,
+  };
 }
 
 export interface HomeworldDecorProp {
@@ -67,6 +85,7 @@ const HOMEWORLD_PROP_ART = [
   SHIP_LEVEL_ART.navigationConsole,
   SHIP_LEVEL_ART.foregroundRib,
   ...Object.values(SHIP_LEVEL_ART_V22),
+  HOMEWORLD_CITY_ART_V54.beacon,
 ];
 
 /**
@@ -133,7 +152,23 @@ function district(
   return { id, name, description, ...bounds(points), polygon: points, accent, texture };
 }
 
-export const HOMEWORLD_WORLD = { width: 5_200, height: 2_600 } as const;
+/** One shared placement contract drives collisions, occlusion and the spatial codex. */
+export const HOMEWORLD_PLACEMENT_RULES = {
+  projection: "oblique-ground-plane",
+  anchor: "painted-bottom-center",
+  scale: "uniform-alpha-bounds",
+  depth: "ground-y",
+  propHalfWidthRatio: .22,
+  propMinimumHalfWidth: 18,
+  propHalfDepthRatio: .14,
+  propMinimumHalfDepth: 10,
+  propMaximumHalfDepth: 24,
+  buildingFadeOpacity: .32,
+  routeGrid: 64,
+  routeSample: 4,
+  routeClearance: 12,
+} as const;
+export const HOMEWORLD_WORLD = { width: 6_300, height: 3_400 } as const;
 export const HOMEWORLD_ACTOR = {
   halfWidth: 24,
   halfDepth: 14,
@@ -156,6 +191,8 @@ export const HOMEWORLD_DISTRICTS: readonly HomeworldDistrict[] = [
   district("arenas", "Grandes Arènes", "THE PIT conserve son entrée propre ; il ne verrouille aucune étape de l'enquête.", polygon([1_550, 420], [2_300, 170], [3_060, 420], [2_920, 920], [1_810, 1_000]), "#d59b8e", "machinery"),
   district("temple", "Temple des Rites", "Les rites et rangs déjà acquis sont reconnus sans rétrograder le chasseur.", polygon([2_760, 390], [3_430, 170], [4_100, 410], [3_960, 960], [3_010, 970]), "#c5b6db", "sanctum"),
   district("citadel", "Citadelle du Trône", "Le Roi de la Chasse représente cette cité et ses clans alliés, dans la continuité originale du jeu.", polygon([3_790, 350], [4_400, 150], [5_120, 410], [5_060, 1_030], [4_090, 1_030]), "#e2c56a", "observatory"),
+  district("convoy-works", "Ateliers des convois", "Une cour logistique relie les quais et les forges par le sud. Ce secteur et ses ateliers sont une création originale du projet ; aucun voyage ne se lance ici.", polygon([1_180, 2_460], [1_680, 2_310], [2_850, 2_320], [3_460, 2_610], [3_290, 3_190], [1_560, 3_250], [1_070, 2_950]), "#dca574", "machinery"),
+  district("rampart-walk", "Promenade des remparts", "Une voie extérieure relie la citadelle, le bastion et la galerie basse. Architecture et fonction civique sont des adaptations originales, pas une carte officielle de la planète.", polygon([5_290, 910], [5_820, 790], [6_150, 1_230], [6_090, 2_230], [5_700, 2_590], [5_270, 2_390], [5_130, 1_590]), "#91c5bb", "observatory"),
 ] as const;
 
 /** Authored overlaps connect every district without ladders or forced jumps. */
@@ -169,6 +206,11 @@ export const HOMEWORLD_STREETS: readonly HomeworldStreet[] = [
   { id: "arena-ramp", label: "Rampe du cercle", polygon: polygon([1_450, 1_250], [1_790, 1_020], [2_130, 760], [1_930, 570], [1_570, 850]), accent: "#be8178", kind: "ramp" },
   { id: "central-arc", label: "Arc des clans", polygon: polygon([2_600, 1_600], [2_930, 1_390], [3_420, 1_050], [3_220, 850], [2_720, 1_160]), accent: "#80aab9", kind: "ramp" },
   { id: "citadel-ascent", label: "Voie de l'audience", polygon: polygon([3_750, 1_300], [4_050, 1_080], [4_440, 760], [4_230, 550], [3_820, 850]), accent: "#d6b958", kind: "ramp" },
+  { id: "south-quay-link", label: "Quai secondaire · ateliers", polygon: polygon([780, 2_180], [1_040, 2_090], [1_650, 2_620], [1_310, 2_850], [1_010, 2_480]), accent: "#dca574", kind: "passage" },
+  { id: "south-forge-link", label: "Retour vers les forges", polygon: polygon([2_890, 2_090], [3_180, 2_050], [3_480, 2_680], [3_100, 2_840]), accent: "#dca574", kind: "passage" },
+  { id: "rampart-north-link", label: "Passage haut des remparts", polygon: polygon([4_860, 780], [5_040, 650], [5_720, 1_050], [5_510, 1_320]), accent: "#91c5bb", kind: "ramp" },
+  { id: "rampart-middle-link", label: "Traverse du bastion", polygon: polygon([4_850, 1_420], [4_890, 1_180], [5_650, 1_480], [5_560, 1_760]), accent: "#91c5bb", kind: "passage" },
+  { id: "rampart-south-link", label: "Retour des galeries", polygon: polygon([4_730, 2_120], [4_870, 1_890], [5_640, 2_220], [5_490, 2_500]), accent: "#91c5bb", kind: "undercity" },
 ] as const;
 
 const BUILDING_ASSET_ROOT = "/game/ship-interior/";
@@ -187,6 +229,12 @@ export const HOMEWORLD_BUILDINGS: readonly HomeworldBuildingModule[] = [
   { id: "pit-gate", districtId: "arenas", label: "Entrée THE PIT", x: 2_300, y: 640, width: 500, height: 360, variant: "gate", doorSide: "center" },
   { id: "rite-sanctum", districtId: "temple", label: "Sanctuaire des rites", x: 3_400, y: 620, width: 500, height: 390, variant: "hall", doorSide: "right" },
   { id: "throne-audience", districtId: "citadel", label: "Salle d'audience", x: 4_510, y: 630, width: 600, height: 460, variant: "tower", doorSide: "center" },
+  { id: "convoy-workshop", districtId: "convoy-works", label: "Atelier des convois · extérieur", x: 1_760, y: 2_730, width: 520, height: 330, variant: "forge", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
+  { id: "convoy-store", districtId: "convoy-works", label: "Dépôt · extérieur", x: 2_630, y: 2_680, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
+  { id: "convoy-south-shelter", districtId: "convoy-works", label: "Abri de cour · extérieur", x: 2_390, y: 3_020, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
+  { id: "rampart-north-lodge", districtId: "rampart-walk", label: "Relais haut · extérieur", x: 5_650, y: 1_180, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
+  { id: "rampart-watch", districtId: "rampart-walk", label: "Poste des remparts · extérieur", x: 5_840, y: 1_820, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
+  { id: "rampart-south-lodge", districtId: "rampart-walk", label: "Relais bas · extérieur", x: 5_610, y: 2_300, width: 520, height: 330, variant: "hall", doorSide: "center", art: HOMEWORLD_CITY_ART_V54.compactRelay },
 ] as const;
 
 export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
@@ -201,6 +249,15 @@ export const HOMEWORLD_PROPS: readonly HomeworldDecorProp[] = [
   { id: "memory-terminal", districtId: "memory", x: 1_420, y: 820, width: 130, height: 135, asset: BUILDING_ASSET_ROOT + "v22/archive-terminal.webp", plane: "ground" },
   { id: "arena-rib", districtId: "arenas", x: 2_750, y: 850, width: 170, height: 320, asset: BUILDING_ASSET_ROOT + "v21/foreground-rib.webp", plane: "front", fadeRadius: 140 },
   { id: "citadel-rib", districtId: "citadel", x: 4_900, y: 880, width: 190, height: 360, asset: BUILDING_ASSET_ROOT + "v21/foreground-rib.webp", plane: "front", fadeRadius: 160 },
+  ...[
+    ["port", 860, 1930], ["market", 1240, 1950], ["forges", 2820, 2060], ["undercity", 4730, 2280],
+    ["esplanade", 1390, 1500], ["terraces", 1970, 1380], ["clans", 3180, 1490], ["enforcers", 4880, 1520],
+    ["memory", 1540, 890], ["arenas", 2030, 860], ["temple", 3650, 800], ["citadel", 4760, 1000],
+    ["convoy-works", 1510, 2910], ["convoy-works", 3060, 2920], ["rampart-walk", 5490, 1360], ["rampart-walk", 5770, 2050],
+  ].map(([districtId, x, y], index): HomeworldDecorProp => ({
+    id: `wayfinding-beacon-${index + 1}`, districtId: String(districtId), x: Number(x), y: Number(y),
+    width: 76, height: 128, asset: HOMEWORLD_CITY_ART_V54.beacon.src, plane: "ground",
+  })),
 ] as const;
 
 export const HOMEWORLD_POINT_POSITIONS = {
@@ -484,8 +541,8 @@ export function homeworldCollisionAt(
   }
   for (const prop of HOMEWORLD_PROPS) {
     if (prop.plane !== "ground") continue;
-    const halfPropWidth = Math.max(18, prop.width * .22);
-    const halfPropDepth = Math.max(10, Math.min(24, prop.height * .14));
+    const halfPropWidth = Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfWidth, prop.width * HOMEWORLD_PLACEMENT_RULES.propHalfWidthRatio);
+    const halfPropDepth = Math.max(HOMEWORLD_PLACEMENT_RULES.propMinimumHalfDepth, Math.min(HOMEWORLD_PLACEMENT_RULES.propMaximumHalfDepth, prop.height * HOMEWORLD_PLACEMENT_RULES.propHalfDepthRatio));
     if (rectangleTouchesFootprint(
       point,
       safeFootprint,
@@ -534,6 +591,37 @@ export function nearestHomeworldDoor(
   }
   return nearest;
 }
+
+/** Fade the painted facade only while it covers the hunter on the rear ground plane. */
+export function shouldFadeHomeworldBuilding(building: HomeworldBuildingModule, actor: HomeworldVec2): boolean {
+  return actor.x > building.x - building.width * .55 - HOMEWORLD_ACTOR.halfWidth
+    && actor.x < building.x + building.width * .55 + HOMEWORLD_ACTOR.halfWidth
+    && actor.y > building.y - building.height - 12
+    && actor.y < building.y - 58;
+}
+
+/** Ship art is a foreground occluder at its ground pivot; fading never changes its service or collider. */
+export function shouldFadeHomeworldShip(ship: HomeworldVec2, actor: HomeworldVec2): boolean {
+  return Math.abs(actor.x - ship.x) < 210 + HOMEWORLD_ACTOR.halfWidth
+    && actor.y <= ship.y + HOMEWORLD_ACTOR.halfDepth
+    && actor.y > ship.y - 255;
+}
+
+/** Road paint belongs to the ground plane, not to scenery depth or physical collision. */
+export const HOMEWORLD_WAYMARKS = [
+  { id: "port-south", x: 1_080, y: 2_380, angle: 35, label: "ATELIERS ↓" },
+  { id: "works-west", x: 1_470, y: 2_630, angle: -145, label: "QUAIS ↖" },
+  { id: "works-east", x: 3_230, y: 2_560, angle: -110, label: "FORGES ↑" },
+  { id: "forge-south", x: 3_140, y: 2_230, angle: 65, label: "ATELIERS ↓" },
+  { id: "rampart-north", x: 5_260, y: 1_010, angle: 25, label: "REMPARTS ↘" },
+  { id: "rampart-middle", x: 5_270, y: 1_550, angle: 20, label: "REMPARTS →" },
+  { id: "rampart-south", x: 5_260, y: 2_220, angle: 20, label: "REMPARTS ↗" },
+  { id: "rampart-return", x: 5_540, y: 1_560, angle: -160, label: "BASTION ←" },
+  { id: "rampart-return-south", x: 5_490, y: 2_360, angle: -150, label: "GALERIES ↖" },
+  { id: "memory-lane", x: 1_140, y: 1_040, angle: -55, label: "MÉMOIRE ↑" },
+  { id: "arena-lane", x: 1_810, y: 930, angle: -38, label: "ARÈNES ↗" },
+  { id: "clan-lane", x: 3_000, y: 1_320, angle: -36, label: "CLANS ↗" },
+] as const;
 
 export function shouldFadeHomeworldForeground(
   prop: HomeworldDecorProp,

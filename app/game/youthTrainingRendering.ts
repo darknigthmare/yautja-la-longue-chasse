@@ -1,6 +1,7 @@
 import { isYouthCagePhase, YOUTH_CAGE } from "./systems/youthCage";
 import { isYouthPatrolPhase, YOUTH_PATROL_HALTS } from "./systems/youthPatrol";
 import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, YOUTH_DESERT_CLUES, type YouthState } from "./systems/youthTraining";
+import { drawActorContactShadow, getSpriteContact } from "./spriteContact";
 
 export const YOUTH_ART_POSES = ["idle", "walk", "jump", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
 export type YouthArtPose = typeof YOUTH_ART_POSES[number];
@@ -103,10 +104,16 @@ export async function loadYouthArt(manifest: YouthArtManifest): Promise<YouthArt
   const errors = validateYouthArt(manifest, images); if (errors.length) throw new Error(errors.join(" "));
   return { manifest, images };
 }
-export function youthActorPose(state: YouthState): YouthArtPose {
-  if (state.player.action !== "idle") return state.player.action;
-  if (state.player.y < YOUTH_ARENA.groundY - 1) return "jump";
-  return Math.abs(state.player.vx) > 0.1 ? "walk" : "idle";
+/** The topmost solid below the feet, with the same horizontal reach as landing collision. */
+export function youthActorSupport(state: Pick<YouthState, "phase">, actor: Pick<YouthState["player"], "x" | "y">) {
+  const platform = getYouthObstacles(state).filter(o => actor.x + 18 > o.x && actor.x - 18 < o.x + o.width && actor.y <= o.y + .01).sort((a, b) => a.y - b.y)[0];
+  return { y: platform?.y ?? YOUTH_ARENA.groundY, left: platform?.x ?? YOUTH_ARENA.left, right: platform ? platform.x + platform.width : YOUTH_ARENA.right, platform: Boolean(platform) };
+}
+export function youthActorPose(state: YouthState, id: "player" | "rival" = "player"): YouthArtPose {
+  const actor = state[id];
+  if (actor.action !== "idle") return actor.action;
+  if (actor.y < youthActorSupport(state, actor).y - 1 || actor.vy !== 0) return "jump";
+  return Math.abs(actor.vx) > 0.1 ? "walk" : "idle";
 }
 export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState, bank: YouthArtBank | null, reducedMotion: boolean) {
   const { width, height, groundY, actorHeight } = YOUTH_ARENA;
@@ -165,11 +172,17 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   }
   const drawActor = (id: "player" | "rival", height: number) => {
     const actor = state[id]; const atlas = manifest.actors[id][actor.facing === 1 ? "right" : "left"];
-    const pose: YouthArtPose = actor.action !== "idle" ? actor.action : actor.y < groundY - 1 ? "jump" : Math.abs(actor.vx) > .1 ? "walk" : "idle";
+    const pose = youthActorPose(state, id);
     const poseTick = pose === "jump" ? actor.vy < 0 ? 0 : atlas.clips.jump.frames[0].durationTicks : ["idle", "walk"].includes(pose) ? state.tick : actor.actionTick;
     const frame = youthClipFrame(atlas.clips[pose], poseTick); const actorScale = height / atlas.bodyHeight;
-    const x = actor.x - frame.pivot[0] * actorScale, y = actor.y - frame.pivot[1] * actorScale;
-    ctx.drawImage(images.get(atlas.src)!, ...frame.rect, x, y, frame.rect[2] * actorScale, frame.rect[3] * actorScale);
+    const image = images.get(atlas.src)!, contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+    const x = actor.x - frame.pivot[0] * actorScale, y = actor.y - (frame.pivot[1] - (contact?.offsetY ?? 0)) * actorScale;
+    const support = youthActorSupport(state, actor);
+    const contactX = contact ? x + (contact.left + contact.right) * .5 * actorScale : actor.x;
+    const shadowX = Math.max(support.left + 3, Math.min(support.right - 3, contactX));
+    const halfWidth = contact ? Math.max(7, (contact.right - contact.left) * .5 * actorScale) : 17;
+    drawActorContactShadow(ctx, shadowX, support.y, support.platform ? Math.min(halfWidth, shadowX - support.left, support.right - shadowX) : halfWidth, support.y - actor.y);
+    ctx.drawImage(image, ...frame.rect, x, y, frame.rect[2] * actorScale, frame.rect[3] * actorScale);
     if (id === "player" && state.cage?.insignia && manifest.cage) {
       const badge = manifest.cage.insignia, h = 18, w = h * badge.rect[2] / badge.rect[3];
       drawCageSprite(badge, [actor.x - w / 2, actor.y - height * .68, w, h]);
@@ -184,7 +197,10 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     const a = state.rival, art = manifest.cage.novice, side = art[a.facing === 1 ? "right" : "left"];
     const pose: YouthCageNovicePose = a.action === "jab" ? a.actionTick < 32 ? "windup" : "strike" : a.action === "hurt" || a.action === "thrown" || a.action === "ko" ? a.action : a.y < groundY - 1 ? "jump" : Math.abs(a.vx) > .1 && Math.floor(state.tick / 10) % 2 ? "walk" : "idle";
     const sprite = side[pose], ratio = actorHeight / art.bodyHeight;
-    drawCageSprite(sprite, [a.x - sprite.pivot[0] * ratio, a.y - sprite.pivot[1] * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio]);
+    const contact = getSpriteContact(images.get(sprite.src)!, sprite.rect, sprite.pivot[1]);
+    const x = a.x - sprite.pivot[0] * ratio;
+    drawActorContactShadow(ctx, contact ? x + (contact.left + contact.right) * .5 * ratio : a.x, groundY, contact ? Math.max(8, (contact.right - contact.left) * .5 * ratio) : 17, groundY - a.y);
+    drawCageSprite(sprite, [x, a.y - (sprite.pivot[1] - (contact?.offsetY ?? 0)) * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio]);
     if (state.phase === "cage-duel" && a.action === "jab" && a.actionTick < 32) {
       ctx.strokeStyle = "#ffe2a2"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(a.x, a.y - 128, 9, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * a.actionTick / 32); ctx.stroke();
     }
@@ -193,6 +209,7 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     }
   }
   if (["dojo-strike", "dojo-throw"].includes(state.phase)) {
+    drawActorContactShadow(ctx, state.rival.x, groundY, 15, groundY - state.rival.y);
     ctx.save(); ctx.translate(state.rival.x, state.rival.y);
     if (state.rival.action === "thrown") ctx.rotate(state.rival.facing * Math.PI / 3);
     if (!reducedMotion && state.rival.action === "hurt") ctx.globalAlpha = .72;
@@ -207,8 +224,11 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
     const grazer = state.patrol.grazer, art = manifest.patrolGrazer, side = art[grazer.direction === 1 ? "right" : "left"];
     const sprite = grazer.phase === "charge" ? side.charge[Math.floor(grazer.ticks / 10) % side.charge.length] : side[grazer.phase];
     const ratio = art.displayHeight / art.bodyHeight;
+    const image = images.get(sprite.src)!, contact = getSpriteContact(image, sprite.rect, sprite.pivot[1]);
+    const x = grazer.x - sprite.pivot[0] * ratio;
+    drawActorContactShadow(ctx, contact ? x + (contact.left + contact.right) * .5 * ratio : grazer.x, groundY, contact ? Math.max(14, (contact.right - contact.left) * .5 * ratio) : 40);
     // Native orientations only; two distinct authored charge drawings per side.
-    ctx.drawImage(images.get(sprite.src)!, ...sprite.rect, grazer.x - sprite.pivot[0] * ratio, groundY - sprite.pivot[1] * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio);
+    ctx.drawImage(image, ...sprite.rect, x, groundY - (sprite.pivot[1] - (contact?.offsetY ?? 0)) * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio);
     if (state.phase === "patrol-ambush" && grazer.phase === "telegraph") {
       ctx.strokeStyle = "#ffe0a0"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(grazer.x, groundY - art.displayHeight - 14, 11, 0, Math.PI * 2); ctx.stroke();
       ctx.fillStyle = "#ffe0a0"; ctx.font = "bold 16px sans-serif"; ctx.textAlign = "center"; ctx.fillText("!", grazer.x, groundY - art.displayHeight - 9);
@@ -234,10 +254,13 @@ export function drawYouthDemonstration(ctx: CanvasRenderingContext2D, phase: You
   const frame = youthClipFrame(atlas.clips[demo.pose], demo.poseTick); const scale = 80 / atlas.bodyHeight;
   if (["dojo-strike", "dojo-throw"].includes(phase)) {
     const sprite = bank.manifest.props.trainingTarget, image = bank.images.get(sprite.src)!; const ratio = 63 / sprite.rect[3];
+    drawActorContactShadow(ctx, 153, 112, 9);
     ctx.save(); ctx.translate(153, 112);
     if (!staticOnly && phase === "dojo-throw" && tick >= 34 && tick < 84) ctx.rotate(Math.min(1, (tick - 34) / 20) * Math.PI / 2);
     ctx.drawImage(image, ...sprite.rect, -sprite.pivot[0] * ratio, -sprite.pivot[1] * ratio, sprite.rect[2] * ratio, sprite.rect[3] * ratio); ctx.restore();
   }
-  ctx.drawImage(bank.images.get(atlas.src)!, ...frame.rect, demo.x - frame.pivot[0] * scale, demo.y - frame.pivot[1] * scale, frame.rect[2] * scale, frame.rect[3] * scale);
+  const image = bank.images.get(atlas.src)!, contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+  drawActorContactShadow(ctx, demo.x, 112, 11, 112 - demo.y);
+  ctx.drawImage(image, ...frame.rect, demo.x - frame.pivot[0] * scale, demo.y - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale, frame.rect[2] * scale, frame.rect[3] * scale);
   ctx.strokeStyle = "#8b7245"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(15, 114); ctx.lineTo(205, 114); ctx.stroke();
 }

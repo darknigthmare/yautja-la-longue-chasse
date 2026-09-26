@@ -1,16 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { createPitCombatState, PIT_ARENAS, type PitArenaId } from "./systems/pitCombat";
-import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground } from "./pitArenaRendering";
+import { loadPitArenaArt, isPitArenaArtBankReady, drawPitArenaBackdrop, drawPitArenaForeground } from "./pitArenaRendering";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import styles from "./PitSelectionFlow.module.css";
 
 export type PitStagePreviewStatus = "loading" | "ready" | "failed";
 
 /** The preview uses the combat renderer and its real independent planes. */
-export default function PitStagePreview({ arenaId, reducedMotion, highContrast, onStatus }: {
+export default function PitStagePreview({ arenaId, reducedMotion, highContrast, onStatus, onRetry }: {
   arenaId: PitArenaId; reducedMotion: boolean; highContrast: boolean;
   onStatus: (arenaId: PitArenaId, status: PitStagePreviewStatus) => void;
+  onRetry?: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [retry, setRetry] = useState(0);
@@ -30,7 +31,7 @@ export default function PitStagePreview({ arenaId, reducedMotion, highContrast, 
     canvas.dataset.previewStatus = "loading";
     void loadPitArenaArt(arenaId, { signal: controller.signal }).then(bank => {
       if (controller.signal.aborted) return;
-      if (bank.cancelled || bank.unavailable || bank.failedPaths.size) throw new Error("Incomplete stage preview");
+      if (!isPitArenaArtBankReady(bank, arenaId)) throw new Error("Incomplete stage preview");
       const arena = PIT_ARENAS[arenaId], state = createPitCombatState("jungle-hunter", "berserker", { arenaId });
       const startedAt = performance.now();
       const draw = (now: number) => {
@@ -57,6 +58,6 @@ export default function PitStagePreview({ arenaId, reducedMotion, highContrast, 
   }, [arenaId, reducedMotion, highContrast, retry, onStatus]);
   return <div className={styles.stageCanvasShell} aria-busy={status === "loading"}>
     <canvas ref={canvasRef} width={960} height={540} role="img" aria-label={`Aperçu des plans réels de ${PIT_ARENAS[arenaId].name}`} data-pit-stage-preview={arenaId} />
-    {status !== "ready" ? <div className={styles.previewNotice} role="status">{status === "loading" ? "Chargement des plans du stage…" : <><span>Aperçu indisponible. Le combat n’est pas lancé.</span><button type="button" onClick={() => { setResult(null); setRetry(value => value + 1); }}>Réessayer l’aperçu</button></>}</div> : null}
+    {status !== "ready" ? <div className={styles.previewNotice} role="status">{status === "loading" ? "Chargement des plans du stage…" : <><span>Aperçu indisponible. Le combat n’est pas lancé.</span><button type="button" onClick={() => { setResult(null); onRetry?.(); setRetry(value => value + 1); }}>Réessayer l’aperçu</button></>}</div> : null}
   </div>;
 }

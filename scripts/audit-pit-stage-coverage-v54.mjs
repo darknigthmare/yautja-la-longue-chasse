@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {build} from 'esbuild';
+const result=await build({stdin:{contents:'export * from "./app/game/systems/pitCharacterStages";',resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const api=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
+const entries=api.PIT_CHARACTER_STAGE_COVERAGE;
+const counts=Object.fromEntries([...new Set(entries.map(e=>e.coverage))].map(key=>[key,entries.filter(e=>e.coverage===key).length]));
+const output=process.argv[2]||'docs/v54-character-stage-coverage.json';
+await fs.mkdir(path.dirname(output),{recursive:true});
+await fs.writeFile(output,JSON.stringify({schemaVersion:1,scope:'Every selectable identity, never appearance variant count. Association is not proof that dedicated art is loaded; renderer manifest gates availability.',total:entries.length,counts,entries},null,2)+'\n');
+console.log(JSON.stringify({output,total:entries.length,counts}));

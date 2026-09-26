@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-26T23:47:23.807Z",
+  "url": "http://127.0.0.1:4174",
+  "version": "V54",
+  "browser": "installed Chrome, isolated contexts",
+  "checks": [
+    {
+      "name": "scarface-explicit-stage-recommendation",
+      "arena": "arena-137-concrete-jungle-neonopolis",
+      "sourceLinked": true,
+      "exactGeometryClaim": false
+    },
+    {
+      "name": "arena-137-concrete-jungle-neonopolis-live-duel",
+      "actors": 0,
+      "bitmap": true,
+      "introGatePassed": true
+    },
+    {
+      "name": "machiko-noguchi-explicit-stage-recommendation",
+      "arena": "arena-138-avp-ryushi-prosperity-wells",
+      "sourceLinked": true,
+      "exactGeometryClaim": false
+    },
+    {
+      "name": "colony-native-sheet-missing-retry",
+      "blocked": "/game/sprites/v54/pit-life/colony-watchers.png",
+      "launchBlocked": true,
+      "recovered": true
+    },
+    {
+      "name": "comic-stage-filter",
+      "onlyStage": "arena-138-avp-ryushi-prosperity-wells"
+    },
+    {
+      "name": "arena-138-avp-ryushi-prosperity-wells-live-duel",
+      "actors": 1,
+      "bitmap": true,
+      "introGatePassed": true
+    },
+    {
+      "name": "arena-138-avp-ryushi-prosperity-wells-six-native-poses-and-pause",
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pausedFrame": 134,
+      "saveUnchanged": true
+    },
+    {
+      "name": "arena-016-terrasse-des-jeunes-sangs-live-duel",
+      "actors": 2,
+      "bitmap": true,
+      "introGatePassed": true
+    },
+    {
+      "name": "arena-016-terrasse-des-jeunes-sangs-six-native-poses-and-pause",
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pausedFrame": 151,
+      "saveUnchanged": true
+    },
+    {
+      "name": "independent-parent-bank-retry",
+      "previewReadyWhileParentFailed": true,
+      "launchBlocked": true,
+      "parentRetryVisible": true,
+      "recovered": true
+    },
+    {
+      "name": "arena-035-fosse-des-cent-masques-live-duel",
+      "actors": 2,
+      "bitmap": true,
+      "introGatePassed": true
+    },
+    {
+      "name": "arena-035-fosse-des-cent-masques-six-native-poses-and-pause",
+      "cells": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pausedFrame": 134,
+      "saveUnchanged": true
+    }
+  ],
+  "errors": [],
+  "responses": [],
+  "scope": "Four real UI-selected duels; two dedicated lateral adaptations, three background casts, no combat state injection. Intentional missing PNG request aborted once; six native poses and pause verified."
+}

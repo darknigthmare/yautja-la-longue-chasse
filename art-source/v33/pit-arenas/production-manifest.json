@@ -83698,6 +83698,908 @@
         "evidence": "docs/v43-arena-composition-visual-review.json",
         "digest": "1ffff2829913e51b4b4b25a3b9b38c104e41c0fe2a896db5438e8280706e5c55"
       }
+    },
+    {
+      "number": 137,
+      "catalogueId": "arena-137-concrete-jungle-neonopolis",
+      "assetDirectory": "/game/sprites/v54/pit-arenas/arena-137-concrete-jungle-neonopolis",
+      "name": "Neonopolis — coursives industrielles",
+      "setting": "Ville de la chasse de Scarface : profondeur urbaine et coursive industrielle recomposées en vue latérale.",
+      "wave": "character-lore-reference",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v54-character-lore-shared-library-compositions",
+      "screenReference": {
+        "kind": "game",
+        "workId": "predator-concrete-jungle-2005",
+        "sourceUrl": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator",
+        "fidelityClaim": "publisher-setting-attested-original-lateral-layout"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée au lieu attesté, géométrie latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Nouveau PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v54/pit-arenas/arena-137-concrete-jungle-neonopolis/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v54/pit-stages/source-records.json",
+                    "sha256": "ea3368f65a7484ae2fc9e2d3280114639bd255c73928c5f4179a6b6546909cf3",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v54/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Profondeur atmosphérique indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-distant-haze",
+              "role": "Brume distante partagée, aucun objet suspendu dans le ciel",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.18,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 220,
+                  "width": 1160,
+                  "height": 170
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 40,
+                  "y": 362.209096278795,
+                  "width": 130,
+                  "height": 80
+                },
+                {
+                  "x": 790,
+                  "y": 362.209096278795,
+                  "width": 130,
+                  "height": 80
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-metal-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 760,
+                  "height": 40
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 355,
+                "width": 2172,
+                "height": 41
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-floor.json",
+                    "sha256": "b511bb879eff59392bc21080e581c09893cdc20900eb2aa15874ef3843ccfc79",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 248,
+                      "width": 2172,
+                      "height": 309
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-floor"
+            },
+            {
+              "id": "p4-metal-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 442,
+                  "width": 1280,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 29,
+                "y": 304,
+                "width": 2117,
+                "height": 111
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-fascia.json",
+                    "sha256": "ddd0540ec55d93960303b3138354b5508bee1013f86ab7ccc2e6e545b7db404d",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 190,
+                      "width": 2122,
+                      "height": 379
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-137-concrete-jungle-neonopolis",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v54-arena-137-concrete-jungle-neonopolis-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v54-stage-composition-visual-review.json",
+        "digest": "0f5cdafefc07c8e939b0df35a191b8b69a1d9780f344480c0a835b1c2ea58280"
+      }
+    },
+    {
+      "number": 138,
+      "catalogueId": "arena-138-avp-ryushi-prosperity-wells",
+      "assetDirectory": "/game/sprites/v54/pit-arenas/arena-138-avp-ryushi-prosperity-wells",
+      "name": "Ryushi — Prosperity Wells",
+      "setting": "Colonie d’élevage de Ryushi : bâtiments utilitaires et enclos lointains, réinterprétation latérale pour Machiko et Broken Tusk.",
+      "wave": "character-lore-reference",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v54-character-lore-shared-library-compositions",
+      "screenReference": {
+        "kind": "comic",
+        "workId": "avp-machiko-ryushi",
+        "sourceUrl": "https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/",
+        "fidelityClaim": "publisher-setting-attested-original-lateral-layout"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée au lieu attesté, géométrie latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Nouveau PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v54/pit-arenas/arena-138-avp-ryushi-prosperity-wells/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v54/pit-stages/source-records.json",
+                    "sha256": "2bfbd3eaa4a247d4b7c6367b6e427cc6ec601e54d0ebf21b56782f8f1bf763c3",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v54/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Profondeur atmosphérique indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-distant-haze",
+              "role": "Brume distante partagée, aucun objet suspendu dans le ciel",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.09,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 220,
+                  "width": 1160,
+                  "height": 170
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -62,
+                  "y": 80,
+                  "width": 100,
+                  "height": 350
+                },
+                {
+                  "x": 922,
+                  "y": 80,
+                  "width": 100,
+                  "height": 350
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 32,
+                  "y": 388.452451269935,
+                  "width": 90,
+                  "height": 50
+                },
+                {
+                  "x": 795,
+                  "y": 383.14294152392205,
+                  "width": 108,
+                  "height": 57
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-earth-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 800,
+                  "height": 47
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 341,
+                "width": 2172,
+                "height": 109
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/receipt-p4-earth-floor.json",
+                    "sha256": "427110ca5a0f4c1974fa785e90fdd6d21589d8ba499463aa31647dcda7ae37a0",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 132,
+                      "width": 2172,
+                      "height": 502
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/review-p4-earth-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-101-predator-1987-guerrilla-camp/p4-earth-floor"
+            },
+            {
+              "id": "p4-earth-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 453,
+                  "width": 1280,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 15,
+                "y": 285,
+                "width": 1988,
+                "height": 180
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/p4-earth-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/receipt-p4-earth-fascia.json",
+                    "sha256": "184f53c6d68262e2f8f7adff29a88a92894b28b70d50593da3d9cd6df2e4fc37",
+                    "width": 2020,
+                    "height": 779,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 133,
+                      "width": 2006,
+                      "height": 622
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-101-predator-1987-guerrilla-camp/review-p4-earth-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-101-predator-1987-guerrilla-camp/p4-earth-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-138-avp-ryushi-prosperity-wells",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v54-arena-138-avp-ryushi-prosperity-wells-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v54-stage-composition-visual-review.json",
+        "digest": "0f245ec88cab6bd1684e8cd2f6afa3d3af10b5ae52ed2f727d9a289e54cd1af5"
+      }
     }
   ],
   "sharedLibrary": [
@@ -87562,6 +88464,26 @@
             "y": 17,
             "width": 879,
             "height": 1495
+          }
+        }
+      ]
+    },
+    {
+      "id": "arena-001-cercle-de-basalte/p0-a-vault-depth",
+      "sourceCatalogueId": "arena-001-cercle-de-basalte",
+      "sourceAssetId": "p0-a-vault-depth",
+      "frames": [
+        {
+          "path": "/game/sprites/v33/pit-arenas/the-pit/p0-a-vault-depth.png",
+          "sha256": "71a9444ef64661edb4d7a205f0c56167d8563ca33917248c7a574299e0816570",
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": false,
+          "contentBounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
           }
         }
       ]

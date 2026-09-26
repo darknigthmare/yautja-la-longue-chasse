@@ -33,7 +33,7 @@ test("sixteen distinct novice drawings have complete visible bounds and native o
   assert.equal(hashes.size,16);assert.notEqual(cage.novice.left.idle.src,cage.novice.right.idle.src);
 });
 test("stage draws actual modular cage, native novice and earned badge without adult mentor or mirror", () => {
-  const run=cageRoute(), ctx={ save(){},restore(){},translate(){},rotate(){},clearRect(){},fillRect(){},drawImage(...args){this.draws.push(args);},stroke(){},beginPath(){},moveTo(){},lineTo(){},setLineDash(){},arc(){},fill(){},scale(){assert.fail("No native actor mirroring");},draws:[] };
+  const run=cageRoute(), ctx={ globalAlpha:1, ellipse(){}, save(){},restore(){},translate(){},rotate(){},clearRect(){},fillRect(){},drawImage(...args){this.draws.push(args);},stroke(){},beginPath(){},moveTo(){},lineTo(){},setLineDash(){},arc(){},fill(){},scale(){assert.fail("No native actor mirroring");},draws:[] };
   for(const facing of [-1,1]) {
     const state=structuredClone(run.state); state.rival.facing=facing;ctx.draws=[];art.drawYouthScene(ctx,state,{manifest,images},false);
     const sources=ctx.draws.map(call=>call[0].src);

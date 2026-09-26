@@ -1330,15 +1330,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ? selectedMission.biome
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
-        : screen === "title" || screen === "prologue" || screen === "youth-training"
-          ? null
-          : "ship";
+        : screen === "deck" || (shipStationOpen && hubLocation === "deck") ? "ship"
+        : null;
     if (ambience) {
       void audio.startAmbience(ambience, { fadeSeconds: 0.8 });
     } else {
       audio.stopAmbience(0.55);
     }
-  }, [screen, selectedMission]);
+  }, [screen, selectedMission, shipStationOpen, hubLocation]);
 
   useEffect(() => {
     const context: GameMusicContext | null = settingsOpen || screen === "prologue" || screen === "youth-training" ? null
@@ -1354,6 +1353,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
   }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen]);
+
+  useEffect(() => {
+    const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
+    apply();
+    document.addEventListener("visibilitychange", apply);
+    return () => document.removeEventListener("visibilitychange", apply);
+  }, [settingsOpen]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });

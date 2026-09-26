@@ -16,7 +16,7 @@ function fixture() {
   const manifest = { version: 1, actorKind: "youngling", scenes: { arena: { src: src("arena") }, village: { src: src("village") }, redMoon: { src: src("red-moon") } }, blade: { src: src("blade") }, actors: { player: actor("player"), rival: actor("rival") } };
   return { manifest, images };
 }
-function context() { const draws = []; return { draws, save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); } }; }
+function context() { const draws = []; return { draws, globalAlpha: 1, beginPath() {}, ellipse() {}, fill() {}, save() {}, restore() {}, translate() {}, rotate() {}, clearRect() {}, fillRect() {}, drawImage(...args) { draws.push(args); } }; }
 function presentation() { return { phase: "duel", hud: false, vision: "natural-red-orange-yellow", controlEnabled: true, readyGestureProgress: 0, showStartPrompt: false, showReadyPrompt: false, camera: { shot: "arena", progress: 0, blur: 0 }, showTitle: false, title: "Yautja: The Long Hunt", awaitingNextChapter: false,
   groundBlade: { visible: true, x: 454, y: 414 }, actors: [
     { id: "player", actorKind: "youngling", x: 326, y: 414, facing: 1, pose: "idle", poseTick: 0, holdsDetachedBlade: false },

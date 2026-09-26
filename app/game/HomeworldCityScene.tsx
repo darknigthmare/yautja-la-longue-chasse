@@ -16,7 +16,7 @@ import {
   polygonCss,
   type HomeworldPoint,
 } from "./systems/homeworld";
-import { homeworldPropArtPlacement } from "./systems/homeworldCity";
+import { homeworldPropArtPlacement, homeworldBuildingArtPlacement, shouldFadeHomeworldBuilding, shouldFadeHomeworldShip, HOMEWORLD_PLACEMENT_RULES, HOMEWORLD_WAYMARKS, type HomeworldVec2 } from "./systems/homeworldCity";
 import styles from "./HomeworldCity.module.css";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { homeworldNpcModules } from "./systems/homeworldCity";
@@ -59,6 +59,7 @@ const BUILDING_WALLS = {
 } as const;
 
 interface HomeworldCitySceneProps {
+  actorPosition?: HomeworldVec2;
   selectedShipId: ShipId;
   youthWelcome?: boolean;
   activeDoorId: string | null;
@@ -67,7 +68,7 @@ interface HomeworldCitySceneProps {
 }
 
 /** Authored modules remain independent so doors, stations, NPCs and trophies can overlap by depth. */
-const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, activeDoorId, fadedFrontPropIds, trophies, youthWelcome = false }: HomeworldCitySceneProps) {
+const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, activeDoorId, fadedFrontPropIds, trophies, youthWelcome = false, actorPosition }: HomeworldCitySceneProps) {
   const trophyDisplays = homeworldTrophyDisplays(trophies);
   const fadedPropIds = new Set(fadedFrontPropIds.split("|").filter(Boolean));
   return <>
@@ -107,13 +108,20 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
         {district.name}
       </div>
     </div>)}
+    {HOMEWORLD_WAYMARKS.map(mark => <div key={mark.id} className={styles.waymark} data-homeworld-waymark={mark.id} style={{ left: mark.x, top: mark.y }}>
+      <i style={{ transform: `rotate(${mark.angle}deg)` }}>››</i><span>{mark.label}</span>
+    </div>)}
     {HOMEWORLD_BUILDINGS.map((building) => {
       const active = activeDoorId === building.id;
+      const faded = !!actorPosition && shouldFadeHomeworldBuilding(building, actorPosition);
       return <div
         key={building.id}
         className={styles.building}
         data-variant={building.variant}
         data-door-active={active}
+        data-building-id={building.id}
+        data-native-building={!!building.art}
+        data-occluded={faded}
         style={{
           left: building.x - building.width / 2,
           top: building.y - building.height,
@@ -121,15 +129,19 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
           height: building.height,
           zIndex: Math.round(building.y),
           "--building-wall": `url('${BUILDING_WALLS[building.variant]}')`,
+          "--building-fade": HOMEWORLD_PLACEMENT_RULES.buildingFadeOpacity,
         } as CSSProperties}
       >
-        <div className={styles.buildingRoof} />
+        {building.art ? <>
+          <img className={styles.nativeBuildingArt} src={building.art.src} alt="" draggable={false} style={homeworldBuildingArtPlacement(building) ?? undefined} />
+          {active && <i className={styles.nativeDoorLight} />}
+        </> : <><div className={styles.buildingRoof} />
         <div className={styles.buildingFacade} />
         <div className={styles.buildingDoor} data-side={building.doorSide} data-active={active}>
           <i className={styles.buildingDoorLeaf} />
           <img className={styles.buildingDoorFrame} src={WORLD_ART + "v21/door-frame.webp"} alt="" draggable={false} />
           <i className={styles.buildingDoorGlow} />
-        </div>
+        </div></>}
         <span>{building.label}</span>
       </div>;
     })}
@@ -175,7 +187,7 @@ const HomeworldCityScene = memo(function HomeworldCityScene({ selectedShipId, ac
         data-has-station={hasStation}
         style={{ left: point.x, top: point.y, zIndex: Math.round(point.y) }}
       >
-        {point.kind === "ship" && <img className={styles.prop} src={shipProfileAssetPath(selectedShipId)} alt="" draggable={false} />}
+        {point.kind === "ship" && <img className={styles.prop} data-ship-occluded={!!actorPosition && shouldFadeHomeworldShip(point, actorPosition)} src={shipProfileAssetPath(selectedShipId)} alt="" draggable={false} />}
         {hasStation && <img className={`${styles.prop} ${styles.stationProp}`} src={pointArt(point)} alt="" draggable={false} data-station-art="true" />}
         {npc && <HomeworldModularHunter className={styles.wholeNpc} {...homeworldNpcModules(npc.id)} />}
         <span className={styles.pointTag}>{point.kind === "evidence" ? "◇ " : point.kind === "region" ? "↗ " : ""}{youthWelcome && point.kind === "ship" ? "Transports du clan" : point.label}</span>

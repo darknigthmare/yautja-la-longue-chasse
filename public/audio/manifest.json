@@ -1,159 +1,313 @@
 {
   "schemaVersion": 1,
-  "version": "dbed8091a4720f38524d2a4fccf8314c611f8b52bc399c4bcac9d4f83a7b02bf",
+  "version": "8fc91660f981314e26f3da696c7a9f0c8ce1c21bd132cfa8df4e9dacf5332e6f",
   "entries": [
     {
       "id": "ui",
       "category": "sfx",
       "folder": "sfx/ui",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/ui/v54.wav?v=05830b46be4e5976",
+          "mime": "audio/wav",
+          "bytes": 8610,
+          "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "select",
       "category": "sfx",
       "folder": "sfx/select",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/select/v54.wav?v=68771760d2a5810f",
+          "mime": "audio/wav",
+          "bytes": 47584,
+          "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "jump",
       "category": "sfx",
       "folder": "sfx/jump",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/jump/v54.wav?v=b07f7f28dbe2b6eb",
+          "mime": "audio/wav",
+          "bytes": 58346,
+          "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "footstep",
       "category": "sfx",
       "folder": "sfx/footstep",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/footstep/v54.wav?v=d7c8ed478556cf7c",
+          "mime": "audio/wav",
+          "bytes": 23770,
+          "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "slash",
       "category": "sfx",
       "folder": "sfx/slash",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/slash/v54.wav?v=dd4efed6463c40b7",
+          "mime": "audio/wav",
+          "bytes": 52922,
+          "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "plasma",
       "category": "sfx",
       "folder": "sfx/plasma",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/plasma/v54.wav?v=d336712da21eea79",
+          "mime": "audio/wav",
+          "bytes": 59724,
+          "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "scan",
       "category": "sfx",
       "folder": "sfx/scan",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/scan/v54.wav?v=86e2562187736d34",
+          "mime": "audio/wav",
+          "bytes": 33560,
+          "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "cloak-on",
       "category": "sfx",
       "folder": "sfx/cloak-on",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/cloak-on/v54.wav?v=c20114f57d3fb83b",
+          "mime": "audio/wav",
+          "bytes": 84188,
+          "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "cloak-off",
       "category": "sfx",
       "folder": "sfx/cloak-off",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/cloak-off/v54.wav?v=d1b347e76fe796e4",
+          "mime": "audio/wav",
+          "bytes": 84136,
+          "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "mask-on",
       "category": "sfx",
       "folder": "sfx/mask-on",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/mask-on/v54.wav?v=b29adbb030624b3c",
+          "mime": "audio/wav",
+          "bytes": 23092,
+          "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "mask-off",
       "category": "sfx",
       "folder": "sfx/mask-off",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/mask-off/v54.wav?v=6e7cef893466b939",
+          "mime": "audio/wav",
+          "bytes": 39366,
+          "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "weapon-switch",
       "category": "sfx",
       "folder": "sfx/weapon-switch",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/weapon-switch/v54.wav?v=ae907ea016243a48",
+          "mime": "audio/wav",
+          "bytes": 39366,
+          "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "medicomp",
       "category": "sfx",
       "folder": "sfx/medicomp",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/medicomp/v54.wav?v=94f68331a930ddf1",
+          "mime": "audio/wav",
+          "bytes": 30408,
+          "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "netgun",
       "category": "sfx",
       "folder": "sfx/netgun",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/netgun/v54.wav?v=2cd320068b282e8e",
+          "mime": "audio/wav",
+          "bytes": 24740,
+          "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "snare",
       "category": "sfx",
       "folder": "sfx/snare",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/snare/v54.wav?v=3e1304aff0657366",
+          "mime": "audio/wav",
+          "bytes": 63770,
+          "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "enemy-alert",
       "category": "sfx",
       "folder": "sfx/enemy-alert",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/enemy-alert/v54.wav?v=8ed0cbb863886386",
+          "mime": "audio/wav",
+          "bytes": 29114,
+          "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "objective",
       "category": "sfx",
       "folder": "sfx/objective",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/objective/v54.wav?v=371d585b27834066",
+          "mime": "audio/wav",
+          "bytes": 43298,
+          "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "hit",
       "category": "sfx",
       "folder": "sfx/hit",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/hit/v54.wav?v=c9fab9d00656beaa",
+          "mime": "audio/wav",
+          "bytes": 36654,
+          "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "trophy",
       "category": "sfx",
       "folder": "sfx/trophy",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/trophy/v54.wav?v=f58c1995dd144316",
+          "mime": "audio/wav",
+          "bytes": 105884,
+          "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "victory",
       "category": "sfx",
       "folder": "sfx/victory",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/victory/v54.wav?v=c13708e8a33adaa0",
+          "mime": "audio/wav",
+          "bytes": 141164,
+          "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "defeat",
       "category": "sfx",
       "folder": "sfx/defeat",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/sfx/defeat/v54.wav?v=e302f3ee18a421d1",
+          "mime": "audio/wav",
+          "bytes": 123524,
+          "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "ship",
       "category": "ambience",
       "folder": "ambience/ship",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/ship/v54.wav?v=b2ed760f17352aca",
+          "mime": "audio/wav",
+          "bytes": 418994,
+          "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371"
+        }
+      ],
       "fallback": "procedural"
     },
     {

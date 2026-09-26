@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
-import { drawYouthScene, drawYouthDemonstration, getYouthDemonstration, loadYouthArt, youthActorPose, type YouthArtBank } from "./youthTrainingRendering";
+import { drawYouthScene, drawYouthDemonstration, getYouthDemonstration, loadYouthArt, youthActorPose, youthActorSupport, type YouthArtBank } from "./youthTrainingRendering";
+import { youthActionUnavailableReason, youthGamepadHelp } from "./youthTrainingHelp";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { GameAudio } from "./sound";
 import type { ControlBindings } from "./systems/controlBindings";
@@ -143,6 +144,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       canvas.dataset.youthPhase = stateRef.current.phase; canvas.dataset.youthTick = String(stateRef.current.tick); canvas.dataset.youthPaused = String(pausedNow);
       canvas.dataset.youthPositions = `${stateRef.current.player.x.toFixed(2)},${stateRef.current.rival.x.toFixed(2)}`;
       canvas.dataset.youthY = String(stateRef.current.player.y); canvas.dataset.youthPose = youthActorPose(stateRef.current); canvas.dataset.youthAssets = String(bank !== null);
+      canvas.dataset.youthSupportY = String(youthActorSupport(stateRef.current, stateRef.current.player).y);
       canvas.dataset.youthRivalPose = stateRef.current.rival.action; canvas.dataset.youthRivalActionTick = String(stateRef.current.rival.actionTick);
       canvas.dataset.youthCounter = String(getYouthObjective(stateRef.current).counter); canvas.dataset.youthTarget = String(getYouthObjective(stateRef.current).targetX ?? "");
       canvas.dataset.youthFacing = String(stateRef.current.player.facing); canvas.dataset.youthVy = String(stateRef.current.player.vy); canvas.dataset.youthArmed = String(stateRef.current.inputArmed);
@@ -160,11 +162,11 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
     frameId = requestAnimationFrame(render); return () => cancelAnimationFrame(frameId);
   }, [bank, checkpoint, clearInput, pause, reducedMotion, resume, submitProgress]);
   const setTouch = (action: YouthTouchAction, down: boolean, event?: ReactPointerEvent<HTMLButtonElement>) => {
-    if (down) { if (effectivePaused || pendingRef.current) return; if (event) { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); } touchRef.current.add(action); void audioRef.current?.unlock(); }
+    if (down) { if (effectivePaused || pendingRef.current || youthActionUnavailableReason(stateRef.current, action)) return; if (event) { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); } touchRef.current.add(action); void audioRef.current?.unlock(); }
     else touchRef.current.delete(action);
   };
   const pulse = (action: YouthTouchAction) => { if (effectivePaused || pendingRef.current) return; touchRef.current.add(action); void audioRef.current?.unlock(); setTimeout(() => touchRef.current.delete(action), 100); };
-  const touchButton = (action: YouthTouchAction, label: string, title: string) => <button type="button" key={action} aria-label={title} data-youth-action={action} disabled={action === "blade" && (state.milestones["youth-first-blade"] === undefined || isYouthCagePhase(state.phase)) || isYouthPatrolPhase(state.phase) && ["light", "blade", "throw"].includes(action)}
+  const touchButton = (action: YouthTouchAction, label: string, title: string) => <button type="button" key={action} aria-label={title} title={youthActionUnavailableReason(state, action) ?? title} data-youth-action={action} disabled={youthActionUnavailableReason(state, action) !== null}
     onPointerDown={event => setTouch(action, true, event)} onPointerUp={event => setTouch(action, false, event)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)}
     onKeyDown={event => { if ((event.key === "Enter" || event.key === " ") && !event.repeat) { event.preventDefault(); setTouch(action, true); } }}
     onKeyUp={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setTouch(action, false); } }} onBlur={() => setTouch(action, false)}>{label}</button>;
@@ -211,8 +213,8 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
         const buttons = Array.from(event.currentTarget.querySelectorAll<HTMLElement>("button:not(:disabled),input:not(:disabled),[tabindex='0']")); const first = buttons[0], last = buttons[buttons.length - 1];
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
       }}><h2>Formation en pause</h2><p><strong>{objective.title}</strong><br />{objective.instruction}</p><p>Le parcours, le chronomètre et le combat sont arrêtés. Relâchez les commandes avant de reprendre.</p>
-        <div className={styles.commandList}>{TOUCH_ACTIONS.map(([action, label]) => <p key={action}><kbd>{controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)}</kbd><span>{label}</span></p>)}</div>
-        <p>Manette : stick/croix · A saut · X poing · Y lame · B esquive · RB projection · LB interaction · Menu pause.</p>
+        <div className={styles.commandList} data-youth-command-list>{TOUCH_ACTIONS.map(([action, label]) => { const reason = youthActionUnavailableReason(state, action); return <p key={action} data-youth-help-action={action} data-unavailable={reason !== null}><kbd>{reason ? "—" : controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)}</kbd><span>{label}{reason && <> — {reason}</>}</span></p>; })}</div>
+        <p data-youth-gamepad-help>{youthGamepadHelp(state)}</p>
         {props.onOpenSettings && <button type="button" onClick={() => { clearInput(); if (checkpoint()) latestRef.current.onOpenSettings?.(); }}>Réglages et sauvegardes</button>}
         {pending && <button type="button" disabled={saving} onClick={() => void submitProgress()}>Réessayer l’enregistrement</button>}
         <button type="button" disabled={pending || saving} onClick={resume}>Reprendre la formation</button><button type="button" disabled={pending || saving} onClick={() => void exit()}>Enregistrer et revenir au menu</button>

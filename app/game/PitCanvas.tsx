@@ -18,7 +18,8 @@ import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
-import { getPitCombatBitmapArtDefinition, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
+import { getPitCombatBitmapArtDefinition, getPitCombatGroundFootprint, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
+import { drawActorContactShadow } from "./spriteContact";
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -598,6 +599,8 @@ function drawArena(
   canvas.dataset.pitArenaId = state.arenaId;
   canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== pitStageSceneArena(state) ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
   canvas.dataset.pitArenaMissingAssets = String(backdropReport.missingPaths.length);
+  canvas.dataset.pitArenaLifeActors = String(backdropReport.life?.actorsDrawn ?? 0);
+  canvas.dataset.pitArenaLifeFrames = JSON.stringify(backdropReport.life?.nativeFrames ?? []);
   canvas.dataset.pitArenaArtSource = arenaArt?.unavailable ? "unavailable" : arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
   canvas.dataset.pitSceneArenaId = pitStageSceneArena(state);
   canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";
@@ -635,14 +638,15 @@ function drawArena(
     const accent = highContrast ? "#eafcff" : fighterPalette.accent;
     const lean = fighter.phase === "startup" ? fighter.facing * 6 : fighter.phase === "active" ? fighter.facing * 13 : 0;
 
+    const footprint = getPitCombatGroundFootprint(fighterArt, fighter, { simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
+    const elevation = presentation.phase === "fight" ? fighter.y : 0;
+    drawActorContactShadow(context, footprint.x, groundY, footprint.halfWidth, elevation);
     context.save();
-    context.fillStyle = "rgba(0,0,0,.45)";
-    context.beginPath();
-    context.ellipse(fighter.x, groundY + 4, definition.bodyWidth * 0.72, 9, 0, 0, Math.PI * 2);
-    context.fill();
     if (fighter.slot === 0 && leftCosmeticPalette) {
       context.strokeStyle = fighterPalette.primary;
-      context.lineWidth = 3;
+      context.lineWidth = 2;
+      context.beginPath();
+      context.ellipse(footprint.x, groundY + 2, footprint.halfWidth + 4, 4, 0, 0, Math.PI * 2);
       context.stroke();
     }
     context.restore();
@@ -986,8 +990,13 @@ export default function PitCanvas({
   const sceneArenaId = combat ? pitStageSceneArena(combat) : renderedArenaId;
   const arenaArt = sceneBanks.get(sceneArenaId) ?? null;
   const journeyBanks = pitStageJourneyArtIds(renderedArenaId, requestedJourney).map(id => sceneBanks.get(id));
-  const journeyAssetsFailed = Boolean(requestedJourney && journeyBanks.some(bank => bank && (bank.failedPaths.size > 0 || bank.unavailable)));
-  const journeyAssetsReady = journeyBanks.every(bank => bank && !bank.cancelled && !bank.unavailable && bank.failedPaths.size === 0);
+  const sceneAssetsFailed = journeyBanks.some(bank => bank && (bank.failedPaths.size > 0 || bank.unavailable));
+  const journeyAssetsFailed = Boolean(requestedJourney && sceneAssetsFailed);
+  // The loader only inserts requested, decoded images. Count equality avoids passing
+  // mutable banks through opaque functions during React render.
+  const journeyAssetsReady = journeyBanks.every(bank => bank && !bank.cancelled && !bank.unavailable && bank.failedPaths.size === 0
+    && bank.requestedPaths.size > 0 && bank.images.size === bank.requestedPaths.size);
+  const retrySceneArt = useCallback(() => { setSceneBanks(new Map()); setSceneRetry(value => value + 1); }, []);
   useEffect(() => {
     const controller = new AbortController();
     void Promise.all(pitStageJourneyArtIds(renderedArenaId, requestedJourney).map(id => loadPitArenaArt(id, { signal: controller.signal })))
@@ -1723,6 +1732,7 @@ export default function PitCanvas({
       return;
     }
     if (runTransitionPersistence.status === "pending") return;
+    if ((mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady) return;
     if (mode === "arcade") {
       if (!isPitFirstEditionFighterId(leftId)) return;
       const run = createPitArcadeRun(leftId);
@@ -1804,6 +1814,7 @@ export default function PitCanvas({
     descentOptionIndex,
     launchCircuitSnapshot,
     launchLiveMatch,
+    journeyAssetsReady,
     leftId,
     mode,
     rightId,
@@ -2333,7 +2344,8 @@ export default function PitCanvas({
   const matchAssetsPending = combat !== null && (
     suppliedFighterArtFailed ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
-    !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId ||
+    !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
+    arenaArt.requestedPaths.size === 0 || arenaArt.images.size !== arenaArt.requestedPaths.size ||
     combat.fighters.some((fighter, index) => !isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) ||
       fighterArtStatuses?.[index] === "loading")
   );
@@ -2890,6 +2902,8 @@ export default function PitCanvas({
         </div>
 
         <PitSelectionFlow key={mode} ref={selectionFlowRef}
+          onStageRetry={retrySceneArt}
+          stageAssetsPending={(mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady}
           mode={mode} playerId={leftId} opponentId={previewRightId} arenaId={previewArenaId}
           playerVariantId={leftVariantId} opponentVariantId={previewRightId === rightId ? rightVariantId : null}
           onPlayerVariantChange={setLeftVariantId} onOpponentVariantChange={setRightVariantId}
@@ -2907,6 +2921,9 @@ export default function PitCanvas({
           reducedMotion={reducedCameraMotion} highContrast={highContrast}
         />
 
+        {!selectedJourney && (mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady ? <div className={styles.selectionNotice} role={sceneAssetsFailed ? "alert" : "status"} data-pit-scene-assets={sceneAssetsFailed ? "failed" : "loading"}>
+          {sceneAssetsFailed ? <>Un plan du combat manque, même si l’aperçu est prêt. Départ bloqué. <button type="button" onClick={retrySceneArt}>Réessayer les plans du combat</button></> : "Chargement des plans du combat : départ temporairement bloqué."}
+        </div> : null}
         {(((mode === "circuit" || mode === "descent") && runTransitionPersistence.status !== "idle") || activeReplayNotice || (selectedJourney && !journeyAssetsReady)) ? (
           <div className={styles.selectionNotice} data-pit-selection-notice role={runTransitionPersistence.status === "failed" || journeyAssetsFailed ? "alert" : "status"}>
             <div>
@@ -3326,11 +3343,11 @@ export default function PitCanvas({
       <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
         {activeAriaAnnouncement}
       </div>
-      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>{suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong><span>{suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>{suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}{journeyAssetsFailed && <button type="button" onClick={() => setSceneRetry(value => value + 1)}>Réessayer les deux scènes</button>}</div> : null}
+      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>{suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong><span>{suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>{suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}{journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}</div> : null}
       {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
       {arenaArt?.arenaId === sceneArenaId && !arenaArt.cancelled && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? (
         <p className={styles.replayNoticeMatch} role="status" data-pit-arena-warning="unavailable">
-          Décor indisponible ou incomplet : certaines images n’ont pas pu être chargées. Le duel peut continuer ; quittez puis relancez l’arène pour réessayer.
+          Décor indisponible ou incomplet : certaines images n’ont pas pu être chargées. Le duel reste en pause ; réessayez le chargement du décor.
         </p>
       ) : null}
       <div className={styles.combatActions} inert={terminal || menuOpen}>
