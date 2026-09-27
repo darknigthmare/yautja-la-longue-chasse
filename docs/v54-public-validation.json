@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "version": "V54",
+  "checkedAt": "2026-09-27T00:03:54.755Z",
+  "sourceCommit": "c71a08f3e7aeb6dc654cbcaccc591d7cdf4df0a0",
+  "production": {
+    "deploymentId": "dpl_4YYRCvtV3kTHJ66GQfXreNKfQ6EK",
+    "state": "READY",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentUrl": "https://yautja-la-longue-chasse-7gcr6u5an-darknigthmares-projects.vercel.app",
+    "verifiedThrough": "Vercel get_deployment plus real public application and byte-equal asset requests"
+  },
+  "application": {
+    "passed": true,
+    "checks": 57,
+    "reports": [
+      {
+        "group": "ground-contact",
+        "passed": true,
+        "checks": 18,
+        "path": "outputs/qa-commercial-audit/v54/public-pit-grounding/report.json",
+        "sha256": "e65af2305327a934a1940307aeb10c39ad4bf3d546b723b5750eae16c07b6cd9",
+        "names": [
+          "intro-to-combat-native-hold",
+          "intro-to-combat-native-hold",
+          "authored-native-forward-fighting-shuffle",
+          "authored-native-forward-fighting-shuffle",
+          "movement-stop-native-hold",
+          "movement-stop-native-hold",
+          "intro-to-combat-native-hold",
+          "intro-to-combat-native-hold",
+          "authored-native-forward-fighting-shuffle",
+          "uncovered-forward-motion-remains-static",
+          "movement-stop-native-hold",
+          "movement-stop-native-hold",
+          "intro-to-combat-native-hold",
+          "intro-to-combat-native-hold",
+          "uncovered-forward-motion-remains-static",
+          "authored-native-forward-fighting-shuffle",
+          "movement-stop-native-hold",
+          "movement-stop-native-hold"
+        ]
+      },
+      {
+        "group": "homeworld",
+        "passed": true,
+        "checks": 13,
+        "path": "outputs/qa-commercial-audit/v54/public-homeworld-spatial-browser-qa/report.json",
+        "sha256": "d8f9a1fe3d0e6e6827b894d4e21f382354c3a68fd14cffb44c4dcee23fa85f54",
+        "names": [
+          "V54 city entered from a played youth archive, with 19 independent buildings and 12 waymarks",
+          "Atlas freezes movement and traps keyboard focus without opening youth/adult services",
+          "All fourteen district routes are calculated in the live browser and rendered on the atlas",
+          "Placement tab reads real pivots/colliders; complete storage remains byte-identical during atlas use",
+          "Escape returns world focus without leaking the held arrow",
+          "Emulated controller requires neutral, navigates the atlas and closes with B without held-stick spill",
+          "Real keyboard movement reaches the southern loop, acknowledges its visit and displays arrival",
+          "A facade really fades behind the hunter while retaining its ground collision",
+          "Real keyboard route reaches eastern remparts through the continuous city",
+          "Only actual district discoveries changed progression; prologue, equipment, ranks, trophies and adult access are unchanged",
+          "All city prop images load at uniform scale",
+          "390px atlas has no horizontal overflow, readable source/adaptation separation and a working close control",
+          "No browser page error or failed HTTP response throughout the route"
+        ]
+      },
+      {
+        "group": "character-stages",
+        "passed": true,
+        "checks": 12,
+        "path": "D:/CodexQA/yautja-v54/public-character-stages/report.json",
+        "sha256": "ae8a3c1e965d7f6c403eeee6c7692cf4ee8fce2cb613aa83f24771a7563d032d",
+        "names": [
+          "scarface-explicit-stage-recommendation",
+          "arena-137-concrete-jungle-neonopolis-live-duel",
+          "machiko-noguchi-explicit-stage-recommendation",
+          "colony-native-sheet-missing-retry",
+          "comic-stage-filter",
+          "arena-138-avp-ryushi-prosperity-wells-live-duel",
+          "arena-138-avp-ryushi-prosperity-wells-six-native-poses-and-pause",
+          "arena-016-terrasse-des-jeunes-sangs-live-duel",
+          "arena-016-terrasse-des-jeunes-sangs-six-native-poses-and-pause",
+          "independent-parent-bank-retry",
+          "arena-035-fosse-des-cent-masques-live-duel",
+          "arena-035-fosse-des-cent-masques-six-native-poses-and-pause"
+        ]
+      },
+      {
+        "group": "youth-contact-help",
+        "passed": true,
+        "checks": 7,
+        "path": "outputs/qa-commercial-audit/v54/youth/public-contact-help/report.json",
+        "sha256": "5b543615a9911564f35881660d9dae8fef102aee6836d9ff4272980877f63c39",
+        "names": [
+          "dojo-context-help-pause-focus",
+          "physical-jump-and-landing-selects-platform-idle",
+          "airborne-shadow-stays-on-real-platform",
+          "patrol-390x844-context-help-pause-focus",
+          "patrol-640x360-context-help-pause-focus",
+          "cage-390x844-context-help-pause-focus",
+          "cage-640x360-context-help-pause-focus"
+        ]
+      },
+      {
+        "group": "nursery",
+        "passed": true,
+        "checks": 7,
+        "path": "outputs/qa-commercial-audit/v54/youth/public-nursery/report.json",
+        "sha256": "d8d7121c4b549d5d2fc778a94a343f6f7caabe33ae1576b35156a7b287f06cf0",
+        "names": [
+          "new-game-starts-nursery",
+          "ready-hold-release",
+          "pause-input-neutral",
+          "complete-unmodified-duel",
+          "mobile-touch-and-accessibility",
+          "standard-gamepad",
+          "completion-storage-fault"
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "passed": true,
+    "files": 29,
+    "path": "outputs/qa-commercial-audit/v54/public-assets.json",
+    "sha256": "c4fd2ac2081a633e223f10571fc7d8e406337a4c3f4726e8b2cb1aeda842d20d"
+  },
+  "localGates": "docs/v54-validation.json",
+  "scope": [
+    "Fresh isolated Chromium contexts and synthetic QA campaigns only; no personal browser session or user save inspected.",
+    "Four stage-selection duels, three grounded fighter duels, two newly explored city districts, atlas, training support/help and a new nursery campaign were tested.",
+    "Homeworld computes all14 routes, but public keyboard exploration here covers the two new districts only.",
+    "Youth contact/help uses a controlled browser clock; no actor coordinate, reward or combat-state injection.",
+    "Controller inputs and mobile viewport are emulated; no physical device or human test panel certification.",
+    "Audio-engine harness passed9 local checks and22 public WAV bytes match; no artistic listening or Safari/iOS claim.",
+    "Full commercial game, all personal stages, complete movesets and adult campaign are not declared finished."
+  ],
+  "relatedVisualEvidence": [
+    "outputs/qa-commercial-audit/v54/public-homeworld-spatial-browser-qa/manifest.json",
+    "D:/CodexQA/yautja-v54/public-character-stages/thumbnail-reviewed.json",
+    "outputs/qa-commercial-audit/v54/youth/public-visual-review.json"
+  ]
+}
