@@ -1,0 +1,109 @@
+{
+  "result": "PASS",
+  "status": "PASS",
+  "release": "V61",
+  "checkedAt": "2026-09-30T19:52:24.642Z",
+  "verified": true,
+  "commit": "c9feb1d0ae4f514ee737380eb786543b00039845",
+  "url": "https://yautja-la-longue-chasse.vercel.app",
+  "gitMainPushVerified": true,
+  "deployment": {
+    "id": "dpl_BVrRZ8ppU9fTwk6gEG62KVmjHt9y",
+    "readyState": "READY",
+    "target": "production",
+    "commit": "c9feb1d0ae4f514ee737380eb786543b00039845",
+    "alias": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-main-darknigthmares-projects.vercel.app"
+    ],
+    "url": "yautja-la-longue-chasse-ef6bbkbb4-darknigthmares-projects.vercel.app",
+    "checkedAt": "2026-09-30T19:43:38.895Z",
+    "createdAt": 1790797035999,
+    "ready": 1790797363756
+  },
+  "publicAssetHashesVerified": true,
+  "publicBrowserVerified": true,
+  "publicNativePngs": 29,
+  "publicNativeBytes": 55366552,
+  "evidence": {
+    "assets": {
+      "file": "work-local/v61/qa/public-served-assets.json",
+      "sha256": "954f3060ba7b513d23a4f52d1367ea28bba7b0fcf4bda2c079afbf2eaa5755c2",
+      "checkedAt": "2026-09-30T19:45:37.749Z",
+      "timeSource": "report",
+      "result": "PASS",
+      "checks": 29
+    },
+    "ambient": {
+      "file": "work-local/v61/qa/public-ambient/report.json",
+      "sha256": "775b3f901bb0efe26cb62023ce3e31d4cabf2c63f577fcee72e1e3bb3ab07ad4",
+      "checkedAt": "2026-09-30T19:49:24.153Z",
+      "timeSource": "report",
+      "result": "PASS",
+      "checks": 13
+    },
+    "story": {
+      "file": "work-local/v61/qa/public-story/report.json",
+      "sha256": "fa8f0ef3e4851d0fd7319e090a0f4d9a04fed973635e70485cc35075e4dab232",
+      "checkedAt": "2026-09-30T19:47:11.835Z",
+      "timeSource": "report",
+      "result": "PASS",
+      "checks": 5
+    },
+    "storyReview": {
+      "file": "docs/v61-public-story-final-review.json",
+      "sha256": "14c28dac44ee42e6e398b278aef3285d5d879d6eabdf161aa11d5aa0ae1d3bd3",
+      "checkedAt": "2026-09-30T19:49:10.363Z",
+      "timeSource": "report",
+      "result": "PASS",
+      "checks": null
+    },
+    "hydra": {
+      "file": "work-local/v61/qa/public-hydra/report.json",
+      "sha256": "94fb7b0c4bf459162183579071b34c886a557155c1afa7f769fe4744173f9534",
+      "checkedAt": "2026-09-30T19:45:37.245Z",
+      "timeSource": "report",
+      "result": "PASS",
+      "checks": 7
+    },
+    "replay": {
+      "file": "work-local/v61/qa/public-replay/report.json",
+      "sha256": "e83c7a774d90fd54e462e0304401418beb583c1acd5aaf4b8a71e03d5893f3ae",
+      "checkedAt": "2026-09-30T19:45:36.203Z",
+      "timeSource": "report-file-mtime",
+      "result": "PASS",
+      "checks": null
+    },
+    "ambientVisualReview": {
+      "file": "docs/v61-public-ambient-visual-review.json",
+      "sha256": "d8c1560c6db54950b52bac4884738a9a38f022b5ca9eee147eb878120404407d",
+      "checkedAt": "2026-09-30T19:51:33.965Z",
+      "result": "PASS",
+      "captures": 20
+    }
+  },
+  "scope": {
+    "ambientStagesPublic": [
+      "arena-144-archie-riverdale",
+      "arena-156-sinestro-earth"
+    ],
+    "conditionalStagesPublic": [
+      "arena-140-bad-blood-pine-barrens",
+      "arena-173-phg-japan",
+      "arena-185-training"
+    ],
+    "hydraIdentityExclusion": true,
+    "replayV9FinalHealth": [
+      960,
+      438
+    ]
+  },
+  "localCompleteGate": "docs/v61-final-qa.json",
+  "limitations": [
+    "Public UI sampling covers the listed stages; the complete 8 ambient and5 conditional local flows are recorded separately.",
+    "Mobile is Chromium emulation.",
+    "Four narrative variants and the workbook lore/scenario gaps remain open.",
+    "No claim that all174 dossiers or522 requests are complete."
+  ]
+}

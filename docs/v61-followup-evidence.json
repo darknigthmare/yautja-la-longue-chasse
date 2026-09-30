@@ -2,7 +2,7 @@
   "release": "V61",
   "sourceSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
   "finalLotComplete": true,
-  "workbookStatus": "local-application-verified-publication-awaiting",
+  "workbookStatus": "published-public-checks-verified",
   "expectedRuntimePngs": 29,
   "expectedNewRuntimePngs": 27,
   "proofFiles": [
@@ -44,7 +44,62 @@
     },
     {
       "path": "docs/v61-final-qa.json",
-      "sha256": "0c7efda8cd2ad3d2a35525a8328ece7035ec1a2fe8310b92702c2989ee738472"
+      "sha256": "902a6c9aab2401a4c10cd245612b8069efff739f3e6a4704a33e707fd0727905"
+    },
+    {
+      "path": "docs/v61-public-story-initial-failure.json",
+      "sha256": "9418968225d547bed121982bdb41ca8d8c4c8b441b9c81f64399c89bd88aabd0",
+      "role": "publication-history-not-final-success"
+    },
+    {
+      "path": "docs/v61-public-css-diagnostic.json",
+      "sha256": "efcb2e0e595e5128c6010fad7758f3ebf96c2d43a0557f4d069d45fa648dbdc0",
+      "role": "publication-history-not-final-success"
+    },
+    {
+      "path": "docs/v61-built-css-gate.json",
+      "sha256": "feb8752dbb622502097f3a5abcceaec0cef09d431a745c8e29cbf92af60baee1",
+      "role": "publication-history-not-final-success"
+    },
+    {
+      "path": "work-local/v61/qa/public-served-assets.json",
+      "sha256": "954f3060ba7b513d23a4f52d1367ea28bba7b0fcf4bda2c079afbf2eaa5755c2",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "work-local/v61/qa/public-ambient/report.json",
+      "sha256": "775b3f901bb0efe26cb62023ce3e31d4cabf2c63f577fcee72e1e3bb3ab07ad4",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "work-local/v61/qa/public-story/report.json",
+      "sha256": "fa8f0ef3e4851d0fd7319e090a0f4d9a04fed973635e70485cc35075e4dab232",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "docs/v61-public-story-final-review.json",
+      "sha256": "14c28dac44ee42e6e398b278aef3285d5d879d6eabdf161aa11d5aa0ae1d3bd3",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "work-local/v61/qa/public-hydra/report.json",
+      "sha256": "94fb7b0c4bf459162183579071b34c886a557155c1afa7f769fe4744173f9534",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "work-local/v61/qa/public-replay/report.json",
+      "sha256": "e83c7a774d90fd54e462e0304401418beb583c1acd5aaf4b8a71e03d5893f3ae",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "docs/v61-public-ambient-visual-review.json",
+      "sha256": "d8c1560c6db54950b52bac4884738a9a38f022b5ca9eee147eb878120404407d",
+      "role": "final-public-validation"
+    },
+    {
+      "path": "docs/v61-publication-proof.json",
+      "sha256": "9d319ccbe637f3ac11900ba259fceb2c8afafa1d09e2a340d9e566ad96223ac6",
+      "role": "final-publication-proof"
     }
   ],
   "stageStatuses": [
@@ -94,8 +149,53 @@
     }
   ],
   "publication": {
-    "verified": false
+    "verified": true,
+    "commit": "c9feb1d0ae4f514ee737380eb786543b00039845",
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "deploymentId": "dpl_BVrRZ8ppU9fTwk6gEG62KVmjHt9y",
+    "publicAssetHashesVerified": true,
+    "publicBrowserVerified": true,
+    "publicNativePngs": 29,
+    "scope": {
+      "ambientStagesPublic": [
+        "arena-144-archie-riverdale",
+        "arena-156-sinestro-earth"
+      ],
+      "conditionalStagesPublic": [
+        "arena-140-bad-blood-pine-barrens",
+        "arena-173-phg-japan",
+        "arena-185-training"
+      ],
+      "hydraIdentityExclusion": true,
+      "replayV9FinalHealth": [
+        960,
+        438
+      ]
+    },
+    "limitations": [
+      "Public UI sampling covers the listed stages; the complete 8 ambient and5 conditional local flows are recorded separately.",
+      "Mobile is Chromium emulation.",
+      "Four narrative variants and the workbook lore/scenario gaps remain open.",
+      "No claim that all174 dossiers or522 requests are complete."
+    ]
   },
   "additionalOpenRows": [],
-  "checkedAt": "2026-09-30T19:15:53.435Z"
+  "checkedAt": "2026-09-30T19:53:37.608Z",
+  "publicationHistory": [
+    {
+      "path": "docs/v61-public-story-initial-failure.json",
+      "result": "FAIL",
+      "commit": "9e0984f1ff87e737854bed2e2e523746727744c8"
+    },
+    {
+      "path": "docs/v61-public-css-diagnostic.json",
+      "result": "PUBLIC_CSS_MISMATCH_CONFIRMED",
+      "commit": null
+    },
+    {
+      "path": "docs/v61-built-css-gate.json",
+      "result": "PASS",
+      "commit": null
+    }
+  ]
 }

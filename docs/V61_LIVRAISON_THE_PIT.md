@@ -12,7 +12,9 @@ Les figurants de Riverdale traversent une ouverture masquée au bon plan et rest
 
 ## Preuves et limites
 
-Les étapes restent distinctes : audit des PNG, rendu isolé et inspection des captures, parcours réels roster → stage → duel, builds, publication puis contrôles du site public. Le bilan final local est dans `docs/v61-final-qa.json`. La preuve de publication est conservée séparément lorsqu’elle est achevée. Les captures de travail et rapports détaillés restent sous `work-local/v61/qa/`.
+Les étapes restent distinctes : audit des PNG, rendu isolé et inspection des captures, parcours réels roster → stage → duel, builds, publication puis contrôles du site public. Le bilan final local est dans `docs/v61-final-qa.json` et la preuve publique finale dans `docs/v61-publication-proof.json`. Les captures de travail et rapports détaillés restent sous `work-local/v61/qa/`.
+
+La publication corrigée du commit `c9feb1d0ae4f514ee737380eb786543b00039845` est READY sur [le jeu public](https://yautja-la-longue-chasse.vercel.app). Après ce déploiement, les 29 PNG publics ont retrouvé leurs empreintes exactes ; les parcours ambiants Riverdale/Sinestro, les réactions de Pine Barrens/Japon/entraînement, l’exclusion Hydra et le replay historique V9 ont passé leurs recettes publiques. Les essais incluent pause, affichage mobile émulé, réduction des mouvements et récupération après erreur réseau simulée. Le premier défaut public de CSS est conservé et sa correction vérifiée séparément ; la nouvelle compilation bloque désormais si les règles critiques du HUD manquent. Les 1 913 tests locaux restent tous passants. Le périmètre public est un échantillon explicite, pas une certification visuelle de tous les stages du jeu.
 
 Le classeur original V54 est inchangé. Le suivi séparé `THE_PIT_STAGES_V61_SUIVI.xlsx` distingue animations intégrées, adaptations et exigences encore ouvertes. **Ce lot ne clôt pas les 174 dossiers / 522 événements.** La fidélité 1:1 n’est pas déclarée lorsque les références ne la démontrent pas.
 
