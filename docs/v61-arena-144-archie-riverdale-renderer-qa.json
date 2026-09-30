@@ -1,0 +1,4471 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-144-archie-riverdale",
+  "checkedAt": "2026-09-30T19:04:59.980Z",
+  "compositionDigest": "b646eed9f0d9478ca1e05acb529b3b3b8b8c62e098e1e7c912180183e7103621",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 144,
+      "catalogueId": "arena-144-archie-riverdale",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-144-archie-riverdale",
+      "name": "Riverdale — rue du dernier été",
+      "setting": "Rue de Riverdale recomposée en décor latéral pour le crossover Archie.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "90e6ac6798ac7924c7be80796b68d8c5d3a46ec94ac8c175bb5e1397e94a5fac",
+      "screenReference": {
+        "kind": "comic",
+        "workId": "archie-vs-predator",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://archiecomics.com/preview-the-archie-comics-on-sale-today-including-archie-vs-sharknado-1-72215/"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "urban-roof",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+          "crop": {
+            "x": 199,
+            "y": 0,
+            "width": 763,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1522,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-144-archie-riverdale/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "c4871d650a8258a7e4f36c267a3f4bbd37369c18330e363f956bc12212bc89cf",
+                    "width": 1916,
+                    "height": 821,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1916,
+                      "height": 821
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.82,
+              "opacity": 0.6,
+              "placements": [
+                {
+                  "x": 85,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                },
+                {
+                  "x": 785,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol pavement OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-139-batman-gotham-rooftops/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-144-archie-riverdale",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-144-archie-riverdale-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "3f1d93820114ad02e0dccfe4df5e036315341eae0bde5bb7959d07903609fae7"
+      }
+    },
+    "life": {
+      "stageId": "arena-144-archie-riverdale",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Enseigne du diner — tissu et chaînes",
+          "placement": {
+            "x": 388,
+            "bottom": 257,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "sha256": "80a242611cb94ef9ac9bffc3f8c339911d5dd763a7088c764cf287dda635af3f",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                190,
+                250
+              ],
+              "alphaBounds": [
+                162,
+                118,
+                254,
+                290
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                132,
+                113,
+                303,
+                300
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                99,
+                105,
+                328,
+                301
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                190,
+                208
+              ],
+              "alphaBounds": [
+                140,
+                82,
+                272,
+                302
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                247
+              ],
+              "alphaBounds": [
+                113,
+                80,
+                269,
+                319
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                102,
+                82,
+                250,
+                302
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ambulance anonyme — suspension et roues",
+          "placement": {
+            "x": 715,
+            "bottom": 389,
+            "height": 165,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "sha256": "9cfe07467024e40039538e813160f30127be624a850f89e32a360c6f187c04b0",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                293,
+                401
+              ],
+              "alphaBounds": [
+                60,
+                195,
+                426,
+                208
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                280.5,
+                401
+              ],
+              "alphaBounds": [
+                48,
+                198,
+                426,
+                205
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268.75,
+                401
+              ],
+              "alphaBounds": [
+                35,
+                196,
+                427,
+                207
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                292.5,
+                307
+              ],
+              "alphaBounds": [
+                60,
+                106,
+                426,
+                203
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                279.75,
+                307.5
+              ],
+              "alphaBounds": [
+                47,
+                106,
+                427,
+                204
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                307
+              ],
+              "alphaBounds": [
+                36,
+                103,
+                426,
+                206
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Habitants adultes — fuite derrière la vitrine",
+          "placement": {
+            "x": 466,
+            "bottom": 319,
+            "height": 49,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "idleVisibility": "hidden",
+          "travelX": [
+            400,
+            535
+          ],
+          "clipWorld": {
+            "x": 425,
+            "y": 279,
+            "width": 84,
+            "height": 43
+          },
+          "opacity": 0.65,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "sha256": "6edbcafc9e4cc0089c9b49eddffa0a161ec77293e8a848001ddae2a5a26b6118",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                288.5,
+                463
+              ],
+              "alphaBounds": [
+                33,
+                66,
+                434,
+                397
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                210.5,
+                462
+              ],
+              "alphaBounds": [
+                28,
+                65,
+                385,
+                397
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                186,
+                463
+              ],
+              "alphaBounds": [
+                53,
+                66,
+                378,
+                397
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                251,
+                444
+              ],
+              "alphaBounds": [
+                33,
+                41,
+                441,
+                403
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                252.5,
+                435
+              ],
+              "alphaBounds": [
+                41,
+                38,
+                394,
+                397
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                438
+              ],
+              "alphaBounds": [
+                26,
+                43,
+                450,
+                395
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+      "sha256": "80a242611cb94ef9ac9bffc3f8c339911d5dd763a7088c764cf287dda635af3f",
+      "bytes": 1721904,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8280016581217448,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            118,
+            254,
+            290
+          ],
+          "contentSha256": "b5bb04977cd25ac4b898866993310d0935d465d3a86dfebb42167cf0ebcdd9ae",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            132,
+            113,
+            303,
+            300
+          ],
+          "contentSha256": "6d6d21ecbbb50bb048682ccf8666a95b4cc1d63e3f042406b44f69e893c6b553",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            105,
+            328,
+            301
+          ],
+          "contentSha256": "d834c3db14f98a300bfadbf2987e683c9e5b716a08ea372c6f8c20463850871e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            140,
+            82,
+            272,
+            302
+          ],
+          "contentSha256": "fc3ff2b264568860edfc8580c117d06d0f545a7a48741371f1980e51deb91d71",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            80,
+            269,
+            319
+          ],
+          "contentSha256": "76175298370cea93a5bc2ad392eb7615b166b2d2da68a5e0141a18d606a7ca14",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            82,
+            250,
+            302
+          ],
+          "contentSha256": "8de7be46dfb1cded9245d97beac6f0c71cd1725f9c6897b6f820b09921bab6c8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-144-archie-riverdale.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+      "sha256": "9cfe07467024e40039538e813160f30127be624a850f89e32a360c6f187c04b0",
+      "bytes": 1594160,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7685286204020182,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            195,
+            426,
+            208
+          ],
+          "contentSha256": "0c443fac9541097bc9718a9f3ebc313710f3875cc9ccf9c9e3b59a88df5f2a02",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            198,
+            426,
+            205
+          ],
+          "contentSha256": "5195f64ba55c806d5d733f2f9ec0e4b200722d25c9b3c9ae3314defa8390e99a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            196,
+            427,
+            207
+          ],
+          "contentSha256": "d78096c64e50432c912445b4d0897e4fb8bd26a5441499f2b909ae2c1ad14842",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            106,
+            426,
+            203
+          ],
+          "contentSha256": "bfe1d487a7aec321aef2c91aa0413843776d810bf00c106bfcc8972150a24434",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            106,
+            427,
+            204
+          ],
+          "contentSha256": "f1eb46ffc1711ee70667a8a3d171fa6693931b55d44b11d5bcdafa642c97c5d3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            103,
+            426,
+            206
+          ],
+          "contentSha256": "701e3d9f00764c256d17b78498eb24727ab732a8b9e6de01a785dbde6f74c010",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-144-archie-riverdale.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+      "sha256": "6edbcafc9e4cc0089c9b49eddffa0a161ec77293e8a848001ddae2a5a26b6118",
+      "bytes": 1939237,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.736132303873698,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            66,
+            434,
+            397
+          ],
+          "contentSha256": "8e36d8a413fffd6c03b3a6c8c39d88006990a4e3ab551da09bd9d941c8e9c26a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            65,
+            385,
+            397
+          ],
+          "contentSha256": "95b964b34522a862eb842a0c8655c386a77fce72cf4b6599e58e491d9610fea5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            66,
+            378,
+            397
+          ],
+          "contentSha256": "b9e3f8ed05f118b3212b391ee7afe6a39dc0bc14aef72456a8707d07cbbdd73f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            41,
+            441,
+            403
+          ],
+          "contentSha256": "4143a8ff3feac198fed45566b1ae8c157989dc788ab1dd807b113b65dda1c9ee",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            38,
+            394,
+            397
+          ],
+          "contentSha256": "ab68f8bb5bfdacda4cb4d7d4aba0240cfa509612c3a4081cc7449770437c486e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            26,
+            43,
+            450,
+            395
+          ],
+          "contentSha256": "e4abb40d54a5fec2efb11e374d6fbc6a0380e1ad30634ee29e326b59575d69ec",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-144-archie-riverdale.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            396.155,
+            256.7075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            730.5125,
+            391.6775
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            396.155,
+            256.7075
+          ],
+          "pivot": [
+            396.155,
+            256.7075
+          ],
+          "visibleBounds": [
+            390.84279296874996,
+            231.66423828125,
+            48.189306640625,
+            55.019287109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            730.5125,
+            391.6775
+          ],
+          "pivot": [
+            730.5125,
+            391.6775
+          ],
+          "visibleBounds": [
+            653.7351318359375,
+            323.79708007812496,
+            140.37407226562502,
+            68.53945312500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            375.705,
+            256.7075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            710.0625,
+            391.6775
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            375.705,
+            256.7075
+          ],
+          "pivot": [
+            375.705,
+            256.7075
+          ],
+          "visibleBounds": [
+            370.39279296875,
+            231.66423828125,
+            48.189306640625,
+            55.019287109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            710.0625,
+            391.6775
+          ],
+          "pivot": [
+            710.0625,
+            391.6775
+          ],
+          "visibleBounds": [
+            633.2851318359375,
+            323.79708007812496,
+            140.37407226562502,
+            68.53945312500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388.92,
+            257.13
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            712.6500000000001,
+            387.81
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388.92,
+            257.13
+          ],
+          "pivot": [
+            388.92,
+            257.13
+          ],
+          "visibleBounds": [
+            383.776640625,
+            232.88273437499998,
+            46.6576171875,
+            53.2705078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            712.6500000000001,
+            387.81
+          ],
+          "pivot": [
+            712.6500000000001,
+            387.81
+          ],
+          "visibleBounds": [
+            638.3129882812501,
+            322.0871484375,
+            135.91230468749998,
+            66.36093749999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            721.4625,
+            392.015625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "pivot": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "visibleBounds": [
+            380.13181640625,
+            231.21990234374994,
+            48.42495117187501,
+            55.28833007812501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            721.4625,
+            392.015625
+          ],
+          "pivot": [
+            721.4625,
+            392.015625
+          ],
+          "visibleBounds": [
+            644.3096923828125,
+            323.803271484375,
+            141.060498046875,
+            68.874609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            397.2,
+            258.3
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            691.5,
+            377.1
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            397.2,
+            258.3
+          ],
+          "pivot": [
+            397.2,
+            258.3
+          ],
+          "visibleBounds": [
+            392.52421875,
+            236.25703125,
+            42.416015625,
+            48.427734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            691.5,
+            377.1
+          ],
+          "pivot": [
+            691.5,
+            377.1
+          ],
+          "visibleBounds": [
+            623.9208984375,
+            317.351953125,
+            123.556640625,
+            60.328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            721.9450197450001,
+            387.767364
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "pivot": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "visibleBounds": [
+            379.9715382215624,
+            226.66882896093747,
+            48.51614560546876,
+            55.392449707031254
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            721.9450197450001,
+            387.767364
+          ],
+          "pivot": [
+            721.9450197450001,
+            387.767364
+          ],
+          "visibleBounds": [
+            644.6469170594531,
+            319.4265521835937,
+            141.32614482421877,
+            69.00431484375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-start",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            400,
+            319
+          ],
+          "visible": true,
+          "travelX": 400,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            400,
+            319
+          ],
+          "pivot": [
+            400,
+            319
+          ],
+          "visibleBounds": [
+            375.5478515625,
+            281.005859375,
+            41.53515625,
+            37.994140625
+          ],
+          "expectedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "observedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-end",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 5,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            535,
+            319
+          ],
+          "visible": true,
+          "travelX": 535,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 5,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            535,
+            319
+          ],
+          "pivot": [
+            535,
+            319
+          ],
+          "visibleBounds": [
+            516.6728515625,
+            281.197265625,
+            43.06640625,
+            37.802734375
+          ],
+          "expectedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "observedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            468.0672268907563,
+            319
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            468.0672268907563,
+            319
+          ],
+          "pivot": [
+            468.0672268907563,
+            319
+          ],
+          "visibleBounds": [
+            447.2039456407563,
+            280.431640625,
+            42.205078125,
+            38.568359375
+          ],
+          "expectedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "observedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            396.155,
+            256.7075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            730.5125,
+            391.6775
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            478.0237394957983,
+            320.1025
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            396.155,
+            256.7075
+          ],
+          "pivot": [
+            396.155,
+            256.7075
+          ],
+          "visibleBounds": [
+            390.84279296874996,
+            231.66423828125,
+            48.189306640625,
+            55.019287109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            730.5125,
+            391.6775
+          ],
+          "pivot": [
+            730.5125,
+            391.6775
+          ],
+          "visibleBounds": [
+            653.7351318359375,
+            323.79708007812496,
+            140.37407226562502,
+            68.53945312500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            478.0237394957983,
+            320.1025
+          ],
+          "pivot": [
+            478.0237394957983,
+            320.1025
+          ],
+          "visibleBounds": [
+            456.6910344176733,
+            280.66635253906253,
+            43.1546923828125,
+            39.4361474609375
+          ],
+          "expectedClip": [
+            433.9875,
+            279.2025,
+            85.89,
+            43.9675
+          ],
+          "observedClip": [
+            433.9875,
+            279.2025,
+            85.89,
+            43.9675
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            375.705,
+            256.7075
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            710.0625,
+            391.6775
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            457.5737394957983,
+            320.1025
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            375.705,
+            256.7075
+          ],
+          "pivot": [
+            375.705,
+            256.7075
+          ],
+          "visibleBounds": [
+            370.39279296875,
+            231.66423828125,
+            48.189306640625,
+            55.019287109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            710.0625,
+            391.6775
+          ],
+          "pivot": [
+            710.0625,
+            391.6775
+          ],
+          "visibleBounds": [
+            633.2851318359375,
+            323.79708007812496,
+            140.37407226562502,
+            68.53945312500001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            457.5737394957983,
+            320.1025
+          ],
+          "pivot": [
+            457.5737394957983,
+            320.1025
+          ],
+          "visibleBounds": [
+            436.2410344176733,
+            280.66635253906253,
+            43.1546923828125,
+            39.4361474609375
+          ],
+          "expectedClip": [
+            413.5375,
+            279.2025,
+            85.89,
+            43.9675
+          ],
+          "observedClip": [
+            413.5375,
+            279.2025,
+            85.89,
+            43.9675
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388.92,
+            257.13
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            712.6500000000001,
+            387.81
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            468.1865546218487,
+            318.51
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388.92,
+            257.13
+          ],
+          "pivot": [
+            388.92,
+            257.13
+          ],
+          "visibleBounds": [
+            383.776640625,
+            232.88273437499998,
+            46.6576171875,
+            53.2705078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            712.6500000000001,
+            387.81
+          ],
+          "pivot": [
+            712.6500000000001,
+            387.81
+          ],
+          "visibleBounds": [
+            638.3129882812501,
+            322.0871484375,
+            135.91230468749998,
+            66.36093749999999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            468.1865546218487,
+            318.51
+          ],
+          "pivot": [
+            468.1865546218487,
+            318.51
+          ],
+          "visibleBounds": [
+            447.53190618434866,
+            280.32732421875,
+            41.78302734375,
+            38.18267578125
+          ],
+          "expectedClip": [
+            425.55,
+            278.90999999999997,
+            83.16,
+            42.57
+          ],
+          "observedClip": [
+            425.55,
+            278.90999999999997,
+            83.16,
+            42.57
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            721.4625,
+            392.015625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            467.73907563025205,
+            320.090625
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "pivot": [
+            385.46999999999997,
+            256.38562499999995
+          ],
+          "visibleBounds": [
+            380.13181640625,
+            231.21990234374994,
+            48.42495117187501,
+            55.28833007812501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            721.4625,
+            392.015625
+          ],
+          "pivot": [
+            721.4625,
+            392.015625
+          ],
+          "visibleBounds": [
+            644.3096923828125,
+            323.803271484375,
+            141.060498046875,
+            68.874609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            467.73907563025205,
+            320.090625
+          ],
+          "pivot": [
+            467.73907563025205,
+            320.090625
+          ],
+          "visibleBounds": [
+            446.30205414587704,
+            280.46163574218747,
+            43.3657177734375,
+            39.628989257812506
+          ],
+          "expectedClip": [
+            423.4875,
+            278.99062499999997,
+            86.31,
+            44.182500000000005
+          ],
+          "observedClip": [
+            423.4875,
+            278.99062499999997,
+            86.31,
+            44.182500000000005
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            397.2,
+            258.3
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            691.5,
+            377.1
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            397.2,
+            258.3
+          ],
+          "pivot": [
+            397.2,
+            258.3
+          ],
+          "visibleBounds": [
+            392.52421875,
+            236.25703125,
+            42.416015625,
+            48.427734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            691.5,
+            377.1
+          ],
+          "pivot": [
+            691.5,
+            377.1
+          ],
+          "visibleBounds": [
+            623.9208984375,
+            317.351953125,
+            123.556640625,
+            60.328125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            388,
+            257
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            715,
+            389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            468.0672268907563,
+            319
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            388,
+            257
+          ],
+          "pivot": [
+            388,
+            257
+          ],
+          "visibleBounds": [
+            382.8046875,
+            232.5078125,
+            47.12890625,
+            53.80859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            715,
+            389
+          ],
+          "pivot": [
+            715,
+            389
+          ],
+          "visibleBounds": [
+            639.912109375,
+            322.61328125,
+            137.28515625,
+            67.03125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            468.0672268907563,
+            319
+          ],
+          "pivot": [
+            468.0672268907563,
+            319
+          ],
+          "visibleBounds": [
+            447.2039456407563,
+            280.431640625,
+            42.205078125,
+            38.568359375
+          ],
+          "expectedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "observedClip": [
+            425,
+            279,
+            84,
+            43
+          ],
+          "clipCorrect": true,
+          "alpha": 0.20800000000000002,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-03-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            721.9450197450001,
+            387.767364
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 0,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            467.74378045928563,
+            315.706914
+          ],
+          "visible": true,
+          "travelX": 468.0672268907563,
+          "clipped": true
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "pivot": [
+            385.31977474499996,
+            251.88194399999998
+          ],
+          "visibleBounds": [
+            379.9715382215624,
+            226.66882896093747,
+            48.51614560546876,
+            55.392449707031254
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            721.9450197450001,
+            387.767364
+          ],
+          "pivot": [
+            721.9450197450001,
+            387.767364
+          ],
+          "visibleBounds": [
+            644.6469170594531,
+            319.4265521835937,
+            141.32614482421877,
+            69.00431484375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            467.74378045928563,
+            315.706914
+          ],
+          "pivot": [
+            467.74378045928563,
+            315.706914
+          ],
+          "visibleBounds": [
+            446.26638852569187,
+            276.00329496679683,
+            43.44738459960938,
+            39.70361903320313
+          ],
+          "expectedClip": [
+            423.40886974499995,
+            274.529514,
+            86.47254000000001,
+            44.265705000000004
+          ],
+          "observedClip": [
+            423.40886974499995,
+            274.529514,
+            86.47254000000001,
+            44.265705000000004
+          ],
+          "clipCorrect": true,
+          "alpha": 0.5980000000000001,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 1492,
+      "attachment": [
+        400,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 1512,
+      "attachment": [
+        422.6890756302521,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 1532,
+      "attachment": [
+        445.3781512605042,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 1552,
+      "attachment": [
+        468.0672268907563,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 1572,
+      "attachment": [
+        490.7563025210084,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 1592,
+      "attachment": [
+        513.4453781512605,
+        319
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 2681,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 2701,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 2721,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 2741,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 2761,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 2781,
+      "attachment": [
+        715,
+        389
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 3623,
+      "attachment": [
+        388,
+        257
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 3643,
+      "attachment": [
+        388,
+        257
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 3663,
+      "attachment": [
+        388,
+        257
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 3683,
+      "attachment": [
+        388,
+        257
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 3703,
+      "attachment": [
+        388,
+        257
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 3723,
+      "attachment": [
+        388,
+        257
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\center.png",
+      "sha256": "03c97cfee4f3510364a94bb04207d1bdf019ab6e3c981a726a46d60a247ad225"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\left-corner.png",
+      "sha256": "f96be057dada97112334fb7182af388de9d11cc20840ad8aa30087b8c17e0b36"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\right-corner.png",
+      "sha256": "6702b3553955b20804212ba19c6dc6f27c9cec8a81c1b0d87eb7ddcbb497caee"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\wide.png",
+      "sha256": "4357a894a8518a6667de3ea3fd54b9535e9af355dd36a464f4492420a916b87b"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\close.png",
+      "sha256": "701c6f014bd887d0f2e1f5a66fb9b64a4711dfdcc0859b1c493804a51c4952b1"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\reduced-motion.png",
+      "sha256": "800f2872c3be99a47f227d533d1e21d0812f429dfa9b755071c9cb086a2b8d55"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\high-contrast.png",
+      "sha256": "8170f893fa00f5475e577457d608715fbd28496421b87287688b28fe10f22124"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\actual-game-camera.png",
+      "sha256": "a985e8a67ce7e86b0f8229958d3247f259c41db9723907c9cccefc3cb93a0115"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-0.png",
+      "sha256": "b0e650196ba0c4f0ba0c6ba02b5bc19732f3703596137e6badd374d83b4f42ab"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-1.png",
+      "sha256": "3415e76bb86210a0a744b62506eae07a3486422c7a3b4131c6fd07648bd74138"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-2.png",
+      "sha256": "94b55eb99c08c7187336dba4b10e6299a891c5c7a66e1b4d85339ccf87a18b48"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-3.png",
+      "sha256": "123e6cc3d6b397bfd1f54009de35a585c7523a8f6bb62455a6e80fbeb04a0307"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-4.png",
+      "sha256": "708bdbb5af7b431d029a07bfd2a77a179b1e09d2fd1ef8c29c18136e9a29b40d"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-03-frame-5.png",
+      "sha256": "85f9a16206e5bbb456d442f0798cc56ac394d27c566d221226badb186367e92b"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-0.png",
+      "sha256": "67d10b9c99fc6c9e707f3fc360d2327cd25cd7035d25a90e2d221ed634fc7d46"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-1.png",
+      "sha256": "ab82d00891e1b09974f97d6caae85a86607d8aa636965dcdf029c0b4f976117a"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-2.png",
+      "sha256": "440cc4c35a8448e59724f7838b75d72a6e26a6a7cf64fa3c36a6fbca42dddf04"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-3.png",
+      "sha256": "31b8c95015fac299d9cf57c63262d5614352c1d72838f1048d975134aeffa131"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-4.png",
+      "sha256": "2016c3e7be368892011954b6f9fdf7b467f4e9a1f718257d86713a38abf42e7d"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-02-frame-5.png",
+      "sha256": "43a428b932d658c7fb761f330a55feb018c4cb447c4a07bcb3e02f8833de31b4"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-0.png",
+      "sha256": "54c20170b360c341ba39844f045c6a0bf8f7870357bf4d88d4bf562671c67745"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-1.png",
+      "sha256": "3ccbb68b6ff9daf76da4181c40eb4c75ae8eb83e1a6d5e1d1405f9170ddade32"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-2.png",
+      "sha256": "0236c55fcf6ff8a868eb770572832525eff2e8488c2be338248c5cfa187e9d42"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-3.png",
+      "sha256": "d3fb88ea8ddde27fe325516f1a236a4d1d0e18815e54d39d2fea39dcc80b0c80"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-4.png",
+      "sha256": "dcb5c1135a2da31c30b2d11477fbd3488b1cc4817a3e8c68db68f46604983cf8"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\ambient-ambient-01-frame-5.png",
+      "sha256": "99b1ed7cd87be2f1ae28e960b855420183c7779e5bd2bf20ef2326802951c4e7"
+    },
+    {
+      "name": "travel-ambient-03-start",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-start.png",
+      "sha256": "67d10b9c99fc6c9e707f3fc360d2327cd25cd7035d25a90e2d221ed634fc7d46"
+    },
+    {
+      "name": "travel-ambient-03-end",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-end.png",
+      "sha256": "4009867636c1552f21987113083e5f007b9da20d00be855c1743453bb9b562ca"
+    },
+    {
+      "name": "travel-ambient-03-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-center.png",
+      "sha256": "1236a8efc4737e2b726495e9b16438f0a152bf037a7ae781022750e9bd1863d5"
+    },
+    {
+      "name": "travel-ambient-03-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-left-corner.png",
+      "sha256": "34ae6ed4d23542ef63bae47ab6707fb707741c617589abc31dbfebf376ededc6"
+    },
+    {
+      "name": "travel-ambient-03-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-right-corner.png",
+      "sha256": "3a2a084eb126b4aa17c2f89ff92cc661d927c6a17f17545605da9364ef7fc01a"
+    },
+    {
+      "name": "travel-ambient-03-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-wide.png",
+      "sha256": "db29832a32efe7eaaa50d3b19bf14d2fd869f6e0fc6b65b53f0a2d27971bbab6"
+    },
+    {
+      "name": "travel-ambient-03-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-close.png",
+      "sha256": "5f70ec4291ed62a06f58aa5f8f10c8802954eb58766532687c5eaaa9cd5c9238"
+    },
+    {
+      "name": "travel-ambient-03-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-reduced-motion.png",
+      "sha256": "800f2872c3be99a47f227d533d1e21d0812f429dfa9b755071c9cb086a2b8d55"
+    },
+    {
+      "name": "travel-ambient-03-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-high-contrast.png",
+      "sha256": "6696c012a37fc33bcc93fa4ec05edf36432946f3160dd1c51a6a6a20840b20b4"
+    },
+    {
+      "name": "travel-ambient-03-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\travel-ambient-03-actual-game-camera.png",
+      "sha256": "614b75581434b2080949d85d44940b9d6f18dfb4dcc26a4e906d5cf259c459eb"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-144-archie-riverdale\\mobile-canvas.png",
+      "sha256": "c3a4ce0419eff5eb006b2d350f301fbaeff68cd40ec7f46d1161b7eb834ee5d8"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

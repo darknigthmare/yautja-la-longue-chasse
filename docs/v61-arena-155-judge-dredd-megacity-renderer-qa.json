@@ -1,0 +1,2877 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-155-judge-dredd-megacity",
+  "checkedAt": "2026-09-30T19:05:28.756Z",
+  "compositionDigest": "26da51d0bdc2e8aac43e6ba0ebd442ab7a93fc6335b584ea8f380117b4d0df1d",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 155,
+      "catalogueId": "arena-155-judge-dredd-megacity",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-155-judge-dredd-megacity",
+      "name": "Mega-City One — voie haute",
+      "setting": "Mega-City One : infrastructure urbaine verticale et voies surélevées, adaptation originale.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "e427b892a8c9e4b0d917d6652144bf02cb3ccc7b37d079093d9c3b4a7b9ec1bd",
+      "screenReference": {
+        "kind": "comic",
+        "workId": "dredd-mega-city-one",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://books.google.com/books?id=o6sBDAAAQBAJ",
+          "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "urban-roof",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+          "crop": {
+            "x": 199,
+            "y": 0,
+            "width": 763,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1522,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-155-judge-dredd-megacity/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "2f589111dfbdf2ec52ee7f090e6236948ab2de929c806f733f59d3529e9a5f0b",
+                    "width": 1942,
+                    "height": 809,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1942,
+                      "height": 809
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.82,
+              "opacity": 0.6,
+              "placements": [
+                {
+                  "x": 85,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                },
+                {
+                  "x": 785,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol pavement OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-139-batman-gotham-rooftops/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-155-judge-dredd-megacity",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-155-judge-dredd-megacity-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "468f750e3347b4aefbb16f01dffc2fed5740776b7b5b95968a1824c6eceb7c18"
+      }
+    },
+    "life": {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Judge anonyme — patrouille et radio",
+          "restFrame": 4,
+          "placement": {
+            "x": 230,
+            "bottom": 302,
+            "height": 45,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "sha256": "c7ae027ff69ff88a34d230168a31755db4d8d36bde9cb74da46bd54f9067bd9d",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "reducedMotionFrame": 4,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                314,
+                494
+              ],
+              "alphaBounds": [
+                161,
+                9,
+                285,
+                485
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                307,
+                498
+              ],
+              "alphaBounds": [
+                133,
+                8,
+                220,
+                490
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                230,
+                493
+              ],
+              "alphaBounds": [
+                76,
+                10,
+                298,
+                483
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                318.5,
+                490
+              ],
+              "alphaBounds": [
+                173,
+                7,
+                273,
+                483
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                493
+              ],
+              "alphaBounds": [
+                163,
+                3,
+                197,
+                490
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                213.5,
+                491
+              ],
+              "alphaBounds": [
+                116,
+                7,
+                212,
+                484
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Transport aérien original — stabilisateurs",
+          "placement": {
+            "x": 715,
+            "bottom": 166,
+            "height": 140,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "sha256": "7b649410e19a10a4167f55080a29440794a38858a895eb3f80a62de8d74db9cb",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                274.5,
+                265
+              ],
+              "alphaBounds": [
+                38,
+                193,
+                467,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                266,
+                265
+              ],
+              "alphaBounds": [
+                45,
+                193,
+                451,
+                232
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                265
+              ],
+              "alphaBounds": [
+                36,
+                193,
+                452,
+                219
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                172
+              ],
+              "alphaBounds": [
+                50,
+                100,
+                451,
+                215
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                262,
+                170
+              ],
+              "alphaBounds": [
+                32,
+                98,
+                461,
+                210
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                172
+              ],
+              "alphaBounds": [
+                31,
+                99,
+                457,
+                215
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Écran municipal — réseau de transport",
+          "placement": {
+            "x": 95,
+            "bottom": 299,
+            "height": 47,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "sha256": "3392283955cb4f111b09d7040a905d8b7fd4b001fcdfac4c8abeb8b071c108f9",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                497
+              ],
+              "alphaBounds": [
+                162,
+                0,
+                252,
+                497
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                496
+              ],
+              "alphaBounds": [
+                130,
+                8,
+                252,
+                488
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                222,
+                495
+              ],
+              "alphaBounds": [
+                97,
+                8,
+                253,
+                487
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                287.5,
+                495
+              ],
+              "alphaBounds": [
+                163,
+                6,
+                251,
+                489
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                496
+              ],
+              "alphaBounds": [
+                131,
+                7,
+                251,
+                489
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                222.5,
+                495
+              ],
+              "alphaBounds": [
+                98,
+                8,
+                252,
+                487
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+      "sha256": "c7ae027ff69ff88a34d230168a31755db4d8d36bde9cb74da46bd54f9067bd9d",
+      "bytes": 1883288,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7802689870198568,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            161,
+            9,
+            285,
+            485
+          ],
+          "contentSha256": "3f5cf5b3ecd4149a3d291d17a40923f1bb452518019d7bf6ef4b5c3d22614c6c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            133,
+            8,
+            220,
+            490
+          ],
+          "contentSha256": "dbd33d265868301059368e54deb6bd05d84ab0f5ae7fd3c2b4825cd8fd762e69",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            76,
+            10,
+            298,
+            483
+          ],
+          "contentSha256": "a3d4edbaa59a4fdd58df8108363abd0b7456e4e1d7afbdcfaaafb6c248ae7719",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            7,
+            273,
+            483
+          ],
+          "contentSha256": "d78138c691a3b6d4737efe4990286163e5f2306601763855571da8895547f645",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            3,
+            197,
+            490
+          ],
+          "contentSha256": "b5af3fb409a23b9337869ad9afa41e278ed05471502549b36bf2837673f4aa82",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            116,
+            7,
+            212,
+            484
+          ],
+          "contentSha256": "fc611640fab590bee25cf6fa0f70fd6b3728f9f521650a7b3f034a3fff1b24d7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-155-judge-dredd-megacity.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+      "sha256": "7b649410e19a10a4167f55080a29440794a38858a895eb3f80a62de8d74db9cb",
+      "bytes": 1782728,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7283363342285156,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            193,
+            467,
+            223
+          ],
+          "contentSha256": "4b479d2544e741e5ea3eaebb6b594641afab8004db54ac01ccb9296972ddec85",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            45,
+            193,
+            451,
+            232
+          ],
+          "contentSha256": "82330a631465671287ea3d1617c9a7d6b79680a48d1a845bdb47c26d7d2c53a2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            193,
+            452,
+            219
+          ],
+          "contentSha256": "33e4064e8cc649e67896970342e10b4afb683664585ec3c97f281ad1a8aeb6f2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            100,
+            451,
+            215
+          ],
+          "contentSha256": "a3ebad20ea6711c29d4b4b280053ce705edf7aae341fb8e20b3b89b32956c5b8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            98,
+            461,
+            210
+          ],
+          "contentSha256": "9e1d2d602d7fc33fd42d70c91586253c9e1a87e55bb651ad8c6ee88b4c932cfb",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            99,
+            457,
+            215
+          ],
+          "contentSha256": "b0ef5b661fe9de09167cc42ac7a8a9327b61948c04e40bb1beb62d211697b3ef",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-155-judge-dredd-megacity.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+      "sha256": "3392283955cb4f111b09d7040a905d8b7fd4b001fcdfac4c8abeb8b071c108f9",
+      "bytes": 1879867,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6393413543701172,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            0,
+            252,
+            497
+          ],
+          "contentSha256": "923e71b4c09a8cfa8f83edc7e4315f82cce292d8d485c899e7e7ab15fa0f853a",
+          "borderPixels": 3,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            8,
+            252,
+            488
+          ],
+          "contentSha256": "f8e6239d07d7072e093197e39d82d1a0aa872d96d53110eaea802d584eef3912",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            8,
+            253,
+            487
+          ],
+          "contentSha256": "2675108a3fb4ab13edaa533231ded7a09df935981af773cf209c87c315c6784f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            6,
+            251,
+            489
+          ],
+          "contentSha256": "39e30f091da7f0d95ce2233e5d64497495c3516481ac43fb3db1b573a5c3db71",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            7,
+            251,
+            489
+          ],
+          "contentSha256": "272b775ceb98da6ae9b8897d5d0387e9a1a38a1330c38733118289c592cb3ad4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            8,
+            252,
+            487
+          ],
+          "contentSha256": "26858d9f96400ae6db004f7f32d21145a2a478f159bd77ca52f2d667d238e5c7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-155-judge-dredd-megacity.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            715,
+            166
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            230,
+            302
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            95,
+            299
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            715,
+            166
+          ],
+          "pivot": [
+            715,
+            166
+          ],
+          "visibleBounds": [
+            650.33203125,
+            146.3125,
+            127.6953125,
+            60.9765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            230,
+            302
+          ],
+          "pivot": [
+            230,
+            302
+          ],
+          "visibleBounds": [
+            221.5185546875,
+            258.93359375,
+            17.314453125,
+            43.06640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            95,
+            299
+          ],
+          "pivot": [
+            95,
+            299
+          ],
+          "visibleBounds": [
+            83.80078125,
+            253.376953125,
+            23.1328125,
+            45.623046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            730.5125,
+            163.66
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            234.6,
+            302.72
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            96.56250000000001,
+            299.6525
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            730.5125,
+            163.66
+          ],
+          "pivot": [
+            730.5125,
+            163.66
+          ],
+          "visibleBounds": [
+            664.3895019531251,
+            143.52953125,
+            130.56845703125,
+            62.34853515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            234.6,
+            302.72
+          ],
+          "pivot": [
+            234.6,
+            302.72
+          ],
+          "visibleBounds": [
+            225.92772216796877,
+            258.684599609375,
+            17.7040283203125,
+            44.03540039062499
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            96.56250000000001,
+            299.6525
+          ],
+          "pivot": [
+            96.56250000000001,
+            299.6525
+          ],
+          "visibleBounds": [
+            85.11129882812502,
+            253.00293457031248,
+            23.65330078125,
+            46.6495654296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            710.0625,
+            163.66
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            214.15,
+            302.72
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            76.11250000000003,
+            299.6525
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            710.0625,
+            163.66
+          ],
+          "pivot": [
+            710.0625,
+            163.66
+          ],
+          "visibleBounds": [
+            643.939501953125,
+            143.52953125,
+            130.56845703125,
+            62.34853515625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            214.15,
+            302.72
+          ],
+          "pivot": [
+            214.15,
+            302.72
+          ],
+          "visibleBounds": [
+            205.47772216796878,
+            258.684599609375,
+            17.7040283203125,
+            44.03540039062499
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            76.11250000000003,
+            299.6525
+          ],
+          "pivot": [
+            76.11250000000003,
+            299.6525
+          ],
+          "visibleBounds": [
+            64.66129882812503,
+            253.00293457031248,
+            23.65330078125,
+            46.6495654296875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            712.6500000000001,
+            167.04
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            232.5,
+            301.68
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            98.85000000000001,
+            298.71
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            712.6500000000001,
+            167.04
+          ],
+          "pivot": [
+            712.6500000000001,
+            167.04
+          ],
+          "visibleBounds": [
+            648.6287109375,
+            147.549375,
+            126.418359375,
+            60.366796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            232.5,
+            301.68
+          ],
+          "pivot": [
+            232.5,
+            301.68
+          ],
+          "visibleBounds": [
+            224.10336914062498,
+            259.0442578125,
+            17.141308593749997,
+            42.6357421875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            98.85000000000001,
+            298.71
+          ],
+          "pivot": [
+            98.85000000000002,
+            298.71
+          ],
+          "visibleBounds": [
+            87.76277343750002,
+            253.54318359374997,
+            22.901484375,
+            45.16681640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 1.4210854715202004e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            721.4625,
+            162.88312499999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            223.12499999999997,
+            302.62312499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            84.41249999999997,
+            299.540625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            721.4625,
+            162.88312499999998
+          ],
+          "pivot": [
+            721.4625,
+            162.88312499999998
+          ],
+          "visibleBounds": [
+            655.0161621093749,
+            142.65421874999998,
+            131.20693359375002,
+            62.65341796875001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            223.12499999999997,
+            302.62312499999996
+          ],
+          "pivot": [
+            223.12499999999997,
+            302.62312499999996
+          ],
+          "visibleBounds": [
+            214.4103149414062,
+            258.37239257812496,
+            17.7906005859375,
+            44.25073242187501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            84.41249999999997,
+            299.540625
+          ],
+          "pivot": [
+            84.41249999999997,
+            299.540625
+          ],
+          "visibleBounds": [
+            72.90530273437497,
+            252.66294433593748,
+            23.768964843750002,
+            46.8776806640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            691.5,
+            176.4
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            255,
+            298.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            133.5,
+            296.1
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            691.5,
+            176.4
+          ],
+          "pivot": [
+            691.5,
+            176.4
+          ],
+          "visibleBounds": [
+            633.298828125,
+            158.68125,
+            114.92578125,
+            54.87890625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            255,
+            298.8
+          ],
+          "pivot": [
+            255,
+            298.8
+          ],
+          "visibleBounds": [
+            247.36669921875,
+            260.040234375,
+            15.5830078125,
+            38.759765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            133.5,
+            296.1
+          ],
+          "pivot": [
+            133.5,
+            296.1
+          ],
+          "visibleBounds": [
+            123.420703125,
+            255.0392578125,
+            20.81953125,
+            41.060742187500004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            715,
+            166
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            230,
+            302
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            95,
+            299
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            715,
+            166
+          ],
+          "pivot": [
+            715,
+            166
+          ],
+          "visibleBounds": [
+            650.33203125,
+            146.3125,
+            127.6953125,
+            60.9765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            230,
+            302
+          ],
+          "pivot": [
+            230,
+            302
+          ],
+          "visibleBounds": [
+            221.5185546875,
+            258.93359375,
+            17.314453125,
+            43.06640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            95,
+            299
+          ],
+          "pivot": [
+            95,
+            299
+          ],
+          "visibleBounds": [
+            83.80078125,
+            253.376953125,
+            23.1328125,
+            45.623046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            721.9450197450001,
+            158.20335899999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 4,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            222.66904474499995,
+            298.206519
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            83.69531974499994,
+            295.118214
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            721.9450197450001,
+            158.20335899999998
+          ],
+          "pivot": [
+            721.9450197450001,
+            158.20335899999998
+          ],
+          "visibleBounds": [
+            655.3735493348438,
+            137.93635743749996,
+            131.4540240234375,
+            62.7714076171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 4,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            222.66904474499995,
+            298.206519
+          ],
+          "pivot": [
+            222.66904474499995,
+            298.206519
+          ],
+          "visibleBounds": [
+            213.93794808972652,
+            253.87245308203129,
+            17.824104052734377,
+            44.33406591796875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            83.69531974499994,
+            295.118214
+          ],
+          "pivot": [
+            83.69531974499994,
+            295.118214
+          ],
+          "visibleBounds": [
+            72.16645199109368,
+            248.1522527402344,
+            23.8137268359375,
+            46.96596125976563
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 1424,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 1444,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 1464,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 1484,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 1504,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 1524,
+      "attachment": [
+        715,
+        166
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 2372,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 2392,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 2412,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 2432,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 2452,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 2472,
+      "attachment": [
+        95,
+        299
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 3617,
+      "attachment": [
+        230,
+        302
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 3637,
+      "attachment": [
+        230,
+        302
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 3657,
+      "attachment": [
+        230,
+        302
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 3677,
+      "attachment": [
+        230,
+        302
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 3697,
+      "attachment": [
+        230,
+        302
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 3717,
+      "attachment": [
+        230,
+        302
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\center.png",
+      "sha256": "5413b8d63c84638bcf6fe2994bececf27383b88b1ec94c5917802f76c70849da"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\left-corner.png",
+      "sha256": "58b43d87a2017b4286938d081ce8646207e2632f5f389bd32a82bd69e920afac"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\right-corner.png",
+      "sha256": "64d31a9df388fcdb5e39215de3a1f113c6c2bc6a6936d9e4cb7c96dfe584a6be"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\wide.png",
+      "sha256": "2412d2246f82a2208ec3ca58514e2ecbf1b3155bf34ee993162e0395f24502a5"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\close.png",
+      "sha256": "1bfc89525b5e8506cc491c71e993b3012772332a3dff76fa8814a06f3233e15a"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\reduced-motion.png",
+      "sha256": "52279c7900a26ea0cec6e566df33b0544ea64da8c46cbe6ea795a5f320d21f31"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\high-contrast.png",
+      "sha256": "118f190c4dcc1262a15a93ce98f1c96e9b55ed5f39d036df42186d8240ce87b7"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\actual-game-camera.png",
+      "sha256": "691e74a782cfbf680f32cbf5aec51c95101cb49a10cf4a8b6c6df752fa684e63"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-0.png",
+      "sha256": "e272b840d255b130ee6ad0cc90726a3fa7aef138ce0f31cc7d28b6a4a33e6e41"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-1.png",
+      "sha256": "eeec55f1cedb29b7878dc0c4eb3d46ba11f8c460f3b222efe0313e5fc40eb066"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-2.png",
+      "sha256": "037d722594bb86cbbb22dd6ba765f506105ff679370d214809b9e0c5ac411b71"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-3.png",
+      "sha256": "468f7940e89542f83d04f45d54664759d73d5ab22793ab21ef8e2a8703ef4967"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-4.png",
+      "sha256": "231784fee572f2e6fd4c821165fa1a721455394d77d31abc6f4a36feff1b895c"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-02-frame-5.png",
+      "sha256": "4dbfac1b140b3976b7a10ca3933ef1c0a0b295e233f9e5494dfdfe1ccf5944d9"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-0.png",
+      "sha256": "68de7ae83aaf5be3b81a26737b673bd58d5bde8f99569274892043a19bf90ed7"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-1.png",
+      "sha256": "3f3adfc414f28f144a1a23e1fcb57d393b530a7020e77dcfaf8e7b4fa79b021c"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-2.png",
+      "sha256": "13e8501a70113b12b6ed142196b5b7ba995c1d3258609e669088d5f066e8d8e7"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-3.png",
+      "sha256": "7db7fbe52302ffd4935c820177db8f910ef4cd5f014d6b94ce60d844399f9bb2"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-4.png",
+      "sha256": "d75abb7249a6e41577f5fa7dfadde2e5d5ddbc9967018c25aa6b3453fe53fa2c"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-03-frame-5.png",
+      "sha256": "29df421913afa6475fe6d2e1185479733d18476b20ade9471eae7d47ab68493c"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-0.png",
+      "sha256": "c95d8e932c66fd1453220b509afae831aaec24686efc9ad37f59a8d7b30019b7"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-1.png",
+      "sha256": "44a0d21833100491fcef09f35ca8fe12cb7a7673b157a1dcef5332436bcc02c4"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-2.png",
+      "sha256": "f0fa1911cf895efd2da36a552e259ef336b71f0cbab12058834796a41aef1388"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-3.png",
+      "sha256": "f67a7e657f3a1aa2c91cf9b7174c7a79dceb92955c0e2c067aa57c885b595591"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-4.png",
+      "sha256": "68de7ae83aaf5be3b81a26737b673bd58d5bde8f99569274892043a19bf90ed7"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\ambient-ambient-01-frame-5.png",
+      "sha256": "4ff44032db9f5e5ae1d172b5e1169d641cbdf9b19a6359f92857500c0c25a431"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-155-judge-dredd-megacity\\mobile-canvas.png",
+      "sha256": "91e7ae5dae2bf8d45173184c3a7f5ebcc7319859aa14c018e3a97724ebbb1aba"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

@@ -18,6 +18,7 @@ import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourneyDefinition, pitStageSceneArena, pitStageJourneyArtIds } from "./systems/pitStageJourney";
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
+import type { PitStageNarrativeCuesV61 } from "./pitStageStoryDirectorV61";
 import { getPitCombatBitmapArtDefinition, getPitCombatGroundFootprint, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import { drawActorContactShadow } from "./spriteContact";
 import { drawPitCompanion, loadPitCompanionArt, pitCompanionPose, type PitCompanionArtBank } from './pitCompanionArt';
@@ -252,6 +253,8 @@ interface PendingPitRunTransition {
 interface PitCanvasProps {
   /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
   narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId };
+  /** Reserved for an actual scenario controller; current workbook extracts emit no V61 story cue. */
+  narrativeStageCues?: PitStageNarrativeCuesV61;
   onNarrativeComplete?: (result: PitNarrativeResultInput) => void | Promise<void>;
   onOpenNarrativeTrials?: () => void;
   controlBindings: ControlBindings;
@@ -618,6 +621,7 @@ function drawArena(
   companionArt: PitCompanionArtBank | null,
   falconerArt: PitFalconerDroneArtBank | null,
   engineVersion: number = PIT_STATE_VERSION,
+  narrativeCuesV61?: PitStageNarrativeCuesV61,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -635,6 +639,7 @@ function drawArena(
   canvas.dataset.pitArenaFloorScale = getPitArenaLayerTransform(state.arenaId, "P4", camera, reducedMotion).scale.toFixed(4);
 
   const backdropReport = drawPitArenaBackdrop(context, state, camera, arenaArt, { highContrast, reducedMotion, sceneArenaId: pitStageSceneArena(state),
+    roundPresentation: presentation, narrativeCuesV61,
     lifeResultElapsedMs: presentation.phase === 'round-result' || presentation.phase === 'match-result' ? presentation.elapsedMs : undefined });
   canvas.dataset.pitArenaId = state.arenaId;
   canvas.dataset.pitArenaArtStatus = !arenaArt || arenaArt.arenaId !== pitStageSceneArena(state) ? "loading" : arenaArt.unavailable ? "unavailable" : backdropReport.missingPaths.length ? "partial" : "bitmap";
@@ -645,6 +650,15 @@ function drawArena(
   canvas.dataset.pitStageLifeV60Actors = String(backdropReport.stageLifeV60?.actorsDrawn ?? 0);
   canvas.dataset.pitStageLifeV60Events = JSON.stringify(backdropReport.stageLifeV60?.events ?? []);
   canvas.dataset.pitStageLifeV60Missing = JSON.stringify(backdropReport.stageLifeV60?.missingPaths ?? []);
+  canvas.dataset.pitStageLifeV61Stage = backdropReport.stageLifeV61?.stageId ?? "";
+  canvas.dataset.pitStageLifeV61Actors = String(backdropReport.stageLifeV61?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV61Events = JSON.stringify(backdropReport.stageLifeV61?.events ?? []);
+  canvas.dataset.pitStageLifeV61Missing = JSON.stringify(backdropReport.stageLifeV61?.missingPaths ?? []);
+  canvas.dataset.pitStageStoryV61Stage = backdropReport.stageStoryV61?.stageId ?? "";
+  canvas.dataset.pitStageStoryV61Actors = String(backdropReport.stageStoryV61?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageStoryV61Events = JSON.stringify(backdropReport.stageStoryV61?.events ?? []);
+  canvas.dataset.pitStageStoryV61Missing = JSON.stringify(backdropReport.stageStoryV61?.missingPaths ?? []);
+  canvas.dataset.pitStageStoryV61Replaced = JSON.stringify(backdropReport.stageStoryV61?.replacedAmbientEventIds ?? []);
   canvas.dataset.pitArenaArtSource = arenaArt?.unavailable ? "unavailable" : arenaArt?.productionKit ? "openai-v33-independent" : "legacy-bitmap";
   canvas.dataset.pitSceneArenaId = pitStageSceneArena(state);
   canvas.dataset.pitStageSector = state.stageJourney?.sector ?? "neutral";
@@ -1012,6 +1026,7 @@ function roundPresentationAnnouncement(presentation: PitRoundPresentationView, c
 
 export default function PitCanvas({
   narrativeEncounter,
+  narrativeStageCues,
   onNarrativeComplete,
   onOpenNarrativeTrials,
   controlBindings,
@@ -2711,8 +2726,9 @@ export default function PitCanvas({
       companionArt,
       falconerArt,
       playbackReplay?.engineVersion ?? PIT_STATE_VERSION,
+      !playbackReplay && narrativeEncounter?.id === narrativeStageCues?.encounterId ? narrativeStageCues : undefined,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay?.engineVersion]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||

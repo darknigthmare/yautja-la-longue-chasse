@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "reference": {
+    "canvas": [
+      960,
+      540
+    ],
+    "ground": 430,
+    "notes": "Whole native cell heights; world anchors use P0 parallax0.05. Initial measured placements require actual renderer review."
+  },
+  "stages": {
+    "arena-140-bad-blood-pine-barrens": {
+      "supportNotes": "Twig tip joins the visible mid-left pine trunk; scrub/beacon rest on distant clearing at y350–363, not combat floor.",
+      "events": {
+        "ambient-01": {
+          "name": "Papillons nocturnes sur un rameau de pin",
+          "placement": {
+            "x": 270,
+            "bottom": 245,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Broussailles frôlées par une proie hors champ",
+          "placement": {
+            "x": 340,
+            "bottom": 350,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Balise mécanique originale — fumée résiduelle",
+          "placement": {
+            "x": 635,
+            "bottom": 363,
+            "height": 125,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "conditional-guard-after-combat": {
+          "name": "Garde anonyme — observation après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 750,
+            "bottom": 354,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-139-batman-gotham-rooftops": {
+      "supportNotes": "Helicopter stays in open sky; anonymous officer and gargoyle use separate left-side roof supports, behind the fighting plane.",
+      "events": {
+        "ambient-01": {
+          "name": "Hélicoptère de police lointain — rotor",
+          "placement": {
+            "x": 552,
+            "bottom": 143,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Policier anonyme — veille et radio",
+          "placement": {
+            "x": 255,
+            "bottom": 322,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Gargouille — linge au vent",
+          "placement": {
+            "x": 115,
+            "bottom": 325,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-155-judge-dredd-megacity": {
+      "supportNotes": "Anonymous Judge and municipal screen stand on the distant elevated road; original airbus hovers in the sky. One anonymous officer, not a named Dredd or two distinct guards.",
+      "events": {
+        "ambient-01": {
+          "name": "Judge anonyme — patrouille et radio",
+          "restFrame": 4,
+          "placement": {
+            "x": 230,
+            "bottom": 302,
+            "height": 45,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Transport aérien original — stabilisateurs",
+          "placement": {
+            "x": 715,
+            "bottom": 166,
+            "height": 140,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Écran municipal — réseau de transport",
+          "placement": {
+            "x": 95,
+            "bottom": 299,
+            "height": 47,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-142-dead-end-alley": {
+      "supportNotes": "Projected xenomorph shadow is confined to the broad left rear brick panel. Vent cabinet and cable mounting plate attach separate masonry panels. Two anonymous hunters appear only after the match, on the misty rear alley threshold, never on the foreground fighting floor.",
+      "events": {
+        "ambient-01": {
+          "name": "Ombre de xénomorphe — mouvement sur la brique",
+          "opacity": 0.65,
+          "placement": {
+            "x": 230,
+            "bottom": 235,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Ventilation murale — vapeur et gouttes",
+          "placement": {
+            "x": 733,
+            "bottom": 182,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Câble et tissu — souffle de la ruelle",
+          "placement": {
+            "x": 175,
+            "bottom": 130,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "conditional-patrol-after-match": {
+          "name": "Deux chasseurs anonymes — relève après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 500,
+            "bottom": 363,
+            "height": 78,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-156-sinestro-earth": {
+      "supportNotes": "Original yellow constructions occupy separate open-sky pockets below the distant ring. Small conventional turbine stands on the high tower roof at x335/y253, at depth-appropriate height28. The former low roof y407 was hidden by the actual follow camera floor, so it is no longer used. No continuity-certified visitor is implied.",
+      "events": {
+        "ambient-01": {
+          "name": "Construction jaune originale — panneaux mobiles",
+          "opacity": 0.7,
+          "placement": {
+            "x": 415,
+            "bottom": 202,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Extracteur de toiture — rotation des ailettes",
+          "placement": {
+            "x": 335,
+            "bottom": 253,
+            "height": 28,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Halo jaune stable — particules orbitales",
+          "opacity": 0.55,
+          "placement": {
+            "x": 658,
+            "bottom": 221,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          }
+        }
+      }
+    },
+    "arena-144-archie-riverdale": {
+      "supportNotes": "Sign bracket attaches to the wall left of the diner; ambulance tyres contact the distant road. Adult runners are only visible crossing a bounded window, never frozen in a run pose outside it.",
+      "events": {
+        "ambient-01": {
+          "name": "Enseigne du diner — tissu et chaînes",
+          "placement": {
+            "x": 388,
+            "bottom": 257,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Ambulance anonyme — suspension et roues",
+          "placement": {
+            "x": 715,
+            "bottom": 389,
+            "height": 165,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Habitants adultes — fuite derrière la vitrine",
+          "placement": {
+            "x": 466,
+            "bottom": 319,
+            "height": 49,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "idleVisibility": "hidden",
+          "travelX": [
+            400,
+            535
+          ],
+          "clipWorld": {
+            "x": 425,
+            "y": 279,
+            "width": 84,
+            "height": 43
+          },
+          "opacity": 0.65
+        }
+      }
+    },
+    "arena-146-primal-hunt-pilot-ruins": {
+      "notes": "Original environmental mechanisms and vegetation; not verified 1:1 Artifact or fauna. On rear dais, lower moss ledge, and right ribbed stone wall. Review through actual compositor before release.",
+      "events": {
+        "ambient-01": {
+          "name": "Dais ancien — colliers mécaniques",
+          "placement": {
+            "x": 652,
+            "bottom": 247,
+            "height": 48,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-02": {
+          "name": "Fougères sur corniche — souffle humide",
+          "placement": {
+            "x": 579,
+            "bottom": 317,
+            "height": 80,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        },
+        "ambient-03": {
+          "name": "Porte de pierre — iris et poussière",
+          "placement": {
+            "x": 823,
+            "bottom": 304,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          }
+        }
+      }
+    }
+  }
+}

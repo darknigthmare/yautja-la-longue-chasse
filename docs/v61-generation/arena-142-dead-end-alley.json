@@ -1,0 +1,1449 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-142-dead-end-alley",
+  "proposalId": "new-dead-end",
+  "workbookStage": "09_STAGES!A40:N40",
+  "workbookLife": "10_VIE_DES_STAGES!A110:N112",
+  "sourceUrls": [
+    "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure"
+  ],
+  "loreLimits": [
+    "Batman Dead End fan-film setting, not primary Predator cinematic continuity. Exact alley layout original.",
+    "Anonymous patrol after duel only; do not duplicate named Big Red or place hunters during active fight."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-142-dead-end-alley/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-142-dead-end-alley/center.png",
+    "notes": "P0 and renderer viewed: dark wet brick alley, fire escapes, distant central arch, brick panels left/right. Shadow stays on actual rear brick panel; vent/cable physically attach masonry. Postmatch patrol on rear alley ground only."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG animation atlas for the SHADOW of a xenomorph creeping across a distant wall in a wet brick night alley inspired by Batman Dead End. Exactly SIX isolated SMALL full-silhouette drawings arranged3columns2rows1536x1024. A flat dark-charcoal cast-shadow silhouette ONLY, no visible creature surface, no eyes/glow. Recognizable elongated smooth domed head, slender biomechanical biped torso, four short dorsal tubes, exactly two arms and two digitigrade legs, long single curved tail with pointed tip fullycontained. Six different slowcrouchedwalkingposes in left-facing sideview; armslegs coherently alternate; tail gently curls throughsixphases. Anatomically stable adult alien, noextrahead/limbs/tails. Keep total includingtail footprint300wide300high centered every512cell, at least95pixels genuineclearalpha on allfourcellborders. Slightsoftened edge shadow but NO surroundingwall or patch, no puddle/floor/scene, no labels/gridlines. Painted videogame shadowasset, no victim/violence, fully transparent background. Designed to be attached to one rear brick wall, not floating in openair.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-0c9af5dc-880a-4d59-98db-649333ff80b6.png",
+      "workspacePath": "work-local/v61/generated/arena-142-dead-end-alley/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E110"
+      ],
+      "visualNotes": "Viewed six coherent xenomorph shadow poses, elongated dome, one complete tail and intact humanoid limb count. Flat projected shadow only; bind to visible rear brick wall, not sky. Sole faint boundary contact max alpha3 has explicit halo review.",
+      "sha256": "6cb701e33a943640cf2ebdaffc2bad20f73c42d19fb6ac6473ac549bd649e376",
+      "bytes": 1326842,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8079058329264323,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            144,
+            475,
+            313
+          ],
+          "alphaBounds32": [
+            39,
+            146,
+            470,
+            310
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            215,
+            457
+          ],
+          "bodyCenterPivot": [
+            273,
+            457
+          ],
+          "opaquePixelCount": 41122,
+          "contentSha256": "1484da9828873dde9c3b8cc81514d994715f734989c7cca5c6989f4b05360f2d",
+          "margins": [
+            36,
+            144,
+            1,
+            55
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            141,
+            451,
+            318
+          ],
+          "alphaBounds32": [
+            63,
+            143,
+            447,
+            314
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            255,
+            459
+          ],
+          "bodyCenterPivot": [
+            286,
+            459
+          ],
+          "opaquePixelCount": 41640,
+          "contentSha256": "a8db4747171fb8c2862abfca1268bdb229e22863d4eb0730201c43a977cca0c4",
+          "margins": [
+            61,
+            141,
+            0,
+            53
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            143,
+            434,
+            315
+          ],
+          "alphaBounds32": [
+            57,
+            144,
+            430,
+            312
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            238.5,
+            458
+          ],
+          "bodyCenterPivot": [
+            271.5,
+            458
+          ],
+          "opaquePixelCount": 40652,
+          "contentSha256": "df9acbd894e646292db5f09e462a4713a0b4e544c9d345873cf7de8914e456da",
+          "margins": [
+            55,
+            143,
+            23,
+            54
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            106,
+            471,
+            309
+          ],
+          "alphaBounds32": [
+            33,
+            108,
+            468,
+            306
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            244,
+            415
+          ],
+          "bodyCenterPivot": [
+            267,
+            415
+          ],
+          "opaquePixelCount": 43732,
+          "contentSha256": "c7f11c10a72f23f5140487c7b664f582ca578f590b65b16b84a191a6305ae546",
+          "margins": [
+            32,
+            106,
+            9,
+            97
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            108,
+            446,
+            308
+          ],
+          "alphaBounds32": [
+            57,
+            110,
+            444,
+            304
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            260.5,
+            416
+          ],
+          "bodyCenterPivot": [
+            278.5,
+            416
+          ],
+          "opaquePixelCount": 44662,
+          "contentSha256": "2c6378562e4365960e25ffbcb48d1ca61d6c053e93621af8bc5c255a689e6ec8",
+          "margins": [
+            56,
+            108,
+            10,
+            96
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            92,
+            432,
+            324
+          ],
+          "alphaBounds32": [
+            50,
+            94,
+            429,
+            321
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            246,
+            416
+          ],
+          "bodyCenterPivot": [
+            263.5,
+            416
+          ],
+          "opaquePixelCount": 44894,
+          "contentSha256": "969cccf916d25f62d4305b8056b22ff014e274d2bb352072dd89fd0e96c4e729",
+          "margins": [
+            48,
+            92,
+            32,
+            96
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 3,
+          "count": 5
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "edgeHaloReview": {
+        "accepted": true,
+        "notes": "All six drawings visually inspected at native output. Any edge pixels are faint translucent isolated halo (maximum alpha 3/255), with no silhouette or solid form cut; zero edge pixels above alpha32. Exact alpha>2 bounds retained and PNG bytes untouched."
+      }
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Correct this supplied six-frame vent animation atlas without changing its artistic identity. Preserve six distinct steam/drip poses and the same rusty wall vent with drain. CRITICAL: each whole drawing must become substantially smaller, including STEAM. Exactly3columns2rows on1536x1024, six512x512cells. Contain each entire housing, spout, all steam and drops within local x150..360 y120..390. Thus at least120pixels genuine empty alpha top/bottom eachcell and150left/right. Steam must be a tiny wisp close to grille, never reach topedge or rowdivider; end every steam wisp with a natural soft fade wholly within allowed footprint. No atmospheric background halo outside drawing. Fixedhousing consistentallframes. Keep native truealpha, blue/amber wet nightstyle, no labels/grid/background/groundshadow. Every shadow or translucentwisp ends before cellmargin; no clipping.",
+      "referenceNativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-687df7cc-fd19-4ac6-9486-91da29fcf78b.png",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-93387b94-cd7d-4027-a81a-61e7e05b7cd8.png",
+      "workspacePath": "work-local/v61/generated/arena-142-dead-end-alley/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E111"
+      ],
+      "visualNotes": "Viewed corrected native six steam/drip cycles with full vent housing, pipe and individual drops intact. All borders max alpha1; no steam truncation. Anchor on fixed broad cabinet, not moving steam/drip.",
+      "sha256": "cc2d5a3431c18a5e9b3a042659c9e8be3b0e8e4e3e94002f06d3b0b8cd764527",
+      "bytes": 1425576,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8664468129475912,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            117,
+            196,
+            293
+          ],
+          "alphaBounds32": [
+            174,
+            127,
+            193,
+            281
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            290,
+            274
+          ],
+          "bodyCenterPivot": [
+            269.5,
+            410
+          ],
+          "opaquePixelCount": 32717,
+          "contentSha256": "cc0eeb7e8f81c4048dcd73e0a40fd2af662c43e7c1d27dad083ab9a61de32a24",
+          "margins": [
+            172,
+            117,
+            144,
+            102
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            122,
+            195,
+            308
+          ],
+          "alphaBounds32": [
+            173,
+            132,
+            190,
+            294
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            287,
+            275
+          ],
+          "bodyCenterPivot": [
+            268,
+            430
+          ],
+          "opaquePixelCount": 32844,
+          "contentSha256": "947ccc5a46f0bc8db33703a930fb5ba1e545b8748e2e23d5c5d5f065ccada065",
+          "margins": [
+            171,
+            122,
+            146,
+            82
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            162,
+            196,
+            285
+          ],
+          "alphaBounds32": [
+            170,
+            166,
+            190,
+            279
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            284,
+            275
+          ],
+          "bodyCenterPivot": [
+            263.5,
+            447
+          ],
+          "opaquePixelCount": 32273,
+          "contentSha256": "f8e8b58f5bc2bd6f207aa49550598c435df6a254b16c59253da2dc4ee563dc63",
+          "margins": [
+            166,
+            162,
+            150,
+            65
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            115,
+            197,
+            299
+          ],
+          "alphaBounds32": [
+            174,
+            121,
+            193,
+            289
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            290.5,
+            239
+          ],
+          "bodyCenterPivot": [
+            270,
+            414
+          ],
+          "opaquePixelCount": 32212,
+          "contentSha256": "a43dc5ccb83d13925de46efac433cd0c891d2cecdf2c9ebfb44866c3f7e53eab",
+          "margins": [
+            172,
+            115,
+            143,
+            98
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            95,
+            195,
+            267
+          ],
+          "alphaBounds32": [
+            173,
+            105,
+            191,
+            255
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            286,
+            241
+          ],
+          "bodyCenterPivot": [
+            268,
+            362
+          ],
+          "opaquePixelCount": 31762,
+          "contentSha256": "225fc1499d4e5bdeb0aefe2941adf46bc812ddb7867508b281ac2e19e5e01cb8",
+          "margins": [
+            171,
+            95,
+            146,
+            150
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            106,
+            194,
+            277
+          ],
+          "alphaBounds32": [
+            170,
+            114,
+            189,
+            267
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            284,
+            239
+          ],
+          "bodyCenterPivot": [
+            264.5,
+            383
+          ],
+          "opaquePixelCount": 31998,
+          "contentSha256": "08030762dbe6da4f84fd8146f0c1d53adcef6e937e93ec0f510b0f58689880f7",
+          "margins": [
+            168,
+            106,
+            150,
+            129
+          ],
+          "pivotEvidence": "First broad opaque cabinet row (>120 alpha240 pixels), offset65px downward; excludes steam and falling drops."
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ],
+      "anchorKind": "fixed-cabinet-wall-mount"
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. Native transparent PNG sprite animation sheet of a wind-stirred abandoned electrical service cable in rainy brick alley. Exactly SIX isolated drawings in3columns2rows1536x1024. One fixed small rusty wallanchor metal plate with two bolts, a shortblackjunctionbox, and a SINGLE loop of black rubber cable dangling from it with a tiny torn grey fabric strip tiedto lower bend. SIX distinct small swaycurves of hangingloop and changingclothfolds, attachmentplatefixed, cablecontinuous without breaks. Wet realistic darkcharcoal materials, coolblue night glints and slightwarmstreetlamp rim. Painted detailed2Dvideogame backgroundprop. Wholeobjectatmost180wide300high centered ineach512cell with at least100pixels genuineemptyalpha onalledges. No sparks/electricarc, no gun, no hazard, no wall/scene/groundshadow/text/grid. Original permanent atmospheric alternative to hunterswhoappear onlyafterduel. Transparentbackgroundonly.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-8ab74dae-5ba1-40c1-83b1-22deb9b1f058.png",
+      "workspacePath": "work-local/v61/generated/arena-142-dead-end-alley/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E112"
+      ],
+      "visualNotes": "Viewed six actual cable and tied cloth sway poses; continuous cable attached to junction box. Cell5/6 metadata boundary moved to real clear gutter at x1080 so entire cloth is preserved byte-identically. Native solid edges all clear. Top mounting plate attaches wall.",
+      "sha256": "26357dc10b21f7308011fdcf02e3fdb3ddecf5e9bbcdcb7227eab8513a24666d",
+      "bytes": 1605190,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.8431758880615234,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            127,
+            23,
+            220,
+            471
+          ],
+          "alphaBounds32": [
+            129,
+            25,
+            215,
+            467
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            192,
+            42
+          ],
+          "bodyCenterPivot": [
+            236.5,
+            494
+          ],
+          "opaquePixelCount": 35758,
+          "contentSha256": "db80b0ba03ba7fbe9e8a6ac2feb2583a7da1b6ebcc718495629373be80814e50",
+          "margins": [
+            127,
+            23,
+            165,
+            18
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            23,
+            228,
+            478
+          ],
+          "alphaBounds32": [
+            175,
+            25,
+            225,
+            475
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            235,
+            42
+          ],
+          "bodyCenterPivot": [
+            286.5,
+            501
+          ],
+          "opaquePixelCount": 35145,
+          "contentSha256": "ee33b9d0b7a2c8a12c8373f5679aca8ad3d38df2a6e0fc1e3006d12eb9308b96",
+          "margins": [
+            173,
+            23,
+            111,
+            11
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            223,
+            23,
+            238,
+            442
+          ],
+          "alphaBounds32": [
+            225,
+            25,
+            233,
+            439
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            281,
+            42
+          ],
+          "bodyCenterPivot": [
+            341.5,
+            465
+          ],
+          "opaquePixelCount": 33180,
+          "contentSha256": "1925287793de65581d3ff10ba3ae601bc68574b43c157c8df162361b70d017fa",
+          "margins": [
+            223,
+            23,
+            51,
+            47
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            24,
+            255,
+            448
+          ],
+          "alphaBounds32": [
+            135,
+            26,
+            250,
+            446
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            196.5,
+            43
+          ],
+          "bodyCenterPivot": [
+            258,
+            472
+          ],
+          "opaquePixelCount": 35695,
+          "contentSha256": "0e6c611cb9b75f7fa9cf054d6112e08a6b38032e160fff817a53806d2d30d1c9",
+          "margins": [
+            131,
+            24,
+            126,
+            40
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        },
+        {
+          "rect": [
+            512,
+            512,
+            568,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            24,
+            345,
+            386
+          ],
+          "alphaBounds32": [
+            175,
+            26,
+            342,
+            384
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            239,
+            43
+          ],
+          "bodyCenterPivot": [
+            345,
+            410
+          ],
+          "opaquePixelCount": 34845,
+          "contentSha256": "b9e41658600c8b66e72518ca64ce037d29ac5fe07e6125f4524b95befbf45dda",
+          "margins": [
+            173,
+            24,
+            50,
+            102
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        },
+        {
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            24,
+            236,
+            448
+          ],
+          "alphaBounds32": [
+            168,
+            26,
+            231,
+            445
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            233,
+            43
+          ],
+          "bodyCenterPivot": [
+            283.5,
+            472
+          ],
+          "opaquePixelCount": 36332,
+          "contentSha256": "33f555161fa1ea670a31a9c16f8fda1713b671355d43217779337a5902e7dcc8",
+          "margins": [
+            166,
+            24,
+            54,
+            40
+          ],
+          "pivotEvidence": "Measured upper35px solid mounting plate; not bottom of moving cable."
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ],
+      "frameRects": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          512,
+          512
+        ],
+        [
+          512,
+          512,
+          568,
+          512
+        ],
+        [
+          1080,
+          512,
+          456,
+          512
+        ]
+      ],
+      "anchorKind": "fixed-upper-mounting-plate"
+    },
+    {
+      "id": "conditional-patrol-after-match",
+      "prompt": "Use case: stylized-concept. Native transparent PNG6-frame sprite animation atlas for a distant post-duel patrol of TWO anonymous adult Yautja hunters in the wet brick alley of a fan-film-inspired Batman Dead End fighting arena. Exactly six isolated SMALL groups arranged3columns2rows1536x1024. Everycell contains same two adult hulking alienhunters in clear fullbody sideprofile facingleft, walking slowly singlefile with a clear gap. Classical Yautja anatomy: one head each, two arms and two digitigrade? NO: normal plantigrade humanoid legs each, five-finger clawed hands, long thick black dreadlocks, plainbronze fullbiomasks, dark netmesh and sparse weathered bronze/leatherarmor. No named Big Red, no redsamuraiarmor, no Sinestro costume, no weapons deployed, wristblades retracted, armsrelaxed, no laser. Six actual alternatinggait phases, bothsoles/intactfeet, heads/dreadlocksallcontained. Coolblue night rimlight, mutedwarmstreetlamp edge, painterlydetailed2Dvideogame. Group mustfitSMALL340wide320high footprint centered each512cell, atleast80pixels clearalpha eachside, doNOTcroplimbs. No groundshadow, no alley/background, no labels/grid. Neworiginal anonymous backgroundhunters, condition AFTER MATCH only, not simultaneousnamedfighter duplicates.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-be45593c-738d-4050-9216-f1fe4a5ba7d2.png",
+      "workspacePath": "work-local/v61/generated/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E112"
+      ],
+      "visualNotes": "Viewed six walking-group poses: two intact anonymous adult Yautja, one head/two arms/two legs each, masks/dreadlocks and bare clawed feet complete. No named Big Red duplication or deployed weapons. Strictly after match, never active duel.",
+      "activation": "after match only; no patrol during active duel",
+      "sha256": "c282d2e34c9daab5a9626e5b6a825f7c471be88b517c11b407feaac15a4f49a3",
+      "bytes": 2211674,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6407922108968099,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            65,
+            425,
+            414
+          ],
+          "alphaBounds32": [
+            39,
+            68,
+            419,
+            410
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            241,
+            479
+          ],
+          "bodyCenterPivot": [
+            248,
+            479
+          ],
+          "opaquePixelCount": 81972,
+          "contentSha256": "4a253a816b9b2be175b7efe0810e3101d7b4f33625fd96e2c48f65c98cfa9649",
+          "margins": [
+            36,
+            65,
+            51,
+            33
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            52,
+            64,
+            428,
+            414
+          ],
+          "alphaBounds32": [
+            55,
+            65,
+            423,
+            411
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            256.5,
+            478
+          ],
+          "bodyCenterPivot": [
+            265.5,
+            478
+          ],
+          "opaquePixelCount": 80037,
+          "contentSha256": "a269f4287a0bf26df8062ed07e5e64509e0a062d17687f70b053ea62c7532017",
+          "margins": [
+            52,
+            64,
+            32,
+            34
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            68,
+            434,
+            410
+          ],
+          "alphaBounds32": [
+            48,
+            71,
+            432,
+            406
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            263,
+            478
+          ],
+          "bodyCenterPivot": [
+            262.5,
+            478
+          ],
+          "opaquePixelCount": 81633,
+          "contentSha256": "b34793fee77a66bf03390aeaff6a7a327e3e63f249ccfe22054706119f17fd82",
+          "margins": [
+            46,
+            68,
+            32,
+            34
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            59,
+            412,
+            417
+          ],
+          "alphaBounds32": [
+            58,
+            61,
+            408,
+            409
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            252,
+            476
+          ],
+          "bodyCenterPivot": [
+            261.5,
+            476
+          ],
+          "opaquePixelCount": 83649,
+          "contentSha256": "ea7294804ee2c891e025f29637d84c4a16952cfb3a01a54cb6a1aebe57b910a5",
+          "margins": [
+            56,
+            59,
+            44,
+            36
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            65,
+            410,
+            408
+          ],
+          "alphaBounds32": [
+            70,
+            67,
+            406,
+            403
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            261.5,
+            473
+          ],
+          "bodyCenterPivot": [
+            272.5,
+            473
+          ],
+          "opaquePixelCount": 79978,
+          "contentSha256": "3095dd32c04289565b45aa6b4ae65b0ee017907b4db1445a741af2a99ee55f85",
+          "margins": [
+            68,
+            65,
+            34,
+            39
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            88,
+            58,
+            397,
+            414
+          ],
+          "alphaBounds32": [
+            90,
+            60,
+            394,
+            410
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            275,
+            472
+          ],
+          "bodyCenterPivot": [
+            286,
+            472
+          ],
+          "opaquePixelCount": 82010,
+          "contentSha256": "6d266557c67b3d4301399097f747257ea4d88f994e3773fda15aa1c5a24a2bcb",
+          "margins": [
+            88,
+            58,
+            27,
+            40
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "artStatus": "accepted-3-ambient-plus-1-conditional-awaiting-runtime-composition",
+  "rejectedAssets": [
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. Native transparent PNG6-frame atlas for a wet dark urban alley wall ventilation outlet with dripping water. Exactly sixisolated drawings3columns2rows1536x1024. One small rectangular rusty black iron vent housing with louvergrille, short bent metal drain spout underneath, six distinct restrained thin steam curls and individual drip positions below spout. Samehousing andspout fixedallframes, physically coherent waterdrip cycle gather/drop/fall, no magicalparticles. Coolblue nighttime highlights, warmamber touch from alley lamp, painterlydetailed videogame prop. Each complete assembly including all steam and droplets in SMALL250wide300high footprint centered in each512cell. Atleast90pixels empty truealpha on allfourcellborders. No walls or floor, no large fogpatch, no darkrectangle, no people, no scenery, no words/UI/grid. Authentic industrial mundane prop, not sci-fi machinery. Transparentbackground.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-687df7cc-fd19-4ac6-9486-91da29fcf78b.png",
+      "workspacePath": "work-local/v61/generated/arena-142-dead-end-alley/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "superseded-native",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E111"
+      ],
+      "visualNotes": "",
+      "sha256": "c99c477e4ca65eee0fc53648e1481c7b0ce2a6d42c630bf5864e3836048a7c2a",
+      "bytes": 1825816,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7263412475585938,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            0,
+            279,
+            427
+          ],
+          "alphaBounds32": [
+            153,
+            17,
+            275,
+            408
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            274,
+            427
+          ],
+          "bodyCenterPivot": [
+            290,
+            427
+          ],
+          "opaquePixelCount": 67414,
+          "contentSha256": "f95a882b95389dd2157677e2486880ed330c43409c2621c82379292cea212159",
+          "margins": [
+            151,
+            0,
+            82,
+            85
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            11,
+            279,
+            501
+          ],
+          "alphaBounds32": [
+            132,
+            27,
+            275,
+            485
+          ],
+          "edgePixelsAbove32": 7,
+          "pivot": [
+            275.5,
+            512
+          ],
+          "bodyCenterPivot": [
+            269,
+            512
+          ],
+          "opaquePixelCount": 68108,
+          "contentSha256": "61b4357c462a3f0bb181a0cc953c993fff8d8a1f89d696439e833fcb02b6eb48",
+          "margins": [
+            130,
+            11,
+            103,
+            0
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            58,
+            277,
+            421
+          ],
+          "alphaBounds32": [
+            115,
+            67,
+            273,
+            411
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            247.5,
+            479
+          ],
+          "bodyCenterPivot": [
+            251,
+            479
+          ],
+          "opaquePixelCount": 67545,
+          "contentSha256": "31417b293296b718875df0093d47c3df4368db540387a01c62318cb7376f0430",
+          "margins": [
+            113,
+            58,
+            122,
+            33
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            155,
+            8,
+            278,
+            452
+          ],
+          "alphaBounds32": [
+            157,
+            25,
+            275,
+            433
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            286,
+            460
+          ],
+          "bodyCenterPivot": [
+            293.5,
+            460
+          ],
+          "opaquePixelCount": 66979,
+          "contentSha256": "d69f56a7d2786d2a7a424985e01a3dfcf3216176585ff2ffe56b9514a2a3434e",
+          "margins": [
+            155,
+            8,
+            79,
+            52
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            0,
+            283,
+            387
+          ],
+          "alphaBounds32": [
+            133,
+            0,
+            277,
+            387
+          ],
+          "edgePixelsAbove32": 9,
+          "pivot": [
+            269,
+            387
+          ],
+          "bodyCenterPivot": [
+            272,
+            387
+          ],
+          "opaquePixelCount": 66383,
+          "contentSha256": "68601311cd52ef43124ceadc3ebd969c3502d3a73c3100a729d9fb1c7ebeb79e",
+          "margins": [
+            131,
+            0,
+            98,
+            125
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            0,
+            276,
+            406
+          ],
+          "alphaBounds32": [
+            113,
+            21,
+            275,
+            385
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            241,
+            406
+          ],
+          "bodyCenterPivot": [
+            250.5,
+            406
+          ],
+          "opaquePixelCount": 65188,
+          "contentSha256": "0a000973bdf8051c04cc19567ee632a0b83230e8a3fc2b30531f9877319502e4",
+          "margins": [
+            113,
+            0,
+            123,
+            106
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 4,
+          "count": 10
+        },
+        {
+          "max": 49,
+          "count": 35
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 53,
+          "count": 32
+        },
+        {
+          "max": 3,
+          "count": 1
+        }
+      ],
+      "rejectionReason": "Native edit shrinks all drawings so steam no longer reaches top image edge or row boundaries; no pixel edits in code."
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-146-primal-hunt-pilot-ruins",
+  "id": "ambient-03",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-2adb670a-1f1b-4a8e-948a-f4e7866c7a59.png",
+  "workspacePath": "work-local/v61/generated/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+  "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+  "bytes": 2793922,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.4900506337483724,
+  "copyByteIdentical": true,
+  "prompt": "Create a production PNG RGBA sprite animation atlas for a 2D fighting game. Exactly 1536 x 1024, three columns and two rows, SIX complete independent drawings, 512 x 512 cells. TRANSPARENT BACKGROUND WITH REAL ZERO ALPHA, no environmental background, no colored wash, no gradients, no glow cloud behind the object. Subject: a compact ancient nonhuman ribbed biomechanical stone doorway mechanism from jungle ruins. Grey-black weathered stone and fossil-like curving ribs, very restrained ochre seams, moss flecks. No human controls or modern technology. Distant front-side view, low perspective, suitable for mounting to a large ruined wall. Each drawing is the SAME complete compact door and frame. Animation: 1 closed dormant stone iris; 2 faint internal ochre light and slight seam movement; 3 a small gap opens mechanically; 4 gap is widest but dark interior, a few particles of stone dust; 5 gap closes and dust settles; 6 closed again with fading faint light. No creature, no person, no magic beam, no portal. Style: richly textured realistic painted game background prop, sombre warm-grey ancient organic architecture. Safe composition: object NO LARGER than 300 pixels tall and 280 pixels wide within EACH cell, placed at centre (256,256); minimum 90 pixels completely transparent margin on every cell edge, including every dust particle. Identical outer frame silhouette and base position in all six poses, only inner mechanism/dust moves. Draw all six from scratch as distinct animation poses, readable differences. No text, labels, grid lines, checkerboard, drop shadow, painted backdrop or ground plane. All pixels outside the isolated door and sparse tiny dust must be genuinely transparent.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E148"
+  ],
+  "loreLimits": [
+    "Mecanisme de porte original adapte a l'architecture des ruines, pas une reproduction canonique 1:1."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six complete native drawings inspected: fixed ribbed stone frame and mechanical iris opening/closing, no characters or human machinery. All borders transparent. Original door design, not claimed 1:1.",
+  "status": "accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        47,
+        37,
+        447,
+        427
+      ],
+      "pivot": [
+        270.5,
+        464
+      ],
+      "margins": [
+        47,
+        37,
+        18,
+        48
+      ],
+      "opaquePixelCount": 133267,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "d8ebef28e63b8b56f729e614a786c78bce1dcdcc777feba3cb250bf13516c88d"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        28,
+        37,
+        450,
+        427
+      ],
+      "pivot": [
+        253,
+        464
+      ],
+      "margins": [
+        28,
+        37,
+        34,
+        48
+      ],
+      "opaquePixelCount": 134331,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "8193fb710a9f5a7e96a2f3fe1f7b244380fc007e3ba54e00970ac7e6e1a085c9"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        16,
+        39,
+        448,
+        425
+      ],
+      "pivot": [
+        240,
+        464
+      ],
+      "margins": [
+        16,
+        39,
+        48,
+        48
+      ],
+      "opaquePixelCount": 134076,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "1c10a685e0ba1ce4192a6ffa749fbdc86d13ccb3ad332aeb0c8deeb02271883a"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        47,
+        23,
+        447,
+        425
+      ],
+      "pivot": [
+        270.5,
+        448
+      ],
+      "margins": [
+        47,
+        23,
+        18,
+        64
+      ],
+      "opaquePixelCount": 133491,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "d57d2276c8c53fdf36e6594f1dc6bb03a9da39a3196a77e4863227dd149cc759"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        31,
+        22,
+        447,
+        426
+      ],
+      "pivot": [
+        254,
+        448
+      ],
+      "margins": [
+        31,
+        22,
+        34,
+        64
+      ],
+      "opaquePixelCount": 133550,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f30f977fc6aa1e6fd022e035945a55a5dcce9b00d51d5267577c0b0d6242866c"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        19,
+        23,
+        445,
+        425
+      ],
+      "pivot": [
+        241,
+        448
+      ],
+      "margins": [
+        19,
+        23,
+        48,
+        64
+      ],
+      "opaquePixelCount": 133366,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "9cc9327b92affa15d496cde0cd618f75defaa388471bda6ed53886492d6a62cc"
+    }
+  ]
+}

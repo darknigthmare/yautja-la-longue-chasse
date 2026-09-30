@@ -26,12 +26,14 @@ export function drawPitStageLifeV60(context: CanvasRenderingContext2D, input: {
   readonly eventContext?: PitArenaLifeEventContext;
   readonly reducedMotion?: boolean;
   readonly highContrast?: boolean;
+  /** A loaded conditional gesture may temporarily replace this same actor, without rescheduling the three-event bag. */
+  readonly excludedEventIds?: ReadonlySet<string>;
 }): PitStageLifeReportV60 {
   const events: PitStageLifeDrawV60[] = [], missingPaths = new Set<string>();
   const poses = getPitStageLifePosesV60(input.stage, input.eventContext, input.reducedMotion);
   let actorsDrawn = 0;
   input.stage.events.forEach((event, index) => {
-    if (event.placement.renderPass !== input.pass) return;
+    if (event.placement.renderPass !== input.pass || input.excludedEventIds?.has(event.id)) return;
     const pose = poses[index];
     const report = { ...pose, src: event.src, pass: input.pass, drawn: false, attachment: null } satisfies PitStageLifeDrawV60;
     const image = input.images.get(event.src);

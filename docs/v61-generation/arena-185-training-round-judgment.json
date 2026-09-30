@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-185-training",
+  "id": "round-judgment",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-7969f3ce-2a92-4be1-9c4d-3b735399750b.png",
+  "workspacePath": "work-local/v61/generated/arena-185-training/round-judgment.png",
+  "sha256": "b67b7342b4e3be4f2dd60c5e6e7cb73e0eb6abff5e3aff789883cb68f9774126",
+  "bytes": 1976594,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.7824484507242838,
+  "copyByteIdentical": true,
+  "prompt": "Clean and repair this six-frame sprite atlas. Remove ALL floating white marks, writing-like smudges, glow and halo visible aboveheads or left of figures. There must be only six isolated fullbody elderYautja drawings on genuine ALPHA. Preserve same identity,tanmantle,silvermask,and six articulated openpalmjudginggestures; do not addweapons. CRITICAL shrink EACH individual fullbody figure to 75percentcurrent scale insideitsown512x512cell.1536x1024PNG THREECOLUMNS TWOROWS. Completefigure andraisedarm muststaylocalx100..420 y60..445 in everycell. Feetbaseline440, samebodysize acrosssixposes. Poses1 handsatwaist,2openpalmchest,3palmheadheight,4palmabovehead,5palmloweredchest,6handsatwaist. NO pixels touching cell boundaries, nofloor,castshadow,gradient,glow,labels,textorbackground. Be exact about two arms twolegs withconsistenthands. The bottomleft palm mustnot enter top row. Cleartransparentgaps mandatory.",
+  "referencedImagePaths": [
+    "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-21ba2bc5-3cd5-4376-9b45-91d77b60d601.png"
+  ],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E166"
+  ],
+  "loreLimits": [
+    "Original anonymous Yautja guard/judge; gesture is workbook adaptation, not certified frame-for-frame canon."
+  ],
+  "rejectedAttempts": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a056ec-9dd5-7433-8bd5-5ace123409c6/exec-21ba2bc5-3cd5-4376-9b45-91d77b60d601.png",
+      "prompt": "Use case: identity-preserve. Reference is the existing anonymous adult elder Yautja judge of an original game dojo. Create a NEW end-of-round judgment animation, same silver closed biomask, tan short mantle with torn edges, brown netted armour, dark tendrils, empty hands, facing right exactly as reference. Transparent PNG sprite atlas 1536x1024, precise THREE COLUMNS by TWO ROWS of SIX 512x512 cells. Six different full-body articulated poses: 1 hands calmly clasped at waist; 2 left hand uncurls and elbow rises to chest; 3 left open palm rises to head height with fingers together; 4 left arm held vertically above head, palm outward, unambiguous officiating signal; 5 palm lowers to chest; 6 hands return calmly clasped at waist. Judge stays neutral, does not point at a specific side or celebrate. Right hand stays near belt. Preserve identical costume and anatomy across every drawing, two arms/two legs, no extra fingers or weapons. Complete figures AND raised hand remain in each cell x60..452 y30..477 with generous clear gaps. Identical feet localbaseline y470, stable body scale, same camera/light all cells. Native TRUE ALPHA outside subject, no halo, backdrop, floor, shadow rectangle, text/grid. The hand must actually change height, not six repeated neutral poses.",
+      "reference": "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/public/game/sprites/v60/pit-life/arena-185-training/life-03.png",
+      "reason": "Insufficient cell framing / stray visual fragments; replaced with native edit."
+    }
+  ],
+  "visualNotes": "Six articulated gestures reviewed; unmodified native PNG. Custom row boundary for judge uses clear gutter below top-row feet and above bottom-row palm.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        490
+      ],
+      "alphaBounds": [
+        171,
+        50,
+        213,
+        426
+      ],
+      "pivot": [
+        277,
+        476
+      ],
+      "margins": [
+        171,
+        50,
+        128,
+        14
+      ],
+      "opaquePixelCount": 54877,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "68ad0d540f9c7001753f3330c13f6bd08258e4222b75510cc1a83b4c95a4dec8"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        490
+      ],
+      "alphaBounds": [
+        140,
+        50,
+        226,
+        425
+      ],
+      "pivot": [
+        246,
+        475
+      ],
+      "margins": [
+        140,
+        50,
+        146,
+        15
+      ],
+      "opaquePixelCount": 57760,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "e324b5cea9591d32173f86475a5bbe7d51dfdf4d5e16f658de2c4ce083287175"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        490
+      ],
+      "alphaBounds": [
+        139,
+        49,
+        242,
+        427
+      ],
+      "pivot": [
+        245.5,
+        476
+      ],
+      "margins": [
+        139,
+        49,
+        131,
+        14
+      ],
+      "opaquePixelCount": 60123,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "cdd4d8eaf65247bdf72afabe4118970290e6daac0247c0b5410de69d0f5a4eb9"
+    },
+    {
+      "rect": [
+        0,
+        490,
+        512,
+        534
+      ],
+      "alphaBounds": [
+        171,
+        15,
+        215,
+        480
+      ],
+      "pivot": [
+        278,
+        495
+      ],
+      "margins": [
+        171,
+        15,
+        126,
+        39
+      ],
+      "opaquePixelCount": 59636,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "73297d3ca2f5bf3fd27af65b3ffb2873417640cebbc6c3d832014077c380654b"
+    },
+    {
+      "rect": [
+        512,
+        490,
+        512,
+        534
+      ],
+      "alphaBounds": [
+        140,
+        72,
+        212,
+        423
+      ],
+      "pivot": [
+        246,
+        495
+      ],
+      "margins": [
+        140,
+        72,
+        160,
+        39
+      ],
+      "opaquePixelCount": 55398,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "24167b49fd51708f13beeef3da2aff47b45e75925567cf3ee56c49002340a412"
+    },
+    {
+      "rect": [
+        1024,
+        490,
+        512,
+        534
+      ],
+      "alphaBounds": [
+        139,
+        72,
+        212,
+        423
+      ],
+      "pivot": [
+        245,
+        495
+      ],
+      "margins": [
+        139,
+        72,
+        161,
+        39
+      ],
+      "opaquePixelCount": 54385,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "234c78256c41eb82c8e776022c327d983a4d329bcaed3febd47fa442ea3c1417"
+    }
+  ]
+}

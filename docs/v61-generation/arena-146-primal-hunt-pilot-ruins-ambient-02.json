@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-146-primal-hunt-pilot-ruins",
+  "id": "ambient-02",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\exec-006f43f8-cd21-452a-bd70-0b541a3a830a.png",
+  "workspacePath": "work-local/v61/generated/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+  "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+  "bytes": 2358401,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.6679286956787109,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Create one production RGBA sprite animation atlas for a 2D fighting game. 1536 x 1024 pixels, exactly THREE columns and TWO rows, SIX separate hand-painted frames, each cell 512 x 512. Genuine transparent background. Subject: a SMALL tuft of ancient rain-forest ferns and lichen growing on a dark porous ribbed alien stone ledge. Grey-green fronds, subdued ochre moss, realistic weathered materials; somber misty ancient biomechanical ruins palette. This is an original environmental vegetation prop, not a named canonical creature. Match the mood and materials of the previous ancient jungle ruins image, but DO NOT include its landscape or any backdrop. Animation sequence: fronds at rest; fronds gently bending left; deeper left breeze with two tiny drifting leaves; fronds returning upright; bending right; returning nearly to rest. Six visibly different drawn poses, same planted root and stone ledge size, same camera, side view suitable for a distant background ledge. All six complete props must be strictly INSIDE their own cell with at least 65 transparent pixels margin on EVERY edge. Prop occupies at most 350 x 350 pixels per cell, centred at x256 y256. Tiny leaves also stay inside safe margin. Identical grounded base position in every frame, no shadow below base. Muted realistic painted 2D game sprites with clear silhouettes, no grids, no text, no labels, no frames, no magic, no human technology, no animals, no characters, no sheets or white background. Do not draw the whole stage. Transparency is essential.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E147"
+  ],
+  "loreLimits": [
+    "Vegetation originale de remplacement : ne valide pas la faune E147, dont l'apparence reste non documentee."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six complete native drawings inspected: muted ferns bending with wind, root and porous stone ledge remain coherent. All borders transparent. Original vegetation alternative; canonical fauna remains open.",
+  "status": "accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        63,
+        87,
+        412,
+        389
+      ],
+      "pivot": [
+        232.5,
+        476
+      ],
+      "margins": [
+        63,
+        87,
+        37,
+        36
+      ],
+      "opaquePixelCount": 90831,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "034399167a76c4b1ab61b2cb66d6d1a6cb96af511b3e80fbeb0bc811903e9751"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        41,
+        116,
+        438,
+        361
+      ],
+      "pivot": [
+        239.5,
+        477
+      ],
+      "margins": [
+        41,
+        116,
+        33,
+        35
+      ],
+      "opaquePixelCount": 83323,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "bdb4f9c596ce7c4dd05173a23683a333aac98c1229192f3c67cdbf4e3f9215b6"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        43,
+        125,
+        436,
+        352
+      ],
+      "pivot": [
+        238.5,
+        477
+      ],
+      "margins": [
+        43,
+        125,
+        33,
+        35
+      ],
+      "opaquePixelCount": 78276,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "56be488b8ddb273fa70764577820ef0923110ed4b60196538569f4b6eec2bbd7"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        67,
+        79,
+        415,
+        377
+      ],
+      "pivot": [
+        241.5,
+        456
+      ],
+      "margins": [
+        67,
+        79,
+        30,
+        56
+      ],
+      "opaquePixelCount": 88310,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f3bad60485e5071cd7f969f3c8a91b1077996cdcff9a3117cc6c65535e3bb9c8"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        66,
+        75,
+        412,
+        381
+      ],
+      "pivot": [
+        241.5,
+        456
+      ],
+      "margins": [
+        66,
+        75,
+        34,
+        56
+      ],
+      "opaquePixelCount": 88225,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "761ce509de9927343d89fbc5e45e9f9d9c0c1a1494d36d29c95f7d2b64f43dbd"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        68,
+        59,
+        412,
+        397
+      ],
+      "pivot": [
+        243.5,
+        456
+      ],
+      "margins": [
+        68,
+        59,
+        32,
+        56
+      ],
+      "opaquePixelCount": 93338,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "b99213dd2973b1896712ced22dde6228ffa10f35ae00c64d46bb9b6cbaf44b54"
+    }
+  ]
+}

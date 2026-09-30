@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-162-ahab-engineer",
+  "workbookEvent": "10_VIE_DES_STAGES!A67:N67",
+  "workbookDescription": "Silhouette d’Ingénieur avant sa rencontre, retirée lorsqu’il devient boss",
+  "sourceUrls": [
+    "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p2.jpg",
+    "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p4.jpg",
+    "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p5.jpg"
+  ],
+  "references": [
+    {
+      "url": "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p2.jpg",
+      "kind": "primary-published-comic-preview-panel-hosted-by-press",
+      "publisher": "Dark Horse Comics",
+      "work": "Predator: Fire and Stone #4",
+      "creators": "Joshua Williamson; Chris Mooneyham; Dan Brown",
+      "contextUrl": "https://www.horrorsociety.com/2015/01/25/comic-crypt-predator-fire-stone-4-preview/",
+      "localPath": "work-local/v61/references/fire-stone-4-preview-2.jpg",
+      "observed": "Original comic panel: bald pale adult Engineer, massive build, dark gray-green biomechanical suit, shell shoulders and ribbed chest/limbs. Poses, injuries and combat action in panel are NOT copied into pre-encounter idle; source identity only.",
+      "localSha256": "4402e6d3ec26fd21f2b1ca864dbf39a75c78dbb0ca511150fbdb985d0c5c3931"
+    },
+    {
+      "url": "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p4.jpg",
+      "kind": "primary-published-comic-preview-panel-hosted-by-press",
+      "publisher": "Dark Horse Comics",
+      "work": "Predator: Fire and Stone #4",
+      "creators": "Joshua Williamson; Chris Mooneyham; Dan Brown",
+      "contextUrl": "https://www.horrorsociety.com/2015/01/25/comic-crypt-predator-fire-stone-4-preview/",
+      "localPath": "work-local/v61/references/fire-stone-4-preview-4.jpg",
+      "observed": "Original comic panel: bald pale adult Engineer, massive build, dark gray-green biomechanical suit, shell shoulders and ribbed chest/limbs. Poses, injuries and combat action in panel are NOT copied into pre-encounter idle; source identity only.",
+      "localSha256": "52a7a9a994be49278d9386c3dec7fe535308c585e5565bdb6c6fa0c8d26e46f3"
+    },
+    {
+      "url": "https://www.horrorsociety.com/wp-content/uploads/2015/01/prfsn4p5.jpg",
+      "kind": "primary-published-comic-preview-panel-hosted-by-press",
+      "publisher": "Dark Horse Comics",
+      "work": "Predator: Fire and Stone #4",
+      "creators": "Joshua Williamson; Chris Mooneyham; Dan Brown",
+      "contextUrl": "https://www.horrorsociety.com/2015/01/25/comic-crypt-predator-fire-stone-4-preview/",
+      "localPath": "work-local/v61/references/fire-stone-4-preview-5.jpg",
+      "observed": "Original comic panel: bald pale adult Engineer, massive build, dark gray-green biomechanical suit, shell shoulders and ribbed chest/limbs. Poses, injuries and combat action in panel are NOT copied into pre-encounter idle; source identity only.",
+      "localSha256": "a8ad839a11a537000e199b7e0810f60bdb5778aeca0de9fa0eeaeaedda47fca6"
+    }
+  ],
+  "loreLimits": [
+    "Original comic preview establishes Engineer appearance associated with Ahab, but this is a new calm idle interpretation, not a panel-perfect animation.",
+    "Prepared art only. MUST NOT become active in default exhibition. Requires a real scenario cue explicitly before Engineer encounter and exclusion when Engineer becomes boss or combatant.",
+    "No reliable current scenario caller exists; adding an eligibility API alone does not fulfil narrative integration.",
+    "No inference that the original V60 ruins geometry is a literal comic location."
+  ],
+  "artStatus": "native-art-accepted-runtime-qa-pending",
+  "assets": [
+    {
+      "id": "life-03",
+      "role": "engineer-pre-encounter-idle",
+      "mode": "built-in-imagegen",
+      "status": "accepted",
+      "visualNotes": "Inspected all six final native drawings against original Fire and Stone#4 preview. Pale bald head, broad adult proportions, gray-green segmented ribbed suit and complete hands/feet remain consistent. Real neck/elbow/hand articulation, including open right hand in fourth drawing, without attack, injury, weapon or dialogue. Two complete arms and legs per pose; no clipped head after native repair. Fine suit folds/foot surfaces are a painted adaptation, not exact panel tracing.",
+      "prompt": "Use case: reference-faithful 2D painted videogame animation atlas. Produce native true-alpha PNG 1536x1024, exactly THREE columns and TWO rows, SIX separate coherent full-body drawings of the same adult ENGINEER seen confronting Ahab in the attached ORIGINAL Predator: Fire and Stone #4 comic preview pages. Use those source panels for identity only, do not copy layouts, background or other characters. The Engineer is exceptionally tall muscular humanoid, bald pale ivory head, strong broad facial bones and brow, small dark eyes, pale hands, fitted dark desaturated gray-green biomechanical suit with segmented shoulder shell plates, sculpted rib-like chest sections, fine organic longitudinal ribbing around torso and limbs, dark sculpted leg/foot coverings. Match the comic's actual suit shapes, no helmet, hair, cloak, modern pockets, human tactical gun, mask, face tattoo, glowing eyes or magic. Draw only one same Engineer per cell, no Ahab, Galgo, weapons or other figures. This is a distant PRE-ENCOUNTER calm watcher, so no bullet wounds, blood, red energy, injuries or attack. Three-quarter side view facing screen-left, feet planted at local y448, body center x256, total visible height380px and width230px max, at least50px transparent margin on ALL four edges of every512square cell. Six genuinely different articulated animation poses: 1 neutral arms beside body; 2 head begins slowly turning left, left shoulder rises gently; 3 left hand lifts toward lower sternum with elbow bend and chin lowers; 4 right hand partly opens at side while left hand pauses near chest, torso rotates slightly; 5 left hand descends and neck returns; 6 both hands settle lower, face turns nearly to initial direction. Maintain same proportions, suit, feet locations, mass and illumination. SIX complete unique drawings, not translations or mirrored poses. Painted cinematic2D realistic game style, subdued cool-gray green highlights, clear readable dark silhouette and pale head, not toy/figure photograph, not comic panels. No floor/ground/shadow patches, scenery, pedestal, glow, particles, dialogue bubbles, typography, cells lines, watermarks, frame numbers. Genuine transparency around each body and between limbs. The six poses are an original small background idle adaptation, no claim of exact animation from the comic.",
+      "referencedImagePaths": [
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v61/references/fire-stone-4-preview-2.jpg",
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v61/references/fire-stone-4-preview-4.jpg",
+        "C:/Users/chuck/Documents/Codex/2026-08-31/pour-mon-jeux-yautja-la-longue/work-local/v61/references/fire-stone-4-preview-5.jpg"
+      ],
+      "repairPrompt": "Repair this six-pose Engineer native animation atlas for a game. Preserve the same character, reference-faithful gray-green biomechanical suit, bald ivory adult face, hands, feet, all six genuinely different articulated idle/hand poses, facing screen-left, subdued lighting, real transparent alpha. ONLY fix sprite layout and framing. Render1536x1024 exact3columns2rows512squarecells. The figures are currently TOO TALL and lower-row heads touch previous row: redraw EVERY full body with total visible height exactly360px max. Topofhead y76 within its own cell; feetbottom baseline y436 local, figure center x256 local (global256,768,1280). Minimum76px EMPTY TRANSPARENT margin above/below and100pxside margins percell. Nothing crosses a cell boundary, complete silhouettes uncut. Keep hands anatomically correct, no additional fingers, each hand five fingers. Keep gestures distinct rather than duplicates. No environment, floorpatch, contactshadow, glow, particles, backgrounds, captions, panels, numbers or gridlines. Truealpha around allbodyparts. Do not repaint into new armor or add weapons.",
+      "transparentRequested": true,
+      "workspacePath": "work-local/v61/generated/arena-162-ahab-engineer/life-03-engineer.png",
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-5a7d8939-8bf3-4b04-84f6-71659eecb4a7.png",
+      "sha256": "6c122e523503bdb9479e2c565fb2e783df49e63934841562584f077dc9fe46f4",
+      "bytes": 2003778,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7362492879231771,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            212,
+            62,
+            232,
+            438
+          ],
+          "pivot": [
+            329,
+            500
+          ],
+          "margins": [
+            212,
+            62,
+            68,
+            12
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 62623,
+          "contentSha256": "fe36603af1564dc6bd6582ccad8cb7fdad00f79fcaf8d508cd1650003e1daf6b"
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            150,
+            62,
+            242,
+            438
+          ],
+          "pivot": [
+            273.5,
+            500
+          ],
+          "margins": [
+            150,
+            62,
+            120,
+            12
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 63245,
+          "contentSha256": "8beeb5059d65e0b9229ca2f94c8cb5ff6b08349661084b68f34bc61f4776bb66"
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            128,
+            62,
+            241,
+            441
+          ],
+          "pivot": [
+            248.5,
+            503
+          ],
+          "margins": [
+            128,
+            62,
+            143,
+            9
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 61395,
+          "contentSha256": "878f8f4fb33fe3878387a447ebbb94d24c898f1a9d4ce6485227957d1da0962a"
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            170,
+            34,
+            284,
+            437
+          ],
+          "pivot": [
+            328.5,
+            471
+          ],
+          "margins": [
+            170,
+            34,
+            58,
+            41
+          ],
+          "maxEdgeAlpha": 1,
+          "opaquePixelCount": 62309,
+          "contentSha256": "c09c90fd071b0d2cfe5a1f71576e03f68e771a7052afb26cdce83e51d59d5c5b"
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            142,
+            34,
+            249,
+            436
+          ],
+          "pivot": [
+            269.5,
+            470
+          ],
+          "margins": [
+            142,
+            34,
+            121,
+            42
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 64148,
+          "contentSha256": "0e89f528250e326bdf979e2c9e59c16c42f273e806d0bdee33ac00f521e49bb8"
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            129,
+            34,
+            247,
+            438
+          ],
+          "pivot": [
+            253.5,
+            472
+          ],
+          "margins": [
+            129,
+            34,
+            136,
+            40
+          ],
+          "maxEdgeAlpha": 0,
+          "opaquePixelCount": 64320,
+          "contentSha256": "59a284555c016f6651c108285d7262b543bf0e0894806e484feb0562be18a81e"
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "measurementsNote": "Alpha bounds and foot pivots use alpha>2; pixel data is never altered. extract() reads cells only into memory for hashing. Edge alpha<=1 is antialias residue, no anatomical silhouette intersects a border.",
+      "anchorKind": "ground-bottom",
+      "fps": 3,
+      "restFrame": 0,
+      "reducedMotionFrame": 0,
+      "placement": {
+        "x": 851,
+        "bottom": 300,
+        "height": 105,
+        "parallax": 0.05,
+        "renderPass": "P2",
+        "anchor": "world"
+      },
+      "placementStatus": "proposal-requires-real-renderer-review",
+      "activation": {
+        "kind": "prepared-inactive",
+        "requiredScenarioCue": "engineer-preboss",
+        "note": "Proposed semantic key only, not proof of an implemented caller or activation."
+      },
+      "generationHistory": [
+        {
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-47e60e6d-16e8-4e1d-9068-5ad991c1c9b5.png",
+          "sha256": "ac84176349f194381ca69d068c084a897dda13829b9d93ca3b95e496fc88b03e",
+          "status": "rejected-layout",
+          "reason": "Lower-row sixth head intersects regular cell border at alpha164; native correction required."
+        },
+        {
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f27c-2525-7ea2-b002-3d890e2cc8f9/exec-5a7d8939-8bf3-4b04-84f6-71659eecb4a7.png",
+          "sha256": "6c122e523503bdb9479e2c565fb2e783df49e63934841562584f077dc9fe46f4",
+          "status": "accepted",
+          "reason": "Distinct complete silhouettes; measured border alpha at most1, cells separated and foot anchors supplied."
+        }
+      ],
+      "limitations": [
+        "Requested76px margins and360px body height were not matched exactly by generator. Actual measured margins and dimensions are retained honestly; complete silhouettes and empty borders are verified. Native PNG bytes unmodified.",
+        "Runtime placement, live cue behavior and public deployment are separate acceptance steps, not certified by this receipt."
+      ]
+    }
+  ]
+}

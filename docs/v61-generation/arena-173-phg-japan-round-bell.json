@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-173-phg-japan",
+  "id": "round-bell",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f27c-2525-7ea2-b002-3d890e2cc8f9\\exec-7ef9b41a-18d8-4ea2-b8b7-06603d3fbdda.png",
+  "workspacePath": "work-local/v61/generated/arena-173-phg-japan/round-bell.png",
+  "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+  "bytes": 1905690,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.7787075042724609,
+  "copyByteIdentical": true,
+  "prompt": "Repair this sprite sheet's framing. The third and sixth bells are CUT OFF at right edge: unacceptable. Repaint SAME bell and external log striker with SAMEsixposes, but make each COMPLETE bell-crossbar-rope-log assembly only60percent current size insideitscell. ALLsixassemblies must be fullyvisible includingbothendswoodencrossbar andfullbellrim. Final1536x1024exact3by2grid, eachcell512x512, eachentireassembly must fitinside localx85..427 y85..427. Keep centeredinsideitsowncell, no crossingedges. SIX isolatedSMALLthumbnailassemblies withlargeCLEARtransparentmargins, nootherprops, nofloor,noscenery. Genuinealpha. Retainpaintedbronzeandwoodstyle, no labelsorgridlines. Sixlogstrikerpositions/articulatedropes, bellbodyfixed. Do notscaleentiresheetasoneimage; remakeeachobjectsmallwithin its own equalcell.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E118"
+  ],
+  "loreLimits": [
+    "Original Japanese bell mechanism; illustrated adaptation of workbook round signal, not a frame-exact prop claim."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six intact bronze bells with articulated external striker; upper beam attached beneath left gate; native alpha, no crop deformation. Crossbar centre/top-edge measured per drawing; striker motion must not recenter the static suspension beam.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        89,
+        90,
+        333,
+        325
+      ],
+      "pivot": [
+        271,
+        104
+      ],
+      "margins": [
+        89,
+        90,
+        90,
+        97
+      ],
+      "opaquePixelCount": 57043,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "bea38ae39a17b1e30fccfad20f458544f7c5db08bc43a2ddbefdcde993860430"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        67,
+        90,
+        348,
+        324
+      ],
+      "pivot": [
+        264,
+        104
+      ],
+      "margins": [
+        67,
+        90,
+        97,
+        98
+      ],
+      "opaquePixelCount": 56616,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "fcd35e7d83eef8979fa20bc0c32d2dac0a2ce02708ffc43b718d9efae3f2b66c"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        57,
+        90,
+        369,
+        324
+      ],
+      "pivot": [
+        281,
+        104
+      ],
+      "margins": [
+        57,
+        90,
+        86,
+        98
+      ],
+      "opaquePixelCount": 56407,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f3b1eb2bd2a426011d574cd943bd4cd36a7f0b735aa1d253cd25dcb43f344c8b"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        85,
+        64,
+        344,
+        332
+      ],
+      "pivot": [
+        272,
+        80
+      ],
+      "margins": [
+        85,
+        64,
+        83,
+        116
+      ],
+      "opaquePixelCount": 60341,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "71bc41d17baa7b5eb211df79be9925178920500e5715ac88aecc83e3a84c7329"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        117,
+        64,
+        308,
+        331
+      ],
+      "pivot": [
+        270,
+        80
+      ],
+      "margins": [
+        117,
+        64,
+        87,
+        117
+      ],
+      "opaquePixelCount": 56877,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "c0db4b599c1464dcb7eaaae7949b0c0de57be482ef1f55d55ecd473fe5ab025b"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        57,
+        64,
+        366,
+        329
+      ],
+      "pivot": [
+        269.5,
+        80
+      ],
+      "margins": [
+        57,
+        64,
+        89,
+        119
+      ],
+      "opaquePixelCount": 60779,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "4a997a455a32d35ef895f5478e03da72a44da8a8d21f1d2601af2c4c9e3cda5b"
+    }
+  ]
+}

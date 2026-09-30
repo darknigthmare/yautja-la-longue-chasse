@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "checkedAt": "2026-09-30T19:07:25.264Z",
+  "reviewer": "Codex compositor audit",
+  "method": "Actual PNG views opened and visually inspected, separate from automatic renderer assertions. Fixture clocks exercise native cells and conditional results; they do not prove a real player progression or narrative scenario caller.",
+  "stages": 11,
+  "reviewedCaptures": 39,
+  "result": "visually-accepted",
+  "automaticRenderer": {
+    "path": "work-local/v61/qa/renderer/report.json",
+    "sha256": "af633f5edda27f14d62668b739e7df0eaafde2d1550563362731d6ae3575bd8d",
+    "cameraChecks": 138,
+    "nativeFrameChecks": 228,
+    "captures": 377
+  },
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "publicationVerified": false,
+  "limits": [
+    "Representative views were visually reviewed, not every captured pixel of every frame.",
+    "Foreground fighters may intentionally occlude small background actors.",
+    "Exact canonical layouts and all literal workbook conditions are not certified by this visual review.",
+    "One initial Riverdale pilot asset-loading failure did not recur in its successful rerun; the final all-stage run is evaluated independently."
+  ],
+  "checks": [
+    {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "status": "visually-accepted",
+      "compositionDigest": "0bf3b1e62809b86e2abea28678d0b65bcea4c8eb03e007c45afb5dd55182bbc3",
+      "visualNotes": "Hélicoptère dans le ciel. Policier et gargouille sur leurs supports de toiture opposés. Appuis stables aux deux coins, sans rectangle alpha visible.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-139-batman-gotham-rooftops/center.png",
+          "sha256": "7b90217dcd88351ee840fe98c208510614d4a7783a3d9ba80b11c7eb1182b8b6"
+        },
+        {
+          "name": "left-corner",
+          "path": "work-local/v61/qa/renderer/arena-139-batman-gotham-rooftops/left-corner.png",
+          "sha256": "55622d7e0d13f15b25afbbf4521327d4e026833d2a79ed81dde5bd5d3bbad0ee"
+        },
+        {
+          "name": "right-corner",
+          "path": "work-local/v61/qa/renderer/arena-139-batman-gotham-rooftops/right-corner.png",
+          "sha256": "a02c0ec171291e7baac62ceea2d30c592b66d2d448e76cb5c6dd2972b6738015"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-139-batman-gotham-rooftops/actual-game-camera.png",
+          "sha256": "fa9a05a4ba342324aa8e4b53e10160d4bab96d80d08165a2fa84f34a53c6ddde"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "status": "visually-accepted",
+      "compositionDigest": "31ee0ff64a3b21b9b734d87fc81998a8c7509bc95c02e362f9b23d2576278448",
+      "visualNotes": "Garde anonyme sur le chemin forestier arrière après le duel. Taille et profondeur compatibles avec la clairière. Silhouette complète, séparée du sol de combat.",
+      "captures": [
+        {
+          "name": "story-conditional-guard-after-combat-center",
+          "path": "work-local/v61/qa/renderer/arena-140-bad-blood-pine-barrens/story-conditional-guard-after-combat-center.png",
+          "sha256": "bb916786f5a14824dcdbd938d975c2ac64330d283546b382c46f72347c753fc8"
+        },
+        {
+          "name": "story-conditional-guard-after-combat-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-140-bad-blood-pine-barrens/story-conditional-guard-after-combat-actual-game-camera.png",
+          "sha256": "93e466c6965afc758c2dc0efec09ebdaf15e6cbd2a1d286ce3cc3615e7b272a1"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "status": "visually-accepted",
+      "compositionDigest": "bf4f90694ea7fa19e2c4c5e2e52df3a1ecce9b5ffdf45e91178c6958565a8dd6",
+      "visualNotes": "Ombre projetée sur la brique arrière gauche. Boîtier de ventilation et câble fixés à des panneaux maçonnés séparés. Deux chasseurs anonymes au seuil brumeux, après le match uniquement. Aucune présence ajoutée sur le ring.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-142-dead-end-alley/center.png",
+          "sha256": "894d7135d26208fdd7df34e3d58eb180f5074a76e5f9dd0c9d0b72c1660467e2"
+        },
+        {
+          "name": "story-conditional-patrol-after-match-center",
+          "path": "work-local/v61/qa/renderer/arena-142-dead-end-alley/story-conditional-patrol-after-match-center.png",
+          "sha256": "e77d2f124fdd1043c0f080a47f31e833590f66c3d490382f421a8350df4936b0"
+        },
+        {
+          "name": "story-conditional-patrol-after-match-left-corner",
+          "path": "work-local/v61/qa/renderer/arena-142-dead-end-alley/story-conditional-patrol-after-match-left-corner.png",
+          "sha256": "4227e0650574e2c686a851c30fd9ab081f77be4edc2930d5f085ed0556e4fd67"
+        },
+        {
+          "name": "story-conditional-patrol-after-match-right-corner",
+          "path": "work-local/v61/qa/renderer/arena-142-dead-end-alley/story-conditional-patrol-after-match-right-corner.png",
+          "sha256": "099fdcc763a58e4c80fdd8bd1ff802331ec44d735258c04a58b8cec797bf5a94"
+        },
+        {
+          "name": "story-conditional-patrol-after-match-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-142-dead-end-alley/story-conditional-patrol-after-match-actual-game-camera.png",
+          "sha256": "fd776b0132ed5ac29855aecc61db8f69f0b7475b2121e58b96362ab2ae23f531"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-144-archie-riverdale",
+      "status": "visually-accepted",
+      "compositionDigest": "b646eed9f0d9478ca1e05acb529b3b3b8b8c62e098e1e7c912180183e7103621",
+      "visualNotes": "Enseigne attachée au mur, ambulance sur la rue arrière. Adultes de petite taille contenus dans le vitrage du diner pendant la course. Le masque suit la fenêtre sous les deux coins et le cadrage large. Aucun débordement sur les façades ou devant les joueurs.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/center.png",
+          "sha256": "03c97cfee4f3510364a94bb04207d1bdf019ab6e3c981a726a46d60a247ad225"
+        },
+        {
+          "name": "ambient-ambient-03-frame-3",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/ambient-ambient-03-frame-3.png",
+          "sha256": "123e6cc3d6b397bfd1f54009de35a585c7523a8f6bb62455a6e80fbeb04a0307"
+        },
+        {
+          "name": "travel-ambient-03-left-corner",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/travel-ambient-03-left-corner.png",
+          "sha256": "34ae6ed4d23542ef63bae47ab6707fb707741c617589abc31dbfebf376ededc6"
+        },
+        {
+          "name": "travel-ambient-03-right-corner",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/travel-ambient-03-right-corner.png",
+          "sha256": "3a2a084eb126b4aa17c2f89ff92cc661d927c6a17f17545605da9364ef7fc01a"
+        },
+        {
+          "name": "travel-ambient-03-wide",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/travel-ambient-03-wide.png",
+          "sha256": "db29832a32efe7eaaa50d3b19bf14d2fd869f6e0fc6b65b53f0a2d27971bbab6"
+        },
+        {
+          "name": "travel-ambient-03-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-144-archie-riverdale/travel-ambient-03-actual-game-camera.png",
+          "sha256": "614b75581434b2080949d85d44940b9d6f18dfb4dcc26a4e906d5cf259c459eb"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "status": "visually-accepted",
+      "compositionDigest": "f83b114e523374584cef938cc3479780753e9a095d0cefb0a1a8af98ee7e6d9b",
+      "visualNotes": "Petit mécanisme sur le plateau élevé, végétation sur la pente arrière et porte enchâssée dans la racine/terrasse. Éléments séparés de la zone jouable. Les formes restent des adaptations déclarées, pas une certification de l’artefact ou de la faune du jeu original.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-146-primal-hunt-pilot-ruins/center.png",
+          "sha256": "ed3948f283f30489bc9fbafa6f940f9d93b7ec952521add0a587184234918623"
+        },
+        {
+          "name": "left-corner",
+          "path": "work-local/v61/qa/renderer/arena-146-primal-hunt-pilot-ruins/left-corner.png",
+          "sha256": "947b3ffc308eb2cde1796d77507c5ce1c151d978c21d6a6f467a008b783bf878"
+        },
+        {
+          "name": "right-corner",
+          "path": "work-local/v61/qa/renderer/arena-146-primal-hunt-pilot-ruins/right-corner.png",
+          "sha256": "7acc402ae01ba4b4efc70514c03c0f0c5a73156bc0bf245776c9662f55df6da3"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-146-primal-hunt-pilot-ruins/actual-game-camera.png",
+          "sha256": "3515003ad1aa840971d44f1fc0dc22a187d4ee47f8a0200d6e7780ba507fadf0"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "status": "visually-accepted",
+      "compositionDigest": "26da51d0bdc2e8aac43e6ba0ebd442ab7a93fc6335b584ea8f380117b4d0df1d",
+      "visualNotes": "Judge anonyme et écran municipal appuyés sur la voie arrière, transport aérien en vol. Échelles compatibles avec la profondeur et appuis stables au zoom. Un seul officier, sans prétendre dessiner une patrouille plurielle complète.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-155-judge-dredd-megacity/center.png",
+          "sha256": "5413b8d63c84638bcf6fe2994bececf27383b88b1ec94c5917802f76c70849da"
+        },
+        {
+          "name": "left-corner",
+          "path": "work-local/v61/qa/renderer/arena-155-judge-dredd-megacity/left-corner.png",
+          "sha256": "58b43d87a2017b4286938d081ce8646207e2632f5f389bd32a82bd69e920afac"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-155-judge-dredd-megacity/actual-game-camera.png",
+          "sha256": "691e74a782cfbf680f32cbf5aec51c95101cb49a10cf4a8b6c6df752fa684e63"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-156-sinestro-earth",
+      "status": "visually-accepted",
+      "compositionDigest": "bc4c9cea15bd38d499a133d8d6d3e51abc6a6dca7d400211ad7afb041cb7263a",
+      "visualNotes": "Extracteur de petite taille fixé sur la partie haute de la façade de la tour gauche, deux constructions jaunes dans des zones séparées du ciel. Le cadrage réel mesuré dans le jeu (centerY362, zoom1.5887) garde l’extracteur visible au-dessus du sol de combat. Ce placement remplace le toit bas droit qui disparaissait derrière le premier plan. Profondeur stable aux deux coins. Aucun visiteur non référencé ajouté.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-156-sinestro-earth/center.png",
+          "sha256": "b5f71e83b1313188a3e47bf73e5540e8a3c4e9c0974edcaac01b100b9b7b15ad"
+        },
+        {
+          "name": "left-corner",
+          "path": "work-local/v61/qa/renderer/arena-156-sinestro-earth/left-corner.png",
+          "sha256": "bfd4549bdd1e6dd1c75c0ba0c5e8e20736984bc91cfe7f7814155049c9586c6a"
+        },
+        {
+          "name": "right-corner",
+          "path": "work-local/v61/qa/renderer/arena-156-sinestro-earth/right-corner.png",
+          "sha256": "4b1bfd0db119bfcb9b617489c6a7213a3b64cbac1ad89e9b73b263e8da8da318"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-156-sinestro-earth/actual-game-camera.png",
+          "sha256": "f2e4295602369aac236bcce1448c1e65504fa1dc41c5c497097e58396925c186"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "status": "visually-accepted",
+      "compositionDigest": "ffc6714b114db9c1833a5b7598baf05b1e8def1af73e19c33bc8415be895d298",
+      "visualNotes": "Garde anonyme sur la galerie gauche, salut distinct au résultat. Appui visible sur la plateforme. Aucun double de son motif d’ambiance à la même place pendant le geste.",
+      "captures": [
+        {
+          "name": "story-victory-salute-center",
+          "path": "work-local/v61/qa/renderer/arena-165-kenner-throne/story-victory-salute-center.png",
+          "sha256": "d20347a6de406ae8e163403d37bc5ab8b5ddba64b42b836d5141556b5be2602b"
+        },
+        {
+          "name": "story-victory-salute-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-165-kenner-throne/story-victory-salute-actual-game-camera.png",
+          "sha256": "bffe72036fe8b7077e608da76cf60353008450eaa29f6f1b3ecccf28c7a0390a"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "status": "visually-accepted",
+      "compositionDigest": "3f77470217011f329c1f1cd4e26fc3d7e444efdd9dcd53f1df010504c9c0134d",
+      "visualNotes": "Hydra équipé conformément aux références inspectées, derrière le petit socle et devant le hangar. Pieds sur le terrain enneigé arrière, contrôle du poignet sans tir. Occlusion ponctuelle par le joueur au coin droit attendue. Détails fins de l’armure et couleurs demeurent une adaptation de sources de faible résolution.",
+      "captures": [
+        {
+          "name": "center",
+          "path": "work-local/v61/qa/renderer/arena-169-extinction-front/center.png",
+          "sha256": "315cfc9e8ea6b6e2807565b228261075ed0a107807f4eb006e19fc49fbff80c3"
+        },
+        {
+          "name": "left-corner",
+          "path": "work-local/v61/qa/renderer/arena-169-extinction-front/left-corner.png",
+          "sha256": "9fc991b48cdd7c8c5ef01383f11decdfe321c57f5948546909429550b5110030"
+        },
+        {
+          "name": "right-corner",
+          "path": "work-local/v61/qa/renderer/arena-169-extinction-front/right-corner.png",
+          "sha256": "cbdbf6620a9b6f631ef3f8db7e59fa57f4c182dd0c73cee5ce4aa691593e0c51"
+        },
+        {
+          "name": "ambient-life-02-frame-3",
+          "path": "work-local/v61/qa/renderer/arena-169-extinction-front/ambient-life-02-frame-3.png",
+          "sha256": "0662f03bb7141224a075b4a0013567964c38540ee5904be6f999eb9e6f4fe0ec"
+        },
+        {
+          "name": "actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-169-extinction-front/actual-game-camera.png",
+          "sha256": "cbef95e46d5c5ab42b08c6c4f27e712941628766cf38d3e41c7a4d44fafb7b5a"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-173-phg-japan",
+      "status": "visually-accepted",
+      "compositionDigest": "e85f2cde3dee6c40e8fce443cd4586fe3c4525062c5baf009b137f61a0afe81f",
+      "visualNotes": "Cloche suspendue à la traverse intérieure gauche, cordes et balancier lisibles. Support cohérent avec le portique et distinct des gardes en arrière-plan. La lanterne passive ne double pas le geste de cloche.",
+      "captures": [
+        {
+          "name": "story-round-bell-center",
+          "path": "work-local/v61/qa/renderer/arena-173-phg-japan/story-round-bell-center.png",
+          "sha256": "619a47420eb5f60ae479acf03349a388248dbe23b8bd884fd6251b92a9d5b32f"
+        },
+        {
+          "name": "story-round-bell-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-173-phg-japan/story-round-bell-actual-game-camera.png",
+          "sha256": "2c47c9064ce17d8e4c8b6db3075c415d17816d9105f20bbdf621a596cfa3dd9c"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-185-training",
+      "status": "visually-accepted",
+      "compositionDigest": "146e3141ade55b6004484fee93d51cedb9cfb4a13e8766448021b2ec6d593739",
+      "visualNotes": "Ancien anonyme sur la galerie haute, instructeur sur un autre support. Le geste de jugement reste à l’arrière-plan et ne masque pas les combattants. Aucun verdict de scénario n’est déduit de cette animation de fin de manche.",
+      "captures": [
+        {
+          "name": "story-round-judgment-center",
+          "path": "work-local/v61/qa/renderer/arena-185-training/story-round-judgment-center.png",
+          "sha256": "e8f1c3c3e1bedf29a3c865b56dced91cddec1896bb34913e4a8b8f074353a29a"
+        },
+        {
+          "name": "story-round-judgment-actual-game-camera",
+          "path": "work-local/v61/qa/renderer/arena-185-training/story-round-judgment-actual-game-camera.png",
+          "sha256": "04f15e6d5a8de264adb300baba164903d3af5d26fd76745c0085bba1dd66b739"
+        }
+      ]
+    }
+  ]
+}

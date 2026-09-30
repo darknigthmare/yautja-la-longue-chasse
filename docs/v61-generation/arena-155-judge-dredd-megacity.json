@@ -1,0 +1,915 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stageId": "arena-155-judge-dredd-megacity",
+  "proposalId": "new-megacity",
+  "workbookStage": "09_STAGES!A36:N36",
+  "workbookLife": "10_VIE_DES_STAGES!A98:N100",
+  "sourceUrls": [
+    "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens",
+    "https://www.simonandschuster.com/books/Judge-Dredd-The-Complete-Case-Files-10/Cam-Kennedy/Judge-Dredd-The-Complete-Case-Files/9781781083697",
+    "https://d1vzi28wh99zvq.cloudfront.net/pdf_previews/204147-sample.pdf"
+  ],
+  "loreLimits": [
+    "Anonymous comic-inspired Street Judge, not named Dredd. Costume adaptation, not a verified exact crossover panel.",
+    "Airbus and abstract municipal display are original background designs; no exact canonical vehicle identity asserted."
+  ],
+  "backgroundReview": {
+    "p0": "public/game/sprites/v55/pit-arenas/arena-155-judge-dredd-megacity/p0-depth.png",
+    "composition": "work-local/v55/stage-renderer/arena-155-judge-dredd-megacity/center.png",
+    "notes": "P0 and actual center renderer opened: grey megablocks, elevated balcony ledges, hazy golden sunset. Patrol must sit on rear balcony surface; original airbus in sky; display anchored on balcony."
+  },
+  "assets": [
+    {
+      "id": "ambient-01",
+      "prompt": "Use case: stylized-concept. Native transparent PNG sprite animation sheet of one anonymous adult Mega-City One STREET JUDGE patrolling a distant balcony. Comic continuity visual vocabulary, not either movie costume, not named Judge Dredd. Exactly SIX independent small full-body drawings in3columns2rows grid1536x1024. Consistent adult human anatomy, both gloved hands and both boots fully visible. Black/navy fitted uniform, red-and-black upper-face helmet with dark visor and small gold central badge, green gauntlets and green boots/kneepads, gold ribbed left shoulder pad and stylized gold eagle right shoulder ornament, gold shield badge with NO readable name. No gun displayed, no firing, no violence; hands relaxed near belt or brief radio gesture. Six genuinely distinct slow patrol gait phases facing right: leftstep, passing, rightstep, passing, scanheadleft, relaxedradiohand; samepersonscale, stable torso volume. Warm amber sunset rimlight, muted blue-grey shadows, detailed painted videogame prop. Eachfigure SMALL at most190wide320high, centered in each512cell, feetlocal420; at least75pixels of actual emptyalpha all cell edges. Fullhelmet and feet nevercropped. No groundshadow, no scenery, no UI/text/grid. Original unnamed patrol actor inspired by comic uniform, not a panel recreation or assertion of named character presence.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-c771286d-4278-4337-a1c7-70adc699532b.png",
+      "workspacePath": "work-local/v61/generated/arena-155-judge-dredd-megacity/ambient-01.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E98"
+      ],
+      "visualNotes": "Viewed native atlas: six patrol/scan/radio poses, full helmet and both boots, two arms and two legs intact. Anonymous comic-inspired uniform, no named badge or firing. Amber rimlight matches inspected stage. Feet must sit on a rear balcony.",
+      "sha256": "c7ae027ff69ff88a34d230168a31755db4d8d36bde9cb74da46bd54f9067bd9d",
+      "bytes": 1883288,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.7454109191894531,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            161,
+            9,
+            285,
+            485
+          ],
+          "alphaBounds32": [
+            163,
+            11,
+            281,
+            481
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            314,
+            494
+          ],
+          "bodyCenterPivot": [
+            303,
+            494
+          ],
+          "opaquePixelCount": 59308,
+          "contentSha256": "acbe65fba03fe399024c16414dee2d19f137961643d4e36b8e2369f17c9f102f",
+          "margins": [
+            161,
+            9,
+            66,
+            18
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            133,
+            8,
+            220,
+            490
+          ],
+          "alphaBounds32": [
+            135,
+            11,
+            218,
+            486
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            307,
+            498
+          ],
+          "bodyCenterPivot": [
+            242.5,
+            498
+          ],
+          "opaquePixelCount": 55509,
+          "contentSha256": "0117d0a599b427c87102ba71bb7907e109f2a75bbe985c4ef276018d076bb072",
+          "margins": [
+            133,
+            8,
+            159,
+            14
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            76,
+            10,
+            298,
+            483
+          ],
+          "alphaBounds32": [
+            78,
+            12,
+            294,
+            479
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            230,
+            493
+          ],
+          "bodyCenterPivot": [
+            224.5,
+            493
+          ],
+          "opaquePixelCount": 59326,
+          "contentSha256": "a2b95779b545d3c30d8c60bab5f9cba4e96faf52f0f3910952a8b9c199a8bf7b",
+          "margins": [
+            76,
+            10,
+            138,
+            19
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            7,
+            273,
+            483
+          ],
+          "alphaBounds32": [
+            175,
+            9,
+            268,
+            479
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            318.5,
+            490
+          ],
+          "bodyCenterPivot": [
+            309,
+            490
+          ],
+          "opaquePixelCount": 55265,
+          "contentSha256": "f48afd5b52309848dd962529df8251b6e4d58aa1d37ebcf3404c731846538cc1",
+          "margins": [
+            173,
+            7,
+            66,
+            22
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            3,
+            197,
+            490
+          ],
+          "alphaBounds32": [
+            169,
+            8,
+            188,
+            479
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            259.5,
+            493
+          ],
+          "bodyCenterPivot": [
+            261,
+            493
+          ],
+          "opaquePixelCount": 58582,
+          "contentSha256": "4da82b5779ca5692732e0f39444179b9382638aa4d2592b10e5d03a22f6dfaf5",
+          "margins": [
+            163,
+            3,
+            152,
+            19
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            116,
+            7,
+            212,
+            484
+          ],
+          "alphaBounds32": [
+            118,
+            9,
+            208,
+            479
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            213.5,
+            491
+          ],
+          "bodyCenterPivot": [
+            221.5,
+            491
+          ],
+          "opaquePixelCount": 57617,
+          "contentSha256": "2561c3b7ea3ec1b055f40d265a870444031d87b9b151b41ce85daf7d980c8bec",
+          "margins": [
+            116,
+            7,
+            184,
+            21
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 0,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "ambient-02",
+      "prompt": "Use case: stylized-concept. A native transparent PNG animation atlas of ONE original civilian aerial transit pod for distant Mega-City One skyline, comic-book science fiction painted detailed videogame art. Exactly six SMALL isolated side-profile drawings arranged three columns by two rows on1536x1024. Each512square cell contains entire unarmed rounded ochre/grey futuristic airbus with dark glass windows and two clearly attached tiny antigravity stabilizer fins. Original generic vehicle, no exact canonical model claimed. Warm amber hazy late-afternoon illumination and restrained blue-grey lower shadows matching a sunset megablock stage. Animate six genuinely different small stabilizer angles and contained engine-vane rotations, coherent slow hover pitch. Same vehicle shape, scale and facing-right orientation in every frame. Keep vehicle no more than300pixelswide140high centered in eachcell, at least95pixels empty true alpha all four edges. No people visible, no gun, no lasers, no exhaust trail, no scenery, no ground, no text, no UI, no gridline, no border, no checkerboard pixels. Transparent background with only six vehicles.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-9f490f1a-9e4a-4cb6-8613-5ab25186a079.png",
+      "workspacePath": "work-local/v61/generated/arena-155-judge-dredd-megacity/ambient-02.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E99"
+      ],
+      "visualNotes": "Viewed native atlas: six distinct stabilizer and ducted engine-vane angles, same intact original civilian airbus. No weapons; sunset palette matches stage. Sky placement only, not on combat floor. Vehicle pivot refined to fixed-upper-cabin to avoid animated-part anchoring. Vehicle pivot refined to fixed-upper-cabin to avoid animated-part anchoring.",
+      "sha256": "7b649410e19a10a4167f55080a29440794a38858a895eb3f80a62de8d74db9cb",
+      "bytes": 1782728,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.697271982828776,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            193,
+            467,
+            223
+          ],
+          "alphaBounds32": [
+            40,
+            195,
+            463,
+            220
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            274.5,
+            265
+          ],
+          "bodyCenterPivot": [
+            271,
+            416
+          ],
+          "opaquePixelCount": 70997,
+          "contentSha256": "029b888648646853b925b5d838d02f501ffb0f461f51c98ae6efc62ff9355f27",
+          "margins": [
+            38,
+            193,
+            7,
+            96
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              55,
+              494
+            ],
+            "yBand": [
+              215,
+              305
+            ]
+          }
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            45,
+            193,
+            451,
+            232
+          ],
+          "alphaBounds32": [
+            47,
+            195,
+            447,
+            228
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            266,
+            265
+          ],
+          "bodyCenterPivot": [
+            270,
+            425
+          ],
+          "opaquePixelCount": 71906,
+          "contentSha256": "56543fad47d6c967d2868349240ae27c28a828dc26693e9cfb6ca7c32ec910f6",
+          "margins": [
+            45,
+            193,
+            16,
+            87
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              47,
+              485
+            ],
+            "yBand": [
+              215,
+              305
+            ]
+          }
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            193,
+            452,
+            219
+          ],
+          "alphaBounds32": [
+            38,
+            195,
+            448,
+            215
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            257.5,
+            265
+          ],
+          "bodyCenterPivot": [
+            261.5,
+            412
+          ],
+          "opaquePixelCount": 71994,
+          "contentSha256": "8a768a9f97b02d10b69918a486fa4f55fb6e476c54b71e985169cc5f4d0422e3",
+          "margins": [
+            36,
+            193,
+            24,
+            100
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              38,
+              477
+            ],
+            "yBand": [
+              215,
+              305
+            ]
+          }
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            100,
+            451,
+            215
+          ],
+          "alphaBounds32": [
+            51,
+            102,
+            448,
+            211
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            271,
+            172
+          ],
+          "bodyCenterPivot": [
+            275,
+            315
+          ],
+          "opaquePixelCount": 71709,
+          "contentSha256": "11a6a40489d0c7b6fc3b5498983205752e7d5ca3672bfbd0840d88b8f38b7d49",
+          "margins": [
+            50,
+            100,
+            11,
+            197
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              51,
+              491
+            ],
+            "yBand": [
+              122,
+              212
+            ]
+          }
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            98,
+            461,
+            210
+          ],
+          "alphaBounds32": [
+            34,
+            100,
+            456,
+            207
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            262,
+            170
+          ],
+          "bodyCenterPivot": [
+            262,
+            308
+          ],
+          "opaquePixelCount": 70311,
+          "contentSha256": "60682a513ab4d861935805fec87f63d74dba5f4bb85158f8d27294b0e2c17425",
+          "margins": [
+            32,
+            98,
+            19,
+            204
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              43,
+              481
+            ],
+            "yBand": [
+              120,
+              210
+            ]
+          }
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            99,
+            457,
+            215
+          ],
+          "alphaBounds32": [
+            31,
+            102,
+            454,
+            210
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            257.5,
+            172
+          ],
+          "bodyCenterPivot": [
+            259,
+            314
+          ],
+          "opaquePixelCount": 70373,
+          "contentSha256": "4fc532fcf156ad2c2efeb6ce828e557f00cba519bbe6b2aa8c50de6d9d177d13",
+          "margins": [
+            31,
+            99,
+            24,
+            198
+          ],
+          "pivotEvidence": "Measured fixed upper cabin band20..110pixels below roof; engine/stabilizer band excluded. Pivot70pixels below actual roof.",
+          "cabinAnchorMeasurement": {
+            "xBounds": [
+              38,
+              477
+            ],
+            "yBand": [
+              122,
+              212
+            ]
+          }
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "anchorKind": "fixed-upper-cabin"
+    },
+    {
+      "id": "ambient-03",
+      "prompt": "Use case: stylized-concept. Transparent PNG sprite animation sheet for a distant municipal information display on a Mega-City One balcony. Exactly SIX isolated drawings in a3column2row grid,1536x1024, each512x512cell. One small upright rectangular dark bronze-grey display cabinet supported by a short sturdy metal pedestal, original anonymous municipal infrastructure. Warm hazy amber sunset edge light, painterly detailed science-fiction comic videogame background prop. Across six frames, its matte cyan/amber screen shows distinctly evolving abstract transit-map routes, a small moving train icon and simple geometric flow-bars; absolutely NO words, letters, numbers or logos. Same housing perspective and shape each frame, no camera movement. Side-view very slight facade perspective suitable2D fighting arena; whole cabinet and base no more than200wide300high centered local256,260, with at least90pixels empty alpha around every edge. Distinct subtle diagram animation, NO flashing beacon, NO bright bloom, NO projection outside cabinet. Genuine transparent background, no scene, no groundshadow, no grid, no labels.",
+      "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f2b3-36a8-7413-840e-ad2db8ead848\\exec-acb2a26e-afde-424a-9187-2b252e3ba9bc.png",
+      "workspacePath": "work-local/v61/generated/arena-155-judge-dredd-megacity/ambient-03.png",
+      "mode": "built-in-imagegen",
+      "transparentRequested": true,
+      "status": "accepted",
+      "sourceCells": [
+        "10_VIE_DES_STAGES!E100"
+      ],
+      "visualNotes": "Viewed native atlas: six distinct abstract route maps and bars, intact shared cabinet and pedestal, no readable text. Small faint edge halo measured max alpha3, no silhouette truncation. Base must contact rear balcony.",
+      "sha256": "3392283955cb4f111b09d7040a905d8b7fd4b001fcdfac4c8abeb8b071c108f9",
+      "bytes": 1879867,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "transparentFraction": 0.6210149129231771,
+      "copyByteIdentical": true,
+      "columns": 3,
+      "rows": 2,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            0,
+            252,
+            497
+          ],
+          "alphaBounds32": [
+            165,
+            10,
+            247,
+            485
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            284,
+            497
+          ],
+          "bodyCenterPivot": [
+            287.5,
+            497
+          ],
+          "opaquePixelCount": 94554,
+          "contentSha256": "732efba38e115402312ac98dc576e0b96f65aed6ec31207970930aa9d18db910",
+          "margins": [
+            162,
+            0,
+            98,
+            15
+          ]
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            8,
+            252,
+            488
+          ],
+          "alphaBounds32": [
+            132,
+            10,
+            248,
+            485
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            253,
+            496
+          ],
+          "bodyCenterPivot": [
+            255.5,
+            496
+          ],
+          "opaquePixelCount": 94424,
+          "contentSha256": "e5dfed302ea1c6e53c7cf51583cf85994cc952d95c1768a3a1ef1e9252d1c443",
+          "margins": [
+            130,
+            8,
+            130,
+            16
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            8,
+            253,
+            487
+          ],
+          "alphaBounds32": [
+            100,
+            10,
+            248,
+            485
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            222,
+            495
+          ],
+          "bodyCenterPivot": [
+            223,
+            495
+          ],
+          "opaquePixelCount": 94442,
+          "contentSha256": "1504b4540a9242fd22c66306f397a15ac7deb5a7777a746a0f537899054b846a",
+          "margins": [
+            97,
+            8,
+            162,
+            17
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            6,
+            251,
+            489
+          ],
+          "alphaBounds32": [
+            165,
+            9,
+            247,
+            486
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            287.5,
+            495
+          ],
+          "bodyCenterPivot": [
+            288,
+            495
+          ],
+          "opaquePixelCount": 94797,
+          "contentSha256": "894308a313ee8f2cc7b5d0caae2a3c78b7045d0281ae009c2a8fe322f6bf0e7d",
+          "margins": [
+            163,
+            6,
+            98,
+            17
+          ]
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            7,
+            251,
+            489
+          ],
+          "alphaBounds32": [
+            132,
+            9,
+            248,
+            486
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            253,
+            496
+          ],
+          "bodyCenterPivot": [
+            256,
+            496
+          ],
+          "opaquePixelCount": 94499,
+          "contentSha256": "85d4c4155a05154ea3b1f9de95649be09a0021f24ff8fb88855aa6d87859fe97",
+          "margins": [
+            131,
+            7,
+            130,
+            16
+          ]
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            8,
+            252,
+            487
+          ],
+          "alphaBounds32": [
+            100,
+            9,
+            248,
+            486
+          ],
+          "edgePixelsAbove32": 0,
+          "pivot": [
+            222.5,
+            495
+          ],
+          "bodyCenterPivot": [
+            223.5,
+            495
+          ],
+          "opaquePixelCount": 94551,
+          "contentSha256": "a81cade0fcbead7cdd9ed074e70e9858cef5e96c5c7e0857edfefd84c9901d21",
+          "margins": [
+            98,
+            8,
+            162,
+            17
+          ]
+        }
+      ],
+      "uniqueCellDrawings": 6,
+      "edgeAlphaMeasurements": [
+        {
+          "max": 3,
+          "count": 3
+        },
+        {
+          "max": 2,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        },
+        {
+          "max": 1,
+          "count": 0
+        }
+      ],
+      "edgeHaloReview": {
+        "accepted": true,
+        "notes": "All six drawings visually inspected at native output. Any edge pixels are faint translucent isolated halo (maximum alpha 3/255), with no silhouette or solid form cut; zero edge pixels above alpha32. Exact alpha>2 bounds retained and PNG bytes untouched."
+      }
+    }
+  ],
+  "artStatus": "accepted-3-ambient-awaiting-runtime-composition"
+}

@@ -1,0 +1,3858 @@
+{
+  "result": "PASS",
+  "checkedAt": "2026-09-30T19:04:11.186Z",
+  "ambientStages": 8,
+  "ambientSheets": 24,
+  "conditionalStages": 5,
+  "conditionalSheets": 5,
+  "nativePngs": 29,
+  "nativeDrawings": 174,
+  "newlyIntegratedSheets": 27,
+  "reusedV60Sheets": 2,
+  "bytes": 55366552,
+  "released75V60EventsUnchanged": true,
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b"
+  },
+  "checks": [
+    {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-139-batman-gotham-rooftops.json",
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+      "sha256": "db88a2cc29db2790076faad0de56921defa2468e05da7456f374dbbe2fa649c2",
+      "bytes": 1554520,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8510354359944662,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            251,
+            464,
+            169
+          ],
+          "contentSha256": "bca2d81f25983f61afe63e79b9ad0b35282148a30426df2c1673fe6292b0cc13",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            70,
+            216,
+            432,
+            204
+          ],
+          "contentSha256": "d3229505d9327dd4053db9519ce979fc8351a87547f12c793533ff7c66ac4044",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            194,
+            435,
+            228
+          ],
+          "contentSha256": "aac53c2efadf88943a2a1501fa0be4f9d1fa20c2fa17f7a9954b1768d8aa1d00",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            180,
+            453,
+            207
+          ],
+          "contentSha256": "f1e2e59adb5d7490da76c2f2c7727475d00e102e1a53eb1c834003724ad5e830",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            193,
+            458,
+            191
+          ],
+          "contentSha256": "8b56efc9ab8c8344b0a251f9cd2e8f76b9e88bc865188f8ed4a52ca774d835ce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            174,
+            443,
+            210
+          ],
+          "contentSha256": "1398c9a160720efc306cfa4bc508bcfdd0fcadd0ad5c9a6cc0d65e786ee96ec3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-139-batman-gotham-rooftops.json",
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+      "sha256": "f5b7d61870db9776c3683e5efccb29dc99862523b2d365c56522e9460e5a4f16",
+      "bytes": 1698501,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8058764139811198,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            212,
+            27,
+            173,
+            463
+          ],
+          "contentSha256": "b03cd41265bbcc6de666e95ee6638e6483b1038d2a3c52e4c3052aa92a0227bf",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            164,
+            27,
+            176,
+            463
+          ],
+          "contentSha256": "d995e85157afc2fc6ba952c401ae403432fcfab70f1edfffb4e4a54af3bd6e9b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            167,
+            24,
+            173,
+            466
+          ],
+          "contentSha256": "62ed7e75f4f8a810e86722e29cbdc63b3ee3895fabb495e8fe3647222aee707c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            210,
+            24,
+            169,
+            466
+          ],
+          "contentSha256": "655a445a07b98fb66b64970f464be82fd06bd3e84c35916ac0ad895712a850ba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            176,
+            34,
+            174,
+            456
+          ],
+          "contentSha256": "8f308fe032f11afd0c3e83e8e1999a316356cd4507b0d0688775ce575ab13234",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            28,
+            173,
+            462
+          ],
+          "contentSha256": "e955e248657e76b22a8ad4e6ca7e4d1c23ca712589254a0a6865bed6b3be1585",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-139-batman-gotham-rooftops.json",
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+      "sha256": "5fdc4dd70ebcee5aaa84cff914ea09671afac1023d8646bec5aea2eceb2ad56f",
+      "bytes": 2054559,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7156206766764324,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            91,
+            390,
+            388
+          ],
+          "contentSha256": "2e3fe657460e1699ebb137c99d6d65fa16dd4541e690c310b9ff299c10ea17f6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            89,
+            421,
+            371
+          ],
+          "contentSha256": "b1d105e9508dff480fc027c16d2448993c6c18fd1993acc1c6e40c26994571a7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            89,
+            461,
+            369
+          ],
+          "contentSha256": "4b4584cefeeb9f476a2ea8426eb885df36507f269d54c9fdb5837f27072123aa",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            535,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            64,
+            468,
+            368
+          ],
+          "contentSha256": "a94d12e24b8c9828577dba05e7186ec5d51e944aba534f58fa282b1b158ad67a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            535,
+            512,
+            489,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            64,
+            394,
+            367
+          ],
+          "contentSha256": "bf64f4ef21b4cc574168c74512c11e3c487d2823fabdf4adf155537c0f607ec0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            66,
+            391,
+            368
+          ],
+          "contentSha256": "5c5f15024301dfa691c79977a23e598c5824310ab1e077276a901165de5fc13e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-140-bad-blood-pine-barrens.json",
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+      "sha256": "5eb4db14eeb4250d0193d5560860f4c899d88844bff6b7de73afe74028719921",
+      "bytes": 1611273,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8761507670084635,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            178,
+            274,
+            251
+          ],
+          "contentSha256": "d25cf45d631cab3f9c542eb9865f729764bed5f27679aeb6828c383cf3d7152d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            190,
+            283,
+            228
+          ],
+          "contentSha256": "4b9d95bc1998a3c4c5cd26ecfba19cf2b816cb0b25977a3cd67fe701e508d1ab",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            196,
+            307,
+            246
+          ],
+          "contentSha256": "87fd3cc1120e103f5ac11632f61bfaaa5cfe50ed6d610ed7a2236c0a89ca93ab",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            166,
+            276,
+            223
+          ],
+          "contentSha256": "c0647147e15861dfa87a3d041fba8795d9769d961ffd53ada63b1bbb6a3a96d0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            125,
+            172,
+            277,
+            225
+          ],
+          "contentSha256": "a2bfd86dda35d086ac279cb8be3eecf123937b02725cfc0ef930a178a7d360ed",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            137,
+            153,
+            290,
+            251
+          ],
+          "contentSha256": "00cfc5acd5b63b207c6205bda6855efcbd9d540adcdf8e344a5b4e8217f3043d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-140-bad-blood-pine-barrens.json",
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+      "sha256": "2661b91ab3ea2c851ff404539a0fbb2fe7e4e722f96b8c3c5c694bb85624c0d9",
+      "bytes": 2357706,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6573842366536458,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            129,
+            450,
+            335
+          ],
+          "contentSha256": "af0750265ff3f9fa542c3252cd762fd3de78c0aba6bc98633814fb4383fc3e0e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            160,
+            430,
+            304
+          ],
+          "contentSha256": "f7c574ed6c45d6ce7f11d4ac35883e6ce9318b06bfe5f373e09c3b033b71446f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            146,
+            425,
+            318
+          ],
+          "contentSha256": "a69d68195aed28a3780df58aab1a22928e1f9c3638141a4db2e1a9ff720e765b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            65,
+            455,
+            365
+          ],
+          "contentSha256": "471acbe88ca6597a8c3f28a10f83dbc975ce988601e6a985c655009cfd8e27e6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            97,
+            408,
+            334
+          ],
+          "contentSha256": "066966082acad5dee09cc8340634087340f05347fd0ae7f64c4e3bd81f64ad92",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            84,
+            436,
+            345
+          ],
+          "contentSha256": "147f1bdbe0bc6a238af3f6c6ffc085bac57d348057e9c74863a3843078726a2c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-140-bad-blood-pine-barrens.json",
+      "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+      "sha256": "be1f842d0ef0cd5a3ff62f1c15fcc5107bc69602fb0d0c73f137bb5a34c36a43",
+      "bytes": 1696709,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7818876902262369,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            198,
+            251,
+            274
+          ],
+          "contentSha256": "0188d9e874d88e2b70e5314349285821de52360516c1fb5a50868be30f694d41",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            126,
+            84,
+            250,
+            387
+          ],
+          "contentSha256": "124155bd26501da013c22ed222c9a75a94af033f794d71deaa1186d7473ed33c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            9,
+            312,
+            464
+          ],
+          "contentSha256": "de76c03d2a33f592be4827fca25126f8437804e52e97b0a07a6dda4d00390c00",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            560,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            2,
+            416,
+            473
+          ],
+          "contentSha256": "33ca06f9570aa7b1a51e936bab1c3a638cdabe20241af2df60ba9eb22c22cf86",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            560,
+            512,
+            520,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            13,
+            425,
+            461
+          ],
+          "contentSha256": "2fd43f6212306b8ea9cebf7e13b9eab4eecc3cf06c28a99267cac8edfe15f328",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            41,
+            371,
+            435
+          ],
+          "contentSha256": "ef6071952453d3f4bcd129ee64b2ae87bf761c0181bce1dc0879bad1f58709a4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-142-dead-end-alley.json",
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+      "sha256": "6cb701e33a943640cf2ebdaffc2bad20f73c42d19fb6ac6473ac549bd649e376",
+      "bytes": 1326842,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8367932637532552,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            144,
+            475,
+            313
+          ],
+          "contentSha256": "8f1dff61d3bd364b0498f72f38fd473b88f5442054ad09d36ba433b7753554ac",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            61,
+            141,
+            451,
+            318
+          ],
+          "contentSha256": "8de038bc4a94549dbac1690049565ad66b07505c8409a7ff36524e011cb779ed",
+          "borderPixels": 5,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            55,
+            143,
+            434,
+            315
+          ],
+          "contentSha256": "beaf05293a073b81c57451826ee5c0f82955d2e838fd5cd13553597604327eaf",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            106,
+            471,
+            309
+          ],
+          "contentSha256": "0491d661a73ec2dadf0619d5537810dff8604dc0136dcba6e968d73a8ff1e267",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            108,
+            446,
+            308
+          ],
+          "contentSha256": "464e6ce033d1ec78651531705239a7f789d7e1179e2806018073217dac8362c4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            92,
+            432,
+            324
+          ],
+          "contentSha256": "84b9787c1ce60f8eea688940bd3172c80d51e3eee46bef97bdec3bab94e3cf12",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-142-dead-end-alley.json",
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+      "sha256": "cc2d5a3431c18a5e9b3a042659c9e8be3b0e8e4e3e94002f06d3b0b8cd764527",
+      "bytes": 1425576,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8767814636230469,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            117,
+            196,
+            293
+          ],
+          "contentSha256": "3c4cc0d372fdad336d9de6eda840fcb63438d603b208f2327e72e6c117b8d331",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            122,
+            195,
+            308
+          ],
+          "contentSha256": "58eba732a229e8f0ec49b3a979a94683be47092ec0177c8d97634f4c2b689d13",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            162,
+            196,
+            285
+          ],
+          "contentSha256": "8e2a0bc34c406401cc2cf37a75ec4cab87f0993a932496f142c2edb9b85a1b0b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            172,
+            115,
+            197,
+            299
+          ],
+          "contentSha256": "68949c6911f4562b389cc32c9be09badc8b4f1415cbdc2cbcd608fb0ad300d0b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            171,
+            95,
+            195,
+            267
+          ],
+          "contentSha256": "44fca65385f616a4b48615a07c025484044776d568dd494e1125b0601e984e63",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            106,
+            194,
+            277
+          ],
+          "contentSha256": "b91bfef6d43d2fd418b38f7d0d3f67e09ad59f3774c1271518266312112c94ff",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-142-dead-end-alley.json",
+      "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+      "sha256": "26357dc10b21f7308011fdcf02e3fdb3ddecf5e9bbcdcb7227eab8513a24666d",
+      "bytes": 1605190,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8658784230550131,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            127,
+            23,
+            220,
+            471
+          ],
+          "contentSha256": "0168bcc1039941f095bc79cf667743d351d08c462cea1f41a9ec04c80332dbb6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            23,
+            228,
+            478
+          ],
+          "contentSha256": "8e7f967ec6b11b5687a76a86899ce6f48e68827eca7bcb99704b72a0fd52cb4b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            223,
+            23,
+            238,
+            442
+          ],
+          "contentSha256": "a0763f6d7cbc01b78567452928abc77342e678334f0803a8a9994e657c5cfeb5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            24,
+            255,
+            448
+          ],
+          "contentSha256": "c1db6d6fae0b9e63e7df0915c015a2a27fa08d0242c38a8b78d3899c81066129",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            568,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            24,
+            345,
+            386
+          ],
+          "contentSha256": "5f3bebd08a20f82802d2b02d77d1f52beee83adca6430de899184afdb38c5f33",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1080,
+            512,
+            456,
+            512
+          ],
+          "alphaBounds": [
+            166,
+            24,
+            236,
+            448
+          ],
+          "contentSha256": "5bcdaf67d0524256aa120a8cac059f2ba13798cadeed4d71e9ea284fb7096f31",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-144-archie-riverdale",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-144-archie-riverdale.json",
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+      "sha256": "80a242611cb94ef9ac9bffc3f8c339911d5dd763a7088c764cf287dda635af3f",
+      "bytes": 1721904,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8280016581217448,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            118,
+            254,
+            290
+          ],
+          "contentSha256": "b5bb04977cd25ac4b898866993310d0935d465d3a86dfebb42167cf0ebcdd9ae",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            132,
+            113,
+            303,
+            300
+          ],
+          "contentSha256": "6d6d21ecbbb50bb048682ccf8666a95b4cc1d63e3f042406b44f69e893c6b553",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            105,
+            328,
+            301
+          ],
+          "contentSha256": "d834c3db14f98a300bfadbf2987e683c9e5b716a08ea372c6f8c20463850871e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            140,
+            82,
+            272,
+            302
+          ],
+          "contentSha256": "fc3ff2b264568860edfc8580c117d06d0f545a7a48741371f1980e51deb91d71",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            113,
+            80,
+            269,
+            319
+          ],
+          "contentSha256": "76175298370cea93a5bc2ad392eb7615b166b2d2da68a5e0141a18d606a7ca14",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            82,
+            250,
+            302
+          ],
+          "contentSha256": "8de7be46dfb1cded9245d97beac6f0c71cd1725f9c6897b6f820b09921bab6c8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-144-archie-riverdale",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-144-archie-riverdale.json",
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+      "sha256": "9cfe07467024e40039538e813160f30127be624a850f89e32a360c6f187c04b0",
+      "bytes": 1594160,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7685286204020182,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            195,
+            426,
+            208
+          ],
+          "contentSha256": "0c443fac9541097bc9718a9f3ebc313710f3875cc9ccf9c9e3b59a88df5f2a02",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            198,
+            426,
+            205
+          ],
+          "contentSha256": "5195f64ba55c806d5d733f2f9ec0e4b200722d25c9b3c9ae3314defa8390e99a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            196,
+            427,
+            207
+          ],
+          "contentSha256": "d78096c64e50432c912445b4d0897e4fb8bd26a5441499f2b909ae2c1ad14842",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            60,
+            106,
+            426,
+            203
+          ],
+          "contentSha256": "bfe1d487a7aec321aef2c91aa0413843776d810bf00c106bfcc8972150a24434",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            106,
+            427,
+            204
+          ],
+          "contentSha256": "f1eb46ffc1711ee70667a8a3d171fa6693931b55d44b11d5bcdafa642c97c5d3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            103,
+            426,
+            206
+          ],
+          "contentSha256": "701e3d9f00764c256d17b78498eb24727ab732a8b9e6de01a785dbde6f74c010",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-144-archie-riverdale",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-144-archie-riverdale.json",
+      "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+      "sha256": "6edbcafc9e4cc0089c9b49eddffa0a161ec77293e8a848001ddae2a5a26b6118",
+      "bytes": 1939237,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.736132303873698,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            66,
+            434,
+            397
+          ],
+          "contentSha256": "8e36d8a413fffd6c03b3a6c8c39d88006990a4e3ab551da09bd9d941c8e9c26a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            65,
+            385,
+            397
+          ],
+          "contentSha256": "95b964b34522a862eb842a0c8655c386a77fce72cf4b6599e58e491d9610fea5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            66,
+            378,
+            397
+          ],
+          "contentSha256": "b9e3f8ed05f118b3212b391ee7afe6a39dc0bc14aef72456a8707d07cbbdd73f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            33,
+            41,
+            441,
+            403
+          ],
+          "contentSha256": "4143a8ff3feac198fed45566b1ae8c157989dc788ab1dd807b113b65dda1c9ee",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            38,
+            394,
+            397
+          ],
+          "contentSha256": "ab68f8bb5bfdacda4cb4d7d4aba0240cfa509612c3a4081cc7449770437c486e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            26,
+            43,
+            450,
+            395
+          ],
+          "contentSha256": "e4abb40d54a5fec2efb11e374d6fbc6a0380e1ad30634ee29e326b59575d69ec",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-146-primal-hunt-pilot-ruins.json",
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+      "sha256": "7641c5ff3700cb682be7c47396cb8a7a9c93db1c20406bf2e0ce9aa6f3bbb230",
+      "bytes": 2361940,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.5921084086100261,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            129,
+            463,
+            333
+          ],
+          "contentSha256": "4bc7c4d790ff69e3212545cf922d1d3808d14eaf35db99e2a26510c12fab6df5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            122,
+            464,
+            341
+          ],
+          "contentSha256": "2642555033814076aa35c4b1db7b177033810f7067cbd4df27c96ee898b60dce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            112,
+            464,
+            350
+          ],
+          "contentSha256": "049a6197ffbdb5804d50a6a9a7651934529efb8f629bd51236bbec74e4445d0f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            98,
+            464,
+            346
+          ],
+          "contentSha256": "40dd6a947df5d99d461476e32e93c66a3f3f8c8006af17415f52773ae30b572b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            97,
+            465,
+            348
+          ],
+          "contentSha256": "1e88192a23ef05f2ad48a16b825f3ac22d79ef5ab878e4d2a460418ed154b260",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            100,
+            467,
+            346
+          ],
+          "contentSha256": "a11e731c0c5b4dd0f0cb626296f67b6af0c3c45a57603dee1ecedd1019715c96",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-146-primal-hunt-pilot-ruins-ambient-02.json",
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+      "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+      "bytes": 2358401,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6679286956787109,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            63,
+            87,
+            412,
+            389
+          ],
+          "contentSha256": "034399167a76c4b1ab61b2cb66d6d1a6cb96af511b3e80fbeb0bc811903e9751",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            116,
+            438,
+            361
+          ],
+          "contentSha256": "bdb4f9c596ce7c4dd05173a23683a333aac98c1229192f3c67cdbf4e3f9215b6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            125,
+            436,
+            352
+          ],
+          "contentSha256": "56be488b8ddb273fa70764577820ef0923110ed4b60196538569f4b6eec2bbd7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            67,
+            79,
+            415,
+            377
+          ],
+          "contentSha256": "f3bad60485e5071cd7f969f3c8a91b1077996cdcff9a3117cc6c65535e3bb9c8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            75,
+            412,
+            381
+          ],
+          "contentSha256": "761ce509de9927343d89fbc5e45e9f9d9c0c1a1494d36d29c95f7d2b64f43dbd",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            59,
+            412,
+            397
+          ],
+          "contentSha256": "b99213dd2973b1896712ced22dde6228ffa10f35ae00c64d46bb9b6cbaf44b54",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-146-primal-hunt-pilot-ruins-ambient-03.json",
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+      "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+      "bytes": 2793922,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.49005063374837243,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            37,
+            447,
+            427
+          ],
+          "contentSha256": "d8ebef28e63b8b56f729e614a786c78bce1dcdcc777feba3cb250bf13516c88d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            37,
+            450,
+            427
+          ],
+          "contentSha256": "8193fb710a9f5a7e96a2f3fe1f7b244380fc007e3ba54e00970ac7e6e1a085c9",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            39,
+            448,
+            425
+          ],
+          "contentSha256": "1c10a685e0ba1ce4192a6ffa749fbdc86d13ccb3ad332aeb0c8deeb02271883a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            23,
+            447,
+            425
+          ],
+          "contentSha256": "d57d2276c8c53fdf36e6594f1dc6bb03a9da39a3196a77e4863227dd149cc759",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            22,
+            447,
+            426
+          ],
+          "contentSha256": "f30f977fc6aa1e6fd022e035945a55a5dcce9b00d51d5267577c0b0d6242866c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            23,
+            445,
+            425
+          ],
+          "contentSha256": "9cc9327b92affa15d496cde0cd618f75defaa388471bda6ed53886492d6a62cc",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-155-judge-dredd-megacity.json",
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+      "sha256": "c7ae027ff69ff88a34d230168a31755db4d8d36bde9cb74da46bd54f9067bd9d",
+      "bytes": 1883288,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7802689870198568,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            161,
+            9,
+            285,
+            485
+          ],
+          "contentSha256": "3f5cf5b3ecd4149a3d291d17a40923f1bb452518019d7bf6ef4b5c3d22614c6c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            133,
+            8,
+            220,
+            490
+          ],
+          "contentSha256": "dbd33d265868301059368e54deb6bd05d84ab0f5ae7fd3c2b4825cd8fd762e69",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            76,
+            10,
+            298,
+            483
+          ],
+          "contentSha256": "a3d4edbaa59a4fdd58df8108363abd0b7456e4e1d7afbdcfaaafb6c248ae7719",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            173,
+            7,
+            273,
+            483
+          ],
+          "contentSha256": "d78138c691a3b6d4737efe4990286163e5f2306601763855571da8895547f645",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            3,
+            197,
+            490
+          ],
+          "contentSha256": "b5af3fb409a23b9337869ad9afa41e278ed05471502549b36bf2837673f4aa82",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            116,
+            7,
+            212,
+            484
+          ],
+          "contentSha256": "fc611640fab590bee25cf6fa0f70fd6b3728f9f521650a7b3f034a3fff1b24d7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-155-judge-dredd-megacity.json",
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+      "sha256": "7b649410e19a10a4167f55080a29440794a38858a895eb3f80a62de8d74db9cb",
+      "bytes": 1782728,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7283363342285156,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            193,
+            467,
+            223
+          ],
+          "contentSha256": "4b479d2544e741e5ea3eaebb6b594641afab8004db54ac01ccb9296972ddec85",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            45,
+            193,
+            451,
+            232
+          ],
+          "contentSha256": "82330a631465671287ea3d1617c9a7d6b79680a48d1a845bdb47c26d7d2c53a2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            193,
+            452,
+            219
+          ],
+          "contentSha256": "33e4064e8cc649e67896970342e10b4afb683664585ec3c97f281ad1a8aeb6f2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            100,
+            451,
+            215
+          ],
+          "contentSha256": "a3ebad20ea6711c29d4b4b280053ce705edf7aae341fb8e20b3b89b32956c5b8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            32,
+            98,
+            461,
+            210
+          ],
+          "contentSha256": "9e1d2d602d7fc33fd42d70c91586253c9e1a87e55bb651ad8c6ee88b4c932cfb",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            99,
+            457,
+            215
+          ],
+          "contentSha256": "b0ef5b661fe9de09167cc42ac7a8a9327b61948c04e40bb1beb62d211697b3ef",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-155-judge-dredd-megacity.json",
+      "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+      "sha256": "3392283955cb4f111b09d7040a905d8b7fd4b001fcdfac4c8abeb8b071c108f9",
+      "bytes": 1879867,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6393413543701172,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            0,
+            252,
+            497
+          ],
+          "contentSha256": "923e71b4c09a8cfa8f83edc7e4315f82cce292d8d485c899e7e7ab15fa0f853a",
+          "borderPixels": 3,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            130,
+            8,
+            252,
+            488
+          ],
+          "contentSha256": "f8e6239d07d7072e093197e39d82d1a0aa872d96d53110eaea802d584eef3912",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            97,
+            8,
+            253,
+            487
+          ],
+          "contentSha256": "2675108a3fb4ab13edaa533231ded7a09df935981af773cf209c87c315c6784f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            6,
+            251,
+            489
+          ],
+          "contentSha256": "39e30f091da7f0d95ce2233e5d64497495c3516481ac43fb3db1b573a5c3db71",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            131,
+            7,
+            251,
+            489
+          ],
+          "contentSha256": "272b775ceb98da6ae9b8897d5d0387e9a1a38a1330c38733118289c592cb3ad4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            8,
+            252,
+            487
+          ],
+          "contentSha256": "26858d9f96400ae6db004f7f32d21145a2a478f159bd77ca52f2d667d238e5c7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-156-sinestro-earth",
+      "eventId": "ambient-01",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-156-sinestro-earth.json",
+      "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-01.png",
+      "sha256": "6aed14616f4b48d443d075127514b49895cedc4728f504b36b24db970fe562b9",
+      "bytes": 2161678,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7216866811116536,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            77,
+            466,
+            388
+          ],
+          "contentSha256": "7592c08898e3f2dd5f92dbb04f3b5bad9f93094100a849356f57b52629d8ab0f",
+          "borderPixels": 18,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            48,
+            49,
+            448,
+            429
+          ],
+          "contentSha256": "ee437d401e96d2c4f01ff6a1fc6a93ad8901f0042bb211927d3386c3f16a6381",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            98,
+            407,
+            383
+          ],
+          "contentSha256": "e1ec5f127fc6e3fcba997e6dba8ea721c7f215afe9fe3da09060b4fe6bdbc8ab",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            34,
+            428,
+            400
+          ],
+          "contentSha256": "082df5f546cd02fb8e4d68bc8da80bb2065926a084bada6066378dced6507d5c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            71,
+            47,
+            397,
+            387
+          ],
+          "contentSha256": "f897eaabb1378f8d6f4c83f9fa909543fd253a15a5ea244e9f7e7fa76ead9517",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            46,
+            481,
+            391
+          ],
+          "contentSha256": "1886a2cafde978f201bd4baba780434c2c04aaf040101128676fc98fde7fcffe",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-156-sinestro-earth",
+      "eventId": "ambient-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-156-sinestro-earth.json",
+      "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-02.png",
+      "sha256": "01a23b352a4145c76a0793db918c1f74fe03a658a3a1b82f4ff5bf13ab851661",
+      "bytes": 2189015,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.655575434366862,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            67,
+            318,
+            404
+          ],
+          "contentSha256": "d11efdf4b9108f6d1cb5164b18ccf859fd14b3d91f0bde9c797f79718e587374",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            98,
+            66,
+            316,
+            406
+          ],
+          "contentSha256": "38956d0208efc9178ad78b1a71d590e9551eb5c0a18d48c3ccb494443dbdaf08",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            67,
+            310,
+            406
+          ],
+          "contentSha256": "3ced124e716bd32a96c651067de94689c8adf48bc33fde59df54c46bf770b8eb",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            56,
+            316,
+            406
+          ],
+          "contentSha256": "74dc4e304bcfaaeb52dbb7f337c0b167234e259809aec2246bc955a6e208dc10",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            57,
+            317,
+            402
+          ],
+          "contentSha256": "53fa8830c812098a43b9085b859e16fcecdd2b011c2644c3d115e31e7d1ecbf3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            95,
+            57,
+            317,
+            402
+          ],
+          "contentSha256": "e906ccbf19ab48aab404c3360846db9527e40833f1efd5eac5871da52895397d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-156-sinestro-earth",
+      "eventId": "ambient-03",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-156-sinestro-earth.json",
+      "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-03.png",
+      "sha256": "21de84a199b39390b98e16aa7572e5d4e13d9f57542d83affdbe4241fd17d229",
+      "bytes": 1556528,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7074845631917317,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            145,
+            497,
+            243
+          ],
+          "contentSha256": "fc0d2da4bd7b24fc33ee61cae262c4289ea7d126f41b51e4fbee19405a965b2f",
+          "borderPixels": 50,
+          "borderMaxAlpha": 6,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            145,
+            512,
+            243
+          ],
+          "contentSha256": "eb7855f4af5b01f792101d3c07b960add5ca83c640cbe250a01b72d28d09aee3",
+          "borderPixels": 76,
+          "borderMaxAlpha": 5,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            145,
+            498,
+            242
+          ],
+          "contentSha256": "56b9e9651fbdfff8b43a61786ef72483096c1680bb22b723750e01724dc376da",
+          "borderPixels": 37,
+          "borderMaxAlpha": 4,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            134,
+            494,
+            242
+          ],
+          "contentSha256": "f9cf1e460341f8cf478150942c32559fcf823c922af5ba36f6c9ad32757c1a35",
+          "borderPixels": 38,
+          "borderMaxAlpha": 5,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            131,
+            512,
+            249
+          ],
+          "contentSha256": "8a061eeac822498b7800401984fcc4e07918ec21bb867e08f389d57c1f1ba32b",
+          "borderPixels": 63,
+          "borderMaxAlpha": 4,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            0,
+            131,
+            496,
+            247
+          ],
+          "contentSha256": "4b7d1a2c7ada855211916a64032f124a41449e20c127f922051d67d0cfe396ff",
+          "borderPixels": 32,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "eventId": "life-01",
+      "kind": "ambient",
+      "reusedV60": true,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v60-generation/arena-169-extinction-front.json",
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+      "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+      "bytes": 2104382,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6539109547932942,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            142,
+            464,
+            294
+          ],
+          "contentSha256": "4bc5f97389438afc0fe3c413942544355d204f33a6b4d0fac1270b0fba8528c6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            538,
+            0,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            140,
+            463,
+            296
+          ],
+          "contentSha256": "85f4b45f23407dc44645b8262ea3286e07c55b1ae6fbedb29585baee364b007a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1040,
+            0,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            14,
+            140,
+            460,
+            296
+          ],
+          "contentSha256": "ead93917cf86bfa1d7a85d5b1c994d1872f1df5589bfb5d290c282ef8c19a794",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            538,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            101,
+            462,
+            297
+          ],
+          "contentSha256": "323aec05c1c26f534ddb5887c35509ca5daec76a46b4eabb5f647b35eea92156",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            538,
+            512,
+            502,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            101,
+            464,
+            297
+          ],
+          "contentSha256": "78bb5a266eb22c93523318daf25c4ee0a53ee64a3ccef3126159f56a364021ef",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1040,
+            512,
+            496,
+            512
+          ],
+          "alphaBounds": [
+            15,
+            101,
+            460,
+            297
+          ],
+          "contentSha256": "9850438d4d87a1525772127d1dbc8f32f7a543bcef9aead36d6b793afa505e89",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "eventId": "life-02",
+      "kind": "ambient",
+      "reusedV60": false,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v61-generation/arena-169-extinction-front.json",
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+      "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+      "bytes": 1933241,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7622807820638021,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            76,
+            229,
+            426
+          ],
+          "contentSha256": "363261032154b4e423663ceefff4e85c571e25c3fbe9af79eb4879d20c87ff33",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            138,
+            76,
+            238,
+            427
+          ],
+          "contentSha256": "0dc4bf9dbaffd5852246810013a57a3b5e4e6593050eb70122ec127f01b897f6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            79,
+            224,
+            423
+          ],
+          "contentSha256": "96cb7ab9534775e4d8244632bb856920f2ad30126ddc569acba6afc6d11cc791",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            185,
+            36,
+            234,
+            428
+          ],
+          "contentSha256": "b61394d55447f863c60e5d3758800e99ea4ff21ce9c63e59b38a30ae0a616ac3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            134,
+            36,
+            252,
+            430
+          ],
+          "contentSha256": "945ee290d4201abb111d0dba38d93e9c0b1b86a342b1f928e6c496a1f905030f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            103,
+            34,
+            235,
+            431
+          ],
+          "contentSha256": "ad3be44ae14014e7a6a97c8426129524a8a9adf2f4a9cf8416d7c6b94e91f051",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "eventId": "life-03",
+      "kind": "ambient",
+      "reusedV60": true,
+      "trigger": "ambient-bag",
+      "receipt": "docs/v60-generation/arena-169-extinction-front.json",
+      "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+      "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+      "bytes": 1869293,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.756310780843099,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            112,
+            56,
+            314,
+            398
+          ],
+          "contentSha256": "d62fc5984121e36a5ca7ef46f273cc923c29c8894ab56daa4d84fa98069590f2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            56,
+            316,
+            398
+          ],
+          "contentSha256": "81497e28ac5418cea48f95e23d90a413595c8c535431393b4dab4027facf57ce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            81,
+            56,
+            317,
+            398
+          ],
+          "contentSha256": "2201951a6ab778883ceb484e2a50500f007ee4bd35e2919924a1ff85b7449f19",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            110,
+            40,
+            318,
+            398
+          ],
+          "contentSha256": "93b349b6a4c5381023945fc354e9968f985fc3273105d231b01f71321d369e77",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            40,
+            316,
+            398
+          ],
+          "contentSha256": "33c11740568b70529aa2dd6ed7c6baa7bfc37dd8f29d3c82731eda7e205ec9c0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            80,
+            40,
+            319,
+            398
+          ],
+          "contentSha256": "da29d548262e94e421040e23f6d7b99c0b7e2f7aed006a9d5f2cba387a63cf56",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "eventId": "conditional-guard-after-combat",
+      "kind": "story",
+      "reusedV60": false,
+      "trigger": "match-end",
+      "receipt": "docs/v61-generation/arena-140-bad-blood-pine-barrens.json",
+      "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+      "sha256": "ae57c714af4350c5c27246b3f982e0ba4af990f24755fe0d6f0e4223d772886b",
+      "bytes": 1994897,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7541611989339193,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            203,
+            0,
+            212,
+            496
+          ],
+          "contentSha256": "28f5d1bcc8eb2e08a368161c449ba2928312e35b9f6530cd48d13bdeb1fd4aac",
+          "borderPixels": 19,
+          "borderMaxAlpha": 3,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            150,
+            6,
+            223,
+            492
+          ],
+          "contentSha256": "45b24e627a027888e1827a389c3aa18b0bba1218d5af5ce7ed37b99f1a208992",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            99,
+            1,
+            299,
+            495
+          ],
+          "contentSha256": "af7a3602f659f0a51aca9d9c668302b407308253c3f8bdd9832b38381285a0f4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 2,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            4,
+            312,
+            494
+          ],
+          "contentSha256": "56a4d402676d95a4ee19354d5824211f264f5c3a6c1a5f830a601d36fd782aac",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            151,
+            8,
+            250,
+            488
+          ],
+          "contentSha256": "5f309bc65e9ed8efd28e7ca87eada104137b7b5093da9062a3bfd934bd20107d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            105,
+            3,
+            214,
+            493
+          ],
+          "contentSha256": "77290eea5a712072f7cb174b4bed1865971628b0f0950c20c3f7bf004cc2a16b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "eventId": "conditional-patrol-after-match",
+      "kind": "story",
+      "reusedV60": false,
+      "trigger": "match-end",
+      "receipt": "docs/v61-generation/arena-142-dead-end-alley.json",
+      "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+      "sha256": "c282d2e34c9daab5a9626e5b6a825f7c471be88b517c11b407feaac15a4f49a3",
+      "bytes": 2211674,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6889247894287109,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            36,
+            65,
+            425,
+            414
+          ],
+          "contentSha256": "2c08beba089e5a3412ff06f8af3b08de890c68bdc11703f82259154b6fc1fabd",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            52,
+            64,
+            428,
+            414
+          ],
+          "contentSha256": "224dce6f38be676a79ae1cd71668c75587ff9d1786cec12cbbac9e76dcccac1d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            46,
+            68,
+            434,
+            410
+          ],
+          "contentSha256": "5dfd32ab8d3255b7cb56bc549c3e9a527bb9febec81617b614abd956c53b6b69",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            56,
+            59,
+            412,
+            417
+          ],
+          "contentSha256": "00a1122bf74ccfbd2c9550035898761aaf78512eb142c1e08c9950852f0636be",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            65,
+            410,
+            408
+          ],
+          "contentSha256": "882f82cd65b42bbf1d1f59430977f5fa374a884383da30197de8e99be472ce6b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            88,
+            58,
+            397,
+            414
+          ],
+          "contentSha256": "8f7c1fb7b58e0376898dc87a6adc4b6e9c4d0a303367119f8affa0d9406173cb",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "eventId": "victory-salute",
+      "kind": "story",
+      "reusedV60": false,
+      "trigger": "round-victory",
+      "receipt": "docs/v61-generation/arena-165-kenner-throne-victory-salute.json",
+      "src": "/game/sprites/v61/pit-story/arena-165-kenner-throne/victory-salute.png",
+      "sha256": "c373dadcaeb74986c982a94a8486765ba052958fb799cb679ec092bf1ae3ddd3",
+      "bytes": 1817237,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8208815256754557,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            194,
+            65,
+            172,
+            413
+          ],
+          "contentSha256": "73a58bcb1ccff35fb325f2d3874a67c2e4782df9dfab0b6a0d307a0e3243b6c7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            163,
+            62,
+            180,
+            417
+          ],
+          "contentSha256": "77ffe1f9b0a499dd1d0bf40095a4b20867cc864dab4e22959a43342ec121e43f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            124,
+            62,
+            219,
+            417
+          ],
+          "contentSha256": "336c8b08c1fa904bcc05ae75557b44f89236eeb2fd22894f241c20fec187c479",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            193,
+            27,
+            183,
+            451
+          ],
+          "contentSha256": "a3600d5f5cc7d0b363ca1445a2c96c9c7ca571c1f27c58921c4865c927091c1a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            162,
+            65,
+            187,
+            415
+          ],
+          "contentSha256": "f82d00a97a368366d1fabf2184cb8bef580eca46b4a15d60c40e8355f79177ba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            167,
+            66,
+            176,
+            413
+          ],
+          "contentSha256": "738278a6806ecaba2c619f6a9e87764b4f734b9672ff2801ae6ac7c778432ef2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-173-phg-japan",
+      "eventId": "round-bell",
+      "kind": "story",
+      "reusedV60": false,
+      "trigger": "round-start",
+      "receipt": "docs/v61-generation/arena-173-phg-japan-round-bell.json",
+      "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+      "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+      "bytes": 1905690,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7787075042724609,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            89,
+            90,
+            333,
+            325
+          ],
+          "contentSha256": "bea38ae39a17b1e30fccfad20f458544f7c5db08bc43a2ddbefdcde993860430",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            67,
+            90,
+            348,
+            324
+          ],
+          "contentSha256": "fcd35e7d83eef8979fa20bc0c32d2dac0a2ce02708ffc43b718d9efae3f2b66c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            90,
+            369,
+            324
+          ],
+          "contentSha256": "f3b1eb2bd2a426011d574cd943bd4cd36a7f0b735aa1d253cd25dcb43f344c8b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            85,
+            64,
+            344,
+            332
+          ],
+          "contentSha256": "71bc41d17baa7b5eb211df79be9925178920500e5715ac88aecc83e3a84c7329",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            117,
+            64,
+            308,
+            331
+          ],
+          "contentSha256": "c0db4b599c1464dcb7eaaae7949b0c0de57be482ef1f55d55ecd473fe5ab025b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            57,
+            64,
+            366,
+            329
+          ],
+          "contentSha256": "4a997a455a32d35ef895f5478e03da72a44da8a8d21f1d2601af2c4c9e3cda5b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    },
+    {
+      "stageId": "arena-185-training",
+      "eventId": "round-judgment",
+      "kind": "story",
+      "reusedV60": false,
+      "trigger": "round-end",
+      "receipt": "docs/v61-generation/arena-185-training-round-judgment.json",
+      "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+      "sha256": "b67b7342b4e3be4f2dd60c5e6e7cb73e0eb6abff5e3aff789883cb68f9774126",
+      "bytes": 1976594,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7824484507242838,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            171,
+            50,
+            213,
+            426
+          ],
+          "contentSha256": "68ad0d540f9c7001753f3330c13f6bd08258e4222b75510cc1a83b4c95a4dec8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            140,
+            50,
+            226,
+            425
+          ],
+          "contentSha256": "e324b5cea9591d32173f86475a5bbe7d51dfdf4d5e16f658de2c4ce083287175",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            490
+          ],
+          "alphaBounds": [
+            139,
+            49,
+            242,
+            427
+          ],
+          "contentSha256": "cdd4d8eaf65247bdf72afabe4118970290e6daac0247c0b5410de69d0f5a4eb9",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            171,
+            15,
+            215,
+            480
+          ],
+          "contentSha256": "73297d3ca2f5bf3fd27af65b3ffb2873417640cebbc6c3d832014077c380654b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            140,
+            72,
+            212,
+            423
+          ],
+          "contentSha256": "24167b49fd51708f13beeef3da2aff47b45e75925567cf3ee56c49002340a412",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            490,
+            512,
+            534
+          ],
+          "alphaBounds": [
+            139,
+            72,
+            212,
+            423
+          ],
+          "contentSha256": "234c78256c41eb82c8e776022c327d983a4d329bcaed3febd47fa442ea3c1417",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ]
+    }
+  ],
+  "applicationFlowVerified": false,
+  "visualCompositionAccepted": false,
+  "publicationPerformed": false,
+  "limit": "Verifies registered native assets only. Unregistered prepared art and absent narrative callers do not count as delivered scenes."
+}

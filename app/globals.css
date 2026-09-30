@@ -2665,6 +2665,8 @@ select:focus-visible,
 
 .toast {
   position: fixed;
+  /* Informational status must not intercept HUD controls behind it. */
+  pointer-events: none;
   z-index: 245;
   right: 20px;
   bottom: 20px;
@@ -2675,6 +2677,20 @@ select:focus-visible,
   color: #d9d2c2;
   font-size: 0.72rem;
   animation: toast-in 250ms ease both;
+}
+
+/* Keep transient match status clear of the bottom-right MENU control. */
+.game-shell:has([data-pit-immersive="true"]) > .toast {
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(76px, calc(env(safe-area-inset-bottom) + 64px));
+  max-width: min(360px, calc(100vw - 24px));
+}
+
+/* Touch MENU sits below the health HUD; the attack controls occupy the bottom. */
+.game-shell:has([data-pit-immersive="true"] [aria-label="Commandes tactiles"]) > .toast {
+  top: max(152px, calc(env(safe-area-inset-top) + 142px));
+  bottom: auto;
+  padding: 8px 12px;
 }
 
 .save-warning {

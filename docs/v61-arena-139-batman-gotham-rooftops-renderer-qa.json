@@ -1,0 +1,2875 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-139-batman-gotham-rooftops",
+  "checkedAt": "2026-09-30T19:03:53.822Z",
+  "compositionDigest": "0bf3b1e62809b86e2abea28678d0b65bcea4c8eb03e007c45afb5dd55182bbc3",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 139,
+      "catalogueId": "arena-139-batman-gotham-rooftops",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops",
+      "name": "Gotham — toits sous la pluie",
+      "setting": "Toits de Gotham, composition latérale originale pour les chasseurs des trois séries.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "825dd33e0914d4e5bbe337dae6e7d50144a91f3bb730862dc73ca98065374239",
+      "screenReference": {
+        "kind": "comic",
+        "workId": "batman-vs-predator",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "urban-roof",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-steel-upright",
+          "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+          "crop": {
+            "x": 199,
+            "y": 0,
+            "width": 763,
+            "height": 1536
+          },
+          "visibleBottomExclusive": 1522,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "4e61bc067c8c94a77a2dba0583019993af38b63e327f895531a66fab744216bb",
+                    "width": 1672,
+                    "height": 941,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1672,
+                      "height": 941
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.72,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 37.6605504587156,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.82,
+              "opacity": 0.6,
+              "placements": [
+                {
+                  "x": 85,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                },
+                {
+                  "x": 785,
+                  "y": -85,
+                  "width": 90,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol pavement OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "f656789e75cc874648652d0fd4e3743b5c503749f80ea4673b59e7cec7d7720c",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -85,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-139-batman-gotham-rooftops",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-139-batman-gotham-rooftops-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "6c1fb5eaebbd2d8eb91a6b6f5dce941dd4ffd8b094ee410fe60139d0c731f0fe"
+      }
+    },
+    "life": {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Hélicoptère de police lointain — rotor",
+          "placement": {
+            "x": 552,
+            "bottom": 143,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "sha256": "db88a2cc29db2790076faad0de56921defa2468e05da7456f374dbbe2fa649c2",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                224,
+                420
+              ],
+              "alphaBounds": [
+                42,
+                251,
+                464,
+                169
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                221,
+                420
+              ],
+              "alphaBounds": [
+                70,
+                216,
+                432,
+                204
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                205.5,
+                422
+              ],
+              "alphaBounds": [
+                50,
+                194,
+                435,
+                228
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                387
+              ],
+              "alphaBounds": [
+                54,
+                180,
+                453,
+                207
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                221,
+                384
+              ],
+              "alphaBounds": [
+                47,
+                193,
+                458,
+                191
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                211.5,
+                384
+              ],
+              "alphaBounds": [
+                54,
+                174,
+                443,
+                210
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Policier anonyme — veille et radio",
+          "placement": {
+            "x": 255,
+            "bottom": 322,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "sha256": "f5b7d61870db9776c3683e5efccb29dc99862523b2d365c56522e9460e5a4f16",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                290.5,
+                490
+              ],
+              "alphaBounds": [
+                212,
+                27,
+                173,
+                463
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                243.5,
+                490
+              ],
+              "alphaBounds": [
+                164,
+                27,
+                176,
+                463
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                244,
+                490
+              ],
+              "alphaBounds": [
+                167,
+                24,
+                173,
+                466
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                290,
+                490
+              ],
+              "alphaBounds": [
+                210,
+                24,
+                169,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                490
+              ],
+              "alphaBounds": [
+                176,
+                34,
+                174,
+                456
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                244.5,
+                490
+              ],
+              "alphaBounds": [
+                168,
+                28,
+                173,
+                462
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Gargouille — linge au vent",
+          "placement": {
+            "x": 115,
+            "bottom": 325,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "sha256": "5fdc4dd70ebcee5aaa84cff914ea09671afac1023d8646bec5aea2eceb2ad56f",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                50,
+                91,
+                390,
+                388
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                40,
+                89,
+                421,
+                371
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                37,
+                89,
+                461,
+                369
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                535,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                50,
+                64,
+                468,
+                368
+              ]
+            },
+            {
+              "rect": [
+                535,
+                512,
+                489,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                18,
+                64,
+                394,
+                367
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                38,
+                66,
+                391,
+                368
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+      "sha256": "db88a2cc29db2790076faad0de56921defa2468e05da7456f374dbbe2fa649c2",
+      "bytes": 1554520,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8510354359944662,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            42,
+            251,
+            464,
+            169
+          ],
+          "contentSha256": "bca2d81f25983f61afe63e79b9ad0b35282148a30426df2c1673fe6292b0cc13",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            70,
+            216,
+            432,
+            204
+          ],
+          "contentSha256": "d3229505d9327dd4053db9519ce979fc8351a87547f12c793533ff7c66ac4044",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            194,
+            435,
+            228
+          ],
+          "contentSha256": "aac53c2efadf88943a2a1501fa0be4f9d1fa20c2fa17f7a9954b1768d8aa1d00",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            180,
+            453,
+            207
+          ],
+          "contentSha256": "f1e2e59adb5d7490da76c2f2c7727475d00e102e1a53eb1c834003724ad5e830",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            193,
+            458,
+            191
+          ],
+          "contentSha256": "8b56efc9ab8c8344b0a251f9cd2e8f76b9e88bc865188f8ed4a52ca774d835ce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            174,
+            443,
+            210
+          ],
+          "contentSha256": "1398c9a160720efc306cfa4bc508bcfdd0fcadd0ad5c9a6cc0d65e786ee96ec3",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-139-batman-gotham-rooftops.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+      "sha256": "f5b7d61870db9776c3683e5efccb29dc99862523b2d365c56522e9460e5a4f16",
+      "bytes": 1698501,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.8058764139811198,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            212,
+            27,
+            173,
+            463
+          ],
+          "contentSha256": "b03cd41265bbcc6de666e95ee6638e6483b1038d2a3c52e4c3052aa92a0227bf",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            164,
+            27,
+            176,
+            463
+          ],
+          "contentSha256": "d995e85157afc2fc6ba952c401ae403432fcfab70f1edfffb4e4a54af3bd6e9b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            167,
+            24,
+            173,
+            466
+          ],
+          "contentSha256": "62ed7e75f4f8a810e86722e29cbdc63b3ee3895fabb495e8fe3647222aee707c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            210,
+            24,
+            169,
+            466
+          ],
+          "contentSha256": "655a445a07b98fb66b64970f464be82fd06bd3e84c35916ac0ad895712a850ba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            176,
+            34,
+            174,
+            456
+          ],
+          "contentSha256": "8f308fe032f11afd0c3e83e8e1999a316356cd4507b0d0688775ce575ab13234",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            168,
+            28,
+            173,
+            462
+          ],
+          "contentSha256": "e955e248657e76b22a8ad4e6ca7e4d1c23ca712589254a0a6865bed6b3be1585",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-139-batman-gotham-rooftops.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+      "sha256": "5fdc4dd70ebcee5aaa84cff914ea09671afac1023d8646bec5aea2eceb2ad56f",
+      "bytes": 2054559,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7156206766764324,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            91,
+            390,
+            388
+          ],
+          "contentSha256": "2e3fe657460e1699ebb137c99d6d65fa16dd4541e690c310b9ff299c10ea17f6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            40,
+            89,
+            421,
+            371
+          ],
+          "contentSha256": "b1d105e9508dff480fc027c16d2448993c6c18fd1993acc1c6e40c26994571a7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            37,
+            89,
+            461,
+            369
+          ],
+          "contentSha256": "4b4584cefeeb9f476a2ea8426eb885df36507f269d54c9fdb5837f27072123aa",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            535,
+            512
+          ],
+          "alphaBounds": [
+            50,
+            64,
+            468,
+            368
+          ],
+          "contentSha256": "a94d12e24b8c9828577dba05e7186ec5d51e944aba534f58fa282b1b158ad67a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            535,
+            512,
+            489,
+            512
+          ],
+          "alphaBounds": [
+            18,
+            64,
+            394,
+            367
+          ],
+          "contentSha256": "bf64f4ef21b4cc574168c74512c11e3c487d2823fabdf4adf155537c0f607ec0",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            38,
+            66,
+            391,
+            368
+          ],
+          "contentSha256": "5c5f15024301dfa691c79977a23e598c5824310ab1e077276a901165de5fc13e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-139-batman-gotham-rooftops.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            552,
+            143
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            255,
+            322
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            115,
+            325
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            552,
+            143
+          ],
+          "pivot": [
+            552,
+            143
+          ],
+          "visibleBounds": [
+            516.453125,
+            109.9921875,
+            90.625,
+            33.0078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            255,
+            322
+          ],
+          "pivot": [
+            255,
+            322
+          ],
+          "visibleBounds": [
+            244.267578125,
+            258.69921875,
+            23.65234375,
+            63.30078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            115,
+            325
+          ],
+          "pivot": [
+            115,
+            325
+          ],
+          "visibleBounds": [
+            102.080078125,
+            275.37109375,
+            53.3203125,
+            53.046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            563.845,
+            140.1425
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            260.1625,
+            323.17
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            117.0125,
+            326.2375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            563.845,
+            140.1425
+          ],
+          "pivot": [
+            563.845,
+            140.1425
+          ],
+          "visibleBounds": [
+            527.4983203125,
+            106.39201171875001,
+            92.6640625,
+            33.75048828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            260.1625,
+            323.17
+          ],
+          "pivot": [
+            260.1625,
+            323.17
+          ],
+          "visibleBounds": [
+            249.1885986328125,
+            258.444951171875,
+            24.184521484375,
+            64.725048828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            117.0125,
+            326.2375
+          ],
+          "pivot": [
+            117.0125,
+            326.23749999999995
+          ],
+          "visibleBounds": [
+            103.8018798828125,
+            275.491943359375,
+            54.52001953125,
+            54.240429687500004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            543.395,
+            140.1425
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            239.71250000000003,
+            323.17
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            96.56250000000001,
+            326.2375
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            543.395,
+            140.1425
+          ],
+          "pivot": [
+            543.395,
+            140.1425
+          ],
+          "visibleBounds": [
+            507.0483203125,
+            106.39201171875001,
+            92.6640625,
+            33.75048828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            239.71250000000003,
+            323.17
+          ],
+          "pivot": [
+            239.71250000000003,
+            323.17
+          ],
+          "visibleBounds": [
+            228.7385986328125,
+            258.444951171875,
+            24.184521484375,
+            64.725048828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            96.56250000000001,
+            326.2375
+          ],
+          "pivot": [
+            96.56250000000001,
+            326.23749999999995
+          ],
+          "visibleBounds": [
+            83.35187988281251,
+            275.491943359375,
+            54.52001953125,
+            54.240429687500004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            551.28,
+            144.26999999999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            257.25,
+            321.47999999999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            118.65,
+            324.45
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            551.28,
+            144.26999999999998
+          ],
+          "pivot": [
+            551.28,
+            144.26999999999998
+          ],
+          "visibleBounds": [
+            516.08859375,
+            111.59226562499998,
+            89.71875,
+            32.677734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            257.25,
+            321.47999999999996
+          ],
+          "pivot": [
+            257.25,
+            321.47999999999996
+          ],
+          "visibleBounds": [
+            246.62490234375002,
+            258.8122265625,
+            23.4158203125,
+            62.667773437499996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            118.65,
+            324.45
+          ],
+          "pivot": [
+            118.65,
+            324.45000000000005
+          ],
+          "visibleBounds": [
+            105.85927734375001,
+            275.3173828125,
+            52.787109375,
+            52.516406249999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            553.98,
+            139.25062499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            248.8125,
+            323.17312499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            104.96249999999996,
+            326.25562499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            553.98,
+            139.25062499999996
+          ],
+          "pivot": [
+            553.98,
+            139.25062499999996
+          ],
+          "visibleBounds": [
+            517.4555859375,
+            105.33509765624996,
+            93.11718750000001,
+            33.91552734375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            248.8125,
+            323.17312499999997
+          ],
+          "pivot": [
+            248.8125,
+            323.17312499999997
+          ],
+          "visibleBounds": [
+            237.7849365234375,
+            258.131572265625,
+            24.302783203125003,
+            65.04155273437502
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            104.96249999999996,
+            326.25562499999995
+          ],
+          "pivot": [
+            104.96249999999998,
+            326.25562499999995
+          ],
+          "visibleBounds": [
+            91.68728027343747,
+            275.2619238281249,
+            54.78662109375001,
+            54.50566406250001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 1.4210854715202004e-14
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            544.8,
+            155.70000000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            277.5,
+            316.8
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            151.5,
+            319.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            544.8,
+            155.70000000000002
+          ],
+          "pivot": [
+            544.8,
+            155.70000000000002
+          ],
+          "visibleBounds": [
+            512.8078125,
+            125.99296875000002,
+            81.5625,
+            29.70703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            277.5,
+            316.8
+          ],
+          "pivot": [
+            277.5,
+            316.8
+          ],
+          "visibleBounds": [
+            267.8408203125,
+            259.829296875,
+            21.287109375,
+            56.970703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            151.5,
+            319.5
+          ],
+          "pivot": [
+            151.5,
+            319.5
+          ],
+          "visibleBounds": [
+            139.8720703125,
+            274.833984375,
+            47.98828125,
+            47.7421875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            552,
+            143
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            255,
+            322
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            115,
+            325
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            552,
+            143
+          ],
+          "pivot": [
+            552,
+            143
+          ],
+          "visibleBounds": [
+            516.453125,
+            109.9921875,
+            90.625,
+            33.0078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            255,
+            322
+          ],
+          "pivot": [
+            255,
+            322
+          ],
+          "visibleBounds": [
+            244.267578125,
+            258.69921875,
+            23.65234375,
+            63.30078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            115,
+            325
+          ],
+          "pivot": [
+            115,
+            325
+          ],
+          "visibleBounds": [
+            102.080078125,
+            275.37109375,
+            53.3203125,
+            53.046875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            554.147114745,
+            134.526354
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            248.40491974499997,
+            318.79521900000003
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            104.28401974499994,
+            321.883524
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            554.147114745,
+            134.526354
+          ],
+          "pivot": [
+            554.147114745,
+            134.526354
+          ],
+          "visibleBounds": [
+            517.553917479375,
+            100.5469565390625,
+            93.29254687500001,
+            33.979397460937506
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            248.40491974499997,
+            318.79521900000003
+          ],
+          "pivot": [
+            248.40491974499997,
+            318.79521900000003
+          ],
+          "visibleBounds": [
+            237.35658903210935,
+            253.63117925390628,
+            24.34855048828125,
+            65.16403974609375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            104.28401974499994,
+            321.883524
+          ],
+          "pivot": [
+            104.28401974499994,
+            321.883524
+          ],
+          "visibleBounds": [
+            90.98379996960931,
+            270.79379089453124,
+            54.889795898437505,
+            54.608309765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 878,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 898,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 918,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 938,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 958,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 978,
+      "attachment": [
+        255,
+        322
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 1990,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 2010,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 2030,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 2050,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 2070,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 2090,
+      "attachment": [
+        115,
+        325
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 3253,
+      "attachment": [
+        552,
+        143
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 3273,
+      "attachment": [
+        552,
+        143
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 3293,
+      "attachment": [
+        552,
+        143
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 3313,
+      "attachment": [
+        552,
+        143
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 3333,
+      "attachment": [
+        552,
+        143
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 3353,
+      "attachment": [
+        552,
+        143
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\center.png",
+      "sha256": "7b90217dcd88351ee840fe98c208510614d4a7783a3d9ba80b11c7eb1182b8b6"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\left-corner.png",
+      "sha256": "55622d7e0d13f15b25afbbf4521327d4e026833d2a79ed81dde5bd5d3bbad0ee"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\right-corner.png",
+      "sha256": "a02c0ec171291e7baac62ceea2d30c592b66d2d448e76cb5c6dd2972b6738015"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\wide.png",
+      "sha256": "22f4b747ed8963267c83b67446ae3049f1f9bbd4a508b94ebbc5c8cf54220134"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\close.png",
+      "sha256": "3905c9ea6a03e6d8f7b0c2d3358d790c1a2257a7fb5d130688fb185176dd496f"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\reduced-motion.png",
+      "sha256": "21634a87ee517f088c9d57c351f05f9426293d48b8339798187434ad8229f7e8"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\high-contrast.png",
+      "sha256": "a51ce0459bece0997be05a265255ee2e9875d211fecfb18fdc7fbed16871bd1a"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\actual-game-camera.png",
+      "sha256": "fa9a05a4ba342324aa8e4b53e10160d4bab96d80d08165a2fa84f34a53c6ddde"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-0.png",
+      "sha256": "8a99a7652581f9c0e36b1cfdef4fbf76c882b5a56c806a00ea16a2a6e8804bc5"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-1.png",
+      "sha256": "2cf27cfed6622ac6fba7e3d18c52cd56417ea7138190cf9d302704105f625eee"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-2.png",
+      "sha256": "e34ac10026014fe83c912dca45f5930633a1c411febb69bcfae2c6e6d736f498"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-3.png",
+      "sha256": "924cacdb5e31aaafb1ba2839aeebba83c8b28b6c1f99d766e8925ef7d583d860"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-4.png",
+      "sha256": "e8c08eb41c7d17d123527a0ea5a6ba190d80322b593863203e938cf1c38b23f7"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-02-frame-5.png",
+      "sha256": "0d5bad68c8902165fc46ca85121c7022fd5f35583385bf19ef8c655e9e6069b6"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-0.png",
+      "sha256": "8a99a7652581f9c0e36b1cfdef4fbf76c882b5a56c806a00ea16a2a6e8804bc5"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-1.png",
+      "sha256": "1f99cd4c2e4a0612ac9d290acc820d9544f015069a6600633c17a72f20602383"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-2.png",
+      "sha256": "f8c2e148a2009a6615435bd18621806e734a4fdd8a6fe4b57b17f313d26c7dd9"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-3.png",
+      "sha256": "27176b7e4da02b5bfb9ddb4b349b0fab2f32fdcc8b5f420fdd79d198353f0d65"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-4.png",
+      "sha256": "795cfa1692e8ecb7e961d4ee17f193b64d8cc959b57d105b05318c93f611b1f2"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-03-frame-5.png",
+      "sha256": "77740135b32087b69226060f613620bcb1ea949cfd4930f5b00cde34935b2ccd"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-0.png",
+      "sha256": "8da7c398d4ea714c823d68a62710cd82c658eaa66f9f02aea2be47ce1ef8d940"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-1.png",
+      "sha256": "31faf74d106430752a449211c8699b4171dc4d8da7c83dfd9c9fbc50703c49df"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-2.png",
+      "sha256": "9084f6c878149c5561a460cd8d91e6385fa4cf05f1525a307a7ba04b3f5e039f"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-3.png",
+      "sha256": "79e4f6e9affc2b48cb101a41df811446aa53735a0cc8e40c908e6095be680cca"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-4.png",
+      "sha256": "e254d5552da9b07cf2c76cdb524d8815e24846021899f2bff7d8b82899141f2b"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\ambient-ambient-01-frame-5.png",
+      "sha256": "e12c52cdf78ef72f40c0bbe8591a6af83d9c2cc9ca162fdbf2f16d8749d9a3e5"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-139-batman-gotham-rooftops\\mobile-canvas.png",
+      "sha256": "e121ffaf0b976ed4b8b0f86129cbfa82f1f9f674029a8d57e1ae90d5fdb2f529"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

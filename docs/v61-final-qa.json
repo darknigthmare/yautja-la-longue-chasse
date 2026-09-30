@@ -1,0 +1,124 @@
+{
+  "result": "PASS",
+  "release": "V61",
+  "checkedAt": "2026-09-30T19:14:32.426Z",
+  "scope": {
+    "existingStagesGivenThreeNativeAmbients": 7,
+    "correctedHydraStage": 1,
+    "conditionalStages": 5,
+    "distinctAffectedStages": 11,
+    "nativePngs": 29,
+    "nativeDrawings": 174,
+    "newlyIntegratedSheets": 27,
+    "reusedV60Sheets": 2,
+    "previouslyGeneratedUnusedGongNowIntegrated": 1,
+    "registeredSheetsNewlyGeneratedForThisPass": 26,
+    "preparedEngineerNotRegistered": true,
+    "bytes": 55366552
+  },
+  "checks": {
+    "fullTests": 1913,
+    "targetedFinal": true,
+    "lintErrors": 0,
+    "preExistingLintWarnings": 3,
+    "vinextBuild": true,
+    "nextBuild": true,
+    "ambientApplicationStages": 8,
+    "conditionalApplicationStages": 5,
+    "rendererStages": 11,
+    "rendererCameraChecks": 138,
+    "rendererCellObservations": 228,
+    "visuallyReviewedRendererCaptures": 39,
+    "all29LocalHttpHashes": true,
+    "replayV9Checksum": "b3244626"
+  },
+  "proofs": {
+    "native": {
+      "file": "docs/v61-native-assets-qa.json",
+      "sha256": "be6e58b5a6c9bcf54455a18204aea31f6b13e83dd9216d8c8074809a33c0bd11",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:04:11.186Z"
+    },
+    "composition": {
+      "file": "work-local/v61/qa/renderer/report.json",
+      "sha256": "af633f5edda27f14d62668b739e7df0eaafde2d1550563362731d6ae3575bd8d",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:06:49.542Z"
+    },
+    "visual": {
+      "file": "docs/v61-stage-composition-visual-review.json",
+      "sha256": "6faf237119be986efc91d894a5c58d26afab70127e2cea3777bffc72df3a9097",
+      "result": "visually-accepted",
+      "checkedAt": "2026-09-30T19:07:25.264Z"
+    },
+    "ambientA": {
+      "file": "work-local/v61/qa/application-a/report.json",
+      "sha256": "8cd60b38a73fd14257e65ab46f6097579118700a41c68b03394e4769cc6807af",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:13:59.192Z"
+    },
+    "ambientB": {
+      "file": "work-local/v61/qa/application-b/report.json",
+      "sha256": "f2111dfd24f74a72cdb2c96566241f15ba34d6098d7e1fa92fad04fdc459ae3e",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:12:06.501Z"
+    },
+    "story": {
+      "file": "work-local/v61/qa/story-application-final/report.json",
+      "sha256": "5c440c3c527107b589cc58c4bf3325735151d844c0733699adcf8494e64298cd",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:12:20.350Z"
+    },
+    "hydra": {
+      "file": "work-local/v61/qa/hydra-exclusion-final/report.json",
+      "sha256": "dce7052bf832d664ad0ff4145cb4115ac6a5244039795295e2554d989459d3bf",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:09:28.074Z"
+    },
+    "replay": {
+      "file": "work-local/v61/qa/replay-v9-final/report.json",
+      "sha256": "fd03803e1e3357b4ef9085805fedbf2ec5c89b218c58e3f3206c14b868d2eb23",
+      "result": "PASS",
+      "checkedAt": null
+    },
+    "assets": {
+      "file": "work-local/v61/qa/local-served-assets.json",
+      "sha256": "daba238edba2b826e2eba585e1243efa7b4b51039760a9ce080dee28862c40f0",
+      "result": "PASS",
+      "checkedAt": "2026-09-30T19:09:10.864Z"
+    }
+  },
+  "logs": {
+    "tests": {
+      "file": "work-local/v61/full-tests.log",
+      "sha256": "6655fb8b0ab22e1c2814c1f09b189944a0e9f8169cc33603865c6ee5005c1654"
+    },
+    "targeted": {
+      "file": "work-local/v61/targeted-final.log",
+      "sha256": "f6c0b71bd86a014b0429d924ed8948a470d3989726fb7979f06dc348ed47b29d"
+    },
+    "lint": {
+      "file": "work-local/v61/lint-final.log",
+      "sha256": "e97dc51011f469469f3ba16aafe38087a723000ac7fdc36acc826fd219c3db3c"
+    },
+    "vinext": {
+      "file": "work-local/v61/vinext-build-final.log",
+      "sha256": "18cbe0b9a3646da269237ddc7edb89535be3e2e283edbfcc127baa64d0c10fbb"
+    },
+    "next": {
+      "file": "work-local/v61/next-build-final.log",
+      "sha256": "971185c9515bdad0ebfdc4d53ced47d695fbb7ce4b5baa1914c59e8969ce7ba6"
+    }
+  },
+  "applicationFlowVerified": true,
+  "publicationPerformed": false,
+  "limits": [
+    "Local completion only; publication and public HTTP/browser gates remain separate.",
+    "174 workbook dossiers and 522 event requests are not all completed.",
+    "Original environmental alternatives do not close exact fauna/visitor/Artifact requirements.",
+    "Four narrative variants and explicit scenario callers remain open; prepared Engineer art is inactive.",
+    "Mobile is Chromium emulation, not physical-device testing.",
+    "Only the listed representative screenshots received visual inspection."
+  ],
+  "remaining": "docs/v61-stage-open-work.md"
+}

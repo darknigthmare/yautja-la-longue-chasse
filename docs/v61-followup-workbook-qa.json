@@ -1,0 +1,141 @@
+{
+  "release": "V61",
+  "checkedAt": "2026-09-30T19:16:03.904Z",
+  "result": "PASS",
+  "source": {
+    "path": "C:\\Users\\chuck\\Downloads\\THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "workbook": {
+    "path": "docs\\THE_PIT_STAGES_V61_SUIVI.xlsx",
+    "deliveryPath": "outputs\\01a056ec-9dd5-7433-8bd5-5ace123409c6\\THE_PIT_STAGES_V61_SUIVI.xlsx",
+    "sha256": "fc3c4eda6a2bd10aa8d0ade88f4fa1ea3ae89e796ec8871207114b018f5974a5",
+    "sheets": [
+      "AnimationsV61",
+      "Resteclasseur"
+    ],
+    "assets": 29,
+    "newlyIntegratedAssets": 27,
+    "reusedAssets": 2,
+    "nativeDrawings": 174,
+    "preparedInactiveEngineerDrawings": 6,
+    "openRows": 16
+  },
+  "evidencePath": "docs/v61-followup-evidence.json",
+  "evidenceFiles": [
+    {
+      "path": "docs/v61-native-assets-qa.json",
+      "sha256": "be6e58b5a6c9bcf54455a18204aea31f6b13e83dd9216d8c8074809a33c0bd11"
+    },
+    {
+      "path": "work-local/v61/qa/renderer/report.json",
+      "sha256": "af633f5edda27f14d62668b739e7df0eaafde2d1550563362731d6ae3575bd8d"
+    },
+    {
+      "path": "docs/v61-stage-composition-visual-review.json",
+      "sha256": "6faf237119be986efc91d894a5c58d26afab70127e2cea3777bffc72df3a9097"
+    },
+    {
+      "path": "work-local/v61/qa/application-a/report.json",
+      "sha256": "8cd60b38a73fd14257e65ab46f6097579118700a41c68b03394e4769cc6807af"
+    },
+    {
+      "path": "work-local/v61/qa/application-b/report.json",
+      "sha256": "f2111dfd24f74a72cdb2c96566241f15ba34d6098d7e1fa92fad04fdc459ae3e"
+    },
+    {
+      "path": "work-local/v61/qa/story-application-final/report.json",
+      "sha256": "5c440c3c527107b589cc58c4bf3325735151d844c0733699adcf8494e64298cd"
+    },
+    {
+      "path": "work-local/v61/qa/hydra-exclusion-final/report.json",
+      "sha256": "dce7052bf832d664ad0ff4145cb4115ac6a5244039795295e2554d989459d3bf"
+    },
+    {
+      "path": "work-local/v61/qa/replay-v9-final/report.json",
+      "sha256": "fd03803e1e3357b4ef9085805fedbf2ec5c89b218c58e3f3206c14b868d2eb23"
+    },
+    {
+      "path": "work-local/v61/qa/local-served-assets.json",
+      "sha256": "daba238edba2b826e2eba585e1243efa7b4b51039760a9ce080dee28862c40f0"
+    },
+    {
+      "path": "docs/v61-final-qa.json",
+      "sha256": "0c7efda8cd2ad3d2a35525a8328ece7035ec1a2fe8310b92702c2989ee738472"
+    }
+  ],
+  "publication": {
+    "verified": false
+  },
+  "previews": [
+    {
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\spreadsheet\\animations-top.png",
+      "sha256": "245fa3f8cb796f17a24212c90c81c3cecd7e9c6394cb6815d92cd5a797fd7dcc"
+    },
+    {
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\spreadsheet\\animations-tail.png",
+      "sha256": "6bcbdc1fdbf7d195cb44f71254f9767b7af3db244f72b7359221a7b27bec9e0f"
+    },
+    {
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\spreadsheet\\animations-sources.png",
+      "sha256": "a68d1a404792d7c255ab24e15e39aeae8905180a432d100d1a12c605fd0f6da0"
+    },
+    {
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\spreadsheet\\remaining-top.png",
+      "sha256": "f7ddeba6d2f8abbeba2651f0cba55968d8837ef370197e78cd29abf2bca5e41d"
+    },
+    {
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\spreadsheet\\remaining-tail.png",
+      "sha256": "574d34def2b9d7618dd83afdf02f49bcdd97ebd8c2afafa191d28c75b2108834"
+    }
+  ],
+  "exportReimportValuesExact": true,
+  "formulaTotalsVerified": true,
+  "nativeExcelApplicationVerified": false,
+  "visualReviewPending": false,
+  "independentSavedZipValidation": {
+    "result": "PASS",
+    "crc": "PASS",
+    "sheetNames": [
+      "AnimationsV61",
+      "Resteclasseur"
+    ],
+    "cachedTotals": {
+      "B5": 29.0,
+      "E5": 174.0,
+      "G5": 27.0
+    },
+    "formulaCellsPreserved": true,
+    "tables": 2,
+    "panes": [
+      {
+        "xSplit": "2",
+        "ySplit": "8",
+        "topLeftCell": "C9",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      },
+      {
+        "xSplit": "2",
+        "ySplit": "8",
+        "topLeftCell": "C9",
+        "activePane": "bottomRight",
+        "state": "frozen"
+      }
+    ],
+    "deliveryCopyIdentical": true
+  },
+  "visualReview": {
+    "result": "accepted",
+    "viewsOpened": [
+      "animations-top.png",
+      "animations-tail.png",
+      "animations-sources.png",
+      "remaining-top.png",
+      "remaining-tail.png"
+    ],
+    "notes": "Both worksheets opened as real renders. Totals separated, labels and long conditions readable, source gutter preserved, no clipped headers or values observed. UI and publication statuses follow the associated proof snapshot."
+  },
+  "authoringRuntimeNote": "Artifact export, re-import, formulas and exact-value checks completed and wrote PASS, but the Windows authoring process returned exit code 1 after its final output without another diagnostic. Independent saved ZIP/CRC/XML verification subsequently passed. Native Microsoft Excel interaction was not performed."
+}

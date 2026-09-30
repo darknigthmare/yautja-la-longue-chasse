@@ -1,0 +1,2883 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-146-primal-hunt-pilot-ruins",
+  "checkedAt": "2026-09-30T19:05:13.702Z",
+  "compositionDigest": "f83b114e523374584cef938cc3479780753e9a095d0cefb0a1a8af98ee7e6d9b",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "f2eb599daec7425a0641060f179e0bf58e76e06d1c4e8a1750364f44b8ec125b",
+    "app/game/pitArenaProduction.ts": "982a0850cce006e2d65580d1e188fba485a2e94e006b2403dc38351f214aadef",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "scripts/verify-pit-stage-composition-v61.mjs": "9439af6528c100ae09453b6f235052d79f1b1e1cc79008908c82a25a8de6b17c",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "322eb124dd80d21fdbd9024f99dcd28d2c3cb87eb6d2818d16a52804fde449e7",
+    "app/game/data/pitStageLifeV61.json": "839d2bd0a110aeb0125f1b06879055a181836c7af1307b2ae202ce100e71f466",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 146,
+      "catalogueId": "arena-146-primal-hunt-pilot-ruins",
+      "assetDirectory": "/game/sprites/v55/pit-arenas/arena-146-primal-hunt-pilot-ruins",
+      "name": "LV-1201 — sanctuaire ancien",
+      "setting": "Ruines des Pilotes de LV-1201 dans le passé, avant les installations humaines du jeu principal.",
+      "wave": "v55-character-stage-coverage",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v55-character-lore-shared-library-compositions",
+      "authoringPlanDigest": "16b82cc79137665804fb0a68d82e48e0872d49efa8651c4de2b7e23d109be272",
+      "screenReference": {
+        "kind": "game",
+        "workId": "avp2-primal-hunt",
+        "classification": "work-setting",
+        "sourceUrls": [
+          "https://www.ggmania.com/?smsid=aliens-vs-predator-2-expansion-announced-11091"
+        ],
+        "fidelityClaim": "original-lateral-layout-not-shot-exact"
+      },
+      "moduleProfile": "nature-mineral",
+      "contactMeasurements": [
+        {
+          "plane": "P2",
+          "assetId": "p2-module",
+          "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+          "crop": {
+            "x": 136,
+            "y": 47,
+            "width": 786,
+            "height": 1441
+          },
+          "visibleBottomExclusive": 1488,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        },
+        {
+          "plane": "P3",
+          "assetId": "p3-module",
+          "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+          "crop": {
+            "x": 185,
+            "y": 205,
+            "width": 1521,
+            "height": 561
+          },
+          "visibleBottomExclusive": 766,
+          "alphaThreshold": 16,
+          "authoredBottoms": [
+            430,
+            430
+          ]
+        }
+      ],
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur dédiée : interprétation latérale originale",
+          "nominalParallax": 0.05,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "PNG OpenAI dédié au lieu",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-146-primal-hunt-pilot-ruins/p0-depth.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "6e67f6ab7575c6143d6982d85551f11602a2e449f5faa4513313e1464f7abea5",
+                    "width": 1942,
+                    "height": 809,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1942,
+                      "height": 809
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Atmosphère alpha indépendante",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.12,
+              "placements": [
+                {
+                  "x": -100,
+                  "y": 190,
+                  "width": 1160,
+                  "height": 150
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module natif dédié au milieu",
+          "nominalParallax": 0.62,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-module",
+              "role": "Module natif indépendant nature-mineral",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "anchorToGround": true,
+              "parallax": 0.62,
+              "opacity": 0.82,
+              "placements": [
+                {
+                  "x": -110,
+                  "y": 70,
+                  "width": 265,
+                  "height": 360
+                },
+                {
+                  "x": 805,
+                  "y": 70,
+                  "width": 265,
+                  "height": 360
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "c696ef4a3964364e2d8e4752fe85edf9f29748fc212733dcf32988e4626d5fdc",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 136,
+                      "y": 47,
+                      "width": 786,
+                      "height": 1441
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-143-big-game-new-mexico/p2-module"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module natif dédié au milieu",
+          "nominalParallax": 0.85,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-module",
+              "role": "Module natif indépendant nature-mineral",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "anchorToGround": true,
+              "parallax": 0.85,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 45,
+                  "y": 360,
+                  "width": 145,
+                  "height": 70
+                },
+                {
+                  "x": 775,
+                  "y": 360,
+                  "width": 145,
+                  "height": 70
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "bd80ca27db0063578fad9c30bdf5642a237aabcdd8085fecf43e0350b8b3aa47",
+                    "width": 1881,
+                    "height": 836,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 185,
+                      "y": 205,
+                      "width": 1521,
+                      "height": 561
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-143-big-game-new-mexico/p3-module"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Sol physique natif indépendant",
+          "nominalParallax": 1,
+          "status": "reviewed",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-floor",
+              "role": "Sol sand OpenAI indépendant",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 960,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+                  "status": "reviewed",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v55/pit-stages/source-records.json",
+                    "sha256": "787ea90595d21fadee070e050b88d01f371923211a2801926c7da4f8db720bfd",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 2172,
+                      "height": 724
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v55/pit-stages/source-records.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": null
+                }
+              ],
+              "libraryRef": "arena-143-big-game-new-mexico/p4-floor"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Brume proche alpha discrète",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-near-atmosphere",
+              "role": "Brume haute indépendante",
+              "contour": "voile alpha doux, centre et sol de combat dégagés",
+              "alphaRequired": true,
+              "requiredForRuntime": false,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.06,
+              "placements": [
+                {
+                  "x": -40,
+                  "y": 385,
+                  "width": 1040,
+                  "height": 90
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v33/pit-arenas/checked-arena-generation-receipts-01.json",
+                    "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 39,
+                      "y": 455,
+                      "width": 1453,
+                      "height": 362
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v33-arena-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v33-the-pit-fullapp-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-001-cercle-de-basalte/p0-b-vault-haze"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-146-primal-hunt-pilot-ruins",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v55-arena-146-primal-hunt-pilot-ruins-renderer-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v55-stage-composition-visual-review.json",
+        "digest": "61443197ecb5c0c2e6adc967f5ff6cee26da7264dbcb1f41bd735c2c6e4a0f4d"
+      }
+    },
+    "life": {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Dais ancien — colliers mécaniques",
+          "placement": {
+            "x": 652,
+            "bottom": 247,
+            "height": 48,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "sha256": "7641c5ff3700cb682be7c47396cb8a7a9c93db1c20406bf2e0ce9aa6f3bbb230",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                462
+              ],
+              "alphaBounds": [
+                29,
+                129,
+                463,
+                333
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                463
+              ],
+              "alphaBounds": [
+                31,
+                122,
+                464,
+                341
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                462
+              ],
+              "alphaBounds": [
+                24,
+                112,
+                464,
+                350
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                444
+              ],
+              "alphaBounds": [
+                29,
+                98,
+                464,
+                346
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                260.5,
+                445
+              ],
+              "alphaBounds": [
+                30,
+                97,
+                465,
+                348
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                446
+              ],
+              "alphaBounds": [
+                24,
+                100,
+                467,
+                346
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Fougères sur corniche — souffle humide",
+          "placement": {
+            "x": 579,
+            "bottom": 317,
+            "height": 80,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                232.5,
+                476
+              ],
+              "alphaBounds": [
+                63,
+                87,
+                412,
+                389
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                239.5,
+                477
+              ],
+              "alphaBounds": [
+                41,
+                116,
+                438,
+                361
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238.5,
+                477
+              ],
+              "alphaBounds": [
+                43,
+                125,
+                436,
+                352
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241.5,
+                456
+              ],
+              "alphaBounds": [
+                67,
+                79,
+                415,
+                377
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241.5,
+                456
+              ],
+              "alphaBounds": [
+                66,
+                75,
+                412,
+                381
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                243.5,
+                456
+              ],
+              "alphaBounds": [
+                68,
+                59,
+                412,
+                397
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Porte de pierre — iris et poussière",
+          "placement": {
+            "x": 823,
+            "bottom": 304,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                270.5,
+                464
+              ],
+              "alphaBounds": [
+                47,
+                37,
+                447,
+                427
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                464
+              ],
+              "alphaBounds": [
+                28,
+                37,
+                450,
+                427
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                240,
+                464
+              ],
+              "alphaBounds": [
+                16,
+                39,
+                448,
+                425
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                270.5,
+                448
+              ],
+              "alphaBounds": [
+                47,
+                23,
+                447,
+                425
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                448
+              ],
+              "alphaBounds": [
+                31,
+                22,
+                447,
+                426
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241,
+                448
+              ],
+              "alphaBounds": [
+                19,
+                23,
+                445,
+                425
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+      "sha256": "7641c5ff3700cb682be7c47396cb8a7a9c93db1c20406bf2e0ce9aa6f3bbb230",
+      "bytes": 2361940,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.5921084086100261,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            129,
+            463,
+            333
+          ],
+          "contentSha256": "4bc7c4d790ff69e3212545cf922d1d3808d14eaf35db99e2a26510c12fab6df5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            122,
+            464,
+            341
+          ],
+          "contentSha256": "2642555033814076aa35c4b1db7b177033810f7067cbd4df27c96ee898b60dce",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            112,
+            464,
+            350
+          ],
+          "contentSha256": "049a6197ffbdb5804d50a6a9a7651934529efb8f629bd51236bbec74e4445d0f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            29,
+            98,
+            464,
+            346
+          ],
+          "contentSha256": "40dd6a947df5d99d461476e32e93c66a3f3f8c8006af17415f52773ae30b572b",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            97,
+            465,
+            348
+          ],
+          "contentSha256": "1e88192a23ef05f2ad48a16b825f3ac22d79ef5ab878e4d2a460418ed154b260",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            100,
+            467,
+            346
+          ],
+          "contentSha256": "a11e731c0c5b4dd0f0cb626296f67b6af0c3c45a57603dee1ecedd1019715c96",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-146-primal-hunt-pilot-ruins.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+      "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+      "bytes": 2358401,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6679286956787109,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            63,
+            87,
+            412,
+            389
+          ],
+          "contentSha256": "034399167a76c4b1ab61b2cb66d6d1a6cb96af511b3e80fbeb0bc811903e9751",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            41,
+            116,
+            438,
+            361
+          ],
+          "contentSha256": "bdb4f9c596ce7c4dd05173a23683a333aac98c1229192f3c67cdbf4e3f9215b6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            125,
+            436,
+            352
+          ],
+          "contentSha256": "56be488b8ddb273fa70764577820ef0923110ed4b60196538569f4b6eec2bbd7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            67,
+            79,
+            415,
+            377
+          ],
+          "contentSha256": "f3bad60485e5071cd7f969f3c8a91b1077996cdcff9a3117cc6c65535e3bb9c8",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            75,
+            412,
+            381
+          ],
+          "contentSha256": "761ce509de9927343d89fbc5e45e9f9d9c0c1a1494d36d29c95f7d2b64f43dbd",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            68,
+            59,
+            412,
+            397
+          ],
+          "contentSha256": "b99213dd2973b1896712ced22dde6228ffa10f35ae00c64d46bb9b6cbaf44b54",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-146-primal-hunt-pilot-ruins-ambient-02.json"
+    },
+    {
+      "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+      "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+      "bytes": 2793922,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.49005063374837243,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            37,
+            447,
+            427
+          ],
+          "contentSha256": "d8ebef28e63b8b56f729e614a786c78bce1dcdcc777feba3cb250bf13516c88d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            28,
+            37,
+            450,
+            427
+          ],
+          "contentSha256": "8193fb710a9f5a7e96a2f3fe1f7b244380fc007e3ba54e00970ac7e6e1a085c9",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            16,
+            39,
+            448,
+            425
+          ],
+          "contentSha256": "1c10a685e0ba1ce4192a6ffa749fbdc86d13ccb3ad332aeb0c8deeb02271883a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            47,
+            23,
+            447,
+            425
+          ],
+          "contentSha256": "d57d2276c8c53fdf36e6594f1dc6bb03a9da39a3196a77e4863227dd149cc759",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            31,
+            22,
+            447,
+            426
+          ],
+          "contentSha256": "f30f977fc6aa1e6fd022e035945a55a5dcce9b00d51d5267577c0b0d6242866c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            23,
+            445,
+            425
+          ],
+          "contentSha256": "9cc9327b92affa15d496cde0cd618f75defaa388471bda6ed53886492d6a62cc",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v61-generation\\arena-146-primal-hunt-pilot-ruins-ambient-03.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 8,
+    "expectedImages": 8,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV61Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            652,
+            247
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            579,
+            317
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            823,
+            304
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            652,
+            247
+          ],
+          "pivot": [
+            652,
+            247
+          ],
+          "visibleBounds": [
+            630.390625,
+            215.78125,
+            43.40625,
+            31.21875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            579,
+            317
+          ],
+          "pivot": [
+            579,
+            317
+          ],
+          "visibleBounds": [
+            552.515625,
+            256.21875,
+            64.375,
+            60.78125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            823,
+            304
+          ],
+          "pivot": [
+            823,
+            304
+          ],
+          "visibleBounds": [
+            783.712890625,
+            228.94140625,
+            78.57421875,
+            75.05859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            666.095,
+            246.48250000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            591.4525000000001,
+            318.0575
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            840.9424999999999,
+            304.765
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            666.095,
+            246.48250000000002
+          ],
+          "pivot": [
+            666.095,
+            246.48250000000002
+          ],
+          "visibleBounds": [
+            643.9994140625,
+            214.56132812500005,
+            44.382890625,
+            31.921171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            591.4525000000001,
+            318.0575
+          ],
+          "pivot": [
+            591.4525000000001,
+            318.0575
+          ],
+          "visibleBounds": [
+            564.3722265625001,
+            255.90867187500004,
+            65.8234375,
+            62.148828124999994
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            840.9424999999999,
+            304.765
+          ],
+          "pivot": [
+            840.9424999999999,
+            304.765
+          ],
+          "visibleBounds": [
+            800.7714306640623,
+            228.01758789062498,
+            80.34213867187499,
+            76.74741210937499
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            645.645,
+            246.48250000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            571.0025,
+            318.0575
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            820.4925,
+            304.765
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            645.645,
+            246.48250000000002
+          ],
+          "pivot": [
+            645.645,
+            246.48250000000002
+          ],
+          "visibleBounds": [
+            623.5494140625,
+            214.56132812500005,
+            44.382890625,
+            31.921171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            571.0025,
+            318.0575
+          ],
+          "pivot": [
+            571.0025,
+            318.0575
+          ],
+          "visibleBounds": [
+            543.9222265625001,
+            255.90867187500004,
+            65.8234375,
+            62.148828124999994
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            820.4925,
+            304.765
+          ],
+          "pivot": [
+            820.4925,
+            304.765
+          ],
+          "visibleBounds": [
+            780.3214306640624,
+            228.01758789062498,
+            80.34213867187499,
+            76.74741210937499
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            650.28,
+            247.23
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            578.01,
+            316.53
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            819.5699999999999,
+            303.65999999999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            650.28,
+            247.23
+          ],
+          "pivot": [
+            650.28,
+            247.22999999999996
+          ],
+          "visibleBounds": [
+            628.88671875,
+            216.32343749999998,
+            42.9721875,
+            30.906562499999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            578.01,
+            316.53
+          ],
+          "pivot": [
+            578.01,
+            316.53
+          ],
+          "visibleBounds": [
+            551.79046875,
+            256.35656249999994,
+            63.73125,
+            60.173437500000006
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            819.5699999999999,
+            303.65999999999997
+          ],
+          "pivot": [
+            819.5699999999999,
+            303.65999999999997
+          ],
+          "visibleBounds": [
+            780.67576171875,
+            229.35199218749997,
+            77.7884765625,
+            74.3080078125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            656.73,
+            246.11062499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            581.7225,
+            318.035625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            832.4325,
+            304.67812499999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            656.73,
+            246.11062499999997
+          ],
+          "pivot": [
+            656.73,
+            246.11062499999997
+          ],
+          "visibleBounds": [
+            634.5263671875001,
+            214.03335937499997,
+            44.59992187500001,
+            32.077265625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            581.7225,
+            318.035625
+          ],
+          "pivot": [
+            581.7225,
+            318.035625
+          ],
+          "visibleBounds": [
+            554.5098046874999,
+            255.58289062499995,
+            66.1453125,
+            62.452734375000006
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            832.4325,
+            304.67812499999997
+          ],
+          "pivot": [
+            832.4325,
+            304.67812499999997
+          ],
+          "visibleBounds": [
+            792.0649951171876,
+            227.55541992187497,
+            80.73500976562501,
+            77.12270507812501
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            634.8000000000001,
+            249.3
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            569.1,
+            312.3
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            788.7,
+            300.6
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            634.8000000000001,
+            249.3
+          ],
+          "pivot": [
+            634.8000000000001,
+            249.3
+          ],
+          "visibleBounds": [
+            615.3515625,
+            221.20312500000003,
+            39.065625000000004,
+            28.096875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            569.1,
+            312.3
+          ],
+          "pivot": [
+            569.1,
+            312.3
+          ],
+          "visibleBounds": [
+            545.2640625,
+            257.596875,
+            57.9375,
+            54.703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            788.7,
+            300.6
+          ],
+          "pivot": [
+            788.7,
+            300.6
+          ],
+          "visibleBounds": [
+            753.3416015625,
+            233.04726562500002,
+            70.716796875,
+            67.552734375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            652,
+            247
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            579,
+            317
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            823,
+            304
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            652,
+            247
+          ],
+          "pivot": [
+            652,
+            247
+          ],
+          "visibleBounds": [
+            630.390625,
+            215.78125,
+            43.40625,
+            31.21875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            579,
+            317
+          ],
+          "pivot": [
+            579,
+            317
+          ],
+          "visibleBounds": [
+            552.515625,
+            256.21875,
+            64.375,
+            60.78125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            823,
+            304
+          ],
+          "pivot": [
+            823,
+            304
+          ],
+          "visibleBounds": [
+            783.712890625,
+            228.94140625,
+            78.57421875,
+            75.05859375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            657.090614745,
+            241.587594
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            581.9418597449999,
+            313.648044
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "pass": "P2",
+          "drawn": true,
+          "attachment": [
+            833.123999745,
+            300.265389
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            657.090614745,
+            241.587594
+          ],
+          "pivot": [
+            657.090614745,
+            241.587594
+          ],
+          "visibleBounds": [
+            634.845167791875,
+            209.44992009375,
+            44.68391296875,
+            32.13767390625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            581.9418597449999,
+            313.648044
+          ],
+          "pivot": [
+            581.9418597449999,
+            313.648044
+          ],
+          "visibleBounds": [
+            554.6779171668749,
+            251.07769790625002,
+            66.269878125,
+            62.57034609375001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P2",
+          "attachment": [
+            833.123999745,
+            300.265389
+          ],
+          "pivot": [
+            833.123999745,
+            300.265389
+          ],
+          "visibleBounds": [
+            792.6804743055468,
+            222.99744554296876,
+            80.88705087890625,
+            77.26794345703125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 1375,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 1395,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 1415,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 1435,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 1455,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 1475,
+      "attachment": [
+        652,
+        247
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 2424,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 2444,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 2464,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 2484,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 2504,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 2524,
+      "attachment": [
+        579,
+        317
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 3523,
+      "attachment": [
+        823,
+        304
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 3543,
+      "attachment": [
+        823,
+        304
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 3563,
+      "attachment": [
+        823,
+        304
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 3583,
+      "attachment": [
+        823,
+        304
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 3603,
+      "attachment": [
+        823,
+        304
+      ]
+    },
+    {
+      "kind": "v61-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 3623,
+      "attachment": [
+        823,
+        304
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\center.png",
+      "sha256": "ed3948f283f30489bc9fbafa6f940f9d93b7ec952521add0a587184234918623"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\left-corner.png",
+      "sha256": "947b3ffc308eb2cde1796d77507c5ce1c151d978c21d6a6f467a008b783bf878"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\right-corner.png",
+      "sha256": "7acc402ae01ba4b4efc70514c03c0f0c5a73156bc0bf245776c9662f55df6da3"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\wide.png",
+      "sha256": "f55ef405b4ce8df48d5d8f17b2b1fabe43b8db7552b41a04f4edee01204802a0"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\close.png",
+      "sha256": "9c26f3b73e17fdea5ebd0325014de6b1fa1cab03442cc033519e7c6a335d4a7d"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\reduced-motion.png",
+      "sha256": "96a388c09f04d104f73ecaa0ea7f07d58db8f24e17de03a0ebbf1806c4ff32bf"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\high-contrast.png",
+      "sha256": "695a26ebffd1d8067ced749e38f82d3ecec5f268157fc68381ed6a5690b4923b"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\actual-game-camera.png",
+      "sha256": "3515003ad1aa840971d44f1fc0dc22a187d4ee47f8a0200d6e7780ba507fadf0"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-0.png",
+      "sha256": "1649db304c3f96c1ddff7c078686c53bb0fc3213f855739a3086847da4e04bdf"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-1.png",
+      "sha256": "8978e027a64461cd7e01f454aa70ac50731104c6c681a359d398789c9e5e416b"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-2.png",
+      "sha256": "f6dd9cb7e6aa1d8039687c898d8d4275cda62445eb507332b5f6283fceee3f57"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-3.png",
+      "sha256": "35f0ff4129054c5518c98ac130adc3a6733e444c991234a721cb59e3b3563a4b"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-4.png",
+      "sha256": "d92b45a3f1f3fe75c3d8578d1ba2d5c1623f4764096501e4818b7d1f36285da7"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-01-frame-5.png",
+      "sha256": "93e74af31e4dddd1d1721046877f5840c438fe1f71b0aa407e161f61064a99a5"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-0.png",
+      "sha256": "74e57544e7f203992cc1d3ce45a558dfb494b2cbe9d1efcef3363d7e88e04a46"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-1.png",
+      "sha256": "994f709858265b9ea53033e262a9fa7223bab74255cb028f08226446102a2770"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-2.png",
+      "sha256": "dfe92970bfc9f2087fef633aa5c227701ceabe0bd536248cf70f762d460cdb82"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-3.png",
+      "sha256": "017ff4cad4e01462de990c0f1d211f98ed6f0d146935f10f4465b61f246a6b67"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-4.png",
+      "sha256": "1d6834a65901221979c3a9835f88b022551baad6072914722adabcb09a7593ba"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-02-frame-5.png",
+      "sha256": "d90fe3b9dd788873374e2e49d95b0d8756652e421fa8d7ae347f73016b61dd3e"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-0.png",
+      "sha256": "d46d08bd5edb624a2505d9896058980af0f4a05e1afea5f701fa85edccd99f26"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-1.png",
+      "sha256": "64fe02468283e51586ce8deaea3e2ce30c9e337d3796b95eb591c478299d95d4"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-2.png",
+      "sha256": "11200c50dd20e33a85b897cb7ad4f5c2caf0f54c41f06ad9148c8244e8623d8e"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-3.png",
+      "sha256": "c197726848801d0492aca9be07c4e4604f1ce084bdc8a1d0d80718df95b7cca8"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-4.png",
+      "sha256": "4cd52be568a17d1c8177e2952c89c6d081fa1cf06d66a6212abcbf292459d631"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\ambient-ambient-03-frame-5.png",
+      "sha256": "860a03df2b4763934709c99c9a34660a4d2e3e457e819d1c10267652c1ba6fd0"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v61\\qa\\renderer\\arena-146-primal-hunt-pilot-ruins\\mobile-canvas.png",
+      "sha256": "49a45425002073d388f52afa8bbe14e493c4292e453b7bd0626a554aa65b8758"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

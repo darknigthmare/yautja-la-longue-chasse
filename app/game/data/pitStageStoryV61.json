@@ -1,0 +1,688 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stages": [
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "events": [
+        {
+          "id": "conditional-guard-after-combat",
+          "name": "Garde anonyme — observation après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 750,
+            "bottom": 354,
+            "height": 110,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-story/arena-140-bad-blood-pine-barrens/conditional-guard-after-combat.png",
+          "sha256": "ae57c714af4350c5c27246b3f982e0ba4af990f24755fe0d6f0e4223d772886b",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                310,
+                496
+              ],
+              "alphaBounds": [
+                203,
+                0,
+                212,
+                496
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                498
+              ],
+              "alphaBounds": [
+                150,
+                6,
+                223,
+                492
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                209,
+                496
+              ],
+              "alphaBounds": [
+                99,
+                1,
+                299,
+                495
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                273.5,
+                498
+              ],
+              "alphaBounds": [
+                163,
+                4,
+                312,
+                494
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                496
+              ],
+              "alphaBounds": [
+                151,
+                8,
+                250,
+                488
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                211,
+                496
+              ],
+              "alphaBounds": [
+                105,
+                3,
+                214,
+                493
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "events": [
+        {
+          "id": "conditional-patrol-after-match",
+          "name": "Deux chasseurs anonymes — relève après le duel",
+          "trigger": "match-end",
+          "idleVisibility": "hidden",
+          "placement": {
+            "x": 500,
+            "bottom": 363,
+            "height": 78,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-story/arena-142-dead-end-alley/conditional-patrol-after-match.png",
+          "sha256": "c282d2e34c9daab5a9626e5b6a825f7c471be88b517c11b407feaac15a4f49a3",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                241,
+                479
+              ],
+              "alphaBounds": [
+                36,
+                65,
+                425,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                478
+              ],
+              "alphaBounds": [
+                52,
+                64,
+                428,
+                414
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                478
+              ],
+              "alphaBounds": [
+                46,
+                68,
+                434,
+                410
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                252,
+                476
+              ],
+              "alphaBounds": [
+                56,
+                59,
+                412,
+                417
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                261.5,
+                473
+              ],
+              "alphaBounds": [
+                68,
+                65,
+                410,
+                408
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                275,
+                472
+              ],
+              "alphaBounds": [
+                88,
+                58,
+                397,
+                414
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-165-kenner-throne",
+      "events": [
+        {
+          "id": "victory-salute",
+          "name": "Garde anonyme — salut de victoire",
+          "src": "/game/sprites/v61/pit-story/arena-165-kenner-throne/victory-salute.png",
+          "sha256": "c373dadcaeb74986c982a94a8486765ba052958fb799cb679ec092bf1ae3ddd3",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 260,
+            "bottom": 265,
+            "height": 111.937,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                280,
+                478
+              ],
+              "alphaBounds": [
+                194,
+                65,
+                172,
+                413
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                479
+              ],
+              "alphaBounds": [
+                163,
+                62,
+                180,
+                417
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                479
+              ],
+              "alphaBounds": [
+                124,
+                62,
+                219,
+                417
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                284.5,
+                478
+              ],
+              "alphaBounds": [
+                193,
+                27,
+                183,
+                451
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                480
+              ],
+              "alphaBounds": [
+                162,
+                65,
+                187,
+                415
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                479
+              ],
+              "alphaBounds": [
+                167,
+                66,
+                176,
+                413
+              ]
+            }
+          ],
+          "trigger": "round-victory",
+          "idleVisibility": "hidden",
+          "replacesAmbientEventId": "life-01"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-173-phg-japan",
+      "events": [
+        {
+          "id": "round-bell",
+          "name": "Cloche de départ — frappe unique du battant",
+          "src": "/game/sprites/v61/pit-story/arena-173-phg-japan/round-bell.png",
+          "sha256": "206cbb9644d69870a6632d27c6b94a0a4b7eb4a8ae5969d459586755234081e6",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 305,
+            "bottom": 171,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                104
+              ],
+              "alphaBounds": [
+                89,
+                90,
+                333,
+                325
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                264,
+                104
+              ],
+              "alphaBounds": [
+                67,
+                90,
+                348,
+                324
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                281,
+                104
+              ],
+              "alphaBounds": [
+                57,
+                90,
+                369,
+                324
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                272,
+                80
+              ],
+              "alphaBounds": [
+                85,
+                64,
+                344,
+                332
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                270,
+                80
+              ],
+              "alphaBounds": [
+                117,
+                64,
+                308,
+                331
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                80
+              ],
+              "alphaBounds": [
+                57,
+                64,
+                366,
+                329
+              ]
+            }
+          ],
+          "trigger": "round-start",
+          "idleVisibility": "rest"
+        }
+      ]
+    },
+    {
+      "stageId": "arena-185-training",
+      "events": [
+        {
+          "id": "round-judgment",
+          "name": "Arbitre anonyme — jugement de fin de manche",
+          "src": "/game/sprites/v61/pit-story/arena-185-training/round-judgment.png",
+          "sha256": "b67b7342b4e3be4f2dd60c5e6e7cb73e0eb6abff5e3aff789883cb68f9774126",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 474,
+            "bottom": 160,
+            "height": 84.9421,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                277,
+                476
+              ],
+              "alphaBounds": [
+                171,
+                50,
+                213,
+                426
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                246,
+                475
+              ],
+              "alphaBounds": [
+                140,
+                50,
+                226,
+                425
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                490
+              ],
+              "pivot": [
+                245.5,
+                476
+              ],
+              "alphaBounds": [
+                139,
+                49,
+                242,
+                427
+              ]
+            },
+            {
+              "rect": [
+                0,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                278,
+                495
+              ],
+              "alphaBounds": [
+                171,
+                15,
+                215,
+                480
+              ]
+            },
+            {
+              "rect": [
+                512,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                246,
+                495
+              ],
+              "alphaBounds": [
+                140,
+                72,
+                212,
+                423
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                490,
+                512,
+                534
+              ],
+              "pivot": [
+                245,
+                495
+              ],
+              "alphaBounds": [
+                139,
+                72,
+                212,
+                423
+              ]
+            }
+          ],
+          "trigger": "round-end",
+          "idleVisibility": "hidden",
+          "replacesAmbientEventId": "life-03"
+        }
+      ]
+    }
+  ]
+}

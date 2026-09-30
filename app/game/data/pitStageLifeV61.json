@@ -1,0 +1,3163 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "stages": [
+    {
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Hélicoptère de police lointain — rotor",
+          "placement": {
+            "x": 552,
+            "bottom": 143,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-01.png",
+          "sha256": "db88a2cc29db2790076faad0de56921defa2468e05da7456f374dbbe2fa649c2",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                224,
+                420
+              ],
+              "alphaBounds": [
+                42,
+                251,
+                464,
+                169
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                221,
+                420
+              ],
+              "alphaBounds": [
+                70,
+                216,
+                432,
+                204
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                205.5,
+                422
+              ],
+              "alphaBounds": [
+                50,
+                194,
+                435,
+                228
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                387
+              ],
+              "alphaBounds": [
+                54,
+                180,
+                453,
+                207
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                221,
+                384
+              ],
+              "alphaBounds": [
+                47,
+                193,
+                458,
+                191
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                211.5,
+                384
+              ],
+              "alphaBounds": [
+                54,
+                174,
+                443,
+                210
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Policier anonyme — veille et radio",
+          "placement": {
+            "x": 255,
+            "bottom": 322,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-02.png",
+          "sha256": "f5b7d61870db9776c3683e5efccb29dc99862523b2d365c56522e9460e5a4f16",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                290.5,
+                490
+              ],
+              "alphaBounds": [
+                212,
+                27,
+                173,
+                463
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                243.5,
+                490
+              ],
+              "alphaBounds": [
+                164,
+                27,
+                176,
+                463
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                244,
+                490
+              ],
+              "alphaBounds": [
+                167,
+                24,
+                173,
+                466
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                290,
+                490
+              ],
+              "alphaBounds": [
+                210,
+                24,
+                169,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                490
+              ],
+              "alphaBounds": [
+                176,
+                34,
+                174,
+                456
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                244.5,
+                490
+              ],
+              "alphaBounds": [
+                168,
+                28,
+                173,
+                462
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Gargouille — linge au vent",
+          "placement": {
+            "x": 115,
+            "bottom": 325,
+            "height": 70,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-139-batman-gotham-rooftops/ambient-03.png",
+          "sha256": "5fdc4dd70ebcee5aaa84cff914ea09671afac1023d8646bec5aea2eceb2ad56f",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                50,
+                91,
+                390,
+                388
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                40,
+                89,
+                421,
+                371
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                454
+              ],
+              "alphaBounds": [
+                37,
+                89,
+                461,
+                369
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                535,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                50,
+                64,
+                468,
+                368
+              ]
+            },
+            {
+              "rect": [
+                535,
+                512,
+                489,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                18,
+                64,
+                394,
+                367
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                144.5,
+                430
+              ],
+              "alphaBounds": [
+                38,
+                66,
+                391,
+                368
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Papillons nocturnes sur un rameau de pin",
+          "placement": {
+            "x": 270,
+            "bottom": 245,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-01.png",
+          "sha256": "5eb4db14eeb4250d0193d5560860f4c899d88844bff6b7de73afe74028719921",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                335.5
+              ],
+              "alphaBounds": [
+                131,
+                178,
+                274,
+                251
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                370,
+                347
+              ],
+              "alphaBounds": [
+                134,
+                190,
+                283,
+                228
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                394,
+                337.5
+              ],
+              "alphaBounds": [
+                137,
+                196,
+                307,
+                246
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                369,
+                320
+              ],
+              "alphaBounds": [
+                102,
+                166,
+                276,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                370,
+                320
+              ],
+              "alphaBounds": [
+                125,
+                172,
+                277,
+                225
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                372,
+                347
+              ],
+              "alphaBounds": [
+                137,
+                153,
+                290,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Broussailles frôlées par une proie hors champ",
+          "placement": {
+            "x": 340,
+            "bottom": 350,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-02.png",
+          "sha256": "2661b91ab3ea2c851ff404539a0fbb2fe7e4e722f96b8c3c5c694bb85624c0d9",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                282.5,
+                464
+              ],
+              "alphaBounds": [
+                37,
+                129,
+                450,
+                335
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                264.5,
+                464
+              ],
+              "alphaBounds": [
+                48,
+                160,
+                430,
+                304
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                262.5,
+                464
+              ],
+              "alphaBounds": [
+                40,
+                146,
+                425,
+                318
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                281.5,
+                430
+              ],
+              "alphaBounds": [
+                50,
+                65,
+                455,
+                365
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                293,
+                431
+              ],
+              "alphaBounds": [
+                61,
+                97,
+                408,
+                334
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                283.5,
+                429
+              ],
+              "alphaBounds": [
+                40,
+                84,
+                436,
+                345
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Balise mécanique originale — fumée résiduelle",
+          "placement": {
+            "x": 635,
+            "bottom": 363,
+            "height": 125,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-140-bad-blood-pine-barrens/ambient-03.png",
+          "sha256": "be1f842d0ef0cd5a3ff62f1c15fcc5107bc69602fb0d0c73f137bb5a34c36a43",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                242,
+                472
+              ],
+              "alphaBounds": [
+                117,
+                198,
+                251,
+                274
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                250.5,
+                471
+              ],
+              "alphaBounds": [
+                126,
+                84,
+                250,
+                387
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                222,
+                473
+              ],
+              "alphaBounds": [
+                97,
+                9,
+                312,
+                464
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                560,
+                512
+              ],
+              "pivot": [
+                242,
+                475
+              ],
+              "alphaBounds": [
+                117,
+                2,
+                416,
+                473
+              ]
+            },
+            {
+              "rect": [
+                560,
+                512,
+                520,
+                512
+              ],
+              "pivot": [
+                202,
+                474
+              ],
+              "alphaBounds": [
+                77,
+                13,
+                425,
+                461
+              ]
+            },
+            {
+              "rect": [
+                1080,
+                512,
+                456,
+                512
+              ],
+              "pivot": [
+                166,
+                476
+              ],
+              "alphaBounds": [
+                41,
+                41,
+                371,
+                435
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-142-dead-end-alley",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Ombre de xénomorphe — mouvement sur la brique",
+          "opacity": 0.65,
+          "placement": {
+            "x": 230,
+            "bottom": 235,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-01.png",
+          "sha256": "6cb701e33a943640cf2ebdaffc2bad20f73c42d19fb6ac6473ac549bd649e376",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                215,
+                457
+              ],
+              "alphaBounds": [
+                36,
+                144,
+                475,
+                313
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                459
+              ],
+              "alphaBounds": [
+                61,
+                141,
+                451,
+                318
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238.5,
+                458
+              ],
+              "alphaBounds": [
+                55,
+                143,
+                434,
+                315
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                244,
+                415
+              ],
+              "alphaBounds": [
+                32,
+                106,
+                471,
+                309
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                260.5,
+                416
+              ],
+              "alphaBounds": [
+                56,
+                108,
+                446,
+                308
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                246,
+                416
+              ],
+              "alphaBounds": [
+                48,
+                92,
+                432,
+                324
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ventilation murale — vapeur et gouttes",
+          "placement": {
+            "x": 733,
+            "bottom": 182,
+            "height": 120,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-02.png",
+          "sha256": "cc2d5a3431c18a5e9b3a042659c9e8be3b0e8e4e3e94002f06d3b0b8cd764527",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                290,
+                274
+              ],
+              "alphaBounds": [
+                172,
+                117,
+                196,
+                293
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                287,
+                275
+              ],
+              "alphaBounds": [
+                171,
+                122,
+                195,
+                308
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                275
+              ],
+              "alphaBounds": [
+                166,
+                162,
+                196,
+                285
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                290.5,
+                239
+              ],
+              "alphaBounds": [
+                172,
+                115,
+                197,
+                299
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                286,
+                241
+              ],
+              "alphaBounds": [
+                171,
+                95,
+                195,
+                267
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                239
+              ],
+              "alphaBounds": [
+                168,
+                106,
+                194,
+                277
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Câble et tissu — souffle de la ruelle",
+          "placement": {
+            "x": 175,
+            "bottom": 130,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-142-dead-end-alley/ambient-03.png",
+          "sha256": "26357dc10b21f7308011fdcf02e3fdb3ddecf5e9bbcdcb7227eab8513a24666d",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                192,
+                42
+              ],
+              "alphaBounds": [
+                127,
+                23,
+                220,
+                471
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                235,
+                42
+              ],
+              "alphaBounds": [
+                173,
+                23,
+                228,
+                478
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                281,
+                42
+              ],
+              "alphaBounds": [
+                223,
+                23,
+                238,
+                442
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                196.5,
+                43
+              ],
+              "alphaBounds": [
+                131,
+                24,
+                255,
+                448
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                568,
+                512
+              ],
+              "pivot": [
+                239,
+                43
+              ],
+              "alphaBounds": [
+                173,
+                24,
+                345,
+                386
+              ]
+            },
+            {
+              "rect": [
+                1080,
+                512,
+                456,
+                512
+              ],
+              "pivot": [
+                233,
+                43
+              ],
+              "alphaBounds": [
+                166,
+                24,
+                236,
+                448
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-144-archie-riverdale",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Enseigne du diner — tissu et chaînes",
+          "placement": {
+            "x": 388,
+            "bottom": 257,
+            "height": 95,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-01.png",
+          "sha256": "80a242611cb94ef9ac9bffc3f8c339911d5dd763a7088c764cf287dda635af3f",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                190,
+                250
+              ],
+              "alphaBounds": [
+                162,
+                118,
+                254,
+                290
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                132,
+                113,
+                303,
+                300
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                99,
+                105,
+                328,
+                301
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                190,
+                208
+              ],
+              "alphaBounds": [
+                140,
+                82,
+                272,
+                302
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                247
+              ],
+              "alphaBounds": [
+                113,
+                80,
+                269,
+                319
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                179.5,
+                250
+              ],
+              "alphaBounds": [
+                102,
+                82,
+                250,
+                302
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ambulance anonyme — suspension et roues",
+          "placement": {
+            "x": 715,
+            "bottom": 389,
+            "height": 165,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-02.png",
+          "sha256": "9cfe07467024e40039538e813160f30127be624a850f89e32a360c6f187c04b0",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                293,
+                401
+              ],
+              "alphaBounds": [
+                60,
+                195,
+                426,
+                208
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                280.5,
+                401
+              ],
+              "alphaBounds": [
+                48,
+                198,
+                426,
+                205
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268.75,
+                401
+              ],
+              "alphaBounds": [
+                35,
+                196,
+                427,
+                207
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                292.5,
+                307
+              ],
+              "alphaBounds": [
+                60,
+                106,
+                426,
+                203
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                279.75,
+                307.5
+              ],
+              "alphaBounds": [
+                47,
+                106,
+                427,
+                204
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                307
+              ],
+              "alphaBounds": [
+                36,
+                103,
+                426,
+                206
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Habitants adultes — fuite derrière la vitrine",
+          "placement": {
+            "x": 466,
+            "bottom": 319,
+            "height": 49,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "idleVisibility": "hidden",
+          "travelX": [
+            400,
+            535
+          ],
+          "clipWorld": {
+            "x": 425,
+            "y": 279,
+            "width": 84,
+            "height": 43
+          },
+          "opacity": 0.65,
+          "src": "/game/sprites/v61/pit-life/arena-144-archie-riverdale/ambient-03.png",
+          "sha256": "6edbcafc9e4cc0089c9b49eddffa0a161ec77293e8a848001ddae2a5a26b6118",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                288.5,
+                463
+              ],
+              "alphaBounds": [
+                33,
+                66,
+                434,
+                397
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                210.5,
+                462
+              ],
+              "alphaBounds": [
+                28,
+                65,
+                385,
+                397
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                186,
+                463
+              ],
+              "alphaBounds": [
+                53,
+                66,
+                378,
+                397
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                251,
+                444
+              ],
+              "alphaBounds": [
+                33,
+                41,
+                441,
+                403
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                252.5,
+                435
+              ],
+              "alphaBounds": [
+                41,
+                38,
+                394,
+                397
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                438
+              ],
+              "alphaBounds": [
+                26,
+                43,
+                450,
+                395
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Dais ancien — colliers mécaniques",
+          "placement": {
+            "x": 652,
+            "bottom": 247,
+            "height": 48,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-01.png",
+          "sha256": "7641c5ff3700cb682be7c47396cb8a7a9c93db1c20406bf2e0ce9aa6f3bbb230",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                462
+              ],
+              "alphaBounds": [
+                29,
+                129,
+                463,
+                333
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                263,
+                463
+              ],
+              "alphaBounds": [
+                31,
+                122,
+                464,
+                341
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                462
+              ],
+              "alphaBounds": [
+                24,
+                112,
+                464,
+                350
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                444
+              ],
+              "alphaBounds": [
+                29,
+                98,
+                464,
+                346
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                260.5,
+                445
+              ],
+              "alphaBounds": [
+                30,
+                97,
+                465,
+                348
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                446
+              ],
+              "alphaBounds": [
+                24,
+                100,
+                467,
+                346
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Fougères sur corniche — souffle humide",
+          "placement": {
+            "x": 579,
+            "bottom": 317,
+            "height": 80,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-02.png",
+          "sha256": "8e1fee968aa9299058fa2d0dfba85b7f0be7ecb88983a797281e2b23dd3a5cd4",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                232.5,
+                476
+              ],
+              "alphaBounds": [
+                63,
+                87,
+                412,
+                389
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                239.5,
+                477
+              ],
+              "alphaBounds": [
+                41,
+                116,
+                438,
+                361
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238.5,
+                477
+              ],
+              "alphaBounds": [
+                43,
+                125,
+                436,
+                352
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241.5,
+                456
+              ],
+              "alphaBounds": [
+                67,
+                79,
+                415,
+                377
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241.5,
+                456
+              ],
+              "alphaBounds": [
+                66,
+                75,
+                412,
+                381
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                243.5,
+                456
+              ],
+              "alphaBounds": [
+                68,
+                59,
+                412,
+                397
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Porte de pierre — iris et poussière",
+          "placement": {
+            "x": 823,
+            "bottom": 304,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-146-primal-hunt-pilot-ruins/ambient-03.png",
+          "sha256": "2af3d3dc5e47e35ee37362333e5316e0c4550c62496e1951fac32e548b812a15",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                270.5,
+                464
+              ],
+              "alphaBounds": [
+                47,
+                37,
+                447,
+                427
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                464
+              ],
+              "alphaBounds": [
+                28,
+                37,
+                450,
+                427
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                240,
+                464
+              ],
+              "alphaBounds": [
+                16,
+                39,
+                448,
+                425
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                270.5,
+                448
+              ],
+              "alphaBounds": [
+                47,
+                23,
+                447,
+                425
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                448
+              ],
+              "alphaBounds": [
+                31,
+                22,
+                447,
+                426
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                241,
+                448
+              ],
+              "alphaBounds": [
+                19,
+                23,
+                445,
+                425
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-155-judge-dredd-megacity",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Judge anonyme — patrouille et radio",
+          "restFrame": 4,
+          "placement": {
+            "x": 230,
+            "bottom": 302,
+            "height": 45,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-01.png",
+          "sha256": "c7ae027ff69ff88a34d230168a31755db4d8d36bde9cb74da46bd54f9067bd9d",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "reducedMotionFrame": 4,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                314,
+                494
+              ],
+              "alphaBounds": [
+                161,
+                9,
+                285,
+                485
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                307,
+                498
+              ],
+              "alphaBounds": [
+                133,
+                8,
+                220,
+                490
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                230,
+                493
+              ],
+              "alphaBounds": [
+                76,
+                10,
+                298,
+                483
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                318.5,
+                490
+              ],
+              "alphaBounds": [
+                173,
+                7,
+                273,
+                483
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                259.5,
+                493
+              ],
+              "alphaBounds": [
+                163,
+                3,
+                197,
+                490
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                213.5,
+                491
+              ],
+              "alphaBounds": [
+                116,
+                7,
+                212,
+                484
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Transport aérien original — stabilisateurs",
+          "placement": {
+            "x": 715,
+            "bottom": 166,
+            "height": 140,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-02.png",
+          "sha256": "7b649410e19a10a4167f55080a29440794a38858a895eb3f80a62de8d74db9cb",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                274.5,
+                265
+              ],
+              "alphaBounds": [
+                38,
+                193,
+                467,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                266,
+                265
+              ],
+              "alphaBounds": [
+                45,
+                193,
+                451,
+                232
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                265
+              ],
+              "alphaBounds": [
+                36,
+                193,
+                452,
+                219
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                172
+              ],
+              "alphaBounds": [
+                50,
+                100,
+                451,
+                215
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                262,
+                170
+              ],
+              "alphaBounds": [
+                32,
+                98,
+                461,
+                210
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                172
+              ],
+              "alphaBounds": [
+                31,
+                99,
+                457,
+                215
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Écran municipal — réseau de transport",
+          "placement": {
+            "x": 95,
+            "bottom": 299,
+            "height": 47,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-155-judge-dredd-megacity/ambient-03.png",
+          "sha256": "3392283955cb4f111b09d7040a905d8b7fd4b001fcdfac4c8abeb8b071c108f9",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                284,
+                497
+              ],
+              "alphaBounds": [
+                162,
+                0,
+                252,
+                497
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                496
+              ],
+              "alphaBounds": [
+                130,
+                8,
+                252,
+                488
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                222,
+                495
+              ],
+              "alphaBounds": [
+                97,
+                8,
+                253,
+                487
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                287.5,
+                495
+              ],
+              "alphaBounds": [
+                163,
+                6,
+                251,
+                489
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                253,
+                496
+              ],
+              "alphaBounds": [
+                131,
+                7,
+                251,
+                489
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                222.5,
+                495
+              ],
+              "alphaBounds": [
+                98,
+                8,
+                252,
+                487
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-156-sinestro-earth",
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Construction jaune originale — panneaux mobiles",
+          "opacity": 0.7,
+          "placement": {
+            "x": 415,
+            "bottom": 202,
+            "height": 75,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-01.png",
+          "sha256": "6aed14616f4b48d443d075127514b49895cedc4728f504b36b24db970fe562b9",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                277,
+                279.5
+              ],
+              "alphaBounds": [
+                46,
+                77,
+                466,
+                388
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                274,
+                268
+              ],
+              "alphaBounds": [
+                48,
+                49,
+                448,
+                429
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                262,
+                292
+              ],
+              "alphaBounds": [
+                57,
+                98,
+                407,
+                383
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                237
+              ],
+              "alphaBounds": [
+                53,
+                34,
+                428,
+                400
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                240.5
+              ],
+              "alphaBounds": [
+                71,
+                47,
+                397,
+                387
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                241.5
+              ],
+              "alphaBounds": [
+                16,
+                46,
+                481,
+                391
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Extracteur de toiture — rotation des ailettes",
+          "placement": {
+            "x": 335,
+            "bottom": 253,
+            "height": 28,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-02.png",
+          "sha256": "01a23b352a4145c76a0793db918c1f74fe03a658a3a1b82f4ff5bf13ab851661",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                279.5,
+                471
+              ],
+              "alphaBounds": [
+                105,
+                67,
+                318,
+                404
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                272,
+                472
+              ],
+              "alphaBounds": [
+                98,
+                66,
+                316,
+                406
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                273.5,
+                473
+              ],
+              "alphaBounds": [
+                99,
+                67,
+                310,
+                406
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                284.5,
+                462
+              ],
+              "alphaBounds": [
+                105,
+                56,
+                316,
+                406
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                281.5,
+                459
+              ],
+              "alphaBounds": [
+                99,
+                57,
+                317,
+                402
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                269.5,
+                459
+              ],
+              "alphaBounds": [
+                95,
+                57,
+                317,
+                402
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Halo jaune stable — particules orbitales",
+          "opacity": 0.55,
+          "placement": {
+            "x": 658,
+            "bottom": 221,
+            "height": 100,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v61/pit-life/arena-156-sinestro-earth/ambient-03.png",
+          "sha256": "21de84a199b39390b98e16aa7572e5d4e13d9f57542d83affdbe4241fd17d229",
+          "width": 1536,
+          "height": 1024,
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                267.5,
+                267.5
+              ],
+              "alphaBounds": [
+                15,
+                145,
+                497,
+                243
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                268.5
+              ],
+              "alphaBounds": [
+                0,
+                145,
+                512,
+                243
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                248,
+                268.5
+              ],
+              "alphaBounds": [
+                0,
+                145,
+                498,
+                242
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                266.5,
+                256.5
+              ],
+              "alphaBounds": [
+                18,
+                134,
+                494,
+                242
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258.5,
+                257.5
+              ],
+              "alphaBounds": [
+                0,
+                131,
+                512,
+                249
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                248,
+                256.5
+              ],
+              "alphaBounds": [
+                0,
+                131,
+                496,
+                247
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "replacesV60Stage": true,
+      "events": [
+        {
+          "id": "life-01",
+          "name": "Transport de maintenance anonyme — roues",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-01.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d7e1024ccbd9096dd39fc93e20d932313d2f3271521c24573412c90adbf54783",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                436
+              ],
+              "alphaBounds": [
+                51,
+                142,
+                464,
+                294
+              ]
+            },
+            {
+              "rect": [
+                538,
+                0,
+                502,
+                512
+              ],
+              "pivot": [
+                222.5,
+                436
+              ],
+              "alphaBounds": [
+                18,
+                140,
+                463,
+                296
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                0,
+                496,
+                512
+              ],
+              "pivot": [
+                217,
+                436
+              ],
+              "alphaBounds": [
+                14,
+                140,
+                460,
+                296
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                538,
+                512
+              ],
+              "pivot": [
+                256.5,
+                398
+              ],
+              "alphaBounds": [
+                51,
+                101,
+                462,
+                297
+              ]
+            },
+            {
+              "rect": [
+                538,
+                512,
+                502,
+                512
+              ],
+              "pivot": [
+                222,
+                398
+              ],
+              "alphaBounds": [
+                16,
+                101,
+                464,
+                297
+              ]
+            },
+            {
+              "rect": [
+                1040,
+                512,
+                496,
+                512
+              ],
+              "pivot": [
+                220,
+                398
+              ],
+              "alphaBounds": [
+                15,
+                101,
+                460,
+                297
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 205,
+            "bottom": 272,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "reusedV60EventId": "life-01"
+        },
+        {
+          "id": "life-02",
+          "name": "Hydra — contrôle de la batterie dorsale",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-02.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "081eb9a3c3cbe97f066435dfdfce3d906de44d59f74874549b2b5e34cad4b999",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                301.5,
+                502
+              ],
+              "alphaBounds": [
+                191,
+                76,
+                229,
+                426
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257,
+                503
+              ],
+              "alphaBounds": [
+                138,
+                76,
+                238,
+                427
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                502
+              ],
+              "alphaBounds": [
+                112,
+                79,
+                224,
+                423
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                299.5,
+                464
+              ],
+              "alphaBounds": [
+                185,
+                36,
+                234,
+                428
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254,
+                466
+              ],
+              "alphaBounds": [
+                134,
+                36,
+                252,
+                430
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                217.5,
+                465
+              ],
+              "alphaBounds": [
+                103,
+                34,
+                235,
+                431
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 568,
+            "bottom": 355,
+            "height": 90,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "excludedFighterIds": [
+            "user-extinction-hydra"
+          ]
+        },
+        {
+          "id": "life-03",
+          "name": "Balise de front originale — volet diagnostique",
+          "src": "/game/sprites/v61/pit-life/arena-169-extinction-front/life-03.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "540d402cfcf9ea8d9c5ef06d752dae6ea644b76d96e855a3d5d1294a596a2ddf",
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                454
+              ],
+              "alphaBounds": [
+                112,
+                56,
+                314,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                454
+              ],
+              "alphaBounds": [
+                99,
+                56,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                454
+              ],
+              "alphaBounds": [
+                81,
+                56,
+                317,
+                398
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                268.5,
+                438
+              ],
+              "alphaBounds": [
+                110,
+                40,
+                318,
+                398
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                438
+              ],
+              "alphaBounds": [
+                99,
+                40,
+                316,
+                398
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                239,
+                438
+              ],
+              "alphaBounds": [
+                80,
+                40,
+                319,
+                398
+              ]
+            }
+          ],
+          "fps": 3,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "placement": {
+            "x": 750,
+            "bottom": 329,
+            "height": 65,
+            "parallax": 0.05,
+            "renderPass": "P2",
+            "anchor": "world"
+          },
+          "reusedV60EventId": "life-03"
+        }
+      ]
+    }
+  ]
+}

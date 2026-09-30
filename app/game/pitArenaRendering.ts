@@ -3,6 +3,11 @@ import { getPitArenaLifePaths, isPitArenaLifeSheetSize } from "./pitArenaLife";
 import { drawPitArenaLife, type PitArenaLifeReport } from "./pitArenaLifeRendering";
 import { getPitStageLifeV60Paths, getPitStageLifeV60Stage, isPitStageLifeV60ImageSize, type PitStageLifeManifestV60, type PitStageLifeStageV60 } from "./pitStageLifeV60";
 import { drawPitStageLifeV60, type PitStageLifeReportV60 } from "./pitStageLifeRenderingV60";
+import { drawPitStageLifeV61, type PitStageLifeReportV61 } from "./pitStageLifeRenderingV61";
+import { getPitStageLifeV61Stage, getPitStageStoryV61Stage, getPitStageV61Paths, validatePitStageLifeOverrideV61, getPitStageLifeExclusionsV61, type PitStageLifeStageV61, type PitStageLifeManifestV61, type PitStageStoryManifestV61, type PitStageStoryStageV61 } from "./pitStageStoryV61";
+import { createPitStageStoryContextV61, type PitStageNarrativeCuesV61 } from "./pitStageStoryDirectorV61";
+import { drawPitStageStoryV61, getPitStageStoryReplacementsV61, type PitStageStoryReportV61 } from "./pitStageStoryRenderingV61";
+import type { PitRoundPresentationView } from "./systems/pitRoundPresentation";
 import { PIT_ARENAS, PIT_FIGHTERS, PIT_ROUND_FRAMES, type PitArenaId, type PitCombatState } from "./systems/pitCombat";
 import type { PitPresentationCamera } from "./systems/pitCamera";
 import { resolvePitArenaProductionKit, type PitArenaProductionKit, type PitArenaProductionPlane, type PitArenaProductionManifest } from "./pitArenaProduction";
@@ -36,6 +41,8 @@ export interface PitArenaArtBank {
   readonly productionKit?: PitArenaProductionKit;
   /** The selected stage's three native events, validated separately from the historical V54 cast. */
   readonly stageLifeV60?: PitStageLifeStageV60;
+  readonly stageLifeV61?: PitStageLifeStageV61;
+  readonly stageStoryV61?: PitStageStoryStageV61;
 }
 export interface PitArenaRenderOptions {
   readonly reducedMotion?: boolean;
@@ -43,6 +50,8 @@ export interface PitArenaRenderOptions {
   readonly sceneArenaId?: PitArenaId;
   /** Only the terminal result needs presentation time: the finished simulation no longer ticks. */
   readonly lifeResultElapsedMs?: number;
+  readonly roundPresentation?: PitRoundPresentationView;
+  readonly narrativeCuesV61?: PitStageNarrativeCuesV61;
 }
 export interface PitArenaLayerTransform { readonly scale: number; readonly translateX: number; readonly translateY: number }
 export interface PitArenaDrawReport {
@@ -50,6 +59,8 @@ export interface PitArenaDrawReport {
   readonly missingPaths: readonly string[];
   readonly life?: PitArenaLifeReport;
   readonly stageLifeV60?: PitStageLifeReportV60;
+  readonly stageLifeV61?: PitStageLifeReportV61;
+  readonly stageStoryV61?: PitStageStoryReportV61;
 }
 
 /** A preview succeeding does not make a separate failed combat bank ready. */
@@ -181,7 +192,8 @@ function getLegacyPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
 export function getPitArenaArtPaths(arenaId: PitArenaId): readonly string[] {
   const productionKit = resolvePitArenaProductionKit(arenaId);
   const catalogueId = productionKit?.catalogueId ?? arenaId;
-  return [...new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...getPitArenaLifePaths(catalogueId), ...getPitStageLifeV60Paths(catalogueId)])];
+  return [...new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)),
+    ...(getPitStageLifeV61Stage(catalogueId) ? [] : [...getPitArenaLifePaths(catalogueId), ...getPitStageLifeV60Paths(catalogueId)]), ...getPitStageV61Paths(catalogueId)])];
 }
 
 /** A grounded floor must follow the exact gameplay camera, despite the concept P4 factor. */
@@ -231,11 +243,20 @@ export function getPitArenaForegroundOpacity(
 /** Load only the selected stage and abandon the whole bank on cancellation. */
 export async function loadPitArenaArt(arenaId: PitArenaId, options: {
   signal?: AbortSignal; timeoutMs?: number; productionManifest?: PitArenaProductionManifest; stageLifeManifestV60?: PitStageLifeManifestV60;
+  stageLifeManifestV61?: PitStageLifeManifestV61; stageStoryManifestV61?: PitStageStoryManifestV61;
 } = {}): Promise<PitArenaArtBank> {
   let productionKit = resolvePitArenaProductionKit(arenaId, options.productionManifest) ?? undefined;
-  const lifePaths = new Set(getPitArenaLifePaths(productionKit?.catalogueId ?? arenaId));
-  const stageLifeV60 = getPitStageLifeV60Stage(productionKit?.catalogueId ?? arenaId, options.stageLifeManifestV60) ?? undefined;
-  const nativeEvents = new Map(stageLifeV60?.events.map(event => [event.src, event]) ?? []);
+  const stageLifeV61 = getPitStageLifeV61Stage(productionKit?.catalogueId ?? arenaId, options.stageLifeManifestV61) ?? undefined;
+  const stageStoryV61 = getPitStageStoryV61Stage(productionKit?.catalogueId ?? arenaId, options.stageStoryManifestV61) ?? undefined;
+  const lifePaths = new Set(stageLifeV61 ? [] : getPitArenaLifePaths(productionKit?.catalogueId ?? arenaId));
+  const historicalLifeV60 = getPitStageLifeV60Stage(productionKit?.catalogueId ?? arenaId, options.stageLifeManifestV60) ?? undefined;
+  if (stageLifeV61) validatePitStageLifeOverrideV61(stageLifeV61, historicalLifeV60);
+  const stageLifeV60 = stageLifeV61?.replacesV60Stage ? undefined : historicalLifeV60;
+  for (const event of stageStoryV61?.events ?? []) if (event.replacesAmbientEventId &&
+    ![...(stageLifeV60?.events ?? []), ...(stageLifeV61?.events ?? [])].some(ambient => ambient.id === event.replacesAmbientEventId)) {
+    throw new Error(`V61 gesture replacement has no native actor: ${event.id}`);
+  }
+  const nativeEvents = new Map([...(stageLifeV60?.events ?? []), ...(stageLifeV61?.events ?? []), ...(stageStoryV61?.events ?? [])].map(event => [event.src, event]));
   const requestedPaths = new Set([...(productionKit?.paths ?? getLegacyPitArenaArtPaths(arenaId)), ...lifePaths, ...nativeEvents.keys()]);
   const expectedFrames = new Map(productionKit?.planes.flatMap(plane => plane.assets.flatMap(asset => asset.frames.map(frame => [frame.path, frame] as const))) ?? []);
   const images = new Map<string, HTMLImageElement>();
@@ -283,7 +304,7 @@ export async function loadPitArenaArt(arenaId: PitArenaId, options: {
     await loadPaths(fallback.filter(src => !images.has(src)));
   }
   if (signal?.aborted) { images.clear(); requestedPaths.forEach(src => failedPaths.add(src)); }
-  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit, stageLifeV60,
+  return { arenaId, images, requestedPaths, failedPaths, cancelled: Boolean(signal?.aborted), productionKit, stageLifeV60, stageLifeV61, stageStoryV61,
     unavailable: !productionKit && !PIT_ARENA_ART_DEFINITIONS[arenaId] };
 }
 
@@ -386,6 +407,16 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
   const drawnPlanes: PitArenaPlaneId[] = [];
   let life: PitArenaLifeReport | undefined;
   const nativeLifePasses: PitStageLifeReportV60[] = [];
+  const nativeLifePassesV61: PitStageLifeReportV61[] = [];
+  const storyPassesV61: PitStageStoryReportV61[] = [];
+  const storyInput = bank.stageStoryV61 ? {
+    stage: bank.stageStoryV61, groundY: arena.groundY, images: bank.images,
+    transform: (factor: number) => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
+    reducedMotion: options.reducedMotion, highContrast: options.highContrast,
+    eventContext: createPitStageStoryContextV61(state, options.roundPresentation, options.narrativeCuesV61),
+  } : undefined;
+  const replacements = storyInput ? getPitStageStoryReplacementsV61(storyInput) : undefined;
+  const ambientV61Excluded = bank.stageLifeV61 ? getPitStageLifeExclusionsV61(bank.stageLifeV61, state.fighters.map(fighter => fighter.definitionId), replacements) : undefined;
   const ground = getPitArenaLayerTransform(state.arenaId, "P4", camera);
   const floorY = arena.groundY * ground.scale + ground.translateY;
   context.save();
@@ -399,7 +430,7 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
         context.fillRect(0, floorY, arena.width, Math.max(0, arena.height - floorY));
       }
       if (drawProductionPlane(context, plane, state, camera, bank, options)) drawnPlanes.push(plane.id);
-      if (plane.id === "P3") life = drawPitArenaLife(context, {
+      if (plane.id === "P3" && !bank.stageLifeV61) life = drawPitArenaLife(context, {
         arenaId: bank.productionKit!.catalogueId, frame: state.frame, groundY: arena.groundY, images: bank.images,
         transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
         reducedMotion: options.reducedMotion, highContrast: options.highContrast,
@@ -416,9 +447,20 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
           stage: bank.stageLifeV60, pass: plane.id, groundY: arena.groundY, images: bank.images,
           transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
           reducedMotion: options.reducedMotion, highContrast: options.highContrast,
+          excludedEventIds: replacements,
           eventContext: { round: state.round, phase: state.phase,
             roundFrame: state.rules.mode === "training" ? state.frame : PIT_ROUND_FRAMES - state.roundFramesRemaining },
         }));
+      }
+      if (plane.id === "P1" || plane.id === "P2" || plane.id === "P3") {
+        if (bank.stageLifeV61) nativeLifePassesV61.push(drawPitStageLifeV61(context, {
+          stage: bank.stageLifeV61, pass: plane.id, groundY: arena.groundY, images: bank.images,
+          transform: factor => getPitArenaSubplanTransform(state.arenaId, factor, camera, options.reducedMotion),
+          reducedMotion: options.reducedMotion, highContrast: options.highContrast, excludedEventIds: ambientV61Excluded,
+          eventContext: { round: state.round, phase: state.phase,
+            roundFrame: state.rules.mode === "training" ? state.frame : PIT_ROUND_FRAMES - state.roundFramesRemaining },
+        }));
+        if (storyInput) storyPassesV61.push(drawPitStageStoryV61(context, { ...storyInput, pass: plane.id }));
       }
     }
     context.globalAlpha = options.highContrast ? .9 : .36;
@@ -429,9 +471,19 @@ function drawProductionBackdrop(context: CanvasRenderingContext2D, state: PitCom
     stageId: bank.stageLifeV60.stageId, actorsDrawn: nativeLifePasses.reduce((sum, pass) => sum + pass.actorsDrawn, 0),
     events: nativeLifePasses.flatMap(pass => pass.events), missingPaths: [...new Set(nativeLifePasses.flatMap(pass => pass.missingPaths))],
   } : undefined;
+  const stageLifeV61 = bank.stageLifeV61 ? {
+    stageId: bank.stageLifeV61.stageId, actorsDrawn: nativeLifePassesV61.reduce((sum, pass) => sum + pass.actorsDrawn, 0),
+    events: nativeLifePassesV61.flatMap(pass => pass.events), missingPaths: [...new Set(nativeLifePassesV61.flatMap(pass => pass.missingPaths))],
+  } : undefined;
+  const stageStoryV61 = bank.stageStoryV61 ? {
+    stageId: bank.stageStoryV61.stageId, actorsDrawn: storyPassesV61.reduce((sum, pass) => sum + pass.actorsDrawn, 0),
+    events: storyPassesV61.flatMap(pass => pass.events), missingPaths: [...new Set(storyPassesV61.flatMap(pass => pass.missingPaths))],
+    replacedAmbientEventIds: [...new Set(storyPassesV61.flatMap(pass => pass.replacedAmbientEventIds))],
+  } : undefined;
   return { drawnPlanes, missingPaths: [...new Set([
     ...[...bank.requestedPaths].filter(src => !bank.images.has(src)), ...(stageLifeV60?.missingPaths ?? []),
-  ])], life, stageLifeV60 };
+    ...(stageLifeV61?.missingPaths ?? []), ...(stageStoryV61?.missingPaths ?? []),
+  ])], life, stageLifeV60, stageLifeV61, stageStoryV61 };
 }
 
 /** Called on an untransformed canvas, before the combat world transform. */

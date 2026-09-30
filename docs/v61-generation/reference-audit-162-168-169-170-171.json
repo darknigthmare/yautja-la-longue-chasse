@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "release": "V61",
+  "scope": "References and native-art eligibility; no runtime or released V60 changes",
+  "checkedAt": "2026-09-30T18:07:13.210Z",
+  "findings": [
+    {
+      "stageId": "arena-168-hive-front",
+      "status": "tracking-error-confirmed",
+      "workbookCell": "10_VIE_DES_STAGES!E86",
+      "literalRequest": "Drones xénomorphes au plafond arrière",
+      "extractedSource": "docs/v60-workbook-stage-inventory.json",
+      "existingAsset": "work-local/v60/generated/arena-168-hive-front/life-01.png",
+      "decision": "Do not manufacture a ridged Warrior requirement. Existing smooth-dome Drone follows requested caste; V60 receipt stating Warrior was requested is an erroneous tracking assertion. Other request E87 still asks a team, current one-worker motif does not establish that team.",
+      "regenerationPerformed": false,
+      "remaining": "Exact scene/location not certified; one worker versus team remains separate scope."
+    },
+    {
+      "stageId": "arena-169-extinction-front",
+      "status": "primary-visual-reference-found-art-produced",
+      "sourceEvidence": [
+        "Original EA/Fox game instruction manual page21 (PDFpage10), downloaded and visually inspected.",
+        "Original Hydra game portrait predator03.jpg on AvPGalaxy, matched immediate Hydra HTML heading and manual silhouette."
+      ],
+      "receipt": "docs/v61-generation/arena-169-extinction-front.json",
+      "remaining": "Exact high-resolution armor/back-battery detail not in small sources; six new poses are adaptation. Runtime placement and selected-Hydra suppression not certified by art generation."
+    },
+    {
+      "stageId": "arena-162-ahab-engineer",
+      "status": "primary-comic-reference-found-art-prepared",
+      "sourceEvidence": [
+        "Predator: Fire and Stone#4 original preview pages1–5 visually inspected, published press preview Jan25,2015. Engineer suit/head/full-body shots pages2,4,5 used."
+      ],
+      "receipt": "docs/v61-generation/arena-162-ahab-engineer.json",
+      "remaining": "No current pre-boss story caller: prepared atlas must remain inactive by default; never infer preboss status from a hit or match result."
+    },
+    {
+      "stageId": "arena-170-gotham-bloodties",
+      "status": "partner-pair-established-by-user-workbook-appearance-not-closed",
+      "workbookCell": "09_STAGES!F35 / 10_VIE_DES_STAGES!E97",
+      "sourceEvidence": [
+        "Proposal new-gotham-bloodties associatedFighters explicitly names Predator père — Blood Ties and Predator fils — Blood Ties.",
+        "E97 requests Ombres du partenaire seulement hors de son duel."
+      ],
+      "decision": "Anonymous V60 watcher is not proof of either father or son. A faithful conditional implementation requires two identified assets or an explicit one-sided narrative choice, mapping the counterpart not selected for the duel.",
+      "primaryAttempts": [
+        {
+          "url": "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator",
+          "result": "403 during this audit; known collection URL alone cannot certify masks/armor or chronology."
+        }
+      ],
+      "regenerationPerformed": false,
+      "remaining": "No reliable primary father/son visual distinction inspected in this pass; do not label an anonymous watcher as either."
+    },
+    {
+      "stageId": "arena-171-meta-lab",
+      "status": "literal-hero-identity-ambiguous",
+      "workbookCell": "10_VIE_DES_STAGES!E106",
+      "literalRequest": "Héros uniquement par transmission avant leur intervention",
+      "sourceEvidence": [
+        "Proposal lists eight Meta-Predator classes but does not name the hero who must appear in this transmission, nor a particular comic panel or intervention cue."
+      ],
+      "decision": "Do not arbitrarily pick Superman/Batman or treat anonymous technician as fulfilled hero transmission.",
+      "primaryAttempts": [
+        {
+          "url": "https://www.darkhorse.com/Books/13-314/JLA-versus-Predator-TPB",
+          "result": "URL not accessible; not relied on as verified identity source."
+        }
+      ],
+      "regenerationPerformed": false,
+      "remaining": "Need exact hero/panel and real scenario-before-intervention context. Existing exhibition lab geometry is original, not certified comic reconstruction."
+    }
+  ],
+  "limits": [
+    "Original primary works hosted by archival/press/fan mirrors are distinguished from their hosts' secondary prose.",
+    "No fan art, fan model, figure photograph or unchecked biography used to design these V61 atlases.",
+    "No repository runtime, V60 manifests or publication changed by this research subtask."
+  ]
+}
