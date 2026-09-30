@@ -1,13 +1,17 @@
 import { PIT_VERSUS_FIGHTER_IDS, getPitFighterProfile } from "./pitRosterExpansion";
-import { PIT_LORE_STAGE_DEFINITIONS } from "./pitLoreStages";
+import { PIT_LORE_STAGE_DEFINITIONS, PIT_EXPLICIT_STAGE_ASSOCIATIONS, type PitStageSourceClassification, type PitStageSourceStatus } from "./pitLoreStages";
+import { PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56 } from './pitOriginalStagesV56';
 
-export type PitCharacterStageCoverage = "dedicated-lateral-adaptation" | "existing-work-setting" | "reference-needed" | "identity-unverified" | "cosmetic-no-exclusive-location";
+export type PitCharacterStageCoverage = "dedicated-lateral-adaptation" | "existing-work-setting" | "reference-needed" | "identity-unverified" | "cosmetic-no-exclusive-location" | "original-exhibition";
 export interface PitCharacterStageAssociation {
   readonly fighterId: string;
   readonly fighterName: string;
   readonly stageId: string | null;
   readonly coverage: PitCharacterStageCoverage;
   readonly reason: string;
+  readonly classification: PitStageSourceClassification | "unresolved";
+  readonly sourceStatus: PitStageSourceStatus | "unresolved";
+  readonly sourceUrls: readonly string[];
   readonly exactGeometryCertified: false;
 }
 
@@ -31,7 +35,10 @@ const sharedWorkSettings: readonly { fighters: readonly string[]; stageId: strin
 export function getPitCharacterStageAssociation(fighterId: string): PitCharacterStageAssociation | null {
   if (!(PIT_VERSUS_FIGHTER_IDS as readonly string[]).includes(fighterId)) return null;
   const fighter = getPitFighterProfile(fighterId as typeof PIT_VERSUS_FIGHTER_IDS[number]);
-  const base = { fighterId, fighterName: fighter.name, exactGeometryCertified: false as const };
+  const base = { fighterId, fighterName: fighter.name, exactGeometryCertified: false as const, classification: "unresolved" as const, sourceStatus: "unresolved" as const, sourceUrls: [] as readonly string[] };
+  const explicit = PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56.find(entry => entry.fighterId === fighterId)
+    ?? PIT_EXPLICIT_STAGE_ASSOCIATIONS.find(entry => entry.fighterId === fighterId);
+  if (explicit) return { ...base, ...explicit, coverage: explicit.classification === "character-setting" ? "dedicated-lateral-adaptation" : explicit.classification === "work-setting" ? "existing-work-setting" : "original-exhibition" };
   const dedicated = PIT_LORE_STAGE_DEFINITIONS.find(stage => (stage.dedicatedFighters as readonly string[]).includes(fighterId));
   if (dedicated) return { ...base, stageId: dedicated.id, coverage: "dedicated-lateral-adaptation", reason: dedicated.sourceClaim };
   const shared = sharedWorkSettings.find(entry => entry.fighters.includes(fighterId));

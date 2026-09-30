@@ -7,15 +7,19 @@ import {build} from 'esbuild';
 const result=await build({stdin:{contents:'export * from "./app/game/systems/pitCharacterStages"; export * from "./app/game/systems/pitLoreStages"; export * from "./app/game/systems/pitScreenArenas"; export * from "./app/game/pitArenaLife"; export * from "./app/game/pitArenaLifeRendering"; export * from "./app/game/systems/pitRosterExpansion"; export { createPitCombatState, serializePitCombat } from "./app/game/systems/pitCombat";',resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 
-test('all 195 identities receive an explicit stage association or a reason; variants do not inflate coverage',()=>{
+test('historical 195 identities and the three V56 originals receive explicit stage decisions; variants never inflate coverage',()=>{
  const coverage=api.PIT_CHARACTER_STAGE_COVERAGE;
- assert.equal(coverage.length,195);assert.equal(new Set(coverage.map(c=>c.fighterId)).size,195);
+ assert.equal(api.PIT_EXPLICIT_STAGE_ASSOCIATIONS.length,195,'V55 source batch remains unchanged');
+ assert.equal(coverage.length,198);assert.equal(new Set(coverage.map(c=>c.fighterId)).size,198);
  assert.deepEqual(coverage.map(c=>c.fighterId),api.PIT_VERSUS_FIGHTER_IDS);
  assert(coverage.every(c=>c.reason.length>15&&c.exactGeometryCertified===false));
  assert.equal(api.getPitCharacterStageAssociation('constructor'),null);
  assert.equal(api.getPitCharacterStageAssociation('user-fake'),null);
- assert.equal(api.getPitCharacterStageAssociation('theta').stageId,null);
- assert.equal(api.getPitCharacterStageAssociation('user-ahab').coverage,'reference-needed');
+ for(const id of ['theta','user-ahab']){
+  const association=api.getPitCharacterStageAssociation(id);
+  if(!api.PIT_EXPLICIT_STAGE_ASSOCIATIONS.length)assert.equal(association.stageId,null);
+  else{assert(association.stageId);assert.notEqual(association.classification,'unresolved');assert(association.sourceUrls.length>0);assert(['resolved','primary-limited'].includes(association.sourceStatus));}
+ }
 });
 test('Scarface and the Machiko cycle get two dedicated settings with primary evidence, without changing V43 works',()=>{
  assert.equal(api.PIT_LORE_STAGE_DEFINITIONS.length,2);
@@ -26,9 +30,9 @@ test('Scarface and the Machiko cycle get two dedicated settings with primary evi
  assert.equal(api.getPitScreenArenaMetadata('arena-138-avp-ryushi-prosperity-wells').kind,'comic');
 });
 test('cosmetic classes use shared game venue, while unknown supplied images never acquire an invented canon location',()=>{
- assert.equal(api.getPitCharacterStageAssociation('user-bionic-phg').coverage,'cosmetic-no-exclusive-location');
- assert.equal(api.getPitCharacterStageAssociation('user-yuahro').stageId,null);
- assert.equal(api.getPitCharacterStageAssociation('user-yuahro').coverage,'identity-unverified');
+ const bionic=api.getPitCharacterStageAssociation('user-bionic-phg'),unknown=api.getPitCharacterStageAssociation('user-yuahro');
+ if(!api.PIT_EXPLICIT_STAGE_ASSOCIATIONS.length){assert.equal(bionic.coverage,'cosmetic-no-exclusive-location');assert.equal(unknown.stageId,null);assert.equal(unknown.coverage,'identity-unverified');}
+ else{assert.equal(bionic.classification,'work-setting');assert.equal(unknown.classification,'original-exhibition');assert.equal(unknown.sourceStatus,'original-selected');assert.equal(unknown.exactGeometryCertified,false);}
 });
 test('background cast is explicit and culturally scoped: colony humans only on Ryushi, Yautja only original exhibition arenas',()=>{
  assert.equal(api.getPitArenaLifeCast('arena-138-avp-ryushi-prosperity-wells')[0].sheetId,'colony-watchers');

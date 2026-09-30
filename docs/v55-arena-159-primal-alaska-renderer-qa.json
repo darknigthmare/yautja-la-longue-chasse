@@ -1,0 +1,910 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-159-primal-alaska",
+  "compositionDigest": "7d4aadfac89d048c70174eed52ffc295122efc51318509a6525da89bb685ecaf",
+  "checkedAt": "2026-09-30T01:41:15.031Z",
+  "surface": "isolated-renderer-with-real-game-fighters-and-images",
+  "applicationFlowVerified": false,
+  "playablePromotion": false,
+  "nativeImageProof": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-159-primal-alaska/p0-depth.png",
+      "sha256": "e185f08e8abab238703eaff5073c3df2c30f37a974105f6754f6db424b4b5b12",
+      "width": 1942,
+      "height": 809,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+      "sha256": "5eeb91012e583391a3a121745910f72cc6ad85c5104052c3474c1f1c6625229f",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p2-bare-trunk.png",
+      "sha256": "79c421d8bd380b3ac35a4f096dec36b3ef11cdd607c1e979f622dd0f06cc1872",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p3-stones-deadwood.png",
+      "sha256": "34c32c65a6513ee649563e7e36ec61e99deb6f85aeff38b11130a1b0d874c7a0",
+      "width": 1774,
+      "height": 887,
+      "hasAlpha": true,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "sha256": "7717b3e45eccd10e21cf81fc287e1f618e4ee705e6e3ff2aa6ccf688593eda71",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": false,
+      "format": "png"
+    },
+    {
+      "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+      "sha256": "42caea41563c56b42c1d912d29c3e26a9daeeab054c040265e24b53e44db599e",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "format": "png"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 6,
+    "expectedImages": 6,
+    "failed": [],
+    "fighterFailures": [],
+    "decoded": [
+      {
+        "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p2-bare-trunk.png",
+        "width": 1024,
+        "height": 1536,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v33/pit-arenas/the-pit/p0-b-vault-haze.png",
+        "width": 1536,
+        "height": 1024,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p3-stones-deadwood.png",
+        "width": 1774,
+        "height": 887,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-159-primal-alaska/p0-depth.png",
+        "width": 1942,
+        "height": 809,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+        "width": 1024,
+        "height": 1536,
+        "complete": true
+      },
+      {
+        "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+        "width": 2172,
+        "height": 724,
+        "complete": true
+      }
+    ],
+    "conceptPreview": true
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "close",
+      "groundScreenY": 510.25,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 510.25000000000006,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 510.24999999999994,
+          "expected": 510.25,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 510.25,
+          "expected": 510.25,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 510.25,
+          "expected": 510.25,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1752,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": -264,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": 1224,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        },
+        {
+          "x": 2712,
+          "y": 510.25,
+          "width": 1488.5,
+          "height": 496
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -304.4776
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -304.4776
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "left-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -2710,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": -1318,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 74,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 1466,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 2858,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "right-corner",
+      "groundScreenY": 502,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 502.00000000000006,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 501.99999999999994,
+          "expected": 502,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 502,
+          "expected": 502,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1898,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": -506,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 886,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 2278,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        },
+        {
+          "x": 3670,
+          "y": 502,
+          "width": 1392.5,
+          "height": 464
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -257.53
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -257.53
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "wide",
+      "groundScreenY": 398,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 398,
+          "expected": 398,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1440,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": -672,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 96,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 864,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 1632,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        },
+        {
+          "x": 2400,
+          "y": 398,
+          "width": 768.5,
+          "height": 256
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -8.320000000000007
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -8.320000000000007
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "reduced-motion",
+      "groundScreenY": 414,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 414,
+          "expected": 414,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 413.99999999999994,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 413.99999999999994,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 414.00000000000006,
+          "expected": 414,
+          "error": 5.684341886080802e-14
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -1680,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": -816,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 48,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 912,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 1776,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        },
+        {
+          "x": 2640,
+          "y": 414,
+          "width": 864.5,
+          "height": 288
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -49.5
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -49.5
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "high-contrast",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    },
+    {
+      "name": "next-simulation-frame",
+      "groundScreenY": 430,
+      "groundContacts": [
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 0,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        },
+        {
+          "plane": "P2",
+          "asset": "p2-bare-trunk",
+          "placement": 1,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 0,
+          "visibleFoot": 429.99999999999994,
+          "expected": 430,
+          "error": 5.684341886080802e-14
+        },
+        {
+          "plane": "P3",
+          "asset": "p3-stones-deadwood",
+          "placement": 1,
+          "visibleFoot": 430,
+          "expected": 430,
+          "error": 0
+        }
+      ],
+      "groundedPropsVerified": true,
+      "floorTiles": [
+        {
+          "x": -960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 0,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 960,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        },
+        {
+          "x": 1920,
+          "y": 430,
+          "width": 960.5,
+          "height": 320
+        }
+      ],
+      "floorCoversScreen": true,
+      "hangingProps": [
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        },
+        {
+          "path": "/game/sprites/v43/pit-arenas/arena-113-prey-2022-trapper-clearing/p5-close-branches.png",
+          "top": -85
+        }
+      ],
+      "hangingPropsAnchored": true,
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true
+    }
+  ],
+  "floorEvidence": [
+    {
+      "path": "/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724
+      },
+      "topRowOpaqueRatio": 1,
+      "minimumRowOpaqueRatio": 1
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "screenshots": [
+    "center.png",
+    "left-corner.png",
+    "right-corner.png",
+    "wide.png",
+    "mobile.png"
+  ],
+  "captureHashes": {
+    "center.png": "68768d82e6d35e5bfae79ec9f2e35f2e4d19fc888b352df7226ffd1595e886a2",
+    "left-corner.png": "a6f94a7b3a19657c45c31129cab099fdc3d32dacb21196653e85466ddf1c942f",
+    "right-corner.png": "394bc943fc0df81ef4de8086dbfad989b3984e639aa80721114fa3740989cf71",
+    "wide.png": "eaf3faf083e5a29f20eb14949fa3e11fc37dcc3e997b46548b3de3cb7e247bcc",
+    "mobile.png": "b26b7c10ae6744a296044caf945c22028b0b276fad8a5e681e6d50de7cff44b8"
+  },
+  "limit": "Real decoded scenes and eight controlled camera views; not 195 real application duels, hardware or canon certification."
+}

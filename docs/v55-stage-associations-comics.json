@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "release": "V55",
+  "scope": "Les 45 reference-needed de docs/v55-stage-references-comics.json ; aucun autre roster ni runtime modifié.",
+  "total": 45,
+  "policy": {
+    "classification": "character-setting = personnage explicitement lié au cadre ; work-setting = cadre attesté de l’œuvre, sans présence dans chaque lieu précis ; original-exhibition = choix artistique du projet sans lien canonique revendiqué.",
+    "sourceStatus": "resolved porte sur le fait annoncé, jamais sur une géométrie 1:1. primary-limited expose les limites de la notice. original-selected désigne un raccord de jeu complet dont l’identité/l’origine restent non certifiées.",
+    "runtime": "Les nouveaux IDs 148–159 sont fournis par le plan root et doivent être rendus jouables par la validation d’assets ; ce JSON ne prétend pas les avoir chargés.",
+    "originalSources": "Les sources de recherche restent dans le fichier de références. sourceUrls est vide pour les expositions originales afin de ne pas les faire passer pour des lieux prouvés par ces sources.",
+    "aliasPolicy": "Sister Midnight, Hook et Elder — Tartarus sont raccordés provisoirement au cadre d’œuvre, avec limites explicites et sans certification du portrait. Prince — Marvel ne cite aucune œuvre précise dans son nom, sa sourceLabel ou ses sourceEntry ; il reste une exposition originale, comme Graveyard."
+  },
+  "counts": {
+    "character-setting": 5,
+    "work-setting": 17,
+    "original-exhibition": 23
+  },
+  "associations": [
+    {
+      "fighterId": "user-batman-vs-predator",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Gotham est le cadre attesté par DC des trois séries Batman versus Predator nommées dans le pack. Toits recomposés pour le duel, sans prétendre que chaque chasseur a combattu sur cette terrasse précise.",
+      "sourceUrls": [
+        "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+      ]
+    },
+    {
+      "fighterId": "user-gotham-bloodmatch",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Gotham est le cadre attesté par DC des trois séries Batman versus Predator nommées dans le pack. Toits recomposés pour le duel, sans prétendre que chaque chasseur a combattu sur cette terrasse précise.",
+      "sourceUrls": [
+        "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+      ]
+    },
+    {
+      "fighterId": "user-gotham-elder",
+      "stageId": "arena-139-batman-gotham-rooftops",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Gotham est le cadre attesté par DC des trois séries Batman versus Predator nommées dans le pack. Toits recomposés pour le duel, sans prétendre que chaque chasseur a combattu sur cette terrasse précise.",
+      "sourceUrls": [
+        "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+      ]
+    },
+    {
+      "fighterId": "enforcer",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Bad Blood et Enforcer sont rattachés au comic par NECA ; les Pine Barrens du New Jersey sont attestés par le catalogue Marvel/PRH. Géométrie latérale originale.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-enforcer-predator-action-figure-from-series-12",
+        "https://store.necaonline.com/blogs/news/shipping-this-week-nightmare-on-elm-street-accessory-set-ultimate-bad-blood-enforcer-predator-2-pack-1",
+        "https://prhcomics.com/wp-content/uploads/2022/02/PREVIEWS2021006_MAY_2022_FINAL.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-bad-blood",
+      "stageId": "arena-140-bad-blood-pine-barrens",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Bad Blood et Enforcer sont rattachés au comic par NECA ; les Pine Barrens du New Jersey sont attestés par le catalogue Marvel/PRH. Géométrie latérale originale.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-enforcer-predator-action-figure-from-series-12",
+        "https://store.necaonline.com/blogs/news/shipping-this-week-nightmare-on-elm-street-accessory-set-ultimate-bad-blood-enforcer-predator-2-pack-1",
+        "https://prhcomics.com/wp-content/uploads/2022/02/PREVIEWS2021006_MAY_2022_FINAL.pdf"
+      ]
+    },
+    {
+      "fighterId": "theta",
+      "stageId": "arena-141-theta-tundra-outpost",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Marvel Predator (2022) #2 situe explicitement Theta sur une planète toundra, en route vers un avant-poste. Planète sans nom ; architecture et terrain de duel originaux.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/issue/89619/predator"
+      ]
+    },
+    {
+      "fighterId": "user-big-game",
+      "stageId": "arena-143-big-game-new-mexico",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Le pack nomme Big Game ; Titan situe cette chasse dans le désert accidenté du Nouveau-Mexique. Ni base exacte ni second nom Adilgashii certifié par cette notice.",
+      "sourceUrls": [
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ]
+    },
+    {
+      "fighterId": "user-riverdale",
+      "stageId": "arena-144-archie-riverdale",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Archie atteste Riverdale dans Archie vs. Predator ; le décor reprend ce cadre d’œuvre, avec une rue originale. Le portrait n’est pas assimilé à Predator-Archie de la suite.",
+      "sourceUrls": [
+        "https://archiecomics.com/preview-the-archie-comics-on-sale-today-including-archie-vs-sharknado-1-72215/",
+        "https://archiecomics.com/archie-vs-predator-2-1/"
+      ]
+    },
+    {
+      "fighterId": "user-ahab",
+      "stageId": "arena-148-ahab-lv223",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Ahab est attesté dans Fire and Stone par NECA ; LV-223 est le cadre du cycle commun publié par Dark Horse. Adaptation d’œuvre, sans certifier sa présence à cet emplacement, un duel précis ni une planète natale.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+        "https://books.google.com/books/about/Prometheus.html?id=yBHaCwAAQBAJ",
+        "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp"
+      ]
+    },
+    {
+      "fighterId": "user-dark-horse-25th",
+      "stageId": "arena-149-dark-horse-new-york",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "NECA décrit la variante de couverture du premier Predator #1 ; Titan situe Concrete Jungle à New York. Décor du comic de 1989, distinct de Neonopolis dans le jeu vidéo et du métro de Skinner.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/toy-fair/172397255-toy-fair-day-3-heroes-of-the-storm-1-4-scale-1979-alien-25th-anniversary-dark-horse-predator-figures",
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ]
+    },
+    {
+      "fighterId": "user-skinner",
+      "stageId": "arena-150-skinner-subway",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Marvel nomme Skinner et situe sa chasse dans les égouts et métros de New York pendant une panne générale. Station et coursives originales, aucune ligne réelle ou case reproduite.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/issue/127368/predator_vs_spider-man_2025_1_variant/variant"
+      ]
+    },
+    {
+      "fighterId": "user-wolverine-hunter",
+      "stageId": "arena-151-wolverine-canada",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Le nom du pack désigne Predator vs. Wolverine ; Marvel atteste la première rencontre dans la nature canadienne enneigée. Clairière originale, sans coordonnées inventées.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/collection/110482/predator_vs_wolverine_2024_1",
+        "https://www.marvel.com/comics/issue/112525/predator_vs_wolverine_2023_2_variant"
+      ]
+    },
+    {
+      "fighterId": "user-king-marvel",
+      "stageId": "arena-152-marvel-wakanda",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Marvel Predator vs. Black Panther #4 nomme le Predator King au trône wakandais et décrit la ville et sa jungle. Le duel utilise une composition originale de ce cadre.",
+      "sourceUrls": [
+        "https://www.marvel.com/comics/issue/123487/predator_vs_black_panther_2024_4_variant/variant"
+      ]
+    },
+    {
+      "fighterId": "user-big-mama",
+      "stageId": "arena-153-big-mama-skyliner",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "La notice Dark Horse de Deadliest of the Species décrit un skyliner au-dessus de la Terre contaminée et l’index contient Big Mama. Intérieur original ; nom du bâtiment, plan exact et portrait du pack non certifiés.",
+      "sourceUrls": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Omnibus_Volume_2.html?id=cPYHDAAAQBAJ"
+      ]
+    },
+    {
+      "fighterId": "user-hornhead",
+      "stageId": "arena-154-life-death-tartarus",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "NECA rattache Hornhead à Life and Death ; la notice Dark Horse situe l’action sur Tartarus près d’une prospection et d’un vaisseau en fer à cheval. Adaptation de l’œuvre, pas relevé d’un duel exact.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-series-18-aliens-ultimate-warriors-chucky-body-knocker-and-ultimate-chucky-restock-1",
+        "https://books.google.com/books/about/Predator_Life_and_Death.html?id=mW27DAAAQBAJ"
+      ]
+    },
+    {
+      "fighterId": "user-mega-city-one",
+      "stageId": "arena-155-judge-dredd-megacity",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "La notice Dark Horse/2000 AD du recueil situe les Judges à Mega-City One et inclut Predator versus Judge Dredd. Infrastructure urbaine originale, sans transfert vers le Cursed Earth d’un autre récit.",
+      "sourceUrls": [
+        "https://books.google.com/books?id=o6sBDAAAQBAJ",
+        "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens"
+      ]
+    },
+    {
+      "fighterId": "user-sinestro-corps-predator",
+      "stageId": "arena-156-sinestro-earth",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "NECA relie son Sinestro Corps Predator à une attaque de la Terre par des Yautja aux anneaux jaunes. Composition originale ; détails du récit attribués à cette notice licenciée, sans certification indépendante de case DC ni confusion avec le Meta-Predator JLA.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/nycc-2019-convention-exclusives-complete-roundup-and-pre-sale-details-1"
+      ]
+    },
+    {
+      "fighterId": "user-primal",
+      "stageId": "arena-159-primal-alaska",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "La notice Panini de l’omnibus incluant Primal décrit un garde forestier et un Predator dans la nature d’Alaska ; l’auteur atteste l’œuvre. Association d’anthologie, sans certification de Denali, de l’incendie ou d’un lieu exact.",
+      "sourceUrls": [
+        "https://www.panini.es/media/paniniFiles/2024-11-novedades-HQ-2.pdf",
+        "https://wordfire.com/books-by-kevin-j-anderson/",
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text"
+      ]
+    },
+    {
+      "fighterId": "user-tichinde",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Prey contient Tichinde dans son index et situe la chasse à Ryushi près de Prosperity Wells ; Titan confirme le cadre. Réemploi du lieu d’œuvre existant, sans certifier le portrait ni une présence dans chaque portion du décor.",
+      "sourceUrls": [
+        "https://books.google.com/books/about/Prey.html?id=UZbRngEACAAJ",
+        "https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/"
+      ]
+    },
+    {
+      "fighterId": "user-prince-marvel",
+      "stageId": "arena-050-porte-de-l-audience",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale à la Porte de l’Audience du projet. L’alias Prince — Marvel reste insuffisamment identifié : aucun rattachement canonique à Wakanda, aucune parenté ni royauté biographique ajoutée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-graveyard",
+      "stageId": "arena-040-fonderie-zero",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans la Fonderie Zéro du projet. L’alias Graveyard n’est pas nommé dans les notices Marvel consultées ; ni l’Institut Xavier, ni New York, ni une parenté avec le King ne sont revendiqués.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-elder-tartarus",
+      "stageId": "arena-154-life-death-tartarus",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Le pack nomme explicitement Tartarus et Dark Horse atteste cette planète dans Life and Death. Raccord provisoire au cadre de l’œuvre ; l’identité personnelle de cet Elder et sa présence près du vaisseau ne sont pas certifiées.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-series-18-aliens-ultimate-warriors-chucky-body-knocker-and-ultimate-chucky-restock-1",
+        "https://books.google.com/books/about/Predator_Life_and_Death.html?id=mW27DAAAQBAJ"
+      ]
+    },
+    {
+      "fighterId": "user-sister-midnight",
+      "stageId": "arena-157-mindhunter-orbital-prison",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Mindhunter atteste une Predator femelle et un vaisseau-prison vivant en orbite terrestre. Raccord provisoire au cadre de l’œuvre ; l’alias Sister Midnight du pack et son portrait ne sont pas certifiés par la notice primaire.",
+      "sourceUrls": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Witchblade_Darkness_M.html?id=DWMCAAAACAAJ"
+      ]
+    },
+    {
+      "fighterId": "user-hook",
+      "stageId": "arena-158-thicker-blood-charter",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Dark Horse atteste le charter spatial de luxe de Thicker Than Blood. Raccord provisoire au cadre de l’œuvre ; la notice ne nomme pas Hook et ne certifie ni l’alias du pack ni sa présence dans cette coursive originale.",
+      "sourceUrls": [
+        "https://digital.darkhorse.com/books/70ff6216b8ba476bbe8e73de1fd3f627/alien-vs-predator-thicker-than-blood-1"
+      ]
+    },
+    {
+      "fighterId": "user-four-armed",
+      "stageId": "arena-077-fosse-du-tonnerre",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans la Fosse du Tonnerre du projet. Le lien individuel Four-Armed avec Preserve the Game reste insuffisamment attesté ; ses quatre bras ne permettent pas de déduire sa planète ou une scène précise.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-ancient-homeworld",
+      "stageId": "arena-047-bassin-des-chasses",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans le Bassin des Chasses du projet. Les quatre entrées sont nommées Homeworld dans le pack, mais aucun cadre précis n’est suffisamment vérifié ici ; ni Yellowstone ni monde natal yautja ne sont revendiqués.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-homeworld-masque-anguleux",
+      "stageId": "arena-047-bassin-des-chasses",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans le Bassin des Chasses du projet. Les quatre entrées sont nommées Homeworld dans le pack, mais aucun cadre précis n’est suffisamment vérifié ici ; ni Yellowstone ni monde natal yautja ne sont revendiqués.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-homeworld-masque-evase",
+      "stageId": "arena-047-bassin-des-chasses",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans le Bassin des Chasses du projet. Les quatre entrées sont nommées Homeworld dans le pack, mais aucun cadre précis n’est suffisamment vérifié ici ; ni Yellowstone ni monde natal yautja ne sont revendiqués.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-homeworld-tatoue",
+      "stageId": "arena-047-bassin-des-chasses",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans le Bassin des Chasses du projet. Les quatre entrées sont nommées Homeworld dans le pack, mais aucun cadre précis n’est suffisamment vérifié ici ; ni Yellowstone ni monde natal yautja ne sont revendiqués.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-captive",
+      "stageId": "arena-072-reserve-de-quarantaine",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans la Réserve de Quarantaine du projet. La notice primaire confirme le titre Captive sans localiser la scène : ce décor n’est ni la biosphère de Tyler Stern certifiée, ni une base du Nevada revendiquée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-demons-gold",
+      "stageId": "arena-034-archive-interdite",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans l’Archive Interdite du projet. Demon’s Gold est attesté comme œuvre, mais son lieu n’est pas vérifié par les sources primaires consultées ; aucun temple, continent ou épisode historique n’est inventé.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-shorty",
+      "stageId": "arena-028-mat-du-vaisseau-temple",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune sur le Mât du Vaisseau-Temple du projet. Les noms sont indexés dans le recueil AVP ; la localisation des scènes de War reste limitée. Ce vaisseau n’est ni attribué au clan, ni annoncé canonique, et aucune planète Bunda/Ryushi n’est déduite.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-topknot",
+      "stageId": "arena-028-mat-du-vaisseau-temple",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune sur le Mât du Vaisseau-Temple du projet. Les noms sont indexés dans le recueil AVP ; la localisation des scènes de War reste limitée. Ce vaisseau n’est ni attribué au clan, ni annoncé canonique, et aucune planète Bunda/Ryushi n’est déduite.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-light-stepper",
+      "stageId": "arena-011-reserve-des-crocs",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans la Réserve des Crocs du projet. La scène commune de Blood Time/Duel n’est pas vérifiée ; aucun transfert de Two-Stripes dans Duel ou sur Ryushi n’est déduit de leur voisinage dans le recueil.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-two-stripes",
+      "stageId": "arena-011-reserve-des-crocs",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale commune dans la Réserve des Crocs du projet. La scène commune de Blood Time/Duel n’est pas vérifiée ; aucun transfert de Two-Stripes dans Duel ou sur Ryushi n’est déduit de leur voisinage dans le recueil.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-smiley",
+      "stageId": "arena-027-station-des-braconniers",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans la Station des Braconniers du projet. Le catalogue de Thrill of the Hunt décrit une époque mais ne nomme ni Smiley ni son monde : cet avant-poste ne constitue pas une origine ou une scène canonique.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-elder-belize",
+      "stageId": "arena-031-c-ur-de-mangrove",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition originale dans le Cœur de Mangrove du projet. Le nom Elder — Belize reste une étiquette du pack, sans référence primaire individualisée accessible ; aucune pyramide, grotte-trophée ou religion n’est déduite.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-green-lantern-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-aquaman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-atom-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-flash-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-martian-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-plastic-man-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-superman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-jla-wonderwoman-meta",
+      "stageId": "arena-079-salle-des-routes-stellaires",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition crossover originale commune dans la Salle des Routes Stellaires du projet. Aucun lieu JLA primaire n’est suffisamment vérifié : ce décor n’est ni Watchtower ni laboratoire Dominator, et les pouvoirs/costumes ne servent pas à attribuer Atlantis, Mars ou Metropolis.",
+      "sourceUrls": []
+    }
+  ]
+}

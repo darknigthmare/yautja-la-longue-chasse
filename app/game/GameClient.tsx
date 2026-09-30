@@ -233,6 +233,7 @@ const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
+const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
@@ -261,6 +262,7 @@ type Screen =
   | "ship"
   | "deck"
   | "homeworld"
+  | "mausoleum"
   | "homeworld-expedition"
   | "glass-desert-expedition"
   | "justice"
@@ -280,7 +282,7 @@ type Screen =
 type MapReturnScreen = Extract<Screen, "ship" | "deck" | "homeworld">;
 type StationScreen = Extract<
   Screen,
-  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice"
+  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice" | "mausoleum"
 >;
 type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld">;
 
@@ -1144,7 +1146,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "mausoleum" || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -3022,7 +3024,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "mission", "deck", "ship", "map", "training", "pit", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+    !["prologue", "youth-training", "mission", "deck", "ship", "map", "training", "pit", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
 
   const primaryWeapon =
@@ -3064,7 +3066,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : null;
 
   const topBar =
-    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mission" && screen !== "pit" ? (
+    !newGamePhase && screen !== "prologue" && screen !== "youth-training" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" ? (
       <TopBar
         save={save}
         onShip={() => go(save.prologue ? "homeworld" : "deck")}
@@ -3236,7 +3238,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen" hidden={screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
+          <section className="screen panel-screen" hidden={screen === "mausoleum" || screen === "pit" || screen === "homeworld-expedition" || screen === "glass-desert-expedition"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <div className="physical-deck-toolbar">
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
@@ -3259,6 +3261,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           </section>
         </Suspense>
       )}
+
+      {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} /></Suspense>)}
 
       {screen === "homeworld-expedition" && (
         <Suspense fallback={<DeferredGameScreen />}>

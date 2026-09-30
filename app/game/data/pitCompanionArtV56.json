@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "variantId": "tracker-hound",
+      "facing": 1,
+      "src": "/game/sprites/v56/pit/companions/tracker-hound-right.png",
+      "width": 1774,
+      "height": 887,
+      "pivot": [
+        247,
+        430
+      ],
+      "topY": 85,
+      "frames": [
+        {
+          "pose": "idle",
+          "rect": [
+            0,
+            0,
+            591,
+            450
+          ],
+          "pivot": [
+            247,
+            430
+          ],
+          "topY": 85,
+          "alphaBounds": [
+            63,
+            85,
+            464,
+            346
+          ],
+          "margins": [
+            63,
+            85,
+            64,
+            19
+          ]
+        },
+        {
+          "pose": "telegraph",
+          "rect": [
+            591,
+            0,
+            601,
+            450
+          ],
+          "pivot": [
+            271,
+            433
+          ],
+          "topY": 129,
+          "alphaBounds": [
+            46,
+            129,
+            516,
+            306
+          ],
+          "margins": [
+            46,
+            129,
+            39,
+            15
+          ]
+        },
+        {
+          "pose": "charge-a",
+          "rect": [
+            1192,
+            0,
+            582,
+            450
+          ],
+          "pivot": [
+            274,
+            428
+          ],
+          "topY": 87,
+          "alphaBounds": [
+            36,
+            87,
+            515,
+            343
+          ],
+          "margins": [
+            36,
+            87,
+            31,
+            20
+          ]
+        },
+        {
+          "pose": "charge-b",
+          "rect": [
+            0,
+            450,
+            580,
+            437
+          ],
+          "pivot": [
+            338,
+            369
+          ],
+          "topY": 38,
+          "alphaBounds": [
+            23,
+            38,
+            521,
+            333
+          ],
+          "margins": [
+            23,
+            38,
+            36,
+            66
+          ]
+        },
+        {
+          "pose": "bite",
+          "rect": [
+            580,
+            450,
+            670,
+            437
+          ],
+          "pivot": [
+            313,
+            357
+          ],
+          "topY": 49,
+          "alphaBounds": [
+            30,
+            49,
+            623,
+            311
+          ],
+          "margins": [
+            30,
+            49,
+            17,
+            77
+          ]
+        },
+        {
+          "pose": "recoil",
+          "rect": [
+            1250,
+            450,
+            524,
+            437
+          ],
+          "pivot": [
+            223,
+            369
+          ],
+          "topY": 47,
+          "alphaBounds": [
+            33,
+            47,
+            463,
+            323
+          ],
+          "margins": [
+            33,
+            47,
+            28,
+            67
+          ]
+        }
+      ],
+      "sha256": "1675511536f4d2bfbe2c184ac56b80cde5053ea01db05d09a7c85e131b270e7a",
+      "nativeFile": "exec-5aa69ddd-92cc-449c-8bb7-c0e39a775b49.png",
+      "bytes": 1757394
+    },
+    {
+      "variantId": "tracker-hound",
+      "facing": -1,
+      "src": "/game/sprites/v56/pit/companions/tracker-hound-left.png",
+      "width": 1536,
+      "height": 1024,
+      "pivot": [
+        281,
+        463
+      ],
+      "topY": 96,
+      "frames": [
+        {
+          "pose": "idle",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            281,
+            463
+          ],
+          "topY": 96,
+          "alphaBounds": [
+            27,
+            96,
+            453,
+            369
+          ],
+          "margins": [
+            27,
+            96,
+            32,
+            47
+          ]
+        },
+        {
+          "pose": "telegraph",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            268,
+            459
+          ],
+          "topY": 117,
+          "alphaBounds": [
+            26,
+            117,
+            458,
+            344
+          ],
+          "margins": [
+            26,
+            117,
+            28,
+            51
+          ]
+        },
+        {
+          "pose": "charge-a",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            271,
+            451
+          ],
+          "topY": 99,
+          "alphaBounds": [
+            19,
+            99,
+            469,
+            355
+          ],
+          "margins": [
+            19,
+            99,
+            24,
+            58
+          ]
+        },
+        {
+          "pose": "charge-b",
+          "rect": [
+            0,
+            512,
+            510,
+            512
+          ],
+          "pivot": [
+            280,
+            405
+          ],
+          "topY": 69,
+          "alphaBounds": [
+            26,
+            69,
+            476,
+            338
+          ],
+          "margins": [
+            26,
+            69,
+            8,
+            105
+          ]
+        },
+        {
+          "pose": "bite",
+          "rect": [
+            510,
+            512,
+            535,
+            512
+          ],
+          "pivot": [
+            326,
+            407
+          ],
+          "topY": 88,
+          "alphaBounds": [
+            10,
+            88,
+            514,
+            320
+          ],
+          "margins": [
+            10,
+            88,
+            11,
+            104
+          ]
+        },
+        {
+          "pose": "recoil",
+          "rect": [
+            1045,
+            512,
+            491,
+            512
+          ],
+          "pivot": [
+            275,
+            419
+          ],
+          "topY": 71,
+          "alphaBounds": [
+            12,
+            71,
+            443,
+            350
+          ],
+          "margins": [
+            12,
+            71,
+            36,
+            91
+          ]
+        }
+      ],
+      "sha256": "dcef52c0a45142a49e3d9af17ae84c2ad70e5dc13623706ce77f3f25d324fcdc",
+      "nativeFile": "exec-1ee7a932-d22e-4c15-9e86-c579fa86ef47.png",
+      "bytes": 2340708
+    },
+    {
+      "variantId": "hellhound-longhorn",
+      "facing": 1,
+      "src": "/game/sprites/v56/pit/companions/hellhound-longhorn-right.png",
+      "width": 1699,
+      "height": 926,
+      "pivot": [
+        687,
+        839
+      ],
+      "topY": 87,
+      "frames": [
+        {
+          "pose": "idle",
+          "rect": [
+            0,
+            0,
+            1699,
+            926
+          ],
+          "pivot": [
+            687,
+            839
+          ],
+          "topY": 87,
+          "alphaBounds": [
+            202,
+            87,
+            1341,
+            753
+          ],
+          "margins": [
+            202,
+            87,
+            156,
+            86
+          ]
+        }
+      ],
+      "sha256": "2fd5246b219cf34b1927a9dfd1c2ac2b32c20fd273e42232c8ad1d9ff89cbf6a",
+      "nativeFile": "exec-1c199a99-9a7a-4104-8026-b086858ce76d.png",
+      "bytes": 1201982
+    },
+    {
+      "variantId": "hellhound-longhorn",
+      "facing": -1,
+      "src": "/game/sprites/v56/pit/companions/hellhound-longhorn-left.png",
+      "width": 1774,
+      "height": 887,
+      "pivot": [
+        1119,
+        834
+      ],
+      "topY": 81,
+      "frames": [
+        {
+          "pose": "idle",
+          "rect": [
+            0,
+            0,
+            1774,
+            887
+          ],
+          "pivot": [
+            1119,
+            834
+          ],
+          "topY": 81,
+          "alphaBounds": [
+            123,
+            81,
+            1570,
+            755
+          ],
+          "margins": [
+            123,
+            81,
+            81,
+            51
+          ]
+        }
+      ],
+      "sha256": "1f60c8d07143cf2048745be49f1b5e575c20b2afb75c2fb1155a024fec311a4f",
+      "nativeFile": "exec-70974c6e-e471-4fc7-aa8b-35b007e8c3cf.png",
+      "bytes": 1334726
+    }
+  ]
+}

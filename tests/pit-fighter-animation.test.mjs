@@ -56,7 +56,7 @@ test("rendering a frozen combat state is deterministic and cannot change replay 
     assert.equal(pit.serializePitCombat(state), serialized);
     assert.deepEqual(state.fighters.map(pit.getPitFighterBoxes), boxes);
   }
-  assert.equal(state.version, 6);
+  assert.equal(state.version, 7);
 });
 
 test("each available melee action has distinct anticipation, contact and recovery poses", () => {
@@ -85,8 +85,8 @@ test("each available melee action has distinct anticipation, contact and recover
 test("animation follows existing technique devices without silently changing franchise mechanics", () => {
   const jungle = resolve(actionFighter("jungle-hunter", "technique", "active"), 40);
   const berserker = resolve(actionFighter("berserker", "technique", "active"), 40);
-  assert.equal(jungle.motion, "technique-disc-active");
-  assert.equal(berserker.motion, "technique-ground-slam-active");
+  assert.equal(jungle.motion, "technique-caster-active");
+  assert.equal(berserker.motion, "technique-charge-active");
   assert.equal(jungle.bladeExtension, 0);
   assert.equal(berserker.bladeExtension, 0);
   assert.ok(distance(jungle.frame.anchors.handGrip, berserker.frame.anchors.handGrip) > 50);

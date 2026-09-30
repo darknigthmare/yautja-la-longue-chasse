@@ -125,19 +125,27 @@ test("declared startup, active and recovery frames gate a light hit", async () =
 
 test("high and low guard obey hit levels and produce blockstun", async () => {
   const pit = await pitPromise;
-  const base = pit.createPitCombatState();
+  const base = pit.createPitCombatState("feral-hunter", "berserker");
   const maxHealth = base.fighters[1].health;
+  const lowTrapContact = (defenderInput) => {
+    let state = pit.stepPitCombat(placeInRange(base), [{ attack: "technique" }, defenderInput]);
+    for (let tick = 0; tick < 30; tick++) {
+      state = pit.stepPitCombat(state, [{}, defenderInput]);
+      if (state.events.some(event => event.type === "hit" || event.type === "block")) return state;
+    }
+    assert.fail("the low trap must reach the nearby grounded target");
+  };
 
-  const lowBlock = performAttack(pit, base, "technique", { guardLow: true, down: true });
+  const lowBlock = lowTrapContact({ guardLow: true, down: true });
   assert.equal(lowBlock.fighters[1].phase, "blockstun");
   assert.equal(
     maxHealth - lowBlock.fighters[1].health,
-    pit.PIT_FIGHTERS["jungle-hunter"].attacks.technique.chipDamage,
+    pit.PIT_FIGHTERS["feral-hunter"].attacks.technique.chipDamage,
   );
   assert.equal(lowBlock.events[0].type, "block");
 
-  const wrongGuard = performAttack(pit, base, "technique", { guardHigh: true });
-  assert.equal(wrongGuard.fighters[1].phase, "knockdown");
+  const wrongGuard = lowTrapContact({ guardHigh: true });
+  assert.equal(wrongGuard.fighters[1].phase, "hitstun");
   assert.ok(maxHealth - wrongGuard.fighters[1].health > 50);
   assert.equal(wrongGuard.events[0].type, "hit");
 });
@@ -742,7 +750,7 @@ test("all twelve selectable hunters spawn their authored technique recipe in the
   }
 });
 
-test("returning disc reverses deterministically and keeps one bounded serialized entity", async () => {
+test("Jungle Hunter plasma travels once and expires without a return or a duplicate", async () => {
   const pit = await pitPromise;
   let state = pit.createPitCombatState("jungle-hunter", "berserker");
   state.fighters[0].x = 120;
@@ -751,12 +759,15 @@ test("returning disc reverses deterministically and keeps one bounded serialized
   state = advance(pit, state, pit.PIT_FIGHTERS["jungle-hunter"].attacks.technique.startup);
   const recipe = pit.PIT_FIGHTERS["jungle-hunter"].technique;
   assert.equal(state.techniqueEffects[0].phase, "active");
-  state = advance(pit, state, recipe.returnFrame - state.techniqueEffects[0].age - 1);
   const outboundX = state.techniqueEffects[0].x;
-  state = pit.stepPitCombat(state, [{}, {}]);
-  assert.equal(state.techniqueEffects[0].phase, "returning");
-  assert.ok(state.techniqueEffects[0].x < outboundX);
-  assert.ok(state.techniqueEffects.length <= pit.PIT_MAX_TECHNIQUE_EFFECTS);
+  state = advance(pit, state, 6);
+  assert.equal(state.techniqueEffects.length, 1);
+  assert.equal(state.techniqueEffects[0].phase, "active");
+  assert.equal(state.techniqueEffects[0].x, outboundX + 6 * recipe.speed);
+  assert.deepEqual(pit.deserializePitCombat(pit.serializePitCombat(state)), state);
+  state = advance(pit, state, recipe.lifetimeFrames);
+  assert.equal(state.techniqueEffects.length, 0);
+  assert.equal(state.nextTechniqueEffectId, 2);
 });
 
 test("capture net applies a real movement, jump and camouflage lock that expires", async () => {
@@ -791,24 +802,23 @@ test("capture net applies a real movement, jump and camouflage lock that expires
   assert.equal(state.fighters[1].techniqueStatus, null);
 });
 
-test("plasma and ground shock pierce guard while ordinary disc pressure remains blockable", async () => {
+test("Scar plasma and Berserker contact pierce guard while Jungle Hunter plasma remains blockable", async () => {
   const pit = await pitPromise;
   const guardedTechnique = (attackerId) => {
     const defenderId = attackerId === "berserker" ? "jungle-hunter" : "berserker";
     let state = placeInRange(pit.createPitCombatState(attackerId, defenderId), 82);
     state = pit.stepPitCombat(state, [
       { attack: "technique" },
-      { guardLow: true, down: true },
+      { guardHigh: true },
     ]);
-    return advance(
-      pit,
-      state,
-      pit.PIT_FIGHTERS[attackerId].attacks.technique.startup,
-      [{}, { guardLow: true, down: true }],
-    );
+    for (let tick = 0; tick < pit.PIT_FIGHTERS[attackerId].attacks.technique.startup + 8; tick++) {
+      state = pit.stepPitCombat(state, [{}, { guardHigh: true }]);
+      if (state.events.some(event => event.type === "block" || event.type === "hit")) break;
+    }
+    return state;
   };
-  const disc = guardedTechnique("jungle-hunter");
-  assert.equal(disc.events.some((event) => event.type === "block"), true);
+  const plasma = guardedTechnique("jungle-hunter");
+  assert.equal(plasma.events.some((event) => event.type === "block"), true);
   for (const fighterId of ["scar", "berserker"]) {
     const state = guardedTechnique(fighterId);
     assert.equal(state.events.some((event) => event.type === "block"), false);
@@ -948,7 +958,7 @@ test("Falconer reconnaissance drone marks without damage, guard reaction or hits
   assert.equal(cpuSide.fighters[0].phase, "idle");
 });
 
-test("whip pulls, spear dashes and counter recipes intercept a same-frame strike", async () => {
+test("whip pulls, physical shoulder advances and counter recipes intercept a same-frame strike", async () => {
   const pit = await pitPromise;
 
   let whip = placeInRange(pit.createPitCombatState("wolf", "berserker"), 120);
@@ -957,13 +967,13 @@ test("whip pulls, spear dashes and counter recipes intercept a same-frame strike
   whip = advance(pit, whip, pit.PIT_FIGHTERS.wolf.attacks.technique.startup);
   assert.ok(whip.fighters[1].x < defenderX, "negative pushback must pull toward Wolf");
 
-  let spear = pit.createPitCombatState("valkyrie", "berserker");
-  spear.fighters[0].x = 120;
-  spear.fighters[1].x = 840;
-  const spearStart = spear.fighters[0].x;
-  spear = pit.stepPitCombat(spear, [{ attack: "technique" }, {}]);
-  spear = advance(pit, spear, pit.PIT_FIGHTERS.valkyrie.attacks.technique.startup);
-  assert.ok(spear.fighters[0].x > spearStart);
+  let shoulder = pit.createPitCombatState("berserker", "jungle-hunter");
+  shoulder.fighters[0].x = 120;
+  shoulder.fighters[1].x = 840;
+  const shoulderStart = shoulder.fighters[0].x;
+  shoulder = pit.stepPitCombat(shoulder, [{ attack: "technique" }, {}]);
+  shoulder = advance(pit, shoulder, pit.PIT_FIGHTERS.berserker.attacks.technique.startup);
+  assert.ok(shoulder.fighters[0].x > shoulderStart);
 
   let counter = placeInRange(
     pit.createPitCombatState("scarface", "berserker"),

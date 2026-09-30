@@ -1,4 +1,5 @@
 /** Homeworld model. Authored fan-game city; no universal Yautja monarchy is asserted. */
+import { defaultMausoleumProgress, normalizeMausoleumProgress, type MausoleumProgress } from "./mausoleum";
 import type { RankId } from "../types";
 import { applyHomeworldInquiry, defaultHomeworldInquiry, inquiryPrerequisites, isHomeworldInquiryState, normalizeHomeworldInquiry, type HomeworldInquiryAction, type HomeworldInquiryProgress } from "./homeworldInquiry";
 export { homeworldInquiryJournal, homeworldInquiryDialogue, type HomeworldInquiryAction } from "./homeworldInquiry";
@@ -46,7 +47,7 @@ export {
   type HomeworldTrophyDisplay,
 } from "./homeworldCity";
 
-export type HomeworldService = "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "pit" | "justice";
+export type HomeworldService = "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "pit" | "justice" | "mausoleum";
 export type HomeworldWitnessChoice = "protect" | "restitution" | "investigate";
 export type HomeworldEvidenceId = "suspect-trophy" | "memory-register" | "undercity-testimony";
 export type HomeworldAudienceOutcome = "protected-witness" | "ordered-restitution" | "continued-investigation";
@@ -121,6 +122,7 @@ const HOMEWORLD_POINT_BLUEPRINTS: readonly HomeworldPoint[] = [
   servicePoint("market-service", "Échoppe d'équipement", "market", 1_700, 1_500, "armory", "market-artisan"),
   servicePoint("forge-service", "Atelier des parures", "forges", 3_000, 1_500, "customization", "forge-artisan"),
   { id: "witness-point", label: "Témoin des galeries", kind: "evidence", districtId: "undercity", x: 4_400, y: 1_500, evidenceId: "undercity-testimony", npcId: "undercity-witness", description: "Comparer le registre et recueillir le témoignage avant de choisir la suite." },
+  { id: "mausoleum-service", label: "Mausolée des Grandes Chasses", kind: "service", service: "mausoleum", districtId: "esplanade", x: 1130, y: 1360, description: "Consulter les archives et les reproductions d’étude. Les DLC non produits restent scellés ; aucun duel ne remplace leur campagne." },
   servicePoint("trophy-service", "Présentation des prises", "esplanade", 450, 1_000, "trophies", "trophy-herald"),
   servicePoint("training-service", "Parcours d'entraînement", "terraces", 1_700, 1_000, "training", "terrace-instructor"),
   servicePoint("medbay-service", "Maison des soins", "clans", 3_000, 1_000, "medbay", "clan-healer"),
@@ -138,16 +140,17 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
 const choices: readonly HomeworldWitnessChoice[] = ["protect", "restitution", "investigate"];
 const outcomes: Record<HomeworldWitnessChoice, HomeworldAudienceOutcome> = { protect: "protected-witness", restitution: "ordered-restitution", investigate: "continued-investigation" };
-export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, inquiry: defaultHomeworldInquiry(), expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
+export function defaultHomeworldProgress(): HomeworldProgress { return { version: 1, mausoleum: defaultMausoleumProgress(), inquiry: defaultHomeworldInquiry(), expeditions: { "ash-marches": null, "glass-desert": null }, visitedDistrictIds: [], evidenceIds: [], greetedNpcIds: [], witnessChoice: null, audienceOutcome: null, relations: Object.fromEntries(HOMEWORLD_ORGANIZATIONS.map(({ id }) => [id, 0])) }; }
 export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   const clean = defaultHomeworldProgress();
   if (!record(value) || value.version !== 1) return clean;
+  clean.mausoleum = normalizeMausoleumProgress(value.mausoleum);
   if (record(value.expeditions)) {
     clean.expeditions["ash-marches"] = normalizeHomeworldExpeditionProof(value.expeditions["ash-marches"]);
     // V7 saves without the second region retain their first report unchanged.

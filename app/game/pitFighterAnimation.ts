@@ -20,7 +20,7 @@ type ActionStage = "startup" | "active" | "recovery";
 type ActionMotion =
   | "light" | "medium" | "heavy" | "throw"
   | "technique-disc" | "technique-ground-slam"
-  | "technique-caster" | "technique-charge" | "technique";
+  | "technique-caster" | "technique-charge" | "technique-hammer" | "technique";
 
 export interface PitFighterAnimation {
   frame: HunterRigFrame;
@@ -130,6 +130,10 @@ function actionPose(
         { joints: { torso: -0.2, armFrontUpper: 0.64, armFrontLower: -1.9, armBackUpper: -0.45, armBackLower: -1.3 }, x: -5 },
         { joints: { torso: 0.12, armFrontUpper: -0.95, armFrontLower: 0.55, armBackUpper: -0.4, armBackLower: -1.1 }, x: 8 },
       ];
+    } else if (device === "hammer") {
+      // Procedural timing fallback only; this does not certify a new drawn hammer clip.
+      name = "technique-hammer";
+      keys = ATTACK_KEYS.heavy;
     } else if (device === "shockwave" || device === "warlord-wave") {
       name = "technique-ground-slam";
       keys = [

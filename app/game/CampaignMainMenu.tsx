@@ -22,7 +22,8 @@ function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onB
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
 }
-export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover}:{
+export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum}:{
+ onMausoleum?:()=>void;
  catalog:CampaignCatalogView|null;busy:boolean;message:string|null;onRefresh:()=>void;
  onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
 }){
@@ -54,6 +55,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      <p className={styles.eyebrow}>Choisissez votre histoire</p>
      <button className={current?styles.featured:undefined} type="button" disabled={busy||!current} onClick={()=>current&&onContinue(current.id)}><span className={styles.actionTitle}>Continuer</span><small>{current?`Partie ${current.id} · ${current.hunterName??'Chasseur sans nom'}`:'Aucune campagne à reprendre'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status==='empty')} onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+     {onMausoleum&&<button type="button" disabled={busy} onClick={onMausoleum}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
      <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      {catalog?.slots.every(s=>s.status!=='empty')&&<p className={styles.notice}>Les cinq emplacements sont occupés ou protégés. Aucune partie ne sera effacée automatiquement.</p>}
     </section>

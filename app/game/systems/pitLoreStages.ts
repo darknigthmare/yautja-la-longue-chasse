@@ -1,3 +1,22 @@
+import additional from "./pitLoreStagesV55.generated.json";
+
+export type PitStageSourceClassification = "character-setting" | "work-setting" | "original-exhibition";
+export type PitStageSourceStatus = "resolved" | "primary-limited" | "original-selected";
+export interface PitAdditionalLoreStage {
+  readonly id: string; readonly catalogueNumber: number; readonly name: string;
+  readonly kind: "film" | "game" | "comic" | "novel" | "original";
+  readonly workId: string; readonly workTitle: string; readonly setting: string;
+  readonly palette: { readonly sky: string; readonly ground: string; readonly accent: string };
+  readonly referenceStatus: PitStageSourceClassification;
+  readonly sourceUrl: string | null; readonly sourceUrls: readonly string[]; readonly sourceClaim: string;
+  readonly dedicatedFighters: readonly string[];
+}
+export interface PitExplicitStageAssociation {
+  readonly fighterId: string; readonly stageId: string;
+  readonly classification: PitStageSourceClassification; readonly sourceStatus: PitStageSourceStatus;
+  readonly reason: string; readonly sourceUrls: readonly string[];
+}
+
 /** Publisher-attested setting; exact geometry remains an original lateral adaptation. */
 export const PIT_LORE_STAGE_DEFINITIONS = [
   {
@@ -24,8 +43,14 @@ export const PIT_LORE_STAGE_DEFINITIONS = [
   },
 ] as const;
 
-export const PIT_LORE_STAGE_WORKS = PIT_LORE_STAGE_DEFINITIONS.map(stage => ({ id: stage.workId, title: stage.workTitle, kind: stage.kind }));
+// Keep the historical batch stable; authored definitions alone never activate a stage.
+export const PIT_ADDITIONAL_LORE_STAGES = additional.stages as readonly PitAdditionalLoreStage[];
+export const PIT_EXPLICIT_STAGE_ASSOCIATIONS = additional.associations as readonly PitExplicitStageAssociation[];
+export const PIT_ALL_LORE_STAGE_DEFINITIONS = [...PIT_LORE_STAGE_DEFINITIONS, ...PIT_ADDITIONAL_LORE_STAGES];
+export const PIT_LORE_STAGE_WORKS = Array.from(new Map(PIT_ALL_LORE_STAGE_DEFINITIONS
+  .filter(stage => stage.kind !== "original")
+  .map(stage => [stage.workId, { id: stage.workId, title: stage.workTitle, kind: stage.kind as "film" | "game" | "comic" | "novel" }])).values());
 
 export function getPitLoreStage(id: unknown) {
-  return typeof id === "string" ? PIT_LORE_STAGE_DEFINITIONS.find(stage => stage.id === id) ?? null : null;
+  return typeof id === "string" ? PIT_ALL_LORE_STAGE_DEFINITIONS.find(stage => stage.id === id) ?? null : null;
 }

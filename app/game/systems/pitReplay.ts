@@ -1,4 +1,5 @@
 import { getPitUserVariant, normalizePitUserVariant } from './pitUserRoster';
+import { isPitHoundVariantId, type PitHoundVariantId } from './pitCompanion';
 import { isPitStageJourneyForArena } from "./pitStageJourney";
 import {
   createPitCombatState,
@@ -11,6 +12,7 @@ import {
   stepPitCombatV2Compatibility,
   stepPitCombatV4Compatibility,
   stepPitCombatV5Compatibility,
+  stepPitCombatV6Compatibility,
   type PitCombatRules,
   type PitArenaId,
   type PitAttackKind,
@@ -89,6 +91,7 @@ const REPLAY_KEYS = [
   "rules",
   "fighters",
   "variants",
+  "houndVariantId",
   "segments",
   "metadata",
 ] as const;
@@ -115,8 +118,9 @@ export interface PitReplayMetadata {
 }
 
 export interface PitReplay {
+  houndVariantId?: PitHoundVariantId;
   version: typeof PIT_REPLAY_VERSION;
-  engineVersion: 4 | 5 | typeof PIT_STATE_VERSION;
+  engineVersion: 4 | 5 | 6 | typeof PIT_STATE_VERSION;
   tickRate: typeof PIT_TICK_RATE;
   arenaId: PitArenaId;
   encoding: typeof PIT_REPLAY_ENCODING;
@@ -129,6 +133,7 @@ export interface PitReplay {
 }
 
 export interface PitReplayRecordingOptions {
+  houndVariantId?: PitHoundVariantId;
   fighters?: readonly [PitFighterId, PitFighterId];
   variants?: readonly [string | null, string | null];
   rules?: PitCombatRules;
@@ -167,6 +172,7 @@ interface ValidatedReplay {
 }
 
 interface NormalizedRecordingOptions {
+  houndVariantId?: PitHoundVariantId;
   fighters: readonly [PitFighterId, PitFighterId];
   variants?: readonly [string | null, string | null];
   rules: PitCombatRules;
@@ -232,7 +238,7 @@ function replayRejectionCode(value: unknown): PitReplayRejectionCode {
   }
   if (value.version === PIT_REPLAY_VERSION &&
     value.engineVersion !== undefined &&
-    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== PIT_STATE_VERSION) {
+    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== PIT_STATE_VERSION) {
     return "incompatible-engine";
   }
   return "invalid-replay";
@@ -337,7 +343,13 @@ function checksumCombatStateForV5(state: PitCombatState): string {
   return checksumSerializedCombat(JSON.stringify(canonical));
 }
 
-function metadataFor(state: PitCombatState, ticks: number, engineVersion: 4 | 5 | typeof PIT_STATE_VERSION = PIT_STATE_VERSION): PitReplayMetadata {
+function checksumCombatStateForV6(state: PitCombatState): string {
+  const canonical = JSON.parse(serializePitCombat(state)) as Record<string, unknown>;
+  canonical.version = 6;
+  return checksumSerializedCombat(JSON.stringify(canonical));
+}
+
+function metadataFor(state: PitCombatState, ticks: number, engineVersion: PitReplay['engineVersion'] = PIT_STATE_VERSION): PitReplayMetadata {
   return {
     ticks,
     durationMs: Math.round((ticks * 1_000) / PIT_TICK_RATE),
@@ -345,7 +357,7 @@ function metadataFor(state: PitCombatState, ticks: number, engineVersion: 4 | 5 
     finalPhase: state.phase,
     completed: state.phase === "match-over",
     finalFrame: state.frame,
-    checksum: engineVersion === 4 ? checksumCombatStateForV4(state) : engineVersion === 5 ? checksumCombatStateForV5(state) : checksumCombatState(state),
+    checksum: engineVersion === 4 ? checksumCombatStateForV4(state) : engineVersion === 5 ? checksumCombatStateForV5(state) : engineVersion === 6 ? checksumCombatStateForV6(state) : checksumCombatState(state),
   };
 }
 
@@ -366,7 +378,7 @@ function replayVariants(fighters: readonly string[], value: unknown): readonly [
   return variants.some(Boolean) ? variants : undefined;
 }
 function normalizeRecordingOptions(options: PitReplayRecordingOptions): NormalizedRecordingOptions {
-  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "variants", "rules", "arenaId", "seed"])) throw replayError();
+  if (!isRecord(options) || !hasOnlyKeys(options, ["fighters", "variants", "houndVariantId", "rules", "arenaId", "seed"])) throw replayError();
   const fighters = options.fighters ?? ["jungle-hunter", "berserker"];
   if (!Array.isArray(fighters) || fighters.length !== 2 || !isFighterId(fighters[0]) ||
     !isFighterId(fighters[1]) || fighters[0] === fighters[1]) {
@@ -374,6 +386,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   }
   const variants = replayVariants(fighters, options.variants);
   if (variants === false) throw replayError();
+  if (options.houndVariantId !== undefined && (!isPitHoundVariantId(options.houndVariantId) || !fighters.includes('tracker'))) throw replayError();
   const rules = options.rules ?? { mode: "match" };
   if (!isRecord(rules) || !hasOnlyKeys(rules, ["mode", "stageJourney"]) || !isCombatMode(rules.mode)) throw replayError();
   const arenaId = options.arenaId ?? "the-pit";
@@ -384,6 +397,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
   return {
     fighters: [fighters[0], fighters[1]],
     ...(variants ? { variants } : {}),
+    ...(options.houndVariantId ? { houndVariantId: options.houndVariantId } : {}),
     rules: { mode: rules.mode, ...(isPitStageJourneyForArena(rules.stageJourney, arenaId) ? { stageJourney: rules.stageJourney } : {}) },
     arenaId,
     seed,
@@ -393,7 +407,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
 function structuralReplay(value: unknown): PitReplay | null {
   if (!isRecord(value) || !hasOnlyKeys(value, REPLAY_KEYS) ||
     value.version !== PIT_REPLAY_VERSION ||
-    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== PIT_STATE_VERSION) ||
+    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== PIT_STATE_VERSION) ||
     value.tickRate !== PIT_TICK_RATE ||
     !isArenaId(value.arenaId) ||
     value.encoding !== PIT_REPLAY_ENCODING ||
@@ -401,7 +415,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     return null;
   }
 
-  if (!isRecord(value.rules) || !hasOnlyKeys(value.rules, value.engineVersion === PIT_STATE_VERSION ? ["mode", "stageJourney"] : ["mode"]) || !isCombatMode(value.rules.mode)) return null;
+  if (!isRecord(value.rules) || !hasOnlyKeys(value.rules, value.engineVersion >= 6 ? ["mode", "stageJourney"] : ["mode"]) || !isCombatMode(value.rules.mode)) return null;
   if (value.rules.stageJourney !== undefined && !isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId)) return null;
   if (!Array.isArray(value.fighters) || value.fighters.length !== 2 ||
     !isFighterId(value.fighters[0]) || !isFighterId(value.fighters[1]) ||
@@ -409,7 +423,8 @@ function structuralReplay(value: unknown): PitReplay | null {
     return null;
   }
   const variants = replayVariants(value.fighters, value.variants);
-  if (variants === false || (variants && value.engineVersion !== PIT_STATE_VERSION)) return null;
+  if (variants === false || (variants && value.engineVersion < 6)) return null;
+  if (value.houndVariantId !== undefined && (value.engineVersion < 7 || !isPitHoundVariantId(value.houndVariantId) || !value.fighters.includes('tracker'))) return null;
   if (!Array.isArray(value.segments) || value.segments.length > PIT_REPLAY_MAX_SEGMENTS) return null;
 
   let ticks = 0;
@@ -456,6 +471,7 @@ function structuralReplay(value: unknown): PitReplay | null {
     rules: { mode: value.rules.mode, ...(isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId) ? { stageJourney: value.rules.stageJourney } : {}) },
     fighters: [value.fighters[0], value.fighters[1]],
     ...(variants ? { variants } : {}),
+    ...(isPitHoundVariantId(value.houndVariantId) ? { houndVariantId: value.houndVariantId } : {}),
     segments,
     metadata: {
       ticks: value.metadata.ticks,
@@ -478,12 +494,13 @@ type PitCombatStepper = (
 
 function simulateReplay(
   replay: PitReplay,
-  step: PitCombatStepper = replay.engineVersion === 4 ? stepPitCombatV4Compatibility : replay.engineVersion === 5 ? stepPitCombatV5Compatibility : stepPitCombat,
+  step: PitCombatStepper = replay.engineVersion === 4 ? stepPitCombatV4Compatibility : replay.engineVersion === 5 ? stepPitCombatV5Compatibility : replay.engineVersion === 6 ? stepPitCombatV6Compatibility : stepPitCombat,
 ): { state: PitCombatState; ticks: number } | null {
   let state = createPitCombatState(replay.fighters[0], replay.fighters[1], {
     ...replay.rules,
     arenaId: replay.arenaId,
     variants: replay.variants,
+    houndVariantId: replay.houndVariantId,
   });
   let processedTicks = 0;
   for (const [runTicks, inputPair] of replay.segments) {
@@ -588,7 +605,7 @@ class ReplayRecorder implements PitReplayRecorder {
     this.state = createPitCombatState(
       this.options.fighters[0],
       this.options.fighters[1],
-      { ...this.options.rules, arenaId: this.options.arenaId, variants: this.options.variants },
+      { ...this.options.rules, arenaId: this.options.arenaId, variants: this.options.variants, houndVariantId: this.options.houndVariantId },
     );
   }
 
@@ -629,6 +646,7 @@ class ReplayRecorder implements PitReplayRecorder {
       rules: { ...this.options.rules },
       fighters: [...this.options.fighters],
       ...(this.options.variants ? { variants: [...this.options.variants] as [string | null, string | null] } : {}),
+      ...(this.options.houndVariantId ? { houndVariantId: this.options.houndVariantId } : {}),
       segments: this.segments.map(([ticks, inputPair]) => [ticks, inputPair]),
       metadata: metadataFor(this.state, this.tickCount),
     };
@@ -704,6 +722,7 @@ export function stepPitReplayCombat(
 ): PitCombatState {
   if (engineVersion === 4) return stepPitCombatV4Compatibility(state, inputs);
   if (engineVersion === 5) return stepPitCombatV5Compatibility(state, inputs);
+  if (engineVersion === 6) return stepPitCombatV6Compatibility(state, inputs);
   if (engineVersion === PIT_STATE_VERSION) return stepPitCombat(state, inputs);
   throw replayError("incompatible-engine");
 }

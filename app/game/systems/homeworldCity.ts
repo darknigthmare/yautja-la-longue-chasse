@@ -268,6 +268,7 @@ export const HOMEWORLD_POINT_POSITIONS = {
   "forge-service": { x: 3_060, y: 2_020 },
   "witness-point": { x: 4_520, y: 2_190 },
   "trophy-service": { x: 910, y: 1_430 },
+  "mausoleum-service": { x: 1_130, y: 1_360 },
   "training-service": { x: 2_220, y: 1_330 },
   "medbay-service": { x: 3_430, y: 1_420 },
   "enforcer-point": { x: 4_520, y: 1_410 },

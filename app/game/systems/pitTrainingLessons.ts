@@ -24,6 +24,12 @@ export interface PitTrainingLesson {
 }
 export const PIT_TRAINING_LESSON_LIMIT = PIT_TICK_RATE * 30;
 
+/** Use an actual low technique, not a roster position or a former equipment recipe. */
+function lowGuardDummy(playerId: PitFighterId): PitFighterId | null {
+  return (["city-hunter", "witch", "feral-hunter"] as const).find(id => id !== playerId &&
+    PIT_FIGHTERS[id].attacks.technique.hitLevel === "low" && PIT_FIGHTERS[id].technique.trigger === "contact") ?? null;
+}
+
 /** Availability follows the actual authored move; lessons never grant missing combat abilities. */
 export function getPitTrainingLessonAvailability(
   fighterId: PitFighterId,
@@ -32,6 +38,9 @@ export function getPitTrainingLessonAvailability(
   const fighter = Object.hasOwn(PIT_FIGHTERS, fighterId) ? PIT_FIGHTERS[fighterId] : null;
   if (!fighter || !PIT_TRAINING_LESSONS.some((lesson) => lesson.id === id)) {
     return { available: false, reason: "Exercice ou chasseur indisponible." };
+  }
+  if (id === "guard-low" && !lowGuardDummy(fighterId)) {
+    return { available: false, reason: "Aucun mannequin distinct ne possède actuellement la technique basse requise." };
   }
   const heavy = fighter.attacks.heavy;
   if (id === "anti-air" && (!heavy.antiAir || !Number.isFinite(heavy.launchY) || heavy.launchY <= 0)) {
@@ -51,7 +60,8 @@ export function preparePitTrainingLesson(current: PitCombatState, id: PitTrainin
   const playerId = current.fighters[0].definitionId;
   const availability = getPitTrainingLessonAvailability(playerId, id);
   if (!availability.available) throw new Error(availability.reason ?? "Exercice indisponible.");
-  const dummyId = playerId === "jungle-hunter" ? "city-hunter" : "jungle-hunter";
+  const dummyId = id === "guard-low" ? lowGuardDummy(playerId)!
+    : playerId === "jungle-hunter" ? "city-hunter" : "jungle-hunter";
   const state = createPitCombatState(playerId, dummyId, {
     mode: "training", arenaId: current.arenaId, variants: [current.fighters[0].variantId ?? null, null],
   });

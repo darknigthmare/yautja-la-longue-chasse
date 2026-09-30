@@ -1,4 +1,6 @@
 import { getPitUserVariant, normalizePitUserVariant } from './systems/pitUserRoster';
+import originalArtV56 from './data/pitOriginalFighterArtV56.json';
+import { isPitOriginalFighterIdV56 } from './systems/pitOriginalFightersV56';
 import { PIT_FIGHTERS, type PitFighterId, type PitFighterState } from "./systems/pitCombat";
 import { PIT_SPRITE_SHEET_REGISTRY } from "./pitSpriteSheetRegistry";
 import {
@@ -63,6 +65,13 @@ const DEFINITIONS: readonly PitCombatBitmapArtDefinition[] = MEASUREMENTS.map(([
 }));
 
 export function getPitCombatBitmapArtDefinition(id: PitFighterId, variantId?: string | null): PitCombatBitmapArtDefinition | null {
+  if (isPitOriginalFighterIdV56(id)) {
+    const art = originalArtV56.fighters.find(entry => entry.fighterId === id);
+    // Exactly one reviewed drawing; a foreign costume must never select a different identity.
+    if (!art || variantId) return null;
+    return { fighterId: id, src: art.src, width: art.width, height: art.height,
+      pivot: [art.pivot[0], art.pivot[1]], bodyTopY: art.bodyTopY, nativeFacing: 'right', kind: 'static-bitmap' };
+  }
   const selected = normalizePitUserVariant(id, variantId);
   const variant = getPitUserVariant(id, selected);
   if (variant) return { ...variant, fighterId: id, variantId: variant.id, kind: 'static-bitmap' };

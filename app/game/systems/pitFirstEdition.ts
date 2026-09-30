@@ -73,8 +73,10 @@ export type PitTechniqueDevice =
   | "bolt-trap"
   | "shockwave"
   | "drone"
+  | "hound"
   | "counter-blade"
   | "spear"
+  | "hammer"
   | "bow-snare"
   | "code-parry"
   | "warlord-wave"
@@ -400,11 +402,14 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     rivalId: "city-hunter", difficulty: 2, maxHealth: 1_000, walkSpeed: 4.7,
     airSpeed: 3.2, jumpSpeed: 12.4, power: 1, bodyWidth: 54, bodyHeight: 116,
     crouchHeight: 82, palette: { primary: "#66714f", secondary: "#30291f", accent: "#d7b45b" },
-    attacks: moves(["Estoc aux lames de poignet", "Balayage au combistick", "Fracas vertical", "Feinte basse au disque"], BALANCE.allRounder),
-    technique: technique("jungle-disc-return", "disc", {
-      motion: "returning", lifetimeFrames: 48, speed: 12, returnFrame: 20,
-      width: 38, height: 30, verticalOffset: 46, damageScale: 1,
-      chipScale: 1, knockdown: true, maxHits: 2, rehitFrames: 12,
+    // Bible V54, 02_PERSONNAGES!S5 / 16_REGLES!D22: the 1987 kit has no disc or combistick.
+    attacks: moves(["Estoc aux lames de poignet", "Revers aux lames", "Fracas vertical", "Tir de plasma"], {
+      ...BALANCE.allRounder, techniqueLevel: "mid",
+    }),
+    technique: technique("jungle-shoulder-plasma", "plasma", {
+      motion: "linear", lifetimeFrames: 36, speed: 12,
+      width: 28, height: 22, verticalOffset: 80, damageScale: 1,
+      chipScale: 1, knockdown: true,
     }),
     arcadeIntro: "Le premier chasseur répond à l’appel du Cercle sans témoin ni concession.",
     arcadeEnding: "Jungle Hunter grave une nouvelle marque et disparaît avant que le clan ne rompe le silence.",
@@ -498,10 +503,13 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     rivalId: "wolf", difficulty: 2, maxHealth: 1_040, walkSpeed: 4.35,
     airSpeed: 2.9, jumpSpeed: 11.8, power: 1.04, bodyWidth: 58, bodyHeight: 122,
     crouchHeight: 86, palette: { primary: "#5b1f1c", secondary: "#171311", accent: "#bfc5b5" },
-    attacks: moves(["Revers sauvage", "Crochet au fendoir", "Coup écraseur", "Brise-cheville"], BALANCE.juggernaut),
-    technique: technique("berserker-ground-shock", "shockwave", {
-      lifetimeFrames: 24, speed: 6, width: 64, height: 30,
-      verticalOffset: 0, damageScale: 1.08, chipScale: 1.2,
+    // Bible V54, 02_PERSONNAGES!S11: physical impact, never a travelling earthquake.
+    attacks: moves(["Revers sauvage", "Crochet au fendoir", "Coup écraseur", "Heurt d’épaule"], {
+      ...BALANCE.juggernaut, techniqueLevel: "mid",
+    }),
+    technique: technique("berserker-shoulder-impact", "shoulder", {
+      motion: "attached", lifetimeFrames: 4, speed: 0, width: 64, height: 64,
+      verticalOffset: 20, damageScale: 1.08, chipScale: 1.2, ownerDashSpeed: 3.5,
       hitstunBonus: 3, pushbackScale: 1.4, guardBreak: true, knockdown: true,
     }),
     arcadeIntro: "Berserker voit le Circuit comme un territoire à prendre, pas comme un rite à respecter.",
@@ -551,20 +559,24 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     arcadeEnding: "Devant le Tribunal, le vétéran ne réclame rien ; son parcours a déjà rendu son nom.",
   }),
   valkyrie: fighter({
-    id: "valkyrie", name: "Valkyrie", epithet: "Spear of the North", sourcePresetId: "valkyrie",
+    id: "valkyrie", name: "Valkyrie", epithet: "Marteau du Nord", sourcePresetId: "valkyrie",
     sourceWork: "Predator: Hunting Grounds", continuity: "expanded", archetype: "reach",
     selectable: true, runtimeStatus: "authored", rivalId: "witch", difficulty: 3,
     maxHealth: 990, walkSpeed: 4.7, airSpeed: 3.25, jumpSpeed: 12.5, power: 1.01,
     bodyWidth: 54, bodyHeight: 118, crouchHeight: 82,
     palette: { primary: "#77808a", secondary: "#292d34", accent: "#78b9d4" },
-    attacks: moves(["Pommeau de Valkyrie", "Arc à la longue lance", "Descente du givre", "Interception ailée"], BALANCE.airControl),
-    technique: technique("valkyrie-spear-intercept", "spear", {
-      motion: "attached", lifetimeFrames: 9, width: 118, height: 54,
-      verticalOffset: 30, damageScale: 0.96, hitstunBonus: 6,
-      pushbackScale: 1.12, knockdown: true, ownerDashSpeed: 5.5,
+    attacks: {
+      ...moves(["Pommeau de Valkyrie", "Revers au marteau", "Abattage du marteau", "Marteau nordique"], BALANCE.airControl),
+      // Bible V54, 05_MOVES_PROPOSES!P14: one telegraphed heavy contact, no ice wave.
+      // This adopts the proposed 28/7/36 timing, not the still-unimplemented 18-action kit.
+      technique: move("technique", "Marteau nordique", [28, 7, 36, 155, 30, 17, 94, 72, 25], "mid", { knockdown: true }),
+    },
+    technique: technique("valkyrie-norse-hammer", "hammer", {
+      motion: "attached", lifetimeFrames: 7, speed: 0, width: 94, height: 72,
+      verticalOffset: 26, damageScale: 1, pushbackScale: 1.12, knockdown: true,
     }),
     arcadeIntro: "Valkyrie choisit la voie la plus exposée, là où chaque pas peut être jugé.",
-    arcadeEnding: "Sa lance plantée dans le basalte devient le repère d’une voie désormais reconnue par le clan.",
+    arcadeEnding: "Son marteau posé sur le basalte marque une voie désormais reconnue par le clan.",
   }),
   witch: fighter({
     id: "witch", name: "Witch", epithet: "Mist Stalker", sourcePresetId: "witch",

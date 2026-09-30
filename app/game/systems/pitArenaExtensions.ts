@@ -1,7 +1,7 @@
 import type { PitFirstEditionArenaDefinition, PitFirstEditionArenaId } from "./pitFirstEdition";
 import compositionDefinitions from "./pitArenaCompositionsV42.generated.json";
 import { PIT_SCREEN_ARENA_DEFINITIONS, getPitScreenArenaMetadata } from "./pitScreenArenas";
-import { PIT_LORE_STAGE_DEFINITIONS } from "./pitLoreStages";
+import { PIT_ALL_LORE_STAGE_DEFINITIONS } from "./pitLoreStages";
 import productionData from "../pitArenaProductionData.generated.json";
 
 /** Explicitly authored neutral-duel extensions. Art review alone never adds an ID here.
@@ -25,7 +25,7 @@ const HISTORICAL_EXTENSION_IDS = [
 export type PitExtensionArenaId = (typeof HISTORICAL_EXTENSION_IDS)[number] | `arena-${string}`;
 // Only renderer-approved, explicitly enabled compositions join the playable registry.
 // The authored definitions alone never unlock an arena.
-const approvedCompositions = [...compositionDefinitions, ...PIT_SCREEN_ARENA_DEFINITIONS, ...PIT_LORE_STAGE_DEFINITIONS].filter(definition => productionData.stages.some(stage =>
+const approvedCompositions = [...compositionDefinitions, ...PIT_SCREEN_ARENA_DEFINITIONS, ...PIT_ALL_LORE_STAGE_DEFINITIONS].filter(definition => productionData.stages.some(stage =>
   stage.catalogueId === definition.id && stage.number === definition.catalogueNumber && stage.runtimeEnabled
   && "runtimeExtension" in stage && stage.runtimeExtension?.arenaId === definition.id
   && stage.runtimeExtension.gameplayProfile === "neutral-duel-v1" && stage.runtimeExtension.rendererEvidenceRecorded));

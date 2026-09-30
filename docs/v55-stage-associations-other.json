@@ -1,0 +1,1460 @@
+{
+  "schemaVersion": 1,
+  "release": "V55",
+  "scope": "150 identités hors45 comics :93 auditées dans v55-stage-references-other.json et57 associations déjà présentes en V54.",
+  "total": 150,
+  "policy": {
+    "classification": "character-setting désigne une association individuelle établie en V54 ; work-setting un cadre d’œuvre partagé ; original-exhibition un cadre du projet sans biographie canonique revendiquée.",
+    "sourceStatus": "resolved concerne uniquement le fait annoncé, jamais la géométrie1:1. primary-limited maintient les limites d’identité ou d’association. original-selected signifie choix d’exposition, pas fin de recherche canonique.",
+    "originalSources": "sourceUrls reste vide pour les expositions originales ; les preuves d’identité Kenner/NECA et les lacunes restent dans v55-stage-references-other.json.",
+    "historicalSources": "57 affectations V54 conservées ; sources reprises de v43-screen-arena-reference-plan.json, v43-game-arena-first-batch.json, catalogueRoster.ts et v54-character-stages.md.",
+    "runtime": "Ces données n’activent aucun stage. Les nouveaux IDs142/145/146/147/160/161 sont ceux fournis par root et nécessitent assets et validation."
+  },
+  "counts": {
+    "work-setting": 85,
+    "character-setting": 3,
+    "original-exhibition": 62
+  },
+  "associations": [
+    {
+      "fighterId": "jungle-hunter",
+      "stageId": "arena-103-predator-1987-final-trap-clearing",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Clairière finale du film d’origine ; composition 2D déjà adaptée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator",
+        "https://youtu.be/Vo3FmkleTEQ"
+      ]
+    },
+    {
+      "fighterId": "city-hunter",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun AVP 2004 ; recommandation liée à l’œuvre, sans présence de chaque membre attestée dans cette salle exacte.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+        "https://youtu.be/c02eQqMbIBg"
+      ]
+    },
+    {
+      "fighterId": "celtic",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun AVP 2004 ; recommandation liée à l’œuvre, sans présence de chaque membre attestée dans cette salle exacte.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+        "https://youtu.be/c02eQqMbIBg"
+      ]
+    },
+    {
+      "fighterId": "wolf",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre AVPR existant ; recommandation d’œuvre, pas lieu personnel propre aux silhouettes d’équipage.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+        "https://www.20thcenturystudios.jp/movies/avp2"
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "stageId": "arena-115-prey-2022-mud-pit",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Bourbier de Prey déjà adapté au duel.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://youtu.be/wZ7LytagKlc"
+      ]
+    },
+    {
+      "fighterId": "berserker",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Réserve de chasse de Predators, déjà représentée ; aucun nouveau lieu propre aux apparences.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://youtu.be/uzqYqoVoU74"
+      ]
+    },
+    {
+      "fighterId": "falconer",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Réserve de chasse de Predators, déjà représentée ; aucun nouveau lieu propre aux apparences.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://youtu.be/uzqYqoVoU74"
+      ]
+    },
+    {
+      "fighterId": "scarface",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "La source officielle NECA relie Scarface, Concrete Jungle et Neonopolis ; elle ne certifie pas cette géométrie.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ]
+    },
+    {
+      "fighterId": "valkyrie",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "witch",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "tracker",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Réserve de chasse de Predators, déjà représentée ; aucun nouveau lieu propre aux apparences.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://youtu.be/uzqYqoVoU74"
+      ]
+    },
+    {
+      "fighterId": "greyback",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "machiko-noguchi",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Titan atteste Machiko, la colonie d’élevage de Ryushi et Prosperity Wells ; Dark Horse atteste son cycle comics. Leur géométrie exacte n’est pas certifiée ici.",
+      "sourceUrls": [
+        "https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/",
+        "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1"
+      ]
+    },
+    {
+      "fighterId": "kok-warlord",
+      "stageId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Arène de Killer of Killers déjà adaptée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.youtube.com/watch?v=fbddYji1F8s"
+      ]
+    },
+    {
+      "fighterId": "user-amazon-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-anubis-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-assassin",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun The Predator 2018, déjà adapté ; pas une scène exclusive à chaque variation.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/the-predator",
+        "https://youtu.be/eDUP3gtKvhE"
+      ]
+    },
+    {
+      "fighterId": "user-berserker-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-bionic-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-boar",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-bonegrill-avpr",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre AVPR existant ; recommandation d’œuvre, pas lieu personnel propre aux silhouettes d’équipage. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+        "https://www.20thcenturystudios.jp/movies/avp2"
+      ]
+    },
+    {
+      "fighterId": "user-broken-tusk",
+      "stageId": "arena-138-avp-ryushi-prosperity-wells",
+      "classification": "character-setting",
+      "sourceStatus": "resolved",
+      "reason": "Titan atteste Machiko, la colonie d’élevage de Ryushi et Prosperity Wells ; Dark Horse atteste son cycle comics. Leur géométrie exacte n’est pas certifiée ici.",
+      "sourceUrls": [
+        "https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/",
+        "https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1",
+        "https://www.sideshow.com/collectibles/predator-broken-tusk-predator-hot-toys-914875"
+      ]
+    },
+    {
+      "fighterId": "user-bull-avpr",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre AVPR existant ; recommandation d’œuvre, pas lieu personnel propre aux silhouettes d’équipage. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+        "https://www.20thcenturystudios.jp/movies/avp2"
+      ]
+    },
+    {
+      "fighterId": "user-chopper",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun AVP 2004 ; recommandation liée à l’œuvre, sans présence de chaque membre attestée dans cette salle exacte.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+        "https://youtu.be/c02eQqMbIBg"
+      ]
+    },
+    {
+      "fighterId": "user-classic-2010",
+      "stageId": "arena-107-predators-2010-hunting-camp",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Réserve de chasse de Predators, déjà représentée ; aucun nouveau lieu propre aux apparences.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predators",
+        "https://youtu.be/uzqYqoVoU74"
+      ]
+    },
+    {
+      "fighterId": "user-cleopatra-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-dark",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre partagé du jeu AVP 2010 ; ne certifie pas l’identité visuelle des variantes importées ni une scène individuelle.",
+      "sourceUrls": [
+        "https://store.steampowered.com/app/10680/?cc=uk&l=english"
+      ]
+    },
+    {
+      "fighterId": "user-dek",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre du clan dans Badlands, déjà représenté ; géométrie latérale recomposée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+        "https://www.youtube.com/watch?v=i8dKccr9OiU"
+      ]
+    },
+    {
+      "fighterId": "user-elder-avp",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun AVP 2004 ; recommandation liée à l’œuvre, sans présence de chaque membre attestée dans cette salle exacte.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+        "https://youtu.be/c02eQqMbIBg"
+      ]
+    },
+    {
+      "fighterId": "user-avpr-corridor-crew",
+      "stageId": "arena-127-avpr-2007-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre AVPR existant ; recommandation d’œuvre, pas lieu personnel propre aux silhouettes d’équipage. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/aliens-vs-predator-requiem",
+        "https://www.20thcenturystudios.jp/movies/avp2"
+      ]
+    },
+    {
+      "fighterId": "user-exalted-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-exiled-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-fugitive",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun The Predator 2018, déjà adapté ; pas une scène exclusive à chaque variation.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/the-predator",
+        "https://youtu.be/eDUP3gtKvhE"
+      ]
+    },
+    {
+      "fighterId": "user-gladiator-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-guardian",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-hunter-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-jotun-grendel",
+      "stageId": "arena-116-killer-of-killers-2025-viking-ice",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre du récit The Shield, déjà adapté.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.youtube.com/watch?v=fbddYji1F8s"
+      ]
+    },
+    {
+      "fighterId": "user-kwei",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre du clan dans Badlands, déjà représenté ; géométrie latérale recomposée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+        "https://www.youtube.com/watch?v=i8dKccr9OiU"
+      ]
+    },
+    {
+      "fighterId": "user-lord",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre partagé du jeu AVP 2010 ; ne certifie pas l’identité visuelle des variantes importées ni une scène individuelle. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://store.steampowered.com/app/10680/?cc=uk&l=english"
+      ]
+    },
+    {
+      "fighterId": "user-lost",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-arcade-mad",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Étude locale du décor Capcom déjà présente ; adaptation, pas reconstitution exacte du jeu.",
+      "sourceUrls": [
+        "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/"
+      ]
+    },
+    {
+      "fighterId": "user-njohrr",
+      "stageId": "arena-121-badlands-2025-clan-prologue",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre du clan dans Badlands, déjà représenté ; géométrie latérale recomposée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-badlands",
+        "https://www.youtube.com/watch?v=LkBqjfg8TGM",
+        "https://www.youtube.com/watch?v=i8dKccr9OiU"
+      ]
+    },
+    {
+      "fighterId": "user-oni",
+      "stageId": "arena-117-killer-of-killers-2025-japan-rooftops",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre du récit The Sword, déjà adapté.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers",
+        "https://www.youtube.com/watch?v=fbddYji1F8s",
+        "https://www.youtube.com/watch?v=mOr6ryoyHcg"
+      ]
+    },
+    {
+      "fighterId": "user-pirate-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-arcade-hunter",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Étude locale du décor Capcom déjà présente ; adaptation, pas reconstitution exacte du jeu.",
+      "sourceUrls": [
+        "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/"
+      ]
+    },
+    {
+      "fighterId": "user-arcade-warrior",
+      "stageId": "arena-052-city-in-despair-etude-capcom",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Étude locale du décor Capcom déjà présente ; adaptation, pas reconstitution exacte du jeu.",
+      "sourceUrls": [
+        "https://necaonline.com/2017/07/alien%E2%80%8B-vs-predator%E2%80%8B-arcade-appearance-predators-assortment/"
+      ]
+    },
+    {
+      "fighterId": "user-scout",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-scout-class-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-shaman",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-snake",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-spartan",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre partagé du jeu AVP 2010 ; ne certifie pas l’identité visuelle des variantes importées ni une scène individuelle. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://store.steampowered.com/app/10680/?cc=uk&l=english"
+      ]
+    },
+    {
+      "fighterId": "user-stalker",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-viking-phg",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Personnage ou classe Hunting Grounds : décor commun du jeu proposé, aucun lieu exclusif attesté par cette tenue. Sa biographie historique nécessite ses propres références avant création d’une scène.",
+      "sourceUrls": [
+        "https://blog.playstation.com/2020/03/24/predator-hunting-grounds-trial-weekend-overview/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-warrior",
+      "stageId": "arena-106-predator-2-1990-trophy-ship",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Vaisseau des trophées de Predator 2 : scène commune du film, pas une salle personnelle inventée pour chaque membre.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ]
+    },
+    {
+      "fighterId": "user-wolf-elite-bg386",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre partagé du jeu AVP 2010 ; ne certifie pas l’identité visuelle des variantes importées ni une scène individuelle. Le nom ou l’identité du modèle importé ne sont pas certifiés par la seule source du lieu.",
+      "sourceUrls": [
+        "https://store.steampowered.com/app/10680/?cc=uk&l=english"
+      ]
+    },
+    {
+      "fighterId": "user-youngblood",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Cadre commun AVP 2004 ; recommandation liée à l’œuvre, sans présence de chaque membre attestée dans cette salle exacte.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/alien-vs-predator",
+        "https://youtu.be/c02eQqMbIBg"
+      ]
+    },
+    {
+      "fighterId": "stone-heart",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Stone Heart et Concrete Jungle sont confirmés par NECA. Recommandation de Neonopolis, cadre commun du jeu ; cette coursive recomposée n’est pas son lieu personnel certifié.",
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ]
+    },
+    {
+      "fighterId": "user-warp-adjutant",
+      "stageId": "arena-045-galerie-des-serments",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Personnages des fichiers utilisateur. Leurs titres ne prouvent pas un rang universel de franchise ; cadre d’exposition sans biographie canonique. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-albino",
+      "stageId": "arena-142-dead-end-alley",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Même fan-film et même famille de lieu ; un décor commun, trois associations. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ]
+    },
+    {
+      "fighterId": "user-alpha",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Alpha est officiellement jouable ; ne pas inventer une planète ancestrale à partir du masque insectoïde. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://blog.playstation.com/?p=333379",
+        "https://necaonline.com/2020/06/the-alpha-is-coming-to-predator-hunting-grounds/",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-ancient-warrior",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Lieu commun de l’œuvre. Aucune présence individuelle dans cette salle exacte déclarée. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-ancient",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "LV-742 est le cadre attesté d’Extinction. L’Ancient du pack reste une désignation individuelle à vérifier : le manuel confirme huit classes et ne permet pas d’en inventer une neuvième.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-ancient-primal-hunt",
+      "stageId": "arena-146-primal-hunt-pilot-ruins",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Ancient est le Predator de Primal Hunt ; garder l’époque antérieure distincte de l’occupation humaine d’AVP2. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://www.ggmania.com/?smsid=aliens-vs-predator-2-expansion-announced-11091",
+        "https://manuals.plus/m/8e3276e114e335d2d35b0a04f7890c5e10f243ad8cfa95c1d16e75087680cd2f"
+      ]
+    },
+    {
+      "fighterId": "user-lot2-13",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-big-red",
+      "stageId": "arena-142-dead-end-alley",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Même fan-film et même famille de lieu ; un décor commun, trois associations. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-blazer",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-brawler",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-en-garde-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-masquee-au-combistick",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseuse-yautja-au-masque-rituel",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-au-masque-d-elan",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseresse-yautja-en-posture-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-alien-aux-runes-celtiques",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-avp-prologue-1904",
+      "stageId": "arena-123-avp-2004-whaling-station",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Le dossier fourni annonce un chasseur anonyme du prologue1904 ; le lien nominal/visuel précis n’est pas établi par la fiche NECA. Recommander le cadre de l’œuvre sans certifier ce modèle. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ]
+    },
+    {
+      "fighterId": "user-a-full-body-high-detail-png-style-character-illus",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-yautja-au-bio-masque",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-yautja-masque-au-combistick",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-yautja-sans-casque",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-combattant-en-armure-sur-fond-transparent",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-ceremoniel-en-armure",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-en-armure-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-extraterrestre-tribal-en-armure",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-yautja-insulaire-en-garde-armee",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-a-clean-png-illustration-style-scene-a-single-ful",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chasseur-yautja-sans-biomasque-en-garde",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-chef-alien-masque-aux-scythes-d-avant-bras",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-clan-leader",
+      "stageId": "arena-095-duel-des-anciens",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Terrain d’exposition, pas trône du souverain universel de l’espèce. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-lot2-14",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-lot2-15",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-cracked-tusk",
+      "stageId": "arena-091-duel-des-lames",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Terrain de duel du projet ; les mini-comics et biographies de packaging restent à dépouiller pour un lieu propre. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-lot2-16",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-extinction-disc-master",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-donatiki-en-armure-doree",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-emissary-1",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Les deux Emissaries sont des concepts de scènes supprimées ; ne pas annoncer un duel ayant eu lieu dans le film sorti. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-emissary-predator-3"
+      ]
+    },
+    {
+      "fighterId": "user-emissary-2",
+      "stageId": "arena-112-the-predator-2018-forest-crash",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Les deux Emissaries sont des concepts de scènes supprimées ; ne pas annoncer un duel ayant eu lieu dans le film sorti. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-ultimate-emissary-predator-3"
+      ]
+    },
+    {
+      "fighterId": "user-warp-enforcer",
+      "stageId": "arena-045-galerie-des-serments",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Personnages des fichiers utilisateur. Leurs titres ne prouvent pas un rang universel de franchise ; cadre d’exposition sans biographie canonique. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-enforcer-yautja-au-disque-intelligent",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-entraineuse-yautja-masquee-couteau-en-garde",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-garde-clan-kok-badlands",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition neutre en attendant séparation des références ; pas de garde biographique fusionné entre deux films. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-warp-gardien",
+      "stageId": "arena-045-galerie-des-serments",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Personnages des fichiers utilisateur. Leurs titres ne prouvent pas un rang universel de franchise ; cadre d’exposition sans biographie canonique. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-ghost",
+      "stageId": "arena-089-cercle-eclipse",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Choix de présentation partagé ; aucun clan d’origine ou monde natal ajouté. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-alien-blinde-chasseur-d-acier",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-cyborg-biomecanique-aux-lames-retractable",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-extraterrestre-aux-lames-acerees",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-yautja-aux-runes-nordiques",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerrier-yautja-exile-en-posture-de-chasse",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerriere-yautja-au-masque-biometrique",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerriere-yautja-masquee-en-garde",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-guerriere-yautja-aux-ornements-egyptiens",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-hashori",
+      "stageId": "arena-160-rage-war-umf12",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "UMF12 est un habitat yautja de Rage War attesté par Tim Lebbon. Hashori est une piste littéraire du pack ; son lien individuel exact à ce lieu reste à confirmer dans le roman. Décor commun d’œuvre, pas salle personnelle.",
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ]
+    },
+    {
+      "fighterId": "user-hive-wars",
+      "stageId": "arena-001-cercle-de-basalte",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition partagée ; ni Hive Wars ni Lava Planet ne suffisent à établir une géographie personnelle. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-extinction-hunter",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-hydra",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-kalakta",
+      "stageId": "arena-160-rage-war-umf12",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "UMF12 est un habitat yautja de Rage War attesté par Tim Lebbon. Kalakta est une piste littéraire du pack ; son lien individuel exact à ce lieu reste à confirmer dans le roman. Aucun trône universel ou portrait canonique certifié.",
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ]
+    },
+    {
+      "fighterId": "user-lasershot",
+      "stageId": "arena-040-fonderie-zero",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Atelier original du projet, non lieu natal ou événement biographique déduit de l’armement. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-lava-planet",
+      "stageId": "arena-001-cercle-de-basalte",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition partagée ; ni Hive Wars ni Lava Planet ne suffisent à établir une géographie personnelle. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-long-spear",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Le pack rattache Long Spear à Concrete Jungle ; sa désignation individuelle reste à confirmer dans le jeu. Neonopolis est le cadre attesté de l’œuvre, pas un laboratoire personnel certifié.",
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ]
+    },
+    {
+      "fighterId": "user-mere-dek-kwei",
+      "stageId": "arena-045-galerie-des-serments",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Le nom fourni précise interprétation ; la fiche studio ne valide pas ce portrait familial. Cadre original sans chambre maternelle prétendue canonique. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-nightstorm",
+      "stageId": "arena-001-cercle-de-basalte",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition partagée ; ni Hive Wars ni Lava Planet ne suffisent à établir une géographie personnelle. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-ny-ytap",
+      "stageId": "arena-161-rift-war-lv363",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "LV-363 est le monde de Rift War attesté par Titan. Ny Ytap correspond à la piste orthographique Ny’ytap, dont le passage primaire reste à consulter. Faille partagée de l’œuvre, sans certification de l’identité ou des proportions.",
+      "sourceUrls": [
+        "https://media.titanbooks.com/rights/guides/files/autumn_-_winter_2022_fiction_rights_guide.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-pilot-bullet",
+      "stageId": "arena-118-killer-of-killers-2025-yautja-arena",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Cadre commun du film associé par le dossier fourni ; The Bullet est un titre de segment, pas un nom personnel confirmé. Ne pas transformer un combat aérien en sol canonique. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-killer-of-killers"
+      ]
+    },
+    {
+      "fighterId": "user-vega4-snes",
+      "stageId": "arena-054-egouts-avp-etude-snes",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Réemploi de l’étude latérale SNES existante ; la boîte confirme la ville et planète mais pas la fidélité des égouts. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://snescentral.com/0/2/0/0206/SNS-AP-USA-box-back.jpg"
+      ]
+    },
+    {
+      "fighterId": "user-predator-egyptienne-en-armure-doree",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-prince",
+      "stageId": "arena-145-avp2-lv1201-forest",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "La campagne Predator d’AVP2 commence dans les forêts et ruines de LV-1201. Prince est le surnom du roster, non confirmé dans le passage Prima consulté ; aucune fidélité du portrait ou du plan latéral n’est certifiée.",
+      "sourceUrls": [
+        "https://oldgamesdownload.com/wp-content/uploads/Aliens_versus_Predator_2_Prima_Guide.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-predateur-capture-en-armure-ravagee",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-predateur-cybernetique-en-armure-de-combat",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-predateur-exalte-en-armure-ceremonielle",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-predateur-pirate-en-armure-corsaire",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-predateur-viking-en-armure-runique",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-predateur-yautja-en-armure-doree",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-renegade",
+      "stageId": "arena-091-duel-des-lames",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Terrain de duel du projet ; les mini-comics et biographies de packaging restent à dépouiller pour un lieu propre. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-samourai-yautja-en-armure-ecarlate",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-samurai",
+      "stageId": "arena-134-predator-hunting-grounds-overgrowth",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "La classe Samurai de Hunting Grounds partage les cartes du jeu. Son Japon féodal ne permet pas d’identifier un château précis. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure",
+        "https://blog.playstation.com/?p=332767",
+        "https://predator.illfonic.com/"
+      ]
+    },
+    {
+      "fighterId": "user-scavage",
+      "stageId": "arena-091-duel-des-lames",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Terrain de duel du projet ; les mini-comics et biographies de packaging restent à dépouiller pour un lieu propre. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-serpent-hunter",
+      "stageId": "arena-131-avp-2010-freyas-prospect",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "NECA rattache Serpent Hunter au jeu AVP de2010. Freya’s Prospect est son cadre d’œuvre partagé ; ni présence dans ce point précis ni portrait importé certifiés.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-spear-master",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-spiked-tail",
+      "stageId": "arena-089-cercle-eclipse",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Choix de présentation partagé ; aucun clan d’origine ou monde natal ajouté. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-stalker-kenner",
+      "stageId": "arena-089-cercle-eclipse",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Choix de présentation partagé ; aucun clan d’origine ou monde natal ajouté. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-extinction-stalker",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-swift-knife",
+      "stageId": "arena-137-concrete-jungle-neonopolis",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "Le pack rattache Swift Knife à Concrete Jungle ; sa désignation individuelle reste à confirmer dans le jeu. Neonopolis est le cadre attesté de l’œuvre, pas un laboratoire personnel certifié.",
+      "sourceUrls": [
+        "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-video-game-appearance-ultimate-scarface-predator"
+      ]
+    },
+    {
+      "fighterId": "user-temple-guard",
+      "stageId": "arena-122-avp-2004-sacrificial-chamber",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Lieu commun de l’œuvre. Aucune présence individuelle dans cette salle exacte déclarée. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ]
+    },
+    {
+      "fighterId": "user-extinction-vanguard",
+      "stageId": "arena-147-extinction-lv742",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Un théâtre de guerre commun suffit aux unités ; pas neuf planètes ou vies de chasseurs inventées. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ]
+    },
+    {
+      "fighterId": "user-viper",
+      "stageId": "arena-009-quais-du-premier-sang",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Le quai est une mise en scène originale ; ce n’est pas le port d’attache attesté du Blade Fighter. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-lot2-18",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-wasp",
+      "stageId": "arena-142-dead-end-alley",
+      "classification": "work-setting",
+      "sourceStatus": "resolved",
+      "reason": "Même fan-film et même famille de lieu ; un décor commun, trois associations. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure",
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-2013-exclusive-meet-the-albino-predator-action-figure",
+        "https://store.necaonline.com/blogs/news/174239303-shipping-predators-series-11-a-new-pacific-rim-action-figure-2-pack-and-tf2-blu-soldier-and-heavy",
+        "https://mediamikes.com/2011/02/interview-with-sandy-collora/"
+      ]
+    },
+    {
+      "fighterId": "user-yaquita",
+      "stageId": "arena-160-rage-war-umf12",
+      "classification": "work-setting",
+      "sourceStatus": "primary-limited",
+      "reason": "UMF12 est un habitat yautja de Rage War attesté par Tim Lebbon. Yaquita est une piste littéraire du pack ; présence exacte et apparence demandent un passage du roman. Aucune salle ou biographie personnelle inventée.",
+      "sourceUrls": [
+        "https://titanbooks.com/8140-predator-incursion-the-rage-war-1/",
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ]
+    },
+    {
+      "fighterId": "user-lot2-17",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-yautja-masque-en-garde-defensive",
+      "stageId": "arena-081-cercle-obsidienne",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Liste explicite de44 identités descriptives du registre d’import. Le nom de fichier ou le style d’armure ne devient pas une biographie canonique. Un décor partagé n’ajoute pas44 arènes personnelles. Composition latérale adaptée, sans géométrie 1:1 certifiée.",
+      "sourceUrls": []
+    },
+    {
+      "fighterId": "user-yuahro",
+      "stageId": "arena-003-chaussee-de-canopee",
+      "classification": "original-exhibition",
+      "sourceStatus": "original-selected",
+      "reason": "Exposition forestière originale du projet. La piste Yuahro/Aftermath reste ouverte : l’auteur atteste la nouvelle, mais le nom et Pisgah demandent un passage primaire. Ce choix ne termine pas l’audit biographique.",
+      "sourceUrls": []
+    }
+  ]
+}

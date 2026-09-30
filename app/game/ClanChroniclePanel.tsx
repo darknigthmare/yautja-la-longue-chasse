@@ -12,6 +12,7 @@ import {
 import styles from "./ClanChroniclePanel.module.css";
 import TribeArtGallery from "./TribeArtGallery";
 import tribeArt from "./tribeArtV37.json";
+import CompanionCataloguePanel from "./CompanionCataloguePanel";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -44,7 +45,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
 export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; onClose: () => void }) {
-  const [section, setSection] = useState<"journey" | "worlds" | "humans">("journey");
+  const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const results = useMemo(() => {
@@ -58,8 +59,10 @@ export default function ClanChroniclePanel({ save, onClose }: { save: SaveGame; 
     </header>
     <p className={styles.notice}><strong>{save.prologue ? "Nurserie, dojo, camp et premier réveil jouables ; première sortie de jeunesse à construire." : "Nouveau parcours de jeunesse, indépendant de votre campagne adulte."}</strong> Ce dossier rassemble les nouvelles règles et les fiches et les images récupérées. Il ne débloque aucune mission et ne modifie pas votre sauvegarde. Les preuves affichées ne sont acquises que par les séquences réellement achevées.</p>
     <nav aria-label="Rubriques du dossier" className={styles.tabs}>
-      {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
+      {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"], ["companions", "Compagnons · registre"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
+
+    {section === "companions" && <CompanionCataloguePanel />}
 
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>

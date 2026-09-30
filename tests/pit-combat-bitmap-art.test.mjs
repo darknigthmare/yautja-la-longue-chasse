@@ -25,7 +25,11 @@ const load = (ids, options = {}) => rawLoad(ids, { ...options, spriteSheetRegist
 
 test("all sixteen exact-ID alpha plates exist with their expected dimensions and constant support bounds", async () => {
   assert.equal(ids.length, 16);
-  assert.deepEqual(new Set(ids), new Set(Object.keys(PIT_FIGHTERS).filter(id => !id.startsWith("user-") && !["theta", "machiko-noguchi"].includes(id))));
+  const originalsV56 = ['original-arid-ermit-yautja', 'original-mutated-yautja', 'guest-amengi-female'];
+  const currentExactIds = Object.keys(PIT_FIGHTERS).filter(id => !id.startsWith("user-") && !["theta", "machiko-noguchi"].includes(id));
+  assert.equal(currentExactIds.length, 19);
+  assert.deepEqual(new Set([...ids, ...originalsV56]), new Set(currentExactIds));
+  for (const id of originalsV56) assert.match(definitionFor(id).src, /^\/game\/user-pack\/v56\/cutouts\//, id);
   for (const id of ids) {
     const definition = definitionFor(id);
     assert.equal(definition.kind, "static-bitmap");

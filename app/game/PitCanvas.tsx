@@ -20,6 +20,7 @@ import { PIT_STAGE_JOURNEY_ROUTES, getPitStageJourneyForArena, getPitStageJourne
 import { loadPitArenaArt, drawPitArenaBackdrop, drawPitArenaForeground, getPitArenaLayerTransform, type PitArenaArtBank } from "./pitArenaRendering";
 import { getPitCombatBitmapArtDefinition, getPitCombatGroundFootprint, isPitCombatBitmapSelectionRequested, loadPitCombatBitmapArt, getPitCombatBitmapFighterArtStatus, getPitFighterPresentationVisualStatus, drawPitCombatBitmapFighter, type PitCombatBitmapArtBank } from "./pitCombatBitmapArt";
 import { drawActorContactShadow } from "./spriteContact";
+import { drawPitCompanion, loadPitCompanionArt, pitCompanionPose, type PitCompanionArtBank } from './pitCompanionArt';
 import {
   PIT_ARENAS,
   PIT_ARENA_IDS,
@@ -30,6 +31,7 @@ import {
   createPitCombatState,
   getPitFighterBoxes,
   getPitTechniqueBox,
+  getPitTechniqueDefinitionForEffect,
   rematchPitCombat,
   stepPitCombat,
   PIT_THROW_TECH_WINDOW_FRAMES,
@@ -129,6 +131,8 @@ import {
 import { createPitTrainingClock, pausePitTrainingClock, requestPitTrainingTick } from "./systems/pitTrainingClock";
 import { PIT_TRAINING_LESSONS, getPitTrainingLessonAvailability, resolvePitTrainingLessonInput, evaluatePitTrainingLesson, type PitTrainingLesson, type PitTrainingLessonId } from "./systems/pitTrainingLessons";
 import { PIT_VERSUS_FIGHTER_IDS, isPitExpansionFighterId, isPitVersusFighterId, canPitFighterEnterMode, cyclePitMode, getPitFighterProfile, type PitVersusFighterId } from "./systems/pitRosterExpansion";
+import { isPitOriginalFighterIdV56 } from './systems/pitOriginalFightersV56';
+import { PIT_HOUND_VARIANTS, isPitHoundVariantId, type PitHoundVariantId } from './systems/pitCompanion';
 import { PIT_TRAINING_BRIEFING_TIMEOUT_MS, preparePitTrainingBriefing, beginPitTrainingBriefing, advancePitTrainingSessionClock, getPitTrainingBriefingReadiness, getPitTrainingBriefingControls, type PitTrainingAssetState } from "./systems/pitTrainingBriefing";
 import PitExtensionPortrait from "./PitExtensionPortrait";
 import { getPitUserVariant, normalizePitUserVariant } from "./systems/pitUserRoster";
@@ -293,6 +297,7 @@ const ACTION_LABELS: Record<PitAttackKind, string> = {
 };
 
 const TECHNIQUE_DEVICE_COLORS: Record<PitTechniqueDevice, string> = {
+  hound: '#d7ac65',
   disc: "#d8fff7",
   net: "#8df4cc",
   plasma: "#ff715d",
@@ -303,6 +308,7 @@ const TECHNIQUE_DEVICE_COLORS: Record<PitTechniqueDevice, string> = {
   drone: "#77d9d0",
   "counter-blade": "#e8e0bc",
   spear: "#ebd58f",
+  hammer: "#c6b38a",
   "bow-snare": "#9be09d",
   "code-parry": "#79fff0",
   "warlord-wave": "#df5a42",
@@ -390,7 +396,7 @@ function cpuInput(state: PitCombatState): PitInput {
   const beat = state.frame % 180;
 
   if (
-    cpu.traque >= PIT_CLOAK_COST &&
+    PIT_FIGHTERS[cpu.definitionId].canCloak !== false && cpu.traque >= PIT_CLOAK_COST &&
     cpu.traque < PIT_MAX_TRAQUE &&
     cpu.cloakPhase === "inactive" &&
     cpu.cloakCooldownFrames === 0 &&
@@ -400,6 +406,7 @@ function cpuInput(state: PitCombatState): PitInput {
   }
 
   if (distance > 116) {
+    if (cpu.definitionId === 'tracker' && distance < 440 && state.frame % 97 === 0) return { attack: 'technique' };
     return {
       left: signedDistance < 0,
       right: signedDistance > 0,
@@ -420,13 +427,14 @@ function cpuInput(state: PitCombatState): PitInput {
   return EMPTY_INPUT;
 }
 
-function eventLabel(event: PitCombatEvent, state: PitCombatState): string {
+function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion = 7): string {
   if (event.type === "stage-transfer") {
     const destination = getPitStageJourneyDefinition(state.rules.stageJourney)?.destinationLabel;
     return destination ? `PASSAGE CONFIRMÉ · ${destination}` : "PASSAGE CONFIRMÉ";
   }
   if (event.type === "round-start") return `MANCHE ${event.round} · COMBAT`;
   if (event.type === "attack-start") {
+    if (engineVersion <= 6 && event.fighterId === 'tracker' && event.attack === 'technique') return 'CONTRE AU GANTELET · REPLAY HISTORIQUE';
     return (
       event.attack === "technique"
         ? PIT_FIGHTERS[event.fighterId].attacks.technique.label
@@ -455,9 +463,14 @@ function drawTechniqueEffect(
   groundY: number,
   highContrast: boolean,
   showHitboxes: boolean,
+  companionArt: PitCompanionArtBank | null,
+  reducedCharacterMotion: boolean,
 ): void {
-  const owner = state.fighters[effect.ownerSlot];
-  const technique = PIT_FIGHTERS[owner.definitionId].technique;
+  const technique = getPitTechniqueDefinitionForEffect(state, effect);
+  if (technique.device === 'hound') {
+    drawPitCompanion(context, state, effect, companionArt, groundY, highContrast, showHitboxes, reducedCharacterMotion);
+    return;
+  }
   const box = getPitTechniqueBox(state, effect);
   const x = box.x;
   const y = groundY - box.y - box.height;
@@ -504,7 +517,21 @@ function drawTechniqueEffect(
     context.moveTo(centerX, y);
     context.lineTo(centerX, y + box.height);
     context.stroke();
-  } else if (technique.device === "plasma" || technique.device === "shoulder") {
+  } else if (technique.device === "shoulder" || technique.device === "hammer") {
+    // Local contact feedback, never a flying orb or a substitute for a weapon sprite.
+    context.shadowBlur = 0;
+    context.globalAlpha *= 0.65;
+    context.beginPath();
+    const leadingX = effect.direction > 0 ? x + box.width * 0.78 : x + box.width * 0.22;
+    if (technique.device === "hammer") {
+      context.moveTo(leadingX - effect.direction * box.width * 0.45, y + box.height * 0.08);
+      context.quadraticCurveTo(leadingX, centerY, leadingX, y + box.height * 0.85);
+    } else {
+      context.moveTo(leadingX - effect.direction * 12, y + box.height * 0.2);
+      context.quadraticCurveTo(leadingX, centerY, leadingX - effect.direction * 12, y + box.height * 0.8);
+    }
+    context.stroke();
+  } else if (technique.device === "plasma") {
     const radius = Math.max(5, Math.min(box.width, box.height) * 0.42);
     const glow = context.createRadialGradient(centerX, centerY, 1, centerX, centerY, radius);
     glow.addColorStop(0, "#ffffff");
@@ -579,6 +606,7 @@ function drawArena(
   reducedMotion: boolean,
   presentation: PitRoundPresentationView,
   reducedCharacterMotion: boolean,
+  companionArt: PitCompanionArtBank | null,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -620,8 +648,15 @@ function drawArena(
   // A frozen KO tick must not pin attacks, status cages or sparks over ceremonies.
   const combatEffectsVisible = presentation.phase === "fight" && state.phase === "round";
   canvas.dataset.pitCombatEffects = String(combatEffectsVisible);
+  const hounds = combatEffectsVisible ? state.techniqueEffects.filter(effect => getPitTechniqueDefinitionForEffect(state, effect).device === 'hound') : [];
+  canvas.dataset.pitHoundCount = String(hounds.length);
+  canvas.dataset.pitHoundPhases = hounds.map(effect => effect.phase).join(',');
+  canvas.dataset.pitHoundPositions = JSON.stringify(hounds.map(effect => ({ x: effect.x, y: effect.y, age: effect.age, direction: effect.direction })));
+  canvas.dataset.pitHoundVariant = state.houndVariantId ?? 'tracker-hound';
+  canvas.dataset.pitHoundArtStatus = !companionArt ? 'loading' : companionArt.failed ? 'missing' : companionArt.variantId === 'tracker-hound' ? 'native-6-pose-atlas' : 'static-bitmap';
+  canvas.dataset.pitHoundPoses = hounds.map(effect => pitCompanionPose(effect, state.houndVariantId ?? 'tracker-hound', reducedCharacterMotion)).join(',');
   for (const effect of combatEffectsVisible ? state.techniqueEffects : []) {
-    drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes);
+    drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes, companionArt, reducedCharacterMotion);
   }
 
   state.fighters.forEach((fighter) => {
@@ -654,7 +689,7 @@ function drawArena(
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
     const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
-    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-");
+    const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-") || isPitOriginalFighterIdV56(fighter.definitionId);
     canvas.dataset[fighter.slot === 0 ? "pitPresentationArtP1" : "pitPresentationArtP2"] = getPitFighterPresentationVisualStatus(fighterArt, fighter, { simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
     if (!bitmapDrawn && !humanCombatant && presentation.phase === "fight") {
       context.save();
@@ -981,6 +1016,9 @@ export default function PitCanvas({
   const [fighterArt, setFighterArt] = useState<PitCombatBitmapArtBank | null>(null);
   const [fighterArtRetry, setFighterArtRetry] = useState(0);
   const [stageJourneyEnabled, setStageJourneyEnabled] = useState(false);
+  const [houndVariantId, setHoundVariantId] = useState<PitHoundVariantId>('tracker-hound');
+  const [companionArt, setCompanionArt] = useState<PitCompanionArtBank | null>(null);
+  const [companionArtRetry, setCompanionArtRetry] = useState(0);
   const [sceneBanks, setSceneBanks] = useState<ReadonlyMap<PitArenaId, PitArenaArtBank>>(new Map());
   const [sceneRetry, setSceneRetry] = useState(0);
   const renderedArenaId = combat?.arenaId ?? arenaId;
@@ -1464,6 +1502,7 @@ export default function PitCanvas({
         variants: [next.fighters[0].variantId ?? null, next.fighters[1].variantId ?? null],
         rules: next.rules,
         arenaId: next.arenaId,
+        houndVariantId: next.houndVariantId,
       });
       setReplayNotice("");
     } catch {
@@ -1491,6 +1530,7 @@ export default function PitCanvas({
       mode: nextMode === "training" ? "training" : "match",
       arenaId: nextArenaId,
       variants: [playerId === leftId ? leftVariantId : null, opponentId === rightId ? rightVariantId : null],
+      ...([playerId, opponentId].includes('tracker') ? { houndVariantId } : {}),
       ...(stageJourneyEnabled && getPitStageJourneyForArena(nextArenaId) && (nextMode === "cpu" || nextMode === "local" || nextMode === "training") ? { stageJourney: getPitStageJourneyForArena(nextArenaId)!.id } : {}),
     });
     if (nextMode === "descent") {
@@ -1554,7 +1594,7 @@ export default function PitCanvas({
               : "Manche 1. Combat.",
     );
     changeCombat(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId]);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -2077,6 +2117,7 @@ export default function PitCanvas({
         ...replay.rules,
         arenaId: replay.arenaId,
         variants: replay.variants,
+        houndVariantId: replay.houndVariantId,
       });
       recorderRef.current = null;
       replayReaderRef.current = reader;
@@ -2338,10 +2379,23 @@ export default function PitCanvas({
     return () => window.cancelAnimationFrame(requestId);
   }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase]);
 
+  const wantsHoundArt = (renderedLeftId === 'tracker' || renderedRightId === 'tracker') && (!playbackReplay || playbackReplay.engineVersion >= 7);
+  const renderedHoundVariantId = combat ? combat.houndVariantId ?? 'tracker-hound' : houndVariantId;
+  useEffect(() => {
+    if (!wantsHoundArt) return;
+    const controller = new AbortController();
+    void loadPitCompanionArt(renderedHoundVariantId, { signal: controller.signal }).then(bank => {
+      if (!controller.signal.aborted) setCompanionArt(bank);
+    });
+    return () => controller.abort();
+  }, [wantsHoundArt, renderedHoundVariantId, companionArtRetry]);
+  const houndArtFailed = wantsHoundArt && companionArt?.variantId === renderedHoundVariantId && companionArt.failed;
+  const houndArtPending = wantsHoundArt && (!companionArt || companionArt.variantId !== renderedHoundVariantId || companionArt.cancelled || companionArt.failed);
   const suppliedFighterArtFailed = Boolean(combat && combat.fighters.some((fighter, index) =>
-    fighter.variantId && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
+    (fighter.variantId || isPitOriginalFighterIdV56(fighter.definitionId)) && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
     fighterArtStatuses?.[index] === "missing"));
   const matchAssetsPending = combat !== null && (
+    houndArtPending ||
     suppliedFighterArtFailed ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
     !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
@@ -2541,12 +2595,12 @@ export default function PitCanvas({
           const latest = current.events[current.events.length - 1];
           // Passive pressure gains arrive every 12 ticks. The resource meter
           // already shows them; central notices are reserved for discrete events.
-          if (latest.type !== "traque-gain" || latest.source !== "pressure") setAnnouncement(eventLabel(latest, current));
+          if (latest.type !== "traque-gain" || latest.source !== "pressure") setAnnouncement(eventLabel(latest, current, playbackReplay?.engineVersion));
           const essential = [...current.events].reverse().find((event) =>
             event.type === "round-start" || event.type === "round-end" || event.type === "match-end" ||
             event.type === "throw-caught" || event.type === "throw-tech"
           );
-          if (essential) setAriaAnnouncement(eventLabel(essential, current));
+          if (essential) setAriaAnnouncement(eventLabel(essential, current, playbackReplay?.engineVersion));
           if (latest.type === "hit" || latest.type === "block") {
             const defender = current.fighters.find((fighter) => fighter.definitionId === latest.defenderId);
             const groundY = PIT_ARENAS[current.arenaId].groundY;
@@ -2591,8 +2645,9 @@ export default function PitCanvas({
       roundPresentation,
       // Fixed camera only locks framing; OS reduced-motion also holds ceremonial poses.
       prefersReducedMotion,
+      companionArt,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -2944,6 +2999,14 @@ export default function PitCanvas({
           <div className={styles.selectionOptionsBody}>
             <p className={styles.selectionContext}>Simulation de duels non canonique · aucun gain de campagne. Start ouvre les options ; B ou Échap ferme ce panneau sans quitter THE PIT.</p>
             <a className={styles.animationLabLink} href="/pit-lab" target="_blank" rel="noopener noreferrer">Atelier d’animation · atlas et couverture par action ↗</a>
+            {(leftId === 'tracker' || rightId === 'tracker') && <aside className={styles.journeyChoice} aria-label="Chien de chasse de Tracker">
+              <label>Variante visuelle du chien de chasse
+                <select aria-label="Hellhound de Tracker" data-pit-hound-picker value={houndVariantId} onChange={event => { if (isPitHoundVariantId(event.target.value)) setHoundVariantId(event.target.value); }}>
+                  {PIT_HOUND_VARIANTS.map(variant => <option key={variant.id} value={variant.id}>{variant.name}</option>)}
+                </select>
+              </label>
+              <p>Même technique, mêmes dégâts : appel, charge annoncée et rappel. Deux interprétations visuelles distinctes, pas deux espèces canoniques certifiées. Crête dorsale : six poses natives par côté, dont deux dessins de charge. Longues cornes : une pose fixe par côté, cycles animés encore à produire. Aucun animal recruté dans la campagne.</p>
+            </aside>}
         {(mode === "cpu" || mode === "local" || mode === "training") && <aside className={styles.journeyChoice} aria-label="Parcours de scène optionnel">
           <label>Parcours disponibles · {PIT_STAGE_JOURNEY_ROUTES.length} liaisons d’exposition
             <select aria-label="Parcours disponibles" data-pit-journey-picker value={selectedJourney ?? ""} disabled={runTransitionSelectionLocked}
@@ -3343,7 +3406,7 @@ export default function PitCanvas({
       <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
         {activeAriaAnnouncement}
       </div>
-      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>{suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong><span>{suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>{suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}{journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}</div> : null}
+      {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true"><strong>{houndArtFailed ? "IMAGE DU CHIEN INDISPONIBLE" : suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong><span>{houndArtFailed ? "Une vue du Hellhound manque. Combat suspendu : aucun chien de remplacement ni attaque invisible." : suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>{houndArtFailed && <button type="button" data-pit-hound-retry onClick={() => setCompanionArtRetry(value => value + 1)}>Réessayer le Hellhound</button>}{suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}{journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}</div> : null}
       {activeReplayNotice ? <p className={styles.replayNoticeMatch}>{activeReplayNotice}</p> : null}
       {arenaArt?.arenaId === sceneArenaId && !arenaArt.cancelled && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? (
         <p className={styles.replayNoticeMatch} role="status" data-pit-arena-warning="unavailable">
@@ -3664,7 +3727,7 @@ export default function PitCanvas({
                 <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>Revanche</button>
               )}
               {!playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
-                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{availableReplay.fighters.some(isPitExpansionFighterId) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
+                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id)) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
               ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
             </div>

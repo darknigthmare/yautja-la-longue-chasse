@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "release": "V55",
+  "auditedAt": "2026-09-27",
+  "scope": {
+    "coverageSource": "docs/v54-character-stage-coverage.json",
+    "coverageFilter": "reference-needed",
+    "fighterCount": 45,
+    "groupCount": 28,
+    "selection": "Les 37 entrées Comics — compléments de pitUserHuntersV44 + enforcer, theta, user-ahab, user-bad-blood, user-hornhead, user-batman-vs-predator, user-dark-horse-25th et user-sinestro-corps-predator.",
+    "outsideScope": "Les 30 autres reference-needed et les 63 identity-unverified, dont les cinq noms de romans, sont audités séparément dans le lot identités. Machiko et Broken Tusk ont déjà le cadre Ryushi en V54."
+  },
+  "policy": {
+    "sourceURLs": "Sources primaires de publication/éditeur/licencié consultées. Google Books n’est retenu comme notice primaire que si édition, éditeur et ISBN correspondent au livre publié ; aucune transcription de lecteur ne remplace une preuve.",
+    "sourceClaim": "Fait effectivement appuyé par la notice, séparé de la proposition artistique. Une notice de recueil n’atteste pas tous les personnages à chacun des lieux du recueil.",
+    "associationReady": "Permet une association au cadre d’œuvre, pas une certification d’identité. Les perFighterAssociation et unresolvedReason limitent chaque cas mixte.",
+    "originalGeometry": "Tous les décors sont des compositions de jeu originales. Aucun plan 1:1 n’a été certifié, aucune case protégée n’est proposée comme asset à copier.",
+    "unresolved": "Une recherche effectuée avec preuve insuffisante reste explicitement non résolue. Une adaptation originale peut être produite, mais ne doit pas être reclassée lieu canonique du personnage.",
+    "visual": "Pas de panorama de comic inspecté dans cette passe. Les notices fournissent le cadre ; lumière, profondeur, plates-formes et accessoires non attestés restent du design original.",
+    "privateContext": "Aucun contenu privé ChatGPT non connecté supposé."
+  },
+  "summary": {
+    "withPrimarySettingOrWork": 26,
+    "withoutAccessiblePrimary": [
+      "hunters-belize-elder",
+      "jla-meta-original"
+    ],
+    "fullyUnresolvedOrProvisional": [
+      "preserve-game",
+      "homeworld-renegades",
+      "captive-enclosure",
+      "demons-gold-original",
+      "avp-war-clan",
+      "avp-blood-time-duel",
+      "smiley-distant-hunt",
+      "hunters-belize-elder",
+      "jla-meta-original",
+      "marvel-graveyard-provisional",
+      "thicker-than-blood-charter"
+    ],
+    "alreadyInV55FirstSix": [
+      "batman-gotham",
+      "bad-blood-pine-barrens",
+      "theta-tundra",
+      "big-game-new-mexico",
+      "archie-riverdale"
+    ],
+    "reuseV54Ready": [
+      "avp-ryushi-tichinde"
+    ],
+    "reuseV54Conditional": [
+      "preserve-game"
+    ]
+  },
+  "groups": [
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-139-batman-gotham-rooftops",
+      "unresolvedReason": null,
+      "groupKey": "batman-gotham",
+      "fighterIds": [
+        "user-batman-vs-predator",
+        "user-gotham-bloodmatch",
+        "user-gotham-elder"
+      ],
+      "workTitle": "Batman versus Predator / Bloodmatch / Blood Ties",
+      "proposedSetting": "Gotham : toits pluvieux et horizon urbain, composition commune aux trois séries sans reproduire un lieu de duel précis.",
+      "sourceURLs": [
+        "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+      ],
+      "sourceClaim": "DC situe la chasse à Gotham et rassemble les trois mini-séries Batman versus Predator. Le pack nomme explicitement Gotham/Batman pour ces trois entrées.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Association à l’œuvre par les intitulés fournis, pas certification du portrait ni preuve nominative de chaque Elder.",
+      "retrievalNote": "Texte de la fiche DC accessible dans l’index de recherche ; ouverture directe refusée 403."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-140-bad-blood-pine-barrens",
+      "unresolvedReason": null,
+      "groupKey": "bad-blood-pine-barrens",
+      "fighterIds": [
+        "enforcer",
+        "user-bad-blood"
+      ],
+      "workTitle": "Predator: Bad Blood",
+      "proposedSetting": "Pine Barrens, New Jersey : forêt de pins marécageuse avec espace de duel dégagé, sans coordonnée canonique de combat.",
+      "sourceURLs": [
+        "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-enforcer-predator-action-figure-from-series-12",
+        "https://store.necaonline.com/blogs/news/shipping-this-week-nightmare-on-elm-street-accessory-set-ultimate-bad-blood-enforcer-predator-2-pack-1",
+        "https://prhcomics.com/wp-content/uploads/2022/02/PREVIEWS2021006_MAY_2022_FINAL.pdf"
+      ],
+      "sourceClaim": "NECA rattache Enforcer et Bad Blood au comic. Le catalogue Marvel diffusé par PRH décrit la chasse au Predator psychotique dans les Pine Barrens du New Jersey.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Noms et association Bad Blood / Enforcer explicites chez NECA.",
+      "caution": "Le catalogue Dark Horse 2009 seul est ambigu : sa liste Bad Blood et sa mention Pine Barrens sont dans des notices voisines. Préférer le catalogue Marvel/PRH et NECA ensemble."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-141-theta-tundra-outpost",
+      "unresolvedReason": null,
+      "groupKey": "theta-tundra",
+      "fighterIds": [
+        "theta"
+      ],
+      "workTitle": "Predator (2022) #2 — Day of the Hunter",
+      "proposedSetting": "Planète toundra sans nom : trajet enneigé vers un avant-poste lointain.",
+      "sourceURLs": [
+        "https://www.marvel.com/comics/issue/89619/predator"
+      ],
+      "sourceClaim": "Marvel nomme Theta, son crash sur une planète toundra et sa marche vers l’avant-poste le plus proche.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Héroïne humaine explicitement nommée ; aucune origine yautja ni planète natale ajoutée."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-143-big-game-new-mexico",
+      "unresolvedReason": null,
+      "groupKey": "big-game-new-mexico",
+      "fighterIds": [
+        "user-big-game"
+      ],
+      "workTitle": "Predator: Big Game",
+      "proposedSetting": "Désert accidenté du Nouveau-Mexique : roches, végétation aride et trace de descente extraterrestre lointaine.",
+      "sourceURLs": [
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ],
+      "sourceClaim": "Titan situe Big Game dans le désert du Nouveau-Mexique et nomme Enoch Nakai. La notice n’atteste pas une base ou une montagne précise.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Le nom du pack cite l’œuvre Big Game ; le second nom Adilgashii n’est pas certifié par cette notice."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-144-archie-riverdale",
+      "unresolvedReason": null,
+      "groupKey": "archie-riverdale",
+      "fighterIds": [
+        "user-riverdale"
+      ],
+      "workTitle": "Archie vs. Predator (2015)",
+      "proposedSetting": "Riverdale : rue de petite ville proche d’un établissement scolaire, composition originale sans empreinter un plan de case.",
+      "sourceURLs": [
+        "https://archiecomics.com/preview-the-archie-comics-on-sale-today-including-archie-vs-sharknado-1-72215/",
+        "https://archiecomics.com/archie-vs-predator-2-1/"
+      ],
+      "sourceClaim": "La section Archie vs. Predator #4 de l’aperçu Archie atteste Riverdale. Le second lien établit le retour de la franchise, sans autoriser à confondre le chasseur original avec Predator-Archie.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Rapprochement de l’étiquette Riverdale ; pas certification que le portrait fourni représente Predator-Archie.",
+      "caution": "Ne pas utiliser le synopsis Archie vs. Sharknado qui partage la même page."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "fire-and-stone-lv223",
+      "fighterIds": [
+        "user-ahab"
+      ],
+      "workTitle": "Predator: Fire and Stone / Prometheus: The Complete Fire and Stone",
+      "proposedSetting": "LV-223, site d’expédition abandonné : sol rocheux et horizon extraterrestre ; détails du camp et de végétation à créer comme adaptation.",
+      "sourceURLs": [
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+        "https://books.google.com/books/about/Prometheus.html?id=yBHaCwAAQBAJ",
+        "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp"
+      ],
+      "sourceClaim": "NECA identifie Ahab comme le chasseur de Fire and Stone. La notice de l’édition Dark Horse du cycle commun situe l’expédition sur LV-223.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Association Ahab → œuvre attestée par NECA. Association de décor à l’arc commun ; elle ne certifie pas la présence d’Ahab à chaque emplacement dessiné.",
+      "inference": "Un décor LV-223 pour Ahab est une adaptation du cadre commun de Fire and Stone, pas la reconstitution attestée d’un duel particulier.",
+      "caution": "Ne pas affirmer que LV-223 est sa planète natale. Jungle, temple et emplacement de l’Engineer exigeraient une référence de case supplémentaire."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "deadliest-skyliner",
+      "fighterIds": [
+        "user-big-mama"
+      ],
+      "workTitle": "Aliens/Predator: The Deadliest of the Species",
+      "proposedSetting": "Skyliner au-dessus de la Terre contaminée : coursive aérienne, baies hautes et horizon sous les nuages ; intérieur original.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Omnibus_Volume_2.html?id=cPYHDAAAQBAJ"
+      ],
+      "sourceClaim": "La notice de l’édition Dark Horse 2007 décrit Caryn Delacroix à bord d’un skyliner au-dessus d’une Terre contaminée. L’index textuel du volume contient BIG MAMA.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Nom présent dans l’index du livre ; celui-ci ne certifie pas les traits de l’image fournie.",
+      "caution": "Le nom Liberté et son plan intérieur ne sont pas attestés par la notice consultée. Ne pas confondre ce skyliner atmosphérique avec le charter interstellaire de Thicker Than Blood."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Pour Elder — Tartarus, il manque une source primaire nommant ou montrant précisément le personnage du pack ; ne pas convertir le décor d’œuvre en certification d’identité.",
+      "groupKey": "life-and-death-tartarus",
+      "fighterIds": [
+        "user-hornhead",
+        "user-elder-tartarus"
+      ],
+      "workTitle": "Predator: Life and Death",
+      "proposedSetting": "Tartarus : zone de prospection et masse lointaine d’un vaisseau en fer à cheval, avec terrain de duel original.",
+      "sourceURLs": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-series-18-aliens-ultimate-warriors-chucky-body-knocker-and-ultimate-chucky-restock-1",
+        "https://books.google.com/books/about/Predator_Life_and_Death.html?id=mW27DAAAQBAJ"
+      ],
+      "sourceClaim": "NECA rattache Hornhead à Life and Death. La notice Dark Horse 2016 situe les Marines sur Tartarus, autour d’une prospection illégale et d’un vaisseau en fer à cheval.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Hornhead → œuvre attesté. Elder — Tartarus est seulement un intitulé de pack concordant avec le lieu ; l’identité individuelle n’est pas vérifiée.",
+      "perFighterAssociation": {
+        "user-hornhead": "work-setting",
+        "user-elder-tartarus": "provisional-pack-label"
+      }
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "spider-man-nyc-underground",
+      "fighterIds": [
+        "user-skinner"
+      ],
+      "workTitle": "Predator vs. Spider-Man (2025) #1",
+      "proposedSetting": "New York pendant une panne générale : métro et égouts sous la ville, composition latérale originale.",
+      "sourceURLs": [
+        "https://www.marvel.com/comics/issue/127368/predator_vs_spider-man_2025_1_variant/variant"
+      ],
+      "sourceClaim": "Marvel nomme Skinner, une canicule, une panne générale, les égouts et les métros de New York.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Personnage nommé dans le synopsis officiel.",
+      "caution": "Ne pas fusionner la chronologie avec Concrete Jungle 1989 ni prétendre à une station de métro précise."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "concrete-jungle-1989-nyc",
+      "fighterIds": [
+        "user-dark-horse-25th"
+      ],
+      "workTitle": "Predator (1989) / Concrete Jungle",
+      "proposedSetting": "New York du premier comic : avenue et corniches urbaines, ambiance de chasse originale.",
+      "sourceURLs": [
+        "https://store.necaonline.com/blogs/toy-fair/172397255-toy-fair-day-3-heroes-of-the-storm-1-4-scale-1979-alien-25th-anniversary-dark-horse-predator-figures",
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ],
+      "sourceClaim": "NECA indique que la figurine Dark Horse 25th recrée la couverture du premier Predator #1. Titan situe Concrete Jungle à New York.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Variante visuelle de couverture, pas nouvel individu avec planète exclusive.",
+      "caution": "Ne pas utiliser arena-137-concrete-jungle-neonopolis : ce stage appartient au jeu vidéo Concrete Jungle, pas au comic de 1989. La ville commune avec Skinner n’implique pas la même scène."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "wolverine-canadian-wilderness",
+      "fighterIds": [
+        "user-wolverine-hunter"
+      ],
+      "workTitle": "Predator vs. Wolverine (2023)",
+      "proposedSetting": "Forêt enneigée du Canada : clairière entre conifères et rochers, sans coordonnées inventées.",
+      "sourceURLs": [
+        "https://www.marvel.com/comics/collection/110482/predator_vs_wolverine_2024_1",
+        "https://www.marvel.com/comics/issue/112525/predator_vs_wolverine_2023_2_variant"
+      ],
+      "sourceClaim": "Marvel décrit la traque entre la nature enneigée canadienne et Madripoor, et confirme la première rencontre au Canada.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Association explicite du nom d’œuvre du pack ; aucun surnom supplémentaire donné.",
+      "caution": "La toundra de Theta n’est pas cette forêt terrestre."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "L’alias Prince ne suffit pas à identifier lequel des personnages royaux Marvel est représenté. L’association au King et à Wakanda doit rester provisoire jusqu’à une source primaire nominative/visuelle.",
+      "groupKey": "wakanda-marvel-royals",
+      "fighterIds": [
+        "user-king-marvel",
+        "user-prince-marvel"
+      ],
+      "workTitle": "Predator vs. Black Panther (2024)",
+      "proposedSetting": "Wakanda : lisière urbaine et jungle ; silhouettes technologiques lointaines, géométrie originale.",
+      "sourceURLs": [
+        "https://www.marvel.com/comics/issue/123487/predator_vs_black_panther_2024_4_variant/variant"
+      ],
+      "sourceClaim": "Marvel décrit le Predator King au trône wakandais, le clan envahisseur, la ville de Shuri et la jungle utilisée par T’Challa.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "King est explicitement attesté. Prince est un alias générique du pack, pas identifié dans la notice consultée.",
+      "perFighterAssociation": {
+        "user-king-marvel": "work-setting",
+        "user-prince-marvel": "unverified-alias"
+      }
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "sinestro-earth",
+      "fighterIds": [
+        "user-sinestro-corps-predator"
+      ],
+      "workTitle": "Green Lantern / Sinestro Corps — figurine NECA 2019",
+      "proposedSetting": "Terre sous une attaque de chasseurs aux anneaux jaunes : terrasse urbaine originale, constructions d’énergie au loin.",
+      "sourceURLs": [
+        "https://store.necaonline.com/blogs/news/nycc-2019-convention-exclusives-complete-roundup-and-pre-sale-details-1"
+      ],
+      "sourceClaim": "NECA décrit ce pack sous licence comme inspiré d’un arc Green Lantern où des Yautja aux anneaux Sinestro attaquent la Terre.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Le nom Sinestro Corps Predator est celui du produit NECA.",
+      "caution": "La datation et le récit sont attribués à la notice NECA, sans vérification de case DC. Ne pas le confondre avec l’entité émotionnelle nommée Predator ni avec le Meta-Predator JLA à anneau jaune."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": null,
+      "groupKey": "dredd-mega-city-one",
+      "fighterIds": [
+        "user-mega-city-one"
+      ],
+      "workTitle": "Predator versus Judge Dredd",
+      "proposedSetting": "Mega-City One : infrastructure urbaine verticale et voies surélevées, adaptation originale.",
+      "sourceURLs": [
+        "https://books.google.com/books?id=o6sBDAAAQBAJ",
+        "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens"
+      ],
+      "sourceClaim": "La notice Dark Horse/2000 AD du recueil situe les Judges à Mega-City One et inclut Predator versus Judge Dredd.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Le lieu et l’œuvre concordent avec le nom du pack ; portrait non certifié.",
+      "caution": "Ne pas déplacer automatiquement ce chasseur dans le Cursed Earth d’un autre crossover."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-138-avp-ryushi-prosperity-wells",
+      "unresolvedReason": null,
+      "groupKey": "avp-ryushi-tichinde",
+      "fighterIds": [
+        "user-tichinde"
+      ],
+      "workTitle": "Aliens vs. Predator / Prey",
+      "proposedSetting": "Ryushi — Prosperity Wells, stage existant de l’œuvre ; aucune nouvelle planète nécessaire.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Prey.html?id=UZbRngEACAAJ",
+        "https://titanbooks.com/8792-the-complete-aliens-vs-predator-omnibus/"
+      ],
+      "sourceClaim": "L’édition Bantam de Prey contient Tichinde dans son index et situe l’action à Ryushi près de Prosperity Wells. Titan confirme ce cadre.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Nom présent dans le livre ; fidélité du portrait non attestée.",
+      "caution": "Raccord d’œuvre comics/roman, pas identité supplémentaire à confondre avec Broken Tusk."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Alias individuel non attesté par la notice ; utiliser le décor comme association d’œuvre provisoire, sans certifier le portrait ni lui inventer une origine.",
+      "groupKey": "mindhunter-orbital-prison",
+      "fighterIds": [
+        "user-sister-midnight"
+      ],
+      "workTitle": "Witchblade / Aliens / Darkness / Predator: Mindhunter",
+      "proposedSetting": "Vaisseau-prison vivant en orbite terrestre : coursive organique et baies spatiales, arrangement original.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Witchblade_Darkness_M.html?id=DWMCAAAACAAJ"
+      ],
+      "sourceClaim": "La notice de l’édition Dark Horse 2001 situe l’emprisonnement sur un immense vaisseau vivant en orbite terrestre et décrit une Predator femelle convoitante du pouvoir de Witchblade.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": true,
+      "identityEvidence": "Le synopsis atteste le personnage féminin, mais pas l’alias Sister Midnight du pack."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": "arena-107-predators-2010-hunting-camp",
+      "unresolvedReason": "Le lien individuel Four-Armed → Preserve the Game n’est retrouvé ici que dans des index secondaires. Le réemploi 107 est conditionnel, au niveau de l’œuvre, et ne prouve pas la présence du personnage dans ce camp précis.",
+      "groupKey": "preserve-game",
+      "fighterIds": [
+        "user-four-armed"
+      ],
+      "workTitle": "Predators: Preserve the Game",
+      "proposedSetting": "Planète de chasse de Predators : réemploi proposé du camp de chasse existant, pas nouvelle planète déduite des quatre bras.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Predators.html?id=uN4SSwAACAAJ"
+      ],
+      "sourceClaim": "L’édition Dark Horse 2010 réunit l’avant-film, l’adaptation et la suite immédiate des survivants sur la même planète hostile.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": false,
+      "identityEvidence": "L’alias Four-Armed n’apparaît pas dans le synopsis primaire."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Montana/Yellowstone, l’Ancient et les trois renégats sont décrits dans des références secondaires mais aucun synopsis primaire consulté ne les atteste ensemble. Décor original possible, lieu canonique exclusif non validé.",
+      "groupKey": "homeworld-renegades",
+      "fighterIds": [
+        "user-ancient-homeworld",
+        "user-homeworld-masque-anguleux",
+        "user-homeworld-masque-evase",
+        "user-homeworld-tatoue"
+      ],
+      "workTitle": "Predator: Homeworld",
+      "proposedSetting": "Proposition originale de forêt terrestre avec clairière et falaises ; ne pas l’étiqueter planète natale yautja.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text",
+        "https://images.darkhorse.com/common/salestools/catalogs/DH_Backlist_2009.pdf"
+      ],
+      "sourceClaim": "Le catalogue Dark Horse et le livre Omnibus 4 attestent l’inclusion de Homeworld #1–4.",
+      "settingEvidence": "work-exists-only",
+      "associationReady": false,
+      "identityEvidence": "Quatre noms du pack citent Homeworld ; les formes de masque ne constituent pas une preuve biographique.",
+      "researchLead": "Le comic Homeworld ne doit pas être interprété à partir de son seul titre comme le monde d’origine yautja."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Le synopsis de Tyler Stern et de sa biosphère est reproduit par des sites secondaires ; accès primaire direct indisponible. Ne pas certifier Nevada, emplacement du dôme ou amputation depuis le costume.",
+      "groupKey": "captive-enclosure",
+      "fighterIds": [
+        "user-captive"
+      ],
+      "workTitle": "Predator: Captive",
+      "proposedSetting": "Proposition originale de biosphère de détention : végétation derrière structures d’observation ; lieu non canonique tant que non vérifié.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text",
+        "https://images.darkhorse.com/common/salestools/catalogs/DH_Backlist_2009.pdf"
+      ],
+      "sourceClaim": "Dark Horse atteste le one-shot Captive dans Omnibus 4.",
+      "settingEvidence": "work-exists-only",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "La notice d’anthologie ne donne pas Denali ni un point exact. Les flammes sont une proposition d’ambiance si aucun visuel primaire supplémentaire n’est fourni.",
+      "groupKey": "primal-alaska",
+      "fighterIds": [
+        "user-primal"
+      ],
+      "workTitle": "Predator: Primal",
+      "proposedSetting": "Nature d’Alaska : forêt, rochers et départ d’incendie en profondeur, adaptation originale.",
+      "sourceURLs": [
+        "https://www.panini.es/media/paniniFiles/2024-11-novedades-HQ-2.pdf",
+        "https://wordfire.com/books-by-kevin-j-anderson/",
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text"
+      ],
+      "sourceClaim": "Panini, éditeur de l’omnibus original 2, décrit un garde forestier confronté à un Predator en Alaska ; la liste comprend Primal. L’auteur Kevin J. Anderson confirme avoir écrit Primal.",
+      "settingEvidence": "primary-anthology-setting-inference",
+      "associationReady": true,
+      "identityEvidence": "Nom d’œuvre explicite dans le pack.",
+      "inference": "L’association de ce court synopsis d’anthologie à Primal est renforcée par l’index d’œuvre, mais ce n’est pas un relevé de cases."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Les sources primaires consultées attestent le titre, pas le lieu. Les récits secondaires divergeant même sur le continent, ne pas canoniser temple inca, Seconde Guerre mondiale ou Amérique du Sud à partir d’eux seuls.",
+      "groupKey": "demons-gold-original",
+      "fighterIds": [
+        "user-demons-gold"
+      ],
+      "workTitle": "Predator: Demon’s Gold",
+      "proposedSetting": "Proposition originale de passage rocheux et trésor ancien ; aucune culture, date ou région précise présentée comme certifiée.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text",
+        "https://images.darkhorse.com/common/salestools/catalogs/DH_Backlist_2009.pdf"
+      ],
+      "sourceClaim": "Dark Horse atteste Demon’s Gold dans Dark Horse Presents #137 et Omnibus 4.",
+      "settingEvidence": "work-exists-only",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Le synopsis de l’omnibus porte sur Ryushi et ne suffit pas à localiser les scènes de War. Une autre fiche Google Books cite Bunda sans éditeur vérifiable : elle n’est pas promue au rang de source primaire fiable.",
+      "groupKey": "avp-war-clan",
+      "fighterIds": [
+        "user-shorty",
+        "user-topknot"
+      ],
+      "workTitle": "Aliens vs. Predator: War",
+      "proposedSetting": "Proposition de pont de chasse yautja et accès à une zone de capture ; composition originale, planète Bunda non certifiée dans cette passe.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Omnibus_Vol_1.html?id=qPAHDAAAQBAJ"
+      ],
+      "sourceClaim": "La notice de l’édition Dark Horse 2007 présente le cycle AVP ; son index textuel contient SHORTY et TOPKNOT.",
+      "settingEvidence": "primary-names-in-anthology-only",
+      "associationReady": false,
+      "caution": "Ne pas réutiliser Ryushi comme lieu personnel de Shorty/Topknot simplement parce que le même recueil contient Ryushi."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Light-Stepper est associé à Blood Time et Duel par des sources secondaires. Two-Stripes ne doit pas être placé dans Duel ou sur Ryushi par simple proximité éditoriale. Il manque une preuve primaire de leur scène commune.",
+      "groupKey": "avp-blood-time-duel",
+      "fighterIds": [
+        "user-light-stepper",
+        "user-two-stripes"
+      ],
+      "workTitle": "Aliens vs. Predator: Blood Time / Duel",
+      "proposedSetting": "Proposition originale de clairière extraterrestre avec traces de chasse ; aucun nom de planète attribué aux deux.",
+      "sourceURLs": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Omnibus_Vol_1.html?id=qPAHDAAAQBAJ"
+      ],
+      "sourceClaim": "L’index de l’édition Dark Horse AVP Omnibus 1 contient TWO-STRIPES ; il ne suffit pas à localiser une scène commune aux deux alias.",
+      "settingEvidence": "primary-partial-name-only",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Le catalogue ne nomme ni Smiley ni sa planète. L’alias et les détails de jungle/colonie restent à vérifier dans les pages de l’œuvre.",
+      "groupKey": "smiley-distant-hunt",
+      "fighterIds": [
+        "user-smiley"
+      ],
+      "workTitle": "Alien vs. Predator: Thrill of the Hunt / Civilized Beasts",
+      "proposedSetting": "Proposition originale de colonie abandonnée sur un monde de chasse lointain ; planète laissée sans nom.",
+      "sourceURLs": [
+        "https://images.darkhorse.com/common/salestools/catalogs/DH_Backlist_2009.pdf"
+      ],
+      "sourceClaim": "Le catalogue Dark Horse décrit Thrill of the Hunt dans un futur après une catastrophe technologique et un nouvel essor spatial humain.",
+      "settingEvidence": "primary-era-only",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "none",
+        "panelsInspected": false,
+        "note": "Aucune case primaire inspectée."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Nom du pack et synopsis secondaires concordants, mais pas de preuve primaire individualisée. Ne pas inventer une pyramide canonique, une grotte-trophée ou une religion depuis son pendentif.",
+      "groupKey": "hunters-belize-elder",
+      "fighterIds": [
+        "user-elder-belize"
+      ],
+      "workTitle": "Predator: Hunters III",
+      "proposedSetting": "Proposition originale de jungle et ancien ouvrage de pierre ; association Belize provisoire et explicitement signalée.",
+      "sourceURLs": [],
+      "sourceClaim": "Aucune source primaire consultable n’a pu confirmer ici l’Elder du pack ; les notices secondaires de Hunters III #2 mentionnent Belize.",
+      "settingEvidence": "unresolved",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "none",
+        "panelsInspected": false,
+        "note": "Aucun panorama ou plan de l’œuvre inspecté."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Aucun lieu commun primaire vérifié. Ne pas attribuer automatiquement Atlantis à Aquaman, Metropolis à Superman, Mars à Martian Manhunter ou une planète individuelle à chaque costume.",
+      "groupKey": "jla-meta-original",
+      "fighterIds": [
+        "user-jla-green-lantern-meta",
+        "user-jla-aquaman-meta",
+        "user-jla-atom-meta",
+        "user-jla-flash-meta",
+        "user-jla-martian-meta",
+        "user-jla-plastic-man-meta",
+        "user-jla-superman-meta",
+        "user-jla-wonderwoman-meta"
+      ],
+      "workTitle": "JLA versus Predator",
+      "proposedSetting": "Arène crossover entièrement originale : terrasse technologique commune aux huit Meta-Predators, sans nom de planète ni prétention Watchtower/Dominator.",
+      "sourceURLs": [],
+      "sourceClaim": "Le pack fournit huit noms JLA. L’existence du recueil Justice League Volume 2 et son synopsis de Predators adaptant les pouvoirs sont retrouvés dans des catalogues secondaires, pas sur une page primaire accessible.",
+      "settingEvidence": "unresolved",
+      "associationReady": false,
+      "identityEvidence": "L’anneau jaune JLA reste distinct du produit Sinestro Corps 2019 ; les pouvoirs d’un adversaire ne prouvent pas son lieu natal."
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "L’étiquette Graveyard n’est pas identifiée par la source primaire. Ne pas affirmer sa parenté avec le King, son lieu de duel ou l’Institut Xavier à partir d’un résumé secondaire.",
+      "groupKey": "marvel-graveyard-provisional",
+      "fighterIds": [
+        "user-graveyard"
+      ],
+      "workTitle": "Predator Kills the Marvel Universe (2025), rapprochement à confirmer",
+      "proposedSetting": "Proposition originale de rue terrestre après invasion ; pas de manoir Xavier certifié pour ce portrait.",
+      "sourceURLs": [
+        "https://www.marvel.com/comics/issue/130318/predator_kills_the_marvel_universe_2025_1_variant/variant",
+        "https://books.google.com/books/about/Predator_Kills_The_Marvel_Universe.html?id=Arm0EQAAQBAJ"
+      ],
+      "sourceClaim": "Marvel atteste une invasion de la Terre par un Predator King, puis la confrontation avec X-Men et Avengers. La notice ne nomme pas Graveyard.",
+      "settingEvidence": "primary-work-setting-unverified-alias",
+      "associationReady": false
+    },
+    {
+      "originalGeometry": true,
+      "exactGeometryCertified": false,
+      "visualEvidence": {
+        "type": "publisher-text-only",
+        "panelsInspected": false,
+        "note": "Synopsis ou notice primaire consultée ; aucune géométrie de case, plan coté ou palette 1:1 n’est certifiée. La composition latérale proposée est originale."
+      },
+      "suggestedExistingStage": null,
+      "unresolvedReason": "Le décor d’œuvre est solide mais l’association individuelle Hook nécessite une case ou source primaire nominative.",
+      "groupKey": "thicker-than-blood-charter",
+      "fighterIds": [
+        "user-hook"
+      ],
+      "workTitle": "Alien vs. Predator: Thicker Than Blood",
+      "proposedSetting": "Charter spatial de luxe : coursive à portes, cloisons et vue spatiale ; adaptation originale séparée du skyliner de Big Mama.",
+      "sourceURLs": [
+        "https://digital.darkhorse.com/books/70ff6216b8ba476bbe8e73de1fd3f627/alien-vs-predator-thicker-than-blood-1"
+      ],
+      "sourceClaim": "Dark Horse décrit des Predators abordant un vaisseau charter de luxe, avec une adolescente et son jeune frère comme survivants.",
+      "settingEvidence": "primary-work-setting",
+      "associationReady": false,
+      "identityEvidence": "Hook est l’alias du pack ; il n’est pas nommé dans le synopsis officiel."
+    }
+  ]
+}

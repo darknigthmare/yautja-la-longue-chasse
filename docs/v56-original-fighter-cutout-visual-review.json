@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex actual source and native-alpha matte inspection",
+  "pixelIdenticalToSourceClaim": false,
+  "canonicalDesignCertification": false,
+  "nativeAnimationClips": 0,
+  "applicationFlowVerifiedByThisReview": false,
+  "nativeAlphaPreserved": true,
+  "entries": [
+    {
+      "fighterId": "original-arid-ermit-yautja",
+      "sha256": "d93eff57a547eda68d1da3d353c72f44694f8d588b47ff0ec9136e6b1bcdb6e1",
+      "decision": "accepted-single-pose-cutout",
+      "inspectedMatte": "work-local/v56/cutout-qa/arid-ermit-yautja-matte.png",
+      "notes": "Complete head plates, dreadlocks, pale lean body, wrapping straps, skull adornment, hands/claws and both feet retained. Painted floor and backdrop removed. No added equipment or distinct pose. Fine shading differs slightly from original, so no pixel-identical assertion."
+    },
+    {
+      "fighterId": "original-mutated-yautja",
+      "sha256": "537e6dc1bf718841c7ac1b8880cbe12bad3586da42fba2526755001dd1b5a0c0",
+      "decision": "accepted-second-extraction",
+      "inspectedMatte": "work-local/v56/cutout-qa/mutated-yautja-matte.png",
+      "notes": "First attempt rejected for brighter red palette, changed hand detail and enlarged framing. Second extraction retains original muted copper-brown palette, framing, bony chest-hole structure, head/dreadlocks, hand pose and complete feet substantially better. No floor, extra equipment or new animation."
+    },
+    {
+      "fighterId": "guest-amengi-female",
+      "sha256": "a57d9b67981a3bdfcea1ce633ca9ca1d460925e6e9bacdd4a05b582aeb10530d",
+      "decision": "accepted-single-pose-cutout",
+      "inspectedMatte": "work-local/v56/cutout-qa/amengi-female-matte.png",
+      "notes": "Exact original landscape dimensions preserved. Insectoid plated head, gold compound eyes, chitin chest and limbs, open hands and claws, spurs and complete feet remain identifiable and coherent. Gray floor removed; no dreadlocks or Yautja gear invented. Name is user attribution, not a canonical identity certification."
+    }
+  ],
+  "groundLimit": "Lowest substantial alpha row anchors each bitmap. Original three-quarter art places the two feet at different depths; preserving that stance does not supply a separately authored lateral stance or a walk cycle.",
+  "prompts": "docs/v56-original-fighter-cutout-prompts.json",
+  "measurements": "docs/v56-original-fighter-cutout-provenance.json"
+}

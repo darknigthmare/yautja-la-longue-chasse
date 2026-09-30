@@ -1,0 +1,307 @@
+{
+  "release": "V55",
+  "generator": "built-in OpenAI image_gen",
+  "pixelPolicy": "Copy unchanged outputs; no fabricated art or offline editing.",
+  "requests": [
+    {
+      "id": "gotham-depth",
+      "arenaId": "arena-139-batman-gotham-rooftops",
+      "target": "public/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p0-depth.png",
+      "sources": [
+        "https://www.dc.com/graphic-novels/dc-comics/dark-horse-comics-batman-vs-predator"
+      ],
+      "prompt": "Create one original premium illustrated 2D fighting-game FAR BACKGROUND P0, wide landscape. Setting: Gotham City in the early-1990s Batman versus Predator comics, as a new lateral rooftop composition inspired by that attested city, not a copy of any panel. A rainy night skyline of weathered dark brick buildings, layered gothic stone cornices, distant art-deco towers, water tanks and chimneys; blue-grey rain haze, a few subdued warm lit windows. True straight side-on fighting camera, no tilted horizon, no diagonal or isometric fighting floor, no central vanishing-point runway. All major structures behind the fighting plane. Keep the middle band and centre broadly open to read two fighters. This is FAR DEPTH ONLY, not a complete arena: no close platform, balcony rail or foreground ledge across the bottom; the bottom 22 percent is dark unobtrusive distant city depth to be covered with independent floor art at runtime. Rich hand-painted game detail, crisp broad silhouettes and restrained central contrast, coherent building perspective. No people, Batman, Yautja, crowds, vehicles, bat signal, logos, text, letters, UI, border or watermark. Preserve sombre urban-noir atmosphere; no futuristic Neonopolis cyberpunk skyscrapers."
+    },
+    {
+      "id": "pine-barrens-depth",
+      "arenaId": "arena-140-bad-blood-pine-barrens",
+      "target": "public/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p0-depth.png",
+      "sources": [
+        "https://images.darkhorse.com/common/salestools/catalogs/DH_Backlist_2009.pdf",
+        "https://prhcomics.com/wp-content/uploads/2022/02/PREVIEWS2021006_MAY_2022_FINAL.pdf"
+      ],
+      "prompt": "Create one original premium hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape. Setting: New Jersey Pine Barrens woods associated with Predator Bad Blood; original side-on arrangement, not a recreated comic panel. Flat lowland pine barrens at late blue twilight: irregular pitch-pine trunks, sparse crooked pine crowns, scrub oak and low dry brush, sandy grey-brown soil glimpsed at distance, patches of mist between many receding trees, a weak cold moon through clouds. Distinct North American scrub pine woodland, NOT tropical rainforest, not redwoods, not mountain forest. Straight level side-view fighting camera, layered lateral depth, no top-down/isometric perspective or diagonal walkway. Keep the central middle band readable and open; thick closer trunks belong at far edges only. FAR DEPTH only, no front fighting platform, no close branches or props laid across the combat area. Bottom22percent subdued distant dark woodland depth; independent ground modules will supply the actual contact surface at runtime. Coherent tree anatomy and scale, rich restrained comic-game atmosphere. No people, predators, animals, corpses, gore, skull decorations, cabins, signs, logos, text, grids, UI, border, watermark."
+    },
+    {
+      "id": "theta-tundra-depth",
+      "arenaId": "arena-141-theta-tundra-outpost",
+      "target": "public/game/sprites/v55/pit-arenas/arena-141-theta-tundra-outpost/p0-depth.png",
+      "sources": [
+        "https://www.marvel.com/comics/issue/89619/predator"
+      ],
+      "prompt": "Create one original premium illustrated 2D fighting-game FAR BACKGROUND P0, wide landscape. Setting: the unnamed tundra planet and journey toward a distant outpost in Marvel Predator (2022) issue2, associated with Theta. Publisher confirms tundra and an outpost, but exact building architecture and geography are not attested: make a clearly original lateral interpretation. Windswept frozen tundra, low ice-scoured rocky ridges, blowing snow, vast pale icy blue horizon under a heavy lead-grey overcast. On one distant side only, a small practical human science-fiction outpost silhouette with insulated angular modules and a tiny amber beacon, no writing or corporate branding. No tropical vegetation, no medieval castle, no Yautja palace, no spaceship as a claimed canonical vehicle. Straight level side-on fighting camera, broad horizontal layers, no tilted/isometric floor, no path running toward a central vanishing point. Central middle band remains uncluttered to read two fighters. FAR DEPTH only: no close combat ledge or foreground railing, bottom22percent subdued snowy distant terrain ready for independent ice-floor modules over it. Crisp painted game detail, restrained contrast in centre, coherent snow lighting and perspective. No characters, crowds, animals, corpses, weapons, signs, logos, UI, text, border or watermark."
+    },
+    {
+      "id": "dead-end-depth",
+      "arenaId": "arena-142-dead-end-alley",
+      "target": "public/game/sprites/v55/pit-arenas/arena-142-dead-end-alley/p0-depth.png",
+      "sources": [
+        "https://store.necaonline.com/blogs/news/closer-look-predators-series-7-big-red-predator-action-figure"
+      ],
+      "prompt": "Create one original premium hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape. A wet enclosed urban back alley at night inspired by the fan-film Batman Dead End, associated with Big Red and his fellow hunters. Weathered dark red-brown brick walls viewed almost straight on, iron fire escapes high up, battered industrial loading doors at far sides, sparse utility pipes, cool bluish rain and ground mist, faint amber industrial lights. A dark recessed opening behind the centre, atmospheric depth without a strong central-perspective runway. Gritty early-2000s practical urban film atmosphere, not futuristic city towers. No people, creatures, Batman, graffiti or logos. True level side-on camera; all architecture and landscape behind the combat plane, clear middle band for two fighters, no isometric floor or tilted horizon. FAR DEPTH only: no close combat platform, railing, ledge or large prop across the foreground. Bottom22percent low-contrast distant depth, independent ground planes will be added by the game. Rich crisp game illustration, consistent proportions and lighting, no UI, grid, border, watermark. Do not copy an existing frame or panel."
+    },
+    {
+      "id": "new-mexico-depth",
+      "arenaId": "arena-143-big-game-new-mexico",
+      "target": "public/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p0-depth.png",
+      "sources": [
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ],
+      "prompt": "Create one original premium hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape. The rugged New Mexico desert associated with Predator Big Game. Broad arid basin under a deep indigo dusk sky, distant layered sandstone mesas and eroded rocky ridges, sparse juniper and low desert scrub, dry sandy pale ochre terrain, subdued warm last light along the horizon. Geographically plausible American Southwest, no giant saguaro cactus forest, no Egyptian pyramids, no sci-fi city, no ranch colony or alien architecture. No people, animals, military base, spaceship, signs, logos or text. Main vista much broader and more natural than the Ryushi ranch setting. True level side-on camera; all architecture and landscape behind the combat plane, clear middle band for two fighters, no isometric floor or tilted horizon. FAR DEPTH only: no close combat platform, railing, ledge or large prop across the foreground. Bottom22percent low-contrast distant depth, independent ground planes will be added by the game. Rich crisp game illustration, consistent proportions and lighting, no UI, grid, border, watermark. Do not copy an existing frame or panel."
+    },
+    {
+      "id": "riverdale-depth",
+      "arenaId": "arena-144-archie-riverdale",
+      "target": "public/game/sprites/v55/pit-arenas/arena-144-archie-riverdale/p0-depth.png",
+      "sources": [
+        "https://archiecomics.com/preview-the-archie-comics-on-sale-today-including-archie-vs-sharknado-1-72215/"
+      ],
+      "prompt": "Create one original premium hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape. Riverdale from the Archie versus Predator crossover, original small-town American main-street setting. Warm late summer dusk, low red-brick storefronts and a chrome-trimmed retro diner facade behind the fighting plane, generous simple storefront windows glowing cream, a few distant leafy trees and a modest water tower far away. Gentle pastel teal and coral architectural accents, deliberately unsettling empty street, no violence. Coherent side-on facades, not a diagonal roadway or vanishing-point street. No writing on signs or diner, no existing business logo, no licensed characters, people, cars or crowds. The buildings are an original interpretation of the attested town rather than an exact Pop's design. True level side-on camera; all architecture and landscape behind the combat plane, clear middle band for two fighters, no isometric floor or tilted horizon. FAR DEPTH only: no close combat platform, railing, ledge or large prop across the foreground. Bottom22percent low-contrast distant depth, independent ground planes will be added by the game. Rich crisp game illustration, consistent proportions and lighting, no UI, grid, border, watermark. Do not copy an existing frame or panel."
+    },
+    {
+      "id": "lv1201-depth",
+      "arenaId": "arena-145-avp2-lv1201-forest",
+      "target": "public/game/sprites/v55/pit-arenas/arena-145-avp2-lv1201-forest/p0-depth.png",
+      "sources": [
+        "https://oldgamesdownload.com/wp-content/uploads/Aliens_versus_Predator_2_Prima_Guide.pdf"
+      ],
+      "prompt": "Create one premium original painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level side-view camera, layered lateral depth, no isometric angle, no diagonal fighting lane, no central vanishing-point runway. This is distant scenery only: central middle band broadly open for fighter silhouettes, no close platform/rail/wall across the bottom. Bottom 22 percent must remain subdued distant depth to be covered by independent floor modules. No humans, Yautja, xenomorphs, crowds, UI, text, letters, logos, watermarks or border. Coherent scale and architecture, rich professional game atmosphere. Original composition inspired by the documented setting, never a traced screenshot or claimed exact recreation. LV-1201 from Aliens versus Predator 2: humid green alien forest at dusk, receding tall branching tree silhouettes, huge weathered ribbed alien archaeological remnants far behind the playable zone, organic curved Pilot-like stone ribs partly swallowed by moss. Restrained muted olive/teal, faint distant industrial light at far right only. No Egyptian motifs, pyramids, Mesoamerican carved faces, human medieval buildings or neon cyberpunk. The setting is a forest approach, distinct from an interior shrine."
+    },
+    {
+      "id": "primal-hunt-depth",
+      "arenaId": "arena-146-primal-hunt-pilot-ruins",
+      "target": "public/game/sprites/v55/pit-arenas/arena-146-primal-hunt-pilot-ruins/p0-depth.png",
+      "sources": [
+        "https://www.ggmania.com/?smsid=aliens-vs-predator-2-expansion-announced-11091"
+      ],
+      "prompt": "Create one premium original painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level side-view camera, layered lateral depth, no isometric angle, no diagonal fighting lane, no central vanishing-point runway. This is distant scenery only: central middle band broadly open for fighter silhouettes, no close platform/rail/wall across the bottom. Bottom 22 percent must remain subdued distant depth to be covered by independent floor modules. No humans, Yautja, xenomorphs, crowds, UI, text, letters, logos, watermarks or border. Coherent scale and architecture, rich professional game atmosphere. Original composition inspired by the documented setting, never a traced screenshot or claimed exact recreation. Primal Hunt ancient LV-1201 Pilot ruins, five centuries before human colony activity. A vast shadowy alien stone sanctuary open to ancient jungle beyond: huge fossil-like rib arches and eroded biomorphic buttresses framing the far edges, nested lateral colonnades in the rear plane, one distant unmarked sealed stone altar off-centre, green grey stone with amber mineral glints, thin low mist. No human structures, pipes, electric lamps, writing, skull trophies, Aztec/Egyptian ornament or front steps. Avoid cathedral symmetry and avoid giant object blocking centre. Broad flat ancient sanctuary atmosphere."
+    },
+    {
+      "id": "extinction-depth",
+      "arenaId": "arena-147-extinction-lv742",
+      "target": "public/game/sprites/v55/pit-arenas/arena-147-extinction-lv742/p0-depth.png",
+      "sources": [
+        "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf"
+      ],
+      "prompt": "Create one premium original painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level side-view camera, layered lateral depth, no isometric angle, no diagonal fighting lane, no central vanishing-point runway. This is distant scenery only: central middle band broadly open for fighter silhouettes, no close platform/rail/wall across the bottom. Bottom 22 percent must remain subdued distant depth to be covered by independent floor modules. No humans, Yautja, xenomorphs, crowds, UI, text, letters, logos, watermarks or border. Coherent scale and architecture, rich professional game atmosphere. Original composition inspired by the documented setting, never a traced screenshot or claimed exact recreation. Cold rocky planet LV-742 from Aliens versus Predator Extinction. Broad windswept basalt badlands under overcast steel grey skies, dry pale tussocks and sparse low alien scrub between stony ridges, minimal patchy frost only on distant shady peaks, not a polar glacier. Far background a tiny muted extraterrestrial hunting outpost silhouette and small separate dark industrial survey structures suggesting a three-faction contested region, without legible signage. Main centre clear rocky plain, distant dust haze; no lava, no tropical jungle, no Earth city, no massive invented capital."
+    },
+    {
+      "id": "ahab-lv223-depth",
+      "arenaId": "arena-148-ahab-lv223",
+      "target": "public/game/sprites/v55/pit-arenas/arena-148-ahab-lv223/p0-depth.png",
+      "sources": [
+        "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+        "https://books.google.com/books/about/Prometheus.html?id=yBHaCwAAQBAJ",
+        "https://digital.darkhorse.com/pages/66/aliens-predator-prometheus-avp"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Extraterrestrial LV-223 expedition site after the Fire and Stone incident. Vast dark grey rocky plain and strange distant newly overgrown green ravines, huge windswept rounded mountains, low dense cloud. Off to far left, small abandoned human expedition shelters and weathered metal equipment in the far background, no futuristic city or ornamental temple. Geological and biological unease, muted grey olive, enough atmospheric space in centre. Avoid claiming specific Engineer ruins: no giant face, horseshoe spacecraft, towers or copied movie composition."
+    },
+    {
+      "id": "dark-horse-new-york-depth",
+      "arenaId": "arena-149-dark-horse-new-york",
+      "target": "public/game/sprites/v55/pit-arenas/arena-149-dark-horse-new-york/p0-depth.png",
+      "sources": [
+        "https://store.necaonline.com/blogs/toy-fair/172397255-toy-fair-day-3-heroes-of-the-storm-1-4-scale-1979-alien-25th-anniversary-dark-horse-predator-figures",
+        "https://titanbooks.com/8986-the-complete-predator-omnibus/"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. New York 1989 rooftops seen straight across at dusk: brick tenement facades, old water towers, narrow fire escapes and distant period skyscrapers, sodium orange windows under dusky blue haze. Late20thcentury city, no modern digital advertising, no cyberpunk Neonopolis, no gothic Gotham gargoyles, no modern glass supertowers. All masonry behind the fighters; unobstructed central silhouettes. Wet urban noir with restrained warm window highlights."
+    },
+    {
+      "id": "skinner-subway-depth",
+      "arenaId": "arena-150-skinner-subway",
+      "target": "public/game/sprites/v55/pit-arenas/arena-150-skinner-subway/p0-depth.png",
+      "sources": [
+        "https://www.marvel.com/comics/issue/127368/predator_vs_spider-man_2025_1_variant/variant"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. New York subway during citywide blackout and oppressive summer heat, Predator versus Spider-Man2025 setting. SIDE-ELEVATION of a disused station wall and dark tunnel mouths behind the combat area; grimy pale square tiles, cast-iron beams, conduits, dripping condensation, weak battery emergency amber light strips. Tracks are only at distant lower depth, never a receding runway. No bright functioning fluorescent ceiling, no train across the middle, no readable maps/station names, no graffiti letters. Side-on tunnel infrastructure spacious and eerie."
+    },
+    {
+      "id": "wolverine-canada-depth",
+      "arenaId": "arena-151-wolverine-canada",
+      "target": "public/game/sprites/v55/pit-arenas/arena-151-wolverine-canada/p0-depth.png",
+      "sources": [
+        "https://www.marvel.com/comics/collection/110482/predator_vs_wolverine_2024_1",
+        "https://www.marvel.com/comics/issue/112525/predator_vs_wolverine_2023_2_variant"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Snowy Canadian wilderness for Predator versus Wolverine. Broad quiet winter conifer clearing, spruce and fir woods receding into pale cold fog, rounded granite rocks at edges, windblown fresh snow far behind fighting line, soft winter blue daylight. No cabins, no totems, no Nordic banners, no log bridge across centre, no mountains taking over the foreground. Dense wilderness distinct from open tundra. Large upright evergreen silhouettes, restrained central contrast."
+    },
+    {
+      "id": "marvel-wakanda-depth",
+      "arenaId": "arena-152-marvel-wakanda",
+      "target": "public/game/sprites/v55/pit-arenas/arena-152-marvel-wakanda/p0-depth.png",
+      "sources": [
+        "https://www.marvel.com/comics/issue/123487/predator_vs_black_panther_2024_4_variant/variant"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Wakanda during Predator versus Black Panther comic invasion, original interpretation of jungle edge facing the distant city. Layered lush African vegetation below far-off elegant Afro-futurist city towers with rhythmic gold and dark stone details, rounded technological spires, faint blue defensive lights; no palace throne invented in foreground, no panther statues or superhero logos, no copied film skyline. Dusk blue and restrained golden glows, original architecture unified behind the fighting plane. Central band open, vegetation strongest along edges."
+    },
+    {
+      "id": "big-mama-skyliner-depth",
+      "arenaId": "arena-153-big-mama-skyliner",
+      "target": "public/game/sprites/v55/pit-arenas/arena-153-big-mama-skyliner/p0-depth.png",
+      "sources": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Omnibus_Volume_2.html?id=cPYHDAAAQBAJ"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. The Deadliest of the Species airborne skyliner above a contaminated Earth. A large lateral luxury observation lounge in a colossal aircraft, tall panoramic windows revealing a continuous sea of clouds and distant poisoned brown land through breaks, warm brass-edged dark structural arches and restrained cream interior panels. Retro-futurist wealthy civilian habitat, late20thcentury comic sensibility. No stars, planets, spacecraft outside or orbital view: aircraft over Earth atmosphere. No tables/chairs/railing across centre, only recessed wall alcoves at edges. Spacious, uneasy and abandoned."
+    },
+    {
+      "id": "life-death-tartarus-depth",
+      "arenaId": "arena-154-life-death-tartarus",
+      "target": "public/game/sprites/v55/pit-arenas/arena-154-life-death-tartarus/p0-depth.png",
+      "sources": [
+        "https://store.necaonline.com/blogs/news/shipping-this-week-predator-series-18-aliens-ultimate-warriors-chucky-body-knocker-and-ultimate-chucky-restock-1",
+        "https://books.google.com/books/about/Predator_Life_and_Death.html?id=mW27DAAAQBAJ"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Tartarus from Predator Life and Death, illegal prospecting region. Grey alien rocky basin, weather-beaten extraction gantries and tiny drilling outpost far off right. An immense weathered dark horseshoe-shaped extraterrestrial ship lies partly embedded on the distant left horizon, U silhouette viewed obliquely at distance with both arms clearly visible, no central iconic head/statue. Dry sparse alien scrub, overcast brown green atmosphere, broad open basin. Original layout, not copied film/promotional shot. Mining only in the far plane, no central machinery obscuring fighters."
+    },
+    {
+      "id": "judge-dredd-megacity-depth",
+      "arenaId": "arena-155-judge-dredd-megacity",
+      "target": "public/game/sprites/v55/pit-arenas/arena-155-judge-dredd-megacity/p0-depth.png",
+      "sources": [
+        "https://books.google.com/books?id=o6sBDAAAQBAJ",
+        "https://digital.darkhorse.com/series/755/predator-vs-judge-dredd-vs-aliens"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Mega-City One from Predator versus Judge Dredd, original comic-inspired future megacity panorama. Stupendous dense concrete residential mega-blocks with repeated small windows, elevated traffic viaducts and layered stacked roadways far behind combat plane. Gritty satirical retrofuture architecture, overcast polluted blue-yellow sky, restrained tiny traffic lights in distance. No judges or vehicles close, no readable block names, badges or logos. Straight side-view high maintenance terrace depth, no diagonal road approaching viewer, no Gotham gothic masonry or sleek utopian glass city."
+    },
+    {
+      "id": "sinestro-earth-depth",
+      "arenaId": "arena-156-sinestro-earth",
+      "target": "public/game/sprites/v55/pit-arenas/arena-156-sinestro-earth/p0-depth.png",
+      "sources": [
+        "https://store.necaonline.com/blogs/news/nycc-2019-convention-exclusives-complete-roundup-and-pre-sale-details-1"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Earth city under Sinestro Corps Predator attack, based only on licensed premise, no city name. Distant contemporary building silhouettes at night, storm-dark blue sky with huge faint translucent amber-yellow geometric energy arcs suspended well above and behind the city. Small angular yellow light patterns far in the upper sky suggest ring constructs without literal emblem, insignia, people or copied superhero art. Foreground remains an empty urban rooftop depth, human concrete and steel, no alien planet, lava, sacred temples or skulls. Sombre blue-gold contrast."
+    },
+    {
+      "id": "mindhunter-orbital-prison-depth",
+      "arenaId": "arena-157-mindhunter-orbital-prison",
+      "target": "public/game/sprites/v55/pit-arenas/arena-157-mindhunter-orbital-prison/p0-depth.png",
+      "sources": [
+        "https://books.google.com/books/about/Aliens_Vs_Predator_Witchblade_Darkness_M.html?id=DWMCAAAACAAJ"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Inside a giant LIVING prison vessel orbiting Earth, inspired by the Mindhunter crossover setting. A broad organic alien lateral chamber, black brown chitinous rib supports along side edges and ceiling, sinewy wall channels, translucent small membranous observation apertures revealing distant BLUE EARTH curvature and black space. Subtle muted amber bioluminescence in rib gaps. Clearly grown biomechanical structure, not a human prison with bars, not a polished metal ship. No organic gore, flesh wounds, teeth mouth, eyes, skulls or trapped beings. Broad open dark centre, menacing living architecture."
+    },
+    {
+      "id": "thicker-blood-charter-depth",
+      "arenaId": "arena-158-thicker-blood-charter",
+      "target": "public/game/sprites/v55/pit-arenas/arena-158-thicker-blood-charter/p0-depth.png",
+      "sources": [
+        "https://digital.darkhorse.com/books/70ff6216b8ba476bbe8e73de1fd3f627/alien-vs-predator-thicker-than-blood-1"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Luxury SPACE charter from Alien vs Predator Thicker Than Blood. Lateral passenger ship lounge corridor with elegant off-white and graphite metal panels, warm muted light strips, regularly spaced closed pressure doors on back wall, broad panoramic SPACE windows showing stars and a small far-off planet. Civilian human space architecture, restrained practical luxury, no palatial gilding, no machinery or military crates. Centre empty, all furnishings recessed at extreme edges, no central vanishing point corridor. Distinct from atmospheric Skyliner: unmistakably in space."
+    },
+    {
+      "id": "primal-alaska-depth",
+      "arenaId": "arena-159-primal-alaska",
+      "target": "public/game/sprites/v55/pit-arenas/arena-159-primal-alaska/p0-depth.png",
+      "sources": [
+        "https://www.panini.es/media/paniniFiles/2024-11-novedades-HQ-2.pdf",
+        "https://wordfire.com/books-by-kevin-j-anderson/",
+        "https://books.google.com/books/about/Predator_Omnibus.html?hl=en&id=_vQHDAAAQBAJ&output=html_text"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Alaska wilderness during Predator Primal, forest-ranger setting. Huge old-growth spruce trees and low mossy granite near a broad forest clearing, deep evergreen forest receding toward rugged mountains, no tropical foliage or alien plants. Late evening cool smoke haze, very distant tiny orange forest fire behind the tree line far left only, no wall of fire, no burning trees in combat plane. Fresh mist over a distant stream, subdued green and slate palette, authentic North American wilderness. No bears or ranger tower invented in centre."
+    },
+    {
+      "id": "rage-war-umf12-depth",
+      "arenaId": "arena-160-rage-war-umf12",
+      "target": "public/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p0-depth.png",
+      "sources": [
+        "https://www.avpgalaxy.net/website/interviews/tim-lebbon-interview-predator-incursion/"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. An immense Yautja space habitat inspired freely by UMF12 from Tim Lebbon Rage War. Broad lateral internal observation concourse looking through huge angular dark alloy apertures into the habitat's vast receding inner industrial city. Monumental but practical hunter-built engineering, weathered gunmetal and dark bronze segmented pillars at distant sides, sparse amber strip lights, stacked hangar-like structures at vast distance; no human luxury sofas, no skull throne, no Mayan/Egyptian pyramid, no giant clan statue or invented deity. Architecture entirely original and functional. No central props or weapons. Distinct huge engineered habitat, not a starship cockpit."
+    },
+    {
+      "id": "rift-war-lv363-depth",
+      "arenaId": "arena-161-rift-war-lv363",
+      "target": "public/game/sprites/v55/pit-arenas/arena-161-rift-war-lv363/p0-depth.png",
+      "sources": [
+        "https://media.titanbooks.com/rights/guides/files/autumn_-_winter_2022_fiction_rights_guide.pdf"
+      ],
+      "prompt": "Create one premium original hand-painted 2D fighting-game FAR BACKGROUND P0, wide landscape about 2.4:1. Straight level lateral camera, coherent architectural perspective and scale, rich restrained game atmosphere. Central middle band open for readable fighter silhouettes. No diagonal fighting walkway, front railing, platform or ledge across bottom. Bottom22percent subdued distant scenery, covered later by independent floor modules. This is distant scenery only, not a flattened complete arena. No people, aliens, fighters, animals, gore, logos, text, signs, UI, watermark or border. Original adaptation of documented setting, not a traced comic panel or certified exact geometry. Alien planet LV-363 from Predator Rift War, original alien rift landscape. Huge deep tectonic fissures cutting a dark rocky plateau in the distant middle ground, strange low tufted exotic green vegetation clinging to fractured edges, tall distant cliffs and slow pale mist rising from the fissures, stormy cyan grey atmosphere. Horizontal plateau shelves layered laterally, not a diagonal bridge or central abyss under the player. No city, temple, clan symbol, giant face, machinery or bright magical portal. Unfamiliar but geologically coherent mineral world, atmospheric and readable."
+    },
+    {
+      "id": "human-pavement-floor",
+      "arenaId": "arena-139-batman-gotham-rooftops",
+      "target": "public/game/sprites/v55/pit-arenas/arena-139-batman-gotham-rooftops/p4-floor.png",
+      "sources": [],
+      "prompt": "Generate a single game environment texture strip, native very wide aspect ratio exactly 4:1, preferably 1920x480. An opaque seamless HORIZONTALLY TILEABLE ground band for a side-view fighting game. Every pixel of the image, including TOP ROW, is ground material: NO sky, background, transparent margin, platform silhouette, landscape, border or frame. The top edge is a perfectly straight horizontal ground-contact boundary located at the exact top image edge, with the floor continuing downwards throughout the entire image. Material: neutral cool dark grey concrete/stone paving slabs with very subtle regular joints, fine worn grain and a few tiny scuffs. Restrained semi-matte clean finish, compatible with urban rooftops, sidewalks and civilian futuristic interiors. No large holes, rubble, standing objects, curb, painted markings, metal cables, grass, symbols, text or logos. Fixed shallow side-view floor projection: all horizontal seams parallel to top edge; sparse vertical seams, no converging lines or vanishing point. Uniform soft diffuse neutral lighting left-to-right, no cast shadows, no directional sun or prominent reflections. Original hand-painted AAA fighting-game environmental texture, rich subtle microtexture, low contrast so fighters read above it. No repeating obvious emblem. Tile sides must match seamlessly without a visual border."
+    },
+    {
+      "id": "mineral-sand-floor",
+      "arenaId": "arena-143-big-game-new-mexico",
+      "target": "public/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p4-floor.png",
+      "sources": [],
+      "prompt": "Create ONE opaque seamless HORIZONTALLY TILEABLE ground texture strip, wide aspect 4:1, at least1920pxwide. Every pixel including topmost row is material, NO sky/background/transparent margin/platform silhouette/border. The ground-contact edge is at exactly the TOP IMAGE EDGE, perfectly horizontal. Floor material fills image to bottom. Fixed shallow side-view fighting-game ground, all striations horizontal, no converging lines or vanishing point. Uniform diffuse neutral light left to right, low contrast detailed painted game texture, no objects, footprints, text, logos or cast shadows. Match left and right edge material seamlessly. Grey-beige compacted mineral earth and fine sand, small embedded pebbles and subtle thin weathered sediment layers. Mostly smooth level hardpack surface, not loose deep dunes or lawn. Restrained grey-tan palette usable in rocky badlands and alien plateaux. No plants, roots, moss, boards, large cracks, stones standing up, or artificial pavement joints."
+    },
+    {
+      "id": "organic-floor",
+      "arenaId": "arena-157-mindhunter-orbital-prison",
+      "target": "public/game/sprites/v55/pit-arenas/arena-157-mindhunter-orbital-prison/p4-floor.png",
+      "sources": [],
+      "prompt": "Create ONE opaque seamless HORIZONTALLY TILEABLE ground texture strip, wide aspect 4:1, at least1920pxwide. Every pixel including topmost row is material, NO sky/background/transparent margin/platform silhouette/border. The ground-contact edge is at exactly the TOP IMAGE EDGE, perfectly horizontal. Floor material fills image to bottom. Fixed shallow side-view fighting-game ground, all striations horizontal, no converging lines or vanishing point. Uniform diffuse neutral light left to right, low contrast detailed painted game texture, no objects, footprints, text, logos or cast shadows. Match left and right edge material seamlessly. Solid dark brown-black chitinous biomechanical living-ship floor. Fine shallow organic rib patterns and smooth leathery mineralised plates, continuous level load-bearing material. Subtle amber-brown tint, matte highlights, no gore, wet flesh, blood, eyes, skulls, teeth or mouths. No industrial metal grille, human screws or printed markings. Fine pattern small enough that fighters stand above it clearly."
+    },
+    {
+      "id": "mineral-p2",
+      "arenaId": "arena-143-big-game-new-mexico",
+      "target": "public/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p2-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium illustrated SIDE-VIEW2D fighting game, true transparent background PNG. A tall narrow natural bare rock outcrop: irregular layered grey-beige stone, two or three connected fractured slabs rising from a stable compact rocky foot, neutral geological erosion, slightly asymmetrical silhouette. Camera strictly side-on, no isometric tilt. Entire prop visible with transparent margin all around and below, grounded flat readable bottom, no painted scenery or ground plane, no drop shadow blob. One coherent single object, not a contact sheet or collection. Dark restrained natural stone texture, soft neutral upper-left lighting. NO glyphs, carvings, pillars, architectural blocks, grass, wood, moss, roots, skulls, bones, crystals, text, logos or watermark. This is bare mineral geology only. Designed as a thin edge framing prop that never blocks the central fight."
+    },
+    {
+      "id": "mineral-p3",
+      "arenaId": "arena-143-big-game-new-mexico",
+      "target": "public/game/sprites/v55/pit-arenas/arena-143-big-game-new-mexico/p3-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium hand-painted SIDE-VIEW2D fighting game, true transparent background PNG. The complete object floats alone on transparency with generous transparent margins, no scenery, ground plane, background glow, shadow blob, checkerboard painted pixels, frame, text, logos or watermark. Strict side-view camera, no isometric tilt or perspective runway. One coherent single object, not a contact sheet or collage. Soft neutral upper-left lighting, restrained detail, flat readable bottom for placement. A LOW WIDE compact cluster of 4 bare naturally fractured grey-beige rocks, irregular but stable compact pile, one medium rounded slab behind three smaller flaked stones. Natural geology only: NO glyphs, carved faces, architectural masonry, roots, plants, moss, soil patch, skulls or bones. Broad horizontally grounded silhouette, maximum width about3times height. No glow or halo around silhouette."
+    },
+    {
+      "id": "civilian-p2",
+      "arenaId": "arena-153-big-mama-skyliner",
+      "target": "public/game/sprites/v55/pit-arenas/arena-153-big-mama-skyliner/p2-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium hand-painted SIDE-VIEW2D fighting game, true transparent background PNG. The complete object floats alone on transparency with generous transparent margins, no scenery, ground plane, background glow, shadow blob, checkerboard painted pixels, frame, text, logos or watermark. Strict side-view camera, no isometric tilt or perspective runway. One coherent single object, not a contact sheet or collage. Soft neutral upper-left lighting, restrained detail, flat readable bottom for placement. A tall narrow load-bearing interior wall pilaster for a human civilian retro-futurist luxury passenger vessel, muted off-white alloy side panels around a dark graphite central recess, subtle brass trim and tiny warm light strip. One vertical beam with plain stable base and practical mechanical joints. Restrained sophisticated art-deco-influenced spaceship detail, not military armor or temple pillar. No skull, glyph, statue, banner, crate, cables hanging out, plants or logos. Designed as a discreet edge framing element."
+    },
+    {
+      "id": "civilian-p3",
+      "arenaId": "arena-153-big-mama-skyliner",
+      "target": "public/game/sprites/v55/pit-arenas/arena-153-big-mama-skyliner/p3-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium hand-painted SIDE-VIEW2D fighting game, true transparent background PNG. The complete object floats alone on transparency with generous transparent margins, no scenery, ground plane, background glow, shadow blob, checkerboard painted pixels, frame, text, logos or watermark. Strict side-view camera, no isometric tilt or perspective runway. One coherent single object, not a contact sheet or collage. Soft neutral upper-left lighting, restrained detail, flat readable bottom for placement. One LOW WIDE empty built-in civilian passenger lounge bench, side/front elevation straight across, dark charcoal padded simple seating on a low muted off-white alloy plinth with fine brass edge trim. Restrained retrofuture luxury, two connected cushions, compact silhouette width about3times height. Four short feet touch a common straight support line. No table, pillow pile, crates, wires, plants, people, books, objects on the seat, labels or lettering. Practical coherent furniture anatomy, elegant and unobtrusive."
+    },
+    {
+      "id": "organic-p2",
+      "arenaId": "arena-157-mindhunter-orbital-prison",
+      "target": "public/game/sprites/v55/pit-arenas/arena-157-mindhunter-orbital-prison/p2-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium hand-painted SIDE-VIEW2D fighting game, true transparent background PNG. The complete object floats alone on transparency with generous transparent margins, no scenery, ground plane, background glow, shadow blob, checkerboard painted pixels, frame, text, logos or watermark. Strict side-view camera, no isometric tilt or perspective runway. One coherent single object, not a contact sheet or collage. Soft neutral upper-left lighting, restrained detail, flat readable bottom for placement. One tall narrow organic biomechanical structural rib belonging to an alien living prison ship. Black-brown mineralized chitin, curved slightly at its top, dense subtle tendinous ribbing and amber glints, broad stable compact foot. Clearly grown nonhuman architecture, not bone skeleton, not a human metal pillar, no skulls, face, claws, gore, eyes, mouth, flesh wounds or tentacle creature. Dark restrained material coherent with living ship floor. The full rib must be isolated with clean true alpha and NO ambient halo/glow painted around it."
+    },
+    {
+      "id": "organic-p3",
+      "arenaId": "arena-157-mindhunter-orbital-prison",
+      "target": "public/game/sprites/v55/pit-arenas/arena-157-mindhunter-orbital-prison/p3-module.png",
+      "sources": [],
+      "prompt": "Create ONE isolated modular environment prop for a premium hand-painted SIDE-VIEW2D fighting game, true transparent background PNG. The complete object floats alone on transparency with generous transparent margins, no scenery, ground plane, background glow, shadow blob, checkerboard painted pixels, frame, text, logos or watermark. Strict side-view camera, no isometric tilt or perspective runway. One coherent single object, not a contact sheet or collage. Soft neutral upper-left lighting, restrained detail, flat readable bottom for placement. One low wide fused bundle of living-ship biomechanical conduits, dark brown-black chitinized organic ribs with smooth mineralized surface. Compact mound width3timesheight, stable flat contact bottom, integrated pipe-like curves and ridges grown together rather than separate machinery. Subtle muted amber-brown glints, NO human screws, metal crate, glyph, skeleton, skull, teeth, mouth, eye, animal, gore or blood. Not a creature: an inert structural environmental prop. Clean transparent outline, no background halo or shadows outside the object."
+    },
+    {
+      "id": "forest-earth-floor",
+      "arenaId": "arena-140-bad-blood-pine-barrens",
+      "target": "public/game/sprites/v55/pit-arenas/arena-140-bad-blood-pine-barrens/p4-floor.png",
+      "sources": [],
+      "prompt": "Use case: stylized-concept. Create ONE native opaque seamless horizontally tileable ground texture strip for a 2D side-view fighting game, wide landscape3:1, preferably1920x640. The WHOLE image is a filled rectangular material surface, including every pixel at top row and bottom row. No transparent pixels, blank corners, margin, sky, environment, isolated platform, bottom silhouette or border. Top image edge is the exact perfectly straight horizontal contact surface for fighter feet; the textured material fills the complete rectangle below it. All main striations horizontal; no converging lines, perspective grid or vanishing point. Left/right edges should tile without seams. Uniform diffuse neutral lighting across width. Painterly realistic game environment texture, subtle detailed low contrast surface. No text, logos, symbols, objects, furniture or cast shadow. Material: compact dark brown woodland earth, a fine thin stony upper horizontal lip, subtle gravel and tiny embedded roots underneath. Filled solid soil throughout, no dangling roots below a silhouette, no plants, grass tufts, standing stones or holes. This is a continuous rectangular earthen cross-section band with no notches or gaps at its top edge."
+    },
+    {
+      "id": "continuous-ice-floor",
+      "arenaId": "arena-141-theta-tundra-outpost",
+      "target": "public/game/sprites/v55/pit-arenas/arena-141-theta-tundra-outpost/p4-floor.png",
+      "sources": [],
+      "prompt": "Use case: stylized-concept. Create ONE native opaque seamless horizontally tileable ground texture strip for a 2D side-view fighting game, wide landscape3:1, preferably1920x640. The WHOLE image is a filled rectangular material surface, including every pixel at top row and bottom row. No transparent pixels, blank corners, margin, sky, environment, isolated platform, bottom silhouette or border. Top image edge is the exact perfectly straight horizontal contact surface for fighter feet; the textured material fills the complete rectangle below it. All main striations horizontal; no converging lines, perspective grid or vanishing point. Left/right edges should tile without seams. Uniform diffuse neutral lighting across width. Painterly realistic game environment texture, subtle detailed low contrast surface. No text, logos, symbols, objects, furniture or cast shadow. Material: solid pale blue-grey compacted snow and ice, gently frosted thin upper rim, dense mineral ice texture underneath with fine SUBSURFACE frost veins only. NO open cracks, notches, tile gaps, translucent holes or jagged silhouette. The top contact line must be level and continuous from left to right. No glacier landscape, icicles, objects, animals or Viking motifs. Ice material must remain fully opaque."
+    },
+    {
+      "id": "continuous-metal-floor",
+      "arenaId": "arena-160-rage-war-umf12",
+      "target": "public/game/sprites/v55/pit-arenas/arena-160-rage-war-umf12/p4-floor.png",
+      "sources": [],
+      "prompt": "Use case: stylized-concept. Create ONE native opaque seamless horizontally tileable ground texture strip for a 2D side-view fighting game, wide landscape3:1, preferably1920x640. The WHOLE image is a filled rectangular material surface, including every pixel at top row and bottom row. No transparent pixels, blank corners, margin, sky, environment, isolated platform, bottom silhouette or border. Top image edge is the exact perfectly straight horizontal contact surface for fighter feet; the textured material fills the complete rectangle below it. All main striations horizontal; no converging lines, perspective grid or vanishing point. Left/right edges should tile without seams. Uniform diffuse neutral lighting across width. Painterly realistic game environment texture, subtle detailed low contrast surface. No text, logos, symbols, objects, furniture or cast shadow. Material: dark weathered gunmetal and muted bronze alien habitat floor plates, understated broad panel seams running horizontally, subtle small shallow mechanical grooves. Yautja-inspired functional space-habitat alloy without glyphs, skulls, trophies, lights or clan markings. No open metal grates or transparent spaces; sealed continuous opaque plating. Low contrast dark industrial finish."
+    }
+  ]
+}

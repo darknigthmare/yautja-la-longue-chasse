@@ -322,8 +322,8 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
   const techniques = FIGHTER_IDS.map((id) => edition.PIT_FIRST_EDITION_FIGHTERS[id].technique);
   assert.equal(new Set(techniques.map((definition) => definition.id)).size, 12);
   assert.deepEqual(techniques.map((definition) => definition.device), [
-    "disc", "net", "plasma", "shoulder", "whip", "bolt-trap",
-    "shockwave", "drone", "counter-blade", "spear", "bow-snare", "code-parry",
+    "plasma", "net", "plasma", "shoulder", "whip", "bolt-trap",
+    "shoulder", "drone", "counter-blade", "hammer", "bow-snare", "code-parry",
   ]);
   for (const definition of techniques) {
     assert.match(definition.id, /^[a-z0-9-]+$/);
@@ -349,7 +349,7 @@ test("the twelve playable fighters expose complete distinct data-driven techniqu
       definition.id + " must pair a status with a positive duration",
     );
   }
-  assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["jungle-hunter"].technique.motion, "returning");
+  assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["jungle-hunter"].technique.motion, "linear");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["city-hunter"].technique.status, "netted");
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS.scar.technique.guardBreak, true);
   assert.equal(edition.PIT_FIRST_EDITION_FIGHTERS["feral-hunter"].technique.motion, "stationary");

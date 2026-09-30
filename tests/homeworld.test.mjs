@@ -32,7 +32,7 @@ test("the 2.5D city preserves twelve service districts and adds two connected or
     assert(isHomeworldTerrainWalkable(point, { halfWidth: 0, halfDepth: 0 }), point.id + " must be on the public street network");
     if (point.npcId) assert(HOMEWORLD_NPCS.some(n => n.id === point.npcId));
   }
-  assert.deepEqual(new Set(HOMEWORLD_POINTS.filter(p => p.service).map(p => p.service)), new Set(["armory","customization","trophies","codex","medbay","training","pit","justice"]));
+  assert.deepEqual(new Set(HOMEWORLD_POINTS.filter(p => p.service).map(p => p.service)), new Set(["armory","customization","trophies","codex","medbay","training","pit","justice","mausoleum"]));
   const memoryService = HOMEWORLD_POINTS.find(point => point.id === "memory-service");
   assert.equal(memoryService?.service, "codex");
   assert.equal(memoryService?.npcId, undefined);

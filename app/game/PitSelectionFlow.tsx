@@ -44,7 +44,7 @@ const ROSTER_SEARCH = new Map(PIT_VERSUS_FIGHTER_IDS.map(id => [id, searchText(`
 const RosterPortrait = memo(function RosterPortrait({ id }: { id: PitVersusFighterId }) {
   const icon = getPitRosterIcon(id);
   // Grid thumbnails never trigger multi-megabyte supplied-source downloads.
-  const art = id.startsWith("user-") ? icon : getPitFighterKeyArt(id) ?? getPitCombatBitmapArtDefinition(id) ?? getPitFighterVariants(id)[0];
+  const art = id.startsWith("user-") ? icon : icon ?? getPitFighterKeyArt(id) ?? getPitCombatBitmapArtDefinition(id) ?? getPitFighterVariants(id)[0];
   const [failed, setFailed] = useState(false);
   return <span className={styles.iconArt} aria-hidden="true">{isPitExpansionFighterId(id)
     ? <PitExtensionPortrait fighterId={id} facing="right" />
@@ -76,7 +76,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const isFighterUnavailable = (id: PitVersusFighterId) => locked || (state.slot === "opponent" ? id === playerId : !canPitFighterEnterMode(id, mode));
   const rosterTabStop = rosterChoices.includes(rosterSelected as PitVersusFighterId) && !isFighterUnavailable(rosterSelected as PitVersusFighterId)
     ? rosterSelected : rosterChoices.find(id => !isFighterUnavailable(id));
-  const [stageFamily, setStageFamily] = useState<"all" | "original" | "film" | "game" | "comic">("all");
+  const [stageFamily, setStageFamily] = useState<"all" | "original" | "film" | "game" | "comic" | "novel">("all");
   const [stageWork, setStageWork] = useState("all");
   const matchingStageIds = PIT_ARENA_IDS.filter(id => {
     const metadata = getPitScreenArenaMetadata(id);
@@ -266,14 +266,15 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
       <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{PIT_FIGHTERS[playerId].name} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
       <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} onRetry={props.onStageRetry} />
       <p className={styles.stageDescription}>{PIT_ARENAS[arenaId].setting} · Aperçu des plans réels P0–P5{props.reducedMotion ? " · mouvement réduit" : " · parallaxe active"}.</p>
-      {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Réinterprétation latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan de l’œuvre n’est pas certifiée.{loreStage && <> <a href={loreStage.sourceUrl} target="_blank" rel="noreferrer">Source du lieu</a></>}</p>}
-      {characterStage && <p className={styles.referenceNote} data-pit-character-stage={characterStage.coverage}>{characterStage.reason}{recommendedStage && !imposed && <button type="button" data-pit-recommended-stage={recommendedStage} disabled={locked || arenaId === recommendedStage} onClick={() => { setStageFamily("all"); setStageWork("all"); props.onArenaChange(recommendedStage); }}>Décor associé à {PIT_FIGHTERS[playerId].name} : {PIT_ARENAS[recommendedStage].name}</button>}</p>}
+      {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Réinterprétation latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan de l’œuvre n’est pas certifiée.{loreStage?.sourceUrl && <> <a href={loreStage.sourceUrl} target="_blank" rel="noreferrer">Source du lieu</a></>}</p>}
+      {loreStage?.kind === "original" && <p className={styles.referenceNote} data-pit-original-exhibition>Exposition originale du projet · Ce lieu ne constitue pas une origine ni un épisode canonique du personnage. {loreStage.sourceClaim}</p>}
+      {characterStage && <p className={styles.referenceNote} data-pit-character-stage={characterStage.coverage} data-pit-stage-classification={characterStage.classification} data-pit-stage-source-status={characterStage.sourceStatus}>{characterStage.classification === "original-exhibition" ? "Exposition originale choisie · " : characterStage.classification === "work-setting" ? "Lieu partagé de l’œuvre · " : characterStage.classification === "character-setting" ? "Lien personnage / lieu documenté · " : ""}{characterStage.sourceStatus === "primary-limited" && "Sources primaires limitées · "}{characterStage.reason}{recommendedStage && !imposed && <button type="button" data-pit-recommended-stage={recommendedStage} disabled={locked || arenaId === recommendedStage} onClick={() => { setStageFamily("all"); setStageWork("all"); props.onArenaChange(recommendedStage); }}>Décor associé à {PIT_FIGHTERS[playerId].name} : {PIT_ARENAS[recommendedStage].name}</button>}</p>}
       </section>
       <section className={styles.stageBrowser} aria-label="Catalogue des arènes">
       <div className={styles.stageFilters} aria-label="Filtres des stages">
         <label>Collection<select aria-label="Collection de stages" disabled={locked || imposed} value={stageFamily} onChange={event => changeStageFilter(event.target.value as typeof stageFamily, "all")}>
           <option value="all">Tous les stages</option><option value="original">Collection historique</option>
-          {(["film", "game", "comic"] as const).filter(kind => PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.kind === kind)).map(kind => <option key={kind} value={kind}>{kind === "film" ? "Films Predator / AVP" : kind === "comic" ? "Comics et romans Predator / AVP" : "Jeux Predator / AVP"}</option>)}
+          {(["film", "game", "comic", "novel"] as const).filter(kind => PIT_ARENA_IDS.some(id => getPitScreenArenaMetadata(id)?.kind === kind)).map(kind => <option key={kind} value={kind}>{kind === "film" ? "Films Predator / AVP" : kind === "comic" ? "Comics Predator / AVP" : kind === "novel" ? "Romans Predator / AVP" : "Jeux Predator / AVP"}</option>)}
         </select></label>
         <label>Œuvre<select aria-label="Œuvre du stage" disabled={locked || imposed || !availableWorks.length} value={stageWork} onChange={event => changeStageFilter(stageFamily, event.target.value)}>
           <option value="all">Toutes les œuvres</option>{availableWorks.map(work => <option key={work.id} value={work.id}>{work.title}</option>)}

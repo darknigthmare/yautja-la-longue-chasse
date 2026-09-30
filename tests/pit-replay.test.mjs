@@ -95,7 +95,7 @@ test("RLE replay is compact, deterministic and equivalent to a direct simulation
   assert.equal(replay.metadata.durationMs, 6_000);
   assert.equal(replay.seed, 42);
   assert.equal(replay.version, 3);
-  assert.equal(replay.engineVersion, 6);
+  assert.equal(replay.engineVersion, 7);
   assert.equal(replay.encoding, "input-rle-v3");
   assert.doesNotMatch(JSON.stringify(replay), /campaign|reward/i);
 });
@@ -143,7 +143,7 @@ test("Falconer reconnaissance marking stays deterministic in training replays", 
     sourceFighterId: "falconer",
     framesRemaining: direct.fighters[1].techniqueStatus.framesRemaining,
   });
-  assert.equal(replay.engineVersion, 6);
+  assert.equal(replay.engineVersion, 7);
   assert.ok(pit.normalizePitReplay(replay));
 });
 
@@ -388,7 +388,9 @@ test("a published V2 technique replay validates with V2 melee semantics before V
   const migrated = pit.normalizePitReplay(legacy);
   assert.ok(migrated);
   assert.equal(migrated.engineVersion, 4);
-  assert.equal(migrated.metadata.checksum, "eb9a5a41");
+  // The published V2 source checksum above remains fixed. Migration deliberately
+  // resimulates with current equipment; V56 now uses a plasma bolt and a short shoulder impact.
+  assert.equal(migrated.metadata.checksum, "e714b096");
   assert.notEqual(migrated.metadata.checksum, current.metadata.checksum);
   assert.notEqual(migrated.metadata.checksum, legacy.metadata.checksum);
   assert.deepEqual(pit.playPitReplay(migrated), pit.playPitReplay(current));

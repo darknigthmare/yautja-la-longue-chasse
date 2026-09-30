@@ -108,7 +108,7 @@ test("action mapping distinguishes standing, crouched, aerial and both explicitl
   }
 });
 
-test("all 14 combatants retain their actual dedicated technique identity", () => {
+test("all combatants retain their actual dedicated technique identity", () => {
   for (const id of Object.keys(pit.PIT_FIGHTERS) as PitFighterId[]) {
     const definition = pit.PIT_FIGHTERS[id];
     const state = fighter({ phase: "active",
@@ -119,9 +119,9 @@ test("all 14 combatants retain their actual dedicated technique identity", () =>
     assert.equal(motion.durationTicks, definition.attacks.technique.active);
   }
   assert.equal(api.describePitHunterSpriteMotion(fighter({ phase: "active",
-    action: { kind: "attack", attack: "technique", frame: 11, connected: false } }), 111)?.techniqueId, "jungle-disc-return");
+    action: { kind: "attack", attack: "technique", frame: 11, connected: false } }), 111)?.techniqueId, "jungle-shoulder-plasma");
   assert.equal(api.describePitHunterSpriteMotion(fighter({ phase: "active",
-    action: { kind: "attack", attack: "technique", frame: 12, connected: false } }, "berserker"), 112)?.techniqueId, "berserker-ground-shock");
+    action: { kind: "attack", attack: "technique", frame: 12, connected: false } }, "berserker"), 112)?.techniqueId, "berserker-shoulder-impact");
 });
 
 test("historical V4 throws retain 7/2/21 while V5 whiffs retain that timing", () => {

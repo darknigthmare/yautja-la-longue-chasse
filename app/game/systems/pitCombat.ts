@@ -1,4 +1,6 @@
 import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type PitUserFighterId } from './pitUserRoster';
+import { PIT_TRACKER_HOUND, PIT_TRACKER_LEGACY_COUNTER, isPitHoundVariantId, type PitHoundVariantId } from './pitCompanion';
+import { PIT_ORIGINAL_FIGHTERS_V56, type PitOriginalFighterIdV56 } from './pitOriginalFightersV56';
 import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, isPitStageJourneyForArena, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
 import { PIT_EXPANSION_FIGHTERS, type PitExpansionFighterId } from "./pitRosterExpansion";
 import { PIT_EXTENSION_ARENAS, PIT_EXTENSION_ARENA_IDS, type PitRuntimeArenaId } from "./pitArenaExtensions";
@@ -21,7 +23,7 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 6;
+export const PIT_STATE_VERSION = 7;
 /** Eight 60Hz reaction ticks after a grounded neutral/guard capture. */
 export const PIT_THROW_TECH_WINDOW_FRAMES = 8;
 export const PIT_THROW_TECH_RECOVERY_FRAMES = 12;
@@ -42,7 +44,7 @@ export const PIT_PRESSURE_GAIN_INTERVAL = 12;
 export const PIT_PRESSURE_MIN_DISTANCE = 140;
 export const PIT_PRESSURE_MAX_DISTANCE = 360;
 
-export type PitFighterId = PitFirstEditionCombatantId | PitExpansionFighterId | PitUserFighterId;
+export type PitFighterId = PitFirstEditionCombatantId | PitExpansionFighterId | PitUserFighterId | PitOriginalFighterIdV56;
 export type PitPlayableFighterId = PitFirstEditionFighterId;
 export type PitArenaId = PitRuntimeArenaId;
 export const PIT_PLAYABLE_FIGHTER_IDS = PIT_FIRST_EDITION_FIGHTER_IDS;
@@ -68,6 +70,7 @@ export interface PitCombatRules {
 }
 
 export interface PitCombatOptions {
+  houndVariantId?: PitHoundVariantId;
   variants?: readonly [string | null, string | null];
   stageJourney?: PitStageJourneyId;
   mode?: PitCombatMode;
@@ -105,6 +108,7 @@ export interface PitFighterDefinition {
   bodyWidth: number;
   bodyHeight: number;
   crouchHeight: number;
+  canCloak?: boolean;
   palette: {
     primary: string;
     secondary: string;
@@ -260,6 +264,7 @@ export interface PitCombatState {
   arenaId: PitArenaDefinition["id"];
   rules: PitCombatRules;
   stageJourney?: PitStageJourneyState;
+  houndVariantId?: PitHoundVariantId;
   fighters: [PitFighterState, PitFighterState];
   techniqueEffects: PitTechniqueEffectState[];
   pendingThrow: PitPendingThrow | null;
@@ -286,6 +291,7 @@ const CONTENT_FIGHTERS = {
   ...PIT_FIRST_EDITION_FIGHTERS,
   ...PIT_CHRONICLE_BOSSES,
   ...PIT_EXPANSION_FIGHTERS,
+  ...PIT_ORIGINAL_FIGHTERS_V56,
   ...PIT_USER_FIGHTERS,
 };
 
@@ -305,6 +311,7 @@ export const PIT_FIGHTERS: Record<PitFighterId, PitFighterDefinition> =
         bodyWidth: definition.bodyWidth,
         bodyHeight: definition.bodyHeight,
         crouchHeight: definition.crouchHeight,
+        ...('canCloak' in definition ? { canCloak: definition.canCloak !== false } : {}),
         palette: { ...definition.palette },
         attacks: {
           light: { ...definition.attacks.light },
@@ -415,6 +422,9 @@ export function createPitCombatState(
   if (options.stageJourney !== undefined && !isPitStageJourneyForArena(options.stageJourney, arenaId)) {
     throw new Error("THE PIT requires a registered stage journey for this arena.");
   }
+  if (options.houndVariantId !== undefined && (!isPitHoundVariantId(options.houndVariantId) || (leftId !== 'tracker' && rightId !== 'tracker'))) {
+    throw new Error('THE PIT requires a registered Tracker hound appearance.');
+  }
   return {
     version: PIT_STATE_VERSION,
     tickRate: PIT_TICK_RATE,
@@ -426,6 +436,7 @@ export function createPitCombatState(
     arenaId,
     rules: { mode: options.mode ?? "match", ...(options.stageJourney ? { stageJourney: options.stageJourney } : {}) },
     ...(options.stageJourney ? { stageJourney: createPitStageJourney(options.stageJourney) } : {}),
+    ...(options.houndVariantId ? { houndVariantId: options.houndVariantId } : {}),
     fighters: [freshFighter(0, leftId, 0, latchFromInput(), 0, options.variants?.[0]), freshFighter(1, rightId, 0, latchFromInput(), 0, options.variants?.[1])],
     techniqueEffects: [],
     pendingThrow: null,
@@ -512,6 +523,7 @@ function addTraque(
 }
 
 function startCloak(state: PitCombatState, fighter: PitFighterState): void {
+  if (PIT_FIGHTERS[fighter.definitionId].canCloak === false) return;
   fighter.traque -= PIT_CLOAK_COST;
   fighter.cloakPhase = "startup";
   fighter.cloakFramesRemaining = PIT_CLOAK_STARTUP_FRAMES;
@@ -843,11 +855,13 @@ function resolvePushboxes(left: PitFighterState, right: PitFighterState): void {
   second.x = clampFighterX(second, second.x);
 }
 
-function techniqueDefinitionForEffect(
+export function getPitTechniqueDefinitionForEffect(
   state: PitCombatState,
   effect: PitTechniqueEffectState,
 ): PitEditionTechniqueDefinition {
-  return PIT_FIGHTERS[state.fighters[effect.ownerSlot].definitionId].technique;
+  const ownerId = state.fighters[effect.ownerSlot].definitionId;
+  return ownerId === 'tracker' && effect.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
+    ? PIT_TRACKER_LEGACY_COUNTER : PIT_FIGHTERS[ownerId].technique;
 }
 
 function techniqueEffectX(
@@ -864,7 +878,7 @@ export function getPitTechniqueBox(
   state: PitCombatState,
   effect: PitTechniqueEffectState,
 ): PitBox {
-  const technique = techniqueDefinitionForEffect(state, effect);
+  const technique = getPitTechniqueDefinitionForEffect(state, effect);
   return {
     x: effect.x,
     y: effect.y,
@@ -873,7 +887,7 @@ export function getPitTechniqueBox(
   };
 }
 
-function spawnTechniqueEffects(state: PitCombatState): void {
+function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean): void {
   for (const fighter of state.fighters) {
     const action = fighter.action;
     const move = PIT_FIGHTERS[fighter.definitionId].attacks.technique;
@@ -885,13 +899,22 @@ function spawnTechniqueEffects(state: PitCombatState): void {
     ) {
       continue;
     }
-    const technique = PIT_FIGHTERS[fighter.definitionId].technique;
+    const technique = !companionsEnabled && fighter.definitionId === 'tracker'
+      ? PIT_TRACKER_LEGACY_COUNTER : PIT_FIGHTERS[fighter.definitionId].technique;
+    if (technique.device === 'hound') {
+      const existing = state.techniqueEffects.find(effect => effect.ownerSlot === fighter.slot && effect.techniqueId === technique.id);
+      if (existing) {
+        existing.phase = 'returning';
+        existing.rehitFrames = technique.rehitFrames;
+        continue;
+      }
+    }
     const effect: PitTechniqueEffectState = {
       id: state.nextTechniqueEffectId,
       ownerSlot: fighter.slot,
       techniqueId: technique.id,
       x: techniqueEffectX(fighter, technique),
-      y: fighter.y + technique.verticalOffset,
+      y: technique.device === 'hound' ? 0 : fighter.y + technique.verticalOffset,
       direction: fighter.facing,
       age: 0,
       phase: technique.armFrames > 0 ? "arming" : "active",
@@ -911,9 +934,37 @@ function advanceTechniqueEffects(state: PitCombatState): void {
   for (const effect of state.techniqueEffects) {
     const owner = state.fighters[effect.ownerSlot];
     const opponent = state.fighters[effect.ownerSlot === 0 ? 1 : 0];
-    const technique = techniqueDefinitionForEffect(state, effect);
+    const technique = getPitTechniqueDefinitionForEffect(state, effect);
     effect.age += 1;
     effect.rehitFrames = Math.max(0, effect.rehitFrames - 1);
+
+    if (technique.device === 'hound') {
+      // Ground creature: fixed telegraph, one charge and a harmless return.
+      // Its independent life never borrows the airborne drone recipe.
+      effect.y = 0;
+      if (owner.health <= 0 || effect.age > technique.lifetimeFrames) continue;
+      const incoming = getPitFighterBoxes(opponent).hitbox;
+      if (effect.phase !== 'returning' && incoming && boxesOverlap(incoming, getPitTechniqueBox(state, effect))) {
+        effect.phase = 'returning';
+        effect.rehitFrames = technique.rehitFrames;
+      }
+      if (effect.phase === 'arming' && effect.age >= technique.armFrames) effect.phase = 'active';
+      if (effect.age >= (technique.returnFrame ?? technique.lifetimeFrames)) effect.phase = 'returning';
+      const center = effect.x + technique.width / 2;
+      if (effect.phase === 'returning') {
+        if (effect.rehitFrames > 0) { retained.push(effect); continue; }
+        const distance = owner.x - center;
+        if (Math.abs(distance) <= technique.speed) continue;
+        effect.direction = distance >= 0 ? 1 : -1;
+        effect.x += effect.direction * technique.speed;
+      } else if (effect.phase === 'active') {
+        effect.x += effect.direction * technique.speed;
+        if (effect.x <= PIT_ARENA.leftWall || effect.x + technique.width >= PIT_ARENA.rightWall) effect.phase = 'returning';
+      }
+      effect.x = Math.max(PIT_ARENA.leftWall, Math.min(PIT_ARENA.rightWall - technique.width, effect.x));
+      retained.push(effect);
+      continue;
+    }
 
     if (effect.phase === "arming" && effect.age >= technique.armFrames) {
       effect.phase = "active";
@@ -1151,9 +1202,10 @@ function collectTechniqueImpacts(state: PitCombatState): CollectedTechniqueImpac
   const impacts: PendingImpact[] = [];
   const counteredSlots = new Set<0 | 1>();
   for (const effect of state.techniqueEffects) {
-    const technique = techniqueDefinitionForEffect(state, effect);
+    const technique = getPitTechniqueDefinitionForEffect(state, effect);
     if (
       effect.phase === "arming" ||
+      (technique.device === 'hound' && effect.phase === 'returning') ||
       effect.rehitFrames > 0 ||
       effect.hitCount >= technique.maxHits ||
       (effect.hitCount > 0 && technique.motion === "returning" && effect.phase !== "returning")
@@ -1282,7 +1334,9 @@ function applyImpact(state: PitCombatState, impact: PendingImpact): void {
     if (effect) {
       effect.hitCount += 1;
       effect.rehitFrames = impact.technique.rehitFrames;
-      if (effect.hitCount >= impact.technique.maxHits) {
+      if (impact.technique.device === 'hound') {
+        effect.phase = 'returning';
+      } else if (effect.hitCount >= impact.technique.maxHits) {
         state.techniqueEffects = state.techniqueEffects.filter(
           (candidate) => candidate.id !== effect.id,
         );
@@ -1589,6 +1643,7 @@ function stepPitCombatInternal(
   legacyV2Techniques: boolean,
   throwTechEnabled: boolean,
   stageJourneyEnabled = false,
+  companionsEnabled = false,
 ): PitCombatState {
   if (current.phase === "match-over") {
     if (current.events.length === 0) return current;
@@ -1610,6 +1665,8 @@ function stepPitCombatInternal(
   if (throwTechEnabled && state.pendingThrow) {
     advancePendingThrow(state, inputs);
     if (state.rules.mode === "match") evaluateRound(state);
+    if (companionsEnabled) state.techniqueEffects = state.techniqueEffects.filter(effect =>
+      effect.techniqueId !== PIT_TRACKER_HOUND.id || state.fighters[effect.ownerSlot].health > 0);
     if (state.phase !== "round") state.pendingThrow = null;
     if (stageJourneyEnabled) finishPitStageJourneyFrame(state);
     return state;
@@ -1631,7 +1688,7 @@ function stepPitCombatInternal(
   applyRuptures(state, ruptures);
   if (!legacyV2Techniques) {
     advanceTechniqueStatuses(state);
-    spawnTechniqueEffects(state);
+    spawnTechniqueEffects(state, companionsEnabled);
     advanceTechniqueEffects(state);
     resolvePushboxes(state.fighters[0], state.fighters[1]);
   }
@@ -1696,6 +1753,8 @@ function stepPitCombatInternal(
   }
 
   if (state.rules.mode === "match") evaluateRound(state);
+  if (companionsEnabled) state.techniqueEffects = state.techniqueEffects.filter(effect =>
+    effect.techniqueId !== PIT_TRACKER_HOUND.id || state.fighters[effect.ownerSlot].health > 0);
   if (state.phase !== "round") state.pendingThrow = null;
   if (stageJourneyEnabled) finishPitStageJourneyFrame(state);
   return state;
@@ -1705,7 +1764,12 @@ export function stepPitCombat(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
-  return stepPitCombatInternal(current, inputs, false, true, true);
+  return stepPitCombatInternal(current, inputs, false, true, true, true);
+}
+
+/** Published V43–V55 engine V6: stage journeys, Tracker's original counter. */
+export function stepPitCombatV6Compatibility(current: PitCombatState, inputs: readonly [PitInput, PitInput] = [{}, {}]): PitCombatState {
+  return stepPitCombatInternal(current, inputs, false, true, true, false);
 }
 
 /** Published V38–V42 engine V5: throw tech, neutral single-scene arenas. */
@@ -1733,7 +1797,7 @@ export function rematchPitCombat(state: PitCombatState): PitCombatState {
   return createPitCombatState(
     state.fighters[0].definitionId,
     state.fighters[1].definitionId,
-    { ...state.rules, arenaId: state.arenaId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
+    { ...state.rules, arenaId: state.arenaId, houndVariantId: state.houndVariantId, variants: [state.fighters[0].variantId ?? null, state.fighters[1].variantId ?? null] },
   );
 }
 
@@ -1818,6 +1882,7 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
   const fighterId = value.definitionId;
   if (value.variantId !== undefined && (typeof value.variantId !== 'string' || !getPitUserVariant(fighterId, value.variantId))) return false;
   const definition = PIT_FIGHTERS[fighterId];
+  if (definition.canCloak === false && (value.cloakPhase !== 'inactive' || value.cloakFramesRemaining !== 0 || value.cloakCooldownFrames !== 0)) return false;
   if (!PIT_COMBAT_PHASES.includes(value.phase as PitCombatPhase)) return false;
   const phase = value.phase as PitCombatPhase;
   const actionValid = value.action === null || isActionState(value.action, fighterId, phase);
@@ -1871,24 +1936,26 @@ function isTechniqueEffectState(
   if (!isRecord(value) || !isIntegerBetween(value.id, 1, Number.MAX_SAFE_INTEGER)) return false;
   if (value.ownerSlot !== 0 && value.ownerSlot !== 1) return false;
   const owner = fighters[value.ownerSlot];
-  const technique = PIT_FIGHTERS[owner.definitionId].technique;
+  const technique = owner.definitionId === 'tracker' && value.techniqueId === PIT_TRACKER_LEGACY_COUNTER.id
+    ? PIT_TRACKER_LEGACY_COUNTER : PIT_FIGHTERS[owner.definitionId].technique;
   if (value.techniqueId !== technique.id) return false;
   if (!isFiniteBetween(value.x, PIT_ARENA.leftWall - technique.width, PIT_ARENA.rightWall)) return false;
   if (!isFiniteBetween(value.y, 0, PIT_ARENA.height)) return false;
   if (value.direction !== -1 && value.direction !== 1) return false;
   if (!isIntegerBetween(value.age, 0, technique.lifetimeFrames)) return false;
   if (!PIT_TECHNIQUE_EFFECT_PHASES.includes(value.phase as PitTechniqueEffectPhase)) return false;
-  if (!isIntegerBetween(value.hitCount, 0, technique.maxHits - 1)) return false;
+  if (!isIntegerBetween(value.hitCount, 0, technique.device === 'hound' ? 1 : technique.maxHits - 1)) return false;
   if (!isIntegerBetween(value.rehitFrames, 0, technique.rehitFrames)) return false;
   const phase = value.phase as PitTechniqueEffectPhase;
   if (phase === "arming" && (technique.armFrames === 0 || value.age >= technique.armFrames)) return false;
   if (phase === "returning" && (
     technique.motion !== "returning" ||
     technique.returnFrame === null ||
-    value.age < technique.returnFrame
+    (technique.device !== 'hound' && value.age < technique.returnFrame)
   )) {
     return false;
   }
+  if (technique.device === 'hound' && (value.y !== 0 || (value.hitCount === 1 && phase !== 'returning'))) return false;
   if (
     phase === "active" &&
     technique.motion === "returning" &&
@@ -1948,8 +2015,9 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
 }
 
 function migratePitCombatState(candidate: unknown): unknown {
+  if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 7 && candidate.houndVariantId !== undefined) return candidate;
   if (!isRecord(candidate) ||
-    ![1, 2, 4, 5, PIT_STATE_VERSION].includes(candidate.version as number) ||
+    ![1, 2, 4, 5, 6, PIT_STATE_VERSION].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }
@@ -2031,6 +2099,9 @@ export function deserializePitCombat(serialized: string): PitCombatState {
     throw new Error("Invalid or incompatible THE PIT combat state.");
   }
   const fighterIds = [fighters[0].definitionId, fighters[1].definitionId] as const;
+  if (candidate.houndVariantId !== undefined && (!isPitHoundVariantId(candidate.houndVariantId) || !fighterIds.includes('tracker'))) {
+    throw new Error('Invalid or incompatible THE PIT combat state.');
+  }
   if (fighters.some((fighter) =>
     fighter.techniqueStatus !== null &&
     (!fighterIds.includes(fighter.techniqueStatus.sourceFighterId) ||
@@ -2041,12 +2112,17 @@ export function deserializePitCombat(serialized: string): PitCombatState {
   const techniqueEffects = candidate.techniqueEffects;
   const typedFighters = fighters as unknown as [PitFighterState, PitFighterState];
   const effectIds = new Set<number>();
+  const houndOwners = new Set<0 | 1>();
   if (!techniqueEffects.every((effect) => {
     if (!isTechniqueEffectState(effect, typedFighters)) return false;
     if (effectIds.has(effect.id) || effect.id >= (candidate.nextTechniqueEffectId as number)) {
       return false;
     }
     effectIds.add(effect.id);
+    if (effect.techniqueId === PIT_TRACKER_HOUND.id) {
+      if (houndOwners.has(effect.ownerSlot) || typedFighters[effect.ownerSlot].health <= 0) return false;
+      houndOwners.add(effect.ownerSlot);
+    }
     return true;
   })) {
     throw new Error("Invalid or incompatible THE PIT combat state.");

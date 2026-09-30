@@ -102,7 +102,7 @@ for (const route of routes) {
 
   test(route.id + ': restore at every tick, including capture and transfer, matches the replay exactly', () => {
     const replay = p.recordPitReplay(inputs, { fighters: legacy.fighters, arenaId: route.entry, rules: { mode: 'training', stageJourney: route.id } });
-    assert.equal(replay.engineVersion, 6); assert.equal(replay.version, 3);
+    assert.equal(replay.engineVersion, 7); assert.equal(replay.version, 3);
     let state = p.createPitCombatState(...replay.fighters, { arenaId: replay.arenaId, ...replay.rules }), captures = 0, transfers = 0;
     for (const input of inputs) {
       const bytes = p.serializePitCombat(state);
@@ -160,7 +160,9 @@ test('all five published V6 journey checksums and untouched V4/V5 fixtures remai
   for (const [id, checksum] of Object.entries(checksums)) {
     const route = p.getPitStageJourneyDefinition(id);
     const replay = p.recordPitReplay(inputs, { fighters: legacy.fighters, arenaId: route.entry, rules: { mode: 'training', stageJourney: id } });
-    assert.equal(replay.metadata.checksum, checksum); assert.equal(replay.metadata.ticks, 260);
+    const historical = p.normalizePitReplay({ ...replay, engineVersion: 6, metadata: { ...replay.metadata, checksum } });
+    assert(historical, 'published V6 checksum must validate with the V6 stepper');
+    assert.equal(historical.metadata.checksum, checksum); assert.equal(historical.metadata.ticks, 260);
   }
   for (const name of ['pit-replay-v4-throw.json', 'pit-replay-v5-reserve-throw.json']) {
     const fixture = JSON.parse(await fs.readFile('tests/fixtures/' + name, 'utf8'));

@@ -19,7 +19,7 @@ test("V54 extends two sides of the city while preserving spawn and the historica
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["personal-ship"], { x: 400, y: 2220 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["temple-point"], { x: 3390, y: 760 });
   assert.deepEqual(city.HOMEWORLD_POINT_POSITIONS["training-service"], { x: 2220, y: 1330 });
-  assert.equal(Object.keys(city.HOMEWORLD_POINT_POSITIONS).length, 25);
+  assert.equal(Object.keys(city.HOMEWORLD_POINT_POSITIONS).length, 26);
   assert.equal(hw.HOMEWORLD_REGIONS.length, 10);
   assert.equal(hw.HOMEWORLD_NPCS.length, 12);
 });

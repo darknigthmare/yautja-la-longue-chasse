@@ -46,7 +46,7 @@ for(const route of routes){
    assert.equal(p.pitStageSceneArena(committed),route.destination);assert.equal(committed.arenaId,route.entry);assert.deepEqual(p.deserializePitCombat(p.serializePitCombat(committed)),committed);
   }
   const replay=p.recordPitReplay(inputs,{fighters:legacy.fighters,arenaId:route.entry,rules:{mode:'training',stageJourney:route.id}});
-  assert.equal(replay.engineVersion,6);assert.equal(replay.version,3);assert.equal(p.playPitReplay(replay).stageJourney.sector,'court');assert.equal(p.pitStageSceneArena(p.playPitReplay(replay)),route.destination);
+  assert.equal(replay.engineVersion,7);assert.equal(replay.version,3);assert.equal(p.playPitReplay(replay).stageJourney.sector,'court');assert.equal(p.pitStageSceneArena(p.playPitReplay(replay)),route.destination);
   assert.deepEqual(p.deserializePitReplay(p.serializePitReplay(replay)),replay);
  });
  test(route.id+' forbids tech, KO and forged endpoints; resets retain route ownership',()=>{
@@ -64,7 +64,8 @@ for(const route of routes){
 test('published V6 reserve checksum stays byte-identical; V4/V5 fixtures remain readable and neutral',async()=>{
  const reserve=p.recordPitReplay(inputs,{fighters:legacy.fighters,arenaId:p.PIT_RESERVE_GATE,rules:{mode:'training',stageJourney:p.PIT_RESERVE_JOURNEY}});
  // Baseline independently regenerated with Git HEAD V51 source before this extension.
- assert.equal(reserve.metadata.checksum,'47ceba24');assert.equal(reserve.metadata.ticks,260);
+ const historical=p.normalizePitReplay({...reserve,engineVersion:6,metadata:{...reserve.metadata,checksum:'47ceba24'}});
+ assert(historical);assert.equal(historical.metadata.checksum,'47ceba24');assert.equal(historical.metadata.ticks,260);
  for(const name of ['pit-replay-v4-throw.json','pit-replay-v5-reserve-throw.json']){
   const fixture=JSON.parse(await fs.readFile('tests/fixtures/'+name,'utf8')),data=fixture.replay??fixture,normalized=p.normalizePitReplay(data);assert(normalized);assert.equal(normalized.metadata.checksum,data.metadata.checksum);assert.equal(p.playPitReplay(normalized).stageJourney,undefined);
  }
