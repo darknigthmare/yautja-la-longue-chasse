@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { build } from 'esbuild';
 const manifest=JSON.parse(await readFile(new URL('../app/game/data/pitUserHuntersV44.json',import.meta.url),'utf8'));
+const additions=JSON.parse(await readFile(new URL('../app/game/data/pitUserVariantsV63.json',import.meta.url),'utf8')).variantAdditions;
 const bundle=await build({stdin:{contents:['pitUserRoster','pitCombat','pitRosterExpansion','pitReplay','pitFirstEdition'].map(n=>`export * from './app/game/systems/${n}';`).join('\n')+"\nexport * from './app/game/pitCombatBitmapArt';",resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
 const p=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 test('every supplied identity and appearance resolves to the registered combat owner',()=>{
@@ -11,7 +12,12 @@ test('every supplied identity and appearance resolves to the registered combat o
  for(const entry of manifest.fighters){
   assert(p.PIT_FIGHTERS[entry.id],entry.id);assert(p.PIT_VERSUS_FIGHTER_IDS.includes(entry.id),entry.id);assert(entry.variants.length>0,entry.id);
   assert.equal(new Set(entry.variants.map(v=>v.id)).size,entry.variants.length,entry.id);
-  assert.equal(p.getPitFighterVariants(entry.id).length,entry.variants.length,entry.id);
+  const current=p.getPitFighterVariants(entry.id);
+  const appended=additions.find(addition=>addition.fighterId===entry.id)?.variants??[];
+  assert.equal(current.length,entry.variants.length+appended.length,entry.id);
+  assert.deepEqual(current.slice(0,entry.variants.length).map(variant=>variant.id),entry.variants.map(variant=>variant.id),entry.id+' historical order');
+  assert.deepEqual(current.slice(entry.variants.length),appended,entry.id+' only verified additions');
+  assert.equal(current[0].id,entry.variants[0].id,entry.id+' historical default');
   for(const variant of entry.variants){
    const match=p.createPitCombatState(entry.id,entry.id==='jungle-hunter'?'city-hunter':'jungle-hunter',{variants:[variant.id,null]});
    assert.equal(match.fighters[0].variantId,variant.id);

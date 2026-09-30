@@ -68,7 +68,7 @@ test("Canvas renders registered V3 atoms through rig-relative matrices", async (
   assert.match(source, /HUNTER_BIND_FRAME/);
   assert.match(source, /HUNTER_BODY_PART_IDS/);
   assert.match(source, /HUNTER_BODY_PART_BONES/);
-  assert.match(source, /hunterBodyPartPath\(appearance\.bodyMorphId, partId\)/);
+  assert.match(source, /hunterBodyPartPath\(appearance\.bodyMorphId, partId, appearance\.headStyleId\)/);
   assert.match(source, /hunterNetPartPath\(appearance\.bodyMorphId, partId\)/);
   assert.match(source, /HUNTER_EQUIPMENT_V3\.plasma/);
   assert.match(source, /assets\.hunterPlasma\.upperArm/);
@@ -169,7 +169,7 @@ test("runtime keeps seven dreads and hides launched hand ammunition", async () =
 
   assert.match(source, /dreadAngles: \[0, 0, 0, 0, 0, 0, 0\]/);
   assert.match(source, /dreadVelocities: \[0, 0, 0, 0, 0, 0, 0\]/);
-  assert.match(layeredHunter, /HUNTER_DREAD_STRANDS\.forEach/);
+  assert.match(layeredHunter, /solveHunterDreadsV63\([\s\S]*?player\.dreadAngles\)\.forEach/);
   assert.match(handWeapon, /weaponProjectileInFlight/);
   assert.match(
     handWeapon,

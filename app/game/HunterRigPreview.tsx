@@ -31,7 +31,8 @@ import {
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
-import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
 import {
   HUNTER_RIG_CANVAS,
   multiplyAffine,
@@ -119,22 +120,6 @@ const BODY_LAYER_ORDER: readonly HunterBodyPartId[] = [
   "hand-front",
 ];
 
-/**
- * One dread texture represents one independently animated strand. These
- * offsets distribute seven instances around the canonical skull root instead
- * of stacking several unrelated styles at exactly the same coordinates.
- */
-const DREAD_STRANDS = [
-  { x: -12, y: 3, rest: -12, scale: 0.88, mirror: false },
-  { x: -8, y: -1, rest: -8, scale: 0.96, mirror: false },
-  { x: -4, y: -4, rest: -4, scale: 1.04, mirror: false },
-  { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
-  { x: 4, y: -3, rest: 4, scale: 1.02, mirror: false },
-  { x: 8, y: 2, rest: -10, scale: 0.72, mirror: false },
-  { x: 12, y: 7, rest: -16, scale: 0.62, mirror: false },
-] as const;
-
-const DREAD_ROOT = { x: 143, y: 43 } as const;
 const HAND_WEAPON_PIVOT = { x: 218, y: 229 } as const;
 
 const GEAR_SLOT_OFFSETS = [
@@ -521,6 +506,7 @@ export function HunterRigPreview({
       data-rig-version="3"
       data-preset={appearance.presetId}
       data-body-morph={appearance.bodyMorphId}
+      data-head-style={appearance.headStyleId ?? "reference"}
       data-armor={armorId}
       data-armor-style={appearance.armorStyleId}
       data-mask={
@@ -536,11 +522,6 @@ export function HunterRigPreview({
     >
       <style>
         {`
-          @keyframes hunter-rig-v3-dread-sway {
-            0%, 100% { transform: rotate(var(--dread-rest)); }
-            48% { transform: rotate(var(--dread-sway)); }
-            74% { transform: rotate(var(--dread-drift)); }
-          }
           @keyframes hunter-rig-v3-reticle {
             0%, 100% { opacity: .48; scale: .88; }
             50% { opacity: 1; scale: 1.1; }
@@ -552,34 +533,19 @@ export function HunterRigPreview({
         `}
       </style>
 
-      {DREAD_STRANDS.map((strand, index) => {
-        const offsetMatrix = multiplyAffine(
-          translation(strand.x + HUNTER_HEAD_DREAD_OFFSET_V62.x, strand.y + HUNTER_HEAD_DREAD_OFFSET_V62.y),
-          multiplyAffine(
-            rotationAround(
-              DREAD_ROOT.x,
-              DREAD_ROOT.y,
-              (strand.rest * Math.PI) / 180,
-            ),
-            scaleAroundAxes(
-              DREAD_ROOT.x,
-              DREAD_ROOT.y,
-              strand.mirror ? -strand.scale : strand.scale,
-              strand.scale,
-            ),
-          ),
-        );
-        const matrix = multiplyAffine(boneMatrix("head"), offsetMatrix);
-        const sway = 2.4 + index * 0.58;
+      {solveHunterDreadsV63(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId,
+        HUNTER_DREAD_STRANDS_V63.map((_, index) => Math.max(-.13, Math.min(.34, speed / 1100 + verticalVelocity / 8000)) + Math.sin(phase * Math.PI * 2 + index) * .018)
+      ).map((strand, index) => {
         return (
           <span
             aria-hidden="true"
             data-rig-slot={`dread-${index}`}
+            data-dread-collisions={strand.collisions}
             key={`${appearance.dreadStyleId}-${index}`}
             style={{
               ...fullCanvasImage,
               zIndex: 4 + index,
-              transform: cssMatrix(matrix),
+              transform: cssMatrix(strand.matrix),
             }}
           >
             <img
@@ -591,15 +557,6 @@ export function HunterRigPreview({
                 {
                   ...fullCanvasImage,
                   filter: DREAD_FILTER[appearance.dreadTintId],
-                  transformOrigin:
-                    `${(DREAD_ROOT.x / HUNTER_RIG_CANVAS.width) * 100}% ` +
-                    `${(DREAD_ROOT.y / HUNTER_RIG_CANVAS.height) * 100}%`,
-                  animation:
-                    `hunter-rig-v3-dread-sway ${3.5 + index * 0.28}s ` +
-                    `${-index * 0.61}s ease-in-out infinite`,
-                  "--dread-rest": "0deg",
-                  "--dread-sway": `${sway}deg`,
-                  "--dread-drift": `${-sway * 0.72}deg`,
                 } as CSSProperties
               }
             />
@@ -638,9 +595,9 @@ export function HunterRigPreview({
         const matrix = boneMatrix(boneId);
         const z = 20 + index * 2;
         return [
-          registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId), matrix, z,
+          registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), matrix, z,
             `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]), undefined,
-            hunterBodyPartPlacement(appearance.bodyMorphId, partId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
+            hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img

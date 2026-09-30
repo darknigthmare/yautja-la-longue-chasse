@@ -1,0 +1,632 @@
+{
+  "status": "PASS",
+  "surface": "full-application-public-roster-stage-duel-flow",
+  "checkedAt": "2026-09-30T22:45:08.432Z",
+  "url": "http://127.0.0.1:4182",
+  "version": "V63",
+  "completeCurrentManifestGate": true,
+  "targets": [
+    "arena-126-avpr-2007-hospital-roof",
+    "arena-130-avp-classic-2000-space-station"
+  ],
+  "cases": [
+    "desktop",
+    "reduced",
+    "mobile",
+    "retry"
+  ],
+  "sourceHashes": {
+    "app/game/data/pitStageLifeV63.json": "3df78b5068a25b46b30d514962ce56504dd0e2e66bf013bc70c0414de0469ab6",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV63.ts": "0f6f091487bb9d9e31de051212eb6a91b2a8a7ddb661c35cea8d35dcdf362cd8",
+    "app/game/pitStageLifeRenderingV63.ts": "2fab9d67b019d927bf3f62ff881bd62c4616a67f7ce88c5941a49067fb040351",
+    "app/game/pitStageCompositionV63.ts": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+    "app/game/data/pitStageCompositionV63.json": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/PitCanvas.tsx": "079d36bac6d080e6738d1731c34273559cf349864dd8f542c340443152f4f237",
+    "app/game/pitStageLifeV63.ts": "a6920fcebc2fc166e2eef92b8d7592b5acde82eec7ad0ab382dd81189ad0b7f2",
+    "scripts/verify-pit-stage-life-v63.mjs": "b950e285c5695eac5b162b61c1715640aff7924920fb7920f0164b0364c91eeb"
+  },
+  "checks": [
+    {
+      "name": "public-movement-reveals-background",
+      "before": [
+        {
+          "x": 300,
+          "y": 0
+        },
+        {
+          "x": 660,
+          "y": 0
+        }
+      ],
+      "after": [
+        {
+          "x": 154.3,
+          "y": 0
+        },
+        {
+          "x": 815,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-pause",
+      "frame": 1012,
+      "nativeFrames": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arena-126-avpr-2007-hospital-roof-application",
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+        "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+        "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+        "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-04",
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-05",
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-06",
+          "src": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 988
+        },
+        {
+          "eventId": "ambient-04",
+          "firstObservedRoundFrame": 1584
+        },
+        {
+          "eventId": "ambient-06",
+          "firstObservedRoundFrame": 2151
+        },
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 2613
+        },
+        {
+          "eventId": "ambient-05",
+          "firstObservedRoundFrame": 3200
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-window-traversal-pause",
+      "frame": 3061,
+      "nativeFrames": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-clipped-native-traversal",
+      "eventId": "ambient-01",
+      "samples": 174,
+      "clip": {
+        "x": 437,
+        "y": 276,
+        "width": 99,
+        "height": 47
+      },
+      "range": [
+        447,
+        524
+      ]
+    },
+    {
+      "name": "arena-130-avp-classic-2000-space-station-application",
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png"
+      ],
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-04",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-05",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-06",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "bag": [
+        {
+          "eventId": "ambient-02",
+          "firstObservedRoundFrame": 725
+        },
+        {
+          "eventId": "ambient-04",
+          "firstObservedRoundFrame": 1285
+        },
+        {
+          "eventId": "ambient-06",
+          "firstObservedRoundFrame": 1797
+        },
+        {
+          "eventId": "ambient-05",
+          "firstObservedRoundFrame": 2364
+        },
+        {
+          "eventId": "ambient-01",
+          "firstObservedRoundFrame": 2971
+        },
+        {
+          "eventId": "ambient-03",
+          "firstObservedRoundFrame": 3524
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "reduced-pause",
+      "frame": 3705,
+      "nativeFrames": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "reduced-motion",
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "seen": []
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-04",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-05",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+          "seen": [
+            0
+          ]
+        },
+        {
+          "eventId": "ambient-06",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+          "seen": [
+            0
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true
+    },
+    {
+      "name": "mobile-landscape",
+      "viewport": [
+        844,
+        390
+      ],
+      "documentWidth": 844,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390
+      }
+    },
+    {
+      "name": "mobile-portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "documentWidth": 390,
+      "canvas": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-pause",
+      "frame": 3710,
+      "nativeFrames": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mobile-native-events",
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "nativeFrames": [
+        {
+          "eventId": "ambient-01",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-02",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-03",
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-04",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-05",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "eventId": "ambient-06",
+          "src": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+          "seen": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "savedBytesUnchanged": true,
+      "limitation": "Chromium emulation, not a physical device."
+    },
+    {
+      "name": "native-png-retry-503",
+      "blockedPath": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+      "intentionalFailures": 1,
+      "loadedPaths": [
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+        "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+        "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png"
+      ],
+      "realActorsAfterRetry": 5,
+      "savedBytesUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-selection.png",
+      "sha256": "facb0a0b09e71febca74c610f5fef84b7b0919b5ffee4074d0d499ab671a3c60",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-rest.png",
+      "sha256": "00461a28c47af98e1a8109800e2486f2b43b84b91403f372a4c0ba4fcbdef29b",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-fighters-apart.png",
+      "sha256": "87900e2f0058ee143cd2d75542c16aefa3d3a19fda9ae799f3d6f3819d96a2b5",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-paused.png",
+      "sha256": "d795b0f59d67ba2aedba1a30df30151cc12ea4e79455b64a3abda2ca420c580f",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-0.png",
+      "sha256": "4b0f618213a713bd9a3348b9cb38363ea7f5c8706d0c4b5e55a8a7f146970776",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-1.png",
+      "sha256": "e3f37cc101e4d8e63cedf182d5d7537e0d86980acea26970155cd138d1392d4f",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-2.png",
+      "sha256": "bfae3db989a3681e12f77dab61c596eab02b9b1c2a8d4abb31dcd42d1b2ef418",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-3.png",
+      "sha256": "d654b4ced695a1e1f96da44ff57ae52fc212d130686e265d577e3c651b72dada",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-126-avpr-2007-hospital-roof-event-4.png",
+      "sha256": "6acbb407cd48974c6568f5102ca7b1b1687a0acf4e8bbe7a1c84eb9be451fbdc",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-selection.png",
+      "sha256": "19dddda6f60d78c090e3859b3b84b77e82eb1e33591547347df11247566725eb",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-rest.png",
+      "sha256": "be3ffac506bdba0c38b845a3be42bb7cd425679e573d071b7cb7e695b6b2218d",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-0.png",
+      "sha256": "654b5446b1517756888e1b17825aa6728cce7f4b2855c0edf83176c6dee42e1e",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-1.png",
+      "sha256": "02f1aa95953c16a21c81070b24c4f0cdb38a8ad0b98fcd03290ea2ae73bed9f0",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-2.png",
+      "sha256": "03a6806d259e287844976ce87c3b927c5ee4ee5e9dc37501494be3915e2567bc",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-3.png",
+      "sha256": "af1589aa7fe2acc81beed9cf3ac6c4092dca52fbed5ae5bdeedbd14711a0ac01",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-4.png",
+      "sha256": "38a2621d862ba5ee9ed5cde4387f86bb9ee667f55a14de6f6e7d01b1354a32ce",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-window-traversal-paused.png",
+      "sha256": "852f6baa586494fe483a2a28c3548e114688d0d6d1d0789db86d4188e6a53c9a",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "arena-130-avp-classic-2000-space-station-event-5.png",
+      "sha256": "afe5ee5bd6c7ef826215f5ad6418e3ea6df7cb94a38e03188aa90ff6fe491821",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "reduced-paused.png",
+      "sha256": "10826e4035f03f27e7e8a78ff56d761b6dea6614836be2f0560685b88f46882e",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "reduced-motion.png",
+      "sha256": "72fda536da7256c046783da75db54878ff6522723fb49869a132b4af8d8d9bbd",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-landscape.png",
+      "sha256": "14ad79afab6250a94b16e62508dad0de01ebf0fc0eda521114a25259a120f729",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-portrait.png",
+      "sha256": "1b15375744384a4c66b42723ec0b518d837098c7e713999414045d763f7722dc",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "mobile-paused.png",
+      "sha256": "4d342a962dc35b9b8b5367231a7b844e04a4c122e71b1df821f2eaebef632dd1",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "native-png-503-blocked.png",
+      "sha256": "139684ca32e94614b5c81717cf03d66513e1c0a02024e7c18b2f58d96432dc63",
+      "visualReview": "pending-separate-image-inspection"
+    },
+    {
+      "file": "native-png-retry-restored.png",
+      "sha256": "9ae0ddea62b57740b0cd0a11291606775692e024da9d769deaf8ccfce16d7f53",
+      "visualReview": "pending-separate-image-inspection"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "failedRequests": [],
+  "limitations": [
+    "Browser timer control advances the normal simulation; no combat state or schedule was injected.",
+    "The compositor/alpha/native-pixel gates remain separate.",
+    "Screenshots require explicit independent visual review.",
+    "Mobile checks emulate Chromium, not physical devices."
+  ]
+}

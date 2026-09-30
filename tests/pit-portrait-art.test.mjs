@@ -20,8 +20,13 @@ test('portrait registry keeps only requested authored idle clips and their valid
 });
 test('four extension icons avoid decoding combat-only pages; missing authored side remains unavailable',()=>{
  const pixels=entries=>entries.reduce((sum,entry)=>sum+entry.atlas.pages.reduce((sum,page)=>sum+page.width*page.height*4,0),0);
- const full=p.PIT_SPRITE_SHEET_REGISTRY.filter(entry=>ids.includes(entry.fighterId));
- const idle=ids.flatMap(id=>p.pitPortraitAnimationRegistry(id,'right',p.PIT_SPRITE_SHEET_REGISTRY));
+ // Extension icons request the undefined-variant selection. The loader selects
+ // that same key before decoding; new appearances must not inflate its budget.
+ const full=p.PIT_SPRITE_SHEET_REGISTRY.filter(entry=>ids.includes(entry.fighterId)&&entry.variantId===undefined);
+ const idle=ids.flatMap(id=>p.pitPortraitAnimationRegistry(id,'right',p.PIT_SPRITE_SHEET_REGISTRY).filter(entry=>entry.variantId===undefined));
  assert.equal(idle.reduce((sum,entry)=>sum+entry.atlas.pages.length,0),4);assert(pixels(idle)<=pixels(full)/5);
+ const variantIdle=p.pitPortraitAnimationRegistry('greyback','right',p.PIT_SPRITE_SHEET_REGISTRY).filter(entry=>entry.variantId==='elder-phg-official-unmasked-v63');
+ assert(variantIdle.length>0);assert(variantIdle.every(entry=>entry.atlas.pages.every(page=>page.src.includes('/v63/fighters/elder-phg/'))));
+ assert(idle.every(entry=>entry.atlas.pages.every(page=>!page.src.includes('/v63/'))),'default portraits never switch to Elder PHG');
  const partial=structuredClone(idle);assert.deepEqual(p.pitPortraitAnimationRegistry('tracker','left',partial),[],'never mirror an unavailable orientation');
 });

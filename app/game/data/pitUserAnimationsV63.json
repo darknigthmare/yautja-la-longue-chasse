@@ -1,0 +1,1022 @@
+[
+  {
+    "fighterId": "greyback",
+    "variantId": "elder-phg-official-unmasked-v63",
+    "bodyHeightPx": 441,
+    "pageBodyHeightPx": {
+      "idle-right": 441,
+      "idle-left": 424
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          107,
+          64,
+          343,
+          452
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          611,
+          62,
+          340,
+          456
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          1123,
+          78,
+          343,
+          440
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          109,
+          561,
+          337,
+          435
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          611,
+          560,
+          347,
+          437
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          1123,
+          558,
+          344,
+          438
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          128,
+          79,
+          301,
+          427
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          611,
+          67,
+          308,
+          438
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          1129,
+          82,
+          300,
+          425
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          109,
+          565,
+          325,
+          420
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          626,
+          554,
+          310,
+          433
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          1133,
+          563,
+          311,
+          423
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "elder-phg-idle-v63",
+      "characterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                501
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                504
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                503
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                442
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                444
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                442
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "greyback",
+    "variantId": "elder-phg-official-unmasked-v63",
+    "bodyHeightPx": 441,
+    "pageBodyHeightPx": {
+      "idle-right": 441,
+      "idle-left": 424
+    },
+    "heldPoseClips": [
+      {
+        "id": "idle",
+        "facing": "right"
+      },
+      {
+        "id": "idle",
+        "facing": "left"
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "elder-phg-stance-v63",
+      "characterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                501
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "user-classic-2010",
+    "variantId": "captured-phg-official-mask-v63",
+    "bodyHeightPx": 448,
+    "pageBodyHeightPx": {
+      "idle-right": 448,
+      "idle-left": 450
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          96,
+          50,
+          350,
+          452
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          606,
+          50,
+          356,
+          452
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          1118,
+          51,
+          359,
+          451
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          94,
+          562,
+          371,
+          448
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          606,
+          562,
+          352,
+          449
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          1118,
+          562,
+          351,
+          449
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          127,
+          64,
+          301,
+          456
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          623,
+          60,
+          308,
+          460
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          0,
+          512,
+          540
+        ],
+        "visibleRect": [
+          1148,
+          65,
+          316,
+          457
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          117,
+          570,
+          311,
+          441
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          629,
+          565,
+          302,
+          446
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          540,
+          512,
+          484
+        ],
+        "visibleRect": [
+          1144,
+          564,
+          310,
+          447
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "captured-phg-idle-v63",
+      "characterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                470
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                470
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "user-classic-2010",
+    "variantId": "captured-phg-official-mask-v63",
+    "bodyHeightPx": 448,
+    "pageBodyHeightPx": {
+      "idle-right": 448,
+      "idle-left": 450
+    },
+    "heldPoseClips": [
+      {
+        "id": "idle",
+        "facing": "right"
+      },
+      {
+        "id": "idle",
+        "facing": "left"
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "captured-phg-stance-v63",
+      "characterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

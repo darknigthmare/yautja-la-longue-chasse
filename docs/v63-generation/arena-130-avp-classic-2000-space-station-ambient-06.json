@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-130-avp-classic-2000-space-station",
+  "id": "ambient-06",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-692a-7751-b7cb-3b41ede4d39a\\exec-eb056332-9c93-45d4-b974-01c34fca7f23.png",
+  "workspacePath": "work-local/v63/generated/arena-130-avp-classic-2000-space-station/ambient-06.png",
+  "sha256": "68388a50ef0130bcfadb9830f7e5305610bf69fafee88c0fb548ee1e1ef49680",
+  "bytes": 2198887,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.5310115814208984,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: genuine native transparent PNG six-frame animation atlas for a side-view2D fighting-game background. Canvas1536x1024 arranged exactly3columns×2rows, each cell512x512. SIX visibly different native drawings with a stable camera, base and scale. Every cell has at least45px completely transparent margins. No grid, labels, lettering, logo, human, creature, full scene, opaque background or black card. Detailed realistic hand-painted dark industrial style, restrained muted lighting. Subject: a small rectangular WALL-MOUNTED industrial service inspection hatch, grey-green worn metal, squared frame, two top hinges, sturdy lever latch atbottom, one small continuously lit amber status lamp fixed at upper-left. Six states: hatch closed, hatch opened20degrees, opened45degrees, fully raised75degrees exposing dark empty recess, lowered45degrees, nearlyclosed20degrees. Anchor/mounting frame and lamp remain identical and same position all six cells. No human or creature inside. The lamp is softly lit continuously, no aggressive blink or flare. Draw correct hinge geometry for a plate opening outward upward; front side camera, original grounded military-station machinery not a certified canonical prop. Frame occupies x95..420,y155..435, opening plate remains inside x75..435,y55..435; transparent beyond frame, no wall or background.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E514"
+  ],
+  "loreLimits": [
+    "Original mechanical exhibition adaptation based on the workbook, not exact canonical machinery."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six independent native gestures inspected, technical alpha and placement checks remain separate.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        71,
+        65,
+        392,
+        351
+      ],
+      "pivot": [
+        273,
+        416
+      ],
+      "margins": [
+        71,
+        65,
+        49,
+        96
+      ],
+      "opaquePixelCount": 120981,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "92adfec770c6f3cef31662e345bf617d6b6810c51041768b60a62acc09605656"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        66,
+        65,
+        418,
+        351
+      ],
+      "pivot": [
+        262.5,
+        416
+      ],
+      "margins": [
+        66,
+        65,
+        28,
+        96
+      ],
+      "opaquePixelCount": 120306,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "093506d9efbf85e9dbd6bbf9fda7c3f710eb8040c862307a1b258684c1b9da34"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        59,
+        65,
+        419,
+        351
+      ],
+      "pivot": [
+        253,
+        416
+      ],
+      "margins": [
+        59,
+        65,
+        34,
+        96
+      ],
+      "opaquePixelCount": 117676,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "29dc2849b6dbc330919fea2457d0ffa4bda641ec1aa555ba97fbd4d43479af86"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        66,
+        26,
+        436,
+        403
+      ],
+      "pivot": [
+        262.5,
+        429
+      ],
+      "margins": [
+        66,
+        26,
+        10,
+        83
+      ],
+      "opaquePixelCount": 141162,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "cd7111e45ffc057720608f79cdd82ce35b5e456703c2b6535c49525e3e481fed"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        69,
+        68,
+        431,
+        347
+      ],
+      "pivot": [
+        265,
+        415
+      ],
+      "margins": [
+        69,
+        68,
+        12,
+        97
+      ],
+      "opaquePixelCount": 119071,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "847a0bd4feb9f719fba0b658f6dbfbe06be00358634a4e5efecf592f934f206c"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        58,
+        66,
+        396,
+        356
+      ],
+      "pivot": [
+        252,
+        422
+      ],
+      "margins": [
+        58,
+        66,
+        58,
+        90
+      ],
+      "opaquePixelCount": 118459,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "e813549e66e22f245f6bada1c38f91c8d66fb4dcdafb6d1f5935668afe2c07fe"
+    }
+  ]
+}

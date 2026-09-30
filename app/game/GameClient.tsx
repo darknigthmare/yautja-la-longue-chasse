@@ -122,6 +122,8 @@ import {
 import {
   HUNTER_ASSET_ROOT_V3,
   hunterBodyFullPath,
+  hunterBodyPartPath,
+  hunterBodyPartPlacement,
   hunterMaskThumbnailPath,
 } from "./hunterVisuals";
 import {
@@ -3987,6 +3989,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                         updateAppearance("bodyMorphId", option.id)
                       }
                     />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection title="Tête du chasseur" detail="Deux modèles conservés · choix indépendant de la morphologie">
+                  {([['reference', 'Anatomie référencée', 'Têtes Classic, Elder, Super et Feral · V62'], ['legacy-clan', 'Ancienne tête du clan', 'Dessin original V3 conservé · aucune identité canonique attribuée']] as const).map(([id, label, detail]) => (
+                    <AppearanceOption key={id} label={label} detail={detail}
+                      art={<svg viewBox="75 0 130 120" width="100%" height="100%" data-head-choice={id} aria-hidden="true"><image href={hunterBodyPartPath(save.appearance.bodyMorphId, 'head', id)} {...(hunterBodyPartPlacement(save.appearance.bodyMorphId, 'head', id) ?? { x: 0, y: 0, width: 256, height: 384 })} /></svg>}
+                      selected={(save.appearance.headStyleId ?? 'reference') === id}
+                      onSelect={() => updateAppearance('headStyleId', id)} />
                   ))}
                 </CustomizationSection>
 

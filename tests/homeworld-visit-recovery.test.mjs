@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ entryPoints: ["app/game/systems/homeworld.ts"], bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveCallback(name, environment) {
@@ -38,12 +38,15 @@ function fixture() {
     bindings: {}, held: { current: new Set() }, touch: { current: {} }, matchesControlAction: () => false,
     gamepadStateRef: { current: createHomeworldGamepadState() }, suspendedRef: { current: false },
     pausedRef: { current: false }, dialogStateRef: { current: null }, actorRef: { current: actor },
+    dreadMotionRef: { current: { angles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: world.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
+    dreadAngles: world.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     spatialCodexOpenRef: { current: false },
     visitedAttempt: { current: null }, pendingVisitOwnerRef: { current: owner }, pendingVisitsRef: { current: new Set() }, pendingVisitCount: 0,
     saveRef: { current: { createdAt: owner, profile: { rankId: "youngblood" }, trophies: [] } }, progressRef: { current: initial },
     rootRef: { current: { contains: () => true } }, document: { hidden: false, hasFocus: () => true },
     navigator: { getGamepads: () => [pad] }, requestAnimationFrame(fn) { frame = fn; return 1; }, cancelAnimationFrame() {},
     setActor() {}, setPhase() {}, setPaused() {}, setInactive() {}, closeDialog() {}, interact() {},
+    setDreadAngles(value) { env.dreadAngles = value; },
     clearInputs() { env.held.current.clear(); env.touch.current = {}; env.gamepadStateRef.current = createHomeworldGamepadState(); },
     setPendingVisitCount(value) { env.pendingVisitCount = value; }, setAnnouncement() {}, onNotify(message) { messages.push(message); },
     setDialog(update) { env.dialogStateRef.current = typeof update === "function" ? update(env.dialogStateRef.current) : update; },

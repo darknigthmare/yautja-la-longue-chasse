@@ -1,0 +1,914 @@
+{
+  "schemaVersion": 1,
+  "release": "V63",
+  "method": "builtin-imagegen",
+  "characters": [
+    {
+      "key": "elder-phg",
+      "fighterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "label": "Hunting Grounds · Elder sans masque · garde native",
+      "sourceCells": [
+        "02_PERSONNAGES!A206:V206",
+        "03_MANQUANTS!A11:L11"
+      ],
+      "referenceUrls": [
+        "https://blog.playstation.com/2020/06/12/june-free-update-now-live-in-predator-hunting-grounds/",
+        "https://live.staticflickr.com/65535/49996764556_c03bc385e7_h.jpg"
+      ],
+      "accepted": [
+        {
+          "id": "portrait",
+          "kind": "portrait",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-4a14fcf1-2997-4196-8595-491993436caa.png",
+          "prompt": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL PS4 Pro screenshot of the ELDER CLASS in Predator: Hunting Grounds published by PlayStation on June12 2020. Recreate that game's unmasked Elder appearance as closely as possible, NOT a new elder and NOT a generic ornate tribal fantasy hunter.\nPreserve the aged pale gray/tan face and forehead pattern, FOUR separate external mouth mandibles with visible teeth and small piercings, black/gray beaded dreadlocks, lean muscular spotted tan skin under black diamond body netting, the compact layered dark-silver armor on his anatomical LEFT chest and shoulder, the much smaller right shoulder protection, the diagonal reddish-brown patterned leather bandolier, bone/bead and small skull necklace, segmented waist protection and leather pouches. Left forearm has its rectangular red-display computer; right forearm has its strapped wrist-blade housing with TWO short retracted blade tips. Keep the compact plasma caster over the anatomical LEFT shoulder, never duplicated. Hands empty, coherent five digits including thumb. Any sheathed belt accessory remains small and faithful, no sword in hands.\nFull body in calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view and waist-level camera. Two legs, two arms, clawed bare feet planted on a common baseline. Hidden shins and back are restrained reconstruction: worn plain dark-metal shin plates and existing netting, no new ornament. Match asymmetrical armor placement and correct anatomical sides. Body proportions realistic, not chibi. Detailed painted game sprite with clear silhouette, restrained neutral lighting, no dramatic colored light.\nPortrait canvas 1024x1536. Entire silhouette including dreadlocks, fingertips, equipment and toes fits within at least70px transparent margins, about82 percent canvas height. One character only. True transparent alpha background; no backdrop, floor, shadow, text, labels, logo, watermark, border, references or additional figures.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "src": "/game/sprites/v63/fighters/elder-phg/portrait.png",
+          "sha256": "e83f410692b13213c529f0125c03e689def0c67115709b677bc7cbf14bf87a86",
+          "bytes": 2223577,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                1024,
+                1536
+              ],
+              "pivot": [
+                512,
+                1503
+              ],
+              "alphaBounds": [
+                138,
+                48,
+                759,
+                1457
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 1503,
+              "frameSha256": "29508d0e4ce79938b59dcd0a9c18db31ee00a9a372e71bbaa028ab4d0aeb3203",
+              "transparentFraction": 0.6505896250406901
+            }
+          ]
+        },
+        {
+          "id": "idle-right",
+          "kind": "idle",
+          "facing": "right",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-9a7d5726-a5e3-41aa-8730-e270cd3e7c25.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: the UNMASKED ELDER CLASS of Predator: Hunting Grounds, with the same aged patterned gray/tan forehead, FOUR exterior mandibles, orange eyes, dark gray cuffed dreadlocks, diamond netting, patterned reddish leather bandolier and small skull/bead necklace from Image1. Left chest layered silver armor, right chest mostly netted. Preserve face—not a human, ogre or generic monster. Do not add a helmet.\nALL SIX FRAMES FACE SCREEN RIGHT. Head, shoulders and forward toes read clearly toward RIGHT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ],
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-right.png",
+          "sha256": "dc28d1f1f9f61bc5ec973e2e4684be837e6cab25292b3bca230f0b08123e950c",
+          "bytes": 2262452,
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "alphaBounds": [
+                107,
+                64,
+                343,
+                452
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 515,
+              "frameSha256": "68e815384bc3fe27510cbc06b72004a57ffe087324aaaefae5b6ee428246d997",
+              "transparentFraction": 0.7352322048611111
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "alphaBounds": [
+                99,
+                62,
+                340,
+                456
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 515,
+              "frameSha256": "820d2448a02ebb53b76470a358bf199666316eee615f4106a9064f7df2b27154",
+              "transparentFraction": 0.7321325231481481
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                515
+              ],
+              "alphaBounds": [
+                99,
+                78,
+                343,
+                440
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 515,
+              "frameSha256": "4aa4a1be0b9708fefdb9cea02fd974f637bc906a2de948d96a67877eaee15c34",
+              "transparentFraction": 0.7355396412037037
+            },
+            {
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "alphaBounds": [
+                109,
+                21,
+                337,
+                435
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 455,
+              "frameSha256": "eb2f8e2684049f038fb4ab012e1bab24dd431b417098d08cea617a5e67f90798",
+              "transparentFraction": 0.7024430204028925
+            },
+            {
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "alphaBounds": [
+                99,
+                20,
+                347,
+                437
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 455,
+              "frameSha256": "50b37011e0b3800b81d88041218084aecf4f7b991d704ece18b7da30319a4952",
+              "transparentFraction": 0.707479177427686
+            },
+            {
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                455
+              ],
+              "alphaBounds": [
+                99,
+                18,
+                344,
+                438
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 455,
+              "frameSha256": "3e0e813fa74e6239c102aac6518954c2bb8997bbca36e2c735bd4cff5cfe191b",
+              "transparentFraction": 0.7109011815599173
+            }
+          ]
+        },
+        {
+          "id": "idle-left",
+          "kind": "idle",
+          "facing": "left",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-758f1544-d862-4539-9541-112f1aa2ee57.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: the UNMASKED ELDER CLASS of Predator: Hunting Grounds, with the same aged patterned gray/tan forehead, FOUR exterior mandibles, orange eyes, dark gray cuffed dreadlocks, diamond netting, patterned reddish leather bandolier and small skull/bead necklace from Image1. Left chest layered silver armor, right chest mostly netted. Preserve face—not a human, ogre or generic monster. Do not add a helmet.\nALL SIX FRAMES FACE SCREEN LEFT. Head, shoulders and forward toes read clearly toward LEFT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ],
+          "src": "/game/sprites/v63/fighters/elder-phg/idle-left.png",
+          "sha256": "11de6e484a7a055f0f1312fd662e15861b6f97cf28194da6c0c9dc41083e6898",
+          "bytes": 2187199,
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                501
+              ],
+              "alphaBounds": [
+                128,
+                79,
+                301,
+                427
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 501,
+              "frameSha256": "b50bba68acbcff4ee9a63ba03f0fb3eda1f56ef4aaaf27f57592706c09f22e75",
+              "transparentFraction": 0.7716218171296296
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                504
+              ],
+              "alphaBounds": [
+                99,
+                67,
+                308,
+                438
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 504,
+              "frameSha256": "eaede91b1b108f34f1f9a79a1bdb00e65e82ce49bd278d0a38bc5a4849d331cf",
+              "transparentFraction": 0.7632306134259259
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                503
+              ],
+              "alphaBounds": [
+                105,
+                82,
+                300,
+                425
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 503,
+              "frameSha256": "27898239a847be0cc9f3cb5bd1849ecb477a4bdadc226c2cd7e71a3f003175ed",
+              "transparentFraction": 0.7705801504629629
+            },
+            {
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                442
+              ],
+              "alphaBounds": [
+                109,
+                25,
+                325,
+                420
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 442,
+              "frameSha256": "131b2164414a05ac8b046d0cdbb60de6238d803288ca39b96b7416abe2c05203",
+              "transparentFraction": 0.7371473075929752
+            },
+            {
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                444
+              ],
+              "alphaBounds": [
+                114,
+                14,
+                310,
+                433
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 444,
+              "frameSha256": "206c963801dec2be82f66bcefb35a553e306be3a295e961a8860c7b1597e0211",
+              "transparentFraction": 0.7341046293904959
+            },
+            {
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                442
+              ],
+              "alphaBounds": [
+                109,
+                23,
+                311,
+                423
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 442,
+              "frameSha256": "118a2f8b0e02a2cadda7d62adf65d1688cbb46e356beb87b1ec2a844a8254729",
+              "transparentFraction": 0.7405693117252066
+            }
+          ]
+        }
+      ],
+      "deliveredNativeDrawings": 13,
+      "nativeAnimationClips": 2,
+      "heldFallbackClipsAreNotAnimations": true,
+      "complete18ActionKit": false
+    },
+    {
+      "key": "captured-phg",
+      "fighterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "label": "Hunting Grounds · Captured masqué · garde native",
+      "sourceCells": [
+        "02_PERSONNAGES!A208:V208",
+        "03_MANQUANTS!A13:L13"
+      ],
+      "referenceUrls": [
+        "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "https://store.steampowered.com/app/1847080/Predator_Hunting_Grounds__Hunting_Party_Bundle/",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1847080/ss_4ebbc1badb9563972092231cb1e41b357a7de04e.1920x1080.jpg?t=1764097265"
+      ],
+      "accepted": [
+        {
+          "id": "portrait",
+          "kind": "portrait",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-0ca5ce90-faa2-4d39-9743-4adf39f3eb97.png",
+          "prompt": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL Steam Hunting Party DLC key art. Recreate ONLY the character on the RIGHT labeled CAPTURED, the Captured class of Predator: Hunting Grounds (2021), NOT the two other hunters and not a generic Jungle Hunter.\nPreserve the Captured character's elongated smooth dark-silver classical biomask with the conspicuously damaged, notched and fractured upper edge on its anatomical LEFT side, narrow dark eye slits, long plain lower-face muzzle without teeth or tusks. Long thick black cuffed dreadlocks, pale tan/olive spotted skin, black diamond body netting. Preserve asymmetry: dark-silver layered chest armor on anatomical LEFT pectoral, compact triple-plated LEFT pauldron and shoulder plasma caster; a horizontal leather chest strap crossing the bare netted right chest. Left forearm rectangular computer with small red marks, RIGHT wrist strapped blade housing with TWO short retracted blade tips. Dark simple segmented waist armor and loin protection, worn greaves and clawed bare feet. Hidden shins/back are modest reconstruction consistent with pictured armor. No skull collar or fanciful ornaments, no Mr.Black tusks and no Falconer ridges, no new weapons. Both hands empty, five coherent digits including thumb; wrists continuous with arms.\nOne full-body calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view, waist-level camera. Two arms, two legs; feet planted on common baseline. Preserve anatomical equipment sides. Detailed painted 2D game sprite, realistic muscular proportions, clear silhouette, neutral lighting replacing advertising red/blue light. No toy base.\nPortrait canvas1024x1536, entire silhouette including fingers, blades, dreadlocks and feet comfortably inside at least70px transparent margins, about82 percent canvas height. True transparent alpha. No background, floor, drop shadow, checkerboard, text, logos, names, watermark, border, thumbnail, other hunters or reference strip.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "src": "/game/sprites/v63/fighters/captured-phg/portrait.png",
+          "sha256": "c3519b5f7612732818638b2b5cb296375640a35cfdb9793f536eb8644b4baf1b",
+          "bytes": 2271627,
+          "width": 1024,
+          "height": 1536,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                1024,
+                1536
+              ],
+              "pivot": [
+                512,
+                1498
+              ],
+              "alphaBounds": [
+                134,
+                32,
+                821,
+                1470
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 1498,
+              "frameSha256": "6e74ba5c5369a681d86b843fecf7f9493550576a58bbd7545ac379fb9b22e1f3",
+              "transparentFraction": 0.6617215474446615
+            }
+          ]
+        },
+        {
+          "id": "idle-right",
+          "kind": "idle",
+          "facing": "right",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-7679ffe2-72ba-434f-838b-61a4d8c3dc47.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: CAPTURED class of Predator: Hunting Grounds, same smooth elongated dark-silver classical biomask with damaged fractured upper ridge at anatomical LEFT side, no teeth/tusks and no added tall horns. Cuffed black dreadlocks, pale olive/tan speckled skin, diamond netting, silver plate only on left chest with strap crossing right chest. No skull necklace or shoulder ornament. Keep distinctive mask damage; do not replace with clean Jungle Hunter helmet.\nALL SIX FRAMES FACE SCREEN RIGHT. Head, shoulders and forward toes read clearly toward RIGHT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ],
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-right.png",
+          "sha256": "363e7be6af0173b1d31fdf1f9353f60b93184df92402e9d27495748f004f8c5b",
+          "bytes": 2260070,
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "alphaBounds": [
+                96,
+                50,
+                350,
+                452
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 499,
+              "frameSha256": "28ad51956b3da688c89d0c8e9465b906ed4266a8bb060f3e5ce3f2c2858297af",
+              "transparentFraction": 0.7410951967592593
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "alphaBounds": [
+                94,
+                50,
+                356,
+                452
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 499,
+              "frameSha256": "54ee8c46174955a2637a259195a38dec0d4184016762f755d67e4e2872eb2784",
+              "transparentFraction": 0.740476707175926
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "alphaBounds": [
+                94,
+                51,
+                359,
+                451
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 499,
+              "frameSha256": "3d8368bf815d61df005fe0087fabc3596c386a8c037649886e4e7486b2c9efd8",
+              "transparentFraction": 0.7378797743055555
+            },
+            {
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                94,
+                22,
+                371,
+                448
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 469,
+              "frameSha256": "416277cfb7f8abc7dec6ed8adf321f756087abb1da79da77af956d2313a3202b",
+              "transparentFraction": 0.7065873579545454
+            },
+            {
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                94,
+                22,
+                352,
+                449
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 469,
+              "frameSha256": "5ca7ee53c7181cd8e3ba253b9f9b14537e1a489fc225de2fef4d0bd4fe5c14e4",
+              "transparentFraction": 0.7108204739152892
+            },
+            {
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                470
+              ],
+              "alphaBounds": [
+                94,
+                22,
+                351,
+                449
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 470,
+              "frameSha256": "48ab8f703ffb10739edfb11f3c8fb245971623ac77ae09489dca5055b1260571",
+              "transparentFraction": 0.7124991929235537
+            }
+          ]
+        },
+        {
+          "id": "idle-left",
+          "kind": "idle",
+          "facing": "left",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-ebc15bd4-2eb3-4caa-b067-a703e559124a.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: CAPTURED class of Predator: Hunting Grounds, same smooth elongated dark-silver classical biomask with damaged fractured upper ridge at anatomical LEFT side, no teeth/tusks and no added tall horns. Cuffed black dreadlocks, pale olive/tan speckled skin, diamond netting, silver plate only on left chest with strap crossing right chest. No skull necklace or shoulder ornament. Keep distinctive mask damage; do not replace with clean Jungle Hunter helmet.\nALL SIX FRAMES FACE SCREEN LEFT. Head, shoulders and forward toes read clearly toward LEFT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ],
+          "src": "/game/sprites/v63/fighters/captured-phg/idle-left.png",
+          "sha256": "a35aa592da3740b61571bb3723a97b27e1cf94538a628c3c7474bfea2580c135",
+          "bytes": 2195308,
+          "width": 1536,
+          "height": 1024,
+          "hasAlpha": true,
+          "sourcePixelsModified": false,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "alphaBounds": [
+                127,
+                64,
+                301,
+                456
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 519,
+              "frameSha256": "2e72bea8947231ecb6fa8a56e9f2292e9d28a55bba40a663f31a1d98c1e3c11b",
+              "transparentFraction": 0.7585141782407407
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "alphaBounds": [
+                111,
+                60,
+                308,
+                460
+              ],
+              "maxEdgeAlpha": 1,
+              "supportY": 519,
+              "frameSha256": "2a9bebbe7c5bfddb1ea3f3ad5e3f8b927d7fe10bcf6efbe7174c3151b44b42cc",
+              "transparentFraction": 0.7605830439814815
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                540
+              ],
+              "pivot": [
+                256,
+                519
+              ],
+              "alphaBounds": [
+                124,
+                65,
+                316,
+                457
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 519,
+              "frameSha256": "4dceafd2bb9bf8d871a5a4e9017de4cde265071c2678c775107b158580528987",
+              "transparentFraction": 0.7585322627314814
+            },
+            {
+              "rect": [
+                0,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                117,
+                30,
+                311,
+                441
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 469,
+              "frameSha256": "684a0fc4606ca65692a6314141f8d4323b5182af6ce71112418c6356d339ffe6",
+              "transparentFraction": 0.7421067923553719
+            },
+            {
+              "rect": [
+                512,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                469
+              ],
+              "alphaBounds": [
+                117,
+                25,
+                302,
+                446
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 469,
+              "frameSha256": "d8827b1ccb5dbb3c2fca3903126016d9811b3763175b3173e03b0080e98bee73",
+              "transparentFraction": 0.7380835162706612
+            },
+            {
+              "rect": [
+                1024,
+                540,
+                512,
+                484
+              ],
+              "pivot": [
+                256,
+                470
+              ],
+              "alphaBounds": [
+                120,
+                24,
+                310,
+                447
+              ],
+              "maxEdgeAlpha": 0,
+              "supportY": 470,
+              "frameSha256": "b7df5474a1d7ffe8a7c888a27923c6411ae8158c2a8060abb98ea5c9804790a9",
+              "transparentFraction": 0.7352143595041323
+            }
+          ]
+        }
+      ],
+      "deliveredNativeDrawings": 13,
+      "nativeAnimationClips": 2,
+      "heldFallbackClipsAreNotAnimations": true,
+      "complete18ActionKit": false
+    }
+  ],
+  "rejected": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-cccb3fbe-8620-4934-8c93-9c13a7a20058.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-49432377-930b-44cc-ae33-3994ccbc3ac1.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-71e38b62-b36d-4634-9561-ec125fcde980.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-35a3802a-9067-4b7b-918f-c5720873dce5.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    }
+  ],
+  "loreLimits": [
+    "Game-specific appearances appended to existing identities. Original masks/portraits and default variant ordering remain unchanged.",
+    "Official game upper-body appearance is the reference; hidden shins/back and small surface details are reconstructed, not certified1:1.",
+    "Idle only: two authored6-pose facing cycles per variant. Walking/attacks/results remain incomplete and use a declared native-side held stance.",
+    "Native unequal-height cell rectangles follow the real transparent gutter at y540. No source pixels are resized, cut, recolored, mirrored or rearranged."
+  ],
+  "pngs": 6,
+  "nativeDrawings": 26,
+  "nativeAnimationClips": 4,
+  "newIdentities": 0,
+  "newAppearances": 2,
+  "historicalAssetsPreserved": true,
+  "visualRuntimeReview": {
+    "result": "PASS",
+    "proof": "docs/v63-fighters-runtime-qa.json",
+    "captures": 8,
+    "nativePoses": 24
+  }
+}

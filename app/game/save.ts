@@ -81,6 +81,7 @@ const DEFAULT_LOADOUT: Loadout = {
 export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
   presetId: "jungle-hunter",
   bodyMorphId: "classic",
+  headStyleId: "reference",
   skinId: "ochre-mottle",
   biomaskId: "jungle",
   dreadStyleId: "classic",
@@ -588,6 +589,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     bodyMorphId: isOneOf(source.bodyMorphId, HUNTER_BODY_MORPH_IDS)
       ? source.bodyMorphId
       : DEFAULT_HUNTER_APPEARANCE.bodyMorphId,
+    headStyleId: source.headStyleId === "legacy-clan" ? "legacy-clan" : "reference",
     skinId: isOneOf(source.skinId, HUNTER_SKIN_IDS)
       ? source.skinId
       : DEFAULT_HUNTER_APPEARANCE.skinId,
@@ -630,6 +632,11 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     const matchesAuthoredModules =
       source.presetId === expected.presetId &&
       source.bodyMorphId === expected.bodyMorphId &&
+      // Before V63 the head choice was implicit. An invalid explicit choice
+      // must not keep a legendary label after its modules were repaired.
+      (source.headStyleId === undefined
+        ? (expected.headStyleId ?? "reference") === "reference"
+        : source.headStyleId === (expected.headStyleId ?? "reference")) &&
       source.skinId === expected.skinId &&
       source.biomaskId === expected.biomaskId &&
       source.dreadStyleId === expected.dreadStyleId &&

@@ -217,6 +217,9 @@ export type DreadStyleId =
 
 export type DreadTintId = "obsidian" | "umber" | "ashen";
 
+/** The preserved V3 head is an original clan design, not a named film likeness. */
+export type HunterHeadStyleId = "reference" | "legacy-clan";
+
 export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
 
 export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
@@ -244,6 +247,7 @@ export interface Loadout {
 export interface HunterAppearance {
   presetId: HunterPresetId;
   bodyMorphId: HunterBodyMorphId;
+  headStyleId?: HunterHeadStyleId;
   skinId: HunterSkinId;
   biomaskId: BiomaskId | null;
   dreadStyleId: DreadStyleId;

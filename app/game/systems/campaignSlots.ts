@@ -4,7 +4,7 @@ import { GAME_CONTENT_VERSION } from "../buildInfo";
 import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION } from "../save";
 import type { SaveGame } from "../types";
 import { archiveTransferPending } from "./archiveTransferGuard";
-import { withArchiveTransferLock, type ArchiveStorage } from "./archiveTransaction";
+import { applyArchiveTransaction, withArchiveTransferLock, type ArchiveStorage, type ArchiveReplacement } from "./archiveTransaction";
 import { createCompleteArchive, importCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, COMPLETE_ARCHIVE_FORMAT, type CompleteArchive } from "./completeArchive";
 import { createDefaultShipProgression, SHIP_PROGRESSION_STORAGE_KEY, SHIP_PROGRESSION_VERSION } from "./progression";
 import { ACTIVE_HUNT_STORAGE_KEY, ACTIVE_HUNT_SAVE_VERSION } from "./activeHuntSave";
@@ -39,6 +39,7 @@ export interface CampaignSlotCatalog {
   status: "ready" | "blocked" | "unavailable"; failure: CampaignSlotFailure | null;
   slots: CampaignSlotSummary[]; activeSlotId: CampaignSlotId | null;
   legacy: "empty" | "available" | "migrated" | "blocked";
+  workspaceRecoveryAvailable?: boolean;
 }
 export interface CampaignSlotResult {
   ok: boolean; failure: CampaignSlotFailure | null; message: string; catalog: CampaignSlotCatalog;
@@ -136,7 +137,10 @@ export function loadCampaignSlots(storage: ArchiveStorage | null = browserStorag
         label: doc.label, checkpoints: doc.checkpoints.map(summary), lastCheckpointId: doc.lastCheckpointId, failure: null, recoveryAvailable: false }
         : { ...empty(id), status: read.failure ? "blocked" : "empty", ownerCreatedAt: read.recovery?.ownerCreatedAt ?? null, failure: read.failure, recoveryAvailable: !!read.recovery };
     }
-    const current = readWorkingCampaign(storage);
+    let current: ReturnType<typeof readWorkingCampaign>;
+    try { current = readWorkingCampaign(storage); }
+    catch(error) { catalog.workspaceRecoveryAvailable = error instanceof Refusal && error.failure === "protected-save"; throw error; }
+    catalog.workspaceRecoveryAvailable = current.recovered;
     if (current.save) {
       const owned = catalog.slots.filter(s => s.ownerCreatedAt === current.save!.createdAt);
       if (owned.length > 1) fail("owner-conflict", "Plusieurs parties revendiquent la même identité.");
@@ -316,6 +320,12 @@ export async function createCampaignSlot(id: CampaignSlotId, name = "", storage:
     if (catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "Le stockage courant est protégé.");
     if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la partie existante dans un emplacement.");
     if (catalog.slots[id - 1].status !== "empty" || data.getItem(campaignSlotStorageKey(id)) !== null) fail("slot-occupied", "Cette partie est déjà occupée ; aucune donnée n’est remplacée.");
+    const doc = newCampaignDocument(id, name, catalog);
+    persistSlot(data, doc, null);
+    return { slotId: id, checkpoint: doc.checkpoints[0] };
+  });
+}
+function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog): SlotDocument {
     if (typeof name !== "string" || name.length > 80) fail("invalid-slot", "Le nom de partie est invalide.");
     const owners = new Set(catalog.slots.map(s => s.ownerCreatedAt));
     let timestamp = Date.now(); while (owners.has(new Date(timestamp).toISOString())) timestamp++;
@@ -325,10 +335,105 @@ export async function createCampaignSlot(id: CampaignSlotId, name = "", storage:
     const archive: CompleteArchive = { format: COMPLETE_ARCHIVE_FORMAT, version: 1, contentVersion: GAME_CONTENT_VERSION,
       exportedAt: new Date().toISOString(), campaign: save,
       attachments: { activeHunt: null, shipProgression: createDefaultShipProgression(save), pit: null, pitReplay: null } };
-    const doc = initialDocument(id, checkArchive(JSON.stringify(archive)), name, "prologue");
-    persistSlot(data, doc, null);
-    return { slotId: id, checkpoint: doc.checkpoints[0] };
+    return initialDocument(id, checkArchive(JSON.stringify(archive)), name, "prologue");
+}
+function rejectFutureTargets(replacements: ArchiveReplacement[], owner: string): void {
+  for (const entry of replacements) {
+    if (!entry.before) continue;
+    let value: unknown; try { value = JSON.parse(entry.before); } catch { continue; }
+    const max = entry.key === ACTIVE_HUNT_STORAGE_KEY ? ACTIVE_HUNT_SAVE_VERSION : entry.key === SHIP_PROGRESSION_STORAGE_KEY ? SHIP_PROGRESSION_VERSION
+      : entry.key === pitSaveStorageKey(owner) ? PIT_SAVE_VERSION : entry.key === pitReplayStorageKey(owner) ? PIT_REPLAY_STORAGE_VERSION : SAVE_VERSION;
+    if (record(value) && Number(value.version) > max) fail("future-version", "Une archive plus récente occupe une clé cible. Elle reste intacte.");
+  }
+}
+/** Explicitly confirmed replacement: old campaign, all checkpoints and live
+ * progress survive in an immutable rescue archive. Slot and workspace commit together. */
+export async function replaceCampaignSlot(id: CampaignSlotId, name: string,
+  options: {expectedRevision: number; expectedOwnerCreatedAt: string}, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+  return mutation(storage, data => {
+    if (!options || !Number.isInteger(options.expectedRevision) || !iso(options.expectedOwnerCreatedAt)) fail("save-conflict", "Confirmez de nouveau la partie à remplacer.");
+    const {raw, document: old} = requireSlot(data, id, options.expectedRevision);
+    if(old.ownerCreatedAt !== options.expectedOwnerCreatedAt) fail("owner-conflict", "Le propriétaire de cette partie a changé. Confirmez de nouveau.");
+    if(old.revision >= MAX_REVISION) fail("protected-save", "La révision maximale est atteinte.");
+    const catalog = loadCampaignSlots(data);
+    if(catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "La campagne courante est protégée. Récupérez-la explicitement avant tout remplacement.");
+    if(catalog.legacy === "available") fail("migration-required", "La campagne non attribuée doit être conservée avant un remplacement.");
+    if(readWorkingCampaign(data).recovered) fail("recovery-required", "La campagne courante provient d’un secours. Récupérez-la explicitement avant un remplacement.");
+    const workingBackup=data.getItem(SAVE_STORAGE_KEY+".backup");
+    if(workingBackup!==null && !parseSaveImport(workingBackup).save)fail("protected-save","La copie de secours courante est illisible. Elle n’est pas remplacée.");
+    const key = campaignSlotStorageKey(id), backup = data.getItem(key + ".backup");
+    if(backup !== null) parseSlot(backup, id);
+    let preserved = old;
+    const sourcePreimage = new Map<string,string|null>();
+    if(catalog.activeSlotId === id) {
+      const snapshot = snapshotWorking(data);snapshot.preimage.forEach((value,key)=>sourcePreimage.set(key,value));
+      const latest = checkpoint(snapshot.archive, "auto", old.nextAutoIndex, old.checkpoints.find(c=>c.id===old.lastCheckpointId)!.resumeLocation);
+      preserved = {...old,lastCheckpointId:latest.id,nextAutoIndex:old.nextAutoIndex===1?2:1,checkpoints:[...old.checkpoints.filter(c=>c.id!==latest.id),latest]};
+    } else if(catalog.activeSlotId) {
+      const active=catalog.slots[catalog.activeSlotId-1];
+      replaceCheckpoint(data,active.id,{kind:"auto",expectedRevision:active.revision},sourcePreimage);
+    }
+    const next = {...newCampaignDocument(id,name,catalog),revision:old.revision+1};
+    const desired = next.checkpoints[0].archive;
+    const plan = prepareCompleteArchiveImport(desired,data);
+    rejectFutureTargets(plan.replacements,desired.campaign.createdAt);
+    for(const entry of plan.replacements)if(sourcePreimage.has(entry.key))entry.before=sourcePreimage.get(entry.key)!;
+    if([...sourcePreimage].some(([key,value])=>data.getItem(key)!==value))fail("save-conflict","La campagne a changé pendant la préparation.");
+    const rescueKey = key + ".replaced." + encodeURIComponent(old.ownerCreatedAt);
+    const rescueRaw = JSON.stringify({format:"yautja-replaced-campaign",version:1,slot:old,latest:preserved.checkpoints.find(c=>c.id===preserved.lastCheckpointId)!.archive});
+    const existingRescue = data.getItem(rescueKey);
+    if(existingRescue !== null && existingRescue !== rescueRaw)fail("protected-save","Une archive de secours de cette ancienne campagne existe déjà. Elle n’est pas écrasée.");
+    const replacements: ArchiveReplacement[] = [
+      {key:rescueKey,before:existingRescue,after:rescueRaw}, {key:key+".backup",before:backup,after:JSON.stringify(preserved)},
+      {key,before:raw,after:JSON.stringify(next)}, ...plan.replacements,
+    ];
+    const result=applyArchiveTransaction(data,replacements);
+    if(!result.persisted)fail(result.recovery.status==="blocked"?"recovery-required":"write-failed",result.recovery.message);
+    return {slotId:id,checkpoint:next.checkpoints[0],save:desired.campaign};
   });
+}
+/** Recover a readable checkpoint while quarantining the damaged workspace.
+ * Future formats are never downgraded, even after a recovery confirmation. */
+export async function recoverCampaignWorkspace(id: CampaignSlotId, checkpointId: CampaignCheckpointId,
+  options: {expectedRevision:number}, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+  return mutation(storage,data=>{
+    const {raw:targetRaw,document:target}=requireSlot(data,id,options?.expectedRevision);
+    if(!options || !Number.isInteger(options.expectedRevision))fail("save-conflict","Une révision confirmée est requise.");
+    const chosen=target.checkpoints.find(c=>c.id===checkpointId);if(!chosen)fail("missing-checkpoint","Cette sauvegarde est absente.");
+    const catalog=loadCampaignSlots(data);
+    if(catalog.failure==="future-version")fail("future-version","La campagne courante vient d’une version plus récente. Aucun retour à une ancienne version n’est autorisé.");
+    let recovered=false;try{recovered=readWorkingCampaign(data).recovered;}catch(error){if(!(error instanceof Refusal)||error.failure!=="protected-save")throw error;recovered=true;}
+    if(!recovered)fail("protected-save","Aucune campagne endommagée ne justifie cette récupération. Utilisez le chargement normal.");
+    const plan=prepareCompleteArchiveImport(chosen.archive,data);rejectFutureTargets(plan.replacements,target.ownerCreatedAt);
+    const original=plan.replacements.map(entry=>({key:entry.key,raw:entry.before}));
+    const rescueKey=SLOT_PREFIX+"workspace-recovery."+globalThis.crypto.randomUUID();
+    guardedSet(data,rescueKey,JSON.stringify({format:"yautja-protected-workspace",version:1,original}),null);
+    if(data.getItem(campaignSlotStorageKey(id))!==targetRaw)fail("save-conflict","La sauvegarde de récupération a changé.");
+    const result=importCompleteArchive(plan,data);
+    if(!result.persisted)fail(result.recovery.status==="blocked"?"recovery-required":"write-failed",result.recovery.message);
+    return {slotId:id,checkpoint:chosen,save:chosen.archive.campaign};
+  });
+}
+/** Last-resort, explicitly confirmed new start. No readable campaign or future
+ * document may be sacrificed. Raw damaged bytes survive in the same transaction. */
+export async function recoverAsNewCampaignSlot(id: CampaignSlotId,name:string,storage:ArchiveStorage|null=browserStorage()):Promise<CampaignSlotResult>{
+ return mutation(storage,data=>{
+  if(!slotIdValid(id))fail("invalid-slot","Numéro de partie invalide.");
+  const catalog=loadCampaignSlots(data);
+  if(catalog.failure==="future-version")fail("future-version","Une version future reste protégée ; aucune nouvelle chronique ne la remplace.");
+  if(!catalog.workspaceRecoveryAvailable||catalog.slots.some(slot=>slot.status==="ready"))fail("protected-save","Utilisez un checkpoint lisible ou le menu normal ; cette récupération est réservée aux archives endommagées sans partie lisible.");
+  const key=campaignSlotStorageKey(id),before=data.getItem(key),backup=data.getItem(key+'.backup');
+  if(before!==null||backup!==null||catalog.slots[id-1].status!=="empty")fail("protected-save","Cette récupération exige un emplacement vide ; aucun slot endommagé ou futur n’est remplacé.");
+  for(const raw of [data.getItem(SAVE_STORAGE_KEY),data.getItem(SAVE_STORAGE_KEY+'.backup')])if(raw!==null&&parseSaveImport(raw).save)fail("recovery-required","Une copie de campagne lisible existe. Conservez-la avant une nouvelle chronique.");
+  const next=newCampaignDocument(id,name,catalog),serialized=JSON.stringify(next),desired=next.checkpoints[0].archive;
+  const plan=prepareCompleteArchiveImport(desired,data);rejectFutureTargets(plan.replacements,desired.campaign.createdAt);
+  const replacements:ArchiveReplacement[]=[{key:key+'.backup',before:backup,after:serialized},{key,before,after:serialized},...plan.replacements];
+  const rescueKey=SLOT_PREFIX+'workspace-recovery.'+globalThis.crypto.randomUUID();
+  const rescue=JSON.stringify({format:'yautja-protected-workspace',version:1,original:replacements.map(entry=>({key:entry.key,raw:entry.before}))});
+  const committed=applyArchiveTransaction(data,[{key:rescueKey,before:null,after:rescue},...replacements]);
+  if(!committed.persisted)fail(committed.recovery.status==='blocked'?'recovery-required':'write-failed',committed.recovery.message);
+  return {slotId:id,checkpoint:next.checkpoints[0],save:desired.campaign};
+ });
 }
 export async function saveCampaignCheckpoint(id: CampaignSlotId, options: CampaignCheckpointOptions, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
   return mutation(storage, data => ({ slotId: id, checkpoint: replaceCheckpoint(data, id, options) }));

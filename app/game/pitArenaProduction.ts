@@ -1,3 +1,4 @@
+import { applyPitStageCompositionV63 } from "./pitStageCompositionV63";
 import type { PitArenaAmbientMotion } from "./pitArenaAmbience";
 import productionManifestJson from "./pitArenaProductionData.generated.json";
 import { isPitFirstEditionArenaId, type PitFirstEditionArenaId } from "./systems/pitFirstEdition";
@@ -204,7 +205,8 @@ export function resolvePitArenaProductionKit(
   for (const planeId of PLANE_IDS) {
     const plane = stage.planes.find(entry => entry.id === planeId)!;
     const assets: PitArenaProductionAsset[] = [];
-    for (const asset of plane.assets) {
+    for (const originalAsset of plane.assets) {
+      const asset = applyPitStageCompositionV63(stage.catalogueId, originalAsset);
       const motion = asset.ambientMotion;
       if (motion && (planeId !== "P0" || asset.mode !== "module" || !asset.alphaRequired || asset.animation || asset.frames.length !== 1
         || motion.kind !== "drift-x" || !Number.isFinite(motion.amplitudePx) || motion.amplitudePx < 0 || motion.amplitudePx > 24
@@ -213,7 +215,7 @@ export function resolvePitArenaProductionKit(
       if (asset.requiredForRuntime && !frames.length) return null;
       if (!frames.length) continue;
       // A data typo must not request another arena, a remote URL, or a private source file.
-      if (!isPitArenaAssetPathAuthorized(stage, asset, manifest)) return null;
+      if (!isPitArenaAssetPathAuthorized(stage, originalAsset, manifest)) return null;
       frames.forEach(frame => paths.add(frame.path));
       if (asset.requiredForRuntime) requiredPaths.push(frames[0].path);
       assets.push({ ...asset, frames });

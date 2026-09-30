@@ -8,7 +8,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ entryPoints: ["app/game/systems/homeworldCity.ts"], bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/hunterDreadsV63.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function pollingEffect(environment) {
@@ -43,6 +43,9 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     actorRef: { current: city.createHomeworldActor() }, visitedAttempt: { current: null },
+    dreadMotionRef: { current: { angles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0), velocities: city.HUNTER_DREAD_STRANDS_V63.map(() => 0) } },
+    stepHunterDreadsV63: city.stepHunterDreadsV63,
+    dreadAngles: city.HUNTER_DREAD_STRANDS_V63.map(() => 0),
     rootRef: { current: { contains: element => [world, dialog, ...choices].includes(element) } },
     dialogRef: { current: { querySelectorAll: () => choices } },
     document: { hidden: false, activeElement: world, hasFocus: () => env.windowFocused }, windowFocused: true,
@@ -51,6 +54,7 @@ function fixture() {
     cancelAnimationFrame(id) { frames.delete(id); },
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
     persistVisit() {}, setActor() {}, setPhase() {},
+    setDreadAngles(value) { env.dreadAngles = value; },
     setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; },
     setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current; events.push(["paused", paused]); },
     clearInputs() { env.held.current.clear(); for (const key of Object.keys(env.touch.current)) env.touch.current[key] = false; env.gamepadStateRef.current = createHomeworldGamepadState(); },
@@ -135,6 +139,22 @@ test("dialog up starts at the last enabled choice, wraps and never repeats on re
   f.release(); f.pad.buttons[0].pressed = true; f.tick(4);
   assert.deepEqual(f.events, [["focus", 2], ["focus", 0], ["choose", 0]]);
   assert.equal(nextHomeworldDialogChoice(-1, 0, -1), -1);
+});
+
+test("the live city clock freezes strand position and velocity in pause, then settles after release", () => {
+  const f = fixture(); f.release(); f.pad.axes[0] = 1; f.tick(30);
+  assert(f.env.dreadAngles.some(angle => angle > .01), "real movement drives the actual spring function");
+  f.pad.buttons[9].pressed = true; f.tick(2);
+  assert.equal(f.env.pausedRef.current, true);
+  const paused = structuredClone(f.env.dreadMotionRef.current), drawn = [...f.env.dreadAngles];
+  f.tick(60);
+  assert.deepEqual(f.env.dreadMotionRef.current, paused, "pause preserves spring velocities as well as angles");
+  assert.deepEqual(f.env.dreadAngles, drawn, "no paused frame changes rendered strands");
+  f.release(); f.pad.buttons[9].pressed = true; f.tick(2);
+  assert.equal(f.env.pausedRef.current, false);
+  f.release(); f.tick(240);
+  assert(f.env.dreadAngles.every(angle => Math.abs(angle) < .001), "released motion decays to the scalp's rest orientation");
+  assert(f.env.dreadMotionRef.current.velocities.every(velocity => Math.abs(velocity) < .001));
 });
 
 test("closing a dialogue by B cannot start walking on its still-held stick", () => {

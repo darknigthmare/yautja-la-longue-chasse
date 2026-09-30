@@ -658,6 +658,10 @@ function drawArena(
   canvas.dataset.pitStageLifeV62Actors = String(backdropReport.stageLifeV62?.actorsDrawn ?? 0);
   canvas.dataset.pitStageLifeV62Events = JSON.stringify(backdropReport.stageLifeV62?.events ?? []);
   canvas.dataset.pitStageLifeV62Missing = JSON.stringify(backdropReport.stageLifeV62?.missingPaths ?? []);
+  canvas.dataset.pitStageLifeV63Stage = backdropReport.stageLifeV63?.stageId ?? "";
+  canvas.dataset.pitStageLifeV63Actors = String(backdropReport.stageLifeV63?.actorsDrawn ?? 0);
+  canvas.dataset.pitStageLifeV63Events = JSON.stringify(backdropReport.stageLifeV63?.events ?? []);
+  canvas.dataset.pitStageLifeV63Missing = JSON.stringify(backdropReport.stageLifeV63?.missingPaths ?? []);
   canvas.dataset.pitStageStoryV61Stage = backdropReport.stageStoryV61?.stageId ?? "";
   canvas.dataset.pitStageStoryV61Actors = String(backdropReport.stageStoryV61?.actorsDrawn ?? 0);
   canvas.dataset.pitStageStoryV61Events = JSON.stringify(backdropReport.stageStoryV61?.events ?? []);

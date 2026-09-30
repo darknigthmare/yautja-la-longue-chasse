@@ -21,6 +21,7 @@ import { createHomeworldGamepadState, stepHomeworldGamepad, nextHomeworldDialogC
 import HomeworldCityScene from "./HomeworldCityScene";
 import HomeworldSpatialCodex from "./HomeworldSpatialCodex";
 import HomeworldModularHunter from "./HomeworldModularHunter";
+import { HUNTER_DREAD_STRANDS_V63, stepHunterDreadsV63, type DreadMotion } from "./hunterDreadsV63";
 import styles from "./HomeworldCity.module.css";
 
 export interface HomeworldHubProps {
@@ -41,6 +42,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
   const [actor, setActor] = useState(createHomeworldActor);
   const actorRef = useRef(actor);
   const [phase, setPhase] = useState(0);
+  const [dreadAngles, setDreadAngles] = useState<number[]>(() => HUNTER_DREAD_STRANDS_V63.map(() => 0));
+  const dreadMotionRef = useRef<DreadMotion>({ angles: dreadAngles, velocities: HUNTER_DREAD_STRANDS_V63.map(() => 0) });
   const [viewportSize, setViewportSize] = useState({ width: 1000, height: 580 });
   const [paused, setPaused] = useState(false);
   const [inactive, setInactive] = useState(false);
@@ -244,13 +247,16 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         const next = stepHomeworldActor(actorRef.current, { moveX: Number(right) - Number(left), climb: Number(down) - Number(up), jumpPressed: jump && !jumpWasPressed }, dt);
         jumpWasPressed = jump;
         actorRef.current = next;
+        // Same bounded springs as the hunt renderer, advanced only by this
+        // active simulation clock: braking settles, pause freezes every strand.
+        dreadMotionRef.current = stepHunterDreadsV63(dreadMotionRef.current, dt, next.vx * next.facing, next.vy);
         clock += dt;
         const entered = districtAtHomeworldActor(next);
         if (entered && visitedAttempt.current !== entered.id) {
           visitedAttempt.current = entered.id;
           persistVisit(entered.id);
         }
-        if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); renderedAt = time; }
+        if (time - renderedAt >= 1000 / 30) { setActor(next); setPhase(clock); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
       } else jumpWasPressed = false;
       request = requestAnimationFrame(frame);
     };
@@ -364,7 +370,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, onProgre
         <HomeworldCityScene actorPosition={actor} youthWelcome={youthWelcome} selectedShipId={selectedShipId} activeDoorId={activeDoorId} fadedFrontPropIds={fadedFrontPropIds} trophies={save.trophies} />
         <div className={styles.hero} data-homeworld-actor="true" data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={actorSpeed > 5} data-facing={actor.facing} style={{ transform: `translate(${actor.x}px,${actor.y + heroBob}px)`, zIndex: Math.round(actor.y) }}>
           {!youthWelcome && heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
-            morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} /> : <img
+            morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles} /> : <img
             className={styles.heroPlate}
             src={heroPlate.src}
             alt=""

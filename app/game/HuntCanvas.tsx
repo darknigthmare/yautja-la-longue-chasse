@@ -62,7 +62,8 @@ import {
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
-import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, stepHunterDreadsV63 } from "./hunterDreadsV63";
 import {
   ageTracks,
   GUARDIAN_ADAPTATION,
@@ -2948,18 +2949,7 @@ interface RegisteredLayerOptions {
   translateY?: number;
 }
 
-const HUNTER_DREAD_ROOT = { x: 143, y: 43 } as const;
 const HUNTER_HAND_WEAPON_PIVOT = { x: 218, y: 229 } as const;
-
-const HUNTER_DREAD_STRANDS = [
-  { x: -12, y: 3, rest: -0.209, scale: 0.88, mirror: false },
-  { x: -8, y: -1, rest: -0.14, scale: 0.96, mirror: false },
-  { x: -4, y: -4, rest: -0.07, scale: 1.04, mirror: false },
-  { x: 0, y: -5, rest: 0, scale: 1.08, mirror: false },
-  { x: 4, y: -3, rest: 0.07, scale: 1.02, mirror: false },
-  { x: 8, y: 2, rest: -0.175, scale: 0.72, mirror: false },
-  { x: 12, y: 7, rest: -0.279, scale: 0.62, mirror: false },
-] as const;
 
 const HUNTER_GEAR_SLOT_OFFSETS = [
   { x: -24, y: 5 },
@@ -3175,7 +3165,7 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId) },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId) },
   );
   if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
@@ -3442,9 +3432,7 @@ function drawHunterLayered(
 
   // Calques arrière : dreadlocks et bras articulé du plasmacaster.
   if (assets.hunterDreads) {
-    HUNTER_DREAD_STRANDS.forEach((strand, index) => {
-      const dreadSwing =
-        player.dreadAngles[index % Math.max(1, player.dreadAngles.length)] ?? 0;
+    solveHunterDreadsV63(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
       drawRegisteredLayer(
         context,
         assets.hunterDreads,
@@ -3453,11 +3441,11 @@ function drawHunterLayered(
         {
           filter: dreadFilter(appearance.dreadTintId),
           pivot: HUNTER_DREAD_ROOT,
-          rotation: strand.rest + dreadSwing * 0.55,
-          scaleX: strand.mirror ? -strand.scale : strand.scale,
+          rotation: strand.angle,
+          scaleX: strand.scale,
           scaleY: strand.scale,
-          translateX: strand.x + HUNTER_HEAD_DREAD_OFFSET_V62.x,
-          translateY: strand.y + HUNTER_HEAD_DREAD_OFFSET_V62.y,
+          translateX: strand.x,
+          translateY: strand.y,
         },
       );
     });
@@ -7156,22 +7144,9 @@ function updateHunterRig(player: PlayerState, delta: number, extracting: boolean
   player.bladeExtension +=
     (bladesTarget - player.bladeExtension) * Math.min(1, delta * 18);
 
-  const localSpeed = player.velocityX * player.facing;
-  const jumpForce = clamp(player.velocityY / 1_300, -0.42, 0.42);
-  for (let index = 0; index < player.dreadAngles.length; index += 1) {
-    const weight = 0.7 + index * 0.13;
-    const target =
-      clamp(-localSpeed / 860, -0.42, 0.42) * weight +
-      jumpForce * (0.45 + index * 0.1) +
-      Math.sin(index * 1.7 + player.x * 0.008) * 0.025;
-    const velocity =
-      (player.dreadVelocities[index] ?? 0) +
-      (target - (player.dreadAngles[index] ?? 0)) * (19 - index * 1.2) * delta;
-    player.dreadVelocities[index] = velocity * Math.exp(-7.2 * delta);
-    player.dreadAngles[index] =
-      (player.dreadAngles[index] ?? 0) +
-      player.dreadVelocities[index] * delta;
-  }
+  const dreads = stepHunterDreadsV63({ angles: player.dreadAngles, velocities: player.dreadVelocities }, delta, player.velocityX * player.facing, player.velocityY);
+  player.dreadAngles = dreads.angles;
+  player.dreadVelocities = dreads.velocities;
 }
 
 /** Apply one decision from the shared jump controller to the live actor. */
@@ -9680,7 +9655,7 @@ export default function HuntCanvas({
     });
     for (const partId of HUNTER_BODY_PART_IDS) {
       queueImage(
-        hunterBodyPartPath(appearance.bodyMorphId, partId),
+        hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId),
         (image) => {
           assets.hunterBodyParts[partId] = image;
         },

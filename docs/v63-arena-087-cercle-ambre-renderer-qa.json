@@ -1,0 +1,978 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-087-cercle-ambre",
+  "checkedAt": "2026-09-30T22:36:55.905Z",
+  "compositionDigest": "791867335cd8a100ac7f8f435c06bed05243027dba712ea4c60c98b33c725cd7",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "1c9629f792a7ff97dd37582a2400290e0047e477a6c0c7f61ec14168a62feb8f",
+    "app/game/pitArenaProduction.ts": "b35d28c21ee173b5b0d385b6e08ef085e10b7c75f4fef93734d645fcd8a4b11e",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV63.ts": "a6920fcebc2fc166e2eef92b8d7592b5acde82eec7ad0ab382dd81189ad0b7f2",
+    "app/game/pitStageLifeDirectorV63.ts": "0f6f091487bb9d9e31de051212eb6a91b2a8a7ddb661c35cea8d35dcdf362cd8",
+    "app/game/pitStageLifeRenderingV63.ts": "2fab9d67b019d927bf3f62ff881bd62c4616a67f7ce88c5941a49067fb040351",
+    "app/game/pitStageCompositionV63.ts": "bd26ea648513d2fffe3473c01dfd903c90b6b0f8227c0bed29eb69008b1e6192",
+    "app/game/data/pitStageCompositionV63.json": "d913c3910e52fb01b1efa7a21b7b8123db3431cf5ab53978df85ed016cc64845",
+    "scripts/verify-pit-stage-composition-v63.mjs": "65e78854abbb3307e5a6c1c815a835daf68dc3f5c80893895338c04767dbf78f",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "44d3a06d0355a204bdbd2aee3ee0c29425f5969f6359320b612d457ec6fe1b32",
+    "app/game/data/pitStageLifeV63.json": "3df78b5068a25b46b30d514962ce56504dd0e2e66bf013bc70c0414de0469ab6",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "compositionOverlay": [
+      {
+        "stageId": "arena-087-cercle-ambre",
+        "assetId": "p4-p4-b-front-fascia",
+        "sourceSha256": "141f81f50596b53c6fcb8db39dafb22dad11ada02c344c947ba34da1b9b66c1a",
+        "sourceCrop": {
+          "x": 100,
+          "y": 146,
+          "width": 1972,
+          "height": 109
+        },
+        "placements": [
+          {
+            "x": 0,
+            "y": 454,
+            "width": 1280,
+            "height": 160
+          }
+        ]
+      }
+    ],
+    "production": {
+      "number": 87,
+      "catalogueId": "arena-087-cercle-ambre",
+      "assetDirectory": "/game/sprites/v42/pit-arenas/arena-087-cercle-ambre",
+      "name": "Cercle Ambre",
+      "setting": "Sol translucide et silhouettes lointaines fixes",
+      "wave": "pure-duel",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "pending-dedicated-conversation",
+      "runtimeEnabled": true,
+      "planes": [
+        {
+          "id": "P0",
+          "role": "ciel ou profondeur atmosphérique",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Profondeur originale propre à cette composition",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": -160,
+                  "y": -100,
+                  "width": 1280,
+                  "height": 700
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v42/pit-arenas/arena-087-cercle-ambre/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v42/pit-arenas/arena-087-cercle-ambre/receipt-p0-depth.json",
+                    "sha256": "0956dc613faab071f2dfcc78bb28a4be9d7e6223722396bb8622dd474db4352b",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v42/pit-arenas/arena-087-cercle-ambre/p0-visual-review.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "silhouettes et repères lointains",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-p1-a-distant-left",
+              "role": "Repère éloigné gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": -130,
+                  "y": 145,
+                  "width": 280,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p1-a-distant-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p1-a-distant-left-6533fcb7f418.json",
+                    "sha256": "6533fcb7f418b3c101740866b4ea6c22975509eaaa3595f006cfbae5efdde236",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 77,
+                      "y": 9,
+                      "width": 873,
+                      "height": 1450
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p1-a-distant-left"
+            },
+            {
+              "id": "p1-p1-b-distant-right",
+              "role": "Repère éloigné droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.38,
+              "placements": [
+                {
+                  "x": 810,
+                  "y": 145,
+                  "width": 280,
+                  "height": 450
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p1-b-distant-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p1-b-distant-right-a55f3d6b282a.json",
+                    "sha256": "a55f3d6b282ae47ea908879d4247a57902abe4d4da0288a8c65f6581656be7ca",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 227,
+                      "y": 19,
+                      "width": 1082,
+                      "height": 981
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p1-b-distant-right"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "architecture de fond",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-p2-a-support-left",
+              "role": "Support architectural gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": -115,
+                  "y": 100,
+                  "width": 210,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-a-support-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/receipt-p2-a-support-left-8dddbb5cc24b.json",
+                    "sha256": "8dddbb5cc24b6d8fa007a2c3a931869f5630d4005fb17fbb9836ec1b11d8b271",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 269,
+                      "y": 13,
+                      "width": 491,
+                      "height": 1509
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-012-balcon-du-roi-de-la-chasse-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-012-balcon-du-roi-de-la-chasse/p2-a-support-left"
+            },
+            {
+              "id": "p2-p2-b-support-right",
+              "role": "Support architectural droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.68,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 865,
+                  "y": 100,
+                  "width": 210,
+                  "height": 328
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/p2-b-support-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/arena-012-balcon-du-roi-de-la-chasse/receipt-p2-b-support-right-d6a9ddcac419.json",
+                    "sha256": "d6a9ddcac419f0116684157406f211054dfb2453aa9dcb7e93422a8a9930882c",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 108,
+                      "y": 52,
+                      "width": 872,
+                      "height": 1433
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-arena-012-balcon-du-roi-de-la-chasse-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-012-balcon-du-roi-de-la-chasse/p2-b-support-right"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "activité médiane et public",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-p3-a-prop-left",
+              "role": "Accessoire de sol gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 190,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-a-prop-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p3-a-prop-left-64ff81959c05.json",
+                    "sha256": "64ff81959c054e2d73573c043a1db0f88a6e5453ad7575c7cdcca52bba14c92d",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 438,
+                      "y": 22,
+                      "width": 699,
+                      "height": 965
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p3-a-prop-left"
+            },
+            {
+              "id": "p3-p3-b-prop-right",
+              "role": "Accessoire de sol droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "anchorToGround": true,
+              "placements": [
+                {
+                  "x": 665,
+                  "y": 349,
+                  "width": 105,
+                  "height": 79
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p3-b-prop-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p3-b-prop-right-8090f64b292b.json",
+                    "sha256": "8090f64b292b899b49c9f88d44013ecccfba5edb9fa7f4b2731a8bf816e09c1e",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 42,
+                      "y": 94,
+                      "width": 1456,
+                      "height": 807
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p3-b-prop-right"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "sol de combat, ruptures et props actifs",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-p4-a-contact-floor",
+              "role": "Sol de contact",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "sourceCrop": {
+                "x": 69,
+                "y": 288,
+                "width": 2041,
+                "height": 184
+              },
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 640,
+                  "height": 35
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p4-a-contact-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p4-a-contact-floor-2143ecbced77.json",
+                    "sha256": "2143ecbced7721d856db57079ac369f407d0a7b789bc357daf1e24f7d877ffc1",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 57,
+                      "y": 276,
+                      "width": 2058,
+                      "height": 196
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p4-a-contact-floor"
+            },
+            {
+              "id": "p4-p4-b-front-fascia",
+              "role": "Façade du sol",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 454,
+                  "width": 1280,
+                  "height": 110
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p4-b-front-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p4-b-front-fascia-141f81f50596.json",
+                    "sha256": "141f81f50596b53c6fcb8db39dafb22dad11ada02c344c947ba34da1b9b66c1a",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 16,
+                      "y": 109,
+                      "width": 2139,
+                      "height": 579
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p4-b-front-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "avant-plan occultant avec fondu de lisibilité",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-p5-a-foreground-left",
+              "role": "Premier plan gauche",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": -70,
+                  "y": -20,
+                  "width": 130,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p5-a-foreground-left.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p5-a-foreground-left-da4430392b52.json",
+                    "sha256": "da4430392b525c56765f04b92807c5b4f13d5ed70438bc252e1b355459a212d1",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 54,
+                      "y": 0,
+                      "width": 203,
+                      "height": 1387
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p5-a-foreground-left"
+            },
+            {
+              "id": "p5-p5-b-foreground-right",
+              "role": "Premier plan droit",
+              "contour": "Silhouette individuelle inspectée, marges/cadrage mesurés; aucun étirement.",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 1,
+              "verticalAlign": "top",
+              "placements": [
+                {
+                  "x": 900,
+                  "y": -20,
+                  "width": 130,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v34/pit-arenas/glass-terrace/p5-b-foreground-right.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v34/pit-arenas/glass-terrace/receipt-p5-b-foreground-right-6c7bd2eecf72.json",
+                    "sha256": "6c7bd2eecf720943172ce40e61f7a31ab2a0a9ea69ef3206c7352b131d2669b0",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 630,
+                      "y": 0,
+                      "width": 838,
+                      "height": 1011
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v34-glass-terrace-art-review.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v42-arena-application-dev-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-006-terrasse-de-verre/p5-b-foreground-right"
+            }
+          ]
+        }
+      ],
+      "compositionContract": "v42-explicit-shared-library-compositions",
+      "signatureBacklog": [],
+      "runtimeExtension": {
+        "arenaId": "arena-087-cercle-ambre",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v42-arena-087-cercle-ambre-renderer-qa.json",
+        "applicationEvidence": "docs/v42-arena-application-dev-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v42-arena-composition-visual-review.json",
+        "digest": "d5ea52f71141c662725c496dc61ea948a443d608d92229bae24f68ee2c85413a"
+      }
+    },
+    "life": null,
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [],
+  "loaded": {
+    "independentKit": true,
+    "images": 11,
+    "expectedImages": 11,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV63Ambient": false,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 0,
+      "lifeEvents": [],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\center.png",
+      "sha256": "7a1fffb42d68331486c1bb66837561f3af94f10532f052157ff73bb0cbe7120a"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\left-corner.png",
+      "sha256": "a0cda35a49a14cbaeb8e20f6e01f3c7e54e0b39ce49951a8d2368406405c2e30"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\right-corner.png",
+      "sha256": "821362dac88579ee1ff93a0ab29fdfc6c581a9c7683a6bf2516ca690945eea98"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\wide.png",
+      "sha256": "7bb131299afaf213f0ca99a2c3f74e84c52cafb1cf153d1f524ea0350f0e345e"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\close.png",
+      "sha256": "2c8872669eb1322961db01d6d180ac61167c35c85488ed4fecb2f583a3782b13"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\reduced-motion.png",
+      "sha256": "4a69a7b75d9920ee98d558067090466268a8c98356beffc82f8799e82247b272"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\high-contrast.png",
+      "sha256": "08e90c813627dcacf479953a5e4bdd04bbf9c627f90c01133851f09f9996975f"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\actual-game-camera.png",
+      "sha256": "ef3b43df98da22259a387364cc6895e945ab5f8722caf02bb8b102da2a075a2e"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v63\\qa\\stages\\renderer\\arena-087-cercle-ambre\\mobile-canvas.png",
+      "sha256": "abd7f95c7c456e835fc8411600c03810e4d5f9551830278c78fb960c94703fa6"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

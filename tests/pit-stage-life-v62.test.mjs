@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fs from 'node:fs/promises';
 import { build } from 'esbuild';
-const bundle=await build({stdin:{contents:`export * from './app/game/pitStageLifeV62';export * from './app/game/pitStageLifeDirectorV60';export * from './app/game/pitStageLifeRenderingV61';export {getPitArenaArtPaths,loadPitArenaArt} from './app/game/pitArenaRendering';export {getPitArenaLifePaths} from './app/game/pitArenaLife';export {resolvePitArenaProductionKit} from './app/game/pitArenaProduction';export {PIT_ARENAS,createPitCombatState,serializePitCombat} from './app/game/systems/pitCombat';export {getPitArenaCatalogueEntry} from './app/game/systems/pitArenaCatalogue';export {PIT_ALL_LORE_STAGE_DEFINITIONS} from './app/game/systems/pitLoreStages';export {PIT_CHARACTER_STAGE_COVERAGE} from './app/game/systems/pitCharacterStages';`,resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
+const bundle=await build({stdin:{contents:`export * from './app/game/pitStageLifeV62';export {getPitStageLifeV63Stage} from './app/game/pitStageLifeV63';export * from './app/game/pitStageLifeDirectorV60';export * from './app/game/pitStageLifeRenderingV61';export {getPitArenaArtPaths,loadPitArenaArt} from './app/game/pitArenaRendering';export {getPitArenaLifePaths} from './app/game/pitArenaLife';export {resolvePitArenaProductionKit} from './app/game/pitArenaProduction';export {PIT_ARENAS,createPitCombatState,serializePitCombat} from './app/game/systems/pitCombat';export {getPitArenaCatalogueEntry} from './app/game/systems/pitArenaCatalogue';export {PIT_ALL_LORE_STAGE_DEFINITIONS} from './app/game/systems/pitLoreStages';export {PIT_CHARACTER_STAGE_COVERAGE} from './app/game/systems/pitCharacterStages';`,resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const id='arena-126-avpr-2007-hospital-roof';
 const stage=()=>({stageId:id,continuity:{mode:'exhibition-adaptation',sourceCells:['10_VIE_DES_STAGES!E62','10_VIE_DES_STAGES!E63','10_VIE_DES_STAGES!E64'],chapterReconstructionComplete:false,note:'Original anonymous environment; exact narrative remains separate.'},events:[0,1,2].map(n=>({id:`ambient-0${n+1}`,name:`Ambient ${n+1}`,src:`/game/sprites/v62/pit-life/${id}/ambient-0${n+1}.png`,sha256:String(n+1).repeat(64),width:1536,height:1024,fps:3,restFrame:0,reducedMotionFrame:0,placement:{x:300,bottom:210,height:40,parallax:.05,renderPass:'P1',anchor:'world'},frames:Array.from({length:6},(_,i)=>({rect:[i%3*512,Math.floor(i/3)*512,512,512],pivot:[256,420],alphaBounds:[80,80,350,341]}))}))});
@@ -50,8 +50,10 @@ test('V62 walking actors remain hidden until their authored window and stay clip
 test('V62 selected stages preload only their own native triplet and cannot draw a second V60/V61 cast',async()=>{
   for(const s of api.PIT_STAGE_LIFE_V62.stages){
     const paths=api.getPitArenaArtPaths(s.stageId),old=api.getPitArenaLifePaths(s.stageId);
-    assert(s.events.every(e=>paths.includes(e.src)));
-    assert.equal(paths.filter(p=>p.includes('/v62/pit-life/')).length,3);
+    const correction=api.getPitStageLifeV63Stage(s.stageId);
+    const active=correction?.events??s.events;
+    assert(active.every(e=>paths.includes(e.src)));
+    assert.equal(paths.filter(p=>p.includes('/v62/pit-life/')).length,correction?correction.events.filter(e=>e.reusedV62EventId).length:3);
     assert(old.every(p=>!paths.includes(p)),'Shared historical cast must not survive next to a dedicated V62 triplet');
     const fakeV60={stageId:s.stageId,events:s.events.map(e=>({...e,src:e.src.replace('/v62/','/v60/')}))};
     await assert.rejects(api.loadPitArenaArt(s.stageId,{stageLifeManifestV60:{schemaVersion:1,release:'V60',stages:[fakeV60]}}),/cannot duplicate/);

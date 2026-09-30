@@ -1594,6 +1594,7 @@ export function appearanceForPreset(
   return {
     presetId: preset.id,
     bodyMorphId: preset.bodyMorphId,
+    headStyleId: "reference",
     skinId: preset.skinId,
     biomaskId: preset.biomaskId,
     dreadStyleId: preset.dreadStyleId,

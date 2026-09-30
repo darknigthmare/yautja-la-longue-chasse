@@ -127,6 +127,7 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
   assert.deepEqual(migrated.appearance, {
     presetId: "jungle-hunter",
     bodyMorphId: "classic",
+    headStyleId: "reference",
     skinId: "ochre-mottle",
     biomaskId: "jungle",
     dreadStyleId: "classic",
@@ -354,6 +355,7 @@ test("appearance normalization accepts an unmasked hunter and repairs invalid id
   assert.deepEqual(normalized.appearance, {
     presetId: "custom",
     bodyMorphId: "classic",
+    headStyleId: "reference",
     skinId: "ochre-mottle",
     biomaskId: null,
     dreadStyleId: "braided",

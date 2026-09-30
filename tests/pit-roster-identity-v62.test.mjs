@@ -17,14 +17,15 @@ const p = await import('data:text/javascript;base64,' + Buffer.from(bundle.outpu
 test('source clarifications preserve every historical appearance owner, pixel and default ordering', () => {
   for (const fighter of historical.fighters) {
     const current = p.getPitFighterVariants(fighter.id);
-    assert.equal(current.length, fighter.variants.length, fighter.id);
-    for (let i = 0; i < current.length; i++) {
+    assert(current.length >= fighter.variants.length, fighter.id);
+    for (let i = 0; i < fighter.variants.length; i++) {
       assert.deepEqual({ ...current[i], label: fighter.variants[i].label }, fighter.variants[i]);
       assert.equal(p.getPitUserVariant(fighter.id, current[i].id).sha256, current[i].sha256);
     }
   }
-  assert.equal(p.getPitFighterVariants('greyback').length, 4);
-  assert.equal(new Set(p.getPitFighterVariants('greyback').map(v => v.label)).size, 4);
+  const historicalGreyback = p.getPitFighterVariants('greyback').slice(0, 4);
+  assert.equal(historicalGreyback.length, 4);
+  assert.equal(new Set(historicalGreyback.map(v => v.label)).size, 4);
 });
 
 test('Samurai Hunting Grounds resolves to the existing fighter and never aliases Oni or creates a duplicate', () => {

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "release": "V63",
+  "corrections": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "assetId": "p0-depth",
+      "sourceSha256": "239b9f095a7f4576f7ac7338c1abbdd7f99744221a8b6d4e663184b303e9ae4f",
+      "frame": {
+        "path": "/game/sprites/v63/pit-arenas/arena-126-avpr-2007-hospital-roof/p0-depth.png",
+        "status": "reviewed",
+        "generation": {
+          "generator": "openai-imagegen",
+          "source": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-p0-depth.json",
+          "sha256": "50c7c2d4c31f44af82913b397105f3d7d87b8e4e574fb353331c6c4dcedd64eb",
+          "width": 1672,
+          "height": 941,
+          "hasAlpha": false,
+          "contentBounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1672,
+            "height": 941
+          }
+        },
+        "review": {
+          "evidence": "docs/v63-stage-composition-visual-review.json",
+          "coherence": true,
+          "layout": true,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "stageId": "arena-051-golgotha-etude-jaguar",
+      "assetId": "p4-p4-b-front-fascia",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "sourceCrop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ]
+    },
+    {
+      "stageId": "arena-081-cercle-obsidienne",
+      "assetId": "p4-p4-b-front-fascia",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "sourceCrop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ]
+    },
+    {
+      "stageId": "arena-085-cercle-sang",
+      "assetId": "p4-p4-b-front-fascia",
+      "sourceSha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519",
+      "sourceCrop": {
+        "x": 100,
+        "y": 299,
+        "width": 1972,
+        "height": 186
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ]
+    },
+    {
+      "stageId": "arena-087-cercle-ambre",
+      "assetId": "p4-p4-b-front-fascia",
+      "sourceSha256": "141f81f50596b53c6fcb8db39dafb22dad11ada02c344c947ba34da1b9b66c1a",
+      "sourceCrop": {
+        "x": 100,
+        "y": 146,
+        "width": 1972,
+        "height": 109
+      },
+      "placements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ]
+    }
+  ]
+}

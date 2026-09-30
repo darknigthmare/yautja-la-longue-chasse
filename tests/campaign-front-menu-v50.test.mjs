@@ -26,7 +26,7 @@ function harness(catalog) {
     if (name.includes('useMenuGamepad')) return { useMenuGamepad() {} };
     return { default: {} };
   } });
-  const props = { catalog, busy: false, message: null, onRefresh() {}, onCreate: (...args) => calls.push(['create', ...args]), onContinue: (...args) => calls.push(['continue', ...args]), onLoad: (...args) => calls.push(['load', ...args]), onRecover: (...args) => calls.push(['recover', ...args]) };
+  const props = { catalog, busy: false, message: null, onRefresh() {}, onCreate: (...args) => calls.push(['create', ...args]), onContinue: (...args) => calls.push(['continue', ...args]), onLoad: (...args) => calls.push(['load', ...args]), onRecover: (...args) => calls.push(['recover', ...args]), onReplace: (...args) => calls.push(['replace', ...args]), onWorkspaceRecover: (...args) => calls.push(['recover-workspace', ...args]) };
   const render = () => { stateIndex = 0; refIndex = 0; return exports.default(props); };
   const button = (tree, starts) => walk(tree).find(node => node.type === 'button' && label(node).startsWith(starts));
   return { props, calls, render, button };
@@ -56,22 +56,26 @@ test('new campaign selects the first empty owner slot and submits the trimmed op
   assert.deepEqual(ui.calls, [['create', 2, 'Kaail']]);
 });
 
-test('occupied and future-version slots cannot be replaced by the new campaign form', () => {
+test('occupied campaigns require a pinned replacement confirmation; protected slots never offer it', () => {
   const slots = [readySlot(1), { ...emptySlot(2), status: 'blocked' }, ...[3, 4, 5].map(emptySlot)];
   const ui = harness(catalog(slots));
   ui.button(ui.render(), 'Nouvelle partie').props.onClick();
-  for (const id of [1, 2]) {
-    walk(ui.render()).find(node => node.props?.['data-campaign-slot'] === id).props.onClick();
-    const tree = ui.render();
-    assert.equal(ui.button(tree, 'Créer la partie').props.disabled, true);
-    walk(tree).find(node => node.type === 'form').props.onSubmit({ preventDefault() {} });
-  }
+  walk(ui.render()).find(node => node.props?.['data-campaign-slot'] === 2).props.onClick();
+  let tree=ui.render();assert.equal(ui.button(tree,'Créer la partie').props.disabled,true);
+  walk(tree).find(node=>node.type==='form').props.onSubmit({preventDefault(){}});
   assert.deepEqual(ui.calls, []);
+  walk(ui.render()).find(node => node.props?.['data-campaign-slot'] === 1).props.onClick();
+  tree=ui.render();assert.equal(ui.button(tree,'Remplacer la partie').props.disabled,false);
+  walk(tree).find(node=>node.type==='form').props.onSubmit({preventDefault(){},currentTarget:{querySelector:()=>null}});
+  tree=ui.render();assert.match(label(tree),/Chasseur 1/);assert.deepEqual(ui.calls,[]);
+  ui.props.catalog=catalog([{...slots[0],revision:9,ownerCreatedAt:'other-owner'},...slots.slice(1)]);
+  ui.button(ui.render(),'Confirmer le remplacement de la partie').props.onClick();
+  assert.deepEqual(ui.calls,[['replace',1,'',7,'owner-1']]);
 });
 
 test('full archive catalog and pending transactions never offer destructive creation', () => {
   const ui = harness(catalog(Array.from({ length: 5 }, (_, i) => readySlot(i + 1))));
-  assert.equal(ui.button(ui.render(), 'Nouvelle partie').props.disabled, true);
+  assert.equal(ui.button(ui.render(), 'Nouvelle partie').props.disabled, false);
   ui.props.catalog = fresh();
   ui.button(ui.render(), 'Nouvelle partie').props.onClick();
   ui.props.busy = true;
@@ -79,6 +83,18 @@ test('full archive catalog and pending transactions never offer destructive crea
   assert.equal(walk(tree).filter(node => node.type === 'button' || node.type === 'input').every(node => node.props.disabled), true);
   walk(tree).find(node => node.type === 'form').props.onSubmit({ preventDefault() {} });
   assert.deepEqual(ui.calls, []);
+});
+
+test('a protected working campaign keeps readable slots visible and offers recovery only for corruption',()=>{
+ const ui=harness({...catalog([readySlot(1),...[2,3,4,5].map(emptySlot)]),status:'blocked',failure:'protected-save',workspaceRecoveryAvailable:true});
+ assert.equal(ui.button(ui.render(),'Continuer').props.disabled,false);
+ ui.button(ui.render(),'Continuer').props.onClick();let tree=ui.render();
+ assert.equal(walk(tree).filter(node=>node.props?.['data-campaign-slot']).length,5);
+ walk(tree).find(node=>node.props?.['data-checkpoint-id']==='auto-1').props.onClick({currentTarget:{isConnected:false}});
+ tree=ui.render();assert.match(label(tree),/données brutes seront conservées/);
+ ui.button(tree,'Confirmer la récupération').props.onClick();assert.deepEqual(ui.calls,[['recover-workspace',1,'auto-1',7]]);
+ ui.props.catalog={...ui.props.catalog,failure:'future-version',workspaceRecoveryAvailable:false};
+ assert.equal(ui.button(ui.render(),'Confirmer le chargement').props.disabled,true);
 });
 
 test('continue identifies the active campaign and its selected checkpoint without granting a ship', () => {

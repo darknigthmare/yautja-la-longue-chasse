@@ -101,13 +101,14 @@ export function hunterBodyFullPath(morphId: HunterBodyMorphId): string {
 export function hunterBodyPartPath(
   morphId: HunterBodyMorphId,
   partId: HunterBodyPartId,
+  headStyleId: "reference" | "legacy-clan" = "reference",
 ): string {
-  if (partId === "head") return hunterHeadArtV62(morphId).path;
+  if (partId === "head" && headStyleId !== "legacy-clan") return hunterHeadArtV62(morphId).path;
   return `${HUNTER_ASSET_ROOT_V3}/body/${morphId}/parts/${partId}.webp`;
 }
 
-export function hunterBodyPartPlacement(morphId: HunterBodyMorphId, partId: HunterBodyPartId): HunterLayerPlacement | undefined {
-  return partId === "head" ? hunterHeadArtV62(morphId).placement : undefined;
+export function hunterBodyPartPlacement(morphId: HunterBodyMorphId, partId: HunterBodyPartId, headStyleId: "reference" | "legacy-clan" = "reference"): HunterLayerPlacement | undefined {
+  return partId === "head" && headStyleId !== "legacy-clan" ? hunterHeadArtV62(morphId).placement : undefined;
 }
 
 export function hunterNetPartPath(

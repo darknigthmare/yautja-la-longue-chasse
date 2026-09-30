@@ -1,0 +1,267 @@
+{
+  "method": "builtin-imagegen",
+  "release": "V63",
+  "characters": [
+    {
+      "key": "elder-phg",
+      "fighterId": "greyback",
+      "variantId": "elder-phg-official-unmasked-v63",
+      "label": "Hunting Grounds · Elder sans masque · garde native",
+      "sourceCells": [
+        "02_PERSONNAGES!A206:V206",
+        "03_MANQUANTS!A11:L11"
+      ],
+      "referenceUrls": [
+        "https://blog.playstation.com/2020/06/12/june-free-update-now-live-in-predator-hunting-grounds/",
+        "https://live.staticflickr.com/65535/49996764556_c03bc385e7_h.jpg"
+      ],
+      "accepted": [
+        {
+          "id": "portrait",
+          "kind": "portrait",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-4a14fcf1-2997-4196-8595-491993436caa.png",
+          "prompt": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL PS4 Pro screenshot of the ELDER CLASS in Predator: Hunting Grounds published by PlayStation on June12 2020. Recreate that game's unmasked Elder appearance as closely as possible, NOT a new elder and NOT a generic ornate tribal fantasy hunter.\nPreserve the aged pale gray/tan face and forehead pattern, FOUR separate external mouth mandibles with visible teeth and small piercings, black/gray beaded dreadlocks, lean muscular spotted tan skin under black diamond body netting, the compact layered dark-silver armor on his anatomical LEFT chest and shoulder, the much smaller right shoulder protection, the diagonal reddish-brown patterned leather bandolier, bone/bead and small skull necklace, segmented waist protection and leather pouches. Left forearm has its rectangular red-display computer; right forearm has its strapped wrist-blade housing with TWO short retracted blade tips. Keep the compact plasma caster over the anatomical LEFT shoulder, never duplicated. Hands empty, coherent five digits including thumb. Any sheathed belt accessory remains small and faithful, no sword in hands.\nFull body in calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view and waist-level camera. Two legs, two arms, clawed bare feet planted on a common baseline. Hidden shins and back are restrained reconstruction: worn plain dark-metal shin plates and existing netting, no new ornament. Match asymmetrical armor placement and correct anatomical sides. Body proportions realistic, not chibi. Detailed painted game sprite with clear silhouette, restrained neutral lighting, no dramatic colored light.\nPortrait canvas 1024x1536. Entire silhouette including dreadlocks, fingertips, equipment and toes fits within at least70px transparent margins, about82 percent canvas height. One character only. True transparent alpha background; no backdrop, floor, shadow, text, labels, logo, watermark, border, references or additional figures.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared."
+        },
+        {
+          "id": "idle-right",
+          "kind": "idle",
+          "facing": "right",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-9a7d5726-a5e3-41aa-8730-e270cd3e7c25.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: the UNMASKED ELDER CLASS of Predator: Hunting Grounds, with the same aged patterned gray/tan forehead, FOUR exterior mandibles, orange eyes, dark gray cuffed dreadlocks, diamond netting, patterned reddish leather bandolier and small skull/bead necklace from Image1. Left chest layered silver armor, right chest mostly netted. Preserve face—not a human, ogre or generic monster. Do not add a helmet.\nALL SIX FRAMES FACE SCREEN RIGHT. Head, shoulders and forward toes read clearly toward RIGHT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ]
+        },
+        {
+          "id": "idle-left",
+          "kind": "idle",
+          "facing": "left",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-758f1544-d862-4539-9541-112f1aa2ee57.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: the UNMASKED ELDER CLASS of Predator: Hunting Grounds, with the same aged patterned gray/tan forehead, FOUR exterior mandibles, orange eyes, dark gray cuffed dreadlocks, diamond netting, patterned reddish leather bandolier and small skull/bead necklace from Image1. Left chest layered silver armor, right chest mostly netted. Preserve face—not a human, ogre or generic monster. Do not add a helmet.\nALL SIX FRAMES FACE SCREEN LEFT. Head, shoulders and forward toes read clearly toward LEFT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "key": "captured-phg",
+      "fighterId": "user-classic-2010",
+      "variantId": "captured-phg-official-mask-v63",
+      "label": "Hunting Grounds · Captured masqué · garde native",
+      "sourceCells": [
+        "02_PERSONNAGES!A208:V208",
+        "03_MANQUANTS!A13:L13"
+      ],
+      "referenceUrls": [
+        "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "https://store.steampowered.com/app/1847080/Predator_Hunting_Grounds__Hunting_Party_Bundle/",
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1847080/ss_4ebbc1badb9563972092231cb1e41b357a7de04e.1920x1080.jpg?t=1764097265"
+      ],
+      "accepted": [
+        {
+          "id": "portrait",
+          "kind": "portrait",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-0ca5ce90-faa2-4d39-9743-4adf39f3eb97.png",
+          "prompt": "Use case: stylized-concept. Asset: one full-body transparent 2D fighting-game character portrait. Input reference is the OFFICIAL Steam Hunting Party DLC key art. Recreate ONLY the character on the RIGHT labeled CAPTURED, the Captured class of Predator: Hunting Grounds (2021), NOT the two other hunters and not a generic Jungle Hunter.\nPreserve the Captured character's elongated smooth dark-silver classical biomask with the conspicuously damaged, notched and fractured upper edge on its anatomical LEFT side, narrow dark eye slits, long plain lower-face muzzle without teeth or tusks. Long thick black cuffed dreadlocks, pale tan/olive spotted skin, black diamond body netting. Preserve asymmetry: dark-silver layered chest armor on anatomical LEFT pectoral, compact triple-plated LEFT pauldron and shoulder plasma caster; a horizontal leather chest strap crossing the bare netted right chest. Left forearm rectangular computer with small red marks, RIGHT wrist strapped blade housing with TWO short retracted blade tips. Dark simple segmented waist armor and loin protection, worn greaves and clawed bare feet. Hidden shins/back are modest reconstruction consistent with pictured armor. No skull collar or fanciful ornaments, no Mr.Black tusks and no Falconer ridges, no new weapons. Both hands empty, five coherent digits including thumb; wrists continuous with arms.\nOne full-body calm combat-ready stance facing SCREEN RIGHT, readable side-on three-quarter view, waist-level camera. Two arms, two legs; feet planted on common baseline. Preserve anatomical equipment sides. Detailed painted 2D game sprite, realistic muscular proportions, clear silhouette, neutral lighting replacing advertising red/blue light. No toy base.\nPortrait canvas1024x1536, entire silhouette including fingers, blades, dreadlocks and feet comfortably inside at least70px transparent margins, about82 percent canvas height. True transparent alpha. No background, floor, drop shadow, checkerboard, text, logos, names, watermark, border, thumbnail, other hunters or reference strip.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared."
+        },
+        {
+          "id": "idle-right",
+          "kind": "idle",
+          "facing": "right",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-7679ffe2-72ba-434f-838b-61a4d8c3dc47.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: CAPTURED class of Predator: Hunting Grounds, same smooth elongated dark-silver classical biomask with damaged fractured upper ridge at anatomical LEFT side, no teeth/tusks and no added tall horns. Cuffed black dreadlocks, pale olive/tan speckled skin, diamond netting, silver plate only on left chest with strap crossing right chest. No skull necklace or shoulder ornament. Keep distinctive mask damage; do not replace with clean Jungle Hunter helmet.\nALL SIX FRAMES FACE SCREEN RIGHT. Head, shoulders and forward toes read clearly toward RIGHT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ]
+        },
+        {
+          "id": "idle-left",
+          "kind": "idle",
+          "facing": "left",
+          "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-ebc15bd4-2eb3-4caa-b067-a703e559124a.png",
+          "prompt": "Use case: identity-preserve. Asset: ONE transparent native 2D fighting-game idle animation spritesheet. Image1 is the accepted character design master; Image2 is the official PRIMARY GAME appearance reference. Preserve precisely the same character, anatomy, equipment and colors from Image1. Make exactly SIX separately drawn frames of a calm breathing guard cycle in a 3-column by 2-row grid on a1536x1024 canvas: six512x512 cells, reading left-to-right then top-to-bottom. No visible grid or labels.\nCRITICAL full-body framing: each character must be NO MORE THAN370px tall inside its cell, head roughlyy80, solesy450. At least48px of truly empty transparent space on ALL cell edges, including feet and longest equipment. Put each body at x256 with the same scale and planted foot locations throughout. Never crop fingers, toes, dreads or shoulder cannon. Six DISTINCT poses: subtle chest inhalation then exhalation, knee settling, elbow adjustment, small coherent hand motion and dreadlock follow-through, returning to start. No walking, jumps, attacks or costume changes.\nUse clear lateral three-quarter combat orientation, opponent at the named screen side. Draw natural anatomy: exactly two arms, two legs and coherent five-digit clawed hands with thumbs, no fused palms. Correct fixed anatomical equipment sides: LEFT shoulder single plasma caster and larger layered pauldron, LEFT forearm red-display wrist computer, RIGHT forearm strapped housing with only TWO SHORT RETRACTED blade tips. Empty hands, no held gun/sword or new prop. This is an authored orientation, NEVER a horizontal mirror of the master. Armor and weapon sides remain anatomically correct when the body rotates.\nDetailed painted game sprite, neutral even lighting, readable silhouette. Six separate complete silhouettes with matching body size. Genuine transparent alpha background. No floor, shadow, halo, smoke, glow, text, watermarks, logos, backdrop, frame or extra reference thumbnail.\nIdentity: CAPTURED class of Predator: Hunting Grounds, same smooth elongated dark-silver classical biomask with damaged fractured upper ridge at anatomical LEFT side, no teeth/tusks and no added tall horns. Cuffed black dreadlocks, pale olive/tan speckled skin, diamond netting, silver plate only on left chest with strap crossing right chest. No skull necklace or shoulder ornament. Keep distinctive mask damage; do not replace with clean Jungle Hunter helmet.\nALL SIX FRAMES FACE SCREEN LEFT. Head, shoulders and forward toes read clearly toward LEFT, torso at about55degrees from camera. No frame looks straight at camera or opposite direction. Draw this actual view rather than flipping the other side. Front plane equipment may occlude the far wrist naturally; do not transplant it.\nMANDATORY CORRECTION FROM REJECTED ATTEMPT: figures were too large and touched horizontal cell boundaries, cutting toes and tops. Leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL completely empty transparent. OVERRIDE earlier height guidance: character must fit inside x80..432 and y100..430 of each512x512cell. BODY HEIGHT ONLY330PIXELS. There must be at least80pixels of fully transparent vertical separation between top-row feet and bottom-row heads. Never enlarge to fill the grid! Six complete SMALLER characters with very large transparent margins, atlas1536x1024.\nIMAGE3 IS ONLY A SAFE SPACING/SCALE EXAMPLE from another fighter. Follow its empty cell margins and isolated complete silhouettes. Do NOT copy its costume, mask or military camouflage; identity remains Image1 and Image2. Every pixel outside the six silhouettes must be fully transparent, not smoky gradients or shadows. Distinct breathing pose in each cell, very generous empty space mandatory.",
+          "visualReviewed": true,
+          "visualNotes": "Complete coherent silhouette inspected, anatomical left computer/caster and right wrist blades retained; reconstruction limits declared.",
+          "nativeRects": [
+            [
+              0,
+              0,
+              512,
+              540
+            ],
+            [
+              512,
+              0,
+              512,
+              540
+            ],
+            [
+              1024,
+              0,
+              512,
+              540
+            ],
+            [
+              0,
+              540,
+              512,
+              484
+            ],
+            [
+              512,
+              540,
+              512,
+              484
+            ],
+            [
+              1024,
+              540,
+              512,
+              484
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-cccb3fbe-8620-4934-8c93-9c13a7a20058.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-49432377-930b-44cc-ae33-3994ccbc3ac1.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-71e38b62-b36d-4634-9561-ec125fcde980.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-35a3802a-9067-4b7b-918f-c5720873dce5.png",
+      "reason": "Initial guard sheets cross fixed512 cells; superseded by safer separated drawings. Not integrated."
+    }
+  ],
+  "loreLimits": [
+    "Game-specific appearances appended to existing identities. Original masks/portraits and default variant ordering remain unchanged.",
+    "Official game upper-body appearance is the reference; hidden shins/back and small surface details are reconstructed, not certified1:1.",
+    "Idle only: two authored6-pose facing cycles per variant. Walking/attacks/results remain incomplete and use a declared native-side held stance.",
+    "Native unequal-height cell rectangles follow the real transparent gutter at y540. No source pixels are resized, cut, recolored, mirrored or rearranged."
+  ]
+}

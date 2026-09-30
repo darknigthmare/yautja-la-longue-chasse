@@ -41,6 +41,94 @@ const autosave = (s, extra = {}) => p.saveCampaignCheckpoint(1, { kind: "auto", 
 function advance(s, seconds) { const save = JSON.parse(s.getItem(MAIN)); save.profile.playTimeSeconds = seconds; s.values.set(MAIN, JSON.stringify(save)); return save; }
 async function migrated(s = fixture()) { const result = await p.migrateLegacyCampaignSlot(s); assert.equal(result.ok, true, result.message); return s; }
 function assertPreserved(original, s) { for (const [key, value] of original) assert.equal(s.getItem(key), value, key); }
+const replacementOptions=(s,id=1)=>({expectedRevision:revision(s,id),expectedOwnerCreatedAt:doc(s,id).ownerCreatedAt});
+
+test('V63 confirmed replacement of the active campaign commits its owner and retains all checkpoints plus newest progress',async()=>{
+ const s=await migrated();
+ for(let index=1;index<=10;index++) {advance(s,100+index);await p.saveCampaignCheckpoint(1,{kind:'manual',index,expectedRevision:revision(s)},s);}
+ advance(s,200);await autosave(s);const old=doc(s),options=replacementOptions(s);advance(s,999);
+ const result=await p.replaceCampaignSlot(1,'Nouvelle chronique',options,s);
+ assert.equal(result.ok,true,result.message);assert.equal(result.checkpoint.resumeLocation,'prologue');
+ assert.notEqual(result.save.createdAt,owner);assert.equal(result.save.profile.hunterName,'Nouvelle chronique');
+ assert.equal(catalog(s).activeSlotId,1);assert.equal(revision(s),old.revision+1);
+ assert.equal(JSON.parse(s.getItem(MAIN)).createdAt,result.save.createdAt);
+ const rescueKey=p.campaignSlotStorageKey(1)+'.replaced.'+encodeURIComponent(owner),rescue=JSON.parse(s.getItem(rescueKey));
+ assert.deepEqual(rescue.slot,old);assert.equal(rescue.slot.checkpoints.length,12);assert.equal(rescue.latest.campaign.profile.playTimeSeconds,999);
+ const rescueRaw=s.getItem(rescueKey);await p.saveCampaignCheckpoint(1,{kind:'manual',index:1,expectedRevision:revision(s)},s);assert.equal(s.getItem(rescueKey),rescueRaw);
+ assert.equal(s.getItem(p.ARCHIVE_TRANSFER_JOURNAL_KEY),null);
+});
+test('V63 replacement of another slot captures the active campaign and leaves three other campaigns unchanged',async()=>{
+ const s=await migrated();for(let id=2;id<=5;id++)await p.createCampaignSlot(id,'QA '+id,s);
+ const other=[3,4,5].map(id=>[p.campaignSlotStorageKey(id),s.getItem(p.campaignSlotStorageKey(id))]);advance(s,888);
+ const result=await p.replaceCampaignSlot(2,'Replacement',replacementOptions(s,2),s);assert.equal(result.ok,true,result.message);
+ assert.equal(catalog(s).activeSlotId,2);assertPreserved(other,s);
+ assert.equal(doc(s,1).checkpoints.find(c=>c.id===doc(s,1).lastCheckpointId).playTimeSeconds,888);
+});
+test('V63 stale owner or revision, corruption, future documents and future backup forbid replacement without changing bytes',async()=>{
+ for(const mode of ['revision','owner','slot-corrupt','slot-future','working-corrupt','working-future','backup-corrupt','backup-future']){
+  const s=await migrated(),options=replacementOptions(s),key=p.campaignSlotStorageKey(1);
+  if(mode==='revision')options.expectedRevision++;
+  if(mode==='owner')options.expectedOwnerCreatedAt='2020-01-01T00:00:00.000Z';
+  if(mode==='slot-corrupt')s.values.set(key,'{damaged');
+  if(mode==='slot-future')s.values.set(key,JSON.stringify({...doc(s),version:2}));
+  if(mode==='working-corrupt')s.values.set(MAIN,'{damaged');
+  if(mode==='working-future')s.values.set(MAIN,JSON.stringify({...p.defaultSave(owner),version:99}));
+  if(mode==='backup-corrupt')s.values.set(MAIN+'.backup','{damaged');
+  if(mode==='backup-future')s.values.set(key+'.backup',JSON.stringify({...doc(s),version:2}));
+  const before=[...s.values],writes=s.writes.length,result=await p.replaceCampaignSlot(1,'Denied',options,s);
+  assert.equal(result.ok,false,mode);assertPreserved(before,s);assert.equal(s.writes.length,writes,mode);
+ }
+});
+test('V63 every interrupted replacement write rolls back slot, rescue, workspace and attachments',async()=>{
+ for(const suffix of ['rescue','backup','slot','ship','main']){
+  const s=await migrated(),before=[...s.values],options=replacementOptions(s),key=p.campaignSlotStorageKey(1),set=s.setItem.bind(s);let fired=false;
+  s.setItem=(k,value)=>{const target=suffix==='rescue'?k.startsWith(key+'.replaced.'):k===(suffix==='backup'?key+'.backup':suffix==='slot'?key:suffix==='ship'?p.SHIP_PROGRESSION_STORAGE_KEY:MAIN);
+   if(target&&!fired){fired=true;throw new DOMException('full','QuotaExceededError');}set(k,value);};
+  const result=await p.replaceCampaignSlot(1,'Denied',options,s);assert.equal(fired,true,suffix);assert.equal(result.ok,false,suffix);assertPreserved(before,s);
+  assert.equal(s.getItem(p.ARCHIVE_TRANSFER_JOURNAL_KEY),null,suffix);assert.equal([...s.values.keys()].some(k=>k.startsWith(key+'.replaced.')),false);
+ }
+});
+test('V63 explicit damaged-workspace recovery preserves raw bytes and future-workspace recovery is refused',async()=>{
+ const s=await migrated(),key=p.campaignSlotStorageKey(1),slotRaw=s.getItem(key);s.values.set(MAIN,'{bad primary');s.values.set(MAIN+'.backup','{bad backup');
+ const result=await p.recoverCampaignWorkspace(1,'auto-1',{expectedRevision:revision(s)},s);assert.equal(result.ok,true,result.message);assert.equal(s.getItem(key),slotRaw);
+ const rescue=[...s.values].find(([key])=>key.includes('.workspace-recovery.'));assert(rescue);
+ const original=JSON.parse(rescue[1]).original;assert.equal(original.find(v=>v.key===MAIN).raw,'{bad primary');assert.equal(original.find(v=>v.key===MAIN+'.backup').raw,'{bad backup');
+ const future=await migrated();future.values.set(MAIN,JSON.stringify({...p.defaultSave(owner),version:99}));const before=[...future.values];
+ assert.equal((await p.recoverCampaignWorkspace(1,'auto-1',{expectedRevision:1},future)).failure,'future-version');assertPreserved(before,future);
+});
+test('V63 an unresponsive lock has a bounded wait and late callback cannot mutate storage',async()=>{
+ const prior=globalThis.navigator;let callback,writes=0;
+ Object.defineProperty(globalThis,'navigator',{configurable:true,value:{locks:{request(_name,_options,cb){callback=cb;return new Promise(()=>{});}}}});
+ try {const result=await p.withArchiveTransferLock(()=>++writes,15);assert.equal(result.acquired,false);assert.equal(writes,0);callback({});assert.equal(writes,0);}
+ finally {Object.defineProperty(globalThis,'navigator',{configurable:true,value:prior});}
+});
+test('V63 damaged workspace without readable slots can start anew only in an empty slot while preserving exact raw bytes',async()=>{
+ const s=store([[MAIN,'{lost primary'],[MAIN+'.backup','{lost backup'],[p.SHIP_PROGRESSION_STORAGE_KEY,'{damaged ship']]);
+ const before=[...s.values],result=await p.recoverAsNewCampaignSlot(1,'Reprise protégée',s);
+ assert.equal(result.ok,true,result.message);assert.equal(result.checkpoint.resumeLocation,'prologue');assert.equal(result.save.profile.hunterName,'Reprise protégée');
+ const rescue=JSON.parse([...s.values].find(([key])=>key.includes('.workspace-recovery.'))[1]);
+ for(const [key,value] of before)assert.equal(rescue.original.find(entry=>entry.key===key).raw,value);
+ assert.equal(catalog(s).activeSlotId,1);assert.equal(s.getItem(p.ARCHIVE_TRANSFER_JOURNAL_KEY),null);
+});
+test('V63 new-start recovery refuses readable or future workspace, occupied damaged slots, and readable campaigns',async()=>{
+ for(const mode of ['working-future','backup-future','readable-backup','slot-damaged','slot-future','readable-slot']){
+  const s=store([[MAIN,'{lost primary'],[MAIN+'.backup','{lost backup']]);
+  if(mode==='working-future')s.values.set(MAIN,JSON.stringify({...p.defaultSave(owner),version:99}));
+  if(mode==='backup-future')s.values.set(MAIN+'.backup',JSON.stringify({...p.defaultSave(owner),version:99}));
+  if(mode==='readable-backup')s.values.set(MAIN+'.backup',JSON.stringify(p.defaultSave(owner)));
+  if(mode==='slot-damaged')s.values.set(p.campaignSlotStorageKey(1),'{damaged slot');
+  if(mode==='slot-future')s.values.set(p.campaignSlotStorageKey(1),JSON.stringify({version:99}));
+  if(mode==='readable-slot'){const other=await migrated();s.values.set(p.campaignSlotStorageKey(2),JSON.stringify({...doc(other),id:2}));}
+  const before=[...s.values],result=await p.recoverAsNewCampaignSlot(1,'Refus',s);assert.equal(result.ok,false,mode);assertPreserved(before,s);assert.equal(s.writes.length,0,mode);
+ }
+});
+test('V63 last-resort new start rolls back raw workspace and empty slot at every interrupted write',async()=>{
+ for(const target of ['rescue','backup','slot','ship','main']){
+  const s=store([[MAIN,'{lost primary'],[MAIN+'.backup','{lost backup']]),before=[...s.values],set=s.setItem.bind(s),slotKey=p.campaignSlotStorageKey(1);let fired=false;
+  s.setItem=(key,value)=>{const matches=target==='rescue'?key.includes('.workspace-recovery.'):key===(target==='backup'?slotKey+'.backup':target==='slot'?slotKey:target==='ship'?p.SHIP_PROGRESSION_STORAGE_KEY:MAIN);if(matches&&!fired){fired=true;throw Error('interrupted');}set(key,value);};
+  const result=await p.recoverAsNewCampaignSlot(1,'Refus',s);assert.equal(fired,true,target);assert.equal(result.ok,false,target);assertPreserved(before,s);assert.equal(s.getItem(slotKey),null);assert.equal(s.getItem(p.ARCHIVE_TRANSFER_JOURNAL_KEY),null);
+ }
+});
 
 test("five initially empty parties are read-only; creation refuses occupied and invalid ids", async () => {
   const s = store(); assert.equal(catalog(s).slots.length, 5); assert.equal(catalog(s).legacy, "empty"); assert.deepEqual(s.writes, []);

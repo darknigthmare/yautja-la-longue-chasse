@@ -4,7 +4,7 @@ import {flushSync} from 'react-dom';
 import CampaignMainMenu from './CampaignMainMenu';
 import {ARCHIVE_TRANSFER_JOURNAL_KEY} from './systems/archiveTransferGuard';
 import {recoverArchiveTransaction,withArchiveTransferLock} from './systems/archiveTransaction';
-import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
+import {activateCampaignCheckpoint,continueCampaignSlot,createCampaignSlot,replaceCampaignSlot,recoverCampaignWorkspace,recoverAsNewCampaignSlot,loadCampaignSlots,migrateLegacyCampaignSlot,recoverCampaignSlot,CAMPAIGN_SLOT_IDS,type CampaignSlotCatalog,type CampaignSlotId,type CampaignCheckpointId,type CampaignResumeLocation,type CampaignSlotResult} from './systems/campaignSlots';
 const Mausoleum=lazy(()=>import("./Mausoleum"));
 export interface CampaignSessionEntry {slotId:CampaignSlotId;ownerCreatedAt:string;token:string;location:CampaignResumeLocation}
 export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:ComponentType<{entry:CampaignSessionEntry;onMainMenu:()=>void}>}){
@@ -40,11 +40,14 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  const validId=(id:number):id is CampaignSlotId=>CAMPAIGN_SLOT_IDS.includes(id as CampaignSlotId);
  if(mausoleumOpen)return <Suspense fallback={<p role="status">Ouverture des archives…</p>}><Mausoleum save={null} source="menu" onExit={()=>setMausoleumOpen(false)} /></Suspense>;
  if(entry)return <SessionComponent key={entry.token} entry={entry} onMainMenu={showMenu} />;
- return <CampaignMainMenu catalog={catalog?.status==='ready'?catalog:null} busy={busy} message={message} onRefresh={refresh}
+ return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh}
   onMausoleum={()=>setMausoleumOpen(true)}
   onCreate={(id,name)=>{if(!validId(id))return;void run(async()=>{const created=await createCampaignSlot(id,name);if(!created.ok||!created.checkpoint)return created;const slot=created.catalog.slots.find(s=>s.id===id)!;return activateCampaignCheckpoint(id,created.checkpoint.id,{expectedRevision:slot.revision});},true);}}
   onContinue={id=>{if(!validId(id))return;const slot=catalog?.slots.find(s=>s.id===id);if(!slot?.lastCheckpointId)return;void run(()=>catalog?.activeSlotId===id?continueCampaignSlot(id,{expectedRevision:slot.revision,location:slot.checkpoints.find(checkpoint=>checkpoint.id===slot.lastCheckpointId)?.resumeLocation}):activateCampaignCheckpoint(id,slot.lastCheckpointId!,{expectedRevision:slot.revision}),true);}}
   onLoad={(id,checkpointId,expectedRevision)=>{if(!validId(id))return;void run(()=>activateCampaignCheckpoint(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}
   onRecover={id=>{if(validId(id))void run(()=>recoverCampaignSlot(id),false);}}
+  onReplace={(id,name,expectedRevision,expectedOwnerCreatedAt)=>{if(validId(id))void run(()=>replaceCampaignSlot(id,name,{expectedRevision,expectedOwnerCreatedAt}),true);}}
+  onWorkspaceRecover={(id,checkpointId,expectedRevision)=>{if(validId(id))void run(()=>recoverCampaignWorkspace(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}
+  onRecoverNew={(id,name)=>{if(validId(id))void run(()=>recoverAsNewCampaignSlot(id,name),true);}}
  />;
 }

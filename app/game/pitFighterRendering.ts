@@ -5,7 +5,8 @@ import {
   hunterMaskRigPath, hunterMaskRigPlacement, hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
-import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
+import { HUNTER_DREAD_SOURCE_ROOT, solveHunterDreadsV63 } from "./hunterDreadsV63";
 import {
   HUNTER_RIG_CANVAS, relativeBoneMatrix, solveHunterRig,
   type HunterRigBoneId,
@@ -68,12 +69,11 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
       layers.push({ id: "net-" + part, src: hunterNetPartPath(morph, part), bone: body.bone, depth: body.depth + .2, opacity: .72 });
     }
   }
-  for (let strand = 0; strand < 7; strand++) {
+  for (const [strand, rig] of solveHunterDreadsV63(solveHunterRig({pose:'idle',facing:1,phase:0}), morph, 'classic').entries()) {
     layers.push({
       id: "dread-" + strand, src: hunterDreadPath("classic"), bone: "head", depth: 3 + strand,
-      offset: [-12 + strand * 4 + HUNTER_HEAD_DREAD_OFFSET_V62.x, strand < 4 ? -strand : strand - 4],
-      rotation: (-14 + strand * 3) * Math.PI / 180,
-      scale: .78 + (3 - Math.abs(3 - strand)) * .09, pivot: [143, 43],
+      offset: [rig.x, rig.y], rotation: rig.angle,
+      scale: rig.scale, pivot: [HUNTER_DREAD_SOURCE_ROOT.x, HUNTER_DREAD_SOURCE_ROOT.y],
       filter: "saturate(.7) brightness(.65)",
     });
   }
@@ -193,15 +193,17 @@ export function drawPitModularFighter(
     context.shadowColor = options.accent ?? "#eaffed";
     context.shadowBlur = 4;
   }
+  const dreads = solveHunterDreadsV63(animation.frame, fighter.definitionId === 'berserker' ? 'super' : 'classic', 'classic');
   for (const layer of getPitFighterArtLayers(fighter.definitionId)) {
     if (layer.id === "blades" && animation.bladeExtension <= 0) continue;
-    const matrix = relativeBoneMatrix(animation.frame, BIND_FRAME, layer.bone);
+    const dread = layer.id.startsWith('dread-') ? dreads[Number(layer.id.slice(6))] : undefined;
+    const matrix = dread?.matrix ?? relativeBoneMatrix(animation.frame, BIND_FRAME, layer.bone);
     context.save();
     context.transform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
     context.globalAlpha *= layer.opacity ?? 1;
     if (layer.filter) context.filter = layer.filter;
-    context.translate(layer.offset?.[0] ?? 0, layer.offset?.[1] ?? 0);
-    if (layer.pivot) {
+    if (!dread) context.translate(layer.offset?.[0] ?? 0, layer.offset?.[1] ?? 0);
+    if (layer.pivot && !dread) {
       context.translate(...layer.pivot);
       context.rotate(layer.rotation ?? 0);
       context.scale(layer.scale ?? 1, layer.scale ?? 1);

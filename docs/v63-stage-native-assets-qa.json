@@ -1,0 +1,182 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-09-30T22:45:42.463Z",
+  "nativeCount": 7,
+  "native": [
+    {
+      "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-04.json",
+      "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-04.png",
+      "sha256": "9458fc8aa098e7ecd7fd55aedf5ebd38f6b3e23527d5d3f2307377456c46d81b",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-05.json",
+      "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-05.png",
+      "sha256": "b0ab59efa18fc98a2ac901e5f2eca30f97a97f57ec24752a8bb70ddd112301ab",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-ambient-06.json",
+      "path": "/game/sprites/v63/pit-life/arena-126-avpr-2007-hospital-roof/ambient-06.png",
+      "sha256": "003f580b715e04c8fe91c3c2dfa70d7065aaca6d57e5ca40e574a7eb93ba90be",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-126-avpr-2007-hospital-roof-p0-depth.json",
+      "path": "/game/sprites/v63/pit-arenas/arena-126-avpr-2007-hospital-roof/p0-depth.png",
+      "sha256": "50c7c2d4c31f44af82913b397105f3d7d87b8e4e574fb353331c6c4dcedd64eb",
+      "drawings": 1,
+      "transparent": false,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-04.json",
+      "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-04.png",
+      "sha256": "2bc8f60c2acd436a582a2083ea7a630a863b66244bd7033d53f2f95fd304ba5e",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-05.json",
+      "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-05.png",
+      "sha256": "1913b40d70ec0cc711ffc6703a4af45f0bfcc23a0dcfd6d47cc86afb591ca1be",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    },
+    {
+      "receipt": "docs/v63-generation/arena-130-avp-classic-2000-space-station-ambient-06.json",
+      "path": "/game/sprites/v63/pit-life/arena-130-avp-classic-2000-space-station/ambient-06.png",
+      "sha256": "68388a50ef0130bcfadb9830f7e5305610bf69fafee88c0fb548ee1e1ef49680",
+      "drawings": 6,
+      "transparent": true,
+      "copyByteIdentical": true
+    }
+  ],
+  "floorCorrections": [
+    {
+      "stageId": "arena-051-golgotha-etude-jaguar",
+      "source": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "crop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-081-cercle-obsidienne",
+      "source": "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+      "sourceSha256": "ffedbeb2d761a7e6143e2e216683d08dfa8244feb12e6d555f21259555d1b7bf",
+      "crop": {
+        "x": 100,
+        "y": 235,
+        "width": 1972,
+        "height": 194
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-085-cercle-sang",
+      "source": "/game/sprites/v34/pit-arenas/arena-020-trone-fracture/p4-b-front-fascia.png",
+      "sourceSha256": "c554643b719d1b3a41d4766eea2f14ba60aa3d0ae9f5cc398c07ca7e618c7519",
+      "crop": {
+        "x": 100,
+        "y": 299,
+        "width": 1972,
+        "height": 186
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    },
+    {
+      "stageId": "arena-087-cercle-ambre",
+      "source": "/game/sprites/v34/pit-arenas/glass-terrace/p4-b-front-fascia.png",
+      "sourceSha256": "141f81f50596b53c6fcb8db39dafb22dad11ada02c344c947ba34da1b9b66c1a",
+      "crop": {
+        "x": 100,
+        "y": 146,
+        "width": 1972,
+        "height": 109
+      },
+      "minAlpha": 250,
+      "originalPlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 110
+        }
+      ],
+      "runtimePlacements": [
+        {
+          "x": 0,
+          "y": 454,
+          "width": 1280,
+          "height": 160
+        }
+      ],
+      "sourcePngEdited": false
+    }
+  ],
+  "scope": "Byte/alpha/crop measurements, no pixel editing or synthetic frames."
+}

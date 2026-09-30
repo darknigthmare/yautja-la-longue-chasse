@@ -135,13 +135,16 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 357, "V62 adds two animated Emissary idles and two declared stances to353 historical ready entries");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 339);
-  assert.equal(report.pageCount, 131);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 109);
-  assert.equal(report.distinctDrawings, 707);
-  assert.equal(report.appearances.length, 23);
-  assert.equal(report.fighters.length, 17);
+  assert.equal(report.readyPhaseClips, 365, "V63 adds four PHG idles and four declared stances to357 V62 entries");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 347);
+  assert.equal(report.pageCount, 139);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 113);
+  assert.equal(report.distinctDrawings, 731);
+  assert.equal(report.appearances.length, 25);
+  assert.equal(report.fighters.length, 18);
+  const v63 = report.clips.filter(clip => clip.atlasId.endsWith('-v63'));
+  assert.equal(v63.filter(clip => clip.status === 'held-native-stance').length, 4);
+  assert.equal(v63.filter(clip => clip.drawnCells === 6).length, 4);
   const emissary = report.clips.filter(clip => clip.fighterId === 'user-emissary-phg');
   assert.equal(emissary.filter(clip => clip.status === 'held-native-stance').length,2);
   assert.equal(emissary.filter(clip => clip.drawnCells === 6).length,2);

@@ -188,6 +188,7 @@ test("appearanceForPreset returns a complete independent save appearance", () =>
     assert.deepEqual(appearance, {
       presetId: preset.id,
       bodyMorphId: preset.bodyMorphId,
+      headStyleId: "reference",
       skinId: preset.skinId,
       biomaskId: preset.biomaskId,
       dreadStyleId: preset.dreadStyleId,

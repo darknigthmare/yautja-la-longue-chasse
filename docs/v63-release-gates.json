@@ -1,0 +1,74 @@
+{
+  "release": "V63",
+  "checkedAt": "2026-09-30T23:15:39.388Z",
+  "status": "LOCAL_GATES_VERIFIED_PUBLIC_PENDING",
+  "tests": {
+    "globalRun": {
+      "tests": 1963,
+      "pass": 1962,
+      "fail": 1,
+      "log": "work-local/v63/qa/tests-full-release.log"
+    },
+    "remainingFailure": "tests/hunter-lore.test.mjs: expected appearance object omitted the new explicit headStyleId reference field; runtime output was correct",
+    "repair": "Updated the exact expected object to include headStyleId reference; no runtime source changed after global run",
+    "rerun": {
+      "file": "tests/hunter-lore.test.mjs",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "log": "work-local/v63/qa/hunter-lore-release.log"
+    },
+    "coverage": "All 1963 test cases have passing results across the global run and the corrected file rerun. This is not one all-green global invocation."
+  },
+  "builds": {
+    "vinext": {
+      "status": "PASS",
+      "log": "work-local/v63/qa/vinext-build-release.log"
+    },
+    "nextWebpack": {
+      "status": "PASS",
+      "log": "work-local/v63/qa/next-build-release-final.log"
+    },
+    "typescript": {
+      "status": "PASS",
+      "log": "work-local/v63/qa/typecheck-release.log"
+    },
+    "compiledHudCss": {
+      "status": "PASS",
+      "log": "work-local/v63/qa/css-release.log"
+    }
+  },
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "warnings": 3,
+    "note": "Full run had four warnings; removed the unused path import in finalize-pit-stage-proof-v63.mjs and reran that file successfully. Remaining three historical no-img-element warnings."
+  },
+  "localBrowser": {
+    "menuStates": 12,
+    "rigCompositions": 48,
+    "hunterChoice": "PASS",
+    "canvasMissions": 4,
+    "homeworldHeads": 2,
+    "stageApplicationChecks": 13,
+    "stageCameraConfigurations": 58,
+    "variantScenarios": 6,
+    "limits": "Representative captures inspected; no general 1:1 lore or complete sprite-kit certification."
+  },
+  "art": {
+    "acceptedPngs": 13,
+    "drawings": 63,
+    "oldAssetsDeleted": 0
+  },
+  "sourceWorkbook": {
+    "path": "C:/Users/chuck/Downloads/THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "unchanged": true
+  },
+  "deployment": {
+    "status": "pending"
+  },
+  "publicBrowser": {
+    "status": "pending"
+  }
+}
