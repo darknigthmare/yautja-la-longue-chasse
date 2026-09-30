@@ -72,7 +72,7 @@ async function select(slot, variantId) {
 }
 try {
   await enterCampaignDeck(page, { url });
-  assert.equal(await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version'), 'V58');
+  assert.equal(await page.locator('[data-game-content-version]').first().getAttribute('data-game-content-version'), process.env.V58_FERAL_QA_VERSION || 'V58');
   await page.getByRole('button', { name: 'THE PIT · combat', exact: true }).click();
   await closePitSelectionOptions(page);
   await page.getByRole('radio', { name: /^Versus local/ }).click();

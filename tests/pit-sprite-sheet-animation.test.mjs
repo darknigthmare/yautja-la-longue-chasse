@@ -9,13 +9,15 @@ const registryFixture = { name: "empty-production-registry", setup(bundle) {
   bundle.onLoad({ filter: /.*/, namespace: "fixture" }, () => ({ contents: "export const PIT_SPRITE_SHEET_REGISTRY = [];", loader: "js" }));
 } };
 const built = await build({ plugins: [registryFixture], stdin: { contents: `export * from './app/game/pitSpriteSheetAnimation.ts';
-  export * from './app/game/pitCombatBitmapArt.ts'; export { createPitCombatState, PIT_FIGHTERS } from './app/game/systems/pitCombat.ts';`,
+  export * from './app/game/pitFeralNativeArtV59.ts';
+  export * from './app/game/pitCombatBitmapArt.ts'; export { createPitCombatState, stepPitCombat, serializePitCombat, deserializePitCombat, PIT_FIGHTERS } from './app/game/systems/pitCombat.ts';`,
   resolveDir: fileURLToPath(new URL("..", import.meta.url)) }, bundle: true, format: "esm", platform: "node", write: false, logLevel: "silent" });
 const { loadPitSpriteSheetAnimations: load, resolvePitSpriteSheetAnimation: resolve,
+  getPitFeralNativeArtStatus: feralStatus, getPitSpriteSheetAtlasReadiness: atlasReadiness,
   drawPitSpriteSheetAnimation: draw, drawPitSpriteSheetHold: drawHold, resolvePitSpriteSheetHold: resolveHold, drawPitCombatBitmapFighter: drawWithFallback,
   getPitCombatBitmapFighterArtStatus: status, getPitCombatBitmapArtDefinition: staticDefinition,
   getPitSpriteSheetAnimationVisualBounds: animationBounds, getPitCombatBitmapVisualBounds: combinedBounds,
-  createPitCombatState, PIT_FIGHTERS } = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
+  createPitCombatState, stepPitCombat, serializePitCombat, deserializePitCombat, PIT_FIGHTERS } = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
 
 const sourcePath = "/game/sprites/v32/test.png";
 const frame = (index, durationTicks = 2) => ({ pageId: "body", rect: [index * 8, 0, 8, 8], pivot: [4, 7], durationTicks });
@@ -128,6 +130,143 @@ test("one drawing per short attack phase is allowed only for a complete attack w
   const duplicates = browser("duplicate");
   try { assert.equal((await load(["jungle-hunter"], [definition(clips)])).readyClipCount, 0); }
   finally { duplicates.restore(); }
+});
+
+function feralActionAtlas() {
+  const phases = ['startup', 'active', 'recovery'];
+  const pages = ['right', 'left'].map(facing => ({ id: facing, src: `/game/sprites/v59/feral-${facing}.png`,
+    width: 24, height: 8, status: 'validated', transparency: { mode: 'alpha' } }));
+  const clips = ['right', 'left'].flatMap(facing => phases.map((phase, index) => ({
+    id: `pit.stand.technique.feral-guided-bolts-v58.${phase}`, facing, status: 'validated', loop: false,
+    ticksPerSecond: 60, frames: [{ ...frame(index), pageId: facing }],
+  })));
+  return { fighterId: 'feral-hunter', bodyHeightPx: 6, atlas: {
+    schemaVersion: 1, id: 'feral-actions-v59', characterId: 'feral-hunter', variantId: 'default-feral',
+    sourceKind: 'authored-frames', status: 'validated', pages, clips,
+  } };
+}
+
+test('Feral required native atlas cannot conceal a missing direction behind a ready side or older idle', async () => {
+  const env = browser('alpha', { errorPath: '/game/sprites/v59/feral-left.png' });
+  try {
+    const older = definition();
+    older.fighterId = older.atlas.characterId = 'feral-hunter';
+    older.atlas.id = 'feral-old-idle';
+    const bank = await load(['feral-hunter'], [feralActionAtlas(), older]);
+    assert.equal(bank.readyClipCount, 4, 'right attack and older idle decode successfully');
+    assert.equal(feralStatus(bank, 'feral-hunter'), 'missing', 'both directions are required before combat');
+    assert.equal(atlasReadiness(bank, 'feral-old-idle', 'feral-hunter'), 'ready');
+    assert.equal(feralStatus(bank, 'feral-hunter', 'feral-sans-casque-75100c4c5e'), 'not-required');
+  } finally { env.restore(); }
+});
+
+test('required Feral art validates the exact selected appearance and all declared phases, not its total clip count', async () => {
+  const env = browser();
+  try {
+    const complete = await load(['feral-hunter'], [feralActionAtlas()]);
+    assert.equal(feralStatus(complete, 'feral-hunter'), 'ready');
+    assert.equal(feralStatus(null, 'feral-hunter'), 'loading');
+    assert.equal(feralStatus(complete, 'wolf'), 'not-required');
+    assert.equal(feralStatus(complete, 'feral-hunter', 'feral-avec-casque-b99fbf82fe'), 'not-required');
+    const stale = await load(['jungle-hunter'], [definition()]);
+    assert.equal(feralStatus(stale, 'feral-hunter'), 'loading');
+    const incomplete = feralActionAtlas();
+    incomplete.atlas.clips.pop();
+    assert.equal(feralStatus(await load(['feral-hunter'], [incomplete]), 'feral-hunter'), 'missing');
+    const missingExtraPage = feralActionAtlas();
+    missingExtraPage.atlas.pages.push({ ...missingExtraPage.atlas.pages[0], id: 'shield', src: '/game/sprites/v59/shield.png' });
+    assert.equal(feralStatus(await load(['feral-hunter'], [missingExtraPage]), 'feral-hunter'), 'missing',
+      'declared additional native art is required even if a malformed registry never references it');
+  } finally { env.restore(); }
+});
+
+test('Feral native action frames preserve clocks, independent sides and cancellation without simulation writes', async () => {
+  const env = browser();
+  try {
+    const abort = new AbortController();
+    const bank = await load(['feral-hunter'], [feralActionAtlas()], { signal: abort.signal });
+    const fighter = createPitCombatState('feral-hunter', 'jungle-hunter').fighters[0];
+    const timing = PIT_FIGHTERS['feral-hunter'].attacks.technique;
+    for (const facing of [1, -1]) for (const [phase, tick, index] of [
+      ['startup', 0, 0], ['active', timing.startup, 1], ['recovery', timing.startup + timing.active, 2],
+    ]) {
+      Object.assign(fighter, { facing, phase, action: { kind: 'attack', attack: 'technique', frame: tick, connected: false } });
+      const before = structuredClone(fighter);
+      const options = { simulationFrame: 800, reducedMotion: true };
+      const resolved = resolve(bank, fighter, options);
+      assert.equal(resolved.resolved.frame.page.id, facing === 1 ? 'right' : 'left');
+      assert.equal(resolved.resolved.frame.frame.rect[0], index * 8);
+      assert.deepEqual(resolve(bank, fighter, options).resolved.frame.frame, resolved.resolved.frame.frame,
+        'a paused simulation keeps the exact attack drawing');
+      const ctx = recordingContext();
+      assert.equal(draw(ctx, bank, fighter, 400, options), true);
+      assert.equal(ctx.calls.some(call => call[0] === 'scale'), false, 'native side does not use negative scale');
+      assert.deepEqual(fighter, before);
+    }
+    abort.abort();
+    assert.equal(feralStatus(bank, 'feral-hunter'), 'missing');
+    assert.equal(resolve(bank, fighter, { simulationFrame: 800 }), null);
+  } finally { env.restore(); }
+});
+
+test('historical Feral replays keep their prior firing pose while V59 shield and live launcher remain native', async () => {
+  const env = browser();
+  try {
+    const native = feralActionAtlas();
+    native.atlas.clips.push(...native.atlas.clips.map(clip => ({ ...clip,
+      id: clip.id.replace('technique.feral-guided-bolts-v58', 'heavy') })));
+    const older = definition([clip('idle', 'right'), clip('idle', 'left')]);
+    older.fighterId = older.atlas.characterId = 'feral-hunter'; older.atlas.id = 'feral-old-idle';
+    const bank = await load(['feral-hunter'], [native, older]);
+    const fighter = createPitCombatState('feral-hunter', 'jungle-hunter').fighters[0];
+    for (const facing of [1, -1]) {
+      Object.assign(fighter, { facing, phase: 'active', action: { kind: 'attack', attack: 'technique',
+        frame: PIT_FIGHTERS['feral-hunter'].attacks.technique.startup, connected: false } });
+      const before = structuredClone(fighter);
+      assert.equal(resolve(bank, fighter).definition.atlas.id, 'feral-actions-v59');
+      assert.equal(resolve(bank, fighter, { engineVersion: 10 }).definition.atlas.id, 'feral-actions-v59');
+      for (const engineVersion of [4, 5, 6, 7, 8, 9]) {
+        const options = { engineVersion, simulationFrame: 200 };
+        assert.equal(resolve(bank, fighter, options), null, `V${engineVersion} has no long-barrel firing animation`);
+        assert.equal(resolveHold(bank, fighter, options).definition.atlas.id, 'feral-old-idle');
+      }
+      assert.deepEqual(fighter, before);
+      fighter.action.attack = 'heavy'; fighter.action.frame = PIT_FIGHTERS['feral-hunter'].attacks.heavy.startup;
+      assert.equal(resolve(bank, fighter, { engineVersion: 9 }).definition.atlas.id, 'feral-actions-v59',
+        'the native shield does not depend on projectile geometry');
+    }
+  } finally { env.restore(); }
+});
+
+test('a landing after an airborne Feral shot keeps its legacy pose even when every projectile has already hit', async () => {
+  const env=browser();
+  try {
+    const older=definition([clip('idle','right'),clip('idle','left')]);
+    older.fighterId=older.atlas.characterId='feral-hunter';older.atlas.id='feral-old-idle';
+    const bank=await load(['feral-hunter'],[feralActionAtlas(),older]);
+    for(const facing of [1,-1]) for(const initialY of [45,12]) {
+      let s=createPitCombatState('feral-hunter','jungle-hunter',{mode:'training'});
+      Object.assign(s.fighters[0],{x:facing===1?250:750,facing,grounded:false,y:initialY});
+      s.fighters[1].x=s.fighters[0].x+facing*66;
+      for(let i=0;i<10;i++)s=stepPitCombat(s,[i===0?{attack:'technique'}:{},{}]);
+      assert.equal(s.techniqueEffects.length,0,'three close contacts have consumed the entire volley');
+      s=deserializePitCombat(serializePitCombat(s));
+      for(let i=0;i<8;i++) {
+        s=stepPitCombat(s,[{},{}]);
+        assert.equal(s.fighters[0].grounded,true);
+        const options={combat:s,simulationFrame:s.frame,engineVersion:10};
+        if(initialY===45) {
+          assert.equal(s.fighters[0].action.feralLauncherOrigin,'legacy');
+          assert.equal(resolve(bank,s.fighters[0],options),null);
+          assert.equal(resolveHold(bank,s.fighters[0],options).definition.atlas.id,'feral-old-idle');
+        } else {
+          assert.equal(s.fighters[0].action.feralLauncherOrigin,'native');
+          assert.equal(resolve(bank,s.fighters[0],options).definition.atlas.id,'feral-actions-v59',
+            'landing before the shot still uses the native launcher');
+        }
+      }
+    }
+  } finally {env.restore();}
 });
 
 test("phase durations fit the real attack clock instead of the rendering clock", async () => {

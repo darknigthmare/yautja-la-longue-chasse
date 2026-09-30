@@ -4,7 +4,17 @@ Jeu d'action 2D en vue latérale, original et non commercial, inspiré de l'univ
 *Predator*. Le joueur prépare son chasseur dans un vaisseau, choisit son contrat
 et son arsenal, puis traque des proies sur plusieurs planètes.
 
-## État actuel — 12 septembre 2026 · V31
+## Dernier lot documenté — V59
+
+Le [compte rendu V59](docs/v59-workbook-delivery.md) détaille les quatre planches
+natives de Feral, le départ physique des carreaux, la compatibilité des replays,
+les validations obtenues et les animations encore manquantes. Il distingue la
+validation locale de la publication ; aucun achèvement global du classeur ni
+aucune fidélité visuelle 1:1 ne sont certifiés.
+
+## État historique — 12 septembre 2026 · V31
+
+Cet état conservé ne décrit pas les effectifs et ressources des lots ultérieurs.
 
 - **Huit chasses scénarisées** : jungle, glace, volcan, marais, désert, océan,
   monde fongique et ruines. Chacune possède une cible Apex, des objectifs, une

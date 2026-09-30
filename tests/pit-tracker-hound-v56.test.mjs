@@ -130,7 +130,7 @@ test('engine7 charge, recall and hits round-trip through deterministic input rep
   }
   assert(hounds > 0);
   const replay = p.deserializePitReplay(p.serializePitReplay(recorder.finish()));
-  assert.equal(replay.engineVersion, 9);
+  assert.equal(replay.engineVersion, 10);
   assert.equal(p.serializePitCombat(p.playPitReplay(replay)), p.serializePitCombat(state));
 });
 

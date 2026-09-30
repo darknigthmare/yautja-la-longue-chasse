@@ -22,6 +22,7 @@ import { getPitCombatBitmapArtDefinition, getPitCombatGroundFootprint, isPitComb
 import { drawActorContactShadow } from "./spriteContact";
 import { drawPitCompanion, loadPitCompanionArt, pitCompanionPose, type PitCompanionArtBank } from './pitCompanionArt';
 import { drawPitFeralBolt } from './pitFeralBoltRendering';
+import { getPitFeralNativeArtStatus } from './pitFeralNativeArtV59';
 import { getPitImpactFeedback, type PitImpactFlash } from './systems/pitImpactFeedback';
 import { drawPitFalconerDrone, loadPitFalconerDroneArt, resolvePitFalconerDroneFrame, type PitFalconerDroneArtBank } from './pitFalconerDroneArt';
 import {
@@ -616,6 +617,7 @@ function drawArena(
   reducedCharacterMotion: boolean,
   companionArt: PitCompanionArtBank | null,
   falconerArt: PitFalconerDroneArtBank | null,
+  engineVersion: number = PIT_STATE_VERSION,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -683,6 +685,8 @@ function drawArena(
     drawTechniqueEffect(context, state, effect, groundY, highContrast, showHitboxes, companionArt, falconerArt, reducedCharacterMotion);
   }
 
+  const fighterArtOptions = { simulationFrame: state.frame, combat: state, presentation,
+    reducedMotion: reducedCharacterMotion, engineVersion };
   state.fighters.forEach((fighter) => {
     const definition = PIT_FIGHTERS[fighter.definitionId];
     const fighterPalette =
@@ -697,7 +701,7 @@ function drawArena(
     const accent = highContrast ? "#eafcff" : fighterPalette.accent;
     const lean = fighter.phase === "startup" ? fighter.facing * 6 : fighter.phase === "active" ? fighter.facing * 13 : 0;
 
-    const footprint = getPitCombatGroundFootprint(fighterArt, fighter, { simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
+    const footprint = getPitCombatGroundFootprint(fighterArt, fighter, fighterArtOptions);
     const elevation = presentation.phase === "fight" ? fighter.y : 0;
     drawActorContactShadow(context, footprint.x, groundY, footprint.halfWidth, elevation);
     context.save();
@@ -712,9 +716,9 @@ function drawArena(
 
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
-    const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
+    const bitmapDrawn = drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, ...fighterArtOptions });
     const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-") || isPitOriginalFighterIdV56(fighter.definitionId);
-    canvas.dataset[fighter.slot === 0 ? "pitPresentationArtP1" : "pitPresentationArtP2"] = getPitFighterPresentationVisualStatus(fighterArt, fighter, { simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
+    canvas.dataset[fighter.slot === 0 ? "pitPresentationArtP1" : "pitPresentationArtP2"] = getPitFighterPresentationVisualStatus(fighterArt, fighter, fighterArtOptions);
     if (!bitmapDrawn && !humanCombatant && presentation.phase === "fight") {
       context.save();
       context.translate(fighter.x, bodyTop);
@@ -753,7 +757,7 @@ function drawArena(
       context.restore();
     } else if (!bitmapDrawn) {
       // A missing human atlas is a status marker, never a fabricated Yautja body.
-      const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, { simulationFrame: state.frame, combat: state, presentation, reducedMotion: reducedCharacterMotion });
+      const status = getPitCombatBitmapFighterArtStatus(fighterArt, fighter, fighterArtOptions);
       context.save();
       context.fillStyle = highContrast ? "#ffffff" : "#d5e8df";
       context.font = "11px sans-serif";
@@ -761,7 +765,8 @@ function drawArena(
       context.fillText(definition.name, fighter.x, bodyTop + 35, 155);
       context.fillText(status === "loading" ? "Visuel en chargement" : "Visuel indisponible", fighter.x, bodyTop + 52, 155);
       context.restore();
-    } else if (combatEffectsVisible && (fighter.phase === "startup" || boxes.hitbox)) {
+    } else if (combatEffectsVisible && (fighter.phase === "startup" || boxes.hitbox) &&
+      getPitCombatBitmapFighterArtStatus(fighterArt, fighter, fighterArtOptions) !== "sprite-sheet-animation") {
       // Until authored attack poses exist, keep the real anticipation/contact
       // readable through a separate cue. This cue cannot deal or extend damage.
       context.save();
@@ -985,9 +990,9 @@ export function FighterCard({
   );
 }
 
-function combatFighterArtStatuses(bank: PitCombatBitmapArtBank | null, combat: PitCombatState | null, presentation: PitRoundPresentationView, reducedMotion: boolean) {
+function combatFighterArtStatuses(bank: PitCombatBitmapArtBank | null, combat: PitCombatState | null, presentation: PitRoundPresentationView, reducedMotion: boolean, engineVersion?: number) {
   return combat?.fighters.map(fighter => getPitCombatBitmapFighterArtStatus(bank, fighter, {
-    simulationFrame: combat.frame, combat, presentation, reducedMotion,
+    simulationFrame: combat.frame, combat, presentation, reducedMotion, engineVersion,
   }));
 }
 
@@ -1209,11 +1214,13 @@ export default function PitCanvas({
   }, [controlBindings, mode]);
 
   const fighterArtStatuses = useMemo(
-    () => combatFighterArtStatuses(fighterArt, combat, roundPresentation, prefersReducedMotion),
-    [fighterArt, combat, roundPresentation, prefersReducedMotion],
+    () => combatFighterArtStatuses(fighterArt, combat, roundPresentation, prefersReducedMotion, playbackReplay?.engineVersion),
+    [fighterArt, combat, roundPresentation, prefersReducedMotion, playbackReplay?.engineVersion],
   );
   const briefingFighterStates = combat?.fighters.map((fighter, index): PitTrainingAssetState => {
     if (!isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId)) return "loading";
+    const nativeFeral = getPitFeralNativeArtStatus(fighterArt?.spriteSheets, fighter.definitionId, fighter.variantId);
+    if (nativeFeral === 'loading' || nativeFeral === 'missing') return nativeFeral === 'loading' ? 'loading' : 'failed';
     const status = fighterArtStatuses?.[index];
     return status === "loading" ? "loading" : status === "missing" ? "failed" : "ready";
   }) as [PitTrainingAssetState, PitTrainingAssetState] | undefined;
@@ -2445,8 +2452,14 @@ export default function PitCanvas({
   const suppliedFighterArtFailed = Boolean(combat && combat.fighters.some((fighter, index) =>
     (fighter.variantId || isPitOriginalFighterIdV56(fighter.definitionId)) && isPitCombatBitmapSelectionRequested(fighterArt, fighter.definitionId, fighter.variantId) &&
     fighterArtStatuses?.[index] === "missing"));
+  const feralNativeArtStatuses = combat?.fighters.map(fighter => getPitFeralNativeArtStatus(
+    fighterArt?.spriteSheets, fighter.definitionId, fighter.variantId)) ?? [];
+  const feralNativeArtFailed = feralNativeArtStatuses.includes('missing');
+  const feralNativeArtPending = feralNativeArtFailed || feralNativeArtStatuses.includes('loading');
+  const feralNativeArtStatus = feralNativeArtFailed ? 'missing' : feralNativeArtStatuses.includes('loading')
+    ? 'loading' : feralNativeArtStatuses.includes('ready') ? 'ready' : 'not-required';
   const matchAssetsPending = combat !== null && (
-    houndArtPending || falconerArtPending ||
+    houndArtPending || falconerArtPending || feralNativeArtPending ||
     suppliedFighterArtFailed ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
     !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
@@ -2693,8 +2706,9 @@ export default function PitCanvas({
       prefersReducedMotion,
       companionArt,
       falconerArt,
+      playbackReplay?.engineVersion ?? PIT_STATE_VERSION,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, roundPresentation, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay?.engineVersion]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -3481,15 +3495,17 @@ export default function PitCanvas({
       data-pit-presentation-terminal-ready={terminal}
       data-pit-presentation-simulation-blocked={roundPresentation.blocksSimulation}
       data-pit-simulation-blocked={roundPresentation.blocksSimulation || menuOpen || matchAssetsPending}
+      data-pit-feral-native-art={feralNativeArtStatus}
     >
       <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
         {activeAriaAnnouncement}
       </div>
       {matchAssetsPending ? <div className={styles.matchLoading} role="status" aria-live="polite" data-pit-match-loading="true">
-        <strong>{houndArtFailed ? "IMAGE DU CHIEN INDISPONIBLE" : falconerArtFailed ? "IMAGE DU CAPTEUR INDISPONIBLE" : suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong>
-        <span>{houndArtFailed ? "Une vue du Hellhound manque. Combat suspendu : aucun chien de remplacement ni attaque invisible." : falconerArtFailed ? "Une vue native du drone manque. Le duel reste suspendu, sans capteur invisible ni forme de remplacement." : suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>
+        <strong>{houndArtFailed ? "IMAGE DU CHIEN INDISPONIBLE" : falconerArtFailed ? "IMAGE DU CAPTEUR INDISPONIBLE" : feralNativeArtFailed ? "ANIMATIONS DE FERAL INDISPONIBLES" : suppliedFighterArtFailed ? "IMAGE DU CHASSEUR INDISPONIBLE" : "CHARGEMENT DU COMBAT"}</strong>
+        <span>{houndArtFailed ? "Une vue du Hellhound manque. Combat suspendu : aucun chien de remplacement ni attaque invisible." : falconerArtFailed ? "Une vue native du drone manque. Le duel reste suspendu, sans capteur invisible ni forme de remplacement." : feralNativeArtFailed ? "Une vue native des actions de Feral manque. Le duel reste suspendu jusqu’au chargement des deux directions." : suppliedFighterArtFailed ? "La variante choisie n’a pas pu être chargée. Le duel reste en pause, sans personnage de remplacement." : "Préparation des combattants et des plans de l’arène. Le chronomètre est en pause."}</span>
         {houndArtFailed && <button type="button" data-pit-hound-retry onClick={() => setCompanionArtRetry(value => value + 1)}>Réessayer le Hellhound</button>}
         {falconerArtFailed && <button type="button" data-pit-falconer-retry onClick={() => { setFalconerArt(null); setFalconerArtRetry(value => value + 1); }}>Réessayer le capteur</button>}
+        {feralNativeArtFailed && <button type="button" data-pit-feral-art-retry onClick={() => { setFighterArt(null); setFighterArtRetry(value => value + 1); }}>Réessayer les animations de Feral</button>}
         {suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}
         {journeyAssetsFailed ? <button type="button" onClick={retrySceneArt}>Réessayer les deux scènes</button> : arenaArt && (arenaArt.unavailable || arenaArt.failedPaths.size > 0) ? <button type="button" onClick={retrySceneArt}>Réessayer le décor</button> : null}
       </div> : null}

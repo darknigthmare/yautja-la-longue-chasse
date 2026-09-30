@@ -137,11 +137,11 @@ test('old active traps survive snapshot migration unchanged until expiry; future
   s=tick(s,200);assert.equal(s.techniqueEffects.length,0);
 });
 
-test('V9 replay recording and playback preserve masked and unmasked salvos',()=>{
+test('Current replay recording and playback preserve masked and unmasked salvos',()=>{
   for(const variant of [null,p.PIT_FERAL_UNMASKED_VARIANTS[0]]) {
     const inputs=Array.from({length:160},(_,i)=>[{attack:i%40===0?'technique':undefined},{left:i<70,jump:i===95}]);
     const replay=p.recordPitReplay(inputs,{fighters:['feral-hunter','jungle-hunter'],variants:[variant,null],rules:{mode:'training'},seed:19});
-    assert.equal(replay.engineVersion,9);
+    assert.equal(replay.engineVersion,10);
     assert.deepEqual(p.playPitReplay(replay),p.playPitReplay(p.normalizePitReplay(JSON.parse(p.serializePitReplay(replay)))));
   }
 });

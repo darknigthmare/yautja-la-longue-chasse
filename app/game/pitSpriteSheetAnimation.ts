@@ -48,6 +48,8 @@ export interface PitSpriteSheetAnimationOptions extends PitFighterPresentationOp
   /** Actual simulation tick. Omitting it holds observed-entry clips at their start. */
   readonly simulationFrame?: number;
   readonly combat?: Pick<PitCombatState, "frame" | "pendingThrow" | "events">;
+  /** Historical replay geometry can require its prior presentation; omitted for live combat. */
+  readonly engineVersion?: number;
 }
 interface PreparedAnimation {
   readonly definition: PitSpriteSheetAnimationDefinition;
@@ -238,6 +240,35 @@ export async function loadPitSpriteSheetAnimations(
   return bank;
 }
 
+export type PitSpriteSheetAtlasReadiness = "loading" | "ready" | "missing";
+
+/** A required action atlas is atomic: a ready side cannot conceal a failed side. */
+export function getPitSpriteSheetAtlasReadiness(
+  bank: PitSpriteSheetAnimationBank | null | undefined,
+  atlasId: string,
+  fighterId: PitFighterId,
+  variantId?: string | null,
+  requiredClips: readonly { readonly id: string; readonly facing: "left" | "right" }[] = [],
+): PitSpriteSheetAtlasReadiness {
+  if (!bank) return "loading";
+  const proof = evidence.get(bank);
+  if (!proof || bank.cancelled || proof.signal?.aborted) return "missing";
+  if (!proof.selections.has(selectionKey(fighterId, variantId))) return "loading";
+  const animation = proof.animations.find(candidate => candidate.definition.atlas.id === atlasId &&
+    candidate.definition.fighterId === fighterId &&
+    (candidate.definition.variantId ?? null) === (variantId ?? null));
+  if (!animation) return "missing";
+  const { atlas } = animation.definition;
+  const completePages = atlas.pages.length > 0 && atlas.pages.every(page => {
+    const source = animation.pages.get(page.id);
+    return page.status === "validated" && source?.width === page.width && source.height === page.height;
+  });
+  const completeClips = atlas.clips.length > 0 && atlas.clips.every(clip =>
+    clip.status === "validated" && animation.readyClips.has(clipKey(clip.id, clip.facing)));
+  return completePages && completeClips && requiredClips.every(clip =>
+    animation.readyClips.has(clipKey(clip.id, clip.facing))) ? "ready" : "missing";
+}
+
 export interface PitSpriteSheetPresentationFrame {
   readonly definition: PitSpriteSheetAnimationDefinition;
   readonly frame: HunterSpriteAtlasFrameLookup;
@@ -348,6 +379,13 @@ export function resolvePitSpriteSheetAnimation(
   for (const animation of proof.animations) {
     if (!ownsAppearance(animation.definition, fighter) ||
       !animation.readyClips.has(clipKey(motion.clipId, motion.facing))) continue;
+    // V9 and earlier launch from the historical body origin. Their held legacy
+    // pose must not show the longer V59 barrel firing from a different location.
+    // The shield action has no muzzle dependency and remains available.
+    if (animation.definition.atlas.id === 'feral-actions-v59' &&
+      motion.clipId.startsWith('pit.stand.technique.feral-guided-bolts-v58.') &&
+      ((options.engineVersion !== undefined && options.engineVersion < 10) ||
+        fighter.action?.feralLauncherOrigin === 'legacy')) continue;
     // Native single-view stances are resolved by the hold path, not counted as animation.
     if (motion.clipId === 'idle' && animation.definition.heldPoseClips?.some(pose =>
       pose.id === 'idle' && pose.facing === motion.facing)) continue;

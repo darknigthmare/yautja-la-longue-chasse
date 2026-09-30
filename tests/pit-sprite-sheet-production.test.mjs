@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from 'node:fs/promises';
 import { auditPitSpriteSheetProduction } from "./helpers/pit-sprite-sheet-production.mjs";
 
 test("real registered PNGs prepare as distinct transparent cells and every registered facing/phase resolves in the combat renderer", async () => {
@@ -17,6 +18,48 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
     assert.deepEqual(phases.map(clip => clip.runtimePhaseTicks), [28, 7, 36]);
     assert.deepEqual(phases.map(clip => clip.drawnCells), [2, 1, 2]);
     assert.equal(hammer.find(clip => clip.facing === facing && clip.clipId === 'idle').status, 'held-native-stance');
+  }
+  const feralMetadata = JSON.parse(await readFile(new URL('../app/game/data/pitFeralArtV59.json', import.meta.url), 'utf8'));
+  const feralActions = report.clips.filter(clip => clip.atlasId === 'feral-actions-v59');
+  assert.equal(feralActions.length, 12, 'two actions in both native directions, with three phases each');
+  assert(feralActions.every(clip => clip.fighterId === 'feral-hunter' && clip.variantId === null &&
+    clip.runtimePosture === 'stand' && clip.noMirroring && clip.uniformScale && clip.physicsUnchanged && clip.filter === 'none'),
+  'default Feral owns these standing native actions; no costume, airborne or crouched coverage is invented');
+  for (const facing of ['right', 'left']) for (const [action, timing] of [
+    ['technique.feral-guided-bolts-v58', [9, 5, 18]], ['heavy', [13, 5, 22]],
+  ]) {
+    const phases = feralActions.filter(clip => clip.facing === facing && clip.clipId.startsWith(`pit.stand.${action}.`));
+    assert.deepEqual(phases.map(clip => clip.runtimePhase), ['startup', 'active', 'recovery']);
+    assert.deepEqual(phases.map(clip => clip.runtimePhaseTicks), timing);
+    assert.deepEqual(phases.map(clip => clip.authoredTicks), timing);
+    assert.deepEqual(phases.map(clip => clip.drawnCells), [2, 1, 2]);
+    assert.deepEqual(phases.map(clip => clip.drawnFrameIndices), [[0, 1], [0], [0, 1]],
+      'every registered frame was actually passed to the renderer, including recovery');
+  }
+  const feralPages = report.pages.filter(page => page.src.includes('/v59/pit/feral/'));
+  assert.equal(feralPages.length, 4);
+  assert.equal(feralMetadata.records.length, 4);
+  assert.deepEqual(new Set(feralMetadata.records.map(record => `${record.action}:${record.facing}`)),
+    new Set(['launcher:right', 'launcher:left', 'shield:right', 'shield:left']));
+  assert.equal(new Set(feralPages.flatMap(page => page.cells.map(cell => cell.sha256))).size, 16,
+    'phase reuse does not inflate the sixteen independently authored drawings');
+  assert.equal(report.pages.some(page => page.pageId === 'feral-hunter-heavy'), false,
+    'the superseded V34 wrist-blade thrust must not remain registered as a shield action');
+  assert.equal(historicalClips.filter(clip => clip.fighterId === 'feral-hunter' && clip.clipId.startsWith('pit.stand.heavy.')).length, 6,
+    'only one shield phase resolves per facing, never an ambiguous older duplicate');
+  for (const record of feralMetadata.records) {
+    const page = feralPages.find(candidate => candidate.src === record.src);
+    assert.ok(page); assert.equal(page.variantId, null); assert.equal(page.sourceHasAlpha, true);
+    assert.equal(page.keyedPixels, 0); assert.equal(page.sourceSha256, record.sha256);
+    assert.equal(page.width, record.width); assert.equal(page.height, record.height);
+    assert.equal(page.distinctDrawings, 4); assert.equal(record.frames.length, 4);
+    for (const frame of record.frames) {
+      const cell = page.cells.find(candidate => candidate.rect.every((value, index) => value === frame.rect[index]));
+      assert.ok(cell); assert.deepEqual(cell.pivot, frame.pivot);
+      assert.deepEqual(cell.alphaBounds, frame.alphaBounds);
+      assert.deepEqual(cell.margins, frame.margins);
+      assert.ok(cell.margins.every(value => value > 0));
+    }
   }
   const finalDuel = report.clips.filter(clip => clip.variantId === 'jungle-hunter-final-duel-v57');
   assert.equal(finalDuel.length, 2);
@@ -92,11 +135,11 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
       [fighterId, variantId, fighterId + "-masked-round-presentation-v52", "pit.presentation." + kind, facing, 3, true].join(":")))).sort(),
     "All twelve V52 ceremonies belong only to their exact supplied masked costumes");
   assert.equal(presentationClips.length, 18);
-  assert.equal(report.readyPhaseClips, 347, "V57 adds six hammer phases and four explicitly held native stances");
-  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 329);
-  assert.equal(report.pageCount, 124);
-  assert.equal(new Set(report.pages.map(page => page.src)).size, 104);
-  assert.equal(report.distinctDrawings, 687);
+  assert.equal(report.readyPhaseClips, 353, "V59 replaces six old Feral heavy phases with twelve native shield/launcher phases");
+  assert.equal(report.clips.filter(clip => !clip.clipId.startsWith("pit.presentation.")).length, 335);
+  assert.equal(report.pageCount, 127);
+  assert.equal(new Set(report.pages.map(page => page.src)).size, 107);
+  assert.equal(report.distinctDrawings, 695);
   assert.equal(report.appearances.length, 22);
   assert.equal(report.fighters.length, 16);
   const v53Clips = report.clips.filter(clip => clip.atlasId.endsWith('-v53'));
@@ -140,7 +183,7 @@ test("real registered PNGs prepare as distinct transparent cells and every regis
   assert.equal(wolf.some(clip => clip.clipId === "walk" || clip.clipId === "walk-backward" || clip.clipId.startsWith("pit.stand.medium")), false);
   assert.equal(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).length, 3);
   assert.ok(wolf.filter(clip => clip.clipId.startsWith("pit.stand.heavy")).every(clip => clip.facing === "left"));
-  assert.equal(historicalClips.filter(clip => clip.fighterId === "feral-hunter").length, 30);
+  assert.equal(historicalClips.filter(clip => clip.fighterId === "feral-hunter").length, 36);
   assert.equal(historicalClips.filter(clip => clip.fighterId === "scar").length, 30);
   assert.equal(historicalClips.filter(clip => clip.fighterId === "celtic").length, 28);
   assert.equal(historicalClips.some(clip => clip.fighterId === "celtic" && clip.clipId === "walk"), false, "Rejected forward gait must remain absent");

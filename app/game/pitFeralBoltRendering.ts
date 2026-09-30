@@ -1,7 +1,8 @@
 import { getPitTechniqueBox, type PitCombatState, type PitTechniqueEffectState } from './systems/pitCombat';
 
 /** Readable physical-projectile feedback, not a certified reproduction of the film prop.
- * The separate launcher/bolt drawing and firing body animation are still outstanding.
+ * V59 adds native standing launcher poses for the default appearance. The isolated
+ * bolt silhouette remains provisional; drawing always follows the collision box.
  */
 export function drawPitFeralBolt(
   context: CanvasRenderingContext2D,

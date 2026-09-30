@@ -4,10 +4,10 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { build } from 'esbuild';
 
-// Independent differential review against the published V57 source. Read-only:
+// Independent differential review against the published V58 source. Read-only:
 // historical sources are supplied to esbuild in memory, never restored over files.
-const ref = process.env.V58_BASELINE_REF || '7f318adfbbc5f1d681888c907f028d0180c8d6fc';
-const output = process.env.V58_BASELINE_OUTPUT || 'work-local/v58/qa/feral-v8-baseline.json';
+const ref = process.env.V59_BASELINE_REF || '00a6a323f49a1412d820060476c68fc4b81221d0';
+const output = process.env.V59_BASELINE_OUTPUT || 'work-local/v59/qa/feral-v9-baseline.json';
 const root = process.cwd();
 const oldSources = new Map(['pitCombat.ts', 'pitFirstEdition.ts'].map(name => [name,
   execFileSync('git', ['show', `${ref}:app/game/systems/${name}`], { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 })]));
@@ -22,7 +22,7 @@ async function load(historical) {
   return import('data:text/javascript;base64,' + Buffer.from(result.outputFiles[0].text).toString('base64'));
 }
 const previous = await load(true), current = await load(false);
-assert.equal(previous.PIT_STATE_VERSION, 8);
+assert.equal(previous.PIT_STATE_VERSION, 9);
 assert.equal(current.PIT_STATE_VERSION, 10);
 const checks = [];
 for (const opponent of ['jungle-hunter', 'city-hunter', 'falconer', 'tracker']) {
@@ -42,8 +42,8 @@ for (const opponent of ['jungle-hunter', 'city-hunter', 'falconer', 'tracker']) 
           guardHigh: cycle >= 55 && cycle < 90, guardLow: cycle >= 90 && cycle < 135, down: cycle >= 90 && cycle < 135 },
       ];
       old = previous.stepPitCombat(old, inputs);
-      next = current.stepPitCombatV8Compatibility(next, inputs);
-      const normalized = JSON.parse(current.serializePitCombat(next)); normalized.version = 8;
+      next = current.stepPitCombatV9Compatibility(next, inputs);
+      const normalized = JSON.parse(current.serializePitCombat(next)); normalized.version = 9;
       assert.deepEqual(normalized, JSON.parse(previous.serializePitCombat(old)), `${opponent}/${slot}/${variant || 'default'}/tick${frame + 1}`);
     }
     checks.push({ opponent, slot, variant, ticks: 900, health: old.fighters.map(f => f.health) });
@@ -51,5 +51,5 @@ for (const opponent of ['jungle-hunter', 'city-hunter', 'falconer', 'tracker']) 
 }
 await fs.mkdir(path.dirname(output), { recursive: true });
 await fs.writeFile(output, JSON.stringify({ passed: true, baseline: ref, checks, totalComparedStates: checks.length * 900,
-  scope: 'Every serialized combat field compared at each tick; only the declared state schema version normalized from 10 to 8. Published Feral trap, guard, projectiles and opponent behavior must remain unchanged.' }, null, 2));
+  scope: 'Every serialized combat field compared at each tick; only the declared state schema version normalized from 10 to 9. Published Feral salvos, guard, projectiles and opponent behavior must remain unchanged.' }, null, 2));
 console.log(JSON.stringify({ passed: true, totalComparedStates: checks.length * 900, output }));

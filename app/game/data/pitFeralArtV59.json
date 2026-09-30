@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "action": "launcher",
+      "facing": "right",
+      "src": "/game/sprites/v59/pit/feral/launcher-right.png",
+      "nativeFile": "exec-3a097640-f800-4af9-8122-661982a41c07.png",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeight": 470,
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "muzzle": {
+        "frameIndex": 2,
+        "point": [
+          848,
+          174
+        ],
+        "measurement": "visual-center-of-native-rails"
+      },
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            768,
+            520
+          ],
+          "pivot": [
+            348,
+            509
+          ],
+          "alphaBounds": [
+            146,
+            24,
+            581,
+            487
+          ],
+          "margins": [
+            146,
+            24,
+            41,
+            9
+          ]
+        },
+        {
+          "rect": [
+            768,
+            0,
+            768,
+            520
+          ],
+          "pivot": [
+            239,
+            507
+          ],
+          "alphaBounds": [
+            22,
+            75,
+            723,
+            435
+          ],
+          "margins": [
+            22,
+            75,
+            23,
+            10
+          ]
+        },
+        {
+          "rect": [
+            0,
+            520,
+            880,
+            504
+          ],
+          "pivot": [
+            365,
+            463
+          ],
+          "alphaBounds": [
+            117,
+            15,
+            735,
+            451
+          ],
+          "margins": [
+            117,
+            15,
+            28,
+            38
+          ]
+        },
+        {
+          "rect": [
+            880,
+            520,
+            656,
+            504
+          ],
+          "pivot": [
+            214,
+            464
+          ],
+          "alphaBounds": [
+            13,
+            8,
+            561,
+            459
+          ],
+          "margins": [
+            13,
+            8,
+            82,
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "action": "launcher",
+      "facing": "left",
+      "src": "/game/sprites/v59/pit/feral/launcher-left.png",
+      "nativeFile": "exec-31a33730-ff1a-4e1c-8eba-4ee65dc3aabc.png",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeight": 470,
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "muzzle": {
+        "frameIndex": 2,
+        "point": [
+          33,
+          156
+        ],
+        "measurement": "visual-center-of-native-rails"
+      },
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            748,
+            512
+          ],
+          "pivot": [
+            517,
+            487
+          ],
+          "alphaBounds": [
+            59,
+            16,
+            673,
+            474
+          ],
+          "margins": [
+            59,
+            16,
+            16,
+            22
+          ]
+        },
+        {
+          "rect": [
+            748,
+            0,
+            788,
+            512
+          ],
+          "pivot": [
+            515,
+            492
+          ],
+          "alphaBounds": [
+            18,
+            69,
+            723,
+            425
+          ],
+          "margins": [
+            18,
+            69,
+            47,
+            18
+          ]
+        },
+        {
+          "rect": [
+            0,
+            512,
+            815,
+            512
+          ],
+          "pivot": [
+            559,
+            471
+          ],
+          "alphaBounds": [
+            30,
+            17,
+            762,
+            459
+          ],
+          "margins": [
+            30,
+            17,
+            23,
+            36
+          ]
+        },
+        {
+          "rect": [
+            815,
+            512,
+            721,
+            512
+          ],
+          "pivot": [
+            438,
+            467
+          ],
+          "alphaBounds": [
+            18,
+            13,
+            643,
+            456
+          ],
+          "margins": [
+            18,
+            13,
+            60,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "action": "shield",
+      "facing": "right",
+      "src": "/game/sprites/v59/pit/feral/shield-right.png",
+      "nativeFile": "exec-0551896d-eb98-43fc-bf76-6b622ce7ac93.png",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeight": 470,
+      "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            768,
+            504
+          ],
+          "pivot": [
+            397,
+            492
+          ],
+          "alphaBounds": [
+            197,
+            18,
+            490,
+            477
+          ],
+          "margins": [
+            197,
+            18,
+            81,
+            9
+          ]
+        },
+        {
+          "rect": [
+            768,
+            0,
+            768,
+            504
+          ],
+          "pivot": [
+            294,
+            493
+          ],
+          "alphaBounds": [
+            92,
+            35,
+            481,
+            460
+          ],
+          "margins": [
+            92,
+            35,
+            195,
+            9
+          ]
+        },
+        {
+          "rect": [
+            0,
+            504,
+            850,
+            520
+          ],
+          "pivot": [
+            391,
+            479
+          ],
+          "alphaBounds": [
+            137,
+            25,
+            684,
+            457
+          ],
+          "margins": [
+            137,
+            25,
+            29,
+            38
+          ]
+        },
+        {
+          "rect": [
+            850,
+            504,
+            686,
+            520
+          ],
+          "pivot": [
+            246,
+            478
+          ],
+          "alphaBounds": [
+            46,
+            9,
+            478,
+            472
+          ],
+          "margins": [
+            46,
+            9,
+            162,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "action": "shield",
+      "facing": "left",
+      "src": "/game/sprites/v59/pit/feral/shield-left.png",
+      "nativeFile": "exec-4338f53d-1de1-44e9-b140-b8ada4031cd9.png",
+      "width": 1536,
+      "height": 1024,
+      "bodyHeight": 470,
+      "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            820,
+            490
+          ],
+          "pivot": [
+            518,
+            480
+          ],
+          "alphaBounds": [
+            242,
+            21,
+            487,
+            461
+          ],
+          "margins": [
+            242,
+            21,
+            91,
+            8
+          ]
+        },
+        {
+          "rect": [
+            820,
+            0,
+            716,
+            490
+          ],
+          "pivot": [
+            369,
+            479
+          ],
+          "alphaBounds": [
+            97,
+            10,
+            485,
+            471
+          ],
+          "margins": [
+            97,
+            10,
+            134,
+            9
+          ]
+        },
+        {
+          "rect": [
+            0,
+            490,
+            875,
+            534
+          ],
+          "pivot": [
+            560,
+            472
+          ],
+          "alphaBounds": [
+            86,
+            8,
+            726,
+            466
+          ],
+          "margins": [
+            86,
+            8,
+            63,
+            60
+          ]
+        },
+        {
+          "rect": [
+            875,
+            490,
+            661,
+            534
+          ],
+          "pivot": [
+            354,
+            480
+          ],
+          "alphaBounds": [
+            71,
+            7,
+            494,
+            477
+          ],
+          "margins": [
+            71,
+            7,
+            96,
+            50
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { PIT_USER_FIGHTERS, getPitUserVariant, normalizePitUserVariant, type Pit
 import { PIT_TRACKER_HOUND, PIT_TRACKER_LEGACY_COUNTER, isPitHoundVariantId, type PitHoundVariantId } from './pitCompanion';
 import { PIT_FALCONER_LEGACY_DRONE, PIT_FALCONER_RECON_DRONE } from './pitFalconerDrone';
 import { PIT_FERAL_GUIDED_BOLTS, PIT_FERAL_LEGACY_TRAP, pitFeralHasTargetingMask, type PitFeralBoltFlight } from './pitFeralBoltsV58';
+import { getPitFeralNativeMuzzle, pitFeralLaunchSweepTouches, pitFeralUsesNativeLauncher } from './pitFeralMuzzleV59';
 import { pitHasShoulderPlasma } from './pitEquipmentV57';
 import { PIT_ORIGINAL_FIGHTERS_V56, type PitOriginalFighterIdV56 } from './pitOriginalFightersV56';
 import { createPitStageJourney, finishPitStageJourneyFrame, validPitStageJourney, isPitStageJourneyForArena, type PitStageJourneyId, type PitStageJourneyState } from "./pitStageJourney";
@@ -26,7 +27,7 @@ export const PIT_ROUND_TRANSITION_FRAMES = PIT_TICK_RATE * 2;
 export const PIT_COMBO_RESET_FRAMES = 45;
 export const PIT_MAX_COMBO_HITS = 6;
 export const PIT_MAX_TECHNIQUE_EFFECTS = 8;
-export const PIT_STATE_VERSION = 9;
+export const PIT_STATE_VERSION = 10;
 /** Eight 60Hz reaction ticks after a grounded neutral/guard capture. */
 export const PIT_THROW_TECH_WINDOW_FRAMES = 8;
 export const PIT_THROW_TECH_RECOVERY_FRAMES = 12;
@@ -168,6 +169,9 @@ export interface PitActionState {
   attack: PitAttackKind | null;
   frame: number;
   connected: boolean;
+  /** V10 default Feral: origin chosen when firing, held even after landing.
+   * Absent before launch and in historical replay steppers. */
+  feralLauncherOrigin?: 'native' | 'legacy';
 }
 
 export interface PitTechniqueStatusState {
@@ -189,7 +193,7 @@ export interface PitTechniqueEffectState {
   phase: PitTechniqueEffectPhase;
   hitCount: number;
   rehitFrames: number;
-  /** Only Feral's V9 bolts carry immutable acquisition/flight data. */
+  /** Feral's V9+ bolts carry immutable acquisition/flight data. */
   bolt?: PitFeralBoltFlight;
 }
 
@@ -896,7 +900,10 @@ export function getPitTechniqueBox(
   };
 }
 
-function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean, recallDroneEnabled: boolean, feralBoltsEnabled: boolean): void {
+interface FeralLaunchSweep { origin: PitBox; muzzle: PitBox }
+
+function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean, recallDroneEnabled: boolean, feralBoltsEnabled: boolean, nativeFeralMuzzleEnabled: boolean): Map<number, FeralLaunchSweep> {
+  const launchSweeps = new Map<number, FeralLaunchSweep>();
   for (const fighter of state.fighters) {
     const action = fighter.action;
     const move = PIT_FIGHTERS[fighter.definitionId].attacks.technique;
@@ -925,16 +932,31 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
       const opponent = state.fighters[fighter.slot === 0 ? 1 : 0];
       const guided = pitFeralHasTargetingMask(fighter.variantId);
       const volleyId = state.nextTechniqueEffectId;
-      const originX = techniqueEffectX(fighter, technique);
-      const originY = fighter.y + technique.verticalOffset;
+      const legacyOriginX = techniqueEffectX(fighter, technique);
+      const legacyOriginY = fighter.y + technique.verticalOffset;
+      const muzzle = nativeFeralMuzzleEnabled && pitFeralUsesNativeLauncher(fighter)
+        ? getPitFeralNativeMuzzle(fighter, PIT_FIGHTERS[fighter.definitionId].bodyHeight) : null;
+      if (nativeFeralMuzzleEnabled && !fighter.variantId) action.feralLauncherOrigin = muzzle ? 'native' : 'legacy';
+      // x/y describe the actual projectile rectangle, centered on the drawn muzzle.
+      const originX = muzzle ? muzzle.x - technique.width / 2 : legacyOriginX;
+      const originY = muzzle ? muzzle.y - technique.height / 2 : legacyOriginY;
       const targetX = guided ? opponent.x : originX + fighter.facing * PIT_ARENA.width;
       const body = PIT_FIGHTERS[opponent.definitionId];
       const targetY = guided ? opponent.y + (opponent.crouching ? body.crouchHeight : body.bodyHeight) * .6 : originY;
       for (const index of [0, 1, 2] as const) {
-        const y = originY + (index - 1) * 8;
-        const dx = targetX - (originX + technique.width / 2);
-        const dy = guided ? targetY - (y + technique.height / 2) : 0;
+        const y = originY + (index - 1) * (muzzle?.railSpacing ?? 8);
+        const acquiredDx = targetX - (originX + technique.width / 2);
+        // A target overlapping the long barrel is resolved by the launch sweep.
+        // Never reverse or shoot vertically back into the owner from the muzzle.
+        const behindMuzzle = muzzle !== null && acquiredDx * fighter.facing <= 0;
+        const dx = behindMuzzle ? fighter.facing * technique.speed : acquiredDx;
+        const dy = guided && !behindMuzzle ? targetY - (y + technique.height / 2) : 0;
         const distance = Math.hypot(dx, dy) || 1;
+        if (muzzle) launchSweeps.set(state.nextTechniqueEffectId, {
+          origin: { x: legacyOriginX, y: legacyOriginY + (index - 1) * 8,
+            width: technique.width, height: technique.height },
+          muzzle: { x: originX, y, width: technique.width, height: technique.height },
+        });
         state.techniqueEffects.push({
           id: state.nextTechniqueEffectId++, ownerSlot: fighter.slot, techniqueId: technique.id,
           x: originX, y, direction: guided ? (dx >= 0 ? 1 : -1) : fighter.facing, age: 0, phase: 'active', hitCount: 0, rehitFrames: 0,
@@ -964,9 +986,10 @@ function spawnTechniqueEffects(state: PitCombatState, companionsEnabled: boolean
     }
     state.techniqueEffects.push(effect);
   }
+  return launchSweeps;
 }
 
-function advanceTechniqueEffects(state: PitCombatState): void {
+function advanceTechniqueEffects(state: PitCombatState, launchSweeps: ReadonlyMap<number, FeralLaunchSweep>): void {
   const retained: PitTechniqueEffectState[] = [];
   for (const effect of state.techniqueEffects) {
     const owner = state.fighters[effect.ownerSlot];
@@ -979,8 +1002,10 @@ function advanceTechniqueEffects(state: PitCombatState): void {
       // A fixed vector acquired at launch. Moving/jumping afterwards can evade it.
       effect.x += effect.bolt.velocityX;
       effect.y += effect.bolt.velocityY;
-      if (effect.age <= technique.lifetimeFrames && effect.y >= 0 && effect.y <= PIT_ARENA.height &&
-        effect.x + technique.width >= PIT_ARENA.leftWall && effect.x <= PIT_ARENA.rightWall) retained.push(effect);
+      // A barrel can extend past the arena wall. Resolve its launch contact
+      // before discarding an offstage muzzle, so a corner opponent is not skipped.
+      if (launchSweeps.has(effect.id) || (effect.age <= technique.lifetimeFrames && effect.y >= 0 && effect.y <= PIT_ARENA.height &&
+        effect.x + technique.width >= PIT_ARENA.leftWall && effect.x <= PIT_ARENA.rightWall)) retained.push(effect);
       continue;
     }
 
@@ -1270,7 +1295,7 @@ interface CollectedTechniqueImpacts {
   counteredSlots: Set<0 | 1>;
 }
 
-function collectTechniqueImpacts(state: PitCombatState): CollectedTechniqueImpacts {
+function collectTechniqueImpacts(state: PitCombatState, launchSweeps: ReadonlyMap<number, FeralLaunchSweep>): CollectedTechniqueImpacts {
   const impacts: PendingImpact[] = [];
   const counteredSlots = new Set<0 | 1>();
   for (const effect of state.techniqueEffects) {
@@ -1303,7 +1328,12 @@ function collectTechniqueImpacts(state: PitCombatState): CollectedTechniqueImpac
         continue;
       }
     }
-    if (!boxesOverlap(getPitTechniqueBox(state, effect), getPitFighterBoxes(defender).hurtbox)) {
+    const effectBox = getPitTechniqueBox(state, effect);
+    const hurtbox = getPitFighterBoxes(defender).hurtbox;
+    const launchStart = launchSweeps.get(effect.id);
+    if (!(launchStart
+      ? pitFeralLaunchSweepTouches(launchStart.origin, launchStart.muzzle, hurtbox) || pitFeralLaunchSweepTouches(launchStart.muzzle, effectBox, hurtbox)
+      : boxesOverlap(effectBox, hurtbox))) {
       continue;
     }
 
@@ -1718,6 +1748,7 @@ function stepPitCombatInternal(
   companionsEnabled = false,
   recallDroneEnabled = false,
   feralBoltsEnabled = false,
+  nativeFeralMuzzleEnabled = false,
 ): PitCombatState {
   if (current.phase === "match-over") {
     if (current.events.length === 0) return current;
@@ -1760,10 +1791,11 @@ function stepPitCombatInternal(
   updateFighter(state, state.fighters[1], previousLeft, inputs[1] ?? {});
   resolvePushboxes(state.fighters[0], state.fighters[1]);
   applyRuptures(state, ruptures);
+  let launchSweeps: ReadonlyMap<number, FeralLaunchSweep> = new Map();
   if (!legacyV2Techniques) {
     advanceTechniqueStatuses(state);
-    spawnTechniqueEffects(state, companionsEnabled, recallDroneEnabled, feralBoltsEnabled);
-    advanceTechniqueEffects(state);
+    launchSweeps = spawnTechniqueEffects(state, companionsEnabled, recallDroneEnabled, feralBoltsEnabled, nativeFeralMuzzleEnabled);
+    advanceTechniqueEffects(state, launchSweeps);
     resolvePushboxes(state.fighters[0], state.fighters[1]);
   }
 
@@ -1772,7 +1804,7 @@ function stepPitCombatInternal(
   // remain valid before hitstun or KO changes either fighter.
   const techniqueImpacts: CollectedTechniqueImpacts = legacyV2Techniques
     ? { impacts: [], counteredSlots: new Set<0 | 1>() }
-    : collectTechniqueImpacts(state);
+    : collectTechniqueImpacts(state, launchSweeps);
   const directImpacts = [
     collectImpact(
       state,
@@ -1816,6 +1848,12 @@ function stepPitCombatInternal(
     }
   }
 
+  // Only newly launched native bolts bypassed the ordinary arena cull, above.
+  // Their contact has now been resolved; no out-of-bounds effect enters a save.
+  if (launchSweeps.size > 0) state.techniqueEffects = state.techniqueEffects.filter(effect =>
+    !launchSweeps.has(effect.id) || (effect.y >= 0 && effect.y <= PIT_ARENA.height &&
+      effect.x + PIT_FERAL_GUIDED_BOLTS.width >= PIT_ARENA.leftWall && effect.x <= PIT_ARENA.rightWall));
+
   updatePressureTraque(state);
   for (const slot of [0, 1] as const) {
     if (instinctActiveAtFrameStart[slot]) {
@@ -1838,7 +1876,12 @@ export function stepPitCombat(
   current: PitCombatState,
   inputs: readonly [PitInput, PitInput] = [{}, {}],
 ): PitCombatState {
-  return stepPitCombatInternal(current, inputs, false, true, true, true, true, true);
+  return stepPitCombatInternal(current, inputs, false, true, true, true, true, true, true);
+}
+
+/** Published V58 engine V9: physical salvos at their historical logical origin. */
+export function stepPitCombatV9Compatibility(current: PitCombatState, inputs: readonly [PitInput, PitInput] = [{}, {}]): PitCombatState {
+  return stepPitCombatInternal(current, inputs, false, true, true, true, true, true, false);
 }
 
 /** Published V57 engine V8: recallable Falconer sensor, Feral's legacy floor trap. */
@@ -1939,6 +1982,10 @@ function isActionState(value: unknown, fighterId: PitFighterId, phase: PitCombat
   if (value.kind === "throw" && value.attack !== null) return false;
   if (value.kind === "attack" && !isAttackKind(value.attack)) return false;
   if (!Number.isInteger(value.frame) || (value.frame as number) < 0) return false;
+  if (value.feralLauncherOrigin !== undefined &&
+    ((value.feralLauncherOrigin !== 'native' && value.feralLauncherOrigin !== 'legacy') ||
+      fighterId !== 'feral-hunter' || value.kind !== 'attack' || value.attack !== 'technique' ||
+      (phase !== 'active' && phase !== 'recovery'))) return false;
   const action = value as unknown as PitActionState;
   return action.frame < actionDuration(action, fighterId) && phaseForAction(action, fighterId) === phase;
 }
@@ -1971,6 +2018,9 @@ function isFighterState(value: unknown, slot: 0 | 1, stateFrame: number): value 
   if (!PIT_COMBAT_PHASES.includes(value.phase as PitCombatPhase)) return false;
   const phase = value.phase as PitCombatPhase;
   const actionValid = value.action === null || isActionState(value.action, fighterId, phase);
+  if (isRecord(value.action) && value.action.feralLauncherOrigin !== undefined &&
+    (value.variantId !== undefined || (value.action.feralLauncherOrigin === 'native' &&
+      (value.grounded !== true || value.crouching !== false || value.guard === 'low')))) return false;
   if (!pitHasShoulderPlasma(fighterId, typeof value.variantId === 'string' ? value.variantId : undefined) &&
     isRecord(value.action) && value.action.attack === 'technique') return false;
   if (!actionValid || ((phase === "startup" || phase === "active" || phase === "recovery") !== (value.action !== null))) return false;
@@ -2120,12 +2170,15 @@ function isCombatEvent(value: unknown, stateFrame: number, stateRound: number, f
 }
 
 function migratePitCombatState(candidate: unknown): unknown {
+  if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 10 &&
+    Array.isArray(candidate.fighters) && candidate.fighters.some(fighter => isRecord(fighter) &&
+      isRecord(fighter.action) && fighter.action.feralLauncherOrigin !== undefined)) return candidate;
   if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 7 && candidate.houndVariantId !== undefined) return candidate;
   if (isRecord(candidate) && typeof candidate.version === 'number' && candidate.version < 9 &&
     Array.isArray(candidate.techniqueEffects) && candidate.techniqueEffects.some(effect =>
       isRecord(effect) && (effect.techniqueId === PIT_FERAL_GUIDED_BOLTS.id || effect.bolt !== undefined))) return candidate;
   if (!isRecord(candidate) ||
-    ![1, 2, 4, 5, 6, 7, 8, PIT_STATE_VERSION].includes(candidate.version as number) ||
+    ![1, 2, 4, 5, 6, 7, 8, 9, PIT_STATE_VERSION].includes(candidate.version as number) ||
     !Array.isArray(candidate.fighters)) {
     return candidate;
   }
@@ -2154,6 +2207,11 @@ function migratePitCombatState(candidate: unknown): unknown {
         : fighter.inputLatch;
       return {
         ...fighter,
+        ...((candidate.version as number) < 10 && fighter.definitionId === 'feral-hunter' &&
+          fighter.variantId === undefined && isRecord(fighter.action) &&
+          fighter.action.kind === 'attack' && fighter.action.attack === 'technique' &&
+          (fighter.phase === 'active' || fighter.phase === 'recovery')
+          ? { action: { ...fighter.action, feralLauncherOrigin: 'legacy' } } : {}),
         ...(legacyV1 ? {
           traque: 0,
           pressureFrames: 0,

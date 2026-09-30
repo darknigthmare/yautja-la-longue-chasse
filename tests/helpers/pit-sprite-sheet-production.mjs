@@ -31,18 +31,26 @@ export async function auditPitSpriteSheetProduction() {
         if (frame.pageId !== page.id || cells.has(frame.rect.join(","))) continue;
         const [x, y, width, height] = frame.rect;
         let visiblePixels = 0, transparentPixels = 0, borderPixels = 0;
+        let minX = width, minY = height, maxX = -1, maxY = -1;
         const canonical = Buffer.alloc(width * height * 4);
         for (let row = 0; row < height; row++) for (let column = 0; column < width; column++) {
           const from = ((y + row) * info.width + x + column) * 4, to = (row * width + column) * 4;
           const alpha = processed.pixels[from + 3];
-          if (alpha) { visiblePixels++; for (let channel = 0; channel < 4; channel++) canonical[to + channel] = processed.pixels[from + channel]; }
+          if (alpha) {
+            visiblePixels++;
+            minX = Math.min(minX, column); minY = Math.min(minY, row);
+            maxX = Math.max(maxX, column); maxY = Math.max(maxY, row);
+            for (let channel = 0; channel < 4; channel++) canonical[to + channel] = processed.pixels[from + channel];
+          }
           else transparentPixels++;
           if ((row === 0 || column === 0 || row === height - 1 || column === width - 1) && alpha !== 0) borderPixels++;
         }
         assert.equal(borderPixels, 0, page.id + " clipped alpha edge " + frame.rect);
         assert.ok(visiblePixels > 0 && transparentPixels > 0, page.id + " empty/opaque frame");
         const sha256 = hash(canonical); allDrawingHashes.add(sha256);
-        cells.set(frame.rect.join(","), { rect: frame.rect, pivot: frame.pivot, visiblePixels, transparentPixels, borderPixels, sha256 });
+        cells.set(frame.rect.join(","), { rect: frame.rect, pivot: frame.pivot, visiblePixels, transparentPixels, borderPixels, sha256,
+          alphaBounds: [minX, minY, maxX - minX + 1, maxY - minY + 1],
+          margins: [minX, minY, width - maxX - 1, height - maxY - 1] });
       }
       for (const bound of entry.visibleFrameBounds ?? []) {
         if (bound.pageId !== page.id) continue;
@@ -178,11 +186,51 @@ export async function auditPitSpriteSheetProduction() {
         assert.equal(resolved.resolved.motion.phase, "locomotion");
         assert.equal(resolved.resolved.motion.durationTicks, null, "Jump art follows observed motion, not an invented attack timer");
       }
+      let nativeDrawEvidence;
+      if (entry.atlas.id === 'feral-actions-v59') {
+        assert.equal(resolved.definition.atlas.id, entry.atlas.id, 'V59 cannot resolve the superseded V34 action');
+        const timing = api.PIT_FIGHTERS[entry.fighterId].attacks[fighter.action.attack];
+        const phaseStart = fighter.phase === 'startup' ? 0 : fighter.phase === 'active' ? timing.startup : timing.startup + timing.active;
+        const totalTicks = clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0);
+        assert.equal(totalTicks, timing[fighter.phase], 'native action intervals match the existing simulation phase exactly');
+        let elapsedTicks = 0;
+        const drawnFrameIndices = [];
+        for (const [index, expected] of clip.frames.entries()) {
+          fighter.action.frame = phaseStart + elapsedTicks;
+          const before = JSON.stringify(combat), options = { simulationFrame: combat.frame, combat, reducedMotion: true };
+          const sample = api.resolvePitSpriteSheetAnimation(bank, fighter, options);
+          assert.ok(sample); assert.equal(sample.definition.atlas.id, entry.atlas.id);
+          assert.equal(sample.resolved.frame.frameIndex, index);
+          assert.deepEqual(sample.resolved.frame.frame.rect, expected.rect);
+          assert.equal(sample.resolved.frame.clip.facing, clip.facing);
+          const calls = [], savedAlpha = [];
+          const forbiddenTransform = () => assert.fail('native Feral drawings must not be mirrored, rotated or transformed');
+          const context = { globalAlpha: 1, save() { savedAlpha.push(this.globalAlpha); },
+            restore() { this.globalAlpha = savedAlpha.pop(); }, drawImage(...args) { calls.push(args); },
+            scale: forbiddenTransform, rotate: forbiddenTransform, transform: forbiddenTransform,
+            setTransform: forbiddenTransform, translate: forbiddenTransform };
+          assert.equal(api.drawPitSpriteSheetAnimation(context, bank, fighter, 440, options), true);
+          assert.equal(calls.length, 1); assert.equal(calls[0][0], sample.source);
+          assert.deepEqual(calls[0].slice(1, 5), expected.rect);
+          const expectedScale = api.PIT_FIGHTERS[entry.fighterId].bodyHeight /
+            (entry.pageBodyHeightPx?.[expected.pageId] ?? entry.bodyHeightPx);
+          assert.equal(calls[0][7], expected.rect[2] * expectedScale);
+          assert.equal(calls[0][8], expected.rect[3] * expectedScale);
+          assert.ok(calls[0][7] > 0 && calls[0][8] > 0);
+          assert.equal(context.filter, 'none', 'ordinary native art has no hue or recoloring filter');
+          assert.equal(context.globalAlpha, 1); assert.equal(savedAlpha.length, 0);
+          assert.deepEqual(api.resolvePitSpriteSheetAnimation(bank, fighter, options).resolved.frame.frame,
+            sample.resolved.frame.frame, 'paused ticks retain the same drawing with reduced motion enabled');
+          assert.equal(JSON.stringify(combat), before, 'native art cannot rewrite collision boxes, clocks or replay state');
+          drawnFrameIndices.push(index); elapsedTicks += expected.durationTicks;
+        }
+        nativeDrawEvidence = { drawnFrameIndices, physicsUnchanged: true, noMirroring: true, uniformScale: true, filter: 'none' };
+      }
       clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, atlasId: entry.atlas.id,
         clipId: clip.id, facing: clip.facing, drawnCells: clip.frames.length,
         authoredTicks: clip.frames.reduce((sum, frame) => sum + frame.durationTicks, 0),
         runtimePosture: resolved.resolved.motion.posture, runtimePhase: resolved.resolved.motion.phase,
-        runtimePhaseTicks: resolved.resolved.motion.durationTicks, ready: true });
+        runtimePhaseTicks: resolved.resolved.motion.durationTicks, ...nativeDrawEvidence, ready: true });
     }
   } finally { Object.assign(globalThis, previous); }
   const sequences = new Set(clipReports.map(clip => JSON.stringify([clip.fighterId, clip.variantId, clip.clipId.replace(/\.(startup|active|recovery)$/, ""), clip.facing])));

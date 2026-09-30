@@ -490,7 +490,7 @@ export const PIT_FIRST_EDITION_FIGHTERS: Readonly<
     walkSpeed: 5.1, airSpeed: 3.55, jumpSpeed: 13, power: 1, bodyWidth: 53,
     bodyHeight: 119, crouchHeight: 82,
     palette: { primary: "#74634c", secondary: "#332a21", accent: "#d2b56a" },
-    attacks: moves(["Lacération férale", "Ruée à la lance scindée", "Charge au bouclier", "Salve de carreaux"], {
+    attacks: moves(["Lacération férale", "Ruée à la lance scindée", "Frappe au bouclier", "Salve de carreaux"], {
       ...BALANCE.rushdown, techniqueLevel: 'mid',
     }),
     technique: PIT_FERAL_GUIDED_BOLTS,

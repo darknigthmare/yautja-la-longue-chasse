@@ -41,14 +41,14 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
   assert.equal(coverage.hunters.runtimeFighters, 16);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10,
-    'V57 adds six hammer phases and four explicitly held poses; none is a complete moveset');
+  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10 - 6 + 12,
+    'V59 replaces six old Feral phases with twelve native shield/launcher phases; no complete moveset is implied');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
   const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
   const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
-  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 315,
-    'The historical and V50 combat coverage remains exactly unchanged');
+  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses', 'feral-actions-v59'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 309,
+    'Historical/V50 coverage loses only the six superseded Feral heavy phases');
   const movement = registry.filter(entry => entry.atlas.id.endsWith('-v50'));
   assert.deepEqual(movement.map(entry => entry.fighterId).sort(),
     ['user-ahab', 'wolf', 'falconer', 'scarface', 'enforcer', 'celtic'].sort());
@@ -78,8 +78,8 @@ test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hun
       ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
   const coverage = productionCoverage([], []);
   assert.equal(coverage.hunters.runtimeFighters, 16);
-  assert.equal(coverage.hunters.validatedClips, 347,
-    'The exact six V51 clips above remain unchanged; V57 adds six technique phases and four held poses');
+  assert.equal(coverage.hunters.validatedClips, 353,
+    'The six V51 clips above remain unchanged; V59 replaces six old Feral phases with twelve reviewed native phases');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
 });

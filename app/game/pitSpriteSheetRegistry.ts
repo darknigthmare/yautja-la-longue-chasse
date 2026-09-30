@@ -3,6 +3,702 @@ import type { PitSpriteSheetAnimationDefinition } from "./pitSpriteSheetAnimatio
 /** V32/V33: reviewed, independently drawn facings; uncovered states retain an honest drawn-pose fallback. */
 export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefinition[] = [
   {
+    "fighterId": "feral-hunter",
+    "bodyHeightPx": 470,
+    "pageBodyHeightPx": {
+      "feral-launcher-v59-right": 470,
+      "feral-launcher-v59-left": 470,
+      "feral-shield-v59-right": 470,
+      "feral-shield-v59-left": 470
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "feral-launcher-v59-right",
+        "rect": [
+          0,
+          0,
+          768,
+          520
+        ],
+        "visibleRect": [
+          146,
+          24,
+          581,
+          487
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-right",
+        "rect": [
+          768,
+          0,
+          768,
+          520
+        ],
+        "visibleRect": [
+          790,
+          75,
+          723,
+          435
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-right",
+        "rect": [
+          0,
+          520,
+          880,
+          504
+        ],
+        "visibleRect": [
+          117,
+          535,
+          735,
+          451
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-right",
+        "rect": [
+          880,
+          520,
+          656,
+          504
+        ],
+        "visibleRect": [
+          893,
+          528,
+          561,
+          459
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-left",
+        "rect": [
+          0,
+          0,
+          748,
+          512
+        ],
+        "visibleRect": [
+          59,
+          16,
+          673,
+          474
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-left",
+        "rect": [
+          748,
+          0,
+          788,
+          512
+        ],
+        "visibleRect": [
+          766,
+          69,
+          723,
+          425
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-left",
+        "rect": [
+          0,
+          512,
+          815,
+          512
+        ],
+        "visibleRect": [
+          30,
+          529,
+          762,
+          459
+        ]
+      },
+      {
+        "pageId": "feral-launcher-v59-left",
+        "rect": [
+          815,
+          512,
+          721,
+          512
+        ],
+        "visibleRect": [
+          833,
+          525,
+          643,
+          456
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-right",
+        "rect": [
+          0,
+          0,
+          768,
+          504
+        ],
+        "visibleRect": [
+          197,
+          18,
+          490,
+          477
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-right",
+        "rect": [
+          768,
+          0,
+          768,
+          504
+        ],
+        "visibleRect": [
+          860,
+          35,
+          481,
+          460
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-right",
+        "rect": [
+          0,
+          504,
+          850,
+          520
+        ],
+        "visibleRect": [
+          137,
+          529,
+          684,
+          457
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-right",
+        "rect": [
+          850,
+          504,
+          686,
+          520
+        ],
+        "visibleRect": [
+          896,
+          513,
+          478,
+          472
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-left",
+        "rect": [
+          0,
+          0,
+          820,
+          490
+        ],
+        "visibleRect": [
+          242,
+          21,
+          487,
+          461
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-left",
+        "rect": [
+          820,
+          0,
+          716,
+          490
+        ],
+        "visibleRect": [
+          917,
+          10,
+          485,
+          471
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-left",
+        "rect": [
+          0,
+          490,
+          875,
+          534
+        ],
+        "visibleRect": [
+          86,
+          498,
+          726,
+          466
+        ]
+      },
+      {
+        "pageId": "feral-shield-v59-left",
+        "rect": [
+          875,
+          490,
+          661,
+          534
+        ],
+        "visibleRect": [
+          946,
+          497,
+          494,
+          477
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "feral-actions-v59",
+      "characterId": "feral-hunter",
+      "variantId": "default-v34-feral-actions",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "feral-launcher-v59-right",
+          "src": "/game/sprites/v59/pit/feral/launcher-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-launcher-v59-left",
+          "src": "/game/sprites/v59/pit/feral/launcher-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-shield-v59-right",
+          "src": "/game/sprites/v59/pit/feral/shield-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "feral-shield-v59-left",
+          "src": "/game/sprites/v59/pit/feral/shield-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-right",
+              "rect": [
+                0,
+                0,
+                768,
+                520
+              ],
+              "pivot": [
+                348,
+                509
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-launcher-v59-right",
+              "rect": [
+                768,
+                0,
+                768,
+                520
+              ],
+              "pivot": [
+                239,
+                507
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-right",
+              "rect": [
+                0,
+                520,
+                880,
+                504
+              ],
+              "pivot": [
+                365,
+                463
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-right",
+              "rect": [
+                0,
+                520,
+                880,
+                504
+              ],
+              "pivot": [
+                365,
+                463
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-launcher-v59-right",
+              "rect": [
+                880,
+                520,
+                656,
+                504
+              ],
+              "pivot": [
+                214,
+                464
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-left",
+              "rect": [
+                0,
+                0,
+                748,
+                512
+              ],
+              "pivot": [
+                517,
+                487
+              ],
+              "durationTicks": 4
+            },
+            {
+              "pageId": "feral-launcher-v59-left",
+              "rect": [
+                748,
+                0,
+                788,
+                512
+              ],
+              "pivot": [
+                515,
+                492
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-left",
+              "rect": [
+                0,
+                512,
+                815,
+                512
+              ],
+              "pivot": [
+                559,
+                471
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.technique.feral-guided-bolts-v58.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-launcher-v59-left",
+              "rect": [
+                0,
+                512,
+                815,
+                512
+              ],
+              "pivot": [
+                559,
+                471
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-launcher-v59-left",
+              "rect": [
+                815,
+                512,
+                721,
+                512
+              ],
+              "pivot": [
+                438,
+                467
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-right",
+              "rect": [
+                0,
+                0,
+                768,
+                504
+              ],
+              "pivot": [
+                397,
+                492
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-shield-v59-right",
+              "rect": [
+                768,
+                0,
+                768,
+                504
+              ],
+              "pivot": [
+                294,
+                493
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-right",
+              "rect": [
+                0,
+                504,
+                850,
+                520
+              ],
+              "pivot": [
+                391,
+                479
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-right",
+              "rect": [
+                0,
+                504,
+                850,
+                520
+              ],
+              "pivot": [
+                391,
+                479
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-shield-v59-right",
+              "rect": [
+                850,
+                504,
+                686,
+                520
+              ],
+              "pivot": [
+                246,
+                478
+              ],
+              "durationTicks": 14
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.startup",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-left",
+              "rect": [
+                0,
+                0,
+                820,
+                490
+              ],
+              "pivot": [
+                518,
+                480
+              ],
+              "durationTicks": 6
+            },
+            {
+              "pageId": "feral-shield-v59-left",
+              "rect": [
+                820,
+                0,
+                716,
+                490
+              ],
+              "pivot": [
+                369,
+                479
+              ],
+              "durationTicks": 7
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.active",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-left",
+              "rect": [
+                0,
+                490,
+                875,
+                534
+              ],
+              "pivot": [
+                560,
+                472
+              ],
+              "durationTicks": 5
+            }
+          ]
+        },
+        {
+          "id": "pit.stand.heavy.recovery",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "feral-shield-v59-left",
+              "rect": [
+                0,
+                490,
+                875,
+                534
+              ],
+              "pivot": [
+                560,
+                472
+              ],
+              "durationTicks": 8
+            },
+            {
+              "pageId": "feral-shield-v59-left",
+              "rect": [
+                875,
+                490,
+                661,
+                534
+              ],
+              "pivot": [
+                354,
+                480
+              ],
+              "durationTicks": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "fighterId": "jungle-hunter",
     "bodyHeightPx": 350,
     "pageBodyHeightPx": {
@@ -3165,8 +3861,7 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
       "feral-hunter-guard": 405,
       "feral-hunter-hurt": 400,
       "feral-hunter-light": 390,
-      "feral-hunter-repair-medium-spacing": 282,
-      "feral-hunter-heavy": 370
+      "feral-hunter-repair-medium-spacing": 282
     },
     "atlas": {
       "schemaVersion": 1,
@@ -3333,28 +4028,6 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
         {
           "id": "feral-hunter-repair-medium-spacing",
           "src": "/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
-          "width": 1536,
-          "height": 1024,
-          "status": "validated",
-          "transparency": {
-            "mode": "color-key",
-            "rgb": [
-              255,
-              0,
-              255
-            ],
-            "tolerance": 64,
-            "fringe": {
-              "mode": "connected-magenta",
-              "radius": 2,
-              "minExcess": 16,
-              "strength": 1
-            }
-          }
-        },
-        {
-          "id": "feral-hunter-heavy",
-          "src": "/game/sprites/v34/pit/feral-hunter/feral-hunter-heavy-v34.png",
           "width": 1536,
           "height": 1024,
           "status": "validated",
@@ -4455,172 +5128,6 @@ export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefiniti
               "pivot": [
                 115,
                 293
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.startup",
-          "facing": "right",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                47,
-                101,
-                303,
-                366
-              ],
-              "pivot": [
-                134,
-                362
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.active",
-          "facing": "right",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                418,
-                106,
-                358,
-                359
-              ],
-              "pivot": [
-                134.5,
-                355
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.recovery",
-          "facing": "right",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                805,
-                119,
-                295,
-                346
-              ],
-              "pivot": [
-                138,
-                342
-              ],
-              "durationTicks": 1
-            },
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                1214,
-                94,
-                262,
-                378
-              ],
-              "pivot": [
-                117.5,
-                374
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.startup",
-          "facing": "left",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                62,
-                571,
-                301,
-                365
-              ],
-              "pivot": [
-                165,
-                361
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.active",
-          "facing": "left",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                390,
-                574,
-                356,
-                359
-              ],
-              "pivot": [
-                222,
-                355
-              ],
-              "durationTicks": 1
-            }
-          ]
-        },
-        {
-          "id": "pit.stand.heavy.recovery",
-          "facing": "left",
-          "status": "validated",
-          "loop": false,
-          "ticksPerSecond": 60,
-          "frames": [
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                809,
-                584,
-                301,
-                350
-              ],
-              "pivot": [
-                162,
-                346
-              ],
-              "durationTicks": 1
-            },
-            {
-              "pageId": "feral-hunter-heavy",
-              "rect": [
-                1220,
-                567,
-                256,
-                369
-              ],
-              "pivot": [
-                135,
-                365
               ],
               "durationTicks": 1
             }
