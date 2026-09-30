@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import { chromium } from 'playwright-core';
 import { enterCampaignDeck, campaignFixture } from './campaign-browser-helpers.mjs';
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from '../app/game/biomaskCatalogueV62.ts';
 
 const url=process.env.V62_QA_URL ?? 'http://127.0.0.1:4182';
-const out='work-local/v62/qa/masks/browser';await fs.mkdir(out,{recursive:true});
+const out=process.env.V62_MASK_QA_OUTPUT_DIR ?? 'work-local/v62/qa/masks/browser';
+const reportPath=process.env.V62_MASK_QA_REPORT ?? 'docs/v62-biomask-browser-qa.json';
+await fs.mkdir(out,{recursive:true});await fs.mkdir(path.dirname(reportPath),{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 const errors=[],failed=[],choices=[];
@@ -77,5 +80,5 @@ try{
   await page.locator('.armory-atlas-shelves').screenshot({path:`${out}/preserved-gallery.png`});
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
   const report={url,choices,maskCount:14,preservedChoices:12,oldGalleryMasks:4,toggleChecks:14,reloads:['clan-voile-argent','jungle'],errors,failed,passed:true};
-  await fs.writeFile('docs/v62-biomask-browser-qa.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+  await fs.writeFile(reportPath,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }catch(error){await page.screenshot({path:`${out}/failure.png`}).catch(()=>{});console.error((await page.locator('body').innerText()).slice(-6000));throw error;}finally{await browser.close();}

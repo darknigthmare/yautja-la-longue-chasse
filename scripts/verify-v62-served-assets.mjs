@@ -13,6 +13,9 @@ for(const file of assets){const local=await fs.readFile(file),src='/'+file.repla
  const remote=Buffer.from(await response.arrayBuffer());assert.equal(hash(remote),hash(local),src+' bytes must equal validated local asset');
  checks.push({src,status:response.status,bytes:remote.length,sha256:hash(remote),contentType:response.headers.get('content-type')});
 }
-const response=await fetch(url,{signal:AbortSignal.timeout(60000)});assert.equal(response.status,200);const html=await response.text();assert(html.includes('V62'),'HTML must identify current content version');
-const report={status:'PASS',url,checkedAt:new Date().toISOString(),htmlVersion:'V62',nativePngs:checks.filter(c=>c.src.endsWith('.png')).length,derivedWebps:checks.filter(c=>c.src.endsWith('.webp')).length,checks};
+const response=await fetch(url,{signal:AbortSignal.timeout(60000)});assert.equal(response.status,200);const html=await response.text();
+// Next serves the campaign menu before hydration; its initial HTML does not contain
+// the in-game content-version badge. Dedicated browser recipes verify that badge.
+assert(html.includes('data-campaign-menu="main"'),'HTML must serve the actual campaign entry menu');
+const report={status:'PASS',url,checkedAt:new Date().toISOString(),initialHtml:{status:response.status,campaignMenu:true,containsV62:html.includes('V62'),scope:'Initial Next campaign shell only; V62 is asserted after hydration in the public combat and mission browser reports.'},nativePngs:checks.filter(c=>c.src.endsWith('.png')).length,derivedWebps:checks.filter(c=>c.src.endsWith('.webp')).length,checks};
 await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:'PASS',files:checks.length,report:output}));

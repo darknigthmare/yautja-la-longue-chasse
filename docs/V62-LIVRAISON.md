@@ -2,6 +2,8 @@
 
 Ce lot poursuit le classeur V54 sans déclarer ses 205 dossiers de personnages ni ses 174 dossiers de stages intégralement terminés. Le fichier source reste inchangé. Le suivi détaillé est dans `THE_PIT_V62_SUIVI.xlsx` : livré, rapprochement des identités et suites nécessaires.
 
+**Publié et vérifié** sur [yautja-la-longue-chasse.vercel.app](https://yautja-la-longue-chasse.vercel.app) : commit `f3b1e2ffd649d4eb869a6c99150c5fdf6991d14e`, déploiement `dpl_8x8epVc6cuuNfGhEWHTZnKherYzL`, READY le 30 septembre 2026 à 21:28:29 UTC. Le commit final de preuves ne modifie pas ce runtime.
+
 ## Intégré
 
 - **14 biomasks natifs OpenAI** remplacent les anciennes interprétations des chasseurs nommés. Les 28 anciens fichiers restent identiques ; les modèles originaux reçoivent des noms du clan, sans attribution canonique inventée. Onze variantes conservées sont équipables en plus de Couronne des Ancêtres ; quatre anciennes études V14 restent en galerie.
@@ -21,7 +23,11 @@ Le lot contient **31 PNG natifs, 86 dessins et une icône WebP dérivée**. Il n
 
 Ces contrôles de campagne utilisent une sauvegarde isolée de recette ; ils ne prouvent pas une nouvelle traversée complète du prologue. Le test tactile est une émulation navigateur, pas un appareil physique.
 
-Les rapports `v62-*-qa.json`, les reçus de génération et les deux dossiers `art/v62/BIOMASQUES-V62.md` et `art/v62/TETES-MODULAIRES-V62.md` détaillent les références, mesures et limites. La publication et les contrôles publics sont des étapes séparées, consignées dans `v62-release-gates.json` et `v62-public-assets-qa.json` lorsqu’ils sont effectués.
+Les rapports `v62-*-qa.json`, les reçus de génération et les deux dossiers `art/v62/BIOMASQUES-V62.md` et `art/v62/TETES-MODULAIRES-V62.md` détaillent les références, mesures et limites.
+
+La recette publique est passée séparément : 32 images HTTP 200 avec empreintes identiques, quatre contrats HUD dans les CSS réellement liés, 26 choix de masque, six vignettes, deux missions, Emissary dans les deux orientations et 16 contrôles des trois stages. Les 54 poses de décor sont observées ; 14 captures de stages sont inspectées. Pause, mouvement réduit, mobile portrait/paysage et reprise après panne 503 volontaire passent, sans erreur imprévue. Les rapports publics distincts sont reliés dans `v62-release-gates.json` ; les preuves locales n’ont pas été écrasées.
+
+Le classeur conserve son état d’avant publication, avec ses limites explicites. Le présent rapport et `v62-release-gates.json` consignent la validation publique ultérieure. Le paquet Windows portable existant n’est pas reconstruit par ce lot.
 
 ## Encore ouvert
 

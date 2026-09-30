@@ -1,7 +1,7 @@
 {
   "release": "V62",
-  "checkedAt": "2026-09-30T21:15:15Z",
-  "status": "LOCAL_GATES_PASS_PUBLICATION_PENDING",
+  "checkedAt": "2026-09-30T21:35:13.5262451Z",
+  "status": "PUBLISHED_AND_PUBLIC_QA_PASS",
   "tests": {
     "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
     "status": "PASS",
@@ -11,7 +11,10 @@
     "skipped": 0,
     "log": "work-local/v62/qa/tests-final.log"
   },
-  "typecheck": { "status": "PASS", "log": "work-local/v62/qa/typecheck-final.log" },
+  "typecheck": {
+    "status": "PASS",
+    "log": "work-local/v62/qa/typecheck-final.log"
+  },
   "lint": {
     "command": "node node_modules/eslint/bin/eslint.js . --ignore-pattern dist --ignore-pattern .next",
     "status": "PASS",
@@ -21,9 +24,19 @@
     "note": "An earlier direct eslint-dot invocation incorrectly included generated dist files and failed; the project lint command above excludes them as already configured in package.json."
   },
   "builds": {
-    "vinext": { "status": "PASS", "log": "work-local/v62/qa/build-vinext-final.log" },
-    "nextWebpack": { "status": "PASS", "log": "work-local/v62/qa/build-next.log" },
-    "compiledCss": { "status": "PASS", "script": "scripts/verify-pit-built-css-v61.mjs", "checks": 4 }
+    "vinext": {
+      "status": "PASS",
+      "log": "work-local/v62/qa/build-vinext-final.log"
+    },
+    "nextWebpack": {
+      "status": "PASS",
+      "log": "work-local/v62/qa/build-next.log"
+    },
+    "compiledCss": {
+      "status": "PASS",
+      "script": "scripts/verify-pit-built-css-v61.mjs",
+      "checks": 4
+    }
   },
   "localBrowser": {
     "heads": "docs/v62-head-composition-qa.json",
@@ -33,13 +46,50 @@
     "emissary": "docs/v62-emissary-runtime-qa.json",
     "stages": "docs/v62-stage-application-qa.json"
   },
-  "nativeAssets": { "pngs": 31, "drawings": 86, "derivedWebps": 1, "totalFiles": 32, "totalBytes": 62407774 },
-  "preservation": { "oldMaskFilesByteIdentical": 28, "sourceWorkbookUnchanged": true, "deletedTrackedFiles": 0 },
-  "publication": { "status": "PENDING", "productionAlias": "https://yautja-la-longue-chasse.vercel.app" },
+  "nativeAssets": {
+    "pngs": 31,
+    "drawings": 86,
+    "derivedWebps": 1,
+    "totalFiles": 32,
+    "totalBytes": 62407774
+  },
+  "preservation": {
+    "oldMaskFilesByteIdentical": 28,
+    "sourceWorkbookUnchanged": true,
+    "deletedTrackedFiles": 0
+  },
+  "publication": {
+    "status": "READY",
+    "productionAlias": "https://yautja-la-longue-chasse.vercel.app",
+    "commit": "f3b1e2ffd649d4eb869a6c99150c5fdf6991d14e",
+    "deploymentId": "dpl_8x8epVc6cuuNfGhEWHTZnKherYzL",
+    "deploymentUrl": "https://yautja-la-longue-chasse-5j8bidmwi-darknigthmares-projects.vercel.app",
+    "source": "GitHub main, normal fast-forward push",
+    "readyAt": "2026-09-30T21:28:29.815Z",
+    "note": "The final local evidence commit only changes documentation and QA scripts and is not pushed to main; the deployed runtime is the commit above."
+  },
+  "publicQa": {
+    "status": "PASS",
+    "assets": "docs/v62-public-assets-qa.json",
+    "publishedCss": "docs/v62-public-css-qa.json",
+    "headMissions": "docs/v62-head-mission-public-qa.json",
+    "morphThumbnails": "docs/v62-public-morph-thumbnails-qa.json",
+    "masks": "docs/v62-public-biomask-browser-qa.json",
+    "emissary": "docs/v62-emissary-public-qa.json",
+    "stages": "docs/v62-stage-public-qa.json",
+    "stageVisualReview": "docs/v62-stage-public-visual-review.json",
+    "nativeAssetHashesMatch": 32,
+    "linkedCssContracts": 4,
+    "stageChecks": 16,
+    "observedStageAnimationDrawings": 54,
+    "unexpectedBrowserErrors": 0
+  },
   "limitations": [
     "Reference-guided visual adaptations, not certified 1:1 reproductions.",
     "Eight workbook identity/appearance dossiers and incomplete character action sheets remain open.",
     "Three affected stage ambience triplets do not complete the 174 literal stage dossiers or all 522 requested events.",
-    "Mobile browser emulation is not physical-device QA; isolated campaign fixtures do not certify the entire prologue."
+    "Mobile browser emulation is not physical-device QA; isolated campaign fixtures do not certify the entire prologue.",
+    "The follow-up XLSX is a preserved pre-publication snapshot; this JSON records the later public verification.",
+    "The existing Windows portable package was not rebuilt in this lot."
   ]
 }
