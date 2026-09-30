@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-09-30T19:33:58.3359937Z",
+  "result": "PUBLIC_CSS_MISMATCH_CONFIRMED",
+  "sourceImport": "app/layout.tsx imports ./globals.css directly.",
+  "serviceWorkerSearch": "No serviceWorker registration, caches.open implementation or public sw.js/service-worker script found in app/public application sources. Searches returned only QA contexts explicitly blocking workers.",
+  "frozenExportSearch": "No frozen public global CSS export found in the application import path.",
+  "immutable": {
+    "origin": "https://yautja-la-longue-chasse-m84v3ntt2-darknigthmares-projects.vercel.app",
+    "result": "PROTECTED_VERCEL_LOGIN_REDIRECT",
+    "comparableToGame": false,
+    "note": "The downloaded immutable HTML and purported styles are authentication responses, not game assets. They must not be used for a source comparison."
+  },
+  "alias": {
+    "origin": "https://yautja-la-longue-chasse.vercel.app",
+    "htmlCache": "MISS",
+    "htmlAge": 0,
+    "css": "/_next/static/immutable/chunks/10hqodc--1ui0.css",
+    "cssSha256": "a898e57c9b419ee2769d5d0edba48033d3c9decef487ec6aaa213850b553237e",
+    "cssCache": "HIT",
+    "observedCssAgeSeconds": [
+      30932,
+      31025
+    ],
+    "toast": "Old bottom20/right20 rule, no pointer-events:none, no combat overrides.",
+    "cacheBuster": "Query parameter plus Cache-Control:no-cache still returned the same CSS SHA with HIT/age31025. Fresh HTML still references the same CSS URL."
+  },
+  "local": {
+    "commit": "9e0984f1ff87e737854bed2e2e523746727744c8",
+    "committedSourceContainsAllCorrections": true,
+    "vinextCompiledCssContainsAllCorrections": true,
+    "nextWebpackApplicationQa": "PASS; separate recorded local evidence"
+  },
+  "conclusion": "Browser-side Service Worker/cache and alternate source import are not supported by the evidence. The public build/cache path serves obsolete global CSS relative to its commit. The protected immutable URL and immutable CDN cache prevent a definitive separation of compiler/build artifact from CDN response caching using these anonymous reads alone.",
+  "diagnosticFiles": [
+    "work-local/v61/qa/public-story-initial-failure/alias-immutable-comparison.json",
+    "work-local/v61/qa/public-story-initial-failure/cache-bust-comparison.json"
+  ]
+}
