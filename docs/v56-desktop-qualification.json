@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "version": "1.0.56",
+  "contentVersion": "V56",
+  "platform": "win32-x64",
+  "electron": "44.2.0",
+  "sourceCommit": "240e76a4d47370a51a2f63cab347a7b08b1dcf0b",
+  "sourceDigest": "45a4b5f215dca3119138750af63fc1f60d127d688b4ebb9372aaf1b2af6fbf93",
+  "builtAt": "2026-09-30T02:44:58.964Z",
+  "qualifiedAt": "2026-09-30T02:58:05.278Z",
+  "signed": false,
+  "networkRequired": false,
+  "sourceNote": "Le paquet a été construit depuis ce commit et ce digest. Les mises à jour ultérieures du script QA et de cette preuve documentaire ne constituent pas une reconstruction du runtime.",
+  "files": {
+    "executable": {
+      "path": "work-local/v56/desktop/release/v56/Yautja-La-Longue-Chasse-win32-x64/Yautja-La-Longue-Chasse.exe",
+      "sha256": "5bdd555b6193acea2aac7ccea44d4256c2faede3b1da62d8141880ebaa667da4"
+    },
+    "asar": {
+      "path": "work-local/v56/desktop/release/v56/Yautja-La-Longue-Chasse-win32-x64/resources/app.asar",
+      "sha256": "e4ac062fa1e9f93a356f0b3422d9adf9ad43107d5a944ec552944715bd92b2d7",
+      "entries": 4338
+    },
+    "zip": {
+      "path": "work-local/v56/desktop/release/v56/Yautja-La-Longue-Chasse-PC-V56.zip",
+      "bytes": 3272779421,
+      "sha256": "33f0afc96277e484074ee95fed31c53740d2db9dc7d5afb8aeb8798263497c47",
+      "entries": 77,
+      "createdAt": "2026-09-30T02:56:31.824Z"
+    }
+  },
+  "gates": {
+    "executable": {
+      "passed": true,
+      "testedAt": "2026-09-30T02:53:24.348Z",
+      "checkGroups": 19,
+      "pageErrors": 0,
+      "failedLocalRequests": 0,
+      "isolatedProfilesOnly": true,
+      "userProfileModified": false,
+      "realKeyboardInput": true,
+      "controlledBrowserClock": true,
+      "hiddenWindow": true,
+      "coverage": [
+        "Nouveau profil : menu, cinq parties, entrée réelle dans la nurserie, dix sauvegardes manuelles et deux automatiques, restauration de la bonne partie.",
+        "Exécutable Electron : version V56, sandbox, réseau bloqué, art local accessible et chemins privés refusés.",
+        "Galerie hors ligne : image raster locale décodée dans une fenêtre isolée réutilisée ; HTML, SVG, JavaScript et fenêtre externe refusés.",
+        "Réglage sauvegardé et export natif de la campagne.",
+        "Homeworld : quatorze quartiers, dix-neuf bâtiments, douze PNJ, déplacement, salut, indice et choix Justice conservés ; entrée et sortie des Marches.",
+        "The Pit : introductions animées et compte à rebours 3/2/1 ; simulation et commandes de combat bloquées avant le début du round.",
+        "Duels Jungle Hunter/Berserker, Tracker/Greyback, Greyback/Tracker et Theta/Machiko avec bitmaps natifs, six plans et commandes clavier, sans progression attribuée à un autre personnage.",
+        "Galaxie : route vers Oseris, briefing, déploiement, suspension et sauvegarde de la chasse.",
+        "Fermeture du vrai processus puis redémarrage à froid : campagne, chasse suspendue, indices Homeworld, choix Justice et réglage inchangés.",
+        "Patrouille du prologue : départ explicite depuis une archive précédemment jouée, obstacles exigeant le saut, pause et recharge pendant une charge, défaite réelle sans preuve indue, évitement dans les deux directions, retour accompagné et seize preuves persistantes après redémarrage."
+      ],
+      "evidence": "work-local/v56/desktop/qa/v56/verification.json",
+      "correctedObsoleteQaAssertion": "Le script attendait encore douze quartiers et treize bâtiments ; les deux assertions ont été actualisées d’après les registres V54+ à quatorze et dix-neuf. Aucun changement runtime pour cette correction."
+    },
+    "packageAndZip": {
+      "passed": true,
+      "testedAt": "2026-09-30T02:57:57.923Z",
+      "manifestHashesVerified": true,
+      "audioManifestIncluded": true,
+      "allowedAsarTopLevel": [
+        "/main.mjs",
+        "/package.json",
+        "/protocol.mjs",
+        "/release.mjs",
+        "/renderer"
+      ],
+      "privateDevelopmentPathsExcluded": true,
+      "zipRootAndRequiredEntriesVerified": true,
+      "zipFileSha256Verified": true,
+      "evidence": "work-local/v56/desktop/qa/v56/archive-verification.json",
+      "creationEvidence": "work-local/v56/desktop/qa/v56/zip-creation.json"
+    },
+    "bundledHellhounds": {
+      "passed": true,
+      "testedAt": "2026-09-30T02:52:52.740Z",
+      "scope": "Audit en lecture seule de l’ASAR : SHA exacts des quatre PNG et présence des rectangles/pivots natifs dans le code compilé. Les quatre duels spécifiques aux variantes ont été joués dans la recette navigateur V56 séparée, pas rejoués dans cette recette EXE.",
+      "records": [
+        {
+          "variantId": "tracker-hound",
+          "facing": 1,
+          "entry": "renderer/game/sprites/v56/pit/companions/tracker-hound-right.png",
+          "sha256": "1675511536f4d2bfbe2c184ac56b80cde5053ea01db05d09a7c85e131b270e7a",
+          "bytes": 1757394,
+          "frames": 6,
+          "registryChunk": "/renderer/assets/PitCanvas-DBoNSJUs.js"
+        },
+        {
+          "variantId": "tracker-hound",
+          "facing": -1,
+          "entry": "renderer/game/sprites/v56/pit/companions/tracker-hound-left.png",
+          "sha256": "dcef52c0a45142a49e3d9af17ae84c2ad70e5dc13623706ce77f3f25d324fcdc",
+          "bytes": 2340708,
+          "frames": 6,
+          "registryChunk": "/renderer/assets/PitCanvas-DBoNSJUs.js"
+        },
+        {
+          "variantId": "hellhound-longhorn",
+          "facing": 1,
+          "entry": "renderer/game/sprites/v56/pit/companions/hellhound-longhorn-right.png",
+          "sha256": "2fd5246b219cf34b1927a9dfd1c2ac2b32c20fd273e42232c8ad1d9ff89cbf6a",
+          "bytes": 1201982,
+          "frames": 1,
+          "registryChunk": "/renderer/assets/PitCanvas-DBoNSJUs.js"
+        },
+        {
+          "variantId": "hellhound-longhorn",
+          "facing": -1,
+          "entry": "renderer/game/sprites/v56/pit/companions/hellhound-longhorn-left.png",
+          "sha256": "1f60c8d07143cf2048745be49f1b5e575c20b2afb75c2fb1155a024fec311a4f",
+          "bytes": 1334726,
+          "frames": 1,
+          "registryChunk": "/renderer/assets/PitCanvas-DBoNSJUs.js"
+        }
+      ],
+      "evidence": "work-local/v56/desktop/qa/v56/hound-asar-verification.json"
+    },
+    "visualSanity": {
+      "reviewed": true,
+      "sourceCanvasCapturesPreserved": true,
+      "observations": "Jungle Hunter/Berserker masqués et Tracker/Greyback orientés vers leur adversaire ; appuis au sol visibles. Jeune, maître, faune, obstacles et retour de patrouille lisibles. Vérification de captures représentatives, sans certification de fidélité canonique globale.",
+      "reviewedCaptures": [
+        "work-local/v56/desktop/qa/v56/pit-combat-pc-canvas.png",
+        "work-local/v56/desktop/qa/v56/pit-pc-tracker-arena-009-quais-du-premier-sang-canvas.png",
+        "work-local/v56/desktop/qa/v56/patrol-ambush-pc-canvas.png",
+        "work-local/v56/desktop/qa/v56/patrol-returned-pc.png"
+      ]
+    }
+  },
+  "limits": [
+    "Binaire Windows x64 non signé ; aucun installateur ni test SmartScreen certifié.",
+    "Session automatisée à fenêtre cachée et horloge contrôlée : cadence réelle en fenêtre visible, performances, manette physique et autres machines non certifiées.",
+    "Cette recette ne représente ni la campagne complète, ni toutes les arènes et tous les combattants, ni une campagne DLC complète.",
+    "Les profils de QA sont synthétiques et isolés ; leurs contenus et sauvegardes ne sont pas copiés dans ce rapport public.",
+    "Présence des deux variantes Hellhound et registre compilé vérifiée dans le paquet ; le deuxième Hellhound reste une monopose par direction et n’est pas présenté comme un atlas animé.",
+    "Création et vérification locales du ZIP ; aucune publication ou mise en ligne du paquet PC n’est affirmée ici."
+  ]
+}

@@ -42,3 +42,13 @@ Les **55 PNG nouveaux servis localement** sont identiques à leurs fichiers acce
 Le commit de contenu `240e76a4d47370a51a2f63cab347a7b08b1dcf0b` est compilé par Vercel en prévisualisation **READY** (`dpl_FUYq2oK6wLyZoaeZ5SxEz9W1WLcZ`). Le paquet Windows 1.0.56 est construit depuis ce même commit, empreinte source `45a4b5f215dca3119138750af63fc1f60d127d688b4ebb9372aaf1b2af6fbf93`. L'intégrité ASAR est validée ; sa recette applicative et la vérification du domaine public se font après ces étapes et ne sont pas déduites de ce statut READY.
 
 Le build navigateur Vinext, le build Next de Vercel, le paquet Windows, GitHub et la production sont des validations distinctes. Aucun de ces statuts n'est déduit d'un autre.
+
+## Résultat final de publication et qualification PC
+
+La production publique `https://yautja-la-longue-chasse.vercel.app` sert désormais le commit `999cac9ce8e6f71824b553cfadfad7e4231538b4`, déploiement `dpl_8ffymu1GJj4CG6FjoPRBmgsQDC2H` **READY**. GitHub main et la branche de travail ont reçu ce commit. Les changements depuis le commit de contenu `240e76a` concernent les preuves et scripts de qualification ; aucun changement runtime n'en sépare le paquet PC.
+
+Les contrôles exécutés sur ce domaine public passent : **55 PNG avec empreintes exactes**, **quatre duels Hellhound**, **cinq groupes mausolée**, **quatre groupes registre** et **trois duels des nouveaux combattants**. Dix des dix-neuf captures des nouveaux combattants ont été ouvertes et revues pour cette recette publique ; les dix-neuf sont conservées. Aucun défaut visuel bloquant supplémentaire, erreur JavaScript/HTTP ou mutation de campagne indue n'a été constaté dans ces parcours. Le reçu consolidé est `v56-release-verification.json`.
+
+Le véritable exécutable Windows V56 passe **19 groupes de contrôles**, dont le redémarrage du processus et la persistance de la campagne. Le ZIP local vérifié se trouve dans `work-local/v56/desktop/release/v56/Yautja-La-Longue-Chasse-PC-V56.zip` : **3 272 779 421 octets**, SHA256 `33f0afc96277e484074ee95fed31c53740d2db9dc7d5afb8aeb8798263497c47`. Il n'a pas été téléversé publiquement. Détails : `v56-desktop-qualification.json`. L'exécutable reste non signé ; la recette utilise une fenêtre isolée cachée et une horloge contrôlée, sans certification de manette physique ni de performances matérielles.
+
+Les preuves documentaires finales sont archivées sur la branche de travail après la publication ; elles ne nécessitent pas de redéployer le runtime public déjà qualifié.

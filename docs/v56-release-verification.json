@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "release": "V56",
+  "verifiedAt": "2026-09-30T03:02:11.616Z",
+  "passed": true,
+  "publication": {
+    "url": "https://yautja-la-longue-chasse.vercel.app",
+    "state": "READY",
+    "deploymentId": "dpl_8ffymu1GJj4CG6FjoPRBmgsQDC2H",
+    "commit": "999cac9ce8e6f71824b553cfadfad7e4231538b4",
+    "contentCommit": "240e76a4d47370a51a2f63cab347a7b08b1dcf0b",
+    "runtimeDiffBetweenTheseCommits": false
+  },
+  "gates": {
+    "assets": {
+      "passed": true,
+      "report": "work-local/v56/qa/production-served-assets.json",
+      "reportSHA256": "0e3b82dea757ca9039e473fbcd2863dbb2cf92428bc8b71280d3eaad1270dd82",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": 55
+    },
+    "hounds": {
+      "passed": true,
+      "report": "work-local/v56/qa/production-hounds/report.json",
+      "reportSHA256": "fdeb832845afe967072122b3b4e339d440e3978f1bb866e0519bc1920dd75e16",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": 4
+    },
+    "mausoleum": {
+      "passed": true,
+      "report": "work-local/v56/qa/production-mausoleum/report.json",
+      "reportSHA256": "d39f2f9293c92f97836fdc7643afd75122b78bfef8a9b0f4776e7d51e602bdbe",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": 5
+    },
+    "companions": {
+      "passed": true,
+      "report": "work-local/v56/qa/production-companion-catalogue/report.json",
+      "reportSHA256": "801a45baa06468f18d1f949cd28280bd11ec8345b4d51c6da0edbb81000ae17f",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": 4
+    },
+    "fighters": {
+      "passed": true,
+      "report": "work-local/v56/qa/production-original-fighters/report.json",
+      "reportSHA256": "0db6f0b283ea72d61a99fc5775c9666de2d7d7904aac25ffe15ece2ba3a6a8e0",
+      "url": "https://yautja-la-longue-chasse.vercel.app",
+      "checks": 3,
+      "visualReview": {
+        "report": "work-local/v56/qa/production-original-fighters/visual-review.json",
+        "reportSHA256": "2a4169dc306ad394daaa675309a2933d968b940cedec2174bc43cc41b732b9f7",
+        "reviewedCaptures": 10,
+        "retainedCaptures": 19
+      }
+    },
+    "stagesLocal": {
+      "passed": true,
+      "report": "docs/v56-stage-browser-qa.json",
+      "reportSHA256": "eacabf111a0ae30d41bbf01217841746fa62c72b20c62dccf5c57e4f03c942ab",
+      "url": "http://127.0.0.1:4175",
+      "checks": 59
+    },
+    "desktop": {
+      "passed": true,
+      "report": "docs/v56-desktop-qualification.json",
+      "reportSHA256": "cf8c752dd9483df4991ca88bee7976bfb0e4ce0c614f4f9bca3a729ca1ba2d26",
+      "url": null,
+      "checks": 19
+    }
+  },
+  "unitSuite": {
+    "pass": 1794,
+    "fail": 0,
+    "additionalHoundArtTests": {
+      "pass": 3,
+      "fail": 0
+    }
+  },
+  "localBuilds": {
+    "vinext": true,
+    "nextWebpack": true,
+    "typescript": true,
+    "lint": {
+      "errors": 0,
+      "warnings": 3
+    },
+    "nextTurbopackLocal": "blocked by external resource junctions; actual Vercel Next build READY"
+  },
+  "delivered": {
+    "arenas": 161,
+    "newArenaCompositions": 23,
+    "fighters": 198,
+    "newFighters": 3,
+    "staticCompanionCatalogueEntries": 11,
+    "houndAppearances": 2,
+    "newNativePngFiles": 55,
+    "mausoleumChronicles": 9
+  },
+  "limits": [
+    "Longhorn Hellhound has one independently drawn pose per side; no native gait cycle yet.",
+    "Three new fighters and eleven catalogue companions use fixed source poses, not complete native animation sets.",
+    "Companion recruitment missions and complete DLC campaigns are not produced.",
+    "No 1:1 canonical geometry or identity certification.",
+    "Desktop is unsigned, tested in isolated hidden windows with controlled clock; physical controller and hardware performance not certified.",
+    "No private user profile or campaign used in these tests."
+  ]
+}
