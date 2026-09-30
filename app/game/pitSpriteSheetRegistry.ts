@@ -1,7 +1,9 @@
 import type { PitSpriteSheetAnimationDefinition } from "./pitSpriteSheetAnimation";
+import nativeV62 from './data/pitUserAnimationsV62.json';
 
 /** V32/V33: reviewed, independently drawn facings; uncovered states retain an honest drawn-pose fallback. */
 export const PIT_SPRITE_SHEET_REGISTRY: readonly PitSpriteSheetAnimationDefinition[] = [
+  ...(nativeV62 as unknown as readonly PitSpriteSheetAnimationDefinition[]),
   {
     "fighterId": "feral-hunter",
     "bodyHeightPx": 470,

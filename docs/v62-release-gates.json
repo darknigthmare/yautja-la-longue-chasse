@@ -1,0 +1,45 @@
+{
+  "release": "V62",
+  "checkedAt": "2026-09-30T21:15:15Z",
+  "status": "LOCAL_GATES_PASS_PUBLICATION_PENDING",
+  "tests": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+    "status": "PASS",
+    "tests": 1933,
+    "passed": 1933,
+    "failed": 0,
+    "skipped": 0,
+    "log": "work-local/v62/qa/tests-final.log"
+  },
+  "typecheck": { "status": "PASS", "log": "work-local/v62/qa/typecheck-final.log" },
+  "lint": {
+    "command": "node node_modules/eslint/bin/eslint.js . --ignore-pattern dist --ignore-pattern .next",
+    "status": "PASS",
+    "errors": 0,
+    "existingWarnings": 3,
+    "log": "work-local/v62/qa/lint-project-final.log",
+    "note": "An earlier direct eslint-dot invocation incorrectly included generated dist files and failed; the project lint command above excludes them as already configured in package.json."
+  },
+  "builds": {
+    "vinext": { "status": "PASS", "log": "work-local/v62/qa/build-vinext-final.log" },
+    "nextWebpack": { "status": "PASS", "log": "work-local/v62/qa/build-next.log" },
+    "compiledCss": { "status": "PASS", "script": "scripts/verify-pit-built-css-v61.mjs", "checks": 4 }
+  },
+  "localBrowser": {
+    "heads": "docs/v62-head-composition-qa.json",
+    "headMissions": "docs/v62-head-mission-qa.json",
+    "morphThumbnails": "docs/v62-morph-thumbnails-qa.json",
+    "masks": "docs/v62-biomask-browser-qa.json",
+    "emissary": "docs/v62-emissary-runtime-qa.json",
+    "stages": "docs/v62-stage-application-qa.json"
+  },
+  "nativeAssets": { "pngs": 31, "drawings": 86, "derivedWebps": 1, "totalFiles": 32, "totalBytes": 62407774 },
+  "preservation": { "oldMaskFilesByteIdentical": 28, "sourceWorkbookUnchanged": true, "deletedTrackedFiles": 0 },
+  "publication": { "status": "PENDING", "productionAlias": "https://yautja-la-longue-chasse.vercel.app" },
+  "limitations": [
+    "Reference-guided visual adaptations, not certified 1:1 reproductions.",
+    "Eight workbook identity/appearance dossiers and incomplete character action sheets remain open.",
+    "Three affected stage ambience triplets do not complete the 174 literal stage dossiers or all 522 requested events.",
+    "Mobile browser emulation is not physical-device QA; isolated campaign fixtures do not certify the entire prologue."
+  ]
+}

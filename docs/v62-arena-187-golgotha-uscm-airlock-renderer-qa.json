@@ -1,0 +1,2928 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-187-golgotha-uscm-airlock",
+  "checkedAt": "2026-09-30T20:51:34.117Z",
+  "compositionDigest": "01533662da65c21601b02e6fd0104a4892313650ff462c7cd7838c7a80b77798",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "63cb44c2adfcdd8503a526208ed7c8266bc760298676488ee907a607b059b981",
+    "app/game/pitArenaProduction.ts": "806c5960e292d5ea380d4c24f2efb41849db667b81828382e555432b83c7e435",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV62.ts": "7e2e7e71dab7112ec61704acd43e425f1b0e183d447dc4e8d257a5d0e842ce8e",
+    "scripts/verify-pit-stage-composition-v62.mjs": "ec5549c8d6b9c498503702cb58043200c561c1dcb36570f140c470ce28b834a2",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "210d23939163a415d36769163409bdc5c96828b64d27094dc7b998199656287d",
+    "app/game/data/pitStageLifeV62.json": "97c5eb95eef48d63b47211fd06096e9665618bf04d2ea523bcc6d0005696c272",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 187,
+      "catalogueId": "arena-187-golgotha-uscm-airlock",
+      "assetDirectory": "/game/sprites/v62/pit-arenas/arena-187-golgotha-uscm-airlock",
+      "name": "Camp Golgotha — sas USCM",
+      "setting": "Base d’entraînement USCM : sas, vitrage et conduits industriels. Adaptation latérale originale du cadre décrit par le manuel Atari Jaguar.",
+      "wave": "v62-workbook-lore-correction",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v62-original-uscm-base-with-declared-industrial-library",
+      "screenReference": {
+        "kind": "game",
+        "workId": "avp-jaguar-1994",
+        "fidelityClaim": "publisher-manual-setting-original-lateral-adaptation-not-certified-1to1",
+        "referenceStatus": "manual-setting-attested"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur adaptée du lieu référencé",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Base USCM originale — architecture distante sans acteur intégré",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v62/pit-arenas/arena-187-golgotha-uscm-airlock/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v62-generation/arena-187-golgotha-uscm-airlock-p0-depth.json",
+                    "sha256": "cb90f15c1ad7e6965b6050317e542c5115c7b0fbffb444a7a6f6019a885073bb",
+                    "width": 1672,
+                    "height": 940,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1672,
+                      "height": 940
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v62-generation/arena-187-golgotha-uscm-airlock-p0-depth.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v62-arena-187-golgotha-uscm-airlock-renderer-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-rail-conduit",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.3,
+              "placements": [
+                {
+                  "x": -20,
+                  "y": 8,
+                  "width": 1000,
+                  "height": 100
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p1-rail-conduit.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p1-rail-conduit.json",
+                    "sha256": "5acb60872bfa1e12a806289dc0db20724226388cf52feb187119071c936cee06",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 17,
+                      "y": 8,
+                      "width": 2139,
+                      "height": 674
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p1-rail-conduit.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p1-rail-conduit"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.5,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 12,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                },
+                {
+                  "x": 842,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-metal-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 760,
+                  "height": 40
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 355,
+                "width": 2172,
+                "height": 41
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-floor.json",
+                    "sha256": "b511bb879eff59392bc21080e581c09893cdc20900eb2aa15874ef3843ccfc79",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 248,
+                      "width": 2172,
+                      "height": 309
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-floor"
+            },
+            {
+              "id": "p4-metal-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 442,
+                  "width": 1280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 29,
+                "y": 304,
+                "width": 2117,
+                "height": 111
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-fascia.json",
+                    "sha256": "ddd0540ec55d93960303b3138354b5508bee1013f86ab7ccc2e6e545b7db404d",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 190,
+                      "width": 2122,
+                      "height": 379
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-187-golgotha-uscm-airlock",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v62-arena-187-golgotha-uscm-airlock-renderer-qa.json",
+        "applicationEvidence": "docs/v62-stage-application-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v62-stage-composition-visual-review.json",
+        "digestMethod": "sha256-json-planes",
+        "digest": "1060006e13f359ebe6eb5a2e1c33a8bcce248781a54e2a09bdfc1dd880d10244"
+      }
+    },
+    "life": {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E140",
+          "10_VIE_DES_STAGES!E141",
+          "10_VIE_DES_STAGES!E142"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié."
+      },
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Sentinelles anonymes — sas d'observation",
+          "fps": 2,
+          "placement": {
+            "x": 257,
+            "bottom": 203,
+            "height": 162,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                289.5,
+                464
+              ],
+              "alphaBounds": [
+                83,
+                50,
+                413,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257,
+                465
+              ],
+              "alphaBounds": [
+                51,
+                50,
+                412,
+                415
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                465
+              ],
+              "alphaBounds": [
+                19,
+                50,
+                413,
+                415
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                289.5,
+                450
+              ],
+              "alphaBounds": [
+                83,
+                34,
+                413,
+                416
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                450
+              ],
+              "alphaBounds": [
+                51,
+                34,
+                413,
+                416
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                450
+              ],
+              "alphaBounds": [
+                19,
+                34,
+                413,
+                416
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Capteur d'alarme — balayage lent",
+          "fps": 2,
+          "placement": {
+            "x": 480,
+            "bottom": 145,
+            "height": 52,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                291,
+                399
+              ],
+              "alphaBounds": [
+                120,
+                72,
+                342,
+                327
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                400
+              ],
+              "alphaBounds": [
+                94,
+                72,
+                342,
+                328
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238,
+                399
+              ],
+              "alphaBounds": [
+                66,
+                73,
+                344,
+                326
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                291,
+                398
+              ],
+              "alphaBounds": [
+                120,
+                70,
+                342,
+                328
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                399
+              ],
+              "alphaBounds": [
+                94,
+                70,
+                342,
+                329
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                238,
+                399
+              ],
+              "alphaBounds": [
+                66,
+                70,
+                344,
+                329
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Xénomorphe anonyme — vitrage distant",
+          "fps": 2,
+          "placement": {
+            "x": 704,
+            "bottom": 203,
+            "height": 162,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "sha256": "969b5ba76914281bb6584a6b1240f1c99549feaa9fb68d0181320d4f90f93e7a",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                278,
+                464
+              ],
+              "alphaBounds": [
+                77,
+                44,
+                402,
+                420
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                464
+              ],
+              "alphaBounds": [
+                54,
+                44,
+                401,
+                420
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                231,
+                464
+              ],
+              "alphaBounds": [
+                30,
+                44,
+                402,
+                420
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                278,
+                445
+              ],
+              "alphaBounds": [
+                77,
+                22,
+                402,
+                423
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                445
+              ],
+              "alphaBounds": [
+                54,
+                23,
+                401,
+                422
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                230.5,
+                445
+              ],
+              "alphaBounds": [
+                30,
+                23,
+                401,
+                422
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+      "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+      "bytes": 2440207,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.39555676778157556,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            50,
+            413,
+            414
+          ],
+          "contentSha256": "f958a4e5670f5fe775737110d43e5eeca20df7c4a8b72cb019d28a72cbb02068",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            50,
+            412,
+            415
+          ],
+          "contentSha256": "ca44b73dc8016fc348f1e62898684b90b782e56988524384eae199d3762e5daa",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            50,
+            413,
+            415
+          ],
+          "contentSha256": "3b02e55b933ad2e233511bb9531d0de9cf3c6f2d53d1044e97b131d093543861",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            83,
+            34,
+            413,
+            416
+          ],
+          "contentSha256": "dd737b1d18e27492394ae78eefbf229e27aa40c25ce6a1cb59f235af107fd20c",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            51,
+            34,
+            413,
+            416
+          ],
+          "contentSha256": "1f74a2c765b15c39b640c5304fefa3fb76be6f144a349fe2642030eb4d66afc7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            34,
+            413,
+            416
+          ],
+          "contentSha256": "877c787d8887bfd6fb88d595c611dd546fba0247d12c48c1514f4af22d3881d5",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-187-golgotha-uscm-airlock-ambient-01.json"
+    },
+    {
+      "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+      "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+      "bytes": 1947006,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6221510569254558,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            120,
+            72,
+            342,
+            327
+          ],
+          "contentSha256": "41222506e91f08d219cdf14ace7ee3e0cb5bb9b28fbe1e7d2e462a473314e2e1",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            94,
+            72,
+            342,
+            328
+          ],
+          "contentSha256": "1bb04562fbeea692ffad7172a416267165a6e05c3099506893f29ce9bd9ba4ba",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            73,
+            344,
+            326
+          ],
+          "contentSha256": "6a89eb7cf843ecefc2a3ab14a11fc3c9a91704e5d30e174fc0753e272e629cdf",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            120,
+            70,
+            342,
+            328
+          ],
+          "contentSha256": "ee9a4759a45dc699d9f9689d383b79ba506f3ffe2e0b05821da89b36907b234a",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            94,
+            70,
+            342,
+            329
+          ],
+          "contentSha256": "0eca05d59fefa4615feb1d87fa73de123a72e0302ae116da6444cbc60a20a958",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            66,
+            70,
+            344,
+            329
+          ],
+          "contentSha256": "c7fdf805e10bfad1901a31945ab3aeabc447490a988054b7856ab6ec9d5de482",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-187-golgotha-uscm-airlock-ambient-02.json"
+    },
+    {
+      "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+      "sha256": "969b5ba76914281bb6584a6b1240f1c99549feaa9fb68d0181320d4f90f93e7a",
+      "bytes": 2484502,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.3977851867675781,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            44,
+            402,
+            420
+          ],
+          "contentSha256": "4280b29839d5ee4a11bea9a0a76c0dca50867031e36e4f04faa9c2e3d4d85f79",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            44,
+            401,
+            420
+          ],
+          "contentSha256": "e5552dbbea7a6a8dd7a2dcc1fb661b5f8bb7e56d9e2a9270544840a971c6b864",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            44,
+            402,
+            420
+          ],
+          "contentSha256": "fcbca7aec6b4dc765d1aaf8f5abae844ab3db9a6c2bbe0967c3e8e37b2f464ca",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            77,
+            22,
+            402,
+            423
+          ],
+          "contentSha256": "d1f99a74ea419f3c2394c9d9451d3bdd4eb40afb015807fffca93a978904272e",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            54,
+            23,
+            401,
+            422
+          ],
+          "contentSha256": "498ef5fa0aaa48d725b4dfb12df6c97a6675fa40648cb470699d30f01fd3303d",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            30,
+            23,
+            401,
+            422
+          ],
+          "contentSha256": "48c2bfe8ab2064f1e22b8d58db163358b3093b38f0414a430cdea28b6b5071b6",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-187-golgotha-uscm-airlock-ambient-03.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 10,
+    "expectedImages": 10,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV62Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            257,
+            203
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480,
+            145
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            704,
+            203
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            257,
+            203
+          ],
+          "pivot": [
+            257,
+            203
+          ],
+          "visibleBounds": [
+            191.662109375,
+            72.0078125,
+            130.67578125,
+            130.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480,
+            145
+          ],
+          "pivot": [
+            480,
+            145
+          ],
+          "visibleBounds": [
+            462.6328125,
+            111.7890625,
+            34.734375,
+            33.2109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            704,
+            203
+          ],
+          "pivot": [
+            704,
+            203
+          ],
+          "visibleBounds": [
+            640.40234375,
+            70.109375,
+            127.1953125,
+            132.890625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            262.2075,
+            201.4925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            490.22499999999997,
+            142.1875
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            719.2649999999999,
+            201.4925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            262.2075,
+            201.4925
+          ],
+          "pivot": [
+            262.2075,
+            201.4925
+          ],
+          "visibleBounds": [
+            195.3995068359375,
+            67.55298828125001,
+            133.615986328125,
+            133.93951171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            490.22499999999997,
+            142.1875
+          ],
+          "pivot": [
+            490.22499999999997,
+            142.1875
+          ],
+          "visibleBounds": [
+            472.46705078124995,
+            108.22931640624999,
+            35.5158984375,
+            33.95818359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            719.2649999999999,
+            201.4925
+          ],
+          "pivot": [
+            719.2649999999999,
+            201.4925
+          ],
+          "visibleBounds": [
+            654.2363964843748,
+            65.6118359375,
+            130.05720703125,
+            135.8806640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            241.7575,
+            201.4925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            469.775,
+            142.1875
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            698.8149999999999,
+            201.4925
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            241.7575,
+            201.4925
+          ],
+          "pivot": [
+            241.7575,
+            201.4925
+          ],
+          "visibleBounds": [
+            174.9495068359375,
+            67.55298828125001,
+            133.615986328125,
+            133.93951171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            469.775,
+            142.1875
+          ],
+          "pivot": [
+            469.775,
+            142.1875
+          ],
+          "visibleBounds": [
+            452.01705078124996,
+            108.22931640624999,
+            35.5158984375,
+            33.95818359375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            698.8149999999999,
+            201.4925
+          ],
+          "pivot": [
+            698.8149999999999,
+            201.4925
+          ],
+          "visibleBounds": [
+            633.7863964843749,
+            65.6118359375,
+            130.05720703125,
+            135.8806640625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            259.23,
+            203.67
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480,
+            146.25
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            701.76,
+            203.67
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            259.23,
+            203.67
+          ],
+          "pivot": [
+            259.23,
+            203.67
+          ],
+          "visibleBounds": [
+            194.54548828125,
+            73.987734375,
+            129.3690234375,
+            129.68226562499999
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480,
+            146.25
+          ],
+          "pivot": [
+            480,
+            146.25
+          ],
+          "visibleBounds": [
+            462.806484375,
+            113.37117187499999,
+            34.38703125,
+            32.878828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            701.76,
+            203.67
+          ],
+          "pivot": [
+            701.76,
+            203.67
+          ],
+          "visibleBounds": [
+            638.7983203125,
+            72.10828125,
+            125.92335937499999,
+            131.56171874999998
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            250.86749999999995,
+            200.90062499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480,
+            141.30562499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            710.16,
+            200.90062499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            250.86749999999995,
+            200.90062499999996
+          ],
+          "pivot": [
+            250.86749999999995,
+            200.90062499999996
+          ],
+          "visibleBounds": [
+            183.73281738281244,
+            66.30615234374994,
+            134.26936523437502,
+            134.59447265625002
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480,
+            141.30562499999996
+          ],
+          "pivot": [
+            480,
+            141.30562499999996
+          ],
+          "visibleBounds": [
+            462.15521484375,
+            107.18138671874995,
+            35.6895703125,
+            34.12423828125
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            710.16,
+            200.90062499999996
+          ],
+          "pivot": [
+            710.16,
+            200.90062499999996
+          ],
+          "visibleBounds": [
+            644.8134082031249,
+            64.35550781249995,
+            130.69318359375,
+            136.5451171875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            279.3,
+            209.70000000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480,
+            157.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            681.6,
+            209.70000000000002
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            279.3,
+            209.70000000000002
+          ],
+          "pivot": [
+            279.3,
+            209.70000000000002
+          ],
+          "visibleBounds": [
+            220.4958984375,
+            91.80703125,
+            117.608203125,
+            117.89296875000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480,
+            157.5
+          ],
+          "pivot": [
+            480,
+            157.5
+          ],
+          "visibleBounds": [
+            464.36953125,
+            127.61015625,
+            31.260937500000004,
+            29.889843750000004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            681.6,
+            209.70000000000002
+          ],
+          "pivot": [
+            681.6,
+            209.70000000000002
+          ],
+          "visibleBounds": [
+            624.3621093749999,
+            90.09843749999999,
+            114.47578125000001,
+            119.60156250000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            257,
+            203
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480,
+            145
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            704,
+            203
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            257,
+            203
+          ],
+          "pivot": [
+            257,
+            203
+          ],
+          "visibleBounds": [
+            191.662109375,
+            72.0078125,
+            130.67578125,
+            130.9921875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480,
+            145
+          ],
+          "pivot": [
+            480,
+            145
+          ],
+          "visibleBounds": [
+            462.6328125,
+            111.7890625,
+            34.734375,
+            33.2109375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            704,
+            203
+          ],
+          "pivot": [
+            704,
+            203
+          ],
+          "visibleBounds": [
+            640.40234375,
+            70.109375,
+            127.1953125,
+            132.890625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            250.46378974499993,
+            196.292454
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            480.027794745,
+            136.58522399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            710.621234745,
+            196.292454
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            250.46378974499993,
+            196.292454
+          ],
+          "pivot": [
+            250.46378974499993,
+            196.292454
+          ],
+          "visibleBounds": [
+            183.20267830945303,
+            61.444511460937484,
+            134.52222287109376,
+            134.8479425390625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            480.027794745,
+            136.58522399999998
+          ],
+          "pivot": [
+            480.027794745,
+            136.58522399999998
+          ],
+          "visibleBounds": [
+            462.1494040809375,
+            102.39672255468749,
+            35.756781328125,
+            34.188501445312504
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            710.621234745,
+            196.292454
+          ],
+          "pivot": [
+            710.621234745,
+            196.292454
+          ],
+          "visibleBounds": [
+            645.1515814832813,
+            59.49019345312498,
+            130.9393065234375,
+            136.802260546875
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 1223,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 1253,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 1283,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 1313,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 1343,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 1373,
+      "attachment": [
+        704,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 2304,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 2334,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 2364,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 2394,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 2424,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 2454,
+      "attachment": [
+        480,
+        145
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 3300,
+      "attachment": [
+        257,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 3330,
+      "attachment": [
+        257,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 3360,
+      "attachment": [
+        257,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 3390,
+      "attachment": [
+        257,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 3420,
+      "attachment": [
+        257,
+        203
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 3450,
+      "attachment": [
+        257,
+        203
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\center.png",
+      "sha256": "8dcdce452c041dee93e161806dcf61d9512d22426bedb720c08ca9afb9ed01fb"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\left-corner.png",
+      "sha256": "5663f43f4f10ffa99d4cd1688fb90e8e0a15e249702be4c8ec9e0002163e9702"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\right-corner.png",
+      "sha256": "7d6a31910093e87f891d60db3a25bfb0e79e41f1c1ceb2e735da947d27fac4fd"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\wide.png",
+      "sha256": "58f2c150c20904920d928bcf500a608d23f36d1a34d2c588b57d2d66c9bc743b"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\close.png",
+      "sha256": "3423023e2de6fcbcd713c69fad94999d52811ece9dc8f7b692f8892d6a8774ef"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\reduced-motion.png",
+      "sha256": "b845b311a81c4b6d352e755086f28af068f1b5f75014af883828818480cc1a83"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\high-contrast.png",
+      "sha256": "9fbd459dbb7025858201ef9d97b1835dcfa7799e5d40a7bd068e6e565450b236"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\actual-game-camera.png",
+      "sha256": "dcc82ca7e923b599538c84155432c1ee1f6d60f3a10a4b9d46128b110ad144a7"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-0.png",
+      "sha256": "82d82227a641238f1844546e951063ee52e590a4f8ac015a552e4ea6f8c4c06b"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-1.png",
+      "sha256": "6cf939abe26e34e2085a892c0194515f76084187fc55c30230bc659d70ed7cd9"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-2.png",
+      "sha256": "58caad0e649868df3e39142ab1ee4c9c11d61062fedf82efe7df134323eb4fe8"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-3.png",
+      "sha256": "109b7394cb6617fcd2f9799836b30a4b2169cbbf88b86ac7bf535a0992473900"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-4.png",
+      "sha256": "5663d1cf15d0169dbbe0f6641d41c36b7aeb5a831fe72557f0a714416817a60e"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-03-frame-5.png",
+      "sha256": "7a45f6767b06d0c932bc1c0e7d1be65e03fb79bfe3234e70e8f7386b24331785"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-0.png",
+      "sha256": "82d82227a641238f1844546e951063ee52e590a4f8ac015a552e4ea6f8c4c06b"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-1.png",
+      "sha256": "20c9e87d49e69617022732d889153764e8e5267d6218c2d19936b2e0fc6cf153"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-2.png",
+      "sha256": "f2a4294b264fff5e37f961fe61fa95f0d741a77e088b1980fc4340a067650fab"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-3.png",
+      "sha256": "377a133c1d14a020008055e870cf404dd38f56396ba0c11c3f65e8515682b665"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-4.png",
+      "sha256": "352c065ab43a02c3f7b585f6934a1e9e437957ccb3675a5193b7a5a28ae2607e"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-02-frame-5.png",
+      "sha256": "c43fe3cb8715078601f3db1178c8de80b7697b5496c7f293f2e0387a32ef4210"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-0.png",
+      "sha256": "82d82227a641238f1844546e951063ee52e590a4f8ac015a552e4ea6f8c4c06b"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-1.png",
+      "sha256": "de0d8b0b66ecd434b15861c15e9aab90ba43aa6d762df7b4ee93ada7f4f7910a"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-2.png",
+      "sha256": "9bcac55e85d156db4323f7d63391e555ddb6d74ac0281ce4ee0efd23572095d2"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-3.png",
+      "sha256": "d901824d5a88a5c25fbb730d2fb0a87951517eaf6782d398a9b8891c312575cf"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-4.png",
+      "sha256": "8ef1b249ca4934d0bfef3e188ad1a03b447c12a42e24aa6993cfaedefc968fb9"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\ambient-ambient-01-frame-5.png",
+      "sha256": "673dfb30f8795d06004ee81e12b4fe4e0d8f086d68e8698e03204c8a13ca1d42"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-187-golgotha-uscm-airlock\\mobile-canvas.png",
+      "sha256": "59a4a99b8cfb6de8a9795cb3ac0e13bfa3be7ca22f4eee4eef5cf583277a5da5"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

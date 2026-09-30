@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "fighterId": "user-emissary-phg",
+  "variantId": "emissary-phg-official-armour-v62",
+  "sourceCells": [
+    "02_PERSONNAGES!A207:V207",
+    "03_MANQUANTS!A12:L12"
+  ],
+  "method": "builtin-imagegen",
+  "referenceUrls": [
+    "https://forum.predator.illfonic.com/t/patch-notes-2-39/27316",
+    "https://store.steampowered.com/app/1919280",
+    "https://store.playstation.com/en-us/product/UP3095-PPSA24179_00-PHGD17PDLC000000/"
+  ],
+  "loreLimits": [
+    "Game incarnation Emissary from Predator: Hunting Grounds, released April19 2022. Distinct from the two cut-film Emissary designs of The Predator.",
+    "Body equipment extrapolates the partly occluded lower legs/back from official key art. Artistic reconstruction, no certified1:1 claim.",
+    "Only idle has six authored frames in each direction. Movement, attacks and round performances remain incomplete and use an explicitly declared native stance.",
+    "No invented exclusive canonical location: existing Hunting Grounds shared location association remains unchanged."
+  ],
+  "accepted": [
+    {
+      "id": "portrait",
+      "kind": "portrait",
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-8871b08a-8c98-4967-bbda-70c79713ad10.png",
+      "visualReviewed": true,
+      "prompt": "Use case: stylized-concept.\nAsset type: transparent full-body 2D fighting-game character cutout for THE PIT, Emissary Predator from Predator: Hunting Grounds.\nInput image role: official PlayStation/IllFonic Emissary DLC key artwork. Follow THIS game incarnation, not either movie deleted-scene Emissary.\nPrimary request: render the same Emissary in a calm ready-to-fight stance, full body, facing screen RIGHT in a readable lateral three-quarter view, feet grounded on one horizontal baseline. Preserve the official glossy black graphite biomasque silhouette: smooth domed crown, two modest crown corners, silver/gold-edged brow ridges, narrow eyes, long vented triangular lower face, black braided dreadlocks with small metal cuffs. Preserve tan spotted Yautja skin, sleeveless woodland camouflage tactical vest with segmented chest/abdomen plates, olive/camouflage shoulder caps, broad utility belt and two thigh pouches, camouflage trousers, dark worn shin protection and clawed bare feet. Lower shin details and hidden surfaces are a restrained reconstruction because not fully visible in the reference; do not add fantasy ornament.\nAnatomical RIGHT forearm carries the two slim wrist blades shown in the source. Anatomical LEFT arm has its existing bracer and an empty relaxed clawed hand. Hands have coherent fingers/thumbs, wrists align with forearms, no fused or extra limbs. Right wrist blades are compact, lowered and point generally toward the opponent, not across the face. Two arms, two legs, same equipment throughout. Do not invent guns, swords, skull trophies, magic, capes, horns, teeth on the mask or new spikes.\nStyle: detailed painted game sprite, slightly outlined silhouette, restrained realistic proportions matching the source, not a toy photo or chibi. Soft neutral studio lighting, no colored backlight.\nComposition: portrait 1024x1536, entire body including dreadlocks, fingers, blades and toes within generous transparent margins, body fills about82% of height. Body never cut at edges. Camera at waist height, no fisheye.\nBackground must be real transparent alpha. No stage, floor, drop shadow, checkerboard, text, logos, captions, watermark, frame or reference thumbnail. One single character only.",
+      "visualNotes": "Primary-reference mask/camouflage maintained. Two right-wrist blades, left wrist bare. Complete unclipped silhouette.",
+      "src": "/game/sprites/v62/fighters/emissary-phg/portrait.png",
+      "sha256": "6a4ac039b29387ce9290d8a48132bf40635ad6cb40dd23e5cc69f61f6dbdcf34",
+      "bytes": 2343102,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "sourcePixelsModified": false,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            1024,
+            1536
+          ],
+          "pivot": [
+            512,
+            1515
+          ],
+          "alphaBounds": [
+            33,
+            18,
+            971,
+            1500
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 1515,
+          "frameSha256": "36efe89a340d81132a07fe88bbd46a0221091ec9b7064b9678468959f52996f8",
+          "transparentFraction": 0.6434612274169922
+        }
+      ]
+    },
+    {
+      "id": "idle-right",
+      "kind": "idle",
+      "facing": "right",
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-dca42835-4bfc-4aa1-bc17-eda464022a15.png",
+      "visualReviewed": true,
+      "prompt": "Use case: identity-preserve. Asset type: native transparent 2D fighting-game idle animation spritesheet, Emissary Predator Hunting Grounds, screen RIGHT facing.\nImage1 is the accepted character design to preserve, Image2 the official identity reference. Create a complete 6-frame calm idle breathing cycle of exactly this same character in a readable lateral three-quarter RIGHT-facing duel stance, 3 columns by 2 rows on a1536x1024 canvas, each cell512x512, no gutters or labels. This is one spritesheet asset.\nEach frame is a separately drawn natural pose with small distinct chest breathing, elbow/wrist settling and slight dreadlock follow-through; ordered1-6 left-to-right top-to-bottom. Calm grounded fighter, not attacking. Feet stay planted in the SAME positions on cell baseline y470, center body around x256; headtoparoundy55. Match body size from frame to frame and keep full body inside every cell with at least24px transparent edge margin. Opponent is clearly screen RIGHT: nose, chest and forward toes look right. Same graphite rounded mask with paired small crown corners and silver/gold trim, black cuffed dreadlocks, spotted tan skin, camouflage military vest/trousers/pouches, brown shin guards and clawed feet as Image1. Anatomical RIGHT wrist has exactly TWO metal blades; LEFT wrist does NOT gain blades, and LEFT hand is empty. Preserve correct anatomical sides across poses. Five coherent digits per hand including thumb; no extra fingers or merged palms; no added shoulder gun if concealed in accepted design. No costume change, no helmet variation, no glow, no smoking weapon, no extra props.\nPainted outlined detailed 2D game sprite, neutral lighting consistent across all six poses. Background fully transparent alpha. No decorative backdrop, floor, shadow, checkerboard, gridline, caption, logos, labels, watermark, frames or thumbnail. All six complete silhouettes fit and remain separated. The anatomy, mask and equipment must be coherent in each frame.\nMandatory correction from a rejected attempt: figures were too large and touched the horizontal boundary, cutting toes. In this new version leave the UPPER QUARTER and LOWER EIGHTH of EACH CELL empty transparent. Each character must fit inside x80..432 and y100..430 of its own512x512cell. Body height only330pixels. There must be at least80pixels of completely transparent vertical space between upper-row feet and lower-row helmet. Never enlarge the characters to fill the grid. The canvas is1536x1024 with3by2cells. SIX complete, smaller figures surrounded by plenty of empty alpha. Keep all limbs, both feet, both blades and dreadlocks untouched within each isolated cell. This empty space is required for animation safety.",
+      "visualNotes": "Six subtle guarded breathing drawings, independent side. Equipment and anatomy inspected. Strict cell-boundary measurement required.",
+      "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+      "sha256": "bcac02b72b47194260f741efa7b88c456c5150a3f51adb83e93551213adbe926",
+      "bytes": 2229119,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "sourcePixelsModified": false,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            491
+          ],
+          "alphaBounds": [
+            87,
+            50,
+            350,
+            444
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 491,
+          "frameSha256": "f9bac311e66117bc8fe54236b94076098603bcf2468faef1ec854ffeca585c54",
+          "transparentFraction": 0.7401275634765625
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "alphaBounds": [
+            70,
+            51,
+            360,
+            443
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 490,
+          "frameSha256": "d648904ee4ea0e70c79f0ac1bfc5e94159c7ce6fedfb91741f4856c28725e872",
+          "transparentFraction": 0.7386283874511719
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "alphaBounds": [
+            80,
+            52,
+            343,
+            441
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 490,
+          "frameSha256": "868a6d7a4dd2ee790367aaf1c8a67e9bd43a5623926bddd00517eb63348cd649",
+          "transparentFraction": 0.7402420043945312
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            480
+          ],
+          "alphaBounds": [
+            90,
+            33,
+            364,
+            450
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 480,
+          "frameSha256": "dfc6a44b3d1b275b3fa413edc3ecc044eac8f917f13104bf8dfc96bb28716ccd",
+          "transparentFraction": 0.7235755920410156
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            480
+          ],
+          "alphaBounds": [
+            73,
+            38,
+            360,
+            443
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 480,
+          "frameSha256": "4c77f77786ff1cc935a0fe5a300c83a49b62f0ce53a2c55b60877abd471a928e",
+          "transparentFraction": 0.7256507873535156
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            480
+          ],
+          "alphaBounds": [
+            68,
+            41,
+            353,
+            440
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 480,
+          "frameSha256": "8bf4dba4644141b9dc7f09fa2cc2b69e1585cb66eafc0c06c5e039c9d0e8d1d2",
+          "transparentFraction": 0.7346076965332031
+        }
+      ]
+    },
+    {
+      "id": "idle-left",
+      "kind": "idle",
+      "facing": "left",
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-f653fb23-7e04-4144-b855-da218f4d40fc.png",
+      "visualReviewed": true,
+      "prompt": "Use case: identity-preserve. Asset type: native transparent 2D fighting-game idle animation spritesheet, Emissary Predator Hunting Grounds, screen LEFT facing.\nImage1 is the accepted character design to preserve, Image2 the official identity reference. Create a complete 6-frame calm idle breathing cycle of exactly this same character in a readable lateral three-quarter LEFT-facing duel stance, 3 columns by 2 rows on a1536x1024 canvas, each cell512x512, no gutters or labels. This is one spritesheet asset.\nEach frame is a separately drawn natural pose with small distinct chest breathing, elbow/wrist settling and slight dreadlock follow-through; ordered1-6 left-to-right top-to-bottom. Calm grounded fighter, not attacking. Feet stay planted in the SAME positions on cell baseline y470, center body around x256; headtoparoundy55. Match body size from frame to frame and keep full body inside every cell with at least24px transparent edge margin. Opponent is clearly screen LEFT: nose, chest and forward toes look left. Same graphite rounded mask with paired small crown corners and silver/gold trim, black cuffed dreadlocks, spotted tan skin, camouflage military vest/trousers/pouches, brown shin guards and clawed feet as Image1. Anatomical RIGHT wrist has exactly TWO metal blades; LEFT wrist does NOT gain blades, and LEFT hand is empty. Preserve correct anatomical sides across poses. Five coherent digits per hand including thumb; no extra fingers or merged palms; no added shoulder gun if concealed in accepted design. No costume change, no helmet variation, no glow, no smoking weapon, no extra props.\nPainted outlined detailed 2D game sprite, neutral lighting consistent across all six poses. Background fully transparent alpha. No decorative backdrop, floor, shadow, checkerboard, gridline, caption, logos, labels, watermark, frames or thumbnail. All six complete silhouettes fit and remain separated. The anatomy, mask and equipment must be coherent in each frame.\nCRITICAL: Create the opposing view, NOT a horizontal mirror. The ANATOMICAL RIGHT forearm still carries both wrist blades; the ANATOMICAL LEFT arm remains bladeless. Show a clearer left-facing lateral three-quarter profile, rotating the actual character in space. Keep camo vest, mask and anatomy identical to accepted master. Give every cell a comfortable clear margin; body from y45 to y465 only, not full512height. Do not duplicate the supplied right-facing sheet; redraw all six poses as the opposing side.\nMandatory correction: Image3 shows the approved safe right-facing sheet as SPACING AND SCALE REFERENCE ONLY. Use its same generous transparent separation and smaller figure sizes, without copying or mirroring its character drawings. Keep the opposing LEFT-facing character, drawn anatomically as requested, in all six cells. There must be at least60pixels of fully empty transparent space between the top row feet and bottom row helmets. No toe may reach any512cell boundary. Character height at most420pixels in each512pixelcell. Six complete, separate drawings with no limb clipping. ",
+      "visualNotes": "Six separately drawn opposing-facing poses; anatomical right-wrist blades remain right-sided. Hands, feet, mask and grid spacing inspected.",
+      "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+      "sha256": "2774335ecf3e5c77219b72bec97b7759e65e8125dd2efbc378204ba8440142e8",
+      "bytes": 2436210,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": true,
+      "sourcePixelsModified": false,
+      "frames": [
+        {
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            499
+          ],
+          "alphaBounds": [
+            57,
+            25,
+            415,
+            475
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 499,
+          "frameSha256": "23fd3c6cf902b09fd9559a568b79df188904b0437b5a65f8f6d5456e74e72162",
+          "transparentFraction": 0.6795654296875
+        },
+        {
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            501
+          ],
+          "alphaBounds": [
+            50,
+            29,
+            426,
+            473
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 501,
+          "frameSha256": "123fea029e8348cd5cc8d2d0cba13aa486eff941940e176fc013f1a047f85c6a",
+          "transparentFraction": 0.6785736083984375
+        },
+        {
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            501
+          ],
+          "alphaBounds": [
+            59,
+            29,
+            422,
+            473
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 501,
+          "frameSha256": "56a64ffc1e9bd489d87c9d5abdbe613005c06b0fbb30d1a24b81f45f20d689c5",
+          "transparentFraction": 0.6777191162109375
+        },
+        {
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            487
+          ],
+          "alphaBounds": [
+            56,
+            19,
+            423,
+            471
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 487,
+          "frameSha256": "b0f2eda20ce6213874c26e093b3331c4c0d4bf90014f9548aa26f65f225f6e18",
+          "transparentFraction": 0.6789093017578125
+        },
+        {
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            487
+          ],
+          "alphaBounds": [
+            50,
+            19,
+            426,
+            469
+          ],
+          "maxEdgeAlpha": 1,
+          "supportY": 487,
+          "frameSha256": "226459604fed4da79f24a14988c771207e335e4e05fcc7f38b45f13fb1157cb7",
+          "transparentFraction": 0.6767005920410156
+        },
+        {
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            486
+          ],
+          "alphaBounds": [
+            59,
+            15,
+            424,
+            473
+          ],
+          "maxEdgeAlpha": 0,
+          "supportY": 486,
+          "frameSha256": "151781dd5842e399b13590e6f3b7d00c1787fa307df44be81275749c37054bdc",
+          "transparentFraction": 0.6760101318359375
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-afd585b7-c8a0-4670-970a-1aff9f7a3ed3.png",
+      "reason": "Right idle attempt1: opaque toe pixels crossed the row512 boundary. Not shipped.",
+      "prompt": "Use case: identity-preserve. Asset type: native transparent 2D fighting-game idle animation spritesheet, Emissary Predator Hunting Grounds, screen RIGHT facing.\nImage1 is the accepted character design to preserve, Image2 the official identity reference. Create a complete 6-frame calm idle breathing cycle of exactly this same character in a readable lateral three-quarter RIGHT-facing duel stance, 3 columns by 2 rows on a1536x1024 canvas, each cell512x512, no gutters or labels. This is one spritesheet asset.\nEach frame is a separately drawn natural pose with small distinct chest breathing, elbow/wrist settling and slight dreadlock follow-through; ordered1-6 left-to-right top-to-bottom. Calm grounded fighter, not attacking. Feet stay planted in the SAME positions on cell baseline y470, center body around x256; headtoparoundy55. Match body size from frame to frame and keep full body inside every cell with at least24px transparent edge margin. Opponent is clearly screen RIGHT: nose, chest and forward toes look right. Same graphite rounded mask with paired small crown corners and silver/gold trim, black cuffed dreadlocks, spotted tan skin, camouflage military vest/trousers/pouches, brown shin guards and clawed feet as Image1. Anatomical RIGHT wrist has exactly TWO metal blades; LEFT wrist does NOT gain blades, and LEFT hand is empty. Preserve correct anatomical sides across poses. Five coherent digits per hand including thumb; no extra fingers or merged palms; no added shoulder gun if concealed in accepted design. No costume change, no helmet variation, no glow, no smoking weapon, no extra props.\nPainted outlined detailed 2D game sprite, neutral lighting consistent across all six poses. Background fully transparent alpha. No decorative backdrop, floor, shadow, checkerboard, gridline, caption, logos, labels, watermark, frames or thumbnail. All six complete silhouettes fit and remain separated. The anatomy, mask and equipment must be coherent in each frame."
+    },
+    {
+      "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-e036-7010-8b7e-2b6577ffd26b/exec-5c859429-d6cb-474d-8256-5487f4ea170a.png",
+      "reason": "Left idle attempt1: opaque toe pixels crossed cell edges (alpha max 240,244,246,225,238,237). Not shipped.",
+      "prompt": "Use case: identity-preserve. Asset type: native transparent 2D fighting-game idle animation spritesheet, Emissary Predator Hunting Grounds, screen LEFT facing.\nImage1 is the accepted character design to preserve, Image2 the official identity reference. Create a complete 6-frame calm idle breathing cycle of exactly this same character in a readable lateral three-quarter LEFT-facing duel stance, 3 columns by 2 rows on a1536x1024 canvas, each cell512x512, no gutters or labels. This is one spritesheet asset.\nEach frame is a separately drawn natural pose with small distinct chest breathing, elbow/wrist settling and slight dreadlock follow-through; ordered1-6 left-to-right top-to-bottom. Calm grounded fighter, not attacking. Feet stay planted in the SAME positions on cell baseline y470, center body around x256; headtoparoundy55. Match body size from frame to frame and keep full body inside every cell with at least24px transparent edge margin. Opponent is clearly screen LEFT: nose, chest and forward toes look left. Same graphite rounded mask with paired small crown corners and silver/gold trim, black cuffed dreadlocks, spotted tan skin, camouflage military vest/trousers/pouches, brown shin guards and clawed feet as Image1. Anatomical RIGHT wrist has exactly TWO metal blades; LEFT wrist does NOT gain blades, and LEFT hand is empty. Preserve correct anatomical sides across poses. Five coherent digits per hand including thumb; no extra fingers or merged palms; no added shoulder gun if concealed in accepted design. No costume change, no helmet variation, no glow, no smoking weapon, no extra props.\nPainted outlined detailed 2D game sprite, neutral lighting consistent across all six poses. Background fully transparent alpha. No decorative backdrop, floor, shadow, checkerboard, gridline, caption, logos, labels, watermark, frames or thumbnail. All six complete silhouettes fit and remain separated. The anatomy, mask and equipment must be coherent in each frame.\nCRITICAL: Create the opposing view, NOT a horizontal mirror. The ANATOMICAL RIGHT forearm still carries both wrist blades; the ANATOMICAL LEFT arm remains bladeless. Show a clearer left-facing lateral three-quarter profile, rotating the actual character in space. Keep camo vest, mask and anatomy identical to accepted master. Give every cell a comfortable clear margin; body from y45 to y465 only, not full512height. Do not duplicate the supplied right-facing sheet; redraw all six poses as the opposing side."
+    }
+  ],
+  "deliveredNativeDrawings": 13,
+  "nativeAnimationClips": 2,
+  "heldFallbackClipsAreNotAnimations": true,
+  "complete18ActionKit": false,
+  "icon": {
+    "src": "/game/sprites/v62/fighters/emissary-phg/roster-icon.webp",
+    "width": 128,
+    "height": 192,
+    "bytes": 26664,
+    "sourceSrc": "/game/sprites/v62/fighters/emissary-phg/portrait.png",
+    "sourceSha256": "6a4ac039b29387ce9290d8a48132bf40635ad6cb40dd23e5cc69f61f6dbdcf34",
+    "sourceVariantId": "emissary-phg-official-armour-v62",
+    "sha256": "1306f2a771db1cb4bc98e5e6ec4fe55975021eda1895c35ac94818bc2e71185f"
+  },
+  "iconDerivation": {
+    "crop": false,
+    "mirror": false,
+    "resizeOnly": true,
+    "losslessWebp": true,
+    "sourcePixelsModified": false
+  },
+  "visualRuntimeReview": {
+    "status": "PASS",
+    "report": "docs/v62-emissary-runtime-qa.json",
+    "surfaces": [
+      "desktop right",
+      "desktop left",
+      "roster",
+      "mobile left reduced-motion requested"
+    ],
+    "nativeFramesObserved": 12
+  }
+}

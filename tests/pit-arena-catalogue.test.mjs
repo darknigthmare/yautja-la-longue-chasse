@@ -48,13 +48,18 @@ test("all arena designs carry the six-plane, fair-transition and competitive-haz
   }
 });
 
-test("heritage entries remain composition studies requiring original project art", () => {
+test("heritage studies retain source labels except the reclassified original waterfall composition", () => {
   const heritage = catalogue.PIT_ARENA_CATALOGUE.filter(({ wave }) => wave === "heritage-study");
   assert.equal(heritage.length, 10);
-  assert(heritage.every(({ referenceStudy }) => typeof referenceStudy === "string" && referenceStudy.length > 0));
-  assert(heritage.every(({ rightsNote }) => rightsNote === "composition-study-original-art-required"));
-  assert(heritage.every(({ rightsNote }) => rightsNote === "composition-study-original-art-required"));
-  assert.match(catalogue.getPitArenaCatalogueEntry(51).name, /Jaguar/);
+  const studies = heritage.filter(({number}) => number !== 51);
+  assert.equal(studies.length, 9);
+  assert(studies.every(({ referenceStudy }) => typeof referenceStudy === "string" && referenceStudy.length > 0));
+  assert(studies.every(({ rightsNote }) => rightsNote === "composition-study-original-art-required"));
+  const original = catalogue.getPitArenaCatalogueEntry(51);
+  assert.equal(original.id, 'arena-051-golgotha-etude-jaguar', 'historical save/replay ID is preserved');
+  assert.equal(original.name, 'Cataractes des Anciens · création originale');
+  assert.equal(original.referenceStudy, null);
+  assert.equal(original.rightsNote, 'original-project-art');
   assert.match(catalogue.getPitArenaCatalogueEntry(60).name, /Isolation/);
   assert.equal(catalogue.getPitArenaCatalogueEntry(0), null);
   assert.equal(catalogue.getPitArenaCatalogueEntry(101), null);

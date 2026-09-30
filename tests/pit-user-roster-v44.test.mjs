@@ -15,8 +15,9 @@ const built = await build({stdin:{contents:[
  "export * from './app/game/pitSpriteSheetAnimation';",
 ].join('\n'),resolveDir:process.cwd(),loader:'ts'},plugins:[{name:'user-fixture',setup(b){
  b.onResolve({filter:/pitUserHuntersV44\.json$/},()=>({path:'roster',namespace:'fixture'}));
+ b.onResolve({filter:/pitUserHuntersV62\.json$/},()=>({path:'additions',namespace:'fixture'}));
  b.onResolve({filter:/pitSpriteSheetRegistry$/},()=>({path:'registry',namespace:'fixture'}));
- b.onLoad({filter:/.*/,namespace:'fixture'},({path})=>path==='registry'?{contents:'export const PIT_SPRITE_SHEET_REGISTRY=[];',loader:'js'}:{contents:JSON.stringify(fixture),loader:'json'});
+ b.onLoad({filter:/.*/,namespace:'fixture'},({path})=>path==='registry'?{contents:'export const PIT_SPRITE_SHEET_REGISTRY=[];',loader:'js'}:{contents:JSON.stringify(path==='additions'?{fighters:[]}:fixture),loader:'json'});
 }}],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const p=await import('data:text/javascript;base64,'+Buffer.from(built.outputFiles[0].text).toString('base64'));
 

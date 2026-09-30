@@ -100,13 +100,17 @@ export async function auditPitSpriteSheetProduction() {
         { variants: [entry.variantId ?? null, null] });
       const fighter = combat.fighters[0]; fighter.facing = clip.facing === "right" ? 1 : -1;
       if (clip.id === 'idle' && entry.heldPoseClips?.some(pose => pose.id === 'idle' && pose.facing === clip.facing)) {
+        // A fighter can also own a separate animated idle. Audit this declared held
+        // definition in isolation so that an earlier valid animation cannot mask it.
+        const stanceBank = await api.loadPitSpriteSheetAnimations([entry.fighterId], [entry],
+          { variants: [entry.variantId ?? null] });
         const before = JSON.stringify(combat), options = { simulationFrame: 0, combat };
-        assert.equal(api.resolvePitSpriteSheetAnimation(bank, fighter, options), null, 'One native stance must never be counted as animation');
-        const held = api.resolvePitSpriteSheetHold(bank, fighter, options);
+        assert.equal(api.resolvePitSpriteSheetAnimation(stanceBank, fighter, options), null, 'One native stance must never be counted as animation');
+        const held = api.resolvePitSpriteSheetHold(stanceBank, fighter, options);
         assert.ok(held); assert.equal(held.definition.atlas.id, entry.atlas.id);
         assert.equal(held.frame.clip.facing, clip.facing); assert.equal(held.frame.clip.frames.length, 1);
         const calls = [], context = { globalAlpha: 1, save() {}, restore() {}, drawImage(...args) { calls.push(args); } };
-        assert.equal(api.drawPitSpriteSheetHold(context, bank, fighter, 440, options), true);
+        assert.equal(api.drawPitSpriteSheetHold(context, stanceBank, fighter, 440, options), true);
         assert.deepEqual(calls[0].slice(1, 5), clip.frames[0].rect);
         assert.equal(JSON.stringify(combat), before);
         clipReports.push({ fighterId: entry.fighterId, variantId: entry.variantId ?? null, atlasId: entry.atlas.id,

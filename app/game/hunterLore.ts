@@ -169,7 +169,7 @@ export const HUNTER_PRESETS = [
     description:
       "L'Elder du Lost Tribe, vieux chef à la peau pâlie et aux dreads grisonnantes qui reconnaît une victoire honorable.",
     fidelityNote:
-      "Son pistolet à silex de 1715 n'existe pas dans l'arsenal actuel ; le masque elder sert de variante jouable.",
+      "Son pistolet à silex de 1715 n'existe pas dans l'arsenal actuel ; Couronne des Ancêtres est un masque original optionnel du projet, non attribué à Greyback dans le film.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
@@ -201,7 +201,7 @@ export const HUNTER_PRESETS = [
     description:
       "Le Lost Hunter au biomask frontal massif, au collier de trophées et à l’armure de poursuite vue dans le vaisseau de 1990.",
     fidelityNote:
-      "Sa vignette emploie le biomask V14 dédié guidé par les vues film ; le rig conserve la coque city V3 alignée pour éviter d’étirer ce cutout autonome.",
+      "Son biomask V62 est une recréation guidée par les photos officielles NECA, partagée entre vignette et rig ; fidélité 1:1 non certifiée.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/05/predator-2-7-scale-action-figure-ultimate-boar-predator/",
@@ -282,7 +282,7 @@ export const HUNTER_PRESETS = [
     description:
       "Un Lost Hunter compact, à la peau chaude et au biomask gravé à médaillon, associé à un équipement léger de poursuite.",
     fidelityNote:
-      "Sa vignette emploie le biomask V14 dédié ; le rig conserve la coque city V3 alignée, et ses dreads courtes le style classic le plus proche.",
+      "Son biomask V62 est une recréation guidée par les photos officielles NECA, partagée entre vignette et rig ; ses dreads courtes conservent le style classic le plus proche. Fidélité 1:1 non certifiée.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predator-2",
       "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-snake/",
@@ -743,7 +743,7 @@ export const HUNTER_PRESETS = [
     description:
       "Le Super Predator à l'armure légère et au drone-faucon, combattant au corps à corps contre Hanzo.",
     fidelityNote:
-      "Sa vignette emploie le biomask V14 dédié ; le rig conserve la base berserker V3 alignée, et le drone-faucon reste à isoler comme module autonome.",
+      "Son biomask V62 est une recréation guidée par la référence officielle Hot Toys, partagée entre vignette et rig ; le drone-faucon possède ses sprites V58 dédiés dans THE PIT. Fidélité 1:1 non certifiée.",
     sourceUrls: [
       "https://www.20thcenturystudios.com/movies/predators",
       "https://www.avpgalaxy.net/predator/falconer/",
@@ -1187,7 +1187,7 @@ export const HUNTER_PRESETS = [
     description:
       "Le chasseur défiguré de Concrete Jungle, exilé puis revenu à Neonopolis avec une armure reconstruite et un vaste arsenal.",
     fidelityNote:
-      "Le masque enforcer reproduit seulement son volume agressif ; la cicatrice faciale et les variantes d'armure requièrent des sprites dédiés.",
+      "Le biomask V62 reprend la haute lame centrale et les joues de la figurine officielle NECA ; il adapte cette interprétation licenciée du comic sans certifier un tracé 1:1. Les variantes d’armure restent distinctes.",
     sourceUrls: [
       "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
     ],

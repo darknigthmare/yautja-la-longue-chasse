@@ -143,6 +143,17 @@ const BIOMASK_IDS = [
   "fugitive",
   "dek",
   "enforcer",
+  "clan-voile-argent",
+  "clan-cuivre-remparts",
+  "clan-entrelacs-forge",
+  "clan-os-grave",
+  "clan-cendre-balafree",
+  "clan-arete-acier",
+  "clan-veilleur-cendres",
+  "clan-carapace-sombre",
+  "clan-filigrane-cuivre",
+  "clan-patine-dunes",
+  "clan-gardien-ivoire",
 ] as const;
 const DREAD_STYLE_IDS = [
   "classic",

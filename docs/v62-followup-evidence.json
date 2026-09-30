@@ -1,0 +1,479 @@
+{
+  "release": "V62",
+  "checkedAt": "2026-09-30T21:01:59.908Z",
+  "finalLotComplete": true,
+  "sourceSha256": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+  "deliveries": [
+    {
+      "domain": "Combattant",
+      "item": "Emissary PHG — portrait",
+      "kind": "Portrait",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 1,
+      "validation": "Parcours Chrome V62, deux côtés, mobile et pixels natifs vérifiés.",
+      "limits": "Une case distincte des deux Emissary du film. Tenue partiellement reconstruite.",
+      "source": "02_PERSONNAGES!A207:V207 / 03_MANQUANTS!A12:L12\nIllFonic, mise à jour 2.39\nhttps://forum.predator.illfonic.com/t/patch-notes-2-39/27316"
+    },
+    {
+      "domain": "Combattant",
+      "item": "Emissary PHG — garde vers la droite",
+      "kind": "Animation idle",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Parcours Chrome V62, deux côtés, mobile et pixels natifs vérifiés.",
+      "limits": "Six dessins natifs. Déplacements et attaques non dessinés : pose tenue, pas de nouveau clip.",
+      "source": "02_PERSONNAGES!A207:V207 / 03_MANQUANTS!A12:L12\nIllFonic, mise à jour 2.39\nhttps://forum.predator.illfonic.com/t/patch-notes-2-39/27316"
+    },
+    {
+      "domain": "Combattant",
+      "item": "Emissary PHG — garde vers la gauche",
+      "kind": "Animation idle",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Parcours Chrome V62, deux côtés, mobile et pixels natifs vérifiés.",
+      "limits": "Six dessins natifs. Déplacements et attaques non dessinés : pose tenue, pas de nouveau clip.",
+      "source": "02_PERSONNAGES!A207:V207 / 03_MANQUANTS!A12:L12\nIllFonic, mise à jour 2.39\nhttps://forum.predator.illfonic.com/t/patch-notes-2-39/27316"
+    },
+    {
+      "domain": "Identités",
+      "item": "Samurai, Emissary, Golden Angel, Classic et Captive",
+      "kind": "Clarification",
+      "status": "Intégré",
+      "pngs": 0,
+      "drawings": 0,
+      "validation": "Variantes, IDs, ordre et bitmaps historiques conservés.",
+      "limits": "Samurai était déjà présent. Les dix dossiers nouveaux/candidats ne sont pas dix absences de case.",
+      "source": "v62-workbook-roster-audit.json / sources primaires citées"
+    },
+    {
+      "domain": "Masques",
+      "item": "14 biomasks référencés",
+      "kind": "Remplacement",
+      "status": "Intégré",
+      "pngs": 14,
+      "drawings": 14,
+      "validation": "53 tests passent. Chrome :26 sélections,14 toggles,2 rechargements, aucune erreur. 28 anciens fichiers inchangés.",
+      "limits": "Recréations guidées par références licenciées. Détails cachés, usure et microgravures interprétés. Pas de certification 1:1.",
+      "source": "BIOMASQUES-V62.md / biomask-generation-receipts.json"
+    },
+    {
+      "domain": "Masques",
+      "item": "Anciens dessins préservés et renommés",
+      "kind": "Conservation",
+      "status": "Intégré",
+      "pngs": 0,
+      "drawings": 0,
+      "validation": "28 fichiers historiques inchangés, empreintes vérifiées.",
+      "limits": "11 anciens V3 équipables sous IDs clan-*. Elder devient Couronne des Ancêtres. Quatre études V14 restent en galerie. Noms originaux du projet.",
+      "source": "BIOMASQUES-V62.md"
+    },
+    {
+      "domain": "Personnage modulaire",
+      "item": "Têtes Classic, Elder, Super et Feral",
+      "kind": "Remplacement",
+      "status": "Intégré",
+      "pngs": 4,
+      "drawings": 4,
+      "validation": "68 compositions DOM/Canvas contrôlées, revue visuelle représentative. Placement et teintes du rig corrigés.",
+      "limits": "Quatre dessins pour six morphologies. Classic réutilisé pour Young et Huntress. Pas de nouveaux cycles faciaux. Orientation 3/4 adaptée au rig.",
+      "source": "modular-head-classic.json / modular-head-families.json / v62-head-composition-qa.json"
+    },
+    {
+      "domain": "Arène 126",
+      "item": "Evacuants adultes anonymes — passage lointain",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée.",
+      "source": "10_VIE_DES_STAGES!E62 / 10_VIE_DES_STAGES!E63 / 10_VIE_DES_STAGES!E64\narena-126-avpr-2007-hospital-roof"
+    },
+    {
+      "domain": "Arène 126",
+      "item": "Hélicoptère anonyme — rotor d'évacuation",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée.",
+      "source": "10_VIE_DES_STAGES!E62 / 10_VIE_DES_STAGES!E63 / 10_VIE_DES_STAGES!E64\narena-126-avpr-2007-hospital-roof"
+    },
+    {
+      "domain": "Arène 126",
+      "item": "Évent de toiture — vapeur dans le vent",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée.",
+      "source": "10_VIE_DES_STAGES!E62 / 10_VIE_DES_STAGES!E63 / 10_VIE_DES_STAGES!E64\narena-126-avpr-2007-hospital-roof"
+    },
+    {
+      "domain": "Arène 130",
+      "item": "Marine anonyme — traversée de passerelle",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié.",
+      "source": "10_VIE_DES_STAGES!E143 / 10_VIE_DES_STAGES!E144 / 10_VIE_DES_STAGES!E145\narena-130-avp-classic-2000-space-station"
+    },
+    {
+      "domain": "Arène 130",
+      "item": "Ascenseur de service — cycle de porte",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié.",
+      "source": "10_VIE_DES_STAGES!E143 / 10_VIE_DES_STAGES!E144 / 10_VIE_DES_STAGES!E145\narena-130-avp-classic-2000-space-station"
+    },
+    {
+      "domain": "Arène 130",
+      "item": "Quarantaine — indicateur mécanique lent",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié.",
+      "source": "10_VIE_DES_STAGES!E143 / 10_VIE_DES_STAGES!E144 / 10_VIE_DES_STAGES!E145\narena-130-avp-classic-2000-space-station"
+    },
+    {
+      "domain": "Arène 187",
+      "item": "Sentinelles anonymes — sas d'observation",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié.",
+      "source": "10_VIE_DES_STAGES!E140 / 10_VIE_DES_STAGES!E141 / 10_VIE_DES_STAGES!E142\narena-187-golgotha-uscm-airlock"
+    },
+    {
+      "domain": "Arène 187",
+      "item": "Capteur d'alarme — balayage lent",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié.",
+      "source": "10_VIE_DES_STAGES!E140 / 10_VIE_DES_STAGES!E141 / 10_VIE_DES_STAGES!E142\narena-187-golgotha-uscm-airlock"
+    },
+    {
+      "domain": "Arène 187",
+      "item": "Xénomorphe anonyme — vitrage distant",
+      "kind": "Animation de fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 6,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié.",
+      "source": "10_VIE_DES_STAGES!E140 / 10_VIE_DES_STAGES!E141 / 10_VIE_DES_STAGES!E142\narena-187-golgotha-uscm-airlock"
+    },
+    {
+      "domain": "Arène 187",
+      "item": "Camp Golgotha — sas USCM",
+      "kind": "Nouveau fond",
+      "status": "Intégré",
+      "pngs": 1,
+      "drawings": 1,
+      "validation": "Chrome :3 arènes,54 cellules natives, mobile et panne503/reprise. Composition :44 caméras. Tests ciblés passés.",
+      "limits": "Base USCM attestée par le manuel Atari. Nouveau P0, cinq plans modulaires industriels réutilisés. Géométrie Jaguar exacte non certifiée.",
+      "source": "09_STAGES!A50:N50 / A107:N107\nhttps://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060"
+    },
+    {
+      "domain": "Arène 051",
+      "item": "Cataractes des Anciens",
+      "kind": "Conservation",
+      "status": "Intégré",
+      "pngs": 0,
+      "drawings": 0,
+      "validation": "Ancien ID jouable et images conservés, sans migration forcée des sauvegardes.",
+      "limits": "Ancienne ruine à cascades renommée création originale. Elle ne représente plus Camp Golgotha.",
+      "source": "v62-golgotha-reconciliation.json"
+    }
+  ],
+  "openItems": [
+    {
+      "domain": "Combattant",
+      "subject": "Predator du tournoi — Bloodshed",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Identité du tournoi attestée par Marvel ; apparence native et kit jouable manquants. Les dessins anonymes fournis ne permettent pas une attribution certaine.",
+      "source": "02_PERSONNAGES!A200:V200 / 03_MANQUANTS!A5:L5"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Super Predator — The Last Hunt",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Dossier distinct de Mr. Black. Référence de tenue et arsenal à verrouiller ; aucun ajout par simple renommage.",
+      "source": "02_PERSONNAGES!A201:V201 / 03_MANQUANTS!A6:L6"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Predator jouable — AVP Jaguar",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Incarnation AVP Jaguar absente ; ne pas substituer Dark, Prince ou Jungle Hunter.",
+      "source": "02_PERSONNAGES!A202:V202 / 03_MANQUANTS!A7:L7"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Predator jouable — AVP Classic 2000",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Incarnation AVP Classic 2000 absente ; user-classic-2010 appartient au film Predators.",
+      "source": "02_PERSONNAGES!A203:V203 / 03_MANQUANTS!A8:L8"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Predator père — Blood Ties",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Père de Blood Ties : attribution visuelle à établir avant création ou réaffectation.",
+      "source": "02_PERSONNAGES!A204:V204 / 03_MANQUANTS!A9:L9"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Predator fils — Blood Ties",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Fils de Blood Ties : identité distincte à établir, sans fusion avec les cycles I et II.",
+      "source": "02_PERSONNAGES!A205:V205 / 03_MANQUANTS!A10:L10"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Elder — Hunting Grounds",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Elder de Hunting Grounds existe selon IllFonic ; ni Greyback du film ni Elder AVP ne certifient cette apparence.",
+      "source": "02_PERSONNAGES!A206:V206 / 03_MANQUANTS!A11:L11"
+    },
+    {
+      "domain": "Combattant",
+      "subject": "Captured — Hunting Grounds",
+      "status": "Identité ou apparence ouverte",
+      "remaining": "Le dessin anonyme capturé n’a pas de source primaire attribuée ; ni Captive comics ni Classic 2010 ne ferment ce dossier.",
+      "source": "02_PERSONNAGES!A208:V208 / 03_MANQUANTS!A13:L13"
+    },
+    {
+      "domain": "Animations combattants",
+      "subject": "Emissary PHG et bibliothèques incomplètes",
+      "status": "Kit partiel",
+      "remaining": "Produire les mouvements, attaques, réactions, intro et résultats de manche encore absents. Deux idles Emissary ne constituent pas dix plaquettes ni dix-huit actions.",
+      "source": "02_PERSONNAGES / exigences animation V54"
+    },
+    {
+      "domain": "Arène 126",
+      "subject": "Toit de l’hôpital · variante narrative",
+      "status": "Ambiance ajoutée, chapitre ouvert",
+      "remaining": "V62 fournit un triplet d’ambiance d’exposition. Le chapitre, sa route, ses personnages et ses conditions exactes restent à intégrer. Évacuation humaine très lointaine\nHélicoptère éloigné en version pré-bombardement\nVent et vapeur, horizon gardé lisible",
+      "source": "09_STAGES!A24:N24"
+    },
+    {
+      "domain": "Arène 51",
+      "subject": "Camp Golgotha — nouvelle arène 187",
+      "status": "Ambiance ajoutée, chapitre ouvert",
+      "remaining": "V62 fournit un triplet d’ambiance d’exposition. Le chapitre, sa route, ses personnages et ses conditions exactes restent à intégrer. Marines derrière un sas\nCapteur d’alarme lent\nXénomorphe derrière un vitrage distant",
+      "source": "09_STAGES!A50:N50"
+    },
+    {
+      "domain": "Arène 130",
+      "subject": "Station orbitale Classic",
+      "status": "Ambiance ajoutée, chapitre ouvert",
+      "remaining": "V62 fournit un triplet d’ambiance d’exposition. Le chapitre, sa route, ses personnages et ses conditions exactes restent à intégrer. Marine en fuite par une passerelle\nPorte d’ascenseur hors zone jouable\nLumière de quarantaine à intensité bornée",
+      "source": "09_STAGES!A51:N51"
+    },
+    {
+      "domain": "Arène 119",
+      "subject": "Gorge de la planète hostile",
+      "status": "À réaliser",
+      "remaining": "Variante de cadrage/scénario de Dek autour d’un monde existant. Thia observant depuis un abri seulement dans les chapitres alliés\nFaune extraterrestre dont l’espèce et l’échelle seront référencées\nVégétation hostile en arrière-plan sans collision compétitive",
+      "source": "09_STAGES!A54:N54"
+    },
+    {
+      "domain": "Arène 146",
+      "subject": "Sanctuaire de Primal Hunt",
+      "status": "Références insuffisantes",
+      "remaining": "Le mécanisme voisin est original. La faune existe dans le jeu, mais son apparence exacte n’est pas certifiée par une image primaire inspectée. Référencer l’artefact et les espèces avant de remplacer la végétation d’ambiance. Ne pas présenter le mécanisme original comme l’artefact canonique.",
+      "source": "10_VIE_DES_STAGES!E146:E147"
+    },
+    {
+      "domain": "Arène 155",
+      "subject": "Mega-City One",
+      "status": "Partiel",
+      "remaining": "Un Judge adulte anonyme est dessiné. Le transport anime ses stabilisateurs sur place. Étoffer la patrouille plurielle et le trajet borné du transport si l’on veut reproduire littéralement ces deux demandes.",
+      "source": "10_VIE_DES_STAGES!E98:E99"
+    },
+    {
+      "domain": "Arène 156",
+      "subject": "Terrasse du spectre jaune",
+      "status": "À référencer",
+      "remaining": "L’extracteur mécanique constitue une alternative d’ambiance. Aucun visiteur dont l’identité ou la présence est incertaine n’a été inventé. Identifier les visiteurs et le moment de leur présence avant de créer les figurants canoniques.",
+      "source": "10_VIE_DES_STAGES!E108"
+    },
+    {
+      "domain": "Arène 162",
+      "subject": "Ahab et l’Ingénieur",
+      "status": "PNG préparé, inactif",
+      "remaining": "Six dessins natifs validés. Aucun appel du scénario ne garantit encore le moment avant le boss. Brancher le chapitre et sa présence, puis valider la composition en jeu. Un résultat de manche ne remplace pas ce contexte.",
+      "source": "10_VIE_DES_STAGES!E67"
+    },
+    {
+      "domain": "Arène 168",
+      "subject": "Front de ruche",
+      "status": "Partiel",
+      "remaining": "Le classeur demande bien des Drones au plafond, pas un Warrior. Le motif de garde actuel ne représente qu’un individu. Produire et intégrer l’équipe demandée sans changer arbitrairement la caste xénomorphe.",
+      "source": "10_VIE_DES_STAGES!E86:E87"
+    },
+    {
+      "domain": "Arène 170",
+      "subject": "Gotham Blood Ties",
+      "status": "À référencer",
+      "remaining": "Le père et le fils sont les partenaires concernés. Le guetteur anonyme actuel ne prouve l’identité d’aucun des deux. Confirmer leurs apparences sur les planches originales et associer le partenaire absent du roster sélectionné.",
+      "source": "09_STAGES!F35 / 10_VIE_DES_STAGES!E97"
+    },
+    {
+      "domain": "Arène 171",
+      "subject": "Laboratoire Meta",
+      "status": "À préciser",
+      "remaining": "Le héros et son instant d’intervention ne sont pas identifiés dans les éléments consultés. Identifier une planche primaire et le personnage. Ne pas transformer le technicien anonyme en héros canonique.",
+      "source": "10_VIE_DES_STAGES!E106"
+    },
+    {
+      "domain": "Arène 178",
+      "subject": "Bloodshed",
+      "status": "Scénario absent",
+      "remaining": "L’annonceur et l’écran existent en ambiance. Leur arrêt après un incident narratif précis ne se déduit pas d’un coup reçu. Relier un incident identifié, sa progression et sa restauration à la scène.",
+      "source": "10_VIE_DES_STAGES!E131 / E133"
+    },
+    {
+      "domain": "Arène 179",
+      "subject": "The Last Hunt",
+      "status": "Scénario absent",
+      "remaining": "Boucle de diagnostic présente. Aucun objectif de campagne vérifié ne commande sa désactivation. Relier l’objectif réel, sa validation et sa restauration. Ne pas assimiler toute victoire à cet objectif.",
+      "source": "10_VIE_DES_STAGES!E136"
+    },
+    {
+      "domain": "Arène 180",
+      "subject": "Sandpiper",
+      "status": "Continuité à vérifier",
+      "remaining": "Personnel d’ambiance anonyme présent. Les captifs, leur présence et leurs alliances ne sont pas établis pour chaque chapitre. Vérifier le chapitre puis brancher sa liste de présences et masquer les doublons de combattants.",
+      "source": "10_VIE_DES_STAGES!E138"
+    },
+    {
+      "domain": "Classeur",
+      "subject": "Autres demandes du V54",
+      "status": "Non certifié",
+      "remaining": "174 dossiers et 522 événements. Les ajouts V60–V62 ne certifient pas la satisfaction littérale de toutes les demandes. Vérifier séparément identités, conditions, déclenchements et restauration. Aucun total d’images sûrement manquantes n’est déduit de cette absence de certification.",
+      "source": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx"
+    },
+    {
+      "domain": "Classeur",
+      "subject": "Adaptations des nouvelles ambiances",
+      "status": "Limites conservées",
+      "remaining": "Les sept triplets ajoutent des dessins natifs. Ils ne certifient pas des géométries 1:1, des espèces sans référence ou des visiteurs dont la continuité reste inconnue. Conserver les substitutions signalées dans AnimationsV61 et approfondir les sources avant d’attribuer une identité canonique.",
+      "source": "09_STAGES / 10_VIE_DES_STAGES"
+    },
+    {
+      "domain": "Arène 187",
+      "subject": "Deuxième dossier Golgotha ST103",
+      "status": "Triplet distinct ouvert",
+      "remaining": "Les dossiers ST046 et ST103 pointent vers le nouveau décor, mais les trois événements distincts ST103 ne sont pas produits par la réutilisation du premier triplet.",
+      "source": "09_STAGES!A107:N107 / 10_VIE_DES_STAGES!E311:E313"
+    },
+    {
+      "domain": "Arène 126",
+      "subject": "Deuxième dossier toit ST167",
+      "status": "Triplet distinct ouvert",
+      "remaining": "Les trois nouvelles ambiances couvrent une adaptation du premier dossier ST020. Les trois exigences du dossier ST167 ne sont ni effacées ni certifiées par ce réemploi de décor.",
+      "source": "09_STAGES!A171:N171 / 10_VIE_DES_STAGES!E503:E505"
+    },
+    {
+      "domain": "Arène 130",
+      "subject": "Deuxième dossier station ST170",
+      "status": "Triplet distinct ouvert",
+      "remaining": "Les trois nouvelles ambiances couvrent une adaptation du premier dossier ST047. Les trois exigences du dossier ST170 restent séparées et non livrées par ce lot.",
+      "source": "09_STAGES!A174:N174 / 10_VIE_DES_STAGES!E512:E514"
+    },
+    {
+      "domain": "Masques et têtes",
+      "subject": "Fidélité des surfaces et animation faciale",
+      "status": "Recréation limitée",
+      "remaining": "Affiner les microgravures et les surfaces cachées à partir de vues primaires supplémentaires. Les quatre têtes natives ne certifient pas des expressions ou animations faciales complètes.",
+      "source": "BIOMASQUES-V62.md / reçus OpenAI V62"
+    }
+  ],
+  "proofFiles": [
+    {
+      "path": "docs/v62-workbook-roster-audit.json",
+      "sha256": "0d65d960ea1d483aca96f076e794aa2de017d97ce7bab704e1f32be659d4ae68"
+    },
+    {
+      "path": "docs/v62-generation/emissary-phg-art.json",
+      "sha256": "dd739decedd8d4e5128584f1cd112852bcbfa8cd784514886ce5a3cba0aeb656"
+    },
+    {
+      "path": "docs/v62-emissary-runtime-qa.json",
+      "sha256": "e8beebd92e20f20947e481fb23a8050aad16f200baeda251ad51a8fd5febe94b"
+    },
+    {
+      "path": "docs/art/v62/biomask-generation-receipts.json",
+      "sha256": "5fcc905e0a7a87b22eb1f1a0b64ef909832dd34060c0e9f819dc0f41f922b0b9"
+    },
+    {
+      "path": "docs/v62-head-native-measurements.json",
+      "sha256": "ec1b0dcc10842387a911f29aa89a82a85bf9262e34f44403d75f50bf9986d868"
+    },
+    {
+      "path": "docs/v62-head-composition-qa.json",
+      "sha256": "e9f6a4289e64ebfdf6f8a4f88bf2a7a286199508d6298060ff22360d19753a20"
+    },
+    {
+      "path": "docs/v62-stage-native-assets-qa.json",
+      "sha256": "6d101f2afa6d9bf76d13bf7edfce875446dbf5a497c80c87dda447a8a65e82ea"
+    },
+    {
+      "path": "docs/v62-golgotha-reconciliation.json",
+      "sha256": "7e890326c4e0fdbdd67d9254943745ec69db47b42b10f124fb138912f32fc1ab"
+    },
+    {
+      "path": "work-local/v62/qa/stages/renderer/report.json",
+      "sha256": "30f4268a7375d09444c83b73a8b0a4498280a13d7710a169b1d99cde164cf833"
+    },
+    {
+      "path": "docs/v62-arena-126-avpr-2007-hospital-roof-renderer-qa.json",
+      "sha256": "e9cff191b1f5c6345fc86c4d8fedc44cc4d230ccbb94e9ba8d597a2439c493bf"
+    },
+    {
+      "path": "docs/v62-arena-130-avp-classic-2000-space-station-renderer-qa.json",
+      "sha256": "d3224690d4c89253f8c46b31e50ecbb8099acfc17f39ab7ec250a9366c08e332"
+    },
+    {
+      "path": "docs/v62-arena-187-golgotha-uscm-airlock-renderer-qa.json",
+      "sha256": "f394f40e63ec4b03e0047ea84cd577c95290fea7631bc51e2b0b7d3415d93f43"
+    },
+    {
+      "path": "docs/v62-biomask-browser-qa.json",
+      "sha256": "48444ee49bdc553289948a8bb0bee3c9cd9a80ca5e7cfa6d74a5e3288f505937"
+    },
+    {
+      "path": "docs/v62-stage-delivery.json",
+      "sha256": "2ac13dce0d7388e058f14289b2654db32591ab01f3f96fe5cbbe365edc1e34ac"
+    },
+    {
+      "path": "docs/v62-stage-application-qa.json",
+      "sha256": "d08e12bdd86a69949e714d1fcd61a24a6144d99952be925517db8fd503eebfde"
+    },
+    {
+      "path": "docs/v62-stage-composition-visual-review.json",
+      "sha256": "2dd55c1578c5c5cc544fb4f7d1c5e5392c54672f44b3cc412043265a1d478917"
+    }
+  ],
+  "publication": null,
+  "scope": "Final asset counts and local validation only; full V54 completion and publication are not inferred."
+}

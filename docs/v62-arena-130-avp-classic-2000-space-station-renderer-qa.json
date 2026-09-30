@@ -1,0 +1,4527 @@
+{
+  "result": "PASS",
+  "arenaId": "arena-130-avp-classic-2000-space-station",
+  "checkedAt": "2026-09-30T20:51:19.652Z",
+  "compositionDigest": "480d66142d5c87a36e149dd1bf65384ee386fb8327c113113d713811392ca5f2",
+  "coreHashes": {
+    "app/game/pitArenaRendering.ts": "63cb44c2adfcdd8503a526208ed7c8266bc760298676488ee907a607b059b981",
+    "app/game/pitArenaProduction.ts": "806c5960e292d5ea380d4c24f2efb41849db667b81828382e555432b83c7e435",
+    "app/game/pitStageStoryV61.ts": "248e5b985d966ac36b89b4c0516e8736f5e620f7643dbdd91c3d2b8d27b31fff",
+    "app/game/pitStageStoryDirectorV61.ts": "ddd5df9bbf47d8805d80535becc2407142cf3ec5cafd7ea89e3d56f14edaba56",
+    "app/game/pitStageStoryRenderingV61.ts": "296d23eed9ee6534952a081a9279385850bc02061ba9655111b7bf30578ae865",
+    "app/game/pitStageLifeV60.ts": "11ff4ac99acc14875a920feb5a6dea764d0f8e74bcfa002aff88cdf7bf2131e7",
+    "app/game/pitStageLifeDirectorV60.ts": "1dc0c8ac48296a2c00ebf39f3a72dd08dd9103cea08abd9df2275c5436970c83",
+    "app/game/pitStageLifeRenderingV60.ts": "73092ee80ea2065733d56b49fa93350df34a57032935886ef628a5d064dc40de",
+    "app/game/pitStageLifeRenderingV61.ts": "e8b5ea2d1bef5b2b2ff08872b9bca4f1d6d9b4ddd8a2eb37f8e2de600b4fdb27",
+    "app/game/pitCombatBitmapArt.ts": "b5a450c0b83defc1218917654198889aa8972ae3afef0b53617bd1828b59807f",
+    "app/game/pitStageLifeV62.ts": "7e2e7e71dab7112ec61704acd43e425f1b0e183d447dc4e8d257a5d0e842ce8e",
+    "scripts/verify-pit-stage-composition-v62.mjs": "ec5549c8d6b9c498503702cb58043200c561c1dcb36570f140c470ce28b834a2",
+    "docs/v61-game-camera-sample.json": "0d1234d974ba049293853899bc5bdcc6f65e9c039ea2535c07fb6d89d3d0152e"
+  },
+  "inputFileHashes": {
+    "art-source/v33/pit-arenas/production-manifest.json": "210d23939163a415d36769163409bdc5c96828b64d27094dc7b998199656287d",
+    "app/game/data/pitStageLifeV62.json": "97c5eb95eef48d63b47211fd06096e9665618bf04d2ea523bcc6d0005696c272",
+    "app/game/data/pitStageStoryV61.json": "7c099192d1d15ff49f09be201ff8aeec03e83c48a46fee4de1b8fca2597ac7aa",
+    "app/game/data/pitStageLifeV60.json": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+  },
+  "sourceInput": {
+    "production": {
+      "number": 130,
+      "catalogueId": "arena-130-avp-classic-2000-space-station",
+      "assetDirectory": "/game/sprites/v43/pit-arenas/arena-130-avp-classic-2000-space-station",
+      "name": "Nœud de station — Classic 2000",
+      "setting": "Station spatiale, lieu-type confirmé ; architecture exacte non documentée.",
+      "wave": "screen-reference-games",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v43-screen-reference-shared-library-compositions",
+      "screenReference": {
+        "kind": "game",
+        "workId": "avp-classic-2000",
+        "fidelityClaim": "adaptation-2d-reference-game-not-certified-1to1",
+        "referenceStatus": "official-setting-type-confirmed-exact-level-unverified-2d-adaptation"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur adaptée du lieu référencé",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Profondeur OpenAI adaptée au lieu de référence",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-130-avp-classic-2000-space-station/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-130-avp-classic-2000-space-station/receipt-p0-depth.json",
+                    "sha256": "c3ca5ec0deada9b84545f5face57876511b8622b3af2a0f3bb3077cc9c7513c8",
+                    "width": 1536,
+                    "height": 1024,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1536,
+                      "height": 1024
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-130-avp-classic-2000-space-station/review-p0-depth.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-rail-conduit",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.3,
+              "placements": [
+                {
+                  "x": -20,
+                  "y": 8,
+                  "width": 1000,
+                  "height": 100
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p1-rail-conduit.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p1-rail-conduit.json",
+                    "sha256": "5acb60872bfa1e12a806289dc0db20724226388cf52feb187119071c936cee06",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 17,
+                      "y": 8,
+                      "width": 2139,
+                      "height": 674
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p1-rail-conduit.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p1-rail-conduit"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.5,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 12,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                },
+                {
+                  "x": 842,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-metal-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 760,
+                  "height": 40
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 355,
+                "width": 2172,
+                "height": 41
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-floor.json",
+                    "sha256": "b511bb879eff59392bc21080e581c09893cdc20900eb2aa15874ef3843ccfc79",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 248,
+                      "width": 2172,
+                      "height": 309
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-floor"
+            },
+            {
+              "id": "p4-metal-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 442,
+                  "width": 1280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 29,
+                "y": 304,
+                "width": 2117,
+                "height": 111
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-fascia.json",
+                    "sha256": "ddd0540ec55d93960303b3138354b5508bee1013f86ab7ccc2e6e545b7db404d",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 190,
+                      "width": 2122,
+                      "height": 379
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-130-avp-classic-2000-space-station",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v43-arena-130-avp-classic-2000-space-station-renderer-qa.json",
+        "applicationEvidence": "docs/v43-arena-application-compiled-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v43-arena-composition-visual-review.json",
+        "digest": "2660ea38937414aee1362fa5408aa8baf0d575f58ffa51f119840b1bf46ded27"
+      },
+      "v62FloorCorrection": {
+        "reason": "The separate fascia ended above the lower canvas edge at zoom0.8. Contact strip stays unchanged; only the authored fascia height grows from150 to180.",
+        "evidence": "docs/v62-arena-130-avp-classic-2000-space-station-renderer-qa.json",
+        "pngsUnchanged": true
+      }
+    },
+    "life": {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E143",
+          "10_VIE_DES_STAGES!E144",
+          "10_VIE_DES_STAGES!E145"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié."
+      },
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Marine anonyme — traversée de passerelle",
+          "fps": 2,
+          "idleVisibility": "hidden",
+          "travelX": [
+            447,
+            524
+          ],
+          "clipWorld": {
+            "x": 437,
+            "y": 276,
+            "width": 99,
+            "height": 47
+          },
+          "opacity": 0.75,
+          "placement": {
+            "x": 447,
+            "bottom": 318,
+            "height": 27,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "sha256": "29d448c1e45d4afad334de0a44b2d536f53ae4becbbdbf2cd6c420b9350bfd79",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                480
+              ],
+              "alphaBounds": [
+                43,
+                30,
+                394,
+                450
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                479
+              ],
+              "alphaBounds": [
+                24,
+                28,
+                435,
+                451
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                267,
+                494
+              ],
+              "alphaBounds": [
+                17,
+                24,
+                397,
+                470
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                283,
+                480
+              ],
+              "alphaBounds": [
+                45,
+                23,
+                419,
+                457
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                483
+              ],
+              "alphaBounds": [
+                62,
+                25,
+                353,
+                458
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                274,
+                481
+              ],
+              "alphaBounds": [
+                19,
+                25,
+                429,
+                456
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ascenseur de service — cycle de porte",
+          "fps": 2,
+          "placement": {
+            "x": 853,
+            "bottom": 236,
+            "height": 108,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "sha256": "7c88338eedccbc433248dafa28a77332af643ba29f32afc37eda313a5710d097",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                465
+              ],
+              "alphaBounds": [
+                73,
+                49,
+                406,
+                416
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                465
+              ],
+              "alphaBounds": [
+                53,
+                49,
+                406,
+                416
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                236,
+                466
+              ],
+              "alphaBounds": [
+                34,
+                49,
+                404,
+                417
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                445
+              ],
+              "alphaBounds": [
+                73,
+                31,
+                406,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                446
+              ],
+              "alphaBounds": [
+                53,
+                31,
+                407,
+                415
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                237,
+                446
+              ],
+              "alphaBounds": [
+                35,
+                30,
+                404,
+                416
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Quarantaine — indicateur mécanique lent",
+          "fps": 2,
+          "placement": {
+            "x": 809,
+            "bottom": 175,
+            "height": 40,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                300,
+                482
+              ],
+              "alphaBounds": [
+                191,
+                16,
+                221,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                482
+              ],
+              "alphaBounds": [
+                147,
+                16,
+                219,
+                466
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                212,
+                482
+              ],
+              "alphaBounds": [
+                102,
+                16,
+                219,
+                466
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                299.5,
+                482
+              ],
+              "alphaBounds": [
+                191,
+                16,
+                223,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                482
+              ],
+              "alphaBounds": [
+                146,
+                15,
+                220,
+                467
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                212,
+                482
+              ],
+              "alphaBounds": [
+                102,
+                16,
+                219,
+                466
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "story": null,
+    "base": null
+  },
+  "surface": "isolated-actual-renderer-with-native-PNGs",
+  "applicationFlowVerified": false,
+  "narrativeCallerVerified": false,
+  "visualCompositionAccepted": false,
+  "nativeImageProof": [
+    {
+      "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+      "sha256": "29d448c1e45d4afad334de0a44b2d536f53ae4becbbdbf2cd6c420b9350bfd79",
+      "bytes": 2012218,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.7444820404052734,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            43,
+            30,
+            394,
+            450
+          ],
+          "contentSha256": "790c94408213ba026f78d468e5d832ce4cb76982e9e0f2b7fabc49c4be2635c7",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            24,
+            28,
+            435,
+            451
+          ],
+          "contentSha256": "690d1aba36449c8061e808db3ac1ee23e0dc1299b3fb8fef3844667638a87990",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            17,
+            24,
+            397,
+            470
+          ],
+          "contentSha256": "72133e74ac9a5dcebec6849daa4362a57f0ffb7014066e762182a940727939ae",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            45,
+            23,
+            419,
+            457
+          ],
+          "contentSha256": "c381313f0fd9f14f6dd5aeeed0694e68bacacd7f4ffef44b4006b038515038d4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            62,
+            25,
+            353,
+            458
+          ],
+          "contentSha256": "6d6994b68aa5ea74601242a95233c866566b9418c8254f8dbddbbe605f3c036f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            19,
+            25,
+            429,
+            456
+          ],
+          "contentSha256": "b78b23cecbc4328e8c79c7d18d1f2306da0225ff4af092c04a70f58a93b70e99",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-130-avp-classic-2000-space-station-ambient-01.json"
+    },
+    {
+      "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+      "sha256": "7c88338eedccbc433248dafa28a77332af643ba29f32afc37eda313a5710d097",
+      "bytes": 2201987,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.38817405700683594,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            73,
+            49,
+            406,
+            416
+          ],
+          "contentSha256": "1cc8638084b30e4562b8d8e08232b00862507d6cbb22e0b5498d3c6c14ff82e4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            49,
+            406,
+            416
+          ],
+          "contentSha256": "a207b69ee4777d7c1fde6e193000e5ea6eded0a7d75c6eb5a6b58bb943497f0f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            34,
+            49,
+            404,
+            417
+          ],
+          "contentSha256": "931f81736e2f5e552cd9945c232ec844848a9cd88d8a8df5f771418eeeb5c24f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            73,
+            31,
+            406,
+            414
+          ],
+          "contentSha256": "dee6bd86ed37756ef8357a28e10c8e96e9f7d0c72c23ff2d38bc86c181653447",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            53,
+            31,
+            407,
+            415
+          ],
+          "contentSha256": "680c82eb5d0a9698cff7bd70f49715183a696454a50fb96136d96fdb9bf52955",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            35,
+            30,
+            404,
+            416
+          ],
+          "contentSha256": "9e80fcf71d435da0afabc807dcb5e0a47f2cfbebd55fbdb80aecf9589f2b2a95",
+          "borderPixels": 0,
+          "borderMaxAlpha": 0,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-130-avp-classic-2000-space-station-ambient-02.json"
+    },
+    {
+      "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+      "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+      "bytes": 2137072,
+      "width": 1536,
+      "height": 1024,
+      "alphaThreshold": 2,
+      "transparentFraction": 0.6238880157470703,
+      "nativeDrawings": 6,
+      "cells": [
+        {
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            16,
+            221,
+            466
+          ],
+          "contentSha256": "fbbeebc8a24e24640d1e14f91c2abc382e5d35f6e500ee2e1e3da0cb1fc6a27f",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 1,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            147,
+            16,
+            219,
+            466
+          ],
+          "contentSha256": "f8ade95c06243bc60a629cecc4f2101c4ac3ae985079c2d9ecc18935eba02c55",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 2,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            16,
+            219,
+            466
+          ],
+          "contentSha256": "7677978c6411c5dbcce481f89a9f148ff29324e35c8db39397e3ce67708d3420",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 3,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            191,
+            16,
+            223,
+            466
+          ],
+          "contentSha256": "63d3fe1b9aca1f2191812434aa28a91abd0c2179e2e29baf8e446ca1fb50cac4",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 4,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            146,
+            15,
+            220,
+            467
+          ],
+          "contentSha256": "796d0a881ff3d390678d2d03a6d738fc76a67242796b96f876dbf311aff1e569",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        },
+        {
+          "index": 5,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "alphaBounds": [
+            102,
+            16,
+            219,
+            466
+          ],
+          "contentSha256": "103e254e158d797ccd3cf36739baf6b787dbc26d3fed890032315c29a75d7ec2",
+          "borderPixels": 0,
+          "borderMaxAlpha": 1,
+          "borderSolidPixels": 0
+        }
+      ],
+      "receiptFile": "docs\\v62-generation\\arena-130-avp-classic-2000-space-station-ambient-03.json"
+    }
+  ],
+  "loaded": {
+    "independentKit": true,
+    "images": 10,
+    "expectedImages": 10,
+    "failed": [],
+    "fighterFailures": [],
+    "hasV62Ambient": true,
+    "hasV61Story": false
+  },
+  "scenarios": [
+    {
+      "name": "center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            871.6175000000001,
+            235.235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            826.6275,
+            172.8625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            871.6175000000001,
+            235.235
+          ],
+          "pivot": [
+            871.6175000000001,
+            235.235
+          ],
+          "visibleBounds": [
+            827.8337304687501,
+            145.510625,
+            87.56753906249999,
+            89.724375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            826.6275,
+            172.8625
+          ],
+          "pivot": [
+            826.6275,
+            172.8625
+          ],
+          "visibleBounds": [
+            817.9202734375001,
+            135.637109375,
+            17.6541015625,
+            37.225390624999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            851.1675,
+            235.235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            806.1775,
+            172.8625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            851.1675,
+            235.235
+          ],
+          "pivot": [
+            851.1675,
+            235.235
+          ],
+          "visibleBounds": [
+            807.3837304687501,
+            145.510625,
+            87.56753906249999,
+            89.724375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            806.1775,
+            172.8625
+          ],
+          "pivot": [
+            806.1775,
+            172.8625
+          ],
+          "visibleBounds": [
+            797.4702734375,
+            135.637109375,
+            17.6541015625,
+            37.225390624999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            849.27,
+            236.33999999999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            805.71,
+            175.95
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            849.27,
+            236.33999999999997
+          ],
+          "pivot": [
+            849.27,
+            236.33999999999997
+          ],
+          "visibleBounds": [
+            806.877890625,
+            149.46749999999997,
+            84.78421875000001,
+            86.8725
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            805.71,
+            175.95
+          ],
+          "pivot": [
+            805.71,
+            175.95
+          ],
+          "visibleBounds": [
+            797.27953125,
+            139.9078125,
+            17.09296875,
+            36.042187500000004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            863.2575,
+            234.80812499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            818.0475,
+            172.13062499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            863.2575,
+            234.80812499999996
+          ],
+          "pivot": [
+            863.2575,
+            234.80812499999996
+          ],
+          "visibleBounds": [
+            819.25962890625,
+            144.64499999999995,
+            87.99574218750001,
+            90.16312500000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            818.0475,
+            172.13062499999995
+          ],
+          "pivot": [
+            818.0475,
+            172.13062499999995
+          ],
+          "visibleBounds": [
+            809.2976953125,
+            134.72320312499997,
+            17.7404296875,
+            37.407421875000004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            815.7,
+            239.4
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            776.1,
+            184.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            815.7,
+            239.4
+          ],
+          "pivot": [
+            815.7,
+            239.4
+          ],
+          "visibleBounds": [
+            777.16171875,
+            160.425,
+            77.07656250000001,
+            78.97500000000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            776.1,
+            184.5
+          ],
+          "pivot": [
+            776.1,
+            184.5
+          ],
+          "visibleBounds": [
+            768.4359375,
+            151.734375,
+            15.5390625,
+            32.765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            864.0070497449999,
+            230.263809
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            864.0070497449999,
+            230.263809
+          ],
+          "pivot": [
+            864.0070497449999,
+            230.26380900000004
+          ],
+          "visibleBounds": [
+            819.9263213465624,
+            139.93088775,
+            88.161456796875,
+            90.33292125000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "pivot": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "visibleBounds": [
+            809.945627323125,
+            129.99040603124996,
+            17.773838671875,
+            37.477867968750004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-start",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            447,
+            318
+          ],
+          "visible": true,
+          "travelX": 447,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            447,
+            318
+          ],
+          "pivot": [
+            447,
+            318
+          ],
+          "visibleBounds": [
+            434.712890625,
+            294.26953125,
+            20.77734375,
+            23.73046875
+          ],
+          "expectedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "observedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-end",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 5,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            524,
+            318
+          ],
+          "visible": true,
+          "travelX": 524,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 5,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            524,
+            318
+          ],
+          "pivot": [
+            524,
+            318
+          ],
+          "visibleBounds": [
+            510.552734375,
+            293.953125,
+            22.623046875,
+            24.046875
+          ],
+          "expectedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "observedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-center",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            485.7150837988827,
+            318
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            485.7150837988827,
+            318
+          ],
+          "pivot": [
+            485.7150837988827,
+            318
+          ],
+          "visibleBounds": [
+            473.1643025488827,
+            293.900390625,
+            22.095703125,
+            24.099609375
+          ],
+          "expectedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "observedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-left-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            496.0686731843575,
+            319.08
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            871.6175000000001,
+            235.235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            826.6275,
+            172.8625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            496.0686731843575,
+            319.08
+          ],
+          "pivot": [
+            496.0686731843575,
+            319.08
+          ],
+          "visibleBounds": [
+            483.23549935623254,
+            294.4381494140625,
+            22.5928564453125,
+            24.641850585937497
+          ],
+          "expectedClip": [
+            446.2575,
+            276.135,
+            101.22749999999999,
+            48.0575
+          ],
+          "observedClip": [
+            446.2575,
+            276.135,
+            101.22749999999999,
+            48.0575
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            871.6175000000001,
+            235.235
+          ],
+          "pivot": [
+            871.6175000000001,
+            235.235
+          ],
+          "visibleBounds": [
+            827.8337304687501,
+            145.510625,
+            87.56753906249999,
+            89.724375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            826.6275,
+            172.8625
+          ],
+          "pivot": [
+            826.6275,
+            172.8625
+          ],
+          "visibleBounds": [
+            817.9202734375001,
+            135.637109375,
+            17.6541015625,
+            37.225390624999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-right-corner",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 502,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            475.61867318435753,
+            319.08
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            851.1675,
+            235.235
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            806.1775,
+            172.8625
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            475.61867318435753,
+            319.08
+          ],
+          "pivot": [
+            475.61867318435753,
+            319.08
+          ],
+          "visibleBounds": [
+            462.78549935623255,
+            294.4381494140625,
+            22.5928564453125,
+            24.641850585937497
+          ],
+          "expectedClip": [
+            425.8075,
+            276.135,
+            101.22749999999999,
+            48.0575
+          ],
+          "observedClip": [
+            425.8075,
+            276.135,
+            101.22749999999999,
+            48.0575
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            851.1675,
+            235.235
+          ],
+          "pivot": [
+            851.1675,
+            235.235
+          ],
+          "visibleBounds": [
+            807.3837304687501,
+            145.510625,
+            87.56753906249999,
+            89.724375
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            806.1775,
+            172.8625
+          ],
+          "pivot": [
+            806.1775,
+            172.8625
+          ],
+          "visibleBounds": [
+            797.4702734375,
+            135.637109375,
+            17.6541015625,
+            37.225390624999996
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-wide",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 398,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            485.65793296089385,
+            317.52
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            849.27,
+            236.33999999999997
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            805.71,
+            175.95
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            485.65793296089385,
+            317.52
+          ],
+          "pivot": [
+            485.65793296089385,
+            317.52
+          ],
+          "visibleBounds": [
+            473.23265952339386,
+            293.66138671875,
+            21.87474609375,
+            23.85861328125
+          ],
+          "expectedClip": [
+            437.43,
+            275.94,
+            98.01,
+            46.53
+          ],
+          "observedClip": [
+            437.43,
+            275.94,
+            98.01,
+            46.53
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            849.27,
+            236.33999999999997
+          ],
+          "pivot": [
+            849.27,
+            236.33999999999997
+          ],
+          "visibleBounds": [
+            806.877890625,
+            149.46749999999997,
+            84.78421875000001,
+            86.8725
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            805.71,
+            175.95
+          ],
+          "pivot": [
+            805.71,
+            175.95
+          ],
+          "visibleBounds": [
+            797.27953125,
+            139.9078125,
+            17.09296875,
+            36.042187500000004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-close",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 510.25,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            485.872248603352,
+            319.06312499999996
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            863.2575,
+            234.80812499999996
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            818.0475,
+            172.13062499999995
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            485.872248603352,
+            319.06312499999996
+          ],
+          "pivot": [
+            485.872248603352,
+            319.06312499999996
+          ],
+          "visibleBounds": [
+            472.976320868977,
+            294.3007763671875,
+            22.703334960937504,
+            24.762348632812504
+          ],
+          "expectedClip": [
+            435.8175,
+            275.908125,
+            101.72250000000001,
+            48.292500000000004
+          ],
+          "observedClip": [
+            435.8175,
+            275.908125,
+            101.72250000000001,
+            48.292500000000004
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            863.2575,
+            234.80812499999996
+          ],
+          "pivot": [
+            863.2575,
+            234.80812499999996
+          ],
+          "visibleBounds": [
+            819.25962890625,
+            144.64499999999995,
+            87.99574218750001,
+            90.16312500000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            818.0475,
+            172.13062499999995
+          ],
+          "pivot": [
+            818.0475,
+            172.13062499999995
+          ],
+          "visibleBounds": [
+            809.2976953125,
+            134.72320312499997,
+            17.7404296875,
+            37.407421875000004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-reduced-motion",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 414,
+      "floorCoversScreen": true,
+      "reducedMotion": true,
+      "lifeActors": 2,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": false,
+          "attachment": null,
+          "visible": false,
+          "travelX": null,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            815.7,
+            239.4
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": -1,
+          "occurrence": -1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            776.1,
+            184.5
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": false,
+          "drawCount": 0,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            815.7,
+            239.4
+          ],
+          "pivot": [
+            815.7,
+            239.4
+          ],
+          "visibleBounds": [
+            777.16171875,
+            160.425,
+            77.07656250000001,
+            78.97500000000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            776.1,
+            184.5
+          ],
+          "pivot": [
+            776.1,
+            184.5
+          ],
+          "visibleBounds": [
+            768.4359375,
+            151.734375,
+            15.5390625,
+            32.765625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-high-contrast",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 430,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            485.7150837988827,
+            318
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            853,
+            236
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            809,
+            175
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            485.7150837988827,
+            318
+          ],
+          "pivot": [
+            485.7150837988827,
+            318
+          ],
+          "visibleBounds": [
+            473.1643025488827,
+            293.900390625,
+            22.095703125,
+            24.099609375
+          ],
+          "expectedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "observedClip": [
+            437,
+            276,
+            99,
+            47
+          ],
+          "clipCorrect": true,
+          "alpha": 0.24,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            853,
+            236
+          ],
+          "pivot": [
+            853,
+            236
+          ],
+          "visibleBounds": [
+            810.1796875,
+            148.25,
+            85.640625,
+            87.75
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            809,
+            175
+          ],
+          "pivot": [
+            809,
+            175
+          ],
+          "visibleBounds": [
+            800.484375,
+            138.59375,
+            17.265625,
+            36.40625
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.32,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    },
+    {
+      "name": "travel-ambient-01-actual-game-camera",
+      "planes": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "missing": [],
+      "fighters": [
+        true,
+        true
+      ],
+      "unchangedState": true,
+      "unchangedCamera": true,
+      "groundScreenY": 378.0315999999999,
+      "floorCoversScreen": true,
+      "reducedMotion": false,
+      "lifeActors": 3,
+      "lifeEvents": [
+        {
+          "eventId": "ambient-01",
+          "nativeFrame": 3,
+          "active": true,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            485.9111020355028,
+            314.677479
+          ],
+          "visible": true,
+          "travelX": 485.7150837988827,
+          "clipped": true
+        },
+        {
+          "eventId": "ambient-02",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            864.0070497449999,
+            230.263809
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        },
+        {
+          "eventId": "ambient-03",
+          "nativeFrame": 0,
+          "active": false,
+          "cycle": 0,
+          "occurrence": 1,
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "pass": "P1",
+          "drawn": true,
+          "attachment": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "visible": true,
+          "travelX": null,
+          "clipped": false
+        }
+      ],
+      "storyEvents": [],
+      "replacedAmbientIds": [],
+      "attachments": [
+        {
+          "kind": "ambient",
+          "eventId": "ambient-01",
+          "drawn": true,
+          "nativeFrame": 3,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            485.9111020355028,
+            314.677479
+          ],
+          "pivot": [
+            485.9111020355028,
+            314.677479
+          ],
+          "visibleBounds": [
+            472.990888539409,
+            289.86849762304684,
+            22.746090146484377,
+            24.808981376953128
+          ],
+          "expectedClip": [
+            435.76208974499997,
+            271.441209,
+            101.91406500000001,
+            48.383445
+          ],
+          "observedClip": [
+            435.76208974499997,
+            271.441209,
+            101.91406500000001,
+            48.383445
+          ],
+          "clipCorrect": true,
+          "alpha": 0.6900000000000001,
+          "exactCell": true,
+          "error": 0
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-02",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            864.0070497449999,
+            230.263809
+          ],
+          "pivot": [
+            864.0070497449999,
+            230.26380900000004
+          ],
+          "visibleBounds": [
+            819.9263213465624,
+            139.93088775,
+            88.161456796875,
+            90.33292125000001
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 2.842170943040401e-14
+        },
+        {
+          "kind": "ambient",
+          "eventId": "ambient-03",
+          "drawn": true,
+          "nativeFrame": 0,
+          "drawCount": 1,
+          "pass": "P1",
+          "attachment": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "pivot": [
+            818.711909745,
+            167.46827399999998
+          ],
+          "visibleBounds": [
+            809.945627323125,
+            129.99040603124996,
+            17.773838671875,
+            37.477867968750004
+          ],
+          "expectedClip": null,
+          "observedClip": null,
+          "clipCorrect": true,
+          "alpha": 0.92,
+          "exactCell": true,
+          "error": 0
+        }
+      ],
+      "stableAttachments": true,
+      "syntheticNarrativeCue": false
+    }
+  ],
+  "nativeEventFrames": [
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 0,
+      "frame": 1018,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 1,
+      "frame": 1048,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 2,
+      "frame": 1078,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 3,
+      "frame": 1108,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 4,
+      "frame": 1138,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-03",
+      "nativeFrame": 5,
+      "frame": 1168,
+      "attachment": [
+        809,
+        175
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 0,
+      "frame": 2004,
+      "attachment": [
+        447,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 1,
+      "frame": 2034,
+      "attachment": [
+        459.9050279329609,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 2,
+      "frame": 2064,
+      "attachment": [
+        472.8100558659218,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 3,
+      "frame": 2094,
+      "attachment": [
+        485.7150837988827,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 4,
+      "frame": 2124,
+      "attachment": [
+        498.62011173184356,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-01",
+      "nativeFrame": 5,
+      "frame": 2154,
+      "attachment": [
+        511.52513966480444,
+        318
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 0,
+      "frame": 3283,
+      "attachment": [
+        853,
+        236
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 1,
+      "frame": 3313,
+      "attachment": [
+        853,
+        236
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 2,
+      "frame": 3343,
+      "attachment": [
+        853,
+        236
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 3,
+      "frame": 3373,
+      "attachment": [
+        853,
+        236
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 4,
+      "frame": 3403,
+      "attachment": [
+        853,
+        236
+      ]
+    },
+    {
+      "kind": "v62-ambient",
+      "eventId": "ambient-02",
+      "nativeFrame": 5,
+      "frame": 3433,
+      "attachment": [
+        853,
+        236
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": [],
+  "failedRequests": [],
+  "captures": [
+    {
+      "name": "center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\center.png",
+      "sha256": "eb0a9a24a8096396ec53f2bab25f247e58524def09b7168d756b80dcb052e7ea"
+    },
+    {
+      "name": "left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\left-corner.png",
+      "sha256": "63538c2fa7dae2085d6ef95c5e6623cad0b3c98b79ce23b4691c5aa4a629d129"
+    },
+    {
+      "name": "right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\right-corner.png",
+      "sha256": "249d0b5ff0a35c452cff507c1bd4a9d147353903a54057fde686713e4c20e87c"
+    },
+    {
+      "name": "wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\wide.png",
+      "sha256": "df47c3bd4f4482aaa8f351e5763e7ec44de825f286fb920afdd0c61ef95a8f5b"
+    },
+    {
+      "name": "close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\close.png",
+      "sha256": "64db484197d8881b4b1ad8a4669f8d44d5b7059e20c7e8eb99e5baa8dc742dc5"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\reduced-motion.png",
+      "sha256": "8d1d045979536eb7d77dbd1d6880287c31d2dd97be609fd57ed98c69159f106d"
+    },
+    {
+      "name": "high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\high-contrast.png",
+      "sha256": "0cc13e97c7611f84304099129bda06479b07e85d7a15a75704bf248b4d2224f4"
+    },
+    {
+      "name": "actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\actual-game-camera.png",
+      "sha256": "7e36bca3a4ec5ccb5101cbd8a1f2e477ec716049f9606a1029e473d60162fd7e"
+    },
+    {
+      "name": "ambient-ambient-03-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-0.png",
+      "sha256": "fafc13e318c642940711d6c49f70ed5702f1d4335f6c8df8a189f3ed90f70b3b"
+    },
+    {
+      "name": "ambient-ambient-03-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-1.png",
+      "sha256": "071bdd14f18b433846650fb08be71911c6f21e3d68c938dd371c06ace695d6c9"
+    },
+    {
+      "name": "ambient-ambient-03-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-2.png",
+      "sha256": "e26e4aa31bd1adb452f6e948530ab94b79a0534ede33a43faf2e3c8915ee2ba8"
+    },
+    {
+      "name": "ambient-ambient-03-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-3.png",
+      "sha256": "68adae5d5944c48971323a2efb549180edfcb3863fab55f75b068e2092c1b9bf"
+    },
+    {
+      "name": "ambient-ambient-03-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-4.png",
+      "sha256": "74ff44378704b86065a696a4df27c6741f0af42001089aeddf9fcc6afae9d6ab"
+    },
+    {
+      "name": "ambient-ambient-03-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-03-frame-5.png",
+      "sha256": "50ab46a9796e31fd056445fbae7479834f492fd6595c7b5122fb3c3ab4b50571"
+    },
+    {
+      "name": "ambient-ambient-01-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-0.png",
+      "sha256": "6ffa3dbf112b0551766de334f2c75237c2f6c0c66ccf1e971dee8d2545b53c95"
+    },
+    {
+      "name": "ambient-ambient-01-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-1.png",
+      "sha256": "f83b1b401d8b529701a64b90dc95627177bcdc64851def54de77910b779c0fad"
+    },
+    {
+      "name": "ambient-ambient-01-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-2.png",
+      "sha256": "b31cc6cd5ad559e8c2abd926aae96adca1969db701792fcd496bee833cf0d7ea"
+    },
+    {
+      "name": "ambient-ambient-01-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-3.png",
+      "sha256": "6e09043f24724ffacda2deadb111ff22a8237c2e99c853c3455a583e7c5ea206"
+    },
+    {
+      "name": "ambient-ambient-01-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-4.png",
+      "sha256": "eba38faa479d4d53cfb25a6f09f3682ca65d4cd326697cb883e23c73368fe213"
+    },
+    {
+      "name": "ambient-ambient-01-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-01-frame-5.png",
+      "sha256": "7e20b84a7cbed4b36b674ec628e9ad36f726fbad09cf76991069027bbe1c7438"
+    },
+    {
+      "name": "ambient-ambient-02-frame-0",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-0.png",
+      "sha256": "25118b84e389ea9b40ec98950f0cc0040cefd6dbc1bc47b8712da79b6e43cc45"
+    },
+    {
+      "name": "ambient-ambient-02-frame-1",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-1.png",
+      "sha256": "212bb2eaedc12e2969ac1375cd1bbc27352029146ac05d6e9309ea31df50b23b"
+    },
+    {
+      "name": "ambient-ambient-02-frame-2",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-2.png",
+      "sha256": "70a5372538c9fdfb500fcf96723ab9e982d9fceb8e13e42a662e0769217108b1"
+    },
+    {
+      "name": "ambient-ambient-02-frame-3",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-3.png",
+      "sha256": "0b79c564bbd84e36dcae1c514997d6f7fea159246b02459e4ad1236c220a44f0"
+    },
+    {
+      "name": "ambient-ambient-02-frame-4",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-4.png",
+      "sha256": "d36c9d35a991228ed047be7566d86b620be5da6bcc43f676f05e98fd919a1fcc"
+    },
+    {
+      "name": "ambient-ambient-02-frame-5",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\ambient-ambient-02-frame-5.png",
+      "sha256": "ae626aca6de249b47870f4c2ff85468d3b2eac9621cf061f6529bbaeb520713e"
+    },
+    {
+      "name": "travel-ambient-01-start",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-start.png",
+      "sha256": "6ffa3dbf112b0551766de334f2c75237c2f6c0c66ccf1e971dee8d2545b53c95"
+    },
+    {
+      "name": "travel-ambient-01-end",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-end.png",
+      "sha256": "f6ea55078c3c8b4c9feda30b7b59554735f1efa654e1bcbde4e4aca65948fc76"
+    },
+    {
+      "name": "travel-ambient-01-center",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-center.png",
+      "sha256": "ed4d94d61d527fdbf288ff47dc780baaf691a4e7bea7183bea478fe08c84bf5a"
+    },
+    {
+      "name": "travel-ambient-01-left-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-left-corner.png",
+      "sha256": "7db6c982c44b47262d9204e245760a8f52a57feeb592a65fc23714d8c982f0e6"
+    },
+    {
+      "name": "travel-ambient-01-right-corner",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-right-corner.png",
+      "sha256": "daced5449687591a3c55fcab7ff8dba46b018adcd8f84d3af348a945aea321ae"
+    },
+    {
+      "name": "travel-ambient-01-wide",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-wide.png",
+      "sha256": "c3d6b6515b98f32e5ecbb4fb90855ddad6221c803d64fc301226c1fb7af221ba"
+    },
+    {
+      "name": "travel-ambient-01-close",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-close.png",
+      "sha256": "56abcea118f04525d4ff3206a9756f48f5e57dcfc5003026bc85a7750e191dff"
+    },
+    {
+      "name": "travel-ambient-01-reduced-motion",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-reduced-motion.png",
+      "sha256": "8d1d045979536eb7d77dbd1d6880287c31d2dd97be609fd57ed98c69159f106d"
+    },
+    {
+      "name": "travel-ambient-01-high-contrast",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-high-contrast.png",
+      "sha256": "76f7ba0cead6c9f3fe4989f07186cd8d7e598334c6bdc0059e5a861bd17d97a9"
+    },
+    {
+      "name": "travel-ambient-01-actual-game-camera",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\travel-ambient-01-actual-game-camera.png",
+      "sha256": "05d53ee053c7943e2da57f21c742178f33c6e288e3dd06e7690275741f0f07c2"
+    },
+    {
+      "name": "mobile-canvas",
+      "path": "C:\\Users\\chuck\\Documents\\Codex\\2026-08-31\\pour-mon-jeux-yautja-la-longue\\work-local\\v62\\qa\\stages\\renderer\\arena-130-avp-classic-2000-space-station\\mobile-canvas.png",
+      "sha256": "4f2c1f8212d3d8e1c835019862453f61a30c09fe35687f11df5a0f898dd93f7d"
+    }
+  ],
+  "limit": "Fixture combat/result clocks and explicitly marked synthetic narrative cues test composition only. Manual visual review, real UI triggers, story callers and publication remain separate."
+}

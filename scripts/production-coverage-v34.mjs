@@ -1,12 +1,23 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+import { buildSync } from 'esbuild';
+
+/** Resolve the real TypeScript registry, including imported native manifests. */
+export function readProductionSpriteRegistry() {
+  const built = buildSync({ entryPoints: ['app/game/pitSpriteSheetRegistry.ts'], bundle: true,
+    write: false, platform: 'node', format: 'cjs', logLevel: 'silent' });
+  const evaluated = { exports: {} };
+  new Function('require', 'module', 'exports', built.outputFiles[0].text)(createRequire(import.meta.url), evaluated, evaluated.exports);
+  const registry = evaluated.exports.PIT_SPRITE_SHEET_REGISTRY;
+  assert(Array.isArray(registry), 'The actual runtime sprite registry must be exported.');
+  return registry;
+}
 
 // Counts describe existing evidence, never an inferred percentage of a finished game.
 export function productionCoverage(entries, stages) {
-  const registrySource = fs.readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
-  const start = registrySource.indexOf('= [');assert(start >= 0);
-  const registry = JSON.parse(registrySource.slice(start + 2).trim().replace(/;$/, ''));
+  const registry = readProductionSpriteRegistry();
   const fighters = registry.filter(fighter => fighter.atlas.clips.some(clip => clip.status === 'validated'));
   const catalogue = JSON.parse(fs.readFileSync('docs/v33-vehicles-production-manifest.json', 'utf8'));
   const vehicleIds = new Set(catalogue.entries.filter(vehicle => vehicle.assets.length).map(vehicle => vehicle.id));

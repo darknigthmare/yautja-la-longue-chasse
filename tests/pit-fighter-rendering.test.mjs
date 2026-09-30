@@ -18,12 +18,22 @@ test("PIT rig layers refer to existing registered alpha cutouts, never opaque se
     const layers = getPitFighterArtLayers(id);
     assert.equal(layers.filter((layer) => layer.id.startsWith("body-")).length, 15);
     assert.equal(new Set(layers.map((layer) => layer.id)).size, layers.length);
-    for (const layer of layers) paths.add(layer.src);
+    for (const layer of layers) {
+      paths.add(layer.src);
+      if(layer.src.includes('/v62/')) {
+        assert(layer.placement, 'native head/mask needs an explicit rig destination');
+        assert(layer.placement.width < 130 && layer.placement.height < 140);
+        const meta=await sharp(localPath(layer.src)).metadata();
+        assert(Math.abs(layer.placement.width/layer.placement.height-meta.width/meta.height)<.0001,'do not stretch native art');
+      }
+    }
   }
   for (const src of paths) {
     const meta = await sharp(localPath(src)).metadata();
-    assert.equal(meta.width, 256, src);
-    assert.equal(meta.height, 384, src);
+    if(!src.includes('/v62/')) {
+      assert.equal(meta.width, 256, src);
+      assert.equal(meta.height, 384, src);
+    }
     assert.equal(meta.hasAlpha, true, src);
     assert.ok(!src.includes("v23"), src);
   }

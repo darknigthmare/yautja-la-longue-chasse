@@ -14,9 +14,9 @@ const bundle=await build({stdin:{contents:[
 const p=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const ids=['original-arid-ermit-yautja','original-mutated-yautja','guest-amengi-female'];
 
-test('three distinct supplied profiles produce198 identities without changing first-edition progression or pretending to be canon',()=>{
-  assert.deepEqual(p.PIT_ORIGINAL_FIGHTER_IDS_V56,ids);assert.equal(p.PIT_VERSUS_FIGHTER_IDS.length,198);
-  assert.equal(new Set(p.PIT_VERSUS_FIGHTER_IDS).size,198);assert.equal(p.PIT_FIRST_EDITION_FIGHTER_IDS.length,12);
+test('three distinct supplied profiles survive the later V62 extension without changing first-edition progression or canon claims',()=>{
+  assert.deepEqual(p.PIT_ORIGINAL_FIGHTER_IDS_V56,ids);assert.equal(p.PIT_VERSUS_FIGHTER_IDS.length,199);
+  assert.equal(new Set(p.PIT_VERSUS_FIGHTER_IDS).size,199);assert.equal(p.PIT_FIRST_EDITION_FIGHTER_IDS.length,12);
   for(const id of ids){const profile=p.getPitFighterProfile(id);assert.equal(profile.id,id);assert.equal(profile.canonicalIdentityVerified,false);
     assert.equal(profile.progressionAvailable,false);assert.equal(profile.nativeAnimationClips,0);assert.equal(profile.visualStatus,'single-static-cutout');
     assert.equal(p.PIT_FIGHTERS[id].canCloak,false);assert(!p.PIT_FIRST_EDITION_FIGHTER_IDS.includes(id));
@@ -51,7 +51,7 @@ test('supplied originals and native transparent cutouts have traceable bytes, su
 
 test('three new associations use playable original exhibitions and leave the V55 source plan at195',async()=>{
   const plan=JSON.parse(await fs.readFile('docs/v55-stage-plan.json','utf8'));assert.equal(plan.associations.length,195);
-  assert.equal(p.PIT_CHARACTER_STAGE_COVERAGE.length,198);assert.equal(p.PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56.length,3);
+  assert.equal(p.PIT_CHARACTER_STAGE_COVERAGE.length,199);assert.equal(p.PIT_ORIGINAL_STAGE_ASSOCIATIONS_V56.length,3);
   for(const id of ids){const association=p.getPitCharacterStageAssociation(id);assert(association);assert(p.PIT_ARENAS[association.stageId]);
     assert.equal(association.classification,'original-exhibition');assert.equal(association.sourceStatus,'original-selected');
     assert.equal(association.exactGeometryCertified,false);assert.deepEqual(association.sourceUrls,[]);

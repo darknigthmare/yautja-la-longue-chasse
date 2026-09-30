@@ -43,12 +43,7 @@ const expectedMaskAssetByBiomaskId = {
   snake: "mask-snake",
   falconer: "mask-falconer",
 };
-const expectedRigMaskIdByBiomaskId = {
-  feral: "feral",
-  boar: "city",
-  snake: "city",
-  falconer: "berserker",
-};
+
 const shardFiles = ["masks.json", "equipment.json", "trophies.json"];
 
 async function readJson(filePath) {
@@ -390,30 +385,13 @@ async function main() {
       [],
       `${biomaskId}: exact canon mask cannot be an arbitrary generic fallback`,
     );
-    assert.ok(
-      hunterVisualsSource.includes(`${biomaskId}: "${entry.runtimeUrl}"`),
-      `${biomaskId}: hunterVisuals path differs from available manifest asset`,
-    );
-
-    const rigMaskId = expectedRigMaskIdByBiomaskId[biomaskId];
-    const rigMaskPath = path.join(
-      root,
-      "public",
-      "game",
-      "assets",
-      "v3",
-      "actors",
-      "yautja",
-      "hunter",
-      "masks",
-      "registered",
-      `${rigMaskId}.webp`,
-    );
-    const rigMetadata = await sharp(rigMaskPath).metadata();
-    assert.equal(rigMetadata.width, 256, `${biomaskId}: rig mask width`);
-    assert.equal(rigMetadata.height, 384, `${biomaskId}: rig mask height`);
-    assert.equal(rigMetadata.hasAlpha, true, `${biomaskId}: rig mask alpha`);
+    // The V14 bytes remain archival originals; V62 is now the equipped version.
+    const nativeMaskPath = path.join(root, "public", "game", "sprites", "v62", "masks", biomaskId + ".png");
+    const nativeMetadata = await sharp(nativeMaskPath).metadata();
+    assert.ok(nativeMetadata.width >= 1024 && nativeMetadata.height >= 1024);
+    assert.equal(nativeMetadata.hasAlpha, true);
   }
+
   const rigFunctionSource = hunterVisualsSource.match(
     /export function hunterMaskRigPath\([\s\S]*?\n\}/,
   )?.[0];
@@ -421,16 +399,9 @@ async function main() {
   assert.match(rigFunctionSource, /HUNTER_ASSET_ROOT_V3/);
   assert.match(rigFunctionSource, /masks\/registered/);
   assert.doesNotMatch(rigFunctionSource, /V14|THUMBNAIL|assets\/v14/);
-  for (const [biomaskId, rigMaskId] of Object.entries(
-    expectedRigMaskIdByBiomaskId,
-  )) {
-    if (biomaskId !== rigMaskId) {
-      assert.ok(
-        hunterVisualsSource.includes(`${biomaskId}: "${rigMaskId}"`),
-        `${biomaskId}: explicit aligned rig fallback missing`,
-      );
-    }
-  }
+  assert.match(rigFunctionSource, /referenceBiomaskPathV62/);
+  assert.match(hunterVisualsSource, /hunterMaskRigPlacement/);
+  assert.doesNotMatch(hunterVisualsSource, /boar: "city"|snake: "city"|falconer: "berserker"/);
   for (const [fileName, source] of rigConsumerSources) {
     assert.match(source, /\bhunterMaskRigPath\b/, `${fileName}: rig helper`);
     assert.doesNotMatch(
@@ -459,7 +430,7 @@ async function main() {
   );
 
   console.log(
-    "Audit hunter kit V14 reussi : archives de trophees reservees aux vignettes, masques de rig V3 alignes en 256x384 et aucun fallback generique canonique.",
+    "Audit hunter kit V14 reussi : archives de trophees reservees aux vignettes, originaux V3/V14 conserves et masques V62 natifs places sans substitution generique.",
   );
 }
 

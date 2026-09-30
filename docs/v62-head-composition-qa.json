@@ -1,0 +1,2048 @@
+{
+  "status": "PASS",
+  "scope": "Real React components in isolated browser compositor; not a campaign completion test.",
+  "checks": [
+    {
+      "morph": "classic",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\00-classic-bare-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 121.89791870117188,
+        "y": 126.844970703125,
+        "width": 146.29647827148438,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\01-classic-bare-idle--1.png"
+    },
+    {
+      "morph": "elder",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/elder-head.png",
+      "home": "/game/sprites/v62/heads/elder-head.png",
+      "headRect": {
+        "x": 157.52755737304688,
+        "y": 128.24539184570312,
+        "width": 144.33221435546875,
+        "height": 144.33224487304688
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\02-elder-bare-idle-1.png"
+    },
+    {
+      "morph": "elder",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/elder-head.png",
+      "home": "/game/sprites/v62/heads/elder-head.png",
+      "headRect": {
+        "x": 122.14022827148438,
+        "y": 128.24539184570312,
+        "width": 144.33224487304688,
+        "height": 144.33224487304688
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\03-elder-bare-idle--1.png"
+    },
+    {
+      "morph": "super",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 164.55697631835938,
+        "y": 129.738525390625,
+        "width": 128.38839721679688,
+        "height": 140.350830078125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\04-super-bare-idle-1.png"
+    },
+    {
+      "morph": "super",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 131.05462646484375,
+        "y": 129.738525390625,
+        "width": 128.388427734375,
+        "height": 140.350830078125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\05-super-bare-idle--1.png"
+    },
+    {
+      "morph": "feral",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 166.97021484375,
+        "y": 127.65879821777344,
+        "width": 119.84658813476562,
+        "height": 149.37977600097656
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\06-feral-bare-idle-1.png"
+    },
+    {
+      "morph": "feral",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 137.18319702148438,
+        "y": 127.65879821777344,
+        "width": 119.84658813476562,
+        "height": 149.37977600097656
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\07-feral-bare-idle--1.png"
+    },
+    {
+      "morph": "huntress",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\08-huntress-bare-idle-1.png"
+    },
+    {
+      "morph": "huntress",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 121.89791870117188,
+        "y": 126.844970703125,
+        "width": 146.29647827148438,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\09-huntress-bare-idle--1.png"
+    },
+    {
+      "morph": "young",
+      "facing": 1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\10-young-bare-idle-1.png"
+    },
+    {
+      "morph": "young",
+      "facing": -1,
+      "mask": null,
+      "pose": "idle",
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 121.89791870117188,
+        "y": 126.844970703125,
+        "width": 146.29647827148438,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 16.520639419555664,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(-0.999984, 0.005706, 0.005706, 0.999984, 380.514, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\11-young-bare-idle--1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\12-classic-jungle-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\13-classic-jungle-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\14-classic-jungle-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "jungle",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\15-classic-jungle-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "city",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\16-classic-city-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "city",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\17-classic-city-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "city",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\18-classic-city-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "city",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\19-classic-city-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "scar",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\20-classic-scar-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "scar",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\21-classic-scar-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "scar",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\22-classic-scar-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "scar",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\23-classic-scar-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "celtic",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\24-classic-celtic-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "celtic",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\25-classic-celtic-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "celtic",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\26-classic-celtic-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "celtic",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\27-classic-celtic-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "chopper",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\28-classic-chopper-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "chopper",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\29-classic-chopper-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "chopper",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\30-classic-chopper-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "chopper",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\31-classic-chopper-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "wolf",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\32-classic-wolf-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "wolf",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\33-classic-wolf-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "wolf",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\34-classic-wolf-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "wolf",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\35-classic-wolf-jump-1.png"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 166.97021484375,
+        "y": 127.65879821777344,
+        "width": 119.84658813476562,
+        "height": 149.37977600097656
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\36-feral-feral-idle-1.png"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 165.00262451171875,
+        "y": 124.09078979492188,
+        "width": 119.21966552734375,
+        "height": 148.87887573242188
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\37-feral-feral-run-1.png"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 164.4375,
+        "y": 125.796875,
+        "width": 119,
+        "height": 148.703125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\38-feral-feral-crouch-1.png"
+    },
+    {
+      "morph": "feral",
+      "mask": "feral",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/feral-head.png",
+      "home": "/game/sprites/v62/heads/feral-head.png",
+      "headRect": {
+        "x": 106.85916900634766,
+        "y": 114.32588195800781,
+        "width": 147.4259033203125,
+        "height": 170.2723846435547
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\39-feral-feral-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "boar",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\40-classic-boar-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "boar",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\41-classic-boar-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "boar",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\42-classic-boar-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "boar",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\43-classic-boar-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "snake",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\44-classic-snake-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "snake",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\45-classic-snake-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "snake",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\46-classic-snake-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "snake",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\47-classic-snake-jump-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "falconer",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 164.55697631835938,
+        "y": 129.738525390625,
+        "width": 128.38839721679688,
+        "height": 140.350830078125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\48-super-falconer-idle-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "falconer",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 162.55982971191406,
+        "y": 126.18091583251953,
+        "width": 127.80000305175781,
+        "height": 139.81344604492188
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\49-super-falconer-run-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "falconer",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 161.984375,
+        "y": 127.890625,
+        "width": 127.59375,
+        "height": 139.625
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\50-super-falconer-crouch-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "falconer",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 104.89728546142578,
+        "y": 115.09133911132812,
+        "width": 153.93475341796875,
+        "height": 163.188720703125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\51-super-falconer-jump-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "berserker",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 164.55697631835938,
+        "y": 129.738525390625,
+        "width": 128.38839721679688,
+        "height": 140.350830078125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\52-super-berserker-idle-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "berserker",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 162.55982971191406,
+        "y": 126.18091583251953,
+        "width": 127.80000305175781,
+        "height": 139.81344604492188
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\53-super-berserker-run-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "berserker",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 161.984375,
+        "y": 127.890625,
+        "width": 127.59375,
+        "height": 139.625
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\54-super-berserker-crouch-1.png"
+    },
+    {
+      "morph": "super",
+      "mask": "berserker",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/super-head.png",
+      "home": "/game/sprites/v62/heads/super-head.png",
+      "headRect": {
+        "x": 104.89728546142578,
+        "y": 115.09133911132812,
+        "width": 153.93475341796875,
+        "height": 163.188720703125
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\55-super-berserker-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "fugitive",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\56-classic-fugitive-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "fugitive",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\57-classic-fugitive-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "fugitive",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\58-classic-fugitive-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "fugitive",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\59-classic-fugitive-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "dek",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\60-classic-dek-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "dek",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\61-classic-dek-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "dek",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\62-classic-dek-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "dek",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\63-classic-dek-jump-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "enforcer",
+      "pose": "idle",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 155.8056182861328,
+        "y": 126.844970703125,
+        "width": 146.2964630126953,
+        "height": 146.29647827148438
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20.1988582611084,
+        "y": 108.95992279052734,
+        "width": 387.280517578125,
+        "height": 578.181884765625
+      },
+      "parentTransform": "matrix(0.999984, 0.005706, -0.005706, 0.999984, 3.48551, 1.03805)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\64-classic-enforcer-idle-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "enforcer",
+      "pose": "run",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.82102966308594,
+        "y": 123.32425689697266,
+        "width": 145.68360900878906,
+        "height": 145.68362426757812
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 19.960147857666016,
+        "y": 106.00233459472656,
+        "width": 384.8509521484375,
+        "height": 576.5670166015625
+      },
+      "parentTransform": "matrix(0.999999, 0.001478, -0.001478, 0.999999, 0.811476, -1.91954)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\65-classic-enforcer-run-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "enforcer",
+      "pose": "crouch",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 153.25,
+        "y": 125.046875,
+        "width": 145.46875,
+        "height": 145.46875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\66-classic-enforcer-crouch-1.png"
+    },
+    {
+      "morph": "classic",
+      "mask": "enforcer",
+      "pose": "jump",
+      "facing": 1,
+      "head": "/game/sprites/v62/heads/classic-head.png",
+      "home": "/game/sprites/v62/heads/classic-head.png",
+      "headRect": {
+        "x": 95.76165771484375,
+        "y": 110.4017333984375,
+        "width": 172.63592529296875,
+        "height": 172.63592529296875
+      },
+      "rigRect": {
+        "x": 20,
+        "y": 107.921875,
+        "width": 384,
+        "height": 576
+      },
+      "parentRect": {
+        "x": -38.12702941894531,
+        "y": 71.6717758178711,
+        "width": 495.8033447265625,
+        "height": 643.4824829101562
+      },
+      "parentTransform": "matrix(0.977959, -0.208797, 0.208797, 0.977959, -58.127, 43.9279)",
+      "legacyHeadNet": false,
+      "loaded": true,
+      "capture": "work-local\\v62\\qa\\heads\\67-classic-enforcer-jump-1.png"
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

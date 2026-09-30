@@ -14,33 +14,14 @@ import type {
   HunterBodyMorphId,
   WeaponId,
 } from "./types";
+import { preservedBiomaskV62, referenceBiomaskV62, referenceBiomaskPathV62 } from "./biomaskCatalogueV62.ts";
+import { hunterHeadArtV62, type HunterLayerPlacement } from "./hunterHeadArtV62.ts";
 
 export const HUNTER_ASSET_ROOT =
   "/game/assets/v2/actors/yautja/hunter" as const;
 
 export const HUNTER_ASSET_ROOT_V3 =
   "/game/assets/v3/actors/yautja/hunter" as const;
-
-/**
- * Standalone V14 cutouts are only valid for thumbnails and galleries. This
- * stays a pure path table so direct Node consumers do not depend on JSON
- * import attributes; the V14 audit cross-checks every entry against the
- * available runtime manifest and prevents these paths from entering the rig.
- */
-const EXACT_V14_MASK_THUMBNAIL_PATH_BY_ID: Partial<
-  Record<BiomaskId, string>
-> = {
-  feral: "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
-  boar: "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
-  snake: "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
-  falconer: "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
-};
-
-const RIG_ALIGNED_V3_MASK_ID_BY_ID: Partial<Record<BiomaskId, BiomaskId>> = {
-  boar: "city",
-  snake: "city",
-  falconer: "berserker",
-};
 
 export const HUNTER_BODY_PART_IDS = [
   "head",
@@ -63,7 +44,6 @@ export const HUNTER_BODY_PART_IDS = [
 export type HunterBodyPartId = (typeof HUNTER_BODY_PART_IDS)[number];
 
 const NET_PARTS_WITHOUT_FEET = [
-  "head",
   "torso",
   "pelvis",
   "upper-arm-front",
@@ -122,7 +102,12 @@ export function hunterBodyPartPath(
   morphId: HunterBodyMorphId,
   partId: HunterBodyPartId,
 ): string {
+  if (partId === "head") return hunterHeadArtV62(morphId).path;
   return `${HUNTER_ASSET_ROOT_V3}/body/${morphId}/parts/${partId}.webp`;
+}
+
+export function hunterBodyPartPlacement(morphId: HunterBodyMorphId, partId: HunterBodyPartId): HunterLayerPlacement | undefined {
+  return partId === "head" ? hunterHeadArtV62(morphId).placement : undefined;
 }
 
 export function hunterNetPartPath(
@@ -133,16 +118,24 @@ export function hunterNetPartPath(
 }
 
 export function hunterMaskThumbnailPath(maskId: BiomaskId): string {
-  const exactPath = EXACT_V14_MASK_THUMBNAIL_PATH_BY_ID[maskId];
-  if (exactPath) {
-    return exactPath;
-  }
+  const referencePath = referenceBiomaskPathV62(maskId);
+  if (referencePath) return referencePath;
+  const preserved = preservedBiomaskV62(maskId);
+  if (preserved) return `${HUNTER_ASSET_ROOT_V3}/masks/${preserved.legacyMaskId}.webp`;
   return `${HUNTER_ASSET_ROOT_V3}/masks/${maskId}.webp`;
 }
 
 export function hunterMaskRigPath(maskId: BiomaskId): string {
-  const rigMaskId = RIG_ALIGNED_V3_MASK_ID_BY_ID[maskId] ?? maskId;
-  return `${HUNTER_ASSET_ROOT_V3}/masks/registered/${rigMaskId}.webp`;
+  const referencePath = referenceBiomaskPathV62(maskId);
+  if (referencePath) return referencePath;
+  const preserved = preservedBiomaskV62(maskId);
+  if (preserved) return `${HUNTER_ASSET_ROOT_V3}/masks/registered/${preserved.legacyMaskId}.webp`;
+  return `${HUNTER_ASSET_ROOT_V3}/masks/registered/${maskId}.webp`;
+}
+
+/** Native V62 alpha cutouts keep their original pixels; layout aligns them to the V3 head socket. */
+export function hunterMaskRigPlacement(maskId: BiomaskId) {
+  return referenceBiomaskV62(maskId)?.placement ?? { x: 0, y: 0, width: 256, height: 384 };
 }
 
 export function hunterDreadPath(dreadId: DreadStyleId): string {

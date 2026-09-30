@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "stageId": "arena-130-avp-classic-2000-space-station",
+  "id": "ambient-03",
+  "mode": "built-in-imagegen",
+  "nativePath": "C:/Users/chuck/.codex/generated_images/01a0f3e9-692a-7751-b7cb-3b41ede4d39a/exec-bf262c6d-4955-4509-80c1-91d2d20e4c51.png",
+  "workspacePath": "work-local/v62/generated/arena-130-avp-classic-2000-space-station/ambient-03.png",
+  "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+  "bytes": 2137072,
+  "width": 1536,
+  "height": 1024,
+  "hasAlpha": true,
+  "transparentFraction": 0.6238880157470703,
+  "copyByteIdentical": true,
+  "prompt": "Use case: stylized-concept. Asset type: production native 2D fighting-game background animation sprite sheet. Output exactly 1536x1024 PNG with genuinely transparent background. EXACTLY six independently drawn animation frames in a perfectly regular 3 columns by 2 rows grid: each cell 512x512. No visible grid, no cell outlines, no labels, no text, no checkerboard painting. Each drawing must fit completely inside its own cell with at least 48 pixels of transparent gutter on every side; nothing crosses a cell boundary. The same subject with the same scale, proportions, color and orthographic side camera in all six cells. Hand-painted realistic production game art, crisp isolated alpha silhouette, realistic anatomy/materials, subdued cool blue night or steel light, not cartoon. Transparent outside the isolated subject, including negative spaces. Do not draw a scene, a floor, backdrop, shadow card or border. Six actual different poses, never six identical pasted copies. Read chronological order left-to-right top row then left-to-right bottom row. Subject: an isolated small industrial quarantine indicator module, a dark rectangular steel wall mounting plate and narrow oval amber lens behind a wire safety guard, with a small lower mechanical rotating status disk. Six consecutive poses of the status disk rotating through distinct notch orientations. The amber lens is softly and steadily lit at low luminance, with only subtle slow brightness differences, never flashing or white-hot; no bloom outside device. Plate and lamp stay fixed and identical in all cells. The lower disk supplies clearly visible mechanical animation, no symbols, letters or numbers. Original anonymous space-station utility prop, subdued realistic metal, not a recognizable franchise-branded device. Exact same camera and physical size across all frames.",
+  "referencedImagePaths": [],
+  "sourceCells": [
+    "10_VIE_DES_STAGES!E145"
+  ],
+  "loreLimits": [
+    "Original anonymous background adaptation, not certified 1:1.",
+    "The separate workbook chapter variant remains open."
+  ],
+  "rejectedAttempts": [],
+  "visualNotes": "Six notch orientations, steady low amber lens and stable steel casing; no flash sequence.",
+  "status": "visually-accepted",
+  "frames": [
+    {
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        191,
+        16,
+        221,
+        466
+      ],
+      "pivot": [
+        300,
+        482
+      ],
+      "margins": [
+        191,
+        16,
+        100,
+        30
+      ],
+      "opaquePixelCount": 98506,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "fbbeebc8a24e24640d1e14f91c2abc382e5d35f6e500ee2e1e3da0cb1fc6a27f"
+    },
+    {
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        147,
+        16,
+        219,
+        466
+      ],
+      "pivot": [
+        256,
+        482
+      ],
+      "margins": [
+        147,
+        16,
+        146,
+        30
+      ],
+      "opaquePixelCount": 98560,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "f8ade95c06243bc60a629cecc4f2101c4ac3ae985079c2d9ecc18935eba02c55"
+    },
+    {
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        102,
+        16,
+        219,
+        466
+      ],
+      "pivot": [
+        212,
+        482
+      ],
+      "margins": [
+        102,
+        16,
+        191,
+        30
+      ],
+      "opaquePixelCount": 98438,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "7677978c6411c5dbcce481f89a9f148ff29324e35c8db39397e3ce67708d3420"
+    },
+    {
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        191,
+        16,
+        223,
+        466
+      ],
+      "pivot": [
+        299.5,
+        482
+      ],
+      "margins": [
+        191,
+        16,
+        98,
+        30
+      ],
+      "opaquePixelCount": 98739,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "63d3fe1b9aca1f2191812434aa28a91abd0c2179e2e29baf8e446ca1fb50cac4"
+    },
+    {
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        146,
+        15,
+        220,
+        467
+      ],
+      "pivot": [
+        256.5,
+        482
+      ],
+      "margins": [
+        146,
+        15,
+        146,
+        30
+      ],
+      "opaquePixelCount": 98837,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "796d0a881ff3d390678d2d03a6d738fc76a67242796b96f876dbf311aff1e569"
+    },
+    {
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "alphaBounds": [
+        102,
+        16,
+        219,
+        466
+      ],
+      "pivot": [
+        212,
+        482
+      ],
+      "margins": [
+        102,
+        16,
+        191,
+        30
+      ],
+      "opaquePixelCount": 98493,
+      "borderPixels": 0,
+      "borderSolidPixels": 0,
+      "contentSha256": "103e254e158d797ccd3cf36739baf6b787dbc26d3fed890032315c29a75d7ec2"
+    }
+  ]
+}

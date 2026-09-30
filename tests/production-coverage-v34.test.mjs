@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { productionCoverage } from '../scripts/production-coverage-v34.mjs';
+import { productionCoverage, readProductionSpriteRegistry } from '../scripts/production-coverage-v34.mjs';
 
 const readyPlane = () => ({ assets: [{ requiredForRuntime: true, frames: [{ generation: { sha256: 'fixture' }, status: 'reviewed' }] }] });
 const stage = () => ({ runtimeEnabled: false, planes: Array.from({ length: 6 }, readyPlane) });
@@ -38,16 +37,15 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
   const coverage = productionCoverage([], []);
   // V50 adds three identities (Falconer, Scarface, Enforcer). Ahab, Wolf and
   // Celtic already existed; this report counts identities, not appearances.
-  assert.equal(coverage.hunters.runtimeFighters, 16);
+  assert.equal(coverage.hunters.runtimeFighters, 17);
   // Six new drawings for Ahab form eight oriented clips; the five other
   // supplied appearances each add six. Reusing a pose does not add drawings.
-  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10 - 6 + 12,
-    'V59 replaces six old Feral phases with twelve native shield/launcher phases; no complete moveset is implied');
+  assert.equal(coverage.hunters.validatedClips, 315 + 6 + 12 + 4 + 10 - 6 + 12 + 4,
+    'V62 adds two Emissary idle animations and two declared held entries, never a complete moveset');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
-  const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
-  const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
-  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses', 'feral-actions-v59'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 309,
+  const registry = readProductionSpriteRegistry();
+  assert.equal(registry.filter(entry => !entry.atlas.id.endsWith('-v53') && !entry.atlas.id.endsWith('-v62') && !['valkyrie-hammer-v57', 'jungle-final-duel-v57-held-poses', 'feral-actions-v59'].includes(entry.atlas.id)).reduce((sum, entry) => sum + entry.atlas.clips.filter(clip => !clip.id.startsWith('pit.presentation.')).length, 0), 309,
     'Historical/V50 coverage loses only the six superseded Feral heavy phases');
   const movement = registry.filter(entry => entry.atlas.id.endsWith('-v50'));
   assert.deepEqual(movement.map(entry => entry.fighterId).sort(),
@@ -65,8 +63,7 @@ test('the six masked V50 movement sheets add only reviewed partial coverage, not
 });
 
 test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hunter, not a complete moveset', () => {
-  const source = readFileSync('app/game/pitSpriteSheetRegistry.ts', 'utf8');
-  const registry = JSON.parse(source.slice(source.indexOf('= [') + 2).trim().replace(/;$/, ''));
+  const registry = readProductionSpriteRegistry();
   const dedicated = registry.filter(entry => entry.atlas.id.endsWith('-v51'));
   assert.equal(dedicated.length, 1);
   const [entry] = dedicated;
@@ -77,9 +74,19 @@ test('V51 adds exactly six presentation clips for the reviewed masked Jungle Hun
     ['intro', 'victory', 'defeat'].flatMap(kind => ['right', 'left'].map(facing =>
       ['pit.presentation.' + kind, facing, 3, false, 60, 'validated'].join(':'))).sort());
   const coverage = productionCoverage([], []);
-  assert.equal(coverage.hunters.runtimeFighters, 16);
-  assert.equal(coverage.hunters.validatedClips, 353,
-    'The six V51 clips above remain unchanged; V59 replaces six old Feral phases with twelve reviewed native phases');
+  assert.equal(coverage.hunters.runtimeFighters, 17);
+  assert.equal(coverage.hunters.validatedClips, 357,
+    'The six V51 clips remain unchanged; V62 adds only four declared entries');
   assert.equal(coverage.hunters.completeMovesets, 0);
   assert.equal(coverage.completeGameImplied, false);
+});
+
+test('imported V62 entries retain two animated idles and two honest held stances in the real registry', () => {
+  const entries = readProductionSpriteRegistry().filter(entry => entry.atlas.id.endsWith('-v62'));
+  assert.equal(entries.length, 2);
+  assert(entries.every(entry => entry.fighterId === 'user-emissary-phg'));
+  const animated=entries.find(entry=>!entry.heldPoseClips),held=entries.find(entry=>entry.heldPoseClips);
+  assert.deepEqual(animated.atlas.clips.map(clip=>[clip.facing,clip.frames.length,clip.loop]), [['right',6,true],['left',6,true]]);
+  assert.deepEqual(held.atlas.clips.map(clip=>[clip.facing,clip.frames.length,clip.loop]), [['right',1,false],['left',1,false]]);
+  assert.equal(productionCoverage([],[]).hunters.completeMovesets,0);
 });

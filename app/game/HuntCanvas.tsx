@@ -55,11 +55,14 @@ import {
   hunterBodyPartHasNet,
   hunterBodyFullPath,
   hunterBodyPartPath,
+  hunterBodyPartPlacement,
   hunterDreadPath,
   hunterMaskRigPath,
+  hunterMaskRigPlacement,
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
+import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import {
   ageTracks,
   GUARDIAN_ADAPTATION,
@@ -2932,6 +2935,8 @@ function drawFallbackCharacter(
 }
 
 interface RegisteredLayerOptions {
+  placement?: HunterLayerPlacement;
+  clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
   filter?: string;
   pivot?: RigPoint;
@@ -3141,12 +3146,17 @@ function drawRegisteredLayer(
     context.scale(scaleX, scaleY);
     context.translate(-options.pivot.x, -options.pivot.y);
   }
+  if (options.clip) {
+    context.beginPath();
+    for (const rect of options.clip) context.rect(...rect);
+    context.clip();
+  }
   context.drawImage(
     image,
-    0,
-    0,
-    HUNTER_RIG_CANVAS.width,
-    HUNTER_RIG_CANVAS.height,
+    options.placement?.x ?? 0,
+    options.placement?.y ?? 0,
+    options.placement?.width ?? HUNTER_RIG_CANVAS.width,
+    options.placement?.height ?? HUNTER_RIG_CANVAS.height,
   );
   context.restore();
   return true;
@@ -3165,14 +3175,17 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: bodyFilter(appearance) },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId) },
   );
+  if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
     context,
     assets.hunterNetParts[partId],
     frame,
     boneId,
     {
+      filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)),
+      clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId),
       alpha:
         appearance.armorStyleId === "feral"
           ? 0.28
@@ -3443,8 +3456,8 @@ function drawHunterLayered(
           rotation: strand.rest + dreadSwing * 0.55,
           scaleX: strand.mirror ? -strand.scale : strand.scale,
           scaleY: strand.scale,
-          translateX: strand.x,
-          translateY: strand.y,
+          translateX: strand.x + HUNTER_HEAD_DREAD_OFFSET_V62.x,
+          translateY: strand.y + HUNTER_HEAD_DREAD_OFFSET_V62.y,
         },
       );
     });
@@ -3682,6 +3695,7 @@ function drawHunterLayered(
       assets.hunterMask,
       frame,
       "head",
+      { placement: hunterMaskRigPlacement(appearance.biomaskId) },
     );
   }
 

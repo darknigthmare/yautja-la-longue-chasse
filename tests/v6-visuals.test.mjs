@@ -154,7 +154,20 @@ test("loadout, masks, ranks, lasers, trophies and missions have exhaustive mappi
     "netgun",
     "snare",
   ]);
-  assert.equal(Object.keys(V6_MASK_VISUAL_BY_ID).length, 15);
+  assert.equal(Object.keys(V6_MASK_VISUAL_BY_ID).length, 26);
+  assert.deepEqual(Object.fromEntries(Object.entries(V6_MASK_VISUAL_BY_ID).filter(([id]) => id.startsWith("clan-"))), {
+    "clan-voile-argent": "mask-hunter-bronze",
+    "clan-cuivre-remparts": "mask-city-gunmetal",
+    "clan-entrelacs-forge": "mask-elite-crown",
+    "clan-os-grave": "mask-ritual-bone",
+    "clan-cendre-balafree": "mask-scarred-bone",
+    "clan-arete-acier": "mask-ritual-bone",
+    "clan-veilleur-cendres": "mask-stalker-obsidian",
+    "clan-carapace-sombre": "mask-elite-crown",
+    "clan-filigrane-cuivre": "mask-scout-teal",
+    "clan-patine-dunes": "mask-city-gunmetal",
+    "clan-gardien-ivoire": "mask-stalker-obsidian",
+  });
   assert.equal(Object.keys(V6_RANK_VISUAL_BY_ID).length, 4);
   assert.equal(Object.keys(V6_LASER_VISUAL_BY_COLOR_ID).length, 5);
   assert.equal(Object.keys(V6_MISSION_VISUALS).length, 8);

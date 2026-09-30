@@ -1,4 +1,5 @@
 "use client";
+import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -11,6 +12,7 @@ import React, {
   useState,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
 import type { YouthState, YouthReceipt } from "./systems/youthTraining";
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
@@ -125,8 +127,6 @@ import {
 import {
   getHunterKitAsset,
   listHunterKitAssets,
-  resolveHunterKitAsset,
-  type HunterKitResolveRequest,
 } from "./hunterKitRegistry";
 import {
   FRANCHISE_TROPHY_ARCHIVE_ASSETS,
@@ -463,151 +463,14 @@ const SKIN_OPTIONS: ReadonlyArray<{
   },
 ];
 
-function resolveAvailableMaskRuntimeUrl(
-  request: HunterKitResolveRequest,
-): string | undefined {
-  const resolution = resolveHunterKitAsset(request);
-  return resolution?.asset.available
-    ? resolution.asset.runtimeUrl
-    : undefined;
-}
-
-const V14_FERAL_MASK_URL = resolveAvailableMaskRuntimeUrl({
-  kind: "mask",
-  assetId: "mask-feral-screen",
-  presetId: "feral-hunter",
-  familyId: "feral",
-  approximationId: "mask-skull",
-});
-const V14_BOAR_MASK_URL = resolveAvailableMaskRuntimeUrl({
-  kind: "mask",
-  assetId: "mask-boar",
-  presetId: "boar",
-  familyId: "lost-tribe",
-  approximationId: "mask-metal",
-});
-const V14_SNAKE_MASK_URL = resolveAvailableMaskRuntimeUrl({
-  kind: "mask",
-  assetId: "mask-snake",
-  presetId: "snake",
-  familyId: "lost-tribe",
-  approximationId: "mask-metal",
-});
-const V14_FALCONER_MASK_URL = resolveAvailableMaskRuntimeUrl({
-  kind: "mask",
-  assetId: "mask-falconer",
-  presetId: "falconer",
-  familyId: "super-predator",
-  approximationId: "mask-angular",
-});
-
-const MASK_OPTIONS: ReadonlyArray<{
-  id: BiomaskId | null;
-  label: string;
-  detail: string;
-  image?: string;
-  preferImage?: boolean;
-}> = [
+const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail: string; image?: string; preferImage?: boolean }> = [
   { id: null, label: "Visage découvert", detail: "Biomask retiré" },
-  {
-    id: "jungle",
-    label: "Chasseur de jungle",
-    detail: "Jungle Hunter, 1987",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/jungle.webp`,
-  },
-  {
-    id: "scar",
-    label: "Scar",
-    detail: "Young Blood, AVP",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/scar.webp`,
-  },
-  {
-    id: "elder",
-    label: "Ancien",
-    detail: "Ornement de haut rang du clan",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/elder.webp`,
-  },
-  {
-    id: "city",
-    label: "City Hunter",
-    detail: "Bronze urbain, 1990",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/city.webp`,
-  },
-  {
-    id: "celtic",
-    label: "Celtic",
-    detail: "Coque cérémonielle lourde",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/celtic.webp`,
-  },
-  {
-    id: "chopper",
-    label: "Chopper",
-    detail: "Profil Young Blood agressif",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/chopper.webp`,
-  },
-  {
-    id: "wolf",
-    label: "Wolf",
-    detail: "Masque de Cleaner endommagé",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/wolf.webp`,
-  },
-  {
-    id: "feral",
-    label: "Feral",
-    detail: "Crâne primitif de Prey",
-    image:
-      V14_FERAL_MASK_URL ??
-      `${HUNTER_ASSET_ROOT_V3}/masks/feral.webp`,
-    preferImage: true,
-  },
-  {
-    id: "boar",
-    label: "Boar",
-    detail: "Lost Tribe, Predator 2",
-    image: V14_BOAR_MASK_URL,
-    preferImage: Boolean(V14_BOAR_MASK_URL),
-  },
-  {
-    id: "snake",
-    label: "Snake",
-    detail: "Lost Tribe, Predator 2",
-    image: V14_SNAKE_MASK_URL,
-    preferImage: Boolean(V14_SNAKE_MASK_URL),
-  },
-  {
-    id: "falconer",
-    label: "Falconer",
-    detail: "Super Predator, Predators",
-    image: V14_FALCONER_MASK_URL,
-    preferImage: Boolean(V14_FALCONER_MASK_URL),
-  },
-  {
-    id: "berserker",
-    label: "Berserker",
-    detail: "Couronne sombre Super Predator",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/berserker.webp`,
-  },
-  {
-    id: "fugitive",
-    label: "Fugitive",
-    detail: "Segmentation tactique 2018",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/fugitive.webp`,
-  },
-  {
-    id: "dek",
-    label: "Dek",
-    detail: "Plaque minimale de Badlands",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/dek.webp`,
-  },
-  {
-    id: "enforcer",
-    label: "Enforcer",
-    detail: "Motif judiciaire des comics",
-    image: `${HUNTER_ASSET_ROOT_V3}/masks/enforcer.webp`,
-  },
+  ...REFERENCE_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.work + " · recréation guidée par références", image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
+  { id: "elder", label: "Couronne des Ancêtres", detail: "Création originale du clan · aucun Ancien canonique attribué", image: hunterMaskThumbnailPath("elder"), preferImage: true },
+  ...PRESERVED_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.detail, image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
 ];
 
-const V14_EXACT_MASK_ASSETS = listHunterKitAssets({
+const V14_ORIGINAL_MASK_ASSETS = listHunterKitAssets({
   kind: "mask",
   status: "available",
 });
@@ -3647,14 +3510,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   aria-labelledby="armory-exact-kit-title"
                 >
                   <h3 id="armory-exact-kit-title">
-                    Références fidèles à la franchise
+                    Masques des chasseurs · références officielles
                   </h3>
+                  <p style={{ margin: "0 0 12px", color: "#aab4aa", fontSize: "0.75rem", lineHeight: 1.5 }}>Recréations guidées par les références licenciées. Fidélité 1:1 non certifiée ; les anciennes études restent dans les créations du clan.</p>
                   <div
                     className="armory-module-rack hunter-kit-rack"
                     role="list"
                   >
                     {[
-                      ...V14_EXACT_MASK_ASSETS,
+                      ...REFERENCE_BIOMASKS_V62.map((mask) => ({ id: mask.id, name: mask.label, work: mask.work, runtimeUrl: hunterMaskThumbnailPath(mask.id) })),
                       ...(V14_FERAL_SPEARGUN?.available
                         ? [V14_FERAL_SPEARGUN]
                         : []),
@@ -3690,6 +3554,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     Variantes originales du clan
                   </h3>
                   <div className="armory-module-rack armory-mask-rack" role="list">
+                    {V14_ORIGINAL_MASK_ASSETS.map((asset) => (
+                      <figure key={asset.id} role="listitem"><img src={asset.runtimeUrl} alt="" loading="lazy" /><figcaption>{asset.name}</figcaption></figure>
+                    ))}
+                    {PRESERVED_BIOMASKS_V62.map((mask) => (
+                      <figure key={mask.id} role="listitem"><img src={hunterMaskThumbnailPath(mask.id)} alt="" loading="lazy" /><figcaption>{mask.label} · création originale</figcaption></figure>
+                    ))}
                     {V6_ALL_VISUAL_IDS.filter(
                       (visualId) => V6_VISUAL_CELLS[visualId].kind === "mask",
                     ).map((visualId) => (
@@ -4104,14 +3974,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
                 <CustomizationSection
                   title="Morphologie"
-                  detail="Six corps nus enregistrés sur le même sol et les mêmes articulations"
+                  detail="Six corps modulaires · quatre familles de têtes · mêmes articulations"
                 >
                   {BODY_OPTIONS.map((option) => (
                     <AppearanceOption
                       key={option.id}
                       label={option.label}
                       detail={option.detail}
-                      image={option.image}
+                      art={<HomeworldModularHunter morphId={option.id} dreadStyleId="classic" style={{ position: "relative", display: "block", width: "100%", height: "100%" }} />}
                       selected={save.appearance.bodyMorphId === option.id}
                       onSelect={() =>
                         updateAppearance("bodyMorphId", option.id)
@@ -5313,6 +5183,7 @@ function AppearanceOption({
   label,
   detail,
   image,
+  art,
   visualId,
   glyph,
   swatch,
@@ -5323,6 +5194,7 @@ function AppearanceOption({
   label: string;
   detail?: string;
   image?: string;
+  art?: React.ReactNode;
   visualId?: V6VisualId;
   glyph?: string;
   swatch?: string;
@@ -5339,18 +5211,18 @@ function AppearanceOption({
       onClick={onSelect}
     >
       <span className="appearance-option-art" aria-hidden="true">
-        {visualId ? (
+        {art ?? (visualId ? (
           <V6AtlasSprite id={visualId} decorative />
         ) : image ? (
           <img src={image} alt="" />
-        ) : null}
+        ) : null)}
         {swatch ? (
           <i
             className="appearance-swatch"
             style={{ backgroundColor: swatch }}
           />
         ) : null}
-        {!visualId && !image && !swatch ? <b>{glyph ?? "Y"}</b> : null}
+        {!art && !visualId && !image && !swatch ? <b>{glyph ?? "Y"}</b> : null}
       </span>
       <span className="appearance-option-copy">
         <strong>{label}</strong>

@@ -7,10 +7,10 @@ import {build} from 'esbuild';
 const result=await build({stdin:{contents:'export * from "./app/game/systems/pitCharacterStages"; export * from "./app/game/systems/pitLoreStages"; export * from "./app/game/systems/pitScreenArenas"; export * from "./app/game/pitArenaLife"; export * from "./app/game/pitArenaLifeRendering"; export * from "./app/game/systems/pitRosterExpansion"; export { createPitCombatState, serializePitCombat } from "./app/game/systems/pitCombat";',resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 
-test('historical 195 identities and the three V56 originals receive explicit stage decisions; variants never inflate coverage',()=>{
+test('historical identities, V56 originals and the V62 addition receive stage decisions without inflating variants',()=>{
  const coverage=api.PIT_CHARACTER_STAGE_COVERAGE;
  assert.equal(api.PIT_EXPLICIT_STAGE_ASSOCIATIONS.length,195,'V55 source batch remains unchanged');
- assert.equal(coverage.length,198);assert.equal(new Set(coverage.map(c=>c.fighterId)).size,198);
+ assert.equal(coverage.length,199);assert.equal(new Set(coverage.map(c=>c.fighterId)).size,199);
  assert.deepEqual(coverage.map(c=>c.fighterId),api.PIT_VERSUS_FIGHTER_IDS);
  assert(coverage.every(c=>c.reason.length>15&&c.exactGeometryCertified===false));
  assert.equal(api.getPitCharacterStageAssociation('constructor'),null);

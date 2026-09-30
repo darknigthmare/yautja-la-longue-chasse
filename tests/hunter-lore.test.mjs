@@ -205,38 +205,16 @@ test("appearanceForPreset returns a complete independent save appearance", () =>
   }
 });
 
-test("dedicated franchise biomasks resolve their exact V14 runtime URLs", () => {
-  const dedicatedPresetMasks = {
-    boar: "boar",
-    snake: "snake",
-    falconer: "falconer",
-  };
-  const expectedRigFallbacks = {
-    boar: "city V3 alignée",
-    snake: "city V3 alignée",
-    falconer: "berserker V3 alignée",
-  };
-  const expectedV14Paths = {
-    boar: "/game/assets/v14/hunter-kit/masks/mask-boar.webp",
-    snake: "/game/assets/v14/hunter-kit/masks/mask-snake.webp",
-    falconer: "/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
-    feral: "/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
-  };
-
-  for (const [presetId, biomaskId] of Object.entries(dedicatedPresetMasks)) {
-    assert.equal(HUNTER_PRESET_BY_ID[presetId].biomaskId, biomaskId);
-    assert.match(
-      HUNTER_PRESET_BY_ID[presetId].fidelityNote,
-      new RegExp(expectedRigFallbacks[presetId], "i"),
-    );
+test("dedicated franchise biomasks resolve V62 native references without changing preset IDs", () => {
+  for (const id of ["boar", "snake", "falconer"]) {
+    assert.equal(HUNTER_PRESET_BY_ID[id].biomaskId, id);
+    assert.match(HUNTER_PRESET_BY_ID[id].fidelityNote, /biomask V62/);
+    assert.match(HUNTER_PRESET_BY_ID[id].fidelityNote, /1:1 non certifiée/);
   }
-  assert.doesNotMatch(
-    HUNTER_PRESET_BY_ID.snake.description,
-    /masque urbain/i,
-  );
+  assert.doesNotMatch(HUNTER_PRESET_BY_ID.snake.description, /masque urbain/i);
   assert.match(HUNTER_PRESET_BY_ID.snake.description, /biomask gravé/i);
-  for (const [biomaskId, runtimeUrl] of Object.entries(expectedV14Paths)) {
-    assert.equal(hunterMaskThumbnailPath(biomaskId), runtimeUrl);
+  for (const id of ["boar", "snake", "falconer", "feral"]) {
+    assert.equal(hunterMaskThumbnailPath(id), "/game/sprites/v62/masks/" + id + ".png");
   }
 });
 

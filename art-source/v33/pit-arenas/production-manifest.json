@@ -34847,8 +34847,8 @@
       "number": 51,
       "catalogueId": "arena-051-golgotha-etude-jaguar",
       "assetDirectory": "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar",
-      "name": "Golgotha — étude Jaguar",
-      "setting": "Étude de composition pixel art d'un stage AVP Jaguar",
+      "name": "Cataractes des Anciens · création originale",
+      "setting": "Ruines Yautja et cascades — création originale conservée, sans attribution au Camp Golgotha.",
       "wave": "heritage-study",
       "legacyRuntimeArenaId": null,
       "legacyRuntimeStatus": "concept",
@@ -35476,6 +35476,26 @@
       "compositionVisualReview": {
         "evidence": "docs/v42-arena-composition-visual-review.json",
         "digest": "dc7ebf012d5465f9b11850afada1b534197fcda48b285963af53c3dd83f16311"
+      },
+      "loreReclassificationV62": {
+        "previousName": "Golgotha — étude Jaguar",
+        "preservedRuntimeId": true,
+        "preservedImagePaths": [
+          "/game/sprites/v42/pit-arenas/arena-051-golgotha-etude-jaguar/p0-depth.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-a-distant-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p1-b-distant-right.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-a-support-left.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p2-b-support-right.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-a-prop-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p3-b-prop-right.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-a-contact-floor.png",
+          "/game/sprites/v34/pit-arenas/ruins-tribunal/p4-b-front-fascia.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-a-foreground-left.png",
+          "/game/sprites/v34/pit-arenas/arena-017-puits-des-bannis/p5-b-foreground-right.png"
+        ],
+        "reason": "The original image depicts stone ruins and waterfalls, inconsistent with the USCM installation documented by the original Jaguar manual.",
+        "replacementLoreStageId": "arena-187-golgotha-uscm-airlock",
+        "sourceUrl": "https://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060"
       }
     },
     {
@@ -79032,7 +79052,7 @@
                   "x": 0,
                   "y": 442,
                   "width": 1280,
-                  "height": 150
+                  "height": 180
                 }
               ],
               "animation": null,
@@ -79149,6 +79169,11 @@
       "compositionVisualReview": {
         "evidence": "docs/v43-arena-composition-visual-review.json",
         "digest": "bf130a9803e49f6436f88f429e01577ba7f2cc98f1985477285cb08608ad6baa"
+      },
+      "v62FloorCorrection": {
+        "reason": "The separate fascia ended above the lower canvas edge at zoom0.8. Contact strip stays unchanged; only the authored fascia height grows from150 to180.",
+        "evidence": "docs/v62-arena-126-avpr-2007-hospital-roof-renderer-qa.json",
+        "pngsUnchanged": true
       }
     },
     {
@@ -80850,7 +80875,7 @@
                   "x": 0,
                   "y": 442,
                   "width": 1280,
-                  "height": 150
+                  "height": 180
                 }
               ],
               "animation": null,
@@ -80967,6 +80992,11 @@
       "compositionVisualReview": {
         "evidence": "docs/v43-arena-composition-visual-review.json",
         "digest": "2660ea38937414aee1362fa5408aa8baf0d575f58ffa51f119840b1bf46ded27"
+      },
+      "v62FloorCorrection": {
+        "reason": "The separate fascia ended above the lower canvas edge at zoom0.8. Contact strip stays unchanged; only the authored fascia height grows from150 to180.",
+        "evidence": "docs/v62-arena-130-avp-classic-2000-space-station-renderer-qa.json",
+        "pngsUnchanged": true
       }
     },
     {
@@ -105968,6 +105998,460 @@
       "compositionVisualReview": {
         "evidence": "docs/v60-stage-composition-visual-review.json",
         "digest": "d2b1908483892eb1b104baf1ddd17a9d64d15842f9814a123a29039e698e92f4"
+      }
+    },
+    {
+      "number": 187,
+      "catalogueId": "arena-187-golgotha-uscm-airlock",
+      "assetDirectory": "/game/sprites/v62/pit-arenas/arena-187-golgotha-uscm-airlock",
+      "name": "Camp Golgotha — sas USCM",
+      "setting": "Base d’entraînement USCM : sas, vitrage et conduits industriels. Adaptation latérale originale du cadre décrit par le manuel Atari Jaguar.",
+      "wave": "v62-workbook-lore-correction",
+      "legacyRuntimeArenaId": null,
+      "legacyRuntimeStatus": "concept",
+      "sourceConfirmation": "confirmed",
+      "runtimeEnabled": true,
+      "compositionContract": "v62-original-uscm-base-with-declared-industrial-library",
+      "screenReference": {
+        "kind": "game",
+        "workId": "avp-jaguar-1994",
+        "fidelityClaim": "publisher-manual-setting-original-lateral-adaptation-not-certified-1to1",
+        "referenceStatus": "manual-setting-attested"
+      },
+      "planes": [
+        {
+          "id": "P0",
+          "role": "Profondeur adaptée du lieu référencé",
+          "nominalParallax": 0.05,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p0-depth",
+              "role": "Base USCM originale — architecture distante sans acteur intégré",
+              "alphaRequired": false,
+              "requiredForRuntime": true,
+              "mode": "cover",
+              "parallax": 0.05,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "width": 960,
+                  "height": 540
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v62/pit-arenas/arena-187-golgotha-uscm-airlock/p0-depth.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "docs/v62-generation/arena-187-golgotha-uscm-airlock-p0-depth.json",
+                    "sha256": "cb90f15c1ad7e6965b6050317e542c5115c7b0fbffb444a7a6f6019a885073bb",
+                    "width": 1672,
+                    "height": 940,
+                    "hasAlpha": false,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1672,
+                      "height": 940
+                    }
+                  },
+                  "review": {
+                    "evidence": "docs/v62-generation/arena-187-golgotha-uscm-airlock-p0-depth.json",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v62-arena-187-golgotha-uscm-airlock-renderer-qa.json"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.12,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p1-rail-conduit",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.12,
+              "opacity": 0.3,
+              "placements": [
+                {
+                  "x": -20,
+                  "y": 8,
+                  "width": 1000,
+                  "height": 100
+                }
+              ],
+              "animation": null,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p1-rail-conduit.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p1-rail-conduit.json",
+                    "sha256": "5acb60872bfa1e12a806289dc0db20724226388cf52feb187119071c936cee06",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 17,
+                      "y": 8,
+                      "width": 2139,
+                      "height": 674
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p1-rail-conduit.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p1-rail-conduit"
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.24,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p2-steel-upright",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.24,
+              "opacity": 0.5,
+              "placements": [
+                {
+                  "x": -55,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                },
+                {
+                  "x": 870,
+                  "y": 35,
+                  "width": 145,
+                  "height": 395
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p2-steel-upright.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p2-steel-upright.json",
+                    "sha256": "ba1fde7a58783566a021c16e7be1784ce2e10b1e790a7498fceb79ded7397623",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 199,
+                      "y": 0,
+                      "width": 763,
+                      "height": 1536
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p2-steel-upright.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p2-steel-upright"
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 0.43,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p3-utility-case",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 0.43,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 12,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                },
+                {
+                  "x": 842,
+                  "y": 366,
+                  "width": 104,
+                  "height": 64
+                }
+              ],
+              "animation": null,
+              "anchorToGround": true,
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p3-utility-case.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p3-utility-case.json",
+                    "sha256": "3cff01fa94f04a281ce76937cc2def0b0d2f0da125f87250db82cdea6fe8cdf7",
+                    "width": 1774,
+                    "height": 887,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 41,
+                      "y": 33,
+                      "width": 1693,
+                      "height": 798
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p3-utility-case.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p3-utility-case"
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p4-metal-floor",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "repeat-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 430,
+                  "width": 760,
+                  "height": 40
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 0,
+                "y": 355,
+                "width": 2172,
+                "height": 41
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-floor.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-floor.json",
+                    "sha256": "b511bb879eff59392bc21080e581c09893cdc20900eb2aa15874ef3843ccfc79",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 0,
+                      "y": 248,
+                      "width": 2172,
+                      "height": 309
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-floor.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-floor"
+            },
+            {
+              "id": "p4-metal-fascia",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "strip-x",
+              "parallax": 1,
+              "opacity": 1,
+              "placements": [
+                {
+                  "x": 0,
+                  "y": 442,
+                  "width": 1280,
+                  "height": 180
+                }
+              ],
+              "animation": null,
+              "sourceCrop": {
+                "x": 29,
+                "y": 304,
+                "width": 2117,
+                "height": 111
+              },
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p4-metal-fascia.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p4-metal-fascia.json",
+                    "sha256": "ddd0540ec55d93960303b3138354b5508bee1013f86ab7ccc2e6e545b7db404d",
+                    "width": 2172,
+                    "height": 724,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 26,
+                      "y": 190,
+                      "width": 2122,
+                      "height": 379
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p4-metal-fascia.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p4-metal-fascia"
+            }
+          ]
+        },
+        {
+          "id": "P5",
+          "role": "Module indépendant à composer après revue",
+          "nominalParallax": 1.08,
+          "status": "integrated",
+          "subplanSpecification": "proposed-original",
+          "assets": [
+            {
+              "id": "p5-service-cable",
+              "role": "Module indépendant OpenAI adapté au lieu",
+              "alphaRequired": true,
+              "requiredForRuntime": true,
+              "mode": "module",
+              "parallax": 1.08,
+              "opacity": 0.9,
+              "placements": [
+                {
+                  "x": -45,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                },
+                {
+                  "x": 915,
+                  "y": -20,
+                  "width": 90,
+                  "height": 500
+                }
+              ],
+              "animation": null,
+              "verticalAlign": "top",
+              "frames": [
+                {
+                  "path": "/game/sprites/v43/pit-arenas/arena-104-predator-2-1990-subway/p5-service-cable.png",
+                  "status": "integrated",
+                  "generation": {
+                    "generator": "openai-imagegen",
+                    "source": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/receipt-p5-service-cable.json",
+                    "sha256": "c322d135b03efac6314a6a1eb3ccd00c97c46af536523921e82659899412aa78",
+                    "width": 1024,
+                    "height": 1536,
+                    "hasAlpha": true,
+                    "contentBounds": {
+                      "x": 65,
+                      "y": 16,
+                      "width": 873,
+                      "height": 1504
+                    }
+                  },
+                  "review": {
+                    "evidence": "art-source/v43/pit-arenas/arena-104-predator-2-1990-subway/review-p5-service-cable.md",
+                    "coherence": true,
+                    "layout": true,
+                    "alpha": true
+                  },
+                  "integration": {
+                    "evidence": "docs/v43-arena-application-compiled-qa.json"
+                  }
+                }
+              ],
+              "libraryRef": "arena-104-predator-2-1990-subway/p5-service-cable"
+            }
+          ]
+        }
+      ],
+      "runtimeExtension": {
+        "arenaId": "arena-187-golgotha-uscm-airlock",
+        "gameplayProfile": "neutral-duel-v1",
+        "rendererEvidence": "docs/v62-arena-187-golgotha-uscm-airlock-renderer-qa.json",
+        "applicationEvidence": "docs/v62-stage-application-qa.json"
+      },
+      "compositionVisualReview": {
+        "evidence": "docs/v62-stage-composition-visual-review.json",
+        "digestMethod": "sha256-json-planes",
+        "digest": "1060006e13f359ebe6eb5a2e1c33a8bcce248781a54e2a09bdfc1dd880d10244"
       }
     }
   ],

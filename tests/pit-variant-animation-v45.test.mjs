@@ -15,10 +15,11 @@ const built = await build({ stdin: { contents: [
   "export * from './app/pit-lab/pitLabProduction';",
 ].join("\n"), loader: "ts", resolveDir: process.cwd() }, plugins: [{ name: "animation-fixtures", setup(b) {
   b.onResolve({ filter: /pitUserHuntersV44\.json$/ }, () => ({ path: "roster", namespace: "fixture" }));
+  b.onResolve({ filter: /pitUserHuntersV62\.json$/ }, () => ({ path: "additions", namespace: "fixture" }));
   b.onResolve({ filter: /pitSpriteSheetRegistry$/ }, () => ({ path: "registry", namespace: "fixture" }));
   b.onLoad({ filter: /.*/, namespace: "fixture" }, ({ path }) => path === "registry"
     ? { contents: "export const PIT_SPRITE_SHEET_REGISTRY = " + JSON.stringify([definition(), definition("jungle-hunter", null)]) + ";", loader: "js" }
-    : { contents: JSON.stringify(fixture), loader: "json" });
+    : { contents: JSON.stringify(path === "additions" ? { fighters: [] } : fixture), loader: "json" });
 } }], bundle: true, format: "esm", platform: "node", write: false, logLevel: "silent" });
 const p = await import("data:text/javascript;base64," + Buffer.from(built.outputFiles[0].text).toString("base64"));
 

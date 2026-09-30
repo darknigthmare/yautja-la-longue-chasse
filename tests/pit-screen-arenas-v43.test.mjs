@@ -26,10 +26,17 @@ test('planned reference metadata cannot unlock a duel or masquerade as six revie
   if(!actual.runtimeEnabled)assert.equal(api.getPitArenaExtension(definition.id,definition.catalogueNumber),null);
  }
 });
-test('first 100 source records are byte-equivalent as serialized objects to V42',async()=>{
+test('first 100 source records preserve V42 bytes except the exact documented display-only 051 reclassification',async()=>{
  await assertHistoricalArenasUnchanged(manifest);
  const changed=structuredClone(manifest);changed.stages[3].name+=' changed';
  await assert.rejects(()=>assertHistoricalArenasUnchanged(changed),/Historical 100/);
+ for(const mutate of [s=>s.catalogueId+='-changed',s=>s.name+=' changed',s=>s.setting+=' changed',
+  s=>s.planes[0].assets[0].frames[0].path='/game/other.png',s=>s.planes[0].assets[0].placements[0].width++,
+  s=>s.runtimeEnabled=false,s=>s.loreReclassificationV62.replacementLoreStageId='arena-130-avp-classic-2000-space-station',
+  s=>delete s.loreReclassificationV62]){
+  const altered=structuredClone(manifest);mutate(altered.stages.find(s=>s.number===51));
+  await assert.rejects(()=>assertHistoricalArenasUnchanged(altered),/Historical 100/);
+ }
 });
 test('V43 paths reject traversal, foreign kit ownership, filenames and nested link remapping before import',async()=>{
  const id=api.PIT_SCREEN_ARENA_DEFINITIONS[0].id,asset='p0-depth',valid=`/game/sprites/v43/pit-arenas/${id}/${asset}.png`;

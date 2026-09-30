@@ -110,6 +110,15 @@ export interface HunterKitResolution {
 
 const manifest = hunterKitManifestData as unknown as HunterKitManifest;
 
+// These V14 studies remain byte-identical archival originals. Alias priority is
+// a resolver contract, not a statement of canonical visual accuracy.
+const ORIGINAL_MASK_NAMES_V62: Record<string, string> = {
+  "mask-feral-screen": "Crâne du Ravin",
+  "mask-boar": "Front des Remparts",
+  "mask-snake": "Insigne du Guetteur",
+  "mask-falconer": "Aile de Forge",
+};
+
 export const HUNTER_KIT_MANIFEST_SUMMARY = Object.freeze({
   schemaVersion: manifest.schemaVersion,
   packId: manifest.packId,
@@ -125,6 +134,11 @@ export const HUNTER_KIT_ASSETS = Object.freeze(
   manifest.entries.map((entry) =>
     Object.freeze({
       ...entry,
+      ...(ORIGINAL_MASK_NAMES_V62[entry.id] ? {
+        name: `${ORIGINAL_MASK_NAMES_V62[entry.id]} · création originale`,
+        work: "La Longue Chasse · étude originale non canonique",
+        inspection: { status: "passed" as const, notes: "Ancienne étude V14 conservée sans modification. Ne représente pas fidèlement le masque du personnage auquel elle était initialement attribuée." },
+      } : {}),
       selectionAliases: Object.freeze({
         exactPresetIds: Object.freeze([
           ...entry.selectionAliases.exactPresetIds,
@@ -136,7 +150,9 @@ export const HUNTER_KIT_ASSETS = Object.freeze(
         genericIds: Object.freeze([...entry.selectionAliases.genericIds]),
       }),
       futureConsumers: Object.freeze([...entry.futureConsumers]),
-      archiveCopy: entry.archiveCopy
+      archiveCopy: ORIGINAL_MASK_NAMES_V62[entry.id]
+        ? Object.freeze({ title: `${ORIGINAL_MASK_NAMES_V62[entry.id]} · création originale`, description: "Étude V14 conservée sans modification ; ce dessin n’est pas attribué à un personnage canonique." })
+        : entry.archiveCopy
         ? Object.freeze({ ...entry.archiveCopy })
         : undefined,
     }),

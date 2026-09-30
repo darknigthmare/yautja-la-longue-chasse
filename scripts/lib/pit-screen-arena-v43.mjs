@@ -12,8 +12,23 @@ export function parseArenaNumbers(value){
 }
 export async function assertHistoricalArenasUnchanged(manifest){
  const baseline=JSON.parse(await fs.readFile('art-source/v43/pit-arenas/historical-baseline.json','utf8'));
- assert.equal(manifest.stages.slice(0,100).length,baseline.count);
- assert.equal(createHash('sha256').update(JSON.stringify(manifest.stages.slice(0,100))).digest('hex'),baseline.sha256,'Historical 100 arenas changed');
+ const historical=structuredClone(manifest.stages.slice(0,100));
+ assert.equal(historical.length,baseline.count);
+ // V62 permits exactly the documented display-only correction of the mislabeled
+ // waterfall study. Restore only those three fields before the immutable V42 hash;
+ // all IDs, art, layout, activation and the other 99 records are still protected.
+ const renamed=historical.find(stage=>stage.number===51);
+ if(renamed?.loreReclassificationV62){
+  assert.equal(renamed.catalogueId,'arena-051-golgotha-etude-jaguar','Historical 100: unexpected renamed ID');
+  assert.equal(renamed.name,'Cataractes des Anciens · création originale','Historical 100: unapproved display name');
+  assert.equal(renamed.setting,'Ruines Yautja et cascades — création originale conservée, sans attribution au Camp Golgotha.','Historical 100: unapproved setting');
+  assert.deepEqual(renamed.loreReclassificationV62,{previousName:'Golgotha — étude Jaguar',preservedRuntimeId:true,
+   preservedImagePaths:renamed.planes.flatMap(p=>p.assets.flatMap(a=>a.frames.map(f=>f.path))),
+   reason:'The original image depicts stone ruins and waterfalls, inconsistent with the USCM installation documented by the original Jaguar manual.',
+   replacementLoreStageId:'arena-187-golgotha-uscm-airlock',sourceUrl:'https://www.atariage.com/manual_html_page.php?SoftwareLabelID=1060'},'Historical 100: undocumented rename');
+  renamed.name='Golgotha — étude Jaguar';renamed.setting="Étude de composition pixel art d'un stage AVP Jaguar";delete renamed.loreReclassificationV62;
+ }
+ assert.equal(createHash('sha256').update(JSON.stringify(historical)).digest('hex'),baseline.sha256,'Historical 100 arenas changed');
 }
 export function assertV43AssetPath(catalogueId,assetId,publicPath){
  assert(/^arena-1(?:0[1-9]|[12][0-9]|3[0-6])-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(catalogueId),'Invalid V43 screen arena identifier');

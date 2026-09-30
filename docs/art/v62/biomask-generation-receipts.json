@@ -1,0 +1,636 @@
+{
+  "version": 62,
+  "method": "OpenAI built-in imagegen",
+  "transparency": "Native alpha; generated pixels copied without postprocessing",
+  "claim": "Reference-guided recreation, not certified 1:1",
+  "entries": [
+    {
+      "id": "jungle",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Jungle Hunter from Predator (1987): the original SIMPLE smooth dull silver bio-mask. Wide rounded elongated crown with a raised oval perimeter rim, black mesh narrow eye apertures under pronounced brow, short broad smooth muzzle/chin panels, restrained side vent detailing. Three small targeting lenses clustered at one temple as shown, unlit. No central red jewel, no Celtic filigree, no invented top seams. Match original prop reference rather than the old project's generic helmet.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-6a3ed688-05d1-4a13-8ce8-fc6fed5a671f.png",
+      "output": "public/game/sprites/v62/masks/jungle.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/jungle.jpg",
+          "url": "https://www.sideshow.com/storage/product-images/400151/predator-mask_predator_gallery_5c4ba173de55c.jpg",
+          "sha256": "35c810ed280e8bf6ab49714fae5c68a9e7b57e54ee0d65c29a2392e713eb3487"
+        },
+        {
+          "localPath": "v62/references/masks/jungle-masked.jpg",
+          "url": "https://store.necaonline.com/cdn/shop/files/UltimateJH7.jpg",
+          "sha256": "5a398c6e12b7df5791d4f149b79cb802e305d1ac3bbdedd3004ed28d02aa54ea"
+        }
+      ],
+      "measurement": {
+        "id": "jungle",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          75,
+          45,
+          1166,
+          1213
+        ],
+        "transparentFraction": 0.37933668083504396,
+        "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709",
+        "placement": {
+          "x": 110.15825,
+          "y": 20.61292,
+          "width": 80.45338,
+          "height": 80.45338
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "city",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. City Hunter from Predator 2 (1990): distinctly warm dark copper/bronze rough pebbled metal surface, raised elongated oval forehead rim and its shallow central sculpted contours exactly as in the reference, narrow dark eye slits and a blunt short trapezoid muzzle guard. Preserve the asymmetry of the tiny side targeting fittings, without mirrored duplicated emitters. No long pointed chin, no runes, no engraved geometric line-work, no elaborate gold jewellery.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-1d0fe229-4bab-4879-a3ec-782df9bc9319.png",
+      "output": "public/game/sprites/v62/masks/city.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/city-masked.jpg",
+          "url": "https://store.necaonline.com/cdn/shop/files/Ultimate_City_Hunter1.jpg",
+          "sha256": "1d13b7ace7f493d9dc0fe8158c9cc71bcbdcce832cd750882fa139a87817e48f"
+        }
+      ],
+      "measurement": {
+        "id": "city",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          193,
+          77,
+          1084,
+          1156
+        ],
+        "transparentFraction": 0.5514932757440941,
+        "sha256": "012836522b6e78090d272d26cc452c61050df6d3cb71148862b26959a608ca12",
+        "placement": {
+          "x": 105.625,
+          "y": 18.15278,
+          "width": 87.08333,
+          "height": 87.08333
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "celtic",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Celtic from Alien vs. Predator (2004): heavy dark steel silver bio-mask, smooth broad domed forehead framed by an oval rim, deeply angular narrow black eyes, distinctive large symmetrical curled/circular cheek structures framing a ribbed central respirator/chin with vertical tusk-like metal forms. Geometry must match the pictured Celtic mask, not a Viking or medieval Celtic knot helmet. No drawn knotwork or symbols anywhere on the dome. Undamaged version. Complete detached mask only.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-5bf7c61c-c4d0-4434-bf5f-1fcb62493610.png",
+      "output": "public/game/sprites/v62/masks/celtic.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/celtic.jpg",
+          "url": "https://www.sideshow.com/storage/product-images/902117/celtic-predator_alien-vs-predator_gallery_5c4babdb2ebed.jpg",
+          "sha256": "9fd35ac1003c2034e654e796ec7577483ce8f92453f0c45a6abbb0e4d69ee691"
+        }
+      ],
+      "measurement": {
+        "id": "celtic",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          203,
+          27,
+          1070,
+          1234
+        ],
+        "transparentFraction": 0.5026276362211894,
+        "sha256": "e21b903458a7bffde23aea21241e8f90b282f4b065b3d64a57d7edeb16bb1174",
+        "placement": {
+          "x": 110.45116,
+          "y": 21.82368,
+          "width": 77.85596,
+          "height": 77.85596
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "feral",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Feral Predator from Prey (2022): recreate the UPPER skull bone bio-mask in reference. Pale ochre ivory bony crown with organic sutures, wide upper cranial plate tapering down into the long narrow nasal bridge, characteristic two long dark nasal cavities, lateral cheek arches and hollow sides. IMPORTANT: this is only the skull MASK covering forehead/upper face, open at the bottom. Do NOT include the living Yautja jaw or tusks that are visible below it in the photo. No added separate lower mandible, no toothed mouth, no eye-looking red jewel; no tribal mechanical engraving. Preserve small targeting hardware only where visible in official reference.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-48d2bf55-6c28-4040-82b0-6931e292b01f.png",
+      "output": "public/game/sprites/v62/masks/feral.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/feral.jpg",
+          "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2023/05/51725_UNP_3-scaled.jpg",
+          "sha256": "bb7718bfe47a35a6db448922288e1e2e04d6e815a6d2a2f40e10bc22247a5bec"
+        },
+        {
+          "localPath": "v62/references/masks/feral-pack.jpg",
+          "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2023/05/51725_UNP_1-scaled.jpg",
+          "sha256": "ba692a5e89ebeb017eac2502ce7d5eccc802c8576f0724fcf0a185ec0bc322f1"
+        }
+      ],
+      "measurement": {
+        "id": "feral",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          229,
+          60,
+          1056,
+          1189
+        ],
+        "transparentFraction": 0.6344412393896152,
+        "sha256": "ceba366a222414c5e078baa16b02ac5d1e010a641368e56a4c14ba3bf2e9aebc",
+        "placement": {
+          "x": 116.99646,
+          "y": 15.92035,
+          "width": 64.3646,
+          "height": 64.3646
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "wolf",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Wolf from Aliens vs Predator Requiem: the THIRD mask from LEFT in reference group of four, also the masked figure in second photo. Weathered dark silver steel; tall oval forehead shield surrounded by rough outward tooth-like crown ridges, intricate shallow irregular etched alien glyphs across the forehead, narrow black eyes, broad short blunt respirator guard with strong central groove and subtle cheek panel lines. NO regular polished royal crown, NO human teeth, no extra ornaments. Only the Wolf mask, not other three.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-8b35e33d-f2bc-4b37-a4d6-5b1f4f4cded5.png",
+      "output": "public/game/sprites/v62/masks/wolf.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/avp-four-masks.jpg",
+          "url": "https://www.flickr.com/photos/sideshowcollectibles/3287611145",
+          "sha256": "b9c094329dfb6fb4b67317477a25f27409d5355f81cffd934e68eac90dd3d48d"
+        },
+        {
+          "localPath": "v62/references/masks/wolf.jpg",
+          "url": "https://www.sideshow.com/storage/product-images/903149/wolf-predator-heavy-weaponry_aliens-vs-predator-requiem_gallery_5c4d1854dc9f4.jpg",
+          "sha256": "1f7b0fd8120ce4fe76f8a5f4dc4f7b604197ebd9d9d8c3dad7cb8a62408d2397"
+        }
+      ],
+      "measurement": {
+        "id": "wolf",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          262,
+          22,
+          1089,
+          1213
+        ],
+        "transparentFraction": 0.5438087752366272,
+        "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214",
+        "placement": {
+          "x": 107.46644,
+          "y": 22.11577,
+          "width": 78.90101,
+          "height": 78.90101
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "scar",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Scar from Alien vs Predator: the FOURTH/FAR RIGHT mask in the attached group photo. Recreate only that mask, not the others. Smooth dull dark silver steel, oval domed shield with swept raised side rim, tiny incised forehead blooding scar mark seen in reference, narrow dark eye mesh under smooth brow, short broad angular smooth chin guard with central vertical crease. Minimal paneling, no neck extension, no Celtic cheek rings. Preserve the visible discreet scar rather than drawing arbitrary red stripes.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-976728de-33b9-46c3-8fd9-fc9737705c80.png",
+      "output": "public/game/sprites/v62/masks/scar.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/avp-four-masks.jpg",
+          "url": "https://www.flickr.com/photos/sideshowcollectibles/3287611145",
+          "sha256": "b9c094329dfb6fb4b67317477a25f27409d5355f81cffd934e68eac90dd3d48d"
+        }
+      ],
+      "measurement": {
+        "id": "scar",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          145,
+          52,
+          1061,
+          1215
+        ],
+        "transparentFraction": 0.5149995294165528,
+        "sha256": "a562d4b0105bf36f5b7d4796ac9f5595c483ee178dd1ee82fc643db5deff8c59",
+        "placement": {
+          "x": 111.11469,
+          "y": 20.14948,
+          "width": 80.79897,
+          "height": 80.79897
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "chopper",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Chopper from Alien vs Predator: the FIRST/FAR LEFT mask in the attached group photo. Recreate only that mask, not the others. Dark bronze steel, rounded forehead shield with raised oval perimeter rim and sparse subtle angular grooves, black eye band under brow, thick central blunt snout plate. Distinctive THREE sweeping stepped horizontal ribs down EACH cheek/muzzle side; reproduce this rib arrangement rather than a flat generic mask. No Celtic circular cheek tubes, no spiked crown.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-a588acce-b162-4fbe-9a1c-7b6d2b0ef3e7.png",
+      "output": "public/game/sprites/v62/masks/chopper.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/avp-four-masks.jpg",
+          "url": "https://www.flickr.com/photos/sideshowcollectibles/3287611145",
+          "sha256": "b9c094329dfb6fb4b67317477a25f27409d5355f81cffd934e68eac90dd3d48d"
+        }
+      ],
+      "measurement": {
+        "id": "chopper",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          106,
+          40,
+          1106,
+          1214
+        ],
+        "transparentFraction": 0.4760778268710779,
+        "sha256": "3cd116d3bc01742689ffe78b90f1780583accbf9c2b06fe6b8f508437c55767b",
+        "placement": {
+          "x": 111.28723,
+          "y": 20.94681,
+          "width": 80.04255,
+          "height": 80.04255
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "fugitive",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Fugitive Predator from The Predator (2018), mask on LEFT main figure only (ignore unmasked head at right). Matte charcoal black gunmetal, broad oval forehead shield outlined by a raised rim open at very top in a U notch with TWO short pointed corners, dark eye slits, angular sloping cheeks, small bronze/gold trapezoid at brow center, a thin gold elongated inverted-U frame around center muzzle detail. Those restrained gold inlays are critical, no silver hexagonal shell pattern. No horns beyond the small photographed top rim ends.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-8ddc8760-f3a1-40fa-8df7-b96bdbdc6bff.png",
+      "output": "public/game/sprites/v62/masks/fugitive.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/fugitive.jpg",
+          "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/The-Predator-1-.jpg",
+          "sha256": "308ca41360b9895819652fa3f45501d8dcf5e8e015c72075df2e17657852d712"
+        }
+      ],
+      "measurement": {
+        "id": "fugitive",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          196,
+          39,
+          1068,
+          1203
+        ],
+        "transparentFraction": 0.5335417890819553,
+        "sha256": "ca224740b67227565edb8e37b9efa6a0fc70d0ecb187ddc25700a3f827b0652c",
+        "placement": {
+          "x": 109.28112,
+          "y": 20.98927,
+          "width": 80.72961,
+          "height": 80.72961
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "enforcer",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Enforcer Predator from the officially licensed NECA Bad Blood/Dark Horse design shown. Reconstruct only the SILVER MASK WORN ON THE FACE, not the removed mask held in hand. Distinctive very tall narrow central upright blade fin above forehead, sharp swept flared eyebrow corners curving up at sides, dark recessed eyes, short broad muzzle faceplate with a center vertical groove and swept cheek ridges. Preserve proportions: blade rises roughly half a face height above top dome. No horns elsewhere, no black tribal stripes or ivory bone. Silver steel under neutral light, remove photographed blue stage light.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-737b4201-8196-4346-be0e-d4d0ffa4604a.png",
+      "output": "public/game/sprites/v62/masks/enforcer.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/enforcer.jpg",
+          "url": "https://necaonline.com/wp-content/uploads/2014/08/Enforcer1.jpg",
+          "sha256": "233c815a2d963a57de3431d532f46d4e73a7a6f0ae8b452d29b00b05ace60d62"
+        }
+      ],
+      "measurement": {
+        "id": "enforcer",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          234,
+          14,
+          1112,
+          1242
+        ],
+        "transparentFraction": 0.6433428976239352,
+        "sha256": "6a3e9bf39a0ac13fc505b9957e187927364a50a8e3a3399919cec3fea14dad75",
+        "placement": {
+          "x": 97.39138,
+          "y": 1.90643,
+          "width": 97.95281,
+          "height": 97.95281
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "boar",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Boar Predator from Predator 2 (NECA licensed design). Reproduce hammered pewter/bronze mask geometry from head of reference, ignoring the strong orange scene light. Broad domed forehead with THREE stacked arched curved embossed raised ridges narrowing downward, each ridge thicker than a scratch. Small eye band, compact short broad muzzle faceguard with broad side cheek flanges and tiny central rounded split/ridge resembling snout. Do not elongate muzzle into a trunk or add animal tusks; no alien glyphs, filigree, horns or jewels.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-f0486f6c-69f9-4a06-a479-00482c916ae6.png",
+      "output": "public/game/sprites/v62/masks/boar.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/boar.jpg",
+          "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/05/Boar5-scaled.jpg",
+          "sha256": "ff63f7618034a0e5f73976e4a312c26bd9a5a866b68524bb7899181d6009f686"
+        }
+      ],
+      "measurement": {
+        "id": "boar",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          157,
+          81,
+          1118,
+          1193
+        ],
+        "transparentFraction": 0.5331036377372312,
+        "sha256": "1ab476fe4ca264e3e5e2f2a61296dabda10d7e4aced96aeacb3078a901908aa7",
+        "placement": {
+          "x": 107.00809,
+          "y": 18.04178,
+          "width": 84.50135,
+          "height": 84.50135
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "snake",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Snake Predator from NECA Ultimate Snake / Predator 2 expanded licensed design. MASK in UPPER RIGHT of reference package photo, not the unmasked main figure. Rounded oval silver dome with copper bronze raised ornament: centered vertical chain of THREE oval discs below a short engraved horizontal row of tiny bars, symmetrical flowing arched ribs radiating out and curving downward, border made of many tiny parallel teeth around the forehead plate. Narrow black eye slits; long vertical ribbed chin/nose guard; copper shaded curved cheek ridge. Exact photographed geometry, no gems or red lights. Not Jungle mask; no stylized snake animal head.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-ff183968-0441-477e-9288-6762e24e366b.png",
+      "output": "public/game/sprites/v62/masks/snake.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/snake-pack.jpg",
+          "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/51426_UNP_1-scaled.jpg",
+          "sha256": "82e7cef452045a318f087956be87a11985472f4fe27613ad9f7c3ec6b54ddda5"
+        }
+      ],
+      "measurement": {
+        "id": "snake",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          199,
+          62,
+          1080,
+          1197
+        ],
+        "transparentFraction": 0.5278858847859099,
+        "sha256": "b8a839c9bde4b7dc77a2226e14909a248f27030241eb9079add3b76d8d2190c8",
+        "placement": {
+          "x": 107.74648,
+          "y": 19.40669,
+          "width": 82.79049,
+          "height": 82.79049
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "berserker",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Berserker Predator from Predators (2010): ONLY THE MASK shown in UPPER RIGHT of this official Prime1 multi-panel reference, NOT the living unmasked head from other panels. Heavy dark blackened metal, bronze warm center oval forehead shield, raised thick silver-grey edge with broad rectangular notch at top middle, narrow dark eyes, central broad long dark muzzle nose guard, small triangular 3-lens emitter on temple. CRITICAL: preserve the fixed yellowed skeletal LOWER JAW TROPHY bolted across bottom edge of the mask: continuous horseshoe bone jaw with central tall sharp teeth rising upward, bone ramus rising at both sides. This trophy is part of the mask, not living mandibles. No flesh/dreads/cables, no other skull. Do not invent outer cheek horns. Keep simple smooth original shell.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-fad8bc2f-7fcc-4bda-bb98-d832aa695f7c.png",
+      "output": "public/game/sprites/v62/masks/berserker.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/berserker-predator_predator_gallery_66b50a6dd6ace.jpg",
+          "url": "https://www.sideshow.com/storage/product-images/912621/berserker-predator_predator_gallery_66b50a6dd6ace.jpg",
+          "sha256": "6526afcb4afef6bb42aa87661a3108678dd24e20892efb02cd2a6ea785ba441d"
+        }
+      ],
+      "measurement": {
+        "id": "berserker",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          208,
+          38,
+          1155,
+          1237
+        ],
+        "transparentFraction": 0.4393875801581669,
+        "sha256": "6764f7596d6443f4657340728f316d111a50ba6d662d270e5189bc4c2312f087",
+        "placement": {
+          "x": 107.375,
+          "y": 21.125,
+          "width": 78.375,
+          "height": 78.375
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "falconer",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Falconer Predator from Predators(2010): faithfully reconstruct mask visible on official Hot Toys Falconer reference. Elongated broad smooth oval domed forehead outlined by raised plain narrow rim, matte weathered dull bronze gunmetal. Characteristic bird-like sharp V eye ridge, black narrow lenses with SILVER lower eye frames that meet a central small nose bridge. Long flat pointed angular snout faceplate with central vertical thin seam, TWO long sharp parallel panel grooves on each side sloping slightly outward as they rise; bluntly squared lower chin edge with subtle vertical vents. Mask only, no lower neck bellows/armor/cables. Forehead has NO glyphs, no filigree, no jaws or tusks. Extend full oval top where photo crops it using its continuous oval geometry; no horns.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-d5a2481a-4ba4-4512-9d0a-88f5bd13a952.png",
+      "output": "public/game/sprites/v62/masks/falconer.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/falconer-official.jpg",
+          "url": "https://www.hottoys.jp/catalog/swfdata/ht3207/image/01.jpg",
+          "sha256": "c4aba604d4e380a5a2529d6d272eee575e1ee035765440b133351cc6ee41df97"
+        }
+      ],
+      "measurement": {
+        "id": "falconer",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          203,
+          22,
+          1052,
+          1221
+        ],
+        "transparentFraction": 0.5257383708655429,
+        "sha256": "5130117d27a37344b2d2e354aa7e019c1e9c76bd6a928e1fbe1095b464c6735f",
+        "placement": {
+          "x": 110.75,
+          "y": 22.125,
+          "width": 78.375,
+          "height": 78.375
+        }
+      },
+      "nativeBytesPreserved": true
+    },
+    {
+      "id": "dek",
+      "prompt": "Use case: precise-object-edit. Asset type: one standalone 2D game biomask equipment cutout, native transparent PNG. Use the attached official licensed reference photo as the geometry authority, NOT as a backdrop. Reconstruct only the named detachable mask, remove wearer/body/dreadlocks/neck/cables/stand/background/text. Preserve the recognizable exact mask silhouette, proportions, material and panel geometry as closely as the reference permits. Three-quarter view facing the viewer's RIGHT, near-frontal with only about 25 degrees yaw; upright level eye line, no dramatic tilt. Detailed grounded painted game art with readable contours, fine realistic surface texture, soft neutral upper-left light, no chunky pixels, no oversaturation. One mask centered, occupy about 75 percent of a square image with generous transparent padding; no floor/shadow/reflection, no frame, no text. Do not invent horns, facial flesh, jaw anatomy, or extra ornaments. Genuine alpha transparency throughout the background. Dek training armor bio-mask from Predator Badlands(2025), shown on official NECA masked figure. Copy only mask, not body. Narrow head-hugging charcoal gunmetal helmet with wavy shallow ridged crown edge, FIVE subtle longitudinal flutes on forehead, a broad weathered muted gold stripe running down the center forehead and nose all the way to tip of tapered muzzle. Deep horizontal eye openings with slim gold inner lining; diagonal swept cheek panels with slim gold wedges and silver borders. Black recessed side vents, lower triangular cheeks flare gently then taper into central long chin. No oval giant forehead rim, no jewels or living face. Copy reference precisely as possible.",
+      "sourceOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-201de07b-2ddd-4cab-a9ea-683c9a9a1048.png",
+      "output": "public/game/sprites/v62/masks/dek.png",
+      "references": [
+        {
+          "localPath": "v62/references/masks/dek-pack.png",
+          "url": "https://store.necaonline.com/cdn/shop/files/Legal_and_Logo_51752_UNP_10_jpg.png",
+          "sha256": "e9f3cd7d8c9e07f8f397ed90867c6ed22a859c6debc4b337fd86ddc393bc626f"
+        }
+      ],
+      "measurement": {
+        "id": "dek",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          258,
+          68,
+          1016,
+          1203
+        ],
+        "transparentFraction": 0.600551600110905,
+        "sha256": "ddaf27997eec01c215ee81b123af0679e3479516e0250c66e5a90e144b4ef2c8",
+        "placement": {
+          "x": 107.91153,
+          "y": 19.01056,
+          "width": 82.79049,
+          "height": 82.79049
+        }
+      },
+      "nativeBytesPreserved": true
+    }
+  ],
+  "iterations": [
+    {
+      "id": "scar",
+      "firstOutput": "C:\\Users\\chuck\\.codex\\generated_images\\01a0f3e9-a232-7332-9a6f-846f097e3aa4\\exec-c83f3a29-a3bc-4da7-a650-35ba74750426.png",
+      "reason": "First generated mask faced left; second OpenAI edit reorients right.",
+      "preserved": "work-local/v62/qa/masks/scar-first-left.png",
+      "prompt": "Use case: precise-object-edit. Correct ONLY the orientation of this standalone Scar Predator mask cutout for a 2D character equipment rig. Keep this exact mask identity/material/shape/scar mark and all details unchanged as much as possible, but show it in THREE-QUARTER VIEW FACING TO THE VIEWER'S RIGHT: the central nose/chin plate must project toward image RIGHT, the image LEFT cheek is the wider visible near side and the image RIGHT cheek is narrower. Keep level eyes and upright vertical head, no roll or tilt. Do not simply output the same left-facing mask. Soft neutral upper-left light, true transparent background, complete mask with generous padding. No wearer, hair, neck or stand. Native transparent PNG."
+    }
+  ],
+  "originals": [
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/berserker.webp",
+      "sha256": "d7faf9adb536c62b7d03b5ed11a4c986d8e142b7afab32302b4e322845a4d30b",
+      "bytes": 7308
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/celtic.webp",
+      "sha256": "51e6e74d86da3a280249db4be8a4b1b5e97c76c94491d92184227cd26688a207",
+      "bytes": 7868
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/chopper.webp",
+      "sha256": "a34316b33ffa69223900aac39f49886377317a2b0fe7c16d913e37c9c8563492",
+      "bytes": 6072
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/city.webp",
+      "sha256": "e0ea4eac05c424de857dcac3a03b2303b80cd3d8374e2a190f67bcc69de9f416",
+      "bytes": 7558
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/dek.webp",
+      "sha256": "4dd73e329c05301682555be71426a565a65d2c6c4b5981dacedf25175f5a0ed4",
+      "bytes": 7692
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/elder.webp",
+      "sha256": "db37e3af3727f321e3899cb5551151f8a3561cdb206a7349fbf50bdf4a06b389",
+      "bytes": 8960
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/enforcer.webp",
+      "sha256": "0afbf848cd008e7579e95017c69f27076b07777496e5a8522b56728941f64f76",
+      "bytes": 8230
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/feral.webp",
+      "sha256": "4f8cf765d7b2932be5d59139b182c368083a79a35a78b3faae1ae2b4af14d9b6",
+      "bytes": 8338
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/fugitive.webp",
+      "sha256": "9f4ee72afb9c1782cba34278e5e9889f56b457e7a87c750ad4e8f84d7f95f9ac",
+      "bytes": 6860
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/jungle.webp",
+      "sha256": "8218532f32bbdfc9179fc11a8b5d38f9f29ca8ff7612f0feed10ef061418bf08",
+      "bytes": 6590
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/scar.webp",
+      "sha256": "d9a458ecdd17b48c6e5b538ba8a7143c63c080ad67eca5a36f9dc47469b81652",
+      "bytes": 6946
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/wolf.webp",
+      "sha256": "8ff158ad82642a0b82e61f9c62b0a7baa0b6e459851ed90220daa63498054ce2",
+      "bytes": 8172
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/berserker.webp",
+      "sha256": "a2a498756224bc744ba3b6847296ba61a0ffb3e5cf0dd15bcc0f2b9b1ac12f80",
+      "bytes": 7446
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/celtic.webp",
+      "sha256": "bc8d1a5a856cbe971dbf7ea65119e9e1f0ce6a1d99734c485b0764e9c05a27f3",
+      "bytes": 7770
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/chopper.webp",
+      "sha256": "d0db211fa256f0870984ce2a5ecb0ab39e6c92250ea3909ee40007ac2fc32c41",
+      "bytes": 6354
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/city.webp",
+      "sha256": "3027b433763b8caa67b1b505ddf9b2e19f28624e87085f63670582315b98fbd6",
+      "bytes": 8902
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/dek.webp",
+      "sha256": "9d4123dc4bae2253f74d532814cb44d0afdb4be6ca3750f85d84c36714b0f5ee",
+      "bytes": 7674
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/elder.webp",
+      "sha256": "ecf3acb783d5cae177f9dd6c9f670cefe0c0007a7df2ad1759119daefae6ba0f",
+      "bytes": 8848
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/enforcer.webp",
+      "sha256": "5939e2be0e0411a01a8329b2fb393f907f3b337623663011d454e56116fdd12b",
+      "bytes": 8284
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/feral.webp",
+      "sha256": "e928965e3d41b230c25fdee3ae144c340a5bd8972c07a508737c997b52616c75",
+      "bytes": 8260
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/fugitive.webp",
+      "sha256": "db3a586ad6d8b63dfc6f087968c4d3ac2a5ae5b474bfe41c9eb67175555eabdb",
+      "bytes": 6926
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/jungle.webp",
+      "sha256": "76186196c8b3bb289aa7dc935dc5afb6948f8566fc233f79bf5e7090392b457c",
+      "bytes": 7210
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/scar.webp",
+      "sha256": "9523979a10ad5810fb5316a7944662e3bdd12c2636a12d2408a45fbd9529681f",
+      "bytes": 7260
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/wolf.webp",
+      "sha256": "a792fbcfa61a66dd49cb0c7fdccad7459a71b0f7b1c8b8722c701caa779a9f2f",
+      "bytes": 8070
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/masks/mask-boar.webp",
+      "sha256": "5da7003c6a67ff84482e2b158d81b014d2e6fa9f40250d2ebb26d1ec291413ee",
+      "bytes": 244934
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/masks/mask-falconer.webp",
+      "sha256": "83006303b5dc52e111517c30cca53a0c36865a232223ceb62e2f0e6536c27cd3",
+      "bytes": 251846
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "sha256": "20fada2367f5ed884d002db8488b2bd96423d756da81ee5c6e65350f823d22ec",
+      "bytes": 130652
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/masks/mask-snake.webp",
+      "sha256": "a85d1eaafd0ca5a10b3b890c984ff030d3205c5e0429c1fcba82a2ed76198614",
+      "bytes": 121522
+    }
+  ]
+}

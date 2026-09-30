@@ -1,10 +1,11 @@
 import {
   HUNTER_BODY_PART_BONES,
   HUNTER_GAUNTLET_FIT_BY_MORPH,
-  hunterArmorPath, hunterBodyPartPath, hunterDreadPath, hunterEquipmentPath,
-  hunterMaskRigPath, hunterNetPartPath,
+  hunterArmorPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterEquipmentPath,
+  hunterMaskRigPath, hunterMaskRigPlacement, hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
+import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import {
   HUNTER_RIG_CANVAS, relativeBoneMatrix, solveHunterRig,
   type HunterRigBoneId,
@@ -28,6 +29,7 @@ export interface PitFighterArtLayer {
   readonly rotation?: number;
   readonly scale?: number;
   readonly pivot?: readonly [number, number];
+  readonly placement?: HunterLayerPlacement;
 }
 
 /**
@@ -51,12 +53,13 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
   ];
   const layers: PitFighterArtLayer[] = order.map((part, index) => ({
     id: "body-" + part, src: hunterBodyPartPath(morph, part),
+    placement: hunterBodyPartPlacement(morph, part), filter: hunterBodyPartColorV62(morph, part, "none"),
     bone: HUNTER_BODY_PART_BONES[part], depth: part === "hand-front" ? 67 : part === "hand-back" ? 40 : 20 + index * 3,
     clip: part === "hand-front"
       ? superHunter ? [[202, 211, 35, 44]] : [[195, 210, 30, 22], [205, 232, 20, 10]]
       : part === "hand-back"
         ? superHunter ? [[19, 210, 46, 44]] : [[30, 211, 30, 39]]
-        : undefined,
+        : hunterBodyPartClipV62(morph, part),
   }));
   // Berserker has no body net. Neither profile puts a net over fingers/biomask.
   if (!superHunter) {
@@ -68,7 +71,7 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
   for (let strand = 0; strand < 7; strand++) {
     layers.push({
       id: "dread-" + strand, src: hunterDreadPath("classic"), bone: "head", depth: 3 + strand,
-      offset: [-12 + strand * 4, strand < 4 ? -strand : strand - 4],
+      offset: [-12 + strand * 4 + HUNTER_HEAD_DREAD_OFFSET_V62.x, strand < 4 ? -strand : strand - 4],
       rotation: (-14 + strand * 3) * Math.PI / 180,
       scale: .78 + (3 - Math.abs(3 - strand)) * .09, pivot: [143, 43],
       filter: "saturate(.7) brightness(.65)",
@@ -95,7 +98,7 @@ export function getPitFighterArtLayers(fighterId: PitFighterId): readonly PitFig
     layers.push({ id: "caster-" + part, src: hunterEquipmentPath(part), bone, depth });
   }
   layers.push(
-    { id: "mask", src: hunterMaskRigPath(superHunter ? "berserker" : "jungle"), bone: "head", depth: 48 },
+    { id: "mask", src: hunterMaskRigPath(superHunter ? "berserker" : "jungle"), placement: hunterMaskRigPlacement(superHunter ? "berserker" : "jungle"), bone: "head", depth: 48 },
     { id: "blade-housing", src: hunterEquipmentPath("blade-housing"), bone: "armFrontLower", depth: 62, filter: armorFilter },
     {
       id: "blades", src: hunterEquipmentPath("blades"), bone: "armFrontLower", depth: 63,
@@ -216,7 +219,8 @@ export function drawPitModularFighter(
       for (const [x, y, width, height] of layer.clip) context.rect(x, y, width, height);
       context.clip();
     }
-    context.drawImage(bank.images.get(layer.src)!, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+    context.drawImage(bank.images.get(layer.src)!, layer.placement?.x ?? 0, layer.placement?.y ?? 0,
+      layer.placement?.width ?? HUNTER_RIG_CANVAS.width, layer.placement?.height ?? HUNTER_RIG_CANVAS.height);
     context.restore();
   }
   context.restore();

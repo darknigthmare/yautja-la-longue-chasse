@@ -24,11 +24,14 @@ import {
   HUNTER_WEAPONS_V3,
   hunterArmorPath,
   hunterBodyPartPath,
+  hunterBodyPartPlacement,
   hunterDreadPath,
   hunterMaskRigPath,
+  hunterMaskRigPlacement,
   hunterNetPartPath,
   type HunterBodyPartId,
 } from "./hunterVisuals";
+import { HUNTER_HEAD_DREAD_OFFSET_V62, hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import {
   HUNTER_RIG_CANVAS,
   multiplyAffine,
@@ -312,9 +315,22 @@ function registeredLayer(
   slot: string,
   filter?: string,
   opacity?: number,
+  placement?: HunterLayerPlacement,
+  clipPath?: string,
 ): React.ReactNode {
+  // Transform a full rig canvas: CSS percentage translations on a small cutout
+  // would otherwise change the bone pivot and diverge from the mission canvas.
+  if (placement) return <span key={slot} aria-hidden="true" data-rig-placement={slot}
+    style={{ ...fullCanvasImage, zIndex, transform: cssMatrix(matrix) }}>
+    <img alt="" data-rig-slot={slot} draggable={false} src={path} style={{
+      position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
+      width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`,
+      objectFit: "fill", pointerEvents: "none", userSelect: "none", opacity, filter,
+    }} />
+  </span>;
   return (
     <img
+      key={slot}
       aria-hidden="true"
       alt=""
       data-rig-slot={slot}
@@ -325,6 +341,7 @@ function registeredLayer(
         zIndex,
         opacity,
         filter,
+        clipPath,
         transform: cssMatrix(matrix),
       }}
     />
@@ -537,7 +554,7 @@ export function HunterRigPreview({
 
       {DREAD_STRANDS.map((strand, index) => {
         const offsetMatrix = multiplyAffine(
-          translation(strand.x, strand.y),
+          translation(strand.x + HUNTER_HEAD_DREAD_OFFSET_V62.x, strand.y + HUNTER_HEAD_DREAD_OFFSET_V62.y),
           multiplyAffine(
             rotationAround(
               DREAD_ROOT.x,
@@ -621,20 +638,9 @@ export function HunterRigPreview({
         const matrix = boneMatrix(boneId);
         const z = 20 + index * 2;
         return [
-          <img
-            aria-hidden="true"
-            alt=""
-            data-rig-slot={`body-${partId}`}
-            draggable={false}
-            key={`body-${partId}`}
-            src={hunterBodyPartPath(appearance.bodyMorphId, partId)}
-            style={{
-              ...fullCanvasImage,
-              zIndex: z,
-              filter: SKIN_FILTER[appearance.skinId],
-              transform: cssMatrix(matrix),
-            }}
-          />,
+          registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId), matrix, z,
+            `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]), undefined,
+            hunterBodyPartPlacement(appearance.bodyMorphId, partId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img
@@ -648,6 +654,8 @@ export function HunterRigPreview({
                     ...fullCanvasImage,
                     zIndex: z + 1,
                     opacity: netOpacity,
+                    filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]),
+                    clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId),
                     transform: cssMatrix(matrix),
                   }}
                 />,
@@ -704,6 +712,8 @@ export function HunterRigPreview({
           70,
           `mask-${appearance.biomaskId}`,
           "drop-shadow(0 2px 2px rgb(0 0 0 / .9))",
+          undefined,
+          hunterMaskRigPlacement(appearance.biomaskId),
         )}
 
       {showsCaster && (

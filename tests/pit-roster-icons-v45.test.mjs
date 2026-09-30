@@ -10,6 +10,7 @@ import sharp from 'sharp';
 const manifest = JSON.parse(await fs.readFile('app/game/data/pitRosterIconsV45.json', 'utf8'));
 const sourceManifest = JSON.parse(await fs.readFile('app/game/data/pitUserHuntersV44.json', 'utf8'));
 const originalsV56 = JSON.parse(await fs.readFile('app/game/data/pitOriginalFighterArtV56.json', 'utf8'));
+const additionsV62 = JSON.parse(await fs.readFile('app/game/data/pitUserHuntersV62.json', 'utf8')).fighters;
 const sourceFighters = sourceManifest.fighters.filter(fighter => fighter.id.startsWith('user-') && fighter.variants.length > 0);
 const digest = value => createHash('sha256').update(value).digest('hex');
 const local = src => path.join('public', src.slice(1));
@@ -120,6 +121,6 @@ test('every roster page requests supplied thumbnails only, while historical port
     }
     assert(pageBytes < 960 * 1024, 'a supplied roster page must stay below 960 KiB');
   }
-  assert.deepEqual([...seen].sort(), [...Object.keys(manifest.icons), ...originalsV56.fighters.map(fighter => fighter.fighterId)].sort());
+  assert.deepEqual([...seen].sort(), [...Object.keys(manifest.icons), ...originalsV56.fighters.map(fighter => fighter.fighterId), ...additionsV62.map(fighter => fighter.id)].sort());
   for (const invalid of ['city-hunter', 'user-missing', '__proto__', 'constructor']) assert.equal(getPitRosterIcon(invalid), null);
 });

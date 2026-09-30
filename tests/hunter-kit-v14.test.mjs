@@ -176,10 +176,10 @@ test("thumbnail and rig can later share the same registry asset", () => {
   assert.equal(rig?.asset.runtimeUrl, thumbnail?.asset.runtimeUrl);
 });
 
-test("GameClient consumes the exact wall, Feral spear gun and separated V16 archive", () => {
+test("GameClient separates V62 reference masks, preserved originals and V16 archive", () => {
   assert.match(
     gameClientSource,
-    /const V14_EXACT_MASK_ASSETS = listHunterKitAssets\(\{[\s\S]*?kind: "mask",[\s\S]*?status: "available",[\s\S]*?\}\);/,
+    /const V14_ORIGINAL_MASK_ASSETS = listHunterKitAssets\(\{[\s\S]*?kind: "mask",[\s\S]*?status: "available",[\s\S]*?\}\);/,
   );
   assert.match(
     gameClientSource,
@@ -188,7 +188,7 @@ test("GameClient consumes the exact wall, Feral spear gun and separated V16 arch
   assert.match(gameClientSource, /className="armory-exact-kit"/);
   assert.match(
     gameClientSource,
-    /\.\.\.V14_EXACT_MASK_ASSETS,[\s\S]*?V14_FERAL_SPEARGUN\?\.available[\s\S]*?\[V14_FERAL_SPEARGUN\]/,
+    /\.\.\.REFERENCE_BIOMASKS_V62\.map[\s\S]*?V14_FERAL_SPEARGUN\?\.available[\s\S]*?\[V14_FERAL_SPEARGUN\]/,
   );
   assert.match(gameClientSource, /src=\{asset\.runtimeUrl\}/);
   assert.match(
@@ -205,108 +205,29 @@ test("GameClient consumes the exact wall, Feral spear gun and separated V16 arch
   );
 });
 
-test("GameClient checks registry availability and centralizes mask fallbacks", () => {
-  assert.match(
-    gameClientSource,
-    /function resolveAvailableMaskRuntimeUrl\([\s\S]*?resolveHunterKitAsset\(request\)[\s\S]*?resolution\?\.asset\.available[\s\S]*?resolution\.asset\.runtimeUrl/,
-  );
-  for (const [constantName, assetId, familyId, approximationId] of [
-    ["V14_FERAL_MASK_URL", "mask-feral-screen", "feral", "mask-skull"],
-    ["V14_BOAR_MASK_URL", "mask-boar", "lost-tribe", "mask-metal"],
-    ["V14_SNAKE_MASK_URL", "mask-snake", "lost-tribe", "mask-metal"],
-    [
-      "V14_FALCONER_MASK_URL",
-      "mask-falconer",
-      "super-predator",
-      "mask-angular",
-    ],
-  ]) {
-    assert.match(
-      gameClientSource,
-      new RegExp(
-        `const ${constantName} = resolveAvailableMaskRuntimeUrl\\(\\{[\\s\\S]*?assetId: "${assetId}",[\\s\\S]*?familyId: "${familyId}",[\\s\\S]*?approximationId: "${approximationId}",[\\s\\S]*?\\}\\);`,
-      ),
-    );
-  }
-  for (const constantName of [
-    "V14_BOAR_MASK_URL",
-    "V14_SNAKE_MASK_URL",
-    "V14_FALCONER_MASK_URL",
-  ]) {
-    assert.match(
-      gameClientSource,
-      new RegExp(
-        `image: ${constantName},[\\s\\S]*?preferImage: Boolean\\(${constantName}\\)`,
-      ),
-    );
-  }
-  assert.match(
-    gameClientSource,
-    /activeHunterPreset\.biomaskId !== null[\s\S]*?\? hunterMaskThumbnailPath\([\s\S]*?activeHunterPreset\.biomaskId/,
-  );
-  assert.match(
-    gameClientSource,
-    /const fallbackImage = preset\.biomaskId[\s\S]*?\? hunterMaskThumbnailPath\(preset\.biomaskId\)/,
-  );
-  assert.doesNotMatch(
-    gameClientSource,
-    /HUNTER_ASSET_ROOT_V3\}\/masks\/\$\{(?:activeHunterPreset|preset)\.biomaskId\}/,
-  );
-  assert.match(
-    gameClientSource,
-    /option\.id === null \|\| option\.preferImage[\s\S]*?: V6_MASK_VISUAL_BY_ID\[option\.id\]/,
-  );
+test("GameClient selects native mask images and exposes preserved clan designs", () => {
+  assert.match(gameClientSource, /REFERENCE_BIOMASKS_V62\.map/);
+  assert.match(gameClientSource, /PRESERVED_BIOMASKS_V62\.map/);
+  assert.match(gameClientSource, /image: hunterMaskThumbnailPath\(mask\.id\), preferImage: true/);
+  assert.doesNotMatch(gameClientSource, /V14_(FERAL|BOAR|SNAKE|FALCONER)_MASK_URL/);
+  assert.match(gameClientSource, /option\.id === null \|\| option\.preferImage[\s\S]*?: V6_MASK_VISUAL_BY_ID\[option\.id\]/);
 });
 
-test("standalone V14 cutouts stay thumbnail-only while rig paths stay aligned V3", () => {
-  const expectedExactMasks = {
-    feral: "mask-feral-screen",
-    boar: "mask-boar",
-    snake: "mask-snake",
-    falconer: "mask-falconer",
-  };
-  const expectedRigMasks = {
-    feral: "feral",
-    boar: "city",
-    snake: "city",
-    falconer: "berserker",
-  };
-
-  for (const [maskId, assetId] of Object.entries(expectedExactMasks)) {
+test("standalone V14 originals remain preserved while canonical slots use new V62 cutouts", () => {
+  for (const [id, assetId] of Object.entries({feral: "mask-feral-screen", boar: "mask-boar", snake: "mask-snake", falconer: "mask-falconer"})) {
     const asset = getHunterKitAsset(assetId);
-    assert.equal(asset?.available, true, `${maskId}: manifest availability`);
-    assert.deepEqual(asset?.selectionAliases.genericIds, []);
-    assert.equal(
-      hunterMaskThumbnailPath(maskId),
-      asset?.runtimeUrl,
-      `${maskId}: exact V14 thumbnail`,
-    );
-    assert.equal(
-      hunterMaskRigPath(maskId),
-      `${HUNTER_ASSET_ROOT_V3}/masks/registered/${expectedRigMasks[maskId]}.webp`,
-      `${maskId}: aligned V3 rig mask`,
-    );
-    assert.doesNotMatch(hunterMaskRigPath(maskId), /\/assets\/v14\//);
+    assert.equal(asset.available, true);
+    assert.equal(asset.runtimeUrl, "/game/assets/v14/hunter-kit/masks/" + assetId + ".webp");
+    assert.match(asset.name, /création originale/);
+    assert.match(asset.work, /non canonique/);
+    assert.equal(hunterMaskThumbnailPath(id), "/game/sprites/v62/masks/" + id + ".png");
+    assert.equal(hunterMaskRigPath(id), hunterMaskThumbnailPath(id));
   }
-  assert.equal(
-    hunterMaskThumbnailPath("jungle"),
-    `${HUNTER_ASSET_ROOT_V3}/masks/jungle.webp`,
-  );
-  assert.equal(
-    hunterMaskRigPath("jungle"),
-    `${HUNTER_ASSET_ROOT_V3}/masks/registered/jungle.webp`,
-  );
-
-  for (const trophy of listHunterKitAssets({ kind: "trophy" })) {
+  assert.equal(hunterMaskRigPath("clan-voile-argent"), HUNTER_ASSET_ROOT_V3 + "/masks/registered/jungle.webp");
+  assert.equal(hunterMaskThumbnailPath("clan-voile-argent"), HUNTER_ASSET_ROOT_V3 + "/masks/jungle.webp");
+  for (const trophy of listHunterKitAssets({kind: "trophy"})) {
     assert.deepEqual(trophy.futureConsumers, ["thumbnail"]);
-    assert.deepEqual(trophy.selectionAliases.genericIds, []);
-    assert.equal(
-      resolveHunterKitAssetForConsumer(
-        { kind: "trophy", assetId: trophy.id },
-        "rig",
-      ),
-      null,
-    );
+    assert.equal(resolveHunterKitAssetForConsumer({kind: "trophy", assetId: trophy.id}, "rig"), null);
   }
 });
 

@@ -1,0 +1,512 @@
+[
+  {
+    "fighterId": "user-emissary-phg",
+    "variantId": "emissary-phg-official-armour-v62",
+    "bodyHeightPx": 441,
+    "pageBodyHeightPx": {
+      "idle-right": 441,
+      "idle-left": 471
+    },
+    "visibleFrameBounds": [
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          87,
+          50,
+          350,
+          444
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          582,
+          51,
+          360,
+          443
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1104,
+          52,
+          343,
+          441
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          90,
+          545,
+          364,
+          450
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          585,
+          550,
+          360,
+          443
+        ]
+      },
+      {
+        "pageId": "idle-right",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1092,
+          553,
+          353,
+          440
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          57,
+          25,
+          415,
+          475
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          562,
+          29,
+          426,
+          473
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1083,
+          29,
+          422,
+          473
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          56,
+          531,
+          423,
+          471
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          562,
+          531,
+          426,
+          469
+        ]
+      },
+      {
+        "pageId": "idle-left",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleRect": [
+          1083,
+          527,
+          424,
+          473
+        ]
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "emissary-phg-idle-v62",
+      "characterId": "user-emissary-phg",
+      "variantId": "emissary-phg-official-armour-v62",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                491
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                490
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                490
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                480
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                480
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-right",
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                480
+              ],
+              "durationTicks": 12
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": true,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                501
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                501
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                487
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                487
+              ],
+              "durationTicks": 12
+            },
+            {
+              "pageId": "idle-left",
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                486
+              ],
+              "durationTicks": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "fighterId": "user-emissary-phg",
+    "variantId": "emissary-phg-official-armour-v62",
+    "bodyHeightPx": 441,
+    "pageBodyHeightPx": {
+      "idle-right": 441,
+      "idle-left": 471
+    },
+    "heldPoseClips": [
+      {
+        "id": "idle",
+        "facing": "right"
+      },
+      {
+        "id": "idle",
+        "facing": "left"
+      }
+    ],
+    "atlas": {
+      "schemaVersion": 1,
+      "id": "emissary-phg-stance-v62",
+      "characterId": "user-emissary-phg",
+      "variantId": "emissary-phg-official-armour-v62",
+      "sourceKind": "authored-frames",
+      "status": "validated",
+      "pages": [
+        {
+          "id": "idle-right",
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-right.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        },
+        {
+          "id": "idle-left",
+          "src": "/game/sprites/v62/fighters/emissary-phg/idle-left.png",
+          "width": 1536,
+          "height": 1024,
+          "status": "validated",
+          "transparency": {
+            "mode": "alpha",
+            "noiseFloor": 2
+          }
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "facing": "right",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-right",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                491
+              ],
+              "durationTicks": 1
+            }
+          ]
+        },
+        {
+          "id": "idle",
+          "facing": "left",
+          "status": "validated",
+          "loop": false,
+          "ticksPerSecond": 60,
+          "frames": [
+            {
+              "pageId": "idle-left",
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                499
+              ],
+              "durationTicks": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

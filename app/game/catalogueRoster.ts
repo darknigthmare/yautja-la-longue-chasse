@@ -1,4 +1,4 @@
-// @ts-expect-error Node's strip-types test runner needs an explicit extension.
+// Explicit extension also works in the Node strip-types test runner.
 import { HUNTER_PRESET_BY_ID, hunterFilmPlatePath, type HunterLorePresetId } from "./hunterLore.ts";
 
 export const CATALOGUE_SOURCE_WORKBOOK = Object.freeze({

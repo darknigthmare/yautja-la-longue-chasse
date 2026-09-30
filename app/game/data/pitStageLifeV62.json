@@ -1,0 +1,1236 @@
+{
+  "schemaVersion": 1,
+  "release": "V62",
+  "stages": [
+    {
+      "stageId": "arena-126-avpr-2007-hospital-roof",
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E62",
+          "10_VIE_DES_STAGES!E63",
+          "10_VIE_DES_STAGES!E64"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Toit intact, ambiance d'exposition avant destruction. Evacuants adultes et appareil anonymes originaux ; aucune identité de survivant, route narrative ou continuité d'équipement de Wolf certifiée."
+      },
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Evacuants adultes anonymes — passage lointain",
+          "fps": 2,
+          "idleVisibility": "hidden",
+          "travelX": [
+            748,
+            788
+          ],
+          "clipWorld": {
+            "x": 732,
+            "y": 185,
+            "width": 78,
+            "height": 36
+          },
+          "opacity": 0.75,
+          "placement": {
+            "x": 748,
+            "bottom": 213,
+            "height": 26,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-01.png",
+          "sha256": "a7cf93205d78536d05b81f344ae52b3ad4cb1c144da9af6336a2bc0e00a8cb53",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                280,
+                447
+              ],
+              "alphaBounds": [
+                34,
+                88,
+                397,
+                359
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                278,
+                447
+              ],
+              "alphaBounds": [
+                37,
+                88,
+                409,
+                359
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                449
+              ],
+              "alphaBounds": [
+                17,
+                84,
+                414,
+                365
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                282,
+                446
+              ],
+              "alphaBounds": [
+                22,
+                80,
+                444,
+                366
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                279,
+                446
+              ],
+              "alphaBounds": [
+                24,
+                80,
+                395,
+                366
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                446
+              ],
+              "alphaBounds": [
+                12,
+                70,
+                450,
+                376
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Hélicoptère anonyme — rotor d'évacuation",
+          "fps": 4,
+          "placement": {
+            "x": 290,
+            "bottom": 132,
+            "height": 76,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-02.png",
+          "sha256": "dd7dda09f47359761670ad87d4e93bba2593c521cc4cfacb3b726f5c35da8209",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                270,
+                414
+              ],
+              "alphaBounds": [
+                28,
+                191,
+                478,
+                223
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                258,
+                414
+              ],
+              "alphaBounds": [
+                18,
+                148,
+                466,
+                266
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                259,
+                415
+              ],
+              "alphaBounds": [
+                16,
+                140,
+                483,
+                275
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                382
+              ],
+              "alphaBounds": [
+                17,
+                109,
+                478,
+                273
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                258,
+                382
+              ],
+              "alphaBounds": [
+                20,
+                158,
+                477,
+                224
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                255,
+                385
+              ],
+              "alphaBounds": [
+                15,
+                112,
+                474,
+                273
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Évent de toiture — vapeur dans le vent",
+          "fps": 3,
+          "placement": {
+            "x": 620,
+            "bottom": 177,
+            "height": 68,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-126-avpr-2007-hospital-roof/ambient-03.png",
+          "sha256": "03e496ae9570aef5d554f4436e99d484b7691d69952a33bf31cd110014b8ab2a",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                434
+              ],
+              "alphaBounds": [
+                78,
+                192,
+                351,
+                242
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                349,
+                242
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                226.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                386,
+                242
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                226,
+                435
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                370,
+                243
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                224.5,
+                434
+              ],
+              "alphaBounds": [
+                78,
+                192,
+                398,
+                242
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                226.5,
+                434
+              ],
+              "alphaBounds": [
+                80,
+                192,
+                367,
+                242
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-130-avp-classic-2000-space-station",
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E143",
+          "10_VIE_DES_STAGES!E144",
+          "10_VIE_DES_STAGES!E145"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Adaptation d'exposition de station industrielle. Marine adulte anonyme et mécanismes originaux ; ni héros Classic 2000 ni route scénarisée ou niveau exact certifié."
+      },
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Marine anonyme — traversée de passerelle",
+          "fps": 2,
+          "idleVisibility": "hidden",
+          "travelX": [
+            447,
+            524
+          ],
+          "clipWorld": {
+            "x": 437,
+            "y": 276,
+            "width": 99,
+            "height": 47
+          },
+          "opacity": 0.75,
+          "placement": {
+            "x": 447,
+            "bottom": 318,
+            "height": 27,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-01.png",
+          "sha256": "29d448c1e45d4afad334de0a44b2d536f53ae4becbbdbf2cd6c420b9350bfd79",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                480
+              ],
+              "alphaBounds": [
+                43,
+                30,
+                394,
+                450
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                479
+              ],
+              "alphaBounds": [
+                24,
+                28,
+                435,
+                451
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                267,
+                494
+              ],
+              "alphaBounds": [
+                17,
+                24,
+                397,
+                470
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                283,
+                480
+              ],
+              "alphaBounds": [
+                45,
+                23,
+                419,
+                457
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                271,
+                483
+              ],
+              "alphaBounds": [
+                62,
+                25,
+                353,
+                458
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                274,
+                481
+              ],
+              "alphaBounds": [
+                19,
+                25,
+                429,
+                456
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Ascenseur de service — cycle de porte",
+          "fps": 2,
+          "placement": {
+            "x": 853,
+            "bottom": 236,
+            "height": 108,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-02.png",
+          "sha256": "7c88338eedccbc433248dafa28a77332af643ba29f32afc37eda313a5710d097",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                465
+              ],
+              "alphaBounds": [
+                73,
+                49,
+                406,
+                416
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                465
+              ],
+              "alphaBounds": [
+                53,
+                49,
+                406,
+                416
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                236,
+                466
+              ],
+              "alphaBounds": [
+                34,
+                49,
+                404,
+                417
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                276,
+                445
+              ],
+              "alphaBounds": [
+                73,
+                31,
+                406,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                446
+              ],
+              "alphaBounds": [
+                53,
+                31,
+                407,
+                415
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                237,
+                446
+              ],
+              "alphaBounds": [
+                35,
+                30,
+                404,
+                416
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Quarantaine — indicateur mécanique lent",
+          "fps": 2,
+          "placement": {
+            "x": 809,
+            "bottom": 175,
+            "height": 40,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-130-avp-classic-2000-space-station/ambient-03.png",
+          "sha256": "8bbe4ad1a63b0341f4a3456ce84e0e6bdc6b9868e0dced818923f81d94e212af",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                300,
+                482
+              ],
+              "alphaBounds": [
+                191,
+                16,
+                221,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                256,
+                482
+              ],
+              "alphaBounds": [
+                147,
+                16,
+                219,
+                466
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                212,
+                482
+              ],
+              "alphaBounds": [
+                102,
+                16,
+                219,
+                466
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                299.5,
+                482
+              ],
+              "alphaBounds": [
+                191,
+                16,
+                223,
+                466
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                256.5,
+                482
+              ],
+              "alphaBounds": [
+                146,
+                15,
+                220,
+                467
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                212,
+                482
+              ],
+              "alphaBounds": [
+                102,
+                16,
+                219,
+                466
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "arena-187-golgotha-uscm-airlock",
+      "continuity": {
+        "mode": "exhibition-adaptation",
+        "sourceCells": [
+          "10_VIE_DES_STAGES!E140",
+          "10_VIE_DES_STAGES!E141",
+          "10_VIE_DES_STAGES!E142"
+        ],
+        "chapterReconstructionComplete": false,
+        "note": "Le manuel Atari atteste la base militaire USCM, les sas et les conduits. Composition latérale, uniformes de protection anonymes et silhouette de xénomorphe originaux ; ni géométrie Jaguar exacte ni chapitre précis certifié."
+      },
+      "events": [
+        {
+          "id": "ambient-01",
+          "name": "Sentinelles anonymes — sas d'observation",
+          "fps": 2,
+          "placement": {
+            "x": 257,
+            "bottom": 203,
+            "height": 162,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-01.png",
+          "sha256": "c1354791b2226240836b377ca9d31bb90c883b2be5a7fb2b1ac6d9aecb5ca661",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                289.5,
+                464
+              ],
+              "alphaBounds": [
+                83,
+                50,
+                413,
+                414
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                257,
+                465
+              ],
+              "alphaBounds": [
+                51,
+                50,
+                412,
+                415
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                465
+              ],
+              "alphaBounds": [
+                19,
+                50,
+                413,
+                415
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                289.5,
+                450
+              ],
+              "alphaBounds": [
+                83,
+                34,
+                413,
+                416
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                257.5,
+                450
+              ],
+              "alphaBounds": [
+                51,
+                34,
+                413,
+                416
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                225.5,
+                450
+              ],
+              "alphaBounds": [
+                19,
+                34,
+                413,
+                416
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-02",
+          "name": "Capteur d'alarme — balayage lent",
+          "fps": 2,
+          "placement": {
+            "x": 480,
+            "bottom": 145,
+            "height": 52,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-02.png",
+          "sha256": "f46559eca972f66cc01ecb26c54bf67b0621546714bda00b506fb22746222ab5",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                291,
+                399
+              ],
+              "alphaBounds": [
+                120,
+                72,
+                342,
+                327
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                400
+              ],
+              "alphaBounds": [
+                94,
+                72,
+                342,
+                328
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                238,
+                399
+              ],
+              "alphaBounds": [
+                66,
+                73,
+                344,
+                326
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                291,
+                398
+              ],
+              "alphaBounds": [
+                120,
+                70,
+                342,
+                328
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                265,
+                399
+              ],
+              "alphaBounds": [
+                94,
+                70,
+                342,
+                329
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                238,
+                399
+              ],
+              "alphaBounds": [
+                66,
+                70,
+                344,
+                329
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ambient-03",
+          "name": "Xénomorphe anonyme — vitrage distant",
+          "fps": 2,
+          "placement": {
+            "x": 704,
+            "bottom": 203,
+            "height": 162,
+            "parallax": 0.05,
+            "renderPass": "P1",
+            "anchor": "world"
+          },
+          "src": "/game/sprites/v62/pit-life/arena-187-golgotha-uscm-airlock/ambient-03.png",
+          "sha256": "969b5ba76914281bb6584a6b1240f1c99549feaa9fb68d0181320d4f90f93e7a",
+          "width": 1536,
+          "height": 1024,
+          "restFrame": 0,
+          "reducedMotionFrame": 0,
+          "frames": [
+            {
+              "rect": [
+                0,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                278,
+                464
+              ],
+              "alphaBounds": [
+                77,
+                44,
+                402,
+                420
+              ]
+            },
+            {
+              "rect": [
+                512,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                464
+              ],
+              "alphaBounds": [
+                54,
+                44,
+                401,
+                420
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                0,
+                512,
+                512
+              ],
+              "pivot": [
+                231,
+                464
+              ],
+              "alphaBounds": [
+                30,
+                44,
+                402,
+                420
+              ]
+            },
+            {
+              "rect": [
+                0,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                278,
+                445
+              ],
+              "alphaBounds": [
+                77,
+                22,
+                402,
+                423
+              ]
+            },
+            {
+              "rect": [
+                512,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                254.5,
+                445
+              ],
+              "alphaBounds": [
+                54,
+                23,
+                401,
+                422
+              ]
+            },
+            {
+              "rect": [
+                1024,
+                512,
+                512,
+                512
+              ],
+              "pivot": [
+                230.5,
+                445
+              ],
+              "alphaBounds": [
+                30,
+                23,
+                401,
+                422
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

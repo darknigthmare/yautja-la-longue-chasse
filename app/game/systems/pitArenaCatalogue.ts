@@ -208,11 +208,14 @@ export const PIT_ARENA_CATALOGUE: readonly PitArenaCatalogueEntry[] = CONCEPTS.m
     const runtimeArenaId = RUNTIME_ARENAS[index] ?? (extension && Object.hasOwn(PIT_ARENAS, extension.id) ? extension.id : null);
     const playable = runtimeArenaId !== null;
     const referenceIndex = number - 51;
+    // Preserve the historical slug for saves/replays; its waterfall art is original.
+    // The manual-attested Golgotha adaptation has its own stage ID 187.
+    const reclassifiedOriginal = number === 51;
     return {
       number,
       id,
-      name,
-      setting,
+      name: reclassifiedOriginal ? "Cataractes des Anciens · création originale" : name,
+      setting: reclassifiedOriginal ? "Ruines Yautja et cascades — création originale conservée, sans attribution au Camp Golgotha." : setting,
       wave,
       runtimeStatus: playable ? "playable" : "concept",
       runtimeArenaId,
@@ -237,8 +240,8 @@ export const PIT_ARENA_CATALOGUE: readonly PitArenaCatalogueEntry[] = CONCEPTS.m
         competitive: "neutral",
         arcadeCampaign: "authored-opt-in",
       },
-      referenceStudy: wave === "heritage-study" ? HERITAGE_REFERENCES[referenceIndex] : null,
-      rightsNote: wave === "heritage-study"
+      referenceStudy: wave === "heritage-study" && !reclassifiedOriginal ? HERITAGE_REFERENCES[referenceIndex] : null,
+      rightsNote: wave === "heritage-study" && !reclassifiedOriginal
         ? "composition-study-original-art-required"
         : "original-project-art",
     };

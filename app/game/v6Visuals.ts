@@ -422,6 +422,17 @@ export const V6_MASK_VISUAL_BY_ID = {
   fugitive: "mask-scout-teal",
   dek: "mask-city-gunmetal",
   enforcer: "mask-stalker-obsidian",
+  "clan-voile-argent": "mask-hunter-bronze",
+  "clan-cuivre-remparts": "mask-city-gunmetal",
+  "clan-entrelacs-forge": "mask-elite-crown",
+  "clan-os-grave": "mask-ritual-bone",
+  "clan-cendre-balafree": "mask-scarred-bone",
+  "clan-arete-acier": "mask-ritual-bone",
+  "clan-veilleur-cendres": "mask-stalker-obsidian",
+  "clan-carapace-sombre": "mask-elite-crown",
+  "clan-filigrane-cuivre": "mask-scout-teal",
+  "clan-patine-dunes": "mask-city-gunmetal",
+  "clan-gardien-ivoire": "mask-stalker-obsidian",
 } as const satisfies Readonly<Record<BiomaskId, V6VisualId>>;
 
 export const V6_TROPHY_VISUAL_BY_PART_ID = {

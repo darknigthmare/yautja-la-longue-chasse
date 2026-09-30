@@ -1,6 +1,5 @@
-// @ts-expect-error Node's strip-types test runner needs an explicit extension.
+// Explicit extensions also work in the Node strip-types test runner.
 import { HUNTER_PRESETS, appearanceForPreset } from "./hunterLore.ts";
-// @ts-expect-error Node's strip-types test runner needs an explicit extension.
 import { CATALOGUE_ENTRY_BY_ID, CATALOGUE_ROSTER } from "./catalogueRoster.ts";
 import type {
   CatalogueContinuity,

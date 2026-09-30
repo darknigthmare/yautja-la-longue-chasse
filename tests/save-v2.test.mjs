@@ -12,6 +12,7 @@ import {
   loadoutForPreset,
 } from "../app/game/hunterLore.ts";
 import { MISSION_BY_ID } from "../app/game/data.ts";
+import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "../app/game/biomaskCatalogueV62.ts";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(join(tmpdir(), "yautja-save-v2-"));
@@ -38,6 +39,16 @@ const { SAVE_VERSION, applyMissionResult, defaultSave, normalizeSave } =
   await import(pathToFileURL(join(outputDirectory, "save.mjs")).href);
 
 let apexClaimSequence = 0;
+
+test("V62 canonical and renamed original mask selections roundtrip without losing save identity", () => {
+  for (const id of [...REFERENCE_BIOMASKS_V62, ...PRESERVED_BIOMASKS_V62].map(mask => mask.id).concat("elder")) {
+    const source = defaultSave("2026-01-01T00:00:00.000Z");
+    source.appearance = { ...source.appearance, presetId: "custom", biomaskId: id };
+    const result = normalizeSave(JSON.parse(JSON.stringify(source)));
+    assert.equal(result.appearance.biomaskId, id);
+    assert.equal(result.createdAt, source.createdAt);
+  }
+});
 
 function requiredObjectiveIds(missionId) {
   return MISSION_BY_ID[missionId].objectives
