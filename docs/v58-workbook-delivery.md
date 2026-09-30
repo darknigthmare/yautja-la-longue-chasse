@@ -34,6 +34,10 @@ Les huit duels Feral et les quatre cas narratifs passent aussi sur Next final, s
 
 ## Publication
 
-Candidat local validé ; envoi Git et contrôle de la publication publique en cours. Aucun déploiement V58 public n'est encore déclaré par cette version du document.
+Commit publié : `00a6a323f49a1412d820060476c68fc4b81221d0`, envoyé sans réécriture de l'historique sur `main`. Vercel confirme le déploiement de production `dpl_CaHxGNHfNTH3hLLKN6WWZSkbGwGX` en état `READY`, pour ce SHA exact. URL publique : https://yautja-la-longue-chasse.vercel.app . Les deux PNG publics répondent en 200 avec le type image/png et les mêmes SHA256 que les fichiers natifs validés. Rapports : `work-local/v58/qa/deployment.json` et `served-assets-public.json`.
+
+Les trois recettes navigateur publiques **réussissent** sur ce déploiement : cinq groupes Falconer (quatre duels et une panne/reprise), huit duels Feral et sept groupes narratifs (quatre duels, vraie défaite Greyback et conservation des réglages/progression). La version V58 est confirmée dans l'interface publique par la recette Feral. Aucun échec JavaScript/console n'est relevé ; aucune réponse HTTP inattendue dans les recettes Falconer et Feral. La panne 503 volontaire est isolée et suivie d'une reprise vérifiée.
+
+Les captures publiques utiles ont été inspectées : vol et retour du capteur, avertissement d'image manquante et récupération, huit vues de mi-vol Feral, quatre cas de violence et issue Greyback. Rapports : `work-local/v58/qa/falconer-public`, `feral-public` et `nonlethal-public`. Les limites de dessin et d'animation précédemment indiquées restent ouvertes malgré ces succès. Un commit de documentation postérieur consigne cette validation ; le code public demeure le commit `00a6a323f49a1412d820060476c68fc4b81221d0`.
 
 Les campagnes en huit étapes, les 18 familles d'actions pour tous les combattants, les séquences narratives dédiées, les dispositifs et les événements de scène non cités restent ouverts. Homeworld, le prologue et le mausolée DLC ne sont pas déclarés achevés par ce lot. Aucun nouvel exécutable Windows n'est produit ici.
