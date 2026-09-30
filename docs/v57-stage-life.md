@@ -1,6 +1,6 @@
 # V57 — observateurs des arènes 016 et 035
 
-État final : recette complète réussie sur le build de production local V57 figé (`http://127.0.0.1:4177`), avec 11 captures réellement inspectées. Cette preuve reste distincte de la publication publique.
+État final : recette complète réussie aussi sur la [version publique V57](https://yautja-la-longue-chasse.vercel.app), après la validation locale, avec 11 captures publiques réellement inspectées. La vérification publique est conservée séparément.
 
 ## Demande et périmètre
 
@@ -40,6 +40,19 @@ La source bitmap reste `/game/sprites/v54/pit-life/yautja-spectators.png`. Aucun
 - Première recette du build de production V57 sur le port 4177 : échec réel au lancement du duel, avant l'introduction, avec affichage de l'écran de récupération. Le rapport et la capture restent dans `work-local/v57/qa/arena-life-production/`. Le même défaut a été reproduit par les autres recettes de combat ; la correction de la télémétrie commune appartient au lot combat. Aucun résultat de production réussi n'est déduit des seuls essais dev.
 - Deuxième recette après correction : les deux duels passent et leurs 10 captures sont inspectées, mais le troisième contexte neuf rencontre une erreur avant la sélection du mode. Preuves conservées dans `work-local/v57/qa/arena-life-production-corrected/`. Un rebuild a chevauché cette exécution ; un mélange de fichiers servis est possible, sans cause exacte certifiée. Le script conserve désormais aussi `console.error`, car une erreur interceptée par React ne déclenche pas nécessairement `pageerror`. Une troisième recette entière sur le serveur figé est requise.
 - Troisième recette entière, serveur figé et build V57 final : **PASS** dans `work-local/v57/qa/arena-life-production-final/report.json`, le 30 septembre 2026 à 10:34 UTC. Deux duels réels, trois KO, pause pendant geste et résultat final, six cellules natives réellement dessinées sur chaque scène, mouvement réduit sur la seule cellule 0 ; données locales inchangées. Les 1 780 observations de cadence correspondent toutes au directeur. Aucun `pageerror`, `console.error` ou échec HTTP. Les 11 captures ont été inspectées séparément et acceptées dans `visual-review.json`, avec hashes des captures et modules concernés. Écart d'appui maximal inférieur à 0,012 pixel logique. Les deux échecs précédents sont conservés, sans fusionner leurs preuves avec ce PASS.
+
+## Vérification publique
+
+La recette complète a réussi le 30 septembre 2026 à 10:59 UTC sur `https://yautja-la-longue-chasse.vercel.app`, version V57 vérifiée dans l'application à chaque contexte neuf. Le déploiement annoncé par le responsable de publication correspond au commit `7f318ad`.
+
+- Preuve indépendante : `work-local/v57/qa/arena-life-public/report.json` et `visual-review.json`.
+- Trois scénarios réussis dans une même exécution : duel Terrasse016 sur écran bureau, duel Fosse035 sur écran mobile simulé 844 × 390, puis mouvement réduit.
+- Trois KO produits par les commandes réelles ; réactions et retour au repos, pause au geste et pendant le résultat final, six cellules bitmap natives réellement utilisées sur chaque arène. Le mouvement réduit n'utilise que la cellule 0.
+- 1 773 des 1 775 observations correspondent exactement à la pose calculée ; deux observations se situent entre le commit React et le dessin du canvas à une frontière de cellule. La cadence reste reproductible et ne revient pas à l'ancienne boucle continue.
+- Écart d'appui maximal de 0,0121 pixel logique, dans la précision des valeurs de caméra arrondies exposées. Aucun `pageerror`, `console.error` ou échec HTTP ; chaque octet de `localStorage` est préservé.
+- Les 11 captures publiques ont été ouvertes et inspectées : plans, silhouettes, orientation, appuis et lisibilité acceptés. Les hashes sont conservés dans la revue ; les preuves locales antérieures ne sont pas utilisées pour remplacer une preuve publique manquante.
+
+Aucune modification runtime n'a été faite pendant cette vérification publique.
 
 ## Limites explicites
 

@@ -50,4 +50,10 @@ Une recette complète du build corrigé a passé **12 groupes** : les quatre lan
 
 Après séparation typée `onNarrativeComplete` et reconstruction, le candidat final a passé une seconde recette ciblée **6/6** : défaites complètes de Greyback et Machiko correctement transmises, reprise de Machiko puis abandon explicite, les deux formats d'écran et retour à The Pit avec progression inchangée. Cette recette utilise toujours la vraie IA et aucun résultat injecté ; erreurs JavaScript et console vides. Preuve locale : `work-local/v57/qa/narrative-trials-release-callback/report.json`. Lancer le script avec `NARRATIVE_QA_SCOPE=callback` pour reproduire ce périmètre court ; omettre cette variable pour la recette complète.
 
-Cette note concerne les sources et la recette locale ; elle n'affirme ni build final, ni paquet PC, ni publication de V57.
+## Vérification de la version publique — 30 septembre 2026
+
+La recette complète a été exécutée sur [la version publique de Yautja](https://yautja-la-longue-chasse.vercel.app), après publication de V57 (commit de référence `7f318adfbbc5f1d681888c907f028d0180c8d6fc`). Résultat : **12/12 groupes PASS**, douze captures, aucune erreur JavaScript ou console.
+
+L'entrée « Épreuves narratives », les quatre duels imposés et leurs abandons sont disponibles en ligne. La victoire de Berserker, sa conclusion, sa défaite puis sa reprise ont été jouées avec les touches du jeu. Les défaites complètes d'Enforcer, Greyback et Machiko remontent correctement à leur récit. Les formats 390×844 et 844×390 n'ont pas de débordement horizontal ; les captures des combats, issues et formats ont été relues. Les données de progression de campagne et de The Pit sont identiques avant et après la session synthétique. Aucun état de combat ni vainqueur n'a été injecté.
+
+Preuve : `work-local/v57/qa/narrative-public/report.json` et captures du même dossier. Le premier aperçu de briefing a été capturé pendant son chargement réseau ; les décors sont ensuite chargés et contrôlés avant chaque duel. Cette qualification porte sur les quatre extraits narratifs du navigateur. Elle ne transforme pas les étapes manquantes en campagnes complètes et ne constitue pas une qualification du paquet PC V57.

@@ -38,3 +38,9 @@ Les durées et coûts de l'ensemble des 18 propositions de coups ne sont pas imp
 ## Art natif
 
 La provenance complète et les trois prompts (dont une contre-vue rejetée puis corrigée) figurent dans `v57-jungle-final-art-provenance.json`. Les sorties finales sont copiées octet pour octet. Le renderer applique uniquement son contrat privé d'alpha `noiseFloor:1` pour ignorer 19 pixels alpha=1 au bord de l'image gauche ; aucune modification du PNG livré. Les limites optionnelles de caméra ont été retirées pour prendre en compte toute la page native, sans découper la silhouette.
+
+## Validation de la version publique
+
+Le 30 septembre 2026 à 10:58 UTC, la même recette a terminé **PASS, 6 groupes / 8 duels** sur `https://yautja-la-longue-chasse.vercel.app` (V57, publication `7f318ad` annoncée READY par le parent). Le rapport `work-local/v57/qa/equipment-drone-public/report.json` confirme : aucun plasma pour la variante finale, deux orientations natives sans miroir, sélection conservée, un seul capteur Falconer rappelé sous le même ID, PV inchangés et uniquement les gains passifs de Traque calculés aux frames observées. Zéro erreur page/console/HTTP et localStorage intégralement inchangé.
+
+Revue indépendante ciblée de **cinq captures publiques réellement ouvertes** : les quatre duels Jungle droite/gauche en 1280×720 et 844×390, plus la sélection desktop. Silhouettes entières sans canon/harnais, regard vers l'adversaire, pied d'appui au sol et HUD d'indisponibilité lisible sont confirmés. Le texte corrigé est maintenant visible en production : « Les variantes conservent le profil du combattant. Un équipement explicitement retiré peut rendre sa technique indisponible. » Il remplace la réserve du contrôle local ci-dessus. Les SHA de ces cinq captures et le périmètre exact sont conservés dans `v57-equipment-drone-public-review.json`. Les limites de poses fixes, du dessin procédural du drone et de l'émulation mobile restent inchangées.

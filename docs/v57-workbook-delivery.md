@@ -30,7 +30,13 @@ Qualification locale : 1 827 / 1 827 tests de régression réussis, puis 23 / 23
 
 Recettes réelles : six groupes / huit duels d'équipement et de drone, dix groupes de laboratoire et de combat Valkyrie, trois scénarios de spectateurs, douze groupes narratifs. Le candidat définitif passe en plus six groupes ciblant les fins Greyback/Machiko, leur callback dédié, reprise/abandon, les deux formats mobiles et le retour sans progression. Les captures sont inspectées et les limites détaillées dans les notes de lot. Les quatre PNG natifs servis localement sont identiques octet pour octet aux fichiers validés. L'apparence de nouvelle partie, Homeworld et les autres chantiers ne sont pas déclarés achevés par cette passe.
 
-Les références de publication seront consignées après confirmation distante. Ne pas confondre les anciens builds V56, les recettes dev et la publication V57. Aucun nouvel exécutable Windows V57 n'est déclaré dans ce lot.
+Publication : commit `7f318adfbbc5f1d681888c907f028d0180c8d6fc`, envoyé sans réécriture d'historique sur la branche de travail et `main`. Vercel confirme le déploiement de production `dpl_8obpthJEeAjJ8BuHpAz3knwUZWgh` en état `READY`, pour ce même commit. URL publique : https://yautja-la-longue-chasse.vercel.app .
+
+Le contrôle HTTP indépendant confirme le shell servi en 200 et les quatre PNG au SHA exact. Les recettes publiques d'équipement, de Valkyrie et de spectateurs passent ; la version V57 est confirmée dans l'interface. Les rapports résident dans `work-local/v57/qa/served-assets-public.json`, `equipment-drone-public`, `valkyrie-public` et `arena-life-public`. Les vues publiques de duel et de sélection ont été inspectées ; le texte des variantes explique correctement l'exception d'équipement.
+
+La recette narrative publique passe également ses douze groupes : quatre bons adversaires/décors, abandons, victoire et conclusion de Berserker, défaite/reprise, issues terminales Enforcer/Greyback/Machiko, affichages 390×844 et 844×390, retour et données de progression strictement inchangées. Ses douze captures ont été relues (`work-local/v57/qa/narrative-public`). Aucun échec public n'a été constaté dans ces quatre recettes, ni erreur JavaScript/console. Ces résultats sont des vérifications ciblées de V57, pas une certification de tous les systèmes et de tout le contenu du classeur.
+
+Ne pas confondre les anciens builds V56, les recettes dev et la publication V57. Aucun nouvel exécutable Windows V57 n'est déclaré dans ce lot.
 
 ## Restant du classeur
 
