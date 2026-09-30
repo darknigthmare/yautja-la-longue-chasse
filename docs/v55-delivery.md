@@ -32,7 +32,9 @@ Les 23 scènes sont assemblées puis activées après 184 cadrages renderer cont
 
 L’audit complet du catalogue après activation est PASS : 161 arènes actives, 472 PNG uniques vérifiés et 1 583 sous-plans spécifiés. Les 138 compositions historiques ont aussi été comparées au manifeste du HEAD Git antérieur et sont identiques. Rapport local complet : `work-local/v55/production-audit.json`.
 
-Cette qualification concerne le renderer isolé avec les images et combattants réels ; elle ne vaut pas recette du parcours complet dans l’application. La recette `verify-pit-stage-selection-v55.mjs` prévoit les 23 aperçus et huit duels couvrant huit profils distincts. Le build global, l’exécution de ce parcours et la publication restent à consigner séparément après leur exécution réelle.
+Cette qualification du renderer a ensuite été complétée par une recette réelle sur V56 : 59 contrôles réussis, les 23 aperçus, trois cadrages mobiles et huit duels couvrant huit profils distincts. Les 198 icônes actuelles sont parcourues (195 historiques et trois ajouts V56), sans prétendre avoir joué chaque identité. Une première exécution s'était arrêtée au chargement du duel 153 ; la reprise complète passe sans modification du code ni allongement du délai. L'échec initial reste conservé. Rapports détaillés : `v56-stage-browser-qa.json`, `v56-stage-browser-visual-review.json` et `v56-stage-browser-delivery.md`. Compilation, paquet PC et publication restent des validations séparées.
+
+La recette de l’application a ensuite été exécutée sur V56 avec ses trois identités supplémentaires : elle passe les 23 aperçus et huit duels représentatifs. Ses preuves sont isolées dans `v56-stage-browser-delivery.md` et `v56-stage-browser-qa.json` ; cette extension ne modifie pas les 195 associations historiques de la phase V55.
 
 ## Limites conservées
 

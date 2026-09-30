@@ -1,0 +1,720 @@
+{
+  "status": "PASS",
+  "version": "V56",
+  "url": "http://127.0.0.1:4175",
+  "checkedAt": "2026-09-30T02:34:44.608Z",
+  "checks": [
+    {
+      "name": "original-duel-original-arid-ermit-yautja",
+      "stageId": "arena-087-cercle-ambre",
+      "mobile": false,
+      "actualCutouts": 2,
+      "intros": 2,
+      "countdown": [
+        3,
+        2,
+        1
+      ],
+      "cameraWidened": true,
+      "grounding": [
+        {
+          "fighterId": "original-arid-ermit-yautja",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.00527278652032237,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "original-mutated-yautja",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.00527278652032237,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "resourceCheck": null
+    },
+    {
+      "name": "original-duel-original-mutated-yautja",
+      "stageId": "arena-085-cercle-sang",
+      "mobile": false,
+      "actualCutouts": 2,
+      "intros": 2,
+      "countdown": [
+        3,
+        2,
+        1
+      ],
+      "cameraWidened": true,
+      "grounding": [
+        {
+          "fighterId": "original-mutated-yautja",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "observedDraws": 12,
+          "maxGap": 0.002654730712208675,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "guest-amengi-female",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "observedDraws": 12,
+          "maxGap": 0.002654730712208675,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "resourceCheck": null
+    },
+    {
+      "name": "original-duel-guest-amengi-female",
+      "stageId": "arena-081-cercle-obsidienne",
+      "mobile": true,
+      "actualCutouts": 2,
+      "intros": 2,
+      "countdown": [
+        3,
+        2,
+        1
+      ],
+      "cameraWidened": true,
+      "grounding": [
+        {
+          "fighterId": "guest-amengi-female",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "observedDraws": 16,
+          "maxGap": 0.0023995933532887648,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "original-arid-ermit-yautja",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.0023995933532887648,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "resourceCheck": {
+        "earned": 367,
+        "afterMeter": 367,
+        "actualResourceKey": "KeyH",
+        "noCamouflage": true,
+        "noInventedResourceSpend": true
+      }
+    }
+  ],
+  "bouts": [
+    {
+      "pair": [
+        "original-arid-ermit-yautja",
+        "original-mutated-yautja"
+      ],
+      "stageId": "arena-087-cercle-ambre",
+      "mobile": false,
+      "portraits": [
+        {
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "native": "right",
+          "facing": "right",
+          "mirror": 1,
+          "complete": true,
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "native": "right",
+          "facing": "left",
+          "mirror": -1,
+          "complete": true,
+          "width": 1024,
+          "height": 1536
+        }
+      ],
+      "initial": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 14,
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "scene": "arena-087-cercle-ambre",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 1.5692,
+        "centerX": 488.73,
+        "centerY": 349.68,
+        "meters": [
+          {
+            "label": "Vie de Arid Ermit Yautja",
+            "value": 930
+          },
+          {
+            "label": "Traque de Arid Ermit Yautja",
+            "value": 1
+          },
+          {
+            "label": "Vie de Yautja Mutated",
+            "value": 1080
+          },
+          {
+            "label": "Traque de Yautja Mutated",
+            "value": 1
+          }
+        ],
+        "statuses": [
+          {
+            "id": "original-arid-ermit-yautja",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "original-mutated-yautja",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "apart": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 143,
+        "positions": [
+          {
+            "x": 77,
+            "y": 0
+          },
+          {
+            "x": 876.5,
+            "y": 0
+          }
+        ],
+        "scene": "arena-087-cercle-ambre",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 0.9467,
+        "centerX": 482.76,
+        "centerY": 272.79,
+        "meters": [
+          {
+            "label": "Vie de Arid Ermit Yautja",
+            "value": 930
+          },
+          {
+            "label": "Traque de Arid Ermit Yautja",
+            "value": 6
+          },
+          {
+            "label": "Vie de Yautja Mutated",
+            "value": 1080
+          },
+          {
+            "label": "Traque de Yautja Mutated",
+            "value": 6
+          }
+        ],
+        "statuses": [
+          {
+            "id": "original-arid-ermit-yautja",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "original-mutated-yautja",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "feet": [
+        {
+          "fighterId": "original-arid-ermit-yautja",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.00527278652032237,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "original-mutated-yautja",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.00527278652032237,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "layout": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "scrollWidth": 1280,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "resourceCheck": null,
+      "realDamage": true
+    },
+    {
+      "pair": [
+        "original-mutated-yautja",
+        "guest-amengi-female"
+      ],
+      "stageId": "arena-085-cercle-sang",
+      "mobile": false,
+      "portraits": [
+        {
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "native": "right",
+          "facing": "right",
+          "mirror": 1,
+          "complete": true,
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "native": "right",
+          "facing": "left",
+          "mirror": -1,
+          "complete": true,
+          "width": 1533,
+          "height": 1026
+        }
+      ],
+      "initial": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 23,
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "scene": "arena-085-cercle-sang",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 1.4583,
+        "centerX": 494.53,
+        "centerY": 349.68,
+        "meters": [
+          {
+            "label": "Vie de Yautja Mutated",
+            "value": 1080
+          },
+          {
+            "label": "Traque de Yautja Mutated",
+            "value": 1
+          },
+          {
+            "label": "Vie de Amengi female",
+            "value": 970
+          },
+          {
+            "label": "Traque de Amengi female",
+            "value": 1
+          }
+        ],
+        "statuses": [
+          {
+            "id": "original-mutated-yautja",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "guest-amengi-female",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "apart": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 157,
+        "positions": [
+          {
+            "x": 83.5,
+            "y": 0
+          },
+          {
+            "x": 879,
+            "y": 0
+          }
+        ],
+        "scene": "arena-085-cercle-sang",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 0.9087,
+        "centerX": 498.7,
+        "centerY": 272.85,
+        "meters": [
+          {
+            "label": "Vie de Yautja Mutated",
+            "value": 1080
+          },
+          {
+            "label": "Traque de Yautja Mutated",
+            "value": 7
+          },
+          {
+            "label": "Vie de Amengi female",
+            "value": 970
+          },
+          {
+            "label": "Traque de Amengi female",
+            "value": 7
+          }
+        ],
+        "statuses": [
+          {
+            "id": "original-mutated-yautja",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "guest-amengi-female",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "feet": [
+        {
+          "fighterId": "original-mutated-yautja",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/mutated-yautja.png",
+          "observedDraws": 12,
+          "maxGap": 0.002654730712208675,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "guest-amengi-female",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "observedDraws": 12,
+          "maxGap": 0.002654730712208675,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "layout": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "scrollWidth": 1280,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 1280,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "resourceCheck": null,
+      "realDamage": true
+    },
+    {
+      "pair": [
+        "guest-amengi-female",
+        "original-arid-ermit-yautja"
+      ],
+      "stageId": "arena-081-cercle-obsidienne",
+      "mobile": true,
+      "portraits": [
+        {
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "native": "right",
+          "facing": "right",
+          "mirror": 1,
+          "complete": true,
+          "width": 1533,
+          "height": 1026
+        },
+        {
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "native": "right",
+          "facing": "left",
+          "mirror": -1,
+          "complete": true,
+          "width": 1024,
+          "height": 1536
+        }
+      ],
+      "initial": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 14,
+        "positions": [
+          {
+            "x": 300,
+            "y": 0
+          },
+          {
+            "x": 660,
+            "y": 0
+          }
+        ],
+        "scene": "arena-081-cercle-obsidienne",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 1.4981,
+        "centerX": 456.74,
+        "centerY": 357.5,
+        "meters": [
+          {
+            "label": "Vie de Amengi female",
+            "value": 970
+          },
+          {
+            "label": "Traque de Amengi female",
+            "value": 1
+          },
+          {
+            "label": "Vie de Arid Ermit Yautja",
+            "value": 930
+          },
+          {
+            "label": "Traque de Arid Ermit Yautja",
+            "value": 1
+          }
+        ],
+        "statuses": [
+          {
+            "id": "guest-amengi-female",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "original-arid-ermit-yautja",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "apart": {
+        "phase": "fight",
+        "blocked": "false",
+        "frame": 116,
+        "positions": [
+          {
+            "x": 81,
+            "y": 0
+          },
+          {
+            "x": 883,
+            "y": 0
+          }
+        ],
+        "scene": "arena-081-cercle-obsidienne",
+        "art": "bitmap",
+        "missing": 0,
+        "zoom": 0.9174,
+        "centerX": 461.42,
+        "centerY": 272.54,
+        "meters": [
+          {
+            "label": "Vie de Amengi female",
+            "value": 970
+          },
+          {
+            "label": "Traque de Amengi female",
+            "value": 3
+          },
+          {
+            "label": "Vie de Arid Ermit Yautja",
+            "value": 930
+          },
+          {
+            "label": "Traque de Arid Ermit Yautja",
+            "value": 3
+          }
+        ],
+        "statuses": [
+          {
+            "id": "guest-amengi-female",
+            "status": "static-bitmap",
+            "slot": 0
+          },
+          {
+            "id": "original-arid-ermit-yautja",
+            "status": "static-bitmap",
+            "slot": 1
+          }
+        ]
+      },
+      "feet": [
+        {
+          "fighterId": "guest-amengi-female",
+          "slot": 0,
+          "src": "/game/user-pack/v56/cutouts/amengi-female.png",
+          "observedDraws": 16,
+          "maxGap": 0.0023995933532887648,
+          "nativeAnimationClips": 0
+        },
+        {
+          "fighterId": "original-arid-ermit-yautja",
+          "slot": 1,
+          "src": "/game/user-pack/v56/cutouts/arid-ermit-yautja.png",
+          "observedDraws": 16,
+          "maxGap": 0.0023995933532887648,
+          "nativeAnimationClips": 0
+        }
+      ],
+      "layout": {
+        "viewport": [
+          844,
+          390
+        ],
+        "scrollWidth": 844,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "right": 844,
+          "bottom": 390,
+          "width": 844,
+          "height": 390
+        }
+      },
+      "resourceCheck": {
+        "earned": 367,
+        "afterMeter": 367,
+        "actualResourceKey": "KeyH",
+        "noCamouflage": true,
+        "noInventedResourceSpend": true
+      },
+      "realDamage": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "original-arid-ermit-yautja-selection-slot0.png",
+      "sha256": "33870f65aac69aae1ec3509d464e353fa26d4150d1d6d0f68816ff1b631cd520",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-selection-slot1.png",
+      "sha256": "2743306ba06abebeada48ce0fc27ff8f888f270aa664efbf2c98dac301565f17",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-arid-ermit-yautja-exhibition.png",
+      "sha256": "d16dbca942ead4124d683a70f8c51be4f412d90ecf6b30b7f599d2f82fadd4ec",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-arid-ermit-yautja-intro.png",
+      "sha256": "3d1f7d9b884da8f6af7302a68228004eb3bccd6f188545894a321dd1982ff6d0",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-arid-ermit-yautja-fight-grounded.png",
+      "sha256": "f6aa6a3b7317abc04d53d97eacf0694fc7abfa2666a4c7845db25a24086c3e2d",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-arid-ermit-yautja-camera-wide.png",
+      "sha256": "6bc404a81ee3173d274cfa429db498319711a56c31089dd11f4e5ed592647829",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-selection-slot0.png",
+      "sha256": "b13477e5473c1b165ee32dd6d20f66406803e540c2004627fb73c88c733c535a",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-selection-slot1.png",
+      "sha256": "7c90521e26b25da76bf2f886bdbf9b6f58ae6288b6259e28f9513e91abe526c3",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-exhibition.png",
+      "sha256": "552f7d8d091f0596bcaf6c1ac061c480093fa5230023ddf5f577a5a0caa01c32",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-intro.png",
+      "sha256": "39a87b6d8efd9c7d803db5244ac37573914144ce3bd17758783f2eb34886e996",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-fight-grounded.png",
+      "sha256": "f097e73758e502e71c43bdc12c555eb34994e9addd6db1fb38ed5b37f4824eeb",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-mutated-yautja-camera-wide.png",
+      "sha256": "d46d44a581de48c0595f0d611fcc62324eef9134e6b018c872b2b9e980979052",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-selection-slot0.png",
+      "sha256": "55c181071380ec99df43598aa3f5853b617b40c429cd92f470926f4c0c95f193",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "original-arid-ermit-yautja-selection-slot1.png",
+      "sha256": "f4798f367d578846002165c0fb5c537b82239101993da9b89ddf607481e01e86",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-exhibition.png",
+      "sha256": "f570d110b444c26efe833c899aa80e7d5e408dba716010d937d229faae999478",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-intro.png",
+      "sha256": "838436dd0f3b75c669753d33454d601a2c72ad3e96956cb05d5d89a1983d9107",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-fight-grounded.png",
+      "sha256": "1a9b6875df16ef0061f7419773de76a541862617fe687f16770227f7015768a2",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "guest-amengi-female-camera-wide.png",
+      "sha256": "fa42fd48fa6238240ffe47cdd39f5eb77c6985c6a5b4c6cb73f59a33788c7c8e",
+      "visualReview": "pending-actual-image-inspection"
+    },
+    {
+      "file": "amengi-resource-no-camouflage.png",
+      "sha256": "c126a35f65b2514646c3f9b0b3dbb81e4f80f0b9f3da8a487ccb773394726731",
+      "visualReview": "pending-actual-image-inspection"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "nonReadRequests": [],
+  "allLocalStorageBytesUnchanged": true,
+  "limitations": [
+    "Three real exhibition bouts with actual controls; not198 complete application matches.",
+    "Single native cutouts, no new authored animation clips.",
+    "Mobile means Chromium landscape/touch emulation, not a physical handset.",
+    "Visual inspection of the resulting captures is required separately."
+  ]
+}

@@ -199,8 +199,9 @@ try {
     playerBodies: root.querySelectorAll('[data-homeworld-actor] [data-homeworld-layer="body"], [data-homeworld-actor] [data-whole-character-plate="true"]').length,
     npcs: [...root.querySelectorAll('[data-has-npc="true"]')].map(point => ({ id: point.dataset.pointId, bodies: point.querySelectorAll('[data-homeworld-layer="body"]').length, decoded: [...point.querySelectorAll('img')].every(image => image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) })),
   }));
-  assert.equal(cityComposition.districts, 12);
-  assert.equal(cityComposition.buildings, 13);
+  // V54 added the convoy works and rampart walk, with six exterior buildings.
+  assert.equal(cityComposition.districts, 14);
+  assert.equal(cityComposition.buildings, 19);
   assert.equal(cityComposition.playerBodies, 1, "One real bitmap player body is mounted");
   assert.equal(cityComposition.npcs.length, 12, "All twelve NPCs use their actual modular bitmap compositions");
   assert.equal(new Set(cityComposition.npcs.map(npc => npc.id)).size, cityComposition.npcs.length);
